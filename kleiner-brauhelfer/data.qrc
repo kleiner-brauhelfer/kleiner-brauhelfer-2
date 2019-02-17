@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>data/Hefe.csv</file>
+        <file>data/Hopfen.csv</file>
+        <file>data/kb_daten.sqlite</file>
+        <file>data/Malz.csv</file>
+        <file>data/spickzettel.html</file>
+        <file>data/streifen_vorlage.svg</file>
+        <file>data/style_dunkel.css</file>
+        <file>data/style_hell.css</file>
+        <file>data/sudinfo.html</file>
+        <file>data/WeitereZutaten.csv</file>
+        <file>data/zusammenfassung.html</file>
+    </qresource>
+</RCC>

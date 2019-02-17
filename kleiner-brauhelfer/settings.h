@@ -1,0 +1,79 @@
+#ifndef SETTINGS_H
+#define SETTINGS_H
+
+#include <QSettings>
+#include <QPalette>
+
+class Settings : public QSettings
+{
+public:
+    enum Theme
+    {
+        System,
+        Bright,
+        Dark
+    };
+
+public:
+    explicit Settings(QObject *parent = nullptr);
+
+    Theme theme() const;
+    void setTheme(Theme theme);
+
+    QString style();
+    void setStyle(const QString &style);
+
+    QString settingsDir();
+
+    QString databasePath();
+    void setDatabasePath(const QString& path);
+    QString databaseDir();
+
+protected:
+    Settings(bool dummyPortable, QObject *parent = nullptr);
+
+private:
+    void initTheme();
+
+public:
+    QPalette palette;
+    QPalette paletteInput;
+    QPalette paletteError;
+    QPalette paletteErrorButton;
+
+    QColor InputBase;
+    QColor ErrorBase;
+    QColor WarningText;
+    QColor ErrorText;
+
+    QColor MekrlisteBackground;
+    QColor VerbrauchtBackground;
+    QColor AbgefuelltBackground;
+    QColor GebrautBackground;
+    QColor NichtGebrautBackground;
+
+    QList<QColor> HopfenTypBackgrounds;
+    QList<QColor> HefeTypOgUgBackgrounds;
+    QList<QColor> HefeTypTrFlBackgrounds;
+    QList<QColor> HefeSedBackgrounds;
+    QList<QColor> WZTypBackgrounds;
+
+    QColor DiagramLinie1;
+    QColor DiagramLinie2;
+    QColor DiagramLinie3;
+    QColor DiagramLinie1Light;
+    QColor DiagramLinie2Light;
+    QColor DiagramLinie3Light;
+
+private:
+    Theme mTheme;
+    QPalette mSystemPalette;
+};
+
+class SettingsPortable : public Settings
+{
+public:
+    explicit SettingsPortable(QObject *parent = nullptr);
+};
+
+#endif // SETTINGS_H

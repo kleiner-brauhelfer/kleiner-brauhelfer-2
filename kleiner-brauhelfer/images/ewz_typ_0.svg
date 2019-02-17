@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg1"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.2 r9819"
+   width="60"
+   height="60"
+   sodipodi:docname="nicubunu_Honey.svg"
+   version="1.1">
+  <metadata
+     id="metadata16" />
+  <defs
+     id="defs3">
+    <linearGradient
+       id="linearGradient856">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.50000000;"
+         offset="0.0000000"
+         id="stop857" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.25000000;"
+         offset="1.0000000"
+         id="stop858" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient856"
+       id="linearGradient859"
+       x1="-33.386173"
+       y1="142.85149"
+       x2="77.09922"
+       y2="160.5464"
+       gradientTransform="scale(0.79291271,1.2611729)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient856"
+       id="linearGradient2995"
+       x1="-75.940392"
+       y1="59.156178"
+       x2="34.544991"
+       y2="76.851105"
+       gradientTransform="scale(0.79291271,1.2611729)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient856"
+       id="linearGradient2997"
+       x1="66.798584"
+       y1="78.138603"
+       x2="177.28397"
+       y2="95.833527"
+       gradientTransform="scale(0.79291262,1.261173)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4"
+     inkscape:cx="47.002441"
+     inkscape:cy="39.483639"
+     inkscape:window-width="885"
+     inkscape:window-height="719"
+     inkscape:window-x="196"
+     inkscape:window-y="39"
+     showgrid="false"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1" />
+  <g
+     id="g842"
+     transform="matrix(0.23286016,0,0,0.23286016,-0.2760722,0.6596208)">
+    <path
+       style="fill:#ffc62a;fill-opacity:1;fill-rule:evenodd;stroke:#ff9500;stroke-width:2.5"
+       d="m 153.91391,222.46025 -62.311721,18.63099 -48.069508,-42.16346 14.242211,-60.79446 62.311718,-18.63099 48.06951,42.16345 -14.24221,60.79447 z"
+       id="path854"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#ffc62a;fill-opacity:1;fill-rule:evenodd;stroke:#ff9500;stroke-width:2.5"
+       d="M 233.78921,140.35318 171.47749,158.98416 123.40798,116.8207 137.6502,56.026243 199.96191,37.395251 248.03142,79.558708 233.78921,140.35318 z"
+       id="path853"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#ffc62a;fill-opacity:1;fill-rule:evenodd;stroke:#ff9500;stroke-width:2.5"
+       d="M 120.07027,115.99896 57.758558,134.62995 9.6890451,92.466485 23.93126,31.672032 86.242981,13.041042 134.31249,55.204501 120.07027,115.99896 z"
+       id="path852"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:url(#linearGradient2995);fill-opacity:1;fill-rule:evenodd;stroke-width:1pt"
+       d="m 84.334586,16.58363 c 0,0 -58.762163,15.234635 -58.762163,17.955105 0,2.720471 -13.602352,52.233034 -13.058258,57.129881 0,2.176376 39.718869,39.174774 44.615716,39.174774 C 38.086588,86.227678 27.748799,31.818265 84.334586,16.58363 z"
+       id="path855"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:url(#linearGradient2997);fill-opacity:1;fill-rule:evenodd;stroke-width:1pt"
+       d="m 197.51411,40.523759 c 0,0 -58.76216,15.23464 -58.76216,17.95511 0,2.72047 -13.60235,52.233031 -13.05825,57.129881 0,2.17638 39.71886,39.17478 44.61571,39.17478 -19.04329,-44.61572 -29.38108,-99.025131 27.2047,-114.259771 z"
+       id="path860"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:url(#linearGradient859);fill-opacity:1;fill-rule:evenodd;stroke-width:1pt"
+       d="m 118.07638,122.13787 c 0,0 -58.762176,15.23464 -58.762176,17.95511 0,2.72047 -13.60235,52.23303 -13.05825,57.12988 0,2.17638 39.71887,39.17478 44.61571,39.17478 -19.04329,-44.61572 -29.38108,-99.02513 27.204716,-114.25977 z"
+       id="path861"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0" />
+  </g>
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Clipart by Nicu Buculei - bee</dc:title>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Nicu Buculei</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:format>image/svg+xml</dc:format>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,128 @@
+Name;OG/UG;Typ;Verpackungsmenge;Würzemenge (L);Temperaturbereich;Eigenschaften;Sedimentation;Vergärungsgrad
+Brewferm BLANCHE;OG;trocken;12,0g;20;18 - 24°C;Weizenbierhefe;mittel;65 - 75%
+Brewferm LAGER;UG;trocken;12,0g;20;12 - 15°C;neutrale Vergärung, wenige oder ohne Bildung von Schwefelkomponenten;hoch;75%
+Brewferm TOP;OG;trocken;6,0g;10;18 - 25°C;vgl. sauber vergärende Hefe, Hopfenbittere wird leicht betont, geringe Diacetylproduktion;mittel;68 -70%
+Danstar Munich Wheat;OG;trocken;11,0g;20;17 - 24°C;Weizenbierhefe,  ideal bei 17°C;mittel;75%
+Danstar Nothingham Ale;OG;trocken;11,0g;20;12 - 21°C;geringe Frucht- und Esteraromen, geschmacklich sehr neutral;hoch;73 - 79%
+Danstar Windsor Ale;OG;trocken;11,0g;20;17 - 21°C;echter englischer Hefestamm, Biere mit Ester- und frischen Hefearomen;gering;60 - 67%
+Fermentis  SAFALE S-04;OG;trocken;11,5g;20;15 - 24°C;britische Ale-Hefe, schnelle Gärung;hoch;75 - 80%
+Fermentis SAFALE K-97;OG;trocken;11,5g;20;15 - 24°C;deutsche Ale-Hefe, feste Schaumkrone, niedrige Estherproduktion, belgische Weizenbiere;niedrig;75%
+Fermentis SAFALE US-05;OG;trocken;11,5g;20;15 - 24°C;amerikanische Hefe, gut ausgewogenes Bier mit niedrigen Diacetylwerten, frischer Nachtrunk;niedrig;77 - 79%
+Fermentis SAFBREW S-33;OG;trocken;11,5g;20;15 - 24°C;Vielzweckhefe, Spezialbiere, wie belgischen Weizen- und Trappistenbiere;mittel;63 - 70%
+Fermentis SAFBREW T-58;OG;trocken;11,5g;20;15 - 24°C;milde Esternote;mittel;77 - 79%
+Fermentis SAFBREW WB-06;OG;trocken;11,0g;20;15 - 24°C;für Weizenbiere, verleiht den Bieren feine Ester- und Phenolnoten;niedrig;75%
+Fermentis SAFLAGER S-23;UG;trocken;11,5g;10;9 - 15°C;für Lagerbiere mit milden, leicht fruchtigen Esternoten, optimal bei 12°C;hoch;73%
+Fermentis SAFLAGER W34/70;UG;trocken;11,5g;10;9 - 15°C;Hefestamm aus Weihenstephan, geschmacklich sehr neutral, optimal bei 12°C;hoch;73 - 78%
+Muntons Premium Gold;OG;trocken;6,0g;10;15 - 24°C;sauber vergärende Hefe, Hopfenbittere wird spürbar betont, zügige Vergärung;mittel;70 - 80%
+White Labs WLP001 California Ale;OG;flüssig;40ml;20;20 - 23°C;reiner, ausgeglichener Geschmack, betont Hopfenaroma;mittel;73 - 80%
+White Labs WLP002 English Ale;OG;flüssig;40ml;20;18 - 20°C;Stamm aus einer von England größten unabhängigen Brauereien, vergärt das Bier sehr klar mit etwas Restsüße;mittel;63 - 70%
+White Labs WLP004 Irish Ale;OG;flüssig;40ml;20;18 - 20°C;Hefe einer der ältesten Stout-Brauereien der Welt, erzeugt einen leichten Hauch von Diacetyl, ausgeglichen durch leichte Fruchtigkeit und etwas trockene Säure;mittel;69 - 74%
+White Labs WLP005 British Ale;OG;flüssig;40ml;20;18 - 21°C;vergärt etwas höher als WLP002, erzeugt malzige Biere;mittel;67 - 74%
+White Labs WLP006 Bedford British Ale;OG;flüssig;40ml;20;18 - 21°C;vergärt hoch und flockt sehr gut aus, erzeugt ein charakteristisches Esterprofil;hoch;72 - 80%
+White Labs WLP007 Dry English Ale;OG;flüssig;40ml;20;18 - 21°C;im Geschmacksprofil ähnlich der WLP002, vergärt aber höher, gut geeignet für hochprozentige Ales;mittel;70 - 80%
+White Labs WLP008 East Coast Ale;OG;flüssig;40ml;20;20 - 23°C;ähnlich neutraler Charakter wie WLP001, aber geringere Vergärung, weniger Betonung der Hopfenbittere, höhere Ausflockung und etwas herb, sehr klar und wenig Ester;gering;70 - 75%
+White Labs WLP009 Australian Ale;OG;flüssig;40ml;20;18 - 21°C;erzeugt reines, malziges Bier, angenehme Ester, die als brotartig bezeichnet werden können. Kann auch bei höheren Temperaturen reintönig vergären.;hoch;70 - 75%
+White Labs WLP011 European Ale;OG;flüssig;40ml;20;18 - 21°C;malzige, aus Nordeuropa stammende Ale-Hefe, klares Geschmacksprofile durch geringe Ester-Produktion, wenig bis keine Schwefelproduktion;mittel;65 - 70%
+White Labs WLP013 London Ale;OG;flüssig;40ml;20;19 - 22°C;Hefe für trockene, malzige Ales. Bringt einen komplexen, eichenartigen Estercharakter in das Bier, flockt nicht so gut aus wie WLP002 und WLP005;mittel;67 - 75%
+White Labs WLP022 Essex Ale;OG;flüssig;40ml;20;19 - 21°C;Geschmacksreiche Hefe britischer Art, trockenerer Abgang als viele andere britische Ale Hefen, fruchtiger und brotartiger Charakter;mittel;71 - 76%
+White Labs WLP023 Burton Ale;OG;flüssig;40ml;20;20 - 23°C;Charaktervolle Hefe aus der berühmten Brauereistadt Burton upon Trent, England, erzeugt köstliche, subtile Fruchtaromen wie Apfel, Kleehonig und Birne;mittel;69 - 75%
+White Labs WLP028 Edinburgh Scottish Ale;OG;flüssig;40ml;20;18 - 21°C;erzeugt komplexe, geschmackreiche Ales nach schottischer Art, Hopfencharakter wird durch diesen Stamm nicht unterdrückt, wie dies bei der WLP002 der Fall ist;mittel;70 - 75%
+White Labs WLP029 German Ale/Kölsch;OG;flüssig;40ml;20;18 - 21°C;akzentuiert Hopfenaromen, geringe Schwefelproduktion wird während der Lagerung abgebaut und hinterlässt ein sehr sauberes Ale in der Art eines Lagerbiers;mittel;72 - 78%
+White Labs WLP036 Düsseldorfer Alt;OG;flüssig;40ml;20;18 - 21°C;traditionelle Alt-Hefe aus Düsseldorf, erzeugt reine, leicht süßliche Altbiere, hebt den Hopfengeschmack nicht so hervor wie die WLP029;mittel;65 - 72%
+White Labs WLP037 Yorkshire Square Ale;OG;flüssig;40ml;20;18 - 21°C;erzeugt ein Bier dass Malzig, aber gut ausgewogen ist, Geschmacksnoten sind toastartig mit malzigen Estern;hoch;68 - 72%
+White Labs WLP039 East Midlands Ale;OG;flüssig;40ml;20;19 - 21°C;englische Ale-Hefe mit einem sehr trockenen Abgang, mittlere bis geringe Fruchtigkeit und Fuselalkohol-Produktion;mittel;73 - 82%
+White Labs WLP041 Pacific Ale;OG;flüssig;40ml;20;18 - 20°C;beliebte Ale-Hefe von der nordwestlichen Pazifikküste, klärt gut und hinterlässt ein malziges Profil, Fruchtiger als die WLP002 English Ale Hefe;hoch;75 - 70%
+White Labs WLP051 California Ale V;OG;flüssig;40ml;20;19 - 21°C;sus Nordkalifornien, fruchtiger als WLP001 und flockt etwas besser aus, der Vergärungsgrad ist geringer, was für mehr Vollmundigkeit als bei WLP001 sorgt;mittel;70 - 75%
+White Labs WLP090 San Diego Super;OG;flüssig;40ml;20;18 - 20°C;Stamm, der sehr rein, sehr schnell vergärt, gerige Esterproduktion führt zu gut ausbalancierten, neutralen Geschmack und Aromaprofil;mittel;76 - 83%
+White Labs WLP099 Super high Gravity Ale;OG;flüssig;40ml;20;18 - 21°C;aus England, vergärt bis zu 25 Vol.%, erzeugt Ersteraromen ,welche mit steigender Stammwürze zunehmen, Malzaromen dominieren bei geringeren Stammwürzen;mittel;>80%
+White Labs WLP300 Hefeweizen Ale;OG;flüssig;40ml;20;20 - 22°C;erzeugt Bananen- und Nelkengeruch und hinterlässt die gewünschte Trübe, wie bei traditionellen deutschen Weizenbieren;niedrig;68 - 72%
+White Labs WLP320 American Hefeweizen Ale;OG;flüssig;40ml;20;18 - 20°C;zur Herstellung Amerikanische Hefeweizen im Oregon-Stil, nur eine sehr geringe Menge der Bananen- und Nelken-Noten, erzeugt etwas Schwefel, sonst rein vergärende Hefe;niedrig;70 - 75%
+White Labs WLP351 Bavarian Weizen;OG;flüssig;40ml;20;19 - 21°C;produziert ein klassisches deutsches Weizenbier mit mäßig hohen, würzigen, an Nelke erinnernden Phenolnoten;niedrig;73 - 77%
+White Labs WLP380 Hefeweizen IV Ale;OG;flüssig;40ml;20;19 - 21°C;reichlich nelken und phenolisches Aroma, weniger Banane, erfrischende Zitrus-und Aprokosen Noten, frisch im Geschmack, Schwefelproduktion höher als WLP300;niedrig;66 - 70%
+White Labs WLP400 Belgian Wit Ale;OG;flüssig;40ml;20;19 - 23°C;etwas phenolisch und herb, diese ist die ursprüngliche Hefe zur Erzeugung von belgischem Wit;mittel;74 - 78%
+White Labs WLP410 Belgian Wit II Ale;OG;flüssig;40ml;20;19 - 23°C;weniger phenolisch, aber würziger als WLP400, hinterlässt etwas mehr Süße, und Ausflockung höher als bei WLP400;mittel;70 - 75%
+White Labs WLP800 Pilsner Lager;UG;flüssig;40ml;20;10 - 13°C;Klassischer Pilsener Stamm aus der ersten Pilsener Brauerei der tschechischen Republik, ziemlich trocken mit malzigem Abgang, für europäischer Pilsener Biere;mittel;72 - 77%
+White Labs WLP802 Czech Budejovice Lager;UG;flüssig;40ml;20;10 - 13°C;Pilsener Lager Hefe aus der südlichen tschechischen Republik, erzeugt trockene und frische Lagerbiere mit geringer Diacetylproduktion;mittel;75 - 80%
+White Labs WLP810 San Francisco Lager;UG;flüssig;40ml;20;14 - 18°C;"für Biere im ""California Common"" Stil, ein einzigartiger Stamm der, bei bis zu 18°C gärt und dabei Lagerbier-Eigenschaften erhält, auch bis 10°C für Märzen und Pilsner";hoch;65 - 70%
+White Labs WLP815 Belgian Lager;UG;flüssig;40ml;20;10 - 12°C;Stamm aus einer sehr alten Brauerei in West Belgien.Geschmacksprofil rein und frisch, geringe Schwefelproduktion.;mittel;72 - 78%
+White Labs WLP820 Octoberfest/Märzen Lager;UG;flüssig;40ml;20;11 - 14°C;produziert sehr malzigen, Bock-artigen Stil, Abhgang ist nicht so trocken wie bei WLP830. Hefe ist beim Starten viel langsamer als WLP830.;mittel;65 - 73%
+White Labs WLP830 German Lager;UG;flüssig;40ml;20;10 - 13°C;meistbenutzte Lagerhefe der Welt, sehr malzig und rein;mittel;74 - 79%
+White Labs WLP833 German Bock Lager;UG;flüssig;40ml;20;9 - 13°C;sehr ausgewogen zwischen Malz- und Hopfencharakter;mittel;70 - 76%
+White Labs WLP835 German Lager X;UG;flüssig;40ml;20;10 - 12°C;Hefe aus einer berühmten bayerischen Kloster, entwickelt eine cremiges, malziges Bier Profil mit niedrigem Schwefelgehalt und wenig Estern.;mittel;70 - 76%
+White Labs WLP838 Southern German Lager;UG;flüssig;40ml;20;10 - 13°C;malziger Abgang und ausgewogenes Aroma, vergärt stark, erzeugt etwas Schwefel und wenig Diacety.;mittel;68 - 76%
+White Labs WLP840 American Lager;UG;flüssig;40ml;20;10 - 13°C;zur Herstellung amerikanischer Lagerbiere, trocken und sauber mit sehr wenig Apfel-Fruchtigkeit, Schwefel- und Diacetyl-Produktion ist minimal.;mittel;75 - 80%
+White Labs WLP860 Munich Helles;UG;flüssig;40ml;20;9 - 11°C;für malziges, ausbalanciertes, traditionelles Mücher Lager Bier, fermentiert sehr gut;mittel;68 - 72%
+White Labs WLP885 Zurich Lager;UG;flüssig;40ml;20;10 - 13°C;Hefe für Lager schweizer Art, minimale Schwefel- und Diacetyl-Produktion;mittel;70 - 80%
+White Labs WLP920 Old Bavarian Lager;UG;flüssig;40ml;20;10 - 13°C;aus Süddeutschland, hat einen malzigen Abgang mit etwas Esterprofil;mittel;66 - 73%
+White Labs WLP940 Mexican Lager Yeast;UG;flüssig;40ml;20;10 - 13°C;aus Mexico City, produziert klares Lagerbier, mit frischem Abgang;mittel;70 - 78%
+Wyeast #1007 German Ale;OG;flüssig;125ml;20;13 - 20°C;herb und frisch -  komplexen, aber milden Geschmack, sehr stabile Krone;niedrig;73 - 77%
+Wyeast #1010 American Wheat;OG;flüssig;125ml;20;14 - 23°C;typisch obergärige Hefe, trockene Vergärung, leicht säuerliche und frische Biere, wenig Ester;niedrig;74 - 78%
+Wyeast #1028 London Ale;OG;flüssig;125ml;20;15 - 22°C;komplexe Biere mit einem trockenen Abgang, mineralisches Profil, frisch, mit leichter Fruchtbetonung;mittel;73 - 77%
+Wyeast #1056 American Ale;OG;flüssig;125ml;20;15 - 22°C;sehr sauberes, klarse Aroma, wenig Fruchtaroma, geringe Esterbildung, dezentes Zitrusaroma bei kalter Gärung;niedig;73 - 77%
+Wyeast #1084 Irish Ale;OG;flüssig;125ml;20;16 - 22°C;vergärt Würzen mit hohem Röstmalzanteil gut, kalte Gärung: trocken, gradlinig-frisch, warme Gärung: fruchtbetonte und komplexe Biere;niedrig;71 - 75%
+Wyeast #1098 British Ale;OG;flüssig;125ml;20;18 - 22°C;Bier mit klaren, neutralen Abgang, Malz- und Hopfennoten dominieren, trocken und gradlinig-frisch, etwas säuerlich und fruchtbetont;mittel;73 - 75%
+Wyeast #1099 Whitbread Ale;OG;flüssig;125ml;20;18 - 24°C;"tendentiell malziges und etwas fruchtbetontes Gärungprofil; nicht so säuerlich und trocken wie Hefe 1098";hoch;68 - 72%
+Wyeast #1187 Ringwood Ale;OG;flüssig;125ml;20;18 - 23°C;eindeutiger Fruchtester, malziges kompliziertes Profil, Vollständige Diacetyl-Rast wird nach Gärung empfohlen;hoch;68 - 72%
+Wyeast #1214 Belgian Ale;OG;flüssig;125ml;20;14 - 24°C;obergärige Hefe nach belgischer Abbay-Art, speziell anwendbar für Würzen mit hohem spez. Gewicht, hohe Esterbildung, sehr komplex;mittel;72 - 76%
+Wyeast #1272 All American Ale;OG;flüssig;125ml;20;15 - 22°C; etwas nußartig, weich, sauber, etwas säuerlicher Abgang, bei warmer Gärung betonter Hopfencharakter mit intensiver Fruchtbetonung;hoch;72 - 76%
+Wyeast #1275 Thames Valley Ale;OG;flüssig;125ml;20;16 - 22°C;für klassische britische,  bittere Biere, komplexes Aromaprofil, sauberer, leicht malziger Charakter, mäßig fruchtig, wenig Ester;mittel;72 - 76%
+Wyeast #1318 London Ale III;OG;flüssig;125ml;20;18 - 23°C;ausgeprägtes Malz- und Hopfenprofil, typische obergärige Hefe, fruchtig, angenehm weich und ausgeglichen, Restsüße;hoch;71 - 75%
+Wyeast #1332 Northwest Ale;OG;flüssig;125ml;20;18 - 24°C;malzig und leicht fruchtbetonte, gewisse Komplexität;hoch;67 - 71%
+Wyeast #1335 British Ale II;OG;flüssig;125ml;20;17 - 24°C;malziger Charakter, frischer Abgang, sauber und annährend trocken;hoch;73 - 76%
+Wyeast #1338 European Ale;OG;flüssig;125ml;20;16 - 22°C;für körperreiche, komplexe Biere, sehr malziger Abgang;hoch;67 - 71%
+Wyeast #1388 Belgian Strong Ale;OG;flüssig;125ml;20;18 - 24°C;solides Aromaprofil, Fruchtbetonung am Gaumen, trockener und frischer Abgang;niedrig;73 - 77%
+Wyeast #1450 Dennys Favorite 50;OG;flüssig;125ml;20;18 - 22°C;betonte Malz- und Hopfenaromen, zuverlässiges Gärverhalten von sogar 10 bis >20°C, schnelle Klärung und Reifung bei hoher Stammwürze;;
+Wyeast #1728 Scottish Ale;OG;flüssig;125ml;20;13 - 24°C;ideal für Ales nach schottischer Art und vielen obergärigen Bieren mit hohem spez. Gewicht, Esterbildung möglich;hoch;69 - 73%
+Wyeast #1762 Belgian Abbey Ale II;OG;flüssig;125ml;20;18 - 24°C;besonders geeignet für Würze mit hohem spez. Gewicht, sehr gute Ethanolproduktion, etwas fruchtbetont, trockenem Abgang, wenig Ester;mittel;73 - 77%
+Wyeast #1968 London ESB;OG;flüssig;125ml;20;18 - 22°C;deutlich malzige Biere, tendentiell sehr fruchtig, Diacetylrast empfohlen;hoch;67 - 71%
+Wyeast #2000 Budvar;UG;flüssig;125ml;20;9 - 13°C;leicht fruchtiges Malzaroma, reiches Malzprofil, malziger, trockener Abgang,  ausgewogen und erfrischend, Hopfencharakter im Nachtrunk;hoch;71 - 75%
+Wyeast #2001 Urquel;UG;flüssig;125ml;20;9 - 14°C;mildes Fruchtaroma mit blumigem Geschmack, sehr trocken und klar, vollmundig mit sanftem, ausgewogenem Malzcharakter, neutraler Abgang;hoch;72 - 76%
+Wyeast #2007 Pilsen Lager;UG;flüssig;125ml;20;9 - 13°C;glatt und malzig am Gaumen, vergärt trocken und gradlinig-frisch;mittel;71 - 75%
+Wyeast #2035 American Lager;UG;flüssig;125ml;20;9 - 14°C;Ergebnis üppig, kompliziert und aromatisch, für vielfältige geschmackliche Eigenschaften;mittel;73 - 77%
+Wyeast #2042 Danish Lager;UG;flüssig;125ml;20;8 - 13°C;vollmundige, an Dortmunder-Typ angelehnte Vergärung, trocken und gradlinig-frisch, weiches Profil betont Hopfeneigenschaften;niedrig;73 - 77%
+Wyeast #2112 California Lager;OG;flüssig;125ml;20;14 - 20°C;typisch untergärige Eigenschaften bei Temperaturen bis zu 18°C, für malzige und besonders blanke Biere;hoch;67 - 71%
+Wyeast #2124 Bohemian Lager;UG;flüssig;125ml;20;9 - 14°C;ausgeprägt malziges Aroma, etwas Esterbildung, gradlinig-frischer Abgang, gut ausbalanciertes Profil, Diacetylrast empfohlen;mittel;69 - 73%
+Wyeast #2206 Bavarian Lager;UG;flüssig;125ml;20;8 - 14°C;für ausgeprägt vollmundige und malzigen Biere, gut geeignet für die Sorten Bock und Doppelbock;mittel;73 - 77%
+Wyeast #2278 Czech Pils;UG;flüssig;125ml;20;10 - 14°C;für trockenen, malzigen Abgang, speziell geeignet für Pilsner und alle malzbetonten Biere, entstehender Schwefel verflüchtigt sich bei Lagerung;hoch;70 - 74%
+Wyeast #2308 Munich Lager;UG;flüssig;125ml;20;9 - 13°C;geeignet für besonders hochwertige untergärige Biere, sehr mild, gut ausbalanciertes und vollmundiges Ergebnis. Diacetylrast empfohlen;mittel;73 - 77%
+Wyeast #2565 Kölsch;OG;flüssig;125ml;20;13 - 21°C;Kölsch, Fruchtbiere, helle pseudo-untergärige Biere,  leicht fruchtbetonte, weinartige Eigenschaften. Fruchtbetonung steigt mit erhöhter Temp.;niedrig;73 - 77%
+Wyeast #2633 Octoberfest Lager Blend;UG;flüssig;125ml;20;9 - 13°C;Mischung aus Lager-Stämmen, reiche, malzig, komplex und vollmundiges Bier, viel Malzcharakter und Mundgefühl;mittel;73 - 77%
+Wyeast #3056 Bavarian Wheat Blend;OG;flüssig;125ml;20;18 - 23°C;Mischung aus verschiedenen obergärigen und Weizenhefestämmen für die Herstellung von esterigen und phenolischen Weizenbieren;mittel;73 - 77%
+Wyeast #3068 Weihenstephan Wheat;OG;flüssig;125ml;20;18 - 24°C;Bananenester, Phenole und Nelkenaroma, säuerlicher und erfrischenden Abgang, Esterbildung wird erheblich durch Würzebelüftung beeinflußt, Füllgrad Gärgefäßes max. 66%;niedrig;73 - 77%
+Wyeast #3278 Lambic Blend;OG;flüssig;125ml;20;17 - 24°C;enthält Auswahl Saccharomyces- und Nicht-Saccharomyces-Stämmen, Stämme für belgisches Weizenbier, Sherryhefe, 2 Brettanomyces-Hefen, Milchsäurebakterien;mittel;65 - 75%
+Wyeast #3333 German Wheat;OG;flüssig;125ml;20;17 - 24°C;für eine Weizenhefe eher subtiles Aromaprofil mit recht charakteristischer säuerlichen Frische, fruchtbetont, Sherry-artig am Gaumen;hoch;70 - 76%
+Wyeast #3463 Forbidden Fruit;OG;flüssig;125ml;20;17 - 24°C;von belgischen Weizenbieren (wit) bis hin zum Grand Cru-Bier, phenolisches Profil mit verhaltener Fruchtbetonung. Ausgeglichene Esterbildung.;niedrig;73 - 77%
+Wyeast #3522 Belgian Ardennes;OG;flüssig;125ml;20;18 -29°C;gesteigerte Phenolbildung bei höheren Gärtemperaturen, angenehme Fruchtbetonung und ein komplexer würziger Charakter;hoch;72 - 76%
+Wyeast #3638 Bavarian Wheat;OG;flüssig;125ml;20;18 - 24°C;umfangreicher geschmacklicher Aromacharakter, Esterbildungen Banane, Kaugummi mit Lichi, Apfel/Pflaume und Nelkenaroma;niedrig;70 - 76%
+Wyeast #3711 French Saison;OG;flüssig;125ml;20;18 - 25°C;sehr aromatisch (esterig), pfeffrig, würzig und zitronig, hinterlässt ein unerwartetes seidiges und reiches Mundgefühl;mittel;77 - 83%
+Wyeast #3724 Belgian Saison;OG;flüssig;125ml;20;21 - 29°C;"würzige, komplexe, aromatische Substanzen, einschließlich ""Kaugummiaroma"", säuerlich, rocken am Gaumen, milde Fruchtigkeit, Abgang frisch";niedrig;76 - 80%
+Wyeast #3787 Trappist High Gravity;OG;flüssig;125ml;20;18 - 25°C;Intensiver, esteriger und phenolischem Charakter, komplexe Fruchtbetonung;mittel;75 - 80%
+Wyeast #3942 Belgian Wheat;OG;flüssig;125ml;20;18 - 23°C;normale Esterbildung, niedrige Phenolbildung, Apfel-, Kaugummi-und Pflaumenaroma und mit einem trockenen und fruchtbetonten Abgang;mittel;72 - 76%
+Wyeast #3944 Belgian Witbier;OG;flüssig;125ml;20;16 - 24°C;kompliziertes Aromaprofil, phenolischer würziger Charakter, niedrige Esterbildung, Geschmack gemalztes und ungemalztes Weizen/Hafer wird unterstützt;mittel;72 - 76%
+Zymoferm Z001;UG;flüssig;40ml;20;8 - 12°C;deutsche Allround-Bierhefe (Bruchhefe), nicht temperaturempfindlich, geringe Bildung von Gärungsnebenprodukten;hoch;82 - 85%
+Zymoferm Z002;UG;flüssig;40ml;20;8 - 12°C;Staubhefe, zur Erzielung eines hohen Ausstoßvergärungsgrades (mit Feiner Hefetrübung) für hefetrübe Biere jeglicher Art (z.B. Zwickel);mittel;80 - 86%
+Zymoferm Z003;UG;flüssig;40ml;20;8 - 12°C;deutsche Allround-Bierhefe (Bruchhefe), nicht temperaturempfindlich, hohe Hefevermehrung, auch für Druckgärung geeignet, geringe Diacetylbildung, entspricht W34/70;hoch;82 - 85%
+Zymoferm Z004;UG;flüssig;40ml;20;8 - 12°C;Bruchhefe, feinste Esterbildung, ergibt weiche, vollmundige Biere besonders für Druckgärung geeignet, sehr gute SO²-Bildung, entspricht „Wellhoener Hefe“;niedrig;78 - 82%
+Zymoferm Z005;UG;flüssig;40ml;20;8 - 12°C;Bruchhefe, feinste Esterbildung , gutes Aroma, ergibt angenehme, weiche, vollmundige Biere entspricht „R 42 (VLB)“;hoch;80 - 84%
+Zymoferm Z006;UG;flüssig;40ml;20;8 - 12°C;Bruchhefe, (Typ „Pilsener Urquell“), mildfruchtiges, blumiges Aroma, sehr gut geeignet für hopfenbetonte Biere entspricht „Pilsener Urquell-Stamm“;mittel;80 - 84%
+Zymoferm Z007;UG;flüssig;40ml;20;8 - 10°C;Bruchhefe, geignet für malzbetonte Biere, sehr gute Esterbildung, vollmundiger Charakter, für helle und dunkle Biere;mittel;75 - 80%
+Zymoferm Z008;UG;flüssig;40ml;20;8 - 10°C;Bruchhefe (Fränkischer Typ), sehr zügige Vergärung, sehr guter Diacetylabbau, ergibt sehr bekömmliche und sehr rezente Biere;hoch;82 - 86%
+Zymoferm Z009;UG;flüssig;40ml;20;8 - 12°C;Spezial-Bruchhefe zur Herstellung alkoholarmer Biere, feines Aroma;mittel;5 - 15%
+Zymoferm Z010;UG;flüssig;40ml;20;8 - 12°C;Bruchhefe, deutsche Bockbier-Hefe, exzellentes Malzprofil;mittel;78 - 83%
+Zymoferm Z011;UG;flüssig;40ml;20;10 - 13°C;Bruchhefe (Typ „Altbayerisches Lagerbier“), malziger Geschmack, leichtes Ester-Profil, Vergärungsgrad bei hellen Würzen 78 - 83 %;mittel;66 - 73%
+Zymoferm Z012;UG;flüssig;40ml;20;10 - 13°C;Bruchhefe (Typ „Tschechisches Budweiser“), geringe Diacetylbildung, ergibt trockene, klare und rezente Lager-Biere;mittel;75 - 80%
+Zymoferm Z013;UG;flüssig;40ml;20;8 - 12°C;Bruchhefe (Typ „Breslauer Brauner Schöps“), guter Esterbildung, vollmundiger Charakter;mittel;76 - 80%
+Zymoferm Z031;OG;flüssig;40ml;20;18 - 20°C;English Ale-Hefe, leicht fruchtig;niedrig;80 - 84%
+Zymoferm Z032;OG;flüssig;40ml;20;18 - 20°C;Kölsch-Hefe, mild-fruchtiges Aroma, geringe Esterbildung;niedrig;72 - 78%
+Zymoferm Z033;OG;flüssig;40ml;20;18 - 22°C;Hefe-Typ: Weihenstephan Weisse (W68), „Allround-Weizenbier-Hefe I“ (W68), gute Aromabildung, sehr gute Reduzierung des Diacetyls;niedrig;80 - 84%
+Zymoferm Z034;OG;flüssig;40ml;20;18 - 22°C;Hefe-Typ: „Ayinger Weisse“, „Allround-Weizenbier-Hefe II“, feine, obergärige Aromabildung (Bananenaroma), feine Hefetrübung;niedrig;80 - 84%
+Zymoferm Z035;OG;flüssig;40ml;20;20 - 24°C;Belgische Trappisten-Hefe, feine, obergärige Aromabildung, fruchtig nach Pflaumen/Zwetschgen;niedrig;78 - 84%
+Zymoferm Z036;OG;flüssig;40ml;20;19 - 23°C;Belgische Weizenbier/Witbeer-Hefe, charakteristisches „Pflaumen-Apfel-Aroma“, obergärig-estrig;niedrig;78 - 82%
+Zymoferm Z037;OG;flüssig;40ml;20;20 - 24°C;typische Irish-Stout-Hefe, extrem gute Vergärung in Röst- u. Farbmalzwürzen, leicht fruchtiges Aroma, gute Esterbildung;hoch;75 - 80%
+Zymoferm Z038;OG;flüssig;40ml;20;18 - 24°C;typische Altbier-Hefe, fruchtiges Aroma, gute Esterbildung;niedrig;80 - 84%
+Zymoferm Z039;OG;flüssig;40ml;20;18 - 22°C;typische Belgisches Klosterbier (Abbey Ale), leicht fruchtiges Aroma mit Pflaumennote, gut geeignet für hochprozentige Bier;mittel;75 - 82%
+Zymoferm Z040;OG;flüssig;40ml;20;18 - 22°C;typische American Ale-Hefe, fein aromatisch, saubere Geschmacksnote;niedrig;73 - 80%
+Zymoferm Z042;OG;flüssig;40ml;20;19 - 22°C;obergärige Ale-Hefe, Typ „London-Ale“, eichig-estrig und trocken-malzig, auch für hochgehopfte Ales;mittel;85 - 80%
+Zymoferm Z043;OG;flüssig;40ml;20;18 - 22°C;Weißbier-Hefe, Typ “Breslauer Weißer Schöps”, Apfel-Pflaumen-Beeren-Aroma, Ester-Note;niedrig;76 - 80%
+Zymoferm Z044;OG;flüssig;40ml;20;19 - 23°C;Weißbier-Hefe, Typ “Breslauer Schwarzer Schöps”, fruchtaromatisch mit leichter Pflaumennote;mittel;76 - 83%
+Zymoferm Z045;OG;flüssig;40ml;20;19 - 22°C;hochvergärende Spezial-Hefe, vergärt auch Würzen über 25 % Stammwürze, produziert estrigen Charakter;mittel;80%

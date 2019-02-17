@@ -1,0 +1,1166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabBewertung</class>
+ <widget class="QWidget" name="TabBewertung">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1045</width>
+    <height>660</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaBewertungen">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_6">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>162</width>
+            <height>622</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_124">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" name="layoutBewertungen">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_13">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnNeueBewertung">
+         <property name="text">
+          <string>Neue Bewertung</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="wdgBewertung" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_96">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_160">
+         <item>
+          <widget class="QLabel" name="label_bew_ID">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>0</width>
+             <height>16777215</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Bewertungsdatum</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DateEdit" name="tbDatum">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnDatumHeute">
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Heute</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="WdgRating" name="wdgRating" native="true"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Woche</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblWoche"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="tbBemerkung">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Farbe, Klarheit</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_99">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_152">
+             <item>
+              <widget class="QGroupBox" name="groupBox_34">
+               <property name="title">
+                <string>Farbe</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_98">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_4">
+                  <property name="text">
+                   <string>hellgelb, lichthell</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_5">
+                  <property name="text">
+                   <string>gelb</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_6">
+                  <property name="text">
+                   <string>golden</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_7">
+                  <property name="text">
+                   <string>bernstein</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_8">
+                  <property name="text">
+                   <string>kupferrot, bernsteinfarben</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_9">
+                  <property name="text">
+                   <string>braun bis tiefbraun</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_10">
+                  <property name="text">
+                   <string>schwarz, tiefdunkel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_31">
+               <property name="title">
+                <string>Klarheit</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_0">
+                  <property name="text">
+                   <string>satt, intensiv</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_1">
+                  <property name="text">
+                   <string>glänzend</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_2">
+                  <property name="text">
+                   <string>matt, blass</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="rbFarbe_3">
+                  <property name="text">
+                   <string>gräulich, fahl</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_10">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbFarbe">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_4">
+          <attribute name="title">
+           <string>Schaum</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_105">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_154">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_104">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item>
+                <widget class="QGroupBox" name="groupBox_35">
+                 <layout class="QVBoxLayout" name="verticalLayout_100">
+                  <property name="spacing">
+                   <number>4</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_0">
+                    <property name="text">
+                     <string>feinporig, fest</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_1">
+                    <property name="text">
+                     <string>grobporig, schwach</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_36">
+                 <layout class="QVBoxLayout" name="verticalLayout_101">
+                  <property name="spacing">
+                   <number>4</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_2">
+                    <property name="text">
+                     <string>gut haftend am Glas</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_3">
+                    <property name="text">
+                     <string>schlecht haftend</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <item>
+                <widget class="QGroupBox" name="groupBox_38">
+                 <layout class="QVBoxLayout" name="verticalLayout_103">
+                  <property name="spacing">
+                   <number>4</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_4">
+                    <property name="text">
+                     <string>gute Haltbarkeit</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_5">
+                    <property name="text">
+                     <string>mäßige Haltbarkeit</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_6">
+                    <property name="text">
+                     <string>keine Haltbarkeit</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <widget class="QGroupBox" name="groupBox_37">
+                 <layout class="QVBoxLayout" name="verticalLayout_102">
+                  <property name="spacing">
+                   <number>4</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_7">
+                    <property name="text">
+                     <string>geringes Volumen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_8">
+                    <property name="text">
+                     <string>kräftiges Volumen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_9">
+                    <property name="text">
+                     <string>sehr voluminös, mächtig</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="rbSchaum_10">
+                    <property name="text">
+                     <string>überschäumend</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbSchaum">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_5">
+          <attribute name="title">
+           <string>Geruch</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_109">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="rbGeruch_0">
+               <property name="text">
+                <string>rein, abgerundet</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="rbGeruch_2">
+               <property name="text">
+                <string>wohlriechend</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QCheckBox" name="rbGeruch_3">
+               <property name="text">
+                <string>unangenehm, unausgewogen</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="rbGeruch_1">
+               <property name="text">
+                <string>frisch</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QCheckBox" name="rbGeruch_11">
+               <property name="text">
+                <string>Geruchsfehler</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QCheckBox" name="rbGeruch_10">
+               <property name="text">
+                <string>säuerlich</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QCheckBox" name="rbGeruch_9">
+               <property name="text">
+                <string>gewürzig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QCheckBox" name="rbGeruch_8">
+               <property name="text">
+                <string>fruchtig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="rbGeruch_4">
+               <property name="text">
+                <string>hopfenaromatisch, hopfig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QCheckBox" name="rbGeruch_5">
+               <property name="text">
+                <string>malzaromatisch, malzig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QCheckBox" name="rbGeruch_6">
+               <property name="text">
+                <string>süßlich, nach Würze</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QCheckBox" name="rbGeruch_7">
+               <property name="text">
+                <string>hefig</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbGeruch">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_6">
+          <attribute name="title">
+           <string>Geschmack</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_113">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="2" column="1">
+              <widget class="QCheckBox" name="rbGeschmack_7">
+               <property name="text">
+                <string>süßlich, klebrig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="rbGeschmack_1">
+               <property name="text">
+                <string>ausgewogen, rund</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QCheckBox" name="rbGeschmack_8">
+               <property name="text">
+                <string>säuerlich</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QCheckBox" name="rbGeschmack_9">
+               <property name="text">
+                <string>gewürzig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="rbGeschmack_2">
+               <property name="text">
+                <string>gehaltvoll</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="rbGeschmack_5">
+               <property name="text">
+                <string>hopfenaromatisch, hopfig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QCheckBox" name="rbGeschmack_3">
+               <property name="text">
+                <string>unausgewogen, kantig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QCheckBox" name="rbGeschmack_6">
+               <property name="text">
+                <string>malzaromatisch, malzig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="rbGeschmack_0">
+               <property name="text">
+                <string>rein</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QCheckBox" name="rbGeschmack_4">
+               <property name="text">
+                <string>unreif, unrein</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QCheckBox" name="rbGeschmack_10">
+               <property name="text">
+                <string>fruchtig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QCheckBox" name="rbGeschmack_11">
+               <property name="text">
+                <string>hefig</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QCheckBox" name="rbGeschmack_12">
+               <property name="text">
+                <string>Geschmacksfehler</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbGeschmack">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_7">
+          <attribute name="title">
+           <string>Antrunk</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_95">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_42">
+             <property name="title">
+              <string>Rezenz, Frischeeindruck</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="3" column="0">
+               <widget class="QRadioButton" name="rbAntrunk_3">
+                <property name="text">
+                 <string>prickelnd</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QRadioButton" name="rbAntrunk_1">
+                <property name="text">
+                 <string>rezent, fein perlend</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QRadioButton" name="rbAntrunk_0">
+                <property name="text">
+                 <string>angenehm rezent</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QRadioButton" name="rbAntrunk_2">
+                <property name="text">
+                 <string>gut eingebunden</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="rbAntrunk_4">
+                <property name="text">
+                 <string>stark prickelnd, aufdringlich</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QRadioButton" name="rbAntrunk_5">
+                <property name="text">
+                 <string>wenig rezent</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QRadioButton" name="rbAntrunk_6">
+                <property name="text">
+                 <string>schal</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QRadioButton" name="rbAntrunk_7">
+                <property name="text">
+                 <string>sehr schal</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbAntrunk">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_8">
+          <attribute name="title">
+           <string>Haupttrunk</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_116">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_43">
+             <property name="title">
+              <string>Vollmundigkeit</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_115">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbHaupttrunk_0">
+                <property name="text">
+                 <string>wässrig, leer, dünn</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbHaupttrunk_1">
+                <property name="text">
+                 <string>etwas leer</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbHaupttrunk_2">
+                <property name="text">
+                 <string>schlank</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbHaupttrunk_3">
+                <property name="text">
+                 <string>vollmundig</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbHaupttrunk_4">
+                <property name="text">
+                 <string>mastig, breit</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbHaupttrunk">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_9">
+          <attribute name="title">
+           <string>Nachtrunk</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_119">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_44">
+             <property name="title">
+              <string>Bittere, Hopfenaroma</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="4" column="0">
+               <widget class="QRadioButton" name="rbNachtrunk_3">
+                <property name="text">
+                 <string>nachhängend</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QRadioButton" name="rbNachtrunk_6">
+                <property name="text">
+                 <string>sehr herb, kräftig betont</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QRadioButton" name="rbNachtrunk_7">
+                <property name="text">
+                 <string>nicht oder kaum wahrnehmbar</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="rbNachtrunk_5">
+                <property name="text">
+                 <string>wenig herb, unterentwickelt</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QRadioButton" name="rbNachtrunk_4">
+                <property name="text">
+                 <string>stark nachhängend</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QRadioButton" name="rbNachtrunk_1">
+                <property name="text">
+                 <string>angenehm, ausgewogen</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QRadioButton" name="rbNachtrunk_8">
+                <property name="text">
+                 <string>unangenehm</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QRadioButton" name="rbNachtrunk_2">
+                <property name="text">
+                 <string>nicht anhängend</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QRadioButton" name="rbNachtrunk_0">
+                <property name="text">
+                 <string>sehr fein</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbNachtrunk">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_10">
+          <attribute name="title">
+           <string>Gesamteindruck</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_121">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_45">
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="4" column="0">
+               <widget class="QRadioButton" name="rbGesamteindruck_3">
+                <property name="text">
+                 <string>überraschend, ungewöhnlich</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QRadioButton" name="rbGesamteindruck_5">
+                <property name="text">
+                 <string>unauffällig, gewöhnlich</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QRadioButton" name="rbGesamteindruck_6">
+                <property name="text">
+                 <string>einmal ist genug, langweilig</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="rbGesamteindruck_4">
+                <property name="text">
+                 <string>kunstvoll, kreativ, mutig</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QRadioButton" name="rbGesamteindruck_7">
+                <property name="text">
+                 <string>nicht trinkbar, problematisch</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QRadioButton" name="rbGesamteindruck_1">
+                <property name="text">
+                 <string>gutes, typisches Bier</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QRadioButton" name="rbGesamteindruck_2">
+                <property name="text">
+                 <string>interessant</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QRadioButton" name="rbGesamteindruck_0">
+                <property name="text">
+                 <string>toll, weiter trinken, macht Lust auf mehr</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="tbGesamteindruck">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WdgRating</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgrating.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>scrollAreaBewertungen</tabstop>
+  <tabstop>btnNeueBewertung</tabstop>
+  <tabstop>tbBemerkung</tabstop>
+  <tabstop>tbDatum</tabstop>
+  <tabstop>btnDatumHeute</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>rbFarbe_4</tabstop>
+  <tabstop>rbFarbe_5</tabstop>
+  <tabstop>rbFarbe_6</tabstop>
+  <tabstop>rbFarbe_7</tabstop>
+  <tabstop>rbFarbe_8</tabstop>
+  <tabstop>rbFarbe_9</tabstop>
+  <tabstop>rbFarbe_10</tabstop>
+  <tabstop>rbFarbe_0</tabstop>
+  <tabstop>rbFarbe_1</tabstop>
+  <tabstop>rbFarbe_2</tabstop>
+  <tabstop>rbFarbe_3</tabstop>
+  <tabstop>tbFarbe</tabstop>
+  <tabstop>rbSchaum_0</tabstop>
+  <tabstop>rbSchaum_1</tabstop>
+  <tabstop>rbSchaum_2</tabstop>
+  <tabstop>rbSchaum_3</tabstop>
+  <tabstop>rbSchaum_4</tabstop>
+  <tabstop>rbSchaum_5</tabstop>
+  <tabstop>rbSchaum_6</tabstop>
+  <tabstop>rbSchaum_7</tabstop>
+  <tabstop>rbSchaum_8</tabstop>
+  <tabstop>rbSchaum_9</tabstop>
+  <tabstop>rbSchaum_10</tabstop>
+  <tabstop>tbSchaum</tabstop>
+  <tabstop>rbGeruch_0</tabstop>
+  <tabstop>rbGeruch_1</tabstop>
+  <tabstop>rbGeruch_2</tabstop>
+  <tabstop>rbGeruch_3</tabstop>
+  <tabstop>tbGeruch</tabstop>
+  <tabstop>rbGeruch_4</tabstop>
+  <tabstop>rbGeruch_5</tabstop>
+  <tabstop>rbGeruch_6</tabstop>
+  <tabstop>rbGeruch_7</tabstop>
+  <tabstop>rbGeruch_8</tabstop>
+  <tabstop>rbGeruch_9</tabstop>
+  <tabstop>rbGeruch_10</tabstop>
+  <tabstop>rbGeruch_11</tabstop>
+  <tabstop>rbGeschmack_0</tabstop>
+  <tabstop>rbGeschmack_1</tabstop>
+  <tabstop>rbGeschmack_2</tabstop>
+  <tabstop>rbGeschmack_3</tabstop>
+  <tabstop>rbGeschmack_4</tabstop>
+  <tabstop>tbGeschmack</tabstop>
+  <tabstop>rbGeschmack_5</tabstop>
+  <tabstop>rbGeschmack_6</tabstop>
+  <tabstop>rbGeschmack_7</tabstop>
+  <tabstop>rbGeschmack_8</tabstop>
+  <tabstop>rbGeschmack_9</tabstop>
+  <tabstop>rbGeschmack_10</tabstop>
+  <tabstop>rbGeschmack_11</tabstop>
+  <tabstop>rbGeschmack_12</tabstop>
+  <tabstop>rbAntrunk_0</tabstop>
+  <tabstop>rbAntrunk_1</tabstop>
+  <tabstop>rbAntrunk_2</tabstop>
+  <tabstop>rbAntrunk_3</tabstop>
+  <tabstop>rbAntrunk_4</tabstop>
+  <tabstop>rbAntrunk_5</tabstop>
+  <tabstop>rbAntrunk_6</tabstop>
+  <tabstop>rbAntrunk_7</tabstop>
+  <tabstop>tbAntrunk</tabstop>
+  <tabstop>rbHaupttrunk_0</tabstop>
+  <tabstop>rbHaupttrunk_1</tabstop>
+  <tabstop>rbHaupttrunk_2</tabstop>
+  <tabstop>rbHaupttrunk_3</tabstop>
+  <tabstop>rbHaupttrunk_4</tabstop>
+  <tabstop>tbHaupttrunk</tabstop>
+  <tabstop>rbNachtrunk_0</tabstop>
+  <tabstop>rbNachtrunk_1</tabstop>
+  <tabstop>rbNachtrunk_2</tabstop>
+  <tabstop>rbNachtrunk_3</tabstop>
+  <tabstop>rbNachtrunk_4</tabstop>
+  <tabstop>rbNachtrunk_5</tabstop>
+  <tabstop>rbNachtrunk_6</tabstop>
+  <tabstop>rbNachtrunk_7</tabstop>
+  <tabstop>rbNachtrunk_8</tabstop>
+  <tabstop>tbNachtrunk</tabstop>
+  <tabstop>rbGesamteindruck_0</tabstop>
+  <tabstop>rbGesamteindruck_1</tabstop>
+  <tabstop>rbGesamteindruck_2</tabstop>
+  <tabstop>rbGesamteindruck_3</tabstop>
+  <tabstop>rbGesamteindruck_4</tabstop>
+  <tabstop>rbGesamteindruck_5</tabstop>
+  <tabstop>rbGesamteindruck_6</tabstop>
+  <tabstop>rbGesamteindruck_7</tabstop>
+  <tabstop>tbGesamteindruck</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

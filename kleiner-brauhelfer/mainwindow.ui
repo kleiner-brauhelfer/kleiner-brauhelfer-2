@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>4</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabMain">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tabSudAuswahl">
+       <attribute name="title">
+        <string>Sudauswahl</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabSudAuswahl" name="tabContentSudAuswahl" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabBrauUebersicht">
+       <attribute name="title">
+        <string>Brauübersicht</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabBrauUebersicht" name="tabContentBrauUebersicht" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabRezept">
+       <attribute name="title">
+        <string>Rezept</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabRezept" name="tabContentRezept" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabBraudaten">
+       <attribute name="title">
+        <string>Braudaten</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabBraudaten" name="tabContentBraudaten" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabAbfuelldaten">
+       <attribute name="title">
+        <string>Abfülldaten</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_13">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabAbfuellen" name="tabContentAbfuelldaten" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabGaerverlauf">
+       <attribute name="title">
+        <string>Gärverlauf</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_9">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabGaerverlauf" name="tabContentGaerverlauf" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabZusammenfassung">
+       <attribute name="title">
+        <string>Zusammenfassung</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabZusammenfassung" name="tabContentZusammenfasszung" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabEtikette">
+       <attribute name="title">
+        <string>Etikette</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabEtikette" name="tabContentEtikette" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabBewertung">
+       <attribute name="title">
+        <string>Bewertung</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_12">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabBewertung" name="tabContentBewertung" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabAusruestung">
+       <attribute name="title">
+        <string>Ausrüstung</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabAusruestung" name="tabContentAusruestung" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabRohstoffe">
+       <attribute name="title">
+        <string>Rohstoffe</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabRohstoffe" name="tabContentRohstoffe" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabDatenbank">
+       <attribute name="title">
+        <string>Datenbank</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="TabDatenbank" name="tabContentDatenbank" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Datenbank</string>
+    </property>
+    <addaction name="actionOeffnen"/>
+    <addaction name="separator"/>
+    <addaction name="actionSpeichern"/>
+    <addaction name="actionVerwerfen"/>
+    <addaction name="separator"/>
+    <addaction name="actionBeenden"/>
+   </widget>
+   <widget class="QMenu" name="menuAnsicht">
+    <property name="title">
+     <string>Ansicht</string>
+    </property>
+    <widget class="QMenu" name="menuFarbschema">
+     <property name="title">
+      <string>Farbschema</string>
+     </property>
+     <addaction name="actionThemeSystem"/>
+     <addaction name="actionThemeHell"/>
+     <addaction name="actionThemeDunkel"/>
+    </widget>
+    <widget class="QMenu" name="menuStil">
+     <property name="title">
+      <string>Stil</string>
+     </property>
+    </widget>
+    <addaction name="actionWiederherstellen"/>
+    <addaction name="separator"/>
+    <addaction name="menuFarbschema"/>
+    <addaction name="menuStil"/>
+    <addaction name="separator"/>
+    <addaction name="actionReiterDatenbank"/>
+   </widget>
+   <widget class="QMenu" name="menuHilfe">
+    <property name="title">
+     <string>Hilfe</string>
+    </property>
+    <addaction name="actionSpende"/>
+    <addaction name="actionUeber"/>
+   </widget>
+   <widget class="QMenu" name="menuSud">
+    <property name="title">
+     <string>Sud</string>
+    </property>
+    <addaction name="actionSudGebraut"/>
+    <addaction name="actionSudAbgefuellt"/>
+    <addaction name="actionSudVerbraucht"/>
+    <addaction name="actionWeitereZutaten"/>
+   </widget>
+   <widget class="QMenu" name="menuEinstellungen">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionBestaetigungBeenden"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSud"/>
+   <addaction name="menuAnsicht"/>
+   <addaction name="menuEinstellungen"/>
+   <addaction name="menuHilfe"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSpeichern">
+   <property name="text">
+    <string>Speichern</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionVerwerfen">
+   <property name="text">
+    <string>Änderungen verwerfen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionWiederherstellen">
+   <property name="text">
+    <string>Wiederherstellen</string>
+   </property>
+  </action>
+  <action name="actionReiterDatenbank">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Reiter &quot;Datenbank&quot;</string>
+   </property>
+  </action>
+  <action name="actionUeber">
+   <property name="text">
+    <string>Über</string>
+   </property>
+  </action>
+  <action name="actionSpende">
+   <property name="text">
+    <string>Spenden</string>
+   </property>
+  </action>
+  <action name="actionSudGebraut">
+   <property name="text">
+    <string>&quot;Sud gebraut&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionSudAbgefuellt">
+   <property name="text">
+    <string>&quot;Sud abgefüllt&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionSudVerbraucht">
+   <property name="text">
+    <string>&quot;Sud verbraucht&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionWeitereZutaten">
+   <property name="text">
+    <string>&quot;Weitere Zutaten&quot; Zugabe zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionBeenden">
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionOeffnen">
+   <property name="text">
+    <string>Öffnen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionThemeSystem">
+   <property name="text">
+    <string>System</string>
+   </property>
+  </action>
+  <action name="actionThemeHell">
+   <property name="text">
+    <string>Hell</string>
+   </property>
+  </action>
+  <action name="actionThemeDunkel">
+   <property name="text">
+    <string>Dunkel</string>
+   </property>
+  </action>
+  <action name="actionBestaetigungBeenden">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Bestätigung beim Beenden</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>TabRohstoffe</class>
+   <extends>QWidget</extends>
+   <header>tabrohstoffe.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabSudAuswahl</class>
+   <extends>QWidget</extends>
+   <header>tabsudauswahl.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabAusruestung</class>
+   <extends>QWidget</extends>
+   <header>tabausruestung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabRezept</class>
+   <extends>QWidget</extends>
+   <header>tabrezept.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabBrauUebersicht</class>
+   <extends>QWidget</extends>
+   <header>tabbrauuebersicht.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabBraudaten</class>
+   <extends>QWidget</extends>
+   <header>tabbraudaten.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabGaerverlauf</class>
+   <extends>QWidget</extends>
+   <header>tabgaerverlauf.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabZusammenfassung</class>
+   <extends>QWidget</extends>
+   <header>tabzusammenfassung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabEtikette</class>
+   <extends>QWidget</extends>
+   <header>tabetikette.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabBewertung</class>
+   <extends>QWidget</extends>
+   <header>tabbewertung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabDatenbank</class>
+   <extends>QWidget</extends>
+   <header>tabdatenbank.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabAbfuellen</class>
+   <extends>QWidget</extends>
+   <header>tababfuellen.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

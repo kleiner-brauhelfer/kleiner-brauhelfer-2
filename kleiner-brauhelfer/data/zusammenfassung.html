@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<!--
+http://mustache.github.io/mustache.5.html
+Tags:
+{{AppName}}
+{{AppVersion}}
+{{Style}}
+{{Sudname}}
+{{{Sudinfo1}}}
+{{{Sudinfo2}}}
+{{{Glas}}}
+{{{Glas-hell}}}
+{{{Glas-dunkel}}}
+{{{Malz}}}
+{{{Hopfen}}}
+{{{Wasser}}}
+{{{Hefe}}}
+{{{Honig}}}
+{{{Zucker}}}
+{{{Gewuerz}}}
+{{{Frucht}}}
+{{{Sonstiges}}}
+{{{Kommentar}}}
+{{{Rasten}}}
+{{RastenTitel}}}
+{{{Anhang}}}
+{{AnhangTitel}}}
+ -->
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{{Style}}">
+</head>
+
+<body>
+
+  <div style="width:90%;margin:0 auto;text-align:center;">
+
+    <div class="r" style="margin-bottom:10px;" align="center">
+      <p class="h1">{{Sudname}}</p>
+    </div>
+
+    <div class="rm" style="margin:0px;margin-bottom:5px;" align="center">
+      <table width="100%" cellspacing=0 border=0>
+        <tbody>
+          <tr>
+            <td valign="center" align="right">
+              <div style="width:140px;height:140px;">
+                {{{Glas}}}
+              </div>
+            </td>
+            <td valign="top">
+              {{{Sudinfo1}}}
+            </td>
+            <td valign="top">
+              {{{Sudinfo2}}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <table width="100%" border="0" cellspacing="3">
+      <tr>
+        <td valign="top" width="50%">
+          <div class="rm" style="margin:0px;margin-bottom:5px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/zutaten/getreide_300.png" width="300px" border=0>
+            <br>
+            {{{Malz}}}
+          </div>
+        </td>
+        <td valign="top">
+          <div class="rm" style="margin:0px;margin-bottom:5px;height:100%;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/zutaten/hopfen_100.png" width="100px" border=0>
+            <br>
+            {{{Hopfen}}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/zutaten/wasser_100x107.png" width="50px" border=0>
+            <br>
+            {{{Wasser}}}
+          </div>
+        </td>
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/zutaten/hefe_50.png" width="50px" border=0>
+            <br>
+            {{{Hefe}}}
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table width="100%" border="0" cellspacing="3">
+      <tr>
+        {{#Honig}}
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/ewz/ewz_typ_0_50.png" width="50px" border=0>
+            <br>
+            {{{Honig}}}
+          </div>
+        </td>
+        {{/Honig}}
+        {{#Zucker}}
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/ewz/ewz_typ_1_50.png" width="50px" border=0>
+            <br>
+            {{{Zucker}}}
+          </div>
+        </td>
+        {{/Zucker}}
+        {{#Gewuerz}}
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/ewz/ewz_typ_2_50.png" width="50px" border=0>
+            <br>
+            {{{Gewuerz}}}
+          </div>
+        </td>
+        {{/Gewuerz}}
+        {{#Frucht}}
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/ewz/ewz_typ_3_50.png" width="50px" border=0>
+            <br>
+            {{{Frucht}}}
+          </div>
+        </td>
+        {{/Frucht}}
+        {{#Sonstiges}}
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <img style="padding:0px;margin:0px;" src="qrc:/ewz/ewz_typ_4_50.png" width="50px" border=0>
+            <br>
+            {{{Sonstiges}}}
+          </div>
+        </td>
+        {{/Sonstiges}}
+      </tr>
+    </table>
+
+    {{#Kommentar}}
+    <table width="100%" border="0" cellspacing="3">
+      <tr>
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            {{{Kommentar}}}
+          </div>
+        </td>
+      </tr>
+    </table>
+    {{/Kommentar}}
+
+    {{#Rasten}}
+    <table width="100%" border="0" cellspacing="3">
+      <tr>
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <p class="h2">{{RastenTitel}}</p>
+            {{{Rasten}}}
+          </div>
+        </td>
+      </tr>
+    </table>
+    {{/Rasten}}
+
+    {{#Anhang}}
+    <table width="100%" border="0" cellspacing="3">
+      <tr>
+        <td valign="top">
+          <div class="rm" style="margin:0px;" align="center">
+            <p class="h2">{{AnhangTitel}}</p>
+            {{{Anhang}}}
+          </div>
+        </td>
+      </tr>
+    </table>
+    {{/Anhang}}
+
+    <div>
+      <p class="version">{{AppName}} v{{AppVersion}}</p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

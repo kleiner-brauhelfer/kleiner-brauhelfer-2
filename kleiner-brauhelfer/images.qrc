@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/star.svg</file>
+        <file>images/star_gr.svg</file>
+        <file>images/star_gr_dark.svg</file>
+        <file>images/close_button.svg</file>
+        <file>images/bier.svg</file>
+        <file>images/bier_dark.svg</file>
+        <file>images/io.svg</file>
+        <file>images/nio.svg</file>
+        <file>images/ewz_typ_0.svg</file>
+        <file>images/ewz_typ_1.svg</file>
+        <file>images/ewz_typ_2.svg</file>
+        <file>images/ewz_typ_3.svg</file>
+        <file>images/ewz_typ_4.svg</file>
+        <file>images/ewz_typ_100.svg</file>
+        <file>images/getreide.svg</file>
+        <file>images/hefe.svg</file>
+        <file>images/hopfen.svg</file>
+        <file>images/logo.svg</file>
+    </qresource>
+</RCC>

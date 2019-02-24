@@ -11,5 +11,6 @@
         <file>data/sudinfo.html</file>
         <file>data/WeitereZutaten.csv</file>
         <file>data/zusammenfassung.html</file>
+        <file>data/streifen_vorlage_farbig.svg</file>
     </qresource>
 </RCC>

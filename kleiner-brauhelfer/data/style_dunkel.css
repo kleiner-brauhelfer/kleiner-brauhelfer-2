@@ -1,101 +1,113 @@
 p {
-	color: #fff;
-	padding: 0px;
-	margin: 0px;
+  color: #fff;
+  padding: 0px;
+  margin: 0px;
 }
 
 .value {
-	color: #0055ff;
-	margin-left: 5px;
-	margin-right: 5px;
+  color: #0055ff;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .h1 {
-	color: #fff;
-	font-size: 12pt;
-	font-weight: bold;
+  color: #fff;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 .h2 {
-	color: #fff;
-	font-size: 11pt;
-	font-weight: bold;
-	margin-bottom: 5px;
+  color: #fff;
+  font-size: 11pt;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .version {
-	color: #999999;
-	font-size: 11pt;
-	margin-top: 5px;
+  color: #999999;
+  font-size: 11pt;
+  margin-top: 5px;
 }
 
 .kommentar {
-	color: #555555;
-	margin-bottom: 5px;
-	margin-left: 5px;
+  color: #555555;
+  margin-bottom: 5px;
+  margin-left: 5px;
 }
 
 .zugegeben {
-	color: #555555;
-	margin-bottom: 2px;
-	margin-left: 5px;
+  color: #555555;
+  margin-bottom: 2px;
+  margin-left: 5px;
 }
 
 .hinweis {
-	color: #d47209;
+  color: #d47209;
+}
+
+.glas {
+  content:url("qrc:/images/bier_dark.svg");
+}
+
+.star {
+  content:url("qrc:/images/star.svg");
+}
+
+.star_grey {
+  content:url("qrc:/images/star_gr_dark.svg");
 }
 
 a {
-	color: #0055ff;
+  color: #0055ff;
 }
 
 div.r {
-	border: 0px solid #444444;
-	border-radius: 10px;
-	padding: 5px;
-	background-color: #444444;
+  border: 0px solid #444444;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #444444;
 }
 
 div.rm {
-	border: 2px solid #444444;
-	border-radius: 10px;
-	padding: 5px;
-	background-color: #222222;
+  border: 2px solid #444444;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #222222;
 }
 
 div.rmh {
-	border: 2px solid #ff0000;
-	border-radius: 10px;
-	padding: 5px;
-	background-color: #222222;
+  border: 2px solid #ff0000;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #222222;
 }
 
 td {
-	padding: 2px;
-	margin: 0px;
+  padding: 2px;
+  margin: 0px;
 }
 
 td.r {
-	padding: 2px;
-	margin: 0px;
-	border-bottom-color: #aaaaaa;
-	border-bottom-style: solid;
-	border-width: 1px;
+  padding: 2px;
+  margin: 0px;
+  border-bottom-color: #aaaaaa;
+  border-bottom-style: solid;
+  border-width: 1px;
 }
 
 td.we {
-	background-color: #eba328;
+  background-color: #eba328;
 }
 
 tr {
-	padding: 0px;
-	margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 body {
-	font-family: Ubuntu, Arial;
-	font-size: 10pt;
-	font-style: normal;
-	background-color: #222222;
-	color: #fff;
+  font-family: Ubuntu, Arial;
+  font-size: 10pt;
+  font-style: normal;
+  background-color: #222222;
+  color: #fff;
 }

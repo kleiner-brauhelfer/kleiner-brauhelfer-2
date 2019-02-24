@@ -29,6 +29,7 @@ private slots:
     void filterChanged();
     void selectionChanged();
     void spalteAnzeigen(bool checked);
+    void updateTemplateTags();
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
     void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
     void on_rbAlle_clicked();
@@ -69,6 +70,7 @@ private:
     QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;
     HtmlHighLighter* mHtmlHightLighter;
+    QVariantMap mTemplateTags;
     QTemporaryFile mTempCssFile;
 };
 

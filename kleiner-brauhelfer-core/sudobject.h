@@ -113,6 +113,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, AnlageSudhausausbeute, toDouble())
     Q_PROPERTY_SUD_READONLY(double, RestalkalitaetFaktor, toDouble())
     Q_PROPERTY_SUD_READONLY(double, FaktorHauptgussEmpfehlung, toDouble())
+    Q_PROPERTY_SUD_READONLY(int, BewertungMax, toInt())
 
     // tables
     Q_PROPERTY(ProxyModel* modelRasten READ modelRasten CONSTANT)

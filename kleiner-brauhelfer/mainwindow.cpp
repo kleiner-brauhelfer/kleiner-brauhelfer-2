@@ -196,6 +196,8 @@ void MainWindow::sudLoaded()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
+    ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
+                            bh->sud()->getBierWurdeGebraut() || !loaded ? tr("Zusammenfassung") : tr("Spickzettel"));
     if (ui->tabMain->currentWidget() != ui->tabDatenbank)
         ui->tabMain->setCurrentWidget(loaded ? ui->tabRezept : ui->tabSudAuswahl);
 }

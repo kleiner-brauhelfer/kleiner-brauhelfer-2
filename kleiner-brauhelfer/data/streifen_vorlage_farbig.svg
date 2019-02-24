@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="streifen_vorlage.svg"
+   sodipodi:docname="streifen_vorlage_farbig.svg"
    inkscape:export-filename="Streifen_experimentalsud.png"
    inkscape:export-xdpi="300.02789"
    inkscape:export-ydpi="300.02789">
@@ -335,7 +335,8 @@
          sodipodi:nodetypes="ccsccscccssc"
          inkscape:connector-curvature="0"
          id="rect3810-9"
-         d="m 246.65419,600.67599 c 119.3052,0 216.1843,13.81509 217.48061,30.9448 0.01,0.1159 0.055,0.2208 0.055,0.3369 0,0.3801 -0.1262,0.7465 -0.2195,1.1233 l -72.5484,727.73541 c 0,12.58 -64.81921,22.8013 -144.7675,22.8013 -79.94842,0 -144.76762,-10.2213 -144.76762,-22.8013 l -72.712906,-728.18471 0.1097,0 c -0.035,-0.2311 -0.1097,-0.4416 -0.1097,-0.674 0,-17.28999 97.368396,-31.2817 217.480616,-31.2817 z" />
+         d="m 246.65419,600.67599 c 119.3052,0 216.1843,13.81509 217.48061,30.9448 0.01,0.1159 0.055,0.2208 0.055,0.3369 0,0.3801 -0.1262,0.7465 -0.2195,1.1233 l -72.5484,727.73541 c 0,12.58 -64.81921,22.8013 -144.7675,22.8013 -79.94842,0 -144.76762,-10.2213 -144.76762,-22.8013 l -72.712906,-728.18471 0.1097,0 c -0.035,-0.2311 -0.1097,-0.4416 -0.1097,-0.674 0,-17.28999 97.368396,-31.2817 217.480616,-31.2817 z"
+         style="fill:{{Sud.FarbeRgb}};fill-opacity:1;stroke:none;stroke-width:4.1042676;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cscccscccc"
          inkscape:connector-curvature="0"

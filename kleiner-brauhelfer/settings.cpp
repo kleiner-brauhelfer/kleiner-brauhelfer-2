@@ -48,7 +48,7 @@ void Settings::initTheme()
     DiagramLinie2Light = QColor(141, 154, 127);
     DiagramLinie3Light = QColor(80, 0, 0);
 
-    mTheme = static_cast<Theme>(value("Theme", Bright).toInt());
+    mTheme = static_cast<Theme>(value("Theme", System).toInt());
 
     endGroup();
 

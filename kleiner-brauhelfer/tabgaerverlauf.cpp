@@ -301,7 +301,7 @@ void TabGaerverlauf::updateDiagramm()
 void TabGaerverlauf::on_btnSWSchnellgaerverlauf_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
-                       bh->sud()->getSWAnstellen(),
+                       bh->sud()->getSWIst(),
                        ui->tbTempSchnellgaerprobe->value(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
@@ -328,7 +328,7 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
 void TabGaerverlauf::on_btnSWHauptgaerverlauf_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWHauptgaerprobe->value(),
-                       bh->sud()->getSWAnstellen(),
+                       bh->sud()->getSWIst(),
                        ui->tbTempHauptgaerprobe->value(),
                        this);
     if (dlg.exec() == QDialog::Accepted)

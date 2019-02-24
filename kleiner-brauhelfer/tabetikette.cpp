@@ -26,22 +26,24 @@ TabEtikette::TabEtikette(QWidget *parent) :
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
+    ui->treeViewTemplateTags->setColumnWidth(0, 150);
+    ui->treeViewTemplateTags->setColumnWidth(1, 150);
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(updateSvg()));
+            this, SLOT(updateTemplateTags()));
     connect(bh->sud()->modelFlaschenlabelTags(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(updateSvg()));
+            this, SLOT(updateTemplateTags()));
     connect(bh->sud()->modelFlaschenlabel(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(updateValues()));
 
-    connect(bh->sud()->modelAnhang(), SIGNAL(modelReset()), this, SLOT(updateListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(sortChanged()), this, SLOT(updateListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(modelReset()), this, SLOT(updateAuswahlListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(sortChanged()), this, SLOT(updateAuswahlListe()));
 
     gSettings->beginGroup("TabEtikette");
 
@@ -73,13 +75,15 @@ void TabEtikette::restoreView()
 
 void TabEtikette::updateAll()
 {
+    updateAuswahlListe();
+    ui->cbAuswahl->setCurrentIndex(-1);
     updateValues();
-    updateListe();
+
     updateTemplateFilePath();
-    updateSvg();
+    updateTemplateTags();
 }
 
-void TabEtikette::updateListe()
+void TabEtikette::updateAuswahlListe()
 {
     ui->cbAuswahl->clear();
 
@@ -104,10 +108,8 @@ void TabEtikette::updateListe()
 
 QString TabEtikette::generateSvg(const QString &svg)
 {
-    QVariantHash contextVariables;
-    WebView::erstelleTagListe(contextVariables, true);
     Mustache::Renderer renderer;
-    Mustache::QtVariantContext context(contextVariables);
+    Mustache::QtVariantContext context(mTemplateTags);
     return renderer.render(svg, &context);
 }
 
@@ -115,7 +117,9 @@ void TabEtikette::updateTemplateFilePath()
 {
     QDir baseDir(gSettings->databaseDir());
     QFileInfo fi(data("Auswahl").toString());
-    if (QDir::isRelativePath(fi.filePath()))
+    if (!fi.isFile())
+        mTemplateFilePath = QString();
+    else if (QDir::isRelativePath(fi.filePath()))
         mTemplateFilePath =  QDir::cleanPath(baseDir.filePath(fi.filePath()));
     else
         mTemplateFilePath = fi.filePath();
@@ -124,7 +128,10 @@ void TabEtikette::updateTemplateFilePath()
 void TabEtikette::updateSvg()
 {
     if (mTemplateFilePath.isEmpty())
+    {
+        ui->viewSvg->clear();
         return;
+    }
 
     if (ui->cbEditMode->isChecked())
     {
@@ -171,6 +178,31 @@ void TabEtikette::updateSvg()
     ui->viewSvg->setViewOutline(false);
 }
 
+void TabEtikette::updateTemplateTags()
+{
+    mTemplateTags.clear();
+    WebView::erstelleTagListe(mTemplateTags, bh->sud()->row());
+
+    ui->treeViewTemplateTags->clear();
+    for (QVariantMap::const_iterator it = mTemplateTags.begin(); it != mTemplateTags.end(); ++it)
+    {
+        if (it.value().canConvert<QVariantMap>())
+        {
+            QVariantMap hash = it.value().toMap();
+            QTreeWidgetItem *t = new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key()});
+            for (QVariantMap::const_iterator it2 = hash.begin(); it2 != hash.end(); ++it2)
+                t->addChild(new QTreeWidgetItem(t, {it2.key(), it2.value().toString()}));
+            ui->treeViewTemplateTags->addTopLevelItem(t);
+        }
+        else
+        {
+            ui->treeViewTemplateTags->addTopLevelItem(new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key(), it.value().toString()}));
+        }
+    }
+
+    updateSvg();
+}
+
 void TabEtikette::checkSave()
 {
     if (ui->btnSaveTemplate->isVisible())
@@ -195,8 +227,15 @@ bool TabEtikette::setData(const QString &fieldName, const QVariant &value)
 void TabEtikette::on_cbAuswahl_activated(int index)
 {
     checkSave();
+    ui->btnSaveTemplate->setVisible(false);
+    if (bh->sud()->modelFlaschenlabel()->rowCount() == 0)
+    {
+        QVariantMap values({{"SudID", bh->sud()->id()}});
+        bh->sud()->modelFlaschenlabel()->append(values);
+    }
     setData("Auswahl", ui->cbAuswahl->itemData(index).toString());
     updateTemplateFilePath();
+    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateSvg();
 }
 
@@ -210,6 +249,9 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
     checkSave();
 
     ui->tbTemplate->setVisible(checked);
+    ui->treeViewTemplateTags->setVisible(checked);
+    ui->splitter_1->setHandleWidth(checked ? 5 : 0);
+
     if (checked)
     {
         QFile file(mTemplateFilePath);
@@ -251,6 +293,9 @@ void TabEtikette::on_btnSaveTemplate_clicked()
 
 void TabEtikette::on_btnToPdf_clicked()
 {
+    if (mTemplateFilePath.isEmpty())
+        return;
+
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString fileName = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),

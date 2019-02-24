@@ -30,6 +30,8 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
+    ui->treeViewTemplateTags->setColumnWidth(0, 150);
+    ui->treeViewTemplateTags->setColumnWidth(1, 150);
 
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 0);
@@ -107,7 +109,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ProxyModelSud::FilterStatus filterStatus = static_cast<ProxyModelSud::FilterStatus>(gSettings->value("filterStatus").toInt());
+    ProxyModelSud::FilterStatus filterStatus = static_cast<ProxyModelSud::FilterStatus>(gSettings->value("filterStatus", ProxyModelSud::FilterStatus::Alle).toInt());
     proxyModel->setFilterStatus(filterStatus);
     ui->rbAlle->setChecked(filterStatus == ProxyModelSud::Alle);
     ui->rbNichtGebraut->setChecked(filterStatus == ProxyModelSud::NichtGebraut);
@@ -117,11 +119,11 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->rbVerbraucht->setChecked(filterStatus == ProxyModelSud::Verbraucht);
     proxyModel->setFilterStatus(filterStatus);
 
-    ui->cbMerkliste->setChecked(gSettings->value("filterMerkliste").toBool());
+    ui->cbMerkliste->setChecked(gSettings->value("filterMerkliste", false).toBool());
 
     ui->tbDatumVon->setDate(gSettings->value("ZeitraumVon").toDate());
     ui->tbDatumBis->setDate(gSettings->value("ZeitraumBis").toDate());
-    ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle").toBool());
+    ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle", true).toBool());
 
     gSettings->endGroup();
 
@@ -166,6 +168,7 @@ QAbstractItemModel* TabSudAuswahl::model() const
 
 void TabSudAuswahl::databaseModified()
 {
+    updateTemplateTags();
     erstelleSudInfo();
 }
 
@@ -178,6 +181,7 @@ void TabSudAuswahl::filterChanged()
 void TabSudAuswahl::selectionChanged()
 {
     bool selected = ui->tableSudauswahl->selectionModel()->selectedRows().count() > 0;
+    updateTemplateTags();
     erstelleSudInfo();
     ui->btnMerken->setEnabled(selected);
     ui->btnVergessen->setEnabled(selected);
@@ -562,9 +566,11 @@ void TabSudAuswahl::on_cbEditMode_clicked(bool checked)
     checkSaveTemplate();
 
     ui->tbTemplate->setVisible(checked);
+    ui->treeViewTemplateTags->setVisible(checked);
     ui->btnRestoreTemplate->setVisible(checked);
     ui->cbTemplateAuswahl->setVisible(checked);
     ui->btnSaveTemplate->setVisible(false);
+    ui->splitter_1->setHandleWidth(checked ? 5 : 0);
 
     if (checked)
     {

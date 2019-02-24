@@ -45,6 +45,18 @@ p {
   color: #d47209;
 }
 
+.glas {
+  content:url("qrc:/images/bier.svg");
+}
+
+.star {
+  content:url("qrc:/images/star.svg");
+}
+
+.star_grey {
+  content:url("qrc:/images/star_gr.svg");
+}
+
 a {
   color: blue;
 }

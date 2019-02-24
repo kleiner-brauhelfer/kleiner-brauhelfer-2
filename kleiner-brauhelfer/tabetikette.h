@@ -23,7 +23,8 @@ private slots:
     void updateValues();
     void updateTemplateFilePath();
     void updateSvg();
-    void updateListe();
+    void updateTemplateTags();
+    void updateAuswahlListe();
     void on_cbAuswahl_activated(int index);
     void on_spinBox_BreiteLabel_valueChanged(int value);
     void on_spinBox_AnzahlLabels_valueChanged(int value);
@@ -49,6 +50,7 @@ private:
     QByteArray mDefaultSplitterState;
     QString mTemplateFilePath;
     HtmlHighLighter* mHtmlHightLighter;
+    QVariantMap mTemplateTags;
 };
 
 #endif // TABETIKETTE_H

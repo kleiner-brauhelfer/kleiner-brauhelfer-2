@@ -5,9 +5,9 @@
 </head>
 <body>
 
-  {{#Sudname}}
+  {{#Sud}}
   <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1"><b>{{Sudname}}</b></p>
+    <p class="h1">{{Rezept.Name}} (#{{Rezept.Nummer}})</p>
   </div>
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <table>
@@ -18,85 +18,129 @@
         </tr>
         <tr>
           <td valign="center">
-            <div style="width:100px;height:100px;">
-              {{{Glas}}}
+            <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:100px;height:100px">
+              <img class="glas" style="padding:0px;margin:0px;width:100%;height:100%">
             </div>
           </td>
           <td valign="top">
-            {{{Rezept}}}
+            <table>
+              <col width="*">
+              <col width="50">
+              <col width="50">
+              <col width="*">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Rezept</th>
+                  <th>Sud</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Menge</td>
+                  <td class="value" align="center">{{Rezept.Menge}}</td>
+                  <td class="value" align="center">{{Sud.Menge}}</td>
+                  <td>l</td>
+                </tr>
+                <tr>
+                  <td>Stammwürze</td>
+                  <td class="value" align="center">{{Rezept.SW}}</td>
+                  <td class="value" align="center">{{Sud.SW}}</td>
+                  <td>°P</td>
+                </tr>
+                <tr>
+                  <td>Bittere</td>
+                  <td class="value" align="center">{{Rezept.Bittere}}</td>
+                  <td class="value" align="center">{{Sud.Bittere}}</td>
+                  <td>IBU</td>
+                </tr>
+                <tr>
+                  <td>Farbe</td>
+                  <td class="value" align="center">{{Rezept.Farbe}}</td>
+                  <td class="value" align="center">{{Sud.Farbe}}</td>
+                  <td>EBC</td>
+                </tr>
+                <tr>
+                  <td>CO₂-Gehalt</td>
+                  <td class="value" align="center">{{Rezept.CO2}}</td>
+                  <td class="value" align="center">{{Sud.CO2}}</td>
+                  <td>g/l</td>
+                </tr>
+              </tbody>
+            </table>
           </td>
         </tr>
       </tbody>
     </table>
-    <p >{{{Kommentar}}}</p>
+    <p><div style="word-wrap: break-word;">{{{Rezept.Kommentar}}}</div></p>
   </div>
-  {{/Sudname}}
+  {{/Sud}}
 
-  {{#Rohstoffe}}
+  {{#Zutaten}}
   <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1"><b>{{Rohstoffe}}</b></p>
+    <p class="h1">Zutaten</p>
   </div>
-  {{#Malz}}
+  {{#Zutaten.Malz}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/getreide.svg" alt="Getreide" width="300px" border=0>
     <br>
-    {{{Malz}}}
+    {{{Zutaten.Malz}}}
   </div>
-  {{/Malz}}
-  {{#Hopfen}}
+  {{/Zutaten.Malz}}
+  {{#Zutaten.Hopfen}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/hopfen.svg" alt="Hopfen" width="100px" border=0>
     <br>
-    {{{Hopfen}}}
+    {{{Zutaten.Hopfen}}}
   </div>
-  {{/Hopfen}}
-  {{#Hefe}}
+  {{/Zutaten.Hopfen}}
+  {{#Zutaten.Hefe}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/hefe.svg" alt="Hefe" width="50px" border=0>
     <br>
-    {{{Hefe}}}
+    {{{Zutaten.Hefe}}}
   </div>
-  {{/Hefe}}
-  {{#Honig}}
+  {{/Zutaten.Hefe}}
+  {{#Zutaten.Honig}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_0.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Honig}}}
+    {{{Zutaten.Honig}}}
   </div>
-  {{/Honig}}
-  {{#Zucker}}
+  {{/Zutaten.Honig}}
+  {{#Zutaten.Zucker}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_1.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Zucker}}}
+    {{{Zutaten.Zucker}}}
   </div>
-  {{/Zucker}}
-  {{#Gewuerz}}
+  {{/Zutaten.Zucker}}
+  {{#Zutaten.Gewuerz}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_2.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Gewuerz}}}
+    {{{Zutaten.Gewuerz}}}
   </div>
-  {{/Gewuerz}}
-  {{#Frucht}}
+  {{/Zutaten.Gewuerz}}
+  {{#Zutaten.Frucht}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_3.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Frucht}}}
+    {{{Zutaten.Frucht}}}
   </div>
-  {{/Frucht}}
-  {{#Sonstiges}}
+  {{/Zutaten.Frucht}}
+  {{#Zutaten.Sonstiges}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_4.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Sonstiges}}}
+    {{{Zutaten.Sonstiges}}}
   </div>
-  {{/Sonstiges}}
-  {{/Rohstoffe}}
+  {{/Zutaten.Sonstiges}}
+  {{/Zutaten}}
 
   {{#Anhang}}
   <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1"><b>{{AnhangTitel}}</b></p>
+    <p class="h1">Anhänge</p>
   </div>
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     {{{Anhang}}}

@@ -30,12 +30,12 @@ public:
     void setTemplateFile(const QString& file);
 
     void renderTemplate();
-    void renderTemplate(QVariantHash& contextVariables);
+    void renderTemplate(QVariantMap& contextVariables);
 
     void renderText(const QString &html);
-    void renderText(const QString &html, QVariantHash& contextVariables);
+    void renderText(const QString &html, QVariantMap& contextVariables);
 
-    static void erstelleTagListe(QVariantHash& contextVariables, bool sudDaten);
+    static void erstelleTagListe(QVariantMap& ctx, int sudRow = -1);
 private:
     QString mTemplateFile;
 };

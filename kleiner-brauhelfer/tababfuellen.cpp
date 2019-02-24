@@ -162,6 +162,7 @@ void TabAbfuellen::checkEnabled()
     ui->tbJungbiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(gebraut && !abgefuellt);
+    ui->btnSudVerbraucht->setEnabled(abgefuellt);
 }
 
 void TabAbfuellen::updateValues()
@@ -274,8 +275,10 @@ void TabAbfuellen::on_tbSWSchnellgaerprobe_valueChanged(double value)
 
 void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 {
-    // TODO: swAnstellen ist ohne weitere Zutaten -> richtig so?
-    DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(), bh->sud()->getSWAnstellen(), 20.0, this);
+    DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
+                       bh->sud()->getSWIst(),
+                       ui->tbTemperaturJungbier->value(),
+                       this);
     if (dlg.exec() == QDialog::Accepted)
         ui->tbSWSchnellgaerprobe->setValue(dlg.value());
 }
@@ -288,8 +291,10 @@ void TabAbfuellen::on_tbSWJungbier_valueChanged(double value)
 
 void TabAbfuellen::on_btnSWJungbier_clicked()
 {
-    // TODO: swAnstellen ist ohne weitere Zutaten -> richtig so?
-    DlgRestextrakt dlg(ui->tbSWJungbier->value(), bh->sud()->getSWAnstellen(), 20.0, this);
+    DlgRestextrakt dlg(ui->tbSWJungbier->value(),
+                       bh->sud()->getSWIst(),
+                       ui->tbTemperaturJungbier->value(),
+                       this);
     if (dlg.exec() == QDialog::Accepted)
         ui->tbSWJungbier->setValue(dlg.value());
 }
@@ -375,6 +380,36 @@ void TabAbfuellen::on_btnSudTeilen_clicked()
     DlgSudTeilen dlg(bh->sud()->getSudname(), bh->sud()->getMengeIst(), this);
     if (dlg.exec() == QDialog::Accepted)
     {
+        int row = bh->sudKopieren(bh->sud()->id(), dlg.nameTeil2(), true);
+        if (row < 0)
+            return;
+
+        double Menge = bh->sud()->getMenge();
+        double WuerzemengeVorHopfenseihen = bh->sud()->getWuerzemengeVorHopfenseihen();
+        double WuerzemengeKochende = bh->sud()->getWuerzemengeKochende();
+        double Speisemenge = bh->sud()->getSpeisemenge();
+        double WuerzemengeAnstellen = bh->sud()->getWuerzemengeAnstellen();
+        double JungbiermengeAbfuellen = bh->sud()->getJungbiermengeAbfuellen();
+        int HefeAnzahlEinheiten = bh->sud()->getHefeAnzahlEinheiten();
+
+        double factor = 1.0 - dlg.prozent();
+        bh->modelSud()->setData(row, "Menge", Menge * factor);
+        bh->modelSud()->setData(row, "WuerzemengeVorHopfenseihen", WuerzemengeVorHopfenseihen * factor);
+        bh->modelSud()->setData(row, "WuerzemengeKochende", WuerzemengeKochende * factor);
+        bh->modelSud()->setData(row, "Speisemenge", Speisemenge * factor);
+        bh->modelSud()->setData(row, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
+        bh->modelSud()->setData(row, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
+        bh->modelSud()->setData(row, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+
+        factor = dlg.prozent();
+        bh->sud()->setSudname(dlg.nameTeil1());
+        bh->sud()->setMenge(Menge * factor);
+        bh->sud()->setWuerzemengeVorHopfenseihen(WuerzemengeVorHopfenseihen * factor);
+        bh->sud()->setWuerzemengeKochende(WuerzemengeKochende * factor);
+        bh->sud()->setSpeisemenge(Speisemenge * factor);
+        bh->sud()->setWuerzemengeAnstellen(WuerzemengeAnstellen * factor);
+        bh->sud()->setJungbiermengeAbfuellen(JungbiermengeAbfuellen * factor);
+        bh->sud()->setHefeAnzahlEinheiten(qRound(HefeAnzahlEinheiten * factor));
     }
 }
 

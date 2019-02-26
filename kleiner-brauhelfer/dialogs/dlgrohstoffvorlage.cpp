@@ -203,7 +203,7 @@ void DlgRohstoffVorlage::on_btn_Import_clicked()
         QFile::remove(file.fileName());
         QFile file2(fileName);
         if (file2.copy(file.fileName()))
-            QFile::setPermissions(file.fileName(), QFile::ReadOwner | QFile::WriteOwner);
+            file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
         viewImpl(mRohstoffart);
     }
 }
@@ -226,6 +226,6 @@ void DlgRohstoffVorlage::on_btn_Restore_clicked()
     QFile::remove(file.fileName());
     QFile file2(":/data/" + getFileName(false));
     if (file2.copy(file.fileName()))
-        QFile::setPermissions(file.fileName(), QFile::ReadOwner | QFile::WriteOwner);
+        file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
     viewImpl(mRohstoffart);
 }

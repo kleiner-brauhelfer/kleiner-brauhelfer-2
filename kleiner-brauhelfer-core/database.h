@@ -40,10 +40,11 @@ public:
     int version() const;
     void save();
     void discard();
-    bool update();
+    void update();
 
 private:
     void setTables();
+    QSqlQuery sqlExec(const QString &query);
 
 private:
     QSqlDatabase* mDb;

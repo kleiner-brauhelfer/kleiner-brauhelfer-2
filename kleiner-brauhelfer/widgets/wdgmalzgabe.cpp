@@ -118,11 +118,9 @@ void WdgMalzGabe::updateValues()
             if (model->data(i, "Name").toString() == name)
                 benoetigt += model->data(i, "erg_Menge").toDouble();
         }
-        //ui->tbVorhanden->setPalette(benoetigt > ui->tbVorhanden->value() ? gSettings->paletteError : gSettings->palette);
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         double max = bh->modelMalz()->getValueFromSameRow("Beschreibung", name, "MaxProzent").toDouble();
-        //ui->tbMengeProzent->setPalette(ui->tbMengeProzent->value() > max ? gSettings->paletteError : gSettings->palette);
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() > max);
     }
 }

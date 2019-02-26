@@ -151,7 +151,7 @@ void TabZusammenfassung::on_btnRestoreTemplate_clicked()
         QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))
-            QFile::setPermissions(file.fileName(), QFile::ReadOwner | QFile::WriteOwner);
+            file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
         on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     }
 }

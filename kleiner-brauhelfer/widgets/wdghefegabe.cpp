@@ -151,7 +151,7 @@ void WdgHefeGabe::updateValues()
                 benoetigt += model->data(i, "erg_Menge").toDouble();
         }
         */
-        ui->tbVorhanden->setPalette(benoetigt > ui->tbVorhanden->value() ? gSettings->paletteError : gSettings->palette);
+        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         if (data("Zugegeben").toBool())
         {

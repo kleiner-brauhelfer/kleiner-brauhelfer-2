@@ -264,30 +264,43 @@ void Database::discard()
     modelSud->revertAll();
 }
 
-bool Database::update()
+QSqlQuery Database::sqlExec(const QString &query)
 {
-    QString sql;
-    QSqlQuery query;
-
-    int version = mVersion;
-
-    if (version == 24)
+    QSqlQuery sqlQuery = mDb->exec(query);
+    QSqlError lastError = mDb->lastError();
+    if (lastError.isValid())
     {
-        ++version;
-        mDb->transaction();
-        try
-        {
-            sql = QString("UPDATE 'Global' SET 'db_Version'=%1").arg(version);
-            if (!query.exec(sql))
-                throw std::runtime_error(query.lastError().text().toStdString().c_str());
-        }
-        catch (...)
-        {
-            mDb->rollback();
-            return false;
-        }
-        mDb->commit();
+        QString str = "Query: " + query +
+                "\nError: " + lastError.databaseText() +
+                "\n" + lastError.driverText();
+        throw std::runtime_error(str.toStdString().c_str());
     }
+    return sqlQuery;
+}
 
-    return true;
+void Database::update()
+{
+    int version = mVersion;
+    try
+    {
+        /*
+        if (version == 24)
+        {
+            ++version;
+            mDb->transaction();
+            sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
+            mDb->commit();
+        }
+        */
+    }
+    catch (const std::exception& ex)
+    {
+        mDb->rollback();
+        throw ex;
+    }
+    catch (...)
+    {
+        mDb->rollback();
+        throw std::runtime_error("unknown error");
+    }
 }

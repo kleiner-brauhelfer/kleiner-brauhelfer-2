@@ -834,7 +834,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
         <item>
          <widget class="QTabWidget" name="tabWidget_2">
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabBemerkung">
            <property name="sizePolicy">

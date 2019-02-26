@@ -238,7 +238,7 @@ void WdgWeitereZutatGabe::updateValues()
         }
         if (einheit == EWZ_Einheit_Kg)
             benoetigt /= 1000;
-        ui->tbVorhanden->setPalette(benoetigt > ui->tbVorhanden->value() ? gSettings->paletteError : gSettings->palette);
+        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (status)

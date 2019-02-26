@@ -47,23 +47,24 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelAusruestung READ modelAusruestung CONSTANT)
     Q_PROPERTY(SqlTableModel* modelGeraete READ modelGeraete CONSTANT)
     Q_PROPERTY(SqlTableModel* modelWasser READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelRasten READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelMalzschuettung READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHopfengaben READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelWeitereZutatenGaben READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelSchnellgaerverlauf READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHauptgaerverlauf READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelNachgaerverlauf READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelBewertungen READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelAnhang READ modelWasser CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelRasten READ modelRasten CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelHopfengaben READ modelHopfengaben CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelNachgaerverlauf READ modelNachgaerverlauf CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelBewertungen READ modelBewertungen CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelAnhang READ modelAnhang CONSTANT)
     Q_PROPERTY(SqlTableModel* modelFlaschenlabel READ modelFlaschenlabel CONSTANT)
     Q_PROPERTY(SqlTableModel* modelFlaschenlabelTags READ modelFlaschenlabelTags CONSTANT)
 
 public:
 
-    static const int versionMajor;
-    static const int verionMinor;
-    static const int versionPatch;
+    static const int libVersionMajor;
+    static const int libVerionMinor;
+    static const int libVersionPatch;
+    static const int supportedDatabaseVersion;
 
 public:
 

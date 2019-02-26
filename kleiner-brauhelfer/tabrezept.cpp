@@ -424,11 +424,11 @@ void TabRezept::updateValues()
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageValue("Sudhausausbeute").toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageValue("Verdampfungsziffer").toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageValue("Maischebottich_MaxFuellvolumen").toDouble());
-    ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageValue("Sudpfanne_MaxFuellvolumen").toDouble());
     ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesammt());
-    ui->tbVolumenMaische->setPalette(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value() ? gSettings->paletteError : gSettings->palette);
+    ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
+    ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageValue("Sudpfanne_MaxFuellvolumen").toDouble());
     ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
-    ui->tbVolumenKochen->setPalette(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value() ? gSettings->paletteError : gSettings->palette);
+    ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
     if (!ui->tbEinmaischtemperatur->hasFocus())
         ui->tbEinmaischtemperatur->setValue(bh->sud()->getEinmaischenTemp());
     if (!ui->tbKochzeit->hasFocus())
@@ -762,10 +762,7 @@ void TabRezept::on_tbReifezeit_valueChanged(int value)
 void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
-    {
-        ui->cbAnlage->setPalette(gSettings->palette);
         bh->sud()->setAuswahlBrauanlageName(value);
-    }
 }
 
 void TabRezept::on_tbKommentar_textChanged()

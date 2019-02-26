@@ -159,7 +159,7 @@ void WdgHopfenGabe::updateValues()
             if (model->data(i, "Name").toString() == name)
                 benoetigt += model->data(i, "erg_Menge").toInt();
         }
-        ui->tbVorhanden->setPalette(benoetigt > ui->tbVorhanden->value() ? gSettings->paletteError : gSettings->palette);
+        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         ui->tbKochdauer->setReadOnly(ui->cbVwh->isChecked());
 

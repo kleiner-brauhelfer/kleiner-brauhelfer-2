@@ -610,33 +610,20 @@ void ModelSud::updatePreis(int row)
 {
     int id = data(row, "ID").toInt();
     int colSudId;
-    SqlTableModel *model, *modelAll;
+    SqlTableModel *model;
     double summe = 0.0;
-    double kg;
-    double preis = 0;
-    QString s;
 
     double kostenSchuettung = 0.0;
     model = bh->modelMalzschuettung();
     colSudId = model->fieldIndex("SudID");
-    modelAll = bh->modelMalz();
     for (int o = 0; o < model->rowCount(); ++o)
     {
         if (model->data(model->index(o, colSudId)).toInt() == id)
         {
-            s = model->data(o, "Name").toString();
-            if (!s.isEmpty())
-            {
-                kg = model->data(o, "erg_Menge").toDouble();
-                for (int i = 0; i < modelAll->rowCount(); ++i)
-                {
-                    if (s == modelAll->data(i, "Beschreibung").toString())
-                    {
-                        preis = modelAll->data(i, "Preis").toDouble();
-                        kostenSchuettung += preis * kg;
-                    }
-                }
-            }
+            QVariant name = model->data(o, "Name");
+            double menge = model->data(o, "erg_Menge").toDouble();
+            double preis = bh->modelMalz()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+            kostenSchuettung += preis * menge;
         }
     }
     summe += kostenSchuettung;
@@ -644,42 +631,29 @@ void ModelSud::updatePreis(int row)
     double kostenHopfen = 0.0;
     model = bh->modelHopfengaben();
     colSudId = model->fieldIndex("SudID");
-    modelAll = bh->modelHopfen();
     for (int o = 0; o < model->rowCount(); ++o)
     {
         if (model->data(model->index(o, colSudId)).toInt() == id)
         {
-            s = model->data(o, "Name").toString();
-            if (!s.isEmpty())
-            {
-                kg = model->data(o, "erg_Menge").toDouble() / 1000;
-                for (int i = 0; i < modelAll->rowCount(); ++i)
-                {
-                    if (s == modelAll->data(i, "Beschreibung").toString())
-                    {
-                        preis = modelAll->data(i, "Preis").toDouble();
-                        kostenHopfen += preis * kg;
-                    }
-                }
-            }
+            QVariant name = model->data(o, "Name");
+            double menge = model->data(o, "erg_Menge").toDouble();
+            double preis = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+            kostenHopfen += preis * menge / 1000;
         }
     }
     summe += kostenHopfen;
 
     double kostenHefe = 0.0;
-    modelAll = bh->modelHefe();
-    s = data(row, "AuswahlHefe").toString();
-    if (!s.isEmpty())
+    //model = bh->modelHefegaben();
+    //colSudId = model->fieldIndex("SudID");
+    //for (int o = 0; o < model->rowCount(); ++o)
     {
-        for (int i = 0; i < modelAll->rowCount(); ++i)
+        //if (model->data(model->index(o, colSudId)).toInt() == id)
         {
-            if (s == modelAll->data(i, "Beschreibung").toString())
-            {
-                preis = modelAll->data(i, "Preis").toDouble();
-                int anzahl = data(row, "HefeAnzahlEinheiten").toInt();
-                kostenHefe += preis * anzahl;
-                break;
-            }
+            QVariant name = data(row, "AuswahlHefe");//model->data(o, "Name");
+            int menge = data(row, "HefeAnzahlEinheiten").toInt();//model->data(o, "Menge").toInt();
+            double preis = bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+            kostenHefe += preis * menge;
         }
     }
     summe += kostenHefe;
@@ -692,23 +666,15 @@ void ModelSud::updatePreis(int row)
     {
         if (model->data(model->index(o, colSudId)).toInt() == id)
         {
-            s = model->data(o, "Name").toString();
-            if (s != "")
-            {
-                kg = model->data(o, "erg_Menge").toDouble() / 1000;
-                if (model->data(o, "Typ").toInt() == EWZ_Typ_Hopfen)
-                    modelAll = bh->modelHopfen();
-                else
-                    modelAll = bh->modelWeitereZutaten();
-                for (int i = 0; i < modelAll->rowCount(); ++i)
-                {
-                    if (s == modelAll->data(i, "Beschreibung").toString())
-                    {
-                        preis = modelAll->data(i, "Preis").toDouble();
-                        kostenWeitereZutaten += preis * kg;
-                    }
-                }
-            }
+            QVariant name = model->data(o, "Name");
+            double menge = model->data(o, "erg_Menge").toDouble();
+            int typ = model->data(o, "Typ").toInt();
+            double preis;
+            if (typ == EWZ_Typ_Hopfen)
+                preis = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+            else
+                preis = bh->modelWeitereZutaten()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+            kostenWeitereZutaten += preis * menge / 1000;
         }
     }
     summe += kostenWeitereZutaten;

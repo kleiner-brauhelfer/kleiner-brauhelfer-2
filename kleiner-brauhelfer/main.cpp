@@ -8,6 +8,15 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
+// Modus, um Datenbankupdates zu testen.
+// In diesem Modus wird eine Kopie der Datenbank erstellt.
+// Diese Kopie wird aktualisiert ohne die ursprüngliche Datenbank zu verändern.
+//#define MODE_TEST_UPDATE
+
+#if defined(QT_NO_DEBUG) && defined(MODE_TEST_UPDATE)
+#error MODE_TEST_UPDATE in release build defined.
+#endif
+
 // global variables
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -58,7 +67,7 @@ static int chooseDatabase()
             QFile file2(":/data/kb_daten.sqlite");
             file.remove();
             if (file2.copy(file.fileName()))
-                QFile::setPermissions(file.fileName(), QFile::ReadOwner | QFile::WriteOwner);
+                file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
             gSettings->setDatabasePath(databasePath);
         }
         else
@@ -78,12 +87,12 @@ static bool connectDatabase()
         if (bh->connectDatabase())
         {
             // check database version
-            if (bh->databaseVersion() > bh->verionMinor)
+            if (bh->databaseVersion() > bh->supportedDatabaseVersion)
             {
                 QMessageBox::critical(nullptr, QApplication::applicationName(),
                                       QObject::tr("Die Datenbankversion ist zu neu für das Programm. Das Programm muss aktualisiert werden."));
             }
-            else if (bh->databaseVersion() < bh->verionMinor)
+            else if (bh->databaseVersion() < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
                                                QObject::tr("Die Datenbankdatei muss aktualisiert werden.") + " " +
@@ -93,8 +102,26 @@ static bool connectDatabase()
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
-                    if (!bh->updateDatabase())
-                        QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
+                  #ifdef MODE_TEST_UPDATE
+                    QFile fileOrg(gSettings->databasePath());
+                    QFile fileUpdate(gSettings->databasePath() + "_update.sqlite");
+                    fileUpdate.remove();
+                    if (fileOrg.copy(fileUpdate.fileName()))
+                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+                    bh->setDatabasePath(fileUpdate.fileName());
+                    bh->connectDatabase();
+                  #endif
+                    try
+                    {
+                        if (bh->updateDatabase())
+                            return bh->isConnectedDatabase();
+                        else
+                            QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
+                    }
+                    catch (const std::exception& ex)
+                    {
+                        QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), ex.what());
+                    }
                 }
             }
             else
@@ -134,7 +161,7 @@ static void copyResources()
         {
             QFile file2(it.filePath());
             if (file2.copy(file.fileName()))
-                QFile::setPermissions(file.fileName(), QFile::ReadOwner | QFile::WriteOwner);
+                file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
         }
     }
 }

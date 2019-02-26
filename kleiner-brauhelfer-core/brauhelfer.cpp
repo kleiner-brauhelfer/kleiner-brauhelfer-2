@@ -2,9 +2,10 @@
 #include "database.h"
 #include <QSqlQuery>
 
-const int Brauhelfer::versionMajor = VER_MAJ;
-const int Brauhelfer::verionMinor = VER_MIN;
-const int Brauhelfer::versionPatch = VER_PAT;
+const int Brauhelfer::libVersionMajor = VER_MAJ;
+const int Brauhelfer::libVerionMinor = VER_MIN;
+const int Brauhelfer::libVersionPatch = VER_PAT;
+const int Brauhelfer::supportedDatabaseVersion = libVerionMinor;
 
 Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     QObject(parent),
@@ -136,9 +137,9 @@ int Brauhelfer::databaseVersion() const
 
 bool Brauhelfer::updateDatabase()
 {
-    if (mDb->update())
-        connectDatabase();
-    return mDb->version() == verionMinor;
+    mDb->update();
+    connectDatabase();
+    return mDb->version() == supportedDatabaseVersion;
 }
 
 Database* Brauhelfer::db() const

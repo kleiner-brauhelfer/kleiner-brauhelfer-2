@@ -230,8 +230,15 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
 
     col = model->fieldIndex("Bemerkung");
     model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
+    table->setColumnHidden(col, false);
     header->resizeSection(col, 200);
     header->moveSection(header->visualIndex(col), 2);
+
+    col = model->fieldIndex("Eigenschaften");
+    model->setHeaderData(col, Qt::Horizontal, tr("Eigenschaften"));
+    table->setColumnHidden(col, false);
+    header->resizeSection(col, 200);
+    header->moveSection(header->visualIndex(col), 3);
 
     col = model->fieldIndex("TypOGUG");
     model->setHeaderData(col, Qt::Horizontal, tr("OG/UG"));
@@ -240,7 +247,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     comboBox->setColors(gSettings->HefeTypOgUgBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
+    header->moveSection(header->visualIndex(col), 4);
 
     col = model->fieldIndex("TypTrFl");
     model->setHeaderData(col, Qt::Horizontal, tr("Trocken/Flüssig"));
@@ -249,20 +256,20 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     comboBox->setColors(gSettings->HefeTypTrFlBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
+    header->moveSection(header->visualIndex(col), 5);
 
     col = model->fieldIndex("Verpackungsmenge");
     model->setHeaderData(col, Qt::Horizontal, tr("Verpackungsmenge"));
     table->setColumnHidden(col, false);
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 5);
+    header->moveSection(header->visualIndex(col), 6);
 
     col = model->fieldIndex("Wuerzemenge");
     model->setHeaderData(col, Qt::Horizontal, tr("Wuerzemenge [l]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, 9999, 1, true, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 6);
+    header->moveSection(header->visualIndex(col), 7);
 
     col = model->fieldIndex("SED");
     model->setHeaderData(col, Qt::Horizontal, tr("Sedimentation"));
@@ -271,46 +278,47 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     comboBox->setColors(gSettings->HefeSedBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 7);
+    header->moveSection(header->visualIndex(col), 8);
 
     col = model->fieldIndex("EVG");
     model->setHeaderData(col, Qt::Horizontal, tr("Vergärungsgrad"));
     table->setColumnHidden(col, false);
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 8);
+    header->moveSection(header->visualIndex(col), 9);
 
     col = model->fieldIndex("Temperatur");
     model->setHeaderData(col, Qt::Horizontal, tr("Temperatur"));
     table->setColumnHidden(col, false);
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 9);
+    header->moveSection(header->visualIndex(col), 10);
 
     col = model->fieldIndex("Preis");
     model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1]").arg(QLocale().currencySymbol()));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, 9999.9, 0.1, false, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 10);
+    header->moveSection(header->visualIndex(col), 11);
 
     col = model->fieldIndex("Eingelagert");
     model->setHeaderData(col, Qt::Horizontal, tr("Einlagerung"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 11);
+    header->moveSection(header->visualIndex(col), 12);
 
     col = model->fieldIndex("Mindesthaltbar");
     model->setHeaderData(col, Qt::Horizontal, tr("Haltbarkeit"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(true, false, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 12);
+    header->moveSection(header->visualIndex(col), 13);
 
     col = model->fieldIndex("Link");
     model->setHeaderData(col, Qt::Horizontal, tr("Link"));
+    table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new LinkLabelDelegate(table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 13);
+    header->moveSection(header->visualIndex(col), 14);
 
     mDefaultStateTableHefe = header->saveState();
     header->restoreState(gSettings->value("tableHefeState").toByteArray());
@@ -770,7 +778,7 @@ void TabRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
 
 void TabRohstoffe::on_btnNeuesWasserprofil_clicked()
 {
-    QVariantMap values({{"Name", tr("Neues Wasserprofil")}});
+    QVariantMap values({{"Name", tr("Neues Profil")}});
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableWasser->model());
     int row = model->append(values);
     if (row >= 0)

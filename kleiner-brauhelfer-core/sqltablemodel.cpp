@@ -243,7 +243,6 @@ int SqlTableModel::append(const QVariantMap &values)
         int row = rowCount() - 1;
         QVariantMap::const_iterator it = val.constBegin();
         blockSignals(true);
-        /*
         while (it != val.constEnd())
         {
             QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
@@ -255,12 +254,14 @@ int SqlTableModel::append(const QVariantMap &values)
             setDataExt(index(row, fieldIndex(it.key())), it.value());
             ++it;
         }
-        */
+        /*
+        // problem z.b. mit hauptgaerung, da sudid nach sw gesetzt wird
         while (it != val.constEnd())
         {
             setData(index(row, fieldIndex(it.key())), it.value());
             ++it;
         }
+        */
         blockSignals(false);
         emit modified();
         return row;

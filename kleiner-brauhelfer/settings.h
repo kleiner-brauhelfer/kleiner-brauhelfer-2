@@ -3,6 +3,7 @@
 
 #include <QSettings>
 #include <QPalette>
+#include <QFont>
 
 class Settings : public QSettings
 {
@@ -23,6 +24,10 @@ public:
     QString style();
     void setStyle(const QString &style);
 
+    bool useSystemFont();
+    void setUseSystemFont(bool system);
+    void setFont(const QFont &font);
+
     QString settingsDir();
 
     QString databasePath();
@@ -36,6 +41,8 @@ private:
     void initTheme();
 
 public:
+    QFont font;
+
     QPalette palette;
     QPalette paletteInput;
     QPalette paletteError;
@@ -67,7 +74,7 @@ public:
 
 private:
     Theme mTheme;
-    QPalette mSystemPalette;
+    const QPalette mSystemPalette;
 };
 
 class SettingsPortable : public Settings

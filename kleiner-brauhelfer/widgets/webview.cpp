@@ -85,6 +85,8 @@ void WebView::renderTemplate()
 
 void WebView::renderTemplate(QVariantMap &contextVariables)
 {
+    if (mTemplateFile.isEmpty())
+        return;
     QFile file(mTemplateFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {

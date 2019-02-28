@@ -24,6 +24,8 @@ void Settings::initTheme()
 {
     beginGroup("Style");
 
+    font = value("Font", QFont()).value<QFont>();
+
     InputBase = QColor(240, 255, 255);
     ErrorBase = QColor(220, 127, 127);
     WarningText = QColor(219, 137, 9);
@@ -160,9 +162,8 @@ void Settings::setTheme(Theme theme)
 
 QString Settings::style()
 {
-    QString style;
     beginGroup("Style");
-    style = value("Style", "Fusion").toString();
+    QString style = value("Style", "Fusion").toString();
     endGroup();
     return style;
 }
@@ -172,6 +173,29 @@ void Settings::setStyle(const QString &style)
     beginGroup("Style");
     setValue("Style", style);
     endGroup();
+}
+
+bool Settings::useSystemFont()
+{
+    beginGroup("Style");
+    bool system = value("UseSystemFont", true).toBool();
+    endGroup();
+    return system;
+}
+
+void Settings::setUseSystemFont(bool system)
+{
+    beginGroup("Style");
+    setValue("UseSystemFont", system);
+    endGroup();
+}
+
+void Settings::setFont(const QFont &font)
+{
+    beginGroup("Style");
+    setValue("Font", font);
+    endGroup();
+    this->font = font;
 }
 
 QString Settings::settingsDir()

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QFontDialog>
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include "brauhelfer.h"
@@ -35,11 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->menuStil->addAction(action);
     }
 
-    connect(ui->tabContentSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
-    ui->tabContentBrauUebersicht->setModel(ui->tabContentSudAuswahl->model());
-    connect(ui->tabContentBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
-
-    ui->statusBar->showMessage(bh->databasePath());
+    ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 
     gSettings->beginGroup("MainWindow");
     mDefaultGeometry = saveGeometry();
@@ -56,6 +53,12 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     gSettings->endGroup();
+
+    ui->statusBar->showMessage(bh->databasePath());
+
+    connect(ui->tabContentSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
+    ui->tabContentBrauUebersicht->setModel(ui->tabContentSudAuswahl->model());
+    connect(ui->tabContentBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
@@ -316,6 +319,30 @@ void MainWindow::changeStyle()
     {
         gSettings->setStyle(action->text());
         restart();
+    }
+}
+
+void MainWindow::on_actionSchriftart_triggered(bool checked)
+{
+    if (checked)
+    {
+        gSettings->setUseSystemFont(true);
+        restart();
+    }
+    else
+    {
+        bool ok;
+        QFont font = QFontDialog::getFont(&ok, gSettings->font, this);
+        if (ok)
+        {
+            gSettings->setUseSystemFont(false);
+            gSettings->setFont(font);
+            setFont(font);
+        }
+        else
+        {
+            ui->actionSchriftart->setChecked(true);
+        }
     }
 }
 

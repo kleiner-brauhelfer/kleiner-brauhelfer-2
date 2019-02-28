@@ -34,6 +34,7 @@ private slots:
     void on_actionThemeSystem_triggered();
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
+    void on_actionSchriftart_triggered(bool checked);
     void on_actionReiterDatenbank_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionSpende_triggered();

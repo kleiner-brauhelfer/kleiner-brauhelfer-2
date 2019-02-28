@@ -499,14 +499,14 @@ double BierCalc::hopfenAusbeute(double kochzeit, double sw)
     }
 }
 
-static unsigned int toRgb(int r, int g, int b)
+static unsigned int toRgb(unsigned char r, unsigned char g, unsigned char b)
 {
     return (0xffu << 24) | ((r & 0xffu) << 16) | ((g & 0xffu) << 8) | (b & 0xffu);
 }
 
 unsigned int BierCalc::ebcToColor(double ebc)
 {
-    const int aFarbe[300][3] = {
+    const unsigned char aFarbe[300][3] = {
         {250,250,210},
         {250,250,204},
         {250,250,199},

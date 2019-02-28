@@ -236,6 +236,7 @@
     <addaction name="separator"/>
     <addaction name="menuFarbschema"/>
     <addaction name="menuStil"/>
+    <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
     <addaction name="actionReiterDatenbank"/>
    </widget>
@@ -370,6 +371,14 @@
    </property>
    <property name="text">
     <string>Bestätigung beim Beenden</string>
+   </property>
+  </action>
+  <action name="actionSchriftart">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Systemschriftart</string>
    </property>
   </action>
  </widget>

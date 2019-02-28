@@ -584,16 +584,16 @@ void TabZusammenfassung::updateTemplateTags()
         {
             s += "<tr>";
             s += "<td>";
-            s += "<p>" + bh->sud()->modelRasten()->data(i, "RastName").toString() + "</p>";
+            s += "<p>" + bh->sud()->modelRasten()->data(i, "Name").toString() + "</p>";
             s += "</td>";
             s += "<td>";
-            s += "<p class='value'>" + QString::number(bh->sud()->modelRasten()->data(i, "RastTemp").toInt()) + "</p>";
+            s += "<p class='value'>" + QString::number(bh->sud()->modelRasten()->data(i, "Temp").toInt()) + "</p>";
             s += "</td>";
             s += "<td>";
             s += "<p>" + tr("°C") + "</p>";
             s += "</td>";
             s += "<td>";
-            s += "<p class='value'>" + QString::number(bh->sud()->modelRasten()->data(i, "RastDauer").toInt()) + "</p>";
+            s += "<p class='value'>" + QString::number(bh->sud()->modelRasten()->data(i, "Dauer").toInt()) + "</p>";
             s += "</td>";
             s += "<td>";
             s += "<p>" + tr("min") + "</p>";

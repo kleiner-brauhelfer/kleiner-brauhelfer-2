@@ -343,6 +343,120 @@ void Database::update()
             sqlExec("UPDATE Wasser SET Name='Profil 1'");
             sqlExec("DROP TABLE TempTable");
 
+            // Hefe
+            //  - Spalte gelöscht 'Enheiten'
+            sqlExec("ALTER TABLE Hefe RENAME TO TempTable");
+            sqlExec("CREATE TABLE Hefe ("
+                "ID INTEGER PRIMARY KEY,"
+                "Beschreibung TEXT,"
+                "Menge INTEGER DEFAULT 0,"
+                "Preis REAL DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "TypOGUG INTEGER DEFAULT 0,"
+                "TypTrFl INTEGER DEFAULT 0,"
+                "Verpackungsmenge TEXT,"
+                "Wuerzemenge REAL DEFAULT 0,"
+                "Eigenschaften TEXT,"
+                "SED INTEGER DEFAULT 0,"
+                "EVG TEXT,"
+                "Temperatur TEXT,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec("INSERT INTO Hefe ("
+                "Beschreibung,"
+                "Menge,"
+                "Preis,"
+                "Bemerkung,"
+                "TypOGUG,"
+                "TypTrFl,"
+                "Verpackungsmenge,"
+                "Wuerzemenge,"
+                "Eigenschaften,"
+                "SED,"
+                "EVG,"
+                "Temperatur,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Menge,"
+                "Preis,"
+                "Bemerkung,"
+                "TypOGUG,"
+                "TypTrFl,"
+                "Verpackungsmenge,"
+                "Wuerzemenge,"
+                "Eigenschaften,"
+                "SED,"
+                "EVG,"
+                "Temperatur,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec("DROP TABLE TempTable");
+
+            // Hopfengaben
+            //  - Spalte gelöscht 'Aktiv'
+            //                    'erg_Hopfentext'
+            sqlExec("ALTER TABLE Hopfengaben RENAME TO TempTable");
+            sqlExec("CREATE TABLE Hopfengaben ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER,"
+                "Name TEXT,"
+                "Prozent REAL DEFAULT 0,"
+                "Zeit INTEGER DEFAULT 0,"
+                "erg_Menge REAL DEFAULT 0,"
+                "Alpha REAL DEFAULT 0,"
+                "Pellets INTEGER DEFAULT 0,"
+                "Vorderwuerze INTEGER DEFAULT 0)");
+            sqlExec("INSERT INTO Hopfengaben ("
+                "SudID,"
+                "Name,"
+                "Prozent,"
+                "Zeit,"
+                "erg_Menge,"
+                "Alpha,"
+                "Pellets,"
+                "Vorderwuerze"
+                ") SELECT "
+                "SudID,"
+                "Name,"
+                "Prozent,"
+                "Zeit,"
+                "erg_Menge,"
+                "Alpha,"
+                "Pellets,"
+                "Vorderwuerze"
+                " FROM TempTable");
+            sqlExec("DROP TABLE TempTable");
+
+            // Rasten
+            //  - Spalte gelöscht 'RastAktiv'
+            //  - Spalte unbenannt 'RastTemp' -> 'Temp'
+            //                     'RastDauer' -> 'Dauer'
+            sqlExec("ALTER TABLE Rasten RENAME TO TempTable");
+            sqlExec("CREATE TABLE Rasten ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER,"
+                "Name TEXT,"
+                "Temp REAL DEFAULT 0,"
+                "Dauer REAL DEFAULT 0)");
+            sqlExec("INSERT INTO Rasten ("
+                "SudID,"
+                "Name,"
+                "Temp,"
+                "Dauer"
+                ") SELECT "
+                "SudID,"
+                "RastName,"
+                "RastTemp,"
+                "RastDauer"
+                " FROM TempTable");
+            sqlExec("DROP TABLE TempTable");
+
             // Sud
             //  - neue Spalte 'Wasserprofil'
             //  - Spalte gelöscht 'Anstelldatum'

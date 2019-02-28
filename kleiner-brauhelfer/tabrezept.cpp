@@ -508,7 +508,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::on_btnEinmaischtemperatur_clicked()
 {
-    int rastTemp = bh->sud()->modelRasten()->rowCount() > 0 ? bh->sud()->modelRasten()->data(0, "RastTemp").toInt() : 57;
+    int rastTemp = bh->sud()->modelRasten()->rowCount() > 0 ? bh->sud()->modelRasten()->data(0, "Temp").toInt() : 57;
     DlgEinmaischTemp dlg(bh->sud()->geterg_S_Gesamt(), 18, bh->sud()->geterg_WHauptguss(), rastTemp, this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setEinmaischenTemp(dlg.value());

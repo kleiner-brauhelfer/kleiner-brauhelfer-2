@@ -64,7 +64,7 @@ void WdgRast::checkEnabled(bool force)
     else
     {
         ui->cbRast->clear();
-        ui->cbRast->addItem(data("RastName").toString());
+        ui->cbRast->addItem(data("Name").toString());
         ui->cbRast->setEditable(false);
         ui->cbRast->setEnabled(false);
         ui->cbRast->setCurrentIndex(-1);
@@ -79,53 +79,53 @@ void WdgRast::updateValues()
     checkEnabled(false);
 
     if (!ui->cbRast->hasFocus())
-        ui->cbRast->setCurrentText(data("RastName").toString());
+        ui->cbRast->setCurrentText(data("Name").toString());
     if (!ui->tbTemp->hasFocus())
-        ui->tbTemp->setValue(data("RastTemp").toInt());
+        ui->tbTemp->setValue(data("Temp").toInt());
     if (!ui->tbDauer->hasFocus())
-        ui->tbDauer->setValue(data("RastDauer").toInt());
+        ui->tbDauer->setValue(data("Dauer").toInt());
 }
 
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 {
     if (ui->cbRast->hasFocus())
-        setData("RastName", text);
+        setData("Name", text);
 }
 
 void WdgRast::on_cbRast_currentIndexChanged(int index)
 {
     if (ui->cbRast->hasFocus())
     {
-        setData("RastName", ui->cbRast->itemText(index));
+        setData("Name", ui->cbRast->itemText(index));
         switch (index)
         {
         case 0: //Gummirast
-            setData("RastTemp", 38);
-            setData("RastDauer", 60);
+            setData("Temp", 38);
+            setData("Dauer", 60);
             break;
         case 1: //Weizenrast
-            setData("RastTemp", 45);
-            setData("RastDauer", 15);
+            setData("Temp", 45);
+            setData("Dauer", 15);
             break;
         case 2: //Eiweißrast
-            setData("RastTemp", 57);
-            setData("RastDauer", 10);
+            setData("Temp", 57);
+            setData("Dauer", 10);
             break;
         case 3: //Maltoserast
-            setData("RastTemp", 63);
-            setData("RastDauer", 35);
+            setData("Temp", 63);
+            setData("Dauer", 35);
             break;
         case 4: //Kombirast
-            setData("RastTemp", 67);
-            setData("RastDauer", 60);
+            setData("Temp", 67);
+            setData("Dauer", 60);
             break;
         case 5: //Verzuckerung
-            setData("RastTemp", 72);
-            setData("RastDauer", 20);
+            setData("Temp", 72);
+            setData("Dauer", 20);
             break;
         case 6: //Abmaischen
-            setData("RastTemp", 78);
-            setData("RastDauer", 0);
+            setData("Temp", 78);
+            setData("Dauer", 0);
         }
         setFocus();
         bh->sud()->modelRasten()->sort();
@@ -135,7 +135,7 @@ void WdgRast::on_cbRast_currentIndexChanged(int index)
 void WdgRast::on_tbTemp_valueChanged(int value)
 {
     if (ui->tbTemp->hasFocus())
-        setData("RastTemp", value);
+        setData("Temp", value);
 }
 
 void WdgRast::on_tbTemp_editingFinished()
@@ -147,7 +147,7 @@ void WdgRast::on_tbTemp_editingFinished()
 void WdgRast::on_tbDauer_valueChanged(int value)
 {
     if (ui->tbDauer->hasFocus())
-        setData("RastDauer", value);
+        setData("Dauer", value);
 }
 
 void WdgRast::on_btnLoeschen_clicked()

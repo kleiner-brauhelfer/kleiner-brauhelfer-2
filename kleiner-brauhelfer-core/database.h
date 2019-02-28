@@ -50,7 +50,6 @@ private:
     QSqlDatabase* mDb;
     ModelSud* modelSud;
     ModelRasten* modelRasten;
-    SqlTableModel* modelRastauswahl;
     ModelMalzschuettung* modelMalzschuettung;
     ModelHopfengaben* modelHopfengaben;
     ModelWeitereZutatenGaben* modelWeitereZutatenGaben;
@@ -64,7 +63,6 @@ private:
     ModelWeitereZutaten* modelWeitereZutaten;
     SqlTableModel* modelAnhang;
     ModelAusruestung* modelAusruestung;
-    SqlTableModel* modelGeraete;
     ModelWasser* modelWasser;
     SqlTableModel* modelFlaschenlabel;
     ModelFlaschenlabelTags* modelFlaschenlabelTags;

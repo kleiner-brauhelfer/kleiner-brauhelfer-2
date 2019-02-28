@@ -28,7 +28,7 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &index) const
         modelSud.setFilterStatus(ProxyModelSud::NichtGebraut);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
-            if (modelSud.data(i, "AuswahlBrauanlageName").toString() == name)
+            if (modelSud.data(i, "Anlage").toString() == name)
             {
                 found = true;
                 break;
@@ -70,7 +70,7 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &index) const
     {
         int n = 0;
         QString name = data(index.row(), "Name").toString();
-        int colName = bh->modelSud()->fieldIndex("AuswahlBrauanlageName");
+        int colName = bh->modelSud()->fieldIndex("Anlage");
         for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
         {
             if (bh->modelSud()->index(row, colName).data().toString() == name)
@@ -90,7 +90,7 @@ bool ModelAusruestung::setDataExt(const QModelIndex &index, const QVariant &valu
         QString prevValue = data(index).toString();
         if (QSqlTableModel::setData(index, name))
         {
-            int colName = bh->modelSud()->fieldIndex("AuswahlBrauanlageName");
+            int colName = bh->modelSud()->fieldIndex("Anlage");
             for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
             {
                 QModelIndex index = bh->modelSud()->index(row, colName);
@@ -112,45 +112,10 @@ QString ModelAusruestung::getUniqueName(const QModelIndex &index, const QVariant
     return name;
 }
 
-bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
-{
-    if (SqlTableModel::removeRows(row, count, parent))
-    {
-        for (int i = 0; i < count; ++i)
-        {
-            int id = data(row + i, "AnlagenID").toInt();
-            int colId = bh->modelGeraete()->fieldIndex("AusruestungAnlagenID");
-            for (int i = 0; i < bh->modelGeraete()->rowCount(); ++i)
-            {
-                if (bh->modelGeraete()->index(i, colId).data().toInt() == id)
-                    bh->modelGeraete()->removeRows(i);
-            }
-        }
-        return true;
-    }
-    return false;
-}
-
 void ModelAusruestung::defaultValues(QVariantMap &values) const
 {
-    if (!values.contains("AnlagenID"))
-        values.insert("AnlagenID", (int)time(nullptr) + rand());
     if (!values.contains("Sudhausausbeute"))
         values.insert("Sudhausausbeute", 60.0);
-}
-
-QString ModelAusruestung::name(int id) const
-{
-    for (int i = 0; i < rowCount(); ++i)
-        if (data(i, "AnlagenID").toInt() == id)
-            return data(i, "Name").toString();
-    return QString();
-}
-
-int ModelAusruestung::id(const QString& name) const
-{
-    for (int i = 0; i < rowCount(); ++i)
-        if (data(i, "Name").toString() == name)
-            return data(i, "AnlagenID").toInt();
-    return 0;
+    if (!values.contains("Verdampfungsziffer"))
+        values.insert("Verdampfungsziffer", 10.0);
 }

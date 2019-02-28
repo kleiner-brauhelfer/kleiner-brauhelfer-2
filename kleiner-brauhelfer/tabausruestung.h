@@ -24,8 +24,6 @@ private slots:
     void anlage_selectionChanged(const QItemSelection &selected);
     void on_btnNeueAnlage_clicked();
     void on_btnAnlageLoeschen_clicked();
-    void on_btnNeuesGeraet_clicked();
-    void on_btnGeraetLoeschen_clicked();
     void updateValues();
     void updateDurchschnitt();
     void on_btnVerdampfungsziffer_clicked();

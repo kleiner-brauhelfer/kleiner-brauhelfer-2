@@ -391,26 +391,6 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
         }
         return false;
     }
-    if (field == "AuswahlBrauanlage")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            QString name = bh->modelAusruestung()->name(value.toInt());
-            QSqlTableModel::setData(this->index(index.row(), fieldIndex("AuswahlBrauanlageName")), name);
-            return true;
-        }
-        return false;
-    }
-    if (field == "AuswahlBrauanlageName")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            int id = bh->modelAusruestung()->id(value.toString());
-            QSqlTableModel::setData(this->index(index.row(), fieldIndex("AuswahlBrauanlage")), id);
-            return true;
-        }
-        return false;
-    }
     return false;
 }
 
@@ -425,13 +405,8 @@ Qt::ItemFlags ModelSud::flags(const QModelIndex &index) const
 
 QVariant ModelSud::dataAnlage(int row, const QString& fieldName) const
 {
-    int anlage = data(row, "AuswahlBrauanlage").toInt();
-    SqlTableModel* model = bh->modelAusruestung();
-    int col = model->fieldIndex("AnlagenID");
-    for (int i = 0; i < model->rowCount(); ++i)
-        if (model->data(model->index(i, col)).toInt() == anlage)
-            return model->data(i, fieldName);
-    return QVariant();
+    QVariant anlage = data(row, "Anlage");
+    return bh->modelAusruestung()->getValueFromSameRow("Name", anlage, fieldName);
 }
 
 QVariant ModelSud::dataWasser(int row, const QString& fieldName) const

@@ -70,8 +70,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(int, HefeAnzahlEinheiten, toInt())
     Q_PROPERTY_SUD(int, berechnungsArtHopfen, toInt())
     Q_PROPERTY_SUD(int, highGravityFaktor, toInt())
-    Q_PROPERTY_SUD(int, AuswahlBrauanlage, toInt())
-    Q_PROPERTY_SUD(QString, AuswahlBrauanlageName, toString())
+    Q_PROPERTY_SUD(QString, Anlage, toString())
     Q_PROPERTY_SUD(bool, AusbeuteIgnorieren, toBool())
     Q_PROPERTY_SUD(int, MerklistenID, toInt())
     Q_PROPERTY_SUD(bool, Spunden, toBool())
@@ -179,7 +178,7 @@ public:
      * @param fieldName
      * @return
      */
-    QVariant getAnlageValue(const QString& fieldName) const;
+    QVariant getAnlageData(const QString& fieldName) const;
 
     /**
      * @brief getWasserValue

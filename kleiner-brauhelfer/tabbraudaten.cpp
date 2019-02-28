@@ -275,9 +275,9 @@ void TabBraudaten::updateValues()
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * value);
     ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, 100.0, ui->tbMengeSollKochbeginn20->value()));
-    value = pow(bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI;
+    value = pow(bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI;
     ui->tbMengeSollcmVomBoden->setValue(bh->sud()->getMengeSollKochbeginn() * 1000 / value);
-    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
+    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
     ui->tbSWSollKochbeginn->setValue(bh->sud()->getSWSollKochbeginn());
     ui->tbMengeSollKochende20->setValue(bh->sud()->getMengeSollKochende());
     ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, 100.0, ui->tbMengeSollKochende20->value()));
@@ -307,8 +307,8 @@ void TabBraudaten::on_tbWuerzemengeKochbeginn_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
-    double d = bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
+    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
@@ -323,8 +323,8 @@ void TabBraudaten::on_tbWuerzemengeKochende_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
-    double d = bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
+    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
     dlg.setVisibleVonOben(false);

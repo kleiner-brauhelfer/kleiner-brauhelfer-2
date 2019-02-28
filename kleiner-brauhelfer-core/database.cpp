@@ -30,7 +30,6 @@ void Database::createTables(Brauhelfer* bh)
     modelWeitereZutaten = new ModelWeitereZutaten(bh, *mDb);
     modelAnhang = new SqlTableModel(bh, *mDb);
     modelAusruestung = new ModelAusruestung(bh, *mDb);
-    modelGeraete = new SqlTableModel(bh, *mDb);
     modelWasser = new ModelWasser(bh, *mDb);
     modelFlaschenlabel = new SqlTableModel(bh, *mDb);
     modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, *mDb);
@@ -61,7 +60,6 @@ void Database::setTables()
     modelWeitereZutaten->setTable("WeitereZutaten");
     modelAnhang->setTable("Anhang");
     modelAusruestung->setTable("Ausruestung");
-    modelGeraete->setTable("Geraete");
     modelWasser->setTable("Wasser");
     modelFlaschenlabel->setTable("Flaschenlabel");
     modelFlaschenlabelTags->setTable("FlaschenlabelTags");
@@ -88,7 +86,6 @@ Database::~Database()
     delete modelWeitereZutaten;
     delete modelAnhang;
     delete modelAusruestung;
-    delete modelGeraete;
     delete modelWasser;
     delete modelFlaschenlabel;
     delete modelFlaschenlabelTags;
@@ -145,7 +142,6 @@ void Database::disconnect()
         modelWeitereZutaten->clear();
         modelAnhang->clear();
         modelAusruestung->clear();
-        modelGeraete->clear();
         modelWasser->clear();
         modelFlaschenlabel->clear();
         modelFlaschenlabelTags->clear();
@@ -176,7 +172,6 @@ bool Database::isDirty() const
            modelWeitereZutaten->isDirty() |
            modelAnhang->isDirty() |
            modelAusruestung->isDirty() |
-           modelGeraete->isDirty() |
            modelWasser->isDirty() |
            modelFlaschenlabel->isDirty() |
            modelFlaschenlabelTags->isDirty();
@@ -189,7 +184,6 @@ void Database::select()
     modelHefe->select();
     modelWeitereZutaten->select();
     modelWasser->select();
-    modelGeraete->select();
     modelAusruestung->select();
     modelRasten->select();
     modelMalzschuettung->select();
@@ -217,7 +211,6 @@ void Database::save()
     modelHefe->submitAll();
     modelWeitereZutaten->submitAll();
     modelWasser->submitAll();
-    modelGeraete->submitAll();
     modelAusruestung->submitAll();
     modelRasten->submitAll();
     modelMalzschuettung->submitAll();
@@ -241,7 +234,6 @@ void Database::discard()
     modelWeitereZutaten->revertAll();
     modelWasser->revertAll();
     modelAusruestung->revertAll();
-    modelGeraete->revertAll();
     modelRasten->revertAll();
     modelMalzschuettung->revertAll();
     modelHopfengaben->revertAll();
@@ -280,6 +272,56 @@ void Database::update()
             version = 2000;
             mDb->transaction();
 
+            // Ausruestung
+            //  - neue Spalte 'Typ'
+            //                'VerlustNachKochen'
+            //  - Spalte gelöscht 'AnlagenID'
+            sqlExec("ALTER TABLE Ausruestung RENAME TO TempTable");
+            sqlExec("CREATE TABLE Ausruestung ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT,"
+                "Typ INTEGER DEFAULT 0,"
+                "Sudhausausbeute REAL DEFAULT 60,"
+                "Verdampfungsziffer REAL DEFAULT 10,"
+                "KorrekturWasser REAL DEFAULT 0,"
+                "KorrekturFarbe REAL DEFAULT 0,"
+                "VerlustNachKochen REAL DEFAULT 0,"
+                "Maischebottich_Hoehe REAL DEFAULT 0,"
+                "Maischebottich_Durchmesser REAL DEFAULT 0,"
+                "Maischebottich_MaxFuellhoehe REAL DEFAULT 0,"
+                "Sudpfanne_Hoehe REAL DEFAULT 0,"
+                "Sudpfanne_Durchmesser REAL DEFAULT 0,"
+                "Sudpfanne_MaxFuellhoehe REAL DEFAULT 0,"
+                "Kosten REAL DEFAULT 0)");
+            sqlExec("INSERT INTO Ausruestung ("
+                "Name,"
+                "Sudhausausbeute,"
+                "Verdampfungsziffer,"
+                "KorrekturWasser,"
+                "KorrekturFarbe,"
+                "Maischebottich_Hoehe,"
+                "Maischebottich_Durchmesser,"
+                "Maischebottich_MaxFuellhoehe,"
+                "Sudpfanne_Hoehe,"
+                "Sudpfanne_Durchmesser,"
+                "Sudpfanne_MaxFuellhoehe,"
+                "Kosten"
+                ") SELECT "
+                "Name,"
+                "Sudhausausbeute,"
+                "Verdampfungsziffer,"
+                "KorrekturWasser,"
+                "KorrekturFarbe,"
+                "Maischebottich_Hoehe,"
+                "Maischebottich_Durchmesser,"
+                "Maischebottich_MaxFuellhoehe,"
+                "Sudpfanne_Hoehe,"
+                "Sudpfanne_Durchmesser,"
+                "Sudpfanne_MaxFuellhoehe,"
+                "Kosten"
+                " FROM TempTable");
+            sqlExec("DROP TABLE TempTable");
+
             // Wasser
             //  - neue Spalte 'Name'
             sqlExec("ALTER TABLE Wasser RENAME TO TempTable");
@@ -311,8 +353,10 @@ void Database::update()
             //                    'SWVorHopfenseihen'
             //                    'BewertungMaxSterne'
             //                    'NeuBerechnen'
+            //                    'AuswahlBrauanlage'
             //  - Spalte unbenannt 'erg_S_Gesammt' -> 'erg_S_Gesamt'
             //                     'erg_W_Gesammt' -> 'erg_W_Gesamt'
+            //                     'AuswahlBrauanlageName' -> 'Anlage'
             sqlExec("ALTER TABLE Sud RENAME TO TempTable");
             sqlExec("CREATE TABLE Sud ("
                 "ID INTEGER PRIMARY KEY,"
@@ -361,8 +405,7 @@ void Database::update()
                 "HefeAnzahlEinheiten INTEGER DEFAULT 1,"
                 "berechnungsArtHopfen INTEGER DEFAULT 0,"
                 "highGravityFaktor REAL DEFAULT 0,"
-                "AuswahlBrauanlage INTEGER DEFAULT 0,"
-                "AuswahlBrauanlageName TEXT,"
+                "Anlage TEXT,"
                 "AusbeuteIgnorieren INTEGER DEFAULT 0,"
                 "MerklistenID INTEGER DEFAULT 0,"
                 "Spunden INTEGER DEFAULT 0,"
@@ -415,8 +458,7 @@ void Database::update()
                 "HefeAnzahlEinheiten,"
                 "berechnungsArtHopfen,"
                 "highGravityFaktor,"
-                "AuswahlBrauanlage,"
-                "AuswahlBrauanlageName,"
+                "Anlage,"
                 "AusbeuteIgnorieren,"
                 "MerklistenID,"
                 "Spunden,"
@@ -468,7 +510,6 @@ void Database::update()
                 "HefeAnzahlEinheiten,"
                 "berechnungsArtHopfen,"
                 "highGravityFaktor,"
-                "AuswahlBrauanlage,"
                 "AuswahlBrauanlageName,"
                 "AusbeuteIgnorieren,"
                 "MerklistenID,"
@@ -477,6 +518,10 @@ void Database::update()
                 " FROM TempTable");
             sqlExec("UPDATE Sud SET Wasserprofil='Profil 1'");
             sqlExec("DROP TABLE TempTable");
+
+            // Geraete
+            //  - Tabelle gelöscht
+            sqlExec("DROP TABLE Geraete");
 
             // IgnorMsgID
             //  - Tabelle gelöscht

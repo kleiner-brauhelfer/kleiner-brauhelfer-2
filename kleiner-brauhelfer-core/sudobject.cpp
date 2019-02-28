@@ -192,7 +192,7 @@ bool SudObject::setValue(const QString &fieldName, const QVariant &value)
     return bh->modelSud()->setData(mRowSud, fieldName, value);
 }
 
-QVariant SudObject::getAnlageValue(const QString& fieldName) const
+QVariant SudObject::getAnlageData(const QString& fieldName) const
 {
     return bh->modelSud()->dataAnlage(mRowSud, fieldName);
 }

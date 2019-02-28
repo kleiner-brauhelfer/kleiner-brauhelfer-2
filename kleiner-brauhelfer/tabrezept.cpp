@@ -394,7 +394,7 @@ void TabRezept::updateValues()
     if (!ui->tbReifezeit->hasFocus())
         ui->tbReifezeit->setValue(bh->sud()->getReifezeit());
     if (!ui->cbAnlage->hasFocus())
-        ui->cbAnlage->setCurrentText(bh->sud()->getAuswahlBrauanlageName());
+        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
     if (!ui->tbHGF->hasFocus())
         ui->tbHGF->setValue(bh->sud()->gethighGravityFaktor());
@@ -424,12 +424,12 @@ void TabRezept::updateValues()
     ui->tbMilchsaeureNG->setVisible(f > 0.0);
     ui->lblMilchsaeureNG->setVisible(f > 0.0);
     ui->lblMilchsaeureNGEinheit->setVisible(f > 0.0);
-    ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageValue("Sudhausausbeute").toDouble());
-    ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageValue("Verdampfungsziffer").toDouble());
-    ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageValue("Maischebottich_MaxFuellvolumen").toDouble());
+    ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData("Sudhausausbeute").toDouble());
+    ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData("Verdampfungsziffer").toDouble());
+    ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData("Maischebottich_MaxFuellvolumen").toDouble());
     ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
     ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
-    ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageValue("Sudpfanne_MaxFuellvolumen").toDouble());
+    ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData("Sudpfanne_MaxFuellvolumen").toDouble());
     ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
     ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
     if (!ui->tbEinmaischtemperatur->hasFocus())
@@ -461,7 +461,7 @@ void TabRezept::updateAnlageModel()
     if (bh->sud()->getBierWurdeGebraut())
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbAnlage);
-        model->setItem(0, 0, new QStandardItem(bh->sud()->getAuswahlBrauanlageName()));
+        model->setItem(0, 0, new QStandardItem(bh->sud()->getAnlage()));
         ui->cbAnlage->setModel(model);
         ui->cbAnlage->setModelColumn(0);
     }
@@ -480,8 +480,7 @@ void TabRezept::updateWasserModel()
     if (bh->sud()->getBierWurdeGebraut())
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbWasserProfil);
-        // TODO:
-        //model->setItem(0, 0, new QStandardItem(bh->sud()->getAuswahlBrauanlageName()));
+        model->setItem(0, 0, new QStandardItem(bh->sud()->getWasserprofil()));
         ui->cbWasserProfil->setModel(model);
         ui->cbWasserProfil->setModelColumn(0);
     }
@@ -763,7 +762,7 @@ void TabRezept::on_tbReifezeit_valueChanged(int value)
 void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
-        bh->sud()->setAuswahlBrauanlageName(value);
+        bh->sud()->setAnlage(value);
 }
 
 void TabRezept::on_tbKommentar_textChanged()

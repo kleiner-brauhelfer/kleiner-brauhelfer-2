@@ -130,7 +130,7 @@ void WebView::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctxRezept["Farbe"] = locale.toString(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble(), 'f', 0);
         ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble())).name();
         ctxRezept["Nachisomerisierung"] = QString::number(bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt());
-        ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, "AuswahlBrauanlageName").toString();
+        ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, "Anlage").toString();
         ctxRezept["Name"] = bh->modelSud()->data(sudRow, "Sudname").toString();
         ctxRezept["Nummer"] = QString::number(bh->modelSud()->data(sudRow, "Sudnummer").toDouble());
         ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, "Kommentar").toString().replace("\n", "<br>");

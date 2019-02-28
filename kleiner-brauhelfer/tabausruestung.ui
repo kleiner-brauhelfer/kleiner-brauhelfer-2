@@ -88,51 +88,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Geräte</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QListView" name="listViewGeraete">
-         <property name="alternatingRowColors">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QPushButton" name="btnNeuesGeraet">
-           <property name="text">
-            <string>Neues Gerät</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnGeraetLoeschen">
-           <property name="text">
-            <string>Gerät löschen</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="Line" name="line_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="label_23">
          <property name="font">
           <font>
@@ -184,7 +139,7 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-153</y>
+          <y>0</y>
           <width>660</width>
           <height>685</height>
          </rect>
@@ -1252,9 +1207,6 @@
   <tabstop>tableViewAnlagen</tabstop>
   <tabstop>btnNeueAnlage</tabstop>
   <tabstop>btnAnlageLoeschen</tabstop>
-  <tabstop>listViewGeraete</tabstop>
-  <tabstop>btnNeuesGeraet</tabstop>
-  <tabstop>btnGeraetLoeschen</tabstop>
   <tabstop>tableViewSude</tabstop>
   <tabstop>scrollArea</tabstop>
   <tabstop>tbAusbeute</tabstop>

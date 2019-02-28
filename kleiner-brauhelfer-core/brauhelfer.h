@@ -44,7 +44,6 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelHefe READ modelHefe CONSTANT)
     Q_PROPERTY(SqlTableModel* modelWeitereZutaten READ modelWeitereZutaten CONSTANT)
     Q_PROPERTY(SqlTableModel* modelAusruestung READ modelAusruestung CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelGeraete READ modelGeraete CONSTANT)
     Q_PROPERTY(SqlTableModel* modelWasser READ modelWasser CONSTANT)
     Q_PROPERTY(SqlTableModel* modelRasten READ modelRasten CONSTANT)
     Q_PROPERTY(SqlTableModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
@@ -98,7 +97,6 @@ public:
     ModelHefe* modelHefe() const;
     ModelWeitereZutaten* modelWeitereZutaten() const;
     ModelAusruestung* modelAusruestung() const;
-    SqlTableModel* modelGeraete() const;
     ModelWasser* modelWasser() const;
     ModelRasten* modelRasten() const;
     ModelMalzschuettung* modelMalzschuettung() const;

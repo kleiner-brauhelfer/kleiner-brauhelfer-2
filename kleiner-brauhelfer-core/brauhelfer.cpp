@@ -5,7 +5,7 @@
 const int Brauhelfer::libVersionMajor = VER_MAJ;
 const int Brauhelfer::libVerionMinor = VER_MIN;
 const int Brauhelfer::libVersionPatch = VER_PAT;
-const int Brauhelfer::supportedDatabaseVersion = libVerionMinor;
+const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVerionMinor;
 
 Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     QObject(parent),
@@ -18,7 +18,6 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     mCalc = new BierCalc();
 
     connect(mDb->modelSud, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelRastauswahl, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelMalz, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHopfen, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHefe, SIGNAL(modified()), this, SIGNAL(modified()));
@@ -160,11 +159,6 @@ SudObject* Brauhelfer::sud() const
 ModelSud *Brauhelfer::modelSud() const
 {
     return mDb->modelSud;
-}
-
-SqlTableModel* Brauhelfer::modelRastauswahl() const
-{
-    return mDb->modelRastauswahl;
 }
 
 ModelMalz *Brauhelfer::modelMalz() const

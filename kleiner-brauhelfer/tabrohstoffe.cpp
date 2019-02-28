@@ -422,7 +422,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = model->fieldIndex("ID");
+    col = model->fieldIndex("Name");
     model->setHeaderData(col, Qt::Horizontal, tr("Wasserprofil"));
     table->setColumnHidden(col, false);
     table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);

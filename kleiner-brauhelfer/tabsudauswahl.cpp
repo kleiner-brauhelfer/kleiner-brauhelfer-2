@@ -49,7 +49,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("erg_AbgefuellteBiermenge"), Qt::Horizontal, tr("Menge [l]"));
     model->setHeaderData(model->fieldIndex("erg_Sudhausausbeute"), Qt::Horizontal, tr("SHA [%]"));
     model->setHeaderData(model->fieldIndex("SWIst"), Qt::Horizontal, tr("SW [°P]"));
-    model->setHeaderData(model->fieldIndex("erg_S_Gesammt"), Qt::Horizontal, tr("Schüttung [kg]"));
+    model->setHeaderData(model->fieldIndex("erg_S_Gesamt"), Qt::Horizontal, tr("Schüttung [kg]"));
     model->setHeaderData(model->fieldIndex("erg_Preis"), Qt::Horizontal, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()));
     model->setHeaderData(model->fieldIndex("erg_Alkohol"), Qt::Horizontal, tr("Alk. [%]"));
     model->setHeaderData(model->fieldIndex("sEVG"), Qt::Horizontal, tr("sEVG [%]"));

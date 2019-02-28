@@ -17,7 +17,6 @@ void Database::createTables(Brauhelfer* bh)
 {
     modelSud = new ModelSud(bh, *mDb);
     modelRasten = new ModelRasten(bh, *mDb);
-    modelRastauswahl = new SqlTableModel(bh, *mDb);
     modelMalzschuettung = new ModelMalzschuettung(bh, *mDb);
     modelHopfengaben = new ModelHopfengaben(bh, *mDb);
     modelWeitereZutatenGaben = new ModelWeitereZutatenGaben(bh, *mDb);
@@ -45,7 +44,6 @@ void Database::setTables()
     modelSud->setTable("Sud");
     modelSud->setSortByFieldName("Braudatum", Qt::DescendingOrder);
     modelRasten->setTable("Rasten");
-    modelRastauswahl->setTable("Rastauswahl");
     modelMalzschuettung->setTable("Malzschuettung");
     modelHopfengaben->setTable("Hopfengaben");
     modelWeitereZutatenGaben->setTable("WeitereZutatenGaben");
@@ -77,7 +75,6 @@ Database::~Database()
     delete mDb;
     delete modelSud;
     delete modelRasten;
-    delete modelRastauswahl;
     delete modelMalzschuettung;
     delete modelHopfengaben;
     delete modelWeitereZutatenGaben;
@@ -135,7 +132,6 @@ void Database::disconnect()
     {
         modelSud->clear();
         modelRasten->clear();
-        modelRastauswahl->clear();
         modelMalzschuettung->clear();
         modelHopfengaben->clear();
         modelWeitereZutatenGaben->clear();
@@ -167,7 +163,6 @@ bool Database::isDirty() const
 {
     return modelSud->isDirty() |
            modelRasten->isDirty() |
-           modelRastauswahl->isDirty() |
            modelMalzschuettung->isDirty() |
            modelHopfengaben->isDirty() |
            modelWeitereZutatenGaben->isDirty() |
@@ -196,7 +191,6 @@ void Database::select()
     modelWasser->select();
     modelGeraete->select();
     modelAusruestung->select();
-    modelRastauswahl->select();
     modelRasten->select();
     modelMalzschuettung->select();
     modelHopfengaben->select();
@@ -225,7 +219,6 @@ void Database::save()
     modelWasser->submitAll();
     modelGeraete->submitAll();
     modelAusruestung->submitAll();
-    modelRastauswahl->submitAll();
     modelRasten->submitAll();
     modelMalzschuettung->submitAll();
     modelHopfengaben->submitAll();
@@ -249,7 +242,6 @@ void Database::discard()
     modelWasser->revertAll();
     modelAusruestung->revertAll();
     modelGeraete->revertAll();
-    modelRastauswahl->revertAll();
     modelRasten->revertAll();
     modelMalzschuettung->revertAll();
     modelHopfengaben->revertAll();
@@ -283,8 +275,228 @@ void Database::update()
     int version = mVersion;
     try
     {
-        /*
         if (version == 24)
+        {
+            version = 2000;
+            mDb->transaction();
+
+            // Wasser
+            //  - neue Spalte 'Name'
+            sqlExec("ALTER TABLE Wasser RENAME TO TempTable");
+            sqlExec("CREATE TABLE Wasser ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT,"
+                "Calcium REAL DEFAULT 0,"
+                "Magnesium REAL DEFAULT 0,"
+                "Saeurekapazitaet REAL DEFAULT 0)");
+            sqlExec("INSERT INTO Wasser ("
+                "Calcium,"
+                "Magnesium,"
+                "Saeurekapazitaet"
+                ") SELECT "
+                "Calcium,"
+                "Magnesium,"
+                "Saeurekapazitaet"
+                " FROM TempTable");
+            sqlExec("UPDATE Wasser SET Name='Profil 1'");
+            sqlExec("DROP TABLE TempTable");
+
+            // Sud
+            //  - neue Spalte 'Wasserprofil'
+            //  - Spalte gelöscht 'Anstelldatum'
+            //                    'AktivTab'
+            //                    'Bewertung'
+            //                    'BewertungText'
+            //                    'AktivTab_Gaerverlauf'
+            //                    'SWVorHopfenseihen'
+            //                    'BewertungMaxSterne'
+            //                    'NeuBerechnen'
+            //  - Spalte unbenannt 'erg_S_Gesammt' -> 'erg_S_Gesamt'
+            //                     'erg_W_Gesammt' -> 'erg_W_Gesamt'
+            sqlExec("ALTER TABLE Sud RENAME TO TempTable");
+            sqlExec("CREATE TABLE Sud ("
+                "ID INTEGER PRIMARY KEY,"
+                "Sudname TEXT,"
+                "Menge REAL DEFAULT 20,"
+                "SW REAL DEFAULT 12,"
+                "CO2 REAL DEFAULT 5,"
+                "IBU REAL DEFAULT 26,"
+                "Kommentar TEXT,"
+                "Braudatum DATETIME,"
+                "BierWurdeGebraut INTEGER DEFAULT 0,"
+                "WuerzemengeAnstellen REAL DEFAULT 20,"
+                "SWAnstellen REAL DEFAULT 12,"
+                "Abfuelldatum DATETIME,"
+                "BierWurdeAbgefuellt INTEGER DEFAULT 0,"
+                "SWSchnellgaerprobe REAL DEFAULT 2.5,"
+                "SWJungbier REAL DEFAULT 3,"
+                "TemperaturJungbier REAL DEFAULT 12,"
+                "WuerzemengeKochende REAL DEFAULT 20,"
+                "Speisemenge REAL DEFAULT 1,"
+                "SWKochende REAL DEFAULT 12,"
+                "AuswahlHefe TEXT,"
+                "FaktorHauptguss REAL DEFAULT 3.5,"
+                "KochdauerNachBitterhopfung INTEGER DEFAULT 90,"
+                "EinmaischenTemp INTEGER DEFAULT 60,"
+                "Erstellt DATETIME,"
+                "Gespeichert DATETIME,"
+                "erg_S_Gesamt REAL DEFAULT 0,"
+                "erg_W_Gesamt REAL DEFAULT 0,"
+                "erg_WHauptguss REAL DEFAULT 0,"
+                "erg_WNachguss REAL DEFAULT 0,"
+                "erg_Sudhausausbeute REAL DEFAULT 0,"
+                "erg_Farbe REAL DEFAULT 0,"
+                "erg_Preis REAL DEFAULT 0,"
+                "erg_Alkohol REAL DEFAULT 0,"
+                "KostenWasserStrom REAL DEFAULT 0,"
+                "Reifezeit INTEGER DEFAULT 4,"
+                "BierWurdeVerbraucht INTEGER DEFAULT 0,"
+                "Nachisomerisierungszeit INTEGER DEFAULT 0,"
+                "WuerzemengeVorHopfenseihen REAL DEFAULT 0,"
+                "erg_EffektiveAusbeute REAL DEFAULT 0,"
+                "RestalkalitaetSoll REAL DEFAULT 0,"
+                "SchnellgaerprobeAktiv INTEGER DEFAULT 0,"
+                "JungbiermengeAbfuellen REAL DEFAULT 0,"
+                "erg_AbgefuellteBiermenge REAL DEFAULT 0,"
+                "HefeAnzahlEinheiten INTEGER DEFAULT 1,"
+                "berechnungsArtHopfen INTEGER DEFAULT 0,"
+                "highGravityFaktor REAL DEFAULT 0,"
+                "AuswahlBrauanlage INTEGER DEFAULT 0,"
+                "AuswahlBrauanlageName TEXT,"
+                "AusbeuteIgnorieren INTEGER DEFAULT 0,"
+                "MerklistenID INTEGER DEFAULT 0,"
+                "Spunden INTEGER DEFAULT 0,"
+                "Sudnummer INTEGER DEFAULT 0,"
+                "Wasserprofil TEXT)");
+            sqlExec("INSERT INTO Sud ("
+                "ID,"
+                "Sudname,"
+                "Menge,"
+                "SW,"
+                "CO2,"
+                "IBU,"
+                "Kommentar,"
+                "Braudatum,"
+                "BierWurdeGebraut,"
+                "WuerzemengeAnstellen,"
+                "SWAnstellen,"
+                "Abfuelldatum,"
+                "BierWurdeAbgefuellt,"
+                "SWSchnellgaerprobe,"
+                "SWJungbier,"
+                "TemperaturJungbier,"
+                "WuerzemengeKochende,"
+                "Speisemenge,"
+                "SWKochende,"
+                "AuswahlHefe,"
+                "FaktorHauptguss,"
+                "KochdauerNachBitterhopfung,"
+                "EinmaischenTemp,"
+                "Erstellt,"
+                "Gespeichert,"
+                "erg_S_Gesamt,"
+                "erg_W_Gesamt,"
+                "erg_WHauptguss,"
+                "erg_WNachguss,"
+                "erg_Sudhausausbeute,"
+                "erg_Farbe,"
+                "erg_Preis,"
+                "erg_Alkohol,"
+                "KostenWasserStrom,"
+                "Reifezeit,"
+                "BierWurdeVerbraucht,"
+                "Nachisomerisierungszeit,"
+                "WuerzemengeVorHopfenseihen,"
+                "erg_EffektiveAusbeute,"
+                "RestalkalitaetSoll,"
+                "SchnellgaerprobeAktiv,"
+                "JungbiermengeAbfuellen,"
+                "erg_AbgefuellteBiermenge,"
+                "HefeAnzahlEinheiten,"
+                "berechnungsArtHopfen,"
+                "highGravityFaktor,"
+                "AuswahlBrauanlage,"
+                "AuswahlBrauanlageName,"
+                "AusbeuteIgnorieren,"
+                "MerklistenID,"
+                "Spunden,"
+                "Sudnummer"
+                ") SELECT "
+                "ID,"
+                "Sudname,"
+                "Menge,"
+                "SW,"
+                "CO2,"
+                "IBU,"
+                "Kommentar,"
+                "Braudatum,"
+                "BierWurdeGebraut,"
+                "WuerzemengeAnstellen,"
+                "SWAnstellen,"
+                "Abfuelldatum,"
+                "BierWurdeAbgefuellt,"
+                "SWSchnellgaerprobe,"
+                "SWJungbier,"
+                "TemperaturJungbier,"
+                "WuerzemengeKochende,"
+                "Speisemenge,"
+                "SWKochende,"
+                "AuswahlHefe,"
+                "FaktorHauptguss,"
+                "KochdauerNachBitterhopfung,"
+                "EinmaischenTemp,"
+                "Erstellt,"
+                "Gespeichert,"
+                "erg_S_Gesammt,"
+                "erg_W_Gesammt,"
+                "erg_WHauptguss,"
+                "erg_WNachguss,"
+                "erg_Sudhausausbeute,"
+                "erg_Farbe,"
+                "erg_Preis,"
+                "erg_Alkohol,"
+                "KostenWasserStrom,"
+                "Reifezeit,"
+                "BierWurdeVerbraucht,"
+                "Nachisomerisierungszeit,"
+                "WuerzemengeVorHopfenseihen,"
+                "erg_EffektiveAusbeute,"
+                "RestalkalitaetSoll,"
+                "SchnellgaerprobeAktiv,"
+                "JungbiermengeAbfuellen,"
+                "erg_AbgefuellteBiermenge,"
+                "HefeAnzahlEinheiten,"
+                "berechnungsArtHopfen,"
+                "highGravityFaktor,"
+                "AuswahlBrauanlage,"
+                "AuswahlBrauanlageName,"
+                "AusbeuteIgnorieren,"
+                "MerklistenID,"
+                "Spunden,"
+                "Sudnummer"
+                " FROM TempTable");
+            sqlExec("UPDATE Sud SET Wasserprofil='Profil 1'");
+            sqlExec("DROP TABLE TempTable");
+
+            // IgnorMsgID
+            //  - Tabelle gelöscht
+            sqlExec("DROP TABLE IgnorMsgID");
+
+            // Rastauswahl
+            //  - Tabelle gelöscht
+            sqlExec("DROP TABLE Rastauswahl");
+
+            // Global
+            //  - Spalte gelöscht 'db_NeuBerechnen'
+            sqlExec("DROP TABLE Global");
+            sqlExec("CREATE TABLE Global (db_Version INTEGER)");
+            sqlExec(QString("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));
+
+            mDb->commit();
+        }
+
+        /*
+        if (version == 2000)
         {
             ++version;
             mDb->transaction();

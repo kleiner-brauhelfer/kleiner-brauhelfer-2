@@ -197,6 +197,11 @@ QVariant SudObject::getAnlageValue(const QString& fieldName) const
     return bh->modelSud()->dataAnlage(mRowSud, fieldName);
 }
 
+QVariant SudObject::getWasserData(const QString& fieldName) const
+{
+    return bh->modelSud()->dataWasser(mRowSud, fieldName);
+}
+
 void SudObject::substractBrewIngredients()
 {
     int row;

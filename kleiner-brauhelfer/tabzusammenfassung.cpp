@@ -201,7 +201,7 @@ void TabZusammenfassung::updateTemplateTags()
     }
     s += "<tr>";
     s += "<td style='font-weight:bold;'>" + tr("Gesamt") + "</td>";
-    s += "<td class='value' style='font-weight:bold;' align='right'>" + locale.toString(bh->sud()->geterg_S_Gesammt(), 'f', 2) + "</td>";
+    s += "<td class='value' style='font-weight:bold;' align='right'>" + locale.toString(bh->sud()->geterg_S_Gesamt(), 'f', 2) + "</td>";
     s += "<td>" + tr("kg") + "</td>";
     s += "</tr>";
     s += "</tbody></table>";
@@ -288,7 +288,7 @@ void TabZusammenfassung::updateTemplateTags()
     s += "</tr>";
     s += "<tr>";
     s += "<td>" + tr("Gesamt") + "</td>";
-    s += "<td class='value' style='font-weight:bold;' align='right'>" + locale.toString(bh->sud()->geterg_S_Gesammt(), 'f', 1) + "</td>";
+    s += "<td class='value' style='font-weight:bold;' align='right'>" + locale.toString(bh->sud()->geterg_S_Gesamt(), 'f', 1) + "</td>";
     s += "<td>" + tr("Liter") + "</td>";
     s += "</tr>";
     s += "</tbody></table>";

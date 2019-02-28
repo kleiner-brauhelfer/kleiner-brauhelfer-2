@@ -12,7 +12,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr, bool updated = false);
     ~MainWindow() Q_DECL_OVERRIDE;
 
 private slots:
@@ -45,7 +45,7 @@ private:
     void restart();
     void save();
     void saveSettings();
-    void restoreView();
+    void restoreView(bool onUpdate = false);
 
 private:
     Ui::MainWindow *ui;

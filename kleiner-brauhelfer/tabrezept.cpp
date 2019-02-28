@@ -389,7 +389,7 @@ void TabRezept::updateValues()
     if (!ui->tbBittere->hasFocus())
         ui->tbBittere->setValue(bh->sud()->getIBU());
     ui->tbFarbe->setValue((int)bh->sud()->geterg_Farbe());
-    ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesammt());
+    ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesamt());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
     if (!ui->tbReifezeit->hasFocus())
         ui->tbReifezeit->setValue(bh->sud()->getReifezeit());
@@ -403,10 +403,13 @@ void TabRezept::updateValues()
     ui->tbFaktorHauptgussEmpfehlung->setValue(bh->sud()->getFaktorHauptgussEmpfehlung());
     if (!ui->tbRestalkalitaet->hasFocus())
         ui->tbRestalkalitaet->setValue(bh->sud()->getRestalkalitaetSoll());
-    ui->tbRestalkalitaetWasser->setValue(bh->modelWasser()->data(0, "Restalkalitaet").toDouble());
+    if (!ui->cbWasserProfil->hasFocus())
+        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
+    ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
+    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData("Restalkalitaet").toDouble());
     ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
     f = bh->sud()->getRestalkalitaetFaktor();
-    ui->tbWasserGesamt->setValue(bh->sud()->geterg_W_Gesammt());
+    ui->tbWasserGesamt->setValue(bh->sud()->geterg_W_Gesamt());
     ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * f);
     ui->tbHauptguss->setValue(bh->sud()->geterg_WHauptguss());
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * f);
@@ -424,7 +427,7 @@ void TabRezept::updateValues()
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageValue("Sudhausausbeute").toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageValue("Verdampfungsziffer").toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageValue("Maischebottich_MaxFuellvolumen").toDouble());
-    ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesammt());
+    ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
     ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
     ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageValue("Sudpfanne_MaxFuellvolumen").toDouble());
     ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
@@ -439,8 +442,6 @@ void TabRezept::updateValues()
         ui->cbBerechnungsartHopfen->setCurrentIndex(bh->sud()->getberechnungsArtHopfen());
     if (!ui->tbKommentar->hasFocus())
         ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
-
-    ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
     updateGlas();
 }
 
@@ -509,7 +510,7 @@ void TabRezept::rasten_modified()
 void TabRezept::on_btnEinmaischtemperatur_clicked()
 {
     int rastTemp = bh->sud()->modelRasten()->rowCount() > 0 ? bh->sud()->modelRasten()->data(0, "RastTemp").toInt() : 57;
-    DlgEinmaischTemp dlg(bh->sud()->geterg_S_Gesammt(), 18, bh->sud()->geterg_WHauptguss(), rastTemp, this);
+    DlgEinmaischTemp dlg(bh->sud()->geterg_S_Gesamt(), 18, bh->sud()->geterg_WHauptguss(), rastTemp, this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setEinmaischenTemp(dlg.value());
 }
@@ -785,6 +786,12 @@ void TabRezept::on_tbFaktorHauptguss_valueChanged(double value)
 {
     if (ui->tbFaktorHauptguss->hasFocus())
         bh->sud()->setFaktorHauptguss(value);
+}
+
+void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
+{
+    if (ui->cbWasserProfil->hasFocus())
+        bh->sud()->setWasserprofil(value);
 }
 
 void TabRezept::on_tbRestalkalitaet_valueChanged(double value)

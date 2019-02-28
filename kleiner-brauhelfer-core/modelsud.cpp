@@ -89,10 +89,6 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     {
         return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
     }
-    if (field == "Anstelldatum")
-    {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-    }
     if (field == "Abfuelldatum")
     {
         return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
@@ -248,15 +244,10 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
     {
         if (QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate)))
         {
-            setData(index.row(), "Anstelldatum", value);
             setData(index.row(), "Abfuelldatum", value);
             return true;
         }
         return false;
-    }
-    if (field == "Anstelldatum")
-    {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
     }
     if (field == "Abfuelldatum")
     {
@@ -443,6 +434,12 @@ QVariant ModelSud::dataAnlage(int row, const QString& fieldName) const
     return QVariant();
 }
 
+QVariant ModelSud::dataWasser(int row, const QString& fieldName) const
+{
+    QVariant profil = data(row, "Wasserprofil");
+    return bh->modelWasser()->getValueFromSameRow("Name", profil, fieldName);
+}
+
 void ModelSud::update(int row)
 {
     if (row < 0 || row >= rowCount())
@@ -463,11 +460,11 @@ void ModelSud::update(int row)
         double swRecipe = data(row, "SW").toDouble();
         double hgf = 1 + data(row, "highGravityFaktor").toInt() / 100.0;
 
-        // erg_S_Gesammt
+        // erg_S_Gesamt
         sw = swRecipe - swWzMaischenRecipe[row] - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
         double ausb = dataAnlage(row, "Sudhausausbeute").toDouble();
         double schuet = mengeRecipe * BierCalc::platoToDichte(sw * hgf) * sw / ausb;
-        setData(row, "erg_S_Gesammt", schuet);
+        setData(row, "erg_S_Gesamt", schuet);
 
         // erg_Farbe
         updateFarbe(row);
@@ -483,8 +480,8 @@ void ModelSud::update(int row)
         double ng = menge + schuet * 0.96 - hg + KorrekturWasser;
         setData(row, "erg_WNachguss", ng);
 
-        // erg_W_Gesammt
-        setData(row, "erg_W_Gesammt", hg + ng);
+        // erg_W_Gesamt
+        setData(row, "erg_W_Gesamt", hg + ng);
 
         // erg_Sudhausausbeute
         sw = data(row, "SWKochende").toDouble() - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
@@ -867,7 +864,7 @@ QVariant ModelSud::Verdampfungsziffer(const QModelIndex &index) const
 
 QVariant ModelSud::RestalkalitaetFaktor(const QModelIndex &index) const
 {
-    double ist = bh->modelWasser()->data(0, "Restalkalitaet").toDouble();
+    double ist = bh->modelWasser()->getValueFromSameRow("Name", data(index.row(), "Wasserprofil"), "Restalkalitaet").toDouble();
     double soll = data(index.row(), "RestalkalitaetSoll").toDouble();
     double fac = (ist -  soll) * 0.033333333;
     if (fac < 0.0)

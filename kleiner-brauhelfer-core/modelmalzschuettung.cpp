@@ -31,7 +31,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &v
             fVal = 100.0;
         if (QSqlTableModel::setData(index, fVal))
         {
-            double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesammt").toDouble();
+            double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesamt").toDouble();
             QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("erg_Menge")), fVal / 100 * total);
             return true;
         }
@@ -43,7 +43,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &v
             fVal = 0.0;
         if (QSqlTableModel::setData(index, fVal))
         {
-            double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesammt").toDouble();
+            double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesamt").toDouble();
             QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Prozent")), fVal * 100 / total);
             return true;
         }
@@ -54,7 +54,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &v
 void ModelMalzschuettung::onSudDataChanged(const QModelIndex &index)
 {
     QString field = bh->modelSud()->fieldName(index.column());
-    if (field == "erg_S_Gesammt")
+    if (field == "erg_S_Gesamt")
     {
         int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
         double total = index.data().toDouble();

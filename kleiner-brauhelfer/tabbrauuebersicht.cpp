@@ -55,7 +55,7 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
     mAuswahlListe.append({"SWIst", 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
     mAuswahlListe.append({"erg_Sudhausausbeute", 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({"erg_EffektiveAusbeute", 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({"erg_S_Gesammt", 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
+    mAuswahlListe.append({"erg_S_Gesamt", 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
     mAuswahlListe.append({"erg_Alkohol", 1, tr("Alkohol [%]"), tr("%"), 0, 0});
     mAuswahlListe.append({"sEVG", 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({"tEVG", 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});

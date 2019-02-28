@@ -11,7 +11,7 @@
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
 // Diese Kopie wird aktualisiert ohne die ursprüngliche Datenbank zu verändern.
-//#define MODE_TEST_UPDATE
+#define MODE_TEST_UPDATE
 
 #if defined(QT_NO_DEBUG) && defined(MODE_TEST_UPDATE)
 #error MODE_TEST_UPDATE in release build defined.
@@ -78,8 +78,9 @@ static int chooseDatabase()
     return ret;
 }
 
-static bool connectDatabase()
+static bool connectDatabase(bool &updated)
 {
+    updated = false;
     while (true)
     {
         // connect
@@ -114,7 +115,10 @@ static bool connectDatabase()
                     try
                     {
                         if (bh->updateDatabase())
+                        {
+                            updated = true;
                             return bh->isConnectedDatabase();
+                        }
                         else
                             QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
                     }
@@ -189,11 +193,12 @@ int main(int argc, char *argv[])
 
     // run application
     int ret = -1;
+    bool updated;
     do
     {
-        if (connectDatabase())
+        if (connectDatabase(updated))
         {
-            MainWindow w;
+            MainWindow w(nullptr, updated);
             a.setStyle(QStyleFactory::create(gSettings->style()));
             a.setPalette(gSettings->palette);
             if (!gSettings->useSystemFont())

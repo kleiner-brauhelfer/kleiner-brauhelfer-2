@@ -5,9 +5,9 @@ ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-core
 
 # Hauptversionsnummer
-VER_MAJ = 1
+VER_MAJ = 2
 # Datenbankversion
-VER_MIN = 24
+VER_MIN = 0
 # Patchversion
 VER_PAT = 0
 

@@ -100,7 +100,7 @@ void WdgMalzGabe::updateValues()
         ui->tbMengeProzent->setValue(data("Prozent").toDouble());
     if (!ui->tbMenge->hasFocus())
     {
-        ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesammt());
+        ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());
         ui->tbMenge->setValue(data("erg_Menge").toDouble());
     }
 

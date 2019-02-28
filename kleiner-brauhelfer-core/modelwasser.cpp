@@ -49,8 +49,6 @@ QVariant ModelWasser::dataExt(const QModelIndex &index) const
 bool ModelWasser::setDataExt(const QModelIndex &index, const QVariant &value)
 {
      QString field = fieldName(index.column());
-     /*
-     // TODO: add colum name and uncomment
      if (field == "Name")
      {
          QString name = getUniqueName(index, value);
@@ -67,7 +65,6 @@ bool ModelWasser::setDataExt(const QModelIndex &index, const QVariant &value)
              return true;
          }
      }
-    */
      if (field == "CalciumMmol")
      {
          return setData(index.row(), "Calcium", value.toDouble() * 40.8);

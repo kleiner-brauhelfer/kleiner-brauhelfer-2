@@ -103,19 +103,12 @@ bool ModelAusruestung::setDataExt(const QModelIndex &index, const QVariant &valu
     return false;
 }
 
-QString ModelAusruestung::getUniqueName(const QModelIndex &index, const QVariant &value)
-{
-    int cnt = 1;
-    QString name = value.toString();
-    while (!isUnique(index, name))
-        name = value.toString() + "_" + QString::number(cnt++);
-    return name;
-}
-
 void ModelAusruestung::defaultValues(QVariantMap &values) const
 {
     if (!values.contains("Sudhausausbeute"))
         values.insert("Sudhausausbeute", 60.0);
     if (!values.contains("Verdampfungsziffer"))
         values.insert("Verdampfungsziffer", 10.0);
+    if (values.contains("Name"))
+        values["Name"] = getUniqueName(index(0, fieldIndex("Name")), values["Name"], true);
 }

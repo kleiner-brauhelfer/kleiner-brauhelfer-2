@@ -13,8 +13,6 @@ public:
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
 private:
-    QString getUniqueName(const QModelIndex &index, const QVariant &value);
-private:
     Brauhelfer* bh;
 };
 

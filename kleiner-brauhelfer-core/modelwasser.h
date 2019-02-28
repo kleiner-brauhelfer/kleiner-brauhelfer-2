@@ -12,8 +12,7 @@ public:
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
-private:
-    QString getUniqueName(const QModelIndex &index, const QVariant &value);
+    void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
 private:
     Brauhelfer* bh;
 };

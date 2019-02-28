@@ -254,14 +254,6 @@ int SqlTableModel::append(const QVariantMap &values)
             setDataExt(index(row, fieldIndex(it.key())), it.value());
             ++it;
         }
-        /*
-        // problem z.b. mit hauptgaerung, da sudid nach sw gesetzt wird
-        while (it != val.constEnd())
-        {
-            setData(index(row, fieldIndex(it.key())), it.value());
-            ++it;
-        }
-        */
         blockSignals(false);
         emit modified();
         return row;
@@ -322,16 +314,25 @@ bool SqlTableModel::setDataExt(const QModelIndex &index, const QVariant &value)
     return false;
 }
 
-bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value)
+bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bool ignoreIndexRow) const
 {
     for (int row = 0; row < rowCount(); ++row)
     {
-        if (row == index.row())
+        if (!ignoreIndexRow && row == index.row())
             continue;
         if (index.siblingAtRow(row).data() == value)
             return false;
     }
     return true;
+}
+
+QString SqlTableModel::getUniqueName(const QModelIndex &index, const QVariant &value, bool ignoreIndexRow) const
+{
+    int cnt = 1;
+    QString name = value.toString();
+    while (!isUnique(index, name, ignoreIndexRow))
+        name = value.toString() + "_" + QString::number(cnt++);
+    return name;
 }
 
 void SqlTableModel::defaultValues(QVariantMap &values) const

@@ -16,8 +16,6 @@ public:
     QString name(int id) const;
     int id(const QString& name) const;
 private:
-    QString getUniqueName(const QModelIndex &index, const QVariant &value);
-private:
     Brauhelfer* bh;
 };
 

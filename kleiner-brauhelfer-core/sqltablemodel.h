@@ -234,7 +234,16 @@ protected:
      * @param value
      * @return
      */
-    bool isUnique(const QModelIndex &index, const QVariant &value);
+    bool isUnique(const QModelIndex &index, const QVariant &value, bool ignoreIndexRow = false) const;
+
+    /**
+     * @brief getUniqueName
+     * @param index
+     * @param value
+     * @param ignoreIndexRow
+     * @return
+     */
+    QString getUniqueName(const QModelIndex &index, const QVariant &value, bool ignoreIndexRow = false) const;
 
 private Q_SLOTS:
 

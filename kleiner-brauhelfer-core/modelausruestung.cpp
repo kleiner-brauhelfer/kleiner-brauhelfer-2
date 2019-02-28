@@ -103,15 +103,6 @@ bool ModelAusruestung::setDataExt(const QModelIndex &index, const QVariant &valu
     return false;
 }
 
-QString ModelAusruestung::getUniqueName(const QModelIndex &index, const QVariant &value)
-{
-    int cnt = 1;
-    QString name = value.toString();
-    while (!isUnique(index, name))
-        name = value.toString() + "_" + QString::number(cnt++);
-    return name;
-}
-
 bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (SqlTableModel::removeRows(row, count, parent))
@@ -137,6 +128,8 @@ void ModelAusruestung::defaultValues(QVariantMap &values) const
         values.insert("AnlagenID", (int)time(nullptr) + rand());
     if (!values.contains("Sudhausausbeute"))
         values.insert("Sudhausausbeute", 60.0);
+    if (values.contains("Name"))
+        values["Name"] = getUniqueName(index(0, fieldIndex("Name")), values["Name"], true);
 }
 
 QString ModelAusruestung::name(int id) const

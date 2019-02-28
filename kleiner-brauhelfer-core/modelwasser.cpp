@@ -91,15 +91,6 @@ bool ModelWasser::setDataExt(const QModelIndex &index, const QVariant &value)
      return false;
 }
 
-QString ModelWasser::getUniqueName(const QModelIndex &index, const QVariant &value)
-{
-    int cnt = 1;
-    QString name = value.toString();
-    while (!isUnique(index, name))
-        name = value.toString() + "_" + QString::number(cnt++);
-    return name;
-}
-
 Qt::ItemFlags ModelWasser::flags(const QModelIndex &index) const
 {
     Qt::ItemFlags itemFlags = SqlTableModel::flags(index);
@@ -112,4 +103,10 @@ Qt::ItemFlags ModelWasser::flags(const QModelIndex &index) const
        )
         itemFlags |= Qt::ItemIsEditable;
     return itemFlags;
+}
+
+void ModelWasser::defaultValues(QVariantMap &values) const
+{
+    if (values.contains("Name"))
+        values["Name"] = getUniqueName(index(0, fieldIndex("Name")), values["Name"], true);
 }

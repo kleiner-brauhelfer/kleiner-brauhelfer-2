@@ -159,15 +159,6 @@ bool ModelHopfen::setDataExt(const QModelIndex &index, const QVariant &value)
     return false;
 }
 
-QString ModelHopfen::getUniqueName(const QModelIndex &index, const QVariant &value)
-{
-    int cnt = 1;
-    QString name = value.toString();
-    while (!isUnique(index, name))
-        name = value.toString() + "_" + QString::number(cnt++);
-    return name;
-}
-
 void ModelHopfen::defaultValues(QVariantMap &values) const
 {
     if (!values.contains("Alpha"))
@@ -184,4 +175,6 @@ void ModelHopfen::defaultValues(QVariantMap &values) const
         values.insert("Eingelagert", QDate::currentDate());
     if (!values.contains("Mindesthaltbar"))
         values.insert("Mindesthaltbar", QDate::currentDate().addYears(1));
+    if (values.contains("Beschreibung"))
+        values["Beschreibung"] = getUniqueName(index(0, fieldIndex("Beschreibung")), values["Beschreibung"], true);
 }

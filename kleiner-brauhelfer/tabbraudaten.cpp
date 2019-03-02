@@ -391,7 +391,7 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     if (QMessageBox::question(this, tr("Zutaten vom Bestand abziehen"),
                               tr("Sollen die bisher verwendeten Zutaten vom Bestand abgezogen werden?")
        ) == QMessageBox::Yes)
-        bh->sud()->substractBrewIngredients();
+        bh->sud()->brauzutatenAbziehen();
 
     QVariantMap values({{"SudID", bh->sud()->id()},
                         {"Zeitstempel", bh->sud()->getBraudatum()},

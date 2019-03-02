@@ -23,6 +23,7 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBox->addItem(bh->modelFlaschenlabelTags()->tableName());
     ui->comboBox->addItem(bh->modelHauptgaerverlauf()->tableName());
     ui->comboBox->addItem(bh->modelHefe()->tableName());
+    ui->comboBox->addItem(bh->modelHefegaben()->tableName());
     ui->comboBox->addItem(bh->modelHopfen()->tableName());
     ui->comboBox->addItem(bh->modelHopfengaben()->tableName());
     ui->comboBox->addItem(bh->modelMalz()->tableName());
@@ -34,7 +35,7 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBox->addItem(bh->modelWasser()->tableName());
     ui->comboBox->addItem(bh->modelWeitereZutaten()->tableName());
     ui->comboBox->addItem(bh->modelWeitereZutatenGaben()->tableName());
-    ui->comboBox->setCurrentIndex(14);
+    ui->comboBox->setCurrentIndex(15);
 
     ui->comboBoxSud->clear();
     ui->comboBoxSud->addItem(bh->modelAnhang()->tableName());
@@ -42,13 +43,14 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelFlaschenlabel()->tableName());
     ui->comboBoxSud->addItem(bh->modelFlaschenlabelTags()->tableName());
     ui->comboBoxSud->addItem(bh->modelHauptgaerverlauf()->tableName());
+    ui->comboBoxSud->addItem(bh->modelHefegaben()->tableName());
     ui->comboBoxSud->addItem(bh->modelHopfengaben()->tableName());
     ui->comboBoxSud->addItem(bh->modelMalzschuettung()->tableName());
     ui->comboBoxSud->addItem(bh->modelNachgaerverlauf()->tableName());
     ui->comboBoxSud->addItem(bh->modelRasten()->tableName());
     ui->comboBoxSud->addItem(bh->modelSchnellgaerverlauf()->tableName());
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
-    ui->comboBoxSud->setCurrentIndex(6);
+    ui->comboBoxSud->setCurrentIndex(7);
 
     gSettings->beginGroup("TabDatenbank");
 
@@ -107,6 +109,8 @@ void TabDatenbank::on_comboBox_currentIndexChanged(const QString &table)
         model = bh->modelHauptgaerverlauf();
     else if (table == bh->modelHefe()->tableName())
         model = bh->modelHefe();
+    else if (table == bh->modelHefegaben()->tableName())
+        model = bh->modelHefegaben();
     else if (table == bh->modelHopfen()->tableName())
         model = bh->modelHopfen();
     else if (table == bh->modelHopfengaben()->tableName())
@@ -154,6 +158,8 @@ void TabDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
         model = bh->sud()->modelFlaschenlabelTags();
     else if (table == bh->modelHauptgaerverlauf()->tableName())
         model = bh->sud()->modelHauptgaerverlauf();
+    else if (table == bh->modelHefegaben()->tableName())
+        model = bh->sud()->modelHefegaben();
     else if (table == bh->modelHopfengaben()->tableName())
         model = bh->sud()->modelHopfengaben();
     else if (table == bh->modelMalzschuettung()->tableName())

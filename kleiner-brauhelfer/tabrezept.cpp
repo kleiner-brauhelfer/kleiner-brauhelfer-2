@@ -72,11 +72,10 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(hopfenGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
 
-    // TODO
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(modelReset()), this, SLOT(hefeGaben_modified()));
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(sortChanged()), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(modelReset()), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(sortChanged()), this, SLOT(hefeGaben_modified()));
 
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modelReset()), this, SLOT(weitereZutatenGaben_modified()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(weitereZutatenGaben_modified()));
@@ -146,7 +145,6 @@ void TabRezept::sudLoaded()
         updateAnlageModel();
         updateWasserModel();
         updateValues();
-        hefeGaben_modified();// TODO: remove
         checkRohstoffe();
     }
 }
@@ -654,7 +652,7 @@ void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
 
 void TabRezept::hefeGaben_modified()
 {
-    const int nModel = 1;//TODO: bh->sud()->modelHefegaben()->rowCount();
+    const int nModel = bh->sud()->modelHefegaben()->rowCount();
     int nLayout = ui->layoutHefeGaben->count();
     while (nLayout < nModel)
         ui->layoutHefeGaben->addWidget(new WdgHefeGabe(nLayout++));
@@ -667,7 +665,7 @@ void TabRezept::hefeGaben_modified()
 void TabRezept::on_btnNeueHefeGabe_clicked()
 {
     QVariantMap values({{"SudID", bh->sud()->id()}});
-    //bh->sud()->modelHefegaben()->append(values); // TODO: uncomment
+    bh->sud()->modelHefegaben()->append(values);
     ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
 }
 

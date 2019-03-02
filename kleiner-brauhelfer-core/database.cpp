@@ -19,6 +19,7 @@ void Database::createTables(Brauhelfer* bh)
     modelRasten = new ModelRasten(bh, *mDb);
     modelMalzschuettung = new ModelMalzschuettung(bh, *mDb);
     modelHopfengaben = new ModelHopfengaben(bh, *mDb);
+    modelHefegaben = new ModelHefegaben(bh, *mDb);
     modelWeitereZutatenGaben = new ModelWeitereZutatenGaben(bh, *mDb);
     modelSchnellgaerverlauf = new ModelSchnellgaerverlauf(bh, *mDb);
     modelHauptgaerverlauf = new ModelHauptgaerverlauf(bh, *mDb);
@@ -45,6 +46,7 @@ void Database::setTables()
     modelRasten->setTable("Rasten");
     modelMalzschuettung->setTable("Malzschuettung");
     modelHopfengaben->setTable("Hopfengaben");
+    modelHefegaben->setTable("Hefegaben");
     modelWeitereZutatenGaben->setTable("WeitereZutatenGaben");
     modelSchnellgaerverlauf->setTable("Schnellgaerverlauf");
     modelSchnellgaerverlauf->setSortByFieldName("Zeitstempel", Qt::AscendingOrder);
@@ -75,6 +77,7 @@ Database::~Database()
     delete modelRasten;
     delete modelMalzschuettung;
     delete modelHopfengaben;
+    delete modelHefegaben;
     delete modelWeitereZutatenGaben;
     delete modelSchnellgaerverlauf;
     delete modelHauptgaerverlauf;
@@ -131,6 +134,7 @@ void Database::disconnect()
         modelRasten->clear();
         modelMalzschuettung->clear();
         modelHopfengaben->clear();
+        modelHefegaben->clear();
         modelWeitereZutatenGaben->clear();
         modelSchnellgaerverlauf->clear();
         modelHauptgaerverlauf->clear();
@@ -161,6 +165,7 @@ bool Database::isDirty() const
            modelRasten->isDirty() |
            modelMalzschuettung->isDirty() |
            modelHopfengaben->isDirty() |
+           modelHefegaben->isDirty() |
            modelWeitereZutatenGaben->isDirty() |
            modelSchnellgaerverlauf->isDirty() |
            modelHauptgaerverlauf->isDirty() |
@@ -188,6 +193,7 @@ void Database::select()
     modelRasten->select();
     modelMalzschuettung->select();
     modelHopfengaben->select();
+    modelHefegaben->select();
     modelWeitereZutatenGaben->select();
     modelSchnellgaerverlauf->select();
     modelHauptgaerverlauf->select();
@@ -215,6 +221,7 @@ void Database::save()
     modelRasten->submitAll();
     modelMalzschuettung->submitAll();
     modelHopfengaben->submitAll();
+    modelHefegaben->submitAll();
     modelWeitereZutatenGaben->submitAll();
     modelSchnellgaerverlauf->submitAll();
     modelHauptgaerverlauf->submitAll();
@@ -237,6 +244,7 @@ void Database::discard()
     modelRasten->revertAll();
     modelMalzschuettung->revertAll();
     modelHopfengaben->revertAll();
+    modelHefegaben->revertAll();
     modelWeitereZutatenGaben->revertAll();
     modelSchnellgaerverlauf->revertAll();
     modelHauptgaerverlauf->revertAll();
@@ -275,7 +283,7 @@ void Database::update()
             // Ausruestung
             //  - neue Spalte 'Typ'
             //                'VerlustNachKochen'
-            //  - Spalte gelöscht 'AnlagenID'
+            //  - Spalte gelÃ¶scht 'AnlagenID'
             sqlExec("ALTER TABLE Ausruestung RENAME TO TempTable");
             sqlExec("CREATE TABLE Ausruestung ("
                 "ID INTEGER PRIMARY KEY,"
@@ -344,7 +352,7 @@ void Database::update()
             sqlExec("DROP TABLE TempTable");
 
             // Hefe
-            //  - Spalte gelöscht 'Enheiten'
+            //  - Spalte gelÃ¶scht 'Enheiten'
             sqlExec("ALTER TABLE Hefe RENAME TO TempTable");
             sqlExec("CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
@@ -399,7 +407,7 @@ void Database::update()
             sqlExec("DROP TABLE TempTable");
 
             // Hopfengaben
-            //  - Spalte gelöscht 'Aktiv'
+            //  - Spalte gelÃ¶scht 'Aktiv'
             //                    'erg_Hopfentext'
             sqlExec("ALTER TABLE Hopfengaben RENAME TO TempTable");
             sqlExec("CREATE TABLE Hopfengaben ("
@@ -433,8 +441,29 @@ void Database::update()
                 " FROM TempTable");
             sqlExec("DROP TABLE TempTable");
 
+            // Hefegaben
+            //  - neue Tabelle
+            sqlExec("CREATE TABLE Hefegaben ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER,"
+                "Name TEXT,"
+                "Menge INTEGER DEFAULT 0,"
+                "Zugegeben INTEGER DEFAULT 0,"
+                "ZugegebenNach INTEGER DEFAULT 0)");
+            sqlExec("INSERT INTO Hefegaben ("
+                "SudID,"
+                "Name,"
+                "Menge,"
+                "Zugegeben"
+                ") SELECT "
+                "ID,"
+                "AuswahlHefe,"
+                "HefeAnzahlEinheiten,"
+                "BierWurdeGebraut"
+                " FROM Sud WHERE AuswahlHefe IS NOT NULL AND AuswahlHefe <> ''");
+
             // Rasten
-            //  - Spalte gelöscht 'RastAktiv'
+            //  - Spalte gelÃ¶scht 'RastAktiv'
             //  - Spalte unbenannt 'RastTemp' -> 'Temp'
             //                     'RastDauer' -> 'Dauer'
             sqlExec("ALTER TABLE Rasten RENAME TO TempTable");
@@ -459,7 +488,7 @@ void Database::update()
 
             // Sud
             //  - neue Spalte 'Wasserprofil'
-            //  - Spalte gelöscht 'Anstelldatum'
+            //  - Spalte gelÃ¶scht 'Anstelldatum'
             //                    'AktivTab'
             //                    'Bewertung'
             //                    'BewertungText'
@@ -468,6 +497,8 @@ void Database::update()
             //                    'BewertungMaxSterne'
             //                    'NeuBerechnen'
             //                    'AuswahlBrauanlage'
+            //                    'AuswahlHefe'
+            //                    'HefeAnzahlEinheiten'
             //  - Spalte unbenannt 'erg_S_Gesammt' -> 'erg_S_Gesamt'
             //                     'erg_W_Gesammt' -> 'erg_W_Gesamt'
             //                     'AuswahlBrauanlageName' -> 'Anlage'
@@ -492,7 +523,6 @@ void Database::update()
                 "WuerzemengeKochende REAL DEFAULT 20,"
                 "Speisemenge REAL DEFAULT 1,"
                 "SWKochende REAL DEFAULT 12,"
-                "AuswahlHefe TEXT,"
                 "FaktorHauptguss REAL DEFAULT 3.5,"
                 "KochdauerNachBitterhopfung INTEGER DEFAULT 90,"
                 "EinmaischenTemp INTEGER DEFAULT 60,"
@@ -516,7 +546,6 @@ void Database::update()
                 "SchnellgaerprobeAktiv INTEGER DEFAULT 0,"
                 "JungbiermengeAbfuellen REAL DEFAULT 0,"
                 "erg_AbgefuellteBiermenge REAL DEFAULT 0,"
-                "HefeAnzahlEinheiten INTEGER DEFAULT 1,"
                 "berechnungsArtHopfen INTEGER DEFAULT 0,"
                 "highGravityFaktor REAL DEFAULT 0,"
                 "Anlage TEXT,"
@@ -545,7 +574,6 @@ void Database::update()
                 "WuerzemengeKochende,"
                 "Speisemenge,"
                 "SWKochende,"
-                "AuswahlHefe,"
                 "FaktorHauptguss,"
                 "KochdauerNachBitterhopfung,"
                 "EinmaischenTemp,"
@@ -569,7 +597,6 @@ void Database::update()
                 "SchnellgaerprobeAktiv,"
                 "JungbiermengeAbfuellen,"
                 "erg_AbgefuellteBiermenge,"
-                "HefeAnzahlEinheiten,"
                 "berechnungsArtHopfen,"
                 "highGravityFaktor,"
                 "Anlage,"
@@ -597,7 +624,6 @@ void Database::update()
                 "WuerzemengeKochende,"
                 "Speisemenge,"
                 "SWKochende,"
-                "AuswahlHefe,"
                 "FaktorHauptguss,"
                 "KochdauerNachBitterhopfung,"
                 "EinmaischenTemp,"
@@ -621,7 +647,6 @@ void Database::update()
                 "SchnellgaerprobeAktiv,"
                 "JungbiermengeAbfuellen,"
                 "erg_AbgefuellteBiermenge,"
-                "HefeAnzahlEinheiten,"
                 "berechnungsArtHopfen,"
                 "highGravityFaktor,"
                 "AuswahlBrauanlageName,"
@@ -634,19 +659,19 @@ void Database::update()
             sqlExec("DROP TABLE TempTable");
 
             // Geraete
-            //  - Tabelle gelöscht
+            //  - Tabelle gelÃ¶scht
             sqlExec("DROP TABLE Geraete");
 
             // IgnorMsgID
-            //  - Tabelle gelöscht
+            //  - Tabelle gelÃ¶scht
             sqlExec("DROP TABLE IgnorMsgID");
 
             // Rastauswahl
-            //  - Tabelle gelöscht
+            //  - Tabelle gelÃ¶scht
             sqlExec("DROP TABLE Rastauswahl");
 
             // Global
-            //  - Spalte gelöscht 'db_NeuBerechnen'
+            //  - Spalte gelÃ¶scht 'db_NeuBerechnen'
             sqlExec("DROP TABLE Global");
             sqlExec("CREATE TABLE Global (db_Version INTEGER)");
             sqlExec(QString("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));

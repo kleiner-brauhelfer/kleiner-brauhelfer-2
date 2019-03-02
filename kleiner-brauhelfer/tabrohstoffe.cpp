@@ -719,8 +719,7 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
         dlg.setModel(bh->modelHopfen(), bh->modelHopfen()->fieldIndex("Beschreibung"));
         break;
     case 2:
-        // TODO: hefe
-        //modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+        model = bh->modelHefegaben();
         dlg.setModel(bh->modelHefe(), bh->modelHefe()->fieldIndex("Beschreibung"));
         break;
     case 3:
@@ -742,15 +741,6 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
                     if (dlg.exec() == QDialog::Accepted)
                         model->setData(j, "Name", dlg.rohstoff());
                 }
-            }
-        }
-        else
-        {
-            // TODO: hefe
-            if (modelSud.data(i, "AuswahlHefe").toString() == rohstoff)
-            {
-                if (dlg.exec() == QDialog::Accepted)
-                    modelSud.setData(i, "AuswahlHefe", dlg.rohstoff());
             }
         }
     }

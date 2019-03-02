@@ -295,22 +295,20 @@ void TabZusammenfassung::updateTemplateTags()
     ctxZutaten["Wasser"] = s;
 
     // Hefe
-    QString HefeName = bh->sud()->getAuswahlHefe();
-    s = "<p>" + HefeName + "</p>";
-    QString sEinheiten;
-    sEinheiten = tr("Anzahl Einheiten:") + " <span class='value'>" + QString::number(bh->sud()->getHefeAnzahlEinheiten()) +"</span>";
-    //Verpackungsgrösse aus den Rohstoffdaten auslesen
-    if (HefeName != "")
+    s = "<table><tbody>";
+    for (int row = 0; row < bh->sud()->modelHefegaben()->rowCount(); ++row)
     {
-      for (int i=0; i < bh->modelHefe()->rowCount(); i++)
-      {
-        if (bh->modelHefe()->data(i, "Beschreibung").toString() == HefeName){
-          sEinheiten += tr(" zu ") + bh->modelHefe()->data(i, "Verpackungsmenge").toString();
-          break;
-        }
-      }
+        s += "<tr>";
+        s += "<td>" + bh->sud()->modelHefegaben()->data(row, "Name").toString() + "</td>";
+        s += "<td class='value' align='right'>" + QString::number(bh->sud()->modelHefegaben()->data(row, "Menge").toInt()) + "</td>";
+
+        s += "<td>" + tr("Zugabe nach") + "</td>";
+        s += "<td class='value' align='right'>" + QString::number(bh->sud()->modelHefegaben()->data(row, "ZugegebenNach").toInt()) + "</td>";
+        s += "<td>" + tr("Tage") + "</td>";
+
+        s += "</tr>";
     }
-    s += "<p>" + sEinheiten +"</p>";
+    s += "</tbody></table>";
     ctxZutaten["Hefe"] = s;
 
     //Honig

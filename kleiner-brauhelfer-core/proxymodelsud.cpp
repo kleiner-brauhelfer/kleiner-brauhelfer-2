@@ -22,7 +22,6 @@ void ProxyModelSud::onSourceModelChanged()
     {
         mColumnId = model->fieldIndex("ID");
         mColumnSudname = model->fieldIndex("Sudname");
-        mColumnAuswahlHefe = model->fieldIndex("AuswahlHefe");
         mColumnKommentar = model->fieldIndex("Kommentar");
         mColumnBierWurdeGebraut = model->fieldIndex("BierWurdeGebraut");
         mColumnBierWurdeAbgefuellt = model->fieldIndex("BierWurdeAbgefuellt");
@@ -34,7 +33,6 @@ void ProxyModelSud::onSourceModelChanged()
     {
         mColumnId = model->fieldIndex("ID");
         mColumnSudname = model->fieldIndex("Sudname");
-        mColumnAuswahlHefe = model->fieldIndex("AuswahlHefe");
         mColumnKommentar = model->fieldIndex("Kommentar");
         mColumnBierWurdeGebraut = model->fieldIndex("BierWurdeGebraut");
         mColumnBierWurdeAbgefuellt = model->fieldIndex("BierWurdeAbgefuellt");
@@ -191,11 +189,6 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         accept = sourceModel()->data(index2).toString().contains(rx);
         if (!accept)
         {
-            index2 = sourceModel()->index(source_row, mColumnAuswahlHefe, source_parent);
-            accept = sourceModel()->data(index2).toString().contains(rx);
-        }
-        if (!accept)
-        {
             index2 = sourceModel()->index(source_row, mColumnKommentar, source_parent);
             accept = sourceModel()->data(index2).toString().contains(rx);
         }
@@ -222,6 +215,22 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                 if (!accept)
                 {
                     model = modelSud->bh->modelHopfengaben();
+                    colSudId = model->fieldIndex("SudID");
+                    colName = model->fieldIndex("Name");
+                    for (int i = 0; i < model->rowCount(); i++)
+                    {
+                        if (model->data(model->index(i, colSudId)).toInt() == id)
+                        {
+                            QString name = model->data(model->index(i, colName)).toString();
+                            accept = name.contains(rx);
+                            if (accept)
+                                break;
+                        }
+                    }
+                }
+                if (!accept)
+                {
+                    model = modelSud->bh->modelHefegaben();
                     colSudId = model->fieldIndex("SudID");
                     colName = model->fieldIndex("Name");
                     for (int i = 0; i < model->rowCount(); i++)

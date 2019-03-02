@@ -46,7 +46,6 @@ private slots:
 private:
     int mColumnId;
     int mColumnSudname;
-    int mColumnAuswahlHefe;
     int mColumnKommentar;
     int mColumnBierWurdeGebraut;
     int mColumnBierWurdeAbgefuellt;

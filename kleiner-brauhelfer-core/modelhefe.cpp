@@ -30,11 +30,18 @@ QVariant ModelHefe::dataExt(const QModelIndex &index) const
         modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
-            if (modelSud.data(i, "AuswahlHefe").toString() == name)
+            int id = modelSud.data(i, "ID").toInt();
+            SqlTableModel* model = bh->modelHefegaben();
+            for (int j = 0; j < model->rowCount(); ++j)
             {
-                found = true;
-                break;
+                if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
+                {
+                    found = true;
+                    break;
+                }
             }
+            if (found)
+                break;
         }
         return found;
     }
@@ -55,8 +62,13 @@ bool ModelHefe::setDataExt(const QModelIndex &index, const QVariant &value)
             modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
             for (int i = 0; i < modelSud.rowCount(); ++i)
             {
-                if (modelSud.data(i, "AuswahlHefe").toString() == prevValue)
-                    modelSud.setData(i, "AuswahlHefe", name);
+                int id = modelSud.data(i, "ID").toInt();
+                SqlTableModel* model = bh->modelHefegaben();
+                for (int j = 0; j < model->rowCount(); ++j)
+                {
+                    if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == prevValue)
+                        model->setData(j, "Name", name);
+                }
             }
             return true;
         }

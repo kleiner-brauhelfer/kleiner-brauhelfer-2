@@ -24,11 +24,13 @@ public slots:
 private slots:
     void on_cbZutat_currentIndexChanged(const QString &text);
     void on_tbMenge_valueChanged(int value);
+    void on_tbTage_valueChanged(int value);
+    void on_tbDatum_dateTimeChanged(const QDateTime &dateTime);
     void on_btnZugeben_clicked();
     void on_btnLoeschen_clicked();
 
 private:
-    void checkEnabled(bool force);
+    void checkEnabled(bool force = false);
 
 private:
     Ui::WdgHefeGabe *ui;

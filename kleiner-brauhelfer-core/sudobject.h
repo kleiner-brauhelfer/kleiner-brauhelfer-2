@@ -43,7 +43,6 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, WuerzemengeKochende, toDouble())
     Q_PROPERTY_SUD(double, Speisemenge, toDouble())
     Q_PROPERTY_SUD(double, SWKochende, toDouble())
-    Q_PROPERTY_SUD(QString, AuswahlHefe, toString())
     Q_PROPERTY_SUD(double, FaktorHauptguss, toDouble())
     Q_PROPERTY_SUD(int, KochdauerNachBitterhopfung, toInt())
     Q_PROPERTY_SUD(int, EinmaischenTemp, toInt())
@@ -67,7 +66,6 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(bool, SchnellgaerprobeAktiv, toBool())
     Q_PROPERTY_SUD(double, JungbiermengeAbfuellen, toDouble())
     Q_PROPERTY_SUD(double, erg_AbgefuellteBiermenge, toDouble())
-    Q_PROPERTY_SUD(int, HefeAnzahlEinheiten, toInt())
     Q_PROPERTY_SUD(int, berechnungsArtHopfen, toInt())
     Q_PROPERTY_SUD(int, highGravityFaktor, toInt())
     Q_PROPERTY_SUD(QString, Anlage, toString())
@@ -111,6 +109,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY(ProxyModel* modelRasten READ modelRasten CONSTANT)
     Q_PROPERTY(ProxyModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
     Q_PROPERTY(ProxyModel* modelHopfengaben READ modelHopfengaben CONSTANT)
+    Q_PROPERTY(ProxyModel* modelHefegaben READ modelHefegaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
     Q_PROPERTY(ProxyModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
@@ -194,6 +193,7 @@ public:
     ProxyModel* modelRasten() const;
     ProxyModel* modelMalzschuettung() const;
     ProxyModel* modelHopfengaben() const;
+    ProxyModel* modelHefegaben() const;
     ProxyModel* modelWeitereZutatenGaben() const;
     ProxyModel* modelSchnellgaerverlauf() const;
     ProxyModel* modelHauptgaerverlauf() const;
@@ -206,15 +206,15 @@ public:
     /**
      * @brief Substracts the brew ingredients from the inventory
      */
-    Q_INVOKABLE void substractBrewIngredients();
+    Q_INVOKABLE void brauzutatenAbziehen();
 
     /**
      * @brief Substracts an ingredient from the inventory
      * @param ingredient Ingredient
-     * @param hops Hopfen
+     * @param typ 0: Hopfen, 1: Hefe, 2: weitere Zutat
      * @param quantity Quantity [g]
      */
-    Q_INVOKABLE void substractIngredient(const QString& ingredient, bool hopfen, double quantity);
+    Q_INVOKABLE void zutatAbziehen(const QString& zutat, int typ, double menge);
 
 Q_SIGNALS:
 
@@ -246,6 +246,7 @@ private:
     ProxyModel* proxyModelRasten;
     ProxyModel* proxyModelMalzschuettung;
     ProxyModel* proxyModelHopfengaben;
+    ProxyModel* proxyModelHefegaben;
     ProxyModel* proxyModelWeitereZutatenGaben;
     ProxyModel* proxyModelSchnellgaerverlauf;
     ProxyModel* proxyModelHauptgaerverlauf;

@@ -18,6 +18,7 @@
 #include "modelwasser.h"
 #include "modelmalzschuettung.h"
 #include "modelhopfengaben.h"
+#include "modelhefegaben.h"
 #include "modelweiterezutatengaben.h"
 #include "modelausruestung.h"
 #include "modelrasten.h"
@@ -48,6 +49,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelRasten READ modelRasten CONSTANT)
     Q_PROPERTY(SqlTableModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
     Q_PROPERTY(SqlTableModel* modelHopfengaben READ modelHopfengaben CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelHefegaben READ modelHefegaben CONSTANT)
     Q_PROPERTY(SqlTableModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
     Q_PROPERTY(SqlTableModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
     Q_PROPERTY(SqlTableModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
@@ -101,6 +103,7 @@ public:
     ModelRasten* modelRasten() const;
     ModelMalzschuettung* modelMalzschuettung() const;
     ModelHopfengaben* modelHopfengaben() const;
+    ModelHefegaben* modelHefegaben() const;
     ModelWeitereZutatenGaben* modelWeitereZutatenGaben() const;
     ModelSchnellgaerverlauf* modelSchnellgaerverlauf() const;
     ModelHauptgaerverlauf* modelHauptgaerverlauf() const;

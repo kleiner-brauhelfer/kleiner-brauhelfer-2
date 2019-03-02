@@ -32,6 +32,7 @@ SOURCES += \
     modelflaschenlabeltags.cpp \
     modelhauptgaerverlauf.cpp \
     modelhefe.cpp \
+    modelhefegaben.cpp \
     modelhopfen.cpp \
     modelhopfengaben.cpp \
     modelmalz.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     modelflaschenlabeltags.h \
     modelhauptgaerverlauf.h \
     modelhefe.h \
+    modelhefegaben.h \
     modelhopfen.h \
     modelhopfengaben.h \
     modelmalz.h \

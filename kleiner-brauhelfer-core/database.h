@@ -7,6 +7,7 @@
 #include "modelmalz.h"
 #include "modelhopfen.h"
 #include "modelhefe.h"
+#include "modelhefegaben.h"
 #include "modelweiterezutaten.h"
 #include "modelschnellgaerverlauf.h"
 #include "modelhauptgaerverlauf.h"
@@ -52,6 +53,7 @@ private:
     ModelRasten* modelRasten;
     ModelMalzschuettung* modelMalzschuettung;
     ModelHopfengaben* modelHopfengaben;
+    ModelHefegaben* modelHefegaben;
     ModelWeitereZutatenGaben* modelWeitereZutatenGaben;
     ModelSchnellgaerverlauf* modelSchnellgaerverlauf;
     ModelHauptgaerverlauf* modelHauptgaerverlauf;

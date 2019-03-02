@@ -27,6 +27,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelRasten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelMalzschuettung, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHopfengaben, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelHefegaben, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelWeitereZutatenGaben, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelSchnellgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHauptgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
@@ -205,6 +206,11 @@ ModelHopfengaben* Brauhelfer::modelHopfengaben() const
     return mDb->modelHopfengaben;
 }
 
+ModelHefegaben* Brauhelfer::modelHefegaben() const
+{
+    return mDb->modelHefegaben;
+}
+
 ModelWeitereZutatenGaben *Brauhelfer::modelWeitereZutatenGaben() const
 {
     return mDb->modelWeitereZutatenGaben;
@@ -259,8 +265,6 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool full)
         values.insert("BierWurdeAbgefuellt", 0);
         values.insert("BierWurdeVerbraucht", 0);
         values.insert("Erstellt", QDateTime::currentDateTime().toString(Qt::ISODate));
-        values.remove("Bewertung");
-        values.remove("BewertungText");
         values.remove("MerklistenID");
     }
     row = modelSud()->append(values);
@@ -268,6 +272,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool full)
     int neueSudId = values.value("ID").toInt();
     sudKopierenModel(modelRasten(), sudId, neueSudId);
     sudKopierenModel(modelHopfengaben(), sudId, neueSudId);
+    sudKopierenModel(modelHefegaben(), sudId, neueSudId);
     sudKopierenModel(modelWeitereZutatenGaben(), sudId, neueSudId);
     sudKopierenModel(modelMalzschuettung(), sudId, neueSudId);
     sudKopierenModel(modelAnhang(), sudId, neueSudId);
@@ -306,13 +311,15 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     if (row2 < 0)
         return -1;
 
+    int colSudId = modelHefegaben()->fieldIndex("SudID");
+    int colMenge = modelHefegaben()->fieldIndex("Menge");
+
     double Menge = modelSud()->data(row1, "Menge").toDouble();
     double WuerzemengeVorHopfenseihen = modelSud()->data(row1, "WuerzemengeVorHopfenseihen").toDouble();
     double WuerzemengeKochende = modelSud()->data(row1, "WuerzemengeKochende").toDouble();
     double Speisemenge = modelSud()->data(row1, "Speisemenge").toDouble();
     double WuerzemengeAnstellen = modelSud()->data(row1, "WuerzemengeAnstellen").toDouble();
     double JungbiermengeAbfuellen = modelSud()->data(row1, "JungbiermengeAbfuellen").toDouble();
-    int HefeAnzahlEinheiten = modelSud()->data(row1, "HefeAnzahlEinheiten").toInt();
 
     double factor = 1.0 - prozent;
     modelSud()->setData(row2, "Menge", Menge * factor);
@@ -321,7 +328,15 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     modelSud()->setData(row2, "Speisemenge", Speisemenge * factor);
     modelSud()->setData(row2, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
     modelSud()->setData(row2, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
-    modelSud()->setData(row2, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+    int sudId2 = modelSud()->data(row2, "ID").toInt();
+    for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
+    {
+        if (modelHefegaben()->index(row, colSudId).data().toInt() == sudId2)
+        {
+            QModelIndex index = modelHefegaben()->index(row, colMenge);
+            modelHefegaben()->setData(index, qRound(index.data().toInt() * factor));
+        }
+    }
 
     factor = prozent;
     modelSud()->setData(row1, "Sudname", name1);
@@ -331,7 +346,14 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     modelSud()->setData(row1, "Speisemenge", Speisemenge * factor);
     modelSud()->setData(row1, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
     modelSud()->setData(row1, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
-    modelSud()->setData(row1, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+    for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
+    {
+        if (modelHefegaben()->index(row, colSudId).data().toInt() == sudId)
+        {
+            QModelIndex index = modelHefegaben()->index(row, colMenge);
+            modelHefegaben()->setData(index, qRound(index.data().toInt() * factor));
+        }
+    }
 
     return row1;
 }

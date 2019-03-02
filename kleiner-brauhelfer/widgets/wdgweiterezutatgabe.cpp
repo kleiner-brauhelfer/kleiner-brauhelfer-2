@@ -349,7 +349,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Soll die Zutat vom Bestand abgezogen werden?")
        ) == QMessageBox::Yes)
-        bh->sud()->substractIngredient(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen, data("erg_Menge").toDouble());
+        bh->sud()->zutatAbziehen(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen ? 0 : 2, data("erg_Menge").toDouble());
 }
 
 void WdgWeitereZutatGabe::on_cbEntnahme_currentIndexChanged(int index)

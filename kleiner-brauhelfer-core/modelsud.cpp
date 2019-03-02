@@ -615,14 +615,14 @@ void ModelSud::updatePreis(int row)
     summe += kostenHopfen;
 
     double kostenHefe = 0.0;
-    //model = bh->modelHefegaben();
-    //colSudId = model->fieldIndex("SudID");
-    //for (int o = 0; o < model->rowCount(); ++o)
+    model = bh->modelHefegaben();
+    colSudId = model->fieldIndex("SudID");
+    for (int o = 0; o < model->rowCount(); ++o)
     {
-        //if (model->data(model->index(o, colSudId)).toInt() == id)
+        if (model->data(model->index(o, colSudId)).toInt() == id)
         {
-            QVariant name = data(row, "AuswahlHefe");//model->data(o, "Name");
-            int menge = data(row, "HefeAnzahlEinheiten").toInt();//model->data(o, "Menge").toInt();
+            QVariant name = model->data(o, "Name");
+            int menge = model->data(o, "Menge").toInt();
             double preis = bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
             kostenHefe += preis * menge;
         }

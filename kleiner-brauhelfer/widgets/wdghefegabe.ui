@@ -117,17 +117,7 @@
         <property name="verticalSpacing">
          <number>4</number>
         </property>
-        <item row="1" column="4" colspan="2">
-         <widget class="QPushButton" name="btnZugeben">
-          <property name="toolTip">
-           <string>Hefegabe zugeben</string>
-          </property>
-          <property name="text">
-           <string>Zugeben</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
+        <item row="0" column="7">
          <widget class="SpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
@@ -152,40 +142,6 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Menge</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QLabel" name="lblVorhanden">
-          <property name="text">
-           <string>Vorhanden</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Zugabe nach</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="0" column="2">
          <widget class="SpinBox" name="tbMenge">
           <property name="minimumSize">
@@ -202,39 +158,43 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="6">
+         <widget class="QLabel" name="lblVorhanden">
+          <property name="text">
+           <string>Vorhanden</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Menge</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Zugabe nach</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Tage</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="DateEdit" name="tbDatum">
-            <property name="toolTip">
-             <string>Zugabedatum</string>
-            </property>
-            <property name="calendarPopup">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Tage</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6" colspan="2">
+         <widget class="QPushButton" name="btnZugeben">
+          <property name="toolTip">
+           <string>Hefegabe zugeben</string>
+          </property>
+          <property name="text">
+           <string>Zugeben</string>
+          </property>
+         </widget>
         </item>
         <item row="1" column="2">
          <widget class="SpinBox" name="tbTage">
@@ -245,6 +205,29 @@
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="DateEdit" name="tbDatum">
+          <property name="toolTip">
+           <string>Zugabedatum</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -276,7 +259,6 @@
   <tabstop>tbMenge</tabstop>
   <tabstop>tbVorhanden</tabstop>
   <tabstop>tbTage</tabstop>
-  <tabstop>tbDatum</tabstop>
   <tabstop>btnZugeben</tabstop>
  </tabstops>
  <resources>

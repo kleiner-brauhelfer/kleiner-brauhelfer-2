@@ -115,6 +115,7 @@ public:
     ModelFlaschenlabelTags* modelFlaschenlabelTags() const;
 
     int sudKopieren(int sudId, const QString& name, bool full);
+    int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);
 
 signals:
     void databasePathChanged(const QString &databasePath);

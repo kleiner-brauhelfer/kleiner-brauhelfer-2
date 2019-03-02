@@ -27,7 +27,7 @@ QVariant ModelHefe::dataExt(const QModelIndex &index) const
         QString name = data(index.row(), "Beschreibung").toString();
         ProxyModelSud modelSud;
         modelSud.setSourceModel(bh->modelSud());
-        modelSud.setFilterStatus(ProxyModelSud::NichtGebraut);
+        modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
             if (modelSud.data(i, "AuswahlHefe").toString() == name)
@@ -52,7 +52,7 @@ bool ModelHefe::setDataExt(const QModelIndex &index, const QVariant &value)
         {
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::NichtGebraut);
+            modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
             for (int i = 0; i < modelSud.rowCount(); ++i)
             {
                 if (modelSud.data(i, "AuswahlHefe").toString() == prevValue)

@@ -16,15 +16,15 @@ WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
 {
     ui->setupUi(this);
 
-
     ui->frameColor->setToolTip(tr("<b>Typ<br>"
                                   "<font color=\"%1\">Obergärig</font><br>"
-                                  "<font color=\"%2\">Untergärig</font><br>")
+                                  "<font color=\"%2\">Untergärig</font></b>")
             .arg(gSettings->HefeTypOgUgBackgrounds[1].name())
             .arg(gSettings->HefeTypOgUgBackgrounds[2].name()));
 
     checkEnabled(true);
     updateValues();
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     //connect(bh->sud()->modelHefe(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
 }

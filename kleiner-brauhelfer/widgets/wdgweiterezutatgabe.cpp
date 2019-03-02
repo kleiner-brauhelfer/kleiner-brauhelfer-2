@@ -19,6 +19,7 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(int index, QWidget *parent) :
 
     checkEnabled(true);
     updateValues();
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
 }
 
@@ -69,7 +70,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
                                   "<font color=\"%2\">Zucker</font><br>"
                                   "<font color=\"%3\">Gewürz</font><br>"
                                   "<font color=\"%4\">Frucht</font><br>"
-                                  "<font color=\"%5\">Sonstiges</font><br>")
+                                  "<font color=\"%5\">Sonstiges</font></b>")
             .arg(gSettings->WZTypBackgrounds[0].name())
             .arg(gSettings->WZTypBackgrounds[1].name())
             .arg(gSettings->WZTypBackgrounds[2].name())
@@ -346,7 +347,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     setData("Zeitpunkt_von", ui->tbDatumVon->date());
     setData("Zugabestatus", EWZ_Zugabestatus_Zugegeben);
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
-                              tr("Sollen die Zutat vom Bestand abgezogen werden?")
+                              tr("Soll die Zutat vom Bestand abgezogen werden?")
        ) == QMessageBox::Yes)
         bh->sud()->substractIngredient(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen, data("erg_Menge").toDouble());
 }

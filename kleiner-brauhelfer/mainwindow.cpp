@@ -13,7 +13,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent, bool updated) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -65,6 +65,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(sudModified()));
 
     sudLoaded();
+
+    if (updated)
+        restoreView(true);
 }
 
 MainWindow::~MainWindow()
@@ -153,12 +156,15 @@ void MainWindow::saveSettings()
     ui->tabContentDatenbank->saveSettings();
 }
 
-void MainWindow::restoreView()
+void MainWindow::restoreView(bool onUpdate)
 {
-    QPoint position = pos();
-    restoreGeometry(mDefaultGeometry);
-    restoreState(mDefaultState);
-    move(position);
+    if (!onUpdate)
+    {
+        QPoint position = pos();
+        restoreGeometry(mDefaultGeometry);
+        restoreState(mDefaultState);
+        move(position);
+    }
     ui->tabContentSudAuswahl->restoreView();
     ui->tabContentBrauUebersicht->restoreView();
     ui->tabContentRezept->restoreView();
@@ -265,10 +271,6 @@ void MainWindow::on_actionBeenden_triggered()
 void MainWindow::on_actionSudGebraut_triggered()
 {
     bh->sud()->setBierWurdeGebraut(false);
-    ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    int col = model->fieldIndex("Zugabestatus");
-    for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(model->index(row, col), EWZ_Zugabestatus_nichtZugegeben);
 }
 
 void MainWindow::on_actionSudAbgefuellt_triggered()

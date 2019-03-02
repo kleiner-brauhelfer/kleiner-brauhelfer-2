@@ -1,9 +1,9 @@
 #ifndef ROHSTOFFAUSWAHLPROXYMODEL_H
 #define ROHSTOFFAUSWAHLPROXYMODEL_H
 
-#include <QIdentityProxyModel>
+#include "proxymodel.h"
 
-class RohstoffAuswahlProxyModel : public QIdentityProxyModel
+class RohstoffAuswahlProxyModel : public ProxyModel
 {
 public:
     RohstoffAuswahlProxyModel(QObject* parent = nullptr);

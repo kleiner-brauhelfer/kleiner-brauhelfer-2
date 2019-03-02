@@ -4,7 +4,7 @@
 extern Settings* gSettings;
 
 RohstoffAuswahlProxyModel::RohstoffAuswahlProxyModel(QObject* parent) :
-    QIdentityProxyModel(parent),
+    ProxyModel(parent),
     mColMenge(-1)
 {
 }
@@ -19,7 +19,7 @@ QVariant RohstoffAuswahlProxyModel::data(const QModelIndex &index, int role) con
         else if (menge < mIndexMengeBenoetigt.data().toDouble())
             return gSettings->WarningText;
     }
-    return QIdentityProxyModel::data(index, role);
+    return ProxyModel::data(index, role);
 }
 
 void RohstoffAuswahlProxyModel::setColumnMenge(int col)

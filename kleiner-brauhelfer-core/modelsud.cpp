@@ -291,7 +291,6 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
             if (!value.toBool())
             {
                 QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("BierWurdeVerbraucht")), false);
-
             }
             return true;
         }

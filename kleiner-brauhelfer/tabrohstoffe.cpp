@@ -706,7 +706,7 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
     DlgRohstoffAustausch dlg(DlgRohstoffAustausch::Loeschen, rohstoff, this);
     ProxyModelSud modelSud;
     modelSud.setSourceModel(bh->modelSud());
-    modelSud.setFilterStatus(ProxyModelSud::NichtGebraut);
+    modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
     SqlTableModel *model = nullptr;
     switch (type)
     {
@@ -725,7 +725,6 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
         break;
     case 3:
         model = bh->modelWeitereZutatenGaben();
-        modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
         dlg.setModel(bh->modelWeitereZutaten(), bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         break;
     }

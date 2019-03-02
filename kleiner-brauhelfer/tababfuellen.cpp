@@ -379,38 +379,7 @@ void TabAbfuellen::on_btnSudTeilen_clicked()
 {
     DlgSudTeilen dlg(bh->sud()->getSudname(), bh->sud()->getMengeIst(), this);
     if (dlg.exec() == QDialog::Accepted)
-    {
-        int row = bh->sudKopieren(bh->sud()->id(), dlg.nameTeil2(), true);
-        if (row < 0)
-            return;
-
-        double Menge = bh->sud()->getMenge();
-        double WuerzemengeVorHopfenseihen = bh->sud()->getWuerzemengeVorHopfenseihen();
-        double WuerzemengeKochende = bh->sud()->getWuerzemengeKochende();
-        double Speisemenge = bh->sud()->getSpeisemenge();
-        double WuerzemengeAnstellen = bh->sud()->getWuerzemengeAnstellen();
-        double JungbiermengeAbfuellen = bh->sud()->getJungbiermengeAbfuellen();
-        int HefeAnzahlEinheiten = bh->sud()->getHefeAnzahlEinheiten();
-
-        double factor = 1.0 - dlg.prozent();
-        bh->modelSud()->setData(row, "Menge", Menge * factor);
-        bh->modelSud()->setData(row, "WuerzemengeVorHopfenseihen", WuerzemengeVorHopfenseihen * factor);
-        bh->modelSud()->setData(row, "WuerzemengeKochende", WuerzemengeKochende * factor);
-        bh->modelSud()->setData(row, "Speisemenge", Speisemenge * factor);
-        bh->modelSud()->setData(row, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
-        bh->modelSud()->setData(row, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
-        bh->modelSud()->setData(row, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
-
-        factor = dlg.prozent();
-        bh->sud()->setSudname(dlg.nameTeil1());
-        bh->sud()->setMenge(Menge * factor);
-        bh->sud()->setWuerzemengeVorHopfenseihen(WuerzemengeVorHopfenseihen * factor);
-        bh->sud()->setWuerzemengeKochende(WuerzemengeKochende * factor);
-        bh->sud()->setSpeisemenge(Speisemenge * factor);
-        bh->sud()->setWuerzemengeAnstellen(WuerzemengeAnstellen * factor);
-        bh->sud()->setJungbiermengeAbfuellen(JungbiermengeAbfuellen * factor);
-        bh->sud()->setHefeAnzahlEinheiten(qRound(HefeAnzahlEinheiten * factor));
-    }
+        bh->sudTeilen(bh->sud()->id(), dlg.nameTeil1(), dlg.nameTeil2(), dlg.prozent());
 }
 
 void TabAbfuellen::on_btnSudVerbraucht_clicked()

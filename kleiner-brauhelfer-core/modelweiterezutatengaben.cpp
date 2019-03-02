@@ -188,6 +188,25 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &index)
             }
         }
     }
+    else if (field == "BierWurdeGebraut")
+    {
+        if (!index.data().toBool())
+        {
+            int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
+
+            int colSudId = fieldIndex("SudID");
+            int colStatus = fieldIndex("Zugabestatus");
+
+            for (int i = 0; i < rowCount(); ++i)
+            {
+                if (this->index(i, colSudId).data().toInt() == sudId)
+                {
+                    QModelIndex index2 = this->index(i, colStatus);
+                    setData(index2, EWZ_Zugabestatus_nichtZugegeben);
+                }
+            }
+        }
+    }
 }
 
 void ModelWeitereZutatenGaben::defaultValues(QVariantMap &values) const

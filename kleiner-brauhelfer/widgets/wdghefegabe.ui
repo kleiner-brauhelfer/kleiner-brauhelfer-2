@@ -54,6 +54,9 @@
             <height>20</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="autoFillBackground">
            <bool>true</bool>
           </property>

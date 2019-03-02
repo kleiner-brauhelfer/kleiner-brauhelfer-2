@@ -22,6 +22,7 @@ WdgAnhang::WdgAnhang(int index, QWidget *parent) :
     mBasis = QDir(gSettings->databaseDir());
     ui->setupUi(this);
     updateValues();
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud()->modelAnhang(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
 }
 

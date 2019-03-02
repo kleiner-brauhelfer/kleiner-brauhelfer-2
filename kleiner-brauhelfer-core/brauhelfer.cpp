@@ -296,3 +296,42 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int sudId, int neueSudId
         }
     }
 }
+
+int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2, double prozent)
+{
+    int row1 = modelSud()->getRowWithValue("ID", sudId);
+    if (row1 < 0)
+        return -1;
+    int row2 = sudKopieren(sudId, name2, true);
+    if (row2 < 0)
+        return -1;
+
+    double Menge = modelSud()->data(row1, "Menge").toDouble();
+    double WuerzemengeVorHopfenseihen = modelSud()->data(row1, "WuerzemengeVorHopfenseihen").toDouble();
+    double WuerzemengeKochende = modelSud()->data(row1, "WuerzemengeKochende").toDouble();
+    double Speisemenge = modelSud()->data(row1, "Speisemenge").toDouble();
+    double WuerzemengeAnstellen = modelSud()->data(row1, "WuerzemengeAnstellen").toDouble();
+    double JungbiermengeAbfuellen = modelSud()->data(row1, "JungbiermengeAbfuellen").toDouble();
+    int HefeAnzahlEinheiten = modelSud()->data(row1, "HefeAnzahlEinheiten").toInt();
+
+    double factor = 1.0 - prozent;
+    modelSud()->setData(row2, "Menge", Menge * factor);
+    modelSud()->setData(row2, "WuerzemengeVorHopfenseihen", WuerzemengeVorHopfenseihen * factor);
+    modelSud()->setData(row2, "WuerzemengeKochende", WuerzemengeKochende * factor);
+    modelSud()->setData(row2, "Speisemenge", Speisemenge * factor);
+    modelSud()->setData(row2, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
+    modelSud()->setData(row2, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
+    modelSud()->setData(row2, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+
+    factor = prozent;
+    modelSud()->setData(row1, "Sudname", name1);
+    modelSud()->setData(row1, "Menge", Menge * factor);
+    modelSud()->setData(row1, "WuerzemengeVorHopfenseihen", WuerzemengeVorHopfenseihen * factor);
+    modelSud()->setData(row1, "WuerzemengeKochende", WuerzemengeKochende * factor);
+    modelSud()->setData(row1, "Speisemenge", Speisemenge * factor);
+    modelSud()->setData(row1, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
+    modelSud()->setData(row1, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
+    modelSud()->setData(row1, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+
+    return row1;
+}

@@ -271,10 +271,6 @@ void MainWindow::on_actionBeenden_triggered()
 void MainWindow::on_actionSudGebraut_triggered()
 {
     bh->sud()->setBierWurdeGebraut(false);
-    ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    int col = model->fieldIndex("Zugabestatus");
-    for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(model->index(row, col), EWZ_Zugabestatus_nichtZugegeben);
 }
 
 void MainWindow::on_actionSudAbgefuellt_triggered()

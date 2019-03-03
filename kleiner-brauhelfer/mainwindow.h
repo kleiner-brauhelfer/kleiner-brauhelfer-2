@@ -21,6 +21,7 @@ private slots:
     void sudModified();
     void loadSud(int sudId);
     void changeStyle();
+    void checkMessageFinished();
     void on_tabMain_currentChanged();
     void on_actionOeffnen_triggered();
     void on_actionSpeichern_triggered();
@@ -36,6 +37,7 @@ private slots:
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);
     void on_actionReiterDatenbank_triggered(bool checked);
+	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionSpende_triggered();
     void on_actionUeber_triggered();
@@ -46,6 +48,7 @@ private:
     void save();
     void saveSettings();
     void restoreView(bool onUpdate = false);
+    void checkMessage();
 
 private:
     Ui::MainWindow *ui;

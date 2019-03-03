@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "definitionen.h"
 #include "dialogs/dlgabout.h"
+#include "dialogs/dlgmessage.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -52,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent, bool updated) :
 
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
+    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", true).toBool());
     gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());
@@ -68,6 +70,9 @@ MainWindow::MainWindow(QWidget *parent, bool updated) :
 
     if (updated)
         restoreView(true);
+
+    if (ui->actionCheckUpdate->isChecked())
+        checkMessage();
 }
 
 MainWindow::~MainWindow()
@@ -361,6 +366,33 @@ void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
     gSettings->beginGroup("General");
     gSettings->setValue("BeendenAbfrage", checked);
     gSettings->endGroup();
+}
+
+void MainWindow::checkMessage()
+{
+    DlgMessage *dlg = new DlgMessage(this, URL_MESSAGE);
+    connect(dlg, SIGNAL(finished()), this, SLOT(checkMessageFinished()));
+    dlg->getMessage();
+}
+
+void MainWindow::checkMessageFinished()
+{
+    DlgMessage *dlg = qobject_cast<DlgMessage*>(sender());
+    if (dlg)
+    {
+        if (dlg->hasMessage())
+            dlg->exec();
+        dlg->deleteLater();
+    }
+}
+
+void MainWindow::on_actionCheckUpdate_triggered(bool checked)
+{
+    gSettings->beginGroup("General");
+    gSettings->setValue("CheckUpdates", checked);
+    gSettings->endGroup();
+    if (checked)
+        checkMessage();
 }
 
 void MainWindow::on_actionSpende_triggered()

@@ -42,6 +42,7 @@ SOURCES += \
     tabzusammenfassung.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgeinmaischtemp.cpp \
+    dialogs/dlgmessage.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffaustausch.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
@@ -99,6 +100,7 @@ HEADERS += \
     tabzusammenfassung.h \
     dialogs/dlgabout.h \
     dialogs/dlgeinmaischtemp.h \
+    dialogs/dlgmessage.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffaustausch.h \
     dialogs/dlgrohstoffvorlage.h \
@@ -154,6 +156,7 @@ FORMS += \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
     dialogs/dlgeinmaischtemp.ui \
+    dialogs/dlgmessage.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffaustausch.ui \
     dialogs/dlgrohstoffvorlage.ui \

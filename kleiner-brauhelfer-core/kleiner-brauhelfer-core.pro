@@ -17,11 +17,17 @@ DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 TEMPLATE = lib
 DEFINES += ORGANIZATION=\\\"$$ORGANIZATION\\\" TARGET=\\\"$$TARGET\\\" VERSION=\\\"$$VERSION\\\"
 DEFINES += KLEINERBRAUHELFERCORE_LIBRARY
-CONFIG += skip_target_version_ext
+CONFIG += skip_target_version_ext unversioned_libname unversioned_soname
 
 CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += warn_on
+
+!android: DESTDIR = $$OUT_PWD/../bin
+OBJECTS_DIR = tmp
+MOC_DIR = tmp
+UI_DIR = tmp
+RCC_DIR = tmp
 
 SOURCES += \
     biercalc.cpp \

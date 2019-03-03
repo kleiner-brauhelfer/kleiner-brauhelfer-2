@@ -12,14 +12,20 @@ DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 TEMPLATE = app
 DEFINES += ORGANIZATION=\\\"$$ORGANIZATION\\\" TARGET=\\\"$$TARGET\\\" VERSION=\\\"$$VERSION\\\"
 
+win32:RC_ICONS += icon.ico
+macx:ICON = icon.icns
+
 CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += warn_on
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../kleiner-brauhelfer-core/release/ -lkleiner-brauhelfer-core
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../kleiner-brauhelfer-core/debug/ -lkleiner-brauhelfer-core
-else:unix: LIBS += -L$$OUT_PWD/../kleiner-brauhelfer-core/ -lkleiner-brauhelfer-core
+DESTDIR = $$OUT_PWD/../bin
+OBJECTS_DIR = tmp
+MOC_DIR = tmp
+UI_DIR = tmp
+RCC_DIR = tmp
 
+LIBS += -L$$OUT_PWD/../bin/ -lkleiner-brauhelfer-core
 INCLUDEPATH += $$PWD/../kleiner-brauhelfer-core
 DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
 

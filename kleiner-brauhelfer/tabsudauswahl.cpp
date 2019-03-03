@@ -37,7 +37,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->splitter->setStretchFactor(1, 0);
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
-    ui->webview->setTemplateFile(gSettings->settingsDir() + "sudinfo.html");
+    ui->webview->setTemplateFile(gSettings->dataDir() + "sudinfo.html");
 
     SqlTableModel *model = bh->modelSud();
     model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("#"));
@@ -574,7 +574,7 @@ void TabSudAuswahl::on_cbEditMode_clicked(bool checked)
 
     if (checked)
     {
-        QFile file(gSettings->settingsDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
         ui->btnSaveTemplate->setProperty("file", file.fileName());
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
@@ -616,7 +616,7 @@ void TabSudAuswahl::on_btnRestoreTemplate_clicked()
                                     tr("Soll das Standardtemplate wiederhergestellt werden?"));
     if (ret == QMessageBox::Yes)
     {
-        QFile file(gSettings->settingsDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
         QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))

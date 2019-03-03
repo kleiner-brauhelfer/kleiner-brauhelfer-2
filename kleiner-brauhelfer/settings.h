@@ -28,11 +28,13 @@ public:
     void setUseSystemFont(bool system);
     void setFont(const QFont &font);
 
-    QString settingsDir();
+    QString settingsDir() const;
 
     QString databasePath();
     void setDatabasePath(const QString& path);
     QString databaseDir();
+
+    QString dataDir() const;
 
 protected:
     Settings(bool dummyPortable, QObject *parent = nullptr);

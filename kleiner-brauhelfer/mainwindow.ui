@@ -261,6 +261,7 @@
      <string>Einstellungen</string>
     </property>
     <addaction name="actionBestaetigungBeenden"/>
+    <addaction name="actionCheckUpdate"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
@@ -379,6 +380,14 @@
    </property>
    <property name="text">
     <string>Systemschriftart</string>
+   </property>
+  </action>
+  <action name="actionCheckUpdate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nach Updates überprüfen</string>
    </property>
   </action>
  </widget>

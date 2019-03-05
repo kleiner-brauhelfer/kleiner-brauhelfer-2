@@ -45,7 +45,7 @@ QString DlgRohstoffVorlage::getFileName(bool withPath) const
         break;
     }
     if (withPath)
-        return gSettings->settingsDir() + fileName;
+        return gSettings->dataDir() + fileName;
     else
         return fileName;
 }

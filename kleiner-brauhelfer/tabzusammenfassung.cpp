@@ -51,12 +51,12 @@ void TabZusammenfassung::updateAll()
     if (bh->sud()->getBierWurdeGebraut())
     {
         ui->cbTemplateAuswahl->setItemText(0, "zusammenfassung.html");
-        ui->webview->setTemplateFile(gSettings->settingsDir() + "zusammenfassung.html");
+        ui->webview->setTemplateFile(gSettings->dataDir() + "zusammenfassung.html");
     }
     else
     {
         ui->cbTemplateAuswahl->setItemText(0, "spickzettel.html");
-        ui->webview->setTemplateFile(gSettings->settingsDir() + "spickzettel.html");
+        ui->webview->setTemplateFile(gSettings->dataDir() + "spickzettel.html");
     }
     updateTemplateTags();
     updateWebView();
@@ -105,7 +105,7 @@ void TabZusammenfassung::on_cbEditMode_clicked(bool checked)
 
     if (checked)
     {
-        QFile file(gSettings->settingsDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
         ui->btnSaveTemplate->setProperty("file", file.fileName());
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
@@ -147,7 +147,7 @@ void TabZusammenfassung::on_btnRestoreTemplate_clicked()
                                     tr("Soll das Standardtemplate wiederhergestellt werden?"));
     if (ret == QMessageBox::Yes)
     {
-        QFile file(gSettings->settingsDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
         QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))

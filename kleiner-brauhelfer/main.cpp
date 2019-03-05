@@ -151,16 +151,16 @@ static bool connectDatabase(bool &updated)
 
 static void copyResources()
 {
-    QString settingsDir = gSettings->settingsDir();
+    QString dataDir = gSettings->dataDir();
     QDirIterator it(":/data", QDirIterator::Subdirectories);
-    if (!QDir(settingsDir).exists())
-        QDir().mkdir(settingsDir);
+    if (!QDir(dataDir).exists())
+        QDir().mkdir(dataDir);
     while (it.hasNext())
     {
         it.next();
         if (it.fileName() == "kb_daten.sqlite")
             continue;
-        QFile file(settingsDir + it.fileName());
+        QFile file(dataDir + it.fileName());
         if (!file.exists())
         {
             QFile file2(it.filePath());

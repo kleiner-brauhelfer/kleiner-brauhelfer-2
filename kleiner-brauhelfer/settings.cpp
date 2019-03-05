@@ -198,7 +198,7 @@ void Settings::setFont(const QFont &font)
     this->font = font;
 }
 
-QString Settings::settingsDir()
+QString Settings::settingsDir() const
 {
     return QFileInfo(fileName()).absolutePath() + "/";
 }
@@ -222,4 +222,9 @@ void Settings::setDatabasePath(const QString& path)
 QString Settings::databaseDir()
 {
     return QFileInfo(databasePath()).absolutePath() + "/";
+}
+
+QString Settings::dataDir() const
+{
+    return settingsDir() + "data/";
 }

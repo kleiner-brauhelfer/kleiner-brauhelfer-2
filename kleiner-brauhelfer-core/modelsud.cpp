@@ -340,13 +340,20 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
     }
     if (field == "Speisemenge")
     {
-        double v = data(index.row(), "WuerzemengeAnstellenTotal").toDouble() - value.toDouble();
-        if (QSqlTableModel::setData(index, value))
+        if (data(index.row(), "BierWurdeGebraut").toBool())
         {
-            QSqlTableModel::setData(this->index(index.row(), fieldIndex("WuerzemengeAnstellen")), v);
-            return true;
+            return QSqlTableModel::setData(index, value);
         }
-        return false;
+        else
+        {
+            double v = data(index.row(), "WuerzemengeAnstellenTotal").toDouble() - value.toDouble();
+            if (QSqlTableModel::setData(index, value))
+            {
+                QSqlTableModel::setData(this->index(index.row(), fieldIndex("WuerzemengeAnstellen")), v);
+                return true;
+            }
+            return false;
+        }
     }
     if (field == "erg_AbgefuellteBiermenge")
     {

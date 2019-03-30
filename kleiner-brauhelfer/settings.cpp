@@ -58,6 +58,8 @@ void Settings::initTheme()
     {
     case System:
         palette = mSystemPalette;
+        palette.setColor(QPalette::Highlight, palette.highlight().color());
+        palette.setColor(QPalette::HighlightedText, palette.highlightedText().color());
         break;
 
     case Bright:

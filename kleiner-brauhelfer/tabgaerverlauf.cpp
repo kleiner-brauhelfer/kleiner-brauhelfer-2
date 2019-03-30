@@ -83,6 +83,11 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
 
+    connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+            this, SLOT(table_selectionChanged(const QItemSelection&)));
+    connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(sig_selectionChanged(int)),
+            this, SLOT(diagram_selectionChanged(int)));
+
     model = bh->sud()->modelHauptgaerverlauf();
     table = ui->tableWidget_Hauptgaerverlauf;
     header = table->horizontalHeader();
@@ -125,6 +130,11 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
 
+    connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+            this, SLOT(table_selectionChanged(const QItemSelection&)));
+    connect(ui->widget_DiaHauptgaerverlauf, SIGNAL(sig_selectionChanged(int)),
+            this, SLOT(diagram_selectionChanged(int)));
+
     model = bh->sud()->modelNachgaerverlauf();
     table = ui->tableWidget_Nachgaerverlauf;
     header = table->horizontalHeader();
@@ -159,6 +169,11 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
+
+    connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+            this, SLOT(table_selectionChanged(const QItemSelection&)));
+    connect(ui->widget_DiaNachgaerverlauf, SIGNAL(sig_selectionChanged(int)),
+            this, SLOT(diagram_selectionChanged(int)));
 
     gSettings->beginGroup("TabGaerverlauf");
 
@@ -259,6 +274,7 @@ void TabGaerverlauf::updateDiagramm()
     for (int row = 0; row < model->rowCount(); row++)
     {
         QDateTime dt = model->index(row, 2).data().toDateTime();
+        diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L3Datum.append(dt);
@@ -274,6 +290,7 @@ void TabGaerverlauf::updateDiagramm()
     for (int row = 0; row < model->rowCount(); row++)
     {
         QDateTime dt = model->index(row, 2).data().toDateTime();
+        diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L3Datum.append(dt);
@@ -289,6 +306,7 @@ void TabGaerverlauf::updateDiagramm()
     for (int row = 0; row < model->rowCount(); row++)
     {
         QDateTime dt = model->index(row, 2).data().toDateTime();
+        diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L1Daten.append(model->index(row, 5).data().toDouble());
@@ -296,6 +314,49 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag->setWertLinie1(bh->sud()->getCO2());
     diag->repaint();
+}
+
+void TabGaerverlauf::table_selectionChanged(const QItemSelection &selected)
+{
+    WdgDiagramView *diag;
+    switch (ui->toolBox_Gaerverlauf->currentIndex())
+    {
+    case 0:
+        diag = ui->widget_DiaSchnellgaerverlauf;
+        break;
+    case 1:
+        diag = ui->widget_DiaHauptgaerverlauf;
+        break;
+    case 2:
+        diag = ui->widget_DiaNachgaerverlauf;
+        break;
+    default:
+        return;
+    }
+    int id = -1;
+    if (selected.indexes().count() > 0)
+        id = selected.indexes()[0].row();
+    diag->MarkierePunkt(id);
+}
+
+void TabGaerverlauf::diagram_selectionChanged(int id)
+{
+    QTableView *table;
+    switch (ui->toolBox_Gaerverlauf->currentIndex())
+    {
+    case 0:
+        table = ui->tableWidget_Schnellgaerverlauf;
+        break;
+    case 1:
+        table = ui->tableWidget_Hauptgaerverlauf;
+        break;
+    case 2:
+        table = ui->tableWidget_Nachgaerverlauf;
+        break;
+    default:
+        return;
+    }
+    table->selectRow(id);
 }
 
 void TabGaerverlauf::on_btnSWSchnellgaerverlauf_clicked()

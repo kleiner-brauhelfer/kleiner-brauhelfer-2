@@ -405,6 +405,7 @@ void TabRezept::updateValues()
         ui->tbRestalkalitaet->setValue(bh->sud()->getRestalkalitaetSoll());
     ui->tbRestalkalitaetWasser->setValue(bh->modelWasser()->data(0, "Restalkalitaet").toDouble());
     ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
+    ui->lblWasserprofil->setText(""); // TODO
     f = bh->sud()->getRestalkalitaetFaktor();
     ui->tbWasserGesamt->setValue(bh->sud()->geterg_W_Gesammt());
     ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * f);
@@ -421,6 +422,7 @@ void TabRezept::updateValues()
     ui->tbMilchsaeureNG->setVisible(f > 0.0);
     ui->lblMilchsaeureNG->setVisible(f > 0.0);
     ui->lblMilchsaeureNGEinheit->setVisible(f > 0.0);
+    ui->lblAnlageName->setText(bh->sud()->getAuswahlBrauanlageName());
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageValue("Sudhausausbeute").toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageValue("Verdampfungsziffer").toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageValue("Maischebottich_MaxFuellvolumen").toDouble());

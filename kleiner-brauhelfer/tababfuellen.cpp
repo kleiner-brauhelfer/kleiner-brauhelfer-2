@@ -70,6 +70,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
 
+    // TODO:
     //model = bh->sud()->modelHefegaben();
     table = ui->tableHefe;
     header = table->horizontalHeader();
@@ -161,6 +162,8 @@ void TabAbfuellen::checkEnabled()
     ui->cbSpunden->setEnabled(!abgefuellt);
     ui->tbJungbiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
+    ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
+    ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(gebraut && !abgefuellt);
     ui->btnSudVerbraucht->setEnabled(abgefuellt);
 }
@@ -169,7 +172,7 @@ void TabAbfuellen::updateValues()
 {
     double value;
 
-    ui->tableHefe->setVisible(false/*bh->sud()->modelHefegaben()->rowCount() > 0*/);
+    ui->tableHefe->setVisible(false/*bh->sud()->modelHefegaben()->rowCount() > 0*/); // TODO:
     ui->tableWeitereZutaten->setVisible(bh->sud()->modelWeitereZutatenGaben()->rowCount() > 0);
 
     QDateTime dt = bh->sud()->getAbfuelldatum();
@@ -200,13 +203,9 @@ void TabAbfuellen::updateValues()
     ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());
     ui->tbSpeisemengeGesamt2->setValue(bh->sud()->getSpeiseAnteil() / 1000);
 
-    if (!ui->tbNebenkosten->hasFocus())
-        ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
-
+    if (!ui->tbSpeisemengeAbgefuellt->hasFocus())
+        ui->tbSpeisemengeAbgefuellt->setValue(bh->sud()->getSpeisemenge());
     ui->tbSpeisemengeGesamt->setValue((int)bh->sud()->getSpeiseAnteil());
-    //ui->tbSpeisemengeFlasche->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    //ui->lblSpeisemengeFlasche->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    //ui->lblSpeisemengeFlascheEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
 
     ui->tbZuckerGesamt->setValue((int)(bh->sud()->getZuckerAnteil() / ui->tbZuckerFaktor->value()));
     ui->tbZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
@@ -217,11 +216,6 @@ void TabAbfuellen::updateValues()
     ui->tbZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerFlascheEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-
-    //ui->lineFlasche->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0 || ui->tbZuckerGesamt->value() > 0.0);
-    //ui->tbFlasche->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0 || ui->tbZuckerGesamt->value() > 0.0);
-    //ui->lblFlasche->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0 || ui->tbZuckerGesamt->value() > 0.0);
-    //ui->lblFlascheEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0 || ui->tbZuckerGesamt->value() > 0.0);
 
     value = ui->tbFlasche->value() / bh->sud()->getJungbiermengeAbfuellen();
     ui->tbSpeisemengeFlasche->setValue((int)(ui->tbSpeisemengeGesamt->value() * value));
@@ -235,14 +229,12 @@ void TabAbfuellen::updateValues()
     ui->tbBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->lblBiermengeAbfuellenEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
 
-    //ui->lblSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    //ui->tbSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    //ui->lblSpeisemengeGesamtEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-
     ui->lblSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->tbSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->lblSpeisemengeGesamtEinheit2->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
 
+    if (!ui->tbNebenkosten->hasFocus())
+        ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 
     ui->tbTEVG->setValue(bh->sud()->gettEVG());
@@ -320,6 +312,13 @@ void TabAbfuellen::on_tbBiermengeAbfuellen_valueChanged(double value)
 {
     if (ui->tbBiermengeAbfuellen->hasFocus())
         bh->sud()->seterg_AbgefuellteBiermenge(value);
+}
+
+
+void TabAbfuellen::on_tbSpeisemengeAbgefuellt_valueChanged(double value)
+{
+    if (ui->tbSpeisemengeAbgefuellt->hasFocus())
+        bh->sud()->setSpeisemenge(value);
 }
 
 void TabAbfuellen::on_tbZuckerFaktor_valueChanged(double)

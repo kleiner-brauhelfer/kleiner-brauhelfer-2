@@ -73,6 +73,9 @@
              <property name="selectionMode">
               <enum>QAbstractItemView::SingleSelection</enum>
              </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
              </attribute>
@@ -281,6 +284,9 @@
              </property>
              <property name="selectionMode">
               <enum>QAbstractItemView::SingleSelection</enum>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
              </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
@@ -611,6 +617,9 @@
              <property name="selectionMode">
               <enum>QAbstractItemView::SingleSelection</enum>
              </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
              </attribute>
@@ -774,6 +783,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -782,11 +796,6 @@
    <class>DateTimeEdit</class>
    <extends>QDateTimeEdit</extends>
    <header>widgets/datetimeedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>WdgDiagramView</class>

@@ -12,6 +12,7 @@ extern Settings* gSettings;
 class ProxyModelBrauuebersicht : public ProxyModelSud
 {
 public:
+
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
         ProxyModelSud(parent)
     {
@@ -30,6 +31,7 @@ public:
         }
         return ProxyModelSud::data(index, role);
     }
+
     int mColAuswahl1;
     int mColAuswahl2;
 };

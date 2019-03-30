@@ -448,3 +448,17 @@ void TabEtikette::on_spinBox_FLabel_RandUnten_valueChanged(int value)
     if (ui->spinBox_FLabel_RandUnten->hasFocus())
         setData("SRandUnten", value);
 }
+
+void TabEtikette::on_btnLoeschen_clicked()
+{
+    if (bh->sud()->modelFlaschenlabel()->rowCount() > 0)
+    {
+        int ret = QMessageBox::question(this, tr("Etikette löschen?"),
+                                        tr("Soll die Etikette gelöscht werden?"));
+        if (ret == QMessageBox::Yes)
+        {
+            ui->cbAuswahl->setCurrentIndex(-1);
+            bh->sud()->modelFlaschenlabel()->removeRow(0);
+        }
+    }
+}

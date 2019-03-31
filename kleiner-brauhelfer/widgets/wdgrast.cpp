@@ -38,6 +38,21 @@ bool WdgRast::setData(const QString &fieldName, const QVariant &value)
     return bh->sud()->modelRasten()->setData(mIndex, fieldName, value);
 }
 
+QString WdgRast::name() const
+{
+    return data("Name").toString();
+}
+
+int WdgRast::temperatur() const
+{
+    return data("Temp").toInt();
+}
+
+int WdgRast::dauer() const
+{
+    return data("Dauer").toInt();
+}
+
 void WdgRast::checkEnabled(bool force)
 {
     bool enabled = !bh->sud()->getBierWurdeGebraut();
@@ -65,7 +80,7 @@ void WdgRast::checkEnabled(bool force)
     else
     {
         ui->cbRast->clear();
-        ui->cbRast->addItem(data("Name").toString());
+        ui->cbRast->addItem(name());
         ui->cbRast->setEditable(false);
         ui->cbRast->setEnabled(false);
         ui->cbRast->setCurrentIndex(-1);
@@ -80,11 +95,11 @@ void WdgRast::updateValues()
     checkEnabled(false);
 
     if (!ui->cbRast->hasFocus())
-        ui->cbRast->setCurrentText(data("Name").toString());
+        ui->cbRast->setCurrentText(name());
     if (!ui->tbTemp->hasFocus())
-        ui->tbTemp->setValue(data("Temp").toInt());
+        ui->tbTemp->setValue(temperatur());
     if (!ui->tbDauer->hasFocus())
-        ui->tbDauer->setValue(data("Dauer").toInt());
+        ui->tbDauer->setValue(dauer());
 }
 
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)

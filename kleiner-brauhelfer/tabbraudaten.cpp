@@ -38,7 +38,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Malzschüttung"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("Prozent");
     table->setColumnHidden(col, false);
@@ -50,6 +50,30 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Menge [kg]"));
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 2);
+
+    model = bh->sud()->modelRasten();
+    table = ui->tableRasten;
+    header = table->horizontalHeader();
+    table->setModel(model);
+    for (int col = 0; col < model->columnCount(); ++col)
+        table->setColumnHidden(col, true);
+    col = model->fieldIndex("Name");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Rast"));
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->moveSection(header->visualIndex(col), 0);
+    col = model->fieldIndex("Temp");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 1);
+    col = model->fieldIndex("Dauer");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Dauer [min]"));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
@@ -66,7 +90,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("erg_Menge");
     table->setColumnHidden(col, false);
@@ -84,7 +108,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Hopfengabe"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("Vorderwuerze");
     table->setColumnHidden(col, false);
@@ -118,7 +142,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("Zugabedauer");
     table->setColumnHidden(col, false);
@@ -133,11 +157,30 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
-    //model = bh->sud()->modelHefegaben();
+    model = bh->sud()->modelHefegaben();
     table = ui->tableHefe;
+    table->setModel(model);
     header = table->horizontalHeader();
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
+    col = model->fieldIndex("Name");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Hefegabe"));
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->moveSection(header->visualIndex(col), 0);
+    col = model->fieldIndex("Menge");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Menge"));
+    header->moveSection(header->visualIndex(col), 1);
+    col = model->fieldIndex("Zugegeben");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
+    header->moveSection(header->visualIndex(col), 2);
+    col = model->fieldIndex("ZugegebenNach");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("ZugegebenNach"));
+    header->moveSection(header->visualIndex(col), 3);
+
 
     gSettings->beginGroup("TabBraudaten");
 
@@ -221,6 +264,7 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
     ui->tbSpeisemenge->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
+    ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
 }
 
@@ -228,11 +272,12 @@ void TabBraudaten::updateValues()
 {
     double value;
 
+    ui->tableRasten->setVisible(ui->tableRasten->model()->rowCount() > 0);
     ui->tableMalz->setVisible(ui->tableMalz->model()->rowCount() > 0);
     ui->tableWeitereZutatenMaischen->setVisible(ui->tableWeitereZutatenMaischen->model()->rowCount() > 0);
     ui->tableHopfen->setVisible(ui->tableHopfen->model()->rowCount() > 0);
     ui->tableWeitereZutatenKochen->setVisible(ui->tableWeitereZutatenKochen->model()->rowCount() > 0);
-    ui->tableHefe->setVisible(false/*ui->tableHefe->model()->rowCount()*/);
+    ui->tableHefe->setVisible(ui->tableHefe->model()->rowCount());
 
     QDateTime dt = bh->sud()->getBraudatum();
     if (bh->sud()->getBierWurdeGebraut() || dt.isValid())
@@ -255,15 +300,12 @@ void TabBraudaten::updateValues()
     ui->tbSWAnstellen->setMaximum(ui->tbSWKochende->value());
     if (!ui->tbSWAnstellen->hasFocus())
         ui->tbSWAnstellen->setValue(bh->sud()->getSWAnstellen());
-    ui->tbWuerzemengeAnstellenTotal->setMaximum(ui->tbWuerzemengeKochende->value());
     if (!ui->tbWuerzemengeAnstellenTotal->hasFocus())
         ui->tbWuerzemengeAnstellenTotal->setValue(bh->sud()->getWuerzemengeAnstellenTotal());
     if (!ui->tbSpeisemenge->hasFocus())
         ui->tbSpeisemenge->setValue(bh->sud()->getSpeisemenge());
-    ui->tbWuerzemengeAnstellen->setMaximum(ui->tbWuerzemengeKochende->value() - ui->tbSpeisemenge->value());
     if (!ui->tbWuerzemengeAnstellen->hasFocus())
         ui->tbWuerzemengeAnstellen->setValue(bh->sud()->getWuerzemengeAnstellen());
-    ui->tbVerlustAnstellen->setValue(ui->tbWuerzemengeKochende->value() - ui->tbWuerzemengeAnstellenTotal->value());
     ui->tbSpeisemengeNoetig->setValue(BierCalc::speise(bh->sud()->getCO2(), bh->sud()->getSWAnstellen(), 3.0, 3.0, 20.0) * bh->sud()->getWuerzemengeAnstellen());
 
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
@@ -273,18 +315,26 @@ void TabBraudaten::updateValues()
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * value);
     ui->tbNachguss->setValue(bh->sud()->geterg_WNachguss());
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * value);
+
+    value = pow(bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI / 1000;
     ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
-    ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, 100.0, ui->tbMengeSollKochbeginn20->value()));
-    value = pow(bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI;
-    ui->tbMengeSollcmVomBoden->setValue(bh->sud()->getMengeSollKochbeginn() * 1000 / value);
+    ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), ui->tbMengeSollKochbeginn20->value()));
+    ui->tbMengeSollcmVomBoden->setValue(ui->tbMengeSollKochbeginn100->value() / value);
     ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
     ui->tbSWSollKochbeginn->setValue(bh->sud()->getSWSollKochbeginn());
+
     ui->tbMengeSollKochende20->setValue(bh->sud()->getMengeSollKochende());
-    ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, 100.0, ui->tbMengeSollKochende20->value()));
+    ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), ui->tbMengeSollKochende20->value()));
+    ui->tbMengeSollEndecmVomBoden->setValue(ui->tbMengeSollKochende100->value() / value);
+    ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollEndecmVomBoden->value());
     ui->tbSWSollKochende->setValue(bh->sud()->getSWSollKochende());
+
     ui->tbVerdampfung->setValue(bh->sud()->getVerdampfungsziffer());
     ui->tbAusbeute->setValue(bh->sud()->geterg_Sudhausausbeute());
     ui->tbAusbeuteEffektiv->setValue(bh->sud()->geterg_EffektiveAusbeute());
+
+    if (!ui->tbNebenkosten->hasFocus())
+        ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 }
 
@@ -315,6 +365,12 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
         ui->tbWuerzemengeKochbeginn->setValue(dlg.getLiter());
 }
 
+void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
+{
+    if (ui->tbTempKochbeginn->hasFocus())
+        updateValues();
+}
+
 void TabBraudaten::on_tbWuerzemengeKochende_valueChanged(double value)
 {
     if (ui->tbWuerzemengeKochende->hasFocus())
@@ -331,6 +387,12 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
     dlg.setVisibleVonUnten(false);
     if (dlg.exec() == QDialog::Accepted)
         ui->tbWuerzemengeKochende->setValue(dlg.getLiter());
+}
+
+void TabBraudaten::on_tbTempKochende_valueChanged(double)
+{
+    if (ui->tbTempKochende->hasFocus())
+        updateValues();
 }
 
 void TabBraudaten::on_tbSWKochende_valueChanged(double value)

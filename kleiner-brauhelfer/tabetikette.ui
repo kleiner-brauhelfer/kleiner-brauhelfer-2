@@ -42,7 +42,7 @@
        <item>
         <widget class="QGroupBox" name="groupBox_FLabelAuswahl">
          <property name="title">
-          <string>Flaschenlabel</string>
+          <string>Etikette</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_24">
           <property name="spacing">
@@ -195,6 +195,13 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnLoeschen">
+         <property name="text">
+          <string>Etikette löschen</string>
+         </property>
         </widget>
        </item>
        <item>

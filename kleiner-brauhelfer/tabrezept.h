@@ -25,15 +25,18 @@ private slots:
     void updateValues();
 
     void rasten_modified();
+    void updateRastenDiagram();
     void on_btnEinmaischtemperatur_clicked();
     void on_btnNeueRast_clicked();
 
     void malzGaben_modified();
     void malzGaben_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
+    void updateMalzDiagram();
     void on_btnNeueMalzGabe_clicked();
 
     void hopfenGaben_modified();
     void hopfenGaben_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
+    void updateHopfenDiagram();
     void on_btnNeueHopfenGabe_clicked();
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
 

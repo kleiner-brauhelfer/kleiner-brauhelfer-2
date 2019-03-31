@@ -12,6 +12,7 @@ extern Settings* gSettings;
 class ProxyModelBrauuebersicht : public ProxyModelSud
 {
 public:
+
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
         ProxyModelSud(parent)
     {
@@ -30,6 +31,7 @@ public:
         }
         return ProxyModelSud::data(index, role);
     }
+
     int mColAuswahl1;
     int mColAuswahl2;
 };
@@ -142,12 +144,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
 void TabBrauUebersicht::updateDiagram()
 {
-    ui->diagram->Ids.clear();
-    ui->diagram->L1Daten.clear();
-    ui->diagram->L1Datum.clear();
-    ui->diagram->L2Daten.clear();
-    ui->diagram->L2Datum.clear();
-
+    ui->diagram->DiagrammLeeren();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     if (model->rowCount() > 1)
     {

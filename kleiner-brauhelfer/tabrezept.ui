@@ -46,8 +46,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>475</width>
-         <height>759</height>
+         <width>429</width>
+         <height>712</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -661,177 +661,6 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupRasten">
-          <property name="title">
-           <string>Rasten</string>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_14">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_26">
-             <property name="spacing">
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>Einmaischtemperatur</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_7">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnEinmaischtemperatur">
-               <property name="minimumSize">
-                <size>
-                 <width>60</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>60</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Berechnung für die Einmaischtemperatur.</string>
-               </property>
-               <property name="text">
-                <string notr="true">...</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="SpinBox" name="tbEinmaischtemperatur">
-               <property name="minimumSize">
-                <size>
-                 <width>60</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Die Einmaischtemperatur sollte leicht über die erste Rast liegen, da beim zugeben des Malzes die Temperatur fallen wird.</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_39">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>°C</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="Line" name="line_8">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QScrollArea" name="scrollAreaRasten">
-             <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Plain</enum>
-             </property>
-             <property name="widgetResizable">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents_7">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>437</width>
-                <height>69</height>
-               </rect>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_93">
-               <property name="spacing">
-                <number>4</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <layout class="QVBoxLayout" name="layoutRasten">
-                 <property name="spacing">
-                  <number>4</number>
-                 </property>
-                </layout>
-               </item>
-               <item>
-                <spacer name="verticalSpacer_6">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-           </item>
-           <item>
-            <widget class="Line" name="line_7">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnNeueRast">
-             <property name="text">
-              <string>Rast hinzufügen</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
          <widget class="QTabWidget" name="tabWidget_2">
           <property name="currentIndex">
            <number>0</number>
@@ -899,8 +728,8 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>433</width>
-                 <height>101</height>
+                 <width>387</width>
+                 <height>232</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -1018,6 +847,12 @@ p, li { white-space: pre-wrap; }
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>200</height>
+       </size>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -1030,64 +865,70 @@ p, li { white-space: pre-wrap; }
          <number>4</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollAreaMalzGaben">
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+         <widget class="QSplitter" name="splitterMalzDiagram">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_2">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>213</width>
-             <height>636</height>
-            </rect>
+          <widget class="QScrollArea" name="scrollAreaMalzGaben">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <property name="spacing">
-             <number>4</number>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>276</width>
+              <height>391</height>
+             </rect>
             </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QVBoxLayout" name="layoutMalzGaben">
-              <property name="spacing">
-               <number>6</number>
-              </property>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>410</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="layoutMalzGaben">
+               <property name="spacing">
+                <number>6</number>
+               </property>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>410</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
           </widget>
+          <widget class="QChartView" name="diagramMalz"/>
          </widget>
         </item>
         <item>
-         <widget class="Line" name="line">
+         <widget class="Line" name="lineNeueMalzGabe">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1146,64 +987,70 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QScrollArea" name="scrollAreaHopfenGaben">
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+         <widget class="QSplitter" name="splitterHopfenDiagram">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_3">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>213</width>
-             <height>603</height>
-            </rect>
+          <widget class="QScrollArea" name="scrollAreaHopfenGaben">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <property name="spacing">
-             <number>4</number>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_3">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>276</width>
+              <height>116</height>
+             </rect>
             </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QVBoxLayout" name="layoutHopfenGaben">
-              <property name="spacing">
-               <number>6</number>
-              </property>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="layoutHopfenGaben">
+               <property name="spacing">
+                <number>6</number>
+               </property>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
           </widget>
+          <widget class="QChartView" name="diagramHopfen"/>
          </widget>
         </item>
         <item>
-         <widget class="Line" name="line_2">
+         <widget class="Line" name="lineNeueHopfenGabe">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1239,7 +1086,7 @@ p, li { white-space: pre-wrap; }
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>213</width>
+             <width>276</width>
              <height>636</height>
             </rect>
            </property>
@@ -1284,7 +1131,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="Line" name="line_15">
+         <widget class="Line" name="lineNeueHefeGabe">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1320,7 +1167,7 @@ p, li { white-space: pre-wrap; }
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>213</width>
+             <width>276</width>
              <height>609</height>
             </rect>
            </property>
@@ -1365,7 +1212,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="Line" name="line_4">
+         <widget class="Line" name="lineNeueWeitereZutat">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1382,6 +1229,181 @@ p, li { white-space: pre-wrap; }
          <widget class="QPushButton" name="btnNeueWeitereZutat">
           <property name="text">
            <string>Weitere Zutat hinzufügen</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabRasten">
+       <attribute name="title">
+        <string>Rasten</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_26">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Einmaischtemperatur</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnEinmaischtemperatur">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Berechnung für die Einmaischtemperatur.</string>
+            </property>
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="SpinBox" name="tbEinmaischtemperatur">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Die Einmaischtemperatur sollte leicht über die erste Rast liegen, da beim zugeben des Malzes die Temperatur fallen wird.</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_39">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>°C</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitterRastenDiagram">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <widget class="QScrollArea" name="scrollAreaRasten">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_7">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>276</width>
+              <height>115</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_93">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="layoutRasten">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+          <widget class="QChartView" name="diagramRasten"/>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lineNeueRast">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNeueRast">
+          <property name="text">
+           <string>Rast hinzufügen</string>
           </property>
          </widget>
         </item>
@@ -1408,7 +1430,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>326</width>
-          <height>605</height>
+          <height>653</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1905,6 +1927,23 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_47">
+              <property name="text">
+               <string>Name</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3" colspan="2">
+             <widget class="QLabel" name="lblAnlageName"/>
+            </item>
+            <item row="1" column="0" colspan="5">
+             <widget class="Line" name="line_16">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
@@ -1923,15 +1962,47 @@ p, li { white-space: pre-wrap; }
             <property name="verticalSpacing">
              <number>4</number>
             </property>
-            <item row="9" column="0" colspan="5">
-             <widget class="Line" name="line_6">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+            <item row="9" column="4">
+             <widget class="QLabel" name="label_42">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>°dH</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="4">
-             <widget class="QLabel" name="label_33">
+            <item row="2" column="4">
+             <widget class="QLabel" name="label_28">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="4">
+             <widget class="QLabel" name="lblMilchsaeureGesamtEinheit">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>ml</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="4">
+             <widget class="QLabel" name="label_32">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -1968,21 +2039,8 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="7" column="4">
-             <widget class="QLabel" name="lblMilchsaeureNGEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>ml</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="DoubleSpinBox" name="tbMilchsaeureGesamt">
+            <item row="2" column="3">
+             <widget class="DoubleSpinBox" name="tbWasserGesamt">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2006,10 +2064,33 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="6" column="0" colspan="2">
-             <widget class="QLabel" name="label_S1_3">
+            <item row="2" column="2">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="4" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_7">
               <property name="text">
-               <string>Nachguss</string>
+               <string>Hauptguss</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="lblMilchsaeureHG">
+              <property name="text">
+               <string>Milchsäure 80%</string>
+              </property>
+              <property name="indent">
+               <number>8</number>
               </property>
              </widget>
             </item>
@@ -2038,15 +2119,82 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="2" column="0" colspan="2">
-             <widget class="QLabel" name="label_37">
-              <property name="text">
-               <string>Gesamt</string>
+            <item row="3" column="3">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureGesamt">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
               </property>
              </widget>
             </item>
-            <item row="3" column="4">
-             <widget class="QLabel" name="lblMilchsaeureGesamtEinheit">
+            <item row="9" column="0" colspan="2">
+             <widget class="QLabel" name="label_40">
+              <property name="text">
+               <string>Restalkalität</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_3">
+              <property name="text">
+               <string>Nachguss</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0" colspan="5">
+             <widget class="Line" name="line_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3" colspan="2">
+             <widget class="QLabel" name="lblWasserprofil"/>
+            </item>
+            <item row="5" column="3">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="4">
+             <widget class="QLabel" name="lblMilchsaeureHGEinheit">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -2058,29 +2206,20 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="2" column="4">
-             <widget class="QLabel" name="label_28">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
+            <item row="3" column="0">
+             <widget class="QLabel" name="lblMilchsaeureGesamt">
               <property name="text">
-               <string>l</string>
+               <string>Milchsäure 80%</string>
+              </property>
+              <property name="indent">
+               <number>8</number>
               </property>
              </widget>
             </item>
-            <item row="4" column="4">
-             <widget class="QLabel" name="label_32">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
+            <item row="2" column="0" colspan="2">
+             <widget class="QLabel" name="label_37">
               <property name="text">
-               <string>l</string>
+               <string>Gesamt</string>
               </property>
              </widget>
             </item>
@@ -2109,84 +2248,14 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="4" column="0" colspan="2">
-             <widget class="QLabel" name="label_S1_7">
-              <property name="text">
-               <string>Hauptguss</string>
+            <item row="1" column="0" colspan="5">
+             <widget class="Line" name="line_17">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
-            <item row="5" column="4">
-             <widget class="QLabel" name="lblMilchsaeureHGEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>ml</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="DoubleSpinBox" name="tbWasserGesamt">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="3">
-             <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="0" colspan="2">
-             <widget class="QLabel" name="label_40">
-              <property name="text">
-               <string>Restalkalität</string>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="3">
+            <item row="9" column="3">
              <widget class="DoubleSpinBox" name="tbRestalkalitaetWasser">
               <property name="minimumSize">
                <size>
@@ -2211,8 +2280,15 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="10" column="4">
-             <widget class="QLabel" name="label_42">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_48">
+              <property name="text">
+               <string>Profil</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="4">
+             <widget class="QLabel" name="label_33">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -2220,40 +2296,20 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="text">
-               <string>°dH</string>
+               <string>l</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="2">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
+            <item row="7" column="4">
+             <widget class="QLabel" name="lblMilchsaeureNGEinheit">
+              <property name="minimumSize">
                <size>
-                <width>40</width>
-                <height>20</height>
+                <width>30</width>
+                <height>0</height>
                </size>
               </property>
-             </spacer>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="lblMilchsaeureGesamt">
               <property name="text">
-               <string>Milchsäure 80%</string>
-              </property>
-              <property name="indent">
-               <number>8</number>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="lblMilchsaeureHG">
-              <property name="text">
-               <string>Milchsäure 80%</string>
-              </property>
-              <property name="indent">
-               <number>8</number>
+               <string>ml</string>
               </property>
              </widget>
             </item>
@@ -2310,9 +2366,9 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -2320,9 +2376,14 @@ p, li { white-space: pre-wrap; }
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -2344,8 +2405,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbReifezeit</tabstop>
   <tabstop>btnEinmaischtemperatur</tabstop>
   <tabstop>tbEinmaischtemperatur</tabstop>
-  <tabstop>scrollAreaRasten</tabstop>
-  <tabstop>btnNeueRast</tabstop>
   <tabstop>tabWidget_2</tabstop>
   <tabstop>tbKommentar</tabstop>
   <tabstop>scrollAreaAnhang</tabstop>

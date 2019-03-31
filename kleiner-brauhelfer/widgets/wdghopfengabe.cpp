@@ -85,7 +85,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
     else
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(data("Name").toString()));
+        model->setItem(0, 0, new QStandardItem(name()));
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(0);
         ui->cbZutat->setEnabled(false);
@@ -108,17 +108,17 @@ bool WdgHopfenGabe::prozentIbu() const
 {
     return bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_IBU;
 }
-//#include <QDebug>
+
 void WdgHopfenGabe::updateValues()
 {
-    QString name = data("Name").toString();
-//qDebug() << "isEnabled hops: " << ui->tbMengeProzent->isEnabled();
+    QString hopfenname = name();
+
     checkEnabled(false);
 
     if (!ui->cbZutat->hasFocus())
     {
         ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(name);
+        ui->cbZutat->setCurrentText(hopfenname);
     }
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data("Prozent").toDouble());
@@ -138,7 +138,7 @@ void WdgHopfenGabe::updateValues()
         ui->tbKochdauer->setValue(data("Zeit").toInt());
     }
 
-    int idx = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Typ").toInt();
+    int idx = bh->modelHopfen()->getValueFromSameRow("Beschreibung", hopfenname, "Typ").toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
         QPalette pal = ui->frameColor->palette();
@@ -152,12 +152,12 @@ void WdgHopfenGabe::updateValues()
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Menge").toInt());
+        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow("Beschreibung", hopfenname, "Menge").toInt());
         int benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHopfengaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, "Name").toString() == name)
+            if (model->data(i, "Name").toString() == hopfenname)
                 benoetigt += model->data(i, "erg_Menge").toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
@@ -201,6 +201,11 @@ void WdgHopfenGabe::on_tbAnteilProzent_valueChanged(double value)
 {
     if (ui->tbAnteilProzent->hasFocus())
         setData("Prozent", value);
+}
+
+QString WdgHopfenGabe::name() const
+{
+    return data("Name").toString();
 }
 
 double WdgHopfenGabe::prozent() const

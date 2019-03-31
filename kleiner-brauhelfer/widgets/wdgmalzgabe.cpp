@@ -71,7 +71,7 @@ void WdgMalzGabe::checkEnabled(bool force)
     else
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(data("Name").toString()));
+        model->setItem(0, 0, new QStandardItem(name()));
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(0);
         ui->cbZutat->setEnabled(false);
@@ -88,14 +88,14 @@ void WdgMalzGabe::checkEnabled(bool force)
 
 void WdgMalzGabe::updateValues()
 {
-    QString name = data("Name").toString();
+    QString malzname = name();
 
     checkEnabled(false);
 
     if (!ui->cbZutat->hasFocus())
     {
         ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(name);
+        ui->cbZutat->setCurrentText(malzname);
     }
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data("Prozent").toDouble());
@@ -111,17 +111,17 @@ void WdgMalzGabe::updateValues()
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow("Beschreibung", name, "Menge").toDouble());
+        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "Menge").toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelMalzschuettung();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, "Name").toString() == name)
+            if (model->data(i, "Name").toString() == malzname)
                 benoetigt += model->data(i, "erg_Menge").toDouble();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
-        double max = bh->modelMalz()->getValueFromSameRow("Beschreibung", name, "MaxProzent").toDouble();
+        double max = bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "MaxProzent").toDouble();
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() > max);
     }
 }
@@ -142,6 +142,11 @@ void WdgMalzGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
         setData("erg_Menge", value);
+}
+
+QString WdgMalzGabe::name() const
+{
+    return data("Name").toString();
 }
 
 double WdgMalzGabe::prozent() const

@@ -2,7 +2,7 @@
 #define TABGAERVERLAUF_H
 
 #include <QWidget>
-
+#include <QItemSelection>
 namespace Ui {
 class TabGaerverlauf;
 }
@@ -22,6 +22,8 @@ private slots:
     void updateDiagramm();
     void updateEnabled();
     void updateWeitereZutaten();
+    void table_selectionChanged(const QItemSelection &selected);
+    void diagram_selectionChanged(int id);
     void on_btnSWSchnellgaerverlauf_clicked();
     void on_btnAddSchnellgaerMessung_clicked();
     void on_btnDelSchnellgaerMessung_clicked();

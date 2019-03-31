@@ -66,26 +66,6 @@
     </widget>
    </item>
    <item>
-    <widget class="SpinBox" name="tbTemp">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>°C</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="SpinBox" name="tbDauer">
      <property name="minimumSize">
       <size>
@@ -100,8 +80,40 @@
    </item>
    <item>
     <widget class="QLabel" name="label">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
       <string>min</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="SpinBox" name="tbTemp">
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>°C</string>
      </property>
     </widget>
    </item>
@@ -109,21 +121,20 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>cbRast</tabstop>
   <tabstop>tbTemp</tabstop>
-  <tabstop>tbDauer</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

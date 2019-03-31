@@ -15,6 +15,9 @@ public:
     explicit WdgRast(int index, QWidget *parent = nullptr);
     ~WdgRast();
     bool isEnabled() const;
+    QString name() const;
+    int temperatur() const;
+    int dauer() const;
 
 public slots:
     void updateValues();

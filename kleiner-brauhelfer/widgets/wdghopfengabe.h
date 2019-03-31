@@ -17,6 +17,7 @@ public:
     bool isEnabled() const;
     QVariant data(const QString &fieldName) const;
     bool setData(const QString &fieldName, const QVariant &value);
+    QString name() const;
     double prozent() const;
     void setFehlProzent(double value);
 

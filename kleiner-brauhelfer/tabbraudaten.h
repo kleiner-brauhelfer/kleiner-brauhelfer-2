@@ -27,8 +27,10 @@ private slots:
     void on_btnBraudatumHeute_clicked();
     void on_tbWuerzemengeKochbeginn_valueChanged(double value);
     void on_btnWuerzemengeKochbeginn_clicked();
+    void on_tbTempKochbeginn_valueChanged(double);
     void on_tbWuerzemengeKochende_valueChanged(double value);
     void on_btnWuerzemengeKochende_clicked();
+    void on_tbTempKochende_valueChanged(double);
     void on_tbSWKochende_valueChanged(double value);
     void on_btnSWKochende_clicked();
     void on_tbSWAnstellen_valueChanged(double value);

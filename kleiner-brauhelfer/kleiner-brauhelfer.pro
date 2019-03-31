@@ -1,4 +1,4 @@
-QT += core sql gui widgets svg webenginewidgets
+QT += core sql gui widgets charts svg webenginewidgets
 
 ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer

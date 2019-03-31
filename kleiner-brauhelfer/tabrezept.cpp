@@ -27,6 +27,21 @@ TabRezept::TabRezept(QWidget *parent) :
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
+    QChart *chart = ui->diagramMalz->chart();
+    chart->layout()->setContentsMargins(0, 0, 0, 0);
+    chart->setBackgroundRoundness(0);
+    chart->legend()->setAlignment(Qt::AlignRight);
+
+    chart = ui->diagramHopfen->chart();
+    chart->layout()->setContentsMargins(0, 0, 0, 0);
+    chart->setBackgroundRoundness(0);
+    chart->legend()->setAlignment(Qt::AlignRight);
+
+    chart = ui->diagramRasten->chart();
+    chart->layout()->setContentsMargins(0, 0, 0, 0);
+    chart->setBackgroundRoundness(0);
+    chart->legend()->hide();
+
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
@@ -42,6 +57,9 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->splitterHelp->setSizes({90, 10});
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
+    ui->splitterMalzDiagram->restoreState(gSettings->value("splitterMalzDiagramState").toByteArray());
+    ui->splitterHopfenDiagram->restoreState(gSettings->value("splitterHopfenDiagramState").toByteArray());
+    ui->splitterRastenDiagram->restoreState(gSettings->value("splitterRastenDiagramState").toByteArray());
 
     gSettings->endGroup();
 
@@ -57,6 +75,8 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelRasten(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(rasten_modified()));
     connect(bh->sud()->modelRasten(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(rasten_modified()));
     connect(bh->sud()->modelRasten(), SIGNAL(sortChanged()), this, SLOT(rasten_modified()));
+    connect(bh->sud()->modelRasten(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateRastenDiagram()));
 
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(modelReset()), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
@@ -100,6 +120,7 @@ TabRezept::TabRezept(QWidget *parent) :
     col = model->fieldIndex("Value");
     model->setHeaderData(col, Qt::Horizontal, tr("Wert"));
     table->setColumnHidden(col, false);
+    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
     col = model->fieldIndex("Global");
     model->setHeaderData(col, Qt::Horizontal, tr("Global"));
     table->setColumnHidden(col, false);
@@ -117,6 +138,9 @@ void TabRezept::saveSettings()
     gSettings->beginGroup("TabRezept");
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
+    gSettings->setValue("splitterMalzDiagramState", ui->splitterMalzDiagram->saveState());
+    gSettings->setValue("splitterHopfenDiagramState", ui->splitterHopfenDiagram->saveState());
+    gSettings->setValue("splitterRastenDiagramState", ui->splitterRastenDiagram->saveState());
     gSettings->endGroup();
 }
 
@@ -188,12 +212,17 @@ void TabRezept::checkEnabled()
     ui->tbEinmaischtemperatur->setReadOnly(gebraut);
     ui->btnEinmaischtemperatur->setVisible(!gebraut);
     ui->btnNeueRast->setVisible(!gebraut);
+    ui->lineNeueRast->setVisible(!gebraut);
     ui->btnNeueMalzGabe->setVisible(!gebraut);
+    ui->lineNeueMalzGabe->setVisible(!gebraut);
     ui->cbBerechnungsartHopfen->setEnabled(!gebraut);
     ui->btnNeueHopfenGabe->setVisible(!gebraut);
+    ui->lineNeueHopfenGabe->setVisible(!gebraut);
     ui->btnNeueHefeGabe->setVisible(!abgefuellt);
+    ui->lineNeueHefeGabe->setVisible(!gebraut);
     ui->btnNeueHopfenstopfenGabe->setVisible(!abgefuellt);
     ui->btnNeueWeitereZutat->setVisible(!abgefuellt);
+    ui->lineNeueWeitereZutat->setVisible(!gebraut);
 }
 
 void TabRezept::checkRohstoffe()
@@ -506,6 +535,31 @@ void TabRezept::rasten_modified()
         delete ui->layoutRasten->itemAt(ui->layoutRasten->count() - 1)->widget();
     for (int i = 0; i < ui->layoutRasten->count(); ++i)
         static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget())->updateValues();
+    updateRastenDiagram();
+}
+
+void TabRezept::updateRastenDiagram()
+{
+    QLineSeries *series = new QLineSeries();
+    int t = 0;
+    series->append(t, bh->sud()->getEinmaischenTemp());
+    for (int i = 0; i < ui->layoutRasten->count(); ++i)
+    {
+        const WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
+        series->append(t, wdg->temperatur());
+        t += wdg->dauer();
+        series->append(t, wdg->temperatur());
+    }
+    QChart *chart = ui->diagramRasten->chart();
+    chart->removeAllSeries();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    QValueAxis *axis =  static_cast<QValueAxis*>(chart->axes(Qt::Horizontal).back());
+    axis->setRange(0, t);
+    axis->setLabelFormat("%d min");
+    axis =  static_cast<QValueAxis*>(chart->axes(Qt::Vertical).back());
+    axis->setRange(30, 80);
+    axis->setLabelFormat("%d C");
 }
 
 void TabRezept::on_btnEinmaischtemperatur_clicked()
@@ -518,7 +572,7 @@ void TabRezept::on_btnEinmaischtemperatur_clicked()
 
 void TabRezept::on_btnNeueRast_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}, {"RastTemp", 99}});
+    QVariantMap values({{"SudID", bh->sud()->id()}, {"RastTemp", 78}});
     bh->sud()->modelRasten()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
@@ -547,25 +601,41 @@ void TabRezept::malzGaben_dataChanged(const QModelIndex &topLeft, const QModelIn
             return updateMalzGaben();
         index = index.siblingAtColumn(index.column() + 1);
     }
+    updateMalzDiagram();
 }
 
 void TabRezept::updateMalzGaben()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-        return;
-    double p = 100.0;
+    if (!bh->sud()->getBierWurdeGebraut())
+    {
+        double p = 100.0;
+        for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        {
+            WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+            p -= wdg->prozent();
+        }
+        if (fabs(p) < 0.1)
+            p = 0.0;
+        for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        {
+            WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+            wdg->setFehlProzent(p);
+        }
+    }
+    updateMalzDiagram();
+}
+
+void TabRezept::updateMalzDiagram()
+{
+    QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
-        WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
-        p -= wdg->prozent();
+        const WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+        series->append(wdg->name(), wdg->prozent());
     }
-    if (fabs(p) < 0.1)
-        p = 0.0;
-    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
-    {
-        WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
-        wdg->setFehlProzent(p);
-    }
+    QChart *chart = ui->diagramMalz->chart();
+    chart->removeAllSeries();
+    chart->addSeries(series);
 }
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
@@ -608,25 +678,41 @@ void TabRezept::hopfenGaben_dataChanged(const QModelIndex &topLeft, const QModel
             return updateHopfenGaben();
         index = index.siblingAtColumn(index.column() + 1);
     }
+    updateHopfenDiagram();
+}
+
+void TabRezept::updateHopfenDiagram()
+{
+    QPieSeries *series = new QPieSeries();
+    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+    {
+        const WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
+        series->append(wdg->name(), wdg->prozent());
+    }
+    QChart *chart = ui->diagramHopfen->chart();
+    chart->removeAllSeries();
+    chart->addSeries(series);
 }
 
 void TabRezept::updateHopfenGaben()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-        return;
-    double p = 100.0;
-    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+    if (!bh->sud()->getBierWurdeGebraut())
     {
-        WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
-        p -= wdg->prozent();
+        double p = 100.0;
+        for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        {
+            WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
+            p -= wdg->prozent();
+        }
+        if (fabs(p) < 0.1)
+            p = 0.0;
+        for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        {
+            WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
+            wdg->setFehlProzent(p);
+        }
     }
-    if (fabs(p) < 0.1)
-        p = 0.0;
-    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
-    {
-        WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
-        wdg->setFehlProzent(p);
-    }
+    updateHopfenDiagram();
 }
 
 void TabRezept::on_btnNeueHopfenGabe_clicked()

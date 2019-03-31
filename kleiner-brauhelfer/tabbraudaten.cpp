@@ -38,7 +38,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Malzschüttung"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("Prozent");
     table->setColumnHidden(col, false);
@@ -50,6 +50,30 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Menge [kg]"));
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 2);
+
+    model = bh->sud()->modelRasten();
+    table = ui->tableRasten;
+    header = table->horizontalHeader();
+    table->setModel(model);
+    for (int col = 0; col < model->columnCount(); ++col)
+        table->setColumnHidden(col, true);
+    col = model->fieldIndex("RastName");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Rast"));
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->moveSection(header->visualIndex(col), 0);
+    col = model->fieldIndex("RastTemp");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 1);
+    col = model->fieldIndex("RastDauer");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Dauer [min]"));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
@@ -66,7 +90,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("erg_Menge");
     table->setColumnHidden(col, false);
@@ -84,7 +108,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Hopfengabe"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("Vorderwuerze");
     table->setColumnHidden(col, false);
@@ -118,7 +142,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Name");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
     col = model->fieldIndex("Zugabedauer");
     table->setColumnHidden(col, false);
@@ -230,6 +254,7 @@ void TabBraudaten::updateValues()
 {
     double value;
 
+    ui->tableRasten->setVisible(ui->tableRasten->model()->rowCount() > 0);
     ui->tableMalz->setVisible(ui->tableMalz->model()->rowCount() > 0);
     ui->tableWeitereZutatenMaischen->setVisible(ui->tableWeitereZutatenMaischen->model()->rowCount() > 0);
     ui->tableHopfen->setVisible(ui->tableHopfen->model()->rowCount() > 0);

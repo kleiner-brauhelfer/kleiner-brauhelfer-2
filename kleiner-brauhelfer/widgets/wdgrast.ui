@@ -66,32 +66,6 @@
     </widget>
    </item>
    <item>
-    <widget class="SpinBox" name="tbTemp">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_2">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>°C</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="SpinBox" name="tbDauer">
      <property name="minimumSize">
       <size>
@@ -117,6 +91,32 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="SpinBox" name="tbTemp">
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>°C</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -135,7 +135,6 @@
   <tabstop>btnLoeschen</tabstop>
   <tabstop>cbRast</tabstop>
   <tabstop>tbTemp</tabstop>
-  <tabstop>tbDauer</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

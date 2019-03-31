@@ -144,12 +144,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
 void TabBrauUebersicht::updateDiagram()
 {
-    ui->diagram->Ids.clear();
-    ui->diagram->L1Daten.clear();
-    ui->diagram->L1Datum.clear();
-    ui->diagram->L2Daten.clear();
-    ui->diagram->L2Datum.clear();
-
+    ui->diagram->DiagrammLeeren();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     if (model->rowCount() > 1)
     {

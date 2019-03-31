@@ -37,6 +37,9 @@
        <property name="decimals">
         <number>2</number>
        </property>
+       <property name="maximum">
+        <double>999.990000000000009</double>
+       </property>
       </widget>
      </item>
      <item row="1" column="2">

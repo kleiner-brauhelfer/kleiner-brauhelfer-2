@@ -39,9 +39,7 @@ ProxyModelRohstoff::Filter ProxyModelRohstoff::filter() const
 void ProxyModelRohstoff::setFilter(Filter value)
 {
     mFilter = value;
-    invalidateFilter();
-    sort();
-    emit filterChanged();
+    invalidate();
 }
 
 bool ProxyModelRohstoff::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const

@@ -7,9 +7,9 @@
 class LIB_EXPORT ProxyModelSud : public ProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(bool filterMerkliste READ filterMerkliste WRITE setFilterMerkliste NOTIFY filterChanged)
-    Q_PROPERTY(FilterStatus filterStatus READ filterStatus WRITE setFilterStatus NOTIFY filterChanged)
-    Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY filterChanged)
+    Q_PROPERTY(bool filterMerkliste READ filterMerkliste WRITE setFilterMerkliste NOTIFY layoutChanged)
+    Q_PROPERTY(FilterStatus filterStatus READ filterStatus WRITE setFilterStatus NOTIFY layoutChanged)
+    Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY layoutChanged)
 
 public:
     enum FilterStatus

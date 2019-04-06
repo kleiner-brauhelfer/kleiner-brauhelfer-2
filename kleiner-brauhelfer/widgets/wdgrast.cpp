@@ -144,7 +144,7 @@ void WdgRast::on_cbRast_currentIndexChanged(int index)
             setData("Dauer", 0);
         }
         setFocus();
-        bh->sud()->modelRasten()->sort();
+        bh->sud()->modelRasten()->invalidate();
     }
 }
 
@@ -157,7 +157,7 @@ void WdgRast::on_tbTemp_valueChanged(int value)
 void WdgRast::on_tbTemp_editingFinished()
 {
     setFocus();
-    bh->sud()->modelRasten()->sort();
+    bh->sud()->modelRasten()->invalidate();
 }
 
 void WdgRast::on_tbDauer_valueChanged(int value)

@@ -98,6 +98,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
+    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            proxy, SLOT(invalidate()));
 
     model = bh->sud()->modelHopfengaben();
     table = ui->tableHopfen;
@@ -156,6 +158,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
+    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            proxy, SLOT(invalidate()));
 
     model = bh->sud()->modelHefegaben();
     table = ui->tableHefe;

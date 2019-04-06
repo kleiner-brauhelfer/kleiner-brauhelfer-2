@@ -8,7 +8,7 @@ class LIB_EXPORT ProxyModelRohstoff : public ProxyModel
 {
     Q_OBJECT
 
-    Q_PROPERTY(Filter filter READ filter WRITE setFilter NOTIFY filterChanged)
+    Q_PROPERTY(Filter filter READ filter WRITE setFilter NOTIFY layoutChanged)
 
 public:
     enum Filter

@@ -71,42 +71,24 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
 
-    connect(bh->sud()->modelRasten(), SIGNAL(modelReset()), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(sortChanged()), this, SLOT(rasten_modified()));
+    connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(rasten_modified()));
     connect(bh->sud()->modelRasten(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(updateRastenDiagram()));
 
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(modelReset()), this, SLOT(malzGaben_modified()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(sortChanged()), this, SLOT(malzGaben_modified()));
+    connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(malzGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
 
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(modelReset()), this, SLOT(hopfenGaben_modified()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hopfenGaben_modified()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(hopfenGaben_modified()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(sortChanged()), this, SLOT(hopfenGaben_modified()));
+    connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(hopfenGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
 
     // TODO
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(modelReset()), this, SLOT(hefeGaben_modified()));
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(sortChanged()), this, SLOT(hefeGaben_modified()));
+    //connect(bh->sud()->modelHefeGaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
 
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modelReset()), this, SLOT(weitereZutatenGaben_modified()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(weitereZutatenGaben_modified()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(weitereZutatenGaben_modified()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(sortChanged()), this, SLOT(weitereZutatenGaben_modified()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(weitereZutatenGaben_modified()));
 
-    connect(bh->sud()->modelAnhang(), SIGNAL(modelReset()), this, SLOT(anhaenge_modified()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(anhaenge_modified()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(anhaenge_modified()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(sortChanged()), this, SLOT(anhaenge_modified()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(anhaenge_modified()));
 
     int col;
     ProxyModel *model = bh->sud()->modelFlaschenlabelTags();

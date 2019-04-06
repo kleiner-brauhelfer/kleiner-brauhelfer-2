@@ -133,7 +133,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
     gSettings->endGroup();
 
-    connect(model, SIGNAL(sortChanged()), this, SLOT(updateDiagram()));
+    connect(model, SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
     connect(ui->diagram, SIGNAL(sig_selectionChanged(int)),

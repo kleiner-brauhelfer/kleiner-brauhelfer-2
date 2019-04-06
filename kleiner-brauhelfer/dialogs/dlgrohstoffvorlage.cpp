@@ -63,8 +63,7 @@ void DlgRohstoffVorlage::viewImpl(int art)
         ui->tableView->setModel(proxyModel);
         ui->tableView->resizeColumnsToContents();
         connect(ui->tableView->model(), SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &, const QVector<int> &)), this, SLOT(slot_save()));
-        connect(ui->tableView->model(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(slot_save()));
-        connect(ui->tableView->model(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(slot_save()));
+        connect(ui->tableView->model(), SIGNAL(layoutChanged()), this, SLOT(slot_save()));
         mValues.clear();
     }
 }

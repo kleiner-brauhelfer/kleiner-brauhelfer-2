@@ -114,7 +114,7 @@ public:
     SqlTableModel* modelFlaschenlabel() const;
     ModelFlaschenlabelTags* modelFlaschenlabelTags() const;
 
-    int sudKopieren(int sudId, const QString& name, bool full);
+    int sudKopieren(int sudId, const QString& name, bool teilen = false);
     int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);
 
 signals:
@@ -126,7 +126,7 @@ signals:
     void discarded();
 
 private:
-    void sudKopierenModel(SqlTableModel* model, int sudId, int neueSudId);
+    void sudKopierenModel(SqlTableModel* model, int sudId, const QVariantMap &overrideValues);
 
 private:
     QString mDatabasePath;

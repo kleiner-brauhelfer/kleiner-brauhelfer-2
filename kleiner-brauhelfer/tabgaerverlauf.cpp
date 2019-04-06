@@ -191,12 +191,12 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateEnabled()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(sortChanged()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(sortChanged()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(sortChanged()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
 
     updateDiagramm();

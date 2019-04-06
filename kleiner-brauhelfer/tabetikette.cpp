@@ -40,10 +40,7 @@ TabEtikette::TabEtikette(QWidget *parent) :
     connect(bh->sud()->modelFlaschenlabel(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(updateValues()));
 
-    connect(bh->sud()->modelAnhang(), SIGNAL(modelReset()), this, SLOT(updateAuswahlListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(sortChanged()), this, SLOT(updateAuswahlListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(updateAuswahlListe()));
 
     gSettings->beginGroup("TabEtikette");
 

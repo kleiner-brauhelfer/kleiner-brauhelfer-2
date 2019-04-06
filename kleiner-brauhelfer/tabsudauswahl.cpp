@@ -128,7 +128,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     gSettings->endGroup();
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
-    connect(proxyModel, SIGNAL(filterChanged()), this, SLOT(filterChanged()));
+    connect(proxyModel, SIGNAL(layoutChanged()), this, SLOT(filterChanged()));
     connect(ui->tableSudauswahl->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(selectionChanged()));
 
@@ -464,7 +464,7 @@ void TabSudAuswahl::on_btnKopieren_clicked()
     {
         int sudId = model->data(index.row(), "ID").toInt();
         QString name = model->data(index.row(), "Sudname").toString() + " " + tr("Kopie");
-        row = bh->sudKopieren(sudId, name, false);
+        row = bh->sudKopieren(sudId, name);
     }
     if (row >= 0)
     {

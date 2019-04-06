@@ -21,16 +21,12 @@ void ProxyModel::setSourceModel(QAbstractItemModel *sourceModel)
         mDeletedColumn = model->fieldIndex("deleted");
     else
         mDeletedColumn = -1;
-    connect(sourceModel, SIGNAL(modelReset()), this, SLOT(onModelReset()));
+    connect(sourceModel, SIGNAL(modelReset()), this, SLOT(invalidate()));
     connect(sourceModel, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(sourceModel, SIGNAL(reverted()), this, SIGNAL(reverted()));
-    connect(this, SIGNAL(reverted()), this, SLOT(onModelReset()));
-}
-
-void ProxyModel::onModelReset()
-{
-    invalidateFilter();
-    sort();
+    connect(this, SIGNAL(reverted()), this, SLOT(invalidate()));
+    connect(this, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SIGNAL(layoutChanged()));
+    connect(this, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SIGNAL(layoutChanged()));
 }
 
 QVariant ProxyModel::data(int row, const QString &fieldName, int role) const
@@ -47,8 +43,7 @@ bool ProxyModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (QSortFilterProxyModel::removeRows(row, count, parent))
     {
-        invalidateFilter();
-        sort();
+        invalidate();
         return true;
     }
     return false;
@@ -58,8 +53,7 @@ bool ProxyModel::removeRow(int arow, const QModelIndex &parent)
 {
     if (QSortFilterProxyModel::removeRow(arow, parent))
     {
-        invalidateFilter();
-        sort();
+        invalidate();
         return true;
     }
     return false;
@@ -71,16 +65,14 @@ int ProxyModel::append(const QVariantMap &values)
     if (model)
     {
         int idx = model->append(values);
-        invalidateFilter();
-        sort();
+        invalidate();
         return mapRowFromSource(idx);
     }
     ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
     {
         int idx = proxyModel->append(values);
-        invalidateFilter();
-        sort();
+        invalidate();
         return mapRowFromSource(idx);
     }
     return -1;
@@ -136,17 +128,6 @@ void ProxyModel::setFilterString(const QString &pattern)
     setFilterFixedString(pattern);
 }
 
-void ProxyModel::sort(int column, Qt::SortOrder order)
-{
-    QSortFilterProxyModel::sort(column, order);
-    emit sortChanged();
-}
-
-void ProxyModel::sort()
-{
-    sort(sortColumn(), sortOrder());
-}
-
 int ProxyModel::sortColumn() const
 {
     return QSortFilterProxyModel::sortColumn();
@@ -175,9 +156,7 @@ int ProxyModel::filterDateColumn() const
 void ProxyModel::setFilterDateColumn(int column)
 {
     mDateColumn = column;
-    invalidateFilter();
-    sort();
-    emit filterChanged();
+    invalidate();
 }
 
 QDateTime ProxyModel::filterMinimumDate() const
@@ -188,9 +167,7 @@ QDateTime ProxyModel::filterMinimumDate() const
 void ProxyModel::setFilterMinimumDate(const QDateTime &dt)
 {
     mMinDate = dt;
-    invalidateFilter();
-    sort();
-    emit filterChanged();
+    invalidate();
 }
 
 QDateTime ProxyModel::filterMaximumDate() const
@@ -201,9 +178,7 @@ QDateTime ProxyModel::filterMaximumDate() const
 void ProxyModel::setFilterMaximumDate(const QDateTime &dt)
 {
     mMaxDate = dt;
-    invalidateFilter();
-    sort();
-    emit filterChanged();
+    invalidate();
 }
 
 bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const

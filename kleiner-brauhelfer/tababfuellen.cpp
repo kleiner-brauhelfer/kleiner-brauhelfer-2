@@ -69,6 +69,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
+    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            proxy, SLOT(invalidate()));
 
     // TODO:
     //model = bh->sud()->modelHefegaben();

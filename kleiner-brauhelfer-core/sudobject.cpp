@@ -9,6 +9,7 @@ SudObject::SudObject(Brauhelfer *bh) :
     bh(bh),
     mId(-2),
     mRowSud(-1),
+    mLoading(false),
     proxyModelRasten(new ProxyModel(this)),
     proxyModelMalzschuettung(new ProxyModel(this)),
     proxyModelHopfengaben(new ProxyModel(this)),
@@ -48,6 +49,7 @@ void SudObject::load(int id)
         mId = id;
         QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
         mRowSud = static_cast<ModelSud*>(bh->modelSud())->getRowWithValue("ID", mId);
+        mLoading = true;
         modelRasten()->setSourceModel(bh->modelRasten());
         modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
         modelRasten()->setFilterRegExp(regExpId);
@@ -86,6 +88,7 @@ void SudObject::load(int id)
         modelFlaschenlabelTags()->setSourceModel(bh->modelFlaschenlabelTags());
         modelFlaschenlabelTags()->setFilterKeyColumn(bh->modelFlaschenlabelTags()->fieldIndex("SudID"));
         modelFlaschenlabelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
+        mLoading = false;
 
         if (isLoaded())
         {
@@ -104,6 +107,11 @@ void SudObject::load(int id)
 void SudObject::unload()
 {
     load(-1);
+}
+
+bool SudObject::isLoading() const
+{
+    return mLoading;
 }
 
 bool SudObject::isLoaded() const

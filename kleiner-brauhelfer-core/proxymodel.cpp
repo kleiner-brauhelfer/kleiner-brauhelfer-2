@@ -10,23 +10,31 @@ ProxyModel::ProxyModel(QObject *parent) :
 {
     setDynamicSortFilter(false);
     setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
-}
-
-void ProxyModel::setSourceModel(QAbstractItemModel *sourceModel)
-{
-    QSortFilterProxyModel::setSourceModel(sourceModel);
-    if(SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel))
-        mDeletedColumn = model->fieldIndex("deleted");
-    else if(ProxyModel* model = dynamic_cast<ProxyModel*>(sourceModel))
-        mDeletedColumn = model->fieldIndex("deleted");
-    else
-        mDeletedColumn = -1;
-    connect(sourceModel, SIGNAL(modelReset()), this, SLOT(invalidate()));
-    connect(sourceModel, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(sourceModel, SIGNAL(reverted()), this, SIGNAL(reverted()));
     connect(this, SIGNAL(reverted()), this, SLOT(invalidate()));
     connect(this, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SIGNAL(layoutChanged()));
     connect(this, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SIGNAL(layoutChanged()));
+}
+
+void ProxyModel::setSourceModel(QAbstractItemModel *model)
+{
+    QAbstractItemModel *prevModel = sourceModel();
+    if (prevModel)
+    {
+        disconnect(prevModel, SIGNAL(modelReset()), this, SLOT(invalidate()));
+        disconnect(prevModel, SIGNAL(modified()), this, SIGNAL(modified()));
+        disconnect(prevModel, SIGNAL(reverted()), this, SIGNAL(reverted()));
+    }
+
+    QSortFilterProxyModel::setSourceModel(model);
+    if(SqlTableModel* m = dynamic_cast<SqlTableModel*>(model))
+        mDeletedColumn = m->fieldIndex("deleted");
+    else if(ProxyModel* m = dynamic_cast<ProxyModel*>(model))
+        mDeletedColumn = m->fieldIndex("deleted");
+    else
+        mDeletedColumn = -1;
+    connect(model, SIGNAL(modelReset()), this, SLOT(invalidate()));
+    connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(model, SIGNAL(reverted()), this, SIGNAL(reverted()));
 }
 
 QVariant ProxyModel::data(int row, const QString &fieldName, int role) const

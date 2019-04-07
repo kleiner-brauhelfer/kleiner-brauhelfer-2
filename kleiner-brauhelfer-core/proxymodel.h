@@ -18,7 +18,7 @@ class LIB_EXPORT ProxyModel : public QSortFilterProxyModel
 public:
     ProxyModel(QObject* parent = nullptr);
 
-    virtual void setSourceModel(QAbstractItemModel *sourceModel) Q_DECL_OVERRIDE;
+    virtual void setSourceModel(QAbstractItemModel *model) Q_DECL_OVERRIDE;
 
     using QSortFilterProxyModel::data;
     QVariant data(int row, const QString &fieldName, int role = Qt::DisplayRole) const;

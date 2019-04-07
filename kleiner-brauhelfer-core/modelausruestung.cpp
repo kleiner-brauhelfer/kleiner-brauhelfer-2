@@ -128,6 +128,8 @@ void ModelAusruestung::defaultValues(QVariantMap &values) const
         values.insert("AnlagenID", (int)time(nullptr) + rand());
     if (!values.contains("Sudhausausbeute"))
         values.insert("Sudhausausbeute", 60.0);
+    if (!values.contains("Verdampfungsziffer"))
+        values.insert("Verdampfungsziffer", 10.0);
     if (values.contains("Name"))
         values["Name"] = getUniqueName(index(0, fieldIndex("Name")), values["Name"], true);
 }

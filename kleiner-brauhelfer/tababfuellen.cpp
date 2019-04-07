@@ -18,7 +18,8 @@ extern Settings* gSettings;
 
 TabAbfuellen::TabAbfuellen(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabAbfuellen)
+    ui(new Ui::TabAbfuellen),
+    mUpdatingTables(false)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
@@ -69,8 +70,6 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
-    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            proxy, SLOT(invalidate()));
 
     // TODO:
     //model = bh->sud()->modelHefegaben();
@@ -101,6 +100,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateTables()));
 }
 
 TabAbfuellen::~TabAbfuellen()
@@ -168,6 +169,17 @@ void TabAbfuellen::checkEnabled()
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(gebraut && !abgefuellt);
     ui->btnSudVerbraucht->setEnabled(abgefuellt);
+}
+
+void TabAbfuellen::updateTables()
+{
+    if (bh->sud()->isLoading() || mUpdatingTables)
+        return;
+    mUpdatingTables = true;
+    static_cast<ProxyModel*>(ui->tableWeitereZutaten->model())->invalidate();
+    //static_cast<ProxyModel*>(ui->tableHefe->model())->invalidate(); // TODO
+    mUpdatingTables = false;
+    updateValues();
 }
 
 void TabAbfuellen::updateValues()

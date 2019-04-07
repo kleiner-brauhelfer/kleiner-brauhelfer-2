@@ -18,7 +18,8 @@ extern Settings* gSettings;
 
 TabAbfuellen::TabAbfuellen(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabAbfuellen)
+    ui(new Ui::TabAbfuellen),
+    mUpdatingTables(false)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
@@ -69,15 +70,35 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
-    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            proxy, SLOT(invalidate()));
 
-    // TODO:
-    //model = bh->sud()->modelHefegaben();
+    proxy = new ProxyModel(this);
+    model = bh->sud()->modelHefegaben();
+    proxy->setSourceModel(model);
+    proxy->setFilterKeyColumn(model->fieldIndex("ZugegebenNach"));
+    proxy->setFilterRegExp("^[0-9]*[1-9][0-9]*$");
     table = ui->tableHefe;
+    table->setModel(proxy);
     header = table->horizontalHeader();
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
+    col = model->fieldIndex("Name");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Hefegabe"));
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->moveSection(header->visualIndex(col), 0);
+    col = model->fieldIndex("Menge");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Menge"));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
+    header->moveSection(header->visualIndex(col), 1);
+    col = model->fieldIndex("Zugegeben");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
+    header->moveSection(header->visualIndex(col), 2);
+    col = model->fieldIndex("ZugegebenNach");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("ZugegebenNach"));
+    header->moveSection(header->visualIndex(col), 3);
 
     gSettings->beginGroup("TabAbfuellen");
 
@@ -101,6 +122,10 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateTables()));
 }
 
 TabAbfuellen::~TabAbfuellen()
@@ -170,12 +195,23 @@ void TabAbfuellen::checkEnabled()
     ui->btnSudVerbraucht->setEnabled(abgefuellt);
 }
 
+void TabAbfuellen::updateTables()
+{
+    if (bh->sud()->isLoading() || mUpdatingTables)
+        return;
+    mUpdatingTables = true;
+    static_cast<ProxyModel*>(ui->tableWeitereZutaten->model())->invalidate();
+    static_cast<ProxyModel*>(ui->tableHefe->model())->invalidate();
+    mUpdatingTables = false;
+    updateValues();
+}
+
 void TabAbfuellen::updateValues()
 {
     double value;
 
-    ui->tableHefe->setVisible(false/*bh->sud()->modelHefegaben()->rowCount() > 0*/); // TODO:
-    ui->tableWeitereZutaten->setVisible(bh->sud()->modelWeitereZutatenGaben()->rowCount() > 0);
+    ui->tableHefe->setVisible(ui->tableHefe->model()->rowCount() > 0);
+    ui->tableWeitereZutaten->setVisible(ui->tableWeitereZutaten->model()->rowCount() > 0);
 
     QDateTime dt = bh->sud()->getAbfuelldatum();
     if (bh->sud()->getBierWurdeAbgefuellt() || dt.isValid())

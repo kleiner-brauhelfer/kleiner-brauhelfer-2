@@ -17,7 +17,8 @@ extern Settings* gSettings;
 
 TabBraudaten::TabBraudaten(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabBraudaten)
+    ui(new Ui::TabBraudaten),
+    mUpdatingTables(false)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
@@ -98,8 +99,6 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
-    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            proxy, SLOT(invalidate()));
 
     model = bh->sud()->modelHopfengaben();
     table = ui->tableHopfen;
@@ -158,12 +157,14 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
-    connect(model, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            proxy, SLOT(invalidate()));
 
+    proxy = new ProxyModel(this);
     model = bh->sud()->modelHefegaben();
+    proxy->setSourceModel(model);
+    proxy->setFilterKeyColumn(model->fieldIndex("ZugegebenNach"));
+    proxy->setFilterRegExp("^0$");
     table = ui->tableHefe;
-    table->setModel(model);
+    table->setModel(proxy);
     header = table->horizontalHeader();
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
@@ -175,16 +176,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     col = model->fieldIndex("Menge");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Menge"));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("Zugegeben");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
-    header->moveSection(header->visualIndex(col), 2);
-    col = model->fieldIndex("ZugegebenNach");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("ZugegebenNach"));
-    header->moveSection(header->visualIndex(col), 3);
-
 
     gSettings->beginGroup("TabBraudaten");
 
@@ -205,6 +198,13 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
+    connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateTables()));
 }
 
 TabBraudaten::~TabBraudaten()
@@ -270,6 +270,21 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
+}
+
+void TabBraudaten::updateTables()
+{
+    if (bh->sud()->isLoading() || mUpdatingTables)
+        return;
+    mUpdatingTables = true;
+    static_cast<ProxyModel*>(ui->tableRasten->model())->invalidate();
+    static_cast<ProxyModel*>(ui->tableMalz->model())->invalidate();
+    static_cast<ProxyModel*>(ui->tableWeitereZutatenMaischen->model())->invalidate();
+    static_cast<ProxyModel*>(ui->tableHopfen->model())->invalidate();
+    static_cast<ProxyModel*>(ui->tableWeitereZutatenKochen->model())->invalidate();
+    static_cast<ProxyModel*>(ui->tableHefe->model())->invalidate();
+    mUpdatingTables = false;
+    updateValues();
 }
 
 void TabBraudaten::updateValues()

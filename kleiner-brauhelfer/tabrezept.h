@@ -41,6 +41,7 @@ private slots:
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
 
     void hefeGaben_modified();
+    void updateHefeDiagram();
     void on_btnNeueHefeGabe_clicked();
 
     void weitereZutatenGaben_modified();

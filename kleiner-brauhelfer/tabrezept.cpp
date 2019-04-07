@@ -37,6 +37,11 @@ TabRezept::TabRezept(QWidget *parent) :
     chart->setBackgroundRoundness(0);
     chart->legend()->setAlignment(Qt::AlignRight);
 
+    chart = ui->diagramHefe->chart();
+    chart->layout()->setContentsMargins(0, 0, 0, 0);
+    chart->setBackgroundRoundness(0);
+    chart->legend()->setAlignment(Qt::AlignRight);
+
     chart = ui->diagramRasten->chart();
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
@@ -60,6 +65,7 @@ TabRezept::TabRezept(QWidget *parent) :
 
     ui->splitterMalzDiagram->restoreState(gSettings->value("splitterMalzDiagramState").toByteArray());
     ui->splitterHopfenDiagram->restoreState(gSettings->value("splitterHopfenDiagramState").toByteArray());
+    ui->splitterHefeDiagram->restoreState(gSettings->value("splitterHefeDiagramState").toByteArray());
     ui->splitterRastenDiagram->restoreState(gSettings->value("splitterRastenDiagramState").toByteArray());
 
     gSettings->endGroup();
@@ -85,6 +91,8 @@ TabRezept::TabRezept(QWidget *parent) :
             this, SLOT(hopfenGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
 
     connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateHefeDiagram()));
 
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(weitereZutatenGaben_modified()));
 
@@ -122,6 +130,7 @@ void TabRezept::saveSettings()
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->setValue("splitterMalzDiagramState", ui->splitterMalzDiagram->saveState());
     gSettings->setValue("splitterHopfenDiagramState", ui->splitterHopfenDiagram->saveState());
+    gSettings->setValue("splitterHefeDiagramState", ui->splitterHefeDiagram->saveState());
     gSettings->setValue("splitterRastenDiagramState", ui->splitterRastenDiagram->saveState());
     gSettings->endGroup();
 }
@@ -731,6 +740,20 @@ void TabRezept::hefeGaben_modified()
         delete ui->layoutHefeGaben->itemAt(ui->layoutHefeGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
         static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget())->updateValues();
+    updateHefeDiagram();
+}
+
+void TabRezept::updateHefeDiagram()
+{
+    QPieSeries *series = new QPieSeries();
+    for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
+    {
+        const WdgHefeGabe* wdg = static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget());
+        series->append(wdg->name(), wdg->menge());
+    }
+    QChart *chart = ui->diagramHefe->chart();
+    chart->removeAllSeries();
+    chart->addSeries(series);
 }
 
 void TabRezept::on_btnNeueHefeGabe_clicked()

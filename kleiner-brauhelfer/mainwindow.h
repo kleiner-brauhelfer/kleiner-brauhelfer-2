@@ -30,6 +30,7 @@ private slots:
     void on_actionSudGebraut_triggered();
     void on_actionSudAbgefuellt_triggered();
     void on_actionSudVerbraucht_triggered();
+    void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionWiederherstellen_triggered();
     void on_actionThemeSystem_triggered();

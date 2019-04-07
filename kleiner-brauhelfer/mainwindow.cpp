@@ -224,6 +224,7 @@ void MainWindow::sudModified()
         ui->actionSudGebraut->setEnabled(bh->sud()->getBierWurdeGebraut());
         ui->actionSudAbgefuellt->setEnabled(bh->sud()->getBierWurdeAbgefuellt());
         ui->actionSudVerbraucht->setEnabled(bh->sud()->getBierWurdeVerbraucht());
+        ui->actionHefeZugabeZuruecksetzen->setEnabled(bh->sud()->getBierWurdeGebraut());
         ui->actionWeitereZutaten->setEnabled(bh->sud()->getBierWurdeGebraut());
     }
     else
@@ -286,6 +287,14 @@ void MainWindow::on_actionSudAbgefuellt_triggered()
 void MainWindow::on_actionSudVerbraucht_triggered()
 {
     bh->sud()->setBierWurdeVerbraucht(false);
+}
+
+void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
+{
+    ProxyModel *model = bh->sud()->modelHefegaben();
+    int col = model->fieldIndex("Zugegeben");
+    for (int row = 0; row < model->rowCount(); ++row)
+        model->setData(model->index(row, col), 0);
 }
 
 void MainWindow::on_actionWeitereZutaten_triggered()

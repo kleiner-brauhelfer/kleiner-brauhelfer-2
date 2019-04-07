@@ -17,6 +17,8 @@ public:
     bool isEnabled() const;
     QVariant data(const QString &fieldName) const;
     bool setData(const QString &fieldName, const QVariant &value);
+    QString name() const;
+    int menge() const;
 
 public slots:
     void updateValues();

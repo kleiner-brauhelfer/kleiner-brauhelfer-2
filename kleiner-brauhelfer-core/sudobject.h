@@ -140,7 +140,13 @@ public:
     Q_INVOKABLE void unload();
 
     /**
-     * @brief Loaded State
+     * @brief Loading state
+     * @return True if a brew is being loaded
+     */
+    bool isLoading() const;
+
+    /**
+     * @brief Loaded state
      * @return True if a brew is loaded
      */
     bool isLoaded() const;
@@ -243,6 +249,7 @@ private:
     Brauhelfer *bh;
     int mId;
     int mRowSud;
+    bool mLoading;
     ProxyModel* proxyModelRasten;
     ProxyModel* proxyModelMalzschuettung;
     ProxyModel* proxyModelHopfengaben;

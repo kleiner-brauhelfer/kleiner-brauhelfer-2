@@ -52,13 +52,13 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr(""), tr("zugegeben"), tr("entnommen")}, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("Zeitpunkt_von_ist");
+    col = model->fieldIndex("Zeitpunkt_von");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
     table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
-    col = model->fieldIndex("Zeitpunkt_bis_ist");
+    col = model->fieldIndex("Zeitpunkt_bis");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Entnommen"));
     table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));

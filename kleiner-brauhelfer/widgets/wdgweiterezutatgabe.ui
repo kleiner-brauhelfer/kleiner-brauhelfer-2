@@ -377,7 +377,7 @@
       </item>
       <item>
        <widget class="QWidget" name="wdgZugabe" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QGridLayout" name="gridLayout">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -390,21 +390,20 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="QLabel" name="label_4">
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_7">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Zugabe</string>
+            <string>Tage</string>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="DateEdit" name="tbDatumVon">
-           <property name="calendarPopup">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
+         <item row="0" column="4">
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -417,32 +416,41 @@
            </property>
           </spacer>
          </item>
-         <item>
+         <item row="0" column="1">
+          <widget class="SpinBox" name="tbZugabeNach">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="DateEdit" name="tbDatumVon">
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Zugabe nach</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
           <widget class="QPushButton" name="btnZugeben">
            <property name="text">
             <string>Zugeben</string>
            </property>
           </widget>
          </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="wdgEntnahme" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
+         <item row="1" column="0">
           <widget class="ComboBox" name="cbEntnahme">
            <property name="minimumSize">
             <size>
@@ -471,7 +479,7 @@
            </item>
           </widget>
          </item>
-         <item>
+         <item row="1" column="1">
           <widget class="SpinBox" name="tbDauerTage">
            <property name="minimumSize">
             <size>
@@ -482,12 +490,9 @@
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
-           <property name="maximum">
-            <number>999</number>
-           </property>
           </widget>
          </item>
-         <item>
+         <item row="1" column="2">
           <widget class="QLabel" name="lblDauerTage">
            <property name="minimumSize">
             <size>
@@ -500,27 +505,14 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item row="1" column="3">
           <widget class="DateEdit" name="tbDatumBis">
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
           </widget>
          </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
+         <item row="1" column="5">
           <widget class="QPushButton" name="btnEntnehmen">
            <property name="statusTip">
             <string/>
@@ -550,11 +542,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
@@ -569,6 +556,11 @@
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
   </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>cbZutat</tabstop>
@@ -580,10 +572,6 @@
   <tabstop>tbDauerMin</tabstop>
   <tabstop>tbDatumVon</tabstop>
   <tabstop>btnZugeben</tabstop>
-  <tabstop>cbEntnahme</tabstop>
-  <tabstop>tbDauerTage</tabstop>
-  <tabstop>tbDatumBis</tabstop>
-  <tabstop>btnEntnehmen</tabstop>
   <tabstop>tbKomentar</tabstop>
  </tabstops>
  <resources>

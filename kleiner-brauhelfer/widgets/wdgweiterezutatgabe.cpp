@@ -112,14 +112,6 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbDatumVon->setReadOnly(false);
         ui->tbDauerTage->setReadOnly(false);
         ui->tbDatumBis->setReadOnly(false);
-
-        if (data("Zugabestatus").toInt() == EWZ_Zugabestatus_nichtZugegeben)
-        {
-            QDate currentDate = QDate::currentDate();
-            QDate dateVon = data("Zeitpunkt_von").toDate();
-            ui->tbDatumVon->setDate(currentDate > dateVon ? currentDate : dateVon);
-            ui->tbDatumBis->setDate(ui->tbDatumVon->date().addDays(ui->tbDauerTage->value()));
-        }
     }
     else
     {
@@ -142,9 +134,6 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbDauerTage->setReadOnly(true);
         ui->tbDatumBis->setReadOnly(true);
     }
-
-    ui->tbDatumVon->setDate(data("Zeitpunkt_von").toDate());
-    ui->tbDatumBis->setDate(data("Zeitpunkt_bis").toDate());
 }
 
 void WdgWeitereZutatGabe::updateValues()
@@ -191,8 +180,16 @@ void WdgWeitereZutatGabe::updateValues()
         ui->tbDauerMin->setValue(dauer);
     if (!ui->cbEntnahme->hasFocus())
         ui->cbEntnahme->setCurrentIndex(entnahme);
+    if (!ui->tbZugabeNach->hasFocus())
+        ui->tbZugabeNach->setValue(data("ZugegebenNach").toInt());
     if (!ui->tbDauerTage->hasFocus())
         ui->tbDauerTage->setValue(dauer / 1440);
+    ui->tbDatumVon->setMinimumDateTime(bh->sud()->getBraudatum());
+    if (!ui->tbDatumVon->hasFocus())
+        ui->tbDatumVon->setDate(data("Zeitpunkt_von").toDate());
+    ui->tbDatumBis->setMinimumDateTime(ui->tbDatumVon->dateTime());
+    if (!ui->tbDatumBis->hasFocus())
+        ui->tbDatumBis->setDate(data("Zeitpunkt_bis").toDate());
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data("Bemerkung").toString());
 
@@ -306,7 +303,6 @@ void WdgWeitereZutatGabe::updateValues()
     }
     ui->wdgZugabezeitpunkt->setVisible(typ != EWZ_Typ_Hopfen);
     ui->wdgZugabe->setVisible(zeitpunkt == EWZ_Zeitpunkt_Gaerung);
-    ui->wdgEntnahme->setVisible(zeitpunkt == EWZ_Zeitpunkt_Gaerung);
     ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDatumBis->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
@@ -341,10 +337,6 @@ void WdgWeitereZutatGabe::on_tbDauerMin_valueChanged(int value)
 
 void WdgWeitereZutatGabe::on_btnZugeben_clicked()
 {
-    QDate currentDate = QDate::currentDate();
-    QDate dateVon = ui->tbDatumVon->date();
-    ui->tbDatumVon->setDate(currentDate < dateVon ? currentDate : dateVon);
-    setData("Zeitpunkt_von", ui->tbDatumVon->date());
     setData("Zugabestatus", EWZ_Zugabestatus_Zugegeben);
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Soll die Zutat vom Bestand abgezogen werden?")
@@ -358,33 +350,32 @@ void WdgWeitereZutatGabe::on_cbEntnahme_currentIndexChanged(int index)
         setData("Entnahmeindex", index);
 }
 
+void WdgWeitereZutatGabe::on_tbZugabeNach_valueChanged(int value)
+{
+    if (ui->tbZugabeNach->hasFocus())
+        setData("ZugegebenNach", value);
+}
+
 void WdgWeitereZutatGabe::on_tbDauerTage_valueChanged(int value)
 {
     if (ui->tbDauerTage->hasFocus())
-    {
         setData("Zugabedauer", value * 1440);
-        ui->tbDatumBis->setDate(ui->tbDatumVon->date().addDays(value));
-    }
 }
 
 void WdgWeitereZutatGabe::on_tbDatumVon_dateChanged(const QDate &date)
 {
     if (ui->tbDatumVon->hasFocus())
-        ui->tbDatumBis->setDate(date.addDays(ui->tbDauerTage->value()));
+        setData("Zeitpunkt_von", date);
 }
 
 void WdgWeitereZutatGabe::on_tbDatumBis_dateChanged(const QDate &date)
 {
     if (ui->tbDatumBis->hasFocus())
-        setData("Zugabedauer", ui->tbDatumVon->date().daysTo(date) * 1440);
+        setData("Zeitpunkt_bis", date);
 }
 
 void WdgWeitereZutatGabe::on_btnEntnehmen_clicked()
 {
-    QDate currentDate = QDate::currentDate();
-    QDate dateBis = ui->tbDatumBis->date();
-    ui->tbDatumBis->setDate(currentDate < dateBis ? currentDate : dateBis);
-    setData("Zeitpunkt_bis", ui->tbDatumBis->date());
     setData("Zugabestatus", EWZ_Zugabestatus_Entnommen);
 }
 
@@ -398,5 +389,3 @@ void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 {
     bh->sud()->modelWeitereZutatenGaben()->removeRow(mIndex);
 }
-
-

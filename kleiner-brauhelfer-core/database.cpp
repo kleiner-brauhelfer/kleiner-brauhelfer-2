@@ -272,6 +272,7 @@ QSqlQuery Database::sqlExec(const QString &query)
 
 void Database::update()
 {
+    QSqlQuery query;
     int version = mVersion;
     try
     {
@@ -461,6 +462,78 @@ void Database::update()
                 "HefeAnzahlEinheiten,"
                 "BierWurdeGebraut"
                 " FROM Sud WHERE AuswahlHefe IS NOT NULL AND AuswahlHefe <> ''");
+
+            // WeitereZutatenGaben
+            //  - Spalte gelöscht 'Zeitpunkt_von'
+            //                    'Zeitpunkt_bis'
+            //  - neue Spalte 'ZugegebenNach'
+            sqlExec("ALTER TABLE WeitereZutatenGaben ADD ZugegebenNach INTEGER DEFAULT 0");
+            query = sqlExec("SELECT ID, SudID, Zeitpunkt_von, Typ FROM WeitereZutatenGaben");
+            while (query.next())
+            {
+                int id = query.value(0).toInt();
+                int sudId = query.value(1).toInt();
+                QDateTime zeitpunkt = query.value(2).toDateTime();
+                int typ = query.value(3).toInt();
+                QSqlQuery query2 = sqlExec(QString("SELECT Braudatum FROM Sud WHERE ID=%1").arg(sudId));
+                if (query2.first())
+                {
+                    QDateTime braudatum = query2.value(0).toDateTime();
+                    qint64 tage = braudatum.daysTo(zeitpunkt);
+                    sqlExec(QString("UPDATE WeitereZutatenGaben SET ZugegebenNach=%1 WHERE ID=%2").arg(tage).arg(id));
+                }
+                if (typ < 0)
+                    sqlExec(QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(EWZ_Typ_Hopfen).arg(id));
+            }
+            sqlExec("ALTER TABLE WeitereZutatenGaben RENAME TO TempTable");
+            sqlExec("CREATE TABLE WeitereZutatenGaben ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER,"
+                "Name TEXT,"
+                "Menge REAL DEFAULT 0,"
+                "Einheit INTEGER DEFAULT 0,"
+                "Typ INTEGER DEFAULT 0,"
+                "Zeitpunkt INTEGER DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "erg_Menge REAL DEFAULT 0,"
+                "Ausbeute REAL DEFAULT 0,"
+                "Farbe REAL DEFAULT 0,"
+                "Zugabestatus INTEGER DEFAULT 0,"
+                "Entnahmeindex INTEGER DEFAULT 0,"
+                "Zugabedauer INTEGER DEFAULT 0,"
+                "ZugegebenNach INTEGER DEFAULT 0)");
+            sqlExec("INSERT INTO WeitereZutatenGaben ("
+                "SudID,"
+                "Name,"
+                "Menge,"
+                "Einheit,"
+                "Typ,"
+                "Zeitpunkt,"
+                "Bemerkung,"
+                "erg_Menge,"
+                "Ausbeute,"
+                "Farbe,"
+                "Zugabestatus,"
+                "Entnahmeindex,"
+                "Zugabedauer,"
+                "ZugegebenNach"
+                ") SELECT "
+                "SudID,"
+                "Name,"
+                "Menge,"
+                "Einheit,"
+                "Typ,"
+                "Zeitpunkt,"
+                "Bemerkung,"
+                "erg_Menge,"
+                "Ausbeute,"
+                "Farbe,"
+                "Zugabestatus,"
+                "Entnahmeindex,"
+                "Zugabedauer,"
+                "ZugegebenNach"
+                " FROM TempTable");            
+            sqlExec("DROP TABLE TempTable");
 
             // Rasten
             //  - Spalte gelöscht 'RastAktiv'

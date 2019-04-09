@@ -8,8 +8,8 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("Zeitpunkt_von_ist");
-    mVirtualField.append("Zeitpunkt_bis_ist");
+    mVirtualField.append("Zeitpunkt_von");
+    mVirtualField.append("Zeitpunkt_bis");
     mVirtualField.append("Abfuellbereit");
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(onSudDataChanged(const QModelIndex&)));
@@ -20,32 +20,24 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &index) const
     QString field = fieldName(index.column());
     if (field == "Zeitpunkt_von")
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-    }
-    if (field == "Zeitpunkt_von_ist")
-    {
-        if (data(index.row(), "Zugabestatus").toInt() == EWZ_Zugabestatus_nichtZugegeben)
-            return "";
-        return data(index.row(), "Zeitpunkt_von");
+        QVariant sudId = data(index.row(), "SudID");
+        QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+        if (braudatum.isValid())
+        {
+            int tage = data(index.row(), "ZugegebenNach").toInt();
+            return braudatum.addDays(tage);
+        }
+        return QDateTime();
     }
     if (field == "Zeitpunkt_bis")
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-    }
-    if (field == "Zeitpunkt_bis_ist")
-    {
-        if (data(index.row(), "Zugabestatus").toInt() != EWZ_Zugabestatus_Entnommen)
-            return "";
-        if (data(index.row(), "Entnahmeindex").toInt() == EWZ_Entnahmeindex_KeineEntnahme)
-            return "";
-        return data(index.row(), "Zeitpunkt_bis");
-    }
-    if (field == "Typ")
-    {
-        int typ = QSqlTableModel::data(index).toInt();
-        if (typ < 0)
-            typ = EWZ_Typ_Hopfen;
-        return typ;
+        QDateTime zugabedatum = data(index.row(), "Zeitpunkt_von").toDateTime();
+        if (zugabedatum.isValid())
+        {
+            int tage = data(index.row(), "Zugabedauer").toInt() / 1440;
+            return zugabedatum.addDays(tage);
+        }
+        return QDateTime();
     }
     if (field == "Abfuellbereit")
     {
@@ -142,30 +134,21 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
     }
     if (field == "Zeitpunkt_von")
     {
-        QDateTime dt = value.toDateTime();
-        if (QSqlTableModel::setData(index, dt.toString(Qt::ISODate)))
+        QVariant sudId = data(index.row(), "SudID");
+        QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+        if (braudatum.isValid())
         {
-            QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zeitpunkt_bis"));
-            dt = dt.addDays(ceil(data(index.row(), "Zugabedauer").toInt() / 1440.0));
-            QSqlTableModel::setData(index2, dt.toString(Qt::ISODate));
-            return true;
+            qint64 tage = braudatum.daysTo(value.toDateTime());
+            return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugegebenNach")), tage);
         }
     }
     if (field == "Zeitpunkt_bis")
     {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
-    }
-    if (field == "Zugabestatus")
-    {
-        if (QSqlTableModel::setData(index, value))
+        QDateTime zugabedatum = data(index.row(), "Zeitpunkt_von").toDateTime();
+        if (zugabedatum.isValid())
         {
-            if (value.toInt() == EWZ_Zugabestatus_Entnommen)
-            {
-                QModelIndex index2 = this->index(index.row(), fieldIndex("Zugabedauer"));
-                int day = data(index.row(), "Zeitpunkt_von").toDateTime().daysTo(data(index.row(), "Zeitpunkt_bis").toDateTime());
-                QSqlTableModel::setData(index2, day * 1440);
-            }
-            return true;
+            qint64 tage = zugabedatum.daysTo(value.toDateTime());
+            return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zugabedauer")), tage*1440);
         }
     }
     return false;

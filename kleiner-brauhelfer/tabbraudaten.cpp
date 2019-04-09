@@ -236,7 +236,7 @@ void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 void TabBraudaten::sudLoaded()
 {
     checkEnabled();
-    updateValues();
+    updateTables();
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)

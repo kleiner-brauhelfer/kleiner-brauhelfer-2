@@ -112,7 +112,7 @@ void WdgHefeGabe::updateValues()
         ui->tbTage->setValue(data("ZugegebenNach").toInt());
     ui->tbDatum->setMinimumDateTime(bh->sud()->getBraudatum());
     if (!ui->tbDatum->hasFocus())
-        ui->tbDatum->setDateTime(bh->sud()->getBraudatum().addDays(ui->tbTage->value()));
+        ui->tbDatum->setDateTime(data("ZugabeZeitpunkt").toDateTime());
 
     int idx = bh->modelHefe()->getValueFromSameRow("Beschreibung", hefename, "TypOGUG").toInt();
     if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
@@ -164,7 +164,7 @@ void WdgHefeGabe::on_tbTage_valueChanged(int value)
 void WdgHefeGabe::on_tbDatum_dateTimeChanged(const QDateTime &dateTime)
 {
     if (ui->tbDatum->hasFocus())
-        setData("ZugegebenNach", bh->sud()->getBraudatum().daysTo(dateTime));
+        setData("ZugabeZeitpunkt", dateTime);
 }
 
 void WdgHefeGabe::on_btnZugeben_clicked()

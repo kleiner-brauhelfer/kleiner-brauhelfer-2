@@ -86,18 +86,20 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     model->setHeaderData(col, Qt::Horizontal, tr("Hefegabe"));
     header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
+    col = model->fieldIndex("Zugegeben");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
+    table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
+    header->moveSection(header->visualIndex(col), 1);
+    col = model->fieldIndex("ZugabeZeitpunkt");
+    table->setColumnHidden(col, false);
+    model->setHeaderData(col, Qt::Horizontal, tr("Zugabezeitpunkt"));
+    table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
+    header->moveSection(header->visualIndex(col), 2);
     col = model->fieldIndex("Menge");
     table->setColumnHidden(col, false);
     model->setHeaderData(col, Qt::Horizontal, tr("Menge"));
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("Zugegeben");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
-    header->moveSection(header->visualIndex(col), 2);
-    col = model->fieldIndex("ZugegebenNach");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("ZugegebenNach"));
     header->moveSection(header->visualIndex(col), 3);
 
     gSettings->beginGroup("TabAbfuellen");
@@ -159,7 +161,7 @@ void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 void TabAbfuellen::sudLoaded()
 {
     checkEnabled();
-    updateValues();
+    updateTables();
 }
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)

@@ -8,6 +8,7 @@ ModelHefegaben::ModelHefegaben(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append("ZugabeZeitpunkt");
     mVirtualField.append("Abfuellbereit");
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(onSudDataChanged(const QModelIndex&)));
@@ -16,13 +17,31 @@ ModelHefegaben::ModelHefegaben(Brauhelfer* bh, QSqlDatabase db) :
 QVariant ModelHefegaben::dataExt(const QModelIndex &index) const
 {
     QString field = fieldName(index.column());
+    if (field == "ZugabeZeitpunkt")
+    {
+        QVariant sudId = data(index.row(), "SudID");
+        QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+        if (braudatum.isValid())
+            return braudatum.addDays(data(index.row(), "ZugegebenNach").toInt());
+        return QDateTime();
+    }
     if (field == "Abfuellbereit")
     {
-        if (!data(index.row(), "Zugegeben").toBool())
-            return false;
-        return true;
+        return data(index.row(), "Zugegeben").toBool();
     }
     return QVariant();
+}
+
+bool ModelHefegaben::setDataExt(const QModelIndex &index, const QVariant &value)
+{
+    QString field = fieldName(index.column());
+    if (field == "ZugabeZeitpunkt")
+    {
+        QVariant sudId = data(index.row(), "SudID");
+        QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+        return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugegebenNach")), braudatum.daysTo(value.toDateTime()));
+    }
+    return false;
 }
 
 void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
@@ -58,7 +77,7 @@ void ModelHefegaben::defaultValues(QVariantMap &values) const
 {
     if (values.contains("SudID"))
     {
-        int sudId = values.value("SudID").toInt();
+        QVariant sudId = values.value("SudID");
         if (bh->modelSud()->getValueFromSameRow("ID", sudId, "BierWurdeGebraut").toBool())
         {
             QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();

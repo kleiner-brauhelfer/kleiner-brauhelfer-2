@@ -20,7 +20,7 @@ public:
 private slots:
     void sudLoaded();
     void updateDiagramm();
-    void updateEnabled();
+    void updateValues();
     void updateWeitereZutaten();
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int id);

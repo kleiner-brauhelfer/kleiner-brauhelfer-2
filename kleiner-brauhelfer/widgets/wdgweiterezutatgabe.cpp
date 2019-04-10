@@ -195,6 +195,8 @@ void WdgWeitereZutatGabe::updateValues()
         ui->tbDauerTage->setValue(dauer / 1440);
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data("Bemerkung").toString());
+    ui->tbDatumVon->setMinimumDate(bh->sud()->getBraudatum().date());
+    ui->tbDatumBis->setMinimumDate(ui->tbDatumVon->date());
 
     if (typ == EWZ_Typ_Hopfen)
     {

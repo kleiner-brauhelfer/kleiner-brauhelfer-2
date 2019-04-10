@@ -101,6 +101,8 @@ void TabBewertung::updateValues()
     ui->wdgBewertung->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
 
     ui->wdgRating->setSterne(data("Sterne").toInt());
+    ui->tbDatum->setMinimumDate(bh->sud()->getAbfuelldatum().date());
+    ui->tbDatum->setMaximumDate(QDate::currentDate());
     if (!ui->tbDatum->hasFocus())
         ui->tbDatum->setDate(data("Datum").toDate());
     ui->lblWoche->setText(data("Woche").toString());

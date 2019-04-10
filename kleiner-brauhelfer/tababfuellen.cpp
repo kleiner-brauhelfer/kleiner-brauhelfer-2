@@ -189,11 +189,8 @@ void TabAbfuellen::updateValues()
     ui->tableHefe->setVisible(false/*bh->sud()->modelHefegaben()->rowCount() > 0*/); // TODO:
     ui->tableWeitereZutaten->setVisible(bh->sud()->modelWeitereZutatenGaben()->rowCount() > 0);
 
-    QDateTime dt = bh->sud()->getAbfuelldatum();
-    if (bh->sud()->getBierWurdeAbgefuellt() || dt.isValid())
-        ui->tbAbfuelldatum->setDateTime(dt);
-    else
-        ui->tbAbfuelldatum->setDateTime(QDateTime::currentDateTime());
+    ui->tbAbfuelldatum->setMinimumDateTime(bh->sud()->getBraudatum());
+    ui->tbAbfuelldatum->setDateTime(bh->sud()->getAbfuelldatum());
 
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
 
@@ -265,7 +262,7 @@ void TabAbfuellen::on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime)
 
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
 {
-    bh->sud()->setAbfuelldatum(QDateTime::currentDateTime());
+    bh->sud()->setAbfuelldatum(QDateTime());
 }
 
 void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)

@@ -87,11 +87,13 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     QString field = fieldName(index.column());
     if (field == "Braudatum")
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+        QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+        return dt.isValid() ? dt : QDateTime::currentDateTime();
     }
     if (field == "Abfuelldatum")
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+        QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+        return dt.isValid() ? dt : QDateTime::currentDateTime();
     }
     if (field == "Erstellt")
     {

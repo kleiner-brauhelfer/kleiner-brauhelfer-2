@@ -126,7 +126,6 @@ void WdgHefeGabe::updateValues()
         ui->frameColor->setPalette(gSettings->palette);
     }
 
-    ui->tbDatum->setVisible(bh->sud()->getBierWurdeGebraut());
     ui->btnZugeben->setVisible(mEnabled && bh->sud()->getBierWurdeGebraut());
 
     if (mEnabled)
@@ -171,7 +170,7 @@ void WdgHefeGabe::on_btnZugeben_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatum->date();
-    ui->tbDatum->setDate(currentDate < date ? currentDate : date);
+    setData("ZugabeZeitpunkt", currentDate < date ? currentDate : date);
     setData("Zugegeben", true);
 
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),

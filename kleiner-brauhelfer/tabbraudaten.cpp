@@ -298,11 +298,7 @@ void TabBraudaten::updateValues()
     ui->tableWeitereZutatenKochen->setVisible(ui->tableWeitereZutatenKochen->model()->rowCount() > 0);
     ui->tableHefe->setVisible(ui->tableHefe->model()->rowCount());
 
-    QDateTime dt = bh->sud()->getBraudatum();
-    if (bh->sud()->getBierWurdeGebraut() || dt.isValid())
-        ui->tbBraudatum->setDateTime(dt);
-    else
-        ui->tbBraudatum->setDateTime(QDateTime::currentDateTime());
+    ui->tbBraudatum->setDateTime(bh->sud()->getBraudatum());
 
     if (!ui->tbWuerzemengeKochbeginn->hasFocus())
            ui->tbWuerzemengeKochbeginn->setValue(bh->sud()->getWuerzemengeVorHopfenseihen());
@@ -365,7 +361,7 @@ void TabBraudaten::on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime)
 
 void TabBraudaten::on_btnBraudatumHeute_clicked()
 {
-    bh->sud()->setBraudatum(QDateTime::currentDateTime());
+    bh->sud()->setBraudatum(QDateTime());
 }
 
 void TabBraudaten::on_tbWuerzemengeKochbeginn_valueChanged(double value)

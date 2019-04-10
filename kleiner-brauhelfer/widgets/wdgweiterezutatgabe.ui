@@ -390,31 +390,32 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_7">
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>Tage</string>
+            <string>Zugabe nach</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+         <item row="0" column="6">
+          <widget class="QPushButton" name="btnZugeben">
+           <property name="text">
+            <string>Zugeben</string>
            </property>
-           <property name="sizeHint" stdset="0">
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SpinBox" name="tbDauerTage">
+           <property name="minimumSize">
             <size>
-             <width>40</width>
-             <height>20</height>
+             <width>60</width>
+             <height>0</height>
             </size>
            </property>
-          </spacer>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
           <widget class="SpinBox" name="tbZugabeNach">
@@ -436,62 +437,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Zugabe nach</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="5">
-          <widget class="QPushButton" name="btnZugeben">
-           <property name="text">
-            <string>Zugeben</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="ComboBox" name="cbEntnahme">
-           <property name="minimumSize">
-            <size>
-             <width>130</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>130</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="statusTip">
-            <string/>
-           </property>
-           <item>
-            <property name="text">
-             <string>Entnahme nach</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Ohne Entnahme</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="SpinBox" name="tbDauerTage">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="2">
           <widget class="QLabel" name="lblDauerTage">
            <property name="minimumSize">
@@ -505,6 +450,32 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_7">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Tage</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item row="1" column="3">
           <widget class="DateEdit" name="tbDatumBis">
            <property name="calendarPopup">
@@ -512,13 +483,27 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="5">
+         <item row="1" column="6">
           <widget class="QPushButton" name="btnEntnehmen">
            <property name="statusTip">
             <string/>
            </property>
            <property name="text">
             <string>Entnehmen</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QCheckBox" name="cbEntnahme">
+           <property name="text">
+            <string>keine Entnahme</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lblEntnahme">
+           <property name="text">
+            <string>Entnahme nach</string>
            </property>
           </widget>
          </item>
@@ -542,9 +527,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -552,14 +537,14 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

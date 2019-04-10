@@ -104,9 +104,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbVorhanden->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
-        //ui->cbZugabezeitpunkt->setEnabled(true);
         ui->cbZugabezeitpunkt->setEnabled(!bh->sud()->getBierWurdeGebraut());
-        //ui->cbEntnahme->setEnabled(true);
         ui->tbMenge->setReadOnly(false);
         ui->tbDauerMin->setReadOnly(false);
         ui->tbDatumVon->setReadOnly(false);
@@ -178,8 +176,7 @@ void WdgWeitereZutatGabe::updateValues()
         ui->cbZugabezeitpunkt->setCurrentIndex(zeitpunkt);
     if (!ui->tbDauerMin->hasFocus())
         ui->tbDauerMin->setValue(dauer);
-    if (!ui->cbEntnahme->hasFocus())
-        ui->cbEntnahme->setCurrentIndex(entnahme);
+    ui->cbEntnahme->setChecked(entnahme == EWZ_Entnahmeindex_KeineEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
         ui->tbZugabeNach->setValue(data("ZugegebenNach").toInt());
     if (!ui->tbDauerTage->hasFocus())
@@ -192,8 +189,6 @@ void WdgWeitereZutatGabe::updateValues()
         ui->tbDatumBis->setDate(data("Zeitpunkt_bis").toDate());
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data("Bemerkung").toString());
-    ui->tbDatumVon->setMinimumDate(bh->sud()->getBraudatum().date());
-    ui->tbDatumBis->setMinimumDate(ui->tbDatumVon->date());
 
     if (typ == EWZ_Typ_Hopfen)
     {
@@ -305,6 +300,7 @@ void WdgWeitereZutatGabe::updateValues()
     }
     ui->wdgZugabezeitpunkt->setVisible(typ != EWZ_Typ_Hopfen);
     ui->wdgZugabe->setVisible(zeitpunkt == EWZ_Zeitpunkt_Gaerung);
+    ui->lblEntnahme->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDatumBis->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
@@ -339,6 +335,9 @@ void WdgWeitereZutatGabe::on_tbDauerMin_valueChanged(int value)
 
 void WdgWeitereZutatGabe::on_btnZugeben_clicked()
 {
+    QDate currentDate = QDate::currentDate();
+    QDate date = ui->tbDatumVon->date();
+    setData("Zeitpunkt_von", currentDate < date ? currentDate : date);
     setData("Zugabestatus", EWZ_Zugabestatus_Zugegeben);
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Soll die Zutat vom Bestand abgezogen werden?")
@@ -346,10 +345,9 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
         bh->sud()->zutatAbziehen(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen ? 0 : 2, data("erg_Menge").toDouble());
 }
 
-void WdgWeitereZutatGabe::on_cbEntnahme_currentIndexChanged(int index)
+void WdgWeitereZutatGabe::on_cbEntnahme_clicked(bool checked)
 {
-    if (ui->cbEntnahme->hasFocus())
-        setData("Entnahmeindex", index);
+    setData("Entnahmeindex", checked);
 }
 
 void WdgWeitereZutatGabe::on_tbZugabeNach_valueChanged(int value)
@@ -378,6 +376,9 @@ void WdgWeitereZutatGabe::on_tbDatumBis_dateChanged(const QDate &date)
 
 void WdgWeitereZutatGabe::on_btnEntnehmen_clicked()
 {
+    QDate currentDate = QDate::currentDate();
+    QDate date = ui->tbDatumBis->date();
+    setData("Zeitpunkt_bis", currentDate < date ? currentDate : date);
     setData("Zugabestatus", EWZ_Zugabestatus_Entnommen);
 }
 

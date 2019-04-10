@@ -17,10 +17,6 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->tbDatumSchnellgaerprobe->setDateTime(QDateTime::currentDateTime());
-    ui->tbDatumHautgaerprobe->setDateTime(QDateTime::currentDateTime());
-    ui->tbDatumNachgaerprobe->setDateTime(QDateTime::currentDateTime());
-
     ui->widget_DiaSchnellgaerverlauf->BezeichnungL1 = tr("Restextrakt [°P]");
     ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL1 = tr("°P");
     ui->widget_DiaSchnellgaerverlauf->BezeichnungL2 = tr("Alkohol [%]");
@@ -190,7 +186,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 
     connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateEnabled()));
+    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
@@ -200,7 +196,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
 
     updateDiagramm();
-    updateEnabled();
+    updateValues();
     updateWeitereZutaten();
 }
 
@@ -239,31 +235,42 @@ void TabGaerverlauf::sudLoaded()
     ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, "Druck").toDouble());
     ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
 
+    ui->tbDatumSchnellgaerprobe->setDateTime(QDateTime::currentDateTime());
+    ui->tbDatumHautgaerprobe->setDateTime(QDateTime::currentDateTime());
+    ui->tbDatumNachgaerprobe->setDateTime(QDateTime::currentDateTime());
+
     updateDiagramm();
-    updateEnabled();
+    updateValues();
     updateWeitereZutaten();
 }
 
-void TabGaerverlauf::updateEnabled()
+void TabGaerverlauf::updateValues()
 {
     bool enabled;
+    QDateTime dtCurrent = QDateTime::currentDateTime();
     QAbstractItemView::EditTriggers triggers = QAbstractItemView::EditTrigger::DoubleClicked |
             QAbstractItemView::EditTrigger::EditKeyPressed |
             QAbstractItemView::EditTrigger::AnyKeyPressed;
     QAbstractItemView::EditTriggers notriggers = QAbstractItemView::EditTrigger::NoEditTriggers;
 
-    enabled = bh->sud()->getSchnellgaerprobeAktiv() && bh->sud()->getBierWurdeGebraut() && !bh->sud()->getBierWurdeAbgefuellt();
+    enabled = bh->sud()->getBierWurdeGebraut() && !bh->sud()->getBierWurdeAbgefuellt();
     ui->wdgEditSchnellgaerung->setVisible(enabled);
     ui->tableWidget_Schnellgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
+    ui->tbDatumSchnellgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
+    ui->tbDatumSchnellgaerprobe->setMaximumDateTime(dtCurrent);
 
     enabled = bh->sud()->getBierWurdeGebraut() && !bh->sud()->getBierWurdeAbgefuellt();
     ui->wdgEditHauptgaerung1->setVisible(enabled);
     ui->wdgEditHauptgaerung2->setVisible(enabled);
     ui->tableWidget_Hauptgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
+    ui->tbDatumHautgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
+    ui->tbDatumHautgaerprobe->setMaximumDateTime(dtCurrent);
 
     enabled = bh->sud()->getBierWurdeAbgefuellt() && !bh->sud()->getBierWurdeVerbraucht();
     ui->wdgEditNachgaerung->setVisible(enabled);
     ui->tableWidget_Nachgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
+    ui->tbDatumNachgaerprobe->setMinimumDateTime(bh->sud()->getAbfuelldatum());
+    ui->tbDatumNachgaerprobe->setMaximumDateTime(dtCurrent);
 }
 
 void TabGaerverlauf::updateDiagramm()
@@ -375,6 +382,7 @@ void TabGaerverlauf::on_btnSWSchnellgaerverlauf_clicked()
 void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
 {
     QVariantMap values({{"SudID", bh->sud()->id()},
+                        {"Zeitstempel", ui->tbDatumSchnellgaerprobe->dateTime()},
                         {"SW", ui->tbSWSchnellgaerprobe->value()},
                         {"Temp", ui->tbTempSchnellgaerprobe->value()}});
     bh->sud()->modelSchnellgaerverlauf()->append(values);
@@ -402,6 +410,7 @@ void TabGaerverlauf::on_btnSWHauptgaerverlauf_clicked()
 void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
     QVariantMap values({{"SudID", bh->sud()->id()},
+                        {"Zeitstempel", ui->tbDatumHautgaerprobe->dateTime()},
                         {"SW", ui->tbSWHauptgaerprobe->value()},
                         {"Temp", ui->tbTempHauptgaerprobe->value()}});
     bh->sud()->modelHauptgaerverlauf()->append(values);
@@ -475,6 +484,7 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
 {
     QVariantMap values({{"SudID", bh->sud()->id()},
+                        {"Zeitstempel", ui->tbDatumNachgaerprobe->dateTime()},
                         {"Druck", ui->tbNachgaerdruck->value()},
                         {"Temp", ui->tbNachgaertemp->value()}});
     bh->sud()->modelNachgaerverlauf()->append(values);

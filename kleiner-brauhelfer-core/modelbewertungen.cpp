@@ -18,7 +18,12 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &index) const
     if (field == "Woche")
     {
         QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "SudID").toInt());
-        int days = dt.daysTo(data(index.row(), "Datum").toDateTime());
+        if (!dt.isValid())
+        {
+            int sudId = data(index.row(), "SudID").toInt();
+            dt = bh->modelSud()->getValueFromSameRow("ID", sudId, "Abfuelldatum").toDateTime();
+        }
+        qint64 days = dt.daysTo(data(index.row(), "Datum").toDateTime());
         if (days > 0)
             return days / 7 + 1;
         else

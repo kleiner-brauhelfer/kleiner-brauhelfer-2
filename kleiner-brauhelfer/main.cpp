@@ -23,7 +23,7 @@ extern Settings* gSettings;
 Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
 
-static int chooseDatabase()
+static bool chooseDatabase()
 {
     QString text;
     QString dir;
@@ -38,11 +38,9 @@ static int chooseDatabase()
         dir = gSettings->databaseDir();
     }
 
-    int ret = QMessageBox::question(nullptr, QApplication::applicationName(),
-                                    text,
-                                    QMessageBox::Open | QMessageBox::Yes | QMessageBox::Cancel,
-                                    QMessageBox::Yes);
-    if (ret == QMessageBox::Open)
+    int ret = QMessageBox::question(nullptr, QApplication::applicationName(), text,
+                                    QObject::tr("Anlegen"), QObject::tr("Öffnen"), QObject::tr("Abbrechen"));
+    if (ret == 1)
     {
         QString databasePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Datenbankdatei auswählen"),
                                                             dir,
@@ -50,13 +48,10 @@ static int chooseDatabase()
         if (!databasePath.isEmpty())
         {
             gSettings->setDatabasePath(databasePath);
-        }
-        else
-        {
-            ret = QMessageBox::Cancel;
+            return true;
         }
     }
-    else if (ret == QMessageBox::Yes)
+    else if (ret == 0)
     {
         QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbankdatei anlegen"),
                                                             dir + "/kb_daten.sqlite",
@@ -69,13 +64,10 @@ static int chooseDatabase()
             if (file2.copy(file.fileName()))
                 file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
             gSettings->setDatabasePath(databasePath);
-        }
-        else
-        {
-            ret = QMessageBox::Cancel;
+            return true;
         }
     }
-    return ret;
+    return false;
 }
 
 static bool connectDatabase(bool &updated)
@@ -88,15 +80,16 @@ static bool connectDatabase(bool &updated)
         if (bh->connectDatabase())
         {
             // check database version
-            if (bh->databaseVersion() > bh->supportedDatabaseVersion)
+            int version = bh->databaseVersion();
+            if (version > bh->supportedDatabaseVersion)
             {
                 QMessageBox::critical(nullptr, QApplication::applicationName(),
-                                      QObject::tr("Die Datenbankversion ist zu neu für das Programm. Das Programm muss aktualisiert werden."));
+                                      QObject::tr("Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.").arg(version));
             }
-            else if (bh->databaseVersion() < bh->supportedDatabaseVersion)
+            else if (version < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Die Datenbankdatei muss aktualisiert werden.") + " " +
+                                               QObject::tr("Die Datenbankdatei muss aktualisiert werden (%1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
                                                QObject::tr("Soll die Datenbankdatei jetzt aktualisiert werden?") + " " +
                                                QObject::tr("Achtung, die Änderungen können nicht rückgängig gemacht werden."),
                                                QMessageBox::Yes | QMessageBox::No,
@@ -140,7 +133,7 @@ static bool connectDatabase(bool &updated)
         }
 
         // choose other database
-        if (chooseDatabase() == QMessageBox::Cancel)
+        if (!chooseDatabase())
         {
             bh->disconnectDatabase();
             break;
@@ -193,7 +186,7 @@ int main(int argc, char *argv[])
 
     // run application
     int ret = -1;
-    bool updated;
+    bool updated = false;
     do
     {
         if (connectDatabase(updated))

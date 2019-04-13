@@ -102,6 +102,9 @@
        </property>
        <item>
         <widget class="QTableView" name="tableMalz">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
@@ -154,6 +157,9 @@
        </property>
        <item>
         <widget class="QTableView" name="tableHopfen">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
@@ -203,6 +209,9 @@
        </property>
        <item>
         <widget class="QTableView" name="tableHefe">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
@@ -252,6 +261,9 @@
        </property>
        <item>
         <widget class="QTableView" name="tableWeitereZutaten">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>

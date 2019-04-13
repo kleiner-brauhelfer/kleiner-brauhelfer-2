@@ -3,10 +3,13 @@
 
 WdgDiagramView::WdgDiagramView( QWidget * parent,  Qt::WindowFlags f ) :
     QWidget(parent, f),
+    L1Precision(6),
     L1Min(0.0),
     L1Max(0.0),
+    L2Precision(6),
     L2Min(0.0),
     L2Max(0.0),
+    L3Precision(6),
     L3Min(0.0),
     L3Max(0.0)
 {
@@ -849,10 +852,10 @@ void WdgDiagramView::ZeichneText(QPainter * painter, QPoint p, int nummer, int L
   }
   painter -> drawRect(rect);
   if (Linie == 1)
-    painter -> drawText(rect, Qt::AlignCenter, QString::number(L1Daten[nummer]) + " " + KurzbezeichnungL1);
+    painter -> drawText(rect, Qt::AlignCenter, QString::number(L1Daten[nummer], 'f', L1Precision) + " " + KurzbezeichnungL1);
   else if (Linie == 2)
-    painter -> drawText(rect, Qt::AlignCenter, QString::number(L2Daten[nummer]) + " " + KurzbezeichnungL2);
+    painter -> drawText(rect, Qt::AlignCenter, QString::number(L2Daten[nummer], 'f', L2Precision) + " " + KurzbezeichnungL2);
   else
-    painter -> drawText(rect, Qt::AlignCenter, QString::number(L3Daten[nummer]) + " " + KurzbezeichnungL3);
+    painter -> drawText(rect, Qt::AlignCenter, QString::number(L3Daten[nummer], 'f', L3Precision) + " " + KurzbezeichnungL3);
 }
 

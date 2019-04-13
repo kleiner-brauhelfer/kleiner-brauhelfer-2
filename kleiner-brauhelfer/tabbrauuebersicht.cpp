@@ -152,6 +152,7 @@ void TabBrauUebersicht::updateDiagram()
         model->mColAuswahl1 = model->fieldIndex(auswahl1->field);
         ui->diagram->BezeichnungL1 = auswahl1->label;
         ui->diagram->KurzbezeichnungL1 = auswahl1->unit;
+        ui->diagram->L1Precision = auswahl1->precision;
         ui->diagram->L1Min = auswahl1->min;
         ui->diagram->L1Max = auswahl1->max;
 
@@ -159,6 +160,7 @@ void TabBrauUebersicht::updateDiagram()
         model->mColAuswahl2 = model->fieldIndex(auswahl2->field);
         ui->diagram->BezeichnungL2 = auswahl2->label;
         ui->diagram->KurzbezeichnungL2 = auswahl2->unit;
+        ui->diagram->L2Precision = auswahl2->precision;
         ui->diagram->L2Min = auswahl2->min;
         ui->diagram->L2Max = auswahl2->max;
 
@@ -166,20 +168,13 @@ void TabBrauUebersicht::updateDiagram()
         int colId = model->fieldIndex("ID");
         for (int row = 0; row < model->rowCount(); ++row)
         {
-            double d, f;
             QDateTime dt = model->index(row, colBraudatum).data().toDateTime();
             ui->diagram->Ids.append(model->index(row, colId).data().toInt());
-            d = model->index(row, model->mColAuswahl1).data().toDouble();
-            f = pow(10, auswahl1->precision);
-            d = qRound(d * f) / f;
-            ui->diagram->L1Daten.append(d);
+            ui->diagram->L1Daten.append(model->index(row, model->mColAuswahl1).data().toDouble());
             ui->diagram->L1Datum.append(dt);
             if (model->mColAuswahl2 >= 0)
             {
-                d = model->index(row, model->mColAuswahl2).data().toDouble();
-                f = pow(10, auswahl2->precision);
-                d = qRound(d * f) / f;
-                ui->diagram->L2Daten.append(d);
+                ui->diagram->L2Daten.append(model->index(row, model->mColAuswahl2).data().toDouble());
                 ui->diagram->L2Datum.append(dt);
             }
         }

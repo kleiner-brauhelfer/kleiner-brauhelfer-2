@@ -89,16 +89,19 @@ public:
 	//Ausgangsdaten der Linie 1
 	QList<QDateTime> L1Datum;
 	QList<double> L1Daten;
+    int L1Precision;
     double L1Min;
     double L1Max;
 	//Ausgangsdaten der Linie 2
 	QList<QDateTime> L2Datum;
 	QList<double> L2Daten;
+    int L2Precision;
     double L2Min;
     double L2Max;
 	//Ausgangsdaten der Linie 3
 	QList<QDateTime> L3Datum;
     QList<double> L3Daten;
+    int L3Precision;
     double L3Min;
     double L3Max;
 

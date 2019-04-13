@@ -22,9 +22,17 @@ private slots:
     void updateWasser();
     void wasser_selectionChanged(const QItemSelection &selected);
     void on_tableMalz_clicked(const QModelIndex &index);
+    void on_tableMalz_customContextMenuRequested(const QPoint &pos);
+    void spalteAnzeigenMalz(bool checked);
     void on_tableHopfen_clicked(const QModelIndex &index);
+    void on_tableHopfen_customContextMenuRequested(const QPoint &pos);
+    void spalteAnzeigenHopfen(bool checked);
     void on_tableHefe_clicked(const QModelIndex &index);
+    void on_tableHefe_customContextMenuRequested(const QPoint &pos);
+    void spalteAnzeigenHefe(bool checked);
     void on_tableWeitereZutaten_clicked(const QModelIndex &index);
+    void on_tableWeitereZutaten_customContextMenuRequested(const QPoint &pos);
+    void spalteAnzeigenWeitereZutaten(bool checked);
     void on_buttonAdd_clicked();
     void on_buttonNeuVorlage_clicked();
     void on_buttonDelete_clicked();

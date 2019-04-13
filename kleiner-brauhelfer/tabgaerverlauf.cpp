@@ -19,22 +19,30 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 
     ui->widget_DiaSchnellgaerverlauf->BezeichnungL1 = tr("Restextrakt [°P]");
     ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL1 = tr("°P");
+    ui->widget_DiaSchnellgaerverlauf->L1Precision = 1;
     ui->widget_DiaSchnellgaerverlauf->BezeichnungL2 = tr("Alkohol [%]");
     ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL2 = tr("%");
+    ui->widget_DiaSchnellgaerverlauf->L2Precision = 1;
     ui->widget_DiaSchnellgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
     ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL3 = tr("°C");
+    ui->widget_DiaSchnellgaerverlauf->L3Precision = 1;
 
     ui->widget_DiaHauptgaerverlauf->BezeichnungL1 = tr("Restextrakt [°P]");
     ui->widget_DiaHauptgaerverlauf->KurzbezeichnungL1 = tr("°P");
+    ui->widget_DiaHauptgaerverlauf->L1Precision = 1;
     ui->widget_DiaHauptgaerverlauf->BezeichnungL2 = tr("Alkohol [%]");
     ui->widget_DiaHauptgaerverlauf->KurzbezeichnungL2 = tr("%");
+    ui->widget_DiaHauptgaerverlauf->L2Precision = 1;
     ui->widget_DiaHauptgaerverlauf->BezeichnungL3 = tr("Temperatur °C");
     ui->widget_DiaHauptgaerverlauf->KurzbezeichnungL3 = tr("°C");
+    ui->widget_DiaHauptgaerverlauf->L3Precision = 1;
 
     ui->widget_DiaNachgaerverlauf->BezeichnungL1 = tr("CO₂-Gehalt [g/l]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL1 = tr("g/l");
+    ui->widget_DiaNachgaerverlauf->L1Precision = 1;
     ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Temperatur [°C]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("°C");
+    ui->widget_DiaNachgaerverlauf->L2Precision = 1;
 
     int col;
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();

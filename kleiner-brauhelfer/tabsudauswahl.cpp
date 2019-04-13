@@ -101,6 +101,9 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->setItemDelegateForColumn(col, new RatingDelegate(table));
     header->moveSection(header->visualIndex(col), 5);
 
+    header->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
+
     gSettings->beginGroup("TabSudAuswahl");
 
     mDefaultTableState = header->saveState();
@@ -207,43 +210,46 @@ void TabSudAuswahl::spalteAnzeigen(bool checked)
 
 void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &pos)
 {
-    QModelIndex index = ui->tableSudauswahl->indexAt(pos);
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+    int col;
     QMenu menu(this);
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
 
-    QAction action1(this);
-    if (model->data(index.row(), "MerklistenID").toBool())
+    QAction action1(&menu);
+    QAction action2(&menu);
+    if (!ui->tableSudauswahl->horizontalHeader()->rect().contains(pos))
     {
-        action1.setText(tr("Sud vergessen"));
-        connect(&action1, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
-    }
-    else
-    {
-        action1.setText(tr("Sud merken"));
-        connect(&action1, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
-    }
-    menu.addAction(&action1);
-
-    QAction action2(this);
-    if (model->data(index.row(), "BierWurdeAbgefuellt").toBool())
-    {
-        if (model->data(index.row(), "BierWurdeVerbraucht").toBool())
+        QModelIndex index = ui->tableSudauswahl->indexAt(pos);
+        if (model->data(index.row(), "MerklistenID").toBool())
         {
-            action2.setText(tr("Sud nicht verbraucht"));
-            connect(&action2, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
+            action1.setText(tr("Sud vergessen"));
+            connect(&action1, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
         }
         else
         {
-            action2.setText(tr("Sud verbraucht"));
-            connect(&action2, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
+            action1.setText(tr("Sud merken"));
+            connect(&action1, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
         }
-        menu.addAction(&action2);
+        menu.addAction(&action1);
+
+        if (model->data(index.row(), "BierWurdeAbgefuellt").toBool())
+        {
+            if (model->data(index.row(), "BierWurdeVerbraucht").toBool())
+            {
+                action2.setText(tr("Sud nicht verbraucht"));
+                connect(&action2, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
+            }
+            else
+            {
+                action2.setText(tr("Sud verbraucht"));
+                connect(&action2, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
+            }
+            menu.addAction(&action2);
+        }
+
+        menu.addSeparator();
     }
 
-    menu.addSeparator();
-    int col;
-
-    QAction action3(tr("Sudnummer"), this);
+    QAction action3(tr("Sudnummer"), &menu);
     col = model->fieldIndex("Sudnummer");
     action3.setCheckable(true);
     action3.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
@@ -251,7 +257,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     connect(&action3, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
     menu.addAction(&action3);
 
-    QAction action4(tr("Braudatum"), this);
+    QAction action4(tr("Braudatum"), &menu);
     col = model->fieldIndex("Braudatum");
     action4.setCheckable(true);
     action4.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
@@ -259,7 +265,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     connect(&action4, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
     menu.addAction(&action4);
 
-    QAction action5(tr("Erstellt"), this);
+    QAction action5(tr("Erstellt"), &menu);
     col = model->fieldIndex("Erstellt");
     action5.setCheckable(true);
     action5.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
@@ -267,7 +273,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     connect(&action5, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
     menu.addAction(&action5);
 
-    QAction action6(tr("Gespeichert"), this);
+    QAction action6(tr("Gespeichert"), &menu);
     col = model->fieldIndex("Gespeichert");
     action6.setCheckable(true);
     action6.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
@@ -275,7 +281,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     connect(&action6, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
     menu.addAction(&action6);
 
-    QAction action7(tr("Bewertung"), this);
+    QAction action7(tr("Bewertung"), &menu);
     col = model->fieldIndex("BewertungMax");
     action7.setCheckable(true);
     action7.setChecked(!ui->tableSudauswahl->isColumnHidden(col));

@@ -173,6 +173,10 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         weitereZutatenGaben_modified();
         checkRohstoffe();
     }
+    else if (fieldname == "EinmaischenTemp")
+    {
+        updateRastenDiagram();
+    }
 }
 
 void TabRezept::checkEnabled()

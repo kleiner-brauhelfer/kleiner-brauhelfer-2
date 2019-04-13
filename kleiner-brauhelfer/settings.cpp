@@ -32,7 +32,7 @@ void Settings::initTheme()
     ErrorText = QColor(180, 0, 0);
 
     MekrlisteBackground = QColor(122, 163, 233);
-    VerbrauchtBackground = QColor(200, 200, 200);
+    VerbrauchtBackground = QColor(180, 180, 180);
     AbgefuelltBackground = QColor(193, 225, 178);
     GebrautBackground = QColor(225, 216, 184);
     NichtGebrautBackground = QColor(245, 245, 245);

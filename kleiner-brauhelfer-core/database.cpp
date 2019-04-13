@@ -283,15 +283,33 @@ void Database::update()
     int version = mVersion;
     try
     {
-        /*
-        if (version == 24)
+        if (version == 21)
         {
             ++version;
             mDb->transaction();
+            sqlExec("ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
             sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
             mDb->commit();
         }
-        */
+
+        if (version == 22)
+        {
+            ++version;
+            mDb->transaction();
+            sqlExec("CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
+            sqlExec("CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
+            sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
+            mDb->commit();
+        }
+
+        if (version == 23)
+        {
+            ++version;
+            mDb->transaction();
+            sqlExec("ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
+            sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
+            mDb->commit();
+        }
     }
     catch (const std::exception& ex)
     {

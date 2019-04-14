@@ -754,7 +754,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutWeitereZutatenGaben->count() != nModel)
         delete ui->layoutWeitereZutatenGaben->itemAt(ui->layoutWeitereZutatenGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutWeitereZutatenGaben->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutWeitereZutatenGaben->itemAt(i)->widget())->updateValues();
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutWeitereZutatenGaben->itemAt(i)->widget())->updateValues(true);
 }
 
 void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()

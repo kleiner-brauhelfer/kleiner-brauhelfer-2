@@ -22,7 +22,7 @@ public:
     void setFehlProzent(double value);
 
 public slots:
-    void updateValues();
+    void updateValues(bool full = false);
 
 private slots:
     void on_cbZutat_currentIndexChanged(const QString &text);

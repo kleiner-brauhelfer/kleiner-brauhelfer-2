@@ -86,11 +86,11 @@ void WdgMalzGabe::checkEnabled(bool force)
     }
 }
 
-void WdgMalzGabe::updateValues()
+void WdgMalzGabe::updateValues(bool full)
 {
     QString malzname = name();
 
-    checkEnabled(false);
+    checkEnabled(full);
 
     if (!ui->cbZutat->hasFocus())
     {
@@ -122,7 +122,8 @@ void WdgMalzGabe::updateValues()
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         double max = bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "MaxProzent").toDouble();
-        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() > max);
+        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() > max || ui->tbMengeProzent->value() == 0.0);
+        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
     }
 }
 

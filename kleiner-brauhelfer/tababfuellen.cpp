@@ -135,7 +135,7 @@ void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 void TabAbfuellen::sudLoaded()
 {
     checkEnabled();
-    updateValues();
+    updateTables();
 }
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)

@@ -12,7 +12,7 @@ public:
     void setIndexMengeBenoetigt(const QModelIndex &index);
 private:
     int mColMenge;
-    QModelIndex mIndexMengeBenoetigt;
+    QPersistentModelIndex mIndexMengeBenoetigt;
 };
 
 #endif // ROHSTOFFAUSWAHLPROXYMODEL_H

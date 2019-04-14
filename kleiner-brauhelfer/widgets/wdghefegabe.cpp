@@ -113,11 +113,11 @@ void WdgHefeGabe::checkEnabled(bool force)
     ui->tbDatum->setDate(data("ZugabeDatum").toDate());
 }
 
-void WdgHefeGabe::updateValues()
+void WdgHefeGabe::updateValues(bool full)
 {
     QString name = data("Name").toString();
 
-    checkEnabled(false);
+    checkEnabled(full);
 
     if (!ui->cbZutat->hasFocus())
     {
@@ -152,6 +152,8 @@ void WdgHefeGabe::updateValues()
         }
         */
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+
+        ui->tbMenge->setError(ui->tbMenge->value() == 0);
 
         if (data("Zugegeben").toBool())
         {

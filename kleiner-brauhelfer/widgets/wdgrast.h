@@ -20,7 +20,7 @@ public:
     int dauer() const;
 
 public slots:
-    void updateValues();
+    void updateValues(bool full = false);
 
 private slots:
     void on_cbRast_currentTextChanged(const QString &text);

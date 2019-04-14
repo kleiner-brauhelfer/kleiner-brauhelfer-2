@@ -137,6 +137,7 @@ void WebView::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctx["Rezept"] = ctxRezept;
 
         QVariantMap ctxSud;
+        ctxSud["Status"] = QString::number(bh->modelSud()->data(sudRow, "Status").toInt());
         ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, "SWIst").toDouble(), 'f', 1);
         ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, "MengeIst").toDouble(), 'f', 1);
         ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, "IbuIst").toInt());

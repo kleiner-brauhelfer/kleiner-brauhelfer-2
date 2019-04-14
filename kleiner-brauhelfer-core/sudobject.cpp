@@ -280,7 +280,8 @@ void SudObject::brauzutatenAbziehen()
     mList = modelWeitereZutatenGaben();
     for (int i = 0; i < mList->rowCount(); ++i)
     {
-        if (mList->data(i, "Zeitpunkt").toInt() != EWZ_Zeitpunkt_Gaerung)
+        if (mList->data(i, "Zeitpunkt").toInt() != EWZ_Zeitpunkt_Gaerung ||
+            mList->data(i, "ZugegebenNach").toInt() == 0)
         {
             if (mList->data(i, "Typ").toInt() != EWZ_Typ_Hopfen)
             {

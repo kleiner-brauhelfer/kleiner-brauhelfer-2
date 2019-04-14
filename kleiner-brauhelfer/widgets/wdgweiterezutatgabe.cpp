@@ -45,9 +45,9 @@ bool WdgWeitereZutatGabe::setData(const QString &fieldName, const QVariant &valu
 
 void WdgWeitereZutatGabe::checkEnabled(bool force)
 {
-    bool enabled = !bh->sud()->getBierWurdeGebraut();
+    bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
     if (data("Zeitpunkt").toInt() == EWZ_Zeitpunkt_Gaerung)
-        enabled = !bh->sud()->getBierWurdeAbgefuellt();
+        enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
     if (enabled == mEnabled && !force)
         return;
 
@@ -104,9 +104,10 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbVorhanden->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
-        ui->cbZugabezeitpunkt->setEnabled(!bh->sud()->getBierWurdeGebraut());
+        ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept);
         ui->tbMenge->setReadOnly(false);
         ui->tbDauerMin->setReadOnly(false);
+        ui->tbZugabeNach->setReadOnly(false);
         ui->tbDatumVon->setReadOnly(false);
         ui->tbDauerTage->setReadOnly(false);
         ui->tbDatumBis->setReadOnly(false);
@@ -128,10 +129,12 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->wdgKochdauer->setVisible(false);
         ui->tbMenge->setReadOnly(true);
         ui->tbDauerMin->setReadOnly(true);
+        ui->tbZugabeNach->setReadOnly(true);
         ui->tbDatumVon->setReadOnly(true);
         ui->tbDauerTage->setReadOnly(true);
         ui->tbDatumBis->setReadOnly(true);
     }
+    ui->cbEntnahme->setVisible(typ != EWZ_Typ_Hopfen);
 }
 
 void WdgWeitereZutatGabe::updateValues(bool full)
@@ -246,6 +249,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblVorhanden->setVisible(true);
             ui->lblEinheit2->setVisible(true);
             ui->btnLoeschen->setVisible(true);
+            ui->tbZugabeNach->setReadOnly(false);
             ui->tbDatumVon->setReadOnly(false);
             ui->tbDatumBis->setReadOnly(false);
             ui->tbDauerTage->setReadOnly(false);
@@ -258,6 +262,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblVorhanden->setVisible(false);
             ui->lblEinheit2->setVisible(false);
             ui->btnLoeschen->setVisible(false);
+            ui->tbZugabeNach->setReadOnly(true);
             ui->tbDatumVon->setReadOnly(true);
             ui->tbDatumBis->setReadOnly(false);
             ui->tbDauerTage->setReadOnly(false);
@@ -279,6 +284,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblVorhanden->setVisible(false);
             ui->lblEinheit2->setVisible(false);
             ui->btnLoeschen->setVisible(false);
+            ui->tbZugabeNach->setReadOnly(true);
             ui->tbDatumVon->setReadOnly(true);
             ui->tbDatumBis->setReadOnly(true);
             ui->tbDauerTage->setReadOnly(true);
@@ -307,9 +313,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDatumBis->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->btnZugeben->setVisible(bh->sud()->getBierWurdeGebraut() && status == EWZ_Zugabestatus_nichtZugegeben);
-    ui->btnEntnehmen->setVisible(bh->sud()->getBierWurdeGebraut() && status == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->cbZugabezeitpunkt->setEnabled(!bh->sud()->getBierWurdeGebraut());
+    ui->btnZugeben->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_nichtZugegeben);
+    ui->btnEntnehmen->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
+    ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept);
 }
 
 void WdgWeitereZutatGabe::on_cbZutat_currentIndexChanged(const QString &text)

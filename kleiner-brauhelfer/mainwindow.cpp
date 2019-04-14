@@ -211,7 +211,7 @@ void MainWindow::sudLoaded()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
-                            bh->sud()->getBierWurdeGebraut() || !loaded ? tr("Zusammenfassung") : tr("Spickzettel"));
+                            bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (ui->tabMain->currentWidget() != ui->tabDatenbank)
         ui->tabMain->setCurrentWidget(loaded ? ui->tabRezept : ui->tabSudAuswahl);
 }
@@ -220,12 +220,13 @@ void MainWindow::sudModified()
 {
     if (bh->sud()->isLoaded())
     {
+        int status = bh->sud()->getStatus();
         ui->menuSud->setEnabled(true);
-        ui->actionSudGebraut->setEnabled(bh->sud()->getBierWurdeGebraut());
-        ui->actionSudAbgefuellt->setEnabled(bh->sud()->getBierWurdeAbgefuellt());
-        ui->actionSudVerbraucht->setEnabled(bh->sud()->getBierWurdeVerbraucht());
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(bh->sud()->getBierWurdeGebraut());
-        ui->actionWeitereZutaten->setEnabled(bh->sud()->getBierWurdeGebraut());
+        ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
+        ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
+        ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
+        ui->actionHefeZugabeZuruecksetzen->setEnabled(status >= Sud_Status_Gebraut);
+        ui->actionWeitereZutaten->setEnabled(status >= Sud_Status_Gebraut);
     }
     else
     {
@@ -276,17 +277,17 @@ void MainWindow::on_actionBeenden_triggered()
 
 void MainWindow::on_actionSudGebraut_triggered()
 {
-    bh->sud()->setBierWurdeGebraut(false);
+    bh->sud()->setStatus(Sud_Status_Rezept);
 }
 
 void MainWindow::on_actionSudAbgefuellt_triggered()
 {
-    bh->sud()->setBierWurdeAbgefuellt(false);
+    bh->sud()->setStatus(Sud_Status_Gebraut);
 }
 
 void MainWindow::on_actionSudVerbraucht_triggered()
 {
-    bh->sud()->setBierWurdeVerbraucht(false);
+    bh->sud()->setStatus(Sud_Status_Abgefuellt);
 }
 
 void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()

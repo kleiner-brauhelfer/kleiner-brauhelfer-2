@@ -51,8 +51,7 @@ bool ModelHauptgaerverlauf::setDataExt(const QModelIndex &index, const QVariant 
             setData(index.row(), "Alc", alc);
             if (index.row() == getLastRow(id))
             {
-                if (bh->modelSud()->data(row, "BierWurdeGebraut").toBool())
-                    bh->modelSud()->setData(row, "SWJungbier", value);
+                bh->modelSud()->setData(row, "SWJungbier", value);
             }
             return true;
         }
@@ -65,8 +64,7 @@ bool ModelHauptgaerverlauf::setDataExt(const QModelIndex &index, const QVariant 
             if (index.row() == getLastRow(id))
             {
                 int row = bh->modelSud()->getRowWithValue("ID", id);
-                if (bh->modelSud()->data(row, "BierWurdeGebraut").toBool())
-                    bh->modelSud()->setData(row, "TemperaturJungbier", value);
+                bh->modelSud()->setData(row, "TemperaturJungbier", value);
             }
             return true;
         }

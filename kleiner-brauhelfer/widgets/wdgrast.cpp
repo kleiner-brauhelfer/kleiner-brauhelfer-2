@@ -55,7 +55,7 @@ int WdgRast::dauer() const
 
 void WdgRast::checkEnabled(bool force)
 {
-    bool enabled = !bh->sud()->getBierWurdeGebraut();
+    bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
     if (enabled == mEnabled && !force)
         return;
 

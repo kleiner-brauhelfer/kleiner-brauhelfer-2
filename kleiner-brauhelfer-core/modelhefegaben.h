@@ -14,7 +14,7 @@ public:
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
 private slots:
-    void onSudDataChanged(const QModelIndex &idx);
+    void onSudDataChanged(const QModelIndex &index);
 private:
     Brauhelfer* bh;
 };

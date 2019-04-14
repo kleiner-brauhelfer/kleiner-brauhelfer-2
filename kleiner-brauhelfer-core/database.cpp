@@ -589,7 +589,10 @@ void Database::update()
 
             // Sud
             //  - neue Spalte 'Wasserprofil'
-            //  - Spalte gelöscht 'Anstelldatum'
+            //  - Spalte gelöscht 'BierWurdeGebraut'
+            //                    'BierWurdeAbgefuellt'
+            //                    'BierWurdeVerbraucht'
+            //                    'Anstelldatum'
             //                    'AktivTab'
             //                    'Bewertung'
             //                    'BewertungText'
@@ -600,9 +603,33 @@ void Database::update()
             //                    'AuswahlBrauanlage'
             //                    'AuswahlHefe'
             //                    'HefeAnzahlEinheiten'
+            //  - neue Spalte 'Status'
             //  - Spalte unbenannt 'erg_S_Gesammt' -> 'erg_S_Gesamt'
             //                     'erg_W_Gesammt' -> 'erg_W_Gesamt'
             //                     'AuswahlBrauanlageName' -> 'Anlage'
+            sqlExec("ALTER TABLE Sud ADD Status INTEGER DEFAULT 0");
+            query = sqlExec("SELECT ID, BierWurdeGebraut, BierWurdeAbgefuellt, BierWurdeVerbraucht FROM Sud");
+            while (query.next())
+            {
+                int id = query.value(0).toInt();
+                bool gebraut = query.value(1).toBool();
+                bool abgefuelllt = query.value(2).toBool();
+                bool verbraucht = query.value(3).toBool();
+                int status = Sud_Status_Rezept;
+                if (gebraut)
+                {
+                    status = Sud_Status_Gebraut;
+                    if (abgefuelllt)
+                    {
+                        status = Sud_Status_Abgefuellt;
+                        if (verbraucht)
+                        {
+                            status = Sud_Status_Verbraucht;
+                        }
+                    }
+                }
+                sqlExec(QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(status).arg(id));
+            }
             sqlExec("ALTER TABLE Sud RENAME TO TempTable");
             sqlExec("CREATE TABLE Sud ("
                 "ID INTEGER PRIMARY KEY,"
@@ -612,12 +639,11 @@ void Database::update()
                 "CO2 REAL DEFAULT 5,"
                 "IBU REAL DEFAULT 26,"
                 "Kommentar TEXT,"
+                "Status INTEGER DEFAULT 0,"
                 "Braudatum DATETIME,"
-                "BierWurdeGebraut INTEGER DEFAULT 0,"
                 "WuerzemengeAnstellen REAL DEFAULT 20,"
                 "SWAnstellen REAL DEFAULT 12,"
                 "Abfuelldatum DATETIME,"
-                "BierWurdeAbgefuellt INTEGER DEFAULT 0,"
                 "SWSchnellgaerprobe REAL DEFAULT 2.5,"
                 "SWJungbier REAL DEFAULT 3,"
                 "TemperaturJungbier REAL DEFAULT 12,"
@@ -639,7 +665,6 @@ void Database::update()
                 "erg_Alkohol REAL DEFAULT 0,"
                 "KostenWasserStrom REAL DEFAULT 0,"
                 "Reifezeit INTEGER DEFAULT 4,"
-                "BierWurdeVerbraucht INTEGER DEFAULT 0,"
                 "Nachisomerisierungszeit INTEGER DEFAULT 0,"
                 "WuerzemengeVorHopfenseihen REAL DEFAULT 0,"
                 "erg_EffektiveAusbeute REAL DEFAULT 0,"
@@ -663,12 +688,11 @@ void Database::update()
                 "CO2,"
                 "IBU,"
                 "Kommentar,"
+                "Status,"
                 "Braudatum,"
-                "BierWurdeGebraut,"
                 "WuerzemengeAnstellen,"
                 "SWAnstellen,"
                 "Abfuelldatum,"
-                "BierWurdeAbgefuellt,"
                 "SWSchnellgaerprobe,"
                 "SWJungbier,"
                 "TemperaturJungbier,"
@@ -690,7 +714,6 @@ void Database::update()
                 "erg_Alkohol,"
                 "KostenWasserStrom,"
                 "Reifezeit,"
-                "BierWurdeVerbraucht,"
                 "Nachisomerisierungszeit,"
                 "WuerzemengeVorHopfenseihen,"
                 "erg_EffektiveAusbeute,"
@@ -713,12 +736,11 @@ void Database::update()
                 "CO2,"
                 "IBU,"
                 "Kommentar,"
+                "Status,"
                 "Braudatum,"
-                "BierWurdeGebraut,"
                 "WuerzemengeAnstellen,"
                 "SWAnstellen,"
                 "Abfuelldatum,"
-                "BierWurdeAbgefuellt,"
                 "SWSchnellgaerprobe,"
                 "SWJungbier,"
                 "TemperaturJungbier,"
@@ -740,7 +762,6 @@ void Database::update()
                 "erg_Alkohol,"
                 "KostenWasserStrom,"
                 "Reifezeit,"
-                "BierWurdeVerbraucht,"
                 "Nachisomerisierungszeit,"
                 "WuerzemengeVorHopfenseihen,"
                 "erg_EffektiveAusbeute,"

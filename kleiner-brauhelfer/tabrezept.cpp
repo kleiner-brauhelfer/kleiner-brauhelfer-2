@@ -169,7 +169,7 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
 {
     const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
     QString fieldname = model->fieldName(index.column());
-    if (fieldname == "BierWurdeGebraut" || fieldname == "BierWurdeAbgefuellt")
+    if (fieldname == "Status")
     {
         checkEnabled();
         updateAnlageModel();
@@ -189,8 +189,8 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
 
 void TabRezept::checkEnabled()
 {
-    bool gebraut = bh->sud()->getBierWurdeGebraut();
-    bool abgefuellt = bh->sud()->getBierWurdeAbgefuellt();
+    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept;
+    bool abgefuellt = bh->sud()->getStatus() > Sud_Status_Gebraut;
     ui->cbAnlage->setEnabled(!gebraut);
     ui->tbMenge->setReadOnly(gebraut);
     ui->tbSW->setReadOnly(gebraut);
@@ -483,38 +483,38 @@ void TabRezept::updateGlas()
 
 void TabRezept::updateAnlageModel()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-    {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbAnlage);
-        model->setItem(0, 0, new QStandardItem(bh->sud()->getAnlage()));
-        ui->cbAnlage->setModel(model);
-        ui->cbAnlage->setModelColumn(0);
-    }
-    else
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbAnlage);
         model->setSourceModel(bh->modelAusruestung());
         ui->cbAnlage->setModel(model);
         ui->cbAnlage->setModelColumn(bh->modelAusruestung()->fieldIndex("Name"));
     }
+    else
+    {
+        QStandardItemModel *model = new QStandardItemModel(ui->cbAnlage);
+        model->setItem(0, 0, new QStandardItem(bh->sud()->getAnlage()));
+        ui->cbAnlage->setModel(model);
+        ui->cbAnlage->setModelColumn(0);
+    }
     ui->cbAnlage->setCurrentIndex(-1);
 }
 
 void TabRezept::updateWasserModel()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-    {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbWasserProfil);
-        model->setItem(0, 0, new QStandardItem(bh->sud()->getWasserprofil()));
-        ui->cbWasserProfil->setModel(model);
-        ui->cbWasserProfil->setModelColumn(0);
-    }
-    else
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbWasserProfil);
         model->setSourceModel(bh->modelWasser());
         ui->cbWasserProfil->setModel(model);
         ui->cbWasserProfil->setModelColumn(bh->modelWasser()->fieldIndex("Name"));
+    }
+    else
+    {
+        QStandardItemModel *model = new QStandardItemModel(ui->cbWasserProfil);
+        model->setItem(0, 0, new QStandardItem(bh->sud()->getWasserprofil()));
+        ui->cbWasserProfil->setModel(model);
+        ui->cbWasserProfil->setModelColumn(0);
     }
     ui->cbWasserProfil->setCurrentIndex(-1);
 }
@@ -600,7 +600,7 @@ void TabRezept::malzGaben_dataChanged(const QModelIndex &topLeft, const QModelIn
 
 void TabRezept::updateMalzGaben()
 {
-    if (!bh->sud()->getBierWurdeGebraut())
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         double p = 100.0;
         for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
@@ -690,7 +690,7 @@ void TabRezept::updateHopfenDiagram()
 
 void TabRezept::updateHopfenGaben()
 {
-    if (!bh->sud()->getBierWurdeGebraut())
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         double p = 100.0;
         for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)

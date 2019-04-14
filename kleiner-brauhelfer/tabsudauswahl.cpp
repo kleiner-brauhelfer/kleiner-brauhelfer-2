@@ -231,18 +231,17 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
         }
         menu.addAction(&action1);
 
-        if (model->data(index.row(), "BierWurdeAbgefuellt").toBool())
+        int status = model->data(index.row(), "Status").toInt();
+        if (status == Sud_Status_Verbraucht)
         {
-            if (model->data(index.row(), "BierWurdeVerbraucht").toBool())
-            {
-                action2.setText(tr("Sud nicht verbraucht"));
-                connect(&action2, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
-            }
-            else
-            {
-                action2.setText(tr("Sud verbraucht"));
-                connect(&action2, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
-            }
+            action2.setText(tr("Sud nicht verbraucht"));
+            connect(&action2, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
+            menu.addAction(&action2);
+        }
+        else if (status == Sud_Status_Abgefuellt)
+        {
+            action2.setText(tr("Sud verbraucht"));
+            connect(&action2, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
             menu.addAction(&action2);
         }
 
@@ -407,12 +406,12 @@ void TabSudAuswahl::on_btnAlleVergessen_clicked()
 void TabSudAuswahl::onVerbraucht_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    int col = model->fieldIndex("BierWurdeVerbraucht");
+    int col = model->fieldIndex("Status");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexVerbraucht = index.siblingAtColumn(col);
-        if (!model->data(indexVerbraucht).toBool())
-            model->setData(indexVerbraucht, true);
+        QModelIndex indexStatus = index.siblingAtColumn(col);
+        if (model->data(indexStatus).toInt() == Sud_Status_Abgefuellt)
+            model->setData(indexStatus, Sud_Status_Verbraucht);
     }
     ui->tableSudauswahl->setFocus();
 }
@@ -420,12 +419,12 @@ void TabSudAuswahl::onVerbraucht_clicked()
 void TabSudAuswahl::onNichtVerbraucht_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    int col = model->fieldIndex("BierWurdeVerbraucht");
+    int col = model->fieldIndex("Status");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexVerbraucht = index.siblingAtColumn(col);
-        if (model->data(indexVerbraucht).toBool())
-            model->setData(indexVerbraucht, false);
+        QModelIndex indexStatus = index.siblingAtColumn(col);
+        if (model->data(indexStatus).toInt() == Sud_Status_Verbraucht)
+            model->setData(indexStatus, Sud_Status_Abgefuellt);
     }
     ui->tableSudauswahl->setFocus();
 }

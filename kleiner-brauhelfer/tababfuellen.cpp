@@ -168,9 +168,7 @@ void TabAbfuellen::sudDataChanged(const QModelIndex& index)
 {
     const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
     QString fieldname = model->fieldName(index.column());
-    if (fieldname == "BierWurdeGebraut" ||
-        fieldname == "BierWurdeAbgefuellt" ||
-        fieldname == "BierWurdeVerbraucht")
+    if (fieldname == "Status")
     {
         checkEnabled();
     }
@@ -178,8 +176,8 @@ void TabAbfuellen::sudDataChanged(const QModelIndex& index)
 
 void TabAbfuellen::checkEnabled()
 {
-    bool gebraut = bh->sud()->getBierWurdeGebraut();
-    bool abgefuellt = gebraut && bh->sud()->getBierWurdeAbgefuellt();
+    int status = bh->sud()->getStatus();
+    bool abgefuellt = status >= Sud_Status_Abgefuellt;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
     ui->cbSchnellgaerprobeAktiv->setEnabled(!abgefuellt);
@@ -193,7 +191,7 @@ void TabAbfuellen::checkEnabled()
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
-    ui->btnSudAbgefuellt->setEnabled(gebraut && !abgefuellt);
+    ui->btnSudAbgefuellt->setEnabled(status == Sud_Status_Gebraut);
     ui->btnSudVerbraucht->setEnabled(abgefuellt);
 }
 
@@ -402,7 +400,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
     }
 
     bh->sud()->setAbfuelldatum(ui->tbAbfuelldatum->dateTime());
-    bh->sud()->setBierWurdeAbgefuellt(true);
+    bh->sud()->setStatus(Sud_Status_Abgefuellt);
 
     QVariantMap values({{"SudID", bh->sud()->id()},
                         {"Zeitstempel", bh->sud()->getAbfuelldatum()},
@@ -420,5 +418,5 @@ void TabAbfuellen::on_btnSudTeilen_clicked()
 
 void TabAbfuellen::on_btnSudVerbraucht_clicked()
 {
-    bh->sud()->setBierWurdeVerbraucht(true);
+    bh->sud()->setStatus(Sud_Status_Verbraucht);
 }

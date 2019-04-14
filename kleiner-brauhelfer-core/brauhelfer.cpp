@@ -261,9 +261,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     values.insert("Sudname", name);
     if (!teilen)
     {
-        values.insert("BierWurdeGebraut", 0);
-        values.insert("BierWurdeAbgefuellt", 0);
-        values.insert("BierWurdeVerbraucht", 0);
+        values.insert("Status", Sud_Status_Rezept);
         values.insert("MerklistenID", 0);
         values.insert("Erstellt", QDateTime::currentDateTime().toString(Qt::ISODate));
         values.remove("Braudatum");

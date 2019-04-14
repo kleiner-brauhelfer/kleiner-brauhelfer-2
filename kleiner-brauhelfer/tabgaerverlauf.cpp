@@ -261,20 +261,20 @@ void TabGaerverlauf::updateValues()
             QAbstractItemView::EditTrigger::AnyKeyPressed;
     QAbstractItemView::EditTriggers notriggers = QAbstractItemView::EditTrigger::NoEditTriggers;
 
-    enabled = bh->sud()->getBierWurdeGebraut() && !bh->sud()->getBierWurdeAbgefuellt();
+    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut;
     ui->wdgEditSchnellgaerung->setVisible(enabled);
     ui->tableWidget_Schnellgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
     ui->tbDatumSchnellgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
     ui->tbDatumSchnellgaerprobe->setMaximumDateTime(dtCurrent);
 
-    enabled = bh->sud()->getBierWurdeGebraut() && !bh->sud()->getBierWurdeAbgefuellt();
+    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut;
     ui->wdgEditHauptgaerung1->setVisible(enabled);
     ui->wdgEditHauptgaerung2->setVisible(enabled);
     ui->tableWidget_Hauptgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
     ui->tbDatumHautgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
     ui->tbDatumHautgaerprobe->setMaximumDateTime(dtCurrent);
 
-    enabled = bh->sud()->getBierWurdeAbgefuellt() && !bh->sud()->getBierWurdeVerbraucht();
+    enabled = bh->sud()->getStatus() == Sud_Status_Abgefuellt;
     ui->wdgEditNachgaerung->setVisible(enabled);
     ui->tableWidget_Nachgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
     ui->tbDatumNachgaerprobe->setMinimumDateTime(bh->sud()->getAbfuelldatum());

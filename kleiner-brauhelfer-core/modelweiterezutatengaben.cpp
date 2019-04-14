@@ -129,6 +129,10 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
                 QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zugabedauer"));
                 QSqlTableModel::setData(index2, index2.data().toInt() * 1440);
             }
+            if (val != EWZ_Zeitpunkt_Gaerung)
+            {
+                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugegebenNach")), 0);
+            }
             return true;
         }
     }
@@ -154,39 +158,45 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
     return false;
 }
 
-void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &index)
+void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
 {
-    QString field = bh->modelSud()->fieldName(index.column());
+    QString field = bh->modelSud()->fieldName(idx.column());
     if (field == "Menge")
     {
-        int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
+        int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
         int colSudId = fieldIndex("SudID");
         int colMenge = fieldIndex("Menge");
         for (int i = 0; i < rowCount(); ++i)
         {
-            if (this->index(i, colSudId).data().toInt() == sudId)
+            if (index(i, colSudId).data().toInt() == sudId)
             {
-                QModelIndex index2 = this->index(i, colMenge);
+                QModelIndex index2 = index(i, colMenge);
                 setData(index2, data(index2));
             }
         }
     }
-    else if (field == "BierWurdeGebraut")
+    else if (field == "Status")
     {
-        if (!index.data().toBool())
+        int status = idx.data().toInt();
+        int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
+        int colSudId = fieldIndex("SudID");
+        int colStatus = fieldIndex("Zugabestatus");
+        int colZugegebenNach = fieldIndex("ZugegebenNach");
+        if (status == Sud_Status_Rezept)
         {
-            int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
-
-            int colSudId = fieldIndex("SudID");
-            int colStatus = fieldIndex("Zugabestatus");
-
-            for (int i = 0; i < rowCount(); ++i)
+            for (int row = 0; row < rowCount(); ++row)
             {
-                if (this->index(i, colSudId).data().toInt() == sudId)
-                {
-                    QModelIndex index2 = this->index(i, colStatus);
-                    setData(index2, EWZ_Zugabestatus_nichtZugegeben);
-                }
+                if (data(index(row, colSudId)).toInt() == sudId)
+                    setData(index(row, colStatus), EWZ_Zugabestatus_nichtZugegeben);
+            }
+        }
+        else if (status == Sud_Status_Gebraut)
+        {
+            for (int row = 0; row < rowCount(); ++row)
+            {
+                if (data(index(row, colSudId)).toInt() == sudId &&
+                    data(index(row, colZugegebenNach)).toInt() == 0)
+                    setData(index(row, colStatus), EWZ_Zugabestatus_Zugegeben);
             }
         }
     }

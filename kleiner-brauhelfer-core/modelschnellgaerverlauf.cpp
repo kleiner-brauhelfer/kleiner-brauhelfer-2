@@ -51,8 +51,7 @@ bool ModelSchnellgaerverlauf::setDataExt(const QModelIndex &index, const QVarian
             setData(index.row(), "Alc", alc);
             if (index.row() == getLastRow(id))
             {
-                if (bh->modelSud()->data(row, "BierWurdeGebraut").toBool())
-                    bh->modelSud()->setData(row, "SWSchnellgaerprobe", value);
+                bh->modelSud()->setData(row, "SWSchnellgaerprobe", value);
             }
             return true;
         }

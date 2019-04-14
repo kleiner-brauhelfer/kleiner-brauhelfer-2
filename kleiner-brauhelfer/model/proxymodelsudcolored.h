@@ -11,9 +11,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
 
 private:
-    int mColBierWurdeGebraut;
-    int mColBierWurdeAbgefuellt;
-    int mColBierWurdeVerbraucht;
+    int mColStatus;
     int mColMerklistenID;
 };
 

@@ -46,7 +46,7 @@ bool WdgMalzGabe::setData(const QString &fieldName, const QVariant &value)
 
 void WdgMalzGabe::checkEnabled(bool force)
 {
-    bool enabled = !bh->sud()->getBierWurdeGebraut();
+    bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
     if (enabled == mEnabled && !force)
         return;
 

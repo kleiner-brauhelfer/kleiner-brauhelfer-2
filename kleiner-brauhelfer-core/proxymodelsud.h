@@ -47,9 +47,7 @@ private:
     int mColumnId;
     int mColumnSudname;
     int mColumnKommentar;
-    int mColumnBierWurdeGebraut;
-    int mColumnBierWurdeAbgefuellt;
-    int mColumnBierWurdeVerbraucht;
+    int mColumnStatus;
     int mColumnMerklistenID;
     bool mFilterMerkliste;
     FilterStatus mFilterStatus;

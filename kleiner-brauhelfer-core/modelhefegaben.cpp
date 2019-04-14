@@ -47,27 +47,28 @@ bool ModelHefegaben::setDataExt(const QModelIndex &index, const QVariant &value)
 void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
 {
     QString field = bh->modelSud()->fieldName(idx.column());
-    if (field == "BierWurdeGebraut")
+    if (field == "Status")
     {
+        int status = idx.data().toInt();
         int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
         int colSudId = fieldIndex("SudID");
         int colZugegeben = fieldIndex("Zugegeben");
         int colZugegebenNach = fieldIndex("ZugegebenNach");
-        if (idx.data().toBool())
+        if (status == Sud_Status_Rezept)
+        {
+            for (int row = 0; row < rowCount(); ++row)
+            {
+                if (data(index(row, colSudId)).toInt() == sudId)
+                    setData(index(row, colZugegeben), false);
+            }
+        }
+        else if (status == Sud_Status_Gebraut)
         {
             for (int row = 0; row < rowCount(); ++row)
             {
                 if (data(index(row, colSudId)).toInt() == sudId &&
                     data(index(row, colZugegebenNach)).toInt() == 0)
                     setData(index(row, colZugegeben), true);
-            }
-        }
-        else
-        {
-            for (int row = 0; row < rowCount(); ++row)
-            {
-                if (data(index(row, colSudId)).toInt() == sudId)
-                    setData(index(row, colZugegeben), false);
             }
         }
     }
@@ -78,11 +79,13 @@ void ModelHefegaben::defaultValues(QVariantMap &values) const
     if (values.contains("SudID"))
     {
         QVariant sudId = values.value("SudID");
-        if (bh->modelSud()->getValueFromSameRow("ID", sudId, "BierWurdeGebraut").toBool())
+        if (!values.contains("ZugegebenNach"))
         {
-            QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
-            if (!values.contains("ZugegebenNach"))
+            if (bh->modelSud()->getValueFromSameRow("ID", sudId, "Status").toInt() != Sud_Status_Rezept)
+            {
+                QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
                 values.insert("ZugegebenNach", braudatum.daysTo(QDateTime::currentDateTime()));
+            }
         }
     }
     if (!values.contains("Name"))

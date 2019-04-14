@@ -62,7 +62,7 @@ int WdgHefeGabe::menge() const
 
 void WdgHefeGabe::checkEnabled(bool force)
 {
-    bool enabled = !bh->sud()->getBierWurdeAbgefuellt();
+    bool enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
     if (data("Zugegeben").toBool())
         enabled = false;
     if (enabled == mEnabled && !force)
@@ -126,7 +126,7 @@ void WdgHefeGabe::updateValues(bool full)
         ui->frameColor->setPalette(gSettings->palette);
     }
 
-    ui->btnZugeben->setVisible(mEnabled && bh->sud()->getBierWurdeGebraut());
+    ui->btnZugeben->setVisible(mEnabled && bh->sud()->getStatus() == Sud_Status_Gebraut);
 
     if (mEnabled)
     {

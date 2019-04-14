@@ -48,15 +48,15 @@ void TabZusammenfassung::restoreView()
 
 void TabZusammenfassung::updateAll()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-    {
-        ui->cbTemplateAuswahl->setItemText(0, "zusammenfassung.html");
-        ui->webview->setTemplateFile(gSettings->dataDir() + "zusammenfassung.html");
-    }
-    else
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         ui->cbTemplateAuswahl->setItemText(0, "spickzettel.html");
         ui->webview->setTemplateFile(gSettings->dataDir() + "spickzettel.html");
+    }
+    else
+    {
+        ui->cbTemplateAuswahl->setItemText(0, "zusammenfassung.html");
+        ui->webview->setTemplateFile(gSettings->dataDir() + "zusammenfassung.html");
     }
     updateTemplateTags();
     updateWebView();
@@ -165,7 +165,7 @@ void TabZusammenfassung::updateTemplateTags()
     mTemplateTags.clear();
     WebView::erstelleTagListe(mTemplateTags, bh->sud()->row());
 
-    if (bh->sud()->getBierWurdeGebraut())
+    if (bh->sud()->getStatus() >= Sud_Status_Abgefuellt)
     {
         int bewertung = bh->sud()->getBewertungMax();
         if (bewertung > 0)

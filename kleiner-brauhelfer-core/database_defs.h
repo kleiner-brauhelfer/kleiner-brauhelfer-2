@@ -1,6 +1,12 @@
 #ifndef DATABASE_DEFS_H
 #define DATABASE_DEFS_H
 
+// Status
+#define Sud_Status_Rezept                   0
+#define Sud_Status_Gebraut                  1
+#define Sud_Status_Abgefuellt               2
+#define Sud_Status_Verbraucht               3
+
 // Berechnungsart fuer Hopfen
 #define Hopfen_Berechnung_Gewicht           0
 #define Hopfen_Berechnung_IBU               1

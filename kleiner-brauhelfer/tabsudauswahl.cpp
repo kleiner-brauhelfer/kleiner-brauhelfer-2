@@ -37,6 +37,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->splitter->setStretchFactor(1, 0);
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
+    // TODO: Sprachabhängige HTML Datei laden
     ui->webview->setTemplateFile(gSettings->dataDir() + "sudinfo.html");
 
     SqlTableModel *model = bh->modelSud();
@@ -124,8 +125,8 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     ui->cbMerkliste->setChecked(gSettings->value("filterMerkliste", false).toBool());
 
-    ui->tbDatumVon->setDate(gSettings->value("ZeitraumVon").toDate());
-    ui->tbDatumBis->setDate(gSettings->value("ZeitraumBis").toDate());
+    ui->tbDatumVon->setDate(gSettings->value("ZeitraumVon", QDate::currentDate().addYears(-1)).toDate());
+    ui->tbDatumBis->setDate(gSettings->value("ZeitraumBis", QDate::currentDate()).toDate());
     ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle", true).toBool());
 
     gSettings->endGroup();
@@ -357,9 +358,15 @@ void TabSudAuswahl::on_cbDatumAlle_stateChanged(int state)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
     if (state)
+    {
         model->setFilterDateColumn(-1);
+    }
     else
+    {
+        model->setFilterMinimumDate(ui->tbDatumVon->dateTime().addDays(-1));
+        model->setFilterMaximumDate(ui->tbDatumBis->dateTime().addDays(1));
         model->setFilterDateColumn(bh->modelSud()->fieldIndex("Braudatum"));
+    }
     ui->tbDatumVon->setEnabled(!state);
     ui->tbDatumBis->setEnabled(!state);
 }

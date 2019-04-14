@@ -48,6 +48,7 @@ void TabZusammenfassung::restoreView()
 
 void TabZusammenfassung::updateAll()
 {
+    // TODO: Sprachabhängige HTML Datei laden
     if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         ui->cbTemplateAuswahl->setItemText(0, "spickzettel.html");

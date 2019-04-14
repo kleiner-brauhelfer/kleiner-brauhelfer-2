@@ -95,11 +95,11 @@ void WdgHefeGabe::checkEnabled(bool force)
     ui->tbDatum->setReadOnly(!enabled);
 }
 
-void WdgHefeGabe::updateValues()
+void WdgHefeGabe::updateValues(bool full)
 {
     QString hefename = name();
 
-    checkEnabled();
+    checkEnabled(full);
 
     if (!ui->cbZutat->hasFocus())
     {
@@ -139,6 +139,8 @@ void WdgHefeGabe::updateValues()
                 benoetigt += model->data(i, "Menge").toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+
+        ui->tbMenge->setError(ui->tbMenge->value() == 0);
     }
 }
 

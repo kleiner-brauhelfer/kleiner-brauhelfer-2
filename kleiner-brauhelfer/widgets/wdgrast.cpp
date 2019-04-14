@@ -90,9 +90,9 @@ void WdgRast::checkEnabled(bool force)
     }
 }
 
-void WdgRast::updateValues()
+void WdgRast::updateValues(bool full)
 {
-    checkEnabled(false);
+    checkEnabled(full);
 
     if (!ui->cbRast->hasFocus())
         ui->cbRast->setCurrentText(name());

@@ -198,9 +198,9 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
-    connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    //connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    //connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
+    //connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
     connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
     connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateTables()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
@@ -277,10 +277,10 @@ void TabBraudaten::updateTables()
     if (bh->sud()->isLoading() || mUpdatingTables)
         return;
     mUpdatingTables = true;
-    static_cast<ProxyModel*>(ui->tableRasten->model())->invalidate();
-    static_cast<ProxyModel*>(ui->tableMalz->model())->invalidate();
+    //static_cast<ProxyModel*>(ui->tableRasten->model())->invalidate();
+    //static_cast<ProxyModel*>(ui->tableMalz->model())->invalidate();
     static_cast<ProxyModel*>(ui->tableWeitereZutatenMaischen->model())->invalidate();
-    static_cast<ProxyModel*>(ui->tableHopfen->model())->invalidate();
+    //static_cast<ProxyModel*>(ui->tableHopfen->model())->invalidate();
     static_cast<ProxyModel*>(ui->tableWeitereZutatenKochen->model())->invalidate();
     static_cast<ProxyModel*>(ui->tableHefe->model())->invalidate();
     mUpdatingTables = false;

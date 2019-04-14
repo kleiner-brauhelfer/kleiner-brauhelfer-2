@@ -109,11 +109,11 @@ bool WdgHopfenGabe::prozentIbu() const
     return bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_IBU;
 }
 
-void WdgHopfenGabe::updateValues()
+void WdgHopfenGabe::updateValues(bool full)
 {
     QString hopfenname = name();
 
-    checkEnabled(false);
+    checkEnabled(full);
 
     if (!ui->cbZutat->hasFocus())
     {
@@ -161,6 +161,9 @@ void WdgHopfenGabe::updateValues()
                 benoetigt += model->data(i, "erg_Menge").toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+
+        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
+        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
 
         ui->tbKochdauer->setReadOnly(ui->cbVwh->isChecked());
 

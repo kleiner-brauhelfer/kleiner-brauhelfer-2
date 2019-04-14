@@ -134,7 +134,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     }
 }
 
-void WdgWeitereZutatGabe::updateValues()
+void WdgWeitereZutatGabe::updateValues(bool full)
 {
     QString name = data("Name").toString();
     int typ = data("Typ").toInt();
@@ -144,7 +144,7 @@ void WdgWeitereZutatGabe::updateValues()
     int status = data("Zugabestatus").toInt();
     int dauer = data("Zugabedauer").toInt();
 
-    checkEnabled(false);
+    checkEnabled(full);
 
     if (!ui->cbZutat->hasFocus())
     {
@@ -234,6 +234,9 @@ void WdgWeitereZutatGabe::updateValues()
         if (einheit == EWZ_Einheit_Kg)
             benoetigt /= 1000;
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+
+        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
+        ui->tbMengeTotal->setError(ui->tbMengeTotal->value() == 0.0);
 
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (status)

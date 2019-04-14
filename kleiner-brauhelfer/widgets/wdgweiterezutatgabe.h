@@ -19,7 +19,7 @@ public:
     bool setData(const QString &fieldName, const QVariant &value);
 
 public slots:
-    void updateValues();
+    void updateValues(bool full = false);
 
 private slots:
     void on_cbZutat_currentIndexChanged(const QString &text);

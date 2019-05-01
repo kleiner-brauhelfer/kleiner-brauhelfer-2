@@ -28,16 +28,19 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
     QChart *chart = ui->diagramMalz->chart();
+    ui->diagramMalz->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->setAlignment(Qt::AlignRight);
 
     chart = ui->diagramHopfen->chart();
+    ui->diagramHopfen->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->setAlignment(Qt::AlignRight);
 
     chart = ui->diagramRasten->chart();
+    ui->diagramRasten->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->hide();
@@ -49,6 +52,9 @@ TabRezept::TabRezept(QWidget *parent) :
 
     gSettings->beginGroup("TabRezept");
 
+    ui->splitter->setStretchFactor(0, 1);
+    ui->splitter->setStretchFactor(1, 1);
+    ui->splitter->setStretchFactor(2, 1);
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
@@ -390,7 +396,7 @@ void TabRezept::checkRohstoffe()
 
 void TabRezept::updateValues()
 {
-    double f;
+    double restalkalitaetFaktor;
     if (!ui->tbSudnummer->hasFocus())
         ui->tbSudnummer->setValue(bh->sud()->getSudnummer());
     if (!ui->tbSudname->hasFocus())
@@ -421,22 +427,44 @@ void TabRezept::updateValues()
     ui->tbRestalkalitaetWasser->setValue(bh->modelWasser()->data(0, "Restalkalitaet").toDouble());
     ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
     ui->lblWasserprofil->setText(""); // TODO
-    f = bh->sud()->getRestalkalitaetFaktor();
-    ui->tbWasserGesamt->setValue(bh->sud()->geterg_W_Gesammt());
-    ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * f);
+    restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
     ui->tbHauptguss->setValue(bh->sud()->geterg_WHauptguss());
-    ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * f);
+    ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
     ui->tbNachguss->setValue(bh->sud()->geterg_WNachguss());
-    ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * f);
-    ui->tbMilchsaeureGesamt->setVisible(f > 0.0);
-    ui->lblMilchsaeureGesamt->setVisible(f > 0.0);
-    ui->lblMilchsaeureGesamtEinheit->setVisible(f > 0.0);
-    ui->tbMilchsaeureHG->setVisible(f > 0.0);
-    ui->lblMilchsaeureHG->setVisible(f > 0.0);
-    ui->lblMilchsaeureHGEinheit->setVisible(f > 0.0);
-    ui->tbMilchsaeureNG->setVisible(f > 0.0);
-    ui->lblMilchsaeureNG->setVisible(f > 0.0);
-    ui->lblMilchsaeureNGEinheit->setVisible(f > 0.0);
+    ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
+    if (ui->tbHGF->value() != 0.0)
+    {
+        ui->tbWasserHGF->setValue(bh->sud()->getMenge() - bh->sud()->getMengeSollKochende());
+        ui->tbMilchsaeureHGF->setValue(ui->tbWasserHGF->value() * restalkalitaetFaktor);
+        ui->tbWasserHGF->setVisible(true);
+        ui->lblWasserHGF->setVisible(true);
+        ui->lblWasserHGFEinheit->setVisible(true);
+        ui->tbMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
+        ui->lblMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
+        ui->lblMilchsaeureHGFEinheit->setVisible(restalkalitaetFaktor > 0.0);
+    }
+    else
+    {
+        ui->tbWasserHGF->setValue(0.0);
+        ui->tbMilchsaeureHGF->setValue(0.0);
+        ui->tbWasserHGF->setVisible(false);
+        ui->lblWasserHGF->setVisible(false);
+        ui->lblWasserHGFEinheit->setVisible(false);
+        ui->tbMilchsaeureHGF->setVisible(false);
+        ui->lblMilchsaeureHGF->setVisible(false);
+        ui->lblMilchsaeureHGFEinheit->setVisible(false);
+    }
+    ui->tbWasserGesamt->setValue(ui->tbHauptguss->value() + ui->tbNachguss->value() + ui->tbWasserHGF->value());
+    ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * restalkalitaetFaktor);
+    ui->tbMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);
+    ui->lblMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);
+    ui->lblMilchsaeureGesamtEinheit->setVisible(restalkalitaetFaktor > 0.0);
+    ui->tbMilchsaeureHG->setVisible(restalkalitaetFaktor > 0.0);
+    ui->lblMilchsaeureHG->setVisible(restalkalitaetFaktor > 0.0);
+    ui->lblMilchsaeureHGEinheit->setVisible(restalkalitaetFaktor > 0.0);
+    ui->tbMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
+    ui->lblMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
+    ui->lblMilchsaeureNGEinheit->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblAnlageName->setText(bh->sud()->getAuswahlBrauanlageName());
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageValue("Sudhausausbeute").toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageValue("Verdampfungsziffer").toDouble());
@@ -450,6 +478,7 @@ void TabRezept::updateValues()
         ui->tbEinmaischtemperatur->setValue(bh->sud()->getEinmaischenTemp());
     if (!ui->tbKochzeit->hasFocus())
         ui->tbKochzeit->setValue(bh->sud()->getKochdauerNachBitterhopfung());
+    ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
     if (!ui->tbNachisomerisierungszeit->hasFocus())
         ui->tbNachisomerisierungszeit->setValue(bh->sud()->getNachisomerisierungszeit());
     if (!ui->cbBerechnungsartHopfen->hasFocus())

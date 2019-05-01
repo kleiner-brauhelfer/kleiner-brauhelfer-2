@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>439</width>
+    <width>471</width>
     <height>125</height>
    </rect>
   </property>
@@ -71,7 +71,7 @@
            <enum>Qt::StrongFocus</enum>
           </property>
           <property name="toolTip">
-           <string>Hopfenauswahl</string>
+           <string>Hopfenauswahl.</string>
           </property>
           <property name="maxVisibleItems">
            <number>20</number>
@@ -99,7 +99,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Hopfengabe löschen</string>
+           <string>Hopfengabe löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -155,7 +155,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Hopfenmenge</string>
+           <string>Hopfenmenge.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -201,7 +201,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Vorhandene Menge</string>
+           <string>Vorhandene Menge.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -226,7 +226,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Hopfengewichtsanteil</string>
+           <string>Prozentanteil am Gewicht.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -254,7 +254,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Anteil an Bittere</string>
+           <string>Anteil an Bittere.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -331,7 +331,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Anteil an Bittere</string>
+           <string>Prozentanteil an Bittere.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -372,7 +372,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Alphasäure des Hopfens</string>
+           <string>Alphasäure des Hopfens.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -449,7 +449,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Kochdauer</string>
+           <string>Kochdauer.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -497,7 +497,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Alphasäureausbeute</string>
+           <string>Alphasäureausbeute.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -529,7 +529,7 @@
         <item row="3" column="3" colspan="3">
          <widget class="QCheckBox" name="cbVwh">
           <property name="toolTip">
-           <string>Vorderwürzehopfen</string>
+           <string>Vorderwürzehopfen.</string>
           </property>
           <property name="text">
            <string>Vorderwürze</string>
@@ -545,6 +545,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -553,11 +558,6 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

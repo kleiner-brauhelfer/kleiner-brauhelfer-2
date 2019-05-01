@@ -81,20 +81,28 @@ void TabZusammenfassung::on_btnToPdf_clicked()
     gSettings->endGroup();
 }
 
-void TabZusammenfassung::checkSaveTemplate()
+bool TabZusammenfassung::checkSaveTemplate()
 {
     if (ui->btnSaveTemplate->isVisible())
     {
         int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
-                                        tr("Sollen die Änderungen gespeichert werden?"));
+                                        tr("Sollen die Änderungen gespeichert werden?"),
+                                        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
         if (ret == QMessageBox::Yes)
             on_btnSaveTemplate_clicked();
+        else if (ret == QMessageBox::Cancel)
+            return true;
     }
+    return false;
 }
 
 void TabZusammenfassung::on_cbEditMode_clicked(bool checked)
 {
-    checkSaveTemplate();
+    if (checkSaveTemplate())
+    {
+        ui->cbEditMode->setChecked(true);
+        return;
+    }
 
     ui->tbTemplate->setVisible(checked);
     ui->treeViewTemplateTags->setVisible(checked);

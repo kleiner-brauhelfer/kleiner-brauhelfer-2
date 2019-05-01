@@ -8,7 +8,9 @@ ProxyModelSudColored::ProxyModelSudColored(QObject* parent) :
     mColBierWurdeGebraut(-1),
     mColBierWurdeAbgefuellt(-1),
     mColBierWurdeVerbraucht(-1),
-    mColMerklistenID(-1)
+    mColMerklistenID(-1),
+    mColWoche(-1),
+    mColReifeZeitDelta(-1)
 {
 }
 
@@ -19,6 +21,8 @@ void ProxyModelSudColored::setSourceModel(QAbstractItemModel *sourceModel)
     mColBierWurdeAbgefuellt = fieldIndex("BierWurdeAbgefuellt");
     mColBierWurdeVerbraucht = fieldIndex("BierWurdeVerbraucht");
     mColMerklistenID = fieldIndex("MerklistenID");
+    mColWoche = fieldIndex("Woche");
+    mColReifeZeitDelta = fieldIndex("ReifezeitDelta");
 }
 
 QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
@@ -35,6 +39,33 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
             return gSettings->GebrautBackground;
         else
             return gSettings->NichtGebrautBackground;
+    }
+    else if (role == Qt::DisplayRole)
+    {
+        if (index.column() == mColWoche)
+        {
+            if (index.siblingAtColumn(mColBierWurdeVerbraucht).data().toBool())
+            {
+                return "";
+            }
+            if (index.siblingAtColumn(mColBierWurdeAbgefuellt).data().toBool())
+            {
+                int woche = ProxyModelSud::data(index, role).toInt();
+                int tage = index.siblingAtColumn(mColReifeZeitDelta).data().toInt();
+                if (tage > 0)
+                    return tr("%1. Woche, reif in %2 Tage").arg(woche).arg(tage);
+                else
+                    return tr("%1. Woche").arg(woche);
+            }
+            return "";
+        }
+    }
+    else if (role == Qt::TextAlignmentRole)
+    {
+        if (index.column() == mColWoche)
+        {
+            return Qt::AlignCenter;
+        }
     }
     return ProxyModelSud::data(index, role);
 }

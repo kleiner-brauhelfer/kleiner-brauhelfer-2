@@ -97,6 +97,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Setzt das Abfülldatum auf die aktuelle Zeit.</string>
+             </property>
              <property name="text">
               <string>Jetzt</string>
              </property>
@@ -117,8 +120,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Dauer der Hauptgärung.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
             </widget>
            </item>
@@ -130,7 +142,14 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="DateTimeEdit" name="tbAbfuelldatum"/>
+            <widget class="DateTimeEdit" name="tbAbfuelldatum">
+             <property name="toolTip">
+              <string>Anfülldatum.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
            </item>
            <item row="1" column="4">
             <spacer name="horizontalSpacer_6">
@@ -178,6 +197,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Scheinbarer Restextrakt der Schnellgärprobe.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>2</number>
              </property>
@@ -200,8 +225,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Alkoholgehalt in Volumnprozent.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -225,8 +259,14 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Scheinbarer Restextrakt des Jungbiers.</string>
+             </property>
              <property name="styleSheet">
               <string notr="true"/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -255,6 +295,9 @@
                <width>50</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Stammwürze berechnen.</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -296,6 +339,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QCheckBox" name="cbSchnellgaerprobeAktiv">
+             <property name="toolTip">
+              <string>Mithilfe der Schnellgärprobe kann der Endvergärungsgrad während der Gärung bestimmt werden. </string>
+             </property>
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
              </property>
@@ -362,6 +408,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Stammwürze berechnen.</string>
+             </property>
              <property name="text">
               <string notr="true">...</string>
              </property>
@@ -382,8 +431,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Unter grünschlauchen versteht man das Schlauchen des noch nicht vollständig zu Ende gegorenen Jungbieres am Ende der Hauptgärung.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -461,8 +519,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Tatsächlicher Endvergärungsgrad.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -486,8 +553,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Scheinbarer Endvergärungsgrad.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -589,8 +665,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Benötigte Menge an Speise.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -604,6 +689,12 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Abgefüllte Menge.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -716,6 +807,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Jungbiermenge.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
@@ -738,8 +835,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Verlust seit Anstellen.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -772,7 +878,7 @@
            <item row="1" column="1">
             <widget class="QCheckBox" name="cbSpunden">
              <property name="toolTip">
-              <string>Keine Zucker- oder Speisegabe</string>
+              <string>Keine Zucker- oder Speisegabe.</string>
              </property>
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
@@ -812,6 +918,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zuckerfaktor.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="minimum">
               <double>0.100000000000000</double>
              </property>
@@ -847,6 +959,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Verfügbare Menge an Speise.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
@@ -875,6 +993,9 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="minimum">
               <double>0.100000000000000</double>
@@ -958,8 +1079,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Benötigte Menge an Speise pro Flasche.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="maximum">
               <number>99999</number>
@@ -994,8 +1124,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Benötigte Menge an Zucker.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1017,8 +1156,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Benötigte Menge an Speise.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="maximum">
               <number>99999</number>
@@ -1080,8 +1228,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Benötigte Menge an Zucker pro Flasche.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1142,8 +1299,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Spundungsdruck.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -1173,6 +1339,12 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Temperatur des Jungbiers.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1270,8 +1442,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Kosten.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -1338,14 +1519,8 @@
             <widget class="QLabel" name="lblCurrency2">
              <property name="minimumSize">
               <size>
-               <width>35</width>
+               <width>30</width>
                <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>35</width>
-               <height>16777215</height>
               </size>
              </property>
             </widget>
@@ -1384,6 +1559,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Nebenkosten.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>2</number>
              </property>
@@ -1418,6 +1599,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
            <widget class="QPushButton" name="btnSudAbgefuellt">
+            <property name="toolTip">
+             <string>Sud als abgefüllt markieren.</string>
+            </property>
             <property name="text">
              <string>Sud abgefüllt</string>
             </property>
@@ -1425,6 +1609,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnSudVerbraucht">
+            <property name="toolTip">
+             <string>Sud als verbraucht markieren.</string>
+            </property>
             <property name="text">
              <string>Sud verbraucht</string>
             </property>
@@ -1432,6 +1619,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnSudTeilen">
+            <property name="toolTip">
+             <string>Sud in zwei teile aufteilen. Alle bisher eingegebenen Daten werden übernommen.</string>
+            </property>
             <property name="text">
              <string>Sud teilen</string>
             </property>
@@ -1543,12 +1733,15 @@
   <tabstop>tbSWJungbier</tabstop>
   <tabstop>btnSWJungbier</tabstop>
   <tabstop>tbGruenschlauchzeitpunkt</tabstop>
+  <tabstop>tbSEVG</tabstop>
+  <tabstop>tbTEVG</tabstop>
   <tabstop>tbAlkohol</tabstop>
   <tabstop>tbJungbiermengeAbfuellen</tabstop>
   <tabstop>tbJungbierVerlust</tabstop>
   <tabstop>cbSpunden</tabstop>
   <tabstop>tbBiermengeAbfuellen</tabstop>
   <tabstop>tbSpeisemengeGesamt2</tabstop>
+  <tabstop>tbSpeisemengeAbgefuellt</tabstop>
   <tabstop>tbSpeisemengeGesamt</tabstop>
   <tabstop>tbZuckerFaktor</tabstop>
   <tabstop>tbZuckerGesamt</tabstop>

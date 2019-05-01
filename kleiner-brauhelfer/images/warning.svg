@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="80" height="80" id="svg2390" sodipodi:version="0.32" inkscape:version="0.46" version="1.0" sodipodi:docname="warning.svg" inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs id="defs2392">
+    <inkscape:perspective sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 526.18109 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="744.09448 : 526.18109 : 1" inkscape:persp3d-origin="372.04724 : 350.78739 : 1" id="perspective2398"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" gridtolerance="10000" guidetolerance="10" objecttolerance="10" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="1.979899" inkscape:cx="109.81659" inkscape:cy="62.58939" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="false" inkscape:window-width="640" inkscape:window-height="715" inkscape:window-x="950" inkscape:window-y="392"/>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-21.913214,-16.98389)">
+    <g transform="matrix(0.455407,0,0,0.455407,26.271447,23.867517)" style="fill:#ffd42a;fill-opacity:1" id="g2387" inkscape:export-filename="/home/mgsmith/Desktop/warning.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90">
+      <path style="fill:#ffd42a;fill-opacity:1;stroke:#000000;stroke-width:6.83137941;stroke-miterlimit:4;stroke-dasharray:none" sodipodi:nodetypes="ccccccccccc" id="path2389" d="M 12.473,121.082 C 11.559033,122.84329 10.4818,124.49 10.4817,126.423 L 10.490728,127.23088 C 10.490728,131.40288 13.7566,133.925 17.5113,133.925 L 138.831,133.925 C 142.586,133.925 145.81986,130.79848 145.81986,126.62648 L 145.78,125.815 C 145.78,123.882 144.82971,122.20348 143.789,120.474 L 83.7056,12.6938 C 81.051,9.74423 76.7473,9.74423 74.0923,12.6942 L 12.473,121.082 z"/>
+    </g>
+    <path transform="matrix(0.5421178,0,0,0.5421178,49.546397,33.731481)" d="M 31.962924,74.47538 A 8.0416269,8.0416269 0 1 1 15.87967,74.47538 A 8.0416269,8.0416269 0 1 1 31.962924,74.47538 z" sodipodi:ry="8.0416269" sodipodi:rx="8.0416269" sodipodi:cy="74.47538" sodipodi:cx="23.921297" id="path2393" style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:4, 4;stroke-dashoffset:5;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" sodipodi:type="arc" inkscape:export-filename="/home/mgsmith/Desktop/warning.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90"/>
+    <path sodipodi:nodetypes="cccsccc" id="path2395" d="M 62.486167,43.816938 C 64.198857,43.816938 66.856887,45.181507 66.856887,46.876508 L 65.577657,64.492216 C 65.577657,66.187221 64.198857,67.551786 62.486167,67.551786 C 60.773487,67.551786 59.394687,66.187221 59.394687,64.492216 L 57.902247,46.876508 C 57.902247,45.181507 60.773487,43.816938 62.486167,43.816938 z" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:4, 4;stroke-dashoffset:5;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" inkscape:export-filename="/home/mgsmith/Desktop/warning.png" inkscape:export-xdpi="90" inkscape:export-ydpi="90"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Open Clip Art Library</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>warning icon</dc:title>
+        <dc:date>2010-03-03T13:31:08</dc:date>
+        <dc:description>A very simple warning icon that can be scaled down fairly small and still be recognizable.</dc:description>
+        <dc:source>http://openclipart.org/detail/29833/warning-icon-by-matthewgarysmith</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>matthewgarysmith</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>sign</rdf:li>
+            <rdf:li>warning</rdf:li>
+            <rdf:li>yellow</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

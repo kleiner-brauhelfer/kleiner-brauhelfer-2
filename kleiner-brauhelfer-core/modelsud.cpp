@@ -30,6 +30,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SpeiseNoetig");
     mVirtualField.append("SpeiseAnteil");
     mVirtualField.append("ZuckerAnteil");
+    mVirtualField.append("Woche");
     mVirtualField.append("ReifezeitDelta");
     mVirtualField.append("AbfuellenBereitZutaten");
     mVirtualField.append("MengeSollKochbeginn");
@@ -53,6 +54,10 @@ void ModelSud::createConnections()
 {
     connect(bh->modelMalzschuettung(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
+    connect(bh->modelHopfengaben(), SIGNAL(rowChanged(const QModelIndex&)),
+            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
+    //connect(bh->modelHefeGaben(), SIGNAL(rowChanged(const QModelIndex&)),
+    //        this, SLOT(onOtherModelRowChanged(const QModelIndex&))); // TODO:
     connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
 }
@@ -166,6 +171,17 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     if (field == "ZuckerAnteil")
     {
         return ZuckerAnteil(index);
+    }
+    if (field == "Woche")
+    {
+        if (data(index.row(), "BierWurdeAbgefuellt").toBool())
+        {
+            QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "ID").toInt());
+            if (!dt.isValid())
+                dt = data(index.row(), "Abfuelldatum").toDateTime();
+            return dt.daysTo(QDateTime::currentDateTime()) / 7 + 1;
+        }
+        return 0;
     }
     if (field == "ReifezeitDelta")
     {
@@ -797,7 +813,9 @@ QVariant ModelSud::ReifezeitDelta(const QModelIndex &index) const
     if (data(index.row(), "BierWurdeAbgefuellt").toBool())
     {
         QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "ID").toInt());
-        int tageReifung = (int)dt.daysTo(QDateTime::currentDateTime());
+        if (!dt.isValid())
+            dt = data(index.row(), "Abfuelldatum").toDateTime();
+        qint64 tageReifung = dt.daysTo(QDateTime::currentDateTime());
         int tageReifungSoll = data(index.row(), "Reifezeit").toInt() * 7;
         return tageReifungSoll - tageReifung;
     }
@@ -954,6 +972,10 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("CO2", 5);
     if (!values.contains("IBU"))
         values.insert("IBU", 26);
+    if (!values.contains("KochdauerNachBitterhopfung"))
+        values.insert("KochdauerNachBitterhopfung", 60);
+    if (!values.contains("berechnungsArtHopfen"))
+        values.insert("berechnungsArtHopfen", Hopfen_Berechnung_IBU);
     if (!values.contains("BierWurdeGebraut"))
         values.insert("BierWurdeGebraut", 0);
     if (!values.contains("BierWurdeAbgefuellt"))

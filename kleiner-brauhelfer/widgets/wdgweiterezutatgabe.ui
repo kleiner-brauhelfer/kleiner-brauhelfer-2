@@ -67,6 +67,9 @@
         </item>
         <item>
          <widget class="ComboBox" name="cbZutat">
+          <property name="toolTip">
+           <string>Auswahl weitere Zutat.</string>
+          </property>
           <property name="maxVisibleItems">
            <number>20</number>
           </property>
@@ -91,6 +94,9 @@
             <width>24</width>
             <height>22</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>Weiter Zutat löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -122,6 +128,9 @@
             <width>60</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>Menge.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -167,6 +176,9 @@
             <width>50</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>Gesamtmenge.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -232,6 +244,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>Vorhandene Menge.</string>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -288,6 +303,9 @@
          </item>
          <item>
           <widget class="ComboBox" name="cbZugabezeitpunkt">
+           <property name="toolTip">
+            <string>Zugabezeitpunkt.</string>
+           </property>
            <item>
             <property name="text">
              <string>Gärung</string>
@@ -348,6 +366,9 @@
                 <height>0</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Kochdauer.</string>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -399,6 +420,9 @@
          </item>
          <item>
           <widget class="DateEdit" name="tbDatumVon">
+           <property name="toolTip">
+            <string>Zugabedatum.</string>
+           </property>
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
@@ -419,6 +443,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnZugeben">
+           <property name="toolTip">
+            <string>Zutat zugeben.</string>
+           </property>
            <property name="text">
             <string>Zugeben</string>
            </property>
@@ -456,8 +483,8 @@
              <height>16777215</height>
             </size>
            </property>
-           <property name="statusTip">
-            <string/>
+           <property name="toolTip">
+            <string>Mit/ohne Entnahme.</string>
            </property>
            <item>
             <property name="text">
@@ -478,6 +505,9 @@
              <width>60</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string>Zugabedauer.</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -502,6 +532,9 @@
          </item>
          <item>
           <widget class="DateEdit" name="tbDatumBis">
+           <property name="toolTip">
+            <string>Entnahmedatum.</string>
+           </property>
            <property name="calendarPopup">
             <bool>true</bool>
            </property>
@@ -522,8 +555,8 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnEntnehmen">
-           <property name="statusTip">
-            <string/>
+           <property name="toolTip">
+            <string>Zutat entnehmen.</string>
            </property>
            <property name="text">
             <string>Entnehmen</string>
@@ -550,6 +583,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -558,11 +596,6 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>

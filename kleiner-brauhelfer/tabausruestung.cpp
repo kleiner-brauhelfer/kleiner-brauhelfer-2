@@ -1,5 +1,6 @@
 #include "tabausruestung.h"
 #include "ui_tabausruestung.h"
+#include <QMenu>
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -77,29 +78,35 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->setItemDelegateForColumn(col, new ReadonlyDelegate(table));
     header->moveSection(header->visualIndex(col), 0);
 
+    col = model->fieldIndex("Sudnummer");
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
+    header->resizeSection(col, 50);
+    header->moveSection(header->visualIndex(col), 1);
+
     col = model->fieldIndex("Braudatum");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
+    header->moveSection(header->visualIndex(col), 2);
 
     col = model->fieldIndex("erg_EffektiveAusbeute");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
+    header->moveSection(header->visualIndex(col), 3);
 
     col = model->fieldIndex("Verdampfungsziffer");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 3);
+    header->moveSection(header->visualIndex(col), 4);
 
     col = model->fieldIndex("AusbeuteIgnorieren");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
     header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 4);
+    header->moveSection(header->visualIndex(col), 5);
 
     gSettings->beginGroup("TabAusruestung");
 
@@ -108,6 +115,9 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
 
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+
+    mDefaultSplitterLeftState = ui->splitterLeft->saveState();
+    ui->splitterLeft->restoreState(gSettings->value("splitterLeftState").toByteArray());
 
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
@@ -137,6 +147,7 @@ void TabAusruestung::saveSettings()
     gSettings->beginGroup("TabAusruestung");
     gSettings->setValue("tableState", ui->tableViewSude->horizontalHeader()->saveState());
     gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("splitterLeftState", ui->splitterLeft->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->endGroup();
 }
@@ -145,6 +156,7 @@ void TabAusruestung::restoreView()
 {
     ui->tableViewSude->horizontalHeader()->restoreState(mDefaultTableState);
     ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
@@ -169,8 +181,7 @@ void TabAusruestung::anlage_selectionChanged(const QItemSelection &selected)
     QRegExp regExpId;
     if (selected.indexes().count() > 0)
     {
-        const QModelIndex index = selected.indexes()[0];
-        mRow = index.row();
+        mRow = selected.indexes()[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
         QString id = model->data(model->index(mRow, model->fieldIndex("AnlagenID"))).toString();
         regExpId = QRegExp(QString("^%1$").arg(id), Qt::CaseInsensitive, QRegExp::RegExp);
@@ -223,8 +234,7 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     QModelIndexList selected = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selected.count() > 0)
     {
-        QString name = selected[0].data().toString();
-        QVariant id = bh->modelAusruestung()->getValueFromSameRow("Name", name, "AnlagenID");
+        QVariant id = bh->modelAusruestung()->getValueFromSameRow("Name", data("Name"), "AnlagenID");
         QVariantMap values({{"AusruestungAnlagenID", id}, {"Bezeichnung", tr("Neues Gerät")}});
         ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
         int row = model->append(values);
@@ -269,7 +279,7 @@ bool TabAusruestung::setData(const QString &fieldName, const QVariant &value)
 void TabAusruestung::updateValues()
 {
     if (!ui->tbAusbeute->hasFocus())
-        ui->tbAusbeute->setValue(data("Sudhausausbeute").toInt());
+        ui->tbAusbeute->setValue(data("Sudhausausbeute").toDouble());
     if (!ui->tbVerdampfung->hasFocus())
         ui->tbVerdampfung->setValue(data("Verdampfungsziffer").toDouble());
     if (!ui->tbNachguss->hasFocus())
@@ -367,15 +377,25 @@ void TabAusruestung::on_tbAusbeute_valueChanged(double value)
         setData("Sudhausausbeute", value);
 }
 
-void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
+void TabAusruestung::on_btnAusbeuteMittel_clicked()
 {
-    updateDurchschnitt();
+    setData("Sudhausausbeute", ui->tbAusbeuteMittel->value());
 }
 
 void TabAusruestung::on_tbVerdampfung_valueChanged(double value)
 {
     if (ui->tbVerdampfung->hasFocus())
         setData("Verdampfungsziffer", value);
+}
+
+void TabAusruestung::on_btnVerdampfungMittel_clicked()
+{
+    setData("Verdampfungsziffer", ui->tbVerdampfungMittel->value());
+}
+
+void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
+{
+    updateDurchschnitt();
 }
 
 void TabAusruestung::on_tbNachguss_valueChanged(double value)
@@ -430,4 +450,30 @@ void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_valueChanged(double value)
 {
     if (ui->tbSudpfanneMaxFuellhoehe->hasFocus())
         setData("Sudpfanne_MaxFuellhoehe", value);
+}
+
+void TabAusruestung::spalteAnzeigen(bool checked)
+{
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action)
+        ui->tableViewSude->setColumnHidden(action->data().toInt(), !checked);
+}
+
+void TabAusruestung::on_tableViewSude_customContextMenuRequested(const QPoint &pos)
+{
+    int col;
+    QAction *action;
+    QMenu menu(this);
+    QTableView *table = ui->tableViewSude;
+    ProxyModel *model = static_cast<ProxyModel*>(table->model());
+
+    col = model->fieldIndex("Sudnummer");
+    action = new QAction(tr("Sudnummer"), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
+
+    menu.exec(table->viewport()->mapToGlobal(pos));
 }

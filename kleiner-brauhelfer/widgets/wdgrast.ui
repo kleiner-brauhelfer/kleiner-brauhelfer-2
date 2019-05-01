@@ -40,6 +40,9 @@
        <height>22</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string>Rast löschen.</string>
+     </property>
      <property name="icon">
       <iconset resource="../images.qrc">
        <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
@@ -60,6 +63,9 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="toolTip">
+      <string>Rastauswahl.</string>
+     </property>
      <property name="editable">
       <bool>true</bool>
      </property>
@@ -72,6 +78,9 @@
        <width>60</width>
        <height>0</height>
       </size>
+     </property>
+     <property name="toolTip">
+      <string>Rastdauer.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -99,6 +108,9 @@
        <height>0</height>
       </size>
      </property>
+     <property name="toolTip">
+      <string>Rasttemperatur.</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -121,14 +133,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

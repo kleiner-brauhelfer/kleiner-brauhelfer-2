@@ -511,73 +511,74 @@ void TabRohstoffe::on_tableMalz_clicked(const QModelIndex &index)
 void TabRohstoffe::on_tableMalz_customContextMenuRequested(const QPoint &pos)
 {
     int col;
+    QAction *action;
     QMenu menu(this);
     QTableView *table = ui->tableMalz;
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
 
     col = model->fieldIndex("Farbe");
-    QAction action3(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action3.setCheckable(true);
-    action3.setChecked(!table->isColumnHidden(col));
-    action3.setData(col);
-    connect(&action3, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action3);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("MaxProzent");
-    QAction action4(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action4.setCheckable(true);
-    action4.setChecked(!table->isColumnHidden(col));
-    action4.setData(col);
-    connect(&action4, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action4);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Bemerkung");
-    QAction action5(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action5.setCheckable(true);
-    action5.setChecked(!table->isColumnHidden(col));
-    action5.setData(col);
-    connect(&action5, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action5);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Anwendung");
-    QAction action6(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action6.setCheckable(true);
-    action6.setChecked(!table->isColumnHidden(col));
-    action6.setData(col);
-    connect(&action6, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action6);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Preis");
-    QAction action7(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action7.setCheckable(true);
-    action7.setChecked(!table->isColumnHidden(col));
-    action7.setData(col);
-    connect(&action7, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action7);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Eingelagert");
-    QAction action8(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action8.setCheckable(true);
-    action8.setChecked(!table->isColumnHidden(col));
-    action8.setData(col);
-    connect(&action8, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action8);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Mindesthaltbar");
-    QAction action9(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action9.setCheckable(true);
-    action9.setChecked(!table->isColumnHidden(col));
-    action9.setData(col);
-    connect(&action9, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action9);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Link");
-    QAction action10(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action10.setCheckable(true);
-    action10.setChecked(!table->isColumnHidden(col));
-    action10.setData(col);
-    connect(&action10, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(&action10);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
+    menu.addAction(action);
 
     menu.exec(table->viewport()->mapToGlobal(pos));
 }
@@ -598,81 +599,82 @@ void TabRohstoffe::on_tableHopfen_clicked(const QModelIndex &index)
 void TabRohstoffe::on_tableHopfen_customContextMenuRequested(const QPoint &pos)
 {
     int col;
+    QAction *action;
     QMenu menu(this);
     QTableView *table = ui->tableHopfen;
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
 
     col = model->fieldIndex("Alpha");
-    QAction action3(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action3.setCheckable(true);
-    action3.setChecked(!table->isColumnHidden(col));
-    action3.setData(col);
-    connect(&action3, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action3);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Pellets");
-    QAction action4(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action4.setCheckable(true);
-    action4.setChecked(!table->isColumnHidden(col));
-    action4.setData(col);
-    connect(&action4, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action4);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Bemerkung");
-    QAction action5(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action5.setCheckable(true);
-    action5.setChecked(!table->isColumnHidden(col));
-    action5.setData(col);
-    connect(&action5, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action5);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Eigenschaften");
-    QAction action6(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action6.setCheckable(true);
-    action6.setChecked(!table->isColumnHidden(col));
-    action6.setData(col);
-    connect(&action6, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action6);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Typ");
-    QAction action7(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action7.setCheckable(true);
-    action7.setChecked(!table->isColumnHidden(col));
-    action7.setData(col);
-    connect(&action7, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action7);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Preis");
-    QAction action8(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action8.setCheckable(true);
-    action8.setChecked(!table->isColumnHidden(col));
-    action8.setData(col);
-    connect(&action8, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action8);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Eingelagert");
-    QAction action9(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action9.setCheckable(true);
-    action9.setChecked(!table->isColumnHidden(col));
-    action9.setData(col);
-    connect(&action9, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action9);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Mindesthaltbar");
-    QAction action10(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action10.setCheckable(true);
-    action10.setChecked(!table->isColumnHidden(col));
-    action10.setData(col);
-    connect(&action10, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action10);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Link");
-    QAction action11(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action11.setCheckable(true);
-    action11.setChecked(!table->isColumnHidden(col));
-    action11.setData(col);
-    connect(&action11, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(&action11);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
+    menu.addAction(action);
 
     menu.exec(table->viewport()->mapToGlobal(pos));
 }
@@ -693,113 +695,114 @@ void TabRohstoffe::on_tableHefe_clicked(const QModelIndex &index)
 void TabRohstoffe::on_tableHefe_customContextMenuRequested(const QPoint &pos)
 {
     int col;
+    QAction *action;
     QMenu menu(this);
     QTableView *table = ui->tableHefe;
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
 
     col = model->fieldIndex("Bemerkung");
-    QAction action3(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action3.setCheckable(true);
-    action3.setChecked(!table->isColumnHidden(col));
-    action3.setData(col);
-    connect(&action3, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action3);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Eigenschaften");
-    QAction action4(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action4.setCheckable(true);
-    action4.setChecked(!table->isColumnHidden(col));
-    action4.setData(col);
-    connect(&action4, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action4);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("TypOGUG");
-    QAction action5(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action5.setCheckable(true);
-    action5.setChecked(!table->isColumnHidden(col));
-    action5.setData(col);
-    connect(&action5, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action5);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("TypTrFl");
-    QAction action6(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action6.setCheckable(true);
-    action6.setChecked(!table->isColumnHidden(col));
-    action6.setData(col);
-    connect(&action6, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action6);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Verpackungsmenge");
-    QAction action7(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action7.setCheckable(true);
-    action7.setChecked(!table->isColumnHidden(col));
-    action7.setData(col);
-    connect(&action7, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action7);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Wuerzemenge");
-    QAction action8(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action8.setCheckable(true);
-    action8.setChecked(!table->isColumnHidden(col));
-    action8.setData(col);
-    connect(&action8, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action8);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("SED");
-    QAction action9(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action9.setCheckable(true);
-    action9.setChecked(!table->isColumnHidden(col));
-    action9.setData(col);
-    connect(&action9, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action9);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("EVG");
-    QAction action10(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action10.setCheckable(true);
-    action10.setChecked(!table->isColumnHidden(col));
-    action10.setData(col);
-    connect(&action10, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action10);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Temperatur");
-    QAction action11(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action11.setCheckable(true);
-    action11.setChecked(!table->isColumnHidden(col));
-    action11.setData(col);
-    connect(&action11, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action11);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Preis");
-    QAction action12(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action12.setCheckable(true);
-    action12.setChecked(!table->isColumnHidden(col));
-    action12.setData(col);
-    connect(&action12, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action12);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Eingelagert");
-    QAction action13(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action13.setCheckable(true);
-    action13.setChecked(!table->isColumnHidden(col));
-    action13.setData(col);
-    connect(&action13, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action13);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Mindesthaltbar");
-    QAction action14(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action14.setCheckable(true);
-    action14.setChecked(!table->isColumnHidden(col));
-    action14.setData(col);
-    connect(&action14, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action14);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Link");
-    QAction action15(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action15.setCheckable(true);
-    action15.setChecked(!table->isColumnHidden(col));
-    action15.setData(col);
-    connect(&action15, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(&action15);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
+    menu.addAction(action);
 
     menu.exec(table->viewport()->mapToGlobal(pos));
 }
@@ -820,73 +823,74 @@ void TabRohstoffe::on_tableWeitereZutaten_clicked(const QModelIndex &index)
 void TabRohstoffe::on_tableWeitereZutaten_customContextMenuRequested(const QPoint &pos)
 {
     int col;
+    QAction *action;
     QMenu menu(this);
     QTableView *table = ui->tableWeitereZutaten;
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
 
     col = model->fieldIndex("Typ");
-    QAction action4(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action4.setCheckable(true);
-    action4.setChecked(!table->isColumnHidden(col));
-    action4.setData(col);
-    connect(&action4, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action4);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Ausbeute");
-    QAction action5(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action5.setCheckable(true);
-    action5.setChecked(!table->isColumnHidden(col));
-    action5.setData(col);
-    connect(&action5, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action5);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("EBC");
-    QAction action6(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action6.setCheckable(true);
-    action6.setChecked(!table->isColumnHidden(col));
-    action6.setData(col);
-    connect(&action6, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action6);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Bemerkung");
-    QAction action7(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action7.setCheckable(true);
-    action7.setChecked(!table->isColumnHidden(col));
-    action7.setData(col);
-    connect(&action7, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action7);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Preis");
-    QAction action8(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action8.setCheckable(true);
-    action8.setChecked(!table->isColumnHidden(col));
-    action8.setData(col);
-    connect(&action8, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action8);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Eingelagert");
-    QAction action9(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action9.setCheckable(true);
-    action9.setChecked(!table->isColumnHidden(col));
-    action9.setData(col);
-    connect(&action9, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action9);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Mindesthaltbar");
-    QAction action10(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action10.setCheckable(true);
-    action10.setChecked(!table->isColumnHidden(col));
-    action10.setData(col);
-    connect(&action10, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action10);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     col = model->fieldIndex("Link");
-    QAction action11(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action11.setCheckable(true);
-    action11.setChecked(!table->isColumnHidden(col));
-    action11.setData(col);
-    connect(&action11, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(&action11);
+    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
+    menu.addAction(action);
 
     menu.exec(table->viewport()->mapToGlobal(pos));
 }

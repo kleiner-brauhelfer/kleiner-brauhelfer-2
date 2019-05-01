@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
+    <width>452</width>
     <height>73</height>
    </rect>
   </property>
@@ -58,7 +58,7 @@
            <enum>Qt::ClickFocus</enum>
           </property>
           <property name="toolTip">
-           <string>Malzfarbe</string>
+           <string>Malzfarbe.</string>
           </property>
           <property name="autoFillBackground">
            <bool>true</bool>
@@ -71,7 +71,7 @@
         <item>
          <widget class="ComboBox" name="cbZutat">
           <property name="toolTip">
-           <string>Malzauswahl</string>
+           <string>Malzauswahl.</string>
           </property>
           <property name="maxVisibleItems">
            <number>20</number>
@@ -99,7 +99,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Malzgabe löschen</string>
+           <string>Malzgabe löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -133,7 +133,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Malzanteil</string>
+           <string>Malzanteil.</string>
           </property>
           <property name="decimals">
            <number>1</number>
@@ -184,7 +184,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Malzmenge</string>
+           <string>Malzmenge.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -210,6 +210,28 @@
           </property>
           <property name="text">
            <string>kg</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblWarnAnteil">
+          <property name="minimumSize">
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../images.qrc">:/images/warning.svg</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -242,7 +264,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Vorhandene Menge</string>
+           <string>Vorhandene Menge.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -283,14 +305,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
  </customwidgets>
  <resources>

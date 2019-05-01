@@ -15,6 +15,8 @@ private:
     int mColBierWurdeAbgefuellt;
     int mColBierWurdeVerbraucht;
     int mColMerklistenID;
+    int mColWoche;
+    int mColReifeZeitDelta;
 };
 
 #endif // PROXYMODELSUDCOLORED_H

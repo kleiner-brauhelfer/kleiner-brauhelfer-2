@@ -30,6 +30,8 @@ private slots:
     void diagram_selectionChanged(int sudId);
     void on_cbAuswahlL1_currentIndexChanged(int);
     void on_cbAuswahlL2_currentIndexChanged(int);
+    void spalteAnzeigen(bool checked);
+    void on_tableView_customContextMenuRequested(const QPoint &pos);
 
 private:
     struct AuswahlType

@@ -10,7 +10,7 @@
     <height>797</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_6">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
     <number>4</number>
    </property>
@@ -40,7 +40,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>877</width>
+         <width>971</width>
          <height>795</height>
         </rect>
        </property>
@@ -87,6 +87,9 @@
                <width>50</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Setzt das Braudatum auf die aktuelle Zeit.</string>
              </property>
              <property name="text">
               <string>Jetzt</string>
@@ -137,7 +140,14 @@
             </spacer>
            </item>
            <item row="0" column="1">
-            <widget class="DateTimeEdit" name="tbBraudatum"/>
+            <widget class="DateTimeEdit" name="tbBraudatum">
+             <property name="toolTip">
+              <string>Braudatum.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -208,8 +218,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielwürzemenge vor Kochbeginn bei 20°C.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -239,6 +258,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Würzemenge berechnen.</string>
+             </property>
              <property name="text">
               <string notr="true">...</string>
              </property>
@@ -265,8 +287,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielstammwürze bei Kochbeginn.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -297,8 +328,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielwürzemenge vor Kochbeginn bei angegebener Temperatur.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -332,8 +372,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielfüllhöhe vom Boden aus gemenssen bei angegebener Temperatur.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -357,8 +406,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielfüllhöhe von der Oberkante aus gemenssen bei angegebener Temperatur.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -383,7 +441,10 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Mit diesem Wert wird die Sudhausausbeute berechnet</string>
+              <string>Würzemenge vor Kochbeginn bei 20°C.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -519,6 +580,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
                <property name="decimals">
                 <number>1</number>
                </property>
@@ -644,6 +708,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Würzemenge berechnen.</string>
+             </property>
              <property name="text">
               <string notr="true">...</string>
              </property>
@@ -680,8 +747,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Sudhausausbeute.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -712,8 +788,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Verdampfungsziffer.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -770,8 +855,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielstammwürze bei Kochende.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -802,8 +896,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielwürzemenge bei Kochende bei angegebener Temperatur.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -860,6 +963,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Stammwürze bei Kochende.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
@@ -895,6 +1004,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Stammwürze berechnen.</string>
+             </property>
              <property name="text">
               <string notr="true">...</string>
              </property>
@@ -908,8 +1020,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielwürzemenge bei Kochende bei 20°C.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -963,6 +1084,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Würzemenge bei Kochende bei 20°C.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
@@ -992,8 +1119,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielfüllhöhe von der Oberkante aus gemenssen bei angegebener Temperatur.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1017,8 +1153,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielfüllhöhe vom Boden aus gemenssen bei angegebener Temperatur.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1093,6 +1238,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
                <property name="decimals">
                 <number>1</number>
                </property>
@@ -1130,6 +1278,9 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_2">
+          <property name="toolTip">
+           <string>Speisemenge, um gewünschte Karbonisierung zu erreichen.</string>
+          </property>
           <property name="title">
            <string>Anstellen</string>
           </property>
@@ -1173,6 +1324,12 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Anstellmenge.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
@@ -1208,8 +1365,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Zielstammwürze vor der Zugabe weiterer Zutaten.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1259,8 +1425,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Effektive Sudhausausbeute.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1312,7 +1487,10 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze vor der Zugabe weiterer Zutaten</string>
+              <string>Stammwürze vor der Zugabe weiterer Zutaten.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1363,6 +1541,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
@@ -1392,8 +1573,14 @@
                <height>0</height>
               </size>
              </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1463,6 +1650,9 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Stammwürze berechnen.</string>
+             </property>
              <property name="text">
               <string notr="true">...</string>
              </property>
@@ -1475,6 +1665,12 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Gesamtwürzemenge (Anstellmenge +  Speisemenge).</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1551,8 +1747,17 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Geschätze benötigte Speise bei angeommenen 3°P scheinbarer Restextrakt.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1582,6 +1787,10 @@
            </property>
            <item row="1" column="1">
             <widget class="QCheckBox" name="cbDurchschnittIgnorieren">
+             <property name="toolTip">
+              <string>Sud für Durschnittsberechnungen ignorieren.&lt;br&gt;
+Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen.</string>
+             </property>
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
              </property>
@@ -1648,6 +1857,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Kosten.</string>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
@@ -1676,14 +1888,8 @@
             <widget class="QLabel" name="lblCurrency2">
              <property name="minimumSize">
               <size>
-               <width>35</width>
+               <width>30</width>
                <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>35</width>
-               <height>16777215</height>
               </size>
              </property>
             </widget>
@@ -1695,6 +1901,12 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Nebenkosten.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -1751,10 +1963,7 @@
           <item>
            <widget class="QPushButton" name="btnSudGebraut">
             <property name="toolTip">
-             <string>Sud wird als gebraut markiert.
-Es sind keine Änderungen an Rezept und Braudaten mehr möglich.
-Die Malz- und Hopfenmengen werden zur Dokumentation abgespeichert und nicht mehr berechnet.
-Diese Markierung kann nur mit einem Editor an der Suddatei selber rückgängig gemacht werden.</string>
+             <string>Sud als gebraut markieren.</string>
             </property>
             <property name="text">
              <string>Sud gebraut</string>
@@ -1763,6 +1972,9 @@ Diese Markierung kann nur mit einem Editor an der Suddatei selber rückgängig g
           </item>
           <item>
            <widget class="QPushButton" name="btnSudTeilen">
+            <property name="toolTip">
+             <string>Sud in zwei teile aufteilen. Alle bisher eingegebenen Daten werden übernommen.</string>
+            </property>
             <property name="text">
              <string>Sud teilen</string>
             </property>
@@ -2200,6 +2412,7 @@ Diese Markierung kann nur mit einem Editor an der Suddatei selber rückgängig g
   <tabstop>tbWuerzemengeKochbeginn</tabstop>
   <tabstop>btnWuerzemengeKochbeginn</tabstop>
   <tabstop>tbMengeSollKochbeginn20</tabstop>
+  <tabstop>tbTempKochbeginn</tabstop>
   <tabstop>tbMengeSollKochbeginn100</tabstop>
   <tabstop>tbMengeSollcmVonOben</tabstop>
   <tabstop>tbMengeSollcmVomBoden</tabstop>
@@ -2209,7 +2422,10 @@ Diese Markierung kann nur mit einem Editor an der Suddatei selber rückgängig g
   <tabstop>tbWuerzemengeKochende</tabstop>
   <tabstop>btnWuerzemengeKochende</tabstop>
   <tabstop>tbMengeSollKochende20</tabstop>
+  <tabstop>tbTempKochende</tabstop>
   <tabstop>tbMengeSollKochende100</tabstop>
+  <tabstop>tbMengeSollEndecmVonOben</tabstop>
+  <tabstop>tbMengeSollEndecmVomBoden</tabstop>
   <tabstop>tbVerdampfung</tabstop>
   <tabstop>tbAusbeute</tabstop>
   <tabstop>tbSWAnstellen</tabstop>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>389</width>
+    <width>395</width>
     <height>97</height>
    </rect>
   </property>
@@ -68,7 +68,7 @@
         <item>
          <widget class="ComboBox" name="cbZutat">
           <property name="toolTip">
-           <string>Hefeauswahl</string>
+           <string>Hefeauswahl.</string>
           </property>
           <property name="maxVisibleItems">
            <number>20</number>
@@ -96,7 +96,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Hefegabe löschen</string>
+           <string>Hefegabe löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -120,7 +120,7 @@
         <item row="1" column="4" colspan="2">
          <widget class="QPushButton" name="btnZugeben">
           <property name="toolTip">
-           <string>Hefegabe zugeben</string>
+           <string>Hefegabe zugeben.</string>
           </property>
           <property name="text">
            <string>Zugeben</string>
@@ -136,7 +136,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Vorhandene Hefeneinheiten</string>
+           <string>Vorhandene Hefeneinheiten.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -195,7 +195,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Anzahl Hefeeinheiten</string>
+           <string>Anzahl Hefeeinheiten.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -220,7 +220,7 @@
           <item>
            <widget class="DateEdit" name="tbDatum">
             <property name="toolTip">
-             <string>Zugabedatum</string>
+             <string>Zugabedatum.</string>
             </property>
             <property name="calendarPopup">
              <bool>true</bool>
@@ -245,7 +245,7 @@
         <item row="1" column="2">
          <widget class="SpinBox" name="tbTage">
           <property name="toolTip">
-           <string>Zugabe nach x Tagen ab Braudatum</string>
+           <string>Zugabe nach x Tagen ab Braudatum.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -261,14 +261,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>

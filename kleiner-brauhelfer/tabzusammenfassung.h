@@ -29,7 +29,7 @@ private slots:
     void on_btnRestoreTemplate_clicked();
 
 private:
-    void checkSaveTemplate();
+    bool checkSaveTemplate();
     void updateTemplateTags();
     void updateWebView();
 

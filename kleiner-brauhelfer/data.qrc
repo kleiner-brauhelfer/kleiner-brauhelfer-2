@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>data/abfuelldaten.html</file>
+        <file>data/braudaten.html</file>
         <file>data/Hefe.csv</file>
         <file>data/Hopfen.csv</file>
         <file>data/kb_daten.sqlite</file>

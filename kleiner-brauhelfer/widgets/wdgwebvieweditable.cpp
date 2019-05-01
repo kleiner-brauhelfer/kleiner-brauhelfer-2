@@ -86,6 +86,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
 
 void WdgWebViewEditable::on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName)
 {
+    Q_UNUSED(fileName)
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 

@@ -20,7 +20,6 @@ public:
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
-    void updateTables();
     void updateValues();
     void sudDataChanged(const QModelIndex& index);
 
@@ -50,7 +49,6 @@ private:
 
 private:
     Ui::TabAbfuellen *ui;
-    bool mUpdatingTables;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterHelpState;
 };

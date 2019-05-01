@@ -18,65 +18,18 @@ extern Settings* gSettings;
 
 TabAbfuellen::TabAbfuellen(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabAbfuellen),
-    mUpdatingTables(false)
+    ui(new Ui::TabAbfuellen)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
+    ui->webview->setHtmlFile("abfuelldaten.html");
+
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
-
-    int col;
-    ProxyModel *proxy = new ProxyModel(this);
-    ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    proxy->setSourceModel(model);
-    proxy->setFilterKeyColumn(model->fieldIndex("Zeitpunkt"));
-    proxy->setFilterString(QString::number(EWZ_Zeitpunkt_Gaerung));
-    QTableView *table = ui->tableWeitereZutaten;
-    table->setModel(proxy);
-    QHeaderView *header = table->horizontalHeader();
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = model->fieldIndex("Name");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = model->fieldIndex("Zugabestatus");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Status"));
-    table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr(""), tr("zugegeben"), tr("entnommen")}, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("Zeitpunkt_von_ist");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Zugegeben"));
-    table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-    col = model->fieldIndex("Zeitpunkt_bis_ist");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Entnommen"));
-    table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-    col = model->fieldIndex("erg_Menge");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [g]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
-
-    // TODO:
-    //model = bh->sud()->modelHefegaben();
-    table = ui->tableHefe;
-    header = table->horizontalHeader();
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
 
     gSettings->beginGroup("TabAbfuellen");
 
@@ -100,8 +53,6 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateTables()));
 }
 
 TabAbfuellen::~TabAbfuellen()
@@ -135,7 +86,7 @@ void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 void TabAbfuellen::sudLoaded()
 {
     checkEnabled();
-    updateTables();
+    updateValues();
 }
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)
@@ -171,23 +122,9 @@ void TabAbfuellen::checkEnabled()
     ui->btnSudVerbraucht->setEnabled(abgefuellt);
 }
 
-void TabAbfuellen::updateTables()
-{
-    if (bh->sud()->isLoading() || mUpdatingTables)
-        return;
-    mUpdatingTables = true;
-    static_cast<ProxyModel*>(ui->tableWeitereZutaten->model())->invalidate();
-    //static_cast<ProxyModel*>(ui->tableHefe->model())->invalidate(); // TODO
-    mUpdatingTables = false;
-    updateValues();
-}
-
 void TabAbfuellen::updateValues()
 {
     double value;
-
-    ui->tableHefe->setVisible(false/*bh->sud()->modelHefegaben()->rowCount() > 0*/); // TODO:
-    ui->tableWeitereZutaten->setVisible(bh->sud()->modelWeitereZutatenGaben()->rowCount() > 0);
 
     ui->tbAbfuelldatum->setMinimumDateTime(bh->sud()->getBraudatum());
     ui->tbAbfuelldatum->setDateTime(bh->sud()->getAbfuelldatum());
@@ -252,6 +189,8 @@ void TabAbfuellen::updateValues()
     ui->tbSEVG->setValue(bh->sud()->getsEVG());
     ui->tbAlkohol->setValue(bh->sud()->geterg_Alkohol());
     ui->tbSpundungsdruck->setValue(bh->sud()->getSpundungsdruck());
+
+    ui->webview->updateAll(bh->sud()->row());
 }
 
 void TabAbfuellen::on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime)

@@ -17,153 +17,18 @@ extern Settings* gSettings;
 
 TabBraudaten::TabBraudaten(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabBraudaten),
-    mUpdatingTables(false)
+    ui(new Ui::TabBraudaten)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
+    ui->webview->setHtmlFile("braudaten.html");
+
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
-
-    int col;
-    ProxyModel *model = bh->sud()->modelMalzschuettung();
-    QTableView *table = ui->tableMalz;
-    QHeaderView *header = table->horizontalHeader();
-    table->setModel(model);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = model->fieldIndex("Name");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Malzschüttung"));
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = model->fieldIndex("Prozent");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Anteil [%]"));
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("erg_Menge");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [kg]"));
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    model = bh->sud()->modelRasten();
-    table = ui->tableRasten;
-    header = table->horizontalHeader();
-    table->setModel(model);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = model->fieldIndex("RastName");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Rast"));
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = model->fieldIndex("RastTemp");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("RastDauer");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Dauer [min]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    ProxyModel *proxy = new ProxyModel(this);
-    model = bh->sud()->modelWeitereZutatenGaben();
-    proxy->setSourceModel(model);
-    proxy->setFilterKeyColumn(model->fieldIndex("Zeitpunkt"));
-    proxy->setFilterString(QString::number(EWZ_Zeitpunkt_Maischen));
-    table = ui->tableWeitereZutatenMaischen;
-    table->setModel(proxy);
-    header = table->horizontalHeader();
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = model->fieldIndex("Name");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = model->fieldIndex("erg_Menge");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [g]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    model = bh->sud()->modelHopfengaben();
-    table = ui->tableHopfen;
-    table->setModel(model);
-    header = table->horizontalHeader();
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = model->fieldIndex("Name");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Hopfengabe"));
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = model->fieldIndex("Vorderwuerze");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Vorderwürze"));
-    table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("Zeit");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Kochdauer [min]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-    col = model->fieldIndex("erg_Menge");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [g]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    proxy = new ProxyModel(this);
-    model = bh->sud()->modelWeitereZutatenGaben();
-    proxy->setSourceModel(model);
-    proxy->setFilterKeyColumn(model->fieldIndex("Zeitpunkt"));
-    proxy->setFilterString(QString::number(EWZ_Zeitpunkt_Kochen));
-    table = ui->tableWeitereZutatenKochen;
-    table->setModel(proxy);
-    header = table->horizontalHeader();
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = model->fieldIndex("Name");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Weitere Zutat"));
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = model->fieldIndex("Zugabedauer");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Kochdauer [min]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = model->fieldIndex("erg_Menge");
-    table->setColumnHidden(col, false);
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [g]"));
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    // TODO:
-    //model = bh->sud()->modelHefegaben();
-    table = ui->tableHefe;
-    header = table->horizontalHeader();
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
 
     gSettings->beginGroup("TabBraudaten");
 
@@ -184,11 +49,6 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
-    //connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    //connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    //connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateTables()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateTables()));
 }
 
 TabBraudaten::~TabBraudaten()
@@ -220,7 +80,7 @@ void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 void TabBraudaten::sudLoaded()
 {
     checkEnabled();
-    updateTables();
+    updateValues();
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
@@ -240,7 +100,6 @@ void TabBraudaten::checkEnabled()
     bool gebraut = bh->sud()->getBierWurdeGebraut();
     ui->tbBraudatum->setReadOnly(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
-    ui->lblSpacer->setVisible(!gebraut);
     ui->tbWuerzemengeKochbeginn->setReadOnly(gebraut);
     ui->btnWuerzemengeKochbeginn->setVisible(!gebraut);
     ui->tbWuerzemengeKochende->setReadOnly(gebraut);
@@ -256,31 +115,9 @@ void TabBraudaten::checkEnabled()
     ui->btnSudGebraut->setEnabled(!gebraut);
 }
 
-void TabBraudaten::updateTables()
-{
-    if (bh->sud()->isLoading() || mUpdatingTables)
-        return;
-    mUpdatingTables = true;
-    //static_cast<ProxyModel*>(ui->tableRasten->model())->invalidate();
-    //static_cast<ProxyModel*>(ui->tableMalz->model())->invalidate();
-    static_cast<ProxyModel*>(ui->tableWeitereZutatenMaischen->model())->invalidate();
-    //static_cast<ProxyModel*>(ui->tableHopfen->model())->invalidate();
-    static_cast<ProxyModel*>(ui->tableWeitereZutatenKochen->model())->invalidate();
-    //static_cast<ProxyModel*>(ui->tableHefe->model())->invalidate(); // TODO
-    mUpdatingTables = false;
-    updateValues();
-}
-
 void TabBraudaten::updateValues()
 {
     double value;
-
-    ui->tableRasten->setVisible(ui->tableRasten->model()->rowCount() > 0);
-    ui->tableMalz->setVisible(ui->tableMalz->model()->rowCount() > 0);
-    ui->tableWeitereZutatenMaischen->setVisible(ui->tableWeitereZutatenMaischen->model()->rowCount() > 0);
-    ui->tableHopfen->setVisible(ui->tableHopfen->model()->rowCount() > 0);
-    ui->tableWeitereZutatenKochen->setVisible(ui->tableWeitereZutatenKochen->model()->rowCount() > 0);
-    ui->tableHefe->setVisible(false/*ui->tableHefe->model()->rowCount()*/); // TODO:
 
     ui->tbBraudatum->setDateTime(bh->sud()->getBraudatum());
 
@@ -309,12 +146,6 @@ void TabBraudaten::updateValues()
 
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
 
-    value = bh->sud()->getRestalkalitaetFaktor();
-    ui->tbHauptguss->setValue(bh->sud()->geterg_WHauptguss());
-    ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * value);
-    ui->tbNachguss->setValue(bh->sud()->geterg_WNachguss());
-    ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * value);
-
     value = pow(bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI / 1000;
     ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), ui->tbMengeSollKochbeginn20->value()));
@@ -335,6 +166,8 @@ void TabBraudaten::updateValues()
     if (!ui->tbNebenkosten->hasFocus())
         ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
+
+    ui->webview->updateAll(bh->sud()->row());
 }
 
 void TabBraudaten::on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime)

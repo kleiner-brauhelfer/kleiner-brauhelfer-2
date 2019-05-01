@@ -136,41 +136,13 @@
           <enum>QPlainTextEdit::NoWrap</enum>
          </property>
         </widget>
-        <widget class="QTreeWidget" name="treeViewTemplateTags">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <widget class="QPlainTextEdit" name="tbTags">
+         <property name="lineWrapMode">
+          <enum>QPlainTextEdit::NoWrap</enum>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-         <property name="alternatingRowColors">
+         <property name="readOnly">
           <bool>true</bool>
          </property>
-         <property name="selectionMode">
-          <enum>QAbstractItemView::NoSelection</enum>
-         </property>
-         <property name="columnCount">
-          <number>2</number>
-         </property>
-         <column>
-          <property name="text">
-           <string notr="true">Tag</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string notr="true">Wert</string>
-          </property>
-         </column>
         </widget>
        </widget>
       </widget>

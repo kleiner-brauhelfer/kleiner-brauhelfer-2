@@ -22,22 +22,14 @@ extern Settings* gSettings;
 
 TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabSudAuswahl),
-    mTempCssFile(QDir::tempPath() + "/" + QCoreApplication::applicationName() + QLatin1String(".XXXXXX.css"))
+    ui(new Ui::TabSudAuswahl)
 {
     ui->setupUi(this);
-
-    ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
-    ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
-    ui->treeViewTemplateTags->setColumnWidth(0, 150);
-    ui->treeViewTemplateTags->setColumnWidth(1, 150);
 
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 0);
 
-    mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
-    ui->webview->setTemplateFile(gSettings->dataDir() + "sudinfo.html");
+    ui->webview->setHtmlFile("sudinfo.html");
 
     SqlTableModel *model = bh->modelSud();
     model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("#"));
@@ -142,7 +134,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     ui->tableSudauswahl->selectRow(0);
     filterChanged();
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 
 TabSudAuswahl::~TabSudAuswahl()
@@ -177,7 +168,6 @@ QAbstractItemModel* TabSudAuswahl::model() const
 void TabSudAuswahl::databaseModified()
 {
     updateTemplateTags();
-    erstelleSudInfo();
 }
 
 void TabSudAuswahl::filterChanged()
@@ -190,7 +180,6 @@ void TabSudAuswahl::selectionChanged()
 {
     bool selected = ui->tableSudauswahl->selectionModel()->selectedRows().count() > 0;
     updateTemplateTags();
-    erstelleSudInfo();
     ui->btnMerken->setEnabled(selected);
     ui->btnVergessen->setEnabled(selected);
     ui->btnKopieren->setEnabled(selected);
@@ -569,79 +558,4 @@ void TabSudAuswahl::on_btnToPdf_clicked()
     }
 
     gSettings->endGroup();
-}
-
-void TabSudAuswahl::checkSaveTemplate()
-{
-    if (ui->btnSaveTemplate->isVisible())
-    {
-        int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
-                                        tr("Sollen die Änderungen gespeichert werden?"));
-        if (ret == QMessageBox::Yes)
-            on_btnSaveTemplate_clicked();
-    }
-}
-
-void TabSudAuswahl::on_cbEditMode_clicked(bool checked)
-{
-    checkSaveTemplate();
-
-    ui->tbTemplate->setVisible(checked);
-    ui->treeViewTemplateTags->setVisible(checked);
-    ui->btnRestoreTemplate->setVisible(checked);
-    ui->cbTemplateAuswahl->setVisible(checked);
-    ui->btnSaveTemplate->setVisible(false);
-    ui->splitter_1->setHandleWidth(checked ? 5 : 0);
-
-    if (checked)
-    {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
-        ui->btnSaveTemplate->setProperty("file", file.fileName());
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            ui->tbTemplate->setPlainText(file.readAll());
-            file.close();
-        }
-    }
-
-    erstelleSudInfo();
-}
-
-void TabSudAuswahl::on_cbTemplateAuswahl_currentIndexChanged(int)
-{
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-}
-
-void TabSudAuswahl::on_tbTemplate_textChanged()
-{
-    if (ui->tbTemplate->hasFocus())
-    {
-        erstelleSudInfo();
-        ui->btnSaveTemplate->setVisible(true);
-    }
-}
-
-void TabSudAuswahl::on_btnSaveTemplate_clicked()
-{
-    QFile file(ui->btnSaveTemplate->property("file").toString());
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-    file.write(ui->tbTemplate->toPlainText().toUtf8());
-    file.close();
-    ui->btnSaveTemplate->setVisible(false);
-}
-
-void TabSudAuswahl::on_btnRestoreTemplate_clicked()
-{
-    int ret = QMessageBox::question(this, tr("Template wiederherstellen?"),
-                                    tr("Soll das Standardtemplate wiederhergestellt werden?"));
-    if (ret == QMessageBox::Yes)
-    {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
-        QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
-        file.remove();
-        if (file2.copy(file.fileName()))
-            file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-        on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-    }
 }

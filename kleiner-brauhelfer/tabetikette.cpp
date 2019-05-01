@@ -8,9 +8,10 @@
 #include <QPrinter>
 #include <QSvgRenderer>
 #include <QDesktopServices>
+#include <QJsonDocument>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "widgets/webview.h"
+#include "widgets/wdgwebvieweditable.h"
 #include "helper/mustache.h"
 
 extern Brauhelfer* bh;
@@ -26,8 +27,8 @@ TabEtikette::TabEtikette(QWidget *parent) :
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
-    ui->treeViewTemplateTags->setColumnWidth(0, 150);
-    ui->treeViewTemplateTags->setColumnWidth(1, 150);
+    ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
@@ -167,24 +168,10 @@ void TabEtikette::updateSvg()
 void TabEtikette::updateTemplateTags()
 {
     mTemplateTags.clear();
-    WebView::erstelleTagListe(mTemplateTags, bh->sud()->row());
+    WdgWebViewEditable::erstelleTagListe(mTemplateTags, bh->sud()->row());
 
-    ui->treeViewTemplateTags->clear();
-    for (QVariantMap::const_iterator it = mTemplateTags.begin(); it != mTemplateTags.end(); ++it)
-    {
-        if (it.value().canConvert<QVariantMap>())
-        {
-            QVariantMap hash = it.value().toMap();
-            QTreeWidgetItem *t = new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key()});
-            for (QVariantMap::const_iterator it2 = hash.begin(); it2 != hash.end(); ++it2)
-                t->addChild(new QTreeWidgetItem(t, {it2.key(), it2.value().toString()}));
-            ui->treeViewTemplateTags->addTopLevelItem(t);
-        }
-        else
-        {
-            ui->treeViewTemplateTags->addTopLevelItem(new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key(), it.value().toString()}));
-        }
-    }
+    QJsonDocument json = QJsonDocument::fromVariant(mTemplateTags);
+    ui->tbTags->setPlainText(json.toJson());
 
     updateSvg();
 }
@@ -251,7 +238,7 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
     }
 
     ui->tbTemplate->setVisible(checked);
-    ui->treeViewTemplateTags->setVisible(checked);
+    ui->tbTags->setVisible(checked);
     ui->splitter_1->setHandleWidth(checked ? 5 : 0);
 
     if (checked)

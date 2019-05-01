@@ -3,8 +3,6 @@
 
 #include <QWidget>
 #include <QAbstractItemModel>
-#include <QTemporaryFile>
-#include "helper/htmlhighlighter.h"
 
 namespace Ui {
 class TabSudAuswahl;
@@ -55,23 +53,11 @@ private slots:
     void on_btnExportieren_clicked();
     void on_btnLaden_clicked();
     void on_btnToPdf_clicked();
-    void on_cbEditMode_clicked(bool checked);
-    void on_cbTemplateAuswahl_currentIndexChanged(int);
-    void on_tbTemplate_textChanged();
-    void on_btnSaveTemplate_clicked();
-    void on_btnRestoreTemplate_clicked();
-
-private:
-    void checkSaveTemplate();
-    void erstelleSudInfo();
 
 private:
     Ui::TabSudAuswahl *ui;
     QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;
-    HtmlHighLighter* mHtmlHightLighter;
-    QVariantMap mTemplateTags;
-    QTemporaryFile mTempCssFile;
 };
 
 #endif // TABSUDAUSWAHL_H

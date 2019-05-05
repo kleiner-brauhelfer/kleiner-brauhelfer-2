@@ -22,23 +22,14 @@ extern Settings* gSettings;
 
 TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabSudAuswahl),
-    mTempCssFile(QDir::tempPath() + "/" + QCoreApplication::applicationName() + QLatin1String(".XXXXXX.css"))
+    ui(new Ui::TabSudAuswahl)
 {
     ui->setupUi(this);
-
-    ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
-    ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
-    ui->treeViewTemplateTags->setColumnWidth(0, 150);
-    ui->treeViewTemplateTags->setColumnWidth(1, 150);
 
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 0);
 
-    mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
-    // TODO: Sprachabhängige HTML Datei laden
-    ui->webview->setTemplateFile(gSettings->dataDir() + "sudinfo.html");
+    ui->webview->setHtmlFile("sudinfo.html");
 
     SqlTableModel *model = bh->modelSud();
     model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("#"));
@@ -46,6 +37,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("Braudatum"), Qt::Horizontal, tr("Braudatum"));
     model->setHeaderData(model->fieldIndex("Erstellt"), Qt::Horizontal, tr("Erstellt"));
     model->setHeaderData(model->fieldIndex("Gespeichert"), Qt::Horizontal, tr("Gespeichert"));
+    model->setHeaderData(model->fieldIndex("Woche"), Qt::Horizontal, tr("Woche"));
     model->setHeaderData(model->fieldIndex("BewertungMax"), Qt::Horizontal, tr("Bewertung"));
     model->setHeaderData(model->fieldIndex("erg_AbgefuellteBiermenge"), Qt::Horizontal, tr("Menge [l]"));
     model->setHeaderData(model->fieldIndex("erg_Sudhausausbeute"), Qt::Horizontal, tr("SHA [%]"));
@@ -97,10 +89,14 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 4);
 
+    col = model->fieldIndex("Woche");
+    table->setColumnHidden(col, false);
+    header->moveSection(header->visualIndex(col), 5);
+
     col = model->fieldIndex("BewertungMax");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new RatingDelegate(table));
-    header->moveSection(header->visualIndex(col), 5);
+    header->moveSection(header->visualIndex(col), 6);
 
     header->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
@@ -138,7 +134,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     ui->tableSudauswahl->selectRow(0);
     filterChanged();
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 
 TabSudAuswahl::~TabSudAuswahl()
@@ -173,20 +168,18 @@ QAbstractItemModel* TabSudAuswahl::model() const
 void TabSudAuswahl::databaseModified()
 {
     updateTemplateTags();
-    erstelleSudInfo();
 }
 
 void TabSudAuswahl::filterChanged()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    ui->lblNumSude->setText(QString::number(model->rowCount()));
+    ui->lblNumSude->setText(QString::number(model->rowCount()) + " / " + QString::number(bh->modelSud()->rowCount()));
 }
 
 void TabSudAuswahl::selectionChanged()
 {
     bool selected = ui->tableSudauswahl->selectionModel()->selectedRows().count() > 0;
     updateTemplateTags();
-    erstelleSudInfo();
     ui->btnMerken->setEnabled(selected);
     ui->btnVergessen->setEnabled(selected);
     ui->btnKopieren->setEnabled(selected);
@@ -212,82 +205,93 @@ void TabSudAuswahl::spalteAnzeigen(bool checked)
 void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &pos)
 {
     int col;
+    QAction *action;
     QMenu menu(this);
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
 
-    QAction action1(&menu);
-    QAction action2(&menu);
     if (!ui->tableSudauswahl->horizontalHeader()->rect().contains(pos))
     {
         QModelIndex index = ui->tableSudauswahl->indexAt(pos);
+
         if (model->data(index.row(), "MerklistenID").toBool())
         {
-            action1.setText(tr("Sud vergessen"));
-            connect(&action1, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
+            action = new QAction(tr("Sud vergessen"), &menu);
+            connect(action, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
+            menu.addAction(action);
         }
         else
         {
-            action1.setText(tr("Sud merken"));
-            connect(&action1, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
+            action = new QAction(tr("Sud merken"), &menu);
+            connect(action, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
+            menu.addAction(action);
         }
-        menu.addAction(&action1);
 
-        int status = model->data(index.row(), "Status").toInt();
-        if (status == Sud_Status_Verbraucht)
+        if (model->data(index.row(), "BierWurdeAbgefuellt").toBool())
         {
-            action2.setText(tr("Sud nicht verbraucht"));
-            connect(&action2, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
-            menu.addAction(&action2);
-        }
-        else if (status == Sud_Status_Abgefuellt)
-        {
-            action2.setText(tr("Sud verbraucht"));
-            connect(&action2, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
-            menu.addAction(&action2);
+            if (model->data(index.row(), "BierWurdeVerbraucht").toBool())
+            {
+                action = new QAction(tr("Sud nicht verbraucht"), &menu);
+                connect(action, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
+                menu.addAction(action);
+            }
+            else
+            {
+                action = new QAction(tr("Sud verbraucht"), &menu);
+                connect(action, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
+                menu.addAction(action);
+            }
         }
 
         menu.addSeparator();
     }
 
-    QAction action3(tr("Sudnummer"), &menu);
+    action = new QAction(tr("Sudnummer"), &menu);
     col = model->fieldIndex("Sudnummer");
-    action3.setCheckable(true);
-    action3.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action3.setData(col);
-    connect(&action3, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(&action3);
+    action->setCheckable(true);
+    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
 
-    QAction action4(tr("Braudatum"), &menu);
+    action = new QAction(tr("Braudatum"), &menu);
     col = model->fieldIndex("Braudatum");
-    action4.setCheckable(true);
-    action4.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action4.setData(col);
-    connect(&action4, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(&action4);
+    action->setCheckable(true);
+    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
 
-    QAction action5(tr("Erstellt"), &menu);
+    action = new QAction(tr("Erstellt"), &menu);
     col = model->fieldIndex("Erstellt");
-    action5.setCheckable(true);
-    action5.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action5.setData(col);
-    connect(&action5, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(&action5);
+    action->setCheckable(true);
+    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
 
-    QAction action6(tr("Gespeichert"), &menu);
+    action = new QAction(tr("Gespeichert"), &menu);
     col = model->fieldIndex("Gespeichert");
-    action6.setCheckable(true);
-    action6.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action6.setData(col);
-    connect(&action6, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(&action6);
+    action->setCheckable(true);
+    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
 
-    QAction action7(tr("Bewertung"), &menu);
+    action = new QAction(tr("Woche"), &menu);
+    col = model->fieldIndex("Woche");
+    action->setCheckable(true);
+    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
+
+    action = new QAction(tr("Bewertung"), &menu);
     col = model->fieldIndex("BewertungMax");
-    action7.setCheckable(true);
-    action7.setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action7.setData(col);
-    connect(&action7, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(&action7);
+    action->setCheckable(true);
+    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
 
     menu.exec(ui->tableSudauswahl->viewport()->mapToGlobal(pos));
 }
@@ -560,79 +564,4 @@ void TabSudAuswahl::on_btnToPdf_clicked()
     }
 
     gSettings->endGroup();
-}
-
-void TabSudAuswahl::checkSaveTemplate()
-{
-    if (ui->btnSaveTemplate->isVisible())
-    {
-        int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
-                                        tr("Sollen die Änderungen gespeichert werden?"));
-        if (ret == QMessageBox::Yes)
-            on_btnSaveTemplate_clicked();
-    }
-}
-
-void TabSudAuswahl::on_cbEditMode_clicked(bool checked)
-{
-    checkSaveTemplate();
-
-    ui->tbTemplate->setVisible(checked);
-    ui->treeViewTemplateTags->setVisible(checked);
-    ui->btnRestoreTemplate->setVisible(checked);
-    ui->cbTemplateAuswahl->setVisible(checked);
-    ui->btnSaveTemplate->setVisible(false);
-    ui->splitter_1->setHandleWidth(checked ? 5 : 0);
-
-    if (checked)
-    {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
-        ui->btnSaveTemplate->setProperty("file", file.fileName());
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            ui->tbTemplate->setPlainText(file.readAll());
-            file.close();
-        }
-    }
-
-    erstelleSudInfo();
-}
-
-void TabSudAuswahl::on_cbTemplateAuswahl_currentIndexChanged(int)
-{
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-}
-
-void TabSudAuswahl::on_tbTemplate_textChanged()
-{
-    if (ui->tbTemplate->hasFocus())
-    {
-        erstelleSudInfo();
-        ui->btnSaveTemplate->setVisible(true);
-    }
-}
-
-void TabSudAuswahl::on_btnSaveTemplate_clicked()
-{
-    QFile file(ui->btnSaveTemplate->property("file").toString());
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-    file.write(ui->tbTemplate->toPlainText().toUtf8());
-    file.close();
-    ui->btnSaveTemplate->setVisible(false);
-}
-
-void TabSudAuswahl::on_btnRestoreTemplate_clicked()
-{
-    int ret = QMessageBox::question(this, tr("Template wiederherstellen?"),
-                                    tr("Soll das Standardtemplate wiederhergestellt werden?"));
-    if (ret == QMessageBox::Yes)
-    {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
-        QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
-        file.remove();
-        if (file2.copy(file.fileName()))
-            file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-        on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-    }
 }

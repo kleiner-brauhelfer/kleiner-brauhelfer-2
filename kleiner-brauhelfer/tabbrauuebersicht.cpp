@@ -1,9 +1,11 @@
 #include "tabbrauuebersicht.h"
 #include "ui_tabbrauuebersicht.h"
+#include <QMenu>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodelsud.h"
 #include "model/datedelegate.h"
+#include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 
 extern Brauhelfer* bh;
@@ -105,11 +107,17 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     header->resizeSection(col, 300);
     header->moveSection(header->visualIndex(col), 0);
 
+    col = proxyModel->fieldIndex("Sudnummer");
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
+    header->resizeSection(col, 50);
+    header->moveSection(header->visualIndex(col), 1);
+
     col = proxyModel->fieldIndex("Braudatum");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
+    header->moveSection(header->visualIndex(col), 2);
 
     ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
@@ -120,8 +128,11 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
         table->setColumnHidden(col, false);
         table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table));
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), i + 1);
+        header->moveSection(header->visualIndex(col), i + 3);
     }
+
+    header->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableView_customContextMenuRequested(const QPoint&)));
 
     gSettings->beginGroup("TabBrauuebersicht");
 
@@ -231,4 +242,41 @@ void TabBrauUebersicht::on_cbAuswahlL2_currentIndexChanged(int)
         updateDiagram();
         ui->tableView->setFocus();
     }
+}
+
+void TabBrauUebersicht::spalteAnzeigen(bool checked)
+{
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action)
+        ui->tableView->setColumnHidden(action->data().toInt(), !checked);
+}
+
+void TabBrauUebersicht::on_tableView_customContextMenuRequested(const QPoint &pos)
+{
+    int col;
+    QAction *action;
+    QMenu menu(this);
+    QTableView *table = ui->tableView;
+    ProxyModel *model = static_cast<ProxyModel*>(table->model());
+
+    col = model->fieldIndex("Sudnummer");
+    action = new QAction(tr("Sudnummer"), &menu);
+    action->setCheckable(true);
+    action->setChecked(!table->isColumnHidden(col));
+    action->setData(col);
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+    menu.addAction(action);
+
+    for (int i = 1; i < mAuswahlListe.count(); ++i)
+    {
+        col = model->fieldIndex(mAuswahlListe[i].field);
+        action = new QAction(mAuswahlListe[i].label, &menu);
+        action->setCheckable(true);
+        action->setChecked(!table->isColumnHidden(col));
+        action->setData(col);
+        connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+        menu.addAction(action);
+    }
+
+    menu.exec(table->viewport()->mapToGlobal(pos));
 }

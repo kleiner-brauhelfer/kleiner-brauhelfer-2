@@ -31,6 +31,7 @@ void Database::createTables(Brauhelfer* bh)
     modelWeitereZutaten = new ModelWeitereZutaten(bh, *mDb);
     modelAnhang = new SqlTableModel(bh, *mDb);
     modelAusruestung = new ModelAusruestung(bh, *mDb);
+    modelGeraete = new SqlTableModel(bh, *mDb);
     modelWasser = new ModelWasser(bh, *mDb);
     modelFlaschenlabel = new SqlTableModel(bh, *mDb);
     modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, *mDb);
@@ -62,6 +63,7 @@ void Database::setTables()
     modelWeitereZutaten->setTable("WeitereZutaten");
     modelAnhang->setTable("Anhang");
     modelAusruestung->setTable("Ausruestung");
+    modelGeraete->setTable("Geraete");
     modelWasser->setTable("Wasser");
     modelFlaschenlabel->setTable("Flaschenlabel");
     modelFlaschenlabelTags->setTable("FlaschenlabelTags");
@@ -89,6 +91,7 @@ Database::~Database()
     delete modelWeitereZutaten;
     delete modelAnhang;
     delete modelAusruestung;
+    delete modelGeraete;
     delete modelWasser;
     delete modelFlaschenlabel;
     delete modelFlaschenlabelTags;
@@ -146,6 +149,7 @@ void Database::disconnect()
         modelWeitereZutaten->clear();
         modelAnhang->clear();
         modelAusruestung->clear();
+        modelGeraete->clear();
         modelWasser->clear();
         modelFlaschenlabel->clear();
         modelFlaschenlabelTags->clear();
@@ -177,6 +181,7 @@ bool Database::isDirty() const
            modelWeitereZutaten->isDirty() |
            modelAnhang->isDirty() |
            modelAusruestung->isDirty() |
+           modelGeraete->isDirty() |
            modelWasser->isDirty() |
            modelFlaschenlabel->isDirty() |
            modelFlaschenlabelTags->isDirty();
@@ -189,6 +194,7 @@ void Database::select()
     modelHefe->select();
     modelWeitereZutaten->select();
     modelWasser->select();
+    modelGeraete->select();
     modelAusruestung->select();
     modelRasten->select();
     modelMalzschuettung->select();
@@ -217,6 +223,7 @@ void Database::save()
     modelHefe->submitAll();
     modelWeitereZutaten->submitAll();
     modelWasser->submitAll();
+    modelGeraete->submitAll();
     modelAusruestung->submitAll();
     modelRasten->submitAll();
     modelMalzschuettung->submitAll();
@@ -241,6 +248,7 @@ void Database::discard()
     modelWeitereZutaten->revertAll();
     modelWasser->revertAll();
     modelAusruestung->revertAll();
+    modelGeraete->revertAll();
     modelRasten->revertAll();
     modelMalzschuettung->revertAll();
     modelHopfengaben->revertAll();
@@ -309,10 +317,11 @@ void Database::update()
             version = 2000;
             mDb->transaction();
 
-            // Ausruestung
+            // Ausruestung & Geraete
             //  - neue Spalte 'Typ'
             //                'VerlustNachKochen'
             //  - Spalte gelöscht 'AnlagenID'
+            sqlExec("UPDATE Geraete SET AusruestungAnlagenID=(SELECT rowid FROM Ausruestung WHERE AnlagenID=AusruestungAnlagenID)");
             sqlExec("ALTER TABLE Ausruestung RENAME TO TempTable");
             sqlExec("CREATE TABLE Ausruestung ("
                 "ID INTEGER PRIMARY KEY,"
@@ -779,10 +788,6 @@ void Database::update()
                 " FROM TempTable");
             sqlExec("UPDATE Sud SET Wasserprofil='Profil 1'");
             sqlExec("DROP TABLE TempTable");
-
-            // Geraete
-            //  - Tabelle gelöscht
-            sqlExec("DROP TABLE Geraete");
 
             // IgnorMsgID
             //  - Tabelle gelöscht

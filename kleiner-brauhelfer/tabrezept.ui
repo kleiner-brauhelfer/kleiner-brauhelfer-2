@@ -61,7 +61,11 @@
             <number>4</number>
            </property>
            <item row="20" column="1" colspan="2">
-            <widget class="ComboBox" name="cbWasserProfil"/>
+            <widget class="ComboBox" name="cbWasserProfil">
+             <property name="toolTip">
+              <string>Verwendetes Wasserprofil.</string>
+             </property>
+            </widget>
            </item>
            <item row="18" column="3">
             <widget class="QLabel" name="label_21">
@@ -184,6 +188,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Faktorempfehlung für den Hauptguss. Die Empfehlung basiert auf die Bierfarbe.</string>
+               </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
@@ -251,7 +258,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Mit diesem Wert kann die Würzemenge beim Kochen reduziert werden, indem stärker eingebraut wird. Beim Anstellen wird anschließend wieder auf Wunschmenge/Stammwürze mit Wasser verdünnt.</string>
+              <string>Mit diesem Wert kann die Würzemenge beim Kochen reduziert werden, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -276,7 +283,12 @@
             </widget>
            </item>
            <item row="2" column="1" colspan="2">
-            <widget class="ComboBox" name="cbAnlage"/>
+            <widget class="ComboBox" name="cbAnlage">
+             <property name="toolTip">
+              <string>Die Anlage definiert die Berechnungsgrundlagen, wie zum Beispiel Sudhausausbeute oder Verdampfungsziffer.&lt;br&gt;
+Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen.</string>
+             </property>
+            </widget>
            </item>
            <item row="16" column="3">
             <widget class="QLabel" name="label_38">
@@ -298,6 +310,9 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Gewünschte Restalkalität.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -368,7 +383,7 @@
            <item row="2" column="0">
             <widget class="QLabel" name="label_16">
              <property name="text">
-              <string>Brauanlage</string>
+              <string>Anlage</string>
              </property>
             </widget>
            </item>
@@ -381,7 +396,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Gschätzte Zeit für die Nachisomerisierung (Wirlpool etc.).
+              <string>Dies ist die Zeit, die der Hopfen nach dem Kochen in der Würze noch nahezu Kochtemperatur ausgesetzt ist. Zum Beispiel während des Whirlpool.&lt;br&gt;
 Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              </property>
              <property name="alignment">
@@ -498,7 +513,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              </property>
              <property name="toolTip">
               <string>Angepeilte Stammwürze.&lt;br&gt;&lt;br&gt;
-&lt;b&gt;Typische Werte:&lt;/b&gt;
+&lt;strong&gt;Typische Werte:&lt;/strong&gt;
 &lt;table&gt;
 &lt;tr&gt;&lt;td&gt;Bockbier &lt;/td&gt;&lt;td&gt;16–17,9&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;Doppelbock &lt;/td&gt;&lt;td&gt;&amp;gt; 18&lt;/td&gt;&lt;/tr&gt;
@@ -537,7 +552,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
               </size>
              </property>
              <property name="toolTip">
-              <string>Angepeilte Biermenge</string>
+              <string>Angepeilte Biermenge.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -559,7 +574,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
               </size>
              </property>
              <property name="toolTip">
-              <string>Batchnummer für das gleiche Rezept</string>
+              <string>Sudnummer.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -589,7 +604,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
            <item row="1" column="1">
             <widget class="QLineEdit" name="tbSudname">
              <property name="toolTip">
-              <string>Sudname</string>
+              <string>Sudname.</string>
              </property>
             </widget>
            </item>
@@ -622,7 +637,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
               </size>
              </property>
              <property name="toolTip">
-              <string>Angepeilte Reifezeit ab Ende der Nachgärung.</string>
+              <string>Angepeilte Reifezeit ab Ende der Nachgärung (letzte Messung).</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -638,7 +653,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
               </size>
              </property>
              <property name="toolTip">
-              <string>Schüttungsmenge * Faktor</string>
+              <string>Faktor für den Hauptguss.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -958,6 +973,15 @@ p, li { white-space: pre-wrap; }
           </property>
           <item row="0" column="1">
            <widget class="ComboBox" name="cbBerechnungsartHopfen">
+            <property name="toolTip">
+             <string>&lt;strong&gt;Gewicht:&lt;/strong&gt;&lt;br&gt;
+Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen.&lt;br&gt;
+&lt;br&gt;
+&lt;strong&gt;IBU:&lt;/strong&gt;&lt;br&gt;
+Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere.&lt;br&gt; 
+Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Werte sich besser austauschen lassen.
+</string>
+            </property>
             <item>
              <property name="text">
               <string>Gewicht</string>
@@ -1304,7 +1328,7 @@ p, li { white-space: pre-wrap; }
              </size>
             </property>
             <property name="toolTip">
-             <string>Die Einmaischtemperatur sollte leicht über die erste Rast liegen, da beim zugeben des Malzes die Temperatur fallen wird.</string>
+             <string>Die Einmaischtemperatur sollte leicht über die erste Rast liegen, da beim Zugeben des Malzes die Temperatur fallen wird.</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1436,7 +1460,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>326</width>
-          <height>653</height>
+          <height>701</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1475,16 +1499,6 @@ p, li { white-space: pre-wrap; }
               </property>
              </spacer>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_10">
-              <property name="text">
-               <string>Farbe</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-              </property>
-             </widget>
-            </item>
             <item row="5" column="2">
              <widget class="DoubleSpinBox" name="tbKosten">
               <property name="minimumSize">
@@ -1492,6 +1506,9 @@ p, li { white-space: pre-wrap; }
                 <width>50</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Kosten.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1517,6 +1534,9 @@ p, li { white-space: pre-wrap; }
                 <width>50</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Gesamtschüttung.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1608,6 +1628,9 @@ p, li { white-space: pre-wrap; }
                 <height>0</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Errechnete Bierfarbe.</string>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -1616,6 +1639,16 @@ p, li { white-space: pre-wrap; }
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>Farbe</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
               </property>
              </widget>
             </item>
@@ -1671,6 +1704,9 @@ p, li { white-space: pre-wrap; }
                 <height>0</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Benötigtes Volumen für die Sudpfanne.</string>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -1709,6 +1745,9 @@ p, li { white-space: pre-wrap; }
                 <height>0</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Verdampfungsziffer der Anlage.</string>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -1734,6 +1773,9 @@ p, li { white-space: pre-wrap; }
                 <height>0</height>
                </size>
               </property>
+              <property name="toolTip">
+               <string>Benötigtes Volumen für den Maischekessels.</string>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -1758,6 +1800,9 @@ p, li { white-space: pre-wrap; }
                 <width>50</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Sudhausausbeute der Anlage.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1796,6 +1841,9 @@ p, li { white-space: pre-wrap; }
                 <width>50</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Nutzbares Volumen der Sufpfanne.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1841,6 +1889,9 @@ p, li { white-space: pre-wrap; }
                 <width>50</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Nutzbares Volumen des Maischekessels.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1968,7 +2019,7 @@ p, li { white-space: pre-wrap; }
             <property name="verticalSpacing">
              <number>4</number>
             </property>
-            <item row="9" column="4">
+            <item row="11" column="4">
              <widget class="QLabel" name="label_42">
               <property name="minimumSize">
                <size>
@@ -1981,29 +2032,27 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="2" column="4">
-             <widget class="QLabel" name="label_28">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
+            <item row="5" column="0">
+             <widget class="QLabel" name="lblMilchsaeureHG">
               <property name="text">
-               <string>l</string>
+               <string>Milchsäure 80%</string>
+              </property>
+              <property name="indent">
+               <number>8</number>
               </property>
              </widget>
             </item>
-            <item row="3" column="4">
-             <widget class="QLabel" name="lblMilchsaeureGesamtEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_48">
               <property name="text">
-               <string>ml</string>
+               <string>Profil</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0" colspan="5">
+             <widget class="Line" name="line_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -2020,78 +2069,15 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="7" column="3">
-             <widget class="DoubleSpinBox" name="tbMilchsaeureNG">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="DoubleSpinBox" name="tbWasserGesamt">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="4" column="0" colspan="2">
-             <widget class="QLabel" name="label_S1_7">
+            <item row="6" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_3">
               <property name="text">
-               <string>Hauptguss</string>
+               <string>Nachguss</string>
               </property>
              </widget>
             </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="lblMilchsaeureHG">
+            <item row="7" column="0">
+             <widget class="QLabel" name="lblMilchsaeureNG">
               <property name="text">
                <string>Milchsäure 80%</string>
               </property>
@@ -2100,13 +2086,16 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="6" column="3">
-             <widget class="DoubleSpinBox" name="tbNachguss">
+            <item row="5" column="3">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
               <property name="minimumSize">
                <size>
                 <width>50</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="toolTip">
+               <string>Milchsäure, um gewünschte Restalkalität zu erreichen.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2133,54 +2122,8 @@ p, li { white-space: pre-wrap; }
                 <height>0</height>
                </size>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="0" colspan="2">
-             <widget class="QLabel" name="label_40">
-              <property name="text">
-               <string>Restalkalität</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="0" colspan="2">
-             <widget class="QLabel" name="label_S1_3">
-              <property name="text">
-               <string>Nachguss</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0" colspan="5">
-             <widget class="Line" name="line_6">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3" colspan="2">
-             <widget class="QLabel" name="lblWasserprofil"/>
-            </item>
-            <item row="5" column="3">
-             <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
+              <property name="toolTip">
+               <string>Milchsäure, um gewünschte Restalkalität zu erreichen.</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2199,21 +2142,8 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="5" column="4">
-             <widget class="QLabel" name="lblMilchsaeureHGEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>ml</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="lblMilchsaeureGesamt">
+            <item row="9" column="0">
+             <widget class="QLabel" name="lblMilchsaeureHGF">
               <property name="text">
                <string>Milchsäure 80%</string>
               </property>
@@ -2229,72 +2159,21 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="4" column="3">
-             <widget class="DoubleSpinBox" name="tbHauptguss">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0" colspan="5">
-             <widget class="Line" name="line_17">
+            <item row="2" column="2">
+             <spacer name="horizontalSpacer">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
-             </widget>
-            </item>
-            <item row="9" column="3">
-             <widget class="DoubleSpinBox" name="tbRestalkalitaetWasser">
-              <property name="minimumSize">
+              <property name="sizeHint" stdset="0">
                <size>
-                <width>50</width>
-                <height>0</height>
+                <width>40</width>
+                <height>20</height>
                </size>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-             </widget>
+             </spacer>
             </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_48">
-              <property name="text">
-               <string>Profil</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="4">
-             <widget class="QLabel" name="label_33">
+            <item row="8" column="4">
+             <widget class="QLabel" name="lblWasserHGFEinheit">
               <property name="minimumSize">
                <size>
                 <width>30</width>
@@ -2303,6 +2182,117 @@ p, li { white-space: pre-wrap; }
               </property>
               <property name="text">
                <string>l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="DoubleSpinBox" name="tbHauptguss">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Benötigte Hauptgussmenge.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3" colspan="2">
+             <widget class="QLabel" name="lblWasserprofil"/>
+            </item>
+            <item row="8" column="3">
+             <widget class="DoubleSpinBox" name="tbWasserHGF">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Benötigte Verdünnungsmenge.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="lblWasserHGF">
+              <property name="text">
+               <string>Verdünnung</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="DoubleSpinBox" name="tbWasserGesamt">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Benötigte Wassermenge.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="lblMilchsaeureGesamt">
+              <property name="text">
+               <string>Milchsäure 80%</string>
+              </property>
+              <property name="indent">
+               <number>8</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="5">
+             <widget class="Line" name="line_17">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -2319,13 +2309,194 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="7" column="0">
-             <widget class="QLabel" name="lblMilchsaeureNG">
-              <property name="text">
-               <string>Milchsäure 80%</string>
+            <item row="3" column="4">
+             <widget class="QLabel" name="lblMilchsaeureGesamtEinheit">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
               </property>
-              <property name="indent">
-               <number>8</number>
+              <property name="text">
+               <string>ml</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0" colspan="2">
+             <widget class="QLabel" name="label_40">
+              <property name="text">
+               <string>Restalkalität</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="4">
+             <widget class="QLabel" name="label_28">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="3">
+             <widget class="DoubleSpinBox" name="tbNachguss">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Benötigte Nachgussmenge.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="4">
+             <widget class="QLabel" name="label_33">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="4">
+             <widget class="QLabel" name="lblMilchsaeureHGEinheit">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>ml</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_7">
+              <property name="text">
+               <string>Hauptguss</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="3">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureNG">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Milchsäure, um gewünschte Restalkalität zu erreichen.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="3">
+             <widget class="DoubleSpinBox" name="tbRestalkalitaetWasser">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Restalkalität des Wassers.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="3">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHGF">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Milchsäure, um gewünschte Restalkalität zu erreichen.</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="4">
+             <widget class="QLabel" name="lblMilchsaeureHGFEinheit">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>ml</string>
               </property>
              </widget>
             </item>
@@ -2372,11 +2543,6 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
@@ -2385,6 +2551,11 @@ p, li { white-space: pre-wrap; }
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>QChartView</class>
@@ -2446,7 +2617,14 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbMilchsaeureHG</tabstop>
   <tabstop>tbNachguss</tabstop>
   <tabstop>tbMilchsaeureNG</tabstop>
+  <tabstop>tbWasserHGF</tabstop>
+  <tabstop>tbMilchsaeureHGF</tabstop>
   <tabstop>tbRestalkalitaetWasser</tabstop>
+  <tabstop>diagramHopfen</tabstop>
+  <tabstop>scrollAreaRasten</tabstop>
+  <tabstop>diagramRasten</tabstop>
+  <tabstop>btnNeueRast</tabstop>
+  <tabstop>diagramMalz</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources/>

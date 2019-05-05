@@ -35,7 +35,6 @@ public:
     void renderText(const QString &html);
     void renderText(const QString &html, QVariantMap& contextVariables);
 
-    static void erstelleTagListe(QVariantMap& ctx, int sudRow = -1);
 private:
     QString mTemplateFile;
 };

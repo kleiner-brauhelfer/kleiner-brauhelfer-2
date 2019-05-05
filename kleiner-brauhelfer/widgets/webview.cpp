@@ -4,12 +4,7 @@
 #include <QCoreApplication>
 #include <QFile>
 #include <QFileInfo>
-#include "brauhelfer.h"
-#include "settings.h"
 #include "helper/mustache.h"
-
-extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 WebPage::WebPage(QObject* parent) :
     QWebEnginePage(parent),
@@ -107,85 +102,4 @@ void WebView::renderText(const QString &html, QVariantMap &contextVariables)
     Mustache::Renderer renderer;
     Mustache::QtVariantContext context(contextVariables);
     renderText(renderer.render(html, &context));
-}
-
-void WebView::erstelleTagListe(QVariantMap &ctx, int sudRow)
-{
-    QLocale locale = QLocale();
-
-    QVariantMap ctxApp;
-    ctxApp["Name"] = QCoreApplication::applicationName();
-    ctxApp["Version"] = QCoreApplication::applicationVersion();
-    ctx["App"] = ctxApp;
-
-    ctx["Style"] = gSettings->theme() == Settings::Dark ? "style_dunkel.css" : "style_hell.css";
-
-    if (sudRow >= 0)
-    {
-        QVariantMap ctxRezept;
-        ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, "SW").toDouble(), 'f', 1);
-        ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, "Menge").toDouble(), 'f', 1);
-        ctxRezept["Bittere"] = QString::number(bh->modelSud()->data(sudRow, "IBU").toDouble());
-        ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, "CO2").toDouble(), 'f', 1);
-        ctxRezept["Farbe"] = locale.toString(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble(), 'f', 0);
-        ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble())).name();
-        ctxRezept["Nachisomerisierung"] = QString::number(bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt());
-        ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, "Anlage").toString();
-        ctxRezept["Name"] = bh->modelSud()->data(sudRow, "Sudname").toString();
-        ctxRezept["Nummer"] = QString::number(bh->modelSud()->data(sudRow, "Sudnummer").toDouble());
-        ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, "Kommentar").toString().replace("\n", "<br>");
-        ctx["Rezept"] = ctxRezept;
-
-        QVariantMap ctxSud;
-        int status = bh->modelSud()->data(sudRow, "Status").toInt();
-        ctxSud["Status"] = QString::number(status);
-        ctxSud["StatusRezept"] = status == Sud_Status_Rezept ? "1" : "";
-        ctxSud["StatusGebraut"] = status == Sud_Status_Gebraut ? "1" : "";
-        ctxSud["StatusAbgefuellt"] = status == Sud_Status_Abgefuellt ? "1" : "";
-        ctxSud["StatusVerbraucht"] = status == Sud_Status_Verbraucht ? "1" : "";
-        ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, "SWIst").toDouble(), 'f', 1);
-        ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, "MengeIst").toDouble(), 'f', 1);
-        ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, "IbuIst").toInt());
-        ctxSud["CO2"] = locale.toString(bh->modelSud()->data(sudRow, "CO2Ist").toDouble(), 'f', 1);
-        ctxSud["Farbe"] = locale.toString(bh->modelSud()->data(sudRow, "FarbeIst").toDouble(), 'f', 0);
-        ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, "Braudatum").toDate(), QLocale::ShortFormat);
-        ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, "Abfuelldatum").toDate(), QLocale::ShortFormat);
-        ctxSud["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "FarbeIst").toDouble())).name();
-        ctxSud["Bewertung"] = QString::number(bh->modelSud()->data(sudRow, "BewertungMax").toInt());
-        ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, "erg_Alkohol").toDouble(), 'f', 1);
-        ctxSud["tEVG"] = locale.toString(bh->modelSud()->data(sudRow, "tEVG").toDouble(), 'f', 1);
-        ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, "erg_EffektiveAusbeute").toDouble(), 'f', 1);
-        ctx["Sud"] = ctxSud;
-
-        QVariantMap ctxTag;
-        int sudId = bh->modelSud()->data(sudRow, "ID").toInt();
-        for (int col = 0; col < bh->modelFlaschenlabelTags()->rowCount(); ++col)
-        {
-            int id = bh->modelFlaschenlabelTags()->data(col, "SudID").toInt();
-            if (id == sudId || id < 0)
-            {
-                QString t = bh->modelFlaschenlabelTags()->data(col, "TagName").toString();
-                QString v = bh->modelFlaschenlabelTags()->data(col, "Value").toString();
-                if (!t.isEmpty())
-                    ctxTag[t] = v;
-            }
-        }
-        ctx["Tag"] = ctxTag;
-    }
-    else
-    {
-        QVariantMap ctxTag;
-        for (int col = 0; col < bh->modelFlaschenlabelTags()->rowCount(); ++col)
-        {
-            int id = bh->modelFlaschenlabelTags()->data(col, "SudID").toInt();
-            if (id < 0)
-            {
-                QString t = bh->modelFlaschenlabelTags()->data(col, "TagName").toString();
-                QString v = bh->modelFlaschenlabelTags()->data(col, "Value").toString();
-                if (!t.isEmpty())
-                    ctxTag[t] = v;
-            }
-        }
-        ctx["Tag"] = ctxTag;
-    }
 }

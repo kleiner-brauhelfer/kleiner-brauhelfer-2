@@ -17,6 +17,7 @@ public:
 
 private slots:
     void databaseModified();
+    void discarded();
     void sudLoaded();
     void sudModified();
     void loadSud(int sudId);

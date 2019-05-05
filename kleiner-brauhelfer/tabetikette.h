@@ -41,14 +41,13 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
-    void checkSave();
+    bool checkSave();
     QString generateSvg(const QString &svg);
     QVariant data(const QString &fieldName) const;
     bool setData(const QString &fieldName, const QVariant &value);
 
 private:
     Ui::TabEtikette *ui;
-    QByteArray mDefaultSplitterState;
     QString mTemplateFilePath;
     HtmlHighLighter* mHtmlHightLighter;
     QVariantMap mTemplateTags;

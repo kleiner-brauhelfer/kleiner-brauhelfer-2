@@ -13,24 +13,15 @@ extern Settings* gSettings;
 
 TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabZusammenfassung),
-    mTempCssFile(QDir::tempPath() + "/" + QCoreApplication::applicationName() + QLatin1String(".XXXXXX.css"))
+    ui(new Ui::TabZusammenfassung)
 {
     ui->setupUi(this);
 
-    ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
-    ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
-    ui->treeViewTemplateTags->setColumnWidth(0, 150);
-    ui->treeViewTemplateTags->setColumnWidth(1, 150);
-
-    mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
+    ui->webview->setHtmlFile("sudinfo.html");
 
     connect(bh, SIGNAL(modified()), this, SLOT(updateAll()));
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
-
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 
 TabZusammenfassung::~TabZusammenfassung()
@@ -48,19 +39,11 @@ void TabZusammenfassung::restoreView()
 
 void TabZusammenfassung::updateAll()
 {
-    // TODO: Sprachabhängige HTML Datei laden
     if (bh->sud()->getStatus() == Sud_Status_Rezept)
-    {
-        ui->cbTemplateAuswahl->setItemText(0, "spickzettel.html");
-        ui->webview->setTemplateFile(gSettings->dataDir() + "spickzettel.html");
-    }
+        ui->webview->setHtmlFile("zusammenfassung.html");
     else
-    {
-        ui->cbTemplateAuswahl->setItemText(0, "zusammenfassung.html");
-        ui->webview->setTemplateFile(gSettings->dataDir() + "zusammenfassung.html");
-    }
+        ui->webview->setHtmlFile("spickzettel.html");
     updateTemplateTags();
-    updateWebView();
 }
 
 void TabZusammenfassung::on_btnToPdf_clicked()
@@ -82,108 +65,26 @@ void TabZusammenfassung::on_btnToPdf_clicked()
     gSettings->endGroup();
 }
 
-void TabZusammenfassung::checkSaveTemplate()
-{
-    if (ui->btnSaveTemplate->isVisible())
-    {
-        int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
-                                        tr("Sollen die Änderungen gespeichert werden?"));
-        if (ret == QMessageBox::Yes)
-            on_btnSaveTemplate_clicked();
-    }
-}
-
-void TabZusammenfassung::on_cbEditMode_clicked(bool checked)
-{
-    checkSaveTemplate();
-
-    ui->tbTemplate->setVisible(checked);
-    ui->treeViewTemplateTags->setVisible(checked);
-    ui->btnRestoreTemplate->setVisible(checked);
-    ui->cbTemplateAuswahl->setVisible(checked);
-    ui->btnSaveTemplate->setVisible(false);
-    ui->splitterEdit->setHandleWidth(checked ? 5 : 0);
-
-    if (checked)
-    {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
-        ui->btnSaveTemplate->setProperty("file", file.fileName());
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            ui->tbTemplate->setPlainText(file.readAll());
-            file.close();
-        }
-    }
-
-    updateWebView();
-}
-
-void TabZusammenfassung::on_cbTemplateAuswahl_currentIndexChanged(int)
-{
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-}
-
-void TabZusammenfassung::on_tbTemplate_textChanged()
-{
-    if (ui->tbTemplate->hasFocus())
-    {
-        updateWebView();
-        ui->btnSaveTemplate->setVisible(true);
-    }
-}
-
-void TabZusammenfassung::on_btnSaveTemplate_clicked()
-{
-    QFile file(ui->btnSaveTemplate->property("file").toString());
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-    file.write(ui->tbTemplate->toPlainText().toUtf8());
-    file.close();
-    ui->btnSaveTemplate->setVisible(false);
-}
-
-void TabZusammenfassung::on_btnRestoreTemplate_clicked()
-{
-    int ret = QMessageBox::question(this, tr("Template wiederherstellen?"),
-                                    tr("Soll das Standardtemplate wiederhergestellt werden?"));
-    if (ret == QMessageBox::Yes)
-    {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
-        QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
-        file.remove();
-        if (file2.copy(file.fileName()))
-            file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-        on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-    }
-}
-
 void TabZusammenfassung::updateTemplateTags()
 {
     double f;
     QString s;
     QLocale locale;
 
-    mTemplateTags.clear();
-    WebView::erstelleTagListe(mTemplateTags, bh->sud()->row());
+    ui->webview->mTemplateTags.clear();
+    WdgWebViewEditable::erstelleTagListe(ui->webview->mTemplateTags, bh->sud()->row());
 
-    if (bh->sud()->getStatus() >= Sud_Status_Abgefuellt)
+    int bewertung = bh->sud()->getBewertungMax();
+    if (bewertung > 0)
     {
-        int bewertung = bh->sud()->getBewertungMax();
-        if (bewertung > 0)
-        {
-            if (bewertung > Bewertung_MaxSterne)
-                bewertung = Bewertung_MaxSterne;
-            s = "";
-            for (int i = 0; i < bewertung; i++)
-                s += "<img class='star' style='padding:0px;margin:0px;' width='24' border=0>";
-            for (int i = bewertung; i < Bewertung_MaxSterne; i++)
-                s += "<img class='star_grey' style='padding:0px;margin:0px;' width='24' border=0>";
-            mTemplateTags["Sterne"] = s;
-        }
-
-    }
-    else
-    {
+        if (bewertung > Bewertung_MaxSterne)
+            bewertung = Bewertung_MaxSterne;
+        s = "";
+        for (int i = 0; i < bewertung; i++)
+            s += "<img class='star' style='padding:0px;margin:0px;' width='24' border=0>";
+        for (int i = bewertung; i < Bewertung_MaxSterne; i++)
+            s += "<img class='star_grey' style='padding:0px;margin:0px;' width='24' border=0>";
+        ui->webview->mTemplateTags["Sterne"] = s;
     }
 
     QVariantMap ctxZutaten;
@@ -562,7 +463,7 @@ void TabZusammenfassung::updateTemplateTags()
     }
     ctxZutaten["Sonstiges"] = s;
 
-    mTemplateTags["Zutaten"] = ctxZutaten;
+    ui->webview->mTemplateTags["Zutaten"] = ctxZutaten;
 
     // Rasten
     if (bh->sud()->modelRasten()->rowCount() > 0)
@@ -600,7 +501,7 @@ void TabZusammenfassung::updateTemplateTags()
             s += "</tr>";
         }
         s += "</tbody></table>";
-        mTemplateTags["Rasten"] = s;
+        ui->webview->mTemplateTags["Rasten"] = s;
     }
 
     // Anhang
@@ -616,46 +517,8 @@ void TabZusammenfassung::updateTemplateTags()
         else
             s += "<a href=\"" + pfad + "\">" + pfad + "</a></br></br>";
     }
-    mTemplateTags["Anhang"] = s;
+    ui->webview->mTemplateTags["Anhang"] = s;
 
-
-    ui->treeViewTemplateTags->clear();
-    for (QVariantMap::const_iterator it = mTemplateTags.begin(); it != mTemplateTags.end(); ++it)
-    {
-        if (it.value().canConvert<QVariantMap>())
-        {
-            QVariantMap hash = it.value().toMap();
-            QTreeWidgetItem *t = new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key()});
-            for (QVariantMap::const_iterator it2 = hash.begin(); it2 != hash.end(); ++it2)
-                t->addChild(new QTreeWidgetItem(t, {it2.key(), it2.value().toString()}));
-            ui->treeViewTemplateTags->addTopLevelItem(t);
-        }
-        else
-        {
-            ui->treeViewTemplateTags->addTopLevelItem(new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key(), it.value().toString()}));
-        }
-    }
-}
-
-void TabZusammenfassung::updateWebView()
-{
-    if (ui->cbEditMode->isChecked())
-    {
-        if (ui->cbTemplateAuswahl->currentIndex() == 0)
-        {
-            ui->webview->renderText(ui->tbTemplate->toPlainText(), mTemplateTags);
-        }
-        else
-        {
-            mTempCssFile.open();
-            mTempCssFile.write(ui->tbTemplate->toPlainText().toUtf8());
-            mTempCssFile.flush();
-            mTemplateTags["Style"] = mTempCssFile.fileName();
-            ui->webview->renderTemplate(mTemplateTags);
-        }
-    }
-    else
-    {
-        ui->webview->renderTemplate(mTemplateTags);
-    }
+    ui->webview->updateTags();
+    ui->webview->updateHtml();
 }

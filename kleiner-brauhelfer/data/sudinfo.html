@@ -80,62 +80,207 @@
   <div class="r" style="margin-bottom:10px;" align="center">
     <p class="h1">Zutaten</p>
   </div>
+
   {{#Zutaten.Malz}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/getreide.svg" alt="Getreide" width="300px" border=0>
     <br>
-    {{{Zutaten.Malz}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt [kg]</th>
+        <th>vorhanden [kg]</th>
+        <th>rest [kg]</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}}</td>
+        <td class="{{Class}}" align="center">{{Rest}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Malz}}
+
   {{#Zutaten.Hopfen}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/hopfen.svg" alt="Hopfen" width="100px" border=0>
     <br>
-    {{{Zutaten.Hopfen}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt [g]</th>
+        <th>vorhanden [g]</th>
+        <th>rest [g]</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}}</td>
+        <td class="{{Class}}" align="center">{{Rest}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Hopfen}}
+
   {{#Zutaten.Hefe}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/hefe.svg" alt="Hefe" width="50px" border=0>
     <br>
-    {{{Zutaten.Hefe}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt</th>
+        <th>vorhanden</th>
+        <th>rest</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}}</td>
+        <td class="{{Class}}" align="center">{{Rest}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Hefe}}
+
   {{#Zutaten.Honig}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_0.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Zutaten.Honig}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt</th>
+        <th>vorhanden</th>
+        <th>rest</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Honig}}
+
   {{#Zutaten.Zucker}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_1.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Zutaten.Zucker}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt</th>
+        <th>vorhanden</th>
+        <th>rest</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Zucker}}
+
   {{#Zutaten.Gewuerz}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_2.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Zutaten.Gewuerz}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt</th>
+        <th>vorhanden</th>
+        <th>rest</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Gewuerz}}
+
   {{#Zutaten.Frucht}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_3.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Zutaten.Frucht}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt</th>
+        <th>vorhanden</th>
+        <th>rest</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Frucht}}
+
   {{#Zutaten.Sonstiges}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_4.svg" alt="Honig" width="50px" border=0>
     <br>
-    {{{Zutaten.Sonstiges}}}
+    <table width='100%'>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>benötigt</th>
+        <th>vorhanden</th>
+        <th>rest</th>
+      </tr>
+      {{#Liste}}
+      <tr valign='middle'>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
   </div>
   {{/Zutaten.Sonstiges}}
+
   {{/Zutaten}}
 
   {{#Anhang}}
@@ -143,7 +288,13 @@
     <p class="h1">Anhänge</p>
   </div>
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    {{{Anhang}}}
+    <br>
+    <table width='100%'>
+    {{#Liste}}
+    {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}"></td></tr>{{/Bild}}
+    {{^Bild}}<tr><td align="center"><a href="{{Pfad}}">{{Pfad}}</a></td></tr>{{/Bild}}
+    {{/Liste}}
+    </table>
   </div>
   {{/Anhang}}
 

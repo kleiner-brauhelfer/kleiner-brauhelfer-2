@@ -6,8 +6,30 @@ p {
 
 .value {
   color: #0055ff;
-  margin-left: 5px;
-  margin-right: 5px;
+}
+
+.vorhanden {
+  color: green;
+}
+
+img.vorhanden {
+  content:url("qrc:/images/io.svg");
+}
+
+.nichtvorhanden {
+  color: red;
+}
+
+img.nichtvorhanden {
+  content:url("qrc:/images/nio.svg");
+}
+
+.nichtgefunden {
+  color: grey;
+}
+
+img.nichtgefunden {
+  content:url("qrc:/images/nio.svg");
 }
 
 .h1 {

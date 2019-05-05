@@ -28,21 +28,25 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
     QChart *chart = ui->diagramMalz->chart();
+    ui->diagramMalz->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->setAlignment(Qt::AlignRight);
 
     chart = ui->diagramHopfen->chart();
+    ui->diagramHopfen->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->setAlignment(Qt::AlignRight);
 
     chart = ui->diagramHefe->chart();
+    ui->diagramHopfen->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->setAlignment(Qt::AlignRight);
 
     chart = ui->diagramRasten->chart();
+    ui->diagramRasten->setRenderHint(QPainter::Antialiasing);
     chart->layout()->setContentsMargins(0, 0, 0, 0);
     chart->setBackgroundRoundness(0);
     chart->legend()->hide();
@@ -54,6 +58,9 @@ TabRezept::TabRezept(QWidget *parent) :
 
     gSettings->beginGroup("TabRezept");
 
+    ui->splitter->setStretchFactor(0, 1);
+    ui->splitter->setStretchFactor(1, 1);
+    ui->splitter->setStretchFactor(2, 1);
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
@@ -62,7 +69,6 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->splitterHelp->setSizes({90, 10});
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
-
     ui->splitterMalzDiagram->restoreState(gSettings->value("splitterMalzDiagramState").toByteArray());
     ui->splitterHopfenDiagram->restoreState(gSettings->value("splitterHopfenDiagramState").toByteArray());
     ui->splitterHefeDiagram->restoreState(gSettings->value("splitterHefeDiagramState").toByteArray());

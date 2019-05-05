@@ -17,9 +17,9 @@ WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->frameColor->setToolTip(tr("<b>Typ<br>"
+    ui->frameColor->setToolTip(tr("strongHefetyp<br>"
                                   "<font color=\"%1\">Obergärig</font><br>"
-                                  "<font color=\"%2\">Untergärig</font></b>")
+                                  "<font color=\"%2\">Untergärig</font>strong")
             .arg(gSettings->HefeTypOgUgBackgrounds[1].name())
             .arg(gSettings->HefeTypOgUgBackgrounds[2].name()));
 

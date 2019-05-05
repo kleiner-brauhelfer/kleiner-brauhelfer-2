@@ -13,6 +13,8 @@ public:
 private:
     int mColStatus;
     int mColMerklistenID;
+    int mColWoche;
+    int mColReifeZeitDelta;
 };
 
 #endif // PROXYMODELSUDCOLORED_H

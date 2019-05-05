@@ -65,6 +65,7 @@ private:
     ModelWeitereZutaten* modelWeitereZutaten;
     SqlTableModel* modelAnhang;
     ModelAusruestung* modelAusruestung;
+    SqlTableModel* modelGeraete;
     ModelWasser* modelWasser;
     SqlTableModel* modelFlaschenlabel;
     ModelFlaschenlabelTags* modelFlaschenlabelTags;

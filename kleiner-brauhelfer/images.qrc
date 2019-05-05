@@ -18,6 +18,8 @@
         <file>images/hefe.svg</file>
         <file>images/hopfen.svg</file>
         <file>images/logo.svg</file>
+        <file>images/uebertrag_oben.svg</file>
+        <file>images/warning.svg</file>
         <file>images/wasser.svg</file>
     </qresource>
 </RCC>

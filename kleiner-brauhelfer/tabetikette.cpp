@@ -8,9 +8,10 @@
 #include <QPrinter>
 #include <QSvgRenderer>
 #include <QDesktopServices>
+#include <QJsonDocument>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "widgets/webview.h"
+#include "widgets/wdgwebvieweditable.h"
 #include "helper/mustache.h"
 
 extern Brauhelfer* bh;
@@ -26,8 +27,8 @@ TabEtikette::TabEtikette(QWidget *parent) :
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
-    ui->treeViewTemplateTags->setColumnWidth(0, 150);
-    ui->treeViewTemplateTags->setColumnWidth(1, 150);
+    ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
@@ -42,13 +43,6 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(updateAuswahlListe()));
 
-    gSettings->beginGroup("TabEtikette");
-
-    mDefaultSplitterState = ui->splitter->saveState();
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-
-    gSettings->endGroup();
-
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateAll();
 }
@@ -60,14 +54,10 @@ TabEtikette::~TabEtikette()
 
 void TabEtikette::saveSettings()
 {
-    gSettings->beginGroup("TabEtikette");
-    gSettings->setValue("splitterState", ui->splitter->saveState());
-    gSettings->endGroup();
 }
 
 void TabEtikette::restoreView()
 {
-    ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void TabEtikette::updateAll()
@@ -178,37 +168,27 @@ void TabEtikette::updateSvg()
 void TabEtikette::updateTemplateTags()
 {
     mTemplateTags.clear();
-    WebView::erstelleTagListe(mTemplateTags, bh->sud()->row());
+    WdgWebViewEditable::erstelleTagListe(mTemplateTags, bh->sud()->row());
 
-    ui->treeViewTemplateTags->clear();
-    for (QVariantMap::const_iterator it = mTemplateTags.begin(); it != mTemplateTags.end(); ++it)
-    {
-        if (it.value().canConvert<QVariantMap>())
-        {
-            QVariantMap hash = it.value().toMap();
-            QTreeWidgetItem *t = new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key()});
-            for (QVariantMap::const_iterator it2 = hash.begin(); it2 != hash.end(); ++it2)
-                t->addChild(new QTreeWidgetItem(t, {it2.key(), it2.value().toString()}));
-            ui->treeViewTemplateTags->addTopLevelItem(t);
-        }
-        else
-        {
-            ui->treeViewTemplateTags->addTopLevelItem(new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key(), it.value().toString()}));
-        }
-    }
+    QJsonDocument json = QJsonDocument::fromVariant(mTemplateTags);
+    ui->tbTags->setPlainText(json.toJson());
 
     updateSvg();
 }
 
-void TabEtikette::checkSave()
+bool TabEtikette::checkSave()
 {
     if (ui->btnSaveTemplate->isVisible())
     {
         int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
-                                        tr("Sollen die Änderungen gespeichert werden?"));
+                                        tr("Sollen die Änderungen gespeichert werden?"),
+                                        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
         if (ret == QMessageBox::Yes)
             on_btnSaveTemplate_clicked();
+        else if (ret == QMessageBox::Cancel)
+            return true;
     }
+    return false;
 }
 
 QVariant TabEtikette::data(const QString &fieldName) const
@@ -223,11 +203,19 @@ bool TabEtikette::setData(const QString &fieldName, const QVariant &value)
 
 void TabEtikette::on_cbAuswahl_activated(int index)
 {
-    checkSave();
+    if (checkSave())
+        return;
     ui->btnSaveTemplate->setVisible(false);
     if (bh->sud()->modelFlaschenlabel()->rowCount() == 0)
     {
-        QVariantMap values({{"SudID", bh->sud()->id()}});
+        QVariantMap values({{"SudID", bh->sud()->id()},
+                            {"BreiteLabel", 185},
+                            {"AnzahlLabels", 25},
+                            {"AbstandLabels", 0},
+                            {"SRandOben", 10},
+                            {"SRandLinks", 5},
+                            {"SRandRechts", 5},
+                            {"SRandUnten", 15}});
         bh->sud()->modelFlaschenlabel()->append(values);
     }
     setData("Auswahl", ui->cbAuswahl->itemData(index).toString());
@@ -243,10 +231,14 @@ void TabEtikette::on_cbTagsErsetzen_stateChanged()
 
 void TabEtikette::on_cbEditMode_clicked(bool checked)
 {
-    checkSave();
+    if (checkSave())
+    {
+        ui->cbEditMode->setChecked(true);
+        return;
+    }
 
     ui->tbTemplate->setVisible(checked);
-    ui->treeViewTemplateTags->setVisible(checked);
+    ui->tbTags->setVisible(checked);
     ui->splitter_1->setHandleWidth(checked ? 5 : 0);
 
     if (checked)
@@ -338,6 +330,11 @@ void TabEtikette::on_btnToPdf_clicked()
         // Anzahl Seiten
         int pageCount = int(round(double(totalCount) / double(countPerPage) + double(0.5)));
 
+        QImage image(breiteMM * faktorPxPerMM, hoehePx, QImage::Format_ARGB32_Premultiplied);
+        QPainter imagePainter(&image);
+        image.fill(Qt::transparent);
+        ui->viewSvg->renderer()->render(&imagePainter);
+
         for (int seite = 0; seite < pageCount; seite++)
         {
             for (int i = 0; i < countPerPage; i++)
@@ -348,8 +345,11 @@ void TabEtikette::on_btnToPdf_clicked()
                 }
                 else
                 {
-                    ui->viewSvg->renderer()->render(&painter, QRectF(0, hoehePx * i + abstandPx * i, breiteMM * faktorPxPerMM, hoehePx));
-                    QRectF rect = QRectF(0, hoehePx * i + abstandPx * i,breiteMM * faktorPxPerMM, hoehePx);
+                    QRectF rect = QRectF(0, hoehePx * i + abstandPx * i, breiteMM * faktorPxPerMM, hoehePx);
+
+                    //ui->viewSvg->renderer()->render(&painter, rect); // funktioniert nicht mit allen SVGs
+                    painter.drawImage(rect, image);
+
                     QPen outline(Qt::lightGray, 5, Qt::DashDotDotLine);
                     outline.setCosmetic(true);
                     painter.setPen(outline);
@@ -456,6 +456,7 @@ void TabEtikette::on_btnLoeschen_clicked()
         {
             ui->cbAuswahl->setCurrentIndex(-1);
             bh->sud()->modelFlaschenlabel()->removeRow(0);
+            updateAll();
         }
     }
 }

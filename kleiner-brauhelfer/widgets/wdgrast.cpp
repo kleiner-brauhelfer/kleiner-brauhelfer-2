@@ -65,7 +65,7 @@ void WdgRast::checkEnabled(bool force)
         ui->cbRast->clear();
         ui->cbRast->addItem(tr("Gummirast (35°-40°)"));
         ui->cbRast->addItem(tr("Weizenrast (45°)"));
-        ui->cbRast->addItem(tr("Eiweißrast (57°)"));
+        ui->cbRast->addItem(tr("Eiweissrast (57°)"));
         ui->cbRast->addItem(tr("Maltoserast (60°-65°)"));
         ui->cbRast->addItem(tr("Kombirast (66°-69°)"));
         ui->cbRast->addItem(tr("Verzuckerung (70°-75°)"));
@@ -123,7 +123,7 @@ void WdgRast::on_cbRast_currentIndexChanged(int index)
             setData("Temp", 45);
             setData("Dauer", 15);
             break;
-        case 2: //Eiweißrast
+        case 2: //Eiweissrast
             setData("Temp", 57);
             setData("Dauer", 10);
             break;

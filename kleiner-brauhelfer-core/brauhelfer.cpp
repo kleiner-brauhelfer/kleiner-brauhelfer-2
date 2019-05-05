@@ -23,6 +23,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelHefe, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelWeitereZutaten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelAusruestung, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelGeraete, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelWasser, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelRasten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelMalzschuettung, SIGNAL(modified()), this, SIGNAL(modified()));
@@ -184,6 +185,11 @@ ModelWeitereZutaten *Brauhelfer::modelWeitereZutaten() const
 ModelAusruestung *Brauhelfer::modelAusruestung() const
 {
     return mDb->modelAusruestung;
+}
+
+SqlTableModel* Brauhelfer::modelGeraete() const
+{
+    return mDb->modelGeraete;
 }
 
 ModelWasser *Brauhelfer::modelWasser() const

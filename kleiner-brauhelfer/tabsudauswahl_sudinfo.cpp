@@ -6,6 +6,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodel.h"
+#include "widgets/wdgwebvieweditable.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer *bh;
@@ -23,7 +24,6 @@ void TabSudAuswahl::updateTemplateTags()
         int Einheit;
     };
 
-    QString s;
     QList<int> ListSudID;
     QLocale locale;
 
@@ -33,28 +33,28 @@ void TabSudAuswahl::updateTemplateTags()
         ListSudID.append(SudID);
     }
 
-    mTemplateTags.clear();
+    ui->webview->mTemplateTags.clear();
     if (selection.count() == 1)
     {
         int sudRow = proxyModel->mapRowToSource(selection[0].row());
-        WebView::erstelleTagListe(mTemplateTags, sudRow);
+        WdgWebViewEditable::erstelleTagListe(ui->webview->mTemplateTags, sudRow);
 
         int bewertung = proxyModel->data(selection[0].row(), "BewertungMax").toInt();
         if (bewertung > 0)
         {
             if (bewertung > Bewertung_MaxSterne)
                 bewertung = Bewertung_MaxSterne;
-            s = "";
+            QString s = "";
             for (int i = 0; i < bewertung; i++)
                 s += "<img class='star' style='padding:0px;margin:0px;' width='24' border=0>";
             for (int i = bewertung; i < Bewertung_MaxSterne; i++)
                 s += "<img class='star_grey' style='padding:0px;margin:0px;' width='24' border=0>";
-            mTemplateTags["Sterne"] = s;
+            ui->webview->mTemplateTags["Sterne"] = s;
         }
     }
     else
     {
-        WebView::erstelleTagListe(mTemplateTags);
+        WdgWebViewEditable::erstelleTagListe(ui->webview->mTemplateTags);
     }
 
     QList<Rohstoff> ListMalz;
@@ -184,13 +184,10 @@ void TabSudAuswahl::updateTemplateTags()
 
     if (ListMalz.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + " (" + tr("kg") + ")" + "</th>";
-        s += "<th>" + tr("vorhanden") + " (" + tr("kg") + ")" + "</th>";
-        s += "<th>" + tr("rest") + " (" + tr("kg") + ")" + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListMalz)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelMalz()->rowCount(); o++)
@@ -202,36 +199,26 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
-            s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 2) + "</td>";
-            s += "<td align='center'>" + locale.toString(ist, 'f', 2) + "</td>";
-            if (ist < eintrag.Menge)
-                s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 2) + "</b></td>";
-            else
-                s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 2) + "</b></td>";
-            s += "</tr>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
+            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
+            map.insert("Vorhanden", locale.toString(ist, 'f', 2));
+            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 2));
+            map.insert("Einheit", tr("kg"));
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Malz"] = s;
+        ctxZutaten["Malz"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListHopfen.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + " (" + tr("g") + ")" + "</th>";
-        s += "<th>" + tr("vorhanden") + " (" + tr("g") + ")" + "</th>";
-        s += "<th>" + tr("rest") + " (" + tr("g") + ")" + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListHopfen)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelHopfen()->rowCount(); o++)
@@ -243,36 +230,26 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
-            s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + "</td>";
-            s += "<td align='center'>" + locale.toString(ist, 'f', 0) + "</td>";
-            if (ist < eintrag.Menge)
-                s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b></td>";
-            else
-                s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b></td>";
-            s += "</tr>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
+            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+            map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+            map.insert("Einheit", tr("g"));
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Hopfen"] = s;
+        ctxZutaten["Hopfen"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListHefe.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + "</th>";
-        s += "<th>" + tr("vorhanden") + "</th>";
-        s += "<th>" + tr("rest") + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListHefe)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelHefe()->rowCount(); o++)
@@ -284,36 +261,26 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
-            s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + "</td>";
-            s += "<td align='center'>" + locale.toString(ist, 'f', 0) + "</td>";
-            if (ist < eintrag.Menge)
-                s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b></td>";
-            else
-                s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b></td>";
-            s += "</tr>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
+            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+            map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+            map.insert("Einheit", "");
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Hefe"] = s;
+        ctxZutaten["Hefe"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListWeitereZutatenHonig.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + "</th>";
-        s += "<th>" + tr("vorhanden") + "</th>";
-        s += "<th>" + tr("rest") + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListWeitereZutatenHonig)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
@@ -325,48 +292,36 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist  / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
+                map.insert("Einheit", tr("kg"));
             }
             else
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + " " + tr("g") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist, 'f', 0) + " " + tr("g") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Einheit", tr("g"));
             }
-            s += "</tr>";
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Honig"] = s;
+        ctxZutaten["Honig"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListWeitereZutatenZucker.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + "</th>";
-        s += "<th>" + tr("vorhanden") + "</th>";
-        s += "<th>" + tr("rest") + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListWeitereZutatenZucker)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
@@ -378,48 +333,36 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist  / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
+                map.insert("Einheit", tr("kg"));
             }
             else
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + " " + tr("g") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist, 'f', 0) + " " + tr("g") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Einheit", tr("g"));
             }
-            s += "</tr>";
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Zucker"] = s;
+        ctxZutaten["Zucker"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListWeitereZutatenGewuerz.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + "</th>";
-        s += "<th>" + tr("vorhanden") + "</th>";
-        s += "<th>" + tr("rest") + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListWeitereZutatenGewuerz)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
@@ -431,48 +374,36 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist  / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
+                map.insert("Einheit", tr("kg"));
             }
             else
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + " " + tr("g") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist, 'f', 0) + " " + tr("g") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Einheit", tr("g"));
             }
-            s += "</tr>";
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Gewuerz"] = s;
+        ctxZutaten["Gewuerz"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListWeitereZutatenFrucht.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + "</th>";
-        s += "<th>" + tr("vorhanden") + "</th>";
-        s += "<th>" + tr("rest") + "</th></tr>";
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListWeitereZutatenFrucht)
         {
+            QVariantMap map;
             double ist = 0;
             bool gefunden = false;
             for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
@@ -484,46 +415,34 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist  / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
+                map.insert("Einheit", tr("kg"));
             }
             else
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + " " + tr("g") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist, 'f', 0) + " " + tr("g") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Einheit", tr("g"));
             }
-            s += "</tr>";
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Frucht"] = s;
+        ctxZutaten["Frucht"] = QVariantMap({{"Liste", liste}});
     }
 
     if (ListWeitereZutatenSonstiges.count() > 0)
     {
-        s = "<table width='100%'>";
-        s += "<tr><th></th><th></th>";
-        s += "<th>" + tr("benötigt") + "</th>";
-        s += "<th>" + tr("vorhanden") + "</th>";
-        s += "<th>" + tr("rest") + "</th></tr>";
+        QVariantMap map;
+        QVariantList liste;
         for (const Rohstoff& eintrag : ListWeitereZutatenSonstiges)
         {
             double ist = 0;
@@ -537,96 +456,54 @@ void TabSudAuswahl::updateTemplateTags()
                     break;
                 }
             }
-            s += "<tr valign='middle'>";
-            if (ist < eintrag.Menge)
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/nio.svg' width='16px' border=0></td>";
-            else
-                s += "<td><img style='padding:0px;margin:0px;' src='qrc:/images/io.svg' width='16px' border=0></td>";
             if (gefunden)
-                s += "<td align='left'>" + eintrag.Name + "</td>";
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             else
-                s += "<td align='left' style='color: grey;'>" + eintrag.Name + "</td>";
+                map.insert("Class", "nichtgefunden");
+            map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist  / 1000, 'f', 2) + " " + tr("kg") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString((ist - eintrag.Menge) / 1000, 'f', 2) + "</b> " + tr("kg") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
+                map.insert("Einheit", tr("kg"));
             }
             else
             {
-                s += "<td class='value' align='center'>" + locale.toString(eintrag.Menge, 'f', 0) + " " + tr("g") + "</td>";
-                s += "<td align='center'>" + locale.toString(ist, 'f', 0) + " " + tr("g") + "</td>";
-                if (ist < eintrag.Menge)
-                    s += "<td align='center' style='color: red;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
-                else
-                    s += "<td align='center' style='color: green;'><b>" + locale.toString(ist - eintrag.Menge, 'f', 0) + "</b> " + tr("g") + "</td>";
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Einheit", tr("g"));
             }
-            s += "</tr>";
+            liste << map;
         }
-        s += "</table>";
-        ctxZutaten["Sonstiges"] = s;
+        ctxZutaten["Sonstiges"] = QVariantMap({{"Liste", liste}});
     }
 
-    mTemplateTags["Zutaten"] = ctxZutaten;
+    ui->webview->mTemplateTags["Zutaten"] = ctxZutaten;
 
-    QDir databasePath = QDir(gSettings->databaseDir());
-    s = "";
-    for (int i = 0; i < bh->modelAnhang()->rowCount(); ++i)
+    if (selection.count() == 1)
     {
-        int sudId = bh->modelAnhang()->data(i, "SudID").toInt();
-        if (ListSudID.contains(sudId))
+        QDir databasePath = QDir(gSettings->databaseDir());
+        QVariantList liste;
+        for (int i = 0; i < bh->modelAnhang()->rowCount(); ++i)
         {
-            QString pfad = bh->modelAnhang()->data(i, "Pfad").toString();
-            if (QDir::isRelativePath(pfad))
-                pfad = QDir::cleanPath(databasePath.filePath(pfad));
-            if (WdgAnhang::isImage(pfad))
-                s += "<img style=\"max-width:90%;\" src=\"" + pfad + "\" alt=\"" + pfad + "\"></br></br>";
-            else
-                s += "<a href=\"" + pfad + "\">" + pfad + "</a></br></br>";
+            int sudId = bh->modelAnhang()->data(i, "SudID").toInt();
+            if (ListSudID.contains(sudId))
+            {
+                QVariantMap map;
+                QString pfad = bh->modelAnhang()->data(i, "Pfad").toString();
+                if (QDir::isRelativePath(pfad))
+                    pfad = QDir::cleanPath(databasePath.filePath(pfad));
+                map.insert("Pfad", pfad);
+                map.insert("Bild", WdgAnhang::isImage(pfad) ? "1" : "");
+                liste << map;
+            }
         }
+        if (!liste.empty())
+            ui->webview->mTemplateTags["Anhang"] = QVariantMap({{"Liste", liste}});
     }
-    mTemplateTags["Anhang"] = s;
 
-    ui->treeViewTemplateTags->clear();
-    for (QVariantMap::const_iterator it = mTemplateTags.begin(); it != mTemplateTags.end(); ++it)
-    {
-        if (it.value().canConvert<QVariantMap>())
-        {
-            QVariantMap hash = it.value().toMap();
-            QTreeWidgetItem *t = new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key()});
-            for (QVariantMap::const_iterator it2 = hash.begin(); it2 != hash.end(); ++it2)
-                t->addChild(new QTreeWidgetItem(t, {it2.key(), it2.value().toString()}));
-            ui->treeViewTemplateTags->addTopLevelItem(t);
-        }
-        else
-        {
-            ui->treeViewTemplateTags->addTopLevelItem(new QTreeWidgetItem(ui->treeViewTemplateTags, {it.key(), it.value().toString()}));
-        }
-    }
-}
-
-void TabSudAuswahl::erstelleSudInfo()
-{
-    if (ui->cbEditMode->isChecked())
-    {
-        if (ui->cbTemplateAuswahl->currentIndex() == 0)
-        {
-            ui->webview->renderText(ui->tbTemplate->toPlainText(), mTemplateTags);
-        }
-        else
-        {
-            mTempCssFile.open();
-            mTempCssFile.write(ui->tbTemplate->toPlainText().toUtf8());
-            mTempCssFile.flush();
-            mTemplateTags["Style"] = mTempCssFile.fileName();
-            ui->webview->renderTemplate(mTemplateTags);
-        }
-    }
-    else
-    {
-        ui->webview->renderTemplate(mTemplateTags);
-    }
+    ui->webview->updateTags();
+    ui->webview->updateHtml();
 }

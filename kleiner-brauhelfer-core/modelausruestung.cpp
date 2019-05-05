@@ -103,6 +103,25 @@ bool ModelAusruestung::setDataExt(const QModelIndex &index, const QVariant &valu
     return false;
 }
 
+bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
+{
+    if (SqlTableModel::removeRows(row, count, parent))
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            int id = data(row + i, "ID").toInt();
+            int colId = bh->modelGeraete()->fieldIndex("AusruestungAnlagenID");
+            for (int i = 0; i < bh->modelGeraete()->rowCount(); ++i)
+            {
+                if (bh->modelGeraete()->index(i, colId).data().toInt() == id)
+                    bh->modelGeraete()->removeRows(i);
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
 void ModelAusruestung::defaultValues(QVariantMap &values) const
 {
     if (!values.contains("Sudhausausbeute"))

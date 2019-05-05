@@ -52,6 +52,9 @@
           <height>22</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Anhang löschen.</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -94,6 +97,9 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="toolTip">
+         <string>Pfad relativ zur Datenbank.</string>
+        </property>
         <property name="text">
          <string>relativ zur Datenbank</string>
         </property>
@@ -116,13 +122,20 @@
           <height>16777215</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Anhang suchen.</string>
+        </property>
         <property name="text">
          <string notr="true">...</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1" colspan="2">
-       <widget class="QLineEdit" name="lineEdit_Pfad"/>
+       <widget class="QLineEdit" name="lineEdit_Pfad">
+        <property name="toolTip">
+         <string>Pfad.</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

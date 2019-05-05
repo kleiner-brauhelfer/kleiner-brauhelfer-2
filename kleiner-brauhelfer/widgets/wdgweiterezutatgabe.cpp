@@ -55,22 +55,22 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
 
     if (typ == EWZ_Typ_Hopfen)
     {
-        ui->frameColor->setToolTip(tr("<b>Typ<br>"
+        ui->frameColor->setToolTip(tr("<strong>Hopfentyp<br>"
                                       "<font color=\"%1\">Aroma</font><br>"
                                       "<font color=\"%2\">Bitter</font><br>"
-                                      "<font color=\"%3\">Universal</font></b>")
+                                      "<font color=\"%3\">Universal</font></strong>")
                 .arg(gSettings->HopfenTypBackgrounds[1].name())
                 .arg(gSettings->HopfenTypBackgrounds[2].name())
                 .arg(gSettings->HopfenTypBackgrounds[3].name()));
     }
     else
     {
-        ui->frameColor->setToolTip(tr("<b>Typ<br>"
+        ui->frameColor->setToolTip(tr("<strong>Zutattyp<br>"
                                   "<font color=\"%1\">Honig</font><br>"
                                   "<font color=\"%2\">Zucker</font><br>"
                                   "<font color=\"%3\">Gewürz</font><br>"
                                   "<font color=\"%4\">Frucht</font><br>"
-                                  "<font color=\"%5\">Sonstiges</font></b>")
+                                  "<font color=\"%5\">Sonstiges</font></strong>")
             .arg(gSettings->WZTypBackgrounds[0].name())
             .arg(gSettings->WZTypBackgrounds[1].name())
             .arg(gSettings->WZTypBackgrounds[2].name())

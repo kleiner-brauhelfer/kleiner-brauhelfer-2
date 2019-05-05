@@ -67,7 +67,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Entfernt diese Bewertung</string>
+           <string>Bewertung löschen.</string>
           </property>
           <property name="text">
            <string/>

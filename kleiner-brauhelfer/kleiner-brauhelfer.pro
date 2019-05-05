@@ -86,7 +86,8 @@ SOURCES += \
     widgets/wdgrast.cpp \
     widgets/wdgrating.cpp \
     widgets/wdgweiterezutatgabe.cpp \
-    widgets/webview.cpp
+    widgets/webview.cpp \
+    widgets/wdgwebvieweditable.cpp
 
 HEADERS += \
     definitionen.h \
@@ -144,7 +145,8 @@ HEADERS += \
     widgets/wdgrast.h \
     widgets/wdgrating.h \
     widgets/wdgweiterezutatgabe.h \
-    widgets/webview.h
+    widgets/webview.h \
+    widgets/wdgwebvieweditable.h
 
 FORMS += \
     mainwindow.ui \
@@ -176,7 +178,8 @@ FORMS += \
     widgets/wdgmalzgabe.ui \
     widgets/wdgrast.ui \
     widgets/wdgrating.ui \
-    widgets/wdgweiterezutatgabe.ui
+    widgets/wdgweiterezutatgabe.ui \
+    widgets/wdgwebvieweditable.ui
 
 RESOURCES += \
     data.qrc \

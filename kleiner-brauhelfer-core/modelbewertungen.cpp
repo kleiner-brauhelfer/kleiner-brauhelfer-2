@@ -28,7 +28,6 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &index) const
             return days / 7 + 1;
         else
             return 0;
-
     }
     return QVariant();
 }

@@ -63,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent, bool updated) :
     connect(ui->tabContentBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
+    connect(bh, SIGNAL(discarded()), this, SLOT(discarded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(sudModified()));
 
@@ -198,7 +199,7 @@ void MainWindow::databaseModified()
     ui->actionVerwerfen->setEnabled(modified);
 }
 
-void MainWindow::sudLoaded()
+void MainWindow::discarded()
 {
     bool loaded = bh->sud()->isLoaded();
     databaseModified();
@@ -212,8 +213,18 @@ void MainWindow::sudLoaded()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
                             bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
-    if (ui->tabMain->currentWidget() != ui->tabDatenbank)
-        ui->tabMain->setCurrentWidget(loaded ? ui->tabRezept : ui->tabSudAuswahl);
+    if (!ui->tabMain->currentWidget()->isEnabled())
+        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+}
+
+void MainWindow::sudLoaded()
+{
+    discarded();
+    if (bh->sud()->isLoaded())
+    {
+        if (ui->tabMain->currentWidget() == ui->tabSudAuswahl || ui->tabMain->currentWidget() == ui->tabBrauUebersicht)
+            ui->tabMain->setCurrentWidget(ui->tabRezept);
+    }
 }
 
 void MainWindow::sudModified()

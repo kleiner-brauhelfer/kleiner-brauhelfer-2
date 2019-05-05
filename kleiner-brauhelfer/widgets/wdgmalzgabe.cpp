@@ -83,6 +83,7 @@ void WdgMalzGabe::checkEnabled(bool force)
         ui->tbMengeProzent->setReadOnly(true);
         ui->tbMenge->setReadOnly(true);
         ui->btnKorrektur->setVisible(false);
+        ui->lblWarnAnteil->setVisible(false);
     }
 }
 
@@ -120,10 +121,19 @@ void WdgMalzGabe::updateValues(bool full)
                 benoetigt += model->data(i, "erg_Menge").toDouble();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
-
-        double max = bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "MaxProzent").toDouble();
-        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() > max || ui->tbMengeProzent->value() == 0.0);
+        ui->tbMengeProzent->setError( ui->tbMengeProzent->value() == 0.0);
         ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
+
+        int max = bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "MaxProzent").toInt();
+        if (ui->tbMengeProzent->value() > max)
+        {
+            ui->lblWarnAnteil->setVisible(true);
+            ui->lblWarnAnteil->setToolTip(tr("Maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.").arg(max));
+        }
+        else
+        {
+            ui->lblWarnAnteil->setVisible(false);
+        }
     }
 }
 

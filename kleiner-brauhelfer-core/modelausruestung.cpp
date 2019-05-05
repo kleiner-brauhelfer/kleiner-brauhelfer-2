@@ -124,6 +124,8 @@ bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
 
 void ModelAusruestung::defaultValues(QVariantMap &values) const
 {
+    if (!values.contains("ID"))
+        values.insert("ID", getNextId());
     if (!values.contains("Sudhausausbeute"))
         values.insert("Sudhausausbeute", 60.0);
     if (!values.contains("Verdampfungsziffer"))

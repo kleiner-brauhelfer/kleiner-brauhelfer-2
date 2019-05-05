@@ -335,6 +335,24 @@ QString SqlTableModel::getUniqueName(const QModelIndex &index, const QVariant &v
     return name;
 }
 
+int SqlTableModel::getNextId() const
+{
+    QSqlIndex primary = primaryKey();
+    if (!primary.isEmpty())
+    {
+        int maxId = 0;
+        int colSudId = primary.value(0).toInt();
+        for (int i = 0; i < rowCount(); ++i)
+        {
+            int sudId = index(i, colSudId).data().toInt();
+            if (sudId > maxId)
+                maxId = sudId;
+        }
+        return maxId + 1;
+    }
+    return 1;
+}
+
 void SqlTableModel::defaultValues(QVariantMap &values) const
 {
     Q_UNUSED(values)

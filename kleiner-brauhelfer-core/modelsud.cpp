@@ -901,19 +901,6 @@ void ModelSud::removeRowsFrom(SqlTableModel* model, int sudId)
     }
 }
 
-int ModelSud::getNextId() const
-{
-    int maxId = 0;
-    int colSudId = fieldIndex("ID");
-    for (int i = 0; i < rowCount(); ++i)
-    {
-        int sudId = index(i, colSudId).data().toInt();
-        if (sudId > maxId)
-            maxId = sudId;
-    }
-    return maxId + 1;
-}
-
 void ModelSud::defaultValues(QVariantMap &values) const
 {
     if (!values.contains("ID"))

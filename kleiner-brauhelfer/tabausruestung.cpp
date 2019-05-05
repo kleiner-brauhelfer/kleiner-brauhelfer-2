@@ -237,8 +237,7 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     QModelIndexList selected = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selected.count() > 0)
     {
-        QVariant id = bh->modelAusruestung()->getValueFromSameRow("Name", data("Name"), "AnlagenID");
-        QVariantMap values({{"AusruestungAnlagenID", id}, {"Bezeichnung", tr("Neues Gerät")}});
+        QVariantMap values({{"AusruestungAnlagenID", data("ID")}, {"Bezeichnung", tr("Neues Gerät")}});
         ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
         int row = model->append(values);
         if (row >= 0)

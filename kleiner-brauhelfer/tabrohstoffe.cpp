@@ -442,10 +442,10 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     header->moveSection(header->visualIndex(col), 0);
 
     col = model->fieldIndex("Restalkalitaet");
-    model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität"));
+    model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität [°dH]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
-    header->resizeSection(col, 100);
+    header->resizeSection(col, 120);
     header->moveSection(header->visualIndex(col), 1);
 
     mDefaultStateTableWasser = header->saveState();

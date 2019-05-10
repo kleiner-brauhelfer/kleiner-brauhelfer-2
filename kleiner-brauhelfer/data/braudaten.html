@@ -4,120 +4,326 @@
   <link rel="stylesheet" type="text/css" href="{{Style}}">
 </head>
 <body>
-  <div style="width:90%;margin:0 auto;text-align:center;">
 
-    <div class="r" style="margin-bottom:10px;" align="center">
-      <p class="h1">Wasser</p>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th></th>
-          <th>Menge [l]</th>
-          <th>Milchsäure 80% [ml]</th>
-        </tr>
-        <tr>
-          <td>Hauptguss</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Nachguss</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Verdünnung</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong>Gesamt</strong></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="r" style="margin-bottom:10px;" align="center">
-      <p class="h1">Rasten</p>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th>Rast</th>
-          <th>Temp. [°C]</th>
-          <th>Dauer [min]</th>
-        </tr>
-      </table>
-    </div>
-
-    <div class="r" style="margin-bottom:10px;" align="center">
-      <p class="h1">Maischen</p>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th>Malzschüttung</th>
-          <th>Anteil [%]</th>
-          <th>Menge [kg]</th>
-        </tr>
-      </table>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-
-      <table style="width:100%">
-        <tr>
-          <th>Zutat</th>
-          <th>Menge [g]</th>
-        </tr>
-      </table>
-    </div>
-
-    <div class="r" style="margin-bottom:10px;" align="center">
-      <p class="h1">Kochen</p>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th>Hopfengabe</th>
-          <th>Vorderwürze</th>
-          <th>Kochdauer [min]</th>
-          <th>Menge [g]</th>
-        </tr>
-      </table>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th>Zutat</th>
-          <th>Kochdauer [min]</th>
-          <th>Menge [g]</th>
-        </tr>
-      </table>
-    </div>
-
-    <div class="r" style="margin-bottom:10px;" align="center">
-      <p class="h1">Gärung</p>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th>Hefegabe</th>
-          <th>Menge</th>
-        </tr>
-      </table>
-    </div>
-    <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-      <table style="width:100%">
-        <tr>
-          <th>Zutat</th>
-          <th>Dauer [Tage]</th>
-          <th>Menge [g]</th>
-        </tr>
-      </table>
-    </div>
-
+  {{#Wasser}}
+  <div class="r" style="margin-bottom:10px;" align="center">
+    <p class="h1">Wasser</p>
   </div>
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th></th>
+        <th>Menge [l]</th>
+        {{#GesamtMilchsaeure}}<th>Milchsäure 80% [ml]</th>{{/GesamtMilchsaeure}}
+      </tr>
+      <tr>
+        <td>Hauptguss</td>
+        <td class="value" align="center">{{Hauptguss}}</td>
+        {{#GesamtMilchsaeure}}<td class="value" align="center">{{HauptgussMilchsaeure}}</td>{{/GesamtMilchsaeure}}
+      </tr>
+      <tr>
+        <td>Nachguss</td>
+        <td class="value" align="center">{{Nachguss}}</td>
+        {{#GesamtMilchsaeure}}<td class="value" align="center">{{NachgussMilchsaeure}}</td>{{/GesamtMilchsaeure}}
+      </tr>
+      {{#Verduennung}}
+      <tr>
+        <td>Verdünnung</td>
+        <td class="value" align="center">{{Verduennung}}</td>
+        {{#GesamtMilchsaeure}}<td class="value" align="center">{{VerduennungMilchsaeure}}</td>{{/GesamtMilchsaeure}}
+      </tr>
+      {{/Verduennung}}
+      <tr>
+        <td><strong>Gesamtmenge</strong></td>
+        <td class="value" align="center">{{Gesamt}}</td>
+        {{#GesamtMilchsaeure}}<td class="value" align="center">{{GesamtMilchsaeure}}</td>{{/GesamtMilchsaeure}}
+      </tr>
+    </table>
+  </div>
+  {{/Wasser}}
+
+  {{#Rasten}}
+  <div class="r" style="margin-bottom:10px;" align="center">
+    <p class="h1">Rasten</p>
+  </div>
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Rast</th>
+        <th>Temp. [°C]</th>
+        <th>Dauer [min]</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Temp}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Rasten}}
+
+  <div class="r" style="margin-bottom:10px;" align="center">
+    <p class="h1">Maischen</p>
+  </div>
+  {{#Zutaten.Malz}}
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Malzschüttung</th>
+        <th>Anteil [%]</th>
+        <th>Menge [kg]</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Prozent}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+      </tr>
+      {{/Liste}}
+      <tr>
+        <td align="center"><strong>Gesamtschüttung</strong></td>
+        <td align="center"></td>
+        <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
+      </tr>
+    </table>
+  </div>
+  {{/Zutaten.Malz}}
+  {{#Zutaten.ZutatenMaischen}}
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Zutat</th>
+        <th>Menge</th>
+      </tr>
+      {{#Zutaten.Honig.Liste}}
+      {{#Maischen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Maischen}}
+      {{/Zutaten.Honig.Liste}}
+      {{#Zutaten.Zucker.Liste}}
+      {{#Maischen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Maischen}}
+      {{/Zutaten.Zucker.Liste}}
+      {{#Zutaten.Gewuerz.Liste}}
+      {{#Maischen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Maischen}}
+      {{/Zutaten.Gewuerz.Liste}}
+      {{#Zutaten.Frucht.Liste}}
+      {{#Maischen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Maischen}}
+      {{/Zutaten.Frucht.Liste}}
+      {{#Zutaten.Sonstiges.Liste}}
+      {{#Maischen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Maischen}}
+      {{/Zutaten.Sonstiges.Liste}}
+    </table>
+  </div>
+  {{/Zutaten.ZutatenMaischen}}
+
+  <div class="r" style="margin-bottom:10px;" align="center">
+    <p class="h1">Kochen</p>
+  </div>
+  {{#Zutaten.Hopfen}}
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Hopfengabe</th>
+        <th>Vorderwürze</th>
+        <th>Kochdauer [min]</th>
+        <th>Menge [g]</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Vorderwuerze}}</td>
+        <td class="value" align="center">{{Kochdauer}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Zutaten.Hopfen}}
+  {{#Zutaten.ZutatenKochen}}
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Zutat</th>
+        <th>Kochdauer [min]</th>
+        <th>Menge</th>
+      </tr>
+      {{#Zutaten.Honig.Liste}}
+      {{#Kochen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Kochdauer}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Kochen}}
+      {{/Zutaten.Honig.Liste}}
+      {{#Zutaten.Zucker.Liste}}
+      {{#Kochen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Kochdauer}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Kochen}}
+      {{/Zutaten.Zucker.Liste}}
+      {{#Zutaten.Gewuerz.Liste}}
+      {{#Kochen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Kochdauer}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Kochen}}
+      {{/Zutaten.Gewuerz.Liste}}
+      {{#Zutaten.Frucht.Liste}}
+      {{#Kochen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Kochdauer}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Kochen}}
+      {{/Zutaten.Frucht.Liste}}
+      {{#Zutaten.Sonstiges.Liste}}
+      {{#Kochen}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Kochdauer}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/Kochen}}
+      {{/Zutaten.Sonstiges.Liste}}
+    </table>
+  </div>
+  {{/Zutaten.ZutatenKochen}}
+
+  <div class="r" style="margin-bottom:10px;" align="center">
+    <p class="h1">Gärung</p>
+  </div>
+  {{#Zutaten.Hefe}}
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Hefegabe</th>
+        <th>Menge</th>
+      </tr>
+      {{#Liste}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Zutaten.Hefe}}
+  {{#Zutaten.ZutatenGaerung}}
+  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+    <table style="width:100%">
+      <tr>
+        <th>Zutat</th>
+        <th>Dauer [Tage]</th>
+        <th>Entnahme</th>
+        <th>Menge [g]</th>
+      </tr>
+      {{#Zutaten.Kalthopfen.Liste}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+        <td class="value" align="center">{{Entnahme}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Zutaten.Kalthopfen.Liste}}
+      {{#Zutaten.Honig.Liste}}
+      {{#Gaerung}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+        <td class="value" align="center">{{Entnahme}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Gaerung}}
+      {{/Zutaten.Honig.Liste}}
+      {{#Zutaten.Zucker.Liste}}
+      {{#Gaerung}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+        <td class="value" align="center">{{Entnahme}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Gaerung}}
+      {{/Zutaten.Zucker.Liste}}
+      {{#Zutaten.Gewuerz.Liste}}
+      {{#Gaerung}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+        <td class="value" align="center">{{Entnahme}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Gaerung}}
+      {{/Zutaten.Gewuerz.Liste}}
+      {{#Zutaten.Frucht.Liste}}
+      {{#Gaerung}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+        <td class="value" align="center">{{Entnahme}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Gaerung}}
+      {{/Zutaten.Frucht.Liste}}
+      {{#Zutaten.Sonstiges.Liste}}
+      {{#Gaerung}}
+      {{^ZugabeNach}}
+      <tr>
+        <td align="center">{{Name}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+        <td class="value" align="center">{{Entnahme}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{/ZugabeNach}}
+      {{/Gaerung}}
+      {{/Zutaten.Sonstiges.Liste}}
+    </table>
+  </div>
+  {{/Zutaten.ZutatenGaerung}}
+
 </body>
 </html>

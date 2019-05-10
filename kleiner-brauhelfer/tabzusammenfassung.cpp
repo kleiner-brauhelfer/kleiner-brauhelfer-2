@@ -7,6 +7,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/wdganhang.h"
+#include "templatetags.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -72,7 +73,7 @@ void TabZusammenfassung::updateTemplateTags()
     QLocale locale;
 
     ui->webview->mTemplateTags.clear();
-    WdgWebViewEditable::erstelleTagListe(ui->webview->mTemplateTags, bh->sud()->row());
+    TemplateTags::erstelleTagListe(ui->webview->mTemplateTags, TemplateTags::TagAll, bh->sud()->row());
 
     int bewertung = bh->sud()->getBewertungMax();
     if (bewertung > 0)

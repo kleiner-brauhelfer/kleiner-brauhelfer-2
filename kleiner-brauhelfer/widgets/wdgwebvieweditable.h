@@ -19,10 +19,7 @@ public:
     void setHtmlFile(const QString& file);
     void printToPdf(const QString& filePath);
 
-    static void erstelleTagListe(QVariantMap& ctx, int sudRow = -1);
-
 public slots:
-    void updateAll(int sudRow = -1);
     void updateHtml();
     void updateTags();
 

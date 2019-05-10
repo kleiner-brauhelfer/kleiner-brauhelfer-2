@@ -4,6 +4,7 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "templatetags.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/checkboxdelegate.h"
@@ -165,7 +166,7 @@ void TabBraudaten::updateValues()
         ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 
-    ui->webview->updateAll(bh->sud()->row());
+    TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
 void TabBraudaten::on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime)

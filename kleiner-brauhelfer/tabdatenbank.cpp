@@ -179,7 +179,7 @@ void TabDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
     {
         ui->tableViewSud->setModel(model);
         for (int col = 0; col < model->columnCount(); ++col)
-            ui->tableView->setColumnHidden(col, false);
+            ui->tableViewSud->setColumnHidden(col, false);
         ui->tableViewSud->setColumnHidden(model->fieldIndex("deleted"), true);
     }
 }

@@ -24,7 +24,7 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &index) const
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
         if (braudatum.isValid())
         {
-            int tage = data(index.row(), "ZugegebenNach").toInt();
+            int tage = data(index.row(), "ZugabeNach").toInt();
             return braudatum.addDays(tage);
         }
         return QDateTime();
@@ -131,7 +131,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             }
             if (val != EWZ_Zeitpunkt_Gaerung)
             {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugegebenNach")), 0);
+                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugabeNach")), 0);
             }
             return true;
         }
@@ -143,7 +143,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
         if (braudatum.isValid())
         {
             qint64 tage = braudatum.daysTo(value.toDateTime());
-            return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugegebenNach")), tage);
+            return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugabeNach")), tage);
         }
     }
     if (field == "Zeitpunkt_bis")
@@ -181,7 +181,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
         int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
         int colSudId = fieldIndex("SudID");
         int colStatus = fieldIndex("Zugabestatus");
-        int colZugegebenNach = fieldIndex("ZugegebenNach");
+        int colZugabeNach = fieldIndex("ZugabeNach");
         if (status == Sud_Status_Rezept)
         {
             for (int row = 0; row < rowCount(); ++row)
@@ -195,7 +195,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
             for (int row = 0; row < rowCount(); ++row)
             {
                 if (data(index(row, colSudId)).toInt() == sudId &&
-                    data(index(row, colZugegebenNach)).toInt() == 0)
+                    data(index(row, colZugabeNach)).toInt() == 0)
                     setData(index(row, colStatus), EWZ_Zugabestatus_Zugegeben);
             }
         }

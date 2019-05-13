@@ -1,6 +1,6 @@
 #include "combobox.h"
 #include "settings.h"
-
+#include <QAbstractItemView>
 extern Settings *gSettings;
 
 ComboBox::ComboBox(QWidget *parent) :
@@ -35,4 +35,12 @@ void ComboBox::paintEvent(QPaintEvent *event)
 void ComboBox::setError(bool e)
 {
     mError = e;
+}
+
+void ComboBox::setToolTip(const QString &str)
+{
+    QComboBox::setToolTip(str);
+    QAbstractItemView* v = view();
+    if (v)
+        v->setToolTip(str);
 }

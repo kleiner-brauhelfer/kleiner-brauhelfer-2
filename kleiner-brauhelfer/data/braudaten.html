@@ -55,7 +55,7 @@
       </tr>
       {{#Liste}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Temp}}</td>
         <td class="value" align="center">{{Dauer}}</td>
       </tr>
@@ -77,13 +77,13 @@
       </tr>
       {{#Liste}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Prozent}}</td>
         <td class="value" align="center">{{Menge}}</td>
       </tr>
       {{/Liste}}
       <tr>
-        <td align="center"><strong>Gesamtschüttung</strong></td>
+        <td><strong>Gesamtschüttung</strong></td>
         <td align="center"></td>
         <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
       </tr>
@@ -100,7 +100,7 @@
       {{#Zutaten.Honig.Liste}}
       {{#Maischen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/Maischen}}
@@ -108,7 +108,7 @@
       {{#Zutaten.Zucker.Liste}}
       {{#Maischen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/Maischen}}
@@ -116,7 +116,7 @@
       {{#Zutaten.Gewuerz.Liste}}
       {{#Maischen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/Maischen}}
@@ -124,7 +124,7 @@
       {{#Zutaten.Frucht.Liste}}
       {{#Maischen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/Maischen}}
@@ -132,7 +132,7 @@
       {{#Zutaten.Sonstiges.Liste}}
       {{#Maischen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/Maischen}}
@@ -155,8 +155,8 @@
       </tr>
       {{#Liste}}
       <tr>
-        <td align="center">{{Name}}</td>
-        <td class="value" align="center">{{Vorderwuerze}}</td>
+        <td>{{Name}}</td>
+        <td class="value" align="center">{{#Vorderwuerze}}VWH{{/Vorderwuerze}}</td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}}</td>
       </tr>
@@ -175,7 +175,7 @@
       {{#Zutaten.Honig.Liste}}
       {{#Kochen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
@@ -184,7 +184,7 @@
       {{#Zutaten.Zucker.Liste}}
       {{#Kochen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
@@ -193,7 +193,7 @@
       {{#Zutaten.Gewuerz.Liste}}
       {{#Kochen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
@@ -202,7 +202,7 @@
       {{#Zutaten.Frucht.Liste}}
       {{#Kochen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
@@ -211,7 +211,7 @@
       {{#Zutaten.Sonstiges.Liste}}
       {{#Kochen}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
@@ -234,7 +234,7 @@
       {{#Liste}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
       </tr>
       {{/ZugabeNach}}
@@ -248,15 +248,13 @@
       <tr>
         <th>Zutat</th>
         <th>Dauer [Tage]</th>
-        <th>Entnahme</th>
         <th>Menge [g]</th>
       </tr>
       {{#Zutaten.Kalthopfen.Liste}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Entnahme}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
@@ -265,9 +263,8 @@
       {{#Gaerung}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Entnahme}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
@@ -277,9 +274,8 @@
       {{#Gaerung}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Entnahme}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
@@ -289,9 +285,8 @@
       {{#Gaerung}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Entnahme}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
@@ -301,9 +296,8 @@
       {{#Gaerung}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Entnahme}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
@@ -313,9 +307,8 @@
       {{#Gaerung}}
       {{^ZugabeNach}}
       <tr>
-        <td align="center">{{Name}}</td>
+        <td>{{Name}}</td>
         <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Entnahme}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}

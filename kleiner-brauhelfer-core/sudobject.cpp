@@ -66,7 +66,7 @@ void SudObject::load(int id)
         modelHefegaben()->setSourceModel(bh->modelHefegaben());
         modelHefegaben()->setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
         modelHefegaben()->setFilterRegExp(regExpId);
-        modelHefegaben()->sort(bh->modelHefegaben()->fieldIndex("ZugegebenNach"), Qt::AscendingOrder);
+        modelHefegaben()->sort(bh->modelHefegaben()->fieldIndex("ZugabeNach"), Qt::AscendingOrder);
         modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
         modelWeitereZutatenGaben()->setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
         modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
@@ -263,7 +263,7 @@ void SudObject::brauzutatenAbziehen()
     mSubstract = bh->modelHefe();
     for (int i = 0; i < mList->rowCount(); ++i)
     {
-        if (mList->data(i, "ZugegebenNach").toInt() == 0)
+        if (mList->data(i, "ZugabeNach").toInt() == 0)
         {
             row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
             if (row != -1)
@@ -281,7 +281,7 @@ void SudObject::brauzutatenAbziehen()
     for (int i = 0; i < mList->rowCount(); ++i)
     {
         if (mList->data(i, "Zeitpunkt").toInt() != EWZ_Zeitpunkt_Gaerung ||
-            mList->data(i, "ZugegebenNach").toInt() == 0)
+            mList->data(i, "ZugabeNach").toInt() == 0)
         {
             if (mList->data(i, "Typ").toInt() != EWZ_Typ_Hopfen)
             {

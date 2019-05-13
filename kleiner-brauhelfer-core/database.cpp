@@ -487,7 +487,7 @@ void Database::update()
                 "Name TEXT,"
                 "Menge INTEGER DEFAULT 0,"
                 "Zugegeben INTEGER DEFAULT 0,"
-                "ZugegebenNach INTEGER DEFAULT 0)");
+                "ZugabeNach INTEGER DEFAULT 0)");
             sqlExec("INSERT INTO Hefegaben ("
                 "SudID,"
                 "Name,"
@@ -503,8 +503,8 @@ void Database::update()
             // WeitereZutatenGaben
             //  - Spalte gelöscht 'Zeitpunkt_von'
             //                    'Zeitpunkt_bis'
-            //  - neue Spalte 'ZugegebenNach'
-            sqlExec("ALTER TABLE WeitereZutatenGaben ADD ZugegebenNach INTEGER DEFAULT 0");
+            //  - neue Spalte 'ZugabeNach'
+            sqlExec("ALTER TABLE WeitereZutatenGaben ADD ZugabeNach INTEGER DEFAULT 0");
             query = sqlExec("SELECT ID, SudID, Zeitpunkt_von, Typ FROM WeitereZutatenGaben");
             while (query.next())
             {
@@ -517,7 +517,7 @@ void Database::update()
                 {
                     QDateTime braudatum = query2.value(0).toDateTime();
                     qint64 tage = braudatum.daysTo(zeitpunkt);
-                    sqlExec(QString("UPDATE WeitereZutatenGaben SET ZugegebenNach=%1 WHERE ID=%2").arg(tage).arg(id));
+                    sqlExec(QString("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
                 }
                 if (typ < 0)
                     sqlExec(QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(EWZ_Typ_Hopfen).arg(id));
@@ -538,7 +538,7 @@ void Database::update()
                 "Zugabestatus INTEGER DEFAULT 0,"
                 "Entnahmeindex INTEGER DEFAULT 0,"
                 "Zugabedauer INTEGER DEFAULT 0,"
-                "ZugegebenNach INTEGER DEFAULT 0)");
+                "ZugabeNach INTEGER DEFAULT 0)");
             sqlExec("INSERT INTO WeitereZutatenGaben ("
                 "SudID,"
                 "Name,"
@@ -553,7 +553,7 @@ void Database::update()
                 "Zugabestatus,"
                 "Entnahmeindex,"
                 "Zugabedauer,"
-                "ZugegebenNach"
+                "ZugabeNach"
                 ") SELECT "
                 "SudID,"
                 "Name,"
@@ -568,7 +568,7 @@ void Database::update()
                 "Zugabestatus,"
                 "Entnahmeindex,"
                 "Zugabedauer,"
-                "ZugegebenNach"
+                "ZugabeNach"
                 " FROM TempTable");            
             sqlExec("DROP TABLE TempTable");
 

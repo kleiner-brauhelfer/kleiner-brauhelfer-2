@@ -109,7 +109,7 @@ void WdgHefeGabe::updateValues(bool full)
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())
-        ui->tbTage->setValue(data("ZugegebenNach").toInt());
+        ui->tbTage->setValue(data("ZugabeNach").toInt());
     ui->tbDatum->setMinimumDateTime(bh->sud()->getBraudatum());
     if (!ui->tbDatum->hasFocus())
         ui->tbDatum->setDateTime(data("ZugabeZeitpunkt").toDateTime());
@@ -159,7 +159,7 @@ void WdgHefeGabe::on_tbMenge_valueChanged(int value)
 void WdgHefeGabe::on_tbTage_valueChanged(int value)
 {
     if (ui->tbTage->hasFocus())
-        setData("ZugegebenNach", value);
+        setData("ZugabeNach", value);
 }
 
 void WdgHefeGabe::on_tbDatum_dateTimeChanged(const QDateTime &dateTime)

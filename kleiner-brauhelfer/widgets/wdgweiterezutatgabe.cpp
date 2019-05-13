@@ -181,7 +181,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->tbDauerMin->setValue(dauer);
     ui->cbEntnahme->setChecked(entnahme == EWZ_Entnahmeindex_KeineEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
-        ui->tbZugabeNach->setValue(data("ZugegebenNach").toInt());
+        ui->tbZugabeNach->setValue(data("ZugabeNach").toInt());
     if (!ui->tbDauerTage->hasFocus())
         ui->tbDauerTage->setValue(dauer / 1440);
     ui->tbDatumVon->setMinimumDateTime(bh->sud()->getBraudatum());
@@ -362,7 +362,7 @@ void WdgWeitereZutatGabe::on_cbEntnahme_clicked(bool checked)
 void WdgWeitereZutatGabe::on_tbZugabeNach_valueChanged(int value)
 {
     if (ui->tbZugabeNach->hasFocus())
-        setData("ZugegebenNach", value);
+        setData("ZugabeNach", value);
 }
 
 void WdgWeitereZutatGabe::on_tbDauerTage_valueChanged(int value)

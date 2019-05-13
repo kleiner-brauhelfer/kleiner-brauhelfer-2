@@ -52,11 +52,13 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["Farbe"] = locale.toString(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble(), 'f', 0);
             ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble())).name();
             ctxRezept["Nachisomerisierung"] = QString::number(bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt());
+            ctxRezept["HighGravityFaktor"] = QString::number(bh->modelSud()->data(sudRow, "HighGravityFaktor").toInt());
             ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, "Anlage").toString();
             ctxRezept["Name"] = bh->modelSud()->data(sudRow, "Sudname").toString();
-            ctxRezept["Nummer"] = QString::number(bh->modelSud()->data(sudRow, "Sudnummer").toDouble());
+            ctxRezept["Nummer"] = QString::number(bh->modelSud()->data(sudRow, "Sudnummer").toInt());
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, "Kommentar").toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, "erg_S_Gesamt").toDouble(), 'f', 2);
+            ctxRezept["EinmaischenTemp"] = QString::number(bh->modelSud()->data(sudRow, "EinmaischenTemp").toInt());
             ctx["Rezept"] = ctxRezept;
         }
 
@@ -74,9 +76,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, "IbuIst").toInt());
             ctxSud["CO2"] = locale.toString(bh->modelSud()->data(sudRow, "CO2Ist").toDouble(), 'f', 1);
             ctxSud["Farbe"] = locale.toString(bh->modelSud()->data(sudRow, "FarbeIst").toDouble(), 'f', 0);
+            ctxSud["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "FarbeIst").toDouble())).name();
             ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, "Braudatum").toDate(), QLocale::ShortFormat);
             ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, "Abfuelldatum").toDate(), QLocale::ShortFormat);
-            ctxSud["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "FarbeIst").toDouble())).name();
             ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, "erg_Alkohol").toDouble(), 'f', 1);
             ctxSud["tEVG"] = locale.toString(bh->modelSud()->data(sudRow, "tEVG").toDouble(), 'f', 1);
             ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, "erg_EffektiveAusbeute").toDouble(), 'f', 1);
@@ -165,7 +167,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     map.insert("Menge", locale.toString(model->data(row, "erg_Menge").toDouble(), 'f', 0));
                     map.insert("Kochdauer", locale.toString(model->data(row, "Zeit").toDouble(), 'f', 0));
                     map.insert("Alpha", locale.toString(model->data(row, "Alpha").toDouble(), 'f', 1));
-                     map.insert("Vorderwuerze", model->data(row, "Vorderwuerze").toInt());
+                     map.insert("Vorderwuerze", model->data(row, "Vorderwuerze").toBool());
                     liste << map;
                 }
                 if (!liste.empty())
@@ -178,8 +180,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     QVariantMap map;
                     map.insert("Name", model->data(row, "Name"));
                     map.insert("Menge", model->data(row, "Menge").toInt());
-                    map.insert("Zugegeben", model->data(row, "Zugegeben").toInt());
-                    map.insert("ZugabeNach", model->data(row, "ZugegebenNach").toInt());
+                    if (model->data(row, "Zugegeben").toBool())
+                        map.insert("Status", QObject::tr("zugegeben"));
+                    else
+                        map.insert("Status", QObject::tr("nicht zugegeben"));
+                    map.insert("ZugabeNach", model->data(row, "ZugabeNach").toInt());
                     map.insert("ZugabeZeitpunkt", model->data(row, "ZugabeZeitpunkt").toDateTime());
                     liste << map;
                 }
@@ -212,10 +217,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     {
                     case EWZ_Zeitpunkt_Gaerung:
                         map.insert("Gaerung", true);
-                        map.insert("ZugabeNach", model->data(row, "ZugegebenNach").toInt());
-                        map.insert("Dauer", model->data(row, "Zugabedauer").toInt() / 1440);
+                        map.insert("ZugabeNach", model->data(row, "ZugabeNach").toInt());
                         if (model->data(row, "Entnahmeindex").toInt() == EWZ_Entnahmeindex_MitEntnahme)
+                        {
                             map.insert("Entnahme", true);
+                            map.insert("Dauer", model->data(row, "Zugabedauer").toInt() / 1440);
+                        }
                         switch (model->data(row, "ZugabeStatus").toInt())
                         {
                         case EWZ_Zugabestatus_nichtZugegeben:
@@ -233,8 +240,6 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     case EWZ_Zeitpunkt_Kochen:
                         map.insert("Kochen", true);
                         map.insert("Kochdauer", model->data(row, "Zugabedauer").toInt());
-                        map.insert("Von", model->data(row, "Zeitpunkt_von").toDateTime());
-                        map.insert("Bis", model->data(row, "Zeitpunkt_bis").toDateTime());
                         ctxZutaten["ZutatenKochen"] = true;
                         break;
                     case EWZ_Zeitpunkt_Maischen:
@@ -282,9 +287,22 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             }
         }
 
+        if (parts & TagGeraete)
+        {
+            QVariantList liste;
+            QVariant anlageName = bh->modelSud()->data(sudRow, "Anlage");
+            QVariant anlageId = bh->modelAusruestung()->getValueFromSameRow("Name", anlageName, "ID");
+            for (int row = 0; row < bh->modelGeraete()->rowCount(); ++row)
+            {
+                if (bh->modelGeraete()->data(row, "AusruestungAnlagenID") == anlageId)
+                    liste << QVariantMap({{"Name", bh->modelGeraete()->data(row, "Bezeichnung")}});
+            }
+            if (!liste.empty())
+                ctx["Geraete"] = QVariantMap({{"Liste", liste}});
+        }
+
         if (parts & TagAnhang)
         {
-
             QDir databasePath = QDir(gSettings->databaseDir());
             QVariantList liste;
             for (int row = 0; row < bh->modelAnhang()->rowCount(); ++row)
@@ -296,7 +314,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     if (QDir::isRelativePath(pfad))
                         pfad = QDir::cleanPath(databasePath.filePath(pfad));
                     map.insert("Pfad", pfad);
-                    map.insert("Bild", WdgAnhang::isImage(pfad) ? "1" : "");
+                    map.insert("Bild", WdgAnhang::isImage(pfad));
                     liste << map;
                 }
             }

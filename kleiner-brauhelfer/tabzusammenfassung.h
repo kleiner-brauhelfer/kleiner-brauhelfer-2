@@ -22,9 +22,6 @@ private slots:
     void on_btnToPdf_clicked();
 
 private:
-    void updateTemplateTags();
-
-private:
     Ui::TabZusammenfassung *ui;
 };
 

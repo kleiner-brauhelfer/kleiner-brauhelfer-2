@@ -6,13 +6,28 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodel.h"
-#include "widgets/wdgwebvieweditable.h"
+#include "templatetags.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer *bh;
 extern Settings* gSettings;
 
 void TabSudAuswahl::updateTemplateTags()
+{
+    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
+    if (selection.count() == 1)
+    {
+        const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
+        int sudRow = proxyModel->mapRowToSource(selection[0].row());
+        TemplateTags::render(ui->webview, TemplateTags::TagAll, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), sudRow);
+    }
+    else
+    {
+        TemplateTags::render(ui->webview, TemplateTags::TagAll, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1));
+    }
+}
+
+void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
 {
     const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
     QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
@@ -31,30 +46,6 @@ void TabSudAuswahl::updateTemplateTags()
     {
         int SudID = proxyModel->data(index.row(), "ID").toInt();
         ListSudID.append(SudID);
-    }
-
-    ui->webview->mTemplateTags.clear();
-    if (selection.count() == 1)
-    {
-        int sudRow = proxyModel->mapRowToSource(selection[0].row());
-        WdgWebViewEditable::erstelleTagListe(ui->webview->mTemplateTags, sudRow);
-
-        int bewertung = proxyModel->data(selection[0].row(), "BewertungMax").toInt();
-        if (bewertung > 0)
-        {
-            if (bewertung > Bewertung_MaxSterne)
-                bewertung = Bewertung_MaxSterne;
-            QString s = "";
-            for (int i = 0; i < bewertung; i++)
-                s += "<img class='star' style='padding:0px;margin:0px;' width='24' border=0>";
-            for (int i = bewertung; i < Bewertung_MaxSterne; i++)
-                s += "<img class='star_grey' style='padding:0px;margin:0px;' width='24' border=0>";
-            ui->webview->mTemplateTags["Sterne"] = s;
-        }
-    }
-    else
-    {
-        WdgWebViewEditable::erstelleTagListe(ui->webview->mTemplateTags);
     }
 
     QList<Rohstoff> ListMalz;
@@ -480,30 +471,5 @@ void TabSudAuswahl::updateTemplateTags()
         ctxZutaten["Sonstiges"] = QVariantMap({{"Liste", liste}});
     }
 
-    ui->webview->mTemplateTags["Zutaten"] = ctxZutaten;
-
-    if (selection.count() == 1)
-    {
-        QDir databasePath = QDir(gSettings->databaseDir());
-        QVariantList liste;
-        for (int i = 0; i < bh->modelAnhang()->rowCount(); ++i)
-        {
-            int sudId = bh->modelAnhang()->data(i, "SudID").toInt();
-            if (ListSudID.contains(sudId))
-            {
-                QVariantMap map;
-                QString pfad = bh->modelAnhang()->data(i, "Pfad").toString();
-                if (QDir::isRelativePath(pfad))
-                    pfad = QDir::cleanPath(databasePath.filePath(pfad));
-                map.insert("Pfad", pfad);
-                map.insert("Bild", WdgAnhang::isImage(pfad) ? "1" : "");
-                liste << map;
-            }
-        }
-        if (!liste.empty())
-            ui->webview->mTemplateTags["Anhang"] = QVariantMap({{"Liste", liste}});
-    }
-
-    ui->webview->updateTags();
-    ui->webview->updateHtml();
+    tags["Zutaten"] = ctxZutaten;
 }

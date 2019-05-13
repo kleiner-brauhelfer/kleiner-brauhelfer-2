@@ -87,7 +87,8 @@ SOURCES += \
     widgets/wdgrating.cpp \
     widgets/wdgweiterezutatgabe.cpp \
     widgets/webview.cpp \
-    widgets/wdgwebvieweditable.cpp
+    widgets/wdgwebvieweditable.cpp \
+    templatetags.cpp
 
 HEADERS += \
     definitionen.h \
@@ -146,7 +147,8 @@ HEADERS += \
     widgets/wdgrating.h \
     widgets/wdgweiterezutatgabe.h \
     widgets/webview.h \
-    widgets/wdgwebvieweditable.h
+    widgets/wdgwebvieweditable.h \
+    templatetags.h
 
 FORMS += \
     mainwindow.ui \

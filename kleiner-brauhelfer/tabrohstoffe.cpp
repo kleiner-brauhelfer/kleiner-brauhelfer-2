@@ -438,8 +438,15 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = model->fieldIndex("ID");
     model->setHeaderData(col, Qt::Horizontal, tr("Wasserprofil"));
     table->setColumnHidden(col, false);
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
+
+    col = model->fieldIndex("Restalkalitaet");
+    model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität [°dH]"));
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
+    header->resizeSection(col, 120);
+    header->moveSection(header->visualIndex(col), 1);
 
     mDefaultStateTableWasser = header->saveState();
     header->restoreState(gSettings->value("tableWasserState").toByteArray());

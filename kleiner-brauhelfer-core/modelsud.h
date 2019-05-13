@@ -51,7 +51,6 @@ private:
     QVariant RestalkalitaetFaktor(const QModelIndex &index) const;
     QVariant FaktorHauptgussEmpfehlung(const QModelIndex &index) const;
     void removeRowsFrom(SqlTableModel* model, int sudId);
-    int getNextId() const;
 private:
     Brauhelfer* bh;
     bool updating;

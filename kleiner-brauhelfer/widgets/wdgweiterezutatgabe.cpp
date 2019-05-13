@@ -104,9 +104,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbVorhanden->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
-        //ui->cbZugabezeitpunkt->setEnabled(true);
         ui->cbZugabezeitpunkt->setEnabled(!bh->sud()->getBierWurdeGebraut());
-        //ui->cbEntnahme->setEnabled(true);
         ui->tbMenge->setReadOnly(false);
         ui->tbDauerMin->setReadOnly(false);
         ui->tbDatumVon->setReadOnly(false);
@@ -354,7 +352,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Soll die Zutat vom Bestand abgezogen werden?")
        ) == QMessageBox::Yes)
-        bh->sud()->substractIngredient(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen, data("erg_Menge").toDouble());
+        bh->sud()->zutatAbziehen(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen ? 0 : 2, data("erg_Menge").toDouble());
 }
 
 void WdgWeitereZutatGabe::on_cbEntnahme_currentIndexChanged(int index)
@@ -403,5 +401,3 @@ void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 {
     bh->sud()->modelWeitereZutatenGaben()->removeRow(mIndex);
 }
-
-

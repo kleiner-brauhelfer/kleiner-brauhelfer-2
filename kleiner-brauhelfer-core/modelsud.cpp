@@ -710,10 +710,7 @@ void ModelSud::updatePreis(int row)
     double kostenAnlage = dataAnlage(row, "Kosten").toDouble();
     summe += kostenAnlage;
 
-    if (data(row, "BierWurdeGebraut").toBool())
-        setData(row, "erg_Preis", summe / data(row, "erg_AbgefuellteBiermenge").toDouble());
-    else
-        setData(row, "erg_Preis", summe / data(row, "Menge").toDouble());
+    setData(row, "erg_Preis", summe / data(row, "MengeIst").toDouble());
 }
 
 void ModelSud::updateKochdauer(int row, const QVariant &value)
@@ -824,12 +821,12 @@ QVariant ModelSud::ReifezeitDelta(const QModelIndex &index) const
 
 QVariant ModelSud::AbfuellenBereitZutaten(const QModelIndex &index) const
 {
-    int id = data(index.row(), "ID").toInt();
+    int sudId = data(index.row(), "ID").toInt();
     SqlTableModel* model = bh->modelWeitereZutatenGaben();
     int colSudId = model->fieldIndex("SudID");
     for (int i = 0; i < model->rowCount(); ++i)
     {
-        if (model->data(model->index(i, colSudId)).toInt() == id)
+        if (model->data(model->index(i, colSudId)).toInt() == sudId)
         {
             if (!model->data(i, "Abfuellbereit").toBool())
                 return false;
@@ -943,19 +940,6 @@ void ModelSud::removeRowsFrom(SqlTableModel* model, int sudId)
         if (model->index(i, colId).data().toInt() == sudId)
             model->removeRows(i);
     }
-}
-
-int ModelSud::getNextId() const
-{
-    int maxId = 0;
-    int colSudId = fieldIndex("ID");
-    for (int i = 0; i < rowCount(); ++i)
-    {
-        int sudId = index(i, colSudId).data().toInt();
-        if (sudId > maxId)
-            maxId = sudId;
-    }
-    return maxId + 1;
 }
 
 void ModelSud::defaultValues(QVariantMap &values) const

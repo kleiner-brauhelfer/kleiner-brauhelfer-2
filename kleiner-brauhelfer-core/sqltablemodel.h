@@ -245,6 +245,12 @@ protected:
      */
     QString getUniqueName(const QModelIndex &index, const QVariant &value, bool ignoreIndexRow = false) const;
 
+    /**
+     * @brief getNextId
+     * @return
+     */
+    int getNextId() const;
+
 private Q_SLOTS:
 
     void fetchAll();

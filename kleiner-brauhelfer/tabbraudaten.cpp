@@ -4,6 +4,7 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "templatetags.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/checkboxdelegate.h"
@@ -146,17 +147,17 @@ void TabBraudaten::updateValues()
 
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
 
-    value = pow(bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI / 1000;
+    value = pow(bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI / 1000;
     ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), ui->tbMengeSollKochbeginn20->value()));
     ui->tbMengeSollcmVomBoden->setValue(ui->tbMengeSollKochbeginn100->value() / value);
-    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
+    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
     ui->tbSWSollKochbeginn->setValue(bh->sud()->getSWSollKochbeginn());
 
     ui->tbMengeSollKochende20->setValue(bh->sud()->getMengeSollKochende());
     ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), ui->tbMengeSollKochende20->value()));
     ui->tbMengeSollEndecmVomBoden->setValue(ui->tbMengeSollKochende100->value() / value);
-    ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollEndecmVomBoden->value());
+    ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollEndecmVomBoden->value());
     ui->tbSWSollKochende->setValue(bh->sud()->getSWSollKochende());
 
     ui->tbVerdampfung->setValue(bh->sud()->getVerdampfungsziffer());
@@ -167,7 +168,7 @@ void TabBraudaten::updateValues()
         ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 
-    ui->webview->updateAll(bh->sud()->row());
+    TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
 void TabBraudaten::on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime)
@@ -189,8 +190,8 @@ void TabBraudaten::on_tbWuerzemengeKochbeginn_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
-    double d = bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
+    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
@@ -211,8 +212,8 @@ void TabBraudaten::on_tbWuerzemengeKochende_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
-    double d = bh->sud()->getAnlageValue("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageValue("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
+    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
     dlg.setVisibleVonOben(false);
@@ -285,7 +286,7 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     if (QMessageBox::question(this, tr("Zutaten vom Bestand abziehen"),
                               tr("Sollen die bisher verwendeten Zutaten vom Bestand abgezogen werden?")
        ) == QMessageBox::Yes)
-        bh->sud()->substractBrewIngredients();
+        bh->sud()->brauzutatenAbziehen();
 
     QVariantMap values({{"SudID", bh->sud()->id()},
                         {"Zeitstempel", bh->sud()->getBraudatum()},

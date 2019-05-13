@@ -11,7 +11,7 @@
 #include <QJsonDocument>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "widgets/wdgwebvieweditable.h"
+#include "templatetags.h"
 #include "helper/mustache.h"
 
 extern Brauhelfer* bh;
@@ -165,14 +165,20 @@ void TabEtikette::updateSvg()
     ui->viewSvg->setViewOutline(false);
 }
 
+void TabEtikette::updateTags()
+{
+    if (ui->tbTags->isVisible())
+    {
+        QJsonDocument json = QJsonDocument::fromVariant(mTemplateTags);
+        ui->tbTags->setPlainText(json.toJson());
+    }
+}
+
 void TabEtikette::updateTemplateTags()
 {
     mTemplateTags.clear();
-    WdgWebViewEditable::erstelleTagListe(mTemplateTags, bh->sud()->row());
-
-    QJsonDocument json = QJsonDocument::fromVariant(mTemplateTags);
-    ui->tbTags->setPlainText(json.toJson());
-
+    TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagRezept | TemplateTags::TagSud, bh->sud()->row());
+    updateTags();
     updateSvg();
 }
 
@@ -259,6 +265,7 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
         ui->tbTemplate->setPlainText("");
     }
     ui->btnSaveTemplate->setVisible(false);
+    updateTags();
 }
 
 void TabEtikette::on_tbTemplate_textChanged()

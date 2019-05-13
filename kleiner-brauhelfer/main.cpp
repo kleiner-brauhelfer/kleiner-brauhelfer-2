@@ -89,9 +89,9 @@ static bool connectDatabase(bool &updated)
             else if (version < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Die Datenbankdatei muss aktualisiert werden (%1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
+                                               QObject::tr("Die Datenbankdatei muss aktualisiert werden (version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
                                                QObject::tr("Soll die Datenbankdatei jetzt aktualisiert werden?") + " " +
-                                               QObject::tr("Achtung, die Änderungen können nicht rückgängig gemacht werden."),
+                                               QObject::tr("ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!"),
                                                QMessageBox::Yes | QMessageBox::No,
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)

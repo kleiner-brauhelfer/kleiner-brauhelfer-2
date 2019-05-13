@@ -332,7 +332,7 @@
   </action>
   <action name="actionWeitereZutaten">
    <property name="text">
-    <string>&quot;Weitere Zutaten&quot; Zugabe zurücksetzen</string>
+    <string>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</string>
    </property>
   </action>
   <action name="actionBeenden">

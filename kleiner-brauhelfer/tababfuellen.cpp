@@ -4,6 +4,7 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "templatetags.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/checkboxdelegate.h"
@@ -190,7 +191,7 @@ void TabAbfuellen::updateValues()
     ui->tbAlkohol->setValue(bh->sud()->geterg_Alkohol());
     ui->tbSpundungsdruck->setValue(bh->sud()->getSpundungsdruck());
 
-    ui->webview->updateAll(bh->sud()->row());
+    TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
 void TabAbfuellen::on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime)

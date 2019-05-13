@@ -28,6 +28,7 @@ private slots:
     void selectionChanged();
     void spalteAnzeigen(bool checked);
     void updateTemplateTags();
+    void generateTemplateTags(QVariantMap& tags);
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
     void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
     void on_rbAlle_clicked();

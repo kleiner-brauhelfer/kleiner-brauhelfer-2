@@ -11,66 +11,60 @@
   </div>
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <table>
-      <tbody>
-        <tr>
-          <td></td>
-          <td>{{{Sterne}}}</td>
-        </tr>
-        <tr>
-          <td valign="center">
-            <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:100px;height:100px">
-              <img class="glas" style="padding:0px;margin:0px;width:100%;height:100%">
-            </div>
-          </td>
-          <td valign="top">
-            <table>
-              <col width="*">
-              <col width="50">
-              <col width="50">
-              <col width="*">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Rezept</th>
-                  <th>Sud</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Menge</td>
-                  <td class="value" align="center">{{Rezept.Menge}}</td>
-                  <td class="value" align="center">{{Sud.Menge}}</td>
-                  <td>l</td>
-                </tr>
-                <tr>
-                  <td>Stammwürze</td>
-                  <td class="value" align="center">{{Rezept.SW}}</td>
-                  <td class="value" align="center">{{Sud.SW}}</td>
-                  <td>°P</td>
-                </tr>
-                <tr>
-                  <td>Bittere</td>
-                  <td class="value" align="center">{{Rezept.Bittere}}</td>
-                  <td class="value" align="center">{{Sud.Bittere}}</td>
-                  <td>IBU</td>
-                </tr>
-                <tr>
-                  <td>Farbe</td>
-                  <td class="value" align="center">{{Rezept.Farbe}}</td>
-                  <td class="value" align="center">{{Sud.Farbe}}</td>
-                  <td>EBC</td>
-                </tr>
-                <tr>
-                  <td>CO₂-Gehalt</td>
-                  <td class="value" align="center">{{Rezept.CO2}}</td>
-                  <td class="value" align="center">{{Sud.CO2}}</td>
-                  <td>g/l</td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td></td>
+        <td>{{{Sud.BewertungSterne}}}</td>
+      </tr>
+      <tr>
+        <td valign="center">
+          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:100px;height:100px">
+            <img class="glas" style="padding:0px;margin:0px;width:100%;height:100%">
+          </div>
+        </td>
+        <td valign="top">
+          <table>
+            <col width="*">
+            <col width="50">
+            {{^Sud.StatusRezept}}<col width="50">{{/Sud.StatusRezept}}
+            <col width="*">
+            <tr>
+              <th></th>
+              <th>Rezept</th>
+              {{^Sud.StatusRezept}}<th>Sud</th>{{/Sud.StatusRezept}}
+            </tr>
+            <tr>
+              <td>Menge</td>
+              <td class="value" align="center">{{Rezept.Menge}}</td>
+              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Menge}}</td>{{/Sud.StatusRezept}}
+              <td>l</td>
+            </tr>
+            <tr>
+              <td>Stammwürze</td>
+              <td class="value" align="center">{{Rezept.SW}}</td>
+              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.SW}}</td>{{/Sud.StatusRezept}}
+              <td>°P</td>
+            </tr>
+            <tr>
+              <td>Bittere</td>
+              <td class="value" align="center">{{Rezept.Bittere}}</td>
+              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Bittere}}</td>{{/Sud.StatusRezept}}
+              <td>IBU</td>
+            </tr>
+            <tr>
+              <td>Farbe</td>
+              <td class="value" align="center">{{Rezept.Farbe}}</td>
+              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Farbe}}</td>{{/Sud.StatusRezept}}
+              <td>EBC</td>
+            </tr>
+            <tr>
+              <td>CO₂-Gehalt</td>
+              <td class="value" align="center">{{Rezept.CO2}}</td>
+              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.CO2}}</td>{{/Sud.StatusRezept}}
+              <td>g/l</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
     </table>
     <p><div style="word-wrap: break-word;">{{{Rezept.Kommentar}}}</div></p>
   </div>
@@ -94,7 +88,7 @@
         <th>rest [kg]</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
@@ -119,7 +113,7 @@
         <th>rest [g]</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
@@ -144,7 +138,7 @@
         <th>rest</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
@@ -169,7 +163,7 @@
         <th>rest</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
@@ -194,7 +188,7 @@
         <th>rest</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
@@ -219,7 +213,7 @@
         <th>rest</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
@@ -244,7 +238,7 @@
         <th>rest</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
@@ -269,7 +263,7 @@
         <th>rest</th>
       </tr>
       {{#Liste}}
-      <tr valign='middle'>
+      <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
@@ -291,7 +285,7 @@
     <br>
     <table width='100%'>
     {{#Liste}}
-    {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}"></td></tr>{{/Bild}}
+    {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}
     {{^Bild}}<tr><td align="center"><a href="{{Pfad}}">{{Pfad}}</a></td></tr>{{/Bild}}
     {{/Liste}}
     </table>

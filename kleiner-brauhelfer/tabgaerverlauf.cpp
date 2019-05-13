@@ -469,7 +469,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         QString name = bh->sud()->modelWeitereZutatenGaben()->data(row, "Name").toString();
         int typ = bh->sud()->modelWeitereZutatenGaben()->data(row, "Typ").toInt();
         double menge = bh->sud()->modelWeitereZutatenGaben()->data(row, "erg_Menge").toDouble();
-        bh->sud()->substractIngredient(name, typ == EWZ_Typ_Hopfen, menge);
+        bh->sud()->zutatAbziehen(name, typ == EWZ_Typ_Hopfen ? 0 : 2, menge);
     }
 }
 

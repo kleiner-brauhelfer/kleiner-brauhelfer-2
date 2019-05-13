@@ -192,7 +192,7 @@ public:
      * @param fieldName
      * @return
      */
-    QVariant getAnlageValue(const QString& fieldName) const;
+    QVariant getAnlageData(const QString& fieldName) const;
 
     /**
      * @brief Gets the different tables
@@ -213,15 +213,15 @@ public:
     /**
      * @brief Substracts the brew ingredients from the inventory
      */
-    Q_INVOKABLE void substractBrewIngredients();
+    Q_INVOKABLE void brauzutatenAbziehen();
 
     /**
      * @brief Substracts an ingredient from the inventory
      * @param ingredient Ingredient
-     * @param hops Hopfen
+     * @param typ 0: Hopfen, 1: Hefe, 2: weitere Zutat
      * @param quantity Quantity [g]
      */
-    Q_INVOKABLE void substractIngredient(const QString& ingredient, bool hopfen, double quantity);
+    Q_INVOKABLE void zutatAbziehen(const QString& zutat, int typ, double menge);
 
 Q_SIGNALS:
 

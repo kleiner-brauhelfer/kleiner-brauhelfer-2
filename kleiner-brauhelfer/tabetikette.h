@@ -23,6 +23,7 @@ private slots:
     void updateValues();
     void updateTemplateFilePath();
     void updateSvg();
+    void updateTags();
     void updateTemplateTags();
     void updateAuswahlListe();
     void on_cbAuswahl_activated(int index);

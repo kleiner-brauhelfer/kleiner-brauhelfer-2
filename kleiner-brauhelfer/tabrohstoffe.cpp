@@ -444,7 +444,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = model->fieldIndex("Restalkalitaet");
     model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität [°dH]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 120);
     header->moveSection(header->visualIndex(col), 1);
 

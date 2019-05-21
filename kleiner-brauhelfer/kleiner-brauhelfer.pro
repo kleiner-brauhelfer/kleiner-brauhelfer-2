@@ -6,7 +6,7 @@ TARGET = kleiner-brauhelfer
 VER_MAJ = 2
 VER_MIN = 0
 VER_PAT = 0
-VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
+VERSION = $$sprintf("%1.%2.%3beta1", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
 TEMPLATE = app
@@ -46,6 +46,7 @@ SOURCES += \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
+    templatetags.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgeinmaischtemp.cpp \
     dialogs/dlgmessage.cpp \
@@ -87,8 +88,7 @@ SOURCES += \
     widgets/wdgrating.cpp \
     widgets/wdgweiterezutatgabe.cpp \
     widgets/webview.cpp \
-    widgets/wdgwebvieweditable.cpp \
-    templatetags.cpp
+    widgets/wdgwebvieweditable.cpp
 
 HEADERS += \
     definitionen.h \
@@ -106,6 +106,7 @@ HEADERS += \
     tabrohstoffe.h \
     tabsudauswahl.h \
     tabzusammenfassung.h \
+    templatetags.h \
     dialogs/dlgabout.h \
     dialogs/dlgeinmaischtemp.h \
     dialogs/dlgmessage.h \
@@ -147,8 +148,7 @@ HEADERS += \
     widgets/wdgrating.h \
     widgets/wdgweiterezutatgabe.h \
     widgets/webview.h \
-    widgets/wdgwebvieweditable.h \
-    templatetags.h
+    widgets/wdgwebvieweditable.h
 
 FORMS += \
     mainwindow.ui \

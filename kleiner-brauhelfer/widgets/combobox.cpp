@@ -1,6 +1,7 @@
 #include "combobox.h"
-#include "settings.h"
 #include <QAbstractItemView>
+#include "settings.h"
+
 extern Settings *gSettings;
 
 ComboBox::ComboBox(QWidget *parent) :

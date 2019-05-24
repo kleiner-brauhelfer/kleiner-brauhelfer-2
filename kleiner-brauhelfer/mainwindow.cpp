@@ -86,7 +86,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (bh->isDirty())
     {
-        int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
+        int ret = QMessageBox::question(this, tr("Anwendung schliessen?"),
                                   tr("Sollen die Änderungen vor dem Schliessen gespeichert werden?"),
                                   QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
@@ -105,8 +105,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
         int ret = QMessageBox::Yes;
         if (ui->actionBestaetigungBeenden->isChecked())
         {
-            ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Soll die Anwendung geschloßen werden?"),
+            ret = QMessageBox::question(this, tr("Anwendung schliessen?"),
+                                  tr("Soll die Anwendung geschlossen werden?"),
                                   QMessageBox::Cancel | QMessageBox::Yes,
                                   QMessageBox::Yes);
         }

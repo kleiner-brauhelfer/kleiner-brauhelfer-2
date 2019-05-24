@@ -188,6 +188,23 @@ void TabSudAuswahl::selectionChanged()
     ui->btnLaden->setEnabled(selected);
 }
 
+void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
+{
+    QWidget::keyPressEvent(event);
+    if (ui->tableSudauswahl->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnLoeschen_clicked();
+            break;
+        case Qt::Key::Key_Return:
+            on_btnLaden_clicked();
+            break;
+        }
+    }
+}
+
 void TabSudAuswahl::on_tableSudauswahl_doubleClicked(const QModelIndex &index)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());

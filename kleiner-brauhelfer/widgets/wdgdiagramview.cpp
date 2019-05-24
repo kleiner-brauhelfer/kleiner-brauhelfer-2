@@ -126,6 +126,12 @@ void WdgDiagramView::zeichneAchsen()
     AbstandOben = 20;
     AbstandRechts = 20;
   }
+  else {
+      AbstandBeschriftungOben = 15;
+      AbstandBeschriftungRechts = 20;
+      AbstandOben = 35;
+      AbstandRechts = 40;
+  }
 
   //Nullpunkt x
   nullX = AbstandLinks;

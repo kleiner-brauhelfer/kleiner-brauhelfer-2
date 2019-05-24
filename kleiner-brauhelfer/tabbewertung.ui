@@ -427,7 +427,7 @@
                   <item>
                    <widget class="QRadioButton" name="rbSchaum_5">
                     <property name="text">
-                     <string>mäßige Haltbarkeit</string>
+                     <string>mässige Haltbarkeit</string>
                     </property>
                    </widget>
                   </item>
@@ -581,7 +581,7 @@
              <item row="2" column="1">
               <widget class="QCheckBox" name="rbGeruch_6">
                <property name="text">
-                <string>süßlich, nach Würze</string>
+                <string>süsslich, nach Würze</string>
                </property>
               </widget>
              </item>
@@ -619,7 +619,7 @@
              <item row="2" column="1">
               <widget class="QCheckBox" name="rbGeschmack_7">
                <property name="text">
-                <string>süßlich, klebrig</string>
+                <string>süsslich, klebrig</string>
                </property>
               </widget>
              </item>

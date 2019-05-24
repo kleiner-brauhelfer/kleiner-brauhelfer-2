@@ -43,8 +43,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
 
-    ui->tbZuckerFaktor->setValue(gSettings->value("ZuckerFaktor").toDouble());
-    ui->tbFlasche->setValue(gSettings->value("FlaschenGroesse").toDouble());
+    ui->tbZuckerFaktor->setValue(gSettings->value("ZuckerFaktor", 1.0).toDouble());
+    ui->tbFlasche->setValue(gSettings->value("FlaschenGroesse", 0.5).toDouble());
 
     gSettings->endGroup();
 

@@ -1,9 +1,9 @@
 #ifndef EBCDELEGATE_H
 #define EBCDELEGATE_H
 
-#include "doublespinboxdelegate.h"
+#include "spinboxdelegate.h"
 
-class EbcDelegate : public DoubleSpinBoxDelegate
+class EbcDelegate : public SpinBoxDelegate
 {
 public:
     explicit EbcDelegate(QObject *parent = nullptr);

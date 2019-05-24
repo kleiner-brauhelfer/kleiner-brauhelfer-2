@@ -451,7 +451,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     mDefaultStateTableWasser = header->saveState();
     header->restoreState(gSettings->value("tableWasserState").toByteArray());
 
-    int filter = gSettings->value("filter").toInt();
+    int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)
     {
         ui->radioButtonVorhanden->setChecked(true);

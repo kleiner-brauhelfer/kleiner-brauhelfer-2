@@ -56,6 +56,9 @@ private slots:
     void on_btnToPdf_clicked();
 
 private:
+    void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+
+private:
     Ui::TabSudAuswahl *ui;
     QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;

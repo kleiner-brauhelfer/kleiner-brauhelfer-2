@@ -2,7 +2,7 @@
 #include <QSqlRecord>
 #include <QSqlIndex>
 
-#define DEBUG_EN 1
+#define DEBUG_EN 0
 #if DEBUG_EN
   #include <QDebug>
 #endif

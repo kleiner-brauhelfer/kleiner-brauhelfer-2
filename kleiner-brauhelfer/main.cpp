@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QTranslator>
+#include <QLibraryInfo>
 #include <QStyleFactory>
 #include <QDirIterator>
 #include <QFile>
@@ -177,6 +179,14 @@ int main(int argc, char *argv[])
         gSettings = new SettingsPortable();
     else
         gSettings = new Settings();
+
+    // install translation
+    QTranslator translatorQt;
+    translatorQt.load(QLocale::system(), "qt", "_", "translations");
+    if (translatorQt.isEmpty())
+        translatorQt.load(QLocale::system(), "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    if (!translatorQt.isEmpty())
+        a.installTranslator(&translatorQt);
 
     // copy resources
     copyResources();

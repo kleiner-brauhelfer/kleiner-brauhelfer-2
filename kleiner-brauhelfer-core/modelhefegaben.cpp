@@ -54,6 +54,7 @@ void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
         int colSudId = fieldIndex("SudID");
         int colZugegeben = fieldIndex("Zugegeben");
         int colZugabeNach = fieldIndex("ZugabeNach");
+        mSignalModifiedBlocked = true;
         if (status == Sud_Status_Rezept)
         {
             for (int row = 0; row < rowCount(); ++row)
@@ -71,6 +72,7 @@ void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
                     setData(index(row, colZugegeben), true);
             }
         }
+        mSignalModifiedBlocked = false;
     }
 }
 

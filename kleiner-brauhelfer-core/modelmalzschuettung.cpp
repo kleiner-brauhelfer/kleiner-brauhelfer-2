@@ -61,6 +61,7 @@ void ModelMalzschuettung::onSudDataChanged(const QModelIndex &index)
         int colSudId = fieldIndex("SudID");
         int colProzent = fieldIndex("Prozent");
         int colMenge = fieldIndex("erg_Menge");
+        mSignalModifiedBlocked = true;
         for (int i = 0; i < rowCount(); ++i)
         {
             if (this->index(i, colSudId).data().toInt() == sudId)
@@ -69,6 +70,7 @@ void ModelMalzschuettung::onSudDataChanged(const QModelIndex &index)
                 QSqlTableModel::setData(this->index(i, colMenge), p / 100 * total);
             }
         }
+        mSignalModifiedBlocked = false;
     }
 }
 

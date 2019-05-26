@@ -2580,8 +2580,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>cbWasserProfil</tabstop>
   <tabstop>tbRestalkalitaet</tabstop>
   <tabstop>tbReifezeit</tabstop>
-  <tabstop>btnEinmaischtemperatur</tabstop>
-  <tabstop>tbEinmaischtemperatur</tabstop>
   <tabstop>tabWidget_2</tabstop>
   <tabstop>tbKommentar</tabstop>
   <tabstop>scrollAreaAnhang</tabstop>
@@ -2600,6 +2598,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>scrollAreaWeitereZutatenGaben</tabstop>
   <tabstop>btnNeueHopfenstopfenGabe</tabstop>
   <tabstop>btnNeueWeitereZutat</tabstop>
+  <tabstop>btnEinmaischtemperatur</tabstop>
+  <tabstop>tbEinmaischtemperatur</tabstop>
   <tabstop>scrollArea_6</tabstop>
   <tabstop>gvGlas</tabstop>
   <tabstop>tbFarbe</tabstop>

@@ -9,7 +9,7 @@
 ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh),
-    updating(false),
+    mUpdating(false),
     swWzMaischenRecipe(QVector<double>()),
     swWzKochenRecipe(QVector<double>()),
     swWzGaerungRecipe(QVector<double>()),
@@ -260,6 +260,15 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
 
 bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
 {
+    bool ret;
+    mUpdating = true;
+    ret = setDataExt_impl(index, value);
+    mUpdating = false;
+    return ret;
+}
+
+bool ModelSud::setDataExt_impl(const QModelIndex &index, const QVariant &value)
+{
     QString field = fieldName(index.column());
     if (field == "Braudatum")
     {
@@ -421,9 +430,9 @@ void ModelSud::update(int row)
     if (row < 0 || row >= rowCount())
         return;
 
-    if (updating)
+    if (mUpdating)
         return;
-    updating = true;
+    mUpdating = true;
 
     double menge, sw;
 
@@ -491,7 +500,7 @@ void ModelSud::update(int row)
 
     setData(row, "Gespeichert", QDateTime::currentDateTime());
 
-    updating = false;
+    mUpdating = false;
 }
 
 void ModelSud::updateSwWeitereZutaten(int row)

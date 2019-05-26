@@ -166,6 +166,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
         int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
         int colSudId = fieldIndex("SudID");
         int colMenge = fieldIndex("Menge");
+        mSignalModifiedBlocked = true;
         for (int i = 0; i < rowCount(); ++i)
         {
             if (index(i, colSudId).data().toInt() == sudId)
@@ -174,6 +175,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
                 setData(index2, data(index2));
             }
         }
+        mSignalModifiedBlocked = false;
     }
     else if (field == "Status")
     {
@@ -182,6 +184,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
         int colSudId = fieldIndex("SudID");
         int colStatus = fieldIndex("Zugabestatus");
         int colZugabeNach = fieldIndex("ZugabeNach");
+        mSignalModifiedBlocked = true;
         if (status == Sud_Status_Rezept)
         {
             for (int row = 0; row < rowCount(); ++row)
@@ -199,6 +202,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
                     setData(index(row, colStatus), EWZ_Zugabestatus_Zugegeben);
             }
         }
+        mSignalModifiedBlocked = false;
     }
 }
 

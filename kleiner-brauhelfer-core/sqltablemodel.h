@@ -263,6 +263,11 @@ protected:
      */
     QStringList mVirtualField;
 
+    /**
+     * @brief Can be set to temporarily skip emit of the modified signal
+     */
+    bool mSignalModifiedBlocked;
+
 private:
     QHash<int, QByteArray> mRoles;
     int mSetDataCnt;

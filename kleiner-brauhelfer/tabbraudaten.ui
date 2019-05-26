@@ -1294,36 +1294,21 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="3" column="5">
-            <widget class="QLabel" name="label_7">
+           <item row="5" column="2">
+            <widget class="QLabel" name="label_48">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="text">
-              <string>Effektive Sudhausausbeute</string>
+              <string>l</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="4" rowspan="8">
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="5" colspan="3">
-            <widget class="Line" name="line_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_17">
-             <property name="text">
-              <string>Abgefüllte Speisemenge</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="DoubleSpinBox" name="tbWuerzemengeAnstellen">
+           <item row="3" column="1">
+            <widget class="DoubleSpinBox" name="tbWuerzemengeAnstellenTotal">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -1331,7 +1316,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Anstellmenge.</string>
+              <string>Gesamtwürzemenge (Anstellmenge +  Speisemenge).</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1347,19 +1332,6 @@
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QLabel" name="label_43">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>l</string>
              </property>
             </widget>
            </item>
@@ -1397,183 +1369,6 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="7">
-            <widget class="QLabel" name="lblWasserVerschneidungEinheit">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="7">
-            <widget class="QLabel" name="label_76">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="6">
-            <widget class="DoubleSpinBox" name="tbAusbeuteEffektiv">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Die effektive Sudhausausbeute wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet. Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert kann als Orientierung für die &lt;strong&gt;Ausbeute für die Schüttungsberechnung&lt;/strong&gt; im Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; hergenommen werden.</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="2">
-            <widget class="QLabel" name="label_48">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="5">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Geschätzte benötigte Speisemenge (SRE 3°P, 20°C)</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_47">
-             <property name="text">
-              <string>Anstellmenge</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="DoubleSpinBox" name="tbSWAnstellen">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Stammwürze gemessen vor der Zugabe der weiteren Zutaten (Gärung).</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>1.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="7">
-            <widget class="QLabel" name="label_6">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_45">
-             <property name="text">
-              <string>Stammwürze beim Anstellen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" colspan="4">
-            <widget class="Line" name="line_12">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="DoubleSpinBox" name="tbSpeisemenge">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Abgefüllte Speisemenge für die Karbonisierung.</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="4">
-            <widget class="Line" name="line_11">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="6">
             <widget class="DoubleSpinBox" name="tbWasserVerschneidung">
              <property name="minimumSize">
@@ -1608,8 +1403,97 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="2">
-            <widget class="QLabel" name="label_59">
+           <item row="8" column="6">
+            <widget class="DoubleSpinBox" name="tbAusbeuteEffektiv">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Die effektive Sudhausausbeute wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet. Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert kann als Orientierung für die &lt;strong&gt;Ausbeute für die Schüttungsberechnung&lt;/strong&gt; im Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; hergenommen werden.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>99.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="5">
+            <widget class="QLabel" name="lblWasserVerschneidung">
+             <property name="text">
+              <string>Wassermenge, um auf Zielstammwürze zu verdünnen</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="DoubleSpinBox" name="tbWuerzemengeAnstellen">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Anstellmenge.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4" rowspan="9">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="5">
+            <spacer name="horizontalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="4" column="7">
+            <widget class="QLabel" name="label_26">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -1621,30 +1505,10 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="5" colspan="3">
-            <widget class="Line" name="line_8">
+           <item row="2" column="5" colspan="3">
+            <widget class="Line" name="line_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_49">
-             <property name="text">
-              <string>Würzemenge</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="label_46">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
              </property>
             </widget>
            </item>
@@ -1670,76 +1534,22 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="1">
-            <widget class="DoubleSpinBox" name="tbWuerzemengeAnstellenTotal">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Gesamtwürzemenge (Anstellmenge +  Speisemenge).</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="5">
-            <widget class="QLabel" name="lblWasserVerschneidung">
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_47">
              <property name="text">
-              <string>Wassermenge, um auf Zielstammwürze zu verdünnen</string>
+              <string>Anstellmenge</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="5">
-            <widget class="QLabel" name="label_75">
-             <property name="text">
-              <string>Zielstammwürze</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <spacer name="horizontalSpacer_5">
+           <item row="6" column="0" colspan="4">
+            <widget class="Line" name="line_12">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
+            </widget>
            </item>
-           <item row="8" column="5">
-            <spacer name="horizontalSpacer_9">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="6" column="7">
-            <widget class="QLabel" name="label_26">
+           <item row="4" column="2">
+            <widget class="QLabel" name="label_43">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -1751,7 +1561,53 @@
              </property>
             </widget>
            </item>
-           <item row="6" column="6">
+           <item row="8" column="7">
+            <widget class="QLabel" name="label_6">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>%</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_46">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>°P</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="label_59">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="4">
+            <widget class="Line" name="line_11">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="6">
             <widget class="DoubleSpinBox" name="tbSpeisemengeNoetig">
              <property name="minimumSize">
               <size>
@@ -1782,6 +1638,150 @@
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="7">
+            <widget class="QLabel" name="lblWasserVerschneidungEinheit">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="5">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Effektive Sudhausausbeute</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="7">
+            <widget class="QLabel" name="label_76">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>°P</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="5">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Geschätzte benötigte Speisemenge (SRE 3°P, 20°C)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QLabel" name="label_75">
+             <property name="text">
+              <string>Zielstammwürze</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_17">
+             <property name="text">
+              <string>Abgefüllte Speisemenge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="DoubleSpinBox" name="tbSpeisemenge">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Abgefüllte Speisemenge für die Karbonisierung.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_45">
+             <property name="text">
+              <string>Stammwürze beim Anstellen</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="6" column="5" colspan="3">
+            <widget class="Line" name="line_8">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="DoubleSpinBox" name="tbSWAnstellen">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Stammwürze gemessen vor der Zugabe der weiteren Zutaten (Gärung).</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>99.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_49">
+             <property name="text">
+              <string>Würzemenge</string>
              </property>
             </widget>
            </item>
@@ -2019,15 +2019,15 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
  </widget>
  <customwidgets>
   <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>DateTimeEdit</class>
@@ -2063,11 +2063,11 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
   <tabstop>btnSWAnstellen</tabstop>
   <tabstop>tbSWAnstellenSoll</tabstop>
   <tabstop>tbWasserVerschneidung</tabstop>
-  <tabstop>tbAusbeuteEffektiv</tabstop>
   <tabstop>tbWuerzemengeAnstellenTotal</tabstop>
   <tabstop>tbSpeisemenge</tabstop>
   <tabstop>tbSpeisemengeNoetig</tabstop>
   <tabstop>tbWuerzemengeAnstellen</tabstop>
+  <tabstop>tbAusbeuteEffektiv</tabstop>
   <tabstop>tbNebenkosten</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>cbDurchschnittIgnorieren</tabstop>

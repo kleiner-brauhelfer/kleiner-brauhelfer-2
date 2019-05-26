@@ -9,6 +9,7 @@
 
 SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
     QSqlTableModel(parent, db),
+    mSignalModifiedBlocked(false),
     mSetDataCnt(0)
 {
     setEditStrategy(EditStrategy::OnManualSubmit);
@@ -74,7 +75,8 @@ bool SqlTableModel::setData(const QModelIndex &index, const QVariant &value, int
                 if (mSetDataCnt == 1)
                 {
                     emit rowChanged(index);
-                    emit modified();
+                    if (!mSignalModifiedBlocked)
+                        emit modified();
                 }
             }
             --mSetDataCnt;

@@ -190,6 +190,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &index)
         int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
         int colSudId = fieldIndex("SudID");
         int colProzent = fieldIndex("Prozent");
+        mSignalModifiedBlocked = true;
         for (int i = 0; i < rowCount(); ++i)
         {
             if (this->index(i, colSudId).data().toInt() == sudId)
@@ -198,6 +199,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &index)
                 setData(index2, data(index2));
             }
         }
+        mSignalModifiedBlocked = false;
     }
 }
 

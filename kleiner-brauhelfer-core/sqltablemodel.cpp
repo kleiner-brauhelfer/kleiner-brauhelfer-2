@@ -320,7 +320,7 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
-        if (index.siblingAtRow(row).data() == value)
+        if (index.sibling(row, index.column()).data() == value)
             return false;
     }
     return true;

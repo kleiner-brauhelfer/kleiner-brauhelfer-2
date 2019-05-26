@@ -228,7 +228,7 @@ void TabBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
     {
         ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
         const QModelIndex index = selected.indexes()[0];
-        sudId = index.siblingAtColumn(model->fieldIndex("ID")).data().toInt();
+        sudId = index.sibling(index.row(), model->fieldIndex("ID")).data().toInt();
     }
     ui->diagram->MarkierePunkt(sudId);
 }

@@ -939,7 +939,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="QChartView" name="diagramMalz"/>
+          <widget class="ChartView" name="diagramMalz"/>
          </widget>
         </item>
         <item>
@@ -1070,7 +1070,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             </layout>
            </widget>
           </widget>
-          <widget class="QChartView" name="diagramHopfen"/>
+          <widget class="ChartView" name="diagramHopfen"/>
          </widget>
         </item>
         <item>
@@ -1157,7 +1157,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             </layout>
            </widget>
           </widget>
-          <widget class="QChartView" name="diagramHefe"/>
+          <widget class="ChartView" name="diagramHefe"/>
          </widget>
         </item>
         <item>
@@ -1420,7 +1420,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             </layout>
            </widget>
           </widget>
-          <widget class="QChartView" name="diagramRasten"/>
+          <widget class="ChartView" name="diagramRasten"/>
          </widget>
         </item>
         <item>
@@ -2558,9 +2558,9 @@ p, li { white-space: pre-wrap; }
    <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>QChartView</class>
+   <class>ChartView</class>
    <extends>QGraphicsView</extends>
-   <header>QtCharts</header>
+   <header>widgets/chartview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

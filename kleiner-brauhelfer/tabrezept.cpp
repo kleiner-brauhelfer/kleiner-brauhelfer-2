@@ -27,29 +27,9 @@ TabRezept::TabRezept(QWidget *parent) :
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
-    QChart *chart = ui->diagramMalz->chart();
-    ui->diagramMalz->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->setAlignment(Qt::AlignRight);
-
-    chart = ui->diagramHopfen->chart();
-    ui->diagramHopfen->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->setAlignment(Qt::AlignRight);
-
-    chart = ui->diagramHefe->chart();
-    ui->diagramHopfen->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->setAlignment(Qt::AlignRight);
-
-    chart = ui->diagramRasten->chart();
-    ui->diagramRasten->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->hide();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+    ui->diagramRasten->chart()->legend()->hide();
+  #endif
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
@@ -563,6 +543,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::updateRastenDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QLineSeries *series = new QLineSeries();
     int t = 0;
     series->append(t, bh->sud()->getEinmaischenTemp());
@@ -583,6 +564,7 @@ void TabRezept::updateRastenDiagram()
     axis =  static_cast<QValueAxis*>(chart->axes(Qt::Vertical).back());
     axis->setRange(30, 80);
     axis->setLabelFormat("%d C");
+  #endif
 }
 
 void TabRezept::on_btnEinmaischtemperatur_clicked()
@@ -622,7 +604,7 @@ void TabRezept::malzGaben_dataChanged(const QModelIndex &topLeft, const QModelIn
     {
         if (index.column() == colProzent)
             return updateMalzGaben();
-        index = index.siblingAtColumn(index.column() + 1);
+        index = index.sibling(index.row(), index.column() + 1);
     }
     updateMalzDiagram();
 }
@@ -650,6 +632,7 @@ void TabRezept::updateMalzGaben()
 
 void TabRezept::updateMalzDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
@@ -659,6 +642,7 @@ void TabRezept::updateMalzDiagram()
     QChart *chart = ui->diagramMalz->chart();
     chart->removeAllSeries();
     chart->addSeries(series);
+  #endif
 }
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
@@ -699,13 +683,14 @@ void TabRezept::hopfenGaben_dataChanged(const QModelIndex &topLeft, const QModel
     {
         if (index.column() == colProzent)
             return updateHopfenGaben();
-        index = index.siblingAtColumn(index.column() + 1);
+        index = index.sibling(index.row(), index.column() + 1);
     }
     updateHopfenDiagram();
 }
 
 void TabRezept::updateHopfenDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
@@ -715,6 +700,7 @@ void TabRezept::updateHopfenDiagram()
     QChart *chart = ui->diagramHopfen->chart();
     chart->removeAllSeries();
     chart->addSeries(series);
+  #endif
 }
 
 void TabRezept::updateHopfenGaben()
@@ -778,6 +764,7 @@ void TabRezept::hefeGaben_modified()
 
 void TabRezept::updateHefeDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
     {
@@ -787,6 +774,7 @@ void TabRezept::updateHefeDiagram()
     QChart *chart = ui->diagramHefe->chart();
     chart->removeAllSeries();
     chart->addSeries(series);
+  #endif
 }
 
 void TabRezept::on_btnNeueHefeGabe_clicked()

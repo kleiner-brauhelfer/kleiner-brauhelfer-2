@@ -278,9 +278,6 @@
    <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
-   <property name="shortcutVisibleInContextMenu">
-    <bool>true</bool>
-   </property>
   </action>
   <action name="actionVerwerfen">
    <property name="text">

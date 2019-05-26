@@ -26,9 +26,9 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::BackgroundRole)
     {
-        if (index.siblingAtColumn(mColMerklistenID).data().toBool())
+        if (index.sibling(index.row(), mColMerklistenID).data().toBool())
             return gSettings->MekrlisteBackground;
-        switch(index.siblingAtColumn(mColStatus).data().toInt())
+        switch(index.sibling(index.row(), mColStatus).data().toInt())
         {
         default:
         case Sud_Status_Rezept:
@@ -45,10 +45,10 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
     {
         if (index.column() == mColWoche)
         {
-            if (index.siblingAtColumn(mColStatus).data().toInt() == Sud_Status_Abgefuellt)
+            if (index.sibling(index.row(), mColStatus).data().toInt() == Sud_Status_Abgefuellt)
             {
                 int woche = ProxyModelSud::data(index, role).toInt();
-                int tage = index.siblingAtColumn(mColReifeZeitDelta).data().toInt();
+                int tage = index.sibling(index.row(), mColReifeZeitDelta).data().toInt();
                 if (tage > 0)
                     return tr("%1. Woche, reif in %2 Tage").arg(woche).arg(tage);
                 else

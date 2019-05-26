@@ -8,7 +8,9 @@ class LIB_EXPORT ProxyModelRohstoff : public ProxyModel
 {
     Q_OBJECT
 
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     Q_PROPERTY(Filter filter READ filter WRITE setFilter NOTIFY layoutChanged)
+  #endif
 
 public:
     enum Filter

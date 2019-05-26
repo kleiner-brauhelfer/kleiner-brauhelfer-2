@@ -18,16 +18,16 @@ QVariant ModelHauptgaerverlauf::dataExt(const QModelIndex &index) const
     }
     if (field == "sEVG")
     {
-        QVariant sudId = index.siblingAtColumn(fieldIndex("SudID")).data();
+        QVariant sudId = index.sibling(index.row(), fieldIndex("SudID")).data();
         double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWIst").toDouble();
-        double sre = index.siblingAtColumn(fieldIndex("SW")).data().toDouble();
+        double sre = index.sibling(index.row(), fieldIndex("SW")).data().toDouble();
         return BierCalc::vergaerungsgrad(sw, sre);
     }
     if (field == "tEVG")
     {
-        QVariant sudId = index.siblingAtColumn(fieldIndex("SudID")).data();
+        QVariant sudId = index.sibling(index.row(), fieldIndex("SudID")).data();
         double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWIst").toDouble();
-        double sre = index.siblingAtColumn(fieldIndex("SW")).data().toDouble();
+        double sre = index.sibling(index.row(), fieldIndex("SW")).data().toDouble();
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
     }

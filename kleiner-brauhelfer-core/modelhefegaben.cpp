@@ -39,7 +39,7 @@ bool ModelHefegaben::setDataExt(const QModelIndex &index, const QVariant &value)
     {
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
-        return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugabeNach")), braudatum.daysTo(value.toDateTime()));
+        return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), braudatum.daysTo(value.toDateTime()));
     }
     return false;
 }

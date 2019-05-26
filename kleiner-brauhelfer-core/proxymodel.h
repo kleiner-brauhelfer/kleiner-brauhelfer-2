@@ -9,11 +9,13 @@ class LIB_EXPORT ProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     Q_PROPERTY(int sortColumn READ sortColumn WRITE setSortColumn NOTIFY layoutChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY layoutChanged)
     Q_PROPERTY(int dateColumn READ filterDateColumn WRITE setFilterDateColumn NOTIFY layoutChanged)
     Q_PROPERTY(QDateTime minDate READ filterMinimumDate WRITE setFilterMinimumDate NOTIFY layoutChanged)
     Q_PROPERTY(QDateTime maxDate READ filterMaximumDate WRITE setFilterMaximumDate NOTIFY layoutChanged)
+  #endif
 
 public:
     ProxyModel(QObject* parent = nullptr);

@@ -13,7 +13,7 @@ QVariant RohstoffAuswahlProxyModel::data(const QModelIndex &index, int role) con
 {
     if (role == Qt::ForegroundRole)
     {
-        double menge = index.siblingAtColumn(mColMenge).data().toDouble();
+        double menge = index.sibling(index.row(), mColMenge).data().toDouble();
         if (menge == 0.0)
             return gSettings->ErrorText;
         else if (menge < mIndexMengeBenoetigt.data().toDouble())

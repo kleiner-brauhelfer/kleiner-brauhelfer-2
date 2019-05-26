@@ -65,19 +65,19 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             int typ = data(index.row(), "Typ").toInt();
             if (typ == EWZ_Typ_Hopfen)
             {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Einheit")), EWZ_Einheit_g);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Typ")), EWZ_Typ_Hopfen);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Ausbeute")), 0);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Farbe")), 0);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Einheit")), EWZ_Einheit_g);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Typ")), EWZ_Typ_Hopfen);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Ausbeute")), 0);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), 0);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
             }
             else
             {
                 int row = bh->modelWeitereZutaten()->getRowWithValue("Beschreibung", value);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Einheit")), bh->modelWeitereZutaten()->data(row, "Einheiten"));
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Typ")), bh->modelWeitereZutaten()->data(row, "Typ"));
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Ausbeute")), bh->modelWeitereZutaten()->data(row, "Ausbeute"));
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Farbe")), bh->modelWeitereZutaten()->data(row, "EBC"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Einheit")), bh->modelWeitereZutaten()->data(row, "Einheiten"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Typ")), bh->modelWeitereZutaten()->data(row, "Typ"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Ausbeute")), bh->modelWeitereZutaten()->data(row, "Ausbeute"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), bh->modelWeitereZutaten()->data(row, "EBC"));
             }
             return true;
         }
@@ -86,9 +86,9 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
     {
         if (QSqlTableModel::setData(index, value))
         {
-            int sudId = index.siblingAtColumn(fieldIndex("SudID")).data().toInt();
+            int sudId = index.sibling(index.row(), fieldIndex("SudID")).data().toInt();
             double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("erg_Menge")), value.toDouble() * mengeSoll);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("erg_Menge")), value.toDouble() * mengeSoll);
             return true;
         }
     }
@@ -96,9 +96,9 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
     {
         if (QSqlTableModel::setData(index, value))
         {
-            int sudId = index.siblingAtColumn(fieldIndex("SudID")).data().toInt();
+            int sudId = index.sibling(index.row(), fieldIndex("SudID")).data().toInt();
             double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Menge")), value.toDouble() / mengeSoll);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Menge")), value.toDouble() / mengeSoll);
             return true;
         }
     }
@@ -108,7 +108,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
         {
             if (data(index).toInt() == EWZ_Typ_Hopfen)
             {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
             }
             return true;
         }
@@ -121,17 +121,17 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             int val = value.toInt();
             if (prev == EWZ_Zeitpunkt_Gaerung && val != EWZ_Zeitpunkt_Gaerung)
             {
-                QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zugabedauer"));
+                QModelIndex index2 = index.sibling(index.row(), fieldIndex("Zugabedauer"));
                 QSqlTableModel::setData(index2, index2.data().toInt() / 1440);
             }
             else if (prev != EWZ_Zeitpunkt_Gaerung && val == EWZ_Zeitpunkt_Gaerung)
             {
-                QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zugabedauer"));
+                QModelIndex index2 = index.sibling(index.row(), fieldIndex("Zugabedauer"));
                 QSqlTableModel::setData(index2, index2.data().toInt() * 1440);
             }
             if (val != EWZ_Zeitpunkt_Gaerung)
             {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugabeNach")), 0);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), 0);
             }
             return true;
         }
@@ -143,7 +143,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
         if (braudatum.isValid())
         {
             qint64 tage = braudatum.daysTo(value.toDateTime());
-            return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugabeNach")), tage);
+            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), tage);
         }
     }
     if (field == "EntnahmeDatum")
@@ -152,7 +152,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
         if (zugabedatum.isValid())
         {
             qint64 tage = zugabedatum.daysTo(value.toDateTime());
-            return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zugabedauer")), tage*1440);
+            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zugabedauer")), tage*1440);
         }
     }
     return false;

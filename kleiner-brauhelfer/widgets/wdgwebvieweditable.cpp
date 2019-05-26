@@ -16,10 +16,14 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+  #endif
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
     ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+  #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }

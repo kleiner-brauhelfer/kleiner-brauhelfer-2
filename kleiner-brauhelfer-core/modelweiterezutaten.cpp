@@ -24,10 +24,10 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &index) const
     }
     if (field == "MengeGramm")
     {
-        if (index.siblingAtColumn(fieldIndex("Einheiten")).data().toInt() == EWZ_Einheit_Kg)
-            return index.siblingAtColumn(fieldIndex("Menge")).data().toDouble() * 1000;
+        if (index.sibling(index.row(), fieldIndex("Einheiten")).data().toInt() == EWZ_Einheit_Kg)
+            return index.sibling(index.row(), fieldIndex("Menge")).data().toDouble() * 1000;
         else
-            return index.siblingAtColumn(fieldIndex("Menge")).data().toDouble();
+            return index.sibling(index.row(), fieldIndex("Menge")).data().toDouble();
     }
     if (field == "InGebrauch")
     {

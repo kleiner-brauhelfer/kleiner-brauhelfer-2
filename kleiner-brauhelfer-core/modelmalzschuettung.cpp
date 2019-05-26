@@ -18,7 +18,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &v
         if (QSqlTableModel::setData(index, value))
         {
             QVariant farbe = bh->modelMalz()->getValueFromSameRow("Beschreibung", value, "Farbe");
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Farbe")), farbe);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), farbe);
             return true;
         }
     }
@@ -32,7 +32,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &v
         if (QSqlTableModel::setData(index, fVal))
         {
             double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesamt").toDouble();
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("erg_Menge")), fVal / 100 * total);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("erg_Menge")), fVal / 100 * total);
             return true;
         }
     }
@@ -44,7 +44,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &v
         if (QSqlTableModel::setData(index, fVal))
         {
             double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesamt").toDouble();
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Prozent")), fVal * 100 / total);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Prozent")), fVal * 100 / total);
             return true;
         }
     }

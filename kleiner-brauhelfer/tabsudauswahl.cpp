@@ -398,7 +398,7 @@ void TabSudAuswahl::on_btnMerken_clicked()
     int col = model->fieldIndex("MerklistenID");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexMerkliste = index.siblingAtColumn(col);
+        QModelIndex indexMerkliste = index.sibling(index.row(), col);
         if (!model->data(indexMerkliste).toBool())
             model->setData(indexMerkliste, true);
     }
@@ -411,7 +411,7 @@ void TabSudAuswahl::on_btnVergessen_clicked()
     int col = model->fieldIndex("MerklistenID");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexMerkliste = index.siblingAtColumn(col);
+        QModelIndex indexMerkliste = index.sibling(index.row(), col);
         if (model->data(indexMerkliste).toBool())
             model->setData(indexMerkliste, false);
     }
@@ -437,7 +437,7 @@ void TabSudAuswahl::onVerbraucht_clicked()
     int col = model->fieldIndex("Status");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexStatus = index.siblingAtColumn(col);
+        QModelIndex indexStatus = index.sibling(index.row(), col);
         if (model->data(indexStatus).toInt() == Sud_Status_Abgefuellt)
             model->setData(indexStatus, Sud_Status_Verbraucht);
     }
@@ -450,7 +450,7 @@ void TabSudAuswahl::onNichtVerbraucht_clicked()
     int col = model->fieldIndex("Status");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexStatus = index.siblingAtColumn(col);
+        QModelIndex indexStatus = index.sibling(index.row(), col);
         if (model->data(indexStatus).toInt() == Sud_Status_Verbraucht)
             model->setData(indexStatus, Sud_Status_Abgefuellt);
     }

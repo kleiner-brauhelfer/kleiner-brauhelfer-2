@@ -252,7 +252,7 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     }
     if (field == "BewertungMax")
     {
-        int sudId = index.siblingAtColumn(fieldIndex("ID")).data().toInt();
+        int sudId = index.sibling(index.row(), fieldIndex("ID")).data().toInt();
         return bh->modelBewertungen()->max(sudId);
     }
     return QVariant();

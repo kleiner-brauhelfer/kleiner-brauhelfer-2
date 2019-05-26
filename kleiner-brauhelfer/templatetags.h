@@ -1,6 +1,7 @@
 #ifndef TEMPLATETAGS_H
 #define TEMPLATETAGS_H
 
+#include <functional>
 #include <QFlag>
 #include "widgets/wdgwebvieweditable.h"
 

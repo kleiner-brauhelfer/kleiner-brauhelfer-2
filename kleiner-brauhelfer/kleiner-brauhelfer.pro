@@ -1,4 +1,7 @@
-QT += core sql gui widgets charts svg webenginewidgets
+QT += core sql gui widgets svg webenginewidgets printsupport
+isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
+ QT += charts
+}
 
 ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer
@@ -28,6 +31,7 @@ RCC_DIR = tmp
 LIBS += -L$$OUT_PWD/../bin/ -lkleiner-brauhelfer-core
 INCLUDEPATH += $$PWD/../kleiner-brauhelfer-core
 DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
+DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 
 SOURCES += \
     main.cpp \
@@ -72,6 +76,7 @@ SOURCES += \
     model/readonlydelegate.cpp \
     model/rohstoffauswahlproxymodel.cpp \
     model/spinboxdelegate.cpp \
+    widgets/chartview.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
@@ -132,6 +137,7 @@ HEADERS += \
     model/readonlydelegate.h \
     model/rohstoffauswahlproxymodel.h \
     model/spinboxdelegate.h \
+    widgets/chartview.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \

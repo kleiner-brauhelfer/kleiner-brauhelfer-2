@@ -26,16 +26,20 @@ public:
     {
         if (role == Qt::BackgroundRole)
         {
-            if (index.column() == mColAuswahl1)
-                return gSettings->DiagramLinie1Light;
-            if (index.column() == mColAuswahl2)
+            int col = index.column();
+            if (col == mColAuswahl3)
+                return gSettings->DiagramLinie3Light;
+            if (col == mColAuswahl2)
                 return gSettings->DiagramLinie2Light;
+            if (col == mColAuswahl1)
+                return gSettings->DiagramLinie1Light;
         }
         return ProxyModelSud::data(index, role);
     }
 
     int mColAuswahl1;
     int mColAuswahl2;
+    int mColAuswahl3;
 };
 
 TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
@@ -59,7 +63,7 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
     mAuswahlListe.append({"SWIst", 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
     mAuswahlListe.append({"erg_Sudhausausbeute", 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({"erg_EffektiveAusbeute", 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({"erg_S_Gesammt", 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
+    mAuswahlListe.append({"erg_S_Gesamt", 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
     mAuswahlListe.append({"erg_Alkohol", 1, tr("Alkohol [%]"), tr("%"), 0, 0});
     mAuswahlListe.append({"sEVG", 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({"tEVG", 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});
@@ -79,6 +83,7 @@ void TabBrauUebersicht::saveSettings()
     gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
     gSettings->setValue("Auswahl1", ui->cbAuswahlL1->currentIndex());
     gSettings->setValue("Auswahl2", ui->cbAuswahlL2->currentIndex());
+    gSettings->setValue("Auswahl3", ui->cbAuswahlL3->currentIndex());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->endGroup();
 }
@@ -120,11 +125,13 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     header->moveSection(header->visualIndex(col), 2);
 
     ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
+    ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
         col = proxyModel->fieldIndex(mAuswahlListe[i].field);
         ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
+        ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
         table->setColumnHidden(col, false);
         table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table));
         header->resizeSection(col, 100);
@@ -139,8 +146,9 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     mDefaultTableState = header->saveState();
     header->restoreState(gSettings->value("tableState").toByteArray());
 
-    ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1").toInt());
-    ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2").toInt());
+    ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
+    ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
+    ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
 
     gSettings->endGroup();
 
@@ -175,6 +183,14 @@ void TabBrauUebersicht::updateDiagram()
         ui->diagram->L2Min = auswahl2->min;
         ui->diagram->L2Max = auswahl2->max;
 
+        AuswahlType *auswahl3 = &mAuswahlListe[ui->cbAuswahlL3->currentIndex()];
+        model->mColAuswahl3 = model->fieldIndex(auswahl3->field);
+        ui->diagram->BezeichnungL3 = auswahl3->label;
+        ui->diagram->KurzbezeichnungL3 = auswahl3->unit;
+        ui->diagram->L3Precision = auswahl3->precision;
+        ui->diagram->L3Min = auswahl3->min;
+        ui->diagram->L3Max = auswahl3->max;
+
         int colBraudatum = model->fieldIndex("Braudatum");
         int colId = model->fieldIndex("ID");
         for (int row = 0; row < model->rowCount(); ++row)
@@ -187,6 +203,11 @@ void TabBrauUebersicht::updateDiagram()
             {
                 ui->diagram->L2Daten.append(model->index(row, model->mColAuswahl2).data().toDouble());
                 ui->diagram->L2Datum.append(dt);
+            }
+            if (model->mColAuswahl3 >= 0)
+            {
+                ui->diagram->L3Daten.append(model->index(row, model->mColAuswahl3).data().toDouble());
+                ui->diagram->L3Datum.append(dt);
             }
         }
     }
@@ -207,7 +228,7 @@ void TabBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
     {
         ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
         const QModelIndex index = selected.indexes()[0];
-        sudId = index.siblingAtColumn(model->fieldIndex("ID")).data().toInt();
+        sudId = index.sibling(index.row(), model->fieldIndex("ID")).data().toInt();
     }
     ui->diagram->MarkierePunkt(sudId);
 }
@@ -238,6 +259,15 @@ void TabBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)
 void TabBrauUebersicht::on_cbAuswahlL2_currentIndexChanged(int)
 {
     if (ui->cbAuswahlL2->hasFocus())
+    {
+        updateDiagram();
+        ui->tableView->setFocus();
+    }
+}
+
+void TabBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
+{
+    if (ui->cbAuswahlL3->hasFocus())
     {
         updateDiagram();
         ui->tableView->setFocus();

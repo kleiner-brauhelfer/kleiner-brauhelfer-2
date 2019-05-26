@@ -32,7 +32,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->webview->setHtmlFile("sudinfo.html");
 
     SqlTableModel *model = bh->modelSud();
-    model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("#"));
+    model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("Sudnummer"));
     model->setHeaderData(model->fieldIndex("Sudname"), Qt::Horizontal, tr("Sudname"));
     model->setHeaderData(model->fieldIndex("Braudatum"), Qt::Horizontal, tr("Braudatum"));
     model->setHeaderData(model->fieldIndex("Erstellt"), Qt::Horizontal, tr("Erstellt"));
@@ -42,7 +42,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("erg_AbgefuellteBiermenge"), Qt::Horizontal, tr("Menge [l]"));
     model->setHeaderData(model->fieldIndex("erg_Sudhausausbeute"), Qt::Horizontal, tr("SHA [%]"));
     model->setHeaderData(model->fieldIndex("SWIst"), Qt::Horizontal, tr("SW [°P]"));
-    model->setHeaderData(model->fieldIndex("erg_S_Gesammt"), Qt::Horizontal, tr("Schüttung [kg]"));
+    model->setHeaderData(model->fieldIndex("erg_S_Gesamt"), Qt::Horizontal, tr("Schüttung [kg]"));
     model->setHeaderData(model->fieldIndex("erg_Preis"), Qt::Horizontal, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()));
     model->setHeaderData(model->fieldIndex("erg_Alkohol"), Qt::Horizontal, tr("Alk. [%]"));
     model->setHeaderData(model->fieldIndex("sEVG"), Qt::Horizontal, tr("sEVG [%]"));
@@ -186,6 +186,23 @@ void TabSudAuswahl::selectionChanged()
     ui->btnLoeschen->setEnabled(selected);
     ui->btnExportieren->setEnabled(selected);
     ui->btnLaden->setEnabled(selected);
+}
+
+void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
+{
+    QWidget::keyPressEvent(event);
+    if (ui->tableSudauswahl->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnLoeschen_clicked();
+            break;
+        case Qt::Key::Key_Return:
+            on_btnLaden_clicked();
+            break;
+        }
+    }
 }
 
 void TabSudAuswahl::on_tableSudauswahl_doubleClicked(const QModelIndex &index)
@@ -381,7 +398,7 @@ void TabSudAuswahl::on_btnMerken_clicked()
     int col = model->fieldIndex("MerklistenID");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexMerkliste = index.siblingAtColumn(col);
+        QModelIndex indexMerkliste = index.sibling(index.row(), col);
         if (!model->data(indexMerkliste).toBool())
             model->setData(indexMerkliste, true);
     }
@@ -394,7 +411,7 @@ void TabSudAuswahl::on_btnVergessen_clicked()
     int col = model->fieldIndex("MerklistenID");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexMerkliste = index.siblingAtColumn(col);
+        QModelIndex indexMerkliste = index.sibling(index.row(), col);
         if (model->data(indexMerkliste).toBool())
             model->setData(indexMerkliste, false);
     }
@@ -417,12 +434,12 @@ void TabSudAuswahl::on_btnAlleVergessen_clicked()
 void TabSudAuswahl::onVerbraucht_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    int col = model->fieldIndex("BierWurdeVerbraucht");
+    int col = model->fieldIndex("Status");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexVerbraucht = index.siblingAtColumn(col);
-        if (!model->data(indexVerbraucht).toBool())
-            model->setData(indexVerbraucht, true);
+        QModelIndex indexStatus = index.sibling(index.row(), col);
+        if (model->data(indexStatus).toInt() == Sud_Status_Abgefuellt)
+            model->setData(indexStatus, Sud_Status_Verbraucht);
     }
     ui->tableSudauswahl->setFocus();
 }
@@ -430,12 +447,12 @@ void TabSudAuswahl::onVerbraucht_clicked()
 void TabSudAuswahl::onNichtVerbraucht_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    int col = model->fieldIndex("BierWurdeVerbraucht");
+    int col = model->fieldIndex("Status");
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexVerbraucht = index.siblingAtColumn(col);
-        if (model->data(indexVerbraucht).toBool())
-            model->setData(indexVerbraucht, false);
+        QModelIndex indexStatus = index.sibling(index.row(), col);
+        if (model->data(indexStatus).toInt() == Sud_Status_Verbraucht)
+            model->setData(indexStatus, Sud_Status_Abgefuellt);
     }
     ui->tableSudauswahl->setFocus();
 }

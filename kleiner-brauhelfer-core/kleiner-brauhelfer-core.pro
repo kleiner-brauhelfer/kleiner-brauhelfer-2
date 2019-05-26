@@ -5,9 +5,9 @@ ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-core
 
 # Hauptversionsnummer
-VER_MAJ = 1
+VER_MAJ = 2
 # Datenbankversion
-VER_MIN = 24
+VER_MIN = 0
 # Patchversion
 VER_PAT = 0
 
@@ -15,9 +15,14 @@ VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
 TEMPLATE = lib
+CONFIG += staticlib
 DEFINES += ORGANIZATION=\\\"$$ORGANIZATION\\\" TARGET=\\\"$$TARGET\\\" VERSION=\\\"$$VERSION\\\"
-DEFINES += KLEINERBRAUHELFERCORE_LIBRARY
 CONFIG += skip_target_version_ext unversioned_libname unversioned_soname
+staticlib {
+  DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
+} else {
+  DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_SHARED
+}
 
 CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
@@ -38,6 +43,7 @@ SOURCES += \
     modelflaschenlabeltags.cpp \
     modelhauptgaerverlauf.cpp \
     modelhefe.cpp \
+    modelhefegaben.cpp \
     modelhopfen.cpp \
     modelhopfengaben.cpp \
     modelmalz.cpp \
@@ -67,6 +73,7 @@ HEADERS += \
     modelflaschenlabeltags.h \
     modelhauptgaerverlauf.h \
     modelhefe.h \
+    modelhefegaben.h \
     modelhopfen.h \
     modelhopfengaben.h \
     modelmalz.h \

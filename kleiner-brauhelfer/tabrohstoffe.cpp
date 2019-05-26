@@ -435,7 +435,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = model->fieldIndex("ID");
+    col = model->fieldIndex("Name");
     model->setHeaderData(col, Qt::Horizontal, tr("Wasserprofil"));
     table->setColumnHidden(col, false);
     header->setSectionResizeMode(col, QHeaderView::Stretch);
@@ -444,14 +444,14 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = model->fieldIndex("Restalkalitaet");
     model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität [°dH]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 120);
     header->moveSection(header->visualIndex(col), 1);
 
     mDefaultStateTableWasser = header->saveState();
     header->restoreState(gSettings->value("tableWasserState").toByteArray());
 
-    int filter = gSettings->value("filter").toInt();
+    int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)
     {
         ui->radioButtonVorhanden->setChecked(true);
@@ -1115,8 +1115,7 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
         dlg.setModel(bh->modelHopfen(), bh->modelHopfen()->fieldIndex("Beschreibung"));
         break;
     case 2:
-        // TODO: hefe
-        //modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+        model = bh->modelHefegaben();
         dlg.setModel(bh->modelHefe(), bh->modelHefe()->fieldIndex("Beschreibung"));
         break;
     case 3:
@@ -1138,15 +1137,6 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
                     if (dlg.exec() == QDialog::Accepted)
                         model->setData(j, "Name", dlg.rohstoff());
                 }
-            }
-        }
-        else
-        {
-            // TODO: hefe
-            if (modelSud.data(i, "AuswahlHefe").toString() == rohstoff)
-            {
-                if (dlg.exec() == QDialog::Accepted)
-                    modelSud.setData(i, "AuswahlHefe", dlg.rohstoff());
             }
         }
     }

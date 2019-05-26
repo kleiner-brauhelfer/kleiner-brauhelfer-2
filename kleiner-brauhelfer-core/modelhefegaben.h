@@ -1,20 +1,22 @@
-#ifndef MODELAUSRUESTUNG_H
-#define MODELAUSRUESTUNG_H
+#ifndef MODELHEFEGABEN_H
+#define MODELHEFEGABEN_H
 
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelAusruestung : public SqlTableModel
+class ModelHefegaben : public SqlTableModel
 {
+    Q_OBJECT
 public:
-    ModelAusruestung(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelHefegaben(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
-    bool removeRows(int row, int count = 1, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
     void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
+private slots:
+    void onSudDataChanged(const QModelIndex &index);
 private:
     Brauhelfer* bh;
 };
 
-#endif // MODELAUSRUESTUNG_H
+#endif // MODELHEFEGABEN_H

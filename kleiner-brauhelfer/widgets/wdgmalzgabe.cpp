@@ -46,7 +46,7 @@ bool WdgMalzGabe::setData(const QString &fieldName, const QVariant &value)
 
 void WdgMalzGabe::checkEnabled(bool force)
 {
-    bool enabled = !bh->sud()->getBierWurdeGebraut();
+    bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
     if (enabled == mEnabled && !force)
         return;
 
@@ -102,7 +102,7 @@ void WdgMalzGabe::updateValues(bool full)
         ui->tbMengeProzent->setValue(data("Prozent").toDouble());
     if (!ui->tbMenge->hasFocus())
     {
-        ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesammt());
+        ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());
         ui->tbMenge->setValue(data("erg_Menge").toDouble());
     }
 

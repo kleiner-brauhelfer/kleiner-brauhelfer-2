@@ -67,7 +67,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     header = table->horizontalHeader();
     model = new ProxyModelSudColored(this);
     model->setSourceModel(bh->modelSud());
-    model->setFilterKeyColumn(bh->modelSud()->fieldIndex("AuswahlBrauanlage"));
+    model->setFilterKeyColumn(bh->modelSud()->fieldIndex("Anlage"));
     table->setModel(model);
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
@@ -172,25 +172,28 @@ void TabAusruestung::sudLoaded()
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
     int row = 0;
     if (bh->sud()->isLoaded())
-        row = model->getRowWithValue("Name", bh->sud()->getAuswahlBrauanlageName());
+        row = model->getRowWithValue("Name", bh->sud()->getAnlage());
     ui->tableViewAnlagen->setCurrentIndex(model->index(row, model->fieldIndex("Name")));
 }
 
 void TabAusruestung::anlage_selectionChanged(const QItemSelection &selected)
 {
     QRegExp regExpId;
+    QRegExp regExpId2;
     if (selected.indexes().count() > 0)
     {
         mRow = selected.indexes()[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-        QString id = model->data(model->index(mRow, model->fieldIndex("AnlagenID"))).toString();
-        regExpId = QRegExp(QString("^%1$").arg(id), Qt::CaseInsensitive, QRegExp::RegExp);
+        QString anlage = model->data(model->index(mRow, model->fieldIndex("Name"))).toString();
+        regExpId = QRegExp(QString("^%1$").arg(anlage), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, model->fieldIndex("ID"))).toInt()), Qt::CaseInsensitive, QRegExp::RegExp);
     }
     else
     {
         regExpId = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId2 = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
     }
-    static_cast<QSortFilterProxyModel*>(ui->listViewGeraete->model())->setFilterRegExp(regExpId);
+    static_cast<QSortFilterProxyModel*>(ui->listViewGeraete->model())->setFilterRegExp(regExpId2);
     static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegExp(regExpId);
     ui->sliderAusbeuteSude->setMaximum(9999);
     ui->sliderAusbeuteSude->setValue(9999);
@@ -234,7 +237,7 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     QModelIndexList selected = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selected.count() > 0)
     {
-        QVariantMap values({{"AusruestungAnlagenID", data("AnlagenID")}, {"Bezeichnung", tr("Neues Gerät")}});
+        QVariantMap values({{"AusruestungAnlagenID", data("ID")}, {"Bezeichnung", tr("Neues Gerät")}});
         ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
         int row = model->append(values);
         if (row >= 0)
@@ -312,7 +315,7 @@ void TabAusruestung::updateDurchschnitt()
     model.setFilterStatus(ProxyModelSud::Gebraut);
     model.sort(model.fieldIndex("Braudatum"), Qt::DescendingOrder);
     QString anlage = data("Name").toString();
-    int colName = model.fieldIndex("AuswahlBrauanlageName");
+    int colName = model.fieldIndex("Anlage");
     int colAusbeute = model.fieldIndex("erg_EffektiveAusbeute");
     int colVerdampfung = model.fieldIndex("Verdampfungsziffer");
     int colAusbeuteIgnorieren = model.fieldIndex("AusbeuteIgnorieren");

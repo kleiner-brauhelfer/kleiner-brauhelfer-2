@@ -97,27 +97,27 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     }
 
     QList<Rohstoff> ListHefe;
-    for (int sid = 0; sid < ListSudID.size(); ++sid)
+    for (int row = 0; row < bh->modelHefegaben()->rowCount(); ++row)
     {
-        int row = bh->modelSud()->getRowWithValue("ID", ListSudID[sid]);
-        Rohstoff eintrag;
-        eintrag.Name = bh->modelSud()->data(row, "AuswahlHefe").toString();
-        eintrag.Menge = bh->modelSud()->data(row, "HefeAnzahlEinheiten").toDouble();
-        if (eintrag.Name.isEmpty())
-            continue;
-        bool found = false;
-        for (Rohstoff& eintragListe : ListHefe)
+        int sudId = bh->modelHefegaben()->data(row, "SudID").toInt();
+        if (ListSudID.contains(sudId))
         {
-            if (eintrag.Name == eintragListe.Name)
+            Rohstoff eintrag;
+            eintrag.Name = bh->modelHefegaben()->data(row, "Name").toString();
+            eintrag.Menge = bh->modelHefegaben()->data(row, "Menge").toDouble();
+            bool found = false;
+            for (Rohstoff& eintragListe : ListHefe)
             {
-                eintragListe.Menge += eintrag.Menge;
-                found = true;
-                break;
+                if (eintrag.Name == eintragListe.Name)
+                {
+                    eintragListe.Menge += eintrag.Menge;
+                    found = true;
+                    break;
+                }
             }
+            if (!found)
+                ListHefe.append(eintrag);
         }
-        if (!found)
-            ListHefe.append(eintrag);
-
     }
 
     QList<Rohstoff> ListWeitereZutatenHonig;

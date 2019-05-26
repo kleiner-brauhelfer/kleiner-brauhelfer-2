@@ -4,11 +4,11 @@
   <link rel="stylesheet" type="text/css" href="{{Style}}">
 </head>
 <body>
+  <div class="r" style="margin-bottom:10px;" align="center">
+    <p class="h1">G&auml;rung</p>
+  </div>
 
   {{#Zutaten.Hefe}}
-  <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1">Hefe</p>
-  </div>
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
     <table style="width:100%">
       <tr>
@@ -21,9 +21,9 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span></td>
       </tr>
       {{/ZugabeNach}}
       {{/Liste}}
@@ -45,10 +45,10 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
       {{/Zutaten.Kalthopfen.Liste}}
@@ -57,10 +57,10 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
       {{/Gaerung}}
@@ -70,10 +70,10 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
       {{/Gaerung}}
@@ -83,10 +83,10 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
       {{/Gaerung}}
@@ -96,10 +96,10 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
       {{/Gaerung}}
@@ -109,10 +109,10 @@
       {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value" align="center">{{ZugabeNach}}</td>
-        <td class="value" align="center">{{Dauer}}</td>
-        <td class="value" align="center">{{Status}}</td>
-        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
       </tr>
       {{/ZugabeNach}}
       {{/Gaerung}}

@@ -13,6 +13,7 @@ SudObject::SudObject(Brauhelfer *bh) :
     proxyModelRasten(new ProxyModel(this)),
     proxyModelMalzschuettung(new ProxyModel(this)),
     proxyModelHopfengaben(new ProxyModel(this)),
+    proxyModelHefegaben(new ProxyModel(this)),
     proxyModelWeitereZutatenGaben(new ProxyModel(this)),
     proxyModelSchnellgaerverlauf(new ProxyModel(this)),
     proxyModelHauptgaerverlauf(new ProxyModel(this)),
@@ -32,6 +33,7 @@ SudObject::~SudObject()
     delete proxyModelRasten;
     delete proxyModelMalzschuettung;
     delete proxyModelHopfengaben;
+    delete proxyModelHefegaben;
     delete proxyModelWeitereZutatenGaben;
     delete proxyModelSchnellgaerverlauf;
     delete proxyModelHauptgaerverlauf;
@@ -53,7 +55,7 @@ void SudObject::load(int id)
         modelRasten()->setSourceModel(bh->modelRasten());
         modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
         modelRasten()->setFilterRegExp(regExpId);
-        modelRasten()->sort(bh->modelRasten()->fieldIndex("RastTemp"), Qt::AscendingOrder);
+        modelRasten()->sort(bh->modelRasten()->fieldIndex("Temp"), Qt::AscendingOrder);
         modelMalzschuettung()->setSourceModel(bh->modelMalzschuettung());
         modelMalzschuettung()->setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
         modelMalzschuettung()->setFilterRegExp(regExpId);
@@ -61,6 +63,10 @@ void SudObject::load(int id)
         modelHopfengaben()->setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
         modelHopfengaben()->setFilterRegExp(regExpId);
         modelHopfengaben()->sort(bh->modelHopfengaben()->fieldIndex("Zeit"), Qt::DescendingOrder);
+        modelHefegaben()->setSourceModel(bh->modelHefegaben());
+        modelHefegaben()->setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+        modelHefegaben()->setFilterRegExp(regExpId);
+        modelHefegaben()->sort(bh->modelHefegaben()->fieldIndex("ZugabeNach"), Qt::AscendingOrder);
         modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
         modelWeitereZutatenGaben()->setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
         modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
@@ -140,6 +146,11 @@ ProxyModel* SudObject::modelHopfengaben() const
     return proxyModelHopfengaben;
 }
 
+ProxyModel* SudObject::modelHefegaben() const
+{
+    return proxyModelHefegaben;
+}
+
 ProxyModel* SudObject::modelWeitereZutatenGaben() const
 {
     return proxyModelWeitereZutatenGaben;
@@ -205,6 +216,11 @@ QVariant SudObject::getAnlageData(const QString& fieldName) const
     return bh->modelSud()->dataAnlage(mRowSud, fieldName);
 }
 
+QVariant SudObject::getWasserData(const QString& fieldName) const
+{
+    return bh->modelSud()->dataWasser(mRowSud, fieldName);
+}
+
 void SudObject::brauzutatenAbziehen()
 {
     int row;
@@ -243,21 +259,29 @@ void SudObject::brauzutatenAbziehen()
     }
 
     // Hefe
+    mList = modelHefegaben();
     mSubstract = bh->modelHefe();
-    row = mSubstract->getRowWithValue("Beschreibung", getAuswahlHefe());
-    if (row != -1)
+    for (int i = 0; i < mList->rowCount(); ++i)
     {
-        mengeTotal = mSubstract->data(row, "Menge").toDouble() - getHefeAnzahlEinheiten();
-        if (mengeTotal < 0.0)
-            mengeTotal = 0.0;
-        mSubstract->setData(row, "Menge", mengeTotal);
+        if (mList->data(i, "ZugabeNach").toInt() == 0)
+        {
+            row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
+            if (row != -1)
+            {
+                mengeTotal = mSubstract->data(row, "Menge").toInt() - mList->data(i, "Menge").toInt();
+                if (mengeTotal < 0.0)
+                    mengeTotal = 0.0;
+                mSubstract->setData(row, "Menge", mengeTotal);
+            }
+        }
     }
 
     // Weitere Zutaten
     mList = modelWeitereZutatenGaben();
     for (int i = 0; i < mList->rowCount(); ++i)
     {
-        if (mList->data(i, "Zeitpunkt").toInt() != EWZ_Zeitpunkt_Gaerung)
+        if (mList->data(i, "Zeitpunkt").toInt() != EWZ_Zeitpunkt_Gaerung ||
+            mList->data(i, "ZugabeNach").toInt() == 0)
         {
             if (mList->data(i, "Typ").toInt() != EWZ_Typ_Hopfen)
             {

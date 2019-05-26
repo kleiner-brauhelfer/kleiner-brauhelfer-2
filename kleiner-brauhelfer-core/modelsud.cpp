@@ -56,8 +56,8 @@ void ModelSud::createConnections()
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelHopfengaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
-    //connect(bh->modelHefeGaben(), SIGNAL(rowChanged(const QModelIndex&)),
-    //        this, SLOT(onOtherModelRowChanged(const QModelIndex&))); // TODO:
+    connect(bh->modelHefegaben(), SIGNAL(rowChanged(const QModelIndex&)),
+            this, SLOT(onOtherModelRowChanged(const QModelIndex&))); // TODO:
     connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
 }
@@ -95,11 +95,6 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
         QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
         return dt.isValid() ? dt : QDateTime::currentDateTime();
     }
-    if (field == "Anstelldatum")
-    {
-        QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-        return dt.isValid() ? dt : QDateTime::currentDateTime();
-    }
     if (field == "Abfuelldatum")
     {
         QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
@@ -123,14 +118,17 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     }
     if (field == "MengeIst")
     {
-        double menge = 0.0;
-        if (data(index.row(), "BierWurdeAbgefuellt").toBool())
-            menge = data(index.row(), "erg_AbgefuellteBiermenge").toDouble();
-        else if (data(index.row(), "BierWurdeGebraut").toBool())
-            menge = data(index.row(), "WuerzemengeAnstellen").toDouble();
-        else
-            menge = data(index.row(), "Menge").toDouble();
-        return menge;
+        switch (data(index.row(), "Status").toInt())
+        {
+        default:
+        case Sud_Status_Rezept:
+            return data(index.row(), "Menge").toDouble();
+        case Sud_Status_Gebraut:
+            return data(index.row(), "WuerzemengeAnstellen").toDouble();
+        case Sud_Status_Abgefuellt:
+        case Sud_Status_Verbraucht:
+            return data(index.row(), "erg_AbgefuellteBiermenge").toDouble();
+        }
     }
     if (field == "IbuIst")
     {
@@ -254,7 +252,7 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     }
     if (field == "BewertungMax")
     {
-        int sudId = index.siblingAtColumn(fieldIndex("ID")).data().toInt();
+        int sudId = index.sibling(index.row(), fieldIndex("ID")).data().toInt();
         return bh->modelBewertungen()->max(sudId);
     }
     return QVariant();
@@ -267,15 +265,10 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
     {
         if (QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate)))
         {
-            setData(index.row(), "Anstelldatum", value);
             setData(index.row(), "Abfuelldatum", value);
             return true;
         }
         return false;
-    }
-    if (field == "Anstelldatum")
-    {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
     }
     if (field == "Abfuelldatum")
     {
@@ -294,32 +287,6 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
         if (QSqlTableModel::setData(index, value))
         {
             setData(index.row(), "WuerzemengeVorHopfenseihen", data(index.row(), "MengeSollKochbeginn"));
-            return true;
-        }
-        return false;
-    }
-    if (field == "BierWurdeGebraut")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            if (!value.toBool())
-            {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("BierWurdeAbgefuellt")), false);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("BierWurdeVerbraucht")), false);
-
-            }
-            return true;
-        }
-        return false;
-    }
-    if (field == "BierWurdeAbgefuellt")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            if (!value.toBool())
-            {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("BierWurdeVerbraucht")), false);
-            }
             return true;
         }
         return false;
@@ -359,11 +326,7 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
     }
     if (field == "Speisemenge")
     {
-        if (data(index.row(), "BierWurdeGebraut").toBool())
-        {
-            return QSqlTableModel::setData(index, value);
-        }
-        else
+        if (data(index.row(), "Status").toInt() == Sud_Status_Rezept)
         {
             double v = data(index.row(), "WuerzemengeAnstellenTotal").toDouble() - value.toDouble();
             if (QSqlTableModel::setData(index, value))
@@ -372,6 +335,10 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
                 return true;
             }
             return false;
+        }
+        else
+        {
+            return QSqlTableModel::setData(index, value);
         }
     }
     if (field == "erg_AbgefuellteBiermenge")
@@ -425,26 +392,6 @@ bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
         }
         return false;
     }
-    if (field == "AuswahlBrauanlage")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            QString name = bh->modelAusruestung()->name(value.toInt());
-            QSqlTableModel::setData(this->index(index.row(), fieldIndex("AuswahlBrauanlageName")), name);
-            return true;
-        }
-        return false;
-    }
-    if (field == "AuswahlBrauanlageName")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            int id = bh->modelAusruestung()->id(value.toString());
-            QSqlTableModel::setData(this->index(index.row(), fieldIndex("AuswahlBrauanlage")), id);
-            return true;
-        }
-        return false;
-    }
     return false;
 }
 
@@ -459,13 +406,14 @@ Qt::ItemFlags ModelSud::flags(const QModelIndex &index) const
 
 QVariant ModelSud::dataAnlage(int row, const QString& fieldName) const
 {
-    int anlage = data(row, "AuswahlBrauanlage").toInt();
-    SqlTableModel* model = bh->modelAusruestung();
-    int col = model->fieldIndex("AnlagenID");
-    for (int i = 0; i < model->rowCount(); ++i)
-        if (model->data(model->index(i, col)).toInt() == anlage)
-            return model->data(i, fieldName);
-    return QVariant();
+    QVariant anlage = data(row, "Anlage");
+    return bh->modelAusruestung()->getValueFromSameRow("Name", anlage, fieldName);
+}
+
+QVariant ModelSud::dataWasser(int row, const QString& fieldName) const
+{
+    QVariant profil = data(row, "Wasserprofil");
+    return bh->modelWasser()->getValueFromSameRow("Name", profil, fieldName);
 }
 
 void ModelSud::update(int row)
@@ -481,18 +429,19 @@ void ModelSud::update(int row)
 
     updateSwWeitereZutaten(row);
 
-    if (!data(row, "BierWurdeGebraut").toBool())
+    int status = data(row, "Status").toInt();
+    if (status == Sud_Status_Rezept)
     {
         // recipe
         double mengeRecipe = data(row, "Menge").toDouble();
         double swRecipe = data(row, "SW").toDouble();
         double hgf = 1 + data(row, "highGravityFaktor").toInt() / 100.0;
 
-        // erg_S_Gesammt
+        // erg_S_Gesamt
         sw = swRecipe - swWzMaischenRecipe[row] - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
         double ausb = dataAnlage(row, "Sudhausausbeute").toDouble();
         double schuet = mengeRecipe * BierCalc::platoToDichte(sw * hgf) * sw / ausb;
-        setData(row, "erg_S_Gesammt", schuet);
+        setData(row, "erg_S_Gesamt", schuet);
 
         // erg_Farbe
         updateFarbe(row);
@@ -508,8 +457,8 @@ void ModelSud::update(int row)
         double ng = menge + schuet * 0.96 - hg + KorrekturWasser;
         setData(row, "erg_WNachguss", ng);
 
-        // erg_W_Gesammt
-        setData(row, "erg_W_Gesammt", hg + ng);
+        // erg_W_Gesamt
+        setData(row, "erg_W_Gesamt", hg + ng);
 
         // erg_Sudhausausbeute
         sw = data(row, "SWKochende").toDouble() - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
@@ -518,10 +467,10 @@ void ModelSud::update(int row)
 
         // erg_EffektiveAusbeute
         sw = data(row, "SWAnstellen").toDouble() * hgf - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
-        menge = (data(row, "WuerzemengeAnstellen").toDouble() + data(row, "Speisemenge").toDouble()) / hgf;
+        menge = data(row, "WuerzemengeAnstellenTotal").toDouble() / hgf;
         setData(row, "erg_EffektiveAusbeute", BierCalc::sudhausausbeute(sw , menge, schuet));
     }
-    if (!data(row, "BierWurdeAbgefuellt").toBool())
+    if (status == Sud_Status_Gebraut)
     {
         // erg_Alkohol
         double sre = data(row, "SREIst").toDouble();
@@ -669,14 +618,14 @@ void ModelSud::updatePreis(int row)
     summe += kostenHopfen;
 
     double kostenHefe = 0.0;
-    //model = bh->modelHefegaben();
-    //colSudId = model->fieldIndex("SudID");
-    //for (int o = 0; o < model->rowCount(); ++o)
+    model = bh->modelHefegaben();
+    colSudId = model->fieldIndex("SudID");
+    for (int o = 0; o < model->rowCount(); ++o)
     {
-        //if (model->data(model->index(o, colSudId)).toInt() == id)
+        if (model->data(model->index(o, colSudId)).toInt() == id)
         {
-            QVariant name = data(row, "AuswahlHefe");//model->data(o, "Name");
-            int menge = data(row, "HefeAnzahlEinheiten").toInt();//model->data(o, "Menge").toInt();
+            QVariant name = model->data(o, "Name");
+            int menge = model->data(o, "Menge").toInt();
             double preis = bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
             kostenHefe += preis * menge;
         }
@@ -807,7 +756,7 @@ QVariant ModelSud::ZuckerAnteil(const QModelIndex &index) const
 
 QVariant ModelSud::ReifezeitDelta(const QModelIndex &index) const
 {
-    if (data(index.row(), "BierWurdeAbgefuellt").toBool())
+    if (data(index.row(), "Status").toInt() >= Sud_Status_Abgefuellt)
     {
         QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "ID").toInt());
         if (!dt.isValid())
@@ -822,8 +771,18 @@ QVariant ModelSud::ReifezeitDelta(const QModelIndex &index) const
 QVariant ModelSud::AbfuellenBereitZutaten(const QModelIndex &index) const
 {
     int sudId = data(index.row(), "ID").toInt();
-    SqlTableModel* model = bh->modelWeitereZutatenGaben();
+    SqlTableModel* model = bh->modelHefegaben();
     int colSudId = model->fieldIndex("SudID");
+    for (int i = 0; i < model->rowCount(); ++i)
+    {
+        if (model->data(model->index(i, colSudId)).toInt() == sudId)
+        {
+            if (!model->data(i, "Abfuellbereit").toBool())
+                return false;
+        }
+    }
+    model = bh->modelWeitereZutatenGaben();
+    colSudId = model->fieldIndex("SudID");
     for (int i = 0; i < model->rowCount(); ++i)
     {
         if (model->data(model->index(i, colSudId)).toInt() == sudId)
@@ -891,7 +850,7 @@ QVariant ModelSud::Verdampfungsziffer(const QModelIndex &index) const
 
 QVariant ModelSud::RestalkalitaetFaktor(const QModelIndex &index) const
 {
-    double ist = bh->modelWasser()->data(0, "Restalkalitaet").toDouble();
+    double ist = bh->modelWasser()->getValueFromSameRow("Name", data(index.row(), "Wasserprofil"), "Restalkalitaet").toDouble();
     double soll = data(index.row(), "RestalkalitaetSoll").toDouble();
     double fac = (ist -  soll) * 0.033333333;
     if (fac < 0.0)
@@ -960,12 +919,8 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("KochdauerNachBitterhopfung", 60);
     if (!values.contains("berechnungsArtHopfen"))
         values.insert("berechnungsArtHopfen", Hopfen_Berechnung_IBU);
-    if (!values.contains("BierWurdeGebraut"))
-        values.insert("BierWurdeGebraut", 0);
-    if (!values.contains("BierWurdeAbgefuellt"))
-        values.insert("BierWurdeAbgefuellt", 0);
-    if (!values.contains("BierWurdeVerbraucht"))
-        values.insert("BierWurdeVerbraucht", 0);
+    if (!values.contains("Status"))
+        values.insert("Status", Sud_Status_Rezept);
 }
 
 QVariantMap ModelSud::copyValues(int row) const

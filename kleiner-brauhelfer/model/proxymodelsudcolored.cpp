@@ -1,13 +1,12 @@
 #include "proxymodelsudcolored.h"
 #include "settings.h"
+#include "database_defs.h"
 
 extern Settings* gSettings;
 
 ProxyModelSudColored::ProxyModelSudColored(QObject* parent) :
     ProxyModelSud(parent),
-    mColBierWurdeGebraut(-1),
-    mColBierWurdeAbgefuellt(-1),
-    mColBierWurdeVerbraucht(-1),
+    mColStatus(-1),
     mColMerklistenID(-1),
     mColWoche(-1),
     mColReifeZeitDelta(-1)
@@ -17,9 +16,7 @@ ProxyModelSudColored::ProxyModelSudColored(QObject* parent) :
 void ProxyModelSudColored::setSourceModel(QAbstractItemModel *sourceModel)
 {
     ProxyModelSud::setSourceModel(sourceModel);
-    mColBierWurdeGebraut = fieldIndex("BierWurdeGebraut");
-    mColBierWurdeAbgefuellt = fieldIndex("BierWurdeAbgefuellt");
-    mColBierWurdeVerbraucht = fieldIndex("BierWurdeVerbraucht");
+    mColStatus = fieldIndex("Status");
     mColMerklistenID = fieldIndex("MerklistenID");
     mColWoche = fieldIndex("Woche");
     mColReifeZeitDelta = fieldIndex("ReifezeitDelta");
@@ -29,29 +26,29 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::BackgroundRole)
     {
-        if (index.siblingAtColumn(mColMerklistenID).data().toBool())
+        if (index.sibling(index.row(), mColMerklistenID).data().toBool())
             return gSettings->MekrlisteBackground;
-        else if (index.siblingAtColumn(mColBierWurdeVerbraucht).data().toBool())
-            return gSettings->VerbrauchtBackground;
-        else if (index.siblingAtColumn(mColBierWurdeAbgefuellt).data().toBool())
-            return gSettings->AbgefuelltBackground;
-        else if (index.siblingAtColumn(mColBierWurdeGebraut).data().toBool())
-            return gSettings->GebrautBackground;
-        else
+        switch(index.sibling(index.row(), mColStatus).data().toInt())
+        {
+        default:
+        case Sud_Status_Rezept:
             return gSettings->NichtGebrautBackground;
+        case Sud_Status_Gebraut:
+            return gSettings->GebrautBackground;
+        case Sud_Status_Abgefuellt:
+            return gSettings->AbgefuelltBackground;
+        case Sud_Status_Verbraucht:
+            return gSettings->VerbrauchtBackground;
+        }
     }
     else if (role == Qt::DisplayRole)
     {
         if (index.column() == mColWoche)
         {
-            if (index.siblingAtColumn(mColBierWurdeVerbraucht).data().toBool())
-            {
-                return "";
-            }
-            if (index.siblingAtColumn(mColBierWurdeAbgefuellt).data().toBool())
+            if (index.sibling(index.row(), mColStatus).data().toInt() == Sud_Status_Abgefuellt)
             {
                 int woche = ProxyModelSud::data(index, role).toInt();
-                int tage = index.siblingAtColumn(mColReifeZeitDelta).data().toInt();
+                int tage = index.sibling(index.row(), mColReifeZeitDelta).data().toInt();
                 if (tage > 0)
                     return tr("%1. Woche, reif in %2 Tage").arg(woche).arg(tage);
                 else

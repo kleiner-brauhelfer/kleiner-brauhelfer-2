@@ -49,8 +49,8 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
         if (QSqlTableModel::setData(index, value))
         {
             int row = bh->modelHopfen()->getRowWithValue("Beschreibung", value);
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Alpha")), bh->modelHopfen()->data(row, "Alpha"));
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Pellets")), bh->modelHopfen()->data(row, "Pellets"));
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Alpha")), bh->modelHopfen()->data(row, "Alpha"));
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Pellets")), bh->modelHopfen()->data(row, "Pellets"));
             return true;
         }
     }
@@ -64,7 +64,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
         if (QSqlTableModel::setData(index, fVal))
         {
             int colSudId = fieldIndex("SudID");
-            int sudId = index.siblingAtColumn(colSudId).data().toInt();
+            int sudId = index.sibling(index.row(), colSudId).data().toInt();
             double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
             double ibuSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "IBU").toDouble();
             switch (bh->modelSud()->getValueFromSameRow("ID", sudId, "berechnungsArtHopfen").toInt())
@@ -107,7 +107,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
                         menge = 0.0;
                     else
                         menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
-                    QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("erg_Menge")), menge);
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("erg_Menge")), menge);
                 }
                 break;
             }
@@ -119,7 +119,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
         if (QSqlTableModel::setData(index, value))
         {
             int colSudId = fieldIndex("SudID");
-            int sudId = index.siblingAtColumn(colSudId).data().toInt();
+            int sudId = index.sibling(index.row(), colSudId).data().toInt();
             double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
             double ibuSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "IBU").toDouble();
             switch (bh->modelSud()->getValueFromSameRow("ID", sudId, "berechnungsArtHopfen").toInt())
@@ -129,7 +129,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
                     double alpha = data(index.row(), "Alpha").toDouble();
                     double ausbeute = data(index.row(), "Ausbeute").toDouble();
                     double p = (10 * alpha * ausbeute * value.toInt()) / (ibuSoll * mengeSoll);
-                    QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Prozent")), p);
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Prozent")), p);
                 }
                 break;
             }
@@ -140,7 +140,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
     {
         if (QSqlTableModel::setData(index, value))
         {
-            QModelIndex index2 = index.siblingAtColumn(fieldIndex("Prozent"));
+            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
             setData(index2, data(index2));
             return true;
         }
@@ -149,7 +149,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
     {
         if (QSqlTableModel::setData(index, value))
         {
-            QModelIndex index2 = index.siblingAtColumn(fieldIndex("Prozent"));
+            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
             setData(index2, data(index2));
         return true;
         }
@@ -158,7 +158,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
     {
         if (QSqlTableModel::setData(index, value))
         {
-            QModelIndex index2 = index.siblingAtColumn(fieldIndex("Prozent"));
+            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
             setData(index2, data(index2));
             return true;
         }
@@ -171,9 +171,9 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
             {
                 int sudId = data(index.row(), "SudID").toInt();
                 double dauer = bh->modelSud()->getValueFromSameRow("ID", sudId, "KochdauerNachBitterhopfung").toDouble();
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zeit")), dauer);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zeit")), dauer);
             }
-            QModelIndex index2 = index.siblingAtColumn(fieldIndex("Prozent"));
+            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
             setData(index2, data(index2));
             return true;
         }

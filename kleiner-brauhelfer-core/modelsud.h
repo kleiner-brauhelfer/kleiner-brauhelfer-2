@@ -21,6 +21,7 @@ public:
     void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
     QVariantMap copyValues(int row) const Q_DECL_OVERRIDE;
     QVariant dataAnlage(int row, const QString& fieldName) const;
+    QVariant dataWasser(int row, const QString& fieldName) const;
 private slots:
     void onModelReset();
     void onRowChanged(const QModelIndex &index);

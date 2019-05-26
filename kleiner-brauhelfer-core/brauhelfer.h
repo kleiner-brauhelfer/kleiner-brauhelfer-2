@@ -18,6 +18,7 @@
 #include "modelwasser.h"
 #include "modelmalzschuettung.h"
 #include "modelhopfengaben.h"
+#include "modelhefegaben.h"
 #include "modelweiterezutatengaben.h"
 #include "modelausruestung.h"
 #include "modelrasten.h"
@@ -39,7 +40,6 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(BierCalc* calc READ calc CONSTANT)
     Q_PROPERTY(SudObject* sud READ sud CONSTANT)
     Q_PROPERTY(SqlTableModel* modelSud READ modelSud CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelRastauswahl READ modelRastauswahl CONSTANT)
     Q_PROPERTY(SqlTableModel* modelMalz READ modelMalz CONSTANT)
     Q_PROPERTY(SqlTableModel* modelHopfen READ modelHopfen CONSTANT)
     Q_PROPERTY(SqlTableModel* modelHefe READ modelHefe CONSTANT)
@@ -50,6 +50,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelRasten READ modelRasten CONSTANT)
     Q_PROPERTY(SqlTableModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
     Q_PROPERTY(SqlTableModel* modelHopfengaben READ modelHopfengaben CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelHefegaben READ modelHefegaben CONSTANT)
     Q_PROPERTY(SqlTableModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
     Q_PROPERTY(SqlTableModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
     Q_PROPERTY(SqlTableModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
@@ -94,7 +95,6 @@ public:
     SudObject* sud() const;
 
     ModelSud* modelSud() const;
-    SqlTableModel* modelRastauswahl() const;
     ModelMalz* modelMalz() const;
     ModelHopfen* modelHopfen() const;
     ModelHefe* modelHefe() const;
@@ -105,6 +105,7 @@ public:
     ModelRasten* modelRasten() const;
     ModelMalzschuettung* modelMalzschuettung() const;
     ModelHopfengaben* modelHopfengaben() const;
+    ModelHefegaben* modelHefegaben() const;
     ModelWeitereZutatenGaben* modelWeitereZutatenGaben() const;
     ModelSchnellgaerverlauf* modelSchnellgaerverlauf() const;
     ModelHauptgaerverlauf* modelHauptgaerverlauf() const;

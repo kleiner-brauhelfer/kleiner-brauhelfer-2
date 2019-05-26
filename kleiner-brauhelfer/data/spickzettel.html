@@ -23,7 +23,7 @@
             <col width="50">
             <col width="*">
             <tr>
-              <th>&nbsp;</th>
+              <th></th>
               <th>Rezept</th>
             </tr>
             <tr>
@@ -43,9 +43,9 @@
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>Stammwürze</td>
+              <td>Stammw&uuml;rze</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
-              <td>°P</td>
+              <td>&deg;P</td>
             </tr>
             <tr>
               <td>Bittere</td>
@@ -58,7 +58,7 @@
               <td>EBC</td>
             </tr>
             <tr>
-              <td>CO₂-Gehalt</td>
+              <td>CO&#x2082;-Gehalt</td>
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
             </tr>
@@ -76,7 +76,7 @@
         <img style="padding:0px;margin:0px;" src="qrc:/images/getreide.svg" width="300px" border=0>
         <table style="width:100%">
           <tr>
-            <th>Malzschüttung</th>
+            <th>Malzsch&uuml;ttung</th>
             <th>Farbe [EBC]</th>
             <th>Anteil [%]</th>
             <th>Menge [kg]</th>
@@ -90,7 +90,7 @@
           </tr>
           {{/Liste}}
           <tr>
-            <td><strong>Gesamtschüttung</strong></td>
+            <td><strong>Gesamtsch&uuml;ttung</strong></td>
             <td align="center"></td>
             <td align="center"></td>
             <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
@@ -106,7 +106,7 @@
           <table style="width:100%">
             <tr>
               <th>Hopfengabe</th>
-              <th>Vorderwürze</th>
+              <th>Vorderw&uuml;rze</th>
               <th>Alpha [%]</th>
               <th>Kochdauer [min]</th>
               <th>Menge [g]</th>
@@ -153,7 +153,7 @@
             <tr>
               <th></th>
               <th>Menge [l]</th>
-              {{#GesamtMilchsaeure}}<th>Milchsäure 80% [ml]</th>{{/GesamtMilchsaeure}}
+              {{#GesamtMilchsaeure}}<th>Milchs&auml;ure 80% [ml]</th>{{/GesamtMilchsaeure}}
             </tr>
             <tr>
               <td>Hauptguss</td>
@@ -167,7 +167,7 @@
             </tr>
             {{#Verduennung}}
             <tr>
-              <td>Verdünnung</td>
+              <td>Verd&uuml;nnung</td>
               <td class="value" align="center">{{Verduennung}}</td>
               {{#GesamtMilchsaeure}}<td class="value" align="center">{{VerduennungMilchsaeure}}</td>{{/GesamtMilchsaeure}}
             </tr>
@@ -227,7 +227,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -261,7 +261,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -295,7 +295,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -329,7 +329,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -363,7 +363,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -394,7 +394,7 @@
 
   {{#Geraete}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Geräte</p>
+    <p class="h2">Ger&auml;te</p>
     <table width='100%'>
       {{#Liste}}
       <tr><td align="center">{{Name}}</td></tr>
@@ -408,40 +408,40 @@
     <table width='100%'>
       <tr>
         <td>Einmaischen</td>
-        <td><span class="value">{{Wasser.Hauptguss}}</span> Liter Wasser auf <span class="value">{{Rezept.EinmaischenTemp}}</span>°C erhitzen und Malzschüttung zugeben</td>
+        <td><span class="value">{{Wasser.Hauptguss}}</span> Liter Wasser auf <span class="value">{{Rezept.EinmaischenTemp}}</span>&deg;C erhitzen und Malzsch&uuml;ttung zugeben</td>
       </tr>
       {{#Rasten.Liste}}
       <tr>
         <td>{{Name}}</td>
-        <td>Maische auf <span class="value">{{Temp}}</span>°C erhitzen und <span class="value">{{Dauer}}</span> min Rast einlegen</td>
+        <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min Rast einlegen</td>
       </tr>
       {{/Rasten.Liste}}
     </table>
   </div>
 
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Läutern</p>
+    <p class="h2">L&auml;utern</p>
     <table width='100%'>
       <tr>
-        <td>Läutern vorbereiten</td>
-        <td>Maische in den Läutereimer schöpfen</td>
+        <td>L&auml;utern vorbereiten</td>
+        <td>Maische in den L&auml;utereimer sch&ouml;pfen</td>
       </tr>
       <tr>
         <td>Nachguss vorbereiten</td>
-        <td><span class="value">{{Wasser.Nachguss}}</span> Liter Wasser auf <span class="value">78</span>°C erhitzen</td>
+        <td><span class="value">{{Wasser.Nachguss}}</span> Liter Wasser auf <span class="value">78</span>&deg;C erhitzen</td>
       </tr>
       <tr>
-        <td colspan="2">Nach etwa 10-20 min Wartezeit solange Vorderwürze ablaufen lassen und wieder zurück in den Läutereimer schütten, bis Würze klar läuft.</td>
+        <td colspan="2">Nach etwa 10-20 min Wartezeit solange Vorderw&uuml;rze ablaufen lassen und wieder zur&uuml;ck in den L&auml;utereimer sch&uuml;tten, bis W&uuml;rze klar l&auml;uft.</td>
       </tr>
       <tr>
-        <td>Läutern</td>
-        <td>Würze langsam ablaufen lassen (Treber darf nicht trockenlaufen!). Bevor Treber trockenläuft immer etwas (ca. 2-3 Liter) Nachguss über Schaumlöffel nachgiessen.</td>
+        <td>L&auml;utern</td>
+        <td>W&uuml;rze langsam ablaufen lassen (Treber darf nicht trockenlaufen!). Bevor Treber trockenl&auml;uft immer etwas (ca. 2-3 Liter) Nachguss &uuml;ber Schauml&ouml;ffel nachgiessen.</td>
       </tr>
     </table>
   </div>
 
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Würzekochen</p>
+    <p class="h2">W&uuml;rzekochen</p>
     <table width='100%'>
     </table>
   </div>
@@ -453,7 +453,7 @@
   </div>
 
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Gärung</p>
+    <p class="h2">G&auml;rung</p>
     <table width='100%'>
     </table>
   </div>

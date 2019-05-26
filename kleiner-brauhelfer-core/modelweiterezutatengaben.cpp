@@ -8,8 +8,8 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("Zeitpunkt_von_ist");
-    mVirtualField.append("Zeitpunkt_bis_ist");
+    mVirtualField.append("ZugabeDatum");
+    mVirtualField.append("EntnahmeDatum");
     mVirtualField.append("Abfuellbereit");
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(onSudDataChanged(const QModelIndex&)));
@@ -18,34 +18,26 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
 QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &index) const
 {
     QString field = fieldName(index.column());
-    if (field == "Zeitpunkt_von")
+    if (field == "ZugabeDatum")
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+        QVariant sudId = data(index.row(), "SudID");
+        QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+        if (braudatum.isValid())
+        {
+            int tage = data(index.row(), "ZugabeNach").toInt();
+            return braudatum.addDays(tage);
+        }
+        return QDateTime();
     }
-    if (field == "Zeitpunkt_von_ist")
+    if (field == "EntnahmeDatum")
     {
-        if (data(index.row(), "Zugabestatus").toInt() == EWZ_Zugabestatus_nichtZugegeben)
-            return "";
-        return data(index.row(), "Zeitpunkt_von");
-    }
-    if (field == "Zeitpunkt_bis")
-    {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-    }
-    if (field == "Zeitpunkt_bis_ist")
-    {
-        if (data(index.row(), "Zugabestatus").toInt() != EWZ_Zugabestatus_Entnommen)
-            return "";
-        if (data(index.row(), "Entnahmeindex").toInt() == EWZ_Entnahmeindex_KeineEntnahme)
-            return "";
-        return data(index.row(), "Zeitpunkt_bis");
-    }
-    if (field == "Typ")
-    {
-        int typ = QSqlTableModel::data(index).toInt();
-        if (typ < 0)
-            typ = EWZ_Typ_Hopfen;
-        return typ;
+        QDateTime zugabedatum = data(index.row(), "ZugabeDatum").toDateTime();
+        if (zugabedatum.isValid())
+        {
+            int tage = data(index.row(), "Zugabedauer").toInt() / 1440;
+            return zugabedatum.addDays(tage);
+        }
+        return QDateTime();
     }
     if (field == "Abfuellbereit")
     {
@@ -73,19 +65,19 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             int typ = data(index.row(), "Typ").toInt();
             if (typ == EWZ_Typ_Hopfen)
             {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Einheit")), EWZ_Einheit_g);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Typ")), EWZ_Typ_Hopfen);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Ausbeute")), 0);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Farbe")), 0);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Einheit")), EWZ_Einheit_g);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Typ")), EWZ_Typ_Hopfen);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Ausbeute")), 0);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), 0);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
             }
             else
             {
                 int row = bh->modelWeitereZutaten()->getRowWithValue("Beschreibung", value);
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Einheit")), bh->modelWeitereZutaten()->data(row, "Einheiten"));
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Typ")), bh->modelWeitereZutaten()->data(row, "Typ"));
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Ausbeute")), bh->modelWeitereZutaten()->data(row, "Ausbeute"));
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Farbe")), bh->modelWeitereZutaten()->data(row, "EBC"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Einheit")), bh->modelWeitereZutaten()->data(row, "Einheiten"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Typ")), bh->modelWeitereZutaten()->data(row, "Typ"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Ausbeute")), bh->modelWeitereZutaten()->data(row, "Ausbeute"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), bh->modelWeitereZutaten()->data(row, "EBC"));
             }
             return true;
         }
@@ -94,9 +86,9 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
     {
         if (QSqlTableModel::setData(index, value))
         {
-            int sudId = index.siblingAtColumn(fieldIndex("SudID")).data().toInt();
+            int sudId = index.sibling(index.row(), fieldIndex("SudID")).data().toInt();
             double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("erg_Menge")), value.toDouble() * mengeSoll);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("erg_Menge")), value.toDouble() * mengeSoll);
             return true;
         }
     }
@@ -104,9 +96,9 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
     {
         if (QSqlTableModel::setData(index, value))
         {
-            int sudId = index.siblingAtColumn(fieldIndex("SudID")).data().toInt();
+            int sudId = index.sibling(index.row(), fieldIndex("SudID")).data().toInt();
             double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
-            QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Menge")), value.toDouble() / mengeSoll);
+            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Menge")), value.toDouble() / mengeSoll);
             return true;
         }
     }
@@ -116,7 +108,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
         {
             if (data(index).toInt() == EWZ_Typ_Hopfen)
             {
-                QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zeitpunkt")), EWZ_Zeitpunkt_Gaerung);
             }
             return true;
         }
@@ -129,43 +121,38 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             int val = value.toInt();
             if (prev == EWZ_Zeitpunkt_Gaerung && val != EWZ_Zeitpunkt_Gaerung)
             {
-                QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zugabedauer"));
+                QModelIndex index2 = index.sibling(index.row(), fieldIndex("Zugabedauer"));
                 QSqlTableModel::setData(index2, index2.data().toInt() / 1440);
             }
             else if (prev != EWZ_Zeitpunkt_Gaerung && val == EWZ_Zeitpunkt_Gaerung)
             {
-                QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zugabedauer"));
+                QModelIndex index2 = index.sibling(index.row(), fieldIndex("Zugabedauer"));
                 QSqlTableModel::setData(index2, index2.data().toInt() * 1440);
             }
-            return true;
-        }
-    }
-    if (field == "Zeitpunkt_von")
-    {
-        QDateTime dt = value.toDateTime();
-        if (QSqlTableModel::setData(index, dt.toString(Qt::ISODate)))
-        {
-            QModelIndex index2 = index.siblingAtColumn(fieldIndex("Zeitpunkt_bis"));
-            dt = dt.addDays(ceil(data(index.row(), "Zugabedauer").toInt() / 1440.0));
-            QSqlTableModel::setData(index2, dt.toString(Qt::ISODate));
-            return true;
-        }
-    }
-    if (field == "Zeitpunkt_bis")
-    {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
-    }
-    if (field == "Zugabestatus")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            if (value.toInt() == EWZ_Zugabestatus_Entnommen)
+            if (val != EWZ_Zeitpunkt_Gaerung)
             {
-                QModelIndex index2 = this->index(index.row(), fieldIndex("Zugabedauer"));
-                int day = data(index.row(), "Zeitpunkt_von").toDateTime().daysTo(data(index.row(), "Zeitpunkt_bis").toDateTime());
-                QSqlTableModel::setData(index2, day * 1440);
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), 0);
             }
             return true;
+        }
+    }
+    if (field == "ZugabeDatum")
+    {
+        QVariant sudId = data(index.row(), "SudID");
+        QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+        if (braudatum.isValid())
+        {
+            qint64 tage = braudatum.daysTo(value.toDateTime());
+            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), tage);
+        }
+    }
+    if (field == "EntnahmeDatum")
+    {
+        QDateTime zugabedatum = data(index.row(), "ZugabeDatum").toDateTime();
+        if (zugabedatum.isValid())
+        {
+            qint64 tage = zugabedatum.daysTo(value.toDateTime());
+            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zugabedauer")), tage*1440);
         }
     }
     return false;
@@ -188,22 +175,28 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
             }
         }
     }
-    else if (field == "BierWurdeGebraut")
+    else if (field == "Status")
     {
-        if (!idx.data().toBool())
+        int status = idx.data().toInt();
+        int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
+        int colSudId = fieldIndex("SudID");
+        int colStatus = fieldIndex("Zugabestatus");
+        int colZugabeNach = fieldIndex("ZugabeNach");
+        if (status == Sud_Status_Rezept)
         {
-            int sudId = bh->modelSud()->data(idx.row(), "ID").toInt();
-
-            int colSudId = fieldIndex("SudID");
-            int colStatus = fieldIndex("Zugabestatus");
-
-            for (int i = 0; i < rowCount(); ++i)
+            for (int row = 0; row < rowCount(); ++row)
             {
-                if (index(i, colSudId).data().toInt() == sudId)
-                {
-                    QModelIndex index2 = index(i, colStatus);
-                    setData(index2, EWZ_Zugabestatus_nichtZugegeben);
-                }
+                if (data(index(row, colSudId)).toInt() == sudId)
+                    setData(index(row, colStatus), EWZ_Zugabestatus_nichtZugegeben);
+            }
+        }
+        else if (status == Sud_Status_Gebraut)
+        {
+            for (int row = 0; row < rowCount(); ++row)
+            {
+                if (data(index(row, colSudId)).toInt() == sudId &&
+                    data(index(row, colZugabeNach)).toInt() == 0)
+                    setData(index(row, colStatus), EWZ_Zugabestatus_Zugegeben);
             }
         }
     }
@@ -223,6 +216,6 @@ void ModelWeitereZutatenGaben::defaultValues(QVariantMap &values) const
     }
     if (!values.contains("Menge"))
         values.insert("Menge", 0);
-    if (!values.contains("Zeitpunkt_von"))
-        values.insert("Zeitpunkt_von", QDate::currentDate());
+    if (!values.contains("ZugabeDatum"))
+        values.insert("ZugabeDatum", QDate::currentDate());
 }

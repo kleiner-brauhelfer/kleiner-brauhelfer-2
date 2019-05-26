@@ -4,7 +4,7 @@ Pilsener Malz;3;100;helle Biere, Pilsener Biere
 Bohemian Pilsner Malz;4;100;helle Biere, Pilsener Biere
 Spitzmalz;4;20;Kompensation hochgelöster Braumalze
 Böhmischesch Tennenmalz;4;100;helle Biere, Pilsener Biere
-Weizenmalz hell;4;80;Weißbier, Kölsch, Altbier
+Weizenmalz hell;4;80;Weissbier, Kölsch, Altbier
 Weizen-Diastasemalz;4;100;
 CARAPILS®;5;40;Pilsner Biere, alkoholfreie Biere, Leichtbiere
 Sauermalz;5;5;
@@ -14,14 +14,14 @@ Pale Ale Malz;7;100;helle Biere, Pilsener Biere
 Wiener Malz;8;100;Exportbier, Märzenbiere, Festbiere
 Münchner Malz I;15;100;dunkle Biere, Festbiere, Starkbiere, Altbier
 Böhmischesch Tennenmalz dunkel;16;100;dunkle Biere, Festbiere, Starkbiere, Altbier
-Weizenmalz dunkel;16;80;Weißbier, Kölsch, Altbier
+Weizenmalz dunkel;16;80;Weissbier, Kölsch, Altbier
 Münchner Malz II;23;100;dunkle Biere, Festbiere, Starkbiere, Altbier
 Caramalz hell, CARAHELL®;25;30;helle Biere, Exportbiere, Weizenbier
 CARABELGE®;33;30;"belgische Spezialbiere, Belgische ""Blonde"" Biere, Belgische ""Bruin"" Biere, Belgisches Amber, Tripel, Dubbel"
-CARARED®;45;25;Braunbiere, Bockbiere, Amberbiere, Altbiere, Weißbiere, Red Ales, Scottish Ales
+CARARED®;45;25;Braunbiere, Bockbiere, Amberbiere, Altbiere, Weissbiere, Red Ales, Scottish Ales
 Abbay (Kloster) Malz®;45;50;traditionelle Klosterbiere, Trapistenbiere, Belgische Biere, Festbiere, Faro, Fruchtbiere
 CARAAMBER®;70;20;Bockbiere, dunkle Biere, rote Biere, Amber Biere, Amber Lagers, Amber Ales
-Melanoidinmalz;70;20;Weißbier, Bockbier, dunkle Biere, rote Biere, Amber Bier
+Melanoidinmalz;70;20;Weissbier, Bockbier, dunkle Biere, rote Biere, Amber Bier
 CARAMÜNCH I®;90;10;
 Caramalz dunkel;120;10;dunkle Biere, Festbiere, Malzbiere, Schankbiere Leichtbiere
 CARAMÜNCH II®;120;10;dunkle Biere, Festbiere, Malzbiere

@@ -36,7 +36,7 @@ void TabZusammenfassung::restoreView()
 
 void TabZusammenfassung::updateAll()
 {
-    if (!bh->sud()->getBierWurdeGebraut())
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
         ui->webview->setHtmlFile("spickzettel.html");
     else
         ui->webview->setHtmlFile("zusammenfassung.html");

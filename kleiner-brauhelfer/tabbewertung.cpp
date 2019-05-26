@@ -96,7 +96,7 @@ bool TabBewertung::setData(const QString &fieldName, const QVariant &value)
 
 void TabBewertung::updateValues()
 {
-    ui->btnNeueBewertung->setVisible(bh->sud()->getBierWurdeAbgefuellt() && !bh->sud()->getBierWurdeVerbraucht());
+    ui->btnNeueBewertung->setVisible(bh->sud()->getStatus() == Sud_Status_Abgefuellt);
 
     ui->wdgBewertung->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
 

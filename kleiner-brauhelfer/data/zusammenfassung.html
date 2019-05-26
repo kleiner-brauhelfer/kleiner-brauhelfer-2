@@ -24,7 +24,7 @@
             <col width="50">
             <col width="*">
             <tr>
-              <th>&nbsp;</th>
+              <th></th>
               <th>Sud</th>
               <th>Rezept</th>
             </tr>
@@ -43,10 +43,10 @@
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>Stammwürze</td>
+              <td>Stammw&uuml;rze</td>
               <td class="value" align="center">{{Sud.SW}}</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
-              <td>°P</td>
+              <td>&deg;P</td>
             </tr>
             <tr>
               <td>Alkohol</td>
@@ -67,7 +67,7 @@
               <td>EBC</td>
             </tr>
             <tr>
-              <td>CO₂-Gehalt</td>
+              <td>CO&#x2082;-Gehalt</td>
               <td class="value" align="center">{{Sud.CO2}}</td>
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
@@ -89,8 +89,8 @@
         <td valign="top">
           <table>
               <tr>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th></th>
+                <th></th>
               </tr>
               <tr>
                 <td>Brauanlage</td>
@@ -101,7 +101,7 @@
                 <td class="value" align="center">{{Sud.Braudatum}}</td>
               </tr>
               <tr>
-                <td>Abfülldatum</td>
+                <td>Abf&uuml;lldatum</td>
                 <td class="value" align="center">{{Sud.Abfuelldatum}}</td>
               </tr>
               <tr>
@@ -121,7 +121,7 @@
         <img style="padding:0px;margin:0px;" src="qrc:/images/getreide.svg" width="300px" border=0>
         <table style="width:100%">
           <tr>
-            <th>Malzschüttung</th>
+            <th>Malzsch&uuml;ttung</th>
             <th>Farbe [EBC]</th>
             <th>Anteil [%]</th>
             <th>Menge [kg]</th>
@@ -135,7 +135,7 @@
           </tr>
           {{/Liste}}
           <tr>
-            <td><strong>Gesamtschüttung</strong></td>
+            <td><strong>Gesamtsch&uuml;ttung</strong></td>
             <td align="center"></td>
             <td align="center"></td>
             <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
@@ -151,7 +151,7 @@
           <table style="width:100%">
             <tr>
               <th>Hopfengabe</th>
-              <th>Vorderwürze</th>
+              <th>Vorderw&uuml;rze</th>
               <th>Alpha [%]</th>
               <th>Kochdauer [min]</th>
               <th>Menge [g]</th>
@@ -198,7 +198,7 @@
             <tr>
               <th></th>
               <th>Menge [l]</th>
-              {{#GesamtMilchsaeure}}<th>Milchsäure 80% [ml]</th>{{/GesamtMilchsaeure}}
+              {{#GesamtMilchsaeure}}<th>Milchs&auml;ure 80% [ml]</th>{{/GesamtMilchsaeure}}
             </tr>
             <tr>
               <td>Hauptguss</td>
@@ -212,7 +212,7 @@
             </tr>
             {{#Verduennung}}
             <tr>
-              <td>Verdünnung</td>
+              <td>Verd&uuml;nnung</td>
               <td class="value" align="center">{{Verduennung}}</td>
               {{#GesamtMilchsaeure}}<td class="value" align="center">{{VerduennungMilchsaeure}}</td>{{/GesamtMilchsaeure}}
             </tr>
@@ -272,7 +272,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -306,7 +306,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -340,7 +340,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -374,7 +374,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -408,7 +408,7 @@
               <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gärung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -443,7 +443,7 @@
       <tr>
         <td>Einmaischen</td>
         <td class="value">{{Rezept.EinmaischenTemp}}</td>
-        <td>°C</td>
+        <td>&deg;C</td>
         <td class="value"></td>
         <td></td>
       </tr>
@@ -451,7 +451,7 @@
       <tr>
         <td>{{Name}}</td>
         <td class="value">{{Temp}}</td>
-        <td>°C</td>
+        <td>&deg;C</td>
         <td class="value">{{Dauer}}</td>
         <td>min</td>
       </tr>
@@ -461,7 +461,7 @@
 
   {{#Anhang}}
   <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Anhänge</p>
+    <p class="h2">Anh&auml;nge</p>
     <table width='100%'>
     {{#Liste}}
     {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}

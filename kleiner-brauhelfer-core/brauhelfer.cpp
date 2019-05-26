@@ -5,7 +5,7 @@
 const int Brauhelfer::libVersionMajor = VER_MAJ;
 const int Brauhelfer::libVerionMinor = VER_MIN;
 const int Brauhelfer::libVersionPatch = VER_PAT;
-const int Brauhelfer::supportedDatabaseVersion = libVerionMinor;
+const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVerionMinor;
 
 Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     QObject(parent),
@@ -18,7 +18,6 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     mCalc = new BierCalc();
 
     connect(mDb->modelSud, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelRastauswahl, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelMalz, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHopfen, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHefe, SIGNAL(modified()), this, SIGNAL(modified()));
@@ -29,6 +28,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelRasten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelMalzschuettung, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHopfengaben, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelHefegaben, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelWeitereZutatenGaben, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelSchnellgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelHauptgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
@@ -162,11 +162,6 @@ ModelSud *Brauhelfer::modelSud() const
     return mDb->modelSud;
 }
 
-SqlTableModel* Brauhelfer::modelRastauswahl() const
-{
-    return mDb->modelRastauswahl;
-}
-
 ModelMalz *Brauhelfer::modelMalz() const
 {
     return mDb->modelMalz;
@@ -215,6 +210,11 @@ ModelMalzschuettung *Brauhelfer::modelMalzschuettung() const
 ModelHopfengaben* Brauhelfer::modelHopfengaben() const
 {
     return mDb->modelHopfengaben;
+}
+
+ModelHefegaben* Brauhelfer::modelHefegaben() const
+{
+    return mDb->modelHefegaben;
 }
 
 ModelWeitereZutatenGaben *Brauhelfer::modelWeitereZutatenGaben() const
@@ -267,16 +267,12 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     values.insert("Sudname", name);
     if (!teilen)
     {
-        values.insert("BierWurdeGebraut", 0);
-        values.insert("BierWurdeAbgefuellt", 0);
-        values.insert("BierWurdeVerbraucht", 0);
+        values.insert("Status", Sud_Status_Rezept);
         values.insert("MerklistenID", 0);
         values.insert("Erstellt", QDateTime::currentDateTime().toString(Qt::ISODate));
         values.remove("Braudatum");
         values.remove("Anstelldatum");
         values.remove("Abfuelldatum");
-        values.remove("Bewertung");
-        values.remove("BewertungText");
     }
     row = modelSud()->append(values);
 
@@ -284,6 +280,10 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     const QVariantMap valueId = {{"SudID", neueSudId}};
     sudKopierenModel(modelRasten(), sudId, valueId);
     sudKopierenModel(modelHopfengaben(), sudId, valueId);
+    if (teilen)
+        sudKopierenModel(modelHefegaben(), sudId, valueId);
+    else
+        sudKopierenModel(modelHefegaben(), sudId, {{"SudID", neueSudId}, {"Zugegeben", 0}});
     if (teilen)
         sudKopierenModel(modelWeitereZutatenGaben(), sudId, valueId);
     else
@@ -330,13 +330,15 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     if (row2 < 0)
         return -1;
 
+    int colSudId = modelHefegaben()->fieldIndex("SudID");
+    int colMenge = modelHefegaben()->fieldIndex("Menge");
+
     double Menge = modelSud()->data(row1, "Menge").toDouble();
     double WuerzemengeVorHopfenseihen = modelSud()->data(row1, "WuerzemengeVorHopfenseihen").toDouble();
     double WuerzemengeKochende = modelSud()->data(row1, "WuerzemengeKochende").toDouble();
     double Speisemenge = modelSud()->data(row1, "Speisemenge").toDouble();
     double WuerzemengeAnstellen = modelSud()->data(row1, "WuerzemengeAnstellen").toDouble();
     double JungbiermengeAbfuellen = modelSud()->data(row1, "JungbiermengeAbfuellen").toDouble();
-    int HefeAnzahlEinheiten = modelSud()->data(row1, "HefeAnzahlEinheiten").toInt();
 
     double factor = 1.0 - prozent;
     modelSud()->setData(row2, "Menge", Menge * factor);
@@ -345,7 +347,15 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     modelSud()->setData(row2, "Speisemenge", Speisemenge * factor);
     modelSud()->setData(row2, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
     modelSud()->setData(row2, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
-    modelSud()->setData(row2, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+    int sudId2 = modelSud()->data(row2, "ID").toInt();
+    for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
+    {
+        if (modelHefegaben()->index(row, colSudId).data().toInt() == sudId2)
+        {
+            QModelIndex index = modelHefegaben()->index(row, colMenge);
+            modelHefegaben()->setData(index, qRound(index.data().toInt() * factor));
+        }
+    }
 
     factor = prozent;
     modelSud()->setData(row1, "Sudname", name1);
@@ -355,7 +365,14 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     modelSud()->setData(row1, "Speisemenge", Speisemenge * factor);
     modelSud()->setData(row1, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
     modelSud()->setData(row1, "JungbiermengeAbfuellen", JungbiermengeAbfuellen * factor);
-    modelSud()->setData(row1, "HefeAnzahlEinheiten", qRound(HefeAnzahlEinheiten * factor));
+    for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
+    {
+        if (modelHefegaben()->index(row, colSudId).data().toInt() == sudId)
+        {
+            QModelIndex index = modelHefegaben()->index(row, colMenge);
+            modelHefegaben()->setData(index, qRound(index.data().toInt() * factor));
+        }
+    }
 
     return row1;
 }

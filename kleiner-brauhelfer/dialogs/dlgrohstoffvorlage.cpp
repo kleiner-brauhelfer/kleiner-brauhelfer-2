@@ -100,54 +100,54 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
     {
         if (mRohstoffart == R_Malz)
         {
-            mValues.insert("Beschreibung", index.siblingAtColumn(0).data());
-            mValues.insert("Farbe", index.siblingAtColumn(1).data().toDouble());
-            mValues.insert("MaxProzent", index.siblingAtColumn(2).data().toInt());
-            mValues.insert("Anwendung", index.siblingAtColumn(3).data());
+            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            mValues.insert("Farbe", index.sibling(index.row(), 1).data().toDouble());
+            mValues.insert("MaxProzent", index.sibling(index.row(), 2).data().toInt());
+            mValues.insert("Anwendung", index.sibling(index.row(), 3).data());
 		}
         else if (mRohstoffart == R_Hopfen)
         {
-            mValues.insert("Beschreibung", index.siblingAtColumn(0).data());
-            QString typ = index.siblingAtColumn(1).data().toString().toLower();
+            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            QString typ = index.sibling(index.row(), 1).data().toString().toLower();
             if (typ == "aroma")
                 mValues.insert("Typ", 1);
             else if (typ == "bitter")
                 mValues.insert("Typ", 2);
             else if (typ == "universal")
                 mValues.insert("Typ", 3);
-            mValues.insert("Alpha", index.siblingAtColumn(2).data().toDouble());
-            mValues.insert("Eigenschaften", index.siblingAtColumn(3).data());
+            mValues.insert("Alpha", index.sibling(index.row(), 2).data().toDouble());
+            mValues.insert("Eigenschaften", index.sibling(index.row(), 3).data());
 		}
         else if (mRohstoffart == R_Hefe)
         {
-            mValues.insert("Beschreibung", index.siblingAtColumn(0).data());
-            QString typ = index.siblingAtColumn(1).data().toString().toLower();
+            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            QString typ = index.sibling(index.row(), 1).data().toString().toLower();
             if (typ == "og")
                 mValues.insert("TypOGUG", 1);
             else
                 mValues.insert("TypOGUG", 2);
-            typ = index.siblingAtColumn(2).data().toString().toLower();
+            typ = index.sibling(index.row(), 2).data().toString().toLower();
             if (typ == "trocken")
                 mValues.insert("TypTrFl", 1);
             else
                 mValues.insert("TypTrFl", 2);
-            mValues.insert("Verpackungsmenge", index.siblingAtColumn(3).data());
-            mValues.insert("Wuerzemenge", index.siblingAtColumn(4).data().toInt());
-            mValues.insert("Temperatur", index.siblingAtColumn(5).data());
-            mValues.insert("Eigenschaften", index.siblingAtColumn(6).data());
-            typ = index.siblingAtColumn(7).data().toString().toLower();
+            mValues.insert("Verpackungsmenge", index.sibling(index.row(), 3).data());
+            mValues.insert("Wuerzemenge", index.sibling(index.row(), 4).data().toInt());
+            mValues.insert("Temperatur", index.sibling(index.row(), 5).data());
+            mValues.insert("Eigenschaften", index.sibling(index.row(), 6).data());
+            typ = index.sibling(index.row(), 7).data().toString().toLower();
             if (typ == "hoch")
                 mValues.insert("SED", 1);
             else if (typ == "mittel")
                 mValues.insert("SED", 2);
             else if (typ == "niedrig")
                 mValues.insert("SED", 3);
-            mValues.insert("EVG", index.siblingAtColumn(8).data());
+            mValues.insert("EVG", index.sibling(index.row(), 8).data());
         }
         else if (mRohstoffart == R_WZutaten)
         {
-            mValues.insert("Beschreibung", index.siblingAtColumn(0).data());
-            QString typ = index.siblingAtColumn(1).data().toString().toLower();
+            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            QString typ = index.sibling(index.row(), 1).data().toString().toLower();
             if (typ == "honig")
                 mValues.insert("Typ", EWZ_Typ_Honig);
             else if (typ == "zucker")
@@ -158,8 +158,8 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
                 mValues.insert("Typ", EWZ_Typ_Frucht);
             else if (typ == "sonstiges")
                 mValues.insert("Typ", EWZ_Typ_Sonstiges);
-            mValues.insert("Ausbeute", index.siblingAtColumn(2).data().toDouble());
-            mValues.insert("EBC", index.siblingAtColumn(3).data().toDouble());
+            mValues.insert("Ausbeute", index.sibling(index.row(), 2).data().toDouble());
+            mValues.insert("EBC", index.sibling(index.row(), 3).data().toDouble());
         }
 	}
     accept();

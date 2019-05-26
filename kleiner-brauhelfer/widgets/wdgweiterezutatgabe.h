@@ -28,7 +28,8 @@ private slots:
     void on_cbZugabezeitpunkt_currentIndexChanged(int index);
     void on_tbDauerMin_valueChanged(int value);
     void on_btnZugeben_clicked();
-    void on_cbEntnahme_currentIndexChanged(int index);
+    void on_cbEntnahme_clicked(bool checked);
+    void on_tbZugabeNach_valueChanged(int arg1);
     void on_tbDauerTage_valueChanged(int value);
     void on_btnEntnehmen_clicked();
     void on_tbKomentar_textChanged();

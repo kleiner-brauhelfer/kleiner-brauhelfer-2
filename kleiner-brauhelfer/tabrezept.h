@@ -41,6 +41,7 @@ private slots:
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
 
     void hefeGaben_modified();
+    void updateHefeDiagram();
     void on_btnNeueHefeGabe_clicked();
 
     void weitereZutatenGaben_modified();
@@ -61,6 +62,7 @@ private slots:
     void on_tbKommentar_textChanged();
     void on_tbHGF_valueChanged(int value);
     void on_tbFaktorHauptguss_valueChanged(double value);
+    void on_cbWasserProfil_currentIndexChanged(const QString &value);
     void on_tbRestalkalitaet_valueChanged(double value);
     void on_tbEinmaischtemperatur_valueChanged(int temp);
     void on_tbKochzeit_valueChanged(int min);

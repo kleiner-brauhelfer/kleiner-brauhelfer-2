@@ -1,6 +1,7 @@
 #include "wdghefegabe.h"
 #include "ui_wdghefegabe.h"
 #include <QStandardItemModel>
+#include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/rohstoffauswahlproxymodel.h"
@@ -25,7 +26,7 @@ WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    //connect(bh->sud()->modelHefe(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
 }
 
@@ -41,29 +42,29 @@ bool WdgHefeGabe::isEnabled() const
 
 QVariant WdgHefeGabe::data(const QString &fieldName) const
 {
-    // TODO
-    if (fieldName == "Name")
-        return bh->sud()->getAuswahlHefe();
-    if (fieldName == "Menge")
-        return bh->sud()->getHefeAnzahlEinheiten();
-    return QVariant();
-    //return bh->sud()->modelHefeGaben()->data(mIndex, fieldName);
+    return bh->sud()->modelHefegaben()->data(mIndex, fieldName);
 }
 
 bool WdgHefeGabe::setData(const QString &fieldName, const QVariant &value)
 {
-    // TODO
-    if (fieldName == "Name")
-        bh->sud()->setAuswahlHefe(value.toString());
-    if (fieldName == "Menge")
-        bh->sud()->setHefeAnzahlEinheiten(value.toInt());
-    return true;
-    //return bh->sud()->modelHefeGaben()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelHefegaben()->setData(mIndex, fieldName, value);
+}
+
+QString WdgHefeGabe::name() const
+{
+    return data("Name").toString();
+}
+
+int WdgHefeGabe::menge() const
+{
+    return data("Menge").toInt();
 }
 
 void WdgHefeGabe::checkEnabled(bool force)
 {
-    bool enabled = !bh->sud()->getBierWurdeGebraut();//!bh->sud()->getBierWurdeAbgefuellt();
+    bool enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
+    if (data("Zugegeben").toBool())
+        enabled = false;
     if (enabled == mEnabled && !force)
         return;
 
@@ -73,61 +74,47 @@ void WdgHefeGabe::checkEnabled(bool force)
         RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
         model->setSourceModel(bh->modelHefe());
         model->setColumnMenge(bh->modelHefe()->fieldIndex("Menge"));
-        // TODO
-        //model->setIndexMengeBenoetigt(bh->sud()->modelHefeGaben()->index(mIndex, bh->sud()->modelHefeGaben()->fieldIndex("Menge")));
-        model->setIndexMengeBenoetigt(bh->modelSud()->index(bh->sud()->row(), bh->modelSud()->fieldIndex("HefeAnzahlEinheiten")));
+        model->setIndexMengeBenoetigt(bh->sud()->modelHefegaben()->index(mIndex, bh->sud()->modelHefegaben()->fieldIndex("Menge")));
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(bh->modelHefe()->fieldIndex("Beschreibung"));
-        ui->cbZutat->setEnabled(true);
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->btnLoeschen->setVisible(true);
-        ui->tbVorhanden->setVisible(true);
-        ui->lblVorhanden->setVisible(true);
-        ui->tbMenge->setReadOnly(false);
-        ui->tbTage->setReadOnly(false);
-        ui->tbDatum->setReadOnly(false);
-
-        if (!data("Zugegeben").toBool())
-        {
-            QDate currentDate = QDate::currentDate();
-            QDate dateVon = data("Zeitpunkt_von").toDate();
-            ui->tbDatum->setDate(currentDate > dateVon ? currentDate : dateVon);
-        }
     }
     else
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(data("Name").toString()));
+        model->setItem(0, 0, new QStandardItem(name()));
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(0);
-        ui->cbZutat->setEnabled(false);
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->btnLoeschen->setVisible(false);
-        ui->tbVorhanden->setVisible(false);
-        ui->lblVorhanden->setVisible(false);
-        ui->tbMenge->setReadOnly(true);
-        ui->tbTage->setReadOnly(true);
-        ui->tbDatum->setReadOnly(true);
     }
-
-    ui->tbDatum->setDate(data("ZugabeDatum").toDate());
+    ui->cbZutat->setEnabled(enabled);
+    ui->cbZutat->setCurrentIndex(-1);
+    ui->btnLoeschen->setVisible(enabled);
+    ui->tbVorhanden->setVisible(enabled);
+    ui->lblVorhanden->setVisible(enabled);
+    ui->tbMenge->setReadOnly(!enabled);
+    ui->tbTage->setReadOnly(!enabled);
+    ui->tbDatum->setReadOnly(!enabled);
 }
 
 void WdgHefeGabe::updateValues(bool full)
 {
-    QString name = data("Name").toString();
+    QString hefename = name();
 
     checkEnabled(full);
 
     if (!ui->cbZutat->hasFocus())
     {
         ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(name);
+        ui->cbZutat->setCurrentText(hefename);
     }
     if (!ui->tbMenge->hasFocus())
-        ui->tbMenge->setValue(data("Menge").toInt());
+        ui->tbMenge->setValue(menge());
+    if (!ui->tbTage->hasFocus())
+        ui->tbTage->setValue(data("ZugabeNach").toInt());
+    ui->tbDatum->setMinimumDateTime(bh->sud()->getBraudatum());
+    if (!ui->tbDatum->hasFocus())
+        ui->tbDatum->setDate(data("ZugabeDatum").toDate());
 
-    int idx = bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "TypOGUG").toInt();
+    int idx = bh->modelHefe()->getValueFromSameRow("Beschreibung", hefename, "TypOGUG").toInt();
     if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
     {
         QPalette pal = ui->frameColor->palette();
@@ -139,32 +126,21 @@ void WdgHefeGabe::updateValues(bool full)
         ui->frameColor->setPalette(gSettings->palette);
     }
 
+    ui->btnZugeben->setVisible(mEnabled && bh->sud()->getStatus() == Sud_Status_Gebraut);
+
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "Menge").toInt());
-        int benoetigt = bh->sud()->getHefeAnzahlEinheiten();
-        /*
-        ProxyModel* model = bh->sud()->modelHefe();
+        ui->tbVorhanden->setValue(bh->modelHefe()->getValueFromSameRow("Beschreibung", hefename, "Menge").toInt());
+        int benoetigt = 0;
+        ProxyModel* model = bh->sud()->modelHefegaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, "Name").toString() == name)
-                benoetigt += model->data(i, "erg_Menge").toDouble();
+            if (model->data(i, "Name").toString() == hefename)
+                benoetigt += model->data(i, "Menge").toInt();
         }
-        */
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         ui->tbMenge->setError(ui->tbMenge->value() == 0);
-
-        if (data("Zugegeben").toBool())
-        {
-            ui->btnZugeben->setVisible(false);
-            ui->tbDatum->setReadOnly(true);
-        }
-        else
-        {
-            ui->btnZugeben->setVisible(bh->sud()->getBierWurdeGebraut());
-            ui->tbDatum->setReadOnly(false);
-        }
     }
 }
 
@@ -180,17 +156,32 @@ void WdgHefeGabe::on_tbMenge_valueChanged(int value)
         setData("Menge", value);
 }
 
+void WdgHefeGabe::on_tbTage_valueChanged(int value)
+{
+    if (ui->tbTage->hasFocus())
+        setData("ZugabeNach", value);
+}
+
+void WdgHefeGabe::on_tbDatum_dateChanged(const QDate &date)
+{
+    if (ui->tbDatum->hasFocus())
+        setData("ZugabeDatum", date);
+}
+
 void WdgHefeGabe::on_btnZugeben_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatum->date();
-    ui->tbDatum->setDate(currentDate < date ? currentDate : date);
-    setData("ZugabeDatum", ui->tbDatum->date());
+    setData("ZugabeDatum", currentDate < date ? currentDate : date);
     setData("Zugegeben", true);
+
+    if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
+                              tr("Soll die Zutat vom Bestand abgezogen werden?")
+       ) == QMessageBox::Yes)
+        bh->sud()->zutatAbziehen(name(), 1, data("Menge").toDouble());
 }
 
 void WdgHefeGabe::on_btnLoeschen_clicked()
 {
-    // TODO
-    //bh->sud()->modelHefeGaben()->removeRow(mIndex);
+    bh->sud()->modelHefegaben()->removeRow(mIndex);
 }

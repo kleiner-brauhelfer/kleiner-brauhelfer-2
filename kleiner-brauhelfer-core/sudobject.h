@@ -31,28 +31,24 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, CO2, toDouble())
     Q_PROPERTY_SUD(int, IBU, toInt())
     Q_PROPERTY_SUD(QString, Kommentar, toString())
+    Q_PROPERTY_SUD(int, Status, toInt())
     Q_PROPERTY_SUD(QDateTime, Braudatum, toDateTime())
-    Q_PROPERTY_SUD(bool, BierWurdeGebraut, toBool())
-    Q_PROPERTY_SUD(QDateTime, Anstelldatum, toDateTime())
     Q_PROPERTY_SUD(double, WuerzemengeAnstellen, toDouble())
     Q_PROPERTY_SUD(double, SWAnstellen, toDouble())
     Q_PROPERTY_SUD(QDateTime, Abfuelldatum, toDateTime())
-    Q_PROPERTY_SUD(bool, BierWurdeAbgefuellt, toBool())
     Q_PROPERTY_SUD(double, SWSchnellgaerprobe, toDouble())
     Q_PROPERTY_SUD(double, SWJungbier, toDouble())
     Q_PROPERTY_SUD(double, TemperaturJungbier, toDouble())
     Q_PROPERTY_SUD(double, WuerzemengeKochende, toDouble())
     Q_PROPERTY_SUD(double, Speisemenge, toDouble())
     Q_PROPERTY_SUD(double, SWKochende, toDouble())
-    Q_PROPERTY_SUD(QString, AuswahlHefe, toString())
     Q_PROPERTY_SUD(double, FaktorHauptguss, toDouble())
     Q_PROPERTY_SUD(int, KochdauerNachBitterhopfung, toInt())
     Q_PROPERTY_SUD(int, EinmaischenTemp, toInt())
     Q_PROPERTY_SUD(QDateTime, Erstellt, toDateTime())
     Q_PROPERTY_SUD(QDateTime, Gespeichert, toDateTime())
-    Q_PROPERTY_SUD(int, AktivTab, toInt())
-    Q_PROPERTY_SUD(double, erg_S_Gesammt, toDouble())
-    Q_PROPERTY_SUD(double, erg_W_Gesammt, toDouble())
+    Q_PROPERTY_SUD(double, erg_S_Gesamt, toDouble())
+    Q_PROPERTY_SUD(double, erg_W_Gesamt, toDouble())
     Q_PROPERTY_SUD(double, erg_WHauptguss, toDouble())
     Q_PROPERTY_SUD(double, erg_WNachguss, toDouble())
     Q_PROPERTY_SUD(double, erg_Sudhausausbeute, toDouble())
@@ -60,30 +56,22 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, erg_Preis, toDouble())
     Q_PROPERTY_SUD(double, erg_Alkohol, toDouble())
     Q_PROPERTY_SUD(double, KostenWasserStrom, toDouble())
-    Q_PROPERTY_SUD(double, Bewertung, toDouble())
-    Q_PROPERTY_SUD(QString, BewertungText, toString())
-    Q_PROPERTY_SUD(int, AktivTab_Gaerverlauf, toInt())
     Q_PROPERTY_SUD(int, Reifezeit, toInt())
-    Q_PROPERTY_SUD(bool, BierWurdeVerbraucht, toBool())
     Q_PROPERTY_SUD(int, Nachisomerisierungszeit, toInt())
     Q_PROPERTY_SUD(double, WuerzemengeVorHopfenseihen, toDouble())
-    Q_PROPERTY_SUD(double, SWVorHopfenseihen, toDouble())
     Q_PROPERTY_SUD(double, erg_EffektiveAusbeute, toDouble())
     Q_PROPERTY_SUD(double, RestalkalitaetSoll, toDouble())
     Q_PROPERTY_SUD(bool, SchnellgaerprobeAktiv, toBool())
     Q_PROPERTY_SUD(double, JungbiermengeAbfuellen, toDouble())
     Q_PROPERTY_SUD(double, erg_AbgefuellteBiermenge, toDouble())
-    Q_PROPERTY_SUD(double, BewertungMaxSterne, toDouble())
-    Q_PROPERTY_SUD(bool, NeuBerechnen, toBool())
-    Q_PROPERTY_SUD(int, HefeAnzahlEinheiten, toInt())
     Q_PROPERTY_SUD(int, berechnungsArtHopfen, toInt())
     Q_PROPERTY_SUD(int, highGravityFaktor, toInt())
-    Q_PROPERTY_SUD(int, AuswahlBrauanlage, toInt())
-    Q_PROPERTY_SUD(QString, AuswahlBrauanlageName, toString())
+    Q_PROPERTY_SUD(QString, Anlage, toString())
     Q_PROPERTY_SUD(bool, AusbeuteIgnorieren, toBool())
     Q_PROPERTY_SUD(int, MerklistenID, toInt())
     Q_PROPERTY_SUD(bool, Spunden, toBool())
     Q_PROPERTY_SUD(int, Sudnummer, toInt())
+    Q_PROPERTY_SUD(QString, Wasserprofil, toString())
 
     // virtual fields in table Sud
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())
@@ -119,6 +107,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY(ProxyModel* modelRasten READ modelRasten CONSTANT)
     Q_PROPERTY(ProxyModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
     Q_PROPERTY(ProxyModel* modelHopfengaben READ modelHopfengaben CONSTANT)
+    Q_PROPERTY(ProxyModel* modelHefegaben READ modelHefegaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
     Q_PROPERTY(ProxyModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
@@ -195,12 +184,20 @@ public:
     QVariant getAnlageData(const QString& fieldName) const;
 
     /**
+     * @brief getWasserValue
+     * @param fieldName
+     * @return
+     */
+    QVariant getWasserData(const QString& fieldName) const;
+
+    /**
      * @brief Gets the different tables
      * @return Table model
      */
     ProxyModel* modelRasten() const;
     ProxyModel* modelMalzschuettung() const;
     ProxyModel* modelHopfengaben() const;
+    ProxyModel* modelHefegaben() const;
     ProxyModel* modelWeitereZutatenGaben() const;
     ProxyModel* modelSchnellgaerverlauf() const;
     ProxyModel* modelHauptgaerverlauf() const;
@@ -254,6 +251,7 @@ private:
     ProxyModel* proxyModelRasten;
     ProxyModel* proxyModelMalzschuettung;
     ProxyModel* proxyModelHopfengaben;
+    ProxyModel* proxyModelHefegaben;
     ProxyModel* proxyModelWeitereZutatenGaben;
     ProxyModel* proxyModelSchnellgaerverlauf;
     ProxyModel* proxyModelHauptgaerverlauf;

@@ -5,9 +5,7 @@
 ProxyModelSud::ProxyModelSud(QObject *parent) :
     ProxyModel(parent),
     mColumnId(-1),
-    mColumnBierWurdeGebraut(-1),
-    mColumnBierWurdeAbgefuellt(-1),
-    mColumnBierWurdeVerbraucht(-1),
+    mColumnStatus(-1),
     mColumnMerklistenID(-1),
     mFilterMerkliste(false),
     mFilterStatus(Alle),
@@ -22,11 +20,8 @@ void ProxyModelSud::onSourceModelChanged()
     {
         mColumnId = model->fieldIndex("ID");
         mColumnSudname = model->fieldIndex("Sudname");
-        mColumnAuswahlHefe = model->fieldIndex("AuswahlHefe");
         mColumnKommentar = model->fieldIndex("Kommentar");
-        mColumnBierWurdeGebraut = model->fieldIndex("BierWurdeGebraut");
-        mColumnBierWurdeAbgefuellt = model->fieldIndex("BierWurdeAbgefuellt");
-        mColumnBierWurdeVerbraucht = model->fieldIndex("BierWurdeVerbraucht");
+        mColumnStatus = model->fieldIndex("Status");
         mColumnMerklistenID = model->fieldIndex("MerklistenID");
         setFilterDateColumn(model->fieldIndex("Braudatum"));
     }
@@ -34,11 +29,8 @@ void ProxyModelSud::onSourceModelChanged()
     {
         mColumnId = model->fieldIndex("ID");
         mColumnSudname = model->fieldIndex("Sudname");
-        mColumnAuswahlHefe = model->fieldIndex("AuswahlHefe");
         mColumnKommentar = model->fieldIndex("Kommentar");
-        mColumnBierWurdeGebraut = model->fieldIndex("BierWurdeGebraut");
-        mColumnBierWurdeAbgefuellt = model->fieldIndex("BierWurdeAbgefuellt");
-        mColumnBierWurdeVerbraucht = model->fieldIndex("BierWurdeVerbraucht");
+        mColumnStatus = model->fieldIndex("Status");
         mColumnMerklistenID = model->fieldIndex("MerklistenID");
         setFilterDateColumn(model->fieldIndex("Braudatum"));
     }
@@ -89,93 +81,36 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
     }
     if (accept && mFilterStatus != Alle)
     {
-        switch (mFilterStatus)
+        index2 = sourceModel()->index(source_row, mColumnStatus, source_parent);
+        if (index2.isValid())
         {
-        case Alle:
-            break;
-        case NichtGebraut:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeGebraut, source_parent);
-            if (index2.isValid())
-                accept = sourceModel()->data(index2).toInt() == 0;
-            break;
-        case Gebraut:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeGebraut, source_parent);
-            if (index2.isValid())
-                accept = sourceModel()->data(index2).toInt() > 0;
-            break;
-        case NichtAbgefuellt:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeAbgefuellt, source_parent);
-            if (index2.isValid())
-                accept = sourceModel()->data(index2).toInt() == 0;
-            break;
-        case GebrautNichtAbgefuellt:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeGebraut, source_parent);
-            if (index2.isValid())
+            int status = index2.data().toInt();
+            switch (mFilterStatus)
             {
-                accept = sourceModel()->data(index2).toInt() > 0;
-                if (accept)
-                {
-                    index2 = sourceModel()->index(source_row, mColumnBierWurdeAbgefuellt, source_parent);
-                    if (index2.isValid())
-                        accept = sourceModel()->data(index2).toInt() == 0;
-                }
+            case Alle:
+                break;
+            case NichtGebraut:
+                accept = status < Sud_Status_Gebraut;
+                break;
+            case Gebraut:
+                accept = status >= Sud_Status_Rezept;
+                break;
+            case NichtAbgefuellt:
+                accept = status < Sud_Status_Abgefuellt;
+                break;
+            case GebrautNichtAbgefuellt:
+                accept = status == Sud_Status_Gebraut;
+                break;
+            case Abgefuellt:
+                accept = status >= Sud_Status_Abgefuellt;
+                break;
+            case NichtVerbraucht:
+                accept = status == Sud_Status_Abgefuellt;
+                break;
+            case Verbraucht:
+                accept = status >= Sud_Status_Verbraucht;
+                break;
             }
-            break;
-        case Abgefuellt:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeGebraut, source_parent);
-            if (index2.isValid())
-            {
-                accept = sourceModel()->data(index2).toInt() > 0;
-                if (accept)
-                {
-                    index2 = sourceModel()->index(source_row, mColumnBierWurdeAbgefuellt, source_parent);
-                    if (index2.isValid())
-                        accept = sourceModel()->data(index2).toInt() > 0;
-                }
-            }
-            break;
-        case NichtVerbraucht:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeGebraut, source_parent);
-            if (index2.isValid())
-            {
-                accept = sourceModel()->data(index2).toInt() > 0;
-                if (accept)
-                {
-                    index2 = sourceModel()->index(source_row, mColumnBierWurdeAbgefuellt, source_parent);
-                    if (index2.isValid())
-                    {
-                        accept = sourceModel()->data(index2).toInt() > 0;
-                        if (accept)
-                        {
-                            index2 = sourceModel()->index(source_row, mColumnBierWurdeVerbraucht, source_parent);
-                            if (index2.isValid())
-                                accept = sourceModel()->data(index2).toInt() == 0;
-                        }
-                    }
-                }
-            }
-            break;
-        case Verbraucht:
-            index2 = sourceModel()->index(source_row, mColumnBierWurdeGebraut, source_parent);
-            if (index2.isValid())
-            {
-                accept = sourceModel()->data(index2).toInt() > 0;
-                if (accept)
-                {
-                    index2 = sourceModel()->index(source_row, mColumnBierWurdeAbgefuellt, source_parent);
-                    if (index2.isValid())
-                    {
-                        accept = sourceModel()->data(index2).toInt() > 0;
-                        if (accept)
-                        {
-                            index2 = sourceModel()->index(source_row, mColumnBierWurdeVerbraucht, source_parent);
-                            if (index2.isValid())
-                                accept = sourceModel()->data(index2).toInt() > 0;
-                        }
-                    }
-                }
-            }
-            break;
         }
     }
     if (accept && !mFilterText.isEmpty())
@@ -183,11 +118,6 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         QRegExp rx(mFilterText, Qt::CaseInsensitive, QRegExp::FixedString);
         index2 = sourceModel()->index(source_row, mColumnSudname, source_parent);
         accept = sourceModel()->data(index2).toString().contains(rx);
-        if (!accept)
-        {
-            index2 = sourceModel()->index(source_row, mColumnAuswahlHefe, source_parent);
-            accept = sourceModel()->data(index2).toString().contains(rx);
-        }
         if (!accept)
         {
             index2 = sourceModel()->index(source_row, mColumnKommentar, source_parent);
@@ -216,6 +146,22 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                 if (!accept)
                 {
                     model = modelSud->bh->modelHopfengaben();
+                    colSudId = model->fieldIndex("SudID");
+                    colName = model->fieldIndex("Name");
+                    for (int i = 0; i < model->rowCount(); i++)
+                    {
+                        if (model->data(model->index(i, colSudId)).toInt() == id)
+                        {
+                            QString name = model->data(model->index(i, colName)).toString();
+                            accept = name.contains(rx);
+                            if (accept)
+                                break;
+                        }
+                    }
+                }
+                if (!accept)
+                {
+                    model = modelSud->bh->modelHefegaben();
                     colSudId = model->fieldIndex("SudID");
                     colName = model->fieldIndex("Name");
                     for (int i = 0; i < model->rowCount(); i++)

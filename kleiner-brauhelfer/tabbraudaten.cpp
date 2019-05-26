@@ -88,9 +88,7 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
 {
     const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
     QString fieldname = model->fieldName(index.column());
-    if (fieldname == "BierWurdeGebraut" ||
-        fieldname == "BierWurdeAbgefuellt" ||
-        fieldname == "BierWurdeVerbraucht")
+    if (fieldname == "Status")
     {
         checkEnabled();
     }
@@ -98,7 +96,7 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
 
 void TabBraudaten::checkEnabled()
 {
-    bool gebraut = bh->sud()->getBierWurdeGebraut();
+    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept;
     ui->tbBraudatum->setReadOnly(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
     ui->tbWuerzemengeKochbeginn->setReadOnly(gebraut);
@@ -281,7 +279,7 @@ void TabBraudaten::on_tbNebenkosten_valueChanged(double value)
 void TabBraudaten::on_btnSudGebraut_clicked()
 {
     bh->sud()->setBraudatum(ui->tbBraudatum->dateTime());
-    bh->sud()->setBierWurdeGebraut(true);
+    bh->sud()->setStatus(Sud_Status_Gebraut);
 
     if (QMessageBox::question(this, tr("Zutaten vom Bestand abziehen"),
                               tr("Sollen die bisher verwendeten Zutaten vom Bestand abgezogen werden?")

@@ -13,7 +13,7 @@ QVariant ModelFlaschenlabelTags::dataExt(const QModelIndex &index) const
     QString field = fieldName(index.column());
     if (field == "Global")
     {
-        return index.siblingAtColumn(fieldIndex("SudID")).data().toInt() < 0;
+        return index.sibling(index.row(), fieldIndex("SudID")).data().toInt() < 0;
     }
     return QVariant();
 }
@@ -29,7 +29,7 @@ bool ModelFlaschenlabelTags::setDataExt(const QModelIndex &index, const QVariant
     if (field == "Global")
     {
         int sudId = value.toBool() ? -1 : bh->sud()->id();
-        return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("SudID")), sudId);
+        return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("SudID")), sudId);
     }
     return false;
 }
@@ -43,7 +43,7 @@ bool ModelFlaschenlabelTags::isUnique(const QModelIndex &index, const QVariant &
             continue;
         if (index.sibling(row, colSudId).data().toInt() != sudId)
             continue;
-        if (index.siblingAtRow(row).data() == value)
+        if (index.sibling(row, index.column()).data() == value)
             return false;
     }
     return true;

@@ -254,6 +254,7 @@
     <addaction name="actionSudGebraut"/>
     <addaction name="actionSudAbgefuellt"/>
     <addaction name="actionSudVerbraucht"/>
+    <addaction name="actionHefeZugabeZuruecksetzen"/>
     <addaction name="actionWeitereZutaten"/>
    </widget>
    <widget class="QMenu" name="menuEinstellungen">
@@ -276,9 +277,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
-   </property>
-   <property name="shortcutVisibleInContextMenu">
-    <bool>true</bool>
    </property>
   </action>
   <action name="actionVerwerfen">
@@ -388,6 +386,11 @@
    </property>
    <property name="text">
     <string>Nach Updates überprüfen</string>
+   </property>
+  </action>
+  <action name="actionHefeZugabeZuruecksetzen">
+   <property name="text">
+    <string>&quot;Hefe Zugabe&quot; zurücksetzen</string>
    </property>
   </action>
  </widget>

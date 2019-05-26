@@ -18,16 +18,16 @@ QVariant ModelSchnellgaerverlauf::dataExt(const QModelIndex &index) const
     }
     if (field == "sEVG")
     {
-        QVariant sudId = index.siblingAtColumn(fieldIndex("SudID")).data();
+        QVariant sudId = index.sibling(index.row(), fieldIndex("SudID")).data();
         double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWIst").toDouble();
-        double sre = index.siblingAtColumn(fieldIndex("SW")).data().toDouble();
+        double sre = index.sibling(index.row(), fieldIndex("SW")).data().toDouble();
         return BierCalc::vergaerungsgrad(sw, sre);
     }
     if (field == "tEVG")
     {
-        QVariant sudId = index.siblingAtColumn(fieldIndex("SudID")).data();
+        QVariant sudId = index.sibling(index.row(), fieldIndex("SudID")).data();
         double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWIst").toDouble();
-        double sre = index.siblingAtColumn(fieldIndex("SW")).data().toDouble();
+        double sre = index.sibling(index.row(), fieldIndex("SW")).data().toDouble();
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
     }
@@ -51,8 +51,7 @@ bool ModelSchnellgaerverlauf::setDataExt(const QModelIndex &index, const QVarian
             setData(index.row(), "Alc", alc);
             if (index.row() == getLastRow(id))
             {
-                if (bh->modelSud()->data(row, "BierWurdeGebraut").toBool())
-                    bh->modelSud()->setData(row, "SWSchnellgaerprobe", value);
+                bh->modelSud()->setData(row, "SWSchnellgaerprobe", value);
             }
             return true;
         }

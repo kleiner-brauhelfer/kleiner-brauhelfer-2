@@ -1,4 +1,7 @@
-QT += core sql gui widgets charts svg webenginewidgets
+QT += core sql gui widgets svg webenginewidgets printsupport
+isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
+ QT += charts
+}
 
 ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer
@@ -6,7 +9,7 @@ TARGET = kleiner-brauhelfer
 VER_MAJ = 2
 VER_MIN = 0
 VER_PAT = 0
-VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
+VERSION = $$sprintf("%1.%2.%3beta1", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
 TEMPLATE = app
@@ -28,6 +31,7 @@ RCC_DIR = tmp
 LIBS += -L$$OUT_PWD/../bin/ -lkleiner-brauhelfer-core
 INCLUDEPATH += $$PWD/../kleiner-brauhelfer-core
 DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
+DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 
 SOURCES += \
     main.cpp \
@@ -46,6 +50,7 @@ SOURCES += \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
+    templatetags.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgeinmaischtemp.cpp \
     dialogs/dlgmessage.cpp \
@@ -71,6 +76,7 @@ SOURCES += \
     model/readonlydelegate.cpp \
     model/rohstoffauswahlproxymodel.cpp \
     model/spinboxdelegate.cpp \
+    widgets/chartview.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
@@ -106,6 +112,7 @@ HEADERS += \
     tabrohstoffe.h \
     tabsudauswahl.h \
     tabzusammenfassung.h \
+    templatetags.h \
     dialogs/dlgabout.h \
     dialogs/dlgeinmaischtemp.h \
     dialogs/dlgmessage.h \
@@ -131,6 +138,7 @@ HEADERS += \
     model/readonlydelegate.h \
     model/rohstoffauswahlproxymodel.h \
     model/spinboxdelegate.h \
+    widgets/chartview.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \

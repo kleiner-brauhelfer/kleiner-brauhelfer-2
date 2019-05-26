@@ -27,23 +27,9 @@ TabRezept::TabRezept(QWidget *parent) :
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
-    QChart *chart = ui->diagramMalz->chart();
-    ui->diagramMalz->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->setAlignment(Qt::AlignRight);
-
-    chart = ui->diagramHopfen->chart();
-    ui->diagramHopfen->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->setAlignment(Qt::AlignRight);
-
-    chart = ui->diagramRasten->chart();
-    ui->diagramRasten->setRenderHint(QPainter::Antialiasing);
-    chart->layout()->setContentsMargins(0, 0, 0, 0);
-    chart->setBackgroundRoundness(0);
-    chart->legend()->hide();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+    ui->diagramRasten->chart()->legend()->hide();
+  #endif
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
@@ -65,6 +51,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     ui->splitterMalzDiagram->restoreState(gSettings->value("splitterMalzDiagramState").toByteArray());
     ui->splitterHopfenDiagram->restoreState(gSettings->value("splitterHopfenDiagramState").toByteArray());
+    ui->splitterHefeDiagram->restoreState(gSettings->value("splitterHefeDiagramState").toByteArray());
     ui->splitterRastenDiagram->restoreState(gSettings->value("splitterRastenDiagramState").toByteArray());
 
     gSettings->endGroup();
@@ -89,8 +76,9 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(hopfenGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
 
-    // TODO
-    //connect(bh->sud()->modelHefeGaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateHefeDiagram()));
 
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(weitereZutatenGaben_modified()));
 
@@ -128,6 +116,7 @@ void TabRezept::saveSettings()
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->setValue("splitterMalzDiagramState", ui->splitterMalzDiagram->saveState());
     gSettings->setValue("splitterHopfenDiagramState", ui->splitterHopfenDiagram->saveState());
+    gSettings->setValue("splitterHefeDiagramState", ui->splitterHefeDiagram->saveState());
     gSettings->setValue("splitterRastenDiagramState", ui->splitterRastenDiagram->saveState());
     gSettings->endGroup();
 }
@@ -158,7 +147,6 @@ void TabRezept::sudLoaded()
         updateAnlageModel();
         updateWasserModel();
         updateValues();
-        hefeGaben_modified();// TODO: remove
         checkRohstoffe();
     }
 }
@@ -167,7 +155,7 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
 {
     const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
     QString fieldname = model->fieldName(index.column());
-    if (fieldname == "BierWurdeGebraut" || fieldname == "BierWurdeAbgefuellt")
+    if (fieldname == "Status")
     {
         checkEnabled();
         updateAnlageModel();
@@ -187,8 +175,8 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
 
 void TabRezept::checkEnabled()
 {
-    bool gebraut = bh->sud()->getBierWurdeGebraut();
-    bool abgefuellt = bh->sud()->getBierWurdeAbgefuellt();
+    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept;
+    bool abgefuellt = bh->sud()->getStatus() > Sud_Status_Gebraut;
     ui->cbAnlage->setEnabled(!gebraut);
     ui->tbMenge->setReadOnly(gebraut);
     ui->tbSW->setReadOnly(gebraut);
@@ -410,12 +398,12 @@ void TabRezept::updateValues()
     if (!ui->tbBittere->hasFocus())
         ui->tbBittere->setValue(bh->sud()->getIBU());
     ui->tbFarbe->setValue((int)bh->sud()->geterg_Farbe());
-    ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesammt());
+    ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesamt());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
     if (!ui->tbReifezeit->hasFocus())
         ui->tbReifezeit->setValue(bh->sud()->getReifezeit());
     if (!ui->cbAnlage->hasFocus())
-        ui->cbAnlage->setCurrentText(bh->sud()->getAuswahlBrauanlageName());
+        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
     if (!ui->tbHGF->hasFocus())
         ui->tbHGF->setValue(bh->sud()->gethighGravityFaktor());
@@ -424,10 +412,12 @@ void TabRezept::updateValues()
     ui->tbFaktorHauptgussEmpfehlung->setValue(bh->sud()->getFaktorHauptgussEmpfehlung());
     if (!ui->tbRestalkalitaet->hasFocus())
         ui->tbRestalkalitaet->setValue(bh->sud()->getRestalkalitaetSoll());
+    if (!ui->cbWasserProfil->hasFocus())
+        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
-    ui->tbRestalkalitaetWasser->setValue(bh->modelWasser()->data(0, "Restalkalitaet").toDouble());
+    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData("Restalkalitaet").toDouble());
     ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
-    ui->lblWasserprofil->setText(""); // TODO
+    ui->lblWasserprofil->setText(bh->sud()->getWasserprofil());
     restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
     ui->tbHauptguss->setValue(bh->sud()->geterg_WHauptguss());
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
@@ -466,11 +456,11 @@ void TabRezept::updateValues()
     ui->tbMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureNGEinheit->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblAnlageName->setText(bh->sud()->getAuswahlBrauanlageName());
+    ui->lblAnlageName->setText(bh->sud()->getAnlage());
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData("Sudhausausbeute").toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData("Verdampfungsziffer").toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData("Maischebottich_MaxFuellvolumen").toDouble());
-    ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesammt());
+    ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
     ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
     ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData("Sudpfanne_MaxFuellvolumen").toDouble());
     ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
@@ -502,39 +492,38 @@ void TabRezept::updateGlas()
 
 void TabRezept::updateAnlageModel()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-    {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbAnlage);
-        model->setItem(0, 0, new QStandardItem(bh->sud()->getAuswahlBrauanlageName()));
-        ui->cbAnlage->setModel(model);
-        ui->cbAnlage->setModelColumn(0);
-    }
-    else
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbAnlage);
         model->setSourceModel(bh->modelAusruestung());
         ui->cbAnlage->setModel(model);
         ui->cbAnlage->setModelColumn(bh->modelAusruestung()->fieldIndex("Name"));
     }
+    else
+    {
+        QStandardItemModel *model = new QStandardItemModel(ui->cbAnlage);
+        model->setItem(0, 0, new QStandardItem(bh->sud()->getAnlage()));
+        ui->cbAnlage->setModel(model);
+        ui->cbAnlage->setModelColumn(0);
+    }
     ui->cbAnlage->setCurrentIndex(-1);
 }
 
 void TabRezept::updateWasserModel()
 {
-    if (bh->sud()->getBierWurdeGebraut())
-    {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbWasserProfil);
-        // TODO:
-        //model->setItem(0, 0, new QStandardItem(bh->sud()->getAuswahlBrauanlageName()));
-        ui->cbWasserProfil->setModel(model);
-        ui->cbWasserProfil->setModelColumn(0);
-    }
-    else
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbWasserProfil);
         model->setSourceModel(bh->modelWasser());
         ui->cbWasserProfil->setModel(model);
         ui->cbWasserProfil->setModelColumn(bh->modelWasser()->fieldIndex("Name"));
+    }
+    else
+    {
+        QStandardItemModel *model = new QStandardItemModel(ui->cbWasserProfil);
+        model->setItem(0, 0, new QStandardItem(bh->sud()->getWasserprofil()));
+        ui->cbWasserProfil->setModel(model);
+        ui->cbWasserProfil->setModelColumn(0);
     }
     ui->cbWasserProfil->setCurrentIndex(-1);
 }
@@ -554,6 +543,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::updateRastenDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QLineSeries *series = new QLineSeries();
     int t = 0;
     series->append(t, bh->sud()->getEinmaischenTemp());
@@ -574,19 +564,20 @@ void TabRezept::updateRastenDiagram()
     axis =  static_cast<QValueAxis*>(chart->axes(Qt::Vertical).back());
     axis->setRange(30, 80);
     axis->setLabelFormat("%d C");
+  #endif
 }
 
 void TabRezept::on_btnEinmaischtemperatur_clicked()
 {
-    int rastTemp = bh->sud()->modelRasten()->rowCount() > 0 ? bh->sud()->modelRasten()->data(0, "RastTemp").toInt() : 57;
-    DlgEinmaischTemp dlg(bh->sud()->geterg_S_Gesammt(), 18, bh->sud()->geterg_WHauptguss(), rastTemp, this);
+    int rastTemp = bh->sud()->modelRasten()->rowCount() > 0 ? bh->sud()->modelRasten()->data(0, "Temp").toInt() : 57;
+    DlgEinmaischTemp dlg(bh->sud()->geterg_S_Gesamt(), 18, bh->sud()->geterg_WHauptguss(), rastTemp, this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setEinmaischenTemp(dlg.value());
 }
 
 void TabRezept::on_btnNeueRast_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}, {"RastTemp", 78}});
+    QVariantMap values({{"SudID", bh->sud()->id()}, {"Temp", 78}});
     bh->sud()->modelRasten()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
@@ -613,14 +604,14 @@ void TabRezept::malzGaben_dataChanged(const QModelIndex &topLeft, const QModelIn
     {
         if (index.column() == colProzent)
             return updateMalzGaben();
-        index = index.siblingAtColumn(index.column() + 1);
+        index = index.sibling(index.row(), index.column() + 1);
     }
     updateMalzDiagram();
 }
 
 void TabRezept::updateMalzGaben()
 {
-    if (!bh->sud()->getBierWurdeGebraut())
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         double p = 100.0;
         for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
@@ -641,6 +632,7 @@ void TabRezept::updateMalzGaben()
 
 void TabRezept::updateMalzDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
@@ -650,6 +642,7 @@ void TabRezept::updateMalzDiagram()
     QChart *chart = ui->diagramMalz->chart();
     chart->removeAllSeries();
     chart->addSeries(series);
+  #endif
 }
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
@@ -690,13 +683,14 @@ void TabRezept::hopfenGaben_dataChanged(const QModelIndex &topLeft, const QModel
     {
         if (index.column() == colProzent)
             return updateHopfenGaben();
-        index = index.siblingAtColumn(index.column() + 1);
+        index = index.sibling(index.row(), index.column() + 1);
     }
     updateHopfenDiagram();
 }
 
 void TabRezept::updateHopfenDiagram()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
@@ -706,11 +700,12 @@ void TabRezept::updateHopfenDiagram()
     QChart *chart = ui->diagramHopfen->chart();
     chart->removeAllSeries();
     chart->addSeries(series);
+  #endif
 }
 
 void TabRezept::updateHopfenGaben()
 {
-    if (!bh->sud()->getBierWurdeGebraut())
+    if (bh->sud()->getStatus() == Sud_Status_Rezept)
     {
         double p = 100.0;
         for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
@@ -756,7 +751,7 @@ void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
 
 void TabRezept::hefeGaben_modified()
 {
-    const int nModel = 1;//TODO: bh->sud()->modelHefegaben()->rowCount();
+    const int nModel = bh->sud()->modelHefegaben()->rowCount();
     int nLayout = ui->layoutHefeGaben->count();
     while (nLayout < nModel)
         ui->layoutHefeGaben->addWidget(new WdgHefeGabe(nLayout++));
@@ -764,12 +759,28 @@ void TabRezept::hefeGaben_modified()
         delete ui->layoutHefeGaben->itemAt(ui->layoutHefeGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
         static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget())->updateValues();
+    updateHefeDiagram();
+}
+
+void TabRezept::updateHefeDiagram()
+{
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+    QPieSeries *series = new QPieSeries();
+    for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
+    {
+        const WdgHefeGabe* wdg = static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget());
+        series->append(wdg->name(), wdg->menge());
+    }
+    QChart *chart = ui->diagramHefe->chart();
+    chart->removeAllSeries();
+    chart->addSeries(series);
+  #endif
 }
 
 void TabRezept::on_btnNeueHefeGabe_clicked()
 {
     QVariantMap values({{"SudID", bh->sud()->id()}});
-    //bh->sud()->modelHefegaben()->append(values); // TODO: uncomment
+    bh->sud()->modelHefegaben()->append(values);
     ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
 }
 
@@ -864,7 +875,7 @@ void TabRezept::on_tbReifezeit_valueChanged(int value)
 void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
-        bh->sud()->setAuswahlBrauanlageName(value);
+        bh->sud()->setAnlage(value);
 }
 
 void TabRezept::on_tbKommentar_textChanged()
@@ -887,6 +898,12 @@ void TabRezept::on_tbFaktorHauptguss_valueChanged(double value)
 {
     if (ui->tbFaktorHauptguss->hasFocus())
         bh->sud()->setFaktorHauptguss(value);
+}
+
+void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
+{
+    if (ui->cbWasserProfil->hasFocus())
+        bh->sud()->setWasserprofil(value);
 }
 
 void TabRezept::on_tbRestalkalitaet_valueChanged(double value)

@@ -3,10 +3,14 @@
 
 #include <QtCore/qglobal.h>
 
-#if defined(KLEINERBRAUHELFERCORE_LIBRARY)
-#  define LIB_EXPORT Q_DECL_EXPORT
+#if defined(KLEINERBRAUHELFERCORE_LIBRARY_STATIC)
+#  define LIB_EXPORT
 #else
-#  define LIB_EXPORT Q_DECL_IMPORT
+#  if defined(KLEINERBRAUHELFERCORE_LIBRARY_SHARED)
+#    define LIB_EXPORT Q_DECL_EXPORT
+#  else
+#    define LIB_EXPORT Q_DECL_IMPORT
+#  endif
 #endif
 
 #endif // KLEINERBRAUHELFERCORE_GLOBAL_H

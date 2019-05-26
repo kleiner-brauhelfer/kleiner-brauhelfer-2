@@ -32,7 +32,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->webview->setHtmlFile("sudinfo.html");
 
     SqlTableModel *model = bh->modelSud();
-    model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("#"));
+    model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("Sudnummer"));
     model->setHeaderData(model->fieldIndex("Sudname"), Qt::Horizontal, tr("Sudname"));
     model->setHeaderData(model->fieldIndex("Braudatum"), Qt::Horizontal, tr("Braudatum"));
     model->setHeaderData(model->fieldIndex("Erstellt"), Qt::Horizontal, tr("Erstellt"));

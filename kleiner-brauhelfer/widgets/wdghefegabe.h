@@ -27,7 +27,7 @@ private slots:
     void on_cbZutat_currentIndexChanged(const QString &text);
     void on_tbMenge_valueChanged(int value);
     void on_tbTage_valueChanged(int value);
-    void on_tbDatum_dateTimeChanged(const QDateTime &dateTime);
+    void on_tbDatum_dateChanged(const QDate &date);
     void on_btnZugeben_clicked();
     void on_btnLoeschen_clicked();
 

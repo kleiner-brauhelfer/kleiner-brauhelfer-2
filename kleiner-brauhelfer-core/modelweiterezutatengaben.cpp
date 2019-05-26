@@ -8,8 +8,8 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("Zeitpunkt_von");
-    mVirtualField.append("Zeitpunkt_bis");
+    mVirtualField.append("ZugabeDatum");
+    mVirtualField.append("EntnahmeDatum");
     mVirtualField.append("Abfuellbereit");
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(onSudDataChanged(const QModelIndex&)));
@@ -18,7 +18,7 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
 QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &index) const
 {
     QString field = fieldName(index.column());
-    if (field == "Zeitpunkt_von")
+    if (field == "ZugabeDatum")
     {
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
@@ -29,9 +29,9 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &index) const
         }
         return QDateTime();
     }
-    if (field == "Zeitpunkt_bis")
+    if (field == "EntnahmeDatum")
     {
-        QDateTime zugabedatum = data(index.row(), "Zeitpunkt_von").toDateTime();
+        QDateTime zugabedatum = data(index.row(), "ZugabeDatum").toDateTime();
         if (zugabedatum.isValid())
         {
             int tage = data(index.row(), "Zugabedauer").toInt() / 1440;
@@ -136,7 +136,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             return true;
         }
     }
-    if (field == "Zeitpunkt_von")
+    if (field == "ZugabeDatum")
     {
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
@@ -146,9 +146,9 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             return QSqlTableModel::setData(index.siblingAtColumn(fieldIndex("ZugabeNach")), tage);
         }
     }
-    if (field == "Zeitpunkt_bis")
+    if (field == "EntnahmeDatum")
     {
-        QDateTime zugabedatum = data(index.row(), "Zeitpunkt_von").toDateTime();
+        QDateTime zugabedatum = data(index.row(), "ZugabeDatum").toDateTime();
         if (zugabedatum.isValid())
         {
             qint64 tage = zugabedatum.daysTo(value.toDateTime());
@@ -216,6 +216,6 @@ void ModelWeitereZutatenGaben::defaultValues(QVariantMap &values) const
     }
     if (!values.contains("Menge"))
         values.insert("Menge", 0);
-    if (!values.contains("Zeitpunkt_von"))
-        values.insert("Zeitpunkt_von", QDate::currentDate());
+    if (!values.contains("ZugabeDatum"))
+        values.insert("ZugabeDatum", QDate::currentDate());
 }

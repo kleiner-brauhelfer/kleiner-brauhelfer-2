@@ -186,10 +186,10 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->tbDauerTage->setValue(dauer / 1440);
     ui->tbDatumVon->setMinimumDateTime(bh->sud()->getBraudatum());
     if (!ui->tbDatumVon->hasFocus())
-        ui->tbDatumVon->setDate(data("Zeitpunkt_von").toDate());
+        ui->tbDatumVon->setDate(data("ZugabeDatum").toDate());
     ui->tbDatumBis->setMinimumDateTime(ui->tbDatumVon->dateTime());
     if (!ui->tbDatumBis->hasFocus())
-        ui->tbDatumBis->setDate(data("Zeitpunkt_bis").toDate());
+        ui->tbDatumBis->setDate(data("EntnahmeDatum").toDate());
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data("Bemerkung").toString());
 
@@ -272,7 +272,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
             {
                 QDate currentDate = QDate::currentDate();
-                QDate dateBisSoll = data("Zeitpunkt_von").toDate().addDays(dauer / 1440);
+                QDate dateBisSoll = data("ZugabeDatum").toDate().addDays(dauer / 1440);
                 if (currentDate >= dateBisSoll)
                 {
                     ui->btnEntnehmen->setPalette(gSettings->paletteErrorButton);
@@ -346,7 +346,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatumVon->date();
-    setData("Zeitpunkt_von", currentDate < date ? currentDate : date);
+    setData("ZugabeDatum", currentDate < date ? currentDate : date);
     setData("Zugabestatus", EWZ_Zugabestatus_Zugegeben);
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Soll die Zutat vom Bestand abgezogen werden?")
@@ -374,20 +374,20 @@ void WdgWeitereZutatGabe::on_tbDauerTage_valueChanged(int value)
 void WdgWeitereZutatGabe::on_tbDatumVon_dateChanged(const QDate &date)
 {
     if (ui->tbDatumVon->hasFocus())
-        setData("Zeitpunkt_von", date);
+        setData("ZugabeDatum", date);
 }
 
 void WdgWeitereZutatGabe::on_tbDatumBis_dateChanged(const QDate &date)
 {
     if (ui->tbDatumBis->hasFocus())
-        setData("Zeitpunkt_bis", date);
+        setData("EntnahmeDatum", date);
 }
 
 void WdgWeitereZutatGabe::on_btnEntnehmen_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatumBis->date();
-    setData("Zeitpunkt_bis", currentDate < date ? currentDate : date);
+    setData("EntnahmeDatum", currentDate < date ? currentDate : date);
     setData("Zugabestatus", EWZ_Zugabestatus_Entnommen);
 }
 

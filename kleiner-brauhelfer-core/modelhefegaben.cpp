@@ -8,7 +8,7 @@ ModelHefegaben::ModelHefegaben(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("ZugabeZeitpunkt");
+    mVirtualField.append("ZugabeDatum");
     mVirtualField.append("Abfuellbereit");
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(onSudDataChanged(const QModelIndex&)));
@@ -17,7 +17,7 @@ ModelHefegaben::ModelHefegaben(Brauhelfer* bh, QSqlDatabase db) :
 QVariant ModelHefegaben::dataExt(const QModelIndex &index) const
 {
     QString field = fieldName(index.column());
-    if (field == "ZugabeZeitpunkt")
+    if (field == "ZugabeDatum")
     {
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
@@ -35,7 +35,7 @@ QVariant ModelHefegaben::dataExt(const QModelIndex &index) const
 bool ModelHefegaben::setDataExt(const QModelIndex &index, const QVariant &value)
 {
     QString field = fieldName(index.column());
-    if (field == "ZugabeZeitpunkt")
+    if (field == "ZugabeDatum")
     {
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();

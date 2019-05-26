@@ -185,7 +185,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     else
                         map.insert("Status", QObject::tr("nicht zugegeben"));
                     map.insert("ZugabeNach", model->data(row, "ZugabeNach").toInt());
-                    map.insert("ZugabeZeitpunkt", model->data(row, "ZugabeZeitpunkt").toDateTime());
+                    map.insert("ZugabeDatum", locale.toString(model->data(row, "ZugabeDatum").toDate(), QLocale::ShortFormat));
                     liste << map;
                 }
                 if (!liste.empty())
@@ -218,6 +218,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     case EWZ_Zeitpunkt_Gaerung:
                         map.insert("Gaerung", true);
                         map.insert("ZugabeNach", model->data(row, "ZugabeNach").toInt());
+                        map.insert("ZugabeDatum", locale.toString(model->data(row, "ZugabeDatum").toDate(), QLocale::ShortFormat));
+                        map.insert("EntnahmeDatum", locale.toString(model->data(row, "EntnahmeDatum").toDate(), QLocale::ShortFormat));
                         if (model->data(row, "Entnahmeindex").toInt() == EWZ_Entnahmeindex_MitEntnahme)
                         {
                             map.insert("Entnahme", true);

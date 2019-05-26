@@ -112,7 +112,7 @@ void WdgHefeGabe::updateValues(bool full)
         ui->tbTage->setValue(data("ZugabeNach").toInt());
     ui->tbDatum->setMinimumDateTime(bh->sud()->getBraudatum());
     if (!ui->tbDatum->hasFocus())
-        ui->tbDatum->setDateTime(data("ZugabeZeitpunkt").toDateTime());
+        ui->tbDatum->setDate(data("ZugabeDatum").toDate());
 
     int idx = bh->modelHefe()->getValueFromSameRow("Beschreibung", hefename, "TypOGUG").toInt();
     if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
@@ -162,17 +162,17 @@ void WdgHefeGabe::on_tbTage_valueChanged(int value)
         setData("ZugabeNach", value);
 }
 
-void WdgHefeGabe::on_tbDatum_dateTimeChanged(const QDateTime &dateTime)
+void WdgHefeGabe::on_tbDatum_dateChanged(const QDate &date)
 {
     if (ui->tbDatum->hasFocus())
-        setData("ZugabeZeitpunkt", dateTime);
+        setData("ZugabeDatum", date);
 }
 
 void WdgHefeGabe::on_btnZugeben_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatum->date();
-    setData("ZugabeZeitpunkt", currentDate < date ? currentDate : date);
+    setData("ZugabeDatum", currentDate < date ? currentDate : date);
     setData("Zugegeben", true);
 
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),

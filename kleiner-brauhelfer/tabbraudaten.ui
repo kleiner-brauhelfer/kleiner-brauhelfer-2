@@ -580,6 +580,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Temperatur für die Berechnung der Zielwürzemenge.</string>
+               </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
@@ -748,7 +751,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Sudhausausbeute.</string>
+              <string>Die Sudhausausbeute wird aus der gemessenen Stammwürze und Würzemenge bei Kochende berechnet. Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -964,7 +967,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze bei Kochende.</string>
+              <string>Stammwürze gemessen nach Zugabe der weiteren Zutaten (Maischen &amp; Kochen).</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1238,6 +1241,9 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Temperatur für die Berechnung der Zielwürzemenge.</string>
+               </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
@@ -1426,7 +1432,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Effektive Sudhausausbeute.</string>
+              <string>Die effektive Sudhausausbeute wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet. Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert kann als Orientierung für die &lt;strong&gt;Ausbeute für die Schüttungsberechnung&lt;/strong&gt; im Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; hergenommen werden.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1487,7 +1493,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze vor der Zugabe weiterer Zutaten.</string>
+              <string>Stammwürze gemessen vor der Zugabe der weiteren Zutaten (Gärung).</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1541,6 +1547,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>Abgefüllte Speisemenge für die Karbonisierung.</string>
+             </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
@@ -1572,6 +1581,9 @@
                <width>50</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>Wassermenge zugeben, Stammwürze neu messen und Wert eintragen. Vorgang wiederholen bis Zielstammwürze erreicht wurde.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

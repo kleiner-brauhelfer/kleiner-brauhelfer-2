@@ -467,7 +467,7 @@ void ModelSud::update(int row)
 
         // erg_EffektiveAusbeute
         sw = data(row, "SWAnstellen").toDouble() * hgf - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
-        menge = (data(row, "WuerzemengeAnstellen").toDouble() + data(row, "Speisemenge").toDouble()) / hgf;
+        menge = data(row, "WuerzemengeAnstellenTotal").toDouble() / hgf;
         setData(row, "erg_EffektiveAusbeute", BierCalc::sudhausausbeute(sw , menge, schuet));
     }
     if (status == Sud_Status_Gebraut)

@@ -460,7 +460,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
     int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue("ID", id);
     QDate currentDate = QDate::currentDate();
     QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-    bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zeitpunkt_von", date);
+    bh->sud()->modelWeitereZutatenGaben()->setData(row, "ZugabeDatum", date);
     bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Zugegeben);
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Sollen die Zutat vom Bestand abgezogen werden?")
@@ -479,7 +479,7 @@ void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
     int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue("ID", id);
     QDate currentDate = QDate::currentDate();
     QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-    bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zeitpunkt_bis", date);
+    bh->sud()->modelWeitereZutatenGaben()->setData(row, "EntnahmeDatum", date);
     bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Entnommen);
 }
 

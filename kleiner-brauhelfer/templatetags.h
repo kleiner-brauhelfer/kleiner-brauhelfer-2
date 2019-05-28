@@ -8,7 +8,6 @@
 class TemplateTags
 {
 public:
-    typedef std::function<void(QVariantMap& ctx)> tagFnc;
 
     enum TagPart {
         TagNone = 0x0000,

@@ -4,8 +4,12 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 ## Homepage
 http://www.joerum.de/kleiner-brauhelfer/
 
+## Download letzte Version
+- [Version 2.0.0beta1](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta1)
+
 ## Änderungen & Erweiterungen
-### Version 2.0.0beta1 (in Entwicklung)
+
+### Version 2.0.0beta1
 - Neu: kompletter Neuaufbau des Programms
 - Neu: mehrere Hefegaben pro Sud möglich
 - Neu: mehrere Wasserprofile möglich

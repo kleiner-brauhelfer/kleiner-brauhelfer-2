@@ -56,6 +56,7 @@ private:
 private:
     Brauhelfer* bh;
     bool mUpdating;
+    bool mSkipUpdateOnOtherModelChanged;
     QVector<double> swWzMaischenRecipe;
     QVector<double> swWzKochenRecipe;
     QVector<double> swWzGaerungRecipe;

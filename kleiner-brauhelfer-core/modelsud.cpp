@@ -10,6 +10,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh),
     mUpdating(false),
+    mSkipUpdateOnOtherModelChanged(false),
     swWzMaischenRecipe(QVector<double>()),
     swWzKochenRecipe(QVector<double>()),
     swWzGaerungRecipe(QVector<double>()),
@@ -81,6 +82,8 @@ void ModelSud::onRowChanged(const QModelIndex &index)
 
 void ModelSud::onOtherModelRowChanged(const QModelIndex &index)
 {
+    if (mSkipUpdateOnOtherModelChanged)
+        return;
     const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
     int sudId = model->data(index.row(), "SudID").toInt();
     int row = getRowWithValue("ID", sudId);
@@ -172,7 +175,7 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     }
     if (field == "Woche")
     {
-        if (data(index.row(), "BierWurdeAbgefuellt").toBool())
+        if (data(index.row(), "Status").toInt() >= Sud_Status_Abgefuellt)
         {
             QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "ID").toInt());
             if (!dt.isValid())
@@ -261,9 +264,9 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
 bool ModelSud::setDataExt(const QModelIndex &index, const QVariant &value)
 {
     bool ret;
-    mUpdating = true;
+    mSkipUpdateOnOtherModelChanged = true;
     ret = setDataExt_impl(index, value);
-    mUpdating = false;
+    mSkipUpdateOnOtherModelChanged = false;
     return ret;
 }
 

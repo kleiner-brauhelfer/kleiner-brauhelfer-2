@@ -102,7 +102,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
     proxyModel->setSourceModel(model);
     proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt);
-    proxyModel->sort(proxyModel->fieldIndex("Braudatum"), Qt::AscendingOrder);
+    proxyModel->sort(proxyModel->fieldIndex("Braudatum"), Qt::DescendingOrder);
     table->setModel(proxyModel);
     for (int col = 0; col < proxyModel->columnCount(); ++col)
         table->setColumnHidden(col, true);
@@ -115,7 +115,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     col = proxyModel->fieldIndex("Sudnummer");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 50);
+    header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
     col = proxyModel->fieldIndex("Braudatum");
@@ -193,7 +193,7 @@ void TabBrauUebersicht::updateDiagram()
 
         int colBraudatum = model->fieldIndex("Braudatum");
         int colId = model->fieldIndex("ID");
-        for (int row = 0; row < model->rowCount(); ++row)
+        for (int row = model->rowCount() - 1; row >= 0; --row)
         {
             QDateTime dt = model->index(row, colBraudatum).data().toDateTime();
             ui->diagram->Ids.append(model->index(row, colId).data().toInt());

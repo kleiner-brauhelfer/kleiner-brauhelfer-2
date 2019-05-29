@@ -68,7 +68,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     col = model->fieldIndex("Sudnummer");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 50);
+    header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
     col = model->fieldIndex("Braudatum");
@@ -243,9 +243,10 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
             menu.addAction(action);
         }
 
-        if (model->data(index.row(), "BierWurdeAbgefuellt").toBool())
+        int status = model->data(index.row(), "Status").toInt();
+        if (status >= Sud_Status_Abgefuellt)
         {
-            if (model->data(index.row(), "BierWurdeVerbraucht").toBool())
+            if (status == Sud_Status_Verbraucht)
             {
                 action = new QAction(tr("Sud nicht verbraucht"), &menu);
                 connect(action, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));

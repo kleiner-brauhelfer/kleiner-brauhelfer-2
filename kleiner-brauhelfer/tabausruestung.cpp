@@ -81,7 +81,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     col = model->fieldIndex("Sudnummer");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 50);
+    header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
     col = model->fieldIndex("Braudatum");

@@ -178,7 +178,11 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (!ui->cbZugabezeitpunkt->hasFocus())
         ui->cbZugabezeitpunkt->setCurrentIndex(zeitpunkt);
     if (!ui->tbDauerMin->hasFocus())
+    {
+        ui->tbDauerMin->setMinimum(-bh->sud()->getNachisomerisierungszeit());
+        ui->tbDauerMin->setMaximum(bh->sud()->getKochdauerNachBitterhopfung());
         ui->tbDauerMin->setValue(dauer);
+    }
     ui->cbEntnahme->setChecked(entnahme == EWZ_Entnahmeindex_KeineEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
         ui->tbZugabeNach->setValue(data("ZugabeNach").toInt());
@@ -301,7 +305,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->wdgKochdauer->setVisible(false);
         break;
     case EWZ_Zeitpunkt_Kochen:
-        ui->wdgKochdauer->setVisible(typ != EWZ_Typ_Honig && typ != EWZ_Typ_Zucker);
+        ui->wdgKochdauer->setVisible(true);
         break;
     case EWZ_Zeitpunkt_Maischen:
         ui->wdgKochdauer->setVisible(false);

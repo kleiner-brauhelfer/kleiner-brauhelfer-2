@@ -12,8 +12,10 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
 {
     ui->setupUi(this);
 
-    //ui->comboBox_FormelBrixPlato->setCurrentText(settings.value("FormelBrixPlato").toString());
-    ui->comboBox_FormelBrixPlato->setCurrentIndex(0);
+    gSettings->beginGroup("General");
+    ui->comboBox_FormelBrixPlato->setCurrentIndex(gSettings->value("RefraktometerFormel", 0).toInt());
+    ui->tbKorrekturFaktor->setValue(gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble());
+    gSettings->endGroup();
 
     SWAnstellen = sw;
     ui->spinBox_SwPlato->setValue(value);
@@ -31,10 +33,15 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
     ui->spinBox_R_SwBrix->setValue(SWAnstellen == 0.0 ? BierCalc::platoToBrix(value) : 0.0);
     ui->spinBox_SwPlato->setFocus();
     ui->comboBox_FormelBrixPlato->setVisible(SWAnstellen > 0.0);
+    ui->label_FormelBrixPlato->setVisible(SWAnstellen > 0.0);
 }
 
 DlgRestextrakt::~DlgRestextrakt()
 {
+    gSettings->beginGroup("General");
+    gSettings->setValue("RefraktometerFormel", ui->comboBox_FormelBrixPlato->currentIndex());
+    gSettings->setValue("RefraktometerKorrekturfaktor", ui->tbKorrekturFaktor->value());
+    gSettings->endGroup();
     delete ui;
 }
 
@@ -76,79 +83,47 @@ void DlgRestextrakt::on_spinBox_S_Temperatur_valueChanged(double)
         ui->spinBox_R_SwBrix->setValue(SWAnstellen == 0.0 ? BierCalc::platoToBrix(ui->spinBox_SwPlato->value()) : 0.0);
     }
 }
-/*
-double DlgRestextrakt::brixToPlato()
+
+void DlgRestextrakt::calculateFromRefraktometer()
 {
+    double plato, dichte;
     if (SWAnstellen == 0.0)
     {
-        return ui->spinBox_R_SwBrix->value() / ui->spinBox_R_Factor->value();
+        plato = BierCalc::brixToPlato(ui->spinBox_R_SwBrix->value());
+        dichte = BierCalc::platoToDichte(plato);
     }
     else
     {
-
-        double brix = ui->spinBox_R_SwBrix->value();
-        double sw = SWAnstellen;
-        double brixF = ui->spinBox_R_SwBrix->value() / ui->spinBox_R_Factor->value();
-
-        //Standardformel
-        QString formel = ui->comboBox_FormelBrixPlato->currentText();
-        if (formel == "Standardformel")
-        {
-            double dichte =  1.001843-0.002318474*sw - 0.000007775*sw*sw - 0.000000034*sw*sw*sw + 0.00574*brix + 0.00003344*brix*brix + 0.000000086*brix*brix*brix;
-            return QBerechnungen::GetGradPlato(dichte);
-        }
-
-        else if (formel == "Terrill")
-        {
-           double dichte = 1 - 0.0044993*sw + 0.0117741*brixF + 0.000275806*sw*sw - 0.00127169*brixF*brixF - 0.00000727999*sw*sw*sw + 0.0000632929*brixF*brixF*brixF;
-           return QBerechnungen::GetGradPlato(dichte);
-        }
-
-        else if (formel == "Terrill linear")
-        {
-            double dichte = 1.0000 - 0.00085683*sw + 0.0034941*brixF;
-            return QBerechnungen::GetGradPlato(dichte);
-        }
-
-        // User Kleier -> Quelle: http://hobbybrauer.de/modules.php?name=eBoard&file=viewthread&tid=11943&page=2#pid129201
-        else
-        {
-            double Ballingkonstante = 2.0665;
-            //tatsächlicher Restextrakt
-            double tr =(Ballingkonstante * brix - Gaerungskorrektur * sw)/(Ballingkonstante
-                    * ui->spinBox_R_Factor->value() - Gaerungskorrektur);
-            //Scheinbarer Restextrakt
-            return tr * (1.22 + 0.001 * sw) - ((0.22 + 0.001 * sw) * sw);
-        }
+        dichte = BierCalc::brixToDichte(SWAnstellen, ui->spinBox_R_SwBrix->value(), (BierCalc::FormulaBrixToPlato)ui->comboBox_FormelBrixPlato->currentIndex());
+        plato = BierCalc::dichteToPlato(dichte);
+    }
+    ui->spinBox_SwPlato->setValue(plato);
+    if (ui->spinBox_S_Temperatur->value() == 20.0)
+    {
+        ui->spinBox_S_SwPlato->setValue(plato);
+        ui->spinBox_S_SwDichte->setValue(dichte);
+    }
+    else
+    {
+        ui->spinBox_S_SwPlato->setValue(0.0);
+        ui->spinBox_S_SwDichte->setValue(0.0);
     }
 }
-*/
-void DlgRestextrakt::on_spinBox_R_SwBrix_valueChanged(double value)
+
+void DlgRestextrakt::on_spinBox_R_SwBrix_valueChanged(double)
 {
     if (ui->spinBox_R_SwBrix->hasFocus())
     {
-        double plato, dichte;
-        if (SWAnstellen == 0.0)
-        {
-            plato = BierCalc::brixToPlato(value);
-            dichte = BierCalc::platoToDichte(plato);
-        }
-        else
-        {
-            dichte = BierCalc::brixToDichte(SWAnstellen, value, (BierCalc::FormulaBrixToPlato)ui->comboBox_FormelBrixPlato->currentIndex());
-            plato = BierCalc::dichteToPlato(dichte);
-        }
-        ui->spinBox_SwPlato->setValue(plato);
-        if (ui->spinBox_S_Temperatur->value() == 20.0)
-        {
-            ui->spinBox_S_SwPlato->setValue(plato);
-            ui->spinBox_S_SwDichte->setValue(dichte);
-        }
-        else
-        {
-            ui->spinBox_S_SwPlato->setValue(0.0);
-            ui->spinBox_S_SwDichte->setValue(0.0);
-        }
+        calculateFromRefraktometer();
+    }
+}
+
+void DlgRestextrakt::on_tbKorrekturFaktor_valueChanged(double value)
+{
+    if (ui->tbKorrekturFaktor->hasFocus())
+    {
+        BierCalc::faktorBrixToPlato = value;
+        calculateFromRefraktometer();
     }
 }
 
@@ -156,24 +131,6 @@ void DlgRestextrakt::on_comboBox_FormelBrixPlato_currentIndexChanged(const QStri
 {
     if (ui->comboBox_FormelBrixPlato->hasFocus())
     {
-        ui->spinBox_R_SwBrix->setFocus();
-        on_spinBox_R_SwBrix_valueChanged(ui->spinBox_R_SwBrix->value());
-        /*
-        double plato, dichte;
-        if (SWAnstellen == 0.0)
-        {
-            plato = BierCalc::brixToPlato(ui->spinBox_R_SwBrix->value());
-            dichte = BierCalc::platoToDichte(plato);
-        }
-        else
-        {
-            dichte = BierCalc::brixToDichte(SWAnstellen, ui->spinBox_R_SwBrix->value());
-            plato = BierCalc::dichteToPlato(dichte);
-        }
-        ui->spinBox_SwPlato->setValue(plato);
-        ui->spinBox_S_Temperatur->setValue(20.0);
-        ui->spinBox_S_SwPlato->setValue(plato);
-        ui->spinBox_S_SwDichte->setValue(dichte);
-        */
+        calculateFromRefraktometer();
     }
 }

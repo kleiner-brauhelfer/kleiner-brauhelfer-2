@@ -1,1 +1,5 @@
+build-win32/
+build-win64/
+build-linux32/
+build-linux64/
 *.user

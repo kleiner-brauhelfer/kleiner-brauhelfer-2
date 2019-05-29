@@ -15,4 +15,4 @@ ${QTDIR}/qmake "${PRO}" || exit 1
 make clean && make || exit 1
 ${QTDIR}/lupdate "${PRO}" || exit 1
 ${QTDIR}/lrelease "${PRO}" || exit 1
-./deployment/macOS/deploy.sh ./bin/kleiner-brauhelfer.app "${QTDIR}" "$1"|| exit 1
+./deployment/macOS/deploy.sh ./bin/kleiner-brauhelfer.app "${QTDIR}" "$2"|| exit 1

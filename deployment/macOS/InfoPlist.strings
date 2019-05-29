@@ -1,0 +1,5 @@
+/* localized name displayed in Finder */
+"CFBundleDisplayName" = "Kleiner Brauhelfer 2";
+
+/* localized name displayed in menu bar */
+"CFBundleName" = "Kleiner Brauhelfer 2";

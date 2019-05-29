@@ -339,7 +339,7 @@ void TabEtikette::on_btnToPdf_clicked()
         QPainter painter(&printer);
         int zaehler = 0;
         // Anzahl Seiten
-        int pageCount = int(round(double(totalCount) / double(countPerPage) + double(0.5)));
+        int pageCount = int(qRound(double(totalCount) / double(countPerPage) + double(0.5)));
 
         QImage image(breiteMM * faktorPxPerMM, hoehePx, QImage::Format_ARGB32_Premultiplied);
         QPainter imagePainter(&image);

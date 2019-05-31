@@ -46,10 +46,10 @@ script:
 
 deploy:
   provider: releases
-  api_key: $DEPLOYMENT_KEY
+#  api_key: $DEPLOYMENT_KEY
   file:  "./bin/kb_macos_*.zip"
   file_glob: true
   skip_cleanup: true
   overwrite: true
   on:
-    tags: true
+    tags: TAGS_ONLY

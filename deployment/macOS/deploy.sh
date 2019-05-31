@@ -122,8 +122,7 @@ echo "* Creating self-contained bundle..."
 
 echo "* Creating ZIP-archive for distribution..."
 DIR="$(dirname ${BUNDLE})"
-ZIPVERSION=`echo "${VERSION}" | tr '.' '_'`
-ZIP="kb2_macos_v${ZIPVERSION}.zip"
+ZIP="kleiner-brauhelfer-${VERSION}_macos.zip"
 pushd "${DIR}" || exit 1
 zip -ry -o "${ZIP}" `basename ${BUNDLE}` || exit 1
 popd

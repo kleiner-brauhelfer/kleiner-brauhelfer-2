@@ -32,7 +32,7 @@ before_script:
 # - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then chmod +x ./deployment/debian/deploy.sh ; fi
 
 script:
-  - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then [[ ! -z "$TRAVIS_TAG" ]] || TRAVIS_TAG="$TRAVIS_COMMIT"; ./build_macos.sh /usr/local/opt/qt/bin/ ${TRAVIS_TAG}; fi
+  - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then [[ ! -z "$TRAVIS_TAG" ]] || TRAVIS_TAG="-$TRAVIS_COMMIT"; ./build_macos.sh /usr/local/opt/qt/bin/ ${TRAVIS_TAG}; fi
 #  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then cd source; fi
 #  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then qmake -project ; fi
 #  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then qmake brauhelfer.pro ; fi

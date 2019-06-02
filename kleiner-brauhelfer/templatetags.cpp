@@ -119,7 +119,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
 
                 QVariantMap mapWasser;
                 double f1 = 0.0, f2 = 0.0, f3 = 0.0;
-                f1 = bh->sud()->geterg_W_Gesamt();
+                f1 = bh->sud()->geterg_WHauptguss();
                 mapWasser["Hauptguss"] = locale.toString(f1, 'f', 1);
                 f2 = bh->sud()->geterg_WNachguss();
                 mapWasser["Nachguss"] = locale.toString(f2, 'f', 1);

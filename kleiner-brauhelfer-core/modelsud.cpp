@@ -436,6 +436,7 @@ void ModelSud::update(int row)
     if (mUpdating)
         return;
     mUpdating = true;
+    mSignalModifiedBlocked = true;
 
     double menge, sw;
 
@@ -503,6 +504,7 @@ void ModelSud::update(int row)
 
     setData(row, "Gespeichert", QDateTime::currentDateTime());
 
+    mSignalModifiedBlocked = false;
     mUpdating = false;
 }
 

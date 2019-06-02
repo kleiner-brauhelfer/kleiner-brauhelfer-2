@@ -26,7 +26,6 @@ private slots:
     void on_cbRast_currentTextChanged(const QString &text);
     void on_cbRast_currentIndexChanged(int index);
     void on_tbTemp_valueChanged(int value);
-    void on_tbTemp_editingFinished();
     void on_tbDauer_valueChanged(int value);
     void on_btnLoeschen_clicked();
 

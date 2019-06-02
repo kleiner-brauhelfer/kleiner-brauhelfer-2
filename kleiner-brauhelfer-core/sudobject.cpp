@@ -55,7 +55,6 @@ void SudObject::load(int id)
         modelRasten()->setSourceModel(bh->modelRasten());
         modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
         modelRasten()->setFilterRegExp(regExpId);
-        modelRasten()->sort(bh->modelRasten()->fieldIndex("Temp"), Qt::AscendingOrder);
         modelMalzschuettung()->setSourceModel(bh->modelMalzschuettung());
         modelMalzschuettung()->setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
         modelMalzschuettung()->setFilterRegExp(regExpId);

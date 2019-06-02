@@ -546,13 +546,20 @@ void TabRezept::updateRastenDiagram()
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QLineSeries *series = new QLineSeries();
     int t = 0;
+    int tempMin = 30;
+    int tempMax = 80;
     series->append(t, bh->sud()->getEinmaischenTemp());
     for (int i = 0; i < ui->layoutRasten->count(); ++i)
     {
         const WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-        series->append(t, wdg->temperatur());
+        int temp = wdg->temperatur();
+        series->append(t, temp);
         t += wdg->dauer();
-        series->append(t, wdg->temperatur());
+        series->append(t, temp);
+        if (temp < tempMin)
+            tempMin = temp;
+        if (temp > tempMax)
+            tempMax = temp;
     }
     QChart *chart = ui->diagramRasten->chart();
     chart->removeAllSeries();
@@ -562,7 +569,7 @@ void TabRezept::updateRastenDiagram()
     axis->setRange(0, t);
     axis->setLabelFormat("%d min");
     axis =  static_cast<QValueAxis*>(chart->axes(Qt::Vertical).back());
-    axis->setRange(30, 80);
+    axis->setRange(tempMin, tempMax);
     axis->setLabelFormat("%d C");
   #endif
 }

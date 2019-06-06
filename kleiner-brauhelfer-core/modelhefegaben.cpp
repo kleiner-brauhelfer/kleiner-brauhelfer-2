@@ -39,7 +39,8 @@ bool ModelHefegaben::setDataExt(const QModelIndex &index, const QVariant &value)
     {
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
-        return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), braudatum.daysTo(value.toDateTime()));
+        if (braudatum.isValid())
+            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), braudatum.daysTo(value.toDateTime()));
     }
     return false;
 }
@@ -86,7 +87,8 @@ void ModelHefegaben::defaultValues(QVariantMap &values) const
             if (bh->modelSud()->getValueFromSameRow("ID", sudId, "Status").toInt() != Sud_Status_Rezept)
             {
                 QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
-                values.insert("ZugabeNach", braudatum.daysTo(QDateTime::currentDateTime()));
+                if (braudatum.isValid())
+                    values.insert("ZugabeNach", braudatum.daysTo(QDateTime::currentDateTime()));
             }
         }
     }

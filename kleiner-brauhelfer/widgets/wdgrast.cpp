@@ -15,7 +15,7 @@ WdgRast::WdgRast(int index, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelRasten(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelRasten(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgRast::~WdgRast()

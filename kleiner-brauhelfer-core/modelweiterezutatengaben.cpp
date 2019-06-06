@@ -23,10 +23,7 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &index) const
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
         if (braudatum.isValid())
-        {
-            int tage = data(index.row(), "ZugabeNach").toInt();
-            return braudatum.addDays(tage);
-        }
+            return braudatum.addDays(data(index.row(), "ZugabeNach").toInt());
         return QDateTime();
     }
     if (field == "EntnahmeDatum")
@@ -141,10 +138,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
         QVariant sudId = data(index.row(), "SudID");
         QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
         if (braudatum.isValid())
-        {
-            qint64 tage = braudatum.daysTo(value.toDateTime());
-            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), tage);
-        }
+            return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("ZugabeNach")), braudatum.daysTo(value.toDateTime()));
     }
     if (field == "EntnahmeDatum")
     {
@@ -208,6 +202,19 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
 
 void ModelWeitereZutatenGaben::defaultValues(QVariantMap &values) const
 {
+    if (values.contains("SudID"))
+    {
+        QVariant sudId = values.value("SudID");
+        if (!values.contains("ZugabeNach"))
+        {
+            if (bh->modelSud()->getValueFromSameRow("ID", sudId, "Status").toInt() != Sud_Status_Rezept)
+            {
+                QDateTime braudatum = bh->modelSud()->getValueFromSameRow("ID", sudId, "Braudatum").toDateTime();
+                if (braudatum.isValid())
+                    values.insert("ZugabeNach", braudatum.daysTo(QDateTime::currentDateTime()));
+            }
+        }
+    }
     if (values.contains("Typ") && values.value("Typ").toInt() == EWZ_Typ_Hopfen)
     {
         if (!values.contains("Name"))
@@ -220,6 +227,6 @@ void ModelWeitereZutatenGaben::defaultValues(QVariantMap &values) const
     }
     if (!values.contains("Menge"))
         values.insert("Menge", 0);
-    if (!values.contains("ZugabeDatum"))
-        values.insert("ZugabeDatum", QDate::currentDate());
+    if (!values.contains("ZugabeNach"))
+        values.insert("ZugabeNach", 0);
 }

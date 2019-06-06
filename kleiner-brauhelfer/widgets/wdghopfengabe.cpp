@@ -32,7 +32,8 @@ WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelHopfengaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgHopfenGabe::~WdgHopfenGabe()

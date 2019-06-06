@@ -20,7 +20,8 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(int index, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgWeitereZutatGabe::~WdgWeitereZutatGabe()
@@ -188,12 +189,20 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->tbZugabeNach->setValue(data("ZugabeNach").toInt());
     if (!ui->tbDauerTage->hasFocus())
         ui->tbDauerTage->setValue(dauer / 1440);
-    ui->tbDatumVon->setMinimumDateTime(bh->sud()->getBraudatum());
-    if (!ui->tbDatumVon->hasFocus())
-        ui->tbDatumVon->setDate(data("ZugabeDatum").toDate());
-    ui->tbDatumBis->setMinimumDateTime(ui->tbDatumVon->dateTime());
-    if (!ui->tbDatumBis->hasFocus())
-        ui->tbDatumBis->setDate(data("EntnahmeDatum").toDate());
+
+    QDateTime braudatum = bh->sud()->getBraudatum();
+    if (braudatum.isValid())
+    {
+        ui->tbDatumVon->setMinimumDateTime(braudatum);
+        if (!ui->tbDatumVon->hasFocus())
+            ui->tbDatumVon->setDate(data("ZugabeDatum").toDate());
+        ui->tbDatumBis->setMinimumDateTime(ui->tbDatumVon->dateTime());
+        if (!ui->tbDatumBis->hasFocus())
+            ui->tbDatumBis->setDate(data("EntnahmeDatum").toDate());
+    }
+    ui->tbDatumVon->setVisible(braudatum.isValid());
+    ui->tbDatumBis->setVisible(braudatum.isValid());
+
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data("Bemerkung").toString());
 
@@ -316,7 +325,8 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->lblEntnahme->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->tbDatumBis->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
+    if (ui->tbDatumBis->isVisible())
+        ui->tbDatumBis->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->btnZugeben->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_nichtZugegeben);
     ui->btnEntnehmen->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept);

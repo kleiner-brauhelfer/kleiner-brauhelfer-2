@@ -21,7 +21,8 @@ WdgBewertung::WdgBewertung(int index, QWidget *parent) :
     ui->wdgRating->installEventFilter(this);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelBewertungen(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgBewertung::~WdgBewertung()

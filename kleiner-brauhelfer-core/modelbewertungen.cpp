@@ -23,11 +23,9 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &index) const
             int sudId = data(index.row(), "SudID").toInt();
             dt = bh->modelSud()->getValueFromSameRow("ID", sudId, "Abfuelldatum").toDateTime();
         }
-        qint64 days = dt.daysTo(data(index.row(), "Datum").toDateTime());
-        if (days > 0)
-            return days / 7 + 1;
-        else
-            return 0;
+        if (dt.isValid())
+            return dt.daysTo(data(index.row(), "Datum").toDateTime()) / 7 + 1;
+        return 0;
     }
     return QVariant();
 }

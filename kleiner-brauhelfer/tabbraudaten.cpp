@@ -118,7 +118,8 @@ void TabBraudaten::updateValues()
 {
     double value;
 
-    ui->tbBraudatum->setDateTime(bh->sud()->getBraudatum());
+    QDateTime dt = bh->sud()->getBraudatum();
+    ui->tbBraudatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
 
     if (!ui->tbWuerzemengeKochbeginn->hasFocus())
            ui->tbWuerzemengeKochbeginn->setValue(bh->sud()->getWuerzemengeVorHopfenseihen());

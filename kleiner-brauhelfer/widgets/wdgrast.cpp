@@ -15,7 +15,7 @@ WdgRast::WdgRast(int index, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelRasten(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelRasten(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgRast::~WdgRast()
@@ -143,8 +143,6 @@ void WdgRast::on_cbRast_currentIndexChanged(int index)
             setData("Temp", 78);
             setData("Dauer", 0);
         }
-        setFocus();
-        bh->sud()->modelRasten()->invalidate();
     }
 }
 
@@ -152,12 +150,6 @@ void WdgRast::on_tbTemp_valueChanged(int value)
 {
     if (ui->tbTemp->hasFocus())
         setData("Temp", value);
-}
-
-void WdgRast::on_tbTemp_editingFinished()
-{
-    setFocus();
-    bh->sud()->modelRasten()->invalidate();
 }
 
 void WdgRast::on_tbDauer_valueChanged(int value)

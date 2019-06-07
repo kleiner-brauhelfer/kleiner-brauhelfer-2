@@ -16,6 +16,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Fix: Woche war immer auf 0
 - Fix: Abstürze wegen "race condition" in Model Sud
 - Fix: Dialog für Stammwürze/Restextrakt zeigt Formel und Korrekturfaktor für Refraktometer
+- Neu: keine automatische Sortierung der Rasten
 - Neu: Reihenfolge in der Tabelle *Brauübersicht* gedreht
 - Neu: Kochzeit bei Honig & Zucker einstellbar
 

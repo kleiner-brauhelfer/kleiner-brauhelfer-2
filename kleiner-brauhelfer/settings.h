@@ -17,6 +17,7 @@ public:
 
 public:
     explicit Settings(QObject *parent = nullptr);
+    virtual ~Settings();
 
     Theme theme() const;
     void setTheme(Theme theme);
@@ -35,6 +36,8 @@ public:
     QString databaseDir();
 
     QString dataDir() const;
+
+    QString lastProgramVersion();
 
 protected:
     Settings(bool dummyPortable, QObject *parent = nullptr);

@@ -58,7 +58,7 @@ void ModelSud::createConnections()
     connect(bh->modelHopfengaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelHefegaben(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onOtherModelRowChanged(const QModelIndex&))); // TODO:
+            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
 }
@@ -95,13 +95,11 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     QString field = fieldName(index.column());
     if (field == "Braudatum")
     {
-        QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-        return dt.isValid() ? dt : QDateTime::currentDateTime();
+        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
     }
     if (field == "Abfuelldatum")
     {
-        QDateTime dt = QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
-        return dt.isValid() ? dt : QDateTime::currentDateTime();
+        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
     }
     if (field == "Erstellt")
     {
@@ -180,7 +178,8 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
             QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "ID").toInt());
             if (!dt.isValid())
                 dt = data(index.row(), "Abfuelldatum").toDateTime();
-            return dt.daysTo(QDateTime::currentDateTime()) / 7 + 1;
+            if (dt.isValid())
+                return dt.daysTo(QDateTime::currentDateTime()) / 7 + 1;
         }
         return 0;
     }
@@ -436,6 +435,7 @@ void ModelSud::update(int row)
     if (mUpdating)
         return;
     mUpdating = true;
+    mSignalModifiedBlocked = true;
 
     double menge, sw;
 
@@ -503,6 +503,7 @@ void ModelSud::update(int row)
 
     setData(row, "Gespeichert", QDateTime::currentDateTime());
 
+    mSignalModifiedBlocked = false;
     mUpdating = false;
 }
 
@@ -773,9 +774,12 @@ QVariant ModelSud::ReifezeitDelta(const QModelIndex &index) const
         QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "ID").toInt());
         if (!dt.isValid())
             dt = data(index.row(), "Abfuelldatum").toDateTime();
-        qint64 tageReifung = dt.daysTo(QDateTime::currentDateTime());
-        int tageReifungSoll = data(index.row(), "Reifezeit").toInt() * 7;
-        return tageReifungSoll - tageReifung;
+        if (dt.isValid())
+        {
+            qint64 tageReifung = dt.daysTo(QDateTime::currentDateTime());
+            int tageReifungSoll = data(index.row(), "Reifezeit").toInt() * 7;
+            return tageReifungSoll - tageReifung;
+        }
     }
     return 0;
 }
@@ -918,7 +922,9 @@ void ModelSud::defaultValues(QVariantMap &values) const
     if (!values.contains("ID"))
         values.insert("ID", getNextId());
     if (!values.contains("Erstellt"))
-        values.insert("Erstellt", QDate::currentDate());
+        values.insert("Erstellt", QDateTime::currentDateTime());
+    if (!values.contains("Sudnummer"))
+        values.insert("Sudnummer", 0);
     if (!values.contains("Menge"))
         values.insert("Menge", 20);
     if (!values.contains("SW"))

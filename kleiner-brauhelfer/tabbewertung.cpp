@@ -17,7 +17,7 @@ TabBewertung::TabBewertung(QWidget *parent) :
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud()->modelBewertungen(), SIGNAL(layoutChanged()), this, SLOT(modelModified()));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelBewertungen(), SIGNAL(modified()), this, SLOT(updateValues()));
     updateValues();
     connect(ui->wdgRating, SIGNAL(clicked(int)), this, SLOT(sterneChanged(int)));
 }

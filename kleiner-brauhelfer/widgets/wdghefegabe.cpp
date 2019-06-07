@@ -26,8 +26,8 @@ WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
-    connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgHefeGabe::~WdgHefeGabe()
@@ -110,9 +110,14 @@ void WdgHefeGabe::updateValues(bool full)
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())
         ui->tbTage->setValue(data("ZugabeNach").toInt());
-    ui->tbDatum->setMinimumDateTime(bh->sud()->getBraudatum());
-    if (!ui->tbDatum->hasFocus())
-        ui->tbDatum->setDate(data("ZugabeDatum").toDate());
+    QDateTime braudatum = bh->sud()->getBraudatum();
+    if (braudatum.isValid())
+    {
+        ui->tbDatum->setMinimumDateTime(braudatum);
+        if (!ui->tbDatum->hasFocus())
+            ui->tbDatum->setDate(data("ZugabeDatum").toDate());
+    }
+    ui->tbDatum->setVisible(braudatum.isValid());
 
     int idx = bh->modelHefe()->getValueFromSameRow("Beschreibung", hefename, "TypOGUG").toInt();
     if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())

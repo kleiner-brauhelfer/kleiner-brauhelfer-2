@@ -23,7 +23,7 @@ WdgAnhang::WdgAnhang(int index, QWidget *parent) :
     ui->setupUi(this);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)), this, SLOT(updateValues()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgAnhang::~WdgAnhang()

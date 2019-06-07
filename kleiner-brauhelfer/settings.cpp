@@ -20,6 +20,13 @@ SettingsPortable::SettingsPortable(QObject *parent) :
 {
 }
 
+Settings::~Settings()
+{
+    beginGroup("General");
+    setValue("version", QCoreApplication::applicationVersion());
+    endGroup();
+}
+
 void Settings::initTheme()
 {
     beginGroup("Style");
@@ -229,4 +236,13 @@ QString Settings::databaseDir()
 QString Settings::dataDir() const
 {
     return settingsDir() + "data/";
+}
+
+QString Settings::lastProgramVersion()
+{
+    QString version;
+    beginGroup("General");
+    version = value("version").toString();
+    endGroup();
+    return version;
 }

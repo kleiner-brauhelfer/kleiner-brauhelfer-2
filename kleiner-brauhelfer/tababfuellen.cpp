@@ -125,8 +125,9 @@ void TabAbfuellen::updateValues()
 {
     double value;
 
+    QDateTime dt = bh->sud()->getAbfuelldatum();
     ui->tbAbfuelldatum->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbAbfuelldatum->setDateTime(bh->sud()->getAbfuelldatum());
+    ui->tbAbfuelldatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
 
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
 

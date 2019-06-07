@@ -5,6 +5,7 @@
 #include <QStyleFactory>
 #include <QDirIterator>
 #include <QFile>
+#include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
 #include "brauhelfer.h"
@@ -144,9 +145,19 @@ static bool connectDatabase(bool &updated)
     return bh->isConnectedDatabase();
 }
 
+static QByteArray getHash(const QString &fileName)
+{
+    QCryptographicHash hash(QCryptographicHash::Sha1);
+    QFile file(fileName);
+    file.open(QIODevice::ReadOnly);
+    hash.addData(file.readAll());
+    return hash.result();
+}
+
 static void copyResources()
 {
     QString dataDir = gSettings->dataDir();
+    bool update = gSettings->lastProgramVersion() != QCoreApplication::applicationVersion();
     QDirIterator it(":/data", QDirIterator::Subdirectories);
     if (!QDir(dataDir).exists())
         QDir().mkdir(dataDir);
@@ -155,12 +166,30 @@ static void copyResources()
         it.next();
         if (it.fileName() == "kb_daten.sqlite")
             continue;
-        QFile file(dataDir + it.fileName());
-        if (!file.exists())
+        QFile fileResource(it.filePath());
+        QFile fileLocal(dataDir + it.fileName());
+        if (!fileLocal.exists())
         {
-            QFile file2(it.filePath());
-            if (file2.copy(file.fileName()))
-                file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+            if (fileResource.copy(fileLocal.fileName()))
+                fileLocal.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+        }
+        else if (update)
+        {
+            QByteArray hashResource = getHash(fileResource.fileName());
+            QByteArray hashLocal = getHash(fileLocal.fileName());
+            if (hashLocal != hashResource)
+            {
+                QMessageBox::StandardButton ret = QMessageBox::question(nullptr, QApplication::applicationName(),
+                                                QObject::tr("Die Ressourcendatei \"%1\" ist verschieden von der lokalen Datei.\n"
+                                                            "Die Datei wurde entweder manuell editiert oder durch ein Update verändert.\n\n"
+                                                            "Soll die lokale Datei ersetzt werden?").arg(it.fileName()));
+                if (ret == QMessageBox::Yes)
+                {
+                    fileLocal.remove();
+                    if (fileResource.copy(fileLocal.fileName()))
+                        fileLocal.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+                }
+            }
         }
     }
 }

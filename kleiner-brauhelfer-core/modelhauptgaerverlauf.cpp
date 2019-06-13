@@ -47,11 +47,14 @@ bool ModelHauptgaerverlauf::setDataExt(const QModelIndex &index, const QVariant 
         {
             int id = data(index.row(), "SudID").toInt();
             int row = bh->modelSud()->getRowWithValue("ID", id);
-            double alc = BierCalc::alkohol(bh->modelSud()->data(row, "SWIst").toDouble(), value.toDouble());
-            setData(index.row(), "Alc", alc);
-            if (index.row() == getLastRow(id))
+            if (row >= 0)
             {
-                bh->modelSud()->setData(row, "SWJungbier", value);
+                double alc = BierCalc::alkohol(bh->modelSud()->data(row, "SWIst").toDouble(), value.toDouble());
+                setData(index.row(), "Alc", alc);
+                if (index.row() == getLastRow(id))
+                {
+                    bh->modelSud()->setData(row, "SWJungbier", value);
+                }
             }
             return true;
         }
@@ -113,7 +116,8 @@ void ModelHauptgaerverlauf::defaultValues(QVariantMap &values) const
             if (!values.contains("SW"))
             {
                 int rowBrew = bh->modelSud()->getRowWithValue("ID", id);
-                values.insert("SW", bh->modelSud()->data(rowBrew, "SWIst"));
+                if (rowBrew >= 0)
+                    values.insert("SW", bh->modelSud()->data(rowBrew, "SWIst"));
             }
         }
     }

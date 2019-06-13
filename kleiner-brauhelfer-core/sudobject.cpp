@@ -233,7 +233,7 @@ void SudObject::brauzutatenAbziehen()
     for (int i = 0; i < mList->rowCount(); ++i)
     {
         row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
-        if (row != -1)
+        if (row >= 0)
         {
             mengeTotal = mSubstract->data(row, "Menge").toDouble() - mList->data(i, "erg_Menge").toDouble();
             if (mengeTotal < 0.0)
@@ -248,7 +248,7 @@ void SudObject::brauzutatenAbziehen()
     for (int i = 0; i < mList->rowCount(); ++i)
     {
         row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
-        if (row != -1)
+        if (row >= 0)
         {
             mengeTotal = mSubstract->data(row, "Menge").toDouble() - mList->data(i, "erg_Menge").toDouble();
             if (mengeTotal < 0.0)
@@ -265,7 +265,7 @@ void SudObject::brauzutatenAbziehen()
         if (mList->data(i, "ZugabeNach").toInt() == 0)
         {
             row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
-            if (row != -1)
+            if (row >= 0)
             {
                 mengeTotal = mSubstract->data(row, "Menge").toInt() - mList->data(i, "Menge").toInt();
                 if (mengeTotal < 0.0)
@@ -302,7 +302,7 @@ void SudObject::brauzutatenAbziehen()
             {
                 mSubstract = bh->modelHopfen();
                 row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name").toString());
-                if (row != -1)
+                if (row >= 0)
                 {
                     mengeTotal = mSubstract->data(row, "Menge").toDouble();
                     if (mList->data(i, "Einheit").toInt() == EWZ_Einheit_Kg)

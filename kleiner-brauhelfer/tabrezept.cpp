@@ -220,7 +220,7 @@ void TabRezept::checkRohstoffe()
         if (name.isEmpty())
             continue;
         int row = bh->modelMalz()->getRowWithValue("Beschreibung", name);
-        if (row == -1)
+        if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabMalz);
             dlg.setRohstoff(name);
@@ -257,7 +257,7 @@ void TabRezept::checkRohstoffe()
         if (name.isEmpty())
             continue;
         int row = bh->modelHopfen()->getRowWithValue("Beschreibung", name);
-        if (row == -1)
+        if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabHopfen);
             dlg.setRohstoff(name);
@@ -295,7 +295,7 @@ void TabRezept::checkRohstoffe()
         if (name.isEmpty())
             continue;
         int row = bh->modelHefe()->getRowWithValue("Beschreibung", name);
-        if (row == -1)
+        if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabHefe);
             dlg.setRohstoff(name);
@@ -335,7 +335,7 @@ void TabRezept::checkRohstoffe()
             row = bh->modelHopfen()->getRowWithValue("Beschreibung", name);
         else
             row = bh->modelWeitereZutaten()->getRowWithValue("Beschreibung", name);
-        if (row == -1)
+        if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabWeitereZutaten);
             dlg.setRohstoff(name);

@@ -518,13 +518,16 @@ void TabSudAuswahl::on_btnLoeschen_clicked()
     for (int sudId : sudIds)
     {
         int row = model->getRowWithValue("ID", sudId);
-        QString name = model->data(row, "Sudname").toString();
-        int ret = QMessageBox::question(this, tr("Sud löschen?"),
-                                        tr("Soll der Sud \"%1\" gelöscht werden?").arg(name));
-        if (ret == QMessageBox::Yes)
+        if (row >= 0)
         {
-            if (model->removeRow(row))
-                filterChanged();
+            QString name = model->data(row, "Sudname").toString();
+            int ret = QMessageBox::question(this, tr("Sud löschen?"),
+                                            tr("Soll der Sud \"%1\" gelöscht werden?").arg(name));
+            if (ret == QMessageBox::Yes)
+            {
+                if (model->removeRow(row))
+                    filterChanged();
+            }
         }
     }
 }

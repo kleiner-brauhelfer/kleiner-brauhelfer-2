@@ -49,8 +49,11 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
         if (QSqlTableModel::setData(index, value))
         {
             int row = bh->modelHopfen()->getRowWithValue("Beschreibung", value);
-            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Alpha")), bh->modelHopfen()->data(row, "Alpha"));
-            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Pellets")), bh->modelHopfen()->data(row, "Pellets"));
+            if (row >= 0)
+            {
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Alpha")), bh->modelHopfen()->data(row, "Alpha"));
+                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Pellets")), bh->modelHopfen()->data(row, "Pellets"));
+            }
             return true;
         }
     }

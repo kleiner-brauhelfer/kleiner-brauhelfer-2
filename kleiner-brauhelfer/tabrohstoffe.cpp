@@ -1187,7 +1187,8 @@ void TabRohstoffe::on_btnWasserprofilLoeschen_clicked()
         {
             ProxyModel *model = static_cast<ProxyModel*>(ui->tableWasser->model());
             int row = model->getRowWithValue("Name", name);
-            model->removeRow(row);
+            if (row >= 0)
+                model->removeRow(row);
         }
     }
 }

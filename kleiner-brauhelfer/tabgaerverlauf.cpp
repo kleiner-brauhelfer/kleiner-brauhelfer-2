@@ -458,18 +458,21 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
 {
     int id = ui->comboBox_GaerungEwzAuswahl->currentData().toInt();
     int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue("ID", id);
-    QDate currentDate = QDate::currentDate();
-    QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-    bh->sud()->modelWeitereZutatenGaben()->setData(row, "ZugabeDatum", date);
-    bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Zugegeben);
-    if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
-                              tr("Sollen die Zutat vom Bestand abgezogen werden?")
-       ) == QMessageBox::Yes)
+    if (row >= 0)
     {
-        QString name = bh->sud()->modelWeitereZutatenGaben()->data(row, "Name").toString();
-        int typ = bh->sud()->modelWeitereZutatenGaben()->data(row, "Typ").toInt();
-        double menge = bh->sud()->modelWeitereZutatenGaben()->data(row, "erg_Menge").toDouble();
-        bh->sud()->zutatAbziehen(name, typ == EWZ_Typ_Hopfen ? 0 : 2, menge);
+        QDate currentDate = QDate::currentDate();
+        QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, "ZugabeDatum", date);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Zugegeben);
+        if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
+                                  tr("Sollen die Zutat vom Bestand abgezogen werden?")
+           ) == QMessageBox::Yes)
+        {
+            QString name = bh->sud()->modelWeitereZutatenGaben()->data(row, "Name").toString();
+            int typ = bh->sud()->modelWeitereZutatenGaben()->data(row, "Typ").toInt();
+            double menge = bh->sud()->modelWeitereZutatenGaben()->data(row, "erg_Menge").toDouble();
+            bh->sud()->zutatAbziehen(name, typ == EWZ_Typ_Hopfen ? 0 : 2, menge);
+        }
     }
 }
 
@@ -477,10 +480,13 @@ void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
 {
     int id = ui->comboBox_GaerungEwzAuswahlEntnahme->currentData().toInt();
     int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue("ID", id);
-    QDate currentDate = QDate::currentDate();
-    QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-    bh->sud()->modelWeitereZutatenGaben()->setData(row, "EntnahmeDatum", date);
-    bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Entnommen);
+    if (row >= 0)
+    {
+        QDate currentDate = QDate::currentDate();
+        QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, "EntnahmeDatum", date);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Entnommen);
+    }
 }
 
 void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()

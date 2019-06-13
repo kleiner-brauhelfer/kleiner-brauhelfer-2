@@ -71,10 +71,13 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &index, const QVaria
             else
             {
                 int row = bh->modelWeitereZutaten()->getRowWithValue("Beschreibung", value);
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Einheit")), bh->modelWeitereZutaten()->data(row, "Einheiten"));
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Typ")), bh->modelWeitereZutaten()->data(row, "Typ"));
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Ausbeute")), bh->modelWeitereZutaten()->data(row, "Ausbeute"));
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), bh->modelWeitereZutaten()->data(row, "EBC"));
+                if (row >= 0)
+                {
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Einheit")), bh->modelWeitereZutaten()->data(row, "Einheiten"));
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Typ")), bh->modelWeitereZutaten()->data(row, "Typ"));
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Ausbeute")), bh->modelWeitereZutaten()->data(row, "Ausbeute"));
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), bh->modelWeitereZutaten()->data(row, "EBC"));
+                }
             }
             return true;
         }

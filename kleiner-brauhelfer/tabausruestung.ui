@@ -295,9 +295,6 @@
                 <property name="decimals">
                  <number>1</number>
                 </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
                </widget>
               </item>
               <item row="8" column="4">
@@ -353,6 +350,9 @@ Typischer Wert: zwischen 50% und 75%</string>
                 </property>
                 <property name="decimals">
                  <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -682,7 +682,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                  <double>999.000000000000000</double>
                 </property>
                 <property name="singleStep">
-                 <double>0.100000000000000</double>
+                 <double>0.010000000000000</double>
                 </property>
                </widget>
               </item>

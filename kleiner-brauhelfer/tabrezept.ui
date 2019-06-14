@@ -46,7 +46,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>429</width>
+         <width>412</width>
          <height>712</height>
         </rect>
        </property>
@@ -71,7 +71,7 @@
             <widget class="QLabel" name="label_21">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -87,13 +87,6 @@
              </property>
             </widget>
            </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_4">
-             <property name="text">
-              <string>Stammwürze</string>
-             </property>
-            </widget>
-           </item>
            <item row="17" column="0" colspan="4">
             <widget class="Line" name="line_12">
              <property name="orientation">
@@ -105,7 +98,7 @@
             <widget class="QLabel" name="label_27">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -176,7 +169,7 @@
              <item>
               <widget class="QLabel" name="label_18">
                <property name="text">
-                <string>Empfehlung</string>
+                <string>Empf.</string>
                </property>
               </widget>
              </item>
@@ -227,7 +220,7 @@
             <widget class="QLabel" name="label_25">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -240,7 +233,7 @@
             <widget class="QLabel" name="label_22">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -294,7 +287,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
             <widget class="QLabel" name="label_38">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -326,6 +319,9 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
              <property name="maximum">
               <double>9999.000000000000000</double>
              </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
             </widget>
            </item>
            <item row="15" column="2">
@@ -351,7 +347,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
             <widget class="QLabel" name="label_19">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -364,19 +360,12 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
             <widget class="QLabel" name="label_36">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="text">
               <string>min</string>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>Bittere</string>
              </property>
             </widget>
            </item>
@@ -440,6 +429,9 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              <property name="maximum">
               <double>10.000000000000000</double>
              </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
             </widget>
            </item>
            <item row="20" column="0">
@@ -453,7 +445,7 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
             <widget class="QLabel" name="label_26">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -469,13 +461,6 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              </property>
             </widget>
            </item>
-           <item row="21" column="0">
-            <widget class="QLabel" name="label_14">
-             <property name="text">
-              <string>Restalkalität</string>
-             </property>
-            </widget>
-           </item>
            <item row="5" column="1">
             <spacer name="horizontalSpacer_4">
              <property name="orientation">
@@ -488,13 +473,6 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
               </size>
              </property>
             </spacer>
-           </item>
-           <item row="15" column="0">
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>Kochdauer</string>
-             </property>
-            </widget>
            </item>
            <item row="4" column="0" colspan="4">
             <widget class="Line" name="line_10">
@@ -534,12 +512,8 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              <property name="maximum">
               <double>50.000000000000000</double>
              </property>
-            </widget>
-           </item>
-           <item row="33" column="0">
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>Reifezeit</string>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
@@ -562,6 +536,9 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              </property>
              <property name="maximum">
               <double>10000.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
@@ -594,13 +571,6 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              </property>
             </widget>
            </item>
-           <item row="16" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Nachisomerisierungszeit</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="1">
             <widget class="QLineEdit" name="tbSudname">
              <property name="toolTip">
@@ -612,19 +582,12 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
             <widget class="QLabel" name="label_20">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="text">
               <string>°P</string>
-             </property>
-            </widget>
-           </item>
-           <item row="18" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>CO2 Gehalt</string>
              </property>
             </widget>
            </item>
@@ -669,6 +632,55 @@ Diese Zeit wird für die Hopfenausbeute auf die Kochzeit aufaddiert.</string>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0" colspan="2">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Nachisomerisierungszeit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0" colspan="2">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Kochdauer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0" colspan="2">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Bittere</string>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0" colspan="2">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>CO2 Gehalt</string>
+             </property>
+            </widget>
+           </item>
+           <item row="21" column="0" colspan="2">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Restalkalität</string>
+             </property>
+            </widget>
+           </item>
+           <item row="33" column="0" colspan="2">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Reifezeit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Stammwürze</string>
              </property>
             </widget>
            </item>
@@ -743,7 +755,7 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>387</width>
+                 <width>370</width>
                  <height>232</height>
                 </rect>
                </property>
@@ -896,7 +908,7 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>276</width>
+              <width>293</width>
               <height>391</height>
              </rect>
             </property>
@@ -1027,7 +1039,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>276</width>
+              <width>293</width>
               <height>116</height>
              </rect>
             </property>
@@ -1114,7 +1126,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>276</width>
+              <width>293</width>
               <height>391</height>
              </rect>
             </property>
@@ -1197,7 +1209,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>276</width>
+             <width>293</width>
              <height>609</height>
             </rect>
            </property>
@@ -1377,7 +1389,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>276</width>
+              <width>293</width>
               <height>115</height>
              </rect>
             </property>
@@ -1984,22 +1996,15 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_47">
-              <property name="text">
-               <string>Name</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3" colspan="2">
-             <widget class="QLabel" name="lblAnlageName"/>
-            </item>
             <item row="1" column="0" colspan="5">
              <widget class="Line" name="line_16">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
+            </item>
+            <item row="0" column="0" colspan="4">
+             <widget class="QLabel" name="lblAnlageName"/>
             </item>
            </layout>
           </widget>
@@ -2039,13 +2044,6 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="indent">
                <number>8</number>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_48">
-              <property name="text">
-               <string>Profil</string>
               </property>
              </widget>
             </item>
@@ -2200,9 +2198,6 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <double>9999.000000000000000</double>
               </property>
              </widget>
-            </item>
-            <item row="0" column="3" colspan="2">
-             <widget class="QLabel" name="lblWasserprofil"/>
             </item>
             <item row="8" column="3">
              <widget class="DoubleSpinBox" name="tbWasserHGF">
@@ -2475,6 +2470,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <string>ml</string>
               </property>
              </widget>
+            </item>
+            <item row="0" column="0" colspan="4">
+             <widget class="QLabel" name="lblWasserprofil"/>
             </item>
            </layout>
           </widget>

@@ -596,7 +596,7 @@
                 <double>100.000000000000000</double>
                </property>
                <property name="singleStep">
-                <double>1.000000000000000</double>
+                <double>0.100000000000000</double>
                </property>
                <property name="value">
                 <double>100.000000000000000</double>
@@ -1257,7 +1257,7 @@
                 <double>100.000000000000000</double>
                </property>
                <property name="singleStep">
-                <double>1.000000000000000</double>
+                <double>0.100000000000000</double>
                </property>
                <property name="value">
                 <double>100.000000000000000</double>
@@ -1872,8 +1872,14 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
              <property name="toolTip">
               <string>Kosten.</string>
              </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -1930,7 +1936,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
               <double>999.000000000000000</double>
              </property>
              <property name="singleStep">
-              <double>0.100000000000000</double>
+              <double>0.010000000000000</double>
              </property>
             </widget>
            </item>

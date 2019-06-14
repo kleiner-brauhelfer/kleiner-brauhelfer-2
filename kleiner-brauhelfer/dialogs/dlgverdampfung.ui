@@ -380,8 +380,14 @@
          <height>0</height>
         </size>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
        </property>
        <property name="decimals">
         <number>1</number>

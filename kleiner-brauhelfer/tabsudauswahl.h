@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QAbstractItemModel>
+#include <QAbstractItemDelegate>
 
 namespace Ui {
 class TabSudAuswahl;
@@ -59,9 +60,20 @@ private:
     void setFilterStatus();
 
 private:
+    struct AuswahlSpalten
+    {
+        QString fieldName;
+        bool visible;
+        bool canHide;
+        int width;
+        QAbstractItemDelegate* itemDelegate;
+    };
+
+private:
     Ui::TabSudAuswahl *ui;
     QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;
+    QList<AuswahlSpalten> mSpalten;
 };
 
 #endif // TABSUDAUSWAHL_H

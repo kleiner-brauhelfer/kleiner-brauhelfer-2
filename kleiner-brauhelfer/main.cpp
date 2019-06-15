@@ -73,9 +73,8 @@ static bool chooseDatabase()
     return false;
 }
 
-static bool connectDatabase(bool &updated)
+static bool connectDatabase()
 {
-    updated = false;
     while (true)
     {
         // connect
@@ -112,7 +111,6 @@ static bool connectDatabase(bool &updated)
                     {
                         if (bh->updateDatabase())
                         {
-                            updated = true;
                             return bh->isConnectedDatabase();
                         }
                         else
@@ -157,7 +155,7 @@ static QByteArray getHash(const QString &fileName)
 static void copyResources()
 {
     QString dataDir = gSettings->dataDir();
-    bool update = gSettings->lastProgramVersion() != QCoreApplication::applicationVersion();
+    bool update = gSettings->isNewProgramVersion();
     QDirIterator it(":/data", QDirIterator::Subdirectories);
     if (!QDir(dataDir).exists())
         QDir().mkdir(dataDir);
@@ -225,12 +223,11 @@ int main(int argc, char *argv[])
 
     // run application
     int ret = -1;
-    bool updated = false;
     do
     {
-        if (connectDatabase(updated))
+        if (connectDatabase())
         {
-            MainWindow w(nullptr, updated);
+            MainWindow w(nullptr);
             a.setStyle(QStyleFactory::create(gSettings->style()));
             a.setPalette(gSettings->palette);
             if (!gSettings->useSystemFont())

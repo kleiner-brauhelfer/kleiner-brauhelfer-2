@@ -246,3 +246,8 @@ QString Settings::lastProgramVersion()
     endGroup();
     return version;
 }
+
+bool Settings::isNewProgramVersion()
+{
+    return lastProgramVersion() != QCoreApplication::applicationVersion();
+}

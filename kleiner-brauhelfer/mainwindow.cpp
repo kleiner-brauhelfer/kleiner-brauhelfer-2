@@ -14,7 +14,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-MainWindow::MainWindow(QWidget *parent, bool updated) :
+MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent, bool updated) :
 
     sudLoaded();
 
-    if (updated)
+    if (gSettings->isNewProgramVersion())
         restoreView(true);
 
     if (ui->actionCheckUpdate->isChecked())

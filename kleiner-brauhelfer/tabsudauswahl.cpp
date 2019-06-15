@@ -39,6 +39,9 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("Gespeichert"), Qt::Horizontal, tr("Gespeichert"));
     model->setHeaderData(model->fieldIndex("Woche"), Qt::Horizontal, tr("Woche"));
     model->setHeaderData(model->fieldIndex("BewertungMax"), Qt::Horizontal, tr("Bewertung"));
+    model->setHeaderData(model->fieldIndex("Menge"), Qt::Horizontal, tr("Menge [l]"));
+    model->setHeaderData(model->fieldIndex("SW"), Qt::Horizontal, tr("SW [°P]"));
+    model->setHeaderData(model->fieldIndex("IBU"), Qt::Horizontal, tr("Bittere [IBU]"));
     model->setHeaderData(model->fieldIndex("erg_AbgefuellteBiermenge"), Qt::Horizontal, tr("Menge [l]"));
     model->setHeaderData(model->fieldIndex("erg_Sudhausausbeute"), Qt::Horizontal, tr("SHA [%]"));
     model->setHeaderData(model->fieldIndex("SWIst"), Qt::Horizontal, tr("SW [°P]"));
@@ -51,7 +54,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("Verdampfungsziffer"), Qt::Horizontal, tr("Verdampfungsziffer [%]"));
     model->setHeaderData(model->fieldIndex("AusbeuteIgnorieren"), Qt::Horizontal, tr("Für Durchschnitt Ignorieren"));
 
-    int col;
     QTableView *table = ui->tableSudauswahl;
     QHeaderView *header = table->horizontalHeader();
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
@@ -60,43 +62,28 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = model->fieldIndex("Sudname");
-    table->setColumnHidden(col, false);
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
+    mSpalten.append({"Sudname", true, false, 200, nullptr});
+    mSpalten.append({"Sudnummer", true, true, 100, new SpinBoxDelegate(table)});
+    mSpalten.append({"Braudatum", true, true, 150, new DateDelegate(false, true, table)});
+    mSpalten.append({"Erstellt", true, true, 150, new DateDelegate(false, true, table)});
+    mSpalten.append({"Gespeichert", true, true, 150, new DateDelegate(false, true, table)});
+    mSpalten.append({"Woche", true, true, 100, nullptr});
+    mSpalten.append({"BewertungMax", true, true, 100, new RatingDelegate(table)});
+    mSpalten.append({"Menge", false, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    mSpalten.append({"SW", false, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    mSpalten.append({"IBU", false, true, 100, new SpinBoxDelegate(table)});
 
-    col = model->fieldIndex("Sudnummer");
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = model->fieldIndex("Braudatum");
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = model->fieldIndex("Erstellt");
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = model->fieldIndex("Gespeichert");
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = model->fieldIndex("Woche");
-    table->setColumnHidden(col, false);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = model->fieldIndex("BewertungMax");
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new RatingDelegate(table));
-    header->moveSection(header->visualIndex(col), 6);
+    int visualIndex = 0;
+    for (const AuswahlSpalten& spalte : mSpalten)
+    {
+        int col = model->fieldIndex(spalte.fieldName);
+        table->setColumnHidden(col, !spalte.visible);
+        if (spalte.itemDelegate)
+            table->setItemDelegateForColumn(col, spalte.itemDelegate);
+        header->resizeSection(col, spalte.width);
+        header->moveSection(header->visualIndex(col), visualIndex++);
+    }
+    header->setSectionResizeMode(header->logicalIndex(0), QHeaderView::Stretch);
 
     header->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
@@ -218,7 +205,6 @@ void TabSudAuswahl::spalteAnzeigen(bool checked)
 
 void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &pos)
 {
-    int col;
     QAction *action;
     QMenu menu(this);
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
@@ -260,53 +246,19 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
         menu.addSeparator();
     }
 
-    action = new QAction(tr("Sudnummer"), &menu);
-    col = model->fieldIndex("Sudnummer");
-    action->setCheckable(true);
-    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    action = new QAction(tr("Braudatum"), &menu);
-    col = model->fieldIndex("Braudatum");
-    action->setCheckable(true);
-    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    action = new QAction(tr("Erstellt"), &menu);
-    col = model->fieldIndex("Erstellt");
-    action->setCheckable(true);
-    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    action = new QAction(tr("Gespeichert"), &menu);
-    col = model->fieldIndex("Gespeichert");
-    action->setCheckable(true);
-    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    action = new QAction(tr("Woche"), &menu);
-    col = model->fieldIndex("Woche");
-    action->setCheckable(true);
-    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    action = new QAction(tr("Bewertung"), &menu);
-    col = model->fieldIndex("BewertungMax");
-    action->setCheckable(true);
-    action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
+    for (const AuswahlSpalten& spalte : mSpalten)
+    {
+        if (spalte.canHide)
+        {
+            int col = model->fieldIndex(spalte.fieldName);
+            action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
+            action->setCheckable(true);
+            action->setChecked(!ui->tableSudauswahl->isColumnHidden(col));
+            action->setData(col);
+            connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
+            menu.addAction(action);
+        }
+    }
 
     menu.exec(ui->tableSudauswahl->viewport()->mapToGlobal(pos));
 }

@@ -38,6 +38,7 @@ public:
     QString dataDir() const;
 
     QString lastProgramVersion();
+    bool isNewProgramVersion();
 
 protected:
     Settings(bool dummyPortable, QObject *parent = nullptr);

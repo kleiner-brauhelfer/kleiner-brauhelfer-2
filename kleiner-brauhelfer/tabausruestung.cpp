@@ -312,7 +312,7 @@ void TabAusruestung::updateDurchschnitt()
 {
     ProxyModelSud model;
     model.setSourceModel(bh->modelSud());
-    model.setFilterStatus(ProxyModelSud::Gebraut);
+    model.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     model.sort(model.fieldIndex("Braudatum"), Qt::DescendingOrder);
     QString anlage = data("Name").toString();
     int colName = model.fieldIndex("Anlage");

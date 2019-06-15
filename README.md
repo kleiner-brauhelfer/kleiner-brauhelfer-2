@@ -19,6 +19,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: keine automatische Sortierung der Rasten
 - Neu: Reihenfolge in der Tabelle *Brauübersicht* gedreht
 - Neu: Kochzeit bei Honig & Zucker einstellbar
+- Neu: Filter für Sudauswahl sucht auch in Tagnamen und Tagwerte
+- Neu: Filter für Sudauswahl Checkboxes statt Radiobuttons
 
 ### Version 2.0.0beta1
 - Neu: kompletter Neuaufbau des Programms

@@ -1102,7 +1102,7 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
     DlgRohstoffAustausch dlg(DlgRohstoffAustausch::Loeschen, rohstoff, this);
     ProxyModelSud modelSud;
     modelSud.setSourceModel(bh->modelSud());
-    modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+    modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
     SqlTableModel *model = nullptr;
     switch (type)
     {

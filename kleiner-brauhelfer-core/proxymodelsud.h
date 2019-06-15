@@ -3,6 +3,7 @@
 
 #include "kleiner-brauhelfer-core_global.h"
 #include "proxymodel.h"
+#include <QFlag>
 
 class LIB_EXPORT ProxyModelSud : public ProxyModel
 {
@@ -15,18 +16,16 @@ class LIB_EXPORT ProxyModelSud : public ProxyModel
   #endif
 
 public:
-    enum FilterStatus
+    enum FilterStatusPart
     {
-        Alle,
-        NichtGebraut,
-        Gebraut,
-        NichtAbgefuellt,
-        GebrautNichtAbgefuellt,
-        Abgefuellt,
-        NichtVerbraucht,
-        Verbraucht
+        Keine = 0x00,
+        Rezept = 0x01,
+        Gebraut = 0x02,
+        Abgefuellt = 0x04,
+        Verbraucht = 0x08,
+        Alle = Rezept | Gebraut | Abgefuellt | Verbraucht
     };
-    Q_ENUMS(FilterStatus)
+    Q_DECLARE_FLAGS(FilterStatus, FilterStatusPart)
 
 public:
     ProxyModelSud(QObject* parent = nullptr);
@@ -35,7 +34,7 @@ public:
     void setFilterMerkliste(bool value);
 
     FilterStatus filterStatus() const;
-    void setFilterStatus(FilterStatus state);
+    void setFilterStatus(FilterStatus status);
 
     QString filterText() const;
     void setFilterText(const QString& text);
@@ -56,5 +55,7 @@ private:
     FilterStatus mFilterStatus;
     QString mFilterText;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(ProxyModelSud::FilterStatus)
 
 #endif // PROXYMODELSUD_H

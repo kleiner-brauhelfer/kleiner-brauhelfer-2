@@ -27,7 +27,7 @@ QVariant ModelHopfen::dataExt(const QModelIndex &index) const
         QString name = data(index.row(), "Beschreibung").toString();
         ProxyModelSud modelSud;
         modelSud.setSourceModel(bh->modelSud());
-        modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+        modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
             int id = modelSud.data(i, "ID").toInt();
@@ -70,7 +70,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &index, const QVariant &value)
         {
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
             for (int i = 0; i < modelSud.rowCount(); ++i)
             {
                 int id = modelSud.data(i, "ID").toInt();
@@ -97,7 +97,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &index, const QVariant &value)
         {
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
             for (int i = 0; i < modelSud.rowCount(); ++i)
             {
                 int id = modelSud.data(i, "ID").toInt();
@@ -118,7 +118,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &index, const QVariant &value)
         {
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::NichtAbgefuellt);
+            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
             for (int i = 0; i < modelSud.rowCount(); ++i)
             {
                 int id = modelSud.data(i, "ID").toInt();

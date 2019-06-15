@@ -43,8 +43,11 @@ bool ProxyModelSud::filterMerkliste() const
 
 void ProxyModelSud::setFilterMerkliste(bool value)
 {
-    mFilterMerkliste = value;
-    invalidate();
+    if (mFilterMerkliste != value)
+    {
+        mFilterMerkliste = value;
+        invalidate();
+    }
 }
 
 ProxyModelSud::FilterStatus ProxyModelSud::filterStatus() const
@@ -52,10 +55,13 @@ ProxyModelSud::FilterStatus ProxyModelSud::filterStatus() const
     return mFilterStatus;
 }
 
-void ProxyModelSud::setFilterStatus(FilterStatus state)
+void ProxyModelSud::setFilterStatus(FilterStatus status)
 {
-    mFilterStatus = state;
-    invalidate();
+    if (mFilterStatus != status)
+    {
+        mFilterStatus = status;
+        invalidate();
+    }
 }
 
 QString ProxyModelSud::filterText() const
@@ -65,8 +71,11 @@ QString ProxyModelSud::filterText() const
 
 void ProxyModelSud::setFilterText(const QString& text)
 {
-    mFilterText = text;
-    invalidate();
+    if (mFilterText != text)
+    {
+        mFilterText = text;
+        invalidate();
+    }
 }
 
 bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
@@ -84,31 +93,19 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         index2 = sourceModel()->index(source_row, mColumnStatus, source_parent);
         if (index2.isValid())
         {
-            int status = index2.data().toInt();
-            switch (mFilterStatus)
+            switch (index2.data().toInt())
             {
-            case Alle:
+            case Sud_Status_Rezept:
+                accept = mFilterStatus & Rezept;
                 break;
-            case NichtGebraut:
-                accept = status < Sud_Status_Gebraut;
+            case Sud_Status_Gebraut:
+                accept = mFilterStatus & Gebraut;
                 break;
-            case Gebraut:
-                accept = status >= Sud_Status_Rezept;
+            case Sud_Status_Abgefuellt:
+                accept = mFilterStatus & Abgefuellt;
                 break;
-            case NichtAbgefuellt:
-                accept = status < Sud_Status_Abgefuellt;
-                break;
-            case GebrautNichtAbgefuellt:
-                accept = status == Sud_Status_Gebraut;
-                break;
-            case Abgefuellt:
-                accept = status >= Sud_Status_Abgefuellt;
-                break;
-            case NichtVerbraucht:
-                accept = status == Sud_Status_Abgefuellt;
-                break;
-            case Verbraucht:
-                accept = status >= Sud_Status_Verbraucht;
+            case Sud_Status_Verbraucht:
+                accept = mFilterStatus & Verbraucht;
                 break;
             }
         }
@@ -129,13 +126,13 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
             if (modelSud)
             {
                 index2 = sourceModel()->index(source_row, mColumnId, source_parent);
-                int id = sourceModel()->data(index2).toInt();
+                int sudId = sourceModel()->data(index2).toInt();
                 SqlTableModel* model = modelSud->bh->modelMalzschuettung();
                 int colSudId = model->fieldIndex("SudID");
                 int colName = model->fieldIndex("Name");
                 for (int i = 0; i < model->rowCount(); i++)
                 {
-                    if (model->data(model->index(i, colSudId)).toInt() == id)
+                    if (model->data(model->index(i, colSudId)).toInt() == sudId)
                     {
                         QString name = model->data(model->index(i, colName)).toString();
                         accept = name.contains(rx);
@@ -150,7 +147,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     colName = model->fieldIndex("Name");
                     for (int i = 0; i < model->rowCount(); i++)
                     {
-                        if (model->data(model->index(i, colSudId)).toInt() == id)
+                        if (model->data(model->index(i, colSudId)).toInt() == sudId)
                         {
                             QString name = model->data(model->index(i, colName)).toString();
                             accept = name.contains(rx);
@@ -166,7 +163,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     colName = model->fieldIndex("Name");
                     for (int i = 0; i < model->rowCount(); i++)
                     {
-                        if (model->data(model->index(i, colSudId)).toInt() == id)
+                        if (model->data(model->index(i, colSudId)).toInt() == sudId)
                         {
                             QString name = model->data(model->index(i, colName)).toString();
                             accept = name.contains(rx);
@@ -182,10 +179,32 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     colName = model->fieldIndex("Name");
                     for (int i = 0; i < model->rowCount(); i++)
                     {
-                        if (model->data(model->index(i, colSudId)).toInt() == id)
+                        if (model->data(model->index(i, colSudId)).toInt() == sudId)
                         {
                             QString name = model->data(model->index(i, colName)).toString();
                             accept = name.contains(rx);
+                            if (accept)
+                                break;
+                        }
+                    }
+                }
+                if (!accept)
+                {
+                    model = modelSud->bh->modelFlaschenlabelTags();
+                    colSudId = model->fieldIndex("SudID");
+                    colName = model->fieldIndex("TagName");
+                    int colValue = model->fieldIndex("Value");
+                    for (int i = 0; i < model->rowCount(); i++)
+                    {
+                        int id = model->data(model->index(i, colSudId)).toInt();
+                        if (id == sudId || id < 0)
+                        {
+                            QString text = model->data(model->index(i, colName)).toString();
+                            accept = text.contains(rx);
+                            if (accept)
+                                break;
+                            text = model->data(model->index(i, colValue)).toString();
+                            accept = text.contains(rx);
                             if (accept)
                                 break;
                         }

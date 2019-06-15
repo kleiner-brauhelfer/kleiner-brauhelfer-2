@@ -1,14 +1,29 @@
 #ifndef BIERCALC_H
 #define BIERCALC_H
 
-#include <QObject>
 #include "kleiner-brauhelfer-core_global.h"
+
+#ifdef QT_CORE_LIB
+  #include <QObject>
+#else
+  #define Q_OBJECT
+  #define Q_ENUM(x)
+  #define Q_INVOKABLE
+#endif
+
+#ifndef LIB_EXPORT
+  #define LIB_EXPORT
+#endif
 
 /**
  * @brief Berechnungen rund um die Bierherstellung
  * @note Wird von QObject abgeleitet, damit die Klasse in QML aufgerufen werden kann
  */
+#ifdef QT_CORE_LIB
 class LIB_EXPORT BierCalc : public QObject
+#else
+class LIB_EXPORT BierCalc
+#endif
 {
     Q_OBJECT
 

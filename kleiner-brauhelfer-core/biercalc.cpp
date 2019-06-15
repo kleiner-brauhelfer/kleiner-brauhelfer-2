@@ -92,8 +92,10 @@ static void interpolateTemperature(double* result, double temperature)
     };
 
     int lowest = (int)floor(temperature / 10) - 1;
-    if (0 > lowest)
+    if (lowest < 0)
         lowest = 0;
+    if (lowest > 7)
+        lowest = 7;
     int temp1 = lowest;
     int temp2 = lowest + 1;
     int temp3 = lowest + 2;
@@ -108,20 +110,15 @@ static double densityAtBaseTemp(double base, double plato)
 {
     double density_base[9];
     interpolateTemperature(density_base, base);
-
     int lowest = (int)floor(plato / 5) - 1;
-    if (0 > lowest) {
+    if (lowest < 0)
         lowest = 0;
-    }
-    //if (lowest > density_base.length - 4) {
-    //  lowest = density_base.length - 4;
-    //}
-
+    if (lowest > 5)
+        lowest = 5;
     int plato1 = lowest;
     int plato2 = lowest + 1;
     int plato3 = lowest + 2;
     int plato4 = lowest + 3;
-
     return interpolate3(plato1*5, density_base[plato1], plato2*5, density_base[plato2], plato3*5, density_base[plato3], plato4*5, density_base[plato4], plato);
 }
 
@@ -808,7 +805,7 @@ unsigned int BierCalc::ebcToColor(double ebc)
         {8,3,2},
         {8,3,2}
     };
-    if (qIsNaN(ebc))
+    if (ebc < 0 || ebc > 2000)
         return 0;
     double srm = ebc / 1.97;
     int index = (int)round(srm * 10);

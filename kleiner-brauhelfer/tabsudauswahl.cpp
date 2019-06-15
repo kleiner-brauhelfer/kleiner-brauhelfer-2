@@ -109,15 +109,12 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ProxyModelSud::FilterStatus filterStatus = static_cast<ProxyModelSud::FilterStatus>(gSettings->value("filterStatus", ProxyModelSud::FilterStatus::Alle).toInt());
-    proxyModel->setFilterStatus(filterStatus);
-    ui->rbAlle->setChecked(filterStatus == ProxyModelSud::Alle);
-    ui->rbNichtGebraut->setChecked(filterStatus == ProxyModelSud::NichtGebraut);
-    ui->rbNichtAbgefuellt->setChecked(filterStatus == ProxyModelSud::GebrautNichtAbgefuellt);
-    ui->rbNichtVerbraucht->setChecked(filterStatus == ProxyModelSud::NichtVerbraucht);
-    ui->rbAbgefuellt->setChecked(filterStatus == ProxyModelSud::Abgefuellt);
-    ui->rbVerbraucht->setChecked(filterStatus == ProxyModelSud::Verbraucht);
-    proxyModel->setFilterStatus(filterStatus);
+    ProxyModelSud::FilterStatus filterStatus = static_cast<ProxyModelSud::FilterStatus>(gSettings->value("filterStatus", ProxyModelSud::Alle).toInt());
+    ui->cbRezept->setChecked(filterStatus & ProxyModelSud::Rezept);
+    ui->cbGebraut->setChecked(filterStatus & ProxyModelSud::Gebraut);
+    ui->cbAbgefuellt->setChecked(filterStatus & ProxyModelSud::Abgefuellt);
+    ui->cbVerbraucht->setChecked(filterStatus & ProxyModelSud::Verbraucht);
+    setFilterStatus();
 
     ui->cbMerkliste->setChecked(gSettings->value("filterMerkliste", false).toBool());
 
@@ -145,7 +142,7 @@ void TabSudAuswahl::saveSettings()
 {
     gSettings->beginGroup("TabSudAuswahl");
     gSettings->setValue("tableSudAuswahlState", ui->tableSudauswahl->horizontalHeader()->saveState());
-    gSettings->setValue("filterStatus", static_cast<ProxyModelSud*>(ui->tableSudauswahl->model())->filterStatus());
+    gSettings->setValue("filterStatus", (int)static_cast<ProxyModelSud*>(ui->tableSudauswahl->model())->filterStatus());
     gSettings->setValue("filterMerkliste", ui->cbMerkliste->isChecked());
     gSettings->setValue("ZeitraumVon", ui->tbDatumVon->date());
     gSettings->setValue("ZeitraumBis", ui->tbDatumBis->date());
@@ -314,40 +311,52 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     menu.exec(ui->tableSudauswahl->viewport()->mapToGlobal(pos));
 }
 
-void TabSudAuswahl::on_rbAlle_clicked()
+void TabSudAuswahl::setFilterStatus()
 {
+    ProxyModelSud::FilterStatus filter = ProxyModelSud::Keine;
+    if (ui->cbRezept->isChecked())
+        filter |= ProxyModelSud::Rezept;
+    if (ui->cbGebraut->isChecked())
+        filter |= ProxyModelSud::Gebraut;
+    if (ui->cbAbgefuellt->isChecked())
+        filter |= ProxyModelSud::Abgefuellt;
+    if (ui->cbVerbraucht->isChecked())
+        filter |= ProxyModelSud::Verbraucht;
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterStatus(ProxyModelSud::Alle);
+    model->setFilterStatus(filter);
+    ui->cbAlle->setChecked(filter == ProxyModelSud::Alle);
 }
 
-void TabSudAuswahl::on_rbNichtGebraut_clicked()
+void TabSudAuswahl::on_cbRezept_clicked()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterStatus(ProxyModelSud::NichtGebraut);
+    setFilterStatus();
 }
 
-void TabSudAuswahl::on_rbNichtAbgefuellt_clicked()
+void TabSudAuswahl::on_cbAlle_clicked(bool checked)
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterStatus(ProxyModelSud::GebrautNichtAbgefuellt);
+    if (checked)
+    {
+        ui->cbRezept->setChecked(true);
+        ui->cbGebraut->setChecked(true);
+        ui->cbAbgefuellt->setChecked(true);
+        ui->cbVerbraucht->setChecked(true);
+        setFilterStatus();
+    }
 }
 
-void TabSudAuswahl::on_rbNichtVerbraucht_clicked()
+void TabSudAuswahl::on_cbGebraut_clicked()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterStatus(ProxyModelSud::NichtVerbraucht);
+    setFilterStatus();
 }
 
-void TabSudAuswahl::on_rbAbgefuellt_clicked()
+void TabSudAuswahl::on_cbAbgefuellt_clicked()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterStatus(ProxyModelSud::Abgefuellt);
+    setFilterStatus();
 }
 
-void TabSudAuswahl::on_rbVerbraucht_clicked()
+void TabSudAuswahl::on_cbVerbraucht_clicked()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterStatus(ProxyModelSud::Verbraucht);
+    setFilterStatus();
 }
 
 void TabSudAuswahl::on_cbMerkliste_stateChanged(int state)
@@ -461,10 +470,10 @@ void TabSudAuswahl::onNichtVerbraucht_clicked()
 void TabSudAuswahl::on_btnAnlegen_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    if (!ui->rbNichtGebraut->isChecked() && !ui->rbAlle->isChecked())
+    if (!ui->cbRezept->isChecked())
     {
-        ui->rbAlle->setChecked(true);
-        model->setFilterStatus(ProxyModelSud::Alle);
+        ui->cbRezept->setChecked(true);
+        setFilterStatus();
     }
     ui->cbMerkliste->setChecked(false);
     ui->cbDatumAlle->setChecked(true);
@@ -484,10 +493,10 @@ void TabSudAuswahl::on_btnAnlegen_clicked()
 void TabSudAuswahl::on_btnKopieren_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    if (!ui->rbNichtGebraut->isChecked() && !ui->rbAlle->isChecked())
+    if (!ui->cbRezept->isChecked())
     {
-        ui->rbAlle->setChecked(true);
-        model->setFilterStatus(ProxyModelSud::Alle);
+        ui->cbRezept->setChecked(true);
+        setFilterStatus();
     }
     ui->cbMerkliste->setChecked(false);
     ui->cbDatumAlle->setChecked(true);
@@ -499,6 +508,7 @@ void TabSudAuswahl::on_btnKopieren_clicked()
         int sudId = model->data(index.row(), "ID").toInt();
         QString name = model->data(index.row(), "Sudname").toString() + " " + tr("Kopie");
         row = bh->sudKopieren(sudId, name);
+        row = model->mapRowFromSource(row);
     }
     if (row >= 0)
     {

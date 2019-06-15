@@ -39,47 +39,44 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QRadioButton" name="rbAlle">
+          <widget class="QCheckBox" name="cbAlle">
            <property name="text">
             <string>alle</string>
            </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rbNichtGebraut">
+          <widget class="QCheckBox" name="cbRezept">
            <property name="text">
-            <string>nicht gebraut</string>
+            <string>Rezept</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rbNichtAbgefuellt">
+          <widget class="QCheckBox" name="cbGebraut">
            <property name="text">
-            <string>nicht abgefüllt</string>
+            <string>gebraut</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rbAbgefuellt">
+          <widget class="QCheckBox" name="cbAbgefuellt">
            <property name="text">
             <string>abgefüllt</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rbNichtVerbraucht">
+          <widget class="QCheckBox" name="cbVerbraucht">
            <property name="text">
-            <string>nicht verbraucht</string>
+            <string>verbraucht</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rbVerbraucht">
-           <property name="text">
-            <string>verbraucht</string>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
            </property>
           </widget>
          </item>
@@ -145,6 +142,13 @@
           <widget class="QCheckBox" name="cbDatumAlle">
            <property name="text">
             <string>alle</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
            </property>
           </widget>
          </item>
@@ -326,12 +330,11 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>rbAlle</tabstop>
-  <tabstop>rbNichtGebraut</tabstop>
-  <tabstop>rbNichtAbgefuellt</tabstop>
-  <tabstop>rbAbgefuellt</tabstop>
-  <tabstop>rbNichtVerbraucht</tabstop>
-  <tabstop>rbVerbraucht</tabstop>
+  <tabstop>cbAlle</tabstop>
+  <tabstop>cbRezept</tabstop>
+  <tabstop>cbGebraut</tabstop>
+  <tabstop>cbAbgefuellt</tabstop>
+  <tabstop>cbVerbraucht</tabstop>
   <tabstop>cbMerkliste</tabstop>
   <tabstop>tbDatumVon</tabstop>
   <tabstop>tbDatumBis</tabstop>

@@ -101,7 +101,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     QHeaderView *header = table->horizontalHeader();
     ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
     proxyModel->setSourceModel(model);
-    proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt);
+    proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     proxyModel->sort(proxyModel->fieldIndex("Braudatum"), Qt::DescendingOrder);
     table->setModel(proxyModel);
     for (int col = 0; col < proxyModel->columnCount(); ++col)

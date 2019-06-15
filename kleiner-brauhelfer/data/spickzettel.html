@@ -106,7 +106,7 @@
           <table style="width:100%">
             <tr>
               <th>Hopfengabe</th>
-              <th>Vorderw&uuml;rze</th>
+              <th>Zeitpunkt</th>
               <th>Alpha [%]</th>
               <th>Kochdauer [min]</th>
               <th>Menge [g]</th>
@@ -114,7 +114,12 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td class="value" align="center">{{#Vorderwuerze}}VWH{{/Vorderwuerze}}</td>
+              <td class="value" align="center">
+                {{#Kochen}}Kochen{{/Kochen}}
+                {{#Vorderwuerze}}VWH{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}Nachisomerisierung{{/Nachisomerisierung}}
+                {{#Ausschlagen}}beim Ausschlagen{{/Ausschlagen}}
+              </td>
               <td class="value" align="center">{{Alpha}}</td>
               <td class="value" align="center">{{Kochdauer}}</td>
               <td class="value" align="center">{{Menge}}</td>

@@ -162,12 +162,21 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
                     QVariantMap map;
+                    int dauer = model->data(row, "Zeit").toInt();
+                    int duaerIsomerisierung = -bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt();
                     map.insert("Name", model->data(row, "Name"));
                     map.insert("Prozent", locale.toString(model->data(row, "Prozent").toDouble(), 'f', 1));
                     map.insert("Menge", locale.toString(model->data(row, "erg_Menge").toDouble(), 'f', 0));
-                    map.insert("Kochdauer", locale.toString(model->data(row, "Zeit").toDouble(), 'f', 0));
+                    map.insert("Kochdauer", QString::number(dauer));
                     map.insert("Alpha", locale.toString(model->data(row, "Alpha").toDouble(), 'f', 1));
-                     map.insert("Vorderwuerze", model->data(row, "Vorderwuerze").toBool());
+                    if (model->data(row, "Vorderwuerze").toBool())
+                        map.insert("Vorderwuerze", true);
+                    else if (dauer == duaerIsomerisierung)
+                        map.insert("Ausschlagen", true);
+                    else if (dauer <= 0)
+                        map.insert("Nachisomerisierung", true);
+                    else
+                        map.insert("Kochen", true);
                     liste << map;
                 }
                 if (!liste.empty())

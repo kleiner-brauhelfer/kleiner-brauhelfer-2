@@ -81,7 +81,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->tbMengeProzent->setReadOnly(false);
         ui->tbAnteilProzent->setReadOnly(false);
         ui->tbKochdauer->setReadOnly(false);
-        ui->cbVwh->setEnabled(true);
+        ui->cbZeitpunkt->setEnabled(true);
     }
     else
     {
@@ -99,7 +99,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->tbMengeProzent->setReadOnly(true);
         ui->tbAnteilProzent->setReadOnly(true);
         ui->tbKochdauer->setReadOnly(true);
-        ui->cbVwh->setEnabled(false);
+        ui->cbZeitpunkt->setEnabled(false);
         ui->btnAnteilKorrektur->setVisible(false);
         ui->btnMengeKorrektur->setVisible(false);
     }
@@ -131,14 +131,20 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->tbAnteil->setValue(data("IBUAnteil").toDouble());
     ui->tbAlpha->setValue(data("Alpha").toDouble());
     ui->tbAusbeute->setValue(data("Ausbeute").toDouble());
-    ui->cbVwh->setChecked(data("Vorderwuerze").toBool());
     if (!ui->tbKochdauer->hasFocus())
     {
         ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
         ui->tbKochdauer->setMaximum(bh->sud()->getKochdauerNachBitterhopfung());
         ui->tbKochdauer->setValue(data("Zeit").toInt());
     }
-
+    if (data("Vorderwuerze").toBool())
+        ui->cbZeitpunkt->setCurrentIndex(0);
+    else if (ui->tbKochdauer->value() == ui->tbKochdauer->minimum())
+        ui->cbZeitpunkt->setCurrentIndex(3);
+    else if (ui->tbKochdauer->value() <= 0)
+        ui->cbZeitpunkt->setCurrentIndex(2);
+    else
+        ui->cbZeitpunkt->setCurrentIndex(1);
     int idx = bh->modelHopfen()->getValueFromSameRow("Beschreibung", hopfenname, "Typ").toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
@@ -166,7 +172,7 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
         ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
 
-        ui->tbKochdauer->setReadOnly(ui->cbVwh->isChecked());
+        ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
 
         if (prozentIbu())
         {
@@ -272,9 +278,23 @@ void WdgHopfenGabe::on_tbKochdauer_valueChanged(int dauer)
         setData("Zeit", dauer);
 }
 
-void WdgHopfenGabe::on_cbVwh_clicked(bool checked)
+void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
 {
-    setData("Vorderwuerze", checked);
+    if (ui->cbZeitpunkt->hasFocus())
+    {
+        if (index == 0)
+        {
+            setData("Vorderwuerze", true);
+        }
+        else
+        {
+            setData("Vorderwuerze", false);
+            if (index == 2)
+                setData("Zeit", 0);
+            else if (index == 3)
+                setData("Zeit", ui->tbKochdauer->minimum());
+        }
+    }
 }
 
 void WdgHopfenGabe::on_btnLoeschen_clicked()

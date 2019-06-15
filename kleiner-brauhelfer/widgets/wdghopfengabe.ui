@@ -527,13 +527,30 @@
          </widget>
         </item>
         <item row="3" column="3" colspan="3">
-         <widget class="QCheckBox" name="cbVwh">
+         <widget class="QComboBox" name="cbZeitpunkt">
           <property name="toolTip">
-           <string>Vorderwürzehopfen.</string>
+           <string>Zeitpunkt der Hopfengabe.</string>
           </property>
-          <property name="text">
-           <string>Vorderwürze</string>
-          </property>
+          <item>
+           <property name="text">
+            <string>Vorderwürze</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kochen</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Nachisomerisierung</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>beim Ausschlagen</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -572,7 +589,7 @@
   <tabstop>btnAnteilKorrektur</tabstop>
   <tabstop>tbAlpha</tabstop>
   <tabstop>tbKochdauer</tabstop>
-  <tabstop>cbVwh</tabstop>
+  <tabstop>cbZeitpunkt</tabstop>
   <tabstop>tbAusbeute</tabstop>
  </tabstops>
  <resources>

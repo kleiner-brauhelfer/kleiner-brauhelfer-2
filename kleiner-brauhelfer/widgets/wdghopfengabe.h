@@ -32,7 +32,7 @@ private slots:
     void on_btnAnteilKorrektur_clicked();
     void on_tbMenge_valueChanged(int value);
     void on_tbKochdauer_valueChanged(int dauer);
-    void on_cbVwh_clicked(bool checked);
+    void on_cbZeitpunkt_currentIndexChanged(int index);
     void on_btnLoeschen_clicked();
 
 private:

@@ -10,9 +10,6 @@ ProxyModel::ProxyModel(QObject *parent) :
 {
     setDynamicSortFilter(false);
     setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
-    connect(this, SIGNAL(reverted()), this, SLOT(invalidate()));
-    connect(this, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SIGNAL(layoutChanged()));
-    connect(this, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SIGNAL(layoutChanged()));
 }
 
 void ProxyModel::setSourceModel(QAbstractItemModel *model)
@@ -22,7 +19,6 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
     {
         disconnect(prevModel, SIGNAL(modelReset()), this, SLOT(invalidate()));
         disconnect(prevModel, SIGNAL(modified()), this, SIGNAL(modified()));
-        disconnect(prevModel, SIGNAL(reverted()), this, SIGNAL(reverted()));
     }
 
     QSortFilterProxyModel::setSourceModel(model);
@@ -34,7 +30,6 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
         mDeletedColumn = -1;
     connect(model, SIGNAL(modelReset()), this, SLOT(invalidate()));
     connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(model, SIGNAL(reverted()), this, SIGNAL(reverted()));
 }
 
 QVariant ProxyModel::data(int row, const QString &fieldName, int role) const
@@ -163,8 +158,11 @@ int ProxyModel::filterDateColumn() const
 
 void ProxyModel::setFilterDateColumn(int column)
 {
-    mDateColumn = column;
-    invalidate();
+    if (mDateColumn != column)
+    {
+        mDateColumn = column;
+        invalidate();
+    }
 }
 
 QDateTime ProxyModel::filterMinimumDate() const
@@ -174,8 +172,11 @@ QDateTime ProxyModel::filterMinimumDate() const
 
 void ProxyModel::setFilterMinimumDate(const QDateTime &dt)
 {
-    mMinDate = dt;
-    invalidate();
+    if (mMinDate != dt)
+    {
+        mMinDate = dt;
+        invalidate();
+    }
 }
 
 QDateTime ProxyModel::filterMaximumDate() const
@@ -185,8 +186,11 @@ QDateTime ProxyModel::filterMaximumDate() const
 
 void ProxyModel::setFilterMaximumDate(const QDateTime &dt)
 {
-    mMaxDate = dt;
-    invalidate();
+    if (mMaxDate != dt)
+    {
+        mMaxDate = dt;
+        invalidate();
+    }
 }
 
 bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const

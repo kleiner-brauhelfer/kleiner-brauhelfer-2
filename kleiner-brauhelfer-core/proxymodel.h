@@ -60,7 +60,6 @@ public:
 
 signals:
     void modified();
-    void reverted();
 
 protected:
     virtual bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;

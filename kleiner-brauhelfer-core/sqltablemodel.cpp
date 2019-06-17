@@ -277,6 +277,8 @@ bool SqlTableModel::submitAll()
 void SqlTableModel::revertAll()
 {
     QSqlTableModel::revertAll();
+    emit layoutAboutToBeChanged();
+    emit layoutChanged();
     emit reverted();
     emit modified();
 }

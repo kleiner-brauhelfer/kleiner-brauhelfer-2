@@ -42,6 +42,8 @@ TabEtikette::TabEtikette(QWidget *parent) :
     connect(bh->sud()->modelFlaschenlabelTags(), SIGNAL(modified()), this, SLOT(updateTemplateTags()));
     connect(bh->sud()->modelFlaschenlabel(), SIGNAL(modified()),this, SLOT(updateValues()));
     connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(updateAuswahlListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));
+    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));
 
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateAll();

@@ -1,5 +1,6 @@
 #include "dlgrohstoffaustausch.h"
 #include "ui_dlgrohstoffaustausch.h"
+#include "proxymodel.h"
 
 DlgRohstoffAustausch::DlgRohstoffAustausch(DlgType type, const QString &rohstoff, QWidget *parent) :
     QDialog(parent),
@@ -56,11 +57,13 @@ void DlgRohstoffAustausch::setNearestIndex()
 
 void DlgRohstoffAustausch::setModel(QAbstractItemModel *model, int column)
 {
+    ProxyModel proxy;
+    proxy.setSourceModel(model);
     QString rohstoff = ui->labelRohstoff->text();
     ui->comboBoxAustausch->clear();
-    for (int i = 0; i < model->rowCount(); ++i)
+    for (int i = 0; i < proxy.rowCount(); ++i)
     {
-        QString text = model->index(i, column).data().toString();
+        QString text = proxy.index(i, column).data().toString();
         if (mType == Loeschen && text == rohstoff)
             continue;
         ui->comboBoxAustausch->addItem(text);

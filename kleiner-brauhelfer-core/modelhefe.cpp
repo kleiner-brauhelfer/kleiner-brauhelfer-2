@@ -30,11 +30,13 @@ QVariant ModelHefe::dataExt(const QModelIndex &index) const
         modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
-            int id = modelSud.data(i, "ID").toInt();
-            SqlTableModel* model = bh->modelHefegaben();
-            for (int j = 0; j < model->rowCount(); ++j)
+            ProxyModel modelHefegaben;
+            modelHefegaben.setSourceModel(bh->modelHefegaben());
+            modelHefegaben.setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+            modelHefegaben.setFilterRegExp(QString("^%1$").arg(modelSud.data(i, "ID").toInt()));
+            for (int j = 0; j < modelHefegaben.rowCount(); ++j)
             {
-                if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
+                if (modelHefegaben.data(j, "Name").toString() == name)
                 {
                     found = true;
                     break;

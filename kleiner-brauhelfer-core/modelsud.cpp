@@ -481,6 +481,9 @@ void ModelSud::update(int row)
         sw = data(row, "SWAnstellen").toDouble() * hgf - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
         menge = data(row, "WuerzemengeAnstellenTotal").toDouble() / hgf;
         setData(row, "erg_EffektiveAusbeute", BierCalc::sudhausausbeute(sw , menge, schuet));
+
+        // erg_Preis
+        updatePreis(row);
     }
     if (status == Sud_Status_Gebraut)
     {
@@ -509,37 +512,36 @@ void ModelSud::update(int row)
 
 void ModelSud::updateSwWeitereZutaten(int row)
 {
-    int id = data(row, "ID").toInt();
-    SqlTableModel* model = bh->modelWeitereZutatenGaben();
-    int colSudId = model->fieldIndex("SudID");
+    QRegExp sudReg = QRegExp(QString("^%1$").arg(data(row, "ID").toInt()));
 
     swWzMaischenRecipe[row] = 0.0;
     swWzKochenRecipe[row] = 0.0;
     swWzGaerungRecipe[row] = 0.0;
     swWzGaerungCurrent[row] = 0.0;
 
-    for (int i = 0; i < model->rowCount(); ++i)
+    ProxyModel modelWeitereZutatenGaben;
+    modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+    modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    modelWeitereZutatenGaben.setFilterRegExp(sudReg);
+    for (int i = 0; i < modelWeitereZutatenGaben.rowCount(); ++i)
     {
-        if (model->data(model->index(i, colSudId)).toInt() == id)
+        double ausbeute = modelWeitereZutatenGaben.data(i, "Ausbeute").toDouble();
+        if (ausbeute > 0.0)
         {
-            double ausbeute = model->data(i, "Ausbeute").toDouble();
-            if (ausbeute > 0.0)
+            double sw = modelWeitereZutatenGaben.data(i, "Menge").toDouble() * ausbeute / 1000;
+            switch (modelWeitereZutatenGaben.data(i, "Zeitpunkt").toInt())
             {
-                double sw = model->data(i, "Menge").toDouble() * ausbeute / 1000;
-                switch (model->data(i, "Zeitpunkt").toInt())
-                {
-                case EWZ_Zeitpunkt_Gaerung:
-                    swWzGaerungRecipe[row] += sw ;
-                    if (model->data(i, "Zugabestatus").toInt() != EWZ_Zugabestatus_nichtZugegeben)
-                        swWzGaerungCurrent[row] += sw;
-                    break;
-                case EWZ_Zeitpunkt_Kochen:
-                    swWzKochenRecipe[row] += sw;
-                    break;
-                case EWZ_Zeitpunkt_Maischen:
-                    swWzMaischenRecipe[row] += sw;
-                    break;
-                }
+            case EWZ_Zeitpunkt_Gaerung:
+                swWzGaerungRecipe[row] += sw ;
+                if (modelWeitereZutatenGaben.data(i, "Zugabestatus").toInt() != EWZ_Zugabestatus_nichtZugegeben)
+                    swWzGaerungCurrent[row] += sw;
+                break;
+            case EWZ_Zeitpunkt_Kochen:
+                swWzKochenRecipe[row] += sw;
+                break;
+            case EWZ_Zeitpunkt_Maischen:
+                swWzMaischenRecipe[row] += sw;
+                break;
             }
         }
     }
@@ -547,41 +549,39 @@ void ModelSud::updateSwWeitereZutaten(int row)
 
 void ModelSud::updateFarbe(int row)
 {
-    int id = data(row, "ID").toInt();
+    QRegExp sudReg = QRegExp(QString("^%1$").arg(data(row, "ID").toInt()));
     double ebc = 0.0;
     double d = 0.0;
     double gs = 0.0;
-    SqlTableModel* model = bh->modelMalzschuettung();
-    int colSudId = model->fieldIndex("SudID");
-    int colFarbe = model->fieldIndex("Farbe");
-    int colMenge = model->fieldIndex("erg_Menge");
-    for (int i = 0; i < model->rowCount(); ++i)
+
+    ProxyModel modelMalzschuettung;
+    modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
+    modelMalzschuettung.setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+    modelMalzschuettung.setFilterRegExp(sudReg);
+    int colFarbe = bh->modelMalzschuettung()->fieldIndex("Farbe");
+    int colMenge = bh->modelMalzschuettung()->fieldIndex("erg_Menge");
+    for (int i = 0; i < modelMalzschuettung.rowCount(); ++i)
     {
-        if (model->index(i, colSudId).data().toInt() == id)
+        double farbe = modelMalzschuettung.index(i, colFarbe).data().toDouble();
+        double menge = modelMalzschuettung.index(i, colMenge).data().toDouble();
+        d += menge * farbe;
+        gs += menge;
+    }
+
+    ProxyModel modelWeitereZutatenGaben;
+    modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+    modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    modelWeitereZutatenGaben.setFilterRegExp(sudReg);
+    colFarbe = bh->modelWeitereZutatenGaben()->fieldIndex("Farbe");
+    colMenge = bh->modelWeitereZutatenGaben()->fieldIndex("erg_Menge");
+    for (int i = 0; i < modelWeitereZutatenGaben.rowCount(); ++i)
+    {
+        double farbe = modelWeitereZutatenGaben.index(i, colFarbe).data().toDouble();
+        if (farbe > 0.0)
         {
-            double farbe = model->index(i, colFarbe).data().toDouble();
-            double menge = model->index(i, colMenge).data().toDouble();
+            double menge = modelWeitereZutatenGaben.index(i, colMenge).data().toDouble() / 1000;
             d += menge * farbe;
             gs += menge;
-        }
-    }
-    model = bh->modelWeitereZutatenGaben();
-    colSudId = model->fieldIndex("SudID");
-    int colTyp = model->fieldIndex("Typ");
-    colFarbe = model->fieldIndex("Farbe");
-    colMenge = model->fieldIndex("erg_Menge");
-    for (int i = 0; i < model->rowCount(); ++i)
-    {
-        if (model->index(i, colSudId).data().toInt() == id &&
-            model->index(i, colTyp).data().toInt() != EWZ_Typ_Hopfen)
-        {
-            double farbe = model->index(i, colFarbe).data().toDouble();
-            if (farbe > 0.0)
-            {
-                double menge = model->index(i, colMenge).data().toDouble() / 1000;
-                d += menge * farbe;
-                gs += menge;
-            }
         }
     }
     if (gs > 0.0)
@@ -595,74 +595,68 @@ void ModelSud::updateFarbe(int row)
 
 void ModelSud::updatePreis(int row)
 {
-    int id = data(row, "ID").toInt();
-    int colSudId;
-    SqlTableModel *model;
+    QRegExp sudReg = QRegExp(QString("^%1$").arg(data(row, "ID").toInt()));
     double summe = 0.0;
 
     double kostenSchuettung = 0.0;
-    model = bh->modelMalzschuettung();
-    colSudId = model->fieldIndex("SudID");
-    for (int o = 0; o < model->rowCount(); ++o)
+    ProxyModel modelMalzschuettung;
+    modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
+    modelMalzschuettung.setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+    modelMalzschuettung.setFilterRegExp(sudReg);
+    for (int o = 0; o < modelMalzschuettung.rowCount(); ++o)
     {
-        if (model->data(model->index(o, colSudId)).toInt() == id)
-        {
-            QVariant name = model->data(o, "Name");
-            double menge = model->data(o, "erg_Menge").toDouble();
-            double preis = bh->modelMalz()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
-            kostenSchuettung += preis * menge;
-        }
+        QVariant name = modelMalzschuettung.data(o, "Name");
+        double menge = modelMalzschuettung.data(o, "erg_Menge").toDouble();
+        double preis = bh->modelMalz()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+        kostenSchuettung += preis * menge;
     }
     summe += kostenSchuettung;
 
     double kostenHopfen = 0.0;
-    model = bh->modelHopfengaben();
-    colSudId = model->fieldIndex("SudID");
-    for (int o = 0; o < model->rowCount(); ++o)
+    ProxyModel modelHopfengaben;
+    modelHopfengaben.setSourceModel(bh->modelHopfengaben());
+    modelHopfengaben.setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
+    modelHopfengaben.setFilterRegExp(sudReg);
+    for (int o = 0; o < modelHopfengaben.rowCount(); ++o)
     {
-        if (model->data(model->index(o, colSudId)).toInt() == id)
-        {
-            QVariant name = model->data(o, "Name");
-            double menge = model->data(o, "erg_Menge").toDouble();
-            double preis = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
-            kostenHopfen += preis * menge / 1000;
-        }
+        QVariant name = modelHopfengaben.data(o, "Name");
+        double menge = modelHopfengaben.data(o, "erg_Menge").toDouble();
+        double preis = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+        kostenHopfen += preis * menge / 1000;
     }
     summe += kostenHopfen;
 
     double kostenHefe = 0.0;
-    model = bh->modelHefegaben();
-    colSudId = model->fieldIndex("SudID");
-    for (int o = 0; o < model->rowCount(); ++o)
+    ProxyModel modelHefegaben;
+    modelHefegaben.setSourceModel(bh->modelHefegaben());
+    modelHefegaben.setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+    modelHefegaben.setFilterRegExp(sudReg);
+    for (int o = 0; o < modelHefegaben.rowCount(); ++o)
     {
-        if (model->data(model->index(o, colSudId)).toInt() == id)
-        {
-            QVariant name = model->data(o, "Name");
-            int menge = model->data(o, "Menge").toInt();
-            double preis = bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
-            kostenHefe += preis * menge;
-        }
+        QVariant name = modelHefegaben.data(o, "Name");
+        int menge = modelHefegaben.data(o, "Menge").toInt();
+        double preis = bh->modelHefe()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+        kostenHefe += preis * menge;
     }
     summe += kostenHefe;
 
     //Kosten der Weiteren Zutaten
     double kostenWeitereZutaten = 0.0;
-    model = bh->modelWeitereZutatenGaben();
-    colSudId = model->fieldIndex("SudID");
-    for (int o = 0; o < model->rowCount(); ++o)
+    ProxyModel modelWeitereZutatenGaben;
+    modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+    modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    modelWeitereZutatenGaben.setFilterRegExp(sudReg);
+    for (int o = 0; o < modelWeitereZutatenGaben.rowCount(); ++o)
     {
-        if (model->data(model->index(o, colSudId)).toInt() == id)
-        {
-            QVariant name = model->data(o, "Name");
-            double menge = model->data(o, "erg_Menge").toDouble();
-            int typ = model->data(o, "Typ").toInt();
-            double preis;
-            if (typ == EWZ_Typ_Hopfen)
-                preis = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
-            else
-                preis = bh->modelWeitereZutaten()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
-            kostenWeitereZutaten += preis * menge / 1000;
-        }
+        QVariant name = modelWeitereZutatenGaben.data(o, "Name");
+        double menge = modelWeitereZutatenGaben.data(o, "erg_Menge").toDouble();
+        int typ = modelWeitereZutatenGaben.data(o, "Typ").toInt();
+        double preis;
+        if (typ == EWZ_Typ_Hopfen)
+            preis = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+        else
+            preis = bh->modelWeitereZutaten()->getValueFromSameRow("Beschreibung", name, "Preis").toDouble();
+        kostenWeitereZutaten += preis * menge / 1000;
     }
     summe += kostenWeitereZutaten;
 
@@ -786,26 +780,24 @@ QVariant ModelSud::ReifezeitDelta(const QModelIndex &index) const
 
 QVariant ModelSud::AbfuellenBereitZutaten(const QModelIndex &index) const
 {
-    int sudId = data(index.row(), "ID").toInt();
-    SqlTableModel* model = bh->modelHefegaben();
-    int colSudId = model->fieldIndex("SudID");
-    for (int i = 0; i < model->rowCount(); ++i)
+    ProxyModel modelHefegaben;
+    modelHefegaben.setSourceModel(bh->modelHefegaben());
+    modelHefegaben.setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+    modelHefegaben.setFilterRegExp(QString("^%1$").arg(data(index.row(), "ID").toInt()));
+    for (int i = 0; i < modelHefegaben.rowCount(); ++i)
     {
-        if (model->data(model->index(i, colSudId)).toInt() == sudId)
-        {
-            if (!model->data(i, "Abfuellbereit").toBool())
-                return false;
-        }
+        if (!modelHefegaben.data(i, "Abfuellbereit").toBool())
+            return false;
     }
-    model = bh->modelWeitereZutatenGaben();
-    colSudId = model->fieldIndex("SudID");
-    for (int i = 0; i < model->rowCount(); ++i)
+
+    ProxyModel modelWeitereZutatenGaben;
+    modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+    modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    modelWeitereZutatenGaben.setFilterRegExp(QString("^%1$").arg(data(index.row(), "ID").toInt()));
+    for (int i = 0; i < modelWeitereZutatenGaben.rowCount(); ++i)
     {
-        if (model->data(model->index(i, colSudId)).toInt() == sudId)
-        {
-            if (!model->data(i, "Abfuellbereit").toBool())
-                return false;
-        }
+        if (!modelWeitereZutatenGaben.data(i, "Abfuellbereit").toBool())
+            return false;
     }
     return true;
 }

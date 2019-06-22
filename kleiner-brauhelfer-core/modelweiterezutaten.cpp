@@ -38,11 +38,13 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &index) const
         modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
-            int id = modelSud.data(i, "ID").toInt();
-            SqlTableModel* model = bh->modelWeitereZutatenGaben();
-            for (int j = 0; j < model->rowCount(); ++j)
+            ProxyModel modelWeitereZutatenGaben;
+            modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+            modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+            modelWeitereZutatenGaben.setFilterRegExp(QString("^%1$").arg(modelSud.data(i, "ID").toInt()));
+            for (int j = 0; j < modelWeitereZutatenGaben.rowCount(); ++j)
             {
-                if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
+                if (modelWeitereZutatenGaben.data(j, "Name").toString() == name)
                 {
                     found = true;
                     break;

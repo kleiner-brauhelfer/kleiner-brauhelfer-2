@@ -303,10 +303,13 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             QVariantList liste;
             QVariant anlageName = bh->modelSud()->data(sudRow, "Anlage");
             QVariant anlageId = bh->modelAusruestung()->getValueFromSameRow("Name", anlageName, "ID");
-            for (int row = 0; row < bh->modelGeraete()->rowCount(); ++row)
+            ProxyModel modelGeraete;
+            modelGeraete.setSourceModel(bh->modelGeraete());
+            modelGeraete.setFilterKeyColumn(bh->modelGeraete()->fieldIndex("AusruestungAnlagenID"));
+            modelGeraete.setFilterRegExp(QString("^%1$").arg(anlageId.toInt()));
+            for (int row = 0; row < modelGeraete.rowCount(); ++row)
             {
-                if (bh->modelGeraete()->data(row, "AusruestungAnlagenID") == anlageId)
-                    liste << QVariantMap({{"Name", bh->modelGeraete()->data(row, "Bezeichnung")}});
+                liste << QVariantMap({{"Name", modelGeraete.data(row, "Bezeichnung")}});
             }
             if (!liste.empty())
                 ctx["Geraete"] = QVariantMap({{"Liste", liste}});
@@ -316,18 +319,19 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         {
             QDir databasePath = QDir(gSettings->databaseDir());
             QVariantList liste;
-            for (int row = 0; row < bh->modelAnhang()->rowCount(); ++row)
+            ProxyModel modelAnhang;
+            modelAnhang.setSourceModel(bh->modelAnhang());
+            modelAnhang.setFilterKeyColumn(bh->modelAnhang()->fieldIndex("SudID"));
+            modelAnhang.setFilterRegExp(QString("^%1$").arg(sudId));
+            for (int row = 0; row < modelAnhang.rowCount(); ++row)
             {
-                if (bh->modelAnhang()->data(row, "SudID").toInt() == sudId)
-                {
-                    QVariantMap map;
-                    QString pfad = bh->modelAnhang()->data(row, "Pfad").toString();
-                    if (QDir::isRelativePath(pfad))
-                        pfad = QDir::cleanPath(databasePath.filePath(pfad));
-                    map.insert("Pfad", pfad);
-                    map.insert("Bild", WdgAnhang::isImage(pfad));
-                    liste << map;
-                }
+                QVariantMap map;
+                QString pfad = modelAnhang.data(row, "Pfad").toString();
+                if (QDir::isRelativePath(pfad))
+                    pfad = QDir::cleanPath(databasePath.filePath(pfad));
+                map.insert("Pfad", pfad);
+                map.insert("Bild", WdgAnhang::isImage(pfad));
+                liste << map;
             }
             if (!liste.empty())
                 ctx["Anhang"] = QVariantMap({{"Liste", liste}});
@@ -337,16 +341,16 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
     if (parts & TagTags)
     {
         QVariantMap ctxTags;
-        for (int row = 0; row < bh->modelFlaschenlabelTags()->rowCount(); ++row)
+        ProxyModel modelFlaschenlabelTags;
+        modelFlaschenlabelTags.setSourceModel(bh->modelFlaschenlabelTags());
+        modelFlaschenlabelTags.setFilterKeyColumn(bh->modelFlaschenlabelTags()->fieldIndex("SudID"));
+        modelFlaschenlabelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sudId));
+        for (int row = 0; row < modelFlaschenlabelTags.rowCount(); ++row)
         {
-            int id = bh->modelFlaschenlabelTags()->data(row, "SudID").toInt();
-            if (id == sudId || id < 0)
-            {
-                QString t = bh->modelFlaschenlabelTags()->data(row, "TagName").toString();
-                QString v = bh->modelFlaschenlabelTags()->data(row, "Value").toString();
-                if (!t.isEmpty())
-                    ctxTags[t] = v;
-            }
+            QString t = modelFlaschenlabelTags.data(row, "TagName").toString();
+            QString v = modelFlaschenlabelTags.data(row, "Value").toString();
+            if (!t.isEmpty())
+                ctxTags[t] = v;
         }
         ctx["Tags"] = ctxTags;
     }

@@ -30,11 +30,13 @@ QVariant ModelMalz::dataExt(const QModelIndex &index) const
         modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
-            int id = modelSud.data(i, "ID").toInt();
-            SqlTableModel* model = bh->modelMalzschuettung();
-            for (int j = 0; j < model->rowCount(); ++j)
+            ProxyModel modelMalzschuettung;
+            modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
+            modelMalzschuettung.setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+            modelMalzschuettung.setFilterRegExp(QString("^%1$").arg(modelSud.data(i, "ID").toInt()));
+            for (int j = 0; j < modelMalzschuettung.rowCount(); ++j)
             {
-                if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
+                if (modelMalzschuettung.data(j, "Name").toString() == name)
                 {
                     found = true;
                     break;

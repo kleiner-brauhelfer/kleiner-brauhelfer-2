@@ -49,14 +49,16 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     }
 
     QList<Rohstoff> ListMalz;
-    for (int row = 0; row < bh->modelMalzschuettung()->rowCount(); ++row)
+    ProxyModel modelMalzschuettung;
+    modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
+    for (int row = 0; row < modelMalzschuettung.rowCount(); ++row)
     {
-        int sudId = bh->modelMalzschuettung()->data(row, "SudID").toInt();
+        int sudId = modelMalzschuettung.data(row, "SudID").toInt();
         if (ListSudID.contains(sudId))
         {
             Rohstoff eintrag;
-            eintrag.Name = bh->modelMalzschuettung()->data(row, "Name").toString();
-            eintrag.Menge = bh->modelMalzschuettung()->data(row, "erg_Menge").toDouble();
+            eintrag.Name = modelMalzschuettung.data(row, "Name").toString();
+            eintrag.Menge = modelMalzschuettung.data(row, "erg_Menge").toDouble();
             bool found = false;
             for (Rohstoff& eintragListe : ListMalz)
             {
@@ -73,14 +75,16 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     }
 
     QList<Rohstoff> ListHopfen;
-    for (int row = 0; row < bh->modelHopfengaben()->rowCount(); ++row)
+    ProxyModel modelHopfengaben;
+    modelHopfengaben.setSourceModel(bh->modelHopfengaben());
+    for (int row = 0; row < modelHopfengaben.rowCount(); ++row)
     {
-        int sudId = bh->modelHopfengaben()->data(row, "SudID").toInt();
+        int sudId = modelHopfengaben.data(row, "SudID").toInt();
         if (ListSudID.contains(sudId))
         {
             Rohstoff eintrag;
-            eintrag.Name = bh->modelHopfengaben()->data(row, "Name").toString();
-            eintrag.Menge = bh->modelHopfengaben()->data(row, "erg_Menge").toDouble();
+            eintrag.Name = modelHopfengaben.data(row, "Name").toString();
+            eintrag.Menge = modelHopfengaben.data(row, "erg_Menge").toDouble();
             bool found = false;
             for (Rohstoff& eintragListe : ListHopfen)
             {
@@ -97,14 +101,16 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     }
 
     QList<Rohstoff> ListHefe;
-    for (int row = 0; row < bh->modelHefegaben()->rowCount(); ++row)
+    ProxyModel modelHefegaben;
+    modelHefegaben.setSourceModel(bh->modelHefegaben());
+    for (int row = 0; row < modelHefegaben.rowCount(); ++row)
     {
-        int sudId = bh->modelHefegaben()->data(row, "SudID").toInt();
+        int sudId = modelHefegaben.data(row, "SudID").toInt();
         if (ListSudID.contains(sudId))
         {
             Rohstoff eintrag;
-            eintrag.Name = bh->modelHefegaben()->data(row, "Name").toString();
-            eintrag.Menge = bh->modelHefegaben()->data(row, "Menge").toDouble();
+            eintrag.Name = modelHefegaben.data(row, "Name").toString();
+            eintrag.Menge = modelHefegaben.data(row, "Menge").toDouble();
             bool found = false;
             for (Rohstoff& eintragListe : ListHefe)
             {
@@ -125,18 +131,20 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     QList<Rohstoff> ListWeitereZutatenGewuerz;
     QList<Rohstoff> ListWeitereZutatenFrucht;
     QList<Rohstoff> ListWeitereZutatenSonstiges;
-    for (int row = 0; row < bh->modelWeitereZutatenGaben()->rowCount(); ++row)
+    ProxyModel modelWeitereZutatenGaben;
+    modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+    for (int row = 0; row < modelWeitereZutatenGaben.rowCount(); ++row)
     {
-        int sudId = bh->modelWeitereZutatenGaben()->data(row, "SudID").toInt();
+        int sudId = modelWeitereZutatenGaben.data(row, "SudID").toInt();
         if (ListSudID.contains(sudId))
         {
             Rohstoff eintrag;
-            eintrag.Name = bh->modelWeitereZutatenGaben()->data(row, "Name").toString();
-            eintrag.Menge = bh->modelWeitereZutatenGaben()->data(row, "erg_Menge").toDouble();
-            eintrag.Einheit = bh->modelWeitereZutatenGaben()->data(row, "Einheit").toInt();
+            eintrag.Name = modelWeitereZutatenGaben.data(row, "Name").toString();
+            eintrag.Menge = modelWeitereZutatenGaben.data(row, "erg_Menge").toDouble();
+            eintrag.Einheit = modelWeitereZutatenGaben.data(row, "Einheit").toInt();
             bool found = false;
             QList<Rohstoff> *liste = nullptr;
-            switch (bh->modelWeitereZutatenGaben()->data(row, "Typ").toInt())
+            switch (modelWeitereZutatenGaben.data(row, "Typ").toInt())
             {
             case EWZ_Typ_Honig:
                 liste = &ListWeitereZutatenHonig;
@@ -176,24 +184,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListMalz.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelMalz;
+        modelMalz.setSourceModel(bh->modelMalz());
+        modelMalz.setFilterKeyColumn(bh->modelMalz()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListMalz)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelMalz()->rowCount(); o++)
+            modelMalz.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelMalz.rowCount() > 0)
             {
-                if (bh->modelMalz()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelMalz()->data(o, "Menge").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelMalz.data(0, "Menge").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
             map.insert("Vorhanden", locale.toString(ist, 'f', 2));
@@ -207,24 +214,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListHopfen.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelHopfen;
+        modelHopfen.setSourceModel(bh->modelHopfen());
+        modelHopfen.setFilterKeyColumn(bh->modelHopfen()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListHopfen)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelHopfen()->rowCount(); o++)
+            modelHopfen.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelHopfen.rowCount() > 0)
             {
-                if (bh->modelHopfen()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelHopfen()->data(o, "Menge").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelHopfen.data(0, "Menge").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
             map.insert("Vorhanden", locale.toString(ist, 'f', 0));
@@ -238,24 +244,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListHefe.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelHefe;
+        modelHefe.setSourceModel(bh->modelHefe());
+        modelHefe.setFilterKeyColumn(bh->modelHefe()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListHefe)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelHefe()->rowCount(); o++)
+            modelHefe.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelHefe.rowCount() > 0)
             {
-                if (bh->modelHefe()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelHefe()->data(o, "Menge").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelHefe.data(0, "Menge").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
             map.insert("Vorhanden", locale.toString(ist, 'f', 0));
@@ -269,24 +274,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListWeitereZutatenHonig.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelWeitereZutaten;
+        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
+        modelWeitereZutaten.setFilterKeyColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListWeitereZutatenHonig)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelWeitereZutaten.rowCount() > 0)
             {
-                if (bh->modelWeitereZutaten()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelWeitereZutaten()->data(o, "MengeGramm").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
@@ -310,24 +314,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListWeitereZutatenZucker.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelWeitereZutaten;
+        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
+        modelWeitereZutaten.setFilterKeyColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListWeitereZutatenZucker)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelWeitereZutaten.rowCount() > 0)
             {
-                if (bh->modelWeitereZutaten()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelWeitereZutaten()->data(o, "MengeGramm").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
@@ -351,24 +354,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListWeitereZutatenGewuerz.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelWeitereZutaten;
+        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
+        modelWeitereZutaten.setFilterKeyColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListWeitereZutatenGewuerz)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelWeitereZutaten.rowCount() > 0)
             {
-                if (bh->modelWeitereZutaten()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelWeitereZutaten()->data(o, "MengeGramm").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
@@ -392,24 +394,23 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListWeitereZutatenFrucht.count() > 0)
     {
         QVariantList liste;
+        ProxyModel modelWeitereZutaten;
+        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
+        modelWeitereZutaten.setFilterKeyColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListWeitereZutatenFrucht)
         {
             QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelWeitereZutaten.rowCount() > 0)
             {
-                if (bh->modelWeitereZutaten()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelWeitereZutaten()->data(o, "MengeGramm").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {
@@ -432,25 +433,24 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
 
     if (ListWeitereZutatenSonstiges.count() > 0)
     {
-        QVariantMap map;
         QVariantList liste;
+        ProxyModel modelWeitereZutaten;
+        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
+        modelWeitereZutaten.setFilterKeyColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         for (const Rohstoff& eintrag : ListWeitereZutatenSonstiges)
         {
+            QVariantMap map;
             double ist = 0;
-            bool gefunden = false;
-            for (int o=0; o < bh->modelWeitereZutaten()->rowCount(); o++)
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            if (modelWeitereZutaten.rowCount() > 0)
             {
-                if (bh->modelWeitereZutaten()->data(o, "Beschreibung").toString() == eintrag.Name)
-                {
-                    ist = bh->modelWeitereZutaten()->data(o, "MengeGramm").toDouble();
-                    gefunden = true;
-                    break;
-                }
-            }
-            if (gefunden)
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+            }
             else
+            {
                 map.insert("Class", "nichtgefunden");
+            }
             map.insert("Name", eintrag.Name);
             if (eintrag.Einheit == EWZ_Einheit_Kg)
             {

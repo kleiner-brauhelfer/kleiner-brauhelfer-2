@@ -159,7 +159,9 @@ void TabSudAuswahl::databaseModified()
 void TabSudAuswahl::filterChanged()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    ui->lblNumSude->setText(QString::number(model->rowCount()) + " / " + QString::number(bh->modelSud()->rowCount()));
+    ProxyModel proxy;
+    proxy.setSourceModel(bh->modelSud());
+    ui->lblNumSude->setText(QString::number(model->rowCount()) + " / " + QString::number(proxy.rowCount()));
 }
 
 void TabSudAuswahl::selectionChanged()

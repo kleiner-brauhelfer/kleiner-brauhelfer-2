@@ -50,15 +50,11 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &index) const
     }
     if (field == "AnzahlSude")
     {
-        int n = 0;
-        QString name = data(index.row(), "Name").toString();
-        int colName = bh->modelSud()->fieldIndex("Anlage");
-        for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
-        {
-            if (bh->modelSud()->index(row, colName).data().toString() == name)
-                ++n;
-        }
-        return n;
+        ProxyModel modelSud;
+        modelSud.setSourceModel(bh->modelSud());
+        modelSud.setFilterKeyColumn(bh->modelSud()->fieldIndex("Anlage"));
+        modelSud.setFilterRegExp(QString("^%1$").arg(data(index.row(), "Name").toString()));
+        return modelSud.rowCount();
     }
     return QVariant();
 }

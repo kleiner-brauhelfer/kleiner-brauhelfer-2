@@ -7,6 +7,7 @@ class Brauhelfer;
 
 class ModelWasser : public SqlTableModel
 {
+    Q_OBJECT
 public:
     ModelWasser(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;

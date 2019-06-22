@@ -7,6 +7,7 @@ class Brauhelfer;
 
 class ModelMalz : public SqlTableModel
 {
+    Q_OBJECT
 public:
     ModelMalz(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;

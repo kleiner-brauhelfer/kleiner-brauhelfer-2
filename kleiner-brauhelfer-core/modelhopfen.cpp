@@ -30,11 +30,13 @@ QVariant ModelHopfen::dataExt(const QModelIndex &index) const
         modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
         for (int i = 0; i < modelSud.rowCount(); ++i)
         {
-            int id = modelSud.data(i, "ID").toInt();
-            SqlTableModel* model = bh->modelHopfengaben();
-            for (int j = 0; j < model->rowCount(); ++j)
+            ProxyModel modelHopfengaben;
+            modelHopfengaben.setSourceModel(bh->modelHopfengaben());
+            modelHopfengaben.setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
+            modelHopfengaben.setFilterRegExp(QString("^%1$").arg(modelSud.data(i, "ID").toInt()));
+            for (int j = 0; j < modelHopfengaben.rowCount(); ++j)
             {
-                if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
+                if (modelHopfengaben.data(j, "Name").toString() == name)
                 {
                     found = true;
                     break;
@@ -42,10 +44,14 @@ QVariant ModelHopfen::dataExt(const QModelIndex &index) const
             }
             if (found)
                 break;
-            SqlTableModel* model2 = bh->modelWeitereZutatenGaben();
-            for (int j = 0; j < model2->rowCount(); ++j)
+
+            ProxyModel modelWeitereZutatenGaben;
+            modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
+            modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+            modelWeitereZutatenGaben.setFilterRegExp(QString("^%1$").arg(modelSud.data(i, "ID").toInt()));
+            for (int j = 0; j < modelWeitereZutatenGaben.rowCount(); ++j)
             {
-                if (model2->data(j, "SudID").toInt() == id && model2->data(j, "Name").toString() == name)
+                if (modelWeitereZutatenGaben.data(j, "Name").toString() == name)
                 {
                     found = true;
                     break;

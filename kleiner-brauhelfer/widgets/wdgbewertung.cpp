@@ -82,7 +82,12 @@ void WdgBewertung::updateValues()
     }
 }
 
-void WdgBewertung::on_btnLoeschen_clicked()
+void WdgBewertung::remove()
 {
     bh->sud()->modelBewertungen()->removeRow(mIndex);
+}
+
+void WdgBewertung::on_btnLoeschen_clicked()
+{
+    remove();
 }

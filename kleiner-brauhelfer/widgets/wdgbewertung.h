@@ -18,6 +18,7 @@ public:
     bool eventFilter(QObject *obj, QEvent *e) Q_DECL_OVERRIDE;
     void setActive(bool active);
     bool isActive() const;
+    void remove();
 
 public slots:
     void updateValues();

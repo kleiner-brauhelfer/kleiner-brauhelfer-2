@@ -190,6 +190,11 @@ void WdgMalzGabe::setFehlProzent(double value)
     }
 }
 
+void WdgMalzGabe::remove()
+{
+    bh->sud()->modelMalzschuettung()->removeRow(mIndex);
+}
+
 void WdgMalzGabe::on_btnKorrektur_clicked()
 {
     double toadd = ui->btnKorrektur->property("toadd").toDouble();
@@ -198,5 +203,5 @@ void WdgMalzGabe::on_btnKorrektur_clicked()
 
 void WdgMalzGabe::on_btnLoeschen_clicked()
 {
-    bh->sud()->modelMalzschuettung()->removeRow(mIndex);
+    remove();
 }

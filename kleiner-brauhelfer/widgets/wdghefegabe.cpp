@@ -149,6 +149,11 @@ void WdgHefeGabe::updateValues(bool full)
     }
 }
 
+void WdgHefeGabe::remove()
+{
+    bh->sud()->modelHefegaben()->removeRow(mIndex);
+}
+
 void WdgHefeGabe::on_cbZutat_currentIndexChanged(const QString &text)
 {
     if (ui->cbZutat->hasFocus())
@@ -188,5 +193,5 @@ void WdgHefeGabe::on_btnZugeben_clicked()
 
 void WdgHefeGabe::on_btnLoeschen_clicked()
 {
-    bh->sud()->modelHefegaben()->removeRow(mIndex);
+    remove();
 }

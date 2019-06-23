@@ -80,6 +80,11 @@ QString WdgAnhang::getFullPfad() const
         return pfad;
 }
 
+void WdgAnhang::remove()
+{
+    bh->sud()->modelAnhang()->removeRow(mIndex);
+}
+
 void WdgAnhang::openDialog()
 {
     QString pfad = QFileDialog::getOpenFileName(this, tr("Anhang auswählen"), getFullPfad());
@@ -126,5 +131,5 @@ void WdgAnhang::on_pushButton_Browse_clicked()
 
 void WdgAnhang::on_btnLoeschen_clicked()
 {
-    bh->sud()->modelAnhang()->removeRow(mIndex);
+    remove();
 }

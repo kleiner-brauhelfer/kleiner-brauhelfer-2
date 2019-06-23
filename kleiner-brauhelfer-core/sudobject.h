@@ -90,6 +90,10 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, MengeSollKochbeginn, toDouble())
     Q_PROPERTY_SUD_READONLY(double, MengeSollKochende, toDouble())
     Q_PROPERTY_SUD(double, WuerzemengeAnstellenTotal, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, SW_Malz, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, SW_WZ_Maischen, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, SW_WZ_Kochen, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, SW_WZ_Gaerung, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWSollLautern, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWSollKochbeginn, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWSollKochende, toDouble())
@@ -241,6 +245,7 @@ Q_SIGNALS:
     void loadedChanged();
 
 private slots:
+    void onSudLayoutChanged();
     void onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>());
 
 private:

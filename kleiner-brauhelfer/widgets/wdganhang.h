@@ -19,6 +19,7 @@ public:
     void openDialog();
     QString getPfad() const;
     QString getFullPfad() const;
+    void remove();
 
 public slots:
     void updateValues();

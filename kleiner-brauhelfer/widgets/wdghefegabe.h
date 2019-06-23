@@ -19,6 +19,7 @@ public:
     bool setData(const QString &fieldName, const QVariant &value);
     QString name() const;
     int menge() const;
+    void remove();
 
 public slots:
     void updateValues(bool full = false);

@@ -16,11 +16,15 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Fix: Woche war immer auf 0
 - Fix: Abstürze wegen "race condition" in Model Sud
 - Fix: Dialog für Stammwürze/Restextrakt zeigt Formel und Korrekturfaktor für Refraktometer
+- Fix: Korrektur in der Berechnung der Malzschüttung (Faktor 0.96)
 - Neu: keine automatische Sortierung der Rasten
 - Neu: Reihenfolge in der Tabelle *Brauübersicht* gedreht
 - Neu: Kochzeit bei Honig & Zucker einstellbar
 - Neu: Filter für Sudauswahl sucht auch in Tagnamen und Tagwerte
 - Neu: Filter für Sudauswahl Checkboxes statt Radiobuttons
+- Neu: zusätzliche Spalten in der Sudauswahl auswählbar
+- Neu: Zeitpunkt der Hopfengabe auswählbar (Vorderwürze, Kochen, Nachisomerisierung, beim Ausschlagen)
+- Neu: Dialog, um ungültige Zutatengaben zu löschen
 
 ### Version 2.0.0beta1
 - Neu: kompletter Neuaufbau des Programms

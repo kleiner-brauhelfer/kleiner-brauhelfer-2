@@ -47,7 +47,7 @@ void DlgVolumen::on_spinBox_VonUnten_valueChanged(double )
 	}
 }
 
-void DlgVolumen::on_spinBox_Temperatur_valueChanged(double )
+void DlgVolumen::on_spinBox_Temperatur_valueChanged(int )
 {
     if (ui->spinBox_Temperatur->hasFocus()){
 		BerLiter20Grad();

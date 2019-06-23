@@ -137,7 +137,7 @@
     </widget>
    </item>
    <item row="2" column="2">
-    <widget class="DoubleSpinBox" name="spinBox_Temperatur">
+    <widget class="SpinBox" name="spinBox_Temperatur">
      <property name="minimumSize">
       <size>
        <width>60</width>
@@ -147,20 +147,11 @@
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
-     <property name="decimals">
-      <number>0</number>
-     </property>
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
      <property name="maximum">
-      <double>100.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>1.000000000000000</double>
+      <number>100</number>
      </property>
      <property name="value">
-      <double>100.000000000000000</double>
+      <number>100</number>
      </property>
     </widget>
    </item>
@@ -278,7 +269,7 @@
     </spacer>
    </item>
    <item row="0" column="2">
-    <widget class="SpinBox" name="spinBox_VonOben">
+    <widget class="DoubleSpinBox" name="spinBox_VonOben">
      <property name="minimumSize">
       <size>
        <width>60</width>
@@ -287,11 +278,20 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+     <property name="decimals">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <double>999.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
      </property>
     </widget>
    </item>
    <item row="1" column="2">
-    <widget class="SpinBox" name="spinBox_VonUnten">
+    <widget class="DoubleSpinBox" name="spinBox_VonUnten">
      <property name="minimumSize">
       <size>
        <width>60</width>
@@ -300,6 +300,15 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+     <property name="decimals">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <double>999.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
      </property>
     </widget>
    </item>

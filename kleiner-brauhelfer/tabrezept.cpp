@@ -230,7 +230,16 @@ void TabRezept::checkRohstoffe()
             continue;
         QString name = wdg->data("Name").toString();
         if (name.isEmpty())
-            continue;
+        {
+            int ret = QMessageBox::question(this, tr("Malzgabe löschen?"),
+                                            tr("Es wurde eine ungültige Malzgabe gefunden. Soll diese gelöscht werden?"));
+            if (ret == QMessageBox::Yes)
+            {
+                wdg->remove();
+                --i;
+                continue;
+            }
+        }
         int row = bh->modelMalz()->getRowWithValue("Beschreibung", name);
         if (row < 0)
         {
@@ -267,7 +276,16 @@ void TabRezept::checkRohstoffe()
             continue;
         QString name = wdg->data("Name").toString();
         if (name.isEmpty())
-            continue;
+        {
+            int ret = QMessageBox::question(this, tr("Hopfengabe löschen?"),
+                                            tr("Es wurde eine ungültige Hopfengabe gefunden. Soll diese gelöscht werden?"));
+            if (ret == QMessageBox::Yes)
+            {
+                wdg->remove();
+                --i;
+                continue;
+            }
+        }
         int row = bh->modelHopfen()->getRowWithValue("Beschreibung", name);
         if (row < 0)
         {
@@ -305,7 +323,16 @@ void TabRezept::checkRohstoffe()
             continue;
         QString name = wdg->data("Name").toString();
         if (name.isEmpty())
-            continue;
+        {
+            int ret = QMessageBox::question(this, tr("Hefegabe löschen?"),
+                                            tr("Es wurde eine ungültige Hefegabe gefunden. Soll diese gelöscht werden?"));
+            if (ret == QMessageBox::Yes)
+            {
+                wdg->remove();
+                --i;
+                continue;
+            }
+        }
         int row = bh->modelHefe()->getRowWithValue("Beschreibung", name);
         if (row < 0)
         {
@@ -340,7 +367,16 @@ void TabRezept::checkRohstoffe()
             continue;
         QString name = wdg->data("Name").toString();
         if (name.isEmpty())
-            continue;
+        {
+            int ret = QMessageBox::question(this, tr("Weitere Zutat löschen?"),
+                                            tr("Es wurde eine ungültige weitere Zutat gefunden. Soll diese gelöscht werden?"));
+            if (ret == QMessageBox::Yes)
+            {
+                wdg->remove();
+                --i;
+                continue;
+            }
+        }
         int typ = wdg->data("Typ").toInt();
         int row;
         if (typ == EWZ_Typ_Hopfen)
@@ -410,6 +446,14 @@ void TabRezept::updateValues()
         ui->tbBittere->setValue(bh->sud()->getIBU());
     ui->tbFarbe->setValue((int)bh->sud()->geterg_Farbe());
     ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesamt());
+    ui->tbSWMalz->setValue(bh->sud()->getSW_Malz());
+    ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
+    ui->tbSWWZMaischen->setValue(bh->sud()->getSW_WZ_Maischen());
+    ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
+    ui->tbSWWZKochen->setValue(bh->sud()->getSW_WZ_Kochen());
+    ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
+    ui->tbSWWZGaerung->setValue(bh->sud()->getSW_WZ_Gaerung());
+    ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
     if (!ui->tbReifezeit->hasFocus())
         ui->tbReifezeit->setValue(bh->sud()->getReifezeit());

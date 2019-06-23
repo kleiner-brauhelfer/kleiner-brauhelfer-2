@@ -102,6 +102,11 @@ void WdgRast::updateValues(bool full)
         ui->tbDauer->setValue(dauer());
 }
 
+void WdgRast::remove()
+{
+  bh->sud()->modelRasten()->removeRow(mIndex);
+}
+
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 {
     if (ui->cbRast->hasFocus())
@@ -160,5 +165,5 @@ void WdgRast::on_tbDauer_valueChanged(int value)
 
 void WdgRast::on_btnLoeschen_clicked()
 {
-    bh->sud()->modelRasten()->removeRow(mIndex);
+    remove();
 }

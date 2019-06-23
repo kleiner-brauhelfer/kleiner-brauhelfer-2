@@ -17,6 +17,7 @@ public:
     bool isEnabled() const;
     QVariant data(const QString &fieldName) const;
     bool setData(const QString &fieldName, const QVariant &value);
+    void remove();
 
 public slots:
     void updateValues(bool full = false);

@@ -18,6 +18,7 @@ public:
     QString name() const;
     int temperatur() const;
     int dauer() const;
+    void remove();
 
 public slots:
     void updateValues(bool full = false);

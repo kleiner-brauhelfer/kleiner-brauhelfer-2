@@ -20,6 +20,7 @@ public:
     QString name() const;
     double prozent() const;
     void setFehlProzent(double value);
+    void remove();
 
 public slots:
     void updateValues(bool full = false);

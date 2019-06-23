@@ -202,7 +202,7 @@
           <x>0</x>
           <y>0</y>
           <width>660</width>
-          <height>693</height>
+          <height>691</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -533,6 +533,12 @@ Typischer Wert: zwischen 50% und 75%</string>
                  <iconset resource="images.qrc">
                   <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
                 </property>
+                <property name="iconSize">
+                 <size>
+                  <width>15</width>
+                  <height>15</height>
+                 </size>
+                </property>
                </widget>
               </item>
               <item row="5" column="2">
@@ -555,6 +561,12 @@ Typischer Wert: zwischen 50% und 75%</string>
                 <property name="icon">
                  <iconset resource="images.qrc">
                   <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>15</width>
+                  <height>15</height>
+                 </size>
                 </property>
                </widget>
               </item>

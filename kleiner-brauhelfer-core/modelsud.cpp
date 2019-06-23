@@ -37,6 +37,10 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("MengeSollKochbeginn");
     mVirtualField.append("MengeSollKochende");
     mVirtualField.append("WuerzemengeAnstellenTotal");
+    mVirtualField.append("SW_Malz");
+    mVirtualField.append("SW_WZ_Maischen");
+    mVirtualField.append("SW_WZ_Kochen");
+    mVirtualField.append("SW_WZ_Gaerung");
     mVirtualField.append("SWSollLautern");
     mVirtualField.append("SWSollKochbeginn");
     mVirtualField.append("SWSollKochende");
@@ -202,6 +206,22 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     if (field == "WuerzemengeAnstellenTotal")
     {
         return data(index.row(), "WuerzemengeAnstellen").toDouble() + data(index.row(), "Speisemenge").toDouble();
+    }
+    if (field == "SW_Malz")
+    {
+        return data(index.row(), "SW").toDouble() - swWzMaischenRecipe[index.row()] - swWzKochenRecipe[index.row()] - swWzGaerungRecipe[index.row()];
+    }
+    if (field == "SW_WZ_Maischen")
+    {
+        return swWzMaischenRecipe[index.row()];
+    }
+    if (field == "SW_WZ_Kochen")
+    {
+        return swWzKochenRecipe[index.row()];
+    }
+    if (field == "SW_WZ_Gaerung")
+    {
+        return swWzGaerungRecipe[index.row()];
     }
     if (field == "SWSollLautern")
     {

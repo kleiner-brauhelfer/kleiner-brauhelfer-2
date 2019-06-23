@@ -219,7 +219,10 @@ bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
         {
             QModelIndex index = this->index(row + i, fieldIndex("deleted"));
             if (index.isValid())
+            {
                 emit dataChanged(index, index, QVector<int>());
+                emit rowChanged(index);
+            }
         }
         emit layoutAboutToBeChanged();
         emit layoutChanged();

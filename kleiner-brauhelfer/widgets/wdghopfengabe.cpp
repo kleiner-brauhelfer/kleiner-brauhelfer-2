@@ -252,6 +252,11 @@ void WdgHopfenGabe::setFehlProzent(double value)
     }
 }
 
+void WdgHopfenGabe::remove()
+{
+    bh->sud()->modelHopfengaben()->removeRow(mIndex);
+}
+
 void WdgHopfenGabe::on_btnMengeKorrektur_clicked()
 {
     setFocus();
@@ -299,5 +304,5 @@ void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
 
 void WdgHopfenGabe::on_btnLoeschen_clicked()
 {
-    bh->sud()->modelHopfengaben()->removeRow(mIndex);
+    remove();
 }

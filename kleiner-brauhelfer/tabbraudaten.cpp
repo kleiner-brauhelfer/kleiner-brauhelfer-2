@@ -107,7 +107,9 @@ void TabBraudaten::checkEnabled()
     ui->btnSWKochende->setVisible(!gebraut);
     ui->tbSWAnstellen->setReadOnly(gebraut);
     ui->btnSWAnstellen->setVisible(!gebraut);
+    ui->btnWasserVerschneidung->setVisible(!gebraut);
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
+    ui->btnSpeisemengeNoetig->setVisible(!gebraut);
     ui->tbSpeisemenge->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
@@ -118,6 +120,7 @@ void TabBraudaten::updateValues()
 {
     double value;
 
+    int status = bh->sud()->getStatus();
     QDateTime dt = bh->sud()->getBraudatum();
     ui->tbBraudatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
 
@@ -133,6 +136,7 @@ void TabBraudaten::updateValues()
                                     bh->sud()->getSWSollAnstellen(),
                                     bh->sud()->getWuerzemengeKochende() * (1 + bh->sud()->gethighGravityFaktor()/100));
     ui->tbWasserVerschneidung->setValue(value);
+    ui->btnWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
     ui->tbSWAnstellen->setMaximum(ui->tbSWKochende->value());
     if (!ui->tbSWAnstellen->hasFocus())
         ui->tbSWAnstellen->setValue(bh->sud()->getSWAnstellen());
@@ -142,7 +146,12 @@ void TabBraudaten::updateValues()
         ui->tbSpeisemenge->setValue(bh->sud()->getSpeisemenge());
     if (!ui->tbWuerzemengeAnstellen->hasFocus())
         ui->tbWuerzemengeAnstellen->setValue(bh->sud()->getWuerzemengeAnstellen());
-    ui->tbSpeisemengeNoetig->setValue(BierCalc::speise(bh->sud()->getCO2(), bh->sud()->getSWAnstellen(), 3.0, 3.0, 20.0) * bh->sud()->getWuerzemengeAnstellen());
+    ui->tbSpeisemengeNoetig->setValue(BierCalc::speise(bh->sud()->getCO2(),
+                                                       bh->sud()->getSWAnstellen(),
+                                                       ui->tbSpeiseSRE->value(),
+                                                       ui->tbSpeiseSRE->value(),
+                                                       20.0) * bh->sud()->getWuerzemengeAnstellen());
+    ui->btnSpeisemengeNoetig->setVisible(status == Sud_Status_Rezept && ui->tbSpeisemenge->value() != ui->tbSpeisemengeNoetig->value());
 
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
 
@@ -253,10 +262,28 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
         ui->tbSWAnstellen->setValue(dlg.value());
 }
 
+void TabBraudaten::on_btnWasserVerschneidung_clicked()
+{
+    double menge = bh->sud()->getWuerzemengeAnstellenTotal() + ui->tbWasserVerschneidung->value();
+    bh->sud()->setSWAnstellen(bh->sud()->getSWSollAnstellen());
+    bh->sud()->setWuerzemengeAnstellenTotal(menge);
+}
+
 void TabBraudaten::on_tbWuerzemengeAnstellenTotal_valueChanged(double value)
 {
     if (ui->tbWuerzemengeAnstellenTotal->hasFocus())
         bh->sud()->setWuerzemengeAnstellenTotal(value);
+}
+
+void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)
+{
+    if (ui->tbSpeiseSRE->hasFocus())
+        updateValues();
+}
+
+void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
+{
+    bh->sud()->setSpeisemenge(ui->tbSpeisemengeNoetig->value());
 }
 
 void TabBraudaten::on_tbSpeisemenge_valueChanged(double value)

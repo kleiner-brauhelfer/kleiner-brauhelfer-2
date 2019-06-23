@@ -201,7 +201,6 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDatumBis->setDate(data("EntnahmeDatum").toDate());
     }
     ui->tbDatumVon->setVisible(braudatum.isValid());
-    ui->tbDatumBis->setVisible(braudatum.isValid());
 
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data("Bemerkung").toString());
@@ -325,11 +324,15 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->lblEntnahme->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    if (ui->tbDatumBis->isVisible())
-        ui->tbDatumBis->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
+    ui->tbDatumBis->setVisible(braudatum.isValid() && entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->btnZugeben->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_nichtZugegeben);
     ui->btnEntnehmen->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept);
+}
+
+void WdgWeitereZutatGabe::remove()
+{
+    bh->sud()->modelWeitereZutatenGaben()->removeRow(mIndex);
 }
 
 void WdgWeitereZutatGabe::on_cbZutat_currentIndexChanged(const QString &text)
@@ -413,5 +416,5 @@ void WdgWeitereZutatGabe::on_tbKomentar_textChanged()
 
 void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 {
-    bh->sud()->modelWeitereZutatenGaben()->removeRow(mIndex);
+    remove();
 }

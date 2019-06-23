@@ -11,7 +11,6 @@
 #include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
 #include "dialogs/dlgrestextrakt.h"
-#include "dialogs/dlgvolumen.h"
 #include "dialogs/dlgsudteilen.h"
 
 extern Brauhelfer* bh;

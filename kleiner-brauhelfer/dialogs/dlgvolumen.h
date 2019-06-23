@@ -21,7 +21,7 @@ public:
 private slots:
 	void on_spinBox_VonOben_valueChanged(double );
 	void on_spinBox_VonUnten_valueChanged(double );
-	void on_spinBox_Temperatur_valueChanged(double );
+	void on_spinBox_Temperatur_valueChanged(int );
 	void on_spinBox_Liter_valueChanged(double );
 	void on_buttonBox_accepted();
 	void on_buttonBox_rejected();

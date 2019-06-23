@@ -108,6 +108,7 @@ void TabBraudaten::checkEnabled()
     ui->tbSWAnstellen->setReadOnly(gebraut);
     ui->btnSWAnstellen->setVisible(!gebraut);
     ui->btnWasserVerschneidung->setVisible(!gebraut);
+    ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut);
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
     ui->btnSpeisemengeNoetig->setVisible(!gebraut);
     ui->tbSpeisemenge->setReadOnly(gebraut);
@@ -136,6 +137,7 @@ void TabBraudaten::updateValues()
                                     bh->sud()->getSWSollAnstellen(),
                                     bh->sud()->getWuerzemengeKochende() * (1 + bh->sud()->gethighGravityFaktor()/100));
     ui->tbWasserVerschneidung->setValue(value);
+    ui->wdgWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
     ui->btnWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
     ui->tbSWAnstellen->setMaximum(ui->tbSWKochende->value());
     if (!ui->tbSWAnstellen->hasFocus())
@@ -146,14 +148,19 @@ void TabBraudaten::updateValues()
         ui->tbSpeisemenge->setValue(bh->sud()->getSpeisemenge());
     if (!ui->tbWuerzemengeAnstellen->hasFocus())
         ui->tbWuerzemengeAnstellen->setValue(bh->sud()->getWuerzemengeAnstellen());
-    ui->tbSpeisemengeNoetig->setValue(BierCalc::speise(bh->sud()->getCO2(),
-                                                       bh->sud()->getSWAnstellen(),
-                                                       ui->tbSpeiseSRE->value(),
-                                                       ui->tbSpeiseSRE->value(),
-                                                       20.0) * bh->sud()->getWuerzemengeAnstellen());
+    value = BierCalc::speise(bh->sud()->getCO2(),
+                             bh->sud()->getSWAnstellen(),
+                             ui->tbSpeiseSRE->value(),
+                             ui->tbSpeiseSRE->value(),
+                             20.0);
+    ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
     ui->btnSpeisemengeNoetig->setVisible(status == Sud_Status_Rezept && ui->tbSpeisemenge->value() != ui->tbSpeisemengeNoetig->value());
 
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
+    if (!ui->cbDurchschnittIgnorieren->isChecked())
+        ui->lblWarnAusbeute->setVisible(bh->sud()->getSW_WZ_Maischen() > 0 || bh->sud()->getSW_WZ_Kochen() > 0);
+    else
+        ui->lblWarnAusbeute->setVisible(false);
 
     value = pow(bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI / 1000;
     ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
@@ -203,7 +210,7 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbWuerzemengeKochbeginn->setValue(dlg.getLiter());
+        bh->sud()->setWuerzemengeVorHopfenseihen(dlg.getLiter());
 }
 
 void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
@@ -227,7 +234,7 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
     dlg.setVisibleVonOben(false);
     dlg.setVisibleVonUnten(false);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbWuerzemengeKochende->setValue(dlg.getLiter());
+        bh->sud()->setWuerzemengeKochende(dlg.getLiter());
 }
 
 void TabBraudaten::on_tbTempKochende_valueChanged(double)
@@ -264,7 +271,7 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
 
 void TabBraudaten::on_btnWasserVerschneidung_clicked()
 {
-    double menge = bh->sud()->getWuerzemengeAnstellenTotal() + ui->tbWasserVerschneidung->value();
+    double menge = bh->sud()->getWuerzemengeKochende() + ui->tbWasserVerschneidung->value();
     bh->sud()->setSWAnstellen(bh->sud()->getSWSollAnstellen());
     bh->sud()->setWuerzemengeAnstellenTotal(menge);
 }
@@ -273,6 +280,18 @@ void TabBraudaten::on_tbWuerzemengeAnstellenTotal_valueChanged(double value)
 {
     if (ui->tbWuerzemengeAnstellenTotal->hasFocus())
         bh->sud()->setWuerzemengeAnstellenTotal(value);
+}
+
+void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
+{
+    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
+    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
+    DlgVolumen dlg(d, h, this);
+    dlg.setLiter(ui->tbWuerzemengeAnstellenTotal->value());
+    dlg.setVisibleVonOben(false);
+    dlg.setVisibleVonUnten(false);
+    if (dlg.exec() == QDialog::Accepted)
+        bh->sud()->setWuerzemengeAnstellenTotal(dlg.getLiter());
 }
 
 void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)
@@ -302,6 +321,11 @@ void TabBraudaten::on_tbNebenkosten_valueChanged(double value)
 {
     if (ui->tbNebenkosten->hasFocus())
         bh->sud()->setKostenWasserStrom(value);
+}
+
+void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
+{
+    bh->sud()->setAusbeuteIgnorieren(checked);
 }
 
 void TabBraudaten::on_btnSudGebraut_clicked()

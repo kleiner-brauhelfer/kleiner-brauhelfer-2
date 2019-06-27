@@ -527,7 +527,7 @@
          </widget>
         </item>
         <item row="3" column="3" colspan="3">
-         <widget class="QComboBox" name="cbZeitpunkt">
+         <widget class="ComboBox" name="cbZeitpunkt">
           <property name="toolTip">
            <string>Zeitpunkt der Hopfengabe.</string>
           </property>

@@ -16,10 +16,10 @@ WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->frameColor->setToolTip(tr("strongHopfentyp<br>"
+    ui->frameColor->setToolTip(tr("<strong>Hopfentyp<br>"
                                   "<font color=\"%1\">Aroma</font><br>"
                                   "<font color=\"%2\">Bitter</font><br>"
-                                  "<font color=\"%3\">Universal</font>strong")
+                                  "<font color=\"%3\">Universal</font><strong>")
             .arg(gSettings->HopfenTypBackgrounds[1].name())
             .arg(gSettings->HopfenTypBackgrounds[2].name())
             .arg(gSettings->HopfenTypBackgrounds[3].name()));

@@ -472,7 +472,7 @@ void ModelSud::update(int row)
         // erg_S_Gesamt
         sw = swRecipe - swWzMaischenRecipe[row] - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
         double ausb = dataAnlage(row, "Sudhausausbeute").toDouble();
-        double schuet = mengeRecipe * BierCalc::platoToDichte(sw * hgf) * sw / ausb;
+        double schuet = BierCalc::schuettung(sw * hgf, mengeRecipe / hgf, ausb, true);
         setData(row, "erg_S_Gesamt", schuet);
 
         // erg_Farbe
@@ -495,12 +495,12 @@ void ModelSud::update(int row)
         // erg_Sudhausausbeute
         sw = data(row, "SWKochende").toDouble() - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
         menge = data(row, "WuerzemengeKochende").toDouble();
-        setData(row, "erg_Sudhausausbeute", BierCalc::sudhausausbeute(sw, menge, schuet));
+        setData(row, "erg_Sudhausausbeute", BierCalc::sudhausausbeute(sw, menge, schuet, true));
 
         // erg_EffektiveAusbeute
         sw = data(row, "SWAnstellen").toDouble() * hgf - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
         menge = data(row, "WuerzemengeAnstellenTotal").toDouble() / hgf;
-        setData(row, "erg_EffektiveAusbeute", BierCalc::sudhausausbeute(sw , menge, schuet));
+        setData(row, "erg_EffektiveAusbeute", BierCalc::sudhausausbeute(sw , menge, schuet, true));
 
         // erg_Preis
         updatePreis(row);

@@ -317,11 +317,28 @@ double BierCalc::verdampfungsziffer(double V1, double V2, double t)
     return ((V1 - V2) * 100 * 60) / (V2 * t);
 }
 
-double BierCalc::sudhausausbeute(double sw, double V, double schuettung)
+double BierCalc::sudhausausbeute(double sw, double V, double schuettung, bool kaltWuerze)
 {
+    // https://hobbybrauer.de/forum/wiki/doku.php/sudhausausbeute
+    // http://www.brewrecipedeveloper.de/misc/brdh/Brew%20Recipe%20Developer%20Dokumentation%20DE.html?DieSudhausausbeute.html
     if (schuettung <= 0.0)
         return 0.0;
-    return sw * platoToDichte(sw) * 0.96 * V / schuettung;
+    if (kaltWuerze)
+        return sw * platoToDichte(sw) * V / schuettung;
+    else
+        return sw * platoToDichte(sw) * 0.96 * V / schuettung;
+}
+
+double BierCalc::schuettung(double sw, double V, double sudhausausbeute, bool kaltWuerze)
+{
+    // https://hobbybrauer.de/forum/wiki/doku.php/sudhausausbeute
+    // http://www.brewrecipedeveloper.de/misc/brdh/Brew%20Recipe%20Developer%20Dokumentation%20DE.html?DieSudhausausbeute.html
+    if (sudhausausbeute <= 0.0)
+        return 0.0;
+    if (kaltWuerze)
+        return sw * platoToDichte(sw) * V / sudhausausbeute;
+    else
+        return sw * platoToDichte(sw) * 0.96 * V / sudhausausbeute;
 }
 
 double BierCalc::verschneidung(double swIst, double swSoll, double menge)

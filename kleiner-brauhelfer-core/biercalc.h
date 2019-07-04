@@ -254,7 +254,16 @@ public:
      * @param schuettung Schüttung [kg]
      * @return Sudhausausbeute [%]
      */
-    Q_INVOKABLE static double sudhausausbeute(double sw, double V, double schuettung);
+    Q_INVOKABLE static double sudhausausbeute(double sw, double V, double schuettung, bool kaltWuerze);
+
+    /**
+     * @brief schuettung
+     * @param sw
+     * @param V
+     * @param sudhausausbeute
+     * @return
+     */
+    Q_INVOKABLE static double schuettung(double sw, double V, double sudhausausbeute, bool kaltWuerze);
 
     /**
      * @brief Benötigte Wassermenge, um auf die Sollstammwürze zu erreichen

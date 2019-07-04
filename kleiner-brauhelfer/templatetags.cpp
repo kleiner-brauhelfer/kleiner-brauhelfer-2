@@ -44,6 +44,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
     {
         if (parts & TagRezept)
         {
+            double val;
             QVariantMap ctxRezept;
             ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, "SW").toDouble(), 'f', 1);
             ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, "Menge").toDouble(), 'f', 1);
@@ -51,6 +52,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, "CO2").toDouble(), 'f', 1);
             ctxRezept["Farbe"] = locale.toString(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble(), 'f', 0);
             ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, "erg_Farbe").toDouble())).name();
+            ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, "KochdauerNachBitterhopfung").toInt());
             ctxRezept["Nachisomerisierung"] = QString::number(bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt());
             ctxRezept["HighGravityFaktor"] = QString::number(bh->modelSud()->data(sudRow, "HighGravityFaktor").toInt());
             ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, "Anlage").toString();
@@ -59,6 +61,15 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, "Kommentar").toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, "erg_S_Gesamt").toDouble(), 'f', 2);
             ctxRezept["EinmaischenTemp"] = QString::number(bh->modelSud()->data(sudRow, "EinmaischenTemp").toInt());
+            val = bh->modelSud()->data(sudRow, "MengeSollKochbeginn").toDouble();
+            ctxRezept["MengeKochbeginn"] = locale.toString(val, 'f', 1);
+            ctxRezept["MengeKochbeginn100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, val), 'f', 1);
+            val = bh->modelSud()->data(sudRow, "MengeSollKochende").toDouble();
+            ctxRezept["MengeKochende"] = locale.toString(val, 'f', 1);
+            ctxRezept["MengeKochende100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, val), 'f', 1);
+            ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollKochbeginn").toDouble(), 'f', 1);
+            ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollKochende").toDouble(), 'f', 1);
+            ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollAnstellen").toDouble(), 'f', 1);
             ctx["Rezept"] = ctxRezept;
         }
 
@@ -104,6 +115,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         {
             if (parts & TagBraudaten)
             {
+                int kochDauer = bh->modelSud()->data(sudRow, "KochdauerNachBitterhopfung").toInt();
+
                 QVariantList liste;
                 ProxyModel *model = bh->sud()->modelRasten();
                 for (int row = 0; row < model->rowCount(); ++row)
@@ -163,18 +176,28 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 {
                     QVariantMap map;
                     int dauer = model->data(row, "Zeit").toInt();
-                    int duaerIsomerisierung = -bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt();
+                    int duaerIsomerisierung = bh->modelSud()->data(sudRow, "Nachisomerisierungszeit").toInt();
                     map.insert("Name", model->data(row, "Name"));
                     map.insert("Prozent", locale.toString(model->data(row, "Prozent").toDouble(), 'f', 1));
                     map.insert("Menge", locale.toString(model->data(row, "erg_Menge").toDouble(), 'f', 0));
                     map.insert("Kochdauer", QString::number(dauer));
+                    map.insert("ZugabeNach", QString::number(kochDauer - dauer));
                     map.insert("Alpha", locale.toString(model->data(row, "Alpha").toDouble(), 'f', 1));
                     if (model->data(row, "Vorderwuerze").toBool())
+                    {
                         map.insert("Vorderwuerze", true);
-                    else if (dauer == duaerIsomerisierung)
+                        ctxZutaten["ZutatenVorderwuerze"] = true;
+                    }
+                    else if (dauer == -duaerIsomerisierung)
+                    {
+                        map.insert("ZugabeNach", QString::number(-dauer));
                         map.insert("Ausschlagen", true);
+                    }
                     else if (dauer <= 0)
+                    {
+                        map.insert("ZugabeNach", QString::number(-dauer));
                         map.insert("Nachisomerisierung", true);
+                    }
                     else
                         map.insert("Kochen", true);
                     liste << map;
@@ -193,7 +216,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                         map.insert("Status", QObject::tr("zugegeben"));
                     else
                         map.insert("Status", QObject::tr("nicht zugegeben"));
-                    map.insert("ZugabeNach", model->data(row, "ZugabeNach").toInt());
+                    map.insert("ZugabeNach", QString::number(model->data(row, "ZugabeNach").toInt()));
                     map.insert("ZugabeDatum", locale.toString(model->data(row, "ZugabeDatum").toDate(), QLocale::ShortFormat));
                     liste << map;
                 }
@@ -210,6 +233,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
                     QVariantMap map;
+                    int ival;
 
                     map.insert("Name", model->data(row, "Name"));
                     if (model->data(row, "Einheit").toInt() == EWZ_Einheit_Kg)
@@ -226,7 +250,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     {
                     case EWZ_Zeitpunkt_Gaerung:
                         map.insert("Gaerung", true);
-                        map.insert("ZugabeNach", model->data(row, "ZugabeNach").toInt());
+                        map.insert("ZugabeNach", QString::number(model->data(row, "ZugabeNach").toInt()));
                         map.insert("ZugabeDatum", locale.toString(model->data(row, "ZugabeDatum").toDate(), QLocale::ShortFormat));
                         map.insert("EntnahmeDatum", locale.toString(model->data(row, "EntnahmeDatum").toDate(), QLocale::ShortFormat));
                         if (model->data(row, "Entnahmeindex").toInt() == EWZ_Entnahmeindex_MitEntnahme)
@@ -240,17 +264,25 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                             map.insert("Status", QObject::tr("nicht zugegeben"));
                             break;
                         case EWZ_Zugabestatus_Zugegeben:
-                            map.insert("Status", QObject::tr("zugegeben"));
+                            if (model->data(row, "Entnahmeindex").toInt() == EWZ_Entnahmeindex_MitEntnahme)
+                                map.insert("Status", QObject::tr("nicht entnommen"));
+                            else
+                                map.insert("Status", QObject::tr("zugegeben"));
                             break;
                         case EWZ_Zugabestatus_Entnommen:
                             map.insert("Status", QObject::tr("entnommen"));
                             break;
                         }
-                        ctxZutaten["ZutatenGaerung"] = true;
+                        if (model->data(row, "Typ").toInt() == EWZ_Typ_Hopfen)
+                            ctxZutaten["ZutatenHopfenstopfen"] = true;
+                        else
+                            ctxZutaten["ZutatenGaerung"] = true;
                         break;
                     case EWZ_Zeitpunkt_Kochen:
                         map.insert("Kochen", true);
-                        map.insert("Kochdauer", model->data(row, "Zugabedauer").toInt());
+                        ival =  model->data(row, "Zugabedauer").toInt();
+                        map.insert("Kochdauer", ival);
+                        map.insert("ZugabeNach", QString::number(kochDauer - ival));
                         ctxZutaten["ZutatenKochen"] = true;
                         break;
                     case EWZ_Zeitpunkt_Maischen:

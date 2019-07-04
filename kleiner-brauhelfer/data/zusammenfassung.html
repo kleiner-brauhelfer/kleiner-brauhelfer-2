@@ -5,28 +5,29 @@
 </head>
 <body>
 
-  <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1">{{Rezept.Name}} (#{{Rezept.Nummer}})</p>
+  <div class="r" align="center">
+    <h1>{{Rezept.Name}} (#{{Rezept.Nummer}})</h1>
   </div>
 
-  <div class="rm" style="margin:0px;margin-bottom:5px;" align="center">
-    <table width="100%" cellspacing=0 border=0>
+  <div class="rm" align="center">
+    <table>
       <tr>
         <td valign="center" align="right">
-          <div style="background-color:{{Sud.FarbeRgb}};padding:0px;margin:0px;width:140px;height:140px">
-            <img class="glas" style="padding:0px;margin:0px;width:100%;height:100%">
+          <div style="background-color:{{Sud.FarbeRgb}};padding:0px;margin:0px;width:138px;height:138px">
+            <img class="glas" style="padding:0px;margin:0px;width:140px;height:140px">
           </div>
         </td>
         <td valign="top">
           <table>
             <col width="*">
-            <col width="50">
-            <col width="50">
+            <col width="80">
+            <col width="80">
             <col width="*">
             <tr>
               <th></th>
               <th>Sud</th>
               <th>Rezept</th>
+              <th></th>
             </tr>
             <tr>
               <td>Menge</td>
@@ -36,7 +37,7 @@
             </tr>
             {{#Rezept.HighGravityFaktor}}
             <tr>
-              <td>Menge</td>
+              <td>High-Gravity Faktor</td>
               <td class="value" align="center"></td>
               <td class="value" align="center">{{Rezept.HighGravityFaktor}}</td>
               <td>%</td>
@@ -73,24 +74,24 @@
               <td>g/l</td>
             </tr>
             <tr>
-              <td>eff. SHA</td>
+              <td>Effektive Sudhausausbeute</td>
               <td class="value" align="center">{{Sud.effSHA}}</td>
               <td class="value" align="center"></td>
               <td>%</td>
             </tr>
             <tr>
-              <td>tEVG</td>
+              <td>Endverg&auml;rungsgrad</td>
               <td class="value" align="center">{{Sud.tEVG}}</td>
               <td class="value" align="center"></td>
               <td>%</td>
             </tr>
           </table>
         </td>
-        <td valign="top">
+        <td valign="top" align="left">
           <table>
               <tr>
-                <th></th>
-                <th></th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
               </tr>
               <tr>
                 <td>Brauanlage</td>
@@ -113,15 +114,25 @@
     </table>
   </div>
 
-  <table width="100%" border="0" cellspacing="3">
+  {{#Rezept.Kommentar}}
+  <div class="rm" align="center">
+    <p class="kommentar">{{{Rezept.Kommentar}}}</p>
+  </div>
+  {{/Rezept.Kommentar}}
+
+  <table style="width:100%">
     <tr>
       <td valign="top" width="50%">
       {{#Zutaten.Malz}}
-      <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-        <img style="padding:0px;margin:0px;" src="qrc:/images/getreide.svg" width="300px" border=0>
-        <table style="width:100%">
+      <div class="rm" align="center">
+        <img src="qrc:/images/getreide.svg" height="50px">
+        <table>
+          <col width="*">
+          <col width="150">
+          <col width="150">
+          <col width="150">
           <tr>
-            <th>Malzsch&uuml;ttung</th>
+            <th></th>
             <th>Farbe [EBC]</th>
             <th>Anteil [%]</th>
             <th>Menge [kg]</th>
@@ -145,13 +156,18 @@
       {{/Zutaten.Malz}}
       </td>
       <td valign="top">      
-        <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/hopfen.svg" width="100px" border=0>
+        <div class="rm" align="center">
+          <img src="qrc:/images/hopfen.svg" height="50px">
           {{#Zutaten.Hopfen}}
-          <table style="width:100%">
+          <table>
+            <col width="*">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="150">
             <tr>
-              <th>Hopfengabe</th>
-              <th>Vorderw&uuml;rze</th>
+              <th></th>
+              <th>Zeitpunkt</th>
               <th>Alpha [%]</th>
               <th>Kochdauer [min]</th>
               <th>Menge [g]</th>
@@ -159,7 +175,12 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td class="value" align="center">{{#Vorderwuerze}}VWH{{/Vorderwuerze}}</td>
+              <td class="value" align="center">
+                {{#Kochen}}Kochen{{/Kochen}}
+                {{#Vorderwuerze}}Vorderw&uuml;rze{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}Nachisomerisierung{{/Nachisomerisierung}}
+                {{#Ausschlagen}}beim Ausschlagen{{/Ausschlagen}}
+              </td>
               <td class="value" align="center">{{Alpha}}</td>
               <td class="value" align="center">{{Kochdauer}}</td>
               <td class="value" align="center">{{Menge}}</td>
@@ -167,10 +188,15 @@
             {{/Liste}}
           </table>
           {{/Zutaten.Hopfen}}
+          <br/>
           {{#Zutaten.Kalthopfen}}
-          <table style="width:100%">
+          <table>
+            <col width="*">
+            <col width="150">
+            <col width="150">
+            <col width="150">
             <tr>
-              <th>Hopfenstopfengabe</th>
+              <th></th>
               <th>Zugabe nach [Tage]</th>
               <th>Dauer [Tage]</th>
               <th>Menge [g]</th>
@@ -182,7 +208,7 @@
               <td class="value" align="center">{{Dauer}}</td>
               <td class="value" align="center">{{Menge}}</td>
             </tr>
-            {{#Bemerkung}}<tr><td colspan="4" class="kommentar">{{Bemerkung}}</td></tr>{{/Bemerkung}}
+            {{#Bemerkung}}<tr><td colspan="4" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
             {{/Liste}}
           </table>
           {{/Zutaten.Kalthopfen}}
@@ -192,9 +218,12 @@
     <tr>
       <td valign="top">
         {{#Wasser}}
-        <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/wasser.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/wasser.svg" height="50px">
+          <table>
+            <col width="*">
+            <col width="150">
+            {{#GesamtMilchsaeure}}<col width="150">{{/GesamtMilchsaeure}}
             <tr>
               <th></th>
               <th>Menge [l]</th>
@@ -228,11 +257,14 @@
       </td>
       <td valign="top">
         {{#Zutaten.Hefe}}
-        <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/hefe.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/hefe.svg" height="50px">
+          <table>
+            <col width="*">
+            <col width="150">
+            <col width="150">
             <tr>
-              <th>Hefegabe</th>
+              <th></th>
               <th>Zugabe nach [Tage]</th>
               <th>Menge</th>
             </tr>
@@ -250,16 +282,19 @@
     </tr>
   </table>
 
-  <table width="100%" border="0" cellspacing="3">
+  <table style="width:100%" border="0" cellspacing="3">
     <tr>
       {{#Zutaten.Honig}}
       <td valign="top">
-        <div class="rm" style="margin:0px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_0.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/ewz_typ_0.svg" height="50px">
+          <table>
+            <col width="100">
+            <col width="*">
+            <col width="100">
             <tr>
-              <th>Zutat</th>
               <th></th>
+              <th>Zeitpunkt</th>
               <th>Menge</th>
             </tr>
             {{#Liste}}
@@ -269,18 +304,14 @@
               <td align="center">Maischen</td>
               {{/Maischen}}
               {{#Kochen}}
-              <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
+              <td align="center">Kochen, Dauer <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
-            {{#Bemerkung}}
-            <tr>
-              <td colspan="3" class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Bemerkung}}
+            {{#Bemerkung}}<tr><td colspan="3" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
             {{/Liste}}
           </table>
         </div>
@@ -288,12 +319,15 @@
       {{/Zutaten.Honig}}
       {{#Zutaten.Zucker}}
       <td valign="top">
-        <div class="rm" style="margin:0px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_1.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/ewz_typ_1.svg" height="50px">
+          <table>
+            <col width="100">
+            <col width="*">
+            <col width="100">
             <tr>
-              <th>Zutat</th>
               <th></th>
+              <th>Zeitpunkt</th>
               <th>Menge</th>
             </tr>
             {{#Liste}}
@@ -303,18 +337,14 @@
               <td align="center">Maischen</td>
               {{/Maischen}}
               {{#Kochen}}
-              <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
+              <td align="center">Kochen, Dauer <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
-            {{#Bemerkung}}
-            <tr>
-              <td colspan="3" class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Bemerkung}}
+            {{#Bemerkung}}<tr><td colspan="3" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
             {{/Liste}}
           </table>
         </div>
@@ -322,12 +352,15 @@
       {{/Zutaten.Zucker}}
       {{#Zutaten.Gewuerz}}
       <td valign="top">
-        <div class="rm" style="margin:0px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_2.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/ewz_typ_2.svg" height="50px">
+          <table>
+            <col width="100">
+            <col width="*">
+            <col width="100">
             <tr>
-              <th>Zutat</th>
               <th></th>
+              <th>Zeitpunkt</th>
               <th>Menge</th>
             </tr>
             {{#Liste}}
@@ -337,18 +370,14 @@
               <td align="center">Maischen</td>
               {{/Maischen}}
               {{#Kochen}}
-              <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
+              <td align="center">Kochen, Dauer <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
-            {{#Bemerkung}}
-            <tr>
-              <td colspan="3" class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Bemerkung}}
+            {{#Bemerkung}}<tr><td colspan="3" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
             {{/Liste}}
           </table>
         </div>
@@ -356,12 +385,15 @@
       {{/Zutaten.Gewuerz}}
       {{#Zutaten.Frucht}}
       <td valign="top">
-        <div class="rm" style="margin:0px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_3.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/ewz_typ_3.svg" height="50px">
+          <table>
+            <col width="100">
+            <col width="*">
+            <col width="100">
             <tr>
-              <th>Zutat</th>
               <th></th>
+              <th>Zeitpunkt</th>
               <th>Menge</th>
             </tr>
             {{#Liste}}
@@ -371,18 +403,14 @@
               <td align="center">Maischen</td>
               {{/Maischen}}
               {{#Kochen}}
-              <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
+              <td align="center">Kochen, Dauer <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
-            {{#Bemerkung}}
-            <tr>
-              <td colspan="3" class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Bemerkung}}
+            {{#Bemerkung}}<tr><td colspan="3" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
             {{/Liste}}
           </table>
         </div>
@@ -390,12 +418,15 @@
       {{/Zutaten.Frucht}}
       {{#Zutaten.Sonstiges}}
       <td valign="top">
-        <div class="rm" style="margin:0px;" align="center">
-          <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_4.svg" width="50px" border=0>
-          <table style="width:100%">
+        <div class="rm" align="center">
+          <img src="qrc:/images/ewz_typ_4.svg" height="50px">
+          <table>
+            <col width="100">
+            <col width="*">
+            <col width="100">
             <tr>
-              <th>Zutat</th>
               <th></th>
+              <th>Zeitpunkt</th>
               <th>Menge</th>
             </tr>
             {{#Liste}}
@@ -405,18 +436,14 @@
               <td align="center">Maischen</td>
               {{/Maischen}}
               {{#Kochen}}
-              <td align="center">Kochen <span class="value">{{Kochdauer}}</span> min</td>
+              <td align="center">Kochen, Dauer <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">G&auml;rung{{#ZugabeNach}}, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}}{{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
-            {{#Bemerkung}}
-            <tr>
-              <td colspan="3" class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Bemerkung}}
+            {{#Bemerkung}}<tr><td colspan="4" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
             {{/Liste}}
           </table>
         </div>
@@ -425,44 +452,36 @@
     </tr>
   </table>
 
-  {{#Rezept.Kommentar}}
-  <table width="100%" border="0" cellspacing="3">
-    <tr>
-      <td valign="top">
-        <div class="rm" style="margin:0px;" align="center">
-          {{{Rezept.Kommentar}}}
-        </div>
-      </td>
-    </tr>
-  </table>
-  {{/Rezept.Kommentar}}
-
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Rasten</p>
-    <table width='100%'>
+  <div class="rm" align="center">
+    <h2>Rasten</h2>
+    <table>
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <tr>
+        <th></th>
+        <th>Temperatur [&deg;C]</th>
+        <th>Dauer [min]</th>
+      </tr>
       <tr>
         <td>Einmaischen</td>
-        <td class="value">{{Rezept.EinmaischenTemp}}</td>
-        <td>&deg;C</td>
-        <td class="value"></td>
+        <td class="value" align="center">{{Rezept.EinmaischenTemp}}</td>
         <td></td>
       </tr>
       {{#Rasten.Liste}}
       <tr>
         <td>{{Name}}</td>
-        <td class="value">{{Temp}}</td>
-        <td>&deg;C</td>
-        <td class="value">{{Dauer}}</td>
-        <td>min</td>
+        <td class="value" align="center">{{Temp}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
       </tr>
       {{/Rasten.Liste}}
     </table>
   </div>
 
   {{#Anhang}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <p class="h2">Anh&auml;nge</p>
-    <table width='100%'>
+  <div class="rm" align="center">
+    <h2>Anh&auml;nge</h2>
+    <table style="width:100%">
     {{#Liste}}
     {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}
     {{^Bild}}<tr><td align="center"><a href="{{Pfad}}">{{Pfad}}</a></td></tr>{{/Bild}}

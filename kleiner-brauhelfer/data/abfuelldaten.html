@@ -4,117 +4,138 @@
   <link rel="stylesheet" type="text/css" href="{{Style}}">
 </head>
 <body>
-  <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1">G&auml;rung</p>
+
+  <div class="r" align="center">
+    <h1>G&auml;rung</h1>
   </div>
 
   {{#Zutaten.Hefe}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+  <div class="rm" align="center">
     <table style="width:100%">
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <col width="150">
       <tr>
-        <th>Hefegabe</th>
+        <th></th>
         <th>Zugabe nach [Tage]</th>
         <th>Status</th>
         <th>Menge</th>
       </tr>
       {{#Liste}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>  
         <td align="center"><span class="value">{{Status}}</span></td>
         <td align="center"><span class="value">{{Menge}}</span></td>
       </tr>
-      {{/ZugabeNach}}
       {{/Liste}}
     </table>
   </div>
   {{/Zutaten.Hefe}}
 
-  {{#Zutaten.ZutatenGaerung}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+{{#Zutaten.ZutatenHopfenstopfen}}
+  <div class="rm" align="center">
     <table style="width:100%">
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <col width="150">
       <tr>
-        <th>Zutat</th>
+        <th></th>
         <th>Zugabe nach [Tage]</th>
         <th>Dauer [Tage]</th>
         <th>Status</th>
         <th>Menge</th>
       </tr>
       {{#Zutaten.Kalthopfen.Liste}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
-        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
-        <td align="center"><span class="value">{{Status}}</span></td>
-        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
-      {{/ZugabeNach}}
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
       {{/Zutaten.Kalthopfen.Liste}}
+    </table>
+  </div>
+  {{/Zutaten.ZutatenHopfenstopfen}}
+
+  {{#Zutaten.ZutatenGaerung}}
+  <div class="rm" align="center">
+    <table style="width:100%">
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <tr>
+        <th></th>
+        <th>Zugabe nach [Tage]</th>
+        <th>Dauer [Tage]</th>
+        <th>Status</th>
+        <th>Menge</th>
+      </tr>
       {{#Zutaten.Honig.Liste}}
       {{#Gaerung}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
-        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
-        <td align="center"><span class="value">{{Status}}</span></td>
-        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
-      {{/ZugabeNach}}
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
       {{/Gaerung}}
       {{/Zutaten.Honig.Liste}}
       {{#Zutaten.Zucker.Liste}}
       {{#Gaerung}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
-        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
-        <td align="center"><span class="value">{{Status}}</span></td>
-        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
-      {{/ZugabeNach}}
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
       {{/Gaerung}}
       {{/Zutaten.Zucker.Liste}}
       {{#Zutaten.Gewuerz.Liste}}
       {{#Gaerung}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
-        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
-        <td align="center"><span class="value">{{Status}}</span></td>
-        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
-      {{/ZugabeNach}}
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
       {{/Gaerung}}
       {{/Zutaten.Gewuerz.Liste}}
       {{#Zutaten.Frucht.Liste}}
       {{#Gaerung}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
-        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
-        <td align="center"><span class="value">{{Status}}</span></td>
-        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
-      {{/ZugabeNach}}
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
       {{/Gaerung}}
       {{/Zutaten.Frucht.Liste}}
       {{#Zutaten.Sonstiges.Liste}}
       {{#Gaerung}}
-      {{#ZugabeNach}}
       <tr>
         <td>{{Name}}</td>
-        <td align="center"><span class="value">{{ZugabeNach}}</span> ({{ZugabeDatum}})</td>
-        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> ({{EntnahmeDatum}}){{/Dauer}}</td>
-        <td align="center"><span class="value">{{Status}}</span></td>
-        <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
       </tr>
-      {{/ZugabeNach}}
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
       {{/Gaerung}}
       {{/Zutaten.Sonstiges.Liste}}
     </table>

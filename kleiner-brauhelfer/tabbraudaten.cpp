@@ -271,6 +271,7 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
 
 void TabBraudaten::on_btnWasserVerschneidung_clicked()
 {
+    setFocus();
     double menge = bh->sud()->getWuerzemengeKochende() + ui->tbWasserVerschneidung->value();
     bh->sud()->setSWAnstellen(bh->sud()->getSWSollAnstellen());
     bh->sud()->setWuerzemengeAnstellenTotal(menge);

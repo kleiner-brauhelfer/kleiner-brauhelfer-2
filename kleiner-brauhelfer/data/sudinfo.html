@@ -6,10 +6,10 @@
 <body>
 
   {{#Sud}}
-  <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1">{{Rezept.Name}} (#{{Rezept.Nummer}})</p>
+  <div class="r" align="center">
+    <h1>{{Rezept.Name}} (#{{Rezept.Nummer}})</h1>
   </div>
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+  <div class="rm" align="center">
     <table>
       <tr>
         <td></td>
@@ -17,15 +17,15 @@
       </tr>
       <tr>
         <td valign="center">
-          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:100px;height:100px">
-            <img class="glas" style="padding:0px;margin:0px;width:100%;height:100%">
+          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:98px;height:98px">
+            <img class="glas" style="padding:0px;margin:0px;width:100px;height:100px">
           </div>
         </td>
         <td valign="top">
           <table>
             <col width="*">
-            <col width="50">
-            {{^Sud.StatusRezept}}<col width="50">{{/Sud.StatusRezept}}
+            <col width="80">
+            {{^Sud.StatusRezept}}<col width="80">{{/Sud.StatusRezept}}
             <col width="*">
             <tr>
               <th></th>
@@ -66,20 +66,25 @@
         </td>
       </tr>
     </table>
-    <p><div style="word-wrap: break-word;">{{{Rezept.Kommentar}}}</div></p>
+    <p><div class="kommentar">{{{Rezept.Kommentar}}}</div></p>
   </div>
   {{/Sud}}
 
   {{#Zutaten}}
-  <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1">Zutaten</p>
+  <div class="r" align="center">
+    <h1>Zutaten</h1>
   </div>
 
   {{#Zutaten.Malz}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/getreide.svg" alt="Getreide" width="300px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/getreide.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -101,10 +106,15 @@
   {{/Zutaten.Malz}}
 
   {{#Zutaten.Hopfen}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/hopfen.svg" alt="Hopfen" width="100px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/hopfen.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -126,10 +136,15 @@
   {{/Zutaten.Hopfen}}
 
   {{#Zutaten.Hefe}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/hefe.svg" alt="Hefe" width="50px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/hefe.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -151,10 +166,15 @@
   {{/Zutaten.Hefe}}
 
   {{#Zutaten.Honig}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_0.svg" alt="Honig" width="50px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/ewz_typ_0.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -176,10 +196,15 @@
   {{/Zutaten.Honig}}
 
   {{#Zutaten.Zucker}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_1.svg" alt="Honig" width="50px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/ewz_typ_1.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -201,10 +226,15 @@
   {{/Zutaten.Zucker}}
 
   {{#Zutaten.Gewuerz}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_2.svg" alt="Honig" width="50px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/ewz_typ_2.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -226,10 +256,15 @@
   {{/Zutaten.Gewuerz}}
 
   {{#Zutaten.Frucht}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_3.svg" alt="Honig" width="50px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/ewz_typ_3.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -251,10 +286,15 @@
   {{/Zutaten.Frucht}}
 
   {{#Zutaten.Sonstiges}}
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
-    <img style="padding:0px;margin:0px;" src="qrc:/images/ewz_typ_4.svg" alt="Honig" width="50px" border=0>
+  <div class="rm" align="center">
+    <img src="qrc:/images/ewz_typ_4.svg" height="50px">
     <br>
-    <table width='100%'>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
       <tr>
         <th></th>
         <th></th>
@@ -278,12 +318,12 @@
   {{/Zutaten}}
 
   {{#Anhang}}
-  <div class="r" style="margin-bottom:10px;" align="center">
-    <p class="h1">Anh&auml;nge</p>
+  <div class="r" align="center">
+    <h1>Anh&auml;nge</h1>
   </div>
-  <div class="rm" style="margin-top:10px;margin-bottom:5px;" align="center">
+  <div class="rm" align="center">
     <br>
-    <table width='100%'>
+    <table width="100%">
     {{#Liste}}
     {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}
     {{^Bild}}<tr><td align="center"><a href="{{Pfad}}">{{Pfad}}</a></td></tr>{{/Bild}}
@@ -291,6 +331,10 @@
     </table>
   </div>
   {{/Anhang}}
+
+  <div align="center">
+    <p class="version">{{App.Name}} v{{App.Version}}</p>
+  </div>
 
 </body>
 </html>

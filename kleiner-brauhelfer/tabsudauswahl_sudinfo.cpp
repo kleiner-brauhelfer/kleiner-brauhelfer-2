@@ -194,8 +194,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelMalz.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelMalz.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelMalz.data(0, "Menge").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -224,8 +224,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelHopfen.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelHopfen.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelHopfen.data(0, "Menge").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -254,8 +254,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelHefe.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelHefe.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelHefe.data(0, "Menge").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -284,8 +284,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -324,8 +324,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -364,8 +364,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -404,8 +404,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -444,8 +444,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
+                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
             {

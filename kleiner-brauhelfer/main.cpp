@@ -120,6 +120,10 @@ static bool connectDatabase()
                     {
                         QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), ex.what());
                     }
+                    catch (...)
+                    {
+                        QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), QObject::tr("Unbekannter Fehler."));
+                    }
                 }
             }
             else

@@ -7,6 +7,7 @@
 #include <QDesktopServices>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "importexport.h"
 #include "model/proxymodelsudcolored.h"
 #include "model/checkboxdelegate.h"
 #include "model/comboboxdelegate.h"
@@ -500,18 +501,78 @@ void TabSudAuswahl::on_btnLoeschen_clicked()
 
 void TabSudAuswahl::on_btnImportieren_clicked()
 {
-    // TODO: implement function
-    QMessageBox::warning(this, tr("Sud importieren"), tr("Diese Funktion ist noch nicht implementiert."));
-    filterChanged();
+    gSettings->beginGroup("General");
+    QString filter;
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+    QString filePath = QFileDialog::getOpenFileName(this, tr("Rezept Import"),
+                                     path, "MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
+    if (!filePath.isEmpty())
+    {
+        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+        try
+        {
+            bool ok = false;
+            if (filter == "MaischeMalzundMehr (*.json)")
+                ok = ImportExport::importMaischeMalzundMehr(filePath);
+            else if (filter == "BeerXML (*.xml)")
+                ok = ImportExport::importBeerXml(filePath);
+            if (ok)
+                QMessageBox::information(this, tr("Rezept Import"), tr("Das Rezept wurde erfolgreich importiert."));
+            else
+                QMessageBox::warning(this, tr("Rezept Import"), tr("Das Rezept konnte nicht importiert werden."));
+        }
+        catch (const std::exception& ex)
+        {
+            QMessageBox::warning(this, tr("Fehler beim Importieren"), ex.what());
+        }
+        catch (...)
+        {
+            QMessageBox::warning(this, tr("Fehler beim Importieren"), QObject::tr("Unbekannter Fehler."));
+        }
+        filterChanged();
+    }
+    gSettings->endGroup();
 }
 
 void TabSudAuswahl::on_btnExportieren_clicked()
 {
-    // TODO: implement function
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+    int colSudName = model->fieldIndex("Sudname");
+    gSettings->beginGroup("General");
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QMessageBox::warning(this, tr("Sud exportieren"), tr("Diese Funktion ist noch nicht implementiert."));
+        QString sudname = index.sibling(index.row(), colSudName).data().toString();
+                model->data(index.row(), "Sudname").toString() + " " + tr("Kopie");
+        QString filter;
+        QString filePath = QFileDialog::getSaveFileName(this, tr("Sud Export"),
+                                         path + "/" + sudname, "MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
+        if (!filePath.isEmpty())
+        {
+            gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+            try
+            {
+                bool ok = false;
+                if (filter == "MaischeMalzundMehr (*.json)")
+                    ok = ImportExport::exportMaischeMalzundMehr(filePath, model->mapRowToSource(index.row()));
+                else if (filter == "BeerXML (*.xml)")
+                    ok = ImportExport::exportBeerXml(filePath, model->mapRowToSource(index.row()));
+                if (ok)
+                    QMessageBox::information(this, tr("Sud Export"), tr("Der Sud wurde erfolgreich exportiert."));
+                else
+                    QMessageBox::warning(this, tr("Sud Export"), tr("Der Sud konnte nicht exportiert werden."));
+            }
+            catch (const std::exception& ex)
+            {
+                QMessageBox::warning(this, tr("Fehler beim Exportieren"), ex.what());
+            }
+            catch (...)
+            {
+                QMessageBox::warning(this, tr("Fehler beim Exportieren"), QObject::tr("Unbekannter Fehler."));
+            }
+        }
     }
+    gSettings->endGroup();
 }
 
 void TabSudAuswahl::on_btnLaden_clicked()

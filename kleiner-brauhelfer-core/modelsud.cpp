@@ -951,6 +951,10 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("berechnungsArtHopfen", Hopfen_Berechnung_IBU);
     if (!values.contains("Status"))
         values.insert("Status", Sud_Status_Rezept);
+    if (!values.contains("Anlage") && bh->modelAusruestung()->rowCount() == 1)
+        values.insert("Anlage", bh->modelAusruestung()->data(0, "Name"));
+    if (!values.contains("Wasserprofil") && bh->modelWasser()->rowCount() == 1)
+        values.insert("Wasserprofil", bh->modelWasser()->data(0, "Name"));
 }
 
 QVariantMap ModelSud::copyValues(int row) const

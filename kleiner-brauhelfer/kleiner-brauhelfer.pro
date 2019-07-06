@@ -1,4 +1,4 @@
-QT += core sql gui widgets svg webenginewidgets printsupport
+QT += core sql gui widgets svg xml webenginewidgets printsupport
 isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
  QT += charts
 }
@@ -34,6 +34,7 @@ DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
 DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 
 SOURCES += \
+    importexport.cpp \
     main.cpp \
     mainwindow.cpp \
     settings.cpp \
@@ -97,6 +98,7 @@ SOURCES += \
 
 HEADERS += \
     definitionen.h \
+    importexport.h \
     mainwindow.h \
     settings.h \
     tababfuellen.h \

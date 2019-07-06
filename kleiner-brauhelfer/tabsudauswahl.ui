@@ -245,7 +245,7 @@
          <item row="2" column="0">
           <widget class="QPushButton" name="btnImportieren">
            <property name="text">
-            <string>Sud importieren</string>
+            <string>Rezept importieren</string>
            </property>
           </widget>
          </item>

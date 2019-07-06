@@ -54,7 +54,6 @@ public:
     QPalette paletteError;
     QPalette paletteErrorButton;
 
-    QColor InputBase;
     QColor ErrorBase;
     QColor WarningText;
     QColor ErrorText;

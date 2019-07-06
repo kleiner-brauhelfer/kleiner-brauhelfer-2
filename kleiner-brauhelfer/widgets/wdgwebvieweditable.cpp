@@ -41,7 +41,27 @@ void WdgWebViewEditable::setHtmlFile(const QString& file)
 
 void WdgWebViewEditable::printToPdf(const QString& filePath)
 {
-    ui->webview->printToPdf(filePath);
+    if (gSettings->theme() == Settings::Dark)
+    {
+        QVariant style = mTemplateTags["Style"];
+        mTemplateTags["Style"] = "style_hell.css";
+        ui->webview->setUpdatesEnabled(false);
+
+        QEventLoop loop;
+        connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
+        ui->webview->renderTemplate(mTemplateTags);
+        loop.exec();
+
+        ui->webview->printToPdf(filePath);
+
+        mTemplateTags["Style"] = style;
+        ui->webview->renderTemplate(mTemplateTags);
+        ui->webview->setUpdatesEnabled(true);
+    }
+    else
+    {
+        ui->webview->printToPdf(filePath);
+    }
 }
 
 bool WdgWebViewEditable::checkSaveTemplate()

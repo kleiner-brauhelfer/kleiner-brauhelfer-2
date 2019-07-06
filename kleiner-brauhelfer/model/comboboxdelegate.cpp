@@ -43,7 +43,11 @@ void ComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     opt.displayAlignment = Qt::AlignCenter;
     int idx = index.model()->data(index).toInt();
     if (idx >= 0 && idx < mColors.count())
-        painter->fillRect(opt.rect, mColors.at(idx));
+    {
+        QColor color = mColors.at(idx);
+        if (color.isValid())
+            painter->fillRect(opt.rect, color);
+    }
     QStyledItemDelegate::paint(painter, opt, index);
 }
 

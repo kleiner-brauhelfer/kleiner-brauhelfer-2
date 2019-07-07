@@ -1,5 +1,6 @@
 #include "importexport.h"
 #include <QFile>
+#include <QTextStream>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDomDocument>
@@ -7,6 +8,21 @@
 #include "brauhelfer.h"
 
 extern Brauhelfer* bh;
+
+static void encodeHtml(QString& str)
+{
+    str.replace("Ä","&#196;");
+    str.replace("ä","&#228;");
+    str.replace("Ö","&#214;");
+    str.replace("ö","&#246;");
+    str.replace("Ü","&#220;");
+    str.replace("ü","&#252;");
+    str.replace("ß","&#223;");
+    str.replace("º","&#186;");
+    str.replace("°","&#176;");
+    str.replace("®","&#174;");
+    str.replace("©","&#169;");
+}
 
 static int findMax(const QJsonObject& jsn, const QString& str, int MAX = 20)
 {
@@ -284,8 +300,8 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(sudRow, "Temp").toInt());
-        root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(sudRow, "Dauer").toInt());
+        root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, "Temp").toInt());
+        root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, "Dauer").toInt());
         ++n;
     }
     root["Infusion_Einmaischtemperatur"] = QString::number(bh->modelSud()->data(sudRow, "EinmaischenTemp").toInt());
@@ -432,5 +448,567 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
 
 bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
 {
-    return false;
+    const QString BeerXmlVersion = "1";
+
+    QString str;
+    ProxyModel model;
+    int sudId = bh->modelSud()->data(sudRow, "ID").toInt();
+    bool gebraut = bh->modelSud()->data(sudRow, "Status").toInt() != Sud_Status_Rezept;
+
+    QDomDocument doc("");
+    QDomText text;
+    QDomElement element;
+    QDomElement Anteil;
+
+    QDomProcessingInstruction header = doc.createProcessingInstruction( "xml", "version=\"1.0\" encoding=\"UTF-8\"" );
+    doc.appendChild(header);
+
+    QDomElement Rezepte = doc.createElement("RECIPES");
+    doc.appendChild(Rezepte);
+
+    QDomElement Rezept = doc.createElement("RECIPE");
+    Rezepte.appendChild(Rezept);
+
+    element = doc.createElement("VERSION");
+    text = doc.createTextNode(BeerXmlVersion);
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("NAME");
+    text = doc.createTextNode(bh->modelSud()->data(sudRow, "Sudname").toString());
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("TYPE");
+    text = doc.createTextNode("All Grain");
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("BREWER");
+    text = doc.createTextNode("kleiner-brauhelfer");
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("BATCH_SIZE");
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, "Menge").toDouble(), 'f', 1));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("BOIL_TIME");
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, "KochdauerNachBitterhopfung").toInt()));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("EFFICIENCY");
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, gebraut ? "erg_EffektiveAusbeute" : "AnlageSudhausausbeute").toDouble(), 'f', 1));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    QDomElement Hopfengaben = doc.createElement("HOPS");
+    Rezept.appendChild(Hopfengaben);
+    model.setSourceModel(bh->modelHopfengaben());
+    model.setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        Anteil = doc.createElement("HOP");
+        Hopfengaben.appendChild(Anteil);
+
+        element = doc.createElement("VERSION");
+        text = doc.createTextNode(BeerXmlVersion);
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("NAME");
+        text = doc.createTextNode(model.data(row, "Name").toString());
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("ALPHA");
+        text = doc.createTextNode(QString::number(model.data(row, "Alpha").toDouble(), 'f', 1));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("AMOUNT");
+        text = doc.createTextNode(QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 3));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("USE");
+        text = doc.createTextNode(model.data(row, "Vorderwuerze").toBool() ? "First Wort" : "Boil");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("TIME");
+        text = doc.createTextNode(QString::number(model.data(row, "Zeit").toInt()));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        int typ = Hopfen_Universal;
+        int rowHopfen = bh->modelHopfen()->getRowWithValue("Beschreibung", model.data(row, "Name"));
+        if (rowHopfen >= 0)
+        {
+             typ = bh->modelHopfen()->data(rowHopfen, "Typ").toInt();
+        }
+
+        element = doc.createElement("TYPE");
+        switch (typ)
+        {
+        case Hopfen_Aroma:
+            text = doc.createTextNode("Aroma");
+            break;
+        case Hopfen_Bitter:
+            text = doc.createTextNode("Bittering");
+            break;
+        case Hopfen_Unbekannt:
+        case Hopfen_Universal:
+        default:
+            text = doc.createTextNode("Both");
+            break;
+        }
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("FORM");
+        text = doc.createTextNode(model.data(row, "Pellets").toBool() ? "Pellet" : "Leaf");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+    }
+    model.setSourceModel(bh->modelWeitereZutatenGaben());
+    model.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        if (model.data(row, "Typ").toInt() == EWZ_Typ_Hopfen)
+        {
+            Anteil = doc.createElement("HOP");
+            Hopfengaben.appendChild(Anteil);
+
+            element = doc.createElement("VERSION");
+            text = doc.createTextNode(BeerXmlVersion);
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("NAME");
+            text = doc.createTextNode(model.data(row, "Name").toString());
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("AMOUNT");
+            text = doc.createTextNode(QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 3));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("USE");
+            text = doc.createTextNode("Dry Hop");
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("TIME");
+            text = doc.createTextNode(QString::number(model.data(row, "Zugabedauer").toInt()));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            str = model.data(row, "Bemerkung").toString();
+            if (!str.isEmpty())
+            {
+                element = doc.createElement("NOTES");
+                text = doc.createTextNode(str.toHtmlEscaped());
+                element.appendChild(text);
+                Anteil.appendChild(element);
+            }
+
+            double alpha = 0.0;
+            bool pellets = false;
+            int typ = Hopfen_Universal;
+            int rowHopfen = bh->modelHopfen()->getRowWithValue("Beschreibung", model.data(row, "Name"));
+            if (rowHopfen >= 0)
+            {
+                alpha = bh->modelHopfen()->data(rowHopfen, "Alpha").toDouble();
+                pellets = bh->modelHopfen()->data(rowHopfen, "Pellets").toBool();
+                typ = bh->modelHopfen()->data(rowHopfen, "Typ").toInt();
+            }
+
+            element = doc.createElement("ALPHA");
+            text = doc.createTextNode(QString::number(alpha, 'f', 1));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("TYPE");
+            switch (typ)
+            {
+            case Hopfen_Aroma:
+                text = doc.createTextNode("Aroma");
+                break;
+            case Hopfen_Bitter:
+                text = doc.createTextNode("Bittering");
+                break;
+            case Hopfen_Unbekannt:
+            case Hopfen_Universal:
+            default:
+                text = doc.createTextNode("Both");
+                break;
+            }
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("FORM");
+            text = doc.createTextNode(pellets ? "Pellet" : "Leaf");
+            element.appendChild(text);
+            Anteil.appendChild(element);
+        }
+    }
+
+    QDomElement fermentables = doc.createElement("FERMENTABLES");
+    Rezept.appendChild(fermentables);
+    model.setSourceModel(bh->modelMalzschuettung());
+    model.setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        Anteil = doc.createElement("FERMENTABLE");
+        fermentables.appendChild(Anteil);
+
+        element = doc.createElement("VERSION");
+        text = doc.createTextNode(BeerXmlVersion);
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("NAME");
+        text = doc.createTextNode(model.data(row, "Name").toString());
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("TYPE");
+        text = doc.createTextNode("Grain");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("AMOUNT");
+        text = doc.createTextNode(QString::number(model.data(row, "erg_Menge").toDouble(), 'f', 2));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("YIELD");
+        text = doc.createTextNode("80");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("COLOR");
+        double ebc = model.data(row, "Farbe").toDouble();
+        double srm = ebc * 0.508;
+        double l = (srm + 0.76) / 1.3546;
+        text = doc.createTextNode(QString::number(l));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+    }
+    model.setSourceModel(bh->modelWeitereZutatenGaben());
+    model.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        double Ausbeute = model.data(row, "Ausbeute").toDouble();
+        if (Ausbeute > 0)
+        {
+            Anteil = doc.createElement("FERMENTABLE");
+            fermentables.appendChild(Anteil);
+
+            element = doc.createElement("VERSION");
+            text = doc.createTextNode(BeerXmlVersion);
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("NAME");
+            text = doc.createTextNode(model.data(row, "Name").toString());
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("TYPE");
+            switch (model.data(row, "Typ").toInt())
+            {
+            case EWZ_Typ_Honig:
+            case EWZ_Typ_Zucker:
+            case EWZ_Typ_Frucht:
+                text = doc.createTextNode("Sugar");
+                break;
+            case EWZ_Typ_Gewuerz:
+            case EWZ_Typ_Sonstiges:
+            default:
+                text = doc.createTextNode("Adjunct");
+                break;
+            }
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("AMOUNT");
+            text = doc.createTextNode(QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 3));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("YIELD");
+            text = doc.createTextNode(QString::number(Ausbeute, 'f', 1));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("COLOR");
+            double ebc = model.data(row, "Farbe").toDouble();
+            double srm = ebc * 0.508;
+            double l = (srm + 0.76) / 1.3546;
+            text = doc.createTextNode(QString::number(l));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            if (model.data(row, "Zeitpunkt").toInt() == EWZ_Zeitpunkt_Gaerung)
+            {
+                element = doc.createElement("ADD_AFTER_BOIL");
+                text = doc.createTextNode("TRUE");
+                element.appendChild(text);
+                Anteil.appendChild(element);
+            }
+
+            str = model.data(row, "Bemerkung").toString();
+            if (!str.isEmpty())
+            {
+                element = doc.createElement("NOTES");
+                text = doc.createTextNode(str.toHtmlEscaped());
+                element.appendChild(text);
+                Anteil.appendChild(element);
+            }
+        }
+    }
+
+    QDomElement yeasts = doc.createElement("YEASTS");
+    Rezept.appendChild(yeasts);
+    model.setSourceModel(bh->modelHefegaben());
+    model.setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        Anteil = doc.createElement("YEAST");
+        yeasts.appendChild(Anteil);
+
+        element = doc.createElement("VERSION");
+        text = doc.createTextNode(BeerXmlVersion);
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("NAME");
+        text = doc.createTextNode(model.data(row, "Name").toString());
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("TYPE");
+        text = doc.createTextNode("Lager");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        bool liquid = false;
+        int rowHefe = bh->modelHefe()->getRowWithValue("Beschreibung", model.data(row, "Name"));
+        if (rowHefe >= 0)
+        {
+            liquid = bh->modelHefe()->data(rowHefe, "TypTrFl").toInt() == Hefe_Fluessig;
+        }
+
+        element = doc.createElement("FORM");
+        text = doc.createTextNode(liquid ? "Liquid" : "Dry");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("AMOUNT");
+        text = doc.createTextNode("0");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        if (model.data(row, "ZugabeNach").toInt() > 0)
+        {
+            element = doc.createElement("ADD_TO_SECONDARY");
+            text = doc.createTextNode("TRUE");
+            element.appendChild(text);
+            Anteil.appendChild(element);
+        }
+    }
+
+    QDomElement miscs = doc.createElement("MISCS");
+    Rezept.appendChild(miscs);
+    model.setSourceModel(bh->modelWeitereZutatenGaben());
+    model.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        int typ = model.data(row, "Typ").toInt();
+        double Ausbeute = model.data(row, "Ausbeute").toDouble();
+        if (typ != EWZ_Typ_Hopfen && Ausbeute == 0)
+        {
+            Anteil = doc.createElement("MISC");
+            miscs.appendChild(Anteil);
+
+            element = doc.createElement("VERSION");
+            text = doc.createTextNode(BeerXmlVersion);
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("NAME");
+            text = doc.createTextNode(model.data(row, "Name").toString());
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("TYPE");
+            switch (typ)
+            {
+            case EWZ_Typ_Honig:
+            case EWZ_Typ_Zucker:
+                text = doc.createTextNode("Sugar");
+                break;
+            case EWZ_Typ_Frucht:
+                text = doc.createTextNode("Flavor");
+                break;
+            case EWZ_Typ_Gewuerz:
+                text = doc.createTextNode("Spice");
+                break;
+            case EWZ_Typ_Sonstiges:
+            default:
+                text = doc.createTextNode("Other");
+                break;
+            }
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("USE");
+            switch (model.data(row, "Zeitpunkt").toInt())
+            {
+            case EWZ_Zeitpunkt_Gaerung:
+                text = doc.createTextNode("Primary");
+                break;
+            case EWZ_Zeitpunkt_Kochen:
+                text = doc.createTextNode("Boil");
+                break;
+            case EWZ_Zeitpunkt_Maischen:
+                text = doc.createTextNode("Mash");
+                break;
+            }
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("TIME");
+            text = doc.createTextNode(QString::number(model.data(row, "Zugabedauer").toInt()));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("AMOUNT");
+            text = doc.createTextNode(QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 3));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            element = doc.createElement("AMOUNT_IS_WEIGHT");
+            text = doc.createTextNode("TRUE");
+            element.appendChild(text);
+            Anteil.appendChild(element);
+
+            str = model.data(row, "Bemerkung").toString();
+            if (!str.isEmpty())
+            {
+                element = doc.createElement("NOTES");
+                text = doc.createTextNode(str.toHtmlEscaped());
+                element.appendChild(text);
+                Anteil.appendChild(element);
+            }
+        }
+    }
+
+    QDomElement mash = doc.createElement("MASH");
+    Rezept.appendChild(mash);
+
+    element = doc.createElement("VERSION");
+    text = doc.createTextNode(BeerXmlVersion);
+    element.appendChild(text);
+    mash.appendChild(element);
+
+    element = doc.createElement("NAME");
+    text = doc.createTextNode("Temperatur");
+    element.appendChild(text);
+    mash.appendChild(element);
+
+    element = doc.createElement("GRAIN_TEMP");
+    text = doc.createTextNode("20");
+    element.appendChild(text);
+    mash.appendChild(element);
+
+    QDomElement mash_steps = doc.createElement("MASH_STEPS");
+    mash.appendChild(mash_steps);
+
+    Anteil = doc.createElement("MASH_STEP");
+    mash_steps.appendChild(Anteil);
+
+    element = doc.createElement("VERSION");
+    text = doc.createTextNode(BeerXmlVersion);
+    element.appendChild(text);
+    Anteil.appendChild(element);
+
+    element = doc.createElement("NAME");
+    text = doc.createTextNode("Einmaischen");
+    element.appendChild(text);
+    Anteil.appendChild(element);
+
+    element = doc.createElement("TYPE");
+    text = doc.createTextNode("Temperature");
+    element.appendChild(text);
+    Anteil.appendChild(element);
+
+    element = doc.createElement("STEP_TEMP");
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, "EinmaischenTemp").toInt()));
+    element.appendChild(text);
+    Anteil.appendChild(element);
+
+    element = doc.createElement("STEP_TIME");
+    text = doc.createTextNode("10");
+    element.appendChild(text);
+    Anteil.appendChild(element);
+
+    model.setSourceModel(bh->modelRasten());
+    model.setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        Anteil = doc.createElement("MASH_STEP");
+        mash_steps.appendChild(Anteil);
+
+        element = doc.createElement("VERSION");
+        text = doc.createTextNode(BeerXmlVersion);
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("NAME");
+        text = doc.createTextNode(model.data(row, "Name").toString());
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("TYPE");
+        text = doc.createTextNode("Temperature");
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("STEP_TEMP");
+        text = doc.createTextNode(QString::number(model.data(row, "Temp").toInt()));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+
+        element = doc.createElement("STEP_TIME");
+        text = doc.createTextNode(QString::number(model.data(row, "Dauer").toInt()));
+        element.appendChild(text);
+        Anteil.appendChild(element);
+    }
+
+    QFile file(fileName);
+    if (!file.open(QFile::ReadWrite | QFile::Text))
+      return false;
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+
+    QString strXml;
+    QTextStream xml(&strXml);
+    doc.save(xml, 2);
+    encodeHtml(strXml);
+    out << strXml;
+    file.close();
+    return true;
 }

@@ -11,7 +11,13 @@
 #define Hopfen_Berechnung_Gewicht           0
 #define Hopfen_Berechnung_IBU               1
 
-//Hefe Art
+// Hopfen Art
+#define Hopfen_Unbekannt                    0
+#define Hopfen_Aroma                        1
+#define Hopfen_Bitter                       2
+#define Hopfen_Universal                    3
+
+// Hefe Art
 #define Hefe_Unbekannt                      0
 #define Hefe_Trocken                        1
 #define Hefe_Fluessig                       2

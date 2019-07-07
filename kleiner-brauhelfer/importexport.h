@@ -6,8 +6,8 @@
 class ImportExport
 {
 public:
-    static bool importMaischeMalzundMehr(const QString &fileName);
-    static bool importBeerXml(const QString &fileName);
+    static bool importMaischeMalzundMehr(const QString &fileName, int* sudRow = nullptr);
+    static bool importBeerXml(const QString &fileName, int* sudRow = nullptr);
     static bool exportMaischeMalzundMehr(const QString &fileName, int sudRow);
     static bool exportBeerXml(const QString &fileName, int sudRow);
 };

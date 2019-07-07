@@ -55,7 +55,7 @@ static double toDouble(const QJsonValueRef& value)
     }
 }
 
-bool ImportExport::importMaischeMalzundMehr(const QString &fileName)
+bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRow)
 {
     // https://www.maischemalzundmehr.de/rezept.json.txt
     QFile file(fileName);
@@ -238,18 +238,23 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName)
         values["Entnahmeindex"] = EWZ_Entnahmeindex_MitEntnahme;
         bh->modelWeitereZutatenGaben()->append(values);
     }
+    if (_sudRow)
+        *_sudRow = sudRow;
     return true;
 }
 
-bool ImportExport::importBeerXml(const QString &fileName)
+bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
 {
+    int sudRow = -1;
+    const QString BeerXmlVersion = "1";
+
     // http://www.beerxml.com/
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
         return false;
 
     QString xmlError;
-    QDomDocument doc("mydocument");
+    QDomDocument doc("");
     doc.setContent(&file, &xmlError);
     file.close();
     if (!xmlError.isEmpty())
@@ -262,6 +267,170 @@ bool ImportExport::importBeerXml(const QString &fileName)
     if (root.tagName() != "RECIPES")
         return false;
 
+    for(QDomNode nRecipe = root.firstChildElement("RECIPE"); !nRecipe.isNull(); nRecipe = nRecipe.nextSiblingElement("RECIPE"))
+    {
+        if (nRecipe.firstChildElement("VERSION").text() != BeerXmlVersion)
+            continue;
+
+        QDomNode nStyle = nRecipe.firstChildElement("STYLE");
+        QDomNode nMash = nRecipe.firstChildElement("MASH");
+        QDomNode nMashSteps = nMash.firstChildElement("MASH_STEPS");
+
+        double min, max;
+        double menge = nRecipe.firstChildElement("BATCH_SIZE").text().toDouble();
+
+        QVariantMap values;
+        values["Sudname"] = nRecipe.firstChildElement("NAME").text();
+        values["Menge"] = menge;
+        min = nStyle.firstChildElement("OG_MIN").text().toDouble();
+        max = nStyle.firstChildElement("OG_MAX").text().toDouble();
+        values["SW"] = BierCalc::dichteToPlato((min+max)/2);
+        values["FaktorHauptguss"] = 3.5;
+        values["EinmaischenTemp"] = nMashSteps.firstChildElement("MASH_STEP").firstChildElement("STEP_TEMP").text().toDouble();
+        min = nStyle.firstChildElement("CARB_MIN").text().toDouble();
+        max = nStyle.firstChildElement("CARB_MAX").text().toDouble();
+        values["CO2"] = (min+max)/2;
+        min = nStyle.firstChildElement("IBU_MIN").text().toDouble();
+        max = nStyle.firstChildElement("IBU_MAX").text().toDouble();
+        values["IBU"] = (min+max)/2;
+        values["berechnungsArtHopfen"] = Hopfen_Berechnung_Gewicht;
+        values["KochdauerNachBitterhopfung"] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
+
+        sudRow = bh->modelSud()->append(values);
+        int sudId = bh->modelSud()->data(sudRow, "ID").toInt();
+
+        // Rasten
+        for(QDomNode n = nMashSteps.firstChildElement("MASH_STEP"); !n.isNull(); n = n.nextSiblingElement("MASH_STEP"))
+        {
+            values.clear();
+            values["SudID"] = sudId;
+            values["Name"] = n.firstChildElement("NAME").text();
+            values["Temp"] = n.firstChildElement("STEP_TEMP").text().toDouble();
+            values["Dauer"] = n.firstChildElement("STEP_TIME").text().toDouble();
+            bh->modelRasten()->append(values);
+        }
+
+        // Malzschuettung
+        QDomNode nMalz = nRecipe.firstChildElement("FERMENTABLES");
+        double gesamt_malz = 0.0;
+        for(QDomNode n = nMalz.firstChildElement("FERMENTABLE"); !n.isNull(); n = n.nextSiblingElement("FERMENTABLE"))
+        {
+            if (n.firstChildElement("TYPE").text() == "Grain")
+                gesamt_malz += n.firstChildElement("AMOUNT").text().toDouble();
+        }
+        for(QDomNode n = nMalz.firstChildElement("FERMENTABLE"); !n.isNull(); n = n.nextSiblingElement("FERMENTABLE"))
+        {
+            values.clear();
+            values["SudID"] = sudId;
+            values["Name"] = n.firstChildElement("NAME").text();
+            values["Farbe"] = n.firstChildElement("COLOR").text().toDouble() * 1.97;
+            QString type = n.firstChildElement("TYPE").text();
+            if (type == "Grain")
+            {
+                values["Prozent"] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_malz * 100;
+                bh->modelMalzschuettung()->append(values);
+            }
+            else
+            {
+                values["Menge"] = n.firstChildElement("AMOUNT").text().toDouble() / menge;
+                values["Einheit"] = EWZ_Einheit_Kg;
+                if (type == "Sugar" || type == "Extract" || type == "Dry Extract")
+                    values["Typ"] = EWZ_Typ_Zucker;
+                else
+                    values["Typ"] = EWZ_Typ_Sonstiges;
+
+                if (n.firstChildElement("ADD_AFTER_BOIL").text() == "TRUE")
+                {
+                    values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
+                }
+                else
+                {
+                    values["Zeitpunkt"] = EWZ_Zeitpunkt_Kochen;
+                    values["Zugabedauer"] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
+                }
+                values["Entnahmeindex"] = EWZ_Entnahmeindex_KeineEntnahme;
+                values["Bemerkung"] = n.firstChildElement("NOTES").text();
+                bh->modelWeitereZutatenGaben()->append(values);
+            }
+        }
+
+        // Hopfen
+        QDomNode nHops = nRecipe.firstChildElement("HOPS");
+        double gesamt_hopfen = 0.0;
+        for(QDomNode n = nHops.firstChildElement("HOP"); !n.isNull(); n = n.nextSiblingElement("HOP"))
+        {
+            if (n.firstChildElement("USE").text() != "Dry Hop")
+                gesamt_hopfen += n.firstChildElement("AMOUNT").text().toDouble();
+        }
+        for(QDomNode n = nHops.firstChildElement("HOP"); !n.isNull(); n = n.nextSiblingElement("HOP"))
+        {
+            values.clear();
+            values["SudID"] = sudId;
+            values["Name"] = n.firstChildElement("NAME").text();
+            QString use = n.firstChildElement("USE").text();
+            if (use == "Dry Hop")
+            {
+                values["Menge"] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
+                values["Einheit"] = EWZ_Einheit_g;
+                values["Typ"] = EWZ_Typ_Hopfen;
+                values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
+                values["Zugabedauer"] = n.firstChildElement("TIME").text().toDouble();
+                values["Entnahmeindex"] = EWZ_Entnahmeindex_MitEntnahme;
+                values["Bemerkung"] = n.firstChildElement("NOTES").text();
+                bh->modelWeitereZutatenGaben()->append(values);
+            }
+            else
+            {
+                values["Prozent"] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_hopfen * 100;
+                values["Zeit"] = n.firstChildElement("TIME").text().toDouble();
+                values["Alpha"] = n.firstChildElement("ALPHA").text().toDouble();
+                values["Pellets"] = n.firstChildElement("FORM").text() == "Pellet";
+                values["Vorderwuerze"] = use == "First Wort";
+                bh->modelHopfengaben()->append(values);
+            }
+        }
+
+        // Hefe
+        QDomNode nYeasts = nRecipe.firstChildElement("YEASTS");
+        for(QDomNode n = nYeasts.firstChildElement("YEAST"); !n.isNull(); n = n.nextSiblingElement("YEAST"))
+        {
+            values.clear();
+            values["SudID"] = sudId;
+            values["Name"] = n.firstChildElement("NAME").text();
+            values["Menge"] = 0;
+            bh->modelHefegaben()->append(values);
+        }
+
+        QDomNode nMiscs = nRecipe.firstChildElement("MISCS");
+        for(QDomNode n = nMiscs.firstChildElement("MISC"); !n.isNull(); n = n.nextSiblingElement("MISC"))
+        {
+            values.clear();
+            values["SudID"] = sudId;
+            values["Name"] = n.firstChildElement("NAME").text();
+            QString type = n.firstChildElement("TYPE").text();
+            if (type == "Spice" || type == "Herb")
+                values["Typ"] = EWZ_Typ_Gewuerz;
+            else if (type == "Flavor")
+                values["Typ"] = EWZ_Typ_Frucht;
+            else
+                values["Typ"] = EWZ_Typ_Sonstiges;
+            QString use = n.firstChildElement("USE").text();
+            if (use == "Boil")
+               values["Zeitpunkt"] = EWZ_Zeitpunkt_Kochen;
+            else if (use == "Mash")
+                values["Zeitpunkt"] = EWZ_Zeitpunkt_Maischen;
+            else
+                values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
+            values["Menge"] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
+            values["Einheit"] = EWZ_Einheit_g;
+            values["Zugabedauer"] = n.firstChildElement("TIME").text().toDouble();
+            values["Entnahmeindex"] = EWZ_Entnahmeindex_KeineEntnahme;
+            values["Bemerkung"] = n.firstChildElement("NOTES").text();
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
+    }
+    if (_sudRow)
+        *_sudRow = sudRow;
     return true;
 }
 
@@ -450,6 +619,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
 {
     const QString BeerXmlVersion = "1";
 
+    double val;
     QString str;
     ProxyModel model;
     int sudId = bh->modelSud()->data(sudRow, "ID").toInt();
@@ -503,6 +673,99 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, gebraut ? "erg_EffektiveAusbeute" : "AnlageSudhausausbeute").toDouble(), 'f', 1));
     element.appendChild(text);
     Rezept.appendChild(element);
+
+    QDomElement style = doc.createElement("STYLE");
+    Rezept.appendChild(style);
+
+    element = doc.createElement("VERSION");
+    text = doc.createTextNode(BeerXmlVersion);
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("NAME");
+    text = doc.createTextNode("Unbekannt");
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("CATEGORY");
+    text = doc.createTextNode("Unbekannt");
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("CATEGORY_NUMBER");
+    text = doc.createTextNode("0");
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("STYLE_LETTER");
+    text = doc.createTextNode("");
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("STYLE_GUIDE");
+    text = doc.createTextNode("");
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("TYPE");
+    text = doc.createTextNode("");
+    element.appendChild(text);
+    style.appendChild(element);
+
+    val = BierCalc::platoToDichte(bh->modelSud()->data(sudRow, "SW").toDouble());
+    element = doc.createElement("OG_MIN");
+    text = doc.createTextNode(QString::number(val, 'f', 4));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("OG_MAX");
+    text = doc.createTextNode(QString::number(val, 'f', 4));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    val *= 0.8;
+    element = doc.createElement("FG_MIN");
+    text = doc.createTextNode(QString::number(val, 'f', 4));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("FG_MAX");
+    text = doc.createTextNode(QString::number(val, 'f', 4));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    val = bh->modelSud()->data(sudRow, "IBU").toDouble();
+    element = doc.createElement("IBU_MIN");
+    text = doc.createTextNode(QString::number(val, 'f', 0));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("IBU_MAX");
+    text = doc.createTextNode(QString::number(val, 'f', 0));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    val = bh->modelSud()->data(sudRow, "erg_Farbe").toDouble() * 0.508;
+    element = doc.createElement("COLOR_MIN");
+    text = doc.createTextNode(QString::number(val, 'f', 0));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("COLOR_MAX");
+    text = doc.createTextNode(QString::number(val, 'f', 0));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    val = bh->modelSud()->data(sudRow, "CO2").toDouble();
+    element = doc.createElement("CARB_MIN");
+    text = doc.createTextNode(QString::number(val, 'f', 1));
+    element.appendChild(text);
+    style.appendChild(element);
+
+    element = doc.createElement("CARB_MAX");
+    text = doc.createTextNode(QString::number(val, 'f', 1));
+    element.appendChild(text);
+    style.appendChild(element);
 
     QDomElement Hopfengaben = doc.createElement("HOPS");
     Rezept.appendChild(Hopfengaben);

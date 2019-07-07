@@ -55,7 +55,6 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName)
         return false;
     }
 
-    QVariantMap values;
     QJsonObject root = doc.object();
 
     double menge = toDouble(root["Ausschlagswuerze"]);
@@ -71,6 +70,7 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName)
         gesamt_schuettung += kg;
     }
 
+    QVariantMap values;
     values["Sudname"] = root["Name"].toString();
     values["Menge"] = menge;
     values["SW"] = toDouble(root["Stammwuerze"]);
@@ -216,9 +216,9 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName)
             values["Einheit"] = EWZ_Einheit_g;
         else
             values["Einheit"] = EWZ_Einheit_Kg;
-        values["Typ"] = EWZ_Typ_Sonstiges;
-        values["Zeitpunkt"] = EWZ_Typ_Hopfen;
-        values["Zugabedauer"] = 5;
+        values["Typ"] = EWZ_Typ_Hopfen;
+        values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
+        values["Zugabedauer"] = 7200;
         values["Entnahmeindex"] = EWZ_Entnahmeindex_MitEntnahme;
         bh->modelWeitereZutatenGaben()->append(values);
     }
@@ -227,6 +227,7 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName)
 
 bool ImportExport::importBeerXml(const QString &fileName)
 {
+    // http://www.beerxml.com/
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
         return false;
@@ -241,12 +242,192 @@ bool ImportExport::importBeerXml(const QString &fileName)
         return false;
     }
 
+    QDomElement root = doc.documentElement();
+    if (root.tagName() != "RECIPES")
+        return false;
+
     return true;
 }
 
 bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
 {
-    return false;
+    ProxyModel model;
+    int n;
+    int sudId = bh->modelSud()->data(sudRow, "ID").toInt();
+    bool gebraut = bh->modelSud()->data(sudRow, "Status").toInt() != Sud_Status_Rezept;
+
+    QJsonObject root;
+    root["Name"] = bh->modelSud()->data(sudRow, "Sudname").toString();
+    root["Datum"] = bh->modelSud()->data(sudRow, "Erstellt").toDate().toString("dd.MM.yyyy");
+    root["Ausschlagswuerze"] = QString::number(bh->modelSud()->data(sudRow, "Menge").toDouble(), 'f', 1);
+    if (gebraut)
+        root["Sudhausausbeute"] = QString::number(bh->modelSud()->data(sudRow, "erg_EffektiveAusbeute").toDouble(), 'f', 1);
+    else
+        root["Sudhausausbeute"] = QString::number(bh->modelSud()->data(sudRow, "AnlageSudhausausbeute").toDouble(), 'f', 1);
+    root["Stammwuerze"] = QString::number(bh->modelSud()->data(sudRow, "SW").toDouble(), 'f', 1);
+    root["Bittere"] = QString::number(bh->modelSud()->data(sudRow, "IBU").toInt());
+    root["Farbe"] = QString::number(bh->modelSud()->data(sudRow, "erg_Farbe").toInt());
+    if (gebraut)
+        root["Alkohol"] = QString::number(bh->modelSud()->data(sudRow, "erg_Alkohol").toDouble(), 'f', 1);
+    root["Kurzbeschreibung"] = bh->modelSud()->data(sudRow, "Kommentar").toString();
+    root["Infusion_Hauptguss"] = QString::number(bh->modelSud()->data(sudRow, "erg_WHauptguss").toDouble(), 'f', 1);
+    if (gebraut)
+        root["Endvergaerungsgrad"] = QString::number(bh->modelSud()->data(sudRow, "tEVG").toDouble(), 'f', 1);
+    root["Karbonisierung"] = QString::number(bh->modelSud()->data(sudRow, "CO2").toDouble(), 'f', 1);
+    root["Nachguss"] = QString::number(bh->modelSud()->data(sudRow, "erg_WNachguss").toDouble(), 'f', 1);
+    root["Kochzeit_Wuerze"] = QString::number(bh->modelSud()->data(sudRow, "KochdauerNachBitterhopfung").toInt());
+
+    // Rasten
+    model.setSourceModel(bh->modelRasten());
+    model.setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(sudRow, "Temp").toInt());
+        root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(sudRow, "Dauer").toInt());
+        ++n;
+    }
+    root["Infusion_Einmaischtemperatur"] = QString::number(bh->modelSud()->data(sudRow, "EinmaischenTemp").toInt());
+    root["Abmaischtemperatur"] = "78";
+
+    // Malzschuettung
+    model.setSourceModel(bh->modelMalzschuettung());
+    model.setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        root[QString("Malz%1").arg(n)] = model.data(row, "Name").toString();
+        root[QString("Malz%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toDouble(), 'f', 2);
+        root[QString("Malz%1_Einheit").arg(n)] = "kg";
+        ++n;
+    }
+    root["Maischform"] = "infusion";
+
+    // Hopfen
+    model.setSourceModel(bh->modelHopfengaben());
+    model.setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        if (model.data(row, "Vorderwuerze").toBool())
+        {
+            root[QString("Hopfen_VWH_%1_Sorte").arg(n)] = model.data(row, "Name").toString();
+            root[QString("Hopfen_VWH_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toInt());
+            root[QString("Hopfen_VWH_%1_alpha").arg(n)] = QString::number(model.data(row, "Alpha").toDouble(), 'f', 1);
+            ++n;
+        }
+    }
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        if (!model.data(row, "Vorderwuerze").toBool())
+        {
+            root[QString("Hopfen_%1_Sorte").arg(n)] = model.data(row, "Name").toString();
+            root[QString("Hopfen_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toInt());
+            root[QString("Hopfen_%1_alpha").arg(n)] = QString::number(model.data(row, "Alpha").toDouble(), 'f', 1);
+            root[QString("Hopfen_%1_Kochzeit").arg(n)] = QString::number(model.data(row, "Zeit").toInt());
+            ++n;
+        }
+    }
+
+    // Hefe
+    QStringList hefen;
+    model.setSourceModel(bh->modelHefegaben());
+    model.setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        QString hefe = model.data(row, "Name").toString();
+        if (!hefen.contains(hefe))
+            hefen.append(hefe);
+    }
+    root["Hefe"] = hefen.join(", ");
+
+    // Weitere Zutaten
+    model.setSourceModel(bh->modelWeitereZutatenGaben());
+    model.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        int zeitpunkt = model.data(row, "Zeitpunkt").toInt();
+        if (zeitpunkt == EWZ_Zeitpunkt_Maischen)
+        {
+            root[QString("WeitereZutat_Wuerze_%1_Name").arg(n)] = model.data(row, "Name").toString();
+            if (model.data(row, "Einheit").toInt() == EWZ_Einheit_Kg)
+            {
+                root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 2);
+                root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "kg";
+            }
+            else
+            {
+                root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toInt());
+                root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "g";
+            }
+            root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(n)] = QString::number(bh->modelSud()->data(sudRow, "KochdauerNachBitterhopfung").toInt());
+            ++n;
+        }
+        else if (zeitpunkt == EWZ_Zeitpunkt_Kochen)
+        {
+            root[QString("WeitereZutat_Wuerze_%1_Name").arg(n)] = model.data(row, "Name").toString();
+            if (model.data(row, "Einheit").toInt() == EWZ_Einheit_Kg)
+            {
+                root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 2);
+                root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "kg";
+            }
+            else
+            {
+                root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toInt());
+                root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "g";
+                root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(n)] = QString::number(model.data(row, "Zugabedauer").toInt());
+            }
+            ++n;
+        }
+    }
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        int zeitpunkt = model.data(row, "Zeitpunkt").toInt();
+        int typ = model.data(row, "Typ").toInt();
+        if (zeitpunkt == EWZ_Zeitpunkt_Gaerung && typ == EWZ_Typ_Hopfen)
+        {
+            root[QString("Stopfhopfen_%1_Sorte").arg(n)] = model.data(row, "Name").toString();
+            root[QString("Stopfhopfen_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toInt());
+            ++n;
+        }
+    }
+    n = 1;
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        int zeitpunkt = model.data(row, "Zeitpunkt").toInt();
+        int typ = model.data(row, "Typ").toInt();
+        if (zeitpunkt == EWZ_Zeitpunkt_Gaerung && typ != EWZ_Typ_Hopfen)
+        {
+            root[QString("WeitereZutat_Gaerung_%1_Name").arg(n)] = model.data(row, "Name").toString();
+            if (model.data(row, "Einheit").toInt() == EWZ_Einheit_Kg)
+            {
+                root[QString("WeitereZutat_Gaerung_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toDouble() / 1000, 'f', 2);
+                root[QString("WeitereZutat_Gaerung_%1_Einheit").arg(n)] = "kg";
+            }
+            else
+            {
+                root[QString("WeitereZutat_Gaerung_%1_Menge").arg(n)] = QString::number(model.data(row, "erg_Menge").toInt());
+                root[QString("WeitereZutat_Gaerung_%1_Einheit").arg(n)] = "g";
+            }
+            ++n;
+        }
+    }
+
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly | QFile::Text))
+        return false;
+    QJsonDocument doc(root);
+    file.write(doc.toJson());
+    file.close();
+    return true;
 }
 
 bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)

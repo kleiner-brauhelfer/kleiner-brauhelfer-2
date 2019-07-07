@@ -511,13 +511,29 @@ void TabSudAuswahl::on_btnImportieren_clicked()
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
         try
         {
+            int sudRow = -1;
             bool ok = false;
             if (filter == "MaischeMalzundMehr (*.json)")
-                ok = ImportExport::importMaischeMalzundMehr(filePath);
+                ok = ImportExport::importMaischeMalzundMehr(filePath, &sudRow);
             else if (filter == "BeerXML (*.xml)")
-                ok = ImportExport::importBeerXml(filePath);
+                ok = ImportExport::importBeerXml(filePath, &sudRow);
             if (ok)
+            {
                 QMessageBox::information(this, tr("Rezept Import"), tr("Das Rezept wurde erfolgreich importiert."));
+                if (!ui->cbRezept->isChecked())
+                {
+                    ui->cbRezept->setChecked(true);
+                    setFilterStatus();
+                }
+                ui->cbMerkliste->setChecked(false);
+                ui->cbDatumAlle->setChecked(true);
+                ui->tbFilter->clear();
+                filterChanged();
+                ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+                sudRow = model->mapRowFromSource(sudRow);
+                ui->tableSudauswahl->setCurrentIndex(model->index(sudRow, model->fieldIndex("Sudname")));
+                ui->tableSudauswahl->scrollTo(ui->tableSudauswahl->currentIndex());
+            }
             else
                 QMessageBox::warning(this, tr("Rezept Import"), tr("Das Rezept konnte nicht importiert werden."));
         }
@@ -529,7 +545,7 @@ void TabSudAuswahl::on_btnImportieren_clicked()
         {
             QMessageBox::warning(this, tr("Fehler beim Importieren"), QObject::tr("Unbekannter Fehler."));
         }
-        filterChanged();
+
     }
     gSettings->endGroup();
 }

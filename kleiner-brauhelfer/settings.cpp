@@ -1,5 +1,5 @@
 #include "settings.h"
-#include <QCoreApplication>
+#include <QGuiApplication>
 #include <QFileInfo>
 
 Settings::Settings(QObject *parent) :
@@ -37,61 +37,7 @@ void Settings::initTheme()
     switch (mTheme)
     {
     case System:
-    case Bright:
-        ErrorBase = QColor(220, 127, 127);
-        WarningText = QColor(219, 137, 9);
-        ErrorText = QColor(180, 0, 0);
-
-        MekrlisteBackground = QColor(122, 163, 233);
-        VerbrauchtBackground = QColor(180, 180, 180);
-        AbgefuelltBackground = QColor(193, 225, 178);
-        GebrautBackground = QColor(225, 216, 184);
-        NichtGebrautBackground = QColor(245, 245, 245);
-
-        HopfenTypBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
-        HefeTypOgUgBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
-        HefeTypTrFlBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
-        HefeSedBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
-        WZTypBackgrounds = {QColor(255,200,170), QColor(250,250,230), QColor(200,255,200), QColor(235,255,200), QColor(200,200,255)};
-
-        DiagramLinie1 = QColor(116, 30, 166);
-        DiagramLinie2 = QColor(56, 104, 2);
-        DiagramLinie3 = QColor(170, 0, 0);
-        DiagramLinie1Light = QColor(151, 125, 166);
-        DiagramLinie2Light = QColor(141, 154, 127);
-        DiagramLinie3Light = QColor(170, 100, 100);
-        break;
-
-    case Dark:
-        ErrorBase = QColor(170, 100, 100);
-        WarningText = QColor(219, 137, 9);
-        ErrorText = QColor(238, 71, 71);
-
-        MekrlisteBackground = QColor(81, 139, 232);
-        VerbrauchtBackground = QColor(110, 110, 110);
-        AbgefuelltBackground = QColor(99, 125, 21);
-        GebrautBackground = QColor(125, 99, 21);
-        NichtGebrautBackground = QColor(53, 53, 53);
-
-        HopfenTypBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
-        HefeTypOgUgBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
-        HefeTypTrFlBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
-        HefeSedBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
-        WZTypBackgrounds = {QColor(255,150,94), QColor(211,211,46), QColor(141,239,141), QColor(191,229,121), QColor(162,162,242)};
-
-        DiagramLinie1 = QColor(165, 94, 209);
-        DiagramLinie2 = QColor(76, 140, 2);
-        DiagramLinie3 = QColor(175, 45, 45);
-        DiagramLinie1Light = QColor(151, 125, 166);
-        DiagramLinie2Light = QColor(120, 153, 84);
-        DiagramLinie3Light = QColor(170, 100, 100);
-        break;
-    }
-
-    switch (mTheme)
-    {
-    case System:
-        palette = mSystemPalette;
+        palette = QGuiApplication::palette();
         break;
 
     case Bright:
@@ -167,6 +113,57 @@ void Settings::initTheme()
         palette.setColor(QPalette::Link, QColor(42, 130, 218));
         palette.setColor(QPalette::LinkVisited, QColor(42, 130, 218));
         break;
+    }
+
+    if (palette.color(QPalette::Active, QPalette::Text).lightness() < 127)
+    {
+        ErrorBase = QColor(220, 127, 127);
+        WarningText = QColor(219, 137, 9);
+        ErrorText = QColor(180, 0, 0);
+
+        MekrlisteBackground = QColor(122, 163, 233);
+        VerbrauchtBackground = QColor(180, 180, 180);
+        AbgefuelltBackground = QColor(193, 225, 178);
+        GebrautBackground = QColor(225, 216, 184);
+        NichtGebrautBackground = QColor(245, 245, 245);
+
+        HopfenTypBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
+        HefeTypOgUgBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
+        HefeTypTrFlBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
+        HefeSedBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
+        WZTypBackgrounds = {QColor(255,200,170), QColor(250,250,230), QColor(200,255,200), QColor(235,255,200), QColor(200,200,255)};
+
+        DiagramLinie1 = QColor(116, 30, 166);
+        DiagramLinie2 = QColor(56, 104, 2);
+        DiagramLinie3 = QColor(170, 0, 0);
+        DiagramLinie1Light = QColor(151, 125, 166);
+        DiagramLinie2Light = QColor(141, 154, 127);
+        DiagramLinie3Light = QColor(170, 100, 100);
+    }
+    else
+    {
+        ErrorBase = QColor(170, 100, 100);
+        WarningText = QColor(219, 137, 9);
+        ErrorText = QColor(238, 71, 71);
+
+        MekrlisteBackground = QColor(81, 139, 232);
+        VerbrauchtBackground = QColor(110, 110, 110);
+        AbgefuelltBackground = QColor(99, 125, 21);
+        GebrautBackground = QColor(125, 99, 21);
+        NichtGebrautBackground = QColor(53, 53, 53);
+
+        HopfenTypBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
+        HefeTypOgUgBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
+        HefeTypTrFlBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
+        HefeSedBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
+        WZTypBackgrounds = {QColor(255,150,94), QColor(211,211,46), QColor(141,239,141), QColor(191,229,121), QColor(162,162,242)};
+
+        DiagramLinie1 = QColor(165, 94, 209);
+        DiagramLinie2 = QColor(76, 140, 2);
+        DiagramLinie3 = QColor(175, 45, 45);
+        DiagramLinie1Light = QColor(151, 125, 166);
+        DiagramLinie2Light = QColor(120, 153, 84);
+        DiagramLinie3Light = QColor(170, 100, 100);
     }
 
     paletteInput = palette;

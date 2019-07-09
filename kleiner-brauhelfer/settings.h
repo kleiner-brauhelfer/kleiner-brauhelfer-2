@@ -79,7 +79,6 @@ public:
 
 private:
     Theme mTheme;
-    const QPalette mSystemPalette;
 };
 
 class SettingsPortable : public Settings

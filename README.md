@@ -25,6 +25,9 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: zusätzliche Spalten in der Sudauswahl auswählbar
 - Neu: Zeitpunkt der Hopfengabe auswählbar (Vorderwürze, Kochen, Nachisomerisierung, beim Ausschlagen)
 - Neu: Dialog, um ungültige Zutatengaben zu löschen
+- Neu: Spickzettel & Zusammenfassung fertiggestellt
+- Neu: Dunkles Design fertiggestellt
+- Neu: Import & Export für MaischeMalzundMehr und BeerXml
 
 ### Version 2.0.0beta1
 - Neu: kompletter Neuaufbau des Programms

@@ -262,7 +262,7 @@ void MainWindow::on_actionOeffnen_triggered()
 {
     QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbankdatei auswählen"),
                                                     gSettings->databasePath(),
-                                                    tr("Datenbank") + " (*.sqlite)");
+                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
     if (!databasePath.isEmpty())
     {
         gSettings->setDatabasePath(databasePath);

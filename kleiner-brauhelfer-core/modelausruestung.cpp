@@ -85,9 +85,9 @@ bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
 {
     if (SqlTableModel::removeRows(row, count, parent))
     {
-        for (int i = 0; i < count; ++i)
+        for (int n = 0; n < count; ++n)
         {
-            int id = data(row + i, "ID").toInt();
+            int id = data(row + n, "ID").toInt();
             int colId = bh->modelGeraete()->fieldIndex("AusruestungAnlagenID");
             for (int i = 0; i < bh->modelGeraete()->rowCount(); ++i)
             {

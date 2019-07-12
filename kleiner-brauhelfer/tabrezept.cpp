@@ -1010,6 +1010,8 @@ void TabRezept::on_btnTagNeu_clicked()
 void TabRezept::on_btnTagLoeschen_clicked()
 {
     ProxyModel *model = bh->sud()->modelFlaschenlabelTags();
-    for (const QModelIndex &index : ui->tableTags->selectionModel()->selectedIndexes())
+    QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
         model->removeRow(index.row());
 }

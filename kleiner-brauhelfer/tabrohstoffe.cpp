@@ -995,7 +995,7 @@ void TabRohstoffe::on_buttonCopy_clicked()
     }
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
     SqlTableModel *sourceModel = static_cast<SqlTableModel*>(model->sourceModel());
-    for (const QModelIndex &index : table->selectionModel()->selectedRows())
+    for (const QModelIndex& index : table->selectionModel()->selectedRows())
     {
         int row = index.row();
         QVariantMap values = sourceModel->copyValues(model->mapRowToSource(row));
@@ -1028,7 +1028,9 @@ void TabRohstoffe::on_buttonDelete_clicked()
         return;
     }
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
-    for (const QModelIndex &index : table->selectionModel()->selectedRows())
+    QModelIndexList indices = table->selectionModel()->selectedRows();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
     {
         if (model->data(index.row(), "InGebrauch").toBool())
             replace(ui->toolBoxRohstoffe->currentIndex(), model->data(index.row(), "Beschreibung").toString());
@@ -1178,7 +1180,7 @@ void TabRohstoffe::on_btnNeuesWasserprofil_clicked()
 void TabRohstoffe::on_btnWasserprofilLoeschen_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableWasser->model());
-    for (const QModelIndex &index : ui->tableWasser->selectionModel()->selectedRows())
+    for (const QModelIndex& index : ui->tableWasser->selectionModel()->selectedRows())
     {
         QString name = model->data(index.row(), "Name").toString();
         int ret = QMessageBox::question(this, tr("Wasserprofil löschen?"),

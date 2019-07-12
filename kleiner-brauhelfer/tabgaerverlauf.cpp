@@ -404,7 +404,9 @@ void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
 
 void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
 {
-    for (const QModelIndex & index : ui->tableWidget_Schnellgaerverlauf->selectionModel()->selectedIndexes())
+    QModelIndexList indices = ui->tableWidget_Schnellgaerverlauf->selectionModel()->selectedRows();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
         bh->sud()->modelSchnellgaerverlauf()->removeRow(index.row());
 }
 
@@ -497,7 +499,9 @@ void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
 
 void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 {
-    for (const QModelIndex & index : ui->tableWidget_Hauptgaerverlauf->selectionModel()->selectedIndexes())
+    QModelIndexList indices = ui->tableWidget_Hauptgaerverlauf->selectionModel()->selectedRows();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
         bh->sud()->modelHauptgaerverlauf()->removeRow(index.row());
 }
 
@@ -512,6 +516,8 @@ void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
 
 void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
 {
-    for (const QModelIndex & index : ui->tableWidget_Nachgaerverlauf->selectionModel()->selectedIndexes())
+    QModelIndexList indices = ui->tableWidget_Nachgaerverlauf->selectionModel()->selectedRows();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
 }

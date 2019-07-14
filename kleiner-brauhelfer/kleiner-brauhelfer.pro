@@ -53,6 +53,7 @@ SOURCES += \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
+    dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgeinmaischtemp.cpp \
     dialogs/dlgmessage.cpp \
     dialogs/dlgrestextrakt.cpp \
@@ -115,6 +116,7 @@ HEADERS += \
     tabzusammenfassung.h \
     templatetags.h \
     dialogs/dlgabout.h \
+    dialogs/dlgdatabasecleaner.h \
     dialogs/dlgeinmaischtemp.h \
     dialogs/dlgmessage.h \
     dialogs/dlgrestextrakt.h \
@@ -173,6 +175,7 @@ FORMS += \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
+    dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgeinmaischtemp.ui \
     dialogs/dlgmessage.ui \
     dialogs/dlgrestextrakt.ui \

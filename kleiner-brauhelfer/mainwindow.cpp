@@ -10,6 +10,7 @@
 #include "definitionen.h"
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgmessage.h"
+#include "dialogs/dlgdatabasecleaner.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -279,6 +280,12 @@ void MainWindow::on_actionVerwerfen_triggered()
 {
     setFocus();
     bh->discard();
+}
+
+void MainWindow::on_actionBereinigen_triggered()
+{
+    DlgDatabaseCleaner dlg(this);
+    dlg.exec();
 }
 
 void MainWindow::on_actionBeenden_triggered()

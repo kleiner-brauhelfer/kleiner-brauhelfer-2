@@ -213,6 +213,8 @@
     <addaction name="actionSpeichern"/>
     <addaction name="actionVerwerfen"/>
     <addaction name="separator"/>
+    <addaction name="actionBereinigen"/>
+    <addaction name="separator"/>
     <addaction name="actionBeenden"/>
    </widget>
    <widget class="QMenu" name="menuAnsicht">
@@ -391,6 +393,11 @@
   <action name="actionHefeZugabeZuruecksetzen">
    <property name="text">
     <string>&quot;Hefe Zugabe&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionBereinigen">
+   <property name="text">
+    <string>Bereinigen</string>
    </property>
   </action>
  </widget>

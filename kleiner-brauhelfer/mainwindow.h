@@ -27,6 +27,7 @@ private slots:
     void on_actionOeffnen_triggered();
     void on_actionSpeichern_triggered();
     void on_actionVerwerfen_triggered();
+    void on_actionBereinigen_triggered();
     void on_actionBeenden_triggered();
     void on_actionSudGebraut_triggered();
     void on_actionSudAbgefuellt_triggered();

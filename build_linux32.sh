@@ -1,8 +1,11 @@
 #!/bin/sh
 
 QT_DIR=$1
+PORTABLE=$2
+DEPLOY=$3
+
 if [ "${QT_DIR}" = "" ]; then
-  echo "Usage: build_linux32.sh <qt-bin-directory>"
+  echo "Usage: build_linux32.sh <qt-bin-directory> [portable] [deploy]"
   exit 1
 fi
 
@@ -12,9 +15,16 @@ BUILD_DIR=$(dirname $0)/build-linux32
 mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 "${QT_DIR}/qmake" "../${PRO}" -config release
-make clean && make -j 8
+make clean
+make -j 8
 "${QT_DIR}/lupdate" "../${PRO}"
 "${QT_DIR}/lrelease" "../${PRO}"
 cd ..
 
-./deployment/linux/32bit/deploy.sh "${BUILD_DIR}\bin" "${QT_DIR}"
+if [ ! -z ${PORTABLE} ]; then
+  touch "${BUILD_DIR}/bin/portable"
+fi
+
+if [ ! -z ${DEPLOY} ]; then
+  ./deployment/linux/32bit/deploy.sh "${BUILD_DIR}/bin" "${QT_DIR}"
+fi

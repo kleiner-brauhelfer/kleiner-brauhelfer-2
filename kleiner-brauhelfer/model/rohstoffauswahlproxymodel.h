@@ -5,6 +5,8 @@
 
 class RohstoffAuswahlProxyModel : public ProxyModel
 {
+    Q_OBJECT
+
 public:
     RohstoffAuswahlProxyModel(QObject* parent = nullptr);
     QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;

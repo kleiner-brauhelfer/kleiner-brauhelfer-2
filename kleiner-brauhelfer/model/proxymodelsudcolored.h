@@ -5,6 +5,8 @@
 
 class ProxyModelSudColored : public ProxyModelSud
 {
+    Q_OBJECT
+
 public:
     ProxyModelSudColored(QObject* parent = nullptr);
     void setSourceModel(QAbstractItemModel *sourceModel) Q_DECL_OVERRIDE;

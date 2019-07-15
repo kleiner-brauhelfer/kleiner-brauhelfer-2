@@ -10,5 +10,3 @@ xcopy "%~dp0libeay32.dll" "%BUILD_DIR%" /Y
 xcopy "%~dp0ssleay32.dll" "%BUILD_DIR%" /Y
 
 "%QT_DIR%\windeployqt.exe" "%BUILD_DIR%\kleiner-brauhelfer.exe"
-
-echo. 2>"%BUILD_DIR%\portable"

@@ -9,6 +9,7 @@ class DsvData;
 class DsvTableModel : public QAbstractTableModel
 {
     Q_OBJECT
+
 public:
     explicit DsvTableModel(QObject *parent = nullptr);
     ~DsvTableModel();

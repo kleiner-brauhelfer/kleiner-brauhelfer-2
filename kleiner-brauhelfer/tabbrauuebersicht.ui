@@ -130,6 +130,13 @@
      </widget>
     </widget>
    </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Die angezeigten Sude können im Reiter Sudauswahl eingestellt werden.</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>

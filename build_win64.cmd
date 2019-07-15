@@ -1,8 +1,11 @@
 @echo off
 
 set QT_DIR=%1
+set PORTABLE=%2
+set DEPLOY=%3
+
 if "%QT_DIR%" equ "" (
-  echo Usage: build_win64.cmd ^<qt-bin-directory^>
+  echo Usage: build_win64.cmd ^<qt-bin-directory^> [portable] [deploy]
   exit /b 1
 )
 
@@ -24,4 +27,10 @@ nmake
 "%QT_DIR%\lrelease.exe" "%PRO%"
 cd %~dp0
 
-"%~dp0deployment/win/64bit/deploy.cmd" "%BUILD_DIR%\bin" "%QT_DIR%"
+if not "%PORTABLE%" equ "" (
+  echo. 2>"%BUILD_DIR%\bin\portable"
+)
+
+if not "%DEPLOY%" equ "" (
+  "%~dp0deployment\win\64bit\deploy.cmd" "%BUILD_DIR%\bin" "%QT_DIR%"
+)

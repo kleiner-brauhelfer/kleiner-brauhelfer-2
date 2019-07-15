@@ -36,19 +36,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tabBrauUebersicht">
-       <attribute name="title">
-        <string>Brauübersicht</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_7">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabBrauUebersicht" name="tabContentBrauUebersicht" native="true"/>
-        </item>
-       </layout>
-      </widget>
       <widget class="QWidget" name="tabRezept">
        <attribute name="title">
         <string>Rezept</string>
@@ -137,6 +124,19 @@
         </property>
         <item>
          <widget class="TabBewertung" name="tabContentBewertung" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabBrauUebersicht">
+       <attribute name="title">
+        <string>Brauübersicht</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="TabBrauUebersicht" name="tabContentBrauUebersicht" native="true"/>
         </item>
        </layout>
       </widget>

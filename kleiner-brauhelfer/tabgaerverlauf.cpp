@@ -1,5 +1,6 @@
 #include "tabgaerverlauf.h"
 #include "ui_tabgaerverlauf.h"
+#include <QKeyEvent>
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -233,6 +234,38 @@ void TabGaerverlauf::restoreView()
     ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
     ui->splitterHautpgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
     ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
+}
+
+void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
+{
+    QWidget::keyPressEvent(event);
+    if (ui->tableWidget_Schnellgaerverlauf->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnDelSchnellgaerMessung_clicked();
+            break;
+        }
+    }
+    else if (ui->tableWidget_Hauptgaerverlauf->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnDelHauptgaerMessung_clicked();
+            break;
+        }
+    }
+    else if (ui->tableWidget_Nachgaerverlauf->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnDelNachgaerMessung_clicked();
+            break;
+        }
+    }
 }
 
 void TabGaerverlauf::sudLoaded()

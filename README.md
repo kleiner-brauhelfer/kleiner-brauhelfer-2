@@ -29,6 +29,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Dunkles Design fertiggestellt
 - Neu: Import & Export für MaischeMalzundMehr und BeerXml
 - Neu: Funktion, um Datenbank zu bereinigen
+- Neu: Reiter Navigation mit F1 - F12
 
 ### Version 2.0.0beta1
 - Neu: kompletter Neuaufbau des Programms

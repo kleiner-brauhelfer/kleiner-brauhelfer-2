@@ -157,6 +157,8 @@ void DlgDatabaseCleaner::next()
         ui->lblTitle->setText("");
         ui->lblModel->setText("");
         ui->tableView->setModel(nullptr);
+        ui->tableViewIds->setVisible(false);
+        ui->btnDelete->setVisible(false);
         ui->btnWeiter->setText(tr("Fertig"));
         return;
     }

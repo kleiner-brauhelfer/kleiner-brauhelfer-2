@@ -46,7 +46,8 @@ private slots:
     void on_actionUeber_triggered();
 
 private:
-    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
+    void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
+    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     void restart();
     void save();
     void saveSettings();

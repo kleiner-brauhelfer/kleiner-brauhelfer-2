@@ -1,5 +1,6 @@
 #include "tabbrauuebersicht.h"
 #include "ui_tabbrauuebersicht.h"
+#include <QKeyEvent>
 #include <QMenu>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -161,6 +162,24 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
             this, SLOT(diagram_selectionChanged(int)));
 
     updateDiagram();
+}
+
+void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
+{
+    QWidget::keyPressEvent(event);
+    if (ui->tableView->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Return:
+            QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
+            if (selection.count() > 0)
+            {
+                on_tableView_doubleClicked(selection[0]);
+            }
+            break;
+        }
+    }
 }
 
 void TabBrauUebersicht::updateDiagram()

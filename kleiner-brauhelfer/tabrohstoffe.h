@@ -52,6 +52,7 @@ private slots:
     void on_tbCarbonathaerte_valueChanged(double value);
 
 private:
+    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     void addEntry(QTableView *table, const QVariantMap &values);
     void replace(int type, const QString &rohstoff);
     QVariant dataWasser(const QString &fieldName) const;

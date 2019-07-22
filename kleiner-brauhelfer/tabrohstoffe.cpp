@@ -2,6 +2,7 @@
 #include "ui_tabrohstoffe.h"
 #include <QMessageBox>
 #include <QMenu>
+#include <QKeyEvent>
 #include <QDesktopServices>
 #include <QUrl>
 #include "brauhelfer.h"
@@ -507,6 +508,38 @@ void TabRohstoffe::restoreView()
     ui->tableHefe->horizontalHeader()->restoreState(mDefaultStateTableHefe);
     ui->tableWeitereZutaten->horizontalHeader()->restoreState(mDefaultStateTableWeitereZutaten);
     ui->tableWasser->horizontalHeader()->restoreState(mDefaultStateTableWasser);
+}
+
+void TabRohstoffe::keyPressEvent(QKeyEvent* event)
+{
+    QWidget::keyPressEvent(event);
+    QTableView *table;
+    switch (ui->toolBoxRohstoffe->currentIndex())
+    {
+    case 0:
+        table = ui->tableMalz;
+        break;
+    case 1:
+        table = ui->tableHopfen;
+        break;
+    case 2:
+        table = ui->tableHefe;
+        break;
+    case 3:
+        table = ui->tableWeitereZutaten;
+        break;
+    default:
+        return;
+    }
+    if (table->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_buttonDelete_clicked();
+            break;
+        }
+    }
 }
 
 void TabRohstoffe::on_tableMalz_clicked(const QModelIndex &index)

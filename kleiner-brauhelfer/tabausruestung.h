@@ -47,6 +47,7 @@ private slots:
     void on_tableViewSude_customContextMenuRequested(const QPoint &pos);
 
 private:
+    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     QVariant data(const QString &fieldName) const;
     bool setData(const QString &fieldName, const QVariant &value);
 

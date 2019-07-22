@@ -23,6 +23,9 @@ public:
 signals:
     void clicked(int sudId);
 
+private:
+    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+
 private slots:
     void updateDiagram();
     void on_tableView_doubleClicked(const QModelIndex &index);

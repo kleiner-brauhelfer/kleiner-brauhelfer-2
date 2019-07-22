@@ -1,5 +1,6 @@
 #include "tabausruestung.h"
 #include "ui_tabausruestung.h"
+#include <QKeyEvent>
 #include <QMenu>
 #include <QMessageBox>
 #include "brauhelfer.h"
@@ -160,6 +161,29 @@ void TabAusruestung::restoreView()
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
+void TabAusruestung::keyPressEvent(QKeyEvent* event)
+{
+    QWidget::keyPressEvent(event);
+    if (ui->tableViewAnlagen->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnAnlageLoeschen_clicked();
+            break;
+        }
+    }
+    else if (ui->listViewGeraete->hasFocus())
+    {
+        switch (event->key())
+        {
+        case Qt::Key::Key_Delete:
+            on_btnGeraetLoeschen_clicked();
+            break;
+        }
+    }
+}
+
 void TabAusruestung::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
@@ -254,7 +278,7 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
 
 void TabAusruestung::on_btnGeraetLoeschen_clicked()
 {
-    QModelIndexList indices = ui->listViewGeraete->selectionModel()->selectedRows();
+    QModelIndexList indices = ui->listViewGeraete->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
     {

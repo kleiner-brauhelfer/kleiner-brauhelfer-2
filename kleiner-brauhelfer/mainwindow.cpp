@@ -118,6 +118,14 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
+void MainWindow::keyPressEvent(QKeyEvent* event)
+{
+    QMainWindow::keyPressEvent(event);
+    int n = event->key() - Qt::Key::Key_F1;
+    if (n >= 0 && n < ui->tabMain->count())
+        ui->tabMain->setCurrentIndex(n);
+}
+
 void MainWindow::restart()
 {
     if (bh->isDirty())

@@ -17,6 +17,9 @@ public:
     void saveSettings();
     void restoreView();
 
+private:
+    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+
 private slots:
     void sudLoaded();
     void updateDiagramm();

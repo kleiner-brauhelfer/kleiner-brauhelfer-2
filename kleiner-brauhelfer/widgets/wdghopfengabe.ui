@@ -538,12 +538,17 @@
           </item>
           <item>
            <property name="text">
+            <string>Kochbeginn</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Kochen</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Nachisomerisierung</string>
+            <string>Kochende</string>
            </property>
           </item>
           <item>

@@ -8,16 +8,10 @@ Settings::Settings(QObject *parent) :
     initTheme();
 }
 
-Settings::Settings(bool dummyPortable, QObject *parent) :
-    QSettings(QCoreApplication::applicationDirPath() + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
+Settings::Settings(const QString& dir, QObject *parent) :
+    QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
-    Q_UNUSED(dummyPortable)
     initTheme();
-}
-
-SettingsPortable::SettingsPortable(QObject *parent) :
-    Settings(true, parent)
-{
 }
 
 Settings::~Settings()

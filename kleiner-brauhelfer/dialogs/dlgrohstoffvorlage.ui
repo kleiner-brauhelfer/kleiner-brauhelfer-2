@@ -15,11 +15,11 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Quellen: www.mueggelland.de | www.brewferm.be/de | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | http://www.weyermann.de</string>
+    <widget class="QLineEdit" name="lineEditFilter">
+     <property name="placeholderText">
+      <string>Suche</string>
      </property>
-     <property name="wordWrap">
+     <property name="clearButtonEnabled">
       <bool>true</bool>
      </property>
     </widget>
@@ -44,6 +44,16 @@
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
      </attribute>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Quellen: www.mueggelland.de | www.brewferm.be/de | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | http://www.weyermann.de</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
    <item>

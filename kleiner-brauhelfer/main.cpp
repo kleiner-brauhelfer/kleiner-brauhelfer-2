@@ -207,7 +207,7 @@ int main(int argc, char *argv[])
 
     // load settings
     if (QFile::exists(a.applicationDirPath() + "/portable"))
-        gSettings = new SettingsPortable();
+        gSettings = new Settings(QCoreApplication::applicationDirPath());
     else
         gSettings = new Settings();
 

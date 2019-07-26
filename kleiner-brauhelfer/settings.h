@@ -17,6 +17,7 @@ public:
 
 public:
     explicit Settings(QObject *parent = nullptr);
+    Settings(const QString& dir, QObject *parent = nullptr);
     virtual ~Settings();
 
     Theme theme() const;
@@ -39,9 +40,6 @@ public:
 
     QString lastProgramVersion();
     bool isNewProgramVersion();
-
-protected:
-    Settings(bool dummyPortable, QObject *parent = nullptr);
 
 private:
     void initTheme();
@@ -79,12 +77,6 @@ public:
 
 private:
     Theme mTheme;
-};
-
-class SettingsPortable : public Settings
-{
-public:
-    explicit SettingsPortable(QObject *parent = nullptr);
 };
 
 #endif // SETTINGS_H

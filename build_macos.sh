@@ -7,7 +7,8 @@ if [ "${QTDIR}" = "" ]; then
 fi
 
 PRO="kleiner-brauhelfer-2.pro"
-
+rm -rf ./kleiner-brauhelfer-core/tmp
+rm -rf ./kleiner-brauhelfer/tmp
 ${QTDIR}/qmake "${PRO}" -config release || exit 1
 make clean && make || exit 1
 ${QTDIR}/lupdate "${PRO}" || exit 1

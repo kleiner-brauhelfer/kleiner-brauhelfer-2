@@ -174,6 +174,10 @@ void SqlTableModel::setTable(const QString &tableName)
     if (tableName != this->tableName())
     {
         QSqlTableModel::setTable(tableName);
+        // hack for setHeaderData() (crash in proxy model when loading new database in App)
+        beginResetModel();
+        endResetModel();
+        // hack end
         QSqlRecord rec = record();
         mRoles.clear();
         for(int i = 0; i < columnCount(); ++i)

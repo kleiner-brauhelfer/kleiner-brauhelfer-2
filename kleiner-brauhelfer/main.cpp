@@ -33,7 +33,7 @@ static bool chooseDatabase()
     if (gSettings->databasePath().isEmpty())
     {
         text = QObject::tr("Es wurde noch keine Datenbankdatei ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
-        dir = QApplication::applicationDirPath();
+        dir = gSettings->settingsDir();
     }
     else
     {
@@ -162,7 +162,11 @@ static void copyResources()
     bool update = gSettings->isNewProgramVersion();
     QDirIterator it(":/data", QDirIterator::Subdirectories);
     if (!QDir(dataDir).exists())
-        QDir().mkdir(dataDir);
+    {
+        if (!QDir().mkpath(dataDir))
+            QMessageBox::critical(nullptr, QApplication::applicationName(),
+                                  QObject::tr("Der Ordner \"%1\" konnte nicht erstellt werden.").arg(dataDir));
+    }
     while (it.hasNext())
     {
         it.next();
@@ -174,6 +178,9 @@ static void copyResources()
         {
             if (fileResource.copy(fileLocal.fileName()))
                 fileLocal.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+            else
+                QMessageBox::critical(nullptr, QApplication::applicationName(),
+                                      QObject::tr("Der Datei \"%1\" konnte nicht erstellt werden.").arg(fileLocal.fileName()));
         }
         else if (update)
         {
@@ -190,6 +197,9 @@ static void copyResources()
                     fileLocal.remove();
                     if (fileResource.copy(fileLocal.fileName()))
                         fileLocal.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+                    else
+                        QMessageBox::critical(nullptr, QApplication::applicationName(),
+                                              QObject::tr("Der Datei \"%1\" konnte nicht erstellt werden.").arg(fileLocal.fileName()));
                 }
             }
         }

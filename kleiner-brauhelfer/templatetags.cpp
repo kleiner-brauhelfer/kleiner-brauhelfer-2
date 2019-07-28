@@ -57,7 +57,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["HighGravityFaktor"] = QString::number(bh->modelSud()->data(sudRow, "HighGravityFaktor").toInt());
             ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, "Anlage").toString();
             ctxRezept["Name"] = bh->modelSud()->data(sudRow, "Sudname").toString();
-            ctxRezept["Nummer"] = QString::number(bh->modelSud()->data(sudRow, "Sudnummer").toInt());
+            ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, "Sudnummer").toInt();
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, "Kommentar").toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, "erg_S_Gesamt").toDouble(), 'f', 2);
             ctxRezept["EinmaischenTemp"] = QString::number(bh->modelSud()->data(sudRow, "EinmaischenTemp").toInt());

@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsSvgItem>
 #include <QStandardItemModel>
+#include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/checkboxdelegate.h"

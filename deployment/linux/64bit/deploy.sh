@@ -2,20 +2,47 @@
 
 BUILD_DIR=$1
 QT_DIR=$2
-SCRIPT_DIR=$(dirname $0)
+SCRIPT_DIR=$(dirname "$(readlink -f "${0}")")
 
+# remove unnecessary stuff
 rm "${BUILD_DIR}/libkleiner-brauhelfer-core.a"
 
-mkdir "${BUILD_DIR}/usr"
-mkdir "${BUILD_DIR}/usr/bin"
-cp "${BUILD_DIR}/kleiner-brauhelfer" "${BUILD_DIR}/usr/bin"
-cp "${BUILD_DIR}/portable" "${BUILD_DIR}/usr/bin"
 
-mkdir "${BUILD_DIR}/usr/share"
-mkdir "${BUILD_DIR}/usr/share/applications"
-cp "${SCRIPT_DIR}/kleiner-brauhelfer.desktop" "${BUILD_DIR}/usr/share/applications"
+# create deb package 
+DEPLOY_DIR="${BUILD_DIR}/deb"
 
-mkdir "${BUILD_DIR}/usr/share/icons"
-cp "${SCRIPT_DIR}/kleiner-brauhelfer.svg" "${BUILD_DIR}/usr/share/icons"
+mkdir -p "${DEPLOY_DIR}/usr/local/bin/kleiner-brauhelfer-2"
+cp "${BUILD_DIR}/kleiner-brauhelfer-2" "${DEPLOY_DIR}/usr/local/bin/kleiner-brauhelfer-2"
 
-"${SCRIPT_DIR}/linuxdeployqt-6-x86_64.AppImage" "${BUILD_DIR}/usr/share/applications/kleiner-brauhelfer.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files
+mkdir -p "${DEPLOY_DIR}/usr/share/pixmaps"
+cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${DEPLOY_DIR}/usr/share/pixmaps/"
+
+mkdir -p "${DEPLOY_DIR}/usr/share/applications"
+cp "${SCRIPT_DIR}/deb/kleiner-brauhelfer-2.desktop" "${DEPLOY_DIR}/usr/share/applications/"
+
+mkdir -p "${DEPLOY_DIR}/DEBIAN"
+cp "${SCRIPT_DIR}/deb/control" "${DEPLOY_DIR}/DEBIAN/"
+
+chmod 0755 "${DEPLOY_DIR}/DEBIAN"
+dpkg-deb --build "${DEPLOY_DIR}"
+mv "${DEPLOY_DIR}/../deb.deb" "./kbh2_v2.x.x_linux_x64.deb"
+
+
+# create portable AppImage
+mkdir -p "${BUILD_DIR}/AppImage/usr/bin"
+cp "${BUILD_DIR}/kleiner-brauhelfer-2" "${BUILD_DIR}/AppImage/usr/bin"
+cp "${SCRIPT_DIR}/AppImage/AppRun" "${BUILD_DIR}/AppImage"
+
+mkdir -p "${BUILD_DIR}/AppImage/usr/share/applications"
+cp "${SCRIPT_DIR}/AppImage/kleiner-brauhelfer-2.desktop" "${BUILD_DIR}/AppImage/usr/share/applications"
+
+mkdir -p "${BUILD_DIR}/AppImage/usr/share/icons"
+cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${BUILD_DIR}/AppImage/usr/share/icons"
+
+cd "${BUILD_DIR}/AppImage"
+"${SCRIPT_DIR}/AppImage/linuxdeployqt-6-x86_64.AppImage" "./usr/share/applications/kleiner-brauhelfer-2.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files -appimage
+mv kleiner-brauhelfer-2-*-x86_64.AppImage kleiner-brauhelfer-2-x86_64.AppImage
+mkdir kleiner-brauhelfer-2-x86_64.AppImage.config
+tar -zcvf kbh2_v2.x.x_portable_linux_x64.tar.gz kleiner-brauhelfer-2-x86_64.AppImage kleiner-brauhelfer-2-x86_64.AppImage.config
+cd -
+mv ${BUILD_DIR}/AppImage/kbh2_*_portable_linux_x64.tar.gz ./

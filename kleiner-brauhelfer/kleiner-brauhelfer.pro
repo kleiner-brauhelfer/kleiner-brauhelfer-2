@@ -4,7 +4,7 @@ isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
 }
 
 ORGANIZATION = kleiner-brauhelfer
-TARGET = kleiner-brauhelfer
+TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
 VER_MIN = 0

@@ -9,4 +9,4 @@ del "%BUILD_DIR%\kleiner-brauhelfer-core.lib"
 xcopy "%~dp0libeay32.dll" "%BUILD_DIR%" /Y
 xcopy "%~dp0ssleay32.dll" "%BUILD_DIR%" /Y
 
-"%QT_DIR%\windeployqt.exe" "%BUILD_DIR%\kleiner-brauhelfer.exe"
+"%QT_DIR%\windeployqt.exe" "%BUILD_DIR%\kleiner-brauhelfer-2.exe"

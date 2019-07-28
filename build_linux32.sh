@@ -15,16 +15,16 @@ BUILD_DIR=$(dirname $0)/build-linux32
 mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 "${QT_DIR}/qmake" "../${PRO}" -config release
-make clean
+#make clean
 make -j 8
 "${QT_DIR}/lupdate" "../${PRO}"
 "${QT_DIR}/lrelease" "../${PRO}"
-cd ..
+cd -
 
-if [ ! -z ${PORTABLE} ]; then
+if [ ${PORTABLE} = "1" ]; then
   touch "${BUILD_DIR}/bin/portable"
 fi
 
-if [ ! -z ${DEPLOY} ]; then
+if [ ${DEPLOY} = "1" ]; then
   ./deployment/linux/32bit/deploy.sh "${BUILD_DIR}/bin" "${QT_DIR}"
 fi

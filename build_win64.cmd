@@ -27,10 +27,10 @@ nmake
 "%QT_DIR%\lrelease.exe" "%PRO%"
 cd %~dp0
 
-if not "%PORTABLE%" equ "" (
+if "%PORTABLE%" equ "1" (
   echo. 2>"%BUILD_DIR%\bin\portable"
 )
 
-if not "%DEPLOY%" equ "" (
+if "%DEPLOY%" equ "1" (
   "%~dp0deployment\win\64bit\deploy.cmd" "%BUILD_DIR%\bin" "%QT_DIR%"
 )

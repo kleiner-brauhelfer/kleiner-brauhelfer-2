@@ -2,6 +2,7 @@
 #define DLGDATABASECLEANER_H
 
 #include <QDialog>
+#include <functional>
 #include "sqltablemodel.h"
 
 namespace Ui {

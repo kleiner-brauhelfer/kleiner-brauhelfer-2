@@ -11,19 +11,33 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - [Version 2.0.0beta2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta2)
 
 ### Windows
-- **kbh2_v2.x.x_setup_win_x64.exe:** Installationsdatei für 64bit System (Qt Abhängigkeiten integriert)
-- **kbh2_v2.x.x_portable_win_x64.zip:** Portable Version für 64bit System (Qt Abhängigkeiten integriert)
-- **kbh2_v2.x.x_setup_win_x86.exe:** Installationsdatei für 32bit System (Qt Abhängigkeiten integriert)
-- **kbh2_v2.x.x_portable_win_x86.zip:** Portable Version für 32bit System (Qt Abhängigkeiten integriert)
+- **kbh2_v2.x.x_setup_win_x64.exe**
+  - Installationsdatei für 64bit System
+  - Qt Abhängigkeiten integriert
+- **kbh2_v2.x.x_portable_win_x64.zip**
+  - Portable Version für 64bit System
+  - Qt Abhängigkeiten integriert
+- **kbh2_v2.x.x_setup_win_x86.exe**
+  - Installationsdatei für 32bit System
+  - Qt Abhängigkeiten integriert
+- **kbh2_v2.x.x_portable_win_x86.zip**
+  - Portable Version für 32bit System
+  - Qt Abhängigkeiten integriert
 
 ### Linux
-- **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System (Qt Abhängigkeiten **nicht** integriert)
+- **kbh2_v2.x.x_linux_x64.deb**
+  - Installationsdatei für 64bit System
+  - Qt Abhängigkeiten **nicht** integriert
   - Benötigt Installation von [Qt 5.13](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc 64-bit
     - Qt Charts
     - Qt WebEngine
-- **kbh2_v2.x.x_portable_linux_x64.tar.gz**: Portable Version (AppImage) für 64bit System (Qt Abhängigkeiten integriert)
-- **kbh2_v2.x.x_linux_x32.deb**: Installationsdatei für 32bit System (Qt Abhängigkeiten **nicht** integriert)
+- **kbh2_v2.x.x_portable_linux_x64.tar.gz**
+  - Portable Version (AppImage) für 64bit System
+  - Qt Abhängigkeiten integriert
+- **kbh2_v2.x.x_linux_x32.deb**
+  - Installationsdatei für 32bit System
+  - Qt Abhängigkeiten **nicht** integriert
   - Qt wird für Linux 32bit nicht mehr kompiliert. Deshalb werden nicht alle Features unterstüzt.
   - Benötigt Installation von [Qt 5.5](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc

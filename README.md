@@ -44,7 +44,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
     - Qt WebEngine
 
 ### Mac OS
-- **kleiner-brauhelfer-2.x.x_macos.zip**: Installationsdatei für Mac OS (Qt Abhängigkeiten integriert)
+- **kbh2_v2.x.x_macos.zip**: Installationsdatei für Mac OS (Qt Abhängigkeiten integriert)
 
 ## Änderungen & Erweiterungen
 

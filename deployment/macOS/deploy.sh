@@ -2,7 +2,7 @@
 
 if ! [ -d "$1" ] || ! [ -d "$2" ]; then
   echo "Usage: $0 <path_to_kleiner-brauhelfer_bundle> <path_to_qt_bin> <optional version_suffix>" >&2
-  echo "Example: $0 ./bin/kleiner-brauhelfer.app /opt/Qt/5.12.3/clang_64/bin" >&2
+  echo "Example: $0 ./bin/kleiner-brauhelfer.app /opt/Qt/5.10.0/clang_64/bin" >&2
   exit 1
 fi
 
@@ -112,7 +112,7 @@ echo "* Creating self-contained bundle..."
 
 "${QT_DIR}/macdeployqt" ${BUNDLE} \
     -verbose=1 \
-    -executable="${BUNDLE}/Contents/MacOS/kleiner-brauhelfer" \
+    -executable="${BUNDLE}/Contents/MacOS/kleiner-brauhelfer-2" \
     -executable="${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess" \
  || exit 1
 
@@ -122,7 +122,8 @@ echo "* Creating self-contained bundle..."
 
 echo "* Creating ZIP-archive for distribution..."
 DIR="$(dirname ${BUNDLE})"
-ZIP="kleiner-brauhelfer-${VERSION}_macos.zip"
+ZIPVERSION=`echo "${VERSION}"`
+ZIP="kbh2_v${ZIPVERSION}_macos.zip"
 pushd "${DIR}" || exit 1
 zip -ry -o "${ZIP}" `basename ${BUNDLE}` || exit 1
 popd

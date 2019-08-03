@@ -112,7 +112,7 @@ echo "* Creating self-contained bundle..."
 
 "${QT_DIR}/macdeployqt" ${BUNDLE} \
     -verbose=1 \
-    -executable="${BUNDLE}/Contents/MacOS/kleiner-brauhelfer" \
+    -executable="${BUNDLE}/Contents/MacOS/kleiner-brauhelfer-2" \
     -executable="${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess" \
  || exit 1
 
@@ -122,8 +122,8 @@ echo "* Creating self-contained bundle..."
 
 echo "* Creating ZIP-archive for distribution..."
 DIR="$(dirname ${BUNDLE})"
-ZIPVERSION=`echo "${VERSION}" | tr '.' '_'`
-ZIP="kb2_macos_v${ZIPVERSION}.zip"
+ZIPVERSION=`echo "${VERSION}"`
+ZIP="kbh2_v${ZIPVERSION}_macos.zip"
 pushd "${DIR}" || exit 1
 zip -ry -o "${ZIP}" `basename ${BUNDLE}` || exit 1
 popd

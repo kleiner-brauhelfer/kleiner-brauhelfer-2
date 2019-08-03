@@ -16,6 +16,7 @@ public:
     ~TabGaerverlauf();
     void saveSettings();
     void restoreView();
+    void checkEnabled();
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

@@ -48,7 +48,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0rc1 (in Entwicklung)
+### Version 2.0.0
+- Neu: Funktion "Eingabefelder entsperren"
 
 ### Version 2.0.0beta2
 - Fix: Woche war immer auf 0

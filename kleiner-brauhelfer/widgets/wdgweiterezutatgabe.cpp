@@ -49,6 +49,8 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
     if (data("Zeitpunkt").toInt() == EWZ_Zeitpunkt_Gaerung)
         enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
+    if (gSettings->ForceEnabled)
+        enabled = true;
     if (enabled == mEnabled && !force)
         return;
 
@@ -105,7 +107,6 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbVorhanden->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
-        ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept);
         ui->tbMenge->setReadOnly(false);
         ui->tbDauerMin->setReadOnly(false);
         ui->tbZugabeNach->setReadOnly(false);
@@ -307,6 +308,21 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         }
     }
 
+    if (gSettings->ForceEnabled)
+    {
+        ui->tbVorhanden->setVisible(true);
+        ui->lblVorhanden->setVisible(true);
+        ui->lblEinheit2->setVisible(true);
+        ui->btnLoeschen->setVisible(true);
+        ui->tbZugabeNach->setReadOnly(false);
+        ui->tbDatumVon->setReadOnly(false);
+        ui->tbDatumBis->setReadOnly(false);
+        ui->tbDauerTage->setReadOnly(false);
+        ui->cbEntnahme->setEnabled(true);
+        ui->tbMenge->setReadOnly(false);
+        ui->cbZutat->setEnabled(true);
+    }
+
     switch (zeitpunkt)
     {
     case EWZ_Zeitpunkt_Gaerung:
@@ -327,7 +343,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->tbDatumBis->setVisible(braudatum.isValid() && entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->btnZugeben->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_nichtZugegeben);
     ui->btnEntnehmen->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept);
+    ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept || gSettings->ForceEnabled);
 }
 
 void WdgWeitereZutatGabe::remove()

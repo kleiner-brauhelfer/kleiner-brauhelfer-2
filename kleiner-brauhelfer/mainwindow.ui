@@ -256,8 +256,11 @@
     <addaction name="actionSudGebraut"/>
     <addaction name="actionSudAbgefuellt"/>
     <addaction name="actionSudVerbraucht"/>
+    <addaction name="separator"/>
     <addaction name="actionHefeZugabeZuruecksetzen"/>
     <addaction name="actionWeitereZutaten"/>
+    <addaction name="separator"/>
+    <addaction name="actionEingabefelderEntsperren"/>
    </widget>
    <widget class="QMenu" name="menuEinstellungen">
     <property name="title">
@@ -398,6 +401,14 @@
   <action name="actionBereinigen">
    <property name="text">
     <string>Bereinigen</string>
+   </property>
+  </action>
+  <action name="actionEingabefelderEntsperren">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Eingabefelder entsperren</string>
    </property>
   </action>
  </widget>

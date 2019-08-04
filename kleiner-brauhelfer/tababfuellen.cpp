@@ -102,7 +102,7 @@ void TabAbfuellen::sudDataChanged(const QModelIndex& index)
 void TabAbfuellen::checkEnabled()
 {
     int status = bh->sud()->getStatus();
-    bool abgefuellt = status >= Sud_Status_Abgefuellt;
+    bool abgefuellt = status >= Sud_Status_Abgefuellt && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
     ui->cbSchnellgaerprobeAktiv->setEnabled(!abgefuellt);
@@ -116,7 +116,7 @@ void TabAbfuellen::checkEnabled()
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
-    ui->btnSudAbgefuellt->setEnabled(status == Sud_Status_Gebraut);
+    ui->btnSudAbgefuellt->setEnabled(status == Sud_Status_Gebraut && !gSettings->ForceEnabled);
     ui->btnSudVerbraucht->setEnabled(abgefuellt);
 }
 

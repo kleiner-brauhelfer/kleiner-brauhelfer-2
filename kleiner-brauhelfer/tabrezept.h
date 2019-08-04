@@ -17,6 +17,7 @@ public:
     ~TabRezept();
     void saveSettings();
     void restoreView();
+    void checkEnabled();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
@@ -72,7 +73,6 @@ private slots:
     void on_btnTagLoeschen_clicked();
 
 private:
-    void checkEnabled();
     void checkRohstoffe();
     void updateGlas();
     void updateAnlageModel();

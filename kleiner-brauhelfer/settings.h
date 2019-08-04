@@ -75,6 +75,9 @@ public:
     QColor DiagramLinie2Light;
     QColor DiagramLinie3Light;
 
+    // run-time settings
+    bool ForceEnabled = false;
+
 private:
     Theme mTheme;
 };

@@ -65,6 +65,8 @@ void WdgHefeGabe::checkEnabled(bool force)
     bool enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
     if (data("Zugegeben").toBool())
         enabled = false;
+    if (gSettings->ForceEnabled)
+        enabled = true;
     if (enabled == mEnabled && !force)
         return;
 

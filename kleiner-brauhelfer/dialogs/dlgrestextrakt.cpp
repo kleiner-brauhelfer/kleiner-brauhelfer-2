@@ -14,105 +14,120 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
 
     gSettings->beginGroup("General");
     ui->comboBox_FormelBrixPlato->setCurrentIndex(gSettings->value("RefraktometerFormel", 0).toInt());
-    ui->tbKorrekturFaktor->setValue(gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble());
+    BierCalc::faktorBrixToPlato = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
+    ui->tbKorrekturFaktor->setValue(BierCalc::faktorBrixToPlato);
     gSettings->endGroup();
 
-    SWAnstellen = sw;
-    ui->spinBox_SwPlato->setValue(value);
-    ui->spinBox_S_Temperatur->setValue(temp);
-    if (ui->spinBox_S_Temperatur->value() == 20.0)
+    if (sw == 0.0)
     {
-        ui->spinBox_S_SwPlato->setValue(value);
-        ui->spinBox_S_SwDichte->setValue(BierCalc::platoToDichte(value));
+        setWindowTitle(tr("Stammwürze"));
+        ui->labelEktrakt->setText(tr("Stammwürze"));
+        ui->WdgSw->setVisible(false);
+        ui->comboBox_FormelBrixPlato->setVisible(false);
+        ui->label_FormelBrixPlato->setVisible(false);
     }
     else
     {
-        ui->spinBox_S_SwPlato->setValue(0.0);
-        ui->spinBox_S_SwDichte->setValue(0.0);
+        setWindowTitle(tr("Restextrakt"));
     }
-    ui->spinBox_R_SwBrix->setValue(SWAnstellen == 0.0 ? BierCalc::platoToBrix(value) : 0.0);
-    ui->spinBox_SwPlato->setFocus();
-    ui->comboBox_FormelBrixPlato->setVisible(SWAnstellen > 0.0);
-    ui->label_FormelBrixPlato->setVisible(SWAnstellen > 0.0);
+    ui->tbSw->setValue(sw);
+    ui->tbExtrakt->setValue(value);
+
+    ui->tbTemp->setValue(temp);
+    if (ui->tbTemp->value() == 20.0)
+    {
+        ui->tbPlato->setValue(value);
+        ui->tbDichte->setValue(BierCalc::platoToDichte(value));
+    }
+    else
+    {
+        ui->tbPlato->setValue(0.0);
+        ui->tbDichte->setValue(0.0);
+    }
+    ui->tbBrix->setValue(sw == 0.0 ? BierCalc::platoToBrix(value) : 0.0);
 }
 
 DlgRestextrakt::~DlgRestextrakt()
+{
+    delete ui;
+}
+
+void DlgRestextrakt::on_DlgRestextrakt_accepted()
 {
     gSettings->beginGroup("General");
     gSettings->setValue("RefraktometerFormel", ui->comboBox_FormelBrixPlato->currentIndex());
     gSettings->setValue("RefraktometerKorrekturfaktor", ui->tbKorrekturFaktor->value());
     gSettings->endGroup();
-    delete ui;
 }
 
 double DlgRestextrakt::value() const
 {
-    return ui->spinBox_SwPlato->value();
+    return ui->tbExtrakt->value();
 }
 
 double DlgRestextrakt::temperature() const
 {
-    return ui->spinBox_S_Temperatur->value();
+    return ui->tbTemp->value();
 }
 
-void DlgRestextrakt::on_spinBox_S_SwPlato_valueChanged(double value)
+void DlgRestextrakt::on_tbPlato_valueChanged(double value)
 {
-    if (ui->spinBox_S_SwPlato->hasFocus())
+    if (ui->tbPlato->hasFocus())
     {
-        ui->spinBox_S_SwDichte->setValue(BierCalc::platoToDichte(value));
-        ui->spinBox_SwPlato->setValue(BierCalc::dichteAtTemp(ui->spinBox_S_SwPlato->value(), ui->spinBox_S_Temperatur->value()));
-        ui->spinBox_R_SwBrix->setValue(SWAnstellen == 0.0 ? BierCalc::platoToBrix(ui->spinBox_SwPlato->value()) : 0.0);
+        ui->tbDichte->setValue(BierCalc::platoToDichte(value));
+        ui->tbExtrakt->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+        ui->tbBrix->setValue(ui->tbSw->value() == 0.0 ? BierCalc::platoToBrix(ui->tbExtrakt->value()) : 0.0);
     }
 }
 
-void DlgRestextrakt::on_spinBox_S_SwDichte_valueChanged(double value)
+void DlgRestextrakt::on_tbDichte_valueChanged(double value)
 {
-    if (ui->spinBox_S_SwDichte->hasFocus())
+    if (ui->tbDichte->hasFocus())
     {
-        ui->spinBox_S_SwPlato->setValue(BierCalc::dichteToPlato(value));
-        ui->spinBox_SwPlato->setValue(BierCalc::dichteAtTemp(ui->spinBox_S_SwPlato->value(), ui->spinBox_S_Temperatur->value()));
-        ui->spinBox_R_SwBrix->setValue(SWAnstellen == 0.0 ? BierCalc::platoToBrix(ui->spinBox_SwPlato->value()) : 0.0);
+        ui->tbPlato->setValue(BierCalc::dichteToPlato(value));
+        ui->tbExtrakt->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+        ui->tbBrix->setValue(ui->tbSw->value() == 0.0 ? BierCalc::platoToBrix(ui->tbExtrakt->value()) : 0.0);
     }
 }
 
-void DlgRestextrakt::on_spinBox_S_Temperatur_valueChanged(double)
+void DlgRestextrakt::on_tbTemp_valueChanged(double)
 {
-    if (ui->spinBox_S_Temperatur->hasFocus())
+    if (ui->tbTemp->hasFocus())
     {
-        ui->spinBox_SwPlato->setValue(BierCalc::dichteAtTemp(ui->spinBox_S_SwPlato->value(), ui->spinBox_S_Temperatur->value()));
-        ui->spinBox_R_SwBrix->setValue(SWAnstellen == 0.0 ? BierCalc::platoToBrix(ui->spinBox_SwPlato->value()) : 0.0);
+        ui->tbExtrakt->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+        ui->tbBrix->setValue(ui->tbSw->value() == 0.0 ? BierCalc::platoToBrix(ui->tbExtrakt->value()) : 0.0);
     }
 }
 
 void DlgRestextrakt::calculateFromRefraktometer()
 {
     double plato, dichte;
-    if (SWAnstellen == 0.0)
+    if (ui->tbSw->value() == 0.0)
     {
-        plato = BierCalc::brixToPlato(ui->spinBox_R_SwBrix->value());
+        plato = BierCalc::brixToPlato(ui->tbBrix->value());
         dichte = BierCalc::platoToDichte(plato);
     }
     else
     {
-        dichte = BierCalc::brixToDichte(SWAnstellen, ui->spinBox_R_SwBrix->value(), (BierCalc::FormulaBrixToPlato)ui->comboBox_FormelBrixPlato->currentIndex());
+        dichte = BierCalc::brixToDichte(ui->tbSw->value(), ui->tbBrix->value(), (BierCalc::FormulaBrixToPlato)ui->comboBox_FormelBrixPlato->currentIndex());
         plato = BierCalc::dichteToPlato(dichte);
     }
-    ui->spinBox_SwPlato->setValue(plato);
-    if (ui->spinBox_S_Temperatur->value() == 20.0)
+    ui->tbExtrakt->setValue(plato);
+    if (ui->tbTemp->value() == 20.0)
     {
-        ui->spinBox_S_SwPlato->setValue(plato);
-        ui->spinBox_S_SwDichte->setValue(dichte);
+        ui->tbPlato->setValue(plato);
+        ui->tbDichte->setValue(dichte);
     }
     else
     {
-        ui->spinBox_S_SwPlato->setValue(0.0);
-        ui->spinBox_S_SwDichte->setValue(0.0);
+        ui->tbPlato->setValue(0.0);
+        ui->tbDichte->setValue(0.0);
     }
 }
 
-void DlgRestextrakt::on_spinBox_R_SwBrix_valueChanged(double)
+void DlgRestextrakt::on_tbBrix_valueChanged(double)
 {
-    if (ui->spinBox_R_SwBrix->hasFocus())
+    if (ui->tbBrix->hasFocus())
     {
         calculateFromRefraktometer();
     }
@@ -133,4 +148,11 @@ void DlgRestextrakt::on_comboBox_FormelBrixPlato_currentIndexChanged(const QStri
     {
         calculateFromRefraktometer();
     }
+}
+
+void DlgRestextrakt::on_btnKorrekturFaktorDefault_clicked()
+{
+    ui->tbKorrekturFaktor->setValue(1.03);
+    BierCalc::faktorBrixToPlato = ui->tbKorrekturFaktor->value();
+    calculateFromRefraktometer();
 }

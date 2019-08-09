@@ -117,7 +117,8 @@ void TabAbfuellen::checkEnabled()
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(status == Sud_Status_Gebraut && !gSettings->ForceEnabled);
-    ui->btnSudVerbraucht->setEnabled(abgefuellt);
+    ui->btnSudVerbraucht->setEnabled(status == Sud_Status_Abgefuellt && !gSettings->ForceEnabled);
+    ui->btnSudTeilen->setEnabled(status == Sud_Status_Abgefuellt && !gSettings->ForceEnabled);
 }
 
 void TabAbfuellen::updateValues()

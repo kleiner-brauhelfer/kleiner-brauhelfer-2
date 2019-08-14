@@ -249,7 +249,7 @@ int SqlTableModel::append(const QVariantMap &values)
     {
         int row = rowCount() - 1;
         QVariantMap::const_iterator it = val.constBegin();
-        blockSignals(true);
+        bool wasBlocked = blockSignals(true);
         while (it != val.constEnd())
         {
             QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
@@ -261,7 +261,26 @@ int SqlTableModel::append(const QVariantMap &values)
             setDataExt(index(row, fieldIndex(it.key())), it.value());
             ++it;
         }
-        blockSignals(false);
+        blockSignals(wasBlocked);
+        emit modified();
+        return row;
+    }
+    return -1;
+}
+
+int SqlTableModel::appendDirect(const QVariantMap &values)
+{
+    if (insertRow(rowCount()))
+    {
+        int row = rowCount() - 1;
+        QVariantMap::const_iterator it = values.constBegin();
+        bool wasBlocked = blockSignals(true);
+        while (it != values.constEnd())
+        {
+            QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
+            ++it;
+        }
+        blockSignals(wasBlocked);
         emit modified();
         return row;
     }

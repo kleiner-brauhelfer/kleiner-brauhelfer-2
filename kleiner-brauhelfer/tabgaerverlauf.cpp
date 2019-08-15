@@ -491,29 +491,34 @@ void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
     if(!datasetFromIspindel.isEmpty())
         qDebug() << datasetFromIspindel.at(0);
 
-//#define all
-#ifdef all
-    foreach(QVariantMap tmpMap, datasetFromIspindel)
-    {
-        QVariantMap values({{"SudID", bh->sud()->id()},
-                           {"Zeitstempel", tmpMap.value("Datum")},
-                           {"SW", tmpMap.value("Plato")},
-                           {"Temp", tmpMap.value("Temp")}}
-                    );
-        bh->sud()->modelHauptgaerverlauf()->append(values);
+    QVariantMap values({{"SudID", bh->sud()->id()}});
+    // Stammwürze für Alkoholberechnung
+    double sw = bh->sud()->getSWIst();
+    // Updates blockieren
+    bh->modelHauptgaerverlauf()->blockSignals(true);
+    // Multiplaktor um jeden x. Wert zu schreiben
+    int Multiplikator = Dlg.getMultiplikatorForDataImport();
+    for (int i = 0; i < datasetFromIspindel.size(); i+= Multiplikator) {
 
+        // Werte aus iSpindel
+        values["Zeitstempel"] = datasetFromIspindel.at(i).value("Datum");
+        values["SW"] = datasetFromIspindel.at(i).value("Plato").toDouble();
+        values["Temp"] = datasetFromIspindel.at(i).value("Temp").toDouble();
+
+        // Alkoholwert berechnen
+        values["Alc"] = BierCalc::alkohol(sw, values["SW"].toDouble());
+
+        qDebug() << values;
+
+        // Werte direkt in Datenbank schreiben
+        bh->modelHauptgaerverlauf()->appendDirect(values);
     }
-#else
-    int Multi = Dlg.getMultiplikatorForDataImport();
-    for (int i = 0; i < datasetFromIspindel.size(); i+= Multi) {
-        QVariantMap values({{"SudID", bh->sud()->id()},
-                            {"Zeitstempel", datasetFromIspindel.at(i).value("Datum")},
-                            {"SW", datasetFromIspindel.at(i).value("Plato")},
-                            {"Temp", datasetFromIspindel.at(i).value("Temp")}}
-                           );
-        bh->sud()->modelHauptgaerverlauf()->append(values);
-    }
-#endif
+
+    // Updates nicht mehr blockieren
+    bh->modelHauptgaerverlauf()->blockSignals(false);
+
+    // letze Messung "normal" hinzufügen, damit alles Updates gemacht werden
+    bh->sud()->modelHauptgaerverlauf()->append(values);
 }
 
 void TabGaerverlauf::updateWeitereZutaten()

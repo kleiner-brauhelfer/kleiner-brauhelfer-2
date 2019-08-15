@@ -59,6 +59,8 @@ bool WdgHopfenGabe::setData(const QString &fieldName, const QVariant &value)
 void WdgHopfenGabe::checkEnabled(bool force)
 {
     bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
+    if (gSettings->ForceEnabled)
+        enabled = true;
     if (enabled == mEnabled && !force)
         return;
 
@@ -139,12 +141,14 @@ void WdgHopfenGabe::updateValues(bool full)
     }
     if (data("Vorderwuerze").toBool())
         ui->cbZeitpunkt->setCurrentIndex(0);
-    else if (ui->tbKochdauer->value() == ui->tbKochdauer->minimum())
-        ui->cbZeitpunkt->setCurrentIndex(3);
-    else if (ui->tbKochdauer->value() <= 0)
-        ui->cbZeitpunkt->setCurrentIndex(2);
-    else
+    else if (ui->tbKochdauer->value() == ui->tbKochdauer->maximum())
         ui->cbZeitpunkt->setCurrentIndex(1);
+    else if (ui->tbKochdauer->value() == ui->tbKochdauer->minimum() && ui->tbKochdauer->minimum() != 0)
+        ui->cbZeitpunkt->setCurrentIndex(4);
+    else if (ui->tbKochdauer->value() <= 0)
+        ui->cbZeitpunkt->setCurrentIndex(3);
+    else
+        ui->cbZeitpunkt->setCurrentIndex(2);
     int idx = bh->modelHopfen()->getValueFromSameRow("Beschreibung", hopfenname, "Typ").toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
@@ -294,9 +298,11 @@ void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
         else
         {
             setData("Vorderwuerze", false);
-            if (index == 2)
-                setData("Zeit", 0);
+            if (index == 1)
+                setData("Zeit", ui->tbKochdauer->maximum());
             else if (index == 3)
+                setData("Zeit", 0);
+            else if (index == 4)
                 setData("Zeit", ui->tbKochdauer->minimum());
         }
     }

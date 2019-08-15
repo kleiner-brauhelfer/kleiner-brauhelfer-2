@@ -21,25 +21,9 @@ public:
     void ViewWeitereZutatenauswahl();
     QVariantMap values() const;
 
-    /*
-	QString m_Beschreibung;
-    QString m_Verpackungsmenge;
-	QString m_Temperatur;
-	int m_Typ;
-	int m_TypOGUG;
-	int m_TypFlTr;
-	int m_SED;
-	QString m_EVG;
-	double m_Alpha;
-	double m_Wuerzemenge;
-	double m_Farbe;
-    double m_Ausbeute;
-	int m_MaxProzent;
-	QString m_Eigenschaften;
-    */
-
 private slots:
     void slot_save();
+    void on_lineEditFilter_textChanged(const QString &txt);
 	void on_buttonBox_accepted();
 	void on_buttonBox_rejected();
     void on_btn_Add_clicked();

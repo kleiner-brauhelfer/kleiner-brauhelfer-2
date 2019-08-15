@@ -138,6 +138,13 @@ public:
     Q_INVOKABLE int append(const QVariantMap &values = QVariantMap());
 
     /**
+     * @brief Appends a new row directly to the table without calculating dependencies
+     * @param values Field values
+     * @return Index of appended row
+     */
+    Q_INVOKABLE int appendDirect(const QVariantMap &values = QVariantMap());
+
+    /**
      * @brief Saves the pending changes of the table
      * @return True on success
      */
@@ -209,6 +216,10 @@ Q_SIGNALS:
      */
     void modified();
 
+    /**
+     * @brief rowChanged
+     * @param index
+     */
     void rowChanged(const QModelIndex &index);
 
 protected:

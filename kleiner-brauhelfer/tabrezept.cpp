@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsSvgItem>
 #include <QStandardItemModel>
+#include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/checkboxdelegate.h"
@@ -186,8 +187,8 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
 
 void TabRezept::checkEnabled()
 {
-    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept;
-    bool abgefuellt = bh->sud()->getStatus() > Sud_Status_Gebraut;
+    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept && !gSettings->ForceEnabled;
+    bool abgefuellt = bh->sud()->getStatus() > Sud_Status_Gebraut  && !gSettings->ForceEnabled;
     ui->cbAnlage->setEnabled(!gebraut);
     ui->tbMenge->setReadOnly(gebraut);
     ui->tbSW->setReadOnly(gebraut);
@@ -214,6 +215,16 @@ void TabRezept::checkEnabled()
     ui->btnNeueHopfenstopfenGabe->setVisible(!abgefuellt);
     ui->btnNeueWeitereZutat->setVisible(!abgefuellt);
     ui->lineNeueWeitereZutat->setVisible(!gebraut);
+    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget())->updateValues();
+    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget())->updateValues();
+    for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
+        static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget())->updateValues();
+    for (int i = 0; i < ui->layoutWeitereZutatenGaben->count(); ++i)
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutWeitereZutatenGaben->itemAt(i)->widget())->updateValues();
+    for (int i = 0; i < ui->layoutRasten->count(); ++i)
+        static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget())->updateValues();
 }
 
 void TabRezept::checkRohstoffe()

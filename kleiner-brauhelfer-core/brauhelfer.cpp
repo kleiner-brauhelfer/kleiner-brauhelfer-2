@@ -99,9 +99,9 @@ void Brauhelfer::save()
 {
     if (!readonly() && isDirty())
     {
-        blockSignals(true);
+        bool wasBlocked = blockSignals(true);
         mDb->save();
-        blockSignals(false);
+        blockSignals(wasBlocked);
         emit modified();
         emit saved();
     }
@@ -109,9 +109,9 @@ void Brauhelfer::save()
 
 void Brauhelfer::discard()
 {
-    blockSignals(true);
+    bool wasBlocked = blockSignals(true);
     mDb->discard();
-    blockSignals(false);
+    blockSignals(wasBlocked);
     emit modified();
     emit discarded();
 }

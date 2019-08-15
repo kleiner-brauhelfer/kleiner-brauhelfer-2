@@ -49,6 +49,8 @@ bool WdgMalzGabe::setData(const QString &fieldName, const QVariant &value)
 void WdgMalzGabe::checkEnabled(bool force)
 {
     bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
+    if (gSettings->ForceEnabled)
+        enabled = true;
     if (enabled == mEnabled && !force)
         return;
 

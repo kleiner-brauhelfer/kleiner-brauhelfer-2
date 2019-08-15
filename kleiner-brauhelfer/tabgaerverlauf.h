@@ -18,8 +18,8 @@ public:
     ~TabGaerverlauf();
     void saveSettings();
     void restoreView();
-    void setIspindelAvaiable(bool state);
-
+	void setIspindelAvaiable(bool state);
+	void checkEnabled();
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
 

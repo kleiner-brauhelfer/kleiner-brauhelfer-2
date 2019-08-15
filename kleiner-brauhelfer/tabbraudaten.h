@@ -16,6 +16,7 @@ public:
     ~TabBraudaten();
     void saveSettings();
     void restoreView();
+    void checkEnabled();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
@@ -47,9 +48,6 @@ private slots:
     void on_cbDurchschnittIgnorieren_clicked(bool checked);
     void on_btnSudGebraut_clicked();
     void on_btnSudTeilen_clicked(); 
-
-private:
-    void checkEnabled();
 
 private:
     Ui::TabBraudaten *ui;

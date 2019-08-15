@@ -59,6 +59,8 @@ void DlgRohstoffVorlage::viewImpl(int art)
         DsvTableModel* model = new DsvTableModel(this);
         model->loadFromFile(file.fileName(), true, ';');
         QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel();
+        proxyModel->setFilterKeyColumn(0);
+        proxyModel->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
         proxyModel->setSourceModel(model);
         ui->tableView->setModel(proxyModel);
         ui->tableView->resizeColumnsToContents();
@@ -93,6 +95,12 @@ void DlgRohstoffVorlage::ViewWeitereZutatenauswahl()
 QVariantMap DlgRohstoffVorlage::values() const
 {
     return mValues;
+}
+
+void DlgRohstoffVorlage::on_lineEditFilter_textChanged(const QString &txt)
+{
+    QSortFilterProxyModel *model = qobject_cast<QSortFilterProxyModel*>(ui->tableView->model());
+    model->setFilterFixedString(txt);
 }
 
 void DlgRohstoffVorlage::on_buttonBox_accepted()

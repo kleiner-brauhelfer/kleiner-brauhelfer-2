@@ -256,8 +256,11 @@
     <addaction name="actionSudGebraut"/>
     <addaction name="actionSudAbgefuellt"/>
     <addaction name="actionSudVerbraucht"/>
+    <addaction name="separator"/>
     <addaction name="actionHefeZugabeZuruecksetzen"/>
     <addaction name="actionWeitereZutaten"/>
+    <addaction name="separator"/>
+    <addaction name="actionEingabefelderEntsperren"/>
    </widget>
    <widget class="QMenu" name="menuEinstellungen">
     <property name="title">
@@ -426,7 +429,47 @@
    <property name="toolTip">
     <string>Wenn gesetzt, wird die Verbindung zur Datenbank bei jedem Start automatisch hergestellt.</string>
    </property>
+  </action>  <action name="actionEingabefelderEntsperren">   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Eingabefelder entsperren</string>
+   </property>
+  </action><<<<<<< .mine
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
+  <action name="actionDatenbankIspindelAutoConnect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Datenbank automatisch verbinden</string>
+   </property>
+   <property name="toolTip">
+    <string>Wenn gesetzt, wird die Verbindung zur Datenbank bei jedem Start automatisch hergestellt.</string>
+   </property>
+  </action>
+=======
+   </property>
+   <property name="text">
+    <string>Eingabefelder entsperren</string>
+   </property>
+  </action>
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

@@ -89,6 +89,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
 
     ui->tbTemplate->setVisible(checked);
     ui->tbTags->setVisible(checked);
+    ui->lblFilePath->setVisible(checked);
     ui->btnRestoreTemplate->setVisible(checked);
     ui->cbTemplateAuswahl->setVisible(checked);
     ui->btnSaveTemplate->setVisible(false);
@@ -98,6 +99,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     {
         QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
         ui->btnSaveTemplate->setProperty("file", file.fileName());
+        ui->lblFilePath->setText(file.fileName());
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             ui->tbTemplate->setPlainText(file.readAll());

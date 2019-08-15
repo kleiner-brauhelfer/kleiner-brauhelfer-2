@@ -42,8 +42,13 @@ double BierCalc::brixToDichte(double sw, double brix, FormulaBrixToPlato formel)
 
 double BierCalc::dichteToPlato(double sg)
 {
+  #if 0
     // deClerk: http://www.realbeer.com/spencer/attenuation.html
     return 668.72 * sg - 463.37 - 205.347 * sg * sg;
+  #else
+    // http://www.brewersfriend.com/plato-to-sg-conversion-chart/
+    return (-1 * 616.868) + (1111.14 * sg) - (630.272 * sg * sg) + (135.997 * sg * sg * sg);
+  #endif
 }
 
 double BierCalc::platoToDichte(double plato)
@@ -55,8 +60,11 @@ double BierCalc::platoToDichte(double plato)
     double c = 463.37 + plato;
     double d = 4 * a * c;
     return (-b + sqrt(b * b - d)) / (2 * a) * -1;
-  #else // Formel vom Internet
+  #elif 0 // Formel vom Internet
     return 261.11 / (261.53 - plato);
+  #else
+    // http://www.brewersfriend.com/plato-to-sg-conversion-chart/
+    return 1 + (plato / (258.6 - ((plato / 258.2) * 227.1)));
   #endif
 }
 

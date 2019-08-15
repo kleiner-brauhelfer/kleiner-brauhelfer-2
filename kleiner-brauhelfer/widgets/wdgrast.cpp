@@ -1,8 +1,10 @@
 #include "wdgrast.h"
 #include "ui_wdgrast.h"
 #include "brauhelfer.h"
+#include "settings.h"
 
 extern Brauhelfer* bh;
+extern Settings* gSettings;
 
 WdgRast::WdgRast(int index, QWidget *parent) :
 	QWidget(parent),
@@ -56,6 +58,8 @@ int WdgRast::dauer() const
 void WdgRast::checkEnabled(bool force)
 {
     bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
+    if (gSettings->ForceEnabled)
+        enabled = true;
     if (enabled == mEnabled && !force)
         return;
 

@@ -96,7 +96,8 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
 
 void TabBraudaten::checkEnabled()
 {
-    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept;
+    int status = bh->sud()->getStatus();
+    bool gebraut = status != Sud_Status_Rezept && !gSettings->ForceEnabled;
     ui->tbBraudatum->setReadOnly(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
     ui->tbWuerzemengeKochbeginn->setReadOnly(gebraut);
@@ -115,6 +116,7 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
+    ui->btnSudTeilen->setEnabled(status != Sud_Status_Abgefuellt && status != Sud_Status_Verbraucht && !gSettings->ForceEnabled);
 }
 
 void TabBraudaten::updateValues()

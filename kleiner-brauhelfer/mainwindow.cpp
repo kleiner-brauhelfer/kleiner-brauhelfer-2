@@ -239,6 +239,7 @@ void MainWindow::discarded()
                             bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+	ui->actionEingabefelderEntsperren->setChecked(false);
 
     if(gIspindel != nullptr)
         ui->tabContentGaerverlauf->setIspindelAvaiable(gIspindel->isDatabaseOpen());
@@ -263,8 +264,8 @@ void MainWindow::sudModified()
         ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
         ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
         ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(status >= Sud_Status_Gebraut);
-        ui->actionWeitereZutaten->setEnabled(status >= Sud_Status_Gebraut);
+        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Sud_Status_Gebraut);
+        ui->actionWeitereZutaten->setEnabled(status == Sud_Status_Gebraut);
     }
     else
     {
@@ -348,6 +349,37 @@ void MainWindow::on_actionWeitereZutaten_triggered()
     int col = model->fieldIndex("Zugabestatus");
     for (int row = 0; row < model->rowCount(); ++row)
         model->setData(model->index(row, col), EWZ_Zugabestatus_nichtZugegeben);
+}
+
+void MainWindow::on_actionEingabefelderEntsperren_changed()
+{
+    if (ui->actionEingabefelderEntsperren->isChecked())
+    {
+        int ret = QMessageBox::question(this, tr("Eingabefelder entsperren?"),
+                                  tr("Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden."),
+                                  QMessageBox::Yes | QMessageBox::No,
+                                  QMessageBox::Yes);
+        if (ret == QMessageBox::Yes)
+        {
+            gSettings->ForceEnabled = true;
+            ui->tabContentRezept->checkEnabled();
+            ui->tabContentBraudaten->checkEnabled();
+            ui->tabContentAbfuelldaten->checkEnabled();
+            ui->tabContentGaerverlauf->checkEnabled();
+        }
+        else
+        {
+            ui->actionEingabefelderEntsperren->setChecked(false);
+        }
+    }
+    else
+    {
+        gSettings->ForceEnabled = false;
+        ui->tabContentRezept->checkEnabled();
+        ui->tabContentBraudaten->checkEnabled();
+        ui->tabContentAbfuelldaten->checkEnabled();
+        ui->tabContentGaerverlauf->checkEnabled();
+    }
 }
 
 void MainWindow::on_actionWiederherstellen_triggered()

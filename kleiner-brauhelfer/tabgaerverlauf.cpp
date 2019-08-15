@@ -300,31 +300,36 @@ void TabGaerverlauf::sudLoaded()
     updateWeitereZutaten();
 }
 
-void TabGaerverlauf::updateValues()
+void TabGaerverlauf::checkEnabled()
 {
     bool enabled;
-    QDateTime dtCurrent = QDateTime::currentDateTime();
     QAbstractItemView::EditTriggers triggers = QAbstractItemView::EditTrigger::DoubleClicked |
             QAbstractItemView::EditTrigger::EditKeyPressed |
             QAbstractItemView::EditTrigger::AnyKeyPressed;
     QAbstractItemView::EditTriggers notriggers = QAbstractItemView::EditTrigger::NoEditTriggers;
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut;
+    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut || gSettings->ForceEnabled;
     ui->wdgEditSchnellgaerung->setVisible(enabled);
     ui->tableWidget_Schnellgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
-    ui->tbDatumSchnellgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbDatumSchnellgaerprobe->setMaximumDateTime(dtCurrent);
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut;
+    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut  || gSettings->ForceEnabled;
     ui->wdgEditHauptgaerung1->setVisible(enabled);
     ui->wdgEditHauptgaerung2->setVisible(enabled);
     ui->tableWidget_Hauptgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
-    ui->tbDatumHautgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbDatumHautgaerprobe->setMaximumDateTime(dtCurrent);
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Abgefuellt;
+    enabled = bh->sud()->getStatus() == Sud_Status_Abgefuellt  || gSettings->ForceEnabled;
     ui->wdgEditNachgaerung->setVisible(enabled);
     ui->tableWidget_Nachgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
+}
+
+void TabGaerverlauf::updateValues()
+{
+    checkEnabled();
+    QDateTime dtCurrent = QDateTime::currentDateTime();
+    ui->tbDatumSchnellgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
+    ui->tbDatumSchnellgaerprobe->setMaximumDateTime(dtCurrent);
+    ui->tbDatumHautgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
+    ui->tbDatumHautgaerprobe->setMaximumDateTime(dtCurrent);
     ui->tbDatumNachgaerprobe->setMinimumDateTime(bh->sud()->getAbfuelldatum());
     ui->tbDatumNachgaerprobe->setMaximumDateTime(dtCurrent);
 }

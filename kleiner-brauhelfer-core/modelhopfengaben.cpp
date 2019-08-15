@@ -53,6 +53,8 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
             {
                 QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Alpha")), bh->modelHopfen()->data(row, "Alpha"));
                 QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Pellets")), bh->modelHopfen()->data(row, "Pellets"));
+                QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
+                setData(index2, data(index2));
             }
             return true;
         }
@@ -154,7 +156,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
         {
             QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
             setData(index2, data(index2));
-        return true;
+            return true;
         }
     }
     else if (field == "Pellets")

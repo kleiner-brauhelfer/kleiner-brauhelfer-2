@@ -21,7 +21,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tabSudAuswahl">
        <attribute name="title">
@@ -266,10 +266,18 @@
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
    </widget>
+   <widget class="QMenu" name="menuiSpindel">
+    <property name="title">
+     <string>iSpindel</string>
+    </property>
+    <addaction name="actionDatenbankIspindelAutoConnect"/>
+    <addaction name="actionIspindelEinstellungen"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
    <addaction name="menuAnsicht"/>
    <addaction name="menuEinstellungen"/>
+   <addaction name="menuiSpindel"/>
    <addaction name="menuHilfe"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -398,6 +406,25 @@
   <action name="actionBereinigen">
    <property name="text">
     <string>Bereinigen</string>
+   </property>
+  </action>
+  <action name="actionIspindelEinstellungen">
+   <property name="text">
+    <string>Einstellungen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionDatenbankIspindelAutoConnect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Datenbank automatisch verbinden</string>
+   </property>
+   <property name="toolTip">
+    <string>Wenn gesetzt, wird die Verbindung zur Datenbank bei jedem Start automatisch hergestellt.</string>
    </property>
   </action>
  </widget>

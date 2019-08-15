@@ -34,6 +34,10 @@ DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
 DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 
 SOURCES += \
+    dialogs/dlgispindeleinstellung.cpp \
+    dialogs/dlgispindelimporthauptgaer.cpp \
+    iSpindel/ispindel.cpp \
+    iSpindel/jsonsqlstatementmanager.cpp \
     importexport.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -99,6 +103,10 @@ SOURCES += \
 
 HEADERS += \
     definitionen.h \
+    dialogs/dlgispindeleinstellung.h \
+    dialogs/dlgispindelimporthauptgaer.h \
+    iSpindel/ispindel.h \
+    iSpindel/jsonsqlstatementmanager.h \
     importexport.h \
     mainwindow.h \
     settings.h \
@@ -161,6 +169,8 @@ HEADERS += \
     widgets/wdgwebvieweditable.h
 
 FORMS += \
+    dialogs/dlgispindeleinstellung.ui \
+    dialogs/dlgispindelimporthauptgaer.ui \
     mainwindow.ui \
     tababfuellen.ui \
     tabausruestung.ui \

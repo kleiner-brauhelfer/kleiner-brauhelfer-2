@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "iSpindel/ispindel.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
@@ -23,8 +24,10 @@
 // global variables
 extern Brauhelfer* bh;
 extern Settings* gSettings;
+extern Ispindel* gIspindel;
 Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
+Ispindel* gIspindel = nullptr;
 
 static bool chooseDatabase()
 {
@@ -249,6 +252,7 @@ int main(int argc, char *argv[])
     // clean up
     delete bh;
     delete gSettings;
+    delete gIspindel;
 
     return ret;
 }

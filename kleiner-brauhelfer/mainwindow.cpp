@@ -5,15 +5,19 @@
 #include <QFontDialog>
 #include <QStyleFactory>
 #include <QDesktopServices>
+#include <QDebug>
+#include <QTime>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "definitionen.h"
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgmessage.h"
 #include "dialogs/dlgdatabasecleaner.h"
+#include "dialogs/dlgispindeleinstellung.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
+extern Ispindel* gIspindel;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -54,7 +58,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", true).toBool());
+    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", false).toBool());
+    gSettings->endGroup();
+
+    gSettings->beginGroup("iSpindel");
+    ui->actionDatenbankIspindelAutoConnect->setChecked(gSettings->value("ConnectAutomaticAtStartup").toBool());
     gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());
@@ -75,6 +83,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if (ui->actionCheckUpdate->isChecked())
         checkMessage();
+
+    if(ui->actionDatenbankIspindelAutoConnect->isChecked()
+            && gIspindel == nullptr)
+    {
+        gIspindel = new Ispindel();
+        gIspindel->connectDatabaseIspindel(true);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -224,6 +239,9 @@ void MainWindow::discarded()
                             bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+
+    if(gIspindel != nullptr)
+        ui->tabContentGaerverlauf->setIspindelAvaiable(gIspindel->isDatabaseOpen());
 }
 
 void MainWindow::sudLoaded()
@@ -440,4 +458,17 @@ void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);
     dlg.exec();
+}
+
+void MainWindow::on_actionIspindelEinstellungen_triggered()
+{
+    DlgIspindeleinstellung dlg(this);
+    dlg.exec();
+}
+
+void MainWindow::on_actionDatenbankIspindelAutoConnect_triggered(bool checked)
+{
+    gSettings->beginGroup("iSpindel");
+    gSettings->setValue("ConnectAutomaticAtStartup", checked);
+    gSettings->endGroup();
 }

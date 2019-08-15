@@ -28,7 +28,7 @@ void DlgEinmaischTemp::doCalc()
     double m_malt = ui->doubleSpinBox_Schuettung->value() * c_malt;
     int T_malt = ui->spinBox_SchuettungTemp->value();
     int T_rest = ui->spinBox_RastTemp->value();
-    int T = (int)(T_rest + m_malt * (T_rest - T_malt) / m_w);
+    int T = static_cast<int>(T_rest + m_malt * (T_rest - T_malt) / m_w);
     ui->spinBox_EinmaischeTemp->setValue(T);
 }
 

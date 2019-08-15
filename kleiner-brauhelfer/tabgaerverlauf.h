@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QItemSelection>
+#include <QDebug>
+
 namespace Ui {
 class TabGaerverlauf;
 }
@@ -16,6 +18,7 @@ public:
     ~TabGaerverlauf();
     void saveSettings();
     void restoreView();
+    void setIspindelAvaiable(bool state);
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
@@ -32,6 +35,7 @@ private slots:
     void on_btnDelSchnellgaerMessung_clicked();
     void on_btnSWHauptgaerverlauf_clicked();
     void on_btnAddHauptgaerMessung_clicked();
+    void on_btnImportHauptgaerIspindel_clicked();
     void on_btnDelHauptgaerMessung_clicked();
     void on_btnGaerungEwzZugeben_clicked();
     void on_btnGaerungEwzEntnehmen_clicked();

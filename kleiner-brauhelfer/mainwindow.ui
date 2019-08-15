@@ -21,7 +21,7 @@
     <item>
      <widget class="QTabWidget" name="tabMain">
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabSudAuswahl">
        <attribute name="title">
@@ -269,18 +269,18 @@
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
    </widget>
-   <widget class="QMenu" name="menuiSpindel">
+   <widget class="QMenu" name="menuiSppindel">
     <property name="title">
      <string>iSpindel</string>
     </property>
-    <addaction name="actionDatenbankIspindelAutoConnect"/>
     <addaction name="actionIspindelEinstellungen"/>
+    <addaction name="actionDatenbankIspindelAutoConnect"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
    <addaction name="menuAnsicht"/>
    <addaction name="menuEinstellungen"/>
-   <addaction name="menuiSpindel"/>
+   <addaction name="menuiSppindel"/>
    <addaction name="menuHilfe"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -411,6 +411,14 @@
     <string>Bereinigen</string>
    </property>
   </action>
+  <action name="actionEingabefelderEntsperren">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Eingabefelder entsperren</string>
+   </property>
+  </action>
   <action name="actionIspindelEinstellungen">
    <property name="text">
     <string>Einstellungen</string>
@@ -424,52 +432,9 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Datenbank automatisch verbinden</string>
-   </property>
-   <property name="toolTip">
-    <string>Wenn gesetzt, wird die Verbindung zur Datenbank bei jedem Start automatisch hergestellt.</string>
-   </property>
-  </action>  <action name="actionEingabefelderEntsperren">   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Eingabefelder entsperren</string>
-   </property>
-  </action><<<<<<< .mine
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+I</string>
+    <string>automatische Verbindung</string>
    </property>
   </action>
-  <action name="actionDatenbankIspindelAutoConnect">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Datenbank automatisch verbinden</string>
-   </property>
-   <property name="toolTip">
-    <string>Wenn gesetzt, wird die Verbindung zur Datenbank bei jedem Start automatisch hergestellt.</string>
-   </property>
-  </action>
-=======
-   </property>
-   <property name="text">
-    <string>Eingabefelder entsperren</string>
-   </property>
-  </action>
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

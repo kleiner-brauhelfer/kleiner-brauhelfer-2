@@ -34,11 +34,13 @@ public:
     QStringList getTablenames();
     QStringList getVerfuegbareSpindeln();
     int getAnzahlDatensaetze(QString NameSpindel);
-    QList<QPair<QDateTime, QStringList> > getResetFlags(QString NameSpindel);
+    QList<QPair<QDateTime, QStringList> > getResetFlags(const QString NameSpindel);
+    void setResetFlag(const QString NameSpindel, const int Recipe);
     QList<QVariantMap> getPlatoBetweenTimestamps(QString NameSpindel, QDateTime FirstDate, QDateTime LastDate);
     QSqlQueryModel *getPlatoBetweenTimestampsAsModel(QString NameSpindel, QDateTime DateNew, QDateTime DateOld);
     QStringList getCalibrationData(const QString NameSpindel);
     void setCalibrationData(const QString NameSpindel, const QStringList &Parameter0_2);
+    void deleteDatabaseBetweenTimestamps(const QString NameSpindel, const QDateTime FirstDate, const QDateTime LastDate);
 
     void setDbDriver(const QString &dbDriver);
     void setDbServer(const QString &dbServer);

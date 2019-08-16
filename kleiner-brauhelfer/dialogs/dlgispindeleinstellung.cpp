@@ -10,6 +10,8 @@ DlgIspindeleinstellung::DlgIspindeleinstellung(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->tab_2->setEnabled(false);
+
     gSettings->beginGroup("iSpindel");
     ui->lineEdit_OdbcTreiber->setText(gSettings->value("Driver", QVariant("MySQL ODBC 8.0 Unicode Driver")).toString());
     ui->lineEdit_IpDatabase->setText(gSettings->value("Server", QVariant("192.168.178.45")).toString());
@@ -123,6 +125,12 @@ void DlgIspindeleinstellung::on_butSaveParameter_clicked()
     param.append(ui->lineEditX_2->text());
     gIspindel->setCalibrationData(ui->comboBoxChooseSpindel->currentText(),
                                   param);
+}
+
+void DlgIspindeleinstellung::on_butSetResetflag_clicked()
+{
+    gIspindel->setResetFlag(ui->comboBoxChooseSpindel->currentText(),
+                            ui->spinBoxReceipeNr->value());
 }
 
 void DlgIspindeleinstellung::on_lineEditX_0_editingFinished()

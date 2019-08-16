@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>364</width>
+    <width>351</width>
     <height>454</height>
    </rect>
   </property>
@@ -29,6 +29,9 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <attribute name="title">
        <string>Datenbankverbindung</string>
       </attribute>
@@ -205,7 +208,7 @@
      </widget>
      <widget class="QWidget" name="tab_2">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <attribute name="title">
        <string>Kalibrierung</string>
@@ -288,6 +291,69 @@
          <property name="text">
           <string>Speichern in Datanbank</string>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="title">
+          <string>Reset Flag</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Setze jetzt ein Reset Flag für die oben ausgewählte Spindel.
+Damit können nachfolgende Messpunkte einfacher separiert 
+werden. Diese Aktion empfielt sich immer nach
+dem Anstellen eines neuen Sudes.
+Die Sudnummer dient lediglich der besseren Visualiserung.
+Sind mehrere Spindel verfügbar, muss jede Spindel einzeln
+ausgewählt und gesetzt werden!</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>Sudnummer</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBoxReceipeNr">
+              <property name="maximum">
+               <number>999999999</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="butSetResetflag">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Setze Reset Flag</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>

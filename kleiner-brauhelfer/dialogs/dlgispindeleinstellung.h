@@ -36,6 +36,7 @@ private slots:
     void on_btnTestConnection_clicked();
     void on_comboBoxChooseSpindel_currentIndexChanged(const QString &text);
     void on_butSaveParameter_clicked();
+    void on_butSetResetflag_clicked();
 
     void on_lineEditX_2_editingFinished();
     void on_lineEditX_1_editingFinished();

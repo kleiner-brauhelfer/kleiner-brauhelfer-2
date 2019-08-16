@@ -236,6 +236,40 @@ QList<QPair<QDateTime, QStringList> > Ispindel::getResetFlags(QString NameSpinde
     return tmpReturn;
 }
 
+void Ispindel::setResetFlag(const QString NameSpindel, const int Recipe)
+{
+    QString query = QString("INSERT INTO %1.%2 (`Timestamp`, `Name`, `ResetFlag`, `Recipe`) "
+                           "VALUES(NOW(), '%3', 1, %4);")
+            .arg(mDbDatabase)
+            .arg(mDbTableData)
+            .arg(NameSpindel)
+            .arg(Recipe);
+
+    execQueryAndCheckError(query);
+}
+
+// löscht Datensätze zwischen zwei Zeitstempeln
+void Ispindel::deleteDatabaseBetweenTimestamps(const QString NameSpindel,
+                                               const QDateTime FirstDate,
+                                               const QDateTime LastDate)
+{
+    QString query = QString("DELETE FROM %1.%2 "
+                           "WHERE `Timestamp` "
+                            "BETWEEN "
+                            "'%3' "
+                            "AND "
+                            "'%4' "
+                            "AND "
+                            "NAME LIKE '%5';")
+            .arg(mDbDatabase)
+            .arg(mDbTableData)
+            .arg(LastDate.toString("yyyy-MM-dd hh:mm:ss"))
+            .arg(FirstDate.toString("yyyy-MM-dd hh:mm:ss"))
+            .arg(NameSpindel);
+
+    execQueryAndCheckError(query);
+}
+
 // Gibt die Daten zwischen zwei Zeitpunkten zurück
 QList<QVariantMap> Ispindel::getPlatoBetweenTimestamps(QString NameSpindel, QDateTime DateNew, QDateTime DateOld)
 {

@@ -68,7 +68,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkBoxDeleteDB">
          <property name="layoutDirection">
           <enum>Qt::RightToLeft</enum>
          </property>
@@ -89,7 +89,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="checkBoxSetResetflag">
          <property name="layoutDirection">
           <enum>Qt::RightToLeft</enum>
          </property>

@@ -108,6 +108,22 @@ void DlgIspindelImportHauptgaer::on_butImport_clicked()
     mValuePlatoDatabase = gIspindel->getPlatoBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
                                          timestampFirst,
                                          timestampLast);
+
+    //prüfe die CheckBoxen
+    if(ui->checkBoxDeleteDB->isChecked())
+    {
+        // lösche die Datenbank im Anschluss
+        gIspindel->deleteDatabaseBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
+                                                   timestampFirst,
+                                                   timestampLast);
+    }
+
+    if(ui->checkBoxSetResetflag->isChecked())
+    {
+        //setze ResetFlag
+        gIspindel->setResetFlag(ui->comboBox_chooseIspindel->currentText(),
+                                0);
+    }
     this->accept();
 }
 

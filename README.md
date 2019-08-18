@@ -51,6 +51,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.0.0
 - Neu: Funktion "Eingabefelder entsperren"
 - Neu: Umrechnung zwischen Palto und spezifische Dichte nach [Brewer's Friend](http://www.brewersfriend.com/plato-to-sg-conversion-chart/)
+- Neu: Milchsäurangabe in 0.1 ml Schritte
 - Fix: Aktualisierung der Hopfenmenge nach Änderung des Hopfens
 
 ### Version 2.0.0beta2

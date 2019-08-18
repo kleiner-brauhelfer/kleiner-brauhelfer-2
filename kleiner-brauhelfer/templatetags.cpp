@@ -145,11 +145,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
                 if (restalkalitaetFaktor > 0)
                 {
-                    mapWasser["HauptgussMilchsaeure"] = QString::number((int)(f1 * restalkalitaetFaktor));
-                    mapWasser["NachgussMilchsaeure"] = QString::number((int)(f2 * restalkalitaetFaktor));
+                    mapWasser["HauptgussMilchsaeure"] = QString::number(f1 * restalkalitaetFaktor, 'f', 1);
+                    mapWasser["NachgussMilchsaeure"] = QString::number(f2 * restalkalitaetFaktor, 'f', 1);
                     if (bh->sud()->gethighGravityFaktor() != 0)
-                        mapWasser["VerduennungMilchsaeure"] = QString::number((int)(f3 * restalkalitaetFaktor));
-                    mapWasser["GesamtMilchsaeure"] = QString::number((int)((f1 + f2 + f3) * restalkalitaetFaktor));
+                        mapWasser["VerduennungMilchsaeure"] = QString::number(f3 * restalkalitaetFaktor, 'f', 1);
+                    mapWasser["GesamtMilchsaeure"] = QString::number((f1 + f2 + f3) * restalkalitaetFaktor, 'f', 1);
                 }
                 ctx["Wasser"] = mapWasser;
 

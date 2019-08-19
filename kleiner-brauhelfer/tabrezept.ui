@@ -2366,7 +2366,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="7" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureHG">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2384,6 +2384,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -2431,7 +2434,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="11" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureHGF">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHGF">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2449,6 +2452,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -2640,7 +2646,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="5" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureGesamt">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureGesamt">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2658,6 +2664,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -2698,7 +2707,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="9" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureNG">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureNG">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2716,6 +2725,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>

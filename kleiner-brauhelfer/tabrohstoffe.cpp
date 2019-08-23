@@ -24,7 +24,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabRohstoffe::TabRohstoffe(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
 {
     ui->setupUi(this);

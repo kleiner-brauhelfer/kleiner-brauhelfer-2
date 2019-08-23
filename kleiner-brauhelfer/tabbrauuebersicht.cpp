@@ -44,7 +44,7 @@ public:
 };
 
 TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabBrauUebersicht)
 {
     ui->setupUi(this);

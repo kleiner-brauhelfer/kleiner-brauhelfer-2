@@ -8,7 +8,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabDatenbank::TabDatenbank(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabDatenbank)
 {
     ui->setupUi(this);

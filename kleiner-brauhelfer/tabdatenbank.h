@@ -1,21 +1,21 @@
 #ifndef TABDATENBANK_H
 #define TABDATENBANK_H
 
-#include <QWidget>
+#include "tababstract.h"
 
 namespace Ui {
 class TabDatenbank;
 }
 
-class TabDatenbank : public QWidget
+class TabDatenbank : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabDatenbank(QWidget *parent = nullptr);
-    ~TabDatenbank();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabDatenbank() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
 
 private slots:
     void sudLoaded();

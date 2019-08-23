@@ -13,7 +13,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabGaerverlauf)
 {
     ui->setupUi(this);

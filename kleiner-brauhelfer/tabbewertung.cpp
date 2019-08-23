@@ -9,7 +9,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabBewertung::TabBewertung(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabBewertung),
     mIndex(-1)
 {

@@ -1,22 +1,22 @@
 #ifndef TABAUSRUESTUNG_H
 #define TABAUSRUESTUNG_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include <QItemSelection>
 
 namespace Ui {
 class TabAusruestung;
 }
 
-class TabAusruestung : public QWidget
+class TabAusruestung : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabAusruestung(QWidget *parent = nullptr);
-    ~TabAusruestung();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabAusruestung() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);

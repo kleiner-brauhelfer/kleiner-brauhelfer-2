@@ -17,7 +17,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabAbfuellen::TabAbfuellen(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabAbfuellen)
 {
     ui->setupUi(this);
@@ -99,6 +99,11 @@ void TabAbfuellen::sudDataChanged(const QModelIndex& index)
     }
 }
 
+void TabAbfuellen::onTabActivated()
+{
+    updateValues();
+}
+
 void TabAbfuellen::checkEnabled()
 {
     int status = bh->sud()->getStatus();
@@ -123,6 +128,9 @@ void TabAbfuellen::checkEnabled()
 
 void TabAbfuellen::updateValues()
 {
+    if (!isTabActive())
+        return;
+
     double value;
 
     QDateTime dt = bh->sud()->getAbfuelldatum();

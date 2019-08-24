@@ -1,25 +1,26 @@
 #ifndef TABZUSAMMENFASSUNG_H
 #define TABZUSAMMENFASSUNG_H
 
-#include <QWidget>
+#include "tababstract.h"
 
 namespace Ui {
 class TabZusammenfassung;
 }
 
-class TabZusammenfassung : public QWidget
+class TabZusammenfassung : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabZusammenfassung(QWidget *parent = nullptr);
-    ~TabZusammenfassung();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabZusammenfassung() Q_DECL_OVERRIDE;
 
 private slots:
-    void updateAll();
+    void updateWebView();
     void on_btnToPdf_clicked();
+
+private:
+    void onTabActivated() Q_DECL_OVERRIDE;
 
 private:
     Ui::TabZusammenfassung *ui;

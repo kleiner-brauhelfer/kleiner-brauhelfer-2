@@ -8,6 +8,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "definitionen.h"
+#include "tababstract.h"
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgmessage.h"
 #include "dialogs/dlgdatabasecleaner.h"
@@ -59,9 +60,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->statusBar->showMessage(bh->databasePath());
 
-    connect(ui->tabContentSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
-    ui->tabContentBrauUebersicht->setModel(ui->tabContentSudAuswahl->model());
-    connect(ui->tabContentBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
+    connect(ui->tabSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
+    ui->tabBrauUebersicht->setModel(ui->tabSudAuswahl->model());
+    connect(ui->tabBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
     connect(bh, SIGNAL(discarded()), this, SLOT(discarded()));
@@ -123,7 +124,10 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     QMainWindow::keyPressEvent(event);
     int n = event->key() - Qt::Key::Key_F1;
     if (n >= 0 && n < ui->tabMain->count())
-        ui->tabMain->setCurrentIndex(n);
+    {
+        if (ui->tabMain->isTabEnabled(n))
+            ui->tabMain->setCurrentIndex(n);
+    }
 }
 
 void MainWindow::restart()
@@ -157,18 +161,18 @@ void MainWindow::saveSettings()
     gSettings->beginGroup("TabDatenbank");
     gSettings->setValue("visible", ui->actionReiterDatenbank->isChecked());
     gSettings->endGroup();
-    ui->tabContentSudAuswahl->saveSettings();
-    ui->tabContentBrauUebersicht->saveSettings();
-    ui->tabContentRezept->saveSettings();
-    ui->tabContentBraudaten->saveSettings();
-    ui->tabContentAbfuelldaten->saveSettings();
-    ui->tabContentGaerverlauf->saveSettings();
-    ui->tabContentZusammenfasszung->saveSettings();
-    ui->tabContentEtikette->saveSettings();
-    ui->tabContentBewertung->saveSettings();
-    ui->tabContentRohstoffe->saveSettings();
-    ui->tabContentAusruestung->saveSettings();
-    ui->tabContentDatenbank->saveSettings();
+    ui->tabSudAuswahl->saveSettings();
+    ui->tabBrauUebersicht->saveSettings();
+    ui->tabRezept->saveSettings();
+    ui->tabBraudaten->saveSettings();
+    ui->tabAbfuelldaten->saveSettings();
+    ui->tabGaerverlauf->saveSettings();
+    ui->tabZusammenfassung->saveSettings();
+    ui->tabEtikette->saveSettings();
+    ui->tabBewertung->saveSettings();
+    ui->tabRohstoffe->saveSettings();
+    ui->tabAusruestung->saveSettings();
+    ui->tabDatenbank->saveSettings();
 }
 
 void MainWindow::restoreView(bool onUpdate)
@@ -180,18 +184,18 @@ void MainWindow::restoreView(bool onUpdate)
         restoreState(mDefaultState);
         move(position);
     }
-    ui->tabContentSudAuswahl->restoreView();
-    ui->tabContentBrauUebersicht->restoreView();
-    ui->tabContentRezept->restoreView();
-    ui->tabContentBraudaten->restoreView();
-    ui->tabContentAbfuelldaten->restoreView();
-    ui->tabContentGaerverlauf->restoreView();
-    ui->tabContentZusammenfasszung->restoreView();
-    ui->tabContentEtikette->restoreView();
-    ui->tabContentBewertung->restoreView();
-    ui->tabContentRohstoffe->restoreView();
-    ui->tabContentAusruestung->restoreView();
-    ui->tabContentDatenbank->restoreView();
+    ui->tabSudAuswahl->restoreView();
+    ui->tabBrauUebersicht->restoreView();
+    ui->tabRezept->restoreView();
+    ui->tabBraudaten->restoreView();
+    ui->tabAbfuelldaten->restoreView();
+    ui->tabGaerverlauf->restoreView();
+    ui->tabZusammenfassung->restoreView();
+    ui->tabEtikette->restoreView();
+    ui->tabBewertung->restoreView();
+    ui->tabRohstoffe->restoreView();
+    ui->tabAusruestung->restoreView();
+    ui->tabDatenbank->restoreView();
 }
 
 void MainWindow::databaseModified()
@@ -265,6 +269,16 @@ void MainWindow::loadSud(int sudId)
 
 void MainWindow::on_tabMain_currentChanged()
 {
+    TabAbstract* tab;
+    for (int i = 0; i < ui->tabMain->count(); ++i)
+    {
+        tab = dynamic_cast<TabAbstract*>(ui->tabMain->widget(i));
+        if (tab)
+            tab->setTabActive(false);
+    }
+    tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    if (tab)
+        tab->setTabActive(true);
     setFocus();
 }
 
@@ -344,10 +358,10 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
         if (ret == QMessageBox::Yes)
         {
             gSettings->ForceEnabled = true;
-            ui->tabContentRezept->checkEnabled();
-            ui->tabContentBraudaten->checkEnabled();
-            ui->tabContentAbfuelldaten->checkEnabled();
-            ui->tabContentGaerverlauf->checkEnabled();
+            ui->tabRezept->checkEnabled();
+            ui->tabBraudaten->checkEnabled();
+            ui->tabAbfuelldaten->checkEnabled();
+            ui->tabGaerverlauf->checkEnabled();
         }
         else
         {
@@ -357,10 +371,10 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
     else
     {
         gSettings->ForceEnabled = false;
-        ui->tabContentRezept->checkEnabled();
-        ui->tabContentBraudaten->checkEnabled();
-        ui->tabContentAbfuelldaten->checkEnabled();
-        ui->tabContentGaerverlauf->checkEnabled();
+        ui->tabRezept->checkEnabled();
+        ui->tabBraudaten->checkEnabled();
+        ui->tabAbfuelldaten->checkEnabled();
+        ui->tabGaerverlauf->checkEnabled();
     }
 }
 

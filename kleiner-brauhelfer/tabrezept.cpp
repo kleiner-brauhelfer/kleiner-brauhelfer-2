@@ -21,7 +21,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabRezept::TabRezept(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabRezept)
 {
     ui->setupUi(this);

@@ -22,7 +22,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabSudAuswahl)
 {
     ui->setupUi(this);
@@ -152,9 +152,16 @@ QAbstractItemModel* TabSudAuswahl::model() const
     return ui->tableSudauswahl->model();
 }
 
+void TabSudAuswahl::onTabActivated()
+{
+    updateWebView();
+}
+
 void TabSudAuswahl::databaseModified()
 {
-    updateTemplateTags();
+    if (!isTabActive())
+        return;
+    updateWebView();
 }
 
 void TabSudAuswahl::filterChanged()
@@ -168,7 +175,7 @@ void TabSudAuswahl::filterChanged()
 void TabSudAuswahl::selectionChanged()
 {
     bool selected = ui->tableSudauswahl->selectionModel()->selectedRows().count() > 0;
-    updateTemplateTags();
+    updateWebView();
     ui->btnMerken->setEnabled(selected);
     ui->btnVergessen->setEnabled(selected);
     ui->btnKopieren->setEnabled(selected);

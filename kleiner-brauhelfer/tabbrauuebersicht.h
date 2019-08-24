@@ -1,7 +1,7 @@
 #ifndef TABBRAUUEBERSICHT_H
 #define TABBRAUUEBERSICHT_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include <QAbstractItemModel>
 #include <QItemSelection>
 
@@ -9,15 +9,15 @@ namespace Ui {
 class TabBrauUebersicht;
 }
 
-class TabBrauUebersicht : public QWidget
+class TabBrauUebersicht : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabBrauUebersicht(QWidget *parent = nullptr);
-    ~TabBrauUebersicht();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabBrauUebersicht() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
     void setModel(QAbstractItemModel* model);
 
 signals:

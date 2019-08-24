@@ -1,22 +1,22 @@
 #ifndef TABROHSTOFFE_H
 #define TABROHSTOFFE_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include <QTableView>
 
 namespace Ui {
 class TabRohstoffe;
 }
 
-class TabRohstoffe : public QWidget
+class TabRohstoffe : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabRohstoffe(QWidget *parent = nullptr);
-    ~TabRohstoffe();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabRohstoffe() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
 
 private slots:
     void updateWasser();

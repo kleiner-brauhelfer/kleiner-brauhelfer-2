@@ -47,6 +47,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             double val;
             QVariantMap ctxRezept;
             ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, "SW").toDouble(), 'f', 1);
+            ctxRezept["SW_Malz"] = locale.toString(bh->modelSud()->data(sudRow, "SW_Malz").toDouble(), 'f', 1);
+            ctxRezept["SW_WZ_Maischen"] = locale.toString(bh->modelSud()->data(sudRow, "SW_WZ_Maischen").toDouble(), 'f', 1);
+            ctxRezept["SW_WZ_Kochen"] = locale.toString(bh->modelSud()->data(sudRow, "SW_WZ_Kochen").toDouble(), 'f', 1);
+            ctxRezept["SW_WZ_Gaerung"] = locale.toString(bh->modelSud()->data(sudRow, "SW_WZ_Gaerung").toDouble(), 'f', 1);
             ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, "Menge").toDouble(), 'f', 1);
             ctxRezept["Bittere"] = QString::number(bh->modelSud()->data(sudRow, "IBU").toInt());
             ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, "CO2").toDouble(), 'f', 1);
@@ -68,6 +72,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["MengeKochende"] = locale.toString(val, 'f', 1);
             ctxRezept["MengeKochende100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, val), 'f', 1);
             ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollKochbeginn").toDouble(), 'f', 1);
+            ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollKochbeginnMitWz").toDouble(), 'f', 1);
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollKochende").toDouble(), 'f', 1);
             ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, "SWSollAnstellen").toDouble(), 'f', 1);
             ctx["Rezept"] = ctxRezept;

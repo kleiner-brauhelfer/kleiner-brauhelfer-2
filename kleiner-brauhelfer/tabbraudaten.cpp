@@ -178,6 +178,8 @@ void TabBraudaten::updateValues()
     ui->tbMengeSollcmVomBoden->setValue(ui->tbMengeSollKochbeginn100->value() / value);
     ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
     ui->tbSWSollKochbeginn->setValue(bh->sud()->getSWSollKochbeginn());
+    ui->tbSWSollKochbeginnMitWz->setValue(bh->sud()->getSWSollKochbeginnMitWz());
+    ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSW_WZ_Kochen() > 0.0);
 
     ui->tbMengeSollKochende20->setValue(bh->sud()->getMengeSollKochende());
     ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), ui->tbMengeSollKochende20->value()));

@@ -446,7 +446,10 @@ void TabRezept::updateValues()
     if (!ui->tbSudnummer->hasFocus())
         ui->tbSudnummer->setValue(bh->sud()->getSudnummer());
     if (!ui->tbSudname->hasFocus())
+    {
         ui->tbSudname->setText(bh->sud()->getSudname());
+        ui->tbSudname->setCursorPosition(0);
+    }
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(bh->sud()->getMenge());
     if (!ui->tbSW->hasFocus())

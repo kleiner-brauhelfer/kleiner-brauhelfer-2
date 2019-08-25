@@ -45,8 +45,8 @@ private:
     QVariant AbfuellenBereitZutaten(const QModelIndex &index) const;
     QVariant MengeSollKochbeginn(const QModelIndex &index) const;
     QVariant MengeSollKochende(const QModelIndex &index) const;
-    QVariant SWSollLautern(const QModelIndex &index) const;
     QVariant SWSollKochbeginn(const QModelIndex &index) const;
+    QVariant SWSollKochbeginnMitWz(const QModelIndex &index) const;
     QVariant SWSollKochende(const QModelIndex &index) const;
     QVariant SWSollAnstellen(const QModelIndex &index) const;
     QVariant Verdampfungsziffer(const QModelIndex &index) const;

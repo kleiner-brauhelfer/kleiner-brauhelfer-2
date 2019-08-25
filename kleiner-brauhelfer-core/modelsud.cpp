@@ -41,8 +41,8 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SW_WZ_Maischen");
     mVirtualField.append("SW_WZ_Kochen");
     mVirtualField.append("SW_WZ_Gaerung");
-    mVirtualField.append("SWSollLautern");
     mVirtualField.append("SWSollKochbeginn");
+    mVirtualField.append("SWSollKochbeginnMitWz");
     mVirtualField.append("SWSollKochende");
     mVirtualField.append("SWSollAnstellen");
     mVirtualField.append("Verdampfungsziffer");
@@ -223,13 +223,13 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     {
         return swWzGaerungRecipe[index.row()];
     }
-    if (field == "SWSollLautern")
-    {
-        return SWSollLautern(index);
-    }
     if (field == "SWSollKochbeginn")
     {
         return SWSollKochbeginn(index);
+    }
+    if (field == "SWSollKochbeginnMitWz")
+    {
+        return SWSollKochbeginnMitWz(index);
     }
     if (field == "SWSollKochende")
     {
@@ -837,22 +837,21 @@ QVariant ModelSud::MengeSollKochende(const QModelIndex &index) const
     return mengeSoll / hgf;
 }
 
-QVariant ModelSud::SWSollLautern(const QModelIndex &index) const
-{
-    double swSoll = data(index.row(), "SW").toDouble();
-    double hgf = 1 + data(index.row(), "highGravityFaktor").toInt() / 100.0;
-    double sw = (swSoll - swWzKochenRecipe[index.row()] - swWzGaerungRecipe[index.row()]) * hgf;
-    double menge = data(index.row(), "Menge").toDouble();
-    double mengeKochbeginn = data(index.row(), "MengeSollKochbeginn").toDouble();
-    return sw * menge / mengeKochbeginn;
-}
-
 QVariant ModelSud::SWSollKochbeginn(const QModelIndex &index) const
 {
+    double sw = data(index.row(), "SW").toDouble() - swWzKochenRecipe[index.row()] - swWzGaerungRecipe[index.row()];
+    double hgf = 1 + data(index.row(), "highGravityFaktor").toInt() / 100.0;
+    double kochdauer = data(index.row(), "KochdauerNachBitterhopfung").toDouble();
+    double verdampfungsziffer = dataAnlage(index.row(), "Verdampfungsziffer").toDouble();
+    return sw * hgf / (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
+}
+
+QVariant ModelSud::SWSollKochbeginnMitWz(const QModelIndex &index) const
+{
     double sw = data(index.row(), "SWSollKochende").toDouble();
-    double menge = data(index.row(), "Menge").toDouble();
-    double mengeKochbeginn = data(index.row(), "MengeSollKochbeginn").toDouble();
-    return sw * menge / mengeKochbeginn;
+    double kochdauer = data(index.row(), "KochdauerNachBitterhopfung").toDouble();
+    double verdampfungsziffer = dataAnlage(index.row(), "Verdampfungsziffer").toDouble();
+    return sw / (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
 }
 
 QVariant ModelSud::SWSollKochende(const QModelIndex &index) const
@@ -906,6 +905,7 @@ bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
             removeRowsFrom(bh->modelMalzschuettung(), sudId);
             removeRowsFrom(bh->modelHopfengaben(), sudId);
             removeRowsFrom(bh->modelWeitereZutatenGaben(), sudId);
+            removeRowsFrom(bh->modelHefegaben(), sudId);
             removeRowsFrom(bh->modelSchnellgaerverlauf(), sudId);
             removeRowsFrom(bh->modelHauptgaerverlauf(), sudId);
             removeRowsFrom(bh->modelNachgaerverlauf(), sudId);

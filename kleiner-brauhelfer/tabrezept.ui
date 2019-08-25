@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>412</width>
-         <height>712</height>
+         <width>402</width>
+         <height>694</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -743,8 +743,8 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>370</width>
-                 <height>232</height>
+                 <width>360</width>
+                 <height>214</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -896,8 +896,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>391</height>
+              <width>285</width>
+              <height>379</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1027,8 +1027,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>116</height>
+              <width>285</width>
+              <height>112</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1114,8 +1114,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>391</height>
+              <width>285</width>
+              <height>379</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1197,8 +1197,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>293</width>
-             <height>609</height>
+             <width>285</width>
+             <height>591</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1377,8 +1377,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>115</height>
+              <width>285</width>
+              <height>112</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1554,7 +1554,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <item>
                 <widget class="QLabel" name="label_60">
                  <property name="text">
-                  <string>Weitere Zutaten Gärung</string>
+                  <string>Weitere Zutaten &quot;Gärung&quot;</string>
                  </property>
                 </widget>
                </item>
@@ -1662,7 +1662,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <item>
                 <widget class="QLabel" name="label_56">
                  <property name="text">
-                  <string>Weitere Zutaten Maischen</string>
+                  <string>Weitere Zutaten &quot;Maischen&quot;</string>
                  </property>
                 </widget>
                </item>
@@ -1749,7 +1749,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <item>
                 <widget class="QLabel" name="label_58">
                  <property name="text">
-                  <string>Weitere Zutaten Kochen</string>
+                  <string>Weitere Zutaten &quot;Kochen&quot;</string>
                  </property>
                 </widget>
                </item>
@@ -2833,14 +2833,14 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBox</class>

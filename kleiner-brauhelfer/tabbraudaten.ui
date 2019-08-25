@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>954</width>
-         <height>803</height>
+         <width>943</width>
+         <height>827</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -149,90 +149,14 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="0" column="8">
-            <widget class="QLabel" name="label_167">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
+           <item row="0" column="4" rowspan="7">
+            <widget class="Line" name="line_14">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
-           <item row="2" column="8">
-            <widget class="QLabel" name="label_181">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="8">
-            <widget class="QLabel" name="label_169">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>cm</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="6">
-            <widget class="QLabel" name="label_18">
-             <property name="text">
-              <string>Füllhöhe vom Boden aus gemessen</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="7">
-            <widget class="DoubleSpinBox" name="tbMengeSollKochbeginn20">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Zielwürzemenge vor Kochbeginn bei 20°C.</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
+           <item row="3" column="3">
             <widget class="QPushButton" name="btnWuerzemengeKochbeginn">
              <property name="minimumSize">
               <size>
@@ -254,7 +178,20 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="2">
+           <item row="6" column="7">
+            <widget class="QLabel" name="label_169">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>cm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
             <widget class="QLabel" name="label_114">
              <property name="minimumSize">
               <size>
@@ -267,7 +204,27 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="7">
+           <item row="7" column="5">
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_113">
+             <property name="text">
+              <string>Würzemenge bei Kochbeginn (20°C)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="6">
             <widget class="DoubleSpinBox" name="tbSWSollKochbeginn">
              <property name="minimumSize">
               <size>
@@ -301,14 +258,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="6">
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>Zielstammwürze bei Kochbeginn</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="7">
+           <item row="4" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollKochbeginn100">
              <property name="minimumSize">
               <size>
@@ -342,51 +292,14 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="6">
-            <widget class="QLabel" name="label_9">
+           <item row="0" column="5">
+            <widget class="QLabel" name="label_11">
              <property name="text">
-              <string>Füllhöhe von Oberkante aus gemessen</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
+              <string>Zielstammwürze bei Kochbeginn</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="7">
-            <widget class="DoubleSpinBox" name="tbMengeSollcmVomBoden">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Zielfüllhöhe vom Boden aus gemenssen bei angegebener Temperatur.</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="7">
+           <item row="5" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollcmVonOben">
              <property name="minimumSize">
               <size>
@@ -420,7 +333,40 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="4" column="7">
+            <widget class="QLabel" name="label_166">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="7">
+            <widget class="QLabel" name="label_181">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="5">
+            <widget class="QLabel" name="label_74">
+             <property name="text">
+              <string>Zielwürzemenge (20°C)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
             <widget class="DoubleSpinBox" name="tbWuerzemengeKochbeginn">
              <property name="minimumSize">
               <size>
@@ -448,94 +394,75 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="8">
-            <widget class="QLabel" name="label_168">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>cm</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_113">
-             <property name="text">
-              <string>Würzemenge bei Kochbeginn (20°C)</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="8">
-            <widget class="QLabel" name="label_166">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="6">
-            <widget class="QLabel" name="label_74">
-             <property name="text">
-              <string>Zielwürzemenge (20°C)</string>
-             </property>
-            </widget>
-           </item>
            <item row="6" column="6">
-            <spacer name="horizontalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
+            <widget class="DoubleSpinBox" name="tbMengeSollcmVomBoden">
+             <property name="minimumSize">
               <size>
-               <width>40</width>
+               <width>50</width>
                <height>0</height>
               </size>
              </property>
-            </spacer>
-           </item>
-           <item row="6" column="0">
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+             <property name="toolTip">
+              <string>Zielfüllhöhe vom Boden aus gemenssen bei angegebener Temperatur.</string>
              </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
-            </spacer>
-           </item>
-           <item row="1" column="0" colspan="4">
-            <widget class="Line" name="line_9">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+             <property name="readOnly">
+              <bool>true</bool>
              </property>
-            </widget>
-           </item>
-           <item row="1" column="6" colspan="3">
-            <widget class="Line" name="line_10">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="5" rowspan="6">
-            <widget class="Line" name="line_14">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
            <item row="3" column="6">
+            <widget class="DoubleSpinBox" name="tbMengeSollKochbeginn20">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Zielwürzemenge vor Kochbeginn bei 20°C.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="5">
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <property name="spacing">
               <number>6</number>
@@ -605,6 +532,167 @@
               </widget>
              </item>
             </layout>
+           </item>
+           <item row="0" column="7">
+            <widget class="QLabel" name="label_167">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>°P</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="7">
+            <widget class="QLabel" name="label_168">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>cm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="5">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Füllhöhe von Oberkante aus gemessen</string>
+             </property>
+             <property name="indent">
+              <number>9</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="4">
+            <widget class="Line" name="line_9">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="5" colspan="3">
+            <widget class="QWidget" name="wdgSWSollKochbeginnMitWz" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_28">
+                <property name="text">
+                 <string>Mit weiteren Zutaten &quot;Kochen&quot;</string>
+                </property>
+                <property name="indent">
+                 <number>9</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_15">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbSWSollKochbeginnMitWz">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>Zielstammwürze bei Kochbeginn.</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>999.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_173">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>°P</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="6" column="5">
+            <widget class="QLabel" name="label_18">
+             <property name="text">
+              <string>Füllhöhe vom Boden aus gemessen</string>
+             </property>
+             <property name="indent">
+              <number>9</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="5" colspan="3">
+            <widget class="Line" name="line_10">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -2246,7 +2334,6 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
   <tabstop>scrollArea</tabstop>
   <tabstop>tbBraudatum</tabstop>
   <tabstop>btnBraudatumHeute</tabstop>
-  <tabstop>tbSWSollKochbeginn</tabstop>
   <tabstop>tbWuerzemengeKochbeginn</tabstop>
   <tabstop>btnWuerzemengeKochbeginn</tabstop>
   <tabstop>tbMengeSollKochbeginn20</tabstop>

@@ -2,11 +2,11 @@
 #include "ui_dlgispindeleinstellung.h"
 
 extern Settings* gSettings;
-extern Ispindel* gIspindel;
 
 DlgIspindeleinstellung::DlgIspindeleinstellung(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::dlgispindeleinstellung)
+    ui(new Ui::dlgispindeleinstellung),
+    mIspindel(nullptr)
 {
     ui->setupUi(this);
 
@@ -14,22 +14,15 @@ DlgIspindeleinstellung::DlgIspindeleinstellung(QWidget *parent) :
 
     gSettings->beginGroup("iSpindel");
     ui->lineEdit_OdbcTreiber->setText(gSettings->value("Driver", QVariant("MySQL ODBC 8.0 Unicode Driver")).toString());
-    ui->lineEdit_IpDatabase->setText(gSettings->value("Server", QVariant("192.168.178.45")).toString());
+    ui->lineEdit_IpDatabase->setText(gSettings->value("Server", QVariant("127.0.0.1")).toString());
     ui->lineEdit_NameDatabase->setText(gSettings->value("Database", QVariant("iSpindle")).toString());
     ui->lineEdit_DbUsername->setText(gSettings->value("Username", QVariant("iSpindle")).toString());
-    ui->lineEdit_DbPassword->setText(gSettings->value("Password", QVariant("reno17")).toString());
+    ui->lineEdit_DbPassword->setText(gSettings->value("Password", QVariant("password")).toString());
     gSettings->endGroup();
 
-    if(gIspindel == nullptr) {
-        gIspindel = new Ispindel();
-        setDbParameter();
-    }
-
-    if(gIspindel->isDatabaseOpen()) {
-        on_btnTestConnection_clicked();
-    }
-    else {
-        ui->textBrowser->setVisible(false);
+    if(mIspindel == nullptr) {
+        mIspindel = new Ispindel();
+        setSpindelParameterFromUi();
     }
 
     ui->lineEditX_0->setValidator(new QDoubleValidator());
@@ -45,7 +38,7 @@ DlgIspindeleinstellung::~DlgIspindeleinstellung()
 void DlgIspindeleinstellung::databaseIsOpen()
 {
     ui->comboBoxChooseSpindel->clear();
-    QStringList tmpStrLst = gIspindel->getVerfuegbareSpindeln();
+    QStringList tmpStrLst = mIspindel->getVerfuegbareSpindeln();
     for(QString tmp : tmpStrLst) {
         if(!tmp.isEmpty())
             ui->comboBoxChooseSpindel->addItem(tmp);
@@ -57,27 +50,27 @@ void DlgIspindeleinstellung::databaseIsOpen()
 void DlgIspindeleinstellung::on_btnSaveClose_clicked()
 {
     qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
-    gIspindel->setDbTableData(ui->comboBox_TabelleMessdaten->currentText());
-    gIspindel->setDbTableCalibration(ui->comboBox_TabelleKalibrierung->currentText());
-    gIspindel->connectDatabaseIspindel();
-    gIspindel->saveSettings();
+    mIspindel->setDbTableData(ui->comboBox_TabelleMessdaten->currentText());
+    mIspindel->setDbTableCalibration(ui->comboBox_TabelleKalibrierung->currentText());
+    mIspindel->connectDatabaseIspindel();
+    mIspindel->saveSettings();
     this->close();
 }
 
 void DlgIspindeleinstellung::on_btnTestConnection_clicked()
 {
     qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
-    setDbParameter();
+    setSpindelParameterFromUi();
 
     QString msg;
 
-    if(gIspindel->connectDatabaseIspindel()) {
+    if(mIspindel->connectDatabaseIspindel()) {
         // true
         msg = "<font color=\"green\">Die Verbindung mit der Datenbank war erfolgreich.</font><br>";
         msg.append("Es wurden folgende Tabellen in der Datenbank gefunden: <br>");
         setUiDatabaseElementsEnable(false);
 
-        QStringList RecordSet = gIspindel->getTablenames();
+        QStringList RecordSet = mIspindel->getTablenames();
 
         foreach(QString tmpMsg, RecordSet)
         {
@@ -88,16 +81,16 @@ void DlgIspindeleinstellung::on_btnTestConnection_clicked()
         // set UI
         ui->comboBox_TabelleMessdaten->addItems(RecordSet);
         ui->comboBox_TabelleMessdaten->setCurrentIndex(
-                    ui->comboBox_TabelleMessdaten->findText(gIspindel->getDbTableData()));
+                    ui->comboBox_TabelleMessdaten->findText(mIspindel->getDbTableData()));
 
         ui->comboBox_TabelleKalibrierung->addItems(RecordSet);
         ui->comboBox_TabelleKalibrierung->setCurrentIndex(
-                    ui->comboBox_TabelleKalibrierung->findText(gIspindel->getDbTableCalibration()));
+                    ui->comboBox_TabelleKalibrierung->findText(mIspindel->getDbTableCalibration()));
         this->databaseIsOpen();
     }
     else {
         setUiDatabaseElementsEnable(true);
-        QSqlError error = gIspindel->getLastSqlError();
+        QSqlError error = mIspindel->getLastSqlError();
         msg = "<font color=\"red\">Die Verbindung mit der Datenbank war nicht erfolgreich. <br>";
         msg.append(QString("Folgender Fehler ist aufgetreten: </font><br> \"%1\"").arg(error.text()));
 
@@ -110,7 +103,7 @@ void DlgIspindeleinstellung::on_btnTestConnection_clicked()
 // Kalibrierung
 void DlgIspindeleinstellung::on_comboBoxChooseSpindel_currentIndexChanged(const QString &text)
 {
-    QStringList listCalibrationData = gIspindel->getCalibrationData(text);
+    QStringList listCalibrationData = mIspindel->getCalibrationData(text);
 
     ui->lineEditX_0->setText(listCalibrationData.at(0));
     ui->lineEditX_1->setText(listCalibrationData.at(1));
@@ -123,13 +116,13 @@ void DlgIspindeleinstellung::on_butSaveParameter_clicked()
     param.append(ui->lineEditX_0->text());
     param.append(ui->lineEditX_1->text());
     param.append(ui->lineEditX_2->text());
-    gIspindel->setCalibrationData(ui->comboBoxChooseSpindel->currentText(),
+    mIspindel->setCalibrationData(ui->comboBoxChooseSpindel->currentText(),
                                   param);
 }
 
 void DlgIspindeleinstellung::on_butSetResetflag_clicked()
 {
-    gIspindel->setResetFlag(ui->comboBoxChooseSpindel->currentText(),
+    mIspindel->setResetFlag(ui->comboBoxChooseSpindel->currentText(),
                             ui->spinBoxReceipeNr->value());
 }
 
@@ -155,13 +148,13 @@ void DlgIspindeleinstellung::on_lineEditX_2_editingFinished()
 }
 
 // private functions
-void DlgIspindeleinstellung::setDbParameter() const
+void DlgIspindeleinstellung::setSpindelParameterFromUi() const
 {
-    gIspindel->setDbDriver(ui->lineEdit_OdbcTreiber->text());
-    gIspindel->setDbServer(ui->lineEdit_IpDatabase->text());
-    gIspindel->setDbDatabase(ui->lineEdit_NameDatabase->text());
-    gIspindel->setDbUsername(ui->lineEdit_DbUsername->text());
-    gIspindel->setDbPwd(ui->lineEdit_DbPassword->text());
+    mIspindel->setDbDriver(ui->lineEdit_OdbcTreiber->text());
+    mIspindel->setDbServer(ui->lineEdit_IpDatabase->text());
+    mIspindel->setDbDatabase(ui->lineEdit_NameDatabase->text());
+    mIspindel->setDbUsername(ui->lineEdit_DbUsername->text());
+    mIspindel->setDbPwd(ui->lineEdit_DbPassword->text());
 }
 
 void DlgIspindeleinstellung::setUiDatabaseElementsEnable(bool setEnable) const

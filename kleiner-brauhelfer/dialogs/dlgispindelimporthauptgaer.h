@@ -6,6 +6,8 @@
 #include <QDialogButtonBox>
 #include <QSqlQueryModel>
 
+#include "iSpindel/ispindel.h"
+
 namespace Ui {
 class DlgIspindelImportHauptgaer;
 }
@@ -38,6 +40,7 @@ private:
     QList<QPair<QDateTime, QStringList> > ResetFlags;
     QSqlQueryModel *mSqlModelView;
     QList<QVariantMap> mValuePlatoDatabase;
+    Ispindel *mIspindel;
 };
 
 #endif // DLGISPINDELIMPORTHAUPTGAER_H

@@ -27,7 +27,7 @@ public:
     ~DlgIspindeleinstellung();
 
 private:
-    void setDbParameter() const;
+    void setSpindelParameterFromUi() const;
     void setUiDatabaseElementsEnable(bool setEnable) const;
     void databaseIsOpen();
 
@@ -44,7 +44,7 @@ private slots:
 
 private:
     Ui::dlgispindeleinstellung *ui;
-
+    Ispindel *mIspindel;
 
 };
 

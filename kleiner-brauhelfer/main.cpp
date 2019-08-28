@@ -24,10 +24,8 @@
 // global variables
 extern Brauhelfer* bh;
 extern Settings* gSettings;
-extern Ispindel* gIspindel;
 Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
-Ispindel* gIspindel = nullptr;
 
 static bool chooseDatabase()
 {
@@ -262,7 +260,6 @@ int main(int argc, char *argv[])
     // clean up
     delete bh;
     delete gSettings;
-    delete gIspindel;
 
     return ret;
 }

@@ -274,7 +274,6 @@
      <string>iSpindel</string>
     </property>
     <addaction name="actionIspindelEinstellungen"/>
-    <addaction name="actionDatenbankIspindelAutoConnect"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>

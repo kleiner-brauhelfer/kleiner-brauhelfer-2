@@ -17,7 +17,6 @@
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
-extern Ispindel* gIspindel;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -61,10 +60,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", false).toBool());
     gSettings->endGroup();
 
-    gSettings->beginGroup("iSpindel");
-    ui->actionDatenbankIspindelAutoConnect->setChecked(gSettings->value("ConnectAutomaticAtStartup").toBool());
-    gSettings->endGroup();
-
     ui->statusBar->showMessage(bh->databasePath());
 
     connect(ui->tabContentSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
@@ -84,12 +79,6 @@ MainWindow::MainWindow(QWidget *parent) :
     if (ui->actionCheckUpdate->isChecked())
         checkMessage();
 
-    if(ui->actionDatenbankIspindelAutoConnect->isChecked()
-            && gIspindel == nullptr)
-    {
-        gIspindel = new Ispindel();
-        gIspindel->connectDatabaseIspindel(true);
-    }
 }
 
 MainWindow::~MainWindow()
@@ -240,9 +229,6 @@ void MainWindow::discarded()
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
 	ui->actionEingabefelderEntsperren->setChecked(false);
-
-    if(gIspindel != nullptr)
-        ui->tabContentGaerverlauf->setIspindelAvaiable(gIspindel->isDatabaseOpen());
 }
 
 void MainWindow::sudLoaded()
@@ -496,11 +482,4 @@ void MainWindow::on_actionIspindelEinstellungen_triggered()
 {
     DlgIspindeleinstellung dlg(this);
     dlg.exec();
-}
-
-void MainWindow::on_actionDatenbankIspindelAutoConnect_triggered(bool checked)
-{
-    gSettings->beginGroup("iSpindel");
-    gSettings->setValue("ConnectAutomaticAtStartup", checked);
-    gSettings->endGroup();
 }

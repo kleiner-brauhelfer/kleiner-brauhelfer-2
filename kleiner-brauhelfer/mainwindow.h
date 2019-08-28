@@ -46,7 +46,6 @@ private slots:
     void on_actionSpende_triggered();
     void on_actionUeber_triggered();
     void on_actionIspindelEinstellungen_triggered();
-    void on_actionDatenbankIspindelAutoConnect_triggered(bool checked);
 
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;

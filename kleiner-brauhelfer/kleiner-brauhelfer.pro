@@ -37,7 +37,6 @@ SOURCES += \
     dialogs/dlgispindeleinstellung.cpp \
     dialogs/dlgispindelimporthauptgaer.cpp \
     iSpindel/ispindel.cpp \
-    iSpindel/jsonsqlstatementmanager.cpp \
     importexport.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -106,7 +105,6 @@ HEADERS += \
     dialogs/dlgispindeleinstellung.h \
     dialogs/dlgispindelimporthauptgaer.h \
     iSpindel/ispindel.h \
-    iSpindel/jsonsqlstatementmanager.h \
     importexport.h \
     mainwindow.h \
     settings.h \

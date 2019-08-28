@@ -1,27 +1,24 @@
 #include "dlgispindelimporthauptgaer.h"
 #include "ui_dlgispindelimporthauptgaer.h"
 
-#include "iSpindel/ispindel.h"
-
-extern Ispindel* gIspindel;
-
 DlgIspindelImportHauptgaer::DlgIspindelImportHauptgaer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgIspindelImportHauptgaer),
-    mSqlModelView(nullptr)
+    mSqlModelView(nullptr),
+    mIspindel(nullptr)
 {
     ui->setupUi(this);
 
-    if(gIspindel == nullptr) {
-        gIspindel = new Ispindel();
-        gIspindel->connectDatabaseIspindel(true);
+    if(mIspindel == nullptr) {
+        mIspindel = new Ispindel();
+        mIspindel->connectDatabaseIspindel(true);
         QMessageBox::warning(this,
                              "Datenbank konfigurieren",
                              "Hast du die Datenbank in den Einstellungen konfiguriert?\n"
                              "Wenn nicht, dann tue dies bitte jetzt!");
     }
 
-    QStringList tmpStrLst = gIspindel->getVerfuegbareSpindeln();
+    QStringList tmpStrLst = mIspindel->getVerfuegbareSpindeln();
     qDebug() << tmpStrLst;
     for(QString tmp : tmpStrLst)
     {
@@ -46,7 +43,7 @@ int DlgIspindelImportHauptgaer::getMultiplikatorForDataImport()
 void DlgIspindelImportHauptgaer::on_comboBox_chooseIspindel_currentIndexChanged(const QString &text)
 {
     QString tmp;
-    int CountDataset = gIspindel->getAnzahlDatensaetze(text);
+    int CountDataset = mIspindel->getAnzahlDatensaetze(text);
     if(CountDataset == 1)
         tmp = QString("Es wurde %1 Datensatz für %2 gefunden.").arg(CountDataset).arg(text);
     else {
@@ -57,7 +54,7 @@ void DlgIspindelImportHauptgaer::on_comboBox_chooseIspindel_currentIndexChanged(
     ui->listWidgetTimestampReset->clear();
     ResetFlags.clear();
 
-    ResetFlags = gIspindel->getResetFlags(text);
+    ResetFlags = mIspindel->getResetFlags(text);
 
     QListWidgetItem *widgetItemFirst = new QListWidgetItem("aktuell", ui->listWidgetTimestampReset);
     widgetItemFirst->setData(Qt::UserRole, -1);
@@ -105,7 +102,7 @@ void DlgIspindelImportHauptgaer::on_butImport_clicked()
     qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
 
     // Hole die Daten aus der Datenbank
-    mValuePlatoDatabase = gIspindel->getPlatoBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
+    mValuePlatoDatabase = mIspindel->getPlatoBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
                                          timestampFirst,
                                          timestampLast);
 
@@ -113,7 +110,7 @@ void DlgIspindelImportHauptgaer::on_butImport_clicked()
     if(ui->checkBoxDeleteDB->isChecked())
     {
         // lösche die Datenbank im Anschluss
-        gIspindel->deleteDatabaseBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
+        mIspindel->deleteDatabaseBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
                                                    timestampFirst,
                                                    timestampLast);
     }
@@ -121,7 +118,7 @@ void DlgIspindelImportHauptgaer::on_butImport_clicked()
     if(ui->checkBoxSetResetflag->isChecked())
     {
         //setze ResetFlag
-        gIspindel->setResetFlag(ui->comboBox_chooseIspindel->currentText(),
+        mIspindel->setResetFlag(ui->comboBox_chooseIspindel->currentText(),
                                 0);
     }
     this->accept();
@@ -135,7 +132,7 @@ void DlgIspindelImportHauptgaer::on_butShowData_clicked()
     getChooseDateTime(&timestampFirst, &timestampLast);
     qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
 
-    mSqlModelView = gIspindel->getPlatoBetweenTimestampsAsModel(ui->comboBox_chooseIspindel->currentText(),
+    mSqlModelView = mIspindel->getPlatoBetweenTimestampsAsModel(ui->comboBox_chooseIspindel->currentText(),
                                                                         timestampFirst,
                                                                         timestampLast);
 

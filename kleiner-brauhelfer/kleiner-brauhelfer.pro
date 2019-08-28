@@ -36,7 +36,7 @@ DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 SOURCES += \
     dialogs/dlgispindeleinstellung.cpp \
     dialogs/dlgispindelimporthauptgaer.cpp \
-    iSpindel/ispindel.cpp \
+    ispindel/ispindel.cpp \
     importexport.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -104,7 +104,7 @@ HEADERS += \
     definitionen.h \
     dialogs/dlgispindeleinstellung.h \
     dialogs/dlgispindelimporthauptgaer.h \
-    iSpindel/ispindel.h \
+    ispindel/ispindel.h \
     importexport.h \
     mainwindow.h \
     settings.h \

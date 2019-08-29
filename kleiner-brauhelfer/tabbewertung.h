@@ -1,21 +1,21 @@
 #ifndef TABBEWERTUNG_H
 #define TABBEWERTUNG_H
 
-#include <QWidget>
+#include "tababstract.h"
 
 namespace Ui {
 class TabBewertung;
 }
 
-class TabBewertung : public QWidget
+class TabBewertung : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabBewertung(QWidget *parent = nullptr);
-    ~TabBewertung();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabBewertung() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
 
 private slots:
     void sudLoaded();

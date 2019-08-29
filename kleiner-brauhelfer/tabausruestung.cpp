@@ -18,7 +18,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabAusruestung::TabAusruestung(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabAusruestung)
 {
     ui->setupUi(this);

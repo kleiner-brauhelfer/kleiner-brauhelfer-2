@@ -41,6 +41,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     settings.cpp \
+    tababstract.cpp \
     tababfuellen.cpp \
     tabausruestung.cpp \
     tabbewertung.cpp \
@@ -108,6 +109,7 @@ HEADERS += \
     importexport.h \
     mainwindow.h \
     settings.h \
+    tababstract.h \
     tababfuellen.h \
     tabausruestung.h \
     tabbewertung.h \

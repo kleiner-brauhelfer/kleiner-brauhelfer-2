@@ -12,7 +12,7 @@
 extern Brauhelfer *bh;
 extern Settings* gSettings;
 
-void TabSudAuswahl::updateTemplateTags()
+void TabSudAuswahl::updateWebView()
 {
     QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
     if (selection.count() == 1)

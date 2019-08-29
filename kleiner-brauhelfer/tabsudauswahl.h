@@ -1,7 +1,7 @@
 #ifndef TABSUDAUSWAHL_H
 #define TABSUDAUSWAHL_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include <QAbstractItemModel>
 #include <QAbstractItemDelegate>
 
@@ -9,15 +9,15 @@ namespace Ui {
 class TabSudAuswahl;
 }
 
-class TabSudAuswahl : public QWidget
+class TabSudAuswahl : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);
-    ~TabSudAuswahl();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
     QAbstractItemModel* model() const;
 
 signals:
@@ -28,7 +28,7 @@ private slots:
     void filterChanged();
     void selectionChanged();
     void spalteAnzeigen(bool checked);
-    void updateTemplateTags();
+    void updateWebView();
     void generateTemplateTags(QVariantMap& tags);
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
     void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
@@ -56,6 +56,7 @@ private slots:
     void on_btnToPdf_clicked();
 
 private:
+    void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
     void setFilterStatus();
 

@@ -48,10 +48,15 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0
+### Version 2.0.0 (in Entwicklung)
 - Neu: Funktion "Eingabefelder entsperren"
 - Neu: Umrechnung zwischen Palto und spezifische Dichte nach [Brewer's Friend](http://www.brewersfriend.com/plato-to-sg-conversion-chart/)
+- Neu: Milchsäurangabe in 0.1 ml Schritte
+- Neu: HTML Templates werden nur aktualisiert, wenn das entsprechende Reiter aktiv ist
+- Neu: Zielstammwürze bei Kochbeginn mit/ohne weiteren Zutaten "Kochen" separat aufgeführt
 - Fix: Aktualisierung der Hopfenmenge nach Änderung des Hopfens
+- Fix: Dialog Rohstoffaustausch beim Löschen eines Hopfens, welches als Stopfhopfen verwendet wird
+- Fix: "Sud löschen" löscht auch die Hefegaben
 
 ### Version 2.0.0beta2
 - Fix: Woche war immer auf 0

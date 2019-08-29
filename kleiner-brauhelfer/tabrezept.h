@@ -1,22 +1,22 @@
 #ifndef TABREZEPT_H
 #define TABREZEPT_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include <QGraphicsItem>
 
 namespace Ui {
 class TabRezept;
 }
 
-class TabRezept : public QWidget
+class TabRezept : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabRezept(QWidget *parent = nullptr);
-    ~TabRezept();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabRezept() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private slots:

@@ -14,18 +14,6 @@
    <property name="spacing">
     <number>4</number>
    </property>
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
@@ -46,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>412</width>
-         <height>712</height>
+         <width>402</width>
+         <height>694</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -755,8 +743,8 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>370</width>
-                 <height>232</height>
+                 <width>360</width>
+                 <height>214</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -908,8 +896,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>391</height>
+              <width>285</width>
+              <height>379</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1039,8 +1027,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>116</height>
+              <width>285</width>
+              <height>112</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1126,8 +1114,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>391</height>
+              <width>285</width>
+              <height>379</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1209,8 +1197,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>293</width>
-             <height>609</height>
+             <width>285</width>
+             <height>591</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1389,8 +1377,8 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>293</width>
-              <height>115</height>
+              <width>285</width>
+              <height>112</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1566,7 +1554,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <item>
                 <widget class="QLabel" name="label_60">
                  <property name="text">
-                  <string>Weitere Zutaten Gärung</string>
+                  <string>Weitere Zutaten &quot;Gärung&quot;</string>
                  </property>
                 </widget>
                </item>
@@ -1644,6 +1632,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
              </widget>
             </item>
             <item row="10" column="3">
@@ -1671,7 +1662,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <item>
                 <widget class="QLabel" name="label_56">
                  <property name="text">
-                  <string>Weitere Zutaten Maischen</string>
+                  <string>Weitere Zutaten &quot;Maischen&quot;</string>
                  </property>
                 </widget>
                </item>
@@ -1758,7 +1749,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
                <item>
                 <widget class="QLabel" name="label_58">
                  <property name="text">
-                  <string>Weitere Zutaten Kochen</string>
+                  <string>Weitere Zutaten &quot;Kochen&quot;</string>
                  </property>
                 </widget>
                </item>
@@ -2366,7 +2357,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="7" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureHG">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2385,12 +2376,15 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
              </widget>
             </item>
             <item row="10" column="0">
              <widget class="QLabel" name="lblWasserHGF">
               <property name="text">
-               <string>Verdünnung</string>
+               <string>Verdünnung High-Gravity</string>
               </property>
              </widget>
             </item>
@@ -2431,7 +2425,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="11" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureHGF">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureHGF">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2449,6 +2443,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -2640,7 +2637,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="5" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureGesamt">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureGesamt">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2658,6 +2655,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -2698,7 +2698,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
              </widget>
             </item>
             <item row="9" column="2">
-             <widget class="QSpinBox" name="tbMilchsaeureNG">
+             <widget class="DoubleSpinBox" name="tbMilchsaeureNG">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2716,6 +2716,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -2830,14 +2833,14 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBox</class>

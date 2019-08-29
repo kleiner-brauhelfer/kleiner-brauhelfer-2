@@ -275,8 +275,17 @@
         <td class="underline">W&uuml;rze auf <span class="value">100</span>&deg;C erhitzen</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Sollstammw&uuml;rze Kochbeginn</strong></td>
-        <td class="underline"><span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P</td>
+        <td class="underline" valign="top"><strong>Zielstammw&uuml;rze Kochbeginn</strong></td>
+        <td class="underline">
+          <table>
+            <col width="200">
+            <col width="*">
+            <tr>
+              <td><span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P</td>
+              <td>{{#Zutaten.ZutatenKochen}}Mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P{{/Zutaten.ZutatenKochen}}</td>
+            </tr>
+          </table>
+        </td>
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>W&uuml;rzemenge Kochbeginn</strong></td>
@@ -286,7 +295,7 @@
             <col width="*">
             <tr>
               <td>____ Liter bei ____ &deg;C</td>
-              <td>Sollwert: <span class="value">{{Rezept.MengeKochbeginn}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> Liter bei 100&deg;C</td>
+              <td>Zielwert: <span class="value">{{Rezept.MengeKochbeginn}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> Liter bei 100&deg;C</td>
             </tr>
           </table>
         </td>
@@ -381,7 +390,7 @@
             <col width="*">
             <tr>
               <td>____ &deg;P</td>
-              <td>Sollwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P</td>
             </tr>
           </table>
         </td>
@@ -394,7 +403,7 @@
             <col width="*">
             <tr>
               <td>____ Liter bei ____ &deg;C</td>
-              <td>Sollwert: <span class="value">{{Rezept.MengeKochende}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> Liter bei 100&deg;C</td>
+              <td>Zielwert: <span class="value">{{Rezept.MengeKochende}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> Liter bei 100&deg;C</td>
             </tr>
           </table>
         </td>
@@ -453,10 +462,10 @@
             <col width="*">
             <tr>
               <td>____ &deg;P</td>
-              <td>Sollwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P</td>
             </tr>
           </table>
-          Wenn gew&uuml;nscht die W&uuml;rze mit Wasser auf Sollstammw&uuml;rze verd&uuml;nnen
+          Wenn gew&uuml;nscht die W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
         </td>
       </tr>
       <tr>

@@ -1,7 +1,7 @@
 #ifndef TABGAERVERLAUF_H
 #define TABGAERVERLAUF_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include <QItemSelection>
 #include <QDebug>
 
@@ -9,17 +9,24 @@ namespace Ui {
 class TabGaerverlauf;
 }
 
-class TabGaerverlauf : public QWidget
+class TabGaerverlauf : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);
+
     ~TabGaerverlauf();
     void saveSettings();
     void restoreView();
-	void checkEnabled();
+	  void checkEnabled();
     void setButtonIspindelImportVisible(bool state);
+
+    virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
+    void checkEnabled();
+
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

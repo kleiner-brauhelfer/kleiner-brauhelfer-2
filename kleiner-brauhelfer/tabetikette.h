@@ -1,22 +1,20 @@
 #ifndef TABETIKETTE_H
 #define TABETIKETTE_H
 
-#include <QWidget>
+#include "tababstract.h"
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
 class TabEtikette;
 }
 
-class TabEtikette : public QWidget
+class TabEtikette : public TabAbstract
 {
     Q_OBJECT
 
 public:
     explicit TabEtikette(QWidget *parent = nullptr);
-    ~TabEtikette();
-    void saveSettings();
-    void restoreView();
+    virtual ~TabEtikette() Q_DECL_OVERRIDE;
 
 private slots:
     void updateAll();
@@ -42,6 +40,7 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
+    void onTabActivated() Q_DECL_OVERRIDE;
     bool checkSave();
     QString generateSvg(const QString &svg);
     QVariant data(const QString &fieldName) const;

@@ -199,6 +199,7 @@ void WdgMalzGabe::remove()
 
 void WdgMalzGabe::on_btnKorrektur_clicked()
 {
+    setFocus();
     double toadd = ui->btnKorrektur->property("toadd").toDouble();
     setData("Prozent", prozent() + toadd);
 }

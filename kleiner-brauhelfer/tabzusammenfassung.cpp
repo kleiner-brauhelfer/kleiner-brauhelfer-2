@@ -11,14 +11,14 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabZusammenfassung)
 {
     ui->setupUi(this);
 
-    connect(bh, SIGNAL(modified()), this, SLOT(updateAll()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateWebView()));
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateWebView()));
+    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateWebView()));
 }
 
 TabZusammenfassung::~TabZusammenfassung()
@@ -26,16 +26,15 @@ TabZusammenfassung::~TabZusammenfassung()
     delete ui;
 }
 
-void TabZusammenfassung::saveSettings()
+void TabZusammenfassung::onTabActivated()
 {
+    updateWebView();
 }
 
-void TabZusammenfassung::restoreView()
+void TabZusammenfassung::updateWebView()
 {
-}
-
-void TabZusammenfassung::updateAll()
-{
+    if (!isTabActive())
+        return;
     if (bh->sud()->getStatus() == Sud_Status_Rezept)
         ui->webview->setHtmlFile("spickzettel.html");
     else

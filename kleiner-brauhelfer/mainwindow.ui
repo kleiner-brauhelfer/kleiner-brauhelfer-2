@@ -23,173 +23,65 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tabSudAuswahl">
+      <widget class="TabSudAuswahl" name="tabSudAuswahl">
        <attribute name="title">
         <string>Sudauswahl</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabSudAuswahl" name="tabContentSudAuswahl" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabRezept">
+      <widget class="TabRezept" name="tabRezept">
        <attribute name="title">
         <string>Rezept</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_6">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabRezept" name="tabContentRezept" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabBraudaten">
+      <widget class="TabBraudaten" name="tabBraudaten">
        <attribute name="title">
         <string>Braudaten</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_8">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabBraudaten" name="tabContentBraudaten" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabAbfuelldaten">
+      <widget class="TabAbfuellen" name="tabAbfuelldaten">
        <attribute name="title">
         <string>Abfülldaten</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_13">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabAbfuellen" name="tabContentAbfuelldaten" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabGaerverlauf">
+      <widget class="TabGaerverlauf" name="tabGaerverlauf">
        <attribute name="title">
         <string>Gärverlauf</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_9">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabGaerverlauf" name="tabContentGaerverlauf" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabZusammenfassung">
+      <widget class="TabZusammenfassung" name="tabZusammenfassung">
        <attribute name="title">
         <string>Zusammenfassung</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_10">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabZusammenfassung" name="tabContentZusammenfasszung" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabEtikette">
+      <widget class="TabEtikette" name="tabEtikette">
        <attribute name="title">
         <string>Etikette</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_11">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabEtikette" name="tabContentEtikette" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabBewertung">
+      <widget class="TabBewertung" name="tabBewertung">
        <attribute name="title">
         <string>Bewertung</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_12">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabBewertung" name="tabContentBewertung" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabBrauUebersicht">
+      <widget class="TabBrauUebersicht" name="tabBrauUebersicht">
        <attribute name="title">
         <string>Brauübersicht</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_7">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabBrauUebersicht" name="tabContentBrauUebersicht" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabAusruestung">
+      <widget class="TabAusruestung" name="tabAusruestung">
        <attribute name="title">
         <string>Ausrüstung</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabAusruestung" name="tabContentAusruestung" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabRohstoffe">
+      <widget class="TabRohstoffe" name="tabRohstoffe">
        <attribute name="title">
         <string>Rohstoffe</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item>
-         <widget class="TabRohstoffe" name="tabContentRohstoffe" native="true"/>
-        </item>
-       </layout>
       </widget>
-      <widget class="QWidget" name="tabDatenbank">
+      <widget class="TabDatenbank" name="tabDatenbank">
        <attribute name="title">
         <string>Datenbank</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="TabDatenbank" name="tabContentDatenbank" native="true"/>
-        </item>
-       </layout>
       </widget>
      </widget>
     </item>

@@ -24,7 +24,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabRohstoffe::TabRohstoffe(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
 {
     ui->setupUi(this);
@@ -1139,6 +1139,7 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
     modelSud.setSourceModel(bh->modelSud());
     modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
     SqlTableModel *model = nullptr;
+    SqlTableModel *model2 = nullptr;
     switch (type)
     {
     case 0:
@@ -1147,6 +1148,7 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
         break;
     case 1:
         model = bh->modelHopfengaben();
+        model2 = bh->modelWeitereZutatenGaben();
         dlg.setModel(bh->modelHopfen(), bh->modelHopfen()->fieldIndex("Beschreibung"));
         break;
     case 2:
@@ -1157,20 +1159,30 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
         model = bh->modelWeitereZutatenGaben();
         dlg.setModel(bh->modelWeitereZutaten(), bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         break;
+    default:
+        return;
     }
 
     for (int i = 0; i < modelSud.rowCount(); ++i)
     {
         int id = modelSud.data(i, "ID").toInt();
         dlg.setSud(modelSud.data(i, "Sudname").toString());
-        if (model)
+        for (int j = 0; j < model->rowCount(); ++j)
         {
-            for (int j = 0; j < model->rowCount(); ++j)
+            if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == rohstoff)
             {
-                if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == rohstoff)
+                if (dlg.exec() == QDialog::Accepted)
+                    model->setData(j, "Name", dlg.rohstoff());
+            }
+        }
+        if (model2)
+        {
+            for (int j = 0; j < model2->rowCount(); ++j)
+            {
+                if (model2->data(j, "SudID").toInt() == id && model2->data(j, "Name").toString() == rohstoff)
                 {
                     if (dlg.exec() == QDialog::Accepted)
-                        model->setData(j, "Name", dlg.rohstoff());
+                        model2->setData(j, "Name", dlg.rohstoff());
                 }
             }
         }

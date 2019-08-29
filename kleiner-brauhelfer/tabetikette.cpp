@@ -18,7 +18,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabEtikette::TabEtikette(QWidget *parent) :
-    QWidget(parent),
+    TabAbstract(parent),
     ui(new Ui::TabEtikette),
     mTemplateFilePath("")
 {
@@ -54,12 +54,9 @@ TabEtikette::~TabEtikette()
     delete ui;
 }
 
-void TabEtikette::saveSettings()
+void TabEtikette::onTabActivated()
 {
-}
-
-void TabEtikette::restoreView()
-{
+    updateAll();
 }
 
 void TabEtikette::updateAll()
@@ -67,7 +64,6 @@ void TabEtikette::updateAll()
     updateAuswahlListe();
     ui->cbAuswahl->setCurrentIndex(-1);
     updateValues();
-
     updateTemplateFilePath();
     updateTemplateTags();
 }
@@ -178,6 +174,8 @@ void TabEtikette::updateTags()
 
 void TabEtikette::updateTemplateTags()
 {
+    if (!isTabActive())
+        return;
     mTemplateTags.clear();
     TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagRezept | TemplateTags::TagSud, bh->sud()->row());
     updateTags();

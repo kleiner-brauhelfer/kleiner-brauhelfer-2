@@ -6,7 +6,7 @@
 #include <QDialogButtonBox>
 #include <QSqlQueryModel>
 
-#include "iSpindel/ispindel.h"
+#include "ispindel/ispindel.h"
 
 namespace Ui {
 class DlgIspindelImportHauptgaer;

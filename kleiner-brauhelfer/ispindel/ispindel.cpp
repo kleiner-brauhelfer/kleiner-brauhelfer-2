@@ -8,6 +8,24 @@ Ispindel::Ispindel(QObject *parent) : QObject(parent),
     m_dbIspindelQuery(nullptr),
     mSqlModel(nullptr)
 {
+    loadSettings();
+    connectDatabaseIspindel(false);
+}
+
+Ispindel::~Ispindel()
+{
+#if showDebug
+    qDebug() << "Speicher wird freigegeben und das Element m_dbIspindelQuery gelöscht";
+#endif
+    if(m_dbIspindel.isOpen())
+        m_dbIspindel.close();
+
+    if(m_dbIspindelQuery != nullptr)
+        delete m_dbIspindelQuery;
+}
+
+void Ispindel::loadSettings()
+{
     // load Settings
     gSettings->beginGroup("iSpindel");
     mDbDriver = gSettings->value("Driver", QVariant("MySQL ODBC 8.0 Unicode Driver")).toString();
@@ -18,16 +36,7 @@ Ispindel::Ispindel(QObject *parent) : QObject(parent),
 
     mDbTableCalibration = gSettings->value("TableCalibration", QVariant()).toString();
     mDbTableData = gSettings->value("TableData", QVariant()).toString();
-
     gSettings->endGroup();
-
-    //connectDatabaseIspindel();
-
-}
-
-Ispindel::~Ispindel()
-{
-
 }
 
 void Ispindel::saveSettings()
@@ -453,10 +462,10 @@ void Ispindel::setDbDriver(const QString &dbDriver)
 void Ispindel::execQueryAndCheckError(QString query)
 {
 #ifdef showDebug
-        qDebug() << query;
+    qDebug() << query;
 #endif
-        m_dbIspindelQuery->exec(query);
-        checkErrorDatabase();
+    m_dbIspindelQuery->exec(query);
+    checkErrorDatabase();
 }
 
 void Ispindel::execQuery(QString &query)

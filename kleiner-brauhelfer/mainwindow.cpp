@@ -58,6 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", false).toBool());
+    ui->actionIspindelVerwendung->setChecked(gSettings->value("IspindelInUse", false).toBool());
+    ui->actionIspindelEinstellungen->setVisible(gSettings->value("IspindelInUse", false).toBool());
     gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());
@@ -476,6 +478,16 @@ void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);
     dlg.exec();
+}
+
+void MainWindow::on_actionIspindelVerwendung_triggered(bool checked)
+{
+    gSettings->beginGroup("General");
+    gSettings->setValue("IspindelInUse", checked);
+    gSettings->endGroup();
+
+    ui->actionIspindelEinstellungen->setVisible(checked);
+
 }
 
 void MainWindow::on_actionIspindelEinstellungen_triggered()

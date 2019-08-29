@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "iSpindel/ispindel.h"
+#include "ispindel/ispindel.h"
 #include "model/datetimedelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
@@ -14,7 +14,6 @@
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
-extern Ispindel* gIspindel;
 
 TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     QWidget(parent),
@@ -182,7 +181,9 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     /*
      * iSpindel
      */
-    ui->btnImportHauptgaerIspindel->setVisible(false);
+    gSettings->beginGroup("General");
+    ui->btnImportHauptgaerIspindel->setVisible(gSettings->value("IspindelInUse", false).toBool());
+    gSettings->endGroup();
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -489,15 +490,16 @@ void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
     }
 
     if(!datasetFromIspindel.isEmpty())
-        qDebug() << datasetFromIspindel.at(0);
+        qDebug() << datasetFromIspindel;
 
-    QVariantMap values({{"SudID", bh->sud()->id()}});
+    // Multiplaktor um jeden x. Wert zu schreiben
+    int Multiplikator = Dlg.getMultiplikatorForDataImport();
+#if 0
+
     // Stammwürze für Alkoholberechnung
     double sw = bh->sud()->getSWIst();
     // Updates blockieren
     bh->modelHauptgaerverlauf()->blockSignals(true);
-    // Multiplaktor um jeden x. Wert zu schreiben
-    int Multiplikator = Dlg.getMultiplikatorForDataImport();
     for (int i = 0; i < datasetFromIspindel.size(); i+= Multiplikator) {
 
         // Werte aus iSpindel
@@ -519,6 +521,17 @@ void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
 
     // letze Messung "normal" hinzufügen, damit alles Updates gemacht werden
     bh->sud()->modelHauptgaerverlauf()->append(values);
+
+#else
+    for (int i = 0; i < datasetFromIspindel.size(); i+= Multiplikator) {
+        QVariantMap values({{"SudID", bh->sud()->id()},
+                            {"Zeitstempel", datasetFromIspindel.at(i).value("Datum").toDateTime()},
+                            {"SW", datasetFromIspindel.at(i).value("Plato").toDouble()},
+                            {"Temp", datasetFromIspindel.at(i).value("Temp").toDouble()}});
+        bh->sud()->modelHauptgaerverlauf()->append(values);
+    }
+
+#endif
 }
 
 void TabGaerverlauf::updateWeitereZutaten()
@@ -609,9 +622,4 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
-}
-
-void TabGaerverlauf::setIspindelAvaiable(bool state)
-{
-    ui->btnImportHauptgaerIspindel->setVisible(state);
 }

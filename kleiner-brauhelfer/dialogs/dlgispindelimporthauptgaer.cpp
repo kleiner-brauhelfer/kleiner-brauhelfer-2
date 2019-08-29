@@ -4,19 +4,17 @@
 DlgIspindelImportHauptgaer::DlgIspindelImportHauptgaer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgIspindelImportHauptgaer),
-    mSqlModelView(nullptr),
-    mIspindel(nullptr)
+    mSqlModelView(nullptr)
 {
     ui->setupUi(this);
 
-    if(mIspindel == nullptr) {
-        mIspindel = new Ispindel();
-        mIspindel->connectDatabaseIspindel(true);
+    mIspindel = new Ispindel();
+    if(!mIspindel->connectDatabaseIspindel(true))
         QMessageBox::warning(this,
                              "Datenbank konfigurieren",
                              "Hast du die Datenbank in den Einstellungen konfiguriert?\n"
                              "Wenn nicht, dann tue dies bitte jetzt!");
-    }
+
 
     QStringList tmpStrLst = mIspindel->getVerfuegbareSpindeln();
     qDebug() << tmpStrLst;
@@ -31,6 +29,7 @@ DlgIspindelImportHauptgaer::DlgIspindelImportHauptgaer(QWidget *parent) :
 
 DlgIspindelImportHauptgaer::~DlgIspindelImportHauptgaer()
 {
+    delete mIspindel;
     delete ui;
 }
 

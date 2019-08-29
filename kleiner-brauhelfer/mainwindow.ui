@@ -268,18 +268,13 @@
     </property>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
-   </widget>
-   <widget class="QMenu" name="menuiSppindel">
-    <property name="title">
-     <string>iSpindel</string>
-    </property>
+    <addaction name="actionIspindelVerwendung"/>
     <addaction name="actionIspindelEinstellungen"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
    <addaction name="menuAnsicht"/>
    <addaction name="menuEinstellungen"/>
-   <addaction name="menuiSppindel"/>
    <addaction name="menuHilfe"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -420,18 +415,15 @@
   </action>
   <action name="actionIspindelEinstellungen">
    <property name="text">
-    <string>Einstellungen</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+I</string>
+    <string>iSpindel</string>
    </property>
   </action>
-  <action name="actionDatenbankIspindelAutoConnect">
+  <action name="actionIspindelVerwendung">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>automatische Verbindung</string>
+    <string>iSpindel in Verwendung?</string>
    </property>
   </action>
  </widget>

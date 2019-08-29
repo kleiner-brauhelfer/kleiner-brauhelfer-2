@@ -55,6 +55,7 @@ public:
     void setDbTableData(const QString &dbTableData);
 
 private:
+    void loadSettings();
     QString buildConnectionString() const;
     void checkErrorDatabase();
     void execQueryAndCheckError(QString query);

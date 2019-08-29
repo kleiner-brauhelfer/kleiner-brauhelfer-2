@@ -32,6 +32,7 @@ DlgIspindeleinstellung::DlgIspindeleinstellung(QWidget *parent) :
 
 DlgIspindeleinstellung::~DlgIspindeleinstellung()
 {
+    delete mIspindel;
     delete ui;
 }
 
@@ -50,9 +51,9 @@ void DlgIspindeleinstellung::databaseIsOpen()
 void DlgIspindeleinstellung::on_btnSaveClose_clicked()
 {
     qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
+    setSpindelParameterFromUi();
     mIspindel->setDbTableData(ui->comboBox_TabelleMessdaten->currentText());
     mIspindel->setDbTableCalibration(ui->comboBox_TabelleKalibrierung->currentText());
-    mIspindel->connectDatabaseIspindel();
     mIspindel->saveSettings();
     this->close();
 }

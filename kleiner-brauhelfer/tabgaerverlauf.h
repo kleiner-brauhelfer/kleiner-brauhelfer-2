@@ -19,6 +19,8 @@ public:
     void saveSettings();
     void restoreView();
 	void checkEnabled();
+    void setButtonIspindelImportVisible(bool state);
+
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
 

@@ -88,6 +88,7 @@ void DlgIspindeleinstellung::on_btnTestConnection_clicked()
         ui->comboBox_TabelleKalibrierung->setCurrentIndex(
                     ui->comboBox_TabelleKalibrierung->findText(mIspindel->getDbTableCalibration()));
         this->databaseIsOpen();
+
     }
     else {
         setUiDatabaseElementsEnable(true);

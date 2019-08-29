@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QVariantMap>
 #include <QSqlQueryModel>
+#include <QSqlDriver>
 
 #include "settings.h"
 
@@ -58,6 +59,7 @@ private:
     void loadSettings();
     QString buildConnectionString() const;
     void checkErrorDatabase();
+    void execQueryAndCheckError();
     void execQueryAndCheckError(QString query);
     void execQuery(QString &query);
 

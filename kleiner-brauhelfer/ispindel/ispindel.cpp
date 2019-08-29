@@ -17,11 +17,12 @@ Ispindel::~Ispindel()
 #if showDebug
     qDebug() << "Speicher wird freigegeben und das Element m_dbIspindelQuery gelöscht";
 #endif
-    if(m_dbIspindel.isOpen())
-        m_dbIspindel.close();
-
     if(m_dbIspindelQuery != nullptr)
         delete m_dbIspindelQuery;
+
+    m_dbIspindel.close();
+
+    QSqlDatabase::removeDatabase("iSpindel");
 }
 
 void Ispindel::loadSettings()
@@ -55,14 +56,9 @@ void Ispindel::saveSettings()
 
 bool Ispindel::connectDatabaseIspindel(bool showMessage)
 {
-    if(m_dbIspindel.isOpen())
-    {
-        m_dbIspindel.close();
-        m_dbIspindel.removeDatabase(buildConnectionString());
-    }
-
-    m_dbIspindel = QSqlDatabase::addDatabase("QODBC");
+    m_dbIspindel = QSqlDatabase::addDatabase("QODBC", "iSpindel");
     m_dbIspindel.setDatabaseName(buildConnectionString());
+    //qDebug() << m_dbIspindel.driver()->hasFeature(QSqlDriver::NamedPlaceholders);
     if(!m_dbIspindel.open())
     {
         if(showMessage)
@@ -148,9 +144,11 @@ QStringList Ispindel::getTablenames()
 {
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
     QStringList tmpList;
-    QString query = "SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema ='iSpindle';";
+    QString query = QString("SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = '%1';").arg(mDbDatabase);
 
-    execQueryAndCheckError(query);
+    m_dbIspindelQuery->prepare(query);
+
+    execQueryAndCheckError();
 
     while(m_dbIspindelQuery->next())
         tmpList.append(m_dbIspindelQuery->record().value(0).toString());
@@ -457,6 +455,15 @@ void Ispindel::setDbServer(const QString &dbServer)
 void Ispindel::setDbDriver(const QString &dbDriver)
 {
     mDbDriver = dbDriver;
+}
+
+void Ispindel::execQueryAndCheckError()
+{
+#ifdef showDebug
+    qDebug() << m_dbIspindelQuery->lastQuery();
+#endif
+    m_dbIspindelQuery->exec();
+    checkErrorDatabase();
 }
 
 void Ispindel::execQueryAndCheckError(QString query)

@@ -491,10 +491,13 @@ void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
 
     if(!datasetFromIspindel.isEmpty())
         qDebug() << datasetFromIspindel;
+    else
+        return;
 
     // Multiplaktor um jeden x. Wert zu schreiben
     int Multiplikator = Dlg.getMultiplikatorForDataImport();
-#if 0
+#if 1
+    QVariantMap values({{"SudID", bh->sud()->id()}});
 
     // Stammwürze für Alkoholberechnung
     double sw = bh->sud()->getSWIst();
@@ -532,6 +535,11 @@ void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
     }
 
 #endif
+}
+
+void TabGaerverlauf::setButtonIspindelImportVisible(bool state)
+{
+    ui->btnImportHauptgaerIspindel->setVisible(state);
 }
 
 void TabGaerverlauf::updateWeitereZutaten()

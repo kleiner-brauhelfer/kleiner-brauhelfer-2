@@ -487,6 +487,7 @@ void MainWindow::on_actionIspindelVerwendung_triggered(bool checked)
     gSettings->endGroup();
 
     ui->actionIspindelEinstellungen->setVisible(checked);
+    ui->tabContentGaerverlauf->setButtonIspindelImportVisible(checked);
 
 }
 

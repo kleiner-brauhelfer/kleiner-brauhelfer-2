@@ -15,18 +15,12 @@ class TabGaerverlauf : public TabAbstract
 
 public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);
-
-    ~TabGaerverlauf();
-    void saveSettings();
-    void restoreView();
-	  void checkEnabled();
-    void setButtonIspindelImportVisible(bool state);
-
     virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView() Q_DECL_OVERRIDE;
     void checkEnabled();
 
+    void setButtonIspindelImportVisible(bool state);
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

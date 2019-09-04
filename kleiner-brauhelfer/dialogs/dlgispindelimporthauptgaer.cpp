@@ -132,8 +132,8 @@ void DlgIspindelImportHauptgaer::on_butShowData_clicked()
     qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
 
     mSqlModelView = mIspindel->getPlatoBetweenTimestampsAsModel(ui->comboBox_chooseIspindel->currentText(),
-                                                                        timestampFirst,
-                                                                        timestampLast);
+                                                                        timestampLast,
+                                                                        timestampFirst);
 
     ui->tabViewShowData->setModel(mSqlModelView);
     ui->tabViewShowData->show();

@@ -245,12 +245,25 @@ QList<QPair<QDateTime, QStringList> > Ispindel::getResetFlags(QString NameSpinde
 
 void Ispindel::setResetFlag(const QString NameSpindel, const int Recipe)
 {
-    QString query = QString("INSERT INTO %1.%2 (`Timestamp`, `Name`, `ResetFlag`, `Recipe`) "
-                           "VALUES(NOW(), '%3', 1, %4);")
+    // getID of Device
+    int ID = 0;
+    QString query = QString(
+                "SELECT NAME, ID FROM %1.%2 WHERE `Name` LIKE '%3' LIMIT 1")
+            .arg(mDbDatabase)
+            .arg(mDbTableData)
+            .arg(NameSpindel);
+
+    execQuery(query);
+    while(m_dbIspindelQuery->next())
+        ID = m_dbIspindelQuery->record().value("ID").toInt();
+
+    query = QString("INSERT INTO %1.%2 (Timestamp, Name, Angle, Temperature, Battery, Gravity, ResetFlag, Recipe, ID) "
+                    "VALUES(NOW(), '%3', 0, 0, 0, 0, 1, %4, %5);")
             .arg(mDbDatabase)
             .arg(mDbTableData)
             .arg(NameSpindel)
-            .arg(Recipe);
+            .arg(Recipe)
+            .arg(ID);
 
     execQueryAndCheckError(query);
 }
@@ -357,13 +370,15 @@ void Ispindel::setCalibrationData(const QString NameSpindel, const QStringList &
     while(m_dbIspindelQuery->next())
         ID = m_dbIspindelQuery->record().value("ID").toInt();
 
-    query = QString("UPDATE %1.%2 ").arg(mDbDatabase).arg(mDbTableCalibration);
-    query += QString("SET const1 = %1, const2 = %2, const3 = %3 ")
+    query = QString("INSERT INTO %1.%2 (ID, const1, const2, const3) ").arg(mDbDatabase).arg(mDbTableCalibration);
+    query += QString("VALUES (%1, %2, %3, %4) ON DUPLICATE KEY UPDATE ").arg(ID)
             .arg(Parameter0_2.at(2))
             .arg(Parameter0_2.at(1))
             .arg(Parameter0_2.at(0));
-    query += QString("WHERE ID = %1").arg(ID);
-
+    query += QString("const1 = %1, const2 = %2, const3 = %3;")
+            .arg(Parameter0_2.at(2))
+            .arg(Parameter0_2.at(1))
+            .arg(Parameter0_2.at(0));
     execQueryAndCheckError(query);
 }
 

@@ -33,7 +33,7 @@ void Ispindel::loadSettings()
     mDbServer = gSettings->value("Server", QVariant("127.0.0.1")).toString();
     mDbDatabase = gSettings->value("Database", QVariant("iSpindle")).toString();
     mDbUsername = gSettings->value("Username", QVariant("iSpindle")).toString();
-    mDbPwd = gSettings->value("Password", QVariant("passwort")).toString();
+    mDbPwd = gSettings->value("Password", QVariant("ohyeah")).toString();
 
     mDbTableCalibration = gSettings->value("TableCalibration", QVariant()).toString();
     mDbTableData = gSettings->value("TableData", QVariant()).toString();

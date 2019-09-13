@@ -157,24 +157,40 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->cbZutat->setCurrentText(name);
     }
     if (!ui->tbMenge->hasFocus())
-        ui->tbMenge->setValue(data("Menge").toDouble());
+    {
+        if (einheit == EWZ_Einheit_mg)
+            ui->tbMenge->setValue(data("Menge").toDouble() * 1000);
+        else
+            ui->tbMenge->setValue(data("Menge").toDouble());
+    }
     if (!ui->tbMengeTotal->hasFocus())
     {
-        if (einheit == EWZ_Einheit_Kg)
+        switch (einheit)
         {
+        case EWZ_Einheit_Kg:
             ui->lblEinheit->setText(tr("kg"));
             ui->lblEinheit2->setText(tr("kg"));
+            ui->lblEinheitProLiter->setText(tr("g/l"));
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data("erg_Menge").toDouble() / 1000);
-        }
-        else
-        {
+            break;
+        case EWZ_Einheit_g:
             ui->lblEinheit->setText(tr("g"));
             ui->lblEinheit2->setText(tr("g"));
+            ui->lblEinheitProLiter->setText(tr("g/l"));
             ui->tbMengeTotal->setDecimals(0);
             ui->tbVorhanden->setDecimals(0);
             ui->tbMengeTotal->setValue(data("erg_Menge").toDouble());
+            break;
+        case EWZ_Einheit_mg:
+            ui->lblEinheit->setText(tr("mg"));
+            ui->lblEinheit2->setText(tr("mg"));
+            ui->lblEinheitProLiter->setText(tr("mg/l"));
+            ui->tbMengeTotal->setDecimals(0);
+            ui->tbVorhanden->setDecimals(0);
+            ui->tbMengeTotal->setValue(data("erg_Menge").toDouble() * 1000);
+            break;
         }
     }
     if (!ui->cbZugabezeitpunkt->hasFocus())
@@ -249,6 +265,8 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         }
         if (einheit == EWZ_Einheit_Kg)
             benoetigt /= 1000;
+        else if (einheit == EWZ_Einheit_mg)
+            benoetigt *= 1000;
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
@@ -360,7 +378,12 @@ void WdgWeitereZutatGabe::on_cbZutat_currentIndexChanged(const QString &text)
 void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
-        setData("Menge", value);
+    {
+        if (data("Einheit").toInt() == EWZ_Einheit_mg)
+            setData("Menge", value / 1000);
+        else
+            setData("Menge", value);
+    }
 }
 
 void WdgWeitereZutatGabe::on_cbZugabezeitpunkt_currentIndexChanged(int index)

@@ -36,6 +36,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("Sudnummer"), Qt::Horizontal, tr("Sudnummer"));
     model->setHeaderData(model->fieldIndex("Sudname"), Qt::Horizontal, tr("Sudname"));
     model->setHeaderData(model->fieldIndex("Braudatum"), Qt::Horizontal, tr("Braudatum"));
+    model->setHeaderData(model->fieldIndex("Abfuelldatum"), Qt::Horizontal, tr("Abfülldatum"));
     model->setHeaderData(model->fieldIndex("Erstellt"), Qt::Horizontal, tr("Erstellt"));
     model->setHeaderData(model->fieldIndex("Gespeichert"), Qt::Horizontal, tr("Gespeichert"));
     model->setHeaderData(model->fieldIndex("Woche"), Qt::Horizontal, tr("Woche"));
@@ -66,6 +67,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     mSpalten.append({"Sudname", true, false, 200, nullptr});
     mSpalten.append({"Sudnummer", true, true, 100, new SpinBoxDelegate(table)});
     mSpalten.append({"Braudatum", true, true, 150, new DateDelegate(false, true, table)});
+    mSpalten.append({"Abfuelldatum", false, true, 150, new DateDelegate(false, true, table)});
     mSpalten.append({"Erstellt", true, true, 150, new DateDelegate(false, true, table)});
     mSpalten.append({"Gespeichert", true, true, 150, new DateDelegate(false, true, table)});
     mSpalten.append({"Woche", true, true, 100, nullptr});

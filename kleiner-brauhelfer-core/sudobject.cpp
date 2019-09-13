@@ -296,10 +296,18 @@ void SudObject::brauzutatenAbziehen()
                 if (row != -1)
                 {
                     mengeTotal = mSubstract->data(row, "Menge").toDouble();
-                    if (mList->data(i, "Einheit").toInt() == EWZ_Einheit_Kg)
+                    switch (mList->data(i, "Einheit").toInt())
+                    {
+                    case EWZ_Einheit_Kg:
                         mengeTotal -= mList->data(i, "erg_Menge").toDouble() / 1000;
-                    else
+                        break;
+                    case EWZ_Einheit_g:
                         mengeTotal -= mList->data(i, "erg_Menge").toDouble();
+                        break;
+                    case EWZ_Einheit_mg:
+                        mengeTotal -= mList->data(i, "erg_Menge").toDouble() * 1000;
+                        break;
+                    }
                     if (mengeTotal < 0.0)
                         mengeTotal = 0.0;
                     mSubstract->setData(row, "Menge", mengeTotal);
@@ -312,10 +320,18 @@ void SudObject::brauzutatenAbziehen()
                 if (row >= 0)
                 {
                     mengeTotal = mSubstract->data(row, "Menge").toDouble();
-                    if (mList->data(i, "Einheit").toInt() == EWZ_Einheit_Kg)
+                    switch (mList->data(i, "Einheit").toInt())
+                    {
+                    case EWZ_Einheit_Kg:
                         mengeTotal -= mList->data(i, "erg_Menge").toDouble() / 1000;
-                    else
+                        break;
+                    case EWZ_Einheit_g:
                         mengeTotal -= mList->data(i, "erg_Menge").toDouble();
+                        break;
+                    case EWZ_Einheit_mg:
+                        mengeTotal -= mList->data(i, "erg_Menge").toDouble() * 1000;
+                        break;
+                    }
                     if (mengeTotal < 0.0)
                         mengeTotal = 0.0;
                     mSubstract->setData(row, "Menge", mengeTotal);
@@ -360,10 +376,18 @@ void SudObject::zutatAbziehen(const QString& zutat, int typ, double menge)
         if (row != -1)
         {
             mengeTotal = mSubstract->data(row, "Menge").toDouble();
-            if (mSubstract->data(row, "Einheiten").toInt() == EWZ_Einheit_Kg)
+            switch (mSubstract->data(row, "Einheiten").toInt())
+            {
+            case EWZ_Einheit_Kg:
                 mengeTotal -= menge / 1000;
-            else
+                break;
+            case EWZ_Einheit_g:
                 mengeTotal -= menge;
+                break;
+            case EWZ_Einheit_mg:
+                mengeTotal -= menge * 1000;
+                break;
+            }
             if (mengeTotal < 0.0)
                 mengeTotal = 0.0;
             mSubstract->setData(row, "Menge", mengeTotal);

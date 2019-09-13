@@ -24,10 +24,18 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &index) const
     }
     if (field == "MengeGramm")
     {
-        if (index.sibling(index.row(), fieldIndex("Einheiten")).data().toInt() == EWZ_Einheit_Kg)
-            return index.sibling(index.row(), fieldIndex("Menge")).data().toDouble() * 1000;
-        else
-            return index.sibling(index.row(), fieldIndex("Menge")).data().toDouble();
+        double menge = index.sibling(index.row(), fieldIndex("Menge")).data().toDouble();
+        switch (index.sibling(index.row(), fieldIndex("Einheiten")).data().toInt())
+        {
+        case EWZ_Einheit_Kg:
+            return menge * 1000;
+        case EWZ_Einheit_g:
+            return menge;
+        case EWZ_Einheit_mg:
+            return menge / 1000;
+        default:
+            return menge;
+        }
     }
     if (field == "InGebrauch")
     {

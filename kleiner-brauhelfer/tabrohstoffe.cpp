@@ -360,7 +360,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = model->fieldIndex("Einheiten");
     model->setHeaderData(col, Qt::Horizontal, tr("Einheit"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g")}, table));
+    table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg")}, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 

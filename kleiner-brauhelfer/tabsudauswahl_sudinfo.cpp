@@ -292,19 +292,26 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
-            if (eintrag.Einheit == EWZ_Einheit_Kg)
+            switch (eintrag.Einheit)
             {
+            case EWZ_Einheit_Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
-            }
-            else
-            {
+                break;
+            case EWZ_Einheit_g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
                 map.insert("Einheit", tr("g"));
+                break;
+            case EWZ_Einheit_mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
+                map.insert("Einheit", tr("mg"));
+                break;
             }
             liste << map;
         }
@@ -332,19 +339,26 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
-            if (eintrag.Einheit == EWZ_Einheit_Kg)
+            switch (eintrag.Einheit)
             {
+            case EWZ_Einheit_Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
-            }
-            else
-            {
+                break;
+            case EWZ_Einheit_g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
                 map.insert("Einheit", tr("g"));
+                break;
+            case EWZ_Einheit_mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
+                map.insert("Einheit", tr("mg"));
+                break;
             }
             liste << map;
         }
@@ -372,19 +386,26 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
-            if (eintrag.Einheit == EWZ_Einheit_Kg)
+            switch (eintrag.Einheit)
             {
+            case EWZ_Einheit_Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
-            }
-            else
-            {
+                break;
+            case EWZ_Einheit_g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
                 map.insert("Einheit", tr("g"));
+                break;
+            case EWZ_Einheit_mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
+                map.insert("Einheit", tr("mg"));
+                break;
             }
             liste << map;
         }
@@ -412,19 +433,26 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
-            if (eintrag.Einheit == EWZ_Einheit_Kg)
+            switch (eintrag.Einheit)
             {
+            case EWZ_Einheit_Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
-            }
-            else
-            {
+                break;
+            case EWZ_Einheit_g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
                 map.insert("Einheit", tr("g"));
+                break;
+            case EWZ_Einheit_mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
+                map.insert("Einheit", tr("mg"));
+                break;
             }
             liste << map;
         }
@@ -452,19 +480,26 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
-            if (eintrag.Einheit == EWZ_Einheit_Kg)
+            switch (eintrag.Einheit)
             {
+            case EWZ_Einheit_Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
-            }
-            else
-            {
+                break;
+            case EWZ_Einheit_g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
                 map.insert("Einheit", tr("g"));
+                break;
+            case EWZ_Einheit_mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
+                map.insert("Einheit", tr("mg"));
+                break;
             }
             liste << map;
         }

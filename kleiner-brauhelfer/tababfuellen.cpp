@@ -174,8 +174,8 @@ void TabAbfuellen::updateValues()
     ui->lblZuckerFlascheEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
 
     value = ui->tbFlasche->value() / bh->sud()->getJungbiermengeAbfuellen();
-    ui->tbSpeisemengeFlasche->setValue((int)(ui->tbSpeisemengeGesamt->value() * value));
-    ui->tbZuckerFlasche->setValue((int)(ui->tbZuckerGesamt->value() * value));
+    ui->tbSpeisemengeFlasche->setValue(ui->tbSpeisemengeGesamt->value() * value);
+    ui->tbZuckerFlasche->setValue(ui->tbZuckerGesamt->value() * value);
     ui->tbGruenschlauchzeitpunkt->setValue(bh->sud()->getGruenschlauchzeitpunkt());
     ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());

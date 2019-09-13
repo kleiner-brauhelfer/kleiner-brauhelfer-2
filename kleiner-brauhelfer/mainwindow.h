@@ -45,7 +45,6 @@ private slots:
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionSpende_triggered();
     void on_actionUeber_triggered();
-    void on_actionIspindelVerwendung_triggered(bool checked);
     void on_actionIspindelEinstellungen_triggered();
 
 private:

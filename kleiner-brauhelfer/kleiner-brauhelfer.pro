@@ -34,9 +34,6 @@ DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
 DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 
 SOURCES += \
-    dialogs/dlgispindeleinstellung.cpp \
-    dialogs/dlgispindelimporthauptgaer.cpp \
-    ispindel/ispindel.cpp \
     importexport.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -59,6 +56,8 @@ SOURCES += \
     dialogs/dlgabout.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgeinmaischtemp.cpp \
+    dialogs/dlgispindeleinstellung.cpp \
+    dialogs/dlgispindelimporthauptgaer.cpp \
     dialogs/dlgmessage.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffaustausch.cpp \
@@ -68,6 +67,8 @@ SOURCES += \
     dialogs/dlgvolumen.cpp \
     helper/htmlhighlighter.cpp \
     helper/mustache.cpp \
+    helper/simplecrypt.cpp \
+    ispindel/ispindel.cpp \
     model/checkboxdelegate.cpp \
     model/comboboxdelegate.cpp \
     model/datedelegate.cpp \
@@ -103,9 +104,6 @@ SOURCES += \
 
 HEADERS += \
     definitionen.h \
-    dialogs/dlgispindeleinstellung.h \
-    dialogs/dlgispindelimporthauptgaer.h \
-    ispindel/ispindel.h \
     importexport.h \
     mainwindow.h \
     settings.h \
@@ -126,6 +124,8 @@ HEADERS += \
     dialogs/dlgabout.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgeinmaischtemp.h \
+    dialogs/dlgispindeleinstellung.h \
+    dialogs/dlgispindelimporthauptgaer.h \
     dialogs/dlgmessage.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffaustausch.h \
@@ -135,6 +135,8 @@ HEADERS += \
     dialogs/dlgvolumen.h \
     helper/htmlhighlighter.h \
     helper/mustache.h \
+    helper/simplecrypt.h \
+    ispindel/ispindel.h \
     model/checkboxdelegate.h \
     model/comboboxdelegate.h \
     model/datedelegate.h \
@@ -169,8 +171,6 @@ HEADERS += \
     widgets/wdgwebvieweditable.h
 
 FORMS += \
-    dialogs/dlgispindeleinstellung.ui \
-    dialogs/dlgispindelimporthauptgaer.ui \
     mainwindow.ui \
     tababfuellen.ui \
     tabausruestung.ui \
@@ -187,6 +187,8 @@ FORMS += \
     dialogs/dlgabout.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgeinmaischtemp.ui \
+    dialogs/dlgispindeleinstellung.ui \
+    dialogs/dlgispindelimporthauptgaer.ui \
     dialogs/dlgmessage.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffaustausch.ui \

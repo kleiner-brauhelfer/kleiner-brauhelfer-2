@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>351</width>
-    <height>454</height>
+    <height>477</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,6 +20,13 @@
    <string>Einstellungen iSpindel</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QCheckBox" name="checkBoxIspindelVerwendung">
+     <property name="text">
+      <string>iSpindel verwenden</string>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="enabled">

@@ -6,34 +6,37 @@ extern Settings* gSettings;
 DlgIspindeleinstellung::DlgIspindeleinstellung(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::dlgispindeleinstellung),
-    mIspindel(nullptr)
+    mIspindel(new Ispindel())
 {
     ui->setupUi(this);
 
     ui->tab_2->setEnabled(false);
 
     gSettings->beginGroup("iSpindel");
-    ui->lineEdit_OdbcTreiber->setText(gSettings->value("Driver", QVariant("MySQL ODBC 8.0 Unicode Driver")).toString());
-    ui->lineEdit_IpDatabase->setText(gSettings->value("Server", QVariant("127.0.0.1")).toString());
-    ui->lineEdit_NameDatabase->setText(gSettings->value("Database", QVariant("iSpindle")).toString());
-    ui->lineEdit_DbUsername->setText(gSettings->value("Username", QVariant("iSpindle")).toString());
-    ui->lineEdit_DbPassword->setText(gSettings->value("Password", QVariant("password")).toString());
+    ui->checkBoxIspindelVerwendung->setChecked(gSettings->value("IspindelInUse", false).toBool());
     gSettings->endGroup();
 
-    if(mIspindel == nullptr) {
-        mIspindel = new Ispindel();
-        setSpindelParameterFromUi();
-    }
+    ui->lineEdit_OdbcTreiber->setText(mIspindel->getDbDriver());
+    ui->lineEdit_IpDatabase->setText(mIspindel->getDbServer());
+    ui->lineEdit_NameDatabase->setText(mIspindel->getDbDatabase());
+    ui->lineEdit_DbUsername->setText(mIspindel->getDbUsername());
+    ui->lineEdit_DbPassword->setText(mIspindel->getDbPwd());
 
-    ui->lineEditX_0->setValidator(new QDoubleValidator());
-    ui->lineEditX_1->setValidator(new QDoubleValidator());
-    ui->lineEditX_2->setValidator(new QDoubleValidator());
+    ui->tabWidget->setEnabled(ui->checkBoxIspindelVerwendung->isChecked());
+    ui->lineEditX_0->setValidator(new QDoubleValidator(ui->lineEditX_0));
+    ui->lineEditX_1->setValidator(new QDoubleValidator(ui->lineEditX_1));
+    ui->lineEditX_2->setValidator(new QDoubleValidator(ui->lineEditX_2));
 }
 
 DlgIspindeleinstellung::~DlgIspindeleinstellung()
 {
     delete mIspindel;
     delete ui;
+}
+
+bool DlgIspindeleinstellung::useIspindel() const
+{
+    return ui->checkBoxIspindelVerwendung->isChecked();
 }
 
 void DlgIspindeleinstellung::databaseIsOpen()
@@ -50,7 +53,7 @@ void DlgIspindeleinstellung::databaseIsOpen()
 
 void DlgIspindeleinstellung::on_btnSaveClose_clicked()
 {
-    qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
+    //qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
     setSpindelParameterFromUi();
     mIspindel->setDbTableData(ui->comboBox_TabelleMessdaten->currentText());
     mIspindel->setDbTableCalibration(ui->comboBox_TabelleKalibrierung->currentText());
@@ -60,7 +63,7 @@ void DlgIspindeleinstellung::on_btnSaveClose_clicked()
 
 void DlgIspindeleinstellung::on_btnTestConnection_clicked()
 {
-    qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
+    //qDebug() << QString("%1 called at %2").arg(Q_FUNC_INFO).arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
     setSpindelParameterFromUi();
 
     QString msg;
@@ -75,7 +78,7 @@ void DlgIspindeleinstellung::on_btnTestConnection_clicked()
 
         foreach(QString tmpMsg, RecordSet)
         {
-            qDebug() << tmpMsg;
+            //qDebug() << tmpMsg;
             msg.append(QString("- %1<br>").arg(tmpMsg));
         }
 
@@ -168,4 +171,12 @@ void DlgIspindeleinstellung::setUiDatabaseElementsEnable(bool setEnable) const
     ui->lineEdit_NameDatabase->setEnabled(setEnable);
     ui->lineEdit_DbUsername->setEnabled(setEnable);
     ui->lineEdit_DbPassword->setEnabled(setEnable);
+}
+
+void DlgIspindeleinstellung::on_checkBoxIspindelVerwendung_clicked(bool checked)
+{
+    gSettings->beginGroup("iSpindel");
+    gSettings->setValue("IspindelInUse", checked);
+    gSettings->endGroup();
+    ui->tabWidget->setEnabled(checked);
 }

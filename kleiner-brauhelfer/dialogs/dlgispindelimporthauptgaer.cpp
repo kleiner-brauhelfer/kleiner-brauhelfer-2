@@ -17,7 +17,7 @@ DlgIspindelImportHauptgaer::DlgIspindelImportHauptgaer(QWidget *parent) :
 
 
     QStringList tmpStrLst = mIspindel->getVerfuegbareSpindeln();
-    qDebug() << tmpStrLst;
+    //qDebug() << tmpStrLst;
     for(QString tmp : tmpStrLst)
     {
         if(!tmp.isEmpty())
@@ -83,7 +83,7 @@ void DlgIspindelImportHauptgaer::on_comboBox_chooseIspindel_currentIndexChanged(
 // Es müssen mindestens zwei Datensätze gewählt werden!
 void DlgIspindelImportHauptgaer::on_listWidgetTimestampReset_itemSelectionChanged()
 {
-    qDebug() << "List item Changed!";
+    //qDebug() << "List item Changed!";
     bool statusButton = false;
     if(ui->listWidgetTimestampReset->selectedItems().count() >= 2)
         statusButton = true;
@@ -98,7 +98,7 @@ void DlgIspindelImportHauptgaer::on_butImport_clicked()
 {
     QDateTime timestampFirst, timestampLast;
     getChooseDateTime(&timestampFirst, &timestampLast);
-    qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
+    //qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
 
     // Hole die Daten aus der Datenbank
     mValuePlatoDatabase = mIspindel->getPlatoBetweenTimestamps(ui->comboBox_chooseIspindel->currentText(),
@@ -129,7 +129,7 @@ void DlgIspindelImportHauptgaer::on_butShowData_clicked()
 
     QDateTime timestampFirst, timestampLast;
     getChooseDateTime(&timestampFirst, &timestampLast);
-    qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
+    //qDebug() << QString("Zeitstempel first: ") << timestampFirst << "Last: " << timestampLast;
 
     mSqlModelView = mIspindel->getPlatoBetweenTimestampsAsModel(ui->comboBox_chooseIspindel->currentText(),
                                                                         timestampLast,
@@ -148,7 +148,8 @@ void DlgIspindelImportHauptgaer::getChooseDateTime(QDateTime *First, QDateTime *
     {
         selectedIDs << selectedItems.at(i)->data(Qt::UserRole).toInt();
     }
-    qSort(selectedIDs);
+    //qSort(selectedIDs);
+    std::sort(selectedIDs.begin(), selectedIDs.end());
 
     // hole den markierten Zwischenraum
     if(selectedIDs.first() == -1)

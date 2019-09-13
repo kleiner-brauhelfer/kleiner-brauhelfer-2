@@ -25,6 +25,7 @@ class DlgIspindeleinstellung : public QDialog
 public:
     explicit DlgIspindeleinstellung(QWidget *parent = nullptr);
     ~DlgIspindeleinstellung();
+    bool useIspindel() const;
 
 private:
     void setSpindelParameterFromUi() const;
@@ -41,6 +42,8 @@ private slots:
     void on_lineEditX_2_editingFinished();
     void on_lineEditX_1_editingFinished();
     void on_lineEditX_0_editingFinished();
+
+    void on_checkBoxIspindelVerwendung_clicked(bool checked);
 
 private:
     Ui::dlgispindeleinstellung *ui;

@@ -43,10 +43,15 @@ public:
     void setCalibrationData(const QString NameSpindel, const QStringList &Parameter0_2);
     void deleteDatabaseBetweenTimestamps(const QString NameSpindel, const QDateTime FirstDate, const QDateTime LastDate);
 
+    QString getDbDriver() const;
     void setDbDriver(const QString &dbDriver);
+    QString getDbServer() const;
     void setDbServer(const QString &dbServer);
+    QString getDbDatabase() const;
     void setDbDatabase(const QString &dbDatabase);
+    QString getDbUsername() const;
     void setDbUsername(const QString &dbUsername);
+    QString getDbPwd() const;
     void setDbPwd(const QString &dbPwd);
 
     QString getDbTableCalibration() const;

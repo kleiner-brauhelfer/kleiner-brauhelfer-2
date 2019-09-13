@@ -160,7 +160,7 @@
     </property>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
-    <addaction name="actionIspindelVerwendung"/>
+    <addaction name="separator"/>
     <addaction name="actionIspindelEinstellungen"/>
    </widget>
    <addaction name="menuFile"/>
@@ -308,14 +308,6 @@
   <action name="actionIspindelEinstellungen">
    <property name="text">
     <string>iSpindel</string>
-   </property>
-  </action>
-  <action name="actionIspindelVerwendung">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>iSpindel in Verwendung?</string>
    </property>
   </action>
  </widget>

@@ -3,7 +3,6 @@
 
 #include "tababstract.h"
 #include <QItemSelection>
-#include <QDebug>
 
 namespace Ui {
 class TabGaerverlauf;
@@ -19,7 +18,6 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView() Q_DECL_OVERRIDE;
     void checkEnabled();
-
     void setButtonIspindelImportVisible(bool state);
 
 private:

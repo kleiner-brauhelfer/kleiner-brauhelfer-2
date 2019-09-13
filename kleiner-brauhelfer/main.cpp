@@ -10,7 +10,6 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "iSpindel/ispindel.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.

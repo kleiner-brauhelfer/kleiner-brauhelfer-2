@@ -5,8 +5,6 @@
 #include <QFontDialog>
 #include <QStyleFactory>
 #include <QDesktopServices>
-#include <QDebug>
-#include <QTime>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "definitionen.h"
@@ -58,9 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", false).toBool());
-    ui->actionIspindelVerwendung->setChecked(gSettings->value("IspindelInUse", false).toBool());
-    ui->actionIspindelEinstellungen->setVisible(gSettings->value("IspindelInUse", false).toBool());
+    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", true).toBool());
     gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());
@@ -81,7 +77,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if (ui->actionCheckUpdate->isChecked())
         checkMessage();
-
 }
 
 MainWindow::~MainWindow()
@@ -234,7 +229,7 @@ void MainWindow::discarded()
                             bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-	ui->actionEingabefelderEntsperren->setChecked(false);
+    ui->actionEingabefelderEntsperren->setChecked(false);
 }
 
 void MainWindow::sudLoaded()
@@ -494,19 +489,9 @@ void MainWindow::on_actionUeber_triggered()
     dlg.exec();
 }
 
-void MainWindow::on_actionIspindelVerwendung_triggered(bool checked)
-{
-    gSettings->beginGroup("General");
-    gSettings->setValue("IspindelInUse", checked);
-    gSettings->endGroup();
-
-    ui->actionIspindelEinstellungen->setVisible(checked);
-    ui->tabGaerverlauf->setButtonIspindelImportVisible(checked);
-
-}
-
 void MainWindow::on_actionIspindelEinstellungen_triggered()
 {
     DlgIspindeleinstellung dlg(this);
     dlg.exec();
+    ui->tabGaerverlauf->setButtonIspindelImportVisible(dlg.useIspindel());
 }

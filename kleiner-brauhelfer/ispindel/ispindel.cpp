@@ -1,8 +1,10 @@
 #include "ispindel.h"
+#include "helper/simplecrypt.h"
+#include "definitionen.h"
 
 extern Settings* gSettings;
 
-#define showDebug 1
+#define showDebug 0
 
 Ispindel::Ispindel(QObject *parent) : QObject(parent),
     m_dbIspindelQuery(nullptr),
@@ -33,7 +35,10 @@ void Ispindel::loadSettings()
     mDbServer = gSettings->value("Server", QVariant("127.0.0.1")).toString();
     mDbDatabase = gSettings->value("Database", QVariant("iSpindle")).toString();
     mDbUsername = gSettings->value("Username", QVariant("iSpindle")).toString();
-    mDbPwd = gSettings->value("Password", QVariant("ohyeah")).toString();
+
+    SimpleCrypt crypto(SIMPLECRYPT_KEY);
+    QString encrypted = gSettings->value("Password", crypto.encryptToString(QString("ohyeah"))).toString();
+    mDbPwd = crypto.decryptToString(encrypted);
 
     mDbTableCalibration = gSettings->value("TableCalibration", QVariant()).toString();
     mDbTableData = gSettings->value("TableData", QVariant()).toString();
@@ -47,7 +52,9 @@ void Ispindel::saveSettings()
     gSettings->setValue("Server", QVariant(mDbServer));
     gSettings->setValue("Database", QVariant(mDbDatabase));
     gSettings->setValue("Username", QVariant(mDbUsername));
-    gSettings->setValue("Password", QVariant(mDbPwd));
+
+    SimpleCrypt crypto(SIMPLECRYPT_KEY);
+    gSettings->setValue("Password", QVariant(crypto.encryptToString(mDbPwd)));
 
     gSettings->setValue("TableCalibration", QVariant(mDbTableCalibration));
     gSettings->setValue("TableData", QVariant(mDbTableData));
@@ -59,6 +66,8 @@ bool Ispindel::connectDatabaseIspindel(bool showMessage)
     m_dbIspindel = QSqlDatabase::addDatabase("QODBC", "iSpindel");
     m_dbIspindel.setDatabaseName(buildConnectionString());
     //qDebug() << m_dbIspindel.driver()->hasFeature(QSqlDriver::NamedPlaceholders);
+    if(m_dbIspindelQuery != nullptr)
+        delete m_dbIspindelQuery;
     if(!m_dbIspindel.open())
     {
         if(showMessage)
@@ -67,10 +76,13 @@ bool Ispindel::connectDatabaseIspindel(bool showMessage)
                                   tr("Bitte öffne die Einstellung zur iSpindel und versuche ein Verbindung zur Datenbank herzustellen."),
                                   QMessageBox::Ok);
         }
+        m_dbIspindelQuery = new QSqlQuery();
         return false;
     }
     else {
+#if showDebug
         qDebug() << QString("%1 send at %2").arg("\"sig_DatabaseIspindelConnected\"").arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
+#endif
         m_dbIspindelQuery = new QSqlQuery(m_dbIspindel);
         emit sig_DatabaseIspindelConnected();
         return true;
@@ -84,7 +96,9 @@ QString Ispindel::buildConnectionString() const
     tmpConnectionString.append(QString("database=%1;").arg(mDbDatabase));
     tmpConnectionString.append(QString("uid=%1;").arg(mDbUsername));
     tmpConnectionString.append(QString("pwd=%1;").arg(mDbPwd));
+#if showDebug
     qDebug() << "Connection String: " << tmpConnectionString;
+#endif
     return tmpConnectionString;
 }
 
@@ -120,7 +134,9 @@ QSqlQuery* Ispindel::getQuery()
 
 QSqlRecord Ispindel::getRecordSetQuery(QString query)
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
+#endif
     execQueryAndCheckError(query);
     return m_dbIspindelQuery->record();
 }
@@ -142,7 +158,9 @@ QStringList Ispindel::getStringListQuery(QString query)
 // gibt die verfügbaren Tabellennamen in der DB zurück
 QStringList Ispindel::getTablenames()
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
+#endif
     QStringList tmpList;
     QString query = QString("SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = '%1';").arg(mDbDatabase);
 
@@ -158,7 +176,9 @@ QStringList Ispindel::getTablenames()
 
 QStringList Ispindel::getVerfuegbareSpindeln()
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
+#endif
     QStringList tmpStringList = getStringListQuery(
                 QString("SELECT Name FROM %1.%2 group by Name;").arg(mDbDatabase).arg(mDbTableData));
 
@@ -202,7 +222,9 @@ QStringList Ispindel::getVerfuegbareSpindeln()
 
 int Ispindel::getAnzahlDatensaetze(QString NameSpindel)
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
+#endif
     QList<QVariant> tmpLst;
     QString query = QString("SELECT count(Name) FROM %1.%2 "
                             "where Name like '%3';")
@@ -220,8 +242,9 @@ int Ispindel::getAnzahlDatensaetze(QString NameSpindel)
 // gibt Zeitpunkt, Name und Rezept der letzten ResetFlags == 1 zurück
 QList<QPair<QDateTime, QStringList> > Ispindel::getResetFlags(QString NameSpindel)
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
-
+#endif
     QList<QPair<QDateTime, QStringList> > tmpReturn;
     QString query =QString("SELECT * FROM %1.%2 "
                            "where ResetFlag = 1 AND (Name like \"%3\" or Name IS NULL or Name =\"\") "
@@ -293,8 +316,9 @@ void Ispindel::deleteDatabaseBetweenTimestamps(const QString NameSpindel,
 // Gibt die Daten zwischen zwei Zeitpunkten zurück
 QList<QVariantMap> Ispindel::getPlatoBetweenTimestamps(QString NameSpindel, QDateTime DateNew, QDateTime DateOld)
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
-
+#endif
     execQueryAndCheckError(getQueryGetPlatoFromDb(NameSpindel, DateNew, DateOld));
 
     // Get Datasets from Table
@@ -311,10 +335,11 @@ QList<QVariantMap> Ispindel::getPlatoBetweenTimestamps(QString NameSpindel, QDat
 
 QSqlQueryModel* Ispindel::getPlatoBetweenTimestampsAsModel(QString NameSpindel, QDateTime DateNew, QDateTime DateOld)
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
-
+#endif
     if(mSqlModel == nullptr)
-        mSqlModel = new QSqlQueryModel;
+        mSqlModel = new QSqlQueryModel(this);
     //return QueryModel
     mSqlModel->setQuery(getQueryGetPlatoFromDb(NameSpindel, DateNew, DateOld));
     mSqlModel->setHeaderData(0, Qt::Horizontal, tr("Zeitstempel"));
@@ -384,7 +409,9 @@ void Ispindel::setCalibrationData(const QString NameSpindel, const QStringList &
 
 QString Ispindel::getQueryGetPlatoFromDb(QString &NameSpindel, QDateTime &DateNew, QDateTime &DateOld)
 {
+#if showDebug
     qDebug() << QString("%1 - called").arg(Q_FUNC_INFO);
+#endif
     // getID of Device
     int ID;
     QString query = QString(
@@ -452,9 +479,19 @@ void Ispindel::setDbPwd(const QString &dbPwd)
     mDbPwd = dbPwd;
 }
 
+QString Ispindel::getDbPwd() const
+{
+    return mDbPwd;
+}
+
 void Ispindel::setDbUsername(const QString &dbUsername)
 {
     mDbUsername = dbUsername;
+}
+
+QString Ispindel::getDbUsername() const
+{
+    return mDbUsername;
 }
 
 void Ispindel::setDbDatabase(const QString &dbDatabase)
@@ -462,9 +499,19 @@ void Ispindel::setDbDatabase(const QString &dbDatabase)
     mDbDatabase = dbDatabase;
 }
 
+QString Ispindel::getDbDatabase() const
+{
+    return mDbDatabase;
+}
+
 void Ispindel::setDbServer(const QString &dbServer)
 {
     mDbServer = dbServer;
+}
+
+QString Ispindel::getDbServer() const
+{
+    return mDbServer;
 }
 
 void Ispindel::setDbDriver(const QString &dbDriver)
@@ -472,9 +519,14 @@ void Ispindel::setDbDriver(const QString &dbDriver)
     mDbDriver = dbDriver;
 }
 
+QString Ispindel::getDbDriver() const
+{
+    return mDbDriver;
+}
+
 void Ispindel::execQueryAndCheckError()
 {
-#ifdef showDebug
+#if showDebug
     qDebug() << m_dbIspindelQuery->lastQuery();
 #endif
     m_dbIspindelQuery->exec();
@@ -483,7 +535,7 @@ void Ispindel::execQueryAndCheckError()
 
 void Ispindel::execQueryAndCheckError(QString query)
 {
-#ifdef showDebug
+#if showDebug
     qDebug() << query;
 #endif
     m_dbIspindelQuery->exec(query);

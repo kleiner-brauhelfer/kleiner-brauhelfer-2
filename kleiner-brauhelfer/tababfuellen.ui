@@ -1219,6 +1219,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
              <property name="toolTip">
               <string>Benötigte Menge an Zucker pro Flasche.</string>
              </property>

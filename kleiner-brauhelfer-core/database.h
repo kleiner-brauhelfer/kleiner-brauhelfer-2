@@ -2,6 +2,7 @@
 #define DATABASE_H
 
 #include <QString>
+#include <QSqlDatabase>
 #include "sqltablemodel.h"
 #include "modelsud.h"
 #include "modelmalz.h"
@@ -48,7 +49,7 @@ private:
     QSqlQuery sqlExec(const QString &query);
 
 private:
-    QSqlDatabase* mDb;
+    QSqlDatabase mDb;
     ModelSud* modelSud;
     ModelRasten* modelRasten;
     ModelMalzschuettung* modelMalzschuettung;

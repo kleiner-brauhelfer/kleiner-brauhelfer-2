@@ -3,7 +3,6 @@
 #include "brauhelfer.h"
 #include "modelausruestung.h"
 #include "modelnachgaerverlauf.h"
-#include <QSqlQuery>
 #include <math.h>
 
 ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :

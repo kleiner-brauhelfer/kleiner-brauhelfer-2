@@ -1,43 +1,42 @@
 #include "database.h"
 #include <QFile>
-#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
 #include "brauhelfer.h"
 
 Database::Database() :
+    mDb(QSqlDatabase::addDatabase("QSQLITE", "kbh")),
     mVersion(-1)
 {
-    mDb = new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
-    if (mDb->open())
-        mDb->close();
+    if (mDb.open())
+        mDb.close();
 }
 
 void Database::createTables(Brauhelfer* bh)
 {
-    modelSud = new ModelSud(bh, *mDb);
-    modelRasten = new ModelRasten(bh, *mDb);
-    modelMalzschuettung = new ModelMalzschuettung(bh, *mDb);
-    modelHopfengaben = new ModelHopfengaben(bh, *mDb);
-    modelHefegaben = new ModelHefegaben(bh, *mDb);
-    modelWeitereZutatenGaben = new ModelWeitereZutatenGaben(bh, *mDb);
-    modelSchnellgaerverlauf = new ModelSchnellgaerverlauf(bh, *mDb);
-    modelHauptgaerverlauf = new ModelHauptgaerverlauf(bh, *mDb);
-    modelNachgaerverlauf = new ModelNachgaerverlauf(bh, *mDb);
-    modelBewertungen = new ModelBewertungen(bh, *mDb);
-    modelMalz = new ModelMalz(bh, *mDb);
-    modelHopfen = new ModelHopfen(bh, *mDb);
-    modelHefe = new ModelHefe(bh, *mDb);
-    modelWeitereZutaten = new ModelWeitereZutaten(bh, *mDb);
-    modelAnhang = new SqlTableModel(bh, *mDb);
-    modelAusruestung = new ModelAusruestung(bh, *mDb);
-    modelGeraete = new SqlTableModel(bh, *mDb);
-    modelWasser = new ModelWasser(bh, *mDb);
-    modelFlaschenlabel = new SqlTableModel(bh, *mDb);
-    modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, *mDb);
+    modelSud = new ModelSud(bh, mDb);
+    modelRasten = new ModelRasten(bh, mDb);
+    modelMalzschuettung = new ModelMalzschuettung(bh, mDb);
+    modelHopfengaben = new ModelHopfengaben(bh, mDb);
+    modelHefegaben = new ModelHefegaben(bh, mDb);
+    modelWeitereZutatenGaben = new ModelWeitereZutatenGaben(bh, mDb);
+    modelSchnellgaerverlauf = new ModelSchnellgaerverlauf(bh, mDb);
+    modelHauptgaerverlauf = new ModelHauptgaerverlauf(bh, mDb);
+    modelNachgaerverlauf = new ModelNachgaerverlauf(bh, mDb);
+    modelBewertungen = new ModelBewertungen(bh, mDb);
+    modelMalz = new ModelMalz(bh, mDb);
+    modelHopfen = new ModelHopfen(bh, mDb);
+    modelHefe = new ModelHefe(bh, mDb);
+    modelWeitereZutaten = new ModelWeitereZutaten(bh, mDb);
+    modelAnhang = new SqlTableModel(bh, mDb);
+    modelAusruestung = new ModelAusruestung(bh, mDb);
+    modelGeraete = new SqlTableModel(bh, mDb);
+    modelWasser = new ModelWasser(bh, mDb);
+    modelFlaschenlabel = new SqlTableModel(bh, mDb);
+    modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, mDb);
     modelSud->createConnections();
-    if (mDb->open())
-        mDb->close();
+    if (mDb.open())
+        mDb.close();
 }
 
 void Database::setTables()
@@ -71,10 +70,9 @@ void Database::setTables()
 
 Database::~Database()
 {
-    QString connectionName = mDb->connectionName();
+    QString connectionName = mDb.connectionName();
     disconnect();
     QSqlDatabase::removeDatabase(connectionName);
-    delete mDb;
     delete modelSud;
     delete modelRasten;
     delete modelMalzschuettung;
@@ -103,23 +101,20 @@ bool Database::connect(const QString &dbPath, bool readonly)
     {
         if (QFile::exists(dbPath))
         {
-            mDb->setDatabaseName(dbPath);
+            mDb.setDatabaseName(dbPath);
             if (readonly)
-                mDb->setConnectOptions("QSQLITE_OPEN_READONLY");
-            if (mDb->open())
+                mDb.setConnectOptions("QSQLITE_OPEN_READONLY");
+            if (mDb.open())
             {
-                QSqlQuery query;
-                if (query.exec("SELECT db_Version FROM Global"))
+                QSqlQuery query = sqlExec("SELECT db_Version FROM Global");
+                if (query.first())
                 {
-                    if (query.first())
+                    int version = query.value(0).toInt();
+                    if (version > 0)
                     {
-                        int version = query.value(0).toInt();
-                        if (version > 0)
-                        {
-                            mVersion = version;
-                            setTables();
-                            return true;
-                        }
+                        mVersion = version;
+                        setTables();
+                        return true;
                     }
                 }
             }
@@ -153,14 +148,14 @@ void Database::disconnect()
         modelWasser->clear();
         modelFlaschenlabel->clear();
         modelFlaschenlabelTags->clear();
-        mDb->close();
+        mDb.close();
         mVersion = -1;
     }
 }
 
 bool Database::isConnected() const
 {
-    return mDb->isOpen();
+    return mDb.isOpen();
 }
 
 bool Database::isDirty() const
@@ -266,8 +261,8 @@ void Database::discard()
 
 QSqlQuery Database::sqlExec(const QString &query)
 {
-    QSqlQuery sqlQuery = mDb->exec(query);
-    QSqlError lastError = mDb->lastError();
+    QSqlQuery sqlQuery = mDb.exec(query);
+    QSqlError lastError = mDb.lastError();
     if (lastError.isValid())
     {
         QString str = "Query: " + query +
@@ -287,35 +282,35 @@ void Database::update()
         if (version == 21)
         {
             ++version;
-            mDb->transaction();
+            mDb.transaction();
             sqlExec("ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
             sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
-            mDb->commit();
+            mDb.commit();
         }
 
         if (version == 22)
         {
             ++version;
-            mDb->transaction();
+            mDb.transaction();
             sqlExec("CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
             sqlExec("CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
             sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
-            mDb->commit();
+            mDb.commit();
         }
 
         if (version == 23)
         {
             ++version;
-            mDb->transaction();
+            mDb.transaction();
             sqlExec("ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
             sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
-            mDb->commit();
+            mDb.commit();
         }
 
         if (version == 24)
         {
             version = 2000;
-            mDb->transaction();
+            mDb.transaction();
 
             // Ausruestung & Geraete
             //  - neue Spalte 'Typ'
@@ -804,17 +799,17 @@ void Database::update()
             sqlExec("CREATE TABLE Global (db_Version INTEGER)");
             sqlExec(QString("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));
 
-            mDb->commit();
+            mDb.commit();
         }
     }
     catch (const std::exception& ex)
     {
-        mDb->rollback();
+        mDb.rollback();
         throw ex;
     }
     catch (...)
     {
-        mDb->rollback();
+        mDb.rollback();
         throw std::runtime_error("unknown error");
     }
 }

@@ -1060,7 +1060,7 @@
             </widget>
            </item>
            <item row="3" column="6">
-            <widget class="SpinBox" name="tbSpeisemengeFlasche">
+            <widget class="DoubleSpinBox" name="tbSpeisemengeFlasche">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -1079,8 +1079,11 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
              <property name="maximum">
-              <number>99999</number>
+              <double>99999.899999999994179</double>
              </property>
             </widget>
            </item>
@@ -1212,15 +1215,12 @@
             </widget>
            </item>
            <item row="4" column="6">
-            <widget class="SpinBox" name="tbZuckerFlasche">
+            <widget class="DoubleSpinBox" name="tbZuckerFlasche">
              <property name="minimumSize">
               <size>
                <width>50</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="decimals">
-              <number>1</number>
              </property>
              <property name="toolTip">
               <string>Benötigte Menge an Zucker pro Flasche.</string>
@@ -1234,8 +1234,11 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
              <property name="maximum">
-              <number>9999</number>
+              <double>99999.899999999994179</double>
              </property>
             </widget>
            </item>

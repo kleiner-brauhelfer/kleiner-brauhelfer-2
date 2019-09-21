@@ -372,7 +372,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 if (QDir::isRelativePath(pfad))
                     pfad = QDir::cleanPath(databasePath.filePath(pfad));
                 map.insert("Pfad", pfad);
-                map.insert("Bild", WdgAnhang::isImage(pfad));
+                map.insert("Bild", WdgAnhang::isImage(pfad) && QFile::exists(pfad));
                 liste << map;
             }
             if (!liste.empty())

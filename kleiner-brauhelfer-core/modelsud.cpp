@@ -64,6 +64,8 @@ void ModelSud::createConnections()
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
+    connect(bh->modelAusruestung(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(onAnlageDataChanged(const QModelIndex&)));
 }
 
 void ModelSud::onModelReset()
@@ -91,6 +93,16 @@ void ModelSud::onOtherModelRowChanged(const QModelIndex &index)
     int sudId = model->data(index.row(), "SudID").toInt();
     int row = getRowWithValue("ID", sudId);
     update(row);
+}
+
+void ModelSud::onAnlageDataChanged(const QModelIndex &index)
+{
+    QVariant anlage = bh->modelAusruestung()->data(index.row(), "Name");
+    for (int r = 0; r < rowCount(); ++r)
+    {
+        if (data(r, "Anlage") == anlage)
+            update(r);
+    }
 }
 
 QVariant ModelSud::dataExt(const QModelIndex &index) const

@@ -21,7 +21,7 @@ public:
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
-    void anlage_selectionChanged(const QItemSelection &selected);
+    void anlage_selectionChanged();
     void on_btnNeueAnlage_clicked();
     void on_btnAnlageLoeschen_clicked();
     void on_btnNeuesGeraet_clicked();

@@ -26,6 +26,7 @@ private slots:
     void onModelReset();
     void onRowChanged(const QModelIndex &index);
     void onOtherModelRowChanged(const QModelIndex &index);
+    void onAnlageDataChanged(const QModelIndex &index);
 private:
     bool setDataExt_impl(const QModelIndex &index, const QVariant &value);
     void update(int row);

@@ -23,6 +23,7 @@ SudObject::SudObject(Brauhelfer *bh) :
     proxyModelFlaschenlabel(new ProxyModel(this)),
     proxyModelFlaschenlabelTags(new ProxyModel(this))
 {
+    connect(bh, SIGNAL(saved()), this, SLOT(onSudLayoutChanged()));
     connect(bh->modelSud(), SIGNAL(modified()), this, SIGNAL(modified()));
     connect(bh->modelSud(), SIGNAL(layoutChanged()), this, SLOT(onSudLayoutChanged()));
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
@@ -51,7 +52,7 @@ void SudObject::load(int id)
     {
         mId = id;
         QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
-        mRowSud = static_cast<ModelSud*>(bh->modelSud())->getRowWithValue("ID", mId);
+        mRowSud = bh->modelSud()->getRowWithValue("ID", mId);
         mLoading = true;
         modelRasten()->setSourceModel(bh->modelRasten());
         modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
@@ -127,8 +128,16 @@ bool SudObject::isLoaded() const
 
 void SudObject::onSudLayoutChanged()
 {
-    if (mId != getValue("ID").toInt() || getValue("deleted").toBool())
+    if (getValue("deleted").toBool())
+    {
         unload();
+    }
+    else if (mId != getValue("ID").toInt())
+    {
+        mRowSud = bh->modelSud()->getRowWithValue("ID", mId);
+        if (mRowSud < 0)
+           unload();
+    }
 }
 
 void SudObject::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)

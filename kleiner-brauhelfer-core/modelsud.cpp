@@ -960,6 +960,8 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("KochdauerNachBitterhopfung", 60);
     if (!values.contains("berechnungsArtHopfen"))
         values.insert("berechnungsArtHopfen", Hopfen_Berechnung_IBU);
+    if (!values.contains("TemperaturJungbier"))
+        values.insert("TemperaturJungbier", 20.0);
     if (!values.contains("Status"))
         values.insert("Status", Sud_Status_Rezept);
     if (!values.contains("Anlage") && bh->modelAusruestung()->rowCount() == 1)

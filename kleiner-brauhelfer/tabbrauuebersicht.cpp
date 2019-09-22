@@ -116,7 +116,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     col = proxyModel->fieldIndex("Sudnummer");
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
+    header->resizeSection(col, 80);
     header->moveSection(header->visualIndex(col), 1);
 
     col = proxyModel->fieldIndex("Braudatum");
@@ -135,7 +135,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
         table->setColumnHidden(col, false);
         table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table));
-        header->resizeSection(col, 100);
+        header->resizeSection(col, 80);
         header->moveSection(header->visualIndex(col), i + 3);
     }
 

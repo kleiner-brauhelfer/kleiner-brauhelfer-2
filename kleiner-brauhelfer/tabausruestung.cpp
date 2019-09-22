@@ -327,14 +327,14 @@ void TabAusruestung::updateValues()
         ui->tbMaischebottichDurchmesser->setValue(data("Maischebottich_Durchmesser").toDouble());
     if (!ui->tbMaischebottichMaxFuellhoehe->hasFocus())
         ui->tbMaischebottichMaxFuellhoehe->setValue(data("Maischebottich_MaxFuellhoehe").toDouble());
-    ui->tbMaischebottichHoehe->setMaximum(ui->tbMaischebottichMaxFuellhoehe->value());
+    ui->tbMaischebottichMaxFuellhoehe->setMaximum(ui->tbMaischebottichHoehe->value());
     if (!ui->tbSudpfanneHoehe->hasFocus())
         ui->tbSudpfanneHoehe->setValue(data("Sudpfanne_Hoehe").toDouble());
     if (!ui->tbSudpfanneDurchmesser->hasFocus())
         ui->tbSudpfanneDurchmesser->setValue(data("Sudpfanne_Durchmesser").toDouble());
     if (!ui->tbSudpfanneMaxFuellhoehe->hasFocus())
         ui->tbSudpfanneMaxFuellhoehe->setValue(data("Sudpfanne_MaxFuellhoehe").toDouble());
-    ui->tbSudpfanneHoehe->setMaximum(ui->tbSudpfanneMaxFuellhoehe->value());
+    ui->tbSudpfanneMaxFuellhoehe->setMaximum(ui->tbSudpfanneHoehe->value());
     ui->tbMaischenVolumen->setValue(data("Maischebottich_Volumen").toDouble());
     ui->tbMaischenMaxNutzvolumen->setValue(data("Maischebottich_MaxFuellvolumen").toDouble());
     ui->tbSudpfanneVolumen->setValue(data("Sudpfanne_Volumen").toDouble());

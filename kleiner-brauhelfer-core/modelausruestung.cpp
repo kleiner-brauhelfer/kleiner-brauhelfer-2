@@ -78,21 +78,21 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
             return true;
         }
     }
-    if (field == "Maischebottich_MaxFuellhoehe")
+    if (field == "Maischebottich_Hoehe")
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex idx2 = index(idx.row(), fieldIndex("Maischebottich_Hoehe"));
+            QModelIndex idx2 = index(idx.row(), fieldIndex("Maischebottich_MaxFuellhoehe"));
             if (idx2.data().toDouble() > value.toDouble())
                 QSqlTableModel::setData(idx2, value);
             return true;
         }
     }
-    if (field == "Sudpfanne_MaxFuellhoehe")
+    if (field == "Sudpfanne_Hoehe")
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex idx2 = index(idx.row(), fieldIndex("Sudpfanne_Hoehe"));
+            QModelIndex idx2 = index(idx.row(), fieldIndex("Sudpfanne_MaxFuellhoehe"));
             if (idx2.data().toDouble() > value.toDouble())
                 QSqlTableModel::setData(idx2, value);
             return true;

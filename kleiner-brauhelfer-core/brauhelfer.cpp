@@ -102,8 +102,8 @@ void Brauhelfer::save()
         bool wasBlocked = blockSignals(true);
         mDb->save();
         blockSignals(wasBlocked);
-        emit modified();
         emit saved();
+        emit modified();
     }
 }
 
@@ -112,8 +112,8 @@ void Brauhelfer::discard()
     bool wasBlocked = blockSignals(true);
     mDb->discard();
     blockSignals(wasBlocked);
-    emit modified();
     emit discarded();
+    emit modified();
 }
 
 QString Brauhelfer::databasePath() const

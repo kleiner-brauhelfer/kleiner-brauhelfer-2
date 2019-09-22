@@ -65,16 +65,16 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
         table->setColumnHidden(col, true);
 
     mSpalten.append({"Sudname", true, false, 200, nullptr});
-    mSpalten.append({"Sudnummer", true, true, 100, new SpinBoxDelegate(table)});
-    mSpalten.append({"Braudatum", true, true, 150, new DateDelegate(false, true, table)});
-    mSpalten.append({"Abfuelldatum", false, true, 150, new DateDelegate(false, true, table)});
-    mSpalten.append({"Erstellt", true, true, 150, new DateDelegate(false, true, table)});
-    mSpalten.append({"Gespeichert", true, true, 150, new DateDelegate(false, true, table)});
-    mSpalten.append({"Woche", true, true, 100, nullptr});
-    mSpalten.append({"BewertungMax", true, true, 100, new RatingDelegate(table)});
-    mSpalten.append({"Menge", false, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    mSpalten.append({"SW", false, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    mSpalten.append({"IBU", false, true, 100, new SpinBoxDelegate(table)});
+    mSpalten.append({"Sudnummer", true, true, 80, new SpinBoxDelegate(table)});
+    mSpalten.append({"Braudatum", true, true, 100, new DateDelegate(false, true, table)});
+    mSpalten.append({"Abfuelldatum", false, true, 100, new DateDelegate(false, true, table)});
+    mSpalten.append({"Erstellt", true, true, 100, new DateDelegate(false, true, table)});
+    mSpalten.append({"Gespeichert", true, true, 100, new DateDelegate(false, true, table)});
+    mSpalten.append({"Woche", true, true, 80, nullptr});
+    mSpalten.append({"BewertungMax", true, true, 80, new RatingDelegate(table)});
+    mSpalten.append({"Menge", false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    mSpalten.append({"SW", false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    mSpalten.append({"IBU", false, true, 80, new SpinBoxDelegate(table)});
 
     int visualIndex = 0;
     for (const AuswahlSpalten& spalte : mSpalten)

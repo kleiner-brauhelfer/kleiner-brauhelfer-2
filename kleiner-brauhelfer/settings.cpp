@@ -234,7 +234,7 @@ QString Settings::databasePath()
     beginGroup("General");
     path = value("database").toString();
     endGroup();
-    if (QDir::isRelativePath(path))
+    if (!path.isEmpty() && QDir::isRelativePath(path))
     {
         QDir dir(settingsDir());
         path = QDir::cleanPath(dir.filePath(path));

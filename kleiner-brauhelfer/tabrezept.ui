@@ -2384,7 +2384,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             <item row="10" column="0">
              <widget class="QLabel" name="lblWasserHGF">
               <property name="text">
-               <string>Verdünnung</string>
+               <string>Verdünnung High-Gravity</string>
               </property>
              </widget>
             </item>

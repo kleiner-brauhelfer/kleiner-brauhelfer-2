@@ -3,7 +3,6 @@
 #include "brauhelfer.h"
 #include "modelausruestung.h"
 #include "modelnachgaerverlauf.h"
-#include <QSqlQuery>
 #include <math.h>
 
 ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
@@ -65,6 +64,8 @@ void ModelSud::createConnections()
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
+    connect(bh->modelAusruestung(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(onAnlageDataChanged(const QModelIndex&)));
 }
 
 void ModelSud::onModelReset()
@@ -92,6 +93,16 @@ void ModelSud::onOtherModelRowChanged(const QModelIndex &index)
     int sudId = model->data(index.row(), "SudID").toInt();
     int row = getRowWithValue("ID", sudId);
     update(row);
+}
+
+void ModelSud::onAnlageDataChanged(const QModelIndex &index)
+{
+    QVariant anlage = bh->modelAusruestung()->data(index.row(), "Name");
+    for (int r = 0; r < rowCount(); ++r)
+    {
+        if (data(r, "Anlage") == anlage)
+            update(r);
+    }
 }
 
 QVariant ModelSud::dataExt(const QModelIndex &index) const
@@ -949,6 +960,8 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("KochdauerNachBitterhopfung", 60);
     if (!values.contains("berechnungsArtHopfen"))
         values.insert("berechnungsArtHopfen", Hopfen_Berechnung_IBU);
+    if (!values.contains("TemperaturJungbier"))
+        values.insert("TemperaturJungbier", 20.0);
     if (!values.contains("Status"))
         values.insert("Status", Sud_Status_Rezept);
     if (!values.contains("Anlage") && bh->modelAusruestung()->rowCount() == 1)

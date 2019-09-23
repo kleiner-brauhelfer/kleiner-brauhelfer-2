@@ -94,6 +94,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     ui->cbTemplateAuswahl->setVisible(checked);
     ui->btnSaveTemplate->setVisible(false);
     ui->splitterEditmode->setHandleWidth(checked ? 5 : 0);
+    ui->splitterEditmode->setSizes({1, checked ? 1 : 0});
 
     if (checked)
     {

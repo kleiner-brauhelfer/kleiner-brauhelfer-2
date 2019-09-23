@@ -88,6 +88,11 @@ static bool connectDatabase()
                 QMessageBox::critical(nullptr, QApplication::applicationName(),
                                       QObject::tr("Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.").arg(version));
             }
+            else if (version < bh->supportedDatabaseVersionMinimal)
+            {
+                QMessageBox::critical(nullptr, QApplication::applicationName(),
+                                      QObject::tr("Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.").arg(version));
+            }
             else if (version < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),

@@ -1,5 +1,6 @@
 #include "settings.h"
 #include <QGuiApplication>
+#include <QDir>
 #include <QFileInfo>
 
 Settings::Settings(QObject *parent) :
@@ -233,13 +234,24 @@ QString Settings::databasePath()
     beginGroup("General");
     path = value("database").toString();
     endGroup();
+    if (!path.isEmpty() && QDir::isRelativePath(path))
+    {
+        QDir dir(settingsDir());
+        path = QDir::cleanPath(dir.filePath(path));
+    }
+
     return path;
 }
 
 void Settings::setDatabasePath(const QString& path)
 {
+    QDir dir(settingsDir());
+    QString pathRel = dir.relativeFilePath(path);
     beginGroup("General");
-    setValue("database", path);
+    if (pathRel.startsWith(".."))
+        setValue("database", path);
+    else
+        setValue("database", pathRel);
     endGroup();
 }
 

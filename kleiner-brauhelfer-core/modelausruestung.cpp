@@ -59,22 +59,42 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &index) const
     return QVariant();
 }
 
-bool ModelAusruestung::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
+    QString field = fieldName(idx.column());
     if (field == "Name")
     {
-        QString name = getUniqueName(index, value);
-        QString prevValue = data(index).toString();
-        if (QSqlTableModel::setData(index, name))
+        QString name = getUniqueName(idx, value);
+        QString prevValue = data(idx).toString();
+        if (QSqlTableModel::setData(idx, name))
         {
             int colName = bh->modelSud()->fieldIndex("Anlage");
             for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
             {
-                QModelIndex index = bh->modelSud()->index(row, colName);
-                if (bh->modelSud()->data(index).toString() == prevValue)
-                    bh->modelSud()->setData(index, name);
+                QModelIndex idx2 = bh->modelSud()->index(row, colName);
+                if (bh->modelSud()->data(idx2).toString() == prevValue)
+                    bh->modelSud()->setData(idx2, name);
             }
+            return true;
+        }
+    }
+    if (field == "Maischebottich_Hoehe")
+    {
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QModelIndex idx2 = index(idx.row(), fieldIndex("Maischebottich_MaxFuellhoehe"));
+            if (idx2.data().toDouble() > value.toDouble())
+                QSqlTableModel::setData(idx2, value);
+            return true;
+        }
+    }
+    if (field == "Sudpfanne_Hoehe")
+    {
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QModelIndex idx2 = index(idx.row(), fieldIndex("Sudpfanne_MaxFuellhoehe"));
+            if (idx2.data().toDouble() > value.toDouble())
+                QSqlTableModel::setData(idx2, value);
             return true;
         }
     }

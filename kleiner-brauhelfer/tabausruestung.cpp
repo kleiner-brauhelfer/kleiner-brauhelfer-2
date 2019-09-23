@@ -72,6 +72,8 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->setModel(model);
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
+    header->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableViewSude_customContextMenuRequested(const QPoint&)));
 
     col = model->fieldIndex("Sudname");
     table->setColumnHidden(col, false);
@@ -133,7 +135,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(updateDurchschnitt()));
     connect(bh->modelAusruestung(), SIGNAL(modified()), this, SLOT(updateValues()));
     connect(ui->tableViewAnlagen->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-            this, SLOT(anlage_selectionChanged(const QItemSelection&)));
+            this, SLOT(anlage_selectionChanged()));
 
     sudLoaded();
 }
@@ -200,13 +202,14 @@ void TabAusruestung::sudLoaded()
     ui->tableViewAnlagen->setCurrentIndex(model->index(row, model->fieldIndex("Name")));
 }
 
-void TabAusruestung::anlage_selectionChanged(const QItemSelection &selected)
+void TabAusruestung::anlage_selectionChanged()
 {
     QRegExp regExpId;
     QRegExp regExpId2;
-    if (selected.indexes().count() > 0)
+    QModelIndexList selectedRows = ui->tableViewAnlagen->selectionModel()->selectedRows();
+    if (selectedRows.count() > 0)
     {
-        mRow = selected.indexes()[0].row();
+        mRow = selectedRows[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
         QString anlage = model->data(model->index(mRow, model->fieldIndex("Name"))).toString();
         regExpId = QRegExp(QString("^%1$").arg(anlage), Qt::CaseInsensitive, QRegExp::RegExp);
@@ -324,12 +327,14 @@ void TabAusruestung::updateValues()
         ui->tbMaischebottichDurchmesser->setValue(data("Maischebottich_Durchmesser").toDouble());
     if (!ui->tbMaischebottichMaxFuellhoehe->hasFocus())
         ui->tbMaischebottichMaxFuellhoehe->setValue(data("Maischebottich_MaxFuellhoehe").toDouble());
+    ui->tbMaischebottichMaxFuellhoehe->setMaximum(ui->tbMaischebottichHoehe->value());
     if (!ui->tbSudpfanneHoehe->hasFocus())
         ui->tbSudpfanneHoehe->setValue(data("Sudpfanne_Hoehe").toDouble());
     if (!ui->tbSudpfanneDurchmesser->hasFocus())
         ui->tbSudpfanneDurchmesser->setValue(data("Sudpfanne_Durchmesser").toDouble());
     if (!ui->tbSudpfanneMaxFuellhoehe->hasFocus())
         ui->tbSudpfanneMaxFuellhoehe->setValue(data("Sudpfanne_MaxFuellhoehe").toDouble());
+    ui->tbSudpfanneMaxFuellhoehe->setMaximum(ui->tbSudpfanneHoehe->value());
     ui->tbMaischenVolumen->setValue(data("Maischebottich_Volumen").toDouble());
     ui->tbMaischenMaxNutzvolumen->setValue(data("Maischebottich_MaxFuellvolumen").toDouble());
     ui->tbSudpfanneVolumen->setValue(data("Sudpfanne_Volumen").toDouble());

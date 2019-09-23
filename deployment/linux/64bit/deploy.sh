@@ -41,8 +41,5 @@ cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${BUILD_DIR}/AppImage/usr/sha
 
 cd "${BUILD_DIR}/AppImage"
 "${SCRIPT_DIR}/AppImage/linuxdeployqt-6-x86_64.AppImage" "./usr/share/applications/kleiner-brauhelfer-2.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files -appimage
-mv kleiner-brauhelfer-2-*-x86_64.AppImage kleiner-brauhelfer-2-x86_64.AppImage
-mkdir kleiner-brauhelfer-2-x86_64.AppImage.config
-tar -zcvf kbh2_v2.x.x_portable_linux_x64.tar.gz kleiner-brauhelfer-2-x86_64.AppImage kleiner-brauhelfer-2-x86_64.AppImage.config
 cd -
-mv ${BUILD_DIR}/AppImage/kbh2_*_portable_linux_x64.tar.gz ./
+mv ${BUILD_DIR}/AppImage/kleiner-brauhelfer-2-*-x86_64.AppImage ./kleiner-brauhelfer-2-x86_64.AppImage

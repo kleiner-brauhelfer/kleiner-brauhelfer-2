@@ -47,6 +47,7 @@
 // Weitere Zutaten Einheit
 #define EWZ_Einheit_Kg                      0
 #define EWZ_Einheit_g                       1
+#define EWZ_Einheit_mg                      2
 
 // Maximum Anzahl Sterne
 #define Bewertung_MaxSterne                 5

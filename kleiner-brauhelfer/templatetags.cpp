@@ -99,7 +99,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["tEVG"] = locale.toString(bh->modelSud()->data(sudRow, "tEVG").toDouble(), 'f', 1);
             ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, "erg_EffektiveAusbeute").toDouble(), 'f', 1);
 
-            int bewertung = bh->modelSud()->data(sudRow, "BewertungMax").toInt();
+            int bewertung = bh->modelSud()->data(sudRow, "BewertungMittel").toInt();
             ctxSud["Bewertung"] = QString::number(bewertung);
             if (bewertung > 0)
             {

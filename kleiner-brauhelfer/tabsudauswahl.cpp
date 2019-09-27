@@ -40,7 +40,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(model->fieldIndex("Erstellt"), Qt::Horizontal, tr("Erstellt"));
     model->setHeaderData(model->fieldIndex("Gespeichert"), Qt::Horizontal, tr("Gespeichert"));
     model->setHeaderData(model->fieldIndex("Woche"), Qt::Horizontal, tr("Woche"));
-    model->setHeaderData(model->fieldIndex("BewertungMax"), Qt::Horizontal, tr("Bewertung"));
+    model->setHeaderData(model->fieldIndex("BewertungMittel"), Qt::Horizontal, tr("Bewertung"));
     model->setHeaderData(model->fieldIndex("Menge"), Qt::Horizontal, tr("Menge [l]"));
     model->setHeaderData(model->fieldIndex("SW"), Qt::Horizontal, tr("SW [°P]"));
     model->setHeaderData(model->fieldIndex("IBU"), Qt::Horizontal, tr("Bittere [IBU]"));
@@ -71,7 +71,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     mSpalten.append({"Erstellt", true, true, 100, new DateDelegate(false, true, table)});
     mSpalten.append({"Gespeichert", true, true, 100, new DateDelegate(false, true, table)});
     mSpalten.append({"Woche", true, true, 80, nullptr});
-    mSpalten.append({"BewertungMax", true, true, 80, new RatingDelegate(table)});
+    mSpalten.append({"BewertungMittel", true, true, 80, new RatingDelegate(table)});
     mSpalten.append({"Menge", false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     mSpalten.append({"SW", false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     mSpalten.append({"IBU", false, true, 80, new SpinBoxDelegate(table)});

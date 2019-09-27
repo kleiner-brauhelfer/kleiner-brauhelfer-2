@@ -22,7 +22,7 @@ void TemplateTags::render(WdgWebViewEditable* view, TagParts parts, std::functio
     if (fnc)
         fnc(view->mTemplateTags);
     view->updateTags();
-    view->updateHtml();
+    view->updateWebView();
 }
 
 void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow)

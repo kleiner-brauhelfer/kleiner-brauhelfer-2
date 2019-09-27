@@ -2,6 +2,7 @@
 #define TABBRAUDATEN_H
 
 #include "tababstract.h"
+#include <QTimer>
 
 namespace Ui {
 class TabBraudaten;
@@ -22,6 +23,7 @@ private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
+    void updateWebView();
     void sudDataChanged(const QModelIndex& index);
 
     void on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime);
@@ -56,6 +58,7 @@ private:
     Ui::TabBraudaten *ui;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterHelpState;
+    QTimer mTimerWebViewUpdate;
 };
 
 #endif // TABBRAUDATEN_H

@@ -2,6 +2,7 @@
 #define TABABFUELLEN_H
 
 #include "tababstract.h"
+#include <QTimer>
 
 namespace Ui {
 class TabAbfuellen;
@@ -22,6 +23,7 @@ private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
+    void updateWebView();
     void sudDataChanged(const QModelIndex& index);
 
     void on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime);
@@ -52,6 +54,7 @@ private:
     Ui::TabAbfuellen *ui;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterHelpState;
+    QTimer mTimerWebViewUpdate;
 };
 
 #endif // TABABFUELLEN_H

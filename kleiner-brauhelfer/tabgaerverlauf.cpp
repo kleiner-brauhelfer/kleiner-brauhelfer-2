@@ -196,19 +196,19 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onSchnellgaerverlaufRowInserted()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onSchnellgaerverlaufRowInserted()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onSchnellgaerverlaufRowInserted()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(modified()), this, SLOT(onSchnellgaerverlaufRowInserted()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onHauptgaerverlaufRowInserted()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onHauptgaerverlaufRowInserted()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onHauptgaerverlaufRowInserted()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(modified()), this, SLOT(onHauptgaerverlaufRowInserted()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(modified()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onNachgaerverlaufRowInserted()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onNachgaerverlaufRowInserted()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onNachgaerverlaufRowInserted()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(modified()), this, SLOT(onNachgaerverlaufRowInserted()));
 
     updateDiagramm();
     updateValues();
@@ -289,6 +289,30 @@ void TabGaerverlauf::sudLoaded()
     updateDiagramm();
     updateValues();
     updateWeitereZutaten();
+}
+
+void TabGaerverlauf::onSchnellgaerverlaufRowInserted()
+{
+    ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
+    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, "SW").toDouble());
+    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    updateDiagramm();
+}
+
+void TabGaerverlauf::onHauptgaerverlaufRowInserted()
+{
+    ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
+    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, "SW").toDouble());
+    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    updateDiagramm();
+}
+
+void TabGaerverlauf::onNachgaerverlaufRowInserted()
+{
+    ProxyModel *model = bh->sud()->modelNachgaerverlauf();
+    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, "Druck").toDouble());
+    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    updateDiagramm();
 }
 
 void TabGaerverlauf::checkEnabled()

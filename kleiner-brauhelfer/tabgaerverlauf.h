@@ -24,6 +24,9 @@ private:
 
 private slots:
     void sudLoaded();
+    void onSchnellgaerverlaufRowInserted();
+    void onHauptgaerverlaufRowInserted();
+    void onNachgaerverlaufRowInserted();
     void updateDiagramm();
     void updateValues();
     void updateWeitereZutaten();

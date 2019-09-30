@@ -25,6 +25,8 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
   #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
+    mTimerWebViewUpdate.setSingleShot(true);
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()));
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 
@@ -109,7 +111,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     }
 
     updateTags();
-    updateHtml();
+    updateWebView();
 }
 
 void WdgWebViewEditable::on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName)
@@ -122,7 +124,7 @@ void WdgWebViewEditable::on_tbTemplate_textChanged()
 {
     if (ui->tbTemplate->hasFocus())
     {
-        updateHtml();
+        mTimerWebViewUpdate.start(200);
         ui->btnSaveTemplate->setVisible(true);
     }
 }
@@ -152,7 +154,7 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
     }
 }
 
-void WdgWebViewEditable::updateHtml()
+void WdgWebViewEditable::updateWebView()
 {
     if (ui->cbEditMode->isChecked())
     {

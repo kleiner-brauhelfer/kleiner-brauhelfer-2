@@ -24,6 +24,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
+    mTimerWebViewUpdate.setSingleShot(true);
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()));
     ui->webview->setHtmlFile("braudaten.html");
 
     QPalette palette = ui->tbHelp->palette();
@@ -195,6 +197,11 @@ void TabBraudaten::updateValues()
         ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 
+    mTimerWebViewUpdate.start(200);
+}
+
+void TabBraudaten::updateWebView()
+{
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 

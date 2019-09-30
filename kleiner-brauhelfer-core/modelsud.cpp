@@ -51,7 +51,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("RestalkalitaetFaktor");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
-    mVirtualField.append("BewertungMax");
+    mVirtualField.append("BewertungMittel");
 }
 
 void ModelSud::createConnections()
@@ -283,10 +283,10 @@ QVariant ModelSud::dataExt(const QModelIndex &index) const
     {
         return FaktorHauptgussEmpfehlung(index);
     }
-    if (field == "BewertungMax")
+    if (field == "BewertungMittel")
     {
         int sudId = index.sibling(index.row(), fieldIndex("ID")).data().toInt();
-        return bh->modelBewertungen()->max(sudId);
+        return bh->modelBewertungen()->mean(sudId);
     }
     return QVariant();
 }

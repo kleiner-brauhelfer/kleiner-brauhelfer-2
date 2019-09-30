@@ -24,6 +24,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
+    mTimerWebViewUpdate.setSingleShot(true);
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()));
     ui->webview->setHtmlFile("abfuelldaten.html");
 
     QPalette palette = ui->tbHelp->palette();
@@ -198,6 +200,11 @@ void TabAbfuellen::updateValues()
     ui->tbAlkohol->setValue(bh->sud()->geterg_Alkohol());
     ui->tbSpundungsdruck->setValue(bh->sud()->getSpundungsdruck());
 
+    mTimerWebViewUpdate.start(200);
+}
+
+void TabAbfuellen::updateWebView()
+{
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 

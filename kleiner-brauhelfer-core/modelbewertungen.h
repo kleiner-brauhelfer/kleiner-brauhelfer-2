@@ -14,6 +14,7 @@ public:
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
     int max(int sudId);
+    int mean(int sudId);
 private:
     Brauhelfer* bh;
 };

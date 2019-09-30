@@ -69,3 +69,24 @@ int ModelBewertungen::max(int sudId)
     }
     return max;
 }
+
+int ModelBewertungen::mean(int sudId)
+{
+    int colSudId = fieldIndex("SudID");
+    int colSterne = fieldIndex("Sterne");
+    int total = 0;
+    int n = 0;
+    for (int i = 0; i < rowCount(); i++)
+    {
+        if (data(index(i, colSudId)).toInt() == sudId)
+        {
+            total += data(index(i, colSterne)).toInt();
+            n++;
+        }
+    }
+    if (n != 0)
+    {
+        return (int)round((double)total / n);
+    }
+    return 0;
+}

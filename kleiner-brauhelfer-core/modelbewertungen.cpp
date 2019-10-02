@@ -86,7 +86,7 @@ int ModelBewertungen::mean(int sudId)
     }
     if (n != 0)
     {
-        return (int)round((double)total / n);
+        return qRound((double)total / n);
     }
     return 0;
 }

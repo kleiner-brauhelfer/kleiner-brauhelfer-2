@@ -32,6 +32,7 @@ private:
 
 private:
     Ui::DlgRestextrakt *ui;
+    bool mSw;
 };
 
 #endif // DLGRESTEXTRAKT_H

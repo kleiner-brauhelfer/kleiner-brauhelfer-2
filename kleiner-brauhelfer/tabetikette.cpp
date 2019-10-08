@@ -266,6 +266,7 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
     }
     ui->btnSaveTemplate->setVisible(false);
     updateTags();
+    updateSvg();
 }
 
 void TabEtikette::on_tbTemplate_textChanged()

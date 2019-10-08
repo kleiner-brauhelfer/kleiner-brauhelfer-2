@@ -255,6 +255,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                         map.insert("Menge", QString::number((int)(model->data(row, "erg_Menge").toDouble() * 1000)));
                         map.insert("Einheit", QObject::tr("mg"));
                         break;
+                    case EWZ_Einheit_Stk:
+                        map.insert("Menge", locale.toString(model->data(row, "erg_Menge").toDouble(), 'f', 1));
+                        map.insert("Einheit", QObject::tr("Stk."));
+                        break;
                     }
                     switch (model->data(row, "Zeitpunkt").toInt())
                     {

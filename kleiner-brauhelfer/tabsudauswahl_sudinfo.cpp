@@ -3,6 +3,7 @@
 #include <QTextDocument>
 #include <QDir>
 #include <QFile>
+#include <QtMath>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodel.h"
@@ -312,6 +313,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
+            case EWZ_Einheit_Stk:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
+                map.insert("Einheit", tr("Stk."));
+                break;
             }
             liste << map;
         }
@@ -358,6 +365,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
+                break;
+            case EWZ_Einheit_Stk:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
+                map.insert("Einheit", tr("Stk."));
                 break;
             }
             liste << map;
@@ -406,6 +419,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
+            case EWZ_Einheit_Stk:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
+                map.insert("Einheit", tr("Stk."));
+                break;
             }
             liste << map;
         }
@@ -453,6 +472,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
+            case EWZ_Einheit_Stk:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
+                map.insert("Einheit", tr("Stk."));
+                break;
             }
             liste << map;
         }
@@ -499,6 +524,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
+                break;
+            case EWZ_Einheit_Stk:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
+                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
+                map.insert("Einheit", tr("Stk."));
                 break;
             }
             liste << map;

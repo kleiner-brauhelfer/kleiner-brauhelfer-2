@@ -360,7 +360,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = model->fieldIndex("Einheiten");
     model->setHeaderData(col, Qt::Horizontal, tr("Einheit"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg")}, table));
+    table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
@@ -445,7 +445,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = model->fieldIndex("Restalkalitaet");
     model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität [°dH]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
     header->resizeSection(col, 120);
     header->moveSection(header->visualIndex(col), 1);
 

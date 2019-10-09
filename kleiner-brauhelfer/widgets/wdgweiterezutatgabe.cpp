@@ -191,6 +191,14 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbVorhanden->setDecimals(0);
             ui->tbMengeTotal->setValue(data("erg_Menge").toDouble() * 1000);
             break;
+        case EWZ_Einheit_Stk:
+            ui->lblEinheit->setText(tr("Stk."));
+            ui->lblEinheit2->setText(tr("Stk."));
+            ui->lblEinheitProLiter->setText(tr("Stk./l"));
+            ui->tbMengeTotal->setDecimals(1);
+            ui->tbVorhanden->setDecimals(0);
+            ui->tbMengeTotal->setValue(data("erg_Menge").toDouble());
+            break;
         }
     }
     if (!ui->cbZugabezeitpunkt->hasFocus())

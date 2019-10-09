@@ -33,6 +33,8 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &index) const
             return menge;
         case EWZ_Einheit_mg:
             return menge / 1000;
+        case EWZ_Einheit_Stk:
+            return menge;
         default:
             return menge;
         }

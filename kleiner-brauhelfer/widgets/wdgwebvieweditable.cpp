@@ -26,7 +26,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
   #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
     mTimerWebViewUpdate.setSingleShot(true);
-    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()));
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 

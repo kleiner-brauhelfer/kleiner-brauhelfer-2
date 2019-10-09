@@ -25,7 +25,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
     mTimerWebViewUpdate.setSingleShot(true);
-    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()));
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     ui->webview->setHtmlFile("abfuelldaten.html");
 
     QPalette palette = ui->tbHelp->palette();

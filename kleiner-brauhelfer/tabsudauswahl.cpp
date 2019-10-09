@@ -114,7 +114,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
+    connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()), Qt::QueuedConnection);
     connect(proxyModel, SIGNAL(layoutChanged()), this, SLOT(filterChanged()));
     connect(proxyModel, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(filterChanged()));
     connect(proxyModel, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(filterChanged()));

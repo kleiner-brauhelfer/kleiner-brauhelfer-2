@@ -470,13 +470,13 @@
                <set>Qt::AlignCenter</set>
               </property>
               <property name="decimals">
-               <number>1</number>
+               <number>2</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>
               </property>
               <property name="singleStep">
-               <double>0.100000000000000</double>
+               <double>0.010000000000000</double>
               </property>
              </widget>
             </item>
@@ -512,7 +512,7 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="decimals">
-               <number>1</number>
+               <number>2</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>
@@ -570,7 +570,7 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="decimals">
-               <number>1</number>
+               <number>2</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>
@@ -688,7 +688,7 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="decimals">
-               <number>1</number>
+               <number>2</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>

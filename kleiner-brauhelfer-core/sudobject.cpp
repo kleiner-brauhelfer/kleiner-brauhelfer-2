@@ -3,6 +3,7 @@
 #include "brauhelfer.h"
 #include "modelsud.h"
 #include <QDateTime>
+#include <QtMath>
 
 SudObject::SudObject(Brauhelfer *bh) :
     QObject(bh),
@@ -316,6 +317,9 @@ void SudObject::brauzutatenAbziehen()
                     case EWZ_Einheit_mg:
                         mengeTotal -= mList->data(i, "erg_Menge").toDouble() * 1000;
                         break;
+                    case EWZ_Einheit_Stk:
+                        mengeTotal -= qCeil(mList->data(i, "erg_Menge").toDouble());
+                        break;
                     }
                     if (mengeTotal < 0.0)
                         mengeTotal = 0.0;
@@ -339,6 +343,9 @@ void SudObject::brauzutatenAbziehen()
                         break;
                     case EWZ_Einheit_mg:
                         mengeTotal -= mList->data(i, "erg_Menge").toDouble() * 1000;
+                        break;
+                    case EWZ_Einheit_Stk:
+                        mengeTotal -= qCeil(mList->data(i, "erg_Menge").toDouble());
                         break;
                     }
                     if (mengeTotal < 0.0)
@@ -395,6 +402,9 @@ void SudObject::zutatAbziehen(const QString& zutat, int typ, double menge)
                 break;
             case EWZ_Einheit_mg:
                 mengeTotal -= menge * 1000;
+                break;
+            case EWZ_Einheit_Stk:
+                mengeTotal -= qCeil(menge);
                 break;
             }
             if (mengeTotal < 0.0)

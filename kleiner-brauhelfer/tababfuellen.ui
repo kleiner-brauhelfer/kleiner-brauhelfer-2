@@ -1478,14 +1478,14 @@
            <item row="0" column="5">
             <widget class="QLabel" name="label_5">
              <property name="text">
-              <string>Kosten</string>
+              <string>Gesamtkosten</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_59">
              <property name="text">
-              <string>Nebenkosten</string>
+              <string>Zusätzliche Kosten</string>
              </property>
             </widget>
            </item>

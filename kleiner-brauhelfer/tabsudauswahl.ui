@@ -216,10 +216,10 @@
          <property name="verticalSpacing">
           <number>4</number>
          </property>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="btnAlleVergessen">
+         <item row="2" column="1">
+          <widget class="QPushButton" name="btnExportieren">
            <property name="text">
-            <string>Alle vergessen</string>
+            <string>Rezept exportieren</string>
            </property>
           </widget>
          </item>
@@ -237,45 +237,45 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
+         <item row="0" column="0">
           <widget class="QPushButton" name="btnAnlegen">
            <property name="text">
             <string>Neuen Sud anlegen</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="btnExportieren">
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btnVergessen">
            <property name="text">
-            <string>Sud exportieren</string>
+            <string>Sud vergessen</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QPushButton" name="btnVergessen">
+          <widget class="QPushButton" name="btnKopieren">
            <property name="text">
-            <string>Vergessen</string>
+            <string>Sud kopieren</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btnMerken">
-           <property name="text">
-            <string>Merken</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
+         <item row="0" column="2">
           <widget class="QPushButton" name="btnLoeschen">
            <property name="text">
             <string>Sud löschen</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="btnKopieren">
+         <item row="1" column="2">
+          <widget class="QPushButton" name="btnAlleVergessen">
            <property name="text">
-            <string>Sud kopieren</string>
+            <string>Alle Sude vergessen</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btnMerken">
+           <property name="text">
+            <string>Sud merken</string>
            </property>
           </widget>
          </item>
@@ -306,15 +306,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -329,12 +329,6 @@
   <tabstop>cbDatumAlle</tabstop>
   <tabstop>tbFilter</tabstop>
   <tabstop>tableSudauswahl</tabstop>
-  <tabstop>btnMerken</tabstop>
-  <tabstop>btnVergessen</tabstop>
-  <tabstop>btnAlleVergessen</tabstop>
-  <tabstop>btnAnlegen</tabstop>
-  <tabstop>btnKopieren</tabstop>
-  <tabstop>btnLoeschen</tabstop>
   <tabstop>btnImportieren</tabstop>
   <tabstop>btnExportieren</tabstop>
   <tabstop>btnLaden</tabstop>

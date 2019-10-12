@@ -42,6 +42,9 @@
            <string>Braudatum</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
+           <property name="verticalSpacing">
+            <number>4</number>
+           </property>
            <item row="0" column="6">
             <widget class="QLabel" name="label_22">
              <property name="minimumSize">
@@ -2088,7 +2091,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
            <item row="0" column="0">
             <widget class="QLabel" name="label_58">
              <property name="text">
-              <string>Nebenkosten</string>
+              <string>Zusätzliche Kosten</string>
              </property>
             </widget>
            </item>
@@ -2159,7 +2162,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
            <item row="0" column="5">
             <widget class="QLabel" name="label_4">
              <property name="text">
-              <string>Kosten</string>
+              <string>Gesamtkosten</string>
              </property>
             </widget>
            </item>

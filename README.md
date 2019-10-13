@@ -8,7 +8,7 @@ http://www.joerum.de/kleiner-brauhelfer/
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.0.0beta2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta2)
+- [Version 2.0.0beta3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta3)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**
@@ -32,7 +32,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
     - Desktop gcc 64-bit
     - Qt Charts
     - Qt WebEngine
-- **kbh2_v2.x.x_portable_linux_x64.tar.gz**
+- **kleiner-brauhelfer-2-x86_64.AppImage**
   - Portable Version (AppImage) für 64bit System
   - Qt Abhängigkeiten integriert
 - **kbh2_v2.x.x_linux_x32.deb**
@@ -48,7 +48,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0 (in Entwicklung)
+### Version 2.0.0beta3
 - Neu: Funktion "Eingabefelder entsperren"
 - Neu: Umrechnung zwischen Palto und spezifische Dichte nach [Brewer's Friend](http://www.brewersfriend.com/plato-to-sg-conversion-chart/)
 - Neu: Milchsäurangabe in 0.1 ml Schritte

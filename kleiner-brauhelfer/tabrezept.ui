@@ -1479,6 +1479,9 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             <string>Sud</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_5">
+            <property name="verticalSpacing">
+             <number>4</number>
+            </property>
             <item row="0" column="2" colspan="2">
              <widget class="QGraphicsView" name="gvGlas">
               <property name="minimumSize">
@@ -1957,7 +1960,7 @@ Diese Berechnungsart wird empfohlen, da sich Hopfen mit verschiedenen alpha Wert
             <item row="10" column="0">
              <widget class="QLabel" name="label_46">
               <property name="text">
-               <string>Kosten</string>
+               <string>Gesamtkosten</string>
               </property>
              </widget>
             </item>

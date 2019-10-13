@@ -37,4 +37,5 @@ void TabAbstract::onTabActivated()
 
 void TabAbstract::onTabDeactivated()
 {
+    setFocus();
 }

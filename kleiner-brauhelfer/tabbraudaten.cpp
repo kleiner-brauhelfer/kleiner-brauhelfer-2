@@ -272,7 +272,7 @@ void TabBraudaten::on_btnSWKochende_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWKochende->value(), 0.0, 20.0, this);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbSWKochende->setValue(dlg.value());
+        bh->sud()->setSWKochende(dlg.value());
 }
 
 void TabBraudaten::on_tbSWAnstellen_valueChanged(double value)
@@ -285,7 +285,7 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWAnstellen->value(), 0.0, 20.0, this);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbSWAnstellen->setValue(dlg.value());
+        bh->sud()->setSWAnstellen(dlg.value());
 }
 
 void TabBraudaten::on_btnWasserVerschneidung_clicked()

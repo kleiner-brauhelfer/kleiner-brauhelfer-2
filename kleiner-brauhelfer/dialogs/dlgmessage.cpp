@@ -1,6 +1,5 @@
 #include "dlgmessage.h"
 #include "ui_dlgmessage.h"
-#include <QDebug>
 #include "settings.h"
 
 extern Settings* gSettings;

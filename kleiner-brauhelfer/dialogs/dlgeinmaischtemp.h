@@ -18,9 +18,9 @@ public:
 
 private slots:
     void on_doubleSpinBox_Schuettung_valueChanged(double arg1);
-    void on_doubleSpinBox_SchuettungTemp_valueChanged(double arg1);
+    void on_spinBox_SchuettungTemp_valueChanged(int arg1);
     void on_doubleSpinBox_Hauptguss_valueChanged(double arg1);
-    void on_doubleSpinBox_RastTemp_valueChanged(double arg1);
+    void on_spinBox_RastTemp_valueChanged(int arg1);
 
 private:
     void doCalc();

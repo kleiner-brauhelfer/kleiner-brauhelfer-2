@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>456</width>
-    <height>336</height>
+    <width>360</width>
+    <height>360</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>332</width>
+    <height>360</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Berechnung Verdampfungsziffer</string>
@@ -19,149 +25,145 @@
      <property name="title">
       <string>Menge bei Kochbeginn (100°C)</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_11">
-          <property name="text">
-           <string>Füllhöhe vom Boden aus gemessen</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge1">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="label_12">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string notr="true">cm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_9">
-          <property name="text">
-           <string>Füllhöhe von Oberkante aus gemessen</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="2">
-         <widget class="DoubleSpinBox" name="dSpinBox_cmVonObenMenge1">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="label_10">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string notr="true">cm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Menge bei 100°C</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="DoubleSpinBox" name="dSpinBox_Menge1">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QLabel" name="label_2">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>l</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Füllhöhe vom Boden aus gemessen</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Menge bei 100°C</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="DoubleSpinBox" name="dSpinBox_cmVonObenMenge1">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>9999.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="DoubleSpinBox" name="dSpinBox_Menge1">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>9999.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Füllhöhe von Oberkante aus gemessen</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge1">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>9999.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_12">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string notr="true">cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_10">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string notr="true">cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>l</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -171,149 +173,145 @@
      <property name="title">
       <string>Menge bei Kochende (100°C)</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="2">
-         <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge2">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_13">
-          <property name="text">
-           <string>Füllhöhe von Oberkante aus gemessen</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_15">
-          <property name="text">
-           <string>Füllhöhe vom Boden aus gemessen</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="DoubleSpinBox" name="dSpinBox_cmVonObenMenge2">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="label_16">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string notr="true">cm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <spacer name="horizontalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="label_14">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string notr="true">cm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="DoubleSpinBox" name="dSpinBox_Menge2">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_17">
-          <property name="text">
-           <string>Menge bei 100°C</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QLabel" name="label_18">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>l</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_18">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>l</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="DoubleSpinBox" name="dSpinBox_cmVonObenMenge2">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>9999.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_16">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string notr="true">cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Menge bei 100°C</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="DoubleSpinBox" name="dSpinBox_Menge2">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>9999.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Füllhöhe von Oberkante aus gemessen</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_14">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string notr="true">cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Füllhöhe vom Boden aus gemessen</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge2">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>9999.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -470,12 +468,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>dSpinBox_cmVonObenMenge1</tabstop>
-  <tabstop>dSpinBox_cmVomBodenMenge1</tabstop>
-  <tabstop>dSpinBox_Menge1</tabstop>
-  <tabstop>dSpinBox_cmVonObenMenge2</tabstop>
-  <tabstop>dSpinBox_cmVomBodenMenge2</tabstop>
-  <tabstop>dSpinBox_Menge2</tabstop>
   <tabstop>spinBox_Kochdauer</tabstop>
  </tabstops>
  <resources/>

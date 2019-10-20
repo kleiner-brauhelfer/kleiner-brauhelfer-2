@@ -237,7 +237,7 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
                        ui->tbTemperaturJungbier->value(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbSWSchnellgaerprobe->setValue(dlg.value());
+        bh->sud()->setSWSchnellgaerprobe(dlg.value());
 }
 
 void TabAbfuellen::on_tbSWJungbier_valueChanged(double value)
@@ -253,7 +253,7 @@ void TabAbfuellen::on_btnSWJungbier_clicked()
                        ui->tbTemperaturJungbier->value(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbSWJungbier->setValue(dlg.value());
+        bh->sud()->setSWJungbier(dlg.value());
 }
 
 void TabAbfuellen::on_tbTemperaturJungbier_valueChanged(double value)

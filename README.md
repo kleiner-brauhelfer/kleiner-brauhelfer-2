@@ -48,6 +48,9 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
+### Version 2.0.0beta4 (in Entwicklung)
+- Fix: Eingabe über Buttons für "Stammwürze Kochende", "Stammwürze Anstellen", "Restextrakt Schnellgärprobe" und "Restextrakt Jungbier"
+
 ### Version 2.0.0beta3
 - Neu: Funktion "Eingabefelder entsperren"
 - Neu: Umrechnung zwischen Palto und spezifische Dichte nach [Brewer's Friend](http://www.brewersfriend.com/plato-to-sg-conversion-chart/)

@@ -43,7 +43,7 @@ void DlgEinmaischTemp::on_doubleSpinBox_Schuettung_valueChanged(double arg1)
     doCalc();
 }
 
-void DlgEinmaischTemp::on_doubleSpinBox_SchuettungTemp_valueChanged(double arg1)
+void DlgEinmaischTemp::on_spinBox_SchuettungTemp_valueChanged(int arg1)
 {
     Q_UNUSED(arg1);
     doCalc();
@@ -55,7 +55,7 @@ void DlgEinmaischTemp::on_doubleSpinBox_Hauptguss_valueChanged(double arg1)
     doCalc();
 }
 
-void DlgEinmaischTemp::on_doubleSpinBox_RastTemp_valueChanged(double arg1)
+void DlgEinmaischTemp::on_spinBox_RastTemp_valueChanged(int arg1)
 {
     Q_UNUSED(arg1);
     doCalc();

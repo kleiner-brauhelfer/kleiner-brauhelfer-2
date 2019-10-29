@@ -54,7 +54,12 @@ void SudObject::load(int id)
         mId = id;
         QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
         mRowSud = bh->modelSud()->getRowWithValue("ID", mId);
+
         mLoading = true;
+        if (id != -1)
+            qInfo() << "SudObject::load():" << id << "(" << getSudname() << ")";
+        else
+            qInfo() << "SudObject::unload()";
         modelRasten()->setSourceModel(bh->modelRasten());
         modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
         modelRasten()->setFilterRegExp(regExpId);
@@ -103,6 +108,7 @@ void SudObject::load(int id)
             QVariant qvId = getValue("ID");
             if (!qvId.isValid() || qvId.toInt() != mId)
             {
+                qCritical("SudObject::load() ID mismatch");
                 unload();
                 return;
             }

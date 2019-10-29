@@ -7,12 +7,20 @@ Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
 {
     initTheme();
+
+    beginGroup("General");
+    mLogLevel = value("LogLevel", "0").toInt();
+    endGroup();
 }
 
 Settings::Settings(const QString& dir, QObject *parent) :
     QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
     initTheme();
+
+    beginGroup("General");
+    mLogLevel = value("LogLevel", "0").toInt();
+    endGroup();
 }
 
 Settings::~Settings()
@@ -169,6 +177,19 @@ void Settings::initTheme()
     paletteErrorButton = palette;
     paletteErrorButton.setColor(QPalette::Button, ErrorBase);
 
+    endGroup();
+}
+
+int Settings::logLevel()
+{
+    return mLogLevel;
+}
+
+void Settings::setLogLevel(int level)
+{
+    mLogLevel = level;
+    beginGroup("General");
+    setValue("LogLevel", mLogLevel);
     endGroup();
 }
 

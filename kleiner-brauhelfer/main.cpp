@@ -5,6 +5,7 @@
 #include <QStyleFactory>
 #include <QDirIterator>
 #include <QFile>
+#include <QTextStream>
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -25,6 +26,8 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
+
+static QFile* logFile = nullptr;
 
 static bool chooseDatabase()
 {
@@ -211,6 +214,36 @@ static void copyResources()
     }
 }
 
+static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    if (!logFile->isOpen())
+        logFile->open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream out(logFile);
+    switch (type)
+    {
+    case QtDebugMsg:
+        out << "DEBUG | ";
+        break;
+    case QtInfoMsg:
+        out << "INFO  | ";
+        break;
+    case QtWarningMsg:
+        out << "WARN  | ";
+        break;
+    case QtCriticalMsg:
+        out << "ERROR | ";
+        break;
+    case QtFatalMsg:
+        out << "FATAL | ";
+        break;
+    }
+    out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
+    out << msg;
+    if (context.file)
+        out << " | " << context.file << ":" << context.line << ", " << context.function;
+    out << endl;
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -225,6 +258,27 @@ int main(int argc, char *argv[])
         gSettings = new Settings(QCoreApplication::applicationDirPath());
     else
         gSettings = new Settings();
+
+    // install logger
+    if (gSettings->logLevel() > 0)
+    {
+        logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
+        qInstallMessageHandler(messageHandlerFileOutput);
+        switch (gSettings->logLevel())
+        {
+        case 1:
+            QLoggingCategory::setFilterRules("*.debug=false");
+            break;
+        case 3:
+            QLoggingCategory::setFilterRules("SqlTableModel.info=true");
+            break;
+        case 4:
+            QLoggingCategory::setFilterRules("SqlTableModel.info=true\nSqlTableModel.debug=true");
+            break;
+        }
+    }
+
+    qInfo("--- Application start ---");
 
     // install translation
     QTranslator translatorQt;
@@ -241,7 +295,7 @@ int main(int argc, char *argv[])
     bh = new Brauhelfer();
 
     // run application
-    int ret = -1;
+    int ret = EXIT_FAILURE;
     do
     {
         if (connectDatabase())
@@ -252,11 +306,26 @@ int main(int argc, char *argv[])
             if (!gSettings->useSystemFont())
                 w.setFont(gSettings->font);
             w.show();
-            ret = a.exec();
+            try
+            {
+                ret = a.exec();
+            }
+            catch (const std::exception& ex)
+            {
+                qCritical() << "Program error:" << ex.what();
+                QMessageBox::critical(nullptr, QObject::tr("Programm Fehler"), ex.what());
+                ret = EXIT_FAILURE;
+            }
+            catch (...)
+            {
+                qCritical() << "Program error: unknown";
+                QMessageBox::critical(nullptr, QObject::tr("Programm Fehler"), QObject::tr("Unbekannter Fehler."));
+                ret = EXIT_FAILURE;
+            }
         }
         else
         {
-            ret = -1;
+            ret = EXIT_FAILURE;
         }
     }
     while(ret == 1000);
@@ -264,6 +333,15 @@ int main(int argc, char *argv[])
     // clean up
     delete bh;
     delete gSettings;
+
+    qInfo("--- Application end (%d)---", ret);
+
+    // close log
+    if (logFile)
+    {
+        logFile->close();
+        delete logFile;
+    }
 
     return ret;
 }

@@ -2,6 +2,7 @@
 #define BRAUHELFER_H
 
 #include <QObject>
+#include <QDebug>
 #include "kleiner-brauhelfer-core_global.h"
 #include "biercalc.h"
 #include "sudobject.h"

@@ -71,7 +71,7 @@
         <item>
          <widget class="ComboBox" name="cbZutat">
           <property name="toolTip">
-           <string>Malzauswahl.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Reiter wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohfrucht&lt;/span&gt; bestimmt.&lt;/p&gt;&lt;p&gt;Die Art des Rohstoffes ist entscheidend für die Bierfarbe und den pH-Wert während des Maischens.&lt;/p&gt;&lt;p&gt;Die hier im Reiter gezeigten Einträge hängen von den Angaben im Tab Rohstoffe ab. Ein Farbleitsystem weist auf die vorhandene Menge hin. &lt;/p&gt;&lt;p&gt;• Schwarz = Rohstoff ist in ausreichender Menge vorhanden • Orange = Rohstoff ist in erforderlicher Menge nicht vorhanden • Rot = Rohstoff ist gar nicht vorhanden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="maxVisibleItems">
            <number>20</number>
@@ -133,7 +133,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Malzanteil.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Malzanteil &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="decimals">
            <number>1</number>
@@ -171,7 +171,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Korrektur, um auf 100% zu kommen.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Rohstoffmenge 100% Gesamtschüttung unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die aktuelle Rohstoffmenge auf 100% Gesamtschüttung. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung der Rohstoffe für die Schüttung anteilig vorab auf 100% bestimmt werden. Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -184,7 +184,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Malzmenge.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -227,6 +227,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Warnhinweis&lt;/span&gt; erscheint, um auf eine mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Störung der Maischearbeit&lt;/span&gt; hinzuweisen.&lt;/p&gt;&lt;p&gt;Dies kann besonders bei Rohstoffen mit vielen unvergärbaren Zuckern wie Karamell- oder Röstmalzen der Fall sein. Diese senken den pH-Wert der Würze deutlich stärker als Basismalze ab. Ohne entsprechendes Fachwissen empfiehlt es sich den von den Herstellern empfohlenen Schüttungsanteil einzuhalten.&lt;/p&gt;&lt;p&gt;Bei Detailfragen helfen die Fachforen oder die Hersteller weiter.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="pixmap">
            <pixmap resource="../images.qrc">:/images/warning.svg</pixmap>
           </property>
@@ -264,7 +267,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Vorhandene Menge.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;Das Feld wird rot unterlegt, wenn die benötigte Menge prozentual oder nach Gewicht größer als die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorratsmenge&lt;/span&gt; ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

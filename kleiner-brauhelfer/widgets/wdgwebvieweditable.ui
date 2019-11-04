@@ -83,6 +83,9 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QCheckBox" name="cbEditMode">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann der Tab Braudaten sowie der Hell- und der Dunkelmodus nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in der Cascading Style Sheets (CSS) und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Editiermodus</string>
            </property>
@@ -90,6 +93,9 @@
          </item>
          <item>
           <widget class="ComboBox" name="cbTemplateAuswahl">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diese Reiter wählt man die Stilvorlagen aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <item>
             <property name="text">
              <string notr="true">dummy</string>
@@ -129,6 +135,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnRestoreTemplate">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die Originalstilvorlage wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Wiederherstellen</string>
            </property>
@@ -192,6 +201,14 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>cbEditMode</tabstop>
+  <tabstop>cbTemplateAuswahl</tabstop>
+  <tabstop>btnSaveTemplate</tabstop>
+  <tabstop>btnRestoreTemplate</tabstop>
+  <tabstop>tbTemplate</tabstop>
+  <tabstop>tbTags</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

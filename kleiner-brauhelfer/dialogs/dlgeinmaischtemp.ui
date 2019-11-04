@@ -37,6 +37,9 @@
          <height>0</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Menge aller &lt;span style=&quot; font-weight:600;&quot;&gt;Malze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; vor dem Einmaischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
@@ -59,6 +62,9 @@
          <height>0</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperatur der Schüttung (Malz und weitere Zutaten) vor dem Einmaischen. Üblicherweise ist dies die Raum- beziehungsweise Außentemperatur.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
@@ -71,6 +77,9 @@
          <width>60</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Berechnete Temperatur, um nach der Zugabe der Schüttung die erste Rasttemperatur zu erreichen. Gewöhnlich liegt die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischtemperatur 2°C bis 4°C höher&lt;/span&gt; als die der ersten Raststufe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -90,6 +99,9 @@
          <width>60</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vorgelegte &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge&lt;/span&gt; beim Einmaischen ohne Nachgusswasser.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -112,7 +124,7 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>Einmaischtemeratur</string>
+        <string>Einmaischtemperatur</string>
        </property>
       </widget>
      </item>
@@ -130,6 +142,9 @@
          <width>60</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperatur für die &lt;span style=&quot; font-weight:600;&quot;&gt;erste Raststufe&lt;/span&gt; nach dem Einmaischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

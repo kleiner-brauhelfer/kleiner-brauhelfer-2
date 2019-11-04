@@ -48,6 +48,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Oberkante des Kessels bis zur Oberkante des Sudes zu &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; messen. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
@@ -69,6 +72,9 @@
           <width>60</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Volumen bei 100° Celsius bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; berechnet. Es ist größer als bei niedrigeren Temperaturen. Der Wert wird für die Sollmenge nach Kochende und andere Berechnungen im Kleinen Brauhelfer verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -98,6 +104,9 @@
           <width>60</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Unterkante des Kessels bis zur Oberkante des Sudes zu &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; messen. Ist der Kesselboden uneben, so empfiehlt sich eine mittlere Stelle zur Messung. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -195,6 +204,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Oberkante des Kessels bis zur Oberkante des Sudes am &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; messen. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
@@ -250,6 +262,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Volumen bei 100° Celsius bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. Es ist größer als bei niedrigeren Temperaturen. Der Wert orientiert sich u.a. an der eingestellten Verdampfungsziffer und wird für die Sollmenge beim Anstellen der Hefe und andere Berechnungen im Kleinen Brauhelfer verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
@@ -298,6 +313,9 @@
           <width>60</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Unterkante des Kessels bis zur Oberkante des Sudes am &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; messen. Ist der Kesselboden uneben, so empfiehlt sich eine mittlere Stelle zur Messung. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -352,6 +370,9 @@
          <height>0</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; des Hopfens ohne Isomerisierungszeit angegeben. (Unter Isomerisierungszeit versteht man die Zeit ab &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; bis üblicherweise 80°C, auch als Flame-Out bezeichnet, bei der Hopfen noch Bittere in den Sud einträgt.) Der Wert &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; ist neben der im Verdampfungsziffer grundlegend für die korrekte Berechnung der Verdampfungsrate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
@@ -377,6 +398,9 @@
          <width>60</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage angegeben. Der Wert ist abhängig von vielen Faktoren wie Meereshöhe, Sud und Anlage. Es muss individuell eingestellt werden. Mit fortschreitender Sudanzahl wird er immer genauer. Bei einer neuen Anlage empfiehlt sich er Wert 10%. Der Wert wird dabei auf eine Stunde berechnet. Die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; ist neben der &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; grundlegend für die korrekte Berechnung der Verdampfungsrate der Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -445,6 +469,9 @@
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Oberkante des Kessels bis zur Oberkante des Sudes messen. Der Kessel muss eben stehen, um gültige Werte zu berechnen. Aufgrund der Verdampfungsverlustes ist die Füllhöhe geringer als zu Kochbeginn.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -468,6 +495,12 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>dSpinBox_cmVonObenMenge1</tabstop>
+  <tabstop>dSpinBox_cmVomBodenMenge1</tabstop>
+  <tabstop>dSpinBox_Menge1</tabstop>
+  <tabstop>dSpinBox_cmVonObenMenge2</tabstop>
+  <tabstop>dSpinBox_cmVomBodenMenge2</tabstop>
+  <tabstop>dSpinBox_Menge2</tabstop>
   <tabstop>spinBox_Kochdauer</tabstop>
  </tabstops>
  <resources/>

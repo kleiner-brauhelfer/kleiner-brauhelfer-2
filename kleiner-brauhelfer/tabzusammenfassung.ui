@@ -22,6 +22,9 @@
    </item>
    <item>
     <widget class="QPushButton" name="btnToPdf">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; Ausgabe als PDF. &lt;/p&gt;&lt;p&gt;Ein direkter Druck ist (leider) nicht möglich. Es muss über den Umweg PDF gedruckt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="text">
       <string>PDF speichern</string>
      </property>

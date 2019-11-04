@@ -98,7 +98,7 @@
          </sizepolicy>
         </property>
         <property name="toolTip">
-         <string>Pfad relativ zur Datenbank.</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angekreuzt, wird hiermit der Pfad relativ zum Speicherort der Datenbank angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>relativ zur Datenbank</string>
@@ -123,7 +123,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Anhang suchen.</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld lässt sich der gewünschte Anhang manuell ansteuern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string notr="true">...</string>
@@ -133,7 +133,7 @@
       <item row="0" column="1" colspan="2">
        <widget class="QLineEdit" name="lineEdit_Pfad">
         <property name="toolTip">
-         <string>Pfad.</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der Pfad zum gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang &lt;/span&gt;angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>

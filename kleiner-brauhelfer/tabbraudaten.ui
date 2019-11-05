@@ -29,7 +29,7 @@
          <x>0</x>
          <y>0</y>
          <width>943</width>
-         <height>827</height>
+         <height>825</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -80,7 +80,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Setzt das Braudatum auf die aktuelle Zeit.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum &lt;/span&gt;auf die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Computerzeit &lt;/span&gt;im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Jetzt</string>
@@ -133,7 +133,7 @@
            <item row="0" column="1">
             <widget class="DateTimeEdit" name="tbBraudatum">
              <property name="toolTip">
-              <string>Braudatum.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die gärungsphase beginnt.&lt;/p&gt;&lt;p&gt;Das Feld Braudatum kann manuell minutengenau definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -174,7 +174,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Würzemenge berechnen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier lässt sich die Würzemenge bei Kochbeginn berechnen.&lt;/p&gt;&lt;p&gt; Ein &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; wird im Feld links ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -236,7 +236,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielstammwürze bei Kochbeginn.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze&lt;/span&gt; zu Kochbegin berechnet.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -270,7 +270,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielwürzemenge vor Kochbeginn bei angegebener Temperatur.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitegehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -311,7 +311,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielfüllhöhe von der Oberkante aus gemenssen bei angegebener Temperatur.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -378,7 +378,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Würzemenge vor Kochbeginn bei 20°C.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor Kochbeginn&lt;/span&gt; bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -406,7 +406,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielfüllhöhe vom Boden aus gemenssen bei angegebener Temperatur.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -440,7 +440,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielwürzemenge vor Kochbeginn bei 20°C.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitegehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -499,7 +499,7 @@
                 </size>
                </property>
                <property name="toolTip">
-                <string>Temperatur für die Berechnung der Zielwürzemenge.</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;p&gt;Das  größte Volumen wird bei 100°C erreicht. Es empfiehlt sich etwas Abstand zur Oberkante des Kessels, da Hopfen bis zum Würzebruch stark schäumen kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -639,7 +639,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>Zielstammwürze bei Kochbeginn.</string>
+                 <string/>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -791,7 +791,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Würzemenge berechnen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach Kochende&lt;/span&gt; temperaturkorrigiert anhand des Füllstandes in der Sudpfanne berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links automatisch eingetragen. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Würzemenge bei Kochende ist ein Zwischenschritt. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -830,7 +830,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Die Sudhausausbeute wird aus der gemessenen Stammwürze und Würzemenge bei Kochende berechnet. Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. &lt;/p&gt;&lt;p&gt;Der Faktor beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Effizienz&lt;/span&gt; der Brauanlage sowie die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; der verwendeten Rohstoffe.&lt;/p&gt;&lt;p&gt;Im Hobbymaßstab wird ein Faktor von 70% angestrebt, liegt aber tatsächlich oft darunter. Im Profibereich sind 80% Zielgröße.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -857,6 +857,9 @@
            </item>
            <item row="0" column="5">
             <widget class="QLabel" name="label_10">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zielstammwürze ist die errechnete Stammwürze zu diesem Zeitpunkt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Zielstammwürze</string>
              </property>
@@ -871,7 +874,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Verdampfungsziffer.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; pro Stunde des Sudes aus.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, so er dort oder hier im Tab Braudaten nicht ignoriert wrd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -938,7 +941,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielstammwürze bei Kochende.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze&lt;/span&gt; nach Kochende an.&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum Überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen. Bei größeren Abweichungen sind die Fachforen eine gute Hilfe, um den eigenen Brauprozess zu optimieren.&lt;/p&gt;&lt;p&gt;Die Zielstammwürze nach Kochende ist noch nicht gleichzusetzen mit der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; beim Anstellen mit Hefe. So gibt es bei Hefe unterschiedliche Verfahren, die die Stammwürze nochmals beeinflussen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -979,7 +982,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielwürzemenge bei Kochende bei angegebener Temperatur.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld zeigt die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge bei 100°C &lt;/span&gt;bei Kochende an.&lt;/p&gt;&lt;p&gt;Grundlage hierfür sind die Rohstoffzutaten und Prozessschritte im Rezept.&lt;/p&gt;&lt;p&gt;Das Volumen ist höher als im abgekühlten Zustand. Über nebenstehendes Eingabefeld kann das unterschiedliche Volumen bei jeder Temperatur angezeigt werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1032,6 +1035,9 @@
            </item>
            <item row="8" column="5">
             <widget class="QLabel" name="label_5">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sudhausausbeute beschreibt die Effizienz der Brauanlage ab dem Einmaischen bis zum Anstellen des Sudes mit Hefe. Im Hobbybereich mit durchschnittlich 50% bis 70% gilt ein Wert von 60% als gut. Professionelle Anlagen erreichen Werte über 70%.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Sudhausausbeute</string>
              </property>
@@ -1046,7 +1052,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze gemessen nach Zugabe der weiteren Zutaten (Maischen &amp; Kochen).</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze nach Kochende&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden.&lt;/p&gt;&lt;p&gt;Liegt der ermittelte Wert nahe beim zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben, bestätigt dies die zuvor festgelegten Parameter von Brauanlage, Rezept und Sudarbeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1087,7 +1093,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze berechnen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze nach Kochende&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links automatisch eingetragen. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochende ist ein Zwischenschritt. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen, etwa wenn die Stammwürze zu hoch sein sollte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -1103,7 +1109,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielwürzemenge bei Kochende bei 20°C.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete temperaturabhängige &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge&lt;/span&gt; nach Abkühlen des Sudes auf &lt;span style=&quot; font-weight:600;&quot;&gt;20°C&lt;/span&gt; und vor dem Anstellen mit Hefe angegeben.&lt;/p&gt;&lt;p&gt;Abhängig von Faktoren, beispielsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zugaben,Verdünng&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Verlust beim Abfüllen&lt;/span&gt;, entspricht dieser Wert nicht der der im Rezept angestrebten Biermenge, ist aber ein guter Indikator, ob diese Menge erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1167,7 +1173,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Würzemenge bei Kochende bei 20°C.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die aktuell berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert ist nicht gleichzusetzen mit der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge&lt;/span&gt;. Die Differenz beider Werte kann aber Hinweise auf mögliche Korrekturen geben.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu ist die Fachliteratur oder ein Fachforum eine gute individuelle Hilfe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1188,6 +1194,9 @@
            </item>
            <item row="2" column="5">
             <widget class="QLabel" name="label_19">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Würzemenge nach Abkühlen des Sudes auf 20°C. Zielwürzemenge berechnet die Würzemenge in Abhängigkeit der Sudanlage&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Zielwürzemenge (20°C)</string>
              </property>
@@ -1202,7 +1211,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielfüllhöhe von der Oberkante aus gemenssen bei angegebener Temperatur.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1236,7 +1245,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielfüllhöhe vom Boden aus gemenssen bei angegebener Temperatur.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1321,7 +1330,7 @@
                 </size>
                </property>
                <property name="toolTip">
-                <string>Temperatur für die Berechnung der Zielwürzemenge.</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -1402,7 +1411,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze gemessen vor der Zugabe der weiteren Zutaten (Gärung).</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze in °Plato beim &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellen&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt; zu Beginn der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Weitere Zutaten und Gaben nach dem Anstellen sind hiervon nicht erfasst.&lt;/p&gt;&lt;p&gt;Wird der Wert über den Button rechts berechnet, setzt der Kleine Brauhelfer diesen hier automatisch ein.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen ist &lt;span style=&quot; font-weight:600;&quot;&gt;Grundlage&lt;/span&gt; für die Gärungsberechnung im Tag &lt;span style=&quot; font-weight:600;&quot;&gt;Gärverlauf&lt;/span&gt; und gleichzeitig dort immer die&lt;span style=&quot; font-weight:600;&quot;&gt; erste Messung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1443,7 +1452,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Anstellmenge.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellmenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Anstellmenge ist die Menge Sud, der vergoren wird. Sie ist die Menge ab &lt;span style=&quot; font-weight:600;&quot;&gt;Gärungsbeginn&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Anstellmenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Würzemenge. Die Speise wird später bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; wieder zugegeben. Dies wird im Tab Abfülldaten erfasst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1555,7 +1564,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze berechnen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anhand der Messung von Bierspindel in °Plato oder Refraktometer in °Brix und Temperatur in °C wird hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen &lt;/span&gt;mit Hefe berechnet und im linken Feld eingetragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -1619,7 +1628,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zielstammwürze vor der Zugabe weiterer Zutaten.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze&lt;/span&gt; beim Anstellen mit Hefe an.&lt;/p&gt;&lt;p&gt;Erfolgen keine weiteren Stammwürze beeinflussenden Gaben während der Gärung, sollte der Wert der im Rezept festgelegten Stammwürze entsprechen.&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum Überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen. Bei größeren Abweichungen sind die Fachforen eine gute Hilfe, um den eigenen Brauprozess zu optimieren.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen schließt jede Form der Hefegabe ein. Wird etwa ein großer &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarter&lt;/span&gt; mit einer anderen Platowert zugegeben, verändert dies die Stammwürze beim Anstellen. In diesem Fall empfiehlt sich im Vorfeld die Berechnung beider Mengen durch ein sogenanntes Mischkreuz, um die Abweichung zu egalisieren.&lt;/p&gt;&lt;p&gt;Die Fachliteratur sowie die Fachforen sind gute Quellen für tiefergehende Informationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1722,7 +1731,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Abgefüllte Speisemenge für die Karbonisierung.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte Speisemenge eingetragen.&lt;/p&gt;&lt;p&gt;Den Wert verwendet der Kleine Brauhelfer im Tab Abfülldaten für weitere Berechnungen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1825,7 +1834,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Gesamtwürzemenge (Anstellmenge +  Speisemenge).</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Unter diesem Wert vesteht sich die aus &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellmenge&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; bestehende &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Die Würzemenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Anstellmenge. Wird keine Speise entnommen, sind Würzemenge und Anstellmenge gleich groß.&lt;/p&gt;&lt;p&gt;Bei bestimmten Anstellverfahren mit Hefe wird zusätzliche Wpzr hinzugegeben. Es empfiehlt sich dies in die Würzemenge einzurechnen. Würzemenge und Anstellmenge sind voneinander abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1865,9 +1874,6 @@
                <height>16777215</height>
               </size>
              </property>
-             <property name="toolTip">
-              <string>Würzemenge berechnen.</string>
-             </property>
              <property name="text">
               <string notr="true">...</string>
              </property>
@@ -1889,7 +1895,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Die effektive Sudhausausbeute wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet. Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert kann als Orientierung für die &lt;strong&gt;Ausbeute für die Schüttungsberechnung&lt;/strong&gt; im Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; hergenommen werden.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektiveSudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet.&lt;/p&gt;&lt;p&gt;Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er kann  Im Tab zur Durchschnittsberechnung herangezogen werden&lt;/p&gt;&lt;p&gt;Der Wert erklärt recht gut Unterschiede, wenn ein übernommenes Rezept auf der eigenen Anlage umgesetzt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1923,7 +1929,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Geschätze benötigte Speise bei angeommenen 3°P scheinbarer Restextrakt.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2008,7 +2014,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>Wassermenge zugeben, Stammwürze neu messen und Wert eintragen. Vorgang wiederholen bis Zielstammwürze erreicht wurde.</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Liegt die gemessene Stammwürze beim Anstellen &lt;span style=&quot; font-weight:600;&quot;&gt;über&lt;/span&gt; der im Rezept festgelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze&lt;/span&gt;, gibt der Kleine Brauhelfer hier eine &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge zum Vedrünnen&lt;/span&gt; an, um den angestrebten Wert zu erreichen.&lt;/p&gt;&lt;p&gt;Dazu gibt man vorsichtig eine Wassermenge zu, misst die Stammwürze neu und trägt den Wert bei der Stammwürze beim Anstellen ein. Der Vorgang wird wiederholt, bis Zielstammwürze erreicht wurde.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich mehrfach zu messen und die Wassermenge schrittweise und immer leicht unter dem angegebenen Wert beizufügen. Damit vermeidet man die Gefahr einer übermäßigen Verdünnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2064,8 +2070,7 @@
            <item row="1" column="1">
             <widget class="QCheckBox" name="cbDurchschnittIgnorieren">
              <property name="toolTip">
-              <string>Sud für Durschnittsberechnungen ignorieren.&lt;br&gt;
-Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der einzelne &lt;span style=&quot; font-weight:600;&quot;&gt;Sud für Durschnittsberechnungen&lt;/span&gt; ignoriert werden.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; ist die Durchschnittsberechung möglich sowie Filtermöglichkeiten für die Sude vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
@@ -2134,7 +2139,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
               </size>
              </property>
              <property name="toolTip">
-              <string>Kosten.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die Berechnung ergibt sich aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; im Tab Ausrüstung sowie den eigentlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten&lt;/span&gt; (auch Rohstoffkosten, Nebenkosten, zusätzliche Kosten).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2185,7 +2190,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
               </size>
              </property>
              <property name="toolTip">
-              <string>Nebenkosten.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Unter Sudkosten verstehen sich die Rohstoffkosten, Nebenkosten und zusätzliche Kosten, die für den Sud spezifisch sind. Sie sind von regelmäßigen, planbaren Betriebskosten (Strom, Waser, Gas etc.) zu unterscheiden.&lt;/p&gt;&lt;p&gt;Dieses Feld findet sich auch identisch im Tab Abfülldaten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2273,7 +2278,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
           <item>
            <widget class="QPushButton" name="btnSudGebraut">
             <property name="toolTip">
-             <string>Sud als gebraut markieren.</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud gebraut ausgegraut und inaktiv. Der Kleine Brauhelfer fragt, ob die verwendeten Zutaten von den Rohstoffvorräten abgezogen werden sollen. Bei Korrekturen ist diese Frage zu verneinen und die Rohstoffvorräte bleiben unverändert..&lt;/p&gt;&lt;p&gt;Über das Menü Sud kann die Aktion rückgängig gemacht werden. In diesem Fall sind die Rohsotffanpassungen erneut zu bejahen oder zu verneinen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Sud gebraut</string>
@@ -2283,7 +2288,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
           <item>
            <widget class="QPushButton" name="btnSudTeilen">
             <property name="toolTip">
-             <string>Sud in zwei teile aufteilen. Alle bisher eingegebenen Daten werden übernommen.</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; hälftig &lt;span style=&quot; font-weight:600;&quot;&gt;aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Abfülldaten identisch.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist dieReproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Sud teilen</string>
@@ -2305,6 +2310,9 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
         <font>
          <italic>true</italic>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind alle Braudaten, &lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; übersichtlich nach &lt;span style=&quot; font-weight:600;&quot;&gt;Prozessschritt&lt;/span&gt; beim Brauen aufgeführt.&lt;/p&gt;&lt;p&gt;Ähnlich, aber ausführlicher, werden diese Schritte auf dem Spickzettel aufbereitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -2337,6 +2345,8 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
   <tabstop>scrollArea</tabstop>
   <tabstop>tbBraudatum</tabstop>
   <tabstop>btnBraudatumHeute</tabstop>
+  <tabstop>tbSWSollKochbeginn</tabstop>
+  <tabstop>tbSWSollKochbeginnMitWz</tabstop>
   <tabstop>tbWuerzemengeKochbeginn</tabstop>
   <tabstop>btnWuerzemengeKochbeginn</tabstop>
   <tabstop>tbMengeSollKochbeginn20</tabstop>
@@ -2372,6 +2382,7 @@ Siehe Reiter &lt;strong&gt;Ausrüstung&lt;/strong&gt; für weitere Informationen
   <tabstop>tbNebenkosten</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>cbDurchschnittIgnorieren</tabstop>
+  <tabstop>lblWarnAusbeute</tabstop>
   <tabstop>btnSudGebraut</tabstop>
   <tabstop>btnSudTeilen</tabstop>
   <tabstop>tbHelp</tabstop>

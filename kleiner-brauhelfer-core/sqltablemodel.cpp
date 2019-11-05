@@ -2,10 +2,7 @@
 #include <QSqlRecord>
 #include <QSqlIndex>
 
-#define DEBUG_EN 0
-#if DEBUG_EN
-  #include <QDebug>
-#endif
+QLoggingCategory SqlTableModel::loggingCategory("SqlTableModel", QtWarningMsg);
 
 SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
     QSqlTableModel(parent, db),
@@ -62,9 +59,7 @@ bool SqlTableModel::setData(const QModelIndex &index, const QVariant &value, int
         }
         else
         {
-          #if DEBUG_EN
-            qDebug() << tableName() << "set row" << index.row() << "col" << fieldName(col) << "=" << value.toString();
-          #endif
+            qDebug(loggingCategory) << "SqlTableModel::setData():" << tableName() << "row" << index.row() << "col" << fieldName(col) << "=" << value.toString();
             const QModelIndex index2 = this->index(index.row(), col);
             ++mSetDataCnt;
             ret = setDataExt(index2, value);
@@ -173,6 +168,7 @@ void SqlTableModel::setTable(const QString &tableName)
 {
     if (tableName != this->tableName())
     {
+        qInfo(loggingCategory) << "SqlTableModel::setTable():" << tableName;
         QSqlTableModel::setTable(tableName);
         // hack for setHeaderData() (crash in proxy model when loading new database in App)
         beginResetModel();
@@ -192,6 +188,7 @@ void SqlTableModel::setTable(const QString &tableName)
 
 bool SqlTableModel::select()
 {
+    qInfo(loggingCategory) << "SqlTableModel::select():" << tableName();
     if (QSqlTableModel::select())
     {
         fetchAll();
@@ -203,7 +200,10 @@ bool SqlTableModel::select()
 void SqlTableModel::fetchAll()
 {
     while (canFetchMore())
+    {
+        qInfo(loggingCategory) << "SqlTableModel::fetchMore():" << tableName();
         fetchMore();
+    }
 }
 
 void SqlTableModel::setFilter(const QString &filter)
@@ -289,6 +289,7 @@ int SqlTableModel::appendDirect(const QVariantMap &values)
 
 bool SqlTableModel::submitAll()
 {
+    qInfo(loggingCategory) << "SqlTableModel::submitAll():" << tableName();
     if (QSqlTableModel::submitAll())
     {
         emit submitted();
@@ -300,6 +301,7 @@ bool SqlTableModel::submitAll()
 
 void SqlTableModel::revertAll()
 {
+    qInfo(loggingCategory) << "SqlTableModel::revertAll():" << tableName();
     QSqlTableModel::revertAll();
     emit layoutAboutToBeChanged();
     emit layoutChanged();

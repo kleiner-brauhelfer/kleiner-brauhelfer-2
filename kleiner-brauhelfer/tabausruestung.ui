@@ -58,6 +58,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_12">
           <item>
            <widget class="QPushButton" name="btnNeueAnlage">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; angelegt und benannt. Verfügt man über mehrere Kessel in unterschiedlichen Größen, bietet es sich an, hier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Konfigurationen&lt;/span&gt; zu speichern, um die jeweilige Anlage bei der Rezepterstellung mit einem Klick im Tab Rezept bequem zu wählen.&lt;/p&gt;&lt;p&gt;Unter einer Brauanlage ist mindestens ein Kessel zu verstehen. Im Hobbybrauerbereich sind platzsparende All-in-one-Anlagen oft üblich. Meist sind es aber mindestens zwei Kessel – der Kleine Brauhelfer nimmt auf diese Standard-Konfiguration in den Feldern rechts Bezug: &lt;/p&gt;&lt;p&gt;Ein &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; für das Maischen mit Malz und eine &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; für das Hopfenkochen. Bei All-in-one-Geräten, die Maischekessel und Sudpfanne vereinen, gibrt man den einen Wert für Maischekessel und Sudpfanne an.&lt;/p&gt;&lt;p&gt;Bei größeren Konfigurationen kommt mindestens noch ein Läuterkessel hinzu, der zwischen Maischekessel und Sudpfanne eingesetzt wird. Im Kleinen Brauhelfer wird diese zusätzliche, für die Bierherstellung nicht zwingend nötige Ausstattung unter &lt;span style=&quot; font-weight:600;&quot;&gt;Geräte&lt;/span&gt; erfasst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Neue Anlage</string>
             </property>
@@ -65,6 +68,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnAnlageLoeschen">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Bei dieser Aktion empfiehlt es sich, die mit der zu löschenden Anlage gebrauten Sude vorab zu überpüfen und im Tab Rezept gegebenenfalls anzupassen. Die Gefahr von hausgemachten Verwechselungen liegt hier nah. Es empfiehlt sich alle noch zu brauenden Sude dieser Analge auf eine neue Anlage umzustellen. Bei gebrauten Suden erübrigt sich diese Vorsichtsmaßnahme.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Anlage löschen</string>
             </property>
@@ -107,6 +113,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QPushButton" name="btnNeuesGeraet">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Geräte&lt;/span&gt; außer der Maischekessel und die Sudpfanne erfasst.&lt;/p&gt;&lt;p&gt;Im Kleinen Brauhelfer werden unter Geräten all die Dinge verstanden, die das Brauen schöner, besser und angenehmer machen – aber nicht zwingend notwendig für ein Selbstgebrautes sind.&lt;/p&gt;&lt;p&gt;Zuvorderst gehört dazu ein Läuterkessel, aber auch Gärfässer und Gärkannen, Holzfässer und Kegs, Heizplatten, Meßgeräte bis hin zu zylindorkonischen Drucktanks, Abfüllern und Etikettiermaschinen werden hier erfasst. Kurzum alle Gerätschaften, die das Brauherz höher schlagen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Neues Gerät</string>
             </property>
@@ -114,6 +123,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnGeraetLoeschen">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigtes&lt;span style=&quot; font-weight:600;&quot;&gt; Gerät gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Werden Geräte gelöscht, hat dies keine Auswirkung an anderen Stellen im Kleinen Brauhelfer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Gerät löschen</string>
             </property>
@@ -189,8 +201,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>660</width>
-          <height>691</height>
+          <width>647</width>
+          <height>643</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -231,8 +243,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>Verdampfung während des Kochvorgangs.&lt;br&gt;
-Typischer Wert: 10%</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage eingegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert selbst beschreibt die prozentuale Verdampfung pro Stunde beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen &lt;/span&gt;bezogen auf die Menge bei Kochende.&lt;/p&gt;&lt;p&gt;Im Hobbybereich sind 10% üblich, öfter aber auch mehr.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -254,7 +265,7 @@ Typischer Wert: 10%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Durchschnittliche Sudhausbeute aus den letzten gebrauten Suden.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten Sudhausausbeuten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -315,7 +326,7 @@ Typischer Wert: 10%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Durchschnittswert übernehmen.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffern&lt;/span&gt; übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
@@ -357,7 +368,7 @@ Typischer Wert: 10%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Durchschnittswert übernehmen.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeuten&lt;/span&gt; übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
@@ -380,7 +391,7 @@ Typischer Wert: 10%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Anzahl Sude für die Durchschnittsberechnungen.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den nebenstehenden &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -405,7 +416,7 @@ Typischer Wert: 10%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Durchschnittliche Verdampfungsziffer aus den letzten gebrauten Suden.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert&lt;/span&gt; der letzten Verdampfungsziffer .Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -463,8 +474,7 @@ Typischer Wert: 10%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Die Sudhausausbeute gibt an, welcher Anteil des Malzes während des Maischens in Lösung gegangen ist.&lt;br&gt;
-Typischer Wert: zwischen 50% und 75%</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Fachsprech &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; genannt, gibt die Ausbeute für die Schüttungsberechnung an, welcher Anteil des Malzes während des Maischens in Lösung gegangen ist.&lt;br/&gt;Ein idealer Wert im Hobbymaßstab ist 70%. Tatsächlich bewegt sich die Effizienz zwischen 50% und 70%. Im semi- und professionellern Bereich werden 80% Sudhausausbeute angestrebt.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Optimierung&lt;/span&gt; der Sudhausausbeute ist ein weites Feld. Angefangen beim Wasser, über das eingesetzte Malz, die Schrotung, die Zutaten bis zu den Faktoren Härtegrad, pH-Wert, Zeit – um nur einige Faktoren zu nennen – eröffnet sich hier dem Brauer ein weites Feld, um seine Sude zu optimieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -505,7 +515,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Verdampfungsziffer ausrechnen.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string notr="true">...</string>
@@ -535,7 +545,7 @@ Typischer Wert: zwischen 50% und 75%</string>
             <item row="7" column="1" colspan="2">
              <widget class="QSlider" name="sliderAusbeuteSude">
               <property name="toolTip">
-               <string>Anzahl Sude für die Durchschnittsberechnungen.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -606,7 +616,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Korrektur für den Farbewert.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die Korrektur der durchschnittlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Abweichungen&lt;/span&gt; von den im Rezept festgelegten Farbwerten aller Sude.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Der Farbwert von Bier, genauer: die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbstärke&lt;/span&gt;, wird im europäischen Raum in EBC nach der European Brewery Convention angegeben.&lt;/p&gt;&lt;p&gt;Für die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwertkorrektur&lt;/span&gt; im Kleinen Brauhelfer empfiehlt sich ein farbkorrigierter Bildschirm bei 6.500 Kelvin Tageslicht und einem Gammwert von 1,8. Üblicherweise sind in Europa Monitore aber kontrastreicher kalibriert, was eine eine exakte Übertragung von Bierfarbe im Glas in ein Computerprogramm schwierig macht. Bei Fragen helfen hier Fachforen im Designbereich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -632,7 +642,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Pauschale Kosten für einen Sud.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; (Pauschalen) für den Sud einzutragen. Dazu gehören &lt;span style=&quot; font-weight:600;&quot;&gt;Strom&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Gas&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Aber auch Verschleiß- und Abschreibungskosten der Ausstattung können hier anteilig mit einem Satz individuell festgelegt werden.&lt;/p&gt;&lt;p&gt;Die hier angegebenen Kosten gehen in die Gesamtkosten pro Liter automatisch mit ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -686,7 +696,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Korrektur für die Nachgussmenge.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier entgegen der vom Kleinen Brauhelfer im Tab Rezept berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; nötig sein.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagsmenge&lt;/span&gt; immer mit den gleichen Werten abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -762,7 +772,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Höhe des Maischekessels.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; des Maischekessels an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. So dehnt sich der Sud bei höheren Temperaturen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen der Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -813,7 +823,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Durchmesser des Maischekessels.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchmesser&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Für eine korrekte Berechnung sollte der Kessel &lt;span style=&quot; font-weight:600;&quot;&gt;zylindrisch&lt;/span&gt; sein.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -858,7 +868,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Höhe des Maischekessels.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Masiche zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -955,7 +965,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Nutzbare Höhe des Maischekessels.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; plan steht, ist man mit 5 Zentimetern unterhalb der Kesseloberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Werden weniger schäumende Zutaten eingesetzt, können diese 5 Zentimeter auch unterschritten werden. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -986,7 +996,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Nutzbares Volumen des Maischekessels.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; des Maischekessels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1062,7 +1072,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Höhe der Sudpfanne.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. Der Sud dehnt sich bein Kochen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen des Sudes zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1120,7 +1130,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Nutzbare Höhe der Sudpfanne.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; plan steht, ist man mit 5 Zentimetern bei 100°C unterhalb der Pfannenoberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Hopfen schäumt beim Würzebruch. Hopfendolden noch mehr. Ausgehend von den individuelen Gegebenheiten sollte man bei der Größe der Sudpfanne anfangs konservativ vorgehen und einen Puffer einrechnen. Dies vermeidet unliebsame Überraschungen. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1165,7 +1175,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Höhe der Sudpfanne.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; der Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1242,7 +1252,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Durchmesser der Sudpfanne.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchmesser&lt;/span&gt; des Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Für eine korrekte Berechnung sollte der Kessel &lt;span style=&quot; font-weight:600;&quot;&gt;zylindrisch&lt;/span&gt; sein.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung  und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1286,7 +1296,7 @@ Typischer Wert: zwischen 50% und 75%</string>
                </size>
               </property>
               <property name="toolTip">
-               <string>Nutzbares Volumen der Sudpfanne.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; der Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1377,6 +1387,28 @@ Typischer Wert: zwischen 50% und 75%</string>
   <tabstop>btnGeraetLoeschen</tabstop>
   <tabstop>tableViewSude</tabstop>
   <tabstop>scrollArea</tabstop>
+  <tabstop>tbAusbeute</tabstop>
+  <tabstop>btnAusbeuteMittel</tabstop>
+  <tabstop>tbAusbeuteMittel</tabstop>
+  <tabstop>btnVerdampfungsziffer</tabstop>
+  <tabstop>tbVerdampfung</tabstop>
+  <tabstop>btnVerdampfungMittel</tabstop>
+  <tabstop>tbVerdampfungMittel</tabstop>
+  <tabstop>sliderAusbeuteSude</tabstop>
+  <tabstop>tbAusbeuteSude</tabstop>
+  <tabstop>tbNachguss</tabstop>
+  <tabstop>tbFarbe</tabstop>
+  <tabstop>tbKosten</tabstop>
+  <tabstop>tbMaischebottichDurchmesser</tabstop>
+  <tabstop>tbMaischebottichHoehe</tabstop>
+  <tabstop>tbMaischenVolumen</tabstop>
+  <tabstop>tbMaischebottichMaxFuellhoehe</tabstop>
+  <tabstop>tbMaischenMaxNutzvolumen</tabstop>
+  <tabstop>tbSudpfanneDurchmesser</tabstop>
+  <tabstop>tbSudpfanneHoehe</tabstop>
+  <tabstop>tbSudpfanneVolumen</tabstop>
+  <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
+  <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources>

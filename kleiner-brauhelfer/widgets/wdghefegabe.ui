@@ -57,6 +57,9 @@
           <property name="focusPolicy">
            <enum>Qt::ClickFocus</enum>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zweite Hefegabe aktivieren&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="autoFillBackground">
            <bool>true</bool>
           </property>
@@ -68,7 +71,7 @@
         <item>
          <widget class="ComboBox" name="cbZutat">
           <property name="toolTip">
-           <string>Hefeauswahl.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Reiter wird die Hefe für eine weitere, &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe&lt;/span&gt; bestimmt.&lt;/p&gt;&lt;p&gt;• Schwarz = Rohstoff ist in ausreichender Menge vorhanden • Orange = Rohstoff ist in erforderlicher Menge nicht vorhanden • Rot = Rohstoff ist gar nicht vorhanden&lt;/p&gt;&lt;p&gt;Zusätzliche Hefegaben haben ein breites Einsatzgebiet. In einfachen Fällen soll damit eine eingeschlafene Gärung erneut aktiviert oder bei zu wenig Hefezellen – man spricht auch von &lt;span style=&quot; font-weight:600;&quot;&gt;underpitching &lt;/span&gt;– einer geschmacklich nachteiligen Entwicklung durch eine gestresste Hefe entgegengewirkt werden.&lt;/p&gt;&lt;p&gt;Oft aber kommen zweite Hefegabe ganz geplant bei anspruchsvollen Rezepten mit einem durch die Hefe bestimmten Geschmacksprofil zur Anwendung, die eine &lt;span style=&quot; font-weight:600;&quot;&gt;weitere Geschmackskomponente&lt;/span&gt; im Jungbier einbringen soll. Eine weitere Spielart ist eine anspruchsvolle Gärführung.&lt;/p&gt;&lt;p&gt;Nähere Informationen hält die Fachliteratur oder das Fachforum der Wahl bereit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="maxVisibleItems">
            <number>20</number>
@@ -96,7 +99,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Hefegabe löschen.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hefegabe löschen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -126,7 +129,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Vorhandene Einheiten.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge Hefe &lt;/span&gt;angezeigt.&lt;/p&gt;&lt;p&gt;Das Feld wir rot unterlegt, wenn die benötigte Anzahl der &lt;span style=&quot; font-weight:600;&quot;&gt;Vorratsmenge&lt;/span&gt; nicht entspricht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -151,7 +154,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>Anzahl Einheiten.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anzahl der zugegebenen &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies kann einer vorkonfektionierten Tüte Trocken- oder Flüssighefe entsprechen, aber auch kalkulierten Vorräten,  wie sie in einem Hefestarter zur Anwendung kommen.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -195,7 +198,7 @@
         <item row="1" column="6" colspan="2">
          <widget class="QPushButton" name="btnZugeben">
           <property name="toolTip">
-           <string>Hefegabe zugeben.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer mitgeteilt, dass die zweite Hefegabe ausgeführt wurde.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms  wird diese Aktion nun berücksichtigt. U.a. kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Zugeben</string>
@@ -205,7 +208,7 @@
         <item row="1" column="2">
          <widget class="SpinBox" name="tbTage">
           <property name="toolTip">
-           <string>Zugabe nach x Tagen ab Braudatum.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit ist der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt &lt;/span&gt;der zweiten Hefegabe in Tagen ab Braudatum gemeint.&lt;/p&gt;&lt;p&gt;Die Zugabe kann gleichzeitig mit der ersten Hefegabe erfolgen. Gewöhnlich wir die zweite Hefe aber nach Abklingen der ersten Hauptgärung zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -215,7 +218,7 @@
         <item row="1" column="4">
          <widget class="DateEdit" name="tbDatum">
           <property name="toolTip">
-           <string>Zugabedatum.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum &lt;/span&gt;der zweiten Hefe, abhängig vom Zugabezeitpunkt, angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="calendarPopup">
            <bool>true</bool>

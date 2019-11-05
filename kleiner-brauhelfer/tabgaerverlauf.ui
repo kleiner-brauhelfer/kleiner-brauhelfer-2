@@ -16,6 +16,9 @@
    </property>
    <item>
     <widget class="QToolBox" name="toolBox_Gaerverlauf">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Hauptgärung ist der bestimmende Prozess bei der Umwandlung von Extrakt in Alkohol und Kohlendioxid. Ferner tragen Hefen hier ihr Geschmacksprofil ein. In der Regel dauert die Hauptgärung fünf Tage, wobei die stürmische Phase die auffälligste ist.&lt;/p&gt;&lt;p&gt;Ist die Schnellgärprobe nicht aktiv, werden die Werte der Hauptgärung für den Endvergärungsgrad (EVG) und den Alkoholgehalt im Tab Abfülldaten verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="currentIndex">
       <number>1</number>
      </property>
@@ -55,6 +58,9 @@
            </property>
            <item>
             <widget class="QTableView" name="tableWidget_Schnellgaerverlauf">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe dient zum einen zur Bestimmung des Abfüllzeitpunktes beim Grünschlauchen und zum anderen zur Bestimmung der Zucker- oder Speisegabe zur Nachgärung wie der Hefeaktivität allgemein.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten bei aktivierter Schnellgärprobe in den Felder für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen.&lt;/p&gt;&lt;p&gt;Ist die Schnellgärprobe aktiv, werden ihre Werte im Kleinen Brauhelfer vor der Hauptgärung bevorzugt. Damit ermöglicht sie Prognosen über den Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -93,6 +99,9 @@
               </item>
               <item>
                <widget class="DateTimeEdit" name="tbDatumSchnellgaerprobe">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Uhrzeit&lt;/span&gt; der Schnellgärprobe eingetragen.&lt;/p&gt;&lt;p&gt;So keine manuelle Eingabe erfolgt, übernimmt der Kleine Brauhelfer die Computerzeit.&lt;/p&gt;&lt;p&gt;Über den Pfeil rechts kann die Kalenderfunktion aktiviert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="calendarPopup">
                  <bool>true</bool>
                 </property>
@@ -112,6 +121,9 @@
                   <width>60</width>
                   <height>0</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der alkoholkorrigierte &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärung&lt;/span&gt; eingegeben. Ist der korrigierte Wert unbekannt, empfiehlt es sich den Button rechts zu nutzen.&lt;/p&gt;&lt;p&gt;Die Korrektur der alkoholbedingten Abweichung lässt sich mit Formeln wie der des US-Amerikaners Sean Terrill auch manuell berechnen. Die Fachliteratur und die Theorieteile von Rezeptesammlungen tauchen hier tief in die Materie ein.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Auf alle Fälle ist im Feld Restextrakt &lt;span style=&quot; font-weight:600;&quot;&gt;nicht direkt&lt;/span&gt; der Wert der Bierspindel einzutragen oder die auf Plato umgerechnete Messung des Refraktometers. Dies führte zu erheblichen Messfehlern und Fehlinterpretationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -158,6 +170,9 @@
                   <height>0</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; in Gefäss der Schnellgärprobe angegeben.&lt;/p&gt;&lt;p&gt;Die Temperatur der Schnellgärprobe soll grundsätzlich immer über der Temperatur der Hauptgärung liegen. Nur so vergärt die Probe schneller und der Abfüllzeitpunkt, wichtig vor allem beim Grünschlauchen, kann bestimmt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
@@ -190,6 +205,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnSWSchnellgaerverlauf">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;Messfehler&lt;/span&gt; von Bierspindel und Refraktometer und berechnet den korrekten Restextrakt anhand der aktuell gemessenen Temperatur.&lt;/p&gt;&lt;p&gt;Bei Messung des Extraktgehalts eines alkoholhaltigen Jungbiers mit dem Refraktometer wird der Wert durch den Alkohol verfälscht. Wenn die ursprüngliche Stammwürze bekannt ist, kann man diesen Fehler korrigieren.&lt;/p&gt;&lt;p&gt;Zur Beachtung: Eine höhere Temperatur im Gärgefäß im Vergleich zur Außentemperatur ist während größerer Hefeaktivität um 1°C bis 2°C durchaus üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string notr="true">...</string>
                 </property>
@@ -197,6 +215,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnAddSchnellgaerMessung">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Messung hinzufügen</string>
                 </property>
@@ -217,6 +238,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnDelSchnellgaerMessung">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Messung löschen</string>
                 </property>
@@ -267,6 +291,9 @@
            </property>
            <item>
             <widget class="QTableView" name="tableWidget_Hauptgaerverlauf">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Hauptgärung gibt Auskunft über die Hefearbeit und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeaktivität&lt;/span&gt;. Ziel ist es, den Endvergärungsgrad (EVG) innerhalb der Parameter der Hefe laut Herstellerangaben zu erreichen. Bei einer durchnittlichen Hefe sind dies 70%. Optimale Parameter bedeutet ein Maximum an Wirkungsgrad der jeweiligen Hefe. Werte unterhalb der Hefe-Parameter bedeuten unvergorenen Zucker und haben oft einen Fehlgeschmackzur Folge, der sich süßlich, auch Mstigkeit genannt, bemerkbar macht.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen. Die Werte der Schnellgärprobe werden primär in die genannten Felder eingetragen.&lt;/p&gt;&lt;p&gt;In allen Fällen sind aber die Werte der Hauptgärung bestimmend.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -305,6 +332,9 @@
               </item>
               <item>
                <widget class="DateTimeEdit" name="tbDatumHautgaerprobe">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Uhrzeit&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;So keine manuelle Eingabe erfolgt, übernimmt der Kleine Brauhelfer die Computerzeit.&lt;/p&gt;&lt;p&gt;Über den Pfeil rechts kann die Kalenderfunktion aktiviert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="calendarPopup">
                  <bool>true</bool>
                 </property>
@@ -324,6 +354,9 @@
                   <width>60</width>
                   <height>0</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der alkoholkorrigierte &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; eingegeben. Ist der korrigierte Wert unbekannt, empfiehlt es sich den Button rechts zu nutzen.&lt;/p&gt;&lt;p&gt;Die Korrektur der alkoholbedingten Abweichung lässt sich mit Formeln wie der des US-Amerikaners Sean Terrill auch manuell berechnen. Die Fachliteratur und die Theorieteile von Rezeptesammlungen tauchen hier tief in die Materie ein.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Auf alle Fälle ist im Feld Restextrakt &lt;span style=&quot; font-weight:600;&quot;&gt;nicht direkt&lt;/span&gt; der Wert der Bierspindel einzutragen oder die auf Plato umgerechnete Messung des Refraktometers. Dies führte zu erheblichen Messfehlern und Fehlinterpretationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -370,6 +403,9 @@
                   <height>0</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; der Hauptgärung angegeben.&lt;/p&gt;&lt;p&gt;Üblicherweise soll der vom Hersteller empfohlene &lt;span style=&quot; font-weight:600;&quot;&gt;Temperaturkorridor&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Hefearbeit&lt;/span&gt; eingehalten werden. &lt;/p&gt;&lt;p&gt;Zusätzlich können über eine ausgeklügelte Gärführung bestimmte Aromaprofile von Hefen verstärkt oder abgeschwächt werden. Näheres ist hierzu in der Fachliteratur oder Fachforen in Erfahrung zu bringen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
@@ -402,6 +438,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnSWHauptgaerverlauf">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;Messfehler&lt;/span&gt; von Bierspindel und Refraktometer und berechnet den korrekten Restextrakt anhand der aktuell gemessenen Temperatur.&lt;/p&gt;&lt;p&gt;Bei Messung des Extraktgehalts eines alkoholhaltigen Jungbiers mit dem Refraktometer wird der Wert durch den Alkohol verfälscht. Wenn die ursprüngliche Stammwürze bekannt ist, kann man diesen Fehler korrigieren.&lt;/p&gt;&lt;p&gt;Zur Beachtung: Eine höhere Temperatur im Gärgefäß im Vergleich zur Außentemperatur ist während größerer Hefeaktivität um 1°C bis 2°C durchaus üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string notr="true">...</string>
                 </property>
@@ -409,6 +448,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnAddHauptgaerMessung">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Messung hinzufügen</string>
                 </property>
@@ -429,6 +471,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnDelHauptgaerMessung">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Messung löschen</string>
                 </property>
@@ -475,10 +520,17 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="ComboBox" name="comboBox_GaerungEwzAuswahl"/>
+                  <widget class="ComboBox" name="comboBox_GaerungEwzAuswahl">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat&lt;/span&gt; öffnet die Liste der im Rezept festgelegten Zutaten zur Zugabe. Im Tab Rezept ist dies ebenfalls möglich.&lt;/p&gt;&lt;p&gt;Wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabe&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; nicht ausgeführt, kann später der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;p&gt;In den Tabs &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; und im &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; ist der Zeitpunkt der Gabe und Entnahme eingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btnGaerungEwzZugeben">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabe&lt;/span&gt; einer Zutat mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;Im Tab Rezept kann man im Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten &lt;/span&gt;ebenfalls Zutaten zugeben (und entnehmen).&lt;/p&gt;&lt;p&gt;Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;zugeben &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;entnehmen&lt;/span&gt; vergessen, kann später der Sud nicht als abgefüllt markiert werden. In den Tabs Rezept und Spickzettel ist der Zeitpunkt der Gabe und Entnahme festgehalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="text">
                     <string>zugeben</string>
                    </property>
@@ -542,10 +594,17 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="ComboBox" name="comboBox_GaerungEwzAuswahlEntnahme"/>
+                  <widget class="ComboBox" name="comboBox_GaerungEwzAuswahlEntnahme">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; öffnet die Liste der im Rezept festgelegten Zutaten zur Gärung.&lt;/p&gt;&lt;p&gt;Entnommende Zutaten müssen hier ausgewählt und bestätigt werden. Im Tab Rezept ist dies ebenfalls möglich. Wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabe&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; nicht ausgeführt, kann später der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;p&gt;In den Tabs &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; und im &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; ist der Zeitpunkt der Gabe und Entnahme eingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btnGaerungEwzEntnehmen">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; einer Zutat mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;Im Tab Rezept kann man im Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten &lt;/span&gt;ebenfalls Zutaten zugeben (und entnehmen).&lt;/p&gt;&lt;p&gt;Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;zugeben &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;entnehmen&lt;/span&gt; vergessen, kann später der Sud nicht als abgefüllt markiert werden. In den Tabs Rezept und Spickzettel ist der Zeitpunkt der Gabe und Entnahme festgehalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
                    <property name="text">
                     <string>entnehmen</string>
                    </property>
@@ -599,6 +658,9 @@
            </property>
            <item>
             <widget class="QTableView" name="tableWidget_Nachgaerverlauf">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nachgärung ist die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Phase &lt;/span&gt;der Gärung. Um den gewünschten Kohlendioxidgehalt im Bier zu erreichen, muss die Nachgärung unter Druck stattfinden. Dazu wird das Jungbier in druckfeste Behälter (Drucktanks, Fässer oder Flaschen) geschlaucht. Von Interesse ist in der Nachgärung nur noch der Druck und gelöstes Kohlendioxid.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -637,6 +699,9 @@
               </item>
               <item>
                <widget class="DateTimeEdit" name="tbDatumNachgaerprobe">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Uhrzeit&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;So keine manuelle Eingabe erfolgt, übernimmt der Kleine Brauhelfer die Computerzeit.&lt;/p&gt;&lt;p&gt;Über den Pfeil rechts kann die Kalenderfunktion aktiviert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="calendarPopup">
                  <bool>true</bool>
                 </property>
@@ -656,6 +721,9 @@
                   <width>60</width>
                   <height>0</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Druck&lt;/span&gt; in bar angegeben.&lt;/p&gt;&lt;p&gt;Die Werte erhält man von einem Fass- oder Flaschenmanometer oder dem &lt;span style=&quot; font-weight:600;&quot;&gt;Manometer&lt;/span&gt; an einer Spundapparatur.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -699,6 +767,9 @@
                   <height>0</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; in Fass, Flasche oder anderem Gebinde angegeben, das bei der Nachgärung eingesetzt wird.&lt;/p&gt;&lt;p&gt;Druck ist temperaturabhängig. Bei niedrigeren Temperaturen bindet sich &lt;span style=&quot; font-weight:600;&quot;&gt;Kohlendioxid&lt;/span&gt; besser im Jungbier.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
@@ -731,6 +802,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnAddNachgaerMessung">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Messung hinzufügen</string>
                 </property>
@@ -751,6 +825,9 @@
               </item>
               <item>
                <widget class="QPushButton" name="btnDelNachgaerMessung">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="text">
                  <string>Messung löschen</string>
                 </property>

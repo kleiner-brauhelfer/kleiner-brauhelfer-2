@@ -50,6 +50,7 @@ Brauhelfer::~Brauhelfer()
 
 bool Brauhelfer::connectDatabase()
 {
+    qInfo() << "Brauhelfer::connectDatabase():" << databasePath();
     if (isConnectedDatabase())
     {
         mSud->unload();
@@ -66,6 +67,7 @@ bool Brauhelfer::connectDatabase()
 
 void Brauhelfer::disconnectDatabase()
 {
+    qInfo("Brauhelfer::disconnectDatabase()");
     mSud->unload();
     mDb->disconnect();
     emit connectionChanged(isConnectedDatabase());
@@ -99,6 +101,7 @@ void Brauhelfer::save()
 {
     if (!readonly() && isDirty())
     {
+        qInfo("Brauhelfer::save()");
         bool wasBlocked = blockSignals(true);
         mDb->save();
         blockSignals(wasBlocked);
@@ -109,11 +112,15 @@ void Brauhelfer::save()
 
 void Brauhelfer::discard()
 {
-    bool wasBlocked = blockSignals(true);
-    mDb->discard();
-    blockSignals(wasBlocked);
-    emit discarded();
-    emit modified();
+    if (isDirty())
+    {
+        qInfo("Brauhelfer::discard()");
+        bool wasBlocked = blockSignals(true);
+        mDb->discard();
+        blockSignals(wasBlocked);
+        emit discarded();
+        emit modified();
+    }
 }
 
 QString Brauhelfer::databasePath() const
@@ -137,6 +144,7 @@ int Brauhelfer::databaseVersion() const
 
 bool Brauhelfer::updateDatabase()
 {
+    qInfo("Brauhelfer::updateDatabase()");
     mDb->update();
     connectDatabase();
     return mDb->version() == supportedDatabaseVersion;

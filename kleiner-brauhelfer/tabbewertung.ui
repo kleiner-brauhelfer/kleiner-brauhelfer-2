@@ -37,8 +37,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>162</width>
-            <height>622</height>
+            <width>158</width>
+            <height>604</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -78,6 +78,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnNeueBewertung">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
           <string>Neue Bewertung</string>
          </property>
@@ -135,6 +138,9 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann das &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertungsdatum&lt;/span&gt; sekundengenau &lt;span style=&quot; font-weight:600;&quot;&gt;manuell&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Das Datum einer einmal angelegten Bewertung kann nicht mehr geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
           </widget>
          </item>
          <item>
@@ -150,6 +156,9 @@
              <width>50</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Heute&lt;/span&gt; wird das Bewertungsdatum übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Heute</string>
@@ -178,6 +187,9 @@
            <width>0</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zur Bewertungssituation und zum Anlass.&lt;/p&gt;&lt;p&gt;Äußere Bedingungen können das Geschmackserleben und damit die Bewertung beeinflussen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -329,6 +341,9 @@
                <width>0</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zu Farbe und Klarheit.&lt;/p&gt;&lt;p&gt;Im Blickpunkt kann die sortentypische Farbe des Bieres stehen.&lt;/p&gt;&lt;p&gt;Beispiele: Ein Altbier wird falsch erscheinen, wenn es strohgelb ist. Ein goldbraunes Pilsbier ist sortenuntypisch. Falsch würde ein Hefeweizen beurteilt, das kristallklar und durchsichtig ist. Neben der Farbe wird also auch die Klarheit des Bieres wahrgenommen.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -482,6 +497,9 @@
                <height>20</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Schaum.&lt;/p&gt;&lt;p&gt;Die Bewertung von Schaum orientiert sich oft anhand der Biersorte.&lt;/p&gt;&lt;p&gt;Beispielsweise haben Starkbiere in der Regel eine gute Schaumhaltbarkeit. Das eigentliche Trinkvergnügen bei einem Starkbier liegt aber im langsamen Schlürfen des Bieres, nicht im sich Durchtrinken durch den malzsüßen Schaum. Beim Pils wiederum ruft der Schaum besonders angenehme taktile Sensationen an Zunge und Gaumen hervor. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -589,6 +607,9 @@
                <width>0</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geruch.&lt;/p&gt;&lt;p&gt;Beispiele: Der Geruch eines Bieres sollte sortentypisch sein, das heißt bei Weizenbieren ist ein fruchtiger bis esteriger Geruch erlaubt, während dieser bei Pils-bieren rundweg abzulehnen ist.&lt;/p&gt;&lt;p&gt;Zuerst riecht man am Schaum. Riecht er angenehm nach Bier, hefig oder nach Fass? Wenn der Schaum muffig, abgestanden oder nach feuchter Pappe riecht, braucht man das Bier gar nicht zu probieren, es ist nicht in Ordnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -705,6 +726,9 @@
                <height>20</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geschmack.&lt;/p&gt;&lt;p&gt;Der Biergeschmack umfasst die bei der Aufnahme des Bieres entstehenden sensorischen Eigenschaften. Es gelten dann ähnliche Beschreibungsmöglichkeiten wie beim Geruch. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -790,6 +814,9 @@
                <height>20</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Antrunk.&lt;/p&gt;&lt;p&gt;Die Sinneswahrnehmungen des ersten Schluckes, dem Antrunk, betreffen Vollmundigkeit und Aroma des Bieres. Die Vollmundigkeit entsteht hauptsächlich durch die Eiweißverbindungen, die durch das Malz ins Bier gelangen.&lt;/p&gt;&lt;p&gt;Zum Beispiel ist ein Doppelbock besser, je vollmundiger es ist, demgegenüber sollte ein Pils „schlank“ bleiben. Ein Bier, bei dem man das Gefühl hat man  müsste sie vor dem Schlucken erst kauen ist sehr vollmundig – es „füllt“ den Mundraum. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -856,6 +883,9 @@
                <width>0</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Haupttrunk.&lt;/p&gt;&lt;p&gt;Nach dem ersten Schluck und der Begutachtung der Schaumhaltbarkeit, kommt ein neues sensorisches Merkmal ins Bewusstsein, die sogenannte Rezenz. Das ist die Spritzigkeit des Bieres, sein Kohlensäuregehalt. &lt;/p&gt;&lt;p&gt;Bei manchen Sorten ist die Rezenz von größerer Bedeutung, so bei hellen hopfenreichen Bieren, ob sie nun Pils oder Export heißen. Bei Anderen ist sie weniger bedeutungsvoll, wie zum Beispiel bei den Starkbieren. &lt;/p&gt;&lt;p&gt;Anmerkung: Ein kohlensäurearmes Bier muss keineswegs schal schmecken, wenn es mit der richtigen Hopfengabe, einer sehr feinen Malzsüße und einer gerade noch wahrnehmbaren Säure ausgestattet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -949,6 +979,9 @@
                <height>20</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Nachtrunk.&lt;/p&gt;&lt;p&gt;Unter Nachtrunk wird der sogenannte Abgang und der bleibende Nachgeschmack verstanden.&lt;/p&gt;&lt;p&gt;Den Nachtrunk empfindet man nach dem Absetzen des Glases, wen sich nach dem ersten kritischen Schluck die Bittere bemerkbar macht. Ein mehr oder weniger feiner oder starker bitterer Geschmack breitet sich nun besonders im Hintergaumen aus.&lt;/p&gt;&lt;p&gt;Er ist der Geschmackseindruck, der am längsten bleibt. Er darf auf keinen Fall „nachhängen“, kratzig, gallig oder hefig wirken. Bei allen Bieren sollte die Bittere zumindest kurz auf dem Gaumen spürbar sein, sie darf aber auch nicht zu stark nachhängen, wenn man zwei-, dreimal schlucken muss. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -1030,6 +1063,9 @@
                <width>0</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Gesamteindruck.&lt;/p&gt;&lt;p&gt;Unter Gesamteindruck wird ein Resümee der Bewertung verstanden. Hierbei werden oft herausstechende Eigenschaften betont, das Bier auf Stilvorgaben hin abgeglichen.&lt;/p&gt;&lt;p&gt;Typsiche Fragen sind: Haben sich die Geschmacks-, Geruchs- und taktilen Komponenten gut miteinander vertragen, war das Bier abgerundet? Hat eine Komponente überwogen, das Bild ins Ungleichgewicht gebracht? Waren die sortentypische Rezenz, die Bittere, das Aroma und die Vollmundigkeit richtig? War eine bestimmte Komponente, die wir nicht als sortentypisch einordnen konnten, dennoch angenehm, interessant, also durchaus erfahrenswert?  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>

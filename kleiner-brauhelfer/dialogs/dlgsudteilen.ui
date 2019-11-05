@@ -23,10 +23,18 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLineEdit" name="lineEdit_Name1"/>
+      <widget class="QLineEdit" name="lineEdit_Name1">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud in zwei Sude aufgeteilt. Dieses Feld bezeichnet die erste Teilmenge. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_Name2"/>
+      <widget class="QLineEdit" name="lineEdit_Name2">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud in zwei Sude aufgeteilt. Dieses Feld bezeichnet die zweite Teilmenge. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum ersten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -46,6 +54,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="maximum">
         <number>100</number>
        </property>
@@ -64,6 +75,9 @@
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Schieberegler kann die prozentuale Verteilung zwischen erstem und zweitem &lt;span style=&quot; font-weight:600;&quot;&gt;Teilsud&lt;/span&gt; bequem verteilt werden. Eine händische Eingabe in die Felder links und rechts erübrigt sich damit.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -89,6 +103,9 @@
          <width>70</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die zweite Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -122,6 +139,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="decimals">
         <number>1</number>
        </property>
@@ -135,6 +155,9 @@
      </item>
      <item row="1" column="4">
       <widget class="DoubleSpinBox" name="doubleSpinBox_Amount2">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die zweite Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="decimals">
         <number>1</number>
        </property>

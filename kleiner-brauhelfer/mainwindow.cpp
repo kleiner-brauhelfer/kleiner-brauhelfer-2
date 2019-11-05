@@ -149,7 +149,18 @@ void MainWindow::restart()
 void MainWindow::save()
 {
     setFocus();
-    bh->save();
+    try
+    {
+        bh->save();
+    }
+    catch (const std::exception& ex)
+    {
+        QMessageBox::critical(this, tr("Fehler beim Speichern"), ex.what());
+    }
+    catch (...)
+    {
+        QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
+    }
 }
 
 void MainWindow::saveSettings()
@@ -262,9 +273,24 @@ void MainWindow::sudModified()
 void MainWindow::loadSud(int sudId)
 {
     if (bh->sud()->id() == sudId)
+    {
         ui->tabMain->setCurrentWidget(ui->tabRezept);
+    }
     else
-        bh->sud()->load(sudId);
+    {
+        try
+        {
+            bh->sud()->load(sudId);
+        }
+        catch (const std::exception& ex)
+        {
+            QMessageBox::critical(this, tr("Fehler beim Laden"), ex.what());
+        }
+        catch (...)
+        {
+            QMessageBox::critical(this, tr("Fehler beim Laden"), tr("Unbekannter Fehler."));
+        }
+    }
 }
 
 void MainWindow::on_tabMain_currentChanged()
@@ -302,7 +328,18 @@ void MainWindow::on_actionSpeichern_triggered()
 void MainWindow::on_actionVerwerfen_triggered()
 {
     setFocus();
-    bh->discard();
+    try
+    {
+        bh->discard();
+    }
+    catch (const std::exception& ex)
+    {
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
+    }
+    catch (...)
+    {
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
+    }
 }
 
 void MainWindow::on_actionBereinigen_triggered()

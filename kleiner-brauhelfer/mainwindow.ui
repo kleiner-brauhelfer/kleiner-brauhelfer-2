@@ -24,61 +24,97 @@
        <number>0</number>
       </property>
       <widget class="TabSudAuswahl" name="tabSudAuswahl">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt; werden die Sude verwaltet und nach dem Stadium ihrer Umsetzung farblich organisiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Sudauswahl</string>
        </attribute>
       </widget>
       <widget class="TabRezept" name="tabRezept">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; werden wird die Rezeptdaten eingetragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Rezept</string>
        </attribute>
       </widget>
       <widget class="TabBraudaten" name="tabBraudaten">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Braudaten&lt;/span&gt; wird der Brautag dokumentiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Braudaten</string>
        </attribute>
       </widget>
       <widget class="TabAbfuellen" name="tabAbfuelldaten">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldaten&lt;/span&gt; wird der Abfülltag dokumentiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Abfülldaten</string>
        </attribute>
       </widget>
       <widget class="TabGaerverlauf" name="tabGaerverlauf">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Gärverlauf &lt;/span&gt;werden die verschiedenen Gärungsverläufe dokumentiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Gärverlauf</string>
        </attribute>
       </widget>
       <widget class="TabZusammenfassung" name="tabZusammenfassung">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel/Zusammenfassung&lt;/span&gt; wird, je nach Stadium, entweder ein Protokoll für den Brautag oder wenn der Sud bereits gebraut wurde, eine Zusammenfassung des Sudes angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Zusammenfassung</string>
        </attribute>
       </widget>
       <widget class="TabEtikette" name="tabEtikette">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Etikette &lt;/span&gt;kann eine Banderole, eine Flaschenhalsbinde oder ein Etikett gestaltet und als PDF ausgegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Etikette</string>
        </attribute>
       </widget>
       <widget class="TabBewertung" name="tabBewertung">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertung&lt;/span&gt; kann der geladene Sude in Abhängigkeit der Reifewoche bewertet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Bewertung</string>
        </attribute>
       </widget>
       <widget class="TabBrauUebersicht" name="tabBrauUebersicht">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Brauübersicht&lt;/span&gt; werden alle gebrauten Sude aufgeführt und können nach diversen Kriterien miteinander verglichen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Brauübersicht</string>
        </attribute>
       </widget>
       <widget class="TabAusruestung" name="tabAusruestung">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; werden grundlegende Parameter für die Berechnungen eingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Ausrüstung</string>
        </attribute>
       </widget>
       <widget class="TabRohstoffe" name="tabRohstoffe">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe &lt;/span&gt;werden alle Zutaten nach Malz, Hopfen, Hefe, Zusätze und Wasser getrennt erfasst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Rohstoffe</string>
        </attribute>
       </widget>
       <widget class="TabDatenbank" name="tabDatenbank">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Datenbank</string>
        </attribute>
@@ -282,7 +318,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Nach Updates überprüfen</string>
+    <string>Auf Updates prüfen</string>
    </property>
   </action>
   <action name="actionHefeZugabeZuruecksetzen">

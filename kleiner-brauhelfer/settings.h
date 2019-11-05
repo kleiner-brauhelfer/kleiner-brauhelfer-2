@@ -20,6 +20,9 @@ public:
     Settings(const QString& dir, QObject *parent = nullptr);
     virtual ~Settings();
 
+    int logLevel();
+    void setLogLevel(int level);
+
     Theme theme() const;
     void setTheme(Theme theme);
 
@@ -80,6 +83,7 @@ public:
 
 private:
     Theme mTheme;
+    int mLogLevel;
 };
 
 #endif // SETTINGS_H

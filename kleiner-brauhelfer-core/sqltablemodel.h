@@ -3,6 +3,7 @@
 
 #include "kleiner-brauhelfer-core_global.h"
 #include <QSqlTableModel>
+#include <QLoggingCategory>
 
 class LIB_EXPORT SqlTableModel : public QSqlTableModel
 {
@@ -267,6 +268,11 @@ private Q_SLOTS:
     void fetchAll();
 
 protected:
+
+    /**
+     * @brief Logging category for all SQL models
+     */
+    static QLoggingCategory loggingCategory;
 
     /**
      * @brief Can be used to define virtual field names to add virtual fields

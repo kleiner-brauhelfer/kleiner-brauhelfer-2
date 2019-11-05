@@ -86,7 +86,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Setzt das Abfülldatum auf die aktuelle Zeit.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt das Abfülldatum auf die aktuelle Zeit im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Jetzt</string>
@@ -109,7 +109,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Dauer der Hauptgärung.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; beginnt mit der Hefezugabe, auch Anstellen genannt. Sie endet mit dem Durchbruch, wenn sich Lücken in der Schaumdecke bilden. Die Schaumdecke selbst iszt zuvor im Stadium der höchsten Hefeaktivität entstanden. Sie wird auch Hochkräusen genannt. Mit dem Durchbruch ist erhöhter Sauerstoffeintrag und Anfälligkeit für Fehlaromen verbunden.&lt;/p&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbier&lt;/span&gt; ist in der Regel bereit für die Nachgärung, wenn der &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad&lt;/span&gt; (EVG) in der Regel zwei Tage unverändert bleibt. Je nach Hefetyp kann die Dauer der Hauptgärung sehr unterschiedlich ausfallen. Bei vielen Hefen geht man von fünf Tagen aus. Dies ist hindoch nur ein Richtwert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -132,7 +132,7 @@
            <item row="0" column="1">
             <widget class="DateTimeEdit" name="tbAbfuelldatum">
              <property name="toolTip">
-              <string>Anfülldatum.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem das Jungbier auf Flasche, Fass oder in ein anderes Behältnis gegeben wird. Mit dem Abfülldatum endet die Hauptgärung und beginnt die Reifung des Bieres, auch Nachgärung genannt. &lt;/p&gt;&lt;p&gt;Es muss sich dabei nicht zwingend um das Endprodukt handeln. Je nach Rezept und Verfahren können bis zum finalen Produkt viele Zwischenschritte nötig sein. Das Feld Abfülldatum kann manuell minutengenau definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -186,7 +186,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Scheinbarer Restextrakt der Schnellgärprobe.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit der Schnellgärprobe kann der zu erwartende Restextrakt und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad (EVG) &lt;/span&gt;des Jungbieres vorab berechnet werden. Die Schnellgärprobe wird immer an einem wärmeren Ort als der eigentliche Sud durchgeführt. Der Trick ist einfach: Hefe vergärt unter wärmeren Bedingungen schneller.&lt;/p&gt;&lt;p&gt;Als Restextrakt wird der unvergorene Zuckergehalt im Bier während und nach der Gärung bezeichnet. Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangzogen. Den Alkoholwert berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -214,7 +214,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Alkoholgehalt in Volumnprozent.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der Alkoholgehalt errechnet sich aus dem tasächlichen Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'sans-serif','Arial'; font-size:16px; color:#404040; background-color:#ffffff;&quot;&gt;Alkohol ist wegen seiner geringen Dichte leicht, somit entspricht sein Anteil in einem Getränk nicht dem auf die Masse bezogenen Gewicht. Die Prozentzahl des Volumenprozents von Alkohol ist daher höher als der Masseanteil. Angegeben wird Alkohol in der Regel mit maximal einer Stelle hinter dem Komma sowie der Abkürzung % vol.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -248,10 +248,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Scheinbarer Restextrakt des Jungbiers.</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) des &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbieres &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit dem Restextrakt des Jungbieres lässt sich beurteilen, ob die Hefe innerhalb erwarteter Parameter arbeitet oder das Bier &lt;span style=&quot; font-weight:600;&quot;&gt;endvergoren &lt;/span&gt;ist.&lt;/p&gt;&lt;p&gt;Änderungen im Gärverlauf trägt der Kleine Brauhelfer hier automatisch ein.&lt;/p&gt;&lt;p&gt;Als &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt &lt;/span&gt;wird der unvergorene Zuckergehalt im Bier während und nach der Gärung bezeichnet. Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangezogen. &lt;/p&gt;&lt;p&gt;Den &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholwert&lt;/span&gt; berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -285,7 +282,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze berechnen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; des Jungbiers aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -328,7 +325,7 @@
            <item row="0" column="1">
             <widget class="QCheckBox" name="cbSchnellgaerprobeAktiv">
              <property name="toolTip">
-              <string>Mithilfe der Schnellgärprobe kann der Endvergärungsgrad während der Gärung bestimmt werden. </string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
@@ -397,7 +394,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Stammwürze berechnen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt &lt;/span&gt;der Schnellgärprobe aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -420,7 +417,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Unter grünschlauchen versteht man das Schlauchen des noch nicht vollständig zu Ende gegorenen Jungbieres am Ende der Hauptgärung.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zeitpunkt für die Nachgärung in der Flasche (Flaschengärung) angezeigt. Im Fachsprech wird dieses Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Grünschlauchen &lt;/span&gt;genannt.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Grünschlachzeitpunkt &lt;/span&gt;wird aus der Stammwürze und der Schnellgärprobe ermittelt. Er liegt geringfügig vor dem Zeitpunkt des endvergorenen Bieres. Der Grünschlauchzeitpunkt nutzt somit eine geringfügige Gäraktiviät, um auf diese Weise Druck und damit Kohlensäure in die Flasche einzutragen, auch Karbonisierung genannt.&lt;/p&gt;&lt;p&gt;Grünschlauchen ist unter Hobbybrauern wegen der berüchtigten &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschenbomben &lt;/span&gt;umstritten. Ein falsch gewählter, verfrühter &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt &lt;/span&gt;birgt die Gefahr explodierender Flaschen mit einem erheblichen Verletzungspotenzial. Beim Grünschlauchen sollte akkurat und umsichtig gearbeitet werden; abweichen von den Berechnungen sollte unterlassen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -494,6 +491,9 @@
            </item>
            <item row="4" column="5">
             <widget class="QLabel" name="label_sevg">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Spindel oder Refraktometer bilden den vergärbaren Extrakt im Bier dar. Dieser Wert muss wegen der unterschiedlichen Dichte von Wasser und Alkohol korrigiert werden. Deswegen spricht man von &amp;quot;Scheinbarer Endvergärungsgrad&amp;quot; (sEVG). Die Angaben aller Hefehersteller beziehen sich immer auf den sEVG als Richtwert&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Scheinbarer Endvergärungsgrad (sEVG)</string>
              </property>
@@ -508,7 +508,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Tatsächlicher Endvergärungsgrad.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des Restextraktes, der durch die unterschiedliche Dichte von Wasser und Alkohl nötig wird. Er wird vornehmlich zur Berechnung des Alkoholgehaltes herangezogen.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -542,7 +542,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Scheinbarer Endvergärungsgrad.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbare Endvergärungsgrad  (sEVG) &lt;/span&gt;beschreibt die Menge des vergärbaren Restextraktes in Prozent der Stammwürze. Der sEVG ist eine wichtige Größe, um die Maischeführung und die Hefearbeit und damit das zu erwartende Jungbier beurteilen zu können.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;In der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischeführung&lt;/span&gt; bedeutet beispielsweise eine längere Maltoserast mehr vergärbaren Zucker und damit einen höheren sEVG, eine kürze Maltoserast einen niedrigeren sEVG; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefearbeit&lt;/span&gt; wird zwischen hochvergärenden und niedrig vergärenden Hefen unterschieden. Letztere bauen weniger Zucker ab.&lt;/p&gt;&lt;p&gt;Somit bedeutet ein hoher sEVG einen höheren Alkoholgehalt und weniger Restsüße. Diese Biere sind naturgemäß trockener.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den sEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -654,7 +654,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Benötigte Menge an Speise.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; für den gewünschten Karbonisierungsgrad an, wie er im Tab Rezept im Feld Druck definiert wurde.&lt;/p&gt;&lt;p&gt;Unter Speise wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmenge&lt;/span&gt; des Sudes verstanden, die vor dem Anstellen mit Hefe zurückbehalten wurde. Sie ist bis zur Zugabe nach der Hauptgärung keimfrei zu lagern. Am besten im Kühlschrank oder im Gefrierfach.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -679,7 +679,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Abgefüllte Menge.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge inklusive Speise&lt;/span&gt; angegeben. Der Wert hängt unmittelbar mit der Jungbier- und Speisemenge zusammen, kann aber auch separat definiert werden. Werden hier Werte eingegeben, beeinflusst dies wiederum die Berechnung der Jungbiermenge.&lt;/p&gt;&lt;p&gt;Idealerweise setzt sich die Jungbiermenge aus der verfügbaren Speisemenge und der Jungbiermenge zusammen und muss nicht eigens definiert werden. So aber zwischen Speiseabfüllung und Speisegabe Verluste aufgetreten sind, kann hier der Gesamtwert eingegeben werden und der Verlust wird entsprechend ausgewiesen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -796,7 +796,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Jungbiermenge.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; bezeichnet die Menge an Bier nach dem Abfüllen und dem Abtrennen der Hefe und anderer Zutaten während des Gärverlaufs.&lt;/p&gt;&lt;p&gt;Die Jungbiermenge ist zudem ein Indikator für die Sudhausarbeit und die korrekte Umsetzung und Berechnung aller Schritte im Brauprozess.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -824,7 +824,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Verlust seit Anstellen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; nach dem Abfüllen auf das Reife- oder Gärgefäß.&lt;/p&gt;&lt;p&gt;Der Wert berechnet sich anhand der verfügbaren Speisemenge.&lt;/p&gt;&lt;p&gt;Ferner ist der Wert  durch Hefe oder Hopfen in der Nachgärung beeinflusst, aber auch durch die entnommene Speisemenge..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -851,6 +851,9 @@
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_81">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Anhand des Wertes wird der Verlust an Jungbier sowie die Speisemenge und die Jungbiermenge inklusive Speise berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Jungbiermenge</string>
              </property>
@@ -866,7 +869,7 @@
            <item row="1" column="1">
             <widget class="QCheckBox" name="cbSpunden">
              <property name="toolTip">
-              <string>Keine Zucker- oder Speisegabe.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wird das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Spunden&lt;/span&gt; angehakt, berechnet der Kleinen Brauhelfer keine Zucker- oder Speisegabe und blendet die entsprechenden Felder aus.&lt;/p&gt;&lt;p&gt;Unter Spunden wird die Karbonisierung mit CO₂ auf Gebinde wie Fässer oder Kegs verstanden.&lt;/p&gt;&lt;p&gt;Durch das auf den gewünschten Druck einstellbare Spundungsventil ist keine exkate Berechnung von Zucker oder Speise nötig. Oft wird gespundetes Bier mit einer Gasflasche zusätzlich zwangskarbonisiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="layoutDirection">
               <enum>Qt::RightToLeft</enum>
@@ -878,6 +881,9 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupKarbonisierung">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Karbonisierung&lt;/span&gt;. Von Karbonisierung spricht man vor allem, wenn es um Flaschenreifung geht.&lt;/p&gt;&lt;p&gt;Allgemeiner wird aber darunter aber das Einstellen des Drucks im Gebinde verbunden mit der Spritzigkeit, auch Rezens genannt, verstanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="title">
            <string>Karbonisierung</string>
           </property>
@@ -907,7 +913,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Zuckerfaktor.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die vor dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speis ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;Speise ist ein Verfahren, um den Kohlensäuregehalt im Bier und damit das Prickeln im Bier zu erhöhen. Dieses Prickeln wird oft auch als Rezens beschrieben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Eine übermäßige Speisegabe kann im günstigen Fall das Bier nur überschäumen, im ungünstigen das Gebinde als sogenannte Flaschenbombe explodieren lassen. Bei einer hohen Karbonisierung sollte daher der zulässige Druck der Flasche berücksichtigt werden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle für Fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -948,7 +954,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Verfügbare Menge an Speise.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Speisemenge zur Karbonisierung definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -981,6 +987,9 @@
                <width>60</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1068,7 +1077,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Benötigte Menge an Speise pro Flasche.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die vor dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speis ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;Speise ist ein Verfahren, um den Kohlensäuregehalt im Bier und damit das Prickeln im Bier zu erhöhen. Dieses Prickeln wird oft auch als Rezens beschrieben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Eine übermäßige Speisegabe kann im günstigen Fall das Bier nur überschäumen, im ungünstigen das Gebinde als sogenannte Flaschenbombe explodieren lassen. Bei einer hohen Karbonisierung sollte daher der zulässige Druck der Flasche berücksichtigt werden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle für Fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1116,7 +1125,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Benötigte Menge an Zucker.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend vom gewünschten Karbonisierungsgrad, gibt der Kleine Brauhelfer hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe&lt;/span&gt; für die gesamte Jungbiermenge an.&lt;/p&gt;&lt;p&gt;Zucker und Speise vergären unterschiedlich, daher werden sie getrennt berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Die errechnete Menge sollte nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1148,7 +1157,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Benötigte Menge an Speise.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die Speisemenge berechnet sich aus der Stammwürze vor dem Anstellen, dem gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;p&gt;Zucker und Speise vergären unterschiedlich, daher werden sie getrennt berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Die errechnete Speisemenge sollte nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1223,7 +1232,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Benötigte Menge an Zucker pro Flasche.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Zucker wird in der Regel dem Jungbier nach der Hauptgärung hinzugegeben, um die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; einzuleiten. Da das Bier zu diesem Zeitpunkt weitgehend duchgegoren ist, wird Zucker &lt;span style=&quot; font-weight:600;&quot;&gt;Kohlensäure&lt;/span&gt; umgewandelt und erhöht damit den Druck. Damit erst bekommt das Bier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Spritzigkeit.&lt;/span&gt; Dieses Prickeln wird oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Rezens&lt;/span&gt; beschrieben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Eine übermäßige Zuckergabe kann im günstigen Fall das Bier nur überschäumen, im ungünstigen das Gebinde als sogenannte Flaschenbombe explodieren lassen. Bei einer hohen Karbonisierung sollte daher der zulässige Druck der Flasche berücksichtigt werden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle für Fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1267,6 +1276,9 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_4">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Spundung&lt;/span&gt;. Unter Spundung wird die &lt;span style=&quot; font-weight:600;&quot;&gt;künstliche Druckerzeugung&lt;/span&gt; mittels Kohlensäure CO₂ in größeren Gebinden wie Fässern verstanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="title">
            <string>Spundungsdruck</string>
           </property>
@@ -1297,7 +1309,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Spundungsdruck.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ist die Temperatur des Jungbieres links eingegeben, wird hier der erforderlcihe &lt;span style=&quot; font-weight:600;&quot;&gt;Spundungsdruck&lt;/span&gt; für das Fass oder ein anderes Gebinde für die Reidung unter Druck angegeben.&lt;/p&gt;&lt;p&gt;Unter Spundungsdruck versteht man den Druck, um &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbier&lt;/span&gt; mit in einem Gebinde wie einem Fass zu karbonisieren. Der Spundungsdruck kann hier im Gegensatz zur Flasche durch ein Spundventil eingestellt werden, so dass zu viel Speise oder Zucker kein Unglück hervorrufen, wie es Flaschenbomben zu eigen ist. Der Spundungsdruck ist temperaturabhängig. Je niedriger diese ist, um so mehr Kohlendioxid CO₂ kann im Jungbier gelöst werden. Spundungsdruck stellt die Rezens eines Bieres ein.&lt;/p&gt;&lt;p&gt;Im Gegensatz zur einer natürlichen Gärung mit Speise, Resthefe, Zucker, besteht bei Fässern und ähnlichen Gebinden die Möglihckiet der &lt;span style=&quot; font-weight:600;&quot;&gt;Zwangskarbonisierung&lt;/span&gt;. Dabei wird CO₂  per Gasflasche zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1338,7 +1350,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Temperatur des Jungbiers.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wir die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbieres beim Abfüllen eingegeben. Anhand der Temperatur rechnet der Kleine Brauhelfer den benötigten Spundungsdruck auf das Fass oder ähnliches Gebinde aus, um die im Rezept festgelegte Karbonisierung CO₂/l zu erreichen.&lt;/p&gt;&lt;p&gt;Je kühler das Bier gelagert wird, um so weniger Druck ist nötig, da sich bei niedrigeren Temperaturen Kohlensäure im Bier besser löst. Umgekehrt heißt dies, dass sich bei einer kalten Lagerung der Druck erhöht, sobald der Inhalt erwärmt wird.&lt;/p&gt;&lt;p&gt;Bei hochkarbonisierten Bieren kann dies später ein Problem darstellen, das sich mindestens durch einen aufschäumenden Charakter bemerkbar macht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1424,6 +1436,9 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_3">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten &lt;/span&gt;des aktuellen Sudes.&lt;/p&gt;&lt;p&gt;Die Geamtkosten setzen sich zusammen aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten&lt;/span&gt; (Malz, Hopfen, Hefe, Weitere Zutaten, Abfüllung, Marketing) und den im Tab Ausrüstung festgelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; (Gas, Wasser, Strom, Abschlag Geräte, Miete etc.) im Tab Ausrüstung.&lt;/p&gt;&lt;p&gt;Die Sudkosten können sowohl im Tab Abfülldaten als auch im Tab Braudaten festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="title">
            <string>Sonstiges</string>
           </property>
@@ -1440,7 +1455,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Kosten.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten gesamt&lt;/span&gt; werden die Gesamtkosten eines Sudes aus Rohstoffen, Energie und Verbrauchsmaterialien verstanden.&lt;/p&gt;&lt;p&gt;Der hier angegebene Wert ergibt sich sich aus den reinen Kosten für Malz, Hopfen, Hefe und Weitere Zutaten, wie sie links in &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten &lt;/span&gt;festgelegt werden und den im Tab Ausrüstung definierten Betriebskosten (Gas, Wasser, Strom etc.).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1557,7 +1572,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Nebenkosten.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Als Nebenkosten werden alle Kosten außer den Materialkosten Betriebskossind unter anderem Strom, Wasser, Gas, aber auch Wertverlust, Abschreibung, so dies berechnet werden soll. Nebenkosten sind keine Rohstoffkosten wie Malz, Hopfen und Weitere Zutaten. Nebenkosten werden als konstante durchschnittliche Verbrauchskosten im Reiter Ausrüstung definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1597,7 +1612,7 @@
           <item>
            <widget class="QPushButton" name="btnSudAbgefuellt">
             <property name="toolTip">
-             <string>Sud als abgefüllt markieren.</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Der Button ist nur dann aktiv, wenn vorher im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt; der Sud als gebraut markiert wurde.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud abgefüllt ausgegraut und inaktiv. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Der Kleine Brauhelfer sperrt diese Funktion, bis nicht alle Zugaben zur Gärung eingebracht und fallweise entnommen wurden.&lt;/p&gt;&lt;p&gt;Über das Menü Sud kann die Aktion rückgängig gemacht werden. In diesem Fall sind alle Zugaben erneut als Gabe auszuführen und gegebenbenfalls zu entnehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Sud abgefüllt</string>
@@ -1607,7 +1622,7 @@
           <item>
            <widget class="QPushButton" name="btnSudVerbraucht">
             <property name="toolTip">
-             <string>Sud als verbraucht markieren.</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Im Tab Sudauswahl wird dies farbig markiert.&lt;/p&gt;&lt;p&gt;Der Button ist nur dann aktiv, wenn vorher der Button &lt;span style=&quot; font-weight:600;&quot;&gt;Sud abgefüllt&lt;/span&gt; erfolgreich ausgeführt wurde.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud verbraucht ausgegraut und inaktiv. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Der Kleine Brauhelfer sperrt durch diese Funktion die Möglichkeit der Bewertung. Über das Menü Sud kann die Aktion rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Sud verbraucht</string>
@@ -1617,7 +1632,7 @@
           <item>
            <widget class="QPushButton" name="btnSudTeilen">
             <property name="toolTip">
-             <string>Sud in zwei teile aufteilen. Alle bisher eingegebenen Daten werden übernommen.</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; hälftig &lt;span style=&quot; font-weight:600;&quot;&gt;aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Diese Methode bietet sich an, wenn man aus einem Sud unterschiedlich ausbauen will. Dies können unterschiedliche Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die&lt;span style=&quot; font-weight:600;&quot;/&gt;Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen hierzu eine gute Adresse.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Sud teilen</string>

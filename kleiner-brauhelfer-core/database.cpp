@@ -5,38 +5,35 @@
 #include "brauhelfer.h"
 
 Database::Database() :
-    mDb(QSqlDatabase::addDatabase("QSQLITE", "kbh")),
     mVersion(-1)
 {
-    if (mDb.open())
-        mDb.close();
+    QSqlDatabase::addDatabase("QSQLITE", "kbh");
 }
 
 void Database::createTables(Brauhelfer* bh)
 {
-    modelSud = new ModelSud(bh, mDb);
-    modelRasten = new ModelRasten(bh, mDb);
-    modelMalzschuettung = new ModelMalzschuettung(bh, mDb);
-    modelHopfengaben = new ModelHopfengaben(bh, mDb);
-    modelHefegaben = new ModelHefegaben(bh, mDb);
-    modelWeitereZutatenGaben = new ModelWeitereZutatenGaben(bh, mDb);
-    modelSchnellgaerverlauf = new ModelSchnellgaerverlauf(bh, mDb);
-    modelHauptgaerverlauf = new ModelHauptgaerverlauf(bh, mDb);
-    modelNachgaerverlauf = new ModelNachgaerverlauf(bh, mDb);
-    modelBewertungen = new ModelBewertungen(bh, mDb);
-    modelMalz = new ModelMalz(bh, mDb);
-    modelHopfen = new ModelHopfen(bh, mDb);
-    modelHefe = new ModelHefe(bh, mDb);
-    modelWeitereZutaten = new ModelWeitereZutaten(bh, mDb);
-    modelAnhang = new SqlTableModel(bh, mDb);
-    modelAusruestung = new ModelAusruestung(bh, mDb);
-    modelGeraete = new SqlTableModel(bh, mDb);
-    modelWasser = new ModelWasser(bh, mDb);
-    modelFlaschenlabel = new SqlTableModel(bh, mDb);
-    modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, mDb);
+    QSqlDatabase db = QSqlDatabase::database("kbh");
+    modelSud = new ModelSud(bh, db);
+    modelRasten = new ModelRasten(bh, db);
+    modelMalzschuettung = new ModelMalzschuettung(bh, db);
+    modelHopfengaben = new ModelHopfengaben(bh, db);
+    modelHefegaben = new ModelHefegaben(bh, db);
+    modelWeitereZutatenGaben = new ModelWeitereZutatenGaben(bh, db);
+    modelSchnellgaerverlauf = new ModelSchnellgaerverlauf(bh, db);
+    modelHauptgaerverlauf = new ModelHauptgaerverlauf(bh, db);
+    modelNachgaerverlauf = new ModelNachgaerverlauf(bh, db);
+    modelBewertungen = new ModelBewertungen(bh, db);
+    modelMalz = new ModelMalz(bh, db);
+    modelHopfen = new ModelHopfen(bh, db);
+    modelHefe = new ModelHefe(bh, db);
+    modelWeitereZutaten = new ModelWeitereZutaten(bh, db);
+    modelAnhang = new SqlTableModel(bh, db);
+    modelAusruestung = new ModelAusruestung(bh, db);
+    modelGeraete = new SqlTableModel(bh, db);
+    modelWasser = new ModelWasser(bh, db);
+    modelFlaschenlabel = new SqlTableModel(bh, db);
+    modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, db);
     modelSud->createConnections();
-    if (mDb.open())
-        mDb.close();
 }
 
 void Database::setTables()
@@ -70,9 +67,7 @@ void Database::setTables()
 
 Database::~Database()
 {
-    QString connectionName = mDb.connectionName();
     disconnect();
-    QSqlDatabase::removeDatabase(connectionName);
     delete modelSud;
     delete modelRasten;
     delete modelMalzschuettung;
@@ -93,6 +88,7 @@ Database::~Database()
     delete modelWasser;
     delete modelFlaschenlabel;
     delete modelFlaschenlabelTags;
+    QSqlDatabase::removeDatabase("kbh");
 }
 
 bool Database::connect(const QString &dbPath, bool readonly)
@@ -101,12 +97,15 @@ bool Database::connect(const QString &dbPath, bool readonly)
     {
         if (QFile::exists(dbPath))
         {
-            mDb.setDatabaseName(dbPath);
+            QSqlDatabase db = QSqlDatabase::database("kbh");
+            db.close();
+            db.setDatabaseName(dbPath);
+            db.open();
             if (readonly)
-                mDb.setConnectOptions("QSQLITE_OPEN_READONLY");
-            if (mDb.open())
+                db.setConnectOptions("QSQLITE_OPEN_READONLY");
+            if (db.open())
             {
-                QSqlQuery query = sqlExec("SELECT db_Version FROM Global");
+                QSqlQuery query = sqlExec(db, "SELECT db_Version FROM Global");
                 if (query.first())
                 {
                     int version = query.value(0).toInt();
@@ -148,14 +147,13 @@ void Database::disconnect()
         modelWasser->clear();
         modelFlaschenlabel->clear();
         modelFlaschenlabelTags->clear();
-        mDb.close();
         mVersion = -1;
     }
 }
 
 bool Database::isConnected() const
 {
-    return mDb.isOpen();
+    return mVersion != -1;
 }
 
 bool Database::isDirty() const
@@ -259,10 +257,10 @@ void Database::discard()
     modelSud->revertAll();
 }
 
-QSqlQuery Database::sqlExec(const QString &query)
+QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
 {
-    QSqlQuery sqlQuery = mDb.exec(query);
-    QSqlError lastError = mDb.lastError();
+    QSqlQuery sqlQuery = db.exec(query);
+    QSqlError lastError = db.lastError();
     if (lastError.isValid())
     {
         QString str = "Query: " + query +
@@ -276,49 +274,50 @@ QSqlQuery Database::sqlExec(const QString &query)
 void Database::update()
 {
     QSqlQuery query;
+    QSqlDatabase db = QSqlDatabase::database("kbh");
     int version = mVersion;
     try
     {
         if (version == 21)
         {
             ++version;
-            mDb.transaction();
-            sqlExec("ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
-            sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
-            mDb.commit();
+            db.transaction();
+            sqlExec(db, "ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
         }
 
         if (version == 22)
         {
             ++version;
-            mDb.transaction();
-            sqlExec("CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
-            sqlExec("CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
-            sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
-            mDb.commit();
+            db.transaction();
+            sqlExec(db, "CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
+            sqlExec(db, "CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
         }
 
         if (version == 23)
         {
             ++version;
-            mDb.transaction();
-            sqlExec("ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
-            sqlExec(QString("UPDATE Global SET db_Version=%1").arg(version));
-            mDb.commit();
+            db.transaction();
+            sqlExec(db, "ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
         }
 
         if (version == 24)
         {
             version = 2000;
-            mDb.transaction();
+            db.transaction();
 
             // Ausruestung & Geraete
             //  - neue Spalte 'Typ'
             //                'KorrekturMenge'
             //  - Spalte gelöscht 'AnlagenID'
-            sqlExec("UPDATE Geraete SET AusruestungAnlagenID=(SELECT rowid FROM Ausruestung WHERE AnlagenID=AusruestungAnlagenID)");
-            sqlExec("ALTER TABLE Ausruestung RENAME TO TempTable");
-            sqlExec("CREATE TABLE Ausruestung ("
+            sqlExec(db, "UPDATE Geraete SET AusruestungAnlagenID=(SELECT rowid FROM Ausruestung WHERE AnlagenID=AusruestungAnlagenID)");
+            sqlExec(db, "ALTER TABLE Ausruestung RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Ausruestung ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT,"
                 "Typ INTEGER DEFAULT 0,"
@@ -334,7 +333,7 @@ void Database::update()
                 "Sudpfanne_Durchmesser REAL DEFAULT 0,"
                 "Sudpfanne_MaxFuellhoehe REAL DEFAULT 0,"
                 "Kosten REAL DEFAULT 0)");
-            sqlExec("INSERT INTO Ausruestung ("
+            sqlExec(db, "INSERT INTO Ausruestung ("
                 "Name,"
                 "Sudhausausbeute,"
                 "Verdampfungsziffer,"
@@ -361,18 +360,18 @@ void Database::update()
                 "Sudpfanne_MaxFuellhoehe,"
                 "Kosten"
                 " FROM TempTable");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Wasser
             //  - neue Spalte 'Name'
-            sqlExec("ALTER TABLE Wasser RENAME TO TempTable");
-            sqlExec("CREATE TABLE Wasser ("
+            sqlExec(db, "ALTER TABLE Wasser RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Wasser ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT,"
                 "Calcium REAL DEFAULT 0,"
                 "Magnesium REAL DEFAULT 0,"
                 "Saeurekapazitaet REAL DEFAULT 0)");
-            sqlExec("INSERT INTO Wasser ("
+            sqlExec(db, "INSERT INTO Wasser ("
                 "Calcium,"
                 "Magnesium,"
                 "Saeurekapazitaet"
@@ -381,13 +380,13 @@ void Database::update()
                 "Magnesium,"
                 "Saeurekapazitaet"
                 " FROM TempTable");
-            sqlExec("UPDATE Wasser SET Name='Profil 1'");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "UPDATE Wasser SET Name='Profil 1'");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Hefe
             //  - Spalte gelöscht 'Enheiten'
-            sqlExec("ALTER TABLE Hefe RENAME TO TempTable");
-            sqlExec("CREATE TABLE Hefe ("
+            sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
                 "Beschreibung TEXT,"
                 "Menge INTEGER DEFAULT 0,"
@@ -404,7 +403,7 @@ void Database::update()
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
                 "Link TEXT)");
-            sqlExec("INSERT INTO Hefe ("
+            sqlExec(db, "INSERT INTO Hefe ("
                 "Beschreibung,"
                 "Menge,"
                 "Preis,"
@@ -437,13 +436,13 @@ void Database::update()
                 "Mindesthaltbar,"
                 "Link"
                 " FROM TempTable");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Hopfengaben
             //  - Spalte gelöscht 'Aktiv'
             //                    'erg_Hopfentext'
-            sqlExec("ALTER TABLE Hopfengaben RENAME TO TempTable");
-            sqlExec("CREATE TABLE Hopfengaben ("
+            sqlExec(db, "ALTER TABLE Hopfengaben RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Hopfengaben ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
@@ -453,7 +452,7 @@ void Database::update()
                 "Alpha REAL DEFAULT 0,"
                 "Pellets INTEGER DEFAULT 0,"
                 "Vorderwuerze INTEGER DEFAULT 0)");
-            sqlExec("INSERT INTO Hopfengaben ("
+            sqlExec(db, "INSERT INTO Hopfengaben ("
                 "SudID,"
                 "Name,"
                 "Prozent,"
@@ -472,18 +471,18 @@ void Database::update()
                 "Pellets,"
                 "Vorderwuerze"
                 " FROM TempTable");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Hefegaben
             //  - neue Tabelle
-            sqlExec("CREATE TABLE Hefegaben ("
+            sqlExec(db, "CREATE TABLE Hefegaben ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
                 "Menge INTEGER DEFAULT 0,"
                 "Zugegeben INTEGER DEFAULT 0,"
                 "ZugabeNach INTEGER DEFAULT 0)");
-            sqlExec("INSERT INTO Hefegaben ("
+            sqlExec(db, "INSERT INTO Hefegaben ("
                 "SudID,"
                 "Name,"
                 "Menge,"
@@ -499,26 +498,26 @@ void Database::update()
             //  - Spalte gelöscht 'Zeitpunkt_von'
             //                    'Zeitpunkt_bis'
             //  - neue Spalte 'ZugabeNach'
-            sqlExec("ALTER TABLE WeitereZutatenGaben ADD ZugabeNach INTEGER DEFAULT 0");
-            query = sqlExec("SELECT ID, SudID, Zeitpunkt_von, Typ FROM WeitereZutatenGaben");
+            sqlExec(db, "ALTER TABLE WeitereZutatenGaben ADD ZugabeNach INTEGER DEFAULT 0");
+            query = sqlExec(db, "SELECT ID, SudID, Zeitpunkt_von, Typ FROM WeitereZutatenGaben");
             while (query.next())
             {
                 int id = query.value(0).toInt();
                 int sudId = query.value(1).toInt();
                 QDateTime zeitpunkt = query.value(2).toDateTime();
                 int typ = query.value(3).toInt();
-                QSqlQuery query2 = sqlExec(QString("SELECT Braudatum FROM Sud WHERE ID=%1").arg(sudId));
+                QSqlQuery query2 = sqlExec(db, QString("SELECT Braudatum FROM Sud WHERE ID=%1").arg(sudId));
                 if (query2.first())
                 {
                     QDateTime braudatum = query2.value(0).toDateTime();
                     qint64 tage = braudatum.daysTo(zeitpunkt);
-                    sqlExec(QString("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
+                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
                 }
                 if (typ < 0)
-                    sqlExec(QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(EWZ_Typ_Hopfen).arg(id));
+                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(EWZ_Typ_Hopfen).arg(id));
             }
-            sqlExec("ALTER TABLE WeitereZutatenGaben RENAME TO TempTable");
-            sqlExec("CREATE TABLE WeitereZutatenGaben ("
+            sqlExec(db, "ALTER TABLE WeitereZutatenGaben RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE WeitereZutatenGaben ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
@@ -535,7 +534,7 @@ void Database::update()
                 "Entnahmeindex INTEGER DEFAULT 0,"
                 "Zugabestatus INTEGER DEFAULT 0)"
                 );
-            sqlExec("INSERT INTO WeitereZutatenGaben ("
+            sqlExec(db, "INSERT INTO WeitereZutatenGaben ("
                 "SudID,"
                 "Name,"
                 "Menge,"
@@ -566,20 +565,20 @@ void Database::update()
                 "Entnahmeindex,"
                 "Zugabestatus"
                 " FROM TempTable");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Rasten
             //  - Spalte gelöscht 'RastAktiv'
             //  - Spalte unbenannt 'RastTemp' -> 'Temp'
             //                     'RastDauer' -> 'Dauer'
-            sqlExec("ALTER TABLE Rasten RENAME TO TempTable");
-            sqlExec("CREATE TABLE Rasten ("
+            sqlExec(db, "ALTER TABLE Rasten RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Rasten ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
                 "Temp REAL DEFAULT 0,"
                 "Dauer REAL DEFAULT 0)");
-            sqlExec("INSERT INTO Rasten ("
+            sqlExec(db, "INSERT INTO Rasten ("
                 "SudID,"
                 "Name,"
                 "Temp,"
@@ -590,7 +589,7 @@ void Database::update()
                 "RastTemp,"
                 "RastDauer"
                 " FROM TempTable");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Sud
             //  - neue Spalte 'Wasserprofil'
@@ -612,8 +611,8 @@ void Database::update()
             //  - Spalte unbenannt 'erg_S_Gesammt' -> 'erg_S_Gesamt'
             //                     'erg_W_Gesammt' -> 'erg_W_Gesamt'
             //                     'AuswahlBrauanlageName' -> 'Anlage'
-            sqlExec("ALTER TABLE Sud ADD Status INTEGER DEFAULT 0");
-            query = sqlExec("SELECT ID, BierWurdeGebraut, BierWurdeAbgefuellt, BierWurdeVerbraucht FROM Sud");
+            sqlExec(db, "ALTER TABLE Sud ADD Status INTEGER DEFAULT 0");
+            query = sqlExec(db, "SELECT ID, BierWurdeGebraut, BierWurdeAbgefuellt, BierWurdeVerbraucht FROM Sud");
             while (query.next())
             {
                 int id = query.value(0).toInt();
@@ -633,10 +632,10 @@ void Database::update()
                         }
                     }
                 }
-                sqlExec(QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(status).arg(id));
+                sqlExec(db, QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(status).arg(id));
             }
-            sqlExec("ALTER TABLE Sud RENAME TO TempTable");
-            sqlExec("CREATE TABLE Sud ("
+            sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Sud ("
                 "ID INTEGER PRIMARY KEY,"
                 "Sudname TEXT,"
                 "Sudnummer INTEGER DEFAULT 0,"
@@ -685,7 +684,7 @@ void Database::update()
                 "erg_Alkohol REAL DEFAULT 0,"
                 "AusbeuteIgnorieren INTEGER DEFAULT 0,"
                 "MerklistenID INTEGER DEFAULT 0)");
-            sqlExec("INSERT INTO Sud ("
+            sqlExec(db, "INSERT INTO Sud ("
                 "ID,"
                 "Sudname,"
                 "Sudnummer,"
@@ -782,34 +781,34 @@ void Database::update()
                 "AusbeuteIgnorieren,"
                 "MerklistenID"
                 " FROM TempTable");
-            sqlExec("UPDATE Sud SET Wasserprofil='Profil 1'");
-            sqlExec("DROP TABLE TempTable");
+            sqlExec(db, "UPDATE Sud SET Wasserprofil='Profil 1'");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // IgnorMsgID
             //  - Tabelle gelöscht
-            sqlExec("DROP TABLE IgnorMsgID");
+            sqlExec(db, "DROP TABLE IgnorMsgID");
 
             // Rastauswahl
             //  - Tabelle gelöscht
-            sqlExec("DROP TABLE Rastauswahl");
+            sqlExec(db, "DROP TABLE Rastauswahl");
 
             // Global
             //  - Spalte gelöscht 'db_NeuBerechnen'
-            sqlExec("DROP TABLE Global");
-            sqlExec("CREATE TABLE Global (db_Version INTEGER)");
-            sqlExec(QString("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));
+            sqlExec(db, "DROP TABLE Global");
+            sqlExec(db, "CREATE TABLE Global (db_Version INTEGER)");
+            sqlExec(db, QString("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));
 
-            mDb.commit();
+            db.commit();
         }
     }
     catch (const std::exception& ex)
     {
-        mDb.rollback();
+        db.rollback();
         throw ex;
     }
     catch (...)
     {
-        mDb.rollback();
+        db.rollback();
         throw std::runtime_error("unknown error");
     }
 }

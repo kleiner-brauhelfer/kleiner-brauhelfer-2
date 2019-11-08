@@ -36,7 +36,6 @@ private slots:
 
 private:
     void setNearestIndex();
-    unsigned int levenshtein_distance(const QString& s1, const QString& s2);
 
 private:
     Ui::DlgRohstoffAustausch *ui;

@@ -171,8 +171,12 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             mValues.insert("Ausbeute", index.sibling(index.row(), 2).data().toDouble());
             mValues.insert("EBC", index.sibling(index.row(), 3).data().toDouble());
         }
+        accept();
 	}
-    accept();
+    else
+    {
+        reject();
+    }
 }
 
 void DlgRohstoffVorlage::slot_save()

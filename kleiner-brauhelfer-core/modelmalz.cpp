@@ -126,7 +126,7 @@ bool ModelMalz::setDataExt(const QModelIndex &index, const QVariant &value)
 void ModelMalz::defaultValues(QVariantMap &values) const
 {
     if (!values.contains("Farbe"))
-        values.insert("Farbe", 0);
+        values.insert("Farbe", 1);
     if (!values.contains("MaxProzent"))
         values.insert("MaxProzent", 100);
     if (!values.contains("Menge"))

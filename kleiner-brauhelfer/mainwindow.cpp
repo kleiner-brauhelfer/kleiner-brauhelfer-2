@@ -42,7 +42,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 
     gSettings->beginGroup("MainWindow");
-    mDefaultGeometry = saveGeometry();
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
     restoreState(gSettings->value("state").toByteArray());
@@ -148,6 +147,7 @@ void MainWindow::restart()
 
 void MainWindow::save()
 {
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
     try
     {
@@ -161,6 +161,7 @@ void MainWindow::save()
     {
         QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
     }
+    QGuiApplication::restoreOverrideCursor();
 }
 
 void MainWindow::saveSettings()
@@ -190,10 +191,7 @@ void MainWindow::restoreView(bool onUpdate)
 {
     if (!onUpdate)
     {
-        QPoint position = pos();
-        restoreGeometry(mDefaultGeometry);
         restoreState(mDefaultState);
-        move(position);
     }
     ui->tabSudAuswahl->restoreView();
     ui->tabBrauUebersicht->restoreView();
@@ -327,6 +325,7 @@ void MainWindow::on_actionSpeichern_triggered()
 
 void MainWindow::on_actionVerwerfen_triggered()
 {
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
     try
     {
@@ -340,6 +339,7 @@ void MainWindow::on_actionVerwerfen_triggered()
     {
         QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
     }
+    QGuiApplication::restoreOverrideCursor();
 }
 
 void MainWindow::on_actionBereinigen_triggered()

@@ -946,8 +946,14 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("ID", getNextId());
     if (!values.contains("Erstellt"))
         values.insert("Erstellt", QDateTime::currentDateTime());
+    if (!values.contains("Sudname"))
+        values.insert("Sudname", "Sudname");
     if (!values.contains("Sudnummer"))
         values.insert("Sudnummer", 0);
+    if (!values.contains("Anlage") && bh->modelAusruestung()->rowCount() == 1)
+        values.insert("Anlage", bh->modelAusruestung()->data(0, "Name"));
+    if (!values.contains("Wasserprofil") && bh->modelWasser()->rowCount() == 1)
+        values.insert("Wasserprofil", bh->modelWasser()->data(0, "Name"));
     if (!values.contains("Menge"))
         values.insert("Menge", 20);
     if (!values.contains("SW"))
@@ -964,10 +970,6 @@ void ModelSud::defaultValues(QVariantMap &values) const
         values.insert("TemperaturJungbier", 20.0);
     if (!values.contains("Status"))
         values.insert("Status", Sud_Status_Rezept);
-    if (!values.contains("Anlage") && bh->modelAusruestung()->rowCount() == 1)
-        values.insert("Anlage", bh->modelAusruestung()->data(0, "Name"));
-    if (!values.contains("Wasserprofil") && bh->modelWasser()->rowCount() == 1)
-        values.insert("Wasserprofil", bh->modelWasser()->data(0, "Name"));
 }
 
 QVariantMap ModelSud::copyValues(int row) const

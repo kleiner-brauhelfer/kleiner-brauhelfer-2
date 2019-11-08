@@ -83,7 +83,6 @@ public:
 
 private:
     Theme mTheme;
-    int mLogLevel;
 };
 
 #endif // SETTINGS_H

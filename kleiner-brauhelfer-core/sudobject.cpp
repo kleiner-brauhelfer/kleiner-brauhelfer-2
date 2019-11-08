@@ -57,7 +57,7 @@ void SudObject::load(int id)
 
         mLoading = true;
         if (id != -1)
-            qInfo() << "SudObject::load():" << id << "(" << getSudname() << ")";
+            qInfo() << "SudObject::load():" << getSudname() << "(" << id << ")";
         else
             qInfo() << "SudObject::unload()";
         modelRasten()->setSourceModel(bh->modelRasten());
@@ -230,6 +230,7 @@ QVariant SudObject::getValue(const QString &fieldName) const
 
 bool SudObject::setValue(const QString &fieldName, const QVariant &value)
 {
+    qInfo() << "SudObject::setValue():" << fieldName << "=" << value.toString();
     return bh->modelSud()->setData(mRowSud, fieldName, value);
 }
 

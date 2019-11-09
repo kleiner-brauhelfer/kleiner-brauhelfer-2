@@ -31,15 +31,12 @@
     </widget>
    </item>
    <item>
-    <widget class="QTableView" name="tableView">
+    <widget class="TableView" name="tableView">
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden Rohstoffvorlagen aufgeführt. Oben angegebene Quellen sind dabei  gute Adressen für die Recherche im deutschsprachigen und angelsächsischen Raum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
@@ -134,6 +131,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

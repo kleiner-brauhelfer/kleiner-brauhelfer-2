@@ -71,6 +71,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         model->setSourceModel(bh->modelHopfen());
         model->setColumnMenge(bh->modelHopfen()->fieldIndex("Menge"));
         model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, bh->sud()->modelHopfengaben()->fieldIndex("erg_Menge")));
+        model->sort(bh->modelHopfen()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(bh->modelHopfen()->fieldIndex("Beschreibung"));
         ui->cbZutat->setEnabled(true);

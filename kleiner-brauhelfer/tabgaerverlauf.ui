@@ -57,15 +57,12 @@
             <number>4</number>
            </property>
            <item>
-            <widget class="QTableView" name="tableWidget_Schnellgaerverlauf">
+            <widget class="TableView" name="tableWidget_Schnellgaerverlauf">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe dient zum einen zur Bestimmung des Abfüllzeitpunktes beim Grünschlauchen und zum anderen zur Bestimmung der Zucker- oder Speisegabe zur Nachgärung wie der Hefeaktivität allgemein.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten bei aktivierter Schnellgärprobe in den Felder für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen.&lt;/p&gt;&lt;p&gt;Ist die Schnellgärprobe aktiv, werden ihre Werte im Kleinen Brauhelfer vor der Hauptgärung bevorzugt. Damit ermöglicht sie Prognosen über den Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
-             </property>
-             <property name="selectionMode">
-              <enum>QAbstractItemView::SingleSelection</enum>
              </property>
              <property name="selectionBehavior">
               <enum>QAbstractItemView::SelectRows</enum>
@@ -290,15 +287,12 @@
             <number>4</number>
            </property>
            <item>
-            <widget class="QTableView" name="tableWidget_Hauptgaerverlauf">
+            <widget class="TableView" name="tableWidget_Hauptgaerverlauf">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Hauptgärung gibt Auskunft über die Hefearbeit und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeaktivität&lt;/span&gt;. Ziel ist es, den Endvergärungsgrad (EVG) innerhalb der Parameter der Hefe laut Herstellerangaben zu erreichen. Bei einer durchnittlichen Hefe sind dies 70%. Optimale Parameter bedeutet ein Maximum an Wirkungsgrad der jeweiligen Hefe. Werte unterhalb der Hefe-Parameter bedeuten unvergorenen Zucker und haben oft einen Fehlgeschmackzur Folge, der sich süßlich, auch Mstigkeit genannt, bemerkbar macht.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen. Die Werte der Schnellgärprobe werden primär in die genannten Felder eingetragen.&lt;/p&gt;&lt;p&gt;In allen Fällen sind aber die Werte der Hauptgärung bestimmend.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
-             </property>
-             <property name="selectionMode">
-              <enum>QAbstractItemView::SingleSelection</enum>
              </property>
              <property name="selectionBehavior">
               <enum>QAbstractItemView::SelectRows</enum>
@@ -657,15 +651,12 @@
             <number>4</number>
            </property>
            <item>
-            <widget class="QTableView" name="tableWidget_Nachgaerverlauf">
+            <widget class="TableView" name="tableWidget_Nachgaerverlauf">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nachgärung ist die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Phase &lt;/span&gt;der Gärung. Um den gewünschten Kohlendioxidgehalt im Bier zu erreichen, muss die Nachgärung unter Druck stattfinden. Dazu wird das Jungbier in druckfeste Behälter (Drucktanks, Fässer oder Flaschen) geschlaucht. Von Interesse ist in der Nachgärung nur noch der Druck und gelöstes Kohlendioxid.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
-             </property>
-             <property name="selectionMode">
-              <enum>QAbstractItemView::SingleSelection</enum>
              </property>
              <property name="selectionBehavior">
               <enum>QAbstractItemView::SelectRows</enum>
@@ -848,19 +839,24 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
    <class>DateTimeEdit</class>
    <extends>QDateTimeEdit</extends>
    <header>widgets/datetimeedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>WdgDiagramView</class>

@@ -86,6 +86,7 @@ SOURCES += \
     widgets/doublespinbox.cpp \
     widgets/spinbox.cpp \
     widgets/svgview.cpp \
+    widgets/tableview.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbewertung.cpp \
     widgets/wdgdiagramview.cpp \
@@ -150,6 +151,7 @@ HEADERS += \
     widgets/doublespinbox.h \
     widgets/spinbox.h \
     widgets/svgview.h \
+    widgets/tableview.h \
     widgets/wdganhang.h \
     widgets/wdgbewertung.h \
     widgets/wdgdiagramview.h \

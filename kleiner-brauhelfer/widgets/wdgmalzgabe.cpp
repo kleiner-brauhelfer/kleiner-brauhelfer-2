@@ -61,6 +61,7 @@ void WdgMalzGabe::checkEnabled(bool force)
         model->setSourceModel(bh->modelMalz());
         model->setColumnMenge(bh->modelMalz()->fieldIndex("Menge"));
         model->setIndexMengeBenoetigt(bh->sud()->modelMalzschuettung()->index(mIndex, bh->sud()->modelMalzschuettung()->fieldIndex("erg_Menge")));
+        model->sort(bh->modelMalz()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(bh->modelMalz()->fieldIndex("Beschreibung"));
         ui->cbZutat->setEnabled(true);

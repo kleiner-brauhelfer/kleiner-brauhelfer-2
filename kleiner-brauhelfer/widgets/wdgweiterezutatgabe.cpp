@@ -90,6 +90,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
             model->setSourceModel(bh->modelHopfen());
             model->setColumnMenge(bh->modelHopfen()->fieldIndex("Menge"));
             model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, bh->sud()->modelHopfengaben()->fieldIndex("erg_Menge")));
+            model->sort(bh->modelHopfen()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
             ui->cbZutat->setModel(model);
             ui->cbZutat->setModelColumn(bh->modelHopfen()->fieldIndex("Beschreibung"));
         }
@@ -98,6 +99,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
             model->setSourceModel(bh->modelWeitereZutaten());
             model->setColumnMenge(bh->modelWeitereZutaten()->fieldIndex("MengeGramm"));
             model->setIndexMengeBenoetigt(bh->sud()->modelWeitereZutatenGaben()->index(mIndex, bh->sud()->modelWeitereZutatenGaben()->fieldIndex("erg_Menge")));
+            model->sort(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
             ui->cbZutat->setModel(model);
             ui->cbZutat->setModelColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
         }

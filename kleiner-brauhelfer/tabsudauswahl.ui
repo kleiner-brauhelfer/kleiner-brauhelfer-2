@@ -183,7 +183,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTableView" name="tableSudauswahl">
+        <widget class="TableView" name="tableSudauswahl">
          <property name="contextMenuPolicy">
           <enum>Qt::CustomContextMenu</enum>
          </property>
@@ -362,6 +362,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
   <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>

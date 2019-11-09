@@ -77,6 +77,7 @@ void WdgHefeGabe::checkEnabled(bool force)
         model->setSourceModel(bh->modelHefe());
         model->setColumnMenge(bh->modelHefe()->fieldIndex("Menge"));
         model->setIndexMengeBenoetigt(bh->sud()->modelHefegaben()->index(mIndex, bh->sud()->modelHefegaben()->fieldIndex("Menge")));
+        model->sort(bh->modelHefe()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(bh->modelHefe()->fieldIndex("Beschreibung"));
     }

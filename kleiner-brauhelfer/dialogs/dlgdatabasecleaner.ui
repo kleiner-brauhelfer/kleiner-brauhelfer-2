@@ -54,7 +54,7 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="QTableView" name="tableView">
+     <widget class="TableView" name="tableView">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>2</horstretch>
@@ -74,7 +74,7 @@
        <bool>false</bool>
       </attribute>
      </widget>
-     <widget class="QTableView" name="tableViewIds">
+     <widget class="TableView" name="tableViewIds">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>1</horstretch>
@@ -86,9 +86,6 @@
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::NoSelection</enum>
       </property>
       <property name="wordWrap">
        <bool>false</bool>
@@ -122,6 +119,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

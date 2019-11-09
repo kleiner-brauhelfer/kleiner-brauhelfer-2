@@ -630,7 +630,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     QDomElement element;
     QDomElement Anteil;
 
-    QDomProcessingInstruction header = doc.createProcessingInstruction( "xml", "version=\"1.0\" encoding=\"UTF-8\"" );
+    QDomProcessingInstruction header = doc.createProcessingInstruction( "xml", "version=\"1.0\" encoding=\"ISO-8859-1\"" );
     doc.appendChild(header);
 
     QDomElement Rezepte = doc.createElement("RECIPES");
@@ -655,12 +655,17 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     Rezept.appendChild(element);
 
     element = doc.createElement("BREWER");
-    text = doc.createTextNode("kleiner-brauhelfer");
+    text = doc.createTextNode("kleiner-brauhelfer-2");
     element.appendChild(text);
     Rezept.appendChild(element);
 
     element = doc.createElement("BATCH_SIZE");
     text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, "Menge").toDouble(), 'f', 1));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement("BOIL_SIZE");
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, "MengeSollKochbeginn").toDouble(), 'f', 1));
     element.appendChild(text);
     Rezept.appendChild(element);
 
@@ -953,7 +958,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("YIELD");
-        text = doc.createTextNode("80");
+        text = doc.createTextNode("100");
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1178,6 +1183,54 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         }
     }
 
+    QDomElement waters = doc.createElement("WATERS");
+    Rezept.appendChild(waters);
+
+    element = doc.createElement("VERSION");
+    text = doc.createTextNode(BeerXmlVersion);
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("NAME");
+    text = doc.createTextNode(bh->modelSud()->data(sudRow, "Anlage").toString());
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("AMOUNT");
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, "erg_W_Gesamt").toDouble(), 'f', 1));
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("CALCIUM");
+    text = doc.createTextNode("0.0");
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("BICARBONATE");
+    text = doc.createTextNode("0.0");
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("SULFATE");
+    text = doc.createTextNode("0.0");
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("CHLORIDE");
+    text = doc.createTextNode("0.0");
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("SODIUM");
+    text = doc.createTextNode("0.0");
+    element.appendChild(text);
+    waters.appendChild(element);
+
+    element = doc.createElement("MAGNESIUM");
+    text = doc.createTextNode("0.0");
+    element.appendChild(text);
+    waters.appendChild(element);
+
     QDomElement mash = doc.createElement("MASH");
     Rezept.appendChild(mash);
 
@@ -1192,7 +1245,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     mash.appendChild(element);
 
     element = doc.createElement("GRAIN_TEMP");
-    text = doc.createTextNode("20");
+    text = doc.createTextNode("18");
     element.appendChild(text);
     mash.appendChild(element);
 
@@ -1265,7 +1318,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     if (!file.open(QFile::ReadWrite | QFile::Text))
       return false;
     QTextStream out(&file);
-    out.setCodec("UTF-8");
+    out.setCodec("ISO 8859-1");
 
     QString strXml;
     QTextStream xml(&strXml);

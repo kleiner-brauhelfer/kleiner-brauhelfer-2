@@ -46,10 +46,9 @@ public:
 
 private:
     void setTables();
-    QSqlQuery sqlExec(const QString &query);
+    QSqlQuery sqlExec(QSqlDatabase &db, const QString &query);
 
 private:
-    QSqlDatabase mDb;
     ModelSud* modelSud;
     ModelRasten* modelRasten;
     ModelMalzschuettung* modelMalzschuettung;

@@ -35,6 +35,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->beginGroup("TabAbfuellen");
 
+    ui->splitter->setSizes({500, 500});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 

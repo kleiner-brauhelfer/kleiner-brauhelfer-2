@@ -58,7 +58,6 @@ private:
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
-    QByteArray mDefaultGeometry;
     int mTabIndexDatenbank;
 };
 

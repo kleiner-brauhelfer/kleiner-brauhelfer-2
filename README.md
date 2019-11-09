@@ -49,6 +49,9 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ## Änderungen & Erweiterungen
 
 ### Version 2.0.0beta4 (in Entwicklung)
+- Neu: Tooltips für die meisten Eingabefelder (Danke rakader)
+- Neu: Spickzettel zeigt auch Kochdauer von Hopfengaben und weitere Zutaten
+- Neu: Logdatei, wenn Einstellung LogLevel (1-4) in kleiner-brauhelfer-2.ini gesetzt wird
 - Fix: Eingabe über Buttons für "Stammwürze Kochende", "Stammwürze Anstellen", "Restextrakt Schnellgärprobe" und "Restextrakt Jungbier"
 
 ### Version 2.0.0beta3

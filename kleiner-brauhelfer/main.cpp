@@ -86,7 +86,11 @@ static bool connectDatabase()
         {
             // check database version
             int version = bh->databaseVersion();
-            if (version > bh->supportedDatabaseVersion)
+            if (version < 0)
+            {
+                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Die Datenbank ist ungultig."));
+            }
+            else if (version > bh->supportedDatabaseVersion)
             {
                 QMessageBox::critical(nullptr, QApplication::applicationName(),
                                       QObject::tr("Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.").arg(version));
@@ -259,26 +263,40 @@ int main(int argc, char *argv[])
     else
         gSettings = new Settings();
 
-    // install logger
-    if (gSettings->logLevel() > 0)
+    // logging
+    int logLevel = gSettings->logLevel();
+    if (logLevel > 0)
     {
-        logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
-        qInstallMessageHandler(messageHandlerFileOutput);
-        switch (gSettings->logLevel())
+        if (logLevel < 1000)
+        {
+            //log in file
+            logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
+            qInstallMessageHandler(messageHandlerFileOutput);
+        }
+        else
+        {
+            // log in console
+           logLevel -= 1000;
+        }
+        switch (logLevel)
         {
         case 1:
             QLoggingCategory::setFilterRules("*.debug=false");
+            break;
+        case 2:
             break;
         case 3:
             QLoggingCategory::setFilterRules("SqlTableModel.info=true");
             break;
         case 4:
+        default:
             QLoggingCategory::setFilterRules("SqlTableModel.info=true\nSqlTableModel.debug=true");
             break;
         }
     }
 
     qInfo("--- Application start ---");
+    qInfo() << "Version:" << QCoreApplication::applicationVersion();
 
     // install translation
     QTranslator translatorQt;

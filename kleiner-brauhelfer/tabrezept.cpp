@@ -229,11 +229,8 @@ void TabRezept::checkEnabled()
 
 void TabRezept::checkRohstoffe()
 {
-    QWidget *wdg = ui->tabZutaten->currentWidget();
-    DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
-    dlg.setSud(bh->sud()->getSudname());
+    QWidget *currentWdg = ui->tabZutaten->currentWidget();
 
-    dlg.setModel(bh->modelMalz(), bh->modelMalz()->fieldIndex("Beschreibung"));
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
         WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
@@ -255,6 +252,9 @@ void TabRezept::checkRohstoffe()
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabMalz);
+            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
+            dlg.setSud(bh->sud()->getSudname());
+            dlg.setModel(bh->modelMalz(), bh->modelMalz()->fieldIndex("Beschreibung"));
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
@@ -279,7 +279,7 @@ void TabRezept::checkRohstoffe()
         }
     }
 
-    dlg.setModel(bh->modelHopfen(), bh->modelHopfen()->fieldIndex("Beschreibung"));
+
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
         WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
@@ -301,6 +301,9 @@ void TabRezept::checkRohstoffe()
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabHopfen);
+            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
+            dlg.setSud(bh->sud()->getSudname());
+            dlg.setModel(bh->modelHopfen(), bh->modelHopfen()->fieldIndex("Beschreibung"));
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
@@ -326,7 +329,7 @@ void TabRezept::checkRohstoffe()
         }
     }
 
-    dlg.setModel(bh->modelHefe(), bh->modelHefe()->fieldIndex("Beschreibung"));
+
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
     {
         WdgHefeGabe* wdg = static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget());
@@ -348,6 +351,9 @@ void TabRezept::checkRohstoffe()
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabHefe);
+            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
+            dlg.setSud(bh->sud()->getSudname());
+            dlg.setModel(bh->modelHefe(), bh->modelHefe()->fieldIndex("Beschreibung"));
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
@@ -397,11 +403,13 @@ void TabRezept::checkRohstoffe()
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabWeitereZutaten);
-            dlg.setRohstoff(name);
+            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
+            dlg.setSud(bh->sud()->getSudname());
             if (typ == EWZ_Typ_Hopfen)
                 dlg.setModel(bh->modelHopfen(), bh->modelHopfen()->fieldIndex("Beschreibung"));
             else
                 dlg.setModel(bh->modelWeitereZutaten(), bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
+            dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
                 if (dlg.importieren())
@@ -437,7 +445,7 @@ void TabRezept::checkRohstoffe()
         }
     }
 
-    ui->tabZutaten->setCurrentWidget(wdg);
+    ui->tabZutaten->setCurrentWidget(currentWdg);
 }
 
 void TabRezept::updateValues()

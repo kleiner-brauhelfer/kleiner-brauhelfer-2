@@ -7,20 +7,12 @@ Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
 {
     initTheme();
-
-    beginGroup("General");
-    mLogLevel = value("LogLevel", "0").toInt();
-    endGroup();
 }
 
 Settings::Settings(const QString& dir, QObject *parent) :
     QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
     initTheme();
-
-    beginGroup("General");
-    mLogLevel = value("LogLevel", "0").toInt();
-    endGroup();
 }
 
 Settings::~Settings()
@@ -182,14 +174,16 @@ void Settings::initTheme()
 
 int Settings::logLevel()
 {
-    return mLogLevel;
+    beginGroup("General");
+    int level = value("LogLevel", "0").toInt();
+    endGroup();
+    return level;
 }
 
 void Settings::setLogLevel(int level)
 {
-    mLogLevel = level;
     beginGroup("General");
-    setValue("LogLevel", mLogLevel);
+    setValue("LogLevel", level);
     endGroup();
 }
 

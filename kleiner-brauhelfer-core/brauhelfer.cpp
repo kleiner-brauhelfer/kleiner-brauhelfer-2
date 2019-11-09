@@ -58,7 +58,9 @@ bool Brauhelfer::connectDatabase()
     }
     if (mDb->connect(databasePath(), readonly()))
     {
-        mDb->select();
+        qInfo() << "Brauhelfer::connectDatabase() version:" << databaseVersion();
+        if (mDb->version() == supportedDatabaseVersion)
+            mDb->select();
         mSud->unload();
     }
     emit connectionChanged(isConnectedDatabase());
@@ -67,10 +69,13 @@ bool Brauhelfer::connectDatabase()
 
 void Brauhelfer::disconnectDatabase()
 {
-    qInfo("Brauhelfer::disconnectDatabase()");
-    mSud->unload();
-    mDb->disconnect();
-    emit connectionChanged(isConnectedDatabase());
+    if (isConnectedDatabase())
+    {
+        qInfo("Brauhelfer::disconnectDatabase()");
+        mSud->unload();
+        mDb->disconnect();
+        emit connectionChanged(isConnectedDatabase());
+    }
 }
 
 bool Brauhelfer::isConnectedDatabase() const

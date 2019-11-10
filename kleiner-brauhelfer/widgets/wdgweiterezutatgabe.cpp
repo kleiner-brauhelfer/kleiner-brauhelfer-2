@@ -17,6 +17,9 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(int index, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->tbMenge->setErrorOnLimit(true);
+    ui->tbMengeTotal->setErrorOnLimit(true);
+
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -278,9 +281,6 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         else if (einheit == EWZ_Einheit_mg)
             benoetigt *= 1000;
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
-
-        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
-        ui->tbMengeTotal->setError(ui->tbMengeTotal->value() == 0.0);
 
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (status)

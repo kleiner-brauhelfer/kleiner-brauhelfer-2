@@ -134,7 +134,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Datenbank</string>
+     <string>Datei</string>
     </property>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>

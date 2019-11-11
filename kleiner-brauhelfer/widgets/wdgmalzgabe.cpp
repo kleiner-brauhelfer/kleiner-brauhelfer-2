@@ -18,6 +18,8 @@ WdgMalzGabe::WdgMalzGabe(int index, QWidget *parent) :
     ui->btnKorrektur->setPalette(gSettings->paletteErrorButton);
     ui->btnKorrektur->setVisible(false);
 
+    ui->tbMenge->setErrorOnLimit(true);
+
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -127,7 +129,6 @@ void WdgMalzGabe::updateValues(bool full)
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
         ui->tbMengeProzent->setError( ui->tbMengeProzent->value() == 0.0);
-        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
 
         int max = bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "MaxProzent").toInt();
         if (ui->tbMengeProzent->value() > max)

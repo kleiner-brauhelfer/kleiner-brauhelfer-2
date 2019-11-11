@@ -192,7 +192,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelMalz.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelMalz.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelMalz.rowCount() > 0)
             {
                 ist = modelMalz.data(0, "Menge").toDouble();
@@ -222,7 +222,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelHopfen.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelHopfen.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHopfen.rowCount() > 0)
             {
                 ist = modelHopfen.data(0, "Menge").toDouble();
@@ -252,7 +252,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelHefe.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelHefe.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHefe.rowCount() > 0)
             {
                 ist = modelHefe.data(0, "Menge").toDouble();
@@ -282,7 +282,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
@@ -335,7 +335,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
@@ -388,7 +388,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
@@ -441,7 +441,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();
@@ -494,7 +494,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(eintrag.Name));
+            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, "MengeGramm").toDouble();

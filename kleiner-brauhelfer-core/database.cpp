@@ -12,7 +12,9 @@ Database::Database() :
 
 void Database::createTables(Brauhelfer* bh)
 {
-    QSqlDatabase db = QSqlDatabase::database("kbh");
+    QSqlDatabase db = QSqlDatabase::database("kbh", false);
+    if (!db.isValid())
+        throw std::runtime_error("Database connection is invalid.");
     modelSud = new ModelSud(bh, db);
     modelRasten = new ModelRasten(bh, db);
     modelMalzschuettung = new ModelMalzschuettung(bh, db);
@@ -97,7 +99,9 @@ bool Database::connect(const QString &dbPath, bool readonly)
     {
         if (QFile::exists(dbPath))
         {
-            QSqlDatabase db = QSqlDatabase::database("kbh");
+            QSqlDatabase db = QSqlDatabase::database("kbh", false);
+            if (!db.isValid())
+                throw std::runtime_error("Database connection is invalid.");
             db.close();
             db.setDatabaseName(dbPath);
             db.open();
@@ -274,7 +278,9 @@ QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
 void Database::update()
 {
     QSqlQuery query;
-    QSqlDatabase db = QSqlDatabase::database("kbh");
+    QSqlDatabase db = QSqlDatabase::database("kbh", false);
+    if (!db.isValid())
+        throw std::runtime_error("Database connection is invalid.");
     int version = mVersion;
     try
     {

@@ -52,8 +52,10 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Tooltips für die meisten Eingabefelder (Danke rakader)
 - Neu: Spickzettel zeigt auch Kochdauer von Hopfengaben und weitere Zutaten
 - Neu: Logdatei, wenn Einstellung LogLevel (1-4) in kleiner-brauhelfer-2.ini gesetzt wird
+- Neu: Tabellen können in den Clipboard kopiert werden
 - Fix: Eingabe über Buttons für "Stammwürze Kochende", "Stammwürze Anstellen", "Restextrakt Schnellgärprobe" und "Restextrakt Jungbier"
 - Fix: Bei BeerXml Export werden alle Pflichtfelder exportiert
+- Fix: Keine Rohstoffangabe im Sudinfo bei Rohstoffen mit Klammern
 
 ### Version 2.0.0beta3
 - Neu: Funktion "Eingabefelder entsperren"

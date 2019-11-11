@@ -39,6 +39,7 @@ TabRezept::TabRezept(QWidget *parent) :
 
     gSettings->beginGroup("TabRezept");
 
+    ui->splitter->setSizes({500, 500, 500});
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 1);
     ui->splitter->setStretchFactor(2, 1);
@@ -279,7 +280,6 @@ void TabRezept::checkRohstoffe()
         }
     }
 
-
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
         WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
@@ -328,7 +328,6 @@ void TabRezept::checkRohstoffe()
             }
         }
     }
-
 
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
     {

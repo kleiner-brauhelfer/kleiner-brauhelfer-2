@@ -23,6 +23,8 @@ WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
             .arg(gSettings->HefeTypOgUgBackgrounds[1].name())
             .arg(gSettings->HefeTypOgUgBackgrounds[2].name()));
 
+    ui->tbMenge->setErrorOnLimit(true);
+
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -147,8 +149,6 @@ void WdgHefeGabe::updateValues(bool full)
                 benoetigt += model->data(i, "Menge").toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
-
-        ui->tbMenge->setError(ui->tbMenge->value() == 0);
     }
 }
 

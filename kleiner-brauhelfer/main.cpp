@@ -12,14 +12,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
-// Modus, um Datenbankupdates zu testen.
-// In diesem Modus wird eine Kopie der Datenbank erstellt.
-// Diese Kopie wird aktualisiert ohne die ursprüngliche Datenbank zu verändern.
-//#define MODE_TEST_UPDATE
-
-#if defined(QT_NO_DEBUG) && defined(MODE_TEST_UPDATE)
-#error MODE_TEST_UPDATE in release build defined.
-#endif
 
 // global variables
 extern Brauhelfer* bh;
@@ -80,8 +72,12 @@ static bool connectDatabase()
 {
     while (true)
     {
+        // global brauhelfer class
+        if (bh)
+            delete bh;
+        bh = new Brauhelfer(gSettings->databasePath());
+
         // connect
-        bh->setDatabasePath(gSettings->databasePath());
         if (bh->connectDatabase())
         {
             // check database version
@@ -110,15 +106,6 @@ static bool connectDatabase()
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
-                  #ifdef MODE_TEST_UPDATE
-                    QFile fileOrg(gSettings->databasePath());
-                    QFile fileUpdate(gSettings->databasePath() + "_update.sqlite");
-                    fileUpdate.remove();
-                    if (fileOrg.copy(fileUpdate.fileName()))
-                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-                    bh->setDatabasePath(fileUpdate.fileName());
-                    bh->connectDatabase();
-                  #endif
                     try
                     {
                         if (bh->updateDatabase())
@@ -250,6 +237,8 @@ static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &c
 
 int main(int argc, char *argv[])
 {
+    int ret = EXIT_FAILURE;
+
     QApplication a(argc, argv);
 
     // set application name, organization and version
@@ -306,50 +295,62 @@ int main(int argc, char *argv[])
     if (!translatorQt.isEmpty())
         a.installTranslator(&translatorQt);
 
-    // copy resources
-    copyResources();
-
-    // global brauhelfer class
-    bh = new Brauhelfer();
-
-    // run application
-    int ret = EXIT_FAILURE;
-    do
+    try
     {
-        if (connectDatabase())
+        // copy resources
+        copyResources();
+
+        // run application
+        do
         {
-            MainWindow w(nullptr);
-            a.setStyle(QStyleFactory::create(gSettings->style()));
-            a.setPalette(gSettings->palette);
-            if (!gSettings->useSystemFont())
-                w.setFont(gSettings->font);
-            w.show();
-            try
+            if (connectDatabase())
             {
-                ret = a.exec();
+                MainWindow w(nullptr);
+                a.setStyle(QStyleFactory::create(gSettings->style()));
+                a.setPalette(gSettings->palette);
+                if (!gSettings->useSystemFont())
+                    w.setFont(gSettings->font);
+                w.show();
+                try
+                {
+                    ret = a.exec();
+                }
+                catch (const std::exception& ex)
+                {
+                    qCritical() << "Program error:" << ex.what();
+                    QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), ex.what());
+                    ret = EXIT_FAILURE;
+                }
+                catch (...)
+                {
+                    qCritical() << "Program error: unknown";
+                    QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
+                    ret = EXIT_FAILURE;
+                }
             }
-            catch (const std::exception& ex)
+            else
             {
-                qCritical() << "Program error:" << ex.what();
-                QMessageBox::critical(nullptr, QObject::tr("Programm Fehler"), ex.what());
-                ret = EXIT_FAILURE;
-            }
-            catch (...)
-            {
-                qCritical() << "Program error: unknown";
-                QMessageBox::critical(nullptr, QObject::tr("Programm Fehler"), QObject::tr("Unbekannter Fehler."));
                 ret = EXIT_FAILURE;
             }
         }
-        else
-        {
-            ret = EXIT_FAILURE;
-        }
+        while(ret == 1000);
     }
-    while(ret == 1000);
+    catch (const std::exception& ex)
+    {
+        qCritical() << "Program error:" << ex.what();
+        QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), ex.what());
+        ret = EXIT_FAILURE;
+    }
+    catch (...)
+    {
+        qCritical() << "Program error: unknown";
+        QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
+        ret = EXIT_FAILURE;
+    }
 
     // clean up
-    delete bh;
+    if (bh)
+        delete bh;
     delete gSettings;
 
     qInfo("--- Application end (%d)---", ret);

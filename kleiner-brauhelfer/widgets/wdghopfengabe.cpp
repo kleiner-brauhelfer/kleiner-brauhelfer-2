@@ -29,6 +29,8 @@ WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
     ui->btnMengeKorrektur->setVisible(false);
     ui->btnAnteilKorrektur->setVisible(false);
 
+    ui->tbMenge->setErrorOnLimit(true);
+
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -175,7 +177,6 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
 
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
-        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
 
         ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
 

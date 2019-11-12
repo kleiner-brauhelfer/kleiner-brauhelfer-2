@@ -60,8 +60,10 @@ bool Brauhelfer::connectDatabase()
     {
         qInfo() << "Brauhelfer::connectDatabase() version:" << databaseVersion();
         if (mDb->version() == supportedDatabaseVersion)
+        {
             mDb->select();
-        mSud->unload();
+            mSud->init();
+        }
     }
     emit connectionChanged(isConnectedDatabase());
     return isConnectedDatabase();

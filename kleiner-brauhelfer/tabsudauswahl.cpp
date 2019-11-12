@@ -223,42 +223,39 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     QMenu menu(this);
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
 
-    if (!ui->tableSudauswahl->horizontalHeader()->rect().contains(pos))
-    {
-        QModelIndex index = ui->tableSudauswahl->indexAt(pos);
+    QModelIndex index = ui->tableSudauswahl->indexAt(pos);
 
-        if (model->data(index.row(), "MerklistenID").toBool())
+    if (model->data(index.row(), "MerklistenID").toBool())
+    {
+        action = new QAction(tr("Sud vergessen"), &menu);
+        connect(action, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
+        menu.addAction(action);
+    }
+    else
+    {
+        action = new QAction(tr("Sud merken"), &menu);
+        connect(action, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
+        menu.addAction(action);
+    }
+
+    int status = model->data(index.row(), "Status").toInt();
+    if (status >= Sud_Status_Abgefuellt)
+    {
+        if (status == Sud_Status_Verbraucht)
         {
-            action = new QAction(tr("Sud vergessen"), &menu);
-            connect(action, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
+            action = new QAction(tr("Sud nicht verbraucht"), &menu);
+            connect(action, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
             menu.addAction(action);
         }
         else
         {
-            action = new QAction(tr("Sud merken"), &menu);
-            connect(action, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
+            action = new QAction(tr("Sud verbraucht"), &menu);
+            connect(action, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
             menu.addAction(action);
         }
-
-        int status = model->data(index.row(), "Status").toInt();
-        if (status >= Sud_Status_Abgefuellt)
-        {
-            if (status == Sud_Status_Verbraucht)
-            {
-                action = new QAction(tr("Sud nicht verbraucht"), &menu);
-                connect(action, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
-                menu.addAction(action);
-            }
-            else
-            {
-                action = new QAction(tr("Sud verbraucht"), &menu);
-                connect(action, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
-                menu.addAction(action);
-            }
-        }
-
-        menu.addSeparator();
     }
+
+    menu.addSeparator();
 
     for (const AuswahlSpalten& spalte : mSpalten)
     {

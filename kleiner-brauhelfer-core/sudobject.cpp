@@ -8,9 +8,8 @@
 SudObject::SudObject(Brauhelfer *bh) :
     QObject(bh),
     bh(bh),
-    mId(-2),
+    mId(-1),
     mRowSud(-1),
-    mLoading(false),
     proxyModelRasten(new ProxyModel(this)),
     proxyModelMalzschuettung(new ProxyModel(this)),
     proxyModelHopfengaben(new ProxyModel(this)),
@@ -47,61 +46,79 @@ SudObject::~SudObject()
     delete proxyModelFlaschenlabelTags;
 }
 
+void SudObject::init()
+{
+    qInfo() << "SudObject::init()";
+    modelRasten()->setSourceModel(bh->modelRasten());
+    modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
+    modelMalzschuettung()->setSourceModel(bh->modelMalzschuettung());
+    modelMalzschuettung()->setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+    modelHopfengaben()->setSourceModel(bh->modelHopfengaben());
+    modelHopfengaben()->setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
+    modelHopfengaben()->sort(bh->modelHopfengaben()->fieldIndex("Zeit"), Qt::DescendingOrder);
+    modelHefegaben()->setSourceModel(bh->modelHefegaben());
+    modelHefegaben()->setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
+    modelHefegaben()->sort(bh->modelHefegaben()->fieldIndex("ZugabeNach"), Qt::AscendingOrder);
+    modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
+    modelWeitereZutatenGaben()->setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    modelSchnellgaerverlauf()->setSourceModel(bh->modelSchnellgaerverlauf());
+    modelSchnellgaerverlauf()->setFilterKeyColumn(bh->modelSchnellgaerverlauf()->fieldIndex("SudID"));
+    modelSchnellgaerverlauf()->sort(bh->modelSchnellgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
+    modelHauptgaerverlauf()->setSourceModel(bh->modelHauptgaerverlauf());
+    modelHauptgaerverlauf()->setFilterKeyColumn(bh->modelHauptgaerverlauf()->fieldIndex("SudID"));
+    modelHauptgaerverlauf()->sort(bh->modelHauptgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
+    modelNachgaerverlauf()->setSourceModel(bh->modelNachgaerverlauf());
+    modelNachgaerverlauf()->setFilterKeyColumn(bh->modelNachgaerverlauf()->fieldIndex("SudID"));
+    modelNachgaerverlauf()->sort(bh->modelNachgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
+    modelBewertungen()->setSourceModel(bh->modelBewertungen());
+    modelBewertungen()->setFilterKeyColumn(bh->modelBewertungen()->fieldIndex("SudID"));
+    modelAnhang()->setSourceModel(bh->modelAnhang());
+    modelAnhang()->setFilterKeyColumn(bh->modelAnhang()->fieldIndex("SudID"));
+    modelFlaschenlabel()->setSourceModel(bh->modelFlaschenlabel());
+    modelFlaschenlabel()->setFilterKeyColumn(bh->modelFlaschenlabel()->fieldIndex("SudID"));
+    modelFlaschenlabelTags()->setSourceModel(bh->modelFlaschenlabelTags());
+    modelFlaschenlabelTags()->setFilterKeyColumn(bh->modelFlaschenlabelTags()->fieldIndex("SudID"));
+
+    QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
+    modelRasten()->setFilterRegExp(regExpId);
+    modelMalzschuettung()->setFilterRegExp(regExpId);
+    modelHopfengaben()->setFilterRegExp(regExpId);
+    modelHefegaben()->setFilterRegExp(regExpId);
+    modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
+    modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
+    modelHauptgaerverlauf()->setFilterRegExp(regExpId);
+    modelNachgaerverlauf()->setFilterRegExp(regExpId);
+    modelBewertungen()->setFilterRegExp(regExpId);
+    modelAnhang()->setFilterRegExp(regExpId);
+    modelFlaschenlabel()->setFilterRegExp(regExpId);
+    modelFlaschenlabelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
+}
+
 void SudObject::load(int id)
 {
     if (mId != id)
     {
         mId = id;
-        QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
         mRowSud = bh->modelSud()->getRowWithValue("ID", mId);
 
-        mLoading = true;
-        if (id != -1)
-            qInfo() << "SudObject::load():" << getSudname() << "(" << id << ")";
+        if (mId != -1)
+            qInfo() << "SudObject::load():" << getSudname() << "(" << mId << ")";
         else
             qInfo() << "SudObject::unload()";
-        modelRasten()->setSourceModel(bh->modelRasten());
-        modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
+
+        QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
         modelRasten()->setFilterRegExp(regExpId);
-        modelMalzschuettung()->setSourceModel(bh->modelMalzschuettung());
-        modelMalzschuettung()->setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
         modelMalzschuettung()->setFilterRegExp(regExpId);
-        modelHopfengaben()->setSourceModel(bh->modelHopfengaben());
-        modelHopfengaben()->setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
         modelHopfengaben()->setFilterRegExp(regExpId);
-        modelHopfengaben()->sort(bh->modelHopfengaben()->fieldIndex("Zeit"), Qt::DescendingOrder);
-        modelHefegaben()->setSourceModel(bh->modelHefegaben());
-        modelHefegaben()->setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
         modelHefegaben()->setFilterRegExp(regExpId);
-        modelHefegaben()->sort(bh->modelHefegaben()->fieldIndex("ZugabeNach"), Qt::AscendingOrder);
-        modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
-        modelWeitereZutatenGaben()->setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
         modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
-        modelSchnellgaerverlauf()->setSourceModel(bh->modelSchnellgaerverlauf());
-        modelSchnellgaerverlauf()->setFilterKeyColumn(bh->modelSchnellgaerverlauf()->fieldIndex("SudID"));
         modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
-        modelSchnellgaerverlauf()->sort(bh->modelSchnellgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
-        modelHauptgaerverlauf()->setSourceModel(bh->modelHauptgaerverlauf());
-        modelHauptgaerverlauf()->setFilterKeyColumn(bh->modelHauptgaerverlauf()->fieldIndex("SudID"));
         modelHauptgaerverlauf()->setFilterRegExp(regExpId);
-        modelHauptgaerverlauf()->sort(bh->modelHauptgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
-        modelNachgaerverlauf()->setSourceModel(bh->modelNachgaerverlauf());
-        modelNachgaerverlauf()->setFilterKeyColumn(bh->modelNachgaerverlauf()->fieldIndex("SudID"));
         modelNachgaerverlauf()->setFilterRegExp(regExpId);
-        modelNachgaerverlauf()->sort(bh->modelNachgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
-        modelBewertungen()->setSourceModel(bh->modelBewertungen());
-        modelBewertungen()->setFilterKeyColumn(bh->modelBewertungen()->fieldIndex("SudID"));
         modelBewertungen()->setFilterRegExp(regExpId);
-        modelAnhang()->setSourceModel(bh->modelAnhang());
-        modelAnhang()->setFilterKeyColumn(bh->modelAnhang()->fieldIndex("SudID"));
         modelAnhang()->setFilterRegExp(regExpId);
-        modelFlaschenlabel()->setSourceModel(bh->modelFlaschenlabel());
-        modelFlaschenlabel()->setFilterKeyColumn(bh->modelFlaschenlabel()->fieldIndex("SudID"));
         modelFlaschenlabel()->setFilterRegExp(regExpId);
-        modelFlaschenlabelTags()->setSourceModel(bh->modelFlaschenlabelTags());
-        modelFlaschenlabelTags()->setFilterKeyColumn(bh->modelFlaschenlabelTags()->fieldIndex("SudID"));
         modelFlaschenlabelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
-        mLoading = false;
 
         if (isLoaded())
         {
@@ -121,11 +138,6 @@ void SudObject::load(int id)
 void SudObject::unload()
 {
     load(-1);
-}
-
-bool SudObject::isLoading() const
-{
-    return mLoading;
 }
 
 bool SudObject::isLoaded() const

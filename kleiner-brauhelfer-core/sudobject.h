@@ -130,6 +130,8 @@ public:
     SudObject(Brauhelfer *bh);
     ~SudObject();
 
+    void init();
+
     /**
      * @brief Loads a brew
      * @param id Brew ID
@@ -140,12 +142,6 @@ public:
      * @brief Unload any loaded brew
      */
     Q_INVOKABLE void unload();
-
-    /**
-     * @brief Loading state
-     * @return True if a brew is being loaded
-     */
-    bool isLoading() const;
 
     /**
      * @brief Loaded state
@@ -252,7 +248,6 @@ private:
     Brauhelfer *bh;
     int mId;
     int mRowSud;
-    bool mLoading;
     ProxyModel* proxyModelRasten;
     ProxyModel* proxyModelMalzschuettung;
     ProxyModel* proxyModelHopfengaben;

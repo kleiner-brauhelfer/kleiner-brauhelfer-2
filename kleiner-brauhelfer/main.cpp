@@ -12,7 +12,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
-
 // global variables
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -110,10 +109,12 @@ static bool connectDatabase()
                     {
                         if (bh->updateDatabase())
                         {
-                            return bh->isConnectedDatabase();
+                            continue;
                         }
                         else
+                        {
                             QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
+                        }
                     }
                     catch (const std::exception& ex)
                     {
@@ -252,10 +253,14 @@ int main(int argc, char *argv[])
     else
         gSettings = new Settings();
 
+    qInfo("--- Application start ---");
+    qInfo() << "Version:" << QCoreApplication::applicationVersion();
+
     // logging
     int logLevel = gSettings->logLevel();
     if (logLevel > 0)
     {
+        qInfo() << "Log level:" << logLevel;
         if (logLevel < 1000)
         {
             //log in file
@@ -281,11 +286,11 @@ int main(int argc, char *argv[])
         default:
             QLoggingCategory::setFilterRules("SqlTableModel.info=true\nSqlTableModel.debug=true");
             break;
+        case 999:
+            QLoggingCategory::setFilterRules("*.info=true\n*.debug=true");
+            break;
         }
     }
-
-    qInfo("--- Application start ---");
-    qInfo() << "Version:" << QCoreApplication::applicationVersion();
 
     // install translation
     QTranslator translatorQt;

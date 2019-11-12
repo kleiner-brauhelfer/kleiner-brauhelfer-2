@@ -11,10 +11,6 @@ SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
 {
     setEditStrategy(EditStrategy::OnManualSubmit);
     mVirtualField.append("deleted");
-    connect(this, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), this, SLOT(fetchAll()));
-    connect(this, SIGNAL(rowsInserted(const QModelIndex&, int, int)), this, SLOT(fetchAll()));
-    connect(this, SIGNAL(rowsRemoved(const QModelIndex&, int, int)), this, SLOT(fetchAll()));
-    connect(this, SIGNAL(layoutChanged()), this, SLOT(fetchAll()));
 }
 
 QVariant SqlTableModel::data(const QModelIndex &index, int role) const
@@ -54,7 +50,7 @@ bool SqlTableModel::setData(const QModelIndex &index, const QVariant &value, int
         int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : index.column();
         if (col == QSqlTableModel::columnCount())
             return false;
-        qDebug(loggingCategory) << "SqlTableModel::setData():" << tableName() << "row" << index.row() << "col" << fieldName(col) << "=" << value.toString();
+        qDebug(loggingCategory) << "setData():" << tableName() << "row" << index.row() << "col" << fieldName(col) << "=" << value.toString();
         const QModelIndex index2 = this->index(index.row(), col);
         ++mSetDataCnt;
         bool ret = setDataExt(index2, value);

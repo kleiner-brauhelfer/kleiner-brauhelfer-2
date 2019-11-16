@@ -425,15 +425,6 @@ bool ModelSud::setDataExt_impl(const QModelIndex &index, const QVariant &value)
         }
         return false;
     }
-    if (field == "KochdauerNachBitterhopfung")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            updateKochdauer(index.row(), value);
-            return true;
-        }
-        return false;
-    }
     return false;
 }
 
@@ -698,29 +689,6 @@ void ModelSud::updatePreis(int row)
     summe += kostenAnlage;
 
     setData(row, "erg_Preis", summe / data(row, "MengeIst").toDouble());
-}
-
-void ModelSud::updateKochdauer(int row, const QVariant &value)
-{
-    int id = data(row, "ID").toInt();
-    double T = value.toDouble();
-    SqlTableModel* model = bh->modelHopfengaben();
-    int colSudId = model->fieldIndex("SudID");
-    for (int i = 0; i < model->rowCount(); ++i)
-    {
-        if (model->data(model->index(i, colSudId)).toInt() == id)
-        {
-            if (model->data(i, "Vorderwuerze").toBool())
-            {
-                model->setData(i, "Zeit", value);
-            }
-            else
-            {
-               if (model->data(i, "Zeit").toDouble() >= T)
-                   model->setData(i, "Zeit", value);
-            }
-        }
-    }
 }
 
 QVariant ModelSud::SWIst(const QModelIndex &index) const

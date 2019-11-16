@@ -465,38 +465,6 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="3" colspan="3">
-         <widget class="ComboBox" name="cbZeitpunkt">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorderwürzehopfung &lt;/span&gt;aktiviert.&lt;/p&gt;&lt;p&gt;Als Vorderwürzehopfung wird die Hopfengabe vor dem eigentlichen Kochvorgang bezeichnet. Der Vorgang ist auch unter dem Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen vorlegen&lt;/span&gt; bekannt.&lt;/p&gt;&lt;p&gt;Geschmacklich ist diese Gabe milder, ist aber weniger ergiebig. Der Kleine Brauhelfer berücksichtigt diesen Umstand. Zu Details geben sowohl Fachliteratur als auch Fachforen nähere Auskunft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>Vorderwürze</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Kochbeginn</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Kochen</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Kochende</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Ausschlagen</string>
-           </property>
-          </item>
-         </widget>
-        </item>
         <item row="0" column="2" rowspan="2" colspan="2">
          <widget class="QLabel" name="label_6">
           <property name="minimumSize">
@@ -578,6 +546,38 @@
           </property>
          </widget>
         </item>
+        <item row="3" column="3" colspan="2">
+         <widget class="ComboBox" name="cbZeitpunkt">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorderwürzehopfung &lt;/span&gt;aktiviert.&lt;/p&gt;&lt;p&gt;Als Vorderwürzehopfung wird die Hopfengabe vor dem eigentlichen Kochvorgang bezeichnet. Der Vorgang ist auch unter dem Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen vorlegen&lt;/span&gt; bekannt.&lt;/p&gt;&lt;p&gt;Geschmacklich ist diese Gabe milder, ist aber weniger ergiebig. Der Kleine Brauhelfer berücksichtigt diesen Umstand. Zu Details geben sowohl Fachliteratur als auch Fachforen nähere Auskunft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Vorderwürze</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kochbeginn</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kochen</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Kochende</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Ausschlagen</string>
+           </property>
+          </item>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>
@@ -587,11 +587,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -600,6 +595,11 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

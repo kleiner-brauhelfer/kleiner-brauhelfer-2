@@ -6,7 +6,7 @@ set QT_DIR=%2
 Set QT_DIR=%QT_DIR:"=%
 
 del "%BUILD_DIR%\kleiner-brauhelfer-core.lib"
-xcopy "%~dp0libeay32.dll" "%BUILD_DIR%" /Y
-xcopy "%~dp0ssleay32.dll" "%BUILD_DIR%" /Y
+xcopy "%~dp0libcrypto-1_1.dll" "%BUILD_DIR%" /Y
+xcopy "%~dp0libssl-1_1.dll" "%BUILD_DIR%" /Y
 
 "%QT_DIR%\windeployqt.exe" "%BUILD_DIR%\kleiner-brauhelfer-2.exe"

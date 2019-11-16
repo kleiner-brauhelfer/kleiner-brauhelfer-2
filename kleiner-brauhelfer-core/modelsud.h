@@ -33,7 +33,6 @@ private:
     void updateSwWeitereZutaten(int row);
     void updateFarbe(int row);
     void updatePreis(int row);
-    void updateKochdauer(int row, const QVariant &value);
     QVariant SWIst(const QModelIndex &index) const;
     QVariant SREIst(const QModelIndex &index) const;
     QVariant CO2Ist(const QModelIndex &index) const;

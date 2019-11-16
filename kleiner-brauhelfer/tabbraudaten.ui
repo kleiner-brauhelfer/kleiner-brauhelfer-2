@@ -1668,7 +1668,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Vorgeschlagene Verdünnung übernehmen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vorgeschlagene Verdünnung übernehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
@@ -1785,7 +1785,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Vorgeschlagene Verdünnung übernehmen.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vorgeschlagene Speisemenge entnehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="icon">
               <iconset resource="images.qrc">

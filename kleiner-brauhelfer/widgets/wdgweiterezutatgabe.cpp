@@ -110,6 +110,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
+        ui->btnAufbrauchen->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
         ui->tbMenge->setReadOnly(false);
@@ -129,6 +130,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
+        ui->btnAufbrauchen->setVisible(false);
         ui->lblVorhanden->setVisible(false);
         ui->lblEinheit2->setVisible(false);
         ui->cbZugabezeitpunkt->setEnabled(false);
@@ -334,6 +336,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->cbZutat->setEnabled(false);
             break;
         }
+        ui->btnAufbrauchen->setVisible(ui->tbMengeTotal->value() != ui->tbVorhanden->value());
     }
 
     if (gSettings->ForceEnabled)
@@ -393,6 +396,28 @@ void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)
             setData("Menge", value / 1000);
         else
             setData("Menge", value);
+    }
+}
+
+void WdgWeitereZutatGabe::on_tbMengeTotal_valueChanged(double value)
+{
+    if (ui->tbMengeTotal->hasFocus())
+    {
+        switch (data("Einheit").toInt())
+        {
+        case EWZ_Einheit_Kg:
+            setData("erg_Menge", value * 1000);
+            break;
+        case EWZ_Einheit_g:
+            setData("erg_Menge", value);
+            break;
+        case EWZ_Einheit_mg:
+            setData("erg_Menge", value / 1000);
+            break;
+        case EWZ_Einheit_Stk:
+            setData("erg_Menge", value);
+            break;
+        }
     }
 }
 
@@ -466,4 +491,24 @@ void WdgWeitereZutatGabe::on_tbKomentar_textChanged()
 void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgWeitereZutatGabe::on_btnAufbrauchen_clicked()
+{
+    double value = ui->tbVorhanden->value();
+    switch (data("Einheit").toInt())
+    {
+    case EWZ_Einheit_Kg:
+        setData("erg_Menge", value * 1000);
+        break;
+    case EWZ_Einheit_g:
+        setData("erg_Menge", value);
+        break;
+    case EWZ_Einheit_mg:
+        setData("erg_Menge", value / 1000);
+        break;
+    case EWZ_Einheit_Stk:
+        setData("erg_Menge", value);
+        break;
+    }
 }

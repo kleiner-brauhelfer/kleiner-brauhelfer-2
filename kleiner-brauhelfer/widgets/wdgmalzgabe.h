@@ -31,6 +31,7 @@ private slots:
     void on_tbMenge_valueChanged(double value);
     void on_btnLoeschen_clicked();
     void on_btnKorrektur_clicked();
+    void on_btnAufbrauchen_clicked();
 
 private:
     void checkEnabled(bool force);

@@ -57,6 +57,7 @@ private:
     void replace(int type, const QString &rohstoff);
     QVariant dataWasser(const QString &fieldName) const;
     bool setDataWasser(const QString &fieldName, const QVariant &value);
+    void updateLabelNumItems();
 
 private:
     Ui::TabRohstoffe *ui;

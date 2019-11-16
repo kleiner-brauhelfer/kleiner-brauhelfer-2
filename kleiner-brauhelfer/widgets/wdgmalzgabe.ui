@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
+    <width>516</width>
     <height>73</height>
    </rect>
   </property>
@@ -250,6 +250,26 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnAufbrauchen">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="lblVorhanden">

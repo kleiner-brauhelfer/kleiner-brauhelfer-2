@@ -94,6 +94,7 @@ void WdgHefeGabe::checkEnabled(bool force)
     ui->cbZutat->setCurrentIndex(-1);
     ui->btnLoeschen->setVisible(enabled);
     ui->tbVorhanden->setVisible(enabled);
+    ui->btnAufbrauchen->setVisible(enabled);
     ui->lblVorhanden->setVisible(enabled);
     ui->tbMenge->setReadOnly(!enabled);
     ui->tbTage->setReadOnly(!enabled);
@@ -149,6 +150,7 @@ void WdgHefeGabe::updateValues(bool full)
                 benoetigt += model->data(i, "Menge").toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 }
 
@@ -197,4 +199,9 @@ void WdgHefeGabe::on_btnZugeben_clicked()
 void WdgHefeGabe::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgHefeGabe::on_btnAufbrauchen_clicked()
+{
+    setData("Menge", ui->tbVorhanden->value());
 }

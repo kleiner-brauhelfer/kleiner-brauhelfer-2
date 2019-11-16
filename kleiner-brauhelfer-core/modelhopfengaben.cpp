@@ -129,11 +129,26 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &valu
             double ibuSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "IBU").toDouble();
             switch (bh->modelSud()->getValueFromSameRow("ID", sudId, "berechnungsArtHopfen").toInt())
             {
+            case Hopfen_Berechnung_Gewicht:
+                {
+                    double summe = 0.0;
+                    int colMenge = fieldIndex("erg_Menge");
+                    for (int i = 0; i < rowCount(); ++i)
+                    {
+                        if (this->index(i, colSudId).data().toInt() == sudId)
+                        {
+                            summe += this->index(i, colMenge).data().toDouble();
+                        }
+                    }
+                    double p = value.toDouble() / summe * 100;
+                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Prozent")), p);
+                 }
+                break;
             case Hopfen_Berechnung_IBU:
                 {
                     double alpha = data(index.row(), "Alpha").toDouble();
                     double ausbeute = data(index.row(), "Ausbeute").toDouble();
-                    double p = (10 * alpha * ausbeute * value.toInt()) / (ibuSoll * mengeSoll);
+                    double p = (10 * alpha * ausbeute * value.toDouble()) / (ibuSoll * mengeSoll);
                     QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Prozent")), p);
                 }
                 break;
@@ -194,13 +209,13 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &index)
     {
         int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
         int colSudId = fieldIndex("SudID");
-        int colProzent = fieldIndex("Prozent");
+        int colUpdate = fieldIndex(field == "berechnungsArtHopfen" ? "erg_Menge" : "Prozent");
         mSignalModifiedBlocked = true;
         for (int i = 0; i < rowCount(); ++i)
         {
             if (this->index(i, colSudId).data().toInt() == sudId)
             {
-                QModelIndex index2 = this->index(i, colProzent);
+                QModelIndex index2 = this->index(i, colUpdate);
                 setData(index2, data(index2));
             }
         }

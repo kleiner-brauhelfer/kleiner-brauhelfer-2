@@ -35,6 +35,7 @@ private slots:
     void on_tbKochdauer_valueChanged(int dauer);
     void on_cbZeitpunkt_currentIndexChanged(int index);
     void on_btnLoeschen_clicked();
+    void on_btnAufbrauchen_clicked();
 
 private:
     void checkEnabled(bool force);

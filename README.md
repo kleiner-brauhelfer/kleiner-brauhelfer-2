@@ -8,7 +8,7 @@ http://www.joerum.de/kleiner-brauhelfer/
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.0.0beta3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta3)
+- [Version 2.0.0beta4](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta4)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**

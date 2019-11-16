@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>558</width>
-    <height>256</height>
+    <width>482</width>
+    <height>212</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -183,12 +183,6 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
           <property name="decimals">
            <number>2</number>
           </property>
@@ -228,6 +222,26 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnAufbrauchen">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="lblVorhanden">
@@ -569,6 +583,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -577,11 +596,6 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>

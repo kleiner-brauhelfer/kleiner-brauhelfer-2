@@ -70,6 +70,7 @@ void WdgMalzGabe::checkEnabled(bool force)
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
+        ui->btnAufbrauchen->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit->setVisible(true);        
         ui->tbMengeProzent->setReadOnly(false);
@@ -85,6 +86,7 @@ void WdgMalzGabe::checkEnabled(bool force)
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
+        ui->btnAufbrauchen->setVisible(false);
         ui->lblVorhanden->setVisible(false);
         ui->lblEinheit->setVisible(false);
         ui->tbMengeProzent->setReadOnly(true);
@@ -140,6 +142,7 @@ void WdgMalzGabe::updateValues(bool full)
         {
             ui->lblWarnAnteil->setVisible(false);
         }
+        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 }
 
@@ -209,4 +212,9 @@ void WdgMalzGabe::on_btnKorrektur_clicked()
 void WdgMalzGabe::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgMalzGabe::on_btnAufbrauchen_clicked()
+{
+    setData("erg_Menge", ui->tbVorhanden->value());
 }

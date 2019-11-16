@@ -53,9 +53,11 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Spickzettel zeigt auch Kochdauer von Hopfengaben und weitere Zutaten
 - Neu: Logdatei, wenn Einstellung LogLevel (1-4) in kleiner-brauhelfer-2.ini gesetzt wird
 - Neu: Tabellen können in den Clipboard kopiert werden
+- Neu: Knopf, um Rohstoff "aufzubrauchen"
 - Fix: Eingabe über Buttons für "Stammwürze Kochende", "Stammwürze Anstellen", "Restextrakt Schnellgärprobe" und "Restextrakt Jungbier"
 - Fix: Bei BeerXml Export werden alle Pflichtfelder exportiert
 - Fix: Keine Rohstoffangabe im Sudinfo bei Rohstoffen mit Klammern
+- Fix: Hopfenmengenangaben gehen bei Umstellung der Berechnungsart nicht verloren
 
 ### Version 2.0.0beta3
 - Neu: Funktion "Eingabefelder entsperren"

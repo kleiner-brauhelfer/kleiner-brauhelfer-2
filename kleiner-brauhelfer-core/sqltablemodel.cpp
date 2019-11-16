@@ -1,6 +1,7 @@
 #include "sqltablemodel.h"
 #include <QSqlRecord>
 #include <QSqlIndex>
+#include <QSqlError>
 
 QLoggingCategory SqlTableModel::loggingCategory("SqlTableModel", QtWarningMsg);
 
@@ -157,6 +158,8 @@ void SqlTableModel::setTable(const QString &tableName)
     {
         qInfo(loggingCategory) << "setTable():" << tableName;
         QSqlTableModel::setTable(tableName);
+        if (lastError().isValid())
+            qCritical(loggingCategory) << lastError();
         // hack for setHeaderData() (crash in proxy model when loading new database in App)
         beginResetModel();
         endResetModel();
@@ -176,11 +179,14 @@ void SqlTableModel::setTable(const QString &tableName)
 bool SqlTableModel::select()
 {
     qInfo(loggingCategory) << "select():" << tableName();
+    qDebug(loggingCategory) << selectStatement();
     if (QSqlTableModel::select())
     {
         fetchAll();
         return true;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return false;
 }
 
@@ -222,6 +228,8 @@ bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
         emit modified();
         return true;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return false;
 }
 
@@ -255,6 +263,8 @@ int SqlTableModel::append(const QVariantMap &values)
         emit modified();
         return row;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return -1;
 }
 
@@ -275,6 +285,8 @@ int SqlTableModel::appendDirect(const QVariantMap &values)
         emit modified();
         return row;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return -1;
 }
 
@@ -287,6 +299,8 @@ bool SqlTableModel::submitAll()
         emit modified();
         return true;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return false;
 }
 

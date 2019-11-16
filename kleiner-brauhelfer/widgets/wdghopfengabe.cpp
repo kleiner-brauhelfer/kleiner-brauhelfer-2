@@ -80,6 +80,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
+        ui->btnAufbrauchen->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit->setVisible(true);
         ui->tbMenge->setReadOnly(false);
@@ -98,6 +99,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
+        ui->btnAufbrauchen->setVisible(false);
         ui->lblVorhanden->setVisible(false);
         ui->lblEinheit->setVisible(false);
         ui->tbMenge->setReadOnly(true);
@@ -182,7 +184,6 @@ void WdgHopfenGabe::updateValues(bool full)
 
         if (prozentIbu())
         {
-            ui->tbMenge->setReadOnly(false);
             ui->btnMengeKorrektur->setVisible(false);
             ui->tbMengeProzent->setVisible(false);
             ui->tbAnteilProzent->setVisible(true);
@@ -191,13 +192,13 @@ void WdgHopfenGabe::updateValues(bool full)
         }
         else
         {
-            ui->tbMenge->setReadOnly(true);
             ui->btnAnteilKorrektur->setVisible(false);
             ui->tbAnteilProzent->setVisible(false);
             ui->tbMengeProzent->setVisible(true);
             ui->lblAnteilProzent->setVisible(false);
             ui->lblMengeProzent->setVisible(true);
         }
+        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 }
 
@@ -313,4 +314,9 @@ void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
 void WdgHopfenGabe::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgHopfenGabe::on_btnAufbrauchen_clicked()
+{
+    setData("erg_Menge", ui->tbVorhanden->value());
 }

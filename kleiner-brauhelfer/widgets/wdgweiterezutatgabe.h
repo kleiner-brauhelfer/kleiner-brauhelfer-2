@@ -26,6 +26,7 @@ private slots:
     void on_cbZutat_currentIndexChanged(const QString &text);
     void on_btnLoeschen_clicked();
     void on_tbMenge_valueChanged(double value);
+    void on_tbMengeTotal_valueChanged(double value);
     void on_cbZugabezeitpunkt_currentIndexChanged(int index);
     void on_tbDauerMin_valueChanged(int value);
     void on_btnZugeben_clicked();
@@ -36,6 +37,7 @@ private slots:
     void on_tbKomentar_textChanged();
     void on_tbDatumVon_dateChanged(const QDate &date);
     void on_tbDatumBis_dateChanged(const QDate &date);
+    void on_btnAufbrauchen_clicked();
 
 private:
     void checkEnabled(bool force);

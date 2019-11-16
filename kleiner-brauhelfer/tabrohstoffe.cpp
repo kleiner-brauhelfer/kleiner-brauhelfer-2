@@ -954,6 +954,7 @@ void TabRohstoffe::addEntry(QTableView *table, const QVariantMap &values)
         table->setCurrentIndex(model->index(row, model->fieldIndex("Beschreibung")));
         table->scrollTo(table->currentIndex());
         table->edit(table->currentIndex());
+        updateLabelNumItems();
     }
 }
 
@@ -1070,6 +1071,7 @@ void TabRohstoffe::on_buttonDelete_clicked()
         if (!model->data(index.row(), "InGebrauch").toBool())
             model->removeRow(index.row());
     }
+    updateLabelNumItems();
 }
 
 void TabRohstoffe::on_radioButtonAlle_clicked()
@@ -1083,6 +1085,7 @@ void TabRohstoffe::on_radioButtonAlle_clicked()
     proxyModel->setFilter(ProxyModelRohstoff::Filter::Alle);
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableWeitereZutaten->model());
     proxyModel->setFilter(ProxyModelRohstoff::Filter::Alle);
+    updateLabelNumItems();
 }
 
 void TabRohstoffe::on_radioButtonVorhanden_clicked()
@@ -1096,6 +1099,7 @@ void TabRohstoffe::on_radioButtonVorhanden_clicked()
     proxyModel->setFilter(ProxyModelRohstoff::Filter::Vorhanden);
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableWeitereZutaten->model());
     proxyModel->setFilter(ProxyModelRohstoff::Filter::Vorhanden);
+    updateLabelNumItems();
 }
 
 void TabRohstoffe::on_radioButtonInGebrauch_clicked()
@@ -1109,6 +1113,7 @@ void TabRohstoffe::on_radioButtonInGebrauch_clicked()
     proxyModel->setFilter(ProxyModelRohstoff::Filter::InGebrauch);
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableWeitereZutaten->model());
     proxyModel->setFilter(ProxyModelRohstoff::Filter::InGebrauch);
+    updateLabelNumItems();
 }
 
 void TabRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
@@ -1122,6 +1127,7 @@ void TabRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
     proxyModel->setFilterString(pattern);
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableWeitereZutaten->model());
     proxyModel->setFilterString(pattern);
+    updateLabelNumItems();
 }
 
 void TabRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
@@ -1130,6 +1136,34 @@ void TabRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
     ui->buttonNeuVorlage->setEnabled(index != 4);
     ui->buttonCopy->setEnabled(index != 4);
     ui->buttonDelete->setEnabled(index != 4);
+    updateLabelNumItems();
+}
+
+void TabRohstoffe::updateLabelNumItems()
+{
+    QAbstractItemModel* filteredModel;
+    switch (ui->toolBoxRohstoffe->currentIndex())
+    {
+    case 0:
+        filteredModel = ui->tableMalz->model();
+        break;
+    case 1:
+        filteredModel = ui->tableHopfen->model();
+        break;
+    case 2:
+        filteredModel = ui->tableHefe->model();
+        break;
+    case 3:
+        filteredModel = ui->tableWeitereZutaten->model();
+        break;
+    default:
+        ui->lblNumItems->setText("");
+        return;
+    }
+    QAbstractItemModel* sourceModel = static_cast<ProxyModel*>(filteredModel)->sourceModel();
+    ProxyModel sourceModelNoDelete;
+    sourceModelNoDelete.setSourceModel(sourceModel);
+    ui->lblNumItems->setText(QString::number(filteredModel->rowCount()) + " / " + QString::number(sourceModelNoDelete.rowCount()));
 }
 
 void TabRohstoffe::replace(int type, const QString &rohstoff)

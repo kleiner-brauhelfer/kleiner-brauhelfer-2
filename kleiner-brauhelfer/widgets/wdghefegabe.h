@@ -31,6 +31,7 @@ private slots:
     void on_tbDatum_dateChanged(const QDate &date);
     void on_btnZugeben_clicked();
     void on_btnLoeschen_clicked();
+    void on_btnAufbrauchen_clicked();
 
 private:
     void checkEnabled(bool force = false);

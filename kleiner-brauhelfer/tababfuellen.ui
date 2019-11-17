@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>971</width>
-         <height>795</height>
+         <width>960</width>
+         <height>777</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1077,7 +1077,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die vor dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speis ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;Speise ist ein Verfahren, um den Kohlensäuregehalt im Bier und damit das Prickeln im Bier zu erhöhen. Dieses Prickeln wird oft auch als Rezens beschrieben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Eine übermäßige Speisegabe kann im günstigen Fall das Bier nur überschäumen, im ungünstigen das Gebinde als sogenannte Flaschenbombe explodieren lassen. Bei einer hohen Karbonisierung sollte daher der zulässige Druck der Flasche berücksichtigt werden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle für Fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die nach dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speise ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;Speise ist ein Verfahren, um den Kohlensäuregehalt im Bier und damit das Prickeln im Bier zu erhöhen. Dieses Prickeln wird oft auch als Rezens beschrieben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1232,7 +1232,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Zucker wird in der Regel dem Jungbier nach der Hauptgärung hinzugegeben, um die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; einzuleiten. Da das Bier zu diesem Zeitpunkt weitgehend duchgegoren ist, wird Zucker &lt;span style=&quot; font-weight:600;&quot;&gt;Kohlensäure&lt;/span&gt; umgewandelt und erhöht damit den Druck. Damit erst bekommt das Bier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Spritzigkeit.&lt;/span&gt; Dieses Prickeln wird oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Rezens&lt;/span&gt; beschrieben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Eine übermäßige Zuckergabe kann im günstigen Fall das Bier nur überschäumen, im ungünstigen das Gebinde als sogenannte Flaschenbombe explodieren lassen. Bei einer hohen Karbonisierung sollte daher der zulässige Druck der Flasche berücksichtigt werden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle für Fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Zucker wird in der Regel dem Jungbier nach der Hauptgärung hinzugegeben, um die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; einzuleiten. Da das Bier zu diesem Zeitpunkt weitgehend duchgegoren ist, wird Zucker in &lt;span style=&quot; font-weight:600;&quot;&gt;Kohlensäure&lt;/span&gt; umgewandelt und erhöht damit den Druck. Damit erst bekommt das Bier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Spritzigkeit.&lt;/span&gt; Dieses Prickeln wird oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Rezens&lt;/span&gt; beschrieben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1309,7 +1309,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ist die Temperatur des Jungbieres links eingegeben, wird hier der erforderlcihe &lt;span style=&quot; font-weight:600;&quot;&gt;Spundungsdruck&lt;/span&gt; für das Fass oder ein anderes Gebinde für die Reidung unter Druck angegeben.&lt;/p&gt;&lt;p&gt;Unter Spundungsdruck versteht man den Druck, um &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbier&lt;/span&gt; mit in einem Gebinde wie einem Fass zu karbonisieren. Der Spundungsdruck kann hier im Gegensatz zur Flasche durch ein Spundventil eingestellt werden, so dass zu viel Speise oder Zucker kein Unglück hervorrufen, wie es Flaschenbomben zu eigen ist. Der Spundungsdruck ist temperaturabhängig. Je niedriger diese ist, um so mehr Kohlendioxid CO₂ kann im Jungbier gelöst werden. Spundungsdruck stellt die Rezens eines Bieres ein.&lt;/p&gt;&lt;p&gt;Im Gegensatz zur einer natürlichen Gärung mit Speise, Resthefe, Zucker, besteht bei Fässern und ähnlichen Gebinden die Möglihckiet der &lt;span style=&quot; font-weight:600;&quot;&gt;Zwangskarbonisierung&lt;/span&gt;. Dabei wird CO₂  per Gasflasche zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ist die Temperatur des Jungbieres links eingegeben, wird hier der erforderlcihe &lt;span style=&quot; font-weight:600;&quot;&gt;Spundungsdruck&lt;/span&gt; für das Fass oder ein anderes Gebinde für die Reifung unter Druck angegeben.&lt;/p&gt;&lt;p&gt;Unter Spundungsdruck versteht man den Druck, um &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbier&lt;/span&gt; mit in einem Gebinde wie einem Fass zu karbonisieren. Der Spundungsdruck kann hier im Gegensatz zur Flasche durch ein Spundventil eingestellt werden, so dass zu viel Speise oder Zucker kein Unglück hervorrufen, wie es Flaschenbomben zu eigen ist. Der Spundungsdruck ist temperaturabhängig. Je niedriger diese ist, um so mehr Kohlendioxid CO₂ kann im Jungbier gelöst werden. Spundungsdruck stellt die Rezens eines Bieres ein.&lt;/p&gt;&lt;p&gt;Im Gegensatz zur einer natürlichen Gärung mit Speise, Resthefe, Zucker, besteht bei Fässern und ähnlichen Gebinden die Möglihckiet der &lt;span style=&quot; font-weight:600;&quot;&gt;Zwangskarbonisierung&lt;/span&gt;. Dabei wird CO₂ per Gasflasche zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1671,11 +1671,6 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
@@ -1685,6 +1680,11 @@
    <class>DateTimeEdit</class>
    <extends>QDateTimeEdit</extends>
    <header>widgets/datetimeedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -125,6 +125,44 @@
          </widget>
         </item>
         <item>
+         <widget class="DoubleSpinBox" name="tbMenge">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="maximum">
+           <double>999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>kg</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="DoubleSpinBox" name="tbMengeProzent">
           <property name="minimumSize">
            <size>
@@ -172,44 +210,6 @@
           </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Rohstoffmenge 100% Gesamtschüttung unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die aktuelle Rohstoffmenge auf 100% Gesamtschüttung. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung der Rohstoffe für die Schüttung anteilig vorab auf 100% bestimmt werden. Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="DoubleSpinBox" name="tbMenge">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="maximum">
-           <double>999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.010000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_3">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>kg</string>
           </property>
          </widget>
         </item>
@@ -328,14 +328,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>

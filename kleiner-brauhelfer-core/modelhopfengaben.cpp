@@ -211,6 +211,44 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &index)
         int colSudId = fieldIndex("SudID");
         int colUpdate = fieldIndex(field == "berechnungsArtHopfen" ? "erg_Menge" : "Prozent");
         mSignalModifiedBlocked = true;
+        if (field == "KochdauerNachBitterhopfung")
+        {
+            int max = index.data().toInt();
+            int colZeit = fieldIndex("Zeit");
+            int colVWH = fieldIndex("Vorderwuerze");
+            for (int i = 0; i < rowCount(); ++i)
+            {
+                if (this->index(i, colSudId).data().toInt() == sudId)
+                {
+                    if (this->index(i, colVWH).data().toBool())
+                    {
+                        setData(this->index(i, colZeit), max);
+                    }
+                    else
+                    {
+                        QModelIndex index2 = this->index(i, colZeit);
+                        int value = index2.data().toInt();
+                        if (value > max)
+                            setData(index2, max);
+                    }
+                }
+            }
+        }
+        else if (field == "Nachisomerisierungszeit")
+        {
+            int min = -1 * index.data().toInt();
+            int colZeit = fieldIndex("Zeit");
+            for (int i = 0; i < rowCount(); ++i)
+            {
+                if (this->index(i, colSudId).data().toInt() == sudId)
+                {
+                    QModelIndex index2 = this->index(i, colZeit);
+                    int value = index2.data().toInt();
+                    if (value < min)
+                        setData(index2, min);
+                }
+            }
+        }
         for (int i = 0; i < rowCount(); ++i)
         {
             if (this->index(i, colSudId).data().toInt() == sudId)

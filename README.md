@@ -8,7 +8,7 @@ http://www.joerum.de/kleiner-brauhelfer/
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.0.0beta3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta3)
+- [Version 2.0.0beta4](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta4)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**
@@ -28,7 +28,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - **kbh2_v2.x.x_linux_x64.deb**
   - Installationsdatei für 64bit System
   - Qt Abhängigkeiten **nicht** integriert
-  - Benötigt Installation von [Qt 5.13](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
+  - Benötigt Installation von [Qt 5.13.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc 64-bit
     - Qt Charts
     - Qt WebEngine
@@ -48,7 +48,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0beta4 (in Entwicklung)
+### Version 2.0.0beta4
+- Neu: Offizielle version kompiliert mit Qt 5.13.2
 - Neu: Tooltips für die meisten Eingabefelder (Danke rakader)
 - Neu: Spickzettel zeigt auch Kochdauer von Hopfengaben und weitere Zutaten
 - Neu: Logdatei, wenn Einstellung LogLevel (1-4) in kleiner-brauhelfer-2.ini gesetzt wird

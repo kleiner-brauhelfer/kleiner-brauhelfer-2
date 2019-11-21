@@ -6,18 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>566</width>
-    <height>195</height>
+    <width>677</width>
+    <height>270</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>566</width>
-    <height>195</height>
+    <width>677</width>
+    <height>270</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Berechnung Extrakt</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -404,7 +407,7 @@
          <widget class="QPushButton" name="btnKorrekturFaktorDefault">
           <property name="minimumSize">
            <size>
-            <width>50</width>
+            <width>56</width>
             <height>0</height>
            </size>
           </property>

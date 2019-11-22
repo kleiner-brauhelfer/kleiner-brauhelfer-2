@@ -1,0 +1,31 @@
+name: Build source packages
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Build a .tar.gz source package
+        run: |
+          export REF=$(echo ${GITHUB_REF} | cut -d '/' -f 3)
+          git archive --format=tar.gz --prefix=kleiner-brauhelfer-2/ -o kleiner-brauhelfer-2-$REF.tar.gz HEAD
+          mkdir -p deploy
+          mv kleiner-brauhelfer-2-$REF.tar.gz deploy
+
+      - name: Build a .zip source package
+        run: |
+          export REF=$(echo ${GITHUB_REF} | cut -d '/' -f 3)
+          git archive --format=zip --prefix=kleiner-brauhelfer-2/ -o kleiner-brauhelfer-2-$REF.zip HEAD
+          mkdir -p deploy
+          mv kleiner-brauhelfer-2-$REF.zip deploy
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Source Code
+          path: deploy

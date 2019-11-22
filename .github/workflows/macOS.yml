@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: kleiner-brauhelfer-2-macos-app-bundle
-          path: "bin/kbh2_*.zip"
+          path: "../bin/kbh2_*.zip"

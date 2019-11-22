@@ -1,0 +1,32 @@
+name: macOS
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install dependencies from homebrew
+        run: |
+          brew upgrade
+          brew install qt
+          brew link qt -f
+
+      - name: Build kleiner-brauhelfer-2
+        run: |
+          chmod +x ./build_macos.sh
+          ./build_macos.sh /usr/local/opt/qt/bin/
+
+      - name: Uninstall runtime dependencies
+        run: |
+          sudo rm -rf /usr/local/Cellar/qt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: kleiner-brauhelfer-2-macos-app-bundle
+          path: deploy

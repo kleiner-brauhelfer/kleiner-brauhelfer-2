@@ -20,9 +20,11 @@ jobs:
         run: |
           chmod +x ./build_macos.sh
           ./build_macos.sh /usr/local/opt/qt/bin/
+          mkdir deploy
+          cp bin/kbh2_*.zip deploy/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
-          name: kbh2.zip
-          path: bin
+          name: kleiner-brauhelfer-2
+          path: deploy

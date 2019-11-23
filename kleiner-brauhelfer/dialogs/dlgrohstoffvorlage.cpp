@@ -19,6 +19,7 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(QWidget *parent) :
 	ui(new Ui::DlgRohstoffVorlage)
 {
     ui->setupUi(this);
+    adjustSize();
 }
 
 DlgRohstoffVorlage::~DlgRohstoffVorlage()

@@ -47,6 +47,7 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
         ui->tbDichte->setValue(0.0);
     }
     ui->tbBrix->setValue(sw == 0.0 ? BierCalc::platoToBrix(value) : 0.0);
+    adjustSize();
 }
 
 DlgRestextrakt::~DlgRestextrakt()

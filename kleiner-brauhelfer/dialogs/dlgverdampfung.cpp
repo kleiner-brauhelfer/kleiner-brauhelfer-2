@@ -9,6 +9,7 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
     mFlaeche(0)
 {
 	ui->setupUi(this);
+    adjustSize();
 }
 
 DlgVerdampfung::~DlgVerdampfung()

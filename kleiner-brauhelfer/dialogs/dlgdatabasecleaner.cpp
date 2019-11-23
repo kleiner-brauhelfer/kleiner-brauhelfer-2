@@ -143,6 +143,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
     };
     mItTestFncs = mTestFncs.begin();
     next();
+    adjustSize();
 }
 
 DlgDatabaseCleaner::~DlgDatabaseCleaner()

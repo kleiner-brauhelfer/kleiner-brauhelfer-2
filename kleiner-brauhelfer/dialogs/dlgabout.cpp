@@ -14,6 +14,7 @@ DlgAbout::DlgAbout(QWidget *parent) :
     ui->lblHomepage->setText(generateLink(URL_HOMEPAGE));
     ui->lblSourceCode->setText(generateLink(URL_SOURCEN));
     ui->lblForum->setText(generateLink(URL_FORUM, URL_FORUM_NAME));
+    adjustSize();
 }
 
 DlgAbout::~DlgAbout()

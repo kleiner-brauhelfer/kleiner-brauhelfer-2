@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Eingabehilfe für Volumen</string>
   </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="verticalSpacing">
     <number>4</number>

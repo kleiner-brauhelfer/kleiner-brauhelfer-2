@@ -10,6 +10,7 @@ DlgMessage::DlgMessage(QWidget *parent, const QString &url) :
     url(url)
 {
     ui->setupUi(this);
+    adjustSize();
 }
 
 DlgMessage::~DlgMessage()

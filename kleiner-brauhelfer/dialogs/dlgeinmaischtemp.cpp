@@ -13,6 +13,7 @@ DlgEinmaischTemp::DlgEinmaischTemp(double schuettung, int schuettungTemp, double
     ui->doubleSpinBox_Hauptguss->setValue(hauptguss);
     ui->spinBox_RastTemp->setValue(rastTemp);
     doCalc();
+    adjustSize();
 }
 
 DlgEinmaischTemp::~DlgEinmaischTemp()

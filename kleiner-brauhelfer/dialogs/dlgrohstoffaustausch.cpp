@@ -22,6 +22,7 @@ DlgRohstoffAustausch::DlgRohstoffAustausch(DlgType type, const QString &rohstoff
         break;
     }
     ui->labelRohstoff->setText(rohstoff);
+    adjustSize();
 }
 
 DlgRohstoffAustausch::~DlgRohstoffAustausch()

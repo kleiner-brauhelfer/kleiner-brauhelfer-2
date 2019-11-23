@@ -491,9 +491,6 @@
            </item>
            <item row="4" column="5">
             <widget class="QLabel" name="label_sevg">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Spindel oder Refraktometer bilden den vergärbaren Extrakt im Bier dar. Dieser Wert muss wegen der unterschiedlichen Dichte von Wasser und Alkohol korrigiert werden. Deswegen spricht man von &amp;quot;Scheinbarer Endvergärungsgrad&amp;quot; (sEVG). Die Angaben aller Hefehersteller beziehen sich immer auf den sEVG als Richtwert&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
              <property name="text">
               <string>Scheinbarer Endvergärungsgrad (sEVG)</string>
              </property>
@@ -542,7 +539,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbare Endvergärungsgrad  (sEVG) &lt;/span&gt;beschreibt die Menge des vergärbaren Restextraktes in Prozent der Stammwürze. Der sEVG ist eine wichtige Größe, um die Maischeführung und die Hefearbeit und damit das zu erwartende Jungbier beurteilen zu können.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;In der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischeführung&lt;/span&gt; bedeutet beispielsweise eine längere Maltoserast mehr vergärbaren Zucker und damit einen höheren sEVG, eine kürze Maltoserast einen niedrigeren sEVG; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefearbeit&lt;/span&gt; wird zwischen hochvergärenden und niedrig vergärenden Hefen unterschieden. Letztere bauen weniger Zucker ab.&lt;/p&gt;&lt;p&gt;Somit bedeutet ein hoher sEVG einen höheren Alkoholgehalt und weniger Restsüße. Diese Biere sind naturgemäß trockener.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den sEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbare Endvergärungsgrad (sEVG) &lt;/span&gt;beschreibt die Menge des vergärbaren Restextraktes in Prozent der Stammwürze. Der sEVG ist eine wichtige Größe, um die Maischeführung und die Hefearbeit und damit das zu erwartende Jungbier beurteilen zu können.&lt;/p&gt;&lt;p&gt;In der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischeführung&lt;/span&gt; bedeutet beispielsweise eine längere Maltoserast mehr vergärbaren Zucker und damit einen höheren sEVG, eine kürze Maltoserast einen niedrigeren sEVG; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefearbeit&lt;/span&gt; wird zwischen hochvergärenden und niedrig vergärenden Hefen unterschieden. Letztere bauen weniger Zucker ab.&lt;/p&gt;&lt;p&gt;Somit bedeutet ein hoher sEVG einen höheren Alkoholgehalt und weniger Restsüße. Diese Biere sind naturgemäß trockener.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den sEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -851,9 +848,6 @@
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_81">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Anhand des Wertes wird der Verlust an Jungbier sowie die Speisemenge und die Jungbiermenge inklusive Speise berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
              <property name="text">
               <string>Jungbiermenge</string>
              </property>
@@ -913,7 +907,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die vor dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speis ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;Speise ist ein Verfahren, um den Kohlensäuregehalt im Bier und damit das Prickeln im Bier zu erhöhen. Dieses Prickeln wird oft auch als Rezens beschrieben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Eine übermäßige Speisegabe kann im günstigen Fall das Bier nur überschäumen, im ungünstigen das Gebinde als sogenannte Flaschenbombe explodieren lassen. Bei einer hohen Karbonisierung sollte daher der zulässige Druck der Flasche berücksichtigt werden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle für Fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der Vergärungsgrad von Zuckern als &lt;span style=&quot; font-weight:600;&quot;&gt;Faktor&lt;/span&gt; für die Karbonisierung angegeben werden. &lt;/p&gt;&lt;p&gt;Bei &lt;span style=&quot; font-weight:600;&quot;&gt;Haushaltszucker&lt;/span&gt; ist dieser Faktor 1, bei &lt;span style=&quot; font-weight:600;&quot;&gt;Traubenzucker&lt;/span&gt; leicht erhöht 1,16. Andere Zuckerarten wie Rohrzucker weichen nach unten ab, teils erheblich. Milchzucker wird gar nicht vergoren und hat damit Faktor 0, Honig für gewöhnlich 0,8 als Orientierungswert, abhängig vom Wassergehalt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Der Faktor sollte nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -954,7 +948,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Speisemenge zur Karbonisierung definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; zur Karbonisierung definiert.&lt;/p&gt;&lt;p&gt;Speise über der erforderlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Karbonisierung&lt;/span&gt; wird von Hobbybrauern gerne eingefroren. Zu bedenken ist, dass Speise anfällig für &lt;span style=&quot; font-weight:600;&quot;&gt;Infektionen&lt;/span&gt; ist. Sie sollte immer sauber abgefüllt, dann kalt gelagert und zeitnah verbraucht werden.&lt;/p&gt;&lt;p&gt;Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Im Rezept wird die gewünschte Karbonisierung definiert, die erforderliche Speisemenge dann automatisch berechnet. Die Speisemenge pro Flasche sollte daher nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1125,7 +1119,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend vom gewünschten Karbonisierungsgrad, gibt der Kleine Brauhelfer hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe&lt;/span&gt; für die gesamte Jungbiermenge an.&lt;/p&gt;&lt;p&gt;Zucker und Speise vergären unterschiedlich, daher werden sie getrennt berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Die errechnete Menge sollte nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend vom gewünschten Karbonisierungsgrad, gibt der Kleine Brauhelfer hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe&lt;/span&gt; für die gesamte Jungbiermenge an.&lt;/p&gt;&lt;p&gt;Zucker und Speise vergären unterschiedlich, daher werden sie getrennt berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1157,7 +1151,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die Speisemenge berechnet sich aus der Stammwürze vor dem Anstellen, dem gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;p&gt;Zucker und Speise vergären unterschiedlich, daher werden sie getrennt berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Die errechnete Speisemenge sollte nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die Speisemenge berechnet sich aus der Stammwürze vor dem Anstellen, dem gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;p&gt;Zucker und Speise vergären unterschiedlich, daher werden sie getrennt berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1195,9 +1189,6 @@
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_6">
-             <property name="toolTip">
-              <string>Verfügbare Speisemenge.</string>
-             </property>
              <property name="text">
               <string>Verfügbare Speisemenge</string>
              </property>

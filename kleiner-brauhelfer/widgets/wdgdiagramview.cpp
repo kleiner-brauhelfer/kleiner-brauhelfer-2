@@ -149,7 +149,6 @@ void WdgDiagramView::zeichneAchsen()
   painter.drawLine(nullX,nullY,nullX,nullY - zhoehe);
 
   //Horzizontale Skalierung
-  painter.setFont(QFont("Ubuntu", 10));
   QDateTime startD(L1Datum.first());
   QDateTime endD(L1Datum.last());
   QDateTime td(startD);
@@ -448,7 +447,6 @@ void WdgDiagramView::zeichneL1()
   }
   //Bezeichnung
   if (!BezeichnungL1.isEmpty()){
-    painter.setFont(QFont("Ubuntu", 10));
     painter.drawText(QRectF(nullX,AbstandBeschriftungOben,qRound(zbreite / 2.0),AbstandOben),Qt::AlignLeft, BezeichnungL1);
   }
 }
@@ -535,7 +533,6 @@ void WdgDiagramView::zeichneL2()
   }
   //Bezeichnung
   if (!BezeichnungL2.isEmpty()){
-    painter.setFont(QFont("Ubuntu", 10));
     painter.drawText(QRectF(qRound(nullX + zbreite / 2.0),AbstandBeschriftungOben,qRound(zbreite / 2.0),AbstandOben),Qt::AlignRight, BezeichnungL2);
   }
 }
@@ -621,7 +618,6 @@ void WdgDiagramView::zeichneL3()
   }
   //Bezeichnung
   if (!BezeichnungL3.isEmpty()){
-    painter.setFont(QFont("Ubuntu", 10));
     painter.drawText(QRectF(qRound(nullX + zbreite / 2.0),0,qRound(zbreite / 2.0),AbstandOben),Qt::AlignRight, BezeichnungL3);
   }
 }

@@ -106,13 +106,19 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btnDelete">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen&lt;/span&gt; werden die markierten Einträge aus der Datenbank gelöscht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Änderungen an der Datenbank sollten nur von erfahrenen Anwendern vorgenommen werden. Die Änderungen werden erst mit dem Speichern der Datenbank definitiv übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
-        <string>Zeile Löschen</string>
+        <string>Eintrag Löschen</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btnWeiter">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Weiter &lt;/span&gt;springt die Datenbankbereinigung zur nächsten Überprüfungsrountine.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Weiter</string>
        </property>

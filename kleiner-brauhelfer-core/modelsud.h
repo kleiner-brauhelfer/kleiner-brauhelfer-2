@@ -12,6 +12,96 @@ class ModelSud : public SqlTableModel
     friend class ProxyModelSud;
 
 public:
+
+    enum Column
+    {
+        ColID,
+        ColSudname,
+        ColSudnummer,
+        ColAnlage,
+        ColMenge,
+        ColSW,
+        ColhighGravityFaktor,
+        ColFaktorHauptguss,
+        ColWasserprofil,
+        ColRestalkalitaetSoll,
+        ColEinmaischenTemp,
+        ColCO2,
+        ColIBU,
+        ColberechnungsArtHopfen,
+        ColKochdauerNachBitterhopfung,
+        ColNachisomerisierungszeit,
+        ColReifezeit,
+        ColKostenWasserStrom,
+        ColKommentar,
+        ColStatus,
+        ColBraudatum,
+        ColAbfuelldatum,
+        ColErstellt,
+        ColGespeichert,
+        Colerg_S_Gesamt,
+        Colerg_W_Gesamt,
+        Colerg_WHauptguss,
+        Colerg_WNachguss,
+        Colerg_Farbe,
+        ColSWKochende,
+        ColSWAnstellen,
+        ColSchnellgaerprobeAktiv,
+        ColSWSchnellgaerprobe,
+        ColSWJungbier,
+        ColTemperaturJungbier,
+        ColWuerzemengeVorHopfenseihen,
+        ColWuerzemengeKochende,
+        ColWuerzemengeAnstellen,
+        ColSpunden,
+        ColSpeisemenge,
+        ColJungbiermengeAbfuellen,
+        Colerg_AbgefuellteBiermenge,
+        Colerg_Sudhausausbeute,
+        Colerg_EffektiveAusbeute,
+        Colerg_Preis,
+        Colerg_Alkohol,
+        ColAusbeuteIgnorieren,
+        ColMerklistenID,
+        // virtual
+        ColDeleted,
+        ColSWIst,
+        ColSREIst,
+        ColMengeIst,
+        ColIbuIst,
+        ColFarbeIst,
+        ColCO2Ist,
+        ColSpundungsdruck,
+        ColGruenschlauchzeitpunkt,
+        ColSpeiseNoetig,
+        ColSpeiseAnteil,
+        ColZuckerAnteil,
+        ColWoche,
+        ColReifezeitDelta,
+        ColAbfuellenBereitZutaten,
+        ColMengeSollKochbeginn,
+        ColMengeSollKochende,
+        ColWuerzemengeAnstellenTotal,
+        ColSW_Malz,
+        ColSW_WZ_Maischen,
+        ColSW_WZ_Kochen,
+        ColSW_WZ_Gaerung,
+        ColSWSollKochbeginn,
+        ColSWSollKochbeginnMitWz,
+        ColSWSollKochende,
+        ColSWSollAnstellen,
+        ColVerdampfungsziffer,
+        ColsEVG,
+        ColtEVG,
+        ColAnlageVerdampfungsziffer,
+        ColAnlageSudhausausbeute,
+        ColRestalkalitaetFaktor,
+        ColFaktorHauptgussEmpfehlung,
+        ColBewertungMittel
+    };
+
+public:
+
     ModelSud(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     void createConnections();
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
@@ -22,12 +112,16 @@ public:
     QVariantMap copyValues(int row) const Q_DECL_OVERRIDE;
     QVariant dataAnlage(int row, const QString& fieldName) const;
     QVariant dataWasser(int row, const QString& fieldName) const;
+
 private slots:
+
     void onModelReset();
     void onRowChanged(const QModelIndex &index);
     void onOtherModelRowChanged(const QModelIndex &index);
     void onAnlageDataChanged(const QModelIndex &index);
+
 private:
+
     bool setDataExt_impl(const QModelIndex &index, const QVariant &value);
     void update(int row);
     void updateSwWeitereZutaten(int row);
@@ -53,7 +147,9 @@ private:
     QVariant RestalkalitaetFaktor(const QModelIndex &index) const;
     QVariant FaktorHauptgussEmpfehlung(const QModelIndex &index) const;
     void removeRowsFrom(SqlTableModel* model, int sudId);
+
 private:
+
     Brauhelfer* bh;
     bool mUpdating;
     bool mSkipUpdateOnOtherModelChanged;

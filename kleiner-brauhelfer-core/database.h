@@ -21,6 +21,9 @@
 #include "modelausruestung.h"
 #include "modelrasten.h"
 #include "modelflaschenlabeltags.h"
+#include "modelanhang.h"
+#include "modelflaschenlabel.h"
+#include "modelgeraete.h"
 
 class QSqlDatabase;
 class Brauhelfer;
@@ -63,11 +66,11 @@ private:
     ModelHopfen* modelHopfen;
     ModelHefe* modelHefe;
     ModelWeitereZutaten* modelWeitereZutaten;
-    SqlTableModel* modelAnhang;
+    ModelAnhang* modelAnhang;
     ModelAusruestung* modelAusruestung;
-    SqlTableModel* modelGeraete;
+    ModelGeraete* modelGeraete;
     ModelWasser* modelWasser;
-    SqlTableModel* modelFlaschenlabel;
+    ModelFlaschenlabel* modelFlaschenlabel;
     ModelFlaschenlabelTags* modelFlaschenlabelTags;
     int mVersion;
 };

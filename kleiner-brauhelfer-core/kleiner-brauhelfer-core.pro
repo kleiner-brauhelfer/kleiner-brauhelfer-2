@@ -38,9 +38,12 @@ SOURCES += \
     biercalc.cpp \
     brauhelfer.cpp \
     database.cpp \
+    modelanhang.cpp \
     modelausruestung.cpp \
     modelbewertungen.cpp \
+    modelflaschenlabel.cpp \
     modelflaschenlabeltags.cpp \
+    modelgeraete.cpp \
     modelhauptgaerverlauf.cpp \
     modelhefe.cpp \
     modelhefegaben.cpp \
@@ -68,9 +71,12 @@ HEADERS += \
     database.h \
     database_defs.h \
     kleiner-brauhelfer-core_global.h \
+    modelanhang.h \
     modelausruestung.h \
     modelbewertungen.h \
+    modelflaschenlabel.h \
     modelflaschenlabeltags.h \
+    modelgeraete.h \
     modelhauptgaerverlauf.h \
     modelhefe.h \
     modelhefegaben.h \

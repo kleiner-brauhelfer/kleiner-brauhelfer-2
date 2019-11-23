@@ -29,11 +29,11 @@ void Database::createTables(Brauhelfer* bh)
     modelHopfen = new ModelHopfen(bh, db);
     modelHefe = new ModelHefe(bh, db);
     modelWeitereZutaten = new ModelWeitereZutaten(bh, db);
-    modelAnhang = new SqlTableModel(bh, db);
+    modelAnhang = new ModelAnhang(bh, db);
     modelAusruestung = new ModelAusruestung(bh, db);
-    modelGeraete = new SqlTableModel(bh, db);
+    modelGeraete = new ModelGeraete(bh, db);
     modelWasser = new ModelWasser(bh, db);
-    modelFlaschenlabel = new SqlTableModel(bh, db);
+    modelFlaschenlabel = new ModelFlaschenlabel(bh, db);
     modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, db);
     modelSud->createConnections();
 }

@@ -33,7 +33,7 @@ INCLUDEPATH += $$PWD/../kleiner-brauhelfer-core
 DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
 DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
 win32: PRE_TARGETDEPS += $$OUT_PWD/../bin/kleiner-brauhelfer-core.lib
-unix:!macx PRE_TARGETDEPS += $$OUT_PWD/../bin/kleiner-brauhelfer-core.a
+unix:!macx: PRE_TARGETDEPS += $$OUT_PWD/../bin/kleiner-brauhelfer-core.a
 macx: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 
 SOURCES += \

@@ -63,6 +63,17 @@ class LIB_EXPORT Brauhelfer : public QObject
 
 public:
 
+    enum class SudStatus
+    {
+        Rezept = 0,
+        Gebraut = 1,
+        Abgefuellt = 2,
+        Verbraucht = 3
+    };
+    Q_ENUM(SudStatus)
+
+public:
+
     static const int libVersionMajor;
     static const int libVerionMinor;
     static const int libVersionPatch;

@@ -31,6 +31,8 @@ public:
 public:
     ProxyModelSud(QObject* parent = nullptr);
 
+    Q_INVOKABLE void resetColumns();
+
     bool filterMerkliste() const;
     void setFilterMerkliste(bool value);
 

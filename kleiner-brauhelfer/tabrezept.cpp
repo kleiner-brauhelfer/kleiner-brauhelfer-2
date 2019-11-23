@@ -75,13 +75,13 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(malzGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
+            this, SLOT(malzGaben_dataChanged()));
 
     connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(hopfenGaben_dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
+            this, SLOT(hopfenGaben_dataChanged()));
 
     connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
     connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
@@ -678,17 +678,9 @@ void TabRezept::malzGaben_modified()
     updateMalzGaben();
 }
 
-void TabRezept::malzGaben_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
+void TabRezept::malzGaben_dataChanged()
 {
-    Q_UNUSED(roles)
-    int colProzent = bh->sud()->modelMalzschuettung()->fieldIndex("Prozent");
-    QModelIndex index = topLeft;
-    for (int i = topLeft.column(); i <= bottomRight.column(); ++i)
-    {
-        if (index.column() == colProzent)
-            return updateMalzGaben();
-        index = index.sibling(index.row(), index.column() + 1);
-    }
+    updateMalzGaben();
     updateMalzDiagram();
 }
 
@@ -757,17 +749,9 @@ void TabRezept::hopfenGaben_modified()
     updateHopfenGaben();
 }
 
-void TabRezept::hopfenGaben_dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
+void TabRezept::hopfenGaben_dataChanged()
 {
-    Q_UNUSED(roles)
-    int colProzent = bh->sud()->modelHopfengaben()->fieldIndex("Prozent");
-    QModelIndex index = topLeft;
-    for (int i = topLeft.column(); i <= bottomRight.column(); ++i)
-    {
-        if (index.column() == colProzent)
-            return updateHopfenGaben();
-        index = index.sibling(index.row(), index.column() + 1);
-    }
+    updateHopfenGaben();
     updateHopfenDiagram();
 }
 

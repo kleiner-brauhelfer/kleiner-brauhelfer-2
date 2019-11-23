@@ -14,7 +14,7 @@ void Database::createTables(Brauhelfer* bh)
 {
     QSqlDatabase db = QSqlDatabase::database("kbh", false);
     if (!db.isValid())
-        throw std::runtime_error("Database connection is invalid.");
+        qCritical("Database connection is invalid.");
     modelSud = new ModelSud(bh, db);
     modelRasten = new ModelRasten(bh, db);
     modelMalzschuettung = new ModelMalzschuettung(bh, db);
@@ -101,7 +101,10 @@ bool Database::connect(const QString &dbPath, bool readonly)
         {
             QSqlDatabase db = QSqlDatabase::database("kbh", false);
             if (!db.isValid())
-                throw std::runtime_error("Database connection is invalid.");
+            {
+                qCritical("Database connection is invalid.");
+                return false;
+            }
             db.close();
             db.setDatabaseName(dbPath);
             db.open();
@@ -270,17 +273,20 @@ QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
         QString str = "Query: " + query +
                 "\nError: " + lastError.databaseText() +
                 "\n" + lastError.driverText();
-        throw std::runtime_error(str.toStdString().c_str());
+        qCritical(str.toStdString().c_str());
     }
     return sqlQuery;
 }
 
-void Database::update()
+bool Database::update()
 {
     QSqlQuery query;
     QSqlDatabase db = QSqlDatabase::database("kbh", false);
     if (!db.isValid())
-        throw std::runtime_error("Database connection is invalid.");
+    {
+        qCritical("Database connection is invalid.");
+        return false;
+    }
     int version = mVersion;
     try
     {
@@ -806,15 +812,19 @@ void Database::update()
 
             db.commit();
         }
+
+        return true;
     }
     catch (const std::exception& ex)
     {
         db.rollback();
-        throw ex;
+        qCritical(ex.what());
+        return false;
     }
     catch (...)
     {
         db.rollback();
-        throw std::runtime_error("unknown error");
+        qCritical("unknown error");
+        return false;
     }
 }

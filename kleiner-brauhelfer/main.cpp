@@ -105,24 +105,13 @@ static bool connectDatabase()
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
-                    try
+                    if (bh->updateDatabase())
                     {
-                        if (bh->updateDatabase())
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
-                        }
+                        continue;
                     }
-                    catch (const std::exception& ex)
+                    else
                     {
-                        QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), ex.what());
-                    }
-                    catch (...)
-                    {
-                        QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), QObject::tr("Unbekannter Fehler."));
+                        QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
                     }
                 }
             }
@@ -253,14 +242,10 @@ int main(int argc, char *argv[])
     else
         gSettings = new Settings();
 
-    qInfo("--- Application start ---");
-    qInfo() << "Version:" << QCoreApplication::applicationVersion();
-
     // logging
     int logLevel = gSettings->logLevel();
     if (logLevel > 0)
     {
-        qInfo() << "Log level:" << logLevel;
         if (logLevel < 1000)
         {
             //log in file
@@ -291,6 +276,11 @@ int main(int argc, char *argv[])
             break;
         }
     }
+
+    qInfo("--- Application start ---");
+    qInfo() << "Version:" << QCoreApplication::applicationVersion();
+    if (logLevel > 0)
+        qInfo() << "Log level:" << logLevel;
 
     // install translation
     QTranslator translatorQt;

@@ -530,6 +530,8 @@ void ModelSud::update(int row)
 
     mSignalModifiedBlocked = false;
     mUpdating = false;
+
+    emit modified();
 }
 
 void ModelSud::updateSwWeitereZutaten(int row)

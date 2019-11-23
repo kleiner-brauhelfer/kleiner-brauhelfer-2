@@ -16,6 +16,8 @@ TabBewertung::TabBewertung(QWidget *parent) :
     ui->setupUi(this);
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
+    connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(sudDataChanged(const QModelIndex&)));
     connect(bh->sud()->modelBewertungen(), SIGNAL(layoutChanged()), this, SLOT(modelModified()));
     connect(bh->sud()->modelBewertungen(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(modelModified()));
     connect(bh->sud()->modelBewertungen(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(modelModified()));
@@ -46,6 +48,16 @@ void TabBewertung::sudLoaded()
         clicked(0);
     else
        updateValues();
+}
+
+void TabBewertung::sudDataChanged(const QModelIndex& index)
+{
+    const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
+    QString fieldname = model->fieldName(index.column());
+    if (fieldname == "Status")
+    {
+        updateValues();
+    }
 }
 
 void TabBewertung::modelModified()

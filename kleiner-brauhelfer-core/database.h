@@ -42,7 +42,7 @@ public:
     int version() const;
     void save();
     void discard();
-    void update();
+    bool update();
 
 private:
     void setTables();

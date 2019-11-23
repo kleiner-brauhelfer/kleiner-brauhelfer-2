@@ -19,6 +19,7 @@ public:
 
 private slots:
     void sudLoaded();
+    void sudDataChanged(const QModelIndex& index);
     void modelModified();
     void updateValues();
     void clicked(int index);

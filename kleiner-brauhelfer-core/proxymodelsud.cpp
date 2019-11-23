@@ -5,6 +5,8 @@
 ProxyModelSud::ProxyModelSud(QObject *parent) :
     ProxyModel(parent),
     mColumnId(-1),
+    mColumnSudname(-1),
+    mColumnKommentar(-1),
     mColumnStatus(-1),
     mColumnMerklistenID(-1),
     mFilterMerkliste(false),
@@ -15,6 +17,11 @@ ProxyModelSud::ProxyModelSud(QObject *parent) :
 }
 
 void ProxyModelSud::onSourceModelChanged()
+{
+    resetColumns();
+}
+
+void ProxyModelSud::resetColumns()
 {
     if(SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel()))
     {

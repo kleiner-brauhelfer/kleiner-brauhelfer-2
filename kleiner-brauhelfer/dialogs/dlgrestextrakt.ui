@@ -77,9 +77,6 @@
           <property name="singleStep">
            <double>0.000100000000000</double>
           </property>
-          <property name="value">
-           <double>1.000000000000000</double>
-          </property>
          </widget>
         </item>
         <item row="1" column="2">
@@ -215,9 +212,6 @@
           <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value">
-           <double>20.000000000000000</double>
-          </property>
          </widget>
         </item>
         <item row="3" column="0">
@@ -280,9 +274,6 @@
           </property>
           <property name="singleStep">
            <double>0.100000000000000</double>
-          </property>
-          <property name="value">
-           <double>20.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -365,22 +356,17 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QLabel" name="label_EinheitBrix">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>°Brix</string>
-          </property>
+         <widget class="ComboBox" name="cbEinheit">
+          <item>
+           <property name="text">
+            <string>°Brix</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>°Plato</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item row="0" column="0">
@@ -500,9 +486,6 @@
           <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value">
-           <double>20.000000000000000</double>
-          </property>
          </widget>
         </item>
         <item>
@@ -574,9 +557,6 @@
           </property>
           <property name="singleStep">
            <double>0.100000000000000</double>
-          </property>
-          <property name="value">
-           <double>20.000000000000000</double>
           </property>
          </widget>
         </item>

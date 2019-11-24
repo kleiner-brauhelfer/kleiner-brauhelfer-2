@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    qApp->installEventFilter(this);
 
     mTabIndexDatenbank = ui->tabMain->indexOf(ui->tabDatenbank);
 
@@ -55,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", true).toBool());
+    ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
     BierCalc::faktorBrixToPlato = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
 
@@ -128,6 +130,13 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
         if (ui->tabMain->isTabEnabled(n))
             ui->tabMain->setCurrentIndex(n);
     }
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (event->type() == QEvent::ToolTip &&!ui->actionTooltips->isChecked() )
+        return true;
+    return QMainWindow::eventFilter(obj, event);
 }
 
 void MainWindow::restart()
@@ -511,6 +520,13 @@ void MainWindow::on_actionCheckUpdate_triggered(bool checked)
     gSettings->endGroup();
     if (checked)
         checkMessage();
+}
+
+void MainWindow::on_actionTooltips_triggered(bool checked)
+{
+    gSettings->beginGroup("General");
+    gSettings->setValue("TooltipsEnabled", checked);
+    gSettings->endGroup();
 }
 
 void MainWindow::on_actionSpende_triggered()

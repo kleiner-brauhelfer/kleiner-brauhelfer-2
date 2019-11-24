@@ -49,6 +49,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ## Änderungen & Erweiterungen
 
 ### Version 2.0.0beta5 (in Entwicklung)
+- Neu: Tooltips ein- & ausschaltbar
+- Fix: Grössen der Dialogue
 
 ### Version 2.0.0beta4
 - Neu: Offizielle version kompiliert mit Qt 5.13.2

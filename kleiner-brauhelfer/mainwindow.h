@@ -43,12 +43,14 @@ private slots:
     void on_actionReiterDatenbank_triggered(bool checked);
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
+    void on_actionTooltips_triggered(bool checked);
     void on_actionSpende_triggered();
     void on_actionUeber_triggered();
 
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart();
     void save();
     void saveSettings();

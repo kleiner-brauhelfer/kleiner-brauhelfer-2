@@ -311,6 +311,7 @@ bool TabAusruestung::setData(int col, const QVariant &value)
 
 void TabAusruestung::updateValues()
 {
+    ui->lblAnlage->setText(data(ModelAusruestung::ColName).toString());
     if (!ui->tbAusbeute->hasFocus())
         ui->tbAusbeute->setValue(data(ModelAusruestung::ColSudhausausbeute).toDouble());
     if (!ui->tbVerdampfung->hasFocus())

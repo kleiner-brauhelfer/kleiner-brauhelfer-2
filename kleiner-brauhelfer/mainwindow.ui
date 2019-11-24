@@ -163,6 +163,7 @@
     </property>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
+    <addaction name="actionTooltips"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
@@ -304,6 +305,17 @@
    </property>
    <property name="text">
     <string>Eingabefelder entsperren</string>
+   </property>
+  </action>
+  <action name="actionTooltips">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tooltips</string>
    </property>
   </action>
  </widget>

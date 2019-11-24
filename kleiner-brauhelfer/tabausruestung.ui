@@ -196,10 +196,20 @@
           <x>0</x>
           <y>0</y>
           <width>647</width>
-          <height>643</height>
+          <height>660</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="lblAnlage">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QGroupBox" name="groupBox_17">
            <property name="sizePolicy">

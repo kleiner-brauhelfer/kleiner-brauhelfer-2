@@ -457,8 +457,8 @@ void TabEtikette::on_btnLoeschen_clicked()
 {
     if (bh->sud()->modelFlaschenlabel()->rowCount() > 0)
     {
-        int ret = QMessageBox::question(this, tr("Etikette löschen?"),
-                                        tr("Soll die Etikette gelöscht werden?"));
+        int ret = QMessageBox::question(this, tr("Etikette aus Sud entfernen?"),
+                                        tr("Soll die Etikette aus dem Sud entfernt werden?"));
         if (ret == QMessageBox::Yes)
         {
             ui->cbAuswahl->setCurrentIndex(-1);

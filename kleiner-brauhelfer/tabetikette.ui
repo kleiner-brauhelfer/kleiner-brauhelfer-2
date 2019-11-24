@@ -22,7 +22,20 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Vorlage:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="ComboBox" name="cbAuswahl">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -55,6 +68,13 @@
         </widget>
        </item>
       </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Weitere Vorlagen können über die Sudanhänge im Reiter Rezept hinzugefügt werden. Die Datei muss im SVG Format sein.</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QSplitter" name="splitter_1">

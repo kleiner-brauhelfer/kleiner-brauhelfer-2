@@ -89,9 +89,7 @@ void TabBraudaten::sudLoaded()
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
 {
-    const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
-    QString fieldname = model->fieldName(index.column());
-    if (fieldname == "Status")
+    if (index.column() == ModelSud::ColStatus)
     {
         checkEnabled();
     }
@@ -175,11 +173,11 @@ void TabBraudaten::updateValues()
     else
         ui->lblWarnAusbeute->setVisible(false);
 
-    value = pow(bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble() / 2, 2) * M_PI / 1000;
+    value = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
     ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), ui->tbMengeSollKochbeginn20->value()));
     ui->tbMengeSollcmVomBoden->setValue(ui->tbMengeSollKochbeginn100->value() / value);
-    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollcmVomBoden->value());
+    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollcmVomBoden->value());
     ui->tbSWSollKochbeginn->setValue(bh->sud()->getSWSollKochbeginn());
     ui->tbSWSollKochbeginnMitWz->setValue(bh->sud()->getSWSollKochbeginnMitWz());
     ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSW_WZ_Kochen() > 0.0);
@@ -187,7 +185,7 @@ void TabBraudaten::updateValues()
     ui->tbMengeSollKochende20->setValue(bh->sud()->getMengeSollKochende());
     ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), ui->tbMengeSollKochende20->value()));
     ui->tbMengeSollEndecmVomBoden->setValue(ui->tbMengeSollKochende100->value() / value);
-    ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble() - ui->tbMengeSollEndecmVomBoden->value());
+    ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollEndecmVomBoden->value());
     ui->tbSWSollKochende->setValue(bh->sud()->getSWSollKochende());
 
     ui->tbVerdampfung->setValue(bh->sud()->getVerdampfungsziffer());
@@ -225,8 +223,8 @@ void TabBraudaten::on_tbWuerzemengeKochbeginn_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
-    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
@@ -247,8 +245,8 @@ void TabBraudaten::on_tbWuerzemengeKochende_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
-    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
     dlg.setVisibleVonOben(false);
@@ -305,8 +303,8 @@ void TabBraudaten::on_tbWuerzemengeAnstellenTotal_valueChanged(double value)
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
-    double d = bh->sud()->getAnlageData("Sudpfanne_Durchmesser").toDouble();
-    double h = bh->sud()->getAnlageData("Sudpfanne_Hoehe").toDouble();
+    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeAnstellenTotal->value());
     dlg.setVisibleVonOben(false);

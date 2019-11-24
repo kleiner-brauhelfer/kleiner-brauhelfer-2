@@ -40,7 +40,7 @@ private slots:
 private:
     struct AuswahlType
     {
-        QString field;
+        int col;
         int precision;
         QString label;
         QString unit;

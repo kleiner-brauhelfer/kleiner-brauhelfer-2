@@ -115,8 +115,8 @@ private slots:
     void on_tbGesamteindruck_textChanged();
 
 private:
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
     void setFarbe();
     void setSchaum();
     void setGeruch();

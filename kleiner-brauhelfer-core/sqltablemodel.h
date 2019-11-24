@@ -34,10 +34,10 @@ public:
     /**
      * @brief Gets data from the model
      * @param row Row number
-     * @param fieldName Field name
+     * @param col Column numer
      * @return Table data
      */
-    Q_INVOKABLE QVariant data(int row, const QString &fieldName, int role = Qt::DisplayRole) const;
+    Q_INVOKABLE QVariant data(int row, int col, int role = Qt::DisplayRole) const;
 
     /**
      * @brief Sets data to the model
@@ -52,11 +52,11 @@ public:
     /**
      * @brief Sets data to the model
      * @param row Row number
-     * @param fieldName Field name
+     * @param col Column number
      * @param value Field value
      * @return True on success
      */
-    Q_INVOKABLE bool setData(int row, const QString &fieldName, const QVariant &value, int role = Qt::EditRole);
+    Q_INVOKABLE bool setData(int row, int col, const QVariant &value, int role = Qt::EditRole);
 
     /**
      * @brief Sets data to the model
@@ -98,13 +98,6 @@ public:
      * @return Field name
      */
     Q_INVOKABLE QString fieldName(int fieldIndex) const;
-
-    /**
-     * @brief Sets the sorting order
-     * @param fieldName Ordered by this field name
-     * @param order Ascending or descending order
-     */
-    Q_INVOKABLE void setSortByFieldName(const QString &fieldName, Qt::SortOrder order = Qt::AscendingOrder);
 
     /**
      * @brief Sets the table
@@ -158,11 +151,11 @@ public:
 
     /**
      * @brief Gets the row number matching a given value
-     * @param fieldName Field name to compare
+     * @param col Column number to compare
      * @param value Value of field name to match
      * @return Row number, -1 if not found
      */
-    int getRowWithValue(const QString &fieldName, const QVariant &value);
+    int getRowWithValue(int col, const QVariant &value);
 
     /**
      * @brief Gets the field name value matching a given field name key
@@ -171,7 +164,7 @@ public:
      * @param fieldName Field name to get
      * @return Value corresponding to field name
      */
-    QVariant getValueFromSameRow(const QString &fieldNameKey, const QVariant &valueKey, const QString &fieldName);
+    QVariant getValueFromSameRow(int colKey, const QVariant &valueKey, int col);
 
     /**
      * @brief Default values of a row

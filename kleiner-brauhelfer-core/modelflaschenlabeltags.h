@@ -32,8 +32,8 @@ public:
 
 private:
 
-    bool isUnique(const QModelIndex &index, const QVariant &value, int sudId, bool ignoreIndexRow = false) const;
-    QString getUniqueName(const QModelIndex &index, const QVariant &value, int sudId, bool ignoreIndexRow = false) const;
+    bool isUnique(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow = false) const;
+    QString getUniqueName(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow = false) const;
 
 private:
 

@@ -34,7 +34,7 @@ public:
 
 private:
 
-    int getLastRow(int id) const;
+    int getLastRow(const QVariant &sudId) const;
 
 private:
 

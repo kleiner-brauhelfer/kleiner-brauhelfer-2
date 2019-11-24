@@ -72,10 +72,9 @@ void TabEtikette::updateAuswahlListe()
 {
     ui->cbAuswahl->clear();
 
-    int colPfad = bh->sud()->modelAnhang()->fieldIndex("Pfad");
     for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
     {
-        QString pfad = bh->sud()->modelAnhang()->index(row, colPfad).data().toString();
+        QString pfad = bh->sud()->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
         if (pfad.endsWith(".svg"))
         {
             QFileInfo fi(pfad);
@@ -101,7 +100,7 @@ QString TabEtikette::generateSvg(const QString &svg)
 void TabEtikette::updateTemplateFilePath()
 {
     QDir baseDir(gSettings->databaseDir());
-    QFileInfo fi(data("Auswahl").toString());
+    QFileInfo fi(data(ModelFlaschenlabel::ColAuswahl).toString());
     if (!fi.isFile())
         mTemplateFilePath = QString();
     else if (QDir::isRelativePath(fi.filePath()))
@@ -197,14 +196,14 @@ bool TabEtikette::checkSave()
     return false;
 }
 
-QVariant TabEtikette::data(const QString &fieldName) const
+QVariant TabEtikette::data(int col) const
 {
-    return bh->sud()->modelFlaschenlabel()->data(0, fieldName);
+    return bh->sud()->modelFlaschenlabel()->data(0, col);
 }
 
-bool TabEtikette::setData(const QString &fieldName, const QVariant &value)
+bool TabEtikette::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelFlaschenlabel()->setData(0, fieldName, value);
+    return bh->sud()->modelFlaschenlabel()->setData(0, col, value);
 }
 
 void TabEtikette::on_cbAuswahl_activated(int index)
@@ -224,7 +223,7 @@ void TabEtikette::on_cbAuswahl_activated(int index)
                             {"SRandUnten", 15}});
         bh->sud()->modelFlaschenlabel()->append(values);
     }
-    setData("Auswahl", ui->cbAuswahl->itemData(index).toString());
+    setData(ModelFlaschenlabel::ColAuswahl, ui->cbAuswahl->itemData(index).toString());
     updateTemplateFilePath();
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateSvg();
@@ -386,7 +385,7 @@ void TabEtikette::updateValues()
 {
     if (!ui->cbAuswahl->hasFocus())
     {
-        QVariant auswahl = data("Auswahl");
+        QVariant auswahl = data(ModelFlaschenlabel::ColAuswahl);
         for (int i = 0; i < ui->cbAuswahl->count(); ++i)
         {
             if (ui->cbAuswahl->itemData(i) == auswahl)
@@ -397,61 +396,61 @@ void TabEtikette::updateValues()
         }
     }
     if (!ui->spinBox_BreiteLabel->hasFocus())
-        ui->spinBox_BreiteLabel->setValue(data("BreiteLabel").toInt());
+        ui->spinBox_BreiteLabel->setValue(data(ModelFlaschenlabel::ColBreiteLabel).toInt());
     if (!ui->spinBox_AnzahlLabels->hasFocus())
-        ui->spinBox_AnzahlLabels->setValue(data("AnzahlLabels").toInt());
+        ui->spinBox_AnzahlLabels->setValue(data(ModelFlaschenlabel::ColAnzahlLabels).toInt());
     if (!ui->spinBox_AbstandLabel->hasFocus())
-        ui->spinBox_AbstandLabel->setValue(data("AbstandLabels").toInt());
+        ui->spinBox_AbstandLabel->setValue(data(ModelFlaschenlabel::ColAbstandLabels).toInt());
     if (!ui->spinBox_FLabel_RandOben->hasFocus())
-        ui->spinBox_FLabel_RandOben->setValue(data("SRandOben").toInt());
+        ui->spinBox_FLabel_RandOben->setValue(data(ModelFlaschenlabel::ColSRandOben).toInt());
     if (!ui->spinBox_FLabel_RandLinks->hasFocus())
-        ui->spinBox_FLabel_RandLinks->setValue(data("SRandLinks").toInt());
+        ui->spinBox_FLabel_RandLinks->setValue(data(ModelFlaschenlabel::ColSRandLinks).toInt());
     if (!ui->spinBox_FLabel_RandRechts->hasFocus())
-        ui->spinBox_FLabel_RandRechts->setValue(data("SRandRechts").toInt());
+        ui->spinBox_FLabel_RandRechts->setValue(data(ModelFlaschenlabel::ColSRandRechts).toInt());
     if (!ui->spinBox_FLabel_RandUnten->hasFocus())
-        ui->spinBox_FLabel_RandUnten->setValue(data("SRandUnten").toInt());
+        ui->spinBox_FLabel_RandUnten->setValue(data(ModelFlaschenlabel::ColSRandUnten).toInt());
 }
 
 void TabEtikette::on_spinBox_BreiteLabel_valueChanged(int value)
 {
     if (ui->spinBox_BreiteLabel->hasFocus())
-        setData("BreiteLabel", value);
+        setData(ModelFlaschenlabel::ColBreiteLabel, value);
 }
 
 void TabEtikette::on_spinBox_AnzahlLabels_valueChanged(int value)
 {
     if (ui->spinBox_AnzahlLabels->hasFocus())
-        setData("AnzahlLabels", value);
+        setData(ModelFlaschenlabel::ColAnzahlLabels, value);
 }
 
 void TabEtikette::on_spinBox_AbstandLabel_valueChanged(int value)
 {
     if (ui->spinBox_AbstandLabel->hasFocus())
-        setData("AbstandLabels", value);
+        setData(ModelFlaschenlabel::ColAbstandLabels, value);
 }
 
 void TabEtikette::on_spinBox_FLabel_RandOben_valueChanged(int value)
 {
     if (ui->spinBox_FLabel_RandOben->hasFocus())
-        setData("SRandOben", value);
+        setData(ModelFlaschenlabel::ColSRandOben, value);
 }
 
 void TabEtikette::on_spinBox_FLabel_RandLinks_valueChanged(int value)
 {
     if (ui->spinBox_FLabel_RandLinks->hasFocus())
-        setData("SRandLinks", value);
+        setData(ModelFlaschenlabel::ColSRandLinks, value);
 }
 
 void TabEtikette::on_spinBox_FLabel_RandRechts_valueChanged(int value)
 {
     if (ui->spinBox_FLabel_RandRechts->hasFocus())
-        setData("SRandRechts", value);
+        setData(ModelFlaschenlabel::ColSRandRechts, value);
 }
 
 void TabEtikette::on_spinBox_FLabel_RandUnten_valueChanged(int value)
 {
     if (ui->spinBox_FLabel_RandUnten->hasFocus())
-        setData("SRandUnten", value);
+        setData(ModelFlaschenlabel::ColSRandUnten, value);
 }
 
 void TabEtikette::on_btnLoeschen_clicked()

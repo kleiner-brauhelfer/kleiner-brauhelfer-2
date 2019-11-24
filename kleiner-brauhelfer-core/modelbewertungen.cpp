@@ -1,6 +1,5 @@
 #include "modelbewertungen.h"
 #include "brauhelfer.h"
-#include "modelnachgaerverlauf.h"
 
 ModelBewertungen::ModelBewertungen(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -8,41 +7,78 @@ ModelBewertungen::ModelBewertungen(Brauhelfer* bh, QSqlDatabase db) :
 {
 }
 
-QVariant ModelBewertungen::dataExt(const QModelIndex &index) const
+QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "Datum")
+    switch(idx.column())
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+    case ColDatum:
+    {
+        return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
-    if (field == "Woche")
+    case ColWoche:
     {
-        QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(index.row(), "SudID").toInt());
+        QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColSudID).toInt());
         if (!dt.isValid())
-        {
-            int sudId = data(index.row(), "SudID").toInt();
-            dt = bh->modelSud()->getValueFromSameRow("ID", sudId, "Abfuelldatum").toDateTime();
-        }
+            dt = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColAbfuelldatum).toDateTime();
         if (dt.isValid())
-            return dt.daysTo(data(index.row(), "Datum").toDateTime()) / 7 + 1;
+            return dt.daysTo(data(idx.row(), ColDatum).toDateTime()) / 7 + 1;
         return 0;
     }
-    return QVariant();
+    default:
+        return QVariant();
+    }
 }
 
-bool ModelBewertungen::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelBewertungen::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
-    if (field == "Datum")
+    switch(idx.column())
     {
-        if (QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate)))
+    case ColDatum:
+    {
+        if (QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate)))
         {
-            QModelIndex index2 = this->index(index.row(), fieldIndex("Woche"));
-            QSqlTableModel::setData(index2, dataExt(index2));
+            QModelIndex idx2 = index(idx.row(), ColWoche);
+            QSqlTableModel::setData(idx2, idx2.data());
             return true;
         }
+        return false;
     }
-    return false;
+    default:
+        return false;
+    }
+}
+
+int ModelBewertungen::max(const QVariant &sudId)
+{
+    int max = -1;
+    for (int r = 0; r < rowCount(); ++r)
+    {
+        if (data(r, ColSudID) == sudId)
+        {
+            int sterne = data(r, ColSterne).toInt();
+            if (sterne > max)
+                max = sterne;
+        }
+    }
+    return max;
+}
+
+int ModelBewertungen::mean(const QVariant &sudId)
+{
+    int total = 0, n = 0;
+    for (int r = 0; r < rowCount(); ++r)
+    {
+        if (data(r, ColSudID) == sudId)
+        {
+            total += data(r, ColSterne).toInt();
+            n++;
+        }
+    }
+    if (n != 0)
+    {
+        return qRound(static_cast<double>(total)/n);
+    }
+    return -1;
 }
 
 void ModelBewertungen::defaultValues(QVariantMap &values) const
@@ -51,42 +87,4 @@ void ModelBewertungen::defaultValues(QVariantMap &values) const
         values.insert("Datum", QDateTime::currentDateTime());
     if (!values.contains("Sterne"))
         values.insert("Sterne", 0);
-}
-
-int ModelBewertungen::max(int sudId)
-{
-    int max = -1;
-    int colSudId = fieldIndex("SudID");
-    int colSterne = fieldIndex("Sterne");
-    for (int i = 0; i < rowCount(); i++)
-    {
-        if (data(index(i, colSudId)).toInt() == sudId)
-        {
-            int sterne = data(index(i, colSterne)).toInt();
-            if (sterne > max)
-                max = sterne;
-        }
-    }
-    return max;
-}
-
-int ModelBewertungen::mean(int sudId)
-{
-    int colSudId = fieldIndex("SudID");
-    int colSterne = fieldIndex("Sterne");
-    int total = 0;
-    int n = 0;
-    for (int i = 0; i < rowCount(); i++)
-    {
-        if (data(index(i, colSudId)).toInt() == sudId)
-        {
-            total += data(index(i, colSterne)).toInt();
-            n++;
-        }
-    }
-    if (n != 0)
-    {
-        return qRound((double)total / n);
-    }
-    return 0;
 }

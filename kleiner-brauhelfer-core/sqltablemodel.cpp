@@ -14,19 +14,19 @@ SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
     mVirtualField.append("deleted");
 }
 
-QVariant SqlTableModel::data(const QModelIndex &index, int role) const
+QVariant SqlTableModel::data(const QModelIndex &idx, int role) const
 {
     QVariant value;
     if (role == Qt::DisplayRole || role == Qt::EditRole || role > Qt::UserRole)
     {
-        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : index.column();
+        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : idx.column();
         if (col == QSqlTableModel::columnCount())
         {
-            value = headerData(index.row(), Qt::Vertical).toString() == "!";
+            value = headerData(idx.row(), Qt::Vertical).toString() == "!";
         }
         else
         {
-            const QModelIndex index2 = this->index(index.row(), col);
+            const QModelIndex index2 = index(idx.row(), col);
             value = dataExt(index2);
             if (!value.isValid())
                 value = QSqlTableModel::data(index2);
@@ -34,34 +34,34 @@ QVariant SqlTableModel::data(const QModelIndex &index, int role) const
     }
     else
     {
-        value = QSqlTableModel::data(index, role);
+        value = QSqlTableModel::data(idx, role);
     }
     return value;
 }
 
-QVariant SqlTableModel::data(int row, const QString &fieldName, int role) const
+QVariant SqlTableModel::data(int row, int col, int role) const
 {
-    return data(this->index(row, fieldIndex(fieldName)), role);
+    return data(index(row, col), role);
 }
 
-bool SqlTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool SqlTableModel::setData(const QModelIndex &idx, const QVariant &value, int role)
 {
     if (role == Qt::DisplayRole || role == Qt::EditRole || role > Qt::UserRole)
     {
-        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : index.column();
+        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : idx.column();
         if (col == QSqlTableModel::columnCount())
             return false;
-        qDebug(loggingCategory) << "setData():" << tableName() << "row" << index.row() << "col" << fieldName(col) << "=" << value.toString();
-        const QModelIndex index2 = this->index(index.row(), col);
+        qDebug(loggingCategory) << "setData():" << tableName() << "row" << idx.row() << "col" << fieldName(col) << "=" << value.toString();
+        const QModelIndex idx2 = index(idx.row(), col);
         ++mSetDataCnt;
-        bool ret = setDataExt(index2, value);
+        bool ret = setDataExt(idx2, value);
         if (!ret)
-            ret = QSqlTableModel::setData(index2, value);
+            ret = QSqlTableModel::setData(idx2, value);
         if (ret)
         {
             if (mSetDataCnt == 1)
             {
-                emit rowChanged(index);
+                emit rowChanged(idx);
                 if (!mSignalModifiedBlocked)
                     emit modified();
             }
@@ -69,12 +69,12 @@ bool SqlTableModel::setData(const QModelIndex &index, const QVariant &value, int
         --mSetDataCnt;
         return ret;
     }
-    return QSqlTableModel::setData(index, value, role);
+    return QSqlTableModel::setData(idx, value, role);
 }
 
-bool SqlTableModel::setData(int row, const QString &fieldName, const QVariant &value, int role)
+bool SqlTableModel::setData(int row, int col, const QVariant &value, int role)
 {
-    return setData(this->index(row, fieldIndex(fieldName)), value, role);
+    return setData(index(row, col), value, role);
 }
 
 bool SqlTableModel::setData(int row, const QVariantMap &values, int role)
@@ -83,7 +83,7 @@ bool SqlTableModel::setData(int row, const QVariantMap &values, int role)
     QVariantMap::const_iterator it = values.constBegin();
     while (it != values.constEnd())
     {
-        ret &= setData(row, it.key(), it.value(), role);
+        ret &= setData(row, fieldIndex(it.key()), it.value(), role);
         ++it;
     }
     return ret;
@@ -141,15 +141,6 @@ QString SqlTableModel::fieldName(int fieldIndex) const
             return mVirtualField[fieldIndex - QSqlTableModel::columnCount()];
     }
     return QString();
-}
-
-void SqlTableModel::setSortByFieldName(const QString &fieldName, Qt::SortOrder order)
-{
-    int idx = fieldIndex(fieldName);
-    if (idx != -1)
-    {
-        QSqlTableModel::setSort(idx, order);
-    }
 }
 
 void SqlTableModel::setTable(const QString &tableName)
@@ -216,11 +207,11 @@ bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
     {
         for (int i = 0; i < count; ++i)
         {
-            QModelIndex index = this->index(row + i, fieldIndex("deleted"));
-            if (index.isValid())
+            QModelIndex idx = index(row + i, fieldIndex("deleted"));
+            if (idx.isValid())
             {
-                emit dataChanged(index, index, QVector<int>());
-                emit rowChanged(index);
+                emit dataChanged(idx, idx, QVector<int>());
+                emit rowChanged(idx);
             }
         }
         emit layoutAboutToBeChanged();
@@ -314,38 +305,37 @@ void SqlTableModel::revertAll()
     emit modified();
 }
 
-int SqlTableModel::getRowWithValue(const QString &fieldName, const QVariant &value)
+int SqlTableModel::getRowWithValue(int col, const QVariant &value)
 {
-    int col = fieldIndex(fieldName);
     if (col != -1)
     {
         for (int row = 0; row < rowCount(); ++row)
         {
-            if (data(this->index(row, col)) == value)
+            if (data(row, col) == value)
                 return row;
         }
     }
     return -1;
 }
 
-QVariant SqlTableModel::getValueFromSameRow(const QString &fieldNameKey, const QVariant &valueKey, const QString &fieldName)
+QVariant SqlTableModel::getValueFromSameRow(int colKey, const QVariant &valueKey, int col)
 {
-    int row = getRowWithValue(fieldNameKey, valueKey);
+    int row = getRowWithValue(colKey, valueKey);
     if (row == -1)
         return QVariant();
-    return data(row, fieldName);
+    return data(row, col);
 }
 
 QVariant SqlTableModel::dataExt(const QModelIndex &index) const
 {
-    Q_UNUSED(index);
+    Q_UNUSED(index)
     return QVariant();
 }
 
 bool SqlTableModel::setDataExt(const QModelIndex &index, const QVariant &value)
 {
-    Q_UNUSED(index);
-    Q_UNUSED(value);
+    Q_UNUSED(index)
+    Q_UNUSED(value)
     return false;
 }
 
@@ -355,7 +345,7 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
-        if (index.sibling(row, index.column()).data() == value)
+        if (data(row, index.column()) == value)
             return false;
     }
     return true;

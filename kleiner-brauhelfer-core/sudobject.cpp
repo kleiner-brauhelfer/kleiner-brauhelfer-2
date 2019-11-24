@@ -50,34 +50,34 @@ void SudObject::init()
 {
     qInfo() << "SudObject::init()";
     modelRasten()->setSourceModel(bh->modelRasten());
-    modelRasten()->setFilterKeyColumn(bh->modelRasten()->fieldIndex("SudID"));
+    modelRasten()->setFilterKeyColumn(ModelRasten::ColSudID);
     modelMalzschuettung()->setSourceModel(bh->modelMalzschuettung());
-    modelMalzschuettung()->setFilterKeyColumn(bh->modelMalzschuettung()->fieldIndex("SudID"));
+    modelMalzschuettung()->setFilterKeyColumn(ModelMalzschuettung::ColSudID);
     modelHopfengaben()->setSourceModel(bh->modelHopfengaben());
-    modelHopfengaben()->setFilterKeyColumn(bh->modelHopfengaben()->fieldIndex("SudID"));
-    modelHopfengaben()->sort(bh->modelHopfengaben()->fieldIndex("Zeit"), Qt::DescendingOrder);
+    modelHopfengaben()->setFilterKeyColumn(ModelHopfengaben::ColSudID);
+    modelHopfengaben()->sort(ModelHopfengaben::ColZeit, Qt::DescendingOrder);
     modelHefegaben()->setSourceModel(bh->modelHefegaben());
-    modelHefegaben()->setFilterKeyColumn(bh->modelHefegaben()->fieldIndex("SudID"));
-    modelHefegaben()->sort(bh->modelHefegaben()->fieldIndex("ZugabeNach"), Qt::AscendingOrder);
+    modelHefegaben()->setFilterKeyColumn(ModelHefegaben::ColSudID);
+    modelHefegaben()->sort(ModelHefegaben::ColZugabeNach, Qt::AscendingOrder);
     modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
-    modelWeitereZutatenGaben()->setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
+    modelWeitereZutatenGaben()->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
     modelSchnellgaerverlauf()->setSourceModel(bh->modelSchnellgaerverlauf());
-    modelSchnellgaerverlauf()->setFilterKeyColumn(bh->modelSchnellgaerverlauf()->fieldIndex("SudID"));
-    modelSchnellgaerverlauf()->sort(bh->modelSchnellgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
+    modelSchnellgaerverlauf()->setFilterKeyColumn(ModelSchnellgaerverlauf::ColSudID);
+    modelSchnellgaerverlauf()->sort(ModelSchnellgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelHauptgaerverlauf()->setSourceModel(bh->modelHauptgaerverlauf());
-    modelHauptgaerverlauf()->setFilterKeyColumn(bh->modelHauptgaerverlauf()->fieldIndex("SudID"));
-    modelHauptgaerverlauf()->sort(bh->modelHauptgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
+    modelHauptgaerverlauf()->setFilterKeyColumn(ModelHauptgaerverlauf::ColSudID);
+    modelHauptgaerverlauf()->sort(ModelHauptgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelNachgaerverlauf()->setSourceModel(bh->modelNachgaerverlauf());
-    modelNachgaerverlauf()->setFilterKeyColumn(bh->modelNachgaerverlauf()->fieldIndex("SudID"));
-    modelNachgaerverlauf()->sort(bh->modelNachgaerverlauf()->fieldIndex("Zeitstempel"), Qt::AscendingOrder);
+    modelNachgaerverlauf()->setFilterKeyColumn(ModelNachgaerverlauf::ColSudID);
+    modelNachgaerverlauf()->sort(ModelNachgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelBewertungen()->setSourceModel(bh->modelBewertungen());
-    modelBewertungen()->setFilterKeyColumn(bh->modelBewertungen()->fieldIndex("SudID"));
+    modelBewertungen()->setFilterKeyColumn(ModelBewertungen::ColSudID);
     modelAnhang()->setSourceModel(bh->modelAnhang());
-    modelAnhang()->setFilterKeyColumn(bh->modelAnhang()->fieldIndex("SudID"));
+    modelAnhang()->setFilterKeyColumn(ModelAnhang::ColSudID);
     modelFlaschenlabel()->setSourceModel(bh->modelFlaschenlabel());
-    modelFlaschenlabel()->setFilterKeyColumn(bh->modelFlaschenlabel()->fieldIndex("SudID"));
+    modelFlaschenlabel()->setFilterKeyColumn(ModelFlaschenlabel::ColSudID);
     modelFlaschenlabelTags()->setSourceModel(bh->modelFlaschenlabelTags());
-    modelFlaschenlabelTags()->setFilterKeyColumn(bh->modelFlaschenlabelTags()->fieldIndex("SudID"));
+    modelFlaschenlabelTags()->setFilterKeyColumn(ModelFlaschenlabelTags::ColSudID);
 
     QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
     modelRasten()->setFilterRegExp(regExpId);
@@ -99,7 +99,7 @@ void SudObject::load(int id)
     if (mId != id)
     {
         mId = id;
-        mRowSud = bh->modelSud()->getRowWithValue("ID", mId);
+        mRowSud = bh->modelSud()->getRowWithValue(ModelSud::ColID, mId);
 
         if (mId != -1)
             qInfo() << "SudObject::load():" << getSudname() << "(" << mId << ")";
@@ -122,7 +122,7 @@ void SudObject::load(int id)
 
         if (isLoaded())
         {
-            QVariant qvId = getValue("ID");
+            QVariant qvId = getValue(ModelSud::ColID);
             if (!qvId.isValid() || qvId.toInt() != mId)
             {
                 qCritical("SudObject::load() ID mismatch");
@@ -147,13 +147,13 @@ bool SudObject::isLoaded() const
 
 void SudObject::onSudLayoutChanged()
 {
-    if (getValue("deleted").toBool())
+    if (getValue(ModelSud::ColDeleted).toBool())
     {
         unload();
     }
-    else if (mId != getValue("ID").toInt())
+    else if (mId != getValue(ModelSud::ColID).toInt())
     {
-        mRowSud = bh->modelSud()->getRowWithValue("ID", mId);
+        mRowSud = bh->modelSud()->getRowWithValue(ModelSud::ColID, mId);
         if (mRowSud < 0)
            unload();
     }
@@ -235,25 +235,25 @@ int SudObject::row() const
     return mRowSud;
 }
 
-QVariant SudObject::getValue(const QString &fieldName) const
+QVariant SudObject::getValue(int col) const
 {
-    return bh->modelSud()->data(mRowSud, fieldName);
+    return bh->modelSud()->data(mRowSud, col);
 }
 
-bool SudObject::setValue(const QString &fieldName, const QVariant &value)
+bool SudObject::setValue(int col, const QVariant &value)
 {
-    qInfo() << "SudObject::setValue():" << fieldName << "=" << value.toString();
-    return bh->modelSud()->setData(mRowSud, fieldName, value);
+    qInfo() << "SudObject::setValue():" << bh->modelSud()->fieldName(col) << "=" << value.toString();
+    return bh->modelSud()->setData(mRowSud, col, value);
 }
 
-QVariant SudObject::getAnlageData(const QString& fieldName) const
+QVariant SudObject::getAnlageData(int col) const
 {
-    return bh->modelSud()->dataAnlage(mRowSud, fieldName);
+    return bh->modelSud()->dataAnlage(mRowSud, col);
 }
 
-QVariant SudObject::getWasserData(const QString& fieldName) const
+QVariant SudObject::getWasserData(int col) const
 {
-    return bh->modelSud()->dataWasser(mRowSud, fieldName);
+    return bh->modelSud()->dataWasser(mRowSud, col);
 }
 
 void SudObject::brauzutatenAbziehen()
@@ -266,110 +266,110 @@ void SudObject::brauzutatenAbziehen()
     // Malz
     mList = modelMalzschuettung();
     mSubstract = bh->modelMalz();
-    for (int i = 0; i < mList->rowCount(); ++i)
+    for (int r = 0; r < mList->rowCount(); ++r)
     {
-        row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
+        row = mSubstract->getRowWithValue(ModelMalz::ColBeschreibung, mList->data(r, ModelMalzschuettung::ColName));
         if (row >= 0)
         {
-            mengeTotal = mSubstract->data(row, "Menge").toDouble() - mList->data(i, "erg_Menge").toDouble();
+            mengeTotal = mSubstract->data(row, ModelMalz::ColMenge).toDouble() - mList->data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
             if (mengeTotal < 0.0)
                 mengeTotal = 0.0;
-            mSubstract->setData(row, "Menge", mengeTotal);
+            mSubstract->setData(row, ModelMalz::ColMenge, mengeTotal);
         }
     }
 
     // Hopfen
     mList = modelHopfengaben();
     mSubstract = bh->modelHopfen();
-    for (int i = 0; i < mList->rowCount(); ++i)
+    for (int r = 0; r < mList->rowCount(); ++r)
     {
-        row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
+        row = mSubstract->getRowWithValue(ModelHopfen::ColBeschreibung, mList->data(r, ModelHopfengaben::ColName));
         if (row >= 0)
         {
-            mengeTotal = mSubstract->data(row, "Menge").toDouble() - mList->data(i, "erg_Menge").toDouble();
+            mengeTotal = mSubstract->data(row, ModelHopfen::ColMenge).toDouble() - mList->data(r, ModelHopfengaben::Colerg_Menge).toDouble();
             if (mengeTotal < 0.0)
                 mengeTotal = 0.0;
-            mSubstract->setData(row, "Menge", mengeTotal);
+            mSubstract->setData(row, ModelHopfen::ColMenge, mengeTotal);
         }
     }
 
     // Hefe
     mList = modelHefegaben();
     mSubstract = bh->modelHefe();
-    for (int i = 0; i < mList->rowCount(); ++i)
+    for (int r = 0; r < mList->rowCount(); ++r)
     {
-        if (mList->data(i, "ZugabeNach").toInt() == 0)
+        if (mList->data(r, ModelHefegaben::ColZugabeNach).toInt() == 0)
         {
-            row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name"));
+            row = mSubstract->getRowWithValue(ModelHefe::ColBeschreibung, mList->data(r, ModelHefegaben::ColName));
             if (row >= 0)
             {
-                mengeTotal = mSubstract->data(row, "Menge").toInt() - mList->data(i, "Menge").toInt();
+                mengeTotal = mSubstract->data(row, ModelHefe::ColMenge).toInt() - mList->data(r, ModelHefegaben::ColMenge).toInt();
                 if (mengeTotal < 0.0)
                     mengeTotal = 0.0;
-                mSubstract->setData(row, "Menge", mengeTotal);
+                mSubstract->setData(row, ModelHefe::ColMenge, mengeTotal);
             }
         }
     }
 
     // Weitere Zutaten
     mList = modelWeitereZutatenGaben();
-    for (int i = 0; i < mList->rowCount(); ++i)
+    for (int r = 0; r < mList->rowCount(); ++r)
     {
-        if (mList->data(i, "Zeitpunkt").toInt() != EWZ_Zeitpunkt_Gaerung ||
-            mList->data(i, "ZugabeNach").toInt() == 0)
+        if (mList->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
+            mList->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
         {
-            if (mList->data(i, "Typ").toInt() != EWZ_Typ_Hopfen)
+            if (mList->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() != EWZ_Typ_Hopfen)
             {
                 mSubstract = bh->modelWeitereZutaten();
-                row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name").toString());
+                row = mSubstract->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, mList->data(r, ModelWeitereZutatenGaben::ColName).toString());
                 if (row != -1)
                 {
-                    mengeTotal = mSubstract->data(row, "Menge").toDouble();
-                    switch (mList->data(i, "Einheit").toInt())
+                    mengeTotal = mSubstract->data(row, ModelWeitereZutaten::ColMenge).toDouble();
+                    switch (mList->data(r, ModelWeitereZutatenGaben::ColEinheit).toInt())
                     {
                     case EWZ_Einheit_Kg:
-                        mengeTotal -= mList->data(i, "erg_Menge").toDouble() / 1000;
+                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000;
                         break;
                     case EWZ_Einheit_g:
-                        mengeTotal -= mList->data(i, "erg_Menge").toDouble();
+                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
                         break;
                     case EWZ_Einheit_mg:
-                        mengeTotal -= mList->data(i, "erg_Menge").toDouble() * 1000;
+                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000;
                         break;
                     case EWZ_Einheit_Stk:
-                        mengeTotal -= qCeil(mList->data(i, "erg_Menge").toDouble());
+                        mengeTotal -= qCeil(mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
                         break;
                     }
                     if (mengeTotal < 0.0)
                         mengeTotal = 0.0;
-                    mSubstract->setData(row, "Menge", mengeTotal);
+                    mSubstract->setData(row, ModelWeitereZutaten::ColMenge, mengeTotal);
                 }
             }
             else
             {
                 mSubstract = bh->modelHopfen();
-                row = mSubstract->getRowWithValue("Beschreibung", mList->data(i, "Name").toString());
+                row = mSubstract->getRowWithValue(ModelHopfen::ColBeschreibung, mList->data(r, ModelWeitereZutatenGaben::ColName).toString());
                 if (row >= 0)
                 {
-                    mengeTotal = mSubstract->data(row, "Menge").toDouble();
-                    switch (mList->data(i, "Einheit").toInt())
+                    mengeTotal = mSubstract->data(row, ModelHopfen::ColMenge).toDouble();
+                    switch (mList->data(r, ModelWeitereZutatenGaben::ColEinheit).toInt())
                     {
                     case EWZ_Einheit_Kg:
-                        mengeTotal -= mList->data(i, "erg_Menge").toDouble() / 1000;
+                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000;
                         break;
                     case EWZ_Einheit_g:
-                        mengeTotal -= mList->data(i, "erg_Menge").toDouble();
+                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
                         break;
                     case EWZ_Einheit_mg:
-                        mengeTotal -= mList->data(i, "erg_Menge").toDouble() * 1000;
+                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000;
                         break;
                     case EWZ_Einheit_Stk:
-                        mengeTotal -= qCeil(mList->data(i, "erg_Menge").toDouble());
+                        mengeTotal -= qCeil(mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
                         break;
                     }
                     if (mengeTotal < 0.0)
                         mengeTotal = 0.0;
-                    mSubstract->setData(row, "Menge", mengeTotal);
+                    mSubstract->setData(row, ModelHopfen::ColMenge, mengeTotal);
                 }
             }
         }
@@ -385,33 +385,33 @@ void SudObject::zutatAbziehen(const QString& zutat, int typ, double menge)
     {
     case 0:
         mSubstract = bh->modelHopfen();
-        row = mSubstract->getRowWithValue("Beschreibung", zutat);
+        row = mSubstract->getRowWithValue(ModelHopfen::ColBeschreibung, zutat);
         if (row != -1)
         {
-            mengeTotal = mSubstract->data(row, "Menge").toDouble() - menge;
+            mengeTotal = mSubstract->data(row, ModelHopfen::ColMenge).toDouble() - menge;
             if (mengeTotal < 0.0)
                 mengeTotal = 0.0;
-            mSubstract->setData(row, "Menge", mengeTotal);
+            mSubstract->setData(row, ModelHopfen::ColMenge, mengeTotal);
         }
         break;
     case 1:
         mSubstract = bh->modelHefe();
-        row = mSubstract->getRowWithValue("Beschreibung", zutat);
+        row = mSubstract->getRowWithValue(ModelHefe::ColBeschreibung, zutat);
         if (row != -1)
         {
-            mengeTotal = mSubstract->data(row, "Menge").toInt() - menge;
+            mengeTotal = mSubstract->data(row, ModelHefe::ColMenge).toInt() - menge;
             if (mengeTotal < 0.0)
                 mengeTotal = 0.0;
-            mSubstract->setData(row, "Menge", mengeTotal);
+            mSubstract->setData(row, ModelHefe::ColMenge, mengeTotal);
         }
         break;
     case 2:
         mSubstract = bh->modelWeitereZutaten();
-        row = mSubstract->getRowWithValue("Beschreibung", zutat);
+        row = mSubstract->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, zutat);
         if (row != -1)
         {
-            mengeTotal = mSubstract->data(row, "Menge").toDouble();
-            switch (mSubstract->data(row, "Einheiten").toInt())
+            mengeTotal = mSubstract->data(row, ModelWeitereZutaten::ColMenge).toDouble();
+            switch (mSubstract->data(row, ModelWeitereZutaten::ColEinheiten).toInt())
             {
             case EWZ_Einheit_Kg:
                 mengeTotal -= menge / 1000;
@@ -428,7 +428,7 @@ void SudObject::zutatAbziehen(const QString& zutat, int typ, double menge)
             }
             if (mengeTotal < 0.0)
                 mengeTotal = 0.0;
-            mSubstract->setData(row, "Menge", mengeTotal);
+            mSubstract->setData(row, ModelWeitereZutaten::ColMenge, mengeTotal);
         }
         break;
     }

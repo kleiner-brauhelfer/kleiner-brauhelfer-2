@@ -31,19 +31,19 @@ WdgAnhang::~WdgAnhang()
     delete ui;
 }
 
-QVariant WdgAnhang::data(const QString &fieldName) const
+QVariant WdgAnhang::data(int col) const
 {
-    return bh->sud()->modelAnhang()->data(mIndex, fieldName);
+    return bh->sud()->modelAnhang()->data(mIndex, col);
 }
 
-bool WdgAnhang::setData(const QString &fieldName, const QVariant &value)
+bool WdgAnhang::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelAnhang()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelAnhang()->setData(mIndex, col, value);
 }
 
 void WdgAnhang::updateValues()
 {
-    QString pfad = data("Pfad").toString();
+    QString pfad = data(ModelAnhang::ColPfad).toString();
     if (!ui->lineEdit_Pfad->hasFocus())
         ui->lineEdit_Pfad->setText(pfad);
     ui->checkBox_Relativ->setChecked(QDir::isRelativePath(pfad));
@@ -68,7 +68,7 @@ void WdgAnhang::updateValues()
 
 QString WdgAnhang::getPfad() const
 {
-    return data("Pfad").toString();
+    return data(ModelAnhang::ColPfad).toString();
 }
 
 QString WdgAnhang::getFullPfad() const
@@ -91,9 +91,9 @@ void WdgAnhang::openDialog()
     if (!pfad.isEmpty())
     {
         if (ui->checkBox_Relativ->isChecked())
-            setData("Pfad", mBasis.relativeFilePath(pfad));
+            setData(ModelAnhang::ColPfad, mBasis.relativeFilePath(pfad));
         else
-            setData("Pfad", pfad);
+            setData(ModelAnhang::ColPfad, pfad);
     }
 }
 
@@ -102,9 +102,9 @@ void WdgAnhang::on_lineEdit_Pfad_textChanged(const QString &pfad)
     if (ui->lineEdit_Pfad->hasFocus())
     {
         if (ui->checkBox_Relativ->isChecked())
-            setData("Pfad", mBasis.relativeFilePath(pfad));
+            setData(ModelAnhang::ColPfad, mBasis.relativeFilePath(pfad));
         else
-            setData("Pfad", pfad);
+            setData(ModelAnhang::ColPfad, pfad);
     }
 }
 
@@ -114,13 +114,13 @@ void WdgAnhang::on_checkBox_Relativ_clicked()
     if (ui->checkBox_Relativ->isChecked())
     {
         if (QDir::isRelativePath(pfad))
-            setData("Pfad",pfad);
+            setData(ModelAnhang::ColPfad,pfad);
         else
-            setData("Pfad", mBasis.relativeFilePath(pfad));
+            setData(ModelAnhang::ColPfad, mBasis.relativeFilePath(pfad));
     }
     else
     {
-        setData("Pfad", getFullPfad());
+        setData(ModelAnhang::ColPfad, getFullPfad());
     }
 }
 

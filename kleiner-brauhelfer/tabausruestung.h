@@ -48,8 +48,8 @@ private slots:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
 
 private:
     Ui::TabAusruestung *ui;

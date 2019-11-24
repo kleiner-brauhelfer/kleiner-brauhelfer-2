@@ -53,35 +53,35 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     for (int i = 0; i < model->columnCount(); ++i)
         table->setColumnHidden(i, true);
 
-    col = model->fieldIndex("Zeitstempel");
+    col = ModelSchnellgaerverlauf::ColZeitstempel;
     model->setHeaderData(col, Qt::Horizontal, tr("Datum"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateTimeDelegate(false, false, table));
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = model->fieldIndex("SW");
+    col = ModelSchnellgaerverlauf::ColSW;
     model->setHeaderData(col, Qt::Horizontal, tr("SRE [°P]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = model->fieldIndex("Temp");
+    col = ModelSchnellgaerverlauf::ColTemp;
     model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
-    col = model->fieldIndex("Alc");
+    col = ModelSchnellgaerverlauf::ColAlc;
     model->setHeaderData(col, Qt::Horizontal, tr("Alk. [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
-    col = model->fieldIndex("tEVG");
+    col = ModelSchnellgaerverlauf::ColtEVG;
     model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
@@ -100,35 +100,35 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     for (int i = 0; i < model->columnCount(); ++i)
         table->setColumnHidden(i, true);
 
-    col = model->fieldIndex("Zeitstempel");
+    col = ModelHauptgaerverlauf::ColZeitstempel;
     model->setHeaderData(col, Qt::Horizontal, tr("Datum"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateTimeDelegate(false, false, table));
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = model->fieldIndex("SW");
+    col = ModelHauptgaerverlauf::ColSW;
     model->setHeaderData(col, Qt::Horizontal, tr("SRE [°P]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = model->fieldIndex("Temp");
+    col = ModelHauptgaerverlauf::ColTemp;
     model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
-    col = model->fieldIndex("Alc");
+    col = ModelHauptgaerverlauf::ColAlc;
     model->setHeaderData(col, Qt::Horizontal, tr("Alk. [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
-    col = model->fieldIndex("tEVG");
+    col = ModelHauptgaerverlauf::ColtEVG;
     model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
@@ -147,28 +147,28 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     for (int i = 0; i < model->columnCount(); ++i)
         table->setColumnHidden(i, true);
 
-    col = model->fieldIndex("Zeitstempel");
+    col = ModelNachgaerverlauf::ColZeitstempel;
     model->setHeaderData(col, Qt::Horizontal, tr("Datum"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateTimeDelegate(false, false, table));
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = model->fieldIndex("Druck");
+    col = ModelNachgaerverlauf::ColDruck;
     model->setHeaderData(col, Qt::Horizontal, tr("Druck [bar]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 10.0, 0.1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = model->fieldIndex("Temp");
+    col = ModelNachgaerverlauf::ColTemp;
     model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
-    col = model->fieldIndex("CO2");
+    col = ModelNachgaerverlauf::ColCO2;
     model->setHeaderData(col, Qt::Horizontal, tr("CO2 [g/l]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
@@ -271,16 +271,16 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
 void TabGaerverlauf::sudLoaded()
 {
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, "SW").toDouble());
-    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColSW).toDouble());
+    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble());
 
     model = bh->sud()->modelHauptgaerverlauf();
-    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, "SW").toDouble());
-    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColSW).toDouble());
+    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble());
 
     model = bh->sud()->modelNachgaerverlauf();
-    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, "Druck").toDouble());
-    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColDruck).toDouble());
+    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColTemp).toDouble());
 
     ui->tbDatumSchnellgaerprobe->setDateTime(QDateTime::currentDateTime());
     ui->tbDatumHautgaerprobe->setDateTime(QDateTime::currentDateTime());
@@ -294,24 +294,24 @@ void TabGaerverlauf::sudLoaded()
 void TabGaerverlauf::onSchnellgaerverlaufRowInserted()
 {
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, "SW").toDouble());
-    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColSW).toDouble());
+    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble());
     updateDiagramm();
 }
 
 void TabGaerverlauf::onHauptgaerverlaufRowInserted()
 {
     ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
-    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, "SW").toDouble());
-    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColSW).toDouble());
+    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble());
     updateDiagramm();
 }
 
 void TabGaerverlauf::onNachgaerverlaufRowInserted()
 {
     ProxyModel *model = bh->sud()->modelNachgaerverlauf();
-    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, "Druck").toDouble());
-    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, "Temp").toDouble());
+    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColDruck).toDouble());
+    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColTemp).toDouble());
     updateDiagramm();
 }
 
@@ -496,24 +496,18 @@ void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 
 void TabGaerverlauf::updateWeitereZutaten()
 {
-    int colName = bh->sud()->modelWeitereZutatenGaben()->fieldIndex("Name");
-    int colId = bh->sud()->modelWeitereZutatenGaben()->fieldIndex("ID");
-    int colZeitpunkt = bh->sud()->modelWeitereZutatenGaben()->fieldIndex("Zeitpunkt");
-    int colStatus = bh->sud()->modelWeitereZutatenGaben()->fieldIndex("Zugabestatus");
-    int colEntnahme = bh->sud()->modelWeitereZutatenGaben()->fieldIndex("Entnahmeindex");
-    int colMenge = bh->sud()->modelWeitereZutatenGaben()->fieldIndex("erg_Menge");
     ui->comboBox_GaerungEwzAuswahl->clear();
     ui->comboBox_GaerungEwzAuswahlEntnahme->clear();
     for (int i = 0; i < bh->sud()->modelWeitereZutatenGaben()->rowCount(); ++i)
     {
-        int zeitpunkt = bh->sud()->modelWeitereZutatenGaben()->index(i, colZeitpunkt).data().toInt();
+        int zeitpunkt = bh->sud()->modelWeitereZutatenGaben()->index(i, ModelWeitereZutatenGaben::ColZeitpunkt).data().toInt();
         if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
         {
-            QString name = bh->sud()->modelWeitereZutatenGaben()->index(i, colName).data().toString();
-            int id = bh->sud()->modelWeitereZutatenGaben()->index(i, colId).data().toInt();
-            int status = bh->sud()->modelWeitereZutatenGaben()->index(i, colStatus).data().toInt();
-            bool entnahme = !bh->sud()->modelWeitereZutatenGaben()->index(i, colEntnahme).data().toBool();
-            int menge = bh->sud()->modelWeitereZutatenGaben()->index(i, colMenge).data().toInt();
+            QString name = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColName).toString();
+            int id = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColID).toInt();
+            int status = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColZugabestatus).toInt();
+            bool entnahme = !bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColEntnahmeindex).toBool();
+            int menge = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
             if (status == EWZ_Zugabestatus_nichtZugegeben)
                 ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", id);
             else if (status == EWZ_Zugabestatus_Zugegeben && entnahme)
@@ -527,20 +521,20 @@ void TabGaerverlauf::updateWeitereZutaten()
 void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
 {
     int id = ui->comboBox_GaerungEwzAuswahl->currentData().toInt();
-    int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue("ID", id);
+    int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, id);
     if (row >= 0)
     {
         QDate currentDate = QDate::currentDate();
         QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, "ZugabeDatum", date);
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Zugegeben);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, date);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
         if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                                   tr("Sollen die Zutat vom Bestand abgezogen werden?")
            ) == QMessageBox::Yes)
         {
-            QString name = bh->sud()->modelWeitereZutatenGaben()->data(row, "Name").toString();
-            int typ = bh->sud()->modelWeitereZutatenGaben()->data(row, "Typ").toInt();
-            double menge = bh->sud()->modelWeitereZutatenGaben()->data(row, "erg_Menge").toDouble();
+            QString name = bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString();
+            int typ = bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColTyp).toInt();
+            double menge = bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
             bh->sud()->zutatAbziehen(name, typ == EWZ_Typ_Hopfen ? 0 : 2, menge);
         }
     }
@@ -549,13 +543,13 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
 void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
 {
     int id = ui->comboBox_GaerungEwzAuswahlEntnahme->currentData().toInt();
-    int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue("ID", id);
+    int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, id);
     if (row >= 0)
     {
         QDate currentDate = QDate::currentDate();
         QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, "EntnahmeDatum", date);
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, "Zugabestatus", EWZ_Zugabestatus_Entnommen);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColEntnahmeDatum, date);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Entnommen);
     }
 }
 

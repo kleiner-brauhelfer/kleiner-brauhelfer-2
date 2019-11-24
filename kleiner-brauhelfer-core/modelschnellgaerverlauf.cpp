@@ -9,74 +9,77 @@ ModelSchnellgaerverlauf::ModelSchnellgaerverlauf(Brauhelfer* bh, QSqlDatabase db
     mVirtualField.append("tEVG");
 }
 
-QVariant ModelSchnellgaerverlauf::dataExt(const QModelIndex &index) const
+QVariant ModelSchnellgaerverlauf::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "Zeitstempel")
+    switch(idx.column())
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+    case ColZeitstempel:
+    {
+        return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
-    if (field == "sEVG")
+    case ColsEVG:
     {
-        QVariant sudId = index.sibling(index.row(), fieldIndex("SudID")).data();
-        double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWIst").toDouble();
-        double sre = index.sibling(index.row(), fieldIndex("SW")).data().toDouble();
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColSWIst).toDouble();
+        double sre = data(idx.row(), ColSW).toDouble();
         return BierCalc::vergaerungsgrad(sw, sre);
     }
-    if (field == "tEVG")
+    case ColtEVG:
     {
-        QVariant sudId = index.sibling(index.row(), fieldIndex("SudID")).data();
-        double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWIst").toDouble();
-        double sre = index.sibling(index.row(), fieldIndex("SW")).data().toDouble();
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColSWIst).toDouble();
+        double sre = data(idx.row(), ColSW).toDouble();
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
     }
-    return QVariant();
+    default:
+        return QVariant();
+    }
 }
 
-bool ModelSchnellgaerverlauf::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelSchnellgaerverlauf::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
-    if (field == "Zeitstempel")
+    switch(idx.column())
     {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
+    case ColZeitstempel:
+    {
+        return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
-    else if (field == "SW")
+    case ColSW:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            int id = data(index.row(), "SudID").toInt();
-            int row = bh->modelSud()->getRowWithValue("ID", id);
+            QVariant sudId = data(idx.row(), ColSudID);
+            int row = bh->modelSud()->getRowWithValue(ModelSud::ColID, sudId);
             if (row >= 0)
             {
-                double alc = BierCalc::alkohol(bh->modelSud()->data(row, "SWIst").toDouble(), value.toDouble());
-                setData(index.row(), "Alc", alc);
-                if (index.row() == getLastRow(id))
+                double alc = BierCalc::alkohol(bh->modelSud()->data(row, ModelSud::ColSWIst).toDouble(), value.toDouble());
+                QSqlTableModel::setData(index(idx.row(), ColAlc), alc);
+                if (idx.row() == getLastRow(sudId))
                 {
-                    bh->modelSud()->setData(row, "SWSchnellgaerprobe", value);
+                    bh->modelSud()->setData(row, ModelSud::ColSWSchnellgaerprobe, value);
                 }
             }
             return true;
         }
+        return false;
     }
-    return false;
+    default:
+        return false;
+    }
 }
 
-int ModelSchnellgaerverlauf::getLastRow(int id) const
+int ModelSchnellgaerverlauf::getLastRow(const QVariant &sudId) const
 {
     int row = -1;
-    int colId = fieldIndex("SudID");
-    int colDt = fieldIndex("Zeitstempel");
     QDateTime lastDt;
-    for (int i = 0; i < rowCount(); i++)
+    for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(index(i, colId)).toInt() == id)
+        if (data(r, ColSudID) == sudId)
         {
-            QDateTime dt = data(index(i, colDt)).toDateTime();
+            QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)
             {
                 lastDt = dt;
-                row = i;
+                row = r;
             }
         }
     }
@@ -94,17 +97,17 @@ void ModelSchnellgaerverlauf::defaultValues(QVariantMap &values) const
         if (row >= 0)
         {
             if (!values.contains("SW"))
-                values.insert("SW", data(row, "SW"));
+                values.insert("SW", data(row, ColSW));
             if (!values.contains("Temp"))
-                values.insert("Temp", data(row, "Temp"));
+                values.insert("Temp", data(row, ColTemp));
         }
         else
         {
             if (!values.contains("SW"))
             {
-                int rowBrew = bh->modelSud()->getRowWithValue("ID", id);
+                int rowBrew = bh->modelSud()->getRowWithValue(ModelSud::ColID, id);
                 if (rowBrew >= 0)
-                    values.insert("SW", bh->modelSud()->data(rowBrew, "SWIst"));
+                    values.insert("SW", bh->modelSud()->data(rowBrew, ModelSud::ColSWIst));
             }
         }
     }

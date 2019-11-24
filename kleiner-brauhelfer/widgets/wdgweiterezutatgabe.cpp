@@ -37,27 +37,27 @@ bool WdgWeitereZutatGabe::isEnabled() const
     return mEnabled;
 }
 
-QVariant WdgWeitereZutatGabe::data(const QString &fieldName) const
+QVariant WdgWeitereZutatGabe::data(int col) const
 {
-    return bh->sud()->modelWeitereZutatenGaben()->data(mIndex, fieldName);
+    return bh->sud()->modelWeitereZutatenGaben()->data(mIndex, col);
 }
 
-bool WdgWeitereZutatGabe::setData(const QString &fieldName, const QVariant &value)
+bool WdgWeitereZutatGabe::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelWeitereZutatenGaben()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelWeitereZutatenGaben()->setData(mIndex, col, value);
 }
 
 void WdgWeitereZutatGabe::checkEnabled(bool force)
 {
     bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
-    if (data("Zeitpunkt").toInt() == EWZ_Zeitpunkt_Gaerung)
+    if (data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == EWZ_Zeitpunkt_Gaerung)
         enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
     if (gSettings->ForceEnabled)
         enabled = true;
     if (enabled == mEnabled && !force)
         return;
 
-    int typ = data("Typ").toInt();
+    int typ = data(ModelWeitereZutatenGaben::ColTyp).toInt();
 
     if (typ == EWZ_Typ_Hopfen)
     {
@@ -91,20 +91,20 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         if (typ == EWZ_Typ_Hopfen)
         {
             model->setSourceModel(bh->modelHopfen());
-            model->setColumnMenge(bh->modelHopfen()->fieldIndex("Menge"));
-            model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, bh->sud()->modelHopfengaben()->fieldIndex("erg_Menge")));
-            model->sort(bh->modelHopfen()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
+            model->setColumnMenge(ModelHopfen::ColMenge);
+            model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, ModelHopfengaben::Colerg_Menge));
+            model->sort(ModelHopfen::ColBeschreibung, Qt::AscendingOrder);
             ui->cbZutat->setModel(model);
-            ui->cbZutat->setModelColumn(bh->modelHopfen()->fieldIndex("Beschreibung"));
+            ui->cbZutat->setModelColumn(ModelHopfen::ColBeschreibung);
         }
         else
         {
             model->setSourceModel(bh->modelWeitereZutaten());
-            model->setColumnMenge(bh->modelWeitereZutaten()->fieldIndex("MengeGramm"));
-            model->setIndexMengeBenoetigt(bh->sud()->modelWeitereZutatenGaben()->index(mIndex, bh->sud()->modelWeitereZutatenGaben()->fieldIndex("erg_Menge")));
-            model->sort(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
+            model->setColumnMenge(ModelWeitereZutaten::ColMengeGramm);
+            model->setIndexMengeBenoetigt(bh->sud()->modelWeitereZutatenGaben()->index(mIndex, ModelWeitereZutatenGaben::Colerg_Menge));
+            model->sort(ModelWeitereZutaten::ColBeschreibung, Qt::AscendingOrder);
             ui->cbZutat->setModel(model);
-            ui->cbZutat->setModelColumn(bh->modelWeitereZutaten()->fieldIndex("Beschreibung"));
+            ui->cbZutat->setModelColumn(ModelWeitereZutaten::ColBeschreibung);
         }
         ui->cbZutat->setEnabled(true);
         ui->cbZutat->setCurrentIndex(-1);
@@ -123,7 +123,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     else
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(data("Name").toString()));
+        model->setItem(0, 0, new QStandardItem(data(ModelWeitereZutatenGaben::ColName).toString()));
         ui->cbZutat->setModel(model);
         ui->cbZutat->setModelColumn(0);
         ui->cbZutat->setEnabled(false);
@@ -148,13 +148,13 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
 
 void WdgWeitereZutatGabe::updateValues(bool full)
 {
-    QString name = data("Name").toString();
-    int typ = data("Typ").toInt();
-    int zeitpunkt = data("Zeitpunkt").toInt();
-    int entnahme = data("Entnahmeindex").toInt();
-    int einheit = data("Einheit").toInt();
-    int status = data("Zugabestatus").toInt();
-    int dauer = data("Zugabedauer").toInt();
+    QString name = data(ModelWeitereZutatenGaben::ColName).toString();
+    int typ = data(ModelWeitereZutatenGaben::ColTyp).toInt();
+    int zeitpunkt = data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
+    int entnahme = data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt();
+    int einheit = data(ModelWeitereZutatenGaben::ColEinheit).toInt();
+    int status = data(ModelWeitereZutatenGaben::ColZugabestatus).toInt();
+    int dauer = data(ModelWeitereZutatenGaben::ColZugabedauer).toInt();
 
     checkEnabled(full);
 
@@ -166,9 +166,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (!ui->tbMenge->hasFocus())
     {
         if (einheit == EWZ_Einheit_mg)
-            ui->tbMenge->setValue(data("Menge").toDouble() * 1000);
+            ui->tbMenge->setValue(data(ModelWeitereZutatenGaben::ColMenge).toDouble() * 1000);
         else
-            ui->tbMenge->setValue(data("Menge").toDouble());
+            ui->tbMenge->setValue(data(ModelWeitereZutatenGaben::ColMenge).toDouble());
     }
     if (!ui->tbMengeTotal->hasFocus())
     {
@@ -180,7 +180,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblEinheitProLiter->setText(tr("g/l"));
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
-            ui->tbMengeTotal->setValue(data("erg_Menge").toDouble() / 1000);
+            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000);
             break;
         case EWZ_Einheit_g:
             ui->lblEinheit->setText(tr("g"));
@@ -188,7 +188,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblEinheitProLiter->setText(tr("g/l"));
             ui->tbMengeTotal->setDecimals(0);
             ui->tbVorhanden->setDecimals(0);
-            ui->tbMengeTotal->setValue(data("erg_Menge").toDouble());
+            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
         case EWZ_Einheit_mg:
             ui->lblEinheit->setText(tr("mg"));
@@ -196,7 +196,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblEinheitProLiter->setText(tr("mg/l"));
             ui->tbMengeTotal->setDecimals(0);
             ui->tbVorhanden->setDecimals(0);
-            ui->tbMengeTotal->setValue(data("erg_Menge").toDouble() * 1000);
+            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000);
             break;
         case EWZ_Einheit_Stk:
             ui->lblEinheit->setText(tr("Stk."));
@@ -204,7 +204,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblEinheitProLiter->setText(tr("Stk./l"));
             ui->tbMengeTotal->setDecimals(1);
             ui->tbVorhanden->setDecimals(0);
-            ui->tbMengeTotal->setValue(data("erg_Menge").toDouble());
+            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
         }
     }
@@ -218,7 +218,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     }
     ui->cbEntnahme->setChecked(entnahme == EWZ_Entnahmeindex_KeineEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
-        ui->tbZugabeNach->setValue(data("ZugabeNach").toInt());
+        ui->tbZugabeNach->setValue(data(ModelWeitereZutatenGaben::ColZugabeNach).toInt());
     if (!ui->tbDauerTage->hasFocus())
         ui->tbDauerTage->setValue(dauer / 1440);
 
@@ -227,19 +227,19 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     {
         ui->tbDatumVon->setMinimumDateTime(braudatum);
         if (!ui->tbDatumVon->hasFocus())
-            ui->tbDatumVon->setDate(data("ZugabeDatum").toDate());
+            ui->tbDatumVon->setDate(data(ModelWeitereZutatenGaben::ColZugabeDatum).toDate());
         ui->tbDatumBis->setMinimumDateTime(ui->tbDatumVon->dateTime());
         if (!ui->tbDatumBis->hasFocus())
-            ui->tbDatumBis->setDate(data("EntnahmeDatum").toDate());
+            ui->tbDatumBis->setDate(data(ModelWeitereZutatenGaben::ColEntnahmeDatum).toDate());
     }
     ui->tbDatumVon->setVisible(braudatum.isValid());
 
     if (!ui->tbKomentar->hasFocus())
-        ui->tbKomentar->setText(data("Bemerkung").toString());
+        ui->tbKomentar->setText(data(ModelWeitereZutatenGaben::ColBemerkung).toString());
 
     if (typ == EWZ_Typ_Hopfen)
     {
-        int idx = bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Typ").toInt();
+        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColTyp).toInt();
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -268,15 +268,15 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (mEnabled)
     {
         if (typ == EWZ_Typ_Hopfen)
-            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow("Beschreibung", name, "Menge").toInt());
+            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColMenge).toInt());
         else
-            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow("Beschreibung", name, "Menge").toDouble());
+            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, "Name").toString() == name)
-                benoetigt += model->data(i, "erg_Menge").toDouble();
+            if (model->data(i, ModelWeitereZutatenGaben::ColName).toString() == name)
+                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
         if (einheit == EWZ_Einheit_Kg)
             benoetigt /= 1000;
@@ -315,7 +315,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
             {
                 QDate currentDate = QDate::currentDate();
-                QDate dateBisSoll = data("ZugabeDatum").toDate().addDays(dauer / 1440);
+                QDate dateBisSoll = data(ModelWeitereZutatenGaben::ColZugabeDatum).toDate().addDays(dauer / 1440);
                 if (currentDate >= dateBisSoll)
                 {
                     ui->btnEntnehmen->setPalette(gSettings->paletteErrorButton);
@@ -385,17 +385,17 @@ void WdgWeitereZutatGabe::remove()
 void WdgWeitereZutatGabe::on_cbZutat_currentIndexChanged(const QString &text)
 {
     if (ui->cbZutat->hasFocus())
-        setData("Name", text);
+        setData(ModelWeitereZutatenGaben::ColName, text);
 }
 
 void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
     {
-        if (data("Einheit").toInt() == EWZ_Einheit_mg)
-            setData("Menge", value / 1000);
+        if (data(ModelWeitereZutatenGaben::ColEinheit).toInt() == EWZ_Einheit_mg)
+            setData(ModelWeitereZutatenGaben::ColMenge, value / 1000);
         else
-            setData("Menge", value);
+            setData(ModelWeitereZutatenGaben::ColMenge, value);
     }
 }
 
@@ -403,19 +403,19 @@ void WdgWeitereZutatGabe::on_tbMengeTotal_valueChanged(double value)
 {
     if (ui->tbMengeTotal->hasFocus())
     {
-        switch (data("Einheit").toInt())
+        switch (data(ModelWeitereZutatenGaben::ColEinheit).toInt())
         {
         case EWZ_Einheit_Kg:
-            setData("erg_Menge", value * 1000);
+            setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
             break;
         case EWZ_Einheit_g:
-            setData("erg_Menge", value);
+            setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
             break;
         case EWZ_Einheit_mg:
-            setData("erg_Menge", value / 1000);
+            setData(ModelWeitereZutatenGaben::Colerg_Menge, value / 1000);
             break;
         case EWZ_Einheit_Stk:
-            setData("erg_Menge", value);
+            setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
             break;
         }
     }
@@ -424,68 +424,70 @@ void WdgWeitereZutatGabe::on_tbMengeTotal_valueChanged(double value)
 void WdgWeitereZutatGabe::on_cbZugabezeitpunkt_currentIndexChanged(int index)
 {
     if (ui->cbZugabezeitpunkt->hasFocus())
-        setData("Zeitpunkt", index);
+        setData(ModelWeitereZutatenGaben::ColZeitpunkt, index);
 }
 
 void WdgWeitereZutatGabe::on_tbDauerMin_valueChanged(int value)
 {
     if (ui->tbDauerMin->hasFocus())
-        setData("Zugabedauer", value);
+        setData(ModelWeitereZutatenGaben::ColZugabedauer, value);
 }
 
 void WdgWeitereZutatGabe::on_btnZugeben_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatumVon->date();
-    setData("ZugabeDatum", currentDate < date ? currentDate : date);
-    setData("Zugabestatus", EWZ_Zugabestatus_Zugegeben);
+    setData(ModelWeitereZutatenGaben::ColZugabeDatum, currentDate < date ? currentDate : date);
+    setData(ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
     if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
                               tr("Soll die Zutat vom Bestand abgezogen werden?")
        ) == QMessageBox::Yes)
-        bh->sud()->zutatAbziehen(data("Name").toString(), data("Typ").toInt() == EWZ_Typ_Hopfen ? 0 : 2, data("erg_Menge").toDouble());
+        bh->sud()->zutatAbziehen(data(ModelWeitereZutatenGaben::ColName).toString(),
+                                 data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 0 : 2,
+                                 data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
 }
 
 void WdgWeitereZutatGabe::on_cbEntnahme_clicked(bool checked)
 {
-    setData("Entnahmeindex", checked);
+    setData(ModelWeitereZutatenGaben::ColEntnahmeindex, checked);
 }
 
 void WdgWeitereZutatGabe::on_tbZugabeNach_valueChanged(int value)
 {
     if (ui->tbZugabeNach->hasFocus())
-        setData("ZugabeNach", value);
+        setData(ModelWeitereZutatenGaben::ColZugabeNach, value);
 }
 
 void WdgWeitereZutatGabe::on_tbDauerTage_valueChanged(int value)
 {
     if (ui->tbDauerTage->hasFocus())
-        setData("Zugabedauer", value * 1440);
+        setData(ModelWeitereZutatenGaben::ColZugabedauer, value * 1440);
 }
 
 void WdgWeitereZutatGabe::on_tbDatumVon_dateChanged(const QDate &date)
 {
     if (ui->tbDatumVon->hasFocus())
-        setData("ZugabeDatum", date);
+        setData(ModelWeitereZutatenGaben::ColZugabeDatum, date);
 }
 
 void WdgWeitereZutatGabe::on_tbDatumBis_dateChanged(const QDate &date)
 {
     if (ui->tbDatumBis->hasFocus())
-        setData("EntnahmeDatum", date);
+        setData(ModelWeitereZutatenGaben::ColEntnahmeDatum, date);
 }
 
 void WdgWeitereZutatGabe::on_btnEntnehmen_clicked()
 {
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatumBis->date();
-    setData("EntnahmeDatum", currentDate < date ? currentDate : date);
-    setData("Zugabestatus", EWZ_Zugabestatus_Entnommen);
+    setData(ModelWeitereZutatenGaben::ColEntnahmeDatum, currentDate < date ? currentDate : date);
+    setData(ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Entnommen);
 }
 
 void WdgWeitereZutatGabe::on_tbKomentar_textChanged()
 {
     if (ui->tbKomentar->hasFocus())
-        setData("Bemerkung", ui->tbKomentar->toPlainText());
+        setData(ModelWeitereZutatenGaben::ColBemerkung, ui->tbKomentar->toPlainText());
 }
 
 void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
@@ -496,19 +498,19 @@ void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 void WdgWeitereZutatGabe::on_btnAufbrauchen_clicked()
 {
     double value = ui->tbVorhanden->value();
-    switch (data("Einheit").toInt())
+    switch (data(ModelWeitereZutatenGaben::ColEinheit).toInt())
     {
     case EWZ_Einheit_Kg:
-        setData("erg_Menge", value * 1000);
+        setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
         break;
     case EWZ_Einheit_g:
-        setData("erg_Menge", value);
+        setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
     case EWZ_Einheit_mg:
-        setData("erg_Menge", value / 1000);
+        setData(ModelWeitereZutatenGaben::Colerg_Menge, value / 1000);
         break;
     case EWZ_Einheit_Stk:
-        setData("erg_Menge", value);
+        setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
     }
 }

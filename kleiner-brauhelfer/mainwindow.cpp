@@ -372,17 +372,15 @@ void MainWindow::on_actionSudVerbraucht_triggered()
 void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
 {
     ProxyModel *model = bh->sud()->modelHefegaben();
-    int col = model->fieldIndex("Zugegeben");
     for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(model->index(row, col), 0);
+        model->setData(row, ModelHefegaben::ColZugegeben, 0);
 }
 
 void MainWindow::on_actionWeitereZutaten_triggered()
 {
     ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    int col = model->fieldIndex("Zugabestatus");
     for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(model->index(row, col), EWZ_Zugabestatus_nichtZugegeben);
+        model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben);
 }
 
 void MainWindow::on_actionEingabefelderEntsperren_changed()

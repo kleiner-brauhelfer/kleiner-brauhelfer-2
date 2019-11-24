@@ -15,90 +15,98 @@ ModelAusruestung::ModelAusruestung(Brauhelfer* bh, QSqlDatabase db) :
     mVirtualField.append("AnzahlSude");
 }
 
-QVariant ModelAusruestung::dataExt(const QModelIndex &index) const
+QVariant ModelAusruestung::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "Maischebottich_Volumen")
+    switch(idx.column())
     {
-        double r = data(index.row(), "Maischebottich_Durchmesser").toDouble() / 2;
-        double h = data(index.row(), "Maischebottich_Hoehe").toDouble();
+    case ColMaischebottich_Volumen:
+    {
+        double r = data(idx.row(), ColMaischebottich_Durchmesser).toDouble() / 2;
+        double h = data(idx.row(), ColMaischebottich_Hoehe).toDouble();
         return pow(r, 2) * M_PI * h / 1000;
     }
-    if (field == "Maischebottich_MaxFuellvolumen")
+    case ColMaischebottich_MaxFuellvolumen:
     {
-        double r = data(index.row(), "Maischebottich_Durchmesser").toDouble() / 2;
-        double h = data(index.row(), "Maischebottich_MaxFuellhoehe").toDouble();
+        double r = data(idx.row(), ColMaischebottich_Durchmesser).toDouble() / 2;
+        double h = data(idx.row(), ColMaischebottich_MaxFuellhoehe).toDouble();
         return pow(r, 2) * M_PI * h / 1000;
     }
-    if (field == "Sudpfanne_Volumen")
+    case ColSudpfanne_Volumen:
     {
-        double r = data(index.row(), "Sudpfanne_Durchmesser").toDouble() / 2;
-        double h = data(index.row(), "Sudpfanne_Hoehe").toDouble();
+        double r = data(idx.row(), ColSudpfanne_Durchmesser).toDouble() / 2;
+        double h = data(idx.row(), ColSudpfanne_Hoehe).toDouble();
         return pow(r, 2) * M_PI * h / 1000;
     }
-    if (field == "Sudpfanne_MaxFuellvolumen")
+    case ColSudpfanne_MaxFuellvolumen:
     {
-        double r = data(index.row(), "Sudpfanne_Durchmesser").toDouble() / 2;
-        double h = data(index.row(), "Sudpfanne_MaxFuellhoehe").toDouble();
+        double r = data(idx.row(), ColSudpfanne_Durchmesser).toDouble() / 2;
+        double h = data(idx.row(), ColSudpfanne_MaxFuellhoehe).toDouble();
         return pow(r, 2) * M_PI * h / 1000;
     }
-    if (field == "Vermoegen")
+    case ColVermoegen:
     {
-        double V1 = data(index.row(), "Maischebottich_MaxFuellvolumen").toDouble();
-        double V2 = data(index.row(), "Sudpfanne_MaxFuellvolumen").toDouble();
+        double V1 = data(idx.row(), ColMaischebottich_MaxFuellvolumen).toDouble();
+        double V2 = data(idx.row(), ColSudpfanne_MaxFuellvolumen).toDouble();
         return (V1 > V2) ? V2 : V1;
     }
-    if (field == "AnzahlSude")
+    case ColAnzahlSude:
     {
         ProxyModel modelSud;
         modelSud.setSourceModel(bh->modelSud());
-        modelSud.setFilterKeyColumn(bh->modelSud()->fieldIndex("Anlage"));
-        modelSud.setFilterRegExp(QString("^%1$").arg(data(index.row(), "Name").toString()));
+        modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
+        modelSud.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColName).toString()));
         return modelSud.rowCount();
     }
-    return QVariant();
+    default:
+        return QVariant();
+    }
 }
 
 bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(idx.column());
-    if (field == "Name")
+    switch(idx.column())
+    {
+    case ColName:
     {
         QString name = getUniqueName(idx, value);
-        QString prevValue = data(idx).toString();
+        QVariant prevName = data(idx);
         if (QSqlTableModel::setData(idx, name))
         {
-            int colName = bh->modelSud()->fieldIndex("Anlage");
             for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
             {
-                QModelIndex idx2 = bh->modelSud()->index(row, colName);
-                if (bh->modelSud()->data(idx2).toString() == prevValue)
+                QModelIndex idx2 = bh->modelSud()->index(row, ModelSud::ColAnlage);
+                if (bh->modelSud()->data(idx2) == prevName)
                     bh->modelSud()->setData(idx2, name);
             }
             return true;
         }
+        return false;
     }
-    if (field == "Maischebottich_Hoehe")
+    case ColMaischebottich_Hoehe:
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex idx2 = index(idx.row(), fieldIndex("Maischebottich_MaxFuellhoehe"));
+            QModelIndex idx2 = index(idx.row(), ColMaischebottich_MaxFuellhoehe);
             if (idx2.data().toDouble() > value.toDouble())
                 QSqlTableModel::setData(idx2, value);
             return true;
         }
+        return false;
     }
-    if (field == "Sudpfanne_Hoehe")
+    case ColSudpfanne_Hoehe:
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex idx2 = index(idx.row(), fieldIndex("Sudpfanne_MaxFuellhoehe"));
+            QModelIndex idx2 = index(idx.row(), ColSudpfanne_MaxFuellhoehe);
             if (idx2.data().toDouble() > value.toDouble())
                 QSqlTableModel::setData(idx2, value);
             return true;
         }
+        return false;
     }
-    return false;
+    default:
+        return false;
+    }
 }
 
 bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
@@ -107,12 +115,11 @@ bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
     {
         for (int n = 0; n < count; ++n)
         {
-            int id = data(row + n, "ID").toInt();
-            int colId = bh->modelGeraete()->fieldIndex("AusruestungAnlagenID");
-            for (int i = 0; i < bh->modelGeraete()->rowCount(); ++i)
+            QVariant id = data(row + n, ColID);
+            for (int r = 0; r < bh->modelGeraete()->rowCount(); ++r)
             {
-                if (bh->modelGeraete()->index(i, colId).data().toInt() == id)
-                    bh->modelGeraete()->removeRows(i);
+                if (bh->modelGeraete()->data(r, ModelGeraete::ColAusruestungAnlagenID) == id)
+                    bh->modelGeraete()->removeRows(r);
             }
         }
         return true;
@@ -129,5 +136,5 @@ void ModelAusruestung::defaultValues(QVariantMap &values) const
     if (!values.contains("Verdampfungsziffer"))
         values.insert("Verdampfungsziffer", 10.0);
     if (values.contains("Name"))
-        values["Name"] = getUniqueName(index(0, fieldIndex("Name")), values["Name"], true);
+        values["Name"] = getUniqueName(index(0, ColName), values["Name"], true);
 }

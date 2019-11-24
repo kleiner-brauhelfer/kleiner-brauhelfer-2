@@ -94,9 +94,7 @@ void TabAbfuellen::sudLoaded()
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)
 {
-    const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
-    QString fieldname = model->fieldName(index.column());
-    if (fieldname == "Status")
+    if (index.column() == ModelSud::ColStatus)
     {
         checkEnabled();
     }

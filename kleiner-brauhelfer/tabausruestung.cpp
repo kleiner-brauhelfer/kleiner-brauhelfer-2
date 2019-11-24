@@ -38,20 +38,20 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = model->fieldIndex("Name");
+    col = ModelAusruestung::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Anlage"));
     table->setColumnHidden(col, false);
     table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = model->fieldIndex("Vermoegen");
+    col = ModelAusruestung::ColVermoegen;
     model->setHeaderData(col, Qt::Horizontal, tr("Vermögen [l]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = model->fieldIndex("AnzahlSude");
+    col = ModelAusruestung::ColAnzahlSude;
     model->setHeaderData(col, Qt::Horizontal, tr("Anzahl Sude"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
@@ -60,52 +60,52 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
 
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelGeraete());
-    model->setFilterKeyColumn(bh->modelGeraete()->fieldIndex("AusruestungAnlagenID"));
+    model->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
     ui->listViewGeraete->setModel(model);
-    ui->listViewGeraete->setModelColumn(bh->modelGeraete()->fieldIndex("Bezeichnung"));
+    ui->listViewGeraete->setModelColumn(ModelGeraete::ColBezeichnung);
 
     table = ui->tableViewSude;
     header = table->horizontalHeader();
     model = new ProxyModelSudColored(this);
     model->setSourceModel(bh->modelSud());
-    model->setFilterKeyColumn(bh->modelSud()->fieldIndex("Anlage"));
+    model->setFilterKeyColumn(ModelSud::ColAnlage);
     table->setModel(model);
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
     header->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableViewSude_customContextMenuRequested(const QPoint&)));
 
-    col = model->fieldIndex("Sudname");
+    col = ModelSud::ColSudname;
     table->setColumnHidden(col, false);
     table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
     table->setItemDelegateForColumn(col, new ReadonlyDelegate(table));
     header->moveSection(header->visualIndex(col), 0);
 
-    col = model->fieldIndex("Sudnummer");
+    col = ModelSud::ColSudnummer;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = model->fieldIndex("Braudatum");
+    col = ModelSud::ColBraudatum;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
-    col = model->fieldIndex("erg_EffektiveAusbeute");
+    col = ModelSud::Colerg_EffektiveAusbeute;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
-    col = model->fieldIndex("Verdampfungsziffer");
+    col = ModelSud::ColVerdampfungsziffer;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 4);
 
-    col = model->fieldIndex("AusbeuteIgnorieren");
+    col = ModelSud::ColAusbeuteIgnorieren;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
     header->resizeSection(col, 150);
@@ -198,8 +198,8 @@ void TabAusruestung::sudLoaded()
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
     int row = 0;
     if (bh->sud()->isLoaded())
-        row = model->getRowWithValue("Name", bh->sud()->getAnlage());
-    ui->tableViewAnlagen->setCurrentIndex(model->index(row, model->fieldIndex("Name")));
+        row = model->getRowWithValue(ModelAusruestung::ColName, bh->sud()->getAnlage());
+    ui->tableViewAnlagen->setCurrentIndex(model->index(row, ModelAusruestung::ColName));
 }
 
 void TabAusruestung::anlage_selectionChanged()
@@ -211,9 +211,9 @@ void TabAusruestung::anlage_selectionChanged()
     {
         mRow = selectedRows[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-        QString anlage = model->data(model->index(mRow, model->fieldIndex("Name"))).toString();
+        QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
         regExpId = QRegExp(QString("^%1$").arg(anlage), Qt::CaseInsensitive, QRegExp::RegExp);
-        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, model->fieldIndex("ID"))).toInt()), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()), Qt::CaseInsensitive, QRegExp::RegExp);
     }
     else
     {
@@ -235,7 +235,7 @@ void TabAusruestung::on_btnNeueAnlage_clicked()
     int row = model->append(values);
     if (row >= 0)
     {
-        const QModelIndex index = model->index(row, model->fieldIndex("Name"));
+        const QModelIndex index = model->index(row, ModelAusruestung::ColName);
         ui->tableViewAnlagen->setCurrentIndex(index);
         ui->tableViewAnlagen->scrollTo(ui->tableViewAnlagen->currentIndex());
         ui->tableViewAnlagen->edit(ui->tableViewAnlagen->currentIndex());
@@ -249,13 +249,13 @@ void TabAusruestung::on_btnAnlageLoeschen_clicked()
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
     {
-        QString name = model->data(index.row(), "Name").toString();
+        QString name = model->data(index.row(), ModelAusruestung::ColName).toString();
         int ret = QMessageBox::question(this, tr("Brauanlage löschen?"),
                                         tr("Soll die Brauanlage \"%1\" gelöscht werden?").arg(name));
         if (ret == QMessageBox::Yes)
         {
             ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-            int row = model->getRowWithValue("Name", name);
+            int row = model->getRowWithValue(ModelAusruestung::ColName, name);
             model->removeRow(row);
         }
     }
@@ -266,12 +266,12 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     QModelIndexList selected = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selected.count() > 0)
     {
-        QVariantMap values({{"AusruestungAnlagenID", data("ID")}, {"Bezeichnung", tr("Neues Gerät")}});
+        QVariantMap values({{"AusruestungAnlagenID", data(ModelAusruestung::ColID)}, {"Bezeichnung", tr("Neues Gerät")}});
         ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
         int row = model->append(values);
         if (row >= 0)
         {
-            const QModelIndex index = model->index(row, model->fieldIndex("Bezeichnung"));
+            const QModelIndex index = model->index(row, ModelGeraete::ColBezeichnung);
             ui->listViewGeraete->setCurrentIndex(index);
             ui->listViewGeraete->scrollTo(ui->listViewGeraete->currentIndex());
             ui->listViewGeraete->edit(ui->listViewGeraete->currentIndex());
@@ -291,54 +291,54 @@ void TabAusruestung::on_btnGeraetLoeschen_clicked()
         if (ret == QMessageBox::Yes)
         {
             ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
-            int row = model->getRowWithValue("Bezeichnung", name);
+            int row = model->getRowWithValue(ModelGeraete::ColBezeichnung, name);
             model->removeRow(row);
         }
     }
 }
 
-QVariant TabAusruestung::data(const QString &fieldName) const
+QVariant TabAusruestung::data(int col) const
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-    return model->data(mRow, fieldName);
+    return model->data(mRow, col);
 }
 
-bool TabAusruestung::setData(const QString &fieldName, const QVariant &value)
+bool TabAusruestung::setData(int col, const QVariant &value)
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-    return model->setData(mRow, fieldName, value);
+    return model->setData(mRow, col, value);
 }
 
 void TabAusruestung::updateValues()
 {
     if (!ui->tbAusbeute->hasFocus())
-        ui->tbAusbeute->setValue(data("Sudhausausbeute").toDouble());
+        ui->tbAusbeute->setValue(data(ModelAusruestung::ColSudhausausbeute).toDouble());
     if (!ui->tbVerdampfung->hasFocus())
-        ui->tbVerdampfung->setValue(data("Verdampfungsziffer").toDouble());
+        ui->tbVerdampfung->setValue(data(ModelAusruestung::ColVerdampfungsziffer).toDouble());
     if (!ui->tbNachguss->hasFocus())
-        ui->tbNachguss->setValue(data("KorrekturWasser").toDouble());
+        ui->tbNachguss->setValue(data(ModelAusruestung::ColKorrekturWasser).toDouble());
     if (!ui->tbFarbe->hasFocus())
-        ui->tbFarbe->setValue(data("KorrekturFarbe").toInt());
+        ui->tbFarbe->setValue(data(ModelAusruestung::ColKorrekturFarbe).toInt());
     if (!ui->tbKosten->hasFocus())
-        ui->tbKosten->setValue(data("Kosten").toDouble());
+        ui->tbKosten->setValue(data(ModelAusruestung::ColKosten).toDouble());
     if (!ui->tbMaischebottichHoehe->hasFocus())
-        ui->tbMaischebottichHoehe->setValue(data("Maischebottich_Hoehe").toDouble());
+        ui->tbMaischebottichHoehe->setValue(data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble());
     if (!ui->tbMaischebottichDurchmesser->hasFocus())
-        ui->tbMaischebottichDurchmesser->setValue(data("Maischebottich_Durchmesser").toDouble());
+        ui->tbMaischebottichDurchmesser->setValue(data(ModelAusruestung::ColMaischebottich_Durchmesser).toDouble());
     if (!ui->tbMaischebottichMaxFuellhoehe->hasFocus())
-        ui->tbMaischebottichMaxFuellhoehe->setValue(data("Maischebottich_MaxFuellhoehe").toDouble());
+        ui->tbMaischebottichMaxFuellhoehe->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellhoehe).toDouble());
     ui->tbMaischebottichMaxFuellhoehe->setMaximum(ui->tbMaischebottichHoehe->value());
     if (!ui->tbSudpfanneHoehe->hasFocus())
-        ui->tbSudpfanneHoehe->setValue(data("Sudpfanne_Hoehe").toDouble());
+        ui->tbSudpfanneHoehe->setValue(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
     if (!ui->tbSudpfanneDurchmesser->hasFocus())
-        ui->tbSudpfanneDurchmesser->setValue(data("Sudpfanne_Durchmesser").toDouble());
+        ui->tbSudpfanneDurchmesser->setValue(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
     if (!ui->tbSudpfanneMaxFuellhoehe->hasFocus())
-        ui->tbSudpfanneMaxFuellhoehe->setValue(data("Sudpfanne_MaxFuellhoehe").toDouble());
+        ui->tbSudpfanneMaxFuellhoehe->setValue(data(ModelAusruestung::ColSudpfanne_MaxFuellhoehe).toDouble());
     ui->tbSudpfanneMaxFuellhoehe->setMaximum(ui->tbSudpfanneHoehe->value());
-    ui->tbMaischenVolumen->setValue(data("Maischebottich_Volumen").toDouble());
-    ui->tbMaischenMaxNutzvolumen->setValue(data("Maischebottich_MaxFuellvolumen").toDouble());
-    ui->tbSudpfanneVolumen->setValue(data("Sudpfanne_Volumen").toDouble());
-    ui->tbSudpfanneMaxNutzvolumen->setValue(data("Sudpfanne_MaxFuellvolumen").toDouble()); 
+    ui->tbMaischenVolumen->setValue(data(ModelAusruestung::ColMaischebottich_Volumen).toDouble());
+    ui->tbMaischenMaxNutzvolumen->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
+    ui->tbSudpfanneVolumen->setValue(data(ModelAusruestung::ColSudpfanne_Volumen).toDouble());
+    ui->tbSudpfanneMaxNutzvolumen->setValue(data(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
 }
 
 void TabAusruestung::updateDurchschnitt()
@@ -346,26 +346,22 @@ void TabAusruestung::updateDurchschnitt()
     ProxyModelSud model;
     model.setSourceModel(bh->modelSud());
     model.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
-    model.sort(model.fieldIndex("Braudatum"), Qt::DescendingOrder);
-    QString anlage = data("Name").toString();
-    int colName = model.fieldIndex("Anlage");
-    int colAusbeute = model.fieldIndex("erg_EffektiveAusbeute");
-    int colVerdampfung = model.fieldIndex("Verdampfungsziffer");
-    int colAusbeuteIgnorieren = model.fieldIndex("AusbeuteIgnorieren");
+    model.sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
+    QString anlage = data(ModelAusruestung::ColName).toString();
     int n = 0;
     int N = 0;
     double ausbeute = 0.0;
     double verdampfung = 0.0;
     for (int i = 0; i < model.rowCount(); ++i)
     {
-        if (model.index(i, colName).data().toString() == anlage)
+        if (model.index(i, ModelSud::ColAnlage).data().toString() == anlage)
         {
-            if (!model.index(i, colAusbeuteIgnorieren).data().toBool())
+            if (!model.index(i, ModelSud::ColAusbeuteIgnorieren).data().toBool())
             {
                 if (n < ui->sliderAusbeuteSude->value())
                 {
-                    ausbeute += model.index(i, colAusbeute).data().toDouble();
-                    verdampfung += model.index(i, colVerdampfung).data().toDouble();
+                    ausbeute += model.index(i, ModelSud::Colerg_EffektiveAusbeute).data().toDouble();
+                    verdampfung += model.index(i, ModelSud::ColVerdampfungsziffer).data().toDouble();
                     ++n;
                 }
                 ++N;
@@ -386,8 +382,8 @@ void TabAusruestung::updateDurchschnitt()
 void TabAusruestung::on_btnVerdampfungsziffer_clicked()
 {
     DlgVerdampfung dlg;
-    dlg.setDurchmesser(data("Sudpfanne_Durchmesser").toDouble());
-    dlg.setHoehe(data("Sudpfanne_Hoehe").toDouble());
+    dlg.setDurchmesser(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
+    dlg.setHoehe(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
     if (bh->sud()->isLoaded())
     {
         dlg.setKochdauer(bh->sud()->getKochdauerNachBitterhopfung());
@@ -409,23 +405,23 @@ void TabAusruestung::on_btnVerdampfungsziffer_clicked()
 void TabAusruestung::on_tbAusbeute_valueChanged(double value)
 {
     if (ui->tbAusbeute->hasFocus())
-        setData("Sudhausausbeute", value);
+        setData(ModelAusruestung::ColSudhausausbeute, value);
 }
 
 void TabAusruestung::on_btnAusbeuteMittel_clicked()
 {
-    setData("Sudhausausbeute", ui->tbAusbeuteMittel->value());
+    setData(ModelAusruestung::ColSudhausausbeute, ui->tbAusbeuteMittel->value());
 }
 
 void TabAusruestung::on_tbVerdampfung_valueChanged(double value)
 {
     if (ui->tbVerdampfung->hasFocus())
-        setData("Verdampfungsziffer", value);
+        setData(ModelAusruestung::ColVerdampfungsziffer, value);
 }
 
 void TabAusruestung::on_btnVerdampfungMittel_clicked()
 {
-    setData("Verdampfungsziffer", ui->tbVerdampfungMittel->value());
+    setData(ModelAusruestung::ColVerdampfungsziffer, ui->tbVerdampfungMittel->value());
 }
 
 void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
@@ -436,55 +432,55 @@ void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
 void TabAusruestung::on_tbNachguss_valueChanged(double value)
 {
     if (ui->tbNachguss->hasFocus())
-        setData("KorrekturWasser", value);
+        setData(ModelAusruestung::ColKorrekturWasser, value);
 }
 
 void TabAusruestung::on_tbFarbe_valueChanged(int value)
 {
     if (ui->tbFarbe->hasFocus())
-        setData("KorrekturFarbe", value);
+        setData(ModelAusruestung::ColKorrekturFarbe, value);
 }
 
 void TabAusruestung::on_tbKosten_valueChanged(double value)
 {
     if (ui->tbKosten->hasFocus())
-        setData("Kosten", value);
+        setData(ModelAusruestung::ColKosten, value);
 }
 
 void TabAusruestung::on_tbMaischebottichHoehe_valueChanged(double value)
 {
     if (ui->tbMaischebottichHoehe->hasFocus())
-        setData("Maischebottich_Hoehe", value);
+        setData(ModelAusruestung::ColMaischebottich_Hoehe, value);
 }
 
 void TabAusruestung::on_tbMaischebottichDurchmesser_valueChanged(double value)
 {
     if (ui->tbMaischebottichDurchmesser->hasFocus())
-        setData("Maischebottich_Durchmesser", value);
+        setData(ModelAusruestung::ColMaischebottich_Durchmesser, value);
 }
 
 void TabAusruestung::on_tbMaischebottichMaxFuellhoehe_valueChanged(double value)
 {
     if (ui->tbMaischebottichMaxFuellhoehe->hasFocus())
-        setData("Maischebottich_MaxFuellhoehe", value);
+        setData(ModelAusruestung::ColMaischebottich_MaxFuellhoehe, value);
 }
 
 void TabAusruestung::on_tbSudpfanneHoehe_valueChanged(double value)
 {
     if (ui->tbSudpfanneHoehe->hasFocus())
-        setData("Sudpfanne_Hoehe", value);
+        setData(ModelAusruestung::ColSudpfanne_Hoehe, value);
 }
 
 void TabAusruestung::on_tbSudpfanneDurchmesser_valueChanged(double value)
 {
     if (ui->tbSudpfanneDurchmesser->hasFocus())
-        setData("Sudpfanne_Durchmesser", value);
+        setData(ModelAusruestung::ColSudpfanne_Durchmesser, value);
 }
 
 void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_valueChanged(double value)
 {
     if (ui->tbSudpfanneMaxFuellhoehe->hasFocus())
-        setData("Sudpfanne_MaxFuellhoehe", value);
+        setData(ModelAusruestung::ColSudpfanne_MaxFuellhoehe, value);
 }
 
 void TabAusruestung::spalteAnzeigen(bool checked)
@@ -500,9 +496,8 @@ void TabAusruestung::on_tableViewSude_customContextMenuRequested(const QPoint &p
     QAction *action;
     QMenu menu(this);
     QTableView *table = ui->tableViewSude;
-    ProxyModel *model = static_cast<ProxyModel*>(table->model());
 
-    col = model->fieldIndex("Sudnummer");
+    col = ModelSud::ColSudnummer;
     action = new QAction(tr("Sudnummer"), &menu);
     action->setCheckable(true);
     action->setChecked(!table->isColumnHidden(col));

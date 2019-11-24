@@ -43,8 +43,8 @@ private:
     void onTabActivated() Q_DECL_OVERRIDE;
     bool checkSave();
     QString generateSvg(const QString &svg);
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
 
 private:
     Ui::TabEtikette *ui;

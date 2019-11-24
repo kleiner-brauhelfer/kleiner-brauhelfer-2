@@ -8,48 +8,58 @@ ModelFlaschenlabelTags::ModelFlaschenlabelTags(Brauhelfer* bh, QSqlDatabase db) 
     mVirtualField.append("Global");
 }
 
-QVariant ModelFlaschenlabelTags::dataExt(const QModelIndex &index) const
+QVariant ModelFlaschenlabelTags::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "Global")
+    switch(idx.column())
     {
-        return index.sibling(index.row(), fieldIndex("SudID")).data().toInt() < 0;
+    case ColGlobal:
+    {
+        return data(idx.row(), ColSudID).toInt() < 0;
     }
-    return QVariant();
+    default:
+        return QVariant();
+    }
 }
 
-bool ModelFlaschenlabelTags::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelFlaschenlabelTags::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
-    if (field == "Tagname")
+    switch(idx.column())
     {
-        int sudId = data(index.row(), "SudID").toInt();
-        return QSqlTableModel::setData(index, getUniqueName(index, value, sudId));
-    }
-    if (field == "Global")
+    case ColTagname:
     {
-        int sudId = value.toBool() ? -1 : bh->sud()->id();
-        return QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("SudID")), sudId);
+        return QSqlTableModel::setData(idx, getUniqueName(idx, value, data(idx.row(), ColSudID)));
     }
-    return false;
+    case ColGlobal:
+    {
+        QVariant sudId = value.toBool() ? -1 : bh->sud()->id();
+        if (QSqlTableModel::setData(index(idx.row(), ColSudID), sudId))
+        {
+            QModelIndex idx2 = index(idx.row(), ColTagname);
+            setData(idx2, idx2.data());
+            return true;
+        }
+        return false;
+    }
+    default:
+        return false;
+    }
 }
 
-bool ModelFlaschenlabelTags::isUnique(const QModelIndex &index, const QVariant &value, int sudId, bool ignoreIndexRow) const
+bool ModelFlaschenlabelTags::isUnique(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow) const
 {
-    int colSudId = fieldIndex("SudID");
     for (int row = 0; row < rowCount(); ++row)
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
-        if (index.sibling(row, colSudId).data().toInt() != sudId)
+        if (data(row, ColSudID) != sudId)
             continue;
-        if (index.sibling(row, index.column()).data() == value)
+        if (data(row, index.column()) == value)
             return false;
     }
     return true;
 }
 
-QString ModelFlaschenlabelTags::getUniqueName(const QModelIndex &index, const QVariant &value, int sudId, bool ignoreIndexRow) const
+QString ModelFlaschenlabelTags::getUniqueName(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow) const
 {
     int cnt = 1;
     QString name = value.toString();
@@ -58,11 +68,10 @@ QString ModelFlaschenlabelTags::getUniqueName(const QModelIndex &index, const QV
     return name;
 }
 
-Qt::ItemFlags ModelFlaschenlabelTags::flags(const QModelIndex &index) const
+Qt::ItemFlags ModelFlaschenlabelTags::flags(const QModelIndex &idx) const
 {
-    Qt::ItemFlags itemFlags = SqlTableModel::flags(index);
-    QString field = fieldName(index.column());
-    if (field == "Global")
+    Qt::ItemFlags itemFlags = SqlTableModel::flags(idx);
+    if (idx.column() == ColGlobal)
         itemFlags |= Qt::ItemIsEditable;
     return itemFlags;
 }
@@ -73,5 +82,5 @@ void ModelFlaschenlabelTags::defaultValues(QVariantMap &values) const
     if (values.contains("SudID"))
         sudId = values["SudID"].toInt();
     if (values.contains("Tagname"))
-        values["Tagname"] = getUniqueName(index(0, fieldIndex("Tagname")), values["Tagname"], sudId, true);
+        values["Tagname"] = getUniqueName(index(0, ColTagname), values["Tagname"], sudId, true);
 }

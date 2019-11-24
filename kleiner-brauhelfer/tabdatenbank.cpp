@@ -191,7 +191,7 @@ void TabDatenbank::tableView_selectionChanged()
         QModelIndexList indexes = ui->tableView->selectionModel()->selectedRows();
         if (indexes.count() > 0)
         {
-            int sudId = bh->modelSud()->data(indexes[0].row(), "ID").toInt();
+            int sudId = bh->modelSud()->data(indexes[0].row(), ModelSud::ColID).toInt();
             bh->sud()->load(sudId);
         }
         else

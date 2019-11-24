@@ -63,7 +63,7 @@ private:
 private:
     struct AuswahlSpalten
     {
-        QString fieldName;
+        int col;
         bool visible;
         bool canHide;
         int width;

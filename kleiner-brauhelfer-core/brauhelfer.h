@@ -11,6 +11,7 @@
 #include "modelmalz.h"
 #include "modelhopfen.h"
 #include "modelhefe.h"
+#include "modelhefegaben.h"
 #include "modelweiterezutaten.h"
 #include "modelschnellgaerverlauf.h"
 #include "modelhauptgaerverlauf.h"
@@ -19,11 +20,13 @@
 #include "modelwasser.h"
 #include "modelmalzschuettung.h"
 #include "modelhopfengaben.h"
-#include "modelhefegaben.h"
 #include "modelweiterezutatengaben.h"
 #include "modelausruestung.h"
 #include "modelrasten.h"
 #include "modelflaschenlabeltags.h"
+#include "modelanhang.h"
+#include "modelflaschenlabel.h"
+#include "modelgeraete.h"
 #include "database_defs.h"
 
 class Database;
@@ -140,7 +143,7 @@ signals:
     void discarded();
 
 private:
-    void sudKopierenModel(SqlTableModel* model, int sudId, const QVariantMap &overrideValues);
+    void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QVariantMap &overrideValues);
 
 private:
     QString mDatabasePath;

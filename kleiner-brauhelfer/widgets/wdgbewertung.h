@@ -30,8 +30,8 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
     void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
 private:

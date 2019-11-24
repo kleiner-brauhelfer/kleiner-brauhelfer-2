@@ -30,12 +30,12 @@ public:
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
-    QDateTime getLastDateTime(int id) const;
-    double getLastCO2(int id) const;
+    QDateTime getLastDateTime(const QVariant &sudId) const;
+    double getLastCO2(const QVariant &sudId) const;
 
 private:
 
-    int getLastRow(int id) const;
+    int getLastRow(const QVariant &sudId) const;
 
 private:
 

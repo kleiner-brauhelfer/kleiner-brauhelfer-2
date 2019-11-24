@@ -52,9 +52,7 @@ void TabBewertung::sudLoaded()
 
 void TabBewertung::sudDataChanged(const QModelIndex& index)
 {
-    const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
-    QString fieldname = model->fieldName(index.column());
-    if (fieldname == "Status")
+    if (index.column() == ModelSud::ColStatus)
     {
         updateValues();
     }
@@ -98,14 +96,14 @@ void TabBewertung::on_btnNeueBewertung_clicked()
     clicked(index);
 }
 
-QVariant TabBewertung::data(const QString &fieldName) const
+QVariant TabBewertung::data(int col) const
 {
-    return bh->sud()->modelBewertungen()->data(mIndex, fieldName);
+    return bh->sud()->modelBewertungen()->data(mIndex, col);
 }
 
-bool TabBewertung::setData(const QString &fieldName, const QVariant &value)
+bool TabBewertung::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelBewertungen()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelBewertungen()->setData(mIndex, col, value);
 }
 
 void TabBewertung::updateValues()
@@ -114,16 +112,16 @@ void TabBewertung::updateValues()
 
     ui->wdgBewertung->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
 
-    ui->wdgRating->setSterne(data("Sterne").toInt());
+    ui->wdgRating->setSterne(data(ModelBewertungen::ColSterne).toInt());
     ui->tbDatum->setMinimumDate(bh->sud()->getAbfuelldatum().date());
     ui->tbDatum->setMaximumDate(QDate::currentDate());
     if (!ui->tbDatum->hasFocus())
-        ui->tbDatum->setDate(data("Datum").toDate());
-    ui->lblWoche->setText(data("Woche").toString());
+        ui->tbDatum->setDate(data(ModelBewertungen::ColDatum).toDate());
+    ui->lblWoche->setText(data(ModelBewertungen::ColWoche).toString());
     if (!ui->tbBemerkung->hasFocus())
-        ui->tbBemerkung->setPlainText(data("Bemerkung").toString());
+        ui->tbBemerkung->setPlainText(data(ModelBewertungen::ColBemerkung).toString());
 
-    int value = data("Farbe").toInt();
+    int value = data(ModelBewertungen::ColFarbe).toInt();
     ui->rbFarbe_0->setChecked(value & (1 << 0));
     ui->rbFarbe_1->setChecked(value & (1 << 1));
     ui->rbFarbe_2->setChecked(value & (1 << 2));
@@ -136,9 +134,9 @@ void TabBewertung::updateValues()
     ui->rbFarbe_9->setChecked(value & (1 << 9));
     ui->rbFarbe_10->setChecked(value & (1 << 10));
     if (!ui->tbFarbe->hasFocus())
-        ui->tbFarbe->setPlainText(data("FarbeBemerkung").toString());
+        ui->tbFarbe->setPlainText(data(ModelBewertungen::ColFarbeBemerkung).toString());
 
-    value = data("Schaum").toInt();
+    value = data(ModelBewertungen::ColSchaum).toInt();
     ui->rbSchaum_0->setChecked(value & (1 << 0));
     ui->rbSchaum_1->setChecked(value & (1 << 1));
     ui->rbSchaum_2->setChecked(value & (1 << 2));
@@ -151,9 +149,9 @@ void TabBewertung::updateValues()
     ui->rbSchaum_9->setChecked(value & (1 << 9));
     ui->rbSchaum_10->setChecked(value & (1 << 10));
     if (!ui->tbSchaum->hasFocus())
-        ui->tbSchaum->setPlainText(data("SchaumBemerkung").toString());
+        ui->tbSchaum->setPlainText(data(ModelBewertungen::ColSchaumBemerkung).toString());
 
-    value = data("Geruch").toInt();
+    value = data(ModelBewertungen::ColGeruch).toInt();
     ui->rbGeruch_0->setChecked(value & (1 << 0));
     ui->rbGeruch_1->setChecked(value & (1 << 1));
     ui->rbGeruch_2->setChecked(value & (1 << 2));
@@ -167,9 +165,9 @@ void TabBewertung::updateValues()
     ui->rbGeruch_10->setChecked(value & (1 << 10));
     ui->rbGeruch_11->setChecked(value & (1 << 11));
     if (!ui->tbGeruch->hasFocus())
-        ui->tbGeruch->setPlainText(data("GeruchBemerkung").toString());
+        ui->tbGeruch->setPlainText(data(ModelBewertungen::ColGeruchBemerkung).toString());
 
-    value = data("Geschmack").toInt();
+    value = data(ModelBewertungen::ColGeschmack).toInt();
     ui->rbGeschmack_0->setChecked(value & (1 << 0));
     ui->rbGeschmack_1->setChecked(value & (1 << 1));
     ui->rbGeschmack_2->setChecked(value & (1 << 2));
@@ -184,9 +182,9 @@ void TabBewertung::updateValues()
     ui->rbGeschmack_11->setChecked(value & (1 << 11));
     ui->rbGeschmack_12->setChecked(value & (1 << 12));
     if (!ui->tbGeschmack->hasFocus())
-        ui->tbGeschmack->setPlainText(data("GeschmackBemerkung").toString());
+        ui->tbGeschmack->setPlainText(data(ModelBewertungen::ColGeschmackBemerkung).toString());
 
-    value = data("Antrunk").toInt();
+    value = data(ModelBewertungen::ColAntrunk).toInt();
     ui->rbAntrunk_0->setChecked(value & (1 << 0));
     ui->rbAntrunk_1->setChecked(value & (1 << 1));
     ui->rbAntrunk_2->setChecked(value & (1 << 2));
@@ -196,18 +194,18 @@ void TabBewertung::updateValues()
     ui->rbAntrunk_6->setChecked(value & (1 << 6));
     ui->rbAntrunk_7->setChecked(value & (1 << 7));
     if (!ui->tbAntrunk->hasFocus())
-        ui->tbAntrunk->setPlainText(data("AntrunkBemerkung").toString());
+        ui->tbAntrunk->setPlainText(data(ModelBewertungen::ColAntrunkBemerkung).toString());
 
-    value = data("Haupttrunk").toInt();
+    value = data(ModelBewertungen::ColHaupttrunk).toInt();
     ui->rbHaupttrunk_0->setChecked(value & (1 << 0));
     ui->rbHaupttrunk_1->setChecked(value & (1 << 1));
     ui->rbHaupttrunk_2->setChecked(value & (1 << 2));
     ui->rbHaupttrunk_3->setChecked(value & (1 << 3));
     ui->rbHaupttrunk_4->setChecked(value & (1 << 4));
     if (!ui->tbHaupttrunk->hasFocus())
-        ui->tbHaupttrunk->setPlainText(data("HaupttrunkBemerkung").toString());
+        ui->tbHaupttrunk->setPlainText(data(ModelBewertungen::ColHaupttrunkBemerkung).toString());
 
-    value = data("Nachtrunk").toInt();
+    value = data(ModelBewertungen::ColNachtrunk).toInt();
     ui->rbNachtrunk_0->setChecked(value & (1 << 0));
     ui->rbNachtrunk_1->setChecked(value & (1 << 1));
     ui->rbNachtrunk_2->setChecked(value & (1 << 2));
@@ -218,9 +216,9 @@ void TabBewertung::updateValues()
     ui->rbNachtrunk_7->setChecked(value & (1 << 7));
     ui->rbNachtrunk_8->setChecked(value & (1 << 8));
     if (!ui->tbNachtrunk->hasFocus())
-        ui->tbNachtrunk->setPlainText(data("NachtrunkBemerkung").toString());
+        ui->tbNachtrunk->setPlainText(data(ModelBewertungen::ColNachtrunkBemerkung).toString());
 
-    value = data("Gesamteindruck").toInt();
+    value = data(ModelBewertungen::ColGesamteindruck).toInt();
     ui->rbGesamteindruck_0->setChecked(value & (1 << 0));
     ui->rbGesamteindruck_1->setChecked(value & (1 << 1));
     ui->rbGesamteindruck_2->setChecked(value & (1 << 2));
@@ -230,29 +228,29 @@ void TabBewertung::updateValues()
     ui->rbGesamteindruck_6->setChecked(value & (1 << 6));
     ui->rbGesamteindruck_7->setChecked(value & (1 << 7));
     if (!ui->tbGesamteindruck->hasFocus())
-        ui->tbGesamteindruck->setPlainText(data("GesamteindruckBemerkung").toString());
+        ui->tbGesamteindruck->setPlainText(data(ModelBewertungen::ColGesamteindruckBemerkung).toString());
 }
 
 void TabBewertung::sterneChanged(int sterne)
 {
-    setData("Sterne", sterne);
+    setData(ModelBewertungen::ColSterne, sterne);
 }
 
 void TabBewertung::on_tbDatum_dateChanged(const QDate &date)
 {
     if (ui->tbDatum->hasFocus())
-        setData("Datum", date);
+        setData(ModelBewertungen::ColDatum, date);
 }
 
 void TabBewertung::on_btnDatumHeute_clicked()
 {
-    setData("Datum", QDate::currentDate());
+    setData(ModelBewertungen::ColDatum, QDate::currentDate());
 }
 
 void TabBewertung::on_tbBemerkung_textChanged()
 {
     if (ui->tbBemerkung->hasFocus())
-        setData("Bemerkung", ui->tbBemerkung->toPlainText());
+        setData(ModelBewertungen::ColBemerkung, ui->tbBemerkung->toPlainText());
 }
 
 void TabBewertung::setFarbe()
@@ -280,7 +278,7 @@ void TabBewertung::setFarbe()
         value += (1 << 9);
     if (ui->rbFarbe_10->isChecked())
         value += (1 << 10);
-    setData("Farbe", value);
+    setData(ModelBewertungen::ColFarbe, value);
 }
 
 void TabBewertung::on_rbFarbe_0_clicked()
@@ -341,7 +339,7 @@ void TabBewertung::on_rbFarbe_10_clicked()
 void TabBewertung::on_tbFarbe_textChanged()
 {
     if (ui->tbFarbe->hasFocus())
-        setData("FarbeBemerkung", ui->tbFarbe->toPlainText());
+        setData(ModelBewertungen::ColFarbeBemerkung, ui->tbFarbe->toPlainText());
 }
 
 void TabBewertung::setSchaum()
@@ -369,7 +367,7 @@ void TabBewertung::setSchaum()
         value += (1 << 9);
     if (ui->rbSchaum_10->isChecked())
         value += (1 << 10);
-    setData("Schaum", value);
+    setData(ModelBewertungen::ColSchaum, value);
 }
 
 void TabBewertung::on_rbSchaum_0_clicked()
@@ -430,7 +428,7 @@ void TabBewertung::on_rbSchaum_10_clicked()
 void TabBewertung::on_tbSchaum_textChanged()
 {
     if (ui->tbSchaum->hasFocus())
-        setData("SchaumBemerkung", ui->tbSchaum->toPlainText());
+        setData(ModelBewertungen::ColSchaumBemerkung, ui->tbSchaum->toPlainText());
 }
 
 void TabBewertung::setGeruch()
@@ -460,7 +458,7 @@ void TabBewertung::setGeruch()
         value += (1 << 10);
     if (ui->rbGeruch_11->isChecked())
         value += (1 << 11);
-    setData("Geruch", value);
+    setData(ModelBewertungen::ColGeruch, value);
 }
 
 void TabBewertung::on_rbGeruch_0_clicked()
@@ -526,7 +524,7 @@ void TabBewertung::on_rbGeruch_11_clicked()
 void TabBewertung::on_tbGeruch_textChanged()
 {
     if (ui->tbGeruch->hasFocus())
-        setData("GeruchBemerkung", ui->tbGeruch->toPlainText());
+        setData(ModelBewertungen::ColGeruchBemerkung, ui->tbGeruch->toPlainText());
 }
 
 void TabBewertung::setGeschmack()
@@ -558,7 +556,7 @@ void TabBewertung::setGeschmack()
         value += (1 << 11);
     if (ui->rbGeschmack_12->isChecked())
         value += (1 << 12);
-    setData("Geschmack", value);
+    setData(ModelBewertungen::ColGeschmack, value);
 }
 
 void TabBewertung::on_rbGeschmack_0_clicked()
@@ -629,7 +627,7 @@ void TabBewertung::on_rbGeschmack_12_clicked()
 void TabBewertung::on_tbGeschmack_textChanged()
 {
     if (ui->tbGeschmack->hasFocus())
-        setData("GeschmackBemerkung", ui->tbGeschmack->toPlainText());
+        setData(ModelBewertungen::ColGeschmackBemerkung, ui->tbGeschmack->toPlainText());
 }
 
 void TabBewertung::setAntrunk()
@@ -651,7 +649,7 @@ void TabBewertung::setAntrunk()
         value += (1 << 6);
     if (ui->rbAntrunk_7->isChecked())
         value += (1 << 7);
-    setData("Antrunk", value);
+    setData(ModelBewertungen::ColAntrunk, value);
 }
 
 void TabBewertung::on_rbAntrunk_0_clicked()
@@ -697,7 +695,7 @@ void TabBewertung::on_rbAntrunk_7_clicked()
 void TabBewertung::on_tbAntrunk_textChanged()
 {
     if (ui->tbAntrunk->hasFocus())
-        setData("AntrunkBemerkung", ui->tbAntrunk->toPlainText());
+        setData(ModelBewertungen::ColAntrunkBemerkung, ui->tbAntrunk->toPlainText());
 }
 
 void TabBewertung::setHaupttrunk()
@@ -713,7 +711,7 @@ void TabBewertung::setHaupttrunk()
         value += (1 << 3);
     if (ui->rbHaupttrunk_4->isChecked())
         value += (1 << 4);
-    setData("Haupttrunk", value);
+    setData(ModelBewertungen::ColHaupttrunk, value);
 }
 
 void TabBewertung::on_rbHaupttrunk_0_clicked()
@@ -744,7 +742,7 @@ void TabBewertung::on_rbHaupttrunk_4_clicked()
 void TabBewertung::on_tbHaupttrunk_textChanged()
 {
     if (ui->tbHaupttrunk->hasFocus())
-        setData("HaupttrunkBemerkung", ui->tbHaupttrunk->toPlainText());
+        setData(ModelBewertungen::ColHaupttrunkBemerkung, ui->tbHaupttrunk->toPlainText());
 }
 
 void TabBewertung::setNachtrunk()
@@ -768,7 +766,7 @@ void TabBewertung::setNachtrunk()
         value += (1 << 7);
     if (ui->rbNachtrunk_8->isChecked())
         value += (1 << 8);
-    setData("Nachtrunk", value);
+    setData(ModelBewertungen::ColNachtrunk, value);
 }
 
 void TabBewertung::on_rbNachtrunk_0_clicked()
@@ -819,7 +817,7 @@ void TabBewertung::on_rbNachtrunk_8_clicked()
 void TabBewertung::on_tbNachtrunk_textChanged()
 {
     if (ui->tbNachtrunk->hasFocus())
-        setData("NachtrunkBemerkung", ui->tbNachtrunk->toPlainText());
+        setData(ModelBewertungen::ColNachtrunkBemerkung, ui->tbNachtrunk->toPlainText());
 }
 
 void TabBewertung::setGesamteindruck()
@@ -841,7 +839,7 @@ void TabBewertung::setGesamteindruck()
         value += (1 << 6);
     if (ui->rbGesamteindruck_7->isChecked())
         value += (1 << 7);
-    setData("Gesamteindruck", value);
+    setData(ModelBewertungen::ColGesamteindruck, value);
 }
 
 void TabBewertung::on_rbGesamteindruck_0_clicked()
@@ -887,5 +885,5 @@ void TabBewertung::on_rbGesamteindruck_7_clicked()
 void TabBewertung::on_tbGesamteindruck_textChanged()
 {
     if (ui->tbGesamteindruck->hasFocus())
-        setData("GesamteindruckBemerkung", ui->tbGesamteindruck->toPlainText());
+        setData(ModelBewertungen::ColGesamteindruckBemerkung, ui->tbGesamteindruck->toPlainText());
 }

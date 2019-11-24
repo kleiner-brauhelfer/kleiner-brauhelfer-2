@@ -59,16 +59,16 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
     ui->diagram->colorL2 = gSettings->DiagramLinie2;
     ui->diagram->colorL3 = gSettings->DiagramLinie3;
 
-    mAuswahlListe.append({"", 0, tr("<keine>"), "", 0, 0});
-    mAuswahlListe.append({"erg_AbgefuellteBiermenge", 1, tr("Abgefüllte Biermenge [l]"), tr("l"), 0, 0});
-    mAuswahlListe.append({"SWIst", 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
-    mAuswahlListe.append({"erg_Sudhausausbeute", 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({"erg_EffektiveAusbeute", 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({"erg_S_Gesamt", 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
-    mAuswahlListe.append({"erg_Alkohol", 1, tr("Alkohol [%]"), tr("%"), 0, 0});
-    mAuswahlListe.append({"sEVG", 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({"tEVG", 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({"erg_Preis", 2, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+    mAuswahlListe.append({-1, 0, tr("<keine>"), "", 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge [l]"), tr("l"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol [%]"), tr("%"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
 
     gSettings->endGroup();
 }
@@ -103,23 +103,23 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
     proxyModel->setSourceModel(model);
     proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
-    proxyModel->sort(proxyModel->fieldIndex("Braudatum"), Qt::DescendingOrder);
+    proxyModel->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     table->setModel(proxyModel);
     for (int col = 0; col < proxyModel->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = proxyModel->fieldIndex("Sudname");
+    col = ModelSud::ColSudname;
     table->setColumnHidden(col, false);
     header->resizeSection(col, 300);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = proxyModel->fieldIndex("Sudnummer");
+    col = ModelSud::ColSudnummer;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 80);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = proxyModel->fieldIndex("Braudatum");
+    col = ModelSud::ColBraudatum;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
     header->resizeSection(col, 100);
@@ -129,7 +129,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
-        col = proxyModel->fieldIndex(mAuswahlListe[i].field);
+        col = mAuswahlListe[i].col;
         ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
@@ -189,7 +189,7 @@ void TabBrauUebersicht::updateDiagram()
     if (model->rowCount() > 1)
     {
         AuswahlType *auswahl1 = &mAuswahlListe[ui->cbAuswahlL1->currentIndex() + 1];
-        model->mColAuswahl1 = model->fieldIndex(auswahl1->field);
+        model->mColAuswahl1 = auswahl1->col;
         ui->diagram->BezeichnungL1 = auswahl1->label;
         ui->diagram->KurzbezeichnungL1 = auswahl1->unit;
         ui->diagram->L1Precision = auswahl1->precision;
@@ -197,7 +197,7 @@ void TabBrauUebersicht::updateDiagram()
         ui->diagram->L1Max = auswahl1->max;
 
         AuswahlType *auswahl2 = &mAuswahlListe[ui->cbAuswahlL2->currentIndex()];
-        model->mColAuswahl2 = model->fieldIndex(auswahl2->field);
+        model->mColAuswahl2 = auswahl2->col;
         ui->diagram->BezeichnungL2 = auswahl2->label;
         ui->diagram->KurzbezeichnungL2 = auswahl2->unit;
         ui->diagram->L2Precision = auswahl2->precision;
@@ -205,19 +205,17 @@ void TabBrauUebersicht::updateDiagram()
         ui->diagram->L2Max = auswahl2->max;
 
         AuswahlType *auswahl3 = &mAuswahlListe[ui->cbAuswahlL3->currentIndex()];
-        model->mColAuswahl3 = model->fieldIndex(auswahl3->field);
+        model->mColAuswahl3 = auswahl3->col;
         ui->diagram->BezeichnungL3 = auswahl3->label;
         ui->diagram->KurzbezeichnungL3 = auswahl3->unit;
         ui->diagram->L3Precision = auswahl3->precision;
         ui->diagram->L3Min = auswahl3->min;
         ui->diagram->L3Max = auswahl3->max;
 
-        int colBraudatum = model->fieldIndex("Braudatum");
-        int colId = model->fieldIndex("ID");
         for (int row = model->rowCount() - 1; row >= 0; --row)
         {
-            QDateTime dt = model->index(row, colBraudatum).data().toDateTime();
-            ui->diagram->Ids.append(model->index(row, colId).data().toInt());
+            QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
+            ui->diagram->Ids.append(model->index(row, ModelSud::ColID).data().toInt());
             ui->diagram->L1Daten.append(model->index(row, model->mColAuswahl1).data().toDouble());
             ui->diagram->L1Datum.append(dt);
             if (model->mColAuswahl2 >= 0)
@@ -238,7 +236,7 @@ void TabBrauUebersicht::updateDiagram()
 void TabBrauUebersicht::on_tableView_doubleClicked(const QModelIndex &index)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
-    int sudId = model->data(index.row(), "ID").toInt();
+    int sudId = model->data(index.row(), ModelSud::ColID).toInt();
     clicked(sudId);
 }
 
@@ -247,20 +245,17 @@ void TabBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
     int sudId = -1;
     if (selected.indexes().count() > 0)
     {
-        ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
         const QModelIndex index = selected.indexes()[0];
-        sudId = index.sibling(index.row(), model->fieldIndex("ID")).data().toInt();
+        sudId = index.sibling(index.row(), ModelSud::ColID).data().toInt();
     }
     ui->diagram->MarkierePunkt(sudId);
 }
 
 void TabBrauUebersicht::diagram_selectionChanged(int sudId)
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
-    int colId = model->fieldIndex("ID");
     for (int row = 0; row < ui->tableView->model()->rowCount(); ++row)
     {
-        if (ui->tableView->model()->index(row, colId).data().toInt() == sudId)
+        if (ui->tableView->model()->index(row, ModelSud::ColID).data().toInt() == sudId)
         {
             ui->tableView->selectRow(row);
             break;
@@ -308,9 +303,8 @@ void TabBrauUebersicht::on_tableView_customContextMenuRequested(const QPoint &po
     QAction *action;
     QMenu menu(this);
     QTableView *table = ui->tableView;
-    ProxyModel *model = static_cast<ProxyModel*>(table->model());
 
-    col = model->fieldIndex("Sudnummer");
+    col = ModelSud::ColSudnummer;
     action = new QAction(tr("Sudnummer"), &menu);
     action->setCheckable(true);
     action->setChecked(!table->isColumnHidden(col));
@@ -320,7 +314,7 @@ void TabBrauUebersicht::on_tableView_customContextMenuRequested(const QPoint &po
 
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
-        col = model->fieldIndex(mAuswahlListe[i].field);
+        col = mAuswahlListe[i].col;
         action = new QAction(mAuswahlListe[i].label, &menu);
         action->setCheckable(true);
         action->setChecked(!table->isColumnHidden(col));

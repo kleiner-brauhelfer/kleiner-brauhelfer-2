@@ -15,8 +15,8 @@ public:
     explicit WdgHopfenGabe(int index, QWidget *parent = nullptr);
     ~WdgHopfenGabe();
     bool isEnabled() const;
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
     QString name() const;
     double prozent() const;
     void setFehlProzent(double value);

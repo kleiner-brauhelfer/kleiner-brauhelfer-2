@@ -274,7 +274,7 @@ ModelFlaschenlabelTags *Brauhelfer::modelFlaschenlabelTags() const
 
 int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 {
-    int row = modelSud()->getRowWithValue("ID", sudId);
+    int row = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row < 0)
         return -1;
 
@@ -292,38 +292,37 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 
     int neueSudId = values.value("ID").toInt();
     const QVariantMap valueId = {{"SudID", neueSudId}};
-    sudKopierenModel(modelRasten(), sudId, valueId);
-    sudKopierenModel(modelHopfengaben(), sudId, valueId);
+    sudKopierenModel(modelRasten(), ModelRasten::ColSudID, sudId, valueId);
+    sudKopierenModel(modelHopfengaben(), ModelHopfengaben::ColSudID, sudId, valueId);
     if (teilen)
-        sudKopierenModel(modelHefegaben(), sudId, valueId);
+        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, valueId);
     else
-        sudKopierenModel(modelHefegaben(), sudId, {{"SudID", neueSudId}, {"Zugegeben", 0}});
+        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{"SudID", neueSudId}, {"Zugegeben", 0}});
     if (teilen)
-        sudKopierenModel(modelWeitereZutatenGaben(), sudId, valueId);
+        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, valueId);
     else
-        sudKopierenModel(modelWeitereZutatenGaben(), sudId, {{"SudID", neueSudId}, {"Zugabestatus", EWZ_Zugabestatus_nichtZugegeben}});
-    sudKopierenModel(modelMalzschuettung(), sudId, valueId);
-    sudKopierenModel(modelAnhang(), sudId, valueId);
-    sudKopierenModel(modelFlaschenlabel(), sudId, valueId);
-    sudKopierenModel(modelFlaschenlabelTags(), sudId, valueId);
+        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{"SudID", neueSudId}, {"Zugabestatus", EWZ_Zugabestatus_nichtZugegeben}});
+    sudKopierenModel(modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId, valueId);
+    sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, valueId);
+    sudKopierenModel(modelFlaschenlabel(), ModelFlaschenlabel::ColSudID, sudId, valueId);
+    sudKopierenModel(modelFlaschenlabelTags(), ModelFlaschenlabelTags::ColSudID, sudId, valueId);
     if (teilen)
     {
-        sudKopierenModel(modelSchnellgaerverlauf(), sudId, valueId);
-        sudKopierenModel(modelHauptgaerverlauf(), sudId, valueId);
-        sudKopierenModel(modelNachgaerverlauf(), sudId, valueId);
-        sudKopierenModel(modelBewertungen(), sudId, valueId);
+        sudKopierenModel(modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudId, valueId);
+        sudKopierenModel(modelHauptgaerverlauf(), ModelHauptgaerverlauf::ColSudID, sudId, valueId);
+        sudKopierenModel(modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudId, valueId);
+        sudKopierenModel(modelBewertungen(), ModelBewertungen::ColSudID, sudId, valueId);
     }
     return row;
 }
 
-void Brauhelfer::sudKopierenModel(SqlTableModel* model, int sudId, const QVariantMap &overrideValues)
+void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QVariantMap &overrideValues)
 {
-    int colSudId = model->fieldIndex("SudID");
-    for (int i = 0; i < model->rowCount(); ++i)
+    for (int r = 0; r < model->rowCount(); ++r)
     {
-        if (model->index(i, colSudId).data().toInt() == sudId)
+        if (model->data(r, colSudId) == sudId)
         {
-            QVariantMap values = model->copyValues(i);
+            QVariantMap values = model->copyValues(r);
             QVariantMap::const_iterator it = overrideValues.constBegin();
             while (it != overrideValues.constEnd())
             {
@@ -337,54 +336,51 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int sudId, const QVarian
 
 int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2, double prozent)
 {
-    int row1 = modelSud()->getRowWithValue("ID", sudId);
+    int row1 = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row1 < 0)
         return -1;
     int row2 = sudKopieren(sudId, name2, true);
     if (row2 < 0)
         return -1;
 
-    int colSudId = modelHefegaben()->fieldIndex("SudID");
-    int colMenge = modelHefegaben()->fieldIndex("Menge");
-
-    double Menge = modelSud()->data(row1, "Menge").toDouble();
-    double WuerzemengeVorHopfenseihen = modelSud()->data(row1, "WuerzemengeVorHopfenseihen").toDouble();
-    double WuerzemengeKochende = modelSud()->data(row1, "WuerzemengeKochende").toDouble();
-    double Speisemenge = modelSud()->data(row1, "Speisemenge").toDouble();
-    double WuerzemengeAnstellen = modelSud()->data(row1, "WuerzemengeAnstellen").toDouble();
-    double erg_AbgefuellteBiermenge = modelSud()->data(row1, "erg_AbgefuellteBiermenge").toDouble();
+    double Menge = modelSud()->data(row1, ModelSud::ColMenge).toDouble();
+    double WuerzemengeVorHopfenseihen = modelSud()->data(row1, ModelSud::ColWuerzemengeVorHopfenseihen).toDouble();
+    double WuerzemengeKochende = modelSud()->data(row1, ModelSud::ColWuerzemengeKochende).toDouble();
+    double Speisemenge = modelSud()->data(row1, ModelSud::ColSpeisemenge).toDouble();
+    double WuerzemengeAnstellen = modelSud()->data(row1, ModelSud::ColWuerzemengeAnstellen).toDouble();
+    double erg_AbgefuellteBiermenge = modelSud()->data(row1, ModelSud::Colerg_AbgefuellteBiermenge).toDouble();
 
     double factor = 1.0 - prozent;
-    modelSud()->setData(row2, "Menge", Menge * factor);
-    modelSud()->setData(row2, "WuerzemengeVorHopfenseihen", WuerzemengeVorHopfenseihen * factor);
-    modelSud()->setData(row2, "WuerzemengeKochende", WuerzemengeKochende * factor);
-    modelSud()->setData(row2, "Speisemenge", Speisemenge * factor);
-    modelSud()->setData(row2, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
-    modelSud()->setData(row2, "erg_AbgefuellteBiermenge", erg_AbgefuellteBiermenge * factor);
-    int sudId2 = modelSud()->data(row2, "ID").toInt();
+    modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
+    modelSud()->setData(row2, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
+    modelSud()->setData(row2, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
+    modelSud()->setData(row2, ModelSud::ColSpeisemenge, Speisemenge * factor);
+    modelSud()->setData(row2, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
+    modelSud()->setData(row2, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
+    int sudId2 = modelSud()->data(row2, ModelSud::ColID).toInt();
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
-        if (modelHefegaben()->index(row, colSudId).data().toInt() == sudId2)
+        if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId2)
         {
-            QModelIndex index = modelHefegaben()->index(row, colMenge);
-            modelHefegaben()->setData(index, qRound(index.data().toInt() * factor));
+            QModelIndex idx = modelHefegaben()->index(row, ModelHefegaben::ColMenge);
+            modelHefegaben()->setData(idx, qRound(idx.data().toInt() * factor));
         }
     }
 
     factor = prozent;
-    modelSud()->setData(row1, "Sudname", name1);
-    modelSud()->setData(row1, "Menge", Menge * factor);
-    modelSud()->setData(row1, "WuerzemengeVorHopfenseihen", WuerzemengeVorHopfenseihen * factor);
-    modelSud()->setData(row1, "WuerzemengeKochende", WuerzemengeKochende * factor);
-    modelSud()->setData(row1, "Speisemenge", Speisemenge * factor);
-    modelSud()->setData(row1, "WuerzemengeAnstellen", WuerzemengeAnstellen * factor);
-    modelSud()->setData(row1, "erg_AbgefuellteBiermenge", erg_AbgefuellteBiermenge * factor);
+    modelSud()->setData(row1, ModelSud::ColSudname, name1);
+    modelSud()->setData(row1, ModelSud::ColMenge, Menge * factor);
+    modelSud()->setData(row1, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
+    modelSud()->setData(row1, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
+    modelSud()->setData(row1, ModelSud::ColSpeisemenge, Speisemenge * factor);
+    modelSud()->setData(row1, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
+    modelSud()->setData(row1, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
-        if (modelHefegaben()->index(row, colSudId).data().toInt() == sudId)
+        if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId)
         {
-            QModelIndex index = modelHefegaben()->index(row, colMenge);
-            modelHefegaben()->setData(index, qRound(index.data().toInt() * factor));
+            QModelIndex idx = modelHefegaben()->index(row, ModelHefegaben::ColMenge);
+            modelHefegaben()->setData(idx, qRound(idx.data().toInt() * factor));
         }
     }
 

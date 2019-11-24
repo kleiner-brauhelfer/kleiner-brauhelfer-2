@@ -38,14 +38,14 @@ bool WdgMalzGabe::isEnabled() const
     return mEnabled;
 }
 
-QVariant WdgMalzGabe::data(const QString &fieldName) const
+QVariant WdgMalzGabe::data(int col) const
 {
-    return bh->sud()->modelMalzschuettung()->data(mIndex, fieldName);
+    return bh->sud()->modelMalzschuettung()->data(mIndex, col);
 }
 
-bool WdgMalzGabe::setData(const QString &fieldName, const QVariant &value)
+bool WdgMalzGabe::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelMalzschuettung()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelMalzschuettung()->setData(mIndex, col, value);
 }
 
 void WdgMalzGabe::checkEnabled(bool force)
@@ -61,11 +61,11 @@ void WdgMalzGabe::checkEnabled(bool force)
     {
         RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
         model->setSourceModel(bh->modelMalz());
-        model->setColumnMenge(bh->modelMalz()->fieldIndex("Menge"));
-        model->setIndexMengeBenoetigt(bh->sud()->modelMalzschuettung()->index(mIndex, bh->sud()->modelMalzschuettung()->fieldIndex("erg_Menge")));
-        model->sort(bh->modelMalz()->fieldIndex("Beschreibung"), Qt::AscendingOrder);
+        model->setColumnMenge(ModelMalz::ColMenge);
+        model->setIndexMengeBenoetigt(bh->sud()->modelMalzschuettung()->index(mIndex, ModelMalzschuettung::Colerg_Menge));
+        model->sort(ModelMalz::ColBeschreibung, Qt::AscendingOrder);
         ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(bh->modelMalz()->fieldIndex("Beschreibung"));
+        ui->cbZutat->setModelColumn(ModelMalz::ColBeschreibung);
         ui->cbZutat->setEnabled(true);
         ui->cbZutat->setCurrentIndex(-1);
         ui->btnLoeschen->setVisible(true);
@@ -108,31 +108,31 @@ void WdgMalzGabe::updateValues(bool full)
         ui->cbZutat->setCurrentText(malzname);
     }
     if (!ui->tbMengeProzent->hasFocus())
-        ui->tbMengeProzent->setValue(data("Prozent").toDouble());
+        ui->tbMengeProzent->setValue(data(ModelMalzschuettung::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
     {
         ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());
-        ui->tbMenge->setValue(data("erg_Menge").toDouble());
+        ui->tbMenge->setValue(data(ModelMalzschuettung::Colerg_Menge).toDouble());
     }
 
     QPalette pal = ui->frameColor->palette();
-    pal.setColor(QPalette::Background, BierCalc::ebcToColor(data("Farbe").toDouble()));
+    pal.setColor(QPalette::Background, BierCalc::ebcToColor(data(ModelMalzschuettung::ColFarbe).toDouble()));
     ui->frameColor->setPalette(pal);
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "Menge").toDouble());
+        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelMalzschuettung();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, "Name").toString() == malzname)
-                benoetigt += model->data(i, "erg_Menge").toDouble();
+            if (model->data(i, ModelMalzschuettung::ColName).toString() == malzname)
+                benoetigt += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
         ui->tbMengeProzent->setError( ui->tbMengeProzent->value() == 0.0);
 
-        int max = bh->modelMalz()->getValueFromSameRow("Beschreibung", malzname, "MaxProzent").toInt();
+        int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMaxProzent).toInt();
         if (ui->tbMengeProzent->value() > max)
         {
             ui->lblWarnAnteil->setVisible(true);
@@ -149,29 +149,29 @@ void WdgMalzGabe::updateValues(bool full)
 void WdgMalzGabe::on_cbZutat_currentIndexChanged(const QString &text)
 {
     if (ui->cbZutat->hasFocus())
-        setData("Name", text);
+        setData(ModelMalzschuettung::ColName, text);
 }
 
 void WdgMalzGabe::on_tbMengeProzent_valueChanged(double value)
 {
     if (ui->tbMengeProzent->hasFocus())
-        setData("Prozent", value);
+        setData(ModelMalzschuettung::ColProzent, value);
 }
 
 void WdgMalzGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
-        setData("erg_Menge", value);
+        setData(ModelMalzschuettung::Colerg_Menge, value);
 }
 
 QString WdgMalzGabe::name() const
 {
-    return data("Name").toString();
+    return data(ModelMalzschuettung::ColName).toString();
 }
 
 double WdgMalzGabe::prozent() const
 {
-    return data("Prozent").toDouble();
+    return data(ModelMalzschuettung::ColProzent).toDouble();
 }
 
 void WdgMalzGabe::setFehlProzent(double value)
@@ -206,7 +206,7 @@ void WdgMalzGabe::on_btnKorrektur_clicked()
 {
     setFocus();
     double toadd = ui->btnKorrektur->property("toadd").toDouble();
-    setData("Prozent", prozent() + toadd);
+    setData(ModelMalzschuettung::ColProzent, prozent() + toadd);
 }
 
 void WdgMalzGabe::on_btnLoeschen_clicked()
@@ -216,5 +216,5 @@ void WdgMalzGabe::on_btnLoeschen_clicked()
 
 void WdgMalzGabe::on_btnAufbrauchen_clicked()
 {
-    setData("erg_Menge", ui->tbVorhanden->value());
+    setData(ModelMalzschuettung::Colerg_Menge, ui->tbVorhanden->value());
 }

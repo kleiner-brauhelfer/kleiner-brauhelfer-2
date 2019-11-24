@@ -41,20 +41,20 @@ void Database::createTables(Brauhelfer* bh)
 void Database::setTables()
 {
     modelSud->setTable("Sud");
-    modelSud->setSortByFieldName("Braudatum", Qt::DescendingOrder);
+    modelSud->setSort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     modelRasten->setTable("Rasten");
     modelMalzschuettung->setTable("Malzschuettung");
     modelHopfengaben->setTable("Hopfengaben");
     modelHefegaben->setTable("Hefegaben");
     modelWeitereZutatenGaben->setTable("WeitereZutatenGaben");
     modelSchnellgaerverlauf->setTable("Schnellgaerverlauf");
-    modelSchnellgaerverlauf->setSortByFieldName("Zeitstempel", Qt::AscendingOrder);
+    modelSchnellgaerverlauf->setSort(ModelSchnellgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelHauptgaerverlauf->setTable("Hauptgaerverlauf");
-    modelHauptgaerverlauf->setSortByFieldName("Zeitstempel", Qt::AscendingOrder);
+    modelHauptgaerverlauf->setSort(ModelHauptgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelNachgaerverlauf->setTable("Nachgaerverlauf");
-    modelNachgaerverlauf->setSortByFieldName("Zeitstempel", Qt::AscendingOrder);
+    modelNachgaerverlauf->setSort(ModelNachgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelBewertungen->setTable("Bewertungen");
-    modelBewertungen->setSortByFieldName("Datum", Qt::AscendingOrder);
+    modelBewertungen->setSort(ModelBewertungen::ColDatum, Qt::AscendingOrder);
     modelMalz->setTable("Malz");
     modelHopfen->setTable("Hopfen");
     modelHefe->setTable("Hefe");

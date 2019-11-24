@@ -99,24 +99,24 @@ double ModelNachgaerverlauf::getLastCO2(const QVariant &sudId) const
     return co2;
 }
 
-void ModelNachgaerverlauf::defaultValues(QVariantMap &values) const
+void ModelNachgaerverlauf::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Zeitstempel"))
-        values.insert("Zeitstempel", QDateTime::currentDateTime());
-    if (values.contains("SudID"))
+    if (!values.contains(ColZeitstempel))
+        values.insert(ColZeitstempel, QDateTime::currentDateTime());
+    if (values.contains(ColSudID))
     {
-        int id = values.value("SudID", -1).toInt();
+        int id = values.value(ColSudID, -1).toInt();
         int row = getLastRow(id);
         if (row >= 0)
         {
-            if (!values.contains("Druck"))
-                values.insert("Druck", data(row, ColDruck));
-            if (!values.contains("Temp"))
-                values.insert("Temp", data(row, ColTemp));
+            if (!values.contains(ColDruck))
+                values.insert(ColDruck, data(row, ColDruck));
+            if (!values.contains(ColTemp))
+                values.insert(ColTemp, data(row, ColTemp));
         }
     }
-    if (!values.contains("Druck"))
-        values.insert("Druck", 0.0);
-    if (!values.contains("Temp"))
-        values.insert("Temp", 20.0);
+    if (!values.contains(ColDruck))
+        values.insert(ColDruck, 0.0);
+    if (!values.contains(ColTemp))
+        values.insert(ColTemp, 20.0);
 }

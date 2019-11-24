@@ -954,7 +954,7 @@ void TabRohstoffe::spalteAnzeigenWeitereZutaten(bool checked)
         ui->tableWeitereZutaten->setColumnHidden(action->data().toInt(), !checked);
 }
 
-void TabRohstoffe::addEntry(QTableView *table, const QVariantMap &values)
+void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values)
 {
     ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
     ui->radioButtonAlle->setChecked(true);
@@ -972,20 +972,19 @@ void TabRohstoffe::addEntry(QTableView *table, const QVariantMap &values)
 
 void TabRohstoffe::on_buttonAdd_clicked()
 {
-    QVariantMap values({{"Beschreibung", tr("Neuer Eintrag")}});
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
     case 0:
-        addEntry(ui->tableMalz, values);
+        addEntry(ui->tableMalz, {{ModelMalz::ColBeschreibung, tr("Neuer Eintrag")}});
         break;
     case 1:
-        addEntry(ui->tableHopfen, values);
+        addEntry(ui->tableHopfen, {{ModelHopfen::ColBeschreibung, tr("Neuer Eintrag")}});
         break;
     case 2:
-        addEntry(ui->tableHefe, values);
+        addEntry(ui->tableHefe, {{ModelHefe::ColBeschreibung, tr("Neuer Eintrag")}});
         break;
     case 3:
-        addEntry(ui->tableWeitereZutaten, values);
+        addEntry(ui->tableWeitereZutaten, {{ModelWeitereZutaten::ColBeschreibung, tr("Neuer Eintrag")}});
         break;
     }
 }
@@ -1044,11 +1043,11 @@ void TabRohstoffe::on_buttonCopy_clicked()
     for (const QModelIndex& index : table->selectionModel()->selectedRows())
     {
         int row = index.row();
-        QVariantMap values = sourceModel->copyValues(model->mapRowToSource(row));
-        values.insert("Beschreibung", model->data(row, model->fieldIndex("Beschreibung")).toString() + " " + tr("Kopie"));
-        values.remove("Menge");
-        values.remove("Eingelagert");
-        values.remove("Mindesthaltbar");
+        QMap<int, QVariant> values = sourceModel->copyValues(model->mapRowToSource(row));
+        values.insert(model->fieldIndex("Beschreibung"), model->data(row, model->fieldIndex("Beschreibung")).toString() + " " + tr("Kopie"));
+        values.remove(model->fieldIndex("Menge"));
+        values.remove(model->fieldIndex("Eingelagert"));
+        values.remove(model->fieldIndex("Mindesthaltbar"));
         addEntry(table, values);
     }
 }
@@ -1256,7 +1255,7 @@ void TabRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
 
 void TabRohstoffe::on_btnNeuesWasserprofil_clicked()
 {
-    QVariantMap values({{"Name", tr("Neues Profil")}});
+    QMap<int, QVariant> values({{ModelWasser::ColName, tr("Neues Profil")}});
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableWasser->model());
     int row = model->append(values);
     if (row >= 0)

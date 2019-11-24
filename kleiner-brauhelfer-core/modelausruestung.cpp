@@ -127,14 +127,14 @@ bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
     return false;
 }
 
-void ModelAusruestung::defaultValues(QVariantMap &values) const
+void ModelAusruestung::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("ID"))
-        values.insert("ID", getNextId());
-    if (!values.contains("Sudhausausbeute"))
-        values.insert("Sudhausausbeute", 60.0);
-    if (!values.contains("Verdampfungsziffer"))
-        values.insert("Verdampfungsziffer", 10.0);
-    if (values.contains("Name"))
-        values["Name"] = getUniqueName(index(0, ColName), values["Name"], true);
+    if (!values.contains(ColID))
+        values[ColID] = getNextId();
+    if (!values.contains(ColSudhausausbeute))
+        values.insert(ColSudhausausbeute, 60.0);
+    if (!values.contains(ColVerdampfungsziffer))
+        values.insert(ColVerdampfungsziffer, 10.0);
+    if (values.contains(ColName))
+        values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
 }

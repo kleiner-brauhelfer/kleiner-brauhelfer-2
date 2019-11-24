@@ -76,11 +76,11 @@ Qt::ItemFlags ModelFlaschenlabelTags::flags(const QModelIndex &idx) const
     return itemFlags;
 }
 
-void ModelFlaschenlabelTags::defaultValues(QVariantMap &values) const
+void ModelFlaschenlabelTags::defaultValues(QMap<int, QVariant> &values) const
 {
     int sudId = -1;
-    if (values.contains("SudID"))
-        sudId = values["SudID"].toInt();
-    if (values.contains("Tagname"))
-        values["Tagname"] = getUniqueName(index(0, ColTagname), values["Tagname"], sudId, true);
+    if (values.contains(ColSudID))
+        sudId = values[ColSudID].toInt();
+    if (values.contains(ColTagname))
+        values[ColTagname] = getUniqueName(index(0, ColTagname), values[ColTagname], sudId, true);
 }

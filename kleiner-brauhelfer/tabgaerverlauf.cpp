@@ -457,10 +457,10 @@ void TabGaerverlauf::on_btnSWSchnellgaerverlauf_clicked()
 
 void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Zeitstempel", ui->tbDatumSchnellgaerprobe->dateTime()},
-                        {"SW", ui->tbSWSchnellgaerprobe->value()},
-                        {"Temp", ui->tbTempSchnellgaerprobe->value()}});
+    QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                {ModelSchnellgaerverlauf::ColZeitstempel, ui->tbDatumSchnellgaerprobe->dateTime()},
+                                {ModelSchnellgaerverlauf::ColSW, ui->tbSWSchnellgaerprobe->value()},
+                                {ModelSchnellgaerverlauf::ColTemp, ui->tbTempSchnellgaerprobe->value()}});
     bh->sud()->modelSchnellgaerverlauf()->append(values);
 }
 
@@ -487,10 +487,10 @@ void TabGaerverlauf::on_btnSWHauptgaerverlauf_clicked()
 
 void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Zeitstempel", ui->tbDatumHautgaerprobe->dateTime()},
-                        {"SW", ui->tbSWHauptgaerprobe->value()},
-                        {"Temp", ui->tbTempHauptgaerprobe->value()}});
+    QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                {ModelHauptgaerverlauf::ColZeitstempel, ui->tbDatumHautgaerprobe->dateTime()},
+                                {ModelHauptgaerverlauf::ColSW, ui->tbSWHauptgaerprobe->value()},
+                                {ModelHauptgaerverlauf::ColTemp, ui->tbTempHauptgaerprobe->value()}});
     bh->sud()->modelHauptgaerverlauf()->append(values);
 }
 
@@ -563,10 +563,10 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 
 void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Zeitstempel", ui->tbDatumNachgaerprobe->dateTime()},
-                        {"Druck", ui->tbNachgaerdruck->value()},
-                        {"Temp", ui->tbNachgaertemp->value()}});
+    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
+                                {ModelNachgaerverlauf::ColZeitstempel, ui->tbDatumNachgaerprobe->dateTime()},
+                                {ModelNachgaerverlauf::ColDruck, ui->tbNachgaerdruck->value()},
+                                {ModelNachgaerverlauf::ColTemp, ui->tbNachgaertemp->value()}});
     bh->sud()->modelNachgaerverlauf()->append(values);
 }
 

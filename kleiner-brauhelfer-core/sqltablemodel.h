@@ -63,7 +63,7 @@ public:
      * @param row Row number
      * @param values Field name-values pairs to set
      */
-    Q_INVOKABLE bool setData(int row, const QVariantMap &values, int role = Qt::EditRole);
+    Q_INVOKABLE bool setData(int row, const QMap<int, QVariant> &values, int role = Qt::EditRole);
 
     /**
      * @brief Gets the role names
@@ -129,14 +129,14 @@ public:
      * @param values Field values
      * @return Index of appended row
      */
-    Q_INVOKABLE int append(const QVariantMap &values = QVariantMap());
+    Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
 
     /**
      * @brief Appends a new row directly to the table without calculating dependencies
      * @param values Field values
      * @return Index of appended row
      */
-    Q_INVOKABLE int appendDirect(const QVariantMap &values = QVariantMap());
+    Q_INVOKABLE int appendDirect(const QMap<int, QVariant> &values = QMap<int, QVariant>());
 
     /**
      * @brief Saves the pending changes of the table
@@ -170,14 +170,14 @@ public:
      * @brief Default values of a row
      * @param values Values
      */
-    virtual void defaultValues(QVariantMap &values) const;
+    virtual void defaultValues(QMap<int, QVariant> &values) const;
 
     /**
      * @brief Values used to copy a row
      * @param row Row
      * @return Values
      */
-    virtual QVariantMap copyValues(int row) const;
+    virtual QMap<int, QVariant> copyValues(int row) const;
 
 public Q_SLOTS:
 

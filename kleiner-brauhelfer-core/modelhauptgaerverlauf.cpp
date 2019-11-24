@@ -100,33 +100,33 @@ int ModelHauptgaerverlauf::getLastRow(const QVariant &sudId) const
     return row;
 }
 
-void ModelHauptgaerverlauf::defaultValues(QVariantMap &values) const
+void ModelHauptgaerverlauf::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Zeitstempel"))
-        values.insert("Zeitstempel", QDateTime::currentDateTime());
-    if (values.contains("SudID"))
+    if (!values.contains(ColZeitstempel))
+        values.insert(ColZeitstempel, QDateTime::currentDateTime());
+    if (values.contains(ColSudID))
     {
-        int id = values.value("SudID").toInt();
+        int id = values.value(ColSudID).toInt();
         int row = getLastRow(id);
         if (row >= 0)
         {
-            if (!values.contains("SW"))
-                values.insert("SW", data(row, ColSW));
-            if (!values.contains("Temp"))
-                values.insert("Temp", data(row, ColTemp));
+            if (!values.contains(ColSW))
+                values.insert(ColSW, data(row, ColSW));
+            if (!values.contains(ColTemp))
+                values.insert(ColTemp, data(row, ColTemp));
         }
         else
         {
-            if (!values.contains("SW"))
+            if (!values.contains(ColSW))
             {
                 int rowBrew = bh->modelSud()->getRowWithValue(ModelSud::ColID, id);
                 if (rowBrew >= 0)
-                    values.insert("SW", bh->modelSud()->data(rowBrew, ModelSud::ColSWIst));
+                    values.insert(ColSW, bh->modelSud()->data(rowBrew, ModelSud::ColSWIst));
             }
         }
     }
-    if (!values.contains("SW"))
-        values.insert("SW", 0.0);
-    if (!values.contains("Temp"))
-        values.insert("Temp", 20.0);
+    if (!values.contains(ColSW))
+        values.insert(ColSW, 0.0);
+    if (!values.contains(ColTemp))
+        values.insert(ColTemp, 20.0);
 }

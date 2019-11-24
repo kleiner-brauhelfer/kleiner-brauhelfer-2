@@ -331,9 +331,10 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
     bh->sud()->setAbfuelldatum(ui->tbAbfuelldatum->dateTime());
     bh->sud()->setStatus(Sud_Status_Abgefuellt);
 
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Zeitstempel", bh->sud()->getAbfuelldatum()},
-                        {"Druck", 0.0}, {"Temp", bh->sud()->getTemperaturJungbier()}});
+    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
+                                {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
+                                {ModelNachgaerverlauf::ColDruck, 0.0},
+                                {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
     if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
         bh->sud()->modelNachgaerverlauf()->append(values);
 }

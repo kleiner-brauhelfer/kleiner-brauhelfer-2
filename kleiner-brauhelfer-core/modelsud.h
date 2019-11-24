@@ -108,8 +108,8 @@ public:
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool removeRows(int row, int count = 1, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
-    void defaultValues(QVariantMap &values) const Q_DECL_OVERRIDE;
-    QVariantMap copyValues(int row) const Q_DECL_OVERRIDE;
+    void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
+    QMap<int, QVariant> copyValues(int row) const Q_DECL_OVERRIDE;
     QVariant dataSud(QVariant sudId, int col);
     QVariant dataAnlage(int row, int col) const;
     QVariant dataWasser(int row, int col) const;

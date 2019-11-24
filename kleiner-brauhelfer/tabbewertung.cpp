@@ -89,8 +89,7 @@ void TabBewertung::clicked(int index)
 
 void TabBewertung::on_btnNeueBewertung_clicked()
 {
-    QVariantMap values;
-    values.insert("SudID", bh->sud()->id());
+    QMap<int, QVariant> values({{ModelBewertungen::ColSudID, bh->sud()->id()}});
     int index = bh->sud()->modelBewertungen()->append(values);
     ui->scrollAreaBewertungen->verticalScrollBar()->setValue(ui->scrollAreaBewertungen->verticalScrollBar()->maximum());
     clicked(index);

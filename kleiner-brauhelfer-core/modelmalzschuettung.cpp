@@ -75,10 +75,10 @@ void ModelMalzschuettung::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
-void ModelMalzschuettung::defaultValues(QVariantMap &values) const
+void ModelMalzschuettung::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Name"))
-        values.insert("Name", bh->modelMalz()->data(0, ModelMalz::ColBeschreibung));
-    if (!values.contains("Prozent"))
-        values.insert("Prozent", 0.0);
+    if (!values.contains(ColName))
+        values.insert(ColName, bh->modelMalz()->data(0, ModelMalz::ColBeschreibung));
+    if (!values.contains(ColProzent))
+        values.insert(ColProzent, 0.0);
 }

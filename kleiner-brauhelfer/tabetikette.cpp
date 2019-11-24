@@ -26,12 +26,20 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+   #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance("  "));
+   #else
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+   #endif
   #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+   #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance("  "));
+   #else
+    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTags->font()).width(' '));
+   #endif
   #endif
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
@@ -213,14 +221,14 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     ui->btnSaveTemplate->setVisible(false);
     if (bh->sud()->modelFlaschenlabel()->rowCount() == 0)
     {
-        QVariantMap values({{"SudID", bh->sud()->id()},
-                            {"BreiteLabel", 185},
-                            {"AnzahlLabels", 25},
-                            {"AbstandLabels", 0},
-                            {"SRandOben", 10},
-                            {"SRandLinks", 5},
-                            {"SRandRechts", 5},
-                            {"SRandUnten", 15}});
+        QMap<int, QVariant> values({{ModelFlaschenlabel::ColSudID, bh->sud()->id()},
+                                    {ModelFlaschenlabel::ColBreiteLabel, 185},
+                                    {ModelFlaschenlabel::ColAnzahlLabels, 25},
+                                    {ModelFlaschenlabel::ColAbstandLabels, 0},
+                                    {ModelFlaschenlabel::ColSRandOben, 10},
+                                    {ModelFlaschenlabel::ColSRandLinks, 5},
+                                    {ModelFlaschenlabel::ColSRandRechts, 5},
+                                    {ModelFlaschenlabel::ColSRandUnten, 15}});
         bh->sud()->modelFlaschenlabel()->append(values);
     }
     setData(ModelFlaschenlabel::ColAuswahl, ui->cbAuswahl->itemData(index).toString());

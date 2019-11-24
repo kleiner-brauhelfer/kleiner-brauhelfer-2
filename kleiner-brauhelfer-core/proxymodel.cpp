@@ -62,7 +62,7 @@ bool ProxyModel::removeRow(int arow, const QModelIndex &parent)
     return false;
 }
 
-int ProxyModel::append(const QVariantMap &values)
+int ProxyModel::append(const QMap<int, QVariant> &values)
 {
     SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
     if (model)

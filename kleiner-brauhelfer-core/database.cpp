@@ -273,7 +273,7 @@ QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
         QString str = "Query: " + query +
                 "\nError: " + lastError.databaseText() +
                 "\n" + lastError.driverText();
-        qCritical(str.toStdString().c_str());
+        qCritical() << str;
     }
     return sqlQuery;
 }
@@ -818,7 +818,7 @@ bool Database::update()
     catch (const std::exception& ex)
     {
         db.rollback();
-        qCritical(ex.what());
+        qCritical() << ex.what();
         return false;
     }
     catch (...)

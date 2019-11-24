@@ -53,7 +53,7 @@ private slots:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
-    void addEntry(QTableView *table, const QVariantMap &values);
+    void addEntry(QTableView *table, const QMap<int, QVariant> &values);
     void replace(int type, const QString &rohstoff);
     QVariant dataWasser(int col) const;
     bool setDataWasser(int col, const QVariant &value);

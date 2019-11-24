@@ -77,13 +77,13 @@ bool SqlTableModel::setData(int row, int col, const QVariant &value, int role)
     return setData(index(row, col), value, role);
 }
 
-bool SqlTableModel::setData(int row, const QVariantMap &values, int role)
+bool SqlTableModel::setData(int row, const QMap<int, QVariant> &values, int role)
 {
     bool ret = true;
-    QVariantMap::const_iterator it = values.constBegin();
+    QMap<int, QVariant>::const_iterator it = values.constBegin();
     while (it != values.constEnd())
     {
-        ret &= setData(row, fieldIndex(it.key()), it.value(), role);
+        ret &= setData(row, it.key(), it.value(), role);
         ++it;
     }
     return ret;
@@ -229,25 +229,25 @@ bool SqlTableModel::removeRow(int arow, const QModelIndex &parent)
      return QSqlTableModel::removeRow(arow, parent);
 }
 
-int SqlTableModel::append(const QVariantMap &values)
+int SqlTableModel::append(const QMap<int, QVariant> &values)
 {
     qInfo(loggingCategory) << "append():" << tableName();
-    QVariantMap val = values;
+    QMap<int, QVariant> val = values;
     defaultValues(val);
     if (insertRow(rowCount()))
     {
         int row = rowCount() - 1;
-        QVariantMap::const_iterator it = val.constBegin();
+        QMap<int, QVariant>::const_iterator it = val.constBegin();
         bool wasBlocked = blockSignals(true);
         while (it != val.constEnd())
         {
-            QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
+            QSqlTableModel::setData(index(row, it.key()), it.value());
             ++it;
         }
         it = val.constBegin();
         while (it != val.constEnd())
         {
-            setDataExt(index(row, fieldIndex(it.key())), it.value());
+            setDataExt(index(row, it.key()), it.value());
             ++it;
         }
         blockSignals(wasBlocked);
@@ -259,17 +259,17 @@ int SqlTableModel::append(const QVariantMap &values)
     return -1;
 }
 
-int SqlTableModel::appendDirect(const QVariantMap &values)
+int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
 {
     qInfo(loggingCategory) << "appendDirect():" << tableName();
     if (insertRow(rowCount()))
     {
         int row = rowCount() - 1;
-        QVariantMap::const_iterator it = values.constBegin();
+        QMap<int, QVariant>::const_iterator it = values.constBegin();
         bool wasBlocked = blockSignals(true);
         while (it != values.constEnd())
         {
-            QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
+            QSqlTableModel::setData(index(row, it.key()), it.value());
             ++it;
         }
         blockSignals(wasBlocked);
@@ -378,19 +378,21 @@ int SqlTableModel::getNextId() const
     return 1;
 }
 
-void SqlTableModel::defaultValues(QVariantMap &values) const
+void SqlTableModel::defaultValues(QMap<int, QVariant> &values) const
 {
     Q_UNUSED(values)
 }
 
-QVariantMap SqlTableModel::copyValues(int row) const
+QMap<int, QVariant> SqlTableModel::copyValues(int row) const
 {
-    QVariantMap values;
-    QSqlRecord rec = record(row);
-    for (int i = 0; i < rec.count(); ++i)
-        values.insert(rec.fieldName(i), rec.value(i));
+    QMap<int, QVariant> values;
+    int colPrimary = -1;
     QSqlIndex primary = primaryKey();
     if (!primary.isEmpty())
-        values.remove(fieldName(primary.value(0).toInt()));
+        colPrimary = primary.value(0).toInt();
+    QSqlRecord rec = record(row);
+    for (int i = 0; i < rec.count(); ++i)
+        if (i != colPrimary)
+            values.insert(i, rec.value(i));
     return values;
 }

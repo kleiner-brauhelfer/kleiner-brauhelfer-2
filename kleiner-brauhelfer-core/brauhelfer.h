@@ -143,7 +143,7 @@ signals:
     void discarded();
 
 private:
-    void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QVariantMap &overrideValues);
+    void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues);
 
 private:
     QString mDatabasePath;

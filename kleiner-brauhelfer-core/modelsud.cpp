@@ -828,41 +828,41 @@ void ModelSud::removeRowsFrom(SqlTableModel* model, int colId, const QVariant &s
     }
 }
 
-void ModelSud::defaultValues(QVariantMap &values) const
+void ModelSud::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("ID"))
-        values.insert("ID", getNextId());
-    if (!values.contains("Erstellt"))
-        values.insert("Erstellt", QDateTime::currentDateTime());
-    if (!values.contains("Sudname"))
-        values.insert("Sudname", "Sudname");
-    if (!values.contains("Sudnummer"))
-        values.insert("Sudnummer", 0);
-    if (!values.contains("Anlage") && bh->modelAusruestung()->rowCount() == 1)
-        values.insert("Anlage", bh->modelAusruestung()->data(0, ModelAusruestung::ColName));
-    if (!values.contains("Wasserprofil") && bh->modelWasser()->rowCount() == 1)
-        values.insert("Wasserprofil", bh->modelWasser()->data(0, ModelWasser::ColName));
-    if (!values.contains("Menge"))
-        values.insert("Menge", 20);
-    if (!values.contains("SW"))
-        values.insert("SW", 12);
-    if (!values.contains("CO2"))
-        values.insert("CO2", 5);
-    if (!values.contains("IBU"))
-        values.insert("IBU", 26);
-    if (!values.contains("KochdauerNachBitterhopfung"))
-        values.insert("KochdauerNachBitterhopfung", 60);
-    if (!values.contains("berechnungsArtHopfen"))
-        values.insert("berechnungsArtHopfen", Hopfen_Berechnung_IBU);
-    if (!values.contains("TemperaturJungbier"))
-        values.insert("TemperaturJungbier", 20.0);
-    if (!values.contains("Status"))
-        values.insert("Status", Sud_Status_Rezept);
+    if (!values.contains(ColID))
+        values.insert(ColID, getNextId());
+    if (!values.contains(ColErstellt))
+        values.insert(ColErstellt, QDateTime::currentDateTime());
+    if (!values.contains(ColSudname))
+        values.insert(ColSudname, "Sudname");
+    if (!values.contains(ColSudnummer))
+        values.insert(ColSudnummer, 0);
+    if (!values.contains(ColAnlage) && bh->modelAusruestung()->rowCount() == 1)
+        values.insert(ColAnlage, bh->modelAusruestung()->data(0, ModelAusruestung::ColName));
+    if (!values.contains(ColWasserprofil) && bh->modelWasser()->rowCount() == 1)
+        values.insert(ColWasserprofil, bh->modelWasser()->data(0, ModelWasser::ColName));
+    if (!values.contains(ColMenge))
+        values.insert(ColMenge, 20);
+    if (!values.contains(ColSW))
+        values.insert(ColSW, 12);
+    if (!values.contains(ColCO2))
+        values.insert(ColCO2, 5);
+    if (!values.contains(ColIBU))
+        values.insert(ColIBU, 26);
+    if (!values.contains(ColKochdauerNachBitterhopfung))
+        values.insert(ColKochdauerNachBitterhopfung, 60);
+    if (!values.contains(ColberechnungsArtHopfen))
+        values.insert(ColberechnungsArtHopfen, Hopfen_Berechnung_IBU);
+    if (!values.contains(ColTemperaturJungbier))
+        values.insert(ColTemperaturJungbier, 20.0);
+    if (!values.contains(ColStatus))
+        values.insert(ColStatus, Sud_Status_Rezept);
 }
 
-QVariantMap ModelSud::copyValues(int row) const
+QMap<int, QVariant> ModelSud::copyValues(int row) const
 {
-    QVariantMap values = SqlTableModel::copyValues(row);
-    values.insert("ID", getNextId());
+    QMap<int, QVariant> values = SqlTableModel::copyValues(row);
+    values[ColID] = getNextId();
     return values;
 }

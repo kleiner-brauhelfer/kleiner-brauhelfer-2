@@ -17,12 +17,20 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->setupUi(this);
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+   #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance("  "));
+   #else
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+   #endif
   #endif
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+   #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance("  "));
+   #else
+    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTags->font()).width(' '));
+   #endif
   #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
     mTimerWebViewUpdate.setSingleShot(true);

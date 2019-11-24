@@ -86,17 +86,17 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         gesamt_schuettung += kg;
     }
 
-    QVariantMap values;
-    values["Sudname"] = root["Name"].toString();
-    values["Menge"] = menge;
-    values["SW"] = toDouble(root["Stammwuerze"]);
-    values["FaktorHauptguss"] = toDouble(root["Infusion_Hauptguss"]) / gesamt_schuettung;
-    values["EinmaischenTemp"] = toDouble(root["Infusion_Einmaischtemperatur"]);
-    values["CO2"] = toDouble(root["Karbonisierung"]);
-    values["IBU"] = toDouble(root["Bittere"]);
-    values["berechnungsArtHopfen"] = Hopfen_Berechnung_Gewicht;
-    values["KochdauerNachBitterhopfung"] = toDouble(root["Kochzeit_Wuerze"]);
-    values["Kommentar"] = QString(QObject::tr("Rezept aus MaischMalzundMehr\n"
+    QMap<int, QVariant> values;
+    values[ModelSud::ColSudname] = root["Name"].toString();
+    values[ModelSud::ColMenge] = menge;
+    values[ModelSud::ColSW] = toDouble(root["Stammwuerze"]);
+    values[ModelSud::ColFaktorHauptguss] = toDouble(root["Infusion_Hauptguss"]) / gesamt_schuettung;
+    values[ModelSud::ColEinmaischenTemp] = toDouble(root["Infusion_Einmaischtemperatur"]);
+    values[ModelSud::ColCO2] = toDouble(root["Karbonisierung"]);
+    values[ModelSud::ColIBU] = toDouble(root["Bittere"]);
+    values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Gewicht;
+    values[ModelSud::ColKochdauerNachBitterhopfung] = toDouble(root["Kochzeit_Wuerze"]);
+    values[ModelSud::ColKommentar] = QString(QObject::tr("Rezept aus MaischMalzundMehr\n"
                                               "<b>Autor: </b> %1\n"
                                               "<b>Datum: </b> %2\n"
                                               "<b>Sorte: </b> %3\n\n"
@@ -117,17 +117,17 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         for (int i = 1; i < max_rasten; ++i)
         {
             values.clear();
-            values["SudID"] = sudId;
-            values["Name"] = QString(QObject::tr("%1. Rast")).arg(i);
-            values["Temp"] = toDouble(root[QString("Infusion_Rasttemperatur%1").arg(i)]);
-            values["Dauer"] = toDouble(root[QString("Infusion_Rastzeit%1").arg(i)]);
+            values[ModelRasten::ColSudID] = sudId;
+            values[ModelRasten::ColName] = QString(QObject::tr("%1. Rast")).arg(i);
+            values[ModelRasten::ColTemp] = toDouble(root[QString("Infusion_Rasttemperatur%1").arg(i)]);
+            values[ModelRasten::ColDauer] = toDouble(root[QString("Infusion_Rastzeit%1").arg(i)]);
             bh->modelRasten()->append(values);
         }
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = QObject::tr("Abmaischen");
-        values["Temp"] = toDouble(root["Abmaischtemperatur"]);
-        values["Dauer"] = 10;
+        values[ModelRasten::ColSudID] = sudId;
+        values[ModelRasten::ColName] = QObject::tr("Abmaischen");
+        values[ModelRasten::ColTemp] = toDouble(root["Abmaischtemperatur"]);
+        values[ModelRasten::ColDauer] = 10;
         bh->modelRasten()->append(values);
     }
 
@@ -140,10 +140,10 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         else
             kg = toDouble( root[QString("Malz%1_Menge").arg(i)]);
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = root[QString("Malz%1").arg(i)].toString();
-        values["Prozent"] = kg / gesamt_schuettung * 100.0;
-        values["Farbe"] = 1;
+        values[ModelMalzschuettung::ColSudID] = sudId;
+        values[ModelMalzschuettung::ColName] = root[QString("Malz%1").arg(i)].toString();
+        values[ModelMalzschuettung::ColProzent] = kg / gesamt_schuettung * 100.0;
+        values[ModelMalzschuettung::ColFarbe] = 1;
         bh->modelMalzschuettung()->append(values);
     }
 
@@ -158,32 +158,32 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     for (int i = 1; i < max_hopfen_vwh; ++i)
     {
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = root[QString("Hopfen_VWH_%1_Sorte").arg(i)].toString();
-        values["Prozent"] = toDouble(root[QString("Hopfen_VWH_%1_Menge").arg(i)]) / gesamt_hopfen * 100.0;
-        values["Zeit"] = toDouble(root["Kochzeit_Wuerze"]);
-        values["Alpha"] = toDouble(root[QString("Hopfen_VWH_%1_alpha").arg(i)]);
-        values["Pellets"] = 1;
-        values["Vorderwuerze"] = 1;
+        values[ModelHopfengaben::ColSudID] = sudId;
+        values[ModelHopfengaben::ColName] = root[QString("Hopfen_VWH_%1_Sorte").arg(i)].toString();
+        values[ModelHopfengaben::ColProzent] = toDouble(root[QString("Hopfen_VWH_%1_Menge").arg(i)]) / gesamt_hopfen * 100.0;
+        values[ModelHopfengaben::ColZeit] = toDouble(root["Kochzeit_Wuerze"]);
+        values[ModelHopfengaben::ColAlpha] = toDouble(root[QString("Hopfen_VWH_%1_alpha").arg(i)]);
+        values[ModelHopfengaben::ColPellets] = 1;
+        values[ModelHopfengaben::ColVorderwuerze] = 1;
         bh->modelHopfengaben()->append(values);
     }
     for (int i = 1; i < max_hopfen; ++i)
     {
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = root[QString("Hopfen_%1_Sorte").arg(i)].toString();
-        values["Prozent"] = toDouble(root[QString("Hopfen_%1_Menge").arg(i)]) / gesamt_hopfen * 100.0;
-        values["Zeit"] = toDouble(root[QString("Hopfen_%1_Kochzeit").arg(i)]);
-        values["Alpha"] = toDouble(root[QString("Hopfen_%1_alpha").arg(i)]);
-        values["Pellets"] = 1;
+        values[ModelHopfengaben::ColSudID] = sudId;
+        values[ModelHopfengaben::ColName] = root[QString("Hopfen_%1_Sorte").arg(i)].toString();
+        values[ModelHopfengaben::ColProzent] = toDouble(root[QString("Hopfen_%1_Menge").arg(i)]) / gesamt_hopfen * 100.0;
+        values[ModelHopfengaben::ColZeit] = toDouble(root[QString("Hopfen_%1_Kochzeit").arg(i)]);
+        values[ModelHopfengaben::ColAlpha] = toDouble(root[QString("Hopfen_%1_alpha").arg(i)]);
+        values[ModelHopfengaben::ColPellets] = 1;
         bh->modelHopfengaben()->append(values);
     }
 
     // Hefe
     values.clear();
-    values["SudID"] = sudId;
-    values["Name"] = root["Hefe"].toString();
-    values["Menge"] = (int)(menge / 20.0);
+    values[ModelHefegaben::ColSudID] = sudId;
+    values[ModelHefegaben::ColName] = root["Hefe"].toString();
+    values[ModelHefegaben::ColMenge] = (int)(menge / 20.0);
     bh->modelHefegaben()->append(values);
 
     // Weitere Zutaten
@@ -191,51 +191,51 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     for (int i = 1; i < max_wz_wuerze; ++i)
     {
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = root[QString("WeitereZutat_Wuerze_%1_Name").arg(i)].toString();
-        values["Menge"] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Menge").arg(i)]) / menge;
+        values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+        values[ModelWeitereZutatenGaben::ColName] = root[QString("WeitereZutat_Wuerze_%1_Name").arg(i)].toString();
+        values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Menge").arg(i)]) / menge;
         if (root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(i)].toString() == "g")
-            values["Einheit"] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
         else
-            values["Einheit"] = EWZ_Einheit_Kg;
-        values["Typ"] = EWZ_Typ_Sonstiges;
-        values["Zeitpunkt"] = EWZ_Zeitpunkt_Kochen;
-        values["Zugabedauer"] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(i)]);
-        values["Entnahmeindex"] = EWZ_Entnahmeindex_KeineEntnahme;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
+        values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
+        values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Kochen;
+        values[ModelWeitereZutatenGaben::ColZugabedauer] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(i)]);
+        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
         bh->modelWeitereZutatenGaben()->append(values);
     }
     int max_wz_gaerung = findMax(root, "WeitereZutat_Gaerung_%%_Name");
     for (int i = 1; i < max_wz_gaerung; ++i)
     {
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = root[QString("WeitereZutat_Gaerung_%1_Name").arg(i)].toString();
-        values["Menge"] = toDouble(root[QString("WeitereZutat_Gaerung_%1_Menge").arg(i)]) / menge;
+        values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+        values[ModelWeitereZutatenGaben::ColName] = root[QString("WeitereZutat_Gaerung_%1_Name").arg(i)].toString();
+        values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QString("WeitereZutat_Gaerung_%1_Menge").arg(i)]) / menge;
         if (root[QString("WeitereZutat_Gaerung_%1_Einheit").arg(i)].toString() == "g")
-            values["Einheit"] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
         else
-            values["Einheit"] = EWZ_Einheit_Kg;
-        values["Typ"] = EWZ_Typ_Sonstiges;
-        values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
-        values["Zugabedauer"] = 0;
-        values["Entnahmeindex"] = EWZ_Entnahmeindex_KeineEntnahme;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
+        values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
+        values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+        values[ModelWeitereZutatenGaben::ColZugabedauer] = 0;
+        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
         bh->modelWeitereZutatenGaben()->append(values);
     }
     int max_hopfen_stopf = findMax(root, "Stopfhopfen_%%_Sorte");
     for (int i = 1; i < max_hopfen_stopf; ++i)
     {
         values.clear();
-        values["SudID"] = sudId;
-        values["Name"] = root[QString("Stopfhopfen_%1_Sorte").arg(i)].toString();
-        values["Menge"] = toDouble(root[QString("Stopfhopfen_%1_Menge").arg(i)]) / menge;
+        values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+        values[ModelWeitereZutatenGaben::ColName] = root[QString("Stopfhopfen_%1_Sorte").arg(i)].toString();
+        values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QString("Stopfhopfen_%1_Menge").arg(i)]) / menge;
         if (root[QString("Stopfhopfen_%1_Einheit").arg(i)].toString() == "g")
-            values["Einheit"] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
         else
-            values["Einheit"] = EWZ_Einheit_Kg;
-        values["Typ"] = EWZ_Typ_Hopfen;
-        values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
-        values["Zugabedauer"] = 7200;
-        values["Entnahmeindex"] = EWZ_Entnahmeindex_MitEntnahme;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
+        values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Hopfen;
+        values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+        values[ModelWeitereZutatenGaben::ColZugabedauer] = 7200;
+        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_MitEntnahme;
         bh->modelWeitereZutatenGaben()->append(values);
     }
     if (_sudRow)
@@ -279,22 +279,22 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         double min, max;
         double menge = nRecipe.firstChildElement("BATCH_SIZE").text().toDouble();
 
-        QVariantMap values;
-        values["Sudname"] = nRecipe.firstChildElement("NAME").text();
-        values["Menge"] = menge;
+        QMap<int, QVariant> values;
+        values[ModelSud::ColSudname] = nRecipe.firstChildElement("NAME").text();
+        values[ModelSud::ColMenge] = menge;
         min = nStyle.firstChildElement("OG_MIN").text().toDouble();
         max = nStyle.firstChildElement("OG_MAX").text().toDouble();
-        values["SW"] = BierCalc::dichteToPlato((min+max)/2);
-        values["FaktorHauptguss"] = 3.5;
-        values["EinmaischenTemp"] = nMashSteps.firstChildElement("MASH_STEP").firstChildElement("STEP_TEMP").text().toDouble();
+        values[ModelSud::ColSW] = BierCalc::dichteToPlato((min+max)/2);
+        values[ModelSud::ColFaktorHauptguss] = 3.5;
+        values[ModelSud::ColEinmaischenTemp] = nMashSteps.firstChildElement("MASH_STEP").firstChildElement("STEP_TEMP").text().toDouble();
         min = nStyle.firstChildElement("CARB_MIN").text().toDouble();
         max = nStyle.firstChildElement("CARB_MAX").text().toDouble();
-        values["CO2"] = (min+max)/2;
+        values[ModelSud::ColCO2] = (min+max)/2;
         min = nStyle.firstChildElement("IBU_MIN").text().toDouble();
         max = nStyle.firstChildElement("IBU_MAX").text().toDouble();
-        values["IBU"] = (min+max)/2;
-        values["berechnungsArtHopfen"] = Hopfen_Berechnung_Gewicht;
-        values["KochdauerNachBitterhopfung"] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
+        values[ModelSud::ColIBU] = (min+max)/2;
+        values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Gewicht;
+        values[ModelSud::ColKochdauerNachBitterhopfung] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
 
         sudRow = bh->modelSud()->append(values);
         int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
@@ -303,10 +303,10 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         for(QDomNode n = nMashSteps.firstChildElement("MASH_STEP"); !n.isNull(); n = n.nextSiblingElement("MASH_STEP"))
         {
             values.clear();
-            values["SudID"] = sudId;
-            values["Name"] = n.firstChildElement("NAME").text();
-            values["Temp"] = n.firstChildElement("STEP_TEMP").text().toDouble();
-            values["Dauer"] = n.firstChildElement("STEP_TIME").text().toDouble();
+            values[ModelRasten::ColSudID] = sudId;
+            values[ModelRasten::ColName] = n.firstChildElement("NAME").text();
+            values[ModelRasten::ColTemp] = n.firstChildElement("STEP_TEMP").text().toDouble();
+            values[ModelRasten::ColDauer] = n.firstChildElement("STEP_TIME").text().toDouble();
             bh->modelRasten()->append(values);
         }
 
@@ -320,36 +320,39 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         }
         for(QDomNode n = nMalz.firstChildElement("FERMENTABLE"); !n.isNull(); n = n.nextSiblingElement("FERMENTABLE"))
         {
-            values.clear();
-            values["SudID"] = sudId;
-            values["Name"] = n.firstChildElement("NAME").text();
-            values["Farbe"] = n.firstChildElement("COLOR").text().toDouble() * 1.97;
             QString type = n.firstChildElement("TYPE").text();
             if (type == "Grain")
             {
-                values["Prozent"] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_malz * 100;
+                values.clear();
+                values[ModelMalzschuettung::ColSudID] = sudId;
+                values[ModelMalzschuettung::ColName] = n.firstChildElement("NAME").text();
+                values[ModelMalzschuettung::ColFarbe] = n.firstChildElement("COLOR").text().toDouble() * 1.97;
+                values[ModelMalzschuettung::ColProzent] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_malz * 100;
                 bh->modelMalzschuettung()->append(values);
             }
             else
             {
-                values["Menge"] = n.firstChildElement("AMOUNT").text().toDouble() / menge;
-                values["Einheit"] = EWZ_Einheit_Kg;
+                values.clear();
+                values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+                values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
+                values[ModelWeitereZutatenGaben::ColFarbe] = n.firstChildElement("COLOR").text().toDouble() * 1.97;
+                values[ModelWeitereZutatenGaben::ColMenge] = n.firstChildElement("AMOUNT").text().toDouble() / menge;
+                values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
                 if (type == "Sugar" || type == "Extract" || type == "Dry Extract")
-                    values["Typ"] = EWZ_Typ_Zucker;
+                    values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Zucker;
                 else
-                    values["Typ"] = EWZ_Typ_Sonstiges;
-
+                    values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
                 if (n.firstChildElement("ADD_AFTER_BOIL").text() == "TRUE")
                 {
-                    values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
+                    values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
                 }
                 else
                 {
-                    values["Zeitpunkt"] = EWZ_Zeitpunkt_Kochen;
-                    values["Zugabedauer"] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
+                    values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Kochen;
+                    values[ModelWeitereZutatenGaben::ColZugabedauer] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
                 }
-                values["Entnahmeindex"] = EWZ_Entnahmeindex_KeineEntnahme;
-                values["Bemerkung"] = n.firstChildElement("NOTES").text();
+                values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
+                values[ModelWeitereZutatenGaben::ColBemerkung] = n.firstChildElement("NOTES").text();
                 bh->modelWeitereZutatenGaben()->append(values);
             }
         }
@@ -364,28 +367,31 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         }
         for(QDomNode n = nHops.firstChildElement("HOP"); !n.isNull(); n = n.nextSiblingElement("HOP"))
         {
-            values.clear();
-            values["SudID"] = sudId;
-            values["Name"] = n.firstChildElement("NAME").text();
             QString use = n.firstChildElement("USE").text();
             if (use == "Dry Hop")
             {
-                values["Menge"] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
-                values["Einheit"] = EWZ_Einheit_g;
-                values["Typ"] = EWZ_Typ_Hopfen;
-                values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
-                values["Zugabedauer"] = n.firstChildElement("TIME").text().toDouble();
-                values["Entnahmeindex"] = EWZ_Entnahmeindex_MitEntnahme;
-                values["Bemerkung"] = n.firstChildElement("NOTES").text();
+                values.clear();
+                values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+                values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
+                values[ModelWeitereZutatenGaben::ColMenge] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
+                values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
+                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Hopfen;
+                values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+                values[ModelWeitereZutatenGaben::ColZugabedauer] = n.firstChildElement("TIME").text().toDouble();
+                values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_MitEntnahme;
+                values[ModelWeitereZutatenGaben::ColBemerkung] = n.firstChildElement("NOTES").text();
                 bh->modelWeitereZutatenGaben()->append(values);
             }
             else
             {
-                values["Prozent"] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_hopfen * 100;
-                values["Zeit"] = n.firstChildElement("TIME").text().toDouble();
-                values["Alpha"] = n.firstChildElement("ALPHA").text().toDouble();
-                values["Pellets"] = n.firstChildElement("FORM").text() == "Pellet";
-                values["Vorderwuerze"] = use == "First Wort";
+                values.clear();
+                values[ModelHopfengaben::ColSudID] = sudId;
+                values[ModelHopfengaben::ColName] = n.firstChildElement("NAME").text();
+                values[ModelHopfengaben::ColProzent] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_hopfen * 100;
+                values[ModelHopfengaben::ColZeit] = n.firstChildElement("TIME").text().toDouble();
+                values[ModelHopfengaben::ColAlpha] = n.firstChildElement("ALPHA").text().toDouble();
+                values[ModelHopfengaben::ColPellets] = n.firstChildElement("FORM").text() == "Pellet";
+                values[ModelHopfengaben::ColVorderwuerze] = use == "First Wort";
                 bh->modelHopfengaben()->append(values);
             }
         }
@@ -395,9 +401,9 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         for(QDomNode n = nYeasts.firstChildElement("YEAST"); !n.isNull(); n = n.nextSiblingElement("YEAST"))
         {
             values.clear();
-            values["SudID"] = sudId;
-            values["Name"] = n.firstChildElement("NAME").text();
-            values["Menge"] = 0;
+            values[ModelHefegaben::ColSudID] = sudId;
+            values[ModelHefegaben::ColName] = n.firstChildElement("NAME").text();
+            values[ModelHefegaben::ColMenge] = 0;
             bh->modelHefegaben()->append(values);
         }
 
@@ -405,27 +411,27 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         for(QDomNode n = nMiscs.firstChildElement("MISC"); !n.isNull(); n = n.nextSiblingElement("MISC"))
         {
             values.clear();
-            values["SudID"] = sudId;
-            values["Name"] = n.firstChildElement("NAME").text();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
             QString type = n.firstChildElement("TYPE").text();
             if (type == "Spice" || type == "Herb")
-                values["Typ"] = EWZ_Typ_Gewuerz;
+                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Gewuerz;
             else if (type == "Flavor")
-                values["Typ"] = EWZ_Typ_Frucht;
+                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Frucht;
             else
-                values["Typ"] = EWZ_Typ_Sonstiges;
+                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
             QString use = n.firstChildElement("USE").text();
             if (use == "Boil")
-               values["Zeitpunkt"] = EWZ_Zeitpunkt_Kochen;
+               values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Kochen;
             else if (use == "Mash")
-                values["Zeitpunkt"] = EWZ_Zeitpunkt_Maischen;
+                values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Maischen;
             else
-                values["Zeitpunkt"] = EWZ_Zeitpunkt_Gaerung;
-            values["Menge"] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
-            values["Einheit"] = EWZ_Einheit_g;
-            values["Zugabedauer"] = n.firstChildElement("TIME").text().toDouble();
-            values["Entnahmeindex"] = EWZ_Entnahmeindex_KeineEntnahme;
-            values["Bemerkung"] = n.firstChildElement("NOTES").text();
+                values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+            values[ModelWeitereZutatenGaben::ColMenge] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
+            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = n.firstChildElement("TIME").text().toDouble();
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
+            values[ModelWeitereZutatenGaben::ColBemerkung] = n.firstChildElement("NOTES").text();
             bh->modelWeitereZutatenGaben()->append(values);
         }
     }

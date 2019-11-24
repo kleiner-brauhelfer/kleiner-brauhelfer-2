@@ -357,9 +357,10 @@ void TabBraudaten::on_btnSudGebraut_clicked()
        ) == QMessageBox::Yes)
         bh->sud()->brauzutatenAbziehen();
 
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Zeitstempel", bh->sud()->getBraudatum()},
-                        {"SW", bh->sud()->getSWIst()}, {"Temp", 20.0}});
+    QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                {ModelHauptgaerverlauf::ColSW, bh->sud()->getSWIst()},
+                                {ModelHauptgaerverlauf::ColTemp, 20.0}});
     if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
         bh->sud()->modelSchnellgaerverlauf()->append(values);
     if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)

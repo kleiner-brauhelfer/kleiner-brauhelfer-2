@@ -81,10 +81,10 @@ int ModelBewertungen::mean(const QVariant &sudId)
     return -1;
 }
 
-void ModelBewertungen::defaultValues(QVariantMap &values) const
+void ModelBewertungen::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Datum"))
-        values.insert("Datum", QDateTime::currentDateTime());
-    if (!values.contains("Sterne"))
-        values.insert("Sterne", 0);
+    if (!values.contains(ColDatum))
+        values.insert(ColDatum, QDateTime::currentDateTime());
+    if (!values.contains(ColSterne))
+        values.insert(ColSterne, 0);
 }

@@ -278,52 +278,51 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     if (row < 0)
         return -1;
 
-    QVariantMap values = modelSud()->copyValues(row);
-    values.insert("Sudname", name);
+    QMap<int, QVariant> values = modelSud()->copyValues(row);
+    values.insert(ModelSud::ColSudname, name);
     if (!teilen)
     {
-        values.insert("Status", Sud_Status_Rezept);
-        values.insert("MerklistenID", 0);
-        values.insert("Erstellt", QDateTime::currentDateTime().toString(Qt::ISODate));
-        values.remove("Braudatum");
-        values.remove("Abfuelldatum");
+        values.insert(ModelSud::ColStatus, Sud_Status_Rezept);
+        values.insert(ModelSud::ColMerklistenID, 0);
+        values.insert(ModelSud::ColErstellt, QDateTime::currentDateTime().toString(Qt::ISODate));
+        values.remove(ModelSud::ColBraudatum);
+        values.remove(ModelSud::ColAbfuelldatum);
     }
     row = modelSud()->append(values);
 
-    int neueSudId = values.value("ID").toInt();
-    const QVariantMap valueId = {{"SudID", neueSudId}};
-    sudKopierenModel(modelRasten(), ModelRasten::ColSudID, sudId, valueId);
-    sudKopierenModel(modelHopfengaben(), ModelHopfengaben::ColSudID, sudId, valueId);
+    QVariant neueSudId = values.value(ModelSud::ColID);
+    sudKopierenModel(modelRasten(), ModelRasten::ColSudID, sudId, {{ModelRasten::ColSudID, neueSudId}});
+    sudKopierenModel(modelHopfengaben(), ModelHopfengaben::ColSudID, sudId, {{ModelHopfengaben::ColSudID, neueSudId}});
     if (teilen)
-        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, valueId);
+        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{ModelHefegaben::ColSudID, neueSudId}});
     else
-        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{"SudID", neueSudId}, {"Zugegeben", 0}});
+        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{ModelHefegaben::ColSudID, neueSudId}, {ModelHefegaben::ColZugegeben, 0}});
     if (teilen)
-        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, valueId);
+        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}});
     else
-        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{"SudID", neueSudId}, {"Zugabestatus", EWZ_Zugabestatus_nichtZugegeben}});
-    sudKopierenModel(modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId, valueId);
-    sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, valueId);
-    sudKopierenModel(modelFlaschenlabel(), ModelFlaschenlabel::ColSudID, sudId, valueId);
-    sudKopierenModel(modelFlaschenlabelTags(), ModelFlaschenlabelTags::ColSudID, sudId, valueId);
+        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}, {ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben}});
+    sudKopierenModel(modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId, {{ModelMalzschuettung::ColSudID, neueSudId}});
+    sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, {{ModelAnhang::ColSudID, neueSudId}});
+    sudKopierenModel(modelFlaschenlabel(), ModelFlaschenlabel::ColSudID, sudId, {{ModelFlaschenlabel::ColSudID, neueSudId}});
+    sudKopierenModel(modelFlaschenlabelTags(), ModelFlaschenlabelTags::ColSudID, sudId, {{ModelFlaschenlabelTags::ColSudID, neueSudId}});
     if (teilen)
     {
-        sudKopierenModel(modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudId, valueId);
-        sudKopierenModel(modelHauptgaerverlauf(), ModelHauptgaerverlauf::ColSudID, sudId, valueId);
-        sudKopierenModel(modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudId, valueId);
-        sudKopierenModel(modelBewertungen(), ModelBewertungen::ColSudID, sudId, valueId);
+        sudKopierenModel(modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudId, {{ModelSchnellgaerverlauf::ColSudID, neueSudId}});
+        sudKopierenModel(modelHauptgaerverlauf(), ModelHauptgaerverlauf::ColSudID, sudId, {{ModelHauptgaerverlauf::ColSudID, neueSudId}});
+        sudKopierenModel(modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudId, {{ModelNachgaerverlauf::ColSudID, neueSudId}});
+        sudKopierenModel(modelBewertungen(), ModelBewertungen::ColSudID, sudId, {{ModelBewertungen::ColSudID, neueSudId}});
     }
     return row;
 }
 
-void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QVariantMap &overrideValues)
+void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues)
 {
     for (int r = 0; r < model->rowCount(); ++r)
     {
         if (model->data(r, colSudId) == sudId)
         {
-            QVariantMap values = model->copyValues(r);
-            QVariantMap::const_iterator it = overrideValues.constBegin();
+            QMap<int, QVariant> values = model->copyValues(r);
+            QMap<int, QVariant>::const_iterator it = overrideValues.constBegin();
             while (it != overrideValues.constEnd())
             {
                 values.insert(it.key(), it.value());

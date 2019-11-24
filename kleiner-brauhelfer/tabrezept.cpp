@@ -261,8 +261,8 @@ void TabRezept::checkRohstoffe()
             {
                 if (dlg.importieren())
                 {
-                    QVariantMap values({{"Beschreibung", name},
-                                        {"Farbe", wdg->data(ModelMalzschuettung::ColFarbe)}});
+                    QMap<int, QVariant> values({{ModelMalz::ColBeschreibung, name},
+                                                {ModelMalz::ColFarbe, wdg->data(ModelMalzschuettung::ColFarbe)}});
                     bh->modelMalz()->append(values);
                     dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
                     wdg->updateValues();
@@ -309,9 +309,9 @@ void TabRezept::checkRohstoffe()
             {
                 if (dlg.importieren())
                 {
-                    QVariantMap values({{"Beschreibung", name},
-                                        {"Alpha", wdg->data(ModelHopfengaben::ColAlpha)},
-                                        {"Pellets", wdg->data(ModelHopfengaben::ColPellets)}});
+                    QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name},
+                                                {ModelHopfen::ColAlpha, wdg->data(ModelHopfengaben::ColAlpha)},
+                                                {ModelHopfen::ColPellets, wdg->data(ModelHopfengaben::ColPellets)}});
                     bh->modelHopfen()->append(values);
                     dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
                     wdg->updateValues();
@@ -358,7 +358,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (dlg.importieren())
                 {
-                    QVariantMap values({{"Beschreibung", name}});
+                    QMap<int, QVariant> values({{ModelHefe::ColBeschreibung, name}});
                     bh->modelHefe()->append(values);
                     dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
                     wdg->updateValues();
@@ -415,16 +415,16 @@ void TabRezept::checkRohstoffe()
                 {
                     if (typ == EWZ_Typ_Hopfen)
                     {
-                        QVariantMap values({{"Beschreibung", name}});
+                        QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name}});
                         bh->modelHopfen()->append(values);
                     }
                     else
                     {
-                        QVariantMap values({{"Beschreibung", name},
-                                            {"Einheiten", wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
-                                            {"Typ", wdg->data(ModelWeitereZutatenGaben::ColTyp)},
-                                            {"Ausbeute", wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},
-                                            {"EBC", wdg->data(ModelWeitereZutatenGaben::ColFarbe)}});
+                        QMap<int, QVariant> values({{ModelWeitereZutaten::ColBeschreibung, name},
+                                                    {ModelWeitereZutaten::ColEinheiten, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
+                                                    {ModelWeitereZutaten::ColTyp, wdg->data(ModelWeitereZutatenGaben::ColTyp)},
+                                                    {ModelWeitereZutaten::ColAusbeute, wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},
+                                                    {ModelWeitereZutaten::ColEBC, wdg->data(ModelWeitereZutatenGaben::ColFarbe)}});
                         bh->modelWeitereZutaten()->append(values);
                     }
                     wdg->updateValues();
@@ -658,7 +658,7 @@ void TabRezept::on_btnEinmaischtemperatur_clicked()
 
 void TabRezept::on_btnNeueRast_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}, {"Temp", 78}});
+    QMap<int, QVariant> values({{ModelRasten::ColSudID, bh->sud()->id()}, {ModelRasten::ColTemp, 78}});
     bh->sud()->modelRasten()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
@@ -728,7 +728,7 @@ void TabRezept::on_btnNeueMalzGabe_clicked()
     }
     if (fabs(p) < 0.1)
         p = 0.0;
-    QVariantMap values({{"SudID", bh->sud()->id()}});
+    QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()}});
     int row = bh->sud()->modelMalzschuettung()->append(values);
     bh->sud()->modelMalzschuettung()->setData(row, ModelMalzschuettung::ColProzent, p);
     ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
@@ -799,7 +799,7 @@ void TabRezept::on_btnNeueHopfenGabe_clicked()
     }
     if (fabs(p) < 0.1)
         p = 0.0;
-    QVariantMap values({{"SudID", bh->sud()->id()}, {"Zeit", bh->sud()->getKochdauerNachBitterhopfung()}});
+    QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()}, {ModelHopfengaben::ColZeit, bh->sud()->getKochdauerNachBitterhopfung()}});
     int row = bh->sud()->modelHopfengaben()->append(values);
     bh->sud()->modelHopfengaben()->setData(row, ModelHopfengaben::ColProzent, p);
     ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
@@ -844,7 +844,7 @@ void TabRezept::updateHefeDiagram()
 
 void TabRezept::on_btnNeueHefeGabe_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}});
+    QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()}});
     bh->sud()->modelHefegaben()->append(values);
     ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
 }
@@ -863,14 +863,14 @@ void TabRezept::weitereZutatenGaben_modified()
 
 void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}, {"Typ", EWZ_Typ_Hopfen}});
+    QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()}, {ModelWeitereZutatenGaben::ColTyp, EWZ_Typ_Hopfen}});
     bh->sud()->modelWeitereZutatenGaben()->append(values);
     ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
 }
 
 void TabRezept::on_btnNeueWeitereZutat_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}});
+    QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()}});
     bh->sud()->modelWeitereZutatenGaben()->append(values);
     ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
 }
@@ -889,7 +889,7 @@ void TabRezept::anhaenge_modified()
 
 void TabRezept::on_btnNeuerAnhang_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()}});
+    QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()}});
     int index = bh->sud()->modelAnhang()->append(values);
     static_cast<WdgAnhang*>(ui->layoutAnhang->itemAt(index)->widget())->openDialog();
     ui->scrollAreaAnhang->verticalScrollBar()->setValue(ui->scrollAreaAnhang->verticalScrollBar()->maximum());
@@ -997,8 +997,8 @@ void TabRezept::on_tbNachisomerisierungszeit_valueChanged(int min)
 
 void TabRezept::on_btnTagNeu_clicked()
 {
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Tagname", tr("Neuer Tag")}});
+    QMap<int, QVariant> values({{ModelFlaschenlabelTags::ColSudID, bh->sud()->id()},
+                                {ModelFlaschenlabelTags::ColTagname, tr("Neuer Tag")}});
     ProxyModel *model = bh->sud()->modelFlaschenlabelTags();
     int row = model->append(values);
     if (row >= 0)

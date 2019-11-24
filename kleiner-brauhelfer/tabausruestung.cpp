@@ -230,7 +230,7 @@ void TabAusruestung::anlage_selectionChanged()
 
 void TabAusruestung::on_btnNeueAnlage_clicked()
 {
-    QVariantMap values({{"Name", tr("Neue Brauanlage")}});
+    QMap<int, QVariant> values({{ModelAusruestung::ColName, tr("Neue Brauanlage")}});
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
     int row = model->append(values);
     if (row >= 0)
@@ -266,7 +266,8 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     QModelIndexList selected = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selected.count() > 0)
     {
-        QVariantMap values({{"AusruestungAnlagenID", data(ModelAusruestung::ColID)}, {"Bezeichnung", tr("Neues Gerät")}});
+        QMap<int, QVariant> values({{ModelGeraete::ColAusruestungAnlagenID, data(ModelAusruestung::ColID)},
+                                    {ModelGeraete::ColBezeichnung, tr("Neues Gerät")}});
         ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
         int row = model->append(values);
         if (row >= 0)

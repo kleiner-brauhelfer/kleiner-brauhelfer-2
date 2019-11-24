@@ -113,20 +113,20 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
     }
 }
 
-void ModelMalz::defaultValues(QVariantMap &values) const
+void ModelMalz::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Farbe"))
-        values.insert("Farbe", 1);
-    if (!values.contains("MaxProzent"))
-        values.insert("MaxProzent", 100);
-    if (!values.contains("Menge"))
-        values.insert("Menge", 0);
-    if (!values.contains("Preis"))
-        values.insert("Preis", 0);
-    if (!values.contains("Eingelagert"))
-        values.insert("Eingelagert", QDate::currentDate());
-    if (!values.contains("Mindesthaltbar"))
-        values.insert("Mindesthaltbar", QDate::currentDate().addYears(1));
-    if (values.contains("Beschreibung"))
-        values["Beschreibung"] = getUniqueName(index(0, ColBeschreibung), values["Beschreibung"], true);
+    if (!values.contains(ColFarbe))
+        values.insert(ColFarbe, 1);
+    if (!values.contains(ColMaxProzent))
+        values.insert(ColMaxProzent, 100);
+    if (!values.contains(ColMenge))
+        values.insert(ColMenge, 0);
+    if (!values.contains(ColPreis))
+        values.insert(ColPreis, 0);
+    if (!values.contains(ColEingelagert))
+        values.insert(ColEingelagert, QDate::currentDate());
+    if (!values.contains(ColMindesthaltbar))
+        values.insert(ColMindesthaltbar, QDate::currentDate().addYears(1));
+    if (values.contains(ColBeschreibung))
+        values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
 }

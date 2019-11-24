@@ -435,7 +435,7 @@ void TabSudAuswahl::on_btnAnlegen_clicked()
     ui->cbDatumAlle->setChecked(true);
     ui->tbFilter->clear();
 
-    QVariantMap values({{"Sudname", tr("Neuer Sud")}});
+    QMap<int, QVariant> values({{ModelSud::ColSudname, tr("Neuer Sud")}});
     int row = model->append(values);
     if (row >= 0)
     {

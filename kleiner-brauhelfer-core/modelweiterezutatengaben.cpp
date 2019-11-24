@@ -202,33 +202,33 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
-void ModelWeitereZutatenGaben::defaultValues(QVariantMap &values) const
+void ModelWeitereZutatenGaben::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (values.contains("SudID"))
+    if (values.contains(ColSudID))
     {
-        QVariant sudId = values.value("SudID");
-        if (!values.contains("ZugabeNach"))
+        QVariant sudId = values.value(ColSudID);
+        if (!values.contains(ColZugabeNach))
         {
             if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt() != Sud_Status_Rezept)
             {
                 QDateTime braudatum = bh->modelSud()->dataSud(sudId, ModelSud::ColBraudatum).toDateTime();
                 if (braudatum.isValid())
-                    values.insert("ZugabeNach", braudatum.daysTo(QDateTime::currentDateTime()));
+                    values.insert(ColZugabeNach, braudatum.daysTo(QDateTime::currentDateTime()));
             }
         }
     }
-    if (values.contains("Typ") && values.value("Typ").toInt() == EWZ_Typ_Hopfen)
+    if (values.contains(ColTyp) && values.value(ColTyp).toInt() == EWZ_Typ_Hopfen)
     {
-        if (!values.contains("Name"))
-            values.insert("Name", bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
+        if (!values.contains(ColName))
+            values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
     }
     else
     {
-        if (!values.contains("Name"))
-            values.insert("Name", bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColBeschreibung));
+        if (!values.contains(ColName))
+            values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColBeschreibung));
     }
-    if (!values.contains("Menge"))
-        values.insert("Menge", 0);
-    if (!values.contains("ZugabeNach"))
-        values.insert("ZugabeNach", 0);
+    if (!values.contains(ColMenge))
+        values.insert(ColMenge, 0);
+    if (!values.contains(ColZugabeNach))
+        values.insert(ColZugabeNach, 0);
 }

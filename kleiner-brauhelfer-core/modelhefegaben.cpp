@@ -77,27 +77,27 @@ void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
-void ModelHefegaben::defaultValues(QVariantMap &values) const
+void ModelHefegaben::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (values.contains("SudID"))
+    if (values.contains(ColSudID))
     {
-        QVariant sudId = values.value("SudID");
-        if (!values.contains("ZugabeNach"))
+        QVariant sudId = values.value(ColSudID);
+        if (!values.contains(ColZugabeNach))
         {
             if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt() != Sud_Status_Rezept)
             {
                 QDateTime braudatum = bh->modelSud()->dataSud(sudId, ModelSud::ColBraudatum).toDateTime();
                 if (braudatum.isValid())
-                    values.insert("ZugabeNach", braudatum.daysTo(QDateTime::currentDateTime()));
+                    values.insert(ColZugabeNach, braudatum.daysTo(QDateTime::currentDateTime()));
             }
         }
     }
-    if (!values.contains("Name"))
-        values.insert("Name", bh->modelHefe()->data(0, ModelHefe::ColBeschreibung));
-    if (!values.contains("Menge"))
-        values.insert("Menge", 1);
-    if (!values.contains("Zugegeben"))
-        values.insert("Zugegeben", 0);
-    if (!values.contains("ZugabeNach"))
-        values.insert("ZugabeNach", 0);
+    if (!values.contains(ColName))
+        values.insert(ColName, bh->modelHefe()->data(0, ModelHefe::ColBeschreibung));
+    if (!values.contains(ColMenge))
+        values.insert(ColMenge, 1);
+    if (!values.contains(ColZugegeben))
+        values.insert(ColZugegeben, 0);
+    if (!values.contains(ColZugabeNach))
+        values.insert(ColZugabeNach, 0);
 }

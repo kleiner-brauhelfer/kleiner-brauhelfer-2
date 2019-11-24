@@ -258,14 +258,14 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
-void ModelHopfengaben::defaultValues(QVariantMap &values) const
+void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Name"))
-        values.insert("Name", bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
-    if (!values.contains("Prozent"))
-        values.insert("Prozent", 0);
-    if (!values.contains("Zeit"))
-        values.insert("Zeit", 0);
-    if (!values.contains("Vorderwuerze"))
-        values.insert("Vorderwuerze", 0);
+    if (!values.contains(ColName))
+        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
+    if (!values.contains(ColProzent))
+        values.insert(ColProzent, 0);
+    if (!values.contains(ColZeit))
+        values.insert(ColZeit, 0);
+    if (!values.contains(ColVorderwuerze))
+        values.insert(ColVorderwuerze, 0);
 }

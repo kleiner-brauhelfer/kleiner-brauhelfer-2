@@ -1,0 +1,36 @@
+name: linux64
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-16.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: |
+          sudo add-apt-repository ppa:beineri/opt-qt-5.12.3-xenial
+          sudo apt-get update -qq
+          sudo apt-get install build-essential -y
+          sudo apt-get install qt512-meta-full qt512charts-no-lgpl libgl1-mesa-dev -y
+
+      - name: Build kleiner-brauhelfer-2
+        run: |
+          chmod +x ./build_linux64.sh
+          chmod +x ./deployment/linux/64bit/deploy.sh
+          chmod +x ./deployment/linux/64bit/AppImage/linuxdeployqt-6-x86_64.AppImage
+          chmod +x ./deployment/linux/64bit/AppImage/AppRun
+          ./build_linux64.sh /opt/qt512/bin/ 1
+          mkdir -p deploy
+          cp ./kbh2_*.deb deploy/
+          cp ./kleiner-brauhelfer-2-x86_64.AppImage deploy/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: kleiner-brauhelfer-2
+          path: deploy

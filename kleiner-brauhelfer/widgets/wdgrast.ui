@@ -129,6 +129,34 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QPushButton" name="btnNachUnten">
+     <property name="icon">
+      <iconset resource="../images.qrc">
+       <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>8</width>
+       <height>8</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnNachOben">
+     <property name="icon">
+      <iconset resource="../images.qrc">
+       <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>8</width>
+       <height>8</height>
+      </size>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>

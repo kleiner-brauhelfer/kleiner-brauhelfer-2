@@ -104,11 +104,13 @@ void WdgRast::updateValues(bool full)
         ui->tbTemp->setValue(temperatur());
     if (!ui->tbDauer->hasFocus())
         ui->tbDauer->setValue(dauer());
+    ui->btnNachOben->setEnabled(mIndex > 0);
+    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelRasten()->rowCount() - 1);
 }
 
 void WdgRast::remove()
 {
-  bh->sud()->modelRasten()->removeRow(mIndex);
+    bh->sud()->modelRasten()->removeRow(mIndex);
 }
 
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
@@ -170,4 +172,30 @@ void WdgRast::on_tbDauer_valueChanged(int value)
 void WdgRast::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgRast::on_btnNachUnten_clicked()
+{
+    if (mIndex < bh->sud()->modelRasten()->rowCount() - 1)
+    {
+        int row1 = bh->sud()->modelRasten()->mapRowToSource(mIndex);
+        QMap<int, QVariant> values1 = bh->modelRasten()->copyValues(row1);
+        int row2 = bh->sud()->modelRasten()->mapRowToSource(mIndex + 1);
+        QMap<int, QVariant> values2 = bh->modelRasten()->copyValues(row2);
+        bh->modelRasten()->setData(row1, values2);
+        bh->modelRasten()->setData(row2, values1);
+    }
+}
+
+void WdgRast::on_btnNachOben_clicked()
+{
+    if (mIndex > 0)
+    {
+        int row1 = bh->sud()->modelRasten()->mapRowToSource(mIndex);
+        QMap<int, QVariant> values1 = bh->modelRasten()->copyValues(row1);
+        int row2 = bh->sud()->modelRasten()->mapRowToSource(mIndex - 1);
+        QMap<int, QVariant> values2 = bh->modelRasten()->copyValues(row2);
+        bh->modelRasten()->setData(row1, values2);
+        bh->modelRasten()->setData(row2, values1);
+    }
 }

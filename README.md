@@ -51,6 +51,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.0.0beta5 (in Entwicklung)
 - Neu: Tooltips ein- & ausschaltbar
 - Neu: Dialog, um Zutaten vom Rohstofflager abzuziehen
+- Neu: Reihenfolge der Rasten lässt sich ändern
+- Neu: Weitere Hefegaben lassen sich im Reiter Gärverlauf zugeben
 - Fix: Grössen der Dialogue
 - Fix: Tags bei den Etiketten verwendbar
 

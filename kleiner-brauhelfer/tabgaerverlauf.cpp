@@ -205,6 +205,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onHauptgaerverlaufRowInserted()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onHauptgaerverlaufRowInserted()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(modified()), this, SLOT(onHauptgaerverlaufRowInserted()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateWeitereZutaten()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateWeitereZutaten()));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onNachgaerverlaufRowInserted()));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onNachgaerverlaufRowInserted()));
@@ -506,13 +507,25 @@ void TabGaerverlauf::updateWeitereZutaten()
         {
             QString name = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColName).toString();
             int id = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColID).toInt();
+            int type = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3;
             int status = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColZugabestatus).toInt();
             bool entnahme = !bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColEntnahmeindex).toBool();
             int menge = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
             if (status == EWZ_Zugabestatus_nichtZugegeben)
-                ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", id);
+                ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<int,int>(type, id)));
             else if (status == EWZ_Zugabestatus_Zugegeben && entnahme)
                 ui->comboBox_GaerungEwzAuswahlEntnahme->addItem(name, id);
+        }
+    }
+    for (int i = 0; i < bh->sud()->modelHefegaben()->rowCount(); ++i)
+    {
+        if (!bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColZugegeben).toBool())
+        {
+
+            QString name = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColName).toString();
+            int id = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColID).toInt();
+            int menge = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColMenge).toInt();
+            ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<int,int>(2, id)));
         }
     }
     ui->widget_EwzZugeben->setVisible(ui->comboBox_GaerungEwzAuswahl->count() > 0);
@@ -521,20 +534,40 @@ void TabGaerverlauf::updateWeitereZutaten()
 
 void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
 {
-    int id = ui->comboBox_GaerungEwzAuswahl->currentData().toInt();
-    int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, id);
-    if (row >= 0)
+    QPair<int,int> data = ui->comboBox_GaerungEwzAuswahl->currentData().value<QPair<int,int>>();
+    if (data.first == 2)
     {
-        QDate currentDate = QDate::currentDate();
-        QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, date);
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
+        int row = bh->sud()->modelHefegaben()->getRowWithValue(ModelHefe::ColID, data.second);
+        if (row >= 0)
+        {
+            QDate currentDate = QDate::currentDate();
+            QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
+            bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugabeDatum, date);
+            bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugegeben, true);
 
-        DlgRohstoffeAbziehen dlg(bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
-                                 bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
-                                 bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
-                                 this);
-        dlg.exec();
+            DlgRohstoffeAbziehen dlg(data.first,
+                                     bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColName).toString(),
+                                     bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColMenge).toDouble(),
+                                     this);
+            dlg.exec();
+        }
+    }
+    else
+    {
+        int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, data.second);
+        if (row >= 0)
+        {
+            QDate currentDate = QDate::currentDate();
+            QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
+            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, date);
+            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
+
+            DlgRohstoffeAbziehen dlg(data.first,
+                                     bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
+                                     bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                     this);
+            dlg.exec();
+        }
     }
 }
 

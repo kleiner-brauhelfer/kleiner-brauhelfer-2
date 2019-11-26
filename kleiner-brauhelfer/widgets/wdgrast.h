@@ -29,6 +29,8 @@ private slots:
     void on_tbTemp_valueChanged(int value);
     void on_tbDauer_valueChanged(int value);
     void on_btnLoeschen_clicked();
+    void on_btnNachUnten_clicked();
+    void on_btnNachOben_clicked();
 
 private:
     QVariant data(int col) const;

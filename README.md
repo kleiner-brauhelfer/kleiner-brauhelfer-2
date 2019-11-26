@@ -50,7 +50,9 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ### Version 2.0.0beta5 (in Entwicklung)
 - Neu: Tooltips ein- & ausschaltbar
+- Neu: Dialog, um Zutaten vom Rohstofflager abzuziehen
 - Fix: Grössen der Dialogue
+- Fix: Tags bei den Etiketten verwendbar
 
 ### Version 2.0.0beta4
 - Neu: Offizielle version kompiliert mit Qt 5.13.2

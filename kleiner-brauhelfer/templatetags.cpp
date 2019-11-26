@@ -406,6 +406,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
     if (parts & TagTags)
     {
         QVariantMap ctxTags;
+        QVariantMap ctxTagsGlobal;
         ProxyModel modelFlaschenlabelTags;
         modelFlaschenlabelTags.setSourceModel(bh->modelFlaschenlabelTags());
         modelFlaschenlabelTags.setFilterKeyColumn(ModelFlaschenlabelTags::ColSudID);
@@ -414,9 +415,15 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         {
             QString t = modelFlaschenlabelTags.data(row, ModelFlaschenlabelTags::ColTagname).toString();
             QString v = modelFlaschenlabelTags.data(row, ModelFlaschenlabelTags::ColValue).toString();
+            t = t.simplified().replace(" ", "_");
             if (!t.isEmpty())
-                ctxTags[t] = v;
+            {
+                if (modelFlaschenlabelTags.data(row, ModelFlaschenlabelTags::ColGlobal).toBool())
+                    ctxTagsGlobal[t] = v;
+                else
+                    ctxTags[t] = v;
+            }
         }
-        ctx["Tags"] = ctxTags;
+        ctx["Tags"] = QVariantMap({{"ListeGlobal", ctxTagsGlobal}, {"Liste", ctxTags}});
     }
 }

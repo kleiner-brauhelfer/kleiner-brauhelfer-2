@@ -7,6 +7,7 @@
 #include "model/datetimedelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
+#include "dialogs/dlgrohstoffeabziehen.h"
 #include "widgets/wdgweiterezutatgabe.h"
 
 extern Brauhelfer* bh;
@@ -528,15 +529,12 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
         bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, date);
         bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
-        if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
-                                  tr("Sollen die Zutat vom Bestand abgezogen werden?")
-           ) == QMessageBox::Yes)
-        {
-            QString name = bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString();
-            int typ = bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColTyp).toInt();
-            double menge = bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-            bh->sud()->zutatAbziehen(name, typ == EWZ_Typ_Hopfen ? 0 : 2, menge);
-        }
+
+        DlgRohstoffeAbziehen dlg(bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
+                                 bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
+                                 bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                 this);
+        dlg.exec();
     }
 }
 

@@ -5,11 +5,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"
-#include "model/spinboxdelegate.h"
-#include "model/doublespinboxdelegate.h"
-#include "model/checkboxdelegate.h"
-#include "model/comboboxdelegate.h"
-#include "model/datedelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgsudteilen.h"
 

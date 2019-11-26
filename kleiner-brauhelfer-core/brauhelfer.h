@@ -131,8 +131,10 @@ public:
     SqlTableModel* modelFlaschenlabel() const;
     ModelFlaschenlabelTags* modelFlaschenlabelTags() const;
 
-    int sudKopieren(int sudId, const QString& name, bool teilen = false);
-    int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);
+    Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);
+    Q_INVOKABLE int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);
+
+    Q_INVOKABLE bool rohstoffAbziehen(int typ, const QString& name, double menge);
 
 signals:
     void databasePathChanged(const QString &databasePath);

@@ -12,6 +12,7 @@
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgvolumen.h"
 #include "dialogs/dlgsudteilen.h"
+#include "dialogs/dlgrohstoffeabziehen.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -352,19 +353,26 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     bh->sud()->setBraudatum(ui->tbBraudatum->dateTime());
     bh->sud()->setStatus(Sud_Status_Gebraut);
 
-    if (QMessageBox::question(this, tr("Zutaten vom Bestand abziehen"),
-                              tr("Sollen die bisher verwendeten Zutaten vom Bestand abgezogen werden?")
-       ) == QMessageBox::Yes)
-        bh->sud()->brauzutatenAbziehen();
+    DlgRohstoffeAbziehen dlg(this);
+    dlg.exec();
 
-    QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
-                                {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                {ModelHauptgaerverlauf::ColSW, bh->sud()->getSWIst()},
-                                {ModelHauptgaerverlauf::ColTemp, 20.0}});
     if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
+    {
+        QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                    {ModelSchnellgaerverlauf::ColSW, bh->sud()->getSWIst()},
+                                    {ModelSchnellgaerverlauf::ColTemp, 20.0}});
         bh->sud()->modelSchnellgaerverlauf()->append(values);
+    }
+
     if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
+    {
+        QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                    {ModelHauptgaerverlauf::ColSW, bh->sud()->getSWIst()},
+                                    {ModelHauptgaerverlauf::ColTemp, 20.0}});
         bh->sud()->modelHauptgaerverlauf()->append(values);
+    }
 }
 
 void TabBraudaten::on_btnSudTeilen_clicked()

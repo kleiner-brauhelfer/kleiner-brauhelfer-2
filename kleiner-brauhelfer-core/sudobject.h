@@ -213,14 +213,6 @@ public:
      */
     Q_INVOKABLE void brauzutatenAbziehen();
 
-    /**
-     * @brief Substracts an ingredient from the inventory
-     * @param ingredient Ingredient
-     * @param typ 0: Hopfen, 1: Hefe, 2: weitere Zutat
-     * @param quantity Quantity [g]
-     */
-    Q_INVOKABLE void zutatAbziehen(const QString& zutat, int typ, double menge);
-
 Q_SIGNALS:
 
     /**

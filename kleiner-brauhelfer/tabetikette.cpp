@@ -184,7 +184,7 @@ void TabEtikette::updateTemplateTags()
     if (!isTabActive())
         return;
     mTemplateTags.clear();
-    TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagRezept | TemplateTags::TagSud, bh->sud()->row());
+    TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagRezept | TemplateTags::TagSud | TemplateTags::TagTags, bh->sud()->row());
     updateTags();
     updateSvg();
 }

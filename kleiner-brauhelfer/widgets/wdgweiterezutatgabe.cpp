@@ -5,6 +5,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/rohstoffauswahlproxymodel.h"
+#include "dialogs/dlgrohstoffeabziehen.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -439,12 +440,12 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     QDate date = ui->tbDatumVon->date();
     setData(ModelWeitereZutatenGaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
-    if (QMessageBox::question(this, tr("Zutat vom Bestand abziehen"),
-                              tr("Soll die Zutat vom Bestand abgezogen werden?")
-       ) == QMessageBox::Yes)
-        bh->sud()->zutatAbziehen(data(ModelWeitereZutatenGaben::ColName).toString(),
-                                 data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 0 : 2,
-                                 data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
+
+    DlgRohstoffeAbziehen dlg(data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
+                             data(ModelWeitereZutatenGaben::ColName).toString(),
+                             data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                             this);
+    dlg.exec();
 }
 
 void WdgWeitereZutatGabe::on_cbEntnahme_clicked(bool checked)

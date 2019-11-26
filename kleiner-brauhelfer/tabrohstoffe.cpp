@@ -42,7 +42,6 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table = ui->tableMalz;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    table->setWordWrap(true);
     header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
@@ -128,7 +127,6 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table = ui->tableHopfen;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    table->setWordWrap(true);
     header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
@@ -223,7 +221,6 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table = ui->tableHefe;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    table->setWordWrap(true);
     header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
@@ -347,7 +344,6 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table = ui->tableWeitereZutaten;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    table->setWordWrap(true);
     header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);

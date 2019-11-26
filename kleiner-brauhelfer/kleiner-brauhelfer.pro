@@ -61,6 +61,7 @@ SOURCES += \
     dialogs/dlgmessage.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffaustausch.cpp \
+    dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
     dialogs/dlgsudteilen.cpp \
     dialogs/dlgverdampfung.cpp \
@@ -126,6 +127,7 @@ HEADERS += \
     dialogs/dlgmessage.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffaustausch.h \
+    dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
     dialogs/dlgsudteilen.h \
     dialogs/dlgverdampfung.h \
@@ -186,6 +188,7 @@ FORMS += \
     dialogs/dlgmessage.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffaustausch.ui \
+    dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \
     dialogs/dlgsudteilen.ui \
     dialogs/dlgverdampfung.ui \

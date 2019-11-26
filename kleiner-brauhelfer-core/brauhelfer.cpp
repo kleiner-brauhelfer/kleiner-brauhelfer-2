@@ -1,5 +1,6 @@
 #include "brauhelfer.h"
 #include "database.h"
+#include <QtMath>
 
 const int Brauhelfer::libVersionMajor = VER_MAJ;
 const int Brauhelfer::libVerionMinor = VER_MIN;
@@ -333,7 +334,7 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVar
     }
 }
 
-int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2, double prozent)
+int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2, double prozent)
 {
     int row1 = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row1 < 0)
@@ -384,4 +385,74 @@ int  Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2
     }
 
     return row1;
+}
+
+bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
+{
+    int row;
+    double mengeLager;
+    SqlTableModel *modelLager;
+    switch (typ)
+    {
+    case 0:
+        modelLager = modelMalz();
+        row = modelLager->getRowWithValue(ModelMalz::ColBeschreibung, name);
+        if (row != -1)
+        {
+            mengeLager = modelLager->data(row, ModelMalz::ColMenge).toDouble() - menge;
+            if (mengeLager < 0.0)
+                mengeLager = 0.0;
+            return modelLager->setData(row, ModelMalz::ColMenge, mengeLager);
+        }
+        break;
+    case 1:
+        modelLager = modelHopfen();
+        row = modelLager->getRowWithValue(ModelHopfen::ColBeschreibung, name);
+        if (row != -1)
+        {
+            mengeLager = modelLager->data(row, ModelHopfen::ColMenge).toDouble() - menge;
+            if (mengeLager < 0.0)
+                mengeLager = 0.0;
+            return modelLager->setData(row, ModelHopfen::ColMenge, mengeLager);
+        }
+        break;
+    case 2:
+        modelLager = modelHefe();
+        row = modelLager->getRowWithValue(ModelHefe::ColBeschreibung, name);
+        if (row != -1)
+        {
+            mengeLager = modelLager->data(row, ModelHefe::ColMenge).toInt() - menge;
+            if (mengeLager < 0.0)
+                mengeLager = 0.0;
+            return modelLager->setData(row, ModelHefe::ColMenge, mengeLager);
+        }
+        break;
+    case 3:
+        modelLager = modelWeitereZutaten();
+        row = modelLager->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
+        if (row != -1)
+        {
+            mengeLager = modelLager->data(row, ModelWeitereZutaten::ColMenge).toDouble();
+            switch (modelLager->data(row, ModelWeitereZutaten::ColEinheiten).toInt())
+            {
+            case EWZ_Einheit_Kg:
+                mengeLager -= menge / 1000;
+                break;
+            case EWZ_Einheit_g:
+                mengeLager -= menge;
+                break;
+            case EWZ_Einheit_mg:
+                mengeLager -= menge * 1000;
+                break;
+            case EWZ_Einheit_Stk:
+                mengeLager -= qCeil(menge);
+                break;
+            }
+            if (mengeLager < 0.0)
+                mengeLager = 0.0;
+            return modelLager->setData(row, ModelWeitereZutaten::ColMenge, mengeLager);
+        }
+        break;
+    }
+    return false;
 }

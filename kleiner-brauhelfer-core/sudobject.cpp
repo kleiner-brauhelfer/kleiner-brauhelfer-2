@@ -258,178 +258,42 @@ QVariant SudObject::getWasserData(int col) const
 
 void SudObject::brauzutatenAbziehen()
 {
-    int row;
-    double mengeTotal;
-    ProxyModel *mList;
-    SqlTableModel *mSubstract;
-
-    // Malz
-    mList = modelMalzschuettung();
-    mSubstract = bh->modelMalz();
-    for (int r = 0; r < mList->rowCount(); ++r)
+    ProxyModel *model = modelMalzschuettung();
+    for (int r = 0; r < model->rowCount(); ++r)
     {
-        row = mSubstract->getRowWithValue(ModelMalz::ColBeschreibung, mList->data(r, ModelMalzschuettung::ColName));
-        if (row >= 0)
+        bh->rohstoffAbziehen(0,
+                             model->data(r, ModelMalzschuettung::ColName).toString(),
+                             model->data(r, ModelMalzschuettung::Colerg_Menge).toDouble());
+    }
+
+    model = modelHopfengaben();
+    for (int r = 0; r < model->rowCount(); ++r)
+    {
+        bh->rohstoffAbziehen(1,
+                             model->data(r, ModelHopfengaben::ColName).toString(),
+                             model->data(r, ModelHopfengaben::Colerg_Menge).toDouble());
+    }
+
+    model = modelHefegaben();
+    for (int r = 0; r < model->rowCount(); ++r)
+    {
+        if (model->data(r, ModelHefegaben::ColZugabeNach).toInt() == 0)
         {
-            mengeTotal = mSubstract->data(row, ModelMalz::ColMenge).toDouble() - mList->data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
-            if (mengeTotal < 0.0)
-                mengeTotal = 0.0;
-            mSubstract->setData(row, ModelMalz::ColMenge, mengeTotal);
+            bh->rohstoffAbziehen(2,
+                                 model->data(r, ModelHefegaben::ColName).toString(),
+                                 model->data(r, ModelHefegaben::ColMenge).toDouble());
         }
     }
 
-    // Hopfen
-    mList = modelHopfengaben();
-    mSubstract = bh->modelHopfen();
-    for (int r = 0; r < mList->rowCount(); ++r)
+    model = modelWeitereZutatenGaben();
+    for (int r = 0; r < model->rowCount(); ++r)
     {
-        row = mSubstract->getRowWithValue(ModelHopfen::ColBeschreibung, mList->data(r, ModelHopfengaben::ColName));
-        if (row >= 0)
+        if (model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
+            model->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
         {
-            mengeTotal = mSubstract->data(row, ModelHopfen::ColMenge).toDouble() - mList->data(r, ModelHopfengaben::Colerg_Menge).toDouble();
-            if (mengeTotal < 0.0)
-                mengeTotal = 0.0;
-            mSubstract->setData(row, ModelHopfen::ColMenge, mengeTotal);
+            bh->rohstoffAbziehen(model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
+                                 model->data(r, ModelWeitereZutatenGaben::ColName).toString(),
+                                 model->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
         }
-    }
-
-    // Hefe
-    mList = modelHefegaben();
-    mSubstract = bh->modelHefe();
-    for (int r = 0; r < mList->rowCount(); ++r)
-    {
-        if (mList->data(r, ModelHefegaben::ColZugabeNach).toInt() == 0)
-        {
-            row = mSubstract->getRowWithValue(ModelHefe::ColBeschreibung, mList->data(r, ModelHefegaben::ColName));
-            if (row >= 0)
-            {
-                mengeTotal = mSubstract->data(row, ModelHefe::ColMenge).toInt() - mList->data(r, ModelHefegaben::ColMenge).toInt();
-                if (mengeTotal < 0.0)
-                    mengeTotal = 0.0;
-                mSubstract->setData(row, ModelHefe::ColMenge, mengeTotal);
-            }
-        }
-    }
-
-    // Weitere Zutaten
-    mList = modelWeitereZutatenGaben();
-    for (int r = 0; r < mList->rowCount(); ++r)
-    {
-        if (mList->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
-            mList->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
-        {
-            if (mList->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() != EWZ_Typ_Hopfen)
-            {
-                mSubstract = bh->modelWeitereZutaten();
-                row = mSubstract->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, mList->data(r, ModelWeitereZutatenGaben::ColName).toString());
-                if (row != -1)
-                {
-                    mengeTotal = mSubstract->data(row, ModelWeitereZutaten::ColMenge).toDouble();
-                    switch (mList->data(r, ModelWeitereZutatenGaben::ColEinheit).toInt())
-                    {
-                    case EWZ_Einheit_Kg:
-                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000;
-                        break;
-                    case EWZ_Einheit_g:
-                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-                        break;
-                    case EWZ_Einheit_mg:
-                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000;
-                        break;
-                    case EWZ_Einheit_Stk:
-                        mengeTotal -= qCeil(mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
-                        break;
-                    }
-                    if (mengeTotal < 0.0)
-                        mengeTotal = 0.0;
-                    mSubstract->setData(row, ModelWeitereZutaten::ColMenge, mengeTotal);
-                }
-            }
-            else
-            {
-                mSubstract = bh->modelHopfen();
-                row = mSubstract->getRowWithValue(ModelHopfen::ColBeschreibung, mList->data(r, ModelWeitereZutatenGaben::ColName).toString());
-                if (row >= 0)
-                {
-                    mengeTotal = mSubstract->data(row, ModelHopfen::ColMenge).toDouble();
-                    switch (mList->data(r, ModelWeitereZutatenGaben::ColEinheit).toInt())
-                    {
-                    case EWZ_Einheit_Kg:
-                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000;
-                        break;
-                    case EWZ_Einheit_g:
-                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-                        break;
-                    case EWZ_Einheit_mg:
-                        mengeTotal -= mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000;
-                        break;
-                    case EWZ_Einheit_Stk:
-                        mengeTotal -= qCeil(mList->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
-                        break;
-                    }
-                    if (mengeTotal < 0.0)
-                        mengeTotal = 0.0;
-                    mSubstract->setData(row, ModelHopfen::ColMenge, mengeTotal);
-                }
-            }
-        }
-    }
-}
-
-void SudObject::zutatAbziehen(const QString& zutat, int typ, double menge)
-{
-    int row;
-    double mengeTotal;
-    SqlTableModel *mSubstract;
-    switch (typ)
-    {
-    case 0:
-        mSubstract = bh->modelHopfen();
-        row = mSubstract->getRowWithValue(ModelHopfen::ColBeschreibung, zutat);
-        if (row != -1)
-        {
-            mengeTotal = mSubstract->data(row, ModelHopfen::ColMenge).toDouble() - menge;
-            if (mengeTotal < 0.0)
-                mengeTotal = 0.0;
-            mSubstract->setData(row, ModelHopfen::ColMenge, mengeTotal);
-        }
-        break;
-    case 1:
-        mSubstract = bh->modelHefe();
-        row = mSubstract->getRowWithValue(ModelHefe::ColBeschreibung, zutat);
-        if (row != -1)
-        {
-            mengeTotal = mSubstract->data(row, ModelHefe::ColMenge).toInt() - menge;
-            if (mengeTotal < 0.0)
-                mengeTotal = 0.0;
-            mSubstract->setData(row, ModelHefe::ColMenge, mengeTotal);
-        }
-        break;
-    case 2:
-        mSubstract = bh->modelWeitereZutaten();
-        row = mSubstract->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, zutat);
-        if (row != -1)
-        {
-            mengeTotal = mSubstract->data(row, ModelWeitereZutaten::ColMenge).toDouble();
-            switch (mSubstract->data(row, ModelWeitereZutaten::ColEinheiten).toInt())
-            {
-            case EWZ_Einheit_Kg:
-                mengeTotal -= menge / 1000;
-                break;
-            case EWZ_Einheit_g:
-                mengeTotal -= menge;
-                break;
-            case EWZ_Einheit_mg:
-                mengeTotal -= menge * 1000;
-                break;
-            case EWZ_Einheit_Stk:
-                mengeTotal -= qCeil(menge);
-                break;
-            }
-            if (mengeTotal < 0.0)
-                mengeTotal = 0.0;
-            mSubstract->setData(row, ModelWeitereZutaten::ColMenge, mengeTotal);
-        }
-        break;
     }
 }

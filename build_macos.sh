@@ -9,7 +9,7 @@ if [ "${QT_DIR}" = "" ]; then
 fi
 
 PRO=$(dirname $0)/kleiner-brauhelfer-2.pro
-BUILD_DIR=$(dirname $0)/build-linux64
+BUILD_DIR=$(dirname $0)/build-macos
 
 mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}

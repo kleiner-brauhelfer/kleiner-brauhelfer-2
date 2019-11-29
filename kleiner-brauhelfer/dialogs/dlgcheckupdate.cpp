@@ -36,6 +36,11 @@ bool DlgCheckUpdate::ignoreUpdate() const
     return ui->checkBox_ignor->isChecked();
 }
 
+bool DlgCheckUpdate::doCheckUpdate() const
+{
+    return ui->cbCheckForUpdates->isChecked();
+}
+
 void DlgCheckUpdate::httpFinished()
 {
     if (reply->error() == QNetworkReply::NoError)
@@ -63,14 +68,14 @@ bool DlgCheckUpdate::parseReplyGithub(const QByteArray& str)
         return false;
     }
 
-    QDate dtPublished = QDate::fromString(reply["published_at"].toString(), Qt::ISODate);
+    QDate dtPublished = QDate::fromString(reply.object().value("published_at").toString(), Qt::ISODate);
     if (dtPublished > mDateSince)
     {
         QLocale locale = QLocale();
-        ui->lblName->setText(reply["name"].toString());
+        ui->lblName->setText(reply.object().value("name").toString());
         ui->lblDate->setText(locale.toString(dtPublished, QLocale::ShortFormat));
-        ui->textEdit->setText(reply["body"].toString());
-        ui->lblUrl->setText("<a href=\"" + reply["html_url"].toString() + "\">Download</a>");
+        ui->textEdit->setText(reply.object().value("body").toString());
+        ui->lblUrl->setText("<a href=\"" + reply.object().value("html_url").toString() + "\">Download</a>");
         return true;
     }
 

@@ -518,12 +518,12 @@ void MainWindow::checkMessageFinished()
         if (dlg->hasUpdate())
         {
             dlg->exec();
+            gSettings->beginGroup("General");
             if (dlg->ignoreUpdate())
-            {
-                gSettings->beginGroup("General");
                 gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
-                gSettings->endGroup();
-            }
+            gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
+            ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
+            gSettings->endGroup();
         }
         dlg->deleteLater();
     }

@@ -20,6 +20,7 @@ public:
     void checkForUpdate();
     bool hasUpdate() const;
     bool ignoreUpdate() const;
+    bool doCheckUpdate() const;
 
 signals:
     void finished();

@@ -1,8 +1,7 @@
 #ifndef DEFINITIONEN_H
 #define DEFINITIONEN_H
 
-//#define URL_CHEKUPDATE      "https://api.github.com/repos/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest"
-#define URL_CHEKUPDATE      "https://api.github.com/repos/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tags/v2.0.0beta5"
+#define URL_CHEKUPDATE      "https://api.github.com/repos/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest"
 #define URL_SPENDE          "http://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UPK64ABK3JTZ6"
 #define URL_SOURCEN         "http://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
 #define URL_HOMEPAGE        "http://www.joerum.de/kleiner-brauhelfer"

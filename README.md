@@ -8,7 +8,7 @@ http://www.joerum.de/kleiner-brauhelfer/
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.0.0beta4](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta4)
+- [Version 2.0.0beta5](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta5)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**
@@ -48,7 +48,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0beta5 (in Entwicklung)
+### Version 2.0.0beta5
 - Neu: Tooltips ein- & ausschaltbar
 - Neu: Dialog, um Zutaten vom Rohstofflager abzuziehen
 - Neu: Reihenfolge der Rasten lässt sich ändern

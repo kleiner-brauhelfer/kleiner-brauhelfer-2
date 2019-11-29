@@ -16,8 +16,8 @@ cd ${BUILD_DIR}
 "${QT_DIR}/qmake" "../${PRO}" -config release
 #make clean
 make -j 8
-"${QT_DIR}/lupdate" "../${PRO}"
-"${QT_DIR}/lrelease" "../${PRO}"
+#"${QT_DIR}/lupdate" "../${PRO}"
+#"${QT_DIR}/lrelease" "../${PRO}"
 cd -
 
 if [ ${DEPLOY} = "1" ]; then

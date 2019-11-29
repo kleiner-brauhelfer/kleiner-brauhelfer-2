@@ -10,7 +10,7 @@
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"
-#include "dialogs/dlgmessage.h"
+#include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
 
 extern Brauhelfer* bh;
@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", true).toBool());
+    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
     ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
     BierCalc::faktorBrixToPlato = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
@@ -77,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent) :
         restoreView(true);
 
     if (ui->actionCheckUpdate->isChecked())
-        checkMessage();
+        checkForUpdate(false);
 }
 
 MainWindow::~MainWindow()
@@ -495,20 +495,36 @@ void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
     gSettings->endGroup();
 }
 
-void MainWindow::checkMessage()
+void MainWindow::checkForUpdate(bool force)
 {
-    DlgMessage *dlg = new DlgMessage(this, URL_MESSAGE);
+    QString url;
+    QDate since;
+    gSettings->beginGroup("General");
+    url = gSettings->value("CheckUpdateUrl", URL_CHEKUPDATE).toString();
+    if (!force)
+        since = gSettings->value("CheckUpdateLastDate").toDate();
+    gSettings->endGroup();
+
+    DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
     connect(dlg, SIGNAL(finished()), this, SLOT(checkMessageFinished()));
-    dlg->getMessage();
+    dlg->checkForUpdate();
 }
 
 void MainWindow::checkMessageFinished()
 {
-    DlgMessage *dlg = qobject_cast<DlgMessage*>(sender());
+    DlgCheckUpdate *dlg = qobject_cast<DlgCheckUpdate*>(sender());
     if (dlg)
     {
-        if (dlg->hasMessage())
+        if (dlg->hasUpdate())
+        {
             dlg->exec();
+            if (dlg->ignoreUpdate())
+            {
+                gSettings->beginGroup("General");
+                gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
+                gSettings->endGroup();
+            }
+        }
         dlg->deleteLater();
     }
 }
@@ -516,10 +532,10 @@ void MainWindow::checkMessageFinished()
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
     gSettings->beginGroup("General");
-    gSettings->setValue("CheckUpdates", checked);
+    gSettings->setValue("CheckUpdate", checked);
     gSettings->endGroup();
     if (checked)
-        checkMessage();
+        checkForUpdate(true);
 }
 
 void MainWindow::on_actionTooltips_triggered(bool checked)

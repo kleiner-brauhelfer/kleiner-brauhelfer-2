@@ -55,7 +55,7 @@ private:
     void save();
     void saveSettings();
     void restoreView(bool onUpdate = false);
-    void checkMessage();
+    void checkForUpdate(bool force);
 
 private:
     Ui::MainWindow *ui;

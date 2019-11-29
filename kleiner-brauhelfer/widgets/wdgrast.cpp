@@ -64,9 +64,9 @@ void WdgRast::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
+    ui->cbRast->clear();
     if (mEnabled)
     {
-        ui->cbRast->clear();
         ui->cbRast->addItem(tr("Gummirast (35°-40°)"));
         ui->cbRast->addItem(tr("Weizenrast (45°)"));
         ui->cbRast->addItem(tr("Eiweissrast (57°)"));
@@ -74,24 +74,20 @@ void WdgRast::checkEnabled(bool force)
         ui->cbRast->addItem(tr("Kombirast (66°-69°)"));
         ui->cbRast->addItem(tr("Verzuckerung (70°-75°)"));
         ui->cbRast->addItem(tr("Abmaischen (78°)"));
-        ui->cbRast->setEditable(true);
-        ui->cbRast->setEnabled(true);
-        ui->cbRast->setCurrentIndex(-1);
-        ui->btnLoeschen->setVisible(true);
-        ui->tbTemp->setReadOnly(false);
-        ui->tbDauer->setReadOnly(false);
+
     }
     else
     {
-        ui->cbRast->clear();
         ui->cbRast->addItem(name());
-        ui->cbRast->setEditable(false);
-        ui->cbRast->setEnabled(false);
-        ui->cbRast->setCurrentIndex(-1);
-        ui->btnLoeschen->setVisible(false);
-        ui->tbTemp->setReadOnly(true);
-        ui->tbDauer->setReadOnly(true);
     }
+    ui->cbRast->setEditable(mEnabled);
+    ui->cbRast->setEnabled(mEnabled);
+    ui->cbRast->setCurrentIndex(-1);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbTemp->setReadOnly(!mEnabled);
+    ui->tbDauer->setReadOnly(!mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 }
 
 void WdgRast::updateValues(bool full)

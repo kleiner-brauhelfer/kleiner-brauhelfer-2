@@ -269,6 +269,9 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Bestätigung beim Beenden</string>
    </property>
@@ -283,6 +286,9 @@
   </action>
   <action name="actionCheckUpdate">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="text">

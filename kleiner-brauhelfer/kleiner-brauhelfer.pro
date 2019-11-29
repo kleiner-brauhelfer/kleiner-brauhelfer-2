@@ -56,9 +56,9 @@ SOURCES += \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
+    dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgeinmaischtemp.cpp \
-    dialogs/dlgmessage.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffaustausch.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
@@ -122,9 +122,9 @@ HEADERS += \
     tabzusammenfassung.h \
     templatetags.h \
     dialogs/dlgabout.h \
+    dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgeinmaischtemp.h \
-    dialogs/dlgmessage.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffaustausch.h \
     dialogs/dlgrohstoffeabziehen.h \
@@ -183,9 +183,9 @@ FORMS += \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
+    dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgeinmaischtemp.ui \
-    dialogs/dlgmessage.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffaustausch.ui \
     dialogs/dlgrohstoffeabziehen.ui \

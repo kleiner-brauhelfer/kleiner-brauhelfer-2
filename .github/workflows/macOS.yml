@@ -22,7 +22,7 @@ jobs:
           chmod +x ./build_macos.sh
           ./build_macos.sh /usr/local/opt/qt/bin/ "-${{ github.sha }}"
           mkdir deploy
-          cp bin/kbh2_*.zip deploy/
+          cp build-macos/bin/kbh2_*.zip deploy/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1

@@ -1,25 +1,21 @@
 #!/bin/sh
 
-QT_DIR=$1
-DEPLOY=$2
-
-if [ "${QT_DIR}" = "" ]; then
-  echo "Usage: build_linux64.sh <qt-bin-directory> [deploy]"
+QTDIR=$1
+if [ "${QTDIR}" = "" ]; then
+  echo  "Usage: build_macos.sh <qt-bin-directory> <optional version_suffix>"
   exit 1
 fi
 
-PRO=$(dirname $0)/kleiner-brauhelfer-2.pro
+PRO="kleiner-brauhelfer-2.pro"
 BUILD_DIR=$(dirname $0)/build-macos
 
-mkdir ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
-"${QT_DIR}/qmake" "../${PRO}" -config release
-#make clean
-make -j 8
-#"${QT_DIR}/lupdate" "../${PRO}"
-#"${QT_DIR}/lrelease" "../${PRO}"
+${QTDIR}/qmake "../${PRO}" -config release || exit 1
+# make clean
+make -j 8 || exit 1
+#${QTDIR}/lupdate "${PRO}" || exit 1
+#${QTDIR}/lrelease "${PRO}" || exit 1
 cd -
 
-if [ ${DEPLOY} = "1" ]; then
-  ./deployment/linux/64bit/deploy.sh "${BUILD_DIR}/bin" "${QT_DIR}"
-fi
+./deployment/macOS/deploy.sh "${BUILD_DIR}/bin/kleiner-brauhelfer-2.app" "${QTDIR}" "$2"|| exit 1

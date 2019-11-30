@@ -134,16 +134,22 @@ bool Database::connect(const QString &dbPath, bool readonly)
                 db.setConnectOptions("QSQLITE_OPEN_READONLY");
             if (db.open())
             {
-                QSqlQuery query = sqlExec(db, "SELECT db_Version FROM Global");
-                if (query.first())
+                try
                 {
-                    int version = query.value(0).toInt();
-                    if (version > 0)
+                    QSqlQuery query = sqlExec(db, "SELECT db_Version FROM Global");
+                    if (query.first())
                     {
-                        mVersion = version;
-                        setTables();
-                        return true;
+                        int version = query.value(0).toInt();
+                        if (version > 0)
+                        {
+                            mVersion = version;
+                            setTables();
+                            return true;
+                        }
                     }
+                }
+                catch (...)
+                {
                 }
             }
             disconnect();
@@ -377,6 +383,7 @@ QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
         mLastError = error;
         qCritical() << query;
         qCritical() << error;
+        throw std::runtime_error(error.text().toStdString());
     }
     return sqlQuery;
 }

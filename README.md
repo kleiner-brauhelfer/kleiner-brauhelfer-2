@@ -48,15 +48,15 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0beta5
+### Version 2.0.0beta5 (29.11.2019)
 - Neu: Tooltips ein- & ausschaltbar
 - Neu: Dialog, um Zutaten vom Rohstofflager abzuziehen
-- Neu: Reihenfolge der Rasten lässt sich ändern
+- Neu: Reihenfolge der Rasten änderbar
 - Neu: Weitere Hefegaben lassen sich im Reiter Gärverlauf zugeben
-- Fix: Grössen der Dialogue
+- Fix: Grösse der Dialogue
 - Fix: Tags bei den Etiketten verwendbar
 
-### Version 2.0.0beta4
+### Version 2.0.0beta4 (16.11.2019)
 - Neu: Offizielle version kompiliert mit Qt 5.13.2
 - Neu: Tooltips für die meisten Eingabefelder (Danke rakader)
 - Neu: Spickzettel zeigt auch Kochdauer von Hopfengaben und weitere Zutaten
@@ -68,7 +68,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Fix: Keine Rohstoffangabe im Sudinfo bei Rohstoffen mit Klammern
 - Fix: Hopfenmengenangaben gehen bei Umstellung der Berechnungsart nicht verloren
 
-### Version 2.0.0beta3
+### Version 2.0.0beta3 (12.10.2019)
 - Neu: Funktion "Eingabefelder entsperren"
 - Neu: Umrechnung zwischen Palto und spezifische Dichte nach [Brewer's Friend](http://www.brewersfriend.com/plato-to-sg-conversion-chart/)
 - Neu: Milchsäurangabe in 0.1 ml Schritte
@@ -79,7 +79,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Fix: Dialog Rohstoffaustausch beim Löschen eines Hopfens, welches als Stopfhopfen verwendet wird
 - Fix: "Sud löschen" löscht auch die Hefegaben
 
-### Version 2.0.0beta2
+### Version 2.0.0beta2 (28.07.2019)
 - Fix: Woche war immer auf 0
 - Fix: Abstürze wegen "race condition" in Model Sud
 - Fix: Dialog für Stammwürze/Restextrakt zeigt Formel und Korrekturfaktor für Refraktometer
@@ -98,7 +98,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Funktion, um Datenbank zu bereinigen
 - Neu: Reiter Navigation mit F1 - F12
 
-### Version 2.0.0beta1
+### Version 2.0.0beta1 (28.05.2019)
 - Neu: kompletter Neuaufbau des Programms
 - Neu: mehrere Hefegaben pro Sud möglich
 - Neu: mehrere Wasserprofile möglich

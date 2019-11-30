@@ -19,7 +19,9 @@ public:
         ColValue,
         // virtual
         ColDeleted,
-        ColGlobal
+        ColGlobal,
+        // number of columns
+        NumCols
     };
 
 public:

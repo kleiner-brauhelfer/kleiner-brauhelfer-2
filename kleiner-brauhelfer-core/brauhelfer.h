@@ -41,7 +41,6 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(int databaseVersion READ databaseVersion NOTIFY connectionChanged)
     Q_PROPERTY(bool modified READ isDirty NOTIFY modified)
 
-    Q_PROPERTY(BierCalc* calc READ calc CONSTANT)
     Q_PROPERTY(SudObject* sud READ sud CONSTANT)
     Q_PROPERTY(SqlTableModel* modelSud READ modelSud CONSTANT)
     Q_PROPERTY(SqlTableModel* modelMalz READ modelMalz CONSTANT)
@@ -96,18 +95,16 @@ public:
     void setReadonly(bool readonly);
 
     bool isDirty() const;
-    Q_INVOKABLE void save();
+    Q_INVOKABLE bool save();
     Q_INVOKABLE void discard();
 
     QString databasePath() const;
     void setDatabasePath(const QString &filePath);
 
     int databaseVersion() const;
-
+    QString lastError() const;
     bool updateDatabase();
 
-    Database* db() const;
-    BierCalc* calc() const;
     SudObject* sud() const;
 
     ModelSud* modelSud() const;
@@ -151,7 +148,6 @@ private:
     QString mDatabasePath;
     bool mReadonly;
     Database* mDb;
-    BierCalc* mCalc;
     SudObject* mSud;
 };
 

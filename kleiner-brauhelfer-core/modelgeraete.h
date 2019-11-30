@@ -17,7 +17,9 @@ public:
         ColBezeichnung,
         ColAusruestungAnlagenID,
         // virtual
-        ColDeleted
+        ColDeleted,
+        // number of columns
+        NumCols
     };
 
 public:

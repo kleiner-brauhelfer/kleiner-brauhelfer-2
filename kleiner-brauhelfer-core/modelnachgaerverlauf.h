@@ -21,7 +21,9 @@ public:
         ColTemp,
         ColCO2,
         // virtual
-        ColDeleted
+        ColDeleted,
+        // number of columns
+        NumCols
     };
 
 public:

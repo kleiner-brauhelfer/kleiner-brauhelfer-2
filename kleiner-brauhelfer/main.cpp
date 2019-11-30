@@ -12,6 +12,15 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
+// Modus, um Datenbankupdates zu testen.
+// In diesem Modus wird eine Kopie der Datenbank erstellt.
+// Diese Kopie wird aktualisiert ohne die ursprüngliche Datenbank zu verändern.
+//#define MODE_TEST_UPDATE
+
+#if defined(QT_NO_DEBUG) && defined(MODE_TEST_UPDATE)
+#error MODE_TEST_UPDATE in release build defined.
+#endif
+
 // global variables
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -105,8 +114,22 @@ static bool connectDatabase()
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
+                  #ifdef MODE_TEST_UPDATE
+                    QFile fileOrg(gSettings->databasePath());
+                    QFile fileUpdate(gSettings->databasePath() + "_update.sqlite");
+                    fileUpdate.remove();
+                    if (fileOrg.copy(fileUpdate.fileName()))
+                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+                    bh->setDatabasePath(fileUpdate.fileName());
+                    bh->connectDatabase();
+                  #endif
                     if (bh->updateDatabase())
                     {
+                      #ifdef MODE_TEST_UPDATE
+                        delete bh;
+                        bh = new Brauhelfer(fileUpdate.fileName());
+                        return bh->connectDatabase();
+                      #endif
                         continue;
                     }
                     else

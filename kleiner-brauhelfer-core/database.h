@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QSqlDatabase>
+#include <QSqlError>
 #include "sqltablemodel.h"
 #include "modelsud.h"
 #include "modelmalz.h"
@@ -43,9 +44,10 @@ public:
     bool isDirty() const;
     void select();
     int version() const;
-    void save();
+    bool save();
     void discard();
     bool update();
+    QSqlError lastError() const;
 
 private:
     void setTables();
@@ -73,6 +75,7 @@ private:
     ModelFlaschenlabel* modelFlaschenlabel;
     ModelFlaschenlabelTags* modelFlaschenlabelTags;
     int mVersion;
+    QSqlError mLastError;
 };
 
 #endif // DATABASE_H

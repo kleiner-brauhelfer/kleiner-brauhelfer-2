@@ -161,17 +161,23 @@ void MainWindow::save()
     setFocus();
     try
     {
-        bh->save();
+        if (!bh->save())
+        {
+            QGuiApplication::restoreOverrideCursor();
+            QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
+        }
+        QGuiApplication::restoreOverrideCursor();
     }
     catch (const std::exception& ex)
     {
+        QGuiApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fehler beim Speichern"), ex.what());
     }
     catch (...)
     {
+        QGuiApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
     }
-    QGuiApplication::restoreOverrideCursor();
 }
 
 void MainWindow::saveSettings()
@@ -340,16 +346,18 @@ void MainWindow::on_actionVerwerfen_triggered()
     try
     {
         bh->discard();
+        QGuiApplication::restoreOverrideCursor();
     }
     catch (const std::exception& ex)
     {
+        QGuiApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
     }
     catch (...)
     {
+        QGuiApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
     }
-    QGuiApplication::restoreOverrideCursor();
 }
 
 void MainWindow::on_actionBereinigen_triggered()

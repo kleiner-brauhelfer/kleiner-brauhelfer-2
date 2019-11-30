@@ -8,6 +8,7 @@ QLoggingCategory SqlTableModel::loggingCategory("SqlTableModel", QtWarningMsg);
 SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
     QSqlTableModel(parent, db),
     mSignalModifiedBlocked(false),
+    mRoles(QHash<int, QByteArray>()),
     mSetDataCnt(0)
 {
     setEditStrategy(EditStrategy::OnManualSubmit);
@@ -16,27 +17,23 @@ SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
 
 QVariant SqlTableModel::data(const QModelIndex &idx, int role) const
 {
-    QVariant value;
     if (role == Qt::DisplayRole || role == Qt::EditRole || role > Qt::UserRole)
     {
         int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : idx.column();
         if (col == QSqlTableModel::columnCount())
         {
-            value = headerData(idx.row(), Qt::Vertical).toString() == "!";
+            return headerData(idx.row(), Qt::Vertical).toString() == "!";
         }
         else
         {
-            const QModelIndex index2 = index(idx.row(), col);
-            value = dataExt(index2);
+            const QModelIndex idx2 = index(idx.row(), col);
+            QVariant value = dataExt(idx2);
             if (!value.isValid())
-                value = QSqlTableModel::data(index2);
+                value = QSqlTableModel::data(idx2);
+            return value;
         }
     }
-    else
-    {
-        value = QSqlTableModel::data(idx, role);
-    }
-    return value;
+    return QSqlTableModel::data(idx, role);
 }
 
 QVariant SqlTableModel::data(int row, int col, int role) const
@@ -52,19 +49,16 @@ bool SqlTableModel::setData(const QModelIndex &idx, const QVariant &value, int r
         if (col == QSqlTableModel::columnCount())
             return false;
         qDebug(loggingCategory) << "setData():" << tableName() << "row" << idx.row() << "col" << fieldName(col) << "=" << value.toString();
-        const QModelIndex idx2 = index(idx.row(), col);
         ++mSetDataCnt;
+        const QModelIndex idx2 = index(idx.row(), col);
         bool ret = setDataExt(idx2, value);
         if (!ret)
             ret = QSqlTableModel::setData(idx2, value);
-        if (ret)
+        if (ret && mSetDataCnt == 1)
         {
-            if (mSetDataCnt == 1)
-            {
-                emit rowChanged(idx);
-                if (!mSignalModifiedBlocked)
-                    emit modified();
-            }
+            emit rowChanged(idx);
+            if (!mSignalModifiedBlocked)
+                emit modified();
         }
         --mSetDataCnt;
         return ret;
@@ -366,10 +360,10 @@ int SqlTableModel::getNextId() const
     if (!primary.isEmpty())
     {
         int maxId = 0;
-        int colSudId = primary.value(0).toInt();
-        for (int i = 0; i < rowCount(); ++i)
+        int colId = primary.value(0).toInt();
+        for (int row = 0; row < rowCount(); ++row)
         {
-            int sudId = index(i, colSudId).data().toInt();
+            int sudId = index(row, colId).data().toInt();
             if (sudId > maxId)
                 maxId = sudId;
         }

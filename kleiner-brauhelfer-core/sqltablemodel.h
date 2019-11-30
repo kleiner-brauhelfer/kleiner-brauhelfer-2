@@ -76,7 +76,7 @@ public:
      * @param index Index
      * @return Item flags
      */
-    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
+    Qt::ItemFlags virtual flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
 
     /**
      * @brief Returns the number of columns
@@ -103,13 +103,13 @@ public:
      * @brief Sets the table
      * @param tableName Table name
      */
-    Q_INVOKABLE void setTable(const QString &tableName) Q_DECL_OVERRIDE;
+    Q_INVOKABLE virtual void setTable(const QString &tableName) Q_DECL_OVERRIDE;
 
     /**
      * @brief Sets the selection filter
      * @param filter Filter
      */
-    Q_INVOKABLE void setFilter(const QString &filter) Q_DECL_OVERRIDE;   
+    Q_INVOKABLE virtual void setFilter(const QString &filter) Q_DECL_OVERRIDE;
 
     /**
      * @brief Removes rows from the table

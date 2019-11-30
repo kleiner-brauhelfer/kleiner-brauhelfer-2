@@ -20,7 +20,9 @@ public:
         Colerg_Menge,
         ColFarbe,
         // virtual
-        ColDeleted
+        ColDeleted,
+        // number of columns
+        NumCols
     };
 
 public:

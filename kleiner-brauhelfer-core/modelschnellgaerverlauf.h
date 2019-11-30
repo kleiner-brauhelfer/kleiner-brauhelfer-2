@@ -22,7 +22,9 @@ public:
         // virtual
         ColDeleted,
         ColsEVG,
-        ColtEVG
+        ColtEVG,
+        // number of columns
+        NumCols
     };
 
 public:

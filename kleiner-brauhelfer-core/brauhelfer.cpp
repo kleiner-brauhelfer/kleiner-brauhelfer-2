@@ -16,7 +16,6 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     mDb = new Database();
     mDb->createTables(this);
     mSud = new SudObject(this);
-    mCalc = new BierCalc();
 
     connect(mDb->modelSud, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelMalz, SIGNAL(modified()), this, SIGNAL(modified()));
@@ -45,7 +44,6 @@ Brauhelfer::~Brauhelfer()
     disconnect();
     disconnectDatabase();
     delete mDb;
-    delete mCalc;
     delete mSud;
 }
 
@@ -105,17 +103,22 @@ bool Brauhelfer::isDirty() const
     return mDb->isDirty();
 }
 
-void Brauhelfer::save()
+bool Brauhelfer::save()
 {
     if (!readonly() && isDirty())
     {
         qInfo("Brauhelfer::save()");
         bool wasBlocked = blockSignals(true);
-        mDb->save();
+        if (mDb->save())
+        {
+            blockSignals(wasBlocked);
+            emit saved();
+            emit modified();
+            return true;
+        }
         blockSignals(wasBlocked);
-        emit saved();
-        emit modified();
     }
+    return false;
 }
 
 void Brauhelfer::discard()
@@ -150,22 +153,17 @@ int Brauhelfer::databaseVersion() const
     return mDb->version();
 }
 
+QString Brauhelfer::lastError() const
+{
+    return mDb->lastError().text();
+}
+
 bool Brauhelfer::updateDatabase()
 {
     qInfo("Brauhelfer::updateDatabase()");
     mDb->update();
     connectDatabase();
     return mDb->version() == supportedDatabaseVersion;
-}
-
-Database* Brauhelfer::db() const
-{
-    return mDb;
-}
-
-BierCalc* Brauhelfer::calc() const
-{
-    return mCalc;
 }
 
 SudObject* Brauhelfer::sud() const

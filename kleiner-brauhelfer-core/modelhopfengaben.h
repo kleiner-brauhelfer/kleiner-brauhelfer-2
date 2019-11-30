@@ -25,7 +25,9 @@ public:
         // virtual
         ColDeleted,
         ColIBUAnteil,
-        ColAusbeute
+        ColAusbeute,
+        // number of columns
+        NumCols
     };
 
 public:

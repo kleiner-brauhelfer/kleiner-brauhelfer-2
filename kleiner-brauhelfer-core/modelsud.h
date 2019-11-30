@@ -97,7 +97,9 @@ public:
         ColAnlageSudhausausbeute,
         ColRestalkalitaetFaktor,
         ColFaktorHauptgussEmpfehlung,
-        ColBewertungMittel
+        ColBewertungMittel,
+        // number of columns
+        NumCols
     };
 
 public:

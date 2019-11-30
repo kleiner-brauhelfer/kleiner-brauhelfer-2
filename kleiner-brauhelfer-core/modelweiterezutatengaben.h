@@ -32,7 +32,9 @@ public:
         ColDeleted,
         ColZugabeDatum,
         ColEntnahmeDatum,
-        ColAbfuellbereit
+        ColAbfuellbereit,
+        // number of columns
+        NumCols
     };
 
 public:

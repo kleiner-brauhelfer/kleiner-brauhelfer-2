@@ -19,7 +19,9 @@ public:
         ColTemp,
         ColDauer,
         // virtual
-        ColDeleted
+        ColDeleted,
+        // number of columns
+        NumCols
     };
 
 public:

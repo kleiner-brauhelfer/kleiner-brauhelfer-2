@@ -31,7 +31,9 @@ public:
         ColLink,
         // virtual
         ColDeleted,
-        ColInGebrauch
+        ColInGebrauch,
+        // number of columns
+        NumCols
     };
 
 public:

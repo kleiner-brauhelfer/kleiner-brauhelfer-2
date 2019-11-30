@@ -25,7 +25,9 @@ public:
         ColCalciumhaerte,
         ColMagnesiumhaerte,
         ColCarbonathaerte,
-        ColRestalkalitaet
+        ColRestalkalitaet,
+        // number of columns
+        NumCols
     };
 
 public:

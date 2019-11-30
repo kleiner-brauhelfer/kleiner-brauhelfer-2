@@ -22,7 +22,9 @@ public:
         // virtual
         ColDeleted,
         ColZugabeDatum,
-        ColAbfuellbereit
+        ColAbfuellbereit,
+        // number of columns
+        NumCols
     };
 
 public:

@@ -38,6 +38,7 @@ SOURCES += \
     biercalc.cpp \
     brauhelfer.cpp \
     database.cpp \
+    database_update.cpp \
     modelanhang.cpp \
     modelausruestung.cpp \
     modelbewertungen.cpp \

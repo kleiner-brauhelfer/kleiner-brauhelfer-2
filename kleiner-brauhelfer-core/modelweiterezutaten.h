@@ -28,7 +28,9 @@ public:
         // virtual
         ColDeleted,
         ColMengeGramm,
-        ColInGebrauch
+        ColInGebrauch,
+        // number of columns
+        NumCols
     };
 
 public:

@@ -36,7 +36,9 @@ public:
         ColGesamteindruck,
         ColGesamteindruckBemerkung,
         // virtual
-        ColDeleted
+        ColDeleted,
+        // number of columns
+        NumCols
     };
 
 public:

@@ -114,27 +114,47 @@ static bool connectDatabase()
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
-                  #ifdef MODE_TEST_UPDATE
+                    // create copy of database
                     QFile fileOrg(gSettings->databasePath());
                     QFile fileUpdate(gSettings->databasePath() + "_update.sqlite");
                     fileUpdate.remove();
                     if (fileOrg.copy(fileUpdate.fileName()))
-                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-                    bh->setDatabasePath(fileUpdate.fileName());
-                    bh->connectDatabase();
-                  #endif
-                    if (bh->updateDatabase())
                     {
-                      #ifdef MODE_TEST_UPDATE
-                        delete bh;
-                        bh = new Brauhelfer(fileUpdate.fileName());
-                        return bh->connectDatabase();
-                      #endif
-                        continue;
+                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+
+                        // connect and update copy
+                        bh->setDatabasePath(fileUpdate.fileName());
+                        bh->connectDatabase();
+                        if (bh->updateDatabase())
+                        {
+                          #ifdef MODE_TEST_UPDATE
+                            delete bh;
+                            bh = new Brauhelfer(fileUpdate.fileName());
+                            return bh->connectDatabase();
+                          #else
+                            // copy back
+                            fileOrg.remove();
+                            if (fileUpdate.copy(fileOrg.fileName()))
+                            {
+                                fileOrg.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+                                fileUpdate.remove();
+                                continue;
+                            }
+                            else
+                            {
+                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Datenbankdatei konnte nicht wiederhergestellt werden."));
+                            }
+                          #endif
+                        }
+                        else
+                        {
+                            fileUpdate.remove();
+                            QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen.\n\n") + bh->lastError());
+                        }
                     }
                     else
                     {
-                        QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
+                        QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Sicherheitskopie konnte nicht erstellt werden."));
                     }
                 }
             }

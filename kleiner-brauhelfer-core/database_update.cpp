@@ -537,6 +537,197 @@ bool Database::update()
             db.commit();
         }
 
+        if (version == 2000)
+        {
+            ++version;
+            db.transaction();
+
+            // Malz
+            // NUMERIC -> REAL
+            sqlExec(db, "ALTER TABLE Malz RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Malz ("
+                "ID INTEGER PRIMARY KEY,"
+                "Beschreibung TEXT NOT NULL UNIQUE,"
+                "Farbe REAL DEFAULT 0,"
+                "MaxProzent REAL DEFAULT 100,"
+                "Menge REAL DEFAULT 0,"
+                "Preis REAL DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "Anwendung TEXT,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO Malz ("
+                "Beschreibung,"
+                "Farbe,"
+                "MaxProzent,"
+                "Menge,"
+                "Preis,"
+                "Bemerkung,"
+                "Anwendung,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Farbe,"
+                "MaxProzent,"
+                "Menge,"
+                "Preis,"
+                "Bemerkung,"
+                "Anwendung,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Hopfen
+            // NUMERIC -> REAL
+            sqlExec(db, "ALTER TABLE Hopfen RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Hopfen ("
+                "ID INTEGER PRIMARY KEY,"
+                "Beschreibung TEXT NOT NULL UNIQUE,"
+                "Alpha REAL DEFAULT 0,"
+                "Menge REAL DEFAULT 0,"
+                "Preis REAL DEFAULT 0,"
+                "Pellets INTEGER DEFAULT 1,"
+                "Bemerkung TEXT,"
+                "Eigenschaften TEXT,"
+                "Typ INTEGER DEFAULT 0,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO Hopfen ("
+                "Beschreibung,"
+                "Alpha,"
+                "Menge,"
+                "Preis,"
+                "Pellets,"
+                "Bemerkung,"
+                "Eigenschaften,"
+                "Typ,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Alpha,"
+                "Menge,"
+                "Preis,"
+                "Pellets,"
+                "Bemerkung,"
+                "Eigenschaften,"
+                "Typ,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Hefe
+            // NUMERIC -> REAL
+            sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Hefe ("
+                "ID INTEGER PRIMARY KEY,"
+                "Beschreibung TEXT NOT NULL UNIQUE,"
+                "Menge INTEGER DEFAULT 0,"
+                "Preis REAL DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "TypOGUG INTEGER DEFAULT 0,"
+                "TypTrFl INTEGER DEFAULT 0,"
+                "Verpackungsmenge TEXT,"
+                "Wuerzemenge REAL DEFAULT 0,"
+                "Eigenschaften TEXT,"
+                "SED INTEGER DEFAULT 0,"
+                "EVG TEXT,"
+                "Temperatur TEXT,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO Hefe ("
+                "Beschreibung,"
+                "Menge,"
+                "Preis,"
+                "Bemerkung,"
+                "TypOGUG,"
+                "TypTrFl,"
+                "Verpackungsmenge,"
+                "Wuerzemenge,"
+                "Eigenschaften,"
+                "SED,"
+                "EVG,"
+                "Temperatur,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Menge,"
+                "Preis,"
+                "Bemerkung,"
+                "TypOGUG,"
+                "TypTrFl,"
+                "Verpackungsmenge,"
+                "Wuerzemenge,"
+                "Eigenschaften,"
+                "SED,"
+                "EVG,"
+                "Temperatur,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // WeitereZutaten
+            // NUMERIC -> REAL
+            sqlExec(db, "ALTER TABLE WeitereZutaten RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE WeitereZutaten ("
+                "ID INTEGER PRIMARY KEY,"
+                "Beschreibung TEXT NOT NULL UNIQUE,"
+                "Menge REAL DEFAULT 0,"
+                "Einheiten INTEGER DEFAULT 0,"
+                "Typ INTEGER DEFAULT 0,"
+                "Ausbeute REAL DEFAULT 0,"
+                "EBC REAL DEFAULT 0,"
+                "Preis REAL DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO WeitereZutaten ("
+                "Beschreibung ,"
+                "Menge,"
+                "Einheiten,"
+                "Typ,"
+                "Ausbeute,"
+                "EBC,"
+                "Preis,"
+                "Bemerkung,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung ,"
+                "Menge,"
+                "Einheiten,"
+                "Typ,"
+                "Ausbeute,"
+                "EBC,"
+                "Preis,"
+                "Bemerkung,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
         return true;
     }
     catch (const std::exception& ex)

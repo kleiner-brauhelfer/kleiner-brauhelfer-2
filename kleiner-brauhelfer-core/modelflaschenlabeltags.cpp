@@ -81,6 +81,5 @@ void ModelFlaschenlabelTags::defaultValues(QMap<int, QVariant> &values) const
     int sudId = -1;
     if (values.contains(ColSudID))
         sudId = values[ColSudID].toInt();
-    if (values.contains(ColTagname))
-        values[ColTagname] = getUniqueName(index(0, ColTagname), values[ColTagname], sudId, true);
+    values[ColTagname] = getUniqueName(index(0, ColTagname), values[ColTagname], sudId, true);
 }

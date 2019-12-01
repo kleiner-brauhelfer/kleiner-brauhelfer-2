@@ -1,11 +1,11 @@
-#ifndef MODELFLASCHENLABELTAGS_H
-#define MODELFLASCHENLABELTAGS_H
+#ifndef MODELTAGS_H
+#define MODELTAGS_H
 
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelFlaschenlabelTags : public SqlTableModel
+class ModelTags : public SqlTableModel
 {
     Q_OBJECT
 
@@ -15,7 +15,7 @@ public:
     {
         ColID,
         ColSudID,
-        ColTagname,
+        ColKey,
         ColValue,
         // virtual
         ColDeleted,
@@ -26,7 +26,7 @@ public:
 
 public:
 
-    ModelFlaschenlabelTags(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelTags(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
@@ -42,4 +42,4 @@ private:
     Brauhelfer* bh;
 };
 
-#endif // MODELFLASCHENLABELTAGS_H
+#endif // MODELTAGS_H

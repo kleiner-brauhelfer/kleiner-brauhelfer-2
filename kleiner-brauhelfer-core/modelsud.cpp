@@ -812,7 +812,7 @@ bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
             removeRowsFrom(bh->modelBewertungen(), ModelBewertungen::ColSudID, sudId);
             removeRowsFrom(bh->modelAnhang(), ModelAnhang::ColSudID, sudId);
             removeRowsFrom(bh->modelEtiketten(), ModelEtiketten::ColSudID, sudId);
-            removeRowsFrom(bh->modelFlaschenlabelTags(), ModelFlaschenlabelTags::ColSudID, sudId);
+            removeRowsFrom(bh->modelTags(), ModelTags::ColSudID, sudId);
         }
         return true;
     }

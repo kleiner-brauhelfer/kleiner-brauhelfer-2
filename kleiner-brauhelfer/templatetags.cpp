@@ -407,18 +407,18 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
     {
         QVariantMap ctxTags;
         QVariantMap ctxTagsGlobal;
-        ProxyModel modelFlaschenlabelTags;
-        modelFlaschenlabelTags.setSourceModel(bh->modelFlaschenlabelTags());
-        modelFlaschenlabelTags.setFilterKeyColumn(ModelFlaschenlabelTags::ColSudID);
-        modelFlaschenlabelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sudId));
-        for (int row = 0; row < modelFlaschenlabelTags.rowCount(); ++row)
+        ProxyModel modelTags;
+        modelTags.setSourceModel(bh->modelTags());
+        modelTags.setFilterKeyColumn(ModelTags::ColSudID);
+        modelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sudId));
+        for (int row = 0; row < modelTags.rowCount(); ++row)
         {
-            QString t = modelFlaschenlabelTags.data(row, ModelFlaschenlabelTags::ColTagname).toString();
-            QString v = modelFlaschenlabelTags.data(row, ModelFlaschenlabelTags::ColValue).toString();
+            QString t = modelTags.data(row, ModelTags::ColKey).toString();
+            QString v = modelTags.data(row, ModelTags::ColValue).toString();
             t = t.simplified().replace(" ", "_");
             if (!t.isEmpty())
             {
-                if (modelFlaschenlabelTags.data(row, ModelFlaschenlabelTags::ColGlobal).toBool())
+                if (modelTags.data(row, ModelTags::ColGlobal).toBool())
                     ctxTagsGlobal[t] = v;
                 else
                     ctxTags[t] = v;

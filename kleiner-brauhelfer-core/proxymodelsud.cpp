@@ -164,17 +164,17 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                 }
                 if (!accept)
                 {
-                    ProxyModel modelFlaschenlabelTags;
-                    modelFlaschenlabelTags.setSourceModel(modelSud->bh->modelFlaschenlabelTags());
-                    modelFlaschenlabelTags.setFilterKeyColumn(ModelFlaschenlabelTags::ColSudID);
-                    modelFlaschenlabelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sourceModel()->data(idx).toInt()));
-                    for (int i = 0; i < modelFlaschenlabelTags.rowCount(); i++)
+                    ProxyModel modelTags;
+                    modelTags.setSourceModel(modelSud->bh->modelTags());
+                    modelTags.setFilterKeyColumn(ModelTags::ColSudID);
+                    modelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sourceModel()->data(idx).toInt()));
+                    for (int i = 0; i < modelTags.rowCount(); i++)
                     {
-                        QString text = modelFlaschenlabelTags.index(i, ModelFlaschenlabelTags::ColTagname).data().toString();
+                        QString text = modelTags.index(i, ModelTags::ColKey).data().toString();
                         accept = text.contains(rx);
                         if (accept)
                             break;
-                        text = modelFlaschenlabelTags.index(i, ModelFlaschenlabelTags::ColValue).data().toString();
+                        text = modelTags.index(i, ModelTags::ColValue).data().toString();
                         accept = text.contains(rx);
                         if (accept)
                             break;

@@ -53,7 +53,7 @@ TabEtikette::TabEtikette(QWidget *parent) :
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateTemplateTags()));
-    connect(bh->sud()->modelFlaschenlabelTags(), SIGNAL(modified()), this, SLOT(updateTemplateTags()));
+    connect(bh->sud()->modelTags(), SIGNAL(modified()), this, SLOT(updateTemplateTags()));
     connect(bh->sud()->modelEtiketten(), SIGNAL(modified()),this, SLOT(updateValues()));
     connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(updateAuswahlListe()));
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateAuswahlListe()));

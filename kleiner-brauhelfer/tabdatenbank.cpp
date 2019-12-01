@@ -20,7 +20,7 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBox->addItem(bh->modelAusruestung()->tableName());
     ui->comboBox->addItem(bh->modelBewertungen()->tableName());
     ui->comboBox->addItem(bh->modelEtiketten()->tableName());
-    ui->comboBox->addItem(bh->modelFlaschenlabelTags()->tableName());
+    ui->comboBox->addItem(bh->modelTags()->tableName());
     ui->comboBox->addItem(bh->modelGeraete()->tableName());
     ui->comboBox->addItem(bh->modelHauptgaerverlauf()->tableName());
     ui->comboBox->addItem(bh->modelHefe()->tableName());
@@ -42,7 +42,7 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelAnhang()->tableName());
     ui->comboBoxSud->addItem(bh->modelBewertungen()->tableName());
     ui->comboBoxSud->addItem(bh->modelEtiketten()->tableName());
-    ui->comboBoxSud->addItem(bh->modelFlaschenlabelTags()->tableName());
+    ui->comboBoxSud->addItem(bh->modelTags()->tableName());
     ui->comboBoxSud->addItem(bh->modelHauptgaerverlauf()->tableName());
     ui->comboBoxSud->addItem(bh->modelHefegaben()->tableName());
     ui->comboBoxSud->addItem(bh->modelHopfengaben()->tableName());
@@ -104,8 +104,8 @@ void TabDatenbank::on_comboBox_currentIndexChanged(const QString &table)
         model = bh->modelBewertungen();
     else if (table == bh->modelEtiketten()->tableName())
         model = bh->modelEtiketten();
-    else if (table == bh->modelFlaschenlabelTags()->tableName())
-        model = bh->modelFlaschenlabelTags();
+    else if (table == bh->modelTags()->tableName())
+        model = bh->modelTags();
     else if (table == bh->modelGeraete()->tableName())
         model = bh->modelGeraete();
     else if (table == bh->modelHauptgaerverlauf()->tableName())
@@ -157,8 +157,8 @@ void TabDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
         model = bh->sud()->modelBewertungen();
     else if (table == bh->modelEtiketten()->tableName())
         model = bh->sud()->modelEtiketten();
-    else if (table == bh->modelFlaschenlabelTags()->tableName())
-        model = bh->sud()->modelFlaschenlabelTags();
+    else if (table == bh->modelTags()->tableName())
+        model = bh->sud()->modelTags();
     else if (table == bh->modelHauptgaerverlauf()->tableName())
         model = bh->sud()->modelHauptgaerverlauf();
     else if (table == bh->modelHefegaben()->tableName())

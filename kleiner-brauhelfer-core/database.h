@@ -21,7 +21,7 @@
 #include "modelweiterezutatengaben.h"
 #include "modelausruestung.h"
 #include "modelrasten.h"
-#include "modelflaschenlabeltags.h"
+#include "modeltags.h"
 #include "modelanhang.h"
 #include "modeletiketten.h"
 #include "modelgeraete.h"
@@ -73,7 +73,7 @@ private:
     ModelGeraete* modelGeraete;
     ModelWasser* modelWasser;
     ModelEtiketten* modelEtiketten;
-    ModelFlaschenlabelTags* modelFlaschenlabelTags;
+    ModelTags* modeTags;
     int mVersion;
     QSqlError mLastError;
 };

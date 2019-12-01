@@ -23,7 +23,7 @@
 #include "modelweiterezutatengaben.h"
 #include "modelausruestung.h"
 #include "modelrasten.h"
-#include "modelflaschenlabeltags.h"
+#include "modeltags.h"
 #include "modelanhang.h"
 #include "modeletiketten.h"
 #include "modelgeraete.h"
@@ -61,7 +61,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelBewertungen READ modelBewertungen CONSTANT)
     Q_PROPERTY(SqlTableModel* modelAnhang READ modelAnhang CONSTANT)
     Q_PROPERTY(SqlTableModel* modelEtiketten READ modelEtiketten CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelFlaschenlabelTags READ modelFlaschenlabelTags CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelTags READ modelTags CONSTANT)
 
 public:
 
@@ -126,7 +126,7 @@ public:
     ModelBewertungen* modelBewertungen() const;
     ModelAnhang* modelAnhang() const;
     ModelEtiketten* modelEtiketten() const;
-    ModelFlaschenlabelTags* modelFlaschenlabelTags() const;
+    ModelTags* modelTags() const;
 
     Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);
     Q_INVOKABLE int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);

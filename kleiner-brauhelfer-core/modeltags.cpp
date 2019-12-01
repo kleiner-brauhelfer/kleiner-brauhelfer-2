@@ -1,14 +1,14 @@
-#include "modelflaschenlabeltags.h"
+#include "modeltags.h"
 #include "brauhelfer.h"
 
-ModelFlaschenlabelTags::ModelFlaschenlabelTags(Brauhelfer* bh, QSqlDatabase db) :
+ModelTags::ModelTags(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
     mVirtualField.append("Global");
 }
 
-QVariant ModelFlaschenlabelTags::dataExt(const QModelIndex &idx) const
+QVariant ModelTags::dataExt(const QModelIndex &idx) const
 {
     switch(idx.column())
     {
@@ -21,11 +21,11 @@ QVariant ModelFlaschenlabelTags::dataExt(const QModelIndex &idx) const
     }
 }
 
-bool ModelFlaschenlabelTags::setDataExt(const QModelIndex &idx, const QVariant &value)
+bool ModelTags::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
     {
-    case ColTagname:
+    case ColKey:
     {
         return QSqlTableModel::setData(idx, getUniqueName(idx, value, data(idx.row(), ColSudID)));
     }
@@ -34,7 +34,7 @@ bool ModelFlaschenlabelTags::setDataExt(const QModelIndex &idx, const QVariant &
         QVariant sudId = value.toBool() ? -1 : bh->sud()->id();
         if (QSqlTableModel::setData(index(idx.row(), ColSudID), sudId))
         {
-            QModelIndex idx2 = index(idx.row(), ColTagname);
+            QModelIndex idx2 = index(idx.row(), ColKey);
             setData(idx2, idx2.data());
             return true;
         }
@@ -45,7 +45,7 @@ bool ModelFlaschenlabelTags::setDataExt(const QModelIndex &idx, const QVariant &
     }
 }
 
-bool ModelFlaschenlabelTags::isUnique(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow) const
+bool ModelTags::isUnique(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow) const
 {
     for (int row = 0; row < rowCount(); ++row)
     {
@@ -59,7 +59,7 @@ bool ModelFlaschenlabelTags::isUnique(const QModelIndex &index, const QVariant &
     return true;
 }
 
-QString ModelFlaschenlabelTags::getUniqueName(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow) const
+QString ModelTags::getUniqueName(const QModelIndex &index, const QVariant &value, const QVariant &sudId, bool ignoreIndexRow) const
 {
     int cnt = 1;
     QString name = value.toString();
@@ -68,7 +68,7 @@ QString ModelFlaschenlabelTags::getUniqueName(const QModelIndex &index, const QV
     return name;
 }
 
-Qt::ItemFlags ModelFlaschenlabelTags::flags(const QModelIndex &idx) const
+Qt::ItemFlags ModelTags::flags(const QModelIndex &idx) const
 {
     Qt::ItemFlags itemFlags = SqlTableModel::flags(idx);
     if (idx.column() == ColGlobal)
@@ -76,10 +76,10 @@ Qt::ItemFlags ModelFlaschenlabelTags::flags(const QModelIndex &idx) const
     return itemFlags;
 }
 
-void ModelFlaschenlabelTags::defaultValues(QMap<int, QVariant> &values) const
+void ModelTags::defaultValues(QMap<int, QVariant> &values) const
 {
     int sudId = -1;
     if (values.contains(ColSudID))
         sudId = values[ColSudID].toInt();
-    values[ColTagname] = getUniqueName(index(0, ColTagname), values[ColTagname], sudId, true);
+    values[ColKey] = getUniqueName(index(0, ColKey), values[ColKey], sudId, true);
 }

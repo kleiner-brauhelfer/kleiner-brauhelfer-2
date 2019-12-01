@@ -816,8 +816,8 @@ bool Database::update()
             //  - Spalten komplett überarbeitet
             sqlExec(db, "CREATE TABLE Etiketten ("
                 "ID INTEGER PRIMARY KEY,"
-                "SudID INTEGER NOT NULL UNIQUE,"
-                "Pfad Text NOT NULL,"
+                "SudID INTEGER NOT NULL,"
+                "Pfad TEXT NOT NULL,"
                 "Anzahl INTEGER DEFAULT 20,"
                 "Breite INTEGER DEFAULT 100,"
                 "Hoehe INTEGER DEFAULT 60,"
@@ -851,6 +851,25 @@ bool Database::update()
                 "SRandUnten"
                 " FROM Flaschenlabel");
             sqlExec(db, "DROP TABLE Flaschenlabel");
+
+            // FlaschenlabelTags -> Tags
+            //  - Tabelle unbenannt FlaschenlabelTags -> Tags
+            //  - Spalte unbenannt Tagname -> Key
+            sqlExec(db, "CREATE TABLE Tags ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Key TEXT NOT NULL,"
+                "Value TEXT)");
+            sqlExec(db, "INSERT INTO Tags ("
+                "SudID,"
+                "Key,"
+                "Value"
+                ") SELECT "
+                "SudID,"
+                "Tagname,"
+                "Value"
+                " FROM FlaschenlabelTags");
+            sqlExec(db, "DROP TABLE FlaschenlabelTags");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

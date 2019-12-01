@@ -98,19 +98,19 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(anhaenge_modified()));
 
     int col;
-    ProxyModel *model = bh->sud()->modelFlaschenlabelTags();
+    ProxyModel *model = bh->sud()->modelTags();
     QTableView *table = ui->tableTags;
     table->setModel(model);
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
-    col = ModelFlaschenlabelTags::ColTagname;
+    col = ModelTags::ColKey;
     model->setHeaderData(col, Qt::Horizontal, tr("Tag"));
     table->setColumnHidden(col, false);
-    col = ModelFlaschenlabelTags::ColValue;
+    col = ModelTags::ColValue;
     model->setHeaderData(col, Qt::Horizontal, tr("Wert"));
     table->setColumnHidden(col, false);
     table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
-    col = ModelFlaschenlabelTags::ColGlobal;
+    col = ModelTags::ColGlobal;
     model->setHeaderData(col, Qt::Horizontal, tr("Global"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
@@ -997,13 +997,13 @@ void TabRezept::on_tbNachisomerisierungszeit_valueChanged(int min)
 
 void TabRezept::on_btnTagNeu_clicked()
 {
-    QMap<int, QVariant> values({{ModelFlaschenlabelTags::ColSudID, bh->sud()->id()},
-                                {ModelFlaschenlabelTags::ColTagname, tr("Neuer Tag")}});
-    ProxyModel *model = bh->sud()->modelFlaschenlabelTags();
+    QMap<int, QVariant> values({{ModelTags::ColSudID, bh->sud()->id()},
+                                {ModelTags::ColKey, tr("Neuer Tag")}});
+    ProxyModel *model = bh->sud()->modelTags();
     int row = model->append(values);
     if (row >= 0)
     {
-        QModelIndex index = model->index(row, ModelFlaschenlabelTags::ColTagname);
+        QModelIndex index = model->index(row, ModelTags::ColKey);
         ui->tableTags->setCurrentIndex(index);
         ui->tableTags->scrollTo(index);
         ui->tableTags->edit(index);
@@ -1012,7 +1012,7 @@ void TabRezept::on_btnTagNeu_clicked()
 
 void TabRezept::on_btnTagLoeschen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelFlaschenlabelTags();
+    ProxyModel *model = bh->sud()->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)

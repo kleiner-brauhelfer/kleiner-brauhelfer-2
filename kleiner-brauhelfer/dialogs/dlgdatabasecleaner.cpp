@@ -128,7 +128,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         [this](){return this->test1(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID});},
         [this](){return this->test1(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad});},
         [this](){return this->test1(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID, ModelEtiketten::ColPfad});},
-        [this](){return this->test1(bh->modelFlaschenlabelTags(), {ModelFlaschenlabelTags::ColID, ModelFlaschenlabelTags::ColSudID, ModelFlaschenlabelTags::ColTagname});}
+        [this](){return this->test1(bh->modelTags(), {ModelTags::ColID, ModelTags::ColSudID, ModelTags::ColKey});}
     };
     mItTestFncs = mTestFncs.begin();
     next();

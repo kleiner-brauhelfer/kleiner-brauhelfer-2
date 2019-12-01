@@ -43,7 +43,6 @@ SOURCES += \
     modelausruestung.cpp \
     modelbewertungen.cpp \
     modeletiketten.cpp \
-    modelflaschenlabeltags.cpp \
     modelgeraete.cpp \
     modelhauptgaerverlauf.cpp \
     modelhefe.cpp \
@@ -56,6 +55,7 @@ SOURCES += \
     modelrasten.cpp \
     modelschnellgaerverlauf.cpp \
     modelsud.cpp \
+    modeltags.cpp \
     modelwasser.cpp \
     modelweiterezutaten.cpp \
     modelweiterezutatengaben.cpp \
@@ -76,7 +76,6 @@ HEADERS += \
     modelausruestung.h \
     modelbewertungen.h \
     modeletiketten.h \
-    modelflaschenlabeltags.h \
     modelgeraete.h \
     modelhauptgaerverlauf.h \
     modelhefe.h \
@@ -89,6 +88,7 @@ HEADERS += \
     modelrasten.h \
     modelschnellgaerverlauf.h \
     modelsud.h \
+    modeltags.h \
     modelwasser.h \
     modelweiterezutaten.h \
     modelweiterezutatengaben.h \

@@ -46,7 +46,7 @@ WdgWebViewEditable::~WdgWebViewEditable()
 void WdgWebViewEditable::setHtmlFile(const QString& file)
 {
     ui->cbTemplateAuswahl->setItemText(0, file);
-    ui->webview->setTemplateFile(gSettings->dataDir() + file);
+    ui->webview->setTemplateFile(gSettings->dataDir(1) + file);
 }
 
 void WdgWebViewEditable::printToPdf(const QString& filePath)
@@ -108,7 +108,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
 
     if (checked)
     {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
         ui->btnSaveTemplate->setProperty("file", file.fileName());
         ui->lblFilePath->setText(file.fileName());
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -153,7 +153,7 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
                                     tr("Soll das Standardtemplate wiederhergestellt werden?"));
     if (ret == QMessageBox::Yes)
     {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
         QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))

@@ -192,20 +192,28 @@ static void copyResources()
 {
     QString dataDir = gSettings->dataDir();
     bool update = gSettings->isNewProgramVersion();
-    QDirIterator it(":/data", QDirIterator::Subdirectories);
     if (!QDir(dataDir).exists())
     {
         if (!QDir().mkpath(dataDir))
             QMessageBox::critical(nullptr, QApplication::applicationName(),
                                   QObject::tr("Der Ordner \"%1\" konnte nicht erstellt werden.").arg(dataDir));
     }
+    QDirIterator it(":/data", QDirIterator::Subdirectories);
     while (it.hasNext())
     {
         it.next();
         if (it.fileName() == "kb_daten.sqlite")
             continue;
+
+        QString filePath = dataDir + it.filePath().mid(7);
+        if (it.fileInfo().isDir())
+        {
+            QDir().mkpath(filePath);
+            continue;
+        }
+
         QFile fileResource(it.filePath());
-        QFile fileLocal(dataDir + it.fileName());
+        QFile fileLocal(filePath);
         if (!fileLocal.exists())
         {
             if (fileResource.copy(fileLocal.fileName()))

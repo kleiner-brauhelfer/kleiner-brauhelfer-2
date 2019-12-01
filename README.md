@@ -48,6 +48,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
+### Version 2.0.0 (in Entwicklung)
+
 ### Version 2.0.0beta5 (29.11.2019)
 - Neu: Tooltips ein- & ausschaltbar
 - Neu: Dialog, um Zutaten vom Rohstofflager abzuziehen

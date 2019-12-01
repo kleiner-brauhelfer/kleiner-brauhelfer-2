@@ -17,6 +17,7 @@ bool Database::update()
         if (version == 21)
         {
             ++version;
+            qInfo() << "Updating to version:" << version;
             db.transaction();
             sqlExec(db, "ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
@@ -26,6 +27,7 @@ bool Database::update()
         if (version == 22)
         {
             ++version;
+            qInfo() << "Updating to version:" << version;
             db.transaction();
             sqlExec(db, "CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
             sqlExec(db, "CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
@@ -36,6 +38,7 @@ bool Database::update()
         if (version == 23)
         {
             ++version;
+            qInfo() << "Updating to version:" << version;
             db.transaction();
             sqlExec(db, "ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
@@ -45,6 +48,7 @@ bool Database::update()
         if (version == 24)
         {
             version = 2000;
+            qInfo() << "Updating to version:" << version;
             db.transaction();
 
             // Ausruestung & Geraete

@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>data/abfuelldaten.html</file>
-        <file>data/braudaten.html</file>
-        <file>data/Hefe.csv</file>
-        <file>data/Hopfen.csv</file>
         <file>data/kb_daten.sqlite</file>
-        <file>data/Malz.csv</file>
-        <file>data/spickzettel.html</file>
-        <file>data/streifen_vorlage.svg</file>
-        <file>data/style_dunkel.css</file>
-        <file>data/style_hell.css</file>
-        <file>data/sudinfo.html</file>
-        <file>data/WeitereZutaten.csv</file>
-        <file>data/zusammenfassung.html</file>
-        <file>data/streifen_vorlage_farbig.svg</file>
+        <file>data/Etiketten/streifen_vorlage.svg</file>
+        <file>data/Etiketten/streifen_vorlage_farbig.svg</file>
+        <file>data/Rohstoffe/Hefe.csv</file>
+        <file>data/Rohstoffe/Hopfen.csv</file>
+        <file>data/Rohstoffe/Malz.csv</file>
+        <file>data/Rohstoffe/WeitereZutaten.csv</file>
+        <file>data/Webview/abfuelldaten.html</file>
+        <file>data/Webview/braudaten.html</file>
+        <file>data/Webview/spickzettel.html</file>
+        <file>data/Webview/style_dunkel.css</file>
+        <file>data/Webview/style_hell.css</file>
+        <file>data/Webview/sudinfo.html</file>
+        <file>data/Webview/zusammenfassung.html</file>
     </qresource>
 </RCC>

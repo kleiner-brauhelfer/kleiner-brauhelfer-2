@@ -155,7 +155,7 @@ public:
      * @param value Value of field name to match
      * @return Row number, -1 if not found
      */
-    int getRowWithValue(int col, const QVariant &value);
+    int getRowWithValue(int col, const QVariant &value) const;
 
     /**
      * @brief Gets the field name value matching a given field name key
@@ -164,7 +164,7 @@ public:
      * @param fieldName Field name to get
      * @return Value corresponding to field name
      */
-    QVariant getValueFromSameRow(int colKey, const QVariant &valueKey, int col);
+    QVariant getValueFromSameRow(int colKey, const QVariant &valueKey, int col) const;
 
     /**
      * @brief Default values of a row

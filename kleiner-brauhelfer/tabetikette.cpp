@@ -90,7 +90,7 @@ void TabEtikette::updateAuswahlListe()
         }
     }
 
-    QDirIterator it(gSettings->dataDir(), QStringList() << "*.svg");
+    QDirIterator it(gSettings->dataDir(3), QStringList() << "*.svg");
     while (it.hasNext())
     {
         it.next();

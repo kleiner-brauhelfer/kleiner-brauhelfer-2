@@ -48,6 +48,10 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
+### Version 2.0.0 (in Entwicklung)
+- Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert
+- Neu: Ressourcen in Unterverzeichnisse verschoben
+
 ### Version 2.0.0beta5 (29.11.2019)
 - Neu: Tooltips ein- & ausschaltbar
 - Neu: Dialog, um Zutaten vom Rohstofflager abzuziehen

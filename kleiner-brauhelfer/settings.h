@@ -39,7 +39,7 @@ public:
     void setDatabasePath(const QString& path);
     QString databaseDir();
 
-    QString dataDir() const;
+    QString dataDir(int type = 0) const;
 
     QString lastProgramVersion();
     bool isNewProgramVersion();

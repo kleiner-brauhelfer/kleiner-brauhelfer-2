@@ -275,9 +275,19 @@ QString Settings::databaseDir()
     return QFileInfo(databasePath()).absolutePath() + "/";
 }
 
-QString Settings::dataDir() const
+QString Settings::dataDir(int type) const
 {
-    return settingsDir() + "data/";
+    switch (type)
+    {
+    case 1:
+        return settingsDir() + "data/Webview/";
+    case 2:
+        return settingsDir() + "data/Rohstoffe/";
+    case 3:
+        return settingsDir() + "data/Etiketten/";
+    default:
+        return settingsDir() + "data/";
+    }
 }
 
 QString Settings::lastProgramVersion()

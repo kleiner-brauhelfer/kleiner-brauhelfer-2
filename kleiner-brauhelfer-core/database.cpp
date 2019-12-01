@@ -143,7 +143,6 @@ bool Database::connect(const QString &dbPath, bool readonly)
                         if (version > 0)
                         {
                             mVersion = version;
-                            setTables();
                             return true;
                         }
                     }

@@ -299,7 +299,7 @@ void SqlTableModel::revertAll()
     emit modified();
 }
 
-int SqlTableModel::getRowWithValue(int col, const QVariant &value)
+int SqlTableModel::getRowWithValue(int col, const QVariant &value) const
 {
     if (col != -1)
     {
@@ -312,7 +312,7 @@ int SqlTableModel::getRowWithValue(int col, const QVariant &value)
     return -1;
 }
 
-QVariant SqlTableModel::getValueFromSameRow(int colKey, const QVariant &valueKey, int col)
+QVariant SqlTableModel::getValueFromSameRow(int colKey, const QVariant &valueKey, int col) const
 {
     int row = getRowWithValue(colKey, valueKey);
     if (row == -1)

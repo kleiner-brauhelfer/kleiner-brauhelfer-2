@@ -548,7 +548,7 @@ bool Database::update()
             db.transaction();
 
             // Malz
-            // NUMERIC -> REAL
+            //  - NUMERIC -> REAL
             sqlExec(db, "ALTER TABLE Malz RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE Malz ("
                 "ID INTEGER PRIMARY KEY,"
@@ -588,7 +588,7 @@ bool Database::update()
             sqlExec(db, "DROP TABLE TempTable");
 
             // Hopfen
-            // NUMERIC -> REAL
+            //  - NUMERIC -> REAL
             sqlExec(db, "ALTER TABLE Hopfen RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE Hopfen ("
                 "ID INTEGER PRIMARY KEY,"
@@ -631,7 +631,7 @@ bool Database::update()
             sqlExec(db, "DROP TABLE TempTable");
 
             // Hefe
-            // NUMERIC -> REAL
+            //  - NUMERIC -> REAL
             sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
@@ -686,7 +686,7 @@ bool Database::update()
             sqlExec(db, "DROP TABLE TempTable");
 
             // WeitereZutaten
-            // NUMERIC -> REAL
+            //  - NUMERIC -> REAL
             sqlExec(db, "ALTER TABLE WeitereZutaten RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE WeitereZutaten ("
                 "ID INTEGER PRIMARY KEY,"
@@ -728,7 +728,92 @@ bool Database::update()
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
 
+            // Schnellgaerverlauf
+            //  - NUMERIC -> REAL
+            //  - Spalte unbenannt SW -> Restextrakt
+            //  - Neue Spalte Bemerkung
+            sqlExec(db, "ALTER TABLE Schnellgaerverlauf RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Schnellgaerverlauf ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Zeitstempel DATETIME,"
+                "Restextrakt REAL DEFAULT 0,"
+                "Alc REAL DEFAULT 0,"
+                "Temp REAL DEFAULT 18,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Schnellgaerverlauf ("
+                "SudID,"
+                "Zeitstempel,"
+                "Restextrakt,"
+                "Alc,"
+                "Temp"
+                ") SELECT "
+                "SudID,"
+                "Zeitstempel,"
+                "SW,"
+                "Alc,"
+                "Temp"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Hauptgaerverlauf
+            //  - NUMERIC -> REAL
+            //  - Spalte unbenannt SW -> Restextrakt
+            //  - Neue Spalte Bemerkung
+            sqlExec(db, "ALTER TABLE Hauptgaerverlauf RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Hauptgaerverlauf ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Zeitstempel DATETIME,"
+                "Restextrakt REAL DEFAULT 0,"
+                "Alc REAL DEFAULT 0,"
+                "Temp REAL DEFAULT 18,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Hauptgaerverlauf ("
+                "SudID,"
+                "Zeitstempel,"
+                "Restextrakt,"
+                "Alc,"
+                "Temp"
+                ") SELECT "
+                "SudID,"
+                "Zeitstempel,"
+                "SW,"
+                "Alc,"
+                "Temp"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Nachgaerverlauf
+            //  - NUMERIC -> REAL
+            //  - Neue Spalte Bemerkung
+            sqlExec(db, "ALTER TABLE Nachgaerverlauf RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Nachgaerverlauf ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Zeitstempel DATETIME,"
+                "Druck REAL DEFAULT 0,"
+                "Temp REAL DEFAULT 18,"
+                "CO2 REAL DEFAULT 0,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Nachgaerverlauf ("
+                "SudID,"
+                "Zeitstempel,"
+                "Druck,"
+                "Temp,"
+                "CO2"
+                ") SELECT "
+                "SudID,"
+                "Zeitstempel,"
+                "Druck,"
+                "Temp,"
+                "CO2"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
             // Flaschenlabel -> Etiketten
+            //  - Tabelle unbenannt Flaschenlabel -> Etiketten
+            //  - Spalten komplett überarbeitet
             sqlExec(db, "CREATE TABLE Etiketten ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL UNIQUE,"

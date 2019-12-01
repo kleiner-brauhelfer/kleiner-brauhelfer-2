@@ -16,9 +16,10 @@ public:
         ColID,
         ColSudID,
         ColZeitstempel,
-        ColSW,
+        ColRestextrakt,
         ColAlc,
         ColTemp,
+        ColBemerkung,
         // virtual
         ColDeleted,
         ColsEVG,

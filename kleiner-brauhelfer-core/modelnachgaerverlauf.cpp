@@ -116,7 +116,7 @@ void ModelNachgaerverlauf::defaultValues(QMap<int, QVariant> &values) const
         }
     }
     if (!values.contains(ColDruck))
-        values.insert(ColDruck, 0.0);
+        values.insert(ColDruck, 0);
     if (!values.contains(ColTemp))
-        values.insert(ColTemp, 20.0);
+        values.insert(ColTemp, 18);
 }

@@ -360,8 +360,7 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     {
         QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
                                     {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                    {ModelSchnellgaerverlauf::ColSW, bh->sud()->getSWIst()},
-                                    {ModelSchnellgaerverlauf::ColTemp, 20.0}});
+                                    {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
         bh->sud()->modelSchnellgaerverlauf()->append(values);
     }
 
@@ -369,8 +368,7 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     {
         QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
                                     {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                    {ModelHauptgaerverlauf::ColSW, bh->sud()->getSWIst()},
-                                    {ModelHauptgaerverlauf::ColTemp, 20.0}});
+                                    {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
         bh->sud()->modelHauptgaerverlauf()->append(values);
     }
 }

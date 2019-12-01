@@ -52,6 +52,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert
 - Neu: Ressourcen in Unterverzeichnisse verschoben
 - Neu: Reiter Etiketten überarbeitet
+- Neu: Neue Spalte "Bemerkung" für Einträge in Gärverläufen
+- Fix: Sortierung der Rohstoffe nach Zahlen
 
 ### Version 2.0.0beta5 (29.11.2019)
 - Neu: Tooltips ein- & ausschaltbar

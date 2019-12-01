@@ -61,7 +61,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = ModelSchnellgaerverlauf::ColSW;
+    col = ModelSchnellgaerverlauf::ColRestextrakt;
     model->setHeaderData(col, Qt::Horizontal, tr("SRE [°P]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
@@ -89,6 +89,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
 
+    col = ModelSchnellgaerverlauf::ColBemerkung;
+    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
+    table->setColumnHidden(col, false);
+    header->resizeSection(col, 200);
+    header->setStretchLastSection(true);
+    header->moveSection(header->visualIndex(col), 5);
+
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
     connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(sig_selectionChanged(int)),
@@ -108,7 +115,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 0);
 
-    col = ModelHauptgaerverlauf::ColSW;
+    col = ModelHauptgaerverlauf::ColRestextrakt;
     model->setHeaderData(col, Qt::Horizontal, tr("SRE [°P]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
@@ -135,6 +142,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 4);
+
+    col = ModelSchnellgaerverlauf::ColBemerkung;
+    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
+    table->setColumnHidden(col, false);
+    header->resizeSection(col, 200);
+    header->setStretchLastSection(true);
+    header->moveSection(header->visualIndex(col), 5);
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -175,6 +189,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
+
+    col = ModelSchnellgaerverlauf::ColBemerkung;
+    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
+    table->setColumnHidden(col, false);
+    header->resizeSection(col, 200);
+    header->setStretchLastSection(true);
+    header->moveSection(header->visualIndex(col), 4);
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -273,11 +294,11 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
 void TabGaerverlauf::sudLoaded()
 {
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColSW).toDouble());
+    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble());
     ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble());
 
     model = bh->sud()->modelHauptgaerverlauf();
-    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColSW).toDouble());
+    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble());
     ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble());
 
     model = bh->sud()->modelNachgaerverlauf();
@@ -296,7 +317,7 @@ void TabGaerverlauf::sudLoaded()
 void TabGaerverlauf::onSchnellgaerverlaufRowInserted()
 {
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColSW).toDouble());
+    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble());
     ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble());
     updateDiagramm();
 }
@@ -304,7 +325,7 @@ void TabGaerverlauf::onSchnellgaerverlaufRowInserted()
 void TabGaerverlauf::onHauptgaerverlaufRowInserted()
 {
     ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
-    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColSW).toDouble());
+    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble());
     ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble());
     updateDiagramm();
 }
@@ -461,7 +482,7 @@ void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
 {
     QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
                                 {ModelSchnellgaerverlauf::ColZeitstempel, ui->tbDatumSchnellgaerprobe->dateTime()},
-                                {ModelSchnellgaerverlauf::ColSW, ui->tbSWSchnellgaerprobe->value()},
+                                {ModelSchnellgaerverlauf::ColRestextrakt, ui->tbSWSchnellgaerprobe->value()},
                                 {ModelSchnellgaerverlauf::ColTemp, ui->tbTempSchnellgaerprobe->value()}});
     bh->sud()->modelSchnellgaerverlauf()->append(values);
 }
@@ -491,7 +512,7 @@ void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
     QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
                                 {ModelHauptgaerverlauf::ColZeitstempel, ui->tbDatumHautgaerprobe->dateTime()},
-                                {ModelHauptgaerverlauf::ColSW, ui->tbSWHauptgaerprobe->value()},
+                                {ModelHauptgaerverlauf::ColRestextrakt, ui->tbSWHauptgaerprobe->value()},
                                 {ModelHauptgaerverlauf::ColTemp, ui->tbTempHauptgaerprobe->value()}});
     bh->sud()->modelHauptgaerverlauf()->append(values);
 }

@@ -20,13 +20,13 @@ QVariant ModelHauptgaerverlauf::dataExt(const QModelIndex &idx) const
     case ColsEVG:
     {
         double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColSWIst).toDouble();
-        double sre = data(idx.row(), ColSW).toDouble();
+        double sre = data(idx.row(), ColRestextrakt).toDouble();
         return BierCalc::vergaerungsgrad(sw, sre);
     }
     case ColtEVG:
     {
         double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColSWIst).toDouble();
-        double sre = data(idx.row(), ColSW).toDouble();
+        double sre = data(idx.row(), ColRestextrakt).toDouble();
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
     }
@@ -43,7 +43,7 @@ bool ModelHauptgaerverlauf::setDataExt(const QModelIndex &idx, const QVariant &v
     {
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
-    case ColSW:
+    case ColRestextrakt:
     {
         if (QSqlTableModel::setData(idx, value))
         {
@@ -110,23 +110,23 @@ void ModelHauptgaerverlauf::defaultValues(QMap<int, QVariant> &values) const
         int row = getLastRow(id);
         if (row >= 0)
         {
-            if (!values.contains(ColSW))
-                values.insert(ColSW, data(row, ColSW));
+            if (!values.contains(ColRestextrakt))
+                values.insert(ColRestextrakt, data(row, ColRestextrakt));
             if (!values.contains(ColTemp))
                 values.insert(ColTemp, data(row, ColTemp));
         }
         else
         {
-            if (!values.contains(ColSW))
+            if (!values.contains(ColRestextrakt))
             {
                 int rowBrew = bh->modelSud()->getRowWithValue(ModelSud::ColID, id);
                 if (rowBrew >= 0)
-                    values.insert(ColSW, bh->modelSud()->data(rowBrew, ModelSud::ColSWIst));
+                    values.insert(ColRestextrakt, bh->modelSud()->data(rowBrew, ModelSud::ColSWIst));
             }
         }
     }
-    if (!values.contains(ColSW))
-        values.insert(ColSW, 0.0);
+    if (!values.contains(ColRestextrakt))
+        values.insert(ColRestextrakt, 0);
     if (!values.contains(ColTemp))
-        values.insert(ColTemp, 20.0);
+        values.insert(ColTemp, 18);
 }

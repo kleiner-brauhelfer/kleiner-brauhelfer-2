@@ -20,6 +20,7 @@ public:
         ColDruck,
         ColTemp,
         ColCO2,
+        ColBemerkung,
         // virtual
         ColDeleted,
         // number of columns

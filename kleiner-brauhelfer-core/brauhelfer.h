@@ -113,7 +113,7 @@ public:
     ModelHefe* modelHefe() const;
     ModelWeitereZutaten* modelWeitereZutaten() const;
     ModelAusruestung* modelAusruestung() const;
-    SqlTableModel* modelGeraete() const;
+    ModelGeraete* modelGeraete() const;
     ModelWasser* modelWasser() const;
     ModelRasten* modelRasten() const;
     ModelMalzschuettung* modelMalzschuettung() const;
@@ -124,8 +124,8 @@ public:
     ModelHauptgaerverlauf* modelHauptgaerverlauf() const;
     ModelNachgaerverlauf* modelNachgaerverlauf() const;
     ModelBewertungen* modelBewertungen() const;
-    SqlTableModel* modelAnhang() const;
-    SqlTableModel* modelFlaschenlabel() const;
+    ModelAnhang* modelAnhang() const;
+    ModelFlaschenlabel* modelFlaschenlabel() const;
     ModelFlaschenlabelTags* modelFlaschenlabelTags() const;
 
     Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);

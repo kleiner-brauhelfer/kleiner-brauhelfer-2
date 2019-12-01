@@ -129,12 +129,11 @@ bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
 
 void ModelAusruestung::defaultValues(QMap<int, QVariant> &values) const
 {
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
     if (!values.contains(ColID))
         values[ColID] = getNextId();
     if (!values.contains(ColSudhausausbeute))
         values.insert(ColSudhausausbeute, 60.0);
     if (!values.contains(ColVerdampfungsziffer))
         values.insert(ColVerdampfungsziffer, 10.0);
-    if (values.contains(ColName))
-        values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
 }

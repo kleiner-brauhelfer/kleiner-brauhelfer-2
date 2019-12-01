@@ -42,6 +42,7 @@ public:
     void disconnect();
     bool isConnected() const;
     bool isDirty() const;
+    void setTables();
     void select();
     int version() const;
     bool save();
@@ -50,7 +51,6 @@ public:
     QSqlError lastError() const;
 
 private:
-    void setTables();
     QSqlQuery sqlExec(QSqlDatabase &db, const QString &query);
 
 private:

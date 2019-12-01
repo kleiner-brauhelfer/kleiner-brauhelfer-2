@@ -60,6 +60,7 @@ bool Brauhelfer::connectDatabase()
         qInfo() << "Brauhelfer::connectDatabase() version:" << databaseVersion();
         if (mDb->version() == supportedDatabaseVersion)
         {
+            mDb->setTables();
             mDb->select();
             mSud->init();
         }
@@ -201,7 +202,7 @@ ModelAusruestung *Brauhelfer::modelAusruestung() const
     return mDb->modelAusruestung;
 }
 
-SqlTableModel* Brauhelfer::modelGeraete() const
+ModelGeraete *Brauhelfer::modelGeraete() const
 {
     return mDb->modelGeraete;
 }
@@ -256,12 +257,12 @@ ModelBewertungen *Brauhelfer::modelBewertungen() const
     return mDb->modelBewertungen;
 }
 
-SqlTableModel* Brauhelfer::modelAnhang() const
+ModelAnhang *Brauhelfer::modelAnhang() const
 {
     return mDb->modelAnhang;
 }
 
-SqlTableModel* Brauhelfer::modelFlaschenlabel() const
+ModelFlaschenlabel* Brauhelfer::modelFlaschenlabel() const
 {
     return mDb->modelFlaschenlabel;
 }

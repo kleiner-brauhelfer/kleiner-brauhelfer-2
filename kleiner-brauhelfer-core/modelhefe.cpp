@@ -99,16 +99,21 @@ bool ModelHefe::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 void ModelHefe::defaultValues(QMap<int, QVariant> &values) const
 {
+    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
+    if (!values.contains(ColTypOGUG))
+        values.insert(ColTypOGUG, 0);
+    if (!values.contains(ColTypTrFl))
+        values.insert(ColTypTrFl, 0);
     if (!values.contains(ColWuerzemenge))
         values.insert(ColWuerzemenge, 0);
+    if (!values.contains(ColSED))
+        values.insert(ColSED, 0);
     if (!values.contains(ColPreis))
         values.insert(ColPreis, 0);
     if (!values.contains(ColEingelagert))
         values.insert(ColEingelagert, QDate::currentDate());
     if (!values.contains(ColMindesthaltbar))
         values.insert(ColMindesthaltbar, QDate::currentDate().addYears(1));
-    if (values.contains(ColBeschreibung))
-        values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
 }

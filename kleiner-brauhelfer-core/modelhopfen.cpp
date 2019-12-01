@@ -149,6 +149,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 void ModelHopfen::defaultValues(QMap<int, QVariant> &values) const
 {
+    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
     if (!values.contains(ColAlpha))
         values.insert(ColAlpha, 0);
     if (!values.contains(ColPellets))
@@ -163,6 +164,4 @@ void ModelHopfen::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColEingelagert, QDate::currentDate());
     if (!values.contains(ColMindesthaltbar))
         values.insert(ColMindesthaltbar, QDate::currentDate().addYears(1));
-    if (values.contains(ColBeschreibung))
-        values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
 }

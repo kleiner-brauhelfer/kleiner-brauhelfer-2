@@ -112,6 +112,5 @@ Qt::ItemFlags ModelWasser::flags(const QModelIndex &idx) const
 
 void ModelWasser::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (values.contains(ColName))
-        values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
 }

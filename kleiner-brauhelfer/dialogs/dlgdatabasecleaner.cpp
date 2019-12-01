@@ -105,7 +105,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         [this](){return this->test2(bh->modelNachgaerverlauf(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID, ModelNachgaerverlauf::ColZeitstempel});},
         [this](){return this->test2(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID, ModelBewertungen::ColDatum});},
         [this](){return this->test2(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad});},
-        [this](){return this->test2(bh->modelFlaschenlabel(), {ModelFlaschenlabel::ColID, ModelFlaschenlabel::ColSudID});},
+        [this](){return this->test2(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID});},
 
         [this](){return this->test3(bh->modelGeraete(), {ModelGeraete::ColBezeichnung, ModelGeraete::ColAusruestungAnlagenID});},
 
@@ -127,7 +127,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         [this](){return this->test1(bh->modelNachgaerverlauf(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID, ModelNachgaerverlauf::ColZeitstempel, ModelNachgaerverlauf::ColDruck, ModelNachgaerverlauf::ColTemp, ModelNachgaerverlauf::ColCO2});},
         [this](){return this->test1(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID});},
         [this](){return this->test1(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad});},
-        [this](){return this->test1(bh->modelFlaschenlabel(), {ModelFlaschenlabel::ColID, ModelFlaschenlabel::ColSudID, ModelFlaschenlabel::ColAuswahl});},
+        [this](){return this->test1(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID, ModelEtiketten::ColPfad});},
         [this](){return this->test1(bh->modelFlaschenlabelTags(), {ModelFlaschenlabelTags::ColID, ModelFlaschenlabelTags::ColSudID, ModelFlaschenlabelTags::ColTagname});}
     };
     mItTestFncs = mTestFncs.begin();

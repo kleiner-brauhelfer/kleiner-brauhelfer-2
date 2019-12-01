@@ -3,6 +3,8 @@
         <file>data/kb_daten.sqlite</file>
         <file>data/Etiketten/streifen_vorlage.svg</file>
         <file>data/Etiketten/streifen_vorlage_farbig.svg</file>
+        <file>data/Etiketten/streifen_vorlage_farbig_nummeriert.svg</file>
+        <file>data/Etiketten/streifen_vorlage_nummeriert.svg</file>
         <file>data/Rohstoffe/Hefe.csv</file>
         <file>data/Rohstoffe/Hopfen.csv</file>
         <file>data/Rohstoffe/Malz.csv</file>

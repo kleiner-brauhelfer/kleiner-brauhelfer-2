@@ -23,7 +23,7 @@
 #include "modelrasten.h"
 #include "modelflaschenlabeltags.h"
 #include "modelanhang.h"
-#include "modelflaschenlabel.h"
+#include "modeletiketten.h"
 #include "modelgeraete.h"
 
 class QSqlDatabase;
@@ -72,7 +72,7 @@ private:
     ModelAusruestung* modelAusruestung;
     ModelGeraete* modelGeraete;
     ModelWasser* modelWasser;
-    ModelFlaschenlabel* modelFlaschenlabel;
+    ModelEtiketten* modelEtiketten;
     ModelFlaschenlabelTags* modelFlaschenlabelTags;
     int mVersion;
     QSqlError mLastError;

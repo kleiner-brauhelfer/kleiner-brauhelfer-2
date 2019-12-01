@@ -72,7 +72,7 @@
      <item>
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Weitere Vorlagen können über die Sudanhänge im Reiter Rezept hinzugefügt werden. Die Datei muss im SVG Format sein.</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weitere Vorlagen können über die Sudanhänge im Reiter Rezept hinzugefügt werden. Alternativ kann die Vorlage auch in den Ordner für die Programmdaten kopiert werden. Die Datei muss im SVG Format sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -172,6 +172,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="lblFilePath">
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -194,10 +201,210 @@
      <item>
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
-        <string>PDF Ausgabe</string>
+        <string>Druckausgabe</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="7" column="0">
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>Etikettengrösse</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_5">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>mm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_77">
+             <property name="text">
+              <string>Breite</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="SpinBox" name="tbLabelHoehe">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="SpinBox" name="tbLabelBreite">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Breite &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;p&gt;Die ideale Breite ist abhängig vom Umfang des Gebindes und sollte vorher ausgemessen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Höhe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <widget class="QCheckBox" name="cbSeitenverhaeltnis">
+             <property name="text">
+              <string>Seitenverhältnis beibehalten</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLabel" name="label_16">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>mm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="3">
+            <widget class="QPushButton" name="btnGroesseAusSvg">
+             <property name="text">
+              <string>Aus SVG übernehmen</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="title">
+           <string>Anzahl Etiketten</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_49">
+             <property name="text">
+              <string>Anzahl</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="SpinBox" name="tbAnzahl">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="maximum">
+              <number>999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_17">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="9" column="0" colspan="2">
+         <widget class="QPushButton" name="btnToPdf">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer (leider) nicht möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Druckvorschau</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0" colspan="2">
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string>Tags</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>{{N}}</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Anzahl Etiketten</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>{{n}}</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Etikettennummer</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="7" column="0" colspan="2">
+         <widget class="QCheckBox" name="cbUseImagePainter">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der alternative &lt;span style=&quot; font-weight:600;&quot;&gt;SVG Renderer&lt;/span&gt; ist langsamer und qualitativ schlechter. Manche SVGs lassen sich aber nur mit diesem Renderer darstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Alternativer SVG Renderer</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
          <spacer name="verticalSpacer_6">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -210,195 +417,126 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="0">
-         <widget class="QSpinBox" name="spinBox_BreiteLabel">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Breite &lt;/span&gt;der Flaschenbinde oder des Etiketts festgelegt.&lt;/p&gt;&lt;p&gt;Die ideale Breite ist abhängig vom Umfang des Gebindes und sollte vorher ausgemessen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <item row="3" column="0">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Abstände zwischen Etiketten</string>
           </property>
-          <property name="maximum">
-           <number>210</number>
-          </property>
-          <property name="value">
-           <number>185</number>
-          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_6">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>mm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_76">
+             <property name="text">
+              <string>Horizontal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Vertikal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="SpinBox" name="tbAbstandVert">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;vertikale Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="SpinBox" name="tbAbstandHor">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;horizontale Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2 mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2 mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>mm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <widget class="QCheckBox" name="cbDividingLine">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eine &lt;span style=&quot; font-weight:600;&quot;&gt;Trennlinie&lt;/span&gt; zwischen den einzelnen darstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Trennlinie darstellen</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item row="5" column="0">
-         <widget class="QSpinBox" name="spinBox_AbstandLabel">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QSpinBox" name="spinBox_AnzahlLabels">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten auf einem Etikettenbogen festgelegt. Es gilt die Devise möglichst effizient und ressourcenschonend zu arbeiten.&lt;/p&gt;&lt;p&gt;Üblicherweise liegt im Hobbybereich ein DIN-A4-Bogen vor. Kommen andere Formate oder gar Rollenpapier zum Einsatz, sind größere Änderungen am Layout nötig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="maximum">
-           <number>9999999</number>
-          </property>
-          <property name="value">
-           <number>25</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="label_5">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>mm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLabel" name="label_6">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>mm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_77">
-          <property name="text">
-           <string>Breite Label</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="2">
-         <widget class="QLabel" name="label_49">
-          <property name="text">
-           <string>Anzahl Labels</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0" colspan="2">
-         <widget class="QLabel" name="label_76">
-          <property name="text">
-           <string>Abstand zwischen den Labels</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0" colspan="2">
          <widget class="QGroupBox" name="groupBox_21">
           <property name="title">
            <string>Seitenränder</string>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="5" column="1">
-            <widget class="QSpinBox" name="spinBox_FLabel_RandRechts">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;rechts &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="maximum">
-              <number>210</number>
-             </property>
-             <property name="value">
-              <number>5</number>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QSpinBox" name="spinBox_FLabel_RandUnten">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;unten &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="maximum">
-              <number>290</number>
-             </property>
-             <property name="value">
-              <number>15</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <widget class="QLabel" name="label_2">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>16777215</height>
-              </size>
-             </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_72">
              <property name="text">
-              <string>mm</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QSpinBox" name="spinBox_FLabel_RandLinks">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;links &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="maximum">
-              <number>210</number>
-             </property>
-             <property name="value">
-              <number>5</number>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="2">
-            <widget class="QLabel" name="label_3">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>mm</string>
+              <string>Oben</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QSpinBox" name="spinBox_FLabel_RandOben">
+            <widget class="SpinBox" name="tbRandLinks">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;oben &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;links &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-             <property name="maximum">
-              <number>297</number>
-             </property>
-             <property name="value">
-              <number>10</number>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_74">
+             <property name="text">
+              <string>Rechts</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_75">
+             <property name="text">
+              <string>Unten</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
             <widget class="QLabel" name="label">
              <property name="minimumSize">
               <size>
@@ -417,7 +555,27 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="2">
+           <item row="2" column="1">
+            <widget class="SpinBox" name="tbRandRechts">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;rechts &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="SpinBox" name="tbRandUnten">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;unten &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
             <widget class="QLabel" name="label_4">
              <property name="minimumSize">
               <size>
@@ -437,44 +595,61 @@
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QLabel" name="label_72">
-             <property name="text">
-              <string>Oben</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
             <widget class="QLabel" name="label_73">
              <property name="text">
               <string>Links</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_74">
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_3">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="text">
-              <string>Rechts</string>
+              <string>mm</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_75">
+           <item row="0" column="1">
+            <widget class="SpinBox" name="tbRandOben">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;oben &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="text">
-              <string>Unten</string>
+              <string>mm</string>
              </property>
             </widget>
            </item>
           </layout>
-         </widget>
-        </item>
-        <item row="8" column="0" colspan="2">
-         <widget class="QPushButton" name="btnToPdf">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer (leider) nicht möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>PDF speichern</string>
-          </property>
          </widget>
         </item>
        </layout>
@@ -495,6 +670,11 @@
    <extends>QGraphicsView</extends>
    <header>widgets/svgview.h</header>
   </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>cbAuswahl</tabstop>
@@ -505,13 +685,10 @@
   <tabstop>btnSaveTemplate</tabstop>
   <tabstop>tbTemplate</tabstop>
   <tabstop>tbTags</tabstop>
-  <tabstop>spinBox_BreiteLabel</tabstop>
-  <tabstop>spinBox_AnzahlLabels</tabstop>
-  <tabstop>spinBox_AbstandLabel</tabstop>
-  <tabstop>spinBox_FLabel_RandOben</tabstop>
-  <tabstop>spinBox_FLabel_RandLinks</tabstop>
-  <tabstop>spinBox_FLabel_RandRechts</tabstop>
-  <tabstop>spinBox_FLabel_RandUnten</tabstop>
+  <tabstop>tbRandOben</tabstop>
+  <tabstop>tbRandLinks</tabstop>
+  <tabstop>tbRandRechts</tabstop>
+  <tabstop>tbRandUnten</tabstop>
   <tabstop>btnToPdf</tabstop>
  </tabstops>
  <resources>

@@ -35,7 +35,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelNachgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelBewertungen, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelAnhang, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelFlaschenlabel, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelEtiketten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelFlaschenlabelTags, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
@@ -262,9 +262,9 @@ ModelAnhang *Brauhelfer::modelAnhang() const
     return mDb->modelAnhang;
 }
 
-ModelFlaschenlabel* Brauhelfer::modelFlaschenlabel() const
+ModelEtiketten *Brauhelfer::modelEtiketten() const
 {
-    return mDb->modelFlaschenlabel;
+    return mDb->modelEtiketten;
 }
 
 ModelFlaschenlabelTags *Brauhelfer::modelFlaschenlabelTags() const
@@ -303,7 +303,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
         sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}, {ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben}});
     sudKopierenModel(modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId, {{ModelMalzschuettung::ColSudID, neueSudId}});
     sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, {{ModelAnhang::ColSudID, neueSudId}});
-    sudKopierenModel(modelFlaschenlabel(), ModelFlaschenlabel::ColSudID, sudId, {{ModelFlaschenlabel::ColSudID, neueSudId}});
+    sudKopierenModel(modelEtiketten(), ModelEtiketten::ColSudID, sudId, {{ModelEtiketten::ColSudID, neueSudId}});
     sudKopierenModel(modelFlaschenlabelTags(), ModelFlaschenlabelTags::ColSudID, sudId, {{ModelFlaschenlabelTags::ColSudID, neueSudId}});
     if (teilen)
     {

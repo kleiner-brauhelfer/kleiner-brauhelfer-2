@@ -119,7 +119,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY(ProxyModel* modelNachgaerverlauf READ modelNachgaerverlauf CONSTANT)
     Q_PROPERTY(ProxyModel* modelBewertungen READ modelBewertungen CONSTANT)
     Q_PROPERTY(ProxyModel* modelAnhang READ modelAnhang CONSTANT)
-    Q_PROPERTY(ProxyModel* modelFlaschenlabel READ modelFlaschenlabel CONSTANT)
+    Q_PROPERTY(ProxyModel* modelEtiketten READ modelEtiketten CONSTANT)
     Q_PROPERTY(ProxyModel* modelFlaschenlabelTags READ modelFlaschenlabelTags CONSTANT)
 
 public:
@@ -205,7 +205,7 @@ public:
     ProxyModel* modelNachgaerverlauf() const;
     ProxyModel* modelBewertungen() const;
     ProxyModel* modelAnhang() const;
-    ProxyModel* modelFlaschenlabel() const;
+    ProxyModel* modelEtiketten() const;
     ProxyModel* modelFlaschenlabelTags() const;
 
     /**
@@ -251,7 +251,7 @@ private:
     ProxyModel* proxyModelNachgaerverlauf;
     ProxyModel* proxyModelBewertungen;
     ProxyModel* proxyModelAnhang;
-    ProxyModel* proxyModelFlaschenlabel;
+    ProxyModel* proxyModelEtiketten;
     ProxyModel* proxyModelFlaschenlabelTags;
 };
 

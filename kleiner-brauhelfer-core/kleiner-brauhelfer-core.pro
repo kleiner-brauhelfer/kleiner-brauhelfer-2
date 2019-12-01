@@ -42,7 +42,7 @@ SOURCES += \
     modelanhang.cpp \
     modelausruestung.cpp \
     modelbewertungen.cpp \
-    modelflaschenlabel.cpp \
+    modeletiketten.cpp \
     modelflaschenlabeltags.cpp \
     modelgeraete.cpp \
     modelhauptgaerverlauf.cpp \
@@ -75,7 +75,7 @@ HEADERS += \
     modelanhang.h \
     modelausruestung.h \
     modelbewertungen.h \
-    modelflaschenlabel.h \
+    modeletiketten.h \
     modelflaschenlabeltags.h \
     modelgeraete.h \
     modelhauptgaerverlauf.h \

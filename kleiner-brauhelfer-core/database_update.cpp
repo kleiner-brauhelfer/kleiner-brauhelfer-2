@@ -544,6 +544,7 @@ bool Database::update()
         if (version == 2000)
         {
             ++version;
+            qInfo() << "Updating to version:" << version;
             db.transaction();
 
             // Malz
@@ -726,6 +727,45 @@ bool Database::update()
                 "Link"
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
+
+            // Flaschenlabel -> Etiketten
+            sqlExec(db, "CREATE TABLE Etiketten ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL UNIQUE,"
+                "Pfad Text NOT NULL,"
+                "Anzahl INTEGER DEFAULT 20,"
+                "Breite INTEGER DEFAULT 100,"
+                "Hoehe INTEGER DEFAULT 60,"
+                "AbstandHor INTEGER DEFAULT 2,"
+                "AbstandVert INTEGER DEFAULT 2,"
+                "RandOben INTEGER DEFAULT 10,"
+                "RandLinks INTEGER DEFAULT 5,"
+                "RandRechts INTEGER DEFAULT 5,"
+                "RandUnten INTEGER DEFAULT 15)");
+            sqlExec(db, "INSERT INTO Etiketten ("
+                "SudID,"
+                "Pfad,"
+                "Anzahl,"
+                "Breite,"
+                "AbstandHor,"
+                "AbstandVert,"
+                "RandOben,"
+                "RandLinks,"
+                "RandRechts,"
+                "RandUnten"
+                ") SELECT "
+                "SudID,"
+                "Auswahl,"
+                "AnzahlLabels,"
+                "BreiteLabel,"
+                "AbstandLabels,"
+                "AbstandLabels,"
+                "SRandOben,"
+                "SRandLinks,"
+                "SRandRechts,"
+                "SRandUnten"
+                " FROM Flaschenlabel");
+            sqlExec(db, "DROP TABLE Flaschenlabel");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

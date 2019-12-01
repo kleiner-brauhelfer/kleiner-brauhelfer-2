@@ -20,7 +20,7 @@ SudObject::SudObject(Brauhelfer *bh) :
     proxyModelNachgaerverlauf(new ProxyModel(this)),
     proxyModelBewertungen(new ProxyModel(this)),
     proxyModelAnhang(new ProxyModel(this)),
-    proxyModelFlaschenlabel(new ProxyModel(this)),
+    proxyModelEtiketten(new ProxyModel(this)),
     proxyModelFlaschenlabelTags(new ProxyModel(this))
 {
     connect(bh, SIGNAL(saved()), this, SLOT(onSudLayoutChanged()));
@@ -42,7 +42,7 @@ SudObject::~SudObject()
     delete proxyModelNachgaerverlauf;
     delete proxyModelBewertungen;
     delete proxyModelAnhang;
-    delete proxyModelFlaschenlabel;
+    delete proxyModelEtiketten;
     delete proxyModelFlaschenlabelTags;
 }
 
@@ -74,8 +74,8 @@ void SudObject::init()
     modelBewertungen()->setFilterKeyColumn(ModelBewertungen::ColSudID);
     modelAnhang()->setSourceModel(bh->modelAnhang());
     modelAnhang()->setFilterKeyColumn(ModelAnhang::ColSudID);
-    modelFlaschenlabel()->setSourceModel(bh->modelFlaschenlabel());
-    modelFlaschenlabel()->setFilterKeyColumn(ModelFlaschenlabel::ColSudID);
+    modelEtiketten()->setSourceModel(bh->modelEtiketten());
+    modelEtiketten()->setFilterKeyColumn(ModelEtiketten::ColSudID);
     modelFlaschenlabelTags()->setSourceModel(bh->modelFlaschenlabelTags());
     modelFlaschenlabelTags()->setFilterKeyColumn(ModelFlaschenlabelTags::ColSudID);
 
@@ -90,7 +90,7 @@ void SudObject::init()
     modelNachgaerverlauf()->setFilterRegExp(regExpId);
     modelBewertungen()->setFilterRegExp(regExpId);
     modelAnhang()->setFilterRegExp(regExpId);
-    modelFlaschenlabel()->setFilterRegExp(regExpId);
+    modelEtiketten()->setFilterRegExp(regExpId);
     modelFlaschenlabelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
 }
 
@@ -117,7 +117,7 @@ void SudObject::load(int id)
         modelNachgaerverlauf()->setFilterRegExp(regExpId);
         modelBewertungen()->setFilterRegExp(regExpId);
         modelAnhang()->setFilterRegExp(regExpId);
-        modelFlaschenlabel()->setFilterRegExp(regExpId);
+        modelEtiketten()->setFilterRegExp(regExpId);
         modelFlaschenlabelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
 
         if (isLoaded())
@@ -215,9 +215,9 @@ ProxyModel* SudObject::modelAnhang() const
     return proxyModelAnhang;
 }
 
-ProxyModel* SudObject::modelFlaschenlabel() const
+ProxyModel* SudObject::modelEtiketten() const
 {
-    return proxyModelFlaschenlabel;
+    return proxyModelEtiketten;
 }
 
 ProxyModel* SudObject::modelFlaschenlabelTags() const

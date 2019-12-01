@@ -33,7 +33,7 @@ void Database::createTables(Brauhelfer* bh)
     modelAusruestung = new ModelAusruestung(bh, db);
     modelGeraete = new ModelGeraete(bh, db);
     modelWasser = new ModelWasser(bh, db);
-    modelFlaschenlabel = new ModelFlaschenlabel(bh, db);
+    modelEtiketten = new ModelEtiketten(bh, db);
     modelFlaschenlabelTags = new ModelFlaschenlabelTags(bh, db);
     modelSud->createConnections();
 }
@@ -63,7 +63,7 @@ void Database::setTables()
     modelAusruestung->setTable("Ausruestung");
     modelGeraete->setTable("Geraete");
     modelWasser->setTable("Wasser");
-    modelFlaschenlabel->setTable("Flaschenlabel");
+    modelEtiketten->setTable("Etiketten");
     modelFlaschenlabelTags->setTable("FlaschenlabelTags");
 
     // sanity check
@@ -85,7 +85,7 @@ void Database::setTables()
     Q_ASSERT(modelAusruestung->columnCount() == ModelAusruestung::NumCols);
     Q_ASSERT(modelGeraete->columnCount() == ModelGeraete::NumCols);
     Q_ASSERT(modelWasser->columnCount() == ModelWasser::NumCols);
-    Q_ASSERT(modelFlaschenlabel->columnCount() == ModelFlaschenlabel::NumCols);
+    Q_ASSERT(modelEtiketten->columnCount() == ModelEtiketten::NumCols);
     Q_ASSERT(modelFlaschenlabelTags->columnCount() == ModelFlaschenlabelTags::NumCols);
 }
 
@@ -110,7 +110,7 @@ Database::~Database()
     delete modelAusruestung;
     delete modelGeraete;
     delete modelWasser;
-    delete modelFlaschenlabel;
+    delete modelEtiketten;
     delete modelFlaschenlabelTags;
     QSqlDatabase::removeDatabase("kbh");
 }
@@ -179,7 +179,7 @@ void Database::disconnect()
         modelAusruestung->clear();
         modelGeraete->clear();
         modelWasser->clear();
-        modelFlaschenlabel->clear();
+        modelEtiketten->clear();
         modelFlaschenlabelTags->clear();
         mVersion = -1;
     }
@@ -210,7 +210,7 @@ bool Database::isDirty() const
            modelAusruestung->isDirty() |
            modelGeraete->isDirty() |
            modelWasser->isDirty() |
-           modelFlaschenlabel->isDirty() |
+           modelEtiketten->isDirty() |
            modelFlaschenlabelTags->isDirty();
 }
 
@@ -233,7 +233,7 @@ void Database::select()
     modelNachgaerverlauf->select();
     modelBewertungen->select();
     modelAnhang->select();
-    modelFlaschenlabel->select();
+    modelEtiketten->select();
     modelFlaschenlabelTags->select();
     modelSud->select();
 }
@@ -331,9 +331,9 @@ bool Database::save()
         mLastError = modelAnhang->lastError();
         ret = false;
     }
-    if (!modelFlaschenlabel->submitAll())
+    if (!modelEtiketten->submitAll())
     {
-        mLastError = modelFlaschenlabel->lastError();
+        mLastError = modelEtiketten->lastError();
         ret = false;
     }
     if (!modelFlaschenlabelTags->submitAll())
@@ -368,7 +368,7 @@ void Database::discard()
     modelNachgaerverlauf->revertAll();
     modelBewertungen->revertAll();
     modelAnhang->revertAll();
-    modelFlaschenlabel->revertAll();
+    modelEtiketten->revertAll();
     modelFlaschenlabelTags->revertAll();
     modelSud->revertAll();
 }

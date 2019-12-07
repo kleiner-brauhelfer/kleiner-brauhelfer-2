@@ -18,8 +18,6 @@ WdgMalzGabe::WdgMalzGabe(int index, QWidget *parent) :
     ui->btnKorrektur->setPalette(gSettings->paletteErrorButton);
     ui->btnKorrektur->setVisible(false);
 
-    ui->tbMenge->setErrorOnLimit(true);
-
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -129,8 +127,8 @@ void WdgMalzGabe::updateValues(bool full)
             if (model->data(i, ModelMalzschuettung::ColName).toString() == malzname)
                 benoetigt += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
         }
-        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
-        ui->tbMengeProzent->setError( ui->tbMengeProzent->value() == 0.0);
+        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
+        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
 
         int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMaxProzent).toInt();
         if (ui->tbMengeProzent->value() > max)
@@ -142,7 +140,19 @@ void WdgMalzGabe::updateValues(bool full)
         {
             ui->lblWarnAnteil->setVisible(false);
         }
-        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
+
+        if (mIndex == 0 && bh->sud()->modelMalzschuettung()->rowCount() == 1)
+        {
+            ui->tbMenge->setReadOnly(true);
+            ui->tbMengeProzent->setReadOnly(true);
+            ui->btnAufbrauchen->setVisible(false);
+        }
+        else
+        {
+            ui->tbMenge->setReadOnly(false);
+            ui->tbMengeProzent->setReadOnly(false);
+            ui->btnAufbrauchen->setVisible(abs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+        }
     }
 }
 
@@ -186,7 +196,7 @@ void WdgMalzGabe::setFehlProzent(double value)
             else if (value < -p)
                 value = -p;
         }
-        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 1) + " %";
+        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
         ui->btnKorrektur->setText(text);
         ui->btnKorrektur->setProperty("toadd", value);
         ui->btnKorrektur->setVisible(value != 0.0);

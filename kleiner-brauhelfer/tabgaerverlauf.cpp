@@ -82,12 +82,19 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
+    col = ModelSchnellgaerverlauf::ColsEVG;
+    model->setHeaderData(col, Qt::Horizontal, tr("sEVG [%]"));
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 4);
+
     col = ModelSchnellgaerverlauf::ColtEVG;
     model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
+    header->moveSection(header->visualIndex(col), 5);
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -129,12 +136,19 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
+    col = ModelHauptgaerverlauf::ColsEVG;
+    model->setHeaderData(col, Qt::Horizontal, tr("sEVG [%]"));
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 4);
+
     col = ModelHauptgaerverlauf::ColtEVG;
     model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
+    header->moveSection(header->visualIndex(col), 5);
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));

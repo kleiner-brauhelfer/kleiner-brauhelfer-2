@@ -42,6 +42,7 @@ private slots:
     void on_tbWuerzemengeAnstellenTotal_valueChanged(double value);
     void on_btnWuerzemengeAnstellenTotal_clicked();
     void on_tbSpeiseSRE_valueChanged(double);
+    void on_tbSpeiseT_valueChanged(double);
     void on_btnSpeisemengeNoetig_clicked();
     void on_tbSpeisemenge_valueChanged(double value);
     void on_tbWuerzemengeAnstellen_valueChanged(double value);

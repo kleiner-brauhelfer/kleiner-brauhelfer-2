@@ -151,7 +151,7 @@ void WdgMalzGabe::updateValues(bool full)
         {
             ui->tbMenge->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
-            ui->btnAufbrauchen->setVisible(abs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+            ui->btnAufbrauchen->setVisible(fabs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }
     }
 }

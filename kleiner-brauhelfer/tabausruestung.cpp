@@ -58,11 +58,18 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
+    table = ui->tableViewGeraete;
+    header = table->horizontalHeader();
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelGeraete());
     model->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
-    ui->listViewGeraete->setModel(model);
-    ui->listViewGeraete->setModelColumn(ModelGeraete::ColBezeichnung);
+    table->setModel(model);
+    table->setModel(model);
+    for (int col = 0; col < model->columnCount(); ++col)
+        table->setColumnHidden(col, true);
+    col = ModelGeraete::ColBezeichnung;
+    table->setColumnHidden(col, false);
+    header->setStretchLastSection(true);
 
     table = ui->tableViewSude;
     header = table->horizontalHeader();
@@ -175,7 +182,7 @@ void TabAusruestung::keyPressEvent(QKeyEvent* event)
             break;
         }
     }
-    else if (ui->listViewGeraete->hasFocus())
+    else if (ui->tableViewGeraete->hasFocus())
     {
         switch (event->key())
         {
@@ -220,7 +227,7 @@ void TabAusruestung::anlage_selectionChanged()
         regExpId = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
         regExpId2 = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
     }
-    static_cast<QSortFilterProxyModel*>(ui->listViewGeraete->model())->setFilterRegExp(regExpId2);
+    static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegExp(regExpId2);
     static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegExp(regExpId);
     ui->sliderAusbeuteSude->setMaximum(9999);
     ui->sliderAusbeuteSude->setValue(9999);
@@ -268,30 +275,30 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     {
         QMap<int, QVariant> values({{ModelGeraete::ColAusruestungAnlagenID, data(ModelAusruestung::ColID)},
                                     {ModelGeraete::ColBezeichnung, tr("Neues Gerät")}});
-        ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
+        ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewGeraete->model());
         int row = model->append(values);
         if (row >= 0)
         {
             const QModelIndex index = model->index(row, ModelGeraete::ColBezeichnung);
-            ui->listViewGeraete->setCurrentIndex(index);
-            ui->listViewGeraete->scrollTo(ui->listViewGeraete->currentIndex());
-            ui->listViewGeraete->edit(ui->listViewGeraete->currentIndex());
+            ui->tableViewGeraete->setCurrentIndex(index);
+            ui->tableViewGeraete->scrollTo(ui->tableViewGeraete->currentIndex());
+            ui->tableViewGeraete->edit(ui->tableViewGeraete->currentIndex());
         }
     }
 }
 
 void TabAusruestung::on_btnGeraetLoeschen_clicked()
 {
-    QModelIndexList indices = ui->listViewGeraete->selectionModel()->selectedIndexes();
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewGeraete->model());
+    QModelIndexList indices = ui->tableViewGeraete->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
     {
-        QString name = index.data().toString();
+        QString name = model->data(index.row(), ModelGeraete::ColBezeichnung).toString();
         int ret = QMessageBox::question(this, tr("Gerät löschen?"),
                                         tr("Soll das Gerät \"%1\" gelöscht werden?").arg(name));
         if (ret == QMessageBox::Yes)
         {
-            ProxyModel *model = static_cast<ProxyModel*>(ui->listViewGeraete->model());
             int row = model->getRowWithValue(ModelGeraete::ColBezeichnung, name);
             model->removeRow(row);
         }

@@ -279,11 +279,20 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             if (model->data(i, ModelWeitereZutatenGaben::ColName).toString() == name)
                 benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
+        if (typ == EWZ_Typ_Hopfen)
+        {
+            model = bh->sud()->modelHopfengaben();
+            for (int i = 0; i < model->rowCount(); ++i)
+            {
+                if (model->data(i, ModelHopfengaben::ColName).toString() == name)
+                    benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+            }
+        }
         if (einheit == EWZ_Einheit_Kg)
             benoetigt /= 1000;
         else if (einheit == EWZ_Einheit_mg)
             benoetigt *= 1000;
-        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (status)
@@ -337,7 +346,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->cbZutat->setEnabled(false);
             break;
         }
-        ui->btnAufbrauchen->setVisible(ui->tbMengeTotal->value() != ui->tbVorhanden->value());
+        ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
     }
 
     if (gSettings->ForceEnabled)

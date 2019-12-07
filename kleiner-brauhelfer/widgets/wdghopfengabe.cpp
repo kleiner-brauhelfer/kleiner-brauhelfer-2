@@ -176,7 +176,14 @@ void WdgHopfenGabe::updateValues(bool full)
             if (model->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
                 benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toInt();
         }
-        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+        model = bh->sud()->modelWeitereZutatenGaben();
+        for (int i = 0; i < model->rowCount(); ++i)
+        {
+            if (model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen &&
+                model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
+                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
+        }
+        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
 
@@ -198,7 +205,21 @@ void WdgHopfenGabe::updateValues(bool full)
             ui->lblAnteilProzent->setVisible(false);
             ui->lblMengeProzent->setVisible(true);
         }
-        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
+
+        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1)
+        {
+            ui->tbMenge->setReadOnly(true);
+            ui->tbMengeProzent->setReadOnly(true);
+            ui->tbAnteilProzent->setReadOnly(true);
+            ui->btnAufbrauchen->setVisible(false);
+        }
+        else
+        {
+            ui->tbMenge->setReadOnly(false);
+            ui->tbMengeProzent->setReadOnly(false);
+            ui->tbAnteilProzent->setReadOnly(false);
+            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+        }
     }
 }
 
@@ -242,7 +263,7 @@ void WdgHopfenGabe::setFehlProzent(double value)
             else if (value < -p)
                 value = -p;
         }
-        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 1) + " %";
+        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
         ui->btnMengeKorrektur->setText(text);
         ui->btnMengeKorrektur->setProperty("toadd", value);
         ui->btnAnteilKorrektur->setText(text);

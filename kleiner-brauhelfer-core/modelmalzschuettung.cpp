@@ -41,16 +41,8 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &val
     }
     case Colerg_Menge:
     {
-        double fVal = value.toDouble();
-        if (fVal < 0.0)
-            fVal = 0.0;
-        if (QSqlTableModel::setData(idx, fVal))
-        {
-            double total = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::Colerg_S_Gesamt).toDouble();
-            QSqlTableModel::setData(index(idx.row(), ColProzent), fVal * 100 / total);
-            return true;
-        }
-        return false;
+        double total = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::Colerg_S_Gesamt).toDouble();
+        return setData(idx.row(), ColProzent, value.toDouble() * 100 / total);
     }
     default:
         return false;

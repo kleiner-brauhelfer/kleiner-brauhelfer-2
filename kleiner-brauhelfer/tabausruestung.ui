@@ -100,10 +100,19 @@
          </widget>
         </item>
         <item>
-         <widget class="QListView" name="listViewGeraete">
+         <widget class="QTableView" name="tableViewGeraete">
           <property name="alternatingRowColors">
            <bool>true</bool>
           </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
          </widget>
         </item>
         <item>
@@ -171,9 +180,6 @@
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
-          <property name="wordWrap">
-           <bool>false</bool>
-          </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
@@ -196,7 +202,7 @@
           <x>0</x>
           <y>0</y>
           <width>647</width>
-          <height>660</height>
+          <height>662</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1372,14 +1378,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBox</class>
@@ -1391,11 +1397,10 @@
   <tabstop>tableViewAnlagen</tabstop>
   <tabstop>btnNeueAnlage</tabstop>
   <tabstop>btnAnlageLoeschen</tabstop>
-  <tabstop>listViewGeraete</tabstop>
+  <tabstop>tableViewGeraete</tabstop>
   <tabstop>btnNeuesGeraet</tabstop>
   <tabstop>btnGeraetLoeschen</tabstop>
   <tabstop>tableViewSude</tabstop>
-  <tabstop>scrollArea</tabstop>
   <tabstop>tbAusbeute</tabstop>
   <tabstop>btnAusbeuteMittel</tabstop>
   <tabstop>tbAusbeuteMittel</tabstop>
@@ -1419,6 +1424,7 @@
   <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
   <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
   <tabstop>tbHelp</tabstop>
+  <tabstop>scrollArea</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

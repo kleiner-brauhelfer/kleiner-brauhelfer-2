@@ -51,8 +51,10 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.0.0 (in Entwicklung)
 - Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert
 - Neu: Ressourcen in Unterverzeichnisse verschoben
+- Neu: Gärverlauf zeiget auch scheinbarer Endvergärungsgrad
 - Neu: Reiter Etiketten überarbeitet
 - Neu: Neue Spalte "Bemerkung" für Einträge in Gärverläufen
+- Fix: Berechnung der Karbonisierung (Speise & Zucker) nach [MMuM](https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsspeiserechner)
 - Fix: Sortierung der Rohstoffe nach Zahlen
 
 ### Version 2.0.0beta5 (29.11.2019)

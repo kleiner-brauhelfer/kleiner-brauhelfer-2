@@ -1479,7 +1479,7 @@
              <item>
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>Speisemenge nötig ca.</string>
+                <string>Speisemenge nötig</string>
                </property>
               </widget>
              </item>
@@ -1507,7 +1507,7 @@
               <widget class="DoubleSpinBox" name="tbSpeiseSRE">
                <property name="minimumSize">
                 <size>
-                 <width>60</width>
+                 <width>40</width>
                  <height>0</height>
                 </size>
                </property>
@@ -1536,14 +1536,53 @@
              </item>
              <item>
               <widget class="QLabel" name="label_52">
+               <property name="text">
+                <string>°P</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_29">
+               <property name="text">
+                <string>T</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="DoubleSpinBox" name="tbSpeiseT">
                <property name="minimumSize">
                 <size>
-                 <width>30</width>
+                 <width>40</width>
                  <height>0</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>Geschätztes scheinbares Restextrakt für die Schätzung der benötigten Speisemenge.</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="decimals">
+                <number>1</number>
+               </property>
+               <property name="minimum">
+                <double>1.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>99.000000000000000</double>
+               </property>
+               <property name="singleStep">
+                <double>0.100000000000000</double>
+               </property>
+               <property name="value">
+                <double>18.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_53">
                <property name="text">
-                <string>°P</string>
+                <string>°C</string>
                </property>
               </widget>
              </item>
@@ -1731,7 +1770,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte Speisemenge eingetragen.&lt;/p&gt;&lt;p&gt;Den Wert verwendet der Kleine Brauhelfer im Tab Abfülldaten für weitere Berechnungen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte Speisemenge eingetragen.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die nach dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speise ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1941,7 +1980,7 @@
               <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
-              <number>1</number>
+              <number>2</number>
              </property>
              <property name="minimum">
               <double>-999.000000000000000</double>

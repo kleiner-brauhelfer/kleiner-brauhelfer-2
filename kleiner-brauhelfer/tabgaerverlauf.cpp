@@ -82,19 +82,26 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
+    col = ModelSchnellgaerverlauf::ColsEVG;
+    model->setHeaderData(col, Qt::Horizontal, tr("sEVG [%]"));
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 4);
+
     col = ModelSchnellgaerverlauf::ColtEVG;
     model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
+    header->moveSection(header->visualIndex(col), 5);
 
     col = ModelSchnellgaerverlauf::ColBemerkung;
     model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
     table->setColumnHidden(col, false);
     header->resizeSection(col, 200);
     header->setStretchLastSection(true);
-    header->moveSection(header->visualIndex(col), 5);
+    header->moveSection(header->visualIndex(col), 6);
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -136,19 +143,26 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
+    col = ModelHauptgaerverlauf::ColsEVG;
+    model->setHeaderData(col, Qt::Horizontal, tr("sEVG [%]"));
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 4);
+
     col = ModelHauptgaerverlauf::ColtEVG;
     model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
+    header->moveSection(header->visualIndex(col), 5);
 
     col = ModelSchnellgaerverlauf::ColBemerkung;
     model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
     table->setColumnHidden(col, false);
     header->resizeSection(col, 200);
     header->setStretchLastSection(true);
-    header->moveSection(header->visualIndex(col), 5);
+    header->moveSection(header->visualIndex(col), 6);
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));

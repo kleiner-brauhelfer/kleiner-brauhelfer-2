@@ -692,7 +692,7 @@ void TabRezept::updateMalzGaben()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.1)
+        if (fabs(p) < 0.01)
             p = 0.0;
         for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
         {
@@ -778,7 +778,7 @@ void TabRezept::updateHopfenGaben()
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.1)
+        if (fabs(p) < 0.01)
             p = 0.0;
         for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
         {

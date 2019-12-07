@@ -164,7 +164,7 @@ void TabBraudaten::updateValues()
                              bh->sud()->getSWAnstellen(),
                              ui->tbSpeiseSRE->value(),
                              ui->tbSpeiseSRE->value(),
-                             20.0);
+                             ui->tbSpeiseT->value());
     ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
     ui->btnSpeisemengeNoetig->setVisible(status == Sud_Status_Rezept && ui->tbSpeisemenge->value() != ui->tbSpeisemengeNoetig->value());
 
@@ -317,6 +317,12 @@ void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)
 {
     if (ui->tbSpeiseSRE->hasFocus())
+        updateValues();
+}
+
+void TabBraudaten::on_tbSpeiseT_valueChanged(double)
+{
+    if (ui->tbSpeiseT->hasFocus())
         updateValues();
 }
 

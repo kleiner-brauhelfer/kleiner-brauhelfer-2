@@ -211,22 +211,36 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         if (data(idx.row(), ColSpunden).toBool())
             return 0.0;
         double speiseVerfuegbar = data(idx.row(), ColSpeisemenge).toDouble() * 1000;
-        double speise = data(idx.row(), ColSpeiseNoetig).toDouble();
-        if (speise > speiseVerfuegbar)
-            speise = speiseVerfuegbar;
-        return speise;
+        double speiseNoetig = data(idx.row(), ColSpeiseNoetig).toDouble();
+        if (speiseNoetig == std::numeric_limits<double>::infinity())
+            return speiseVerfuegbar;
+        if (speiseNoetig > speiseVerfuegbar)
+            speiseNoetig = speiseVerfuegbar;
+        return speiseNoetig;
     }
     case ColZuckerAnteil:
     {
         if (data(idx.row(), ColSpunden).toBool())
             return 0.0;
-        double speiseVerfuegbar = data(idx.row(), ColSpeisemenge).toDouble() * 1000;
+        double co2Soll = data(idx.row(), ColCO2).toDouble();
         double sw = data(idx.row(), ColSWIst).toDouble();
-        double sre = data(idx.row(), ColSREIst).toDouble();
-        double speise = data(idx.row(), ColSpeiseNoetig).toDouble() - speiseVerfuegbar;
-        if (speise <= 0.0)
-            return 0.0;
-        return BierCalc::speiseToZucker(sw, sre, speise);
+        double sreJungbier = data(idx.row(), ColSWJungbier).toDouble();
+        double T = data(idx.row(), ColTemperaturJungbier).toDouble();
+        double sreSchnellgaerprobe = data(idx.row(), ColSREIst).toDouble();
+        double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
+        double zucker = BierCalc::zucker(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) * jungbiermenge;
+        double speiseNoetig = data(idx.row(), ColSpeiseNoetig).toDouble();
+        if (speiseNoetig == std::numeric_limits<double>::infinity())
+        {
+            return zucker;
+        }
+        else
+        {
+            double speiseVerfuegbar = data(idx.row(), ColSpeisemenge).toDouble();
+            double potSpeise = BierCalc::wuerzeCO2Potential(sw, sreSchnellgaerprobe);
+            double potZucker = BierCalc::zuckerCO2Potential();
+            return zucker - speiseVerfuegbar * potSpeise / potZucker;
+        }
     }
     case ColWoche:
     {
@@ -610,11 +624,8 @@ void ModelSud::update(int row)
         sw = data(row, ColSWAnstellen).toDouble() * hgf - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
         menge = data(row, ColWuerzemengeAnstellenTotal).toDouble() / hgf;
         setData(row, Colerg_EffektiveAusbeute, BierCalc::sudhausausbeute(sw , menge, schuet, true));
-
-        // erg_Preis
-        updatePreis(row);
     }
-    if (status == Sud_Status_Gebraut)
+    if (status <= Sud_Status_Gebraut)
     {
         // erg_Alkohol
         double sre = data(row, ColSREIst).toDouble();

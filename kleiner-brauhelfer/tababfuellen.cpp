@@ -189,6 +189,7 @@ void TabAbfuellen::updateValues()
         ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 
+     ui->tbSw->setValue(bh->sud()->getSWIst());
     ui->tbTEVG->setValue(bh->sud()->gettEVG());
     ui->tbSEVG->setValue(bh->sud()->getsEVG());
     ui->tbAlkohol->setValue(bh->sud()->geterg_Alkohol());

@@ -51,6 +51,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.0.0 (in Entwicklung)
 - Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert
 - Neu: Ressourcen in Unterverzeichnisse verschoben
+- Fix: Berechnung der Karbonisierung (Speise & Zucker) nach [MMuM](https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsspeiserechner)
 
 ### Version 2.0.0beta5 (29.11.2019)
 - Neu: Tooltips ein- & ausschaltbar

@@ -1,10 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>data/kb_daten.sqlite</file>
-        <file>data/Etiketten/streifen_vorlage.svg</file>
-        <file>data/Etiketten/streifen_vorlage_farbig.svg</file>
-        <file>data/Etiketten/streifen_vorlage_farbig_nummeriert.svg</file>
-        <file>data/Etiketten/streifen_vorlage_nummeriert.svg</file>
+        <file>data/Etiketten/halsspitz.svg</file>
+        <file>data/Etiketten/halsspitz_farbig.svg</file>
+        <file>data/Etiketten/streifen_simpel.svg</file>
+        <file>data/Etiketten/streifen_simpel_farbig.svg</file>
+        <file>data/Etiketten/streifen_simpel_farbig_nummeriert.svg</file>
+        <file>data/Etiketten/streifen_simpel_nummeriert.svg</file>
         <file>data/Rohstoffe/Hefe.csv</file>
         <file>data/Rohstoffe/Hopfen.csv</file>
         <file>data/Rohstoffe/Malz.csv</file>

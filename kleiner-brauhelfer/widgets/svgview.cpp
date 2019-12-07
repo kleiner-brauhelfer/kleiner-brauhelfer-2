@@ -39,9 +39,11 @@ void SvgView::drawBackground(QPainter *p, const QRectF &)
     p->restore();
 }
 
-QSize SvgView::svgSize() const
+QRectF SvgView::viewBoxF() const
 {
-    return mSvgItem ? mSvgItem->boundingRect().size().toSize() : QSize();
+    if (mSvgItem && mSvgItem->renderer())
+        return mSvgItem->renderer()->viewBoxF();
+    return QRectF();
 }
 
 void SvgView::clear()

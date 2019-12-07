@@ -138,18 +138,18 @@ void TabEtikette::updateSvg()
         {
             QString svg = generateSvg(ui->tbTemplate->toPlainText());
             QTemporaryFile file_svg;
-            if (file_svg.open())
-                file_svg.write(svg.toUtf8());
-            ui->viewSvg->openFile(file_svg.fileName());
+            file_svg.open();
+            file_svg.write(svg.toUtf8());
             file_svg.close();
+            ui->viewSvg->openFile(file_svg.fileName());
         }
         else
         {
             QTemporaryFile file_template;
             file_template.open();
             file_template.write(ui->tbTemplate->toPlainText().toUtf8());
-            ui->viewSvg->openFile(file_template.fileName());
             file_template.close();
+            ui->viewSvg->openFile(file_template.fileName());
         }
     }
     else
@@ -164,10 +164,10 @@ void TabEtikette::updateSvg()
 
             QString svg = generateSvg(svg_template);
             QTemporaryFile file_svg;
-            if (file_svg.open())
-                file_svg.write(svg.toUtf8());
-            ui->viewSvg->openFile(file_svg.fileName());
+            file_svg.open();
+            file_svg.write(svg.toUtf8());
             file_svg.close();
+            ui->viewSvg->openFile(file_svg.fileName());
         }
         else
         {
@@ -228,6 +228,7 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     if (checkSave())
         return;
     ui->btnSaveTemplate->setVisible(false);
+
     if (bh->sud()->modelEtiketten()->rowCount() == 0)
     {
         QMap<int, QVariant> values({{ModelEtiketten::ColSudID, bh->sud()->id()},
@@ -238,10 +239,15 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     {
         setData(ModelEtiketten::ColPfad, ui->cbAuswahl->itemData(index).toString());
     }
+
     updateValues();
     updateTemplateFilePath();
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateSvg();
+
+    QRectF rect = ui->viewSvg->viewBoxF();
+    setData(ModelEtiketten::ColBreite, static_cast<int>(rect.width()));
+    setData(ModelEtiketten::ColHoehe, static_cast<int>(rect.height()));
 }
 
 void TabEtikette::on_cbTagsErsetzen_stateChanged()
@@ -330,10 +336,10 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
         Mustache::QtVariantContext context(mTemplateTags);
         QString svg = renderer.render(svg_template, &context);
         QTemporaryFile file_svg;
-        if (file_svg.open())
-            file_svg.write(svg.toUtf8());
-        svgView.openFile(file_svg.fileName());
+        file_svg.open();
+        file_svg.write(svg.toUtf8());
         file_svg.close();
+        svgView.openFile(file_svg.fileName());
     }
 
     int x = 0, y = 0;
@@ -371,10 +377,10 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
             Mustache::QtVariantContext context(mTemplateTags);
             QString svg = renderer.render(svg_template, &context);
             QTemporaryFile file_svg;
-            if (file_svg.open())
-                file_svg.write(svg.toUtf8());
-            svgView.openFile(file_svg.fileName());
+            file_svg.open();
+            file_svg.write(svg.toUtf8());
             file_svg.close();
+            svgView.openFile(file_svg.fileName());
         }
 
         if (ui->cbUseImagePainter->isChecked())
@@ -461,8 +467,8 @@ void TabEtikette::on_tbLabelBreite_valueChanged(int value)
         setData(ModelEtiketten::ColBreite, value);
         if (ui->cbSeitenverhaeltnis->isChecked())
         {
-            QSize size = ui->viewSvg->svgSize();
-            double f = size.height() / static_cast<double>(size.width());
+            QRectF rect = ui->viewSvg->viewBoxF();
+            double f = rect.height() / rect.width();
             setData(ModelEtiketten::ColHoehe, static_cast<int>(f * value));
         }
     }
@@ -475,8 +481,8 @@ void TabEtikette::on_tbLabelHoehe_valueChanged(int value)
         setData(ModelEtiketten::ColHoehe, value);
         if (ui->cbSeitenverhaeltnis->isChecked())
         {
-            QSize size = ui->viewSvg->svgSize();
-            double f = size.width() / static_cast<double>(size.height());
+            QRectF rect = ui->viewSvg->viewBoxF();
+            double f = rect.width() / rect.height();
             setData(ModelEtiketten::ColBreite, static_cast<int>(f * value));
         }
     }
@@ -486,17 +492,17 @@ void TabEtikette::on_cbSeitenverhaeltnis_clicked(bool checked)
 {
     if (checked)
     {
-        QSize size = ui->viewSvg->svgSize();
-        double f = size.height() / static_cast<double>(size.width());
+        QRectF rect = ui->viewSvg->viewBoxF();
+        double f = rect.height() / rect.width();
         setData(ModelEtiketten::ColHoehe, static_cast<int>(f * ui->tbLabelBreite->value()));
     }
 }
 
 void TabEtikette::on_btnGroesseAusSvg_clicked()
 {
-    QSize sizeSVG = ui->viewSvg->svgSize();
-    setData(ModelEtiketten::ColBreite, sizeSVG.width());
-    setData(ModelEtiketten::ColHoehe, sizeSVG.height());
+    QRectF rect = ui->viewSvg->viewBoxF();
+    setData(ModelEtiketten::ColBreite, static_cast<int>(rect.width()));
+    setData(ModelEtiketten::ColHoehe, static_cast<int>(rect.height()));
 }
 
 void TabEtikette::on_tbAbstandHor_valueChanged(int value)

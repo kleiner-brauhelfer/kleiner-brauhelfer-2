@@ -20,7 +20,7 @@ public:
     void clear();
     bool openFile(const QString &fileName);
 
-    QSize svgSize() const;
+    QRectF viewBoxF() const;
     QSvgRenderer *renderer() const;
 
 public slots:

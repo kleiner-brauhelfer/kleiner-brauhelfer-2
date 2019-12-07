@@ -18,7 +18,8 @@ public:
     explicit SvgView(QWidget *parent = nullptr);
 
     void clear();
-    bool openFile(const QString &fileName);
+    bool load(const QString &filename);
+    bool load(const QByteArray &contents);
 
     QRectF viewBoxF() const;
     QSvgRenderer *renderer() const;

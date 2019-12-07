@@ -3,7 +3,6 @@
 #include <QMessageBox>
 #include <QDirIterator>
 #include <QFile>
-#include <QTemporaryFile>
 #include <QPrintPreviewDialog>
 #include <QFileDialog>
 #include <QPrinter>
@@ -132,24 +131,19 @@ void TabEtikette::updateSvg()
         return;
     }
 
+    QString currentPath = QDir::currentPath();
+    QDir::setCurrent(QFileInfo(mTemplateFilePath).absolutePath());
+
     if (ui->cbEditMode->isChecked())
     {
         if (ui->cbTagsErsetzen->isChecked())
         {
             QString svg = generateSvg(ui->tbTemplate->toPlainText());
-            QTemporaryFile file_svg;
-            file_svg.open();
-            file_svg.write(svg.toUtf8());
-            file_svg.close();
-            ui->viewSvg->openFile(file_svg.fileName());
+            ui->viewSvg->load(svg.toUtf8());
         }
         else
         {
-            QTemporaryFile file_template;
-            file_template.open();
-            file_template.write(ui->tbTemplate->toPlainText().toUtf8());
-            file_template.close();
-            ui->viewSvg->openFile(file_template.fileName());
+            ui->viewSvg->load(ui->tbTemplate->toPlainText().toUtf8());
         }
     }
     else
@@ -157,24 +151,20 @@ void TabEtikette::updateSvg()
         if (ui->cbTagsErsetzen->isChecked())
         {
             QFile file(mTemplateFilePath);
-            if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-                return;
+            file.open(QIODevice::ReadOnly | QIODevice::Text);
             QString svg_template = file.readAll();
             file.close();
-
             QString svg = generateSvg(svg_template);
-            QTemporaryFile file_svg;
-            file_svg.open();
-            file_svg.write(svg.toUtf8());
-            file_svg.close();
-            ui->viewSvg->openFile(file_svg.fileName());
+            ui->viewSvg->load(svg.toUtf8());
         }
         else
         {
-            ui->viewSvg->openFile(mTemplateFilePath);
+            ui->viewSvg->load(mTemplateFilePath);
         }
     }
     ui->viewSvg->setViewOutline(false);
+
+    QDir::setCurrent(currentPath);
 }
 
 void TabEtikette::updateTags()
@@ -328,6 +318,9 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     QPainter imagePainter(&image);
     image.fill(Qt::transparent);
 
+    QString currentPath = QDir::currentPath();
+    QDir::setCurrent(QFileInfo(mTemplateFilePath).absolutePath());
+
     Mustache::Renderer renderer;
     mTemplateTags["N"] = ui->tbAnzahl->value();
     bool constSvg = !svg_template.contains("{{n}}");
@@ -335,11 +328,7 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     {
         Mustache::QtVariantContext context(mTemplateTags);
         QString svg = renderer.render(svg_template, &context);
-        QTemporaryFile file_svg;
-        file_svg.open();
-        file_svg.write(svg.toUtf8());
-        file_svg.close();
-        svgView.openFile(file_svg.fileName());
+        svgView.load(svg.toUtf8());
     }
 
     int x = 0, y = 0;
@@ -376,11 +365,7 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
             mTemplateTags["n"] = i + 1;
             Mustache::QtVariantContext context(mTemplateTags);
             QString svg = renderer.render(svg_template, &context);
-            QTemporaryFile file_svg;
-            file_svg.open();
-            file_svg.write(svg.toUtf8());
-            file_svg.close();
-            svgView.openFile(file_svg.fileName());
+            svgView.load(svg.toUtf8());
         }
 
         if (ui->cbUseImagePainter->isChecked())
@@ -399,6 +384,8 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
         x += labelWidth + labelDistHor;
     }
     painter.end();
+
+    QDir::setCurrent(currentPath);
 
     mTemplateTags.remove("N");
     mTemplateTags.remove("n");

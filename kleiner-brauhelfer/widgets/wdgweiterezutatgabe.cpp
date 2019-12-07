@@ -346,7 +346,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->cbZutat->setEnabled(false);
             break;
         }
-        ui->btnAufbrauchen->setVisible(fabs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
+        ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
     }
 
     if (gSettings->ForceEnabled)

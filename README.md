@@ -1,10 +1,8 @@
 # kleiner-brauhelfer v2
 Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und Verwalten von Biersuden. Die Version 2 ist die Weiterentwicklung vom [kleinen-brauhelfer](http://github.com/Gremmel/kleiner-brauhelfer).
 
-**Homepage:**
-http://www.joerum.de/kleiner-brauhelfer/
-
 **Diskussionsthread:**
+
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version

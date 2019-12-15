@@ -241,6 +241,9 @@
    <property name="text">
     <string>Beenden</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
    </property>

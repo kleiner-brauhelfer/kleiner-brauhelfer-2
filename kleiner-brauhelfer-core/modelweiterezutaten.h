@@ -1,11 +1,12 @@
 #ifndef MODELWEITEREZUTATEN_H
 #define MODELWEITEREZUTATEN_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelWeitereZutaten : public SqlTableModel
+class LIB_EXPORT ModelWeitereZutaten : public SqlTableModel
 {
     Q_OBJECT
 
@@ -32,6 +33,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

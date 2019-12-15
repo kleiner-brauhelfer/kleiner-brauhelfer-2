@@ -1,11 +1,12 @@
 #ifndef MODELSUD_H
 #define MODELSUD_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelSud : public SqlTableModel
+class LIB_EXPORT ModelSud : public SqlTableModel
 {
     Q_OBJECT
 
@@ -101,6 +102,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

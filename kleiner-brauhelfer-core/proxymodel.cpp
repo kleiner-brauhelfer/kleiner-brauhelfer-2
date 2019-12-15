@@ -81,6 +81,25 @@ int ProxyModel::append(const QMap<int, QVariant> &values)
     return -1;
 }
 
+int ProxyModel::append(const QVariantMap &values)
+{
+    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    if (model)
+    {
+        int idx = model->append(values);
+        invalidate();
+        return mapRowFromSource(idx);
+    }
+    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    if (proxyModel)
+    {
+        int idx = proxyModel->append(values);
+        invalidate();
+        return mapRowFromSource(idx);
+    }
+    return -1;
+}
+
 int ProxyModel::mapRowToSource(int row) const
 {
     QModelIndex idx = mapToSource(index(row, 0));

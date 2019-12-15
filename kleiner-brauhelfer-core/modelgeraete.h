@@ -1,11 +1,12 @@
 #ifndef MODELGERAETE_H
 #define MODELGERAETE_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelGeraete : public SqlTableModel
+class LIB_EXPORT ModelGeraete : public SqlTableModel
 {
     Q_OBJECT
 
@@ -21,6 +22,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

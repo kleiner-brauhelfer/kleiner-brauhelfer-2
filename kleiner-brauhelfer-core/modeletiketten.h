@@ -1,11 +1,12 @@
 #ifndef MODELETIKETTEN_H
 #define MODELETIKETTEN_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelEtiketten : public SqlTableModel
+class LIB_EXPORT ModelEtiketten : public SqlTableModel
 {
     Q_OBJECT
 
@@ -30,6 +31,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

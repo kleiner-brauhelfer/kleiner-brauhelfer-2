@@ -132,6 +132,13 @@ public:
     Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
 
     /**
+     * @brief Appends a new row to the table
+     * @param values Field values
+     * @return Index of appended row
+     */
+    Q_INVOKABLE int append(const QVariantMap &values);
+	
+    /**
      * @brief Appends a new row directly to the table without calculating dependencies
      * @param values Field values
      * @return Index of appended row

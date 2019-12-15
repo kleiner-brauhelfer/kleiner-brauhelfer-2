@@ -1,11 +1,12 @@
 #ifndef MODELTAGS_H
 #define MODELTAGS_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelTags : public SqlTableModel
+class LIB_EXPORT ModelTags : public SqlTableModel
 {
     Q_OBJECT
 
@@ -23,6 +24,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

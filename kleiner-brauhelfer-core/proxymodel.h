@@ -32,6 +32,7 @@ public:
     Q_INVOKABLE bool removeRow(int arow, const QModelIndex &parent = QModelIndex());
 
     Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
+    Q_INVOKABLE int append(const QVariantMap &values);
 
     Q_INVOKABLE int mapRowToSource(int row) const;
     Q_INVOKABLE int mapRowFromSource(int row) const;

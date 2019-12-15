@@ -1,11 +1,12 @@
 #ifndef MODELHAUPTGAERVERLAUF_H
 #define MODELHAUPTGAERVERLAUF_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelHauptgaerverlauf : public SqlTableModel
+class LIB_EXPORT ModelHauptgaerverlauf : public SqlTableModel
 {
     Q_OBJECT
 
@@ -27,6 +28,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

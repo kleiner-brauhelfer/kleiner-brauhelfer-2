@@ -1,11 +1,12 @@
 #ifndef MODELMALZ_H
 #define MODELMALZ_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelMalz : public SqlTableModel
+class LIB_EXPORT ModelMalz : public SqlTableModel
 {
     Q_OBJECT
 
@@ -30,6 +31,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

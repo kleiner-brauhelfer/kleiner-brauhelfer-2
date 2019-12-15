@@ -149,6 +149,11 @@ void Brauhelfer::setDatabasePath(const QString &filePath)
     }
 }
 
+int Brauhelfer::databaseVersionSupported() const
+{
+    return supportedDatabaseVersion;
+}
+
 int Brauhelfer::databaseVersion() const
 {
     return mDb->version();

@@ -1,11 +1,12 @@
 #ifndef MODELRASTEN_H
 #define MODELRASTEN_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelRasten : public SqlTableModel
+class LIB_EXPORT ModelRasten : public SqlTableModel
 {
     Q_OBJECT
 
@@ -23,6 +24,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

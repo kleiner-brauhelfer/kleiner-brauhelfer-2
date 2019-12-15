@@ -1,11 +1,12 @@
 #ifndef MODELBEWERTUNGEN_H
 #define MODELBEWERTUNGEN_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelBewertungen : public SqlTableModel
+class LIB_EXPORT ModelBewertungen : public SqlTableModel
 {
     Q_OBJECT
 
@@ -40,6 +41,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

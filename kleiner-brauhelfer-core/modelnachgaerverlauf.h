@@ -1,12 +1,13 @@
 #ifndef MODELNACHGAERVERLAUF_H
 #define MODELNACHGAERVERLAUF_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 #include <QDateTime>
 
 class Brauhelfer;
 
-class ModelNachgaerverlauf : public SqlTableModel
+class LIB_EXPORT ModelNachgaerverlauf : public SqlTableModel
 {
     Q_OBJECT
 
@@ -26,6 +27,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

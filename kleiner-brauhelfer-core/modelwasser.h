@@ -1,11 +1,12 @@
 #ifndef MODELWASSER_H
 #define MODELWASSER_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelWasser : public SqlTableModel
+class LIB_EXPORT ModelWasser : public SqlTableModel
 {
     Q_OBJECT
 
@@ -29,6 +30,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

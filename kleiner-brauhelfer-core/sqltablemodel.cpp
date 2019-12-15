@@ -253,6 +253,18 @@ int SqlTableModel::append(const QMap<int, QVariant> &values)
     return -1;
 }
 
+int SqlTableModel::append(const QVariantMap &values)
+{
+    QMap<int, QVariant> val;
+    QVariantMap::const_iterator it = values.constBegin();
+    while (it != values.constEnd())
+    {
+        val.insert(fieldIndex(it.key()), it.value());
+        ++it;
+    }
+    return append(val);
+}
+
 int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
 {
     qInfo(loggingCategory) << "appendDirect():" << tableName();

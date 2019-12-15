@@ -38,6 +38,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(QString databasePath READ databasePath WRITE setDatabasePath NOTIFY databasePathChanged)
     Q_PROPERTY(bool readonly READ readonly WRITE setReadonly NOTIFY readonlyChanged)
     Q_PROPERTY(bool connected READ isConnectedDatabase NOTIFY connectionChanged)
+    Q_PROPERTY(int databaseVersionSupported READ databaseVersionSupported CONSTANT)
     Q_PROPERTY(int databaseVersion READ databaseVersion NOTIFY connectionChanged)
     Q_PROPERTY(bool modified READ isDirty NOTIFY modified)
 
@@ -101,6 +102,7 @@ public:
     QString databasePath() const;
     void setDatabasePath(const QString &filePath);
 
+    int databaseVersionSupported() const;
     int databaseVersion() const;
     QString lastError() const;
     bool updateDatabase();

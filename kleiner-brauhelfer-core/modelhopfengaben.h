@@ -1,11 +1,12 @@
 #ifndef MODELHOPFENGABEN_H
 #define MODELHOPFENGABEN_H
 
+#include "kleiner-brauhelfer-core_global.h"
 #include "sqltablemodel.h"
 
 class Brauhelfer;
 
-class ModelHopfengaben : public SqlTableModel
+class LIB_EXPORT ModelHopfengaben : public SqlTableModel
 {
     Q_OBJECT
 
@@ -29,6 +30,7 @@ public:
         // number of columns
         NumCols
     };
+    Q_ENUM(Column)
 
 public:
 

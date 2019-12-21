@@ -1512,7 +1512,7 @@
                 </size>
                </property>
                <property name="toolTip">
-                <string>Geschätztes scheinbares Restextrakt für die Schätzung der benötigten Speisemenge.</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erwarteter scheinbarer Restextrakt des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -1557,7 +1557,7 @@
                 </size>
                </property>
                <property name="toolTip">
-                <string>Geschätztes scheinbares Restextrakt für die Schätzung der benötigten Speisemenge.</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erwartete Temperatur des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -1581,6 +1581,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label_53">
+               <property name="minimumSize">
+                <size>
+                 <width>30</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="text">
                 <string>°C</string>
                </property>
@@ -1934,7 +1940,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektiveSudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet.&lt;/p&gt;&lt;p&gt;Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er kann  Im Tab zur Durchschnittsberechnung herangezogen werden&lt;/p&gt;&lt;p&gt;Der Wert erklärt recht gut Unterschiede, wenn ein übernommenes Rezept auf der eigenen Anlage umgesetzt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektive Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim Anstellen berechnet.&lt;/p&gt;&lt;p&gt;Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er kann im Tab Ausrüstung zur Durchschnittsberechnung herangezogen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

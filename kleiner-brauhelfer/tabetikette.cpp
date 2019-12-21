@@ -309,6 +309,8 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     int labelDistVert = static_cast<int>(ui->tbAbstandVert->value() * faktorPxPerMM);
 
     QFile file(mTemplateFilePath);
+    if (!file.exists())
+        return;
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString svg_template = file.readAll();
     file.close();
@@ -321,13 +323,13 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     QString currentPath = QDir::currentPath();
     QDir::setCurrent(QFileInfo(mTemplateFilePath).absolutePath());
 
-    Mustache::Renderer renderer;
+    Mustache::Renderer mustacheRenderer;
     mTemplateTags["N"] = ui->tbAnzahl->value();
     bool constSvg = !svg_template.contains("{{n}}");
     if (constSvg)
     {
         Mustache::QtVariantContext context(mTemplateTags);
-        QString svg = renderer.render(svg_template, &context);
+        QString svg = mustacheRenderer.render(svg_template, &context);
         svgView.load(svg.toUtf8());
     }
 
@@ -364,7 +366,7 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
         {
             mTemplateTags["n"] = i + 1;
             Mustache::QtVariantContext context(mTemplateTags);
-            QString svg = renderer.render(svg_template, &context);
+            QString svg = mustacheRenderer.render(svg_template, &context);
             svgView.load(svg.toUtf8());
         }
 
@@ -377,9 +379,6 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
         {
             svgView.renderer()->render(&painter, rect);
         }
-        painter.setPen(Qt::NoPen);
-        painter.setBrush(Qt::NoBrush);
-        painter.drawRect(rect);
 
         x += labelWidth + labelDistHor;
     }

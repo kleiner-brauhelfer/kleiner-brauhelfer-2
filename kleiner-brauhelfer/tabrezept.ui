@@ -71,7 +71,7 @@
            <item row="7" column="0">
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Hauptguss Faktor</string>
+              <string>Hauptgussfaktor</string>
              </property>
             </widget>
            </item>
@@ -158,7 +158,7 @@
                 </size>
                </property>
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Faktor für den Hauptguss&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; des Kleinen Brauhelfers basiert auf der Bierfarbe für eine optimale Maischearbeit. Der wErt kann aber rechts ignoriert werden. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick, wird das Malz schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -553,7 +553,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt den Wert, um im Tab Sudauswahl das Datum des fertigen Bieres anzuzeigen.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; oder falls nichts eingetragen ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -569,7 +569,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünchter Faktor &lt;/span&gt;für den Hauptguss eingestellt. Der Hauptgussafaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; des Kleinen Brauhelfers in Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Der Wert kann indes ignoriert werden. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick, wird das Malz schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.Gewünschter Faktor für den Hauptguss&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünchter Faktor &lt;/span&gt;für den Hauptguss eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.Gewünschter Faktor für den Hauptguss&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -668,6 +668,53 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkungen&lt;/span&gt; aller Art.&lt;/p&gt;&lt;p&gt;Üblicherweise wird ein derartiges Feld in einem Rezept gerne für spezielle Wasserprofile und besondere Prozessschritte genutzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabTags">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; können Begriffe für Sortierregeln angelegt werden, um bei späteren Suchen schnell ans Ziel zu kommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <attribute name="title">
+            <string>Tags</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="TableView" name="tableTags">
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QPushButton" name="btnTagNeu">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Neuer Eintrag</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnTagLoeschen">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Eintrag löschen</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -776,53 +823,6 @@
                <string>Anhang hinzufügen</string>
               </property>
              </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tabTags">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; können Begriffe für Sortierregeln angelegt werden, um bei späteren Suchen schnell ans Ziel zu kommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <attribute name="title">
-            <string>Tags</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <property name="spacing">
-             <number>4</number>
-            </property>
-            <item>
-             <widget class="TableView" name="tableTags">
-              <property name="alternatingRowColors">
-               <bool>true</bool>
-              </property>
-              <attribute name="verticalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
-               <widget class="QPushButton" name="btnTagNeu">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string>Neuer Eintrag</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btnTagLoeschen">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string>Eintrag löschen</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </item>
            </layout>
           </widget>

@@ -12,7 +12,6 @@ DlgAbout::DlgAbout(QWidget *parent) :
     ui->lblQtVersion->setText("Qt " + QString(QT_VERSION_STR));
     ui->lblEntwickler->setText(ENTWICKLER);
     ui->lblHomepage->setText(generateLink(URL_HOMEPAGE));
-    ui->lblSourceCode->setText(generateLink(URL_SOURCEN));
     ui->lblForum->setText(generateLink(URL_FORUM, URL_FORUM_NAME));
     adjustSize();
 }

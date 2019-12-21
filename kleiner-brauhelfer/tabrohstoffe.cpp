@@ -177,7 +177,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHopfen::ColTyp;
     model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("Aroma"), tr("Bitter"), tr("Universal")}, table);
+    comboBox = new ComboBoxDelegate({"", tr("aroma"), tr("bitter"), tr("universal")}, table);
     comboBox->setColors(gSettings->HopfenTypBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
@@ -257,7 +257,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHefe::ColTypOGUG;
     model->setHeaderData(col, Qt::Horizontal, tr("OG/UG"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("OG"), tr("UG")}, table);
+    comboBox = new ComboBoxDelegate({"", tr("obergärig"), tr("untergärig")}, table);
     comboBox->setColors(gSettings->HefeTypOgUgBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
@@ -266,7 +266,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHefe::ColTypTrFl;
     model->setHeaderData(col, Qt::Horizontal, tr("Trocken/Flüssig"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("Trocken"), tr("Flüssig")}, table);
+    comboBox = new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, table);
     comboBox->setColors(gSettings->HefeTypTrFlBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
@@ -288,7 +288,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHefe::ColSED;
     model->setHeaderData(col, Qt::Horizontal, tr("Sedimentation"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("Hoch"), tr("Mittel"), tr("Niedrig")}, table);
+    comboBox = new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, table);
     comboBox->setColors(gSettings->HefeSedBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);

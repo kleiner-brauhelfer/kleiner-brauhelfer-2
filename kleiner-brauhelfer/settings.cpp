@@ -169,6 +169,9 @@ void Settings::initTheme()
     paletteErrorButton = palette;
     paletteErrorButton.setColor(QPalette::Button, ErrorBase);
 
+    paletteErrorLabel = palette;
+    paletteErrorLabel.setColor(QPalette::WindowText, ErrorText);
+
     endGroup();
 }
 

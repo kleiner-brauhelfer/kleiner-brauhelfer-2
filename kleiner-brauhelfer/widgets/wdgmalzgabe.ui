@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>516</width>
-    <height>73</height>
+    <height>90</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -214,31 +214,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lblWarnAnteil">
-          <property name="minimumSize">
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Warnhinweis&lt;/span&gt; erscheint, um auf eine mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Störung der Maischearbeit&lt;/span&gt; hinzuweisen.&lt;/p&gt;&lt;p&gt;Dies kann besonders bei Rohstoffen mit vielen unvergärbaren Zuckern wie Karamell- oder Röstmalzen der Fall sein. Diese senken den pH-Wert der Würze deutlich stärker als Basismalze ab. Ohne entsprechendes Fachwissen empfiehlt es sich den von den Herstellern empfohlenen Schüttungsanteil einzuhalten.&lt;/p&gt;&lt;p&gt;Bei Detailfragen helfen die Fachforen oder die Hersteller weiter.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="../images.qrc">:/images/warning.svg</pixmap>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="horizontalSpacer">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -323,6 +298,9 @@
          </widget>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblWarnung"/>
       </item>
      </layout>
     </widget>

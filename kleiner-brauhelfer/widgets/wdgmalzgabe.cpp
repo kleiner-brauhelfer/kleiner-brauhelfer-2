@@ -17,6 +17,7 @@ WdgMalzGabe::WdgMalzGabe(int index, QWidget *parent) :
     ui->setupUi(this);
     ui->btnKorrektur->setPalette(gSettings->paletteErrorButton);
     ui->btnKorrektur->setVisible(false);
+    ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     checkEnabled(true);
     updateValues();
@@ -90,7 +91,7 @@ void WdgMalzGabe::checkEnabled(bool force)
         ui->tbMengeProzent->setReadOnly(true);
         ui->tbMenge->setReadOnly(true);
         ui->btnKorrektur->setVisible(false);
-        ui->lblWarnAnteil->setVisible(false);
+        ui->lblWarnung->setVisible(false);
     }
 }
 
@@ -133,12 +134,12 @@ void WdgMalzGabe::updateValues(bool full)
         int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMaxProzent).toInt();
         if (ui->tbMengeProzent->value() > max)
         {
-            ui->lblWarnAnteil->setVisible(true);
-            ui->lblWarnAnteil->setToolTip(tr("Maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.").arg(max));
+            ui->lblWarnung->setVisible(true);
+            ui->lblWarnung->setText(tr("Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.").arg(max));
         }
         else
         {
-            ui->lblWarnAnteil->setVisible(false);
+            ui->lblWarnung->setVisible(false);
         }
 
         if (mIndex == 0 && bh->sud()->modelMalzschuettung()->rowCount() == 1)

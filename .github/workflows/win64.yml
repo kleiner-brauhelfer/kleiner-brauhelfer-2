@@ -25,7 +25,7 @@ jobs:
       - name: Build kleiner-brauhelfer-2
         shell: cmd
         run: |
-          call "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" ${{ matrix.platform-vcvars }}
+          call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           mkdir build
           mkdir deploy
           cd build

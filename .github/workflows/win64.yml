@@ -1,0 +1,35 @@
+name: win64
+
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2.2.1
+        with:
+          modules: qtcharts qtwebengine
+    
+      - name: Build kleiner-brauhelfer-2
+        run: |
+          ./build_win64.cmd %Qt5_Dir%\bin 0 0
+          mkdir -p deploy
+          copy ./build-win64/kleiner-brauhelfer-2.exe deploy/
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: kleiner-brauhelfer-2
+          path: deploy

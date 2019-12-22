@@ -25,10 +25,16 @@ jobs:
       - name: Build kleiner-brauhelfer-2
         shell: cmd
         run: |
-          call "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-          ./build_win64.cmd %Qt5_Dir%\bin 0 0
-          mkdir -p deploy
-          copy ./build-win64/kleiner-brauhelfer-2.exe deploy/
+          call "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" ${{ matrix.platform-vcvars }}
+          mkdir build
+          mkdir deploy
+          cd build
+          "%Qt5_Dir%\bin\qmake.exe" "..\kleiner-brauhelfer-2.pro" -config release
+          nmake
+          cd bin
+          copy "kleiner-brauhelfer-2.exe" "../../deploy"
+          cd ../..
+          copy ./build/bin/kleiner-brauhelfer-2.exe deploy
           
       - name: Upload artifact
         uses: actions/upload-artifact@v1

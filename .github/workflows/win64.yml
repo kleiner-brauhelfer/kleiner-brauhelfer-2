@@ -34,7 +34,6 @@ jobs:
           cd bin
           copy "kleiner-brauhelfer-2.exe" "../../deploy"
           cd ../..
-          copy ./build/bin/kleiner-brauhelfer-2.exe deploy
           
       - name: Upload artifact
         uses: actions/upload-artifact@v1

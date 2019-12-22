@@ -24,8 +24,8 @@ jobs:
     
       - name: Build kleiner-brauhelfer-2
         run: |
-          call "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-          call ./build_win64.cmd %Qt5_Dir%\bin 0 0
+          "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          ./build_win64.cmd %Qt5_Dir%\bin 0 0
           mkdir -p deploy
           copy ./build-win64/kleiner-brauhelfer-2.exe deploy/
           

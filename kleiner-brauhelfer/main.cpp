@@ -127,8 +127,10 @@ static bool connectDatabase()
                         bh->connectDatabase();
                         if (bh->updateDatabase())
                         {
-                          #ifdef MODE_TEST_UPDATE
+                            // delete bh to remove file
                             delete bh;
+                            bh = nullptr;
+                          #ifdef MODE_TEST_UPDATE
                             bh = new Brauhelfer(fileUpdate.fileName());
                             return bh->connectDatabase();
                           #else

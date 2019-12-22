@@ -23,8 +23,9 @@ jobs:
           modules: qtcharts qtwebengine
     
       - name: Build kleiner-brauhelfer-2
+        shell: cmd
         run: |
-          "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          call "C:\Program Files (x86)\Microsoft Visual Studio\${{ matrix.vs }}\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           ./build_win64.cmd %Qt5_Dir%\bin 0 0
           mkdir -p deploy
           copy ./build-win64/kleiner-brauhelfer-2.exe deploy/

@@ -6,52 +6,35 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.0.0beta5](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0beta5)
+- [Version 2.0.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0)
 
 ### Windows
-- **kbh2_v2.x.x_setup_win_x64.exe**
-  - Installationsdatei für 64bit System
-  - Qt Abhängigkeiten integriert
-- **kbh2_v2.x.x_portable_win_x64.zip**
-  - Portable Version für 64bit System
-  - Qt Abhängigkeiten integriert
-- **kbh2_v2.x.x_setup_win_x86.exe**
-  - Installationsdatei für 32bit System
-  - Qt Abhängigkeiten integriert
-- **kbh2_v2.x.x_portable_win_x86.zip**
-  - Portable Version für 32bit System
-  - Qt Abhängigkeiten integriert
+- **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
+- **kbh2_v2.x.x_portable_win_x64.zip**: Portable Version für 64bit System
+- **kbh2_v2.x.x_setup_win_x86.exe**: Installationsdatei für 32bit System
+- **kbh2_v2.x.x_portable_win_x86.zip**: Portable Version für 32bit System
 
 ### Linux
-- **kbh2_v2.x.x_linux_x64.deb**
-  - Installationsdatei für 64bit System
-  - Qt Abhängigkeiten **nicht** integriert
-  - Benötigt Installation von [Qt 5.13.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
-    - Desktop gcc 64-bit
-    - Qt Charts
-    - Qt WebEngine
-- **kleiner-brauhelfer-2-x86_64.AppImage**
-  - Portable Version (AppImage) für 64bit System
-  - Qt Abhängigkeiten integriert
-- **kbh2_v2.x.x_linux_x32.deb**
-  - Installationsdatei für 32bit System
-  - Qt Abhängigkeiten **nicht** integriert
-  - Qt wird für Linux 32bit nicht mehr kompiliert. Deshalb werden nicht alle Features unterstüzt.
-  - Benötigt Installation von [Qt 5.5](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
-    - Desktop gcc
-    - Qt WebEngine
+- **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
+  - Benötigt zusätzlich Installation von [Qt 5.13.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
+    - Desktop gcc 64-bit, Qt Charts, Qt WebEngine
+- **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
+- **kbh2_v2.x.x_linux_x32.deb**: Installationsdatei für 32bit System
+  - Neuere Qt Versionen werden für Linux 32bit nicht mehr angeboten. Deshalb werden nicht alle Features unterstüzt.
+  - Benötigt zusätzlich Installation von [Qt 5.5](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
+    - Desktop gcc, Qt WebEngine
 
 ### Mac OS
-- **kbh2_v2.x.x_macos.zip**: Installationsdatei für Mac OS (Qt Abhängigkeiten integriert)
+- **kbh2_v2.x.x_macos.zip**: Installationsdatei für Mac OS
 
 ## Änderungen & Erweiterungen
 
-### Version 2.0.0 (in Entwicklung)
+### Version 2.0.0 (22.12.2019)
 - Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert
-- Neu: Ressourcen in Unterverzeichnisse verschoben
+- Neu: Ressourcen wurden in Unterverzeichnisse verschoben
 - Neu: Gärverlauf zeigt auch scheinbarer Endvergärungsgrad
-- Neu: Reiter Etiketten überarbeitet
 - Neu: Neue Spalte "Bemerkung" für Einträge in Gärverläufen
+- Neu: Reiter Etiketten überarbeitet
 - Fix: Berechnung der Karbonisierung (Speise & Zucker) nach [MMuM](https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsspeiserechner)
 - Fix: Sortierung der Rohstoffe nach Zahlen
 

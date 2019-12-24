@@ -86,13 +86,20 @@ void TabBraudaten::sudLoaded()
 {
     checkEnabled();
     updateValues();
+    ui->tbSpeiseSRE->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
 {
-    if (index.column() == ModelSud::ColStatus)
+    switch (index.column())
     {
+    case ModelSud::ColStatus:
         checkEnabled();
+        break;
+    case ModelSud::ColSW:
+    case ModelSud::ColVergaerungsgrad:
+        ui->tbSpeiseSRE->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
+        break;
     }
 }
 
@@ -189,8 +196,10 @@ void TabBraudaten::updateValues()
     ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollEndecmVomBoden->value());
     ui->tbSWSollKochende->setValue(bh->sud()->getSWSollKochende());
 
-    ui->tbVerdampfung->setValue(bh->sud()->getVerdampfungsziffer());
+    ui->tbVerdampfung->setValue(bh->sud()->getVerdampfungsrateIst());
+    ui->tbVerdampfungRezept->setValue(bh->sud()->getVerdampfungsrate());
     ui->tbAusbeute->setValue(bh->sud()->geterg_Sudhausausbeute());
+    ui->tbAusbeuteRezept->setValue(bh->sud()->getSudhausausbeute());
     ui->tbAusbeuteEffektiv->setValue(bh->sud()->geterg_EffektiveAusbeute());
 
     if (!ui->tbNebenkosten->hasFocus())

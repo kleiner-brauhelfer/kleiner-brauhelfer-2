@@ -192,7 +192,9 @@ void TabAbfuellen::updateValues()
      ui->tbSw->setValue(bh->sud()->getSWIst());
     ui->tbTEVG->setValue(bh->sud()->gettEVG());
     ui->tbSEVG->setValue(bh->sud()->getsEVG());
+    ui->tbSEVGRezept->setValue(bh->sud()->getVergaerungsgrad());
     ui->tbAlkohol->setValue(bh->sud()->geterg_Alkohol());
+    ui->tbAlkoholRezept->setValue(BierCalc::alkohol(bh->sud()->getSW(), BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad())));
     ui->tbSpundungsdruck->setValue(bh->sud()->getSpundungsdruck());
 
     mTimerWebViewUpdate.start(200);

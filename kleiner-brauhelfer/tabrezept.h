@@ -68,6 +68,9 @@ private slots:
     void on_tbEinmaischtemperatur_valueChanged(int temp);
     void on_tbKochzeit_valueChanged(int min);
     void on_tbNachisomerisierungszeit_valueChanged(int min);
+    void on_tbSudhausausbeute_valueChanged(double value);
+    void on_tbVerdampfungsziffer_valueChanged(double value);
+    void on_tbVergaerungsgrad_valueChanged(double value);
 
     void on_btnTagNeu_clicked();
     void on_btnTagLoeschen_clicked();

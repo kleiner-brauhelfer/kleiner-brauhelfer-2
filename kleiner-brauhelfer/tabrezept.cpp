@@ -463,6 +463,12 @@ void TabRezept::updateValues()
         ui->tbCO2->setValue(bh->sud()->getCO2());
     if (!ui->tbBittere->hasFocus())
         ui->tbBittere->setValue(bh->sud()->getIBU());
+    if (!ui->tbSudhausausbeute->hasFocus())
+        ui->tbSudhausausbeute->setValue(bh->sud()->getSudhausausbeute());
+    if (!ui->tbVerdampfungsziffer->hasFocus())
+        ui->tbVerdampfungsziffer->setValue(bh->sud()->getVerdampfungsrate());
+    if (!ui->tbVergaerungsgrad->hasFocus())
+        ui->tbVergaerungsgrad->setValue(bh->sud()->getVergaerungsgrad());
     ui->tbFarbe->setValue((int)bh->sud()->geterg_Farbe());
     ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesamt());
     ui->tbSWMalz->setValue(bh->sud()->getSW_Malz());
@@ -473,6 +479,8 @@ void TabRezept::updateValues()
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
     ui->tbSWWZGaerung->setValue(bh->sud()->getSW_WZ_Gaerung());
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
+    ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
+    ui->tbAlkohol->setValue(BierCalc::alkohol(bh->sud()->getSW(), ui->tbRestextrakt->value()));
     ui->tbKosten->setValue(bh->sud()->geterg_Preis());
     if (!ui->tbReifezeit->hasFocus())
         ui->tbReifezeit->setValue(bh->sud()->getReifezeit());
@@ -993,6 +1001,24 @@ void TabRezept::on_tbNachisomerisierungszeit_valueChanged(int min)
 {
     if (ui->tbNachisomerisierungszeit->hasFocus())
         bh->sud()->setNachisomerisierungszeit(min);
+}
+
+void TabRezept::on_tbSudhausausbeute_valueChanged(double value)
+{
+    if (ui->tbSudhausausbeute->hasFocus())
+        bh->sud()->setSudhausausbeute(value);
+}
+
+void TabRezept::on_tbVerdampfungsziffer_valueChanged(double value)
+{
+    if (ui->tbVerdampfungsziffer->hasFocus())
+        bh->sud()->setVerdampfungsrate(value);
+}
+
+void TabRezept::on_tbVergaerungsgrad_valueChanged(double value)
+{
+    if (ui->tbVergaerungsgrad->hasFocus())
+        bh->sud()->setVergaerungsgrad(value);
 }
 
 void TabRezept::on_btnTagNeu_clicked()

@@ -52,27 +52,16 @@ private slots:
     void anhaenge_modified();
     void on_btnNeuerAnhang_clicked();
 
-    void on_tbSudnummer_valueChanged(int value);
     void on_tbSudname_textChanged(const QString &value);
-    void on_tbMenge_valueChanged(double value);
-    void on_tbSW_valueChanged(double value);
-    void on_tbCO2_valueChanged(double value);
-    void on_tbBittere_valueChanged(int value);
-    void on_tbReifezeit_valueChanged(int value);
     void on_cbAnlage_currentIndexChanged(const QString &value);
     void on_tbKommentar_textChanged();
-    void on_tbHGF_valueChanged(int value);
-    void on_tbFaktorHauptguss_valueChanged(double value);
     void on_cbWasserProfil_currentIndexChanged(const QString &value);
-    void on_tbRestalkalitaet_valueChanged(double value);
-    void on_tbEinmaischtemperatur_valueChanged(int temp);
-    void on_tbKochzeit_valueChanged(int min);
-    void on_tbNachisomerisierungszeit_valueChanged(int min);
 
     void on_btnTagNeu_clicked();
     void on_btnTagLoeschen_clicked();
 
 private:
+    void onTabActivated() Q_DECL_OVERRIDE;
     void checkRohstoffe();
     void updateGlas();
     void updateAnlageModel();

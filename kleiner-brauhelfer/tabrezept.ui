@@ -96,7 +96,7 @@
             </widget>
            </item>
            <item row="14" column="2">
-            <widget class="SpinBox" name="tbBittere">
+            <widget class="SpinBoxSud" name="tbBittere">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -150,7 +150,7 @@
               </widget>
              </item>
              <item>
-              <widget class="DoubleSpinBox" name="tbFaktorHauptgussEmpfehlung">
+              <widget class="DoubleSpinBoxSud" name="tbFaktorHauptgussEmpfehlung">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -219,7 +219,7 @@
             </widget>
            </item>
            <item row="8" column="2">
-            <widget class="SpinBox" name="tbHGF">
+            <widget class="SpinBoxSud" name="tbHGF">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -272,7 +272,7 @@
             </widget>
            </item>
            <item row="21" column="2">
-            <widget class="DoubleSpinBox" name="tbRestalkalitaet">
+            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaet">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -300,7 +300,7 @@
             </widget>
            </item>
            <item row="15" column="2">
-            <widget class="SpinBox" name="tbKochzeit">
+            <widget class="SpinBoxSud" name="tbKochzeit">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -352,7 +352,7 @@
             </widget>
            </item>
            <item row="16" column="2">
-            <widget class="SpinBox" name="tbNachisomerisierungszeit">
+            <widget class="SpinBoxSud" name="tbNachisomerisierungszeit">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -371,7 +371,7 @@
             </widget>
            </item>
            <item row="18" column="2">
-            <widget class="DoubleSpinBox" name="tbCO2">
+            <widget class="DoubleSpinBoxSud" name="tbCO2">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -446,7 +446,7 @@
             </widget>
            </item>
            <item row="6" column="2">
-            <widget class="DoubleSpinBox" name="tbSW">
+            <widget class="DoubleSpinBoxSud" name="tbSW">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -471,7 +471,7 @@
             </widget>
            </item>
            <item row="5" column="2">
-            <widget class="DoubleSpinBox" name="tbMenge">
+            <widget class="DoubleSpinBoxSud" name="tbMenge">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -496,7 +496,7 @@
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="SpinBox" name="tbSudnummer">
+            <widget class="SpinBoxSud" name="tbSudnummer">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -545,7 +545,7 @@
             </widget>
            </item>
            <item row="33" column="2">
-            <widget class="SpinBox" name="tbReifezeit">
+            <widget class="SpinBoxSud" name="tbReifezeit">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -561,7 +561,7 @@
             </widget>
            </item>
            <item row="7" column="2">
-            <widget class="DoubleSpinBox" name="tbFaktorHauptguss">
+            <widget class="DoubleSpinBoxSud" name="tbFaktorHauptguss">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -1305,7 +1305,7 @@
            </widget>
           </item>
           <item>
-           <widget class="SpinBox" name="tbEinmaischtemperatur">
+           <widget class="SpinBoxSud" name="tbEinmaischtemperatur">
             <property name="minimumSize">
              <size>
               <width>60</width>
@@ -1506,7 +1506,7 @@
              </widget>
             </item>
             <item row="2" column="2">
-             <widget class="DoubleSpinBox" name="tbGesamtschuettung">
+             <widget class="DoubleSpinBoxSud" name="tbGesamtschuettung">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -1566,7 +1566,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="DoubleSpinBox" name="tbSWWZGaerung">
+                <widget class="DoubleSpinBoxSud" name="tbSWWZGaerung">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -1607,7 +1607,7 @@
              </widget>
             </item>
             <item row="1" column="2">
-             <widget class="SpinBox" name="tbFarbe">
+             <widget class="SpinBoxSud" name="tbFarbe">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -1674,7 +1674,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="DoubleSpinBox" name="tbSWWZMaischen">
+                <widget class="DoubleSpinBoxSud" name="tbSWWZMaischen">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -1761,7 +1761,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="DoubleSpinBox" name="tbSWWZKochen">
+                <widget class="DoubleSpinBoxSud" name="tbSWWZKochen">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -1841,7 +1841,7 @@
              </widget>
             </item>
             <item row="10" column="2">
-             <widget class="DoubleSpinBox" name="tbKosten">
+             <widget class="DoubleSpinBoxSud" name="tbKosten">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -1901,7 +1901,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="DoubleSpinBox" name="tbSWMalz">
+                <widget class="DoubleSpinBoxSud" name="tbSWMalz">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -2498,7 +2498,7 @@
              </widget>
             </item>
             <item row="6" column="2">
-             <widget class="DoubleSpinBox" name="tbHauptguss">
+             <widget class="DoubleSpinBoxSud" name="tbHauptguss">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2733,7 +2733,7 @@
              </widget>
             </item>
             <item row="8" column="2">
-             <widget class="DoubleSpinBox" name="tbNachguss">
+             <widget class="DoubleSpinBoxSud" name="tbNachguss">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -2833,11 +2833,6 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
@@ -2846,6 +2841,16 @@
    <class>ChartView</class>
    <extends>QGraphicsView</extends>
    <header>widgets/chartview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxSud</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBoxSud</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinboxsud.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

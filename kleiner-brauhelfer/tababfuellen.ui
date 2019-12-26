@@ -177,42 +177,55 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="2" column="5">
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>Stammwürze</string>
+           <item row="3" column="5" colspan="3">
+            <widget class="Line" name="line_7">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="2" column="3">
-            <widget class="QPushButton" name="btnSWJungbier">
+           <item row="7" column="6">
+            <widget class="DoubleSpinBoxSud" name="tbAlkohol">
              <property name="minimumSize">
               <size>
                <width>50</width>
                <height>0</height>
               </size>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>16777215</height>
-              </size>
-             </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; des Jungbiers aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der Alkoholgehalt errechnet sich aus dem tasächlichen Endvergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-             <property name="text">
-              <string notr="true">...</string>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>1</number>
              </property>
             </widget>
            </item>
-           <item row="5" column="5">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Aus Rezept</string>
+           <item row="6" column="7">
+            <widget class="QLabel" name="label_etevg">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="indent">
-              <number>9</number>
+             <property name="text">
+              <string>%</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="5">
+            <widget class="QLabel" name="label_alc">
+             <property name="text">
+              <string>Alkoholgehalt</string>
              </property>
             </widget>
            </item>
@@ -229,6 +242,23 @@
              </property>
             </widget>
            </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="cbSchnellgaerprobeAktiv">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_161">
+             <property name="text">
+              <string>Schnellgärprobe aktiv</string>
+             </property>
+            </widget>
+           </item>
            <item row="7" column="7">
             <widget class="QLabel" name="label_ealc">
              <property name="minimumSize">
@@ -242,22 +272,30 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="5">
-            <widget class="QLabel" name="label_sevg">
-             <property name="text">
-              <string>Scheinbarer Endvergärungsgrad (sEVG)</string>
+           <item row="1" column="3">
+            <widget class="QPushButton" name="btnSWSchnellgaerprobe">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
              </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="4">
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt &lt;/span&gt;der Schnellgärprobe aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string notr="true">...</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="DoubleSpinBox" name="tbSWJungbier">
+            <widget class="DoubleSpinBoxSud" name="tbSWJungbier">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -284,8 +322,58 @@
              </property>
             </widget>
            </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_53">
+             <property name="text">
+              <string>Restextrakt Jungbier</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_54">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>°P</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="5">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Stammwürze</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="5">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Aus Rezept</string>
+             </property>
+             <property name="indent">
+              <number>9</number>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="5">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
            <item row="2" column="6">
-            <widget class="DoubleSpinBox" name="tbSw">
+            <widget class="DoubleSpinBoxSud" name="tbSw">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -318,116 +406,15 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="7">
-            <widget class="QLabel" name="label_esevg">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
+           <item row="4" column="5">
+            <widget class="QLabel" name="label_sevg">
              <property name="text">
-              <string>%</string>
+              <string>Scheinbarer Endvergärungsgrad (sEVG)</string>
              </property>
             </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="DoubleSpinBox" name="tbSWSchnellgaerprobe">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit der Schnellgärprobe kann der zu erwartende Restextrakt und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad (EVG) &lt;/span&gt;des Jungbieres vorab berechnet werden. Die Schnellgärprobe wird immer an einem wärmeren Ort als der eigentliche Sud durchgeführt. Der Trick ist einfach: Hefe vergärt unter wärmeren Bedingungen schneller.&lt;/p&gt;&lt;p&gt;Als Restextrakt wird der unvergorene Zuckergehalt im Bier während und nach der Gärung bezeichnet. Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangzogen. Den Alkoholwert berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="6">
-            <widget class="DoubleSpinBox" name="tbTEVG">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des Restextraktes, der durch die unterschiedliche Dichte von Wasser und Alkohl nötig wird. Er wird vornehmlich zur Berechnung des Alkoholgehaltes herangezogen.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="QLabel" name="lblSWSchnellgaerprobeEinheit">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="lblSWSchnellgaerprobe">
-             <property name="text">
-              <string>Restextrakt der Schnellgärprobe</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="0">
-            <spacer name="horizontalSpacer_5">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item row="1" column="6">
-            <widget class="DoubleSpinBox" name="tbGruenschlauchzeitpunkt">
+            <widget class="DoubleSpinBoxSud" name="tbGruenschlauchzeitpunkt">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -460,68 +447,8 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="5" colspan="3">
-            <widget class="Line" name="line_7">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="7">
-            <widget class="QLabel" name="label_etevg">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="5">
-            <widget class="QLabel" name="label_tevg">
-             <property name="text">
-              <string>Tatsächlicher Endvergärungsgrad (tEVG)</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_161">
-             <property name="text">
-              <string>Schnellgärprobe aktiv</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="5">
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="7">
-            <widget class="QLabel" name="lblGruenschlauchzeitpunktEinheit">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
-           </item>
            <item row="4" column="6">
-            <widget class="DoubleSpinBox" name="tbSEVG">
+            <widget class="DoubleSpinBoxSud" name="tbSEVG">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -543,29 +470,50 @@
              <property name="decimals">
               <number>1</number>
              </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
+            </widget>
+           </item>
+           <item row="4" column="7">
+            <widget class="QLabel" name="label_esevg">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
+             <property name="text">
+              <string>%</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QCheckBox" name="cbSchnellgaerprobeAktiv">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
+           <item row="6" column="5">
+            <widget class="QLabel" name="label_tevg">
+             <property name="text">
+              <string>Tatsächlicher Endvergärungsgrad (tEVG)</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="6">
-            <widget class="DoubleSpinBox" name="tbAlkohol">
+           <item row="1" column="2">
+            <widget class="QLabel" name="lblSWSchnellgaerprobeEinheit">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>°P</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblSWSchnellgaerprobe">
+             <property name="text">
+              <string>Restextrakt der Schnellgärprobe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="6">
+            <widget class="DoubleSpinBoxSud" name="tbTEVG">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -573,7 +521,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der Alkoholgehalt errechnet sich aus dem tasächlichen Endvergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des Restextraktes, der durch die unterschiedliche Dichte von Wasser und Alkohl nötig wird. Er wird vornehmlich zur Berechnung des Alkoholgehaltes herangezogen.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -587,26 +535,17 @@
              <property name="decimals">
               <number>1</number>
              </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>20.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_53">
+           <item row="1" column="5">
+            <widget class="QLabel" name="lblGruenschlauchzeitpunkt">
              <property name="text">
-              <string>Restextrakt Jungbier</string>
+              <string>Grünschlauchzeitpunkt</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="label_54">
+           <item row="1" column="7">
+            <widget class="QLabel" name="lblGruenschlauchzeitpunktEinheit">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -618,22 +557,56 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="5">
-            <widget class="QLabel" name="label_alc">
-             <property name="text">
-              <string>Alkoholgehalt</string>
+           <item row="1" column="1">
+            <widget class="DoubleSpinBoxSud" name="tbSWSchnellgaerprobe">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit der Schnellgärprobe kann der zu erwartende Restextrakt und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad (EVG) &lt;/span&gt;des Jungbieres vorab berechnet werden. Die Schnellgärprobe wird immer an einem wärmeren Ort als der eigentliche Sud durchgeführt. Der Trick ist einfach: Hefe vergärt unter wärmeren Bedingungen schneller.&lt;/p&gt;&lt;p&gt;Als Restextrakt wird der unvergorene Zuckergehalt im Bier während und nach der Gärung bezeichnet. Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangzogen. Den Alkoholwert berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>99.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
-           <item row="1" column="5">
-            <widget class="QLabel" name="lblGruenschlauchzeitpunkt">
-             <property name="text">
-              <string>Grünschlauchzeitpunkt</string>
+           <item row="3" column="0" colspan="4">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="1" column="3">
-            <widget class="QPushButton" name="btnSWSchnellgaerprobe">
+           <item row="9" column="0">
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="3">
+            <widget class="QPushButton" name="btnSWJungbier">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -647,7 +620,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt &lt;/span&gt;der Schnellgärprobe aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; des Jungbiers aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string notr="true">...</string>
@@ -661,39 +634,6 @@
              </property>
              <property name="indent">
               <number>9</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="4" rowspan="9">
-            <widget class="Line" name="line_3">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="7">
-            <widget class="QLabel" name="label_esevg_2">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="7">
-            <widget class="QLabel" name="label_ealc_2">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%vol</string>
              </property>
             </widget>
            </item>
@@ -720,19 +660,23 @@
              <property name="decimals">
               <number>1</number>
              </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
+            </widget>
+           </item>
+           <item row="8" column="7">
+            <widget class="QLabel" name="label_ealc_2">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="maximum">
-              <double>20.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
+             <property name="text">
+              <string>%vol</string>
              </property>
             </widget>
            </item>
            <item row="5" column="6">
-            <widget class="DoubleSpinBox" name="tbSEVGRezept">
+            <widget class="DoubleSpinBoxSud" name="tbSEVGRezept">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -754,14 +698,25 @@
              <property name="decimals">
               <number>1</number>
              </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
+            </widget>
+           </item>
+           <item row="5" column="7">
+            <widget class="QLabel" name="label_esevg_2">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
+             <property name="text">
+              <string>%</string>
              </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
+            </widget>
+           </item>
+           <item row="0" column="4" rowspan="9">
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -836,7 +791,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="DoubleSpinBox" name="tbBiermengeAbfuellen">
+            <widget class="DoubleSpinBoxSud" name="tbBiermengeAbfuellen">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -953,7 +908,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="DoubleSpinBox" name="tbJungbiermengeAbfuellen">
+            <widget class="DoubleSpinBoxSud" name="tbJungbiermengeAbfuellen">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -1108,7 +1063,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="DoubleSpinBox" name="tbSpeisemengeAbgefuellt">
+            <widget class="DoubleSpinBoxSud" name="tbSpeisemengeAbgefuellt">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -1460,7 +1415,7 @@
             </widget>
            </item>
            <item row="0" column="6">
-            <widget class="DoubleSpinBox" name="tbSpundungsdruck">
+            <widget class="DoubleSpinBoxSud" name="tbSpundungsdruck">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -1501,7 +1456,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="DoubleSpinBox" name="tbTemperaturJungbier">
+            <widget class="DoubleSpinBoxSud" name="tbTemperaturJungbier">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -1606,7 +1561,7 @@
             <number>4</number>
            </property>
            <item row="0" column="6">
-            <widget class="DoubleSpinBox" name="tbKosten">
+            <widget class="DoubleSpinBoxSud" name="tbKosten">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -1723,7 +1678,7 @@
             </spacer>
            </item>
            <item row="0" column="1">
-            <widget class="DoubleSpinBox" name="tbNebenkosten">
+            <widget class="DoubleSpinBoxSud" name="tbNebenkosten">
              <property name="minimumSize">
               <size>
                <width>60</width>
@@ -1833,6 +1788,11 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxSud</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxsud.h</header>
   </customwidget>
   <customwidget>
    <class>WdgWebViewEditable</class>

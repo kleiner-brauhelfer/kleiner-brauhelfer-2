@@ -26,8 +26,8 @@ public slots:
     void updateValues(bool full = false);
 
 private slots:
+    void on_btnZutat_clicked();
     void on_tbMengeProzent_valueChanged(double value);
-    void on_cbZutat_currentIndexChanged(const QString &text);
     void on_tbMenge_valueChanged(double value);
     void on_btnLoeschen_clicked();
     void on_btnKorrektur_clicked();

@@ -3,7 +3,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/rohstoffauswahlproxymodel.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -58,15 +58,7 @@ void WdgMalzGabe::checkEnabled(bool force)
     mEnabled = enabled;
     if (mEnabled)
     {
-        RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
-        model->setSourceModel(bh->modelMalz());
-        model->setColumnMenge(ModelMalz::ColMenge);
-        model->setIndexMengeBenoetigt(bh->sud()->modelMalzschuettung()->index(mIndex, ModelMalzschuettung::Colerg_Menge));
-        model->sort(ModelMalz::ColBeschreibung, Qt::AscendingOrder);
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(ModelMalz::ColBeschreibung);
-        ui->cbZutat->setEnabled(true);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(true);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
         ui->btnAufbrauchen->setVisible(true);
@@ -77,12 +69,7 @@ void WdgMalzGabe::checkEnabled(bool force)
     }
     else
     {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(name()));
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(0);
-        ui->cbZutat->setEnabled(false);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(false);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
         ui->btnAufbrauchen->setVisible(false);
@@ -101,11 +88,7 @@ void WdgMalzGabe::updateValues(bool full)
 
     checkEnabled(full);
 
-    if (!ui->cbZutat->hasFocus())
-    {
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(malzname);
-    }
+    ui->btnZutat->setText(malzname);
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelMalzschuettung::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
@@ -157,10 +140,12 @@ void WdgMalzGabe::updateValues(bool full)
     }
 }
 
-void WdgMalzGabe::on_cbZutat_currentIndexChanged(const QString &text)
+void WdgMalzGabe::on_btnZutat_clicked()
 {
-    if (ui->cbZutat->hasFocus())
-        setData(ModelMalzschuettung::ColName, text);
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Malz, this);
+    dlg.select(name());
+    if (dlg.exec() == QDialog::Accepted)
+        setData(ModelMalzschuettung::ColName, dlg.name());
 }
 
 void WdgMalzGabe::on_tbMengeProzent_valueChanged(double value)

@@ -7,7 +7,7 @@ ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
-VER_MIN = 0
+VER_MIN = 1
 VER_PAT = 0
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
@@ -61,6 +61,7 @@ SOURCES += \
     dialogs/dlgeinmaischtemp.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffaustausch.cpp \
+    dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
     dialogs/dlgsudteilen.cpp \
@@ -80,14 +81,15 @@ SOURCES += \
     model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
     model/readonlydelegate.cpp \
-    model/rohstoffauswahlproxymodel.cpp \
     model/spinboxdelegate.cpp \
     widgets/chartview.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
+    widgets/doublespinboxsud.cpp \
     widgets/spinbox.cpp \
+    widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/wdganhang.cpp \
@@ -127,6 +129,7 @@ HEADERS += \
     dialogs/dlgeinmaischtemp.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffaustausch.h \
+    dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
     dialogs/dlgsudteilen.h \
@@ -146,14 +149,15 @@ HEADERS += \
     model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
     model/readonlydelegate.h \
-    model/rohstoffauswahlproxymodel.h \
     model/spinboxdelegate.h \
     widgets/chartview.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
+    widgets/doublespinboxsud.h \
     widgets/spinbox.h \
+    widgets/spinboxsud.h \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/wdganhang.h \
@@ -188,6 +192,7 @@ FORMS += \
     dialogs/dlgeinmaischtemp.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffaustausch.ui \
+    dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \
     dialogs/dlgsudteilen.ui \

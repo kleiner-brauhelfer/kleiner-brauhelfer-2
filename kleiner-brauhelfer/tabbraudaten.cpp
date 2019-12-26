@@ -22,6 +22,26 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui(new Ui::TabBraudaten)
 {
     ui->setupUi(this);
+    ui->tbWuerzemengeKochbeginn->setColumn(ModelSud::ColWuerzemengeVorHopfenseihen);
+    ui->tbWuerzemengeKochende->setColumn(ModelSud::ColWuerzemengeKochende);
+    ui->tbSWKochende->setColumn(ModelSud::ColSWKochende);
+    ui->tbSWAnstellen->setColumn(ModelSud::ColSWAnstellen);
+    ui->tbWuerzemengeAnstellen->setColumn(ModelSud::ColWuerzemengeAnstellen);
+    ui->tbSpeisemenge->setColumn(ModelSud::ColSpeisemenge);
+    ui->tbWuerzemengeAnstellenTotal->setColumn(ModelSud::ColWuerzemengeAnstellenTotal);
+    ui->tbMengeSollKochbeginn20->setColumn(ModelSud::ColMengeSollKochbeginn);
+    ui->tbSWSollKochbeginn->setColumn(ModelSud::ColSWSollKochbeginn);
+    ui->tbSWSollKochbeginnMitWz->setColumn(ModelSud::ColSWSollKochbeginnMitWz);
+    ui->tbMengeSollKochende20->setColumn(ModelSud::ColMengeSollKochende);
+    ui->tbSWSollKochende->setColumn(ModelSud::ColSWSollKochende);
+    ui->tbVerdampfung->setColumn(ModelSud::ColVerdampfungsrateIst);
+    ui->tbAusbeute->setColumn(ModelSud::Colerg_Sudhausausbeute);
+    ui->tbAusbeuteEffektiv->setColumn(ModelSud::Colerg_EffektiveAusbeute);
+    ui->tbVerdampfungRezept->setColumn(ModelSud::ColVerdampfungsrate);
+    ui->tbAusbeuteRezept->setColumn(ModelSud::ColSudhausausbeute);
+    ui->tbSWAnstellenSoll->setColumn(ModelSud::ColSWSollAnstellen);
+    ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
+    ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
@@ -138,20 +158,18 @@ void TabBraudaten::updateValues()
     if (!isTabActive())
         return;
 
+    for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+        wdg->updateValue();
+
     double value;
 
     int status = bh->sud()->getStatus();
+
     QDateTime dt = bh->sud()->getBraudatum();
     ui->tbBraudatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
 
-    if (!ui->tbWuerzemengeKochbeginn->hasFocus())
-           ui->tbWuerzemengeKochbeginn->setValue(bh->sud()->getWuerzemengeVorHopfenseihen());
     ui->tbWuerzemengeKochende->setMaximum(ui->tbWuerzemengeKochbeginn->value());
-    if (!ui->tbWuerzemengeKochende->hasFocus())
-        ui->tbWuerzemengeKochende->setValue(bh->sud()->getWuerzemengeKochende());
-    if (!ui->tbSWKochende->hasFocus())
-        ui->tbSWKochende->setValue(bh->sud()->getSWKochende());
-    ui->tbSWAnstellenSoll->setValue(bh->sud()->getSWSollAnstellen());
+
     value = BierCalc::verschneidung(bh->sud()->getSWAnstellen(),
                                     bh->sud()->getSWSollAnstellen(),
                                     bh->sud()->getWuerzemengeKochende() * (1 + bh->sud()->gethighGravityFaktor()/100));
@@ -159,14 +177,7 @@ void TabBraudaten::updateValues()
     ui->wdgWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
     ui->btnWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
     ui->tbSWAnstellen->setMaximum(ui->tbSWKochende->value());
-    if (!ui->tbSWAnstellen->hasFocus())
-        ui->tbSWAnstellen->setValue(bh->sud()->getSWAnstellen());
-    if (!ui->tbWuerzemengeAnstellenTotal->hasFocus())
-        ui->tbWuerzemengeAnstellenTotal->setValue(bh->sud()->getWuerzemengeAnstellenTotal());
-    if (!ui->tbSpeisemenge->hasFocus())
-        ui->tbSpeisemenge->setValue(bh->sud()->getSpeisemenge());
-    if (!ui->tbWuerzemengeAnstellen->hasFocus())
-        ui->tbWuerzemengeAnstellen->setValue(bh->sud()->getWuerzemengeAnstellen());
+
     value = BierCalc::speise(bh->sud()->getCO2(),
                              bh->sud()->getSWAnstellen(),
                              ui->tbSpeiseSRE->value(),
@@ -182,29 +193,13 @@ void TabBraudaten::updateValues()
         ui->lblWarnAusbeute->setVisible(false);
 
     value = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-    ui->tbMengeSollKochbeginn20->setValue(bh->sud()->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), ui->tbMengeSollKochbeginn20->value()));
     ui->tbMengeSollcmVomBoden->setValue(ui->tbMengeSollKochbeginn100->value() / value);
     ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollcmVomBoden->value());
-    ui->tbSWSollKochbeginn->setValue(bh->sud()->getSWSollKochbeginn());
-    ui->tbSWSollKochbeginnMitWz->setValue(bh->sud()->getSWSollKochbeginnMitWz());
     ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSW_WZ_Kochen() > 0.0);
-
-    ui->tbMengeSollKochende20->setValue(bh->sud()->getMengeSollKochende());
     ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), ui->tbMengeSollKochende20->value()));
     ui->tbMengeSollEndecmVomBoden->setValue(ui->tbMengeSollKochende100->value() / value);
     ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollEndecmVomBoden->value());
-    ui->tbSWSollKochende->setValue(bh->sud()->getSWSollKochende());
-
-    ui->tbVerdampfung->setValue(bh->sud()->getVerdampfungsrateIst());
-    ui->tbVerdampfungRezept->setValue(bh->sud()->getVerdampfungsrate());
-    ui->tbAusbeute->setValue(bh->sud()->geterg_Sudhausausbeute());
-    ui->tbAusbeuteRezept->setValue(bh->sud()->getSudhausausbeute());
-    ui->tbAusbeuteEffektiv->setValue(bh->sud()->geterg_EffektiveAusbeute());
-
-    if (!ui->tbNebenkosten->hasFocus())
-        ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
-    ui->tbKosten->setValue(bh->sud()->geterg_Preis());
 
     mTimerWebViewUpdate.start(200);
 }
@@ -225,12 +220,6 @@ void TabBraudaten::on_btnBraudatumHeute_clicked()
     bh->sud()->setBraudatum(QDateTime());
 }
 
-void TabBraudaten::on_tbWuerzemengeKochbeginn_valueChanged(double value)
-{
-    if (ui->tbWuerzemengeKochbeginn->hasFocus())
-        bh->sud()->setWuerzemengeVorHopfenseihen(value);
-}
-
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
     double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
@@ -245,12 +234,6 @@ void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
 {
     if (ui->tbTempKochbeginn->hasFocus())
         updateValues();
-}
-
-void TabBraudaten::on_tbWuerzemengeKochende_valueChanged(double value)
-{
-    if (ui->tbWuerzemengeKochende->hasFocus())
-        bh->sud()->setWuerzemengeKochende(value);
 }
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
@@ -271,23 +254,11 @@ void TabBraudaten::on_tbTempKochende_valueChanged(double)
         updateValues();
 }
 
-void TabBraudaten::on_tbSWKochende_valueChanged(double value)
-{
-    if (ui->tbSWKochende->hasFocus())
-        bh->sud()->setSWKochende(value);
-}
-
 void TabBraudaten::on_btnSWKochende_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWKochende->value(), 0.0, 20.0, this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWKochende(dlg.value());
-}
-
-void TabBraudaten::on_tbSWAnstellen_valueChanged(double value)
-{
-    if (ui->tbSWAnstellen->hasFocus())
-        bh->sud()->setSWAnstellen(value);
 }
 
 void TabBraudaten::on_btnSWAnstellen_clicked()
@@ -303,12 +274,6 @@ void TabBraudaten::on_btnWasserVerschneidung_clicked()
     double menge = bh->sud()->getWuerzemengeKochende() + ui->tbWasserVerschneidung->value();
     bh->sud()->setSWAnstellen(bh->sud()->getSWSollAnstellen());
     bh->sud()->setWuerzemengeAnstellenTotal(menge);
-}
-
-void TabBraudaten::on_tbWuerzemengeAnstellenTotal_valueChanged(double value)
-{
-    if (ui->tbWuerzemengeAnstellenTotal->hasFocus())
-        bh->sud()->setWuerzemengeAnstellenTotal(value);
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
@@ -338,24 +303,6 @@ void TabBraudaten::on_tbSpeiseT_valueChanged(double)
 void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
 {
     bh->sud()->setSpeisemenge(ui->tbSpeisemengeNoetig->value());
-}
-
-void TabBraudaten::on_tbSpeisemenge_valueChanged(double value)
-{
-    if (ui->tbSpeisemenge->hasFocus())
-        bh->sud()->setSpeisemenge(value);
-}
-
-void TabBraudaten::on_tbWuerzemengeAnstellen_valueChanged(double value)
-{
-    if (ui->tbWuerzemengeAnstellen->hasFocus())
-        bh->sud()->setWuerzemengeAnstellen(value);
-}
-
-void TabBraudaten::on_tbNebenkosten_valueChanged(double value)
-{
-    if (ui->tbNebenkosten->hasFocus())
-        bh->sud()->setKostenWasserStrom(value);
 }
 
 void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)

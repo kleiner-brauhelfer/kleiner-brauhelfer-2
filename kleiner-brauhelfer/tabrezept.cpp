@@ -15,6 +15,7 @@
 #include "widgets/wdgweiterezutatgabe.h"
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrohstoffaustausch.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgeinmaischtemp.h"
 
 extern Brauhelfer* bh;
@@ -25,6 +26,32 @@ TabRezept::TabRezept(QWidget *parent) :
     ui(new Ui::TabRezept)
 {
     ui->setupUi(this);
+    ui->tbRestalkalitaet->setColumn(ModelSud::ColRestalkalitaetSoll);
+    ui->tbCO2->setColumn(ModelSud::ColCO2);
+    ui->tbSW->setColumn(ModelSud::ColSW);
+    ui->tbMenge->setColumn(ModelSud::ColMenge);
+    ui->tbFaktorHauptguss->setColumn(ModelSud::ColFaktorHauptguss);
+    ui->tbGesamtschuettung->setColumn(ModelSud::Colerg_S_Gesamt);
+    ui->tbSWMalz->setColumn(ModelSud::ColSW_Malz);
+    ui->tbSWWZMaischen->setColumn(ModelSud::ColSW_WZ_Maischen);
+    ui->tbSWWZKochen->setColumn(ModelSud::ColSW_WZ_Kochen);
+    ui->tbSWWZGaerung->setColumn(ModelSud::ColSW_WZ_Gaerung);
+    ui->tbSudnummer->setColumn(ModelSud::ColSudnummer);
+    ui->tbBittere->setColumn(ModelSud::ColIBU);
+    ui->tbFarbe->setColumn(ModelSud::Colerg_Farbe);
+    ui->tbSudhausausbeute->setColumn(ModelSud::ColSudhausausbeute);
+    ui->tbVerdampfungsziffer->setColumn(ModelSud::ColVerdampfungsrate);
+    ui->tbVergaerungsgrad->setColumn(ModelSud::ColVergaerungsgrad);
+    ui->tbReifezeit->setColumn(ModelSud::ColReifezeit);
+    ui->tbHGF->setColumn(ModelSud::ColhighGravityFaktor);
+    ui->tbEinmaischtemperatur->setColumn(ModelSud::ColEinmaischenTemp);
+    ui->tbKochzeit->setColumn(ModelSud::ColKochdauerNachBitterhopfung);
+    ui->tbNachisomerisierungszeit->setColumn(ModelSud::ColNachisomerisierungszeit);
+    ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
+    ui->tbFaktorHauptgussEmpfehlung->setColumn(ModelSud::ColFaktorHauptgussEmpfehlung);
+    ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
+    ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
+
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
@@ -184,6 +211,11 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         updateRastenDiagram();
         break;
     }
+}
+
+void TabRezept::onTabActivated()
+{
+    updateValues();
 }
 
 void TabRezept::checkEnabled()
@@ -447,53 +479,30 @@ void TabRezept::checkRohstoffe()
 
 void TabRezept::updateValues()
 {
+    if (!isTabActive())
+        return;
+
+    for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+        wdg->updateValue();
+    for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
+        wdg->updateValue();
+
     double restalkalitaetFaktor;
-    if (!ui->tbSudnummer->hasFocus())
-        ui->tbSudnummer->setValue(bh->sud()->getSudnummer());
     if (!ui->tbSudname->hasFocus())
     {
         ui->tbSudname->setText(bh->sud()->getSudname());
         ui->tbSudname->setCursorPosition(0);
     }
-    if (!ui->tbMenge->hasFocus())
-        ui->tbMenge->setValue(bh->sud()->getMenge());
-    if (!ui->tbSW->hasFocus())
-        ui->tbSW->setValue(bh->sud()->getSW());
-    if (!ui->tbCO2->hasFocus())
-        ui->tbCO2->setValue(bh->sud()->getCO2());
-    if (!ui->tbBittere->hasFocus())
-        ui->tbBittere->setValue(bh->sud()->getIBU());
-    if (!ui->tbSudhausausbeute->hasFocus())
-        ui->tbSudhausausbeute->setValue(bh->sud()->getSudhausausbeute());
-    if (!ui->tbVerdampfungsziffer->hasFocus())
-        ui->tbVerdampfungsziffer->setValue(bh->sud()->getVerdampfungsrate());
-    if (!ui->tbVergaerungsgrad->hasFocus())
-        ui->tbVergaerungsgrad->setValue(bh->sud()->getVergaerungsgrad());
-    ui->tbFarbe->setValue((int)bh->sud()->geterg_Farbe());
-    ui->tbGesamtschuettung->setValue(bh->sud()->geterg_S_Gesamt());
-    ui->tbSWMalz->setValue(bh->sud()->getSW_Malz());
+
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
-    ui->tbSWWZMaischen->setValue(bh->sud()->getSW_WZ_Maischen());
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
-    ui->tbSWWZKochen->setValue(bh->sud()->getSW_WZ_Kochen());
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
-    ui->tbSWWZGaerung->setValue(bh->sud()->getSW_WZ_Gaerung());
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
     ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
     ui->tbAlkohol->setValue(BierCalc::alkohol(bh->sud()->getSW(), ui->tbRestextrakt->value()));
-    ui->tbKosten->setValue(bh->sud()->geterg_Preis());
-    if (!ui->tbReifezeit->hasFocus())
-        ui->tbReifezeit->setValue(bh->sud()->getReifezeit());
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
-    if (!ui->tbHGF->hasFocus())
-        ui->tbHGF->setValue(bh->sud()->gethighGravityFaktor());
-    if (!ui->tbFaktorHauptguss->hasFocus())
-        ui->tbFaktorHauptguss->setValue(bh->sud()->getFaktorHauptguss());
-    ui->tbFaktorHauptgussEmpfehlung->setValue(bh->sud()->getFaktorHauptgussEmpfehlung());
-    if (!ui->tbRestalkalitaet->hasFocus())
-        ui->tbRestalkalitaet->setValue(bh->sud()->getRestalkalitaetSoll());
     if (!ui->cbWasserProfil->hasFocus())
         ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
@@ -501,9 +510,7 @@ void TabRezept::updateValues()
     ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
     ui->lblWasserprofil->setText(bh->sud()->getWasserprofil());
     restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
-    ui->tbHauptguss->setValue(bh->sud()->geterg_WHauptguss());
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
-    ui->tbNachguss->setValue(bh->sud()->geterg_WNachguss());
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
     if (ui->tbHGF->value() != 0.0)
     {
@@ -547,13 +554,8 @@ void TabRezept::updateValues()
     ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
     ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
     ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
-    if (!ui->tbEinmaischtemperatur->hasFocus())
-        ui->tbEinmaischtemperatur->setValue(bh->sud()->getEinmaischenTemp());
-    if (!ui->tbKochzeit->hasFocus())
-        ui->tbKochzeit->setValue(bh->sud()->getKochdauerNachBitterhopfung());
+
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
-    if (!ui->tbNachisomerisierungszeit->hasFocus())
-        ui->tbNachisomerisierungszeit->setValue(bh->sud()->getNachisomerisierungszeit());
     if (!ui->cbBerechnungsartHopfen->hasFocus())
         ui->cbBerechnungsartHopfen->setCurrentIndex(bh->sud()->getberechnungsArtHopfen());
     if (!ui->tbKommentar->hasFocus())
@@ -728,18 +730,23 @@ void TabRezept::updateMalzDiagram()
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
 {
-    double p = 100.0;
-    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Malz, this);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
-        p -= wdg->prozent();
+        double p = 100.0;
+        for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        {
+            WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+            p -= wdg->prozent();
+        }
+        if (fabs(p) < 0.01)
+            p = 0.0;
+        QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()},
+                                    {ModelMalzschuettung::ColName, dlg.name()},
+                                    {ModelMalzschuettung::ColProzent, p}});
+        bh->sud()->modelMalzschuettung()->append(values);
+        ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
     }
-    if (fabs(p) < 0.1)
-        p = 0.0;
-    QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()}});
-    int row = bh->sud()->modelMalzschuettung()->append(values);
-    bh->sud()->modelMalzschuettung()->setData(row, ModelMalzschuettung::ColProzent, p);
-    ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
 }
 
 void TabRezept::hopfenGaben_modified()
@@ -799,18 +806,24 @@ void TabRezept::updateHopfenGaben()
 
 void TabRezept::on_btnNeueHopfenGabe_clicked()
 {
-    double p = 100.0;
-    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
-        p -= wdg->prozent();
+        double p = 100.0;
+        for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        {
+            WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
+            p -= wdg->prozent();
+        }
+        if (fabs(p) < 0.01)
+            p = 0.0;
+        QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()},
+                                    {ModelHopfengaben::ColName, dlg.name()},
+                                    {ModelHopfengaben::ColZeit, bh->sud()->getKochdauerNachBitterhopfung()},
+                                    {ModelHopfengaben::ColProzent, p}});
+        bh->sud()->modelHopfengaben()->append(values);
+        ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
     }
-    if (fabs(p) < 0.1)
-        p = 0.0;
-    QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()}, {ModelHopfengaben::ColZeit, bh->sud()->getKochdauerNachBitterhopfung()}});
-    int row = bh->sud()->modelHopfengaben()->append(values);
-    bh->sud()->modelHopfengaben()->setData(row, ModelHopfengaben::ColProzent, p);
-    ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
 }
 
 void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
@@ -852,9 +865,14 @@ void TabRezept::updateHefeDiagram()
 
 void TabRezept::on_btnNeueHefeGabe_clicked()
 {
-    QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()}});
-    bh->sud()->modelHefegaben()->append(values);
-    ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hefe, this);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()},
+                                    {ModelHefegaben::ColName, dlg.name()}});
+        bh->sud()->modelHefegaben()->append(values);
+        ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::weitereZutatenGaben_modified()
@@ -871,16 +889,27 @@ void TabRezept::weitereZutatenGaben_modified()
 
 void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()
 {
-    QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()}, {ModelWeitereZutatenGaben::ColTyp, EWZ_Typ_Hopfen}});
-    bh->sud()->modelWeitereZutatenGaben()->append(values);
-    ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+                                    {ModelWeitereZutatenGaben::ColName, dlg.name()},
+                                    {ModelWeitereZutatenGaben::ColTyp, EWZ_Typ_Hopfen}});
+        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::on_btnNeueWeitereZutat_clicked()
 {
-    QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()}});
-    bh->sud()->modelWeitereZutatenGaben()->append(values);
-    ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Zusatz, this);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+                                    {ModelWeitereZutatenGaben::ColName, dlg.name()}});
+        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::anhaenge_modified()
@@ -903,46 +932,10 @@ void TabRezept::on_btnNeuerAnhang_clicked()
     ui->scrollAreaAnhang->verticalScrollBar()->setValue(ui->scrollAreaAnhang->verticalScrollBar()->maximum());
 }
 
-void TabRezept::on_tbSudnummer_valueChanged(int value)
-{
-    if (ui->tbSudnummer->hasFocus())
-        bh->sud()->setSudnummer(value);
-}
-
 void TabRezept::on_tbSudname_textChanged(const QString &value)
 {
     if (ui->tbSudname->hasFocus())
         bh->sud()->setSudname(value);
-}
-
-void TabRezept::on_tbMenge_valueChanged(double value)
-{
-    if (ui->tbMenge->hasFocus())
-        bh->sud()->setMenge(value);
-}
-
-void TabRezept::on_tbSW_valueChanged(double value)
-{
-    if (ui->tbSW->hasFocus())
-        bh->sud()->setSW(value);
-}
-
-void TabRezept::on_tbCO2_valueChanged(double value)
-{
-    if (ui->tbCO2->hasFocus())
-        bh->sud()->setCO2(value);
-}
-
-void TabRezept::on_tbBittere_valueChanged(int value)
-{
-    if (ui->tbBittere->hasFocus())
-        bh->sud()->setIBU(value);
-}
-
-void TabRezept::on_tbReifezeit_valueChanged(int value)
-{
-    if (ui->tbReifezeit->hasFocus())
-        bh->sud()->setReifezeit(value);
 }
 
 void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
@@ -961,64 +954,10 @@ void TabRezept::on_tbKommentar_textChanged()
     }
 }
 
-void TabRezept::on_tbHGF_valueChanged(int value)
-{
-    if (ui->tbHGF->hasFocus())
-        bh->sud()->sethighGravityFaktor(value);
-}
-
-void TabRezept::on_tbFaktorHauptguss_valueChanged(double value)
-{
-    if (ui->tbFaktorHauptguss->hasFocus())
-        bh->sud()->setFaktorHauptguss(value);
-}
-
 void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
         bh->sud()->setWasserprofil(value);
-}
-
-void TabRezept::on_tbRestalkalitaet_valueChanged(double value)
-{
-    if (ui->tbRestalkalitaet->hasFocus())
-        bh->sud()->setRestalkalitaetSoll(value);
-}
-
-void TabRezept::on_tbEinmaischtemperatur_valueChanged(int temp)
-{
-    if (ui->tbEinmaischtemperatur->hasFocus())
-        bh->sud()->setEinmaischenTemp(temp);
-}
-
-void TabRezept::on_tbKochzeit_valueChanged(int min)
-{
-    if (ui->tbKochzeit->hasFocus())
-        bh->sud()->setKochdauerNachBitterhopfung(min);
-}
-
-void TabRezept::on_tbNachisomerisierungszeit_valueChanged(int min)
-{
-    if (ui->tbNachisomerisierungszeit->hasFocus())
-        bh->sud()->setNachisomerisierungszeit(min);
-}
-
-void TabRezept::on_tbSudhausausbeute_valueChanged(double value)
-{
-    if (ui->tbSudhausausbeute->hasFocus())
-        bh->sud()->setSudhausausbeute(value);
-}
-
-void TabRezept::on_tbVerdampfungsziffer_valueChanged(double value)
-{
-    if (ui->tbVerdampfungsziffer->hasFocus())
-        bh->sud()->setVerdampfungsrate(value);
-}
-
-void TabRezept::on_tbVergaerungsgrad_valueChanged(double value)
-{
-    if (ui->tbVergaerungsgrad->hasFocus())
-        bh->sud()->setVergaerungsgrad(value);
 }
 
 void TabRezept::on_btnTagNeu_clicked()

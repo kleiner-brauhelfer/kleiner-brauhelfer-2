@@ -4,7 +4,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/rohstoffauswahlproxymodel.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
 extern Brauhelfer* bh;
@@ -48,6 +48,11 @@ bool WdgWeitereZutatGabe::setData(int col, const QVariant &value)
     return bh->sud()->modelWeitereZutatenGaben()->setData(mIndex, col, value);
 }
 
+QString WdgWeitereZutatGabe::name() const
+{
+    return data(ModelWeitereZutatenGaben::ColName).toString();
+}
+
 void WdgWeitereZutatGabe::checkEnabled(bool force)
 {
     bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
@@ -88,27 +93,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     mEnabled = enabled;
     if (mEnabled)
     {
-        RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
-        if (typ == EWZ_Typ_Hopfen)
-        {
-            model->setSourceModel(bh->modelHopfen());
-            model->setColumnMenge(ModelHopfen::ColMenge);
-            model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, ModelHopfengaben::Colerg_Menge));
-            model->sort(ModelHopfen::ColBeschreibung, Qt::AscendingOrder);
-            ui->cbZutat->setModel(model);
-            ui->cbZutat->setModelColumn(ModelHopfen::ColBeschreibung);
-        }
-        else
-        {
-            model->setSourceModel(bh->modelWeitereZutaten());
-            model->setColumnMenge(ModelWeitereZutaten::ColMengeGramm);
-            model->setIndexMengeBenoetigt(bh->sud()->modelWeitereZutatenGaben()->index(mIndex, ModelWeitereZutatenGaben::Colerg_Menge));
-            model->sort(ModelWeitereZutaten::ColBeschreibung, Qt::AscendingOrder);
-            ui->cbZutat->setModel(model);
-            ui->cbZutat->setModelColumn(ModelWeitereZutaten::ColBeschreibung);
-        }
-        ui->cbZutat->setEnabled(true);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(true);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
         ui->btnAufbrauchen->setVisible(true);
@@ -123,12 +108,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     }
     else
     {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(data(ModelWeitereZutatenGaben::ColName).toString()));
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(0);
-        ui->cbZutat->setEnabled(false);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(false);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
         ui->btnAufbrauchen->setVisible(false);
@@ -149,7 +129,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
 
 void WdgWeitereZutatGabe::updateValues(bool full)
 {
-    QString name = data(ModelWeitereZutatenGaben::ColName).toString();
+    QString zusatzname = name();
     int typ = data(ModelWeitereZutatenGaben::ColTyp).toInt();
     int zeitpunkt = data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
     int entnahme = data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt();
@@ -159,11 +139,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     checkEnabled(full);
 
-    if (!ui->cbZutat->hasFocus())
-    {
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(name);
-    }
+    ui->btnZutat->setText(zusatzname);
     if (!ui->tbMenge->hasFocus())
     {
         if (einheit == EWZ_Einheit_mg)
@@ -240,7 +216,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     if (typ == EWZ_Typ_Hopfen)
     {
-        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColTyp).toInt();
+        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, zusatzname, ModelHopfen::ColTyp).toInt();
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -269,14 +245,14 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (mEnabled)
     {
         if (typ == EWZ_Typ_Hopfen)
-            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColMenge).toInt());
+            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, zusatzname, ModelHopfen::ColMenge).toInt());
         else
-            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColMenge).toDouble());
+            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, zusatzname, ModelWeitereZutaten::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, ModelWeitereZutatenGaben::ColName).toString() == name)
+            if (model->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
                 benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
         if (typ == EWZ_Typ_Hopfen)
@@ -284,7 +260,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             model = bh->sud()->modelHopfengaben();
             for (int i = 0; i < model->rowCount(); ++i)
             {
-                if (model->data(i, ModelHopfengaben::ColName).toString() == name)
+                if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
                     benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
             }
         }
@@ -308,7 +284,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDauerTage->setReadOnly(false);
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(false);
-            ui->cbZutat->setEnabled(true);
+            ui->btnZutat->setEnabled(true);
             break;
         case EWZ_Zugabestatus_Zugegeben:
             ui->tbVorhanden->setVisible(false);
@@ -321,7 +297,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDauerTage->setReadOnly(false);
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(true);
-            ui->cbZutat->setEnabled(false);
+            ui->btnZutat->setEnabled(false);
             if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
             {
                 QDate currentDate = QDate::currentDate();
@@ -343,7 +319,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDauerTage->setReadOnly(true);
             ui->cbEntnahme->setEnabled(false);
             ui->tbMenge->setReadOnly(true);
-            ui->cbZutat->setEnabled(false);
+            ui->btnZutat->setEnabled(false);
             break;
         }
         ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
@@ -361,7 +337,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->tbDauerTage->setReadOnly(false);
         ui->cbEntnahme->setEnabled(true);
         ui->tbMenge->setReadOnly(false);
-        ui->cbZutat->setEnabled(true);
+        ui->btnZutat->setEnabled(true);
     }
 
     switch (zeitpunkt)
@@ -387,15 +363,27 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept || gSettings->ForceEnabled);
 }
 
+void WdgWeitereZutatGabe::on_btnZutat_clicked()
+{
+    if (data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+    {
+        DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+        dlg.select(name());
+        if (dlg.exec() == QDialog::Accepted)
+            setData(ModelHopfengaben::ColName, dlg.name());
+    }
+    else
+    {
+        DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Zusatz, this);
+        dlg.select(name());
+        if (dlg.exec() == QDialog::Accepted)
+            setData(ModelWeitereZutatenGaben::ColName, dlg.name());
+    }
+}
+
 void WdgWeitereZutatGabe::remove()
 {
     bh->sud()->modelWeitereZutatenGaben()->removeRow(mIndex);
-}
-
-void WdgWeitereZutatGabe::on_cbZutat_currentIndexChanged(const QString &text)
-{
-    if (ui->cbZutat->hasFocus())
-        setData(ModelWeitereZutatenGaben::ColName, text);
 }
 
 void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)

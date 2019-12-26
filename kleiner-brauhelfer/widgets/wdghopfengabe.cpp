@@ -3,7 +3,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/rohstoffauswahlproxymodel.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -69,15 +69,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
     mEnabled = enabled;
     if (mEnabled)
     {
-        RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
-        model->setSourceModel(bh->modelHopfen());
-        model->setColumnMenge(ModelHopfen::ColMenge);
-        model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, ModelHopfengaben::Colerg_Menge));
-        model->sort(ModelHopfen::ColBeschreibung, Qt::AscendingOrder);
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(ModelHopfen::ColBeschreibung);
-        ui->cbZutat->setEnabled(true);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(true);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
         ui->btnAufbrauchen->setVisible(true);
@@ -91,12 +83,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
     }
     else
     {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(name()));
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(0);
-        ui->cbZutat->setEnabled(false);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(false);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
         ui->btnAufbrauchen->setVisible(false);
@@ -123,11 +110,7 @@ void WdgHopfenGabe::updateValues(bool full)
 
     checkEnabled(full);
 
-    if (!ui->cbZutat->hasFocus())
-    {
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(hopfenname);
-    }
+    ui->btnZutat->setText(hopfenname);
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbAnteilProzent->hasFocus())
@@ -223,10 +206,12 @@ void WdgHopfenGabe::updateValues(bool full)
     }
 }
 
-void WdgHopfenGabe::on_cbZutat_currentIndexChanged(const QString &text)
+void WdgHopfenGabe::on_btnZutat_clicked()
 {
-    if (ui->cbZutat->hasFocus())
-        setData(ModelHopfengaben::ColName, text);
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    dlg.select(name());
+    if (dlg.exec() == QDialog::Accepted)
+        setData(ModelHopfengaben::ColName, dlg.name());
 }
 
 void WdgHopfenGabe::on_tbMengeProzent_valueChanged(double value)

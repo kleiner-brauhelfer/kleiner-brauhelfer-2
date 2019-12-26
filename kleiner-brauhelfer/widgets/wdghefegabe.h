@@ -25,7 +25,7 @@ public slots:
     void updateValues(bool full = false);
 
 private slots:
-    void on_cbZutat_currentIndexChanged(const QString &text);
+    void on_btnZutat_clicked();
     void on_tbMenge_valueChanged(int value);
     void on_tbTage_valueChanged(int value);
     void on_tbDatum_dateChanged(const QDate &date);

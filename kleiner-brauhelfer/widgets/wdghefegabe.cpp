@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/rohstoffauswahlproxymodel.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
 extern Brauhelfer* bh;
@@ -74,25 +74,7 @@ void WdgHefeGabe::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
-    if (mEnabled)
-    {
-        RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
-        model->setSourceModel(bh->modelHefe());
-        model->setColumnMenge(ModelHefe::ColMenge);
-        model->setIndexMengeBenoetigt(bh->sud()->modelHefegaben()->index(mIndex, ModelHefegaben::ColMenge));
-        model->sort(ModelHefe::ColBeschreibung, Qt::AscendingOrder);
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(ModelHefe::ColBeschreibung);
-    }
-    else
-    {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(name()));
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(0);
-    }
-    ui->cbZutat->setEnabled(enabled);
-    ui->cbZutat->setCurrentIndex(-1);
+    ui->btnZutat->setEnabled(enabled);
     ui->btnLoeschen->setVisible(enabled);
     ui->tbVorhanden->setVisible(enabled);
     ui->btnAufbrauchen->setVisible(enabled);
@@ -108,11 +90,7 @@ void WdgHefeGabe::updateValues(bool full)
 
     checkEnabled(full);
 
-    if (!ui->cbZutat->hasFocus())
-    {
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(hefename);
-    }
+    ui->btnZutat->setText(hefename);
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())
@@ -155,15 +133,17 @@ void WdgHefeGabe::updateValues(bool full)
     }
 }
 
+void WdgHefeGabe::on_btnZutat_clicked()
+{
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hefe, this);
+    dlg.select(name());
+    if (dlg.exec() == QDialog::Accepted)
+        setData(ModelHefegaben::ColName, dlg.name());
+}
+
 void WdgHefeGabe::remove()
 {
     bh->sud()->modelHefegaben()->removeRow(mIndex);
-}
-
-void WdgHefeGabe::on_cbZutat_currentIndexChanged(const QString &text)
-{
-    if (ui->cbZutat->hasFocus())
-        setData(ModelHefegaben::ColName, text);
 }
 
 void WdgHefeGabe::on_tbMenge_valueChanged(int value)

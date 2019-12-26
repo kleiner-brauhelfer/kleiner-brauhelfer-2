@@ -66,12 +66,12 @@
          </widget>
         </item>
         <item>
-         <widget class="ComboBox" name="cbZutat">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden Weitere Zutaten ausgewählt. Sie müssen zuvor im Tab Rohstoffe definiert worden sein.&lt;/p&gt;&lt;p&gt;• Schwarz = Rohstoff ist in ausreichender Menge vorhanden • Orange = Rohstoff ist in erforderlicher Menge nicht vorhanden • Rot = Rohstoff ist gar nicht vorhanden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="maxVisibleItems">
-           <number>20</number>
+         <widget class="QPushButton" name="btnZutat">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -591,14 +591,14 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>
@@ -607,7 +607,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>cbZutat</tabstop>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbMengeTotal</tabstop>

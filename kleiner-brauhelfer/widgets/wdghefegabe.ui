@@ -69,12 +69,12 @@
          </widget>
         </item>
         <item>
-         <widget class="ComboBox" name="cbZutat">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Reiter wird die Hefe für eine weitere, &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe&lt;/span&gt; bestimmt.&lt;/p&gt;&lt;p&gt;• Schwarz = Rohstoff ist in ausreichender Menge vorhanden • Orange = Rohstoff ist in erforderlicher Menge nicht vorhanden • Rot = Rohstoff ist gar nicht vorhanden&lt;/p&gt;&lt;p&gt;Zusätzliche Hefegaben haben ein breites Einsatzgebiet. In einfachen Fällen soll damit eine eingeschlafene Gärung erneut aktiviert oder bei zu wenig Hefezellen – man spricht auch von &lt;span style=&quot; font-weight:600;&quot;&gt;underpitching &lt;/span&gt;– einer geschmacklich nachteiligen Entwicklung durch eine gestresste Hefe entgegengewirkt werden.&lt;/p&gt;&lt;p&gt;Oft aber kommen zweite Hefegabe ganz geplant bei anspruchsvollen Rezepten mit einem durch die Hefe bestimmten Geschmacksprofil zur Anwendung, die eine &lt;span style=&quot; font-weight:600;&quot;&gt;weitere Geschmackskomponente&lt;/span&gt; im Jungbier einbringen soll. Eine weitere Spielart ist eine anspruchsvolle Gärführung.&lt;/p&gt;&lt;p&gt;Nähere Informationen hält die Fachliteratur oder das Fachforum der Wahl bereit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="maxVisibleItems">
-           <number>20</number>
+         <widget class="QPushButton" name="btnZutat">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -270,11 +270,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
@@ -286,7 +281,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>cbZutat</tabstop>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbVorhanden</tabstop>

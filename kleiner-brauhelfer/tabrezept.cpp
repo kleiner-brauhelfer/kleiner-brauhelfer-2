@@ -15,6 +15,7 @@
 #include "widgets/wdgweiterezutatgabe.h"
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrohstoffaustausch.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgeinmaischtemp.h"
 
 extern Brauhelfer* bh;
@@ -725,18 +726,23 @@ void TabRezept::updateMalzDiagram()
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
 {
-    double p = 100.0;
-    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Malz, this);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
-        p -= wdg->prozent();
+        double p = 100.0;
+        for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        {
+            WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+            p -= wdg->prozent();
+        }
+        if (fabs(p) < 0.01)
+            p = 0.0;
+        QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()},
+                                    {ModelMalzschuettung::ColName, dlg.name()},
+                                    {ModelMalzschuettung::ColProzent, p}});
+        bh->sud()->modelMalzschuettung()->append(values);
+        ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
     }
-    if (fabs(p) < 0.1)
-        p = 0.0;
-    QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()}});
-    int row = bh->sud()->modelMalzschuettung()->append(values);
-    bh->sud()->modelMalzschuettung()->setData(row, ModelMalzschuettung::ColProzent, p);
-    ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
 }
 
 void TabRezept::hopfenGaben_modified()
@@ -796,18 +802,24 @@ void TabRezept::updateHopfenGaben()
 
 void TabRezept::on_btnNeueHopfenGabe_clicked()
 {
-    double p = 100.0;
-    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
-        p -= wdg->prozent();
+        double p = 100.0;
+        for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        {
+            WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
+            p -= wdg->prozent();
+        }
+        if (fabs(p) < 0.01)
+            p = 0.0;
+        QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()},
+                                    {ModelHopfengaben::ColName, dlg.name()},
+                                    {ModelHopfengaben::ColZeit, bh->sud()->getKochdauerNachBitterhopfung()},
+                                    {ModelHopfengaben::ColProzent, p}});
+        bh->sud()->modelHopfengaben()->append(values);
+        ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
     }
-    if (fabs(p) < 0.1)
-        p = 0.0;
-    QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()}, {ModelHopfengaben::ColZeit, bh->sud()->getKochdauerNachBitterhopfung()}});
-    int row = bh->sud()->modelHopfengaben()->append(values);
-    bh->sud()->modelHopfengaben()->setData(row, ModelHopfengaben::ColProzent, p);
-    ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
 }
 
 void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
@@ -849,9 +861,14 @@ void TabRezept::updateHefeDiagram()
 
 void TabRezept::on_btnNeueHefeGabe_clicked()
 {
-    QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()}});
-    bh->sud()->modelHefegaben()->append(values);
-    ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hefe, this);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()},
+                                    {ModelHefegaben::ColName, dlg.name()}});
+        bh->sud()->modelHefegaben()->append(values);
+        ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::weitereZutatenGaben_modified()
@@ -868,16 +885,27 @@ void TabRezept::weitereZutatenGaben_modified()
 
 void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()
 {
-    QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()}, {ModelWeitereZutatenGaben::ColTyp, EWZ_Typ_Hopfen}});
-    bh->sud()->modelWeitereZutatenGaben()->append(values);
-    ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+                                    {ModelWeitereZutatenGaben::ColName, dlg.name()},
+                                    {ModelWeitereZutatenGaben::ColTyp, EWZ_Typ_Hopfen}});
+        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::on_btnNeueWeitereZutat_clicked()
 {
-    QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()}});
-    bh->sud()->modelWeitereZutatenGaben()->append(values);
-    ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Zusatz, this);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+                                    {ModelWeitereZutatenGaben::ColName, dlg.name()}});
+        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::anhaenge_modified()

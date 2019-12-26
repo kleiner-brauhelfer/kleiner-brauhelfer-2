@@ -17,13 +17,14 @@ public:
     bool isEnabled() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
+    QString name() const;
     void remove();
 
 public slots:
     void updateValues(bool full = false);
 
 private slots:
-    void on_cbZutat_currentIndexChanged(const QString &text);
+    void on_btnZutat_clicked();
     void on_btnLoeschen_clicked();
     void on_tbMenge_valueChanged(double value);
     void on_tbMengeTotal_valueChanged(double value);

@@ -61,6 +61,7 @@ SOURCES += \
     dialogs/dlgeinmaischtemp.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffaustausch.cpp \
+    dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
     dialogs/dlgsudteilen.cpp \
@@ -80,7 +81,6 @@ SOURCES += \
     model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
     model/readonlydelegate.cpp \
-    model/rohstoffauswahlproxymodel.cpp \
     model/spinboxdelegate.cpp \
     widgets/chartview.cpp \
     widgets/combobox.cpp \
@@ -129,6 +129,7 @@ HEADERS += \
     dialogs/dlgeinmaischtemp.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffaustausch.h \
+    dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
     dialogs/dlgsudteilen.h \
@@ -148,7 +149,6 @@ HEADERS += \
     model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
     model/readonlydelegate.h \
-    model/rohstoffauswahlproxymodel.h \
     model/spinboxdelegate.h \
     widgets/chartview.h \
     widgets/combobox.h \
@@ -192,6 +192,7 @@ FORMS += \
     dialogs/dlgeinmaischtemp.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffaustausch.ui \
+    dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \
     dialogs/dlgsudteilen.ui \

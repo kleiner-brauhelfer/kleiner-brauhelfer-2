@@ -95,6 +95,145 @@
   </div>
   {{/Rezept.Kommentar}}
 
+  {{#Zutaten}}
+  <div class="rm" align="center">
+    <h2>Zutaten</h2>
+    <table>
+      <tr>
+        {{#Malz}}
+        <td>
+          <table>
+            <tr>
+              <th align="left">Malz</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Prozent}}</span> %</td>
+              <td align="right"><span class="value">{{Menge}}</span> kg</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          </table>
+        </td>
+        {{/Malz}}
+        <td>
+          <table>
+          {{#Honig}}
+            <tr>
+              <th align="left">Honig</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Honig}}
+          {{#Zucker}}
+            <tr>
+              <th align="left">Zucker</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Zucker}}
+          </table>
+        </td>
+        <td>
+          <table>
+          {{#Hopfen}}
+            <tr>
+              <th align="left">Hopfen</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}} ({{Alpha}}%)</td>
+              <td align="right"><span class="value">{{Menge}}</span> g</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Hopfen}}
+          {{#Kalthopfen}}
+            <tr>
+              <th align="left">Stopfhopfen</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Kalthopfen}}
+          </table>
+        </td>
+        <td>
+          <table>
+          {{#Hefe}}
+            <tr>
+              <th align="left">Hefe</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> x</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Hefe}}
+          {{#Sonstiges}}
+            <tr>
+              <th align="left">Sonstiges</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Sonstiges}}
+          </table>
+        </td>
+        <td>
+          <table>
+          {{#Gewuerz}}
+            <tr>
+              <th align="left">Gew&uuml;rze</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Gewuerz}}
+          {{#Frucht}}
+            <tr>
+              <th align="left">Fr&uuml;chte</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Frucht}}
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+  {{/Zutaten}}
+
   {{#Geraete}}
   <div class="rm" align="center">
     <h2>Ben&ouml;tigte Ger&auml;tschaften</h2>
@@ -108,7 +247,7 @@
 
   <div class="rm" align="center">
     <h2>Maischen</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       <tr>
@@ -244,7 +383,7 @@
 
   <div class="rm" align="center">
     <h2>L&auml;utern</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       <tr>
@@ -267,7 +406,7 @@
 
   <div class="rm" align="center">
     <h2>W&uuml;rzekochen</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       {{#Zutaten.ZutatenVorderwuerze}}
@@ -465,7 +604,7 @@
 
   <div class="rm" align="center">
     <h2>Abseihen & Anstellen</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       <tr>
@@ -508,7 +647,7 @@
 
   <div class="rm" align="center">
     <h2>G&auml;rung</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       {{#Zutaten.Hefe}}
@@ -534,7 +673,7 @@
       {{/Zutaten.Hefe}}
       {{#Zutaten.ZutatenHopfenstopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Hopfenstopfen</strong></td>
+        <td class="underline" valign="top"><strong>Stopfhopfen</strong></td>
         <td class="underline">
           <table>
             <col width="200">

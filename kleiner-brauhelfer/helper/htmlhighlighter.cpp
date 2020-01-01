@@ -2,20 +2,39 @@
 #include <QTextCharFormat>
 #include <QBrush>
 #include <QColor>
+#include "settings.h"
+
+extern Settings* gSettings;
 
 HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
     QSyntaxHighlighter(parent)
 {
     HighlightingRule rule;
 
-    edgeTagFormat.setForeground(QBrush(QColor("#32a9dd")));
-    insideTagFormat.setForeground(Qt::blue);
+    if (gSettings->theme() != Settings::Dark)
+    {
+        edgeTagFormat.setForeground(QBrush(QColor("#32a9dd")));
+        insideTagFormat.setForeground(Qt::blue);
+        tagsFormat.setForeground(Qt::darkBlue);
+        multiLineCommentFormat.setForeground(Qt::darkGray);
+        quotationFormat.setForeground(Qt::darkGreen);
+    }
+    else
+    {
+        edgeTagFormat.setForeground(QBrush(QColor("#2a82da")));
+        insideTagFormat.setForeground(QBrush(QColor("#32a9dd")));
+        tagsFormat.setForeground(QBrush(QColor("#0044FF")));
+        multiLineCommentFormat.setForeground(Qt::darkGray);
+        quotationFormat.setForeground(QBrush(QColor("#82da2a")));
+    }
     insideTagFormat.setFontWeight(QFont::Bold);
+    tagsFormat.setFontWeight(QFont::Bold);
+
     openTag = QRegExp("<");
     closeTag = QRegExp(">");
-
-    tagsFormat.setForeground(Qt::darkBlue);
-    tagsFormat.setFontWeight(QFont::Bold);
+    commentStartExpression = QRegExp("<!--");
+    commentEndExpression = QRegExp("-->");
+    quotes = QRegExp("\"");
 
     QStringList keywordPatterns;
     keywordPatterns << "<\\ba\\b" << "<\\babbr\\b" << "<\\bacronym\\b" << "<\\baddress\\b" << "<\\bapplet\\b"
@@ -90,13 +109,6 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
         rule.format = tagsFormat;
         endTagRules.append(rule);
     }
-
-    multiLineCommentFormat.setForeground(Qt::darkGray);
-    commentStartExpression = QRegExp("<!--");
-    commentEndExpression = QRegExp("-->");
-
-    quotationFormat.setForeground(Qt::darkGreen);
-    quotes = QRegExp("\"");
 }
 
 void HtmlHighLighter::highlightBlock(const QString &text)

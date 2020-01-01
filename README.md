@@ -31,6 +31,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ### Version 2.1.0 (in Entwicklung)
 - Neu: Dialog für Zutatauswahl
+- Fix: Update der Ressourcen verbessert (erst bei nächstem Update wirksam)
 
 ### Version 2.0.0 (22.12.2019)
 - Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert

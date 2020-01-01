@@ -190,16 +190,46 @@ static QByteArray getHash(const QString &fileName)
     return hash.result();
 }
 
+static void saveResourcesHash()
+{
+    gSettings->beginGroup("ResourcesHashes");
+    QDirIterator it(":/data", QDirIterator::Subdirectories);
+    while (it.hasNext())
+    {
+        it.next();
+        if (it.fileName() == "kb_daten.sqlite")
+            continue;
+        if (it.fileInfo().isDir())
+            continue;
+        QByteArray hash = getHash(it.filePath());
+        gSettings->setValue(it.filePath(), hash);
+    }
+    gSettings->endGroup();
+}
+
+static QByteArray getPreviousHash(const QString &fileName)
+{
+    QByteArray hash;
+    gSettings->beginGroup("ResourcesHashes");
+    hash = gSettings->value(fileName).toByteArray();
+    gSettings->endGroup();
+    return hash;
+}
+
 static void copyResources()
 {
-    QString dataDir = gSettings->dataDir();
     bool update = gSettings->isNewProgramVersion();
+
+    // create data directory
+    QString dataDir = gSettings->dataDir();
     if (!QDir(dataDir).exists())
     {
         if (!QDir().mkpath(dataDir))
             QMessageBox::critical(nullptr, QApplication::applicationName(),
                                   QObject::tr("Der Ordner \"%1\" konnte nicht erstellt werden.").arg(dataDir));
     }
+
+    // copy resources
     QDirIterator it(":/data", QDirIterator::Subdirectories);
     while (it.hasNext())
     {
@@ -207,6 +237,7 @@ static void copyResources()
         if (it.fileName() == "kb_daten.sqlite")
             continue;
 
+        // create directory
         QString filePath = dataDir + it.filePath().mid(7);
         if (it.fileInfo().isDir())
         {
@@ -214,6 +245,7 @@ static void copyResources()
             continue;
         }
 
+        // copy file
         QFile fileResource(it.filePath());
         QFile fileLocal(filePath);
         if (!fileLocal.exists())
@@ -226,14 +258,17 @@ static void copyResources()
         }
         else if (update)
         {
-            QByteArray hashResource = getHash(fileResource.fileName());
             QByteArray hashLocal = getHash(fileLocal.fileName());
-            if (hashLocal != hashResource)
+            if (hashLocal != getHash(it.filePath()))
             {
-                QMessageBox::StandardButton ret = QMessageBox::question(nullptr, QApplication::applicationName(),
+                QMessageBox::StandardButton ret = QMessageBox::Yes;
+                if (hashLocal != getPreviousHash(it.filePath()))
+                {
+                    ret = QMessageBox::question(nullptr, QApplication::applicationName(),
                                                 QObject::tr("Die Ressourcendatei \"%1\" ist verschieden von der lokalen Datei.\n"
                                                             "Die Datei wurde entweder manuell editiert oder durch ein Update verändert.\n\n"
                                                             "Soll die lokale Datei ersetzt werden?").arg(it.fileName()));
+                }
                 if (ret == QMessageBox::Yes)
                 {
                     fileLocal.remove();
@@ -245,6 +280,12 @@ static void copyResources()
                 }
             }
         }
+    }
+
+    // store hashes for next update
+    if (update)
+    {
+        saveResourcesHash();
     }
 }
 

@@ -34,9 +34,11 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbSWSollKochbeginnMitWz->setColumn(ModelSud::ColSWSollKochbeginnMitWz);
     ui->tbMengeSollKochende20->setColumn(ModelSud::ColMengeSollKochende);
     ui->tbSWSollKochende->setColumn(ModelSud::ColSWSollKochende);
-    ui->tbVerdampfung->setColumn(ModelSud::ColVerdampfungsziffer);
+    ui->tbVerdampfung->setColumn(ModelSud::ColVerdampfungsrateIst);
     ui->tbAusbeute->setColumn(ModelSud::Colerg_Sudhausausbeute);
     ui->tbAusbeuteEffektiv->setColumn(ModelSud::Colerg_EffektiveAusbeute);
+    ui->tbVerdampfungRezept->setColumn(ModelSud::ColVerdampfungsrate);
+    ui->tbAusbeuteRezept->setColumn(ModelSud::ColSudhausausbeute);
     ui->tbSWAnstellenSoll->setColumn(ModelSud::ColSWSollAnstellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
@@ -104,13 +106,20 @@ void TabBraudaten::sudLoaded()
 {
     checkEnabled();
     updateValues();
+    ui->tbSpeiseSRE->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
 {
-    if (index.column() == ModelSud::ColStatus)
+    switch (index.column())
     {
+    case ModelSud::ColStatus:
         checkEnabled();
+        break;
+    case ModelSud::ColSW:
+    case ModelSud::ColVergaerungsgrad:
+        ui->tbSpeiseSRE->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
+        break;
     }
 }
 

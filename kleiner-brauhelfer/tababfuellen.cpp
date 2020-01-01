@@ -25,6 +25,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->tbSw->setColumn(ModelSud::ColSWIst);
     ui->tbTEVG->setColumn(ModelSud::ColtEVG);
+    ui->tbSEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbSEVG->setColumn(ModelSud::ColsEVG);
     ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
@@ -159,6 +160,7 @@ void TabAbfuellen::updateValues()
     ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunktEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
+	ui->tbAlkoholRezept->setValue(BierCalc::alkohol(bh->sud()->getSW(), BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad())));
 
     ui->cbSpunden->setChecked(bh->sud()->getSpunden());
     ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());

@@ -39,6 +39,9 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbSudnummer->setColumn(ModelSud::ColSudnummer);
     ui->tbBittere->setColumn(ModelSud::ColIBU);
     ui->tbFarbe->setColumn(ModelSud::Colerg_Farbe);
+    ui->tbSudhausausbeute->setColumn(ModelSud::ColSudhausausbeute);
+    ui->tbVerdampfungsziffer->setColumn(ModelSud::ColVerdampfungsrate);
+    ui->tbVergaerungsgrad->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbReifezeit->setColumn(ModelSud::ColReifezeit);
     ui->tbHGF->setColumn(ModelSud::ColhighGravityFaktor);
     ui->tbEinmaischtemperatur->setColumn(ModelSud::ColEinmaischenTemp);
@@ -495,7 +498,8 @@ void TabRezept::updateValues()
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
-
+    ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
+    ui->tbAlkohol->setValue(BierCalc::alkohol(bh->sud()->getSW(), ui->tbRestextrakt->value()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);

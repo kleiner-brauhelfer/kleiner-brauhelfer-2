@@ -32,6 +32,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.1.0 (in Entwicklung)
 - Neu: Dialog für Zutatauswahl
 - Neu: Zutatenliste im Spickzettel
+- Neu: Sudspezifische Sudhausausbeute und Verdampfungsrate
+- Neu: Eingabemöglichkeit des Endvergärungsgrads für die Abschätzung des Alkoholgehalts
 - Fix: Update der Ressourcen verbessert (erst bei nächstem Update wirksam)
 - Fix: Farben für HTML Editiermodus beim dunklen Design
 

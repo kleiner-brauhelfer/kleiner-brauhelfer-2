@@ -876,6 +876,25 @@ bool Database::update()
             db.commit();
         }
 
+        if (version == 2001)
+        {
+            ++version;
+            qInfo() << "Updating to version:" << version;
+            db.transaction();
+
+            // Sud
+            //  - neue Spalte 'Sudhausausbeute'
+            //  - neue Spalte 'Verdampfungsrate'
+            //  - neue Spalte 'Vergaerungsgrad'
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN Sudhausausbeute REAL DEFAULT 60");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN Verdampfungsrate REAL DEFAULT 10");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN Vergaerungsgrad REAL DEFAULT 70");
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
         return true;
     }
     catch (const std::exception& ex)

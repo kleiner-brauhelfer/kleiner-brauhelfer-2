@@ -141,10 +141,18 @@ public:
     /**
      * @brief Vergärungsgrad [%]
      * @param sw Stammwuerze [°P]
-     * @param e Extrakt [°P]
+     * @param re Restextrakt [°P]
      * @return Vergärungsgrad [%]
      */
-    Q_INVOKABLE static double vergaerungsgrad(double sw, double e);
+    Q_INVOKABLE static double vergaerungsgrad(double sw, double re);
+
+    /**
+     * @brief sreAusVergaerungsgrad
+     * @param sw
+     * @param vg
+     * @return
+     */
+    Q_INVOKABLE static double sreAusVergaerungsgrad(double sw, double vg);
 
     /**
      * @brief Alkohol [vol%]
@@ -252,13 +260,13 @@ public:
     Q_INVOKABLE static double volumenWasser(double T1, double T2, double V1);
 
     /**
-     * @brief Berechnet die Verdampfungsziffer
+     * @brief Berechnet die Verdampfungsrate
      * @param V1 Anfangsvolumen [L]
      * @param V2 Endvolumen [L]
      * @param t Kochzeit [min]
-     * @return Verdampfungsziffer [%]
+     * @return Verdampfungsrate [%]
      */
-    Q_INVOKABLE static double verdampfungsziffer(double V1, double V2, double t);
+    Q_INVOKABLE static double verdampfungsrate(double V1, double V2, double t);
 
     /**
      * @brief Berechnet die Sudhausausbeute

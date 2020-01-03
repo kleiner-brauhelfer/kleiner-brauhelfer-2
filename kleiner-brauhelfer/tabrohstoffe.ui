@@ -45,7 +45,7 @@
      <item>
       <widget class="QRadioButton" name="radioButtonInGebrauch">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten Sud&lt;/span&gt; verwendet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>in Gebrauch</string>
@@ -109,7 +109,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden ale &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Malz&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Malz&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -161,7 +161,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden ale &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hopfen&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hopfen&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -213,7 +213,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden ale &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hefe&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hefe&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -265,7 +265,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden ale &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Weitere Zutaten&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Weitere Zutaten&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -315,7 +315,7 @@
            <item>
             <widget class="TableView" name="tableWasser">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden ale &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Wasser&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Dezidierte Spalten gibt es hier nicht. Die Liste kann um zusätzliche Wasserprofile über die Buttons unten erweitert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alternatingRowColors">
               <bool>true</bool>

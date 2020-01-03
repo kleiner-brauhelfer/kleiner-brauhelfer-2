@@ -13,8 +13,8 @@
     <table>
       <tr>
         <td valign="center" align="right">
-          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:138px;height:138px">
-            <img class="glas" style="padding:0px;margin:0px;width:140px;height:140px">
+          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:132px;height:132px">
+            <img class="glas" style="padding:0px;margin:-4px;width:140px;height:140px">
           </div>
         </td>
         <td valign="top">
@@ -91,6 +91,7 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm" align="center">
+    <h2>Bemerkungen</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
@@ -101,7 +102,7 @@
     <table>
       <tr>
         {{#Malz}}
-        <td>
+        <td valign="top">
           <table>
             <tr>
               <th align="left">Malz</th>
@@ -117,7 +118,7 @@
           </table>
         </td>
         {{/Malz}}
-        <td>
+        <td valign="top">
           <table>
           {{#Honig}}
             <tr>
@@ -145,7 +146,7 @@
           {{/Zucker}}
           </table>
         </td>
-        <td>
+        <td valign="top">
           <table>
           {{#Hopfen}}
             <tr>
@@ -173,7 +174,7 @@
           {{/Kalthopfen}}
           </table>
         </td>
-        <td>
+        <td valign="top">
           <table>
           {{#Hefe}}
             <tr>
@@ -201,7 +202,7 @@
           {{/Sonstiges}}
           </table>
         </td>
-        <td>
+        <td valign="top">
           <table>
           {{#Gewuerz}}
             <tr>

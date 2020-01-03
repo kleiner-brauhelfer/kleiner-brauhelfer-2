@@ -242,8 +242,6 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
     double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
-    dlg.setVisibleVonOben(false);
-    dlg.setVisibleVonUnten(false);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setWuerzemengeKochende(dlg.getLiter());
 }

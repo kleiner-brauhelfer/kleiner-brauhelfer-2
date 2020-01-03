@@ -252,7 +252,7 @@
          <item row="2" column="1">
           <widget class="QPushButton" name="btnExportieren">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein vorhandenes Rezept in ein anderes Format exportiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatible sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein vorhandenes Rezept in ein anderes Format exportiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Rezept exportieren</string>
@@ -272,7 +272,7 @@
          <item row="2" column="0">
           <widget class="QPushButton" name="btnImportieren">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format importiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatible sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format importiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Rezept importieren</string>

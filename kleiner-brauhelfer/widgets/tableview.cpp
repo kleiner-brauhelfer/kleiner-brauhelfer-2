@@ -29,6 +29,16 @@ void TableView::keyPressEvent(QKeyEvent* event)
                 cols << colLogical;
         }
 
+        // header
+        for (int col : cols)
+        {
+            QString value = model()->headerData(col, Qt::Horizontal).toString();
+            clipboardText.append(value);
+            if (col != cols.last())
+                clipboardText.append("\t");
+        }
+        clipboardText.append("\n");
+
         QModelIndexList rows = selectionModel()->selectedRows();
         if (!rows.isEmpty())
         {

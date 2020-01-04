@@ -232,6 +232,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+                    this, SLOT(sudDataChanged(const QModelIndex&)));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onSchnellgaerverlaufRowInserted()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onSchnellgaerverlaufRowInserted()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onSchnellgaerverlaufRowInserted()));
@@ -326,6 +328,14 @@ void TabGaerverlauf::sudLoaded()
     updateDiagramm();
     updateValues();
     updateWeitereZutaten();
+}
+
+void TabGaerverlauf::sudDataChanged(const QModelIndex& index)
+{
+    if (index.column() == ModelSud::ColStatus)
+    {
+        updateWeitereZutaten();
+    }
 }
 
 void TabGaerverlauf::onSchnellgaerverlaufRowInserted()

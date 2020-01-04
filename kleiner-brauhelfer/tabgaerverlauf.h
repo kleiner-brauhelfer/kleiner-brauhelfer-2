@@ -24,6 +24,7 @@ private:
 
 private slots:
     void sudLoaded();
+    void sudDataChanged(const QModelIndex& index);
     void onSchnellgaerverlaufRowInserted();
     void onHauptgaerverlaufRowInserted();
     void onNachgaerverlaufRowInserted();

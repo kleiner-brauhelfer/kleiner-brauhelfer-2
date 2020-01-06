@@ -353,6 +353,10 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     double Speisemenge = modelSud()->data(row1, ModelSud::ColSpeisemenge).toDouble();
     double WuerzemengeAnstellen = modelSud()->data(row1, ModelSud::ColWuerzemengeAnstellen).toDouble();
     double erg_AbgefuellteBiermenge = modelSud()->data(row1, ModelSud::Colerg_AbgefuellteBiermenge).toDouble();
+    double erg_S_Gesamt = modelSud()->data(row1, ModelSud::Colerg_S_Gesamt).toDouble();
+    double erg_WHauptguss = modelSud()->data(row1, ModelSud::Colerg_WHauptguss).toDouble();
+    double erg_WNachguss = modelSud()->data(row1, ModelSud::Colerg_WNachguss).toDouble();
+    double erg_W_Gesamt = modelSud()->data(row1, ModelSud::Colerg_W_Gesamt).toDouble();
 
     double factor = 1.0 - prozent;
     modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
@@ -361,6 +365,10 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     modelSud()->setData(row2, ModelSud::ColSpeisemenge, Speisemenge * factor);
     modelSud()->setData(row2, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
     modelSud()->setData(row2, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
+    modelSud()->setData(row2, ModelSud::Colerg_S_Gesamt, erg_S_Gesamt * factor);
+    modelSud()->setData(row2, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
+    modelSud()->setData(row2, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
+    modelSud()->setData(row2, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
     int sudId2 = modelSud()->data(row2, ModelSud::ColID).toInt();
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
@@ -379,6 +387,10 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     modelSud()->setData(row1, ModelSud::ColSpeisemenge, Speisemenge * factor);
     modelSud()->setData(row1, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
     modelSud()->setData(row1, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
+    modelSud()->setData(row1, ModelSud::Colerg_S_Gesamt, erg_S_Gesamt * factor);
+    modelSud()->setData(row1, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
+    modelSud()->setData(row1, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
+    modelSud()->setData(row1, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
         if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId)

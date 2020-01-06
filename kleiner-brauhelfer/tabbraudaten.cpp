@@ -172,7 +172,7 @@ void TabBraudaten::updateValues()
 
     value = BierCalc::verschneidung(bh->sud()->getSWAnstellen(),
                                     bh->sud()->getSWSollAnstellen(),
-                                    bh->sud()->getWuerzemengeKochende() * (1 + bh->sud()->gethighGravityFaktor()/100));
+                                    bh->sud()->getWuerzemengeAnstellenTotal());
     ui->tbWasserVerschneidung->setValue(value);
     ui->wdgWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
     ui->btnWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
@@ -269,7 +269,7 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
 void TabBraudaten::on_btnWasserVerschneidung_clicked()
 {
     setFocus();
-    double menge = bh->sud()->getWuerzemengeKochende() + ui->tbWasserVerschneidung->value();
+    double menge = bh->sud()->getWuerzemengeAnstellenTotal() + ui->tbWasserVerschneidung->value();
     bh->sud()->setSWAnstellen(bh->sud()->getSWSollAnstellen());
     bh->sud()->setWuerzemengeAnstellenTotal(menge);
 }

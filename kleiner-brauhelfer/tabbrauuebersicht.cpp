@@ -61,14 +61,21 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
 
     mAuswahlListe.append({-1, 0, tr("<keine>"), "", 0, 0});
     mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge [l]"), tr("l"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColVerdampfungsrate, 1, tr("Verdampfungsrate [%]"), tr("%"), 0, 0});
     mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
     mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol [%]"), tr("%"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWSollKochende, 1, tr("Stammwürze Soll Kochende [°P]"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWSollAnstellen, 1, tr("Stammwürze Soll Anstellen [°P]"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWAnstellen, 1, tr("Stammwürze Anstellen [°P]"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze [°P]"), tr("°°P"), 0, 0});
     mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+    mAuswahlListe.append({ModelSud::ColRestalkalitaetFaktor, 0, tr("Restalkalität Faktor"), "", 0, 0});
+    mAuswahlListe.append({ModelSud::ColFaktorHauptgussEmpfehlung, 0, tr("Hauptguss Faktor"), "", 0, 0});
+    mAuswahlListe.append({ModelSud::ColBewertungMittel, 0, tr("Bewertung"), "", 0, 0});
 
     gSettings->endGroup();
 }

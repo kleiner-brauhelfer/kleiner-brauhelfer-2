@@ -70,15 +70,11 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     mSpalten.append({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
     mSpalten.append({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
     mSpalten.append({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
-    mSpalten.append({ModelSud::ColSpeiseNoetig, false, true, 80, new SpinBoxDelegate(table)});
-    mSpalten.append({ModelSud::ColAnlageSudhausausbeute, false, true, 80, new SpinBoxDelegate(table)});
+    mSpalten.append({ModelSud::ColWoche, true, true, 80, nullptr});
+    mSpalten.append({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
     mSpalten.append({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     mSpalten.append({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     mSpalten.append({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
-    mSpalten.append({ModelSud::ColWoche, true, true, 80, nullptr});
-    mSpalten.append({ModelSud::ColRestalkalitaetFaktor, false, true, 80, new SpinBoxDelegate(table)});
-    mSpalten.append({ModelSud::ColFaktorHauptgussEmpfehlung, false, true, 80, new SpinBoxDelegate(table)});
-    mSpalten.append({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
 
     int visualIndex = 0;
     for (const AuswahlSpalten& spalte : mSpalten)

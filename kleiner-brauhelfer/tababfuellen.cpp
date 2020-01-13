@@ -120,6 +120,7 @@ void TabAbfuellen::checkEnabled()
     int status = bh->sud()->getStatus();
     bool abgefuellt = status >= Sud_Status_Abgefuellt && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
+    ui->tbAbfuelldatumZeit->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
     ui->cbSchnellgaerprobeAktiv->setEnabled(!abgefuellt);
     ui->tbSWSchnellgaerprobe->setReadOnly(abgefuellt);
@@ -148,8 +149,9 @@ void TabAbfuellen::updateValues()
     double value;
 
     QDateTime dt = bh->sud()->getAbfuelldatum();
-    ui->tbAbfuelldatum->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbAbfuelldatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
+    ui->tbAbfuelldatum->setMinimumDate(bh->sud()->getBraudatum().date());
+    ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
+    ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
 
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
@@ -202,10 +204,16 @@ void TabAbfuellen::updateWebView()
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
-void TabAbfuellen::on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime)
+void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)
 {
     if (ui->tbAbfuelldatum->hasFocus())
-        bh->sud()->setAbfuelldatum(dateTime);
+        bh->sud()->setAbfuelldatum(QDateTime(date, ui->tbAbfuelldatumZeit->time()));
+}
+
+void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
+{
+    if (ui->tbAbfuelldatumZeit->hasFocus())
+        bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), time));
 }
 
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
@@ -280,7 +288,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         }
     }
 
-    bh->sud()->setAbfuelldatum(ui->tbAbfuelldatum->dateTime());
+    bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time()));
     bh->sud()->setStatus(Sud_Status_Abgefuellt);
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},

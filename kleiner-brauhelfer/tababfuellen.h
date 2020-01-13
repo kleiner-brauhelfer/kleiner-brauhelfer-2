@@ -26,7 +26,8 @@ private slots:
     void updateWebView();
     void sudDataChanged(const QModelIndex& index);
 
-    void on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime);
+    void on_tbAbfuelldatum_dateChanged(const QDate &date);
+    void on_tbAbfuelldatumZeit_timeChanged(const QTime &time);
     void on_btnAbfuelldatumHeute_clicked();
     void on_cbSchnellgaerprobeAktiv_clicked(bool checked);
     void on_btnSWSchnellgaerprobe_clicked();

@@ -67,9 +67,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->tabBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(discarded()));
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(sudModified()));
+    connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(sudDataChanged(const QModelIndex&)));
 
     sudLoaded();
 
@@ -237,11 +238,11 @@ void MainWindow::databaseModified()
     ui->actionVerwerfen->setEnabled(modified);
 }
 
-void MainWindow::discarded()
+void MainWindow::updateValues()
 {
     bool loaded = bh->sud()->isLoaded();
+    int status = bh->sud()->getStatus();
     databaseModified();
-    sudModified();
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
@@ -249,8 +250,14 @@ void MainWindow::discarded()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
+    ui->menuSud->setEnabled(loaded);
+    ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
+    ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
+    ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
+    ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Sud_Status_Gebraut);
+    ui->actionWeitereZutaten->setEnabled(status == Sud_Status_Gebraut);
     ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
-                            bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
+                            status == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
@@ -258,7 +265,7 @@ void MainWindow::discarded()
 
 void MainWindow::sudLoaded()
 {
-    discarded();
+    updateValues();
     if (bh->sud()->isLoaded())
     {
         if (ui->tabMain->currentWidget() == ui->tabSudAuswahl || ui->tabMain->currentWidget() == ui->tabBrauUebersicht)
@@ -266,22 +273,10 @@ void MainWindow::sudLoaded()
     }
 }
 
-void MainWindow::sudModified()
+void MainWindow::sudDataChanged(const QModelIndex& index)
 {
-    if (bh->sud()->isLoaded())
-    {
-        int status = bh->sud()->getStatus();
-        ui->menuSud->setEnabled(true);
-        ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
-        ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
-        ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Sud_Status_Gebraut);
-        ui->actionWeitereZutaten->setEnabled(status == Sud_Status_Gebraut);
-    }
-    else
-    {
-        ui->menuSud->setEnabled(false);
-    }
+    if (index.column() == ModelSud::ColStatus)
+        updateValues();
 }
 
 void MainWindow::loadSud(int sudId)

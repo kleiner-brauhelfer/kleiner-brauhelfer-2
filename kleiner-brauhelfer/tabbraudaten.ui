@@ -45,27 +45,7 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="0" column="6">
-            <widget class="QLabel" name="label_22">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Braudatum</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="5">
-            <widget class="QLabel" name="label_2"/>
-           </item>
-           <item row="0" column="2">
+           <item row="0" column="3">
             <widget class="QPushButton" name="btnBraudatumHeute">
              <property name="minimumSize">
               <size>
@@ -87,20 +67,10 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
-            <widget class="Line" name="line_17">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="7">
-            <widget class="QLabel" name="label_23">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Braudatum</string>
              </property>
             </widget>
            </item>
@@ -117,6 +87,39 @@
              </property>
             </spacer>
            </item>
+           <item row="0" column="6">
+            <widget class="QLabel" name="label_22">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QLabel" name="label_2"/>
+           </item>
+           <item row="0" column="7">
+            <widget class="QLabel" name="label_23">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="TimeEdit" name="tbBraudatumZeit">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärungsphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
            <item row="1" column="5">
             <spacer name="horizontalSpacer_7">
              <property name="orientation">
@@ -131,12 +134,19 @@
             </spacer>
            </item>
            <item row="0" column="1">
-            <widget class="DateTimeEdit" name="tbBraudatum">
+            <widget class="DateEdit" name="tbBraudatum">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärungsphase beginnt.&lt;/p&gt;&lt;p&gt;Das Feld Braudatum kann manuell minutengenau definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärungsphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="Line" name="line_17">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -2490,9 +2500,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>DateTimeEdit</class>
-   <extends>QDateTimeEdit</extends>
-   <header>widgets/datetimeedit.h</header>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TimeEdit</class>
+   <extends>QTimeEdit</extends>
+   <header>widgets/timeedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

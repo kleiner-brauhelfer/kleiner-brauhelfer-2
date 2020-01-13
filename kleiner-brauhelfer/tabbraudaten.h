@@ -26,7 +26,8 @@ private slots:
     void updateWebView();
     void sudDataChanged(const QModelIndex& index);
 
-    void on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime);
+    void on_tbBraudatum_dateChanged(const QDate &date);
+    void on_tbBraudatumZeit_timeChanged(const QTime &time);
     void on_btnBraudatumHeute_clicked();
     void on_btnWuerzemengeKochbeginn_clicked();
     void on_tbTempKochbeginn_valueChanged(double);

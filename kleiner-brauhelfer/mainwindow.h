@@ -17,9 +17,9 @@ public:
 
 private slots:
     void databaseModified();
-    void discarded();
+    void updateValues();
     void sudLoaded();
-    void sudModified();
+    void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
     void changeStyle();
     void checkMessageFinished();

@@ -92,6 +92,7 @@ SOURCES += \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
+    widgets/timeedit.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbewertung.cpp \
     widgets/wdgdiagramview.cpp \
@@ -160,6 +161,7 @@ HEADERS += \
     widgets/spinboxsud.h \
     widgets/svgview.h \
     widgets/tableview.h \
+    widgets/timeedit.h \
     widgets/wdganhang.h \
     widgets/wdgbewertung.h \
     widgets/wdgdiagramview.h \

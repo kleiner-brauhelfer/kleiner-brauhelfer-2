@@ -41,7 +41,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     col = ModelAusruestung::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Anlage"));
     table->setColumnHidden(col, false);
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
+    header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
 
     col = ModelAusruestung::ColVermoegen;
@@ -84,8 +84,8 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
 
     col = ModelSud::ColSudname;
     table->setColumnHidden(col, false);
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
     table->setItemDelegateForColumn(col, new ReadonlyDelegate(table));
+    header->resizeSection(col, 200);
     header->moveSection(header->visualIndex(col), 0);
 
     col = ModelSud::ColSudnummer;

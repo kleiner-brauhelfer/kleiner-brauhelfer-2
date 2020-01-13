@@ -188,30 +188,39 @@ void TabBrauUebersicht::updateDiagram()
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     if (model->rowCount() > 1)
     {
-        AuswahlType *auswahl1 = &mAuswahlListe[ui->cbAuswahlL1->currentIndex() + 1];
-        model->mColAuswahl1 = auswahl1->col;
-        ui->diagram->BezeichnungL1 = auswahl1->label;
-        ui->diagram->KurzbezeichnungL1 = auswahl1->unit;
-        ui->diagram->L1Precision = auswahl1->precision;
-        ui->diagram->L1Min = auswahl1->min;
-        ui->diagram->L1Max = auswahl1->max;
-
-        AuswahlType *auswahl2 = &mAuswahlListe[ui->cbAuswahlL2->currentIndex()];
-        model->mColAuswahl2 = auswahl2->col;
-        ui->diagram->BezeichnungL2 = auswahl2->label;
-        ui->diagram->KurzbezeichnungL2 = auswahl2->unit;
-        ui->diagram->L2Precision = auswahl2->precision;
-        ui->diagram->L2Min = auswahl2->min;
-        ui->diagram->L2Max = auswahl2->max;
-
-        AuswahlType *auswahl3 = &mAuswahlListe[ui->cbAuswahlL3->currentIndex()];
-        model->mColAuswahl3 = auswahl3->col;
-        ui->diagram->BezeichnungL3 = auswahl3->label;
-        ui->diagram->KurzbezeichnungL3 = auswahl3->unit;
-        ui->diagram->L3Precision = auswahl3->precision;
-        ui->diagram->L3Min = auswahl3->min;
-        ui->diagram->L3Max = auswahl3->max;
-
+        int i = ui->cbAuswahlL1->currentIndex() + 1;
+        if (i >= 0 && i < mAuswahlListe.size())
+        {
+            AuswahlType *auswahl1 = &mAuswahlListe[i];
+            model->mColAuswahl1 = auswahl1->col;
+            ui->diagram->BezeichnungL1 = auswahl1->label;
+            ui->diagram->KurzbezeichnungL1 = auswahl1->unit;
+            ui->diagram->L1Precision = auswahl1->precision;
+            ui->diagram->L1Min = auswahl1->min;
+            ui->diagram->L1Max = auswahl1->max;
+        }
+        i = ui->cbAuswahlL2->currentIndex();
+        if (i >= 0 && i < mAuswahlListe.size())
+        {
+            AuswahlType *auswahl2 = &mAuswahlListe[i];
+            model->mColAuswahl2 = auswahl2->col;
+            ui->diagram->BezeichnungL2 = auswahl2->label;
+            ui->diagram->KurzbezeichnungL2 = auswahl2->unit;
+            ui->diagram->L2Precision = auswahl2->precision;
+            ui->diagram->L2Min = auswahl2->min;
+            ui->diagram->L2Max = auswahl2->max;
+        }
+        i = ui->cbAuswahlL3->currentIndex();
+        if (i >= 0 && i < mAuswahlListe.size())
+        {
+            AuswahlType *auswahl3 = &mAuswahlListe[i];
+            model->mColAuswahl3 = auswahl3->col;
+            ui->diagram->BezeichnungL3 = auswahl3->label;
+            ui->diagram->KurzbezeichnungL3 = auswahl3->unit;
+            ui->diagram->L3Precision = auswahl3->precision;
+            ui->diagram->L3Min = auswahl3->min;
+            ui->diagram->L3Max = auswahl3->max;
+        }
         for (int row = model->rowCount() - 1; row >= 0; --row)
         {
             QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();

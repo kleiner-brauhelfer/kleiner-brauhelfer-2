@@ -45,14 +45,7 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_55">
-             <property name="text">
-              <string>Abfülldatum</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="6">
+           <item row="0" column="7">
             <widget class="QLabel" name="label_4">
              <property name="minimumSize">
               <size>
@@ -71,36 +64,34 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="btnAbfuelldatumHeute">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt das Abfülldatum auf die aktuelle Zeit im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_55">
              <property name="text">
-              <string>Jetzt</string>
+              <string>Abfülldatum</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
+           <item row="0" column="5">
             <widget class="QLabel" name="label_3">
              <property name="text">
               <string>Dauer der Hauptgärung</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="5">
+           <item row="1" column="5">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="6">
             <widget class="SpinBox" name="tbDauerHauptgaerung">
              <property name="minimumSize">
               <size>
@@ -123,14 +114,29 @@
             </widget>
            </item>
            <item row="0" column="3">
-            <widget class="Line" name="line_11">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
+            <widget class="QPushButton" name="btnAbfuelldatumHeute">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt das Abfülldatum auf die aktuelle Zeit im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Jetzt</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="DateTimeEdit" name="tbAbfuelldatum">
+            <widget class="DateEdit" name="tbAbfuelldatum">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem das Jungbier auf Flasche, Fass oder in ein anderes Behältnis gegeben wird. Mit dem Abfülldatum endet die Hauptgärung und beginnt die Reifung des Bieres, auch Nachgärung genannt. &lt;/p&gt;&lt;p&gt;Es muss sich dabei nicht zwingend um das Endprodukt handeln. Je nach Rezept und Verfahren können bis zum finalen Produkt viele Zwischenschritte nötig sein. Das Feld Abfülldatum kann manuell minutengenau definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -138,19 +144,6 @@
               <set>Qt::AlignCenter</set>
              </property>
             </widget>
-           </item>
-           <item row="1" column="4">
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item row="1" column="0">
             <spacer name="horizontalSpacer_10">
@@ -164,6 +157,20 @@
               </size>
              </property>
             </spacer>
+           </item>
+           <item row="0" column="4">
+            <widget class="Line" name="line_11">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QTimeEdit" name="tbAbfuelldatumZeit">
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -1785,11 +1792,6 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
@@ -1801,9 +1803,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>DateTimeEdit</class>
-   <extends>QDateTimeEdit</extends>
-   <header>widgets/datetimeedit.h</header>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

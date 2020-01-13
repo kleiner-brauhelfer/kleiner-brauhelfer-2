@@ -133,6 +133,7 @@ void TabBraudaten::checkEnabled()
     int status = bh->sud()->getStatus();
     bool gebraut = status != Sud_Status_Rezept && !gSettings->ForceEnabled;
     ui->tbBraudatum->setReadOnly(gebraut);
+    ui->tbBraudatumZeit->setReadOnly(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
     ui->tbWuerzemengeKochbeginn->setReadOnly(gebraut);
     ui->btnWuerzemengeKochbeginn->setVisible(!gebraut);
@@ -166,7 +167,8 @@ void TabBraudaten::updateValues()
     int status = bh->sud()->getStatus();
 
     QDateTime dt = bh->sud()->getBraudatum();
-    ui->tbBraudatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
+    ui->tbBraudatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
+    ui->tbBraudatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
 
     ui->tbWuerzemengeKochende->setMaximum(ui->tbWuerzemengeKochbeginn->value());
 
@@ -209,10 +211,16 @@ void TabBraudaten::updateWebView()
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
-void TabBraudaten::on_tbBraudatum_dateTimeChanged(const QDateTime &dateTime)
+void TabBraudaten::on_tbBraudatum_dateChanged(const QDate &date)
 {
     if (ui->tbBraudatum->hasFocus())
-        bh->sud()->setBraudatum(dateTime);
+        bh->sud()->setBraudatum(QDateTime(date, ui->tbBraudatumZeit->time()));
+}
+
+void TabBraudaten::on_tbBraudatumZeit_timeChanged(const QTime &time)
+{
+    if (ui->tbBraudatumZeit->hasFocus())
+        bh->sud()->setBraudatum(QDateTime(ui->tbBraudatum->date(), time));
 }
 
 void TabBraudaten::on_btnBraudatumHeute_clicked()
@@ -310,7 +318,7 @@ void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 
 void TabBraudaten::on_btnSudGebraut_clicked()
 {
-    bh->sud()->setBraudatum(ui->tbBraudatum->dateTime());
+    bh->sud()->setBraudatum(QDateTime(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time()));
     bh->sud()->setStatus(Sud_Status_Gebraut);
 
     DlgRohstoffeAbziehen dlg(this);

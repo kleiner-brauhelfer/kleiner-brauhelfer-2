@@ -279,6 +279,7 @@ ModelTags *Brauhelfer::modelTags() const
 
 int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 {
+    qInfo() << "Brauhelfer::sudKopieren():" << sudId;
     int row = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row < 0)
         return -1;
@@ -340,6 +341,7 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVar
 
 int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2, double prozent)
 {
+    qInfo() << "Brauhelfer::sudTeilen():" << sudId;
     int row1 = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row1 < 0)
         return -1;

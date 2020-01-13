@@ -494,6 +494,9 @@ void TabRezept::updateValues()
         ui->tbSudname->setCursorPosition(0);
     }
 
+    ui->btnSudhausausbeute->setVisible(bh->sud()->getSudhausausbeute() != bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
+    ui->btnVerdampfungsziffer->setVisible(bh->sud()->getVerdampfungsrate() != bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
+
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
@@ -952,6 +955,16 @@ void TabRezept::on_tbKommentar_textChanged()
         if (kommentar != bh->sud()->getKommentar())
             bh->sud()->setKommentar(kommentar);
     }
+}
+
+void TabRezept::on_btnSudhausausbeute_clicked()
+{
+    bh->sud()->setSudhausausbeute(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
+}
+
+void TabRezept::on_btnVerdampfungsziffer_clicked()
+{
+    bh->sud()->setVerdampfungsrate(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
 }
 
 void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)

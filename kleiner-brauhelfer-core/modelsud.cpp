@@ -676,6 +676,8 @@ void ModelSud::updateSwWeitereZutaten(int row)
     modelWeitereZutatenGaben.setFilterRegExp(QRegExp(QString("^%1$").arg(data(row, ColID).toInt())));
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
+        if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+            continue;
         double ausbeute = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColAusbeute).toDouble();
         if (ausbeute > 0.0)
         {
@@ -723,6 +725,8 @@ void ModelSud::updateFarbe(int row)
     modelWeitereZutatenGaben.setFilterRegExp(sudReg);
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
+        if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+            continue;
         double farbe = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColFarbe).toDouble();
         if (farbe > 0.0)
         {

@@ -55,6 +55,8 @@ private slots:
     void on_tbSudname_textChanged(const QString &value);
     void on_cbAnlage_currentIndexChanged(const QString &value);
     void on_tbKommentar_textChanged();
+    void on_btnSudhausausbeute_clicked();
+    void on_btnVerdampfungsziffer_clicked();
     void on_cbWasserProfil_currentIndexChanged(const QString &value);
 
     void on_btnTagNeu_clicked();

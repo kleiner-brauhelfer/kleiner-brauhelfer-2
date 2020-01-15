@@ -287,6 +287,11 @@ int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
     return -1;
 }
 
+void SqlTableModel::emitModified()
+{
+    emit modified();
+}
+
 bool SqlTableModel::submitAll()
 {
     qInfo(loggingCategory) << "submitAll():" << tableName();

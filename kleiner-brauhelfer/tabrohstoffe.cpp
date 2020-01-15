@@ -546,6 +546,9 @@ void TabRohstoffe::keyPressEvent(QKeyEvent* event)
         case Qt::Key::Key_Delete:
             on_buttonDelete_clicked();
             break;
+        case Qt::Key::Key_Insert:
+            on_buttonAdd_clicked();
+            break;
         }
     }
 }

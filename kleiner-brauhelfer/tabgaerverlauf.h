@@ -21,6 +21,9 @@ public:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    void pasteFromClipboardSchnellgaerverlauf();
+    void pasteFromClipboardHauptgaerverlauf();
+    void pasteFromClipboardNachgaerverlauf();
 
 private slots:
     void sudLoaded();

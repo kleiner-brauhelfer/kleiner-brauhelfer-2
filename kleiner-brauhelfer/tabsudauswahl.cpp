@@ -195,6 +195,9 @@ void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
         case Qt::Key::Key_Delete:
             on_btnLoeschen_clicked();
             break;
+        case Qt::Key::Key_Insert:
+            on_btnAnlegen_clicked();
+            break;
         case Qt::Key::Key_Return:
             on_btnLaden_clicked();
             break;

@@ -2,6 +2,7 @@
 #include "ui_tabgaerverlauf.h"
 #include <QKeyEvent>
 #include <QMessageBox>
+#include <QClipboard>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/datetimedelegate.h"
@@ -285,6 +286,14 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
         case Qt::Key::Key_Delete:
             on_btnDelSchnellgaerMessung_clicked();
             break;
+        case Qt::Key::Key_Insert:
+            on_btnAddSchnellgaerMessung_clicked();
+            break;
+        default:
+            if (event->matches(QKeySequence::Paste))
+                if (ui->tableWidget_Schnellgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
+                    pasteFromClipboardSchnellgaerverlauf();
+            break;
         }
     }
     else if (ui->tableWidget_Hauptgaerverlauf->hasFocus())
@@ -294,6 +303,14 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
         case Qt::Key::Key_Delete:
             on_btnDelHauptgaerMessung_clicked();
             break;
+        case Qt::Key::Key_Insert:
+            on_btnAddHauptgaerMessung_clicked();
+            break;
+        default:
+            if (event->matches(QKeySequence::Paste))
+                if (ui->tableWidget_Hauptgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
+                    pasteFromClipboardHauptgaerverlauf();
+            break;
         }
     }
     else if (ui->tableWidget_Nachgaerverlauf->hasFocus())
@@ -302,6 +319,14 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
         {
         case Qt::Key::Key_Delete:
             on_btnDelNachgaerMessung_clicked();
+            break;
+        case Qt::Key::Key_Insert:
+            on_btnAddNachgaerMessung_clicked();
+            break;
+        default:
+            if (event->matches(QKeySequence::Paste))
+                if (ui->tableWidget_Nachgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
+                    pasteFromClipboardNachgaerverlauf();
             break;
         }
     }
@@ -652,4 +677,178 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
+}
+
+void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
+{
+    QString clipboardText = QApplication::clipboard()->text();
+    QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+    if (rows.size() == 0)
+        return;
+    bh->modelSchnellgaerverlauf()->blockSignals(true);
+    for (const QString& row : rows)
+    {
+        QStringList cols = row.split("\t");
+        if (cols.size() > 0)
+        {
+            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::TextDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::ISODate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            if (dt.isValid())
+            {
+                QMap<int, QVariant> values = {{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                              {ModelSchnellgaerverlauf::ColZeitstempel, dt}};
+                if (cols.size() > 1)
+                {
+                    bool ok = false;
+                    double sre = QLocale().toDouble(cols[1], &ok);
+                    if (!ok)
+                        sre = cols[1].toDouble(&ok);
+                    if (ok)
+                    {
+                        values[ModelSchnellgaerverlauf::ColRestextrakt] = sre;
+                        values[ModelSchnellgaerverlauf::ColAlc] = BierCalc::alkohol(bh->sud()->getSWIst(), sre);
+                    }
+                }
+                if (cols.size() > 2)
+                {
+                    bool ok = false;
+                    double temp = QLocale().toDouble(cols[2], &ok);
+                    if (!ok)
+                        temp = cols[2].toDouble(&ok);
+                    if (ok)
+                        values[ModelSchnellgaerverlauf::ColTemp] = temp;
+                }
+                if (cols.size() > 6)
+                    values[ModelSchnellgaerverlauf::ColBemerkung] = cols[6];
+                bh->modelSchnellgaerverlauf()->appendDirect(values);
+            }
+        }
+    }
+    bh->modelSchnellgaerverlauf()->blockSignals(false);
+    bh->modelSchnellgaerverlauf()->emitModified();
+    bh->sud()->modelSchnellgaerverlauf()->invalidate();
+}
+
+void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
+{
+    QString clipboardText = QApplication::clipboard()->text();
+    QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+    if (rows.size() == 0)
+        return;
+    bh->modelHauptgaerverlauf()->blockSignals(true);
+    for (const QString& row : rows)
+    {
+        QStringList cols = row.split("\t");
+        if (cols.size() > 0)
+        {
+            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::TextDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::ISODate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            if (dt.isValid())
+            {
+                QMap<int, QVariant> values = {{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                              {ModelHauptgaerverlauf::ColZeitstempel, dt}};
+                if (cols.size() > 1)
+                {
+                    bool ok = false;
+                    double sre = QLocale().toDouble(cols[1], &ok);
+                    if (!ok)
+                        sre = cols[1].toDouble(&ok);
+                    if (ok)
+                    {
+                        values[ModelHauptgaerverlauf::ColRestextrakt] = sre;
+                        values[ModelHauptgaerverlauf::ColAlc] = BierCalc::alkohol(bh->sud()->getSWIst(), sre);
+                    }
+                }
+                if (cols.size() > 2)
+                {
+                    bool ok = false;
+                    double temp = QLocale().toDouble(cols[2], &ok);
+                    if (!ok)
+                        temp = cols[2].toDouble(&ok);
+                    if (ok)
+                        values[ModelHauptgaerverlauf::ColTemp] = temp;
+                }
+                if (cols.size() > 6)
+                    values[ModelHauptgaerverlauf::ColBemerkung] = cols[6];
+                bh->modelHauptgaerverlauf()->appendDirect(values);
+            }
+        }
+    }
+    bh->modelHauptgaerverlauf()->blockSignals(false);
+    bh->modelHauptgaerverlauf()->emitModified();
+    bh->sud()->modelHauptgaerverlauf()->invalidate();
+}
+
+void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
+{
+    QString clipboardText = QApplication::clipboard()->text();
+    QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+    if (rows.size() == 0)
+        return;
+    bh->modelNachgaerverlauf()->blockSignals(true);
+    for (const QString& row : rows)
+    {
+        QStringList cols = row.split("\t");
+        if (cols.size() > 0)
+        {
+            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::TextDate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::ISODate);
+            if (!dt.isValid())
+                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            if (dt.isValid())
+            {
+                double druck = 0;
+                QMap<int, QVariant> values = {{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
+                                              {ModelNachgaerverlauf::ColZeitstempel, dt}};
+                if (cols.size() > 1)
+                {
+                    bool ok = false;
+                    druck = QLocale().toDouble(cols[1], &ok);
+                    if (!ok)
+                        druck = cols[1].toDouble(&ok);
+                    if (ok)
+                    {
+                        values[ModelNachgaerverlauf::ColDruck] = druck;
+                    }
+                }
+                if (cols.size() > 2)
+                {
+                    bool ok = false;
+                    double temp = QLocale().toDouble(cols[2], &ok);
+                    if (!ok)
+                        temp = cols[2].toDouble(&ok);
+                    if (ok)
+                    {
+                        values[ModelNachgaerverlauf::ColTemp] = temp;
+                        values[ModelNachgaerverlauf::ColCO2] = BierCalc::co2(druck, temp);
+                    }
+                }
+                if (cols.size() > 4)
+                    values[ModelNachgaerverlauf::ColBemerkung] = cols[4];
+                bh->modelNachgaerverlauf()->appendDirect(values);
+            }
+        }
+    }
+    bh->modelNachgaerverlauf()->blockSignals(false);
+    bh->modelNachgaerverlauf()->emitModified();
+    bh->sud()->modelNachgaerverlauf()->invalidate();
 }

@@ -180,6 +180,9 @@ void TabAusruestung::keyPressEvent(QKeyEvent* event)
         case Qt::Key::Key_Delete:
             on_btnAnlageLoeschen_clicked();
             break;
+        case Qt::Key::Key_Insert:
+            on_btnNeueAnlage_clicked();
+            break;
         }
     }
     else if (ui->tableViewGeraete->hasFocus())
@@ -188,6 +191,9 @@ void TabAusruestung::keyPressEvent(QKeyEvent* event)
         {
         case Qt::Key::Key_Delete:
             on_btnGeraetLoeschen_clicked();
+            break;
+        case Qt::Key::Key_Insert:
+            on_btnNeuesGeraet_clicked();
             break;
         }
     }

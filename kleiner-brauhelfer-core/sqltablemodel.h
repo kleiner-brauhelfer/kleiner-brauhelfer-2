@@ -146,6 +146,12 @@ public:
     Q_INVOKABLE int appendDirect(const QMap<int, QVariant> &values = QMap<int, QVariant>());
 
     /**
+     * @brief Emits the modified signal
+     * @note Can be usefull in combination with blockSignals() and appendDirect()
+     */
+    Q_INVOKABLE void emitModified();
+
+    /**
      * @brief Saves the pending changes of the table
      * @return True on success
      */

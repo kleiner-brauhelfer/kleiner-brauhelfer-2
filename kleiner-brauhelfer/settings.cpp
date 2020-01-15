@@ -1,5 +1,6 @@
 #include "settings.h"
 #include <QGuiApplication>
+#include <QDir>
 #include <QFileInfo>
 
 Settings::Settings(QObject *parent) :
@@ -168,6 +169,24 @@ void Settings::initTheme()
     paletteErrorButton = palette;
     paletteErrorButton.setColor(QPalette::Button, ErrorBase);
 
+    paletteErrorLabel = palette;
+    paletteErrorLabel.setColor(QPalette::WindowText, ErrorText);
+
+    endGroup();
+}
+
+int Settings::logLevel()
+{
+    beginGroup("General");
+    int level = value("LogLevel", "0").toInt();
+    endGroup();
+    return level;
+}
+
+void Settings::setLogLevel(int level)
+{
+    beginGroup("General");
+    setValue("LogLevel", level);
     endGroup();
 }
 
@@ -233,13 +252,24 @@ QString Settings::databasePath()
     beginGroup("General");
     path = value("database").toString();
     endGroup();
+    if (!path.isEmpty() && QDir::isRelativePath(path))
+    {
+        QDir dir(settingsDir());
+        path = QDir::cleanPath(dir.filePath(path));
+    }
+
     return path;
 }
 
 void Settings::setDatabasePath(const QString& path)
 {
+    QDir dir(settingsDir());
+    QString pathRel = dir.relativeFilePath(path);
     beginGroup("General");
-    setValue("database", path);
+    if (pathRel.startsWith(".."))
+        setValue("database", path);
+    else
+        setValue("database", pathRel);
     endGroup();
 }
 
@@ -248,9 +278,19 @@ QString Settings::databaseDir()
     return QFileInfo(databasePath()).absolutePath() + "/";
 }
 
-QString Settings::dataDir() const
+QString Settings::dataDir(int type) const
 {
-    return settingsDir() + "data/";
+    switch (type)
+    {
+    case 1:
+        return settingsDir() + "data/Webview/";
+    case 2:
+        return settingsDir() + "data/Rohstoffe/";
+    case 3:
+        return settingsDir() + "data/Etiketten/";
+    default:
+        return settingsDir() + "data/";
+    }
 }
 
 QString Settings::lastProgramVersion()

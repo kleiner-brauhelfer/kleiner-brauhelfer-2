@@ -20,6 +20,9 @@ public:
     Settings(const QString& dir, QObject *parent = nullptr);
     virtual ~Settings();
 
+    int logLevel();
+    void setLogLevel(int level);
+
     Theme theme() const;
     void setTheme(Theme theme);
 
@@ -36,7 +39,7 @@ public:
     void setDatabasePath(const QString& path);
     QString databaseDir();
 
-    QString dataDir() const;
+    QString dataDir(int type = 0) const;
 
     QString lastProgramVersion();
     bool isNewProgramVersion();
@@ -51,6 +54,7 @@ public:
     QPalette paletteInput;
     QPalette paletteError;
     QPalette paletteErrorButton;
+    QPalette paletteErrorLabel;
 
     QColor ErrorBase;
     QColor WarningText;

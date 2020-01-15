@@ -19,6 +19,7 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(QWidget *parent) :
 	ui(new Ui::DlgRohstoffVorlage)
 {
     ui->setupUi(this);
+    adjustSize();
 }
 
 DlgRohstoffVorlage::~DlgRohstoffVorlage()
@@ -45,7 +46,7 @@ QString DlgRohstoffVorlage::getFileName(bool withPath) const
         break;
     }
     if (withPath)
-        return gSettings->dataDir() + fileName;
+        return gSettings->dataDir(2) + fileName;
     else
         return fileName;
 }
@@ -92,7 +93,7 @@ void DlgRohstoffVorlage::ViewWeitereZutatenauswahl()
     viewImpl(R_WZutaten);
 }
 
-QVariantMap DlgRohstoffVorlage::values() const
+QMap<int, QVariant> DlgRohstoffVorlage::values() const
 {
     return mValues;
 }
@@ -110,69 +111,73 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
     {
         if (mRohstoffart == R_Malz)
         {
-            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
-            mValues.insert("Farbe", index.sibling(index.row(), 1).data().toDouble());
-            mValues.insert("MaxProzent", index.sibling(index.row(), 2).data().toInt());
-            mValues.insert("Anwendung", index.sibling(index.row(), 3).data());
+            mValues.insert(ModelMalz::ColBeschreibung, index.sibling(index.row(), 0).data());
+            mValues.insert(ModelMalz::ColFarbe, index.sibling(index.row(), 1).data().toDouble());
+            mValues.insert(ModelMalz::ColMaxProzent, index.sibling(index.row(), 2).data().toInt());
+            mValues.insert(ModelMalz::ColAnwendung, index.sibling(index.row(), 3).data());
 		}
         else if (mRohstoffart == R_Hopfen)
         {
-            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            mValues.insert(ModelHopfen::ColBeschreibung, index.sibling(index.row(), 0).data());
             QString typ = index.sibling(index.row(), 1).data().toString().toLower();
             if (typ == "aroma")
-                mValues.insert("Typ", 1);
+                mValues.insert(ModelHopfen::ColTyp, 1);
             else if (typ == "bitter")
-                mValues.insert("Typ", 2);
+                mValues.insert(ModelHopfen::ColTyp, 2);
             else if (typ == "universal")
-                mValues.insert("Typ", 3);
-            mValues.insert("Alpha", index.sibling(index.row(), 2).data().toDouble());
-            mValues.insert("Eigenschaften", index.sibling(index.row(), 3).data());
+                mValues.insert(ModelHopfen::ColTyp, 3);
+            mValues.insert(ModelHopfen::ColAlpha, index.sibling(index.row(), 2).data().toDouble());
+            mValues.insert(ModelHopfen::ColEigenschaften, index.sibling(index.row(), 3).data());
 		}
         else if (mRohstoffart == R_Hefe)
         {
-            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            mValues.insert(ModelHefe::ColBeschreibung, index.sibling(index.row(), 0).data());
             QString typ = index.sibling(index.row(), 1).data().toString().toLower();
             if (typ == "og")
-                mValues.insert("TypOGUG", 1);
+                mValues.insert(ModelHefe::ColTypOGUG, 1);
             else
-                mValues.insert("TypOGUG", 2);
+                mValues.insert(ModelHefe::ColTypOGUG, 2);
             typ = index.sibling(index.row(), 2).data().toString().toLower();
             if (typ == "trocken")
-                mValues.insert("TypTrFl", 1);
+                mValues.insert(ModelHefe::ColTypTrFl, 1);
             else
-                mValues.insert("TypTrFl", 2);
-            mValues.insert("Verpackungsmenge", index.sibling(index.row(), 3).data());
-            mValues.insert("Wuerzemenge", index.sibling(index.row(), 4).data().toInt());
-            mValues.insert("Temperatur", index.sibling(index.row(), 5).data());
-            mValues.insert("Eigenschaften", index.sibling(index.row(), 6).data());
+                mValues.insert(ModelHefe::ColTypTrFl, 2);
+            mValues.insert(ModelHefe::ColVerpackungsmenge, index.sibling(index.row(), 3).data());
+            mValues.insert(ModelHefe::ColWuerzemenge, index.sibling(index.row(), 4).data().toInt());
+            mValues.insert(ModelHefe::ColTemperatur, index.sibling(index.row(), 5).data());
+            mValues.insert(ModelHefe::ColEigenschaften, index.sibling(index.row(), 6).data());
             typ = index.sibling(index.row(), 7).data().toString().toLower();
             if (typ == "hoch")
-                mValues.insert("SED", 1);
+                mValues.insert(ModelHefe::ColSED, 1);
             else if (typ == "mittel")
-                mValues.insert("SED", 2);
+                mValues.insert(ModelHefe::ColSED, 2);
             else if (typ == "niedrig")
-                mValues.insert("SED", 3);
-            mValues.insert("EVG", index.sibling(index.row(), 8).data());
+                mValues.insert(ModelHefe::ColSED, 3);
+            mValues.insert(ModelHefe::ColEVG, index.sibling(index.row(), 8).data());
         }
         else if (mRohstoffart == R_WZutaten)
         {
-            mValues.insert("Beschreibung", index.sibling(index.row(), 0).data());
+            mValues.insert(ModelWeitereZutaten::ColBeschreibung, index.sibling(index.row(), 0).data());
             QString typ = index.sibling(index.row(), 1).data().toString().toLower();
             if (typ == "honig")
-                mValues.insert("Typ", EWZ_Typ_Honig);
+                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Honig);
             else if (typ == "zucker")
-                mValues.insert("Typ", EWZ_Typ_Zucker);
+                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Zucker);
             else if (typ == "gewürz")
-                mValues.insert("Typ", EWZ_Typ_Gewuerz);
+                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Gewuerz);
             else if (typ == "frucht")
-                mValues.insert("Typ", EWZ_Typ_Frucht);
+                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Frucht);
             else if (typ == "sonstiges")
-                mValues.insert("Typ", EWZ_Typ_Sonstiges);
-            mValues.insert("Ausbeute", index.sibling(index.row(), 2).data().toDouble());
-            mValues.insert("EBC", index.sibling(index.row(), 3).data().toDouble());
+                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Sonstiges);
+            mValues.insert(ModelWeitereZutaten::ColAusbeute, index.sibling(index.row(), 2).data().toDouble());
+            mValues.insert(ModelWeitereZutaten::ColEBC, index.sibling(index.row(), 3).data().toDouble());
         }
+        accept();
 	}
-    accept();
+    else
+    {
+        reject();
+    }
 }
 
 void DlgRohstoffVorlage::slot_save()

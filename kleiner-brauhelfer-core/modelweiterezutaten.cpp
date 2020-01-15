@@ -11,207 +11,215 @@ ModelWeitereZutaten::ModelWeitereZutaten(Brauhelfer* bh, QSqlDatabase db) :
     mVirtualField.append("InGebrauch");
 }
 
-QVariant ModelWeitereZutaten::dataExt(const QModelIndex &index) const
+QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "Eingelagert")
+    switch(idx.column())
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+    case ColEingelagert:
+    {
+        return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
-    if (field == "Mindesthaltbar")
+    case ColMindesthaltbar:
     {
-        return QDateTime::fromString(QSqlTableModel::data(index).toString(), Qt::ISODate);
+        return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
-    if (field == "MengeGramm")
+    case ColMengeGramm:
     {
-        if (index.sibling(index.row(), fieldIndex("Einheiten")).data().toInt() == EWZ_Einheit_Kg)
-            return index.sibling(index.row(), fieldIndex("Menge")).data().toDouble() * 1000;
-        else
-            return index.sibling(index.row(), fieldIndex("Menge")).data().toDouble();
-    }
-    if (field == "InGebrauch")
-    {
-        bool found = false;
-        QString name = data(index.row(), "Beschreibung").toString();
-        ProxyModelSud modelSud;
-        modelSud.setSourceModel(bh->modelSud());
-        modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-        for (int i = 0; i < modelSud.rowCount(); ++i)
+        double menge = data(idx.row(), ColMenge).toDouble();
+        switch (data(idx.row(), ColEinheiten).toInt())
         {
-            ProxyModel modelWeitereZutatenGaben;
-            modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
-            modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->fieldIndex("SudID"));
-            modelWeitereZutatenGaben.setFilterRegExp(QString("^%1$").arg(modelSud.data(i, "ID").toInt()));
-            for (int j = 0; j < modelWeitereZutatenGaben.rowCount(); ++j)
-            {
-                if (modelWeitereZutatenGaben.data(j, "Name").toString() == name)
-                {
-                    found = true;
-                    break;
-                }
-            }
-            if (found)
-                break;
+        case EWZ_Einheit_Kg:
+            return menge * 1000;
+        case EWZ_Einheit_g:
+            return menge;
+        case EWZ_Einheit_mg:
+            return menge / 1000;
+        case EWZ_Einheit_Stk:
+            return menge;
+        default:
+            return menge;
         }
-        return found;
     }
-    return QVariant();
+    case ColInGebrauch:
+    {
+        ProxyModel model;
+        model.setSourceModel(bh->modelWeitereZutatenGaben());
+        QVariant name = data(idx.row(), ColBeschreibung);
+        for (int r = 0; r < model.rowCount(); ++r)
+        {
+            if (model.data(r, ModelWeitereZutatenGaben::ColName) == name)
+            {
+                QVariant sudId = model.data(r, ModelWeitereZutatenGaben::ColSudID);
+                if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus) == Sud_Status_Rezept)
+                    return true;
+            }
+        }
+        return false;
+    }
+    default:
+        return QVariant();
+    }
 }
 
-bool ModelWeitereZutaten::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
-    if (field == "Beschreibung")
+    switch(idx.column())
     {
-        QString name = getUniqueName(index, value);
-        QString prevValue = data(index).toString();
-        if (QSqlTableModel::setData(index, name))
+    case ColBeschreibung:
+    {
+        QString name = getUniqueName(idx, value);
+        QVariant prevName = data(idx);
+        if (QSqlTableModel::setData(idx, name))
         {
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-            for (int i = 0; i < modelSud.rowCount(); ++i)
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
             {
-                int id = modelSud.data(i, "ID").toInt();
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
                 SqlTableModel* model = bh->modelWeitereZutatenGaben();
                 for (int j = 0; j < model->rowCount(); ++j)
                 {
-                    if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == prevValue)
-                        model->setData(j, "Name", name);
+                    if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == prevName)
+                        model->setData(j, ModelWeitereZutatenGaben::ColName, name);
                 }
             }
             return true;
         }
+        return false;
     }
-    if (field == "Einheiten")
+    case ColEinheiten:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QString name = data(index.row(), "Beschreibung").toString();
+            QVariant name = data(idx.row(), ColBeschreibung);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-            for (int i = 0; i < modelSud.rowCount(); ++i)
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
             {
-                int id = modelSud.data(i, "ID").toInt();
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
                 SqlTableModel* model = bh->modelWeitereZutatenGaben();
                 for (int j = 0; j < model->rowCount(); ++j)
                 {
-                    if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
-                        model->setData(j, "Einheit", value);
+                    if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == name)
+                        model->setData(j, ModelWeitereZutatenGaben::ColEinheit, value);
                 }
             }
             return true;
         }
+        return false;
     }
-    if (field == "Typ")
+    case ColTyp:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QString name = data(index.row(), "Beschreibung").toString();
+            QVariant name = data(idx.row(), ColBeschreibung);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-            for (int i = 0; i < modelSud.rowCount(); ++i)
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
             {
-                int id = modelSud.data(i, "ID").toInt();
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
                 SqlTableModel* model = bh->modelWeitereZutatenGaben();
                 for (int j = 0; j < model->rowCount(); ++j)
                 {
-                    if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
-                        model->setData(j, "Typ", value);
+                    if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == name)
+                        model->setData(j, ModelWeitereZutatenGaben::ColTyp, value);
                 }
             }
             return true;
         }
+        return false;
     }
-    if (field == "Ausbeute")
+    case ColAusbeute:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QString name = data(index.row(), "Beschreibung").toString();
+            QVariant name = data(idx.row(), ColBeschreibung);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-            for (int i = 0; i < modelSud.rowCount(); ++i)
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
             {
-                int id = modelSud.data(i, "ID").toInt();
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
                 SqlTableModel* model = bh->modelWeitereZutatenGaben();
                 for (int j = 0; j < model->rowCount(); ++j)
                 {
-                    if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
-                        model->setData(j, "Ausbeute", value);
+                    if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == name)
+                        model->setData(j, ModelWeitereZutatenGaben::ColAusbeute, value);
                 }
             }
             return true;
         }
+        return false;
     }
-    if (field == "EBC")
+    case ColEBC:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QString name = data(index.row(), "Beschreibung").toString();
+            QVariant name = data(idx.row(), ColBeschreibung);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-            for (int i = 0; i < modelSud.rowCount(); ++i)
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
             {
-                int id = modelSud.data(i, "ID").toInt();
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
                 SqlTableModel* model = bh->modelWeitereZutatenGaben();
                 for (int j = 0; j < model->rowCount(); ++j)
                 {
-                    if (model->data(j, "SudID").toInt() == id && model->data(j, "Name").toString() == name)
-                        model->setData(j, "Farbe", value);
+                    if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == name)
+                        model->setData(j, ModelWeitereZutatenGaben::ColFarbe, value);
                 }
             }
             return true;
         }
+        return false;
     }
-    if (field == "Eingelagert")
+    case ColEingelagert:
     {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
+        return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
-    if (field == "Mindesthaltbar")
+    case ColMindesthaltbar:
     {
-        return QSqlTableModel::setData(index, value.toDateTime().toString(Qt::ISODate));
+        return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
-    if (field == "Menge")
+    case ColMenge:
     {
-        double prevValue = data(index.row(), "Menge").toDouble();
-        if (QSqlTableModel::setData(index, value))
+        double prevValue = data(idx).toDouble();
+        if (QSqlTableModel::setData(idx, value))
         {
-            if (value.toDouble() > 0.0)
+            if (value.toDouble() > 0.0 && prevValue == 0.0)
             {
-                if (prevValue == 0.0)
-                {
-                    setData(this->index(index.row(), fieldIndex("Eingelagert")), QDate::currentDate());
-                    setData(this->index(index.row(), fieldIndex("Mindesthaltbar")), QDate::currentDate().addYears(1));
-                }
+                setData(idx.row(), ColEingelagert, QDate::currentDate());
+                setData(idx.row(), ColMindesthaltbar, QDate::currentDate().addYears(1));
             }
             return true;
         }
+        return false;
     }
-    return false;
+    default:
+        return false;
+    }
 }
 
-void ModelWeitereZutaten::defaultValues(QVariantMap &values) const
+void ModelWeitereZutaten::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Menge"))
-        values.insert("Menge", 0);
-    if (!values.contains("Einheiten"))
-     values.insert("Einheiten", 0);
-    if (!values.contains("Typ"))
-        values.insert("Typ", 0);
-    if (!values.contains("Ausbeute"))
-        values.insert("Ausbeute", 0);
-    if (!values.contains("EBC"))
-        values.insert("EBC", 0);
-    if (!values.contains("Preis"))
-        values.insert("Preis", 0);
-    if (!values.contains("Eingelagert"))
-        values.insert("Eingelagert", QDate::currentDate());
-    if (!values.contains("Mindesthaltbar"))
-        values.insert("Mindesthaltbar", QDate::currentDate().addYears(1));
-    if (values.contains("Beschreibung"))
-        values["Beschreibung"] = getUniqueName(index(0, fieldIndex("Beschreibung")), values["Beschreibung"], true);
+    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
+    if (!values.contains(ColMenge))
+        values.insert(ColMenge, 0);
+    if (!values.contains(ColEinheiten))
+     values.insert(ColEinheiten, 0);
+    if (!values.contains(ColTyp))
+        values.insert(ColTyp, 0);
+    if (!values.contains(ColAusbeute))
+        values.insert(ColAusbeute, 0);
+    if (!values.contains(ColEBC))
+        values.insert(ColEBC, 0);
+    if (!values.contains(ColPreis))
+        values.insert(ColPreis, 0);
+    if (!values.contains(ColEingelagert))
+        values.insert(ColEingelagert, QDate::currentDate());
+    if (!values.contains(ColMindesthaltbar))
+        values.insert(ColMindesthaltbar, QDate::currentDate().addYears(1));
 }

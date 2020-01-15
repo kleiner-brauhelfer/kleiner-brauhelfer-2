@@ -13,6 +13,7 @@ DlgSudTeilen::DlgSudTeilen(const QString &name, double amount, QWidget *parent) 
     ui->doubleSpinBox_Amount2->setMaximum(mTotalAmount);
     on_horizontalSlider_Percent_valueChanged(50);
     ui->horizontalSlider_Percent->setFocus();
+    adjustSize();
 }
 
 DlgSudTeilen::~DlgSudTeilen()

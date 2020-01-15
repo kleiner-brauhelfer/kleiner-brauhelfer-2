@@ -1,0 +1,37 @@
+name: macOS
+
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Install dependencies from homebrew
+        run: |
+          brew upgrade
+          brew install qt
+          brew link qt -f
+
+      - name: Build kleiner-brauhelfer-2
+        run: |
+          chmod +x ./build_macos.sh
+          ./build_macos.sh /usr/local/opt/qt/bin/ "-${{ github.sha }}"
+          mkdir deploy
+          cp build-macos/bin/kbh2_*.zip deploy/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: kleiner-brauhelfer-2
+          path: deploy

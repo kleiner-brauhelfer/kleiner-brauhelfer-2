@@ -13,22 +13,22 @@
     <table>
       <tr>
         <td valign="center" align="right">
-          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:138px;height:138px">
-            <img class="glas" style="padding:0px;margin:0px;width:140px;height:140px">
+          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:132px;height:132px">
+            <img class="glas" style="padding:0px;margin:-4px;width:140px;height:140px">
           </div>
         </td>
         <td valign="top">
           <table>
             <col width="*">
             <col width="80">
-            <col width="*">
+            <col width="200">
             <tr>
               <td>Braudatum</td>
               <td colspan="2">____________</td>
             </tr>
             <tr>
               <td>Anlage</td>
-              <td class="value" align="center" colspan="2">{{Rezept.Brauanlage}}</td>
+              <td class="value" colspan="2">{{Rezept.Brauanlage}}</td>
             </tr>
             <tr>
               <td>Menge</td>
@@ -47,6 +47,27 @@
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
+            {{#Rezept.SW_WZ_Maischen}}
+            <tr>
+              <td>&nbsp;&nbsp;&nbsp;Weitere Zutaten "Maischen"</td>
+              <td class="value" align="center">{{Rezept.SW_WZ_Maischen}}</td>
+              <td>&deg;P</td>
+            </tr>
+            {{/Rezept.SW_WZ_Maischen}}
+            {{#Rezept.SW_WZ_Kochen}}
+            <tr>
+              <td>&nbsp;&nbsp;&nbsp;Weitere Zutaten "Kochen"</td>
+              <td class="value" align="center">{{Rezept.SW_WZ_Kochen}}</td>
+              <td>&deg;P</td>
+            </tr>
+            {{/Rezept.SW_WZ_Kochen}}
+            {{#Rezept.SW_WZ_Gaerung}}
+            <tr>
+              <td>&nbsp;&nbsp;&nbsp;Weitere Zutaten "G&auml;rung"</td>
+              <td class="value" align="center">{{Rezept.SW_WZ_Gaerung}}</td>
+              <td>&deg;P</td>
+            </tr>
+            {{/Rezept.SW_WZ_Gaerung}}
             <tr>
               <td>Bittere</td>
               <td class="value" align="center">{{Rezept.Bittere}}</td>
@@ -70,9 +91,149 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm" align="center">
+    <h2>Bemerkungen</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
+
+  {{#Zutaten}}
+  <div class="rm" align="center">
+    <h2>Zutaten</h2>
+    <table>
+      <tr>
+        {{#Malz}}
+        <td valign="top">
+          <table>
+            <tr>
+              <th align="left">Malz</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Prozent}}</span> %</td>
+              <td align="right"><span class="value">{{Menge}}</span> kg</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          </table>
+        </td>
+        {{/Malz}}
+        <td valign="top">
+          <table>
+          {{#Honig}}
+            <tr>
+              <th align="left">Honig</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Honig}}
+          {{#Zucker}}
+            <tr>
+              <th align="left">Zucker</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Zucker}}
+          </table>
+        </td>
+        <td valign="top">
+          <table>
+          {{#Hopfen}}
+            <tr>
+              <th align="left">Hopfen</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}} ({{Alpha}}%)</td>
+              <td align="right"><span class="value">{{Menge}}</span> g</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Hopfen}}
+          {{#Kalthopfen}}
+            <tr>
+              <th align="left">Stopfhopfen</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Kalthopfen}}
+          </table>
+        </td>
+        <td valign="top">
+          <table>
+          {{#Hefe}}
+            <tr>
+              <th align="left">Hefe</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> x</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Hefe}}
+          {{#Sonstiges}}
+            <tr>
+              <th align="left">Sonstiges</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Sonstiges}}
+          </table>
+        </td>
+        <td valign="top">
+          <table>
+          {{#Gewuerz}}
+            <tr>
+              <th align="left">Gew&uuml;rze</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Gewuerz}}
+          {{#Frucht}}
+            <tr>
+              <th align="left">Fr&uuml;chte</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td align="left">{{Name}}</td>
+              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><input type="checkbox"></td>
+            </tr>
+            {{/Liste}}
+          {{/Frucht}}
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+  {{/Zutaten}}
 
   {{#Geraete}}
   <div class="rm" align="center">
@@ -87,7 +248,7 @@
 
   <div class="rm" align="center">
     <h2>Maischen</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       <tr>
@@ -223,7 +384,7 @@
 
   <div class="rm" align="center">
     <h2>L&auml;utern</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       <tr>
@@ -246,7 +407,7 @@
 
   <div class="rm" align="center">
     <h2>W&uuml;rzekochen</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       {{#Zutaten.ZutatenVorderwuerze}}
@@ -311,7 +472,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
             </tr>
             {{/Kochen}}
             {{/Liste}}
@@ -331,7 +492,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min <span class="value">{{Menge}}</span> {{Einheit}} zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Kochen}}
@@ -340,7 +501,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}}</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Kochen}}
@@ -349,7 +510,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min <span class="value">{{Menge}}</span> {{Einheit}} zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Kochen}}
@@ -358,7 +519,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min <span class="value">{{Menge}}</span> {{Einheit}} zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Kochen}}
@@ -367,7 +528,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min <span class="value">{{Menge}}</span> {{Einheit}} zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Kochen}}
@@ -377,10 +538,8 @@
       </tr>
       {{/Zutaten.ZutatenKochen}}
       <tr>
-        <td class="underline" valign="top"><strong>Kochende</strong></td>
-        <td class="underline">
-          nach <span class="value">{{Rezept.Kochdauer}}</span> min<br/>
-        </td>
+        <td class="underline" valign="top"><strong>Kochdauer</strong></td>
+        <td class="underline"><span class="value">{{Rezept.Kochdauer}}</span> min</td>
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>Stammw&uuml;rze Kochende</strong></td>
@@ -409,6 +568,13 @@
         </td>
       </tr>
       <tr>
+        <td class="underline" valign="top"><strong>Whirlpool</strong></td>
+        <td class="underline">
+          Kocher abschalten. Wenn thermische Bewegung abgeflaut ist, einen Whirlpool erzeugen und ca. 15 min warten bis sich ein Trubkegel gebildet hat
+        </td>
+      </tr>
+     {{#Rezept.Nachisomerisierung}}
+      <tr>
         <td valign="top"><strong>Nachisomerisierung</strong></td>
         <td>Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
@@ -419,13 +585,13 @@
             {{#Nachisomerisierung}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min ab Kochende <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
             </tr>
             {{/Nachisomerisierung}}
             {{#Ausschlagen}}
             <tr>
               <td>{{Name}}</td>
-              <td>nach <span class="value">{{ZugabeNach}}</span> min ab Kochende <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
             </tr>
             {{/Ausschlagen}}
             {{/Liste}}
@@ -433,12 +599,13 @@
           {{/Zutaten.Hopfen}}
         </td>
       </tr>
+      {{/Rezept.Nachisomerisierung}}
     </table>
   </div>
 
   <div class="rm" align="center">
     <h2>Abseihen & Anstellen</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       <tr>
@@ -447,7 +614,7 @@
       </tr>
       {{#Wasser.Verduennung}}
       <tr>
-        <td class="underline" valign="top"><strong>HGF Verd&uuml;nung</strong></td>
+        <td class="underline" valign="top"><strong>HGF Verd&uuml;nnung</strong></td>
         <td class="underline">
           <span class="value">{{Wasser.Verduennung}}</span> Liter Wasser zugeben<br/>
           {{#Wasser}}{{#VerduennungMilchsaeure}}<span class="value">{{VerduennungMilchsaeure}}</span> ml Milchs&auml;ure 80% zugeben{{/VerduennungMilchsaeure}}{{/Wasser}}
@@ -481,7 +648,7 @@
 
   <div class="rm" align="center">
     <h2>G&auml;rung</h2>
-    <table style="border-collapse: collapse;">
+    <table>
       <col width="200">
       <col width="700">
       {{#Zutaten.Hefe}}
@@ -507,7 +674,7 @@
       {{/Zutaten.Hefe}}
       {{#Zutaten.ZutatenHopfenstopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Hopfenstopfen</strong></td>
+        <td class="underline" valign="top"><strong>Stopfhopfen</strong></td>
         <td class="underline">
           <table>
             <col width="200">

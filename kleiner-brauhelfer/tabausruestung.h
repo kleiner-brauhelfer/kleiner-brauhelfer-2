@@ -21,7 +21,7 @@ public:
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
-    void anlage_selectionChanged(const QItemSelection &selected);
+    void anlage_selectionChanged();
     void on_btnNeueAnlage_clicked();
     void on_btnAnlageLoeschen_clicked();
     void on_btnNeuesGeraet_clicked();
@@ -48,8 +48,8 @@ private slots:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
 
 private:
     Ui::TabAusruestung *ui;

@@ -22,9 +22,16 @@ public:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    void pasteFromClipboardSchnellgaerverlauf();
+    void pasteFromClipboardHauptgaerverlauf();
+    void pasteFromClipboardNachgaerverlauf();
 
 private slots:
     void sudLoaded();
+    void sudDataChanged(const QModelIndex& index);
+    void onSchnellgaerverlaufRowInserted();
+    void onHauptgaerverlaufRowInserted();
+    void onNachgaerverlaufRowInserted();
     void updateDiagramm();
     void updateValues();
     void updateWeitereZutaten();

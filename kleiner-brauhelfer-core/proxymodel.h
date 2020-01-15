@@ -23,23 +23,24 @@ public:
     virtual void setSourceModel(QAbstractItemModel *model) Q_DECL_OVERRIDE;
 
     using QSortFilterProxyModel::data;
-    QVariant data(int row, const QString &fieldName, int role = Qt::DisplayRole) const;
+    QVariant data(int row, int col, int role = Qt::DisplayRole) const;
 
     using QSortFilterProxyModel::setData;
-    bool setData(int row, const QString &fieldName, const QVariant &value, int role = Qt::EditRole);
+    bool setData(int row, int col, const QVariant &value, int role = Qt::EditRole);
 
     Q_INVOKABLE bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
     Q_INVOKABLE bool removeRow(int arow, const QModelIndex &parent = QModelIndex());
 
-    Q_INVOKABLE int append(const QVariantMap &values = QVariantMap());
+    Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
+    Q_INVOKABLE int append(const QVariantMap &values);
 
     Q_INVOKABLE int mapRowToSource(int row) const;
     Q_INVOKABLE int mapRowFromSource(int row) const;
 
     Q_INVOKABLE int fieldIndex(const QString &fieldName) const;
 
-    int getRowWithValue(const QString &fieldName, const QVariant &value);
-    QVariant getValueFromSameRow(const QString &fieldNameKey, const QVariant &valueKey, const QString &fieldName);
+    int getRowWithValue(int col, const QVariant &value);
+    QVariant getValueFromSameRow(int colKey, const QVariant &valueKey, int col);
 
     Q_INVOKABLE void setFilterString(const QString &text);
 

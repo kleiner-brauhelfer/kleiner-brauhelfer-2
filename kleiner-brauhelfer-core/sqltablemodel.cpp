@@ -1,103 +1,80 @@
 #include "sqltablemodel.h"
 #include <QSqlRecord>
 #include <QSqlIndex>
+#include <QSqlError>
 
-#define DEBUG_EN 0
-#if DEBUG_EN
-  #include <QDebug>
-#endif
+QLoggingCategory SqlTableModel::loggingCategory("SqlTableModel", QtWarningMsg);
 
 SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
     QSqlTableModel(parent, db),
     mSignalModifiedBlocked(false),
+    mRoles(QHash<int, QByteArray>()),
     mSetDataCnt(0)
 {
     setEditStrategy(EditStrategy::OnManualSubmit);
     mVirtualField.append("deleted");
-    connect(this, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), this, SLOT(fetchAll()));
-    connect(this, SIGNAL(rowsInserted(const QModelIndex&, int, int)), this, SLOT(fetchAll()));
-    connect(this, SIGNAL(rowsRemoved(const QModelIndex&, int, int)), this, SLOT(fetchAll()));
-    connect(this, SIGNAL(layoutChanged()), this, SLOT(fetchAll()));
 }
 
-QVariant SqlTableModel::data(const QModelIndex &index, int role) const
+QVariant SqlTableModel::data(const QModelIndex &idx, int role) const
 {
-    QVariant value;
     if (role == Qt::DisplayRole || role == Qt::EditRole || role > Qt::UserRole)
     {
-        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : index.column();
+        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : idx.column();
         if (col == QSqlTableModel::columnCount())
         {
-            value = headerData(index.row(), Qt::Vertical).toString() == "!";
+            return headerData(idx.row(), Qt::Vertical).toString() == "!";
         }
         else
         {
-            const QModelIndex index2 = this->index(index.row(), col);
-            value = dataExt(index2);
+            const QModelIndex idx2 = index(idx.row(), col);
+            QVariant value = dataExt(idx2);
             if (!value.isValid())
-                value = QSqlTableModel::data(index2);
+                value = QSqlTableModel::data(idx2);
+            return value;
         }
     }
-    else
-    {
-        value = QSqlTableModel::data(index, role);
-    }
-    return value;
+    return QSqlTableModel::data(idx, role);
 }
 
-QVariant SqlTableModel::data(int row, const QString &fieldName, int role) const
+QVariant SqlTableModel::data(int row, int col, int role) const
 {
-    return data(this->index(row, fieldIndex(fieldName)), role);
+    return data(index(row, col), role);
 }
 
-bool SqlTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool SqlTableModel::setData(const QModelIndex &idx, const QVariant &value, int role)
 {
-    bool ret;
     if (role == Qt::DisplayRole || role == Qt::EditRole || role > Qt::UserRole)
     {
-        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : index.column();
+        int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : idx.column();
         if (col == QSqlTableModel::columnCount())
+            return false;
+        qDebug(loggingCategory) << "setData():" << tableName() << "row" << idx.row() << "col" << fieldName(col) << "=" << value.toString();
+        ++mSetDataCnt;
+        const QModelIndex idx2 = index(idx.row(), col);
+        bool ret = setDataExt(idx2, value);
+        if (!ret)
+            ret = QSqlTableModel::setData(idx2, value);
+        if (ret && mSetDataCnt == 1)
         {
-            ret = false;
+            emit rowChanged(idx);
+            if (!mSignalModifiedBlocked)
+                emit modified();
         }
-        else
-        {
-          #if DEBUG_EN
-            qDebug() << tableName() << "set row" << index.row() << "col" << fieldName(col) << "=" << value.toString();
-          #endif
-            const QModelIndex index2 = this->index(index.row(), col);
-            ++mSetDataCnt;
-            ret = setDataExt(index2, value);
-            if (!ret)
-                ret = QSqlTableModel::setData(index2, value);
-            if (ret)
-            {
-                if (mSetDataCnt == 1)
-                {
-                    emit rowChanged(index);
-                    if (!mSignalModifiedBlocked)
-                        emit modified();
-                }
-            }
-            --mSetDataCnt;
-        }
+        --mSetDataCnt;
+        return ret;
     }
-    else
-    {
-        ret = QSqlTableModel::setData(index, value, role);
-    }
-    return ret;
+    return QSqlTableModel::setData(idx, value, role);
 }
 
-bool SqlTableModel::setData(int row, const QString &fieldName, const QVariant &value, int role)
+bool SqlTableModel::setData(int row, int col, const QVariant &value, int role)
 {
-    return setData(this->index(row, fieldIndex(fieldName)), value, role);
+    return setData(index(row, col), value, role);
 }
 
-bool SqlTableModel::setData(int row, const QVariantMap &values, int role)
+bool SqlTableModel::setData(int row, const QMap<int, QVariant> &values, int role)
 {
     bool ret = true;
-    QVariantMap::const_iterator it = values.constBegin();
+    QMap<int, QVariant>::const_iterator it = values.constBegin();
     while (it != values.constEnd())
     {
         ret &= setData(row, it.key(), it.value(), role);
@@ -160,20 +137,14 @@ QString SqlTableModel::fieldName(int fieldIndex) const
     return QString();
 }
 
-void SqlTableModel::setSortByFieldName(const QString &fieldName, Qt::SortOrder order)
-{
-    int idx = fieldIndex(fieldName);
-    if (idx != -1)
-    {
-        QSqlTableModel::setSort(idx, order);
-    }
-}
-
 void SqlTableModel::setTable(const QString &tableName)
 {
     if (tableName != this->tableName())
     {
+        qInfo(loggingCategory) << "setTable():" << tableName;
         QSqlTableModel::setTable(tableName);
+        if (lastError().isValid())
+            qCritical(loggingCategory) << lastError();
         // hack for setHeaderData() (crash in proxy model when loading new database in App)
         beginResetModel();
         endResetModel();
@@ -192,24 +163,32 @@ void SqlTableModel::setTable(const QString &tableName)
 
 bool SqlTableModel::select()
 {
+    qInfo(loggingCategory) << "select():" << tableName();
+    qDebug(loggingCategory) << selectStatement();
     if (QSqlTableModel::select())
     {
         fetchAll();
         return true;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return false;
 }
 
 void SqlTableModel::fetchAll()
 {
     while (canFetchMore())
+    {
+        qInfo(loggingCategory) << "fetchMore():" << tableName();
         fetchMore();
+    }
 }
 
 void SqlTableModel::setFilter(const QString &filter)
 {
     if (filter != this->filter())
     {
+        qInfo(loggingCategory) << "setFilter():" << tableName() << filter;
         QSqlTableModel::setFilter(filter);
         emit filterChanged();
     }
@@ -217,15 +196,16 @@ void SqlTableModel::setFilter(const QString &filter)
 
 bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
 {
+    qInfo(loggingCategory) << "removeRows():" << tableName() << row << count;
     if (QSqlTableModel::removeRows(row, count, parent))
     {
         for (int i = 0; i < count; ++i)
         {
-            QModelIndex index = this->index(row + i, fieldIndex("deleted"));
-            if (index.isValid())
+            QModelIndex idx = index(row + i, fieldIndex("deleted"));
+            if (idx.isValid())
             {
-                emit dataChanged(index, index, QVector<int>());
-                emit rowChanged(index);
+                emit dataChanged(idx, idx, QVector<int>());
+                emit rowChanged(idx);
             }
         }
         emit layoutAboutToBeChanged();
@@ -233,6 +213,8 @@ bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
         emit modified();
         return true;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return false;
 }
 
@@ -241,65 +223,92 @@ bool SqlTableModel::removeRow(int arow, const QModelIndex &parent)
      return QSqlTableModel::removeRow(arow, parent);
 }
 
-int SqlTableModel::append(const QVariantMap &values)
+int SqlTableModel::append(const QMap<int, QVariant> &values)
 {
-    QVariantMap val = values;
+    qInfo(loggingCategory) << "append():" << tableName();
+    QMap<int, QVariant> val = values;
     defaultValues(val);
     if (insertRow(rowCount()))
     {
         int row = rowCount() - 1;
-        QVariantMap::const_iterator it = val.constBegin();
+        QMap<int, QVariant>::const_iterator it = val.constBegin();
         bool wasBlocked = blockSignals(true);
         while (it != val.constEnd())
         {
-            QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
+            QSqlTableModel::setData(index(row, it.key()), it.value());
             ++it;
         }
         it = val.constBegin();
         while (it != val.constEnd())
         {
-            setDataExt(index(row, fieldIndex(it.key())), it.value());
+            setDataExt(index(row, it.key()), it.value());
             ++it;
         }
         blockSignals(wasBlocked);
         emit modified();
         return row;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return -1;
 }
 
-int SqlTableModel::appendDirect(const QVariantMap &values)
+int SqlTableModel::append(const QVariantMap &values)
 {
+    QMap<int, QVariant> val;
+    QVariantMap::const_iterator it = values.constBegin();
+    while (it != values.constEnd())
+    {
+        val.insert(fieldIndex(it.key()), it.value());
+        ++it;
+    }
+    return append(val);
+}
+
+int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
+{
+    qInfo(loggingCategory) << "appendDirect():" << tableName();
     if (insertRow(rowCount()))
     {
         int row = rowCount() - 1;
-        QVariantMap::const_iterator it = values.constBegin();
+        QMap<int, QVariant>::const_iterator it = values.constBegin();
         bool wasBlocked = blockSignals(true);
         while (it != values.constEnd())
         {
-            QSqlTableModel::setData(index(row, fieldIndex(it.key())), it.value());
+            QSqlTableModel::setData(index(row, it.key()), it.value());
             ++it;
         }
         blockSignals(wasBlocked);
         emit modified();
         return row;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return -1;
+}
+
+void SqlTableModel::emitModified()
+{
+    emit modified();
 }
 
 bool SqlTableModel::submitAll()
 {
+    qInfo(loggingCategory) << "submitAll():" << tableName();
     if (QSqlTableModel::submitAll())
     {
         emit submitted();
         emit modified();
         return true;
     }
+    if (lastError().isValid())
+        qCritical(loggingCategory) << lastError();
     return false;
 }
 
 void SqlTableModel::revertAll()
 {
+    qInfo(loggingCategory) << "revertAll():" << tableName();
     QSqlTableModel::revertAll();
     emit layoutAboutToBeChanged();
     emit layoutChanged();
@@ -307,38 +316,37 @@ void SqlTableModel::revertAll()
     emit modified();
 }
 
-int SqlTableModel::getRowWithValue(const QString &fieldName, const QVariant &value)
+int SqlTableModel::getRowWithValue(int col, const QVariant &value) const
 {
-    int col = fieldIndex(fieldName);
     if (col != -1)
     {
         for (int row = 0; row < rowCount(); ++row)
         {
-            if (data(this->index(row, col)) == value)
+            if (data(row, col) == value)
                 return row;
         }
     }
     return -1;
 }
 
-QVariant SqlTableModel::getValueFromSameRow(const QString &fieldNameKey, const QVariant &valueKey, const QString &fieldName)
+QVariant SqlTableModel::getValueFromSameRow(int colKey, const QVariant &valueKey, int col) const
 {
-    int row = getRowWithValue(fieldNameKey, valueKey);
+    int row = getRowWithValue(colKey, valueKey);
     if (row == -1)
         return QVariant();
-    return data(row, fieldName);
+    return data(row, col);
 }
 
 QVariant SqlTableModel::dataExt(const QModelIndex &index) const
 {
-    Q_UNUSED(index);
+    Q_UNUSED(index)
     return QVariant();
 }
 
 bool SqlTableModel::setDataExt(const QModelIndex &index, const QVariant &value)
 {
-    Q_UNUSED(index);
-    Q_UNUSED(value);
+    Q_UNUSED(index)
+    Q_UNUSED(value)
     return false;
 }
 
@@ -348,7 +356,7 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
-        if (index.sibling(row, index.column()).data() == value)
+        if (data(row, index.column()) == value)
             return false;
     }
     return true;
@@ -369,10 +377,10 @@ int SqlTableModel::getNextId() const
     if (!primary.isEmpty())
     {
         int maxId = 0;
-        int colSudId = primary.value(0).toInt();
-        for (int i = 0; i < rowCount(); ++i)
+        int colId = primary.value(0).toInt();
+        for (int row = 0; row < rowCount(); ++row)
         {
-            int sudId = index(i, colSudId).data().toInt();
+            int sudId = index(row, colId).data().toInt();
             if (sudId > maxId)
                 maxId = sudId;
         }
@@ -381,19 +389,21 @@ int SqlTableModel::getNextId() const
     return 1;
 }
 
-void SqlTableModel::defaultValues(QVariantMap &values) const
+void SqlTableModel::defaultValues(QMap<int, QVariant> &values) const
 {
     Q_UNUSED(values)
 }
 
-QVariantMap SqlTableModel::copyValues(int row) const
+QMap<int, QVariant> SqlTableModel::copyValues(int row) const
 {
-    QVariantMap values;
-    QSqlRecord rec = record(row);
-    for (int i = 0; i < rec.count(); ++i)
-        values.insert(rec.fieldName(i), rec.value(i));
+    QMap<int, QVariant> values;
+    int colPrimary = -1;
     QSqlIndex primary = primaryKey();
     if (!primary.isEmpty())
-        values.remove(fieldName(primary.value(0).toInt()));
+        colPrimary = primary.value(0).toInt();
+    QSqlRecord rec = record(row);
+    for (int i = 0; i < rec.count(); ++i)
+        if (i != colPrimary)
+            values.insert(i, rec.value(i));
     return values;
 }

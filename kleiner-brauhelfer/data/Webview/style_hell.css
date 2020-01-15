@@ -22,7 +22,7 @@ div.r {
 }
 
 div.rm {
-  border: 2px solid #dddddd;
+  border: 1px solid #dddddd;
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 5px;
@@ -94,4 +94,52 @@ img.star_grey {
 .kommentar {
   color: #555555;
   word-wrap: break-word;
+}
+
+.bg_malz {
+  background-color: #FFFFCC;
+}
+
+.bg_hopfen {
+  background-color: #E5FFDB;
+}
+
+.bg_hefe {
+  background-color: #FFEECC;
+}
+
+.bg_honig {
+  background-color: #FFF2CE;
+}
+
+.bg_zucker {
+  background-color: #FFDDCE;
+}
+
+.bg_gewuerz {
+  background-color: #CEFFD9;
+}
+
+.bg_frucht {
+  background-color: #CED6FF;
+}
+
+.bg_sonstiges {
+  background-color: #F8DDFF;
+}
+
+.bg_wasser {
+  background-color: #DDF2FF;
+}
+
+.bg_kommentar {
+  background-color: #F0F0F0;
+}
+
+.bg_rasten {
+  background-color: #CEDBFF;
+}
+
+.bg_anhaenge {
+  background-color: #F0F0F0;
 }

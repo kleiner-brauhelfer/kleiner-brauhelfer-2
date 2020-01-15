@@ -13,6 +13,7 @@ DlgEinmaischTemp::DlgEinmaischTemp(double schuettung, int schuettungTemp, double
     ui->doubleSpinBox_Hauptguss->setValue(hauptguss);
     ui->spinBox_RastTemp->setValue(rastTemp);
     doCalc();
+    adjustSize();
 }
 
 DlgEinmaischTemp::~DlgEinmaischTemp()
@@ -28,7 +29,7 @@ void DlgEinmaischTemp::doCalc()
     double m_malt = ui->doubleSpinBox_Schuettung->value() * c_malt;
     int T_malt = ui->spinBox_SchuettungTemp->value();
     int T_rest = ui->spinBox_RastTemp->value();
-    int T = static_cast<int>(T_rest + m_malt * (T_rest - T_malt) / m_w);
+    int T = (int)(T_rest + m_malt * (T_rest - T_malt) / m_w);
     ui->spinBox_EinmaischeTemp->setValue(T);
 }
 
@@ -43,7 +44,7 @@ void DlgEinmaischTemp::on_doubleSpinBox_Schuettung_valueChanged(double arg1)
     doCalc();
 }
 
-void DlgEinmaischTemp::on_doubleSpinBox_SchuettungTemp_valueChanged(double arg1)
+void DlgEinmaischTemp::on_spinBox_SchuettungTemp_valueChanged(int arg1)
 {
     Q_UNUSED(arg1);
     doCalc();
@@ -55,7 +56,7 @@ void DlgEinmaischTemp::on_doubleSpinBox_Hauptguss_valueChanged(double arg1)
     doCalc();
 }
 
-void DlgEinmaischTemp::on_doubleSpinBox_RastTemp_valueChanged(double arg1)
+void DlgEinmaischTemp::on_spinBox_RastTemp_valueChanged(int arg1)
 {
     Q_UNUSED(arg1);
     doCalc();

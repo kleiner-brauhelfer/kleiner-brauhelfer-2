@@ -5,7 +5,8 @@ extern Settings *gSettings;
 
 DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent),
-    mError(false)
+    mError(false),
+    mErrorOnLimit(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
@@ -21,7 +22,7 @@ void DoubleSpinBox::updatePalette()
 {
     if (!isEnabled())
         setPalette(gSettings->palette);
-    else if (mError)
+    else if (mError || (mErrorOnLimit && (value() >= maximum() || value() <= minimum())))
         setPalette(gSettings->paletteError);
     else if (isReadOnly())
         setPalette(gSettings->palette);
@@ -44,4 +45,9 @@ void DoubleSpinBox::setReadOnly(bool r)
 void DoubleSpinBox::setError(bool e)
 {
     mError = e;
+}
+
+void DoubleSpinBox::setErrorOnLimit(bool e)
+{
+    mErrorOnLimit = e;
 }

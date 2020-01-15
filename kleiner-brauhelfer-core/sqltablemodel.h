@@ -3,6 +3,7 @@
 
 #include "kleiner-brauhelfer-core_global.h"
 #include <QSqlTableModel>
+#include <QLoggingCategory>
 
 class LIB_EXPORT SqlTableModel : public QSqlTableModel
 {
@@ -33,10 +34,10 @@ public:
     /**
      * @brief Gets data from the model
      * @param row Row number
-     * @param fieldName Field name
+     * @param col Column numer
      * @return Table data
      */
-    Q_INVOKABLE QVariant data(int row, const QString &fieldName, int role = Qt::DisplayRole) const;
+    Q_INVOKABLE QVariant data(int row, int col, int role = Qt::DisplayRole) const;
 
     /**
      * @brief Sets data to the model
@@ -51,18 +52,18 @@ public:
     /**
      * @brief Sets data to the model
      * @param row Row number
-     * @param fieldName Field name
+     * @param col Column number
      * @param value Field value
      * @return True on success
      */
-    Q_INVOKABLE bool setData(int row, const QString &fieldName, const QVariant &value, int role = Qt::EditRole);
+    Q_INVOKABLE bool setData(int row, int col, const QVariant &value, int role = Qt::EditRole);
 
     /**
      * @brief Sets data to the model
      * @param row Row number
      * @param values Field name-values pairs to set
      */
-    Q_INVOKABLE bool setData(int row, const QVariantMap &values, int role = Qt::EditRole);
+    Q_INVOKABLE bool setData(int row, const QMap<int, QVariant> &values, int role = Qt::EditRole);
 
     /**
      * @brief Gets the role names
@@ -75,7 +76,7 @@ public:
      * @param index Index
      * @return Item flags
      */
-    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
+    Qt::ItemFlags virtual flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
 
     /**
      * @brief Returns the number of columns
@@ -99,23 +100,16 @@ public:
     Q_INVOKABLE QString fieldName(int fieldIndex) const;
 
     /**
-     * @brief Sets the sorting order
-     * @param fieldName Ordered by this field name
-     * @param order Ascending or descending order
-     */
-    Q_INVOKABLE void setSortByFieldName(const QString &fieldName, Qt::SortOrder order = Qt::AscendingOrder);
-
-    /**
      * @brief Sets the table
      * @param tableName Table name
      */
-    Q_INVOKABLE void setTable(const QString &tableName) Q_DECL_OVERRIDE;
+    Q_INVOKABLE virtual void setTable(const QString &tableName) Q_DECL_OVERRIDE;
 
     /**
      * @brief Sets the selection filter
      * @param filter Filter
      */
-    Q_INVOKABLE void setFilter(const QString &filter) Q_DECL_OVERRIDE;   
+    Q_INVOKABLE virtual void setFilter(const QString &filter) Q_DECL_OVERRIDE;
 
     /**
      * @brief Removes rows from the table
@@ -135,14 +129,27 @@ public:
      * @param values Field values
      * @return Index of appended row
      */
-    Q_INVOKABLE int append(const QVariantMap &values = QVariantMap());
+    Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
 
+    /**
+     * @brief Appends a new row to the table
+     * @param values Field values
+     * @return Index of appended row
+     */
+    Q_INVOKABLE int append(const QVariantMap &values);
+	
     /**
      * @brief Appends a new row directly to the table without calculating dependencies
      * @param values Field values
      * @return Index of appended row
      */
-    Q_INVOKABLE int appendDirect(const QVariantMap &values = QVariantMap());
+    Q_INVOKABLE int appendDirect(const QMap<int, QVariant> &values = QMap<int, QVariant>());
+
+    /**
+     * @brief Emits the modified signal
+     * @note Can be usefull in combination with blockSignals() and appendDirect()
+     */
+    Q_INVOKABLE void emitModified();
 
     /**
      * @brief Saves the pending changes of the table
@@ -157,11 +164,11 @@ public:
 
     /**
      * @brief Gets the row number matching a given value
-     * @param fieldName Field name to compare
+     * @param col Column number to compare
      * @param value Value of field name to match
      * @return Row number, -1 if not found
      */
-    int getRowWithValue(const QString &fieldName, const QVariant &value);
+    int getRowWithValue(int col, const QVariant &value) const;
 
     /**
      * @brief Gets the field name value matching a given field name key
@@ -170,20 +177,20 @@ public:
      * @param fieldName Field name to get
      * @return Value corresponding to field name
      */
-    QVariant getValueFromSameRow(const QString &fieldNameKey, const QVariant &valueKey, const QString &fieldName);
+    QVariant getValueFromSameRow(int colKey, const QVariant &valueKey, int col) const;
 
     /**
      * @brief Default values of a row
      * @param values Values
      */
-    virtual void defaultValues(QVariantMap &values) const;
+    virtual void defaultValues(QMap<int, QVariant> &values) const;
 
     /**
      * @brief Values used to copy a row
      * @param row Row
      * @return Values
      */
-    virtual QVariantMap copyValues(int row) const;
+    virtual QMap<int, QVariant> copyValues(int row) const;
 
 public Q_SLOTS:
 
@@ -267,6 +274,11 @@ private Q_SLOTS:
     void fetchAll();
 
 protected:
+
+    /**
+     * @brief Logging category for all SQL models
+     */
+    static QLoggingCategory loggingCategory;
 
     /**
      * @brief Can be used to define virtual field names to add virtual fields

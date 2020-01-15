@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QTemporaryFile>
+#include <QTimer>
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
@@ -20,7 +21,7 @@ public:
     void printToPdf(const QString& filePath);
 
 public slots:
-    void updateHtml();
+    void updateWebView();
     void updateTags();
 
 private slots:
@@ -40,6 +41,7 @@ private:
     Ui::WdgWebViewEditable *ui;
     HtmlHighLighter *mHtmlHightLighter;
     QTemporaryFile mTempCssFile;
+    QTimer mTimerWebViewUpdate;
 };
 
 #endif // WDGWEBVIEWEDITABLE_H

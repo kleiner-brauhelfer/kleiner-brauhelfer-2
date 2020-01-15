@@ -3,7 +3,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/rohstoffauswahlproxymodel.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -29,6 +29,8 @@ WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
     ui->btnMengeKorrektur->setVisible(false);
     ui->btnAnteilKorrektur->setVisible(false);
 
+    ui->tbMenge->setErrorOnLimit(true);
+
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -46,14 +48,14 @@ bool WdgHopfenGabe::isEnabled() const
     return mEnabled;
 }
 
-QVariant WdgHopfenGabe::data(const QString &fieldName) const
+QVariant WdgHopfenGabe::data(int col) const
 {
-    return bh->sud()->modelHopfengaben()->data(mIndex, fieldName);
+    return bh->sud()->modelHopfengaben()->data(mIndex, col);
 }
 
-bool WdgHopfenGabe::setData(const QString &fieldName, const QVariant &value)
+bool WdgHopfenGabe::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelHopfengaben()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelHopfengaben()->setData(mIndex, col, value);
 }
 
 void WdgHopfenGabe::checkEnabled(bool force)
@@ -67,16 +69,10 @@ void WdgHopfenGabe::checkEnabled(bool force)
     mEnabled = enabled;
     if (mEnabled)
     {
-        RohstoffAuswahlProxyModel* model = new RohstoffAuswahlProxyModel(ui->cbZutat);
-        model->setSourceModel(bh->modelHopfen());
-        model->setColumnMenge(bh->modelHopfen()->fieldIndex("Menge"));
-        model->setIndexMengeBenoetigt(bh->sud()->modelHopfengaben()->index(mIndex, bh->sud()->modelHopfengaben()->fieldIndex("erg_Menge")));
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(bh->modelHopfen()->fieldIndex("Beschreibung"));
-        ui->cbZutat->setEnabled(true);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(true);
         ui->btnLoeschen->setVisible(true);
         ui->tbVorhanden->setVisible(true);
+        ui->btnAufbrauchen->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit->setVisible(true);
         ui->tbMenge->setReadOnly(false);
@@ -87,14 +83,10 @@ void WdgHopfenGabe::checkEnabled(bool force)
     }
     else
     {
-        QStandardItemModel *model = new QStandardItemModel(ui->cbZutat);
-        model->setItem(0, 0, new QStandardItem(name()));
-        ui->cbZutat->setModel(model);
-        ui->cbZutat->setModelColumn(0);
-        ui->cbZutat->setEnabled(false);
-        ui->cbZutat->setCurrentIndex(-1);
+        ui->btnZutat->setEnabled(false);
         ui->btnLoeschen->setVisible(false);
         ui->tbVorhanden->setVisible(false);
+        ui->btnAufbrauchen->setVisible(false);
         ui->lblVorhanden->setVisible(false);
         ui->lblEinheit->setVisible(false);
         ui->tbMenge->setReadOnly(true);
@@ -118,28 +110,24 @@ void WdgHopfenGabe::updateValues(bool full)
 
     checkEnabled(full);
 
-    if (!ui->cbZutat->hasFocus())
-    {
-        ui->cbZutat->setCurrentIndex(-1);
-        ui->cbZutat->setCurrentText(hopfenname);
-    }
+    ui->btnZutat->setText(hopfenname);
     if (!ui->tbMengeProzent->hasFocus())
-        ui->tbMengeProzent->setValue(data("Prozent").toDouble());
+        ui->tbMengeProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbAnteilProzent->hasFocus())
-        ui->tbAnteilProzent->setValue(data("Prozent").toDouble());
+        ui->tbAnteilProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
-        ui->tbMenge->setValue(data("erg_Menge").toInt());
+        ui->tbMenge->setValue(data(ModelHopfengaben::Colerg_Menge).toInt());
     if (!ui->tbAnteil->hasFocus())
-        ui->tbAnteil->setValue(data("IBUAnteil").toDouble());
-    ui->tbAlpha->setValue(data("Alpha").toDouble());
-    ui->tbAusbeute->setValue(data("Ausbeute").toDouble());
+        ui->tbAnteil->setValue(data(ModelHopfengaben::ColIBUAnteil).toDouble());
+    ui->tbAlpha->setValue(data(ModelHopfengaben::ColAlpha).toDouble());
+    ui->tbAusbeute->setValue(data(ModelHopfengaben::ColAusbeute).toDouble());
     if (!ui->tbKochdauer->hasFocus())
     {
         ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
         ui->tbKochdauer->setMaximum(bh->sud()->getKochdauerNachBitterhopfung());
-        ui->tbKochdauer->setValue(data("Zeit").toInt());
+        ui->tbKochdauer->setValue(data(ModelHopfengaben::ColZeit).toInt());
     }
-    if (data("Vorderwuerze").toBool())
+    if (data(ModelHopfengaben::ColVorderwuerze).toBool())
         ui->cbZeitpunkt->setCurrentIndex(0);
     else if (ui->tbKochdauer->value() == ui->tbKochdauer->maximum())
         ui->cbZeitpunkt->setCurrentIndex(1);
@@ -149,7 +137,7 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->cbZeitpunkt->setCurrentIndex(3);
     else
         ui->cbZeitpunkt->setCurrentIndex(2);
-    int idx = bh->modelHopfen()->getValueFromSameRow("Beschreibung", hopfenname, "Typ").toInt();
+    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColTyp).toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
         QPalette pal = ui->frameColor->palette();
@@ -163,24 +151,29 @@ void WdgHopfenGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow("Beschreibung", hopfenname, "Menge").toInt());
+        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColMenge).toInt());
         int benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHopfengaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, "Name").toString() == hopfenname)
-                benoetigt += model->data(i, "erg_Menge").toInt();
+            if (model->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
+                benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toInt();
         }
-        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+        model = bh->sud()->modelWeitereZutatenGaben();
+        for (int i = 0; i < model->rowCount(); ++i)
+        {
+            if (model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen &&
+                model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
+                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
+        }
+        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
-        ui->tbMenge->setError(ui->tbMenge->value() == 0.0);
 
         ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
 
         if (prozentIbu())
         {
-            ui->tbMenge->setReadOnly(false);
             ui->btnMengeKorrektur->setVisible(false);
             ui->tbMengeProzent->setVisible(false);
             ui->tbAnteilProzent->setVisible(true);
@@ -189,42 +182,58 @@ void WdgHopfenGabe::updateValues(bool full)
         }
         else
         {
-            ui->tbMenge->setReadOnly(true);
             ui->btnAnteilKorrektur->setVisible(false);
             ui->tbAnteilProzent->setVisible(false);
             ui->tbMengeProzent->setVisible(true);
             ui->lblAnteilProzent->setVisible(false);
             ui->lblMengeProzent->setVisible(true);
         }
+
+        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1)
+        {
+            ui->tbMenge->setReadOnly(true);
+            ui->tbMengeProzent->setReadOnly(true);
+            ui->tbAnteilProzent->setReadOnly(true);
+            ui->btnAufbrauchen->setVisible(false);
+        }
+        else
+        {
+            ui->tbMenge->setReadOnly(false);
+            ui->tbMengeProzent->setReadOnly(false);
+            ui->tbAnteilProzent->setReadOnly(false);
+            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+        }
     }
 }
 
-void WdgHopfenGabe::on_cbZutat_currentIndexChanged(const QString &text)
+void WdgHopfenGabe::on_btnZutat_clicked()
 {
-    if (ui->cbZutat->hasFocus())
-        setData("Name", text);
+    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    dlg.select(name());
+    if (dlg.exec() == QDialog::Accepted)
+        setData(ModelHopfengaben::ColName, dlg.name());
 }
 
 void WdgHopfenGabe::on_tbMengeProzent_valueChanged(double value)
 {
     if (ui->tbMengeProzent->hasFocus())
-        setData("Prozent", value);
+        setData(ModelHopfengaben::ColProzent, value);
 }
 
 void WdgHopfenGabe::on_tbAnteilProzent_valueChanged(double value)
 {
     if (ui->tbAnteilProzent->hasFocus())
-        setData("Prozent", value);
+        setData(ModelHopfengaben::ColProzent, value);
 }
 
 QString WdgHopfenGabe::name() const
 {
-    return data("Name").toString();
+    return data(ModelHopfengaben::ColName).toString();
 }
 
 double WdgHopfenGabe::prozent() const
 {
-    return data("Prozent").toDouble();
+    return data(ModelHopfengaben::ColProzent).toDouble();
 }
 
 void WdgHopfenGabe::setFehlProzent(double value)
@@ -239,7 +248,7 @@ void WdgHopfenGabe::setFehlProzent(double value)
             else if (value < -p)
                 value = -p;
         }
-        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 1) + " %";
+        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
         ui->btnMengeKorrektur->setText(text);
         ui->btnMengeKorrektur->setProperty("toadd", value);
         ui->btnAnteilKorrektur->setText(text);
@@ -265,26 +274,26 @@ void WdgHopfenGabe::on_btnMengeKorrektur_clicked()
 {
     setFocus();
     double toadd = ui->btnMengeKorrektur->property("toadd").toDouble();
-    setData("Prozent", prozent() + toadd);
+    setData(ModelHopfengaben::ColProzent, prozent() + toadd);
 }
 
 void WdgHopfenGabe::on_btnAnteilKorrektur_clicked()
 {
     setFocus();
     double toadd = ui->btnAnteilKorrektur->property("toadd").toDouble();
-    setData("Prozent", prozent() + toadd);
+    setData(ModelHopfengaben::ColProzent, prozent() + toadd);
 }
 
 void WdgHopfenGabe::on_tbMenge_valueChanged(int value)
 {
     if (ui->tbMenge->hasFocus())
-        setData("erg_Menge", value);
+        setData(ModelHopfengaben::Colerg_Menge, value);
 }
 
 void WdgHopfenGabe::on_tbKochdauer_valueChanged(int dauer)
 {
     if (ui->tbKochdauer->hasFocus())
-        setData("Zeit", dauer);
+        setData(ModelHopfengaben::ColZeit, dauer);
 }
 
 void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
@@ -293,17 +302,17 @@ void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
     {
         if (index == 0)
         {
-            setData("Vorderwuerze", true);
+            setData(ModelHopfengaben::ColVorderwuerze, true);
         }
         else
         {
-            setData("Vorderwuerze", false);
+            setData(ModelHopfengaben::ColVorderwuerze, false);
             if (index == 1)
-                setData("Zeit", ui->tbKochdauer->maximum());
+                setData(ModelHopfengaben::ColZeit, ui->tbKochdauer->maximum());
             else if (index == 3)
-                setData("Zeit", 0);
+                setData(ModelHopfengaben::ColZeit, 0);
             else if (index == 4)
-                setData("Zeit", ui->tbKochdauer->minimum());
+                setData(ModelHopfengaben::ColZeit, ui->tbKochdauer->minimum());
         }
     }
 }
@@ -311,4 +320,9 @@ void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
 void WdgHopfenGabe::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgHopfenGabe::on_btnAufbrauchen_clicked()
+{
+    setData(ModelHopfengaben::Colerg_Menge, ui->tbVorhanden->value());
 }

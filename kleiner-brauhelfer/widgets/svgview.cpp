@@ -39,9 +39,11 @@ void SvgView::drawBackground(QPainter *p, const QRectF &)
     p->restore();
 }
 
-QSize SvgView::svgSize() const
+QRectF SvgView::viewBoxF() const
 {
-    return mSvgItem ? mSvgItem->boundingRect().size().toSize() : QSize();
+    if (mSvgItem && mSvgItem->renderer())
+        return mSvgItem->renderer()->viewBoxF();
+    return QRectF();
 }
 
 void SvgView::clear()
@@ -50,14 +52,14 @@ void SvgView::clear()
     mSvgItem = nullptr;
 }
 
-bool SvgView::openFile(const QString &fileName)
+bool SvgView::load(const QString &filename)
 {
-    QGraphicsScene *s = scene();
-    QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem(fileName));
-    if (!svgItem->renderer()->isValid())
+    QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem());
+    if (!svgItem->renderer()->load(filename))
         return false;
+    svgItem->setElementId("");
 
-    s->clear();
+    scene()->clear();
     resetTransform();
 
     mSvgItem = svgItem.take();
@@ -71,10 +73,10 @@ bool SvgView::openFile(const QString &fileName)
         backgroundItem->setBrush(Qt::white);
         backgroundItem->setPen(Qt::NoPen);
         backgroundItem->setZValue(-1);
-        s->addItem(backgroundItem);
+        scene()->addItem(backgroundItem);
     }
 
-    s->addItem(mSvgItem);
+    scene()->addItem(mSvgItem);
 
     if (mOutlineVisible)
     {
@@ -85,10 +87,53 @@ bool SvgView::openFile(const QString &fileName)
         outlineItem->setPen(outline);
         outlineItem->setBrush(Qt::NoBrush);
         outlineItem->setZValue(1);
-        s->addItem(outlineItem);
+        scene()->addItem(outlineItem);
     }
 
-    s->setSceneRect(mSvgItem->boundingRect());
+    scene()->setSceneRect(mSvgItem->boundingRect());
+    fitInView(mSvgItem, Qt::KeepAspectRatio);
+    return true;
+}
+
+bool SvgView::load(const QByteArray &contents)
+{
+    QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem());
+    if (!svgItem->renderer()->load(contents))
+        return false;
+    svgItem->setElementId("");
+
+    scene()->clear();
+    resetTransform();
+
+    mSvgItem = svgItem.take();
+    mSvgItem->setFlags(QGraphicsItem::ItemClipsToShape);
+    mSvgItem->setCacheMode(QGraphicsItem::NoCache);
+    mSvgItem->setZValue(0);
+
+    if (mBackgroundVisible)
+    {
+        QGraphicsRectItem *backgroundItem = new QGraphicsRectItem(mSvgItem->boundingRect());
+        backgroundItem->setBrush(Qt::white);
+        backgroundItem->setPen(Qt::NoPen);
+        backgroundItem->setZValue(-1);
+        scene()->addItem(backgroundItem);
+    }
+
+    scene()->addItem(mSvgItem);
+
+    if (mOutlineVisible)
+    {
+        QGraphicsRectItem *outlineItem = new QGraphicsRectItem(mSvgItem->boundingRect());
+        QPen outline(Qt::black, 2, Qt::DashLine);
+        outline.setCosmetic(true);
+        outline.setColor(QColor(255,0,0));
+        outlineItem->setPen(outline);
+        outlineItem->setBrush(Qt::NoBrush);
+        outlineItem->setZValue(1);
+        scene()->addItem(outlineItem);
+    }
+
+    scene()->setSceneRect(mSvgItem->boundingRect());
     fitInView(mSvgItem, Qt::KeepAspectRatio);
     return true;
 }

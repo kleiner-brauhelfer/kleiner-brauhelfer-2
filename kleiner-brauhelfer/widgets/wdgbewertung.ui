@@ -87,7 +87,11 @@
        </layout>
       </item>
       <item>
-       <widget class="WdgRating" name="wdgRating" native="true"/>
+       <widget class="WdgRating" name="wdgRating" native="true">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Bewertungseintrag&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Ohne Klick hierauf, können keine Bewertungseinträge verfasst werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

@@ -17,9 +17,9 @@ public:
 
 private slots:
     void databaseModified();
-    void discarded();
+    void updateValues();
     void sudLoaded();
-    void sudModified();
+    void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
     void changeStyle();
     void checkMessageFinished();
@@ -43,6 +43,7 @@ private slots:
     void on_actionReiterDatenbank_triggered(bool checked);
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
+    void on_actionTooltips_triggered(bool checked);
     void on_actionSpende_triggered();
     void on_actionUeber_triggered();
     void on_actionIspindelEinstellungen_triggered();
@@ -50,16 +51,16 @@ private slots:
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart();
     void save();
     void saveSettings();
     void restoreView(bool onUpdate = false);
-    void checkMessage();
+    void checkForUpdate(bool force);
 
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
-    QByteArray mDefaultGeometry;
     int mTabIndexDatenbank;
 };
 

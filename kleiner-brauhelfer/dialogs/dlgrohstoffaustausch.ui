@@ -6,9 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>180</height>
+    <width>350</width>
+    <height>170</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>278</width>
+    <height>170</height>
+   </size>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -17,9 +26,6 @@
       <bool>true</bool>
      </property>
     </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_5"/>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
@@ -47,7 +53,10 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QComboBox" name="comboBoxAustausch">
+      <widget class="ComboBox" name="comboBoxAustausch">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer zeigt diesen Dialog an, wenn im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; ein Eintrag entfernt oder umbenannt wurde oder nicht mehr zugeordnet werden kann. Nur mit korrekten Rohstoffangaben so kann ein Braurezept korrekt berechnet werden. Ist ein Rohstoff im Tab Rohstoffe nicht vorhanden, aber im Rezept aufgeführt, muss hier zwingend ein &lt;span style=&quot; font-weight:600;&quot;&gt;Ersatzrohstoff&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="maxVisibleItems">
         <number>20</number>
        </property>
@@ -66,9 +75,6 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="label_2"/>
-   </item>
-   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -85,6 +91,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btnImportieren">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button können aus kompatiblen Quellen &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; importiert werden, die das aktuell in Bearbeitung befindliche Rezept benötigt. Quellen können u.a. zuvor exportierte Rezepte im *.json- oder *.xml-Format mit entsprechend kompatiblen Feldern sein.&lt;/p&gt;&lt;p&gt;MaischeMalzUndMehr-Rezepte und natürlich exportierte Kleiner-Brauhelfer-Rezepte genügen diesen Anforderungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Importieren</string>
        </property>
@@ -92,6 +101,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnAustauschen">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button werden &lt;span style=&quot; font-weight:600;&quot;&gt;ehemalige Rohstoffe &lt;/span&gt;gegen aktuelle, &lt;span style=&quot; font-weight:600;&quot;&gt;erfasste Rohstoffe&lt;/span&gt;, die für das aktuelle Rezept nötig sind, ausgetauscht. Dabei ist es unerheblich, ob der Rohstoff wirklich im erforderlichen Volumen vorhanden ist oder nicht – er muss als Eintrag im Tab Rohstoffe eindeutig mit den notwendigen Angaben identifizierbar sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Austauschen</string>
        </property>
@@ -99,6 +111,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnNichtAustauschen">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird dem Kleinen Brauhelfer mitgeteilt, dass weiter mit einem nicht mehr vorhandenen Rohstoff kalkuliert werden soll. Dies geht nur, wenn der Rohstoff zuvor mit den erforderlichen Daten erfasst wurde. &lt;/p&gt;&lt;p&gt;Bei Malzen ist das beispielsweise der Farbwert (EBC) und die prozentuale Höchstmenge, bei Hopfen der Alphawert sowie die Hopfenart, bei Weiteren Zutaten der Typ, der Vorgaben für die Vergärbarkeit enthält.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Nicht austauschen</string>
        </property>
@@ -108,6 +123,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -7,12 +7,15 @@ if [ "${QTDIR}" = "" ]; then
 fi
 
 PRO="kleiner-brauhelfer-2.pro"
+BUILD_DIR=$(dirname $0)/build-macos
 
-rm -f ./kleiner-brauhelfer-core/tmp/*
-rm -f ./kleiner-brauhelfer/tmp/*
+mkdir -p ${BUILD_DIR}
+cd ${BUILD_DIR}
+${QTDIR}/qmake "../${PRO}" -config release || exit 1
+# make clean
+make -j 8 || exit 1
+#${QTDIR}/lupdate "${PRO}" || exit 1
+#${QTDIR}/lrelease "${PRO}" || exit 1
+cd -
 
-${QTDIR}/qmake "${PRO}" -config release || exit 1
-make clean && make || exit 1
-${QTDIR}/lupdate "${PRO}" || exit 1
-${QTDIR}/lrelease "${PRO}" || exit 1
-./deployment/macOS/deploy.sh ./bin/kleiner-brauhelfer-2.app "${QTDIR}" "$2"|| exit 1
+./deployment/macOS/deploy.sh "${BUILD_DIR}/bin/kleiner-brauhelfer-2.app" "${QTDIR}" "$2"|| exit 1

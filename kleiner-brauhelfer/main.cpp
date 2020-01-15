@@ -5,6 +5,7 @@
 #include <QStyleFactory>
 #include <QDirIterator>
 #include <QFile>
+#include <QTextStream>
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -25,6 +26,8 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
+
+static QFile* logFile = nullptr;
 
 static bool chooseDatabase()
 {
@@ -77,16 +80,29 @@ static bool connectDatabase()
 {
     while (true)
     {
+        // global brauhelfer class
+        if (bh)
+            delete bh;
+        bh = new Brauhelfer(gSettings->databasePath());
+
         // connect
-        bh->setDatabasePath(gSettings->databasePath());
         if (bh->connectDatabase())
         {
             // check database version
             int version = bh->databaseVersion();
-            if (version > bh->supportedDatabaseVersion)
+            if (version < 0)
+            {
+                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Die Datenbank ist ungultig."));
+            }
+            else if (version > bh->supportedDatabaseVersion)
             {
                 QMessageBox::critical(nullptr, QApplication::applicationName(),
                                       QObject::tr("Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.").arg(version));
+            }
+            else if (version < bh->supportedDatabaseVersionMinimal)
+            {
+                QMessageBox::critical(nullptr, QApplication::applicationName(),
+                                      QObject::tr("Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.").arg(version));
             }
             else if (version < bh->supportedDatabaseVersion)
             {
@@ -98,31 +114,49 @@ static bool connectDatabase()
                                                QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
-                  #ifdef MODE_TEST_UPDATE
+                    // create copy of database
                     QFile fileOrg(gSettings->databasePath());
                     QFile fileUpdate(gSettings->databasePath() + "_update.sqlite");
                     fileUpdate.remove();
                     if (fileOrg.copy(fileUpdate.fileName()))
-                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-                    bh->setDatabasePath(fileUpdate.fileName());
-                    bh->connectDatabase();
-                  #endif
-                    try
                     {
+                        fileUpdate.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+
+                        // connect and update copy
+                        bh->setDatabasePath(fileUpdate.fileName());
+                        bh->connectDatabase();
                         if (bh->updateDatabase())
                         {
-                            return bh->isConnectedDatabase();
+                            // delete bh to remove file
+                            delete bh;
+                            bh = nullptr;
+                          #ifdef MODE_TEST_UPDATE
+                            bh = new Brauhelfer(fileUpdate.fileName());
+                            return bh->connectDatabase();
+                          #else
+                            // copy back
+                            fileOrg.remove();
+                            if (fileUpdate.copy(fileOrg.fileName()))
+                            {
+                                fileOrg.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
+                                fileUpdate.remove();
+                                continue;
+                            }
+                            else
+                            {
+                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Datenbankdatei konnte nicht wiederhergestellt werden."));
+                            }
+                          #endif
                         }
                         else
-                            QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen."));
+                        {
+                            fileUpdate.remove();
+                            QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Aktualisierung fehlgeschlagen.\n\n") + bh->lastError());
+                        }
                     }
-                    catch (const std::exception& ex)
+                    else
                     {
-                        QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), ex.what());
-                    }
-                    catch (...)
-                    {
-                        QMessageBox::critical(nullptr, QObject::tr("SQL Fehler"), QObject::tr("Unbekannter Fehler."));
+                        QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Sicherheitskopie konnte nicht erstellt werden."));
                     }
                 }
             }
@@ -156,24 +190,64 @@ static QByteArray getHash(const QString &fileName)
     return hash.result();
 }
 
+static void saveResourcesHash()
+{
+    gSettings->beginGroup("ResourcesHashes");
+    QDirIterator it(":/data", QDirIterator::Subdirectories);
+    while (it.hasNext())
+    {
+        it.next();
+        if (it.fileName() == "kb_daten.sqlite")
+            continue;
+        if (it.fileInfo().isDir())
+            continue;
+        QByteArray hash = getHash(it.filePath());
+        gSettings->setValue(it.filePath(), hash);
+    }
+    gSettings->endGroup();
+}
+
+static QByteArray getPreviousHash(const QString &fileName)
+{
+    QByteArray hash;
+    gSettings->beginGroup("ResourcesHashes");
+    hash = gSettings->value(fileName).toByteArray();
+    gSettings->endGroup();
+    return hash;
+}
+
 static void copyResources()
 {
-    QString dataDir = gSettings->dataDir();
     bool update = gSettings->isNewProgramVersion();
-    QDirIterator it(":/data", QDirIterator::Subdirectories);
+
+    // create data directory
+    QString dataDir = gSettings->dataDir();
     if (!QDir(dataDir).exists())
     {
         if (!QDir().mkpath(dataDir))
             QMessageBox::critical(nullptr, QApplication::applicationName(),
                                   QObject::tr("Der Ordner \"%1\" konnte nicht erstellt werden.").arg(dataDir));
     }
+
+    // copy resources
+    QDirIterator it(":/data", QDirIterator::Subdirectories);
     while (it.hasNext())
     {
         it.next();
         if (it.fileName() == "kb_daten.sqlite")
             continue;
+
+        // create directory
+        QString filePath = dataDir + it.filePath().mid(7);
+        if (it.fileInfo().isDir())
+        {
+            QDir().mkpath(filePath);
+            continue;
+        }
+
+        // copy file
         QFile fileResource(it.filePath());
-        QFile fileLocal(dataDir + it.fileName());
+        QFile fileLocal(filePath);
         if (!fileLocal.exists())
         {
             if (fileResource.copy(fileLocal.fileName()))
@@ -184,14 +258,17 @@ static void copyResources()
         }
         else if (update)
         {
-            QByteArray hashResource = getHash(fileResource.fileName());
             QByteArray hashLocal = getHash(fileLocal.fileName());
-            if (hashLocal != hashResource)
+            if (hashLocal != getHash(it.filePath()))
             {
-                QMessageBox::StandardButton ret = QMessageBox::question(nullptr, QApplication::applicationName(),
+                QMessageBox::StandardButton ret = QMessageBox::Yes;
+                if (hashLocal != getPreviousHash(it.filePath()))
+                {
+                    ret = QMessageBox::question(nullptr, QApplication::applicationName(),
                                                 QObject::tr("Die Ressourcendatei \"%1\" ist verschieden von der lokalen Datei.\n"
                                                             "Die Datei wurde entweder manuell editiert oder durch ein Update verändert.\n\n"
                                                             "Soll die lokale Datei ersetzt werden?").arg(it.fileName()));
+                }
                 if (ret == QMessageBox::Yes)
                 {
                     fileLocal.remove();
@@ -204,10 +281,48 @@ static void copyResources()
             }
         }
     }
+
+    // store hashes for next update
+    if (update)
+    {
+        saveResourcesHash();
+    }
+}
+
+static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    if (!logFile->isOpen())
+        logFile->open(QIODevice::WriteOnly | QIODevice::Append);
+    QTextStream out(logFile);
+    switch (type)
+    {
+    case QtDebugMsg:
+        out << "DEBUG | ";
+        break;
+    case QtInfoMsg:
+        out << "INFO  | ";
+        break;
+    case QtWarningMsg:
+        out << "WARN  | ";
+        break;
+    case QtCriticalMsg:
+        out << "ERROR | ";
+        break;
+    case QtFatalMsg:
+        out << "FATAL | ";
+        break;
+    }
+    out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
+    out << msg;
+    if (context.file)
+        out << " | " << context.file << ":" << context.line << ", " << context.function;
+    out << endl;
 }
 
 int main(int argc, char *argv[])
 {
+    int ret = EXIT_FAILURE;
+
     QApplication a(argc, argv);
 
     // set application name, organization and version
@@ -221,6 +336,46 @@ int main(int argc, char *argv[])
     else
         gSettings = new Settings();
 
+    // logging
+    int logLevel = gSettings->logLevel();
+    if (logLevel > 0)
+    {
+        if (logLevel < 1000)
+        {
+            //log in file
+            logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
+            qInstallMessageHandler(messageHandlerFileOutput);
+        }
+        else
+        {
+            // log in console
+           logLevel -= 1000;
+        }
+        switch (logLevel)
+        {
+        case 1:
+            QLoggingCategory::setFilterRules("*.debug=false");
+            break;
+        case 2:
+            break;
+        case 3:
+            QLoggingCategory::setFilterRules("SqlTableModel.info=true");
+            break;
+        case 4:
+        default:
+            QLoggingCategory::setFilterRules("SqlTableModel.info=true\nSqlTableModel.debug=true");
+            break;
+        case 999:
+            QLoggingCategory::setFilterRules("*.info=true\n*.debug=true");
+            break;
+        }
+    }
+
+    qInfo("--- Application start ---");
+    qInfo() << "Version:" << QCoreApplication::applicationVersion();
+    if (logLevel > 0)
+        qInfo() << "Log level:" << logLevel;
+
     // install translation
     QTranslator translatorQt;
     translatorQt.load(QLocale::system(), "qt", "_", "translations");
@@ -229,36 +384,72 @@ int main(int argc, char *argv[])
     if (!translatorQt.isEmpty())
         a.installTranslator(&translatorQt);
 
-    // copy resources
-    copyResources();
-
-    // global brauhelfer class
-    bh = new Brauhelfer();
-
-    // run application
-    int ret = -1;
-    do
+    try
     {
-        if (connectDatabase())
+        // copy resources
+        copyResources();
+
+        // run application
+        do
         {
-            MainWindow w(nullptr);
-            a.setStyle(QStyleFactory::create(gSettings->style()));
-            a.setPalette(gSettings->palette);
-            if (!gSettings->useSystemFont())
-                w.setFont(gSettings->font);
-            w.show();
-            ret = a.exec();
+            if (connectDatabase())
+            {
+                MainWindow w(nullptr);
+                a.setStyle(QStyleFactory::create(gSettings->style()));
+                a.setPalette(gSettings->palette);
+                if (!gSettings->useSystemFont())
+                    w.setFont(gSettings->font);
+                w.show();
+                try
+                {
+                    ret = a.exec();
+                }
+                catch (const std::exception& ex)
+                {
+                    qCritical() << "Program error:" << ex.what();
+                    QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), ex.what());
+                    ret = EXIT_FAILURE;
+                }
+                catch (...)
+                {
+                    qCritical() << "Program error: unknown";
+                    QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
+                    ret = EXIT_FAILURE;
+                }
+            }
+            else
+            {
+                ret = EXIT_FAILURE;
+            }
         }
-        else
-        {
-            ret = -1;
-        }
+        while(ret == 1000);
     }
-    while(ret == 1000);
+    catch (const std::exception& ex)
+    {
+        qCritical() << "Program error:" << ex.what();
+        QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), ex.what());
+        ret = EXIT_FAILURE;
+    }
+    catch (...)
+    {
+        qCritical() << "Program error: unknown";
+        QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
+        ret = EXIT_FAILURE;
+    }
 
     // clean up
-    delete bh;
+    if (bh)
+        delete bh;
     delete gSettings;
+
+    qInfo("--- Application end (%d)---", ret);
+
+    // close log
+    if (logFile)
+    {
+        logFile->close();
+        delete logFile;
+    }
 
     return ret;
 }

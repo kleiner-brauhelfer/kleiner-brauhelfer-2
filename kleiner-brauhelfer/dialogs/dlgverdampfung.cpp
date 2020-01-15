@@ -9,6 +9,7 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
     mFlaeche(0)
 {
 	ui->setupUi(this);
+    adjustSize();
 }
 
 DlgVerdampfung::~DlgVerdampfung()
@@ -93,7 +94,7 @@ void DlgVerdampfung::on_dSpinBox_cmVomBodenMenge2_valueChanged(double )
 
 void DlgVerdampfung::berechne()
 {
-    double erg = BierCalc::verdampfungsziffer(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
+    double erg = BierCalc::verdampfungsrate(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
     ui->dSpinBox_Verdampfungsziffer->setValue(erg);
 }
 

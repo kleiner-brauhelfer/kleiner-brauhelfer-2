@@ -5,7 +5,8 @@ extern Settings *gSettings;
 
 SpinBox::SpinBox(QWidget *parent) :
     QSpinBox(parent),
-    mError(false)
+    mError(false),
+    mErrorOnLimit(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
@@ -21,7 +22,7 @@ void SpinBox::updatePalette()
 {
     if (!isEnabled())
         setPalette(gSettings->palette);
-    else if (mError)
+    else if (mError || (mErrorOnLimit && (value() >= maximum() || value() <= minimum())))
         setPalette(gSettings->paletteError);
     else if (isReadOnly())
         setPalette(gSettings->palette);
@@ -44,4 +45,9 @@ void SpinBox::setReadOnly(bool r)
 void SpinBox::setError(bool e)
 {
     mError = e;
+}
+
+void SpinBox::setErrorOnLimit(bool e)
+{
+    mErrorOnLimit = e;
 }

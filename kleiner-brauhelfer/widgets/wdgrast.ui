@@ -64,7 +64,7 @@
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>Rastauswahl.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden die &lt;span style=&quot; font-weight:600;&quot;&gt;Raststufen&lt;/span&gt; mit ihren verschiedenen Temperaturstufen definiert. Da die Raststufen ein weites Feld sind, empfiehlt sich bei Fragen hier grundlegend die einschlägige Literatur und die Fachforen zu bemühen.&lt;/p&gt;&lt;p&gt;Die Eingabe einiger Buchstaben genügt, um Namen und  Angaben der gewählten Raststufe zu vervollständigen. Wählbar ist – außer dem Vorlösen bei 18°C bis 30°C – die &lt;span style=&quot; font-weight:600;&quot;&gt;Gummirast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Weizenrast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Eiweißrast,&lt;/span&gt; die &lt;span style=&quot; font-weight:600;&quot;&gt;Maltoserast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Kombirast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Verzuckerung&lt;/span&gt; und das &lt;span style=&quot; font-weight:600;&quot;&gt;Abmaischen&lt;/span&gt;. Es können aber auch individuelle Raststufen und Rastnamen festgelegt werden.&lt;/p&gt;&lt;p&gt;Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Kombirast&lt;/span&gt; für Trockenheit oder Malzigkeit der Fall.&lt;/p&gt;&lt;p&gt;Rasten wie die &lt;span style=&quot; font-weight:600;&quot;&gt;Weizenrast&lt;/span&gt; werden zum Abbau der Ferulasäure bei Weizen genutzt, die das typische Nelkenaroma erzeugen.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gummirast &lt;/span&gt;bei Roggen kann zum Abbau der Glukane nötig sein, um ein unerwünschtes klebrigers Geschmacksbild zu vermeiden.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Eiweißrast &lt;/span&gt;empfiehlt sich mehrheitlich bei Weizengaben, da Weizen weniger vorgelöste Proteine besitzt. Sie ist gut für die Klärung, aber schlecht für den Schaum bei langer Dauer.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann entscheidend sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;p&gt;Seltenere Brauverfahren wie die &lt;span style=&quot; font-weight:600;&quot;&gt;Dekotion&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Infusion&lt;/span&gt; geben wiederum ganz andere Temperaturbereiche vor. Im Hobbybrauerbereich ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Kesselmaische &lt;/span&gt;als ganze Schüttung mit ansteigender Temperatur üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="editable">
       <bool>true</bool>
@@ -80,7 +80,7 @@
       </size>
      </property>
      <property name="toolTip">
-      <string>Rastdauer.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -109,7 +109,7 @@
       </size>
      </property>
      <property name="toolTip">
-      <string>Rasttemperatur.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -126,6 +126,34 @@
      </property>
      <property name="text">
       <string>°C</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnNachUnten">
+     <property name="icon">
+      <iconset resource="../images.qrc">
+       <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>8</width>
+       <height>8</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnNachOben">
+     <property name="icon">
+      <iconset resource="../images.qrc">
+       <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>8</width>
+       <height>8</height>
+      </size>
      </property>
     </widget>
    </item>

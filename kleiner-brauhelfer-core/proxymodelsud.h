@@ -31,6 +31,8 @@ public:
 public:
     ProxyModelSud(QObject* parent = nullptr);
 
+    Q_INVOKABLE void resetColumns();
+
     bool filterMerkliste() const;
     void setFilterMerkliste(bool value);
 
@@ -43,15 +45,7 @@ public:
 protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;
 
-private slots:
-    void onSourceModelChanged();
-
 private:
-    int mColumnId;
-    int mColumnSudname;
-    int mColumnKommentar;
-    int mColumnStatus;
-    int mColumnMerklistenID;
     bool mFilterMerkliste;
     FilterStatus mFilterStatus;
     QString mFilterText;

@@ -29,10 +29,12 @@ private slots:
     void on_tbTemp_valueChanged(int value);
     void on_tbDauer_valueChanged(int value);
     void on_btnLoeschen_clicked();
+    void on_btnNachUnten_clicked();
+    void on_btnNachOben_clicked();
 
 private:
-    QVariant data(const QString &fieldName) const;
-    bool setData(const QString &fieldName, const QVariant &value);
+    QVariant data(int col) const;
+    bool setData(int col, const QVariant &value);
     void checkEnabled(bool force);
 
 private:

@@ -139,26 +139,20 @@ public:
     Q_INVOKABLE static double toSRE(double sw, double tre);
 
     /**
-     * @brief Benoetigtes Extrakt um CO2 zu bilden
-     * @param co2 CO2 Gehalt [g/l]
-     * @return Extrakt [g/l]
-     */
-    Q_INVOKABLE static double extraktForCO2(double co2);
-
-    /**
-     * @brief CO2 Bildung bei gegebenen Extrakt
-     * @param extrakt Extrakt [g/l]
-     * @return CO2 Gehalt [g/l]
-     */
-    Q_INVOKABLE static double co2ForExtrakt(double extrakt);
-
-    /**
      * @brief Vergärungsgrad [%]
      * @param sw Stammwuerze [°P]
-     * @param e Extrakt [°P]
+     * @param re Restextrakt [°P]
      * @return Vergärungsgrad [%]
      */
-    Q_INVOKABLE static double vergaerungsgrad(double sw, double e);
+    Q_INVOKABLE static double vergaerungsgrad(double sw, double re);
+
+    /**
+     * @brief sreAusVergaerungsgrad
+     * @param sw
+     * @param vg
+     * @return
+     */
+    Q_INVOKABLE static double sreAusVergaerungsgrad(double sw, double vg);
 
     /**
      * @brief Alkohol [vol%]
@@ -203,6 +197,31 @@ public:
     Q_INVOKABLE static double spundungsdruck(double co2Soll, double T);
 
     /**
+     * @brief co2Noetig
+     * @param co2Soll
+     * @param sw
+     * @param sreSchnellgaerprobe
+     * @param sreJungbier
+     * @param T
+     * @return
+     */
+    Q_INVOKABLE static double co2Noetig(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T);
+
+    /**
+     * @brief wuerzeCO2Potential
+     * @param sw
+     * @param sre
+     * @return
+     */
+    Q_INVOKABLE static double wuerzeCO2Potential(double sw, double sre);
+
+    /**
+     * @brief zuckerCO2Potential
+     * @return
+     */
+    Q_INVOKABLE static double zuckerCO2Potential();
+
+    /**
      * @brief Benoetigte Speise fuer Karbonisierung [L/L]
      * @param co2Soll Soll CO2 Gehalt [g/l]
      * @param sw Stammwuerze [°P]
@@ -214,13 +233,15 @@ public:
     Q_INVOKABLE static double speise(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T);
 
     /**
-     * @brief Umrechnung von benoetigter Speise in benoetiges Zucker
-     * @param sw Stammwuerze Speise [°P]
-     * @param sre Scheinbarer Restextrakt Speise [°P]
-     * @param speise Speisemenge [mL]
-     * @return Zuckermenge [g]
+     * @brief zucker
+     * @param co2Soll
+     * @param sw
+     * @param sreSchnellgaerprobe
+     * @param sreJungbier
+     * @param T
+     * @return
      */
-    Q_INVOKABLE static double speiseToZucker(double sw, double sre, double speise);
+    Q_INVOKABLE static double zucker(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T);
 
     /**
      * @brief Dichte von Wasser bei gegebenen Temperatur
@@ -239,13 +260,13 @@ public:
     Q_INVOKABLE static double volumenWasser(double T1, double T2, double V1);
 
     /**
-     * @brief Berechnet die Verdampfungsziffer
+     * @brief Berechnet die Verdampfungsrate
      * @param V1 Anfangsvolumen [L]
      * @param V2 Endvolumen [L]
      * @param t Kochzeit [min]
-     * @return Verdampfungsziffer [%]
+     * @return Verdampfungsrate [%]
      */
-    Q_INVOKABLE static double verdampfungsziffer(double V1, double V2, double t);
+    Q_INVOKABLE static double verdampfungsrate(double V1, double V2, double t);
 
     /**
      * @brief Berechnet die Sudhausausbeute

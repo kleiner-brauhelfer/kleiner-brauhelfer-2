@@ -23,8 +23,8 @@ mkdir %BUILD_DIR%
 cd %BUILD_DIR%
 "%QT_DIR%\qmake.exe" "%PRO%" -config release
 nmake
-"%QT_DIR%\lupdate.exe" "%PRO%"
-"%QT_DIR%\lrelease.exe" "%PRO%"
+::"%QT_DIR%\lupdate.exe" "%PRO%"
+::"%QT_DIR%\lrelease.exe" "%PRO%"
 cd %~dp0
 
 if "%PORTABLE%" equ "1" (

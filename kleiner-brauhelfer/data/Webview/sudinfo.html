@@ -17,8 +17,8 @@
       </tr>
       <tr>
         <td valign="center">
-          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:98px;height:98px">
-            <img class="glas" style="padding:0px;margin:0px;width:100px;height:100px">
+          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:92px;height:92px">
+            <img class="glas" style="padding:0px;margin:-4px;width:100px;height:100px">
           </div>
         </td>
         <td valign="top">
@@ -76,7 +76,7 @@
   </div>
 
   {{#Zutaten.Malz}}
-  <div class="rm" align="center">
+  <div class="rm bg_malz" align="center">
     <img src="qrc:/images/getreide.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -88,9 +88,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt [kg]</th>
-        <th>vorhanden [kg]</th>
-        <th>rest [kg]</th>
+        <th>Ben&ouml;tigt [kg]</th>
+        <th>Vorhanden [kg]</th>
+        <th>Rest [kg]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -106,7 +106,7 @@
   {{/Zutaten.Malz}}
 
   {{#Zutaten.Hopfen}}
-  <div class="rm" align="center">
+  <div class="rm bg_hopfen" align="center"> 
     <img src="qrc:/images/hopfen.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -118,9 +118,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt [g]</th>
-        <th>vorhanden [g]</th>
-        <th>rest [g]</th>
+        <th>Ben&ouml;tigt [g]</th>
+        <th>Vorhanden [g]</th>
+        <th>Rest [g]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -136,7 +136,7 @@
   {{/Zutaten.Hopfen}}
 
   {{#Zutaten.Hefe}}
-  <div class="rm" align="center">
+  <div class="rm bg_hefe" align="center">
     <img src="qrc:/images/hefe.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -148,9 +148,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt</th>
-        <th>vorhanden</th>
-        <th>rest</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -166,7 +166,7 @@
   {{/Zutaten.Hefe}}
 
   {{#Zutaten.Honig}}
-  <div class="rm" align="center">
+  <div class="rm bg_honig" align="center">
     <img src="qrc:/images/ewz_typ_0.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -178,9 +178,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt</th>
-        <th>vorhanden</th>
-        <th>rest</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -196,7 +196,7 @@
   {{/Zutaten.Honig}}
 
   {{#Zutaten.Zucker}}
-  <div class="rm" align="center">
+  <div class="rm bg_zucker" align="center"> 
     <img src="qrc:/images/ewz_typ_1.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -208,9 +208,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt</th>
-        <th>vorhanden</th>
-        <th>rest</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -226,7 +226,7 @@
   {{/Zutaten.Zucker}}
 
   {{#Zutaten.Gewuerz}}
-  <div class="rm" align="center">
+  <div class="rm bg_gewuerz" align="center">
     <img src="qrc:/images/ewz_typ_2.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -238,9 +238,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt</th>
-        <th>vorhanden</th>
-        <th>rest</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -256,7 +256,7 @@
   {{/Zutaten.Gewuerz}}
 
   {{#Zutaten.Frucht}}
-  <div class="rm" align="center">
+  <div class="rm bg_frucht" align="center">
     <img src="qrc:/images/ewz_typ_3.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -286,7 +286,7 @@
   {{/Zutaten.Frucht}}
 
   {{#Zutaten.Sonstiges}}
-  <div class="rm" align="center">
+  <div class="rm bg_sonstiges" align="center">
     <img src="qrc:/images/ewz_typ_4.svg" height="50px">
     <br>
     <table style="width:100%">
@@ -298,9 +298,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>ben&ouml;tigt</th>
-        <th>vorhanden</th>
-        <th>rest</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -321,7 +321,7 @@
   <div class="r" align="center">
     <h1>Anh&auml;nge</h1>
   </div>
-  <div class="rm" align="center">
+  <div class="rm bg_anhaenge" align="center">
     <br>
     <table width="100%">
     {{#Liste}}
@@ -331,10 +331,6 @@
     </table>
   </div>
   {{/Anhang}}
-
-  <div align="center">
-    <p class="version">{{App.Name}} v{{App.Version}}</p>
-  </div>
 
 </body>
 </html>

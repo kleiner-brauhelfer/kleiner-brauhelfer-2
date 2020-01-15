@@ -2,13 +2,6 @@
 #include "brauhelfer.h"
 
 ModelRasten::ModelRasten(Brauhelfer* bh, QSqlDatabase db) :
-    SqlTableModel(bh, db),
-    bh(bh)
+    SqlTableModel(bh, db)
 {
-}
-
-void ModelRasten::defaultValues(QVariantMap &values) const
-{
-    if (!values.contains("RastAktiv"))
-        values.insert("RastAktiv", true);
 }

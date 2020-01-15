@@ -13,97 +13,104 @@ ModelWasser::ModelWasser(Brauhelfer* bh, QSqlDatabase db) :
     mVirtualField.append("Restalkalitaet");
 }
 
-QVariant ModelWasser::dataExt(const QModelIndex &index) const
+QVariant ModelWasser::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "CalciumMmol")
+    switch(idx.column())
     {
-        return data(index.row(), "Calcium").toDouble() / 40.8;
+    case ColCalciumMmol:
+    {
+        return data(idx.row(), ColCalcium).toDouble() / 40.8;
     }
-    if (field == "MagnesiumMmol")
+    case ColMagnesiumMmol:
     {
-        return data(index.row(), "Magnesium").toDouble() / 24.3;
+        return data(idx.row(), ColMagnesium).toDouble() / 24.3;
     }
-    if (field == "Calciumhaerte")
+    case ColCalciumhaerte:
     {
-        return data(index.row(), "Calcium").toDouble() / 40.8 / 0.1783;
+        return data(idx.row(), ColCalcium).toDouble() / 40.8 / 0.1783;
     }
-    if (field == "Magnesiumhaerte")
+    case ColMagnesiumhaerte:
     {
-        return data(index.row(), "Magnesium").toDouble() / 24.3 / 0.1783;
+        return data(idx.row(), ColMagnesium).toDouble() / 24.3 / 0.1783;
     }
-    if (field == "Carbonathaerte")
+    case ColCarbonathaerte:
     {
-        return data(index.row(), "Saeurekapazitaet").toDouble() * 2.8;
+        return data(idx.row(), ColSaeurekapazitaet).toDouble() * 2.8;
     }
-    if (field == "Restalkalitaet")
+    case ColRestalkalitaet:
     {
-        double carbh = data(index.row(), "Carbonathaerte").toDouble();
-        double calch = data(index.row(), "Calciumhaerte").toDouble();
-        double magh = data(index.row(), "Magnesiumhaerte").toDouble();
+        double carbh = data(idx.row(), ColCarbonathaerte).toDouble();
+        double calch = data(idx.row(), ColCalciumhaerte).toDouble();
+        double magh = data(idx.row(), ColMagnesiumhaerte).toDouble();
         return carbh - (calch + 0.5 * magh) / 3.5;
     }
-    return QVariant();
+    default:
+        return QVariant();
+    }
 }
 
-bool ModelWasser::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelWasser::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-     QString field = fieldName(index.column());
-     if (field == "Name")
+     switch(idx.column())
      {
-         QString name = getUniqueName(index, value);
-         QString prevValue = data(index).toString();
-         if (QSqlTableModel::setData(index, name))
+     case ColName:
+     {
+         QString name = getUniqueName(idx, value);
+         QVariant prevName = data(idx);
+         if (QSqlTableModel::setData(idx, name))
          {
-             int col = bh->modelSud()->fieldIndex("Wasserprofil");
              for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
              {
-                 QModelIndex index = bh->modelSud()->index(row, col);
-                 if (bh->modelSud()->data(index).toString() == prevValue)
-                     bh->modelSud()->setData(index, name);
+                 QModelIndex idx2 = bh->modelSud()->index(row, ModelSud::ColWasserprofil);
+                 if (bh->modelSud()->data(idx2) == prevName)
+                     bh->modelSud()->setData(idx2, name);
              }
              return true;
          }
+         return false;
      }
-     if (field == "CalciumMmol")
+     case ColCalciumMmol:
      {
-         return setData(index.row(), "Calcium", value.toDouble() * 40.8);
+         return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.8);
      }
-     if (field == "MagnesiumMmol")
+     case ColMagnesiumMmol:
      {
-         return setData(index.row(), "Magnesium", value.toDouble() * 24.3);
+         return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.3);
      }
-     if (field == "Calciumhaerte")
+     case ColCalciumhaerte:
      {
-         return setData(index.row(), "Calcium", value.toDouble() * 40.8 * 0.1783);
+         return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.8 * 0.1783);
      }
-     if (field == "Magnesiumhaerte")
+     case ColMagnesiumhaerte:
      {
-         return setData(index.row(), "Magnesium", value.toDouble() * 24.3 * 0.1783);
+         return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.3 * 0.1783);
      }
-     if (field == "Carbonathaerte")
+     case ColCarbonathaerte:
      {
-         return setData(index.row(), "Saeurekapazitaet", value.toDouble() / 2.8);
+         return QSqlTableModel::setData(index(idx.row(), ColSaeurekapazitaet), value.toDouble() / 2.8);
      }
-     return false;
+     default:
+         return false;
+     }
 }
 
-Qt::ItemFlags ModelWasser::flags(const QModelIndex &index) const
+Qt::ItemFlags ModelWasser::flags(const QModelIndex &idx) const
 {
-    Qt::ItemFlags itemFlags = SqlTableModel::flags(index);
-    QString field = fieldName(index.column());
-    if (field == "CalciumMmol" ||
-        field == "MagnesiumMmol" ||
-        field == "Calciumhaerte" ||
-        field == "Magnesiumhaerte" ||
-        field == "Carbonathaerte"
-       )
+    Qt::ItemFlags itemFlags = SqlTableModel::flags(idx);
+    switch (idx.column())
+    {
+    case ColCalciumMmol:
+    case ColMagnesiumMmol:
+    case ColCalciumhaerte:
+    case ColMagnesiumhaerte:
+    case ColCarbonathaerte:
         itemFlags |= Qt::ItemIsEditable;
+        break;
+    }
     return itemFlags;
 }
 
-void ModelWasser::defaultValues(QVariantMap &values) const
+void ModelWasser::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (values.contains("Name"))
-        values["Name"] = getUniqueName(index(0, fieldIndex("Name")), values["Name"], true);
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
 }

@@ -5,11 +5,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"
-#include "model/spinboxdelegate.h"
-#include "model/doublespinboxdelegate.h"
-#include "model/checkboxdelegate.h"
-#include "model/comboboxdelegate.h"
-#include "model/datedelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgsudteilen.h"
 
@@ -21,9 +16,26 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui(new Ui::TabAbfuellen)
 {
     ui->setupUi(this);
+    ui->tbSWSchnellgaerprobe->setColumn(ModelSud::ColSWSchnellgaerprobe);
+    ui->tbSWJungbier->setColumn(ModelSud::ColSWJungbier);
+    ui->tbBiermengeAbfuellen->setColumn(ModelSud::Colerg_AbgefuellteBiermenge);
+    ui->tbJungbiermengeAbfuellen->setColumn(ModelSud::ColJungbiermengeAbfuellen);
+    ui->tbSpeisemengeAbgefuellt->setColumn(ModelSud::ColSpeisemenge);
+    ui->tbTemperaturJungbier->setColumn(ModelSud::ColTemperaturJungbier);
+    ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
+    ui->tbSw->setColumn(ModelSud::ColSWIst);
+    ui->tbTEVG->setColumn(ModelSud::ColtEVG);
+    ui->tbSEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
+    ui->tbSEVG->setColumn(ModelSud::ColsEVG);
+    ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
+    ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
+    ui->tbSpundungsdruck->setColumn(ModelSud::ColSpundungsdruck);
+    ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
+    mTimerWebViewUpdate.setSingleShot(true);
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     ui->webview->setHtmlFile("abfuelldaten.html");
 
     QPalette palette = ui->tbHelp->palette();
@@ -33,6 +45,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->beginGroup("TabAbfuellen");
 
+    ui->splitter->setSizes({500, 500});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
@@ -91,9 +104,7 @@ void TabAbfuellen::sudLoaded()
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)
 {
-    const SqlTableModel* model = static_cast<const SqlTableModel*>(index.model());
-    QString fieldname = model->fieldName(index.column());
-    if (fieldname == "Status")
+    if (index.column() == ModelSud::ColStatus)
     {
         checkEnabled();
     }
@@ -109,6 +120,7 @@ void TabAbfuellen::checkEnabled()
     int status = bh->sud()->getStatus();
     bool abgefuellt = status >= Sud_Status_Abgefuellt && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
+    ui->tbAbfuelldatumZeit->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
     ui->cbSchnellgaerprobeAktiv->setEnabled(!abgefuellt);
     ui->tbSWSchnellgaerprobe->setReadOnly(abgefuellt);
@@ -131,12 +143,15 @@ void TabAbfuellen::updateValues()
     if (!isTabActive())
         return;
 
+    for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+        wdg->updateValue();
+
     double value;
 
     QDateTime dt = bh->sud()->getAbfuelldatum();
-    ui->tbAbfuelldatum->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbAbfuelldatum->setDateTime(dt.isValid() ? dt : QDateTime::currentDateTime());
-
+    ui->tbAbfuelldatum->setMinimumDate(bh->sud()->getBraudatum().date());
+    ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
+    ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
 
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
@@ -144,25 +159,26 @@ void TabAbfuellen::updateValues()
     ui->lblSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblSWSchnellgaerprobeEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-    if (!ui->tbSWSchnellgaerprobe->hasFocus())
-        ui->tbSWSchnellgaerprobe->setValue(bh->sud()->getSWSchnellgaerprobe());
-    if (!ui->tbSWJungbier->hasFocus())
-        ui->tbSWJungbier->setValue(bh->sud()->getSWJungbier());
-    if (!ui->tbTemperaturJungbier->hasFocus())
-        ui->tbTemperaturJungbier->setValue(bh->sud()->getTemperaturJungbier());
+    ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
+    ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
+    ui->lblGruenschlauchzeitpunktEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
+	ui->tbAlkoholRezept->setValue(BierCalc::alkohol(bh->sud()->getSW(), BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad())));
+
     ui->cbSpunden->setChecked(bh->sud()->getSpunden());
-    ui->groupKarbonisierung->setVisible(!ui->cbSpunden->isChecked());
-    if (!ui->tbJungbiermengeAbfuellen->hasFocus())
-        ui->tbJungbiermengeAbfuellen->setValue(bh->sud()->getJungbiermengeAbfuellen());
-    if (!ui->tbBiermengeAbfuellen->hasFocus())
-        ui->tbBiermengeAbfuellen->setValue(bh->sud()->geterg_AbgefuellteBiermenge());
     ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());
     ui->tbSpeisemengeGesamt2->setValue(bh->sud()->getSpeiseAnteil() / 1000);
+    ui->tbSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
+    ui->lblSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
+    ui->lblSpeisemengeGesamtEinheit2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
+    ui->lblBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
+    ui->tbBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
+    ui->lblBiermengeAbfuellenEinheit->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
 
-    if (!ui->tbSpeisemengeAbgefuellt->hasFocus())
-        ui->tbSpeisemengeAbgefuellt->setValue(bh->sud()->getSpeisemenge());
+    ui->groupKarbonisierung->setVisible(!ui->cbSpunden->isChecked());
     ui->tbSpeisemengeGesamt->setValue((int)bh->sud()->getSpeiseAnteil());
-
+    ui->tbSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
+    ui->lblSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
+    ui->lblSpeisemengeGesamtEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->tbZuckerGesamt->setValue((int)(bh->sud()->getZuckerAnteil() / ui->tbZuckerFaktor->value()));
     ui->tbZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
@@ -172,39 +188,32 @@ void TabAbfuellen::updateValues()
     ui->tbZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerFlascheEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-
     value = ui->tbFlasche->value() / bh->sud()->getJungbiermengeAbfuellen();
-    ui->tbSpeisemengeFlasche->setValue((int)(ui->tbSpeisemengeGesamt->value() * value));
-    ui->tbZuckerFlasche->setValue((int)(ui->tbZuckerGesamt->value() * value));
-    ui->tbGruenschlauchzeitpunkt->setValue(bh->sud()->getGruenschlauchzeitpunkt());
-    ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-    ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-    ui->lblGruenschlauchzeitpunktEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
+    ui->tbSpeisemengeFlasche->setValue(ui->tbSpeisemengeGesamt->value() * value);
+    ui->tbSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
+    ui->lblSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
+    ui->lblSpeisemengeFlascheEinheit->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
 
-    ui->lblBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    ui->tbBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    ui->lblBiermengeAbfuellenEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
+    ui->tbZuckerFlasche->setValue(ui->tbZuckerGesamt->value() * value);
 
-    ui->lblSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    ui->tbSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
-    ui->lblSpeisemengeGesamtEinheit2->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
+    mTimerWebViewUpdate.start(200);
+}
 
-    if (!ui->tbNebenkosten->hasFocus())
-        ui->tbNebenkosten->setValue(bh->sud()->getKostenWasserStrom());
-    ui->tbKosten->setValue(bh->sud()->geterg_Preis());
-
-    ui->tbTEVG->setValue(bh->sud()->gettEVG());
-    ui->tbSEVG->setValue(bh->sud()->getsEVG());
-    ui->tbAlkohol->setValue(bh->sud()->geterg_Alkohol());
-    ui->tbSpundungsdruck->setValue(bh->sud()->getSpundungsdruck());
-
+void TabAbfuellen::updateWebView()
+{
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
-void TabAbfuellen::on_tbAbfuelldatum_dateTimeChanged(const QDateTime &dateTime)
+void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)
 {
     if (ui->tbAbfuelldatum->hasFocus())
-        bh->sud()->setAbfuelldatum(dateTime);
+        bh->sud()->setAbfuelldatum(QDateTime(date, ui->tbAbfuelldatumZeit->time()));
+}
+
+void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
+{
+    if (ui->tbAbfuelldatumZeit->hasFocus())
+        bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), time));
 }
 
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
@@ -217,12 +226,6 @@ void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
     bh->sud()->setSchnellgaerprobeAktiv(checked);
 }
 
-void TabAbfuellen::on_tbSWSchnellgaerprobe_valueChanged(double value)
-{
-    if (ui->tbSWSchnellgaerprobe->hasFocus())
-        bh->sud()->setSWSchnellgaerprobe(value);
-}
-
 void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
@@ -230,13 +233,7 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
                        ui->tbTemperaturJungbier->value(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbSWSchnellgaerprobe->setValue(dlg.value());
-}
-
-void TabAbfuellen::on_tbSWJungbier_valueChanged(double value)
-{
-    if (ui->tbSWJungbier->hasFocus())
-        bh->sud()->setSWJungbier(value);
+        bh->sud()->setSWSchnellgaerprobe(dlg.value());
 }
 
 void TabAbfuellen::on_btnSWJungbier_clicked()
@@ -246,37 +243,12 @@ void TabAbfuellen::on_btnSWJungbier_clicked()
                        ui->tbTemperaturJungbier->value(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
-        ui->tbSWJungbier->setValue(dlg.value());
-}
-
-void TabAbfuellen::on_tbTemperaturJungbier_valueChanged(double value)
-{
-    if (ui->tbTemperaturJungbier->hasFocus())
-        bh->sud()->setTemperaturJungbier(value);
+        bh->sud()->setSWJungbier(dlg.value());
 }
 
 void TabAbfuellen::on_cbSpunden_clicked(bool checked)
 {
     bh->sud()->setSpunden(checked);
-}
-
-void TabAbfuellen::on_tbJungbiermengeAbfuellen_valueChanged(double value)
-{
-    if (ui->tbJungbiermengeAbfuellen->hasFocus())
-        bh->sud()->setJungbiermengeAbfuellen(value);
-}
-
-void TabAbfuellen::on_tbBiermengeAbfuellen_valueChanged(double value)
-{
-    if (ui->tbBiermengeAbfuellen->hasFocus())
-        bh->sud()->seterg_AbgefuellteBiermenge(value);
-}
-
-
-void TabAbfuellen::on_tbSpeisemengeAbgefuellt_valueChanged(double value)
-{
-    if (ui->tbSpeisemengeAbgefuellt->hasFocus())
-        bh->sud()->setSpeisemenge(value);
 }
 
 void TabAbfuellen::on_tbZuckerFaktor_valueChanged(double)
@@ -289,12 +261,6 @@ void TabAbfuellen::on_tbFlasche_valueChanged(double)
 {
     if (ui->tbFlasche->hasFocus())
         updateValues();
-}
-
-void TabAbfuellen::on_tbNebenkosten_valueChanged(double value)
-{
-    if (ui->tbNebenkosten->hasFocus())
-        bh->sud()->setKostenWasserStrom(value);
 }
 
 void TabAbfuellen::on_btnSudAbgefuellt_clicked()
@@ -322,12 +288,13 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         }
     }
 
-    bh->sud()->setAbfuelldatum(ui->tbAbfuelldatum->dateTime());
+    bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time()));
     bh->sud()->setStatus(Sud_Status_Abgefuellt);
 
-    QVariantMap values({{"SudID", bh->sud()->id()},
-                        {"Zeitstempel", bh->sud()->getAbfuelldatum()},
-                        {"Druck", 0.0}, {"Temp", bh->sud()->getTemperaturJungbier()}});
+    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
+                                {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
+                                {ModelNachgaerverlauf::ColDruck, 0.0},
+                                {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
     if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
         bh->sud()->modelNachgaerverlauf()->append(values);
 }

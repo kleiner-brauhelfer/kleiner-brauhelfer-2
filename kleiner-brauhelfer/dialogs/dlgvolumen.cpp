@@ -15,6 +15,7 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     ui->spinBox_Liter->setMaximum(Grundflaeche * (Hoehe / 100 ) / 10);
     ui->spinBox_VonOben->setMaximum(Hoehe);
     ui->spinBox_VonUnten->setMaximum(Hoehe);
+    adjustSize();
 }
 
 void DlgVolumen::on_buttonBox_accepted()

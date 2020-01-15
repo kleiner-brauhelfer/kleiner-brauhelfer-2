@@ -32,14 +32,14 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
     connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
-QVariant ProxyModel::data(int row, const QString &fieldName, int role) const
+QVariant ProxyModel::data(int row, int col, int role) const
 {
-    return data(index(row, fieldIndex(fieldName)), role);
+    return data(index(row, col), role);
 }
 
-bool ProxyModel::setData(int row, const QString &fieldName, const QVariant &value, int role)
+bool ProxyModel::setData(int row, int col, const QVariant &value, int role)
 {
-    return setData(index(row, fieldIndex(fieldName)), value, role);
+    return setData(index(row, col), value, role);
 }
 
 bool ProxyModel::removeRows(int row, int count, const QModelIndex &parent)
@@ -60,6 +60,25 @@ bool ProxyModel::removeRow(int arow, const QModelIndex &parent)
         return true;
     }
     return false;
+}
+
+int ProxyModel::append(const QMap<int, QVariant> &values)
+{
+    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    if (model)
+    {
+        int idx = model->append(values);
+        invalidate();
+        return mapRowFromSource(idx);
+    }
+    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    if (proxyModel)
+    {
+        int idx = proxyModel->append(values);
+        invalidate();
+        return mapRowFromSource(idx);
+    }
+    return -1;
 }
 
 int ProxyModel::append(const QVariantMap &values)
@@ -83,8 +102,8 @@ int ProxyModel::append(const QVariantMap &values)
 
 int ProxyModel::mapRowToSource(int row) const
 {
-    QModelIndex index = mapToSource(this->index(row, 0));
-    return index.row();
+    QModelIndex idx = mapToSource(index(row, 0));
+    return idx.row();
 }
 
 int ProxyModel::mapRowFromSource(int row) const
@@ -104,25 +123,25 @@ int ProxyModel::fieldIndex(const QString &fieldName) const
     return -1;
 }
 
-int ProxyModel::getRowWithValue(const QString &fieldName, const QVariant &value)
+int ProxyModel::getRowWithValue(int col, const QVariant &value)
 {
     SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
     if (model)
-        return mapRowFromSource(model->getRowWithValue(fieldName, value));
+        return mapRowFromSource(model->getRowWithValue(col, value));
     ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
-        return mapRowFromSource(proxyModel->getRowWithValue(fieldName, value));
+        return mapRowFromSource(proxyModel->getRowWithValue(col, value));
     return -1;
 }
 
-QVariant ProxyModel::getValueFromSameRow(const QString &fieldNameKey, const QVariant &valueKey, const QString &fieldName)
+QVariant ProxyModel::getValueFromSameRow(int colKey, const QVariant &valueKey, int col)
 {
     SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
     if (model)
-        return model->getValueFromSameRow(fieldNameKey, valueKey, fieldName);
+        return model->getValueFromSameRow(colKey, valueKey, col);
     ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
-        return proxyModel->getValueFromSameRow(fieldNameKey, valueKey, fieldName);
+        return proxyModel->getValueFromSameRow(colKey, valueKey, col);
     return QVariant();
 }
 

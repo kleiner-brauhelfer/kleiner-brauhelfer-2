@@ -1,34 +1,22 @@
 #include "proxymodelsudcolored.h"
 #include "settings.h"
+#include "modelsud.h"
 #include "database_defs.h"
 
 extern Settings* gSettings;
 
 ProxyModelSudColored::ProxyModelSudColored(QObject* parent) :
-    ProxyModelSud(parent),
-    mColStatus(-1),
-    mColMerklistenID(-1),
-    mColWoche(-1),
-    mColReifeZeitDelta(-1)
+    ProxyModelSud(parent)
 {
-}
-
-void ProxyModelSudColored::setSourceModel(QAbstractItemModel *sourceModel)
-{
-    ProxyModelSud::setSourceModel(sourceModel);
-    mColStatus = fieldIndex("Status");
-    mColMerklistenID = fieldIndex("MerklistenID");
-    mColWoche = fieldIndex("Woche");
-    mColReifeZeitDelta = fieldIndex("ReifezeitDelta");
 }
 
 QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
 {
     if (role == Qt::BackgroundRole)
     {
-        if (index.sibling(index.row(), mColMerklistenID).data().toBool())
+        if (index.sibling(index.row(), ModelSud::ColMerklistenID).data().toBool())
             return gSettings->MekrlisteBackground;
-        switch(index.sibling(index.row(), mColStatus).data().toInt())
+        switch(index.sibling(index.row(), ModelSud::ColStatus).data().toInt())
         {
         default:
         case Sud_Status_Rezept:
@@ -43,12 +31,12 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
     }
     else if (role == Qt::DisplayRole)
     {
-        if (index.column() == mColWoche)
+        if (index.column() == ModelSud::ColWoche)
         {
-            if (index.sibling(index.row(), mColStatus).data().toInt() == Sud_Status_Abgefuellt)
+            if (index.sibling(index.row(), ModelSud::ColStatus).data().toInt() == Sud_Status_Abgefuellt)
             {
                 int woche = ProxyModelSud::data(index, role).toInt();
-                int tage = index.sibling(index.row(), mColReifeZeitDelta).data().toInt();
+                int tage = index.sibling(index.row(), ModelSud::ColReifezeitDelta).data().toInt();
                 if (tage > 0)
                     return tr("%1. Woche, reif in %2 Tage").arg(woche).arg(tage);
                 else
@@ -59,7 +47,7 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
     }
     else if (role == Qt::TextAlignmentRole)
     {
-        if (index.column() == mColWoche)
+        if (index.column() == ModelSud::ColWoche)
         {
             return Qt::AlignCenter;
         }

@@ -11,211 +11,261 @@ ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, QSqlDatabase db) :
             this, SLOT(onSudDataChanged(const QModelIndex&)));
 }
 
-QVariant ModelHopfengaben::dataExt(const QModelIndex &index) const
+QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
 {
-    QString field = fieldName(index.column());
-    if (field == "IBUAnteil")
+    switch(idx.column())
     {
-        int sudId = data(index.row(), "SudID").toInt();
-        double menge = data(index.row(), "erg_Menge").toDouble();
-        double alpha = data(index.row(), "Alpha").toDouble();
-        double ausbeute = data(index.row(), "Ausbeute").toDouble();
-        double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
+    case ColIBUAnteil:
+    {
+        double menge = data(idx.row(), Colerg_Menge).toDouble();
+        double alpha = data(idx.row(), ColAlpha).toDouble();
+        double ausbeute = data(idx.row(), ColAusbeute).toDouble();
+        double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMenge).toDouble();
         return menge * alpha * ausbeute / (10 * mengeSoll);
     }
-    else if (field == "Ausbeute")
+    case ColAusbeute:
     {
-        int sudId = data(index.row(), "SudID").toInt();
-        double sw = bh->modelSud()->getValueFromSameRow("ID", sudId, "SWSollKochende").toDouble();
-        double isozeit = bh->modelSud()->getValueFromSameRow("ID", sudId, "Nachisomerisierungszeit").toDouble();
-        double zeit = data(index.row(), "Zeit").toDouble();
+        QVariant sudId = data(idx.row(), ColSudID);
+        double sw = bh->modelSud()->dataSud(sudId, ModelSud::ColSWSollKochende).toDouble();
+        double isozeit = bh->modelSud()->dataSud(sudId, ModelSud::ColNachisomerisierungszeit).toDouble();
+        double zeit = data(idx.row(), ColZeit).toDouble();
         double ausbeute = BierCalc::hopfenAusbeute(zeit + isozeit, sw);
-        if (data(index.row(), "Pellets").toBool())
+        if (data(idx.row(), ColPellets).toBool())
             ausbeute *= 1.1;
-        if (data(index.row(), "Vorderwuerze").toBool())
+        if (data(idx.row(), ColVorderwuerze).toBool())
             ausbeute *= 0.9;
         if (ausbeute < 0.1)
             ausbeute = 0.1;
         return ausbeute;
     }
-    return QVariant();
+    default:
+        return QVariant();
+    }
 }
 
-bool ModelHopfengaben::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
-    if (field == "Name")
+    switch(idx.column())
     {
-        if (QSqlTableModel::setData(index, value))
+    case ColName:
+    {
+        if (QSqlTableModel::setData(idx, value))
         {
-            int row = bh->modelHopfen()->getRowWithValue("Beschreibung", value);
+            int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, value);
             if (row >= 0)
             {
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Alpha")), bh->modelHopfen()->data(row, "Alpha"));
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Pellets")), bh->modelHopfen()->data(row, "Pellets"));
-                QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
-                setData(index2, data(index2));
+                QSqlTableModel::setData(index(idx.row(), ColAlpha), bh->modelHopfen()->data(row, ModelHopfen::ColAlpha));
+                QSqlTableModel::setData(index(idx.row(), ColPellets), bh->modelHopfen()->data(row, ModelHopfen::ColPellets));
+                QModelIndex idx2 = index(idx.row(), ColProzent);
+                setData(idx2, idx2.data());
             }
             return true;
         }
+        return false;
     }
-    else if (field == "Prozent")
+    case ColProzent:
     {
         double fVal = value.toDouble();
         if (fVal < 0.0)
             fVal = 0.0;
         if (fVal > 100.0)
             fVal = 100.0;
-        if (QSqlTableModel::setData(index, fVal))
+        if (QSqlTableModel::setData(idx, fVal))
         {
-            int colSudId = fieldIndex("SudID");
-            int sudId = index.sibling(index.row(), colSudId).data().toInt();
-            double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
-            double ibuSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "IBU").toDouble();
-            switch (bh->modelSud()->getValueFromSameRow("ID", sudId, "berechnungsArtHopfen").toInt())
+            QVariant sudId = data(idx.row(), ColSudID);
+            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
+            double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
+            switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
             {
             case Hopfen_Berechnung_Gewicht:
-                {
-                    double summe = 0.0;
-                    int colAlpha = fieldIndex("Alpha");
-                    int colProzent = fieldIndex("Prozent");
-                    int colAusbeute = fieldIndex("Ausbeute");
-                    int colMenge = fieldIndex("erg_Menge");
-                    for (int i = 0; i < rowCount(); ++i)
-                    {
-                        if (this->index(i, colSudId).data().toInt() == sudId)
-                        {
-                            double alpha = this->index(i, colAlpha).data().toDouble();
-                            double ausbeute = this->index(i, colAusbeute).data().toDouble();
-                            double prozent = this->index(i, colProzent).data().toDouble();
-                            summe += prozent * alpha * ausbeute;
-                        }
-                    }
-                    double factor = ibuSoll * 10 * mengeSoll / summe;
-                    for (int i = 0; i < rowCount(); ++i)
-                    {
-                        if (this->index(i, colSudId).data().toInt() == sudId)
-                        {
-                            double menge = factor * this->index(i, colProzent).data().toDouble();
-                            QSqlTableModel::setData(this->index(i, colMenge), menge);
-                        }
-                    }
-                }
-                break;
-            case Hopfen_Berechnung_IBU:
-                {
-                    double anteil = ibuSoll * fVal / 100 ;
-                    double alpha = data(index.row(), "Alpha").toDouble();
-                    double ausbeute = data(index.row(), "Ausbeute").toDouble();
-                    double menge;
-                    if (alpha == 0.0 || ausbeute == 0.0)
-                        menge = 0.0;
-                    else
-                        menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
-                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("erg_Menge")), menge);
-                }
-                break;
-            }
-            return true;
-        }
-    }
-    else if (field == "erg_Menge")
-    {
-        if (QSqlTableModel::setData(index, value))
-        {
-            int colSudId = fieldIndex("SudID");
-            int sudId = index.sibling(index.row(), colSudId).data().toInt();
-            double mengeSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "Menge").toDouble();
-            double ibuSoll = bh->modelSud()->getValueFromSameRow("ID", sudId, "IBU").toDouble();
-            switch (bh->modelSud()->getValueFromSameRow("ID", sudId, "berechnungsArtHopfen").toInt())
             {
-            case Hopfen_Berechnung_IBU:
+                double summe = 0.0;
+                for (int r = 0; r < rowCount(); ++r)
                 {
-                    double alpha = data(index.row(), "Alpha").toDouble();
-                    double ausbeute = data(index.row(), "Ausbeute").toDouble();
-                    double p = (10 * alpha * ausbeute * value.toInt()) / (ibuSoll * mengeSoll);
-                    QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Prozent")), p);
+                    if (data(r, ColSudID) == sudId)
+                    {
+                        double alpha = index(r, ColAlpha).data().toDouble();
+                        double ausbeute = index(r, ColAusbeute).data().toDouble();
+                        double prozent = index(r, ColProzent).data().toDouble();
+                        summe += prozent * alpha * ausbeute;
+                    }
+                }
+                double factor = ibuSoll * 10 * mengeSoll / summe;
+                for (int r = 0; r < rowCount(); ++r)
+                {
+                    if (data(r, ColSudID) == sudId)
+                    {
+                        double menge = factor * index(r, ColProzent).data().toDouble();
+                        QSqlTableModel::setData(index(r, Colerg_Menge), menge);
+                    }
                 }
                 break;
             }
+            case Hopfen_Berechnung_IBU:
+            {
+                double anteil = ibuSoll * fVal / 100 ;
+                double alpha = data(idx.row(), ColAlpha).toDouble();
+                double ausbeute = data(idx.row(), ColAusbeute).toDouble();
+                double menge;
+                if (alpha == 0.0 || ausbeute == 0.0)
+                    menge = 0.0;
+                else
+                    menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
+                QSqlTableModel::setData(index(idx.row(), Colerg_Menge), menge);
+                break;
+            }
+            }
             return true;
         }
+        return false;
     }
-    else if (field == "Zeit")
+    case Colerg_Menge:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
-            setData(index2, data(index2));
+            QVariant sudId = data(idx.row(), ColSudID);
+            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
+            double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
+            switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
+            {
+            case Hopfen_Berechnung_Gewicht:
+            {
+                double summe = 0.0;
+                for (int r = 0; r < rowCount(); ++r)
+                {
+                    if (index(r, ColSudID).data() == sudId)
+                    {
+                        summe += index(r, Colerg_Menge).data().toDouble();
+                    }
+                }
+                double p = value.toDouble() / summe * 100;
+                QSqlTableModel::setData(index(idx.row(), ColProzent), p);
+                break;
+            }
+            case Hopfen_Berechnung_IBU:
+            {
+                double alpha = data(idx.row(), ColAlpha).toDouble();
+                double ausbeute = data(idx.row(), ColAusbeute).toDouble();
+                double p = (10 * alpha * ausbeute * value.toDouble()) / (ibuSoll * mengeSoll);
+                QSqlTableModel::setData(index(idx.row(), ColProzent), p);
+                break;
+            }
+            }
             return true;
         }
+        return false;
     }
-    else if (field == "Alpha")
+    case ColZeit:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
-            setData(index2, data(index2));
+            QModelIndex idx2 = index(idx.row(), ColProzent);
+            setData(idx2, idx2.data());
             return true;
         }
+        return false;
     }
-    else if (field == "Pellets")
+    case ColAlpha:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
         {
-            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
-            setData(index2, data(index2));
+            QModelIndex idx2 = index(idx.row(), ColProzent);
+            setData(idx2, idx2.data());
             return true;
         }
+        return false;
     }
-    else if (field == "Vorderwuerze")
+    case ColPellets:
     {
-        if (QSqlTableModel::setData(index, value))
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QModelIndex idx2 = index(idx.row(), ColProzent);
+            setData(idx2, idx2.data());
+            return true;
+        }
+        return false;
+    }
+    case ColVorderwuerze:
+    {
+        if (QSqlTableModel::setData(idx, value))
         {
             if (value.toBool())
             {
-                int sudId = data(index.row(), "SudID").toInt();
-                double dauer = bh->modelSud()->getValueFromSameRow("ID", sudId, "KochdauerNachBitterhopfung").toDouble();
-                QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Zeit")), dauer);
+                int dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauerNachBitterhopfung).toInt();
+                QSqlTableModel::setData(index(idx.row(), ColZeit), dauer);
             }
-            QModelIndex index2 = index.sibling(index.row(), fieldIndex("Prozent"));
-            setData(index2, data(index2));
+            QModelIndex idx2 = index(idx.row(), ColProzent);
+            setData(idx2, idx2.data());
             return true;
         }
+        return false;
     }
-    return false;
+    default:
+        return false;
+    }
 }
 
-void ModelHopfengaben::onSudDataChanged(const QModelIndex &index)
+void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
 {
-    QString field = bh->modelSud()->fieldName(index.column());
-    if (field == "Menge" || field == "SW" || field == "IBU" || field == "berechnungsArtHopfen" ||
-        field == "highGravityFaktor" || field == "KochdauerNachBitterhopfung" || field == "Nachisomerisierungszeit")
+    switch (idx.column())
     {
-        int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
-        int colSudId = fieldIndex("SudID");
-        int colProzent = fieldIndex("Prozent");
+    case ModelSud::ColMenge:
+    case ModelSud::ColSW:
+    case ModelSud::ColIBU:
+    case ModelSud::ColberechnungsArtHopfen:
+    case ModelSud::ColhighGravityFaktor:
+    case ModelSud::ColKochdauerNachBitterhopfung:
+    case ModelSud::ColNachisomerisierungszeit:
+    {
+        QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
         mSignalModifiedBlocked = true;
-        for (int i = 0; i < rowCount(); ++i)
+        int colUpdate = idx.column() == ModelSud::ColberechnungsArtHopfen ? Colerg_Menge : ColProzent;
+        for (int r = 0; r < rowCount(); ++r)
         {
-            if (this->index(i, colSudId).data().toInt() == sudId)
+            if (data(r, ColSudID) == sudId)
             {
-                QModelIndex index2 = this->index(i, colProzent);
-                setData(index2, data(index2));
+                if (idx.column() == ModelSud::ColKochdauerNachBitterhopfung)
+                {
+                    int max = idx.data().toInt();
+                    if (data(r, ColVorderwuerze).toBool())
+                    {
+                        QSqlTableModel::setData(index(r, ColZeit), max);
+                    }
+                    else
+                    {
+                        QModelIndex idx2 = index(r, ColZeit);
+                        if (idx2.data().toInt() > max)
+                            QSqlTableModel::setData(idx2, max);
+                    }
+                }
+                else if (idx.column() == ModelSud::ColNachisomerisierungszeit)
+                {
+                    int min = -1 * idx.data().toInt();
+                    if (data(r, ColSudID) == sudId)
+                    {
+                        QModelIndex idx2 = index(r, ColZeit);
+                        if (idx2.data().toInt() < min)
+                            QSqlTableModel::setData(idx2, min);
+                    }
+                }
+                QModelIndex idx2 = index(r, colUpdate);
+                setData(idx2, data(idx2));
             }
         }
         mSignalModifiedBlocked = false;
+        break;
+    }
     }
 }
 
-void ModelHopfengaben::defaultValues(QVariantMap &values) const
+void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Name"))
-        values.insert("Name", bh->modelHopfen()->data(0, "Beschreibung"));
-    if (!values.contains("Prozent"))
-        values.insert("Prozent", 0);
-    if (!values.contains("Zeit"))
-        values.insert("Zeit", 0);
-    if (!values.contains("Vorderwuerze"))
-        values.insert("Vorderwuerze", 0);
+    if (!values.contains(ColName))
+        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
+    if (!values.contains(ColProzent))
+        values.insert(ColProzent, 0);
+    if (!values.contains(ColZeit))
+        values.insert(ColZeit, 0);
+    if (!values.contains(ColVorderwuerze))
+        values.insert(ColVorderwuerze, 0);
 }

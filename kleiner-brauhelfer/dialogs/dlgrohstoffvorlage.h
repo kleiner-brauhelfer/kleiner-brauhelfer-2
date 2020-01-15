@@ -19,7 +19,7 @@ public:
     void ViewHopfenauswahl();
     void ViewHefeauswahl();
     void ViewWeitereZutatenauswahl();
-    QVariantMap values() const;
+    QMap<int, QVariant> values() const;
 
 private slots:
     void slot_save();
@@ -39,7 +39,7 @@ private:
 private:
     Ui::DlgRohstoffVorlage *ui;
     int mRohstoffart;
-    QVariantMap mValues;
+    QMap<int, QVariant> mValues;
 };
 
 #endif // DLGROHSTOFFVORLAGE_H

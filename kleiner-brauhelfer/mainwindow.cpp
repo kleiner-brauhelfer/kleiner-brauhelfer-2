@@ -10,7 +10,7 @@
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"
-#include "dialogs/dlgmessage.h"
+#include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgispindeleinstellung.h"
 
@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    qApp->installEventFilter(this);
 
     mTabIndexDatenbank = ui->tabMain->indexOf(ui->tabDatenbank);
 
@@ -43,7 +44,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 
     gSettings->beginGroup("MainWindow");
-    mDefaultGeometry = saveGeometry();
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
     restoreState(gSettings->value("state").toByteArray());
@@ -56,7 +56,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdates", true).toBool());
+    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
+    ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
+    BierCalc::faktorBrixToPlato = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());
@@ -66,9 +68,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->tabBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(discarded()));
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(sudModified()));
+    connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(sudDataChanged(const QModelIndex&)));
 
     sudLoaded();
 
@@ -76,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
         restoreView(true);
 
     if (ui->actionCheckUpdate->isChecked())
-        checkMessage();
+        checkForUpdate(false);
 }
 
 MainWindow::~MainWindow()
@@ -89,8 +92,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (bh->isDirty())
     {
-        int ret = QMessageBox::question(this, tr("Anwendung schliessen?"),
-                                  tr("Sollen die Änderungen vor dem Schliessen gespeichert werden?"),
+        int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
+                                  tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
                                   QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
@@ -131,6 +134,13 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
     }
 }
 
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (event->type() == QEvent::ToolTip &&!ui->actionTooltips->isChecked() )
+        return true;
+    return QMainWindow::eventFilter(obj, event);
+}
+
 void MainWindow::restart()
 {
     if (bh->isDirty())
@@ -149,8 +159,27 @@ void MainWindow::restart()
 
 void MainWindow::save()
 {
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
-    bh->save();
+    try
+    {
+        if (!bh->save())
+        {
+            QGuiApplication::restoreOverrideCursor();
+            QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
+        }
+        QGuiApplication::restoreOverrideCursor();
+    }
+    catch (const std::exception& ex)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Speichern"), ex.what());
+    }
+    catch (...)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
+    }
 }
 
 void MainWindow::saveSettings()
@@ -180,10 +209,7 @@ void MainWindow::restoreView(bool onUpdate)
 {
     if (!onUpdate)
     {
-        QPoint position = pos();
-        restoreGeometry(mDefaultGeometry);
         restoreState(mDefaultState);
-        move(position);
     }
     ui->tabSudAuswahl->restoreView();
     ui->tabBrauUebersicht->restoreView();
@@ -213,11 +239,11 @@ void MainWindow::databaseModified()
     ui->actionVerwerfen->setEnabled(modified);
 }
 
-void MainWindow::discarded()
+void MainWindow::updateValues()
 {
     bool loaded = bh->sud()->isLoaded();
+    int status = bh->sud()->getStatus();
     databaseModified();
-    sudModified();
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
@@ -225,8 +251,14 @@ void MainWindow::discarded()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
+    ui->menuSud->setEnabled(loaded);
+    ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
+    ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
+    ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
+    ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Sud_Status_Gebraut);
+    ui->actionWeitereZutaten->setEnabled(status == Sud_Status_Gebraut);
     ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
-                            bh->sud()->getStatus() == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
+                            status == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
@@ -234,7 +266,7 @@ void MainWindow::discarded()
 
 void MainWindow::sudLoaded()
 {
-    discarded();
+    updateValues();
     if (bh->sud()->isLoaded())
     {
         if (ui->tabMain->currentWidget() == ui->tabSudAuswahl || ui->tabMain->currentWidget() == ui->tabBrauUebersicht)
@@ -242,30 +274,33 @@ void MainWindow::sudLoaded()
     }
 }
 
-void MainWindow::sudModified()
+void MainWindow::sudDataChanged(const QModelIndex& index)
 {
-    if (bh->sud()->isLoaded())
-    {
-        int status = bh->sud()->getStatus();
-        ui->menuSud->setEnabled(true);
-        ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
-        ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
-        ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Sud_Status_Gebraut);
-        ui->actionWeitereZutaten->setEnabled(status == Sud_Status_Gebraut);
-    }
-    else
-    {
-        ui->menuSud->setEnabled(false);
-    }
+    if (index.column() == ModelSud::ColStatus)
+        updateValues();
 }
 
 void MainWindow::loadSud(int sudId)
 {
     if (bh->sud()->id() == sudId)
+    {
         ui->tabMain->setCurrentWidget(ui->tabRezept);
+    }
     else
-        bh->sud()->load(sudId);
+    {
+        try
+        {
+            bh->sud()->load(sudId);
+        }
+        catch (const std::exception& ex)
+        {
+            QMessageBox::critical(this, tr("Fehler beim Laden"), ex.what());
+        }
+        catch (...)
+        {
+            QMessageBox::critical(this, tr("Fehler beim Laden"), tr("Unbekannter Fehler."));
+        }
+    }
 }
 
 void MainWindow::on_tabMain_currentChanged()
@@ -302,8 +337,23 @@ void MainWindow::on_actionSpeichern_triggered()
 
 void MainWindow::on_actionVerwerfen_triggered()
 {
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
-    bh->discard();
+    try
+    {
+        bh->discard();
+        QGuiApplication::restoreOverrideCursor();
+    }
+    catch (const std::exception& ex)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
+    }
+    catch (...)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
+    }
 }
 
 void MainWindow::on_actionBereinigen_triggered()
@@ -335,17 +385,15 @@ void MainWindow::on_actionSudVerbraucht_triggered()
 void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
 {
     ProxyModel *model = bh->sud()->modelHefegaben();
-    int col = model->fieldIndex("Zugegeben");
     for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(model->index(row, col), 0);
+        model->setData(row, ModelHefegaben::ColZugegeben, 0);
 }
 
 void MainWindow::on_actionWeitereZutaten_triggered()
 {
     ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    int col = model->fieldIndex("Zugabestatus");
     for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(model->index(row, col), EWZ_Zugabestatus_nichtZugegeben);
+        model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben);
 }
 
 void MainWindow::on_actionEingabefelderEntsperren_changed()
@@ -451,20 +499,36 @@ void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
     gSettings->endGroup();
 }
 
-void MainWindow::checkMessage()
+void MainWindow::checkForUpdate(bool force)
 {
-    DlgMessage *dlg = new DlgMessage(this, URL_MESSAGE);
+    QString url;
+    QDate since;
+    gSettings->beginGroup("General");
+    url = gSettings->value("CheckUpdateUrl", URL_CHEKUPDATE).toString();
+    if (!force)
+        since = gSettings->value("CheckUpdateLastDate").toDate();
+    gSettings->endGroup();
+
+    DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
     connect(dlg, SIGNAL(finished()), this, SLOT(checkMessageFinished()));
-    dlg->getMessage();
+    dlg->checkForUpdate();
 }
 
 void MainWindow::checkMessageFinished()
 {
-    DlgMessage *dlg = qobject_cast<DlgMessage*>(sender());
+    DlgCheckUpdate *dlg = qobject_cast<DlgCheckUpdate*>(sender());
     if (dlg)
     {
-        if (dlg->hasMessage())
+        if (dlg->hasUpdate())
+        {
             dlg->exec();
+            gSettings->beginGroup("General");
+            if (dlg->ignoreUpdate())
+                gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
+            gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
+            ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
+            gSettings->endGroup();
+        }
         dlg->deleteLater();
     }
 }
@@ -472,10 +536,17 @@ void MainWindow::checkMessageFinished()
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
     gSettings->beginGroup("General");
-    gSettings->setValue("CheckUpdates", checked);
+    gSettings->setValue("CheckUpdate", checked);
     gSettings->endGroup();
     if (checked)
-        checkMessage();
+        checkForUpdate(true);
+}
+
+void MainWindow::on_actionTooltips_triggered(bool checked)
+{
+    gSettings->beginGroup("General");
+    gSettings->setValue("TooltipsEnabled", checked);
+    gSettings->endGroup();
 }
 
 void MainWindow::on_actionSpende_triggered()

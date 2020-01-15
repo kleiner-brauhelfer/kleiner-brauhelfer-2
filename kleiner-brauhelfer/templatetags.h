@@ -16,8 +16,8 @@ public:
         TagSud = 0x0004,
         TagTags = 0x0008,
         TagAnhang = 0x0010,
-        TagBraudaten = 0x0011,
-        TagGeraete = 0x0012,
+        TagBraudaten = 0x0020,
+        TagGeraete = 0x0040,
         TagAll = 0xffff
     };
     Q_DECLARE_FLAGS(TagParts, TagPart)

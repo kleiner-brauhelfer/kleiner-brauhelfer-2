@@ -10,74 +10,67 @@ ModelMalzschuettung::ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db) :
             this, SLOT(onSudDataChanged(const QModelIndex&)));
 }
 
-bool ModelMalzschuettung::setDataExt(const QModelIndex &index, const QVariant &value)
+bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
-    QString field = fieldName(index.column());
-    if (field == "Name")
+    switch(idx.column())
     {
-        if (QSqlTableModel::setData(index, value))
+    case ColName:
+    {
+        if (QSqlTableModel::setData(idx, value))
         {
-            QVariant farbe = bh->modelMalz()->getValueFromSameRow("Beschreibung", value, "Farbe");
-            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Farbe")), farbe);
+            QVariant farbe = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, value, ModelMalz::ColFarbe);
+            QSqlTableModel::setData(index(idx.row(), ColFarbe), farbe);
             return true;
         }
+        return false;
     }
-    else if (field == "Prozent")
+    case ColProzent:
     {
         double fVal = value.toDouble();
         if (fVal < 0.0)
             fVal = 0.0;
         if (fVal > 100.0)
             fVal = 100.0;
-        if (QSqlTableModel::setData(index, fVal))
+        if (QSqlTableModel::setData(idx, fVal))
         {
-            double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesamt").toDouble();
-            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("erg_Menge")), fVal / 100 * total);
+            double total = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::Colerg_S_Gesamt).toDouble();
+            QSqlTableModel::setData(index(idx.row(), Colerg_Menge), fVal / 100 * total);
             return true;
         }
+        return false;
     }
-    else if (field == "erg_Menge")
+    case Colerg_Menge:
     {
-        double fVal = value.toDouble();
-        if (fVal < 0.0)
-            fVal = 0.0;
-        if (QSqlTableModel::setData(index, fVal))
-        {
-            double total = bh->modelSud()->getValueFromSameRow("ID", data(index.row(), "SudID").toInt(), "erg_S_Gesamt").toDouble();
-            QSqlTableModel::setData(index.sibling(index.row(), fieldIndex("Prozent")), fVal * 100 / total);
-            return true;
-        }
+        double total = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::Colerg_S_Gesamt).toDouble();
+        return setData(idx.row(), ColProzent, value.toDouble() * 100 / total);
     }
-    return false;
+    default:
+        return false;
+    }
 }
 
-void ModelMalzschuettung::onSudDataChanged(const QModelIndex &index)
+void ModelMalzschuettung::onSudDataChanged(const QModelIndex &idx)
 {
-    QString field = bh->modelSud()->fieldName(index.column());
-    if (field == "erg_S_Gesamt")
+    if (idx.column() == ModelSud::Colerg_S_Gesamt)
     {
-        int sudId = bh->modelSud()->data(index.row(), "ID").toInt();
-        double total = index.data().toDouble();
-        int colSudId = fieldIndex("SudID");
-        int colProzent = fieldIndex("Prozent");
-        int colMenge = fieldIndex("erg_Menge");
+        QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
         mSignalModifiedBlocked = true;
-        for (int i = 0; i < rowCount(); ++i)
+        for (int r = 0; r < rowCount(); ++r)
         {
-            if (this->index(i, colSudId).data().toInt() == sudId)
+            if (data(r, ColSudID) == sudId)
             {
-                double p = this->index(i, colProzent).data().toDouble();
-                QSqlTableModel::setData(this->index(i, colMenge), p / 100 * total);
+                QModelIndex idx2 = index(r, ColProzent);
+                setData(idx2, data(idx2));
             }
         }
         mSignalModifiedBlocked = false;
     }
 }
 
-void ModelMalzschuettung::defaultValues(QVariantMap &values) const
+void ModelMalzschuettung::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains("Name"))
-        values.insert("Name", bh->modelMalz()->data(0, "Beschreibung"));
-    if (!values.contains("Prozent"))
-        values.insert("Prozent", 0.0);
+    if (!values.contains(ColName))
+        values.insert(ColName, bh->modelMalz()->data(0, ModelMalz::ColBeschreibung));
+    if (!values.contains(ColProzent))
+        values.insert(ColProzent, 0.0);
 }

@@ -24,10 +24,9 @@ private slots:
 private:
     void next();
     void setTableIds(const QMap<int, QString>& ids = QMap<int, QString>());
-    bool test1(SqlTableModel* model, const QStringList& fields);
-    bool test2(SqlTableModel* model, const QStringList& fields);
-    bool test3(SqlTableModel* model, const QStringList& fields);
-
+    bool test1(SqlTableModel* model, const QList<int>& fields);
+    bool test2(SqlTableModel* model, const QList<int>& fields);
+    bool test3(SqlTableModel* model, const QList<int>& fields);
 
 private:
     Ui::DlgDatabaseCleaner *ui;

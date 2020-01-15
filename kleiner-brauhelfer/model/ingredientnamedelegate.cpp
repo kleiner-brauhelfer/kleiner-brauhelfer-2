@@ -19,9 +19,9 @@ bool IngredientNameDelegate::isUsed(const QModelIndex &index) const
 {
     const SqlTableModel *model = dynamic_cast<const SqlTableModel*>(index.model());
     if (model)
-        return model->data(index.row(), "InGebrauch").toBool();
+        return model->data(index.row(), model->fieldIndex("InGebrauch")).toBool();
     const ProxyModel *proxyModel = static_cast<const ProxyModel*>(index.model());
     if (proxyModel)
-        return proxyModel->data(index.row(), "InGebrauch").toBool();
+        return proxyModel->data(index.row(), proxyModel->fieldIndex("InGebrauch")).toBool();
     return false;
 }

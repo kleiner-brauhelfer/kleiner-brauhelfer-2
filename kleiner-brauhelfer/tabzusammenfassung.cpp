@@ -16,9 +16,9 @@ TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(bh, SIGNAL(modified()), this, SLOT(updateWebView()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateWebView()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateWebView()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateWebView()), Qt::QueuedConnection);
+    connect(bh, SIGNAL(discarded()), this, SLOT(updateWebView()), Qt::QueuedConnection);
+    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateWebView()), Qt::QueuedConnection);
 }
 
 TabZusammenfassung::~TabZusammenfassung()

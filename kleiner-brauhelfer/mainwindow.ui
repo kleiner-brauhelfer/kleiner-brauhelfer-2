@@ -79,6 +79,9 @@
        </attribute>
       </widget>
       <widget class="TabDatenbank" name="tabDatenbank">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <attribute name="title">
         <string>Datenbank</string>
        </attribute>
@@ -98,7 +101,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Datenbank</string>
+     <string>Datei</string>
     </property>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
@@ -160,6 +163,7 @@
     </property>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
+    <addaction name="actionTooltips"/>
     <addaction name="separator"/>
     <addaction name="actionIspindelEinstellungen"/>
    </widget>
@@ -206,6 +210,9 @@
    <property name="text">
     <string>Über</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
+   </property>
   </action>
   <action name="actionSpende">
    <property name="text">
@@ -239,6 +246,9 @@
    <property name="shortcut">
     <string>Ctrl+Q</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="actionOeffnen">
    <property name="text">
@@ -267,6 +277,9 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Bestätigung beim Beenden</string>
    </property>
@@ -283,8 +296,11 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Nach Updates überprüfen</string>
+    <string>Auf Updates prüfen</string>
    </property>
   </action>
   <action name="actionHefeZugabeZuruecksetzen">
@@ -303,6 +319,17 @@
    </property>
    <property name="text">
     <string>Eingabefelder entsperren</string>
+   </property>
+  </action>
+  <action name="actionTooltips">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tooltips</string>
    </property>
   </action>
   <action name="actionIspindelEinstellungen">

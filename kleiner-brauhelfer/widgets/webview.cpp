@@ -1,4 +1,7 @@
 #include "webview.h"
+
+#if QWEBENGINE_SUPPORT_EN
+
 #include <QDesktopServices>
 #include <QEventLoop>
 #include <QCoreApplication>
@@ -55,6 +58,8 @@ void WebView::printToPdf(const QString& filePath)
     connect(page(), SIGNAL(pdfPrintingFinished(const QString&, bool)), &loop, SLOT(quit()));
     page()->printToPdf(filePath, QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF(20, 20, 20, 20)));
     loop.exec();
+  #else
+    Q_UNUSED(filePath)
   #endif
 }
 
@@ -105,3 +110,5 @@ void WebView::renderText(const QString &html, QVariantMap &contextVariables)
     Mustache::QtVariantContext context(contextVariables);
     renderText(renderer.render(html, &context));
 }
+
+#endif

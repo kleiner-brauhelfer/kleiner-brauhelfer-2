@@ -6,12 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
-    <height>421</height>
+    <width>800</width>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>677</width>
+    <height>200</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Auswahl Rohstoffvorlage</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -25,12 +34,12 @@
     </widget>
    </item>
    <item>
-    <widget class="QTableView" name="tableView">
+    <widget class="TableView" name="tableView">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden Rohstoffvorlagen aufgeführt. Oben angegebene Quellen sind dabei  gute Adressen für die Recherche im deutschsprachigen und angelsächsischen Raum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
@@ -60,6 +69,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btn_Add">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen eine neue, vordefinierte Zeile hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Vorlage hinzufügen</string>
        </property>
@@ -67,6 +79,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btn_Remove">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld eine markierte Zeile aus den Rohstoffvorlagen gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Vorlage löschen</string>
        </property>
@@ -74,6 +89,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btn_Import">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen neue, vordefinierte Rohstofflisten hinzugefügt. Aktuell sollte der Datensatz als semikolonseparierter csv-Datensatz mit den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Name&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Typ&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Farbe&lt;/span&gt; vorliegen.&lt;/p&gt;&lt;p&gt;Beispiel:&lt;/p&gt;&lt;p&gt;Name;Typ;Ausbeute;Farbe&lt;br/&gt;Honig;Honig;90;1&lt;br/&gt;;;;&lt;br/&gt;;;;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Liste importieren</string>
        </property>
@@ -81,6 +99,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btn_Export">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz exportiert. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Liste exportieren</string>
        </property>
@@ -88,6 +109,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btn_Restore">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird der vordefinierte Ausgangszustand für die Vorlagenerstellung wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Liste wiederherstellen</string>
        </property>
@@ -95,6 +119,9 @@
      </item>
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die gegenwärtige Bearbeitung abgebrochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -107,6 +134,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

@@ -22,6 +22,7 @@ DlgRohstoffAustausch::DlgRohstoffAustausch(DlgType type, const QString &rohstoff
         break;
     }
     ui->labelRohstoff->setText(rohstoff);
+    adjustSize();
 }
 
 DlgRohstoffAustausch::~DlgRohstoffAustausch()
@@ -36,18 +37,89 @@ void DlgRohstoffAustausch::setSud(const QString &sud)
     ui->labelSud->setText(sud);
 }
 
+static double jaroDistance(const QString& a, const QString& b)
+{
+    if (a.isEmpty() || b.isEmpty())
+        return 0.0;
+
+    int s1 = a.size();
+    int s2 = b.size();
+    int maxRange = qMax(0, qMax(s1, s2) / 2 - 1);
+
+    std::vector<bool> aMatch(s1, false);
+    std::vector<bool> bMatch(s2, false);
+
+    int m = 0;
+    for (int aIndex = 0; aIndex < s1; ++aIndex)
+    {
+        int minIndex = qMax(aIndex - maxRange, 0);
+        int maxIndex = qMin(aIndex + maxRange + 1, s2);
+
+        if (minIndex >= maxIndex)
+            break;
+
+        for (int bIndex = minIndex; bIndex < maxIndex; ++bIndex)
+        {
+            if (!bMatch.at(bIndex) && a.at(aIndex) == b.at(bIndex))
+            {
+                aMatch[aIndex] = true;
+                bMatch[bIndex] = true;
+                ++m;
+                break;
+            }
+        }
+    }
+
+    if (m == 0)
+        return 0.0;
+
+    std::vector<int> aPosition(m, 0);
+    std::vector<int> bPosition(m, 0);
+
+    for (int aIndex = 0, positionIndex = 0; aIndex < s1; ++aIndex)
+    {
+        if (aMatch.at(aIndex))
+        {
+            aPosition[positionIndex] = aIndex;
+            ++positionIndex;
+        }
+    }
+
+    for (int bIndex = 0, positionIndex = 0; bIndex < s2; ++bIndex)
+    {
+        if (bMatch.at(bIndex))
+        {
+            bPosition[positionIndex] = bIndex;
+            ++positionIndex;
+        }
+    }
+
+    int transpositions = 0;
+    for (int index = 0; index < m; ++index)
+    {
+        if (a.at(aPosition.at(index)) != b.at(bPosition.at(index)))
+        {
+            ++transpositions;
+        }
+    }
+
+    return ((double)m / s1 + (double)m / s2 + (double)(m - transpositions / 2) / m) / 3.0;
+}
+
 void DlgRohstoffAustausch::setNearestIndex()
 {
     QString rohstoff = ui->labelRohstoff->text();
     if (ui->comboBoxAustausch->count() > 0)
     {
-        unsigned int dist;
-        unsigned int minDist = levenshtein_distance(rohstoff, ui->comboBoxAustausch->itemText(0));
+        double dist;
+        double maxDist = jaroDistance(rohstoff, ui->comboBoxAustausch->itemText(0));
         int index = 0;
-        for (int i = 1; i < ui->comboBoxAustausch->count(); ++i) {
-            dist = levenshtein_distance(rohstoff, ui->comboBoxAustausch->itemText(i));
-            if (dist < minDist) {
-                minDist = dist;
+        for (int i = 1; i < ui->comboBoxAustausch->count(); ++i)
+        {
+            dist = jaroDistance(rohstoff, ui->comboBoxAustausch->itemText(i));
+            if (dist > maxDist)
+            {
+                maxDist = dist;
                 index = i;
             }
         }
@@ -103,19 +175,4 @@ void DlgRohstoffAustausch::on_btnImportieren_clicked()
 bool DlgRohstoffAustausch::importieren() const
 {
     return mImportieren;
-}
-
-unsigned int DlgRohstoffAustausch::levenshtein_distance(const QString& s1, const QString& s2)
-{
-    unsigned int len1 = (unsigned int)s1.size(), len2 = (unsigned int)s2.size();
-    std::vector<unsigned int> col(len2+1), prevCol(len2+1);
-    for (unsigned int i = 0; i < prevCol.size(); i++)
-        prevCol[i] = i;
-    for (unsigned int i = 0; i < len1; i++) {
-        col[0] = i+1;
-        for (unsigned int j = 0; j < len2; j++)
-            col[j+1] = std::min(prevCol[1 + j] + 1, std::min(col[j] + 1, prevCol[j] + (s1[i]==s2[j] ? 0 : 1)));
-        col.swap(prevCol);
-    }
-    return prevCol[len2];
 }

@@ -41,7 +41,11 @@
           </widget>
          </item>
          <item>
-          <widget class="ComboBox" name="cbAuswahlL1"/>
+          <widget class="ComboBox" name="cbAuswahlL1">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl für den &lt;span style=&quot; font-weight:600;&quot;&gt;ersten&lt;/span&gt; Parameter, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_27">
@@ -64,7 +68,11 @@
           </widget>
          </item>
          <item>
-          <widget class="ComboBox" name="cbAuswahlL2"/>
+          <widget class="ComboBox" name="cbAuswahlL2">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl für den &lt;span style=&quot; font-weight:600;&quot;&gt;zweiten&lt;/span&gt; Parameter, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer">
@@ -87,13 +95,17 @@
           </widget>
          </item>
          <item>
-          <widget class="ComboBox" name="cbAuswahlL3"/>
+          <widget class="ComboBox" name="cbAuswahlL3">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl für den &lt;span style=&quot; font-weight:600;&quot;&gt;dritten&lt;/span&gt; Parameter, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
       </layout>
      </widget>
-     <widget class="QTableView" name="tableView">
+     <widget class="TableView" name="tableView">
       <property name="contextMenuPolicy">
        <enum>Qt::CustomContextMenu</enum>
       </property>
@@ -102,9 +114,6 @@
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::SingleSelection</enum>
       </property>
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
@@ -121,13 +130,18 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Die angezeigten Sude können im Reiter Sudauswahl eingestellt werden.</string>
+      <string>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden.</string>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
   <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>

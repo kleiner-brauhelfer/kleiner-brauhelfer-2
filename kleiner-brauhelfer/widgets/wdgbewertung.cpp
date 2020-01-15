@@ -50,14 +50,14 @@ bool WdgBewertung::isActive() const
     return mActive;
 }
 
-QVariant WdgBewertung::data(const QString &fieldName) const
+QVariant WdgBewertung::data(int col) const
 {
-    return bh->sud()->modelBewertungen()->data(mIndex, fieldName);
+    return bh->sud()->modelBewertungen()->data(mIndex, col);
 }
 
-bool WdgBewertung::setData(const QString &fieldName, const QVariant &value)
+bool WdgBewertung::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelBewertungen()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelBewertungen()->setData(mIndex, col, value);
 }
 
 void WdgBewertung::mousePressEvent(QMouseEvent *e)
@@ -68,8 +68,9 @@ void WdgBewertung::mousePressEvent(QMouseEvent *e)
 
 void WdgBewertung::updateValues()
 {
-    ui->lblInfo->setText(tr("Woche") + " " + data("Woche").toString() + " (" + QLocale().toString(data("Datum").toDate(), QLocale::ShortFormat) + ")");
-    ui->wdgRating->setSterne(data("Sterne").toInt());
+    ui->lblInfo->setText(tr("Woche") + " " + data(ModelBewertungen::ColWoche).toString() +
+                         " (" + QLocale().toString(data(ModelBewertungen::ColDatum).toDate(), QLocale::ShortFormat) + ")");
+    ui->wdgRating->setSterne(data(ModelBewertungen::ColSterne).toInt());
     if (isActive())
     {
         QFont f = font();

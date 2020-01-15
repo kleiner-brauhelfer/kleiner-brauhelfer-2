@@ -17,14 +17,24 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->setupUi(this);
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+   #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance("  "));
+   #else
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+   #endif
   #endif
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
+   #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance("  "));
+   #else
+    ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTags->font()).width(' '));
+   #endif
   #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
+    mTimerWebViewUpdate.setSingleShot(true);
+    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 }
 
@@ -36,7 +46,7 @@ WdgWebViewEditable::~WdgWebViewEditable()
 void WdgWebViewEditable::setHtmlFile(const QString& file)
 {
     ui->cbTemplateAuswahl->setItemText(0, file);
-    ui->webview->setTemplateFile(gSettings->dataDir() + file);
+    ui->webview->setTemplateFile(gSettings->dataDir(1) + file);
 }
 
 void WdgWebViewEditable::printToPdf(const QString& filePath)
@@ -94,10 +104,11 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     ui->cbTemplateAuswahl->setVisible(checked);
     ui->btnSaveTemplate->setVisible(false);
     ui->splitterEditmode->setHandleWidth(checked ? 5 : 0);
+    ui->splitterEditmode->setSizes({1, checked ? 1 : 0});
 
     if (checked)
     {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
         ui->btnSaveTemplate->setProperty("file", file.fileName());
         ui->lblFilePath->setText(file.fileName());
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -108,7 +119,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     }
 
     updateTags();
-    updateHtml();
+    updateWebView();
 }
 
 void WdgWebViewEditable::on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName)
@@ -121,7 +132,7 @@ void WdgWebViewEditable::on_tbTemplate_textChanged()
 {
     if (ui->tbTemplate->hasFocus())
     {
-        updateHtml();
+        mTimerWebViewUpdate.start(200);
         ui->btnSaveTemplate->setVisible(true);
     }
 }
@@ -142,7 +153,7 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
                                     tr("Soll das Standardtemplate wiederhergestellt werden?"));
     if (ret == QMessageBox::Yes)
     {
-        QFile file(gSettings->dataDir() + ui->cbTemplateAuswahl->currentText());
+        QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
         QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))
@@ -151,7 +162,7 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
     }
 }
 
-void WdgWebViewEditable::updateHtml()
+void WdgWebViewEditable::updateWebView()
 {
     if (ui->cbEditMode->isChecked())
     {

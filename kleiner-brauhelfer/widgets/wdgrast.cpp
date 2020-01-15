@@ -30,29 +30,29 @@ bool WdgRast::isEnabled() const
     return mEnabled;
 }
 
-QVariant WdgRast::data(const QString &fieldName) const
+QVariant WdgRast::data(int col) const
 {
-    return bh->sud()->modelRasten()->data(mIndex, fieldName);
+    return bh->sud()->modelRasten()->data(mIndex, col);
 }
 
-bool WdgRast::setData(const QString &fieldName, const QVariant &value)
+bool WdgRast::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelRasten()->setData(mIndex, fieldName, value);
+    return bh->sud()->modelRasten()->setData(mIndex, col, value);
 }
 
 QString WdgRast::name() const
 {
-    return data("Name").toString();
+    return data(ModelRasten::ColName).toString();
 }
 
 int WdgRast::temperatur() const
 {
-    return data("Temp").toInt();
+    return data(ModelRasten::ColTemp).toInt();
 }
 
 int WdgRast::dauer() const
 {
-    return data("Dauer").toInt();
+    return data(ModelRasten::ColDauer).toInt();
 }
 
 void WdgRast::checkEnabled(bool force)
@@ -64,9 +64,9 @@ void WdgRast::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
+    ui->cbRast->clear();
     if (mEnabled)
     {
-        ui->cbRast->clear();
         ui->cbRast->addItem(tr("Gummirast (35°-40°)"));
         ui->cbRast->addItem(tr("Weizenrast (45°)"));
         ui->cbRast->addItem(tr("Eiweissrast (57°)"));
@@ -74,24 +74,20 @@ void WdgRast::checkEnabled(bool force)
         ui->cbRast->addItem(tr("Kombirast (66°-69°)"));
         ui->cbRast->addItem(tr("Verzuckerung (70°-75°)"));
         ui->cbRast->addItem(tr("Abmaischen (78°)"));
-        ui->cbRast->setEditable(true);
-        ui->cbRast->setEnabled(true);
-        ui->cbRast->setCurrentIndex(-1);
-        ui->btnLoeschen->setVisible(true);
-        ui->tbTemp->setReadOnly(false);
-        ui->tbDauer->setReadOnly(false);
+
     }
     else
     {
-        ui->cbRast->clear();
         ui->cbRast->addItem(name());
-        ui->cbRast->setEditable(false);
-        ui->cbRast->setEnabled(false);
-        ui->cbRast->setCurrentIndex(-1);
-        ui->btnLoeschen->setVisible(false);
-        ui->tbTemp->setReadOnly(true);
-        ui->tbDauer->setReadOnly(true);
     }
+    ui->cbRast->setEditable(mEnabled);
+    ui->cbRast->setEnabled(mEnabled);
+    ui->cbRast->setCurrentIndex(-1);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbTemp->setReadOnly(!mEnabled);
+    ui->tbDauer->setReadOnly(!mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 }
 
 void WdgRast::updateValues(bool full)
@@ -104,53 +100,55 @@ void WdgRast::updateValues(bool full)
         ui->tbTemp->setValue(temperatur());
     if (!ui->tbDauer->hasFocus())
         ui->tbDauer->setValue(dauer());
+    ui->btnNachOben->setEnabled(mIndex > 0);
+    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelRasten()->rowCount() - 1);
 }
 
 void WdgRast::remove()
 {
-  bh->sud()->modelRasten()->removeRow(mIndex);
+    bh->sud()->modelRasten()->removeRow(mIndex);
 }
 
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 {
     if (ui->cbRast->hasFocus())
-        setData("Name", text);
+        setData(ModelRasten::ColName, text);
 }
 
 void WdgRast::on_cbRast_currentIndexChanged(int index)
 {
     if (ui->cbRast->hasFocus())
     {
-        setData("Name", ui->cbRast->itemText(index));
+        setData(ModelRasten::ColName, ui->cbRast->itemText(index));
         switch (index)
         {
         case 0: //Gummirast
-            setData("Temp", 38);
-            setData("Dauer", 60);
+            setData(ModelRasten::ColTemp, 38);
+            setData(ModelRasten::ColDauer, 60);
             break;
         case 1: //Weizenrast
-            setData("Temp", 45);
-            setData("Dauer", 15);
+            setData(ModelRasten::ColTemp, 45);
+            setData(ModelRasten::ColDauer, 15);
             break;
         case 2: //Eiweissrast
-            setData("Temp", 57);
-            setData("Dauer", 10);
+            setData(ModelRasten::ColTemp, 57);
+            setData(ModelRasten::ColDauer, 10);
             break;
         case 3: //Maltoserast
-            setData("Temp", 63);
-            setData("Dauer", 35);
+            setData(ModelRasten::ColTemp, 63);
+            setData(ModelRasten::ColDauer, 35);
             break;
         case 4: //Kombirast
-            setData("Temp", 67);
-            setData("Dauer", 60);
+            setData(ModelRasten::ColTemp, 67);
+            setData(ModelRasten::ColDauer, 60);
             break;
         case 5: //Verzuckerung
-            setData("Temp", 72);
-            setData("Dauer", 20);
+            setData(ModelRasten::ColTemp, 72);
+            setData(ModelRasten::ColDauer, 20);
             break;
         case 6: //Abmaischen
-            setData("Temp", 78);
-            setData("Dauer", 0);
+            setData(ModelRasten::ColTemp, 78);
+            setData(ModelRasten::ColDauer, 0);
         }
     }
 }
@@ -158,16 +156,42 @@ void WdgRast::on_cbRast_currentIndexChanged(int index)
 void WdgRast::on_tbTemp_valueChanged(int value)
 {
     if (ui->tbTemp->hasFocus())
-        setData("Temp", value);
+        setData(ModelRasten::ColTemp, value);
 }
 
 void WdgRast::on_tbDauer_valueChanged(int value)
 {
     if (ui->tbDauer->hasFocus())
-        setData("Dauer", value);
+        setData(ModelRasten::ColDauer, value);
 }
 
 void WdgRast::on_btnLoeschen_clicked()
 {
     remove();
+}
+
+void WdgRast::on_btnNachUnten_clicked()
+{
+    if (mIndex < bh->sud()->modelRasten()->rowCount() - 1)
+    {
+        int row1 = bh->sud()->modelRasten()->mapRowToSource(mIndex);
+        QMap<int, QVariant> values1 = bh->modelRasten()->copyValues(row1);
+        int row2 = bh->sud()->modelRasten()->mapRowToSource(mIndex + 1);
+        QMap<int, QVariant> values2 = bh->modelRasten()->copyValues(row2);
+        bh->modelRasten()->setData(row1, values2);
+        bh->modelRasten()->setData(row2, values1);
+    }
+}
+
+void WdgRast::on_btnNachOben_clicked()
+{
+    if (mIndex > 0)
+    {
+        int row1 = bh->sud()->modelRasten()->mapRowToSource(mIndex);
+        QMap<int, QVariant> values1 = bh->modelRasten()->copyValues(row1);
+        int row2 = bh->sud()->modelRasten()->mapRowToSource(mIndex - 1);
+        QMap<int, QVariant> values2 = bh->modelRasten()->copyValues(row2);
+        bh->modelRasten()->setData(row1, values2);
+        bh->modelRasten()->setData(row2, values1);
+    }
 }

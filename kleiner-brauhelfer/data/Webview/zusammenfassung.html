@@ -13,8 +13,8 @@
     <table>
       <tr>
         <td valign="center" align="right">
-          <div style="background-color:{{Sud.FarbeRgb}};padding:0px;margin:0px;width:138px;height:138px">
-            <img class="glas" style="padding:0px;margin:0px;width:140px;height:140px">
+          <div style="background-color:{{Sud.FarbeRgb}};padding:0px;margin:0px;width:132px;height:132px">
+            <img class="glas" style="padding:0px;margin:-4px;width:140px;height:140px">
           </div>
         </td>
         <td valign="top">
@@ -115,7 +115,8 @@
   </div>
 
   {{#Rezept.Kommentar}}
-  <div class="rm" align="center">
+  <div class="rm bg_kommentar" align="center">
+    <h2>Bemerkungen</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
@@ -124,7 +125,7 @@
     <tr>
       <td valign="top" width="50%">
       {{#Zutaten.Malz}}
-      <div class="rm" align="center">
+      <div class="rm bg_malz" align="center">
         <img src="qrc:/images/getreide.svg" height="50px">
         <table>
           <col width="*">
@@ -156,7 +157,7 @@
       {{/Zutaten.Malz}}
       </td>
       <td valign="top">      
-        <div class="rm" align="center">
+        <div class="rm bg_hopfen" align="center">
           <img src="qrc:/images/hopfen.svg" height="50px">
           {{#Zutaten.Hopfen}}
           <table>
@@ -218,7 +219,7 @@
     <tr>
       <td valign="top">
         {{#Wasser}}
-        <div class="rm" align="center">
+        <div class="rm bg_wasser" align="center">
           <img src="qrc:/images/wasser.svg" height="50px">
           <table>
             <col width="*">
@@ -257,7 +258,7 @@
       </td>
       <td valign="top">
         {{#Zutaten.Hefe}}
-        <div class="rm" align="center">
+        <div class="rm bg_hefe" align="center">
           <img src="qrc:/images/hefe.svg" height="50px">
           <table>
             <col width="*">
@@ -286,7 +287,7 @@
     <tr>
       {{#Zutaten.Honig}}
       <td valign="top">
-        <div class="rm" align="center">
+        <div class="rm bg_honig" align="center">
           <img src="qrc:/images/ewz_typ_0.svg" height="50px">
           <table>
             <col width="100">
@@ -319,7 +320,7 @@
       {{/Zutaten.Honig}}
       {{#Zutaten.Zucker}}
       <td valign="top">
-        <div class="rm" align="center">
+        <div class="rm bg_zucker" align="center">
           <img src="qrc:/images/ewz_typ_1.svg" height="50px">
           <table>
             <col width="100">
@@ -352,7 +353,7 @@
       {{/Zutaten.Zucker}}
       {{#Zutaten.Gewuerz}}
       <td valign="top">
-        <div class="rm" align="center">
+        <div class="rm bg_gewuerz" align="center">
           <img src="qrc:/images/ewz_typ_2.svg" height="50px">
           <table>
             <col width="100">
@@ -385,7 +386,7 @@
       {{/Zutaten.Gewuerz}}
       {{#Zutaten.Frucht}}
       <td valign="top">
-        <div class="rm" align="center">
+        <div class="rm bg_frucht" align="center">
           <img src="qrc:/images/ewz_typ_3.svg" height="50px">
           <table>
             <col width="100">
@@ -418,7 +419,7 @@
       {{/Zutaten.Frucht}}
       {{#Zutaten.Sonstiges}}
       <td valign="top">
-        <div class="rm" align="center">
+        <div class="rm bg_sonstiges" align="center">
           <img src="qrc:/images/ewz_typ_4.svg" height="50px">
           <table>
             <col width="100">
@@ -452,7 +453,7 @@
     </tr>
   </table>
 
-  <div class="rm" align="center">
+  <div class="rm bg_rasten" align="center">
     <h2>Rasten</h2>
     <table>
       <col width="*">
@@ -479,7 +480,7 @@
   </div>
 
   {{#Anhang}}
-  <div class="rm" align="center">
+  <div class="rm bg_anhaenge" align="center">
     <h2>Anh&auml;nge</h2>
     <table style="width:100%">
     {{#Liste}}

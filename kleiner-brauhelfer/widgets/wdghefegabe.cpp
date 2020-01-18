@@ -80,6 +80,8 @@ void WdgHefeGabe::checkEnabled(bool force)
     ui->btnAufbrauchen->setVisible(enabled);
     ui->lblVorhanden->setVisible(enabled);
     ui->tbMenge->setReadOnly(!enabled);
+    ui->tbMengeEmpfohlen->setVisible(enabled);
+    ui->lblEmpfohlen->setVisible(enabled);
     ui->tbTage->setReadOnly(!enabled);
     ui->tbDatum->setReadOnly(!enabled);
 }
@@ -104,16 +106,31 @@ void WdgHefeGabe::updateValues(bool full)
     }
     ui->tbDatum->setVisible(braudatum.isValid());
 
-    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, hefename, ModelHefe::ColTypOGUG).toInt();
-    if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
+    int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColBeschreibung, hefename);
+    if (rowHefe >= 0)
     {
-        QPalette pal = ui->frameColor->palette();
-        pal.setColor(QPalette::Background, gSettings->HefeTypOgUgBackgrounds[idx]);
-        ui->frameColor->setPalette(pal);
+        int idx = bh->modelHefe()->data(rowHefe, ModelHefe::ColTypOGUG).toInt();
+        if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
+        {
+            QPalette pal = ui->frameColor->palette();
+            pal.setColor(QPalette::Background, gSettings->HefeTypOgUgBackgrounds[idx]);
+            ui->frameColor->setPalette(pal);
+        }
+        else
+        {
+            ui->frameColor->setPalette(gSettings->palette);
+        }
+
+        double mengeHefe = bh->modelHefe()->data(rowHefe, ModelHefe::ColWuerzemenge).toDouble();
+        if (mengeHefe > 0)
+            ui->tbMengeEmpfohlen->setValue(ceil(bh->sud()->getMenge() / mengeHefe));
+        else
+            ui->tbMengeEmpfohlen->setValue(0);
     }
     else
     {
         ui->frameColor->setPalette(gSettings->palette);
+        ui->tbMengeEmpfohlen->setValue(0);
     }
 
     ui->btnZugeben->setVisible(mEnabled && bh->sud()->getStatus() == Sud_Status_Gebraut);

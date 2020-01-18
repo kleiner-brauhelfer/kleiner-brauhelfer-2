@@ -144,7 +144,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHopfen::ColMenge;
     model->setHeaderData(col, Qt::Horizontal, tr("Menge [g]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, true, table));
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, true, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
@@ -281,7 +281,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHefe::ColWuerzemenge;
     model->setHeaderData(col, Qt::Horizontal, tr("Wuerzemenge [l]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, 9999, 1, true, table));
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, true, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 7);
 

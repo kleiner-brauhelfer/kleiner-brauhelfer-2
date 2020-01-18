@@ -506,7 +506,7 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
         if (model.data(row, ModelHopfengaben::ColVorderwuerze).toBool())
         {
             root[QString("Hopfen_VWH_%1_Sorte").arg(n)] = model.data(row, ModelHopfengaben::ColName).toString();
-            root[QString("Hopfen_VWH_%1_Menge").arg(n)] = QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toInt());
+            root[QString("Hopfen_VWH_%1_Menge").arg(n)] = QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1);
             root[QString("Hopfen_VWH_%1_alpha").arg(n)] = QString::number(model.data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1);
             ++n;
         }
@@ -517,7 +517,7 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
         if (!model.data(row, ModelHopfengaben::ColVorderwuerze).toBool())
         {
             root[QString("Hopfen_%1_Sorte").arg(n)] = model.data(row, ModelHopfengaben::ColName).toString();
-            root[QString("Hopfen_%1_Menge").arg(n)] = QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toInt());
+            root[QString("Hopfen_%1_Menge").arg(n)] = QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1);
             root[QString("Hopfen_%1_alpha").arg(n)] = QString::number(model.data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1);
             root[QString("Hopfen_%1_Kochzeit").arg(n)] = QString::number(model.data(row, ModelHopfengaben::ColZeit).toInt());
             ++n;
@@ -804,7 +804,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("AMOUNT");
-        text = doc.createTextNode(QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toDouble() / 1000, 'f', 3));
+        text = doc.createTextNode(QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toDouble() / 1000, 'f', 4));
         element.appendChild(text);
         Anteil.appendChild(element);
 

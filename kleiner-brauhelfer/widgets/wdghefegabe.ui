@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
-    <height>99</height>
+    <width>454</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -40,6 +40,9 @@
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
@@ -117,6 +120,9 @@
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>6</number>
+        </property>
         <property name="verticalSpacing">
          <number>4</number>
         </property>
@@ -258,6 +264,35 @@
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="lblEmpfohlen">
+          <property name="text">
+           <string>Empfohlen</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="SpinBox" name="tbMengeEmpfohlen">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Empfohlene Anzahl &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
           </property>
          </widget>
         </item>

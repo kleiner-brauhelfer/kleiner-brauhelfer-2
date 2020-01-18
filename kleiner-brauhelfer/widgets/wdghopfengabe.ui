@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>507</width>
-    <height>127</height>
+    <width>511</width>
+    <height>128</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -40,6 +40,9 @@
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
@@ -114,6 +117,9 @@
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>6</number>
+        </property>
         <property name="verticalSpacing">
          <number>4</number>
         </property>
@@ -409,7 +415,7 @@
          </widget>
         </item>
         <item row="1" column="9">
-         <widget class="SpinBox" name="tbVorhanden">
+         <widget class="DoubleSpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
             <width>50</width>
@@ -428,8 +434,11 @@
           <property name="buttonSymbols">
            <enum>QAbstractSpinBox::NoButtons</enum>
           </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
           <property name="maximum">
-           <number>9999</number>
+           <double>9999.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -486,7 +495,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="SpinBox" name="tbMenge">
+         <widget class="DoubleSpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
             <width>60</width>
@@ -499,8 +508,11 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
           <property name="maximum">
-           <number>999</number>
+           <double>999.000000000000000</double>
           </property>
          </widget>
         </item>

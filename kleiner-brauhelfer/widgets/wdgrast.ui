@@ -7,12 +7,12 @@
     <x>0</x>
     <y>0</y>
     <width>383</width>
-    <height>22</height>
+    <height>23</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
-    <number>4</number>
+    <number>6</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -89,12 +89,6 @@
    </item>
    <item>
     <widget class="QLabel" name="label">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="text">
       <string>min</string>
      </property>
@@ -118,12 +112,6 @@
    </item>
    <item>
     <widget class="QLabel" name="label_2">
-     <property name="minimumSize">
-      <size>
-       <width>30</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="text">
       <string>°C</string>
      </property>

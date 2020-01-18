@@ -197,7 +197,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     int duaerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
                     map.insert("Name", model->data(row, ModelHopfengaben::ColName));
                     map.insert("Prozent", locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
-                    map.insert("Menge", QString::number(model->data(row, ModelHopfengaben::Colerg_Menge).toInt()));
+                    map.insert("Menge", locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
                     map.insert("Kochdauer", QString::number(dauer));
                     map.insert("ZugabeNach", QString::number(kochDauer - dauer));
                     map.insert("Alpha", locale.toString(model->data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1));

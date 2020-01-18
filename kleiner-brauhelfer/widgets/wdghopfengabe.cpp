@@ -116,7 +116,7 @@ void WdgHopfenGabe::updateValues(bool full)
     if (!ui->tbAnteilProzent->hasFocus())
         ui->tbAnteilProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
-        ui->tbMenge->setValue(data(ModelHopfengaben::Colerg_Menge).toInt());
+        ui->tbMenge->setValue(data(ModelHopfengaben::Colerg_Menge).toDouble());
     if (!ui->tbAnteil->hasFocus())
         ui->tbAnteil->setValue(data(ModelHopfengaben::ColIBUAnteil).toDouble());
     ui->tbAlpha->setValue(data(ModelHopfengaben::ColAlpha).toDouble());
@@ -151,20 +151,20 @@ void WdgHopfenGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColMenge).toInt());
+        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColMenge).toDouble());
         int benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHopfengaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
             if (model->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
-                benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toInt();
+                benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
         }
         model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
             if (model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen &&
                 model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
-                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
+                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
@@ -284,7 +284,7 @@ void WdgHopfenGabe::on_btnAnteilKorrektur_clicked()
     setData(ModelHopfengaben::ColProzent, prozent() + toadd);
 }
 
-void WdgHopfenGabe::on_tbMenge_valueChanged(int value)
+void WdgHopfenGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
         setData(ModelHopfengaben::Colerg_Menge, value);

@@ -35,6 +35,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Sudspezifische Sudhausausbeute und Verdampfungsrate
 - Neu: Eingabemöglichkeit des Endvergärungsgrads für die Abschätzung des Alkoholgehalts
 - Neu: Gärverlaufeinträge lassen sich über das Clipboard importieren (Copy&Paste)
+- Neu: Anhänge lassen sich über einen Knopf öffnen
 - Fix: Update der Ressourcen verbessert (erst bei nächstem Update wirksam)
 - Fix: Farben für HTML Editiermodus beim dunklen Design
 - Fix: Verdünnungsmenge bezieht sich neu auf die Würzemenge beim Anstellen

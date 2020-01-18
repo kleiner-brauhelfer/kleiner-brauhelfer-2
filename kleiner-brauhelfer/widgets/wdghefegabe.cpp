@@ -1,5 +1,6 @@
 #include "wdghefegabe.h"
 #include "ui_wdghefegabe.h"
+#include <QtMath>
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include "brauhelfer.h"
@@ -123,7 +124,7 @@ void WdgHefeGabe::updateValues(bool full)
 
         double mengeHefe = bh->modelHefe()->data(rowHefe, ModelHefe::ColWuerzemenge).toDouble();
         if (mengeHefe > 0)
-            ui->tbMengeEmpfohlen->setValue(ceil(bh->sud()->getMenge() / mengeHefe));
+            ui->tbMengeEmpfohlen->setValue(qCeil(bh->sud()->getMenge() / mengeHefe));
         else
             ui->tbMengeEmpfohlen->setValue(0);
     }

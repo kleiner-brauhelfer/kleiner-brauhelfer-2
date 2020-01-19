@@ -363,7 +363,8 @@ void TabAusruestung::updateDurchschnitt()
     model.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     model.sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     QString anlage = data(ModelAusruestung::ColName).toString();
-    int n = 0;
+    int nAusbeute = 0;
+    int nVerdampfung = 0;
     int N = 0;
     double ausbeute = 0.0;
     double verdampfung = 0.0;
@@ -373,21 +374,29 @@ void TabAusruestung::updateDurchschnitt()
         {
             if (!model.index(i, ModelSud::ColAusbeuteIgnorieren).data().toBool())
             {
-                if (n < ui->sliderAusbeuteSude->value())
+                if (N < ui->sliderAusbeuteSude->value())
                 {
-                    ausbeute += model.index(i, ModelSud::Colerg_EffektiveAusbeute).data().toDouble();
-                    verdampfung += model.index(i, ModelSud::ColVerdampfungsrateIst).data().toDouble();
-                    ++n;
+                    double val = model.index(i, ModelSud::Colerg_EffektiveAusbeute).data().toDouble();
+                    if (val > 0)
+                    {
+                        ausbeute += val;
+                        nAusbeute++;
+                    }
+                    val = model.index(i, ModelSud::ColVerdampfungsrateIst).data().toDouble();
+                    if (val > 0)
+                    {
+                        verdampfung += val;
+                        ++nVerdampfung;
+                    }
                 }
                 ++N;
             }
         }
     }
-    if (n > 0)
-    {
-        ausbeute /= n;
-        verdampfung /= n;
-    }
+    if (nAusbeute > 0)
+        ausbeute /= nAusbeute;
+    if (nVerdampfung > 0)
+        verdampfung /= nVerdampfung;
     ui->sliderAusbeuteSude->setMaximum(N);
     ui->tbAusbeuteMittel->setValue(ausbeute);
     ui->tbVerdampfungMittel->setValue(verdampfung);
@@ -402,8 +411,8 @@ void TabAusruestung::on_btnVerdampfungsziffer_clicked()
     if (bh->sud()->isLoaded())
     {
         dlg.setKochdauer(bh->sud()->getKochdauerNachBitterhopfung());
-        dlg.setMenge1(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeVorHopfenseihen()));
-        dlg.setMenge2(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeKochende()));
+        dlg.setMenge1(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeKochbeginn()));
+        dlg.setMenge2(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeVorHopfenseihen()));
     }
     else
     {

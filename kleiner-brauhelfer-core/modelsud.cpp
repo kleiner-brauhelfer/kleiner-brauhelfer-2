@@ -352,8 +352,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColVerdampfungsrateIst:
     {
-        double V1 = data(idx.row(), ColWuerzemengeVorHopfenseihen).toDouble();
-        double V2 = data(idx.row(), ColWuerzemengeKochende).toDouble();
+        double V1 = data(idx.row(), ColWuerzemengeKochbeginn).toDouble();
+        double V2 = data(idx.row(), ColWuerzemengeVorHopfenseihen).toDouble();
         double t = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
         return BierCalc::verdampfungsrate(V1, V2, t);
     }
@@ -421,7 +421,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate)))
         {
-            setData(idx.row(), ColAbfuelldatum, value);
+            if (data(idx.row(), ColStatus).toInt() < Sud_Status_Abgefuellt)
+                setData(idx.row(), ColAbfuelldatum, value);
             return true;
         }
         return false;
@@ -442,8 +443,11 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            setData(idx.row(), ColSudhausausbeute, dataAnlage(idx.row(), ModelAusruestung::ColSudhausausbeute));
-            setData(idx.row(), ColVerdampfungsrate, dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsziffer));
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            {
+                setData(idx.row(), ColSudhausausbeute, dataAnlage(idx.row(), ModelAusruestung::ColSudhausausbeute));
+                setData(idx.row(), ColVerdampfungsrate, dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsziffer));
+            }
             return true;
         }
         return false;
@@ -452,7 +456,18 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            setData(idx.row(), ColWuerzemengeVorHopfenseihen, data(idx.row(), ColMengeSollKochbeginn));
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColWuerzemengeKochbeginn, value);
+            return true;
+        }
+        return false;
+    }
+    case ColWuerzemengeKochbeginn:
+    {
+        if (QSqlTableModel::setData(idx, value))
+        {
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColWuerzemengeVorHopfenseihen, value);
             return true;
         }
         return false;
@@ -461,7 +476,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            setData(idx.row(), ColWuerzemengeKochende, value);
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColWuerzemengeKochende, value);
             return true;
         }
         return false;
@@ -470,8 +486,11 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            double m = value.toDouble() + data(idx.row(), ColMenge).toDouble() - data(idx.row(), ColMengeSollKochende).toDouble();
-            setData(idx.row(), ColWuerzemengeAnstellenTotal, m);
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            {
+                double m = value.toDouble() + data(idx.row(), ColMenge).toDouble() - data(idx.row(), ColMengeSollKochende).toDouble();
+                setData(idx.row(), ColWuerzemengeAnstellenTotal, m);
+            }
             return true;
         }
         return false;
@@ -485,27 +504,22 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            setData(idx.row(), ColJungbiermengeAbfuellen, value);
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColJungbiermengeAbfuellen, value);
             return true;
         }
         return false;
     }
     case ColSpeisemenge:
     {
-        if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+        double v = data(idx.row(), ColWuerzemengeAnstellenTotal).toDouble() - value.toDouble();
+        if (QSqlTableModel::setData(idx, value))
         {
-            double v = data(idx.row(), ColWuerzemengeAnstellenTotal).toDouble() - value.toDouble();
-            if (QSqlTableModel::setData(idx, value))
-            {
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
                 QSqlTableModel::setData(index(idx.row(), ColWuerzemengeAnstellen), v);
-                return true;
-            }
-            return false;
+            return true;
         }
-        else
-        {
-            return QSqlTableModel::setData(idx, value);
-        }
+        return false;
     }
     case Colerg_AbgefuellteBiermenge:
     {
@@ -513,10 +527,13 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         if (QSqlTableModel::setData(idx, value))
         {
-            if (jungbiermenge > 0.0)
-                QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() / (1 + speise / jungbiermenge));
-            else
-                QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() - speise);
+            if (data(idx.row(), ColStatus).toInt() < Sud_Status_Abgefuellt)
+            {
+                if (jungbiermenge > 0.0)
+                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() / (1 + speise / jungbiermenge));
+                else
+                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() - speise);
+            }
             return true;
         }
         return false;
@@ -525,7 +542,18 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            setData(idx.row(), ColSWKochende, value);
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColSWKochbeginn, value);
+            return true;
+        }
+        return false;
+    }
+    case ColSWKochbeginn:
+    {
+        if (QSqlTableModel::setData(idx, value))
+        {
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColSWKochende, value);
             return true;
         }
         return false;
@@ -534,7 +562,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            setData(idx.row(), ColSWAnstellen, value);
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+                setData(idx.row(), ColSWAnstellen, value);
             return true;
         }
         return false;
@@ -543,10 +572,13 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
-            double sre = BierCalc::sreAusVergaerungsgrad(value.toDouble(), vg);
-            setData(idx.row(), ColSWSchnellgaerprobe, sre);
-            setData(idx.row(), ColSWJungbier, sre);
+            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            {
+                double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
+                double sre = BierCalc::sreAusVergaerungsgrad(value.toDouble(), vg);
+                setData(idx.row(), ColSWSchnellgaerprobe, sre);
+                setData(idx.row(), ColSWJungbier, sre);
+            }
             return true;
         }
         return false;
@@ -628,7 +660,7 @@ void ModelSud::update(int row)
 
         // erg_Sudhausausbeute
         sw = data(row, ColSWKochende).toDouble() - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
-        menge = data(row, ColWuerzemengeKochende).toDouble();
+        menge = data(row, ColWuerzemengeVorHopfenseihen).toDouble();
         setData(row, Colerg_Sudhausausbeute, BierCalc::sudhausausbeute(sw, menge, schuet, true));
 
         // erg_EffektiveAusbeute

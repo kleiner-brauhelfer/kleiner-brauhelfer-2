@@ -379,9 +379,6 @@
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <property name="minimum">
-        <number>90</number>
-       </property>
        <property name="maximum">
         <number>999</number>
        </property>
@@ -416,9 +413,6 @@
        </property>
        <property name="decimals">
         <number>1</number>
-       </property>
-       <property name="maximum">
-        <double>9999.000000000000000</double>
        </property>
       </widget>
      </item>

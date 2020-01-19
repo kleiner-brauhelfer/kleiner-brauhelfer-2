@@ -302,9 +302,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Einheit", tr("kg"));
                 break;
             case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 1));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
             case EWZ_Einheit_mg:
@@ -355,9 +355,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Einheit", tr("kg"));
                 break;
             case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 1));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
             case EWZ_Einheit_mg:
@@ -408,9 +408,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Einheit", tr("kg"));
                 break;
             case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 1));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
             case EWZ_Einheit_mg:
@@ -461,9 +461,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Einheit", tr("kg"));
                 break;
             case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 1));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
             case EWZ_Einheit_mg:
@@ -514,9 +514,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 map.insert("Einheit", tr("kg"));
                 break;
             case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 1));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
             case EWZ_Einheit_mg:

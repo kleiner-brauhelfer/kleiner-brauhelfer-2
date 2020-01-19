@@ -30,11 +30,14 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ## Änderungen & Erweiterungen
 
 ### Version 2.1.0 (in Entwicklung)
+- Neu: Datenbankversion **2003**
 - Neu: Dialog für Zutatauswahl
 - Neu: Zutatenliste im Spickzettel
 - Neu: Sudspezifische Sudhausausbeute und Verdampfungsrate
 - Neu: Eingabemöglichkeit des Endvergärungsgrads für die Abschätzung des Alkoholgehalts
 - Neu: Gärverlaufeinträge lassen sich über das Clipboard importieren (Copy&Paste)
+- Neu: Eingabemöglichkeit für die Stammwürze bei Kochbeginn (nur fürs Protokoll)
+- Neu: Eingabemöglichkeit für die Würzemenge vor/nach Hopfenseihen, statt nur bei Kochende
 - Neu: Anhänge lassen sich über einen Knopf öffnen
 - Fix: Update der Ressourcen verbessert (erst bei nächstem Update wirksam)
 - Fix: Farben für HTML Editiermodus beim dunklen Design
@@ -42,6 +45,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Fix: Gebrauter Sud teilen teilt auch Gesamtschüttung und Wassermenge
 
 ### Version 2.0.0 (22.12.2019)
+- Neu: Datenbankversion **2001**
 - Neu: Datenbankdatei wird nur bei erfolgreichem Update verändert
 - Neu: Ressourcen wurden in Unterverzeichnisse verschoben
 - Neu: Gärverlauf zeigt auch scheinbarer Endvergärungsgrad
@@ -101,6 +105,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Reiter Navigation mit F1 - F12
 
 ### Version 2.0.0beta1 (28.05.2019)
+- Neu: Datenbankversion **2000**
 - Neu: kompletter Neuaufbau des Programms
 - Neu: mehrere Hefegaben pro Sud möglich
 - Neu: mehrere Wasserprofile möglich

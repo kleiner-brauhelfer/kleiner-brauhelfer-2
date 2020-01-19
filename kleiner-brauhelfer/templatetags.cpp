@@ -267,11 +267,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                         map.insert("Einheit", QObject::tr("kg"));
                         break;
                     case EWZ_Einheit_g:
-                        map.insert("Menge", QString::number(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toInt()));
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
                         map.insert("Einheit", QObject::tr("g"));
                         break;
                     case EWZ_Einheit_mg:
-                        map.insert("Menge", QString::number((int)(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000)));
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 0));
                         map.insert("Einheit", QObject::tr("mg"));
                         break;
                     case EWZ_Einheit_Stk:

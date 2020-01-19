@@ -350,6 +350,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
         return -1;
 
     double Menge = modelSud()->data(row1, ModelSud::ColMenge).toDouble();
+    double WuerzemengeKochbeginn = modelSud()->data(row1, ModelSud::ColWuerzemengeKochbeginn).toDouble();
     double WuerzemengeVorHopfenseihen = modelSud()->data(row1, ModelSud::ColWuerzemengeVorHopfenseihen).toDouble();
     double WuerzemengeKochende = modelSud()->data(row1, ModelSud::ColWuerzemengeKochende).toDouble();
     double Speisemenge = modelSud()->data(row1, ModelSud::ColSpeisemenge).toDouble();
@@ -362,6 +363,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
 
     double factor = 1.0 - prozent;
     modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
+    modelSud()->setData(row2, ModelSud::ColWuerzemengeKochbeginn, WuerzemengeKochbeginn * factor);
     modelSud()->setData(row2, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
     modelSud()->setData(row2, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
     modelSud()->setData(row2, ModelSud::ColSpeisemenge, Speisemenge * factor);
@@ -384,6 +386,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     factor = prozent;
     modelSud()->setData(row1, ModelSud::ColSudname, name1);
     modelSud()->setData(row1, ModelSud::ColMenge, Menge * factor);
+    modelSud()->setData(row1, ModelSud::ColWuerzemengeKochbeginn, WuerzemengeKochbeginn * factor);
     modelSud()->setData(row1, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
     modelSud()->setData(row1, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
     modelSud()->setData(row1, ModelSud::ColSpeisemenge, Speisemenge * factor);

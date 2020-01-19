@@ -163,8 +163,8 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->lblEinheit->setText(tr("g"));
             ui->lblEinheit2->setText(tr("g"));
             ui->lblEinheitProLiter->setText(tr("g/l"));
-            ui->tbMengeTotal->setDecimals(0);
-            ui->tbVorhanden->setDecimals(0);
+            ui->tbMengeTotal->setDecimals(1);
+            ui->tbVorhanden->setDecimals(1);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
         case EWZ_Einheit_mg:

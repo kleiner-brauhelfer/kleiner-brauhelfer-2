@@ -67,6 +67,8 @@ public:
         ColSudhausausbeute,
         ColVerdampfungsrate,
         ColVergaerungsgrad,
+        ColWuerzemengeKochbeginn,
+        ColSWKochbeginn,
         // virtual
         ColDeleted,
         ColSWIst,

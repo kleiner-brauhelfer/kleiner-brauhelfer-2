@@ -29,8 +29,10 @@ private slots:
     void on_tbBraudatum_dateChanged(const QDate &date);
     void on_tbBraudatumZeit_timeChanged(const QTime &time);
     void on_btnBraudatumHeute_clicked();
+    void on_btnSWKochbeginn_clicked();
     void on_btnWuerzemengeKochbeginn_clicked();
     void on_tbTempKochbeginn_valueChanged(double);
+    void on_btnWuerzemengeVorHopfenseihen_clicked();
     void on_btnWuerzemengeKochende_clicked();
     void on_tbTempKochende_valueChanged(double);
     void on_btnSWKochende_clicked();
@@ -43,7 +45,7 @@ private slots:
 
     void on_cbDurchschnittIgnorieren_clicked(bool checked);
     void on_btnSudGebraut_clicked();
-    void on_btnSudTeilen_clicked(); 
+    void on_btnSudTeilen_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

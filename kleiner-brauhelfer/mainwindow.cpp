@@ -57,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
     ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
-    BierCalc::faktorBrixToPlato = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
+    BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());

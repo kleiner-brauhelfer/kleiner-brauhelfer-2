@@ -47,11 +47,11 @@ public:
     static const double dichteAlkohol;
 
     /**
-     * @brief Umrechnungsfaktor von Brix [°brix] nach Plato [°P], da Bierwürze
+     * @brief Umrechnungsfaktor von Plato [°P] nach Brix [°brix], da Bierwürze
      * keine reine Saccharoselösung ist
      * @note Zwischen 1.02 und 1.06 je nach Literaturangabe, meist 1.03
      */
-    static double faktorBrixToPlato;
+    static double faktorPlatoToBrix;
 
     /**
      * @brief Gaerungskorrektur fuer Umrechnung nach Kleier

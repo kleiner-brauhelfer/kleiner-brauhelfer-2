@@ -14,9 +14,9 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
 
     gSettings->beginGroup("General");
     ui->comboBox_FormelBrixPlato->setCurrentIndex(gSettings->value("RefraktometerFormel", 0).toInt());
-    BierCalc::faktorBrixToPlato = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
+    BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     ui->cbEinheit->setCurrentIndex(gSettings->value("RefraktometerEinheit", 0).toInt());
-    ui->tbKorrekturFaktor->setValue(BierCalc::faktorBrixToPlato);
+    ui->tbKorrekturFaktor->setValue(BierCalc::faktorPlatoToBrix);
     gSettings->endGroup();
 
     if (sw == 0.0)
@@ -194,7 +194,7 @@ void DlgRestextrakt::on_tbKorrekturFaktor_valueChanged(double value)
 {
     if (ui->tbKorrekturFaktor->hasFocus())
     {
-        BierCalc::faktorBrixToPlato = value;
+        BierCalc::faktorPlatoToBrix = value;
         calculateFromRefraktometer();
     }
 }
@@ -210,6 +210,6 @@ void DlgRestextrakt::on_comboBox_FormelBrixPlato_currentIndexChanged(const QStri
 void DlgRestextrakt::on_btnKorrekturFaktorDefault_clicked()
 {
     ui->tbKorrekturFaktor->setValue(1.03);
-    BierCalc::faktorBrixToPlato = ui->tbKorrekturFaktor->value();
+    BierCalc::faktorPlatoToBrix = ui->tbKorrekturFaktor->value();
     calculateFromRefraktometer();
 }

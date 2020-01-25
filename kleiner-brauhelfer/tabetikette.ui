@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>826</width>
+    <width>1256</width>
     <height>632</height>
    </rect>
   </property>
@@ -666,14 +666,14 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>SvgView</class>
-   <extends>QGraphicsView</extends>
-   <header>widgets/svgview.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SvgView</class>
+   <extends>QGraphicsView</extends>
+   <header>widgets/svgview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -685,10 +685,19 @@
   <tabstop>btnSaveTemplate</tabstop>
   <tabstop>tbTemplate</tabstop>
   <tabstop>tbTags</tabstop>
+  <tabstop>tbAnzahl</tabstop>
+  <tabstop>tbLabelBreite</tabstop>
+  <tabstop>tbLabelHoehe</tabstop>
+  <tabstop>cbSeitenverhaeltnis</tabstop>
+  <tabstop>btnGroesseAusSvg</tabstop>
+  <tabstop>tbAbstandHor</tabstop>
+  <tabstop>tbAbstandVert</tabstop>
+  <tabstop>cbDividingLine</tabstop>
   <tabstop>tbRandOben</tabstop>
   <tabstop>tbRandLinks</tabstop>
   <tabstop>tbRandRechts</tabstop>
   <tabstop>tbRandUnten</tabstop>
+  <tabstop>cbUseImagePainter</tabstop>
   <tabstop>btnToPdf</tabstop>
  </tabstops>
  <resources>

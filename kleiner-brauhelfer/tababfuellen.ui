@@ -1816,6 +1816,7 @@
  <tabstops>
   <tabstop>scrollArea_3</tabstop>
   <tabstop>tbAbfuelldatum</tabstop>
+  <tabstop>tbAbfuelldatumZeit</tabstop>
   <tabstop>btnAbfuelldatumHeute</tabstop>
   <tabstop>tbDauerHauptgaerung</tabstop>
   <tabstop>cbSchnellgaerprobeAktiv</tabstop>
@@ -1826,8 +1827,10 @@
   <tabstop>btnSWJungbier</tabstop>
   <tabstop>tbSw</tabstop>
   <tabstop>tbSEVG</tabstop>
+  <tabstop>tbSEVGRezept</tabstop>
   <tabstop>tbTEVG</tabstop>
   <tabstop>tbAlkohol</tabstop>
+  <tabstop>tbAlkoholRezept</tabstop>
   <tabstop>tbJungbiermengeAbfuellen</tabstop>
   <tabstop>tbJungbierVerlust</tabstop>
   <tabstop>cbSpunden</tabstop>

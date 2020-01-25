@@ -6,7 +6,7 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.0.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.0.0)
+- [Version 2.1.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.1.0)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -29,7 +29,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.1.0 (in Entwicklung)
+### Version 2.1.0 (25.01.2019)
 - Neu: Datenbankversion **2003**
 - Neu: Dialog für Zutatauswahl
 - Neu: Zutatenliste im Spickzettel
@@ -39,6 +39,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Eingabemöglichkeit für die Stammwürze bei Kochbeginn (nur fürs Protokoll)
 - Neu: Eingabemöglichkeit für die Würzemenge vor/nach Hopfenseihen, statt nur bei Kochende
 - Neu: Anhänge lassen sich über einen Knopf öffnen
+- Neu: Sollstammwürze neu auch in °Brix
+- Neu: Update Spickzettel
 - Fix: Update der Ressourcen verbessert (erst bei nächstem Update wirksam)
 - Fix: Farben für HTML Editiermodus beim dunklen Design
 - Fix: Verdünnungsmenge bezieht sich neu auf die Würzemenge beim Anstellen

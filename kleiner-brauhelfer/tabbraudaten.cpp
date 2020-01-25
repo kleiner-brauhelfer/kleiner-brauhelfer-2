@@ -198,14 +198,23 @@ void TabBraudaten::updateValues()
     else
         ui->lblWarnung->setVisible(false);
 
-    value = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-    ui->tbMengeSollKochbeginn100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), ui->tbMengeSollKochbeginn20->value()));
-    ui->tbMengeSollcmVomBoden->setValue(ui->tbMengeSollKochbeginn100->value() / value);
-    ui->tbMengeSollcmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollcmVomBoden->value());
+    double d = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+    value = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), bh->sud()->getMengeSollKochbeginn());
+    ui->tbMengeSollKochbeginn100->setValue(value);
+    ui->tbMengeSollcmVomBoden->setValue(value / d);
+    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    ui->tbMengeSollcmVonOben->setValue(h - value / d);
     ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSW_WZ_Kochen() > 0.0);
-    ui->tbMengeSollKochende100->setValue(BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), ui->tbMengeSollKochende20->value()));
-    ui->tbMengeSollEndecmVomBoden->setValue(ui->tbMengeSollKochende100->value() / value);
-    ui->tbMengeSollEndecmVonOben->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble() - ui->tbMengeSollEndecmVomBoden->value());
+    value = BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), bh->sud()->getMengeSollKochende());
+    ui->tbMengeSollKochende100->setValue(value);
+    ui->tbMengeSollEndecmVomBoden->setValue(value / d);
+    h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    ui->tbMengeSollEndecmVonOben->setValue(h - value / d);
+
+    ui->tbSWSollKochbeginnBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginn()));
+    ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
+    ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
+    ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
 
     mTimerWebViewUpdate.start(200);
 }

@@ -3,6 +3,7 @@
 #include <QLocale>
 #include <QCoreApplication>
 #include <QDir>
+#include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/wdganhang.h"
@@ -80,14 +81,24 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["EinmaischenTemp"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColEinmaischenTemp).toInt());
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
             ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
-            ctxRezept["MengeKochbeginn100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, fval), 'f', 1);
+            fval = BierCalc::volumenWasser(20.0, 100.0, fval);
+            ctxRezept["MengeKochbeginn100"] = locale.toString(fval, 'f', 1);
+            double d = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+            double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+            ctxRezept["MengeKochbeginn100Unten"] = locale.toString(fval / d, 'f', 1);
+            ctxRezept["MengeKochbeginn100Oben"] = locale.toString(h - fval / d, 'f', 1);
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochende).toDouble();
             ctxRezept["MengeKochende"] = locale.toString(fval, 'f', 1);
-            ctxRezept["MengeKochende100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, fval), 'f', 1);
+            fval = BierCalc::volumenWasser(20.0, 100.0, fval);
+            ctxRezept["MengeKochende100"] = locale.toString(fval, 'f', 1);
+            h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+            ctxRezept["MengeKochende100Unten"] = locale.toString(fval / d, 'f', 1);
+            ctxRezept["MengeKochende100Oben"] = locale.toString(h - fval / d, 'f', 1);
             ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble(), 'f', 1);
             ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble(), 'f', 1);
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
             ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
+            ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
             ctx["Rezept"] = ctxRezept;
         }
 

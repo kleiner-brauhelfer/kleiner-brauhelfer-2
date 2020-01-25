@@ -3137,12 +3137,14 @@
   <tabstop>cbAnlage</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbSW</tabstop>
+  <tabstop>btnSudhausausbeute</tabstop>
   <tabstop>tbSudhausausbeute</tabstop>
   <tabstop>tbFaktorHauptgussEmpfehlung</tabstop>
   <tabstop>tbFaktorHauptguss</tabstop>
   <tabstop>tbHGF</tabstop>
   <tabstop>tbBittere</tabstop>
   <tabstop>tbKochzeit</tabstop>
+  <tabstop>btnVerdampfungsziffer</tabstop>
   <tabstop>tbVerdampfungsziffer</tabstop>
   <tabstop>tbNachisomerisierungszeit</tabstop>
   <tabstop>tbVergaerungsgrad</tabstop>

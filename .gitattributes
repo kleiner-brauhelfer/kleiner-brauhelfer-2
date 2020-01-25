@@ -1,0 +1,4 @@
+*.sh text eol=lf
+*.desktop text eol=lf
+control text eol=lf
+AppRun text eol=lf

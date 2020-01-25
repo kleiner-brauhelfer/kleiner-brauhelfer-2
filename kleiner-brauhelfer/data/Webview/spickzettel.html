@@ -2,6 +2,13 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="{{Style}}">
+  <script type="text/javascript">
+    <!--
+    function writeBrix(plato) {
+      document.write((parseFloat(String(plato).replace(",","."))*{{Rezept.plato2brix}}).toFixed(1))
+    }
+    -->
+  </script>
 </head>
 <body>
 
@@ -33,7 +40,7 @@
             <tr>
               <td>Menge</td>
               <td class="value" align="center">{{Rezept.Menge}}</td>
-              <td>l</td>
+              <td>Liter</td>
             </tr>
             {{#Rezept.HighGravityFaktor}}
             <tr>
@@ -81,7 +88,7 @@
             <tr>
               <td>CO&#x2082;-Gehalt</td>
               <td class="value" align="center">{{Rezept.CO2}}</td>
-              <td>g/l</td>
+              <td>g/Liter</td>
             </tr>
           </table>
         </td>
@@ -105,7 +112,7 @@
         <td valign="top">
           <table>
             <tr>
-              <th align="left">Malz</th>
+              <th align="center" colspan="3"><img src="qrc:/images/getreide.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -122,7 +129,7 @@
           <table>
           {{#Honig}}
             <tr>
-              <th align="left">Honig</th>
+              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_0.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -134,7 +141,7 @@
           {{/Honig}}
           {{#Zucker}}
             <tr>
-              <th align="left">Zucker</th>
+              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_1.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -150,7 +157,7 @@
           <table>
           {{#Hopfen}}
             <tr>
-              <th align="left">Hopfen</th>
+              <th align="center" colspan="2"><img src="qrc:/images/hopfen.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -162,7 +169,7 @@
           {{/Hopfen}}
           {{#Kalthopfen}}
             <tr>
-              <th align="left">Stopfhopfen</th>
+              <th align="left" height="30">Stopfhopfen</th>
             </tr>
             {{#Liste}}
             <tr>
@@ -178,7 +185,7 @@
           <table>
           {{#Hefe}}
             <tr>
-              <th align="left">Hefe</th>
+              <th align="center" colspan="2"><img src="qrc:/images/hefe.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -190,7 +197,7 @@
           {{/Hefe}}
           {{#Sonstiges}}
             <tr>
-              <th align="left">Sonstiges</th>
+              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_4.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -206,7 +213,7 @@
           <table>
           {{#Gewuerz}}
             <tr>
-              <th align="left">Gew&uuml;rze</th>
+              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_2.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -218,7 +225,7 @@
           {{/Gewuerz}}
           {{#Frucht}}
             <tr>
-              <th align="left">Fr&uuml;chte</th>
+              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_3.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -249,7 +256,7 @@
   <div class="rm" align="center">
     <h2>Maischen</h2>
     <table>
-      <col width="200">
+      <col width="250">
       <col width="700">
       <tr>
         <td class="underline" valign="top"><strong>Hauptguss vorbereiten</strong></td>
@@ -385,7 +392,7 @@
   <div class="rm" align="center">
     <h2>L&auml;utern</h2>
     <table>
-      <col width="200">
+      <col width="250">
       <col width="700">
       <tr>
         <td class="underline" valign="top"><strong>Nachguss vorbereiten</strong></td>
@@ -408,7 +415,7 @@
   <div class="rm" align="center">
     <h2>W&uuml;rzekochen</h2>
     <table>
-      <col width="200">
+      <col width="250">
       <col width="700">
       {{#Zutaten.ZutatenVorderwuerze}}
       <tr>
@@ -436,14 +443,17 @@
         <td class="underline">W&uuml;rze auf <span class="value">100</span>&deg;C erhitzen</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Zielstammw&uuml;rze Kochbeginn</strong></td>
+        <td class="underline" valign="top"><strong>Stammw&uuml;rze Kochbeginn</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             <tr>
-              <td><span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P</td>
-              <td>{{#Zutaten.ZutatenKochen}}Mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P{{/Zutaten.ZutatenKochen}}</td>
+              <td>____ &deg;P/&deg;Brix</td>
+              <td>
+                 Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochbeginn}})</script></span>&deg;Brix
+                 {{#Zutaten.ZutatenKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochbeginnMitWz}})</script></span>&deg;Brix{{/Zutaten.ZutatenKochen}}
+              </td>
             </tr>
           </table>
         </td>
@@ -456,7 +466,10 @@
             <col width="*">
             <tr>
               <td>____ Liter bei ____ &deg;C</td>
-              <td>Zielwert: <span class="value">{{Rezept.MengeKochbeginn}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> Liter bei 100&deg;C</td>
+              <td>
+                Zielwert: <span class="value">{{Rezept.MengeKochbeginn}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> Liter bei 100&deg;C,
+                &uArr; <span class="value">{{Rezept.MengeKochbeginn100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochbeginn100Oben}}</span> cm
+              </td>
             </tr>
           </table>
         </td>
@@ -548,21 +561,24 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P</td>
+              <td>____ &deg;P/&deg;Brix</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochende}})</script></span>&deg;Brix</td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>W&uuml;rzemenge Kochende</strong></td>
+        <td class="underline" valign="top"><strong>W&uuml;rzemenge vor Hopfenseihen</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             <tr>
               <td>____ Liter bei ____ &deg;C</td>
-              <td>Zielwert: <span class="value">{{Rezept.MengeKochende}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> Liter bei 100&deg;C</td>
+              <td>
+                Zielwert: <span class="value">{{Rezept.MengeKochende}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> Liter bei 100&deg;C,
+                &uArr; <span class="value">{{Rezept.MengeKochende100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochende100Oben}}</span> cm
+              </td>
             </tr>
           </table>
         </td>
@@ -575,8 +591,8 @@
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
-        <td valign="top"><strong>Nachisomerisierung</strong></td>
-        <td>Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
+        <td class="underline"  valign="top"><strong>Nachisomerisierung</strong></td>
+        <td class="underline" >Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
             <col width="200">
@@ -600,13 +616,17 @@
         </td>
       </tr>
       {{/Rezept.Nachisomerisierung}}
+      <tr>
+        <td valign="top"><strong>W&uuml;rzemenge nach Hopfenseihen</strong></td>
+        <td>____ Liter bei ____ &deg;C</td>
+      </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
     <h2>Abseihen & Anstellen</h2>
     <table>
-      <col width="200">
+      <col width="250">
       <col width="700">
       <tr>
         <td class="underline" valign="top"><strong>Hopfenseihen</strong></td>
@@ -628,8 +648,8 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P</td>
+              <td>____ &deg;P/&deg;Brix</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWAnstellen}})</script></span>&deg;Brix</td>
             </tr>
           </table>
           Wenn gew&uuml;nscht die W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
@@ -649,7 +669,7 @@
   <div class="rm" align="center">
     <h2>G&auml;rung</h2>
     <table>
-      <col width="200">
+      <col width="250">
       <col width="700">
       {{#Zutaten.Hefe}}
       <tr>

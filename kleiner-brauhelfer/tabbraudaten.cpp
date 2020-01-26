@@ -138,6 +138,8 @@ void TabBraudaten::checkEnabled()
     ui->tbBraudatum->setReadOnly(gebraut);
     ui->tbBraudatumZeit->setReadOnly(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
+    ui->tbSWKochbeginn->setReadOnly(gebraut);
+    ui->btnSWKochbeginn->setVisible(!gebraut);
     ui->tbWuerzemengeKochbeginn->setReadOnly(gebraut);
     ui->btnWuerzemengeKochbeginn->setVisible(!gebraut);
     ui->tbWuerzemengeVorHopfenseihen->setReadOnly(gebraut);

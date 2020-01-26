@@ -100,6 +100,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
         ui->tbMenge->setReadOnly(false);
+        ui->tbMengeTotal->setReadOnly(false);
         ui->tbDauerMin->setReadOnly(false);
         ui->tbZugabeNach->setReadOnly(false);
         ui->tbDatumVon->setReadOnly(false);
@@ -118,6 +119,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->cbEntnahme->setEnabled(false);
         ui->wdgKochdauer->setVisible(false);
         ui->tbMenge->setReadOnly(true);
+        ui->tbMengeTotal->setReadOnly(true);
         ui->tbDauerMin->setReadOnly(true);
         ui->tbZugabeNach->setReadOnly(true);
         ui->tbDatumVon->setReadOnly(true);

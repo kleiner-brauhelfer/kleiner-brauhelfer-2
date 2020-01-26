@@ -166,7 +166,7 @@
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QTimeEdit" name="tbAbfuelldatumZeit">
+            <widget class="TimeEdit" name="tbAbfuelldatumZeit">
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
@@ -1797,10 +1797,9 @@
    <header>widgets/doublespinboxsud.h</header>
   </customwidget>
   <customwidget>
-   <class>WdgWebViewEditable</class>
-   <extends>QWidget</extends>
-   <header>widgets/wdgwebvieweditable.h</header>
-   <container>1</container>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>
@@ -1808,9 +1807,15 @@
    <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
+   <class>WdgWebViewEditable</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgwebvieweditable.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TimeEdit</class>
+   <extends>QTimeEdit</extends>
+   <header>widgets/timeedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

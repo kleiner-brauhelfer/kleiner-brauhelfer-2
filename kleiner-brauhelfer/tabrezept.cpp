@@ -225,11 +225,14 @@ void TabRezept::checkEnabled()
     ui->cbAnlage->setEnabled(!gebraut);
     ui->tbMenge->setReadOnly(gebraut);
     ui->tbSW->setReadOnly(gebraut);
+    ui->tbSudhausausbeute->setReadOnly(gebraut);
     ui->tbFaktorHauptguss->setReadOnly(gebraut);
     ui->tbHGF->setReadOnly(gebraut);
     ui->tbBittere->setReadOnly(gebraut);
     ui->tbKochzeit->setReadOnly(gebraut);
+    ui->tbVerdampfungsziffer->setReadOnly(gebraut);
     ui->tbNachisomerisierungszeit->setReadOnly(gebraut);
+    ui->tbVergaerungsgrad->setReadOnly(gebraut);
     ui->tbCO2->setReadOnly(gebraut);
     ui->cbWasserProfil->setEnabled(!gebraut);
     ui->tbRestalkalitaet->setReadOnly(gebraut);

@@ -30,6 +30,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ## Änderungen & Erweiterungen
 
 ### Version 2.1.1 (in Entwicklung)
+- Fix: Diverse Felder wurden nicht auf schreibgeschützt gesetzt
 
 ### Version 2.1.0 (25.01.2019)
 - Neu: Datenbankversion **2003**

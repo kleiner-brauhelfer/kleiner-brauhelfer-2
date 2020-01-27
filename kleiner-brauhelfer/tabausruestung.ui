@@ -165,12 +165,6 @@
         </item>
         <item>
          <widget class="TableView" name="tableViewSude">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>150</height>
-           </size>
-          </property>
           <property name="contextMenuPolicy">
            <enum>Qt::CustomContextMenu</enum>
           </property>

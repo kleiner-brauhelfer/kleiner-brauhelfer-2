@@ -109,7 +109,7 @@ void TabBewertung::updateValues()
 {
     ui->btnNeueBewertung->setVisible(bh->sud()->getStatus() == Sud_Status_Abgefuellt);
 
-    ui->wdgBewertung->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
+    ui->scrollAreaWidgetContents->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
 
     ui->wdgRating->setSterne(data(ModelBewertungen::ColSterne).toInt());
     ui->tbDatum->setMinimumDate(bh->sud()->getAbfuelldatum().date());

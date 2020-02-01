@@ -55,7 +55,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(ModelSud::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
     model->setHeaderData(ModelSud::ColtEVG, Qt::Horizontal, tr("tEVG [%]"));
     model->setHeaderData(ModelSud::Colerg_EffektiveAusbeute, Qt::Horizontal, tr("Eff. SHA [%]"));
-    model->setHeaderData(ModelSud::ColVerdampfungsrateIst, Qt::Horizontal, tr("Verdampfungsrate [%]"));
+    model->setHeaderData(ModelSud::ColVerdampfungszifferIst, Qt::Horizontal, tr("Verdampfungsziffer [%]"));
     model->setHeaderData(ModelSud::ColAusbeuteIgnorieren, Qt::Horizontal, tr("Für Durchschnitt Ignorieren"));
 
     QTableView *table = ui->tableSudauswahl;

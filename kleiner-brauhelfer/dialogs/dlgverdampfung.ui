@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Berechnung Verdampfungsrate</string>
+   <string>Berechnung Verdampfungsziffer</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
@@ -266,7 +266,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Volumen bei 100° Celsius bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. Es ist größer als bei niedrigeren Temperaturen. Der Wert orientiert sich u.a. an der eingestellten Verdampfungsrate und wird für die Sollmenge beim Anstellen der Hefe und andere Berechnungen im Kleinen Brauhelfer verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Volumen bei 100° Celsius bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. Es ist größer als bei niedrigeren Temperaturen. Der Wert orientiert sich u.a. an der eingestellten Verdampfungsziffer und wird für die Sollmenge beim Anstellen der Hefe und andere Berechnungen im Kleinen Brauhelfer verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -387,7 +387,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Verdampfungsrate</string>
+        <string>Verdampfungsziffer</string>
        </property>
       </widget>
      </item>
@@ -400,7 +400,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Der Wert ist abhängig von vielen Faktoren wie Meereshöhe, Sud und Anlage. Es muss individuell eingestellt werden. Mit fortschreitender Sudanzahl wird er immer genauer. Bei einer neuen Anlage empfiehlt sich er Wert 10%. Der Wert wird dabei auf eine Stunde berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage angegeben. Der Wert ist abhängig von vielen Faktoren wie Meereshöhe, Sud und Anlage. Es muss individuell eingestellt werden. Mit fortschreitender Sudanzahl wird er immer genauer. Bei einer neuen Anlage empfiehlt sich er Wert 10%. Der Wert wird dabei auf eine Stunde berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -413,6 +413,9 @@
        </property>
        <property name="decimals">
         <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>999.000000000000000</double>
        </property>
       </widget>
      </item>

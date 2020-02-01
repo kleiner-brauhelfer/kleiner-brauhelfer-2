@@ -106,7 +106,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
-    col = ModelSud::ColVerdampfungsrateIst;
+    col = ModelSud::ColVerdampfungszifferIst;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 150);
@@ -382,7 +382,7 @@ void TabAusruestung::updateDurchschnitt()
                         ausbeute += val;
                         nAusbeute++;
                     }
-                    val = model.index(i, ModelSud::ColVerdampfungsrateIst).data().toDouble();
+                    val = model.index(i, ModelSud::ColVerdampfungszifferIst).data().toDouble();
                     if (val > 0)
                     {
                         verdampfung += val;

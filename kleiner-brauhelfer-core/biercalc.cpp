@@ -304,11 +304,18 @@ double BierCalc::volumenWasser(double T1, double T2, double V1)
     return (rho1 * V1) / rho2;
 }
 
-double BierCalc::verdampfungsrate(double V1, double V2, double t)
+double BierCalc::verdampfungsziffer(double V1, double V2, double t)
 {
     if (t == 0.0 || V2 == 0.0 || V1 < V2)
         return 0.0;
     return ((V1 - V2) * 100 * 60) / (V2 * t);
+}
+
+double BierCalc::verdampfung(double V1, double V2)
+{
+    if (V1 == 0.0 || V1 < V2)
+        return 0.0;
+    return ((V1 - V2) * 100) / V1;
 }
 
 double BierCalc::sudhausausbeute(double sw, double V, double schuettung, bool kaltWuerze)

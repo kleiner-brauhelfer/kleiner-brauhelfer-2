@@ -44,10 +44,10 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SWSollKochbeginnMitWz");
     mVirtualField.append("SWSollKochende");
     mVirtualField.append("SWSollAnstellen");
-    mVirtualField.append("VerdampfungsrateIst");
+    mVirtualField.append("VerdampfungszifferIst");
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
-    mVirtualField.append("AnlageVerdampfungsrate");
+    mVirtualField.append("AnlageVerdampfungsziffer");
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("RestalkalitaetFaktor");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
@@ -295,8 +295,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
         double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return mengeSollKochEnde * (1 + (verdampfungsrate * kochdauer / (60 * 100)));
+        double verdampfungsziffer = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return mengeSollKochEnde * (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
     }
     case ColMengeSollKochende:
     {
@@ -329,15 +329,15 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sw = data(idx.row(), ColSW).toDouble() - swWzKochenRecipe[idx.row()] - swWzGaerungRecipe[idx.row()];
         double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
         double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw * hgf / (1 + (verdampfungsrate * kochdauer / (60 * 100)));
+        double verdampfungsziffer = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return sw * hgf / (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
     }
     case ColSWSollKochbeginnMitWz:
     {
         double sw = data(idx.row(), ColSWSollKochende).toDouble();
         double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw / (1 + (verdampfungsrate * kochdauer / (60 * 100)));
+        double verdampfungsziffer = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return sw / (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
     }
     case ColSWSollKochende:
     {
@@ -350,12 +350,12 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sw = data(idx.row(), ColSW).toDouble();
         return sw - swWzGaerungRecipe[idx.row()];
     }
-    case ColVerdampfungsrateIst:
+    case ColVerdampfungszifferIst:
     {
         double V1 = data(idx.row(), ColWuerzemengeKochbeginn).toDouble();
         double V2 = data(idx.row(), ColWuerzemengeVorHopfenseihen).toDouble();
         double t = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        return BierCalc::verdampfungsrate(V1, V2, t);
+        return BierCalc::verdampfungsziffer(V1, V2, t);
     }
     case ColsEVG:
     {
@@ -370,7 +370,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
     }
-    case ColAnlageVerdampfungsrate:
+    case ColAnlageVerdampfungsziffer:
     {
         return dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsziffer);
     }

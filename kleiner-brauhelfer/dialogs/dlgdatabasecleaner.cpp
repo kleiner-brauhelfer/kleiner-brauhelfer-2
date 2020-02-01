@@ -93,42 +93,44 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
 
     for (int row = 0; row < bh->modelSud()->rowCount(); ++row)
         mSudIds.insert(bh->modelSud()->data(row, ModelSud::ColID).toInt(), bh->modelSud()->data(row, ModelSud::ColSudname).toString());
+    for (int row = 0; row < bh->modelAusruestung()->rowCount(); ++row)
+        mAnlagenIds.insert(bh->modelAusruestung()->data(row, ModelAusruestung::ColID).toInt(), bh->modelAusruestung()->data(row, ModelAusruestung::ColName).toString());
 
     mTestFncs = {
-        [this](){return this->test2(bh->modelRasten(), {ModelRasten::ColID, ModelRasten::ColSudID, ModelRasten::ColName, ModelRasten::ColTemp, ModelRasten::ColDauer});},
-        [this](){return this->test2(bh->modelMalzschuettung(), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID, ModelMalzschuettung::ColName, ModelMalzschuettung::ColProzent});},
-        [this](){return this->test2(bh->modelHopfengaben(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID, ModelHopfengaben::ColName, ModelHopfengaben::ColProzent});},
-        [this](){return this->test2(bh->modelHefegaben(), {ModelHefegaben::ColID, ModelHefegaben::ColSudID, ModelHefegaben::ColName});},
-        [this](){return this->test2(bh->modelWeitereZutatenGaben(), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID, ModelWeitereZutatenGaben::ColName});},
-        [this](){return this->test2(bh->modelSchnellgaerverlauf(), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID, ModelSchnellgaerverlauf::ColZeitstempel});},
-        [this](){return this->test2(bh->modelHauptgaerverlauf(), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID, ModelHauptgaerverlauf::ColZeitstempel});},
-        [this](){return this->test2(bh->modelNachgaerverlauf(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID, ModelNachgaerverlauf::ColZeitstempel});},
-        [this](){return this->test2(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID, ModelBewertungen::ColDatum});},
-        [this](){return this->test2(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad});},
-        [this](){return this->test2(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID});},
+        [this](){return this->testInvalidId(bh->modelRasten(), {ModelRasten::ColID, ModelRasten::ColSudID, ModelRasten::ColName, ModelRasten::ColTemp, ModelRasten::ColDauer}, 1);},
+        [this](){return this->testInvalidId(bh->modelMalzschuettung(), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID, ModelMalzschuettung::ColName, ModelMalzschuettung::ColProzent}, 1);},
+        [this](){return this->testInvalidId(bh->modelHopfengaben(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID, ModelHopfengaben::ColName, ModelHopfengaben::ColProzent}, 1);},
+        [this](){return this->testInvalidId(bh->modelHefegaben(), {ModelHefegaben::ColID, ModelHefegaben::ColSudID, ModelHefegaben::ColName}, 1);},
+        [this](){return this->testInvalidId(bh->modelWeitereZutatenGaben(), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID, ModelWeitereZutatenGaben::ColName}, 1);},
+        [this](){return this->testInvalidId(bh->modelSchnellgaerverlauf(), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID, ModelSchnellgaerverlauf::ColZeitstempel}, 1);},
+        [this](){return this->testInvalidId(bh->modelHauptgaerverlauf(), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID, ModelHauptgaerverlauf::ColZeitstempel}, 1);},
+        [this](){return this->testInvalidId(bh->modelNachgaerverlauf(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID, ModelNachgaerverlauf::ColZeitstempel}, 1);},
+        [this](){return this->testInvalidId(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID, ModelBewertungen::ColDatum}, 1);},
+        [this](){return this->testInvalidId(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad}, 1);},
+        [this](){return this->testInvalidId(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID}, 1);},
 
-        [this](){return this->test3(bh->modelGeraete(), {ModelGeraete::ColBezeichnung, ModelGeraete::ColAusruestungAnlagenID});},
+        [this](){return this->testInvalidId(bh->modelGeraete(), {ModelGeraete::ColBezeichnung, ModelGeraete::ColAusruestungAnlagenID}, 2);},
 
-        [this](){return this->test1(bh->modelSud(), {ModelSud::ColID, ModelSud::ColSudname});},
-        [this](){return this->test1(bh->modelMalz(), {ModelMalz::ColID, ModelMalz::ColBeschreibung});},
-        [this](){return this->test1(bh->modelHopfen(), {ModelHopfen::ColID, ModelHopfen::ColBeschreibung});},
-        [this](){return this->test1(bh->modelHefe(), {ModelHefe::ColID, ModelHefe::ColBeschreibung});},
-        [this](){return this->test1(bh->modelWeitereZutaten(), {ModelWeitereZutaten::ColID, ModelWeitereZutaten::ColBeschreibung});},
-        [this](){return this->test1(bh->modelAusruestung(), {ModelAusruestung::ColID, ModelAusruestung::ColName});},
-        [this](){return this->test1(bh->modelGeraete(), {ModelGeraete::ColID, ModelGeraete::ColAusruestungAnlagenID, ModelGeraete::ColBezeichnung});},
-        [this](){return this->test1(bh->modelWasser(), {ModelWasser::ColID, ModelWasser::ColName});},
-        [this](){return this->test1(bh->modelRasten(), {ModelRasten::ColID, ModelRasten::ColSudID, ModelRasten::ColName, ModelRasten::ColTemp, ModelRasten::ColDauer});},
-        [this](){return this->test1(bh->modelMalzschuettung(), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID, ModelMalzschuettung::ColName});},
-        [this](){return this->test1(bh->modelHopfengaben(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID, ModelHopfengaben::ColName});},
-        [this](){return this->test1(bh->modelHefegaben(), {ModelHefegaben::ColID, ModelHefegaben::ColSudID, ModelHefegaben::ColName});},
-        [this](){return this->test1(bh->modelWeitereZutatenGaben(), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID, ModelWeitereZutatenGaben::ColName});},
-        [this](){return this->test1(bh->modelSchnellgaerverlauf(), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID, ModelSchnellgaerverlauf::ColZeitstempel, ModelSchnellgaerverlauf::ColRestextrakt, ModelSchnellgaerverlauf::ColAlc, ModelSchnellgaerverlauf::ColTemp});},
-        [this](){return this->test1(bh->modelHauptgaerverlauf(), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID, ModelHauptgaerverlauf::ColZeitstempel, ModelHauptgaerverlauf::ColRestextrakt, ModelHauptgaerverlauf::ColAlc, ModelHauptgaerverlauf::ColTemp});},
-        [this](){return this->test1(bh->modelNachgaerverlauf(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID, ModelNachgaerverlauf::ColZeitstempel, ModelNachgaerverlauf::ColDruck, ModelNachgaerverlauf::ColTemp, ModelNachgaerverlauf::ColCO2});},
-        [this](){return this->test1(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID});},
-        [this](){return this->test1(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad});},
-        [this](){return this->test1(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID, ModelEtiketten::ColPfad});},
-        [this](){return this->test1(bh->modelTags(), {ModelTags::ColID, ModelTags::ColSudID, ModelTags::ColKey});}
+        [this](){return this->testNullField(bh->modelSud(), {ModelSud::ColID, ModelSud::ColSudname}, 1);},
+        [this](){return this->testNullField(bh->modelMalz(), {ModelMalz::ColID, ModelMalz::ColBeschreibung}, 0);},
+        [this](){return this->testNullField(bh->modelHopfen(), {ModelHopfen::ColID, ModelHopfen::ColBeschreibung}, 0);},
+        [this](){return this->testNullField(bh->modelHefe(), {ModelHefe::ColID, ModelHefe::ColBeschreibung}, 0);},
+        [this](){return this->testNullField(bh->modelWeitereZutaten(), {ModelWeitereZutaten::ColID, ModelWeitereZutaten::ColBeschreibung}, 0);},
+        [this](){return this->testNullField(bh->modelAusruestung(), {ModelAusruestung::ColID, ModelAusruestung::ColName}, 0);},
+        [this](){return this->testNullField(bh->modelGeraete(), {ModelGeraete::ColID, ModelGeraete::ColAusruestungAnlagenID, ModelGeraete::ColBezeichnung}, 2);},
+        [this](){return this->testNullField(bh->modelWasser(), {ModelWasser::ColID, ModelWasser::ColName}, 0);},
+        [this](){return this->testNullField(bh->modelRasten(), {ModelRasten::ColID, ModelRasten::ColSudID, ModelRasten::ColName, ModelRasten::ColTemp, ModelRasten::ColDauer}, 1);},
+        [this](){return this->testNullField(bh->modelMalzschuettung(), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID, ModelMalzschuettung::ColName}, 1);},
+        [this](){return this->testNullField(bh->modelHopfengaben(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID, ModelHopfengaben::ColName}, 1);},
+        [this](){return this->testNullField(bh->modelHefegaben(), {ModelHefegaben::ColID, ModelHefegaben::ColSudID, ModelHefegaben::ColName}, 1);},
+        [this](){return this->testNullField(bh->modelWeitereZutatenGaben(), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID, ModelWeitereZutatenGaben::ColName}, 1);},
+        [this](){return this->testNullField(bh->modelSchnellgaerverlauf(), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID, ModelSchnellgaerverlauf::ColZeitstempel}, 1);},
+        [this](){return this->testNullField(bh->modelHauptgaerverlauf(), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID, ModelHauptgaerverlauf::ColZeitstempel}, 1);},
+        [this](){return this->testNullField(bh->modelNachgaerverlauf(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID, ModelNachgaerverlauf::ColZeitstempel}, 1);},
+        [this](){return this->testNullField(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID}, 1);},
+        [this](){return this->testNullField(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad}, 1);},
+        [this](){return this->testNullField(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID, ModelEtiketten::ColPfad}, 1);},
+        [this](){return this->testNullField(bh->modelTags(), {ModelTags::ColID, ModelTags::ColSudID, ModelTags::ColKey}, 1);}
     };
     mItTestFncs = mTestFncs.begin();
     next();
@@ -144,12 +146,13 @@ void DlgDatabaseCleaner::next()
 {
     if (mItTestFncs == mTestFncs.end())
     {
-        ui->lblTitle->setText("");
+        ui->lblTitle->setText("Keine (weitere) Probleme gefunden.");
         ui->lblModel->setText("");
+        ui->lblModel->setVisible(false);
         ui->tableView->setModel(nullptr);
         ui->tableViewIds->setVisible(false);
         ui->btnDelete->setVisible(false);
-        ui->btnWeiter->setText(tr("Fertig"));
+        ui->btnWeiter->setText(tr("Schließen"));
         return;
     }
 
@@ -159,23 +162,36 @@ void DlgDatabaseCleaner::next()
         next();
 }
 
-void DlgDatabaseCleaner::setTableIds(const QMap<int, QString>& ids)
+void DlgDatabaseCleaner::setTableIds(int type)
 {
-    if (ids.isEmpty())
+    if (type == 0)
     {
         ui->tableViewIds->setModel(nullptr);
         ui->tableViewIds->setVisible(false);
     }
     else
     {
-        QStandardItemModel* table_model = new QStandardItemModel(ids.count(), 2);
-        table_model->setHeaderData(0, Qt::Horizontal, tr("ID"));
-        table_model->setHeaderData(1, Qt::Horizontal, tr("Name"));
+        QStandardItemModel* table_model = nullptr;
+        const QMap<int, QString>* ids = nullptr;
+        if (type == 1)
+        {
+            ids = &mSudIds;
+            table_model = new QStandardItemModel(ids->count(), 2);
+            table_model->setHeaderData(0, Qt::Horizontal, tr("Sud ID"));
+            table_model->setHeaderData(1, Qt::Horizontal, tr("Sudname"));
+        }
+        else
+        {
+            ids = &mAnlagenIds;
+            table_model = new QStandardItemModel(ids->count(), 2);
+            table_model->setHeaderData(0, Qt::Horizontal, tr("Anlage ID"));
+            table_model->setHeaderData(1, Qt::Horizontal, tr("Anlage"));
+        }
         int row = 0;
-        for (int key : ids.keys())
+        for (int key : ids->keys())
         {
             table_model->setItem(row, 0, new QStandardItem(QString::number(key)));
-            table_model->setItem(row, 1, new QStandardItem(ids[key]));
+            table_model->setItem(row, 1, new QStandardItem((*ids)[key]));
             row++;
         }
         ui->tableViewIds->setModel(table_model);
@@ -183,7 +199,7 @@ void DlgDatabaseCleaner::setTableIds(const QMap<int, QString>& ids)
     }
 }
 
-bool DlgDatabaseCleaner::test1(SqlTableModel *model, const QList<int> &fields)
+bool DlgDatabaseCleaner::testNullField(SqlTableModel *model, const QList<int> &fields, int type)
 {
     NullFieldsProxyModel* proxy = new NullFieldsProxyModel(fields, ui->tableView);
     proxy->setSourceModel(model);
@@ -196,51 +212,42 @@ bool DlgDatabaseCleaner::test1(SqlTableModel *model, const QList<int> &fields)
             ui->tableView->setColumnHidden(col, true);
         for (int col : fields)
             ui->tableView->setColumnHidden(col, false);
-        setTableIds();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->selectAll();
+        ui->tableView->setFocus();
+        setTableIds(type);
         return false;
     }
     return true;
 }
 
-bool DlgDatabaseCleaner::test2(SqlTableModel* model, const QList<int> &fields)
+bool DlgDatabaseCleaner::testInvalidId(SqlTableModel* model, const QList<int> &fields, int type)
 {
-    InvalidIdProxyModel* proxy = new InvalidIdProxyModel(mSudIds, model->fieldIndex("SudID"), ui->tableView);
+    InvalidIdProxyModel* proxy = new InvalidIdProxyModel(type == 1 ? mSudIds : mAnlagenIds,
+                                                         model->fieldIndex(type == 1 ? "SudID" : "AusruestungAnlagenID"),
+                                                         ui->tableView);
     proxy->setSourceModel(model);
     if (proxy->rowCount() != 0)
     {
-        ui->lblTitle->setText(tr("Ungültige Sud ID in Tabelle:"));
+        ui->lblTitle->setText(type == 1 ? tr("Ungültige Sud ID in Tabelle:") : tr("Ungültige Anlage ID in Tabelle:"));
         ui->lblModel->setText(model->tableName());
         ui->tableView->setModel(proxy);
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableView->setColumnHidden(col, true);
         for (int col : fields)
             ui->tableView->setColumnHidden(col, false);
-        setTableIds(mSudIds);
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->selectAll();
+        ui->tableView->setFocus();
+        setTableIds(type);
         return false;
     }
     return true;
 }
 
-bool DlgDatabaseCleaner::test3(SqlTableModel* model, const QList<int> &fields)
+void DlgDatabaseCleaner::selectionChanged()
 {
-    QMap<int, QString> ids;
-    for (int row = 0; row < bh->modelAusruestung()->rowCount(); ++row)
-        ids.insert(bh->modelAusruestung()->data(row, ModelAusruestung::ColID).toInt(), bh->modelAusruestung()->data(row, ModelAusruestung::ColName).toString());
-    InvalidIdProxyModel* proxy = new InvalidIdProxyModel(ids, model->fieldIndex("AusruestungAnlagenID"), ui->tableView);
-    proxy->setSourceModel(model);
-    if (proxy->rowCount() != 0)
-    {
-        ui->lblTitle->setText(tr("Ungültige Anlage ID in Tabelle:"));
-        ui->lblModel->setText(model->tableName());
-        ui->tableView->setModel(proxy);
-        for (int col = 0; col < model->columnCount(); ++col)
-            ui->tableView->setColumnHidden(col, true);
-        for (int col : fields)
-            ui->tableView->setColumnHidden(col, false);
-        setTableIds(ids);
-        return false;
-    }
-    return true;
+    ui->btnDelete->setEnabled(ui->tableView->selectionModel()->selectedRows().size() > 0);
 }
 
 void DlgDatabaseCleaner::on_btnWeiter_clicked()
@@ -258,4 +265,5 @@ void DlgDatabaseCleaner::on_btnDelete_clicked()
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
         model->removeRow(index.row());
+    selectionChanged();
 }

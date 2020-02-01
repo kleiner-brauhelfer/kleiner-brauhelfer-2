@@ -110,8 +110,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
         int ret = QMessageBox::Yes;
         if (ui->actionBestaetigungBeenden->isChecked())
         {
-            ret = QMessageBox::question(this, tr("Anwendung schliessen?"),
-                                  tr("Soll die Anwendung geschlossen werden?"),
+            ret = QMessageBox::question(this, tr("Anwendung schließen?"),
+                                  tr("Soll die Anwendung geschloßen werden?"),
                                   QMessageBox::Cancel | QMessageBox::Yes,
                                   QMessageBox::Yes);
         }

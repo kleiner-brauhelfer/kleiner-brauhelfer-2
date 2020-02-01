@@ -18,19 +18,20 @@ public:
     ~DlgDatabaseCleaner();
 
 private slots:
+    void selectionChanged();
     void on_btnDelete_clicked();
     void on_btnWeiter_clicked();
 
 private:
     void next();
-    void setTableIds(const QMap<int, QString>& ids = QMap<int, QString>());
-    bool test1(SqlTableModel* model, const QList<int>& fields);
-    bool test2(SqlTableModel* model, const QList<int>& fields);
-    bool test3(SqlTableModel* model, const QList<int>& fields);
+    void setTableIds(int type);
+    bool testNullField(SqlTableModel* model, const QList<int>& fields, int type);
+    bool testInvalidId(SqlTableModel* model, const QList<int>& fields, int type);
 
 private:
     Ui::DlgDatabaseCleaner *ui;
     QMap<int, QString> mSudIds;
+    QMap<int, QString> mAnlagenIds;
     QList<std::function<bool()> > mTestFncs;
     QList<std::function<bool()> >::const_iterator mItTestFncs;
 };

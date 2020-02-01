@@ -317,15 +317,65 @@ void MainWindow::on_tabMain_currentChanged()
     setFocus();
 }
 
-void MainWindow::on_actionOeffnen_triggered()
+void MainWindow::on_actionNeuen_Sud_anlegen_triggered()
 {
-    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbankdatei auswählen"),
-                                                    gSettings->databasePath(),
-                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
-    if (!databasePath.isEmpty())
+    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+    ui->tabSudAuswahl->sudAnlegen();
+}
+
+void MainWindow::on_actionSud_kopieren_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
     {
-        gSettings->setDatabasePath(databasePath);
-        restart();
+        ui->tabSudAuswahl->sudKopieren();
+    }
+    else
+    {
+        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+        ui->tabSudAuswahl->sudKopieren(true);
+    }
+}
+
+void MainWindow::on_actionSud_teilen_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->sudTeilen();
+    }
+    else
+    {
+        ui->tabSudAuswahl->sudTeilen(true);
+    }
+}
+
+void MainWindow::on_actionSud_l_schen_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->sudLoeschen();
+    }
+    else
+    {
+        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+        ui->tabSudAuswahl->sudLoeschen(true);
+    }
+}
+
+void MainWindow::on_actionRezept_importieren_triggered()
+{
+    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+    ui->tabSudAuswahl->rezeptImportieren();
+}
+
+void MainWindow::on_actionRezept_exportieren_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->rezeptExportieren();
+    }
+    else
+    {
+        ui->tabSudAuswahl->rezeptExportieren(true);
     }
 }
 
@@ -480,6 +530,18 @@ void MainWindow::on_actionSchriftart_triggered(bool checked)
         {
             ui->actionSchriftart->setChecked(true);
         }
+    }
+}
+
+void MainWindow::on_actionOeffnen_triggered()
+{
+    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbankdatei auswählen"),
+                                                    gSettings->databasePath(),
+                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
+    if (!databasePath.isEmpty())
+    {
+        gSettings->setDatabasePath(databasePath);
+        restart();
     }
 }
 

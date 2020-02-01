@@ -19,6 +19,12 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView() Q_DECL_OVERRIDE;
     QAbstractItemModel* model() const;
+    void sudAnlegen();
+    void sudKopieren(bool loadedSud = false);
+    void sudTeilen(bool loadedSud = false);
+    void sudLoeschen(bool loadedSud = false);
+    void rezeptImportieren();
+    void rezeptExportieren(bool loadedSud = false);
 
 signals:
     void clicked(int sudId);

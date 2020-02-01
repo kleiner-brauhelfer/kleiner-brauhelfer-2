@@ -24,7 +24,12 @@ private slots:
     void changeStyle();
     void checkMessageFinished();
     void on_tabMain_currentChanged();
-    void on_actionOeffnen_triggered();
+    void on_actionNeuen_Sud_anlegen_triggered();
+    void on_actionSud_kopieren_triggered();
+    void on_actionSud_teilen_triggered();
+    void on_actionSud_l_schen_triggered();
+    void on_actionRezept_importieren_triggered();
+    void on_actionRezept_exportieren_triggered();
     void on_actionSpeichern_triggered();
     void on_actionVerwerfen_triggered();
     void on_actionBereinigen_triggered();
@@ -40,6 +45,7 @@ private slots:
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);
+    void on_actionOeffnen_triggered();
     void on_actionReiterDatenbank_triggered(bool checked);
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);

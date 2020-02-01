@@ -96,14 +96,20 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>Datei</string>
     </property>
-    <addaction name="actionOeffnen"/>
+    <addaction name="actionNeuen_Sud_anlegen"/>
+    <addaction name="actionSud_kopieren"/>
+    <addaction name="actionSud_teilen"/>
+    <addaction name="actionSud_l_schen"/>
+    <addaction name="separator"/>
+    <addaction name="actionRezept_importieren"/>
+    <addaction name="actionRezept_exportieren"/>
     <addaction name="separator"/>
     <addaction name="actionSpeichern"/>
     <addaction name="actionVerwerfen"/>
@@ -161,6 +167,8 @@
     <property name="title">
      <string>Einstellungen</string>
     </property>
+    <addaction name="actionOeffnen"/>
+    <addaction name="separator"/>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionTooltips"/>
@@ -250,7 +258,7 @@
   </action>
   <action name="actionOeffnen">
    <property name="text">
-    <string>Öffnen</string>
+    <string>Datenbank auswählen</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -328,6 +336,39 @@
    </property>
    <property name="text">
     <string>Tooltips</string>
+   </property>
+  </action>
+  <action name="actionNeuen_Sud_anlegen">
+   <property name="text">
+    <string>Neuen Sud anlegen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionRezept_importieren">
+   <property name="text">
+    <string>Rezept importieren</string>
+   </property>
+  </action>
+  <action name="actionRezept_exportieren">
+   <property name="text">
+    <string>Rezept exportieren</string>
+   </property>
+  </action>
+  <action name="actionSud_kopieren">
+   <property name="text">
+    <string>Sud kopieren</string>
+   </property>
+  </action>
+  <action name="actionSud_l_schen">
+   <property name="text">
+    <string>Sud löschen</string>
+   </property>
+  </action>
+  <action name="actionSud_teilen">
+   <property name="text">
+    <string>Sud teilen</string>
    </property>
   </action>
  </widget>

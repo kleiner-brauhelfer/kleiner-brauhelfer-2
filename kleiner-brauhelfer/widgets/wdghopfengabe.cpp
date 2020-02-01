@@ -30,6 +30,7 @@ WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
     ui->btnAnteilKorrektur->setVisible(false);
 
     ui->tbMenge->setErrorOnLimit(true);
+    ui->tbMengeProLiter->setErrorOnLimit(true);
 
     checkEnabled(true);
     updateValues();
@@ -76,6 +77,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit->setVisible(true);
         ui->tbMenge->setReadOnly(false);
+        ui->tbMengeProLiter->setReadOnly(false);
         ui->tbMengeProzent->setReadOnly(false);
         ui->tbAnteilProzent->setReadOnly(false);
         ui->tbKochdauer->setReadOnly(false);
@@ -90,6 +92,7 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->lblVorhanden->setVisible(false);
         ui->lblEinheit->setVisible(false);
         ui->tbMenge->setReadOnly(true);
+        ui->tbMengeProLiter->setReadOnly(true);
         ui->tbMengeProzent->setReadOnly(true);
         ui->tbAnteilProzent->setReadOnly(true);
         ui->tbKochdauer->setReadOnly(true);
@@ -97,11 +100,6 @@ void WdgHopfenGabe::checkEnabled(bool force)
         ui->btnAnteilKorrektur->setVisible(false);
         ui->btnMengeKorrektur->setVisible(false);
     }
-}
-
-bool WdgHopfenGabe::prozentIbu() const
-{
-    return bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_IBU;
 }
 
 void WdgHopfenGabe::updateValues(bool full)
@@ -117,6 +115,8 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->tbAnteilProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(data(ModelHopfengaben::Colerg_Menge).toDouble());
+    if (!ui->tbMengeProLiter->hasFocus())
+        ui->tbMengeProLiter->setValue(data(ModelHopfengaben::Colerg_Menge).toDouble() / bh->sud()->getMenge());
     if (!ui->tbAnteil->hasFocus())
         ui->tbAnteil->setValue(data(ModelHopfengaben::ColIBUAnteil).toDouble());
     ui->tbAlpha->setValue(data(ModelHopfengaben::ColAlpha).toDouble());
@@ -172,7 +172,7 @@ void WdgHopfenGabe::updateValues(bool full)
 
         ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
 
-        if (prozentIbu())
+        if (bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_IBU)
         {
             ui->btnMengeKorrektur->setVisible(false);
             ui->tbMengeProzent->setVisible(false);
@@ -192,6 +192,7 @@ void WdgHopfenGabe::updateValues(bool full)
         if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1)
         {
             ui->tbMenge->setReadOnly(true);
+            ui->tbMengeProLiter->setReadOnly(true);
             ui->tbMengeProzent->setReadOnly(true);
             ui->tbAnteilProzent->setReadOnly(true);
             ui->btnAufbrauchen->setVisible(false);
@@ -199,6 +200,7 @@ void WdgHopfenGabe::updateValues(bool full)
         else
         {
             ui->tbMenge->setReadOnly(false);
+            ui->tbMengeProLiter->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
             ui->tbAnteilProzent->setReadOnly(false);
             ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
@@ -253,7 +255,7 @@ void WdgHopfenGabe::setFehlProzent(double value)
         ui->btnMengeKorrektur->setProperty("toadd", value);
         ui->btnAnteilKorrektur->setText(text);
         ui->btnAnteilKorrektur->setProperty("toadd", value);
-        if (prozentIbu())
+        if (bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_IBU)
             ui->btnAnteilKorrektur->setVisible(value != 0.0);
         else
             ui->btnMengeKorrektur->setVisible(value != 0.0);
@@ -288,6 +290,12 @@ void WdgHopfenGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
         setData(ModelHopfengaben::Colerg_Menge, value);
+}
+
+void WdgHopfenGabe::on_tbMengeProLiter_valueChanged(double value)
+{
+    if (ui->tbMengeProLiter->hasFocus())
+        setData(ModelHopfengaben::Colerg_Menge, value * bh->sud()->getMenge());
 }
 
 void WdgHopfenGabe::on_tbKochdauer_valueChanged(int dauer)

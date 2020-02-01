@@ -32,6 +32,7 @@ private slots:
     void on_btnMengeKorrektur_clicked();
     void on_btnAnteilKorrektur_clicked();
     void on_tbMenge_valueChanged(double value);
+    void on_tbMengeProLiter_valueChanged(double value);
     void on_tbKochdauer_valueChanged(int dauer);
     void on_cbZeitpunkt_currentIndexChanged(int index);
     void on_btnLoeschen_clicked();
@@ -39,7 +40,6 @@ private slots:
 
 private:
     void checkEnabled(bool force);
-    bool prozentIbu() const;
 
 private:
     Ui::WdgHopfenGabe *ui;

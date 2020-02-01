@@ -34,8 +34,6 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
             ausbeute *= 1.1;
         if (data(idx.row(), ColVorderwuerze).toBool())
             ausbeute *= 0.9;
-        if (ausbeute < 0.1)
-            ausbeute = 0.1;
         return ausbeute;
     }
     default:

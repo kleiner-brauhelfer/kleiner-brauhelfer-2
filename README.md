@@ -30,7 +30,10 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ## Änderungen & Erweiterungen
 
 ### Version 2.1.1 (in Entwicklung)
+- Neu: Neue Menufunktionen
+- Neu: Eingabemöglichkeit für Hopfengaben in g/l
 - Fix: Diverse Felder wurden nicht auf schreibgeschützt gesetzt
+- Fix: Hopfengaben beim Ausschlagen haben jetzt eine Ausbeute von 0.0%
 
 ### Version 2.1.0 (25.01.2019)
 - Neu: Datenbankversion **2003**

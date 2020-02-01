@@ -128,54 +128,6 @@
          </widget>
         </item>
         <item>
-         <widget class="DoubleSpinBox" name="tbMenge">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die Menge zusätzlicher Zugaben in &lt;span style=&quot; font-weight:600;&quot;&gt;Gramm pro Liter&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelder berechnet die Gesamtmenge anschließend auf die definierte Jungbiermenge des Rezeptes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="minimum">
-           <double>0.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblEinheitProLiter">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>g/l</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_8">
-          <property name="text">
-           <string>Gesamt</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="DoubleSpinBox" name="tbMengeTotal">
           <property name="minimumSize">
            <size>
@@ -213,6 +165,47 @@
           </property>
           <property name="text">
            <string>g</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="DoubleSpinBox" name="tbMenge">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die Menge zusätzlicher Zugaben in &lt;span style=&quot; font-weight:600;&quot;&gt;Gramm pro Liter&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelder berechnet die Gesamtmenge anschließend auf die definierte Jungbiermenge des Rezeptes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="minimum">
+           <double>0.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblEinheitProLiter">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>g/l</string>
           </property>
          </widget>
         </item>
@@ -627,7 +620,6 @@
  <tabstops>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>tbMenge</tabstop>
-  <tabstop>tbMengeTotal</tabstop>
   <tabstop>tbVorhanden</tabstop>
   <tabstop>cbZugabezeitpunkt</tabstop>
   <tabstop>tbDauerMin</tabstop>

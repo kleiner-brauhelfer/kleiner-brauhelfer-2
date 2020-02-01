@@ -43,9 +43,12 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     ui->widget_DiaNachgaerverlauf->BezeichnungL1 = tr("CO₂-Gehalt [g/l]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL1 = tr("g/l");
     ui->widget_DiaNachgaerverlauf->L1Precision = 1;
-    ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Temperatur [°C]");
-    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("°C");
+    ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Druck [bar]");
+    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("bar");
     ui->widget_DiaNachgaerverlauf->L2Precision = 1;
+    ui->widget_DiaNachgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
+    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL3 = tr("°C");
+    ui->widget_DiaNachgaerverlauf->L3Precision = 1;
 
     int col;
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
@@ -428,14 +431,14 @@ void TabGaerverlauf::updateDiagramm()
     diag->DiagrammLeeren();
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QDateTime dt = model->index(row, 2).data().toDateTime();
+        QDateTime dt = model->index(row, ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime();
         diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, 3).data().toDouble());
-        diag->L2Daten.append(model->index(row, 4).data().toDouble());
-        diag->L3Daten.append(model->index(row, 5).data().toDouble());
+        diag->L1Daten.append(model->index(row, ModelSchnellgaerverlauf::ColRestextrakt).data().toDouble());
+        diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
+        diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
     }
     diag->repaint();
 
@@ -444,14 +447,14 @@ void TabGaerverlauf::updateDiagramm()
     diag->DiagrammLeeren();
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QDateTime dt = model->index(row, 2).data().toDateTime();
+        QDateTime dt = model->index(row, ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
         diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, 3).data().toDouble());
-        diag->L2Daten.append(model->index(row, 4).data().toDouble());
-        diag->L3Daten.append(model->index(row, 5).data().toDouble());
+        diag->L1Daten.append(model->index(row, ModelHauptgaerverlauf::ColRestextrakt).data().toDouble());
+        diag->L2Daten.append(model->index(row, ModelHauptgaerverlauf::ColAlc).data().toDouble());
+        diag->L3Daten.append(model->index(row, ModelHauptgaerverlauf::ColTemp).data().toDouble());
     }
     diag->repaint();
 
@@ -460,12 +463,14 @@ void TabGaerverlauf::updateDiagramm()
     diag->DiagrammLeeren();
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QDateTime dt = model->index(row, 2).data().toDateTime();
+        QDateTime dt = model->index(row, ModelNachgaerverlauf::ColZeitstempel).data().toDateTime();
         diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
-        diag->L1Daten.append(model->index(row, 5).data().toDouble());
-        diag->L2Daten.append(model->index(row, 4).data().toDouble());
+        diag->L3Datum.append(dt);
+        diag->L1Daten.append(model->index(row, ModelNachgaerverlauf::ColCO2).data().toDouble());
+        diag->L2Daten.append(model->index(row, ModelNachgaerverlauf::ColDruck).data().toDouble());
+        diag->L3Daten.append(model->index(row, ModelNachgaerverlauf::ColTemp).data().toDouble());
     }
     diag->setWertLinie1(bh->sud()->getCO2());
     diag->repaint();

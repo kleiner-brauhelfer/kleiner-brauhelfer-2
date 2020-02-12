@@ -684,6 +684,33 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
 }
 
+QDateTime TabGaerverlauf::fromString(const QString& string)
+{
+    QDateTime dt = QDateTime::fromString(string, Qt::SystemLocaleShortDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::DefaultLocaleShortDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::TextDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::ISODate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::SystemLocaleLongDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yy h:m");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yyyy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yyyy h:m");
+    if (dt.isValid())
+    {
+        if (dt.date().year() < 2000)
+            dt = dt.addYears(100);
+    }
+    return dt;
+}
+
 void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
@@ -696,15 +723,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::TextDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::ISODate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            QDateTime dt = fromString(cols[0]);
             if (dt.isValid())
             {
                 QMap<int, QVariant> values = {{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
@@ -753,15 +772,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::TextDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::ISODate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            QDateTime dt = fromString(cols[0]);
             if (dt.isValid())
             {
                 QMap<int, QVariant> values = {{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
@@ -810,15 +821,7 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::TextDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::ISODate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            QDateTime dt = fromString(cols[0]);
             if (dt.isValid())
             {
                 double druck = 0;

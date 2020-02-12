@@ -21,6 +21,7 @@ public:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    QDateTime fromString(const QString& string);
     void pasteFromClipboardSchnellgaerverlauf();
     void pasteFromClipboardHauptgaerverlauf();
     void pasteFromClipboardNachgaerverlauf();

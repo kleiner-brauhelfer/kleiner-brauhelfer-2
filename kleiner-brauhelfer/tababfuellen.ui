@@ -951,7 +951,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; nach dem Abfüllen auf das Reife- oder Gärgefäß.&lt;/p&gt;&lt;p&gt;Der Wert berechnet sich anhand der verfügbaren Speisemenge.&lt;/p&gt;&lt;p&gt;Ferner ist der Wert  durch Hefe oder Hopfen in der Nachgärung beeinflusst, aber auch durch die entnommene Speisemenge..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; nach dem Abfüllen auf das Reife- oder Gärgefäß.&lt;/p&gt;&lt;p&gt;Der Wert berechnet sich anhand der verfügbaren Speisemenge.&lt;/p&gt;&lt;p&gt;Ferner ist der Wert durch Hefe oder Hopfen in der Nachgärung beeinflusst, aber auch durch die entnommene Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1576,7 +1576,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten gesamt&lt;/span&gt; werden die Gesamtkosten eines Sudes aus Rohstoffen, Energie und Verbrauchsmaterialien verstanden.&lt;/p&gt;&lt;p&gt;Der hier angegebene Wert ergibt sich sich aus den reinen Kosten für Malz, Hopfen, Hefe und Weitere Zutaten, wie sie links in &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten &lt;/span&gt;festgelegt werden und den im Tab Ausrüstung definierten Betriebskosten (Gas, Wasser, Strom etc.).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und weitere Zutaten, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1693,7 +1693,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Als Nebenkosten werden alle Kosten außer den Materialkosten Betriebskossind unter anderem Strom, Wasser, Gas, aber auch Wertverlust, Abschreibung, so dies berechnet werden soll. Nebenkosten sind keine Rohstoffkosten wie Malz, Hopfen und Weitere Zutaten. Nebenkosten werden als konstante durchschnittliche Verbrauchskosten im Reiter Ausrüstung definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

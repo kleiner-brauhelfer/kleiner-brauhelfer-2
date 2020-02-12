@@ -2671,7 +2671,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die Berechnung ergibt sich aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; im Tab Ausrüstung sowie den eigentlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten&lt;/span&gt; (auch Rohstoffkosten, Nebenkosten, zusätzliche Kosten).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und weitere Zutaten, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2699,7 +2699,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Unter Sudkosten verstehen sich die Rohstoffkosten, Nebenkosten und zusätzliche Kosten, die für den Sud spezifisch sind. Sie sind von regelmäßigen, planbaren Betriebskosten (Strom, Waser, Gas etc.) zu unterscheiden.&lt;/p&gt;&lt;p&gt;Dieses Feld findet sich auch identisch im Tab Abfülldaten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

@@ -94,7 +94,7 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     values[ModelSud::ColEinmaischenTemp] = toDouble(root["Infusion_Einmaischtemperatur"]);
     values[ModelSud::ColCO2] = toDouble(root["Karbonisierung"]);
     values[ModelSud::ColIBU] = toDouble(root["Bittere"]);
-    values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Gewicht;
+    values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Keine;
     values[ModelSud::ColKochdauerNachBitterhopfung] = toDouble(root["Kochzeit_Wuerze"]);
     values[ModelSud::ColKommentar] = QString(QObject::tr("Rezept aus MaischMalzundMehr\n"
                                               "<b>Autor: </b> %1\n"
@@ -148,31 +148,24 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     }
 
     // Hopfen
-    double gesamt_hopfen = 0.0;
-    int max_hopfen_vwh = findMax(root, "Hopfen_VWH_%%_Sorte");
-    for (int i = 1; i < max_hopfen_vwh; ++i)
-        gesamt_hopfen += toDouble(root[QString("Hopfen_VWH_%1_Menge").arg(i)]);
-    int max_hopfen = findMax(root, "Hopfen_%%_Sorte");
-    for (int i = 1; i < max_hopfen; ++i)
-        gesamt_hopfen += toDouble(root[QString("Hopfen_%1_Menge").arg(i)]);
-    for (int i = 1; i < max_hopfen_vwh; ++i)
+    for (int i = 1; i < findMax(root, "Hopfen_VWH_%%_Sorte"); ++i)
     {
         values.clear();
         values[ModelHopfengaben::ColSudID] = sudId;
         values[ModelHopfengaben::ColName] = root[QString("Hopfen_VWH_%1_Sorte").arg(i)].toString();
-        values[ModelHopfengaben::ColProzent] = toDouble(root[QString("Hopfen_VWH_%1_Menge").arg(i)]) / gesamt_hopfen * 100.0;
+        values[ModelHopfengaben::Colerg_Menge] = toDouble(root[QString("Hopfen_VWH_%1_Menge").arg(i)]);
         values[ModelHopfengaben::ColZeit] = toDouble(root["Kochzeit_Wuerze"]);
         values[ModelHopfengaben::ColAlpha] = toDouble(root[QString("Hopfen_VWH_%1_alpha").arg(i)]);
         values[ModelHopfengaben::ColPellets] = 1;
         values[ModelHopfengaben::ColVorderwuerze] = 1;
         bh->modelHopfengaben()->append(values);
     }
-    for (int i = 1; i < max_hopfen; ++i)
+    for (int i = 1; i < findMax(root, "Hopfen_%%_Sorte"); ++i)
     {
         values.clear();
         values[ModelHopfengaben::ColSudID] = sudId;
         values[ModelHopfengaben::ColName] = root[QString("Hopfen_%1_Sorte").arg(i)].toString();
-        values[ModelHopfengaben::ColProzent] = toDouble(root[QString("Hopfen_%1_Menge").arg(i)]) / gesamt_hopfen * 100.0;
+        values[ModelHopfengaben::Colerg_Menge] = toDouble(root[QString("Hopfen_%1_Menge").arg(i)]);
         values[ModelHopfengaben::ColZeit] = toDouble(root[QString("Hopfen_%1_Kochzeit").arg(i)]);
         values[ModelHopfengaben::ColAlpha] = toDouble(root[QString("Hopfen_%1_alpha").arg(i)]);
         values[ModelHopfengaben::ColPellets] = 1;
@@ -293,7 +286,7 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         min = nStyle.firstChildElement("IBU_MIN").text().toDouble();
         max = nStyle.firstChildElement("IBU_MAX").text().toDouble();
         values[ModelSud::ColIBU] = (min+max)/2;
-        values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Gewicht;
+        values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Keine;
         values[ModelSud::ColKochdauerNachBitterhopfung] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
 
         sudRow = bh->modelSud()->append(values);
@@ -359,12 +352,6 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
 
         // Hopfen
         QDomNode nHops = nRecipe.firstChildElement("HOPS");
-        double gesamt_hopfen = 0.0;
-        for(QDomNode n = nHops.firstChildElement("HOP"); !n.isNull(); n = n.nextSiblingElement("HOP"))
-        {
-            if (n.firstChildElement("USE").text() != "Dry Hop")
-                gesamt_hopfen += n.firstChildElement("AMOUNT").text().toDouble();
-        }
         for(QDomNode n = nHops.firstChildElement("HOP"); !n.isNull(); n = n.nextSiblingElement("HOP"))
         {
             QString use = n.firstChildElement("USE").text();
@@ -387,7 +374,7 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
                 values.clear();
                 values[ModelHopfengaben::ColSudID] = sudId;
                 values[ModelHopfengaben::ColName] = n.firstChildElement("NAME").text();
-                values[ModelHopfengaben::ColProzent] = n.firstChildElement("AMOUNT").text().toDouble() / gesamt_hopfen * 100;
+                values[ModelHopfengaben::Colerg_Menge] = n.firstChildElement("AMOUNT").text().toDouble();
                 values[ModelHopfengaben::ColZeit] = n.firstChildElement("TIME").text().toDouble();
                 values[ModelHopfengaben::ColAlpha] = n.firstChildElement("ALPHA").text().toDouble();
                 values[ModelHopfengaben::ColPellets] = n.firstChildElement("FORM").text() == "Pellet";

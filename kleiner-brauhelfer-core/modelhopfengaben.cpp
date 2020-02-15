@@ -75,6 +75,10 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
             double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
             switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
             {
+            case Hopfen_Berechnung_Keine:
+            {
+                break;
+            }
             case Hopfen_Berechnung_Gewicht:
             {
                 double summe = 0.0;
@@ -122,10 +126,12 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         if (QSqlTableModel::setData(idx, value))
         {
             QVariant sudId = data(idx.row(), ColSudID);
-            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
-            double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
             switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
             {
+            case Hopfen_Berechnung_Keine:
+            {
+                break;
+            }
             case Hopfen_Berechnung_Gewicht:
             {
                 double summe = 0.0;
@@ -142,6 +148,8 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
             }
             case Hopfen_Berechnung_IBU:
             {
+                double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
+                double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
                 double p = (10 * alpha * ausbeute * value.toDouble()) / (ibuSoll * mengeSoll);

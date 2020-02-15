@@ -1,6 +1,8 @@
 # kleiner-brauhelfer v2
 Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und Verwalten von Biersuden. Die Version 2 ist die Weiterentwicklung vom [kleinen-brauhelfer](http://github.com/Gremmel/kleiner-brauhelfer).
 
+<img src="doc/sudauswahl.png" width="240"><img src="doc/rezept.png" width="240"><img src="doc/braudaten.png" width="240"><img src="doc/abfuelldaten.png" width="240"><img src="doc/gaerverlauf.png" width="240"><img src="doc/spickzettel.png" width="240"><img src="doc/zusammenfassung.png" width="240"><img src="doc/etikette.png" width="240"><img src="doc/bewertung.png" width="240"><img src="doc/brauuebersicht.png" width="240"><img src="doc/ausruestung.png" width="240"><img src="doc/rohstoffe.png" width="240">
+
 **Diskussionsthread:**
 
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
@@ -32,6 +34,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.1.1 (in Entwicklung)
 - Neu: Neue Menufunktionen
 - Neu: Eingabemöglichkeit für Hopfengaben in g/l
+- Neu: Berechnung der Hopfengaben lässt sich deaktivieren (Prozentanteil enstpricht: ignorieren)
 - Fix: Diverse Felder wurden nicht auf schreibgeschützt gesetzt
 - Fix: Hopfengaben beim Ausschlagen haben jetzt eine Ausbeute von 0.0%
 

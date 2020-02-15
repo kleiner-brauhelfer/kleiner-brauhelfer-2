@@ -24,14 +24,41 @@
   </property>
   <layout class="QVBoxLayout">
    <item>
-    <widget class="QLineEdit" name="lineEditFilter">
-     <property name="placeholderText">
-      <string>Suche</string>
-     </property>
-     <property name="clearButtonEnabled">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QRadioButton" name="radioButtonAlle">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>alle</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButtonVorhanden">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>vorhanden</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditFilter">
+       <property name="placeholderText">
+        <string>Suche</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="TableView" name="tableView">

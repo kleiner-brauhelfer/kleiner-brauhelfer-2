@@ -1136,8 +1136,13 @@
           <item row="0" column="1">
            <widget class="ComboBox" name="cbBerechnungsartHopfen">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; nach Gewicht oder IBU gewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere.&lt;/p&gt;&lt;p&gt;Diese Berechnungsart wird empfohlen, da sich gleiche Hopfensorten mit verschiedenen Alpha-Werten besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ignorieren&lt;/span&gt; bedeutet, es wird keine Hopfenberechnung durchgeführt. Die Mengen können frei eingestellt werden und die Sollbittere wird ignoriert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen. Die Alpha-Werte werden nicht berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere. Diese Berechnungsart wird empfohlen, weil Hopfensorten mit verschiedenen Alpha-Werten sich besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <item>
+             <property name="text">
+              <string>ignorieren</string>
+             </property>
+            </item>
             <item>
              <property name="text">
               <string>Gewicht</string>
@@ -1158,6 +1163,13 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblBerechnungsartHopfenWarnung">
+          <property name="text">
+           <string>Die Berechnung der Hopfengaben ist deaktiviert.</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="Line" name="line_3">

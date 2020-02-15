@@ -52,6 +52,8 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
 
+    ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
+
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
@@ -563,7 +565,8 @@ void TabRezept::updateValues()
 
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
     if (!ui->cbBerechnungsartHopfen->hasFocus())
-        ui->cbBerechnungsartHopfen->setCurrentIndex(bh->sud()->getberechnungsArtHopfen());
+        ui->cbBerechnungsartHopfen->setCurrentIndex(bh->sud()->getberechnungsArtHopfen() + 1);
+    ui->lblBerechnungsartHopfenWarnung->setVisible(bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_Keine);
     if (!ui->tbKommentar->hasFocus())
         ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
     updateGlas();
@@ -836,7 +839,7 @@ void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
 {
     if (ui->cbBerechnungsartHopfen->hasFocus())
     {
-        bh->sud()->setberechnungsArtHopfen(index);
+        bh->sud()->setberechnungsArtHopfen(index - 1);
         updateHopfenGaben();
     }
 }

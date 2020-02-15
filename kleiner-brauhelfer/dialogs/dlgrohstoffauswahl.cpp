@@ -1,5 +1,5 @@
 #include "dlgrohstoffauswahl.h"
-#include "proxymodel.h"
+#include "proxymodelrohstoff.h"
 #include "model/checkboxdelegate.h"
 #include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
@@ -24,7 +24,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
     int col;
     SqlTableModel *model;
     QHeaderView *header = ui->tableView->horizontalHeader();
-    ProxyModel *proxy = new ProxyModel(this);
+    ProxyModel *proxy = new ProxyModelRohstoff(this);
     ComboBoxDelegate *comboBox;
 
     ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
@@ -338,6 +338,18 @@ QString DlgRohstoffAuswahl::name() const
     if (selection.count() > 0)
         return ui->tableView->model()->data(selection[0].sibling(selection[0].row(), mNameCol)).toString();
     return QString();
+}
+
+void DlgRohstoffAuswahl::on_radioButtonAlle_clicked()
+{
+    ProxyModelRohstoff* proxy = static_cast<ProxyModelRohstoff*>(ui->tableView->model());
+    proxy->setFilter(ProxyModelRohstoff::Filter::Alle);
+}
+
+void DlgRohstoffAuswahl::on_radioButtonVorhanden_clicked()
+{
+    ProxyModelRohstoff* proxy = static_cast<ProxyModelRohstoff*>(ui->tableView->model());
+    proxy->setFilter(ProxyModelRohstoff::Filter::Vorhanden);
 }
 
 void DlgRohstoffAuswahl::on_lineEditFilter_textChanged(const QString &text)

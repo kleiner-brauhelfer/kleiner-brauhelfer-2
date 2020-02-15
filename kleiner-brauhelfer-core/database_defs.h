@@ -8,6 +8,7 @@
 #define Sud_Status_Verbraucht               3
 
 // Berechnungsart fuer Hopfen
+#define Hopfen_Berechnung_Keine             -1
 #define Hopfen_Berechnung_Gewicht           0
 #define Hopfen_Berechnung_IBU               1
 

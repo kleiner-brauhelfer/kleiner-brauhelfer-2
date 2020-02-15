@@ -28,6 +28,8 @@ public:
     QString name() const;
 
 private slots:
+    void on_radioButtonAlle_clicked();
+    void on_radioButtonVorhanden_clicked();
     void on_lineEditFilter_textChanged(const QString &text);
     void on_tableView_doubleClicked(const QModelIndex &index);
     void on_buttonBox_accepted();

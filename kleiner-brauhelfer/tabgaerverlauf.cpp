@@ -263,6 +263,11 @@ TabGaerverlauf::~TabGaerverlauf()
     delete ui;
 }
 
+void TabGaerverlauf::onTabActivated()
+{
+    updateDiagramm();
+}
+
 void TabGaerverlauf::saveSettings()
 {
     gSettings->beginGroup("TabGaerverlauf");
@@ -456,6 +461,8 @@ void TabGaerverlauf::updateDiagramm()
         diag->L2Daten.append(model->index(row, ModelHauptgaerverlauf::ColAlc).data().toDouble());
         diag->L3Daten.append(model->index(row, ModelHauptgaerverlauf::ColTemp).data().toDouble());
     }
+    if (bh->sud()->getSchnellgaerprobeAktiv())
+        diag->setWertLinie1(bh->sud()->getGruenschlauchzeitpunkt());
     diag->repaint();
 
     diag = ui->widget_DiaNachgaerverlauf;

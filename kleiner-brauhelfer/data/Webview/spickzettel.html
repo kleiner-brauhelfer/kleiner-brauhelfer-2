@@ -5,7 +5,7 @@
   <script type="text/javascript">
     <!--
     function writeBrix(plato) {
-      document.write((parseFloat(String(plato).replace(",","."))*{{Rezept.plato2brix}}).toFixed(1))
+      document.write((parseFloat(plato.replace(',','.'))*{{Rezept.plato2brix}}).toFixed(1))
     }
     -->
   </script>
@@ -452,7 +452,7 @@
               <td>____ &deg;P/&deg;Brix</td>
               <td>
                  Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochbeginn}})</script></span>&deg;Brix
-                 {{#Zutaten.ZutatenKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochbeginnMitWz}})</script></span>&deg;Brix{{/Zutaten.ZutatenKochen}}
+                 {{#Zutaten.ZutatenKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.ZutatenKochen}}
               </td>
             </tr>
           </table>
@@ -562,7 +562,7 @@
             <col width="*">
             <tr>
               <td>____ &deg;P/&deg;Brix</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochende}})</script></span>&deg;Brix</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochende}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
         </td>
@@ -649,7 +649,7 @@
             <col width="*">
             <tr>
               <td>____ &deg;P/&deg;Brix</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWAnstellen}})</script></span>&deg;Brix</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
           Wenn gew&uuml;nscht die W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
@@ -776,7 +776,7 @@
   </div>
 
   <div align="center">
-    <p class="version">{{App.Name}} v{{App.Version}}</p>
+    <p class="version">{{App.Name}} v{{App.Version}} / <script>document.write(new Date().toLocaleDateString());</script></p>
   </div>
 
 </body>

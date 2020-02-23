@@ -37,6 +37,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Berechnung der Hopfengaben lässt sich deaktivieren (Prozentanteil enstpricht: ignorieren)
 - Fix: Diverse Felder wurden nicht auf schreibgeschützt gesetzt
 - Fix: Hopfengaben beim Ausschlagen haben jetzt eine Ausbeute von 0.0%
+- Fix: Brix Berechnung im Spickzettel
+- Fix: Minimale Fenstergrösse
 
 ### Version 2.1.0 (25.01.2019)
 - Neu: Datenbankversion **2003**

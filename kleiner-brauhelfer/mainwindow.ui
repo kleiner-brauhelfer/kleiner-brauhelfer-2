@@ -11,80 +11,112 @@
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
-     <number>4</number>
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
     <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
-     <widget class="QTabWidget" name="tabMain">
-      <property name="currentIndex">
-       <number>0</number>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
-      <widget class="TabSudAuswahl" name="tabSudAuswahl">
-       <attribute name="title">
-        <string>Sudauswahl</string>
-       </attribute>
-      </widget>
-      <widget class="TabRezept" name="tabRezept">
-       <attribute name="title">
-        <string>Rezept</string>
-       </attribute>
-      </widget>
-      <widget class="TabBraudaten" name="tabBraudaten">
-       <attribute name="title">
-        <string>Braudaten</string>
-       </attribute>
-      </widget>
-      <widget class="TabAbfuellen" name="tabAbfuelldaten">
-       <attribute name="title">
-        <string>Abfülldaten</string>
-       </attribute>
-      </widget>
-      <widget class="TabGaerverlauf" name="tabGaerverlauf">
-       <attribute name="title">
-        <string>Gärverlauf</string>
-       </attribute>
-      </widget>
-      <widget class="TabZusammenfassung" name="tabZusammenfassung">
-       <attribute name="title">
-        <string>Zusammenfassung</string>
-       </attribute>
-      </widget>
-      <widget class="TabEtikette" name="tabEtikette">
-       <attribute name="title">
-        <string>Etikette</string>
-       </attribute>
-      </widget>
-      <widget class="TabBewertung" name="tabBewertung">
-       <attribute name="title">
-        <string>Bewertung</string>
-       </attribute>
-      </widget>
-      <widget class="TabBrauUebersicht" name="tabBrauUebersicht">
-       <attribute name="title">
-        <string>Brauübersicht</string>
-       </attribute>
-      </widget>
-      <widget class="TabAusruestung" name="tabAusruestung">
-       <attribute name="title">
-        <string>Ausrüstung</string>
-       </attribute>
-      </widget>
-      <widget class="TabRohstoffe" name="tabRohstoffe">
-       <attribute name="title">
-        <string>Rohstoffe</string>
-       </attribute>
-      </widget>
-      <widget class="TabDatenbank" name="tabDatenbank">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <attribute name="title">
-        <string>Datenbank</string>
-       </attribute>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabMain">
+          <widget class="TabSudAuswahl" name="tabSudAuswahl">
+           <attribute name="title">
+            <string>Sudauswahl</string>
+           </attribute>
+          </widget>
+          <widget class="TabRezept" name="tabRezept">
+           <attribute name="title">
+            <string>Rezept</string>
+           </attribute>
+          </widget>
+          <widget class="TabBraudaten" name="tabBraudaten">
+           <attribute name="title">
+            <string>Braudaten</string>
+           </attribute>
+          </widget>
+          <widget class="TabAbfuellen" name="tabAbfuelldaten">
+           <attribute name="title">
+            <string>Abfülldaten</string>
+           </attribute>
+          </widget>
+          <widget class="TabGaerverlauf" name="tabGaerverlauf">
+           <attribute name="title">
+            <string>Gärverlauf</string>
+           </attribute>
+          </widget>
+          <widget class="TabZusammenfassung" name="tabZusammenfassung">
+           <attribute name="title">
+            <string>Zusammenfassung</string>
+           </attribute>
+          </widget>
+          <widget class="TabEtikette" name="tabEtikette">
+           <attribute name="title">
+            <string>Etikette</string>
+           </attribute>
+          </widget>
+          <widget class="TabBewertung" name="tabBewertung">
+           <attribute name="title">
+            <string>Bewertung</string>
+           </attribute>
+          </widget>
+          <widget class="TabBrauUebersicht" name="tabBrauUebersicht">
+           <attribute name="title">
+            <string>Brauübersicht</string>
+           </attribute>
+          </widget>
+          <widget class="TabAusruestung" name="tabAusruestung">
+           <attribute name="title">
+            <string>Ausrüstung</string>
+           </attribute>
+          </widget>
+          <widget class="TabRohstoffe" name="tabRohstoffe">
+           <attribute name="title">
+            <string>Rohstoffe</string>
+           </attribute>
+          </widget>
+          <widget class="TabDatenbank" name="tabDatenbank">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <attribute name="title">
+            <string>Datenbank</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

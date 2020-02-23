@@ -698,7 +698,9 @@ void WdgDiagramView::DiagrammLeeren()
   L2Datum.clear();
   L3Daten.clear();
   L3Datum.clear();
-
+  WertLinie1Aktiv = false;
+  WertLinie2Aktiv = false;
+  WertLinie3Aktiv = false;
 }
 
 void WdgDiagramView::BildSpeichern(QString Name)

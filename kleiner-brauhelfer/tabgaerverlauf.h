@@ -20,6 +20,7 @@ public:
     void checkEnabled();
 
 private:
+    void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     QDateTime fromString(const QString& string);
     void pasteFromClipboardSchnellgaerverlauf();

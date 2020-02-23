@@ -38,7 +38,7 @@ private slots:
     void generateTemplateTags(QVariantMap& tags);
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
     void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
-    void on_cbAlle_clicked(bool checked);
+    void on_cbAlle_clicked();
     void on_cbRezept_clicked();
     void on_cbGebraut_clicked();
     void on_cbAbgefuellt_clicked();

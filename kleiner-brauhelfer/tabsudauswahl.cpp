@@ -291,24 +291,38 @@ void TabSudAuswahl::setFilterStatus()
         filter |= ProxyModelSud::Verbraucht;
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
     model->setFilterStatus(filter);
-    ui->cbAlle->setChecked(filter == ProxyModelSud::Alle);
+    if (filter == ProxyModelSud::Alle)
+        ui->cbAlle->setCheckState(Qt::Checked);
+    else if (filter == ProxyModelSud::Keine)
+        ui->cbAlle->setCheckState(Qt::Unchecked);
+    else
+        ui->cbAlle->setCheckState(Qt::PartiallyChecked);
 }
 
-void TabSudAuswahl::on_cbRezept_clicked()
+void TabSudAuswahl::on_cbAlle_clicked()
 {
-    setFilterStatus();
-}
-
-void TabSudAuswahl::on_cbAlle_clicked(bool checked)
-{
-    if (checked)
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+    if (model->filterStatus() == ProxyModelSud::Alle)
+    {
+        ui->cbRezept->setChecked(false);
+        ui->cbGebraut->setChecked(false);
+        ui->cbAbgefuellt->setChecked(false);
+        ui->cbVerbraucht->setChecked(false);
+    }
+    else
     {
         ui->cbRezept->setChecked(true);
         ui->cbGebraut->setChecked(true);
         ui->cbAbgefuellt->setChecked(true);
         ui->cbVerbraucht->setChecked(true);
-        setFilterStatus();
     }
+    setFilterStatus();
+}
+
+
+void TabSudAuswahl::on_cbRezept_clicked()
+{
+    setFilterStatus();
 }
 
 void TabSudAuswahl::on_cbGebraut_clicked()

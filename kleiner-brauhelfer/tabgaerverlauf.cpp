@@ -710,6 +710,10 @@ QDateTime TabGaerverlauf::fromString(const QString& string)
         dt = QDateTime::fromString(string, "d.M.yyyy h:m:s");
     if (!dt.isValid())
         dt = QDateTime::fromString(string, "d.M.yyyy h:m");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "M/d/yyyy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "M/d/yyyy h:m");
     if (dt.isValid())
     {
         if (dt.date().year() < 2000)
@@ -720,6 +724,9 @@ QDateTime TabGaerverlauf::fromString(const QString& string)
 
 void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 {
+    QLocale converter = QLocale();
+    converter.setNumberOptions(QLocale::RejectGroupSeparator);
+  
     QString clipboardText = QApplication::clipboard()->text();
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
     if (rows.size() == 0)
@@ -738,7 +745,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = QLocale().toDouble(cols[1], &ok);
+                    double sre = converter.toDouble(cols[1], &ok);
                     if (!ok)
                         sre = cols[1].toDouble(&ok);
                     if (ok)
@@ -750,7 +757,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = converter.toDouble(cols[2], &ok);
                     if (!ok)
                         temp = cols[2].toDouble(&ok);
                     if (ok)
@@ -769,6 +776,9 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 
 void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
 {
+    QLocale converter = QLocale();
+    converter.setNumberOptions(QLocale::RejectGroupSeparator);
+
     QString clipboardText = QApplication::clipboard()->text();
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
     if (rows.size() == 0)
@@ -787,7 +797,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = QLocale().toDouble(cols[1], &ok);
+                    double sre = converter.toDouble(cols[1], &ok);
                     if (!ok)
                         sre = cols[1].toDouble(&ok);
                     if (ok)
@@ -799,7 +809,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = converter.toDouble(cols[2], &ok);
                     if (!ok)
                         temp = cols[2].toDouble(&ok);
                     if (ok)
@@ -818,6 +828,9 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
 
 void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
 {
+    QLocale converter = QLocale();
+    converter.setNumberOptions(QLocale::RejectGroupSeparator);
+
     QString clipboardText = QApplication::clipboard()->text();
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
     if (rows.size() == 0)
@@ -837,7 +850,7 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    druck = QLocale().toDouble(cols[1], &ok);
+                    druck = converter.toDouble(cols[1], &ok);
                     if (!ok)
                         druck = cols[1].toDouble(&ok);
                     if (ok)
@@ -848,7 +861,7 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = converter.toDouble(cols[2], &ok);
                     if (!ok)
                         temp = cols[2].toDouble(&ok);
                     if (ok)

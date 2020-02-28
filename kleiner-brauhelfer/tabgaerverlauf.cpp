@@ -710,6 +710,10 @@ QDateTime TabGaerverlauf::fromString(const QString& string)
         dt = QDateTime::fromString(string, "d.M.yyyy h:m:s");
     if (!dt.isValid())
         dt = QDateTime::fromString(string, "d.M.yyyy h:m");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "M/d/yyyy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "M/d/yyyy h:m");
     if (dt.isValid())
     {
         if (dt.date().year() < 2000)
@@ -738,9 +742,9 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = QLocale().toDouble(cols[1], &ok);
+                    double sre = cols[1].toDouble(&ok);
                     if (!ok)
-                        sre = cols[1].toDouble(&ok);
+                        sre = QLocale().toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelSchnellgaerverlauf::ColRestextrakt] = sre;
@@ -750,9 +754,9 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = cols[2].toDouble(&ok);
                     if (!ok)
-                        temp = cols[2].toDouble(&ok);
+                        temp = QLocale().toDouble(cols[2], &ok);
                     if (ok)
                         values[ModelSchnellgaerverlauf::ColTemp] = temp;
                 }
@@ -787,9 +791,9 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = QLocale().toDouble(cols[1], &ok);
+                    double sre = cols[1].toDouble(&ok);
                     if (!ok)
-                        sre = cols[1].toDouble(&ok);
+                        sre = QLocale().toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelHauptgaerverlauf::ColRestextrakt] = sre;
@@ -799,9 +803,9 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = cols[2].toDouble(&ok);
                     if (!ok)
-                        temp = cols[2].toDouble(&ok);
+                        temp = QLocale().toDouble(cols[2], &ok);
                     if (ok)
                         values[ModelHauptgaerverlauf::ColTemp] = temp;
                 }
@@ -837,9 +841,9 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    druck = QLocale().toDouble(cols[1], &ok);
+                    druck = cols[1].toDouble(&ok);
                     if (!ok)
-                        druck = cols[1].toDouble(&ok);
+                        druck = QLocale().toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelNachgaerverlauf::ColDruck] = druck;
@@ -848,9 +852,9 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = cols[2].toDouble(&ok);
                     if (!ok)
-                        temp = cols[2].toDouble(&ok);
+                        temp = QLocale().toDouble(cols[2], &ok);
                     if (ok)
                     {
                         values[ModelNachgaerverlauf::ColTemp] = temp;

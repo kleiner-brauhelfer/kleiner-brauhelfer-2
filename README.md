@@ -35,6 +35,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Neue Menufunktionen
 - Neu: Eingabemöglichkeit für Hopfengaben in g/l
 - Neu: Berechnung der Hopfengaben lässt sich deaktivieren (Prozentanteil enstpricht: ignorieren)
+- Neu: Direktes Drucken des Spickzettels und Zusammenfassung
 - Fix: Diverse Felder wurden nicht auf schreibgeschützt gesetzt
 - Fix: Hopfengaben beim Ausschlagen haben jetzt eine Ausbeute von 0.0%
 - Fix: Brix Berechnung im Spickzettel

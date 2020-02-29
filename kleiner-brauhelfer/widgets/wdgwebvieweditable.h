@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTemporaryFile>
 #include <QTimer>
+#include <QPrinter>
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
@@ -17,7 +18,9 @@ class WdgWebViewEditable : public QWidget
 public:
     explicit WdgWebViewEditable(QWidget *parent = nullptr);
     ~WdgWebViewEditable();
+    void clear();
     void setHtmlFile(const QString& file);
+    void printPreview();
     void printToPdf(const QString& filePath);
 
 public slots:
@@ -25,6 +28,7 @@ public slots:
     void updateTags();
 
 private slots:
+    void printDocument(QPrinter *printer);
     void on_cbEditMode_clicked(bool checked);
     void on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName);
     void on_btnSaveTemplate_clicked();

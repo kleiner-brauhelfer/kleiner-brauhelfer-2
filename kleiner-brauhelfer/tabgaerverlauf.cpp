@@ -691,7 +691,7 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
 }
 
-QDateTime TabGaerverlauf::fromString(const QString& string)
+QDateTime TabGaerverlauf::toDateTime(const QString& string) const
 {
     QDateTime dt = QDateTime::fromString(string, Qt::SystemLocaleShortDate);
     if (!dt.isValid())
@@ -722,6 +722,17 @@ QDateTime TabGaerverlauf::fromString(const QString& string)
     return dt;
 }
 
+double TabGaerverlauf::toDouble(const QString& string, bool *ok) const
+{
+    bool _ok = false;
+    double val = string.toDouble(&_ok);
+    if (!_ok)
+        val = QLocale().toDouble(string, &_ok);
+    if (ok)
+        *ok = _ok;
+    return val;
+}
+
 void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
@@ -734,7 +745,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = fromString(cols[0]);
+            QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
             {
                 QMap<int, QVariant> values = {{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
@@ -742,9 +753,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = cols[1].toDouble(&ok);
-                    if (!ok)
-                        sre = QLocale().toDouble(cols[1], &ok);
+                    double sre = toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelSchnellgaerverlauf::ColRestextrakt] = sre;
@@ -754,11 +763,11 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = cols[2].toDouble(&ok);
-                    if (!ok)
-                        temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = toDouble(cols[2], &ok);
                     if (ok)
+                    {
                         values[ModelSchnellgaerverlauf::ColTemp] = temp;
+                    }
                 }
                 if (cols.size() > 6)
                     values[ModelSchnellgaerverlauf::ColBemerkung] = cols[6];
@@ -783,7 +792,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = fromString(cols[0]);
+            QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
             {
                 QMap<int, QVariant> values = {{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
@@ -791,9 +800,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = cols[1].toDouble(&ok);
-                    if (!ok)
-                        sre = QLocale().toDouble(cols[1], &ok);
+                    double sre = toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelHauptgaerverlauf::ColRestextrakt] = sre;
@@ -803,11 +810,11 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = cols[2].toDouble(&ok);
-                    if (!ok)
-                        temp = QLocale().toDouble(cols[2], &ok);
+                    double temp = toDouble(cols[2], &ok);
                     if (ok)
+                    {
                         values[ModelHauptgaerverlauf::ColTemp] = temp;
+                    }
                 }
                 if (cols.size() > 6)
                     values[ModelHauptgaerverlauf::ColBemerkung] = cols[6];
@@ -832,33 +839,27 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = fromString(cols[0]);
+            QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
             {
-                double druck = 0;
                 QMap<int, QVariant> values = {{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
                                               {ModelNachgaerverlauf::ColZeitstempel, dt}};
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    druck = cols[1].toDouble(&ok);
-                    if (!ok)
-                        druck = QLocale().toDouble(cols[1], &ok);
+                    double druck = toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelNachgaerverlauf::ColDruck] = druck;
-                    }
-                }
-                if (cols.size() > 2)
-                {
-                    bool ok = false;
-                    double temp = cols[2].toDouble(&ok);
-                    if (!ok)
-                        temp = QLocale().toDouble(cols[2], &ok);
-                    if (ok)
-                    {
-                        values[ModelNachgaerverlauf::ColTemp] = temp;
-                        values[ModelNachgaerverlauf::ColCO2] = BierCalc::co2(druck, temp);
+                        if (cols.size() > 2)
+                        {
+                            double temp = toDouble(cols[2], &ok);
+                            if (ok)
+                            {
+                                values[ModelNachgaerverlauf::ColTemp] = temp;
+                                values[ModelNachgaerverlauf::ColCO2] = BierCalc::co2(druck, temp);
+                            }
+                        }
                     }
                 }
                 if (cols.size() > 4)

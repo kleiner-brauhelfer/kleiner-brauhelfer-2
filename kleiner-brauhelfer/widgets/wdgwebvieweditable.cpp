@@ -2,6 +2,7 @@
 #include "ui_wdgwebvieweditable.h"
 #include <QDir>
 #include <QMessageBox>
+#include <QPrintPreviewDialog>
 #include <QJsonDocument>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -43,10 +44,72 @@ WdgWebViewEditable::~WdgWebViewEditable()
     delete ui;
 }
 
+void WdgWebViewEditable::clear()
+{
+    ui->webview->setHtml("");
+}
+
 void WdgWebViewEditable::setHtmlFile(const QString& file)
 {
     ui->cbTemplateAuswahl->setItemText(0, file);
     ui->webview->setTemplateFile(gSettings->dataDir(1) + file);
+}
+
+void WdgWebViewEditable::printDocument(QPrinter *printer)
+{
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+    bool success = false;
+    QEventLoop loop;
+    ui->webview->page()->print(printer, [&](bool _success) { success = _success; loop.quit(); });
+    loop.exec();
+    if (success)
+    {
+        gSettings->beginGroup("General");
+        QRectF rect(printer->margins().left, printer->margins().top, printer->margins().right, printer->margins().bottom);
+        gSettings->setValue("PrintMargins", rect);
+        gSettings->endGroup();
+    }
+#else
+  Q_UNUSED(printer)
+#endif
+}
+
+void WdgWebViewEditable::printPreview()
+{
+    QVariant style;
+    if (gSettings->theme() == Settings::Dark)
+    {
+        style = mTemplateTags["Style"];
+        mTemplateTags["Style"] = "style_hell.css";
+        ui->webview->setUpdatesEnabled(false);
+
+        QEventLoop loop;
+        connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
+        ui->webview->renderTemplate(mTemplateTags);
+        loop.exec();
+    }
+
+    gSettings->beginGroup("General");
+
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setPageSize(QPrinter::A4);
+    printer.setOrientation(QPrinter::Portrait);
+    printer.setColorMode(QPrinter::Color);
+    QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
+    printer.setPageMargins(rect.left(), rect.top(), rect.width(), rect.height(), QPrinter::Millimeter);
+
+    gSettings->endGroup();
+
+    QPrintPreviewDialog dlg(&printer, ui->webview->page()->view());
+    connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(printDocument(QPrinter*)));
+    dlg.exec();
+
+    if (gSettings->theme() == Settings::Dark)
+    {
+        mTemplateTags["Style"] = style;
+        ui->webview->renderTemplate(mTemplateTags);
+        ui->webview->setUpdatesEnabled(true);
+    }
 }
 
 void WdgWebViewEditable::printToPdf(const QString& filePath)

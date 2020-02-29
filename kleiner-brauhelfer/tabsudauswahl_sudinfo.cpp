@@ -16,7 +16,11 @@ extern Settings* gSettings;
 void TabSudAuswahl::updateWebView()
 {
     QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
-    if (selection.count() == 1)
+    if (selection.count() == 0)
+    {
+        ui->webview->clear();
+    }
+    else if (selection.count() == 1)
     {
         const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
         int sudRow = proxyModel->mapRowToSource(selection[0].row());

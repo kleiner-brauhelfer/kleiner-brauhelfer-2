@@ -297,6 +297,7 @@ void TabSudAuswahl::setFilterStatus()
         ui->cbAlle->setCheckState(Qt::Unchecked);
     else
         ui->cbAlle->setCheckState(Qt::PartiallyChecked);
+    selectionChanged();
 }
 
 void TabSudAuswahl::on_cbAlle_clicked()
@@ -318,7 +319,6 @@ void TabSudAuswahl::on_cbAlle_clicked()
     }
     setFilterStatus();
 }
-
 
 void TabSudAuswahl::on_cbRezept_clicked()
 {
@@ -743,24 +743,5 @@ void TabSudAuswahl::on_btnToPdf_clicked()
     if (selection.count() == 0)
         return;
 
-    gSettings->beginGroup("General");
-
-    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
-
-    QString fileName;
-    if (selection.count() == 1)
-        fileName = static_cast<ProxyModel*>(ui->tableSudauswahl->model())->data(selection[0].row(), ModelSud::ColSudname).toString() + "_" + tr("Rohstoffe");
-    else
-        fileName = tr("Rohstoffe");
-
-    QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
-    if (!filePath.isEmpty())
-    {
-        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
-        ui->webview->printToPdf(filePath);
-        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
-    }
-
-    gSettings->endGroup();
+    ui->webview->printPreview();
 }

@@ -22,7 +22,8 @@ public:
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
-    QDateTime fromString(const QString& string);
+    QDateTime toDateTime(const QString& string) const;
+    double toDouble(const QString& string, bool *ok = nullptr) const;
     void pasteFromClipboardSchnellgaerverlauf();
     void pasteFromClipboardHauptgaerverlauf();
     void pasteFromClipboardNachgaerverlauf();

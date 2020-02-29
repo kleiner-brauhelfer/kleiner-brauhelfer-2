@@ -19,6 +19,7 @@ div.r {
   padding: 6px;
   margin-bottom: 10px;
   background-color: #dddddd;
+  page-break-inside: avoid;
 }
 
 div.rm {
@@ -26,6 +27,7 @@ div.rm {
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 5px;
+  page-break-inside: avoid;
 }
 
 h1 {

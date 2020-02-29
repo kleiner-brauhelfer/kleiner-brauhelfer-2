@@ -56,7 +56,7 @@ void WebView::printToPdf(const QString& filePath)
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QEventLoop loop;
     connect(page(), SIGNAL(pdfPrintingFinished(const QString&, bool)), &loop, SLOT(quit()));
-    page()->printToPdf(filePath, QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF(20, 20, 20, 20)));
+    page()->printToPdf(filePath, QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF(5, 10, 5, 15)));
     loop.exec();
   #else
     Q_UNUSED(filePath)

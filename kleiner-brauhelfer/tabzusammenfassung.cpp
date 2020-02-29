@@ -44,19 +44,5 @@ void TabZusammenfassung::updateWebView()
 
 void TabZusammenfassung::on_btnToPdf_clicked()
 {
-    gSettings->beginGroup("General");
-
-    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
-
-    QString fileName = bh->sud()->getSudname();
-    QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
-    if (!filePath.isEmpty())
-    {
-        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
-        ui->webview->printToPdf(filePath);
-        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
-    }
-
-    gSettings->endGroup();
+    ui->webview->printPreview();
 }

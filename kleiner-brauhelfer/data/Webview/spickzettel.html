@@ -5,7 +5,7 @@
   <script type="text/javascript">
     <!--
     function writeBrix(plato) {
-      document.write((parseFloat(plato.replace(',','.'))*{{Rezept.plato2brix}}).toFixed(1))
+      document.write((parseFloat(String(plato).replace(',','.'))*{{Rezept.plato2brix}}).toFixed(1))
     }
     -->
   </script>

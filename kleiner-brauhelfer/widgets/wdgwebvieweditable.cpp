@@ -217,7 +217,7 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
     if (ret == QMessageBox::Yes)
     {
         QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
-        QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
+        QFile file2(":/data/Webview/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))
             file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);

@@ -238,7 +238,7 @@ void DlgRohstoffVorlage::on_btn_Restore_clicked()
 {
     QFile file(getFileName(true));
     QFile::remove(file.fileName());
-    QFile file2(":/data/" + getFileName(false));
+    QFile file2(":/data/Rohstoffe/" + getFileName(false));
     if (file2.copy(file.fileName()))
         file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
     viewImpl(mRohstoffart);

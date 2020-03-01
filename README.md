@@ -8,7 +8,7 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.1.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.1.0)
+- [Version 2.1.1](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.1.1)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -31,10 +31,10 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.1.1 (in Entwicklung)
-- Neu: Neue Menufunktionen
+### Version 2.1.1 (01.03.2019)
+- Neu: Neue Menufunktionen (Sud anlegen, kopieren, teilen, löschen, Rezept importieren, exportieren)
 - Neu: Eingabemöglichkeit für Hopfengaben in g/l
-- Neu: Berechnung der Hopfengaben lässt sich deaktivieren (Prozentanteil enstpricht: ignorieren)
+- Neu: Hopfenberechnung lässt sich deaktivieren (Prozentanteil enstpricht: ignorieren) für freie Hopfengaben
 - Neu: Direktes Drucken des Spickzettels und Zusammenfassung
 - Fix: Diverse Felder wurden nicht auf schreibgeschützt gesetzt
 - Fix: Hopfengaben beim Ausschlagen haben jetzt eine Ausbeute von 0.0%

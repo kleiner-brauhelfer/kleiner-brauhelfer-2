@@ -31,7 +31,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.1.1 (01.03.2019)
+### Version 2.1.1 (01.03.2020)
 - Neu: Neue Menufunktionen (Sud anlegen, kopieren, teilen, löschen, Rezept importieren, exportieren)
 - Neu: Eingabemöglichkeit für Hopfengaben in g/l
 - Neu: Hopfenberechnung lässt sich deaktivieren (Prozentanteil enstpricht: ignorieren) für freie Hopfengaben
@@ -41,7 +41,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Fix: Brix Berechnung im Spickzettel
 - Fix: Minimale Fenstergrösse
 
-### Version 2.1.0 (25.01.2019)
+### Version 2.1.0 (25.01.2020)
 - Neu: Datenbankversion **2003**
 - Neu: Dialog für Zutatauswahl
 - Neu: Zutatenliste im Spickzettel

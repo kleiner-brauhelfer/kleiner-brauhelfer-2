@@ -105,15 +105,14 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
             }
             case Hopfen_Berechnung_IBU:
             {
-                double anteil = ibuSoll * fVal / 100 ;
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
-                double menge;
-                if (alpha == 0.0 || ausbeute == 0.0)
-                    menge = 0.0;
-                else
-                    menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
-                QSqlTableModel::setData(index(idx.row(), Colerg_Menge), menge);
+                if (alpha != 0.0 && ausbeute != 0.0)
+                {
+                    double anteil = ibuSoll * fVal / 100 ;
+                    double menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
+                    QSqlTableModel::setData(index(idx.row(), Colerg_Menge), menge);
+                }
                 break;
             }
             }

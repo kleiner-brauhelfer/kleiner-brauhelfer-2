@@ -360,6 +360,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     double erg_WHauptguss = modelSud()->data(row1, ModelSud::Colerg_WHauptguss).toDouble();
     double erg_WNachguss = modelSud()->data(row1, ModelSud::Colerg_WNachguss).toDouble();
     double erg_W_Gesamt = modelSud()->data(row1, ModelSud::Colerg_W_Gesamt).toDouble();
+    int berechnungsArtHopfen = modelSud()->data(row1, ModelSud::ColberechnungsArtHopfen).toInt();
 
     double factor = 1.0 - prozent;
     modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
@@ -374,6 +375,18 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     modelSud()->setData(row2, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
     modelSud()->setData(row2, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
     int sudId2 = modelSud()->data(row2, ModelSud::ColID).toInt();
+    for (int row = 0; row < modelHopfengaben()->rowCount(); ++row)
+    {
+        if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId2)
+        {
+            double ausbeute = modelHopfengaben()->data(row, ModelHopfengaben::ColAusbeute).toDouble();
+            if (berechnungsArtHopfen == Hopfen_Berechnung_Keine || (berechnungsArtHopfen == Hopfen_Berechnung_IBU && ausbeute == 0.0))
+            {
+                QModelIndex idx = modelHopfengaben()->index(row, ModelHopfengaben::Colerg_Menge);
+                modelHopfengaben()->setData(idx, idx.data().toDouble() * factor);
+            }
+        }
+    }
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
         if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId2)
@@ -396,6 +409,18 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     modelSud()->setData(row1, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
     modelSud()->setData(row1, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
     modelSud()->setData(row1, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
+    for (int row = 0; row < modelHopfengaben()->rowCount(); ++row)
+    {
+        if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId)
+        {
+            double ausbeute = modelHopfengaben()->data(row, ModelHopfengaben::ColAusbeute).toDouble();
+            if (berechnungsArtHopfen == Hopfen_Berechnung_Keine || (berechnungsArtHopfen == Hopfen_Berechnung_IBU && ausbeute == 0.0))
+            {
+                QModelIndex idx = modelHopfengaben()->index(row, ModelHopfengaben::Colerg_Menge);
+                modelHopfengaben()->setData(idx, idx.data().toDouble() * factor);
+            }
+        }
+    }
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
         if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId)

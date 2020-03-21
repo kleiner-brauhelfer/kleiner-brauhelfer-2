@@ -85,7 +85,7 @@
               <set>Qt::AlignCenter</set>
              </property>
              <property name="maximum">
-              <number>30</number>
+              <number>90</number>
              </property>
             </widget>
            </item>
@@ -127,10 +127,10 @@
               <number>2</number>
              </property>
              <property name="minimum">
-              <double>-9999.000000000000000</double>
+              <double>-99.000000000000000</double>
              </property>
              <property name="maximum">
-              <double>9999.000000000000000</double>
+              <double>99.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.010000000000000</double>
@@ -786,6 +786,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnSudhausausbeute">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="text">
                 <string>Anlagewert</string>
                </property>
@@ -813,6 +816,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnVerdampfungsziffer">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="text">
                 <string>Anlagewert</string>
                </property>
@@ -2640,8 +2646,11 @@
               <property name="decimals">
                <number>2</number>
               </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
               <property name="maximum">
-               <double>9999.000000000000000</double>
+               <double>99.000000000000000</double>
               </property>
              </widget>
             </item>

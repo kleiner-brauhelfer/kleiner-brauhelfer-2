@@ -1,5 +1,6 @@
 #include "biercalc.h"
 #include <math.h>
+#include <limits>
 
 const double BierCalc::dichteAlkohol = 0.7894;
 double BierCalc::faktorPlatoToBrix = 1.03;

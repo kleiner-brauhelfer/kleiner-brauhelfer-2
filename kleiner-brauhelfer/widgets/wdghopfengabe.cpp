@@ -172,7 +172,8 @@ void WdgHopfenGabe::updateValues(bool full)
 
         ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
 
-        switch (bh->sud()->getberechnungsArtHopfen())
+        int berechnungsArtHopfen = bh->sud()->getberechnungsArtHopfen();
+        switch (berechnungsArtHopfen)
         {
         case Hopfen_Berechnung_Keine:
             ui->btnMengeKorrektur->setVisible(false);
@@ -198,7 +199,7 @@ void WdgHopfenGabe::updateValues(bool full)
             break;
         }
 
-        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1)
+        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1 && berechnungsArtHopfen != Hopfen_Berechnung_Keine)
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProLiter->setReadOnly(true);

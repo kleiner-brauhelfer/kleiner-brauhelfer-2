@@ -20,10 +20,16 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(QWidget *parent) :
 {
     ui->setupUi(this);
     adjustSize();
+    gSettings->beginGroup("DlgRohstoffVorlage");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgRohstoffVorlage::~DlgRohstoffVorlage()
 {
+    gSettings->beginGroup("DlgRohstoffVorlage");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
 	delete ui;
 }
 

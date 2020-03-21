@@ -82,7 +82,7 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         if (root[QString("Malz%1_Einheit").arg(i)].toString() == "g")
             kg = toDouble(root[QString("Malz%1_Menge").arg(i)]) / 1000.0;
         else
-            kg = toDouble( root[QString("Malz%1_Menge").arg(i)]);
+            kg = toDouble(root[QString("Malz%1_Menge").arg(i)]);
         gesamt_schuettung += kg;
     }
 
@@ -90,12 +90,14 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     values[ModelSud::ColSudname] = root["Name"].toString();
     values[ModelSud::ColMenge] = menge;
     values[ModelSud::ColSW] = toDouble(root["Stammwuerze"]);
+    values[ModelSud::ColSudhausausbeute] = toDouble(root["Sudhausausbeute"]);
     values[ModelSud::ColFaktorHauptguss] = toDouble(root["Infusion_Hauptguss"]) / gesamt_schuettung;
     values[ModelSud::ColEinmaischenTemp] = toDouble(root["Infusion_Einmaischtemperatur"]);
     values[ModelSud::ColCO2] = toDouble(root["Karbonisierung"]);
     values[ModelSud::ColIBU] = toDouble(root["Bittere"]);
     values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Keine;
     values[ModelSud::ColKochdauerNachBitterhopfung] = toDouble(root["Kochzeit_Wuerze"]);
+    values[ModelSud::ColVergaerungsgrad] = toDouble(root["Endvergaerungsgrad"]);
     values[ModelSud::ColKommentar] = QString(QObject::tr("Rezept aus MaischMalzundMehr\n"
                                               "<b>Autor: </b> %1\n"
                                               "<b>Datum: </b> %2\n"
@@ -432,25 +434,19 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     ProxyModel model;
     int n;
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
-    bool gebraut = bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt() != Sud_Status_Rezept;
 
     QJsonObject root;
     root["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
     root["Datum"] = bh->modelSud()->data(sudRow, ModelSud::ColErstellt).toDate().toString("dd.MM.yyyy");
     root["Ausschlagswuerze"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColMenge).toDouble(), 'f', 1);
-    if (gebraut)
-        root["Sudhausausbeute"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
-    else
-        root["Sudhausausbeute"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColAnlageSudhausausbeute).toDouble(), 'f', 1);
+    root["Sudhausausbeute"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
     root["Stammwuerze"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
     root["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIBU).toInt());
     root["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
-    if (gebraut)
-        root["Alkohol"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Alkohol).toDouble(), 'f', 1);
+    root["Alkohol"] = QString::number(BierCalc::alkohol(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), BierCalc::sreAusVergaerungsgrad(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toDouble())), 'f', 1);
     root["Kurzbeschreibung"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString();
     root["Infusion_Hauptguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble(), 'f', 1);
-    if (gebraut)
-        root["Endvergaerungsgrad"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColtEVG).toDouble(), 'f', 1);
+    root["Endvergaerungsgrad"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toDouble(), 'f', 1);
     root["Karbonisierung"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
     root["Nachguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WNachguss).toDouble(), 'f', 1);
     root["Kochzeit_Wuerze"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt());

@@ -508,8 +508,11 @@
               <property name="decimals">
                <number>2</number>
               </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
               <property name="maximum">
-               <double>9999.000000000000000</double>
+               <double>99.000000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.010000000000000</double>
@@ -553,8 +556,11 @@
               <property name="decimals">
                <number>2</number>
               </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
               <property name="maximum">
-               <double>9999.000000000000000</double>
+               <double>99.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -614,8 +620,11 @@
               <property name="decimals">
                <number>2</number>
               </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
               <property name="maximum">
-               <double>9999.000000000000000</double>
+               <double>99.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -735,8 +744,11 @@
               <property name="decimals">
                <number>2</number>
               </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
               <property name="maximum">
-               <double>9999.000000000000000</double>
+               <double>99.000000000000000</double>
               </property>
              </widget>
             </item>

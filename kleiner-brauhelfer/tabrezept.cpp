@@ -51,6 +51,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbFaktorHauptgussEmpfehlung->setColumn(ModelSud::ColFaktorHauptgussEmpfehlung);
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
+    ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
 
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
@@ -507,7 +508,6 @@ void TabRezept::updateValues()
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
     ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
-    ui->tbAlkohol->setValue(BierCalc::alkohol(bh->sud()->getSW(), ui->tbRestextrakt->value()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);

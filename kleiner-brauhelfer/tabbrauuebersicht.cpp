@@ -64,8 +64,7 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
     mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
     mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 1, tr("Gesamtschüttung [kg]"), tr("kg"), 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol [%]"), tr("%"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol [%vol]"), tr("%"), 0, 0});
     mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt [°P]"), tr("°P"), 0, 0});
     mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});

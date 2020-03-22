@@ -108,6 +108,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, VerdampfungszifferIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, sEVG, toDouble())
     Q_PROPERTY_SUD_READONLY(double, tEVG, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, Alkohol, toDouble())
     Q_PROPERTY_SUD_READONLY(double, AnlageSudhausausbeute, toDouble())
     Q_PROPERTY_SUD_READONLY(double, RestalkalitaetFaktor, toDouble())
     Q_PROPERTY_SUD_READONLY(double, FaktorHauptgussEmpfehlung, toDouble())

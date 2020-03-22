@@ -443,7 +443,7 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     root["Stammwuerze"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
     root["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIBU).toInt());
     root["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
-    root["Alkohol"] = QString::number(BierCalc::alkohol(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), BierCalc::sreAusVergaerungsgrad(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toDouble())), 'f', 1);
+    root["Alkohol"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColAlkohol).toDouble(), 'f', 1);
     root["Kurzbeschreibung"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString();
     root["Infusion_Hauptguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble(), 'f', 1);
     root["Endvergaerungsgrad"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toDouble(), 'f', 1);

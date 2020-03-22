@@ -47,6 +47,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("VerdampfungszifferIst");
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
+    mVirtualField.append("Alkohol");
     mVirtualField.append("AnlageVerdampfungsziffer");
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("RestalkalitaetFaktor");
@@ -369,6 +370,13 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sre = data(idx.row(), ColSREIst).toDouble();
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
+    }
+    case ColAlkohol:
+    {
+        double sw = data(idx.row(), ColSW).toDouble();
+        double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
+        double sre = BierCalc::sreAusVergaerungsgrad(sw, vg);
+        return BierCalc::alkohol(sw, sre);
     }
     case ColAnlageVerdampfungsziffer:
     {

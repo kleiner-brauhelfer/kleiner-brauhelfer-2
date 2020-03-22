@@ -24,42 +24,48 @@
         <td valign="top">
           <table>
             <col width="*">
-            <col width="80">
             {{^Sud.StatusRezept}}<col width="80">{{/Sud.StatusRezept}}
+            <col width="80">
             <col width="*">
             <tr>
               <th></th>
-              <th>Rezept</th>
               {{^Sud.StatusRezept}}<th>Sud</th>{{/Sud.StatusRezept}}
+              <th>Rezept</th>
             </tr>
             <tr>
               <td>Menge</td>
-              <td class="value" align="center">{{Rezept.Menge}}</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Menge}}</td>{{/Sud.StatusRezept}}
+              <td class="value" align="center">{{Rezept.Menge}}</td>
               <td>l</td>
             </tr>
             <tr>
               <td>Stammw&uuml;rze</td>
-              <td class="value" align="center">{{Rezept.SW}}</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.SW}}</td>{{/Sud.StatusRezept}}
+              <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             <tr>
+              <td>Alkohol</td>
+              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Alkohol}}</td>{{/Sud.StatusRezept}}
+              <td class="value" align="center">{{Rezept.Alkohol}}</td>
+              <td>%vol</td>
+            </tr>
+            <tr>
               <td>Bittere</td>
-              <td class="value" align="center">{{Rezept.Bittere}}</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Bittere}}</td>{{/Sud.StatusRezept}}
+              <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
               <td>Farbe</td>
-              <td class="value" align="center">{{Rezept.Farbe}}</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Farbe}}</td>{{/Sud.StatusRezept}}
+              <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
               <td>CO&#x2082;-Gehalt</td>
-              <td class="value" align="center">{{Rezept.CO2}}</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.CO2}}</td>{{/Sud.StatusRezept}}
+              <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
             </tr>
           </table>

@@ -1758,7 +1758,7 @@
              </widget>
             </item>
             <item row="11" column="2">
-             <widget class="DoubleSpinBox" name="tbAlkohol">
+             <widget class="DoubleSpinBoxSud" name="tbAlkohol">
               <property name="minimumSize">
                <size>
                 <width>50</width>

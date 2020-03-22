@@ -99,6 +99,7 @@ public:
         ColVerdampfungszifferIst,
         ColsEVG,
         ColtEVG,
+        ColAlkohol,
         ColAnlageVerdampfungsziffer,
         ColAnlageSudhausausbeute,
         ColRestalkalitaetFaktor,

@@ -6,6 +6,7 @@
 #include <QPrintPreviewDialog>
 #include <QFileDialog>
 #include <QPrinter>
+#include <QPrinterInfo>
 #include <QSvgRenderer>
 #include <QDesktopServices>
 #include <QJsonDocument>
@@ -20,8 +21,7 @@ extern Settings* gSettings;
 TabEtikette::TabEtikette(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabEtikette),
-    mTemplateFilePath(""),
-    mPrinter(new QPrinter(QPrinter::HighResolution))
+    mTemplateFilePath("")
 {
     ui->setupUi(this);
 
@@ -45,9 +45,13 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
+    gSettings->beginGroup("General");
+    QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinterEtikette").toString());
+    mPrinter = new QPrinter(printerInfo, QPrinter::HighResolution);
     mPrinter->setPageSize(QPrinter::A4);
     mPrinter->setOrientation(QPrinter::Portrait);
     mPrinter->setColorMode(QPrinter::Color);
+	gSettings->endGroup();
 
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
@@ -236,8 +240,8 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     updateSvg();
 
     QRectF rect = ui->viewSvg->viewBoxF();
-    setData(ModelEtiketten::ColBreite, static_cast<int>(rect.width()));
-    setData(ModelEtiketten::ColHoehe, static_cast<int>(rect.height()));
+    setData(ModelEtiketten::ColBreite, rect.width());
+    setData(ModelEtiketten::ColHoehe, rect.height());
 }
 
 void TabEtikette::on_cbTagsErsetzen_stateChanged()
@@ -395,12 +399,9 @@ void TabEtikette::on_btnToPdf_clicked()
     QPrintPreviewDialog dlg(mPrinter, this);
     connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
     dlg.exec();
-    qreal left, top, right, bottom;
-    mPrinter->getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
-    setData(ModelEtiketten::ColRandLinks, left);
-    setData(ModelEtiketten::ColRandOben, top);
-    setData(ModelEtiketten::ColRandRechts, right);
-    setData(ModelEtiketten::ColRandUnten, bottom);
+    gSettings->beginGroup("General");
+    gSettings->setValue("DefaultPrinterEtikette", mPrinter->printerName());
+    gSettings->endGroup();
 }
 
 void TabEtikette::updateValues()
@@ -420,24 +421,24 @@ void TabEtikette::updateValues()
     if (!ui->tbAnzahl->hasFocus())
         ui->tbAnzahl->setValue(data(ModelEtiketten::ColAnzahl).toInt());
     if (!ui->tbLabelBreite->hasFocus())
-        ui->tbLabelBreite->setValue(data(ModelEtiketten::ColBreite).toInt());
+        ui->tbLabelBreite->setValue(data(ModelEtiketten::ColBreite).toDouble());
     if (!ui->tbLabelHoehe->hasFocus())
-        ui->tbLabelHoehe->setValue(data(ModelEtiketten::ColHoehe).toInt());
+        ui->tbLabelHoehe->setValue(data(ModelEtiketten::ColHoehe).toDouble());
     if (!ui->tbAbstandHor->hasFocus())
-        ui->tbAbstandHor->setValue(data(ModelEtiketten::ColAbstandHor).toInt());
+        ui->tbAbstandHor->setValue(data(ModelEtiketten::ColAbstandHor).toDouble());
     if (!ui->tbAbstandVert->hasFocus())
-        ui->tbAbstandVert->setValue(data(ModelEtiketten::ColAbstandVert).toInt());
+        ui->tbAbstandVert->setValue(data(ModelEtiketten::ColAbstandVert).toDouble());
     if (!ui->tbRandOben->hasFocus())
-        ui->tbRandOben->setValue(data(ModelEtiketten::ColRandOben).toInt());
+        ui->tbRandOben->setValue(data(ModelEtiketten::ColRandOben).toDouble());
     if (!ui->tbRandLinks->hasFocus())
-        ui->tbRandLinks->setValue(data(ModelEtiketten::ColRandLinks).toInt());
+        ui->tbRandLinks->setValue(data(ModelEtiketten::ColRandLinks).toDouble());
     if (!ui->tbRandRechts->hasFocus())
-        ui->tbRandRechts->setValue(data(ModelEtiketten::ColRandRechts).toInt());
+        ui->tbRandRechts->setValue(data(ModelEtiketten::ColRandRechts).toDouble());
     if (!ui->tbRandUnten->hasFocus())
-        ui->tbRandUnten->setValue(data(ModelEtiketten::ColRandUnten).toInt());
-    mPrinter->setPageMargins(ui->tbRandLinks->value(), ui->tbRandOben->value(),
-                             ui->tbRandRechts->value(), ui->tbRandUnten->value(),
-                             QPrinter::Millimeter);
+        ui->tbRandUnten->setValue(data(ModelEtiketten::ColRandUnten).toDouble());
+    mPrinter->setPageMargins(QMarginsF(ui->tbRandLinks->value(), ui->tbRandOben->value(),
+                                       ui->tbRandRechts->value(), ui->tbRandUnten->value()),
+                             QPageLayout::Millimeter);
 }
 
 void TabEtikette::on_tbAnzahl_valueChanged(int value)
@@ -446,7 +447,7 @@ void TabEtikette::on_tbAnzahl_valueChanged(int value)
         setData(ModelEtiketten::ColAnzahl, value);
 }
 
-void TabEtikette::on_tbLabelBreite_valueChanged(int value)
+void TabEtikette::on_tbLabelBreite_valueChanged(double value)
 {
     if (ui->tbLabelBreite->hasFocus())
     {
@@ -454,13 +455,12 @@ void TabEtikette::on_tbLabelBreite_valueChanged(int value)
         if (ui->cbSeitenverhaeltnis->isChecked())
         {
             QRectF rect = ui->viewSvg->viewBoxF();
-            double f = rect.height() / rect.width();
-            setData(ModelEtiketten::ColHoehe, static_cast<int>(f * value));
+            setData(ModelEtiketten::ColHoehe, value * rect.height() / rect.width());
         }
     }
 }
 
-void TabEtikette::on_tbLabelHoehe_valueChanged(int value)
+void TabEtikette::on_tbLabelHoehe_valueChanged(double value)
 {
     if (ui->tbLabelHoehe->hasFocus())
     {
@@ -468,8 +468,7 @@ void TabEtikette::on_tbLabelHoehe_valueChanged(int value)
         if (ui->cbSeitenverhaeltnis->isChecked())
         {
             QRectF rect = ui->viewSvg->viewBoxF();
-            double f = rect.width() / rect.height();
-            setData(ModelEtiketten::ColBreite, static_cast<int>(f * value));
+            setData(ModelEtiketten::ColBreite, value * rect.width() / rect.height());
         }
     }
 }
@@ -479,49 +478,48 @@ void TabEtikette::on_cbSeitenverhaeltnis_clicked(bool checked)
     if (checked)
     {
         QRectF rect = ui->viewSvg->viewBoxF();
-        double f = rect.height() / rect.width();
-        setData(ModelEtiketten::ColHoehe, static_cast<int>(f * ui->tbLabelBreite->value()));
+        setData(ModelEtiketten::ColHoehe,  ui->tbLabelBreite->value() * rect.height() / rect.width());
     }
 }
 
 void TabEtikette::on_btnGroesseAusSvg_clicked()
 {
     QRectF rect = ui->viewSvg->viewBoxF();
-    setData(ModelEtiketten::ColBreite, static_cast<int>(rect.width()));
-    setData(ModelEtiketten::ColHoehe, static_cast<int>(rect.height()));
+    setData(ModelEtiketten::ColBreite, rect.width());
+    setData(ModelEtiketten::ColHoehe, rect.height());
 }
 
-void TabEtikette::on_tbAbstandHor_valueChanged(int value)
+void TabEtikette::on_tbAbstandHor_valueChanged(double value)
 {
     if (ui->tbAbstandHor->hasFocus())
         setData(ModelEtiketten::ColAbstandHor, value);
 }
 
-void TabEtikette::on_tbAbstandVert_valueChanged(int value)
+void TabEtikette::on_tbAbstandVert_valueChanged(double value)
 {
     if (ui->tbAbstandVert->hasFocus())
         setData(ModelEtiketten::ColAbstandVert, value);
 }
 
-void TabEtikette::on_tbRandOben_valueChanged(int value)
+void TabEtikette::on_tbRandOben_valueChanged(double value)
 {
     if (ui->tbRandOben->hasFocus())
         setData(ModelEtiketten::ColRandOben, value);
 }
 
-void TabEtikette::on_tbRandLinks_valueChanged(int value)
+void TabEtikette::on_tbRandLinks_valueChanged(double value)
 {
     if (ui->tbRandLinks->hasFocus())
         setData(ModelEtiketten::ColRandLinks, value);
 }
 
-void TabEtikette::on_tbRandRechts_valueChanged(int value)
+void TabEtikette::on_tbRandRechts_valueChanged(double value)
 {
     if (ui->tbRandRechts->hasFocus())
         setData(ModelEtiketten::ColRandRechts, value);
 }
 
-void TabEtikette::on_tbRandUnten_valueChanged(int value)
+void TabEtikette::on_tbRandUnten_valueChanged(double value)
 {
     if (ui->tbRandUnten->hasFocus())
         setData(ModelEtiketten::ColRandUnten, value);

@@ -2,6 +2,7 @@
 #include "ui_wdgwebvieweditable.h"
 #include <QDir>
 #include <QMessageBox>
+#include <QPrinterInfo>
 #include <QPrintPreviewDialog>
 #include <QJsonDocument>
 #include "brauhelfer.h"
@@ -65,6 +66,7 @@ void WdgWebViewEditable::printDocument(QPrinter *printer)
     if (success)
     {
         gSettings->beginGroup("General");
+        gSettings->setValue("DefaultPrinter", printer->printerName());
         QRectF rect(printer->margins().left, printer->margins().top, printer->margins().right, printer->margins().bottom);
         gSettings->setValue("PrintMargins", rect);
         gSettings->endGroup();
@@ -91,7 +93,8 @@ void WdgWebViewEditable::printPreview()
 
     gSettings->beginGroup("General");
 
-    QPrinter printer(QPrinter::HighResolution);
+    QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinter").toString());
+    QPrinter printer(printerInfo, QPrinter::HighResolution);
     printer.setPageSize(QPrinter::A4);
     printer.setOrientation(QPrinter::Portrait);
     printer.setColorMode(QPrinter::Color);

@@ -75,6 +75,15 @@ public:
     };
     Q_ENUM(SudStatus)
 
+    enum class RohstoffTyp
+    {
+        Malz = 0,
+        Hopfen = 1,
+        Hefe = 2,
+        Zusatz = 3
+    };
+    Q_ENUM(RohstoffTyp)
+
 public:
 
     static const int libVersionMajor;
@@ -132,8 +141,7 @@ public:
 
     Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);
     Q_INVOKABLE int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);
-
-    Q_INVOKABLE bool rohstoffAbziehen(int typ, const QString& name, double menge);
+    Q_INVOKABLE bool rohstoffAbziehen(RohstoffTyp typ, const QString& name, double menge);
 
 signals:
     void databasePathChanged(const QString &databasePath);

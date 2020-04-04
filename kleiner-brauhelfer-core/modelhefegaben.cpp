@@ -1,5 +1,4 @@
 #include "modelhefegaben.h"
-#include "database_defs.h"
 #include "brauhelfer.h"
 #include <QDateTime>
 #include <cmath>

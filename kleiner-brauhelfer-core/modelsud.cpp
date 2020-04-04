@@ -1,5 +1,4 @@
 #include "modelsud.h"
-#include "database_defs.h"
 #include "brauhelfer.h"
 #include "modelausruestung.h"
 #include "modelnachgaerverlauf.h"
@@ -841,9 +840,8 @@ void ModelSud::updatePreis(int row)
     {
         QVariant name = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColName);
         double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-        int typ = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt();
         double preis;
-        if (typ == EWZ_Typ_Hopfen)
+        if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
             preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColPreis).toDouble();
         else
             preis = bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColPreis).toDouble();

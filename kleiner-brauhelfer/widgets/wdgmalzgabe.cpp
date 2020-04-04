@@ -142,7 +142,7 @@ void WdgMalzGabe::updateValues(bool full)
 
 void WdgMalzGabe::on_btnZutat_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Malz, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Malz, this);
     dlg.select(name());
     if (dlg.exec() == QDialog::Accepted)
         setData(ModelMalzschuettung::ColName, dlg.name());

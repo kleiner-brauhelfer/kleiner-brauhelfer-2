@@ -153,7 +153,7 @@ void WdgHefeGabe::updateValues(bool full)
 
 void WdgHefeGabe::on_btnZutat_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hefe, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hefe, this);
     dlg.select(name());
     if (dlg.exec() == QDialog::Accepted)
         setData(ModelHefegaben::ColName, dlg.name());

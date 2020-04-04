@@ -369,14 +369,14 @@ void WdgWeitereZutatGabe::on_btnZutat_clicked()
 {
     if (data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
     {
-        DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+        DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hopfen, this);
         dlg.select(name());
         if (dlg.exec() == QDialog::Accepted)
             setData(ModelHopfengaben::ColName, dlg.name());
     }
     else
     {
-        DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Zusatz, this);
+        DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Zusatz, this);
         dlg.select(name());
         if (dlg.exec() == QDialog::Accepted)
             setData(ModelWeitereZutatenGaben::ColName, dlg.name());

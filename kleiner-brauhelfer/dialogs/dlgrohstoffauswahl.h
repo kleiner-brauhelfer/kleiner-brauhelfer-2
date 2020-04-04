@@ -3,6 +3,7 @@
 
 #include "ui_dlgrohstoffauswahl.h"
 #include <QDialog>
+#include "brauhelfer.h"
 
 namespace Ui {
 class DlgRohstoffAuswahl;
@@ -14,17 +15,9 @@ class DlgRohstoffAuswahl : public QDialog
 	
 public:
 
-    enum Rohstoff
-    {
-        Malz,
-        Hopfen,
-        Hefe,
-        Zusatz
-    };
-
     static void restoreView();
 
-    explicit DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent = nullptr);
+    explicit DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget *parent = nullptr);
     virtual ~DlgRohstoffAuswahl() Q_DECL_OVERRIDE;
     void select(const QString &name);
     QString name() const;
@@ -39,7 +32,7 @@ private slots:
 private:
     Ui::DlgRohstoffAuswahl *ui;
     int mNameCol;
-    Rohstoff mRohstoff;
+    Brauhelfer::RohstoffTyp mRohstoff;
 };
 
 #endif // DLGROHSTOFFAUSWAHL_H

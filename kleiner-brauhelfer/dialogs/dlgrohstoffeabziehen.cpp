@@ -262,7 +262,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(0,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Malz,
                              name,
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
@@ -273,7 +273,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(1,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hopfen,
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
@@ -284,7 +284,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(2,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hefe,
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
@@ -295,7 +295,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(3,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Zusatz,
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);

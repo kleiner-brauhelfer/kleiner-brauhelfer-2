@@ -1,5 +1,4 @@
 #include "sudobject.h"
-#include "database_defs.h"
 #include "brauhelfer.h"
 #include "modelsud.h"
 #include <QDateTime>
@@ -261,7 +260,7 @@ void SudObject::brauzutatenAbziehen()
     ProxyModel *model = modelMalzschuettung();
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        bh->rohstoffAbziehen(0,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Malz,
                              model->data(r, ModelMalzschuettung::ColName).toString(),
                              model->data(r, ModelMalzschuettung::Colerg_Menge).toDouble());
     }
@@ -269,7 +268,7 @@ void SudObject::brauzutatenAbziehen()
     model = modelHopfengaben();
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        bh->rohstoffAbziehen(1,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hopfen,
                              model->data(r, ModelHopfengaben::ColName).toString(),
                              model->data(r, ModelHopfengaben::Colerg_Menge).toDouble());
     }
@@ -279,7 +278,7 @@ void SudObject::brauzutatenAbziehen()
     {
         if (model->data(r, ModelHefegaben::ColZugabeNach).toInt() == 0)
         {
-            bh->rohstoffAbziehen(2,
+            bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hefe,
                                  model->data(r, ModelHefegaben::ColName).toString(),
                                  model->data(r, ModelHefegaben::ColMenge).toDouble());
         }
@@ -291,7 +290,8 @@ void SudObject::brauzutatenAbziehen()
         if (model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
             model->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
         {
-            bh->rohstoffAbziehen(model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
+            int typ = model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt();
+            bh->rohstoffAbziehen(typ == EWZ_Typ_Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz,
                                  model->data(r, ModelWeitereZutatenGaben::ColName).toString(),
                                  model->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
         }

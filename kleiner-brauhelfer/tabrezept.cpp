@@ -739,7 +739,7 @@ void TabRezept::updateMalzDiagram()
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Malz, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Malz, this);
     if (dlg.exec() == QDialog::Accepted)
     {
         double p = 100.0;
@@ -815,7 +815,7 @@ void TabRezept::updateHopfenGaben()
 
 void TabRezept::on_btnNeueHopfenGabe_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hopfen, this);
     if (dlg.exec() == QDialog::Accepted)
     {
         double p = 100.0;
@@ -874,7 +874,7 @@ void TabRezept::updateHefeDiagram()
 
 void TabRezept::on_btnNeueHefeGabe_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hefe, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hefe, this);
     if (dlg.exec() == QDialog::Accepted)
     {
         QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()},
@@ -898,7 +898,7 @@ void TabRezept::weitereZutatenGaben_modified()
 
 void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hopfen, this);
     if (dlg.exec() == QDialog::Accepted)
     {
         QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
@@ -911,7 +911,7 @@ void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()
 
 void TabRezept::on_btnNeueWeitereZutat_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Zusatz, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Zusatz, this);
     if (dlg.exec() == QDialog::Accepted)
     {
         QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},

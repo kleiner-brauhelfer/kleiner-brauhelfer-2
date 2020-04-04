@@ -433,14 +433,14 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     return row1;
 }
 
-bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
+bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double menge)
 {
     int row;
     double mengeLager;
     SqlTableModel *modelLager;
     switch (typ)
     {
-    case 0:
+    case RohstoffTyp::Malz:
         modelLager = modelMalz();
         row = modelLager->getRowWithValue(ModelMalz::ColBeschreibung, name);
         if (row != -1)
@@ -451,7 +451,7 @@ bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
             return modelLager->setData(row, ModelMalz::ColMenge, mengeLager);
         }
         break;
-    case 1:
+    case RohstoffTyp::Hopfen:
         modelLager = modelHopfen();
         row = modelLager->getRowWithValue(ModelHopfen::ColBeschreibung, name);
         if (row != -1)
@@ -462,7 +462,7 @@ bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
             return modelLager->setData(row, ModelHopfen::ColMenge, mengeLager);
         }
         break;
-    case 2:
+    case RohstoffTyp::Hefe:
         modelLager = modelHefe();
         row = modelLager->getRowWithValue(ModelHefe::ColBeschreibung, name);
         if (row != -1)
@@ -473,7 +473,7 @@ bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
             return modelLager->setData(row, ModelHefe::ColMenge, mengeLager);
         }
         break;
-    case 3:
+    case RohstoffTyp::Zusatz:
         modelLager = modelWeitereZutaten();
         row = modelLager->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
         if (row != -1)

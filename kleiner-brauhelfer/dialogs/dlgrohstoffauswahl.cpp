@@ -24,7 +24,7 @@ void DlgRohstoffAuswahl::restoreView()
     gSettings->endGroup();
 }
 
-DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
+DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget *parent) :
 	QDialog(parent),
     ui(new Ui::DlgRohstoffAuswahl),
     mRohstoff(rohstoff)
@@ -42,7 +42,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
 
     switch (mRohstoff)
     {
-    case Malz:
+    case Brauhelfer::RohstoffTyp::Malz:
         model = bh->modelMalz();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
@@ -100,7 +100,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
 
         break;
 
-    case Hopfen:
+    case Brauhelfer::RohstoffTyp::Hopfen:
         model = bh->modelHopfen();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
@@ -160,7 +160,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
 
         break;
 
-    case Hefe:
+    case Brauhelfer::RohstoffTyp::Hefe:
         model = bh->modelHefe();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
@@ -240,7 +240,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
 
         break;
 
-    case Zusatz:
+    case Brauhelfer::RohstoffTyp::Zusatz:
         model = bh->modelWeitereZutaten();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
@@ -321,16 +321,16 @@ DlgRohstoffAuswahl::~DlgRohstoffAuswahl()
     gSettings->beginGroup("DlgRohstoffAuswahl");
     switch (mRohstoff)
     {
-    case Malz:
+    case Brauhelfer::RohstoffTyp::Malz:
         gSettings->setValue("tableStateMalz", ui->tableView->horizontalHeader()->saveState());
         break;
-    case Hopfen:
+    case Brauhelfer::RohstoffTyp::Hopfen:
         gSettings->setValue("tableStateHopfen", ui->tableView->horizontalHeader()->saveState());
         break;
-    case Hefe:
+    case Brauhelfer::RohstoffTyp::Hefe:
         gSettings->setValue("tableStateHefe", ui->tableView->horizontalHeader()->saveState());
         break;
-    case Zusatz:
+    case Brauhelfer::RohstoffTyp::Zusatz:
         gSettings->setValue("tableStateWeitereZutaten", ui->tableView->horizontalHeader()->saveState());
         break;
     }

@@ -220,7 +220,7 @@ void WdgHopfenGabe::updateValues(bool full)
 
 void WdgHopfenGabe::on_btnZutat_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hopfen, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hopfen, this);
     dlg.select(name());
     if (dlg.exec() == QDialog::Accepted)
         setData(ModelHopfengaben::ColName, dlg.name());

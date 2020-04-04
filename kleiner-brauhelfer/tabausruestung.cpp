@@ -29,6 +29,8 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
 
+    gSettings->beginGroup("TabAusruestung");
+
     int col;
     QTableView *table = ui->tableViewAnlagen;
     QHeaderView *header = table->horizontalHeader();
@@ -37,26 +39,25 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->setModel(model);
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
-
     col = ModelAusruestung::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Anlage"));
     table->setColumnHidden(col, false);
     header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
-
     col = ModelAusruestung::ColVermoegen;
     model->setHeaderData(col, Qt::Horizontal, tr("Vermögen [l]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
-
     col = ModelAusruestung::ColAnzahlSude;
     model->setHeaderData(col, Qt::Horizontal, tr("Anzahl Sude"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
+    mDefaultTableStateAnlagen = header->saveState();
+    header->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
 
     table = ui->tableViewGeraete;
     header = table->horizontalHeader();
@@ -70,6 +71,8 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     col = ModelGeraete::ColBezeichnung;
     table->setColumnHidden(col, false);
     header->setStretchLastSection(true);
+    mDefaultTableStateGeraete = header->saveState();
+    header->restoreState(gSettings->value("tableStateGeraete").toByteArray());
 
     table = ui->tableViewSude;
     header = table->horizontalHeader();
@@ -81,47 +84,38 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
         table->setColumnHidden(col, true);
     header->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableViewSude_customContextMenuRequested(const QPoint&)));
-
     col = ModelSud::ColSudname;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new ReadonlyDelegate(table));
     header->resizeSection(col, 200);
     header->moveSection(header->visualIndex(col), 0);
-
     col = ModelSud::ColSudnummer;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
-
     col = ModelSud::ColBraudatum;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
-
     col = ModelSud::Colerg_EffektiveAusbeute;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
-
     col = ModelSud::ColVerdampfungszifferIst;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 4);
-
     col = ModelSud::ColAusbeuteIgnorieren;
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
     header->resizeSection(col, 150);
     header->moveSection(header->visualIndex(col), 5);
-
-    gSettings->beginGroup("TabAusruestung");
-
-    mDefaultTableState = header->saveState();
-    header->restoreState(gSettings->value("tableState").toByteArray());
+    mDefaultTableStateSude = header->saveState();
+    header->restoreState(gSettings->value("tableStateSude").toByteArray());
 
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
@@ -155,7 +149,9 @@ TabAusruestung::~TabAusruestung()
 void TabAusruestung::saveSettings()
 {
     gSettings->beginGroup("TabAusruestung");
-    gSettings->setValue("tableState", ui->tableViewSude->horizontalHeader()->saveState());
+    gSettings->setValue("tableStateAnlagen", ui->tableViewAnlagen->horizontalHeader()->saveState());
+    gSettings->setValue("tableStateGeraete", ui->tableViewGeraete->horizontalHeader()->saveState());
+    gSettings->setValue("tableStateSude", ui->tableViewSude->horizontalHeader()->saveState());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterLeftState", ui->splitterLeft->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
@@ -164,7 +160,9 @@ void TabAusruestung::saveSettings()
 
 void TabAusruestung::restoreView()
 {
-    ui->tableViewSude->horizontalHeader()->restoreState(mDefaultTableState);
+    ui->tableViewAnlagen->horizontalHeader()->restoreState(mDefaultTableStateAnlagen);
+    ui->tableViewGeraete->horizontalHeader()->restoreState(mDefaultTableStateGeraete);
+    ui->tableViewSude->horizontalHeader()->restoreState(mDefaultTableStateSude);
     ui->splitter->restoreState(mDefaultSplitterState);
     ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);

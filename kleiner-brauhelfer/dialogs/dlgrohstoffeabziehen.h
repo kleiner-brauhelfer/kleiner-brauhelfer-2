@@ -14,9 +14,10 @@ class DlgRohstoffeAbziehen : public QDialog
 public:
     explicit DlgRohstoffeAbziehen(QWidget *parent = nullptr);
     DlgRohstoffeAbziehen(int typ, const QString& name, double menge, QWidget *parent = nullptr);
-    ~DlgRohstoffeAbziehen();
+    virtual ~DlgRohstoffeAbziehen() Q_DECL_OVERRIDE;
 
 private slots:
+    void reject() Q_DECL_OVERRIDE;
     void on_btnAbziehen_clicked();
 
 private:
@@ -24,6 +25,7 @@ private:
 
 private:
     Ui::DlgRohstoffeAbziehen *ui;
+    bool mAbgezogen;
 };
 
 #endif // DLGROHSTOFFEABZIEHEN_H

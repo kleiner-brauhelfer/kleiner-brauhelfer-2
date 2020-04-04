@@ -1,6 +1,7 @@
 #include "dlgrohstoffeabziehen.h"
 #include "ui_dlgrohstoffeabziehen.h"
 #include <QStandardItemModel>
+#include <QMessageBox>
 #include "model/doublespinboxdelegate.h"
 #include "model/readonlydelegate.h"
 #include "model/spinboxdelegate.h"
@@ -25,7 +26,8 @@ public:
 
 DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DlgRohstoffeAbziehen)
+    ui(new Ui::DlgRohstoffeAbziehen),
+    mAbgezogen(false)
 {
     ui->setupUi(this);
     build();
@@ -34,7 +36,8 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(QWidget *parent) :
 
 DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(int typ, const QString &name, double menge, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DlgRohstoffeAbziehen)
+    ui(new Ui::DlgRohstoffeAbziehen),
+    mAbgezogen(false)
 {
     ui->setupUi(this);
     build(typ, name, menge);
@@ -44,6 +47,20 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(int typ, const QString &name, double 
 DlgRohstoffeAbziehen::~DlgRohstoffeAbziehen()
 {
     delete ui;
+}
+
+void DlgRohstoffeAbziehen::reject()
+{
+    if (!mAbgezogen)
+    {
+        int ret = QMessageBox::warning(this, windowTitle(), tr("Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?"), QMessageBox::Yes | QMessageBox::Cancel);
+        if (ret == QMessageBox::Yes)
+            QDialog::reject();
+    }
+    else
+    {
+        QDialog::reject();
+    }
 }
 
 void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
@@ -284,4 +301,6 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
         model->setData(model->index(r, 1), 0.0);
         model->setData(model->index(r, 2), bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColMengeGramm));
     }
+
+    mAbgezogen = true;
 }

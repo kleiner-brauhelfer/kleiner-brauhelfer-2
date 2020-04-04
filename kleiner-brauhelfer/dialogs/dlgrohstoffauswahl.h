@@ -22,8 +22,10 @@ public:
         Zusatz
     };
 
+    static void restoreView();
+
     explicit DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent = nullptr);
-	~DlgRohstoffAuswahl();
+    virtual ~DlgRohstoffAuswahl() Q_DECL_OVERRIDE;
     void select(const QString &name);
     QString name() const;
 
@@ -37,6 +39,7 @@ private slots:
 private:
     Ui::DlgRohstoffAuswahl *ui;
     int mNameCol;
+    Rohstoff mRohstoff;
 };
 
 #endif // DLGROHSTOFFAUSWAHL_H

@@ -54,7 +54,9 @@ private:
 private:
     Ui::TabAusruestung *ui;
     int mRow;
-    QByteArray mDefaultTableState;
+    QByteArray mDefaultTableStateAnlagen;
+    QByteArray mDefaultTableStateGeraete;
+    QByteArray mDefaultTableStateSude;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterLeftState;
     QByteArray mDefaultSplitterHelpState;

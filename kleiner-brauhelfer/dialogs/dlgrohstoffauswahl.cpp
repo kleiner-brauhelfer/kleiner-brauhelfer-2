@@ -14,12 +14,25 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+void DlgRohstoffAuswahl::restoreView()
+{
+    gSettings->beginGroup("DlgRohstoffAuswahl");
+    gSettings->setValue("tableStateMalz", QByteArray());
+    gSettings->setValue("tableStateHopfen", QByteArray());
+    gSettings->setValue("tableStateHefe", QByteArray());
+    gSettings->setValue("tableStateWeitereZutaten", QByteArray());
+    gSettings->endGroup();
+}
+
 DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
 	QDialog(parent),
-	ui(new Ui::DlgRohstoffAuswahl)
+    ui(new Ui::DlgRohstoffAuswahl),
+    mRohstoff(rohstoff)
 {
     ui->setupUi(this);
     ui->tableView->setFocus();
+
+    gSettings->beginGroup("DlgRohstoffAuswahl");
 
     int col;
     SqlTableModel *model;
@@ -27,7 +40,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
     ProxyModel *proxy = new ProxyModelRohstoff(this);
     ComboBoxDelegate *comboBox;
 
-    switch (rohstoff)
+    switch (mRohstoff)
     {
     case Malz:
         model = bh->modelMalz();
@@ -82,6 +95,8 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 7);
+
+        header->restoreState(gSettings->value("tableStateMalz").toByteArray());
 
         break;
 
@@ -140,6 +155,8 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 7);
+
+        header->restoreState(gSettings->value("tableStateHopfen").toByteArray());
 
         break;
 
@@ -219,6 +236,8 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 10);
 
+        header->restoreState(gSettings->value("tableStateHefe").toByteArray());
+
         break;
 
     case Zusatz:
@@ -284,23 +303,40 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 8);
 
+        header->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
+
         break;
     }
 
     proxy->setFilterKeyColumn(mNameCol);
     proxy->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 
-    gSettings->beginGroup("DlgRohstoffAuswahl");
     resize(gSettings->value("size").toSize());
+
     gSettings->endGroup();
 }
 
 DlgRohstoffAuswahl::~DlgRohstoffAuswahl()
 {
     gSettings->beginGroup("DlgRohstoffAuswahl");
+    switch (mRohstoff)
+    {
+    case Malz:
+        gSettings->setValue("tableStateMalz", ui->tableView->horizontalHeader()->saveState());
+        break;
+    case Hopfen:
+        gSettings->setValue("tableStateHopfen", ui->tableView->horizontalHeader()->saveState());
+        break;
+    case Hefe:
+        gSettings->setValue("tableStateHefe", ui->tableView->horizontalHeader()->saveState());
+        break;
+    case Zusatz:
+        gSettings->setValue("tableStateWeitereZutaten", ui->tableView->horizontalHeader()->saveState());
+        break;
+    }
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
-	delete ui;
+    delete ui;
 }
 
 void DlgRohstoffAuswahl::select(const QString &name)

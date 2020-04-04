@@ -249,7 +249,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="pageHautpgaerung">
+     <widget class="QWidget" name="pageHauptgaerung">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -269,7 +269,7 @@
         <number>4</number>
        </property>
        <item>
-        <widget class="QSplitter" name="splitterHautpgaerung">
+        <widget class="QSplitter" name="splitterHauptgaerung">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>

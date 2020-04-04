@@ -69,6 +69,7 @@ SOURCES += \
     dialogs/dlgvolumen.cpp \
     helper/htmlhighlighter.cpp \
     helper/mustache.cpp \
+    helper/obrama.cpp \
     model/checkboxdelegate.cpp \
     model/comboboxdelegate.cpp \
     model/datedelegate.cpp \
@@ -138,6 +139,7 @@ HEADERS += \
     dialogs/dlgvolumen.h \
     helper/htmlhighlighter.h \
     helper/mustache.h \
+    helper/obrama.h \
     model/checkboxdelegate.h \
     model/comboboxdelegate.h \
     model/datedelegate.h \

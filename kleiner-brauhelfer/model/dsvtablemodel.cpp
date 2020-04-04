@@ -126,10 +126,7 @@ DsvTableModel::~DsvTableModel()
 int DsvTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    if (mHasHeaderLine)
-        return mData->rowCount() - 1;
-    else
-        return mData->rowCount();
+    return mData->rowCount();
 }
 
 int DsvTableModel::columnCount(const QModelIndex &parent) const
@@ -140,21 +137,33 @@ int DsvTableModel::columnCount(const QModelIndex &parent) const
 
 QVariant DsvTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    if (role != Qt::DisplayRole)
+    if (role == Qt::DisplayRole)
     {
-        return QVariant();
-    }
-    if (orientation == Qt::Horizontal)
-    {
-        if (mHasHeaderLine)
-            return mData->at(0, section);
+        if (orientation == Qt::Horizontal)
+        {
+            if (section >= 0 && section < mHeaderData.count())
+                return mHeaderData[section];
+        }
         else
-            return QString::number(section);
+        {
+            return QString::number(section + 1);
+        }
     }
-    else
+    return QVariant();
+}
+
+bool DsvTableModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role)
+{
+    if (orientation == Qt::Horizontal && role == Qt::EditRole)
     {
-        return QString::number(section + 1);
+        if (section >= 0 && section < mHeaderData.count())
+        {
+            mHeaderData[section] = value.toString();
+            emit headerDataChanged(orientation, section, section);
+            return true;
+        }
     }
+    return false;
 }
 
 Qt::ItemFlags DsvTableModel::flags(const QModelIndex &index) const
@@ -168,8 +177,7 @@ QVariant DsvTableModel::data(const QModelIndex &index, int role) const
 {         
     if (index.isValid() && (role == Qt::DisplayRole || role == Qt::EditRole))
     {
-        int row = mHasHeaderLine ? index.row() + 1 : index.row();
-        return mData->at(row, index.column());
+        return mData->at(index.row(), index.column());
     }
     return QVariant();
 }
@@ -178,8 +186,7 @@ bool DsvTableModel::setData(const QModelIndex &index, const QVariant &value, int
 {
     if (index.isValid() && role == Qt::EditRole)
     {
-        int row = mHasHeaderLine ? index.row() + 1 : index.row();
-        if (mData->setValue(row, index.column(), value.toString()))
+        if (mData->setValue(index.row(), index.column(), value.toString()))
         {
             emit dataChanged(index, index);
             return true;
@@ -193,10 +200,9 @@ bool DsvTableModel::insertRows(int row, int count, const QModelIndex &parent)
     Q_UNUSED(parent)
     beginInsertRows(QModelIndex(), row, row + count - 1);
     QList<QString> list;
+    list.reserve(columnCount(parent));
     for (int c = 0; c < columnCount(parent); ++c)
         list.append("");
-    if (mHasHeaderLine)
-        ++row;
     for (int r = row; r < row + count; ++r)
         mData->insert(r, list);
     endInsertRows();
@@ -207,27 +213,25 @@ bool DsvTableModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent)
     beginRemoveRows(QModelIndex(), row, row + count - 1);
-    if (mHasHeaderLine)
-        ++row;
     for (int r = 0; r < count; ++r)
         mData->removeAt(row);
     endRemoveRows();
     return true;
 }
 
-bool DsvTableModel::hasHeaderLine() const
+int DsvTableModel::fieldIndex(const QString &fieldName) const
 {
-   return mHasHeaderLine;
+    return mHeaderData.indexOf(fieldName);
 }
 
-void DsvTableModel::setHasHeaderLine(bool hasHeaderLine)
+QString DsvTableModel::fieldName(int fieldIndex) const
 {
-    beginResetModel();
-    mHasHeaderLine = hasHeaderLine;
-    endResetModel();
+    if (fieldIndex >= 0 && fieldIndex < mHeaderData.length())
+        return mHeaderData.at(fieldIndex);
+    return QString();
 }
 
-void DsvTableModel::checkString(QString &value, QList<QString> &row, const QChar &character)
+void DsvTableModel::checkString(QString &value, QList<QString> &row, const QChar &character, bool &isHeaderRow)
 {
     if(value.count("\"") % 2 == 0)
     {
@@ -240,7 +244,11 @@ void DsvTableModel::checkString(QString &value, QList<QString> &row, const QChar
         row.append(value);
         if (character == QChar('\n'))
         {
-            mData->append(row);
+            if (isHeaderRow)
+                mHeaderData = row;
+            else
+                mData->append(row);
+            isHeaderRow = false;
             row.clear();
         }
         value.clear();
@@ -272,14 +280,14 @@ bool DsvTableModel::loadFromFile(const QString &fileName, bool hasHeaderLine, QC
     if (!file.open(QFile::ReadOnly | QFile::Text))
         return false;
 
-    mHasHeaderLine = hasHeaderLine;
-
     QString value;
     QTextStream in(&file);
     QList<QString> row;
 
     in.setCodec("UTF-8");
     beginResetModel();
+
+    bool isHeaderRow = hasHeaderLine;
     mData->clear();
     while (true)
     {
@@ -289,18 +297,18 @@ bool DsvTableModel::loadFromFile(const QString &fileName, bool hasHeaderLine, QC
         {
             if (character == delim)
             {
-                checkString(value, row, character);
-                checkString(value, row, QChar('\n'));
+                checkString(value, row, character, isHeaderRow);
+                checkString(value, row, QChar('\n'), isHeaderRow);
             }
             else
             {
-                checkString(value, row, QChar('\n'));
+                checkString(value, row, QChar('\n'), isHeaderRow);
             }
             break;
         }
         else if (character == delim || character == QChar('\n'))
         {
-            checkString(value, row, character);
+            checkString(value, row, character, isHeaderRow);
         }
         else
         {
@@ -308,11 +316,17 @@ bool DsvTableModel::loadFromFile(const QString &fileName, bool hasHeaderLine, QC
         }
     }
     file.close();
+    if (!hasHeaderLine)
+    {
+        mHeaderData.reserve(mData->columnCount());
+        for (int c = 0; c < mData->columnCount(); c++)
+            mHeaderData.append(QString::number(c));
+    }
     endResetModel();
     return true;
 }
 
-bool DsvTableModel::save(const QString &fileName, QChar delim)
+bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar delim)
 {
     QFile file(fileName);
 
@@ -335,13 +349,27 @@ bool DsvTableModel::save(const QString &fileName, QChar delim)
 
     QTextStream out(&file);
     out.setCodec("UTF-8");
+    if (withHeaderLine)
+    {
+        for (int i = 0; i < mHeaderData.count(); ++i)
+        {
+            QString value = mHeaderData[i];
+            value.replace("\"", "\"\"");
+            if (value.contains("\"") || value.contains(delim) || value.contains('\r') || value.contains('\n'))
+                out << "\"" << value << "\"";
+            else
+                out << value;
+            out << delim;
+        }
+        out << endl;
+    }
     for (int r = 0; r < mData->rowCount(); ++r)
     {
         for (int c = 0; c < mData->columnCount(); ++c)
         {
             QString value = mData->at(r, c);
             value.replace("\"", "\"\"");
-            if (value.contains("\"") || value.contains(delim))
+            if (value.contains("\"") || value.contains(delim) || value.contains('\r') || value.contains('\n'))
                 out << "\"" << value << "\"";
             else
                 out << value;

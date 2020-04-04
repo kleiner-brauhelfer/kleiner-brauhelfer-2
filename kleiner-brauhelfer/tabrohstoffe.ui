@@ -856,6 +856,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="buttonNeuVorlageObrama">
+       <property name="text">
+        <string>Neuer Eintrag aus oBraMa</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonCopy">
        <property name="enabled">
         <bool>true</bool>

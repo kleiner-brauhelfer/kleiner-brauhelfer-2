@@ -115,7 +115,7 @@ void WdgMalzGabe::updateValues(bool full)
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
 
         int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMaxProzent).toInt();
-        if (ui->tbMengeProzent->value() > max)
+        if (max > 0 && ui->tbMengeProzent->value() > max)
         {
             ui->lblWarnung->setVisible(true);
             ui->lblWarnung->setText(tr("Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.").arg(max));

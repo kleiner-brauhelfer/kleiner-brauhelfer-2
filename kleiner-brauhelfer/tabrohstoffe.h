@@ -35,6 +35,7 @@ private slots:
     void spalteAnzeigenWeitereZutaten(bool checked);
     void on_buttonAdd_clicked();
     void on_buttonNeuVorlage_clicked();
+    void on_buttonNeuVorlageObrama_clicked();
     void on_buttonDelete_clicked();
     void on_buttonCopy_clicked();
     void on_radioButtonAlle_clicked();

@@ -118,8 +118,6 @@ void ModelMalz::defaultValues(QMap<int, QVariant> &values) const
     values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
     if (!values.contains(ColFarbe))
         values.insert(ColFarbe, 0);
-    if (!values.contains(ColMaxProzent))
-        values.insert(ColMaxProzent, 100);
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
     if (!values.contains(ColPreis))

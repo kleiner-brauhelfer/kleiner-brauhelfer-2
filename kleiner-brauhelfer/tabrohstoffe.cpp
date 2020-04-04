@@ -73,7 +73,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelMalz::ColMaxProzent;
     model->setHeaderData(col, Qt::Horizontal, tr("Max. Anteil [%]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, 100, 1, true, table));
+    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, 100, 1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 3);
 
@@ -281,7 +281,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHefe::ColWuerzemenge;
     model->setHeaderData(col, Qt::Horizontal, tr("Wuerzemenge [l]"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, true, table));
+    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 7);
 
@@ -991,28 +991,59 @@ void TabRohstoffe::on_buttonAdd_clicked()
 void TabRohstoffe::on_buttonNeuVorlage_clicked()
 {
     QTableView *table;
-    DlgRohstoffVorlage dlg(this);
+    DlgRohstoffVorlage::Art art;
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
     case 0:
         table = ui->tableMalz;
-        dlg.ViewMalzauswahl();
+        art = DlgRohstoffVorlage::Art::Malz;
         break;
     case 1:
         table = ui->tableHopfen;
-        dlg.ViewHopfenauswahl();
+        art = DlgRohstoffVorlage::Art::Hopfen;
         break;
     case 2:
         table = ui->tableHefe;
-        dlg.ViewHefeauswahl();
+        art = DlgRohstoffVorlage::Art::Hefe;
         break;
     case 3:
         table = ui->tableWeitereZutaten;
-        dlg.ViewWeitereZutatenauswahl();
+        art = DlgRohstoffVorlage::Art::WZutaten;
         break;
     default:
         return;
     }
+    DlgRohstoffVorlage dlg(art, this);
+    if (dlg.exec() == QDialog::Accepted)
+        addEntry(table, dlg.values());
+}
+
+void TabRohstoffe::on_buttonNeuVorlageObrama_clicked()
+{
+    QTableView *table;
+    DlgRohstoffVorlage::Art art;
+    switch (ui->toolBoxRohstoffe->currentIndex())
+    {
+    case 0:
+        table = ui->tableMalz;
+        art = DlgRohstoffVorlage::Art::MalzOBraMa;
+        break;
+    case 1:
+        table = ui->tableHopfen;
+        art = DlgRohstoffVorlage::Art::HopfenOBraMa;
+        break;
+    case 2:
+        table = ui->tableHefe;
+        art = DlgRohstoffVorlage::Art::HefeOBraMa;
+        break;
+    case 3:
+        table = ui->tableWeitereZutaten;
+        art = DlgRohstoffVorlage::Art::WZutatenOBraMa;
+        break;
+    default:
+        return;
+    }
+    DlgRohstoffVorlage dlg(art, this);
     if (dlg.exec() == QDialog::Accepted)
         addEntry(table, dlg.values());
 }

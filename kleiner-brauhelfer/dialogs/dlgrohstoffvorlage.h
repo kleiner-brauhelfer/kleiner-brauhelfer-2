@@ -13,12 +13,21 @@ class DlgRohstoffVorlage : public QDialog
 	Q_OBJECT
 	
 public:
-    explicit DlgRohstoffVorlage(QWidget *parent = nullptr);
-	~DlgRohstoffVorlage();
-    void ViewMalzauswahl();
-    void ViewHopfenauswahl();
-    void ViewHefeauswahl();
-    void ViewWeitereZutatenauswahl();
+    enum Art
+    {
+        Malz,
+        Hopfen,
+        Hefe,
+        WZutaten,
+        MalzOBraMa,
+        HopfenOBraMa,
+        HefeOBraMa,
+        WZutatenOBraMa
+    };
+
+public:
+    explicit DlgRohstoffVorlage(Art art, QWidget *parent = nullptr);
+    virtual ~DlgRohstoffVorlage() Q_DECL_OVERRIDE;
     QMap<int, QVariant> values() const;
 
 private slots:
@@ -34,11 +43,12 @@ private slots:
 
 private:
     QString getFileName(bool withPath) const;
-    void viewImpl(int art);
+    void setModel();
+    bool isOBraMa() const;
 
 private:
     Ui::DlgRohstoffVorlage *ui;
-    int mRohstoffart;
+    Art mRohstoffart;
     QMap<int, QVariant> mValues;
 };
 

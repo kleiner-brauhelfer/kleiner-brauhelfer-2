@@ -27,9 +27,6 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
     ProxyModel *proxy = new ProxyModelRohstoff(this);
     ComboBoxDelegate *comboBox;
 
-    ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
-    ui->tableView->verticalHeader()->setMinimumSectionSize(ui->tableView->verticalHeader()->defaultSectionSize());
-
     switch (rohstoff)
     {
     case Malz:
@@ -114,21 +111,15 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 2);
 
-        col = ModelHopfen::ColPellets;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new CheckBoxDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 3);
-
         col = ModelHopfen::ColBemerkung;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 4);
+        header->moveSection(header->visualIndex(col), 3);
 
         col = ModelHopfen::ColEigenschaften;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 5);
+        header->moveSection(header->visualIndex(col), 4);
 
         col = ModelHopfen::ColTyp;
         ui->tableView->setColumnHidden(col, false);
@@ -136,19 +127,19 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         comboBox->setColors(gSettings->HopfenTypBackgrounds);
         ui->tableView->setItemDelegateForColumn(col, comboBox);
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 6);
+        header->moveSection(header->visualIndex(col), 5);
 
         col = ModelHopfen::ColEingelagert;
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new DateDelegate(false, false, ui->tableView));
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 7);
+        header->moveSection(header->visualIndex(col), 6);
 
         col = ModelHopfen::ColMindesthaltbar;
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 8);
+        header->moveSection(header->visualIndex(col), 7);
 
         break;
 
@@ -198,46 +189,35 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Rohstoff rohstoff, QWidget *parent) :
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 5);
 
-        col = ModelHefe::ColVerpackungsmenge;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 6);
-
-        col = ModelHefe::ColWuerzemenge;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new SpinBoxDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 7);
-
         col = ModelHefe::ColSED;
         ui->tableView->setColumnHidden(col, false);
         comboBox = new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, ui->tableView);
         comboBox->setColors(gSettings->HefeSedBackgrounds);
         ui->tableView->setItemDelegateForColumn(col, comboBox);
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 8);
+        header->moveSection(header->visualIndex(col), 6);
 
         col = ModelHefe::ColEVG;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 9);
+        header->moveSection(header->visualIndex(col), 7);
 
         col = ModelHefe::ColTemperatur;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 10);
+        header->moveSection(header->visualIndex(col), 8);
 
         col = ModelHefe::ColEingelagert;
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new DateDelegate(false, false, ui->tableView));
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 11);
+        header->moveSection(header->visualIndex(col), 9);
 
         col = ModelHefe::ColMindesthaltbar;
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
         header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 12);
+        header->moveSection(header->visualIndex(col), 10);
 
         break;
 

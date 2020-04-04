@@ -178,10 +178,10 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
     }
     else if (idx.column() == ModelSud::ColStatus)
     {
-        int status = idx.data().toInt();
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(idx.data().toInt());
         QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
         mSignalModifiedBlocked = true;
-        if (status == Sud_Status_Rezept)
+        if (status == Brauhelfer::SudStatus::Rezept)
         {
             for (int row = 0; row < rowCount(); ++row)
             {
@@ -189,7 +189,7 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
                     QSqlTableModel::setData(index(row, ColZugabestatus), EWZ_Zugabestatus_nichtZugegeben);
             }
         }
-        else if (status == Sud_Status_Gebraut)
+        else if (status == Brauhelfer::SudStatus::Gebraut)
         {
             for (int row = 0; row < rowCount(); ++row)
             {
@@ -208,7 +208,8 @@ void ModelWeitereZutatenGaben::defaultValues(QMap<int, QVariant> &values) const
         QVariant sudId = values.value(ColSudID);
         if (!values.contains(ColZugabeNach))
         {
-            if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt() != Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+            if (status != Brauhelfer::SudStatus::Rezept)
             {
                 QDateTime braudatum = bh->modelSud()->dataSud(sudId, ModelSud::ColBraudatum).toDateTime();
                 if (braudatum.isValid())

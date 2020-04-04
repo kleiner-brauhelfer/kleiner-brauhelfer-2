@@ -106,12 +106,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         if (parts & TagSud)
         {
             QVariantMap ctxSud;
-            int status = bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt();
-            ctxSud["Status"] = QString::number(status);
-            ctxSud["StatusRezept"] = status == Sud_Status_Rezept ? "1" : "";
-            ctxSud["StatusGebraut"] = status == Sud_Status_Gebraut ? "1" : "";
-            ctxSud["StatusAbgefuellt"] = status == Sud_Status_Abgefuellt ? "1" : "";
-            ctxSud["StatusVerbraucht"] = status == Sud_Status_Verbraucht ? "1" : "";
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
+            ctxSud["Status"] = QString::number(static_cast<int>(status));
+            ctxSud["StatusRezept"] = status == Brauhelfer::SudStatus::Rezept ? "1" : "";
+            ctxSud["StatusGebraut"] = status == Brauhelfer::SudStatus::Gebraut ? "1" : "";
+            ctxSud["StatusAbgefuellt"] = status == Brauhelfer::SudStatus::Abgefuellt ? "1" : "";
+            ctxSud["StatusVerbraucht"] = status == Brauhelfer::SudStatus::Verbraucht ? "1" : "";
             ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
             ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
             ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());
@@ -128,12 +128,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["Bewertung"] = QString::number(bewertung);
             if (bewertung > 0)
             {
-                if (bewertung > Bewertung_MaxSterne)
-                    bewertung = Bewertung_MaxSterne;
+                if (bewertung > 5)
+                    bewertung = 5;
                 QString s = "";
                 for (int i = 0; i < bewertung; i++)
                     s += "<img class='star' width='24'>";
-                for (int i = bewertung; i < Bewertung_MaxSterne; i++)
+                for (int i = bewertung; i < 5; i++)
                     s += "<img class='star_grey' width='24'>";
                 ctxSud["BewertungSterne"] = s;
             }

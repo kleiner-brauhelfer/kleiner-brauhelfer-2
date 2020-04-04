@@ -149,15 +149,15 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColMengeIst:
     {
-        switch (data(idx.row(), ColStatus).toInt())
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+        switch (status)
         {
-        default:
-        case Sud_Status_Rezept:
+        case Brauhelfer::SudStatus::Rezept:
             return data(idx.row(), ColMenge).toDouble();
-        case Sud_Status_Gebraut:
+        case Brauhelfer::SudStatus::Gebraut:
             return data(idx.row(), ColWuerzemengeAnstellen).toDouble();
-        case Sud_Status_Abgefuellt:
-        case Sud_Status_Verbraucht:
+        case Brauhelfer::SudStatus::Abgefuellt:
+        case Brauhelfer::SudStatus::Verbraucht:
             return data(idx.row(), Colerg_AbgefuellteBiermenge).toDouble();
         }
     }
@@ -243,7 +243,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColWoche:
     {
-        if (data(idx.row(), ColStatus).toInt() >= Sud_Status_Abgefuellt)
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+        if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
             QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColID).toInt());
             if (!dt.isValid())
@@ -255,7 +256,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColReifezeitDelta:
     {
-        if (data(idx.row(), ColStatus).toInt() >= Sud_Status_Abgefuellt)
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+        if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
             QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColID).toInt());
             if (!dt.isValid())
@@ -428,7 +430,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate)))
         {
-            if (data(idx.row(), ColStatus).toInt() < Sud_Status_Abgefuellt)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
                 setData(idx.row(), ColAbfuelldatum, value);
             return true;
         }
@@ -450,7 +453,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
             {
                 setData(idx.row(), ColSudhausausbeute, dataAnlage(idx.row(), ModelAusruestung::ColSudhausausbeute));
                 setData(idx.row(), ColVerdampfungsrate, dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsziffer));
@@ -463,7 +467,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColWuerzemengeKochbeginn, value);
             return true;
         }
@@ -473,7 +478,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColWuerzemengeVorHopfenseihen, value);
             return true;
         }
@@ -483,7 +489,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColWuerzemengeKochende, value);
             return true;
         }
@@ -493,7 +500,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
             {
                 double m = value.toDouble() + data(idx.row(), ColMenge).toDouble() - data(idx.row(), ColMengeSollKochende).toDouble();
                 setData(idx.row(), ColWuerzemengeAnstellenTotal, m);
@@ -511,7 +519,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColJungbiermengeAbfuellen, value);
             return true;
         }
@@ -522,7 +531,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         double v = data(idx.row(), ColWuerzemengeAnstellenTotal).toDouble() - value.toDouble();
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 QSqlTableModel::setData(index(idx.row(), ColWuerzemengeAnstellen), v);
             return true;
         }
@@ -534,7 +544,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() < Sud_Status_Abgefuellt)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
                 if (jungbiermenge > 0.0)
                     QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() / (1 + speise / jungbiermenge));
@@ -549,7 +560,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColSWKochbeginn, value);
             return true;
         }
@@ -559,7 +571,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColSWKochende, value);
             return true;
         }
@@ -569,7 +582,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
                 setData(idx.row(), ColSWAnstellen, value);
             return true;
         }
@@ -579,7 +593,8 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColStatus).toInt() == Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
             {
                 double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
                 double sre = BierCalc::sreAusVergaerungsgrad(value.toDouble(), vg);
@@ -634,8 +649,8 @@ void ModelSud::update(int row)
 
     updateSwWeitereZutaten(row);
 
-    int status = data(row, ColStatus).toInt();
-    if (status == Sud_Status_Rezept)
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(row, ColStatus).toInt());
+    if (status == Brauhelfer::SudStatus::Rezept)
     {
         // recipe
         double mengeRecipe = data(row, ColMenge).toDouble();
@@ -675,7 +690,7 @@ void ModelSud::update(int row)
         menge = data(row, ColWuerzemengeAnstellenTotal).toDouble() / hgf;
         setData(row, Colerg_EffektiveAusbeute, BierCalc::sudhausausbeute(sw , menge, schuet, true));
     }
-    if (status <= Sud_Status_Gebraut)
+    if (status <= Brauhelfer::SudStatus::Gebraut)
     {
         // erg_Alkohol
         double sre = data(row, ColSREIst).toDouble();
@@ -923,7 +938,7 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
     if (!values.contains(ColTemperaturJungbier))
         values.insert(ColTemperaturJungbier, 20.0);
     if (!values.contains(ColStatus))
-        values.insert(ColStatus, Sud_Status_Rezept);
+        values.insert(ColStatus, static_cast<int>(Brauhelfer::SudStatus::Rezept));
 }
 
 QMap<int, QVariant> ModelSud::copyValues(int row) const

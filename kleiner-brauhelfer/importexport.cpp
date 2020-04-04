@@ -612,7 +612,8 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     QString str;
     ProxyModel model;
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
-    bool gebraut = bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt() != Sud_Status_Rezept;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
+    bool gebraut = status != Brauhelfer::SudStatus::Rezept;
 
     QDomDocument doc("");
     QDomText text;

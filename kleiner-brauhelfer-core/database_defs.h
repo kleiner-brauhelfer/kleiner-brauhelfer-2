@@ -1,12 +1,6 @@
 #ifndef DATABASE_DEFS_H
 #define DATABASE_DEFS_H
 
-// Status
-#define Sud_Status_Rezept                   0
-#define Sud_Status_Gebraut                  1
-#define Sud_Status_Abgefuellt               2
-#define Sud_Status_Verbraucht               3
-
 // Berechnungsart fuer Hopfen
 #define Hopfen_Berechnung_Keine             -1
 #define Hopfen_Berechnung_Gewicht           0
@@ -50,8 +44,5 @@
 #define EWZ_Einheit_g                       1
 #define EWZ_Einheit_mg                      2
 #define EWZ_Einheit_Stk                     3
-
-// Maximum Anzahl Sterne
-#define Bewertung_MaxSterne                 5
 
 #endif // DATABASE_DEFS_H

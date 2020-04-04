@@ -133,8 +133,8 @@ void TabBraudaten::onTabActivated()
 
 void TabBraudaten::checkEnabled()
 {
-    int status = bh->sud()->getStatus();
-    bool gebraut = status != Sud_Status_Rezept && !gSettings->ForceEnabled;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
     ui->tbBraudatum->setReadOnly(gebraut);
     ui->tbBraudatumZeit->setReadOnly(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
@@ -158,7 +158,7 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
-    ui->btnSudTeilen->setEnabled(status != Sud_Status_Abgefuellt && status != Sud_Status_Verbraucht && !gSettings->ForceEnabled);
+    ui->btnSudTeilen->setEnabled(status != Brauhelfer::SudStatus::Abgefuellt && status != Brauhelfer::SudStatus::Verbraucht && !gSettings->ForceEnabled);
 }
 
 void TabBraudaten::updateValues()
@@ -171,7 +171,7 @@ void TabBraudaten::updateValues()
 
     double value;
 
-    int status = bh->sud()->getStatus();
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
 
     QDateTime dt = bh->sud()->getBraudatum();
     ui->tbBraudatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
@@ -183,8 +183,8 @@ void TabBraudaten::updateValues()
                                     bh->sud()->getSWSollAnstellen(),
                                     bh->sud()->getWuerzemengeAnstellenTotal());
     ui->tbWasserVerschneidung->setValue(value);
-    ui->wdgWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
-    ui->btnWasserVerschneidung->setVisible(status == Sud_Status_Rezept && value > 0);
+    ui->wdgWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
+    ui->btnWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
 
     value = BierCalc::speise(bh->sud()->getCO2(),
                              bh->sud()->getSWAnstellen(),
@@ -192,7 +192,7 @@ void TabBraudaten::updateValues()
                              ui->tbSpeiseSRE->value(),
                              ui->tbSpeiseT->value());
     ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
-    ui->btnSpeisemengeNoetig->setVisible(status == Sud_Status_Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.1);
+    ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.1);
 
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
     if (!ui->cbDurchschnittIgnorieren->isChecked())
@@ -351,7 +351,7 @@ void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 void TabBraudaten::on_btnSudGebraut_clicked()
 {
     bh->sud()->setBraudatum(QDateTime(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time()));
-    bh->sud()->setStatus(Sud_Status_Gebraut);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
 
     DlgRohstoffeAbziehen dlg(this);
     dlg.exec();

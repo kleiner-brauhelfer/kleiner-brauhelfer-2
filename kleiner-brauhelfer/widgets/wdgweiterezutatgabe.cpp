@@ -55,9 +55,10 @@ QString WdgWeitereZutatGabe::name() const
 
 void WdgWeitereZutatGabe::checkEnabled(bool force)
 {
-    bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool enabled = status == Brauhelfer::SudStatus::Rezept;
     if (data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == EWZ_Zeitpunkt_Gaerung)
-        enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
+        enabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (gSettings->ForceEnabled)
         enabled = true;
     if (enabled == mEnabled && !force)
@@ -136,7 +137,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     int zeitpunkt = data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
     int entnahme = data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt();
     int einheit = data(ModelWeitereZutatenGaben::ColEinheit).toInt();
-    int status = data(ModelWeitereZutatenGaben::ColZugabestatus).toInt();
+    int zugabestatus = data(ModelWeitereZutatenGaben::ColZugabestatus).toInt();
     int dauer = data(ModelWeitereZutatenGaben::ColZugabedauer).toInt();
 
     checkEnabled(full);
@@ -273,7 +274,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
         ui->btnEntnehmen->setPalette(gSettings->palette);
-        switch (status)
+        switch (zugabestatus)
         {
         case EWZ_Zugabestatus_nichtZugegeben:
             ui->tbVorhanden->setVisible(true);
@@ -360,9 +361,10 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
     ui->tbDatumBis->setVisible(braudatum.isValid() && entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->btnZugeben->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_nichtZugegeben);
-    ui->btnEntnehmen->setVisible(bh->sud()->getStatus() == Sud_Status_Gebraut && status == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->cbZugabezeitpunkt->setEnabled(bh->sud()->getStatus() == Sud_Status_Rezept || gSettings->ForceEnabled);
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == EWZ_Zugabestatus_nichtZugegeben);
+    ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
+    ui->cbZugabezeitpunkt->setEnabled(status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled);
 }
 
 void WdgWeitereZutatGabe::on_btnZutat_clicked()

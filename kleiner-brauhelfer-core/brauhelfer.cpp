@@ -288,7 +288,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     values.insert(ModelSud::ColSudname, name);
     if (!teilen)
     {
-        values.insert(ModelSud::ColStatus, Sud_Status_Rezept);
+        values.insert(ModelSud::ColStatus, static_cast<int>(SudStatus::Rezept));
         values.insert(ModelSud::ColMerklistenID, 0);
         values.insert(ModelSud::ColErstellt, QDateTime::currentDateTime().toString(Qt::ISODate));
         values.remove(ModelSud::ColBraudatum);

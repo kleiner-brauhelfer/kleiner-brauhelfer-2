@@ -57,7 +57,8 @@ int WdgRast::dauer() const
 
 void WdgRast::checkEnabled(bool force)
 {
-    bool enabled = bh->sud()->getStatus() == Sud_Status_Rezept;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool enabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
         enabled = true;
     if (enabled == mEnabled && !force)

@@ -50,7 +50,8 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
             if (model.data(r, ModelWeitereZutatenGaben::ColName) == name)
             {
                 QVariant sudId = model.data(r, ModelWeitereZutatenGaben::ColSudID);
-                if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus) == Sud_Status_Rezept)
+                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+                if (status == Brauhelfer::SudStatus::Rezept)
                     return true;
             }
         }

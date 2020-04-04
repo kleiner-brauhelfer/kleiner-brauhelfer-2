@@ -396,16 +396,17 @@ void TabGaerverlauf::checkEnabled()
             QAbstractItemView::EditTrigger::AnyKeyPressed;
     QAbstractItemView::EditTriggers notriggers = QAbstractItemView::EditTrigger::NoEditTriggers;
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut || gSettings->ForceEnabled;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    enabled = status == Brauhelfer::SudStatus::Gebraut || gSettings->ForceEnabled;
     ui->wdgEditSchnellgaerung->setVisible(enabled);
     ui->tableWidget_Schnellgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut  || gSettings->ForceEnabled;
+    enabled = status == Brauhelfer::SudStatus::Gebraut  || gSettings->ForceEnabled;
     ui->wdgEditHauptgaerung1->setVisible(enabled);
     ui->wdgEditHauptgaerung2->setVisible(enabled);
     ui->tableWidget_Hauptgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Abgefuellt  || gSettings->ForceEnabled;
+    enabled = status == Brauhelfer::SudStatus::Abgefuellt  || gSettings->ForceEnabled;
     ui->wdgEditNachgaerung->setVisible(enabled);
     ui->tableWidget_Nachgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 }

@@ -1,5 +1,5 @@
 #include "database.h"
-#include "database_defs.h"
+#include "brauhelfer.h"
 #include <QSqlQuery>
 
 bool Database::update()
@@ -359,20 +359,20 @@ bool Database::update()
                 bool gebraut = query.value(1).toBool();
                 bool abgefuelllt = query.value(2).toBool();
                 bool verbraucht = query.value(3).toBool();
-                int status = Sud_Status_Rezept;
+                Brauhelfer::SudStatus status = Brauhelfer::SudStatus::Rezept;
                 if (gebraut)
                 {
-                    status = Sud_Status_Gebraut;
+                    status = Brauhelfer::SudStatus::Gebraut;
                     if (abgefuelllt)
                     {
-                        status = Sud_Status_Abgefuellt;
+                        status = Brauhelfer::SudStatus::Abgefuellt;
                         if (verbraucht)
                         {
-                            status = Sud_Status_Verbraucht;
+                            status = Brauhelfer::SudStatus::Verbraucht;
                         }
                     }
                 }
-                sqlExec(db, QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(status).arg(id));
+                sqlExec(db, QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(static_cast<int>(status)).arg(id));
             }
             sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE Sud ("

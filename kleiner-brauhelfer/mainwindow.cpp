@@ -243,7 +243,7 @@ void MainWindow::databaseModified()
 void MainWindow::updateValues()
 {
     bool loaded = bh->sud()->isLoaded();
-    int status = bh->sud()->getStatus();
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     databaseModified();
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
@@ -253,13 +253,13 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
-    ui->actionSudGebraut->setEnabled(status >= Sud_Status_Gebraut);
-    ui->actionSudAbgefuellt->setEnabled(status >= Sud_Status_Abgefuellt);
-    ui->actionSudVerbraucht->setEnabled(status >= Sud_Status_Verbraucht);
-    ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Sud_Status_Gebraut);
-    ui->actionWeitereZutaten->setEnabled(status == Sud_Status_Gebraut);
+    ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
+    ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
+    ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
+    ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+    ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
-                            status == Sud_Status_Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
+                            status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
@@ -420,17 +420,17 @@ void MainWindow::on_actionBeenden_triggered()
 
 void MainWindow::on_actionSudGebraut_triggered()
 {
-    bh->sud()->setStatus(Sud_Status_Rezept);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
 }
 
 void MainWindow::on_actionSudAbgefuellt_triggered()
 {
-    bh->sud()->setStatus(Sud_Status_Gebraut);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
 }
 
 void MainWindow::on_actionSudVerbraucht_triggered()
 {
-    bh->sud()->setStatus(Sud_Status_Abgefuellt);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 }
 
 void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()

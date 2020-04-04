@@ -118,8 +118,8 @@ void TabAbfuellen::onTabActivated()
 
 void TabAbfuellen::checkEnabled()
 {
-    int status = bh->sud()->getStatus();
-    bool abgefuellt = status >= Sud_Status_Abgefuellt && !gSettings->ForceEnabled;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool abgefuellt = status >= Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
     ui->tbAbfuelldatumZeit->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
@@ -134,9 +134,9 @@ void TabAbfuellen::checkEnabled()
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
-    ui->btnSudAbgefuellt->setEnabled(status == Sud_Status_Gebraut && !gSettings->ForceEnabled);
-    ui->btnSudVerbraucht->setEnabled(status == Sud_Status_Abgefuellt && !gSettings->ForceEnabled);
-    ui->btnSudTeilen->setEnabled(status == Sud_Status_Abgefuellt && !gSettings->ForceEnabled);
+    ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
+    ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
+    ui->btnSudTeilen->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
 }
 
 void TabAbfuellen::updateValues()
@@ -289,7 +289,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
     }
 
     bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time()));
-    bh->sud()->setStatus(Sud_Status_Abgefuellt);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
                                 {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
@@ -308,5 +308,5 @@ void TabAbfuellen::on_btnSudTeilen_clicked()
 
 void TabAbfuellen::on_btnSudVerbraucht_clicked()
 {
-    bh->sud()->setStatus(Sud_Status_Verbraucht);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
 }

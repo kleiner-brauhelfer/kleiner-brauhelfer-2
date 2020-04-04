@@ -223,8 +223,9 @@ void TabRezept::onTabActivated()
 
 void TabRezept::checkEnabled()
 {
-    bool gebraut = bh->sud()->getStatus() != Sud_Status_Rezept && !gSettings->ForceEnabled;
-    bool abgefuellt = bh->sud()->getStatus() > Sud_Status_Gebraut  && !gSettings->ForceEnabled;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
+    bool abgefuellt = status > Brauhelfer::SudStatus::Gebraut  && !gSettings->ForceEnabled;
     ui->cbAnlage->setEnabled(!gebraut);
     ui->tbMenge->setReadOnly(gebraut);
     ui->tbSW->setReadOnly(gebraut);
@@ -585,7 +586,8 @@ void TabRezept::updateGlas()
 
 void TabRezept::updateAnlageModel()
 {
-    if (bh->sud()->getStatus() == Sud_Status_Rezept)
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (status == Brauhelfer::SudStatus::Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbAnlage);
         model->setSourceModel(bh->modelAusruestung());
@@ -604,7 +606,8 @@ void TabRezept::updateAnlageModel()
 
 void TabRezept::updateWasserModel()
 {
-    if (bh->sud()->getStatus() == Sud_Status_Rezept)
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (status == Brauhelfer::SudStatus::Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbWasserProfil);
         model->setSourceModel(bh->modelWasser());
@@ -703,7 +706,8 @@ void TabRezept::malzGaben_dataChanged()
 
 void TabRezept::updateMalzGaben()
 {
-    if (bh->sud()->getStatus() == Sud_Status_Rezept)
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (status == Brauhelfer::SudStatus::Rezept)
     {
         double p = 100.0;
         for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
@@ -794,7 +798,8 @@ void TabRezept::updateHopfenDiagram()
 
 void TabRezept::updateHopfenGaben()
 {
-    if (bh->sud()->getStatus() == Sud_Status_Rezept)
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (status == Brauhelfer::SudStatus::Rezept)
     {
         double p = 100.0;
         for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)

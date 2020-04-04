@@ -66,7 +66,8 @@ int WdgHefeGabe::menge() const
 
 void WdgHefeGabe::checkEnabled(bool force)
 {
-    bool enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool enabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (data(ModelHefegaben::ColZugegeben).toBool())
         enabled = false;
     if (gSettings->ForceEnabled)
@@ -134,7 +135,8 @@ void WdgHefeGabe::updateValues(bool full)
         ui->tbMengeEmpfohlen->setValue(0);
     }
 
-    ui->btnZugeben->setVisible(mEnabled && bh->sud()->getStatus() == Sud_Status_Gebraut);
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    ui->btnZugeben->setVisible(mEnabled && status == Brauhelfer::SudStatus::Gebraut);
 
     if (mEnabled)
     {

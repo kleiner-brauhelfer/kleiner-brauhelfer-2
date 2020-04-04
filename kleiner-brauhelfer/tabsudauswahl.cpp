@@ -243,10 +243,10 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
         menu.addAction(action);
     }
 
-    int status = model->data(index.row(), ModelSud::ColStatus).toInt();
-    if (status >= Sud_Status_Abgefuellt)
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(index.row(), ModelSud::ColStatus).toInt());
+    if (status >= Brauhelfer::SudStatus::Abgefuellt)
     {
-        if (status == Sud_Status_Verbraucht)
+        if (status == Brauhelfer::SudStatus::Verbraucht)
         {
             action = new QAction(tr("Sud nicht verbraucht"), &menu);
             connect(action, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
@@ -425,8 +425,9 @@ void TabSudAuswahl::onVerbraucht_clicked()
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
         QModelIndex indexStatus = index.sibling(index.row(), ModelSud::ColStatus);
-        if (model->data(indexStatus).toInt() == Sud_Status_Abgefuellt)
-            model->setData(indexStatus, Sud_Status_Verbraucht);
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(indexStatus).toInt());
+        if (status == Brauhelfer::SudStatus::Abgefuellt)
+            model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
     }
     ui->tableSudauswahl->setFocus();
 }
@@ -437,8 +438,9 @@ void TabSudAuswahl::onNichtVerbraucht_clicked()
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
         QModelIndex indexStatus = index.sibling(index.row(), ModelSud::ColStatus);
-        if (model->data(indexStatus).toInt() == Sud_Status_Verbraucht)
-            model->setData(indexStatus, Sud_Status_Abgefuellt);
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(indexStatus).toInt());
+        if (status == Brauhelfer::SudStatus::Verbraucht)
+            model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
     }
     ui->tableSudauswahl->setFocus();
 }

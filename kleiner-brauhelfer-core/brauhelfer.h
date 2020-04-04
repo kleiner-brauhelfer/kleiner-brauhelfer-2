@@ -84,6 +84,14 @@ public:
     };
     Q_ENUM(RohstoffTyp)
 
+    enum class BerechnungsartHopfen
+    {
+        Keine = -1,
+        Gewicht = 0,
+        IBU = 1
+    };
+    Q_ENUM(BerechnungsartHopfen)
+
 public:
 
     static const int libVersionMajor;

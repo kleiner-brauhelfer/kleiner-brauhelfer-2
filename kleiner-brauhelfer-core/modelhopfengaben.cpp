@@ -73,13 +73,14 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
             QVariant sudId = data(idx.row(), ColSudID);
             double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
             double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
-            switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
+            Brauhelfer::BerechnungsartHopfen berechnungsart = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt());
+            switch (berechnungsart)
             {
-            case Hopfen_Berechnung_Keine:
+            case Brauhelfer::BerechnungsartHopfen::Keine:
             {
                 break;
             }
-            case Hopfen_Berechnung_Gewicht:
+            case Brauhelfer::BerechnungsartHopfen::Gewicht:
             {
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
@@ -103,7 +104,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 }
                 break;
             }
-            case Hopfen_Berechnung_IBU:
+            case Brauhelfer::BerechnungsartHopfen::IBU:
             {
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
@@ -125,13 +126,14 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         if (QSqlTableModel::setData(idx, value))
         {
             QVariant sudId = data(idx.row(), ColSudID);
-            switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
+            Brauhelfer::BerechnungsartHopfen berechnungsart = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt());
+            switch (berechnungsart)
             {
-            case Hopfen_Berechnung_Keine:
+            case Brauhelfer::BerechnungsartHopfen::Keine:
             {
                 break;
             }
-            case Hopfen_Berechnung_Gewicht:
+            case Brauhelfer::BerechnungsartHopfen::Gewicht:
             {
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
@@ -145,7 +147,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 QSqlTableModel::setData(index(idx.row(), ColProzent), p);
                 break;
             }
-            case Hopfen_Berechnung_IBU:
+            case Brauhelfer::BerechnungsartHopfen::IBU:
             {
                 double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
                 double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();

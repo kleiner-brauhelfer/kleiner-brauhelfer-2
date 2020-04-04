@@ -360,7 +360,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     double erg_WHauptguss = modelSud()->data(row1, ModelSud::Colerg_WHauptguss).toDouble();
     double erg_WNachguss = modelSud()->data(row1, ModelSud::Colerg_WNachguss).toDouble();
     double erg_W_Gesamt = modelSud()->data(row1, ModelSud::Colerg_W_Gesamt).toDouble();
-    int berechnungsArtHopfen = modelSud()->data(row1, ModelSud::ColberechnungsArtHopfen).toInt();
+    BerechnungsartHopfen berechnungsArtHopfen = static_cast<BerechnungsartHopfen>(modelSud()->data(row1, ModelSud::ColberechnungsArtHopfen).toInt());
 
     double factor = 1.0 - prozent;
     modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
@@ -380,7 +380,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
         if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId2)
         {
             double ausbeute = modelHopfengaben()->data(row, ModelHopfengaben::ColAusbeute).toDouble();
-            if (berechnungsArtHopfen == Hopfen_Berechnung_Keine || (berechnungsArtHopfen == Hopfen_Berechnung_IBU && ausbeute == 0.0))
+            if (berechnungsArtHopfen == BerechnungsartHopfen::Keine || (berechnungsArtHopfen == BerechnungsartHopfen::IBU && ausbeute == 0.0))
             {
                 QModelIndex idx = modelHopfengaben()->index(row, ModelHopfengaben::Colerg_Menge);
                 modelHopfengaben()->setData(idx, idx.data().toDouble() * factor);
@@ -414,7 +414,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
         if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId)
         {
             double ausbeute = modelHopfengaben()->data(row, ModelHopfengaben::ColAusbeute).toDouble();
-            if (berechnungsArtHopfen == Hopfen_Berechnung_Keine || (berechnungsArtHopfen == Hopfen_Berechnung_IBU && ausbeute == 0.0))
+            if (berechnungsArtHopfen == BerechnungsartHopfen::Keine || (berechnungsArtHopfen == BerechnungsartHopfen::IBU && ausbeute == 0.0))
             {
                 QModelIndex idx = modelHopfengaben()->index(row, ModelHopfengaben::Colerg_Menge);
                 modelHopfengaben()->setData(idx, idx.data().toDouble() * factor);

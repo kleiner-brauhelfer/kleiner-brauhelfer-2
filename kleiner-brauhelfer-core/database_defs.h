@@ -1,10 +1,7 @@
 #ifndef DATABASE_DEFS_H
 #define DATABASE_DEFS_H
 
-// Berechnungsart fuer Hopfen
-#define Hopfen_Berechnung_Keine             -1
-#define Hopfen_Berechnung_Gewicht           0
-#define Hopfen_Berechnung_IBU               1
+
 
 // Hopfen Art
 #define Hopfen_Unbekannt                    0

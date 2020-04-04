@@ -932,7 +932,7 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
     if (!values.contains(ColKochdauerNachBitterhopfung))
         values.insert(ColKochdauerNachBitterhopfung, 60);
     if (!values.contains(ColberechnungsArtHopfen))
-        values.insert(ColberechnungsArtHopfen, Hopfen_Berechnung_IBU);
+        values.insert(ColberechnungsArtHopfen, static_cast<int>(Brauhelfer::BerechnungsartHopfen::IBU));
     if (!values.contains(ColVergaerungsgrad))
         values.insert(ColVergaerungsgrad, 70);
     if (!values.contains(ColTemperaturJungbier))

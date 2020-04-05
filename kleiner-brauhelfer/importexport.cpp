@@ -193,7 +193,6 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
             values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
         else
             values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
-        values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
         values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
         values[ModelWeitereZutatenGaben::ColZugabedauer] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(i)]);
         values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
@@ -210,7 +209,6 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
             values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
         else
             values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
-        values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
         values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
         values[ModelWeitereZutatenGaben::ColZugabedauer] = 0;
         values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
@@ -335,8 +333,6 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
                 values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
                 if (type == "Sugar" || type == "Extract" || type == "Dry Extract")
                     values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Zucker);
-                else
-                    values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
                 if (n.firstChildElement("ADD_AFTER_BOIL").text() == "TRUE")
                 {
                     values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
@@ -403,12 +399,12 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
             values[ModelWeitereZutatenGaben::ColSudID] = sudId;
             values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
             QString type = n.firstChildElement("TYPE").text();
-            if (type == "Spice" || type == "Herb")
+            if (type == "Spice")
                 values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Gewuerz);
+            else if (type == "Herb")
+                values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Kraut);
             else if (type == "Flavor")
                 values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Frucht);
-            else
-                values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
             QString use = n.firstChildElement("USE").text();
             if (use == "Boil")
                values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
@@ -994,7 +990,10 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
                 break;
             case Brauhelfer::ZusatzTyp::Gewuerz:
             case Brauhelfer::ZusatzTyp::Sonstiges:
-            default:
+            case Brauhelfer::ZusatzTyp::Kraut:
+            case Brauhelfer::ZusatzTyp::Wasseraufbereiung:
+            case Brauhelfer::ZusatzTyp::Klaermittel:
+            case Brauhelfer::ZusatzTyp::Hopfen:
                 text = doc.createTextNode("Adjunct");
                 break;
             }
@@ -1128,9 +1127,15 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             case Brauhelfer::ZusatzTyp::Gewuerz:
                 text = doc.createTextNode("Spice");
                 break;
+            case Brauhelfer::ZusatzTyp::Kraut:
+                text = doc.createTextNode("Herb");
+                break;
             case Brauhelfer::ZusatzTyp::Sonstiges:
-            default:
+            case Brauhelfer::ZusatzTyp::Wasseraufbereiung:
+            case Brauhelfer::ZusatzTyp::Klaermittel:
                 text = doc.createTextNode("Other");
+                break;
+            case Brauhelfer::ZusatzTyp::Hopfen:
                 break;
             }
             element.appendChild(text);

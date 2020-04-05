@@ -23,6 +23,30 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+QList<QString> TabRohstoffe::HopfenTypname = {
+    "",
+    tr("aroma"),
+    tr("bitter"),
+    tr("universal")
+};
+
+QList<QString> TabRohstoffe::HefeTypname = {
+    "",
+    tr("obergärig"),
+    tr("untergärig")
+};
+
+QList<QString> TabRohstoffe::ZusatzTypname = {
+    tr("Honig"),
+    tr("Zucker"),
+    tr("Gewürz"),
+    tr("Frucht"),
+    tr("Sonstiges"),
+    tr("Kraut"),
+    tr("Wasseraufbereitung"),
+    tr("Klärmittel")
+};
+
 TabRohstoffe::TabRohstoffe(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
@@ -177,7 +201,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHopfen::ColTyp;
     model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("aroma"), tr("bitter"), tr("universal")}, table);
+    comboBox = new ComboBoxDelegate(HopfenTypname, table);
     comboBox->setColors(gSettings->HopfenTypBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
@@ -257,7 +281,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelHefe::ColTypOGUG;
     model->setHeaderData(col, Qt::Horizontal, tr("OG/UG"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("obergärig"), tr("untergärig")}, table);
+    comboBox = new ComboBoxDelegate(HefeTypname, table);
     comboBox->setColors(gSettings->HefeTypOgUgBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);
@@ -375,7 +399,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelWeitereZutaten::ColTyp;
     model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
     table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges")}, table);
+    comboBox = new ComboBoxDelegate(ZusatzTypname, table);
     comboBox->setColors(gSettings->WZTypBackgrounds);
     table->setItemDelegateForColumn(col, comboBox);
     header->resizeSection(col, 100);

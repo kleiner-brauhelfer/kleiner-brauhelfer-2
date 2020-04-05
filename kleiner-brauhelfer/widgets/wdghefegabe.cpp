@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
@@ -18,12 +19,6 @@ WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
     mEnabled(true)
 {
     ui->setupUi(this);
-
-    ui->frameColor->setToolTip(tr("<strong>Hefetyp<br>"
-                                  "<font color=\"%1\">Obergärig</font><br>"
-                                  "<font color=\"%2\">Untergärig</font><strong>")
-            .arg(gSettings->HefeTypOgUgBackgrounds[1].name())
-            .arg(gSettings->HefeTypOgUgBackgrounds[2].name()));
 
     ui->tbMenge->setErrorOnLimit(true);
 
@@ -122,6 +117,7 @@ void WdgHefeGabe::updateValues(bool full)
         {
             ui->frameColor->setPalette(gSettings->palette);
         }
+        ui->frameColor->setToolTip(TabRohstoffe::HefeTypname[idx]);
 
         double mengeHefe = bh->modelHefe()->data(rowHefe, ModelHefe::ColWuerzemenge).toDouble();
         if (mengeHefe > 0)
@@ -132,6 +128,7 @@ void WdgHefeGabe::updateValues(bool full)
     else
     {
         ui->frameColor->setPalette(gSettings->palette);
+        ui->frameColor->setToolTip("");
         ui->tbMengeEmpfohlen->setValue(0);
     }
 

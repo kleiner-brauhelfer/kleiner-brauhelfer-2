@@ -26,7 +26,8 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
     case ColMengeGramm:
     {
         double menge = data(idx.row(), ColMenge).toDouble();
-        switch (data(idx.row(), ColEinheiten).toInt())
+        Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(idx.row(), ColEinheiten).toInt());
+        switch (einheit)
         {
         case Brauhelfer::ZusatzEinheit::Kg:
             return menge * 1000;
@@ -35,8 +36,6 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
         case Brauhelfer::ZusatzEinheit::mg:
             return menge / 1000;
         case Brauhelfer::ZusatzEinheit::Stk:
-            return menge;
-        default:
             return menge;
         }
     }

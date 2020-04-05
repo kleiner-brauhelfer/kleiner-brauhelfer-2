@@ -34,6 +34,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.1.2 (in Entwicklung)
 - Neu: Unterstützung der oBraMa Datenbank fürs Einfügen von neuen Rohstoffe (erfordert Internetverbindung)
 - Neu: Sudhausausbeute und Vergärungsgrad wird beim Import aus MMuM übernommen
+- Neu: Neue Kategorien für "Weitere Zutaten" Kraut, Wasseraufbereiung und Klärmittel
+- Neu: "Weitere Zutaten" in HTML Templates überarbeitet (Listen zusammengeführt)
 - Fix: Nachisomerisierungszeit bis 90 Minuten
 - Fix: Sud kopieren/teilen mit Hopfengaben ohne IBU Berechnung
 

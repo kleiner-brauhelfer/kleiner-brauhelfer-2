@@ -126,7 +126,16 @@ void Settings::initTheme()
         HefeTypOgUgBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
         HefeTypTrFlBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
         HefeSedBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
-        WZTypBackgrounds = {QColor(255,200,170), QColor(250,250,230), QColor(200,255,200), QColor(235,255,200), QColor(200,200,255)};
+        WZTypBackgrounds = {QColor(253, 199, 197),
+                            QColor(239, 207, 175),
+                            QColor(241, 216, 167),
+                            QColor(184, 223, 178),
+                            QColor(159, 226, 201),
+                            QColor(154, 225, 227),
+                            QColor(176, 218, 246),
+                            QColor(210, 208, 252),
+                            QColor(239, 200, 243),
+                            QColor(254, 196, 223)};
 
         DiagramLinie1 = QColor(116, 30, 166);
         DiagramLinie2 = QColor(56, 104, 2);
@@ -151,7 +160,16 @@ void Settings::initTheme()
         HefeTypOgUgBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
         HefeTypTrFlBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
         HefeSedBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
-        WZTypBackgrounds = {QColor(255,150,94), QColor(211,211,46), QColor(141,239,141), QColor(191,229,121), QColor(162,162,242)};
+        WZTypBackgrounds = {QColor(220, 114, 107),
+                            QColor(193, 133, 0),
+                            QColor(149, 151, 0),
+                            QColor(70, 164, 35),
+                            QColor(0, 172, 119),
+                            QColor(0, 171, 176),
+                            QColor(0, 159, 216),
+                            QColor(138, 134, 230),
+                            QColor(203, 107, 213),
+                            QColor(226, 100, 169)};
 
         DiagramLinie1 = QColor(165, 94, 209);
         DiagramLinie2 = QColor(76, 140, 2);

@@ -6,6 +6,7 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer* bh;
@@ -208,6 +209,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     int dauer = model->data(row, ModelHopfengaben::ColZeit).toInt();
                     int duaerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
                     map.insert("Name", model->data(row, ModelHopfengaben::ColName));
+                    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, map["Name"], ModelHopfen::ColTyp).toInt();
+                    if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
+                        map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
                     map.insert("Prozent", locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
                     map.insert("Menge", locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
                     map.insert("Kochdauer", QString::number(dauer));
@@ -216,7 +220,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     if (model->data(row, ModelHopfengaben::ColVorderwuerze).toBool())
                     {
                         map.insert("Vorderwuerze", true);
-                        ctxZutaten["ZutatenVorderwuerze"] = true;
+                        ctxZutaten["HatVorderwuerzehopfen"] = true;
                     }
                     else if (dauer == 0)
                     {
@@ -247,6 +251,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 {
                     QVariantMap map;
                     map.insert("Name", model->data(row, ModelHefegaben::ColName));
+                    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, map["Name"], ModelHefe::ColTypOGUG).toInt();
+                    if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
+                        map.insert("Typ", TabRohstoffe::HefeTypname[idx]);
                     map.insert("Menge", model->data(row, ModelHefegaben::ColMenge).toInt());
                     if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert("Status", QObject::tr("zugegeben"));
@@ -259,11 +266,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 if (!liste.empty())
                     ctxZutaten["Hefe"] = QVariantMap({{"Liste", liste}});
 
-                QVariantList listeHonig;
-                QVariantList listeZucker;
-                QVariantList listeGewuerz;
-                QVariantList listeFrucht;
-                QVariantList listeSonstiges;
+                QVariantList listeZusatz;
                 QVariantList listeHopfen;
                 model = bh->sud()->modelWeitereZutatenGaben();
                 for (int row = 0; row < model->rowCount(); ++row)
@@ -272,7 +275,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     int ival;
 
                     map.insert("Name", model->data(row, ModelWeitereZutatenGaben::ColName));
-                    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
                     switch (einheit)
                     {
                     case Brauhelfer::ZusatzEinheit::Kg:
@@ -324,55 +327,39 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                             break;
                         }
                         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                            ctxZutaten["ZutatenHopfenstopfen"] = true;
+                            ctxZutaten["HatKalthopfen"] = true;
                         else
-                            ctxZutaten["ZutatenGaerung"] = true;
+                            ctxZutaten["HatZusatzGaerung"] = true;
                         break;
                     case Brauhelfer::ZusatzZeitpunkt::Kochen:
                         map.insert("Kochen", true);
                         ival =  model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt();
                         map.insert("Kochdauer", ival);
                         map.insert("ZugabeNach", QString::number(kochDauer - ival));
-                        ctxZutaten["ZutatenKochen"] = true;
+                        ctxZutaten["HatZusatzKochen"] = true;
                         break;
                     case Brauhelfer::ZusatzZeitpunkt::Maischen:
                         map.insert("Maischen", true);
-                        ctxZutaten["ZutatenMaischen"] = true;
+                        ctxZutaten["HatZusatzMaischen"] = true;
                         break;
                     }
-                    map.insert("Bemerkung", model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString());
-                    switch (typ)
+                    QString str = model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map.insert("Bemerkung", str);
+                    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
-                    case Brauhelfer::ZusatzTyp::Honig:
-                        listeHonig << map;
-                        break;
-                    case Brauhelfer::ZusatzTyp::Zucker:
-                        listeZucker << map;
-                        break;
-                    case Brauhelfer::ZusatzTyp::Gewuerz:
-                        listeGewuerz << map;
-                        break;
-                    case Brauhelfer::ZusatzTyp::Frucht:
-                        listeFrucht << map;
-                        break;
-                    case Brauhelfer::ZusatzTyp::Sonstiges:
-                        listeSonstiges << map;
-                        break;
-                    case Brauhelfer::ZusatzTyp::Hopfen:
+                        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, map["Name"], ModelHopfen::ColTyp).toInt();
+                        map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
                         listeHopfen << map;
-                        break;
+                    }
+                    else
+                    {
+                        map.insert("Typ", TabRohstoffe::ZusatzTypname[static_cast<int>(typ)]);
+                        listeZusatz << map;
                     }
                 }
-                if (!listeHonig.empty())
-                    ctxZutaten["Honig"] = QVariantMap({{"Liste", listeHonig}});
-                if (!listeZucker.empty())
-                    ctxZutaten["Zucker"] = QVariantMap({{"Liste", listeZucker}});
-                if (!listeGewuerz.empty())
-                    ctxZutaten["Gewuerz"] = QVariantMap({{"Liste", listeGewuerz}});
-                if (!listeFrucht.empty())
-                    ctxZutaten["Frucht"] = QVariantMap({{"Liste", listeFrucht}});
-                if (!listeSonstiges.empty())
-                    ctxZutaten["Sonstiges"] = QVariantMap({{"Liste", listeSonstiges}});
+                if (!listeZusatz.empty())
+                    ctxZutaten["Zusatz"] = QVariantMap({{"Liste", listeZusatz}});
                 if (!listeHopfen.empty())
                     ctxZutaten["Kalthopfen"] = QVariantMap({{"Liste", listeHopfen}});
 

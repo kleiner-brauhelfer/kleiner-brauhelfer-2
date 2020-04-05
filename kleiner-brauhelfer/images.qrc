@@ -25,5 +25,6 @@
         <file>images/uebertrag_oben.svg</file>
         <file>images/warning.svg</file>
         <file>images/wasser.svg</file>
+        <file>images/zusatz.svg</file>
     </qresource>
 </RCC>

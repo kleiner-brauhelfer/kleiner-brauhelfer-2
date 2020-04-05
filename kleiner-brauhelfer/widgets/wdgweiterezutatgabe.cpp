@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
@@ -65,32 +66,6 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     if (enabled == mEnabled && !force)
         return;
 
-    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
-    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-    {
-        ui->frameColor->setToolTip(tr("<strong>Hopfentyp<br>"
-                                      "<font color=\"%1\">Aroma</font><br>"
-                                      "<font color=\"%2\">Bitter</font><br>"
-                                      "<font color=\"%3\">Universal</font></strong>")
-                .arg(gSettings->HopfenTypBackgrounds[1].name())
-                .arg(gSettings->HopfenTypBackgrounds[2].name())
-                .arg(gSettings->HopfenTypBackgrounds[3].name()));
-    }
-    else
-    {
-        ui->frameColor->setToolTip(tr("<strong>Zutattyp<br>"
-                                  "<font color=\"%1\">Honig</font><br>"
-                                  "<font color=\"%2\">Zucker</font><br>"
-                                  "<font color=\"%3\">Gewürz</font><br>"
-                                  "<font color=\"%4\">Frucht</font><br>"
-                                  "<font color=\"%5\">Sonstiges</font></strong>")
-            .arg(gSettings->WZTypBackgrounds[0].name())
-            .arg(gSettings->WZTypBackgrounds[1].name())
-            .arg(gSettings->WZTypBackgrounds[2].name())
-            .arg(gSettings->WZTypBackgrounds[3].name())
-            .arg(gSettings->WZTypBackgrounds[4].name()));
-    }
-
     mEnabled = enabled;
     if (mEnabled)
     {
@@ -127,6 +102,7 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbDauerTage->setReadOnly(true);
         ui->tbDatumBis->setReadOnly(true);
     }
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     ui->cbEntnahme->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
 }
 
@@ -225,23 +201,28 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             QPalette pal = ui->frameColor->palette();
             pal.setColor(QPalette::Background, gSettings->HopfenTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
+            ui->frameColor->setToolTip(TabRohstoffe::HopfenTypname[idx]);
         }
         else
         {
             ui->frameColor->setPalette(gSettings->palette);
+            ui->frameColor->setToolTip("");
         }
     }
     else
     {
-        if (static_cast<int>(typ) >= 0 && static_cast<int>(typ) < gSettings->WZTypBackgrounds.count())
+        int idx = static_cast<int>(typ);
+        if (idx >= 0 && idx < gSettings->WZTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Background, gSettings->WZTypBackgrounds[static_cast<int>(typ)]);
+            pal.setColor(QPalette::Background, gSettings->WZTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
+            ui->frameColor->setToolTip(TabRohstoffe::ZusatzTypname[idx]);
         }
         else
         {
             ui->frameColor->setPalette(gSettings->palette);
+            ui->frameColor->setToolTip("");
         }
     }
 

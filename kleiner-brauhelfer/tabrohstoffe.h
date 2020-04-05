@@ -13,6 +13,12 @@ class TabRohstoffe : public TabAbstract
     Q_OBJECT
 
 public:
+
+    static QList<QString> HopfenTypname;
+    static QList<QString> HefeTypname;
+    static QList<QString> ZusatzTypname;
+
+public:
     explicit TabRohstoffe(QWidget *parent = nullptr);
     virtual ~TabRohstoffe() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;

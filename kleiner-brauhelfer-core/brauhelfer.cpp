@@ -479,7 +479,8 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelWeitereZutaten::ColMenge).toDouble();
-            switch (modelLager->data(row, ModelWeitereZutaten::ColEinheiten).toInt())
+            Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(modelLager->data(row, ModelWeitereZutaten::ColEinheiten).toInt());
+            switch (einheit)
             {
             case Brauhelfer::ZusatzEinheit::Kg:
                 mengeLager -= menge / 1000;

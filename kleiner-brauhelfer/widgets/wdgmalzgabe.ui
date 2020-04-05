@@ -60,9 +60,6 @@
           <property name="focusPolicy">
            <enum>Qt::ClickFocus</enum>
           </property>
-          <property name="toolTip">
-           <string>Malzfarbe.</string>
-          </property>
           <property name="autoFillBackground">
            <bool>true</bool>
           </property>

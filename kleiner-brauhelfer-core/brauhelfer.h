@@ -115,6 +115,9 @@ public:
         Gewuerz = 2,
         Frucht = 3,
         Sonstiges = 4,
+        Kraut = 5,
+        Wasseraufbereiung = 6,
+        Klaermittel = 7,
         Hopfen = 100
     };
     Q_ENUM(ZusatzTyp)

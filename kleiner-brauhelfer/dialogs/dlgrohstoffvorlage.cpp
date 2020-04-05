@@ -353,6 +353,12 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Frucht));
             else if (typ == "sonstiges")
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges));
+            else if (typ == "kraut" || typ == "kräuter")
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Kraut));
+            else if (typ == "wasseraufbereitung")
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Wasseraufbereiung));
+            else if (typ == "klärmittel")
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel));
             mValues.insert(ModelWeitereZutaten::ColAusbeute, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             mValues.insert(ModelWeitereZutaten::ColEBC, index.sibling(index.row(), header->logicalIndex(3)).data().toDouble());
             break;
@@ -370,6 +376,12 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Frucht));
             else if (typ == "sonstiges")
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges));
+            else if (typ == "kraut" || typ == "kräuter")
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Kraut));
+            else if (typ == "wasseraufbereitung")
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Wasseraufbereiung));
+            else if (typ == "klärmittel")
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel));
             break;
         }
         accept();

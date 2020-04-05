@@ -98,9 +98,11 @@ void WdgMalzGabe::updateValues(bool full)
         ui->tbMenge->setValue(data(ModelMalzschuettung::Colerg_Menge).toDouble());
     }
 
+    double ebc = data(ModelMalzschuettung::ColFarbe).toDouble();
     QPalette pal = ui->frameColor->palette();
-    pal.setColor(QPalette::Background, BierCalc::ebcToColor(data(ModelMalzschuettung::ColFarbe).toDouble()));
+    pal.setColor(QPalette::Background, BierCalc::ebcToColor(ebc));
     ui->frameColor->setPalette(pal);
+    ui->frameColor->setToolTip(QString::number(ebc) + " EBC");
 
     if (mEnabled)
     {

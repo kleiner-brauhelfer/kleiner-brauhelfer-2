@@ -3,6 +3,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 
 extern Brauhelfer* bh;
@@ -15,14 +16,6 @@ WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
     mEnabled(true)
 {
     ui->setupUi(this);
-
-    ui->frameColor->setToolTip(tr("<strong>Hopfentyp<br>"
-                                  "<font color=\"%1\">Aroma</font><br>"
-                                  "<font color=\"%2\">Bitter</font><br>"
-                                  "<font color=\"%3\">Universal</font><strong>")
-            .arg(gSettings->HopfenTypBackgrounds[1].name())
-            .arg(gSettings->HopfenTypBackgrounds[2].name())
-            .arg(gSettings->HopfenTypBackgrounds[3].name()));
 
     ui->btnMengeKorrektur->setPalette(gSettings->paletteErrorButton);
     ui->btnAnteilKorrektur->setPalette(gSettings->paletteErrorButton);
@@ -144,10 +137,12 @@ void WdgHopfenGabe::updateValues(bool full)
         QPalette pal = ui->frameColor->palette();
         pal.setColor(QPalette::Background, gSettings->HopfenTypBackgrounds[idx]);
         ui->frameColor->setPalette(pal);
+        ui->frameColor->setToolTip(TabRohstoffe::HopfenTypname[idx]);
     }
     else
     {
         ui->frameColor->setPalette(gSettings->palette);
+        ui->frameColor->setToolTip("");
     }
 
     if (mEnabled)

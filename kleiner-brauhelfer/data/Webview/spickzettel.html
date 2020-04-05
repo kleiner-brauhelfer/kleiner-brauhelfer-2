@@ -132,34 +132,6 @@
         {{/Malz}}
         <td valign="top">
           <table>
-          {{#Honig}}
-            <tr>
-              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_0.svg" height="30"></th>
-            </tr>
-            {{#Liste}}
-            <tr>
-              <td align="left">{{Name}}</td>
-              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            {{/Liste}}
-          {{/Honig}}
-          {{#Zucker}}
-            <tr>
-              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_1.svg" height="30"></th>
-            </tr>
-            {{#Liste}}
-            <tr>
-              <td align="left">{{Name}}</td>
-              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            {{/Liste}}
-          {{/Zucker}}
-          </table>
-        </td>
-        <td valign="top">
-          <table>
           {{#Hopfen}}
             <tr>
               <th align="center" colspan="2"><img src="qrc:/images/hopfen.svg" height="30"></th>
@@ -200,25 +172,13 @@
             </tr>
             {{/Liste}}
           {{/Hefe}}
-          {{#Sonstiges}}
-            <tr>
-              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_4.svg" height="30"></th>
-            </tr>
-            {{#Liste}}
-            <tr>
-              <td align="left">{{Name}}</td>
-              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            {{/Liste}}
-          {{/Sonstiges}}
           </table>
         </td>
         <td valign="top">
           <table>
-          {{#Gewuerz}}
+          {{#Zusatz}}
             <tr>
-              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_2.svg" height="30"></th>
+              <th align="center" colspan="2"><img src="qrc:/images/zusatz.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
@@ -227,19 +187,7 @@
               <td><input type="checkbox"></td>
             </tr>
             {{/Liste}}
-          {{/Gewuerz}}
-          {{#Frucht}}
-            <tr>
-              <th align="center" colspan="2"><img src="qrc:/images/ewz_typ_3.svg" height="30"></th>
-            </tr>
-            {{#Liste}}
-            <tr>
-              <td align="left">{{Name}}</td>
-              <td align="right"><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            {{/Liste}}
-          {{/Frucht}}
+          {{/Zusatz}}
           </table>
         </td>
       </tr>
@@ -288,11 +236,10 @@
               <td><strong><span class="value">{{Rezept.Gesamtschuettung}}</span></strong> kg</td>
             </tr>
           </table>
-          
         </td>
       </tr>
       {{/Zutaten.Malz}}
-      {{#Zutaten.ZutatenMaischen}}
+      {{#Zutaten.HatZusatzMaischen}}
       <tr>
         <td class="underline" valign="top"><strong>Weitere Zutaten</strong></td>
         <td class="underline">
@@ -300,7 +247,7 @@
             <col width="200">
             <col width="*">
             <col width="*">
-            {{#Zutaten.Honig.Liste}}
+            {{#Zutaten.Zusatz.Liste}}
             {{#Maischen}}
             <tr>
               <td>{{Name}}</td>
@@ -308,47 +255,11 @@
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Maischen}}
-            {{/Zutaten.Honig.Liste}}
-            {{#Zutaten.Zucker.Liste}}
-            {{#Maischen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Maischen}}
-            {{/Zutaten.Zucker.Liste}}
-            {{#Zutaten.Gewuerz.Liste}}
-            {{#Maischen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Maischen}}
-            {{/Zutaten.Gewuerz.Liste}}
-            {{#Zutaten.Frucht.Liste}}
-            {{#Maischen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Maischen}}
-            {{/Zutaten.Frucht.Liste}}
-            {{#Zutaten.Sonstiges.Liste}}
-            {{#Maischen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Maischen}}
-            {{/Zutaten.Sonstiges.Liste}}
+            {{/Zutaten.Zusatz.Liste}}
           </table>
         </td>
       </tr>
-      {{/Zutaten.ZutatenMaischen}}
+      {{/Zutaten.HatZusatzMaischen}}
       <tr>
         <td class="underline" valign="top"><strong>Einmaischen</strong></td>
         <td class="underline">bei <span class="value">{{Rezept.EinmaischenTemp}}</span>&deg;C</td>
@@ -422,7 +333,7 @@
     <table>
       <col width="250">
       <col width="700">
-      {{#Zutaten.ZutatenVorderwuerze}}
+      {{#Zutaten.HatVorderwuerzehopfen}}
       <tr>
         <td class="underline" valign="top"><strong>Vorderw&uuml;rzehopfung</strong></td>
         <td class="underline">
@@ -442,7 +353,7 @@
           {{/Zutaten.Hopfen}}
         </td>
       </tr>
-      {{/Zutaten.ZutatenVorderwuerze}}
+      {{/Zutaten.HatVorderwuerzehopfen}}
       <tr>
         <td class="underline" valign="top"><strong>Aufheizen</strong></td>
         <td class="underline">W&uuml;rze auf <span class="value">100</span>&deg;C erhitzen</td>
@@ -498,7 +409,7 @@
         </td>
       </tr>
       {{/Zutaten.Hopfen}}
-      {{#Zutaten.ZutatenKochen}}
+      {{#Zutaten.HatZusatzKochen}}
       <tr>
         <td class="underline" valign="top"><strong>Weitere Zutaten</strong></td>
         <td class="underline">
@@ -506,7 +417,7 @@
             <col width="200">
             <col width="*">
             <col width="*">
-            {{#Zutaten.Honig.Liste}}
+            {{#Zutaten.Zusatz.Liste}}
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
@@ -514,47 +425,11 @@
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Kochen}}
-            {{/Zutaten.Honig.Liste}}
-            {{#Zutaten.Zucker.Liste}}
-            {{#Kochen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Kochen}}
-            {{/Zutaten.Zucker.Liste}}
-            {{#Zutaten.Gewuerz.Liste}}
-            {{#Kochen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Kochen}}
-            {{/Zutaten.Gewuerz.Liste}}
-            {{#Zutaten.Frucht.Liste}}
-            {{#Kochen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Kochen}}
-            {{/Zutaten.Frucht.Liste}}
-            {{#Zutaten.Sonstiges.Liste}}
-            {{#Kochen}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Kochen}}
-            {{/Zutaten.Sonstiges.Liste}}
+            {{/Zutaten.Zusatz.Liste}}
           </table>
         </td>
       </tr>
-      {{/Zutaten.ZutatenKochen}}
+      {{/Zutaten.HatZusatzKochen}}
       <tr>
         <td class="underline" valign="top"><strong>Kochdauer</strong></td>
         <td class="underline"><span class="value">{{Rezept.Kochdauer}}</span> min</td>
@@ -697,7 +572,7 @@
         <td class="underline">Die W&uuml;rze gut bel&uuml;ften</td>
       </tr>
       {{/Zutaten.Hefe}}
-      {{#Zutaten.ZutatenHopfenstopfen}}
+      {{#Zutaten.HatKalthopfen}}
       <tr>
         <td class="underline" valign="top"><strong>Stopfhopfen</strong></td>
         <td class="underline">
@@ -715,8 +590,8 @@
           </table>
         </td>
       </tr>
-      {{/Zutaten.ZutatenHopfenstopfen}}
-      {{#Zutaten.ZutatenGaerung}}
+      {{/Zutaten.HatKalthopfen}}
+      {{#Zutaten.HatZusatzGaerung}}
       <tr>
         <td class="underline" valign="top"><strong>Weitere Zutaten</strong></td>
         <td class="underline">
@@ -724,7 +599,7 @@
             <col width="200">
             <col width="*">
             <col width="*">
-            {{#Zutaten.Honig.Liste}}
+            {{#Zutaten.Zusatz.Liste}}
             {{#Gaerung}}
             <tr>
               <td>{{Name}}</td>
@@ -732,47 +607,11 @@
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
             {{/Gaerung}}
-            {{/Zutaten.Honig.Liste}}
-            {{#Zutaten.Zucker.Liste}}
-            {{#Gaerung}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Gaerung}}
-            {{/Zutaten.Zucker.Liste}}
-            {{#Zutaten.Gewuerz.Liste}}
-            {{#Gaerung}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Gaerung}}
-            {{/Zutaten.Gewuerz.Liste}}
-            {{#Zutaten.Frucht.Liste}}
-            {{#Gaerung}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Gaerung}}
-            {{/Zutaten.Frucht.Liste}}
-            {{#Zutaten.Sonstiges.Liste}}
-            {{#Gaerung}}
-            <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
-              <td class="kommentar">{{Bemerkung}}</td>
-            </tr>
-            {{/Gaerung}}
-            {{/Zutaten.Sonstiges.Liste}}
+            {{/Zutaten.Zusatz.Liste}}
           </table>
         </td>
       </tr>
-      {{/Zutaten.ZutatenGaerung}}
+      {{/Zutaten.HatZusatzGaerung}}
       <tr>
         <td valign="top"><strong>G&auml;rverlauf</strong></td>
         <td>Restextrakt regelm&auml;ssig messen und G&auml;rverlauf beobachten</td>

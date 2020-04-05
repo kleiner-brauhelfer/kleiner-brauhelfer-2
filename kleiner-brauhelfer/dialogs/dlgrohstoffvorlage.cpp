@@ -344,15 +344,15 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             mValues.insert(ModelWeitereZutaten::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "honig")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Honig);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Honig));
             else if (typ == "zucker")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Zucker);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Zucker));
             else if (typ == "gewürz" || typ == "gewürze")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Gewuerz);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Gewuerz));
             else if (typ == "frucht")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Frucht);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Frucht));
             else if (typ == "sonstiges")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Sonstiges);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges));
             mValues.insert(ModelWeitereZutaten::ColAusbeute, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             mValues.insert(ModelWeitereZutaten::ColEBC, index.sibling(index.row(), header->logicalIndex(3)).data().toDouble());
             break;
@@ -361,15 +361,15 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             mValues.insert(ModelWeitereZutaten::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "honig")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Honig);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Honig));
             else if (typ == "zucker")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Zucker);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Zucker));
             else if (typ == "gewürz" || typ == "gewürze")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Gewuerz);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Gewuerz));
             else if (typ == "frucht")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Frucht);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Frucht));
             else if (typ == "sonstiges")
-                mValues.insert(ModelWeitereZutaten::ColTyp, EWZ_Typ_Sonstiges);
+                mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges));
             break;
         }
         accept();

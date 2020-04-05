@@ -730,23 +730,26 @@ void ModelSud::updateSwWeitereZutaten(int row)
     modelWeitereZutatenGaben.setFilterRegExp(QRegExp(QString("^%1$").arg(data(row, ColID).toInt())));
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
-        if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             continue;
         double ausbeute = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColAusbeute).toDouble();
         if (ausbeute > 0.0)
         {
             double sw = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColMenge).toDouble() * ausbeute / 1000;
-            switch (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt())
+            Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+            Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+            switch (zeitpunkt)
             {
-            case EWZ_Zeitpunkt_Gaerung:
+            case Brauhelfer::ZusatzZeitpunkt::Gaerung:
                 swWzGaerungRecipe[row] += sw ;
-                if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZugabestatus).toInt() != EWZ_Zugabestatus_nichtZugegeben)
+                if (status != Brauhelfer::ZusatzStatus::NichtZugegeben)
                     swWzGaerungCurrent[row] += sw;
                 break;
-            case EWZ_Zeitpunkt_Kochen:
+            case Brauhelfer::ZusatzZeitpunkt::Kochen:
                 swWzKochenRecipe[row] += sw;
                 break;
-            case EWZ_Zeitpunkt_Maischen:
+            case Brauhelfer::ZusatzZeitpunkt::Maischen:
                 swWzMaischenRecipe[row] += sw;
                 break;
             }
@@ -779,7 +782,8 @@ void ModelSud::updateFarbe(int row)
     modelWeitereZutatenGaben.setFilterRegExp(sudReg);
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
-        if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             continue;
         double farbe = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColFarbe).toDouble();
         if (farbe > 0.0)
@@ -856,7 +860,8 @@ void ModelSud::updatePreis(int row)
         QVariant name = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColName);
         double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         double preis;
-        if (modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColPreis).toDouble();
         else
             preis = bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColPreis).toDouble();

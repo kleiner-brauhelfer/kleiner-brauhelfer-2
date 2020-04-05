@@ -254,7 +254,7 @@ bool Database::update()
                     sqlExec(db, QString("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
                 }
                 if (typ < 0)
-                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(EWZ_Typ_Hopfen).arg(id));
+                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen)).arg(id));
             }
             sqlExec(db, "ALTER TABLE WeitereZutatenGaben RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE WeitereZutatenGaben ("

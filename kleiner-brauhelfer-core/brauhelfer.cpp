@@ -306,7 +306,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     if (teilen)
         sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}});
     else
-        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}, {ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben}});
+        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}, {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}});
     sudKopierenModel(modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId, {{ModelMalzschuettung::ColSudID, neueSudId}});
     sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, {{ModelAnhang::ColSudID, neueSudId}});
     sudKopierenModel(modelEtiketten(), ModelEtiketten::ColSudID, sudId, {{ModelEtiketten::ColSudID, neueSudId}});
@@ -481,16 +481,16 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
             mengeLager = modelLager->data(row, ModelWeitereZutaten::ColMenge).toDouble();
             switch (modelLager->data(row, ModelWeitereZutaten::ColEinheiten).toInt())
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::ZusatzEinheit::Kg:
                 mengeLager -= menge / 1000;
                 break;
-            case EWZ_Einheit_g:
+            case Brauhelfer::ZusatzEinheit::g:
                 mengeLager -= menge;
                 break;
-            case EWZ_Einheit_mg:
+            case Brauhelfer::ZusatzEinheit::mg:
                 mengeLager -= menge * 1000;
                 break;
-            case EWZ_Einheit_Stk:
+            case Brauhelfer::ZusatzEinheit::Stk:
                 mengeLager -= qCeil(menge);
                 break;
             }

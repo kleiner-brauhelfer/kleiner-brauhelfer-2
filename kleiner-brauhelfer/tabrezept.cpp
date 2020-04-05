@@ -432,9 +432,9 @@ void TabRezept::checkRohstoffe()
                 continue;
             }
         }
-        int typ = wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt();
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt());
         int row;
-        if (typ == EWZ_Typ_Hopfen)
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, name);
         else
             row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
@@ -443,7 +443,7 @@ void TabRezept::checkRohstoffe()
             ui->tabZutaten->setCurrentWidget(ui->tabWeitereZutaten);
             DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
             dlg.setSud(bh->sud()->getSudname());
-            if (typ == EWZ_Typ_Hopfen)
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                 dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
             else
                 dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColBeschreibung);
@@ -452,7 +452,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (dlg.importieren())
                 {
-                    if (typ == EWZ_Typ_Hopfen)
+                    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
                         QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name}});
                         bh->modelHopfen()->append(values);
@@ -565,9 +565,10 @@ void TabRezept::updateValues()
     ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
 
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
+    Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
     if (!ui->cbBerechnungsartHopfen->hasFocus())
-        ui->cbBerechnungsartHopfen->setCurrentIndex(bh->sud()->getberechnungsArtHopfen() + 1);
-    ui->lblBerechnungsartHopfenWarnung->setVisible(bh->sud()->getberechnungsArtHopfen() == Hopfen_Berechnung_Keine);
+        ui->cbBerechnungsartHopfen->setCurrentIndex(static_cast<int>(berechnungsArtHopfen) + 1);
+    ui->lblBerechnungsartHopfenWarnung->setVisible(berechnungsArtHopfen == Brauhelfer::BerechnungsartHopfen::Keine);
     if (!ui->tbKommentar->hasFocus())
         ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
     updateGlas();
@@ -908,7 +909,7 @@ void TabRezept::on_btnNeueHopfenstopfenGabe_clicked()
     {
         QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
                                     {ModelWeitereZutatenGaben::ColName, dlg.name()},
-                                    {ModelWeitereZutatenGaben::ColTyp, EWZ_Typ_Hopfen}});
+                                    {ModelWeitereZutatenGaben::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen)}});
         bh->sud()->modelWeitereZutatenGaben()->append(values);
         ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
     }

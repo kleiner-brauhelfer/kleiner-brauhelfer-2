@@ -57,16 +57,16 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     bool enabled = status == Brauhelfer::SudStatus::Rezept;
-    if (data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == EWZ_Zeitpunkt_Gaerung)
+    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+    if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
         enabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (gSettings->ForceEnabled)
         enabled = true;
     if (enabled == mEnabled && !force)
         return;
 
-    int typ = data(ModelWeitereZutatenGaben::ColTyp).toInt();
-
-    if (typ == EWZ_Typ_Hopfen)
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
         ui->frameColor->setToolTip(tr("<strong>Hopfentyp<br>"
                                       "<font color=\"%1\">Aroma</font><br>"
@@ -127,17 +127,17 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         ui->tbDauerTage->setReadOnly(true);
         ui->tbDatumBis->setReadOnly(true);
     }
-    ui->cbEntnahme->setVisible(typ != EWZ_Typ_Hopfen);
+    ui->cbEntnahme->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
 }
 
 void WdgWeitereZutatGabe::updateValues(bool full)
 {
     QString zusatzname = name();
-    int typ = data(ModelWeitereZutatenGaben::ColTyp).toInt();
-    int zeitpunkt = data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
-    int entnahme = data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt();
-    int einheit = data(ModelWeitereZutatenGaben::ColEinheit).toInt();
-    int zugabestatus = data(ModelWeitereZutatenGaben::ColZugabestatus).toInt();
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
+    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+    Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
+    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+    Brauhelfer::ZusatzStatus zugabestatus = static_cast<Brauhelfer::ZusatzStatus>(data(ModelWeitereZutatenGaben::ColZugabestatus).toInt());
     int dauer = data(ModelWeitereZutatenGaben::ColZugabedauer).toInt();
 
     checkEnabled(full);
@@ -145,7 +145,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->btnZutat->setText(zusatzname);
     if (!ui->tbMenge->hasFocus())
     {
-        if (einheit == EWZ_Einheit_mg)
+        if (einheit == Brauhelfer::ZusatzEinheit::mg)
             ui->tbMenge->setValue(data(ModelWeitereZutatenGaben::ColMenge).toDouble() * 1000);
         else
             ui->tbMenge->setValue(data(ModelWeitereZutatenGaben::ColMenge).toDouble());
@@ -154,7 +154,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     {
         switch (einheit)
         {
-        case EWZ_Einheit_Kg:
+        case Brauhelfer::ZusatzEinheit::Kg:
             ui->lblEinheit->setText(tr("kg"));
             ui->lblEinheit2->setText(tr("kg"));
             ui->lblEinheitProLiter->setText(tr("g/l"));
@@ -162,7 +162,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000);
             break;
-        case EWZ_Einheit_g:
+        case Brauhelfer::ZusatzEinheit::g:
             ui->lblEinheit->setText(tr("g"));
             ui->lblEinheit2->setText(tr("g"));
             ui->lblEinheitProLiter->setText(tr("g/l"));
@@ -170,7 +170,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbVorhanden->setDecimals(1);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
-        case EWZ_Einheit_mg:
+        case Brauhelfer::ZusatzEinheit::mg:
             ui->lblEinheit->setText(tr("mg"));
             ui->lblEinheit2->setText(tr("mg"));
             ui->lblEinheitProLiter->setText(tr("mg/l"));
@@ -178,7 +178,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbVorhanden->setDecimals(0);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000);
             break;
-        case EWZ_Einheit_Stk:
+        case Brauhelfer::ZusatzEinheit::Stk:
             ui->lblEinheit->setText(tr("Stk."));
             ui->lblEinheit2->setText(tr("Stk."));
             ui->lblEinheitProLiter->setText(tr("Stk./l"));
@@ -189,14 +189,14 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         }
     }
     if (!ui->cbZugabezeitpunkt->hasFocus())
-        ui->cbZugabezeitpunkt->setCurrentIndex(zeitpunkt);
+        ui->cbZugabezeitpunkt->setCurrentIndex(static_cast<int>(zeitpunkt));
     if (!ui->tbDauerMin->hasFocus())
     {
         ui->tbDauerMin->setMinimum(-bh->sud()->getNachisomerisierungszeit());
         ui->tbDauerMin->setMaximum(bh->sud()->getKochdauerNachBitterhopfung());
         ui->tbDauerMin->setValue(dauer);
     }
-    ui->cbEntnahme->setChecked(entnahme == EWZ_Entnahmeindex_KeineEntnahme);
+    ui->cbEntnahme->setChecked(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
         ui->tbZugabeNach->setValue(data(ModelWeitereZutatenGaben::ColZugabeNach).toInt());
     if (!ui->tbDauerTage->hasFocus())
@@ -217,7 +217,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (!ui->tbKomentar->hasFocus())
         ui->tbKomentar->setText(data(ModelWeitereZutatenGaben::ColBemerkung).toString());
 
-    if (typ == EWZ_Typ_Hopfen)
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
         int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, zusatzname, ModelHopfen::ColTyp).toInt();
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
@@ -233,10 +233,10 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     }
     else
     {
-        if (typ >= 0 && typ < gSettings->WZTypBackgrounds.count())
+        if (static_cast<int>(typ) >= 0 && static_cast<int>(typ) < gSettings->WZTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Background, gSettings->WZTypBackgrounds[typ]);
+            pal.setColor(QPalette::Background, gSettings->WZTypBackgrounds[static_cast<int>(typ)]);
             ui->frameColor->setPalette(pal);
         }
         else
@@ -247,7 +247,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        if (typ == EWZ_Typ_Hopfen)
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, zusatzname, ModelHopfen::ColMenge).toInt());
         else
             ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, zusatzname, ModelWeitereZutaten::ColMenge).toDouble());
@@ -258,7 +258,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             if (model->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
                 benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
-        if (typ == EWZ_Typ_Hopfen)
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
             model = bh->sud()->modelHopfengaben();
             for (int i = 0; i < model->rowCount(); ++i)
@@ -267,16 +267,16 @@ void WdgWeitereZutatGabe::updateValues(bool full)
                     benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
             }
         }
-        if (einheit == EWZ_Einheit_Kg)
+        if (einheit == Brauhelfer::ZusatzEinheit::Kg)
             benoetigt /= 1000;
-        else if (einheit == EWZ_Einheit_mg)
+        else if (einheit == Brauhelfer::ZusatzEinheit::mg)
             benoetigt *= 1000;
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (zugabestatus)
         {
-        case EWZ_Zugabestatus_nichtZugegeben:
+        case Brauhelfer::ZusatzStatus::NichtZugegeben:
             ui->tbVorhanden->setVisible(true);
             ui->lblVorhanden->setVisible(true);
             ui->lblEinheit2->setVisible(true);
@@ -289,7 +289,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbMenge->setReadOnly(false);
             ui->btnZutat->setEnabled(true);
             break;
-        case EWZ_Zugabestatus_Zugegeben:
+        case Brauhelfer::ZusatzStatus::Zugegeben:
             ui->tbVorhanden->setVisible(false);
             ui->lblVorhanden->setVisible(false);
             ui->lblEinheit2->setVisible(false);
@@ -301,7 +301,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(true);
             ui->btnZutat->setEnabled(false);
-            if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
+            if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
                 QDate currentDate = QDate::currentDate();
                 QDate dateBisSoll = data(ModelWeitereZutatenGaben::ColZugabeDatum).toDate().addDays(dauer / 1440);
@@ -311,7 +311,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
                 }
             }
             break;
-        case EWZ_Zugabestatus_Entnommen:
+        case Brauhelfer::ZusatzStatus::Entnommen:
             ui->tbVorhanden->setVisible(false);
             ui->lblVorhanden->setVisible(false);
             ui->lblEinheit2->setVisible(false);
@@ -345,31 +345,32 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     switch (zeitpunkt)
     {
-    case EWZ_Zeitpunkt_Gaerung:
+    case Brauhelfer::ZusatzZeitpunkt::Gaerung:
         ui->wdgKochdauer->setVisible(false);
         break;
-    case EWZ_Zeitpunkt_Kochen:
+    case Brauhelfer::ZusatzZeitpunkt::Kochen:
         ui->wdgKochdauer->setVisible(true);
         break;
-    case EWZ_Zeitpunkt_Maischen:
+    case Brauhelfer::ZusatzZeitpunkt::Maischen:
         ui->wdgKochdauer->setVisible(false);
         break;
     }
-    ui->wdgZugabezeitpunkt->setVisible(typ != EWZ_Typ_Hopfen);
-    ui->wdgZugabe->setVisible(zeitpunkt == EWZ_Zeitpunkt_Gaerung);
-    ui->lblEntnahme->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->tbDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->lblDauerTage->setVisible(entnahme == EWZ_Entnahmeindex_MitEntnahme);
-    ui->tbDatumBis->setVisible(braudatum.isValid() && entnahme == EWZ_Entnahmeindex_MitEntnahme);
+    ui->wdgZugabezeitpunkt->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
+    ui->wdgZugabe->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung);
+    ui->lblEntnahme->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
+    ui->tbDauerTage->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
+    ui->lblDauerTage->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
+    ui->tbDatumBis->setVisible(braudatum.isValid() && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == EWZ_Zugabestatus_nichtZugegeben);
-    ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == EWZ_Zugabestatus_Zugegeben && entnahme == EWZ_Entnahmeindex_MitEntnahme);
+    ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::NichtZugegeben);
+    ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::Zugegeben && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     ui->cbZugabezeitpunkt->setEnabled(status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled);
 }
 
 void WdgWeitereZutatGabe::on_btnZutat_clicked()
 {
-    if (data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
         DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hopfen, this);
         dlg.select(name());
@@ -394,7 +395,8 @@ void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
     {
-        if (data(ModelWeitereZutatenGaben::ColEinheit).toInt() == EWZ_Einheit_mg)
+        Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+        if (einheit == Brauhelfer::ZusatzEinheit::mg)
             setData(ModelWeitereZutatenGaben::ColMenge, value / 1000);
         else
             setData(ModelWeitereZutatenGaben::ColMenge, value);
@@ -405,18 +407,19 @@ void WdgWeitereZutatGabe::on_tbMengeTotal_valueChanged(double value)
 {
     if (ui->tbMengeTotal->hasFocus())
     {
-        switch (data(ModelWeitereZutatenGaben::ColEinheit).toInt())
+        Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+        switch (einheit)
         {
-        case EWZ_Einheit_Kg:
+        case Brauhelfer::ZusatzEinheit::Kg:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
             break;
-        case EWZ_Einheit_g:
+        case Brauhelfer::ZusatzEinheit::g:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
             break;
-        case EWZ_Einheit_mg:
+        case Brauhelfer::ZusatzEinheit::mg:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value / 1000);
             break;
-        case EWZ_Einheit_Stk:
+        case Brauhelfer::ZusatzEinheit::Stk:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
             break;
         }
@@ -440,9 +443,11 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatumVon->date();
     setData(ModelWeitereZutatenGaben::ColZugabeDatum, currentDate < date ? currentDate : date);
-    setData(ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
+    setData(ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
 
-    DlgRohstoffeAbziehen dlg(data(ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
+    Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
+    Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
+    DlgRohstoffeAbziehen dlg(typ,
                              data(ModelWeitereZutatenGaben::ColName).toString(),
                              data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
                              this);
@@ -483,7 +488,7 @@ void WdgWeitereZutatGabe::on_btnEntnehmen_clicked()
     QDate currentDate = QDate::currentDate();
     QDate date = ui->tbDatumBis->date();
     setData(ModelWeitereZutatenGaben::ColEntnahmeDatum, currentDate < date ? currentDate : date);
-    setData(ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Entnommen);
+    setData(ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Entnommen));
 }
 
 void WdgWeitereZutatGabe::on_tbKomentar_textChanged()
@@ -500,18 +505,19 @@ void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 void WdgWeitereZutatGabe::on_btnAufbrauchen_clicked()
 {
     double value = ui->tbVorhanden->value();
-    switch (data(ModelWeitereZutatenGaben::ColEinheit).toInt())
+    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+    switch (einheit)
     {
-    case EWZ_Einheit_Kg:
+    case Brauhelfer::ZusatzEinheit::Kg:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
         break;
-    case EWZ_Einheit_g:
+    case Brauhelfer::ZusatzEinheit::g:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
-    case EWZ_Einheit_mg:
+    case Brauhelfer::ZusatzEinheit::mg:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value / 1000);
         break;
-    case EWZ_Einheit_Stk:
+    case Brauhelfer::ZusatzEinheit::Stk:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
     }

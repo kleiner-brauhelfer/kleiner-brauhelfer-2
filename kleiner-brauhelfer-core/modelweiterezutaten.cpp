@@ -28,13 +28,13 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
         double menge = data(idx.row(), ColMenge).toDouble();
         switch (data(idx.row(), ColEinheiten).toInt())
         {
-        case EWZ_Einheit_Kg:
+        case Brauhelfer::ZusatzEinheit::Kg:
             return menge * 1000;
-        case EWZ_Einheit_g:
+        case Brauhelfer::ZusatzEinheit::g:
             return menge;
-        case EWZ_Einheit_mg:
+        case Brauhelfer::ZusatzEinheit::mg:
             return menge / 1000;
-        case EWZ_Einheit_Stk:
+        case Brauhelfer::ZusatzEinheit::Stk:
             return menge;
         default:
             return menge;

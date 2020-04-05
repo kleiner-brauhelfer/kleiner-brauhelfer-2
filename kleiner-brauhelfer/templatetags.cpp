@@ -272,88 +272,93 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     int ival;
 
                     map.insert("Name", model->data(row, ModelWeitereZutatenGaben::ColName));
-                    switch (model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt())
+                    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                    switch (einheit)
                     {
-                    case EWZ_Einheit_Kg:
+                    case Brauhelfer::ZusatzEinheit::Kg:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
                         map.insert("Einheit", QObject::tr("kg"));
                         break;
-                    case EWZ_Einheit_g:
+                    case Brauhelfer::ZusatzEinheit::g:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
                         map.insert("Einheit", QObject::tr("g"));
                         break;
-                    case EWZ_Einheit_mg:
+                    case Brauhelfer::ZusatzEinheit::mg:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 0));
                         map.insert("Einheit", QObject::tr("mg"));
                         break;
-                    case EWZ_Einheit_Stk:
+                    case Brauhelfer::ZusatzEinheit::Stk:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
                         map.insert("Einheit", QObject::tr("Stk."));
                         break;
                     }
-                    switch (model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt())
+                    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+                    Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
+                    Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+                    switch (zeitpunkt)
                     {
-                    case EWZ_Zeitpunkt_Gaerung:
+                    case Brauhelfer::ZusatzZeitpunkt::Gaerung:
                         map.insert("Gaerung", true);
                         map.insert("ZugabeNach", QString::number(model->data(row, ModelWeitereZutatenGaben::ColZugabeNach).toInt()));
                         map.insert("ZugabeDatum", locale.toString(model->data(row, ModelWeitereZutatenGaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
                         map.insert("EntnahmeDatum", locale.toString(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeDatum).toDate(), QLocale::ShortFormat));
-                        if (model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt() == EWZ_Entnahmeindex_MitEntnahme)
+                        if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
                         {
                             map.insert("Entnahme", true);
                             map.insert("Dauer", model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt() / 1440);
                         }
-                        switch (model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt())
+                        switch (status)
                         {
-                        case EWZ_Zugabestatus_nichtZugegeben:
+                        case Brauhelfer::ZusatzStatus::NichtZugegeben:
                             map.insert("Status", QObject::tr("nicht zugegeben"));
                             break;
-                        case EWZ_Zugabestatus_Zugegeben:
-                            if (model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt() == EWZ_Entnahmeindex_MitEntnahme)
+                        case Brauhelfer::ZusatzStatus::Zugegeben:
+                            if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
                                 map.insert("Status", QObject::tr("nicht entnommen"));
                             else
                                 map.insert("Status", QObject::tr("zugegeben"));
                             break;
-                        case EWZ_Zugabestatus_Entnommen:
+                        case Brauhelfer::ZusatzStatus::Entnommen:
                             map.insert("Status", QObject::tr("entnommen"));
                             break;
                         }
-                        if (model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+                        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                             ctxZutaten["ZutatenHopfenstopfen"] = true;
                         else
                             ctxZutaten["ZutatenGaerung"] = true;
                         break;
-                    case EWZ_Zeitpunkt_Kochen:
+                    case Brauhelfer::ZusatzZeitpunkt::Kochen:
                         map.insert("Kochen", true);
                         ival =  model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt();
                         map.insert("Kochdauer", ival);
                         map.insert("ZugabeNach", QString::number(kochDauer - ival));
                         ctxZutaten["ZutatenKochen"] = true;
                         break;
-                    case EWZ_Zeitpunkt_Maischen:
+                    case Brauhelfer::ZusatzZeitpunkt::Maischen:
                         map.insert("Maischen", true);
                         ctxZutaten["ZutatenMaischen"] = true;
                         break;
                     }
                     map.insert("Bemerkung", model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString());
-                    switch (model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt())
+                    switch (typ)
                     {
-                    case EWZ_Typ_Honig:
+                    case Brauhelfer::ZusatzTyp::Honig:
                         listeHonig << map;
                         break;
-                    case EWZ_Typ_Zucker:
+                    case Brauhelfer::ZusatzTyp::Zucker:
                         listeZucker << map;
                         break;
-                    case EWZ_Typ_Gewuerz:
+                    case Brauhelfer::ZusatzTyp::Gewuerz:
                         listeGewuerz << map;
                         break;
-                    case EWZ_Typ_Frucht:
+                    case Brauhelfer::ZusatzTyp::Frucht:
                         listeFrucht << map;
                         break;
-                    case EWZ_Typ_Sonstiges:
+                    case Brauhelfer::ZusatzTyp::Sonstiges:
                         listeSonstiges << map;
                         break;
-                    case EWZ_Typ_Hopfen:
+                    case Brauhelfer::ZusatzTyp::Hopfen:
                         listeHopfen << map;
                         break;
                     }

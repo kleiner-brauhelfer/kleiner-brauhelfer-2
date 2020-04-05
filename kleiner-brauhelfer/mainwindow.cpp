@@ -444,7 +444,7 @@ void MainWindow::on_actionWeitereZutaten_triggered()
 {
     ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
     for (int row = 0; row < model->rowCount(); ++row)
-        model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben);
+        model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
 }
 
 void MainWindow::on_actionEingabefelderEntsperren_changed()

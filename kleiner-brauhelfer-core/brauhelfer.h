@@ -27,7 +27,6 @@
 #include "modelanhang.h"
 #include "modeletiketten.h"
 #include "modelgeraete.h"
-#include "database_defs.h"
 
 class Database;
 
@@ -91,6 +90,66 @@ public:
         IBU = 1
     };
     Q_ENUM(BerechnungsartHopfen)
+
+    enum class HopfenTyp
+    {
+        Unbekannt = 0,
+        Aroma = 1,
+        Bitter = 2,
+        Universal = 3
+    };
+    Q_ENUM(HopfenTyp)
+
+    enum class HefeTyp
+    {
+        Unbekannt = 0,
+        Trocken = 1,
+        Fluessig = 2
+    };
+    Q_ENUM(HefeTyp)
+
+    enum class ZusatzTyp
+    {
+        Honig = 0,
+        Zucker = 1,
+        Gewuerz = 2,
+        Frucht = 3,
+        Sonstiges = 4,
+        Hopfen = 100
+    };
+    Q_ENUM(ZusatzTyp)
+
+    enum class ZusatzEinheit
+    {
+        Kg = 0,
+        g = 1,
+        mg = 2,
+        Stk = 3
+    };
+    Q_ENUM(ZusatzEinheit)
+
+    enum class ZusatzZeitpunkt
+    {
+        Gaerung = 0,
+        Kochen = 1,
+        Maischen = 2
+    };
+    Q_ENUM(ZusatzZeitpunkt)
+
+    enum class ZusatzStatus
+    {
+        NichtZugegeben = 0,
+        Zugegeben = 1,
+        Entnommen = 2
+    };
+    Q_ENUM(ZusatzStatus)
+
+    enum class ZusatzEntnahmeindex
+    {
+        MitEntnahme = 0,
+        OhneEntnahme = 1
+    };
+    Q_ENUM(ZusatzEntnahmeindex)
 
 public:
 

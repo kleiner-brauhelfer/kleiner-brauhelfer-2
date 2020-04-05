@@ -151,22 +151,22 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QList<Rohstoff> *liste = nullptr;
             switch (modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColTyp).toInt())
             {
-            case EWZ_Typ_Honig:
+            case Brauhelfer::ZusatzTyp::Honig:
                 liste = &ListWeitereZutatenHonig;
                 break;
-            case EWZ_Typ_Zucker:
+            case Brauhelfer::ZusatzTyp::Zucker:
                 liste = &ListWeitereZutatenZucker;
                 break;
-            case EWZ_Typ_Gewuerz:
+            case Brauhelfer::ZusatzTyp::Gewuerz:
                 liste = &ListWeitereZutatenGewuerz;
                 break;
-            case EWZ_Typ_Frucht:
+            case Brauhelfer::ZusatzTyp::Frucht:
                 liste = &ListWeitereZutatenFrucht;
                 break;
-            case EWZ_Typ_Sonstiges:
+            case Brauhelfer::ZusatzTyp::Sonstiges:
                 liste = &ListWeitereZutatenSonstiges;
                 break;
-            case EWZ_Typ_Hopfen:
+            case Brauhelfer::ZusatzTyp::Hopfen:
                 liste = &ListHopfen;
                 break;
             }
@@ -299,25 +299,25 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             switch (eintrag.Einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::ZusatzEinheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
                 break;
-            case EWZ_Einheit_g:
+            case Brauhelfer::ZusatzEinheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
-            case EWZ_Einheit_mg:
+            case Brauhelfer::ZusatzEinheit::mg:
                 map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
-            case EWZ_Einheit_Stk:
+            case Brauhelfer::ZusatzEinheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
@@ -352,25 +352,25 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             switch (eintrag.Einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::ZusatzEinheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
                 break;
-            case EWZ_Einheit_g:
+            case Brauhelfer::ZusatzEinheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
-            case EWZ_Einheit_mg:
+            case Brauhelfer::ZusatzEinheit::mg:
                 map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
-            case EWZ_Einheit_Stk:
+            case Brauhelfer::ZusatzEinheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
@@ -405,25 +405,25 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             switch (eintrag.Einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::ZusatzEinheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
                 break;
-            case EWZ_Einheit_g:
+            case Brauhelfer::ZusatzEinheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
-            case EWZ_Einheit_mg:
+            case Brauhelfer::ZusatzEinheit::mg:
                 map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
-            case EWZ_Einheit_Stk:
+            case Brauhelfer::ZusatzEinheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
@@ -458,25 +458,25 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             switch (eintrag.Einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::ZusatzEinheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
                 break;
-            case EWZ_Einheit_g:
+            case Brauhelfer::ZusatzEinheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
-            case EWZ_Einheit_mg:
+            case Brauhelfer::ZusatzEinheit::mg:
                 map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
-            case EWZ_Einheit_Stk:
+            case Brauhelfer::ZusatzEinheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
@@ -511,25 +511,25 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             switch (eintrag.Einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::ZusatzEinheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 map.insert("Einheit", tr("kg"));
                 break;
-            case EWZ_Einheit_g:
+            case Brauhelfer::ZusatzEinheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 map.insert("Einheit", tr("g"));
                 break;
-            case EWZ_Einheit_mg:
+            case Brauhelfer::ZusatzEinheit::mg:
                 map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
                 map.insert("Einheit", tr("mg"));
                 break;
-            case EWZ_Einheit_Stk:
+            case Brauhelfer::ZusatzEinheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));

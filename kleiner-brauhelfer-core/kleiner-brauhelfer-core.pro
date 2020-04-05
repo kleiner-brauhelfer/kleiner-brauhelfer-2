@@ -9,7 +9,7 @@ VER_MAJ = 2
 # Datenbankversion
 VER_MIN = 3
 # Patchversion
-VER_PAT = 1
+VER_PAT = 2
 
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
@@ -70,7 +70,6 @@ HEADERS += \
     biercalc.h \
     brauhelfer.h \
     database.h \
-    database_defs.h \
     kleiner-brauhelfer-core_global.h \
     modelanhang.h \
     modelausruestung.h \

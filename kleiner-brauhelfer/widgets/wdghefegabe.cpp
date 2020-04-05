@@ -191,7 +191,7 @@ void WdgHefeGabe::on_btnZugeben_clicked()
     setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelHefegaben::ColZugegeben, true);
 
-    DlgRohstoffeAbziehen dlg(2, name(), menge(), this);
+    DlgRohstoffeAbziehen dlg(Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
     dlg.exec();
 }
 

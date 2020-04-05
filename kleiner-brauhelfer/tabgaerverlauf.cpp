@@ -578,18 +578,19 @@ void TabGaerverlauf::updateWeitereZutaten()
     ui->comboBox_GaerungEwzAuswahlEntnahme->clear();
     for (int i = 0; i < bh->sud()->modelWeitereZutatenGaben()->rowCount(); ++i)
     {
-        int zeitpunkt = bh->sud()->modelWeitereZutatenGaben()->index(i, ModelWeitereZutatenGaben::ColZeitpunkt).data().toInt();
-        if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(bh->sud()->modelWeitereZutatenGaben()->index(i, ModelWeitereZutatenGaben::ColZeitpunkt).data().toInt());
+        if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
         {
             QString name = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColName).toString();
             int id = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColID).toInt();
-            int type = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3;
-            int status = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColZugabestatus).toInt();
+            Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColTyp).toInt());
+            Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
+            Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
             bool entnahme = !bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColEntnahmeindex).toBool();
             int menge = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
-            if (status == EWZ_Zugabestatus_nichtZugegeben)
-                ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<int,int>(type, id)));
-            else if (status == EWZ_Zugabestatus_Zugegeben && entnahme)
+            if (status == Brauhelfer::ZusatzStatus::NichtZugegeben)
+                ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<Brauhelfer::RohstoffTyp,int>(typ, id)));
+            else if (status == Brauhelfer::ZusatzStatus::Zugegeben && entnahme)
                 ui->comboBox_GaerungEwzAuswahlEntnahme->addItem(name, id);
         }
     }
@@ -601,7 +602,7 @@ void TabGaerverlauf::updateWeitereZutaten()
             QString name = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColName).toString();
             int id = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColID).toInt();
             int menge = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColMenge).toInt();
-            ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<int,int>(2, id)));
+            ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<Brauhelfer::RohstoffTyp,int>(Brauhelfer::RohstoffTyp::Hefe, id)));
         }
     }
     ui->widget_EwzZugeben->setVisible(ui->comboBox_GaerungEwzAuswahl->count() > 0);
@@ -610,8 +611,8 @@ void TabGaerverlauf::updateWeitereZutaten()
 
 void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
 {
-    QPair<int,int> data = ui->comboBox_GaerungEwzAuswahl->currentData().value<QPair<int,int>>();
-    if (data.first == 2)
+    QPair<Brauhelfer::RohstoffTyp,int> data = ui->comboBox_GaerungEwzAuswahl->currentData().value<QPair<Brauhelfer::RohstoffTyp,int>>();
+    if (data.first == Brauhelfer::RohstoffTyp::Hefe)
     {
         int row = bh->sud()->modelHefegaben()->getRowWithValue(ModelHefe::ColID, data.second);
         if (row >= 0)
@@ -636,7 +637,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
             QDate currentDate = QDate::currentDate();
             QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, date);
-            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
+            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
 
             DlgRohstoffeAbziehen dlg(data.first,
                                      bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
@@ -656,7 +657,7 @@ void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
         QDate currentDate = QDate::currentDate();
         QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
         bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColEntnahmeDatum, date);
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Entnommen);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Entnommen));
     }
 }
 

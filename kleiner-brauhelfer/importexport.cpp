@@ -95,7 +95,7 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     values[ModelSud::ColEinmaischenTemp] = toDouble(root["Infusion_Einmaischtemperatur"]);
     values[ModelSud::ColCO2] = toDouble(root["Karbonisierung"]);
     values[ModelSud::ColIBU] = toDouble(root["Bittere"]);
-    values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Keine;
+    values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
     values[ModelSud::ColKochdauerNachBitterhopfung] = toDouble(root["Kochzeit_Wuerze"]);
     values[ModelSud::ColVergaerungsgrad] = toDouble(root["Endvergaerungsgrad"]);
     values[ModelSud::ColKommentar] = QString(QObject::tr("Rezept aus MaischMalzundMehr\n"
@@ -190,13 +190,13 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         values[ModelWeitereZutatenGaben::ColName] = root[QString("WeitereZutat_Wuerze_%1_Name").arg(i)].toString();
         values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Menge").arg(i)]) / menge;
         if (root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(i)].toString() == "g")
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
         else
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
-        values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
-        values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Kochen;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
+        values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
+        values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
         values[ModelWeitereZutatenGaben::ColZugabedauer] = toDouble(root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(i)]);
-        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
+        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
         bh->modelWeitereZutatenGaben()->append(values);
     }
     int max_wz_gaerung = findMax(root, "WeitereZutat_Gaerung_%%_Name");
@@ -207,13 +207,13 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         values[ModelWeitereZutatenGaben::ColName] = root[QString("WeitereZutat_Gaerung_%1_Name").arg(i)].toString();
         values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QString("WeitereZutat_Gaerung_%1_Menge").arg(i)]) / menge;
         if (root[QString("WeitereZutat_Gaerung_%1_Einheit").arg(i)].toString() == "g")
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
         else
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
-        values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
-        values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
+        values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
+        values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
         values[ModelWeitereZutatenGaben::ColZugabedauer] = 0;
-        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
+        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
         bh->modelWeitereZutatenGaben()->append(values);
     }
     int max_hopfen_stopf = findMax(root, "Stopfhopfen_%%_Sorte");
@@ -224,13 +224,13 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         values[ModelWeitereZutatenGaben::ColName] = root[QString("Stopfhopfen_%1_Sorte").arg(i)].toString();
         values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QString("Stopfhopfen_%1_Menge").arg(i)]) / menge;
         if (root[QString("Stopfhopfen_%1_Einheit").arg(i)].toString() == "g")
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
         else
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
-        values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Hopfen;
-        values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
+        values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen);
+        values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
         values[ModelWeitereZutatenGaben::ColZugabedauer] = 7200;
-        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_MitEntnahme;
+        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
         bh->modelWeitereZutatenGaben()->append(values);
     }
     if (_sudRow)
@@ -288,7 +288,7 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
         min = nStyle.firstChildElement("IBU_MIN").text().toDouble();
         max = nStyle.firstChildElement("IBU_MAX").text().toDouble();
         values[ModelSud::ColIBU] = (min+max)/2;
-        values[ModelSud::ColberechnungsArtHopfen] = Hopfen_Berechnung_Keine;
+        values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
         values[ModelSud::ColKochdauerNachBitterhopfung] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
 
         sudRow = bh->modelSud()->append(values);
@@ -332,21 +332,21 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
                 values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
                 values[ModelWeitereZutatenGaben::ColFarbe] = n.firstChildElement("COLOR").text().toDouble() * 1.97;
                 values[ModelWeitereZutatenGaben::ColMenge] = n.firstChildElement("AMOUNT").text().toDouble() / menge;
-                values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_Kg;
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::Kg);
                 if (type == "Sugar" || type == "Extract" || type == "Dry Extract")
-                    values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Zucker;
+                    values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Zucker);
                 else
-                    values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
+                    values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
                 if (n.firstChildElement("ADD_AFTER_BOIL").text() == "TRUE")
                 {
-                    values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+                    values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
                 }
                 else
                 {
-                    values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Kochen;
+                    values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
                     values[ModelWeitereZutatenGaben::ColZugabedauer] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
                 }
-                values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
+                values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
                 values[ModelWeitereZutatenGaben::ColBemerkung] = n.firstChildElement("NOTES").text();
                 bh->modelWeitereZutatenGaben()->append(values);
             }
@@ -363,11 +363,11 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
                 values[ModelWeitereZutatenGaben::ColSudID] = sudId;
                 values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
                 values[ModelWeitereZutatenGaben::ColMenge] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
-                values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
-                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Hopfen;
-                values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
+                values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen);
+                values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
                 values[ModelWeitereZutatenGaben::ColZugabedauer] = n.firstChildElement("TIME").text().toDouble();
-                values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_MitEntnahme;
+                values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
                 values[ModelWeitereZutatenGaben::ColBemerkung] = n.firstChildElement("NOTES").text();
                 bh->modelWeitereZutatenGaben()->append(values);
             }
@@ -404,22 +404,22 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
             values[ModelWeitereZutatenGaben::ColName] = n.firstChildElement("NAME").text();
             QString type = n.firstChildElement("TYPE").text();
             if (type == "Spice" || type == "Herb")
-                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Gewuerz;
+                values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Gewuerz);
             else if (type == "Flavor")
-                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Frucht;
+                values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Frucht);
             else
-                values[ModelWeitereZutatenGaben::ColTyp] = EWZ_Typ_Sonstiges;
+                values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges);
             QString use = n.firstChildElement("USE").text();
             if (use == "Boil")
-               values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Kochen;
+               values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
             else if (use == "Mash")
-                values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Maischen;
+                values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Maischen);
             else
-                values[ModelWeitereZutatenGaben::ColZeitpunkt] = EWZ_Zeitpunkt_Gaerung;
+                values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
             values[ModelWeitereZutatenGaben::ColMenge] = n.firstChildElement("AMOUNT").text().toDouble() * 1000 / menge;
-            values[ModelWeitereZutatenGaben::ColEinheit] = EWZ_Einheit_g;
+            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::ZusatzEinheit::g);
             values[ModelWeitereZutatenGaben::ColZugabedauer] = n.firstChildElement("TIME").text().toDouble();
-            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = EWZ_Entnahmeindex_KeineEntnahme;
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
             values[ModelWeitereZutatenGaben::ColBemerkung] = n.firstChildElement("NOTES").text();
             bh->modelWeitereZutatenGaben()->append(values);
         }
@@ -527,11 +527,12 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        int zeitpunkt = model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
-        if (zeitpunkt == EWZ_Zeitpunkt_Maischen)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+        if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Maischen)
         {
             root[QString("WeitereZutat_Wuerze_%1_Name").arg(n)] = model.data(row, ModelWeitereZutatenGaben::ColName).toString();
-            if (model.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt() == EWZ_Einheit_Kg)
+            Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            if (einheit == Brauhelfer::ZusatzEinheit::Kg)
             {
                 root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2);
                 root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "kg";
@@ -544,10 +545,11 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
             root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(n)] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt());
             ++n;
         }
-        else if (zeitpunkt == EWZ_Zeitpunkt_Kochen)
+        else if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen)
         {
             root[QString("WeitereZutat_Wuerze_%1_Name").arg(n)] = model.data(row, ModelWeitereZutatenGaben::ColName).toString();
-            if (model.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt() == EWZ_Einheit_Kg)
+            Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            if (einheit == Brauhelfer::ZusatzEinheit::Kg)
             {
                 root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2);
                 root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "kg";
@@ -564,9 +566,9 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        int zeitpunkt = model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
-        int typ = model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt();
-        if (zeitpunkt == EWZ_Zeitpunkt_Gaerung && typ == EWZ_Typ_Hopfen)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+        if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung && typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
             root[QString("Stopfhopfen_%1_Sorte").arg(n)] = model.data(row, ModelWeitereZutatenGaben::ColName).toString();
             root[QString("Stopfhopfen_%1_Menge").arg(n)] = QString::number(model.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toInt());
@@ -576,12 +578,13 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        int zeitpunkt = model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt();
-        int typ = model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt();
-        if (zeitpunkt == EWZ_Zeitpunkt_Gaerung && typ != EWZ_Typ_Hopfen)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+        if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung && typ != Brauhelfer::ZusatzTyp::Hopfen)
         {
             root[QString("WeitereZutat_Gaerung_%1_Name").arg(n)] = model.data(row, ModelWeitereZutatenGaben::ColName).toString();
-            if (model.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt() == EWZ_Einheit_Kg)
+            Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            if (einheit == Brauhelfer::ZusatzEinheit::Kg)
             {
                 root[QString("WeitereZutat_Gaerung_%1_Menge").arg(n)] = QString::number(model.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2);
                 root[QString("WeitereZutat_Gaerung_%1_Einheit").arg(n)] = "kg";
@@ -802,25 +805,24 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         element.appendChild(text);
         Anteil.appendChild(element);
 
-        int typ = Hopfen_Universal;
+        Brauhelfer::HopfenTyp typ = Brauhelfer::HopfenTyp::Universal;
         int rowHopfen = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, model.data(row, ModelHopfengaben::ColName));
         if (rowHopfen >= 0)
         {
-             typ = bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColTyp).toInt();
+             typ = static_cast<Brauhelfer::HopfenTyp>(bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColTyp).toInt());
         }
 
         element = doc.createElement("TYPE");
         switch (typ)
         {
-        case Hopfen_Aroma:
+        case Brauhelfer::HopfenTyp::Aroma:
             text = doc.createTextNode("Aroma");
             break;
-        case Hopfen_Bitter:
+        case Brauhelfer::HopfenTyp::Bitter:
             text = doc.createTextNode("Bittering");
             break;
-        case Hopfen_Unbekannt:
-        case Hopfen_Universal:
-        default:
+        case Brauhelfer::HopfenTyp::Unbekannt:
+        case Brauhelfer::HopfenTyp::Universal:
             text = doc.createTextNode("Both");
             break;
         }
@@ -837,7 +839,8 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     model.setFilterRegExp(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        if (model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
             Anteil = doc.createElement("HOP");
             Hopfengaben.appendChild(Anteil);
@@ -878,13 +881,13 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
 
             double alpha = 0.0;
             bool pellets = false;
-            int typ = Hopfen_Universal;
+            Brauhelfer::HopfenTyp typ = Brauhelfer::HopfenTyp::Universal;
             int rowHopfen = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, model.data(row, ModelWeitereZutatenGaben::ColName));
             if (rowHopfen >= 0)
             {
                 alpha = bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColAlpha).toDouble();
                 pellets = bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColPellets).toBool();
-                typ = bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColTyp).toInt();
+                typ = static_cast<Brauhelfer::HopfenTyp>(bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColTyp).toInt());
             }
 
             element = doc.createElement("ALPHA");
@@ -895,15 +898,14 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             element = doc.createElement("TYPE");
             switch (typ)
             {
-            case Hopfen_Aroma:
+            case Brauhelfer::HopfenTyp::Aroma:
                 text = doc.createTextNode("Aroma");
                 break;
-            case Hopfen_Bitter:
+            case Brauhelfer::HopfenTyp::Bitter:
                 text = doc.createTextNode("Bittering");
                 break;
-            case Hopfen_Unbekannt:
-            case Hopfen_Universal:
-            default:
+            case Brauhelfer::HopfenTyp::Unbekannt:
+            case Brauhelfer::HopfenTyp::Universal:
                 text = doc.createTextNode("Both");
                 break;
             }
@@ -982,15 +984,16 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             Anteil.appendChild(element);
 
             element = doc.createElement("TYPE");
-            switch (model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt())
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+            switch (typ)
             {
-            case EWZ_Typ_Honig:
-            case EWZ_Typ_Zucker:
-            case EWZ_Typ_Frucht:
+            case Brauhelfer::ZusatzTyp::Honig:
+            case Brauhelfer::ZusatzTyp::Zucker:
+            case Brauhelfer::ZusatzTyp::Frucht:
                 text = doc.createTextNode("Sugar");
                 break;
-            case EWZ_Typ_Gewuerz:
-            case EWZ_Typ_Sonstiges:
+            case Brauhelfer::ZusatzTyp::Gewuerz:
+            case Brauhelfer::ZusatzTyp::Sonstiges:
             default:
                 text = doc.createTextNode("Adjunct");
                 break;
@@ -1016,7 +1019,8 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             element.appendChild(text);
             Anteil.appendChild(element);
 
-            if (model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == EWZ_Zeitpunkt_Gaerung)
+            Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+            if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
                 element = doc.createElement("ADD_AFTER_BOIL");
                 text = doc.createTextNode("TRUE");
@@ -1064,7 +1068,8 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColBeschreibung, model.data(row, ModelHefegaben::ColName));
         if (rowHefe >= 0)
         {
-            liquid = bh->modelHefe()->data(rowHefe, ModelHefe::ColTypTrFl).toInt() == Hefe_Fluessig;
+            Brauhelfer::HefeTyp typ = static_cast<Brauhelfer::HefeTyp>(bh->modelHefe()->data(rowHefe, ModelHefe::ColTypTrFl).toInt());
+            liquid = typ == Brauhelfer::HefeTyp::Fluessig;
         }
 
         element = doc.createElement("FORM");
@@ -1093,9 +1098,9 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     model.setFilterRegExp(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        int typ = model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt();
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
         double Ausbeute = model.data(row, ModelWeitereZutatenGaben::ColAusbeute).toDouble();
-        if (typ != EWZ_Typ_Hopfen && Ausbeute == 0)
+        if (typ != Brauhelfer::ZusatzTyp::Hopfen && Ausbeute == 0)
         {
             Anteil = doc.createElement("MISC");
             miscs.appendChild(Anteil);
@@ -1113,17 +1118,17 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             element = doc.createElement("TYPE");
             switch (typ)
             {
-            case EWZ_Typ_Honig:
-            case EWZ_Typ_Zucker:
+            case Brauhelfer::ZusatzTyp::Honig:
+            case Brauhelfer::ZusatzTyp::Zucker:
                 text = doc.createTextNode("Sugar");
                 break;
-            case EWZ_Typ_Frucht:
+            case Brauhelfer::ZusatzTyp::Frucht:
                 text = doc.createTextNode("Flavor");
                 break;
-            case EWZ_Typ_Gewuerz:
+            case Brauhelfer::ZusatzTyp::Gewuerz:
                 text = doc.createTextNode("Spice");
                 break;
-            case EWZ_Typ_Sonstiges:
+            case Brauhelfer::ZusatzTyp::Sonstiges:
             default:
                 text = doc.createTextNode("Other");
                 break;
@@ -1132,15 +1137,16 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             Anteil.appendChild(element);
 
             element = doc.createElement("USE");
-            switch (model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt())
+            Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model.data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+            switch (zeitpunkt)
             {
-            case EWZ_Zeitpunkt_Gaerung:
+            case Brauhelfer::ZusatzZeitpunkt::Gaerung:
                 text = doc.createTextNode("Primary");
                 break;
-            case EWZ_Zeitpunkt_Kochen:
+            case Brauhelfer::ZusatzZeitpunkt::Kochen:
                 text = doc.createTextNode("Boil");
                 break;
-            case EWZ_Zeitpunkt_Maischen:
+            case Brauhelfer::ZusatzZeitpunkt::Maischen:
                 text = doc.createTextNode("Mash");
                 break;
             }

@@ -287,11 +287,11 @@ void SudObject::brauzutatenAbziehen()
     model = modelWeitereZutatenGaben();
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        if (model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
-            model->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+        if (zeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung || model->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
         {
-            int typ = model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt();
-            bh->rohstoffAbziehen(typ == EWZ_Typ_Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz,
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+            bh->rohstoffAbziehen(typ == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz,
                                  model->data(r, ModelWeitereZutatenGaben::ColName).toString(),
                                  model->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
         }

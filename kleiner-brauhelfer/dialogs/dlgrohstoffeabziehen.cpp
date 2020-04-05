@@ -30,17 +30,17 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(QWidget *parent) :
     mAbgezogen(false)
 {
     ui->setupUi(this);
-    build();
+    setModels(true);
     adjustSize();
 }
 
-DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(int typ, const QString &name, double menge, QWidget *parent) :
+DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgRohstoffeAbziehen),
     mAbgezogen(false)
 {
     ui->setupUi(this);
-    build(typ, name, menge);
+    setModels(false, typ, name, menge);
     adjustSize();
 }
 
@@ -63,7 +63,7 @@ void DlgRohstoffeAbziehen::reject()
     }
 }
 
-void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
+void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffTyp typ, const QString& name, double menge)
 {
     ProxyModel *modelRohstoff;
     QMap<QString, double> list;
@@ -71,11 +71,7 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
     QMap<QString, double>::const_iterator it;
 
     list.clear();
-    if (typ == 0)
-    {
-        list[name] = menge;
-    }
-    else if (typ == -1)
+    if (alleBrauzutaten)
     {
         modelRohstoff = bh->sud()->modelMalzschuettung();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
@@ -83,6 +79,10 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
             QString name = modelRohstoff->data(r, ModelMalzschuettung::ColName).toString();
             list[name] += modelRohstoff->data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
         }
+    }
+    else if (typ == Brauhelfer::RohstoffTyp::Malz)
+    {
+        list[name] = menge;
     }
     RohstoffeAbziehenModel* modelMalz = new RohstoffeAbziehenModel(this);
     it = list.constBegin();
@@ -106,11 +106,7 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
 
     list.clear();
     listAbfuellen.clear();
-    if (typ == 1)
-    {
-        list[name] = menge;
-    }
-    else if (typ == -1)
+    if (alleBrauzutaten)
     {
         modelRohstoff = bh->sud()->modelHopfengaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
@@ -121,16 +117,21 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
         modelRohstoff = bh->sud()->modelWeitereZutatenGaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
-            if (modelRohstoff->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelRohstoff->data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
                 QString name = modelRohstoff->data(r, ModelWeitereZutatenGaben::ColName).toString();
-                if (modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
-                    modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
+                Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                if (zeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung || modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
                     list[name] += modelRohstoff->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
                 else
                     listAbfuellen[name] = 0;
             }
         }
+    }
+    else if (typ == Brauhelfer::RohstoffTyp::Malz)
+    {
+        list[name] = menge;
     }
     RohstoffeAbziehenModel* modelHopfen = new RohstoffeAbziehenModel(this);
     it = list.constBegin();
@@ -161,11 +162,7 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
 
     list.clear();
     listAbfuellen.clear();
-    if (typ == 2)
-    {
-        list[name] = menge;
-    }
-    else if (typ == -1)
+    if (alleBrauzutaten)
     {
         modelRohstoff = bh->sud()->modelHefegaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
@@ -176,6 +173,10 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
             else
                 listAbfuellen[name] = 0;
         }
+    }
+    else if (typ == Brauhelfer::RohstoffTyp::Hefe)
+    {
+        list[name] = menge;
     }
     RohstoffeAbziehenModel* modelHefe = new RohstoffeAbziehenModel(this);
     it = list.constBegin();
@@ -206,25 +207,26 @@ void DlgRohstoffeAbziehen::build(int typ, const QString& name, double menge)
 
     list.clear();
     listAbfuellen.clear();
-    if (typ == 3)
-    {
-        list[name] = menge;
-    }
-    else if (typ == -1)
+    if (alleBrauzutaten)
     {
         modelRohstoff = bh->sud()->modelWeitereZutatenGaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
-            if (modelRohstoff->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() != EWZ_Typ_Hopfen)
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelRohstoff->data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+            if (typ != Brauhelfer::ZusatzTyp::Hopfen)
             {
                 QString name = modelRohstoff->data(r, ModelWeitereZutatenGaben::ColName).toString();
-                if (modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
-                    modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
+                Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                if (zeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung || modelRohstoff->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
                     list[name] += modelRohstoff->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
                 else
                     listAbfuellen[name] = 0;
             }
         }
+    }
+    else if (typ == Brauhelfer::RohstoffTyp::Zusatz)
+    {
+        list[name] = menge;
     }
     RohstoffeAbziehenModel* modelWz = new RohstoffeAbziehenModel(this);
     it = list.constBegin();

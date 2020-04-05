@@ -153,7 +153,7 @@ void WdgHopfenGabe::updateValues(bool full)
     if (mEnabled)
     {
         ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColMenge).toDouble());
-        int benoetigt = 0;
+        double benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHopfengaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
@@ -163,8 +163,8 @@ void WdgHopfenGabe::updateValues(bool full)
         model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            if (model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen &&
-                model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt());
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen && model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
                 benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
@@ -173,10 +173,10 @@ void WdgHopfenGabe::updateValues(bool full)
 
         ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
 
-        int berechnungsArtHopfen = bh->sud()->getberechnungsArtHopfen();
+        Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
         switch (berechnungsArtHopfen)
         {
-        case Hopfen_Berechnung_Keine:
+        case Brauhelfer::BerechnungsartHopfen::Keine:
             ui->btnMengeKorrektur->setVisible(false);
             ui->btnAnteilKorrektur->setVisible(false);
             ui->tbAnteilProzent->setVisible(false);
@@ -184,14 +184,14 @@ void WdgHopfenGabe::updateValues(bool full)
             ui->lblAnteilProzent->setVisible(false);
             ui->lblMengeProzent->setVisible(false);
             break;
-        case Hopfen_Berechnung_Gewicht:
+        case Brauhelfer::BerechnungsartHopfen::Gewicht:
             ui->btnAnteilKorrektur->setVisible(false);
             ui->tbAnteilProzent->setVisible(false);
             ui->tbMengeProzent->setVisible(true);
             ui->lblAnteilProzent->setVisible(false);
             ui->lblMengeProzent->setVisible(true);
             break;
-        case Hopfen_Berechnung_IBU:
+        case Brauhelfer::BerechnungsartHopfen::IBU:
             ui->btnMengeKorrektur->setVisible(false);
             ui->tbMengeProzent->setVisible(false);
             ui->tbAnteilProzent->setVisible(true);
@@ -200,7 +200,7 @@ void WdgHopfenGabe::updateValues(bool full)
             break;
         }
 
-        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1 && berechnungsArtHopfen != Hopfen_Berechnung_Keine)
+        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1 && berechnungsArtHopfen != Brauhelfer::BerechnungsartHopfen::Keine)
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProLiter->setReadOnly(true);
@@ -262,16 +262,17 @@ void WdgHopfenGabe::setFehlProzent(double value)
                 value = -p;
         }
         QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
-        switch (bh->sud()->getberechnungsArtHopfen())
+        Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
+        switch (berechnungsArtHopfen)
         {
-        case Hopfen_Berechnung_Keine:
+        case Brauhelfer::BerechnungsartHopfen::Keine:
             break;
-        case Hopfen_Berechnung_Gewicht:
+        case Brauhelfer::BerechnungsartHopfen::Gewicht:
             ui->btnMengeKorrektur->setText(text);
             ui->btnMengeKorrektur->setProperty("toadd", value);
             ui->btnMengeKorrektur->setVisible(value != 0.0);
             break;
-        case Hopfen_Berechnung_IBU:
+        case Brauhelfer::BerechnungsartHopfen::IBU:
             ui->btnAnteilKorrektur->setText(text);
             ui->btnAnteilKorrektur->setProperty("toadd", value);
             ui->btnAnteilKorrektur->setVisible(value != 0.0);

@@ -47,6 +47,15 @@ QList<QString> TabRohstoffe::ZusatzTypname = {
     tr("Klärmittel")
 };
 
+QList<QString> TabRohstoffe::Einheiten = {
+    tr("kg"),
+    tr("g"),
+    tr("mg"),
+    tr("Stk."),
+    tr("l"),
+    tr("ml")
+};
+
 TabRohstoffe::TabRohstoffe(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
@@ -392,7 +401,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     col = ModelWeitereZutaten::ColEinheiten;
     model->setHeaderData(col, Qt::Horizontal, tr("Einheit"));
     table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, table));
+    table->setItemDelegateForColumn(col, new ComboBoxDelegate(Einheiten, table));
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 2);
 
@@ -426,7 +435,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     header->moveSection(header->visualIndex(col), 6);
 
     col = ModelWeitereZutaten::ColPreis;
-    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/Einheit]").arg(QLocale().currencySymbol()));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table));
     header->resizeSection(col, 100);

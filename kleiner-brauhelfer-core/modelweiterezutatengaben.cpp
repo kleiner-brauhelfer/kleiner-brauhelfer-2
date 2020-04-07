@@ -62,7 +62,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(idx.row(), ColTyp).toInt());
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
-                QSqlTableModel::setData(index(idx.row(), ColEinheit), static_cast<int>(Brauhelfer::ZusatzEinheit::g));
+                QSqlTableModel::setData(index(idx.row(), ColEinheit), static_cast<int>(Brauhelfer::Einheit::g));
                 QSqlTableModel::setData(index(idx.row(), ColTyp), static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen));
                 QSqlTableModel::setData(index(idx.row(), ColAusbeute), 0);
                 QSqlTableModel::setData(index(idx.row(), ColFarbe), 0);
@@ -110,7 +110,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(idx).toInt());
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
-                QSqlTableModel::setData(index(idx.row(), ColEinheit), static_cast<int>(Brauhelfer::ZusatzEinheit::g));
+                QSqlTableModel::setData(index(idx.row(), ColEinheit), static_cast<int>(Brauhelfer::Einheit::g));
                 QSqlTableModel::setData(index(idx.row(), ColTyp), static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen));
                 QSqlTableModel::setData(index(idx.row(), ColAusbeute), 0);
                 QSqlTableModel::setData(index(idx.row(), ColFarbe), 0);

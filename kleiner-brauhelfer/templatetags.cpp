@@ -273,26 +273,28 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 {
                     QVariantMap map;
                     int ival;
-
                     map.insert("Name", model->data(row, ModelWeitereZutatenGaben::ColName));
-                    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+                    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+                    map.insert("Einheit", TabRohstoffe::Einheiten[static_cast<int>(einheit)]);
                     switch (einheit)
                     {
-                    case Brauhelfer::ZusatzEinheit::Kg:
+                    case Brauhelfer::Einheit::Kg:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
-                        map.insert("Einheit", QObject::tr("kg"));
                         break;
-                    case Brauhelfer::ZusatzEinheit::g:
+                    case Brauhelfer::Einheit::g:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
-                        map.insert("Einheit", QObject::tr("g"));
                         break;
-                    case Brauhelfer::ZusatzEinheit::mg:
-                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 0));
-                        map.insert("Einheit", QObject::tr("mg"));
+                    case Brauhelfer::Einheit::mg:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 1));
                         break;
-                    case Brauhelfer::ZusatzEinheit::Stk:
+                    case Brauhelfer::Einheit::Stk:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
-                        map.insert("Einheit", QObject::tr("Stk."));
+                        break;
+                    case Brauhelfer::Einheit::l:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::ml:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
                         break;
                     }
                     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());

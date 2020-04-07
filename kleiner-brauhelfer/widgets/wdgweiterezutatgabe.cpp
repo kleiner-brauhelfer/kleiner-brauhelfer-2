@@ -112,7 +112,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
     Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
-    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
     Brauhelfer::ZusatzStatus zugabestatus = static_cast<Brauhelfer::ZusatzStatus>(data(ModelWeitereZutatenGaben::ColZugabestatus).toInt());
     int dauer = data(ModelWeitereZutatenGaben::ColZugabedauer).toInt();
 
@@ -121,44 +121,57 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->btnZutat->setText(zusatzname);
     if (!ui->tbMenge->hasFocus())
     {
-        if (einheit == Brauhelfer::ZusatzEinheit::mg)
+        if (einheit == Brauhelfer::Einheit::mg)
             ui->tbMenge->setValue(data(ModelWeitereZutatenGaben::ColMenge).toDouble() * 1000);
         else
             ui->tbMenge->setValue(data(ModelWeitereZutatenGaben::ColMenge).toDouble());
     }
     if (!ui->tbMengeTotal->hasFocus())
     {
+        QString str = TabRohstoffe::Einheiten[static_cast<int>(einheit)];
+        ui->lblEinheit->setText(str);
+        ui->lblEinheit2->setText(str);
         switch (einheit)
         {
-        case Brauhelfer::ZusatzEinheit::Kg:
-            ui->lblEinheit->setText(tr("kg"));
-            ui->lblEinheit2->setText(tr("kg"));
+        case Brauhelfer::Einheit::Kg:
             ui->lblEinheitProLiter->setText(tr("g/l"));
+            ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000);
             break;
-        case Brauhelfer::ZusatzEinheit::g:
-            ui->lblEinheit->setText(tr("g"));
-            ui->lblEinheit2->setText(tr("g"));
+        case Brauhelfer::Einheit::g:
             ui->lblEinheitProLiter->setText(tr("g/l"));
+            ui->tbMenge->setDecimals(1);
             ui->tbMengeTotal->setDecimals(1);
             ui->tbVorhanden->setDecimals(1);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
-        case Brauhelfer::ZusatzEinheit::mg:
-            ui->lblEinheit->setText(tr("mg"));
-            ui->lblEinheit2->setText(tr("mg"));
+        case Brauhelfer::Einheit::mg:
             ui->lblEinheitProLiter->setText(tr("mg/l"));
+            ui->tbMenge->setDecimals(1);
             ui->tbMengeTotal->setDecimals(0);
             ui->tbVorhanden->setDecimals(0);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000);
             break;
-        case Brauhelfer::ZusatzEinheit::Stk:
-            ui->lblEinheit->setText(tr("Stk."));
-            ui->lblEinheit2->setText(tr("Stk."));
+        case Brauhelfer::Einheit::Stk:
             ui->lblEinheitProLiter->setText(tr("Stk./l"));
+            ui->tbMenge->setDecimals(1);
             ui->tbMengeTotal->setDecimals(1);
+            ui->tbVorhanden->setDecimals(0);
+            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
+            break;
+        case Brauhelfer::Einheit::l:
+            ui->lblEinheitProLiter->setText(tr("ml/l"));
+            ui->tbMenge->setDecimals(2);
+            ui->tbMengeTotal->setDecimals(2);
+            ui->tbVorhanden->setDecimals(2);
+            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000);
+            break;
+        case Brauhelfer::Einheit::ml:
+            ui->lblEinheitProLiter->setText(tr("ml/l"));
+            ui->tbMenge->setDecimals(1);
+            ui->tbMengeTotal->setDecimals(0);
             ui->tbVorhanden->setDecimals(0);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
@@ -248,9 +261,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
                     benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
             }
         }
-        if (einheit == Brauhelfer::ZusatzEinheit::Kg)
+        if (einheit == Brauhelfer::Einheit::Kg || einheit == Brauhelfer::Einheit::l)
             benoetigt /= 1000;
-        else if (einheit == Brauhelfer::ZusatzEinheit::mg)
+        else if (einheit == Brauhelfer::Einheit::mg)
             benoetigt *= 1000;
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
 
@@ -376,8 +389,8 @@ void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
     {
-        Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
-        if (einheit == Brauhelfer::ZusatzEinheit::mg)
+        Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+        if (einheit == Brauhelfer::Einheit::mg)
             setData(ModelWeitereZutatenGaben::ColMenge, value / 1000);
         else
             setData(ModelWeitereZutatenGaben::ColMenge, value);
@@ -388,19 +401,25 @@ void WdgWeitereZutatGabe::on_tbMengeTotal_valueChanged(double value)
 {
     if (ui->tbMengeTotal->hasFocus())
     {
-        Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+        Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
         switch (einheit)
         {
-        case Brauhelfer::ZusatzEinheit::Kg:
+        case Brauhelfer::Einheit::Kg:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
             break;
-        case Brauhelfer::ZusatzEinheit::g:
+        case Brauhelfer::Einheit::g:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
             break;
-        case Brauhelfer::ZusatzEinheit::mg:
+        case Brauhelfer::Einheit::mg:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value / 1000);
             break;
-        case Brauhelfer::ZusatzEinheit::Stk:
+        case Brauhelfer::Einheit::Stk:
+            setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
+            break;
+        case Brauhelfer::Einheit::l:
+            setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
+            break;
+        case Brauhelfer::Einheit::ml:
             setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
             break;
         }
@@ -486,19 +505,25 @@ void WdgWeitereZutatGabe::on_btnLoeschen_clicked()
 void WdgWeitereZutatGabe::on_btnAufbrauchen_clicked()
 {
     double value = ui->tbVorhanden->value();
-    Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
     switch (einheit)
     {
-    case Brauhelfer::ZusatzEinheit::Kg:
+    case Brauhelfer::Einheit::Kg:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
         break;
-    case Brauhelfer::ZusatzEinheit::g:
+    case Brauhelfer::Einheit::g:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
-    case Brauhelfer::ZusatzEinheit::mg:
+    case Brauhelfer::Einheit::mg:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value / 1000);
         break;
-    case Brauhelfer::ZusatzEinheit::Stk:
+    case Brauhelfer::Einheit::Stk:
+        setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
+        break;
+    case Brauhelfer::Einheit::l:
+        setData(ModelWeitereZutatenGaben::Colerg_Menge, value * 1000);
+        break;
+    case Brauhelfer::Einheit::ml:
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
     }

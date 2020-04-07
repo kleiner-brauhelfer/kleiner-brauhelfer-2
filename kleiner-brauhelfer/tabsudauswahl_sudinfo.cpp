@@ -43,7 +43,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QString Name;
         QString Typ;
         double Menge;
-        Brauhelfer::ZusatzEinheit Einheit;
+        Brauhelfer::Einheit Einheit;
     };
 
     QList<int> ListSudID;
@@ -66,7 +66,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             Rohstoff eintrag;
             eintrag.Name = modelMalzschuettung.data(row, ModelMalzschuettung::ColName).toString();
             eintrag.Menge = modelMalzschuettung.data(row, ModelMalzschuettung::Colerg_Menge).toDouble();
-            eintrag.Einheit = Brauhelfer::ZusatzEinheit::Kg;
+            eintrag.Einheit = Brauhelfer::Einheit::Kg;
             bool found = false;
             for (Rohstoff& eintragListe : ListMalz)
             {
@@ -96,7 +96,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
                 eintrag.Typ = TabRohstoffe::HopfenTypname[idx];
             eintrag.Menge = modelHopfengaben.data(row, ModelHopfengaben::Colerg_Menge).toDouble();
-            eintrag.Einheit = Brauhelfer::ZusatzEinheit::g;
+            eintrag.Einheit = Brauhelfer::Einheit::g;
             bool found = false;
             for (Rohstoff& eintragListe : ListHopfen)
             {
@@ -126,7 +126,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
                 eintrag.Typ = TabRohstoffe::HefeTypname[idx];
             eintrag.Menge = modelHefegaben.data(row, ModelHefegaben::ColMenge).toDouble();
-            eintrag.Einheit = Brauhelfer::ZusatzEinheit::Stk;
+            eintrag.Einheit = Brauhelfer::Einheit::Stk;
             bool found = false;
             for (Rohstoff& eintragListe : ListHefe)
             {
@@ -166,7 +166,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 eintrag.Typ = TabRohstoffe::ZusatzTypname[static_cast<int>(typ)];
                 liste = &ListWeitereZutaten;
             }
-            eintrag.Einheit = static_cast<Brauhelfer::ZusatzEinheit>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            eintrag.Einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
             bool found = false;
             for (Rohstoff& eintragListe : *liste)
             {
@@ -289,7 +289,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeGramm).toDouble();
+                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeNormiert).toDouble();
                 map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
             }
             else
@@ -298,31 +298,38 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             }
             map.insert("Name", eintrag.Name);
             map.insert("Typ", eintrag.Typ);
+            map.insert("Einheit", TabRohstoffe::Einheiten[static_cast<int>(eintrag.Einheit)]);
             switch (eintrag.Einheit)
             {
-            case Brauhelfer::ZusatzEinheit::Kg:
+            case Brauhelfer::Einheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
-                map.insert("Einheit", tr("kg"));
                 break;
-            case Brauhelfer::ZusatzEinheit::g:
+            case Brauhelfer::Einheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
                 map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
-                map.insert("Einheit", tr("g"));
                 break;
-            case Brauhelfer::ZusatzEinheit::mg:
-                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
-                map.insert("Einheit", tr("mg"));
+            case Brauhelfer::Einheit::mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 1));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 1));
                 break;
-            case Brauhelfer::ZusatzEinheit::Stk:
+            case Brauhelfer::Einheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                 map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
-                map.insert("Einheit", tr("Stk."));
+                break;
+            case Brauhelfer::Einheit::l:
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
+                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
+                break;
+            case Brauhelfer::Einheit::ml:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 1));
+                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 break;
             }
             liste << map;

@@ -28,7 +28,7 @@ public:
         ColLink,
         // virtual
         ColDeleted,
-        ColMengeGramm,
+        ColMengeNormiert,
         ColInGebrauch,
         // number of columns
         NumCols

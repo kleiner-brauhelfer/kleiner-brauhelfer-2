@@ -17,6 +17,7 @@ public:
     static QList<QString> HopfenTypname;
     static QList<QString> HefeTypname;
     static QList<QString> ZusatzTypname;
+    static QList<QString> Einheiten;
 
 public:
     explicit TabRohstoffe(QWidget *parent = nullptr);

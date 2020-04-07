@@ -7,7 +7,7 @@ ModelWeitereZutaten::ModelWeitereZutaten(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("MengeGramm");
+    mVirtualField.append("MengeNormiert");
     mVirtualField.append("InGebrauch");
 }
 
@@ -23,19 +23,23 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
     {
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
-    case ColMengeGramm:
+    case ColMengeNormiert:
     {
         double menge = data(idx.row(), ColMenge).toDouble();
-        Brauhelfer::ZusatzEinheit einheit = static_cast<Brauhelfer::ZusatzEinheit>(data(idx.row(), ColEinheiten).toInt());
+        Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(idx.row(), ColEinheiten).toInt());
         switch (einheit)
         {
-        case Brauhelfer::ZusatzEinheit::Kg:
+        case Brauhelfer::Einheit::Kg:
             return menge * 1000;
-        case Brauhelfer::ZusatzEinheit::g:
+        case Brauhelfer::Einheit::g:
             return menge;
-        case Brauhelfer::ZusatzEinheit::mg:
+        case Brauhelfer::Einheit::mg:
             return menge / 1000;
-        case Brauhelfer::ZusatzEinheit::Stk:
+        case Brauhelfer::Einheit::Stk:
+            return menge;
+        case Brauhelfer::Einheit::l:
+            return menge * 1000;
+        case Brauhelfer::Einheit::ml:
             return menge;
         }
     }

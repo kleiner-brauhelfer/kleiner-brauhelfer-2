@@ -233,14 +233,14 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     while (it != list.constEnd())
     {
         modelWz->appendRow(it.key(), it.value(),
-                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, it.key(), ModelWeitereZutaten::ColMengeGramm).toDouble());
+                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
         it++;
     }
     it = listAbfuellen.constBegin();
     while (it != listAbfuellen.constEnd())
     {
         modelWz->appendRow(it.key(), it.value(),
-                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, it.key(), ModelWeitereZutaten::ColMengeGramm).toDouble());
+                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
         it++;
     }
     modelWz->setHeaderData(0, Qt::Horizontal, tr("Weitere Zutat"));
@@ -301,7 +301,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
-        model->setData(model->index(r, 2), bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColMengeGramm));
+        model->setData(model->index(r, 2), bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColMengeNormiert));
     }
 
     mAbgezogen = true;

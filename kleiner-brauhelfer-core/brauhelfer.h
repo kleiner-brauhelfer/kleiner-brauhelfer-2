@@ -122,15 +122,6 @@ public:
     };
     Q_ENUM(ZusatzTyp)
 
-    enum class ZusatzEinheit
-    {
-        Kg = 0,
-        g = 1,
-        mg = 2,
-        Stk = 3
-    };
-    Q_ENUM(ZusatzEinheit)
-
     enum class ZusatzZeitpunkt
     {
         Gaerung = 0,
@@ -153,6 +144,17 @@ public:
         OhneEntnahme = 1
     };
     Q_ENUM(ZusatzEntnahmeindex)
+
+    enum class Einheit
+    {
+        Kg = 0,
+        g = 1,
+        mg = 2,
+        Stk = 3,
+        l,
+        ml
+    };
+    Q_ENUM(Einheit)
 
 public:
 

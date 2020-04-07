@@ -36,6 +36,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Sudhausausbeute und Vergärungsgrad wird beim Import aus MMuM übernommen
 - Neu: Neue Kategorien für "Weitere Zutaten" Kraut, Wasseraufbereiung und Klärmittel
 - Neu: "Weitere Zutaten" in HTML Templates überarbeitet (Listen zusammengeführt)
+- Neu: Neu Einheit für "Weitere Zutaten" "l" und "ml"
 - Fix: Nachisomerisierungszeit bis 90 Minuten
 - Fix: Sud kopieren/teilen mit Hopfengaben ohne IBU Berechnung
 

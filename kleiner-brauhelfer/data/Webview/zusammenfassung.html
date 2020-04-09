@@ -22,7 +22,7 @@
             <col width="*">
             <col width="80">
             <col width="80">
-            <col width="*">
+            <col width="80">
             <tr>
               <th></th>
               <th>Sud</th>
@@ -74,6 +74,12 @@
               <td>g/l</td>
             </tr>
             <tr>
+              <td>Restalkalit&auml;t</td>
+              <td class="value" align="center"></td>
+              <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
+              <td>&deg;dH</td>
+            </tr>
+            <tr>
               <td>Effektive Sudhausausbeute</td>
               <td class="value" align="center">{{Sud.effSHA}}</td>
               <td class="value" align="center"></td>
@@ -98,12 +104,20 @@
                 <td class="value" align="center">{{Rezept.Brauanlage}}</td>
               </tr>
               <tr>
+                <td>Wasserprofil</td>
+                <td class="value" align="center">{{Rezept.Wasserprofil}}</td>
+              </tr>
+              <tr>
                 <td>Braudatum</td>
                 <td class="value" align="center">{{Sud.Braudatum}}</td>
               </tr>
               <tr>
                 <td>Abf&uuml;lldatum</td>
                 <td class="value" align="center">{{Sud.Abfuelldatum}}</td>
+              </tr>
+              <tr>
+                <td>Reifezeit</td>
+                <td align="center"><span class="value">{{Rezept.Reifezeit}}</span> Wochen</td>
               </tr>
               <tr>
                 <td colspan="2">{{{Sud.BewertungSterne}}}

@@ -28,7 +28,7 @@
           <table>
             <col width="*">
             <col width="80">
-            <col width="200">
+            <col width="*">
             <tr>
               <td>Braudatum</td>
               <td colspan="2">____________</td>
@@ -95,6 +95,20 @@
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/Liter</td>
             </tr>
+            <tr>
+              <td>Wasserprofil</td>
+              <td class="value" colspan="2">{{Rezept.Wasserprofil}}</td>
+            </tr>
+            <tr>
+              <td>Restalkalit&auml;t</td>
+              <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
+              <td>&deg;dH</td>
+            </tr>
+            <tr>
+              <td>Reifezeit</td>
+              <td class="value" align="center">{{Rezept.Reifezeit}}</td>
+              <td>Wochen</td>
+            </tr>
           </table>
         </td>
       </tr>
@@ -117,13 +131,12 @@
         <td valign="top">
           <table>
             <tr>
-              <th align="center" colspan="3"><img src="qrc:/images/getreide.svg" height="30"></th>
+              <th align="center" colspan="2"><img src="qrc:/images/getreide.svg" height="30"></th>
             </tr>
             {{#Liste}}
             <tr>
               <td align="left">{{Name}}</td>
-              <td align="right"><span class="value">{{Prozent}}</span> %</td>
-              <td align="right"><span class="value">{{Menge}}</span> kg</td>
+              <td align="right"><span class="value">{{Menge}}</span> kg (<span class="value">{{Prozent}}</span>%)</td>
               <td><input type="checkbox"></td>
             </tr>
             {{/Liste}}
@@ -246,20 +259,28 @@
           <table>
             <col width="200">
             <col width="*">
-            <col width="*">
             {{#Zutaten.Zusatz.Liste}}
             {{#Maischen}}
             <tr>
               <td>{{Name}}</td>
               <td><span class="value">{{Menge}}</span> {{Einheit}}</td>
+            </tr>
+            {{#Bemerkung}}
+            <tr>
+              <td></td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
+            {{/Bemerkung}}
             {{/Maischen}}
             {{/Zutaten.Zusatz.Liste}}
           </table>
         </td>
       </tr>
       {{/Zutaten.HatZusatzMaischen}}
+      <tr>
+        <td class="underline" valign="top"><strong>Maischevolumen</strong></td>
+        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> Liter,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
+      </tr>
       <tr>
         <td class="underline" valign="top"><strong>Einmaischen</strong></td>
         <td class="underline">bei <span class="value">{{Rezept.EinmaischenTemp}}</span>&deg;C</td>
@@ -344,8 +365,8 @@
             {{#Liste}}
             {{#Vorderwuerze}}
             <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha)</td>
+              <td>{{Name}} ({{Alpha}}%)</td>
+              <td><span class="value">{{Menge}}</span> g</td>
             </tr>
             {{/Vorderwuerze}}
             {{/Liste}}
@@ -367,7 +388,7 @@
             <tr>
               <td>____ &deg;P/&deg;Brix</td>
               <td>
-                 Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix({{Rezept.SWKochbeginn}})</script></span>&deg;Brix
+                 Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
                  {{#Zutaten.ZutatenKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.ZutatenKochen}}
               </td>
             </tr>
@@ -400,8 +421,8 @@
             {{#Liste}}
             {{#Kochen}}
             <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
+              <td>{{Name}} ({{Alpha}}%)</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> g zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
             </tr>
             {{/Kochen}}
             {{/Liste}}
@@ -416,14 +437,18 @@
           <table>
             <col width="200">
             <col width="*">
-            <col width="*">
             {{#Zutaten.Zusatz.Liste}}
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
               <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
+            </tr>
+            {{#Bemerkung}}
+            <tr>
+              <td></td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
+            {{/Bemerkung}}
             {{/Kochen}}
             {{/Zutaten.Zusatz.Liste}}
           </table>
@@ -480,14 +505,14 @@
             {{#Liste}}
             {{#Nachisomerisierung}}
             <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
+              <td>{{Name}} ({{Alpha}}%)</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g zugeben</td>
             </tr>
             {{/Nachisomerisierung}}
             {{#Ausschlagen}}
             <tr>
-              <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g (<span class="value">{{Alpha}}</span>% alpha) zugeben</td>
+              <td>{{Name}} ({{Alpha}}%)</td>
+              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g zugeben</td>
             </tr>
             {{/Ausschlagen}}
             {{/Liste}}
@@ -579,13 +604,17 @@
           <table>
             <col width="200">
             <col width="*">
-            <col width="*">
             {{#Zutaten.Kalthopfen.Liste}}
             <tr>
               <td>{{Name}}</td>
               <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
+            </tr>
+            {{#Bemerkung}}
+            <tr>
+              <td></td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
+            {{/Bemerkung}}
             {{/Zutaten.Kalthopfen.Liste}}
           </table>
         </td>
@@ -598,14 +627,18 @@
           <table>
             <col width="200">
             <col width="*">
-            <col width="*">
             {{#Zutaten.Zusatz.Liste}}
             {{#Gaerung}}
             <tr>
               <td>{{Name}}</td>
               <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
+            </tr>
+            {{#Bemerkung}}
+            <tr>
+              <td></td>
               <td class="kommentar">{{Bemerkung}}</td>
             </tr>
+            {{/Bemerkung}}
             {{/Gaerung}}
             {{/Zutaten.Zusatz.Liste}}
           </table>

@@ -28,7 +28,7 @@ public:
     WebView(QWidget* parent = nullptr);
     ~WebView();
     void setLinksExternal(bool external);
-    void printToPdf(const QString& filePath);
+    void printToPdf(const QString& filePath, const QMarginsF& margins);
 
     QString templateFile() const;
     void setTemplateFile(const QString& file);

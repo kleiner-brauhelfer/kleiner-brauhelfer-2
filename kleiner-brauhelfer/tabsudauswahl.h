@@ -60,6 +60,7 @@ private slots:
     void on_btnExportieren_clicked();
     void on_btnLaden_clicked();
     void on_btnToPdf_clicked();
+    void on_btnPrintPreview_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

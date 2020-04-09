@@ -45,5 +45,26 @@ void TabZusammenfassung::updateWebView()
 
 void TabZusammenfassung::on_btnToPdf_clicked()
 {
+    gSettings->beginGroup("General");
+
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+
+    QString fileName = bh->sud()->getSudname();
+    QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
+                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
+    if (!filePath.isEmpty())
+    {
+        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+        QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
+        QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
+        ui->webview->printToPdf(filePath, margins);
+        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
+    }
+
+    gSettings->endGroup();
+}
+
+void TabZusammenfassung::on_btnPrintPreview_clicked()
+{
     ui->webview->printPreview();
 }

@@ -115,7 +115,7 @@ void WdgWebViewEditable::printPreview()
     }
 }
 
-void WdgWebViewEditable::printToPdf(const QString& filePath)
+void WdgWebViewEditable::printToPdf(const QString& filePath, const QMarginsF &margins)
 {
     if (gSettings->theme() == Settings::Dark)
     {
@@ -128,7 +128,7 @@ void WdgWebViewEditable::printToPdf(const QString& filePath)
         ui->webview->renderTemplate(mTemplateTags);
         loop.exec();
 
-        ui->webview->printToPdf(filePath);
+        ui->webview->printToPdf(filePath, margins);
 
         mTemplateTags["Style"] = style;
         ui->webview->renderTemplate(mTemplateTags);
@@ -136,7 +136,7 @@ void WdgWebViewEditable::printToPdf(const QString& filePath)
     }
     else
     {
-        ui->webview->printToPdf(filePath);
+        ui->webview->printToPdf(filePath, margins);
     }
 }
 

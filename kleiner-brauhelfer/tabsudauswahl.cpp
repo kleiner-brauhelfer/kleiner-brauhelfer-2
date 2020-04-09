@@ -745,5 +745,34 @@ void TabSudAuswahl::on_btnToPdf_clicked()
     if (selection.count() == 0)
         return;
 
+    gSettings->beginGroup("General");
+
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+
+    QString fileName;
+    if (selection.count() == 1)
+        fileName = static_cast<ProxyModel*>(ui->tableSudauswahl->model())->data(selection[0].row(), ModelSud::ColSudname).toString() + "_" + tr("Rohstoffe");
+    else
+        fileName = tr("Rohstoffe");
+
+    QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
+                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
+    if (!filePath.isEmpty())
+    {
+        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+        QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
+        QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
+        ui->webview->printToPdf(filePath, margins);
+        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
+    }
+
+    gSettings->endGroup();
+}
+
+void TabSudAuswahl::on_btnPrintPreview_clicked()
+{
+    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
+    if (selection.count() == 0)
+        return;
     ui->webview->printPreview();
 }

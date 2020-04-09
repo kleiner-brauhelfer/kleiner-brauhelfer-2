@@ -21,7 +21,7 @@ public:
     void clear();
     void setHtmlFile(const QString& file);
     void printPreview();
-    void printToPdf(const QString& filePath);
+    void printToPdf(const QString& filePath, const QMarginsF& margins = QMarginsF(5, 10, 5, 15));
 
 public slots:
     void updateWebView();

@@ -435,7 +435,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     header->moveSection(header->visualIndex(col), 6);
 
     col = ModelWeitereZutaten::ColPreis;
-    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/Einheit]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/[kg/l/Stk]]").arg(QLocale().currencySymbol()));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table));
     header->resizeSection(col, 100);

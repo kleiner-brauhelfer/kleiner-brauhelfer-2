@@ -3,6 +3,7 @@
 #include "modelausruestung.h"
 #include "modelnachgaerverlauf.h"
 #include <math.h>
+#include <qmath.h>
 
 ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -736,7 +737,13 @@ void ModelSud::updateSwWeitereZutaten(int row)
         double ausbeute = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColAusbeute).toDouble();
         if (ausbeute > 0.0)
         {
-            double sw = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColMenge).toDouble() * ausbeute / 1000;
+            double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColMenge).toDouble();
+            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            if (einheit == Brauhelfer::Einheit::Stk)
+                menge = qCeil(menge);
+            else
+                menge /= 1000;
+            double sw = menge * ausbeute;
             Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
             Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
             switch (zeitpunkt)
@@ -788,11 +795,17 @@ void ModelSud::updateFarbe(int row)
         double farbe = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColFarbe).toDouble();
         if (farbe > 0.0)
         {
-            double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000;
+            double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
+            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            if (einheit == Brauhelfer::Einheit::Stk)
+                menge = qCeil(menge);
+            else
+                menge /= 1000;
             d += menge * farbe;
             gs += menge;
         }
     }
+
     if (gs > 0.0)
     {
         double sw = data(row, ColSW).toDouble() - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
@@ -849,7 +862,6 @@ void ModelSud::updatePreis(int row)
     }
     summe += kostenHefe;
 
-    //Kosten der Weiteren Zutaten
     double kostenWeitereZutaten = 0.0;
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
@@ -862,10 +874,20 @@ void ModelSud::updatePreis(int row)
         double preis;
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+        {
             preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColPreis).toDouble();
+            preis /= 1000;
+        }
         else
+        {
             preis = bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColPreis).toDouble();
-        kostenWeitereZutaten += preis * menge / 1000;
+            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            if (einheit == Brauhelfer::Einheit::Stk)
+                menge = qCeil(menge);
+            else
+                preis /= 1000;
+        }
+        kostenWeitereZutaten += preis * menge;
     }
     summe += kostenWeitereZutaten;
 

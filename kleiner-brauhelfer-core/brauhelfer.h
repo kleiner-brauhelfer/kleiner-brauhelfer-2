@@ -156,6 +156,20 @@ public:
     };
     Q_ENUM(Einheit)
 
+    enum class AnlageTyp
+    {
+        Standard = 0x0000,
+        GrainfatherG30 = 0x1030,
+        GrainfatherG70 = 0x1070,
+        Braumeister10 = 0x2010,
+        Braumeister20 = 0x2020,
+        Braumeister50 = 0x2050,
+        Braumeister200 = 0x2140,
+        Braumeister500 = 0x2320,
+        Braumeister1000 = 0x2640,
+    };
+    Q_ENUM(AnlageTyp)
+
 public:
 
     static const int libVersionMajor;

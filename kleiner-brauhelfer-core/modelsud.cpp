@@ -664,22 +664,11 @@ void ModelSud::update(int row)
         double schuet = BierCalc::schuettung(sw * hgf, mengeRecipe / hgf, ausb, true);
         setData(row, Colerg_S_Gesamt, schuet);
 
+        // erg_W_Gesamt, erg_WHauptguss, erg_WNachguss
+        updateWasser(row);
+
         // erg_Farbe
         updateFarbe(row);
-
-        // erg_WHauptguss
-        double fac = data(row, ColFaktorHauptguss).toDouble();
-        double hg = schuet * fac;
-        setData(row, Colerg_WHauptguss, hg);
-
-        // erg_WNachguss
-        menge = data(row, ColMengeSollKochbeginn).toDouble();
-        double KorrekturWasser = dataAnlage(row, ModelAusruestung::ColKorrekturWasser).toDouble();
-        double ng = menge + schuet * 0.96 - hg + KorrekturWasser;
-        setData(row, Colerg_WNachguss, ng);
-
-        // erg_W_Gesamt
-        setData(row, Colerg_W_Gesamt, hg + ng);
 
         // erg_Sudhausausbeute
         sw = data(row, ColSWKochende).toDouble() - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
@@ -762,6 +751,35 @@ void ModelSud::updateSwWeitereZutaten(int row)
             }
         }
     }
+}
+
+void ModelSud::updateWasser(int row)
+{
+    double hg = 0.0, ng = 0.0;
+    double schuet = data(row, Colerg_S_Gesamt).toDouble();
+    double menge = data(row, ColMengeSollKochbeginn).toDouble();
+
+    Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(dataAnlage(row, ModelAusruestung::ColTyp).toInt());
+    switch (anlageTyp)
+    {
+    case Brauhelfer::AnlageTyp::GrainfatherG30:
+        hg = schuet * 2.7 + 3.5;
+        if (schuet > 4.5)
+            ng = menge - hg + schuet * 0.8;
+        else
+            ng = menge - hg + schuet * 0.8 - 2;
+        break;
+    default:
+        hg = schuet * data(row, ColFaktorHauptguss).toDouble();
+        ng = menge - hg + schuet * 0.96;
+        break;
+    }
+
+    ng += dataAnlage(row, ModelAusruestung::ColKorrekturWasser).toDouble();
+
+    setData(row, Colerg_WHauptguss, hg);
+    setData(row, Colerg_WNachguss, ng);
+    setData(row, Colerg_W_Gesamt, hg + ng);
 }
 
 void ModelSud::updateFarbe(int row)

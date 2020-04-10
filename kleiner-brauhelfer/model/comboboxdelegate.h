@@ -9,6 +9,7 @@ class ComboBoxDelegate : public QStyledItemDelegate
 
 public:
     explicit ComboBoxDelegate(const QStringList &items, QObject *parent = nullptr);
+    ComboBoxDelegate(QList<QPair<QString, int> > &items, QObject *parent = nullptr);
     QWidget* createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void setEditorData(QWidget *editor, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const Q_DECL_OVERRIDE;
@@ -19,6 +20,7 @@ public:
     QList<QColor> colors() const;
 private:
     QStringList mItems;
+    QList<QPair<QString, int> > mItemsMapped;
     QList<QColor> mColors;
 };
 

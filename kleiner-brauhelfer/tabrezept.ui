@@ -34,7 +34,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>400</width>
+         <width>403</width>
          <height>694</height>
         </rect>
        </property>
@@ -48,25 +48,84 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="14" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbVergaerungsgrad">
+           <item row="10" column="0" colspan="2">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Kochdauer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Sudname</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>High-Gravity Faktor</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0" colspan="2">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Bittere</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2">
+            <widget class="ComboBox" name="cbAnlage">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt; definiert die Berechnungsgrundlagen für den Kleinen Brauelfer, so Sudhausausbeute oder Verdampfungsziffer. Die Auswahl unterschiedlicher Anlagen wirkt sich direkt auf das Rezept aus, etwa auf Wassermenge und Schüttung.&lt;/p&gt;&lt;p&gt;Siehe rechts die Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt; sowie den Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; für weitere Informationen.&lt;/p&gt;&lt;p&gt;Anlagen werden im Tab Rohstoffe definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="SpinBoxSud" name="tbHGF">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>70</width>
                <height>0</height>
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativer Karakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beim Brauen mit &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity&lt;/span&gt; wird die Würzemenge beim Kochen reduziert, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.&lt;/p&gt;&lt;p&gt;Die Methode eignet sich im Rahmen des Möglichen für zu kleine, limitierte Anlagen, um Sude mit hoher Stammwürze zu brauen, bei denen die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; sonst zu gering wäre. Im Fachsprech werden solche Sude Platobomben genannt. &lt;/p&gt;&lt;p&gt;Das High-Gravity-Verfahren ist für eine größere Ausschlagmenge als üblich geeignet. Da das später hinzugegebene Wasser ab einem gewissen Grad nachteilig auf den Geschmack wirkt, ist High Gravity auf 50% beschränkt. Viele Hobbybrauer nutzen den Bereich bei weitem nicht aus, arbeiten zwischen 10% und 20%.&lt;/p&gt;&lt;p&gt;Bei Detailfragen hilft die Fachliteratur oder das Forum der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
-             <property name="decimals">
-              <number>1</number>
+             <property name="maximum">
+              <number>50</number>
              </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Menge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0" colspan="2">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>CO2 Gehalt</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="3">
+            <widget class="QLabel" name="label_52">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>%</string>
              </property>
             </widget>
            </item>
@@ -74,7 +133,7 @@
             <widget class="SpinBoxSud" name="tbNachisomerisierungszeit">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>70</width>
                <height>0</height>
               </size>
              </property>
@@ -89,15 +148,52 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Sudname</string>
+           <item row="11" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_12">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnVerdampfungsziffer">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Anlagewert</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="17" column="1" colspan="2">
+            <widget class="ComboBox" name="cbWasserProfil">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im Tab Ausrüstung muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
-           <item row="12" column="3">
-            <widget class="QLabel" name="label_38">
+           <item row="2" column="0" colspan="4">
+            <widget class="Line" name="line_10">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="3">
+            <widget class="QLabel" name="label_26">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -105,7 +201,7 @@
               </size>
              </property>
              <property name="text">
-              <string>min</string>
+              <string>%</string>
              </property>
             </widget>
            </item>
@@ -113,7 +209,7 @@
             <widget class="DoubleSpinBoxSud" name="tbRestalkalitaet">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>70</width>
                <height>0</height>
               </size>
              </property>
@@ -137,29 +233,8 @@
              </property>
             </widget>
            </item>
-           <item row="15" column="0" colspan="2">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>CO2 Gehalt</string>
-             </property>
-            </widget>
-           </item>
-           <item row="17" column="0">
-            <widget class="QLabel" name="label_17">
-             <property name="text">
-              <string>Wasserprofil</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_16">
-             <property name="text">
-              <string>Anlage</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="3">
-            <widget class="QLabel" name="label_22">
+           <item row="14" column="3">
+            <widget class="QLabel" name="label_54">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -167,19 +242,37 @@
               </size>
              </property>
              <property name="text">
-              <string>IBU</string>
+              <string>%</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="tbSudname">
+           <item row="4" column="2">
+            <widget class="DoubleSpinBoxSud" name="tbSW">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt; benannt.&lt;/p&gt;&lt;p&gt;Namensbestandteile sind bei Bieren von Hobbybrauern oft eine kreative Bezeichnung und der Bierstil. Der kreative Name wird oft als Gegenentwurf zu kommerziellen Bieren gewählt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die angepeilte Stammwürze eingestellt. Der Wert ist von vielen Faktoren abhängig, beispielsweise der Anlage, aber auch Zeit und Zutaten. In manchen Fällen kann es hilfreich sein, zusätzlich ein Mischkreuz zur Berechnung einzusetzen, um die angepeilte Stammwürze zu erreichen.&lt;/p&gt;&lt;p&gt;Das Erreichen der Stammwürze stellt vor allem für Brauanfänger eine Herausforderung da. Bei Fragen hilft die Fachliteratur oder das Fachforum der Wahl.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Stammwürze in °Plato sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bockbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;16 – 17&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Doppelbock &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;18 – 19&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Exportbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;12 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;10 – 11&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 14&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;13 – 18&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>50.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
-           <item row="10" column="3">
-            <widget class="QLabel" name="label_36">
+           <item row="12" column="3">
+            <widget class="QLabel" name="label_38">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -191,49 +284,11 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbMenge">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Zusammen mit &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird damit unter anderem Hauptguss und und Nachguss definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>10000.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="QLabel" name="label_20">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
-           </item>
            <item row="15" column="2">
             <widget class="DoubleSpinBoxSud" name="tbCO2">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>70</width>
                <height>0</height>
               </size>
              </property>
@@ -257,143 +312,6 @@
              </property>
             </widget>
            </item>
-           <item row="14" column="3">
-            <widget class="QLabel" name="label_54">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="3">
-            <widget class="QLabel" name="label_52">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="18" column="3">
-            <widget class="QLabel" name="label_27">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>°dH</string>
-             </property>
-            </widget>
-           </item>
-           <item row="19" column="0" colspan="4">
-            <widget class="Line" name="line_14">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>Hauptgussfaktor</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_5">
-             <property name="text">
-              <string>High-Gravity Faktor</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QLabel" name="label_50">
-             <property name="text">
-              <string>Verdampfungsziffer</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_48">
-             <property name="text">
-              <string>Sudhausausbeute</string>
-             </property>
-            </widget>
-           </item>
-           <item row="20" column="0" colspan="2">
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>Reifezeit</string>
-             </property>
-            </widget>
-           </item>
-           <item row="17" column="1" colspan="2">
-            <widget class="ComboBox" name="cbWasserProfil">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im Tab Ausrüstung muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="3">
-            <widget class="QLabel" name="label_21">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>g/l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="2">
-            <widget class="SpinBoxSud" name="tbBittere">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der angepeilte Bittereintrag beim Hopfenkochen des Sudes festgelegt. Fachsprachlich nennt sich der Eintrag &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt;, angegeben mit der Maßeinheit &lt;span style=&quot; font-weight:600;&quot;&gt;International Bitterness Units (IBU)&lt;/span&gt;.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Bittere in IBU sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weißbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;8 - 15&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Märzen &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 28&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;28 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pils &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 45&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;40 - 70&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IIPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;60 - 120&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Neutrales Geschmacksempfinden bei IBU = 2°P Stammwürze&lt;/p&gt;&lt;p&gt;Das Festlegen der richtigen Bittere und damit der passende Hopfen, die passende Hopfenkombination, Zeit und Temperatur ist eines der kreativsten Betätigungsfelder beim Bierbrauen, gehört aber auch mithin zu den größten Herausforderungen. Um ein Gefühl für die richtige Bittere zu bekommen, empfiehlt sich eine gründliche Rezeptrecherche, das Studium von Fachliteratur und nicht zuletzt die Sektionen für Hopfen und Rezepte in den Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" colspan="2">
-            <widget class="QLabel" name="label_4">
-             <property name="text">
-              <string>Stammwürze</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="4">
-            <widget class="Line" name="line_10">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
            <item row="5" column="3">
             <widget class="QLabel" name="label_49">
              <property name="minimumSize">
@@ -404,6 +322,13 @@
              </property>
              <property name="text">
               <string>%</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>Anlage</string>
              </property>
             </widget>
            </item>
@@ -420,91 +345,8 @@
              </property>
             </spacer>
            </item>
-           <item row="6" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <property name="spacing">
-              <number>6</number>
-             </property>
-             <item>
-              <spacer name="horizontalSpacer_3">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_18">
-               <property name="text">
-                <string>Empf.</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="DoubleSpinBoxSud" name="tbFaktorHauptgussEmpfehlung">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="readOnly">
-                <bool>true</bool>
-               </property>
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::NoButtons</enum>
-               </property>
-               <property name="decimals">
-                <number>1</number>
-               </property>
-               <property name="minimum">
-                <double>1.000000000000000</double>
-               </property>
-               <property name="maximum">
-                <double>10.000000000000000</double>
-               </property>
-               <property name="singleStep">
-                <double>0.100000000000000</double>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="0" column="2">
-            <widget class="SpinBoxSud" name="tbSudnummer">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="prefix">
-              <string>Nr. </string>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="20" column="3">
-            <widget class="QLabel" name="label_25">
+           <item row="4" column="3">
+            <widget class="QLabel" name="label_20">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -512,116 +354,7 @@
               </size>
              </property>
              <property name="text">
-              <string>Wochen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="2">
-            <widget class="SpinBoxSud" name="tbHGF">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beim Brauen mit &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity&lt;/span&gt; wird die Würzemenge beim Kochen reduziert, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.&lt;/p&gt;&lt;p&gt;Die Methode eignet sich im Rahmen des Möglichen für zu kleine, limitierte Anlagen, um Sude mit hoher Stammwürze zu brauen, bei denen die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; sonst zu gering wäre. Im Fachsprech werden solche Sude Platobomben genannt. &lt;/p&gt;&lt;p&gt;Das High-Gravity-Verfahren ist für eine größere Ausschlagmenge als üblich geeignet. Da das später hinzugegebene Wasser ab einem gewissen Grad nachteilig auf den Geschmack wirkt, ist High Gravity auf 50% beschränkt. Viele Hobbybrauer nutzen den Bereich bei weitem nicht aus, arbeiten zwischen 10% und 20%.&lt;/p&gt;&lt;p&gt;Bei Detailfragen hilft die Fachliteratur oder das Forum der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="maximum">
-              <number>50</number>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QLabel" name="label_53">
-             <property name="text">
-              <string>Vergärungsgrad</string>
-             </property>
-            </widget>
-           </item>
-           <item row="20" column="2">
-            <widget class="SpinBoxSud" name="tbReifezeit">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; oder falls nichts eingetragen ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="18" column="0" colspan="2">
-            <widget class="QLabel" name="label_14">
-             <property name="text">
-              <string>Restalkalität</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0" colspan="2">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Nachisomerisierungszeit</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbFaktorHauptguss">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter Faktor &lt;/span&gt;für den Hauptguss eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.Gewünschter Faktor für den Hauptguss&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>1.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>10.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbSW">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die angepeilte Stammwürze eingestellt. Der Wert ist von vielen Faktoren abhängig, beispielsweise der Anlage, aber auch Zeit und Zutaten. In manchen Fällen kann es hilfreich sein, zusätzlich ein Mischkreuz zur Berechnung einzusetzen, um die angepeilte Stammwürze zu erreichen.&lt;/p&gt;&lt;p&gt;Das Erreichen der Stammwürze stellt vor allem für Brauanfänger eine Herausforderung da. Bei Fragen hilft die Fachliteratur oder das Fachforum der Wahl.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Stammwürze in °Plato sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bockbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;16 – 17&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Doppelbock &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;18 – 19&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Exportbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;12 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;10 – 11&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 14&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;13 – 18&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>50.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
+              <string>°P</string>
              </property>
             </widget>
            </item>
@@ -629,7 +362,7 @@
             <widget class="DoubleSpinBoxSud" name="tbVerdampfungsziffer">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>70</width>
                <height>0</height>
               </size>
              </property>
@@ -650,8 +383,8 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="3">
-            <widget class="QLabel" name="label_19">
+           <item row="20" column="3">
+            <widget class="QLabel" name="label_25">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -659,60 +392,27 @@
               </size>
              </property>
              <property name="text">
-              <string>l</string>
+              <string>Wochen</string>
              </property>
             </widget>
            </item>
-           <item row="10" column="2">
-            <widget class="SpinBoxSud" name="tbKochzeit">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 90 Minuten&lt;/span&gt;. Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="maximum">
-              <number>200</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="2">
-            <widget class="ComboBox" name="cbAnlage">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt; definiert die Berechnungsgrundlagen für den Kleinen Brauelfer, so Sudhausausbeute oder Verdampfungsziffer. Die Auswahl unterschiedlicher Anlagen wirkt sich direkt auf das Rezept aus, etwa auf Wassermenge und Schüttung.&lt;/p&gt;&lt;p&gt;Siehe rechts die Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt; sowie den Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; für weitere Informationen.&lt;/p&gt;&lt;p&gt;Anlagen werden im Tab Rohstoffe definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="0" colspan="4">
-            <widget class="Line" name="line_12">
+           <item row="19" column="0" colspan="4">
+            <widget class="Line" name="line_14">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="16" column="0" colspan="4">
-            <widget class="Line" name="line_13">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbSudhausausbeute">
+           <item row="14" column="2">
+            <widget class="DoubleSpinBoxSud" name="tbVergaerungsgrad">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>70</width>
                <height>0</height>
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert  hier verändert werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativer Karakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -722,47 +422,6 @@
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0" colspan="4">
-            <widget class="Line" name="line_11">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string>Menge</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="3">
-            <widget class="QLabel" name="label_26">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="0" colspan="2">
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>Bittere</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="0" colspan="2">
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>Kochdauer</string>
              </property>
             </widget>
            </item>
@@ -796,35 +455,387 @@
              </item>
             </layout>
            </item>
-           <item row="11" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_8">
-             <property name="spacing">
-              <number>6</number>
+           <item row="16" column="0" colspan="4">
+            <widget class="Line" name="line_13">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
-             <item>
-              <spacer name="horizontalSpacer_12">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnVerdampfungsziffer">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Anlagewert</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </widget>
+           </item>
+           <item row="18" column="3">
+            <widget class="QLabel" name="label_27">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>°dH</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Stammwürze</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="tbSudname">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt; benannt.&lt;/p&gt;&lt;p&gt;Namensbestandteile sind bei Bieren von Hobbybrauern oft eine kreative Bezeichnung und der Bierstil. Der kreative Name wird oft als Gegenentwurf zu kommerziellen Bieren gewählt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_50">
+             <property name="text">
+              <string>Verdampfungsziffer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="3">
+            <widget class="QLabel" name="label_22">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>IBU</string>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="2">
+            <widget class="SpinBoxSud" name="tbReifezeit">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; oder falls nichts eingetragen ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="DoubleSpinBoxSud" name="tbSudhausausbeute">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert  hier verändert werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_48">
+             <property name="text">
+              <string>Sudhausausbeute</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="2">
+            <widget class="SpinBoxSud" name="tbKochzeit">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 90 Minuten&lt;/span&gt;. Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="maximum">
+              <number>200</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="DoubleSpinBoxSud" name="tbMenge">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Zusammen mit &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird damit unter anderem Hauptguss und und Nachguss definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="2">
+            <widget class="SpinBoxSud" name="tbBittere">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der angepeilte Bittereintrag beim Hopfenkochen des Sudes festgelegt. Fachsprachlich nennt sich der Eintrag &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt;, angegeben mit der Maßeinheit &lt;span style=&quot; font-weight:600;&quot;&gt;International Bitterness Units (IBU)&lt;/span&gt;.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Bittere in IBU sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weißbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;8 - 15&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Märzen &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 28&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;28 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pils &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 45&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;40 - 70&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IIPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;60 - 120&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Neutrales Geschmacksempfinden bei IBU = 2°P Stammwürze&lt;/p&gt;&lt;p&gt;Das Festlegen der richtigen Bittere und damit der passende Hopfen, die passende Hopfenkombination, Zeit und Temperatur ist eines der kreativsten Betätigungsfelder beim Bierbrauen, gehört aber auch mithin zu den größten Herausforderungen. Um ein Gefühl für die richtige Bittere zu bekommen, empfiehlt sich eine gründliche Rezeptrecherche, das Studium von Fachliteratur und nicht zuletzt die Sektionen für Hopfen und Rezepte in den Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="0">
+            <widget class="QLabel" name="label_17">
+             <property name="text">
+              <string>Wasserprofil</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0" colspan="4">
+            <widget class="Line" name="line_11">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLabel" name="label_19">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="label_53">
+             <property name="text">
+              <string>Vergärungsgrad</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="3">
+            <widget class="QLabel" name="label_36">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>min</string>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="0" colspan="2">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Reifezeit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0" colspan="4">
+            <widget class="Line" name="line_12">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="3">
+            <widget class="QLabel" name="label_21">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>g/l</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="3">
+            <widget class="QWidget" name="wdgFaktorHauptguss" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Hauptgussfaktor</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Empf.</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="DoubleSpinBoxSud" name="tbFaktorHauptgussEmpfehlung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>1.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="DoubleSpinBoxSud" name="tbFaktorHauptguss">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter Faktor &lt;/span&gt;für den Hauptguss eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.Gewünschter Faktor für den Hauptguss&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>1.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="SpinBoxSud" name="tbSudnummer">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="prefix">
+              <string>Nr. </string>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0" colspan="2">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Nachisomerisierungszeit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0" colspan="2">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Restalkalität</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -946,8 +957,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>358</width>
-                 <height>132</height>
+                 <width>361</width>
+                 <height>134</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -1061,7 +1072,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>283</width>
+              <width>284</width>
               <height>379</height>
              </rect>
             </property>
@@ -1201,8 +1212,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>283</width>
-              <height>112</height>
+              <width>284</width>
+              <height>109</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1291,7 +1302,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>283</width>
+              <width>284</width>
               <height>379</height>
              </rect>
             </property>
@@ -1377,7 +1388,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>283</width>
+             <width>284</width>
              <height>591</height>
             </rect>
            </property>
@@ -1563,7 +1574,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>283</width>
+              <width>284</width>
               <height>112</height>
              </rect>
             </property>
@@ -1648,8 +1659,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>330</width>
-          <height>878</height>
+          <width>326</width>
+          <height>877</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -3163,8 +3174,6 @@
   <tabstop>tbSW</tabstop>
   <tabstop>btnSudhausausbeute</tabstop>
   <tabstop>tbSudhausausbeute</tabstop>
-  <tabstop>tbFaktorHauptgussEmpfehlung</tabstop>
-  <tabstop>tbFaktorHauptguss</tabstop>
   <tabstop>tbHGF</tabstop>
   <tabstop>tbBittere</tabstop>
   <tabstop>tbKochzeit</tabstop>

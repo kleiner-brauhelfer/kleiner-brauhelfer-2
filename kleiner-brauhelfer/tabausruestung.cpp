@@ -11,11 +11,24 @@
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/checkboxdelegate.h"
+#include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
 #include "dialogs/dlgverdampfung.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
+
+QList<QPair<QString, int> > TabAusruestung::Typname = {
+    {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
+    {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
+    {tr("Grainfather G70"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG70)},
+    {tr("Braumeister 10L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister10)},
+    {tr("Braumeister 20L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister20)},
+    {tr("Braumeister 50L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister50)},
+    {tr("Braumeister 200L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister200)},
+    {tr("Braumeister 500L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister500)},
+    {tr("Braumeister 1000L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister1000)}
+};
 
 TabAusruestung::TabAusruestung(QWidget *parent) :
     TabAbstract(parent),
@@ -44,18 +57,24 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->setColumnHidden(col, false);
     header->setSectionResizeMode(col, QHeaderView::Stretch);
     header->moveSection(header->visualIndex(col), 0);
+    col = ModelAusruestung::ColTyp;
+    model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
+    table->setColumnHidden(col, false);
+    table->setItemDelegateForColumn(col, new ComboBoxDelegate(Typname, table));
+    header->resizeSection(col, 100);
+    header->moveSection(header->visualIndex(col), 1);
     col = ModelAusruestung::ColVermoegen;
     model->setHeaderData(col, Qt::Horizontal, tr("Vermögen [l]"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
+    header->moveSection(header->visualIndex(col), 2);
     col = ModelAusruestung::ColAnzahlSude;
     model->setHeaderData(col, Qt::Horizontal, tr("Anzahl Sude"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
     header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
+    header->moveSection(header->visualIndex(col), 3);
     mDefaultTableStateAnlagen = header->saveState();
     header->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
 
@@ -338,16 +357,16 @@ void TabAusruestung::updateValues()
         ui->tbMaischebottichHoehe->setValue(data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble());
     if (!ui->tbMaischebottichDurchmesser->hasFocus())
         ui->tbMaischebottichDurchmesser->setValue(data(ModelAusruestung::ColMaischebottich_Durchmesser).toDouble());
+    ui->tbMaischebottichMaxFuellhoehe->setMaximum(data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble());
     if (!ui->tbMaischebottichMaxFuellhoehe->hasFocus())
         ui->tbMaischebottichMaxFuellhoehe->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellhoehe).toDouble());
-    ui->tbMaischebottichMaxFuellhoehe->setMaximum(ui->tbMaischebottichHoehe->value());
     if (!ui->tbSudpfanneHoehe->hasFocus())
         ui->tbSudpfanneHoehe->setValue(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
     if (!ui->tbSudpfanneDurchmesser->hasFocus())
         ui->tbSudpfanneDurchmesser->setValue(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
+    ui->tbSudpfanneMaxFuellhoehe->setMaximum(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
     if (!ui->tbSudpfanneMaxFuellhoehe->hasFocus())
         ui->tbSudpfanneMaxFuellhoehe->setValue(data(ModelAusruestung::ColSudpfanne_MaxFuellhoehe).toDouble());
-    ui->tbSudpfanneMaxFuellhoehe->setMaximum(ui->tbSudpfanneHoehe->value());
     ui->tbMaischenVolumen->setValue(data(ModelAusruestung::ColMaischebottich_Volumen).toDouble());
     ui->tbMaischenMaxNutzvolumen->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
     ui->tbSudpfanneVolumen->setValue(data(ModelAusruestung::ColSudpfanne_Volumen).toDouble());

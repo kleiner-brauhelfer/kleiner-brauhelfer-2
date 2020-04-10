@@ -82,6 +82,84 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
         }
         return false;
     }
+    case ColTyp:
+    {
+        if (QSqlTableModel::setData(idx, value))
+        {
+            Brauhelfer::AnlageTyp typ = static_cast<Brauhelfer::AnlageTyp>(value.toInt());
+            switch (typ)
+            {
+            case Brauhelfer::AnlageTyp::Standard:
+                break;
+            case Brauhelfer::AnlageTyp::GrainfatherG30:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 29.5);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 52.5);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 43.9);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 29.5);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 52.5);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 43.9);
+                break;
+            case Brauhelfer::AnlageTyp::GrainfatherG70:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 0.0);
+                break;
+            case Brauhelfer::AnlageTyp::Braumeister10:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 24.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 33.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 26.5);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 24.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 33.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 26.5);
+                break;
+            case Brauhelfer::AnlageTyp::Braumeister20:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 34.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 45.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 25.3);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 34.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 45.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 25.3);
+                break;
+            case Brauhelfer::AnlageTyp::Braumeister50:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 44.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 55.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 36.2);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 44.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 55.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 36.2);
+                break;
+            case Brauhelfer::AnlageTyp::Braumeister200:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 0.0);
+                break;
+            case Brauhelfer::AnlageTyp::Braumeister500:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 0.0);
+                break;
+            case Brauhelfer::AnlageTyp::Braumeister1000:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 0.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 0.0);
+                break;
+            }
+            return true;
+        }
+        return false;
+    }
     case ColMaischebottich_Hoehe:
     {
         if (QSqlTableModel::setData(idx, value))

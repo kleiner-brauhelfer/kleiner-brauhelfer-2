@@ -137,6 +137,7 @@ private:
     bool setDataExt_impl(const QModelIndex &index, const QVariant &value);
     void update(int row);
     void updateSwWeitereZutaten(int row);
+    void updateWasser(int row);
     void updateFarbe(int row);
     void updatePreis(int row);
     void removeRowsFrom(SqlTableModel* model, int colId, const QVariant &sudId);

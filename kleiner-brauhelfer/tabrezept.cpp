@@ -494,7 +494,6 @@ void TabRezept::updateValues()
     for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
         wdg->updateValue();
 
-    double restalkalitaetFaktor;
     if (!ui->tbSudname->hasFocus())
     {
         ui->tbSudname->setText(bh->sud()->getSudname());
@@ -518,7 +517,7 @@ void TabRezept::updateValues()
     ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
     ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
     ui->lblWasserprofil->setText(bh->sud()->getWasserprofil());
-    restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
+    double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
     if (ui->tbHGF->value() != 0.0)
@@ -543,6 +542,8 @@ void TabRezept::updateValues()
         ui->lblMilchsaeureHGF->setVisible(false);
         ui->lblMilchsaeureHGFEinheit->setVisible(false);
     }
+    Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
+    ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30);
     ui->tbWasserGesamt->setValue(ui->tbHauptguss->value() + ui->tbNachguss->value() + ui->tbWasserHGF->value());
     ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * restalkalitaetFaktor);
     ui->tbMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);

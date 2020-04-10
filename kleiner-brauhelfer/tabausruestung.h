@@ -13,6 +13,9 @@ class TabAusruestung : public TabAbstract
     Q_OBJECT
 
 public:
+    static QList<QPair<QString, int> > Typname;
+
+public:
     explicit TabAusruestung(QWidget *parent = nullptr);
     virtual ~TabAusruestung() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;

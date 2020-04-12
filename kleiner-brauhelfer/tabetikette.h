@@ -17,6 +17,8 @@ class TabEtikette : public TabAbstract
 public:
     explicit TabEtikette(QWidget *parent = nullptr);
     virtual ~TabEtikette() Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
 
 private slots:
     void updateAll();

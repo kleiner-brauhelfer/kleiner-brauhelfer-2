@@ -18,6 +18,8 @@ public:
     virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView() Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
     QAbstractItemModel* model() const;
     void sudAnlegen();
     void sudKopieren(bool loadedSud = false);

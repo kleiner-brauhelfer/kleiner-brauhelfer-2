@@ -739,7 +739,15 @@ void TabSudAuswahl::on_btnLaden_clicked()
     }
 }
 
-void TabSudAuswahl::on_btnToPdf_clicked()
+void TabSudAuswahl::printPreview()
+{
+    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
+    if (selection.count() == 0)
+        return;
+    ui->webview->printPreview();
+}
+
+void TabSudAuswahl::toPdf()
 {
     QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
     if (selection.count() == 0)
@@ -769,10 +777,12 @@ void TabSudAuswahl::on_btnToPdf_clicked()
     gSettings->endGroup();
 }
 
+void TabSudAuswahl::on_btnToPdf_clicked()
+{
+    toPdf();
+}
+
 void TabSudAuswahl::on_btnPrintPreview_clicked()
 {
-    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
-    if (selection.count() == 0)
-        return;
-    ui->webview->printPreview();
+    printPreview();
 }

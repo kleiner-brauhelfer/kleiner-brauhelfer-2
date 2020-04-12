@@ -43,7 +43,12 @@ void TabZusammenfassung::updateWebView()
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
-void TabZusammenfassung::on_btnToPdf_clicked()
+void TabZusammenfassung::printPreview()
+{
+    ui->webview->printPreview();
+}
+
+void TabZusammenfassung::toPdf()
 {
     gSettings->beginGroup("General");
 
@@ -64,7 +69,12 @@ void TabZusammenfassung::on_btnToPdf_clicked()
     gSettings->endGroup();
 }
 
+void TabZusammenfassung::on_btnToPdf_clicked()
+{
+    toPdf();
+}
+
 void TabZusammenfassung::on_btnPrintPreview_clicked()
 {
-    ui->webview->printPreview();
+    printPreview();
 }

@@ -407,6 +407,20 @@ void MainWindow::on_actionVerwerfen_triggered()
     }
 }
 
+void MainWindow::on_actionDruckvorschau_triggered()
+{
+    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    if (tab)
+        tab->printPreview();
+}
+
+void MainWindow::on_actionDrucken_triggered()
+{
+    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    if (tab)
+        tab->toPdf();
+}
+
 void MainWindow::on_actionBereinigen_triggered()
 {
     DlgDatabaseCleaner dlg(this);
@@ -421,11 +435,19 @@ void MainWindow::on_actionBeenden_triggered()
 void MainWindow::on_actionSudGebraut_triggered()
 {
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
+    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
+    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelHauptgaerverlauf()->removeRow(0);
+    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelNachgaerverlauf()->removeRow(0);
 }
 
 void MainWindow::on_actionSudAbgefuellt_triggered()
 {
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
+    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelNachgaerverlauf()->removeRow(0);
 }
 
 void MainWindow::on_actionSudVerbraucht_triggered()

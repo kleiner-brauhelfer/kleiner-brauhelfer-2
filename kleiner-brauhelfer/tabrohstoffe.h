@@ -13,7 +13,6 @@ class TabRohstoffe : public TabAbstract
     Q_OBJECT
 
 public:
-
     static QList<QString> HopfenTypname;
     static QList<QString> HefeTypname;
     static QList<QString> ZusatzTypname;

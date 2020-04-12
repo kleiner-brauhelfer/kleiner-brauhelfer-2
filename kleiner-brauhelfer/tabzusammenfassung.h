@@ -14,6 +14,8 @@ class TabZusammenfassung : public TabAbstract
 public:
     explicit TabZusammenfassung(QWidget *parent = nullptr);
     virtual ~TabZusammenfassung() Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
 
 private slots:
     void updateWebView();

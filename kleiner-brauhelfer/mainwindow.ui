@@ -146,6 +146,9 @@
     <addaction name="actionSpeichern"/>
     <addaction name="actionVerwerfen"/>
     <addaction name="separator"/>
+    <addaction name="actionDruckvorschau"/>
+    <addaction name="actionDrucken"/>
+    <addaction name="separator"/>
     <addaction name="actionBereinigen"/>
     <addaction name="separator"/>
     <addaction name="actionBeenden"/>
@@ -295,6 +298,9 @@
    <property name="shortcut">
     <string>Ctrl+O</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
   </action>
   <action name="actionThemeSystem">
    <property name="text">
@@ -401,6 +407,22 @@
   <action name="actionSud_teilen">
    <property name="text">
     <string>Sud teilen</string>
+   </property>
+  </action>
+  <action name="actionDruckvorschau">
+   <property name="text">
+    <string>Druckvorschau</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+  <action name="actionDrucken">
+   <property name="text">
+    <string>Drucken (PDF)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

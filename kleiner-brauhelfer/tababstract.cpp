@@ -39,3 +39,11 @@ void TabAbstract::onTabDeactivated()
 {
     setFocus();
 }
+
+void TabAbstract::printPreview()
+{
+}
+
+void TabAbstract::toPdf()
+{
+}

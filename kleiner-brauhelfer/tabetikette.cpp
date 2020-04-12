@@ -394,14 +394,41 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     mTemplateTags.remove("n");
 }
 
-void TabEtikette::on_btnToPdf_clicked()
+void TabEtikette::printPreview()
 {
+    mPrinter->setOutputFileName("");
+    mPrinter->setOutputFormat(QPrinter::NativeFormat);
     QPrintPreviewDialog dlg(mPrinter, this);
     connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
     dlg.exec();
     gSettings->beginGroup("General");
     gSettings->setValue("DefaultPrinterEtikette", mPrinter->printerName());
     gSettings->endGroup();
+}
+
+void TabEtikette::toPdf()
+{
+    gSettings->beginGroup("General");
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+    QString fileName = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
+                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikette") +  ".pdf", "PDF (*.pdf)");
+    if (!fileName.isEmpty())
+    {
+        mPrinter->setOutputFileName(fileName);
+        mPrinter->setOutputFormat(QPrinter::PdfFormat);
+        onPrinterPaintRequested(mPrinter);
+
+        QFileInfo fi(fileName);
+        gSettings->setValue("exportPath", fi.absolutePath());
+
+        QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+    }
+    gSettings->endGroup();
+}
+
+void TabEtikette::on_btnToPdf_clicked()
+{
+    printPreview();
 }
 
 void TabEtikette::updateValues()

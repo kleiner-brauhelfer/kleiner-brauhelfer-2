@@ -8,7 +8,7 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.1.1](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.1.1)
+- [Version 2.1.2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.1.2)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -20,6 +20,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
   - Benötigt zusätzlich Installation von [Qt 5.13.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc 64-bit, Qt Charts, Qt WebEngine
+  - Benötigt OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
 - **kbh2_v2.x.x_linux_x32.deb**: Installationsdatei für 32bit System
   - Neuere Qt Versionen werden für Linux 32bit nicht mehr angeboten. Deshalb werden nicht alle Features unterstüzt.
@@ -31,14 +32,21 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.1.2 (in Entwicklung)
-- Neu: Unterstützung der oBraMa Datenbank fürs Einfügen von neuen Rohstoffe (erfordert Internetverbindung)
+### Version 2.1.2 (12.04.2020)
+- Neu: Unterstützung der [oBraMa](https://obrama.mueggelland.de/) Datenbank fürs Einfügen von neuen Rohstoffe (erfordert Internetverbindung)
 - Neu: Sudhausausbeute und Vergärungsgrad wird beim Import aus MMuM übernommen
-- Neu: Neue Kategorien für "Weitere Zutaten" Kraut, Wasseraufbereiung und Klärmittel
+- Neu: Neue Kategorien für "Weitere Zutaten": "Kraut", "Wasseraufbereiung" und "Klärmittel"
+- Neu: Neue Einheiten für "Weitere Zutaten": "l" und "ml"
 - Neu: "Weitere Zutaten" in HTML Templates überarbeitet (Listen zusammengeführt)
-- Neu: Neu Einheit für "Weitere Zutaten" "l" und "ml"
+       **Eigene Templates müssen auch überarbeitet werden!**
+- Neu: Anlagetyp kann gesetzt werden (Grainfather & Braumeister)
+       **Daten sind nicht vollständig!**
+- Neu: Direkter PDF Druck wieder möglich
 - Fix: Nachisomerisierungszeit bis 90 Minuten
 - Fix: Sud kopieren/teilen mit Hopfengaben ohne IBU Berechnung
+
+**Wichtig Linux 64bit:** OpenSSL 1.1.1b oder höher wird für die Überprüfung auf Updates und die oBraMa Anbindung benötigt.
+https://askubuntu.com/questions/1102803/how-to-upgrade-openssl-1-1-0-to-1-1-1-in-ubuntu-18-04
 
 ### Version 2.1.1 (01.03.2020)
 - Neu: Neue Menufunktionen (Sud anlegen, kopieren, teilen, löschen, Rezept importieren, exportieren)

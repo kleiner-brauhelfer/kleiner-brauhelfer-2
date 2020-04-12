@@ -9,7 +9,9 @@ OBraMa::OBraMa(QObject *parent) :
     QObject(parent),
     mUrl("https://obrama.mueggelland.de/api/obrama.php?table=%1&format=%2")
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
     mNetManager.setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+  #endif
 }
 
 QByteArray OBraMa::download(const QString& table, const QString& format)

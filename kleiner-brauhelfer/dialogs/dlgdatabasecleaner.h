@@ -27,6 +27,14 @@ private:
     void setTableIds(int type);
     bool testNullField(SqlTableModel* model, const QList<int>& fields, int type);
     bool testInvalidId(SqlTableModel* model, const QList<int>& fields, int type);
+    bool testRange(SqlTableModel* model, int min, int max, int col, const QList<int> &visibleFields);
+    bool testRange1();
+    bool testRange2();
+    bool testRange3();
+    bool testRange4();
+    bool testRange5();
+    bool testRange6();
+    bool testRange7();
 
 private:
     Ui::DlgDatabaseCleaner *ui;

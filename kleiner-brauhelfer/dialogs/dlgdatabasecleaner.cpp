@@ -3,6 +3,8 @@
 #include <QStandardItemModel>
 #include "settings.h"
 #include "brauhelfer.h"
+#include "tabrohstoffe.h"
+#include "model/comboboxdelegate.h"
 
 extern Settings* gSettings;
 extern Brauhelfer* bh;
@@ -84,6 +86,42 @@ private:
     int mColId;
 };
 
+class CheckRangeProxyModel : public ProxyModel
+{
+public:
+    CheckRangeProxyModel(int col, int min, int max, QObject* parent = nullptr) :
+        ProxyModel(parent),
+        mCol(col),
+        mMin(min),
+        mMax(max)
+    {
+    }
+    QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE
+    {
+        if (role == Qt::BackgroundRole && index.column() == mCol)
+        {
+            int value = index.data().toInt();
+            if (value < mMin || value > mMax)
+                return gSettings->ErrorBase;
+        }
+        return ProxyModel::data(index, role);
+    }
+protected:
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const Q_DECL_OVERRIDE
+    {
+        bool accept = ProxyModel::filterAcceptsRow(source_row, source_parent);
+        if (!accept)
+            return false;
+        QModelIndex index = sourceModel()->index(source_row, mCol, source_parent);
+        int value = index.data().toInt();
+        return value < mMin || value > mMax;
+    }
+private:
+    int mCol;
+    int mMin;
+    int mMax;
+};
+
 DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgDatabaseCleaner)
@@ -130,7 +168,15 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         [this](){return this->testNullField(bh->modelBewertungen(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID}, 1);},
         [this](){return this->testNullField(bh->modelAnhang(), {ModelAnhang::ColID, ModelAnhang::ColSudID, ModelAnhang::ColPfad}, 1);},
         [this](){return this->testNullField(bh->modelEtiketten(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID, ModelEtiketten::ColPfad}, 1);},
-        [this](){return this->testNullField(bh->modelTags(), {ModelTags::ColID, ModelTags::ColSudID, ModelTags::ColKey}, 1);}
+        [this](){return this->testNullField(bh->modelTags(), {ModelTags::ColID, ModelTags::ColSudID, ModelTags::ColKey}, 1);},
+
+        [this](){return this->testRange1();},
+        [this](){return this->testRange2();},
+        [this](){return this->testRange3();},
+        [this](){return this->testRange4();},
+        [this](){return this->testRange5();},
+        [this](){return this->testRange6();},
+        [this](){return this->testRange7();}
     };
     mItTestFncs = mTestFncs.begin();
     next();
@@ -216,6 +262,7 @@ bool DlgDatabaseCleaner::testNullField(SqlTableModel *model, const QList<int> &f
         ui->tableView->selectAll();
         ui->tableView->setFocus();
         setTableIds(type);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -240,6 +287,192 @@ bool DlgDatabaseCleaner::testInvalidId(SqlTableModel* model, const QList<int> &f
         ui->tableView->selectAll();
         ui->tableView->setFocus();
         setTableIds(type);
+        ui->btnDelete->setVisible(true);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange1()
+{
+    int col = ModelHopfen::ColTyp;
+    int min = static_cast<int>(Brauhelfer::HopfenTyp::Unbekannt);
+    int max = static_cast<int>(Brauhelfer::HopfenTyp::Universal);
+    SqlTableModel* model = bh->modelHopfen();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelHopfen::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::HopfenTypname, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(1);
+        ui->btnDelete->setVisible(false);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange2()
+{
+    int col = ModelHefe::ColTypTrFl;
+    int min = static_cast<int>(Brauhelfer::HefeTyp::Unbekannt);
+    int max = static_cast<int>(Brauhelfer::HefeTyp::Fluessig);
+    SqlTableModel* model = bh->modelHopfen();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelHefe::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::HefeTypname, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(1);
+        ui->btnDelete->setVisible(false);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange3()
+{
+    int col = ModelWeitereZutaten::ColTyp;
+    int min = static_cast<int>(Brauhelfer::ZusatzTyp::Honig);
+    int max = static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel);
+    SqlTableModel* model = bh->modelWeitereZutaten();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelWeitereZutaten::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::ZusatzTypname, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(0);
+        ui->btnDelete->setVisible(false);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange4()
+{
+    int col = ModelWeitereZutaten::ColEinheiten;
+    int min = static_cast<int>(Brauhelfer::Einheit::Kg);
+    int max = static_cast<int>(Brauhelfer::Einheit::ml);
+    SqlTableModel* model = bh->modelWeitereZutaten();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelWeitereZutaten::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::Einheiten, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(0);
+        ui->btnDelete->setVisible(false);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange5()
+{
+    int col = ModelSud::ColStatus;
+    int min = static_cast<int>(Brauhelfer::SudStatus::Rezept);
+    int max = static_cast<int>(Brauhelfer::SudStatus::Verbraucht);
+    SqlTableModel* model = bh->modelSud();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelSud::ColID, false);
+        ui->tableView->setColumnHidden(ModelSud::ColSudname, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("Rezept"), tr("Gebraut"), tr("Abgefüllt"), tr("Verbraucht")}, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(0);
+        ui->btnDelete->setVisible(false);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange6()
+{
+    int col = ModelSud::ColberechnungsArtHopfen;
+    int min = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
+    int max = static_cast<int>(Brauhelfer::BerechnungsartHopfen::IBU);
+    SqlTableModel* model = bh->modelSud();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelSud::ColID, false);
+        ui->tableView->setColumnHidden(ModelSud::ColSudname, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("Keine"), tr("Gewicht"), tr("IBU")}, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(0);
+        ui->btnDelete->setVisible(false);
+        return false;
+    }
+    return true;
+}
+
+bool DlgDatabaseCleaner::testRange7()
+{
+    int col = ModelWeitereZutatenGaben::ColEinheit;
+    int min = static_cast<int>(Brauhelfer::Einheit::Kg);
+    int max = static_cast<int>(Brauhelfer::Einheit::ml);
+    SqlTableModel* model = bh->modelWeitereZutatenGaben();
+    CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
+    proxy->setSourceModel(model);
+    if (proxy->rowCount() != 0)
+    {
+        ui->lblTitle->setText(tr("Ungültiger Wert in Tabelle:"));
+        ui->lblModel->setText(model->tableName());
+        ui->tableView->setModel(proxy);
+        for (int c = 0; c < model->columnCount(); ++c)
+            ui->tableView->setColumnHidden(c, true);
+        ui->tableView->setColumnHidden(ModelWeitereZutatenGaben::ColSudID, false);
+        ui->tableView->setColumnHidden(ModelWeitereZutatenGaben::ColName, false);
+        ui->tableView->setColumnHidden(col, false);
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::Einheiten, ui->tableView));
+         ui->tableView->setFocus();
+        setTableIds(1);
+        ui->btnDelete->setVisible(false);
         return false;
     }
     return true;

@@ -189,15 +189,17 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
 {
+    QList<int> ids;
+    for (int i = 0; i < count; ++i)
+        ids.append(data(row + i, ColID).toInt());
     if (SqlTableModel::removeRows(row, count, parent))
     {
-        for (int n = 0; n < count; ++n)
+        for (int r = 0; r < bh->modelGeraete()->rowCount(); ++r)
         {
-            QVariant id = data(row + n, ColID);
-            for (int r = 0; r < bh->modelGeraete()->rowCount(); ++r)
+            if (ids.contains(bh->modelGeraete()->data(r, ModelGeraete::ColAusruestungAnlagenID).toInt()))
             {
-                if (bh->modelGeraete()->data(r, ModelGeraete::ColAusruestungAnlagenID) == id)
-                    bh->modelGeraete()->removeRows(r);
+                bh->modelGeraete()->removeRows(r);
+                r--;
             }
         }
         return true;

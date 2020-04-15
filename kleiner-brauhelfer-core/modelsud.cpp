@@ -920,35 +920,37 @@ void ModelSud::updatePreis(int row)
 
 bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
 {
+    QList<int> sudIds;
+    for (int i = 0; i < count; ++i)
+        sudIds.append(data(row + i, ColID).toInt());
     if (SqlTableModel::removeRows(row, count, parent))
     {
-        for (int i = 0; i < count; ++i)
-        {
-            QVariant sudId = data(row + i, ColID);
-            removeRowsFrom(bh->modelRasten(), ModelRasten::ColSudID, sudId);
-            removeRowsFrom(bh->modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId);
-            removeRowsFrom(bh->modelHopfengaben(), ModelHopfengaben::ColSudID, sudId);
-            removeRowsFrom(bh->modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId);
-            removeRowsFrom(bh->modelHefegaben(), ModelHefegaben::ColSudID, sudId);
-            removeRowsFrom(bh->modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudId);
-            removeRowsFrom(bh->modelHauptgaerverlauf(), ModelHauptgaerverlauf::ColSudID, sudId);
-            removeRowsFrom(bh->modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudId);
-            removeRowsFrom(bh->modelBewertungen(), ModelBewertungen::ColSudID, sudId);
-            removeRowsFrom(bh->modelAnhang(), ModelAnhang::ColSudID, sudId);
-            removeRowsFrom(bh->modelEtiketten(), ModelEtiketten::ColSudID, sudId);
-            removeRowsFrom(bh->modelTags(), ModelTags::ColSudID, sudId);
-        }
+        removeRowsFrom(bh->modelRasten(), ModelRasten::ColSudID, sudIds);
+        removeRowsFrom(bh->modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudIds);
+        removeRowsFrom(bh->modelHopfengaben(), ModelHopfengaben::ColSudID, sudIds);
+        removeRowsFrom(bh->modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudIds);
+        removeRowsFrom(bh->modelHefegaben(), ModelHefegaben::ColSudID, sudIds);
+        removeRowsFrom(bh->modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudIds);
+        removeRowsFrom(bh->modelHauptgaerverlauf(), ModelHauptgaerverlauf::ColSudID, sudIds);
+        removeRowsFrom(bh->modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudIds);
+        removeRowsFrom(bh->modelBewertungen(), ModelBewertungen::ColSudID, sudIds);
+        removeRowsFrom(bh->modelAnhang(), ModelAnhang::ColSudID, sudIds);
+        removeRowsFrom(bh->modelEtiketten(), ModelEtiketten::ColSudID, sudIds);
+        removeRowsFrom(bh->modelTags(), ModelTags::ColSudID, sudIds);
         return true;
     }
     return false;
 }
 
-void ModelSud::removeRowsFrom(SqlTableModel* model, int colId, const QVariant &sudId)
+void ModelSud::removeRowsFrom(SqlTableModel* model, int colId, const QList<int> &sudIds)
 {
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        if (model->data(r, colId) == sudId)
+        if (sudIds.contains(model->data(r, colId).toInt()))
+        {
             model->removeRows(r);
+            r--;
+        }
     }
 }
 

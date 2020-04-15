@@ -151,8 +151,8 @@ public:
         g = 1,
         mg = 2,
         Stk = 3,
-        l,
-        ml
+        l = 4,
+        ml = 5
     };
     Q_ENUM(Einheit)
 

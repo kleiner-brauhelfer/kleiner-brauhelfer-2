@@ -16,7 +16,7 @@ public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);
     virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private:

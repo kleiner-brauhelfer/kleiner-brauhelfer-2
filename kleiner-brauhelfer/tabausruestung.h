@@ -19,7 +19,7 @@ public:
     explicit TabAusruestung(QWidget *parent = nullptr);
     virtual ~TabAusruestung() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);

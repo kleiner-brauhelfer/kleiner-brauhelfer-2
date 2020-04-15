@@ -14,8 +14,6 @@ class TabBewertung : public TabAbstract
 public:
     explicit TabBewertung(QWidget *parent = nullptr);
     virtual ~TabBewertung() Q_DECL_OVERRIDE;
-    void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
 
 private slots:
     void sudLoaded();

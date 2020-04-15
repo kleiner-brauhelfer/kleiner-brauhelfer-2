@@ -77,9 +77,10 @@ void TabDatenbank::saveSettings()
     gSettings->endGroup();
 }
 
-void TabDatenbank::restoreView()
+void TabDatenbank::restoreView(bool full)
 {
-    ui->splitter->restoreState(mDefaultSplitterState);
+    if (full)
+        ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void TabDatenbank::sudLoaded()

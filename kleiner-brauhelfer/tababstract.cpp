@@ -10,8 +10,9 @@ void TabAbstract::saveSettings()
 {
 }
 
-void TabAbstract::restoreView()
+void TabAbstract::restoreView(bool full)
 {
+    Q_UNUSED(full)
 }
 
 void TabAbstract::setTabActive(bool active)

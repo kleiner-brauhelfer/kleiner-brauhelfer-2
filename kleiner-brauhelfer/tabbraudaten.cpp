@@ -92,10 +92,13 @@ void TabBraudaten::saveSettings()
     gSettings->endGroup();
 }
 
-void TabBraudaten::restoreView()
+void TabBraudaten::restoreView(bool full)
 {
-    ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    if (full)
+    {
+        ui->splitter->restoreState(mDefaultSplitterState);
+        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    }
 }
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)

@@ -89,10 +89,11 @@ void TabBrauUebersicht::saveSettings()
     gSettings->endGroup();
 }
 
-void TabBrauUebersicht::restoreView()
+void TabBrauUebersicht::restoreView(bool full)
 {
     ui->tableView->horizontalHeader()->restoreState(mDefaultTableState);
-    ui->splitter->restoreState(mDefaultSplitterState);
+    if (full)
+        ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void TabBrauUebersicht::setModel(QAbstractItemModel* model)

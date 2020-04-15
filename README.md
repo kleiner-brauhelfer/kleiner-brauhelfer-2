@@ -34,6 +34,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ### Version 2.1.3 (in Entwicklung)
 - Neu: Datenbankbereinigung sucht ungültige Werte
+- Neu: Verschiedene Reiter lassen sich verstecken
 - Fix: "Sud löschen" bei nicht-gespeichertem Sud löscht auch Einträge aus anderen Tabellen
 
 ### Version 2.1.2 (12.04.2020)

@@ -11,7 +11,7 @@ public:
     explicit TabAbstract(QWidget *parent = nullptr);
 
     virtual void saveSettings();
-    virtual void restoreView();
+    virtual void restoreView(bool full);
 
     void setTabActive(bool active);
     bool isTabActive() const;

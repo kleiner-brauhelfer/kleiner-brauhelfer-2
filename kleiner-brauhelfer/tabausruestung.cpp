@@ -177,14 +177,17 @@ void TabAusruestung::saveSettings()
     gSettings->endGroup();
 }
 
-void TabAusruestung::restoreView()
+void TabAusruestung::restoreView(bool full)
 {
     ui->tableViewAnlagen->horizontalHeader()->restoreState(mDefaultTableStateAnlagen);
     ui->tableViewGeraete->horizontalHeader()->restoreState(mDefaultTableStateGeraete);
     ui->tableViewSude->horizontalHeader()->restoreState(mDefaultTableStateSude);
-    ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    if (full)
+    {
+        ui->splitter->restoreState(mDefaultSplitterState);
+        ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
+        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    }
 }
 
 void TabAusruestung::keyPressEvent(QKeyEvent* event)

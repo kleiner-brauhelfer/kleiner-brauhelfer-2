@@ -17,7 +17,7 @@ public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);
     virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
     void printPreview() Q_DECL_OVERRIDE;
     void toPdf() Q_DECL_OVERRIDE;
     QAbstractItemModel* model() const;

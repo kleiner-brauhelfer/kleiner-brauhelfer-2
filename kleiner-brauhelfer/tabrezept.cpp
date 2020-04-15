@@ -164,10 +164,13 @@ void TabRezept::saveSettings()
     gSettings->endGroup();
 }
 
-void TabRezept::restoreView()
+void TabRezept::restoreView(bool full)
 {
-    ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    if (full)
+    {
+        ui->splitter->restoreState(mDefaultSplitterState);
+        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    }
 }
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)

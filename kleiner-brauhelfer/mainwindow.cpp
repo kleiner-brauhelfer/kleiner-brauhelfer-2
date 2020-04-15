@@ -24,8 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qApp->installEventFilter(this);
 
-    mTabIndexDatenbank = ui->tabMain->indexOf(ui->tabDatenbank);
-
     ui->actionThemeSystem->setEnabled(gSettings->theme() != Settings::Theme::System);
     ui->actionThemeHell->setEnabled(gSettings->theme() != Settings::Theme::Bright);
     ui->actionThemeDunkel->setEnabled(gSettings->theme() != Settings::Theme::Dark);
@@ -49,6 +47,25 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreState(gSettings->value("state").toByteArray());
     gSettings->endGroup();
 
+    mTabIndexZusammenfassung = ui->tabMain->indexOf(ui->tabZusammenfassung);
+    gSettings->beginGroup("TabZusammenfassung");
+    ui->actionReiterZusammenfassung->setChecked(gSettings->value("visible", true).toBool());
+    gSettings->endGroup();
+    on_actionReiterZusammenfassung_triggered(ui->actionReiterZusammenfassung->isChecked());
+
+    mTabIndexEtikette = ui->tabMain->indexOf(ui->tabEtikette);
+    gSettings->beginGroup("TabEtikette");
+    ui->actionReiterEtikette->setChecked(gSettings->value("visible", true).toBool());
+    gSettings->endGroup();
+    on_actionReiterEtikette_triggered(ui->actionReiterEtikette->isChecked());
+
+    mTabIndexBewertung = ui->tabMain->indexOf(ui->tabBewertung);
+    gSettings->beginGroup("TabBewertung");
+    ui->actionReiterBewertung->setChecked(gSettings->value("visible", true).toBool());
+    gSettings->endGroup();
+    on_actionReiterBewertung_triggered(ui->actionReiterBewertung->isChecked());
+
+    mTabIndexDatenbank = ui->tabMain->indexOf(ui->tabDatenbank);
     gSettings->beginGroup("TabDatenbank");
     ui->actionReiterDatenbank->setChecked(gSettings->value("visible", false).toBool());
     gSettings->endGroup();
@@ -76,7 +93,7 @@ MainWindow::MainWindow(QWidget *parent) :
     sudLoaded();
 
     if (gSettings->isNewProgramVersion())
-        restoreView(true);
+        restoreView(false);
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
@@ -188,6 +205,15 @@ void MainWindow::saveSettings()
     gSettings->setValue("geometry", saveGeometry());
     gSettings->setValue("state", saveState());
     gSettings->endGroup();
+    gSettings->beginGroup("TabZusammenfassung");
+    gSettings->setValue("visible", ui->actionReiterZusammenfassung->isChecked());
+    gSettings->endGroup();
+    gSettings->beginGroup("TabEtikette");
+    gSettings->setValue("visible", ui->actionReiterEtikette->isChecked());
+    gSettings->endGroup();
+    gSettings->beginGroup("TabBewertung");
+    gSettings->setValue("visible", ui->actionReiterBewertung->isChecked());
+    gSettings->endGroup();
     gSettings->beginGroup("TabDatenbank");
     gSettings->setValue("visible", ui->actionReiterDatenbank->isChecked());
     gSettings->endGroup();
@@ -205,25 +231,23 @@ void MainWindow::saveSettings()
     ui->tabDatenbank->saveSettings();
 }
 
-void MainWindow::restoreView(bool onUpdate)
+void MainWindow::restoreView(bool full)
 {
-    if (!onUpdate)
-    {
+    if (full)
         restoreState(mDefaultState);
-    }
-    ui->tabSudAuswahl->restoreView();
-    ui->tabBrauUebersicht->restoreView();
-    ui->tabRezept->restoreView();
-    ui->tabBraudaten->restoreView();
-    ui->tabAbfuelldaten->restoreView();
-    ui->tabGaerverlauf->restoreView();
-    ui->tabZusammenfassung->restoreView();
-    ui->tabEtikette->restoreView();
-    ui->tabBewertung->restoreView();
-    ui->tabRohstoffe->restoreView();
-    ui->tabAusruestung->restoreView();
-    ui->tabDatenbank->restoreView();
-    DlgRohstoffAuswahl::restoreView();
+    ui->tabSudAuswahl->restoreView(full);
+    ui->tabBrauUebersicht->restoreView(full);
+    ui->tabRezept->restoreView(full);
+    ui->tabBraudaten->restoreView(full);
+    ui->tabAbfuelldaten->restoreView(full);
+    ui->tabGaerverlauf->restoreView(full);
+    ui->tabZusammenfassung->restoreView(full);
+    ui->tabEtikette->restoreView(full);
+    ui->tabBewertung->restoreView(full);
+    ui->tabRohstoffe->restoreView(full);
+    ui->tabAusruestung->restoreView(full);
+    ui->tabDatenbank->restoreView(full);
+    DlgRohstoffAuswahl::restoreView(full);
 }
 
 void MainWindow::databaseModified()
@@ -249,17 +273,20 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
+    if (ui->actionReiterZusammenfassung->isChecked())
+        ui->tabMain->setTabEnabled(mTabIndexZusammenfassung, loaded);
+    if (ui->actionReiterEtikette->isChecked())
+        ui->tabMain->setTabEnabled(mTabIndexEtikette, loaded);
+    if (ui->actionReiterBewertung->isChecked())
+        ui->tabMain->setTabEnabled(mTabIndexBewertung, loaded);
     ui->menuSud->setEnabled(loaded);
     ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
     ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
     ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
     ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
-    ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung),
-                            status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
+    if (ui->actionReiterZusammenfassung->isChecked())
+        ui->tabMain->setTabText(mTabIndexZusammenfassung, status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
@@ -502,7 +529,7 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
 
 void MainWindow::on_actionWiederherstellen_triggered()
 {
-    restoreView();
+    restoreView(true);
 }
 
 void MainWindow::on_actionThemeSystem_triggered()
@@ -559,13 +586,66 @@ void MainWindow::on_actionSchriftart_triggered(bool checked)
 
 void MainWindow::on_actionOeffnen_triggered()
 {
-    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbankdatei auswählen"),
+    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbank auswählen"),
                                                     gSettings->databasePath(),
                                                     tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
     if (!databasePath.isEmpty())
     {
         gSettings->setDatabasePath(databasePath);
         restart();
+    }
+}
+
+void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
+{
+    if (checked)
+    {
+        bool loaded = bh->sud()->isLoaded();
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+        ui->tabMain->insertTab(mTabIndexZusammenfassung, ui->tabZusammenfassung, status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
+        ui->tabMain->setTabEnabled(mTabIndexZusammenfassung, loaded);
+        mTabIndexEtikette++;
+        mTabIndexBewertung++;
+        mTabIndexDatenbank++;
+    }
+    else
+    {
+        ui->tabMain->removeTab(mTabIndexZusammenfassung);
+        mTabIndexEtikette--;
+        mTabIndexBewertung--;
+        mTabIndexDatenbank--;
+    }
+}
+
+void MainWindow::on_actionReiterEtikette_triggered(bool checked)
+{
+    if (checked)
+    {
+        ui->tabMain->insertTab(mTabIndexEtikette, ui->tabEtikette, tr("Etikette"));
+        ui->tabMain->setTabEnabled(mTabIndexEtikette, bh->sud()->isLoaded());
+        mTabIndexBewertung++;
+        mTabIndexDatenbank++;
+    }
+    else
+    {
+        ui->tabMain->removeTab(mTabIndexEtikette);
+        mTabIndexBewertung--;
+        mTabIndexDatenbank--;
+    }
+}
+
+void MainWindow::on_actionReiterBewertung_triggered(bool checked)
+{
+    if (checked)
+    {
+        ui->tabMain->insertTab(mTabIndexBewertung, ui->tabBewertung, tr("Bewertung"));
+        ui->tabMain->setTabEnabled(mTabIndexBewertung, bh->sud()->isLoaded());
+        mTabIndexDatenbank++;
+    }
+    else
+    {
+        ui->tabMain->removeTab(mTabIndexBewertung);
+        mTabIndexDatenbank--;
     }
 }
 

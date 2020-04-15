@@ -84,10 +84,13 @@ void TabAbfuellen::saveSettings()
     gSettings->endGroup();
 }
 
-void TabAbfuellen::restoreView()
+void TabAbfuellen::restoreView(bool full)
 {
-    ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    if (full)
+    {
+        ui->splitter->restoreState(mDefaultSplitterState);
+        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    }
 }
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)

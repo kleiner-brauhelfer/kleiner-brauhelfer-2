@@ -31,16 +31,6 @@ TabBewertung::~TabBewertung()
     delete ui;
 }
 
-void TabBewertung::saveSettings()
-{
-
-}
-
-void TabBewertung::restoreView()
-{
-
-}
-
 void TabBewertung::sudLoaded()
 {
     mIndex = -1;

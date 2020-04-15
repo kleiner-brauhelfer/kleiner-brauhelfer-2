@@ -145,10 +145,11 @@ void TabSudAuswahl::saveSettings()
     gSettings->endGroup();
 }
 
-void TabSudAuswahl::restoreView()
+void TabSudAuswahl::restoreView(bool full)
 {
     ui->tableSudauswahl->horizontalHeader()->restoreState(mDefaultTableState);
-    ui->splitter->restoreState(mDefaultSplitterState);
+    if (full)
+        ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 QAbstractItemModel* TabSudAuswahl::model() const
@@ -637,7 +638,6 @@ void TabSudAuswahl::rezeptImportieren()
         {
             QMessageBox::warning(this, tr("Fehler beim Importieren"), QObject::tr("Unbekannter Fehler."));
         }
-
     }
     gSettings->endGroup();
 }

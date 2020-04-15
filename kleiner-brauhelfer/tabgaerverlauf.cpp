@@ -267,14 +267,17 @@ void TabGaerverlauf::saveSettings()
     gSettings->endGroup();
 }
 
-void TabGaerverlauf::restoreView()
+void TabGaerverlauf::restoreView(bool full)
 {
     ui->tableWidget_Schnellgaerverlauf->horizontalHeader()->restoreState(mDefaultTableStateSchnellgaerung);
     ui->tableWidget_Hauptgaerverlauf->horizontalHeader()->restoreState(mDefaultTableStateHauptgaerung);
     ui->tableWidget_Nachgaerverlauf->horizontalHeader()->restoreState(mDefaultTableStateNachgaerung);
-    ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
-    ui->splitterHauptgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
-    ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
+    if (full)
+    {
+        ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
+        ui->splitterHauptgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
+        ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
+    }
 }
 
 void TabGaerverlauf::keyPressEvent(QKeyEvent* event)

@@ -16,7 +16,7 @@ public:
     explicit TabBraudaten(QWidget *parent = nullptr);
     virtual ~TabBraudaten() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private slots:

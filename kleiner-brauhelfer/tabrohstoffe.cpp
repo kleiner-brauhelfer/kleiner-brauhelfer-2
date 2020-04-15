@@ -542,8 +542,9 @@ void TabRohstoffe::saveSettings()
     gSettings->endGroup();
 }
 
-void TabRohstoffe::restoreView()
+void TabRohstoffe::restoreView(bool full)
 {
+    Q_UNUSED(full)
     ui->tableMalz->horizontalHeader()->restoreState(mDefaultStateTableMalz);
     ui->tableHopfen->horizontalHeader()->restoreState(mDefaultStateTableHopfen);
     ui->tableHefe->horizontalHeader()->restoreState(mDefaultStateTableHefe);

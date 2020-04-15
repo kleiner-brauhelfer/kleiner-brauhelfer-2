@@ -14,8 +14,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-void DlgRohstoffAuswahl::restoreView()
+void DlgRohstoffAuswahl::restoreView(bool full)
 {
+    Q_UNUSED(full)
     gSettings->beginGroup("DlgRohstoffAuswahl");
     gSettings->setValue("tableStateMalz", QByteArray());
     gSettings->setValue("tableStateHopfen", QByteArray());

@@ -36,6 +36,14 @@
        <bool>true</bool>
       </property>
       <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>800</width>
+         <height>459</height>
+        </rect>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="leftMargin">
          <number>6</number>
@@ -128,7 +136,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -170,13 +178,22 @@
       <string>Stil</string>
      </property>
     </widget>
+    <widget class="QMenu" name="menuReiter">
+     <property name="title">
+      <string>Reiter</string>
+     </property>
+     <addaction name="actionReiterZusammenfassung"/>
+     <addaction name="actionReiterEtikette"/>
+     <addaction name="actionReiterBewertung"/>
+     <addaction name="actionReiterDatenbank"/>
+    </widget>
     <addaction name="actionWiederherstellen"/>
     <addaction name="separator"/>
     <addaction name="menuFarbschema"/>
     <addaction name="menuStil"/>
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
-    <addaction name="actionReiterDatenbank"/>
+    <addaction name="menuReiter"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -240,11 +257,8 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
    <property name="text">
-    <string>Reiter &quot;Datenbank&quot;</string>
+    <string>Datenbank</string>
    </property>
   </action>
   <action name="actionUeber">
@@ -423,6 +437,30 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionReiterEtikette">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Etikette</string>
+   </property>
+  </action>
+  <action name="actionReiterBewertung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Bewertung</string>
+   </property>
+  </action>
+  <action name="actionReiterZusammenfassung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Spickzettel/Zusammenfassung</string>
    </property>
   </action>
  </widget>

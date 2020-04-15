@@ -130,7 +130,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden.</string>
+      <string>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden. Es werden nur die bereits abgefüllten Sude angezeigt.</string>
      </property>
     </widget>
    </item>

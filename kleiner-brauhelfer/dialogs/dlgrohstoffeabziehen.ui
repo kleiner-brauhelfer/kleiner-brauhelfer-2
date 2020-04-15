@@ -24,7 +24,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTableView" name="tableViewMalz">
+    <widget class="TableView" name="tableViewMalz">
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -34,7 +34,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTableView" name="tableViewHopfen">
+    <widget class="TableView" name="tableViewHopfen">
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -44,7 +44,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTableView" name="tableViewHefe">
+    <widget class="TableView" name="tableViewHefe">
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -54,7 +54,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTableView" name="tableViewWZ">
+    <widget class="TableView" name="tableViewWZ">
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
@@ -86,6 +86,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

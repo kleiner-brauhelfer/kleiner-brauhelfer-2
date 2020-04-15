@@ -129,7 +129,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
             }
         }
     }
-    else if (typ == Brauhelfer::RohstoffTyp::Malz)
+    else if (typ == Brauhelfer::RohstoffTyp::Hopfen)
     {
         list[name] = menge;
     }

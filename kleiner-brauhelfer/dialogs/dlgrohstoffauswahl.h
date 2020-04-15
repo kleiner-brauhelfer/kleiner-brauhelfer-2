@@ -15,7 +15,7 @@ class DlgRohstoffAuswahl : public QDialog
 	
 public:
 
-    static void restoreView();
+    static void restoreView(bool full);
 
     explicit DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget *parent = nullptr);
     virtual ~DlgRohstoffAuswahl() Q_DECL_OVERRIDE;

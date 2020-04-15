@@ -9,6 +9,7 @@
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSslSocket>
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -35,12 +36,12 @@ static bool chooseDatabase()
     QString dir;
     if (gSettings->databasePath().isEmpty())
     {
-        text = QObject::tr("Es wurde noch keine Datenbankdatei ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
+        text = QObject::tr("Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
         dir = gSettings->settingsDir();
     }
     else
     {
-        text = QObject::tr("Soll eine neue Datenbankdatei angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
+        text = QObject::tr("Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
         dir = gSettings->databaseDir();
     }
 
@@ -48,7 +49,7 @@ static bool chooseDatabase()
                                     QObject::tr("Anlegen"), QObject::tr("Öffnen"), QObject::tr("Abbrechen"));
     if (ret == 1)
     {
-        QString databasePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Datenbankdatei auswählen"),
+        QString databasePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Datenbank auswählen"),
                                                             dir,
                                                             QObject::tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
         if (!databasePath.isEmpty())
@@ -59,7 +60,7 @@ static bool chooseDatabase()
     }
     else if (ret == 0)
     {
-        QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbankdatei anlegen"),
+        QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbank anlegen"),
                                                             dir + "/kb_daten.sqlite",
                                                             QObject::tr("Datenbank") + " (*.sqlite)");
         if (!databasePath.isEmpty())
@@ -107,8 +108,8 @@ static bool connectDatabase()
             else if (version < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Die Datenbankdatei muss aktualisiert werden (version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
-                                               QObject::tr("Soll die Datenbankdatei jetzt aktualisiert werden?") + " " +
+                                               QObject::tr("Die Datenbank muss aktualisiert werden (version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
+                                               QObject::tr("Soll die Datenbank jetzt aktualisiert werden?") + " " +
                                                QObject::tr("ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!"),
                                                QMessageBox::Yes | QMessageBox::No,
                                                QMessageBox::Yes);
@@ -144,7 +145,7 @@ static bool connectDatabase()
                             }
                             else
                             {
-                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Datenbankdatei konnte nicht wiederhergestellt werden."));
+                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Datenbank konnte nicht wiederhergestellt werden."));
                             }
                           #endif
                         }
@@ -168,7 +169,7 @@ static bool connectDatabase()
         else if (!gSettings->databasePath().isEmpty())
         {
             QMessageBox::critical(nullptr, QApplication::applicationName(),
-                                  QObject::tr("Die Datenbankdatei \"%1\" konnte nicht geöffnet werden.").arg(bh->databasePath()));
+                                  QObject::tr("Die Datenbank \"%1\" konnte nicht geöffnet werden.").arg(bh->databasePath()));
         }
 
         // choose other database
@@ -289,6 +290,23 @@ static void copyResources()
     }
 }
 
+static void checkSSL()
+{
+    if (!QSslSocket::supportsSsl())
+    {
+        QString buildVersion = QSslSocket::sslLibraryBuildVersionString();
+        QString rutimeVersion = QSslSocket::sslLibraryVersionString();
+        qWarning() << "SSL not supported";
+        qWarning() << "Version needed:" << buildVersion;
+        qWarning() << "Version installed:" << rutimeVersion;
+        if (gSettings->isNewProgramVersion())
+        {
+            QMessageBox::critical(nullptr, QApplication::applicationName(),
+                                  QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
+        }
+    }
+}
+
 static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     if (!logFile->isOpen())
@@ -383,6 +401,9 @@ int main(int argc, char *argv[])
         translatorQt.load(QLocale::system(), "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     if (!translatorQt.isEmpty())
         a.installTranslator(&translatorQt);
+
+    // check SSL
+    checkSSL();
 
     try
     {

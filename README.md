@@ -32,6 +32,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
+### Version 2.1.3 (in Entwicklung)
+
 ### Version 2.1.2 (12.04.2020)
 - Neu: Unterstützung der [oBraMa](https://obrama.mueggelland.de/) Datenbank fürs Einfügen von neuen Rohstoffe (erfordert Internetverbindung)
 - Neu: Sudhausausbeute und Vergärungsgrad wird beim Import aus MMuM übernommen

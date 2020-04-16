@@ -32,7 +32,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.1.3 (in Entwicklung)
+### Version 2.2.0 (in Entwicklung)
+- Neu: Datenbankversion **2004**
 - Neu: Datenbankbereinigung sucht ungültige Werte
 - Neu: Verschiedene Reiter lassen sich verstecken
 - Fix: "Sud löschen" bei nicht-gespeichertem Sud löscht auch Einträge aus anderen Tabellen

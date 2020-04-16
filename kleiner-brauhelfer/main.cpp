@@ -16,7 +16,7 @@
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
 // Diese Kopie wird aktualisiert ohne die ursprüngliche Datenbank zu verändern.
-//#define MODE_TEST_UPDATE
+#define MODE_TEST_UPDATE
 
 #if defined(QT_NO_DEBUG) && defined(MODE_TEST_UPDATE)
 #error MODE_TEST_UPDATE in release build defined.

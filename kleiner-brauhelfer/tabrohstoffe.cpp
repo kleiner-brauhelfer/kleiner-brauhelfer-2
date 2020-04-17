@@ -82,7 +82,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = ModelMalz::ColBeschreibung;
+    col = ModelMalz::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Name"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
@@ -167,7 +167,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = ModelHopfen::ColBeschreibung;
+    col = ModelHopfen::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Name"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
@@ -261,7 +261,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = ModelHefe::ColBeschreibung;
+    col = ModelHefe::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Name"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
@@ -384,7 +384,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     for (int col = 0; col < model->columnCount(); ++col)
         table->setColumnHidden(col, true);
 
-    col = ModelWeitereZutaten::ColBeschreibung;
+    col = ModelWeitereZutaten::ColName;
     model->setHeaderData(col, Qt::Horizontal, tr("Name"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
@@ -1008,16 +1008,16 @@ void TabRohstoffe::on_buttonAdd_clicked()
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
     case 0:
-        addEntry(ui->tableMalz, {{ModelMalz::ColBeschreibung, tr("Neuer Eintrag")}});
+        addEntry(ui->tableMalz, {{ModelMalz::ColName, tr("Neuer Eintrag")}});
         break;
     case 1:
-        addEntry(ui->tableHopfen, {{ModelHopfen::ColBeschreibung, tr("Neuer Eintrag")}});
+        addEntry(ui->tableHopfen, {{ModelHopfen::ColName, tr("Neuer Eintrag")}});
         break;
     case 2:
-        addEntry(ui->tableHefe, {{ModelHefe::ColBeschreibung, tr("Neuer Eintrag")}});
+        addEntry(ui->tableHefe, {{ModelHefe::ColName, tr("Neuer Eintrag")}});
         break;
     case 3:
-        addEntry(ui->tableWeitereZutaten, {{ModelWeitereZutaten::ColBeschreibung, tr("Neuer Eintrag")}});
+        addEntry(ui->tableWeitereZutaten, {{ModelWeitereZutaten::ColName, tr("Neuer Eintrag")}});
         break;
     }
 }
@@ -1253,20 +1253,20 @@ void TabRohstoffe::replace(int type, const QString &rohstoff)
     {
     case 0:
         model = bh->modelMalzschuettung();
-        dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
+        dlg.setModel(bh->modelMalz(), ModelMalz::ColName);
         break;
     case 1:
         model = bh->modelHopfengaben();
         model2 = bh->modelWeitereZutatenGaben();
-        dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
+        dlg.setModel(bh->modelHopfen(), ModelHopfen::ColName);
         break;
     case 2:
         model = bh->modelHefegaben();
-        dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
+        dlg.setModel(bh->modelHefe(), ModelHefe::ColName);
         break;
     case 3:
         model = bh->modelWeitereZutatenGaben();
-        dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColBeschreibung);
+        dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColName);
         break;
     default:
         return;

@@ -103,7 +103,7 @@ void WdgHefeGabe::updateValues(bool full)
     }
     ui->tbDatum->setVisible(braudatum.isValid());
 
-    int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColBeschreibung, hefename);
+    int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
     if (rowHefe >= 0)
     {
         int idx = bh->modelHefe()->data(rowHefe, ModelHefe::ColTypOGUG).toInt();
@@ -137,7 +137,7 @@ void WdgHefeGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, hefename, ModelHefe::ColMenge).toInt());
+        ui->tbVorhanden->setValue(bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefename, ModelHefe::ColMenge).toInt());
         int benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHefegaben();
         for (int i = 0; i < model->rowCount(); ++i)

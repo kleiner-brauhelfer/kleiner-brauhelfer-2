@@ -802,7 +802,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         Brauhelfer::HopfenTyp typ = Brauhelfer::HopfenTyp::Universal;
-        int rowHopfen = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, model.data(row, ModelHopfengaben::ColName));
+        int rowHopfen = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, model.data(row, ModelHopfengaben::ColName));
         if (rowHopfen >= 0)
         {
              typ = static_cast<Brauhelfer::HopfenTyp>(bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColTyp).toInt());
@@ -878,7 +878,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             double alpha = 0.0;
             bool pellets = false;
             Brauhelfer::HopfenTyp typ = Brauhelfer::HopfenTyp::Universal;
-            int rowHopfen = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, model.data(row, ModelWeitereZutatenGaben::ColName));
+            int rowHopfen = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, model.data(row, ModelWeitereZutatenGaben::ColName));
             if (rowHopfen >= 0)
             {
                 alpha = bh->modelHopfen()->data(rowHopfen, ModelHopfen::ColAlpha).toDouble();
@@ -1064,7 +1064,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         bool liquid = false;
-        int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColBeschreibung, model.data(row, ModelHefegaben::ColName));
+        int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, model.data(row, ModelHefegaben::ColName));
         if (rowHefe >= 0)
         {
             Brauhelfer::HefeTyp typ = static_cast<Brauhelfer::HefeTyp>(bh->modelHefe()->data(rowHefe, ModelHefe::ColTypTrFl).toInt());

@@ -70,7 +70,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
             }
             else
             {
-                int row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, value);
+                int row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, value);
                 if (row >= 0)
                 {
                     QSqlTableModel::setData(index(idx.row(), ColEinheit), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColEinheiten));
@@ -226,12 +226,12 @@ void ModelWeitereZutatenGaben::defaultValues(QMap<int, QVariant> &values) const
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
             if (!values.contains(ColName))
-                values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
+                values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
         }
         else
         {
             if (!values.contains(ColName))
-                values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColBeschreibung));
+                values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColName));
         }
     }
     if (!values.contains(ColMenge))

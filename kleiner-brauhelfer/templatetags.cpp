@@ -217,7 +217,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     int dauer = model->data(row, ModelHopfengaben::ColZeit).toInt();
                     int duaerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
                     map.insert("Name", model->data(row, ModelHopfengaben::ColName));
-                    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, map["Name"], ModelHopfen::ColTyp).toInt();
+                    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map["Name"], ModelHopfen::ColTyp).toInt();
                     if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
                         map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
                     map.insert("Prozent", locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
@@ -259,7 +259,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 {
                     QVariantMap map;
                     map.insert("Name", model->data(row, ModelHefegaben::ColName));
-                    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, map["Name"], ModelHefe::ColTypOGUG).toInt();
+                    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map["Name"], ModelHefe::ColTypOGUG).toInt();
                     if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
                         map.insert("Typ", TabRohstoffe::HefeTypname[idx]);
                     map.insert("Menge", model->data(row, ModelHefegaben::ColMenge).toInt());
@@ -358,7 +358,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                         map.insert("Bemerkung", str);
                     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
-                        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, map["Name"], ModelHopfen::ColTyp).toInt();
+                        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map["Name"], ModelHopfen::ColTyp).toInt();
                         map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
                         listeHopfen << map;
                     }

@@ -47,12 +47,12 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         model = bh->modelMalz();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
-        mNameCol = ModelMalz::ColBeschreibung;
+        mNameCol = ModelMalz::ColName;
 
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableView->setColumnHidden(col, true);
 
-        col = ModelMalz::ColBeschreibung;
+        col = ModelMalz::ColName;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 200);
         header->moveSection(header->visualIndex(col), 0);
@@ -105,12 +105,12 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         model = bh->modelHopfen();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
-        mNameCol = ModelHopfen::ColBeschreibung;
+        mNameCol = ModelHopfen::ColName;
 
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableView->setColumnHidden(col, true);
 
-        col = ModelHopfen::ColBeschreibung;
+        col = ModelHopfen::ColName;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 200);
         header->moveSection(header->visualIndex(col), 0);
@@ -165,12 +165,12 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         model = bh->modelHefe();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
-        mNameCol = ModelHefe::ColBeschreibung;
+        mNameCol = ModelHefe::ColName;
 
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableView->setColumnHidden(col, true);
 
-        col = ModelHefe::ColBeschreibung;
+        col = ModelHefe::ColName;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 200);
         header->moveSection(header->visualIndex(col), 0);
@@ -245,12 +245,12 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         model = bh->modelWeitereZutaten();
         proxy->setSourceModel(model);
         ui->tableView->setModel(proxy);
-        mNameCol = ModelWeitereZutaten::ColBeschreibung;
+        mNameCol = ModelWeitereZutaten::ColName;
 
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableView->setColumnHidden(col, true);
 
-        col = ModelWeitereZutaten::ColBeschreibung;
+        col = ModelWeitereZutaten::ColName;
         ui->tableView->setColumnHidden(col, false);
         header->resizeSection(col, 200);
         header->moveSection(header->visualIndex(col), 0);

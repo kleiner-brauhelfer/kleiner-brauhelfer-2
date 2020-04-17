@@ -92,7 +92,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             Rohstoff eintrag;
             eintrag.Name = modelHopfengaben.data(row, ModelHopfengaben::ColName).toString();
-            int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, eintrag.Name, ModelHopfen::ColTyp).toInt();
+            int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
             if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
                 eintrag.Typ = TabRohstoffe::HopfenTypname[idx];
             eintrag.Menge = modelHopfengaben.data(row, ModelHopfengaben::Colerg_Menge).toDouble();
@@ -122,7 +122,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             Rohstoff eintrag;
             eintrag.Name = modelHefegaben.data(row, ModelHefegaben::ColName).toString();
-            int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, eintrag.Name, ModelHefe::ColTypOGUG).toInt();
+            int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, eintrag.Name, ModelHefe::ColTypOGUG).toInt();
             if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
                 eintrag.Typ = TabRohstoffe::HefeTypname[idx];
             eintrag.Menge = modelHefegaben.data(row, ModelHefegaben::ColMenge).toDouble();
@@ -157,7 +157,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
-                int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, eintrag.Name, ModelHopfen::ColTyp).toInt();
+                int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
                 eintrag.Typ = TabRohstoffe::HopfenTypname[idx];
                 liste = &ListHopfen;
             }
@@ -189,7 +189,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelMalz;
         modelMalz.setSourceModel(bh->modelMalz());
-        modelMalz.setFilterKeyColumn(ModelMalz::ColBeschreibung);
+        modelMalz.setFilterKeyColumn(ModelMalz::ColName);
         for (const Rohstoff& eintrag : ListMalz)
         {
             QVariantMap map;
@@ -219,7 +219,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelHopfen;
         modelHopfen.setSourceModel(bh->modelHopfen());
-        modelHopfen.setFilterKeyColumn(ModelHopfen::ColBeschreibung);
+        modelHopfen.setFilterKeyColumn(ModelHopfen::ColName);
         for (const Rohstoff& eintrag : ListHopfen)
         {
             QVariantMap map;
@@ -250,7 +250,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelHefe;
         modelHefe.setSourceModel(bh->modelHefe());
-        modelHefe.setFilterKeyColumn(ModelHefe::ColBeschreibung);
+        modelHefe.setFilterKeyColumn(ModelHefe::ColName);
         for (const Rohstoff& eintrag : ListHefe)
         {
             QVariantMap map;
@@ -281,7 +281,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelWeitereZutaten;
         modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
-        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColBeschreibung);
+        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColName);
         for (const Rohstoff& eintrag : ListWeitereZutaten)
         {
             QVariantMap map;

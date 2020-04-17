@@ -150,10 +150,10 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         [this](){return this->testInvalidId(bh->modelGeraete(), {ModelGeraete::ColBezeichnung, ModelGeraete::ColAusruestungAnlagenID}, 2);},
 
         [this](){return this->testNullField(bh->modelSud(), {ModelSud::ColID, ModelSud::ColSudname}, 1);},
-        [this](){return this->testNullField(bh->modelMalz(), {ModelMalz::ColID, ModelMalz::ColBeschreibung}, 0);},
-        [this](){return this->testNullField(bh->modelHopfen(), {ModelHopfen::ColID, ModelHopfen::ColBeschreibung}, 0);},
-        [this](){return this->testNullField(bh->modelHefe(), {ModelHefe::ColID, ModelHefe::ColBeschreibung}, 0);},
-        [this](){return this->testNullField(bh->modelWeitereZutaten(), {ModelWeitereZutaten::ColID, ModelWeitereZutaten::ColBeschreibung}, 0);},
+        [this](){return this->testNullField(bh->modelMalz(), {ModelMalz::ColID, ModelMalz::ColName}, 0);},
+        [this](){return this->testNullField(bh->modelHopfen(), {ModelHopfen::ColID, ModelHopfen::ColName}, 0);},
+        [this](){return this->testNullField(bh->modelHefe(), {ModelHefe::ColID, ModelHefe::ColName}, 0);},
+        [this](){return this->testNullField(bh->modelWeitereZutaten(), {ModelWeitereZutaten::ColID, ModelWeitereZutaten::ColName}, 0);},
         [this](){return this->testNullField(bh->modelAusruestung(), {ModelAusruestung::ColID, ModelAusruestung::ColName}, 0);},
         [this](){return this->testNullField(bh->modelGeraete(), {ModelGeraete::ColID, ModelGeraete::ColAusruestungAnlagenID, ModelGeraete::ColBezeichnung}, 2);},
         [this](){return this->testNullField(bh->modelWasser(), {ModelWasser::ColID, ModelWasser::ColName}, 0);},
@@ -308,7 +308,7 @@ bool DlgDatabaseCleaner::testRange1()
         ui->tableView->setModel(proxy);
         for (int c = 0; c < model->columnCount(); ++c)
             ui->tableView->setColumnHidden(c, true);
-        ui->tableView->setColumnHidden(ModelHopfen::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(ModelHopfen::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::HopfenTypname, ui->tableView));
          ui->tableView->setFocus();
@@ -334,7 +334,7 @@ bool DlgDatabaseCleaner::testRange2()
         ui->tableView->setModel(proxy);
         for (int c = 0; c < model->columnCount(); ++c)
             ui->tableView->setColumnHidden(c, true);
-        ui->tableView->setColumnHidden(ModelHefe::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(ModelHefe::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::HefeTypname, ui->tableView));
          ui->tableView->setFocus();
@@ -360,7 +360,7 @@ bool DlgDatabaseCleaner::testRange3()
         ui->tableView->setModel(proxy);
         for (int c = 0; c < model->columnCount(); ++c)
             ui->tableView->setColumnHidden(c, true);
-        ui->tableView->setColumnHidden(ModelWeitereZutaten::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(ModelWeitereZutaten::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::ZusatzTypname, ui->tableView));
          ui->tableView->setFocus();
@@ -386,7 +386,7 @@ bool DlgDatabaseCleaner::testRange4()
         ui->tableView->setModel(proxy);
         for (int c = 0; c < model->columnCount(); ++c)
             ui->tableView->setColumnHidden(c, true);
-        ui->tableView->setColumnHidden(ModelWeitereZutaten::ColBeschreibung, false);
+        ui->tableView->setColumnHidden(ModelWeitereZutaten::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::Einheiten, ui->tableView));
          ui->tableView->setFocus();

@@ -442,7 +442,7 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
     {
     case RohstoffTyp::Malz:
         modelLager = modelMalz();
-        row = modelLager->getRowWithValue(ModelMalz::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelMalz::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelMalz::ColMenge).toDouble() - menge;
@@ -453,7 +453,7 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
         break;
     case RohstoffTyp::Hopfen:
         modelLager = modelHopfen();
-        row = modelLager->getRowWithValue(ModelHopfen::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelHopfen::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelHopfen::ColMenge).toDouble() - menge;
@@ -464,7 +464,7 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
         break;
     case RohstoffTyp::Hefe:
         modelLager = modelHefe();
-        row = modelLager->getRowWithValue(ModelHefe::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelHefe::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelHefe::ColMenge).toInt() - menge;
@@ -475,7 +475,7 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
         break;
     case RohstoffTyp::Zusatz:
         modelLager = modelWeitereZutaten();
-        row = modelLager->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelWeitereZutaten::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelWeitereZutaten::ColMenge).toDouble();

@@ -208,7 +208,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
-        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, zusatzname, ModelHopfen::ColTyp).toInt();
+        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, zusatzname, ModelHopfen::ColTyp).toInt();
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -242,9 +242,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (mEnabled)
     {
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, zusatzname, ModelHopfen::ColMenge).toInt());
+            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, zusatzname, ModelHopfen::ColMenge).toInt());
         else
-            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, zusatzname, ModelWeitereZutaten::ColMenge).toDouble());
+            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, zusatzname, ModelWeitereZutaten::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)

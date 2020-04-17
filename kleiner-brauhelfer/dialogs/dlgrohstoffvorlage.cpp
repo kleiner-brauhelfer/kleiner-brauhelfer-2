@@ -243,7 +243,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         switch (mRohstoffart)
         {
         case Malz:
-            mValues.insert(ModelMalz::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelMalz::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             mValues.insert(ModelMalz::ColFarbe, index.sibling(index.row(), header->logicalIndex(1)).data().toDouble());
             iVal = index.sibling(index.row(), header->logicalIndex(2)).data().toInt();
             if (iVal > 0)
@@ -252,7 +252,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case MalzOBraMa:
-            mValues.insert(ModelMalz::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelMalz::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             mValues.insert(ModelMalz::ColFarbe, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             fVal = index.sibling(index.row(), header->logicalIndex(3)).data().toDouble();
             if (fVal > 0)
@@ -261,7 +261,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case Hopfen:
-            mValues.insert(ModelHopfen::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelHopfen::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "aroma")
                 mValues.insert(ModelHopfen::ColTyp, 1);
@@ -274,7 +274,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case HopfenOBraMa:
-            mValues.insert(ModelHopfen::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelHopfen::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "aroma")
                 mValues.insert(ModelHopfen::ColTyp, 1);
@@ -287,7 +287,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case Hefe:
-            mValues.insert(ModelHefe::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelHefe::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "og" || typ == "obergärig")
                 mValues.insert(ModelHefe::ColTypOGUG, 1);
@@ -313,7 +313,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case HefeOBraMa:
-            mValues.insert(ModelHefe::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelHefe::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "og" || typ == "obergärig")
                 mValues.insert(ModelHefe::ColTypOGUG, 1);
@@ -341,7 +341,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case WZutaten:
-            mValues.insert(ModelWeitereZutaten::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelWeitereZutaten::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "honig")
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Honig));
@@ -364,7 +364,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             break;
 
         case WZutatenOBraMa:
-            mValues.insert(ModelWeitereZutaten::ColBeschreibung, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelWeitereZutaten::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
             if (typ == "honig")
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Honig));

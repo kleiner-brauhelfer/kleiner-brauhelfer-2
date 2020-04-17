@@ -291,22 +291,22 @@ void TabRezept::checkRohstoffe()
                 continue;
             }
         }
-        int row = bh->modelMalz()->getRowWithValue(ModelMalz::ColBeschreibung, name);
+        int row = bh->modelMalz()->getRowWithValue(ModelMalz::ColName, name);
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabMalz);
             DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
             dlg.setSud(bh->sud()->getSudname());
-            dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
+            dlg.setModel(bh->modelMalz(), ModelMalz::ColName);
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
                 if (dlg.importieren())
                 {
-                    QMap<int, QVariant> values({{ModelMalz::ColBeschreibung, name},
+                    QMap<int, QVariant> values({{ModelMalz::ColName, name},
                                                 {ModelMalz::ColFarbe, wdg->data(ModelMalzschuettung::ColFarbe)}});
                     bh->modelMalz()->append(values);
-                    dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
+                    dlg.setModel(bh->modelMalz(), ModelMalz::ColName);
                     wdg->updateValues();
                 }
                 else
@@ -339,23 +339,23 @@ void TabRezept::checkRohstoffe()
                 continue;
             }
         }
-        int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, name);
+        int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, name);
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabHopfen);
             DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
             dlg.setSud(bh->sud()->getSudname());
-            dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
+            dlg.setModel(bh->modelHopfen(), ModelHopfen::ColName);
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
                 if (dlg.importieren())
                 {
-                    QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name},
+                    QMap<int, QVariant> values({{ModelHopfen::ColName, name},
                                                 {ModelHopfen::ColAlpha, wdg->data(ModelHopfengaben::ColAlpha)},
                                                 {ModelHopfen::ColPellets, wdg->data(ModelHopfengaben::ColPellets)}});
                     bh->modelHopfen()->append(values);
-                    dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
+                    dlg.setModel(bh->modelHopfen(), ModelHopfen::ColName);
                     wdg->updateValues();
                 }
                 else
@@ -388,21 +388,21 @@ void TabRezept::checkRohstoffe()
                 continue;
             }
         }
-        int row = bh->modelHefe()->getRowWithValue(ModelHefe::ColBeschreibung, name);
+        int row = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, name);
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabHefe);
             DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
             dlg.setSud(bh->sud()->getSudname());
-            dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
+            dlg.setModel(bh->modelHefe(), ModelHefe::ColName);
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
                 if (dlg.importieren())
                 {
-                    QMap<int, QVariant> values({{ModelHefe::ColBeschreibung, name}});
+                    QMap<int, QVariant> values({{ModelHefe::ColName, name}});
                     bh->modelHefe()->append(values);
-                    dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
+                    dlg.setModel(bh->modelHefe(), ModelHefe::ColName);
                     wdg->updateValues();
                 }
                 else
@@ -438,18 +438,18 @@ void TabRezept::checkRohstoffe()
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt());
         int row;
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, name);
+            row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, name);
         else
-            row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
+            row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, name);
         if (row < 0)
         {
             ui->tabZutaten->setCurrentWidget(ui->tabWeitereZutaten);
             DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
             dlg.setSud(bh->sud()->getSudname());
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
+                dlg.setModel(bh->modelHopfen(), ModelHopfen::ColName);
             else
-                dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColBeschreibung);
+                dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColName);
             dlg.setRohstoff(name);
             if (dlg.exec() == QDialog::Accepted)
             {
@@ -457,12 +457,12 @@ void TabRezept::checkRohstoffe()
                 {
                     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
-                        QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name}});
+                        QMap<int, QVariant> values({{ModelHopfen::ColName, name}});
                         bh->modelHopfen()->append(values);
                     }
                     else
                     {
-                        QMap<int, QVariant> values({{ModelWeitereZutaten::ColBeschreibung, name},
+                        QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, name},
                                                     {ModelWeitereZutaten::ColEinheiten, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
                                                     {ModelWeitereZutaten::ColTyp, wdg->data(ModelWeitereZutatenGaben::ColTyp)},
                                                     {ModelWeitereZutaten::ColAusbeute, wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},

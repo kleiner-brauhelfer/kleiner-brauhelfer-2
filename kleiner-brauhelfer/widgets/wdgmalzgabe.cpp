@@ -106,7 +106,7 @@ void WdgMalzGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMenge).toDouble());
+        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, malzname, ModelMalz::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelMalzschuettung();
         for (int i = 0; i < model->rowCount(); ++i)
@@ -117,7 +117,7 @@ void WdgMalzGabe::updateValues(bool full)
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
 
-        int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMaxProzent).toInt();
+        int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, malzname, ModelMalz::ColMaxProzent).toInt();
         if (max > 0 && ui->tbMengeProzent->value() > max)
         {
             ui->lblWarnung->setVisible(true);

@@ -15,7 +15,7 @@ public:
     enum Column
     {
         ColID,
-        ColBeschreibung,
+        ColName,
         ColAlpha,
         ColMenge,
         ColPreis,

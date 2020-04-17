@@ -18,7 +18,7 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant farbe = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, value, ModelMalz::ColFarbe);
+            QVariant farbe = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, value, ModelMalz::ColFarbe);
             QSqlTableModel::setData(index(idx.row(), ColFarbe), farbe);
             return true;
         }
@@ -70,7 +70,7 @@ void ModelMalzschuettung::onSudDataChanged(const QModelIndex &idx)
 void ModelMalzschuettung::defaultValues(QMap<int, QVariant> &values) const
 {
     if (!values.contains(ColName))
-        values.insert(ColName, bh->modelMalz()->data(0, ModelMalz::ColBeschreibung));
+        values.insert(ColName, bh->modelMalz()->data(0, ModelMalz::ColName));
     if (!values.contains(ColProzent))
         values.insert(ColProzent, 0.0);
 }

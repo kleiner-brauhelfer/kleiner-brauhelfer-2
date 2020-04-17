@@ -131,7 +131,7 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->cbZeitpunkt->setCurrentIndex(3);
     else
         ui->cbZeitpunkt->setCurrentIndex(2);
-    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColTyp).toInt();
+    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, hopfenname, ModelHopfen::ColTyp).toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
         QPalette pal = ui->frameColor->palette();
@@ -147,7 +147,7 @@ void WdgHopfenGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, hopfenname, ModelHopfen::ColMenge).toDouble());
+        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, hopfenname, ModelHopfen::ColMenge).toDouble());
         double benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHopfengaben();
         for (int i = 0; i < model->rowCount(); ++i)

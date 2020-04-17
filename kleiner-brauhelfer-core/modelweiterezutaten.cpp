@@ -47,7 +47,7 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
     {
         ProxyModel model;
         model.setSourceModel(bh->modelWeitereZutatenGaben());
-        QVariant name = data(idx.row(), ColBeschreibung);
+        QVariant name = data(idx.row(), ColName);
         for (int r = 0; r < model.rowCount(); ++r)
         {
             if (model.data(r, ModelWeitereZutatenGaben::ColName) == name)
@@ -69,7 +69,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
 {
     switch(idx.column())
     {
-    case ColBeschreibung:
+    case ColName:
     {
         QString name = getUniqueName(idx, value);
         QVariant prevName = data(idx);
@@ -96,7 +96,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColBeschreibung);
+            QVariant name = data(idx.row(), ColName);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
             modelSud.setFilterStatus(ProxyModelSud::Rezept);
@@ -118,7 +118,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColBeschreibung);
+            QVariant name = data(idx.row(), ColName);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
             modelSud.setFilterStatus(ProxyModelSud::Rezept);
@@ -140,7 +140,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColBeschreibung);
+            QVariant name = data(idx.row(), ColName);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
             modelSud.setFilterStatus(ProxyModelSud::Rezept);
@@ -162,7 +162,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColBeschreibung);
+            QVariant name = data(idx.row(), ColName);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
             modelSud.setFilterStatus(ProxyModelSud::Rezept);
@@ -209,7 +209,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
 
 void ModelWeitereZutaten::defaultValues(QMap<int, QVariant> &values) const
 {
-    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
     if (!values.contains(ColEinheiten))

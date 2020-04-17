@@ -49,7 +49,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, value);
+            int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, value);
             if (row >= 0)
             {
                 QSqlTableModel::setData(index(idx.row(), ColAlpha), bh->modelHopfen()->data(row, ModelHopfen::ColAlpha));
@@ -268,7 +268,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
 void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
 {
     if (!values.contains(ColName))
-        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
+        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
     if (!values.contains(ColProzent))
         values.insert(ColProzent, 0);
     if (!values.contains(ColZeit))

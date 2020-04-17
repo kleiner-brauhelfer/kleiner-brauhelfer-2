@@ -847,7 +847,7 @@ void ModelSud::updatePreis(int row)
     {
         QVariant name = modelMalzschuettung.data(r, ModelMalzschuettung::ColName);
         double menge = modelMalzschuettung.data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
-        double preis = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, name, ModelMalz::ColPreis).toDouble();
+        double preis = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, name, ModelMalz::ColPreis).toDouble();
         kostenSchuettung += preis * menge;
     }
     summe += kostenSchuettung;
@@ -861,7 +861,7 @@ void ModelSud::updatePreis(int row)
     {
         QVariant name = modelHopfengaben.data(r, ModelHopfengaben::ColName);
         double menge = modelHopfengaben.data(r, ModelHopfengaben::Colerg_Menge).toDouble();
-        double preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColPreis).toDouble();
+        double preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColPreis).toDouble();
         kostenHopfen += preis * menge / 1000;
     }
     summe += kostenHopfen;
@@ -875,7 +875,7 @@ void ModelSud::updatePreis(int row)
     {
         QVariant name = modelHefegaben.data(r, ModelHefegaben::ColName);
         int menge = modelHefegaben.data(r, ModelHefegaben::ColMenge).toInt();
-        double preis = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, name, ModelHefe::ColPreis).toDouble();
+        double preis = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, name, ModelHefe::ColPreis).toDouble();
         kostenHefe += preis * menge;
     }
     summe += kostenHefe;
@@ -893,12 +893,12 @@ void ModelSud::updatePreis(int row)
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
-            preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColPreis).toDouble();
+            preis = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColPreis).toDouble();
             preis /= 1000;
         }
         else
         {
-            preis = bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColPreis).toDouble();
+            preis = bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, name, ModelWeitereZutaten::ColPreis).toDouble();
             Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColEinheit).toInt());
             if (einheit == Brauhelfer::Einheit::Stk)
                 menge = qCeil(menge);

@@ -89,7 +89,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     while (it != list.constEnd())
     {
         modelMalz->appendRow(it.key(), it.value(),
-                             bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, it.key(), ModelMalz::ColMenge).toDouble());
+                             bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, it.key(), ModelMalz::ColMenge).toDouble());
         it++;
     }
     modelMalz->setHeaderData(0, Qt::Horizontal, tr("Malz"));
@@ -138,14 +138,14 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     while (it != list.constEnd())
     {
         modelHopfen->appendRow(it.key(), it.value(),
-                             bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, it.key(), ModelHopfen::ColMenge).toDouble());
+                             bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, it.key(), ModelHopfen::ColMenge).toDouble());
         it++;
     }
     it = listAbfuellen.constBegin();
     while (it != listAbfuellen.constEnd())
     {
         modelHopfen->appendRow(it.key(), it.value(),
-                             bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, it.key(), ModelHopfen::ColMenge).toDouble());
+                             bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, it.key(), ModelHopfen::ColMenge).toDouble());
         it++;
     }
     modelHopfen->setHeaderData(0, Qt::Horizontal, tr("Hopfen"));
@@ -183,14 +183,14 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     while (it != list.constEnd())
     {
         modelHefe->appendRow(it.key(), it.value(),
-                             bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, it.key(), ModelHefe::ColMenge).toDouble());
+                             bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, it.key(), ModelHefe::ColMenge).toDouble());
         it++;
     }
     it = listAbfuellen.constBegin();
     while (it != listAbfuellen.constEnd())
     {
         modelHefe->appendRow(it.key(), it.value(),
-                             bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, it.key(), ModelHefe::ColMenge).toDouble());
+                             bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, it.key(), ModelHefe::ColMenge).toDouble());
         it++;
     }
     modelHefe->setHeaderData(0, Qt::Horizontal, tr("Hefe"));
@@ -233,14 +233,14 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     while (it != list.constEnd())
     {
         modelWz->appendRow(it.key(), it.value(),
-                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
+                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
         it++;
     }
     it = listAbfuellen.constBegin();
     while (it != listAbfuellen.constEnd())
     {
         modelWz->appendRow(it.key(), it.value(),
-                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
+                             bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
         it++;
     }
     modelWz->setHeaderData(0, Qt::Horizontal, tr("Weitere Zutat"));
@@ -268,7 +268,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
                              name,
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
-        model->setData(model->index(r, 2), bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, name, ModelMalz::ColMenge));
+        model->setData(model->index(r, 2), bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, name, ModelMalz::ColMenge));
     }
 
     model = ui->tableViewHopfen->model();
@@ -279,7 +279,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
-        model->setData(model->index(r, 2), bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColBeschreibung, name, ModelHopfen::ColMenge));
+        model->setData(model->index(r, 2), bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColMenge));
     }
 
     model = ui->tableViewHefe->model();
@@ -290,7 +290,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
-        model->setData(model->index(r, 2), bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, name, ModelHefe::ColMenge));
+        model->setData(model->index(r, 2), bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, name, ModelHefe::ColMenge));
     }
 
     model = ui->tableViewWZ->model();
@@ -301,7 +301,7 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
                              model->index(r, 0).data().toString(),
                              model->index(r, 1).data().toDouble());
         model->setData(model->index(r, 1), 0.0);
-        model->setData(model->index(r, 2), bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColBeschreibung, name, ModelWeitereZutaten::ColMengeNormiert));
+        model->setData(model->index(r, 2), bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, name, ModelWeitereZutaten::ColMengeNormiert));
     }
 
     mAbgezogen = true;

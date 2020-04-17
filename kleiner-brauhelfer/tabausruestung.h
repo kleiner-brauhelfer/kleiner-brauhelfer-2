@@ -46,8 +46,6 @@ private slots:
     void on_tbSudpfanneHoehe_valueChanged(double value);
     void on_tbSudpfanneDurchmesser_valueChanged(double value);
     void on_tbSudpfanneMaxFuellhoehe_valueChanged(double value);
-    void spalteAnzeigen(bool checked);
-    void on_tableViewSude_customContextMenuRequested(const QPoint &pos);
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
@@ -57,9 +55,6 @@ private:
 private:
     Ui::TabAusruestung *ui;
     int mRow;
-    QByteArray mDefaultTableStateAnlagen;
-    QByteArray mDefaultTableStateGeraete;
-    QByteArray mDefaultTableStateSude;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterLeftState;
     QByteArray mDefaultSplitterHelpState;

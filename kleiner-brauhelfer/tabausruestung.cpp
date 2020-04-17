@@ -44,97 +44,47 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
 
     gSettings->beginGroup("TabAusruestung");
 
-    int col;
-    QTableView *table = ui->tableViewAnlagen;
-    QHeaderView *header = table->horizontalHeader();
+    TableView *table = ui->tableViewAnlagen;
     ProxyModel *model = new ProxyModel(this);
     model->setSourceModel(bh->modelAusruestung());
+    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Anlage"));
+    model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
+    model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen [l]"));
+    model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));
     table->setModel(model);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = ModelAusruestung::ColName;
-    model->setHeaderData(col, Qt::Horizontal, tr("Anlage"));
-    table->setColumnHidden(col, false);
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-    col = ModelAusruestung::ColTyp;
-    model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new ComboBoxDelegate(Typname, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = ModelAusruestung::ColVermoegen;
-    model->setHeaderData(col, Qt::Horizontal, tr("Vermögen [l]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-    col = ModelAusruestung::ColAnzahlSude;
-    model->setHeaderData(col, Qt::Horizontal, tr("Anzahl Sude"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-    mDefaultTableStateAnlagen = header->saveState();
-    header->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
+    table->cols.append({ModelAusruestung::ColName, true, false, -1, nullptr});
+    table->cols.append({ModelAusruestung::ColTyp, true, true, 100, new ComboBoxDelegate(Typname, table)});
+    table->cols.append({ModelAusruestung::ColVermoegen, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
 
     table = ui->tableViewGeraete;
-    header = table->horizontalHeader();
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelGeraete());
+    model->setHeaderData(ModelGeraete::ColBezeichnung, Qt::Horizontal, tr("Bezeichnung"));
     model->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
     table->setModel(model);
-    table->setModel(model);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = ModelGeraete::ColBezeichnung;
-    table->setColumnHidden(col, false);
-    header->setStretchLastSection(true);
-    mDefaultTableStateGeraete = header->saveState();
-    header->restoreState(gSettings->value("tableStateGeraete").toByteArray());
+    table->cols.append({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableStateGeraete").toByteArray());
 
     table = ui->tableViewSude;
-    header = table->horizontalHeader();
     model = new ProxyModelSudColored(this);
     model->setSourceModel(bh->modelSud());
     model->setFilterKeyColumn(ModelSud::ColAnlage);
     table->setModel(model);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableViewSude_customContextMenuRequested(const QPoint&)));
-    col = ModelSud::ColSudname;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new ReadonlyDelegate(table));
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 0);
-    col = ModelSud::ColSudnummer;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-    col = ModelSud::ColBraudatum;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-    col = ModelSud::Colerg_EffektiveAusbeute;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-    col = ModelSud::ColVerdampfungszifferIst;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 4);
-    col = ModelSud::ColAusbeuteIgnorieren;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 5);
-    mDefaultTableStateSude = header->saveState();
-    header->restoreState(gSettings->value("tableStateSude").toByteArray());
+    table->cols.append({ModelSud::ColSudname, true, false, 200, new ReadonlyDelegate(table)});
+    table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});
+    table->cols.append({ModelSud::Colerg_EffektiveAusbeute, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSud::ColVerdampfungszifferIst, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableStateSude").toByteArray());
 
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
@@ -179,9 +129,9 @@ void TabAusruestung::saveSettings()
 
 void TabAusruestung::restoreView(bool full)
 {
-    ui->tableViewAnlagen->horizontalHeader()->restoreState(mDefaultTableStateAnlagen);
-    ui->tableViewGeraete->horizontalHeader()->restoreState(mDefaultTableStateGeraete);
-    ui->tableViewSude->horizontalHeader()->restoreState(mDefaultTableStateSude);
+    ui->tableViewAnlagen->restoreDefaultState();
+    ui->tableViewGeraete->restoreDefaultState();
+    ui->tableViewSude->restoreDefaultState();
     if (full)
     {
         ui->splitter->restoreState(mDefaultSplitterState);
@@ -525,29 +475,4 @@ void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_valueChanged(double value)
 {
     if (ui->tbSudpfanneMaxFuellhoehe->hasFocus())
         setData(ModelAusruestung::ColSudpfanne_MaxFuellhoehe, value);
-}
-
-void TabAusruestung::spalteAnzeigen(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableViewSude->setColumnHidden(action->data().toInt(), !checked);
-}
-
-void TabAusruestung::on_tableViewSude_customContextMenuRequested(const QPoint &pos)
-{
-    int col;
-    QAction *action;
-    QMenu menu(this);
-    QTableView *table = ui->tableViewSude;
-
-    col = ModelSud::ColSudnummer;
-    action = new QAction(tr("Sudnummer"), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    menu.exec(table->viewport()->mapToGlobal(pos));
 }

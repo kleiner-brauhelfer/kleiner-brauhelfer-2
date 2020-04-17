@@ -14,6 +14,18 @@ ComboBoxDelegate::ComboBoxDelegate(QList<QPair<QString, int> > &items, QObject *
 {
 }
 
+ComboBoxDelegate::ComboBoxDelegate(const QStringList &items, const QList<QColor> &colors, QObject *parent) :
+    ComboBoxDelegate(items, parent)
+{
+    setColors(colors);
+}
+
+ComboBoxDelegate::ComboBoxDelegate(QList<QPair<QString, int> > &items, const QList<QColor> &colors, QObject *parent) :
+    ComboBoxDelegate(items, parent)
+{
+    setColors(colors);
+}
+
 QWidget* ComboBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     Q_UNUSED(option)

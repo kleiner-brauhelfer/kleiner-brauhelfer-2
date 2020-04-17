@@ -948,8 +948,10 @@ void ModelSud::removeRowsFrom(SqlTableModel* model, int colId, const QList<int> 
     {
         if (sudIds.contains(model->data(r, colId).toInt()))
         {
+            int count = model->rowCount();
             model->removeRows(r);
-            r--;
+            if (count != model->rowCount())
+                r--;
         }
     }
 }

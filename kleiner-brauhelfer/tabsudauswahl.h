@@ -35,7 +35,6 @@ private slots:
     void databaseModified();
     void filterChanged();
     void selectionChanged();
-    void spalteAnzeigen(bool checked);
     void updateWebView();
     void generateTemplateTags(QVariantMap& tags);
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
@@ -70,20 +69,8 @@ private:
     void setFilterStatus();
 
 private:
-    struct AuswahlSpalten
-    {
-        int col;
-        bool visible;
-        bool canHide;
-        int width;
-        QAbstractItemDelegate* itemDelegate;
-    };
-
-private:
     Ui::TabSudAuswahl *ui;
-    QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;
-    QList<AuswahlSpalten> mSpalten;
 };
 
 #endif // TABSUDAUSWAHL_H

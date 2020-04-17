@@ -198,8 +198,10 @@ bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
         {
             if (ids.contains(bh->modelGeraete()->data(r, ModelGeraete::ColAusruestungAnlagenID).toInt()))
             {
+                int count = bh->modelGeraete()->rowCount();
                 bh->modelGeraete()->removeRows(r);
-                r--;
+                if (count != bh->modelGeraete()->rowCount())
+                    r--;
             }
         }
         return true;

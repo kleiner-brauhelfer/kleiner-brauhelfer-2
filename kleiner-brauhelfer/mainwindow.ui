@@ -250,7 +250,7 @@
   </action>
   <action name="actionWiederherstellen">
    <property name="text">
-    <string>Wiederherstellen</string>
+    <string>Zurücksetzen</string>
    </property>
   </action>
   <action name="actionReiterDatenbank">

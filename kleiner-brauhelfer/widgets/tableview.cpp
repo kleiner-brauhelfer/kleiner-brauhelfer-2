@@ -1,4 +1,6 @@
 #include "tableview.h"
+#include <QMenu>
+#include <QAction>
 #include <QKeyEvent>
 #include <QHeaderView>
 #include <QStyledItemDelegate>
@@ -8,6 +10,75 @@
 TableView::TableView(QWidget *parent) :
     QTableView(parent)
 {
+}
+
+void TableView::build()
+{
+    QHeaderView *header = horizontalHeader();
+    int visualIndex = 0;
+    for (int c = 0; c < model()->columnCount(); ++c)
+        setColumnHidden(c, true);
+    for (const auto& col : cols)
+    {
+        setColumnHidden(col.col, !col.visible);
+        if (col.itemDelegate)
+            setItemDelegateForColumn(col.col, col.itemDelegate);
+        if (col.width > 0)
+            header->resizeSection(col.col, col.width);
+        else if (col.width < 0)
+            header->setSectionResizeMode(col.col, QHeaderView::Stretch);
+        header->moveSection(header->visualIndex(col.col), visualIndex++);
+    }
+    mDefaultState = header->saveState();
+}
+
+void TableView::restoreDefaultState()
+{
+    horizontalHeader()->restoreState(mDefaultState);
+}
+
+void TableView::setDefaultContextMenu()
+{
+    QHeaderView *header = horizontalHeader();
+    setContextMenuPolicy(Qt::CustomContextMenu);
+    header->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
+    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
+}
+
+void TableView::buildContextMenu(QMenu& menu)
+{
+    QAction *action;
+    for (const auto& col : cols)
+    {
+        if (col.canHide)
+        {
+            action = new QAction(model()->headerData(col.col, Qt::Horizontal).toString(), &menu);
+            action->setCheckable(true);
+            action->setChecked(!isColumnHidden(col.col));
+            action->setData(col.col);
+            connect(action, SIGNAL(triggered(bool)), this, SLOT(setColumnVisible(bool)));
+            menu.addAction(action);
+        }
+    }
+    menu.addSeparator();
+    action = new QAction(tr("Zurücksetzen"), &menu);
+    connect(action, SIGNAL(triggered()), this, SLOT(restoreDefaultState()));
+    menu.addAction(action);
+}
+
+void TableView::setColumnVisible(bool visible)
+{
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action)
+        setColumnHidden(action->data().toInt(), !visible);
+}
+
+void TableView::customContextMenuRequested(const QPoint &pos)
+{
+    QMenu menu(this);
+    buildContextMenu(menu);
+    menu.exec(viewport()->mapToGlobal(pos));
 }
 
 void TableView::keyPressEvent(QKeyEvent* event)

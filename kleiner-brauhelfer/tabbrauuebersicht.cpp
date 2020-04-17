@@ -91,62 +91,37 @@ void TabBrauUebersicht::saveSettings()
 
 void TabBrauUebersicht::restoreView(bool full)
 {
-    ui->tableView->horizontalHeader()->restoreState(mDefaultTableState);
+    ui->tableView->restoreDefaultState();
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 {
-    int col;
-    QTableView *table = ui->tableView;
-    QHeaderView *header = table->horizontalHeader();
+    TableView *table = ui->tableView;
     ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
     proxyModel->setSourceModel(model);
     proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     proxyModel->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     table->setModel(proxyModel);
-    for (int col = 0; col < proxyModel->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    col = ModelSud::ColSudname;
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 300);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelSud::ColSudnummer;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(table));
-    header->resizeSection(col, 80);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelSud::ColBraudatum;
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
+    table->cols.append({ModelSud::ColSudname, true, false, 300, nullptr});
+    table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, table)});
     ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
     ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
-        col = mAuswahlListe[i].col;
+        table->cols.append({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table)});
         ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
-        table->setColumnHidden(col, false);
-        table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table));
-        header->resizeSection(col, 80);
-        header->moveSection(header->visualIndex(col), i + 3);
     }
-
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableView_customContextMenuRequested(const QPoint&)));
+    table->build();
+    table->setDefaultContextMenu();
 
     gSettings->beginGroup("TabBrauuebersicht");
 
-    mDefaultTableState = header->saveState();
-    header->restoreState(gSettings->value("tableState").toByteArray());
+    table->horizontalHeader()->restoreState(gSettings->value("tableState").toByteArray());
 
     ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
     ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
@@ -298,40 +273,4 @@ void TabBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
         updateDiagram();
         ui->tableView->setFocus();
     }
-}
-
-void TabBrauUebersicht::spalteAnzeigen(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableView->setColumnHidden(action->data().toInt(), !checked);
-}
-
-void TabBrauUebersicht::on_tableView_customContextMenuRequested(const QPoint &pos)
-{
-    int col;
-    QAction *action;
-    QMenu menu(this);
-    QTableView *table = ui->tableView;
-
-    col = ModelSud::ColSudnummer;
-    action = new QAction(tr("Sudnummer"), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-    menu.addAction(action);
-
-    for (int i = 1; i < mAuswahlListe.count(); ++i)
-    {
-        col = mAuswahlListe[i].col;
-        action = new QAction(mAuswahlListe[i].label, &menu);
-        action->setCheckable(true);
-        action->setChecked(!table->isColumnHidden(col));
-        action->setData(col);
-        connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-        menu.addAction(action);
-    }
-
-    menu.exec(table->viewport()->mapToGlobal(pos));
 }

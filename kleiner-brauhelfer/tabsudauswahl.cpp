@@ -59,43 +59,29 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(ModelSud::ColVerdampfungszifferIst, Qt::Horizontal, tr("Verdampfungsziffer [%]"));
     model->setHeaderData(ModelSud::ColAusbeuteIgnorieren, Qt::Horizontal, tr("Für Durchschnitt Ignorieren"));
 
-    QTableView *table = ui->tableSudauswahl;
+    TableView *table = ui->tableSudauswahl;
     QHeaderView *header = table->horizontalHeader();
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    mSpalten.append({ModelSud::ColSudname, true, false, 200, nullptr});
-    mSpalten.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
-    mSpalten.append({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
-    mSpalten.append({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
-    mSpalten.append({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
-    mSpalten.append({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
-    mSpalten.append({ModelSud::ColWoche, true, true, 80, nullptr});
-    mSpalten.append({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
-    mSpalten.append({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
-    mSpalten.append({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
-    mSpalten.append({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
-
-    int visualIndex = 0;
-    for (const AuswahlSpalten& spalte : mSpalten)
-    {
-        table->setColumnHidden(spalte.col, !spalte.visible);
-        if (spalte.itemDelegate)
-            table->setItemDelegateForColumn(spalte.col, spalte.itemDelegate);
-        header->resizeSection(spalte.col, spalte.width);
-        header->moveSection(header->visualIndex(spalte.col), visualIndex++);
-    }
-    header->setSectionResizeMode(header->logicalIndex(0), QHeaderView::Stretch);
+    table->cols.append({ModelSud::ColSudname, true, false, -1, nullptr});
+    table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->cols.append({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
+    table->cols.append({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
+    table->cols.append({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
+    table->cols.append({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
+    table->cols.append({ModelSud::ColWoche, true, true, 80, nullptr});
+    table->cols.append({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
+    table->cols.append({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
+    table->build();
 
     header->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
 
     gSettings->beginGroup("TabSudAuswahl");
 
-    mDefaultTableState = header->saveState();
     header->restoreState(gSettings->value("tableSudAuswahlState").toByteArray());
 
     mDefaultSplitterState = ui->splitter->saveState();
@@ -147,7 +133,7 @@ void TabSudAuswahl::saveSettings()
 
 void TabSudAuswahl::restoreView(bool full)
 {
-    ui->tableSudauswahl->horizontalHeader()->restoreState(mDefaultTableState);
+    ui->tableSudauswahl->restoreDefaultState();
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }
@@ -216,13 +202,6 @@ void TabSudAuswahl::on_tableSudauswahl_doubleClicked(const QModelIndex &index)
     clicked(sudId);
 }
 
-void TabSudAuswahl::spalteAnzeigen(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableSudauswahl->setColumnHidden(action->data().toInt(), !checked);
-}
-
 void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &pos)
 {
     QAction *action;
@@ -262,19 +241,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     }
 
     menu.addSeparator();
-
-    for (const AuswahlSpalten& spalte : mSpalten)
-    {
-        if (spalte.canHide)
-        {
-            action = new QAction(model->headerData(spalte.col, Qt::Horizontal).toString(), &menu);
-            action->setCheckable(true);
-            action->setChecked(!ui->tableSudauswahl->isColumnHidden(spalte.col));
-            action->setData(spalte.col);
-            connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigen(bool)));
-            menu.addAction(action);
-        }
-    }
+    ui->tableSudauswahl->buildContextMenu(menu);
 
     menu.exec(ui->tableSudauswahl->viewport()->mapToGlobal(pos));
 }

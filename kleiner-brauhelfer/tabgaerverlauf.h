@@ -52,9 +52,6 @@ private slots:
 
 private:
     Ui::TabGaerverlauf *ui;
-    QByteArray mDefaultTableStateSchnellgaerung;
-    QByteArray mDefaultTableStateHauptgaerung;
-    QByteArray mDefaultTableStateNachgaerung;
     QByteArray mDefaultSplitterStateSchnellgaerung;
     QByteArray mDefaultSplitterStateHauptgaerung;
     QByteArray mDefaultSplitterStateNachgaerung;

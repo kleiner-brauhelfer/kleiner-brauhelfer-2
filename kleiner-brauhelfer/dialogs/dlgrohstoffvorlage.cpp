@@ -105,108 +105,90 @@ void DlgRohstoffVorlage::setModel()
         proxyModel->setFilterKeyColumn(0);
         proxyModel->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
         proxyModel->setSourceModel(model);
-        ui->tableView->setModel(proxyModel);
-        ui->tableView->resizeColumnsToContents();
-        ui->tableView->resizeRowsToContents();
+        TableView *table = ui->tableView;
+        table->setModel(proxyModel);
+        table->resizeColumnsToContents();
+        table->resizeRowsToContents();
         if (isOBraMa())
         {
-            QHeaderView *header = ui->tableView->horizontalHeader();
-            ui->tableView->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
-            for (int c = 0; c < model->columnCount(); c++)
-                ui->tableView->setColumnHidden(c, true);
+            table->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
             int col;
             switch (mRohstoffart)
             {
             case MalzOBraMa:
                 col = model->fieldIndex("name");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 0);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 proxyModel->setFilterKeyColumn(col);
                 col = model->fieldIndex("alias_name");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 1);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Aliasname"));
                 col = model->fieldIndex("color");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 2);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Farbe [EBC]"));
                 col = model->fieldIndex("max_in_batch");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 3);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Max. Anteil [%]"));
                 col = model->fieldIndex("notes");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 4);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 break;
             case HopfenOBraMa:
                 col = model->fieldIndex("name");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 0);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 proxyModel->setFilterKeyColumn(col);
                 col = model->fieldIndex("category");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 1);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
                 col = model->fieldIndex("alpha");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 2);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alpha [%]"));
                 col = model->fieldIndex("aroma");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 3);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 break;
             case HefeOBraMa:
                 col = model->fieldIndex("name");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 0);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 proxyModel->setFilterKeyColumn(col);
                 col = model->fieldIndex("category");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 1);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Kategorie"));
                 col = model->fieldIndex("sub_category");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 2);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Trocken/Flüssig"));
                 col = model->fieldIndex("notes");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 3);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 col = model->fieldIndex("use_for");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 4);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Bierstil"));
                 break;
             case WZutatenOBraMa:
                 col = model->fieldIndex("name");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 0);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 proxyModel->setFilterKeyColumn(col);
                 col = model->fieldIndex("category");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 1);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
                 col = model->fieldIndex("use_for");
-                ui->tableView->setColumnHidden(col, false);
-                header->moveSection(header->visualIndex(col), 2);
+                table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Verwendung"));
                 break;
             default:
                 break;
             }
+            table->build();
         }
         else
         {
-            connect(ui->tableView->model(), SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &, const QVector<int> &)), this, SLOT(slot_save()));
-            connect(ui->tableView->model(), SIGNAL(layoutChanged()), this, SLOT(slot_save()));
-            connect(ui->tableView->model(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(slot_save()));
-            connect(ui->tableView->model(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(slot_save()));
+            connect(proxyModel, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &, const QVector<int> &)), this, SLOT(slot_save()));
+            connect(proxyModel, SIGNAL(layoutChanged()), this, SLOT(slot_save()));
+            connect(proxyModel, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(slot_save()));
+            connect(proxyModel, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(slot_save()));
         }
         mValues.clear();
     }

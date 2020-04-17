@@ -62,436 +62,161 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    int col;
     SqlTableModel *model;
     ProxyModelRohstoff *proxyModel;
-    QTableView *table;
-    QHeaderView *header;
-    ComboBoxDelegate *comboBox;
+    TableView *table;
 
     gSettings->beginGroup("TabRohstoffe");
 
     model = bh->modelMalz();
+    model->setHeaderData(ModelMalz::ColBeschreibung, Qt::Horizontal, tr("Name"));
+    model->setHeaderData(ModelMalz::ColMenge, Qt::Horizontal, tr("Menge [kg]"));
+    model->setHeaderData(ModelMalz::ColFarbe, Qt::Horizontal, tr("Farbe [EBC]"));
+    model->setHeaderData(ModelMalz::ColMaxProzent, Qt::Horizontal, tr("Max. Anteil [%]"));
+    model->setHeaderData(ModelMalz::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelMalz::ColAnwendung, Qt::Horizontal, tr("Anwendung"));
+    model->setHeaderData(ModelMalz::ColPreis, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelMalz::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
+    model->setHeaderData(ModelMalz::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
+    model->setHeaderData(ModelMalz::ColLink, Qt::Horizontal, tr("Link"));
     table = ui->tableMalz;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    col = ModelMalz::ColBeschreibung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Name"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelMalz::ColMenge;
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [kg]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelMalz::ColFarbe;
-    model->setHeaderData(col, Qt::Horizontal, tr("Farbe [EBC]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new EbcDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelMalz::ColMaxProzent;
-    model->setHeaderData(col, Qt::Horizontal, tr("Max. Anteil [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, 100, 1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelMalz::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = ModelMalz::ColAnwendung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Anwendung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = ModelMalz::ColPreis;
-    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 6);
-
-    col = ModelMalz::ColEingelagert;
-    model->setHeaderData(col, Qt::Horizontal, tr("Einlagerung"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 7);
-
-    col = ModelMalz::ColMindesthaltbar;
-    model->setHeaderData(col, Qt::Horizontal, tr("Haltbarkeit"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(true, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 8);
-
-    col = ModelMalz::ColLink;
-    model->setHeaderData(col, Qt::Horizontal, tr("Link"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new LinkLabelDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 9);
-
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableMalz_customContextMenuRequested(const QPoint&)));
-
-    mDefaultStateTableMalz = header->saveState();
-    header->restoreState(gSettings->value("tableMalzState").toByteArray());
+    table->cols.append({ModelMalz::ColBeschreibung, true, false, 200, nullptr});
+    table->cols.append({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table)});
+    table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
+    table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
+    table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
+    table->cols.append({ModelMalz::ColAnwendung, true, true, 200, nullptr});
+    table->cols.append({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+    table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    table->cols.append({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableMalzState").toByteArray());
 
     model = bh->modelHopfen();
+    model->setHeaderData(ModelHopfen::ColBeschreibung, Qt::Horizontal, tr("Name"));
+    model->setHeaderData(ModelHopfen::ColMenge, Qt::Horizontal, tr("Menge [g]"));
+    model->setHeaderData(ModelHopfen::ColAlpha, Qt::Horizontal, tr("Alpha [%]"));
+    model->setHeaderData(ModelHopfen::ColPellets, Qt::Horizontal, tr("Pellets"));
+    model->setHeaderData(ModelHopfen::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelHopfen::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
+    model->setHeaderData(ModelHopfen::ColTyp, Qt::Horizontal, tr("Typ"));
+    model->setHeaderData(ModelHopfen::ColPreis, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelHopfen::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
+    model->setHeaderData(ModelHopfen::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
+    model->setHeaderData(ModelHopfen::ColLink, Qt::Horizontal, tr("Link"));
     table = ui->tableHopfen;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    col = ModelHopfen::ColBeschreibung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Name"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelHopfen::ColMenge;
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge [g]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelHopfen::ColAlpha;
-    model->setHeaderData(col, Qt::Horizontal, tr("Alpha [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelHopfen::ColPellets;
-    model->setHeaderData(col, Qt::Horizontal, tr("Pellets"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelHopfen::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = ModelHopfen::ColEigenschaften;
-    model->setHeaderData(col, Qt::Horizontal, tr("Eigenschaften"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = ModelHopfen::ColTyp;
-    model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
-    table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate(HopfenTypname, table);
-    comboBox->setColors(gSettings->HopfenTypBackgrounds);
-    table->setItemDelegateForColumn(col, comboBox);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 6);
-
-    col = ModelHopfen::ColPreis;
-    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 7);
-
-    col = ModelHopfen::ColEingelagert;
-    model->setHeaderData(col, Qt::Horizontal, tr("Einlagerung"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 8);
-
-    col = ModelHopfen::ColMindesthaltbar;
-    model->setHeaderData(col, Qt::Horizontal, tr("Haltbarkeit"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(true, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 9);
-
-    col = ModelHopfen::ColLink;
-    model->setHeaderData(col, Qt::Horizontal, tr("Link"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new LinkLabelDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 10);
-
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableHopfen_customContextMenuRequested(const QPoint&)));
-
-    mDefaultStateTableHopfen = header->saveState();
-    header->restoreState(gSettings->value("tableHopfenState").toByteArray());
+    table->cols.append({ModelHopfen::ColBeschreibung, true, false, 200, new IngredientNameDelegate(table)});
+    table->cols.append({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, true, table)});
+    table->cols.append({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
+    table->cols.append({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
+    table->cols.append({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
+    table->cols.append({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
+    table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
+    table->cols.append({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->cols.append({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+    table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    table->cols.append({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableHopfenState").toByteArray());
 
     model = bh->modelHefe();
+    model->setHeaderData(ModelHefe::ColBeschreibung, Qt::Horizontal, tr("Name"));
+    model->setHeaderData(ModelHefe::ColMenge, Qt::Horizontal, tr("Menge"));
+    model->setHeaderData(ModelHefe::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelHefe::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
+    model->setHeaderData(ModelHefe::ColTypOGUG, Qt::Horizontal, tr("OG/UG"));
+    model->setHeaderData(ModelHefe::ColTypTrFl, Qt::Horizontal, tr("Trocken/Flüssig"));
+    model->setHeaderData(ModelHefe::ColVerpackungsmenge, Qt::Horizontal, tr("Verpackungsmenge"));
+    model->setHeaderData(ModelHefe::ColWuerzemenge, Qt::Horizontal, tr("Wuerzemenge [l]"));
+    model->setHeaderData(ModelHefe::ColSED, Qt::Horizontal, tr("Sedimentation"));
+    model->setHeaderData(ModelHefe::ColEVG, Qt::Horizontal, tr("Vergärungsgrad"));
+    model->setHeaderData(ModelHefe::ColTemperatur, Qt::Horizontal, tr("Temperatur"));
+    model->setHeaderData(ModelHefe::ColPreis, Qt::Horizontal, tr("Preis [%1]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelHefe::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
+    model->setHeaderData(ModelHefe::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
+    model->setHeaderData(ModelHefe::ColLink, Qt::Horizontal, tr("Link"));
     table = ui->tableHefe;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    col = ModelHefe::ColBeschreibung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Name"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelHefe::ColMenge;
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelHefe::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelHefe::ColEigenschaften;
-    model->setHeaderData(col, Qt::Horizontal, tr("Eigenschaften"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelHefe::ColTypOGUG;
-    model->setHeaderData(col, Qt::Horizontal, tr("OG/UG"));
-    table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate(HefeTypname, table);
-    comboBox->setColors(gSettings->HefeTypOgUgBackgrounds);
-    table->setItemDelegateForColumn(col, comboBox);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = ModelHefe::ColTypTrFl;
-    model->setHeaderData(col, Qt::Horizontal, tr("Trocken/Flüssig"));
-    table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, table);
-    comboBox->setColors(gSettings->HefeTypTrFlBackgrounds);
-    table->setItemDelegateForColumn(col, comboBox);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = ModelHefe::ColVerpackungsmenge;
-    model->setHeaderData(col, Qt::Horizontal, tr("Verpackungsmenge"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 6);
-
-    col = ModelHefe::ColWuerzemenge;
-    model->setHeaderData(col, Qt::Horizontal, tr("Wuerzemenge [l]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 7);
-
-    col = ModelHefe::ColSED;
-    model->setHeaderData(col, Qt::Horizontal, tr("Sedimentation"));
-    table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, table);
-    comboBox->setColors(gSettings->HefeSedBackgrounds);
-    table->setItemDelegateForColumn(col, comboBox);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 8);
-
-    col = ModelHefe::ColEVG;
-    model->setHeaderData(col, Qt::Horizontal, tr("Vergärungsgrad"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 9);
-
-    col = ModelHefe::ColTemperatur;
-    model->setHeaderData(col, Qt::Horizontal, tr("Temperatur"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 10);
-
-    col = ModelHefe::ColPreis;
-    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1]").arg(QLocale().currencySymbol()));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 11);
-
-    col = ModelHefe::ColEingelagert;
-    model->setHeaderData(col, Qt::Horizontal, tr("Einlagerung"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 12);
-
-    col = ModelHefe::ColMindesthaltbar;
-    model->setHeaderData(col, Qt::Horizontal, tr("Haltbarkeit"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(true, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 13);
-
-    col = ModelHefe::ColLink;
-    model->setHeaderData(col, Qt::Horizontal, tr("Link"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new LinkLabelDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 14);
-
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableHefe_customContextMenuRequested(const QPoint&)));
-
-    mDefaultStateTableHefe = header->saveState();
-    header->restoreState(gSettings->value("tableHefeState").toByteArray());
+    table->cols.append({ModelHefe::ColBeschreibung, true, false, 200, new IngredientNameDelegate(table)});
+    table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, true, table)});
+    table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
+    table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
+    table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
+    table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, gSettings->HefeTypTrFlBackgrounds, table)});
+    table->cols.append({ModelHefe::ColVerpackungsmenge, true, true, 100, nullptr});
+    table->cols.append({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
+    table->cols.append({ModelHefe::ColSED, true, true, 100, new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, gSettings->HefeSedBackgrounds, table)});
+    table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
+    table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
+    table->cols.append({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->cols.append({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+    table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    table->cols.append({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableHefeState").toByteArray());
 
     model = bh->modelWeitereZutaten();
+    model->setHeaderData(ModelWeitereZutaten::ColBeschreibung, Qt::Horizontal, tr("Name"));
+    model->setHeaderData(ModelWeitereZutaten::ColMenge, Qt::Horizontal, tr("Menge"));
+    model->setHeaderData(ModelWeitereZutaten::ColEinheiten, Qt::Horizontal, tr("Einheit"));
+    model->setHeaderData(ModelWeitereZutaten::ColTyp, Qt::Horizontal, tr("Typ"));
+    model->setHeaderData(ModelWeitereZutaten::ColAusbeute, Qt::Horizontal, tr("Ausbeute [%]"));
+    model->setHeaderData(ModelWeitereZutaten::ColEBC, Qt::Horizontal, tr("Farbe [EBC]"));
+    model->setHeaderData(ModelWeitereZutaten::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelWeitereZutaten::ColPreis, Qt::Horizontal, tr("Preis [%1/[kg/l/Stk]]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelWeitereZutaten::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
+    model->setHeaderData(ModelWeitereZutaten::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
+    model->setHeaderData(ModelWeitereZutaten::ColLink, Qt::Horizontal, tr("Link"));
     table = ui->tableWeitereZutaten;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
     table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
-    header = table->horizontalHeader();
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    col = ModelWeitereZutaten::ColBeschreibung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Name"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new IngredientNameDelegate(table));
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelWeitereZutaten::ColMenge;
-    model->setHeaderData(col, Qt::Horizontal, tr("Menge"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelWeitereZutaten::ColEinheiten;
-    model->setHeaderData(col, Qt::Horizontal, tr("Einheit"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new ComboBoxDelegate(Einheiten, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelWeitereZutaten::ColTyp;
-    model->setHeaderData(col, Qt::Horizontal, tr("Typ"));
-    table->setColumnHidden(col, false);
-    comboBox = new ComboBoxDelegate(ZusatzTypname, table);
-    comboBox->setColors(gSettings->WZTypBackgrounds);
-    table->setItemDelegateForColumn(col, comboBox);
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelWeitereZutaten::ColAusbeute;
-    model->setHeaderData(col, Qt::Horizontal, tr("Ausbeute [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new SpinBoxDelegate(0, 100, 1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = ModelWeitereZutaten::ColEBC;
-    model->setHeaderData(col, Qt::Horizontal, tr("Farbe [EBC]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new EbcDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = ModelWeitereZutaten::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->moveSection(header->visualIndex(col), 6);
-
-    col = ModelWeitereZutaten::ColPreis;
-    model->setHeaderData(col, Qt::Horizontal, tr("Preis [%1/[kg/l/Stk]]").arg(QLocale().currencySymbol()));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 7);
-
-    col = ModelWeitereZutaten::ColEingelagert;
-    model->setHeaderData(col, Qt::Horizontal, tr("Einlagerung"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(false, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 8);
-
-    col = ModelWeitereZutaten::ColMindesthaltbar;
-    model->setHeaderData(col, Qt::Horizontal, tr("Haltbarkeit"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateDelegate(true, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 9);
-
-    col = ModelWeitereZutaten::ColLink;
-    model->setHeaderData(col, Qt::Horizontal, tr("Link"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new LinkLabelDelegate(table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 10);
-
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableWeitereZutaten_customContextMenuRequested(const QPoint&)));
-
-    mDefaultStateTableWeitereZutaten = header->saveState();
-    header->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
+    table->cols.append({ModelWeitereZutaten::ColBeschreibung, true, false, 200, new IngredientNameDelegate(table)});
+    table->cols.append({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table)});
+    table->cols.append({ModelWeitereZutaten::ColEinheiten, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
+    table->cols.append({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
+    table->cols.append({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
+    table->cols.append({ModelWeitereZutaten::ColEBC, true, true, 100, new EbcDelegate(table)});
+    table->cols.append({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
+    table->cols.append({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->cols.append({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+    table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    table->cols.append({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+    table->horizontalHeader()->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
 
     model = bh->modelWasser();
+    model->setHeaderData(ModelWasser::ColName, Qt::Horizontal, tr("Wasserprofil"));
+    model->setHeaderData(ModelWasser::ColRestalkalitaet, Qt::Horizontal, tr("Restalkalität [°dH]"));
     ProxyModel *proxyModelWasser = new ProxyModel(this);
     table = ui->tableWasser;
-    header = table->horizontalHeader();
     proxyModelWasser->setSourceModel(model);
     table->setModel(proxyModelWasser);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-
-    col = ModelWasser::ColName;
-    model->setHeaderData(col, Qt::Horizontal, tr("Wasserprofil"));
-    table->setColumnHidden(col, false);
-    header->setSectionResizeMode(col, QHeaderView::Stretch);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelWasser::ColRestalkalitaet;
-    model->setHeaderData(col, Qt::Horizontal, tr("Restalkalität [°dH]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, table));
-    header->resizeSection(col, 120);
-    header->moveSection(header->visualIndex(col), 1);
-
-    mDefaultStateTableWasser = header->saveState();
-    header->restoreState(gSettings->value("tableWasserState").toByteArray());
+    table->cols.append({ModelWasser::ColName, true, false, -1, nullptr});
+    table->cols.append({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
+    table->build();
+    table->horizontalHeader()->restoreState(gSettings->value("tableWasserState").toByteArray());
 
     int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)
@@ -545,11 +270,11 @@ void TabRohstoffe::saveSettings()
 void TabRohstoffe::restoreView(bool full)
 {
     Q_UNUSED(full)
-    ui->tableMalz->horizontalHeader()->restoreState(mDefaultStateTableMalz);
-    ui->tableHopfen->horizontalHeader()->restoreState(mDefaultStateTableHopfen);
-    ui->tableHefe->horizontalHeader()->restoreState(mDefaultStateTableHefe);
-    ui->tableWeitereZutaten->horizontalHeader()->restoreState(mDefaultStateTableWeitereZutaten);
-    ui->tableWasser->horizontalHeader()->restoreState(mDefaultStateTableWasser);
+    ui->tableMalz->restoreDefaultState();
+    ui->tableHopfen->restoreDefaultState();
+    ui->tableHefe->restoreDefaultState();
+    ui->tableWeitereZutaten->restoreDefaultState();
+    ui->tableWasser->restoreDefaultState();
 }
 
 void TabRohstoffe::keyPressEvent(QKeyEvent* event)
@@ -593,182 +318,10 @@ void TabRohstoffe::on_tableMalz_clicked(const QModelIndex &index)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
-void TabRohstoffe::on_tableMalz_customContextMenuRequested(const QPoint &pos)
-{
-    int col;
-    QAction *action;
-    QMenu menu(this);
-    QTableView *table = ui->tableMalz;
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
-
-    col = ModelMalz::ColFarbe;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColMaxProzent;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColBemerkung;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColAnwendung;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColPreis;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColEingelagert;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColMindesthaltbar;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    col = ModelMalz::ColLink;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenMalz(bool)));
-    menu.addAction(action);
-
-    menu.exec(table->viewport()->mapToGlobal(pos));
-}
-
-void TabRohstoffe::spalteAnzeigenMalz(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableMalz->setColumnHidden(action->data().toInt(), !checked);
-}
-
 void TabRohstoffe::on_tableHopfen_clicked(const QModelIndex &index)
 {
     if (index.column() == ModelHopfen::ColLink && QApplication::keyboardModifiers() & Qt::ControlModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
-}
-
-void TabRohstoffe::on_tableHopfen_customContextMenuRequested(const QPoint &pos)
-{
-    int col;
-    QAction *action;
-    QMenu menu(this);
-    QTableView *table = ui->tableHopfen;
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
-
-    col = ModelHopfen::ColAlpha;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColPellets;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColBemerkung;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColEigenschaften;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColTyp;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColPreis;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColEingelagert;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColMindesthaltbar;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    col = ModelHopfen::ColLink;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHopfen(bool)));
-    menu.addAction(action);
-
-    menu.exec(table->viewport()->mapToGlobal(pos));
-}
-
-void TabRohstoffe::spalteAnzeigenHopfen(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableHopfen->setColumnHidden(action->data().toInt(), !checked);
 }
 
 void TabRohstoffe::on_tableHefe_clicked(const QModelIndex &index)
@@ -777,214 +330,10 @@ void TabRohstoffe::on_tableHefe_clicked(const QModelIndex &index)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
-void TabRohstoffe::on_tableHefe_customContextMenuRequested(const QPoint &pos)
-{
-    int col;
-    QAction *action;
-    QMenu menu(this);
-    QTableView *table = ui->tableHefe;
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
-
-    col = ModelHefe::ColBemerkung;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColEigenschaften;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColTypOGUG;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColTypTrFl;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColVerpackungsmenge;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColWuerzemenge;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColSED;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColEVG;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColTemperatur;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColPreis;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColEingelagert;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColMindesthaltbar;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    col = ModelHefe::ColLink;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenHefe(bool)));
-    menu.addAction(action);
-
-    menu.exec(table->viewport()->mapToGlobal(pos));
-}
-
-void TabRohstoffe::spalteAnzeigenHefe(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableHefe->setColumnHidden(action->data().toInt(), !checked);
-}
-
 void TabRohstoffe::on_tableWeitereZutaten_clicked(const QModelIndex &index)
 {
     if (index.column() == ModelWeitereZutaten::ColLink && QApplication::keyboardModifiers() & Qt::ControlModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
-}
-
-void TabRohstoffe::on_tableWeitereZutaten_customContextMenuRequested(const QPoint &pos)
-{
-    int col;
-    QAction *action;
-    QMenu menu(this);
-    QTableView *table = ui->tableWeitereZutaten;
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
-
-    col = ModelWeitereZutaten::ColTyp;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColAusbeute;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColEBC;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColBemerkung;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColPreis;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColEingelagert;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColMindesthaltbar;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    col = ModelWeitereZutaten::ColLink;
-    action = new QAction(model->headerData(col, Qt::Horizontal).toString(), &menu);
-    action->setCheckable(true);
-    action->setChecked(!table->isColumnHidden(col));
-    action->setData(col);
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(spalteAnzeigenWeitereZutaten(bool)));
-    menu.addAction(action);
-
-    menu.exec(table->viewport()->mapToGlobal(pos));
-}
-
-void TabRohstoffe::spalteAnzeigenWeitereZutaten(bool checked)
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-        ui->tableWeitereZutaten->setColumnHidden(action->data().toInt(), !checked);
 }
 
 void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values)

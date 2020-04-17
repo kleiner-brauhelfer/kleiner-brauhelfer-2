@@ -35,279 +35,80 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
 
     gSettings->beginGroup("DlgRohstoffAuswahl");
 
-    int col;
-    SqlTableModel *model;
-    QHeaderView *header = ui->tableView->horizontalHeader();
     ProxyModel *proxy = new ProxyModelRohstoff(this);
-    ComboBoxDelegate *comboBox;
+    TableView *table = ui->tableView;
 
     switch (mRohstoff)
     {
     case Brauhelfer::RohstoffTyp::Malz:
-        model = bh->modelMalz();
-        proxy->setSourceModel(model);
-        ui->tableView->setModel(proxy);
+        proxy->setSourceModel(bh->modelMalz());
+        table->setModel(proxy);
         mNameCol = ModelMalz::ColBeschreibung;
-
-        for (int col = 0; col < model->columnCount(); ++col)
-            ui->tableView->setColumnHidden(col, true);
-
-        col = ModelMalz::ColBeschreibung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 0);
-
-        col = ModelMalz::ColMenge;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 1);
-
-        col = ModelMalz::ColFarbe;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new EbcDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 2);
-
-        col = ModelMalz::ColMaxProzent;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new SpinBoxDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 3);
-
-        col = ModelMalz::ColBemerkung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 4);
-
-        col = ModelMalz::ColAnwendung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 5);
-
-        col = ModelMalz::ColEingelagert;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(false, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 6);
-
-        col = ModelMalz::ColMindesthaltbar;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 7);
-
-        header->restoreState(gSettings->value("tableStateMalz").toByteArray());
-
+        table->cols.append({ModelMalz::ColBeschreibung, true, false, 100, nullptr});
+        table->cols.append({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, ui->tableView)});
+        table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
+        table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(ui->tableView)});
+        table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
+        table->cols.append({ModelMalz::ColAnwendung, true, true, 200, nullptr});
+        table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
+        table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
+        table->build();
+        table->horizontalHeader()->restoreState(gSettings->value("tableStateMalz").toByteArray());
         break;
 
     case Brauhelfer::RohstoffTyp::Hopfen:
-        model = bh->modelHopfen();
-        proxy->setSourceModel(model);
-        ui->tableView->setModel(proxy);
+        proxy->setSourceModel(bh->modelHopfen());
+        table->setModel(proxy);
         mNameCol = ModelHopfen::ColBeschreibung;
-
-        for (int col = 0; col < model->columnCount(); ++col)
-            ui->tableView->setColumnHidden(col, true);
-
-        col = ModelHopfen::ColBeschreibung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 0);
-
-        col = ModelHopfen::ColMenge;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new SpinBoxDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 1);
-
-        col = ModelHopfen::ColAlpha;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 2);
-
-        col = ModelHopfen::ColBemerkung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 3);
-
-        col = ModelHopfen::ColEigenschaften;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 4);
-
-        col = ModelHopfen::ColTyp;
-        ui->tableView->setColumnHidden(col, false);
-        comboBox = new ComboBoxDelegate({"", tr("aroma"), tr("bitter"), tr("universal")}, ui->tableView);
-        comboBox->setColors(gSettings->HopfenTypBackgrounds);
-        ui->tableView->setItemDelegateForColumn(col, comboBox);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 5);
-
-        col = ModelHopfen::ColEingelagert;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(false, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 6);
-
-        col = ModelHopfen::ColMindesthaltbar;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 7);
-
-        header->restoreState(gSettings->value("tableStateHopfen").toByteArray());
-
+        table->cols.append({ModelHopfen::ColBeschreibung, true, false, 200, nullptr});
+        table->cols.append({ModelHopfen::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
+        table->cols.append({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, ui->tableView)});
+        table->cols.append({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
+        table->cols.append({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
+        table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate({"", tr("aroma"), tr("bitter"), tr("universal")}, gSettings->HopfenTypBackgrounds, ui->tableView)});
+        table->cols.append({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
+        table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
+        table->build();
+        table->horizontalHeader()->restoreState(gSettings->value("tableStateHopfen").toByteArray());
         break;
 
     case Brauhelfer::RohstoffTyp::Hefe:
-        model = bh->modelHefe();
-        proxy->setSourceModel(model);
-        ui->tableView->setModel(proxy);
+        proxy->setSourceModel(bh->modelHefe());
+        table->setModel(proxy);
         mNameCol = ModelHefe::ColBeschreibung;
-
-        for (int col = 0; col < model->columnCount(); ++col)
-            ui->tableView->setColumnHidden(col, true);
-
-        col = ModelHefe::ColBeschreibung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 0);
-
-        col = ModelHefe::ColMenge;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new SpinBoxDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 1);
-
-        col = ModelHefe::ColBemerkung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 2);
-
-        col = ModelHefe::ColEigenschaften;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 3);
-
-        col = ModelHefe::ColTypOGUG;
-        ui->tableView->setColumnHidden(col, false);
-        comboBox = new ComboBoxDelegate({"", tr("obergärig"), tr("untergärig")}, ui->tableView);
-        comboBox->setColors(gSettings->HefeTypOgUgBackgrounds);
-        ui->tableView->setItemDelegateForColumn(col, comboBox);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 4);
-
-        col = ModelHefe::ColTypTrFl;
-        ui->tableView->setColumnHidden(col, false);
-        comboBox = new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, ui->tableView);
-        comboBox->setColors(gSettings->HefeTypTrFlBackgrounds);
-        ui->tableView->setItemDelegateForColumn(col, comboBox);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 5);
-
-        col = ModelHefe::ColSED;
-        ui->tableView->setColumnHidden(col, false);
-        comboBox = new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, ui->tableView);
-        comboBox->setColors(gSettings->HefeSedBackgrounds);
-        ui->tableView->setItemDelegateForColumn(col, comboBox);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 6);
-
-        col = ModelHefe::ColEVG;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 7);
-
-        col = ModelHefe::ColTemperatur;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 8);
-
-        col = ModelHefe::ColEingelagert;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(false, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 9);
-
-        col = ModelHefe::ColMindesthaltbar;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 10);
-
-        header->restoreState(gSettings->value("tableStateHefe").toByteArray());
-
+        table->cols.append({ModelHefe::ColBeschreibung, true, false, 200, nullptr});
+        table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
+        table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
+        table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
+        table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate({"", tr("obergärig"), tr("untergärig")}, gSettings->HefeTypOgUgBackgrounds, ui->tableView)});
+        table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, gSettings->HefeTypTrFlBackgrounds, ui->tableView)});
+        table->cols.append({ModelHefe::ColSED, true, true, 100, new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, gSettings->HefeSedBackgrounds, ui->tableView)});
+        table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
+        table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
+        table->cols.append({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
+        table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
+        table->build();
+        table->horizontalHeader()->restoreState(gSettings->value("tableStateHefe").toByteArray());
         break;
 
     case Brauhelfer::RohstoffTyp::Zusatz:
-        model = bh->modelWeitereZutaten();
-        proxy->setSourceModel(model);
-        ui->tableView->setModel(proxy);
+        proxy->setSourceModel(bh->modelWeitereZutaten());
+        table->setModel(proxy);
         mNameCol = ModelWeitereZutaten::ColBeschreibung;
-
-        for (int col = 0; col < model->columnCount(); ++col)
-            ui->tableView->setColumnHidden(col, true);
-
-        col = ModelWeitereZutaten::ColBeschreibung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 0);
-
-        col = ModelWeitereZutaten::ColMenge;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(2, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 1);
-
-        col = ModelWeitereZutaten::ColEinheiten;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 2);
-
-        col = ModelWeitereZutaten::ColTyp;
-        ui->tableView->setColumnHidden(col, false);
-        comboBox = new ComboBoxDelegate({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges")}, ui->tableView);
-        comboBox->setColors(gSettings->WZTypBackgrounds);
-        ui->tableView->setItemDelegateForColumn(col, comboBox);
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 3);
-
-        col = ModelWeitereZutaten::ColAusbeute;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new SpinBoxDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 4);
-
-        col = ModelWeitereZutaten::ColEBC;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new EbcDelegate(ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 5);
-
-        col = ModelWeitereZutaten::ColBemerkung;
-        ui->tableView->setColumnHidden(col, false);
-        header->resizeSection(col, 200);
-        header->moveSection(header->visualIndex(col), 6);
-
-        col = ModelWeitereZutaten::ColEingelagert;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(false, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 7);
-
-        col = ModelWeitereZutaten::ColMindesthaltbar;
-        ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new DateDelegate(true, false, ui->tableView));
-        header->resizeSection(col, 100);
-        header->moveSection(header->visualIndex(col), 8);
-
-        header->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
-
+        table->cols.append({ModelWeitereZutaten::ColBeschreibung, true, false, 200, nullptr});
+        table->cols.append({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, ui->tableView)});
+        table->cols.append({ModelWeitereZutaten::ColEinheiten, true, true, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableView)});
+        table->cols.append({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges")}, gSettings->WZTypBackgrounds, ui->tableView)});
+        table->cols.append({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(ui->tableView)});
+        table->cols.append({ModelWeitereZutaten::ColEBC, true, true, 100, new EbcDelegate(ui->tableView)});
+        table->cols.append({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
+        table->cols.append({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
+        table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
+        table->build();
+        table->horizontalHeader()->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
         break;
     }
+    table->setDefaultContextMenu();
 
     proxy->setFilterKeyColumn(mNameCol);
     proxy->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);

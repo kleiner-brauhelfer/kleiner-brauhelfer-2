@@ -398,7 +398,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     header->resizeSection(col, 100);
     header->moveSection(header->visualIndex(col), 1);
 
-    col = ModelWeitereZutaten::ColEinheiten;
+    col = ModelWeitereZutaten::ColEinheit;
     model->setHeaderData(col, Qt::Horizontal, tr("Einheit"));
     table->setColumnHidden(col, false);
     table->setItemDelegateForColumn(col, new ComboBoxDelegate(Einheiten, table));

@@ -1060,12 +1060,13 @@ bool Database::update()
 
             // WeitereZutaten
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
+            //  - Spalte unbenannt 'Einheiten' -> 'Einheit'
             sqlExec(db, "ALTER TABLE WeitereZutaten RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE WeitereZutaten ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Menge REAL DEFAULT 0,"
-                "Einheiten INTEGER DEFAULT 0,"
+                "Einheit INTEGER DEFAULT 0,"
                 "Typ INTEGER DEFAULT 0,"
                 "Ausbeute REAL DEFAULT 0,"
                 "EBC REAL DEFAULT 0,"
@@ -1077,7 +1078,7 @@ bool Database::update()
             sqlExec(db, "INSERT INTO WeitereZutaten ("
                 "Name ,"
                 "Menge,"
-                "Einheiten,"
+                "Einheit,"
                 "Typ,"
                 "Ausbeute,"
                 "EBC,"

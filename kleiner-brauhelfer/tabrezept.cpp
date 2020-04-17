@@ -463,7 +463,7 @@ void TabRezept::checkRohstoffe()
                     else
                     {
                         QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, name},
-                                                    {ModelWeitereZutaten::ColEinheiten, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
+                                                    {ModelWeitereZutaten::ColEinheit, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
                                                     {ModelWeitereZutaten::ColTyp, wdg->data(ModelWeitereZutatenGaben::ColTyp)},
                                                     {ModelWeitereZutaten::ColAusbeute, wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},
                                                     {ModelWeitereZutaten::ColEBC, wdg->data(ModelWeitereZutatenGaben::ColFarbe)}});

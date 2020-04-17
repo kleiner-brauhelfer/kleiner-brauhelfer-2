@@ -373,7 +373,7 @@ bool DlgDatabaseCleaner::testRange3()
 
 bool DlgDatabaseCleaner::testRange4()
 {
-    int col = ModelWeitereZutaten::ColEinheiten;
+    int col = ModelWeitereZutaten::ColEinheit;
     int min = static_cast<int>(Brauhelfer::Einheit::Kg);
     int max = static_cast<int>(Brauhelfer::Einheit::ml);
     SqlTableModel* model = bh->modelWeitereZutaten();

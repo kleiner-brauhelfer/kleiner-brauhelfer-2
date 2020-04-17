@@ -17,7 +17,7 @@ public:
         ColID,
         ColName,
         ColMenge,
-        ColEinheiten,
+        ColEinheit,
         ColTyp,
         ColAusbeute,
         ColEBC,

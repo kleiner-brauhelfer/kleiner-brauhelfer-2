@@ -261,7 +261,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         header->resizeSection(col, 100);
         header->moveSection(header->visualIndex(col), 1);
 
-        col = ModelWeitereZutaten::ColEinheiten;
+        col = ModelWeitereZutaten::ColEinheit;
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableView));
         header->resizeSection(col, 100);

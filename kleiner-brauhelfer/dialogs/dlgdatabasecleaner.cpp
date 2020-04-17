@@ -324,7 +324,7 @@ bool DlgDatabaseCleaner::testRange2()
     int col = ModelHefe::ColTypTrFl;
     int min = static_cast<int>(Brauhelfer::HefeTyp::Unbekannt);
     int max = static_cast<int>(Brauhelfer::HefeTyp::Fluessig);
-    SqlTableModel* model = bh->modelHopfen();
+    SqlTableModel* model = bh->modelHefe();
     CheckRangeProxyModel* proxy = new CheckRangeProxyModel(col, min, max, ui->tableView);
     proxy->setSourceModel(model);
     if (proxy->rowCount() != 0)

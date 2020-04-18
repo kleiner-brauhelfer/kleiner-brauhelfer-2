@@ -15,6 +15,7 @@ public:
     explicit WdgHefeGabe(int index, QWidget *parent = nullptr);
     ~WdgHefeGabe();
     bool isEnabled() const;
+    bool isValid() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
     QString name() const;
@@ -40,6 +41,7 @@ private:
     Ui::WdgHefeGabe *ui;
     int mIndex;
     bool mEnabled;
+    bool mValid;
 };
 
 #endif // WDGHEFEGABE_H

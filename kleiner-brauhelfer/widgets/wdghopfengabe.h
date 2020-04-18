@@ -15,6 +15,7 @@ public:
     explicit WdgHopfenGabe(int index, QWidget *parent = nullptr);
     ~WdgHopfenGabe();
     bool isEnabled() const;
+    bool isValid() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
     QString name() const;
@@ -45,6 +46,7 @@ private:
     Ui::WdgHopfenGabe *ui;
     int mIndex;
     bool mEnabled;
+    bool mValid;
 };
 
 #endif // WDGHOPFENGABE_H

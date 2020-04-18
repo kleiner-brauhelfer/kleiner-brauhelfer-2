@@ -39,6 +39,11 @@ bool WdgWeitereZutatGabe::isEnabled() const
     return mEnabled;
 }
 
+bool WdgWeitereZutatGabe::isValid() const
+{
+    return mValid;
+}
+
 QVariant WdgWeitereZutatGabe::data(int col) const
 {
     return bh->sud()->modelWeitereZutatenGaben()->data(mIndex, col);
@@ -118,7 +123,14 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     checkEnabled(full);
 
+    int rowRohstoff;
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+        rowRohstoff = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, zusatzname);
+    else
+        rowRohstoff = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, zusatzname);
+    mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(zusatzname);
+    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
     if (!ui->tbMenge->hasFocus())
     {
         if (einheit == Brauhelfer::Einheit::mg)
@@ -208,7 +220,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
 
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
-        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, zusatzname, ModelHopfen::ColTyp).toInt();
+        int idx = bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -242,9 +254,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (mEnabled)
     {
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, zusatzname, ModelHopfen::ColMenge).toInt());
+            ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
         else
-            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, zusatzname, ModelWeitereZutaten::ColMenge).toDouble());
+            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)

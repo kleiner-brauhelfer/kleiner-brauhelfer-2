@@ -39,6 +39,11 @@ bool WdgHefeGabe::isEnabled() const
     return mEnabled;
 }
 
+bool WdgHefeGabe::isValid() const
+{
+    return mValid;
+}
+
 QVariant WdgHefeGabe::data(int col) const
 {
     return bh->sud()->modelHefegaben()->data(mIndex, col);
@@ -89,7 +94,10 @@ void WdgHefeGabe::updateValues(bool full)
 
     checkEnabled(full);
 
+    int rowRohstoff = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
+    mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(hefename);
+    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())
@@ -103,10 +111,9 @@ void WdgHefeGabe::updateValues(bool full)
     }
     ui->tbDatum->setVisible(braudatum.isValid());
 
-    int rowHefe = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
-    if (rowHefe >= 0)
+    if (rowRohstoff >= 0)
     {
-        int idx = bh->modelHefe()->data(rowHefe, ModelHefe::ColTypOGUG).toInt();
+        int idx = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColTypOGUG).toInt();
         if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -119,7 +126,7 @@ void WdgHefeGabe::updateValues(bool full)
         }
         ui->frameColor->setToolTip(TabRohstoffe::HefeTypname[idx]);
 
-        double mengeHefe = bh->modelHefe()->data(rowHefe, ModelHefe::ColWuerzemenge).toDouble();
+        double mengeHefe = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColWuerzemenge).toDouble();
         if (mengeHefe > 0)
             ui->tbMengeEmpfohlen->setValue(qCeil(bh->sud()->getMenge() / mengeHefe));
         else
@@ -137,7 +144,7 @@ void WdgHefeGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefename, ModelHefe::ColMenge).toInt());
+        ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
         int benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHefegaben();
         for (int i = 0; i < model->rowCount(); ++i)

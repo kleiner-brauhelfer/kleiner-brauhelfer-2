@@ -42,6 +42,11 @@ bool WdgHopfenGabe::isEnabled() const
     return mEnabled;
 }
 
+bool WdgHopfenGabe::isValid() const
+{
+    return mValid;
+}
+
 QVariant WdgHopfenGabe::data(int col) const
 {
     return bh->sud()->modelHopfengaben()->data(mIndex, col);
@@ -102,7 +107,10 @@ void WdgHopfenGabe::updateValues(bool full)
 
     checkEnabled(full);
 
+    int rowRohstoff = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, hopfenname);
+    mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(hopfenname);
+    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbAnteilProzent->hasFocus())
@@ -131,7 +139,7 @@ void WdgHopfenGabe::updateValues(bool full)
         ui->cbZeitpunkt->setCurrentIndex(3);
     else
         ui->cbZeitpunkt->setCurrentIndex(2);
-    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, hopfenname, ModelHopfen::ColTyp).toInt();
+    int idx = bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
         QPalette pal = ui->frameColor->palette();
@@ -147,7 +155,7 @@ void WdgHopfenGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, hopfenname, ModelHopfen::ColMenge).toDouble());
+        ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toDouble());
         double benoetigt = 0;
         ProxyModel* model = bh->sud()->modelHopfengaben();
         for (int i = 0; i < model->rowCount(); ++i)

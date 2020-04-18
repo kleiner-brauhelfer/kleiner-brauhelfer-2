@@ -322,7 +322,7 @@ int SqlTableModel::getRowWithValue(int col, const QVariant &value) const
     {
         for (int row = 0; row < rowCount(); ++row)
         {
-            if (data(row, col) == value)
+            if (data(row, col) == value && !data(row, fieldIndex("deleted")).toBool())
                 return row;
         }
     }

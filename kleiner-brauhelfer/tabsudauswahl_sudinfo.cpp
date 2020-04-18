@@ -194,11 +194,14 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
+            double diff = 0;
             modelMalz.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelMalz.rowCount() > 0)
             {
                 ist = modelMalz.data(0, ModelMalz::ColMenge).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                diff = qRound((ist - eintrag.Menge) * 100) / 100.0;
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
+                map.insert("Rest", locale.toString(diff, 'f', 2));
             }
             else
             {
@@ -207,7 +210,6 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
             map.insert("Vorhanden", locale.toString(ist, 'f', 2));
-            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 2));
             map.insert("Einheit", tr("kg"));
             liste << map;
         }
@@ -224,11 +226,14 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
+            double diff = 0;
             modelHopfen.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHopfen.rowCount() > 0)
             {
                 ist = modelHopfen.data(0, ModelHopfen::ColMenge).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                diff = qRound((ist - eintrag.Menge) * 10) / 10.0;
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
+                map.insert("Rest", locale.toString(diff, 'f', 1));
             }
             else
             {
@@ -236,9 +241,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             }
             map.insert("Name", eintrag.Name);
             map.insert("Typ", eintrag.Typ);
-            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-            map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+            map.insert("Vorhanden", locale.toString(ist, 'f', 1));
             map.insert("Einheit", tr("g"));
             liste << map;
         }
@@ -254,12 +258,15 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         for (const Rohstoff& eintrag : ListHefe)
         {
             QVariantMap map;
-            double ist = 0;
+            int ist = 0;
+            int diff = 0;
             modelHefe.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHefe.rowCount() > 0)
             {
-                ist = modelHefe.data(0, ModelHefe::ColMenge).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelHefe.data(0, ModelHefe::ColMenge).toInt();
+                diff = ist - eintrag.Menge;
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
+                map.insert("Rest", QString::number(diff));
             }
             else
             {
@@ -268,8 +275,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             map.insert("Typ", eintrag.Typ);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-            map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+            map.insert("Vorhanden", QString::number(ist));
             map.insert("Einheit", "");
             liste << map;
         }
@@ -286,11 +292,39 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             QVariantMap map;
             double ist = 0;
+            double diff = 0;
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeNormiert).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                switch (eintrag.Einheit)
+                {
+                case Brauhelfer::Einheit::Kg:
+                    diff = qRound((ist - eintrag.Menge) / 1000 * 100) / 100.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                case Brauhelfer::Einheit::g:
+                    diff = qRound((ist - eintrag.Menge) * 10) / 10.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 1));
+                    break;
+                case Brauhelfer::Einheit::mg:
+                    diff = qRound((ist - eintrag.Menge) * 1000 * 10) / 10.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 1));
+                    break;
+                case Brauhelfer::Einheit::Stk:
+                    diff = qRound((ist - qCeil(eintrag.Menge)));
+                    map.insert("Rest", locale.toString(diff, 'f', 0));
+                    break;
+                case Brauhelfer::Einheit::l:
+                    diff = qRound((ist - eintrag.Menge) / 1000 * 100) / 100.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                case Brauhelfer::Einheit::ml:
+                    diff = qRound((ist - eintrag.Menge) * 10) / 10.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 1));
+                    break;
+                }
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
@@ -304,32 +338,26 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             case Brauhelfer::Einheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 break;
             case Brauhelfer::Einheit::g:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 break;
             case Brauhelfer::Einheit::mg:
                 map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 1));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 1));
                 break;
             case Brauhelfer::Einheit::Stk:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
                 break;
             case Brauhelfer::Einheit::l:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
                 break;
             case Brauhelfer::Einheit::ml:
                 map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 1));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 1));
                 break;
             }
             liste << map;

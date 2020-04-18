@@ -1119,6 +1119,10 @@ bool Database::update()
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
 
+            // Ausruestung
+            //  - neue Spalte 'Bemerkung'
+            sqlExec(db, "ALTER TABLE Ausruestung ADD COLUMN Bemerkung TEXT");
+
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();

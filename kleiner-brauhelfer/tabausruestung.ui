@@ -1349,6 +1349,21 @@
           </widget>
          </item>
          <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>Bemerkung</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QTextEdit" name="tbBemerkung"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>

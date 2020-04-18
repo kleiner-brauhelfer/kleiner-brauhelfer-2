@@ -46,6 +46,7 @@ private slots:
     void on_tbSudpfanneHoehe_valueChanged(double value);
     void on_tbSudpfanneDurchmesser_valueChanged(double value);
     void on_tbSudpfanneMaxFuellhoehe_valueChanged(double value);
+    void on_tbBemerkung_textChanged();
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

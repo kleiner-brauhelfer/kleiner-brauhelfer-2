@@ -29,6 +29,7 @@ public:
         ColSudpfanne_Durchmesser,
         ColSudpfanne_MaxFuellhoehe,
         ColKosten,
+        ColBemerkung,
         // virtual
         ColDeleted,
         ColMaischebottich_Volumen,

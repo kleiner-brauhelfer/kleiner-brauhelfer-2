@@ -99,6 +99,9 @@ void ModelSud::onOtherModelRowChanged(const QModelIndex &idx)
 
 void ModelSud::onAnlageRowChanged(const QModelIndex &idx)
 {
+    const QList<int> ignore = {ModelAusruestung::ColBemerkung};
+    if (ignore.contains(idx.column()))
+        return;
     QVariant name = bh->modelAusruestung()->data(idx.row(), ModelAusruestung::ColName);
     for (int row = 0; row < rowCount(); ++row)
     {

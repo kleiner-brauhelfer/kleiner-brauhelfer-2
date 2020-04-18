@@ -117,10 +117,17 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm" align="center">
-    <h2>Bemerkungen</h2>
+    <h2>Bemerkung</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
+
+  {{#Rezept.BrauanlageBemerkung}}
+  <div class="rm" align="center">
+    <h2>Bemerkung Anlage</h2>
+    <p class="kommentar">{{{Rezept.BrauanlageBemerkung}}}</p>
+  </div>
+  {{/Rezept.BrauanlageBemerkung}}
 
   {{#Zutaten}}
   <div class="rm" align="center">

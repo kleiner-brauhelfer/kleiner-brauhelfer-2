@@ -15,6 +15,7 @@ public:
     explicit WdgWeitereZutatGabe(int index, QWidget *parent = nullptr);
     ~WdgWeitereZutatGabe();
     bool isEnabled() const;
+    bool isValid() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
     QString name() const;
@@ -47,6 +48,7 @@ private:
     Ui::WdgWeitereZutatGabe *ui;
     int mIndex;
     bool mEnabled;
+    bool mValid;
 };
 
 #endif // WDGWEITEERZUTATGABE_H

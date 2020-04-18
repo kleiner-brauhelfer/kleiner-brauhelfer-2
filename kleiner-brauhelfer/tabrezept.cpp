@@ -14,7 +14,6 @@
 #include "widgets/wdghefegabe.h"
 #include "widgets/wdgweiterezutatgabe.h"
 #include "widgets/wdganhang.h"
-#include "dialogs/dlgrohstoffaustausch.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgeinmaischtemp.h"
 
@@ -272,52 +271,19 @@ void TabRezept::checkEnabled()
 
 void TabRezept::checkRohstoffe()
 {
-    QWidget *currentWdg = ui->tabZutaten->currentWidget();
-
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
         WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
-        if (!wdg->isEnabled())
-            continue;
-        QString name = wdg->data(ModelMalzschuettung::ColName).toString();
-        if (name.isEmpty())
+        if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Malzgabe löschen?"),
-                                            tr("Es wurde eine ungültige Malzgabe gefunden. Soll diese gelöscht werden?"));
+            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
+                                            tr("Das Malz \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()));
             if (ret == QMessageBox::Yes)
             {
-                wdg->remove();
-                --i;
-                continue;
-            }
-        }
-        int row = bh->modelMalz()->getRowWithValue(ModelMalz::ColBeschreibung, name);
-        if (row < 0)
-        {
-            ui->tabZutaten->setCurrentWidget(ui->tabMalz);
-            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
-            dlg.setSud(bh->sud()->getSudname());
-            dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
-            dlg.setRohstoff(name);
-            if (dlg.exec() == QDialog::Accepted)
-            {
-                if (dlg.importieren())
-                {
-                    QMap<int, QVariant> values({{ModelMalz::ColBeschreibung, name},
-                                                {ModelMalz::ColFarbe, wdg->data(ModelMalzschuettung::ColFarbe)}});
-                    bh->modelMalz()->append(values);
-                    dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
-                    wdg->updateValues();
-                }
-                else
-                {
-                    wdg->setData(ModelMalzschuettung::ColName, dlg.rohstoff());
-                }
-            }
-            else
-            {
-                bh->sud()->unload();
-                return;
+                QMap<int, QVariant> values({{ModelMalz::ColBeschreibung, wdg->name()},
+                                            {ModelMalz::ColFarbe, wdg->data(ModelMalzschuettung::ColFarbe)}});
+                bh->modelMalz()->append(values);
+                wdg->updateValues();
             }
         }
     }
@@ -325,48 +291,17 @@ void TabRezept::checkRohstoffe()
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
         WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
-        if (!wdg->isEnabled())
-            continue;
-        QString name = wdg->data(ModelHopfengaben::ColName).toString();
-        if (name.isEmpty())
+        if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Hopfengabe löschen?"),
-                                            tr("Es wurde eine ungültige Hopfengabe gefunden. Soll diese gelöscht werden?"));
+            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
+                                            tr("Der Hopfen \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()));
             if (ret == QMessageBox::Yes)
             {
-                wdg->remove();
-                --i;
-                continue;
-            }
-        }
-        int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, name);
-        if (row < 0)
-        {
-            ui->tabZutaten->setCurrentWidget(ui->tabHopfen);
-            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
-            dlg.setSud(bh->sud()->getSudname());
-            dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
-            dlg.setRohstoff(name);
-            if (dlg.exec() == QDialog::Accepted)
-            {
-                if (dlg.importieren())
-                {
-                    QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name},
-                                                {ModelHopfen::ColAlpha, wdg->data(ModelHopfengaben::ColAlpha)},
-                                                {ModelHopfen::ColPellets, wdg->data(ModelHopfengaben::ColPellets)}});
-                    bh->modelHopfen()->append(values);
-                    dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
-                    wdg->updateValues();
-                }
-                else
-                {
-                    wdg->setData(ModelHopfengaben::ColName, dlg.rohstoff());
-                }
-            }
-            else
-            {
-                bh->sud()->unload();
-                return;
+                QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, wdg->name()},
+                                            {ModelHopfen::ColAlpha, wdg->data(ModelHopfengaben::ColAlpha)},
+                                            {ModelHopfen::ColPellets, wdg->data(ModelHopfengaben::ColPellets)}});
+                bh->modelHopfen()->append(values);
+                wdg->updateValues();
             }
         }
     }
@@ -374,46 +309,15 @@ void TabRezept::checkRohstoffe()
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
     {
         WdgHefeGabe* wdg = static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget());
-        if (!wdg->isEnabled())
-            continue;
-        QString name = wdg->data(ModelHefegaben::ColName).toString();
-        if (name.isEmpty())
+        if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Hefegabe löschen?"),
-                                            tr("Es wurde eine ungültige Hefegabe gefunden. Soll diese gelöscht werden?"));
+            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
+                                            tr("Die Hefe \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()));
             if (ret == QMessageBox::Yes)
             {
-                wdg->remove();
-                --i;
-                continue;
-            }
-        }
-        int row = bh->modelHefe()->getRowWithValue(ModelHefe::ColBeschreibung, name);
-        if (row < 0)
-        {
-            ui->tabZutaten->setCurrentWidget(ui->tabHefe);
-            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
-            dlg.setSud(bh->sud()->getSudname());
-            dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
-            dlg.setRohstoff(name);
-            if (dlg.exec() == QDialog::Accepted)
-            {
-                if (dlg.importieren())
-                {
-                    QMap<int, QVariant> values({{ModelHefe::ColBeschreibung, name}});
-                    bh->modelHefe()->append(values);
-                    dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
-                    wdg->updateValues();
-                }
-                else
-                {
-                    wdg->setData(ModelHefegaben::ColName, dlg.rohstoff());
-                }
-            }
-            else
-            {
-                bh->sud()->unload();
-                return;
+                QMap<int, QVariant> values({{ModelHefe::ColBeschreibung, wdg->name()}});
+                bh->modelHefe()->append(values);
+                wdg->updateValues();
             }
         }
     }
@@ -421,70 +325,31 @@ void TabRezept::checkRohstoffe()
     for (int i = 0; i < ui->layoutWeitereZutatenGaben->count(); ++i)
     {
         WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutWeitereZutatenGaben->itemAt(i)->widget());
-        if (!wdg->isEnabled())
-            continue;
-        QString name = wdg->data(ModelWeitereZutatenGaben::ColName).toString();
-        if (name.isEmpty())
+        if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Weitere Zutat löschen?"),
-                                            tr("Es wurde eine ungültige weitere Zutat gefunden. Soll diese gelöscht werden?"));
+            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
+                                            tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(wdg->name()));
             if (ret == QMessageBox::Yes)
             {
-                wdg->remove();
-                --i;
-                continue;
-            }
-        }
-        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt());
-        int row;
-        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, name);
-        else
-            row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
-        if (row < 0)
-        {
-            ui->tabZutaten->setCurrentWidget(ui->tabWeitereZutaten);
-            DlgRohstoffAustausch dlg(DlgRohstoffAustausch::NichtVorhanden, QString(), this);
-            dlg.setSud(bh->sud()->getSudname());
-            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
-            else
-                dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColBeschreibung);
-            dlg.setRohstoff(name);
-            if (dlg.exec() == QDialog::Accepted)
-            {
-                if (dlg.importieren())
+                Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt());
+                if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                 {
-                    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                    {
-                        QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, name}});
-                        bh->modelHopfen()->append(values);
-                    }
-                    else
-                    {
-                        QMap<int, QVariant> values({{ModelWeitereZutaten::ColBeschreibung, name},
-                                                    {ModelWeitereZutaten::ColEinheiten, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
-                                                    {ModelWeitereZutaten::ColTyp, wdg->data(ModelWeitereZutatenGaben::ColTyp)},
-                                                    {ModelWeitereZutaten::ColAusbeute, wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},
-                                                    {ModelWeitereZutaten::ColEBC, wdg->data(ModelWeitereZutatenGaben::ColFarbe)}});
-                        bh->modelWeitereZutaten()->append(values);
-                    }
-                    wdg->updateValues();
+                    QMap<int, QVariant> values({{ModelHopfen::ColBeschreibung, wdg->name()}});
+                    bh->modelHopfen()->append(values);
                 }
                 else
                 {
-                    wdg->setData(ModelWeitereZutatenGaben::ColName, dlg.rohstoff());
+                    QMap<int, QVariant> values({{ModelWeitereZutaten::ColBeschreibung, wdg->name()},
+                                                {ModelWeitereZutaten::ColEinheiten, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
+                                                {ModelWeitereZutaten::ColTyp, wdg->data(ModelWeitereZutatenGaben::ColTyp)},
+                                                {ModelWeitereZutaten::ColAusbeute, wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},
+                                                {ModelWeitereZutaten::ColEBC, wdg->data(ModelWeitereZutatenGaben::ColFarbe)}});
+                    bh->modelWeitereZutaten()->append(values);
                 }
-            }
-            else
-            {
-                bh->sud()->unload();
-                return;
+                wdg->updateValues();
             }
         }
     }
-
-    ui->tabZutaten->setCurrentWidget(currentWdg);
 }
 
 void TabRezept::updateValues()

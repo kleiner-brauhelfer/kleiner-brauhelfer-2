@@ -37,6 +37,11 @@ bool WdgMalzGabe::isEnabled() const
     return mEnabled;
 }
 
+bool WdgMalzGabe::isValid() const
+{
+    return mValid;
+}
+
 QVariant WdgMalzGabe::data(int col) const
 {
     return bh->sud()->modelMalzschuettung()->data(mIndex, col);
@@ -89,7 +94,10 @@ void WdgMalzGabe::updateValues(bool full)
 
     checkEnabled(full);
 
+    int rowRohstoff = bh->modelMalz()->getRowWithValue(ModelMalz::ColBeschreibung, malzname);
+    mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(malzname);
+    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelMalzschuettung::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
@@ -106,7 +114,7 @@ void WdgMalzGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMenge).toDouble());
+        ui->tbVorhanden->setValue(bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
         double benoetigt = 0.0;
         ProxyModel* model = bh->sud()->modelMalzschuettung();
         for (int i = 0; i < model->rowCount(); ++i)
@@ -117,7 +125,7 @@ void WdgMalzGabe::updateValues(bool full)
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
 
-        int max = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColBeschreibung, malzname, ModelMalz::ColMaxProzent).toInt();
+        int max = bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMaxProzent).toInt();
         if (max > 0 && ui->tbMengeProzent->value() > max)
         {
             ui->lblWarnung->setVisible(true);

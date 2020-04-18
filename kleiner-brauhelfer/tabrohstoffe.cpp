@@ -17,7 +17,6 @@
 #include "model/ingredientnamedelegate.h"
 #include "model/linklabeldelegate.h"
 #include "model/spinboxdelegate.h"
-#include "dialogs/dlgrohstoffaustausch.h"
 #include "dialogs/dlgrohstoffvorlage.h"
 
 extern Brauhelfer* bh;
@@ -85,7 +84,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->cols.append({ModelMalz::ColBeschreibung, true, false, 200, nullptr});
+    table->cols.append({ModelMalz::ColBeschreibung, true, false, 200, new IngredientNameDelegate(table)});
     table->cols.append({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table)});
     table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
     table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
@@ -140,7 +139,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelHefe::ColTypOGUG, Qt::Horizontal, tr("OG/UG"));
     model->setHeaderData(ModelHefe::ColTypTrFl, Qt::Horizontal, tr("Trocken/Flüssig"));
     model->setHeaderData(ModelHefe::ColVerpackungsmenge, Qt::Horizontal, tr("Verpackungsmenge"));
-    model->setHeaderData(ModelHefe::ColWuerzemenge, Qt::Horizontal, tr("Wuerzemenge [l]"));
+    model->setHeaderData(ModelHefe::ColWuerzemenge, Qt::Horizontal, tr("Würzemenge [l]"));
     model->setHeaderData(ModelHefe::ColSED, Qt::Horizontal, tr("Sedimentation"));
     model->setHeaderData(ModelHefe::ColEVG, Qt::Horizontal, tr("Vergärungsgrad"));
     model->setHeaderData(ModelHefe::ColTemperatur, Qt::Horizontal, tr("Temperatur"));
@@ -490,9 +489,15 @@ void TabRohstoffe::on_buttonDelete_clicked()
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
     {
+        bool del = true;
         if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
-            replace(ui->toolBoxRohstoffe->currentIndex(), model->data(index.row(), model->fieldIndex("Beschreibung")).toString());
-        if (!model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
+        {
+            int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
+                                            tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?"));
+            if (ret != QMessageBox::Yes)
+                del = false;
+        }
+        if (del)
             model->removeRow(index.row());
     }
     updateLabelNumItems();
@@ -588,63 +593,6 @@ void TabRohstoffe::updateLabelNumItems()
     ProxyModel sourceModelNoDelete;
     sourceModelNoDelete.setSourceModel(sourceModel);
     ui->lblNumItems->setText(QString::number(filteredModel->rowCount()) + " / " + QString::number(sourceModelNoDelete.rowCount()));
-}
-
-void TabRohstoffe::replace(int type, const QString &rohstoff)
-{
-    DlgRohstoffAustausch dlg(DlgRohstoffAustausch::Loeschen, rohstoff, this);
-    ProxyModelSud modelSud;
-    modelSud.setSourceModel(bh->modelSud());
-    modelSud.setFilterStatus(ProxyModelSud::Rezept | ProxyModelSud::Gebraut);
-    SqlTableModel *model = nullptr;
-    SqlTableModel *model2 = nullptr;
-    switch (type)
-    {
-    case 0:
-        model = bh->modelMalzschuettung();
-        dlg.setModel(bh->modelMalz(), ModelMalz::ColBeschreibung);
-        break;
-    case 1:
-        model = bh->modelHopfengaben();
-        model2 = bh->modelWeitereZutatenGaben();
-        dlg.setModel(bh->modelHopfen(), ModelHopfen::ColBeschreibung);
-        break;
-    case 2:
-        model = bh->modelHefegaben();
-        dlg.setModel(bh->modelHefe(), ModelHefe::ColBeschreibung);
-        break;
-    case 3:
-        model = bh->modelWeitereZutatenGaben();
-        dlg.setModel(bh->modelWeitereZutaten(), ModelWeitereZutaten::ColBeschreibung);
-        break;
-    default:
-        return;
-    }
-
-    for (int i = 0; i < modelSud.rowCount(); ++i)
-    {
-        int id = modelSud.data(i, ModelSud::ColID).toInt();
-        dlg.setSud(modelSud.data(i, ModelSud::ColSudname).toString());
-        for (int j = 0; j < model->rowCount(); ++j)
-        {
-            if (model->data(j, model->fieldIndex("SudID")).toInt() == id && model->data(j, model->fieldIndex("Name")).toString() == rohstoff)
-            {
-                if (dlg.exec() == QDialog::Accepted)
-                    model->setData(j, model->fieldIndex("Name"), dlg.rohstoff());
-            }
-        }
-        if (model2)
-        {
-            for (int j = 0; j < model2->rowCount(); ++j)
-            {
-                if (model2->data(j, model->fieldIndex("SudID")).toInt() == id && model2->data(j, model->fieldIndex("Name")).toString() == rohstoff)
-                {
-                    if (dlg.exec() == QDialog::Accepted)
-                        model2->setData(j, model->fieldIndex("Name"), dlg.rohstoff());
-                }
-            }
-        }
-    }
 }
 
 QVariant TabRohstoffe::dataWasser(int col) const

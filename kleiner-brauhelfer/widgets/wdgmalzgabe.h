@@ -15,6 +15,7 @@ public:
     explicit WdgMalzGabe(int index, QWidget *parent = nullptr);
     ~WdgMalzGabe();
     bool isEnabled() const;
+    bool isValid() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
     QString name() const;
@@ -40,6 +41,7 @@ private:
     Ui::WdgMalzGabe *ui;
     int mIndex;
     bool mEnabled;
+    bool mValid;
 };
 
 #endif // WDGMALZGABE_H

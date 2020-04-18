@@ -14,13 +14,13 @@ void ProxyModelRohstoff::onSourceModelChanged()
 {
     if(SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel()))
     {
-        setFilterKeyColumn(model->fieldIndex("Beschreibung"));
+        setFilterKeyColumn(model->fieldIndex("Name"));
         mAmountColumn = model->fieldIndex("Menge");
         mInUsedColumn = model->fieldIndex("InGebrauch");
     }
     else if(ProxyModel* model = dynamic_cast<ProxyModel*>(sourceModel()))
     {
-        setFilterKeyColumn(model->fieldIndex("Beschreibung"));
+        setFilterKeyColumn(model->fieldIndex("Name"));
         mAmountColumn = model->fieldIndex("Menge");
         mInUsedColumn = model->fieldIndex("InGebrauch");
     }

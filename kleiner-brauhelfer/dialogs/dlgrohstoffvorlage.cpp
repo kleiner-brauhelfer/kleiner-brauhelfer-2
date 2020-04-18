@@ -147,6 +147,9 @@ void DlgRohstoffVorlage::setModel()
                 col = model->fieldIndex("aroma");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
+                col = model->fieldIndex("replacement");
+                table->cols.append({col, true, false, 0, nullptr});
+                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
                 break;
             case HefeOBraMa:
                 col = model->fieldIndex("name");
@@ -165,6 +168,9 @@ void DlgRohstoffVorlage::setModel()
                 col = model->fieldIndex("use_for");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Bierstil"));
+                col = model->fieldIndex("replacement");
+                table->cols.append({col, true, false, 0, nullptr});
+                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
                 break;
             case WZutatenOBraMa:
                 col = model->fieldIndex("name");
@@ -230,7 +236,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             iVal = index.sibling(index.row(), header->logicalIndex(2)).data().toInt();
             if (iVal > 0)
                 mValues.insert(ModelMalz::ColMaxProzent, iVal);
-            mValues.insert(ModelMalz::ColAnwendung, index.sibling(index.row(), header->logicalIndex(3)).data());
+            mValues.insert(ModelMalz::ColEingenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
             break;
 
         case MalzOBraMa:
@@ -239,7 +245,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             fVal = index.sibling(index.row(), header->logicalIndex(3)).data().toDouble();
             if (fVal > 0)
                 mValues.insert(ModelMalz::ColMaxProzent, qRound(fVal));
-            mValues.insert(ModelMalz::ColAnwendung, index.sibling(index.row(), header->logicalIndex(4)).data());
+            mValues.insert(ModelMalz::ColEingenschaften, index.sibling(index.row(), header->logicalIndex(4)).data());
             break;
 
         case Hopfen:
@@ -266,6 +272,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
                 mValues.insert(ModelHopfen::ColTyp, 3);
             mValues.insert(ModelHopfen::ColAlpha, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             mValues.insert(ModelHopfen::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
+            mValues.insert(ModelHopfen::ColAlternativen, index.sibling(index.row(), header->logicalIndex(4)).data());
             break;
 
         case Hefe:
@@ -320,6 +327,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             str1 = index.sibling(index.row(), model->fieldIndex("attenuation_min")).data().toString();
             str2 = index.sibling(index.row(), model->fieldIndex("attenuation_max")).data().toString();
             mValues.insert(ModelHefe::ColEVG, QString("%1 - %2").arg(str1).arg(str2));
+            mValues.insert(ModelHefe::ColAlternativen, index.sibling(index.row(), header->logicalIndex(5)).data());
             break;
 
         case WZutaten:

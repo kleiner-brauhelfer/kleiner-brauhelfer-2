@@ -10,6 +10,7 @@
 #include "model/spinboxdelegate.h"
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -49,7 +50,8 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
         table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(ui->tableView)});
         table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-        table->cols.append({ModelMalz::ColAnwendung, true, true, 200, nullptr});
+        table->cols.append({ModelMalz::ColEingenschaften, true, true, 200, nullptr});
+        table->cols.append({ModelMalz::ColAlternativen, true, true, 200, nullptr});
         table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
@@ -63,9 +65,11 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHopfen::ColName, true, false, 200, nullptr});
         table->cols.append({ModelHopfen::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
         table->cols.append({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, ui->tableView)});
+        table->cols.append({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
+        table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(TabRohstoffe::HopfenTypname, gSettings->HopfenTypBackgrounds, ui->tableView)});
         table->cols.append({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
         table->cols.append({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
-        table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate({"", tr("aroma"), tr("bitter"), tr("universal")}, gSettings->HopfenTypBackgrounds, ui->tableView)});
+        table->cols.append({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
         table->cols.append({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
@@ -78,13 +82,14 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         mNameCol = ModelHefe::ColName;
         table->cols.append({ModelHefe::ColName, true, false, 200, nullptr});
         table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
-        table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
-        table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
-        table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate({"", tr("obergärig"), tr("untergärig")}, gSettings->HefeTypOgUgBackgrounds, ui->tableView)});
-        table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, gSettings->HefeTypTrFlBackgrounds, ui->tableView)});
+        table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(TabRohstoffe::HefeTypname, gSettings->HefeTypOgUgBackgrounds, ui->tableView)});
+        table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(TabRohstoffe::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, ui->tableView)});
         table->cols.append({ModelHefe::ColSED, true, true, 100, new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, gSettings->HefeSedBackgrounds, ui->tableView)});
         table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
         table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
+        table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
+        table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
+        table->cols.append({ModelHefe::ColAlternativen, true, true, 200, nullptr});
         table->cols.append({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
@@ -102,6 +107,8 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(ui->tableView)});
         table->cols.append({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
         table->cols.append({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
+        table->cols.append({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
+        table->cols.append({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
         table->cols.append({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();

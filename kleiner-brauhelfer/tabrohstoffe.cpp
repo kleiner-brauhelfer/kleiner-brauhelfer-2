@@ -35,6 +35,12 @@ QList<QString> TabRohstoffe::HefeTypname = {
     tr("untergärig")
 };
 
+QList<QString> TabRohstoffe::HefeTypFlTrName = {
+    "",
+    tr("trocken"),
+    tr("flüssig")
+};
+
 QList<QString> TabRohstoffe::ZusatzTypname = {
     tr("Honig"),
     tr("Zucker"),
@@ -73,7 +79,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelMalz::ColFarbe, Qt::Horizontal, tr("Farbe [EBC]"));
     model->setHeaderData(ModelMalz::ColMaxProzent, Qt::Horizontal, tr("Max. Anteil [%]"));
     model->setHeaderData(ModelMalz::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
-    model->setHeaderData(ModelMalz::ColAnwendung, Qt::Horizontal, tr("Anwendung"));
+    model->setHeaderData(ModelMalz::ColEingenschaften, Qt::Horizontal, tr("Eingenschaften"));
+    model->setHeaderData(ModelMalz::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
     model->setHeaderData(ModelMalz::ColPreis, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelMalz::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelMalz::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
@@ -89,7 +96,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
     table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-    table->cols.append({ModelMalz::ColAnwendung, true, true, 200, nullptr});
+    table->cols.append({ModelMalz::ColEingenschaften, true, true, 200, nullptr});
+    table->cols.append({ModelMalz::ColAlternativen, true, true, 200, nullptr});
     table->cols.append({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
     table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
@@ -106,6 +114,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelHopfen::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     model->setHeaderData(ModelHopfen::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
     model->setHeaderData(ModelHopfen::ColTyp, Qt::Horizontal, tr("Typ"));
+    model->setHeaderData(ModelHopfen::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
     model->setHeaderData(ModelHopfen::ColPreis, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelHopfen::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelHopfen::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
@@ -120,9 +129,10 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, true, table)});
     table->cols.append({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
     table->cols.append({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
+    table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
     table->cols.append({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
     table->cols.append({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
-    table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
+    table->cols.append({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
     table->cols.append({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
     table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
@@ -143,6 +153,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelHefe::ColSED, Qt::Horizontal, tr("Sedimentation"));
     model->setHeaderData(ModelHefe::ColEVG, Qt::Horizontal, tr("Vergärungsgrad"));
     model->setHeaderData(ModelHefe::ColTemperatur, Qt::Horizontal, tr("Temperatur"));
+    model->setHeaderData(ModelHefe::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
     model->setHeaderData(ModelHefe::ColPreis, Qt::Horizontal, tr("Preis [%1]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelHefe::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelHefe::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
@@ -155,15 +166,16 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->setModel(proxyModel);
     table->cols.append({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
     table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, true, table)});
-    table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
-    table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
     table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
-    table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate({"", tr("trocken"), tr("flüssig")}, gSettings->HefeTypTrFlBackgrounds, table)});
+    table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
     table->cols.append({ModelHefe::ColVerpackungsmenge, true, true, 100, nullptr});
     table->cols.append({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
     table->cols.append({ModelHefe::ColSED, true, true, 100, new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, gSettings->HefeSedBackgrounds, table)});
     table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
     table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
+    table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
+    table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
+    table->cols.append({ModelHefe::ColAlternativen, true, true, 200, nullptr});
     table->cols.append({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
     table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
@@ -180,6 +192,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelWeitereZutaten::ColAusbeute, Qt::Horizontal, tr("Ausbeute [%]"));
     model->setHeaderData(ModelWeitereZutaten::ColFarbe, Qt::Horizontal, tr("Farbe [EBC]"));
     model->setHeaderData(ModelWeitereZutaten::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelWeitereZutaten::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
+    model->setHeaderData(ModelWeitereZutaten::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
     model->setHeaderData(ModelWeitereZutaten::ColPreis, Qt::Horizontal, tr("Preis [%1/[kg/l/Stk]]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelWeitereZutaten::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelWeitereZutaten::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
@@ -197,6 +211,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->cols.append({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
     table->cols.append({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
+    table->cols.append({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
+    table->cols.append({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
     table->cols.append({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
     table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
@@ -344,7 +360,7 @@ void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values
     int row = model->append(values);
     if (row >= 0)
     {
-        table->setCurrentIndex(model->index(row, model->fieldIndex("Beschreibung")));
+        table->setCurrentIndex(model->index(row, model->fieldIndex("Name")));
         table->scrollTo(table->currentIndex());
         table->edit(table->currentIndex());
         updateLabelNumItems();
@@ -456,7 +472,7 @@ void TabRohstoffe::on_buttonCopy_clicked()
     {
         int row = index.row();
         QMap<int, QVariant> values = sourceModel->copyValues(model->mapRowToSource(row));
-        values.insert(model->fieldIndex("Beschreibung"), model->data(row, model->fieldIndex("Beschreibung")).toString() + " " + tr("Kopie"));
+        values.insert(model->fieldIndex("Name"), model->data(row, model->fieldIndex("Name")).toString() + " " + tr("Kopie"));
         values.remove(model->fieldIndex("Menge"));
         values.remove(model->fieldIndex("Eingelagert"));
         values.remove(model->fieldIndex("Mindesthaltbar"));

@@ -125,7 +125,6 @@ void Settings::initTheme()
         HopfenTypBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
         HefeTypOgUgBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
         HefeTypTrFlBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
-        HefeSedBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
         WZTypBackgrounds = {QColor(253, 199, 197),
                             QColor(239, 207, 175),
                             QColor(241, 216, 167),
@@ -159,7 +158,6 @@ void Settings::initTheme()
         HopfenTypBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
         HefeTypOgUgBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
         HefeTypTrFlBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
-        HefeSedBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
         WZTypBackgrounds = {QColor(220, 114, 107),
                             QColor(193, 133, 0),
                             QColor(149, 151, 0),

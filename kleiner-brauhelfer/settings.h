@@ -69,7 +69,6 @@ public:
     QList<QColor> HopfenTypBackgrounds;
     QList<QColor> HefeTypOgUgBackgrounds;
     QList<QColor> HefeTypTrFlBackgrounds;
-    QList<QColor> HefeSedBackgrounds;
     QList<QColor> WZTypBackgrounds;
 
     QColor DiagramLinie1;

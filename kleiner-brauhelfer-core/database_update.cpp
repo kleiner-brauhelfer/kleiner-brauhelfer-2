@@ -1011,7 +1011,12 @@ bool Database::update()
             // Hefe
             //  - neue Spalte 'Alternativen'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
+            //  - Spalte unbenannt 'SED' -> 'Sedimentation' TEXT
             sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
+            sqlExec(db, "ALTER TABLE TempTable ADD COLUMN Sedimentation TEXT");
+            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Hoch' WHERE SED = '1'");
+            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Mittel' WHERE SED = '2'");
+            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Niedrig' WHERE SED = '3'");
             sqlExec(db, "CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
@@ -1020,7 +1025,7 @@ bool Database::update()
                 "TypTrFl INTEGER DEFAULT 0,"
                 "Verpackungsmenge TEXT,"
                 "Wuerzemenge REAL DEFAULT 0,"
-                "SED INTEGER DEFAULT 0,"
+                "Sedimentation TEXT,"
                 "EVG TEXT,"
                 "Temperatur TEXT,"
                 "Bemerkung TEXT,"
@@ -1038,7 +1043,7 @@ bool Database::update()
                 "Verpackungsmenge,"
                 "Wuerzemenge,"
                 "Eigenschaften,"
-                "SED,"
+                "Sedimentation,"
                 "EVG,"
                 "Temperatur,"
                 "Bemerkung,"
@@ -1054,7 +1059,7 @@ bool Database::update()
                 "Verpackungsmenge,"
                 "Wuerzemenge,"
                 "Eigenschaften,"
-                "SED,"
+                "Sedimentation,"
                 "EVG,"
                 "Temperatur,"
                 "Bemerkung,"

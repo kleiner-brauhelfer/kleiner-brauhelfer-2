@@ -84,7 +84,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
         table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(TabRohstoffe::HefeTypname, gSettings->HefeTypOgUgBackgrounds, ui->tableView)});
         table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(TabRohstoffe::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, ui->tableView)});
-        table->cols.append({ModelHefe::ColSED, true, true, 100, new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, gSettings->HefeSedBackgrounds, ui->tableView)});
+        table->cols.append({ModelHefe::ColSedimentation, true, true, 100, nullptr});
         table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
         table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
         table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});

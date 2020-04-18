@@ -291,13 +291,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             mValues.insert(ModelHefe::ColWuerzemenge, index.sibling(index.row(), header->logicalIndex(4)).data().toInt());
             mValues.insert(ModelHefe::ColTemperatur, index.sibling(index.row(), header->logicalIndex(5)).data());
             mValues.insert(ModelHefe::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(6)).data());
-            typ = index.sibling(index.row(), header->logicalIndex(7)).data().toString().toLower();
-            if (typ == "hoch")
-                mValues.insert(ModelHefe::ColSED, 1);
-            else if (typ == "mittel")
-                mValues.insert(ModelHefe::ColSED, 2);
-            else if (typ == "niedrig" || typ == "gering")
-                mValues.insert(ModelHefe::ColSED, 3);
+            mValues.insert(ModelHefe::ColSedimentation, index.sibling(index.row(), header->logicalIndex(7)).data());
             mValues.insert(ModelHefe::ColEVG, index.sibling(index.row(), header->logicalIndex(8)).data());
             break;
 
@@ -317,13 +311,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             str2 = index.sibling(index.row(), model->fieldIndex("temperature_max")).data().toString();
             mValues.insert(ModelHefe::ColTemperatur, QString("%1 - %2").arg(str1).arg(str2));
             mValues.insert(ModelHefe::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
-            typ = index.sibling(index.row(), model->fieldIndex("flocculation")).data().toString().toLower();
-            if (typ == "hoch")
-                mValues.insert(ModelHefe::ColSED, 1);
-            else if (typ == "mittel")
-                mValues.insert(ModelHefe::ColSED, 2);
-            else if (typ == "niedrig" || typ == "gering")
-                mValues.insert(ModelHefe::ColSED, 3);
+            mValues.insert(ModelHefe::ColSedimentation, index.sibling(index.row(), model->fieldIndex("flocculation")).data());
             str1 = index.sibling(index.row(), model->fieldIndex("attenuation_min")).data().toString();
             str2 = index.sibling(index.row(), model->fieldIndex("attenuation_max")).data().toString();
             mValues.insert(ModelHefe::ColEVG, QString("%1 - %2").arg(str1).arg(str2));

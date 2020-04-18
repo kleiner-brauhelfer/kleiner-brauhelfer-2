@@ -21,7 +21,7 @@ public:
         ColTypTrFl,
         ColVerpackungsmenge,
         ColWuerzemenge,
-        ColSED,
+        ColSedimentation,
         ColEVG,
         ColTemperatur,
         ColBemerkung,

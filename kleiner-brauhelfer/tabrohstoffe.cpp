@@ -150,7 +150,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelHefe::ColTypTrFl, Qt::Horizontal, tr("Trocken/Flüssig"));
     model->setHeaderData(ModelHefe::ColVerpackungsmenge, Qt::Horizontal, tr("Verpackungsmenge"));
     model->setHeaderData(ModelHefe::ColWuerzemenge, Qt::Horizontal, tr("Würzemenge [l]"));
-    model->setHeaderData(ModelHefe::ColSED, Qt::Horizontal, tr("Sedimentation"));
+    model->setHeaderData(ModelHefe::ColSedimentation, Qt::Horizontal, tr("Sedimentation"));
     model->setHeaderData(ModelHefe::ColEVG, Qt::Horizontal, tr("Vergärungsgrad"));
     model->setHeaderData(ModelHefe::ColTemperatur, Qt::Horizontal, tr("Temperatur"));
     model->setHeaderData(ModelHefe::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
@@ -170,7 +170,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
     table->cols.append({ModelHefe::ColVerpackungsmenge, true, true, 100, nullptr});
     table->cols.append({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
-    table->cols.append({ModelHefe::ColSED, true, true, 100, new ComboBoxDelegate({"", tr("hoch"), tr("mittel"), tr("niedrig")}, gSettings->HefeSedBackgrounds, table)});
+    table->cols.append({ModelHefe::ColSedimentation, true, true, 100, nullptr});
     table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
     table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
     table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});

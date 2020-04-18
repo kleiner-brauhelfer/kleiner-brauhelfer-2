@@ -179,7 +179,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelWeitereZutaten::ColEinheit, Qt::Horizontal, tr("Einheit"));
     model->setHeaderData(ModelWeitereZutaten::ColTyp, Qt::Horizontal, tr("Typ"));
     model->setHeaderData(ModelWeitereZutaten::ColAusbeute, Qt::Horizontal, tr("Ausbeute [%]"));
-    model->setHeaderData(ModelWeitereZutaten::ColEBC, Qt::Horizontal, tr("Farbe [EBC]"));
+    model->setHeaderData(ModelWeitereZutaten::ColFarbe, Qt::Horizontal, tr("Farbe [EBC]"));
     model->setHeaderData(ModelWeitereZutaten::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     model->setHeaderData(ModelWeitereZutaten::ColPreis, Qt::Horizontal, tr("Preis [%1/[kg/l/Stk]]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelWeitereZutaten::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
@@ -196,7 +196,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
     table->cols.append({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
     table->cols.append({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
-    table->cols.append({ModelWeitereZutaten::ColEBC, true, true, 100, new EbcDelegate(table)});
+    table->cols.append({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
     table->cols.append({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
     table->cols.append({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});

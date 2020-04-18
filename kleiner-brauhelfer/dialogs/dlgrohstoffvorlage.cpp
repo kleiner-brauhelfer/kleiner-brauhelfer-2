@@ -342,7 +342,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             else if (typ == "klärmittel")
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel));
             mValues.insert(ModelWeitereZutaten::ColAusbeute, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
-            mValues.insert(ModelWeitereZutaten::ColEBC, index.sibling(index.row(), header->logicalIndex(3)).data().toDouble());
+            mValues.insert(ModelWeitereZutaten::ColFarbe, index.sibling(index.row(), header->logicalIndex(3)).data().toDouble());
             break;
 
         case WZutatenOBraMa:

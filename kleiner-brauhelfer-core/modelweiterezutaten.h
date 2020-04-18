@@ -20,7 +20,7 @@ public:
         ColEinheit,
         ColTyp,
         ColAusbeute,
-        ColEBC,
+        ColFarbe,
         ColPreis,
         ColBemerkung,
         ColEingelagert,

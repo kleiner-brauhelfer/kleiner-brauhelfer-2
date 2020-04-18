@@ -158,7 +158,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
         }
         return false;
     }
-    case ColEBC:
+    case ColFarbe:
     {
         if (QSqlTableModel::setData(idx, value))
         {
@@ -218,8 +218,8 @@ void ModelWeitereZutaten::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColTyp, 0);
     if (!values.contains(ColAusbeute))
         values.insert(ColAusbeute, 0);
-    if (!values.contains(ColEBC))
-        values.insert(ColEBC, 0);
+    if (!values.contains(ColFarbe))
+        values.insert(ColFarbe, 0);
     if (!values.contains(ColPreis))
         values.insert(ColPreis, 0);
     if (!values.contains(ColEingelagert))

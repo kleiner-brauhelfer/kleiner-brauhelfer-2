@@ -213,7 +213,7 @@ void ModelWeitereZutaten::defaultValues(QMap<int, QVariant> &values) const
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
     if (!values.contains(ColEinheiten))
-     values.insert(ColEinheiten, 0);
+     values.insert(ColEinheiten, static_cast<int>(Brauhelfer::Einheit::Kg));
     if (!values.contains(ColTyp))
         values.insert(ColTyp, 0);
     if (!values.contains(ColAusbeute))

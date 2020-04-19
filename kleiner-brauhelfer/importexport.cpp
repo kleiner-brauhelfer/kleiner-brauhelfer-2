@@ -3,26 +3,9 @@
 #include <QTextStream>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QDomDocument>
-#include <QMessageBox>
 #include "brauhelfer.h"
-
-extern Brauhelfer* bh;
-
-static void encodeHtml(QString& str)
-{
-    str.replace("Ä","&#196;");
-    str.replace("ä","&#228;");
-    str.replace("Ö","&#214;");
-    str.replace("ö","&#246;");
-    str.replace("Ü","&#220;");
-    str.replace("ü","&#252;");
-    str.replace("ß","&#223;");
-    str.replace("º","&#186;");
-    str.replace("°","&#176;");
-    str.replace("®","&#174;");
-    str.replace("©","&#169;");
-}
 
 static int findMax(const QJsonObject& jsn, const QString& str, int MAX = 20)
 {
@@ -55,20 +38,166 @@ static double toDouble(const QJsonValueRef& value)
     }
 }
 
-bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRow)
+int ImportExport::importKbh(Brauhelfer* bh, const QString &fileName)
 {
-    // https://www.maischemalzundmehr.de/rezept.json.txt
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
-        return false;
+        return -1;
 
     QJsonParseError jsonError;
     QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &jsonError);
     file.close();
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
-        QMessageBox::warning(nullptr, QObject::tr("Fehler beim lesen der JSON Datei"), jsonError.errorString());
-        return false;
+        qWarning() << "Failed to parse JSON:" << jsonError.errorString();
+        return -1;
+    }
+
+    QJsonObject root = doc.object();
+    QJsonObject obj;
+    QJsonArray array;
+    QVariantMap values;
+    SqlTableModel* model;
+
+    obj = root["Global"].toObject();
+    if (obj["db_Version"].toInt() < 2000)
+        return -1;
+
+    model = bh->modelSud();
+    int sudId = model->getNextId();
+    values = root[model->tableName()].toObject().toVariantMap();
+    values["ID"] = sudId;
+    int sudRow = model->appendDirect(values);
+
+    model = bh->modelRasten();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelMalzschuettung();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelHopfengaben();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelHefegaben();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelWeitereZutatenGaben();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelSchnellgaerverlauf();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelHauptgaerverlauf();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelNachgaerverlauf();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelBewertungen();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelAnhang();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelEtiketten();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
+    model = bh->modelTags();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        if (values["Global"].toBool())
+            continue;
+        values["SudID"] = sudId;
+        values.remove("Global");
+        model->appendDirect(values);
+    }
+
+    bh->modelSud()->update(sudRow);
+    return sudRow;
+}
+
+int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileName)
+{
+    // https://www.maischemalzundmehr.de/rezept.json.txt
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly))
+        return -1;
+
+    QJsonParseError jsonError;
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &jsonError);
+    file.close();
+    if (jsonError.error != QJsonParseError::ParseError::NoError)
+    {
+        qWarning() << "Failed to parse JSON:" << jsonError.errorString();
+        return -1;
     }
 
     QJsonObject root = doc.object();
@@ -98,11 +227,11 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
     values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
     values[ModelSud::ColKochdauerNachBitterhopfung] = toDouble(root["Kochzeit_Wuerze"]);
     values[ModelSud::ColVergaerungsgrad] = toDouble(root["Endvergaerungsgrad"]);
-    values[ModelSud::ColKommentar] = QString(QObject::tr("Rezept aus MaischMalzundMehr\n"
+    values[ModelSud::ColKommentar] = QString("Rezept aus MaischeMalzundMehr\n"
                                               "<b>Autor: </b> %1\n"
                                               "<b>Datum: </b> %2\n"
                                               "<b>Sorte: </b> %3\n\n"
-                                              "%4\n\n%5"))
+                                              "%4\n\n%5")
                             .arg(root["Autor"].toString())
                             .arg(root["Datum"].toString())
                             .arg(root["Sorte"].toString())
@@ -120,14 +249,14 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         {
             values.clear();
             values[ModelRasten::ColSudID] = sudId;
-            values[ModelRasten::ColName] = QString(QObject::tr("%1. Rast")).arg(i);
+            values[ModelRasten::ColName] = QString("%1. Rast").arg(i);
             values[ModelRasten::ColTemp] = toDouble(root[QString("Infusion_Rasttemperatur%1").arg(i)]);
             values[ModelRasten::ColDauer] = toDouble(root[QString("Infusion_Rastzeit%1").arg(i)]);
             bh->modelRasten()->append(values);
         }
         values.clear();
         values[ModelRasten::ColSudID] = sudId;
-        values[ModelRasten::ColName] = QObject::tr("Abmaischen");
+        values[ModelRasten::ColName] = "Abmaischen";
         values[ModelRasten::ColTemp] = toDouble(root["Abmaischtemperatur"]);
         values[ModelRasten::ColDauer] = 10;
         bh->modelRasten()->append(values);
@@ -231,12 +360,12 @@ bool ImportExport::importMaischeMalzundMehr(const QString &fileName, int *_sudRo
         values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
         bh->modelWeitereZutatenGaben()->append(values);
     }
-    if (_sudRow)
-        *_sudRow = sudRow;
-    return true;
+
+    bh->modelSud()->update(sudRow);
+    return sudRow;
 }
 
-bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
+int ImportExport::importBeerXml(Brauhelfer* bh, const QString &fileName)
 {
     int sudRow = -1;
     const QString BeerXmlVersion = "1";
@@ -244,7 +373,7 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
     // http://www.beerxml.com/
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
-        return false;
+        return -1;
 
     QString xmlError;
     QDomDocument doc("");
@@ -252,13 +381,13 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
     file.close();
     if (!xmlError.isEmpty())
     {
-        QMessageBox::warning(nullptr, QObject::tr("Fehler beim lesen der XML Datei"), xmlError);
-        return false;
+        qWarning() << "Failed to parse XML:" << xmlError;
+        return -1;
     }
 
     QDomElement root = doc.documentElement();
     if (root.tagName() != "RECIPES")
-        return false;
+        return -1;
 
     for(QDomNode nRecipe = root.firstChildElement("RECIPE"); !nRecipe.isNull(); nRecipe = nRecipe.nextSiblingElement("RECIPE"))
     {
@@ -420,12 +549,147 @@ bool ImportExport::importBeerXml(const QString &fileName, int* _sudRow)
             bh->modelWeitereZutatenGaben()->append(values);
         }
     }
-    if (_sudRow)
-        *_sudRow = sudRow;
+
+    bh->modelSud()->update(sudRow);
+    return sudRow;
+}
+
+bool ImportExport::exportKbh(Brauhelfer* bh, const QString &fileName, int sudRow)
+{
+    QJsonObject root;
+    SqlTableModel* model;
+    ProxyModel proxy;
+    QVariantList list;
+
+    int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
+    QRegExp regExpId(QString("^%1$").arg(sudId), Qt::CaseInsensitive, QRegExp::RegExp);
+
+    root["Global"] = QJsonObject({{"db_Version", bh->databaseVersion()}});
+
+    root[bh->modelSud()->tableName()] = QJsonObject::fromVariantMap(bh->modelSud()->toVariantMap(sudRow, {ModelSud::ColID}));
+
+    model = bh->modelRasten();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelRasten::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelRasten::ColID, ModelRasten::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelMalzschuettung();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelHopfengaben();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelHopfengaben::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelHefegaben();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelHefegaben::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHefegaben::ColID, ModelHefegaben::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelWeitereZutatenGaben();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelSchnellgaerverlauf();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelSchnellgaerverlauf::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelHauptgaerverlauf();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelHauptgaerverlauf::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelNachgaerverlauf();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelNachgaerverlauf::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelBewertungen();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelBewertungen::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelBewertungen::ColID, ModelBewertungen::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelAnhang();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelAnhang::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelAnhang::ColID, ModelAnhang::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelEtiketten();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelEtiketten::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelEtiketten::ColID, ModelEtiketten::ColSudID}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelTags();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelTags::ColSudID);
+    proxy.setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(sudId), Qt::CaseInsensitive, QRegExp::RegExp));
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+    {
+        QVariantMap values = model->toVariantMap(proxy.mapRowToSource(row), {ModelTags::ColID, ModelTags::ColSudID});
+        values["Global"] = proxy.data(row, ModelTags::ColGlobal).toBool();
+        list.append(values);
+    }
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly | QFile::Text))
+        return false;
+    QJsonDocument doc(root);
+    file.write(doc.toJson());
+    file.close();
     return true;
 }
 
-bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
+bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileName, int sudRow)
 {
     ProxyModel model;
     int n;
@@ -603,7 +867,7 @@ bool ImportExport::exportMaischeMalzundMehr(const QString &fileName, int sudRow)
     return true;
 }
 
-bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
+bool ImportExport::exportBeerXml(Brauhelfer* bh, const QString &fileName, int sudRow)
 {
     const QString BeerXmlVersion = "1";
 
@@ -611,8 +875,6 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     QString str;
     ProxyModel model;
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
-    bool gebraut = status != Brauhelfer::SudStatus::Rezept;
 
     QDomDocument doc("");
     QDomText text;
@@ -634,7 +896,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     Rezept.appendChild(element);
 
     element = doc.createElement("NAME");
-    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString());
+    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString().toHtmlEscaped());
     element.appendChild(text);
     Rezept.appendChild(element);
 
@@ -664,7 +926,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     Rezept.appendChild(element);
 
     element = doc.createElement("EFFICIENCY");
-    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, gebraut ? ModelSud::Colerg_EffektiveAusbeute : ModelSud::ColAnlageSudhausausbeute).toDouble(), 'f', 1));
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1));
     element.appendChild(text);
     Rezept.appendChild(element);
 
@@ -677,12 +939,12 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     style.appendChild(element);
 
     element = doc.createElement("NAME");
-    text = doc.createTextNode("Unbekannt");
+    text = doc.createTextNode("Unknown");
     element.appendChild(text);
     style.appendChild(element);
 
     element = doc.createElement("CATEGORY");
-    text = doc.createTextNode("Unbekannt");
+    text = doc.createTextNode("Unknown");
     element.appendChild(text);
     style.appendChild(element);
 
@@ -777,7 +1039,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("NAME");
-        text = doc.createTextNode(model.data(row, ModelHopfengaben::ColName).toString());
+        text = doc.createTextNode(model.data(row, ModelHopfengaben::ColName).toString().toHtmlEscaped());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -847,7 +1109,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             Anteil.appendChild(element);
 
             element = doc.createElement("NAME");
-            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString());
+            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString().toHtmlEscaped());
             element.appendChild(text);
             Anteil.appendChild(element);
 
@@ -866,11 +1128,11 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             element.appendChild(text);
             Anteil.appendChild(element);
 
-            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
+            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString().toHtmlEscaped();
             if (!str.isEmpty())
             {
                 element = doc.createElement("NOTES");
-                text = doc.createTextNode(str.toHtmlEscaped());
+                text = doc.createTextNode(str);
                 element.appendChild(text);
                 Anteil.appendChild(element);
             }
@@ -931,7 +1193,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("NAME");
-        text = doc.createTextNode(model.data(row, ModelMalzschuettung::ColName).toString());
+        text = doc.createTextNode(model.data(row, ModelMalzschuettung::ColName).toString().toHtmlEscaped());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -975,7 +1237,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             Anteil.appendChild(element);
 
             element = doc.createElement("NAME");
-            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString());
+            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString().toHtmlEscaped());
             element.appendChild(text);
             Anteil.appendChild(element);
 
@@ -1027,11 +1289,11 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
                 Anteil.appendChild(element);
             }
 
-            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
+            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString().toHtmlEscaped();
             if (!str.isEmpty())
             {
                 element = doc.createElement("NOTES");
-                text = doc.createTextNode(str.toHtmlEscaped());
+                text = doc.createTextNode(str);
                 element.appendChild(text);
                 Anteil.appendChild(element);
             }
@@ -1054,7 +1316,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("NAME");
-        text = doc.createTextNode(model.data(row, ModelHefegaben::ColName).toString());
+        text = doc.createTextNode(model.data(row, ModelHefegaben::ColName).toString().toHtmlEscaped());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1110,7 +1372,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             Anteil.appendChild(element);
 
             element = doc.createElement("NAME");
-            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString());
+            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString().toHtmlEscaped());
             element.appendChild(text);
             Anteil.appendChild(element);
 
@@ -1173,11 +1435,11 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
             element.appendChild(text);
             Anteil.appendChild(element);
 
-            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
+            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString().toHtmlEscaped();
             if (!str.isEmpty())
             {
                 element = doc.createElement("NOTES");
-                text = doc.createTextNode(str.toHtmlEscaped());
+                text = doc.createTextNode(str);
                 element.appendChild(text);
                 Anteil.appendChild(element);
             }
@@ -1193,7 +1455,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     waters.appendChild(element);
 
     element = doc.createElement("NAME");
-    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString());
+    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString().toHtmlEscaped());
     element.appendChild(text);
     waters.appendChild(element);
 
@@ -1295,7 +1557,7 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("NAME");
-        text = doc.createTextNode(model.data(row, ModelRasten::ColName).toString());
+        text = doc.createTextNode(model.data(row, ModelRasten::ColName).toString().toHtmlEscaped());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1324,7 +1586,6 @@ bool ImportExport::exportBeerXml(const QString &fileName, int sudRow)
     QString strXml;
     QTextStream xml(&strXml);
     doc.save(xml, 2);
-    encodeHtml(strXml);
     out << strXml;
     file.close();
     return true;

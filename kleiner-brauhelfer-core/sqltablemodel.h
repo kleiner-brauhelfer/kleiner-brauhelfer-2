@@ -146,6 +146,13 @@ public:
     Q_INVOKABLE int appendDirect(const QMap<int, QVariant> &values = QMap<int, QVariant>());
 
     /**
+     * @brief Appends a new row directly to the table without calculating dependencies
+     * @param values Field values
+     * @return Index of appended row
+     */
+    Q_INVOKABLE int appendDirect(const QVariantMap &values);
+
+    /**
      * @brief Emits the modified signal
      * @note Can be usefull in combination with blockSignals() and appendDirect()
      */
@@ -191,6 +198,20 @@ public:
      * @return Values
      */
     virtual QMap<int, QVariant> copyValues(int row) const;
+
+    /**
+     * @brief toVariantMap
+     * @param row
+     * @param ignoreCols
+     * @return
+     */
+    QVariantMap toVariantMap(int row, QList<int> ignoreCols = QList<int>()) const;
+
+    /**
+     * @brief getNextId
+     * @return
+     */
+    int getNextId() const;
 
 public Q_SLOTS:
 
@@ -262,12 +283,6 @@ protected:
      * @return
      */
     QString getUniqueName(const QModelIndex &index, const QVariant &value, bool ignoreIndexRow = false) const;
-
-    /**
-     * @brief getNextId
-     * @return
-     */
-    int getNextId() const;
 
 private Q_SLOTS:
 

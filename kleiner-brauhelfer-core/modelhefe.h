@@ -19,7 +19,6 @@ public:
         ColMenge,
         ColTypOGUG,
         ColTypTrFl,
-        ColVerpackungsmenge,
         ColWuerzemenge,
         ColSedimentation,
         ColEVG,

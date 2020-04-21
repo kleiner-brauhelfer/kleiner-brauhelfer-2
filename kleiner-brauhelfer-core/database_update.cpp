@@ -1010,6 +1010,7 @@ bool Database::update()
 
             // Hefe
             //  - neue Spalte 'Alternativen'
+            //  - Spalte gelöscht 'Verpackungsmenge'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
             //  - Spalte unbenannt 'SED' -> 'Sedimentation' TEXT
             sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
@@ -1023,7 +1024,6 @@ bool Database::update()
                 "Menge INTEGER DEFAULT 0,"
                 "TypOGUG INTEGER DEFAULT 0,"
                 "TypTrFl INTEGER DEFAULT 0,"
-                "Verpackungsmenge TEXT,"
                 "Wuerzemenge REAL DEFAULT 0,"
                 "Sedimentation TEXT,"
                 "EVG TEXT,"
@@ -1040,7 +1040,6 @@ bool Database::update()
                 "Menge,"
                 "TypOGUG,"
                 "TypTrFl,"
-                "Verpackungsmenge,"
                 "Wuerzemenge,"
                 "Eigenschaften,"
                 "Sedimentation,"
@@ -1056,7 +1055,6 @@ bool Database::update()
                 "Menge,"
                 "TypOGUG,"
                 "TypTrFl,"
-                "Verpackungsmenge,"
                 "Wuerzemenge,"
                 "Eigenschaften,"
                 "Sedimentation,"

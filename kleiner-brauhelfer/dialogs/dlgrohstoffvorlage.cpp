@@ -297,7 +297,6 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
                 mValues.insert(ModelHefe::ColTypTrFl, 1);
             else if (typ == "flüssig")
                 mValues.insert(ModelHefe::ColTypTrFl, 2);
-            mValues.insert(ModelHefe::ColVerpackungsmenge, index.sibling(index.row(), header->logicalIndex(3)).data());
             mValues.insert(ModelHefe::ColWuerzemenge, index.sibling(index.row(), header->logicalIndex(4)).data().toInt());
             mValues.insert(ModelHefe::ColTemperatur, index.sibling(index.row(), header->logicalIndex(5)).data());
             mValues.insert(ModelHefe::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(6)).data());

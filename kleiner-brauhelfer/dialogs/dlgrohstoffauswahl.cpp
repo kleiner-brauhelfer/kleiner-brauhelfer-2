@@ -38,6 +38,9 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
     ProxyModel *proxy = new ProxyModelRohstoff(this);
     TableView *table = ui->tableView;
 
+    table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
+    table->verticalHeader()->setMinimumSectionSize(table->verticalHeader()->defaultSectionSize());
+
     switch (mRohstoff)
     {
     case Brauhelfer::RohstoffTyp::Malz:

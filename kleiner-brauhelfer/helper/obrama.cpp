@@ -44,7 +44,7 @@ bool OBraMa::getUpdateDates()
     QJsonDocument json = QJsonDocument::fromJson(data, &jsonError);
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
-        qWarning("oBraMa: Failed to parse JSON");
+        qWarning() << "oBraMa: Failed to parse JSON:" << jsonError.errorString();
         return false;
     }
 

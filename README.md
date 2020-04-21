@@ -34,6 +34,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ### Version 2.2.0 (in Entwicklung)
 - Neu: Datenbankversion **2004**
+- Neu: Suche in Rohstoffvorlage durchsucht alle Spalten
+- Neu: Neue Import- & Exportfunktion (JSON Format), welche alle Suddaten enthält
 - Neu: Datenbankbereinigung sucht ungültige Werte
 - Neu: Verschiedene Reiter lassen sich verstecken
 - Fix: "Sud löschen" bei nicht-gespeichertem Sud löscht auch Einträge aus anderen Tabellen

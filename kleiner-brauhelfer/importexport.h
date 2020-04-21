@@ -3,13 +3,17 @@
 
 #include <QString>
 
+class Brauhelfer;
+
 class ImportExport
 {
 public:
-    static bool importMaischeMalzundMehr(const QString &fileName, int* sudRow = nullptr);
-    static bool importBeerXml(const QString &fileName, int* sudRow = nullptr);
-    static bool exportMaischeMalzundMehr(const QString &fileName, int sudRow);
-    static bool exportBeerXml(const QString &fileName, int sudRow);
+    static int importKbh(Brauhelfer* bh, const QString &fileName);
+    static int importMaischeMalzundMehr(Brauhelfer* bh, const QString &fileName);
+    static int importBeerXml(Brauhelfer* bh, const QString &fileName);
+    static bool exportKbh(Brauhelfer* bh, const QString &fileName, int sudRow);
+    static bool exportMaischeMalzundMehr(Brauhelfer* bh, const QString &fileName, int sudRow);
+    static bool exportBeerXml(Brauhelfer* bh, const QString &fileName, int sudRow);
 };
 
 #endif // IMPORTEXPORT_H

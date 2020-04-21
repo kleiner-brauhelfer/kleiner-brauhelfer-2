@@ -50,6 +50,8 @@ public:
     Qt::SortOrder sortOrder() const;
     void setSortOrder(Qt::SortOrder order);
 
+    void setFilterKeyColumns(const QList<int> &columns);
+
     int filterDateColumn() const;
     void setFilterDateColumn(int column);
 
@@ -71,6 +73,7 @@ private:
 private:
     int mDeletedColumn;
     int mDateColumn;
+    QList<int> mFilterColumns;
     QDateTime mMinDate;
     QDateTime mMaxDate;
 };

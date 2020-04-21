@@ -81,5 +81,7 @@ void ModelTags::defaultValues(QMap<int, QVariant> &values) const
     int sudId = -1;
     if (values.contains(ColSudID))
         sudId = values[ColSudID].toInt();
+    else
+        values[ColSudID] = -1;
     values[ColKey] = getUniqueName(index(0, ColKey), values[ColKey], sudId, true);
 }

@@ -2,7 +2,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileDialog>
-#include <QSortFilterProxyModel>
+#include "proxymodel.h"
 #include "settings.h"
 #include "model/dsvtablemodel.h"
 #include "brauhelfer.h"
@@ -101,8 +101,8 @@ void DlgRohstoffVorlage::setModel()
         DsvTableModel* model = new DsvTableModel(this);
         model->loadFromFile(file.fileName(), true, isOBraMa() ? ',' : ';');
 
-        QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel();
-        proxyModel->setFilterKeyColumn(0);
+        ProxyModel* proxyModel = new ProxyModel();
+        proxyModel->setFilterKeyColumn(-1);
         proxyModel->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
         proxyModel->setSourceModel(model);
         TableView *table = ui->tableView;
@@ -113,16 +113,18 @@ void DlgRohstoffVorlage::setModel()
         {
             table->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
             int col;
+            QList<int> filterColumns;
             switch (mRohstoffart)
             {
             case MalzOBraMa:
                 col = model->fieldIndex("name");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
-                proxyModel->setFilterKeyColumn(col);
+                filterColumns.append(col);
                 col = model->fieldIndex("alias_name");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Aliasname"));
+                filterColumns.append(col);
                 col = model->fieldIndex("color");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Farbe [EBC]"));
@@ -132,12 +134,13 @@ void DlgRohstoffVorlage::setModel()
                 col = model->fieldIndex("notes");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
+                filterColumns.append(col);
                 break;
             case HopfenOBraMa:
                 col = model->fieldIndex("name");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
-                proxyModel->setFilterKeyColumn(col);
+                filterColumns.append(col);
                 col = model->fieldIndex("category");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
@@ -147,15 +150,17 @@ void DlgRohstoffVorlage::setModel()
                 col = model->fieldIndex("aroma");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
+                filterColumns.append(col);
                 col = model->fieldIndex("replacement");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
+                filterColumns.append(col);
                 break;
             case HefeOBraMa:
                 col = model->fieldIndex("name");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
-                proxyModel->setFilterKeyColumn(col);
+                filterColumns.append(col);
                 col = model->fieldIndex("category");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Kategorie"));
@@ -165,28 +170,33 @@ void DlgRohstoffVorlage::setModel()
                 col = model->fieldIndex("notes");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
+                filterColumns.append(col);
                 col = model->fieldIndex("use_for");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Bierstil"));
+                filterColumns.append(col);
                 col = model->fieldIndex("replacement");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
+                filterColumns.append(col);
                 break;
             case WZutatenOBraMa:
                 col = model->fieldIndex("name");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
-                proxyModel->setFilterKeyColumn(col);
+                filterColumns.append(col);
                 col = model->fieldIndex("category");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
                 col = model->fieldIndex("use_for");
                 table->cols.append({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Verwendung"));
+                filterColumns.append(col);
                 break;
             default:
                 break;
             }
+            proxyModel->setFilterKeyColumns(filterColumns);
             table->build();
         }
         else
@@ -213,8 +223,8 @@ QMap<int, QVariant> DlgRohstoffVorlage::values() const
 
 void DlgRohstoffVorlage::on_lineEditFilter_textChanged(const QString &txt)
 {
-    QSortFilterProxyModel *model = qobject_cast<QSortFilterProxyModel*>(ui->tableView->model());
-    model->setFilterFixedString(txt);
+    ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
+    model->setFilterRegExp(QRegExp(txt, Qt::CaseInsensitive, QRegExp::FixedString));
 }
 
 void DlgRohstoffVorlage::on_buttonBox_accepted()
@@ -226,7 +236,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         double fVal;
         double iVal;
         QHeaderView *header = ui->tableView->horizontalHeader();
-        QSortFilterProxyModel *proxy = qobject_cast<QSortFilterProxyModel*>(ui->tableView->model());
+        ProxyModel *proxy = qobject_cast<ProxyModel*>(ui->tableView->model());
         DsvTableModel *model = static_cast<DsvTableModel*>(proxy->sourceModel());
         switch (mRohstoffart)
         {
@@ -372,7 +382,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
 
 void DlgRohstoffVorlage::slot_save()
 {
-    QSortFilterProxyModel *model = qobject_cast<QSortFilterProxyModel*>(ui->tableView->model());
+    ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
     static_cast<DsvTableModel*>(model->sourceModel())->save(getFileName(true), true, isOBraMa() ? ',' : ';');
 }
 
@@ -419,7 +429,7 @@ void DlgRohstoffVorlage::on_btn_Export_clicked()
                                                     "CSV (*.csv)");
     if (!fileName.isEmpty())
     {
-        QSortFilterProxyModel *model = qobject_cast<QSortFilterProxyModel*>(ui->tableView->model());
+        ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
         static_cast<DsvTableModel*>(model->sourceModel())->save(fileName, true, ';');
     }
 }

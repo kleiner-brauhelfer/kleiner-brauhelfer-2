@@ -565,19 +565,24 @@ void TabSudAuswahl::rezeptImportieren()
     QString filter;
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString filePath = QFileDialog::getOpenFileName(this, tr("Rezept Import"),
-                                     path, "MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
+                                     path, "kleiner-brauhelfer (*.json);;MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
     if (!filePath.isEmpty())
     {
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
         try
         {
             int sudRow = -1;
-            bool ok = false;
-            if (filter == "MaischeMalzundMehr (*.json)")
-                ok = ImportExport::importMaischeMalzundMehr(filePath, &sudRow);
+            if (filter == "kleiner-brauhelfer (*.json)")
+                sudRow = ImportExport::importKbh(bh, filePath);
+                if (sudRow < 0)
+                    sudRow = ImportExport::importMaischeMalzundMehr(bh, filePath);
+            else if (filter == "MaischeMalzundMehr (*.json)")
+                sudRow = ImportExport::importMaischeMalzundMehr(bh, filePath);
+                if (sudRow < 0)
+                    sudRow = ImportExport::importKbh(bh, filePath);
             else if (filter == "BeerXML (*.xml)")
-                ok = ImportExport::importBeerXml(filePath, &sudRow);
-            if (ok)
+                sudRow = ImportExport::importBeerXml(bh, filePath);
+            if (sudRow >= 0)
             {
                 QMessageBox::information(this, tr("Rezept Import"), tr("Das Rezept wurde erfolgreich importiert."));
                 if (!ui->cbRezept->isChecked())
@@ -619,25 +624,40 @@ void TabSudAuswahl::rezeptExportieren(bool loadedSud)
     if (loadedSud && !bh->sud()->isLoaded())
         return;
 
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    gSettings->beginGroup("General");
-    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+    QList<int> list;
     if (loadedSud)
     {
+        list.append(bh->sud()->row());
+    }
+    else
+    {
+        ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+        for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
+        {
+            list.append(model->mapRowToSource(index.row()));
+        }
+    }
+
+    gSettings->beginGroup("General");
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+    for (int row : list)
+    {
+        QString sudname = bh->modelSud()->data(row, ModelSud::ColSudname).toString();
         QString filter;
         QString filePath = QFileDialog::getSaveFileName(this, tr("Sud Export"),
-                                         path + "/" + bh->sud()->getSudname(), "MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
+                                         path + "/" + sudname, "kleiner-brauhelfer (*.json);;MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
         if (!filePath.isEmpty())
         {
-            int row = model->getRowWithValue(ModelSud::ColID, bh->sud()->id());
             gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
             try
             {
                 bool ok = false;
-                if (filter == "MaischeMalzundMehr (*.json)")
-                    ok = ImportExport::exportMaischeMalzundMehr(filePath, model->mapRowToSource(row));
+                if (filter == "kleiner-brauhelfer (*.json)")
+                    ok = ImportExport::exportKbh(bh, filePath, row);
+                else if (filter == "MaischeMalzundMehr (*.json)")
+                    ok = ImportExport::exportMaischeMalzundMehr(bh, filePath, row);
                 else if (filter == "BeerXML (*.xml)")
-                    ok = ImportExport::exportBeerXml(filePath, model->mapRowToSource(row));
+                    ok = ImportExport::exportBeerXml(bh, filePath, row);
                 if (ok)
                     QMessageBox::information(this, tr("Sud Export"), tr("Der Sud wurde erfolgreich exportiert."));
                 else
@@ -650,40 +670,6 @@ void TabSudAuswahl::rezeptExportieren(bool loadedSud)
             catch (...)
             {
                 QMessageBox::warning(this, tr("Fehler beim Exportieren"), QObject::tr("Unbekannter Fehler."));
-            }
-        }
-    }
-    else
-    {
-        for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
-        {
-            QString sudname = index.sibling(index.row(), ModelSud::ColSudname).data().toString();
-            QString filter;
-            QString filePath = QFileDialog::getSaveFileName(this, tr("Sud Export"),
-                                             path + "/" + sudname, "MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
-            if (!filePath.isEmpty())
-            {
-                gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
-                try
-                {
-                    bool ok = false;
-                    if (filter == "MaischeMalzundMehr (*.json)")
-                        ok = ImportExport::exportMaischeMalzundMehr(filePath, model->mapRowToSource(index.row()));
-                    else if (filter == "BeerXML (*.xml)")
-                        ok = ImportExport::exportBeerXml(filePath, model->mapRowToSource(index.row()));
-                    if (ok)
-                        QMessageBox::information(this, tr("Sud Export"), tr("Der Sud wurde erfolgreich exportiert."));
-                    else
-                        QMessageBox::warning(this, tr("Sud Export"), tr("Der Sud konnte nicht exportiert werden."));
-                }
-                catch (const std::exception& ex)
-                {
-                    QMessageBox::warning(this, tr("Fehler beim Exportieren"), ex.what());
-                }
-                catch (...)
-                {
-                    QMessageBox::warning(this, tr("Fehler beim Exportieren"), QObject::tr("Unbekannter Fehler."));
-                }
             }
         }
     }

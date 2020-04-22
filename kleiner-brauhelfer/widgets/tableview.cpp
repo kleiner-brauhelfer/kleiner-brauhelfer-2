@@ -37,6 +37,46 @@ void TableView::restoreDefaultState()
     horizontalHeader()->restoreState(mDefaultState);
 }
 
+bool TableView::restoreState(const QByteArray &state)
+{
+    bool ret = horizontalHeader()->restoreState(state);
+    if (!ret)
+        return false;
+    if (!cols.empty())
+    {
+        QList<int> mustHave;
+        QList<int> canHave;
+        for (const ColumnDefinition& col : cols)
+        {
+            canHave.append(col.col);
+            if (!col.canHide)
+                mustHave.append(col.col);
+        }
+
+        bool restoreDefault = false;
+        for (int col = 0; col < horizontalHeader()->count(); col++)
+        {
+            if (!horizontalHeader()->isSectionHidden(col))
+            {
+                if (!canHave.contains(col))
+                {
+                    restoreDefault = true;
+                    break;
+                }
+                if (mustHave.contains(col))
+                {
+                    mustHave.removeOne(col);
+                }
+            }
+        }
+        if (!mustHave.empty())
+            restoreDefault = true;
+        if (restoreDefault)
+            restoreDefaultState();
+    }
+    return true;
+}
+
 void TableView::setDefaultContextMenu()
 {
     QHeaderView *header = horizontalHeader();

@@ -51,6 +51,7 @@ private slots:
     void on_actionReiterZusammenfassung_triggered(bool checked);
     void on_actionReiterEtikette_triggered(bool checked);
     void on_actionReiterBewertung_triggered(bool checked);
+    void on_actionReiterBrauuebersicht_triggered(bool checked);
     void on_actionReiterDatenbank_triggered(bool checked);
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
@@ -74,6 +75,7 @@ private:
     int mTabIndexZusammenfassung;
     int mTabIndexEtikette;
     int mTabIndexBewertung;
+    int mTabIndexBrauuebersicht;
     int mTabIndexDatenbank;
 };
 

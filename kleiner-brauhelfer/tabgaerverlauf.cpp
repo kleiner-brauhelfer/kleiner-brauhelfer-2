@@ -71,7 +71,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->cols.append({ModelSchnellgaerverlauf::ColBemerkung, true, true, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
+    table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -97,7 +97,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->cols.append({ModelHauptgaerverlauf::ColBemerkung, true, true, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
+    table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -120,7 +120,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->cols.append({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
+    table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));

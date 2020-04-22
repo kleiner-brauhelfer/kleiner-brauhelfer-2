@@ -104,7 +104,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableMalzState").toByteArray());
+    table->restoreState(gSettings->value("tableMalzState").toByteArray());
 
     model = bh->modelHopfen();
     model->setHeaderData(ModelHopfen::ColName, Qt::Horizontal, tr("Name"));
@@ -139,7 +139,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableHopfenState").toByteArray());
+    table->restoreState(gSettings->value("tableHopfenState").toByteArray());
 
     model = bh->modelHefe();
     model->setHeaderData(ModelHefe::ColName, Qt::Horizontal, tr("Name"));
@@ -180,7 +180,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableHefeState").toByteArray());
+    table->restoreState(gSettings->value("tableHefeState").toByteArray());
 
     model = bh->modelWeitereZutaten();
     model->setHeaderData(ModelWeitereZutaten::ColName, Qt::Horizontal, tr("Name"));
@@ -217,7 +217,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
+    table->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
 
     model = bh->modelWasser();
     model->setHeaderData(ModelWasser::ColName, Qt::Horizontal, tr("Wasserprofil"));
@@ -229,7 +229,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelWasser::ColName, true, false, -1, nullptr});
     table->cols.append({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
     table->build();
-    table->horizontalHeader()->restoreState(gSettings->value("tableWasserState").toByteArray());
+    table->restoreState(gSettings->value("tableWasserState").toByteArray());
 
     int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)

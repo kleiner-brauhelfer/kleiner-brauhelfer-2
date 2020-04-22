@@ -65,6 +65,12 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
     on_actionReiterBewertung_triggered(ui->actionReiterBewertung->isChecked());
 
+    mTabIndexBrauuebersicht = ui->tabMain->indexOf(ui->tabBrauuebersicht);
+    gSettings->beginGroup("TabBrauuebersicht");
+    ui->actionReiterBrauuebersicht->setChecked(gSettings->value("visible", true).toBool());
+    gSettings->endGroup();
+    on_actionReiterBrauuebersicht_triggered(ui->actionReiterBrauuebersicht->isChecked());
+
     mTabIndexDatenbank = ui->tabMain->indexOf(ui->tabDatenbank);
     gSettings->beginGroup("TabDatenbank");
     ui->actionReiterDatenbank->setChecked(gSettings->value("visible", false).toBool());
@@ -81,8 +87,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->statusBar->showMessage(bh->databasePath());
 
     connect(ui->tabSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
-    ui->tabBrauUebersicht->setModel(ui->tabSudAuswahl->model());
-    connect(ui->tabBrauUebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
+    ui->tabBrauuebersicht->setModel(ui->tabSudAuswahl->model());
+    connect(ui->tabBrauuebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -91,9 +97,6 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(sudDataChanged(const QModelIndex&)));
 
     sudLoaded();
-
-    if (gSettings->isNewProgramVersion())
-        restoreView(false);
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
@@ -214,11 +217,14 @@ void MainWindow::saveSettings()
     gSettings->beginGroup("TabBewertung");
     gSettings->setValue("visible", ui->actionReiterBewertung->isChecked());
     gSettings->endGroup();
+    gSettings->beginGroup("TabBrauuebersicht");
+    gSettings->setValue("visible", ui->actionReiterBrauuebersicht->isChecked());
+    gSettings->endGroup();
     gSettings->beginGroup("TabDatenbank");
     gSettings->setValue("visible", ui->actionReiterDatenbank->isChecked());
     gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
-    ui->tabBrauUebersicht->saveSettings();
+    ui->tabBrauuebersicht->saveSettings();
     ui->tabRezept->saveSettings();
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
@@ -236,7 +242,7 @@ void MainWindow::restoreView(bool full)
     if (full)
         restoreState(mDefaultState);
     ui->tabSudAuswahl->restoreView(full);
-    ui->tabBrauUebersicht->restoreView(full);
+    ui->tabBrauuebersicht->restoreView(full);
     ui->tabRezept->restoreView(full);
     ui->tabBraudaten->restoreView(full);
     ui->tabAbfuelldaten->restoreView(full);
@@ -297,7 +303,7 @@ void MainWindow::sudLoaded()
     updateValues();
     if (bh->sud()->isLoaded())
     {
-        if (ui->tabMain->currentWidget() == ui->tabSudAuswahl || ui->tabMain->currentWidget() == ui->tabBrauUebersicht)
+        if (ui->tabMain->currentWidget() == ui->tabSudAuswahl || ui->tabMain->currentWidget() == ui->tabBrauuebersicht)
             ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
 }
@@ -606,6 +612,7 @@ void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
         ui->tabMain->setTabEnabled(mTabIndexZusammenfassung, loaded);
         mTabIndexEtikette++;
         mTabIndexBewertung++;
+        mTabIndexBrauuebersicht++;
         mTabIndexDatenbank++;
     }
     else
@@ -613,6 +620,7 @@ void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
         ui->tabMain->removeTab(mTabIndexZusammenfassung);
         mTabIndexEtikette--;
         mTabIndexBewertung--;
+        mTabIndexBrauuebersicht--;
         mTabIndexDatenbank--;
     }
 }
@@ -624,12 +632,14 @@ void MainWindow::on_actionReiterEtikette_triggered(bool checked)
         ui->tabMain->insertTab(mTabIndexEtikette, ui->tabEtikette, tr("Etikette"));
         ui->tabMain->setTabEnabled(mTabIndexEtikette, bh->sud()->isLoaded());
         mTabIndexBewertung++;
+        mTabIndexBrauuebersicht++;
         mTabIndexDatenbank++;
     }
     else
     {
         ui->tabMain->removeTab(mTabIndexEtikette);
         mTabIndexBewertung--;
+        mTabIndexBrauuebersicht--;
         mTabIndexDatenbank--;
     }
 }
@@ -640,11 +650,27 @@ void MainWindow::on_actionReiterBewertung_triggered(bool checked)
     {
         ui->tabMain->insertTab(mTabIndexBewertung, ui->tabBewertung, tr("Bewertung"));
         ui->tabMain->setTabEnabled(mTabIndexBewertung, bh->sud()->isLoaded());
+        mTabIndexBrauuebersicht++;
         mTabIndexDatenbank++;
     }
     else
     {
         ui->tabMain->removeTab(mTabIndexBewertung);
+        mTabIndexBrauuebersicht--;
+        mTabIndexDatenbank--;
+    }
+}
+
+void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
+{
+    if (checked)
+    {
+        ui->tabMain->insertTab(mTabIndexBrauuebersicht, ui->tabBrauuebersicht, tr("Brauübersicht"));
+        mTabIndexDatenbank++;
+    }
+    else
+    {
+        ui->tabMain->removeTab(mTabIndexBrauuebersicht);
         mTabIndexDatenbank--;
     }
 }

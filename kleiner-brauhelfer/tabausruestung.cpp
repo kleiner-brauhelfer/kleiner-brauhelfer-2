@@ -58,7 +58,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->cols.append({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
+    table->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
 
     table = ui->tableViewGeraete;
     model = new ProxyModel(this);
@@ -69,7 +69,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->cols.append({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableStateGeraete").toByteArray());
+    table->restoreState(gSettings->value("tableStateGeraete").toByteArray());
 
     table = ui->tableViewSude;
     model = new ProxyModelSudColored(this);
@@ -84,7 +84,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->cols.append({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->horizontalHeader()->restoreState(gSettings->value("tableStateSude").toByteArray());
+    table->restoreState(gSettings->value("tableStateSude").toByteArray());
 
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());

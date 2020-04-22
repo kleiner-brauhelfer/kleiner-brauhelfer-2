@@ -58,7 +58,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
-        table->horizontalHeader()->restoreState(gSettings->value("tableStateMalz").toByteArray());
+        table->restoreState(gSettings->value("tableStateMalz").toByteArray());
         break;
 
     case Brauhelfer::RohstoffTyp::Hopfen:
@@ -76,7 +76,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
-        table->horizontalHeader()->restoreState(gSettings->value("tableStateHopfen").toByteArray());
+        table->restoreState(gSettings->value("tableStateHopfen").toByteArray());
         break;
 
     case Brauhelfer::RohstoffTyp::Hefe:
@@ -96,7 +96,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
-        table->horizontalHeader()->restoreState(gSettings->value("tableStateHefe").toByteArray());
+        table->restoreState(gSettings->value("tableStateHefe").toByteArray());
         break;
 
     case Brauhelfer::RohstoffTyp::Zusatz:
@@ -115,7 +115,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
-        table->horizontalHeader()->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
+        table->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
         break;
     }
     table->setDefaultContextMenu();

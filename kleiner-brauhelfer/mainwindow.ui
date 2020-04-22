@@ -99,7 +99,7 @@
             <string>Bewertung</string>
            </attribute>
           </widget>
-          <widget class="TabBrauUebersicht" name="tabBrauUebersicht">
+          <widget class="TabBrauUebersicht" name="tabBrauuebersicht">
            <attribute name="title">
             <string>Brauübersicht</string>
            </attribute>
@@ -185,6 +185,8 @@
      <addaction name="actionReiterZusammenfassung"/>
      <addaction name="actionReiterEtikette"/>
      <addaction name="actionReiterBewertung"/>
+     <addaction name="actionReiterBrauuebersicht"/>
+     <addaction name="separator"/>
      <addaction name="actionReiterDatenbank"/>
     </widget>
     <addaction name="actionWiederherstellen"/>
@@ -461,6 +463,14 @@
    </property>
    <property name="text">
     <string>Spickzettel/Zusammenfassung</string>
+   </property>
+  </action>
+  <action name="actionReiterBrauuebersicht">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Brauübersicht</string>
    </property>
   </action>
  </widget>

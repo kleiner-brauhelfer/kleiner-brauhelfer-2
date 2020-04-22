@@ -25,6 +25,7 @@ public:
 
 public slots:
     void restoreDefaultState();
+    bool restoreState(const QByteArray &state);
 
 private slots:
     void setColumnVisible(bool visible);

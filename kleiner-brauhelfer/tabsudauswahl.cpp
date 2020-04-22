@@ -60,7 +60,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(ModelSud::ColAusbeuteIgnorieren, Qt::Horizontal, tr("Für Durchschnitt Ignorieren"));
 
     TableView *table = ui->tableSudauswahl;
-    QHeaderView *header = table->horizontalHeader();
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
@@ -77,12 +76,12 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->cols.append({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
     table->build();
 
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
+    table->horizontalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(table->horizontalHeader(), SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
 
     gSettings->beginGroup("TabSudAuswahl");
 
-    header->restoreState(gSettings->value("tableSudAuswahlState").toByteArray());
+    table->restoreState(gSettings->value("tableSudAuswahlState").toByteArray());
 
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());

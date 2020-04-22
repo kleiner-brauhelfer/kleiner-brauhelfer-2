@@ -121,7 +121,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
     gSettings->beginGroup("TabBrauuebersicht");
 
-    table->horizontalHeader()->restoreState(gSettings->value("tableState").toByteArray());
+    table->restoreState(gSettings->value("tableState").toByteArray());
 
     ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
     ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());

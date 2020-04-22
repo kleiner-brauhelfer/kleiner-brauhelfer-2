@@ -92,9 +92,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     sudLoaded();
 
-    if (gSettings->isNewProgramVersion())
-        restoreView(false);
-
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
 }

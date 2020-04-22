@@ -26,6 +26,8 @@ public:
         ColRandLinks,
         ColRandRechts,
         ColRandUnten,
+        ColPapiergroesse,
+        ColAusrichtung,
         // virtual
         ColDeleted,
         // number of columns

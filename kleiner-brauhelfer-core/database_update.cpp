@@ -1121,6 +1121,12 @@ bool Database::update()
             //  - neue Spalte 'Bemerkung'
             sqlExec(db, "ALTER TABLE Ausruestung ADD COLUMN Bemerkung TEXT");
 
+            // Etiketten
+            //  - neue Spalte 'Papiergroesse'
+            //  - neue Spalte 'Ausrichtung'
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0");
+
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();

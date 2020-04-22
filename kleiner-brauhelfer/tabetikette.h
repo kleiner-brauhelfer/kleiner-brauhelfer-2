@@ -37,10 +37,6 @@ private slots:
     void on_btnGroesseAusSvg_clicked();
     void on_tbAbstandHor_valueChanged(double value);
     void on_tbAbstandVert_valueChanged(double value);
-    void on_tbRandOben_valueChanged(double value);
-    void on_tbRandLinks_valueChanged(double value);
-    void on_tbRandRechts_valueChanged(double value);
-    void on_tbRandUnten_valueChanged(double value);
     void on_cbTagsErsetzen_stateChanged();
     void on_cbEditMode_clicked(bool checked);
     void on_tbTemplate_textChanged();
@@ -54,6 +50,8 @@ private:
     QString generateSvg(const QString &svg);
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
+    void loadPageLayout();
+    void savePageLayout();
 
 private:
     Ui::TabEtikette *ui;

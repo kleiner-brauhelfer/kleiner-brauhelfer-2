@@ -31,6 +31,10 @@ void ModelEtiketten::defaultValues(QMap<int, QVariant> &values) const
             values.insert(ColRandRechts, 5);
         if (!values.contains(ColRandUnten))
             values.insert(ColRandUnten, 15);
+        if (!values.contains(ColPapiergroesse))
+            values.insert(ColPapiergroesse, 0);
+        if (!values.contains(ColAusrichtung))
+            values.insert(ColAusrichtung, 0);
     }
     else
     {
@@ -52,5 +56,9 @@ void ModelEtiketten::defaultValues(QMap<int, QVariant> &values) const
             values.insert(ColRandRechts, data(row, ColRandRechts));
         if (!values.contains(ColRandUnten))
             values.insert(ColRandUnten, data(row, ColRandUnten));
+        if (!values.contains(ColPapiergroesse))
+            values.insert(ColPapiergroesse, data(row, ColPapiergroesse));
+        if (!values.contains(ColAusrichtung))
+            values.insert(ColAusrichtung, data(row, ColAusrichtung));
     }
 }

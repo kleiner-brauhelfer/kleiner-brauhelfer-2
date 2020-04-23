@@ -294,7 +294,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
         values.remove(ModelSud::ColBraudatum);
         values.remove(ModelSud::ColAbfuelldatum);
     }
-    row = modelSud()->append(values);
+    row = modelSud()->appendDirect(values);
 
     QVariant neueSudId = values.value(ModelSud::ColID);
     sudKopierenModel(modelRasten(), ModelRasten::ColSudID, sudId, {{ModelRasten::ColSudID, neueSudId}});
@@ -318,6 +318,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
         sudKopierenModel(modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudId, {{ModelNachgaerverlauf::ColSudID, neueSudId}});
         sudKopierenModel(modelBewertungen(), ModelBewertungen::ColSudID, sudId, {{ModelBewertungen::ColSudID, neueSudId}});
     }
+    modelSud()->update(row);
     return row;
 }
 
@@ -334,7 +335,7 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVar
                 values.insert(it.key(), it.value());
                 ++it;
             }
-            model->append(values);
+            model->appendDirect(values);
         }
     }
 }

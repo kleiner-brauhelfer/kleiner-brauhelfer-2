@@ -37,8 +37,9 @@ private slots:
     void on_tbAusbeute_valueChanged(double value);
     void on_sliderAusbeuteSude_valueChanged(int value);
     void on_tbVerdampfung_valueChanged(double value);
-    void on_tbNachguss_valueChanged(double value);
-    void on_tbFarbe_valueChanged(int value);
+    void on_tbKorrekturNachguss_valueChanged(double value);
+    void on_tbKorrekturFarbe_valueChanged(int value);
+    void on_tbKorrekturSollmenge_valueChanged(double value);
     void on_tbKosten_valueChanged(double value);
     void on_tbMaischebottichHoehe_valueChanged(double value);
     void on_tbMaischebottichDurchmesser_valueChanged(double value);

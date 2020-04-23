@@ -71,6 +71,7 @@ public:
         ColSWKochbeginn,
         // virtual
         ColDeleted,
+        ColMengeSoll,
         ColSWIst,
         ColSREIst,
         ColMengeIst,

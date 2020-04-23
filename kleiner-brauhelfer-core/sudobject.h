@@ -80,6 +80,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(QString, Wasserprofil, toString())
 
     // virtual fields in table Sud
+    Q_PROPERTY_SUD_READONLY(double, MengeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SREIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, MengeIst, toDouble())

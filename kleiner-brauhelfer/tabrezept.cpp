@@ -424,6 +424,8 @@ void TabRezept::updateValues()
     ui->lblMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureNGEinheit->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblAnlageName->setText(bh->sud()->getAnlage());
+    ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
+    ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());

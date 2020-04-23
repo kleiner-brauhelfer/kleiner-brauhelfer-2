@@ -19,6 +19,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     connect(this, SIGNAL(rowsInserted(const QModelIndex&,int,int)), this, SLOT(onModelReset()));
     connect(this, SIGNAL(rowsRemoved(const QModelIndex&,int,int)), this, SLOT(onModelReset()));
     connect(this, SIGNAL(rowChanged(const QModelIndex&)), this, SLOT(onRowChanged(const QModelIndex&)));
+    mVirtualField.append("MengeSoll");
     mVirtualField.append("SWIst");
     mVirtualField.append("SREIst");
     mVirtualField.append("MengeIst");
@@ -136,6 +137,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColGespeichert:
     {
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
+    }
+    case ColMengeSoll:
+    {
+        return data(idx.row(), ColMenge).toDouble() + dataAnlage(idx.row(), ModelAusruestung::ColKorrekturMenge).toDouble();
     }
     case ColSWIst:
     {
@@ -303,7 +308,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColMengeSollKochende:
     {
-        double mengeSoll = data(idx.row(), ColMenge).toDouble();
+        double mengeSoll = data(idx.row(), ColMengeSoll).toDouble();
         double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
         return mengeSoll / hgf;
     }
@@ -504,7 +509,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
             if (status == Brauhelfer::SudStatus::Rezept)
             {
-                double m = value.toDouble() + data(idx.row(), ColMenge).toDouble() - data(idx.row(), ColMengeSollKochende).toDouble();
+                double m = value.toDouble() + data(idx.row(), ColMengeSoll).toDouble() - data(idx.row(), ColMengeSollKochende).toDouble();
                 setData(idx.row(), ColWuerzemengeAnstellenTotal, m);
             }
             return true;
@@ -654,7 +659,7 @@ void ModelSud::update(int row)
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         // recipe
-        double mengeRecipe = data(row, ColMenge).toDouble();
+        double mengeRecipe = data(row, ColMengeSoll).toDouble();
         double swRecipe = data(row, ColSW).toDouble();
         double hgf = 1 + data(row, ColhighGravityFaktor).toInt() / 100.0;
 

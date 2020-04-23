@@ -600,6 +600,34 @@
             <property name="verticalSpacing">
              <number>4</number>
             </property>
+            <item row="0" column="2">
+             <widget class="DoubleSpinBox" name="tbKorrekturNachguss">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier entgegen der vom Kleinen Brauhelfer im Tab Rezept berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; nötig sein.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagsmenge&lt;/span&gt; immer mit den gleichen Werten abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="minimum">
+               <double>-9999.000000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.100000000000000</double>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="3">
              <widget class="QLabel" name="label_9">
               <property name="minimumSize">
@@ -621,7 +649,7 @@
              </widget>
             </item>
             <item row="1" column="2">
-             <widget class="SpinBox" name="tbFarbe">
+             <widget class="SpinBox" name="tbKorrekturFarbe">
               <property name="minimumSize">
                <size>
                 <width>60</width>
@@ -639,14 +667,27 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_Verdampfung_2">
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_69">
               <property name="text">
-               <string>Korrektur der Nachgussmenge</string>
+               <string>Betriebskosten (Wasser, Strom, Gas, etc.)</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="2">
+            <item row="3" column="2">
              <widget class="DoubleSpinBox" name="tbKosten">
               <property name="minimumSize">
                <size>
@@ -674,6 +715,13 @@
               </property>
              </widget>
             </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_Verdampfung_2">
+              <property name="text">
+               <string>Korrektur der Nachgussmenge</string>
+              </property>
+             </widget>
+            </item>
             <item row="1" column="3">
              <widget class="QLabel" name="label_6">
               <property name="minimumSize">
@@ -687,21 +735,38 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
+            <item row="3" column="3">
+             <widget class="QLabel" name="lblCurrency">
+              <property name="minimumSize">
                <size>
-                <width>20</width>
-                <height>20</height>
+                <width>30</width>
+                <height>0</height>
                </size>
               </property>
-             </spacer>
+             </widget>
             </item>
-            <item row="0" column="2">
-             <widget class="DoubleSpinBox" name="tbNachguss">
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_24">
+              <property name="text">
+               <string>Korrektur der Sollmenge</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLabel" name="label_25">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="DoubleSpinBox" name="tbKorrekturSollmenge">
               <property name="minimumSize">
                <size>
                 <width>60</width>
@@ -709,7 +774,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier entgegen der vom Kleinen Brauhelfer im Tab Rezept berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; nötig sein.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagsmenge&lt;/span&gt; immer mit den gleichen Werten abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Sollmenge&lt;/span&gt; eingetragen werden.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn konstant die gleiche Verlustmenge entsteht und die angepeilte Menge dadurch nicht erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -725,23 +790,6 @@
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_69">
-              <property name="text">
-               <string>Betriebskosten (Wasser, Strom, Gas, etc.)</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLabel" name="lblCurrency">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
               </property>
              </widget>
             </item>
@@ -1349,6 +1397,13 @@
           </widget>
          </item>
          <item>
+          <widget class="QLabel" name="lblInfo">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nachdem ein Anlagewert verändert wurde, muss der geladene Sud gegebenenfalls neu geladen werden oder ein &lt;span style=&quot; font-style:italic;&quot;&gt;relevanter&lt;/span&gt; Wert (z.B. Sollmenge) verändert werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -1413,8 +1468,8 @@
   <tabstop>tbVerdampfungMittel</tabstop>
   <tabstop>sliderAusbeuteSude</tabstop>
   <tabstop>tbAusbeuteSude</tabstop>
-  <tabstop>tbNachguss</tabstop>
-  <tabstop>tbFarbe</tabstop>
+  <tabstop>tbKorrekturNachguss</tabstop>
+  <tabstop>tbKorrekturFarbe</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>tbMaischebottichDurchmesser</tabstop>
   <tabstop>tbMaischebottichHoehe</tabstop>

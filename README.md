@@ -37,6 +37,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Neue Import- & Exportfunktion (JSON Format), welche alle Suddaten enthält
 - Neu: Datenbankbereinigung sucht ungültige Werte
 - Neu: Verschiedene Reiter lassen sich verstecken
+- Neu: Neue Anlageeinstellung: Korrektur der Sollmenge, um Verluste zu kompensieren
 - Fix: "Sud löschen" bei nicht-gespeichertem Sud löscht auch Einträge aus anderen Tabellen
 
 ### Version 2.1.2 (12.04.2020)

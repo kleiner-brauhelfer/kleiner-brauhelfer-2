@@ -118,7 +118,7 @@ void WdgHopfenGabe::updateValues(bool full)
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(data(ModelHopfengaben::Colerg_Menge).toDouble());
     if (!ui->tbMengeProLiter->hasFocus())
-        ui->tbMengeProLiter->setValue(data(ModelHopfengaben::Colerg_Menge).toDouble() / bh->sud()->getMenge());
+        ui->tbMengeProLiter->setValue(data(ModelHopfengaben::Colerg_Menge).toDouble() / bh->sud()->getMengeSoll());
     if (!ui->tbAnteil->hasFocus())
         ui->tbAnteil->setValue(data(ModelHopfengaben::ColIBUAnteil).toDouble());
     ui->tbAlpha->setValue(data(ModelHopfengaben::ColAlpha).toDouble());
@@ -317,7 +317,7 @@ void WdgHopfenGabe::on_tbMenge_valueChanged(double value)
 void WdgHopfenGabe::on_tbMengeProLiter_valueChanged(double value)
 {
     if (ui->tbMengeProLiter->hasFocus())
-        setData(ModelHopfengaben::Colerg_Menge, value * bh->sud()->getMenge());
+        setData(ModelHopfengaben::Colerg_Menge, value * bh->sud()->getMengeSoll());
 }
 
 void WdgHopfenGabe::on_tbKochdauer_valueChanged(int dauer)

@@ -128,7 +128,7 @@ void WdgHefeGabe::updateValues(bool full)
 
         double mengeHefe = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColWuerzemenge).toDouble();
         if (mengeHefe > 0)
-            ui->tbMengeEmpfohlen->setValue(qCeil(bh->sud()->getMenge() / mengeHefe));
+            ui->tbMengeEmpfohlen->setValue(qCeil(bh->sud()->getMengeSoll() / mengeHefe));
         else
             ui->tbMengeEmpfohlen->setValue(0);
     }

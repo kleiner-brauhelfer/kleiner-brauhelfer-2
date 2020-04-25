@@ -14,6 +14,7 @@
 #include "settings.h"
 #include "templatetags.h"
 #include "helper/mustache.h"
+#include "model/checkboxdelegate.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -48,10 +49,15 @@ TabEtikette::TabEtikette(QWidget *parent) :
     gSettings->beginGroup("General");
     QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinterEtikette").toString());
     mPrinter = new QPrinter(printerInfo, QPrinter::HighResolution);
-    mPrinter->setPageSize(QPrinter::A4);
-    mPrinter->setOrientation(QPrinter::Portrait);
     mPrinter->setColorMode(QPrinter::Color);
 	gSettings->endGroup();
+
+    TableView *table = ui->tableTags;
+    table->setModel(bh->sud()->modelTags());
+    table->cols.append({ModelTags::ColKey, true, false, 0, nullptr});
+    table->cols.append({ModelTags::ColValue, true, false, -1, nullptr});
+    table->cols.append({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->build();
 
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
@@ -244,6 +250,24 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     setData(ModelEtiketten::ColHoehe, rect.height());
 }
 
+void TabEtikette::on_btnOeffnen_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("SVG auswählen"), "", tr("SVG (*.svg)"));
+    if (!fileName.isEmpty())
+    {
+        QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()},
+                                    {ModelAnhang::ColPfad, fileName}});
+        bh->sud()->modelAnhang()->append(values);
+        setData(ModelEtiketten::ColPfad, fileName);
+        updateAll();
+    }
+}
+
+void TabEtikette::on_btnAktualisieren_clicked()
+{
+    updateSvg();
+}
+
 void TabEtikette::on_cbTagsErsetzen_stateChanged()
 {
     updateSvg();
@@ -394,13 +418,43 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     mTemplateTags.remove("n");
 }
 
+void TabEtikette::loadPageLayout()
+{
+    QPageLayout layout;
+    QMarginsF margins(data(ModelEtiketten::ColRandLinks).toDouble(),
+                      data(ModelEtiketten::ColRandOben).toDouble(),
+                      data(ModelEtiketten::ColRandRechts).toDouble(),
+                      data(ModelEtiketten::ColRandUnten).toDouble());
+    layout.setOrientation(QPageLayout::Orientation::Portrait);
+    layout.setUnits(QPageLayout::Millimeter);
+    layout.setPageSize(QPageSize(QPageSize::PageSizeId::A4), margins);
+    mPrinter->setPageLayout(layout);
+}
+
+void TabEtikette::savePageLayout()
+{
+    QPageLayout layout = mPrinter->pageLayout();
+    QPageSize pageSize = layout.pageSize();
+    if (pageSize.id() == QPageSize::Custom)
+        pageSize = QPageSize(layout.pageSize().sizePoints().transposed());
+    if (pageSize.id() == QPageSize::Custom)
+        pageSize = QPageSize(layout.pageSize().sizePoints());
+    QMarginsF margins = layout.margins(QPageLayout::Millimeter);
+    setData(ModelEtiketten::ColRandLinks, margins.left());
+    setData(ModelEtiketten::ColRandOben, margins.top());
+    setData(ModelEtiketten::ColRandRechts, margins.right());
+    setData(ModelEtiketten::ColRandUnten, margins.bottom());
+}
+
 void TabEtikette::printPreview()
 {
+    loadPageLayout();
     mPrinter->setOutputFileName("");
     mPrinter->setOutputFormat(QPrinter::NativeFormat);
     QPrintPreviewDialog dlg(mPrinter, this);
     connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
     dlg.exec();
+    savePageLayout();
     gSettings->beginGroup("General");
     gSettings->setValue("DefaultPrinterEtikette", mPrinter->printerName());
     gSettings->endGroup();
@@ -414,9 +468,11 @@ void TabEtikette::toPdf()
                                      path + "/" + bh->sud()->getSudname() + "_" + tr("Etikette") +  ".pdf", "PDF (*.pdf)");
     if (!fileName.isEmpty())
     {
+        loadPageLayout();
         mPrinter->setOutputFileName(fileName);
         mPrinter->setOutputFormat(QPrinter::PdfFormat);
         onPrinterPaintRequested(mPrinter);
+        savePageLayout();
 
         QFileInfo fi(fileName);
         gSettings->setValue("exportPath", fi.absolutePath());
@@ -455,17 +511,6 @@ void TabEtikette::updateValues()
         ui->tbAbstandHor->setValue(data(ModelEtiketten::ColAbstandHor).toDouble());
     if (!ui->tbAbstandVert->hasFocus())
         ui->tbAbstandVert->setValue(data(ModelEtiketten::ColAbstandVert).toDouble());
-    if (!ui->tbRandOben->hasFocus())
-        ui->tbRandOben->setValue(data(ModelEtiketten::ColRandOben).toDouble());
-    if (!ui->tbRandLinks->hasFocus())
-        ui->tbRandLinks->setValue(data(ModelEtiketten::ColRandLinks).toDouble());
-    if (!ui->tbRandRechts->hasFocus())
-        ui->tbRandRechts->setValue(data(ModelEtiketten::ColRandRechts).toDouble());
-    if (!ui->tbRandUnten->hasFocus())
-        ui->tbRandUnten->setValue(data(ModelEtiketten::ColRandUnten).toDouble());
-    mPrinter->setPageMargins(QMarginsF(ui->tbRandLinks->value(), ui->tbRandOben->value(),
-                                       ui->tbRandRechts->value(), ui->tbRandUnten->value()),
-                             QPageLayout::Millimeter);
 }
 
 void TabEtikette::on_tbAnzahl_valueChanged(int value)
@@ -528,30 +573,6 @@ void TabEtikette::on_tbAbstandVert_valueChanged(double value)
         setData(ModelEtiketten::ColAbstandVert, value);
 }
 
-void TabEtikette::on_tbRandOben_valueChanged(double value)
-{
-    if (ui->tbRandOben->hasFocus())
-        setData(ModelEtiketten::ColRandOben, value);
-}
-
-void TabEtikette::on_tbRandLinks_valueChanged(double value)
-{
-    if (ui->tbRandLinks->hasFocus())
-        setData(ModelEtiketten::ColRandLinks, value);
-}
-
-void TabEtikette::on_tbRandRechts_valueChanged(double value)
-{
-    if (ui->tbRandRechts->hasFocus())
-        setData(ModelEtiketten::ColRandRechts, value);
-}
-
-void TabEtikette::on_tbRandUnten_valueChanged(double value)
-{
-    if (ui->tbRandUnten->hasFocus())
-        setData(ModelEtiketten::ColRandUnten, value);
-}
-
 void TabEtikette::on_btnLoeschen_clicked()
 {
     if (bh->sud()->modelEtiketten()->rowCount() > 0)
@@ -565,4 +586,28 @@ void TabEtikette::on_btnLoeschen_clicked()
             updateAll();
         }
     }
+}
+
+void TabEtikette::on_btnTagNeu_clicked()
+{
+    QMap<int, QVariant> values({{ModelTags::ColSudID, bh->sud()->id()},
+                                {ModelTags::ColKey, tr("Neuer Tag")}});
+    ProxyModel *model = bh->sud()->modelTags();
+    int row = model->append(values);
+    if (row >= 0)
+    {
+        QModelIndex index = model->index(row, ModelTags::ColKey);
+        ui->tableTags->setCurrentIndex(index);
+        ui->tableTags->scrollTo(index);
+        ui->tableTags->edit(index);
+    }
+}
+
+void TabEtikette::on_btnTagLoeschen_clicked()
+{
+    ProxyModel *model = bh->sud()->modelTags();
+    QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
+        model->removeRow(index.row());
 }

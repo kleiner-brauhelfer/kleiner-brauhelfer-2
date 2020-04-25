@@ -36,7 +36,6 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
-    ui->lblInfo->setPalette(gSettings->paletteErrorLabel);
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));

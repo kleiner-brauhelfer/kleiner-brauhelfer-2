@@ -42,6 +42,20 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="btnOeffnen">
+         <property name="text">
+          <string>Öffnen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnAktualisieren">
+         <property name="text">
+          <string>Aktualisieren</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btnLoeschen">
          <property name="minimumSize">
           <size>
@@ -68,16 +82,6 @@
         </widget>
        </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weitere Vorlagen können über die Sudanhänge im Reiter Rezept hinzugefügt werden. Alternativ kann die Vorlage auch in den Ordner für die Programmdaten kopiert werden. Die Datei muss im SVG Format sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QSplitter" name="splitter_1">
@@ -212,7 +216,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>201</width>
+        <width>294</width>
         <height>612</height>
        </rect>
       </property>
@@ -455,203 +459,70 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_21">
-         <property name="title">
-          <string>Seitenränder</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_72">
-            <property name="text">
-             <string>Oben</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_74">
-            <property name="text">
-             <string>Rechts</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_75">
-            <property name="text">
-             <string>Unten</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="label">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>mm</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QLabel" name="label_4">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>mm</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_73">
-            <property name="text">
-             <string>Links</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLabel" name="label_3">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>mm</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLabel" name="label_2">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>mm</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="DoubleSpinBox" name="tbRandLinks">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;links &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="decimals">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="DoubleSpinBox" name="tbRandOben">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;oben &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="decimals">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="DoubleSpinBox" name="tbRandRechts">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;rechts &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="decimals">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="DoubleSpinBox" name="tbRandUnten">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Abstand zum Papierrand &lt;span style=&quot; font-weight:600;&quot;&gt;unten &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="decimals">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Tags</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>{{N}}</string>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="TableView" name="tableTags">
+            <property name="alternatingRowColors">
+             <bool>true</bool>
             </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>Anzahl Etiketten</string>
-            </property>
-           </widget>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QPushButton" name="btnTagNeu">
+              <property name="text">
+               <string>Neu</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnTagLoeschen">
+              <property name="text">
+               <string>Löschen</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_13">
-            <property name="text">
-             <string>{{n}}</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="label_14">
-            <property name="text">
-             <string>Etikettennummer</string>
-            </property>
-           </widget>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_12">
+              <property name="text">
+               <string>Anzahl Etiketten</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>{{N}}</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>{{n}}</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Etikettennummer</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -716,6 +587,11 @@
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
   </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>cbAuswahl</tabstop>
@@ -734,10 +610,6 @@
   <tabstop>tbAbstandHor</tabstop>
   <tabstop>tbAbstandVert</tabstop>
   <tabstop>cbDividingLine</tabstop>
-  <tabstop>tbRandOben</tabstop>
-  <tabstop>tbRandLinks</tabstop>
-  <tabstop>tbRandRechts</tabstop>
-  <tabstop>tbRandUnten</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

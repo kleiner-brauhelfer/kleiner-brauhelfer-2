@@ -1,4 +1,5 @@
 #include "modelhopfengaben.h"
+#include <math.h>
 #include "brauhelfer.h"
 
 ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, QSqlDatabase db) :

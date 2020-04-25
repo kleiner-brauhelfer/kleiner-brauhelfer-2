@@ -304,12 +304,12 @@ public:
     Q_INVOKABLE static double verschneidung(double swIst, double swSoll, double menge);
 
     /**
-     * @brief Hopfenausbeute
-     * @param kochzeit Kochzeit [min]
-     * @param sw Stammwürze [°P]
-     * @return Ausbeute [%]
+     * @brief BierCalc::tinseth
+     * @param t
+     * @param sw
+     * @return
      */
-    Q_INVOKABLE static double hopfenAusbeute(double kochzeit, double sw);
+    Q_INVOKABLE static double tinseth(double t, double sw);
 
     /**
      * @brief Farbe im RGB Raum

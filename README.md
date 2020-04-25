@@ -38,6 +38,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Datenbankbereinigung sucht ungültige Werte
 - Neu: Verschiedene Reiter lassen sich verstecken
 - Neu: Neue Anlageeinstellung: Korrektur der Sollmenge, um Verluste zu kompensieren
+- Neu: Hopfengaben werden nach Tinseth berechnet und Faktoren (Pellets, Eiweissbruch, Nachisomerisierung) gemäss MMuM (https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsiburechner)
 - Fix: "Sud löschen" bei nicht-gespeichertem Sud löscht auch Einträge aus anderen Tabellen
 
 ### Version 2.1.2 (12.04.2020)

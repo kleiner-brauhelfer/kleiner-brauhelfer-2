@@ -126,23 +126,16 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(anhaenge_modified()));
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(anhaenge_modified()));
 
-    int col;
     ProxyModel *model = bh->sud()->modelTags();
-    QTableView *table = ui->tableTags;
+    model->setHeaderData(ModelTags::ColKey, Qt::Horizontal, tr("Tag"));
+    model->setHeaderData(ModelTags::ColValue, Qt::Horizontal, tr("Wert"));
+    model->setHeaderData(ModelTags::ColGlobal, Qt::Horizontal, tr("Global"));
+    TableView *table = ui->tableTags;
     table->setModel(model);
-    for (int col = 0; col < model->columnCount(); ++col)
-        table->setColumnHidden(col, true);
-    col = ModelTags::ColKey;
-    model->setHeaderData(col, Qt::Horizontal, tr("Tag"));
-    table->setColumnHidden(col, false);
-    col = ModelTags::ColValue;
-    model->setHeaderData(col, Qt::Horizontal, tr("Wert"));
-    table->setColumnHidden(col, false);
-    table->horizontalHeader()->setSectionResizeMode(col, QHeaderView::Stretch);
-    col = ModelTags::ColGlobal;
-    model->setHeaderData(col, Qt::Horizontal, tr("Global"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new CheckBoxDelegate(table));
+    table->cols.append({ModelTags::ColKey, true, false, 0, nullptr});
+    table->cols.append({ModelTags::ColValue, true, false, -1, nullptr});
+    table->cols.append({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->build();
 }
 
 TabRezept::~TabRezept()
@@ -354,6 +347,7 @@ void TabRezept::checkRohstoffe()
 
 void TabRezept::updateValues()
 {
+    double fVal;
     if (!isTabActive())
         return;
 
@@ -375,6 +369,17 @@ void TabRezept::updateValues()
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
+    fVal = bh->sud()->getIBU() / bh->sud()->getSW();
+    if (fVal <= 1)
+        ui->lblBittere->setText(tr("sehr mild"));
+    else if (fVal <= 1.5)
+        ui->lblBittere->setText(tr("mild"));
+    else if (fVal <= 2.5)
+        ui->lblBittere->setText(tr("ausgewogen"));
+    else if (fVal <= 3)
+        ui->lblBittere->setText(tr("moderat herb"));
+    else
+        ui->lblBittere->setText(tr("sehr herb"));
     ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
@@ -424,6 +429,8 @@ void TabRezept::updateValues()
     ui->lblMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureNGEinheit->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblAnlageName->setText(bh->sud()->getAnlage());
+    ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
+    ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
     ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());

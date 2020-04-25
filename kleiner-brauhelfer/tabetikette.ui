@@ -42,6 +42,20 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="btnOeffnen">
+         <property name="text">
+          <string>Öffnen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnAktualisieren">
+         <property name="text">
+          <string>Aktualisieren</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btnLoeschen">
          <property name="minimumSize">
           <size>
@@ -68,16 +82,6 @@
         </widget>
        </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weitere Vorlagen können über die Sudanhänge im Reiter Rezept hinzugefügt werden. Alternativ kann die Vorlage auch in den Ordner für die Programmdaten kopiert werden. Die Datei muss im SVG Format sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QSplitter" name="splitter_1">
@@ -212,7 +216,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>201</width>
+        <width>294</width>
         <height>612</height>
        </rect>
       </property>
@@ -455,38 +459,70 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Tags</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>{{N}}</string>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="TableView" name="tableTags">
+            <property name="alternatingRowColors">
+             <bool>true</bool>
             </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>Anzahl Etiketten</string>
-            </property>
-           </widget>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QPushButton" name="btnTagNeu">
+              <property name="text">
+               <string>Neu</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnTagLoeschen">
+              <property name="text">
+               <string>Löschen</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_13">
-            <property name="text">
-             <string>{{n}}</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="label_14">
-            <property name="text">
-             <string>Etikettennummer</string>
-            </property>
-           </widget>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_12">
+              <property name="text">
+               <string>Anzahl Etiketten</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>{{N}}</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>{{n}}</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Etikettennummer</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -550,6 +586,11 @@
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

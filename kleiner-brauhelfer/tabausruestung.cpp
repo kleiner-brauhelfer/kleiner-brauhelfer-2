@@ -300,10 +300,12 @@ void TabAusruestung::updateValues()
         ui->tbAusbeute->setValue(data(ModelAusruestung::ColSudhausausbeute).toDouble());
     if (!ui->tbVerdampfung->hasFocus())
         ui->tbVerdampfung->setValue(data(ModelAusruestung::ColVerdampfungsziffer).toDouble());
-    if (!ui->tbNachguss->hasFocus())
-        ui->tbNachguss->setValue(data(ModelAusruestung::ColKorrekturWasser).toDouble());
-    if (!ui->tbFarbe->hasFocus())
-        ui->tbFarbe->setValue(data(ModelAusruestung::ColKorrekturFarbe).toInt());
+    if (!ui->tbKorrekturNachguss->hasFocus())
+        ui->tbKorrekturNachguss->setValue(data(ModelAusruestung::ColKorrekturWasser).toDouble());
+    if (!ui->tbKorrekturFarbe->hasFocus())
+        ui->tbKorrekturFarbe->setValue(data(ModelAusruestung::ColKorrekturFarbe).toInt());
+    if (!ui->tbKorrekturSollmenge->hasFocus())
+        ui->tbKorrekturSollmenge->setValue(data(ModelAusruestung::ColKorrekturMenge).toInt());
     if (!ui->tbKosten->hasFocus())
         ui->tbKosten->setValue(data(ModelAusruestung::ColKosten).toDouble());
     if (!ui->tbMaischebottichHoehe->hasFocus())
@@ -425,16 +427,22 @@ void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
     updateDurchschnitt();
 }
 
-void TabAusruestung::on_tbNachguss_valueChanged(double value)
+void TabAusruestung::on_tbKorrekturNachguss_valueChanged(double value)
 {
-    if (ui->tbNachguss->hasFocus())
+    if (ui->tbKorrekturNachguss->hasFocus())
         setData(ModelAusruestung::ColKorrekturWasser, value);
 }
 
-void TabAusruestung::on_tbFarbe_valueChanged(int value)
+void TabAusruestung::on_tbKorrekturFarbe_valueChanged(int value)
 {
-    if (ui->tbFarbe->hasFocus())
+    if (ui->tbKorrekturFarbe->hasFocus())
         setData(ModelAusruestung::ColKorrekturFarbe, value);
+}
+
+void TabAusruestung::on_tbKorrekturSollmenge_valueChanged(double value)
+{
+    if (ui->tbKorrekturSollmenge->hasFocus())
+        setData(ModelAusruestung::ColKorrekturMenge, value);
 }
 
 void TabAusruestung::on_tbKosten_valueChanged(double value)

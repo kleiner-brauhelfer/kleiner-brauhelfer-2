@@ -30,6 +30,8 @@ private slots:
     void updateAuswahlListe();
     void onPrinterPaintRequested(QPrinter *printer);
     void on_cbAuswahl_activated(int index);
+    void on_btnOeffnen_clicked();
+    void on_btnAktualisieren_clicked();
     void on_tbAnzahl_valueChanged(int value);
     void on_tbLabelBreite_valueChanged(double value);
     void on_tbLabelHoehe_valueChanged(double value);
@@ -43,6 +45,8 @@ private slots:
     void on_btnSaveTemplate_clicked();
     void on_btnToPdf_clicked();
     void on_btnLoeschen_clicked();
+    void on_btnTagNeu_clicked();
+    void on_btnTagLoeschen_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

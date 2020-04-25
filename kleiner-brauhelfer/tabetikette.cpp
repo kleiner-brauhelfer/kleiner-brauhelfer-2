@@ -14,6 +14,7 @@
 #include "settings.h"
 #include "templatetags.h"
 #include "helper/mustache.h"
+#include "model/checkboxdelegate.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -50,6 +51,13 @@ TabEtikette::TabEtikette(QWidget *parent) :
     mPrinter = new QPrinter(printerInfo, QPrinter::HighResolution);
     mPrinter->setColorMode(QPrinter::Color);
 	gSettings->endGroup();
+
+    TableView *table = ui->tableTags;
+    table->setModel(bh->sud()->modelTags());
+    table->cols.append({ModelTags::ColKey, true, false, 0, nullptr});
+    table->cols.append({ModelTags::ColValue, true, false, -1, nullptr});
+    table->cols.append({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->build();
 
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
@@ -240,6 +248,24 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     QRectF rect = ui->viewSvg->viewBoxF();
     setData(ModelEtiketten::ColBreite, rect.width());
     setData(ModelEtiketten::ColHoehe, rect.height());
+}
+
+void TabEtikette::on_btnOeffnen_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("SVG auswählen"), "", tr("SVG (*.svg)"));
+    if (!fileName.isEmpty())
+    {
+        QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()},
+                                    {ModelAnhang::ColPfad, fileName}});
+        bh->sud()->modelAnhang()->append(values);
+        setData(ModelEtiketten::ColPfad, fileName);
+        updateAll();
+    }
+}
+
+void TabEtikette::on_btnAktualisieren_clicked()
+{
+    updateSvg();
 }
 
 void TabEtikette::on_cbTagsErsetzen_stateChanged()
@@ -562,4 +588,28 @@ void TabEtikette::on_btnLoeschen_clicked()
             updateAll();
         }
     }
+}
+
+void TabEtikette::on_btnTagNeu_clicked()
+{
+    QMap<int, QVariant> values({{ModelTags::ColSudID, bh->sud()->id()},
+                                {ModelTags::ColKey, tr("Neuer Tag")}});
+    ProxyModel *model = bh->sud()->modelTags();
+    int row = model->append(values);
+    if (row >= 0)
+    {
+        QModelIndex index = model->index(row, ModelTags::ColKey);
+        ui->tableTags->setCurrentIndex(index);
+        ui->tableTags->scrollTo(index);
+        ui->tableTags->edit(index);
+    }
+}
+
+void TabEtikette::on_btnTagLoeschen_clicked()
+{
+    ProxyModel *model = bh->sud()->modelTags();
+    QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
+    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
+    for (const QModelIndex& index : indices)
+        model->removeRow(index.row());
 }

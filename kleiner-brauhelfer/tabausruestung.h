@@ -32,7 +32,7 @@ private slots:
     void updateValues();
     void updateDurchschnitt();
     void on_btnAusbeuteMittel_clicked();
-    void on_btnVerdampfungsziffer_clicked();
+    void on_btnVerdampfungsrate_clicked();
     void on_btnVerdampfungMittel_clicked();
     void on_tbAusbeute_valueChanged(double value);
     void on_sliderAusbeuteSude_valueChanged(int value);

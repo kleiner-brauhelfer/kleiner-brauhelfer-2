@@ -96,6 +96,8 @@ void DlgVerdampfung::berechne()
 {
     double erg = BierCalc::verdampfungsziffer(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
     ui->dSpinBox_Verdampfungsziffer->setValue(erg);
+    erg = BierCalc::verdampfungsrate(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
+    ui->dSpinBox_Verdampfungsrate->setValue(erg);
 }
 
 void DlgVerdampfung::setHoehe(double value)
@@ -130,4 +132,9 @@ void DlgVerdampfung::setKochdauer(int value)
 double DlgVerdampfung::getVerdampfungsziffer()
 {
     return ui->dSpinBox_Verdampfungsziffer->value();
+}
+
+double DlgVerdampfung::getVerdampfungsrate()
+{
+    return ui->dSpinBox_Verdampfungsrate->value();
 }

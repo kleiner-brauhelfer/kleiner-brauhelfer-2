@@ -269,6 +269,15 @@ public:
     Q_INVOKABLE static double verdampfungsziffer(double V1, double V2, double t);
 
     /**
+     * @brief Berechnet die Verdampfungsrate
+     * @param V1 Anfangsvolumen [L]
+     * @param V2 Endvolumen [L]
+     * @param t Kochzeit [min]
+     * @return Verdampfungsrate [l/h]
+     */
+    Q_INVOKABLE static double verdampfungsrate(double V1, double V2, double t);
+
+    /**
      * @brief Berechnet die verdampfung
      * @param V1 Anfangsvolumen [L]
      * @param V2 Endvolumen [L]

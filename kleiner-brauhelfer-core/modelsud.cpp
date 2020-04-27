@@ -45,11 +45,11 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SWSollKochbeginnMitWz");
     mVirtualField.append("SWSollKochende");
     mVirtualField.append("SWSollAnstellen");
-    mVirtualField.append("VerdampfungszifferIst");
+    mVirtualField.append("VerdampfungsrateIst");
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
     mVirtualField.append("Alkohol");
-    mVirtualField.append("AnlageVerdampfungsziffer");
+    mVirtualField.append("AnlageVerdampfungsrate");
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("RestalkalitaetFaktor");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
@@ -306,8 +306,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
         double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        double verdampfungsziffer = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return mengeSollKochEnde * (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
+        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return mengeSollKochEnde + verdampfungsrate * kochdauer / 60;
     }
     case ColMengeSollKochende:
     {
@@ -340,15 +340,17 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sw = data(idx.row(), ColSW).toDouble() - swWzKochenRecipe[idx.row()] - swWzGaerungRecipe[idx.row()];
         double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
         double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        double verdampfungsziffer = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw * hgf / (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
+        double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
+        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return sw * hgf / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
     }
     case ColSWSollKochbeginnMitWz:
     {
         double sw = data(idx.row(), ColSWSollKochende).toDouble();
         double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        double verdampfungsziffer = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw / (1 + (verdampfungsziffer * kochdauer / (60 * 100)));
+        double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
+        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return sw / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
     }
     case ColSWSollKochende:
     {
@@ -361,12 +363,12 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sw = data(idx.row(), ColSW).toDouble();
         return sw - swWzGaerungRecipe[idx.row()];
     }
-    case ColVerdampfungszifferIst:
+    case ColVerdampfungsrateIst:
     {
         double V1 = data(idx.row(), ColWuerzemengeKochbeginn).toDouble();
         double V2 = data(idx.row(), ColWuerzemengeVorHopfenseihen).toDouble();
         double t = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
-        return BierCalc::verdampfungsziffer(V1, V2, t);
+        return BierCalc::verdampfungsrate(V1, V2, t);
     }
     case ColsEVG:
     {
@@ -388,9 +390,9 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sre = BierCalc::sreAusVergaerungsgrad(sw, vg);
         return BierCalc::alkohol(sw, sre);
     }
-    case ColAnlageVerdampfungsziffer:
+    case ColAnlageVerdampfungsrate:
     {
-        return dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsziffer);
+        return dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsrate);
     }
     case ColAnlageSudhausausbeute:
     {
@@ -466,7 +468,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
             if (status == Brauhelfer::SudStatus::Rezept)
             {
                 setData(idx.row(), ColSudhausausbeute, dataAnlage(idx.row(), ModelAusruestung::ColSudhausausbeute));
-                setData(idx.row(), ColVerdampfungsrate, dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsziffer));
+                setData(idx.row(), ColVerdampfungsrate, dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsrate));
             }
             return true;
         }

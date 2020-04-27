@@ -36,7 +36,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbSWSollKochbeginnMitWz->setColumn(ModelSud::ColSWSollKochbeginnMitWz);
     ui->tbMengeSollKochende20->setColumn(ModelSud::ColMengeSollKochende);
     ui->tbSWSollKochende->setColumn(ModelSud::ColSWSollKochende);
-    ui->tbVerdampfung->setColumn(ModelSud::ColVerdampfungszifferIst);
+    ui->tbVerdampfung->setColumn(ModelSud::ColVerdampfungsrateIst);
     ui->tbAusbeute->setColumn(ModelSud::Colerg_Sudhausausbeute);
     ui->tbAusbeuteEffektiv->setColumn(ModelSud::Colerg_EffektiveAusbeute);
     ui->tbVerdampfungRezept->setColumn(ModelSud::ColVerdampfungsrate);

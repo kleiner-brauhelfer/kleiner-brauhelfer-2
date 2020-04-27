@@ -312,6 +312,13 @@ double BierCalc::verdampfungsziffer(double V1, double V2, double t)
     return ((V1 - V2) * 100 * 60) / (V2 * t);
 }
 
+double BierCalc::verdampfungsrate(double V1, double V2, double t)
+{
+    if (t == 0.0 || V2 == 0.0 || V1 < V2)
+        return 0.0;
+    return ((V1 - V2) * 60) / t;
+}
+
 double BierCalc::verdampfung(double V1, double V2)
 {
     if (V1 == 0.0 || V1 < V2)

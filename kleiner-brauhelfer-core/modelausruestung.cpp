@@ -216,6 +216,6 @@ void ModelAusruestung::defaultValues(QMap<int, QVariant> &values) const
         values[ColID] = getNextId();
     if (!values.contains(ColSudhausausbeute))
         values.insert(ColSudhausausbeute, 60.0);
-    if (!values.contains(ColVerdampfungsziffer))
-        values.insert(ColVerdampfungsziffer, 10.0);
+    if (!values.contains(ColVerdampfungsrate))
+        values.insert(ColVerdampfungsrate, 2.0);
 }

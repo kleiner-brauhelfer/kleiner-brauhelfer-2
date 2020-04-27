@@ -1119,11 +1119,65 @@ bool Database::update()
 
             // Ausruestung
             //  - neue Spalte 'Bemerkung'
-            sqlExec(db, "ALTER TABLE Ausruestung ADD COLUMN Bemerkung TEXT");
+            //  - Spalte unbenannt 'Verdampfungsziffer' -> 'Verdampfungsrate'
+            sqlExec(db, "ALTER TABLE Ausruestung RENAME TO TempTable");
+            sqlExec(db, "ALTER TABLE TempTable ADD COLUMN Verdampfungsrate TEXT");
+            sqlExec(db, "UPDATE TempTable SET Verdampfungsrate = Sudpfanne_Durchmesser*Sudpfanne_Durchmesser/4*3.141592*Sudpfanne_MaxFuellhoehe*Verdampfungsziffer/100000");
+            sqlExec(db, "CREATE TABLE Ausruestung ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Typ INTEGER DEFAULT 0,"
+                "Sudhausausbeute REAL DEFAULT 60,"
+                "Verdampfungsrate REAL DEFAULT 10,"
+                "KorrekturWasser REAL DEFAULT 0,"
+                "KorrekturFarbe REAL DEFAULT 0,"
+                "KorrekturMenge REAL DEFAULT 0,"
+                "Maischebottich_Hoehe REAL DEFAULT 0,"
+                "Maischebottich_Durchmesser REAL DEFAULT 0,"
+                "Maischebottich_MaxFuellhoehe REAL DEFAULT 0,"
+                "Sudpfanne_Hoehe REAL DEFAULT 0,"
+                "Sudpfanne_Durchmesser REAL DEFAULT 0,"
+                "Sudpfanne_MaxFuellhoehe REAL DEFAULT 0,"
+                "Kosten REAL DEFAULT 0,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Ausruestung ("
+                "Name,"
+                "Typ,"
+                "Sudhausausbeute,"
+                "Verdampfungsrate,"
+                "KorrekturWasser,"
+                "KorrekturFarbe,"
+                "KorrekturMenge,"
+                "Maischebottich_Hoehe,"
+                "Maischebottich_Durchmesser,"
+                "Maischebottich_MaxFuellhoehe,"
+                "Sudpfanne_Hoehe,"
+                "Sudpfanne_Durchmesser,"
+                "Sudpfanne_MaxFuellhoehe,"
+                "Kosten"
+                ") SELECT "
+                "Name,"
+                "Typ,"
+                "Sudhausausbeute,"
+                "Verdampfungsrate,"
+                "KorrekturWasser,"
+                "KorrekturFarbe,"
+                "KorrekturMenge,"
+                "Maischebottich_Hoehe,"
+                "Maischebottich_Durchmesser,"
+                "Maischebottich_MaxFuellhoehe,"
+                "Sudpfanne_Hoehe,"
+                "Sudpfanne_Durchmesser,"
+                "Sudpfanne_MaxFuellhoehe,"
+                "Kosten"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Sud
             //  - neue Spalte 'VerschneidungAbfuellen'
+            //  - 'Verdampfungsrate' in l/h statt %
             sqlExec(db, "ALTER TABLE Sud ADD COLUMN VerschneidungAbfuellen REAL DEFAULT 0");
+            sqlExec(db, "UPDATE Sud SET Verdampfungsrate = Menge*Verdampfungsrate/100");
 
             // Etiketten
             //  - neue Spalte 'Papiergroesse'

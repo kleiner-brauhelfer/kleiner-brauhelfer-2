@@ -80,7 +80,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});
     table->cols.append({ModelSud::Colerg_EffektiveAusbeute, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSud::ColVerdampfungszifferIst, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSud::ColVerdampfungsrateIst, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->cols.append({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
@@ -299,7 +299,7 @@ void TabAusruestung::updateValues()
     if (!ui->tbAusbeute->hasFocus())
         ui->tbAusbeute->setValue(data(ModelAusruestung::ColSudhausausbeute).toDouble());
     if (!ui->tbVerdampfung->hasFocus())
-        ui->tbVerdampfung->setValue(data(ModelAusruestung::ColVerdampfungsziffer).toDouble());
+        ui->tbVerdampfung->setValue(data(ModelAusruestung::ColVerdampfungsrate).toDouble());
     if (!ui->tbKorrekturNachguss->hasFocus())
         ui->tbKorrekturNachguss->setValue(data(ModelAusruestung::ColKorrekturWasser).toDouble());
     if (!ui->tbKorrekturFarbe->hasFocus())
@@ -356,7 +356,7 @@ void TabAusruestung::updateDurchschnitt()
                         ausbeute += val;
                         nAusbeute++;
                     }
-                    val = model.index(i, ModelSud::ColVerdampfungszifferIst).data().toDouble();
+                    val = model.index(i, ModelSud::ColVerdampfungsrateIst).data().toDouble();
                     if (val > 0)
                     {
                         verdampfung += val;
@@ -377,7 +377,7 @@ void TabAusruestung::updateDurchschnitt()
     ui->tbAusbeuteSude->setValue(ui->sliderAusbeuteSude->value());
 }
 
-void TabAusruestung::on_btnVerdampfungsziffer_clicked()
+void TabAusruestung::on_btnVerdampfungsrate_clicked()
 {
     DlgVerdampfung dlg;
     dlg.setDurchmesser(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
@@ -396,7 +396,7 @@ void TabAusruestung::on_btnVerdampfungsziffer_clicked()
     }
     if (dlg.exec() == QDialog::Accepted)
     {
-        ui->tbVerdampfung->setValue(dlg.getVerdampfungsziffer());
+        ui->tbVerdampfung->setValue(dlg.getVerdampfungsrate());
     }
 }
 
@@ -414,12 +414,12 @@ void TabAusruestung::on_btnAusbeuteMittel_clicked()
 void TabAusruestung::on_tbVerdampfung_valueChanged(double value)
 {
     if (ui->tbVerdampfung->hasFocus())
-        setData(ModelAusruestung::ColVerdampfungsziffer, value);
+        setData(ModelAusruestung::ColVerdampfungsrate, value);
 }
 
 void TabAusruestung::on_btnVerdampfungMittel_clicked()
 {
-    setData(ModelAusruestung::ColVerdampfungsziffer, ui->tbVerdampfungMittel->value());
+    setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfungMittel->value());
 }
 
 void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)

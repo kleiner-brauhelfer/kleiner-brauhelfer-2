@@ -369,7 +369,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsziffer benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1044,7 +1044,7 @@
               </font>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1157,7 +1157,7 @@
            <item row="7" column="5">
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>Verdampfungsziffer</string>
+              <string>Verdampfungsrate</string>
              </property>
             </widget>
            </item>
@@ -1221,7 +1221,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; pro Stunde des Sudes aus.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; pro Stunde des Sudes aus.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1304,7 +1304,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsziffer und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1536,7 +1536,7 @@
               </size>
              </property>
              <property name="text">
-              <string>%</string>
+              <string>l/h</string>
              </property>
             </widget>
            </item>
@@ -1652,7 +1652,7 @@
               </size>
              </property>
              <property name="text">
-              <string>%</string>
+              <string>l/h</string>
              </property>
             </widget>
            </item>

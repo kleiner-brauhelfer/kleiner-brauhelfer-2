@@ -39,6 +39,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Eingabemöglichkeit für Bemerkungen bei den Anlagen
 - Neu: Bei den Etiketten werden Papiergrösse und Ausrichtung gespeichert
 - Neu: Eingabemöglichkeit einer Wassermenge bei Karbonisierung mit Zucker (Zuckerlösung)
+- Neu: Verdampfungsrate in Liter pro Stunde ersetzt die Verdampfungsziffer
 
 ### Version 2.1.3 (in Entwicklung)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

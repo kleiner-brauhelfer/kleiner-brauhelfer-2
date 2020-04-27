@@ -18,7 +18,7 @@ public:
         ColName,
         ColTyp,
         ColSudhausausbeute,
-        ColVerdampfungsziffer,
+        ColVerdampfungsrate,
         ColKorrekturWasser,
         ColKorrekturFarbe,
         ColKorrekturMenge,

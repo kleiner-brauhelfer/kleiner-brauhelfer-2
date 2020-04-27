@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Berechnung Verdampfungsziffer</string>
+   <string>Berechnung der Verdampfung</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
@@ -345,6 +345,46 @@
      <property name="rightMargin">
       <number>9</number>
      </property>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_8">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string notr="true">%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label_6">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>min</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="4">
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Verdampfungsziffer</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
@@ -358,39 +398,6 @@
        </property>
       </spacer>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Kochdauer</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="SpinBox" name="spinBox_Kochdauer">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; des Hopfens angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="maximum">
-        <number>999</number>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Verdampfungsziffer</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="2">
       <widget class="DoubleSpinBox" name="dSpinBox_Verdampfungsziffer">
        <property name="minimumSize">
@@ -400,7 +407,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage angegeben. Der Wert ist abhängig von vielen Faktoren wie Meereshöhe, Sud und Anlage. Es muss individuell eingestellt werden. Mit fortschreitender Sudanzahl wird er immer genauer. Bei einer neuen Anlage empfiehlt sich er Wert 10%. Der Wert wird dabei auf eine Stunde berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die ausgerechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -419,36 +426,71 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="QLabel" name="label_6">
-       <property name="minimumSize">
-        <size>
-         <width>30</width>
-         <height>0</height>
-        </size>
-       </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>min</string>
+        <string>Kochdauer</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
-      <widget class="QLabel" name="label_8">
+     <item row="0" column="2">
+      <widget class="SpinBox" name="spinBox_Kochdauer">
        <property name="minimumSize">
         <size>
-         <width>30</width>
+         <width>60</width>
          <height>0</height>
         </size>
        </property>
-       <property name="text">
-        <string notr="true">%</string>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>999</number>
        </property>
       </widget>
      </item>
-     <item row="1" column="0" colspan="4">
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Verdampfungsrate</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="DoubleSpinBox" name="dSpinBox_Verdampfungsrate">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die ausgerechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <double>999.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>l/h</string>
        </property>
       </widget>
      </item>

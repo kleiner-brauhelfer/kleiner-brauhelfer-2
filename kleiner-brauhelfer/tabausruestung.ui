@@ -205,7 +205,7 @@
           <x>0</x>
           <y>0</y>
           <width>647</width>
-          <height>686</height>
+          <height>796</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -243,7 +243,7 @@
                </size>
               </property>
               <property name="text">
-               <string>%</string>
+               <string>l/h</string>
               </property>
              </widget>
             </item>
@@ -256,7 +256,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage eingegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert selbst beschreibt die prozentuale Verdampfung pro Stunde beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen &lt;/span&gt;bezogen auf die Ausschlagwürzemenge (100%).&lt;/p&gt;&lt;p&gt;Im Hobbybereich sind 10% üblich, öfter aber auch mehr.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage eingegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert selbst beschreibt die Verdampfungsmenge pro Stunde beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -306,7 +306,7 @@
                </size>
               </property>
               <property name="text">
-               <string>%</string>
+               <string>l/h</string>
               </property>
              </widget>
             </item>
@@ -342,7 +342,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
@@ -432,7 +432,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert&lt;/span&gt; der letzten Verdampfungsziffer. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert&lt;/span&gt; der letzten Verdampfungsraten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -520,7 +520,7 @@
              </widget>
             </item>
             <item row="4" column="2">
-             <widget class="QPushButton" name="btnVerdampfungsziffer">
+             <widget class="QPushButton" name="btnVerdampfungsrate">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -534,7 +534,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string notr="true">...</string>
@@ -544,7 +544,7 @@
             <item row="4" column="0">
              <widget class="QLabel" name="label_Verdampfung">
               <property name="text">
-               <string>Verdampfungsziffer</string>
+               <string>Verdampfungsrate</string>
               </property>
              </widget>
             </item>
@@ -1473,7 +1473,7 @@
   <tabstop>tbAusbeute</tabstop>
   <tabstop>btnAusbeuteMittel</tabstop>
   <tabstop>tbAusbeuteMittel</tabstop>
-  <tabstop>btnVerdampfungsziffer</tabstop>
+  <tabstop>btnVerdampfungsrate</tabstop>
   <tabstop>tbVerdampfung</tabstop>
   <tabstop>btnVerdampfungMittel</tabstop>
   <tabstop>tbVerdampfungMittel</tabstop>

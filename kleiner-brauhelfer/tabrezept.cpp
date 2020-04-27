@@ -39,7 +39,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbBittere->setColumn(ModelSud::ColIBU);
     ui->tbFarbe->setColumn(ModelSud::Colerg_Farbe);
     ui->tbSudhausausbeute->setColumn(ModelSud::ColSudhausausbeute);
-    ui->tbVerdampfungsziffer->setColumn(ModelSud::ColVerdampfungsrate);
+    ui->tbVerdampfungsrate->setColumn(ModelSud::ColVerdampfungsrate);
     ui->tbVergaerungsgrad->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbReifezeit->setColumn(ModelSud::ColReifezeit);
     ui->tbHGF->setColumn(ModelSud::ColhighGravityFaktor);
@@ -229,7 +229,7 @@ void TabRezept::checkEnabled()
     ui->tbHGF->setReadOnly(gebraut);
     ui->tbBittere->setReadOnly(gebraut);
     ui->tbKochzeit->setReadOnly(gebraut);
-    ui->tbVerdampfungsziffer->setReadOnly(gebraut);
+    ui->tbVerdampfungsrate->setReadOnly(gebraut);
     ui->tbNachisomerisierungszeit->setReadOnly(gebraut);
     ui->tbVergaerungsgrad->setReadOnly(gebraut);
     ui->tbCO2->setReadOnly(gebraut);
@@ -351,6 +351,9 @@ void TabRezept::updateValues()
     if (!isTabActive())
         return;
 
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
+
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
     for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
@@ -362,8 +365,10 @@ void TabRezept::updateValues()
         ui->tbSudname->setCursorPosition(0);
     }
 
-    ui->btnSudhausausbeute->setVisible(bh->sud()->getSudhausausbeute() != bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
-    ui->btnVerdampfungsziffer->setVisible(bh->sud()->getVerdampfungsrate() != bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
+    double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
+    ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
+    diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
+    ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -432,7 +437,7 @@ void TabRezept::updateValues()
     ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
     ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
     ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
-    ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
+    ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
     ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
     ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
     ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
@@ -850,9 +855,9 @@ void TabRezept::on_btnSudhausausbeute_clicked()
     bh->sud()->setSudhausausbeute(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
 }
 
-void TabRezept::on_btnVerdampfungsziffer_clicked()
+void TabRezept::on_btnVerdampfungsrate_clicked()
 {
-    bh->sud()->setVerdampfungsrate(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
+    bh->sud()->setVerdampfungsrate(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
 }
 
 void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)

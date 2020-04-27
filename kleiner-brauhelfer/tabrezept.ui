@@ -79,7 +79,7 @@
            <item row="1" column="1" colspan="2">
             <widget class="ComboBox" name="cbAnlage">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt; definiert die Berechnungsgrundlagen für den Kleinen Brauelfer, so Sudhausausbeute oder Verdampfungsziffer. Die Auswahl unterschiedlicher Anlagen wirkt sich direkt auf das Rezept aus, etwa auf Wassermenge und Schüttung.&lt;/p&gt;&lt;p&gt;Siehe rechts die Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt; sowie den Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; für weitere Informationen.&lt;/p&gt;&lt;p&gt;Anlagen werden im Tab Rohstoffe definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt; definiert die Berechnungsgrundlagen für den Kleinen Brauelfer, so Sudhausausbeute oder Verdampfungsrate. Die Auswahl unterschiedlicher Anlagen wirkt sich direkt auf das Rezept aus, etwa auf Wassermenge und Schüttung.&lt;/p&gt;&lt;p&gt;Siehe rechts die Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt; sowie den Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; für weitere Informationen.&lt;/p&gt;&lt;p&gt;Anlagen werden im Tab Rohstoffe definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -125,7 +125,7 @@
               </size>
              </property>
              <property name="text">
-              <string>%</string>
+              <string>l/h</string>
              </property>
             </widget>
            </item>
@@ -167,7 +167,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="btnVerdampfungsziffer">
+              <widget class="QPushButton" name="btnVerdampfungsrate">
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -359,7 +359,7 @@
             </widget>
            </item>
            <item row="11" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbVerdampfungsziffer">
+            <widget class="DoubleSpinBoxSud" name="tbVerdampfungsrate">
              <property name="minimumSize">
               <size>
                <width>70</width>
@@ -367,7 +367,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Rate erwartet, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;Üblicherweise liegt der Wert ober- oder unterhalb 10% pro Stunde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Rate erwartet, kann der Wert hier verändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -492,7 +492,7 @@
            <item row="11" column="0">
             <widget class="QLabel" name="label_50">
              <property name="text">
-              <string>Verdampfungsziffer</string>
+              <string>Verdampfungsrate</string>
              </property>
             </widget>
            </item>
@@ -957,8 +957,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>361</width>
-                 <height>134</height>
+                 <width>100</width>
+                 <height>100</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -1212,8 +1212,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>109</height>
+              <width>100</width>
+              <height>30</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1302,8 +1302,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>379</height>
+              <width>100</width>
+              <height>30</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1388,8 +1388,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>284</width>
-             <height>591</height>
+             <width>100</width>
+             <height>30</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1574,8 +1574,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>112</height>
+              <width>100</width>
+              <height>30</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -2332,7 +2332,7 @@
                </size>
               </property>
               <property name="text">
-               <string>%</string>
+               <string>l/h</string>
               </property>
              </widget>
             </item>
@@ -2394,7 +2394,7 @@
             <item row="4" column="0" colspan="2">
              <widget class="QLabel" name="label_S1_8">
               <property name="text">
-               <string>Verdampfungsziffer</string>
+               <string>Verdampfungsrate</string>
               </property>
              </widget>
             </item>
@@ -2483,7 +2483,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;p&gt;Üblicherweise liegt der Wert ober- oder unterhalb 10% pro Stunde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3279,8 +3279,8 @@
   <tabstop>tbHGF</tabstop>
   <tabstop>tbBittere</tabstop>
   <tabstop>tbKochzeit</tabstop>
-  <tabstop>btnVerdampfungsziffer</tabstop>
-  <tabstop>tbVerdampfungsziffer</tabstop>
+  <tabstop>btnVerdampfungsrate</tabstop>
+  <tabstop>tbVerdampfungsrate</tabstop>
   <tabstop>tbNachisomerisierungszeit</tabstop>
   <tabstop>tbVergaerungsgrad</tabstop>
   <tabstop>tbCO2</tabstop>

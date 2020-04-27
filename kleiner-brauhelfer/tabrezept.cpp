@@ -171,7 +171,7 @@ void TabRezept::focusChanged(QWidget *old, QWidget *now)
         ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
     if (now == ui->tbKommentar)
         ui->tbKommentar->setPlainText(bh->sud()->getKommentar());
-    if (now && now != ui->tbHelp)
+    if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 

@@ -104,7 +104,7 @@ void TabBraudaten::restoreView(bool full)
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && now != ui->tbHelp)
+    if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 

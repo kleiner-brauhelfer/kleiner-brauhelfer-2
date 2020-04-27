@@ -189,6 +189,9 @@
       </widget>
      </widget>
      <widget class="QSplitter" name="splitterHelp">
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
@@ -202,7 +205,7 @@
           <x>0</x>
           <y>0</y>
           <width>647</width>
-          <height>662</height>
+          <height>686</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">

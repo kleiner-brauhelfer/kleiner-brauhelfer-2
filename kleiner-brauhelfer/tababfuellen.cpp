@@ -57,7 +57,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
 
     ui->tbZuckerFaktor->setValue(gSettings->value("ZuckerFaktor", 1.0).toDouble());
-    ui->tbFlasche->setValue(gSettings->value("FlaschenGroesse", 0.5).toDouble());
+    ui->tbFlaschengroesse->setValue(gSettings->value("FlaschenGroesse", 0.5).toDouble());
 
     gSettings->endGroup();
 
@@ -80,7 +80,7 @@ void TabAbfuellen::saveSettings()
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->setValue("ZuckerFaktor", ui->tbZuckerFaktor->value());
-    gSettings->setValue("FlaschenGroesse", ui->tbFlasche->value());
+    gSettings->setValue("FlaschenGroesse", ui->tbFlaschengroesse->value());
     gSettings->endGroup();
 }
 
@@ -96,7 +96,7 @@ void TabAbfuellen::restoreView(bool full)
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && now != ui->tbHelp)
+    if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 
@@ -158,9 +158,9 @@ void TabAbfuellen::updateValues()
     ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
 
+    ui->tbSWJungbierSoll->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
     ui->tbSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-    ui->lblSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblSWSchnellgaerprobeEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
@@ -169,13 +169,6 @@ void TabAbfuellen::updateValues()
 
     ui->cbSpunden->setChecked(bh->sud()->getSpunden());
     ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());
-    ui->tbSpeisemengeGesamt2->setValue(bh->sud()->getSpeiseAnteil() / 1000);
-    ui->tbSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblSpeisemengeGesamtEinheit2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->tbBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblBiermengeAbfuellenEinheit->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
 
     ui->groupKarbonisierung->setVisible(!ui->cbSpunden->isChecked());
     ui->tbSpeisemengeGesamt->setValue((int)bh->sud()->getSpeiseAnteil());
@@ -191,13 +184,13 @@ void TabAbfuellen::updateValues()
     ui->tbZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
     ui->lblZuckerFlascheEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    value = ui->tbFlasche->value() / bh->sud()->getJungbiermengeAbfuellen();
+    value = ui->tbFlaschengroesse->value() / bh->sud()->getJungbiermengeAbfuellen();
     ui->tbSpeisemengeFlasche->setValue(ui->tbSpeisemengeGesamt->value() * value);
     ui->tbSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->lblSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->lblSpeisemengeFlascheEinheit->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
-
     ui->tbZuckerFlasche->setValue(ui->tbZuckerGesamt->value() * value);
+    ui->tbFlaschen->setValue(bh->sud()->geterg_AbgefuellteBiermenge() / ui->tbFlaschengroesse->value());
 
     mTimerWebViewUpdate.start(200);
 }
@@ -260,9 +253,9 @@ void TabAbfuellen::on_tbZuckerFaktor_valueChanged(double)
         updateValues();
 }
 
-void TabAbfuellen::on_tbFlasche_valueChanged(double)
+void TabAbfuellen::on_tbFlaschengroesse_valueChanged(double)
 {
-    if (ui->tbFlasche->hasFocus())
+    if (ui->tbFlaschengroesse->hasFocus())
         updateValues();
 }
 

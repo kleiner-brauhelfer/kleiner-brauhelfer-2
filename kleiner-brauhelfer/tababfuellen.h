@@ -34,7 +34,7 @@ private slots:
     void on_btnSWJungbier_clicked();
     void on_cbSpunden_clicked(bool checked);
     void on_tbZuckerFaktor_valueChanged(double);
-    void on_tbFlasche_valueChanged(double);
+    void on_tbFlaschengroesse_valueChanged(double);
 
     void on_btnSudAbgefuellt_clicked();
     void on_btnSudTeilen_clicked(); 

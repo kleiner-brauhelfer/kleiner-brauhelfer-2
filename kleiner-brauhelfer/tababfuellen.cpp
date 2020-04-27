@@ -31,6 +31,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
     ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkohol);
     ui->tbSpundungsdruck->setColumn(ModelSud::ColSpundungsdruck);
+    ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
@@ -150,8 +151,6 @@ void TabAbfuellen::updateValues()
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
 
-    double value;
-
     QDateTime dt = bh->sud()->getAbfuelldatum();
     ui->tbAbfuelldatum->setMinimumDate(bh->sud()->getBraudatum().date());
     ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
@@ -176,21 +175,32 @@ void TabAbfuellen::updateValues()
     ui->lblSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->lblSpeisemengeGesamtEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->tbZuckerGesamt->setValue((int)(bh->sud()->getZuckerAnteil() / ui->tbZuckerFaktor->value()));
-    ui->tbZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerGesamtEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->tbZuckerFaktor->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerFaktor->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->tbZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerFlascheEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    value = ui->tbFlaschengroesse->value() / bh->sud()->getJungbiermengeAbfuellen();
+
+    bool zucker = ui->tbZuckerGesamt->value() > 0.0;
+    bool zuckerLoesung = ui->tbWassserZuckerloesung->value() > 0.0 && zucker;
+    ui->tbZuckerGesamt->setVisible(zucker);
+    ui->lblZuckerGesamt->setVisible(zucker);
+    ui->lblZuckerGesamtEinheit->setVisible(zucker);
+    ui->tbZuckerFaktor->setVisible(zucker);
+    ui->lblZuckerFaktor->setVisible(zucker);
+    ui->tbZuckerFlasche->setVisible(zucker);
+    ui->lblZuckerFlasche->setVisible(zucker);
+    ui->lblZuckerFlascheEinheit->setVisible(zucker);
+    ui->lblWassserZuckerloesung->setVisible(zucker);
+    ui->tbWassserZuckerloesung->setVisible(zucker);
+    ui->tbWassserZuckerloesungEinheit->setVisible(zucker);
+    ui->lblKonzentrationZuckerloesung->setVisible(zuckerLoesung);
+    ui->tbKonzentrationZuckerloesung->setVisible(zuckerLoesung);
+    ui->tbKonzentrationZuckerloesungEinheit->setVisible(zuckerLoesung);
+
+    double value = ui->tbFlaschengroesse->value() / bh->sud()->getJungbiermengeAbfuellen();
     ui->tbSpeisemengeFlasche->setValue(ui->tbSpeisemengeGesamt->value() * value);
     ui->tbSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->lblSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->lblSpeisemengeFlascheEinheit->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->tbZuckerFlasche->setValue(ui->tbZuckerGesamt->value() * value);
     ui->tbFlaschen->setValue(bh->sud()->geterg_AbgefuellteBiermenge() / ui->tbFlaschengroesse->value());
+    ui->tbKonzentrationZuckerloesung->setValue(ui->tbZuckerGesamt->value() / ui->tbWassserZuckerloesung->value());
 
     mTimerWebViewUpdate.start(200);
 }

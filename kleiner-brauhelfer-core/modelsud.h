@@ -69,6 +69,7 @@ public:
         ColVergaerungsgrad,
         ColWuerzemengeKochbeginn,
         ColSWKochbeginn,
+        ColVerschneidungAbfuellen,
         // virtual
         ColDeleted,
         ColMengeSoll,

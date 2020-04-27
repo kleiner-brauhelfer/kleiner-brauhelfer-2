@@ -550,6 +550,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     case Colerg_AbgefuellteBiermenge:
     {
         double speise = data(idx.row(), ColSpeiseAnteil).toDouble() / 1000;
+        double verschneidung = data(idx.row(), ColVerschneidungAbfuellen).toDouble();
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         if (QSqlTableModel::setData(idx, value))
         {
@@ -557,9 +558,9 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
             if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
                 if (jungbiermenge > 0.0)
-                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() / (1 + speise / jungbiermenge));
+                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() / (1 + (speise + verschneidung) / jungbiermenge));
                 else
-                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() - speise);
+                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() - speise - verschneidung);
             }
             return true;
         }
@@ -694,14 +695,18 @@ void ModelSud::update(int row)
         double sre = data(row, ColSREIst).toDouble();
         sw = data(row, ColSWAnstellen).toDouble() + swWzGaerungCurrent[row];
         menge = data(row, ColWuerzemengeAnstellen).toDouble();
+        double verschneidung = data(row, ColVerschneidungAbfuellen).toDouble();
         if (menge > 0.0)
+        {
             sw += (data(row, ColZuckerAnteil).toDouble() / 10) / menge;
+            sw *=  (1 - verschneidung / (verschneidung + menge));
+        }
         setData(row, Colerg_Alkohol, BierCalc::alkohol(sw, sre));
 
         // erg_AbgefuellteBiermenge
         double jungbiermenge = data(row, ColJungbiermengeAbfuellen).toDouble();
         double speise = data(row, ColSpeiseAnteil).toDouble() / 1000;
-        setData(row, Colerg_AbgefuellteBiermenge, jungbiermenge + speise);
+        setData(row, Colerg_AbgefuellteBiermenge, jungbiermenge + speise + verschneidung);
 
         // erg_Preis
         updatePreis(row);

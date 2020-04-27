@@ -1122,41 +1122,14 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="3" column="2">
-            <widget class="QLabel" name="lblFlascheEinheit">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>l</string>
+           <item row="6" column="0" colspan="4">
+            <widget class="Line" name="line_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="1" column="5">
-            <widget class="QLabel" name="lblZuckerGesamt">
-             <property name="text">
-              <string>Zusätzlich benötigter Zucker</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="lblZuckerFaktor">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Süßkraft des Zuckers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="5">
-            <widget class="QLabel" name="lblZuckerFlasche">
-             <property name="text">
-              <string>Zusätzlich benötigter Zucker pro Flasche</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
+           <item row="7" column="0">
             <spacer name="horizontalSpacer_2">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -1169,31 +1142,8 @@
              </property>
             </spacer>
            </item>
-           <item row="0" column="3">
-            <widget class="QLabel" name="label_84">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>16777215</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="lblFlasche">
-             <property name="text">
-              <string>Flaschengröße</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="label">
+           <item row="1" column="7">
+            <widget class="QLabel" name="lblZuckerGesamtEinheit">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -1201,46 +1151,7 @@
               </size>
              </property>
              <property name="text">
-              <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="DoubleSpinBox" name="tbFlaschengroesse">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="minimum">
-              <double>0.100000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.010000000000000</double>
-             </property>
-             <property name="value">
-              <double>0.500000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="4">
-            <widget class="Line" name="line_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="5">
-            <widget class="QLabel" name="lblSpeisemengeGesamt">
-             <property name="text">
-              <string>Benötigte Speisemenge</string>
+              <string>g</string>
              </property>
             </widget>
            </item>
@@ -1269,32 +1180,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="6">
-            <widget class="SpinBox" name="tbSpeisemengeGesamt">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="maximum">
-              <number>99999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="7">
+           <item row="4" column="7">
             <widget class="QLabel" name="lblSpeisemengeFlascheEinheit">
              <property name="minimumSize">
               <size>
@@ -1307,8 +1193,15 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="7">
-            <widget class="QLabel" name="lblZuckerFlascheEinheit">
+           <item row="4" column="0">
+            <widget class="QLabel" name="lblFlasche">
+             <property name="text">
+              <string>Flaschengröße</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="2">
+            <widget class="QLabel" name="lblBiermengeAbfuellenEinheit">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -1316,74 +1209,24 @@
               </size>
              </property>
              <property name="text">
-              <string>g</string>
+              <string>l</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="DoubleSpinBox" name="tbZuckerFaktor">
+           <item row="0" column="2">
+            <widget class="QLabel" name="label">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>30</width>
                <height>0</height>
               </size>
              </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süßheit eines Stoffes relativ zu Haushaltszucker.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose): 1.00&lt;br/&gt;Traubenzucker (Glucose): 0.5 – 0.93 (MMuM: 0.92)&lt;br/&gt;Fruchtzucker (Fructose):1.0 – 1.8&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="minimum">
-              <double>0.100000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>5.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.010000000000000</double>
-             </property>
-             <property name="value">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="6">
-            <widget class="DoubleSpinBox" name="tbSpeisemengeFlasche">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>99999.899999999994179</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="5">
-            <widget class="QLabel" name="lblSpeisemengeFlasche">
              <property name="text">
-              <string>Benötigte Speisemenge pro Flasche</string>
+              <string>l</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="6">
+           <item row="5" column="6">
             <widget class="DoubleSpinBox" name="tbZuckerFlasche">
              <property name="minimumSize">
               <size>
@@ -1411,26 +1254,6 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="5" colspan="4">
-            <widget class="Line" name="lineFlasche">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="7">
-            <widget class="QLabel" name="lblZuckerGesamtEinheit">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>g</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_6">
              <property name="text">
@@ -1438,8 +1261,8 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="7">
-            <widget class="QLabel" name="lblSpeisemengeGesamtEinheit">
+           <item row="4" column="2">
+            <widget class="QLabel" name="lblFlascheEinheit">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -1447,24 +1270,11 @@
               </size>
              </property>
              <property name="text">
-              <string>ml</string>
+              <string>l</string>
              </property>
             </widget>
            </item>
-           <item row="6" column="5">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="2" column="0" colspan="4">
+           <item row="3" column="0" colspan="4">
             <widget class="Line" name="line_8">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -1499,14 +1309,224 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
+           <item row="0" column="6">
+            <widget class="SpinBox" name="tbSpeisemengeGesamt">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="maximum">
+              <number>99999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblZuckerFaktor">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Süßkraft des Zuckers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="7">
+            <widget class="QLabel" name="lblSpeisemengeGesamtEinheit">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>ml</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="5">
+            <widget class="QLabel" name="lblSpeisemengeFlasche">
+             <property name="text">
+              <string>Benötigte Speisemenge pro Flasche</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="DoubleSpinBox" name="tbZuckerFaktor">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süßheit eines Stoffes relativ zu Haushaltszucker.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose): 1.00&lt;br/&gt;Traubenzucker (Glucose): 0.5 – 0.93 (MMuM: 0.92)&lt;br/&gt;Fruchtzucker (Fructose):1.0 – 1.8&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="minimum">
+              <double>0.100000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>5.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.010000000000000</double>
+             </property>
+             <property name="value">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="5" colspan="3">
+            <widget class="Line" name="line_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="7">
+            <widget class="QLabel" name="lblZuckerFlascheEinheit">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>g</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="6">
+            <widget class="DoubleSpinBox" name="tbSpeisemengeFlasche">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>99999.899999999994179</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4" rowspan="10">
+            <widget class="Line" name="line_9">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="label_84">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QLabel" name="lblSpeisemengeGesamt">
+             <property name="text">
+              <string>Benötigte Speisemenge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
             <widget class="QLabel" name="lblBiermengeAbfuellen">
              <property name="text">
               <string>Jungbiermenge inklusive Speise</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="1">
+           <item row="9" column="5">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Anzahl Flaschen</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="5">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="5" column="5">
+            <widget class="QLabel" name="lblZuckerFlasche">
+             <property name="text">
+              <string>Zusätzlich benötigter Zucker pro Flasche</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="6">
+            <widget class="DoubleSpinBox" name="tbFlaschen">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>99999.899999999994179</double>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
             <widget class="DoubleSpinBoxSud" name="tbBiermengeAbfuellen">
              <property name="minimumSize">
               <size>
@@ -1534,8 +1554,82 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="2">
-            <widget class="QLabel" name="lblBiermengeAbfuellenEinheit">
+           <item row="3" column="5" colspan="4">
+            <widget class="Line" name="lineFlasche">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="5">
+            <widget class="QLabel" name="lblZuckerGesamt">
+             <property name="text">
+              <string>Zusätzlich benötigter Zucker</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="DoubleSpinBox" name="tbFlaschengroesse">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="minimum">
+              <double>0.100000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.010000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.500000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblWassserZuckerloesung">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wassermenge für Zuckerlösung&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="DoubleSpinBoxSud" name="tbWassserZuckerloesung">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Falls das Zucker zuerst in Wasser aufgelöst wird, kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge&lt;/span&gt; hier eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>2</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLabel" name="tbWassserZuckerloesungEinheit">
              <property name="minimumSize">
               <size>
                <width>30</width>
@@ -1547,29 +1641,15 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="4" rowspan="8">
-            <widget class="Line" name="line_9">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="5" colspan="3">
-            <widget class="Line" name="line_4">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="5">
-            <widget class="QLabel" name="label_13">
+           <item row="2" column="5">
+            <widget class="QLabel" name="lblKonzentrationZuckerloesung">
              <property name="text">
-              <string>Anzahl Flaschen</string>
+              <string>Konzentration der Zuckerlösung</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="6">
-            <widget class="DoubleSpinBox" name="tbFlaschen">
+           <item row="2" column="6">
+            <widget class="DoubleSpinBox" name="tbKonzentrationZuckerloesung">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -1577,7 +1657,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Konzentation&lt;/span&gt; der Zuckerlösung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1593,6 +1673,19 @@
              </property>
              <property name="maximum">
               <double>99999.899999999994179</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="7">
+            <widget class="QLabel" name="tbKonzentrationZuckerloesungEinheit">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>g/l</string>
              </property>
             </widget>
            </item>

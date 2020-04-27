@@ -1121,6 +1121,10 @@ bool Database::update()
             //  - neue Spalte 'Bemerkung'
             sqlExec(db, "ALTER TABLE Ausruestung ADD COLUMN Bemerkung TEXT");
 
+            // Sud
+            //  - neue Spalte 'VerschneidungAbfuellen'
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN VerschneidungAbfuellen REAL DEFAULT 0");
+
             // Etiketten
             //  - neue Spalte 'Papiergroesse'
             //  - neue Spalte 'Ausrichtung'

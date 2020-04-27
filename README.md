@@ -34,6 +34,11 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ### Version 2.2.0 (in Entwicklung)
 - Neu: Datenbankversion **2004**
+- Neu: Neue Spalte "Alternativen" bei Rohstofftabellen
+- Neu: Rohstofftabellen etwas überarbeitet
+- Neu: Eingabemöglichkeit für Bemerkungen bei den Anlagen
+- Neu: Bei den Etiketten werden Papiergrösse und Ausrichtung gespeichert
+- Neu: Eingabemöglichkeit einer Wassermenge bei Karbonisierung mit Zucker (Zuckerlösung)
 
 ### Version 2.1.3 (in Entwicklung)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

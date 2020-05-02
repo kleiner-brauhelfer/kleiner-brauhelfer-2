@@ -400,7 +400,7 @@ void TabRezept::updateValues()
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
     if (ui->tbHGF->value() != 0.0)
     {
-        ui->tbWasserHGF->setValue(bh->sud()->getMenge() - bh->sud()->getMengeSollKochende());
+        ui->tbWasserHGF->setValue(bh->sud()->getMengeSoll() - bh->sud()->getMengeSollKochende());
         ui->tbMilchsaeureHGF->setValue(ui->tbWasserHGF->value() * restalkalitaetFaktor);
         ui->tbWasserHGF->setVisible(true);
         ui->lblWasserHGF->setVisible(true);

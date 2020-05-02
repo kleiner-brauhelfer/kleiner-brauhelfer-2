@@ -23,6 +23,7 @@ OutputBaseFilename=kbh2_v{#MyAppVersion}_setup_win_x86
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+UninstallDisplayIcon={app}\{#MyAppExeName}
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

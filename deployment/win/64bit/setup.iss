@@ -23,6 +23,7 @@ OutputBaseFilename=kbh2_v{#MyAppVersion}_setup_win_x64
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+UninstallDisplayIcon={app}\{#MyAppExeName}
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 

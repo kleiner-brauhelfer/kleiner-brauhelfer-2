@@ -8,7 +8,7 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Download letzte Version
-- [Version 2.1.2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.1.2)
+- [Version 2.1.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -32,13 +32,13 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.1.3 (in Entwicklung)
+### Version 2.1.3 (02.05.2020)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten
 - Neu: Neue Import- & Exportfunktion (JSON Format), welche alle Suddaten enthält
 - Neu: Datenbankbereinigung sucht ungültige Werte
 - Neu: Verschiedene Reiter lassen sich verstecken
 - Neu: Neue Anlageeinstellung: Korrektur der Sollmenge, um Verluste zu kompensieren
-- Neu: Hopfengaben werden nach Tinseth berechnet und Faktoren (Pellets, Eiweissbruch, Nachisomerisierung) gemäss MMuM (https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsiburechner)
+- Neu: Hopfengaben werden nach Tinseth berechnet und weitere Einflüsse (Pellets, Eiweissbruch, Nachisomerisierung) gemäss [MMuM](https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsiburechner)
 - Fix: "Sud löschen" bei nicht-gespeichertem Sud löscht auch Einträge aus anderen Tabellen
 
 ### Version 2.1.2 (12.04.2020)

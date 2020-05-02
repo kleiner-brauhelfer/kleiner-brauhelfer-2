@@ -350,31 +350,29 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     if (row2 < 0)
         return -1;
 
-    double Menge = modelSud()->data(row1, ModelSud::ColMenge).toDouble();
-    double WuerzemengeKochbeginn = modelSud()->data(row1, ModelSud::ColWuerzemengeKochbeginn).toDouble();
-    double WuerzemengeVorHopfenseihen = modelSud()->data(row1, ModelSud::ColWuerzemengeVorHopfenseihen).toDouble();
-    double WuerzemengeKochende = modelSud()->data(row1, ModelSud::ColWuerzemengeKochende).toDouble();
-    double Speisemenge = modelSud()->data(row1, ModelSud::ColSpeisemenge).toDouble();
-    double WuerzemengeAnstellen = modelSud()->data(row1, ModelSud::ColWuerzemengeAnstellen).toDouble();
-    double erg_AbgefuellteBiermenge = modelSud()->data(row1, ModelSud::Colerg_AbgefuellteBiermenge).toDouble();
-    double erg_S_Gesamt = modelSud()->data(row1, ModelSud::Colerg_S_Gesamt).toDouble();
-    double erg_WHauptguss = modelSud()->data(row1, ModelSud::Colerg_WHauptguss).toDouble();
-    double erg_WNachguss = modelSud()->data(row1, ModelSud::Colerg_WNachguss).toDouble();
-    double erg_W_Gesamt = modelSud()->data(row1, ModelSud::Colerg_W_Gesamt).toDouble();
     BerechnungsartHopfen berechnungsArtHopfen = static_cast<BerechnungsartHopfen>(modelSud()->data(row1, ModelSud::ColberechnungsArtHopfen).toInt());
 
+    std::vector<int> listIndexes = {
+        ModelSud::ColMenge,
+        ModelSud::ColWuerzemengeKochbeginn,
+        ModelSud::ColWuerzemengeVorHopfenseihen,
+        ModelSud::ColWuerzemengeKochende,
+        ModelSud::ColSpeisemenge,
+        ModelSud::ColWuerzemengeAnstellen,
+        ModelSud::ColJungbiermengeAbfuellen,
+        ModelSud::Colerg_AbgefuellteBiermenge,
+        ModelSud::Colerg_S_Gesamt,
+        ModelSud::Colerg_WHauptguss,
+        ModelSud::Colerg_WNachguss,
+        ModelSud::Colerg_W_Gesamt,
+    };
+    std::vector<double> listValues(listIndexes.size());
+    for (size_t i = 0; i < listIndexes.size(); i++)
+        listValues[i] = modelSud()->data(row1, listIndexes[i]).toDouble();
+
     double factor = 1.0 - prozent;
-    modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeKochbeginn, WuerzemengeKochbeginn * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
-    modelSud()->setData(row2, ModelSud::ColSpeisemenge, Speisemenge * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_S_Gesamt, erg_S_Gesamt * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
+    for (size_t i = 0; i < listIndexes.size(); i++)
+        modelSud()->setData(row2, listIndexes[i], listValues[i] * factor);
     int sudId2 = modelSud()->data(row2, ModelSud::ColID).toInt();
     for (int row = 0; row < modelHopfengaben()->rowCount(); ++row)
     {
@@ -399,17 +397,8 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
 
     factor = prozent;
     modelSud()->setData(row1, ModelSud::ColSudname, name1);
-    modelSud()->setData(row1, ModelSud::ColMenge, Menge * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeKochbeginn, WuerzemengeKochbeginn * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
-    modelSud()->setData(row1, ModelSud::ColSpeisemenge, Speisemenge * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_S_Gesamt, erg_S_Gesamt * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
+    for (size_t i = 0; i < listIndexes.size(); i++)
+        modelSud()->setData(row1, listIndexes[i], listValues[i] * factor);
     for (int row = 0; row < modelHopfengaben()->rowCount(); ++row)
     {
         if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId)

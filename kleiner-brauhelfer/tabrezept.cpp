@@ -351,6 +351,9 @@ void TabRezept::updateValues()
     if (!isTabActive())
         return;
 
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
+
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
     for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
@@ -362,8 +365,10 @@ void TabRezept::updateValues()
         ui->tbSudname->setCursorPosition(0);
     }
 
-    ui->btnSudhausausbeute->setVisible(bh->sud()->getSudhausausbeute() != bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
-    ui->btnVerdampfungsziffer->setVisible(bh->sud()->getVerdampfungsrate() != bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble());
+    double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
+    ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
+    diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsziffer).toDouble();
+    ui->btnVerdampfungsziffer->setVisible(!gebraut && qAbs(diff) > 0.05);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -395,7 +400,7 @@ void TabRezept::updateValues()
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
     if (ui->tbHGF->value() != 0.0)
     {
-        ui->tbWasserHGF->setValue(bh->sud()->getMenge() - bh->sud()->getMengeSollKochende());
+        ui->tbWasserHGF->setValue(bh->sud()->getMengeSoll() - bh->sud()->getMengeSollKochende());
         ui->tbMilchsaeureHGF->setValue(ui->tbWasserHGF->value() * restalkalitaetFaktor);
         ui->tbWasserHGF->setVisible(true);
         ui->lblWasserHGF->setVisible(true);

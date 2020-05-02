@@ -19,19 +19,19 @@ QVariant ModelWasser::dataExt(const QModelIndex &idx) const
     {
     case ColCalciumMmol:
     {
-        return data(idx.row(), ColCalcium).toDouble() / 40.8;
+        return data(idx.row(), ColCalcium).toDouble() / 40.08;
     }
     case ColMagnesiumMmol:
     {
-        return data(idx.row(), ColMagnesium).toDouble() / 24.3;
+        return data(idx.row(), ColMagnesium).toDouble() / 24.31;
     }
     case ColCalciumhaerte:
     {
-        return data(idx.row(), ColCalcium).toDouble() / 40.8 / 0.1783;
+        return data(idx.row(), ColCalcium).toDouble() / 40.08 / 0.1783;
     }
     case ColMagnesiumhaerte:
     {
-        return data(idx.row(), ColMagnesium).toDouble() / 24.3 / 0.1783;
+        return data(idx.row(), ColMagnesium).toDouble() / 24.31 / 0.1783;
     }
     case ColCarbonathaerte:
     {

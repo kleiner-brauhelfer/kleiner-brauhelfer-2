@@ -23,12 +23,16 @@ int SpinBoxSud::column() const
 
 void SpinBoxSud::updateValue()
 {
+    if (mCol == -1)
+        return;
     if (!hasFocus() || isReadOnly())
         setValue(bh->sud()->getValue(mCol).toInt());
 }
 
 void SpinBoxSud::on_valueChanged(int value)
 {
+    if (mCol == -1)
+        return;
     if (hasFocus() && !isReadOnly())
         bh->sud()->setValue(mCol, value);
 }

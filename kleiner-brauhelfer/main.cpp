@@ -10,6 +10,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QSslSocket>
+#include <QOperatingSystemVersion>
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -290,6 +291,19 @@ static void copyResources()
     }
 }
 
+static void checkOs()
+{
+    if (gSettings->isNewProgramVersion())
+    {
+        if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
+            QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
+        {
+            QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                 QObject::tr("Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung)."));
+        }
+    }
+}
+
 static void checkSSL()
 {
     if (!QSslSocket::supportsSsl())
@@ -301,8 +315,8 @@ static void checkSSL()
         qWarning() << "Version installed:" << rutimeVersion;
         if (gSettings->isNewProgramVersion())
         {
-            QMessageBox::critical(nullptr, QApplication::applicationName(),
-                                  QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
+            QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                 QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
         }
     }
 }
@@ -402,8 +416,9 @@ int main(int argc, char *argv[])
     if (!translatorQt.isEmpty())
         a.installTranslator(&translatorQt);
 
-    // check SSL
+    // do some checks
     checkSSL();
+    checkOs();
 
     try
     {

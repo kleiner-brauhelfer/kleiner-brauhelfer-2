@@ -16,6 +16,7 @@ public:
     WebPage(QObject* parent = nullptr);
     void setLinksExternal(bool external);
     bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool) Q_DECL_OVERRIDE;
+
 private:
     bool mExternal;
 };
@@ -41,6 +42,9 @@ public:
 
 private:
     QString mTemplateFile;
+
+private:
+    bool mIsSupported;
 };
 
 #else

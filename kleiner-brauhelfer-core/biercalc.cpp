@@ -295,7 +295,7 @@ double BierCalc::dichteWasser(double T)
     const double a4 = 0.00000010584601;
     const double a5 = -0.00000000028103006;
     const double b = 0.016887236;
-    return (a0 + T * a1 + pow(T,2) * a2 + pow(T,3) * a3 + pow(T,4) * a4 + pow(T,5) * a5) / (1 + T * b);
+    return (a0 + T * a1 + pow(T,2) * a2 + pow(T,3) * a3 + pow(T,4) * a4 + pow(T,5) * a5) / (1 + T * b) * 1e-3;
 }
 
 double BierCalc::volumenWasser(double T1, double T2, double V1)

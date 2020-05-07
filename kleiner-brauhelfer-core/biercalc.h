@@ -246,7 +246,7 @@ public:
     /**
      * @brief Dichte von Wasser bei gegebenen Temperatur
      * @param T Temperatur [°C]
-     * @return Dichte
+     * @return Dichte [kg/l]
      */
     Q_INVOKABLE static double dichteWasser(double T);
 

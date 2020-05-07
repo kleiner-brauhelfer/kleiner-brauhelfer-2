@@ -402,7 +402,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         double ist = bh->modelWasser()->getValueFromSameRow(ModelWasser::ColName, data(idx.row(), ColWasserprofil), ModelWasser::ColRestalkalitaet).toDouble();
         double soll = data(idx.row(), ColRestalkalitaetSoll).toDouble();
-        double fac = (ist -  soll) * 0.033333333;
+        double fac = (ist - soll) * 0.033333333;
         if (fac < 0.0)
             fac = 0.0;
         return fac;
@@ -842,7 +842,8 @@ void ModelSud::updateFarbe(int row)
     if (gs > 0.0)
     {
         double sw = data(row, ColSW).toDouble() - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
-        ebc = (d / gs) * sw / 10 + 2;
+        double t = data(row, ColKochdauerNachBitterhopfung).toDouble();
+        ebc = (d / gs) * sw / 10 + 1.5 * t/60;
         ebc += dataAnlage(row, ModelAusruestung::ColKorrekturFarbe).toDouble();
     }
     setData(row, Colerg_Farbe, ebc);

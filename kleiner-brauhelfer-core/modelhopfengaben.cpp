@@ -28,10 +28,16 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
     {
         // https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsiburechne
         int rowSudId = bh->modelSud()->getRowWithValue(ModelSud::ColID, data(idx.row(), ColSudID));
-        double sw = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochende).toDouble();
         double kochzeit = bh->modelSud()->data(rowSudId, ModelSud::ColKochdauerNachBitterhopfung).toDouble();
         double isozeit = bh->modelSud()->data(rowSudId, ModelSud::ColNachisomerisierungszeit).toDouble();
         double t = data(idx.row(), ColZeit).toDouble();
+        double sw_beginn = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochbeginn).toDouble();
+        double sw_ende = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochende).toDouble();
+        double sw;
+        if (t > 0)
+            sw = (sw_ende - sw_beginn) / kochzeit * (kochzeit - t/2)  + sw_beginn;
+        else
+            sw = sw_ende;
         double Tiso = 80.0;
         double ausbeute = 100 * BierCalc::tinseth(t + isozeit * 0.046 * exp(0.031 * Tiso), sw);
         if (data(idx.row(), ColPellets).toBool())

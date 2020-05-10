@@ -335,13 +335,9 @@ void TabGaerverlauf::checkEnabled()
 void TabGaerverlauf::updateValues()
 {
     checkEnabled();
-    QDateTime dtCurrent = QDateTime::currentDateTime();
     ui->tbDatumSchnellgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbDatumSchnellgaerprobe->setMaximumDateTime(dtCurrent);
     ui->tbDatumHautgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbDatumHautgaerprobe->setMaximumDateTime(dtCurrent);
     ui->tbDatumNachgaerprobe->setMinimumDateTime(bh->sud()->getAbfuelldatum());
-    ui->tbDatumNachgaerprobe->setMaximumDateTime(dtCurrent);
 }
 
 void TabGaerverlauf::updateDiagramm()

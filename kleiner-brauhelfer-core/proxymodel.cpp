@@ -23,13 +23,20 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
 
     QSortFilterProxyModel::setSourceModel(model);
     if(SqlTableModel* m = dynamic_cast<SqlTableModel*>(model))
+    {
         mDeletedColumn = m->fieldIndex("deleted");
+        connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+    }
     else if(ProxyModel* m = dynamic_cast<ProxyModel*>(model))
+    {
         mDeletedColumn = m->fieldIndex("deleted");
+        connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+    }
     else
+    {
         mDeletedColumn = -1;
+    }
     connect(model, SIGNAL(modelReset()), this, SLOT(invalidate()));
-    connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
 QVariant ProxyModel::data(int row, int col, int role) const

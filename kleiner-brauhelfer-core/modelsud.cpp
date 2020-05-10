@@ -669,8 +669,6 @@ void ModelSud::update(int row)
     mUpdating = true;
     mSignalModifiedBlocked = true;
 
-    double menge, sw;
-
     qDebug() << "ModelSud::update():" << data(row, ColID).toInt();
 
     updateSwWeitereZutaten(row);
@@ -678,15 +676,12 @@ void ModelSud::update(int row)
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(row, ColStatus).toInt());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
-        // recipe
-        double mengeRecipe = data(row, ColMengeSoll).toDouble();
-        double swRecipe = data(row, ColSW).toDouble();
-        double hgf = 1 + data(row, ColhighGravityFaktor).toInt() / 100.0;
-
         // erg_S_Gesamt
-        sw = swRecipe - swWzMaischenRecipe[row] - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
+        double sw = data(row, ColSW_Malz).toDouble();
+        double sw_dichte = sw + swWzMaischenRecipe[row] + swWzKochenRecipe[row];
+        double menge = data(row, ColMengeSoll).toDouble();
         double ausb = data(row, ColSudhausausbeute).toDouble();
-        double schuet = BierCalc::schuettung(sw * hgf, mengeRecipe / hgf, ausb, true);
+        double schuet = BierCalc::schuettung(sw, sw_dichte, menge, ausb);
         setData(row, Colerg_S_Gesamt, schuet);
 
         // erg_W_Gesamt, erg_WHauptguss, erg_WNachguss
@@ -696,21 +691,23 @@ void ModelSud::update(int row)
         updateFarbe(row);
 
         // erg_Sudhausausbeute
-        sw = data(row, ColSWKochende).toDouble() - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
+        sw_dichte = data(row, ColSWKochende).toDouble();
+        sw = sw_dichte - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
         menge = data(row, ColWuerzemengeVorHopfenseihen).toDouble();
-        setData(row, Colerg_Sudhausausbeute, BierCalc::sudhausausbeute(sw, menge, schuet, true));
+        setData(row, Colerg_Sudhausausbeute, BierCalc::sudhausausbeute(sw, sw_dichte, menge, schuet));
 
         // erg_EffektiveAusbeute
-        sw = data(row, ColSWAnstellen).toDouble() * hgf - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
-        menge = data(row, ColWuerzemengeAnstellenTotal).toDouble() / hgf;
-        setData(row, Colerg_EffektiveAusbeute, BierCalc::sudhausausbeute(sw , menge, schuet, true));
+        sw_dichte = data(row, ColSWAnstellen).toDouble();
+        sw = sw_dichte - swWzMaischenRecipe[row] - swWzKochenRecipe[row];
+        menge = data(row, ColWuerzemengeAnstellenTotal).toDouble();
+        setData(row, Colerg_EffektiveAusbeute, BierCalc::sudhausausbeute(sw, sw_dichte, menge, schuet));
     }
     if (status <= Brauhelfer::SudStatus::Gebraut)
     {
         // erg_Alkohol
         double sre = data(row, ColSREIst).toDouble();
-        sw = data(row, ColSWAnstellen).toDouble() + swWzGaerungCurrent[row];
-        menge = data(row, ColWuerzemengeAnstellen).toDouble();
+        double sw = data(row, ColSWAnstellen).toDouble() + swWzGaerungCurrent[row];
+        double menge = data(row, ColWuerzemengeAnstellen).toDouble();
         double verschneidung = data(row, ColVerschneidungAbfuellen).toDouble();
         if (menge > 0.0)
         {

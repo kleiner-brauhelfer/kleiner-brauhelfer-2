@@ -279,20 +279,20 @@ public:
     /**
      * @brief Berechnet die Sudhausausbeute
      * @param sw Stammwürze [°P]
-     * @param V Volumen [L]
+     * @param V Volumen bei 20°C [L]
      * @param schuettung Schüttung [kg]
      * @return Sudhausausbeute [%]
      */
-    Q_INVOKABLE static double sudhausausbeute(double sw, double V, double schuettung, bool kaltWuerze);
+    Q_INVOKABLE static double sudhausausbeute(double sw, double sw_dichte, double V, double schuettung);
 
     /**
-     * @brief schuettung
-     * @param sw
-     * @param V
-     * @param sudhausausbeute
-     * @return
+     * @brief Berechnet die nötige Schüttung
+     * @param sw Stammwürze [°P]
+     * @param V Volumen bei 20°C [L]
+     * @param sudhausausbeute Sudhausausbeute [%]
+     * @return Schüttung [kg]
      */
-    Q_INVOKABLE static double schuettung(double sw, double V, double sudhausausbeute, bool kaltWuerze);
+    Q_INVOKABLE static double schuettung(double sw, double sw_dichte, double V, double sudhausausbeute);
 
     /**
      * @brief Benötigte Wassermenge, um auf die Sollstammwürze zu erreichen

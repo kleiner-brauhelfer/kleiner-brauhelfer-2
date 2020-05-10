@@ -36,8 +36,7 @@ public:
     {
         Terrill = 0,
         TerrillLinear = 1,
-        Standard = 2,
-        Kleier = 3,
+        Standard = 2
     };
     Q_ENUM(FormulaBrixToPlato)
 
@@ -52,11 +51,6 @@ public:
      * @note Zwischen 1.02 und 1.06 je nach Literaturangabe, meist 1.03
      */
     static double faktorPlatoToBrix;
-
-    /**
-     * @brief Gaerungskorrektur fuer Umrechnung nach Kleier
-     */
-    static double KleierGaerungskorrektur;
 
     /**
      * @brief Ein kg Malzschrot verdrängt eingemaischt je nach

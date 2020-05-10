@@ -4,7 +4,6 @@
 
 const double BierCalc::dichteAlkohol = 0.7894;
 double BierCalc::faktorPlatoToBrix = 1.03;
-double BierCalc::KleierGaerungskorrektur = 0.44552;
 const double BierCalc::MalzVerdraengung = 0.7;
 const double BierCalc::Balling = 2.0665;
 
@@ -21,7 +20,6 @@ double BierCalc::platoToBrix(double plato)
 double BierCalc::brixToDichte(double sw, double brix, FormulaBrixToPlato formel)
 {
     double b = brixToPlato(brix);
-    double tre;
     switch (formel)
     {
     case Terrill:
@@ -32,10 +30,6 @@ double BierCalc::brixToDichte(double sw, double brix, FormulaBrixToPlato formel)
         return 1.0000 - 0.00085683*sw + 0.0034941*b;
     case Standard:
         return 1.001843-0.002318474*sw - 0.000007775*sw*sw - 0.000000034*sw*sw*sw + 0.00574*brix + 0.00003344*brix*brix + 0.000000086*brix*brix*brix;
-    case Kleier:
-        // http://hobbybrauer.de/modules.php?name=eBoard&file=viewthread&tid=11943&page=2#pid129201
-        tre = (Balling * brix - KleierGaerungskorrektur * sw)/(Balling * faktorPlatoToBrix - KleierGaerungskorrektur);
-        return platoToDichte(toSRE(sw, tre));
     default:
         return 0.0;
     }

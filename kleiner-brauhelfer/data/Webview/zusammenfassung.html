@@ -130,7 +130,7 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm bg_kommentar" align="center">
-    <h2>Bemerkungen</h2>
+    <h2>Bemerkung</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
@@ -336,7 +336,7 @@
   </table>
 
   <div class="rm bg_rasten" align="center">
-    <h2>Rasten</h2>
+    <h2>Maischplan</h2>
     <table>
       <col width="*">
       <col width="150">
@@ -345,11 +345,6 @@
         <th></th>
         <th>Temperatur [&deg;C]</th>
         <th>Dauer [min]</th>
-      </tr>
-      <tr>
-        <td>Einmaischen</td>
-        <td class="value" align="center">{{Rezept.EinmaischenTemp}}</td>
-        <td></td>
       </tr>
       {{#Rasten.Liste}}
       <tr>

@@ -90,7 +90,6 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
-            ctxRezept["EinmaischenTemp"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColEinmaischenTemp).toInt());
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
             ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
             fval = BierCalc::volumenWasser(20.0, 100.0, fval);
@@ -161,10 +160,41 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 ProxyModel *model = bh->sud()->modelRasten();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
+                    int temp;
                     QVariantMap map;
                     map["Name"] = model->data(row, ModelRasten::ColName).toString();
                     map["Temp"] = QString::number(model->data(row, ModelRasten::ColTemp).toInt());
                     map["Dauer"] = QString::number(model->data(row, ModelRasten::ColDauer).toInt());
+                    map["Menge"] = locale.toString(model->data(row, ModelRasten::ColMenge).toDouble(), 'f', 1);
+                    switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelRasten::ColTyp).toInt()))
+                    {
+                    case Brauhelfer::RastTyp::Einmaischen:
+                        map["Einmaischen"] = true;
+                        map["WasserTemp"] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Temperatur:
+                        map["Rast"] = true;
+                        break;
+                    case Brauhelfer::RastTyp::Infusion:
+                        map["Infusion"] = true;
+                        map["WasserTemp"] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Dekoktion:
+                        map["Dekoktion"] = true;
+                        temp = model->data(row, ModelRasten::ColParam2).toInt();
+                        if (temp > 0)
+                        {
+                            map["TeilmaischeRastTemp"] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                            map["TeilmaischeRastDauer"] = QString::number(temp);
+                        }
+                        temp = model->data(row, ModelRasten::ColParam4).toInt();
+                        if (temp > 0)
+                        {
+                            map["TeilmaischeZusatzRastTemp"] = QString::number(model->data(row, ModelRasten::ColParam3).toInt());
+                            map["TeilmaischeZusatzRastDauer"] = QString::number(temp);
+                        }
+                        break;
+                    }
                     liste << map;
                 }
                 if (!liste.empty())

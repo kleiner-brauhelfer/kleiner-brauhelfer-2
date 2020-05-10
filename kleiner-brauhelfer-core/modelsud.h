@@ -26,7 +26,6 @@ public:
         ColFaktorHauptguss,
         ColWasserprofil,
         ColRestalkalitaetSoll,
-        ColEinmaischenTemp,
         ColCO2,
         ColIBU,
         ColberechnungsArtHopfen,
@@ -106,6 +105,7 @@ public:
         ColAnlageSudhausausbeute,
         ColRestalkalitaetFaktor,
         ColFaktorHauptgussEmpfehlung,
+        ColWHauptgussEmpfehlung,
         ColBewertungMittel,
         // number of columns
         NumCols

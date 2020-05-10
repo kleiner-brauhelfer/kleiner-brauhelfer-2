@@ -15,7 +15,6 @@
 #include "widgets/wdgweiterezutatgabe.h"
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrohstoffauswahl.h"
-#include "dialogs/dlgeinmaischtemp.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -43,7 +42,6 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbVergaerungsgrad->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbReifezeit->setColumn(ModelSud::ColReifezeit);
     ui->tbHGF->setColumn(ModelSud::ColhighGravityFaktor);
-    ui->tbEinmaischtemperatur->setColumn(ModelSud::ColEinmaischenTemp);
     ui->tbKochzeit->setColumn(ModelSud::ColKochdauerNachBitterhopfung);
     ui->tbNachisomerisierungszeit->setColumn(ModelSud::ColNachisomerisierungszeit);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
@@ -204,10 +202,6 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         weitereZutatenGaben_modified();
         checkRohstoffe();
         break;
-
-    case ModelSud::ColEinmaischenTemp:
-        updateRastenDiagram();
-        break;
     }
 }
 
@@ -236,8 +230,6 @@ void TabRezept::checkEnabled()
     ui->cbWasserProfil->setEnabled(!gebraut);
     ui->tbRestalkalitaet->setReadOnly(gebraut);
     ui->tbReifezeit->setReadOnly(gebraut);
-    ui->tbEinmaischtemperatur->setReadOnly(gebraut);
-    ui->btnEinmaischtemperatur->setVisible(!gebraut);
     ui->btnNeueRast->setVisible(!gebraut);
     ui->lineNeueRast->setVisible(!gebraut);
     ui->btnNeueMalzGabe->setVisible(!gebraut);
@@ -523,46 +515,108 @@ void TabRezept::updateRastenDiagram()
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QLineSeries *series = new QLineSeries();
-    int t = 0;
-    int tempMin = 30;
-    int tempMax = 80;
-    series->append(t, bh->sud()->getEinmaischenTemp());
-    for (int i = 0; i < ui->layoutRasten->count(); ++i)
-    {
-        const WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-        int temp = wdg->temperatur();
-        series->append(t, temp);
-        t += wdg->dauer();
-        series->append(t, temp);
-        if (temp < tempMin)
-            tempMin = temp;
-        if (temp > tempMax)
-            tempMax = temp;
-    }
+    QLineSeries *seriesAux;
+    int tTotal = 0;
+    int TMin = 30;
+    int TMax = 80;
+    int t, T, T2, lastT = 0, temp;
+
     QChart *chart = ui->diagramRasten->chart();
     chart->removeAllSeries();
     chart->addSeries(series);
+
+    for (int i = 0; i < ui->layoutRasten->count(); ++i)
+    {
+        const WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
+        T = wdg->data(ModelRasten::ColTemp).toInt();
+        t = wdg->data(ModelRasten::ColDauer).toInt();
+        switch (static_cast<Brauhelfer::RastTyp>(wdg->data(ModelRasten::ColTyp).toInt()))
+        {
+        case Brauhelfer::RastTyp::Infusion:
+            seriesAux = new QLineSeries();
+            seriesAux->setPen(QPen(QBrush(gSettings->DiagramLinie3), 2, Qt::DashLine));
+            T2 = wdg->data(ModelRasten::ColParam1).toInt();
+            seriesAux->append(tTotal, T2);
+            seriesAux->append(tTotal, T);
+            chart->addSeries(seriesAux);
+            TMax = 100;
+            if (T2 < TMin)
+                TMin = T2;
+            if (T2 > TMax)
+                TMax = T2;
+            break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            seriesAux = new QLineSeries();
+            seriesAux->setPen(QPen(QBrush(gSettings->DiagramLinie2), 2, Qt::DashLine));
+            seriesAux->append(tTotal, lastT);
+            temp = wdg->data(ModelRasten::ColParam4).toInt();
+            if (temp > 0)
+            {
+                int T3 = wdg->data(ModelRasten::ColParam3).toInt();
+                seriesAux->append(tTotal, T3);
+                tTotal += temp;
+                seriesAux->append(tTotal, T3);
+                if (T3 < TMin)
+                    TMin = T3;
+                if (T3 > TMax)
+                    TMax = T3;
+            }
+            temp = wdg->data(ModelRasten::ColParam2).toInt();
+            if (temp > 0)
+            {
+                T2 = wdg->data(ModelRasten::ColParam1).toInt();
+                seriesAux->append(tTotal, T2);
+                tTotal += temp;
+                seriesAux->append(tTotal, T2);
+                TMax = 100;
+                if (T2 < TMin)
+                    TMin = T2;
+                if (T2 > TMax)
+                    TMax = T2;
+            }
+            seriesAux->append(tTotal, T);
+            chart->addSeries(seriesAux);
+            series->append(tTotal, lastT);
+            break;
+        default:
+            break;
+        }
+
+        series->append(tTotal, T);
+        tTotal += t;
+        series->append(tTotal, T);
+
+        if (T < TMin)
+            TMin = T;
+        if (T > TMax)
+            TMax = T;
+
+        lastT = T;
+    }
+
     chart->createDefaultAxes();
     QValueAxis *axis =  static_cast<QValueAxis*>(chart->axes(Qt::Horizontal).back());
-    axis->setRange(0, t);
+    axis->setRange(0, tTotal);
     axis->setLabelFormat("%d min");
     axis =  static_cast<QValueAxis*>(chart->axes(Qt::Vertical).back());
-    axis->setRange(tempMin, tempMax);
+    axis->setRange(TMin, TMax);
     axis->setLabelFormat("%d C");
   #endif
 }
 
-void TabRezept::on_btnEinmaischtemperatur_clicked()
-{
-    int rastTemp = bh->sud()->modelRasten()->rowCount() > 0 ? bh->sud()->modelRasten()->data(0, ModelRasten::ColTemp).toInt() : 57;
-    DlgEinmaischTemp dlg(bh->sud()->geterg_S_Gesamt(), 18, bh->sud()->geterg_WHauptguss(), rastTemp, this);
-    if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setEinmaischenTemp(dlg.value());
-}
-
 void TabRezept::on_btnNeueRast_clicked()
 {
-    QMap<int, QVariant> values({{ModelRasten::ColSudID, bh->sud()->id()}, {ModelRasten::ColTemp, 78}});
+    QMap<int, QVariant> values;
+    if (bh->sud()->modelRasten()->rowCount() == 0)
+    {
+        values = {{ModelRasten::ColSudID, bh->sud()->id()},
+                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)}};
+    }
+    else
+    {
+        values = {{ModelRasten::ColSudID, bh->sud()->id()},
+                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Temperatur)}};
+    }
     bh->sud()->modelRasten()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }

@@ -156,6 +156,15 @@ public:
     };
     Q_ENUM(Einheit)
 
+    enum class RastTyp
+    {
+        Einmaischen = 0,
+        Temperatur = 1,
+        Infusion = 2,
+        Dekoktion = 3
+    };
+    Q_ENUM(RastTyp)
+
     enum class AnlageTyp
     {
         Standard = 0x0000,

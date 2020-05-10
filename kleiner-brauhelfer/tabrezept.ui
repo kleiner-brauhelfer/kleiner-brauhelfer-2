@@ -946,9 +946,6 @@
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
-              </property>
               <property name="widgetResizable">
                <bool>true</bool>
               </property>
@@ -957,8 +954,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>100</width>
-                 <height>100</height>
+                 <width>361</width>
+                 <height>134</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -1212,8 +1209,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>100</width>
-              <height>30</height>
+              <width>284</width>
+              <height>109</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1302,8 +1299,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>100</width>
-              <height>30</height>
+              <width>284</width>
+              <height>379</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1388,8 +1385,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>100</width>
-             <height>30</height>
+             <width>284</width>
+             <height>591</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1463,97 +1460,12 @@
       </widget>
       <widget class="QWidget" name="tabRasten">
        <attribute name="title">
-        <string>Rasten</string>
+        <string>Maischplan</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <property name="spacing">
          <number>4</number>
         </property>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_26">
-          <property name="spacing">
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_13">
-            <property name="text">
-             <string>Einmaischtemperatur</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnEinmaischtemperatur">
-            <property name="minimumSize">
-             <size>
-              <width>60</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>60</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button passt der Kleine Brauhelfer ausgehend von Schüttung, Gussmenge und erster Raststufe die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischtemperatur automatisch &lt;/span&gt;an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="text">
-             <string notr="true">...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="SpinBoxSud" name="tbEinmaischtemperatur">
-            <property name="minimumSize">
-             <size>
-              <width>60</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischtemperatur&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Sie kann manuell oder über das Widget links festgelegt werden. Die Einmaischtemperatur liegt immer leicht höher, als die erste Raststufe. Malz und Rohstoffe senken beim Einmaischen die Temperatur ab. Das Widget berechnete diese Differenz anhand von Schüttung und Gussmenge automatisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_39">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>°C</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="Line" name="line_8">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QSplitter" name="splitterRastenDiagram">
           <property name="orientation">
@@ -1563,9 +1475,6 @@
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
-           </property>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
@@ -1574,8 +1483,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>100</width>
-              <height>30</height>
+              <width>284</width>
+              <height>118</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1633,7 +1542,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird eine neue &lt;span style=&quot; font-weight:600;&quot;&gt;Rasstufe&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich die Raststufen – je nach Maischverfahren – Schritt für Schritt festzulegen. Eine manuelle Sortiermöglichkeit ist ist im Kleinen Brauhelfer nicht vorgesehen.&lt;/p&gt;&lt;p&gt;Die Namen der einzelnen Raststufen werden nach Eingabe der ersten beiden Buchstaben automatisch vervollständigt. Daneben steht es dem Anwender frei, eigene Raststufen zu definieren.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Raststufen ist die Fachliteratur oder das Forum der Wahl um Rat zu fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Rast hinzufügen</string>
+           <string>Schritt hinzufügen</string>
           </property>
          </widget>
         </item>
@@ -3237,6 +3146,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -3245,11 +3159,6 @@
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>
@@ -3308,8 +3217,6 @@
   <tabstop>scrollAreaWeitereZutatenGaben</tabstop>
   <tabstop>btnNeueHopfenstopfenGabe</tabstop>
   <tabstop>btnNeueWeitereZutat</tabstop>
-  <tabstop>btnEinmaischtemperatur</tabstop>
-  <tabstop>tbEinmaischtemperatur</tabstop>
   <tabstop>scrollAreaRasten</tabstop>
   <tabstop>diagramRasten</tabstop>
   <tabstop>btnNeueRast</tabstop>

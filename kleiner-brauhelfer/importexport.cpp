@@ -1,4 +1,5 @@
 #include "importexport.h"
+#include <QtMath>
 #include <QFile>
 #include <QTextStream>
 #include <QJsonDocument>
@@ -220,8 +221,10 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileNa
     values[ModelSud::ColMenge] = menge;
     values[ModelSud::ColSW] = toDouble(root["Stammwuerze"]);
     values[ModelSud::ColSudhausausbeute] = toDouble(root["Sudhausausbeute"]);
-    values[ModelSud::ColFaktorHauptguss] = toDouble(root["Infusion_Hauptguss"]) / gesamt_schuettung;
-    values[ModelSud::ColEinmaischenTemp] = toDouble(root["Infusion_Einmaischtemperatur"]);
+    if (root["Maischform"].toString() == "infusion")
+        values[ModelSud::ColFaktorHauptguss] = toDouble(root["Infusion_Hauptguss"]) / gesamt_schuettung;
+    else if (root["Maischform"].toString() == "dekoktion")
+        values[ModelSud::ColFaktorHauptguss] = toDouble(root["Dekoktion_Einmaisch_Zubruehwasser_gesamt"]) / gesamt_schuettung;
     values[ModelSud::ColCO2] = toDouble(root["Karbonisierung"]);
     values[ModelSud::ColIBU] = toDouble(root["Bittere"]);
     values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
@@ -239,27 +242,83 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileNa
                             .arg(root["Anmerkung_Autor"].toString());
 
     int sudRow = bh->modelSud()->append(values);
+    bh->modelSud()->update(sudRow);
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
 
     // Rasten
     if (root["Maischform"].toString() == "infusion")
     {
+        values.clear();
+        values[ModelRasten::ColSudID] = sudId;
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
+        values[ModelRasten::ColName] = "Einmaischen";
+        values[ModelRasten::ColTemp] = toDouble(root["Infusion_Einmaischtemperatur"]);
+        values[ModelRasten::ColDauer] = 10;
+        bh->modelRasten()->appendDirect(values);
         int max_rasten = findMax(root, "Infusion_Rasttemperatur%%");
         for (int i = 1; i < max_rasten; ++i)
         {
             values.clear();
             values[ModelRasten::ColSudID] = sudId;
+            values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
             values[ModelRasten::ColName] = QString("%1. Rast").arg(i);
             values[ModelRasten::ColTemp] = toDouble(root[QString("Infusion_Rasttemperatur%1").arg(i)]);
             values[ModelRasten::ColDauer] = toDouble(root[QString("Infusion_Rastzeit%1").arg(i)]);
-            bh->modelRasten()->append(values);
+            bh->modelRasten()->appendDirect(values);
         }
         values.clear();
         values[ModelRasten::ColSudID] = sudId;
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
         values[ModelRasten::ColName] = "Abmaischen";
         values[ModelRasten::ColTemp] = toDouble(root["Abmaischtemperatur"]);
         values[ModelRasten::ColDauer] = 10;
-        bh->modelRasten()->append(values);
+        bh->modelRasten()->appendDirect(values);
+    }
+    else if (root["Maischform"].toString() == "dekoktion")
+    {
+        double V_tot = toDouble(root["Dekoktion_Einmaisch_Zubruehwasser_gesamt"]);
+        values.clear();
+        values[ModelRasten::ColSudID] = sudId;
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
+        values[ModelRasten::ColName] = "Einmaischen";
+        values[ModelRasten::ColMengenfaktor] = toDouble(root["Dekoktion_0_Volumen"]) / V_tot;
+        values[ModelRasten::ColTemp] = toDouble(root["Dekoktion_0_Temperatur_resultierend"]);
+        values[ModelRasten::ColDauer] = toDouble(root["Dekoktion_0_Rastzeit"]);
+        bh->modelRasten()->appendDirect(values);
+        int max_rasten = findMax(root, "Dekoktion_%%_Volumen");
+        for (int i = 1; i < max_rasten; ++i)
+        {
+            values.clear();
+            values[ModelRasten::ColSudID] = sudId;
+            values[ModelRasten::ColName] = root[QString("Dekoktion_%1_Form").arg(i)].toString();
+            values[ModelRasten::ColMengenfaktor] = toDouble(root[QString("Dekoktion_%1_Volumen").arg(i)]) / V_tot;
+            values[ModelRasten::ColTemp] = toDouble(root[QString("Dekoktion_%1_Temperatur_resultierend").arg(i)]);
+            values[ModelRasten::ColDauer] = toDouble(root[QString("Dekoktion_%1_Rastzeit").arg(i)]);
+            if (values[ModelRasten::ColName] == "Kochendes Wasser")
+            {
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Infusion);
+                values[ModelRasten::ColParam1] = 95;
+            }
+            else
+            {
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Dekoktion);
+                values[ModelRasten::ColParam1] = 95;
+                if (root.contains(QString("Dekoktion_%1_Teilmaische_Kochzeit").arg(i)))
+                    values[ModelRasten::ColParam2] = toDouble(root[QString("Dekoktion_%1_Teilmaische_Kochzeit").arg(i)]);
+                else
+                    values[ModelRasten::ColParam2] = 15;
+                values[ModelRasten::ColParam3] = toDouble(root[QString("Dekoktion_%1_Teilmaische_Temperatur").arg(i)]);
+                values[ModelRasten::ColParam4] = toDouble(root[QString("Dekoktion_%1_Teilmaische_Rastzeit").arg(i)]);
+            }
+            bh->modelRasten()->appendDirect(values);
+        }
+        values.clear();
+        values[ModelRasten::ColSudID] = sudId;
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
+        values[ModelRasten::ColName] = "Abmaischen";
+        values[ModelRasten::ColTemp] = toDouble(root["Abmaischtemperatur"]);
+        values[ModelRasten::ColDauer] = 10;
+        bh->modelRasten()->appendDirect(values);
     }
 
     // Malzschuettung
@@ -307,7 +366,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileNa
     values.clear();
     values[ModelHefegaben::ColSudID] = sudId;
     values[ModelHefegaben::ColName] = root["Hefe"].toString();
-    values[ModelHefegaben::ColMenge] = (int)(menge / 20.0);
+    values[ModelHefegaben::ColMenge] = qCeil(menge / 20.0);
     bh->modelHefegaben()->append(values);
 
     // Weitere Zutaten
@@ -408,7 +467,6 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QString &fileName)
         max = nStyle.firstChildElement("OG_MAX").text().toDouble();
         values[ModelSud::ColSW] = BierCalc::dichteToPlato((min+max)/2);
         values[ModelSud::ColFaktorHauptguss] = 3.5;
-        values[ModelSud::ColEinmaischenTemp] = nMashSteps.firstChildElement("MASH_STEP").firstChildElement("STEP_TEMP").text().toDouble();
         min = nStyle.firstChildElement("CARB_MIN").text().toDouble();
         max = nStyle.firstChildElement("CARB_MAX").text().toDouble();
         values[ModelSud::ColCO2] = (min+max)/2;
@@ -419,17 +477,40 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QString &fileName)
         values[ModelSud::ColKochdauerNachBitterhopfung] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
 
         sudRow = bh->modelSud()->append(values);
+        bh->modelSud()->update(sudRow);
         int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
 
         // Rasten
+        double V_tot = bh->modelSud()->data(sudRow, ModelSud::ColWHauptgussEmpfehlung).toDouble();
+        values.clear();
+        values[ModelRasten::ColSudID] = sudId;
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
+        values[ModelRasten::ColName] = "Einmaischen";
+        values[ModelRasten::ColTemp] = nMashSteps.firstChildElement("MASH_STEP").firstChildElement("STEP_TEMP").text().toDouble();
+        values[ModelRasten::ColDauer] = 10;
+        bh->modelRasten()->appendDirect(values);
         for(QDomNode n = nMashSteps.firstChildElement("MASH_STEP"); !n.isNull(); n = n.nextSiblingElement("MASH_STEP"))
         {
+            QString typ = n.firstChildElement("TYP").text().toLower();
             values.clear();
             values[ModelRasten::ColSudID] = sudId;
             values[ModelRasten::ColName] = n.firstChildElement("NAME").text();
             values[ModelRasten::ColTemp] = n.firstChildElement("STEP_TEMP").text().toDouble();
             values[ModelRasten::ColDauer] = n.firstChildElement("STEP_TIME").text().toDouble();
-            bh->modelRasten()->append(values);
+            if (typ == "temperature")
+            {
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
+            }
+            else if (typ == "infusion")
+            {
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Infusion);
+                values[ModelRasten::ColMengenfaktor] = n.firstChildElement("INFUSE_AMOUNT").text().toDouble() / V_tot;
+            }
+            else if (typ == "decoction")
+            {
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Dekoktion);
+            }
+            bh->modelRasten()->appendDirect(values);
         }
 
         // Malzschuettung
@@ -693,6 +774,7 @@ bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileN
 {
     ProxyModel model;
     int n;
+    bool dekoktion = false;
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
 
     QJsonObject root;
@@ -705,7 +787,6 @@ bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileN
     root["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
     root["Alkohol"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColAlkohol).toDouble(), 'f', 1);
     root["Kurzbeschreibung"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString();
-    root["Infusion_Hauptguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble(), 'f', 1);
     root["Endvergaerungsgrad"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toDouble(), 'f', 1);
     root["Karbonisierung"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
     root["Nachguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WNachguss).toDouble(), 'f', 1);
@@ -715,14 +796,86 @@ bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileN
     model.setSourceModel(bh->modelRasten());
     model.setFilterKeyColumn(ModelRasten::ColSudID);
     model.setFilterRegExp(QString("^%1$").arg(sudId));
+    for (int row = 0; row < model.rowCount(); ++row)
+    {
+        switch (static_cast<Brauhelfer::RastTyp>(model.data(row, ModelRasten::ColTyp).toInt()))
+        {
+        case Brauhelfer::RastTyp::Einmaischen:
+            break;
+        case Brauhelfer::RastTyp::Temperatur:
+            break;
+        case Brauhelfer::RastTyp::Infusion:
+            dekoktion = true;
+            break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            dekoktion = true;
+            break;
+        }
+    }
+    if (dekoktion)
+    {
+        root["Maischform"] = "dekoktion";
+        root["Dekoktion_Einmaisch_Zubruehwasser_gesamt"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble(), 'f', 1);
+    }
+    else
+    {
+        root["Maischform"] = "infusion";
+        root["Infusion_Hauptguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble(), 'f', 1);
+    }
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
-        root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
-        ++n;
+        switch (static_cast<Brauhelfer::RastTyp>(model.data(row, ModelRasten::ColTyp).toInt()))
+        {
+        case Brauhelfer::RastTyp::Einmaischen:
+            if (!dekoktion)
+            {
+                root["Infusion_Einmaischtemperatur"] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
+                ++n;
+            }
+            else
+            {
+                root["Dekoktion_0_Volumen"] = QString::number(model.data(row, ModelRasten::ColMenge).toInt());
+                root["Dekoktion_0_Temperatur_ist"] = QString::number(model.data(row, ModelRasten::ColParam1).toInt());
+                root["Dekoktion_0_Temperatur_resultierend"] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                root["Dekoktion_0_Rastzeit"] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
+            }
+            break;
+        case Brauhelfer::RastTyp::Temperatur:
+            if (!dekoktion)
+            {
+                root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
+                ++n;
+            }
+            break;
+        case Brauhelfer::RastTyp::Infusion:
+            if (dekoktion)
+            {
+                root[QString("Dekoktion_%1_Form").arg(n)] = "Kochendes Wasser";
+                root[QString("Dekoktion_%1_Volumen").arg(n)] = QString::number(model.data(row, ModelRasten::ColMenge).toDouble(), 'f', 1);
+                root[QString("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                root[QString("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
+                ++n;
+            }
+            break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            if (dekoktion)
+            {
+                root[QString("Dekoktion_%1_Form").arg(n)] = "Dünnmaische";
+                root[QString("Dekoktion_%1_Volumen").arg(n)] = QString::number(model.data(row, ModelRasten::ColMenge).toDouble(), 'f', 1);
+                root[QString("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                root[QString("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
+                root[QString("Dekoktion_%1_Teilmaische_Temperatur").arg(n)] = QString::number(model.data(row, ModelRasten::ColParam3).toInt());
+                root[QString("Dekoktion_%1_Teilmaische_Kochzeit").arg(n)] = QString::number(model.data(row, ModelRasten::ColParam2).toInt());
+                root[QString("Dekoktion_%1_Teilmaische_Rastzeit").arg(n)] = QString::number(model.data(row, ModelRasten::ColParam4).toInt());
+                ++n;
+            }
+            break;
+        }
     }
-    root["Infusion_Einmaischtemperatur"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColEinmaischenTemp).toInt());
     root["Abmaischtemperatur"] = "78";
 
     // Malzschuettung
@@ -737,7 +890,6 @@ bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileN
         root[QString("Malz%1_Einheit").arg(n)] = "kg";
         ++n;
     }
-    root["Maischform"] = "infusion";
 
     // Hopfen
     model.setSourceModel(bh->modelHopfengaben());
@@ -1515,34 +1667,6 @@ bool ImportExport::exportBeerXml(Brauhelfer* bh, const QString &fileName, int su
     QDomElement mash_steps = doc.createElement("MASH_STEPS");
     mash.appendChild(mash_steps);
 
-    Anteil = doc.createElement("MASH_STEP");
-    mash_steps.appendChild(Anteil);
-
-    element = doc.createElement("VERSION");
-    text = doc.createTextNode(BeerXmlVersion);
-    element.appendChild(text);
-    Anteil.appendChild(element);
-
-    element = doc.createElement("NAME");
-    text = doc.createTextNode("Einmaischen");
-    element.appendChild(text);
-    Anteil.appendChild(element);
-
-    element = doc.createElement("TYPE");
-    text = doc.createTextNode("Temperature");
-    element.appendChild(text);
-    Anteil.appendChild(element);
-
-    element = doc.createElement("STEP_TEMP");
-    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColEinmaischenTemp).toInt()));
-    element.appendChild(text);
-    Anteil.appendChild(element);
-
-    element = doc.createElement("STEP_TIME");
-    text = doc.createTextNode("10");
-    element.appendChild(text);
-    Anteil.appendChild(element);
-
     model.setSourceModel(bh->modelRasten());
     model.setFilterKeyColumn(ModelRasten::ColSudID);
     model.setFilterRegExp(QString("^%1$").arg(sudId));
@@ -1562,7 +1686,22 @@ bool ImportExport::exportBeerXml(Brauhelfer* bh, const QString &fileName, int su
         Anteil.appendChild(element);
 
         element = doc.createElement("TYPE");
-        text = doc.createTextNode("Temperature");
+        Brauhelfer::RastTyp typ = static_cast<Brauhelfer::RastTyp>(model.data(row, ModelRasten::ColTyp).toInt());
+        switch (typ)
+        {
+        case Brauhelfer::RastTyp::Einmaischen:
+            text = doc.createTextNode("Temperature");
+            break;
+        case Brauhelfer::RastTyp::Temperatur:
+            text = doc.createTextNode("Temperature");
+            break;
+        case Brauhelfer::RastTyp::Infusion:
+            text = doc.createTextNode("Infusion");
+            break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            text = doc.createTextNode("Decoction");
+            break;
+        }
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1575,6 +1714,14 @@ bool ImportExport::exportBeerXml(Brauhelfer* bh, const QString &fileName, int su
         text = doc.createTextNode(QString::number(model.data(row, ModelRasten::ColDauer).toInt()));
         element.appendChild(text);
         Anteil.appendChild(element);
+
+        if (typ == Brauhelfer::RastTyp::Infusion)
+        {
+            element = doc.createElement("INFUSE_AMOUNT");
+            text = doc.createTextNode(QString::number(model.data(row, ModelRasten::ColMenge).toDouble(), 'f', 1));
+            element.appendChild(text);
+            Anteil.appendChild(element);
+        }
     }
 
     QFile file(fileName);

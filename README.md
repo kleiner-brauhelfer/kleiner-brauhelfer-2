@@ -41,6 +41,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Eingabemöglichkeit einer Wassermenge bei Karbonisierung mit Zucker (Zuckerlösung)
 - Neu: Verdampfungsrate (in l/h) ersetzt die Verdampfungsziffer (in %/h)
 - Neu: Berechnung der Bierfarbe nach [brau!magazin](https://braumagazin.de/article/bierfarbe/)
+- Neu: "Maischplan" ersetzt "Rasten"
+- Neu: Unterstüzt Dekoktion als Maischverfahren
 
 ### Version 2.1.3 (02.05.2020)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

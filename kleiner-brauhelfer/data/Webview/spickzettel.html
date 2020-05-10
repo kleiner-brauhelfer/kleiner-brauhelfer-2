@@ -231,13 +231,6 @@
     <table>
       <col width="250">
       <col width="700">
-      <tr>
-        <td class="underline" valign="top"><strong>Hauptguss vorbereiten</strong></td>
-        <td class="underline">
-          <span class="value">{{Wasser.Hauptguss}}</span> Liter Wasser auf <span class="value">{{Rezept.EinmaischenTemp}}</span>&deg;C erhitzen<br/>
-          {{#Wasser}}{{#HauptgussMilchsaeure}}<span class="value">{{HauptgussMilchsaeure}}</span> ml Milchs&auml;ure 80% zugeben{{/HauptgussMilchsaeure}}{{/Wasser}}
-        </td>
-      </tr>
       {{#Zutaten.Malz}}
       <tr>
         <td class="underline" valign="top"><strong>Malz vorbereiten</strong></td>
@@ -285,24 +278,43 @@
       </tr>
       {{/Zutaten.HatZusatzMaischen}}
       <tr>
+        <td class="underline" valign="top"><strong>Hauptguss</strong></td>
+        <td class="underline">
+          <span class="value">{{Wasser.Hauptguss}}</span> Liter<br/>
+          {{#Wasser}}{{#HauptgussMilchsaeure}}<span class="value">{{HauptgussMilchsaeure}}</span> ml Milchs&auml;ure 80% zugeben{{/HauptgussMilchsaeure}}{{/Wasser}}
+        </td>
+      </tr>
+      <tr>
         <td class="underline" valign="top"><strong>Maischevolumen</strong></td>
         <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> Liter,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
       </tr>
-      <tr>
-        <td class="underline" valign="top"><strong>Einmaischen</strong></td>
-        <td class="underline">bei <span class="value">{{Rezept.EinmaischenTemp}}</span>&deg;C</td>
-      </tr>
       {{#Rasten}}
       <tr>
-        <td class="underline" valign="top"><strong>Rasten</strong></td>
+        <td class="underline" valign="top"><strong>Maischplan</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             {{#Liste}}
             <tr>
-              <td>{{Name}}</td>
-              <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min Rast einlegen</td>
+              <td valign="top">{{Name}}</td>
+              {{#Einmaischen}}
+              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen (ergibt <span class="value">{{Temp}}</span>&deg;C). <span class="value">{{Dauer}}</span> min einmaischen.</td>
+              {{/Einmaischen}}
+              {{#Rast}}
+              <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min rasten.</td>
+              {{/Rast}}
+              {{#Infusion}}
+              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen. Zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.</td>
+              {{/Infusion}}
+              {{#Dekoktion}}
+              <td>
+                <span class="value">{{Menge}}</span> Liter Maische abziehen.</br>
+                {{#TeilmaischeZusatzRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min rasten.</br>{{/TeilmaischeZusatzRastDauer}}
+                {{#TeilmaischeRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeRastDauer}}</span> min rasten.</br>{{/TeilmaischeRastDauer}}
+                Teilmaische zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.
+              </td>
+              {{/Dekoktion}}
             </tr>
             {{/Liste}}
           </table>
@@ -339,9 +351,9 @@
       <col width="250">
       <col width="700">
       <tr>
-        <td class="underline" valign="top"><strong>Nachguss vorbereiten</strong></td>
+        <td class="underline" valign="top"><strong>Nachguss</strong></td>
         <td class="underline">
-          <span class="value">{{Wasser.Nachguss}}</span> Liter Wasser auf <span class="value">78</span>&deg;C erhitzen<br/>
+          <span class="value">{{Wasser.Nachguss}}</span> Liter<br/>
           {{#Wasser}}{{#NachgussMilchsaeure}}<span class="value">{{NachgussMilchsaeure}}</span> ml Milchs&auml;ure 80% zugeben{{/NachgussMilchsaeure}}{{/Wasser}}
         </td>
       </tr>

@@ -35,7 +35,6 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, FaktorHauptguss, toDouble())
     Q_PROPERTY_SUD(QString, Wasserprofil, toString())
     Q_PROPERTY_SUD(double, RestalkalitaetSoll, toDouble())
-    Q_PROPERTY_SUD(int, EinmaischenTemp, toInt())
     Q_PROPERTY_SUD(double, CO2, toDouble())
     Q_PROPERTY_SUD(int, IBU, toInt())
     Q_PROPERTY_SUD(int, berechnungsArtHopfen, toInt())
@@ -114,6 +113,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, AnlageSudhausausbeute, toDouble())
     Q_PROPERTY_SUD_READONLY(double, RestalkalitaetFaktor, toDouble())
     Q_PROPERTY_SUD_READONLY(double, FaktorHauptgussEmpfehlung, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, WHauptgussEmpfehlung, toDouble())
     Q_PROPERTY_SUD_READONLY(int, BewertungMittel, toInt())
 
     // tables

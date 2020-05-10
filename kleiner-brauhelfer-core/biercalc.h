@@ -1,6 +1,7 @@
 #ifndef BIERCALC_H
 #define BIERCALC_H
 
+// auskommentieren falls nicht als teil von kleiner-brauhelfer-core kompiliert
 #include "kleiner-brauhelfer-core_global.h"
 
 #ifdef QT_CORE_LIB
@@ -69,6 +70,16 @@ public:
      * @brief Ballingkonstante
      */
     static const double Balling;
+
+    /**
+     * @brief Spezifische Wärmekapazität von Wasser [kJ/(kg*°C)]
+     */
+    static constexpr double cWasser = 4.2;
+
+    /**
+     * @brief Spezifische Wärmekapazität von Malz [kJ/(kg*°C)]
+     */
+    static constexpr double cMalz = 1.7;
 
 public:
 
@@ -319,6 +330,60 @@ public:
      * @return
      */
     Q_INVOKABLE static double tinseth(double t, double sw);
+
+    /**
+     * @brief mischungstemperaturTm
+     * @param m1
+     * @param c1
+     * @param T1
+     * @param m2
+     * @param c2
+     * @param T2
+     * @return
+     */
+    Q_INVOKABLE static double mischungstemperaturTm(double m1, double c1, double T1, double m2, double c2, double T2);
+
+    /**
+     * @brief mischungstemperaturT2
+     * @param Tm
+     * @param m1
+     * @param c1
+     * @param T1
+     * @param m2
+     * @param c2
+     * @return
+     */
+    Q_INVOKABLE static double mischungstemperaturT2(double Tm, double m1, double c1, double T1, double m2, double c2);
+
+    /**
+     * @brief mischungstemperaturM2
+     * @param Tm
+     * @param m1
+     * @param c1
+     * @param T1
+     * @param c2
+     * @param T2
+     * @return
+     */
+    Q_INVOKABLE static double mischungstemperaturM2(double Tm, double m1, double c1, double T1, double c2, double T2);
+
+    /**
+     * @brief cMaische
+     * @param m_malz
+     * @param V_wasser
+     * @return
+     */
+    Q_INVOKABLE static double cMaische(double m_malz, double V_wasser);
+
+    /**
+     * @brief einmaischetemperatur
+     * @param T_rast
+     * @param m_malz
+     * @param T_malt
+     * @param V_wasser
+     * @return
+     */
+    Q_INVOKABLE static double einmaischetemperatur(double T_rast, double m_malz, double T_malt, double V_wasser);
 
     /**
      * @brief Farbe im RGB Raum

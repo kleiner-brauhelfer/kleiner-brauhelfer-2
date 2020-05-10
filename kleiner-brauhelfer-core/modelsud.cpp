@@ -53,6 +53,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("RestalkalitaetFaktor");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
+    mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
 }
 
@@ -65,6 +66,8 @@ void ModelSud::createConnections()
     connect(bh->modelHefegaben(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
+            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
+    connect(bh->modelRasten(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
     connect(bh->modelAusruestung(), SIGNAL(rowChanged(const QModelIndex&)),
             this, SLOT(onAnlageRowChanged(const QModelIndex&)));
@@ -414,6 +417,17 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
             return 4.0 - ebc * 0.02;
         else
             return 3.0;
+    }
+    case ColWHauptgussEmpfehlung:
+    {
+        Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(dataAnlage(idx.row(), ModelAusruestung::ColTyp).toInt());
+        switch (anlageTyp)
+        {
+        case Brauhelfer::AnlageTyp::GrainfatherG30:
+            return data(idx.row(), Colerg_S_Gesamt).toDouble() * 2.7 + 3.5;
+        default:
+            return data(idx.row(), Colerg_S_Gesamt).toDouble() * data(idx.row(), ColFaktorHauptguss).toDouble();
+        }
     }
     case ColBewertungMittel:
     {
@@ -774,18 +788,20 @@ void ModelSud::updateWasser(int row)
     double schuet = data(row, Colerg_S_Gesamt).toDouble();
     double menge = data(row, ColMengeSollKochbeginn).toDouble();
 
+    hg = bh->modelRasten()->menge(data(row, ColID));
+    if (hg <= 0)
+        hg = data(row, ColWHauptgussEmpfehlung).toDouble();
+
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(dataAnlage(row, ModelAusruestung::ColTyp).toInt());
     switch (anlageTyp)
     {
     case Brauhelfer::AnlageTyp::GrainfatherG30:
-        hg = schuet * 2.7 + 3.5;
         if (schuet > 4.5)
             ng = menge - hg + schuet * 0.8;
         else
             ng = menge - hg + schuet * 0.8 - 2;
         break;
     default:
-        hg = schuet * data(row, ColFaktorHauptguss).toDouble();
         ng = menge - hg + schuet * 0.96;
         break;
     }

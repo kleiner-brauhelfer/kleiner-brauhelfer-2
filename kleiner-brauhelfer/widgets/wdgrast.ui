@@ -6,143 +6,1042 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>383</width>
-    <height>23</height>
+    <width>584</width>
+    <height>336</height>
    </rect>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
-    <number>6</number>
+    <number>4</number>
    </property>
    <property name="leftMargin">
-    <number>6</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
     <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>6</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
-    <widget class="QPushButton" name="btnLoeschen">
-     <property name="minimumSize">
-      <size>
-       <width>24</width>
-       <height>22</height>
-      </size>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>24</width>
-       <height>22</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>Rast löschen.</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../images.qrc">
-       <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>25</width>
-       <height>16</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="ComboBox" name="cbRast">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden die &lt;span style=&quot; font-weight:600;&quot;&gt;Raststufen&lt;/span&gt; mit ihren verschiedenen Temperaturstufen definiert. Da die Raststufen ein weites Feld sind, empfiehlt sich bei Fragen hier grundlegend die einschlägige Literatur und die Fachforen zu bemühen.&lt;/p&gt;&lt;p&gt;Die Eingabe einiger Buchstaben genügt, um Namen und  Angaben der gewählten Raststufe zu vervollständigen. Wählbar ist – außer dem Vorlösen bei 18°C bis 30°C – die &lt;span style=&quot; font-weight:600;&quot;&gt;Gummirast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Weizenrast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Eiweißrast,&lt;/span&gt; die &lt;span style=&quot; font-weight:600;&quot;&gt;Maltoserast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Kombirast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Verzuckerung&lt;/span&gt; und das &lt;span style=&quot; font-weight:600;&quot;&gt;Abmaischen&lt;/span&gt;. Es können aber auch individuelle Raststufen und Rastnamen festgelegt werden.&lt;/p&gt;&lt;p&gt;Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Kombirast&lt;/span&gt; für Trockenheit oder Malzigkeit der Fall.&lt;/p&gt;&lt;p&gt;Rasten wie die &lt;span style=&quot; font-weight:600;&quot;&gt;Weizenrast&lt;/span&gt; werden zum Abbau der Ferulasäure bei Weizen genutzt, die das typische Nelkenaroma erzeugen.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gummirast &lt;/span&gt;bei Roggen kann zum Abbau der Glukane nötig sein, um ein unerwünschtes klebrigers Geschmacksbild zu vermeiden.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Eiweißrast &lt;/span&gt;empfiehlt sich mehrheitlich bei Weizengaben, da Weizen weniger vorgelöste Proteine besitzt. Sie ist gut für die Klärung, aber schlecht für den Schaum bei langer Dauer.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann entscheidend sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;p&gt;Seltenere Brauverfahren wie die &lt;span style=&quot; font-weight:600;&quot;&gt;Dekotion&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Infusion&lt;/span&gt; geben wiederum ganz andere Temperaturbereiche vor. Im Hobbybrauerbereich ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Kesselmaische &lt;/span&gt;als ganze Schüttung mit ansteigender Temperatur üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="SpinBox" name="tbDauer">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>min</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="SpinBox" name="tbTemp">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>°C</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="btnNachUnten">
-     <property name="icon">
-      <iconset resource="../images.qrc">
-       <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>8</width>
-       <height>8</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="btnNachOben">
-     <property name="icon">
-      <iconset resource="../images.qrc">
-       <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>8</width>
-       <height>8</height>
-      </size>
-     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QComboBox" name="cbTyp">
+          <item>
+           <property name="text">
+            <string>Einmaischen</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Temperaturrast</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Wasserinfusion</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Dekoktion</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="ComboBox" name="cbRast">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden die &lt;span style=&quot; font-weight:600;&quot;&gt;Raststufen&lt;/span&gt; mit ihren verschiedenen Temperaturstufen definiert. Da die Raststufen ein weites Feld sind, empfiehlt sich bei Fragen hier grundlegend die einschlägige Literatur und die Fachforen zu bemühen.&lt;/p&gt;&lt;p&gt;Die Eingabe einiger Buchstaben genügt, um Namen und  Angaben der gewählten Raststufe zu vervollständigen. Wählbar ist – außer dem Vorlösen bei 18°C bis 30°C – die &lt;span style=&quot; font-weight:600;&quot;&gt;Gummirast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Weizenrast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Eiweißrast,&lt;/span&gt; die &lt;span style=&quot; font-weight:600;&quot;&gt;Maltoserast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Kombirast&lt;/span&gt;, die &lt;span style=&quot; font-weight:600;&quot;&gt;Verzuckerung&lt;/span&gt; und das &lt;span style=&quot; font-weight:600;&quot;&gt;Abmaischen&lt;/span&gt;. Es können aber auch individuelle Raststufen und Rastnamen festgelegt werden.&lt;/p&gt;&lt;p&gt;Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Kombirast&lt;/span&gt; für Trockenheit oder Malzigkeit der Fall.&lt;/p&gt;&lt;p&gt;Rasten wie die &lt;span style=&quot; font-weight:600;&quot;&gt;Weizenrast&lt;/span&gt; werden zum Abbau der Ferulasäure bei Weizen genutzt, die das typische Nelkenaroma erzeugen.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gummirast &lt;/span&gt;bei Roggen kann zum Abbau der Glukane nötig sein, um ein unerwünschtes klebrigers Geschmacksbild zu vermeiden.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Eiweißrast &lt;/span&gt;empfiehlt sich mehrheitlich bei Weizengaben, da Weizen weniger vorgelöste Proteine besitzt. Sie ist gut für die Klärung, aber schlecht für den Schaum bei langer Dauer.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann entscheidend sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;p&gt;Seltenere Brauverfahren wie die &lt;span style=&quot; font-weight:600;&quot;&gt;Dekotion&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Infusion&lt;/span&gt; geben wiederum ganz andere Temperaturbereiche vor. Im Hobbybrauerbereich ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Kesselmaische &lt;/span&gt;als ganze Schüttung mit ansteigender Temperatur üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNachOben">
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>8</width>
+            <height>8</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNachUnten">
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>8</width>
+            <height>8</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnLoeschen">
+          <property name="minimumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Rast löschen.</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>16</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QWidget" name="wdgEinmaischen" native="true">
+        <layout class="QGridLayout" name="gridLayout_4">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="horizontalSpacing">
+          <number>6</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>4</number>
+         </property>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_33">
+           <property name="text">
+            <string>Anteil</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_30">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_31">
+           <property name="text">
+            <string>Wassermenge</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="SpinBox" name="tbDauerEinmaischen">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_25">
+           <property name="text">
+            <string>Rasttemperatur</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QLabel" name="label_27">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rastdauer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="QLabel" name="label_28">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="4">
+          <widget class="DoubleSpinBox" name="tbVerhaeltnisEinmaischen">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_32">
+           <property name="text">
+            <string>l</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="DoubleSpinBox" name="tbTempEinmaischen">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_29">
+           <property name="text">
+            <string>Wassertemperatur</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_26">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="DoubleSpinBox" name="tbEinmaischTempEinmaischen">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="label_38">
+           <property name="text">
+            <string>% des empfohlenen Hauptgusses</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="DoubleSpinBox" name="tbMengeEinmaischen">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <double>999.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="wdgRast" native="true">
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="horizontalSpacing">
+          <number>4</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>6</number>
+         </property>
+         <item row="0" column="4">
+          <widget class="SpinBox" name="tbDauerRast">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="DoubleSpinBox" name="tbTempRast">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_4">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rastdauer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_19">
+           <property name="text">
+            <string>Rasttemperatur</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="wdgInfusion" native="true">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="horizontalSpacing">
+          <number>4</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>6</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Wassermenge</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QLabel" name="label_9">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rastdauer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="DoubleSpinBox" name="tbMengeInfusion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <double>999.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="DoubleSpinBox" name="tbWassertempInfusion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_35">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="DoubleSpinBox" name="tbVerhaeltnisInfusion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="SpinBox" name="tbDauerInfusion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="DoubleSpinBox" name="tbTempInfusion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Anteil</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="6">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="7">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="6">
+          <widget class="QLabel" name="label_39">
+           <property name="text">
+            <string>% des empfohlenen Hauptgusses</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_34">
+           <property name="text">
+            <string>Wassertemperatur</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>l</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Rasttemperatur</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="wdgDekoktion" native="true">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="horizontalSpacing">
+          <number>4</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>6</number>
+         </property>
+         <item row="0" column="1">
+          <widget class="DoubleSpinBox" name="tbMengeDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <double>999.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="DoubleSpinBox" name="tbVerhaeltnisDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="DoubleSpinBox" name="tbTempDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QLabel" name="label_23">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rastdauer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Menge der Teilmaische</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="6">
+          <widget class="QLabel" name="label_22">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_36">
+           <property name="text">
+            <string>Teilmaischetemperatur</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>l</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <widget class="QLabel" name="label_40">
+           <property name="text">
+            <string>% der Gesamtmaische</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>Zusätzliche Rast</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QLabel" name="label_16">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Absetzdauer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="SpinBox" name="tbKochdauerDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="7">
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Maischetemperatur</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="6">
+          <widget class="QLabel" name="label_24">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QLabel" name="label_37">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLabel" name="label_20">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>Anteil</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="SpinBox" name="tbRastdauerDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="5">
+          <widget class="SpinBox" name="tbDauerDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; jeder einzelnen Raststufe eingestellt.&lt;/p&gt;&lt;p&gt;Die Rastdauer beim Abmaischen ist üblicherweise Null.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="6">
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="DoubleSpinBox" name="tbTeiltempDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLabel" name="label_21">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rastdauer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="DoubleSpinBox" name="tbRasttempDekoktion">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet. Beispielsweise ist das bei der Kombirast Trockenheit oder Malzigkeit.&lt;/p&gt;&lt;p&gt;Unten oder oben im jeweiigen Temperaturbereich der Primärrasten – Maltose- und Kombirast – kann ein wichtiger Parameter sein, ob der Charakter eines Bieres eher süßlich oder eher trocken ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblWarnung">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
@@ -158,11 +1057,15 @@
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
   </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>cbRast</tabstop>
-  <tabstop>tbTemp</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

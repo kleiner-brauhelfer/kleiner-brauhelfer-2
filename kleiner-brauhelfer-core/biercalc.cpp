@@ -5,7 +5,7 @@
 const double BierCalc::dichteAlkohol = 0.7894;
 double BierCalc::faktorPlatoToBrix = 1.03;
 double BierCalc::KleierGaerungskorrektur = 0.44552;
-const double BierCalc::MalzVerdraengung = 0.7;
+const double BierCalc::MalzVerdraengung = 0.75;
 const double BierCalc::Balling = 2.0665;
 
 double BierCalc::brixToPlato(double brix)
@@ -363,6 +363,34 @@ double BierCalc::tinseth(double t, double sw)
     double bigness  = 1.65 * pow(0.000125, 0.004 * sw);
     double boiltime = (1 - exp(-0.04 * t)) / 4.15;
     return bigness * boiltime;
+}
+
+double BierCalc::mischungstemperaturTm(double m1, double c1, double T1, double m2, double c2, double T2)
+{
+    return (m1*c1*T1 + m2*c2*T2) / (m1*c1 + m2*c2);
+}
+
+double BierCalc::mischungstemperaturT2(double Tm, double m1, double c1, double T1, double m2, double c2)
+{
+    return Tm + (m1*c1) / (m2*c2) * (Tm-T1);
+}
+
+double BierCalc::mischungstemperaturM2(double Tm, double m1, double c1, double T1, double c2, double T2)
+{
+    if (T2 == Tm)
+        return 0;
+    return (m1*c1) / c2 * (Tm-T1) / (T2-Tm);
+}
+
+double BierCalc::cMaische(double m_malz, double V_wasser)
+{
+    double m_wasser = V_wasser * dichteWasser(20);
+    return (m_malz * cMalz + m_wasser * cWasser) / (m_malz + m_wasser);
+}
+
+double BierCalc::einmaischetemperatur(double T_rast, double m_malz, double T_malt, double V_wasser)
+{
+    return BierCalc::mischungstemperaturT2(T_rast, m_malz, cMalz, T_malt, V_wasser * dichteWasser(20), cWasser);
 }
 
 static unsigned int toRgb(unsigned char r, unsigned char g, unsigned char b)

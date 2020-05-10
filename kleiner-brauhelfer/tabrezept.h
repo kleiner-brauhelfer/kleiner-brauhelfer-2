@@ -27,7 +27,6 @@ private slots:
 
     void rasten_modified();
     void updateRastenDiagram();
-    void on_btnEinmaischtemperatur_clicked();
     void on_btnNeueRast_clicked();
 
     void malzGaben_modified();

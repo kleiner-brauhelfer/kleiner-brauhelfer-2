@@ -58,7 +58,6 @@ SOURCES += \
     dialogs/dlgabout.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
-    dialogs/dlgeinmaischtemp.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
@@ -127,7 +126,6 @@ HEADERS += \
     dialogs/dlgabout.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
-    dialogs/dlgeinmaischtemp.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
@@ -191,7 +189,6 @@ FORMS += \
     dialogs/dlgabout.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
-    dialogs/dlgeinmaischtemp.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \

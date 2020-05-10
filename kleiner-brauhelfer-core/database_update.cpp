@@ -921,6 +921,7 @@ bool Database::update()
             db.transaction();
 
             // Malz
+            //  - neue Spalte 'Potential'
             //  - neue Spalte 'Alternativen'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
             //  - Spalte unbenannt 'Anwendung' -> 'Eigenschaften'
@@ -929,6 +930,7 @@ bool Database::update()
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Menge REAL DEFAULT 0,"
+                "Potential REAL DEFAULT 0,"
                 "Farbe REAL DEFAULT 0,"
                 "MaxProzent REAL DEFAULT 100,"
                 "Bemerkung TEXT,"
@@ -1337,6 +1339,10 @@ bool Database::update()
                 "SWKochbeginn"
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
+
+            // Malzschuettung
+            //  - neue Spalte 'Potential'
+            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0");
 
             // Rasten
             //  - neue Spalte 'Typ'

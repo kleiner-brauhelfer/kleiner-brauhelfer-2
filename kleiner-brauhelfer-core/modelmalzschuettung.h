@@ -20,6 +20,7 @@ public:
         ColProzent,
         Colerg_Menge,
         ColFarbe,
+        ColPotential,
         // virtual
         ColDeleted,
         // number of columns

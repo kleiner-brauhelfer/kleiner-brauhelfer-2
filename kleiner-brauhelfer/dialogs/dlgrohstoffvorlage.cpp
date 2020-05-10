@@ -251,6 +251,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
 
         case MalzOBraMa:
             mValues.insert(ModelMalz::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelMalz::ColPotential, index.sibling(index.row(), model->fieldIndex("potential")).data().toDouble());
             mValues.insert(ModelMalz::ColFarbe, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             fVal = index.sibling(index.row(), header->logicalIndex(3)).data().toDouble();
             if (fVal > 0)

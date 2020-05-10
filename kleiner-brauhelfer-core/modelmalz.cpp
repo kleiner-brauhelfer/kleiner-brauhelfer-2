@@ -71,6 +71,26 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
         }
         return false;
     }
+    case ColPotential:
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QVariant name = data(idx.row(), ColName);
+            ProxyModelSud modelSud;
+            modelSud.setSourceModel(bh->modelSud());
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
+            {
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
+                SqlTableModel* model = bh->modelMalzschuettung();
+                for (int j = 0; j < model->rowCount(); ++j)
+                {
+                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
+                        model->setData(j, ModelMalzschuettung::ColPotential, value);
+                }
+            }
+            return true;
+        }
+        return false;
     case ColFarbe:
         if (QSqlTableModel::setData(idx, value))
         {
@@ -117,6 +137,8 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
 void ModelMalz::defaultValues(QMap<int, QVariant> &values) const
 {
     values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
+    if (!values.contains(ColPotential))
+        values.insert(ColPotential, 0);
     if (!values.contains(ColFarbe))
         values.insert(ColFarbe, 0);
     if (!values.contains(ColMenge))

@@ -18,8 +18,10 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant farbe = bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, value, ModelMalz::ColFarbe);
-            QSqlTableModel::setData(index(idx.row(), ColFarbe), farbe);
+            QSqlTableModel::setData(index(idx.row(), ColPotential),
+                                    bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, value, ModelMalz::ColPotential));
+            QSqlTableModel::setData(index(idx.row(), ColFarbe),
+                                    bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, value, ModelMalz::ColFarbe));
             return true;
         }
         return false;

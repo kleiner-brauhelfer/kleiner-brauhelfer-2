@@ -17,6 +17,7 @@ public:
         ColID,
         ColName,
         ColMenge,
+        ColPotential,
         ColFarbe,
         ColMaxProzent,
         ColBemerkung,

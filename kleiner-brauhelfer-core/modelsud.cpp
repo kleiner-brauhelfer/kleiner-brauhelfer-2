@@ -240,18 +240,15 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sreSchnellgaerprobe = data(idx.row(), ColSREIst).toDouble();
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         double zucker = BierCalc::zucker(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) * jungbiermenge;
-        double speiseNoetig = data(idx.row(), ColSpeiseNoetig).toDouble();
+        double speiseNoetig = data(idx.row(), ColSpeiseNoetig).toDouble() / 1000;
+        double speiseVerfuegbar = data(idx.row(), ColSpeisemenge).toDouble();
         if (speiseNoetig == std::numeric_limits<double>::infinity())
-        {
             return zucker;
-        }
-        else
-        {
-            double speiseVerfuegbar = data(idx.row(), ColSpeisemenge).toDouble();
-            double potSpeise = BierCalc::wuerzeCO2Potential(sw, sreSchnellgaerprobe);
-            double potZucker = BierCalc::zuckerCO2Potential();
-            return zucker - speiseVerfuegbar * potSpeise / potZucker;
-        }
+        if (speiseNoetig <= speiseVerfuegbar)
+            return 0;
+        double potSpeise = BierCalc::co2Vergaerung(sw, sreSchnellgaerprobe);
+        double potZucker = BierCalc::co2Zucker();
+        return zucker - speiseVerfuegbar * potSpeise / potZucker;
     }
     case ColWoche:
     {
@@ -707,14 +704,10 @@ void ModelSud::update(int row)
         // erg_Alkohol
         double sre = data(row, ColSREIst).toDouble();
         double sw = data(row, ColSWAnstellen).toDouble() + swWzGaerungCurrent[row];
-        double menge = data(row, ColWuerzemengeAnstellen).toDouble();
+        double menge = data(row, ColJungbiermengeAbfuellen).toDouble();
         double verschneidung = data(row, ColVerschneidungAbfuellen).toDouble();
-        if (menge > 0.0)
-        {
-            sw += (data(row, ColZuckerAnteil).toDouble() / 10) / menge;
-            sw *=  (1 - verschneidung / (verschneidung + menge));
-        }
-        setData(row, Colerg_Alkohol, BierCalc::alkohol(sw, sre));
+        double alcZucker = BierCalc::alkoholVonZucker(data(row, ColZuckerAnteil).toDouble() / menge);
+        setData(row, Colerg_Alkohol, BierCalc::alkohol(sw, sre, alcZucker) / (1 + verschneidung/menge));
 
         // erg_AbgefuellteBiermenge
         double jungbiermenge = data(row, ColJungbiermengeAbfuellen).toDouble();

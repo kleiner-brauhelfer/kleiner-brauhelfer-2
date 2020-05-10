@@ -2,10 +2,7 @@
 #include <math.h>
 #include <limits>
 
-const double BierCalc::dichteAlkohol = 0.7894;
 double BierCalc::faktorPlatoToBrix = 1.03;
-const double BierCalc::MalzVerdraengung = 0.75;
-const double BierCalc::Balling = 2.0665;
 
 double BierCalc::brixToPlato(double brix)
 {
@@ -193,7 +190,7 @@ double BierCalc::sreAusVergaerungsgrad(double sw, double vg)
     return sw * (100 - vg) / 100;
 }
 
-double BierCalc::alkohol(double sw, double sre)
+double BierCalc::alkohol(double sw, double sre, double alcZusatz)
 {
     if (sw <= 0.0)
         return 0.0;
@@ -207,10 +204,15 @@ double BierCalc::alkohol(double sw, double sre)
     double alcGewicht = (sw - tre) / (Balling - 0.010665 * sw);
 
     // Alkohol Volumenprozent
-    double alc = alcGewicht * dichte / dichteAlkohol;
+    double alc = (alcGewicht + alcZusatz) * dichte / 0.794;
     if (alc < 0.0)
         alc = 0.0;
     return alc;
+}
+
+double BierCalc::alkoholVonZucker(double m)
+{
+    return m * 0.488 / 10;
 }
 
 double BierCalc::co2(double p, double T)
@@ -227,7 +229,7 @@ double BierCalc::gruenschlauchzeitpunkt(double co2Soll, double sw, double sreSch
 {
     double tre = toTRE(sw, sreSchnellgaerprobe);
     double co2Noetig = co2Soll - co2(0.0, T);
-    double extraktCO2 = co2Noetig / (zuckerCO2Potential() * 10);
+    double extraktCO2 = co2Noetig / (co2Zucker() * 10);
     double res = toSRE(sw, tre + extraktCO2);
     if (res < 0.0)
         res = 0.0;
@@ -242,42 +244,36 @@ double BierCalc::spundungsdruck(double co2Soll, double T)
     return res;
 }
 
-double BierCalc::co2Noetig(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T)
-{
-    double treSchnellgaerprobe = toTRE(sw, sreSchnellgaerprobe);
-    double treJungbier = toTRE(sw, sreJungbier);
-    double co2PotJungbier = wuerzeCO2Potential(treJungbier, treSchnellgaerprobe);
-    return co2Soll - co2(0.0, T) - co2PotJungbier;
-}
-
-double BierCalc::wuerzeCO2Potential(double sw, double sre)
+double BierCalc::co2Vergaerung(double sw, double sre)
 {
     double tre = toTRE(sw, sre);
-    return zuckerCO2Potential() * 10 * (sw - tre);
+    return co2Zucker() * 10 * (sw - tre);
 }
 
-double BierCalc::zuckerCO2Potential()
+double BierCalc::co2Zucker()
 {
-    //https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsspeiserechner
     return 0.468;
+}
+
+double BierCalc::co2Noetig(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T)
+{
+    return co2Soll - co2(0.0, T) - co2Vergaerung(toTRE(sw, sreJungbier), toTRE(sw, sreSchnellgaerprobe));
 }
 
 double BierCalc::speise(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T)
 {
-    double co2Diff = co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T);
-    double pot = wuerzeCO2Potential(sw, sreSchnellgaerprobe);
-    if (pot <= 0)
+    double co2Pot = co2Vergaerung(sw, sreSchnellgaerprobe);
+    if (co2Pot <= 0)
         return std::numeric_limits<double>::infinity();
-    return co2Diff / pot;
+    return co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;
 }
 
 double BierCalc::zucker(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T)
 {
-    double co2Diff = co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T);
-    double pot = zuckerCO2Potential();
-    if (pot <= 0)
+    double co2Pot = co2Zucker();
+    if (co2Pot <= 0)
         return std::numeric_limits<double>::infinity();
-    return co2Diff / pot;
+    return co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;
 }
 
 double BierCalc::dichteWasser(double T)

@@ -42,11 +42,6 @@ public:
     Q_ENUM(FormulaBrixToPlato)
 
     /**
-     * @brief Dichte von Alkohol bei 20°C [kg/l]
-     */
-    static const double dichteAlkohol;
-
-    /**
      * @brief Umrechnungsfaktor von Plato [°P] nach Brix [°brix], da Bierwürze
      * keine reine Saccharoselösung ist
      * @note Zwischen 1.02 und 1.06 je nach Literaturangabe, meist 1.03
@@ -58,12 +53,12 @@ public:
      * Feinheitsgrad der Schrotung ein Volumen von 0,65 bis 0,8 l Wasser.
      * Näherungsweise rechnet man mit 0,7 l Wasserverdrängung pro kg Malzschrot.
      */
-    static const double MalzVerdraengung;
+    static constexpr double MalzVerdraengung = 0.75;
 
     /**
      * @brief Ballingkonstante
      */
-    static const double Balling;
+    static constexpr double Balling = 2.0665;
 
     /**
      * @brief Spezifische Wärmekapazität von Wasser [kJ/(kg*°C)]
@@ -165,7 +160,14 @@ public:
      * @param sre Scheinbarer Restextrakt [°P]
      * @return Alkohol [vol%]
      */
-    Q_INVOKABLE static double alkohol(double sw, double sre);
+    Q_INVOKABLE static double alkohol(double sw, double sre, double alcZusatz = 0);
+
+    /**
+     * @brief alkoholVonZucker
+     * @param m
+     * @return
+     */
+    Q_INVOKABLE static double alkoholVonZucker(double m);
 
     /**
      * @brief CO2 Gehalt bei bestimmentem Druck und bestimmter Temperatur [g/l]
@@ -218,13 +220,13 @@ public:
      * @param sre
      * @return
      */
-    Q_INVOKABLE static double wuerzeCO2Potential(double sw, double sre);
+    Q_INVOKABLE static double co2Vergaerung(double sw, double sre);
 
     /**
      * @brief zuckerCO2Potential
      * @return
      */
-    Q_INVOKABLE static double zuckerCO2Potential();
+    Q_INVOKABLE static double co2Zucker();
 
     /**
      * @brief Benoetigte Speise fuer Karbonisierung [L/L]

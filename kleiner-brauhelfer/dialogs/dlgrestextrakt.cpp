@@ -89,7 +89,7 @@ void DlgRestextrakt::on_tbPlato_valueChanged(double value)
         ui->tbDichte->setValue(BierCalc::platoToDichte(value));
         if (mSw)
         {
-            ui->tbSw->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value()));
             if (ui->cbEinheit->currentIndex() == 0)
                 ui->tbBrix->setValue(BierCalc::platoToBrix(ui->tbSw->value()));
             else
@@ -97,7 +97,7 @@ void DlgRestextrakt::on_tbPlato_valueChanged(double value)
         }
         else
         {
-            ui->tbExtrakt->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value()));
             ui->tbBrix->setValue(0.0);
         }
     }
@@ -110,7 +110,7 @@ void DlgRestextrakt::on_tbDichte_valueChanged(double value)
         ui->tbPlato->setValue(BierCalc::dichteToPlato(value));
         if (mSw)
         {
-            ui->tbSw->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value()));
             if (ui->cbEinheit->currentIndex() == 0)
                 ui->tbBrix->setValue(BierCalc::platoToBrix(ui->tbSw->value()));
             else
@@ -118,7 +118,7 @@ void DlgRestextrakt::on_tbDichte_valueChanged(double value)
         }
         else
         {
-            ui->tbExtrakt->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value()));
             ui->tbBrix->setValue(0.0);
         }
     }
@@ -130,7 +130,7 @@ void DlgRestextrakt::on_tbTemp_valueChanged(double)
     {
         if (mSw)
         {
-            ui->tbSw->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value()));
             if (ui->cbEinheit->currentIndex() == 0)
                 ui->tbBrix->setValue(BierCalc::platoToBrix(ui->tbSw->value()));
             else
@@ -138,7 +138,7 @@ void DlgRestextrakt::on_tbTemp_valueChanged(double)
         }
         else
         {
-            ui->tbExtrakt->setValue(BierCalc::dichteAtTemp(ui->tbPlato->value(), ui->tbTemp->value()));
+            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value()));
             ui->tbBrix->setValue(0.0);
         }
     }

@@ -120,7 +120,7 @@ public:
      * @param Tcalib
      * @return
      */
-    Q_INVOKABLE static double dichteAtTemp(double plato, double T, double Tcalib = 20.0);
+    Q_INVOKABLE static double spindelKorrektur(double plato, double T, double Tcalib = 20.0);
 
     /**
      * @brief Tatsächlicher Restextrakt (Alkohol-korrigiert) [°P]
@@ -283,14 +283,6 @@ public:
      * @return Verdampfungsrate [l/h]
      */
     Q_INVOKABLE static double verdampfungsrate(double V1, double V2, double t);
-
-    /**
-     * @brief Berechnet die verdampfung
-     * @param V1 Anfangsvolumen [L]
-     * @param V2 Endvolumen [L]
-     * @return Verdampfung [%]
-     */
-    Q_INVOKABLE double verdampfung(double V1, double V2);
 
     /**
      * @brief Berechnet die Sudhausausbeute

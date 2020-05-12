@@ -182,7 +182,7 @@ public:
 public:
 
     static const int libVersionMajor;
-    static const int libVerionMinor;
+    static const int libVersionMinor;
     static const int libVersionPatch;
     static const int supportedDatabaseVersion;
     static const int supportedDatabaseVersionMinimal;
@@ -235,6 +235,7 @@ public:
     ModelTags* modelTags() const;
 
     Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);
+    Q_INVOKABLE void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues);
     Q_INVOKABLE int sudTeilen(int sudId, const QString &name1, const QString &name2, double prozent);
     Q_INVOKABLE bool rohstoffAbziehen(RohstoffTyp typ, const QString& name, double menge);
 
@@ -245,9 +246,6 @@ signals:
     void modified();
     void saved();
     void discarded();
-
-private:
-    void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues);
 
 private:
     QString mDatabasePath;

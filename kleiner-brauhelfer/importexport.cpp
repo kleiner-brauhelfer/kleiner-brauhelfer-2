@@ -61,8 +61,12 @@ int ImportExport::importKbh(Brauhelfer* bh, const QString &fileName)
     SqlTableModel* model;
 
     obj = root["Global"].toObject();
-    if (obj["db_Version"].toInt() < 2000)
+    int version = obj["db_Version"].toInt();
+    if (version < 2000)
+    {
+        qWarning() << "Invalid version:" << version;
         return -1;
+    }
 
     model = bh->modelSud();
     int sudId = model->getNextId();

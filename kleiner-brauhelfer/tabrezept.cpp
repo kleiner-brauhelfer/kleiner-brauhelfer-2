@@ -15,6 +15,7 @@
 #include "widgets/wdgweiterezutatgabe.h"
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrohstoffauswahl.h"
+#include "dialogs/dlguebernahmerezept.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -231,17 +232,22 @@ void TabRezept::checkEnabled()
     ui->tbRestalkalitaet->setReadOnly(gebraut);
     ui->tbReifezeit->setReadOnly(gebraut);
     ui->btnNeueRast->setVisible(!gebraut);
+    ui->btnRastenUebernehmen->setVisible(!gebraut);
     ui->lineNeueRast->setVisible(!gebraut);
     ui->btnNeueMalzGabe->setVisible(!gebraut);
+    ui->btnMalzGabenUebernehmen->setVisible(!gebraut);
     ui->lineNeueMalzGabe->setVisible(!gebraut);
     ui->cbBerechnungsartHopfen->setEnabled(!gebraut);
     ui->btnNeueHopfenGabe->setVisible(!gebraut);
+    ui->btnHopfenGabenUebernehmen->setVisible(!gebraut);
     ui->lineNeueHopfenGabe->setVisible(!gebraut);
     ui->btnNeueHefeGabe->setVisible(!abgefuellt);
-    ui->lineNeueHefeGabe->setVisible(!gebraut);
+    ui->btnHefeGabenUebernehmen->setVisible(!abgefuellt);
+    ui->lineNeueHefeGabe->setVisible(!abgefuellt);
     ui->btnNeueHopfenstopfenGabe->setVisible(!abgefuellt);
     ui->btnNeueWeitereZutat->setVisible(!abgefuellt);
-    ui->lineNeueWeitereZutat->setVisible(!gebraut);
+    ui->btnWeitereZutatUebernehmen->setVisible(!abgefuellt);
+    ui->lineNeueWeitereZutat->setVisible(!abgefuellt);
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
         static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget())->updateValues();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
@@ -621,6 +627,18 @@ void TabRezept::on_btnNeueRast_clicked()
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
 
+void TabRezept::on_btnRastenUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Maischplan);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelRasten(),
+                             ModelRasten::ColSudID, dlg.sudId(),
+                             {{ModelRasten::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelRasten()->invalidate();
+    }
+}
+
 void TabRezept::malzGaben_modified()
 {
     const int nModel = bh->sud()->modelMalzschuettung()->rowCount();
@@ -695,6 +713,18 @@ void TabRezept::on_btnNeueMalzGabe_clicked()
                                     {ModelMalzschuettung::ColProzent, p}});
         bh->sud()->modelMalzschuettung()->append(values);
         ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
+    }
+}
+
+void TabRezept::on_btnMalzGabenUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Malz);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelMalzschuettung(),
+                             ModelMalzschuettung::ColSudID, dlg.sudId(),
+                             {{ModelMalzschuettung::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelMalzschuettung()->invalidate();
     }
 }
 
@@ -776,6 +806,18 @@ void TabRezept::on_btnNeueHopfenGabe_clicked()
     }
 }
 
+void TabRezept::on_btnHopfenGabenUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Hopfen);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelHopfengaben(),
+                             ModelHopfengaben::ColSudID, dlg.sudId(),
+                             {{ModelHopfengaben::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelHopfengaben()->invalidate();
+    }
+}
+
 void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
 {
     if (ui->cbBerechnungsartHopfen->hasFocus())
@@ -825,6 +867,19 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
     }
 }
 
+void TabRezept::on_btnHefeGabenUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Hefe);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelHefegaben(),
+                             ModelHefegaben::ColSudID, dlg.sudId(),
+                             {{ModelHefegaben::ColSudID, bh->sud()->id()},
+                              {ModelHefegaben::ColZugegeben, false}});
+        bh->sud()->modelHefegaben()->invalidate();
+    }
+}
+
 void TabRezept::weitereZutatenGaben_modified()
 {
     const int nModel = bh->sud()->modelWeitereZutatenGaben()->rowCount();
@@ -859,6 +914,19 @@ void TabRezept::on_btnNeueWeitereZutat_clicked()
                                     {ModelWeitereZutatenGaben::ColName, dlg.name()}});
         bh->sud()->modelWeitereZutatenGaben()->append(values);
         ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->setValue(ui->scrollAreaWeitereZutatenGaben->verticalScrollBar()->maximum());
+    }
+}
+
+void TabRezept::on_btnWeitereZutatUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::WZutaten);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelWeitereZutatenGaben(),
+                             ModelWeitereZutatenGaben::ColSudID, dlg.sudId(),
+                             {{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+                              {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}});
+        bh->sud()->modelWeitereZutatenGaben()->invalidate();
     }
 }
 

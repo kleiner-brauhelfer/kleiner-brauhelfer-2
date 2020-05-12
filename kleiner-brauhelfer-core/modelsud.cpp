@@ -524,10 +524,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         {
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
             if (status == Brauhelfer::SudStatus::Rezept)
-            {
-                double m = value.toDouble() + data(idx.row(), ColMengeSoll).toDouble() - data(idx.row(), ColMengeSollKochende).toDouble();
-                setData(idx.row(), ColWuerzemengeAnstellenTotal, m);
-            }
+                setData(idx.row(), ColWuerzemengeAnstellenTotal, value);
             return true;
         }
         return false;

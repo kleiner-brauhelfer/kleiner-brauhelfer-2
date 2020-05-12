@@ -28,25 +28,30 @@ private slots:
     void rasten_modified();
     void updateRastenDiagram();
     void on_btnNeueRast_clicked();
+    void on_btnRastenUebernehmen_clicked();
 
     void malzGaben_modified();
     void malzGaben_dataChanged();
     void updateMalzDiagram();
     void on_btnNeueMalzGabe_clicked();
+    void on_btnMalzGabenUebernehmen_clicked();
 
     void hopfenGaben_modified();
     void hopfenGaben_dataChanged();
     void updateHopfenDiagram();
     void on_btnNeueHopfenGabe_clicked();
+    void on_btnHopfenGabenUebernehmen_clicked();
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
 
     void hefeGaben_modified();
     void updateHefeDiagram();
     void on_btnNeueHefeGabe_clicked();
+    void on_btnHefeGabenUebernehmen_clicked();
 
     void weitereZutatenGaben_modified();
     void on_btnNeueHopfenstopfenGabe_clicked();
     void on_btnNeueWeitereZutat_clicked();
+    void on_btnWeitereZutatUebernehmen_clicked();
 
     void anhaenge_modified();
     void on_btnNeuerAnhang_clicked();

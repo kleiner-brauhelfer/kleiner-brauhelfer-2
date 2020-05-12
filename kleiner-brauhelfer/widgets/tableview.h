@@ -21,7 +21,7 @@ public:
     TableView(QWidget *parent = nullptr);
     void build();
     void setDefaultContextMenu();
-    void buildContextMenu(QMenu& menu);
+    void buildContextMenu(QMenu& menu) const;
 
 public slots:
     void restoreDefaultState();

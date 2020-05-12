@@ -34,7 +34,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>403</width>
+         <width>415</width>
          <height>694</height>
         </rect>
        </property>
@@ -954,7 +954,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>361</width>
+                 <width>373</width>
                  <height>134</height>
                 </rect>
                </property>
@@ -1069,8 +1069,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>379</height>
+              <width>272</width>
+              <height>363</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1129,6 +1129,13 @@
           </property>
           <property name="text">
            <string>Malzgabe hinzufügen</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnMalzGabenUebernehmen">
+          <property name="text">
+           <string>Aus Rezept übernehmen</string>
           </property>
          </widget>
         </item>
@@ -1209,8 +1216,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>109</height>
+              <width>272</width>
+              <height>104</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1272,6 +1279,13 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
+          <property name="text">
+           <string>Aus Rezept übernehmen</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabHefe">
@@ -1299,8 +1313,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>379</height>
+              <width>272</width>
+              <height>363</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1362,6 +1376,13 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="btnHefeGabenUebernehmen">
+          <property name="text">
+           <string>Aus Rezept übernehmen</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabWeitereZutaten">
@@ -1385,8 +1406,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>284</width>
-             <height>591</height>
+             <width>272</width>
+             <height>564</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1456,6 +1477,13 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="btnWeitereZutatUebernehmen">
+          <property name="text">
+           <string>Aus Rezept übernehmen</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabRasten">
@@ -1483,8 +1511,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>284</width>
-              <height>118</height>
+              <width>272</width>
+              <height>113</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1543,6 +1571,13 @@
           </property>
           <property name="text">
            <string>Schritt hinzufügen</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnRastenUebernehmen">
+          <property name="text">
+           <string>Aus Rezept übernehmen</string>
           </property>
          </widget>
         </item>
@@ -3146,11 +3181,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -3164,6 +3194,11 @@
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>ChartView</class>

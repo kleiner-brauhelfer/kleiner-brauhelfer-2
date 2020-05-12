@@ -86,7 +86,7 @@ void TableView::setDefaultContextMenu()
     connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
 }
 
-void TableView::buildContextMenu(QMenu& menu)
+void TableView::buildContextMenu(QMenu& menu) const
 {
     QAction *action;
     for (const auto& col : cols)

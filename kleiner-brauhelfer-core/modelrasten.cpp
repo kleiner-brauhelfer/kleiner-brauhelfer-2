@@ -207,7 +207,7 @@ double ModelRasten::getPreviousTemp(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toDouble()));
+    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
     fromRow = model.mapRowFromSource(fromRow);
     if (fromRow > 0)
         return model.data(fromRow - 1, ColTemp).toDouble();

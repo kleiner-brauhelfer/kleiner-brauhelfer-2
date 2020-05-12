@@ -3,9 +3,9 @@
 #include <QtMath>
 
 const int Brauhelfer::libVersionMajor = VER_MAJ;
-const int Brauhelfer::libVerionMinor = VER_MIN;
+const int Brauhelfer::libVersionMinor = VER_MIN;
 const int Brauhelfer::libVersionPatch = VER_PAT;
-const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVerionMinor;
+const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVersionMinor;
 const int Brauhelfer::supportedDatabaseVersionMinimal = 21;
 
 Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :

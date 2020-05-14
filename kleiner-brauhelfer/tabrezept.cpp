@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
 #include "widgets/wdgrast.h"
 #include "widgets/wdgmalzgabe.h"
@@ -16,6 +17,7 @@
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlguebernahmerezept.h"
+#include "dialogs/dlgtableview.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -60,6 +62,11 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->diagramRasten->chart()->legend()->hide();
   #endif
 
+    ProxyModel* proxy = new ProxyModel(this);
+    proxy->setSourceModel(bh->modelKategorien());
+    ui->cbKategorie->setModel(proxy);
+    ui->cbKategorie->setModelColumn(ModelKategorien::ColName);
+	
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
@@ -382,6 +389,8 @@ void TabRezept::updateValues()
         ui->tbSudname->setText(bh->sud()->getSudname());
         ui->tbSudname->setCursorPosition(0);
     }
+    if (!ui->cbKategorie->hasFocus())
+        ui->cbKategorie->setCurrentText(bh->sud()->getKategorie());
 
     double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
     ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
@@ -974,6 +983,21 @@ void TabRezept::on_tbSudname_textChanged(const QString &value)
 {
     if (ui->tbSudname->hasFocus())
         bh->sud()->setSudname(value);
+}
+
+void TabRezept::on_cbKategorie_currentIndexChanged(const QString &value)
+{
+    if (ui->cbKategorie->hasFocus())
+        bh->sud()->setKategorie(value);
+}
+
+void TabRezept::on_btnKategorienVerwalten_clicked()
+{
+    QList<TableView::ColumnDefinition> colums = {{ModelKategorien::ColName, true, false, 100, new TextDelegate(false, Qt::AlignCenter, this)},
+                                                 {ModelKategorien::ColBemerkung, true, false, -1, nullptr}};
+    DlgTableView dlg(bh->modelKategorien(), colums, ModelKategorien::ColName, this);
+    dlg.setWindowTitle(tr("Sudkategorien verwalten"));
+    dlg.exec();
 }
 
 void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)

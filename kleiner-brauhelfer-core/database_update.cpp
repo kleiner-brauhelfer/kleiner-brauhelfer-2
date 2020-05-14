@@ -1176,6 +1176,7 @@ bool Database::update()
             sqlExec(db, "DROP TABLE TempTable");
 
             // Sud
+            //  - neue Spalte 'Kategorie'
             //  - neue Spalte 'VerschneidungAbfuellen'
             //  - 'Verdampfungsrate' in l/h statt %
             sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
@@ -1183,6 +1184,7 @@ bool Database::update()
                 "ID INTEGER PRIMARY KEY,"
                 "Sudname TEXT NOT NULL,"
                 "Sudnummer INTEGER DEFAULT 0,"
+                "Kategorie TEXT,"
                 "Anlage TEXT,"
                 "Menge REAL DEFAULT 20,"
                 "SW REAL DEFAULT 12,"
@@ -1389,6 +1391,14 @@ bool Database::update()
             //  - neue Spalte 'Ausrichtung'
             sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0");
             sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0");
+
+            // Kategorien
+            //  - neue Tabelle
+            sqlExec(db, "CREATE TABLE Kategorien ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT UNIQUE,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Kategorien (Name) VALUES ('')");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

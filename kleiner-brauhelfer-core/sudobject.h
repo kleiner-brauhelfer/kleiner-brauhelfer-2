@@ -28,6 +28,7 @@ class LIB_EXPORT SudObject : public QObject
     // real fields in table Sud
     Q_PROPERTY_SUD(QString, Sudname, toString())
     Q_PROPERTY_SUD(int, Sudnummer, toInt())
+    Q_PROPERTY_SUD(QString, Kategorie, toString())
     Q_PROPERTY_SUD(QString, Anlage, toString())
     Q_PROPERTY_SUD(double, Menge, toDouble())
     Q_PROPERTY_SUD(double, SW, toDouble())

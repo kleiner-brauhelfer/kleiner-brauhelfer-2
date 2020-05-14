@@ -49,6 +49,7 @@ SOURCES += \
     modelhefegaben.cpp \
     modelhopfen.cpp \
     modelhopfengaben.cpp \
+    modelkategorien.cpp \
     modelmalz.cpp \
     modelmalzschuettung.cpp \
     modelnachgaerverlauf.cpp \
@@ -81,6 +82,7 @@ HEADERS += \
     modelhefegaben.h \
     modelhopfen.h \
     modelhopfengaben.h \
+    modelkategorien.h \
     modelmalz.h \
     modelmalzschuettung.h \
     modelnachgaerverlauf.h \

@@ -27,6 +27,7 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBox->addItem(bh->modelHefegaben()->tableName());
     ui->comboBox->addItem(bh->modelHopfen()->tableName());
     ui->comboBox->addItem(bh->modelHopfengaben()->tableName());
+    ui->comboBox->addItem(bh->modelKategorien()->tableName());
     ui->comboBox->addItem(bh->modelMalz()->tableName());
     ui->comboBox->addItem(bh->modelMalzschuettung()->tableName());
     ui->comboBox->addItem(bh->modelNachgaerverlauf()->tableName());
@@ -36,7 +37,7 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBox->addItem(bh->modelWasser()->tableName());
     ui->comboBox->addItem(bh->modelWeitereZutaten()->tableName());
     ui->comboBox->addItem(bh->modelWeitereZutatenGaben()->tableName());
-    ui->comboBox->setCurrentIndex(16);
+    ui->comboBox->setCurrentIndex(17);
 
     ui->comboBoxSud->clear();
     ui->comboBoxSud->addItem(bh->modelAnhang()->tableName());
@@ -119,6 +120,8 @@ void TabDatenbank::on_comboBox_currentIndexChanged(const QString &table)
         model = bh->modelHopfen();
     else if (table == bh->modelHopfengaben()->tableName())
         model = bh->modelHopfengaben();
+    else if (table == bh->modelKategorien()->tableName())
+        model = bh->modelKategorien();
     else if (table == bh->modelMalz()->tableName())
         model = bh->modelMalz();
     else if (table == bh->modelMalzschuettung()->tableName())

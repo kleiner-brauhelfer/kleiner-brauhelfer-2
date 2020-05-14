@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "importexport.h"
 #include "model/proxymodelsudcolored.h"
+#include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
 #include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
@@ -37,6 +38,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));
     model->setHeaderData(ModelSud::ColSudname, Qt::Horizontal, tr("Sudname"));
     model->setHeaderData(ModelSud::ColSudnummer, Qt::Horizontal, tr("Sudnummer"));
+    model->setHeaderData(ModelSud::ColKategorie, Qt::Horizontal, tr("Kategorie"));
     model->setHeaderData(ModelSud::ColBraudatum, Qt::Horizontal, tr("Braudatum"));
     model->setHeaderData(ModelSud::ColAbfuelldatum, Qt::Horizontal, tr("Abfülldatum"));
     model->setHeaderData(ModelSud::ColErstellt, Qt::Horizontal, tr("Erstellt"));
@@ -65,6 +67,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->setModel(proxyModel);
     table->cols.append({ModelSud::ColSudname, true, false, -1, nullptr});
     table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->cols.append({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->cols.append({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
     table->cols.append({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
     table->cols.append({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});

@@ -37,6 +37,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelAnhang, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelEtiketten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modeTags, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelKategorien, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
 Brauhelfer::~Brauhelfer()
@@ -275,6 +276,11 @@ ModelEtiketten *Brauhelfer::modelEtiketten() const
 ModelTags *Brauhelfer::modelTags() const
 {
     return mDb->modeTags;
+}
+
+ModelKategorien *Brauhelfer::modelKategorien() const
+{
+    return mDb->modelKategorien;
 }
 
 int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)

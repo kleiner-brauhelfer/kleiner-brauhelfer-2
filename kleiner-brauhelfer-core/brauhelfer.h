@@ -27,6 +27,7 @@
 #include "modelanhang.h"
 #include "modeletiketten.h"
 #include "modelgeraete.h"
+#include "modelkategorien.h"
 
 class Database;
 
@@ -62,6 +63,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelAnhang READ modelAnhang CONSTANT)
     Q_PROPERTY(SqlTableModel* modelEtiketten READ modelEtiketten CONSTANT)
     Q_PROPERTY(SqlTableModel* modelTags READ modelTags CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelKategorien READ modelKategorien CONSTANT)
 
 public:
 
@@ -233,6 +235,7 @@ public:
     ModelAnhang* modelAnhang() const;
     ModelEtiketten* modelEtiketten() const;
     ModelTags* modelTags() const;
+    ModelKategorien* modelKategorien() const;
 
     Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);
     Q_INVOKABLE void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues);

@@ -5,6 +5,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodelsud.h"
+#include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
@@ -106,6 +107,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     table->setModel(proxyModel);
     table->cols.append({ModelSud::ColSudname, true, false, 300, nullptr});
     table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->cols.append({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, table)});
     ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
     ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);

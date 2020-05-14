@@ -19,6 +19,7 @@ public:
         ColID,
         ColSudname,
         ColSudnummer,
+        ColKategorie,
         ColAnlage,
         ColMenge,
         ColSW,

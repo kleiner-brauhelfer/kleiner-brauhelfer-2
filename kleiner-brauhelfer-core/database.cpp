@@ -35,6 +35,7 @@ void Database::createTables(Brauhelfer* bh)
     modelWasser = new ModelWasser(bh, db);
     modelEtiketten = new ModelEtiketten(bh, db);
     modeTags = new ModelTags(bh, db);
+    modelKategorien = new ModelKategorien(bh, db);
     modelSud->createConnections();
 }
 
@@ -65,6 +66,7 @@ void Database::setTables()
     modelWasser->setTable("Wasser");
     modelEtiketten->setTable("Etiketten");
     modeTags->setTable("Tags");
+    modelKategorien->setTable("Kategorien");
 
     // sanity check
     Q_ASSERT(modelSud->columnCount() == ModelSud::NumCols);
@@ -87,6 +89,7 @@ void Database::setTables()
     Q_ASSERT(modelWasser->columnCount() == ModelWasser::NumCols);
     Q_ASSERT(modelEtiketten->columnCount() == ModelEtiketten::NumCols);
     Q_ASSERT(modeTags->columnCount() == ModelTags::NumCols);
+    Q_ASSERT(modelKategorien->columnCount() == ModelKategorien::NumCols);
 }
 
 Database::~Database()
@@ -112,6 +115,7 @@ Database::~Database()
     delete modelWasser;
     delete modelEtiketten;
     delete modeTags;
+    delete modelKategorien;
     QSqlDatabase::removeDatabase("kbh");
 }
 
@@ -181,6 +185,7 @@ void Database::disconnect()
         modelWasser->clear();
         modelEtiketten->clear();
         modeTags->clear();
+        modelKategorien->clear();
         mVersion = -1;
     }
 }
@@ -211,7 +216,8 @@ bool Database::isDirty() const
            modelGeraete->isDirty() |
            modelWasser->isDirty() |
            modelEtiketten->isDirty() |
-           modeTags->isDirty();
+           modeTags->isDirty() |
+           modelKategorien->isDirty();
 }
 
 void Database::select()
@@ -235,6 +241,7 @@ void Database::select()
     modelAnhang->select();
     modelEtiketten->select();
     modeTags->select();
+    modelKategorien->select();
     modelSud->select();
 }
 
@@ -341,6 +348,11 @@ bool Database::save()
         mLastError = modeTags->lastError();
         ret = false;
     }
+    if (!modelKategorien->submitAll())
+    {
+        mLastError = modelKategorien->lastError();
+        ret = false;
+    }
     if (!modelSud->submitAll())
     {
         mLastError = modelSud->lastError();
@@ -370,6 +382,7 @@ void Database::discard()
     modelAnhang->revertAll();
     modelEtiketten->revertAll();
     modeTags->revertAll();
+    modelKategorien->revertAll();
     modelSud->revertAll();
 }
 

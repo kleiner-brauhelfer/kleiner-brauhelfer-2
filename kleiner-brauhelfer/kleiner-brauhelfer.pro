@@ -63,6 +63,7 @@ SOURCES += \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
     dialogs/dlgsudteilen.cpp \
+    dialogs/dlgtableview.cpp \
     dialogs/dlguebernahmerezept.cpp \
     dialogs/dlgverdampfung.cpp \
     dialogs/dlgvolumen.cpp \
@@ -132,6 +133,7 @@ HEADERS += \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
     dialogs/dlgsudteilen.h \
+    dialogs/dlgtableview.h \
     dialogs/dlguebernahmerezept.h \
     dialogs/dlgverdampfung.h \
     dialogs/dlgvolumen.h \
@@ -196,6 +198,7 @@ FORMS += \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \
     dialogs/dlgsudteilen.ui \
+    dialogs/dlgtableview.ui \
     dialogs/dlguebernahmerezept.ui \
     dialogs/dlgverdampfung.ui \
     dialogs/dlgvolumen.ui \

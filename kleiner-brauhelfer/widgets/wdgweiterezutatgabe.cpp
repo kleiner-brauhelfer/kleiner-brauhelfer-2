@@ -72,41 +72,25 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
-    if (mEnabled)
-    {
-        ui->btnZutat->setEnabled(true);
-        ui->btnLoeschen->setVisible(true);
-        ui->tbVorhanden->setVisible(true);
-        ui->btnAufbrauchen->setVisible(true);
-        ui->lblVorhanden->setVisible(true);
-        ui->lblEinheit2->setVisible(true);
-        ui->tbMenge->setReadOnly(false);
-        ui->tbMengeTotal->setReadOnly(false);
-        ui->tbDauerMin->setReadOnly(false);
-        ui->tbZugabeNach->setReadOnly(false);
-        ui->tbDatumVon->setReadOnly(false);
-        ui->tbDauerTage->setReadOnly(false);
-        ui->tbDatumBis->setReadOnly(false);
-    }
-    else
-    {
-        ui->btnZutat->setEnabled(false);
-        ui->btnLoeschen->setVisible(false);
-        ui->tbVorhanden->setVisible(false);
-        ui->btnAufbrauchen->setVisible(false);
-        ui->lblVorhanden->setVisible(false);
-        ui->lblEinheit2->setVisible(false);
-        ui->cbZugabezeitpunkt->setEnabled(false);
-        ui->cbEntnahme->setEnabled(false);
-        ui->wdgKochdauer->setVisible(false);
-        ui->tbMenge->setReadOnly(true);
-        ui->tbMengeTotal->setReadOnly(true);
-        ui->tbDauerMin->setReadOnly(true);
-        ui->tbZugabeNach->setReadOnly(true);
-        ui->tbDatumVon->setReadOnly(true);
-        ui->tbDauerTage->setReadOnly(true);
-        ui->tbDatumBis->setReadOnly(true);
-    }
+    ui->btnZutat->setEnabled(mEnabled);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled);
+    ui->btnAufbrauchen->setVisible(mEnabled);
+    ui->lblVorhanden->setVisible(mEnabled);
+    ui->lblEinheit2->setVisible(mEnabled);
+    ui->cbZugabezeitpunkt->setEnabled(mEnabled);
+    ui->cbEntnahme->setEnabled(mEnabled);
+    ui->wdgKochdauer->setVisible(mEnabled);
+    ui->tbMenge->setReadOnly(!mEnabled);
+    ui->tbMengeTotal->setReadOnly(!mEnabled);
+    ui->tbDauerMin->setReadOnly(!mEnabled);
+    ui->tbZugabeNach->setReadOnly(!mEnabled);
+    ui->tbDatumVon->setReadOnly(!mEnabled);
+    ui->tbDauerTage->setReadOnly(!mEnabled);
+    ui->tbDatumBis->setReadOnly(!mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
+
     Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     ui->cbEntnahme->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
 }
@@ -371,6 +355,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::NichtZugegeben);
     ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::Zugegeben && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     ui->cbZugabezeitpunkt->setEnabled(status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled);
+
+    ui->btnNachOben->setEnabled(mIndex > 0);
+    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelWeitereZutatenGaben()->rowCount() - 1);
 }
 
 void WdgWeitereZutatGabe::on_btnZutat_clicked()
@@ -539,4 +526,14 @@ void WdgWeitereZutatGabe::on_btnAufbrauchen_clicked()
         setData(ModelWeitereZutatenGaben::Colerg_Menge, value);
         break;
     }
+}
+
+void WdgWeitereZutatGabe::on_btnNachOben_clicked()
+{
+    bh->sud()->modelWeitereZutatenGaben()->swap(mIndex, mIndex - 1);
+}
+
+void WdgWeitereZutatGabe::on_btnNachUnten_clicked()
+{
+    bh->sud()->modelWeitereZutatenGaben()->swap(mIndex, mIndex + 1);
 }

@@ -34,6 +34,8 @@ public:
     Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
     Q_INVOKABLE int append(const QVariantMap &values);
 
+    Q_INVOKABLE bool swap(int row1, int row2);
+
     Q_INVOKABLE int mapRowToSource(int row) const;
     Q_INVOKABLE int mapRowFromSource(int row) const;
 

@@ -22,7 +22,6 @@ QVariant ModelRasten::dataExt(const QModelIndex &idx) const
         case Brauhelfer::RastTyp::Einmaischen:
         case Brauhelfer::RastTyp::Infusion:
             V = bh->modelSud()->dataSud(sudId, ModelSud::ColWHauptgussEmpfehlung).toDouble();
-            qDebug() << "ColWHauptgussEmpfehlung" << V;
             break;
         case Brauhelfer::RastTyp::Temperatur:
         case Brauhelfer::RastTyp::Dekoktion:

@@ -79,11 +79,23 @@ bool TableView::restoreState(const QByteArray &state)
 
 void TableView::setDefaultContextMenu()
 {
-    QHeaderView *header = horizontalHeader();
-    setContextMenuPolicy(Qt::CustomContextMenu);
-    header->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(this, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
-    connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
+    bool addMenu = false;
+    for (const auto& col : cols)
+    {
+        if (col.canHide)
+        {
+            addMenu = true;
+            break;
+        }
+    }
+    if (addMenu)
+    {
+        QHeaderView *header = horizontalHeader();
+        setContextMenuPolicy(Qt::CustomContextMenu);
+        header->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(this, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
+        connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
+    }
 }
 
 void TableView::buildContextMenu(QMenu& menu) const

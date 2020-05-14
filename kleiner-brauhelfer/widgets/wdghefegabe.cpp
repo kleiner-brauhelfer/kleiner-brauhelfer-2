@@ -76,16 +76,18 @@ void WdgHefeGabe::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
-    ui->btnZutat->setEnabled(enabled);
-    ui->btnLoeschen->setVisible(enabled);
-    ui->tbVorhanden->setVisible(enabled);
-    ui->btnAufbrauchen->setVisible(enabled);
-    ui->lblVorhanden->setVisible(enabled);
-    ui->tbMenge->setReadOnly(!enabled);
-    ui->tbMengeEmpfohlen->setVisible(enabled);
-    ui->lblEmpfohlen->setVisible(enabled);
-    ui->tbTage->setReadOnly(!enabled);
-    ui->tbDatum->setReadOnly(!enabled);
+    ui->btnZutat->setEnabled(mEnabled);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled);
+    ui->btnAufbrauchen->setVisible(mEnabled);
+    ui->lblVorhanden->setVisible(mEnabled);
+    ui->tbMenge->setReadOnly(!mEnabled);
+    ui->tbMengeEmpfohlen->setVisible(mEnabled);
+    ui->lblEmpfohlen->setVisible(mEnabled);
+    ui->tbTage->setReadOnly(!mEnabled);
+    ui->tbDatum->setReadOnly(!mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 }
 
 void WdgHefeGabe::updateValues(bool full)
@@ -155,6 +157,9 @@ void WdgHefeGabe::updateValues(bool full)
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
         ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
+
+    ui->btnNachOben->setEnabled(mIndex > 0);
+    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelHefegaben()->rowCount() - 1);
 }
 
 void WdgHefeGabe::on_btnZutat_clicked()
@@ -207,4 +212,14 @@ void WdgHefeGabe::on_btnLoeschen_clicked()
 void WdgHefeGabe::on_btnAufbrauchen_clicked()
 {
     setData(ModelHefegaben::ColMenge, ui->tbVorhanden->value());
+}
+
+void WdgHefeGabe::on_btnNachOben_clicked()
+{
+    bh->sud()->modelHefegaben()->swap(mIndex, mIndex - 1);
+}
+
+void WdgHefeGabe::on_btnNachUnten_clicked()
+{
+    bh->sud()->modelHefegaben()->swap(mIndex, mIndex + 1);
 }

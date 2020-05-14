@@ -418,26 +418,12 @@ void WdgRast::on_btnLoeschen_clicked()
 
 void WdgRast::on_btnNachUnten_clicked()
 {
-    if (mIndex < bh->sud()->modelRasten()->rowCount() - 1)
-    {
-        int row1 = bh->sud()->modelRasten()->mapRowToSource(mIndex);
-        QMap<int, QVariant> values1 = bh->modelRasten()->copyValues(row1);
-        int row2 = bh->sud()->modelRasten()->mapRowToSource(mIndex + 1);
-        QMap<int, QVariant> values2 = bh->modelRasten()->copyValues(row2);
-        bh->modelRasten()->setData(row1, values2);
-        bh->modelRasten()->setData(row2, values1);
-    }
+    if (bh->sud()->modelRasten()->swap(mIndex, mIndex + 1))
+        bh->modelRasten()->update(bh->sud()->id());
 }
 
 void WdgRast::on_btnNachOben_clicked()
 {
-    if (mIndex > 0)
-    {
-        int row1 = bh->sud()->modelRasten()->mapRowToSource(mIndex);
-        QMap<int, QVariant> values1 = bh->modelRasten()->copyValues(row1);
-        int row2 = bh->sud()->modelRasten()->mapRowToSource(mIndex - 1);
-        QMap<int, QVariant> values2 = bh->modelRasten()->copyValues(row2);
-        bh->modelRasten()->setData(row1, values2);
-        bh->modelRasten()->setData(row2, values1);
-    }
+    if (bh->sud()->modelRasten()->swap(mIndex, mIndex - 1))
+        bh->modelRasten()->update(bh->sud()->id());
 }

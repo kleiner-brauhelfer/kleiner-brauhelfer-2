@@ -7,7 +7,7 @@
 #include "settings.h"
 #include "proxymodel.h"
 #include "model/proxymodelsudcolored.h"
-#include "model/readonlydelegate.h"
+#include "model/textdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/checkboxdelegate.h"
@@ -76,7 +76,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     model->setSourceModel(bh->modelSud());
     model->setFilterKeyColumn(ModelSud::ColAnlage);
     table->setModel(model);
-    table->cols.append({ModelSud::ColSudname, true, false, 200, new ReadonlyDelegate(table)});
+    table->cols.append({ModelSud::ColSudname, true, false, 200, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
     table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});
     table->cols.append({ModelSud::Colerg_EffektiveAusbeute, true, false, 100, new DoubleSpinBoxDelegate(1, table)});

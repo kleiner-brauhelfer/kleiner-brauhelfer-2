@@ -38,6 +38,8 @@ private slots:
     void on_cbZeitpunkt_currentIndexChanged(int index);
     void on_btnLoeschen_clicked();
     void on_btnAufbrauchen_clicked();
+    void on_btnNachOben_clicked();
+    void on_btnNachUnten_clicked();
 
 private:
     void checkEnabled(bool force);

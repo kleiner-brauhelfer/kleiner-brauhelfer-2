@@ -67,38 +67,22 @@ void WdgHopfenGabe::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
-    if (mEnabled)
-    {
-        ui->btnZutat->setEnabled(true);
-        ui->btnLoeschen->setVisible(true);
-        ui->tbVorhanden->setVisible(true);
-        ui->btnAufbrauchen->setVisible(true);
-        ui->lblVorhanden->setVisible(true);
-        ui->lblEinheit->setVisible(true);
-        ui->tbMenge->setReadOnly(false);
-        ui->tbMengeProLiter->setReadOnly(false);
-        ui->tbMengeProzent->setReadOnly(false);
-        ui->tbAnteilProzent->setReadOnly(false);
-        ui->tbKochdauer->setReadOnly(false);
-        ui->cbZeitpunkt->setEnabled(true);
-    }
-    else
-    {
-        ui->btnZutat->setEnabled(false);
-        ui->btnLoeschen->setVisible(false);
-        ui->tbVorhanden->setVisible(false);
-        ui->btnAufbrauchen->setVisible(false);
-        ui->lblVorhanden->setVisible(false);
-        ui->lblEinheit->setVisible(false);
-        ui->tbMenge->setReadOnly(true);
-        ui->tbMengeProLiter->setReadOnly(true);
-        ui->tbMengeProzent->setReadOnly(true);
-        ui->tbAnteilProzent->setReadOnly(true);
-        ui->tbKochdauer->setReadOnly(true);
-        ui->cbZeitpunkt->setEnabled(false);
-        ui->btnAnteilKorrektur->setVisible(false);
-        ui->btnMengeKorrektur->setVisible(false);
-    }
+    ui->btnZutat->setEnabled(mEnabled);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled);
+    ui->btnAufbrauchen->setVisible(mEnabled);
+    ui->lblVorhanden->setVisible(mEnabled);
+    ui->lblEinheit->setVisible(mEnabled);
+    ui->tbMenge->setReadOnly(!mEnabled);
+    ui->tbMengeProLiter->setReadOnly(!mEnabled);
+    ui->tbMengeProzent->setReadOnly(!mEnabled);
+    ui->tbAnteilProzent->setReadOnly(!mEnabled);
+    ui->tbKochdauer->setReadOnly(!mEnabled);
+    ui->cbZeitpunkt->setEnabled(mEnabled);
+    ui->btnAnteilKorrektur->setVisible(mEnabled);
+    ui->btnMengeKorrektur->setVisible(mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 }
 
 void WdgHopfenGabe::updateValues(bool full)
@@ -220,6 +204,9 @@ void WdgHopfenGabe::updateValues(bool full)
             ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }
     }
+
+    ui->btnNachOben->setEnabled(mIndex > 0);
+    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelHopfengaben()->rowCount() - 1);
 }
 
 void WdgHopfenGabe::on_btnZutat_clicked()
@@ -355,4 +342,14 @@ void WdgHopfenGabe::on_btnLoeschen_clicked()
 void WdgHopfenGabe::on_btnAufbrauchen_clicked()
 {
     setData(ModelHopfengaben::Colerg_Menge, ui->tbVorhanden->value());
+}
+
+void WdgHopfenGabe::on_btnNachOben_clicked()
+{
+    bh->sud()->modelHopfengaben()->swap(mIndex, mIndex - 1);
+}
+
+void WdgHopfenGabe::on_btnNachUnten_clicked()
+{
+    bh->sud()->modelHopfengaben()->swap(mIndex, mIndex + 1);
 }

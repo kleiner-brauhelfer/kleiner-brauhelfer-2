@@ -80,8 +80,8 @@ SOURCES += \
     model/linklabeldelegate.cpp \
     model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
-    model/readonlydelegate.cpp \
     model/spinboxdelegate.cpp \
+    model/textdelegate.cpp \
     widgets/chartview.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
@@ -149,8 +149,8 @@ HEADERS += \
     model/linklabeldelegate.h \
     model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
-    model/readonlydelegate.h \
     model/spinboxdelegate.h \
+    model/textdelegate.h \
     widgets/chartview.h \
     widgets/combobox.h \
     widgets/dateedit.h \

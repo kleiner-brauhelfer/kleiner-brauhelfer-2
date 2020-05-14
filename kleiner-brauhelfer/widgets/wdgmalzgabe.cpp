@@ -62,30 +62,18 @@ void WdgMalzGabe::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
-    if (mEnabled)
-    {
-        ui->btnZutat->setEnabled(true);
-        ui->btnLoeschen->setVisible(true);
-        ui->tbVorhanden->setVisible(true);
-        ui->btnAufbrauchen->setVisible(true);
-        ui->lblVorhanden->setVisible(true);
-        ui->lblEinheit->setVisible(true);        
-        ui->tbMengeProzent->setReadOnly(false);
-        ui->tbMenge->setReadOnly(false);
-    }
-    else
-    {
-        ui->btnZutat->setEnabled(false);
-        ui->btnLoeschen->setVisible(false);
-        ui->tbVorhanden->setVisible(false);
-        ui->btnAufbrauchen->setVisible(false);
-        ui->lblVorhanden->setVisible(false);
-        ui->lblEinheit->setVisible(false);
-        ui->tbMengeProzent->setReadOnly(true);
-        ui->tbMenge->setReadOnly(true);
-        ui->btnKorrektur->setVisible(false);
-        ui->lblWarnung->setVisible(false);
-    }
+    ui->btnZutat->setEnabled(mEnabled);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled);
+    ui->btnAufbrauchen->setVisible(mEnabled);
+    ui->lblVorhanden->setVisible(mEnabled);
+    ui->lblEinheit->setVisible(mEnabled);
+    ui->tbMengeProzent->setReadOnly(!mEnabled);
+    ui->tbMenge->setReadOnly(!mEnabled);
+    ui->btnKorrektur->setVisible(mEnabled);
+    ui->lblWarnung->setVisible(mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 }
 
 void WdgMalzGabe::updateValues(bool full)
@@ -149,6 +137,9 @@ void WdgMalzGabe::updateValues(bool full)
             ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }
     }
+
+    ui->btnNachOben->setEnabled(mIndex > 0);
+    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelMalzschuettung()->rowCount() - 1);
 }
 
 void WdgMalzGabe::on_btnZutat_clicked()
@@ -224,4 +215,14 @@ void WdgMalzGabe::on_btnLoeschen_clicked()
 void WdgMalzGabe::on_btnAufbrauchen_clicked()
 {
     setData(ModelMalzschuettung::Colerg_Menge, ui->tbVorhanden->value());
+}
+
+void WdgMalzGabe::on_btnNachOben_clicked()
+{
+    bh->sud()->modelMalzschuettung()->swap(mIndex, mIndex - 1);
+}
+
+void WdgMalzGabe::on_btnNachUnten_clicked()
+{
+    bh->sud()->modelMalzschuettung()->swap(mIndex, mIndex + 1);
 }

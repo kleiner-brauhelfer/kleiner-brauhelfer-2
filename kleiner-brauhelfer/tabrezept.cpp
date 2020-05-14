@@ -268,13 +268,18 @@ void TabRezept::checkRohstoffe()
         if (!wdg->isValid())
         {
             int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Das Malz \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()));
+                                            tr("Das Malz \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()),
+                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
                 QMap<int, QVariant> values({{ModelMalz::ColName, wdg->name()},
                                             {ModelMalz::ColFarbe, wdg->data(ModelMalzschuettung::ColFarbe)}});
                 bh->modelMalz()->append(values);
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::Cancel)
+            {
+                bh->sud()->unload();
             }
         }
     }
@@ -285,7 +290,8 @@ void TabRezept::checkRohstoffe()
         if (!wdg->isValid())
         {
             int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Der Hopfen \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()));
+                                            tr("Der Hopfen \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()),
+                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
                 QMap<int, QVariant> values({{ModelHopfen::ColName, wdg->name()},
@@ -293,6 +299,10 @@ void TabRezept::checkRohstoffe()
                                             {ModelHopfen::ColPellets, wdg->data(ModelHopfengaben::ColPellets)}});
                 bh->modelHopfen()->append(values);
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::Cancel)
+            {
+                bh->sud()->unload();
             }
         }
     }
@@ -303,12 +313,17 @@ void TabRezept::checkRohstoffe()
         if (!wdg->isValid())
         {
             int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Die Hefe \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()));
+                                            tr("Die Hefe \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()),
+                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
                 QMap<int, QVariant> values({{ModelHefe::ColName, wdg->name()}});
                 bh->modelHefe()->append(values);
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::Cancel)
+            {
+                bh->sud()->unload();
             }
         }
     }
@@ -319,7 +334,8 @@ void TabRezept::checkRohstoffe()
         if (!wdg->isValid())
         {
             int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(wdg->name()));
+                                            tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(wdg->name()),
+                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
                 Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -338,6 +354,10 @@ void TabRezept::checkRohstoffe()
                     bh->modelWeitereZutaten()->append(values);
                 }
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::Cancel)
+            {
+                bh->sud()->unload();
             }
         }
     }

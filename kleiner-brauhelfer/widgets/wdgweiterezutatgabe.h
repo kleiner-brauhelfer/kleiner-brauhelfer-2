@@ -40,6 +40,8 @@ private slots:
     void on_tbDatumVon_dateChanged(const QDate &date);
     void on_tbDatumBis_dateChanged(const QDate &date);
     void on_btnAufbrauchen_clicked();
+    void on_btnNachOben_clicked();
+    void on_btnNachUnten_clicked();
 
 private:
     void checkEnabled(bool force);

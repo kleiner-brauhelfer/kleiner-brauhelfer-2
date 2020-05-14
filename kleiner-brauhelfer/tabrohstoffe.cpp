@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "proxymodelrohstoff.h"
 #include "proxymodelsud.h"
+#include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
 #include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
@@ -168,9 +169,9 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
     table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
     table->cols.append({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
-    table->cols.append({ModelHefe::ColSedimentation, true, true, 100, nullptr});
-    table->cols.append({ModelHefe::ColEVG, true, true, 100, nullptr});
-    table->cols.append({ModelHefe::ColTemperatur, true, true, 100, nullptr});
+    table->cols.append({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->cols.append({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->cols.append({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->cols.append({ModelHefe::ColBemerkung, true, true, 200, nullptr});
     table->cols.append({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
     table->cols.append({ModelHefe::ColAlternativen, true, true, 200, nullptr});

@@ -82,6 +82,18 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
+          <property name="minimumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
@@ -96,6 +108,18 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
+          <property name="minimumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>

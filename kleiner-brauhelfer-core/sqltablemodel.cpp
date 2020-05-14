@@ -299,6 +299,30 @@ int SqlTableModel::appendDirect(const QVariantMap &values)
     return appendDirect(val);
 }
 
+bool SqlTableModel::swap(int row1, int row2)
+{
+    if (row1 >= 0 && row1 < rowCount() && row2 >= 0 && row2 < rowCount())
+    {
+        QMap<int, QVariant> values1 = copyValues(row1);
+        QMap<int, QVariant> values2 = copyValues(row2);
+        QMap<int, QVariant>::const_iterator it = values2.constBegin();
+        while (it != values2.constEnd())
+        {
+            QSqlTableModel::setData(index(row1, it.key()), it.value());
+            ++it;
+        }
+        it = values1.constBegin();
+        while (it != values1.constEnd())
+        {
+            QSqlTableModel::setData(index(row2, it.key()), it.value());
+            ++it;
+        }
+        emit modified();
+        return true;
+    }
+    return false;
+}
+
 void SqlTableModel::emitModified()
 {
     emit modified();
@@ -367,6 +391,8 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     for (int row = 0; row < rowCount(); ++row)
     {
         if (!ignoreIndexRow && row == index.row())
+            continue;
+        if (data(row, fieldIndex("deleted")).toBool())
             continue;
         if (data(row, index.column()) == value)
             return false;

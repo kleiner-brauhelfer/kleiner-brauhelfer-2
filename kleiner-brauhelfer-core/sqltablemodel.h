@@ -153,6 +153,14 @@ public:
     Q_INVOKABLE int appendDirect(const QVariantMap &values);
 
     /**
+     * @brief swap
+     * @param row1 
+     * @param row2
+     * @return
+     */
+    Q_INVOKABLE bool swap(int row1, int row2);
+
+    /**
      * @brief Emits the modified signal
      * @note Can be usefull in combination with blockSignals() and appendDirect()
      */

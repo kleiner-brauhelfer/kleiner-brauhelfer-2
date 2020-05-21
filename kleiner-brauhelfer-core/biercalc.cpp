@@ -330,6 +330,8 @@ double BierCalc::verschneidung(double swIst, double swSoll, double menge)
 double BierCalc::tinseth(double t, double sw)
 {
     // https://realbeer.com/hops/
+    if (t < 0)
+        return 0;
     double bigness  = 1.65 * pow(0.000125, 0.004 * sw);
     double boiltime = (1 - exp(-0.04 * t)) / 4.15;
     return bigness * boiltime;

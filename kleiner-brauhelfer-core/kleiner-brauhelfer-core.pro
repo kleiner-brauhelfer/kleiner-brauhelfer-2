@@ -1,4 +1,4 @@
-QT += core sql
+QT += core sql xml
 QT -= gui
 
 ORGANIZATION = kleiner-brauhelfer
@@ -39,6 +39,7 @@ SOURCES += \
     brauhelfer.cpp \
     database.cpp \
     database_update.cpp \
+    importexport.cpp \
     modelanhang.cpp \
     modelausruestung.cpp \
     modelbewertungen.cpp \
@@ -67,6 +68,7 @@ SOURCES += \
     sudobject.cpp
 
 HEADERS += \
+    importexport.h \
     kleiner-brauhelfer-core_global.h \
     biercalc.h \
     brauhelfer.h \

@@ -36,7 +36,6 @@ win32: PRE_TARGETDEPS += $$OUT_PWD/../bin/kleiner-brauhelfer-core.lib
 unix: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 
 SOURCES += \
-    importexport.cpp \
     main.cpp \
     mainwindow.cpp \
     settings.cpp \
@@ -108,7 +107,6 @@ SOURCES += \
 
 HEADERS += \
     definitionen.h \
-    importexport.h \
     mainwindow.h \
     settings.h \
     tababstract.h \

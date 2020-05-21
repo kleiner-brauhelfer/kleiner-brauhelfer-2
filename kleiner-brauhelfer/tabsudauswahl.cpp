@@ -573,36 +573,54 @@ void TabSudAuswahl::rezeptImportieren()
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
         try
         {
-            int sudRow = -1;
-            if (filter == "kleiner-brauhelfer (*.json)")
-                sudRow = ImportExport::importKbh(bh, filePath);
-                if (sudRow < 0)
-                    sudRow = ImportExport::importMaischeMalzundMehr(bh, filePath);
-            else if (filter == "MaischeMalzundMehr (*.json)")
-                sudRow = ImportExport::importMaischeMalzundMehr(bh, filePath);
-                if (sudRow < 0)
-                    sudRow = ImportExport::importKbh(bh, filePath);
-            else if (filter == "BeerXML (*.xml)")
-                sudRow = ImportExport::importBeerXml(bh, filePath);
-            if (sudRow >= 0)
+            QFile file(filePath);
+            if (file.open(QIODevice::ReadOnly))
             {
-                QMessageBox::information(this, tr("Rezept Import"), tr("Das Rezept wurde erfolgreich importiert."));
-                if (!ui->cbRezept->isChecked())
+                QByteArray content = file.readAll();
+                file.close();
+                int sudRow = -1;
+                if (filter == "kleiner-brauhelfer (*.json)")
                 {
-                    ui->cbRezept->setChecked(true);
-                    setFilterStatus();
+                    sudRow = ImportExport::importKbh(bh, content);
+                    if (sudRow < 0)
+                        sudRow = ImportExport::importMaischeMalzundMehr(bh, content);
                 }
-                ui->cbMerkliste->setChecked(false);
-                ui->cbDatumAlle->setChecked(true);
-                ui->tbFilter->clear();
-                filterChanged();
-                ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-                sudRow = model->mapRowFromSource(sudRow);
-                ui->tableSudauswahl->setCurrentIndex(model->index(sudRow, ModelSud::ColSudname));
-                ui->tableSudauswahl->scrollTo(ui->tableSudauswahl->currentIndex());
+                else if (filter == "MaischeMalzundMehr (*.json)")
+                {
+                    sudRow = ImportExport::importMaischeMalzundMehr(bh, content);
+                    if (sudRow < 0)
+                        sudRow = ImportExport::importKbh(bh, content);
+                }
+                else if (filter == "BeerXML (*.xml)")
+                {
+                    sudRow = ImportExport::importBeerXml(bh, content);
+                }
+                if (sudRow >= 0)
+                {
+                    QMessageBox::information(this, tr("Rezept Import"), tr("Das Rezept wurde erfolgreich importiert."));
+                    if (!ui->cbRezept->isChecked())
+                    {
+                        ui->cbRezept->setChecked(true);
+                        setFilterStatus();
+                    }
+                    ui->cbMerkliste->setChecked(false);
+                    ui->cbDatumAlle->setChecked(true);
+                    ui->tbFilter->clear();
+                    filterChanged();
+                    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+                    sudRow = model->mapRowFromSource(sudRow);
+                    ui->tableSudauswahl->setCurrentIndex(model->index(sudRow, ModelSud::ColSudname));
+                    ui->tableSudauswahl->scrollTo(ui->tableSudauswahl->currentIndex());
+                }
+                else
+                {
+                    QMessageBox::warning(this, tr("Rezept Import"), tr("Das Rezept konnte nicht importiert werden."));
+                }
             }
             else
-                QMessageBox::warning(this, tr("Rezept Import"), tr("Das Rezept konnte nicht importiert werden."));
+            {
+                QMessageBox::warning(this, tr("Rezept Import"), tr("Die Datei konnte nicht geöffnet werden."));
+            }
         }
         catch (const std::exception& ex)
         {
@@ -653,17 +671,37 @@ void TabSudAuswahl::rezeptExportieren(bool loadedSud)
             gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
             try
             {
-                bool ok = false;
+                QByteArray content;
                 if (filter == "kleiner-brauhelfer (*.json)")
-                    ok = ImportExport::exportKbh(bh, filePath, row);
+                {
+                    content = ImportExport::exportKbh(bh, row);
+                }
                 else if (filter == "MaischeMalzundMehr (*.json)")
-                    ok = ImportExport::exportMaischeMalzundMehr(bh, filePath, row);
+                {
+                    content = ImportExport::exportMaischeMalzundMehr(bh, row);
+                }
                 else if (filter == "BeerXML (*.xml)")
-                    ok = ImportExport::exportBeerXml(bh, filePath, row);
-                if (ok)
-                    QMessageBox::information(this, tr("Sud Export"), tr("Der Sud wurde erfolgreich exportiert."));
+                {
+                    content = ImportExport::exportBeerXml(bh, row);
+                }
+                if (!content.isEmpty())
+                {
+                    QFile file(filePath);
+                    if (file.open(QFile::WriteOnly | QFile::Text))
+                    {
+                        file.write(content);
+                        file.close();
+                        QMessageBox::information(this, tr("Sud Export"), tr("Der Sud wurde erfolgreich exportiert."));
+                    }
+                    else
+                    {
+                        QMessageBox::warning(this, tr("Sud Export"), tr("Die Datei konnte nicht geschrieben werden."));
+                    }
+                }
                 else
+                {
                     QMessageBox::warning(this, tr("Sud Export"), tr("Der Sud konnte nicht exportiert werden."));
+                }
             }
             catch (const std::exception& ex)
             {

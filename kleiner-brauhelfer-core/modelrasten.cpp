@@ -15,7 +15,7 @@ QVariant ModelRasten::dataExt(const QModelIndex &idx) const
     {
     case ColMenge:
     {
-        double V;
+        double V = 0.0;
         QVariant sudId = data(idx.row(), ColSudID);
         switch (static_cast<Brauhelfer::RastTyp>(data(idx.row(), ColTyp).toInt()))
         {
@@ -38,7 +38,7 @@ QVariant ModelRasten::dataExt(const QModelIndex &idx) const
 bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     bool ret = false;
-    double fVal, m1, c1, m2, c2, T1, T2, Tm, V, temp;
+    double fVal, m1, c1, m2, c2, T1, T2, Tm, V = 0.0, temp = 0.0;
     QVariant sudId = data(idx.row(), ColSudID);
     switch(idx.column())
     {
@@ -54,9 +54,12 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
             V = BierCalc::MalzVerdraengung * bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::Colerg_S_Gesamt).toDouble() + getPreviousMenge(sudId, idx.row());
             break;
         }
-        temp = value.toDouble() / V;
-        if (temp >= 0)
-            ret = setData(idx.row(), ColMengenfaktor, temp);
+        if (V != 0.0)
+        {
+            temp = value.toDouble() / V;
+            if (temp >= 0)
+                ret = setData(idx.row(), ColMengenfaktor, temp);
+        }
         break;
     case ColMengenfaktor:
         fVal = value.toDouble();

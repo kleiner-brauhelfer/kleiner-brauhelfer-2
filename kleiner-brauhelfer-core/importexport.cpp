@@ -1,6 +1,6 @@
 #include "importexport.h"
 #include <QtMath>
-#include <QFile>
+#include <QTextCodec>
 #include <QTextStream>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -39,15 +39,10 @@ static double toDouble(const QJsonValueRef& value)
     }
 }
 
-int ImportExport::importKbh(Brauhelfer* bh, const QString &fileName)
+int ImportExport::importKbh(Brauhelfer* bh, const QByteArray &content)
 {
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly))
-        return -1;
-
     QJsonParseError jsonError;
-    QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &jsonError);
-    file.close();
+    QJsonDocument doc = QJsonDocument::fromJson(content, &jsonError);
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
         qWarning() << "Failed to parse JSON:" << jsonError.errorString();
@@ -189,16 +184,10 @@ int ImportExport::importKbh(Brauhelfer* bh, const QString &fileName)
     return sudRow;
 }
 
-int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileName)
+int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &content)
 {
-    // https://www.maischemalzundmehr.de/rezept.json.txt
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly))
-        return -1;
-
     QJsonParseError jsonError;
-    QJsonDocument doc = QJsonDocument::fromJson(file.readAll(), &jsonError);
-    file.close();
+    QJsonDocument doc = QJsonDocument::fromJson(content, &jsonError);
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
         qWarning() << "Failed to parse JSON:" << jsonError.errorString();
@@ -367,11 +356,15 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileNa
     }
 
     // Hefe
-    values.clear();
-    values[ModelHefegaben::ColSudID] = sudId;
-    values[ModelHefegaben::ColName] = root["Hefe"].toString();
-    values[ModelHefegaben::ColMenge] = qCeil(menge / 20.0);
-    bh->modelHefegaben()->append(values);
+    QStringList hefen = root["Hefe"].toString().split(", ");
+    for (const QString& hefe : hefen)
+    {
+        values.clear();
+        values[ModelHefegaben::ColSudID] = sudId;
+        values[ModelHefegaben::ColName] = hefe;
+        values[ModelHefegaben::ColMenge] = qCeil(menge / 20.0 / hefen.size());
+        bh->modelHefegaben()->append(values);
+    }
 
     // Weitere Zutaten
     int max_wz_wuerze = findMax(root, "WeitereZutat_Wuerze_%%_Name");
@@ -428,20 +421,14 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QString &fileNa
     return sudRow;
 }
 
-int ImportExport::importBeerXml(Brauhelfer* bh, const QString &fileName)
+int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
 {
     int sudRow = -1;
     const QString BeerXmlVersion = "1";
 
-    // http://www.beerxml.com/
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly))
-        return -1;
-
     QString xmlError;
     QDomDocument doc("");
-    doc.setContent(&file, &xmlError);
-    file.close();
+    doc.setContent(content, &xmlError);
     if (!xmlError.isEmpty())
     {
         qWarning() << "Failed to parse XML:" << xmlError;
@@ -639,7 +626,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QString &fileName)
     return sudRow;
 }
 
-bool ImportExport::exportKbh(Brauhelfer* bh, const QString &fileName, int sudRow)
+QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
 {
     QJsonObject root;
     SqlTableModel* model;
@@ -765,16 +752,11 @@ bool ImportExport::exportKbh(Brauhelfer* bh, const QString &fileName, int sudRow
     }
     root[model->tableName()] = QJsonArray::fromVariantList(list);
 
-    QFile file(fileName);
-    if (!file.open(QFile::WriteOnly | QFile::Text))
-        return false;
     QJsonDocument doc(root);
-    file.write(doc.toJson());
-    file.close();
-    return true;
+    return doc.toJson();
 }
 
-bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileName, int sudRow)
+QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
 {
     ProxyModel model;
     int n;
@@ -1014,16 +996,11 @@ bool ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, const QString &fileN
         }
     }
 
-    QFile file(fileName);
-    if (!file.open(QFile::WriteOnly | QFile::Text))
-        return false;
     QJsonDocument doc(root);
-    file.write(doc.toJson());
-    file.close();
-    return true;
+    return doc.toJson();
 }
 
-bool ImportExport::exportBeerXml(Brauhelfer* bh, const QString &fileName, int sudRow)
+QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
 {
     const QString BeerXmlVersion = "1";
 
@@ -1728,16 +1705,10 @@ bool ImportExport::exportBeerXml(Brauhelfer* bh, const QString &fileName, int su
         }
     }
 
-    QFile file(fileName);
-    if (!file.open(QFile::ReadWrite | QFile::Text))
-      return false;
-    QTextStream out(&file);
-    out.setCodec("ISO 8859-1");
-
-    QString strXml;
-    QTextStream xml(&strXml);
-    doc.save(xml, 2);
-    out << strXml;
-    file.close();
-    return true;
+    QString contentString;
+    QTextStream stream(&contentString);
+    doc.save(stream, QDomNode::EncodingFromTextStream);
+    QTextCodec *codec = QTextCodec::codecForName("ISO 8859-1");
+    QByteArray content = codec->fromUnicode(contentString);
+    return content;
 }

@@ -51,6 +51,25 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
     }
 }
 
+int ModelWeitereZutatenGaben::import(int row)
+{
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(row, ColTyp).toInt());
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+    {
+        QMap<int, QVariant> values({{ModelHopfen::ColName, data(row, ColName)}});
+        return bh->modelHopfen()->append(values);
+    }
+    else
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, data(row, ColName)},
+                                    {ModelWeitereZutaten::ColEinheit, data(row, ColEinheit)},
+                                    {ModelWeitereZutaten::ColTyp, data(row, ColTyp)},
+                                    {ModelWeitereZutaten::ColAusbeute, data(row, ColAusbeute)},
+                                    {ModelWeitereZutaten::ColFarbe, data(row, ColFarbe)}});
+        return bh->modelWeitereZutaten()->append(values);
+    }
+}
+
 bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())

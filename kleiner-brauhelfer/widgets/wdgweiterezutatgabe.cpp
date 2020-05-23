@@ -54,6 +54,11 @@ bool WdgWeitereZutatGabe::setData(int col, const QVariant &value)
     return bh->sud()->modelWeitereZutatenGaben()->setData(mIndex, col, value);
 }
 
+int WdgWeitereZutatGabe::row() const
+{
+    return mIndex;
+}
+
 QString WdgWeitereZutatGabe::name() const
 {
     return data(ModelWeitereZutatenGaben::ColName).toString();

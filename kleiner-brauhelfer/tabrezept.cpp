@@ -52,6 +52,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
     ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
+    ui->tbPh->setColumn(ModelSud::ColPhMaische);
 
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
@@ -279,9 +280,7 @@ void TabRezept::checkRohstoffe()
                                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
-                QMap<int, QVariant> values({{ModelMalz::ColName, wdg->name()},
-                                            {ModelMalz::ColFarbe, wdg->data(ModelMalzschuettung::ColFarbe)}});
-                bh->modelMalz()->append(values);
+                bh->modelMalzschuettung()->import(bh->sud()->modelMalzschuettung()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::Cancel)
@@ -301,10 +300,7 @@ void TabRezept::checkRohstoffe()
                                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
-                QMap<int, QVariant> values({{ModelHopfen::ColName, wdg->name()},
-                                            {ModelHopfen::ColAlpha, wdg->data(ModelHopfengaben::ColAlpha)},
-                                            {ModelHopfen::ColPellets, wdg->data(ModelHopfengaben::ColPellets)}});
-                bh->modelHopfen()->append(values);
+                bh->modelHopfengaben()->import(bh->sud()->modelHopfengaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::Cancel)
@@ -324,8 +320,7 @@ void TabRezept::checkRohstoffe()
                                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
-                QMap<int, QVariant> values({{ModelHefe::ColName, wdg->name()}});
-                bh->modelHefe()->append(values);
+                bh->modelHefegaben()->import(bh->sud()->modelHefegaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::Cancel)
@@ -345,21 +340,7 @@ void TabRezept::checkRohstoffe()
                                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
             if (ret == QMessageBox::Yes)
             {
-                Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(wdg->data(ModelWeitereZutatenGaben::ColTyp).toInt());
-                if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                {
-                    QMap<int, QVariant> values({{ModelHopfen::ColName, wdg->name()}});
-                    bh->modelHopfen()->append(values);
-                }
-                else
-                {
-                    QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, wdg->name()},
-                                                {ModelWeitereZutaten::ColEinheit, wdg->data(ModelWeitereZutatenGaben::ColEinheit)},
-                                                {ModelWeitereZutaten::ColTyp, wdg->data(ModelWeitereZutatenGaben::ColTyp)},
-                                                {ModelWeitereZutaten::ColAusbeute, wdg->data(ModelWeitereZutatenGaben::ColAusbeute)},
-                                                {ModelWeitereZutaten::ColFarbe, wdg->data(ModelWeitereZutatenGaben::ColFarbe)}});
-                    bh->modelWeitereZutaten()->append(values);
-                }
+                bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::Cancel)
@@ -396,6 +377,8 @@ void TabRezept::updateValues()
     ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
     diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
     ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+    diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble();
+    ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -420,7 +403,6 @@ void TabRezept::updateValues()
         ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
     ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
-    ui->tbRestalkalitaet->setMaximum(ui->tbRestalkalitaetWasser->value());
     ui->lblWasserprofil->setText(bh->sud()->getWasserprofil());
     double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
@@ -1030,6 +1012,11 @@ void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
         bh->sud()->setWasserprofil(value);
+}
+
+void TabRezept::on_btnRestalkalitaet_clicked()
+{
+    bh->sud()->setRestalkalitaetSoll(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
 }
 
 void TabRezept::on_btnTagNeu_clicked()

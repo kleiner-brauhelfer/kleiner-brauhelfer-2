@@ -16,6 +16,7 @@ public:
     ~WdgWeitereZutatGabe();
     bool isEnabled() const;
     bool isValid() const;
+    int row() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
     QString name() const;

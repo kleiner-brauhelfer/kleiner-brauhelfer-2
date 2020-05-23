@@ -42,6 +42,11 @@ bool WdgRast::setData(int col, const QVariant &value)
     return bh->sud()->modelRasten()->setData(mIndex, col, value);
 }
 
+int WdgRast::row() const
+{
+    return mIndex;
+}
+
 QString WdgRast::name() const
 {
     return data(ModelRasten::ColName).toString();

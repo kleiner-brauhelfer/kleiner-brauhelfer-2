@@ -365,6 +365,22 @@ double BierCalc::einmaischetemperatur(double T_rast, double m_malz, double T_mal
     return BierCalc::mischungstemperaturT2(T_rast, m_malz, cMalz, T_malt, V_wasser * dichteWasser(20), cWasser);
 }
 
+double BierCalc::phMalz(double farbe)
+{
+    return -0.255 * std::log(farbe) + 6.156;
+}
+
+double BierCalc::phMalzCarafa(double farbe)
+{
+    return -0.289 * std::log(farbe) + 6.069;
+}
+
+double BierCalc::phMalzRoest(double farbe)
+{
+    (void)farbe;
+    return 4.65;
+}
+
 static unsigned int toRgb(unsigned char r, unsigned char g, unsigned char b)
 {
     return (0xffu << 24) | ((r & 0xffu) << 16) | ((g & 0xffu) << 8) | (b & 0xffu);

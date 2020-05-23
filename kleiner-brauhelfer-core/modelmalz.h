@@ -19,6 +19,7 @@ public:
         ColMenge,
         ColPotential,
         ColFarbe,
+        ColpH,
         ColMaxProzent,
         ColBemerkung,
         ColEingenschaften,

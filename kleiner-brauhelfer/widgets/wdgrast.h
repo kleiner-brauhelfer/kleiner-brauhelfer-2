@@ -15,6 +15,7 @@ public:
     explicit WdgRast(int index, QWidget *parent = nullptr);
     ~WdgRast();
     bool isEnabled() const;
+    int row() const;
     QString name() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);

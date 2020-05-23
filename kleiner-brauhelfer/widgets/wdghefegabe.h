@@ -18,6 +18,7 @@ public:
     bool isValid() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
+    int row() const;
     QString name() const;
     int menge() const;
     void remove();

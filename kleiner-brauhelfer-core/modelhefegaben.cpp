@@ -76,6 +76,12 @@ void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
+int ModelHefegaben::import(int row)
+{
+    QMap<int, QVariant> values({{ModelHefe::ColName, data(row, ColName)}});
+    return bh->modelHefe()->append(values);
+}
+
 void ModelHefegaben::defaultValues(QMap<int, QVariant> &values) const
 {
     if (values.contains(ColSudID))

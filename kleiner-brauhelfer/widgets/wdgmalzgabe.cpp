@@ -162,6 +162,11 @@ void WdgMalzGabe::on_tbMenge_valueChanged(double value)
         setData(ModelMalzschuettung::Colerg_Menge, value);
 }
 
+int WdgMalzGabe::row() const
+{
+    return mIndex;
+}
+
 QString WdgMalzGabe::name() const
 {
     return data(ModelMalzschuettung::ColName).toString();

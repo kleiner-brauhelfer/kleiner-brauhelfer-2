@@ -922,6 +922,7 @@ bool Database::update()
 
             // Malz
             //  - neue Spalte 'Potential'
+            //  - neue Spalte 'pH'
             //  - neue Spalte 'Alternativen'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
             //  - Spalte unbenannt 'Anwendung' -> 'Eigenschaften'
@@ -932,6 +933,7 @@ bool Database::update()
                 "Menge REAL DEFAULT 0,"
                 "Potential REAL DEFAULT 0,"
                 "Farbe REAL DEFAULT 0,"
+                "pH REAL DEFAULT 0,"
                 "MaxProzent REAL DEFAULT 100,"
                 "Bemerkung TEXT,"
                 "Eigenschaften TEXT,"
@@ -1344,7 +1346,9 @@ bool Database::update()
 
             // Malzschuettung
             //  - neue Spalte 'Potential'
+            //  - neue Spalte 'pH'
             sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN pH REAL DEFAULT 0");
 
             // Rasten
             //  - neue Spalte 'Typ'

@@ -54,6 +54,11 @@ bool WdgHefeGabe::setData(int col, const QVariant &value)
     return bh->sud()->modelHefegaben()->setData(mIndex, col, value);
 }
 
+int WdgHefeGabe::row() const
+{
+    return mIndex;
+}
+
 QString WdgHefeGabe::name() const
 {
     return data(ModelHefegaben::ColName).toString();

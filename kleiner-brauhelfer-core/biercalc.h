@@ -374,6 +374,27 @@ public:
     Q_INVOKABLE static double einmaischetemperatur(double T_rast, double m_malz, double T_malt, double V_wasser);
 
     /**
+     * @brief phMalz
+     * @param farbe
+     * @return
+     */
+    Q_INVOKABLE static double phMalz(double farbe);
+
+    /**
+     * @brief phMalzCarafa
+     * @param farbe
+     * @return
+     */
+    Q_INVOKABLE static double phMalzCarafa(double farbe);
+
+    /**
+     * @brief phMalzRoest
+     * @param farbe
+     * @return
+     */
+    Q_INVOKABLE static double phMalzRoest(double farbe);
+
+    /**
      * @brief Farbe im RGB Raum
      * @param ebc EBC Farbwert [EBC]
      * @return Farbwert im RGB Raum

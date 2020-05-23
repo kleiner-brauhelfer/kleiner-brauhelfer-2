@@ -49,6 +49,8 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
     mVirtualField.append("Alkohol");
+    mVirtualField.append("PhMalz");
+    mVirtualField.append("PhMaische");
     mVirtualField.append("AnlageVerdampfungsrate");
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("RestalkalitaetFaktor");
@@ -389,6 +391,36 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
         double sre = BierCalc::sreAusVergaerungsgrad(sw, vg);
         return BierCalc::alkohol(sw, sre);
+    }
+    case ColPhMalz:
+    {
+        double phGesamt = 0;
+        double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+        ProxyModel proxy;
+        proxy.setSourceModel(bh->modelMalzschuettung());
+        proxy.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
+        proxy.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        for (int r = 0; r < proxy.rowCount(); ++r)
+        {
+            double ph = proxy.data(r, ModelMalzschuettung::ColpH).toDouble();
+            if (ph > 0)
+            {
+                double m = proxy.data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
+                phGesamt += std::pow(10, -ph) * m/schuet;
+            }
+        }
+        if (phGesamt > 0)
+            phGesamt = -std::log10(phGesamt);
+        return phGesamt;
+    }
+    case ColPhMaische:
+    {
+        double phMalz = data(idx.row(), ColPhMalz).toDouble();
+        double ra = data(idx.row(), ColRestalkalitaetSoll).toDouble();
+        double V = data(idx.row(), Colerg_WHauptguss).toDouble();
+        double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+        double phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+        return phMalz + phRa;
     }
     case ColAnlageVerdampfungsrate:
     {

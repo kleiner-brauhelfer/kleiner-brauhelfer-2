@@ -18,6 +18,7 @@
 #include "model/ingredientnamedelegate.h"
 #include "model/linklabeldelegate.h"
 #include "model/spinboxdelegate.h"
+#include "model/phmalzdelegate.h"
 #include "dialogs/dlgrohstoffvorlage.h"
 
 extern Brauhelfer* bh;
@@ -78,6 +79,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelMalz::ColName, Qt::Horizontal, tr("Name"));
     model->setHeaderData(ModelMalz::ColMenge, Qt::Horizontal, tr("Menge [kg]"));
     model->setHeaderData(ModelMalz::ColFarbe, Qt::Horizontal, tr("Farbe [EBC]"));
+    model->setHeaderData(ModelMalz::ColpH, Qt::Horizontal, tr("pH"));
     model->setHeaderData(ModelMalz::ColMaxProzent, Qt::Horizontal, tr("Max. Anteil [%]"));
     model->setHeaderData(ModelMalz::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     model->setHeaderData(ModelMalz::ColEingenschaften, Qt::Horizontal, tr("Eingenschaften"));
@@ -95,6 +97,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
     table->cols.append({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table)});
     table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
+    table->cols.append({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
     table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
     table->cols.append({ModelMalz::ColEingenschaften, true, true, 200, nullptr});

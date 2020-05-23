@@ -71,19 +71,19 @@ bool ModelWasser::setDataExt(const QModelIndex &idx, const QVariant &value)
      }
      case ColCalciumMmol:
      {
-         return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.8);
+         return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.08);
      }
      case ColMagnesiumMmol:
      {
-         return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.3);
+         return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.31);
      }
      case ColCalciumhaerte:
      {
-         return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.8 * 0.1783);
+         return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.08 * 0.1783);
      }
      case ColMagnesiumhaerte:
      {
-         return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.3 * 0.1783);
+         return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.31 * 0.1783);
      }
      case ColCarbonathaerte:
      {

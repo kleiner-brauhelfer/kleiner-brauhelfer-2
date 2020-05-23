@@ -44,6 +44,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: "Maischplan" ersetzt "Rasten"
 - Neu: Unterstüzt Dekoktion als Maischverfahren
 - Neu: Malz-, Hopfen-, Hefe-, weitere Zutatengaben und Maischplan lassen sich aus anderes Rezept übernehmen
+- Neu: pH-Wert der Maische kann berechnet werden
 
 ### Version 2.1.3 (02.05.2020)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

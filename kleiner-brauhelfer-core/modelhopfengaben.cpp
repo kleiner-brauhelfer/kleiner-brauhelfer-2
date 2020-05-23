@@ -275,6 +275,14 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
+int ModelHopfengaben::import(int row)
+{
+    QMap<int, QVariant> values({{ModelHopfen::ColName, data(row, ColName)},
+                                {ModelHopfen::ColAlpha, data(row, ColAlpha)},
+                                {ModelHopfen::ColPellets, data(row, ColPellets)}});
+    return bh->modelHopfen()->append(values);
+}
+
 void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
 {
     if (!values.contains(ColName))

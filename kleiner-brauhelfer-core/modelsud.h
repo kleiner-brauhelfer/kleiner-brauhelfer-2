@@ -102,6 +102,8 @@ public:
         ColsEVG,
         ColtEVG,
         ColAlkohol,
+        ColPhMalz,
+        ColPhMaische,
         ColAnlageVerdampfungsrate,
         ColAnlageSudhausausbeute,
         ColRestalkalitaetFaktor,

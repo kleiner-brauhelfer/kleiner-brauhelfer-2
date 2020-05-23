@@ -229,6 +229,11 @@ void WdgHopfenGabe::on_tbAnteilProzent_valueChanged(double value)
         setData(ModelHopfengaben::ColProzent, value);
 }
 
+int WdgHopfenGabe::row() const
+{
+    return mIndex;
+}
+
 QString WdgHopfenGabe::name() const
 {
     return data(ModelHopfengaben::ColName).toString();

@@ -111,6 +111,26 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
             return true;
         }
         return false;
+    case ColpH:
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QVariant name = data(idx.row(), ColName);
+            ProxyModelSud modelSud;
+            modelSud.setSourceModel(bh->modelSud());
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
+            {
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
+                SqlTableModel* model = bh->modelMalzschuettung();
+                for (int j = 0; j < model->rowCount(); ++j)
+                {
+                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
+                        model->setData(j, ModelMalzschuettung::ColpH, value);
+                }
+            }
+            return true;
+        }
+        return false;
     case ColEingelagert:
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     case ColMindesthaltbar:
@@ -141,6 +161,8 @@ void ModelMalz::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColPotential, 0);
     if (!values.contains(ColFarbe))
         values.insert(ColFarbe, 0);
+    if (!values.contains(ColpH))
+        values.insert(ColpH, 0);
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
     if (!values.contains(ColPreis))

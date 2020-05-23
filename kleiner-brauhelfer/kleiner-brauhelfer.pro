@@ -57,6 +57,7 @@ SOURCES += \
     dialogs/dlgabout.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
+    dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
@@ -78,6 +79,7 @@ SOURCES += \
     model/ebcdelegate.cpp \
     model/ingredientnamedelegate.cpp \
     model/linklabeldelegate.cpp \
+    model/phmalzdelegate.cpp \
     model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
     model/spinboxdelegate.cpp \
@@ -126,6 +128,7 @@ HEADERS += \
     dialogs/dlgabout.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
+    dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
@@ -147,6 +150,7 @@ HEADERS += \
     model/ebcdelegate.h \
     model/ingredientnamedelegate.h \
     model/linklabeldelegate.h \
+    model/phmalzdelegate.h \
     model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
     model/spinboxdelegate.h \
@@ -191,6 +195,7 @@ FORMS += \
     dialogs/dlgabout.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
+    dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \

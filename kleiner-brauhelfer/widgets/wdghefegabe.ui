@@ -95,15 +95,8 @@
             <height>22</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>8</width>
-            <height>8</height>
-           </size>
+          <property name="text">
+           <string notr="true">▲</string>
           </property>
          </widget>
         </item>
@@ -121,19 +114,11 @@
             <height>22</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>8</width>
-            <height>8</height>
-           </size>
+          <property name="text">
+           <string notr="true">▼</string>
           </property>
          </widget>
         </item>
-
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="sizePolicy">
@@ -285,9 +270,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge übernehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
+          <property name="text">
+           <string notr="true">←</string>
           </property>
          </widget>
         </item>

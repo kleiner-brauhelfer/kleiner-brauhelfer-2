@@ -94,15 +94,8 @@
             <height>22</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>8</width>
-            <height>8</height>
-           </size>
+          <property name="text">
+           <string notr="true">▲</string>
           </property>
          </widget>
         </item>
@@ -120,15 +113,8 @@
             <height>22</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>8</width>
-            <height>8</height>
-           </size>
+          <property name="text">
+           <string notr="true">▼</string>
           </property>
          </widget>
         </item>
@@ -1072,6 +1058,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
@@ -1080,11 +1071,6 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

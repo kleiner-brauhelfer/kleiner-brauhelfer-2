@@ -79,17 +79,15 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnMoveUp">
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/dreieck_oben.svg</normaloff>:/images/dreieck_oben.svg</iconset>
+          <property name="text">
+           <string notr="true">▲</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="moveDown">
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/dreieck_unten.svg</normaloff>:/images/dreieck_unten.svg</iconset>
+          <property name="text">
+           <string notr="true">▼</string>
           </property>
          </widget>
         </item>
@@ -114,9 +112,7 @@
    <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../images.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>

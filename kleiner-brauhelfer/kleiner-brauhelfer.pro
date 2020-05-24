@@ -82,6 +82,7 @@ SOURCES += \
     model/phmalzdelegate.cpp \
     model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
+    model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
     widgets/chartview.cpp \
@@ -153,6 +154,7 @@ HEADERS += \
     model/phmalzdelegate.h \
     model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
+    model/restextraktdelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
     widgets/chartview.h \

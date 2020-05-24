@@ -65,20 +65,56 @@
         </property>
         <item>
          <widget class="QPushButton" name="btnAdd">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Neuer Eintrag</string>
+           <string notr="true">＋</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnDelete">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Eintrag löschen</string>
+           <string notr="true">－</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnMoveUp">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string notr="true">▲</string>
           </property>
@@ -86,6 +122,18 @@
         </item>
         <item>
          <widget class="QPushButton" name="moveDown">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string notr="true">▼</string>
           </property>

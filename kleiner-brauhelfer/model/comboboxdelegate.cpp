@@ -46,7 +46,7 @@ QWidget* ComboBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewI
 void ComboBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QComboBox *w = static_cast<QComboBox*>(editor);
-    w->setCurrentIndex(index.model()->data(index, Qt::EditRole).toInt());
+    w->setCurrentIndex(index.data(Qt::EditRole).toInt());
     w->showPopup();
 }
 
@@ -75,7 +75,7 @@ void ComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     QStyleOptionViewItem opt(option);
     initStyleOption(&opt, index);
     opt.displayAlignment = Qt::AlignCenter;
-    int idx = index.model()->data(index).toInt();
+    int idx = index.data(Qt::DisplayRole).toInt();
     if (idx >= 0 && idx < mColors.count())
     {
         QColor color = mColors.at(idx);

@@ -21,13 +21,14 @@ QWidget* PhMalzDelegate::createEditor(QWidget *parent, const QStyleOptionViewIte
 void PhMalzDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     DlgPhMalz *w = static_cast<DlgPhMalz*>(editor);
-    w->setPh(index.model()->data(index, Qt::EditRole).toDouble());
+    w->setPh(index.data(Qt::EditRole).toDouble());
 }
 
 void PhMalzDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
     DlgPhMalz *w = static_cast<DlgPhMalz*>(editor);
-    model->setData(index, w->pH(), Qt::EditRole);
+    if (w->result() == QDialog::Accepted)
+        model->setData(index, w->pH(), Qt::EditRole);
 }
 
 void PhMalzDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const

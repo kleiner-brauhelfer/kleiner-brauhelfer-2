@@ -77,9 +77,22 @@ double DlgRestextrakt::value() const
     return mSw ? ui->tbSw->value() : ui->tbExtrakt->value();
 }
 
-double DlgRestextrakt::temperature() const
+void DlgRestextrakt::setValue(double value)
+{
+    if (mSw)
+        ui->tbSw->setValue(value);
+    else
+        ui->tbExtrakt->setValue(value);
+}
+
+double DlgRestextrakt::temperatur() const
 {
     return ui->tbTemp->value();
+}
+
+void DlgRestextrakt::setTemperatur(double value)
+{
+    ui->tbTemp->setValue(value);
 }
 
 void DlgRestextrakt::on_tbPlato_valueChanged(double value)

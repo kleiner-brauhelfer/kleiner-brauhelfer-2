@@ -581,6 +581,7 @@ void TabRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
 {
     ui->buttonAdd->setEnabled(index != 4);
     ui->buttonNeuVorlage->setEnabled(index != 4);
+    ui->buttonNeuVorlageObrama->setEnabled(index != 4);
     ui->buttonCopy->setEnabled(index != 4);
     ui->buttonDelete->setEnabled(index != 4);
     updateLabelNumItems();
@@ -680,7 +681,11 @@ void TabRohstoffe::updateWasser()
         ui->tbCarbonathaerte->setValue(dataWasser(ModelWasser::ColCarbonathaerte).toDouble());
     ui->tbCalciumhaerte->setValue(dataWasser(ModelWasser::ColCalciumhaerte).toDouble());
     ui->tbMagnesiumhaerte->setValue(dataWasser(ModelWasser::ColMagnesiumhaerte).toDouble());
+    if (!ui->tbRestalkalitaetAdd->hasFocus())
+        ui->tbRestalkalitaetAdd->setValue(dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble());
     ui->tbRestalkalitaet->setValue(dataWasser(ModelWasser::ColRestalkalitaet).toDouble());
+    if (!ui->tbBemerkung->hasFocus())
+        ui->tbBemerkung->setText(dataWasser(ModelWasser::ColBemerkung).toString());
 }
 
 void TabRohstoffe::on_tbCalciumMg_valueChanged(double value)
@@ -717,4 +722,16 @@ void TabRohstoffe::on_tbCarbonathaerte_valueChanged(double value)
 {
     if (ui->tbCarbonathaerte->hasFocus())
         setDataWasser(ModelWasser::ColCarbonathaerte, value);
+}
+
+void TabRohstoffe::on_tbRestalkalitaetAdd_valueChanged(double value)
+{
+    if (ui->tbRestalkalitaetAdd->hasFocus())
+        setDataWasser(ModelWasser::ColRestalkalitaetAdd, value);
+}
+
+void TabRohstoffe::on_tbBemerkung_textChanged()
+{
+    if (ui->tbBemerkung->hasFocus())
+        setDataWasser(ModelWasser::ColBemerkung, ui->tbBemerkung->toPlainText());
 }

@@ -1121,6 +1121,12 @@ bool Database::update()
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
 
+            // Wasser
+            //  - neue Spalte 'RestalkalitaetAdd'
+            //  - neue Spalte 'Bemerkung'
+            sqlExec(db, "ALTER TABLE Wasser ADD COLUMN RestalkalitaetAdd REAL DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Wasser ADD COLUMN Bemerkung TEXT");
+
             // Ausruestung
             //  - neue Spalte 'Bemerkung'
             //  - Spalte unbenannt 'Verdampfungsziffer' -> 'Verdampfungsrate'

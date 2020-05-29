@@ -50,6 +50,8 @@ private slots:
     void on_tbMagnesiumMmol_valueChanged(double value);
     void on_tbSaeurekapazitaet_valueChanged(double value);
     void on_tbCarbonathaerte_valueChanged(double value);
+    void on_tbRestalkalitaetAdd_valueChanged(double arg1);
+    void on_tbBemerkung_textChanged();
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

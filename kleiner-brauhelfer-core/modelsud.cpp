@@ -415,11 +415,15 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColPhMaische:
     {
+        double phRa = 0;
         double phMalz = data(idx.row(), ColPhMalz).toDouble();
-        double ra = data(idx.row(), ColRestalkalitaetSoll).toDouble();
-        double V = data(idx.row(), Colerg_WHauptguss).toDouble();
-        double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
-        double phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+        if (phMalz > 0)
+        {
+            double ra = data(idx.row(), ColRestalkalitaetSoll).toDouble();
+            double V = data(idx.row(), Colerg_WHauptguss).toDouble();
+            double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+            phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+        }
         return phMalz + phRa;
     }
     case ColAnlageVerdampfungsrate:

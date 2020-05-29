@@ -42,7 +42,8 @@ QVariant ModelWasser::dataExt(const QModelIndex &idx) const
         double carbh = data(idx.row(), ColCarbonathaerte).toDouble();
         double calch = data(idx.row(), ColCalciumhaerte).toDouble();
         double magh = data(idx.row(), ColMagnesiumhaerte).toDouble();
-        return carbh - (calch + 0.5 * magh) / 3.5;
+        double add = data(idx.row(), ColRestalkalitaetAdd).toDouble();
+        return carbh - (calch + 0.5 * magh) / 3.5 + add;
     }
     default:
         return QVariant();

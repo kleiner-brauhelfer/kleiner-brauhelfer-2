@@ -111,13 +111,13 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(malzGaben_dataChanged()));
+            this, SLOT(updateMalzGaben()));
 
     connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(hopfenGaben_modified()));
     connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(hopfenGaben_dataChanged()));
+            this, SLOT(updateHopfenGaben()));
 
     connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
     connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(hefeGaben_modified()));
@@ -395,6 +395,7 @@ void TabRezept::updateValues()
         ui->lblBittere->setText(tr("moderat herb"));
     else
         ui->lblBittere->setText(tr("sehr herb"));
+    ui->tbPh->setError(ui->tbPh->value() > 0 && (ui->tbPh->value() < 5.2 || ui->tbPh->value() > 5.8));
     ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
@@ -663,12 +664,6 @@ void TabRezept::malzGaben_modified()
     updateMalzGaben();
 }
 
-void TabRezept::malzGaben_dataChanged()
-{
-    updateMalzGaben();
-    updateMalzDiagram();
-}
-
 void TabRezept::updateMalzGaben()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
@@ -750,12 +745,6 @@ void TabRezept::hopfenGaben_modified()
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
         static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget())->updateValues();
     updateHopfenGaben();
-}
-
-void TabRezept::hopfenGaben_dataChanged()
-{
-    updateHopfenGaben();
-    updateHopfenDiagram();
 }
 
 void TabRezept::updateHopfenDiagram()

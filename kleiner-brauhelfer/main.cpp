@@ -10,7 +10,9 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QSslSocket>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
 #include <QOperatingSystemVersion>
+#endif
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -293,6 +295,7 @@ static void copyResources()
 
 static void checkOs()
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
     if (gSettings->isNewProgramVersion())
     {
         if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
@@ -302,6 +305,7 @@ static void checkOs()
                                  QObject::tr("Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung)."));
         }
     }
+  #endif
 }
 
 static void checkSSL()

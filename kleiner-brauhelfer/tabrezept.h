@@ -31,13 +31,13 @@ private slots:
     void on_btnRastenUebernehmen_clicked();
 
     void malzGaben_modified();
-    void malzGaben_dataChanged();
+    void updateMalzGaben();
     void updateMalzDiagram();
     void on_btnNeueMalzGabe_clicked();
     void on_btnMalzGabenUebernehmen_clicked();
 
     void hopfenGaben_modified();
-    void hopfenGaben_dataChanged();
+    void updateHopfenGaben();
     void updateHopfenDiagram();
     void on_btnNeueHopfenGabe_clicked();
     void on_btnHopfenGabenUebernehmen_clicked();
@@ -75,8 +75,6 @@ private:
     void updateGlas();
     void updateAnlageModel();
     void updateWasserModel();
-    void updateMalzGaben();
-    void updateHopfenGaben();
 
 private:
     Ui::TabRezept *ui;

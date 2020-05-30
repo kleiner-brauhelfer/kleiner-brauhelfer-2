@@ -7,7 +7,9 @@
 #include <QCoreApplication>
 #include <QFile>
 #include <QFileInfo>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
 #include <QOperatingSystemVersion>
+#endif
 #include "helper/mustache.h"
 
 WebPage::WebPage(QObject* parent) :
@@ -39,9 +41,11 @@ WebView::WebView(QWidget* parent) :
     QWebEngineView(parent)
 {
     mIsSupported = true;
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
     if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
         QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
         mIsSupported = false;
+  #endif
     setContextMenuPolicy(Qt::NoContextMenu);
     setPage(new WebPage());
 }

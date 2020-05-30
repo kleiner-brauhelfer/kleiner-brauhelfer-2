@@ -8,10 +8,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgMalzGabe::WdgMalzGabe(int index, QWidget *parent) :
-    QWidget(parent),
+WdgMalzGabe::WdgMalzGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(bh->sud()->modelMalzschuettung(), row, parentLayout, parent),
     ui(new Ui::WdgMalzGabe),
-    mIndex(index),
     mEnabled(true)
 {
     ui->setupUi(this);
@@ -40,16 +39,6 @@ bool WdgMalzGabe::isEnabled() const
 bool WdgMalzGabe::isValid() const
 {
     return mValid;
-}
-
-QVariant WdgMalzGabe::data(int col) const
-{
-    return bh->sud()->modelMalzschuettung()->data(mIndex, col);
-}
-
-bool WdgMalzGabe::setData(int col, const QVariant &value)
-{
-    return bh->sud()->modelMalzschuettung()->setData(mIndex, col, value);
 }
 
 void WdgMalzGabe::checkEnabled(bool force)
@@ -124,7 +113,7 @@ void WdgMalzGabe::updateValues(bool full)
             ui->lblWarnung->setVisible(false);
         }
 
-        if (mIndex == 0 && bh->sud()->modelMalzschuettung()->rowCount() == 1)
+        if (mRow == 0 && bh->sud()->modelMalzschuettung()->rowCount() == 1)
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProzent->setReadOnly(true);
@@ -138,8 +127,8 @@ void WdgMalzGabe::updateValues(bool full)
         }
     }
 
-    ui->btnNachOben->setEnabled(mIndex > 0);
-    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelMalzschuettung()->rowCount() - 1);
+    ui->btnNachOben->setEnabled(mRow > 0);
+    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelMalzschuettung()->rowCount() - 1);
 }
 
 void WdgMalzGabe::on_btnZutat_clicked()
@@ -160,11 +149,6 @@ void WdgMalzGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
         setData(ModelMalzschuettung::Colerg_Menge, value);
-}
-
-int WdgMalzGabe::row() const
-{
-    return mIndex;
 }
 
 QString WdgMalzGabe::name() const
@@ -200,11 +184,6 @@ void WdgMalzGabe::setFehlProzent(double value)
     }
 }
 
-void WdgMalzGabe::remove()
-{
-    bh->sud()->modelMalzschuettung()->removeRow(mIndex);
-}
-
 void WdgMalzGabe::on_btnKorrektur_clicked()
 {
     setFocus();
@@ -224,10 +203,10 @@ void WdgMalzGabe::on_btnAufbrauchen_clicked()
 
 void WdgMalzGabe::on_btnNachOben_clicked()
 {
-    bh->sud()->modelMalzschuettung()->swap(mIndex, mIndex - 1);
+    moveUp();
 }
 
 void WdgMalzGabe::on_btnNachUnten_clicked()
 {
-    bh->sud()->modelMalzschuettung()->swap(mIndex, mIndex + 1);
+    moveDown();
 }

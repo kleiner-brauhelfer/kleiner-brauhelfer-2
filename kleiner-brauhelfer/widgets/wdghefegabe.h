@@ -1,27 +1,23 @@
 #ifndef WDGHEFEGABE_H
 #define WDGHEFEGABE_H
 
-#include <QWidget>
+#include "wdgabstractproxy.h"
 
 namespace Ui {
 class WdgHefeGabe;
 }
 
-class WdgHefeGabe : public QWidget
+class WdgHefeGabe : public WdgAbstractProxy
 {
     Q_OBJECT
 
 public:
-    explicit WdgHefeGabe(int index, QWidget *parent = nullptr);
+    explicit WdgHefeGabe(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgHefeGabe();
     bool isEnabled() const;
     bool isValid() const;
-    QVariant data(int col) const;
-    bool setData(int col, const QVariant &value);
-    int row() const;
     QString name() const;
     int menge() const;
-    void remove();
 
 public slots:
     void updateValues(bool full = false);
@@ -42,7 +38,6 @@ private:
 
 private:
     Ui::WdgHefeGabe *ui;
-    int mIndex;
     bool mEnabled;
     bool mValid;
 };

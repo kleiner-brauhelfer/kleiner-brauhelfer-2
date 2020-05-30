@@ -96,6 +96,7 @@ SOURCES += \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
+    widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbewertung.cpp \
     widgets/wdgdiagramview.cpp \
@@ -168,6 +169,7 @@ HEADERS += \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/timeedit.h \
+    widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbewertung.h \
     widgets/wdgdiagramview.h \

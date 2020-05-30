@@ -6,10 +6,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgRast::WdgRast(int index, QWidget *parent) :
-	QWidget(parent),
+WdgRast::WdgRast(int row, const QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(bh->sud()->modelRasten(), row, parentLayout, parent),
     ui(new Ui::WdgRast),
-    mIndex(index),
     mEnabled(true)
 {
     ui->setupUi(this);
@@ -30,21 +29,6 @@ WdgRast::~WdgRast()
 bool WdgRast::isEnabled() const
 {
     return mEnabled;
-}
-
-QVariant WdgRast::data(int col) const
-{
-    return bh->sud()->modelRasten()->data(mIndex, col);
-}
-
-bool WdgRast::setData(int col, const QVariant &value)
-{
-    return bh->sud()->modelRasten()->setData(mIndex, col, value);
-}
-
-int WdgRast::row() const
-{
-    return mIndex;
 }
 
 QString WdgRast::name() const
@@ -255,15 +239,15 @@ void WdgRast::updateValues(bool full)
         ui->tbTempDekoktion->setValue(data(ModelRasten::ColTemp).toDouble());
     if (!ui->tbDauerDekoktion->hasFocus())
         ui->tbDauerDekoktion->setValue(data(ModelRasten::ColDauer).toInt());
-    ui->btnNachOben->setEnabled(mIndex > 0);
-    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelRasten()->rowCount() - 1);
+    ui->btnNachOben->setEnabled(mRow > 0);
+    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelRasten()->rowCount() - 1);
 
-    if (mIndex == 0 && typ != Brauhelfer::RastTyp::Einmaischen)
+    if (mRow == 0 && typ != Brauhelfer::RastTyp::Einmaischen)
     {
         ui->lblWarnung->setText(tr("Der erste Schritt sollte \"Einmaischen\" sein."));
         ui->lblWarnung->setVisible(true);
     }
-    else if (mIndex > 0 && typ == Brauhelfer::RastTyp::Einmaischen)
+    else if (mRow > 0 && typ == Brauhelfer::RastTyp::Einmaischen)
     {
         ui->lblWarnung->setText(tr("Nur der erste Schritt sollte \"Einmaischen\" sein."));
         ui->lblWarnung->setVisible(true);
@@ -272,11 +256,6 @@ void WdgRast::updateValues(bool full)
     {
         ui->lblWarnung->setVisible(false);
     }
-}
-
-void WdgRast::remove()
-{
-    bh->sud()->modelRasten()->removeRow(mIndex);
 }
 
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
@@ -421,14 +400,14 @@ void WdgRast::on_btnLoeschen_clicked()
     remove();
 }
 
-void WdgRast::on_btnNachUnten_clicked()
+void WdgRast::on_btnNachOben_clicked()
 {
-    if (bh->sud()->modelRasten()->swap(mIndex, mIndex + 1))
+    if (moveUp())
         bh->modelRasten()->update(bh->sud()->id());
 }
 
-void WdgRast::on_btnNachOben_clicked()
+void WdgRast::on_btnNachUnten_clicked()
 {
-    if (bh->sud()->modelRasten()->swap(mIndex, mIndex - 1))
+    if (moveDown())
         bh->modelRasten()->update(bh->sud()->id());
 }

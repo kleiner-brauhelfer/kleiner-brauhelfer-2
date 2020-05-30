@@ -83,6 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
+    ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
     ui->statusBar->showMessage(bh->databasePath());
 
@@ -738,6 +739,11 @@ void MainWindow::on_actionTooltips_triggered(bool checked)
     gSettings->beginGroup("General");
     gSettings->setValue("TooltipsEnabled", checked);
     gSettings->endGroup();
+}
+
+void MainWindow::on_actionAnimationen_triggered(bool checked)
+{
+    gSettings->setAnimationsEnabled(checked);
 }
 
 void MainWindow::on_actionSpende_triggered()

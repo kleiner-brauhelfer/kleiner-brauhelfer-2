@@ -521,7 +521,7 @@ void TabRezept::rasten_modified()
     const int nModel = bh->sud()->modelRasten()->rowCount();
     int nLayout = ui->layoutRasten->count();
     while (nLayout < nModel)
-        ui->layoutRasten->addWidget(new WdgRast(nLayout++));
+        ui->layoutRasten->addWidget(new WdgRast(nLayout++, ui->layoutRasten, this));
     while (ui->layoutRasten->count() != nModel)
         delete ui->layoutRasten->itemAt(ui->layoutRasten->count() - 1)->widget();
     for (int i = 0; i < ui->layoutRasten->count(); ++i)
@@ -656,7 +656,7 @@ void TabRezept::malzGaben_modified()
     const int nModel = bh->sud()->modelMalzschuettung()->rowCount();
     int nLayout = ui->layoutMalzGaben->count();
     while (nLayout < nModel)
-        ui->layoutMalzGaben->addWidget(new WdgMalzGabe(nLayout++));
+        ui->layoutMalzGaben->addWidget(new WdgMalzGabe(nLayout++, ui->layoutMalzGaben, this));
     while (ui->layoutMalzGaben->count() != nModel)
         delete ui->layoutMalzGaben->itemAt(ui->layoutMalzGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
@@ -739,7 +739,7 @@ void TabRezept::hopfenGaben_modified()
     const int nModel = bh->sud()->modelHopfengaben()->rowCount();
     int nLayout = ui->layoutHopfenGaben->count();
     while (nLayout < nModel)
-        ui->layoutHopfenGaben->addWidget(new WdgHopfenGabe(nLayout++));
+        ui->layoutHopfenGaben->addWidget(new WdgHopfenGabe(nLayout++, ui->layoutHopfenGaben, this));
     while (ui->layoutHopfenGaben->count() != nModel)
         delete ui->layoutHopfenGaben->itemAt(ui->layoutHopfenGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
@@ -832,7 +832,7 @@ void TabRezept::hefeGaben_modified()
     const int nModel = bh->sud()->modelHefegaben()->rowCount();
     int nLayout = ui->layoutHefeGaben->count();
     while (nLayout < nModel)
-        ui->layoutHefeGaben->addWidget(new WdgHefeGabe(nLayout++));
+        ui->layoutHefeGaben->addWidget(new WdgHefeGabe(nLayout++, ui->layoutHefeGaben, this));
     while (ui->layoutHefeGaben->count() != nModel)
         delete ui->layoutHefeGaben->itemAt(ui->layoutHefeGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
@@ -885,7 +885,7 @@ void TabRezept::weitereZutatenGaben_modified()
     const int nModel = bh->sud()->modelWeitereZutatenGaben()->rowCount();
     int nLayout = ui->layoutWeitereZutatenGaben->count();
     while (nLayout < nModel)
-        ui->layoutWeitereZutatenGaben->addWidget(new WdgWeitereZutatGabe(nLayout++));
+        ui->layoutWeitereZutatenGaben->addWidget(new WdgWeitereZutatGabe(nLayout++, ui->layoutWeitereZutatenGaben, this));
     while (ui->layoutWeitereZutatenGaben->count() != nModel)
         delete ui->layoutWeitereZutatenGaben->itemAt(ui->layoutWeitereZutatenGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutWeitereZutatenGaben->count(); ++i)

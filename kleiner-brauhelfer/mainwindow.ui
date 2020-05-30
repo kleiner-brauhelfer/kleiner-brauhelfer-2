@@ -226,6 +226,7 @@
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionTooltips"/>
+    <addaction name="actionAnimationen"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
@@ -471,6 +472,17 @@
    </property>
    <property name="text">
     <string>Brauübersicht</string>
+   </property>
+  </action>
+  <action name="actionAnimationen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Animationen</string>
    </property>
   </action>
  </widget>

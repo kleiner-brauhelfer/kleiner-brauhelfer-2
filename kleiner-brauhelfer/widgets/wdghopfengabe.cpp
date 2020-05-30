@@ -9,10 +9,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgHopfenGabe::WdgHopfenGabe(int index, QWidget *parent) :
-    QWidget(parent),
+WdgHopfenGabe::WdgHopfenGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(bh->sud()->modelHopfengaben(), row, parentLayout, parent),
     ui(new Ui::WdgHopfenGabe),
-    mIndex(index),
     mEnabled(true)
 {
     ui->setupUi(this);
@@ -45,16 +44,6 @@ bool WdgHopfenGabe::isEnabled() const
 bool WdgHopfenGabe::isValid() const
 {
     return mValid;
-}
-
-QVariant WdgHopfenGabe::data(int col) const
-{
-    return bh->sud()->modelHopfengaben()->data(mIndex, col);
-}
-
-bool WdgHopfenGabe::setData(int col, const QVariant &value)
-{
-    return bh->sud()->modelHopfengaben()->setData(mIndex, col, value);
 }
 
 void WdgHopfenGabe::checkEnabled(bool force)
@@ -187,7 +176,7 @@ void WdgHopfenGabe::updateValues(bool full)
             break;
         }
 
-        if (mIndex == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1 && berechnungsArtHopfen != Brauhelfer::BerechnungsartHopfen::Keine)
+        if (mRow == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1 && berechnungsArtHopfen != Brauhelfer::BerechnungsartHopfen::Keine)
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProLiter->setReadOnly(true);
@@ -205,8 +194,8 @@ void WdgHopfenGabe::updateValues(bool full)
         }
     }
 
-    ui->btnNachOben->setEnabled(mIndex > 0);
-    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelHopfengaben()->rowCount() - 1);
+    ui->btnNachOben->setEnabled(mRow > 0);
+    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelHopfengaben()->rowCount() - 1);
 }
 
 void WdgHopfenGabe::on_btnZutat_clicked()
@@ -227,11 +216,6 @@ void WdgHopfenGabe::on_tbAnteilProzent_valueChanged(double value)
 {
     if (ui->tbAnteilProzent->hasFocus())
         setData(ModelHopfengaben::ColProzent, value);
-}
-
-int WdgHopfenGabe::row() const
-{
-    return mIndex;
 }
 
 QString WdgHopfenGabe::name() const
@@ -279,11 +263,6 @@ void WdgHopfenGabe::setFehlProzent(double value)
         ui->btnAnteilKorrektur->setVisible(false);
         ui->btnMengeKorrektur->setVisible(false);
     }
-}
-
-void WdgHopfenGabe::remove()
-{
-    bh->sud()->modelHopfengaben()->removeRow(mIndex);
 }
 
 void WdgHopfenGabe::on_btnMengeKorrektur_clicked()
@@ -351,10 +330,10 @@ void WdgHopfenGabe::on_btnAufbrauchen_clicked()
 
 void WdgHopfenGabe::on_btnNachOben_clicked()
 {
-    bh->sud()->modelHopfengaben()->swap(mIndex, mIndex - 1);
+    moveUp();
 }
 
 void WdgHopfenGabe::on_btnNachUnten_clicked()
 {
-    bh->sud()->modelHopfengaben()->swap(mIndex, mIndex + 1);
+    moveDown();
 }

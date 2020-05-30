@@ -1,25 +1,21 @@
 #ifndef WDGRAST_H
 #define WDGRAST_H
 
-#include <QWidget>
+#include "wdgabstractproxy.h"
 
 namespace Ui {
 class WdgRast;
 }
 
-class WdgRast : public QWidget
+class WdgRast : public WdgAbstractProxy
 {
     Q_OBJECT
 
 public:
-    explicit WdgRast(int index, QWidget *parent = nullptr);
+    explicit WdgRast(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgRast();
     bool isEnabled() const;
-    int row() const;
     QString name() const;
-    QVariant data(int col) const;
-    bool setData(int col, const QVariant &value);
-    void remove();
 
 public slots:
     void updateListe();
@@ -58,7 +54,6 @@ private:
 
 private:
     Ui::WdgRast *ui;
-    int mIndex;
     bool mEnabled;
 };
 

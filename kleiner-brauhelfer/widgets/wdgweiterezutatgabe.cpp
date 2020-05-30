@@ -11,10 +11,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgWeitereZutatGabe::WdgWeitereZutatGabe(int index, QWidget *parent) :
-    QWidget(parent),
+WdgWeitereZutatGabe::WdgWeitereZutatGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(bh->sud()->modelWeitereZutatenGaben(), row, parentLayout, parent),
     ui(new Ui::WdgWeitereZutatGabe),
-    mIndex(index),
     mEnabled(true)
 {
     ui->setupUi(this);
@@ -42,21 +41,6 @@ bool WdgWeitereZutatGabe::isEnabled() const
 bool WdgWeitereZutatGabe::isValid() const
 {
     return mValid;
-}
-
-QVariant WdgWeitereZutatGabe::data(int col) const
-{
-    return bh->sud()->modelWeitereZutatenGaben()->data(mIndex, col);
-}
-
-bool WdgWeitereZutatGabe::setData(int col, const QVariant &value)
-{
-    return bh->sud()->modelWeitereZutatenGaben()->setData(mIndex, col, value);
-}
-
-int WdgWeitereZutatGabe::row() const
-{
-    return mIndex;
 }
 
 QString WdgWeitereZutatGabe::name() const
@@ -361,8 +345,8 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::Zugegeben && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     ui->cbZugabezeitpunkt->setEnabled(status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled);
 
-    ui->btnNachOben->setEnabled(mIndex > 0);
-    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelWeitereZutatenGaben()->rowCount() - 1);
+    ui->btnNachOben->setEnabled(mRow > 0);
+    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelWeitereZutatenGaben()->rowCount() - 1);
 }
 
 void WdgWeitereZutatGabe::on_btnZutat_clicked()
@@ -382,11 +366,6 @@ void WdgWeitereZutatGabe::on_btnZutat_clicked()
         if (dlg.exec() == QDialog::Accepted)
             setData(ModelWeitereZutatenGaben::ColName, dlg.name());
     }
-}
-
-void WdgWeitereZutatGabe::remove()
-{
-    bh->sud()->modelWeitereZutatenGaben()->removeRow(mIndex);
 }
 
 void WdgWeitereZutatGabe::on_tbMenge_valueChanged(double value)
@@ -535,10 +514,10 @@ void WdgWeitereZutatGabe::on_btnAufbrauchen_clicked()
 
 void WdgWeitereZutatGabe::on_btnNachOben_clicked()
 {
-    bh->sud()->modelWeitereZutatenGaben()->swap(mIndex, mIndex - 1);
+    moveUp();
 }
 
 void WdgWeitereZutatGabe::on_btnNachUnten_clicked()
 {
-    bh->sud()->modelWeitereZutatenGaben()->swap(mIndex, mIndex + 1);
+    moveDown();
 }

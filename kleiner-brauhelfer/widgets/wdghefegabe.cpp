@@ -12,10 +12,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
-    QWidget(parent),
+WdgHefeGabe::WdgHefeGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(bh->sud()->modelHefegaben(), row, parentLayout, parent),
     ui(new Ui::WdgHefeGabe),
-    mIndex(index),
     mEnabled(true)
 {
     ui->setupUi(this);
@@ -42,21 +41,6 @@ bool WdgHefeGabe::isEnabled() const
 bool WdgHefeGabe::isValid() const
 {
     return mValid;
-}
-
-QVariant WdgHefeGabe::data(int col) const
-{
-    return bh->sud()->modelHefegaben()->data(mIndex, col);
-}
-
-bool WdgHefeGabe::setData(int col, const QVariant &value)
-{
-    return bh->sud()->modelHefegaben()->setData(mIndex, col, value);
-}
-
-int WdgHefeGabe::row() const
-{
-    return mIndex;
 }
 
 QString WdgHefeGabe::name() const
@@ -163,8 +147,8 @@ void WdgHefeGabe::updateValues(bool full)
         ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 
-    ui->btnNachOben->setEnabled(mIndex > 0);
-    ui->btnNachUnten->setEnabled(mIndex < bh->sud()->modelHefegaben()->rowCount() - 1);
+    ui->btnNachOben->setEnabled(mRow > 0);
+    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelHefegaben()->rowCount() - 1);
 }
 
 void WdgHefeGabe::on_btnZutat_clicked()
@@ -173,11 +157,6 @@ void WdgHefeGabe::on_btnZutat_clicked()
     dlg.select(name());
     if (dlg.exec() == QDialog::Accepted)
         setData(ModelHefegaben::ColName, dlg.name());
-}
-
-void WdgHefeGabe::remove()
-{
-    bh->sud()->modelHefegaben()->removeRow(mIndex);
 }
 
 void WdgHefeGabe::on_tbMenge_valueChanged(int value)
@@ -221,10 +200,10 @@ void WdgHefeGabe::on_btnAufbrauchen_clicked()
 
 void WdgHefeGabe::on_btnNachOben_clicked()
 {
-    bh->sud()->modelHefegaben()->swap(mIndex, mIndex - 1);
+    moveUp();
 }
 
 void WdgHefeGabe::on_btnNachUnten_clicked()
 {
-    bh->sud()->modelHefegaben()->swap(mIndex, mIndex + 1);
+    moveDown();
 }

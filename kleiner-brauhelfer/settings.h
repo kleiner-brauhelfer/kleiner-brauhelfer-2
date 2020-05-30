@@ -33,6 +33,9 @@ public:
     void setUseSystemFont(bool system);
     void setFont(const QFont &font);
 
+    bool animationsEnabled();
+    void setAnimationsEnabled(bool enabled);
+
     QString settingsDir() const;
 
     QString databasePath();

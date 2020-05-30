@@ -257,6 +257,21 @@ void Settings::setFont(const QFont &font)
     this->font = font;
 }
 
+bool Settings::animationsEnabled()
+{
+    beginGroup("General");
+    int enabled = value("Animations", true).toBool();
+    endGroup();
+    return enabled;
+}
+
+void Settings::setAnimationsEnabled(bool enabled)
+{
+    beginGroup("General");
+    setValue("Animations", enabled);
+    endGroup();
+}
+
 QString Settings::settingsDir() const
 {
     return QFileInfo(fileName()).absolutePath() + "/";

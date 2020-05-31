@@ -127,22 +127,22 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             break;
         case Brauhelfer::Einheit::g:
             ui->lblEinheitProLiter->setText(tr("g/l"));
-            ui->tbMenge->setDecimals(1);
-            ui->tbMengeTotal->setDecimals(1);
-            ui->tbVorhanden->setDecimals(1);
+            ui->tbMenge->setDecimals(2);
+            ui->tbMengeTotal->setDecimals(2);
+            ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
         case Brauhelfer::Einheit::mg:
             ui->lblEinheitProLiter->setText(tr("mg/l"));
-            ui->tbMenge->setDecimals(1);
-            ui->tbMengeTotal->setDecimals(0);
-            ui->tbVorhanden->setDecimals(0);
+            ui->tbMenge->setDecimals(2);
+            ui->tbMengeTotal->setDecimals(2);
+            ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000);
             break;
         case Brauhelfer::Einheit::Stk:
             ui->lblEinheitProLiter->setText(tr("Stk./l"));
-            ui->tbMenge->setDecimals(1);
-            ui->tbMengeTotal->setDecimals(1);
+            ui->tbMenge->setDecimals(2);
+            ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(0);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
@@ -155,9 +155,9 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             break;
         case Brauhelfer::Einheit::ml:
             ui->lblEinheitProLiter->setText(tr("ml/l"));
-            ui->tbMenge->setDecimals(1);
-            ui->tbMengeTotal->setDecimals(0);
-            ui->tbVorhanden->setDecimals(0);
+            ui->tbMenge->setDecimals(2);
+            ui->tbMengeTotal->setDecimals(2);
+            ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
             break;
         }

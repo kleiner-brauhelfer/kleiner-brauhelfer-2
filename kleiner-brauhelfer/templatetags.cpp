@@ -321,19 +321,19 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
                         break;
                     case Brauhelfer::Einheit::g:
-                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
                         break;
                     case Brauhelfer::Einheit::mg:
-                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 1));
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 2));
                         break;
                     case Brauhelfer::Einheit::Stk:
-                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
                         break;
                     case Brauhelfer::Einheit::l:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
                         break;
                     case Brauhelfer::Einheit::ml:
-                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
                         break;
                     }
                     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());

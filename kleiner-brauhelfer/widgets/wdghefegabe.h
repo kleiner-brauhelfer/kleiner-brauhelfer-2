@@ -12,7 +12,7 @@ class WdgHefeGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgHefeGabe(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgHefeGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgHefeGabe();
     bool isEnabled() const;
     bool isValid() const;

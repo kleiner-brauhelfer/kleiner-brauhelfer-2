@@ -18,7 +18,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ### Linux
 - **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
-  - Benötigt zusätzlich Installation von [Qt 5.13.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
+  - Benötigt zusätzlich Installation von [Qt 5.15](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc 64-bit, Qt Charts, Qt WebEngine
   - Benötigt OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
@@ -33,6 +33,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ## Änderungen & Erweiterungen
 
 ### Version 2.2.0 (in Entwicklung)
+- Neu: Offizielle version kompiliert mit Qt 5.15
 - Neu: Datenbankversion **2004**
 - Neu: Neue Spalte "Alternativen" bei Rohstofftabellen
 - Neu: Rohstofftabellen etwas überarbeitet
@@ -45,6 +46,11 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Unterstüzt Dekoktion als Maischverfahren
 - Neu: Malz-, Hopfen-, Hefe-, weitere Zutatengaben und Maischplan lassen sich aus anderes Rezept übernehmen
 - Neu: pH-Wert der Maische kann berechnet werden
+- Neu: Sude lassen sich in Kategorien einteilen
+- Neu: Neue Eingabefelder im Wasserprofil (Restalkalitätkorrektur und Bemerkung)
+- Neu: Reiter Gäverlauf überarbeitet
+- Neu: Aninmationen (ausschaltbar)
+- Neu: Anlageprofil Brauheld Pro
 
 ### Version 2.1.3 (02.05.2020)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

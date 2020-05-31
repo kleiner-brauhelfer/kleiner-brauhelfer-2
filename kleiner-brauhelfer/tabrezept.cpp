@@ -105,7 +105,8 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(rasten_modified()));
     connect(bh->sud()->modelRasten(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(rasten_modified()));
     connect(bh->sud()->modelRasten(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(modified()), this, SLOT(updateRastenDiagram()));
+    connect(bh->sud()->modelRasten(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateRastenDiagram()));
 
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(malzGaben_modified()));
     connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(malzGaben_modified()));

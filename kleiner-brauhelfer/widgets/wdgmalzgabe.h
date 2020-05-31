@@ -12,7 +12,7 @@ class WdgMalzGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgMalzGabe(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgMalzGabe();
     bool isEnabled() const;
     bool isValid() const;

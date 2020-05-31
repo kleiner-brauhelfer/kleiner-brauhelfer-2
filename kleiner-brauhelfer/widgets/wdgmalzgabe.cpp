@@ -8,7 +8,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgMalzGabe::WdgMalzGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelMalzschuettung(), row, parentLayout, parent),
     ui(new Ui::WdgMalzGabe),
     mEnabled(true)

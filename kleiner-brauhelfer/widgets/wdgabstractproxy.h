@@ -10,7 +10,7 @@ class WdgAbstractProxy : public QWidget
     Q_OBJECT
 
 public:
-    explicit WdgAbstractProxy(ProxyModel* model, int row, const QLayout* parentLayout = nullptr, QWidget *parent = nullptr);
+    explicit WdgAbstractProxy(ProxyModel* model, int row, QLayout* parentLayout = nullptr, QWidget *parent = nullptr);
 
     int row() const;
     QVariant data(int col) const;
@@ -24,7 +24,7 @@ public slots:
 protected:
     ProxyModel* mModel;
     const int mRow;
-    const QLayout* mParentLayout;
+    QLayout* mParentLayout;
 };
 
 #endif // WDGABSTRACTPROXY_H

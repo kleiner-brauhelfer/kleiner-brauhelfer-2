@@ -12,7 +12,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgHefeGabe::WdgHefeGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelHefegaben(), row, parentLayout, parent),
     ui(new Ui::WdgHefeGabe),
     mEnabled(true)

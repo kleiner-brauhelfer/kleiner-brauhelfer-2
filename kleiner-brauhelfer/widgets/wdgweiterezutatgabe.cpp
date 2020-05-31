@@ -11,7 +11,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgWeitereZutatGabe::WdgWeitereZutatGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+WdgWeitereZutatGabe::WdgWeitereZutatGabe(int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelWeitereZutatenGaben(), row, parentLayout, parent),
     ui(new Ui::WdgWeitereZutatGabe),
     mEnabled(true)

@@ -7,7 +7,7 @@
 
 extern Settings* gSettings;
 
-WdgAbstractProxy::WdgAbstractProxy(ProxyModel* model, int row, const QLayout* parentLayout, QWidget *parent) :
+WdgAbstractProxy::WdgAbstractProxy(ProxyModel* model, int row, QLayout *parentLayout, QWidget *parent) :
     QWidget(parent),
     mModel(model),
     mRow(row),
@@ -73,6 +73,7 @@ bool WdgAbstractProxy::moveUp()
         connect(animation, SIGNAL(finished()), &loop, SLOT(quit()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
         loop.exec();
+        mParentLayout->update();
     }
 
     return mModel->swap(mRow, mRow - 1);
@@ -100,6 +101,7 @@ bool WdgAbstractProxy::moveDown()
         connect(animation, SIGNAL(finished()), &loop, SLOT(quit()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
         loop.exec();
+        mParentLayout->update();
     }
 
     return mModel->swap(mRow, mRow + 1);

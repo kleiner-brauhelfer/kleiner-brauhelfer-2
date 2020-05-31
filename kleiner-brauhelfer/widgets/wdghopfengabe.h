@@ -12,7 +12,7 @@ class WdgHopfenGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgHopfenGabe(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgHopfenGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgHopfenGabe();
     bool isEnabled() const;
     bool isValid() const;

@@ -12,7 +12,7 @@ class WdgRast : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgRast(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgRast(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgRast();
     bool isEnabled() const;
     QString name() const;

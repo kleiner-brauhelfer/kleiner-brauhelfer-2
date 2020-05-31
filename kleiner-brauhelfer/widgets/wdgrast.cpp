@@ -6,7 +6,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgRast::WdgRast(int row, const QLayout* parentLayout, QWidget *parent) :
+WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelRasten(), row, parentLayout, parent),
     ui(new Ui::WdgRast),
     mEnabled(true)

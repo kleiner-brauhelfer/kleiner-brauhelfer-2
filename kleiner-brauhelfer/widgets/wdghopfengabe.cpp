@@ -9,7 +9,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgHopfenGabe::WdgHopfenGabe(int row, const QLayout* parentLayout, QWidget *parent) :
+WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelHopfengaben(), row, parentLayout, parent),
     ui(new Ui::WdgHopfenGabe),
     mEnabled(true)

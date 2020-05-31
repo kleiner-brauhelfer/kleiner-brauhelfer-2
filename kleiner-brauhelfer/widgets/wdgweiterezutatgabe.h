@@ -12,7 +12,7 @@ class WdgWeitereZutatGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgWeitereZutatGabe(int row, const QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgWeitereZutatGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgWeitereZutatGabe();
     bool isEnabled() const;
     bool isValid() const;

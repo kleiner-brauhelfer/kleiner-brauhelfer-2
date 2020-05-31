@@ -28,8 +28,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>943</width>
-         <height>925</height>
+         <width>947</width>
+         <height>1017</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -112,6 +112,12 @@
            </item>
            <item row="0" column="2">
             <widget class="TimeEdit" name="tbBraudatumZeit">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärungsphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -135,6 +141,12 @@
            </item>
            <item row="0" column="1">
             <widget class="DateEdit" name="tbBraudatum">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärungsphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -193,12 +205,6 @@
            </item>
            <item row="6" column="7">
             <widget class="QLabel" name="label_169">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>cm</string>
              </property>
@@ -206,12 +212,6 @@
            </item>
            <item row="3" column="2">
             <widget class="QLabel" name="label_114">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -241,7 +241,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginn">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -267,12 +267,6 @@
            </item>
            <item row="4" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollKochbeginn100">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitegehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -298,12 +292,6 @@
            </item>
            <item row="5" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollcmVonOben">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -329,12 +317,6 @@
            </item>
            <item row="4" column="7">
             <widget class="QLabel" name="label_166">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -342,12 +324,6 @@
            </item>
            <item row="3" column="7">
             <widget class="QLabel" name="label_181">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -362,12 +338,6 @@
            </item>
            <item row="3" column="1">
             <widget class="DoubleSpinBoxSud" name="tbWuerzemengeKochbeginn">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -387,12 +357,6 @@
            </item>
            <item row="6" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollcmVomBoden">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -418,12 +382,6 @@
            </item>
            <item row="3" column="6">
             <widget class="DoubleSpinBoxSud" name="tbMengeSollKochbeginn20">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitegehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -474,12 +432,6 @@
              </item>
              <item>
               <widget class="DoubleSpinBox" name="tbTempKochbeginn">
-               <property name="minimumSize">
-                <size>
-                 <width>60</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;p&gt;Das  größte Volumen wird bei 100°C erreicht. Es empfiehlt sich etwas Abstand zur Oberkante des Kessels, da Hopfen bis zum Würzebruch stark schäumen kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -505,12 +457,6 @@
              </item>
              <item>
               <widget class="QLabel" name="label_51">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="text">
                 <string>°C</string>
                </property>
@@ -522,7 +468,7 @@
             <widget class="QLabel" name="label_167">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -533,12 +479,6 @@
            </item>
            <item row="5" column="7">
             <widget class="QLabel" name="label_168">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>cm</string>
              </property>
@@ -614,12 +554,6 @@
               </item>
               <item>
                <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnMitWzBrix">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; gemessen mit den &lt;span style=&quot; font-weight:600;&quot;&gt;weiteren Zutaten&lt;/span&gt;, welche beim Kochen zugegeben werden&lt;span style=&quot; font-weight:600;&quot;/&gt;angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
@@ -642,12 +576,6 @@
               </item>
               <item>
                <widget class="QLabel" name="label_178">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="text">
                  <string>°Brix</string>
                 </property>
@@ -657,7 +585,7 @@
                <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnMitWz">
                 <property name="minimumSize">
                  <size>
-                  <width>50</width>
+                  <width>100</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -685,7 +613,7 @@
                <widget class="QLabel" name="label_173">
                 <property name="minimumSize">
                  <size>
-                  <width>30</width>
+                  <width>40</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -725,7 +653,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSWKochbeginn">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -769,7 +697,7 @@
             <widget class="QLabel" name="label_37">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -805,12 +733,6 @@
              </item>
              <item>
               <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnBrix">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -833,12 +755,6 @@
              </item>
              <item>
               <widget class="QLabel" name="label_175">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="text">
                 <string>°Brix</string>
                </property>
@@ -901,12 +817,6 @@
            </item>
            <item row="5" column="7">
             <widget class="QLabel" name="label_172">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>cm</string>
              </property>
@@ -914,12 +824,6 @@
            </item>
            <item row="4" column="7">
             <widget class="QLabel" name="label_171">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>cm</string>
              </property>
@@ -927,12 +831,6 @@
            </item>
            <item row="12" column="2">
             <widget class="QLabel" name="label_34">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -952,7 +850,7 @@
             <widget class="QLabel" name="label_159">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -963,12 +861,6 @@
            </item>
            <item row="12" column="1">
             <widget class="DoubleSpinBoxSud" name="tbWuerzemengeKochende">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach dem Hopfenseihen&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -988,12 +880,6 @@
            </item>
            <item row="4" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollEndecmVonOben">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1019,12 +905,6 @@
            </item>
            <item row="2" column="2">
             <widget class="QLabel" name="label_14">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -1032,12 +912,6 @@
            </item>
            <item row="8" column="6">
             <widget class="DoubleSpinBoxSud" name="tbVerdampfungRezept">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="font">
               <font>
                <italic>false</italic>
@@ -1068,12 +942,6 @@
            </item>
            <item row="2" column="6">
             <widget class="DoubleSpinBoxSud" name="tbMengeSollKochende20">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete temperaturabhängige &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge&lt;/span&gt; nach Abkühlen des Sudes auf &lt;span style=&quot; font-weight:600;&quot;&gt;20°C&lt;/span&gt; und vor dem Anstellen mit Hefe angegeben.&lt;/p&gt;&lt;p&gt;Abhängig von Faktoren, beispielsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zugaben,Verdünng&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Verlust beim Abfüllen&lt;/span&gt;, entspricht dieser Wert nicht der der im Rezept angestrebten Biermenge, ist aber ein guter Indikator, ob diese Menge erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1101,7 +969,7 @@
             <widget class="QLabel" name="label_16">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -1136,7 +1004,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSWKochende">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -1163,12 +1031,6 @@
            </item>
            <item row="9" column="6">
             <widget class="DoubleSpinBoxSud" name="tbAusbeute">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. &lt;/p&gt;&lt;p&gt;Der Faktor beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Effizienz&lt;/span&gt; der Brauanlage sowie die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; der verwendeten Rohstoffe.&lt;/p&gt;&lt;p&gt;Im Hobbymaßstab wird ein Faktor von 70% angestrebt, liegt aber tatsächlich oft darunter. Im Profibereich sind 80% Zielgröße.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1191,12 +1053,6 @@
            </item>
            <item row="2" column="7">
             <widget class="QLabel" name="label_164">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -1214,12 +1070,6 @@
            </item>
            <item row="7" column="6">
             <widget class="DoubleSpinBoxSud" name="tbVerdampfung">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; pro Stunde des Sudes aus.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1254,7 +1104,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSWSollKochende">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -1297,12 +1147,6 @@
            </item>
            <item row="2" column="1">
             <widget class="DoubleSpinBoxSud" name="tbWuerzemengeVorHopfenseihen">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1322,12 +1166,6 @@
            </item>
            <item row="3" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollKochende100">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld zeigt die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge bei 100°C &lt;/span&gt;bei Kochende an.&lt;/p&gt;&lt;p&gt;Grundlage hierfür sind die Rohstoffzutaten und Prozessschritte im Rezept.&lt;/p&gt;&lt;p&gt;Das Volumen ist höher als im abgekühlten Zustand. Über nebenstehendes Eingabefeld kann das unterschiedliche Volumen bei jeder Temperatur angezeigt werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1353,12 +1191,6 @@
            </item>
            <item row="10" column="6">
             <widget class="DoubleSpinBoxSud" name="tbAusbeuteRezept">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="font">
               <font>
                <italic>false</italic>
@@ -1415,12 +1247,6 @@
            </item>
            <item row="9" column="7">
             <widget class="QLabel" name="label_8">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>%</string>
              </property>
@@ -1448,12 +1274,6 @@
            </item>
            <item row="3" column="7">
             <widget class="QLabel" name="label_170">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -1461,12 +1281,6 @@
            </item>
            <item row="5" column="6">
             <widget class="DoubleSpinBox" name="tbMengeSollEndecmVomBoden">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1506,12 +1320,6 @@
            </item>
            <item row="10" column="7">
             <widget class="QLabel" name="label_32">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>%</string>
              </property>
@@ -1529,12 +1337,6 @@
            </item>
            <item row="7" column="7">
             <widget class="QLabel" name="label_160">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l/h</string>
              </property>
@@ -1620,12 +1422,6 @@
              </item>
              <item>
               <widget class="QLabel" name="label_50">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="text">
                 <string>°C</string>
                </property>
@@ -1645,12 +1441,6 @@
            </item>
            <item row="8" column="7">
             <widget class="QLabel" name="label_161">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l/h</string>
              </property>
@@ -1675,12 +1465,6 @@
            </item>
            <item row="12" column="6">
             <widget class="DoubleSpinBoxSud" name="tbHopfenseihenVerlust">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Verlust durch das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenseihen&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1706,12 +1490,6 @@
            </item>
            <item row="12" column="7">
             <widget class="QLabel" name="label_174">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -1775,12 +1553,6 @@
              </item>
              <item>
               <widget class="QLabel" name="label_176">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="text">
                 <string>°Brix</string>
                </property>
@@ -1805,12 +1577,6 @@
            </property>
            <item row="2" column="1">
             <widget class="DoubleSpinBoxSud" name="tbSWAnstellen">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze in °Plato &lt;span style=&quot; font-weight:600;&quot;&gt;beim Anstellen ohne Hefe oder weitere Zutaten&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen ist Grundlage für die Gärungsberechnung im Tag Gärverlauf und gleichzeitig dort immer die erste Messung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1834,12 +1600,6 @@
            </item>
            <item row="9" column="6">
             <widget class="DoubleSpinBoxSud" name="tbAusbeuteEffektiv">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektive Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellen&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er kann im Tab Ausrüstung zur Durchschnittsberechnung herangezogen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1862,12 +1622,6 @@
            </item>
            <item row="5" column="1">
             <widget class="DoubleSpinBoxSud" name="tbSpeisemenge">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte Speisemenge eingetragen.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die nach dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speise ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1887,12 +1641,6 @@
            </item>
            <item row="6" column="2">
             <widget class="QLabel" name="label_48">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -1900,12 +1648,6 @@
            </item>
            <item row="5" column="6">
             <widget class="DoubleSpinBox" name="tbSpeisemengeNoetig">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -1974,12 +1716,6 @@
            </item>
            <item row="6" column="1">
             <widget class="DoubleSpinBoxSud" name="tbWuerzemengeAnstellen">
-             <property name="minimumSize">
-              <size>
-               <width>60</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellmenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Anstellmenge ist die Menge Sud, der vergoren wird. Sie ist die Menge ab &lt;span style=&quot; font-weight:600;&quot;&gt;Gärungsbeginn&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Anstellmenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Würzemenge. Die Speise wird später bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; wieder zugegeben. Dies wird im Tab Abfülldaten erfasst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -2001,7 +1737,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSWAnstellenSoll">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -2036,7 +1772,7 @@
             <widget class="QLabel" name="label_59">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -2047,12 +1783,6 @@
            </item>
            <item row="2" column="2">
             <widget class="QLabel" name="label_46">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>°P</string>
              </property>
@@ -2092,12 +1822,6 @@
              </item>
              <item>
               <widget class="DoubleSpinBoxSud" name="tbSWAnstellenSollBrix">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert enspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekte während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -2120,12 +1844,6 @@
              </item>
              <item>
               <widget class="QLabel" name="label_177">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="text">
                 <string>°Brix</string>
                </property>
@@ -2142,12 +1860,6 @@
            </item>
            <item row="9" column="7">
             <widget class="QLabel" name="label_6">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>%</string>
              </property>
@@ -2168,12 +1880,6 @@
            </item>
            <item row="5" column="7">
             <widget class="QLabel" name="label_26">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -2183,7 +1889,7 @@
             <widget class="DoubleSpinBoxSud" name="tbWuerzemengeAnstellenTotal">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -2208,7 +1914,7 @@
             <widget class="QLabel" name="label_76">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -2280,12 +1986,6 @@
              </item>
              <item>
               <widget class="DoubleSpinBox" name="tbSpeiseSRE">
-               <property name="minimumSize">
-                <size>
-                 <width>40</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erwarteter &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Restextrakt&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -2325,12 +2025,6 @@
              </item>
              <item>
               <widget class="DoubleSpinBox" name="tbSpeiseT">
-               <property name="minimumSize">
-                <size>
-                 <width>40</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -2356,12 +2050,6 @@
              </item>
              <item>
               <widget class="QLabel" name="label_53">
-               <property name="minimumSize">
-                <size>
-                 <width>30</width>
-                 <height>0</height>
-                </size>
-               </property>
                <property name="text">
                 <string>°C</string>
                </property>
@@ -2385,12 +2073,6 @@
            </item>
            <item row="5" column="2">
             <widget class="QLabel" name="label_43">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l</string>
              </property>
@@ -2438,7 +2120,7 @@
                <widget class="DoubleSpinBox" name="tbWasserVerschneidung">
                 <property name="minimumSize">
                  <size>
-                  <width>50</width>
+                  <width>100</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -2469,7 +2151,7 @@
                <widget class="QLabel" name="lblWasserVerschneidungEinheit">
                 <property name="minimumSize">
                  <size>
-                  <width>30</width>
+                  <width>40</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -2652,7 +2334,7 @@
             <widget class="DoubleSpinBoxSud" name="tbKosten">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -2680,7 +2362,7 @@
             <widget class="DoubleSpinBoxSud" name="tbNebenkosten">
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>

@@ -204,8 +204,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>647</width>
-          <height>796</height>
+          <width>654</width>
+          <height>881</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -236,12 +236,6 @@
             </property>
             <item row="5" column="4">
              <widget class="QLabel" name="label_20">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l/h</string>
               </property>
@@ -249,12 +243,6 @@
             </item>
             <item row="4" column="3">
              <widget class="DoubleSpinBox" name="tbVerdampfung">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage eingegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert selbst beschreibt die Verdampfungsmenge pro Stunde beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -274,12 +262,6 @@
             </item>
             <item row="1" column="3">
              <widget class="DoubleSpinBox" name="tbAusbeuteMittel">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten Sudhausausbeuten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -299,12 +281,6 @@
             </item>
             <item row="4" column="4">
              <widget class="QLabel" name="label_2">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l/h</string>
               </property>
@@ -386,12 +362,6 @@
             </item>
             <item row="7" column="3">
              <widget class="SpinBox" name="tbAusbeuteSude">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den nebenstehenden &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -411,12 +381,6 @@
             </item>
             <item row="5" column="3">
              <widget class="DoubleSpinBox" name="tbVerdampfungMittel">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert&lt;/span&gt; der letzten Verdampfungsraten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -446,12 +410,6 @@
             </item>
             <item row="1" column="4">
              <widget class="QLabel" name="label_7">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>%</string>
               </property>
@@ -461,7 +419,7 @@
              <widget class="QLabel" name="label">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -474,7 +432,7 @@
              <widget class="DoubleSpinBox" name="tbAusbeute">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -494,12 +452,6 @@
             </item>
             <item row="7" column="4">
              <widget class="QLabel" name="label_67">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>Sude</string>
               </property>
@@ -593,7 +545,7 @@
              <widget class="DoubleSpinBox" name="tbKorrekturNachguss">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -621,7 +573,7 @@
              <widget class="QLabel" name="label_9">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -639,12 +591,6 @@
             </item>
             <item row="1" column="2">
              <widget class="SpinBox" name="tbKorrekturFarbe">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die Korrektur der durchschnittlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Abweichungen&lt;/span&gt; von den im Rezept festgelegten Farbwerten aller Sude.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Der Farbwert von Bier, genauer: die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbstärke&lt;/span&gt;, wird im europäischen Raum in EBC nach der European Brewery Convention angegeben.&lt;/p&gt;&lt;p&gt;Für die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwertkorrektur&lt;/span&gt; im Kleinen Brauhelfer empfiehlt sich ein farbkorrigierter Bildschirm bei 6.500 Kelvin Tageslicht und einem Gammwert von 1,8. Üblicherweise sind in Europa Monitore aber kontrastreicher kalibriert, was eine eine exakte Übertragung von Bierfarbe im Glas in ein Computerprogramm schwierig macht. Bei Fragen helfen hier Fachforen im Designbereich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -678,12 +624,6 @@
             </item>
             <item row="3" column="2">
              <widget class="DoubleSpinBox" name="tbKosten">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; (Pauschalen) für den Sud einzutragen. Dazu gehören &lt;span style=&quot; font-weight:600;&quot;&gt;Strom&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Gas&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Aber auch Verschleiß- und Abschreibungskosten der Ausstattung können hier anteilig mit einem Satz individuell festgelegt werden.&lt;/p&gt;&lt;p&gt;Die hier angegebenen Kosten gehen in die Gesamtkosten pro Liter automatisch mit ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -713,26 +653,13 @@
             </item>
             <item row="1" column="3">
              <widget class="QLabel" name="label_6">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>EBC</string>
               </property>
              </widget>
             </item>
             <item row="3" column="3">
-             <widget class="QLabel" name="lblCurrency">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
-             </widget>
+             <widget class="QLabel" name="lblCurrency"/>
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_24">
@@ -743,12 +670,6 @@
             </item>
             <item row="2" column="3">
              <widget class="QLabel" name="label_25">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -756,12 +677,6 @@
             </item>
             <item row="2" column="2">
              <widget class="DoubleSpinBox" name="tbKorrekturSollmenge">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Sollmenge&lt;/span&gt; eingetragen werden.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn konstant die gleiche Verlustmenge entsteht und die angepeilte Menge dadurch nicht erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -815,12 +730,6 @@
             </item>
             <item row="3" column="2">
              <widget class="DoubleSpinBox" name="tbMaischenVolumen">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; des Maischekessels an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. So dehnt sich der Sud bei höheren Temperaturen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen der Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -853,12 +762,6 @@
             </item>
             <item row="7" column="3">
              <widget class="QLabel" name="label_8">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>cm</string>
               </property>
@@ -868,7 +771,7 @@
              <widget class="DoubleSpinBox" name="tbMaischebottichDurchmesser">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -911,12 +814,6 @@
             </item>
             <item row="2" column="2">
              <widget class="DoubleSpinBox" name="tbMaischebottichHoehe">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Masiche zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -942,12 +839,6 @@
             </item>
             <item row="2" column="3">
              <widget class="QLabel" name="label_11">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>cm</string>
               </property>
@@ -955,12 +846,6 @@
             </item>
             <item row="8" column="3">
              <widget class="QLabel" name="label_10">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -977,7 +862,7 @@
              <widget class="QLabel" name="label_13">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -988,12 +873,6 @@
             </item>
             <item row="3" column="3">
              <widget class="QLabel" name="label_12">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -1008,12 +887,6 @@
             </item>
             <item row="7" column="2">
              <widget class="DoubleSpinBox" name="tbMaischebottichMaxFuellhoehe">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; plan steht, ist man mit 5 Zentimetern unterhalb der Kesseloberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Werden weniger schäumende Zutaten eingesetzt, können diese 5 Zentimeter auch unterschritten werden. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1039,12 +912,6 @@
             </item>
             <item row="8" column="2">
              <widget class="DoubleSpinBox" name="tbMaischenMaxNutzvolumen">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; des Maischekessels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1104,7 +971,7 @@
              <widget class="QLabel" name="label_5">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -1115,12 +982,6 @@
             </item>
             <item row="3" column="2">
              <widget class="DoubleSpinBox" name="tbSudpfanneVolumen">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. Der Sud dehnt sich bein Kochen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen des Sudes zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1153,12 +1014,6 @@
             </item>
             <item row="2" column="3">
              <widget class="QLabel" name="label_14">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>cm</string>
               </property>
@@ -1173,12 +1028,6 @@
             </item>
             <item row="5" column="2">
              <widget class="DoubleSpinBox" name="tbSudpfanneMaxFuellhoehe">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; plan steht, ist man mit 5 Zentimetern bei 100°C unterhalb der Pfannenoberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Hopfen schäumt beim Würzebruch. Hopfendolden noch mehr. Ausgehend von den individuelen Gegebenheiten sollte man bei der Größe der Sudpfanne anfangs konservativ vorgehen und einen Puffer einrechnen. Dies vermeidet unliebsame Überraschungen. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1218,12 +1067,6 @@
             </item>
             <item row="2" column="2">
              <widget class="DoubleSpinBox" name="tbSudpfanneHoehe">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; der Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1269,12 +1112,6 @@
             </item>
             <item row="5" column="3">
              <widget class="QLabel" name="label_15">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>cm</string>
               </property>
@@ -1282,12 +1119,6 @@
             </item>
             <item row="6" column="3">
              <widget class="QLabel" name="label_17">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -1297,7 +1128,7 @@
              <widget class="DoubleSpinBox" name="tbSudpfanneDurchmesser">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -1326,12 +1157,6 @@
             </item>
             <item row="3" column="3">
              <widget class="QLabel" name="label_16">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -1339,12 +1164,6 @@
             </item>
             <item row="6" column="2">
              <widget class="DoubleSpinBox" name="tbSudpfanneMaxNutzvolumen">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; der Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>454</width>
+    <width>562</width>
     <height>100</height>
    </rect>
   </property>
@@ -47,14 +47,14 @@
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="focusPolicy">
@@ -185,7 +185,7 @@
          <widget class="SpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
-            <width>50</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -208,6 +208,12 @@
         </item>
         <item row="1" column="1">
          <widget class="SpinBox" name="tbTage">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit ist der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt &lt;/span&gt;der zweiten Hefegabe in Tagen ab Braudatum gemeint.&lt;/p&gt;&lt;p&gt;Die Zugabe kann gleichzeitig mit der ersten Hefegabe erfolgen. Gewöhnlich wir die zweite Hefe aber nach Abklingen der ersten Hauptgärung zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -225,6 +231,12 @@
         </item>
         <item row="1" column="3">
          <widget class="DateEdit" name="tbDatum">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum &lt;/span&gt;der zweiten Hefe, abhängig vom Zugabezeitpunkt, angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -258,13 +270,13 @@
           <property name="minimumSize">
            <size>
             <width>30</width>
-            <height>22</height>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>30</width>
-            <height>22</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -279,7 +291,7 @@
          <widget class="QLabel" name="label_3">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -292,7 +304,7 @@
          <widget class="SpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>60</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -315,7 +327,7 @@
          <widget class="SpinBox" name="tbMengeEmpfohlen">
           <property name="minimumSize">
            <size>
-            <width>60</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -342,14 +354,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

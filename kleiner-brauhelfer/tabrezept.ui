@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>417</width>
-         <height>694</height>
+         <width>392</width>
+         <height>735</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -50,12 +50,6 @@
            </property>
            <item row="5" column="3">
             <widget class="QLabel" name="label_20">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>°P</string>
              </property>
@@ -63,12 +57,6 @@
            </item>
            <item row="21" column="3">
             <widget class="QLabel" name="label_25">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>Wochen</string>
              </property>
@@ -76,12 +64,6 @@
            </item>
            <item row="16" column="2">
             <widget class="DoubleSpinBoxSud" name="tbCO2">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der erwünschte &lt;span style=&quot; font-weight:600;&quot;&gt;CO₂-Gehalt&lt;/span&gt; definiert&lt;/p&gt;&lt;p&gt;Kohlendioxid im Bier garantiert das prickelnde Geschmackserlebnis, auch Rezens genannt. Ziel ist es, das CO₂ gut im Bier einzubinden.&lt;/p&gt;&lt;p&gt;Um Kohlendioxid ins Bier einzutragen sind Verfahren wie das Karbonisieren mit Speise oder Zucker, das Grünschlauchen oder der Ausbau im Fass (Spunden) gebräuchlich. Der Kohlensäuregehalt schwankt je nach Biertyp und ist Teil eines jeden Bierstils.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte&lt;/span&gt; für einzelne Bierstile sind: &lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Lager, Pilsner &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;4,00 - 5,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizenbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;6,50 - 9,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Britische Ales &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,00 - 4,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Porter Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,40 - 4,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Belgische Ales &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,80 - 4,80&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Lambic &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;4,80 - 5,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Frucht-Lambic &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;6,00 - 9,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -118,12 +100,6 @@
            </item>
            <item row="11" column="2">
             <widget class="SpinBoxSud" name="tbKochzeit">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 90 Minuten&lt;/span&gt;. Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -137,12 +113,6 @@
            </item>
            <item row="12" column="3">
             <widget class="QLabel" name="label_52">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>l/h</string>
              </property>
@@ -185,12 +155,6 @@
            </item>
            <item row="16" column="3">
             <widget class="QLabel" name="label_21">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>g/l</string>
              </property>
@@ -205,12 +169,6 @@
            </item>
            <item row="10" column="3">
             <widget class="QLabel" name="label_22">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>IBU</string>
              </property>
@@ -218,12 +176,6 @@
            </item>
            <item row="15" column="2">
             <widget class="DoubleSpinBoxSud" name="tbVergaerungsgrad">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativer Karakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -267,12 +219,6 @@
            </item>
            <item row="13" column="2">
             <widget class="SpinBoxSud" name="tbNachisomerisierungszeit">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Nachisomerisierungszeit&lt;/span&gt; versteht sich geläufig die Zeitspanne zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;100°C und 80°C&lt;/span&gt;, in der Hopfen nach dem Hopfenkochen in der Heißwürze noch nahezu Kochtemperatur ausgesetzt ist und auf 80°C abkühlt. Dabei gibt der Hopfen noch einmal &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt; und Aroma ab. Bei &lt;span style=&quot; font-weight:600;&quot;&gt;80°C&lt;/span&gt; endet die Bitterung und Hopfen gibt nur noch &lt;span style=&quot; font-weight:600;&quot;&gt;Aromastoffe&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Im Reiter Hopfen werden Gaben in dieser Temperaturspanne durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; erfasst, Gaben bis oder unterhalb 80°C durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Nachisomerisierungszeit wird zur Kochdauer addiert. Sie wird hier als Nachisomerisierungszeit positiv angegeben, im Reiter Hopfen rechts bei gewähltem Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt; dagegen &lt;span style=&quot; font-weight:600;&quot;&gt;negativ&lt;/span&gt;. Beispiel: -&lt;span style=&quot; font-weight:600;&quot;&gt;5min&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Bei unter 80°C findet keine Nachisomerisierung mehr statt. Hobbybrauer nutzen diese Temperaturstufe für den gezielten &lt;span style=&quot; font-weight:600;&quot;&gt;Aromaeintrag&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Zeitspanne der Nachisomerisierung ist abhänigig von den &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlmöglichkeiten&lt;/span&gt;. Sie reicht vom Abkühlen &lt;span style=&quot; font-weight:600;&quot;&gt;über Nacht &lt;/span&gt;für lange bis zu kurzen Ausschlagszeiten wie -5 min mit einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlschlange&lt;/span&gt; oder einem &lt;span style=&quot; font-weight:600;&quot;&gt;Plattenkühler&lt;/span&gt;. Längere Zeiten wie -20min und mehr können ohne Hilfsmittel umgesetzt werden.&lt;/p&gt;&lt;p&gt;Manche Brauer wählen bewusst eine etwas längere Nachisomerisierungzeit, um bestimmte Nuancen eines Hopfens, eines Gewürzes oder einer anderen Zutat herauszuarbeiten. Einen guten Eindruck davon vermitteln Rezeptdatenbanken, Fachbücher und Fachforen.&lt;/p&gt;&lt;p&gt;Verschiedentlich wird die Nachisomerisierungszeit auch &lt;span style=&quot; font-weight:600;&quot;&gt;Flame-Out&lt;/span&gt; genannt, ungenau oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Whirlpool&lt;/span&gt;, da dieser Prozessschritt ein Trubabscheidungsverfahren nach dem Kochen beschreibt, der oft mit der Nachisomerisierung zusammenfällt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -286,12 +232,6 @@
            </item>
            <item row="19" column="2">
             <widget class="DoubleSpinBoxSud" name="tbRestalkalitaet">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gewünschte Restalkalität (RA) eingestellt. Sie ist mithin ein Faktor für den richtigen pH-Wert beim Maischen. Ein hoher Wert erhöht den pH-Wert der Maische und mindert die Enymaktivität des Malzes und umgekehrt. Allgemein verlangen helle und hopfenaromatische Biere einen Wert kleiner als 5dH. Dunkle Biere beinhalten säurefördernde dunkle Malze . Hier sind bis zu 10dH ein Richtwert&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte:&lt;/span&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bock hell&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 2dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Alt &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 5dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-2 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; (RA) des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maischearbeit und somit für die Effizienz der Stärkespaltung, somit der Frage, ob das Bier mit der Schüttung gelingt. Zugleich ist der pH-Wert beim Maischen Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H+-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H+-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO3- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -314,12 +254,6 @@
            </item>
            <item row="8" column="2">
             <widget class="SpinBoxSud" name="tbHGF">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beim Brauen mit &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity&lt;/span&gt; wird die Würzemenge beim Kochen reduziert, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.&lt;/p&gt;&lt;p&gt;Die Methode eignet sich im Rahmen des Möglichen für zu kleine, limitierte Anlagen, um Sude mit hoher Stammwürze zu brauen, bei denen die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; sonst zu gering wäre. Im Fachsprech werden solche Sude Platobomben genannt. &lt;/p&gt;&lt;p&gt;Das High-Gravity-Verfahren ist für eine größere Ausschlagmenge als üblich geeignet. Da das später hinzugegebene Wasser ab einem gewissen Grad nachteilig auf den Geschmack wirkt, ist High Gravity auf 50% beschränkt. Viele Hobbybrauer nutzen den Bereich bei weitem nicht aus, arbeiten zwischen 10% und 20%.&lt;/p&gt;&lt;p&gt;Bei Detailfragen hilft die Fachliteratur oder das Forum der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -333,12 +267,6 @@
            </item>
            <item row="15" column="3">
             <widget class="QLabel" name="label_54">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>%</string>
              </property>
@@ -346,12 +274,6 @@
            </item>
            <item row="0" column="2">
             <widget class="SpinBoxSud" name="tbSudnummer">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -368,12 +290,6 @@
            </item>
            <item row="19" column="3">
             <widget class="QLabel" name="label_27">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>°dH</string>
              </property>
@@ -381,12 +297,6 @@
            </item>
            <item row="12" column="2">
             <widget class="DoubleSpinBoxSud" name="tbVerdampfungsrate">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Rate erwartet, kann der Wert hier verändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -450,12 +360,6 @@
            </item>
            <item row="11" column="3">
             <widget class="QLabel" name="label_36">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>min</string>
              </property>
@@ -509,7 +413,7 @@
             <widget class="DoubleSpinBoxSud" name="tbMenge">
              <property name="minimumSize">
               <size>
-               <width>70</width>
+               <width>100</width>
                <height>0</height>
               </size>
              </property>
@@ -532,12 +436,6 @@
            </item>
            <item row="6" column="2">
             <widget class="DoubleSpinBoxSud" name="tbSudhausausbeute">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert  hier verändert werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -561,12 +459,6 @@
            </item>
            <item row="10" column="2">
             <widget class="SpinBoxSud" name="tbBittere">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der angepeilte Bittereintrag beim Hopfenkochen des Sudes festgelegt. Fachsprachlich nennt sich der Eintrag &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt;, angegeben mit der Maßeinheit &lt;span style=&quot; font-weight:600;&quot;&gt;International Bitterness Units (IBU)&lt;/span&gt;.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Bittere in IBU sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weißbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;8 - 15&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Märzen &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 28&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;28 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pils &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 45&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;40 - 70&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IIPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;60 - 120&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Neutrales Geschmacksempfinden bei IBU = 2°P Stammwürze&lt;/p&gt;&lt;p&gt;Das Festlegen der richtigen Bittere und damit der passende Hopfen, die passende Hopfenkombination, Zeit und Temperatur ist eines der kreativsten Betätigungsfelder beim Bierbrauen, gehört aber auch mithin zu den größten Herausforderungen. Um ein Gefühl für die richtige Bittere zu bekommen, empfiehlt sich eine gründliche Rezeptrecherche, das Studium von Fachliteratur und nicht zuletzt die Sektionen für Hopfen und Rezepte in den Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -617,12 +509,6 @@
            </item>
            <item row="13" column="3">
             <widget class="QLabel" name="label_38">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>min</string>
              </property>
@@ -672,12 +558,6 @@
               </item>
               <item>
                <widget class="DoubleSpinBoxSud" name="tbFaktorHauptgussEmpfehlung">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
@@ -708,7 +588,7 @@
                <widget class="DoubleSpinBoxSud" name="tbFaktorHauptguss">
                 <property name="minimumSize">
                  <size>
-                  <width>70</width>
+                  <width>100</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -744,12 +624,6 @@
            </item>
            <item row="5" column="2">
             <widget class="DoubleSpinBoxSud" name="tbSW">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die angepeilte Stammwürze eingestellt. Der Wert ist von vielen Faktoren abhängig, beispielsweise der Anlage, aber auch Zeit und Zutaten. In manchen Fällen kann es hilfreich sein, zusätzlich ein Mischkreuz zur Berechnung einzusetzen, um die angepeilte Stammwürze zu erreichen.&lt;/p&gt;&lt;p&gt;Das Erreichen der Stammwürze stellt vor allem für Brauanfänger eine Herausforderung da. Bei Fragen hilft die Fachliteratur oder das Fachforum der Wahl.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Stammwürze in °Plato sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bockbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;16 – 17&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Doppelbock &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;18 – 19&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Exportbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;12 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;10 – 11&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 14&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;13 – 18&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -769,12 +643,6 @@
            </item>
            <item row="8" column="3">
             <widget class="QLabel" name="label_26">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>%</string>
              </property>
@@ -789,12 +657,6 @@
            </item>
            <item row="21" column="2">
             <widget class="SpinBoxSud" name="tbReifezeit">
-             <property name="minimumSize">
-              <size>
-               <width>70</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; oder falls nichts eingetragen ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -812,12 +674,6 @@
            </item>
            <item row="6" column="3">
             <widget class="QLabel" name="label_49">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
              <property name="text">
               <string>%</string>
              </property>
@@ -1001,7 +857,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>375</width>
+                 <width>352</width>
                  <height>102</height>
                 </rect>
                </property>
@@ -1116,8 +972,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>270</width>
-              <height>363</height>
+              <width>237</width>
+              <height>364</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1263,8 +1119,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>270</width>
-              <height>104</height>
+              <width>237</width>
+              <height>103</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1360,8 +1216,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>270</width>
-              <height>363</height>
+              <width>237</width>
+              <height>364</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1453,8 +1309,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>270</width>
-             <height>564</height>
+             <width>237</width>
+             <height>566</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1558,8 +1414,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>270</width>
-              <height>113</height>
+              <width>237</width>
+              <height>114</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1653,8 +1509,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>326</width>
-          <height>949</height>
+          <width>377</width>
+          <height>1073</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1702,12 +1558,6 @@
             </item>
             <item row="13" column="2">
              <widget class="DoubleSpinBox" name="tbRestextrakt">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Weitere Zutaten bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. Zeitpunkt und Menge wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. &lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1729,14 +1579,14 @@
              <widget class="QGraphicsView" name="gvGlas">
               <property name="minimumSize">
                <size>
-                <width>80</width>
-                <height>80</height>
+                <width>100</width>
+                <height>100</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>80</width>
-                <height>80</height>
+                <width>100</width>
+                <height>100</height>
                </size>
               </property>
               <property name="toolTip">
@@ -1759,12 +1609,6 @@
             </item>
             <item row="2" column="3">
              <widget class="QLabel" name="label_23">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>kg</string>
               </property>
@@ -1781,7 +1625,7 @@
              <widget class="QLabel" name="label_24">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -1792,12 +1636,6 @@
             </item>
             <item row="16" column="2">
              <widget class="DoubleSpinBoxSud" name="tbKosten">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>Kosten.</string>
               </property>
@@ -1820,12 +1658,6 @@
             </item>
             <item row="14" column="2">
              <widget class="DoubleSpinBoxSud" name="tbAlkohol">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Weitere Zutaten bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. Zeitpunkt und Menge wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. &lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -1859,26 +1691,13 @@
             </item>
             <item row="14" column="3">
              <widget class="QLabel" name="label_65">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>%vol</string>
               </property>
              </widget>
             </item>
             <item row="16" column="3">
-             <widget class="QLabel" name="lblCurrency">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
-             </widget>
+             <widget class="QLabel" name="lblCurrency"/>
             </item>
             <item row="8" column="0" colspan="4">
              <widget class="QWidget" name="wdgSWWZGaerung" native="true">
@@ -1916,7 +1735,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWWZGaerung">
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
+                   <width>100</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -1941,7 +1760,7 @@
                 <widget class="QLabel" name="label_61">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
+                   <width>40</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -1972,12 +1791,6 @@
             </item>
             <item row="2" column="2">
              <widget class="DoubleSpinBoxSud" name="tbGesamtschuettung">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür einzig die Daten aus der Sektion &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; im Tab Rohstoffe. Zusätze wie Zucker werden hier nicht berücksicht. Der Grund ist, dass nur Malz und Rohfrucht als Zutaten mit enzymatischer Aktivität den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; während des Maischens beeinflussen.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2034,7 +1847,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWWZKochen">
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
+                   <width>100</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2059,7 +1872,7 @@
                 <widget class="QLabel" name="label_59">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
+                   <width>40</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2080,12 +1893,6 @@
             </item>
             <item row="13" column="3">
              <widget class="QLabel" name="label_64">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>°P</string>
               </property>
@@ -2095,7 +1902,7 @@
              <widget class="SpinBoxSud" name="tbFarbe">
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -2152,7 +1959,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWWZMaischen">
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
+                   <width>100</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2177,7 +1984,7 @@
                 <widget class="QLabel" name="label_57">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
+                   <width>40</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2232,7 +2039,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWMalz">
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
+                   <width>100</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2257,7 +2064,7 @@
                 <widget class="QLabel" name="label_51">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
+                   <width>40</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2291,12 +2098,6 @@
             </item>
             <item row="11" column="2">
              <widget class="DoubleSpinBoxSud" name="tbPh">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;pH-Wert der Maische. Für den Maischprozess günstiger Bereich: 5.3 - 5.7. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2348,12 +2149,6 @@
             </item>
             <item row="4" column="4">
              <widget class="QLabel" name="label_35">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l/h</string>
               </property>
@@ -2370,7 +2165,7 @@
              <widget class="DoubleSpinBox" name="tbAnlageSudhausausbeute">
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -2405,7 +2200,7 @@
              <widget class="QLabel" name="label_29">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -2423,12 +2218,6 @@
             </item>
             <item row="6" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVolumenMaische">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben sind hierfür Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2451,12 +2240,6 @@
             </item>
             <item row="9" column="4">
              <widget class="QLabel" name="label_31">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -2471,12 +2254,6 @@
             </item>
             <item row="7" column="3">
              <widget class="DoubleSpinBox" name="tbVolumenMaische">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2499,12 +2276,6 @@
             </item>
             <item row="4" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVerdampfung">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2527,12 +2298,6 @@
             </item>
             <item row="9" column="3">
              <widget class="DoubleSpinBox" name="tbVolumenKochen">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2565,12 +2330,6 @@
             </item>
             <item row="6" column="4">
              <widget class="QLabel" name="label_44">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -2604,12 +2363,6 @@
             </item>
             <item row="7" column="4">
              <widget class="QLabel" name="label_30">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -2617,12 +2370,6 @@
             </item>
             <item row="8" column="4">
              <widget class="QLabel" name="label_45">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -2633,12 +2380,6 @@
             </item>
             <item row="8" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVolumenKochen">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben sind hierfür Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2701,7 +2442,7 @@
                 <widget class="DoubleSpinBox" name="tbAnlageKorrekturSollmenge">
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
+                   <width>100</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2729,7 +2470,7 @@
                 <widget class="QLabel" name="label_67">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
+                   <width>40</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2763,7 +2504,7 @@
              <widget class="DoubleSpinBox" name="tbRestalkalitaetWasser">
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>100</width>
                 <height>0</height>
                </size>
               </property>
@@ -2792,12 +2533,6 @@
             </item>
             <item row="7" column="2">
              <widget class="DoubleSpinBox" name="tbMilchsaeureHG">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Milchsäure&lt;/span&gt; für den Hauptguss errechnet, um die gewünschte Restalkalität zu erreichen.&lt;/p&gt;&lt;p&gt;Vorrang hat jedoch immer der pH-Wert, um eine optimale Enzymarbeit im richtigen pH-Bereich zwischen pH 5,3 und pH 5,8 zu gewährleisten.&lt;/p&gt;&lt;p&gt;Um eine Geschmacksbeeiträchtigung auszuschließen, sollte der Milchsäureanteil nicht über 400 ppm liegen. Da Malz selbst Milchsäure einträgt, wird an vielen Seiten maximal 100 ppm Milchsäure empfohlen, um auf der sicheren Seite zu sein. Ist trotzdem eine höhere Säuregabe nötig, empfehlen sich zusätzlich andere Säuren oder Salze. Die Fachliteratur und die Fachforen sind eine gute Quelle für weitere Informationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2824,12 +2559,6 @@
             </item>
             <item row="11" column="3">
              <widget class="QLabel" name="lblMilchsaeureHGFEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>ml</string>
               </property>
@@ -2847,12 +2576,6 @@
             </item>
             <item row="4" column="3">
              <widget class="QLabel" name="label_28">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -2860,12 +2583,6 @@
             </item>
             <item row="11" column="2">
              <widget class="DoubleSpinBox" name="tbMilchsaeureHGF">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Milchsäure&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnung&lt;/span&gt; des Hauptgusses.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2901,12 +2618,6 @@
             </item>
             <item row="10" column="2">
              <widget class="DoubleSpinBox" name="tbWasserHGF">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den Hauptguss anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2936,12 +2647,6 @@
             </item>
             <item row="6" column="2">
              <widget class="DoubleSpinBoxSud" name="tbHauptguss">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2974,12 +2679,6 @@
             </item>
             <item row="9" column="3">
              <widget class="QLabel" name="lblMilchsaeureNGEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>ml</string>
               </property>
@@ -2987,12 +2686,6 @@
             </item>
             <item row="7" column="3">
              <widget class="QLabel" name="lblMilchsaeureHGEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>ml</string>
               </property>
@@ -3000,12 +2693,6 @@
             </item>
             <item row="8" column="3">
              <widget class="QLabel" name="label_33">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -3044,12 +2731,6 @@
             </item>
             <item row="4" column="2">
              <widget class="DoubleSpinBox" name="tbWasserGesamt">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -3072,12 +2753,6 @@
             </item>
             <item row="5" column="2">
              <widget class="DoubleSpinBox" name="tbMilchsaeureGesamt">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Milchsäure&lt;/span&gt; für den gesamten Sud errechnet, um die gewünschte Restalkalität zu erreichen.&lt;/p&gt;&lt;p&gt;Vorrang hat jedoch immer der pH-Wert, um eine optimale Enzymarbeit im richtigen pH-Bereich zwischen pH 5,3 und pH 5,7 zu gewährleisten.&lt;/p&gt;&lt;p&gt;Um eine Geschmacksbeeiträchtigung auszuschließen, sollte der Milchsäureanteil nicht über 400 ppm liegen. Da Malz selbst Milchsäure einträgt, wird an vielen Seiten maximal 100 ppm Milchsäure empfohlen, um auf der sicheren Seite zu sein. Ist trotzdem eine höhere Säuregabe nötig, empfehlen sich zusätzlich andere Säuren oder Salze. Die Fachliteratur und die Fachforen sind eine gute Quelle für weitere Informationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -3097,12 +2772,6 @@
             </item>
             <item row="10" column="3">
              <widget class="QLabel" name="lblWasserHGFEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -3110,12 +2779,6 @@
             </item>
             <item row="6" column="3">
              <widget class="QLabel" name="label_32">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>l</string>
               </property>
@@ -3133,12 +2796,6 @@
             </item>
             <item row="9" column="2">
              <widget class="DoubleSpinBox" name="tbMilchsaeureNG">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Milchsäure&lt;/span&gt; für den Nachguss errechnet, um die gewünschte Restalkalität im gesamten Sud zu erreichen.&lt;/p&gt;&lt;p&gt;Die Säuregabe im Nachguss ist immer geringer als beim Hauptguss.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -3160,7 +2817,7 @@
              <widget class="QLabel" name="label_42">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -3171,12 +2828,6 @@
             </item>
             <item row="8" column="2">
              <widget class="DoubleSpinBoxSud" name="tbNachguss">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -3199,12 +2850,6 @@
             </item>
             <item row="5" column="3">
              <widget class="QLabel" name="lblMilchsaeureGesamtEinheit">
-              <property name="minimumSize">
-               <size>
-                <width>30</width>
-                <height>0</height>
-               </size>
-              </property>
               <property name="text">
                <string>ml</string>
               </property>

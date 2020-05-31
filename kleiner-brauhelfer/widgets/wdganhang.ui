@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>293</width>
+    <width>377</width>
     <height>70</height>
    </rect>
   </property>
@@ -96,13 +96,13 @@
        <widget class="QPushButton" name="pushButton_Browse">
         <property name="minimumSize">
          <size>
-          <width>50</width>
+          <width>30</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>50</width>
+          <width>30</width>
           <height>16777215</height>
          </size>
         </property>

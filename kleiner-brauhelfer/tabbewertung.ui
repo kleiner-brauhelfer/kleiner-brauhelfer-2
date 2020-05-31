@@ -37,8 +37,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>158</width>
-            <height>604</height>
+            <width>163</width>
+            <height>605</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -113,6 +113,12 @@
           </item>
           <item>
            <widget class="DateEdit" name="tbDatum">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann das &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertungsdatum&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Das Datum einer einmal angelegten Bewertung kann nicht mehr geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>

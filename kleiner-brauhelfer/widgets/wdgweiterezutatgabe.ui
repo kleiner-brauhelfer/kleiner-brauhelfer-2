@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>485</width>
-    <height>212</height>
+    <width>612</width>
+    <height>188</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -47,14 +47,14 @@
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="focusPolicy">
@@ -169,7 +169,7 @@
          <widget class="DoubleSpinBox" name="tbMengeTotal">
           <property name="minimumSize">
            <size>
-            <width>50</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -197,7 +197,7 @@
          <widget class="QLabel" name="lblEinheit">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -210,7 +210,7 @@
          <widget class="DoubleSpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>60</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -238,7 +238,7 @@
          <widget class="QLabel" name="lblEinheitProLiter">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -265,13 +265,13 @@
           <property name="minimumSize">
            <size>
             <width>30</width>
-            <height>22</height>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>30</width>
-            <height>22</height>
+            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -293,7 +293,7 @@
          <widget class="DoubleSpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
-            <width>50</width>
+            <width>100</width>
             <height>0</height>
            </size>
           </property>
@@ -321,7 +321,7 @@
          <widget class="QLabel" name="lblEinheit2">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -421,7 +421,7 @@
              <widget class="SpinBox" name="tbDauerMin">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>80</width>
                 <height>0</height>
                </size>
               </property>
@@ -440,7 +440,7 @@
              <widget class="QLabel" name="label_5">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
@@ -497,7 +497,7 @@
           <widget class="SpinBox" name="tbDauerTage">
            <property name="minimumSize">
             <size>
-             <width>60</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -513,7 +513,7 @@
           <widget class="SpinBox" name="tbZugabeNach">
            <property name="minimumSize">
             <size>
-             <width>60</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -527,6 +527,12 @@
          </item>
          <item row="0" column="3">
           <widget class="DateEdit" name="tbDatumVon">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier definiert der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum&lt;/span&gt; der Zugabe, abhängig vom gewählten Zugabezeitpunkt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -539,7 +545,7 @@
           <widget class="QLabel" name="lblDauerTage">
            <property name="minimumSize">
             <size>
-             <width>30</width>
+             <width>40</width>
              <height>0</height>
             </size>
            </property>
@@ -552,7 +558,7 @@
           <widget class="QLabel" name="label_7">
            <property name="minimumSize">
             <size>
-             <width>30</width>
+             <width>40</width>
              <height>0</height>
             </size>
            </property>
@@ -576,6 +582,12 @@
          </item>
          <item row="1" column="3">
           <widget class="DateEdit" name="tbDatumBis">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier definiert der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahmedatum&lt;/span&gt; der Zugabe, abhängig vom gewählten Entnahmezeitpunkt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -644,14 +656,14 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

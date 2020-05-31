@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>200</height>
+    <width>461</width>
+    <height>228</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -42,18 +42,6 @@
    </item>
    <item row="5" column="3">
     <widget class="QLabel" name="label_22">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>Liter</string>
      </property>
@@ -68,18 +56,6 @@
    </item>
    <item row="1" column="3">
     <widget class="QLabel" name="label_VonUntenEinheit">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>cm</string>
      </property>
@@ -94,12 +70,6 @@
    </item>
    <item row="5" column="2">
     <widget class="DoubleSpinBox" name="spinBox_Liter20Grad">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Umgerechnete Würzemenge bei 20°C.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -131,18 +101,6 @@
    </item>
    <item row="2" column="3">
     <widget class="QLabel" name="label_20">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>°C</string>
      </property>
@@ -150,12 +108,6 @@
    </item>
    <item row="2" column="2">
     <widget class="SpinBox" name="spinBox_Temperatur">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Aktuelle Temperatur der Würze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -187,14 +139,8 @@
     <widget class="QLabel" name="label_VonObenEinheit">
      <property name="minimumSize">
       <size>
-       <width>50</width>
+       <width>40</width>
        <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
       </size>
      </property>
      <property name="text">
@@ -211,18 +157,6 @@
    </item>
    <item row="3" column="3">
     <widget class="QLabel" name="label_18">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>Liter</string>
      </property>
@@ -244,12 +178,6 @@
    </item>
    <item row="3" column="2">
     <widget class="DoubleSpinBox" name="spinBox_Liter">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Direkte Eingabe der Würzemenge bei aktueller Temperatur.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -273,24 +201,11 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="0" column="2">
     <widget class="DoubleSpinBox" name="spinBox_VonOben">
      <property name="minimumSize">
       <size>
-       <width>60</width>
+       <width>100</width>
        <height>0</height>
       </size>
      </property>
@@ -313,12 +228,6 @@
    </item>
    <item row="1" column="2">
     <widget class="DoubleSpinBox" name="spinBox_VonUnten">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eingabe der Würzemenge über die Füllhöhe vom Boden bis zur Würzeoberfläche bei aktueller Temperatur.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -335,6 +244,19 @@
       <double>0.100000000000000</double>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

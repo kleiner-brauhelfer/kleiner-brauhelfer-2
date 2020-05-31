@@ -51,6 +51,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Reiter Gäverlauf überarbeitet
 - Neu: Aninmationen (ausschaltbar)
 - Neu: Anlageprofil Brauheld Pro
+- Neu: Wasserprofil Eingabemöglichkeit für Sulfat, Chlorid und Natrium
 
 ### Version 2.1.3 (02.05.2020)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

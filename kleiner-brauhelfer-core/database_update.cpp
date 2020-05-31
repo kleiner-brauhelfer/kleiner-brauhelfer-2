@@ -1122,10 +1122,36 @@ bool Database::update()
             sqlExec(db, "DROP TABLE TempTable");
 
             // Wasser
+            //  - Spalte unbenannt 'Saeurekapazitaet' -> 'Hydrogencarbonat'
+            //  - neue Spalte 'Sulfat'
+            //  - neue Spalte 'Chlorid'
+            //  - neue Spalte 'Natrium'
             //  - neue Spalte 'RestalkalitaetAdd'
             //  - neue Spalte 'Bemerkung'
-            sqlExec(db, "ALTER TABLE Wasser ADD COLUMN RestalkalitaetAdd REAL DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Wasser ADD COLUMN Bemerkung TEXT");
+            sqlExec(db, "ALTER TABLE Wasser RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Wasser ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Hydrogencarbonat REAL DEFAULT 0,"
+                "Calcium REAL DEFAULT 0,"
+                "Magnesium REAL DEFAULT 0,"
+                "Sulfat REAL DEFAULT 0,"
+                "Chlorid REAL DEFAULT 0,"
+                "Natrium REAL DEFAULT 0,"
+                "RestalkalitaetAdd REAL DEFAULT 0,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Wasser ("
+                "Name,"
+                "Hydrogencarbonat,"
+                "Calcium,"
+                "Magnesium"
+                ") SELECT "
+                "Name,"
+                "Saeurekapazitaet * 61.02,"
+                "Calcium,"
+                "Magnesium"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Ausruestung
             //  - neue Spalte 'Bemerkung'

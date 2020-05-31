@@ -671,16 +671,32 @@ void TabRohstoffe::updateWasser()
         ui->tbCalciumMg->setValue(dataWasser(ModelWasser::ColCalcium).toDouble());
     if (!ui->tbCalciumMmol->hasFocus())
         ui->tbCalciumMmol->setValue(dataWasser(ModelWasser::ColCalciumMmol).toDouble());
+    if (!ui->tbCalciumHaerte->hasFocus())
+        ui->tbCalciumHaerte->setValue(dataWasser(ModelWasser::ColCalciumHaerte).toDouble());
     if (!ui->tbMagnesiumMg->hasFocus())
         ui->tbMagnesiumMg->setValue(dataWasser(ModelWasser::ColMagnesium).toDouble());
     if (!ui->tbMagnesiumMmol->hasFocus())
         ui->tbMagnesiumMmol->setValue(dataWasser(ModelWasser::ColMagnesiumMmol).toDouble());
-    if (!ui->tbSaeurekapazitaet->hasFocus())
-        ui->tbSaeurekapazitaet->setValue(dataWasser(ModelWasser::ColSaeurekapazitaet).toDouble());
-    if (!ui->tbCarbonathaerte->hasFocus())
-        ui->tbCarbonathaerte->setValue(dataWasser(ModelWasser::ColCarbonathaerte).toDouble());
-    ui->tbCalciumhaerte->setValue(dataWasser(ModelWasser::ColCalciumhaerte).toDouble());
-    ui->tbMagnesiumhaerte->setValue(dataWasser(ModelWasser::ColMagnesiumhaerte).toDouble());
+    if (!ui->tbMagnesiumHaerte->hasFocus())
+        ui->tbMagnesiumHaerte->setValue(dataWasser(ModelWasser::ColMagnesiumHaerte).toDouble());
+    if (!ui->tbHydrogencarbonatMg->hasFocus())
+        ui->tbHydrogencarbonatMg->setValue(dataWasser(ModelWasser::ColHydrogencarbonat).toDouble());
+    if (!ui->tbHydrogencarbonatMmol->hasFocus())
+        ui->tbHydrogencarbonatMmol->setValue(dataWasser(ModelWasser::ColHydrogencarbonatMmol).toDouble());
+    if (!ui->tbHydrogencarbonatHaerte->hasFocus())
+        ui->tbHydrogencarbonatHaerte->setValue(dataWasser(ModelWasser::ColCarbonatHaerte).toDouble());
+    if (!ui->tbSulfatMg->hasFocus())
+        ui->tbSulfatMg->setValue(dataWasser(ModelWasser::ColSufat).toDouble());
+    if (!ui->tbSulfatMmol->hasFocus())
+        ui->tbSulfatMmol->setValue(dataWasser(ModelWasser::ColSufatMmol).toDouble());
+    if (!ui->tbChloridMg->hasFocus())
+        ui->tbChloridMg->setValue(dataWasser(ModelWasser::ColChlorid).toDouble());
+    if (!ui->tbChloridMmol->hasFocus())
+        ui->tbChloridMmol->setValue(dataWasser(ModelWasser::ColChloridMmol).toDouble());
+    if (!ui->tbNatriumMg->hasFocus())
+        ui->tbNatriumMg->setValue(dataWasser(ModelWasser::ColNatrium).toDouble());
+    if (!ui->tbNatriumMmol->hasFocus())
+        ui->tbNatriumMmol->setValue(dataWasser(ModelWasser::ColNatriumMmol).toDouble());
     if (!ui->tbRestalkalitaetAdd->hasFocus())
         ui->tbRestalkalitaetAdd->setValue(dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble());
     ui->tbRestalkalitaet->setValue(dataWasser(ModelWasser::ColRestalkalitaet).toDouble());
@@ -700,6 +716,12 @@ void TabRohstoffe::on_tbCalciumMmol_valueChanged(double value)
         setDataWasser(ModelWasser::ColCalciumMmol, value);
 }
 
+void TabRohstoffe::on_tbCalciumHaerte_valueChanged(double value)
+{
+    if (ui->tbCalciumHaerte->hasFocus())
+        setDataWasser(ModelWasser::ColCalciumHaerte, value);
+}
+
 void TabRohstoffe::on_tbMagnesiumMg_valueChanged(double value)
 {
     if (ui->tbMagnesiumMg->hasFocus())
@@ -712,16 +734,64 @@ void TabRohstoffe::on_tbMagnesiumMmol_valueChanged(double value)
         setDataWasser(ModelWasser::ColMagnesiumMmol, value);
 }
 
-void TabRohstoffe::on_tbSaeurekapazitaet_valueChanged(double value)
+void TabRohstoffe::on_tbMagnesiumHaerte_valueChanged(double value)
 {
-    if (ui->tbSaeurekapazitaet->hasFocus())
-        setDataWasser(ModelWasser::ColSaeurekapazitaet, value);
+    if (ui->tbMagnesiumHaerte->hasFocus())
+        setDataWasser(ModelWasser::ColMagnesiumHaerte, value);
 }
 
-void TabRohstoffe::on_tbCarbonathaerte_valueChanged(double value)
+void TabRohstoffe::on_tbHydrogencarbonatMg_valueChanged(double value)
 {
-    if (ui->tbCarbonathaerte->hasFocus())
-        setDataWasser(ModelWasser::ColCarbonathaerte, value);
+    if (ui->tbHydrogencarbonatMg->hasFocus())
+        setDataWasser(ModelWasser::ColHydrogencarbonat, value);
+}
+
+void TabRohstoffe::on_tbHydrogencarbonatMmol_valueChanged(double value)
+{
+    if (ui->tbHydrogencarbonatMmol->hasFocus())
+        setDataWasser(ModelWasser::ColHydrogencarbonatMmol, value);
+}
+
+void TabRohstoffe::on_tbHydrogencarbonatHaerte_valueChanged(double value)
+{
+    if (ui->tbHydrogencarbonatHaerte->hasFocus())
+        setDataWasser(ModelWasser::ColCarbonatHaerte, value);
+}
+
+void TabRohstoffe::on_tbSulfatMg_valueChanged(double value)
+{
+    if (ui->tbSulfatMg->hasFocus())
+        setDataWasser(ModelWasser::ColSufat, value);
+}
+
+void TabRohstoffe::on_tbSulfatMmol_valueChanged(double value)
+{
+    if (ui->tbSulfatMmol->hasFocus())
+        setDataWasser(ModelWasser::ColSufatMmol, value);
+}
+
+void TabRohstoffe::on_tbChloridMg_valueChanged(double value)
+{
+    if (ui->tbChloridMg->hasFocus())
+        setDataWasser(ModelWasser::ColChlorid, value);
+}
+
+void TabRohstoffe::on_tbChloridMmol_valueChanged(double value)
+{
+    if (ui->tbChloridMmol->hasFocus())
+        setDataWasser(ModelWasser::ColChloridMmol, value);
+}
+
+void TabRohstoffe::on_tbNatriumMg_valueChanged(double value)
+{
+    if (ui->tbNatriumMg->hasFocus())
+        setDataWasser(ModelWasser::ColNatrium, value);
+}
+
+void TabRohstoffe::on_tbNatriumMmol_valueChanged(double value)
+{
+    if (ui->tbNatriumMmol->hasFocus())
+        setDataWasser(ModelWasser::ColNatriumMmol, value);
 }
 
 void TabRohstoffe::on_tbRestalkalitaetAdd_valueChanged(double value)

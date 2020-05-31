@@ -365,65 +365,300 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>491</width>
-             <height>476</height>
+             <y>-127</y>
+             <width>538</width>
+             <height>603</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
             <property name="verticalSpacing">
              <number>4</number>
             </property>
-            <item row="15" column="3">
-             <widget class="QLabel" name="label_148">
-              <property name="text">
-               <string>°dH</string>
+            <item row="1" column="2">
+             <widget class="DoubleSpinBox" name="tbCalciumMmol">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="decimals">
+               <number>3</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.001000000000000</double>
               </property>
              </widget>
             </item>
-            <item row="14" column="0" colspan="4">
-             <widget class="Line" name="line_3">
+            <item row="3" column="0" colspan="4">
+             <widget class="Line" name="line">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_143">
+            <item row="16" column="0">
+             <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>Calciumhärte</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLabel" name="label_132">
-              <property name="text">
-               <string>mmol/l</string>
+               <string>Chlorid (0 - 150 mg/l)</string>
               </property>
              </widget>
             </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_130">
               <property name="text">
-               <string>Calcium</string>
+               <string>Calcium (50 - 150 mg/l)</string>
               </property>
              </widget>
             </item>
-            <item row="17" column="0" colspan="4">
-             <widget class="QTextEdit" name="tbBemerkung"/>
+            <item row="19" column="2">
+             <widget class="DoubleSpinBox" name="tbNatriumMg">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
             </item>
-            <item row="9" column="3">
-             <widget class="QLabel" name="label_141">
+            <item row="20" column="3">
+             <widget class="QLabel" name="label_154">
               <property name="text">
                <string>mmol/l</string>
               </property>
              </widget>
             </item>
-            <item row="7" column="2">
-             <widget class="DoubleSpinBox" name="tbMagnesiumhaerte">
+            <item row="2" column="2">
+             <widget class="DoubleSpinBox" name="tbCalciumHaerte">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciumhärte&lt;/span&gt; in °dH berechnet. Die Calciumhärte wird  aus den Angaben von Calcium in mg/l nach der Formel Ca⁺ * 1,4 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Calciumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Calcium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="decimals">
+               <number>2</number>
+              </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>99.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="3">
+             <widget class="QLabel" name="label_137">
+              <property name="text">
+               <string>mmol/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="2">
+             <widget class="DoubleSpinBox" name="tbSulfatMmol">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="21" column="0" colspan="4">
+             <widget class="Line" name="line_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0" colspan="4">
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="3">
+             <widget class="QLabel" name="label_145">
+              <property name="text">
+               <string>mg/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_103">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="24" column="0">
+             <widget class="QLabel" name="label_147">
+              <property name="text">
+               <string>Restalkalität</string>
+              </property>
+             </widget>
+            </item>
+            <item row="22" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Restalkalität Korrektur</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="3">
+             <widget class="QLabel" name="label_143">
+              <property name="text">
+               <string>mg/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="2">
+             <widget class="DoubleSpinBox" name="tbHydrogencarbonatMmol">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="0" colspan="4">
+             <widget class="Line" name="line_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="3">
+             <widget class="QLabel" name="label_142">
+              <property name="text">
+               <string>°dH</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="2">
+             <widget class="DoubleSpinBox" name="tbMagnesiumHaerte">
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiumhärte&lt;/span&gt; in °dH berechnet. Die Magnesiumhärte wird aus den Angaben von &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesium&lt;/span&gt; in mg/l nach der Formel Mg⁺ * 2,307 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Magnesiumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="decimals">
+               <number>2</number>
+              </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>99.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="0" colspan="4">
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="3">
+             <widget class="QLabel" name="label_152">
+              <property name="text">
+               <string>mmol/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="26" column="0" colspan="4">
+             <widget class="QTextEdit" name="tbBemerkung"/>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="label_139">
+              <property name="text">
+               <string>Hydrogencarbonat (0 - 500 mg/l)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="3">
+             <widget class="QLabel" name="label_146">
+              <property name="text">
+               <string>°dH</string>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="0">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Sulfat (0 - 250 mg/l)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
+             <widget class="DoubleSpinBox" name="tbMagnesiumMg">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="24" column="3">
+             <widget class="QLabel" name="label_148">
+              <property name="text">
+               <string>°dH</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="2">
+             <widget class="DoubleSpinBox" name="tbMagnesiumMmol">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="decimals">
+               <number>3</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.001000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="24" column="2">
+             <widget class="DoubleSpinBox" name="tbRestalkalitaet">
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -444,127 +679,44 @@
               </property>
              </widget>
             </item>
-            <item row="6" column="3">
-             <widget class="QLabel" name="label_137">
+            <item row="17" column="2">
+             <widget class="DoubleSpinBox" name="tbChloridMmol">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="3">
+             <widget class="QLabel" name="label_141">
               <property name="text">
                <string>mmol/l</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="2">
-             <widget class="DoubleSpinBox" name="tbMagnesiumMmol">
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="decimals">
-               <number>3</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-              <property name="singleStep">
-               <double>0.001000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_135">
-              <property name="text">
-               <string>Magnesium</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2">
-             <widget class="DoubleSpinBox" name="tbMagnesiumMg">
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-              <property name="singleStep">
-               <double>0.010000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0" colspan="4">
-             <widget class="Line" name="line">
+            <item row="25" column="0" colspan="4">
+             <widget class="Line" name="line_5">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="DoubleSpinBox" name="tbCalciumMmol">
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="decimals">
-               <number>3</number>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-              <property name="singleStep">
-               <double>0.001000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0" colspan="4">
-             <widget class="Line" name="line_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="3">
-             <widget class="QLabel" name="label_149">
+            <item row="2" column="3">
+             <widget class="QLabel" name="label_144">
               <property name="text">
                <string>°dH</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <spacer name="horizontalSpacer_103">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="2">
-             <widget class="DoubleSpinBox" name="tbCalciumMg">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="maximum">
-               <double>9999.000000000000000</double>
-              </property>
-              <property name="singleStep">
-               <double>0.010000000000000</double>
+            <item row="16" column="3">
+             <widget class="QLabel" name="label_151">
+              <property name="text">
+               <string>mg/l</string>
               </property>
              </widget>
             </item>
@@ -575,7 +727,111 @@
               </property>
              </widget>
             </item>
-            <item row="13" column="2">
+            <item row="19" column="0">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Natrium (0 - 50 mg/l)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLabel" name="label_132">
+              <property name="text">
+               <string>mmol/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="2">
+             <widget class="DoubleSpinBox" name="tbChloridMg">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="3">
+             <widget class="QLabel" name="label_150">
+              <property name="text">
+               <string>mmol/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="2">
+             <widget class="DoubleSpinBox" name="tbHydrogencarbonatMg">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="22" column="3">
+             <widget class="QLabel" name="label_149">
+              <property name="text">
+               <string>°dH</string>
+              </property>
+             </widget>
+            </item>
+            <item row="18" column="0" colspan="4">
+             <widget class="Line" name="line_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="19" column="3">
+             <widget class="QLabel" name="label_153">
+              <property name="text">
+               <string>mg/l</string>
+              </property>
+             </widget>
+            </item>
+            <item row="23" column="0" colspan="4">
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_135">
+              <property name="text">
+               <string>Magnesium (0 - 20 mg/l)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="2">
+             <widget class="DoubleSpinBox" name="tbHydrogencarbonatHaerte">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="decimals">
+               <number>2</number>
+              </property>
+              <property name="minimum">
+               <double>-99.000000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>99.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="22" column="2">
              <widget class="DoubleSpinBox" name="tbRestalkalitaetAdd">
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -597,18 +853,8 @@
               </property>
              </widget>
             </item>
-            <item row="11" column="0">
-             <widget class="QLabel" name="label_140">
-              <property name="text">
-               <string>Carbonathärte</string>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="2">
-             <widget class="DoubleSpinBox" name="tbSaeurekapazitaet">
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
+            <item row="20" column="2">
+             <widget class="DoubleSpinBox" name="tbNatriumMmol">
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
@@ -633,135 +879,38 @@
               </property>
              </widget>
             </item>
-            <item row="11" column="3">
-             <widget class="QLabel" name="label_142">
-              <property name="text">
-               <string>°dH</string>
+            <item row="0" column="2">
+             <widget class="DoubleSpinBox" name="tbCalciumMg">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
               </property>
-             </widget>
-            </item>
-            <item row="15" column="0">
-             <widget class="QLabel" name="label_147">
-              <property name="text">
-               <string>Restalkalität</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="DoubleSpinBox" name="tbCalciumhaerte">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciumhärte&lt;/span&gt; in °dH berechnet. Die Calciumhärte wird  aus den Angaben von Calcium in mg/l nach der Formel Ca⁺ * 1,4 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Calciumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Calcium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>2</number>
-              </property>
-              <property name="minimum">
-               <double>-99.000000000000000</double>
-              </property>
               <property name="maximum">
-               <double>99.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLabel" name="label_144">
-              <property name="text">
-               <string>°dH</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QLabel" name="label_145">
-              <property name="text">
-               <string>Magnesiumhärte</string>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="0">
-             <widget class="QLabel" name="label_139">
-              <property name="text">
-               <string>Säurekapazität 4,3 pH</string>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="0">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Restalkalität Korrektur</string>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="2">
-             <widget class="DoubleSpinBox" name="tbRestalkalitaet">
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::NoButtons</enum>
-              </property>
-              <property name="decimals">
-               <number>2</number>
-              </property>
-              <property name="minimum">
-               <double>-99.000000000000000</double>
-              </property>
-              <property name="maximum">
-               <double>99.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="3">
-             <widget class="QLabel" name="label_146">
-              <property name="text">
-               <string>°dH</string>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="2">
-             <widget class="DoubleSpinBox" name="tbCarbonathaerte">
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="decimals">
-               <number>2</number>
-              </property>
-              <property name="minimum">
-               <double>-99.000000000000000</double>
-              </property>
-              <property name="maximum">
-               <double>99.000000000000000</double>
+               <double>9999.000000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.010000000000000</double>
               </property>
              </widget>
             </item>
-            <item row="12" column="0" colspan="4">
-             <widget class="Line" name="line_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+            <item row="13" column="2">
+             <widget class="DoubleSpinBox" name="tbSulfatMg">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
-             </widget>
-            </item>
-            <item row="16" column="0" colspan="4">
-             <widget class="Line" name="line_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
               </property>
              </widget>
             </item>
@@ -857,15 +1006,25 @@
   <tabstop>scrollArea</tabstop>
   <tabstop>tbCalciumMg</tabstop>
   <tabstop>tbCalciumMmol</tabstop>
-  <tabstop>tbCalciumhaerte</tabstop>
+  <tabstop>tbCalciumHaerte</tabstop>
   <tabstop>tbMagnesiumMg</tabstop>
   <tabstop>tbMagnesiumMmol</tabstop>
-  <tabstop>tbMagnesiumhaerte</tabstop>
-  <tabstop>tbSaeurekapazitaet</tabstop>
-  <tabstop>tbCarbonathaerte</tabstop>
+  <tabstop>tbMagnesiumHaerte</tabstop>
+  <tabstop>tbHydrogencarbonatMg</tabstop>
+  <tabstop>tbHydrogencarbonatMmol</tabstop>
+  <tabstop>tbHydrogencarbonatHaerte</tabstop>
+  <tabstop>tbSulfatMg</tabstop>
+  <tabstop>tbSulfatMmol</tabstop>
+  <tabstop>tbChloridMg</tabstop>
+  <tabstop>tbChloridMmol</tabstop>
+  <tabstop>tbNatriumMg</tabstop>
+  <tabstop>tbNatriumMmol</tabstop>
+  <tabstop>tbRestalkalitaetAdd</tabstop>
   <tabstop>tbRestalkalitaet</tabstop>
+  <tabstop>tbBemerkung</tabstop>
   <tabstop>buttonAdd</tabstop>
   <tabstop>buttonNeuVorlage</tabstop>
+  <tabstop>buttonNeuVorlageObrama</tabstop>
   <tabstop>buttonCopy</tabstop>
   <tabstop>buttonDelete</tabstop>
  </tabstops>

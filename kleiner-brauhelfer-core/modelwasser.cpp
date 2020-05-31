@@ -5,11 +5,15 @@ ModelWasser::ModelWasser(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append("HydrogencarbonatMmol");
     mVirtualField.append("CalciumMmol");
     mVirtualField.append("MagnesiumMmol");
-    mVirtualField.append("Calciumhaerte");
-    mVirtualField.append("Magnesiumhaerte");
-    mVirtualField.append("Carbonathaerte");
+    mVirtualField.append("SufatMmol");
+    mVirtualField.append("ChloridMmol");
+    mVirtualField.append("NatriumMmol");
+    mVirtualField.append("CarbonatHaerte");
+    mVirtualField.append("CalciumHaerte");
+    mVirtualField.append("MagnesiumHaerte");
     mVirtualField.append("Restalkalitaet");
 }
 
@@ -17,31 +21,29 @@ QVariant ModelWasser::dataExt(const QModelIndex &idx) const
 {
     switch(idx.column())
     {
+    case ColHydrogencarbonatMmol:
+        return data(idx.row(), ColHydrogencarbonat).toDouble() / 61.02;
     case ColCalciumMmol:
-    {
         return data(idx.row(), ColCalcium).toDouble() / 40.08;
-    }
     case ColMagnesiumMmol:
-    {
         return data(idx.row(), ColMagnesium).toDouble() / 24.31;
-    }
-    case ColCalciumhaerte:
-    {
-        return data(idx.row(), ColCalcium).toDouble() / 40.08 / 0.1783;
-    }
-    case ColMagnesiumhaerte:
-    {
-        return data(idx.row(), ColMagnesium).toDouble() / 24.31 / 0.1783;
-    }
-    case ColCarbonathaerte:
-    {
-        return data(idx.row(), ColSaeurekapazitaet).toDouble() * 2.8;
-    }
+    case ColSufatMmol:
+        return data(idx.row(), ColSufat).toDouble() / 96.06;
+    case ColChloridMmol:
+        return data(idx.row(), ColChlorid).toDouble() / 35.45;
+    case ColNatriumMmol:
+        return data(idx.row(), ColNatrium).toDouble() / 22.99;
+    case ColCalciumHaerte:
+        return data(idx.row(), ColCalcium).toDouble() / (40.08 * 0.1783);
+    case ColMagnesiumHaerte:
+        return data(idx.row(), ColMagnesium).toDouble() / (24.31 * 0.1783);
+    case ColCarbonatHaerte:
+        return data(idx.row(), ColHydrogencarbonat).toDouble() / 61.02 * 2.8;
     case ColRestalkalitaet:
     {
-        double carbh = data(idx.row(), ColCarbonathaerte).toDouble();
-        double calch = data(idx.row(), ColCalciumhaerte).toDouble();
-        double magh = data(idx.row(), ColMagnesiumhaerte).toDouble();
+        double carbh = data(idx.row(), ColCarbonatHaerte).toDouble();
+        double calch = data(idx.row(), ColCalciumHaerte).toDouble();
+        double magh = data(idx.row(), ColMagnesiumHaerte).toDouble();
         double add = data(idx.row(), ColRestalkalitaetAdd).toDouble();
         return carbh - (calch + 0.5 * magh) / 3.5 + add;
     }
@@ -70,26 +72,24 @@ bool ModelWasser::setDataExt(const QModelIndex &idx, const QVariant &value)
          }
          return false;
      }
+     case ColHydrogencarbonatMmol:
+         return QSqlTableModel::setData(index(idx.row(), ColHydrogencarbonat), value.toDouble() * 61.02);
      case ColCalciumMmol:
-     {
          return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.08);
-     }
      case ColMagnesiumMmol:
-     {
          return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.31);
-     }
-     case ColCalciumhaerte:
-     {
+     case ColSufatMmol:
+         return QSqlTableModel::setData(index(idx.row(), ColSufat), value.toDouble() * 96.06);
+     case ColChloridMmol:
+         return QSqlTableModel::setData(index(idx.row(), ColChlorid), value.toDouble() * 35.45);
+     case ColNatriumMmol:
+         return QSqlTableModel::setData(index(idx.row(), ColNatrium), value.toDouble() * 22.99);
+     case ColCalciumHaerte:
          return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.08 * 0.1783);
-     }
-     case ColMagnesiumhaerte:
-     {
+     case ColMagnesiumHaerte:
          return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.31 * 0.1783);
-     }
-     case ColCarbonathaerte:
-     {
-         return QSqlTableModel::setData(index(idx.row(), ColSaeurekapazitaet), value.toDouble() / 2.8);
-     }
+     case ColCarbonatHaerte:
+         return QSqlTableModel::setData(index(idx.row(), ColHydrogencarbonat), value.toDouble() * 61.02 / 2.8);
      default:
          return false;
      }
@@ -100,11 +100,15 @@ Qt::ItemFlags ModelWasser::flags(const QModelIndex &idx) const
     Qt::ItemFlags itemFlags = SqlTableModel::flags(idx);
     switch (idx.column())
     {
+    case ColHydrogencarbonatMmol:
     case ColCalciumMmol:
     case ColMagnesiumMmol:
-    case ColCalciumhaerte:
-    case ColMagnesiumhaerte:
-    case ColCarbonathaerte:
+    case ColSufatMmol:
+    case ColChloridMmol:
+    case ColNatriumMmol:
+    case ColCarbonatHaerte:
+    case ColCalciumHaerte:
+    case ColMagnesiumHaerte:
         itemFlags |= Qt::ItemIsEditable;
         break;
     }

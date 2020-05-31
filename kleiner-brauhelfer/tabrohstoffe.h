@@ -46,10 +46,19 @@ private slots:
     void on_btnWasserprofilLoeschen_clicked();
     void on_tbCalciumMg_valueChanged(double value);
     void on_tbCalciumMmol_valueChanged(double value);
+    void on_tbCalciumHaerte_valueChanged(double value);
     void on_tbMagnesiumMg_valueChanged(double value);
     void on_tbMagnesiumMmol_valueChanged(double value);
-    void on_tbSaeurekapazitaet_valueChanged(double value);
-    void on_tbCarbonathaerte_valueChanged(double value);
+    void on_tbMagnesiumHaerte_valueChanged(double value);
+    void on_tbHydrogencarbonatMg_valueChanged(double value);
+    void on_tbHydrogencarbonatMmol_valueChanged(double value);
+    void on_tbHydrogencarbonatHaerte_valueChanged(double value);
+    void on_tbSulfatMg_valueChanged(double value);
+    void on_tbSulfatMmol_valueChanged(double value);
+    void on_tbChloridMg_valueChanged(double value);
+    void on_tbChloridMmol_valueChanged(double value);
+    void on_tbNatriumMg_valueChanged(double value);
+    void on_tbNatriumMmol_valueChanged(double value);
     void on_tbRestalkalitaetAdd_valueChanged(double arg1);
     void on_tbBemerkung_textChanged();
 

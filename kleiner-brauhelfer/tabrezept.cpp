@@ -431,7 +431,7 @@ void TabRezept::updateValues()
         ui->lblMilchsaeureHGFEinheit->setVisible(false);
     }
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
-    ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30);
+    ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
     ui->tbWasserGesamt->setValue(ui->tbHauptguss->value() + ui->tbNachguss->value() + ui->tbWasserHGF->value());
     ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * restalkalitaetFaktor);
     ui->tbMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);

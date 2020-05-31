@@ -155,6 +155,14 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
                 QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 0.0);
                 QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 0.0);
                 break;
+            case Brauhelfer::AnlageTyp::BrauheldPro30:
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 29.8);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 47.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 43.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 29.8);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 47.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 43.0);
+                break;
             }
             return true;
         }

@@ -178,6 +178,7 @@ public:
         Braumeister200 = 0x2140,
         Braumeister500 = 0x2320,
         Braumeister1000 = 0x2640,
+        BrauheldPro30 = 0x3030,
     };
     Q_ENUM(AnlageTyp)
 

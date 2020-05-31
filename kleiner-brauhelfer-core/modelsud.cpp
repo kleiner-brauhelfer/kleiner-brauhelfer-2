@@ -458,6 +458,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         {
         case Brauhelfer::AnlageTyp::GrainfatherG30:
             return data(idx.row(), Colerg_S_Gesamt).toDouble() * 2.7 + 3.5;
+        case Brauhelfer::AnlageTyp::BrauheldPro30:
+            return data(idx.row(), Colerg_S_Gesamt).toDouble() * 2.7 + 3.2;
         default:
             return data(idx.row(), Colerg_S_Gesamt).toDouble() * data(idx.row(), ColFaktorHauptguss).toDouble();
         }
@@ -823,6 +825,9 @@ void ModelSud::updateWasser(int row)
             ng = menge - hg + schuet * 0.8;
         else
             ng = menge - hg + schuet * 0.8 - 2;
+        break;
+    case Brauhelfer::AnlageTyp::BrauheldPro30:
+        ng = menge - hg + schuet * 0.8;
         break;
     default:
         ng = menge - hg + schuet * 0.96;

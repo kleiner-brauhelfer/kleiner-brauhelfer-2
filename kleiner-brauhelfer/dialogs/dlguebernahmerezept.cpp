@@ -86,12 +86,10 @@ void DlgUebernahmeRezept::tableViewSud_selectionChanged()
 {
     QModelIndexList indexes = ui->tableViewSud->selectionModel()->selectedRows();
     if (indexes.count() > 0)
-        mSudId = bh->modelSud()->data(indexes[0].row(), ModelSud::ColID).toInt();
+        mSudId = static_cast<ProxyModel*>(ui->tableViewSud->model())->data(indexes[0].row(), ModelSud::ColID).toInt();
     else
         mSudId = -1;
-
-    ProxyModel* model = static_cast<ProxyModel*>(ui->tableViewItem->model());
-    model->setFilterRegExp(QString("^%1$").arg(mSudId));
+    static_cast<ProxyModel*>(ui->tableViewItem->model())->setFilterRegExp(QString("^%1$").arg(mSudId));
 }
 
 void DlgUebernahmeRezept::on_tableViewSud_doubleClicked(const QModelIndex &index)

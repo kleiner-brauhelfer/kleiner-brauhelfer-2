@@ -45,6 +45,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SWSollKochbeginnMitWz");
     mVirtualField.append("SWSollKochende");
     mVirtualField.append("SWSollAnstellen");
+    mVirtualField.append("WasserHgf");
     mVirtualField.append("VerdampfungsrateIst");
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
@@ -364,6 +365,12 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         double sw = data(idx.row(), ColSW).toDouble();
         return sw - swWzGaerungRecipe[idx.row()];
+    }
+    case ColWasserHgf:
+    {
+        double mengeSoll = data(idx.row(), ColMengeSoll).toDouble();
+        double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
+        return mengeSoll * (1 - 1 / hgf);
     }
     case ColVerdampfungsrateIst:
     {
@@ -809,13 +816,15 @@ void ModelSud::updateSwWeitereZutaten(int row)
 
 void ModelSud::updateWasser(int row)
 {
-    double hg = 0.0, ng = 0.0;
+    double hg = 0.0, ng = 0.0, hgf = 0.0;
     double schuet = data(row, Colerg_S_Gesamt).toDouble();
     double menge = data(row, ColMengeSollKochbeginn).toDouble();
 
     hg = bh->modelRasten()->menge(data(row, ColID));
     if (hg <= 0)
         hg = data(row, ColWHauptgussEmpfehlung).toDouble();
+    if (hg < 0)
+        hg = 0;
 
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(dataAnlage(row, ModelAusruestung::ColTyp).toInt());
     switch (anlageTyp)
@@ -833,12 +842,17 @@ void ModelSud::updateWasser(int row)
         ng = menge - hg + schuet * 0.96;
         break;
     }
-
     ng += dataAnlage(row, ModelAusruestung::ColKorrekturWasser).toDouble();
+    if (ng < 0)
+        ng = 0;
+
+    hgf = data(row, ColWasserHgf).toDouble();
+    if (hgf < 0)
+        hgf = 0;
 
     setData(row, Colerg_WHauptguss, hg);
     setData(row, Colerg_WNachguss, ng);
-    setData(row, Colerg_W_Gesamt, hg + ng);
+    setData(row, Colerg_W_Gesamt, hg + ng + hgf);
 }
 
 void ModelSud::updateFarbe(int row)

@@ -49,8 +49,10 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbNachisomerisierungszeit->setColumn(ModelSud::ColNachisomerisierungszeit);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->tbFaktorHauptgussEmpfehlung->setColumn(ModelSud::ColFaktorHauptgussEmpfehlung);
+    ui->tbWasserGesamt->setColumn(ModelSud::Colerg_W_Gesamt);
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
+    ui->tbWasserHGF->setColumn(ModelSud::ColWasserHgf);
     ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
     ui->tbPh->setColumn(ModelSud::ColPhMaische);
 
@@ -407,34 +409,12 @@ void TabRezept::updateValues()
     ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
     ui->lblWasserprofil->setText(bh->sud()->getWasserprofil());
     double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
+    ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * restalkalitaetFaktor);
     ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
     ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
-    if (ui->tbHGF->value() != 0.0)
-    {
-        ui->tbWasserHGF->setValue(bh->sud()->getMengeSoll() - bh->sud()->getMengeSollKochende());
-        ui->tbMilchsaeureHGF->setValue(ui->tbWasserHGF->value() * restalkalitaetFaktor);
-        ui->tbWasserHGF->setVisible(true);
-        ui->lblWasserHGF->setVisible(true);
-        ui->lblWasserHGFEinheit->setVisible(true);
-        ui->tbMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
-        ui->lblMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
-        ui->lblMilchsaeureHGFEinheit->setVisible(restalkalitaetFaktor > 0.0);
-    }
-    else
-    {
-        ui->tbWasserHGF->setValue(0.0);
-        ui->tbMilchsaeureHGF->setValue(0.0);
-        ui->tbWasserHGF->setVisible(false);
-        ui->lblWasserHGF->setVisible(false);
-        ui->lblWasserHGFEinheit->setVisible(false);
-        ui->tbMilchsaeureHGF->setVisible(false);
-        ui->lblMilchsaeureHGF->setVisible(false);
-        ui->lblMilchsaeureHGFEinheit->setVisible(false);
-    }
+    ui->tbMilchsaeureHGF->setValue(ui->tbWasserHGF->value() * restalkalitaetFaktor);
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
-    ui->tbWasserGesamt->setValue(ui->tbHauptguss->value() + ui->tbNachguss->value() + ui->tbWasserHGF->value());
-    ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * restalkalitaetFaktor);
     ui->tbMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureGesamtEinheit->setVisible(restalkalitaetFaktor > 0.0);
@@ -444,6 +424,24 @@ void TabRezept::updateValues()
     ui->tbMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
     ui->lblMilchsaeureNGEinheit->setVisible(restalkalitaetFaktor > 0.0);
+    if (ui->tbHGF->value() != 0.0)
+    {
+        ui->tbWasserHGF->setVisible(true);
+        ui->lblWasserHGF->setVisible(true);
+        ui->lblWasserHGFEinheit->setVisible(true);
+        ui->tbMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
+        ui->lblMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
+        ui->lblMilchsaeureHGFEinheit->setVisible(restalkalitaetFaktor > 0.0);
+    }
+    else
+    {
+        ui->tbWasserHGF->setVisible(false);
+        ui->lblWasserHGF->setVisible(false);
+        ui->lblWasserHGFEinheit->setVisible(false);
+        ui->tbMilchsaeureHGF->setVisible(false);
+        ui->lblMilchsaeureHGF->setVisible(false);
+        ui->lblMilchsaeureHGFEinheit->setVisible(false);
+    }
     ui->lblAnlageName->setText(bh->sud()->getAnlage());
     ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
     ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);

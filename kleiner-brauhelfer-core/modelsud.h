@@ -98,6 +98,7 @@ public:
         ColSWSollKochbeginnMitWz,
         ColSWSollKochende,
         ColSWSollAnstellen,
+        ColWasserHgf,
         ColVerdampfungsrateIst,
         ColsEVG,
         ColtEVG,

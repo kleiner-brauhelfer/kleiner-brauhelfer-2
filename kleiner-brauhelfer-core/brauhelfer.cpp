@@ -330,7 +330,8 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 
 void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues)
 {
-    for (int r = 0; r < model->rowCount(); ++r)
+    int N = model->rowCount();
+    for (int r = 0; r < N; ++r)
     {
         if (model->data(r, colSudId) == sudId)
         {

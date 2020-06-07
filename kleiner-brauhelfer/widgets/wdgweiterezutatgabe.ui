@@ -41,7 +41,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <property name="spacing">
-         <number>6</number>
+         <number>9</number>
         </property>
         <item>
          <widget class="QFrame" name="frameColor">
@@ -156,7 +156,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <property name="spacing">
-         <number>6</number>
+         <number>9</number>
         </property>
         <item>
          <widget class="QLabel" name="label_3">
@@ -336,7 +336,7 @@
        <widget class="QWidget" name="wdgZugabezeitpunkt" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_9">
          <property name="spacing">
-          <number>6</number>
+          <number>9</number>
          </property>
          <property name="leftMargin">
           <number>0</number>
@@ -396,7 +396,7 @@
           <widget class="QWidget" name="wdgKochdauer" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout">
             <property name="spacing">
-             <number>6</number>
+             <number>9</number>
             </property>
             <property name="leftMargin">
              <number>0</number>
@@ -471,7 +471,7 @@
           <number>0</number>
          </property>
          <property name="horizontalSpacing">
-          <number>6</number>
+          <number>9</number>
          </property>
          <property name="verticalSpacing">
           <number>4</number>
@@ -651,11 +651,6 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
@@ -664,6 +659,11 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -18,7 +18,8 @@ public:
         Hopfen,
         Hefe,
         WZutaten,
-        Maischplan
+        Maischplan,
+        Wasseraufbereitung
     };
 
 public:

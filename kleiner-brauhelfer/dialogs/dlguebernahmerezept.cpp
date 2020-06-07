@@ -43,11 +43,15 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         model->setFilterKeyColumn(ModelRasten::ColSudID);
         ui->tableViewItem->cols.append({ModelRasten::ColName, true, false, -1, nullptr});
         break;
+    case Wasseraufbereitung:
+        model->setSourceModel(bh->modelWasseraufbereitung());
+        model->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
+        ui->tableViewItem->cols.append({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
+        break;
     }
     model->setFilterRegExp(QString("^%1$").arg(mSudId));
     ui->tableViewItem->setModel(model);
     ui->tableViewItem->build();
-
 
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelSud());

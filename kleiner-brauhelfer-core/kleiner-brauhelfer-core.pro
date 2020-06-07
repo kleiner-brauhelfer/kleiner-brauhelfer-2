@@ -59,6 +59,7 @@ SOURCES += \
     modelsud.cpp \
     modeltags.cpp \
     modelwasser.cpp \
+    modelwasseraufbereitung.cpp \
     modelweiterezutaten.cpp \
     modelweiterezutatengaben.cpp \
     proxymodel.cpp \
@@ -93,6 +94,7 @@ HEADERS += \
     modelsud.h \
     modeltags.h \
     modelwasser.h \
+    modelwasseraufbereitung.h \
     modelweiterezutaten.h \
     modelweiterezutatengaben.h \
     proxymodel.h \

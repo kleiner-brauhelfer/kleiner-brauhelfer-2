@@ -41,7 +41,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="spacing">
-         <number>6</number>
+         <number>9</number>
         </property>
         <item>
          <widget class="QFrame" name="frameColor">
@@ -156,7 +156,7 @@
       <item>
        <layout class="QGridLayout" name="gridLayout">
         <property name="horizontalSpacing">
-         <number>6</number>
+         <number>9</number>
         </property>
         <property name="verticalSpacing">
          <number>4</number>
@@ -667,14 +667,14 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -67,6 +67,7 @@ SOURCES += \
     dialogs/dlguebernahmerezept.cpp \
     dialogs/dlgverdampfung.cpp \
     dialogs/dlgvolumen.cpp \
+    dialogs/dlgwasseraufbereitung.cpp \
     helper/htmlhighlighter.cpp \
     helper/mustache.cpp \
     helper/obrama.cpp \
@@ -105,6 +106,7 @@ SOURCES += \
     widgets/wdgmalzgabe.cpp \
     widgets/wdgrast.cpp \
     widgets/wdgrating.cpp \
+    widgets/wdgwasseraufbereitung.cpp \
     widgets/wdgweiterezutatgabe.cpp \
     widgets/webview.cpp \
     widgets/wdgwebvieweditable.cpp
@@ -140,6 +142,7 @@ HEADERS += \
     dialogs/dlguebernahmerezept.h \
     dialogs/dlgverdampfung.h \
     dialogs/dlgvolumen.h \
+    dialogs/dlgwasseraufbereitung.h \
     helper/htmlhighlighter.h \
     helper/mustache.h \
     helper/obrama.h \
@@ -178,6 +181,7 @@ HEADERS += \
     widgets/wdgmalzgabe.h \
     widgets/wdgrast.h \
     widgets/wdgrating.h \
+    widgets/wdgwasseraufbereitung.h \
     widgets/wdgweiterezutatgabe.h \
     widgets/webview.h \
     widgets/wdgwebvieweditable.h
@@ -209,6 +213,7 @@ FORMS += \
     dialogs/dlguebernahmerezept.ui \
     dialogs/dlgverdampfung.ui \
     dialogs/dlgvolumen.ui \
+    dialogs/dlgwasseraufbereitung.ui \
     widgets/wdganhang.ui \
     widgets/wdgbewertung.ui \
     widgets/wdghefegabe.ui \
@@ -216,6 +221,7 @@ FORMS += \
     widgets/wdgmalzgabe.ui \
     widgets/wdgrast.ui \
     widgets/wdgrating.ui \
+    widgets/wdgwasseraufbereitung.ui \
     widgets/wdgweiterezutatgabe.ui \
     widgets/wdgwebvieweditable.ui
 

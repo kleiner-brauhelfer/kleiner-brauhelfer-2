@@ -38,6 +38,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelEtiketten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modeTags, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelKategorien, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelWasseraufbereitung, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
 Brauhelfer::~Brauhelfer()
@@ -283,6 +284,11 @@ ModelKategorien *Brauhelfer::modelKategorien() const
     return mDb->modelKategorien;
 }
 
+ModelWasseraufbereitung *Brauhelfer::modelWasseraufbereitung() const
+{
+    return mDb->modelWasseraufbereitung;
+}
+
 int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 {
     qInfo() << "Brauhelfer::sudKopieren():" << sudId;
@@ -317,6 +323,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, {{ModelAnhang::ColSudID, neueSudId}});
     sudKopierenModel(modelEtiketten(), ModelEtiketten::ColSudID, sudId, {{ModelEtiketten::ColSudID, neueSudId}});
     sudKopierenModel(modelTags(), ModelTags::ColSudID, sudId, {{ModelTags::ColSudID, neueSudId}});
+    sudKopierenModel(modelWasseraufbereitung(), ModelWasseraufbereitung::ColSudID, sudId, {{ModelWasseraufbereitung::ColSudID, neueSudId}});
     if (teilen)
     {
         sudKopierenModel(modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudId, {{ModelSchnellgaerverlauf::ColSudID, neueSudId}});

@@ -106,13 +106,17 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, SWSollKochbeginnMitWz, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWSollKochende, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWSollAnstellen, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, WasserHgf, toDouble())
     Q_PROPERTY_SUD_READONLY(double, VerdampfungsrateIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, sEVG, toDouble())
     Q_PROPERTY_SUD_READONLY(double, tEVG, toDouble())
     Q_PROPERTY_SUD_READONLY(double, Alkohol, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, RestalkalitaetWasser, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, RestalkalitaetIst, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, PhMalz, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, PhMaische, toDouble())
     Q_PROPERTY_SUD_READONLY(double, AnlageVerdampfungsrate, toDouble())
     Q_PROPERTY_SUD_READONLY(double, AnlageSudhausausbeute, toDouble())
-    Q_PROPERTY_SUD_READONLY(double, RestalkalitaetFaktor, toDouble())
     Q_PROPERTY_SUD_READONLY(double, FaktorHauptgussEmpfehlung, toDouble())
     Q_PROPERTY_SUD_READONLY(double, WHauptgussEmpfehlung, toDouble())
     Q_PROPERTY_SUD_READONLY(int, BewertungMittel, toInt())
@@ -123,6 +127,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY(ProxyModel* modelHopfengaben READ modelHopfengaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelHefegaben READ modelHefegaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
+    Q_PROPERTY(ProxyModel* modelWasseraufbereitung READ modelWasseraufbereitung CONSTANT)
     Q_PROPERTY(ProxyModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
     Q_PROPERTY(ProxyModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
     Q_PROPERTY(ProxyModel* modelNachgaerverlauf READ modelNachgaerverlauf CONSTANT)
@@ -209,6 +214,7 @@ public:
     ProxyModel* modelHopfengaben() const;
     ProxyModel* modelHefegaben() const;
     ProxyModel* modelWeitereZutatenGaben() const;
+    ProxyModel* modelWasseraufbereitung() const;
     ProxyModel* modelSchnellgaerverlauf() const;
     ProxyModel* modelHauptgaerverlauf() const;
     ProxyModel* modelNachgaerverlauf() const;
@@ -255,6 +261,7 @@ private:
     ProxyModel* proxyModelHopfengaben;
     ProxyModel* proxyModelHefegaben;
     ProxyModel* proxyModelWeitereZutatenGaben;
+    ProxyModel* proxyModelWasseraufbereitung;
     ProxyModel* proxyModelSchnellgaerverlauf;
     ProxyModel* proxyModelHauptgaerverlauf;
     ProxyModel* proxyModelNachgaerverlauf;

@@ -36,7 +36,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="horizontalSpacing">
-       <number>6</number>
+       <number>9</number>
       </property>
       <property name="verticalSpacing">
        <number>4</number>

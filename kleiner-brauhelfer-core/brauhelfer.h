@@ -28,6 +28,7 @@
 #include "modeletiketten.h"
 #include "modelgeraete.h"
 #include "modelkategorien.h"
+#include "modelwasseraufbereitung.h"
 
 class Database;
 
@@ -64,6 +65,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(SqlTableModel* modelEtiketten READ modelEtiketten CONSTANT)
     Q_PROPERTY(SqlTableModel* modelTags READ modelTags CONSTANT)
     Q_PROPERTY(SqlTableModel* modelKategorien READ modelKategorien CONSTANT)
+    Q_PROPERTY(SqlTableModel* modelWasseraufbereitung READ modelWasseraufbereitung CONSTANT)
 
 public:
 
@@ -237,6 +239,7 @@ public:
     ModelEtiketten* modelEtiketten() const;
     ModelTags* modelTags() const;
     ModelKategorien* modelKategorien() const;
+    ModelWasseraufbereitung* modelWasseraufbereitung() const;
 
     Q_INVOKABLE int sudKopieren(int sudId, const QString& name, bool teilen = false);
     Q_INVOKABLE void sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues);

@@ -287,6 +287,12 @@
            </item>
            <item row="3" column="3">
             <widget class="QPushButton" name="btnSWSchnellgaerprobe">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>50</width>

@@ -17,7 +17,7 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelRasten(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
@@ -240,7 +240,7 @@ void WdgRast::updateValues(bool full)
     if (!ui->tbDauerDekoktion->hasFocus())
         ui->tbDauerDekoktion->setValue(data(ModelRasten::ColDauer).toInt());
     ui->btnNachOben->setEnabled(mRow > 0);
-    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelRasten()->rowCount() - 1);
+    ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 
     if (mRow == 0 && typ != Brauhelfer::RastTyp::Einmaischen)
     {

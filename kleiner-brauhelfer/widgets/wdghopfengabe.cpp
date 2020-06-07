@@ -27,7 +27,7 @@ WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
@@ -130,13 +130,12 @@ void WdgHopfenGabe::updateValues(bool full)
     {
         ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toDouble());
         double benoetigt = 0;
-        ProxyModel* model = bh->sud()->modelHopfengaben();
-        for (int i = 0; i < model->rowCount(); ++i)
+        for (int i = 0; i < mModel->rowCount(); ++i)
         {
-            if (model->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
-                benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+            if (mModel->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
+                benoetigt += mModel->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
         }
-        model = bh->sud()->modelWeitereZutatenGaben();
+        ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
         for (int i = 0; i < model->rowCount(); ++i)
         {
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -176,7 +175,7 @@ void WdgHopfenGabe::updateValues(bool full)
             break;
         }
 
-        if (mRow == 0 && bh->sud()->modelHopfengaben()->rowCount() == 1 && berechnungsArtHopfen != Brauhelfer::BerechnungsartHopfen::Keine)
+        if (mRow == 0 && mModel->rowCount() == 1 && berechnungsArtHopfen != Brauhelfer::BerechnungsartHopfen::Keine)
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProLiter->setReadOnly(true);
@@ -195,7 +194,7 @@ void WdgHopfenGabe::updateValues(bool full)
     }
 
     ui->btnNachOben->setEnabled(mRow > 0);
-    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelHopfengaben()->rowCount() - 1);
+    ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 }
 
 void WdgHopfenGabe::on_btnZutat_clicked()

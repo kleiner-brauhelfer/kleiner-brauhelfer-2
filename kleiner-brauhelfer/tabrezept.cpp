@@ -14,6 +14,7 @@
 #include "widgets/wdghopfengabe.h"
 #include "widgets/wdghefegabe.h"
 #include "widgets/wdgweiterezutatgabe.h"
+#include "widgets/wdgwasseraufbereitung.h"
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlguebernahmerezept.h"
@@ -27,7 +28,6 @@ TabRezept::TabRezept(QWidget *parent) :
     ui(new Ui::TabRezept)
 {
     ui->setupUi(this);
-    ui->tbRestalkalitaet->setColumn(ModelSud::ColRestalkalitaetSoll);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
     ui->tbMenge->setColumn(ModelSud::ColMenge);
@@ -54,7 +54,11 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
     ui->tbWasserHGF->setColumn(ModelSud::ColWasserHgf);
     ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
-    ui->tbPh->setColumn(ModelSud::ColPhMaische);
+    ui->tbRestalkalitaetSoll->setColumn(ModelSud::ColRestalkalitaetSoll);
+    ui->tbRestalkalitaetWasser->setColumn(ModelSud::ColRestalkalitaetWasser);
+    ui->tbRestalkalitaetIst->setColumn(ModelSud::ColRestalkalitaetIst);
+    ui->tbPhMalz->setColumn(ModelSud::ColPhMalz);
+    ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
 
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
@@ -131,6 +135,10 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(weitereZutatenGaben_modified()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(weitereZutatenGaben_modified()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(weitereZutatenGaben_modified()));
+
+    connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(layoutChanged()), this, SLOT(wasseraufbereitung_modified()));
+    connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(wasseraufbereitung_modified()));
+    connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(wasseraufbereitung_modified()));
 
     connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(anhaenge_modified()));
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(anhaenge_modified()));
@@ -212,6 +220,7 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         hopfenGaben_modified();
         hefeGaben_modified();
         weitereZutatenGaben_modified();
+        wasseraufbereitung_modified();
         checkRohstoffe();
         break;
     }
@@ -240,7 +249,8 @@ void TabRezept::checkEnabled()
     ui->tbVergaerungsgrad->setReadOnly(gebraut);
     ui->tbCO2->setReadOnly(gebraut);
     ui->cbWasserProfil->setEnabled(!gebraut);
-    ui->tbRestalkalitaet->setReadOnly(gebraut);
+    ui->tbRestalkalitaetSoll->setReadOnly(gebraut);
+    ui->btnWasseraufbereitungUebernehmen->setVisible(!gebraut);
     ui->tbReifezeit->setReadOnly(gebraut);
     ui->btnNeueRast->setVisible(!gebraut);
     ui->btnRastenUebernehmen->setVisible(!gebraut);
@@ -259,6 +269,8 @@ void TabRezept::checkEnabled()
     ui->btnNeueWeitereZutat->setVisible(!abgefuellt);
     ui->btnWeitereZutatUebernehmen->setVisible(!abgefuellt);
     ui->lineNeueWeitereZutat->setVisible(!abgefuellt);
+    ui->btnNeueWasseraufbereitung->setVisible(!gebraut);
+    ui->lineNeueWasseraufbereitung->setVisible(!gebraut);
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
         static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget())->updateValues();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
@@ -269,6 +281,8 @@ void TabRezept::checkEnabled()
         static_cast<WdgWeitereZutatGabe*>(ui->layoutWeitereZutatenGaben->itemAt(i)->widget())->updateValues();
     for (int i = 0; i < ui->layoutRasten->count(); ++i)
         static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget())->updateValues();
+    for (int i = 0; i < ui->layoutWasseraufbereitung->count(); ++i)
+        static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues();
 }
 
 void TabRezept::checkRohstoffe()
@@ -382,6 +396,8 @@ void TabRezept::updateValues()
     ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
     diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble();
     ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
+    diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
+    ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -398,7 +414,7 @@ void TabRezept::updateValues()
         ui->lblBittere->setText(tr("moderat herb"));
     else
         ui->lblBittere->setText(tr("sehr herb"));
-    ui->tbPh->setError(ui->tbPh->value() > 0 && (ui->tbPh->value() < 5.2 || ui->tbPh->value() > 5.8));
+    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
     ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
@@ -407,40 +423,19 @@ void TabRezept::updateValues()
         ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
     ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
-    ui->lblWasserprofil->setText(bh->sud()->getWasserprofil());
-    double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
-    ui->tbMilchsaeureGesamt->setValue(ui->tbWasserGesamt->value() * restalkalitaetFaktor);
-    ui->tbMilchsaeureHG->setValue(ui->tbHauptguss->value() * restalkalitaetFaktor);
-    ui->tbMilchsaeureNG->setValue(ui->tbNachguss->value() * restalkalitaetFaktor);
-    ui->tbMilchsaeureHGF->setValue(ui->tbWasserHGF->value() * restalkalitaetFaktor);
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
-    ui->tbMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblMilchsaeureGesamt->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblMilchsaeureGesamtEinheit->setVisible(restalkalitaetFaktor > 0.0);
-    ui->tbMilchsaeureHG->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblMilchsaeureHG->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblMilchsaeureHGEinheit->setVisible(restalkalitaetFaktor > 0.0);
-    ui->tbMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblMilchsaeureNG->setVisible(restalkalitaetFaktor > 0.0);
-    ui->lblMilchsaeureNGEinheit->setVisible(restalkalitaetFaktor > 0.0);
     if (ui->tbHGF->value() != 0.0)
     {
         ui->tbWasserHGF->setVisible(true);
         ui->lblWasserHGF->setVisible(true);
         ui->lblWasserHGFEinheit->setVisible(true);
-        ui->tbMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
-        ui->lblMilchsaeureHGF->setVisible(restalkalitaetFaktor > 0.0);
-        ui->lblMilchsaeureHGFEinheit->setVisible(restalkalitaetFaktor > 0.0);
     }
     else
     {
         ui->tbWasserHGF->setVisible(false);
         ui->lblWasserHGF->setVisible(false);
         ui->lblWasserHGFEinheit->setVisible(false);
-        ui->tbMilchsaeureHGF->setVisible(false);
-        ui->lblMilchsaeureHGF->setVisible(false);
-        ui->lblMilchsaeureHGFEinheit->setVisible(false);
     }
     ui->lblAnlageName->setText(bh->sud()->getAnlage());
     ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
@@ -926,6 +921,36 @@ void TabRezept::on_btnWeitereZutatUebernehmen_clicked()
                              {{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}});
         bh->sud()->modelWeitereZutatenGaben()->invalidate();
+    }
+}
+
+void TabRezept::wasseraufbereitung_modified()
+{
+    const int nModel = bh->sud()->modelWasseraufbereitung()->rowCount();
+    int nLayout = ui->layoutWasseraufbereitung->count();
+    while (nLayout < nModel)
+        ui->layoutWasseraufbereitung->addWidget(new WdgWasseraufbereitung(nLayout++, ui->layoutWasseraufbereitung, this));
+    while (ui->layoutWasseraufbereitung->count() != nModel)
+        delete ui->layoutWasseraufbereitung->itemAt(ui->layoutWasseraufbereitung->count() - 1)->widget();
+    for (int i = 0; i < ui->layoutWasseraufbereitung->count(); ++i)
+        static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues(true);
+}
+
+void TabRezept::on_btnNeueWasseraufbereitung_clicked()
+{
+    bh->sud()->modelWasseraufbereitung()->append({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()}});
+    ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
+}
+
+void TabRezept::on_btnWasseraufbereitungUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Wasseraufbereitung);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelWasseraufbereitung(),
+                             ModelWasseraufbereitung::ColSudID, dlg.sudId(),
+                             {{ModelWasseraufbereitung::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelWasseraufbereitung()->invalidate();
     }
 }
 

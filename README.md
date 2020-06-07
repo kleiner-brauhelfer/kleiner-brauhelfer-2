@@ -52,6 +52,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Neu: Aninmationen (ausschaltbar)
 - Neu: Anlageprofil Brauheld Pro
 - Neu: Wasserprofil Eingabemöglichkeit für Sulfat, Chlorid und Natrium
+- Neu: Wasseraufbereiung für Zugabe von Säuren und andere Chemikalien
 
 ### Version 2.1.3 (02.05.2020)
 - Neu: Suche in Rohstoffvorlage durchsucht alle Spalten

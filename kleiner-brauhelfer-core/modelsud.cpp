@@ -50,11 +50,12 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
     mVirtualField.append("Alkohol");
+    mVirtualField.append("RestalkalitaetWasser");
+    mVirtualField.append("RestalkalitaetIst");
     mVirtualField.append("PhMalz");
     mVirtualField.append("PhMaische");
     mVirtualField.append("AnlageVerdampfungsrate");
     mVirtualField.append("AnlageSudhausausbeute");
-    mVirtualField.append("RestalkalitaetFaktor");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
     mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
@@ -399,6 +400,14 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double sre = BierCalc::sreAusVergaerungsgrad(sw, vg);
         return BierCalc::alkohol(sw, sre);
     }
+    case ColRestalkalitaetWasser:
+    {
+        return dataWasser(idx.row(), ModelWasser::ColRestalkalitaet).toDouble();
+    }
+    case ColRestalkalitaetIst:
+    {
+        return data(idx.row(), ColRestalkalitaetWasser).toDouble() + bh->modelWasseraufbereitung()->restalkalitaet(data(idx.row(), ColID));
+    }
     case ColPhMalz:
     {
         double phGesamt = 0;
@@ -426,7 +435,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double phMalz = data(idx.row(), ColPhMalz).toDouble();
         if (phMalz > 0)
         {
-            double ra = data(idx.row(), ColRestalkalitaetSoll).toDouble();
+            double ra = data(idx.row(), ColRestalkalitaetIst).toDouble();
             double V = data(idx.row(), Colerg_WHauptguss).toDouble();
             double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
             phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
@@ -440,15 +449,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColAnlageSudhausausbeute:
     {
         return dataAnlage(idx.row(), ModelAusruestung::ColSudhausausbeute);
-    }
-    case ColRestalkalitaetFaktor:
-    {
-        double ist = bh->modelWasser()->getValueFromSameRow(ModelWasser::ColName, data(idx.row(), ColWasserprofil), ModelWasser::ColRestalkalitaet).toDouble();
-        double soll = data(idx.row(), ColRestalkalitaetSoll).toDouble();
-        double fac = (ist - soll) * 0.033333333;
-        if (fac < 0.0)
-            fac = 0.0;
-        return fac;
     }
     case ColFaktorHauptgussEmpfehlung:
     {

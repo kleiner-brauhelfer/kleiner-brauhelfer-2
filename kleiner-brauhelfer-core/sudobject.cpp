@@ -14,6 +14,7 @@ SudObject::SudObject(Brauhelfer *bh) :
     proxyModelHopfengaben(new ProxyModel(this)),
     proxyModelHefegaben(new ProxyModel(this)),
     proxyModelWeitereZutatenGaben(new ProxyModel(this)),
+    proxyModelWasseraufbereitung(new ProxyModel(this)),
     proxyModelSchnellgaerverlauf(new ProxyModel(this)),
     proxyModelHauptgaerverlauf(new ProxyModel(this)),
     proxyModelNachgaerverlauf(new ProxyModel(this)),
@@ -36,6 +37,7 @@ SudObject::~SudObject()
     delete proxyModelHopfengaben;
     delete proxyModelHefegaben;
     delete proxyModelWeitereZutatenGaben;
+    delete proxyModelWasseraufbereitung;
     delete proxyModelSchnellgaerverlauf;
     delete proxyModelHauptgaerverlauf;
     delete proxyModelNachgaerverlauf;
@@ -58,6 +60,8 @@ void SudObject::init()
     modelHefegaben()->setFilterKeyColumn(ModelHefegaben::ColSudID);
     modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
     modelWeitereZutatenGaben()->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+    modelWasseraufbereitung()->setSourceModel(bh->modelWasseraufbereitung());
+    modelWasseraufbereitung()->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
     modelSchnellgaerverlauf()->setSourceModel(bh->modelSchnellgaerverlauf());
     modelSchnellgaerverlauf()->setFilterKeyColumn(ModelSchnellgaerverlauf::ColSudID);
     modelHauptgaerverlauf()->setSourceModel(bh->modelHauptgaerverlauf());
@@ -79,6 +83,7 @@ void SudObject::init()
     modelHopfengaben()->setFilterRegExp(regExpId);
     modelHefegaben()->setFilterRegExp(regExpId);
     modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
+    modelWasseraufbereitung()->setFilterRegExp(regExpId);
     modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
     modelHauptgaerverlauf()->setFilterRegExp(regExpId);
     modelNachgaerverlauf()->setFilterRegExp(regExpId);
@@ -106,6 +111,7 @@ void SudObject::load(int id)
         modelHopfengaben()->setFilterRegExp(regExpId);
         modelHefegaben()->setFilterRegExp(regExpId);
         modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
+        modelWasseraufbereitung()->setFilterRegExp(regExpId);
         modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
         modelHauptgaerverlauf()->setFilterRegExp(regExpId);
         modelNachgaerverlauf()->setFilterRegExp(regExpId);
@@ -182,6 +188,11 @@ ProxyModel* SudObject::modelHefegaben() const
 ProxyModel* SudObject::modelWeitereZutatenGaben() const
 {
     return proxyModelWeitereZutatenGaben;
+}
+
+ProxyModel* SudObject::modelWasseraufbereitung() const
+{
+    return proxyModelWasseraufbereitung;
 }
 
 ProxyModel* SudObject::modelSchnellgaerverlauf() const

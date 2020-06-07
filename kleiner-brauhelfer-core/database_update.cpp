@@ -1396,7 +1396,7 @@ bool Database::update()
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Typ INTEGER DEFAULT 1,"
-                "Name TEXT,"
+                "Name TEXT NOT NULL,"
                 "Temp REAL DEFAULT 0,"
                 "Dauer REAL DEFAULT 0,"
                 "Mengenfaktor REAL DEFAULT 1,"
@@ -1437,6 +1437,17 @@ bool Database::update()
                 "Name TEXT UNIQUE,"
                 "Bemerkung TEXT)");
             sqlExec(db, "INSERT INTO Kategorien (Name) VALUES ('')");
+
+            // Wasseraufbereitung
+            //  - neue Tabelle
+            sqlExec(db, "CREATE TABLE Wasseraufbereitung ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Name TEXT NOT NULL,"
+                "Menge REAL DEFAULT 0,"
+                "Einheit INTEGER DEFAULT 0,"
+                "Faktor REAL DEFAULT 0,"
+                "Restalkalitaet REAL DEFAULT 0)");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

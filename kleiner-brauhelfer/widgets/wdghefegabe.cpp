@@ -24,7 +24,7 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
@@ -137,18 +137,17 @@ void WdgHefeGabe::updateValues(bool full)
     {
         ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
         int benoetigt = 0;
-        ProxyModel* model = bh->sud()->modelHefegaben();
-        for (int i = 0; i < model->rowCount(); ++i)
+        for (int i = 0; i < mModel->rowCount(); ++i)
         {
-            if (model->data(i, ModelHefegaben::ColName).toString() == hefename)
-                benoetigt += model->data(i, ModelHefegaben::ColMenge).toInt();
+            if (mModel->data(i, ModelHefegaben::ColName).toString() == hefename)
+                benoetigt += mModel->data(i, ModelHefegaben::ColMenge).toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
         ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 
     ui->btnNachOben->setEnabled(mRow > 0);
-    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelHefegaben()->rowCount() - 1);
+    ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 }
 
 void WdgHefeGabe::on_btnZutat_clicked()

@@ -21,7 +21,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
@@ -93,11 +93,10 @@ void WdgMalzGabe::updateValues(bool full)
     {
         ui->tbVorhanden->setValue(bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
         double benoetigt = 0.0;
-        ProxyModel* model = bh->sud()->modelMalzschuettung();
-        for (int i = 0; i < model->rowCount(); ++i)
+        for (int i = 0; i < mModel->rowCount(); ++i)
         {
-            if (model->data(i, ModelMalzschuettung::ColName).toString() == malzname)
-                benoetigt += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+            if (mModel->data(i, ModelMalzschuettung::ColName).toString() == malzname)
+                benoetigt += mModel->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
         }
         ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
@@ -113,7 +112,7 @@ void WdgMalzGabe::updateValues(bool full)
             ui->lblWarnung->setVisible(false);
         }
 
-        if (mRow == 0 && bh->sud()->modelMalzschuettung()->rowCount() == 1)
+        if (mRow == 0 && mModel->rowCount() == 1)
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProzent->setReadOnly(true);
@@ -128,7 +127,7 @@ void WdgMalzGabe::updateValues(bool full)
     }
 
     ui->btnNachOben->setEnabled(mRow > 0);
-    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelMalzschuettung()->rowCount() - 1);
+    ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 }
 
 void WdgMalzGabe::on_btnZutat_clicked()

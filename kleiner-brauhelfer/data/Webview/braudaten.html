@@ -13,33 +13,27 @@
     <table style="width:100%">
       <col width="*">
       <col width="150">
-      {{#GesamtMilchsaeure}}<col width="150">{{/GesamtMilchsaeure}}
       <tr>
         <th></th>
         <th>Menge [l]</th>
-        {{#GesamtMilchsaeure}}<th>Milchs&auml;ure 80% [ml]</th>{{/GesamtMilchsaeure}}
       </tr>
       <tr>
         <td>Hauptguss</td>
         <td class="value" align="center">{{Hauptguss}}</td>
-        {{#GesamtMilchsaeure}}<td class="value" align="center">{{HauptgussMilchsaeure}}</td>{{/GesamtMilchsaeure}}
       </tr>
       <tr>
         <td>Nachguss</td>
         <td class="value" align="center">{{Nachguss}}</td>
-        {{#GesamtMilchsaeure}}<td class="value" align="center">{{NachgussMilchsaeure}}</td>{{/GesamtMilchsaeure}}
       </tr>
       {{#Verduennung}}
       <tr>
         <td>Verd&uuml;nnung</td>
         <td class="value" align="center">{{Verduennung}}</td>
-        {{#GesamtMilchsaeure}}<td class="value" align="center">{{VerduennungMilchsaeure}}</td>{{/GesamtMilchsaeure}}
       </tr>
       {{/Verduennung}}
       <tr>
         <td><strong>Gesamtmenge</strong></td>
         <td class="value" align="center">{{Gesamt}}</td>
-        {{#GesamtMilchsaeure}}<td class="value" align="center">{{GesamtMilchsaeure}}</td>{{/GesamtMilchsaeure}}
       </tr>
     </table>
   </div>

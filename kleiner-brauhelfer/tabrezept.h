@@ -53,6 +53,10 @@ private slots:
     void on_btnNeueWeitereZutat_clicked();
     void on_btnWeitereZutatUebernehmen_clicked();
 
+    void wasseraufbereitung_modified();
+    void on_btnNeueWasseraufbereitung_clicked();
+    void on_btnWasseraufbereitungUebernehmen_clicked();
+
     void anhaenge_modified();
     void on_btnNeuerAnhang_clicked();
 

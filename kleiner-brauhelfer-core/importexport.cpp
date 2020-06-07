@@ -180,6 +180,15 @@ int ImportExport::importKbh(Brauhelfer* bh, const QByteArray &content)
         model->appendDirect(values);
     }
 
+    model = bh->modelWasseraufbereitung();
+    array = root[model->tableName()].toArray();
+    for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+    {
+        values = it->toObject().toVariantMap();
+        values["SudID"] = sudId;
+        model->appendDirect(values);
+    }
+
     bh->modelSud()->update(sudRow);
     return sudRow;
 }
@@ -750,6 +759,15 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
         values["Global"] = proxy.data(row, ModelTags::ColGlobal).toBool();
         list.append(values);
     }
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelWasseraufbereitung();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
+    proxy.setFilterRegExp(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelWasseraufbereitung::ColID, ModelWasseraufbereitung::ColSudID}));
     root[model->tableName()] = QJsonArray::fromVariantList(list);
 
     QJsonDocument doc(root);

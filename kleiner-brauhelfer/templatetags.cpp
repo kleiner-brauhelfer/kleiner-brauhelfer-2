@@ -78,7 +78,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
             ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
             ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
-            ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
+            ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
             ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
             fval = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
             ctxRezept["MengeMaischen"] = locale.toString(fval, 'f', 1);
@@ -212,17 +212,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     mapWasser["Verduennung"] = locale.toString(f3, 'f', 1);
                 }
                 mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 1);
-                double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
-                if (restalkalitaetFaktor > 0)
-                {
-                    mapWasser["HauptgussMilchsaeure"] = QString::number(f1 * restalkalitaetFaktor, 'f', 1);
-                    mapWasser["NachgussMilchsaeure"] = QString::number(f2 * restalkalitaetFaktor, 'f', 1);
-                    if (bh->sud()->gethighGravityFaktor() != 0)
-                        mapWasser["VerduennungMilchsaeure"] = QString::number(f3 * restalkalitaetFaktor, 'f', 1);
-                    mapWasser["GesamtMilchsaeure"] = QString::number((f1 + f2 + f3) * restalkalitaetFaktor, 'f', 1);
-                }
                 ctx["Wasser"] = mapWasser;
-
 
                 QVariantMap ctxZutaten;
 

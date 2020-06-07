@@ -24,7 +24,7 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(int row, QLayout* parentLayout, QWidget
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
@@ -231,15 +231,14 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         else
             ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
         double benoetigt = 0.0;
-        ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
-        for (int i = 0; i < model->rowCount(); ++i)
+        for (int i = 0; i < mModel->rowCount(); ++i)
         {
-            if (model->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
-                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
+            if (mModel->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
+                benoetigt += mModel->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
         }
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
-            model = bh->sud()->modelHopfengaben();
+            ProxyModel* model = bh->sud()->modelHopfengaben();
             for (int i = 0; i < model->rowCount(); ++i)
             {
                 if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
@@ -346,7 +345,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     ui->cbZugabezeitpunkt->setEnabled(status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled);
 
     ui->btnNachOben->setEnabled(mRow > 0);
-    ui->btnNachUnten->setEnabled(mRow < bh->sud()->modelWeitereZutatenGaben()->rowCount() - 1);
+    ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 }
 
 void WdgWeitereZutatGabe::on_btnZutat_clicked()

@@ -309,7 +309,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColMengeSollKochbeginn:
     {
         double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
-        double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
+        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
         double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
         return mengeSollKochEnde + verdampfungsrate * kochdauer / 60;
     }
@@ -343,7 +343,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         double sw = data(idx.row(), ColSW).toDouble() - swWzKochenRecipe[idx.row()] - swWzGaerungRecipe[idx.row()];
         double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
-        double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
+        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
         double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
         double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
         return sw * hgf / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
@@ -351,7 +351,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColSWSollKochbeginnMitWz:
     {
         double sw = data(idx.row(), ColSWSollKochende).toDouble();
-        double kochdauer = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
+        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
         double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
         double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
         return sw / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
@@ -377,7 +377,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         double V1 = data(idx.row(), ColWuerzemengeKochbeginn).toDouble();
         double V2 = data(idx.row(), ColWuerzemengeVorHopfenseihen).toDouble();
-        double t = data(idx.row(), ColKochdauerNachBitterhopfung).toDouble();
+        double t = data(idx.row(), ColKochdauer).toDouble();
         return BierCalc::verdampfungsrate(V1, V2, t);
     }
     case ColsEVG:
@@ -900,7 +900,7 @@ void ModelSud::updateFarbe(int row)
     if (gs > 0.0)
     {
         double sw = data(row, ColSW).toDouble() - swWzKochenRecipe[row] - swWzGaerungRecipe[row];
-        double t = data(row, ColKochdauerNachBitterhopfung).toDouble();
+        double t = data(row, ColKochdauer).toDouble();
         ebc = (d / gs) * sw / 10 + 1.5 * t/60;
         ebc += dataAnlage(row, ModelAusruestung::ColKorrekturFarbe).toDouble();
     }
@@ -1052,8 +1052,8 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColCO2, 5);
     if (!values.contains(ColIBU))
         values.insert(ColIBU, 26);
-    if (!values.contains(ColKochdauerNachBitterhopfung))
-        values.insert(ColKochdauerNachBitterhopfung, 60);
+    if (!values.contains(ColKochdauer))
+        values.insert(ColKochdauer, 60);
     if (!values.contains(ColberechnungsArtHopfen))
         values.insert(ColberechnungsArtHopfen, static_cast<int>(Brauhelfer::BerechnungsartHopfen::IBU));
     if (!values.contains(ColVergaerungsgrad))

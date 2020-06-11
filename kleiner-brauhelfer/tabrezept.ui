@@ -665,7 +665,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidget_2">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabBemerkung">
            <property name="sizePolicy">
@@ -1478,6 +1478,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
@@ -1508,7 +1511,7 @@
           <item row="9" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMaische">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;pH-Wert der Maische. Für den Maischprozess günstiger Bereich: 5.3 - 5.7. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1595,6 +1598,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Wassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
@@ -1624,6 +1630,9 @@
           </item>
           <item row="8" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMalz">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
@@ -1647,7 +1656,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gewünschte Restalkalität (RA) eingestellt. Sie ist mithin ein Faktor für den richtigen pH-Wert beim Maischen. Ein hoher Wert erhöht den pH-Wert der Maische und mindert die Enymaktivität des Malzes und umgekehrt. Allgemein verlangen helle und hopfenaromatische Biere einen Wert kleiner als 5dH. Dunkle Biere beinhalten säurefördernde dunkle Malze . Hier sind bis zu 10dH ein Richtwert&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte:&lt;/span&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bock hell&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 2dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Alt &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 5dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-2 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; (RA) des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maischearbeit und somit für die Effizienz der Stärkespaltung, somit der Frage, ob das Bier mit der Schüttung gelingt. Zugleich ist der pH-Wert beim Maischen Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H+-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H+-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO3- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte Restalkalität&lt;/span&gt; eingestellt. Sie ist mithin ein Faktor für den richtigen pH-Wert beim Maischen. Ein hoher Wert erhöht den pH-Wert der Maische und mindert die Enymaktivität des Malzes und umgekehrt. Allgemein verlangen helle und hopfenaromatische Biere einen Wert kleiner als 5°dH. Dunkle Biere beinhalten säurefördernde dunkle Malze . Hier sind bis zu 10°dH ein Richtwert&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte:&lt;/span&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bock hell&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 2°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Alt &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 5°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-2 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; (RA) des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maischearbeit und somit für die Effizienz der Stärkespaltung, somit der Frage, ob das Bier mit der Schüttung gelingt. Zugleich ist der pH-Wert beim Maischen Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H+-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H+-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO3- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

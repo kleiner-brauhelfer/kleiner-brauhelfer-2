@@ -45,7 +45,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbVergaerungsgrad->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbReifezeit->setColumn(ModelSud::ColReifezeit);
     ui->tbHGF->setColumn(ModelSud::ColhighGravityFaktor);
-    ui->tbKochzeit->setColumn(ModelSud::ColKochdauerNachBitterhopfung);
+    ui->tbKochzeit->setColumn(ModelSud::ColKochdauer);
     ui->tbNachisomerisierungszeit->setColumn(ModelSud::ColNachisomerisierungszeit);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->tbFaktorHauptgussEmpfehlung->setColumn(ModelSud::ColFaktorHauptgussEmpfehlung);
@@ -793,7 +793,7 @@ void TabRezept::on_btnNeueHopfenGabe_clicked()
             p = 0.0;
         QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()},
                                     {ModelHopfengaben::ColName, dlg.name()},
-                                    {ModelHopfengaben::ColZeit, bh->sud()->getKochdauerNachBitterhopfung()},
+                                    {ModelHopfengaben::ColZeit, bh->sud()->getKochdauer()},
                                     {ModelHopfengaben::ColProzent, p}});
         bh->sud()->modelHopfengaben()->append(values);
         ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());

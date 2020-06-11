@@ -230,7 +230,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
     values[ModelSud::ColCO2] = toDouble(root["Karbonisierung"]);
     values[ModelSud::ColIBU] = toDouble(root["Bittere"]);
     values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
-    values[ModelSud::ColKochdauerNachBitterhopfung] = toDouble(root["Kochzeit_Wuerze"]);
+    values[ModelSud::ColKochdauer] = toDouble(root["Kochzeit_Wuerze"]);
     values[ModelSud::ColVergaerungsgrad] = toDouble(root["Endvergaerungsgrad"]);
     values[ModelSud::ColKommentar] = QString("Rezept aus MaischeMalzundMehr\n"
                                               "<b>Autor: </b> %1\n"
@@ -474,7 +474,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
         max = nStyle.firstChildElement("IBU_MAX").text().toDouble();
         values[ModelSud::ColIBU] = (min+max)/2;
         values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
-        values[ModelSud::ColKochdauerNachBitterhopfung] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
+        values[ModelSud::ColKochdauer] = nRecipe.firstChildElement("BOIL_TIME").text().toDouble();
 
         sudRow = bh->modelSud()->append(values);
         bh->modelSud()->update(sudRow);
@@ -794,7 +794,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     root["Endvergaerungsgrad"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toDouble(), 'f', 1);
     root["Karbonisierung"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
     root["Nachguss"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_WNachguss).toDouble(), 'f', 1);
-    root["Kochzeit_Wuerze"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt());
+    root["Kochzeit_Wuerze"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt());
 
     // Rasten
     model.setSourceModel(bh->modelRasten());
@@ -958,7 +958,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
                 root[QString("WeitereZutat_Wuerze_%1_Menge").arg(n)] = QString::number(model.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toInt());
                 root[QString("WeitereZutat_Wuerze_%1_Einheit").arg(n)] = "g";
             }
-            root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(n)] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt());
+            root[QString("WeitereZutat_Wuerze_%1_Kochzeit").arg(n)] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt());
             ++n;
         }
         else if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen)
@@ -1072,7 +1072,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     Rezept.appendChild(element);
 
     element = doc.createElement("BOIL_TIME");
-    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt()));
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt()));
     element.appendChild(text);
     Rezept.appendChild(element);
 

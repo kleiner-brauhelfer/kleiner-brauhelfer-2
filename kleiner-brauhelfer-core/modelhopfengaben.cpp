@@ -28,7 +28,7 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
     {
         // https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsiburechne
         int rowSudId = bh->modelSud()->getRowWithValue(ModelSud::ColID, data(idx.row(), ColSudID));
-        double kochzeit = bh->modelSud()->data(rowSudId, ModelSud::ColKochdauerNachBitterhopfung).toDouble();
+        double kochzeit = bh->modelSud()->data(rowSudId, ModelSud::ColKochdauer).toDouble();
         double isozeit = bh->modelSud()->data(rowSudId, ModelSud::ColNachisomerisierungszeit).toDouble();
         double t = data(idx.row(), ColZeit).toDouble();
         double sw_beginn = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochbeginn).toDouble();
@@ -208,7 +208,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         {
             if (value.toBool())
             {
-                int dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauerNachBitterhopfung).toInt();
+                int dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauer).toInt();
                 QSqlTableModel::setData(index(idx.row(), ColZeit), dauer);
             }
             QModelIndex idx2 = index(idx.row(), ColProzent);
@@ -231,7 +231,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     case ModelSud::ColIBU:
     case ModelSud::ColberechnungsArtHopfen:
     case ModelSud::ColhighGravityFaktor:
-    case ModelSud::ColKochdauerNachBitterhopfung:
+    case ModelSud::ColKochdauer:
     case ModelSud::ColNachisomerisierungszeit:
     {
         QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
@@ -241,7 +241,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
         {
             if (data(r, ColSudID) == sudId)
             {
-                if (idx.column() == ModelSud::ColKochdauerNachBitterhopfung)
+                if (idx.column() == ModelSud::ColKochdauer)
                 {
                     int max = idx.data().toInt();
                     if (data(r, ColVorderwuerze).toBool())

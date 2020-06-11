@@ -68,7 +68,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
             ctxRezept["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
             ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toDouble())).name();
-            ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt());
+            ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt());
             ival = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
             if (ival > 0)
                 ctxRezept["Nachisomerisierung"] = QString::number(ival);
@@ -78,7 +78,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
             ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
             ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
-            ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
+            ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
             ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
             fval = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
             ctxRezept["MengeMaischen"] = locale.toString(fval, 'f', 1);
@@ -154,7 +154,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         {
             if (parts & TagBraudaten)
             {
-                int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt();
+                int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt();
 
                 QVariantList liste;
                 ProxyModel *model = bh->sud()->modelRasten();

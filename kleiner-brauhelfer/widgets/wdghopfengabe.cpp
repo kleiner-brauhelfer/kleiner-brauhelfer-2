@@ -99,7 +99,7 @@ void WdgHopfenGabe::updateValues(bool full)
     if (!ui->tbKochdauer->hasFocus())
     {
         ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
-        ui->tbKochdauer->setMaximum(bh->sud()->getKochdauerNachBitterhopfung());
+        ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
         ui->tbKochdauer->setValue(data(ModelHopfengaben::ColZeit).toInt());
     }
     if (data(ModelHopfengaben::ColVorderwuerze).toBool())

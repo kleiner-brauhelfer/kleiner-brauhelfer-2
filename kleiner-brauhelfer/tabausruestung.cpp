@@ -386,7 +386,7 @@ void TabAusruestung::on_btnVerdampfungsrate_clicked()
     dlg.setHoehe(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
     if (bh->sud()->isLoaded())
     {
-        dlg.setKochdauer(bh->sud()->getKochdauerNachBitterhopfung());
+        dlg.setKochdauer(bh->sud()->getKochdauer());
         dlg.setMenge1(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeKochbeginn()));
         dlg.setMenge2(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeVorHopfenseihen()));
     }

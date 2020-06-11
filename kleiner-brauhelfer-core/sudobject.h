@@ -39,7 +39,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, CO2, toDouble())
     Q_PROPERTY_SUD(int, IBU, toInt())
     Q_PROPERTY_SUD(int, berechnungsArtHopfen, toInt())
-    Q_PROPERTY_SUD(int, KochdauerNachBitterhopfung, toInt())
+    Q_PROPERTY_SUD(int, Kochdauer, toInt())
     Q_PROPERTY_SUD(int, Nachisomerisierungszeit, toInt())
     Q_PROPERTY_SUD(int, Reifezeit, toInt())
     Q_PROPERTY_SUD(double, KostenWasserStrom, toDouble())

@@ -1212,6 +1212,7 @@ bool Database::update()
             // Sud
             //  - neue Spalte 'Kategorie'
             //  - neue Spalte 'VerschneidungAbfuellen'
+            //  - Spalte unbenannt KochdauerNachBitterhopfung -> Kochdauer
             //  - 'Verdampfungsrate' in l/h statt %
             sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE Sud ("
@@ -1229,7 +1230,7 @@ bool Database::update()
                 "CO2 REAL DEFAULT 5,"
                 "IBU REAL DEFAULT 26,"
                 "berechnungsArtHopfen INTEGER DEFAULT 0,"
-                "KochdauerNachBitterhopfung INTEGER DEFAULT 90,"
+                "Kochdauer INTEGER DEFAULT 60,"
                 "Nachisomerisierungszeit INTEGER DEFAULT 0,"
                 "Reifezeit INTEGER DEFAULT 4,"
                 "KostenWasserStrom REAL DEFAULT 0,"
@@ -1283,7 +1284,7 @@ bool Database::update()
                 "CO2,"
                 "IBU,"
                 "berechnungsArtHopfen,"
-                "KochdauerNachBitterhopfung,"
+                "Kochdauer,"
                 "Nachisomerisierungszeit,"
                 "Reifezeit,"
                 "KostenWasserStrom,"

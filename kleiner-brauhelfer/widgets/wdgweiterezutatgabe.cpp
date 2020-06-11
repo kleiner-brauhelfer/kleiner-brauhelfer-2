@@ -167,7 +167,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     if (!ui->tbDauerMin->hasFocus())
     {
         ui->tbDauerMin->setMinimum(-bh->sud()->getNachisomerisierungszeit());
-        ui->tbDauerMin->setMaximum(bh->sud()->getKochdauerNachBitterhopfung());
+        ui->tbDauerMin->setMaximum(bh->sud()->getKochdauer());
         ui->tbDauerMin->setValue(dauer);
     }
     ui->cbEntnahme->setChecked(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);

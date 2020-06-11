@@ -30,7 +30,7 @@ public:
         ColCO2,
         ColIBU,
         ColberechnungsArtHopfen,
-        ColKochdauerNachBitterhopfung,
+        ColKochdauer,
         ColNachisomerisierungszeit,
         ColReifezeit,
         ColKostenWasserStrom,

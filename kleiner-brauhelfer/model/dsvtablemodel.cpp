@@ -361,7 +361,11 @@ bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar del
                 out << value;
             out << delim;
         }
+      #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+        out << Qt::endl;
+      #else
         out << endl;
+      #endif
     }
     for (int r = 0; r < mData->rowCount(); ++r)
     {
@@ -374,7 +378,11 @@ bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar del
             else
                 out << value;
             if (c == mData->columnCount() - 1)
+              #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+                out << Qt::endl;
+              #else
                 out << endl;
+              #endif
             else
                 out << delim;
         }

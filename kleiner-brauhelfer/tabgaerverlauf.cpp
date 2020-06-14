@@ -588,7 +588,11 @@ double TabGaerverlauf::toDouble(const QString& string, bool *ok) const
 void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+  #else
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+  #endif
     if (rows.size() == 0)
         return;
     bh->modelSchnellgaerverlauf()->blockSignals(true);
@@ -635,7 +639,11 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+  #else
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+  #endif
     if (rows.size() == 0)
         return;
     bh->modelHauptgaerverlauf()->blockSignals(true);
@@ -682,7 +690,11 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
 void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+  #else
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+  #endif
     if (rows.size() == 0)
         return;
     bh->modelNachgaerverlauf()->blockSignals(true);

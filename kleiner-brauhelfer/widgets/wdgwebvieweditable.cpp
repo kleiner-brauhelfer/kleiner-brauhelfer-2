@@ -11,6 +11,8 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+double WdgWebViewEditable::gZoomFactor = 1.0;
+
 WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WdgWebViewEditable),
@@ -38,11 +40,17 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
+    gSettings->beginGroup("General");
+    gZoomFactor = gSettings->value("WebViewZoomFactor").toDouble();
+    gSettings->endGroup();
 }
 
 WdgWebViewEditable::~WdgWebViewEditable()
 {
     delete ui;
+    gSettings->beginGroup("General");
+    gSettings->setValue("WebViewZoomFactor", gZoomFactor);
+    gSettings->endGroup();
 }
 
 void WdgWebViewEditable::clear()
@@ -230,6 +238,11 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
 
 void WdgWebViewEditable::updateWebView()
 {
+    if (ui->webview->zoomFactor() != gZoomFactor)
+    {
+        ui->webview->setZoomFactor(gZoomFactor);
+        ui->sliderZoom->setValue(gZoomFactor * 100);
+    }
     if (ui->cbEditMode->isChecked())
     {
         if (ui->cbTemplateAuswahl->currentIndex() == 0)
@@ -257,5 +270,14 @@ void WdgWebViewEditable::updateTags()
     {
         QJsonDocument json = QJsonDocument::fromVariant(mTemplateTags);
         ui->tbTags->setPlainText(json.toJson());
+    }
+}
+
+void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
+{
+    if (ui->sliderZoom->hasFocus())
+    {
+        gZoomFactor = value / 100.0;
+        ui->webview->setZoomFactor(gZoomFactor);
     }
 }

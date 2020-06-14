@@ -325,14 +325,14 @@ void TabSudAuswahl::on_tbFilter_textChanged(const QString &pattern)
 void TabSudAuswahl::on_tbDatumVon_dateChanged(const QDate &date)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterMinimumDate(QDateTime(date.addDays(-1)));
+    model->setFilterMinimumDate(QDateTime(date, QTime(0,0,0)));
     ui->tbDatumBis->setMinimumDate(date);
 }
 
 void TabSudAuswahl::on_tbDatumBis_dateChanged(const QDate &date)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterMaximumDate(QDateTime(date.addDays(1)));
+    model->setFilterMaximumDate(QDateTime(date, QTime(23,59,59)));
     ui->tbDatumVon->setMaximumDate(date);
 }
 

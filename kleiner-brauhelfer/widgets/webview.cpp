@@ -69,6 +69,7 @@ void WebView::printToPdf(const QString& filePath, const QMarginsF& margins)
     loop.exec();
   #else
     Q_UNUSED(filePath)
+    Q_UNUSED(margins)
   #endif
 }
 

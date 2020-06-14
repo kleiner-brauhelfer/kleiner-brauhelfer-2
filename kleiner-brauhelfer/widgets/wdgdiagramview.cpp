@@ -1,8 +1,8 @@
 #include "wdgdiagramview.h"
 #include <QMouseEvent>
 
-WdgDiagramView::WdgDiagramView( QWidget * parent,  Qt::WindowFlags f ) :
-    QWidget(parent, f),
+WdgDiagramView::WdgDiagramView(QWidget * parent) :
+    QWidget(parent),
     L1Precision(6),
     L1Min(0.0),
     L1Max(0.0),

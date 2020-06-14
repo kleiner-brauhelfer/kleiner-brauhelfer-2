@@ -32,8 +32,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.2.0 (in Entwicklung)
-- Neu: Offizielle version kompiliert mit Qt 5.15
+### Version 2.2.0 Beta (in Entwicklung)
+- Neu: Offizielle version kompiliert mit **Qt 5.15**
 - Neu: Datenbankversion **2004**
 - Neu: Neue Spalte "Alternativen" bei Rohstofftabellen
 - Neu: Rohstofftabellen etwas überarbeitet

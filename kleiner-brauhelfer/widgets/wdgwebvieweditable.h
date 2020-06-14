@@ -34,6 +34,7 @@ private slots:
     void on_btnSaveTemplate_clicked();
     void on_btnRestoreTemplate_clicked();
     void on_tbTemplate_textChanged();
+    void on_sliderZoom_valueChanged(int value);
 
 private:
     bool checkSaveTemplate();
@@ -46,6 +47,9 @@ private:
     HtmlHighLighter *mHtmlHightLighter;
     QTemporaryFile mTempCssFile;
     QTimer mTimerWebViewUpdate;
+
+private:
+    static double gZoomFactor;
 };
 
 #endif // WDGWEBVIEWEDITABLE_H

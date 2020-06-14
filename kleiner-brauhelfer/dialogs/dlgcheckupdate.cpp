@@ -74,7 +74,11 @@ bool DlgCheckUpdate::parseReplyGithub(const QByteArray& str)
         QLocale locale = QLocale();
         ui->lblName->setText(reply.object().value("name").toString());
         ui->lblDate->setText(locale.toString(dtPublished, QLocale::ShortFormat));
+      #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
         ui->textEdit->setMarkdown(reply.object().value("body").toString());
+      #else
+        ui->textEdit->setText(reply.object().value("body").toString());
+      #endif
         ui->lblUrl->setText("<a href=\"" + reply.object().value("html_url").toString() + "\">Download</a>");
         return true;
     }

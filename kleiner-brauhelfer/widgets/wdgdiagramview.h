@@ -107,7 +107,7 @@ public:
 
 	void paintEvent(QPaintEvent * event);
 	void mousePressEvent ( QMouseEvent * event );
-    WdgDiagramView(QWidget * parent = 0,  Qt::WindowFlags f = 0);
+    WdgDiagramView(QWidget *parent = nullptr);
 signals:
     void sig_selectionChanged(int id);
 };

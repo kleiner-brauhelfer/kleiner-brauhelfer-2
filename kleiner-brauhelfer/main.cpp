@@ -352,7 +352,11 @@ static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &c
     out << msg;
     if (context.file)
         out << " | " << context.file << ":" << context.line << ", " << context.function;
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    out << Qt::endl;
+  #else
     out << endl;
+  #endif
 }
 
 int main(int argc, char *argv[])

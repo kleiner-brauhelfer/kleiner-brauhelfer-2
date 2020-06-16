@@ -50,6 +50,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnAktualisieren">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf Aktualisieren wirken sich die Änderungen unmittelbar aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
           <string>Aktualisieren</string>
          </property>

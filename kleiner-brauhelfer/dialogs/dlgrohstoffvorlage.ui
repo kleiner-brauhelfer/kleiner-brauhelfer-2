@@ -91,7 +91,7 @@
         <item>
          <widget class="QPushButton" name="btn_Add">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen eine neue, vordefinierte Zeile hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue&lt;/span&gt;, vordefinierte &lt;span style=&quot; font-weight:600;&quot;&gt;Zeile&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Vorlage hinzufügen</string>
@@ -101,7 +101,7 @@
         <item>
          <widget class="QPushButton" name="btn_Remove">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld eine markierte Zeile aus den Rohstoffvorlagen gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld eine &lt;span style=&quot; font-weight:600;&quot;&gt;markierte Zeile&lt;/span&gt; aus den Rohstoffvorlagen gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Vorlage löschen</string>
@@ -111,7 +111,7 @@
         <item>
          <widget class="QPushButton" name="btn_Import">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen neue, vordefinierte Rohstofflisten hinzugefügt. Aktuell sollte der Datensatz als semikolonseparierter csv-Datensatz mit den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Name&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Typ&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Farbe&lt;/span&gt; vorliegen.&lt;/p&gt;&lt;p&gt;Beispiel:&lt;/p&gt;&lt;p&gt;Name;Typ;Ausbeute;Farbe&lt;br/&gt;Honig;Honig;90;1&lt;br/&gt;;;;&lt;br/&gt;;;;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden im obigen Feld Rohstoffvorlagen neue, vordefinierte Rohstofflisten hinzugefügt. Aktuell sollte der Datensatz als semikolonseparierter csv-Datensatz mit den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Name&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Typ&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Farbe&lt;/span&gt; vorliegen.&lt;/p&gt;&lt;p&gt;Beispiel:&lt;/p&gt;&lt;p&gt;Name;Typ;Ausbeute;Farbe&lt;br/&gt;Honig;Honig;90;1&lt;br/&gt;;;;&lt;br/&gt;;;;&lt;/p&gt;&lt;p&gt;Ein Leerzeichen hinter dem Semikolon ist nicht nötig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Liste importieren</string>
@@ -131,7 +131,7 @@
         <item>
          <widget class="QPushButton" name="btn_Restore">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird der vordefinierte Ausgangszustand für die Vorlagenerstellung wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird der vordefinierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausgangszustand&lt;/span&gt; für die Vorlagenerstellung wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Liste wiederherstellen</string>

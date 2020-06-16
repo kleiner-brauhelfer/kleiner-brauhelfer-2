@@ -174,7 +174,7 @@
         <item row="1" column="6" colspan="2">
          <widget class="QPushButton" name="btnZugeben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer mitgeteilt, dass die zweite Hefegabe ausgeführt wurde.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms  wird diese Aktion nun berücksichtigt. U.a. kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe &lt;/span&gt;erfolgt ist.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Zugeben</string>
@@ -309,7 +309,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anzahl der zugegebenen &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies kann einer vorkonfektionierten Tüte Trocken- oder Flüssighefe entsprechen, aber auch kalkulierten Vorräten,  wie sie in einem Hefestarter zur Anwendung kommen.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anzahl der zugegebenen &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies kann einer vorkonfektionierten Tüte Trocken- oder Flüssighefe entsprechen, aber auch kalkulierten Vorräten, wie sie in einem Hefestarter zur Anwendung kommen.&lt;/p&gt;&lt;p&gt;Trockenhefen für Kleinsude werden meist in Mengen zwischen 10,5 g und 11,5 g abverpackt. Bei flüssiger Reinhefe utnerscheiden sich die Mengen, abhänig von der Startertechnologie, stark.&lt;/p&gt;&lt;p&gt;Üblicherweise sind Bierhefen im Hobbybereich für 20 Liter ausgelegt. Daneben existieren Größen für die Propagation oder den professionelle Abverpackungen, die eine Mengenberechnung deutlich erschweren. Im Zweifel ist der Rat eines Fachforums hinzuziehen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -332,7 +332,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Empfohlene Anzahl &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die empfohlene Anzahl von &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Eine Hefeeinheit ist kein feststehender Wert, sondern dient allein der Orientierung. Vielmehr ist darunter die Hefemenge von durchschnittlich 11 g für einen üblichen Kleinsud von 20 Litern zu verstehen. Je nach Stammwürze und Hefestamm kann eine Hefeeinheit zu wenig für den Sud sein. In diesem Fall besteht die Gefahr von &lt;span style=&quot; font-weight:600;&quot;&gt;Under-Pitching. D&lt;/span&gt;arunter versteht man Hefe, die Fehlaromen produzieren kann, weil sie zu die zu wenig Nahrung bekommt. Im gewissen Sin reagiert sie &amp;quot;panisch&amp;quot;. In geringerem Maße trifft die auch beim &lt;span style=&quot; font-weight:600;&quot;&gt;Over-Pitching&lt;/span&gt; zu, wenn zu viel Hefezellen dem Sud zugesetzt sind.&lt;/p&gt;&lt;p&gt;Ales und Strong Ales, Lager und Strong Lager benötigen eine unterschiedliche Hefezellenzahl pro ml, um optimal zu vergären. Im Zweifel sollte man die Datenblätter der Hefehersteller heranziehen o der einen Hefe-Kalkulator nutzen.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Hefezellenzahl nach Biertyp&lt;/span&gt; lässt sich grob wie folgt festlegen:&lt;/p&gt;&lt;p&gt;Ale (bis 16,5 °P) = Faktor 0,75&lt;/p&gt;&lt;p&gt;Strong Ale (High Gravity, ab 16,5 °P) = Faktor 1,00&lt;/p&gt;&lt;p&gt;Lager (bis 16,5%) = Faktor 1,5&lt;/p&gt;&lt;p&gt;Strong Lager (High Gravity ab 16,5%) = 2,00&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

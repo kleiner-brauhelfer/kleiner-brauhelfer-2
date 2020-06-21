@@ -91,8 +91,9 @@
             <height>22</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">▲</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
           </property>
          </widget>
         </item>
@@ -110,8 +111,9 @@
             <height>22</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">▼</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
           </property>
          </widget>
         </item>
@@ -242,7 +244,7 @@
           <widget class="DoubleSpinBox" name="tbVerhaeltnisEinmaischen">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -330,7 +332,7 @@
           <widget class="DoubleSpinBox" name="tbMengeEinmaischen">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -376,7 +378,7 @@
           <widget class="SpinBox" name="tbDauerRast">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -395,7 +397,7 @@
           <widget class="DoubleSpinBox" name="tbTempRast">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -517,7 +519,7 @@
           <widget class="DoubleSpinBox" name="tbMengeInfusion">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -559,7 +561,7 @@
           <widget class="DoubleSpinBox" name="tbVerhaeltnisInfusion">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -750,7 +752,7 @@
           <widget class="DoubleSpinBox" name="tbVerhaeltnisDekoktion">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -772,7 +774,7 @@
           <widget class="DoubleSpinBox" name="tbMengeDekoktion">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>

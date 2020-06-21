@@ -6,6 +6,6 @@
 #define URL_HOMEPAGE        "http://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
 #define URL_FORUM           "http://hobbybrauer.de/forum/viewforum.php?f=3&sid=79ba8d4c7387e24a741a35ecc70c8cc3"
 #define URL_FORUM_NAME      "http://hobbybrauer.de"
-#define ENTWICKLER          "Gremmel, Frédéric & realholgi"
+#define ENTWICKLER          "Gremmel, Frédéric, realholgi & rakader"
 
 #endif // DEFINITIONEN_H

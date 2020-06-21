@@ -100,6 +100,8 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
 
+    ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
+
     gSettings->endGroup();
 
     connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
@@ -126,6 +128,7 @@ void TabAusruestung::saveSettings()
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterLeftState", ui->splitterLeft->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
+    gSettings->setValue("AnzahlDurchschnitt", ui->sliderAusbeuteSude->value());
     gSettings->endGroup();
 }
 
@@ -208,7 +211,8 @@ void TabAusruestung::anlage_selectionChanged()
     static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegExp(regExpId2);
     static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegExp(regExpId);
     ui->sliderAusbeuteSude->setMaximum(9999);
-    ui->sliderAusbeuteSude->setValue(9999);
+    if (ui->sliderAusbeuteSude->value() == 0)
+        ui->sliderAusbeuteSude->setValue(9999);
     updateValues();
     updateDurchschnitt();
 }
@@ -426,7 +430,8 @@ void TabAusruestung::on_btnVerdampfungMittel_clicked()
 
 void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
 {
-    updateDurchschnitt();
+    if (ui->sliderAusbeuteSude->hasFocus())
+        updateDurchschnitt();
 }
 
 void TabAusruestung::on_tbKorrekturNachguss_valueChanged(double value)

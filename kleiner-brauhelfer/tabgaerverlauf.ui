@@ -101,8 +101,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Restextrakt und Temperatur eingegebenen Werte einer &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">＋</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -123,8 +124,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;einer &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">－</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -232,8 +234,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung &lt;/span&gt;als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">＋</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -254,8 +257,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">－</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -461,8 +465,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung &lt;/span&gt;in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">＋</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -483,8 +488,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">－</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -545,6 +551,8 @@
   <tabstop>tableWidget_Nachgaerverlauf</tabstop>
   <tabstop>btnAddNachgaerMessung</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

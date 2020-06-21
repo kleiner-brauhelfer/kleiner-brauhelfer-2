@@ -77,8 +77,9 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">＋</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
           </property>
          </widget>
         </item>
@@ -96,8 +97,9 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">－</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
           </property>
          </widget>
         </item>
@@ -115,8 +117,9 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">▲</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
           </property>
          </widget>
         </item>
@@ -134,8 +137,9 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">▼</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
           </property>
          </widget>
         </item>
@@ -160,7 +164,9 @@
    <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

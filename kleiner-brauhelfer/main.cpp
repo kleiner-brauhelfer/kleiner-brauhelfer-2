@@ -363,6 +363,9 @@ int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
 
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
+
     QApplication a(argc, argv);
 
     // set application name, organization and version

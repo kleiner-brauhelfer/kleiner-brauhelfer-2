@@ -92,8 +92,9 @@
             <height>22</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">▲</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
           </property>
          </widget>
         </item>
@@ -111,8 +112,9 @@
             <height>22</height>
            </size>
           </property>
-          <property name="text">
-           <string notr="true">▼</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
           </property>
          </widget>
         </item>
@@ -178,7 +180,7 @@
          <widget class="DoubleSpinBox" name="tbAusbeute">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -256,7 +258,7 @@
          <widget class="DoubleSpinBox" name="tbAnteil">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -287,7 +289,7 @@
          <widget class="DoubleSpinBox" name="tbAlpha">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -391,7 +393,7 @@
          <widget class="DoubleSpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -433,7 +435,7 @@
          <widget class="DoubleSpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -474,21 +476,22 @@
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>50</width>
             <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
+            <width>50</width>
             <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge übernehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="text">
-           <string notr="true">←</string>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
           </property>
          </widget>
         </item>
@@ -528,7 +531,7 @@
          <widget class="DoubleSpinBox" name="tbMengeProzent">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -563,14 +566,8 @@
          <widget class="SpinBox" name="tbKochdauer">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -591,7 +588,7 @@
          <widget class="DoubleSpinBox" name="tbMengeProLiter">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -616,7 +613,7 @@
          <widget class="DoubleSpinBox" name="tbAnteilProzent">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>

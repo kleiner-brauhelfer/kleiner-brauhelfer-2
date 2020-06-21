@@ -130,7 +130,7 @@
          <widget class="DoubleSpinBox" name="tbPlato">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -187,7 +187,7 @@
          <widget class="DoubleSpinBox" name="tbBrix">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -366,7 +366,7 @@
          <widget class="DoubleSpinBox" name="tbSw">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -426,7 +426,7 @@
          <widget class="DoubleSpinBox" name="tbExtrakt">
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>

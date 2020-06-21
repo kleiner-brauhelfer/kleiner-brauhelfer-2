@@ -41,7 +41,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     gSettings->beginGroup("General");
-    gZoomFactor = gSettings->value("WebViewZoomFactor").toDouble();
+    gZoomFactor = gSettings->value("WebViewZoomFactor", 1.0).toDouble();
     gSettings->endGroup();
 }
 

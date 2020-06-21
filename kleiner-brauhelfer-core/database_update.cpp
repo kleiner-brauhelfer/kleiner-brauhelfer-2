@@ -1209,7 +1209,84 @@ bool Database::update()
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
 
+            // Malzschuettung
+            //  - neue Spalte 'Potential'
+            //  - neue Spalte 'pH'
+            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN pH REAL DEFAULT 0");
+
+            // Rasten
+            //  - neue Spalte 'Typ'
+            //  - neue Spalte 'Mengenfaktor'
+            //  - neue Spalte 'Param1'
+            //  - neue Spalte 'Param2'
+            //  - neue Spalte 'Param3'
+            //  - neue Spalte 'Param4'
+            sqlExec(db, "ALTER TABLE Rasten RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Rasten ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Typ INTEGER DEFAULT 1,"
+                "Name TEXT NOT NULL,"
+                "Temp REAL DEFAULT 0,"
+                "Dauer REAL DEFAULT 0,"
+                "Mengenfaktor REAL DEFAULT 1,"
+                "Param1 REAL DEFAULT 0,"
+                "Param2 REAL DEFAULT 0,"
+                "Param3 REAL DEFAULT 0,"
+                "Param4 REAL DEFAULT 0)");
+            query = sqlExec(db, "SELECT SudID, Temp FROM TempTable GROUP BY SudID HAVING MIN(ROWID)");
+            while (query.next())
+            {
+                int einmaischenTemp = 0;
+                QSqlQuery query2 = sqlExec(db, QString("SELECT EinmaischenTemp FROM Sud WHERE ID=%1").arg(query.value(0).toInt()));
+                if (query2.first())
+                    einmaischenTemp = query2.value(0).toInt();
+                sqlExec(db, QString("INSERT INTO Rasten (SudID,Typ,Name,Temp,Mengenfaktor,Param1) VALUES (%1,0,'Einmaischen',%2,1,%3)")
+                        .arg(query.value(0).toInt())
+                        .arg(query.value(1).toInt())
+                        .arg(einmaischenTemp));
+            }
+            sqlExec(db, "INSERT INTO Rasten ("
+                "SudID,"
+                "Name,"
+                "Temp,"
+                "Dauer"
+                ") SELECT "
+                "SudID,"
+                "Name,"
+                "Temp,"
+                "Dauer"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Etiketten
+            //  - neue Spalte 'Papiergroesse'
+            //  - neue Spalte 'Ausrichtung'
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0");
+
+            // Kategorien
+            //  - neue Tabelle
+            sqlExec(db, "CREATE TABLE Kategorien ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT UNIQUE,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Kategorien (Name) VALUES ('')");
+
+            // Wasseraufbereitung
+            //  - neue Tabelle
+            sqlExec(db, "CREATE TABLE Wasseraufbereitung ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Name TEXT NOT NULL,"
+                "Menge REAL DEFAULT 0,"
+                "Einheit INTEGER DEFAULT 0,"
+                "Faktor REAL DEFAULT 0,"
+                "Restalkalitaet REAL DEFAULT 0)");
+
             // Sud
+            //  - Spalte gelöscht 'EinmaischenTemp'
             //  - neue Spalte 'Kategorie'
             //  - neue Spalte 'VerschneidungAbfuellen'
             //  - Spalte unbenannt KochdauerNachBitterhopfung -> Kochdauer
@@ -1378,77 +1455,6 @@ bool Database::update()
                 "SWKochbeginn"
                 " FROM TempTable");
             sqlExec(db, "DROP TABLE TempTable");
-
-            // Malzschuettung
-            //  - neue Spalte 'Potential'
-            //  - neue Spalte 'pH'
-            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN pH REAL DEFAULT 0");
-
-            // Rasten
-            //  - neue Spalte 'Typ'
-            //  - neue Spalte 'Mengenfaktor'
-            //  - neue Spalte 'Param1'
-            //  - neue Spalte 'Param2'
-            //  - neue Spalte 'Param3'
-            //  - neue Spalte 'Param4'
-            sqlExec(db, "ALTER TABLE Rasten RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Rasten ("
-                "ID INTEGER PRIMARY KEY,"
-                "SudID INTEGER NOT NULL,"
-                "Typ INTEGER DEFAULT 1,"
-                "Name TEXT NOT NULL,"
-                "Temp REAL DEFAULT 0,"
-                "Dauer REAL DEFAULT 0,"
-                "Mengenfaktor REAL DEFAULT 1,"
-                "Param1 REAL DEFAULT 0,"
-                "Param2 REAL DEFAULT 0,"
-                "Param3 REAL DEFAULT 0,"
-                "Param4 REAL DEFAULT 0)");
-            query = sqlExec(db, "SELECT SudID, Temp FROM TempTable GROUP BY SudID HAVING MIN(ROWID)");
-            while (query.next())
-            {
-                sqlExec(db, QString("INSERT INTO Rasten (SudID,Typ,Name,Temp,Mengenfaktor) VALUES (%1,0,'Einmaischen',%2,1)")
-                        .arg(query.value(0).toInt())
-                        .arg(query.value(1).toInt()));
-            }
-            sqlExec(db, "INSERT INTO Rasten ("
-                "SudID,"
-                "Name,"
-                "Temp,"
-                "Dauer"
-                ") SELECT "
-                "SudID,"
-                "Name,"
-                "Temp,"
-                "Dauer"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
-
-            // Etiketten
-            //  - neue Spalte 'Papiergroesse'
-            //  - neue Spalte 'Ausrichtung'
-            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0");
-
-            // Kategorien
-            //  - neue Tabelle
-            sqlExec(db, "CREATE TABLE Kategorien ("
-                "ID INTEGER PRIMARY KEY,"
-                "Name TEXT UNIQUE,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Kategorien (Name) VALUES ('')");
-
-            // Wasseraufbereitung
-            //  - neue Tabelle
-            sqlExec(db, "CREATE TABLE Wasseraufbereitung ("
-                "ID INTEGER PRIMARY KEY,"
-                "SudID INTEGER NOT NULL,"
-                "Name TEXT NOT NULL,"
-                "Menge REAL DEFAULT 0,"
-                "Einheit INTEGER DEFAULT 0,"
-                "Faktor REAL DEFAULT 0,"
-                "Restalkalitaet REAL DEFAULT 0)");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

@@ -316,7 +316,7 @@
                <widget class="DoubleSpinBoxSud" name="tbFaktorHauptguss">
                 <property name="minimumSize">
                  <size>
-                  <width>100</width>
+                  <width>80</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -555,7 +555,7 @@
             <widget class="DoubleSpinBoxSud" name="tbMenge">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -1472,12 +1472,6 @@
           </item>
           <item row="5" column="3">
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetIst">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -1558,8 +1552,9 @@
               <height>16777215</height>
              </size>
             </property>
-            <property name="text">
-             <string>⭧</string>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
             </property>
            </widget>
           </item>
@@ -1592,12 +1587,6 @@
           </item>
           <item row="4" column="3">
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetWasser">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Wassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -1651,7 +1640,7 @@
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetSoll">
             <property name="minimumSize">
              <size>
-              <width>100</width>
+              <width>80</width>
               <height>0</height>
              </size>
             </property>
@@ -1894,14 +1883,14 @@
              <widget class="QGraphicsView" name="gvGlas">
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>100</height>
+                <width>80</width>
+                <height>80</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
-                <height>100</height>
+                <width>80</width>
+                <height>80</height>
                </size>
               </property>
               <property name="toolTip">
@@ -2053,7 +2042,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWWZGaerung">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
+                   <width>80</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2168,7 +2157,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWWZKochen">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
+                   <width>80</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2223,7 +2212,7 @@
              <widget class="SpinBoxSud" name="tbFarbe">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>80</width>
                 <height>0</height>
                </size>
               </property>
@@ -2283,7 +2272,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWWZMaischen">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
+                   <width>80</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2366,7 +2355,7 @@
                 <widget class="DoubleSpinBoxSud" name="tbSWMalz">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
+                   <width>80</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -2560,6 +2549,12 @@
             </item>
             <item row="0" column="3">
              <widget class="DoubleSpinBoxSud" name="tbWasserGesamt">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
@@ -2653,7 +2648,7 @@
              <widget class="DoubleSpinBox" name="tbAnlageSudhausausbeute">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>80</width>
                 <height>0</height>
                </size>
               </property>
@@ -2930,7 +2925,7 @@
                 <widget class="DoubleSpinBox" name="tbAnlageKorrekturSollmenge">
                  <property name="minimumSize">
                   <size>
-                   <width>100</width>
+                   <width>80</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -3101,6 +3096,8 @@
   <tabstop>tbWasserHGF</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

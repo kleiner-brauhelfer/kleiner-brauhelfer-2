@@ -89,7 +89,7 @@
             <widget class="SpinBox" name="tbDauerHauptgaerung">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -207,7 +207,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSWJungbier">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -621,7 +621,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSw">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -704,7 +704,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSpundungsdruck">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -745,7 +745,7 @@
             <widget class="DoubleSpinBoxSud" name="tbTemperaturJungbier">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -930,7 +930,7 @@
             <widget class="DoubleSpinBoxSud" name="tbJungbiermengeAbfuellen">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -974,7 +974,7 @@
             <widget class="DoubleSpinBox" name="tbJungbierVerlust">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -1153,7 +1153,7 @@
             <widget class="DoubleSpinBoxSud" name="tbSpeisemengeAbgefuellt">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -1181,7 +1181,7 @@
             <widget class="SpinBox" name="tbSpeisemengeGesamt">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -1516,7 +1516,7 @@
             <widget class="DoubleSpinBoxSud" name="tbKosten">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
@@ -1633,7 +1633,7 @@
             <widget class="DoubleSpinBoxSud" name="tbNebenkosten">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>

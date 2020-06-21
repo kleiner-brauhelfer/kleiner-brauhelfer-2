@@ -365,8 +365,8 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-127</y>
-             <width>538</width>
+             <y>0</y>
+             <width>526</width>
              <height>603</height>
             </rect>
            </property>
@@ -904,7 +904,7 @@
              <widget class="DoubleSpinBox" name="tbCalciumMg">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>80</width>
                 <height>0</height>
                </size>
               </property>

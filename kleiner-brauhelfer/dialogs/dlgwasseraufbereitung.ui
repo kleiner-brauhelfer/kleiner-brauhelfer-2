@@ -33,7 +33,7 @@
       <widget class="SpinBox" name="tbKonzentration">
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>80</width>
          <height>0</height>
         </size>
        </property>

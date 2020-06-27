@@ -1,5 +1,6 @@
 #include "biercalc.h"
 #include <math.h>
+#include <cmath>
 #include <limits>
 
 double BierCalc::faktorPlatoToBrix = 1.03;

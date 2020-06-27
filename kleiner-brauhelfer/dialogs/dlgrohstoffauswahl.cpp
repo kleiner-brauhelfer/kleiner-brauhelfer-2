@@ -59,6 +59,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateMalz").toByteArray());
+        resize(gSettings->value("sizeMalz").toSize());
         break;
 
     case Brauhelfer::RohstoffTyp::Hopfen:
@@ -77,6 +78,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateHopfen").toByteArray());
+        resize(gSettings->value("sizeHopfen").toSize());
         break;
 
     case Brauhelfer::RohstoffTyp::Hefe:
@@ -97,6 +99,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateHefe").toByteArray());
+        resize(gSettings->value("sizeHefe").toSize());
         break;
 
     case Brauhelfer::RohstoffTyp::Zusatz:
@@ -116,14 +119,13 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
+        resize(gSettings->value("sizeWeitereZutaten").toSize());
         break;
     }
     table->setDefaultContextMenu();
 
     proxy->setFilterKeyColumn(mNameCol);
     proxy->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
-
-    resize(gSettings->value("size").toSize());
 
     gSettings->endGroup();
 }
@@ -135,18 +137,21 @@ DlgRohstoffAuswahl::~DlgRohstoffAuswahl()
     {
     case Brauhelfer::RohstoffTyp::Malz:
         gSettings->setValue("tableStateMalz", ui->tableView->horizontalHeader()->saveState());
+        gSettings->setValue("sizeMalz", geometry().size());
         break;
     case Brauhelfer::RohstoffTyp::Hopfen:
         gSettings->setValue("tableStateHopfen", ui->tableView->horizontalHeader()->saveState());
+        gSettings->setValue("sizeHopfen", geometry().size());
         break;
     case Brauhelfer::RohstoffTyp::Hefe:
         gSettings->setValue("tableStateHefe", ui->tableView->horizontalHeader()->saveState());
+        gSettings->setValue("sizeHefe", geometry().size());
         break;
     case Brauhelfer::RohstoffTyp::Zusatz:
         gSettings->setValue("tableStateWeitereZutaten", ui->tableView->horizontalHeader()->saveState());
+        gSettings->setValue("sizeWeitereZutaten", geometry().size());
         break;
     }
-    gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;
 }

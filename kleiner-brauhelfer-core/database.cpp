@@ -1,4 +1,5 @@
 #include "database.h"
+#include <stdexcept>
 #include <QFile>
 #include <QSqlQuery>
 #include "brauhelfer.h"

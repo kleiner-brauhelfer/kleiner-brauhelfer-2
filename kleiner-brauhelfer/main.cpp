@@ -363,8 +363,12 @@ int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
 
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  #endif
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
     QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
+  #endif
 
     QApplication a(argc, argv);
 

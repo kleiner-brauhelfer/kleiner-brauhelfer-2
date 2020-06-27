@@ -14,7 +14,7 @@ if not exist "%QT_DIR%\qmake.exe" (
   exit /b 1
 )
 
-call "%PROGRAMFILES(x86)%\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat" > nul 2>&1
+call "%PROGRAMFILES(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat" > nul 2>&1
 
 set PRO=%~dp0kleiner-brauhelfer-2.pro
 set BUILD_DIR=%~dp0build-win64

@@ -32,7 +32,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.2.0 Beta (in Entwicklung)
+### Version 2.2.0 Beta (27.06.2020)
 - Neu: Offizielle version kompiliert mit **Qt 5.15**
 - Neu: Datenbankversion **2004**
 - Neu: Neue Spalte "Alternativen" bei Rohstofftabellen

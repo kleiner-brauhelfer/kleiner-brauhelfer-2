@@ -428,10 +428,9 @@ void TabAusruestung::on_btnVerdampfungMittel_clicked()
     setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfungMittel->value());
 }
 
-void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
+void TabAusruestung::on_sliderAusbeuteSude_sliderMoved(int)
 {
-    if (ui->sliderAusbeuteSude->hasFocus())
-        updateDurchschnitt();
+    updateDurchschnitt();
 }
 
 void TabAusruestung::on_tbKorrekturNachguss_valueChanged(double value)

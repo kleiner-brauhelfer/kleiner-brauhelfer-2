@@ -35,7 +35,7 @@ private slots:
     void on_btnVerdampfungsrate_clicked();
     void on_btnVerdampfungMittel_clicked();
     void on_tbAusbeute_valueChanged(double value);
-    void on_sliderAusbeuteSude_valueChanged(int value);
+    void on_sliderAusbeuteSude_sliderMoved(int value);
     void on_tbVerdampfung_valueChanged(double value);
     void on_tbKorrekturNachguss_valueChanged(double value);
     void on_tbKorrekturFarbe_valueChanged(int value);

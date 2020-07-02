@@ -23,6 +23,7 @@ private slots:
     void on_cbEinheit_currentIndexChanged(int index);
     void on_btnAuswahl_clicked();
     void on_tbMenge_valueChanged(double value);
+    void on_tbMengeGesamt_valueChanged(double value);
     void on_tbRestalkalitaet_valueChanged(double value);
     void on_tbFaktor_valueChanged(double value);
     void on_btnNachOben_clicked();

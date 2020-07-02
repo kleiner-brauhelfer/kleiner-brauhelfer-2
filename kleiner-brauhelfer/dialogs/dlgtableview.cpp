@@ -2,6 +2,9 @@
 #include "ui_dlgtableview.h"
 #include "sqltablemodel.h"
 #include "proxymodel.h"
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefinition> columns, int filterColumn, QWidget *parent) :
     QDialog(parent),
@@ -21,10 +24,18 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
         ui->tableView->build();
         ui->tableView->setDefaultContextMenu();
     }
+
+    adjustSize();
+    gSettings->beginGroup("DlgTableView");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgTableView::~DlgTableView()
 {
+    gSettings->beginGroup("DlgTableView");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 

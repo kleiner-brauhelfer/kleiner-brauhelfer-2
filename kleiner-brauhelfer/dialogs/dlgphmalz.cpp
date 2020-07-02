@@ -1,6 +1,9 @@
 #include "dlgphmalz.h"
 #include "ui_dlgphmalz.h"
 #include "biercalc.h"
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
     QDialog(parent),
@@ -9,10 +12,16 @@ DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
 {
     ui->setupUi(this);
     adjustSize();
+    gSettings->beginGroup("DlgPhMalz");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgPhMalz::~DlgPhMalz()
 {
+    gSettings->beginGroup("DlgPhMalz");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 

@@ -163,6 +163,11 @@ void WdgRast::updateValuesFromListe(int index)
         setData(ModelRasten::ColDauer, 15);
         break;
     case Brauhelfer::RastTyp::Dekoktion:
+        setData(ModelRasten::ColDauer, 15);
+        setData(ModelRasten::ColParam1, 95);
+        setData(ModelRasten::ColParam2, 15);
+        setData(ModelRasten::ColParam3, 0);
+        setData(ModelRasten::ColParam4, 0);
         switch (index)
         {
         case 0: // 1/2 Dickmaische
@@ -178,11 +183,6 @@ void WdgRast::updateValuesFromListe(int index)
             setData(ModelRasten::ColMengenfaktor, 1.0/3);
             break;
         }
-        setData(ModelRasten::ColDauer, 15);
-        setData(ModelRasten::ColParam1, 95);
-        setData(ModelRasten::ColParam2, 15);
-        setData(ModelRasten::ColParam3, 0);
-        setData(ModelRasten::ColParam4, 0);
         break;
     }
 }

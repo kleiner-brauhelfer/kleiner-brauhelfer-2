@@ -18,6 +18,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
         tagsFormat.setForeground(Qt::darkBlue);
         multiLineCommentFormat.setForeground(Qt::darkGray);
         quotationFormat.setForeground(Qt::darkGreen);
+        customTagFormat.setForeground(QColor(219, 137, 9));
     }
     else
     {
@@ -26,6 +27,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
         tagsFormat.setForeground(QBrush(QColor("#0044FF")));
         multiLineCommentFormat.setForeground(Qt::darkGray);
         quotationFormat.setForeground(QBrush(QColor("#82da2a")));
+        customTagFormat.setForeground(QColor(219, 137, 9));
     }
     insideTagFormat.setFontWeight(QFont::Bold);
     tagsFormat.setFontWeight(QFont::Bold);
@@ -35,6 +37,8 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
     commentStartExpression = QRegExp("<!--");
     commentEndExpression = QRegExp("-->");
     quotes = QRegExp("\"");
+    customTagStartExpression = QRegExp("\\{\\{");
+    customTagEndExpression = QRegExp("\\}\\}");
 
     QStringList keywordPatterns;
     keywordPatterns << "<\\ba\\b" << "<\\babbr\\b" << "<\\bacronym\\b" << "<\\baddress\\b" << "<\\bapplet\\b"
@@ -258,5 +262,28 @@ void HtmlHighLighter::highlightBlock(const QString &text)
 
         setFormat(startCommentIndex, commentLength, multiLineCommentFormat);
         startCommentIndex = commentStartExpression.indexIn(text, startCommentIndex + commentLength);
+    }
+
+    // CUSTOM TAG
+    int startCustomTagIndex = 0;
+    if (previousBlockState() != HtmlHighLighter::CustomTag)
+    {
+        startCustomTagIndex = customTagStartExpression.indexIn(text);
+    }
+    while (startCustomTagIndex >= 0)
+    {
+        int endIndex = customTagEndExpression.indexIn(text, startCustomTagIndex);
+        int length;
+        if (endIndex == -1)
+        {
+            setCurrentBlockState(HtmlHighLighter::CustomTag);
+            length = text.length() - startCustomTagIndex;
+        }
+        else
+        {
+            length = endIndex - startCustomTagIndex + customTagEndExpression.matchedLength();
+        }
+        setFormat(startCustomTagIndex, length, customTagFormat);
+        startCustomTagIndex = customTagStartExpression.indexIn(text, startCustomTagIndex + length);
     }
 }

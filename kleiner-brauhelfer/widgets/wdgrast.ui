@@ -41,7 +41,7 @@
          <number>9</number>
         </property>
         <item>
-         <widget class="QComboBox" name="cbTyp">
+         <widget class="ComboBox" name="cbTyp">
           <item>
            <property name="text">
             <string>Einmaischen</string>
@@ -79,18 +79,6 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
@@ -99,18 +87,6 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
@@ -119,30 +95,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnLoeschen">
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>Rast löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>16</height>
-           </size>
           </property>
          </widget>
         </item>

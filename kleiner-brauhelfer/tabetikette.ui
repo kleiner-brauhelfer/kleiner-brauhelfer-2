@@ -60,27 +60,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnLoeschen">
-         <property name="minimumSize">
-          <size>
-           <width>24</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>24</width>
-           <height>22</height>
-          </size>
-         </property>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>16</height>
-          </size>
          </property>
         </widget>
        </item>
@@ -219,7 +201,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>294</width>
+        <width>298</width>
         <height>612</height>
        </rect>
       </property>
@@ -607,9 +589,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBox</class>
@@ -617,14 +599,14 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>SvgView</class>
    <extends>QGraphicsView</extends>
    <header>widgets/svgview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>

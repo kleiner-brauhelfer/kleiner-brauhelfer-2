@@ -2,6 +2,9 @@
 #include "ui_dlgverdampfung.h"
 #include <qmath.h>
 #include "brauhelfer.h"
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 	QDialog(parent),
@@ -10,10 +13,16 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 {
 	ui->setupUi(this);
     adjustSize();
+    gSettings->beginGroup("DlgVerdampfung");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgVerdampfung::~DlgVerdampfung()
 {
+    gSettings->beginGroup("DlgVerdampfung");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
 	delete ui;
 }
 

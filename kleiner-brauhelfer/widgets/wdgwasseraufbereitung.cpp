@@ -15,7 +15,6 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
     ui->setupUi(this);
 
     checkEnabled(true);
-    updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
@@ -72,6 +71,7 @@ void WdgWasseraufbereitung::updateValues(bool full)
     ui->lblEinheitHg->setText(einheit);
     ui->lblEinheitNg->setText(einheit);
     ui->lblEinheitHgf->setText(einheit);
+    ui->lblEinheitFaktor->setText(einheit + tr("/l"));
     ui->btnNachOben->setEnabled(mRow > 0);
     ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 }
@@ -103,6 +103,12 @@ void WdgWasseraufbereitung::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
         setData(ModelWasseraufbereitung::ColMenge, value);
+}
+
+void WdgWasseraufbereitung::on_tbMengeGesamt_valueChanged(double value)
+{
+    if (ui->tbMengeGesamt->hasFocus())
+        setData(ModelWasseraufbereitung::ColMenge, value / bh->sud()->geterg_W_Gesamt());
 }
 
 void WdgWasseraufbereitung::on_tbRestalkalitaet_valueChanged(double value)

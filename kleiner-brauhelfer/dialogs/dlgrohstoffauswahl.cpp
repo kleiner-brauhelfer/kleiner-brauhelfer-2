@@ -32,6 +32,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
     mRohstoff(rohstoff)
 {
     ui->setupUi(this);
+    adjustSize();
     ui->tableView->setFocus();
 
     gSettings->beginGroup("DlgRohstoffAuswahl");

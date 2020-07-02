@@ -30,11 +30,11 @@ private:
 private slots:
     void on_cbAuswahl_currentIndexChanged(int index);
     void on_tbKonzentration_valueChanged(int value);
+    void on_cbEinheit_currentTextChanged(const QString &arg1);
 
 private:
     Ui::DlgWasseraufbereitung *ui;
     QList<Auswahl> mList;
-    double mFaktor;
 };
 
 #endif // DLGWASSERAUFBEREITUNG_H

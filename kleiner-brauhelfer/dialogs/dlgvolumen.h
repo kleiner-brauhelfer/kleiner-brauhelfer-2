@@ -13,6 +13,7 @@ class DlgVolumen : public QDialog
     
 public:
     DlgVolumen(double durchmesser, double hoehe, QWidget * parent = nullptr);
+    ~DlgVolumen();
 	void setVisibleVonUnten(bool value);
 	void setVisibleVonOben(bool value);
 	void setLiter(double Liter);

@@ -183,10 +183,16 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
     mItTestFncs = mTestFncs.begin();
     next();
     adjustSize();
+    gSettings->beginGroup("DlgDatabaseCleaner");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgDatabaseCleaner::~DlgDatabaseCleaner()
 {
+    gSettings->beginGroup("DlgDatabaseCleaner");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 

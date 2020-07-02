@@ -19,6 +19,7 @@
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlguebernahmerezept.h"
 #include "dialogs/dlgtableview.h"
+#include "dialogs/dlgwasseraufbereitung.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -938,8 +939,15 @@ void TabRezept::wasseraufbereitung_modified()
 
 void TabRezept::on_btnNeueWasseraufbereitung_clicked()
 {
-    bh->sud()->modelWasseraufbereitung()->append({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()}});
-    ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
+    DlgWasseraufbereitung dlg;
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sud()->modelWasseraufbereitung()->append({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
+                                                      {ModelWasseraufbereitung::ColName, dlg.name()},
+                                                      {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
+                                                      {ModelWasseraufbereitung::ColFaktor, dlg.faktor()}});
+        ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
+    }
 }
 
 void TabRezept::on_btnWasseraufbereitungUebernehmen_clicked()

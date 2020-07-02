@@ -2,6 +2,9 @@
 #include "ui_dlgcheckupdate.h"
 #include <QJsonDocument>
 #include <QJsonObject>
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgCheckUpdate::DlgCheckUpdate(const QString &url, const QDate& since, QWidget *parent) :
     QDialog(parent),
@@ -12,10 +15,16 @@ DlgCheckUpdate::DlgCheckUpdate(const QString &url, const QDate& since, QWidget *
 {
     ui->setupUi(this);
     adjustSize();
+    gSettings->beginGroup("DlgCheckUpdate");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgCheckUpdate::~DlgCheckUpdate()
 {
+    gSettings->beginGroup("DlgCheckUpdate");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 

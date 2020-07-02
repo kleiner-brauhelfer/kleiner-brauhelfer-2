@@ -62,11 +62,10 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     connect(ui->tableViewSud->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(tableViewSud_selectionChanged()));
 
+    adjustSize();
     gSettings->beginGroup("DlgUebernahmeRezept");
     ui->tableViewSud->restoreState(gSettings->value("tableStateSud").toByteArray());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(gSettings->value("size").toSize());
+    resize(gSettings->value("size").toSize());
     gSettings->endGroup();
 
     ui->tableViewSud->selectRow(0);

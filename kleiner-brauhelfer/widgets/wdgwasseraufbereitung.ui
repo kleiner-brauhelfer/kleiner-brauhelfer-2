@@ -44,7 +44,7 @@
          <widget class="QLineEdit" name="tbName"/>
         </item>
         <item>
-         <widget class="QComboBox" name="cbEinheit">
+         <widget class="ComboBox" name="cbEinheit">
           <item>
            <property name="text">
             <string>Kg</string>
@@ -98,18 +98,6 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
@@ -118,18 +106,6 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
@@ -138,36 +114,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnLoeschen">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>Malzgabe löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>16</height>
-           </size>
           </property>
          </widget>
         </item>
@@ -422,17 +374,14 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
           <property name="decimals">
            <number>2</number>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
           </property>
          </widget>
         </item>
@@ -449,7 +398,7 @@
         <item row="1" column="10">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>Faktor</string>
+           <string>Menge für 1°dH</string>
           </property>
          </widget>
         </item>
@@ -478,6 +427,16 @@
           </property>
          </widget>
         </item>
+        <item row="1" column="12">
+         <widget class="QLabel" name="lblEinheitFaktor">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>
@@ -490,6 +449,11 @@
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>

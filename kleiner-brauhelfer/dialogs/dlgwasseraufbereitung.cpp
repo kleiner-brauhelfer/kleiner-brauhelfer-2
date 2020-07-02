@@ -1,6 +1,9 @@
 #include "dlgwasseraufbereitung.h"
 #include "ui_dlgwasseraufbereitung.h"
 #include "brauhelfer.h"
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     QDialog(parent),
@@ -18,12 +21,20 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     mList.append({tr("Calciumchlorid (CaCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.0917, 100});
     mList.append({tr("Magnesiumchlorid (MgCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.251, 100});
     mList.append({tr("Magnesiumsulfat (MgSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.3077, 100});
+    mList.append({tr("<manuell>"), static_cast<int>(Brauhelfer::Einheit::ml), 0, 100});
     for (const auto& it : mList)
         ui->cbAuswahl->addItem(it.name);
+    adjustSize();
+    gSettings->beginGroup("DlgWasseraufbereitung");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgWasseraufbereitung::~DlgWasseraufbereitung()
 {
+    gSettings->beginGroup("DlgWasseraufbereitung");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 
@@ -39,7 +50,7 @@ int DlgWasseraufbereitung::einheit() const
 
 double DlgWasseraufbereitung::faktor() const
 {
-    return mFaktor;
+    return ui->tbFaktor->value();
 }
 
 void DlgWasseraufbereitung::on_cbAuswahl_currentIndexChanged(int index)
@@ -48,8 +59,19 @@ void DlgWasseraufbereitung::on_cbAuswahl_currentIndexChanged(int index)
     {
         ui->cbEinheit->setCurrentIndex(mList[index].einheit);
         ui->tbKonzentration->setValue(mList[index].konzentration);
-        ui->tbName->setText(mList[index].name + tr(" (%1%)").arg(ui->tbKonzentration->value()));
-        mFaktor = mList[index].faktor / ui->tbKonzentration->value()* 100;
+        if (index == mList.size() - 1)
+        {
+            ui->tbName->setText("");
+            ui->tbKonzentration->setReadOnly(true);
+            ui->tbFaktor->setReadOnly(false);
+        }
+        else
+        {
+            ui->tbName->setText(mList[index].name + tr(" (%1%)").arg(ui->tbKonzentration->value()));
+            ui->tbKonzentration->setReadOnly(false);
+            ui->tbFaktor->setReadOnly(true);
+        }
+        ui->tbFaktor->setValue(mList[index].faktor / ui->tbKonzentration->value()* 100);
     }
 }
 
@@ -58,6 +80,11 @@ void DlgWasseraufbereitung::on_tbKonzentration_valueChanged(int value)
     if (ui->tbKonzentration->hasFocus())
     {
         ui->tbName->setText(mList[ui->cbAuswahl->currentIndex()].name + tr(" (%1%)").arg(value));
-        mFaktor = mList[ui->cbAuswahl->currentIndex()].faktor / value * 100;
+        ui->tbFaktor->setValue(mList[ui->cbAuswahl->currentIndex()].faktor / value * 100);
     }
+}
+
+void DlgWasseraufbereitung::on_cbEinheit_currentTextChanged(const QString &text)
+{
+    ui->lblEinheitFaktor->setText(text + tr("/l"));
 }

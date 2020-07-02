@@ -28,7 +28,7 @@ QList<QPair<QString, int> > TabAusruestung::Typname = {
     {tr("Braumeister 200L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister200)},
     {tr("Braumeister 500L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister500)},
     {tr("Braumeister 1000L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister1000)},
-    {tr("Brauheld Pro"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
+    {tr("Brauheld Pro 30L"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
 };
 
 TabAusruestung::TabAusruestung(QWidget *parent) :

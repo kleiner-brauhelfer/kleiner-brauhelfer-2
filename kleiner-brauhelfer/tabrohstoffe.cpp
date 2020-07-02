@@ -686,9 +686,9 @@ void TabRohstoffe::updateWasser()
     if (!ui->tbHydrogencarbonatHaerte->hasFocus())
         ui->tbHydrogencarbonatHaerte->setValue(dataWasser(ModelWasser::ColCarbonatHaerte).toDouble());
     if (!ui->tbSulfatMg->hasFocus())
-        ui->tbSulfatMg->setValue(dataWasser(ModelWasser::ColSufat).toDouble());
+        ui->tbSulfatMg->setValue(dataWasser(ModelWasser::ColSulfat).toDouble());
     if (!ui->tbSulfatMmol->hasFocus())
-        ui->tbSulfatMmol->setValue(dataWasser(ModelWasser::ColSufatMmol).toDouble());
+        ui->tbSulfatMmol->setValue(dataWasser(ModelWasser::ColSulfatMmol).toDouble());
     if (!ui->tbChloridMg->hasFocus())
         ui->tbChloridMg->setValue(dataWasser(ModelWasser::ColChlorid).toDouble());
     if (!ui->tbChloridMmol->hasFocus())
@@ -761,13 +761,13 @@ void TabRohstoffe::on_tbHydrogencarbonatHaerte_valueChanged(double value)
 void TabRohstoffe::on_tbSulfatMg_valueChanged(double value)
 {
     if (ui->tbSulfatMg->hasFocus())
-        setDataWasser(ModelWasser::ColSufat, value);
+        setDataWasser(ModelWasser::ColSulfat, value);
 }
 
 void TabRohstoffe::on_tbSulfatMmol_valueChanged(double value)
 {
     if (ui->tbSulfatMmol->hasFocus())
-        setDataWasser(ModelWasser::ColSufatMmol, value);
+        setDataWasser(ModelWasser::ColSulfatMmol, value);
 }
 
 void TabRohstoffe::on_tbChloridMg_valueChanged(double value)

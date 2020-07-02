@@ -16,10 +16,6 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
     mRohstoffart(art)
 {
     ui->setupUi(this);
-    adjustSize();
-    gSettings->beginGroup("DlgRohstoffVorlage");
-    resize(gSettings->value("size").toSize());
-    gSettings->endGroup();
 
     if (isOBraMa())
     {
@@ -50,6 +46,11 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
     }
 
     setModel();
+
+    adjustSize();
+    gSettings->beginGroup("DlgRohstoffVorlage");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgRohstoffVorlage::~DlgRohstoffVorlage()

@@ -56,10 +56,16 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
     }
 
     adjustSize();
+    gSettings->beginGroup("DlgRestextrakt");
+    resize(gSettings->value("size").toSize());
+    gSettings->endGroup();
 }
 
 DlgRestextrakt::~DlgRestextrakt()
 {
+    gSettings->beginGroup("DlgRestextrakt");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 

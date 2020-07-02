@@ -8,7 +8,7 @@ ModelWasser::ModelWasser(Brauhelfer* bh, QSqlDatabase db) :
     mVirtualField.append("HydrogencarbonatMmol");
     mVirtualField.append("CalciumMmol");
     mVirtualField.append("MagnesiumMmol");
-    mVirtualField.append("SufatMmol");
+    mVirtualField.append("SulfatMmol");
     mVirtualField.append("ChloridMmol");
     mVirtualField.append("NatriumMmol");
     mVirtualField.append("CarbonatHaerte");
@@ -27,8 +27,8 @@ QVariant ModelWasser::dataExt(const QModelIndex &idx) const
         return data(idx.row(), ColCalcium).toDouble() / 40.08;
     case ColMagnesiumMmol:
         return data(idx.row(), ColMagnesium).toDouble() / 24.31;
-    case ColSufatMmol:
-        return data(idx.row(), ColSufat).toDouble() / 96.06;
+    case ColSulfatMmol:
+        return data(idx.row(), ColSulfat).toDouble() / 96.06;
     case ColChloridMmol:
         return data(idx.row(), ColChlorid).toDouble() / 35.45;
     case ColNatriumMmol:
@@ -78,8 +78,8 @@ bool ModelWasser::setDataExt(const QModelIndex &idx, const QVariant &value)
          return QSqlTableModel::setData(index(idx.row(), ColCalcium), value.toDouble() * 40.08);
      case ColMagnesiumMmol:
          return QSqlTableModel::setData(index(idx.row(), ColMagnesium), value.toDouble() * 24.31);
-     case ColSufatMmol:
-         return QSqlTableModel::setData(index(idx.row(), ColSufat), value.toDouble() * 96.06);
+     case ColSulfatMmol:
+         return QSqlTableModel::setData(index(idx.row(), ColSulfat), value.toDouble() * 96.06);
      case ColChloridMmol:
          return QSqlTableModel::setData(index(idx.row(), ColChlorid), value.toDouble() * 35.45);
      case ColNatriumMmol:
@@ -103,7 +103,7 @@ Qt::ItemFlags ModelWasser::flags(const QModelIndex &idx) const
     case ColHydrogencarbonatMmol:
     case ColCalciumMmol:
     case ColMagnesiumMmol:
-    case ColSufatMmol:
+    case ColSulfatMmol:
     case ColChloridMmol:
     case ColNatriumMmol:
     case ColCarbonatHaerte:

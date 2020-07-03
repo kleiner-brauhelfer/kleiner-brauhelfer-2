@@ -202,6 +202,7 @@
      <string>Hilfe</string>
     </property>
     <addaction name="actionSpende"/>
+    <addaction name="actionBierspende"/>
     <addaction name="actionUeber"/>
    </widget>
    <widget class="QMenu" name="menuSud">
@@ -274,7 +275,7 @@
   </action>
   <action name="actionSpende">
    <property name="text">
-    <string>Spenden</string>
+    <string>Spende</string>
    </property>
   </action>
   <action name="actionSudGebraut">
@@ -483,6 +484,11 @@
    </property>
    <property name="text">
     <string>Animationen</string>
+   </property>
+  </action>
+  <action name="actionBierspende">
+   <property name="text">
+    <string>Bierspende</string>
    </property>
   </action>
  </widget>

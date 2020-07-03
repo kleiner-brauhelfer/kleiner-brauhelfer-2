@@ -35,7 +35,9 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(QWidget *parent) :
     setModels(true);
     adjustSize();
     gSettings->beginGroup("DlgRohstoffeAbziehen");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

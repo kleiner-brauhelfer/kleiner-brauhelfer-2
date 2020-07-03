@@ -28,7 +28,9 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
 
     adjustSize();
     gSettings->beginGroup("DlgTableView");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

@@ -31,6 +31,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
     ui(new Ui::DlgRohstoffAuswahl),
     mRohstoff(rohstoff)
 {
+    QSize size;
     ui->setupUi(this);
     adjustSize();
     ui->tableView->setFocus();
@@ -60,7 +61,9 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateMalz").toByteArray());
-        resize(gSettings->value("sizeMalz").toSize());
+        size = gSettings->value("sizeMalz").toSize();
+        if (size.isValid())
+            resize(size);
         break;
 
     case Brauhelfer::RohstoffTyp::Hopfen:
@@ -79,7 +82,9 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateHopfen").toByteArray());
-        resize(gSettings->value("sizeHopfen").toSize());
+        size = gSettings->value("sizeHopfen").toSize();
+        if (size.isValid())
+            resize(size);
         break;
 
     case Brauhelfer::RohstoffTyp::Hefe:
@@ -100,7 +105,9 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateHefe").toByteArray());
-        resize(gSettings->value("sizeHefe").toSize());
+        size = gSettings->value("sizeHefe").toSize();
+        if (size.isValid())
+            resize(size);
         break;
 
     case Brauhelfer::RohstoffTyp::Zusatz:
@@ -120,7 +127,9 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});
         table->build();
         table->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
-        resize(gSettings->value("sizeWeitereZutaten").toSize());
+        size = gSettings->value("sizeWeitereZutaten").toSize();
+        if (size.isValid())
+            resize(size);
         break;
     }
     table->setDefaultContextMenu();

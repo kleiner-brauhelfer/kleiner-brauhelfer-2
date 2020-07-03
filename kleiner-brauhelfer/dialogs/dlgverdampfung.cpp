@@ -14,7 +14,9 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 	ui->setupUi(this);
     adjustSize();
     gSettings->beginGroup("DlgVerdampfung");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

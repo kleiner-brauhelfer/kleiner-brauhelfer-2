@@ -26,7 +26,9 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
         ui->cbAuswahl->addItem(it.name);
     adjustSize();
     gSettings->beginGroup("DlgWasseraufbereitung");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

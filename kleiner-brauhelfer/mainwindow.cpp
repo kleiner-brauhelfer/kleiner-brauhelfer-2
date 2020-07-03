@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "definitionen.h"
 #include "tababstract.h"
+#include "dialogs/dlgbierspende.h"
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
@@ -749,6 +750,12 @@ void MainWindow::on_actionAnimationen_triggered(bool checked)
 void MainWindow::on_actionSpende_triggered()
 {
     QDesktopServices::openUrl(QUrl(URL_SPENDE));
+}
+
+void MainWindow::on_actionBierspende_triggered()
+{
+    DlgBierspende dlg(this);
+    dlg.exec();
 }
 
 void MainWindow::on_actionUeber_triggered()

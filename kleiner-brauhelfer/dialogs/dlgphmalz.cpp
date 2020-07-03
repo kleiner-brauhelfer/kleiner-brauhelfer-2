@@ -13,7 +13,9 @@ DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
     ui->setupUi(this);
     adjustSize();
     gSettings->beginGroup("DlgPhMalz");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

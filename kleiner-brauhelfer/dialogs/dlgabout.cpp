@@ -18,7 +18,9 @@ DlgAbout::DlgAbout(QWidget *parent) :
     ui->lblForum->setText(generateLink(URL_FORUM, URL_FORUM_NAME));
     adjustSize();
     gSettings->beginGroup("DlgAbout");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

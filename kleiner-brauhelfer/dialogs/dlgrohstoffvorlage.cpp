@@ -49,7 +49,9 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
 
     adjustSize();
     gSettings->beginGroup("DlgRohstoffVorlage");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

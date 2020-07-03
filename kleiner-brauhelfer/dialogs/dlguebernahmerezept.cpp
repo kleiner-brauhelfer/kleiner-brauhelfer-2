@@ -65,7 +65,9 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     adjustSize();
     gSettings->beginGroup("DlgUebernahmeRezept");
     ui->tableViewSud->restoreState(gSettings->value("tableStateSud").toByteArray());
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 
     ui->tableViewSud->selectRow(0);

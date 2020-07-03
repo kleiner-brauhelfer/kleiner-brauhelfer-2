@@ -18,7 +18,9 @@ DlgSudTeilen::DlgSudTeilen(const QString &name, double amount, QWidget *parent) 
     ui->horizontalSlider_Percent->setFocus();
     adjustSize();
     gSettings->beginGroup("DlgSudTeilen");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

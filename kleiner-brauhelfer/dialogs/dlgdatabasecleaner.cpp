@@ -184,7 +184,9 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
     next();
     adjustSize();
     gSettings->beginGroup("DlgDatabaseCleaner");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

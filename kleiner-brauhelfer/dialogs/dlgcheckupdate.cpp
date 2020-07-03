@@ -16,7 +16,9 @@ DlgCheckUpdate::DlgCheckUpdate(const QString &url, const QDate& since, QWidget *
     ui->setupUi(this);
     adjustSize();
     gSettings->beginGroup("DlgCheckUpdate");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

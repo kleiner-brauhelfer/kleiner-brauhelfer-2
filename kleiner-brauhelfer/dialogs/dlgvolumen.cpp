@@ -20,7 +20,9 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     ui->spinBox_VonUnten->setMaximum(Hoehe);
     adjustSize();
     gSettings->beginGroup("DlgVolumen");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

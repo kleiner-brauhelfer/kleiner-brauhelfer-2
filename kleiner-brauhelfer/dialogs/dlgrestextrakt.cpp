@@ -57,7 +57,9 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
 
     adjustSize();
     gSettings->beginGroup("DlgRestextrakt");
-    resize(gSettings->value("size").toSize());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
     gSettings->endGroup();
 }
 

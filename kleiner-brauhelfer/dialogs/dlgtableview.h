@@ -2,6 +2,8 @@
 #define DLGTABLEVIEW_H
 
 #include <QDialog>
+#include <QMap>
+
 #include "widgets/tableview.h"
 
 class SqlTableModel;
@@ -15,7 +17,11 @@ class DlgTableView : public QDialog
     Q_OBJECT
 
 public:
-    explicit DlgTableView(SqlTableModel* model, QList<TableView::ColumnDefinition> columns, int filterColumn = -1, QWidget *parent = nullptr);
+    explicit DlgTableView(SqlTableModel* model,
+                          QList<TableView::ColumnDefinition> columns,
+                          QMap<int, QVariant> defaultValues = QMap<int, QVariant>(),
+                          int filterColumn = -1,
+                          QWidget *parent = nullptr);
     ~DlgTableView();
 
 private slots:
@@ -27,6 +33,7 @@ private slots:
 
 private:
     Ui::DlgTableView *ui;
+    QMap<int, QVariant> mDefaultValues;
 };
 
 #endif // DLGTABLEVIEW_H

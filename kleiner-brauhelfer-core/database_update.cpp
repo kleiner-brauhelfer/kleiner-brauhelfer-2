@@ -1461,6 +1461,33 @@ bool Database::update()
             db.commit();
         }
 
+        if (version == 2004)
+        {
+            ++version;
+            qInfo() << "Updating to version:" << version;
+            db.transaction();
+
+            // Kategorien
+            //  - 'Name' nicht mehr UNIQUE (wegen swap())
+            sqlExec(db, "ALTER TABLE Kategorien RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Kategorien ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Kategorien ("
+                "Name,"
+                "Bemerkung"
+                ") SELECT "
+                "Name,"
+                "Bemerkung"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
         return true;
     }
     catch (const std::exception& ex)

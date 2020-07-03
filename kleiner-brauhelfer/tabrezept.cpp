@@ -998,7 +998,7 @@ void TabRezept::on_btnKategorienVerwalten_clicked()
 {
     QList<TableView::ColumnDefinition> colums = {{ModelKategorien::ColName, true, false, 100, new TextDelegate(false, Qt::AlignCenter, this)},
                                                  {ModelKategorien::ColBemerkung, true, false, -1, nullptr}};
-    DlgTableView dlg(bh->modelKategorien(), colums, ModelKategorien::ColName, this);
+    DlgTableView dlg(bh->modelKategorien(), colums, {{ModelKategorien::ColName, tr("Kategorie")}}, ModelKategorien::ColName, this);
     dlg.setWindowTitle(tr("Sudkategorien verwalten"));
     dlg.exec();
 }

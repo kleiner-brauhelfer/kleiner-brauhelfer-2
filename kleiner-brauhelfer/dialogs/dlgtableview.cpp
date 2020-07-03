@@ -6,9 +6,10 @@
 
 extern Settings* gSettings;
 
-DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefinition> columns, int filterColumn, QWidget *parent) :
+DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefinition> columns, QMap<int, QVariant> defaultValues, int filterColumn, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DlgTableView)
+    ui(new Ui::DlgTableView),
+    mDefaultValues(defaultValues)
 {
     ui->setupUi(this);
 
@@ -49,7 +50,7 @@ void DlgTableView::on_btnAdd_clicked()
 {
     ProxyModel* proxy = static_cast<ProxyModel*>(ui->tableView->model());
     ui->tbFilter->clear();
-    int row = proxy->append();
+    int row = proxy->append(mDefaultValues);
     if (row >= 0)
     {
         ui->tableView->setCurrentIndex(proxy->index(row, ui->tableView->horizontalHeader()->logicalIndex(0)));

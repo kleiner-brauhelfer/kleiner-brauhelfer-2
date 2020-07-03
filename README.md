@@ -33,6 +33,11 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
+### Version 2.2.0 (in Entwicklung)
+- Neu: Datenbankversion **2005**
+- Neu: Direkte Auswahl bei Wasseraufbereiung 
+- Fix: Sudkategorien nach oben/unten verschieben
+
 ### Version 2.2.0 Beta (27.06.2020)
 - Neu: Offizielle version kompiliert mit **Qt 5.15**
 - Neu: Datenbankversion **2004**

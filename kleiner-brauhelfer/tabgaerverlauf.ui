@@ -25,7 +25,7 @@
         <x>0</x>
         <y>0</y>
         <width>796</width>
-        <height>583</height>
+        <height>586</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -158,7 +158,7 @@
         <x>0</x>
         <y>0</y>
         <width>796</width>
-        <height>583</height>
+        <height>586</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -396,7 +396,7 @@
         <x>0</x>
         <y>0</y>
         <width>796</width>
-        <height>583</height>
+        <height>586</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -529,14 +529,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>WdgDiagramView</class>

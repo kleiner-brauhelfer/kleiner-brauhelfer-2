@@ -1,5 +1,5 @@
 #define MyAppName "kleiner-brauhelfer-2"
-#define MyAppVersion "2.1.0"
+#define MyAppVersion "2.2.0"
 #define MyAppPublisher "kleiner-brauhelfer"
 #define MyAppURL "http://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
 #define MyAppExeName "kleiner-brauhelfer-2.exe"
@@ -23,6 +23,7 @@ OutputBaseFilename=kbh2_v{#MyAppVersion}_setup_win_x86
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+UninstallDisplayIcon={app}\{#MyAppExeName}
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

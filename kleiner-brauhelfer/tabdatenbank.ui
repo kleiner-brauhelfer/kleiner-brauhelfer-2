@@ -56,18 +56,18 @@
       <widget class="QLineEdit" name="tbDatenbankVersion">
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>80</width>
          <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>80</width>
          <height>16777215</height>
         </size>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Mit einem Update kann sich die Versionsnummer der Datenbank ändern. Datenbanken im Kleinen Brauhelfer sind nicht abwärtskompatibel. Es wird daher dringend angeraten vor jeden Update ein Backup der aktuellen Datenbank zu machen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -129,7 +129,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl der &lt;span style=&quot; font-weight:600;&quot;&gt;globalen&lt;/span&gt; Tabelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Sektion der aktuellen Datenbank ausgewählt, &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Tabelle genannt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man im Kleinen Brauhelfer ein Kapitel in den Tabs (Reitern) und ihren Subkategorien. Der Rechtsklick zeigt die Liste von über 20 Kapiteln an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -182,7 +182,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud spezifische&lt;/span&gt; Tabelle. Zuvor muss ein Sud geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezfische&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Einträge&lt;/span&gt; eines Sudes, unterteilt in Kapitel, angezeigt werden.&lt;/p&gt;&lt;p&gt;Zuvor muss ein Sud geladen werden. Der Rechtsklick zeigt dann die Liste verfügbarer Kapitel an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>

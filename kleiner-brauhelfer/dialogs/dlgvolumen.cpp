@@ -2,6 +2,9 @@
 #include "ui_dlgvolumen.h"
 #include <qmath.h>
 #include "brauhelfer.h"
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) : 
 	QDialog(parent),
@@ -16,6 +19,19 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     ui->spinBox_VonOben->setMaximum(Hoehe);
     ui->spinBox_VonUnten->setMaximum(Hoehe);
     adjustSize();
+    gSettings->beginGroup("DlgVolumen");
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
+    gSettings->endGroup();
+}
+
+DlgVolumen::~DlgVolumen()
+{
+    gSettings->beginGroup("DlgVolumen");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
+    delete ui;
 }
 
 void DlgVolumen::on_buttonBox_accepted()

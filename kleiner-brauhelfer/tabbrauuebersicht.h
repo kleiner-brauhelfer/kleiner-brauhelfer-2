@@ -17,7 +17,7 @@ public:
     explicit TabBrauUebersicht(QWidget *parent = nullptr);
     virtual ~TabBrauUebersicht() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
     void setModel(QAbstractItemModel* model);
 
 signals:
@@ -34,8 +34,6 @@ private slots:
     void on_cbAuswahlL1_currentIndexChanged(int);
     void on_cbAuswahlL2_currentIndexChanged(int);
     void on_cbAuswahlL3_currentIndexChanged(int);
-    void spalteAnzeigen(bool checked);
-    void on_tableView_customContextMenuRequested(const QPoint &pos);
 
 private:
     struct AuswahlType
@@ -50,7 +48,6 @@ private:
 
 private:
     Ui::TabBrauUebersicht *ui;
-    QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;
     QList<AuswahlType> mAuswahlListe;
 };

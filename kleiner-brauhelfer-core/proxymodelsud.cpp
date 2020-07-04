@@ -73,18 +73,19 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         idx = sourceModel()->index(source_row, ModelSud::ColStatus, source_parent);
         if (idx.isValid())
         {
-            switch (idx.data().toInt())
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(idx.data().toInt());
+            switch (status)
             {
-            case Sud_Status_Rezept:
+            case Brauhelfer::SudStatus::Rezept:
                 accept = mFilterStatus & Rezept;
                 break;
-            case Sud_Status_Gebraut:
+            case Brauhelfer::SudStatus::Gebraut:
                 accept = mFilterStatus & Gebraut;
                 break;
-            case Sud_Status_Abgefuellt:
+            case Brauhelfer::SudStatus::Abgefuellt:
                 accept = mFilterStatus & Abgefuellt;
                 break;
-            case Sud_Status_Verbraucht:
+            case Brauhelfer::SudStatus::Verbraucht:
                 accept = mFilterStatus & Verbraucht;
                 break;
             }

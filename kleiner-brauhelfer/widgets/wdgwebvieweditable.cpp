@@ -2,12 +2,16 @@
 #include "ui_wdgwebvieweditable.h"
 #include <QDir>
 #include <QMessageBox>
+#include <QPrinterInfo>
+#include <QPrintPreviewDialog>
 #include <QJsonDocument>
 #include "brauhelfer.h"
 #include "settings.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
+
+double WdgWebViewEditable::gZoomFactor = 1.0;
 
 WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     QWidget(parent),
@@ -36,20 +40,96 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
+    gSettings->beginGroup("General");
+    gZoomFactor = gSettings->value("WebViewZoomFactor", 1.0).toDouble();
+    gSettings->endGroup();
 }
 
 WdgWebViewEditable::~WdgWebViewEditable()
 {
     delete ui;
+    gSettings->beginGroup("General");
+    gSettings->setValue("WebViewZoomFactor", gZoomFactor);
+    gSettings->endGroup();
+}
+
+void WdgWebViewEditable::clear()
+{
+    ui->webview->setHtml("");
 }
 
 void WdgWebViewEditable::setHtmlFile(const QString& file)
 {
-    ui->cbTemplateAuswahl->setItemText(0, file);
-    ui->webview->setTemplateFile(gSettings->dataDir(1) + file);
+    QString fileComplete;
+    QString lang = gSettings->language();
+    if (lang == "de")
+        fileComplete = file + ".html";
+    else
+        fileComplete = file + "_" + lang + ".html";
+    ui->cbTemplateAuswahl->setItemText(0, fileComplete);
+    ui->webview->setTemplateFile(gSettings->dataDir(1) + fileComplete);
 }
 
-void WdgWebViewEditable::printToPdf(const QString& filePath)
+void WdgWebViewEditable::printDocument(QPrinter *printer)
+{
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+    bool success = false;
+    QEventLoop loop;
+    ui->webview->page()->print(printer, [&](bool _success) { success = _success; loop.quit(); });
+    loop.exec();
+    if (success)
+    {
+        gSettings->beginGroup("General");
+        gSettings->setValue("DefaultPrinter", printer->printerName());
+        QRectF rect(printer->margins().left, printer->margins().top, printer->margins().right, printer->margins().bottom);
+        gSettings->setValue("PrintMargins", rect);
+        gSettings->endGroup();
+    }
+#else
+  Q_UNUSED(printer)
+#endif
+}
+
+void WdgWebViewEditable::printPreview()
+{
+    QVariant style;
+    if (gSettings->theme() == Settings::Dark)
+    {
+        style = mTemplateTags["Style"];
+        mTemplateTags["Style"] = "style_hell.css";
+        ui->webview->setUpdatesEnabled(false);
+
+        QEventLoop loop;
+        connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
+        ui->webview->renderTemplate(mTemplateTags);
+        loop.exec();
+    }
+
+    gSettings->beginGroup("General");
+
+    QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinter").toString());
+    QPrinter printer(printerInfo, QPrinter::HighResolution);
+    printer.setPageSize(QPrinter::A4);
+    printer.setOrientation(QPrinter::Portrait);
+    printer.setColorMode(QPrinter::Color);
+    QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
+    printer.setPageMargins(rect.left(), rect.top(), rect.width(), rect.height(), QPrinter::Millimeter);
+
+    gSettings->endGroup();
+
+    QPrintPreviewDialog dlg(&printer, ui->webview->page()->view());
+    connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(printDocument(QPrinter*)));
+    dlg.exec();
+
+    if (gSettings->theme() == Settings::Dark)
+    {
+        mTemplateTags["Style"] = style;
+        ui->webview->renderTemplate(mTemplateTags);
+        ui->webview->setUpdatesEnabled(true);
+    }
+}
+
+void WdgWebViewEditable::printToPdf(const QString& filePath, const QMarginsF &margins)
 {
     if (gSettings->theme() == Settings::Dark)
     {
@@ -62,7 +142,7 @@ void WdgWebViewEditable::printToPdf(const QString& filePath)
         ui->webview->renderTemplate(mTemplateTags);
         loop.exec();
 
-        ui->webview->printToPdf(filePath);
+        ui->webview->printToPdf(filePath, margins);
 
         mTemplateTags["Style"] = style;
         ui->webview->renderTemplate(mTemplateTags);
@@ -70,7 +150,7 @@ void WdgWebViewEditable::printToPdf(const QString& filePath)
     }
     else
     {
-        ui->webview->printToPdf(filePath);
+        ui->webview->printToPdf(filePath, margins);
     }
 }
 
@@ -154,7 +234,7 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
     if (ret == QMessageBox::Yes)
     {
         QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
-        QFile file2(":/data/" + ui->cbTemplateAuswahl->currentText());
+        QFile file2(":/data/Webview/" + ui->cbTemplateAuswahl->currentText());
         file.remove();
         if (file2.copy(file.fileName()))
             file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
@@ -164,6 +244,11 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
 
 void WdgWebViewEditable::updateWebView()
 {
+    if (ui->webview->zoomFactor() != gZoomFactor)
+    {
+        ui->webview->setZoomFactor(gZoomFactor);
+        ui->sliderZoom->setValue(gZoomFactor * 100);
+    }
     if (ui->cbEditMode->isChecked())
     {
         if (ui->cbTemplateAuswahl->currentIndex() == 0)
@@ -191,5 +276,14 @@ void WdgWebViewEditable::updateTags()
     {
         QJsonDocument json = QJsonDocument::fromVariant(mTemplateTags);
         ui->tbTags->setPlainText(json.toJson());
+    }
+}
+
+void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
+{
+    if (ui->sliderZoom->hasFocus())
+    {
+        gZoomFactor = value / 100.0;
+        ui->webview->setZoomFactor(gZoomFactor);
     }
 }

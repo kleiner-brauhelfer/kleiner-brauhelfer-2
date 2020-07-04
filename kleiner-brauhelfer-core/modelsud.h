@@ -19,6 +19,7 @@ public:
         ColID,
         ColSudname,
         ColSudnummer,
+        ColKategorie,
         ColAnlage,
         ColMenge,
         ColSW,
@@ -26,11 +27,10 @@ public:
         ColFaktorHauptguss,
         ColWasserprofil,
         ColRestalkalitaetSoll,
-        ColEinmaischenTemp,
         ColCO2,
         ColIBU,
         ColberechnungsArtHopfen,
-        ColKochdauerNachBitterhopfung,
+        ColKochdauer,
         ColNachisomerisierungszeit,
         ColReifezeit,
         ColKostenWasserStrom,
@@ -67,8 +67,12 @@ public:
         ColSudhausausbeute,
         ColVerdampfungsrate,
         ColVergaerungsgrad,
+        ColWuerzemengeKochbeginn,
+        ColSWKochbeginn,
+        ColVerschneidungAbfuellen,
         // virtual
         ColDeleted,
+        ColMengeSoll,
         ColSWIst,
         ColSREIst,
         ColMengeIst,
@@ -94,13 +98,19 @@ public:
         ColSWSollKochbeginnMitWz,
         ColSWSollKochende,
         ColSWSollAnstellen,
+        ColWasserHgf,
         ColVerdampfungsrateIst,
         ColsEVG,
         ColtEVG,
+        ColAlkohol,
+        ColRestalkalitaetWasser,
+        ColRestalkalitaetIst,
+        ColPhMalz,
+        ColPhMaische,
         ColAnlageVerdampfungsrate,
         ColAnlageSudhausausbeute,
-        ColRestalkalitaetFaktor,
         ColFaktorHauptgussEmpfehlung,
+        ColWHauptgussEmpfehlung,
         ColBewertungMittel,
         // number of columns
         NumCols
@@ -120,6 +130,7 @@ public:
     QVariant dataSud(QVariant sudId, int col);
     QVariant dataAnlage(int row, int col) const;
     QVariant dataWasser(int row, int col) const;
+    void update(int row);
 
 private slots:
 
@@ -132,11 +143,11 @@ private slots:
 private:
 
     bool setDataExt_impl(const QModelIndex &index, const QVariant &value);
-    void update(int row);
     void updateSwWeitereZutaten(int row);
+    void updateWasser(int row);
     void updateFarbe(int row);
     void updatePreis(int row);
-    void removeRowsFrom(SqlTableModel* model, int colId, const QVariant &sudId);
+    void removeRowsFrom(SqlTableModel* model, int colId, const QList<int>& sudIds);
 
 private:
 

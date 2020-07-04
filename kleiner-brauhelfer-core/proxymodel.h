@@ -34,6 +34,8 @@ public:
     Q_INVOKABLE int append(const QMap<int, QVariant> &values = QMap<int, QVariant>());
     Q_INVOKABLE int append(const QVariantMap &values);
 
+    Q_INVOKABLE bool swap(int row1, int row2);
+
     Q_INVOKABLE int mapRowToSource(int row) const;
     Q_INVOKABLE int mapRowFromSource(int row) const;
 
@@ -49,6 +51,8 @@ public:
 
     Qt::SortOrder sortOrder() const;
     void setSortOrder(Qt::SortOrder order);
+
+    void setFilterKeyColumns(const QList<int> &columns);
 
     int filterDateColumn() const;
     void setFilterDateColumn(int column);
@@ -71,6 +75,7 @@ private:
 private:
     int mDeletedColumn;
     int mDateColumn;
+    QList<int> mFilterColumns;
     QDateTime mMinDate;
     QDateTime mMaxDate;
 };

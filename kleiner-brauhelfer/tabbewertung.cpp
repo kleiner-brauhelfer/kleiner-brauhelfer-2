@@ -31,16 +31,6 @@ TabBewertung::~TabBewertung()
     delete ui;
 }
 
-void TabBewertung::saveSettings()
-{
-
-}
-
-void TabBewertung::restoreView()
-{
-
-}
-
 void TabBewertung::sudLoaded()
 {
     mIndex = -1;
@@ -107,9 +97,10 @@ bool TabBewertung::setData(int col, const QVariant &value)
 
 void TabBewertung::updateValues()
 {
-    ui->btnNeueBewertung->setVisible(bh->sud()->getStatus() == Sud_Status_Abgefuellt);
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    ui->btnNeueBewertung->setVisible(status == Brauhelfer::SudStatus::Abgefuellt);
 
-    ui->wdgBewertung->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
+    ui->scrollAreaWidgetContents->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
 
     ui->wdgRating->setSterne(data(ModelBewertungen::ColSterne).toInt());
     ui->tbDatum->setMinimumDate(bh->sud()->getAbfuelldatum().date());

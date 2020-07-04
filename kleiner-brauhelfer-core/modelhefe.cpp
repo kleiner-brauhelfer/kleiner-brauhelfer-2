@@ -26,13 +26,14 @@ QVariant ModelHefe::dataExt(const QModelIndex &idx) const
     {
         ProxyModel model;
         model.setSourceModel(bh->modelHefegaben());
-        QVariant name = data(idx.row(), ColBeschreibung);
+        QVariant name = data(idx.row(), ColName);
         for (int r = 0; r < model.rowCount(); ++r)
         {
             if (model.data(r, ModelHefegaben::ColName) == name)
             {
                 QVariant sudId = model.data(r, ModelHefegaben::ColSudID);
-                if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus) == Sud_Status_Rezept)
+                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+                if (status == Brauhelfer::SudStatus::Rezept)
                     return true;
             }
         }
@@ -47,7 +48,7 @@ bool ModelHefe::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
     {
-    case ColBeschreibung:
+    case ColName:
     {
         QString name = getUniqueName(idx, value);
         QVariant prevName = data(idx);
@@ -99,7 +100,7 @@ bool ModelHefe::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 void ModelHefe::defaultValues(QMap<int, QVariant> &values) const
 {
-    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
     if (!values.contains(ColTypOGUG))
@@ -108,8 +109,6 @@ void ModelHefe::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColTypTrFl, 0);
     if (!values.contains(ColWuerzemenge))
         values.insert(ColWuerzemenge, 0);
-    if (!values.contains(ColSED))
-        values.insert(ColSED, 0);
     if (!values.contains(ColPreis))
         values.insert(ColPreis, 0);
     if (!values.contains(ColEingelagert))

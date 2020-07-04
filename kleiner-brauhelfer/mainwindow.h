@@ -24,9 +24,16 @@ private slots:
     void changeStyle();
     void checkMessageFinished();
     void on_tabMain_currentChanged();
-    void on_actionOeffnen_triggered();
+    void on_actionNeuen_Sud_anlegen_triggered();
+    void on_actionSud_kopieren_triggered();
+    void on_actionSud_teilen_triggered();
+    void on_actionSud_l_schen_triggered();
+    void on_actionRezept_importieren_triggered();
+    void on_actionRezept_exportieren_triggered();
     void on_actionSpeichern_triggered();
     void on_actionVerwerfen_triggered();
+    void on_actionDruckvorschau_triggered();
+    void on_actionDrucken_triggered();
     void on_actionBereinigen_triggered();
     void on_actionBeenden_triggered();
     void on_actionSudGebraut_triggered();
@@ -40,27 +47,40 @@ private slots:
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);
+    void on_actionOeffnen_triggered();
+    void on_actionReiterZusammenfassung_triggered(bool checked);
+    void on_actionReiterEtikette_triggered(bool checked);
+    void on_actionReiterBewertung_triggered(bool checked);
+    void on_actionReiterBrauuebersicht_triggered(bool checked);
     void on_actionReiterDatenbank_triggered(bool checked);
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionTooltips_triggered(bool checked);
+    void on_actionAnimationen_triggered(bool checked);
+    void on_actioniSpindel_triggered();
+    void on_actionDeutsch_triggered();
+    void on_actionEnglisch_triggered();
     void on_actionSpende_triggered();
+    void on_actionBierspende_triggered();
     void on_actionUeber_triggered();
-    void on_actionIspindelEinstellungen_triggered();
 
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
-    void restart();
+    void restart(int retCode = 1000);
     void save();
     void saveSettings();
-    void restoreView(bool onUpdate = false);
+    void restoreView(bool full);
     void checkForUpdate(bool force);
 
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
+    int mTabIndexZusammenfassung;
+    int mTabIndexEtikette;
+    int mTabIndexBewertung;
+    int mTabIndexBrauuebersicht;
     int mTabIndexDatenbank;
 };
 

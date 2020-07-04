@@ -29,7 +29,7 @@ void CheckBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, 
 
 void CheckBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    Q_UNUSED(index);
+    Q_UNUSED(index)
     QStyleOptionButton checkboxstyle;
     QRect checkbox_rect = QApplication::style()->subElementRect(QStyle::SE_CheckBoxIndicator, &checkboxstyle);
     checkboxstyle.rect = option.rect;

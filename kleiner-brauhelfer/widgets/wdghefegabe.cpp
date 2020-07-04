@@ -1,35 +1,30 @@
 #include "wdghefegabe.h"
 #include "ui_wdghefegabe.h"
+#include <QtMath>
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgHefeGabe::WdgHefeGabe(int index, QWidget *parent) :
-    QWidget(parent),
+WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(bh->sud()->modelHefegaben(), row, parentLayout, parent),
     ui(new Ui::WdgHefeGabe),
-    mIndex(index),
     mEnabled(true)
 {
     ui->setupUi(this);
-
-    ui->frameColor->setToolTip(tr("<strong>Hefetyp<br>"
-                                  "<font color=\"%1\">Obergärig</font><br>"
-                                  "<font color=\"%2\">Untergärig</font><strong>")
-            .arg(gSettings->HefeTypOgUgBackgrounds[1].name())
-            .arg(gSettings->HefeTypOgUgBackgrounds[2].name()));
 
     ui->tbMenge->setErrorOnLimit(true);
 
     checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
@@ -43,14 +38,9 @@ bool WdgHefeGabe::isEnabled() const
     return mEnabled;
 }
 
-QVariant WdgHefeGabe::data(int col) const
+bool WdgHefeGabe::isValid() const
 {
-    return bh->sud()->modelHefegaben()->data(mIndex, col);
-}
-
-bool WdgHefeGabe::setData(int col, const QVariant &value)
-{
-    return bh->sud()->modelHefegaben()->setData(mIndex, col, value);
+    return mValid;
 }
 
 QString WdgHefeGabe::name() const
@@ -65,7 +55,8 @@ int WdgHefeGabe::menge() const
 
 void WdgHefeGabe::checkEnabled(bool force)
 {
-    bool enabled = bh->sud()->getStatus() < Sud_Status_Abgefuellt;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool enabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (data(ModelHefegaben::ColZugegeben).toBool())
         enabled = false;
     if (gSettings->ForceEnabled)
@@ -74,14 +65,18 @@ void WdgHefeGabe::checkEnabled(bool force)
         return;
 
     mEnabled = enabled;
-    ui->btnZutat->setEnabled(enabled);
-    ui->btnLoeschen->setVisible(enabled);
-    ui->tbVorhanden->setVisible(enabled);
-    ui->btnAufbrauchen->setVisible(enabled);
-    ui->lblVorhanden->setVisible(enabled);
-    ui->tbMenge->setReadOnly(!enabled);
-    ui->tbTage->setReadOnly(!enabled);
-    ui->tbDatum->setReadOnly(!enabled);
+    ui->btnZutat->setEnabled(mEnabled);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled);
+    ui->btnAufbrauchen->setVisible(mEnabled);
+    ui->lblVorhanden->setVisible(mEnabled);
+    ui->tbMenge->setReadOnly(!mEnabled);
+    ui->tbMengeEmpfohlen->setVisible(mEnabled);
+    ui->lblEmpfohlen->setVisible(mEnabled);
+    ui->tbTage->setReadOnly(!mEnabled);
+    ui->tbDatum->setReadOnly(!mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 }
 
 void WdgHefeGabe::updateValues(bool full)
@@ -90,7 +85,10 @@ void WdgHefeGabe::updateValues(bool full)
 
     checkEnabled(full);
 
+    int rowRohstoff = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
+    mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(hefename);
+    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())
@@ -104,46 +102,60 @@ void WdgHefeGabe::updateValues(bool full)
     }
     ui->tbDatum->setVisible(braudatum.isValid());
 
-    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, hefename, ModelHefe::ColTypOGUG).toInt();
-    if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
+    if (rowRohstoff >= 0)
     {
-        QPalette pal = ui->frameColor->palette();
-        pal.setColor(QPalette::Background, gSettings->HefeTypOgUgBackgrounds[idx]);
-        ui->frameColor->setPalette(pal);
+        int idx = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColTypOGUG).toInt();
+        if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
+        {
+            QPalette pal = ui->frameColor->palette();
+            pal.setColor(QPalette::Background, gSettings->HefeTypOgUgBackgrounds[idx]);
+            ui->frameColor->setPalette(pal);
+        }
+        else
+        {
+            ui->frameColor->setPalette(gSettings->palette);
+        }
+        ui->frameColor->setToolTip(TabRohstoffe::HefeTypname[idx]);
+
+        double mengeHefe = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColWuerzemenge).toDouble();
+        if (mengeHefe > 0)
+            ui->tbMengeEmpfohlen->setValue(qCeil(bh->sud()->getMengeSoll() / mengeHefe));
+        else
+            ui->tbMengeEmpfohlen->setValue(0);
     }
     else
     {
         ui->frameColor->setPalette(gSettings->palette);
+        ui->frameColor->setToolTip("");
+        ui->tbMengeEmpfohlen->setValue(0);
     }
 
-    ui->btnZugeben->setVisible(mEnabled && bh->sud()->getStatus() == Sud_Status_Gebraut);
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    ui->btnZugeben->setVisible(mEnabled && status == Brauhelfer::SudStatus::Gebraut);
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHefe()->getValueFromSameRow(ModelHefe::ColBeschreibung, hefename, ModelHefe::ColMenge).toInt());
+        ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
         int benoetigt = 0;
-        ProxyModel* model = bh->sud()->modelHefegaben();
-        for (int i = 0; i < model->rowCount(); ++i)
+        for (int i = 0; i < mModel->rowCount(); ++i)
         {
-            if (model->data(i, ModelHefegaben::ColName).toString() == hefename)
-                benoetigt += model->data(i, ModelHefegaben::ColMenge).toInt();
+            if (mModel->data(i, ModelHefegaben::ColName).toString() == hefename)
+                benoetigt += mModel->data(i, ModelHefegaben::ColMenge).toInt();
         }
         ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
         ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
+
+    ui->btnNachOben->setEnabled(mRow > 0);
+    ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 }
 
 void WdgHefeGabe::on_btnZutat_clicked()
 {
-    DlgRohstoffAuswahl dlg(DlgRohstoffAuswahl::Hefe, this);
+    DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hefe, this);
     dlg.select(name());
     if (dlg.exec() == QDialog::Accepted)
         setData(ModelHefegaben::ColName, dlg.name());
-}
-
-void WdgHefeGabe::remove()
-{
-    bh->sud()->modelHefegaben()->removeRow(mIndex);
 }
 
 void WdgHefeGabe::on_tbMenge_valueChanged(int value)
@@ -171,7 +183,7 @@ void WdgHefeGabe::on_btnZugeben_clicked()
     setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelHefegaben::ColZugegeben, true);
 
-    DlgRohstoffeAbziehen dlg(2, name(), menge(), this);
+    DlgRohstoffeAbziehen dlg(Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
     dlg.exec();
 }
 
@@ -183,4 +195,14 @@ void WdgHefeGabe::on_btnLoeschen_clicked()
 void WdgHefeGabe::on_btnAufbrauchen_clicked()
 {
     setData(ModelHefegaben::ColMenge, ui->tbVorhanden->value());
+}
+
+void WdgHefeGabe::on_btnNachOben_clicked()
+{
+    moveUp();
+}
+
+void WdgHefeGabe::on_btnNachUnten_clicked()
+{
+    moveDown();
 }

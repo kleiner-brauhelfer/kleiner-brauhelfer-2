@@ -82,19 +82,50 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QCheckBox" name="cbEditMode">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann der Tab Braudaten sowie der Hell- und der Dunkelmodus nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in der Cascading Style Sheets (CSS) und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <widget class="QSlider" name="sliderZoom">
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>16777215</height>
+            </size>
            </property>
-           <property name="text">
-            <string>Editiermodus</string>
+           <property name="minimum">
+            <number>25</number>
+           </property>
+           <property name="maximum">
+            <number>300</number>
+           </property>
+           <property name="singleStep">
+            <number>5</number>
+           </property>
+           <property name="pageStep">
+            <number>25</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <widget class="ComboBox" name="cbTemplateAuswahl">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diese Reiter wählt man die Stilvorlagen aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <item>
             <property name="text">
@@ -114,19 +145,6 @@
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
           <widget class="QPushButton" name="btnSaveTemplate">
            <property name="text">
             <string>Speichern</string>
@@ -136,10 +154,20 @@
          <item>
           <widget class="QPushButton" name="btnRestoreTemplate">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die Originalstilvorlage wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Originalstilvorlage&lt;/span&gt; wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Wiederherstellen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="cbEditMode">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann der Tab Braudaten sowie der Hell- und der Dunkelmodus nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in der Cascading Style Sheets (CSS) und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Editiermodus</string>
            </property>
           </widget>
          </item>
@@ -202,7 +230,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>cbEditMode</tabstop>
   <tabstop>cbTemplateAuswahl</tabstop>
   <tabstop>btnSaveTemplate</tabstop>
   <tabstop>btnRestoreTemplate</tabstop>

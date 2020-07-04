@@ -29,14 +29,16 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbSEVG->setColumn(ModelSud::ColsEVG);
     ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
+    ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkohol);
     ui->tbSpundungsdruck->setColumn(ModelSud::ColSpundungsdruck);
+    ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    ui->webview->setHtmlFile("abfuelldaten.html");
+    ui->webview->setHtmlFile("abfuelldaten");
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
@@ -56,7 +58,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
 
     ui->tbZuckerFaktor->setValue(gSettings->value("ZuckerFaktor", 1.0).toDouble());
-    ui->tbFlasche->setValue(gSettings->value("FlaschenGroesse", 0.5).toDouble());
+    ui->tbFlaschengroesse->setValue(gSettings->value("FlaschenGroesse", 0.5).toDouble());
 
     gSettings->endGroup();
 
@@ -79,20 +81,23 @@ void TabAbfuellen::saveSettings()
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->setValue("ZuckerFaktor", ui->tbZuckerFaktor->value());
-    gSettings->setValue("FlaschenGroesse", ui->tbFlasche->value());
+    gSettings->setValue("FlaschenGroesse", ui->tbFlaschengroesse->value());
     gSettings->endGroup();
 }
 
-void TabAbfuellen::restoreView()
+void TabAbfuellen::restoreView(bool full)
 {
-    ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    if (full)
+    {
+        ui->splitter->restoreState(mDefaultSplitterState);
+        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    }
 }
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && now != ui->tbHelp)
+    if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 
@@ -117,8 +122,8 @@ void TabAbfuellen::onTabActivated()
 
 void TabAbfuellen::checkEnabled()
 {
-    int status = bh->sud()->getStatus();
-    bool abgefuellt = status >= Sud_Status_Abgefuellt && !gSettings->ForceEnabled;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    bool abgefuellt = status >= Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
     ui->tbAbfuelldatumZeit->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
@@ -133,9 +138,9 @@ void TabAbfuellen::checkEnabled()
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
-    ui->btnSudAbgefuellt->setEnabled(status == Sud_Status_Gebraut && !gSettings->ForceEnabled);
-    ui->btnSudVerbraucht->setEnabled(status == Sud_Status_Abgefuellt && !gSettings->ForceEnabled);
-    ui->btnSudTeilen->setEnabled(status == Sud_Status_Abgefuellt && !gSettings->ForceEnabled);
+    ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
+    ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
+    ui->btnSudTeilen->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
 }
 
 void TabAbfuellen::updateValues()
@@ -146,33 +151,23 @@ void TabAbfuellen::updateValues()
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
 
-    double value;
-
     QDateTime dt = bh->sud()->getAbfuelldatum();
     ui->tbAbfuelldatum->setMinimumDate(bh->sud()->getBraudatum().date());
     ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
     ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
 
+    ui->tbSWJungbierSoll->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
     ui->tbSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-    ui->lblSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblSWSchnellgaerprobeEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunktEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-	ui->tbAlkoholRezept->setValue(BierCalc::alkohol(bh->sud()->getSW(), BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad())));
 
     ui->cbSpunden->setChecked(bh->sud()->getSpunden());
     ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());
-    ui->tbSpeisemengeGesamt2->setValue(bh->sud()->getSpeiseAnteil() / 1000);
-    ui->tbSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblSpeisemengeGesamt2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblSpeisemengeGesamtEinheit2->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->tbBiermengeAbfuellen->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
-    ui->lblBiermengeAbfuellenEinheit->setVisible(ui->tbSpeisemengeGesamt2->value() > 0.0);
 
     ui->groupKarbonisierung->setVisible(!ui->cbSpunden->isChecked());
     ui->tbSpeisemengeGesamt->setValue((int)bh->sud()->getSpeiseAnteil());
@@ -180,21 +175,32 @@ void TabAbfuellen::updateValues()
     ui->lblSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->lblSpeisemengeGesamtEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
     ui->tbZuckerGesamt->setValue((int)(bh->sud()->getZuckerAnteil() / ui->tbZuckerFaktor->value()));
-    ui->tbZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerGesamt->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerGesamtEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->tbZuckerFaktor->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerFaktor->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->tbZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerFlasche->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    ui->lblZuckerFlascheEinheit->setVisible(ui->tbZuckerGesamt->value() > 0.0);
-    value = ui->tbFlasche->value() / bh->sud()->getJungbiermengeAbfuellen();
+
+    bool zucker = ui->tbZuckerGesamt->value() > 0.0;
+    bool zuckerLoesung = ui->tbWassserZuckerloesung->value() > 0.0 && zucker;
+    ui->tbZuckerGesamt->setVisible(zucker);
+    ui->lblZuckerGesamt->setVisible(zucker);
+    ui->lblZuckerGesamtEinheit->setVisible(zucker);
+    ui->tbZuckerFaktor->setVisible(zucker);
+    ui->lblZuckerFaktor->setVisible(zucker);
+    ui->tbZuckerFlasche->setVisible(zucker);
+    ui->lblZuckerFlasche->setVisible(zucker);
+    ui->lblZuckerFlascheEinheit->setVisible(zucker);
+    ui->lblWassserZuckerloesung->setVisible(zucker);
+    ui->tbWassserZuckerloesung->setVisible(zucker);
+    ui->tbWassserZuckerloesungEinheit->setVisible(zucker);
+    ui->lblKonzentrationZuckerloesung->setVisible(zuckerLoesung);
+    ui->tbKonzentrationZuckerloesung->setVisible(zuckerLoesung);
+    ui->tbKonzentrationZuckerloesungEinheit->setVisible(zuckerLoesung);
+
+    double value = ui->tbFlaschengroesse->value() / bh->sud()->getJungbiermengeAbfuellen();
     ui->tbSpeisemengeFlasche->setValue(ui->tbSpeisemengeGesamt->value() * value);
     ui->tbSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->lblSpeisemengeFlasche->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     ui->lblSpeisemengeFlascheEinheit->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
-
     ui->tbZuckerFlasche->setValue(ui->tbZuckerGesamt->value() * value);
+    ui->tbFlaschen->setValue(bh->sud()->geterg_AbgefuellteBiermenge() / ui->tbFlaschengroesse->value());
+    ui->tbKonzentrationZuckerloesung->setValue(ui->tbZuckerGesamt->value() / ui->tbWassserZuckerloesung->value());
 
     mTimerWebViewUpdate.start(200);
 }
@@ -257,9 +263,9 @@ void TabAbfuellen::on_tbZuckerFaktor_valueChanged(double)
         updateValues();
 }
 
-void TabAbfuellen::on_tbFlasche_valueChanged(double)
+void TabAbfuellen::on_tbFlaschengroesse_valueChanged(double)
 {
-    if (ui->tbFlasche->hasFocus())
+    if (ui->tbFlaschengroesse->hasFocus())
         updateValues();
 }
 
@@ -289,7 +295,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
     }
 
     bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time()));
-    bh->sud()->setStatus(Sud_Status_Abgefuellt);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
                                 {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
@@ -308,5 +314,5 @@ void TabAbfuellen::on_btnSudTeilen_clicked()
 
 void TabAbfuellen::on_btnSudVerbraucht_clicked()
 {
-    bh->sud()->setStatus(Sud_Status_Verbraucht);
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
 }

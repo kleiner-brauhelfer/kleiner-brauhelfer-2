@@ -18,7 +18,7 @@ public:
         ColName,
         ColTyp,
         ColSudhausausbeute,
-        ColVerdampfungsziffer,
+        ColVerdampfungsrate,
         ColKorrekturWasser,
         ColKorrekturFarbe,
         ColKorrekturMenge,
@@ -29,6 +29,7 @@ public:
         ColSudpfanne_Durchmesser,
         ColSudpfanne_MaxFuellhoehe,
         ColKosten,
+        ColBemerkung,
         // virtual
         ColDeleted,
         ColMaischebottich_Volumen,

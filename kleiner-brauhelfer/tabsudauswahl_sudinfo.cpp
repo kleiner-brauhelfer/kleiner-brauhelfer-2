@@ -8,6 +8,7 @@
 #include "settings.h"
 #include "proxymodel.h"
 #include "templatetags.h"
+#include "tabrohstoffe.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer *bh;
@@ -16,7 +17,11 @@ extern Settings* gSettings;
 void TabSudAuswahl::updateWebView()
 {
     QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
-    if (selection.count() == 1)
+    if (selection.count() == 0)
+    {
+        ui->webview->clear();
+    }
+    else if (selection.count() == 1)
     {
         const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
         int sudRow = proxyModel->mapRowToSource(selection[0].row());
@@ -36,8 +41,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     struct Rohstoff
     {
         QString Name;
+        QString Typ;
         double Menge;
-        int Einheit;
+        Brauhelfer::Einheit Einheit;
     };
 
     QList<int> ListSudID;
@@ -60,6 +66,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             Rohstoff eintrag;
             eintrag.Name = modelMalzschuettung.data(row, ModelMalzschuettung::ColName).toString();
             eintrag.Menge = modelMalzschuettung.data(row, ModelMalzschuettung::Colerg_Menge).toDouble();
+            eintrag.Einheit = Brauhelfer::Einheit::Kg;
             bool found = false;
             for (Rohstoff& eintragListe : ListMalz)
             {
@@ -85,7 +92,11 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             Rohstoff eintrag;
             eintrag.Name = modelHopfengaben.data(row, ModelHopfengaben::ColName).toString();
+            int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
+            if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
+                eintrag.Typ = TabRohstoffe::HopfenTypname[idx];
             eintrag.Menge = modelHopfengaben.data(row, ModelHopfengaben::Colerg_Menge).toDouble();
+            eintrag.Einheit = Brauhelfer::Einheit::g;
             bool found = false;
             for (Rohstoff& eintragListe : ListHopfen)
             {
@@ -111,7 +122,11 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         {
             Rohstoff eintrag;
             eintrag.Name = modelHefegaben.data(row, ModelHefegaben::ColName).toString();
+            int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, eintrag.Name, ModelHefe::ColTypOGUG).toInt();
+            if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
+                eintrag.Typ = TabRohstoffe::HefeTypname[idx];
             eintrag.Menge = modelHefegaben.data(row, ModelHefegaben::ColMenge).toDouble();
+            eintrag.Einheit = Brauhelfer::Einheit::Stk;
             bool found = false;
             for (Rohstoff& eintragListe : ListHefe)
             {
@@ -127,11 +142,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         }
     }
 
-    QList<Rohstoff> ListWeitereZutatenHonig;
-    QList<Rohstoff> ListWeitereZutatenZucker;
-    QList<Rohstoff> ListWeitereZutatenGewuerz;
-    QList<Rohstoff> ListWeitereZutatenFrucht;
-    QList<Rohstoff> ListWeitereZutatenSonstiges;
+    QList<Rohstoff> ListWeitereZutaten;
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
     for (int row = 0; row < modelWeitereZutatenGaben.rowCount(); ++row)
@@ -142,30 +153,21 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             Rohstoff eintrag;
             eintrag.Name = modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColName).toString();
             eintrag.Menge = modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-            eintrag.Einheit = modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt();
-            bool found = false;
             QList<Rohstoff> *liste = nullptr;
-            switch (modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColTyp).toInt())
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
-            case EWZ_Typ_Honig:
-                liste = &ListWeitereZutatenHonig;
-                break;
-            case EWZ_Typ_Zucker:
-                liste = &ListWeitereZutatenZucker;
-                break;
-            case EWZ_Typ_Gewuerz:
-                liste = &ListWeitereZutatenGewuerz;
-                break;
-            case EWZ_Typ_Frucht:
-                liste = &ListWeitereZutatenFrucht;
-                break;
-            case EWZ_Typ_Sonstiges:
-                liste = &ListWeitereZutatenSonstiges;
-                break;
-            case EWZ_Typ_Hopfen:
+                int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
+                eintrag.Typ = TabRohstoffe::HopfenTypname[idx];
                 liste = &ListHopfen;
-                break;
             }
+            else
+            {
+                eintrag.Typ = TabRohstoffe::ZusatzTypname[static_cast<int>(typ)];
+                liste = &ListWeitereZutaten;
+            }
+            eintrag.Einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+            bool found = false;
             for (Rohstoff& eintragListe : *liste)
             {
                 if (eintrag.Name == eintragListe.Name)
@@ -187,16 +189,19 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelMalz;
         modelMalz.setSourceModel(bh->modelMalz());
-        modelMalz.setFilterKeyColumn(ModelMalz::ColBeschreibung);
+        modelMalz.setFilterKeyColumn(ModelMalz::ColName);
         for (const Rohstoff& eintrag : ListMalz)
         {
             QVariantMap map;
             double ist = 0;
+            double diff = 0;
             modelMalz.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelMalz.rowCount() > 0)
             {
                 ist = modelMalz.data(0, ModelMalz::ColMenge).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                diff = qRound((ist - eintrag.Menge) * 100) / 100.0;
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
+                map.insert("Rest", locale.toString(diff, 'f', 2));
             }
             else
             {
@@ -205,7 +210,6 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
             map.insert("Vorhanden", locale.toString(ist, 'f', 2));
-            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 2));
             map.insert("Einheit", tr("kg"));
             liste << map;
         }
@@ -217,25 +221,28 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelHopfen;
         modelHopfen.setSourceModel(bh->modelHopfen());
-        modelHopfen.setFilterKeyColumn(ModelHopfen::ColBeschreibung);
+        modelHopfen.setFilterKeyColumn(ModelHopfen::ColName);
         for (const Rohstoff& eintrag : ListHopfen)
         {
             QVariantMap map;
             double ist = 0;
+            double diff = 0;
             modelHopfen.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHopfen.rowCount() > 0)
             {
                 ist = modelHopfen.data(0, ModelHopfen::ColMenge).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                diff = qRound((ist - eintrag.Menge) * 10) / 10.0;
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
+                map.insert("Rest", locale.toString(diff, 'f', 1));
             }
             else
             {
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
-            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-            map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+            map.insert("Typ", eintrag.Typ);
+            map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
+            map.insert("Vorhanden", locale.toString(ist, 'f', 1));
             map.insert("Einheit", tr("g"));
             liste << map;
         }
@@ -247,294 +254,115 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         QVariantList liste;
         ProxyModel modelHefe;
         modelHefe.setSourceModel(bh->modelHefe());
-        modelHefe.setFilterKeyColumn(ModelHefe::ColBeschreibung);
+        modelHefe.setFilterKeyColumn(ModelHefe::ColName);
         for (const Rohstoff& eintrag : ListHefe)
         {
             QVariantMap map;
-            double ist = 0;
+            int ist = 0;
+            int diff = 0;
             modelHefe.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHefe.rowCount() > 0)
             {
-                ist = modelHefe.data(0, ModelHefe::ColMenge).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelHefe.data(0, ModelHefe::ColMenge).toInt();
+                diff = ist - eintrag.Menge;
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
+                map.insert("Rest", QString::number(diff));
             }
             else
             {
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
+            map.insert("Typ", eintrag.Typ);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-            map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-            map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
+            map.insert("Vorhanden", QString::number(ist));
             map.insert("Einheit", "");
             liste << map;
         }
         ctxZutaten["Hefe"] = QVariantMap({{"Liste", liste}});
     }
 
-    if (ListWeitereZutatenHonig.count() > 0)
+    if (ListWeitereZutaten.count() > 0)
     {
         QVariantList liste;
         ProxyModel modelWeitereZutaten;
         modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
-        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColBeschreibung);
-        for (const Rohstoff& eintrag : ListWeitereZutatenHonig)
+        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColName);
+        for (const Rohstoff& eintrag : ListWeitereZutaten)
         {
             QVariantMap map;
             double ist = 0;
+            double diff = 0;
             modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
-                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeGramm).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
+                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeNormiert).toDouble();
+                switch (eintrag.Einheit)
+                {
+                case Brauhelfer::Einheit::Kg:
+                    diff = qRound((ist - eintrag.Menge) / 1000 * 100) / 100.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                case Brauhelfer::Einheit::g:
+                    diff = qRound((ist - eintrag.Menge) * 10) / 10.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                case Brauhelfer::Einheit::mg:
+                    diff = qRound((ist - eintrag.Menge) * 1000 * 10) / 10.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                case Brauhelfer::Einheit::Stk:
+                    diff = qRound((ist - qCeil(eintrag.Menge)));
+                    map.insert("Rest", locale.toString(diff, 'f', 0));
+                    break;
+                case Brauhelfer::Einheit::l:
+                    diff = qRound((ist - eintrag.Menge) / 1000 * 100) / 100.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                case Brauhelfer::Einheit::ml:
+                    diff = qRound((ist - eintrag.Menge) * 10) / 10.0;
+                    map.insert("Rest", locale.toString(diff, 'f', 2));
+                    break;
+                }
+                map.insert("Class", diff < 0 ? "nichtvorhanden" : "vorhanden");
             }
             else
             {
                 map.insert("Class", "nichtgefunden");
             }
             map.insert("Name", eintrag.Name);
+            map.insert("Typ", eintrag.Typ);
+            map.insert("Einheit", TabRohstoffe::Einheiten[static_cast<int>(eintrag.Einheit)]);
             switch (eintrag.Einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Brauhelfer::Einheit::Kg:
                 map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
-                map.insert("Einheit", tr("kg"));
                 break;
-            case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
+            case Brauhelfer::Einheit::g:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 2));
+                break;
+            case Brauhelfer::Einheit::mg:
+                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 2));
+                break;
+            case Brauhelfer::Einheit::Stk:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
                 map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
-                map.insert("Einheit", tr("g"));
                 break;
-            case EWZ_Einheit_mg:
-                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
-                map.insert("Einheit", tr("mg"));
+            case Brauhelfer::Einheit::l:
+                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                 break;
-            case EWZ_Einheit_Stk:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
-                map.insert("Einheit", tr("Stk."));
+            case Brauhelfer::Einheit::ml:
+                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
+                map.insert("Vorhanden", locale.toString(ist, 'f', 2));
                 break;
             }
             liste << map;
         }
-        ctxZutaten["Honig"] = QVariantMap({{"Liste", liste}});
-    }
-
-    if (ListWeitereZutatenZucker.count() > 0)
-    {
-        QVariantList liste;
-        ProxyModel modelWeitereZutaten;
-        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
-        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColBeschreibung);
-        for (const Rohstoff& eintrag : ListWeitereZutatenZucker)
-        {
-            QVariantMap map;
-            double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
-            if (modelWeitereZutaten.rowCount() > 0)
-            {
-                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeGramm).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
-            }
-            else
-            {
-                map.insert("Class", "nichtgefunden");
-            }
-            map.insert("Name", eintrag.Name);
-            switch (eintrag.Einheit)
-            {
-            case EWZ_Einheit_Kg:
-                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
-                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
-                map.insert("Einheit", tr("kg"));
-                break;
-            case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
-                map.insert("Einheit", tr("g"));
-                break;
-            case EWZ_Einheit_mg:
-                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
-                map.insert("Einheit", tr("mg"));
-                break;
-            case EWZ_Einheit_Stk:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
-                map.insert("Einheit", tr("Stk."));
-                break;
-            }
-            liste << map;
-        }
-        ctxZutaten["Zucker"] = QVariantMap({{"Liste", liste}});
-    }
-
-    if (ListWeitereZutatenGewuerz.count() > 0)
-    {
-        QVariantList liste;
-        ProxyModel modelWeitereZutaten;
-        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
-        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColBeschreibung);
-        for (const Rohstoff& eintrag : ListWeitereZutatenGewuerz)
-        {
-            QVariantMap map;
-            double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
-            if (modelWeitereZutaten.rowCount() > 0)
-            {
-                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeGramm).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
-            }
-            else
-            {
-                map.insert("Class", "nichtgefunden");
-            }
-            map.insert("Name", eintrag.Name);
-            switch (eintrag.Einheit)
-            {
-            case EWZ_Einheit_Kg:
-                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
-                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
-                map.insert("Einheit", tr("kg"));
-                break;
-            case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
-                map.insert("Einheit", tr("g"));
-                break;
-            case EWZ_Einheit_mg:
-                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
-                map.insert("Einheit", tr("mg"));
-                break;
-            case EWZ_Einheit_Stk:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
-                map.insert("Einheit", tr("Stk."));
-                break;
-            }
-            liste << map;
-        }
-        ctxZutaten["Gewuerz"] = QVariantMap({{"Liste", liste}});
-    }
-
-    if (ListWeitereZutatenFrucht.count() > 0)
-    {
-        QVariantList liste;
-        ProxyModel modelWeitereZutaten;
-        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
-        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColBeschreibung);
-        for (const Rohstoff& eintrag : ListWeitereZutatenFrucht)
-        {
-            QVariantMap map;
-            double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
-            if (modelWeitereZutaten.rowCount() > 0)
-            {
-                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeGramm).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
-            }
-            else
-            {
-                map.insert("Class", "nichtgefunden");
-            }
-            map.insert("Name", eintrag.Name);
-            switch (eintrag.Einheit)
-            {
-            case EWZ_Einheit_Kg:
-                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
-                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
-                map.insert("Einheit", tr("kg"));
-                break;
-            case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
-                map.insert("Einheit", tr("g"));
-                break;
-            case EWZ_Einheit_mg:
-                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
-                map.insert("Einheit", tr("mg"));
-                break;
-            case EWZ_Einheit_Stk:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
-                map.insert("Einheit", tr("Stk."));
-                break;
-            }
-            liste << map;
-        }
-        ctxZutaten["Frucht"] = QVariantMap({{"Liste", liste}});
-    }
-
-    if (ListWeitereZutatenSonstiges.count() > 0)
-    {
-        QVariantList liste;
-        ProxyModel modelWeitereZutaten;
-        modelWeitereZutaten.setSourceModel(bh->modelWeitereZutaten());
-        modelWeitereZutaten.setFilterKeyColumn(ModelWeitereZutaten::ColBeschreibung);
-        for (const Rohstoff& eintrag : ListWeitereZutatenSonstiges)
-        {
-            QVariantMap map;
-            double ist = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
-            if (modelWeitereZutaten.rowCount() > 0)
-            {
-                ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeGramm).toDouble();
-                map.insert("Class", ist < eintrag.Menge ? "nichtvorhanden" : "vorhanden");
-            }
-            else
-            {
-                map.insert("Class", "nichtgefunden");
-            }
-            map.insert("Name", eintrag.Name);
-            switch (eintrag.Einheit)
-            {
-            case EWZ_Einheit_Kg:
-                map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
-                map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) / 1000, 'f', 2));
-                map.insert("Einheit", tr("kg"));
-                break;
-            case EWZ_Einheit_g:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - eintrag.Menge, 'f', 0));
-                map.insert("Einheit", tr("g"));
-                break;
-            case EWZ_Einheit_mg:
-                map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 0));
-                map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 0));
-                map.insert("Rest", locale.toString((ist - eintrag.Menge) * 1000, 'f', 0));
-                map.insert("Einheit", tr("mg"));
-                break;
-            case EWZ_Einheit_Stk:
-                map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
-                map.insert("Vorhanden", locale.toString(ist, 'f', 0));
-                map.insert("Rest", locale.toString(ist - qCeil(eintrag.Menge), 'f', 0));
-                map.insert("Einheit", tr("Stk."));
-                break;
-            }
-            liste << map;
-        }
-        ctxZutaten["Sonstiges"] = QVariantMap({{"Liste", liste}});
+        ctxZutaten["Zusatz"] = QVariantMap({{"Liste", liste}});
     }
 
     tags["Zutaten"] = ctxZutaten;

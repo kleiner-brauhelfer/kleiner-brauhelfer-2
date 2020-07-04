@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DlgPhMalz</class>
+ <widget class="QDialog" name="DlgPhMalz">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>548</width>
+    <height>92</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Malz pH-Wert</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Malztyp in der Auswahliste wählen, sonst den Malz-pH-Wert (in destilliertem Wasser) manuell eintragen. Carafa und hoch gedarrte Malze gelten als Röstmalz.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>9</number>
+     </property>
+     <item>
+      <widget class="ComboBox" name="cbTyp">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der pH-Wert für den gewählten Malztyp eingestellt.&lt;/p&gt;&lt;p&gt;Vordefiniert sind Werte für Basismalz bis 200 EBC, Karamellmalz, Röstmalz und Rohfrucht. Sofern bekannt, kann der pH-Wert eines Malzes auch manuell eingegeben werden.&lt;/p&gt;&lt;p&gt;Zur manuellen Eingabe: Manche Mälzereien stellen Dateblätter für den gemessenen pH-Wert zu Verfügung. Die Werte können innerhalb eines Malztyps abweichen. In der Mikro- und Hobbybrauerei ist dieser Faktor indes vernachlässigbar.&lt;/p&gt;&lt;p&gt;Zur Orientierung durchschnittliche Farbwerte nach Malztyp:&lt;/p&gt;&lt;p&gt;Basismalze: 2 – 30 EBC&lt;/p&gt;&lt;p&gt;Rohfrucht: 1 – 20 EBC&lt;/p&gt;&lt;p&gt;Karamellmalze: 4 – 450 EBC&lt;/p&gt;&lt;p&gt;Röstmalze: 38 – 1300 EBC&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei manchen Spezialmalzen wie Brown Malt, bei denen sich das Mälzverfahren im Laufe der Zeit geändert hat und die in alten Rezepten erwähnt werden, können nur noch den Namen gemeinsam haben, unterscheiden sich aber sonst beträchtlich. Wenn Informationen in Shps und Mälzereien fehlen, sind Fachforen die erste Adressem um Unklarheiten zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Manuell</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Malz EBC &lt; 200</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Caramalz</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Röstmalz</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>pH-Wert</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="DoubleSpinBox" name="tbPh">
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;ph-Wert&lt;/span&gt; entweder nach Auswahlliste vordefiniert angezeigt oder manuell eingetragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="decimals">
+        <number>2</number>
+       </property>
+       <property name="minimum">
+        <double>0.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>14.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weiterführende Erklärungen auf &lt;a href=&quot;https://www.maischemalzundmehr.de/index.php?inhaltmitte=exp_maischph&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MaischeMalzundMehr&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="openExternalLinks">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DlgPhMalz</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DlgPhMalz</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

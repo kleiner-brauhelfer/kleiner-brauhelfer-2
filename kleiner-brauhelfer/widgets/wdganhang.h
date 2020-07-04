@@ -28,6 +28,7 @@ private slots:
     void on_lineEdit_Pfad_textChanged(const QString &pfad);
     void on_checkBox_Relativ_clicked();
     void on_pushButton_Browse_clicked();
+    void on_btnOpen_clicked();
     void on_btnLoeschen_clicked();
 
 private:

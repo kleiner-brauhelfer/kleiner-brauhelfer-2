@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>507</width>
-    <height>127</height>
+    <width>823</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -40,18 +40,21 @@
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>9</number>
+        </property>
         <item>
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="focusPolicy">
@@ -76,25 +79,23 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="btnNachOben">
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNachUnten">
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="btnLoeschen">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>Hopfengabe löschen.</string>
           </property>
@@ -102,26 +103,101 @@
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
           </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>16</height>
-           </size>
-          </property>
          </widget>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>9</number>
+        </property>
         <property name="verticalSpacing">
          <number>4</number>
         </property>
+        <item row="0" column="12" rowspan="2">
+         <widget class="QLabel" name="lblEinheit">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>g</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="11">
+         <widget class="DoubleSpinBox" name="tbAusbeute">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; der Alphasäure angegeben.&lt;/p&gt;&lt;p&gt;Die Ausbeute ist abhängig von der Kochdauer. &lt;/p&gt;&lt;p&gt;Bei kürzeren Kochzeiten oder nach Kochende oder bei Kalthopfung tendiert die Ausbeute der Alphasäure und damit der Bittereeintrag gegen Null. Dafür werden die Aromaeigenschaften betont.&lt;/p&gt;&lt;p&gt;Alphasäure wird bis 60 Minuten stark gelöst. Darüber hinaus flacht der Effekt gelöster Alphasäure stark ab.&lt;/p&gt;&lt;p&gt;Die meisten Aromastoffe wie Beta-Säure, Humulone und Mycrene werden in den ersten 30 Minuten gelöst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="10" rowspan="2">
+         <widget class="QLabel" name="lblVorhanden">
+          <property name="text">
+           <string>Vorhanden</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6" rowspan="2">
+         <widget class="QLabel" name="lblMengeProzent">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="7" rowspan="2">
+         <widget class="QPushButton" name="btnMengeKorrektur">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor nach Gewicht &lt;/span&gt;ausgegeben, wenn der Eintrag an Alphasäure nach Gewicht 100% der angepeilten Bittere (IBU) unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Wert&lt;/span&gt; berechnet sich u.a. aus allen eingesetzten Bitter-, Universal- und Aromahopfen. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Hopfengabe &lt;/span&gt;auf 100% IBU. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung des Hopfens anteilig vorab auf 100% gesamt bestimmt werden, wobei Alphawert und Kochdauer einzelner Hopfensorten den Gesamtwert unterschiedlich beeinflussen.&lt;/p&gt;&lt;p&gt;Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" rowspan="2">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Menge</string>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="2">
          <widget class="QLabel" name="label_13">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -130,10 +206,251 @@
           </property>
          </widget>
         </item>
+        <item row="2" column="1">
+         <widget class="DoubleSpinBox" name="tbAnteil">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Anteil der Hopfengabe &lt;/span&gt;an der Bittere angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="11">
+         <widget class="DoubleSpinBox" name="tbAlpha">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der im Tab Rohstoffe angegebene &lt;span style=&quot; font-weight:600;&quot;&gt;Alphawert &lt;/span&gt;des Hopfens angezeigt.&lt;/p&gt;&lt;p&gt;Der Alphawert ist zentral für den Bittereindruck, auch &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt; genannt. Hopfensorten variieren stark. Hochalphasorten erreichen bis zu 18%, Aromasorten dagegen können bis auf 1% Alphawert sinken.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_12">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>min</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Kochdauer</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="12">
+         <widget class="QLabel" name="label_9">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Anteil</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="7">
+         <widget class="QPushButton" name="btnAnteilKorrektur">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor nach IBU &lt;/span&gt;ausgegeben, wenn der Eintrag an Alphasäure nach IBU 100% der angepeilten Bittere unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Wert&lt;/span&gt; berechnet sich u.a. aus allen eingesetzten Bitter-, Universal- und Aromahopfen. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Hopfengabe &lt;/span&gt;auf 100% IBU. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung des Hopfens anteilig vorab auf 100% per IBU-Eintrag bestimmt werden, wobei Alphawert und Kochdauer einzelner Hopfensorten den Gesamtwert unterschiedlich beeinflussen.&lt;/p&gt;&lt;p&gt;Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="12">
+         <widget class="QLabel" name="label_10">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QLabel" name="label_7">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>g/l</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="DoubleSpinBox" name="tbMenge">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Gewichtsanteil &lt;/span&gt;des Hopfens für die bestimmte Bittere angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung ist neben dem Gewicht abhängig von Kochdauer und Alphawert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>999.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_6">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>g</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="10">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Alpha</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="11">
+         <widget class="DoubleSpinBox" name="tbVorhanden">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge Hopfen &lt;/span&gt;angezeigt.&lt;/p&gt;&lt;p&gt;Das Feld wir rot unterlegt, wenn die benötigte Menge prozentual oder nach Gewicht größer als die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorratsmenge&lt;/span&gt; ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="8" rowspan="2">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="9">
+         <widget class="QPushButton" name="btnAufbrauchen">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge übernehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
+          </property>
+         </widget>
+        </item>
         <item row="3" column="3" colspan="2">
          <widget class="ComboBox" name="cbZeitpunkt">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorderwürzehopfung &lt;/span&gt;aktiviert.&lt;/p&gt;&lt;p&gt;Als Vorderwürzehopfung wird die Hopfengabe vor dem eigentlichen Kochvorgang bezeichnet. Der Vorgang ist auch unter dem Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen vorlegen&lt;/span&gt; bekannt.&lt;/p&gt;&lt;p&gt;Geschmacklich ist diese Gabe milder, ist aber weniger ergiebig. Der Kleine Brauhelfer berücksichtigt diesen Umstand. Zu Details geben sowohl Fachliteratur als auch Fachforen nähere Auskunft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorderwürzehopfung &lt;/span&gt;aktiviert.&lt;/p&gt;&lt;p&gt;Als Vorderwürzehopfung (VWH) wird die Hopfengabe vor dem eigentlichen Kochvorgang bezeichnet. Dadurch werden bis zum Würzebruch weniger Bitterstoffe eingetragen. Der Vorgang ist auch unter dem Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen vorlegen&lt;/span&gt; bekannt. Vorderwürzehopfung empfiehlt sich immer dann, wenn mehr &lt;span style=&quot; font-weight:600;&quot;&gt;Aroma&lt;/span&gt; gewünscht ist oder Bitterstoffe vermieden werden sollen, die man nicht im Bier haben möchte. Dies trifft auf Bitter- Universal- und Aromahopfen gleichmaßen zu.&lt;/p&gt;&lt;p&gt;Geschmacklich ist die VWH-Gabe &lt;span style=&quot; font-weight:600;&quot;&gt;milder&lt;/span&gt;, bei gleicher Menge aber weniger ergiebig. Sie benötigt bei gleicher Bitterung rund 10% mehr Hopfen. Durch die Vorderwürzehopfung werden bestimmte &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenalkohole&lt;/span&gt; gebildet, die ein abgerundetes, ausgewogenes und feines Hopfenaroma im späteren Bier erzeugen. Diese Hopfenalkohole bleiben trotz des Kochvorgangs weitestgehend erhalten, da sie schwerer flüchtig sind als Hopfenöle. Der Kleine Brauhelfer berücksichtigt diesen Umstand. Zu Details geben sowohl Fachliteratur als auch Fachforen nähere Auskunft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <item>
            <property name="text">
@@ -162,353 +479,11 @@
           </item>
          </widget>
         </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Kochdauer</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="9">
-         <widget class="DoubleSpinBox" name="tbAlpha">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der im Tab Rohstoffe angegebene &lt;span style=&quot; font-weight:600;&quot;&gt;Alphawert &lt;/span&gt;des Hopfens angezeigt.&lt;/p&gt;&lt;p&gt;Der Alphawert ist zentral für die Bittere. Hopfensorten variieren stark zwischen bis zu 18% bei Hochalphasorten und 1% bei Aromasorten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="DoubleSpinBox" name="tbAnteil">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Anteil der Hopfengabe &lt;/span&gt;an der Bittere angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="8">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Ausbeute</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="SpinBox" name="tbKochdauer">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; der Hopfengabe angegeben.&lt;/p&gt;&lt;p&gt;Die Kochdauer hat großen Einfluss auf den Anteil der Bittere der Hopfengabe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="minimum">
-           <number>-999</number>
-          </property>
-          <property name="maximum">
-           <number>999</number>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="8" rowspan="2">
-         <widget class="QLabel" name="lblVorhanden">
-          <property name="text">
-           <string>Vorhanden</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5" rowspan="2">
-         <widget class="QPushButton" name="btnMengeKorrektur">
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor nach Gewicht &lt;/span&gt;ausgegeben, wenn der Eintrag an Alphasäure nach Gewicht 100% der angepeilten Bittere (IBU) unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Wert&lt;/span&gt; berechnet sich u.a. aus allen eingesetzten Bitter-, Universal- und Aromahopfen. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Hopfengabe &lt;/span&gt;auf 100% IBU. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung des Hopfens anteilig vorab auf 100% gesamt bestimmt werden, wobei Alphawert und Kochdauer einzelner Hopfensorten den Gesamtwert unterschiedlich beeinflussen.&lt;/p&gt;&lt;p&gt;Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Anteil</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="8">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>Alpha</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="10">
-         <widget class="QLabel" name="label_9">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>%</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="10">
-         <widget class="QLabel" name="label_10">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>%</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="9">
-         <widget class="DoubleSpinBox" name="tbAusbeute">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; der Alphasäure angegeben.&lt;/p&gt;&lt;p&gt;Die Ausbeute ist abhängig von der Kochdauer. &lt;/p&gt;&lt;p&gt;Bei kürzeren Kochzeiten oder nach Kochende oder bei Kalthopfung tendiert die Ausbeute der Alphasäure und damit der Bittereeintrag gegen Null. Dafür werden die Aromaeigenschaften betont.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-          <property name="decimals">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <double>999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="DoubleSpinBox" name="tbAnteilProzent">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angegeben wird hier der &lt;span style=&quot; font-weight:600;&quot;&gt;prozentuale Bittereeintrag &lt;/span&gt; der Hopfengabe und damit der IBU-Anteil der Sollbittere des Sudes.&lt;/p&gt;&lt;p&gt;Diese Berechnungsart wird empfohlen, da sich Hopfensorten mit verschiedenen Alpha-Werten besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="minimum">
-           <double>0.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>100.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="7">
-         <widget class="QPushButton" name="btnAufbrauchen">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge übernehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="9">
-         <widget class="SpinBox" name="tbVorhanden">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge Hopfen &lt;/span&gt;angezeigt.&lt;/p&gt;&lt;p&gt;Das Feld wir rot unterlegt, wenn die benötigte Menge prozentual oder nach Gewicht größer als die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorratsmenge&lt;/span&gt; ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-          <property name="maximum">
-           <number>9999</number>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4" rowspan="2">
-         <widget class="QLabel" name="lblMengeProzent">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>%</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="10" rowspan="2">
-         <widget class="QLabel" name="lblEinheit">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>g</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6" rowspan="2">
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="5">
-         <widget class="QPushButton" name="btnAnteilKorrektur">
-          <property name="maximumSize">
-           <size>
-            <width>60</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor nach IBU &lt;/span&gt;ausgegeben, wenn der Eintrag an Alphasäure nach IBU 100% der angepeilten Bittere unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Wert&lt;/span&gt; berechnet sich u.a. aus allen eingesetzten Bitter-, Universal- und Aromahopfen. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Hopfengabe &lt;/span&gt;auf 100% IBU. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung des Hopfens anteilig vorab auf 100% per IBU-Eintrag bestimmt werden, wobei Alphawert und Kochdauer einzelner Hopfensorten den Gesamtwert unterschiedlich beeinflussen.&lt;/p&gt;&lt;p&gt;Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="SpinBox" name="tbMenge">
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Gewichtsanteil &lt;/span&gt;des Hopfens für die bestimmte Bittere angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung ist neben dem Gewicht abhängig von Kochdauer und Alphawert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="maximum">
-           <number>999</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
+        <item row="1" column="5">
          <widget class="DoubleSpinBox" name="tbMengeProzent">
           <property name="minimumSize">
            <size>
-            <width>60</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -532,49 +507,98 @@
           </property>
          </widget>
         </item>
+        <item row="3" column="10">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Ausbeute</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="SpinBox" name="tbKochdauer">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; der Hopfengabe angegeben.&lt;/p&gt;&lt;p&gt;Die Kochdauer hat großen Einfluss auf den Anteil der Bittere der Hopfengabe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimum">
+           <number>-999</number>
+          </property>
+          <property name="maximum">
+           <number>999</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="DoubleSpinBox" name="tbMengeProLiter">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Gewichtsanteil pro Liter &lt;/span&gt;des Hopfens für die bestimmte Bittere angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung ist neben dem Gewicht abhängig von Kochdauer und Alphawert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="maximum">
+           <double>999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="DoubleSpinBox" name="tbAnteilProzent">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angegeben wird hier der &lt;span style=&quot; font-weight:600;&quot;&gt;prozentuale Bittereeintrag &lt;/span&gt; der Hopfengabe und damit der IBU-Anteil der Sollbittere des Sudes.&lt;/p&gt;&lt;p&gt;Diese Berechnungsart wird empfohlen, da sich Hopfensorten mit verschiedenen Alpha-Werten besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="minimum">
+           <double>0.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>100.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="4">
          <widget class="QLabel" name="lblAnteilProzent">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
           <property name="text">
            <string>%</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QLabel" name="label_12">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>min</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="label_6">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>g</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" rowspan="2">
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>Menge</string>
           </property>
          </widget>
         </item>
@@ -592,14 +616,14 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -608,11 +632,9 @@
   <tabstop>btnMengeKorrektur</tabstop>
   <tabstop>tbVorhanden</tabstop>
   <tabstop>tbAnteil</tabstop>
-  <tabstop>tbAnteilProzent</tabstop>
   <tabstop>btnAnteilKorrektur</tabstop>
   <tabstop>tbAlpha</tabstop>
   <tabstop>tbKochdauer</tabstop>
-  <tabstop>cbZeitpunkt</tabstop>
   <tabstop>tbAusbeute</tabstop>
  </tabstops>
  <resources>

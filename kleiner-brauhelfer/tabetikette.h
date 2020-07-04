@@ -17,6 +17,8 @@ class TabEtikette : public TabAbstract
 public:
     explicit TabEtikette(QWidget *parent = nullptr);
     virtual ~TabEtikette() Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
 
 private slots:
     void updateAll();
@@ -28,23 +30,23 @@ private slots:
     void updateAuswahlListe();
     void onPrinterPaintRequested(QPrinter *printer);
     void on_cbAuswahl_activated(int index);
+    void on_btnOeffnen_clicked();
+    void on_btnAktualisieren_clicked();
     void on_tbAnzahl_valueChanged(int value);
-    void on_tbLabelBreite_valueChanged(int value);
-    void on_tbLabelHoehe_valueChanged(int value);
+    void on_tbLabelBreite_valueChanged(double value);
+    void on_tbLabelHoehe_valueChanged(double value);
     void on_cbSeitenverhaeltnis_clicked(bool checked);
     void on_btnGroesseAusSvg_clicked();
-    void on_tbAbstandHor_valueChanged(int value);
-    void on_tbAbstandVert_valueChanged(int value);
-    void on_tbRandOben_valueChanged(int value);
-    void on_tbRandLinks_valueChanged(int value);
-    void on_tbRandRechts_valueChanged(int value);
-    void on_tbRandUnten_valueChanged(int value);
+    void on_tbAbstandHor_valueChanged(double value);
+    void on_tbAbstandVert_valueChanged(double value);
     void on_cbTagsErsetzen_stateChanged();
     void on_cbEditMode_clicked(bool checked);
     void on_tbTemplate_textChanged();
     void on_btnSaveTemplate_clicked();
     void on_btnToPdf_clicked();
     void on_btnLoeschen_clicked();
+    void on_btnTagNeu_clicked();
+    void on_btnTagLoeschen_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
@@ -52,6 +54,8 @@ private:
     QString generateSvg(const QString &svg);
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
+    void loadPageLayout();
+    void savePageLayout();
 
 private:
     Ui::TabEtikette *ui;

@@ -10,8 +10,9 @@ void TabAbstract::saveSettings()
 {
 }
 
-void TabAbstract::restoreView()
+void TabAbstract::restoreView(bool full)
 {
+    Q_UNUSED(full)
 }
 
 void TabAbstract::setTabActive(bool active)
@@ -38,4 +39,12 @@ void TabAbstract::onTabActivated()
 void TabAbstract::onTabDeactivated()
 {
     setFocus();
+}
+
+void TabAbstract::printPreview()
+{
+}
+
+void TabAbstract::toPdf()
+{
 }

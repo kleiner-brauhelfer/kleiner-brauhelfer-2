@@ -26,13 +26,14 @@ QVariant ModelMalz::dataExt(const QModelIndex &idx) const
     {
         ProxyModel model;
         model.setSourceModel(bh->modelMalzschuettung());
-        QVariant name = data(idx.row(), ColBeschreibung);
+        QVariant name = data(idx.row(), ColName);
         for (int r = 0; r < model.rowCount(); ++r)
         {
             if (model.data(r, ModelMalzschuettung::ColName) == name)
             {
                 QVariant sudId = model.data(r, ModelMalzschuettung::ColSudID);
-                if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus) == Sud_Status_Rezept)
+                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+                if (status == Brauhelfer::SudStatus::Rezept)
                     return true;
             }
         }
@@ -47,7 +48,7 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
     {
-    case ColBeschreibung:
+    case ColName:
     {
         QString name = getUniqueName(idx, value);
         QVariant prevName = data(idx);
@@ -70,10 +71,30 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
         }
         return false;
     }
+    case ColPotential:
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QVariant name = data(idx.row(), ColName);
+            ProxyModelSud modelSud;
+            modelSud.setSourceModel(bh->modelSud());
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
+            {
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
+                SqlTableModel* model = bh->modelMalzschuettung();
+                for (int j = 0; j < model->rowCount(); ++j)
+                {
+                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
+                        model->setData(j, ModelMalzschuettung::ColPotential, value);
+                }
+            }
+            return true;
+        }
+        return false;
     case ColFarbe:
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColBeschreibung);
+            QVariant name = data(idx.row(), ColName);
             ProxyModelSud modelSud;
             modelSud.setSourceModel(bh->modelSud());
             modelSud.setFilterStatus(ProxyModelSud::Rezept);
@@ -85,6 +106,26 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
                 {
                     if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
                         model->setData(j, ModelMalzschuettung::ColFarbe, value);
+                }
+            }
+            return true;
+        }
+        return false;
+    case ColpH:
+        if (QSqlTableModel::setData(idx, value))
+        {
+            QVariant name = data(idx.row(), ColName);
+            ProxyModelSud modelSud;
+            modelSud.setSourceModel(bh->modelSud());
+            modelSud.setFilterStatus(ProxyModelSud::Rezept);
+            for (int r = 0; r < modelSud.rowCount(); ++r)
+            {
+                QVariant sudId = modelSud.data(r, ModelSud::ColID);
+                SqlTableModel* model = bh->modelMalzschuettung();
+                for (int j = 0; j < model->rowCount(); ++j)
+                {
+                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
+                        model->setData(j, ModelMalzschuettung::ColpH, value);
                 }
             }
             return true;
@@ -115,11 +156,13 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 void ModelMalz::defaultValues(QMap<int, QVariant> &values) const
 {
-    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
+    if (!values.contains(ColPotential))
+        values.insert(ColPotential, 0);
     if (!values.contains(ColFarbe))
         values.insert(ColFarbe, 0);
-    if (!values.contains(ColMaxProzent))
-        values.insert(ColMaxProzent, 100);
+    if (!values.contains(ColpH))
+        values.insert(ColpH, 0);
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);
     if (!values.contains(ColPreis))

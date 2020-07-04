@@ -33,6 +33,12 @@ public:
     void setUseSystemFont(bool system);
     void setFont(const QFont &font);
 
+    bool animationsEnabled();
+    void setAnimationsEnabled(bool enabled);
+
+    QString language();
+    void setLanguage(QString lang);
+
     QString settingsDir() const;
 
     QString databasePath();
@@ -69,7 +75,6 @@ public:
     QList<QColor> HopfenTypBackgrounds;
     QList<QColor> HefeTypOgUgBackgrounds;
     QList<QColor> HefeTypTrFlBackgrounds;
-    QList<QColor> HefeSedBackgrounds;
     QList<QColor> WZTypBackgrounds;
 
     QColor DiagramLinie1;

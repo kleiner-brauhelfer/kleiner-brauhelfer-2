@@ -1,26 +1,24 @@
 #ifndef WDGMALZGABE_H
 #define WDGMALZGABE_H
 
-#include <QWidget>
+#include "wdgabstractproxy.h"
 
 namespace Ui {
 class WdgMalzGabe;
 }
 
-class WdgMalzGabe : public QWidget
+class WdgMalzGabe : public WdgAbstractProxy
 {
     Q_OBJECT
 
 public:
-    explicit WdgMalzGabe(int index, QWidget *parent = nullptr);
+    explicit WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgMalzGabe();
     bool isEnabled() const;
-    QVariant data(int col) const;
-    bool setData(int col, const QVariant &value);
+    bool isValid() const;
     QString name() const;
     double prozent() const;
     void setFehlProzent(double value);
-    void remove();
 
 public slots:
     void updateValues(bool full = false);
@@ -32,14 +30,16 @@ private slots:
     void on_btnLoeschen_clicked();
     void on_btnKorrektur_clicked();
     void on_btnAufbrauchen_clicked();
+    void on_btnNachOben_clicked();
+    void on_btnNachUnten_clicked();
 
 private:
     void checkEnabled(bool force);
 
 private:
     Ui::WdgMalzGabe *ui;
-    int mIndex;
     bool mEnabled;
+    bool mValid;
 };
 
 #endif // WDGMALZGABE_H

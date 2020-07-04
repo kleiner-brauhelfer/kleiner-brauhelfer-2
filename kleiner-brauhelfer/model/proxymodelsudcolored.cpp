@@ -1,7 +1,6 @@
 #include "proxymodelsudcolored.h"
 #include "settings.h"
-#include "modelsud.h"
-#include "database_defs.h"
+#include "brauhelfer.h"
 
 extern Settings* gSettings;
 
@@ -16,16 +15,16 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
     {
         if (index.sibling(index.row(), ModelSud::ColMerklistenID).data().toBool())
             return gSettings->MekrlisteBackground;
-        switch(index.sibling(index.row(), ModelSud::ColStatus).data().toInt())
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(index.sibling(index.row(), ModelSud::ColStatus).data().toInt());
+        switch(status)
         {
-        default:
-        case Sud_Status_Rezept:
+        case Brauhelfer::SudStatus::Rezept:
             return gSettings->NichtGebrautBackground;
-        case Sud_Status_Gebraut:
+        case Brauhelfer::SudStatus::Gebraut:
             return gSettings->GebrautBackground;
-        case Sud_Status_Abgefuellt:
+        case Brauhelfer::SudStatus::Abgefuellt:
             return gSettings->AbgefuelltBackground;
-        case Sud_Status_Verbraucht:
+        case Brauhelfer::SudStatus::Verbraucht:
             return gSettings->VerbrauchtBackground;
         }
     }
@@ -33,7 +32,8 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
     {
         if (index.column() == ModelSud::ColWoche)
         {
-            if (index.sibling(index.row(), ModelSud::ColStatus).data().toInt() == Sud_Status_Abgefuellt)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(index.sibling(index.row(), ModelSud::ColStatus).data().toInt());
+            if (status == Brauhelfer::SudStatus::Abgefuellt)
             {
                 int woche = ProxyModelSud::data(index, role).toInt();
                 int tage = index.sibling(index.row(), ModelSud::ColReifezeitDelta).data().toInt();

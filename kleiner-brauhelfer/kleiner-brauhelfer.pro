@@ -7,9 +7,9 @@ ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
-VER_MIN = 1
+VER_MIN = 2
 VER_PAT = 0
-VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
+VERSION = $$sprintf("%1.%2.%3Beta", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
 TEMPLATE = app
@@ -36,7 +36,6 @@ win32: PRE_TARGETDEPS += $$OUT_PWD/../bin/kleiner-brauhelfer-core.lib
 unix: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 
 SOURCES += \
-    importexport.cpp \
     main.cpp \
     mainwindow.cpp \
     settings.cpp \
@@ -56,23 +55,27 @@ SOURCES += \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
+    dialogs/dlgbierspende.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
-    dialogs/dlgeinmaischtemp.cpp \
+    dialogs/dlgphmalz.cpp \
     dialogs/dlgispindeleinstellung.cpp \
     dialogs/dlgispindelimporthauptgaer.cpp \
     dialogs/dlgrestextrakt.cpp \
-    dialogs/dlgrohstoffaustausch.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
     dialogs/dlgsudteilen.cpp \
+    dialogs/dlgtableview.cpp \
+    dialogs/dlguebernahmerezept.cpp \
     dialogs/dlgverdampfung.cpp \
     dialogs/dlgvolumen.cpp \
+    dialogs/dlgwasseraufbereitung.cpp \
     helper/htmlhighlighter.cpp \
+    helper/ispindel.cpp \
     helper/mustache.cpp \
+    helper/obrama.cpp \
     helper/simplecrypt.cpp \
-    ispindel/ispindel.cpp \
     model/checkboxdelegate.cpp \
     model/comboboxdelegate.cpp \
     model/datedelegate.cpp \
@@ -82,10 +85,12 @@ SOURCES += \
     model/ebcdelegate.cpp \
     model/ingredientnamedelegate.cpp \
     model/linklabeldelegate.cpp \
+    model/phmalzdelegate.cpp \
     model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
-    model/readonlydelegate.cpp \
+    model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
+    model/textdelegate.cpp \
     widgets/chartview.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
@@ -97,6 +102,7 @@ SOURCES += \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
+    widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbewertung.cpp \
     widgets/wdgdiagramview.cpp \
@@ -105,13 +111,13 @@ SOURCES += \
     widgets/wdgmalzgabe.cpp \
     widgets/wdgrast.cpp \
     widgets/wdgrating.cpp \
+    widgets/wdgwasseraufbereitung.cpp \
     widgets/wdgweiterezutatgabe.cpp \
     widgets/webview.cpp \
     widgets/wdgwebvieweditable.cpp
 
 HEADERS += \
     definitionen.h \
-    importexport.h \
     mainwindow.h \
     settings.h \
     tababstract.h \
@@ -129,23 +135,27 @@ HEADERS += \
     tabzusammenfassung.h \
     templatetags.h \
     dialogs/dlgabout.h \
+    dialogs/dlgbierspende.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
-    dialogs/dlgeinmaischtemp.h \
+    dialogs/dlgphmalz.h \
     dialogs/dlgispindeleinstellung.h \
     dialogs/dlgispindelimporthauptgaer.h \
     dialogs/dlgrestextrakt.h \
-    dialogs/dlgrohstoffaustausch.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
     dialogs/dlgsudteilen.h \
+    dialogs/dlgtableview.h \
+    dialogs/dlguebernahmerezept.h \
     dialogs/dlgverdampfung.h \
     dialogs/dlgvolumen.h \
+    dialogs/dlgwasseraufbereitung.h \
     helper/htmlhighlighter.h \
+    helper/ispindel.h \
     helper/mustache.h \
+    helper/obrama.h \
     helper/simplecrypt.h \
-    ispindel/ispindel.h \
     model/checkboxdelegate.h \
     model/comboboxdelegate.h \
     model/datedelegate.h \
@@ -155,10 +165,12 @@ HEADERS += \
     model/ebcdelegate.h \
     model/ingredientnamedelegate.h \
     model/linklabeldelegate.h \
+    model/phmalzdelegate.h \
     model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
-    model/readonlydelegate.h \
+    model/restextraktdelegate.h \
     model/spinboxdelegate.h \
+    model/textdelegate.h \
     widgets/chartview.h \
     widgets/combobox.h \
     widgets/dateedit.h \
@@ -170,6 +182,7 @@ HEADERS += \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/timeedit.h \
+    widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbewertung.h \
     widgets/wdgdiagramview.h \
@@ -178,6 +191,7 @@ HEADERS += \
     widgets/wdgmalzgabe.h \
     widgets/wdgrast.h \
     widgets/wdgrating.h \
+    widgets/wdgwasseraufbereitung.h \
     widgets/wdgweiterezutatgabe.h \
     widgets/webview.h \
     widgets/wdgwebvieweditable.h
@@ -197,19 +211,22 @@ FORMS += \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
+    dialogs/dlgbierspende.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
-    dialogs/dlgeinmaischtemp.ui \
+    dialogs/dlgphmalz.ui \
     dialogs/dlgispindeleinstellung.ui \
     dialogs/dlgispindelimporthauptgaer.ui \
     dialogs/dlgrestextrakt.ui \
-    dialogs/dlgrohstoffaustausch.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \
     dialogs/dlgsudteilen.ui \
+    dialogs/dlgtableview.ui \
+    dialogs/dlguebernahmerezept.ui \
     dialogs/dlgverdampfung.ui \
     dialogs/dlgvolumen.ui \
+    dialogs/dlgwasseraufbereitung.ui \
     widgets/wdganhang.ui \
     widgets/wdgbewertung.ui \
     widgets/wdghefegabe.ui \
@@ -217,9 +234,14 @@ FORMS += \
     widgets/wdgmalzgabe.ui \
     widgets/wdgrast.ui \
     widgets/wdgrating.ui \
+    widgets/wdgwasseraufbereitung.ui \
     widgets/wdgweiterezutatgabe.ui \
     widgets/wdgwebvieweditable.ui
 
 RESOURCES += \
     data.qrc \
     images.qrc
+
+TRANSLATIONS += \
+    translations/kbh_en.ts \
+    translations/kbh_sv.ts

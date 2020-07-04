@@ -17,8 +17,16 @@ public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);
     virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
     QAbstractItemModel* model() const;
+    void sudAnlegen();
+    void sudKopieren(bool loadedSud = false);
+    void sudTeilen(bool loadedSud = false);
+    void sudLoeschen(bool loadedSud = false);
+    void rezeptImportieren();
+    void rezeptExportieren(bool loadedSud = false);
 
 signals:
     void clicked(int sudId);
@@ -27,12 +35,11 @@ private slots:
     void databaseModified();
     void filterChanged();
     void selectionChanged();
-    void spalteAnzeigen(bool checked);
     void updateWebView();
     void generateTemplateTags(QVariantMap& tags);
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
     void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
-    void on_cbAlle_clicked(bool checked);
+    void on_cbAlle_clicked();
     void on_cbRezept_clicked();
     void on_cbGebraut_clicked();
     void on_cbAbgefuellt_clicked();
@@ -54,6 +61,7 @@ private slots:
     void on_btnExportieren_clicked();
     void on_btnLaden_clicked();
     void on_btnToPdf_clicked();
+    void on_btnPrintPreview_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
@@ -61,20 +69,8 @@ private:
     void setFilterStatus();
 
 private:
-    struct AuswahlSpalten
-    {
-        int col;
-        bool visible;
-        bool canHide;
-        int width;
-        QAbstractItemDelegate* itemDelegate;
-    };
-
-private:
     Ui::TabSudAuswahl *ui;
-    QByteArray mDefaultTableState;
     QByteArray mDefaultSplitterState;
-    QList<AuswahlSpalten> mSpalten;
 };
 
 #endif // TABSUDAUSWAHL_H

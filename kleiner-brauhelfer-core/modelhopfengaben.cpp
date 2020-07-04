@@ -1,4 +1,5 @@
 #include "modelhopfengaben.h"
+#include <math.h>
 #include "brauhelfer.h"
 
 ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, QSqlDatabase db) :
@@ -20,22 +21,29 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
         double menge = data(idx.row(), Colerg_Menge).toDouble();
         double alpha = data(idx.row(), ColAlpha).toDouble();
         double ausbeute = data(idx.row(), ColAusbeute).toDouble();
-        double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMenge).toDouble();
+        double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSoll).toDouble();
         return menge * alpha * ausbeute / (10 * mengeSoll);
     }
     case ColAusbeute:
     {
-        QVariant sudId = data(idx.row(), ColSudID);
-        double sw = bh->modelSud()->dataSud(sudId, ModelSud::ColSWSollKochende).toDouble();
-        double isozeit = bh->modelSud()->dataSud(sudId, ModelSud::ColNachisomerisierungszeit).toDouble();
-        double zeit = data(idx.row(), ColZeit).toDouble();
-        double ausbeute = BierCalc::hopfenAusbeute(zeit + isozeit, sw);
+        // https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolsiburechne
+        int rowSudId = bh->modelSud()->getRowWithValue(ModelSud::ColID, data(idx.row(), ColSudID));
+        double kochzeit = bh->modelSud()->data(rowSudId, ModelSud::ColKochdauer).toDouble();
+        double isozeit = bh->modelSud()->data(rowSudId, ModelSud::ColNachisomerisierungszeit).toDouble();
+        double t = data(idx.row(), ColZeit).toDouble();
+        double sw_beginn = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochbeginn).toDouble();
+        double sw_ende = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochende).toDouble();
+        double sw;
+        if (t > 0)
+            sw = (sw_ende - sw_beginn) / kochzeit * (kochzeit - t/2)  + sw_beginn;
+        else
+            sw = sw_ende;
+        double Tiso = 80.0;
+        double ausbeute = 100 * BierCalc::tinseth(t + isozeit * 0.046 * exp(0.031 * Tiso), sw);
         if (data(idx.row(), ColPellets).toBool())
             ausbeute *= 1.1;
-        if (data(idx.row(), ColVorderwuerze).toBool())
-            ausbeute *= 0.9;
-        if (ausbeute < 0.1)
-            ausbeute = 0.1;
+        if (kochzeit - t > 15)
+            ausbeute *= 1.1;
         return ausbeute;
     }
     default:
@@ -51,7 +59,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColBeschreibung, value);
+            int row = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, value);
             if (row >= 0)
             {
                 QSqlTableModel::setData(index(idx.row(), ColAlpha), bh->modelHopfen()->data(row, ModelHopfen::ColAlpha));
@@ -73,11 +81,16 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         if (QSqlTableModel::setData(idx, fVal))
         {
             QVariant sudId = data(idx.row(), ColSudID);
-            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
+            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMengeSoll).toDouble();
             double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
-            switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
+            Brauhelfer::BerechnungsartHopfen berechnungsart = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt());
+            switch (berechnungsart)
             {
-            case Hopfen_Berechnung_Gewicht:
+            case Brauhelfer::BerechnungsartHopfen::Keine:
+            {
+                break;
+            }
+            case Brauhelfer::BerechnungsartHopfen::Gewicht:
             {
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
@@ -101,17 +114,16 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 }
                 break;
             }
-            case Hopfen_Berechnung_IBU:
+            case Brauhelfer::BerechnungsartHopfen::IBU:
             {
-                double anteil = ibuSoll * fVal / 100 ;
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
-                double menge;
-                if (alpha == 0.0 || ausbeute == 0.0)
-                    menge = 0.0;
-                else
-                    menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
-                QSqlTableModel::setData(index(idx.row(), Colerg_Menge), menge);
+                if (alpha != 0.0 && ausbeute != 0.0)
+                {
+                    double anteil = ibuSoll * fVal / 100 ;
+                    double menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
+                    QSqlTableModel::setData(index(idx.row(), Colerg_Menge), menge);
+                }
                 break;
             }
             }
@@ -124,11 +136,14 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         if (QSqlTableModel::setData(idx, value))
         {
             QVariant sudId = data(idx.row(), ColSudID);
-            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMenge).toDouble();
-            double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
-            switch (bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt())
+            Brauhelfer::BerechnungsartHopfen berechnungsart = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt());
+            switch (berechnungsart)
             {
-            case Hopfen_Berechnung_Gewicht:
+            case Brauhelfer::BerechnungsartHopfen::Keine:
+            {
+                break;
+            }
+            case Brauhelfer::BerechnungsartHopfen::Gewicht:
             {
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
@@ -142,8 +157,10 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 QSqlTableModel::setData(index(idx.row(), ColProzent), p);
                 break;
             }
-            case Hopfen_Berechnung_IBU:
+            case Brauhelfer::BerechnungsartHopfen::IBU:
             {
+                double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMengeSoll).toDouble();
+                double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
                 double p = (10 * alpha * ausbeute * value.toDouble()) / (ibuSoll * mengeSoll);
@@ -191,7 +208,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         {
             if (value.toBool())
             {
-                int dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauerNachBitterhopfung).toInt();
+                int dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauer).toInt();
                 QSqlTableModel::setData(index(idx.row(), ColZeit), dauer);
             }
             QModelIndex idx2 = index(idx.row(), ColProzent);
@@ -214,7 +231,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     case ModelSud::ColIBU:
     case ModelSud::ColberechnungsArtHopfen:
     case ModelSud::ColhighGravityFaktor:
-    case ModelSud::ColKochdauerNachBitterhopfung:
+    case ModelSud::ColKochdauer:
     case ModelSud::ColNachisomerisierungszeit:
     {
         QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
@@ -224,7 +241,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
         {
             if (data(r, ColSudID) == sudId)
             {
-                if (idx.column() == ModelSud::ColKochdauerNachBitterhopfung)
+                if (idx.column() == ModelSud::ColKochdauer)
                 {
                     int max = idx.data().toInt();
                     if (data(r, ColVorderwuerze).toBool())
@@ -258,10 +275,18 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     }
 }
 
+int ModelHopfengaben::import(int row)
+{
+    QMap<int, QVariant> values({{ModelHopfen::ColName, data(row, ColName)},
+                                {ModelHopfen::ColAlpha, data(row, ColAlpha)},
+                                {ModelHopfen::ColPellets, data(row, ColPellets)}});
+    return bh->modelHopfen()->append(values);
+}
+
 void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
 {
     if (!values.contains(ColName))
-        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
+        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
     if (!values.contains(ColProzent))
         values.insert(ColProzent, 0);
     if (!values.contains(ColZeit))

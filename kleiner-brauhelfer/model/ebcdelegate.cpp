@@ -11,7 +11,7 @@ void EbcDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, c
 {
     QStyleOptionViewItem opt(option);
     initStyleOption(&opt, index);
-    double ebc = index.model()->data(index, Qt::EditRole).toDouble();
+    double ebc = index.data(Qt::EditRole).toDouble();
     if (ebc > 0)
     {
         QColor color(BierCalc::ebcToColor(ebc));

@@ -7,6 +7,9 @@
 #include <QCoreApplication>
 #include <QFile>
 #include <QFileInfo>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#include <QOperatingSystemVersion>
+#endif
 #include "helper/mustache.h"
 
 WebPage::WebPage(QObject* parent) :
@@ -37,6 +40,12 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, QWebEnginePage::Navigatio
 WebView::WebView(QWidget* parent) :
     QWebEngineView(parent)
 {
+    mIsSupported = true;
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+    if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
+        QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
+        mIsSupported = false;
+  #endif
     setContextMenuPolicy(Qt::NoContextMenu);
     setPage(new WebPage());
 }
@@ -51,15 +60,16 @@ void WebView::setLinksExternal(bool external)
     static_cast<WebPage*>(page())->setLinksExternal(external);
 }
 
-void WebView::printToPdf(const QString& filePath)
+void WebView::printToPdf(const QString& filePath, const QMarginsF& margins)
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QEventLoop loop;
     connect(page(), SIGNAL(pdfPrintingFinished(const QString&, bool)), &loop, SLOT(quit()));
-    page()->printToPdf(filePath, QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF(20, 20, 20, 20)));
+    page()->printToPdf(filePath, QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, margins));
     loop.exec();
   #else
     Q_UNUSED(filePath)
+    Q_UNUSED(margins)
   #endif
 }
 
@@ -75,6 +85,8 @@ void WebView::setTemplateFile(const QString& file)
 
 void WebView::renderTemplate()
 {
+    if (!mIsSupported)
+        return;
     QFile file(mTemplateFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -87,6 +99,8 @@ void WebView::renderTemplate()
 
 void WebView::renderTemplate(QVariantMap &contextVariables)
 {
+    if (!mIsSupported)
+        return;
     if (mTemplateFile.isEmpty())
         return;
     QFile file(mTemplateFile);
@@ -101,11 +115,15 @@ void WebView::renderTemplate(QVariantMap &contextVariables)
 
 void WebView::renderText(const QString &html)
 {
+    if (!mIsSupported)
+        return;
     setHtml(html, QUrl::fromLocalFile(QFileInfo(mTemplateFile).absolutePath() + "/"));
 }
 
 void WebView::renderText(const QString &html, QVariantMap &contextVariables)
 {
+    if (!mIsSupported)
+        return;
     Mustache::Renderer renderer;
     Mustache::QtVariantContext context(contextVariables);
     renderText(renderer.render(html, &context));

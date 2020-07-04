@@ -26,13 +26,14 @@ QVariant ModelHopfen::dataExt(const QModelIndex &idx) const
     {
         ProxyModel model;
         model.setSourceModel(bh->modelHopfengaben());
-        QVariant name = data(idx.row(), ColBeschreibung);
+        QVariant name = data(idx.row(), ColName);
         for (int r = 0; r < model.rowCount(); ++r)
         {
             if (model.data(r, ModelHopfengaben::ColName) == name)
             {
                 QVariant sudId = model.data(r, ModelHopfengaben::ColSudID);
-                if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus) == Sud_Status_Rezept)
+                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+                if (status == Brauhelfer::SudStatus::Rezept)
                     return true;
             }
         }
@@ -47,7 +48,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
     {
-    case ColBeschreibung:
+    case ColName:
     {
         QString name = getUniqueName(idx, value);
         QVariant prevName = data(idx);
@@ -78,7 +79,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
     }
     case ColAlpha:
     {
-        QVariant name = data(idx.row(), ColBeschreibung);
+        QVariant name = data(idx.row(), ColName);
         if (QSqlTableModel::setData(idx, value))
         {
             ProxyModelSud modelSud;
@@ -100,7 +101,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
     }
     case ColPellets:
     {
-        QVariant name = data(idx.row(), ColBeschreibung);
+        QVariant name = data(idx.row(), ColName);
         if (QSqlTableModel::setData(idx, value))
         {
             ProxyModelSud modelSud;
@@ -149,7 +150,7 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 void ModelHopfen::defaultValues(QMap<int, QVariant> &values) const
 {
-    values[ColBeschreibung] = getUniqueName(index(0, ColBeschreibung), values[ColBeschreibung], true);
+    values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
     if (!values.contains(ColAlpha))
         values.insert(ColAlpha, 0);
     if (!values.contains(ColPellets))

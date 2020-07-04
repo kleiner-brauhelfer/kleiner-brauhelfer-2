@@ -34,47 +34,81 @@
            <property name="text">
             <string>alle</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="cbRezept">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Rezept</string>
+           <property name="tristate">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="cbGebraut">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>0</number>
            </property>
-           <property name="text">
-            <string>gebraut</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="cbAbgefuellt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>abgefüllt</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="cbVerbraucht">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>verbraucht</string>
-           </property>
-          </widget>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string notr="true">[ </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbRezept">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Rezept</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbGebraut">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>gebraut</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbAbgefuellt">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>abgefüllt</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbVerbraucht">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>verbraucht</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string notr="true">]</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="Line" name="line_2">
@@ -119,6 +153,12 @@
          </item>
          <item>
           <widget class="DateEdit" name="tbDatumVon">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anfangsdatum des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -139,6 +179,12 @@
          </item>
          <item>
           <widget class="DateEdit" name="tbDatumBis">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enddatum des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -201,9 +247,6 @@
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
-         </property>
-         <property name="wordWrap">
-          <bool>false</bool>
          </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
@@ -349,14 +392,44 @@
         <number>4</number>
        </property>
        <item>
-        <widget class="WdgWebViewEditable" name="webview" native="true"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnToPdf">
-         <property name="text">
-          <string>PDF speichern</string>
+        <widget class="WdgWebViewEditable" name="webview" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QPushButton" name="btnPrintPreview">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sudinformation&lt;/span&gt; ausdrucken.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Druckvorschau</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnToPdf">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sudinformation&lt;/span&gt; als PDF abspeichern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>PDF</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -371,15 +444,15 @@
    <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -403,7 +476,6 @@
   <tabstop>btnImportieren</tabstop>
   <tabstop>btnExportieren</tabstop>
   <tabstop>btnLaden</tabstop>
-  <tabstop>btnToPdf</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -150,7 +150,7 @@ void SvgView::setViewOutline(bool enable)
 
 void SvgView::wheelEvent(QWheelEvent *event)
 {
-    qreal factor = qPow(1.2, event->delta() / 240.0);
+    qreal factor = qPow(1.2, event->angleDelta().y() / 240.0);
     scale(factor, factor);
     event->accept();
 }

@@ -24,7 +24,8 @@ private:
         None,       // Без подсветки
         Tag,        // Подсветка внутри тега
         Comment,    // Внутри комментария
-        Quote       // Внутри кавычек, которые внутри тега
+        Quote,      // Внутри кавычек, которые внутри тега
+        CustomTag
     };
 
     struct HighlightingRule
@@ -47,6 +48,10 @@ private:
     QRegExp quotes;                             // Регулярное выражение для текста в кавычках внутри тега
     QTextCharFormat quotationFormat;            // Форматирование текста в кавычках внутри тега
     QTextCharFormat tagsFormat;                 // Форматирование самих тегов
+
+    QRegExp customTagStartExpression;
+    QRegExp customTagEndExpression;
+    QTextCharFormat customTagFormat;
 };
 
 #endif // HTMLHIGHLIGHTER_H

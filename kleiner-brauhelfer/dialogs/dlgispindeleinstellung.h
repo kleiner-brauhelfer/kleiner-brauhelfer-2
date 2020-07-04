@@ -10,7 +10,7 @@
 #include <QString>
 #include <QColor>
 #include "settings.h"
-#include "iSpindel/ispindel.h"
+#include "helper/ispindel.h"
 
 namespace Ui {
 class dlgispindeleinstellung;

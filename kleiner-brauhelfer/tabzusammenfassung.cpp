@@ -35,14 +35,20 @@ void TabZusammenfassung::updateWebView()
 {
     if (!isTabActive())
         return;
-    if (bh->sud()->getStatus() == Sud_Status_Rezept)
-        ui->webview->setHtmlFile("spickzettel.html");
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (status == Brauhelfer::SudStatus::Rezept)
+        ui->webview->setHtmlFile("spickzettel");
     else
-        ui->webview->setHtmlFile("zusammenfassung.html");
+        ui->webview->setHtmlFile("zusammenfassung");
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 
-void TabZusammenfassung::on_btnToPdf_clicked()
+void TabZusammenfassung::printPreview()
+{
+    ui->webview->printPreview();
+}
+
+void TabZusammenfassung::toPdf()
 {
     gSettings->beginGroup("General");
 
@@ -54,9 +60,21 @@ void TabZusammenfassung::on_btnToPdf_clicked()
     if (!filePath.isEmpty())
     {
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
-        ui->webview->printToPdf(filePath);
+        QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
+        QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
+        ui->webview->printToPdf(filePath, margins);
         QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
     }
 
     gSettings->endGroup();
+}
+
+void TabZusammenfassung::on_btnToPdf_clicked()
+{
+    toPdf();
+}
+
+void TabZusammenfassung::on_btnPrintPreview_clicked()
+{
+    printPreview();
 }

@@ -15,7 +15,9 @@ public:
     explicit DlgRestextrakt(double value, double sw = 0.0, double temp = 20.0, QWidget *parent = nullptr);
     ~DlgRestextrakt();
     double value() const;
-    double temperature() const;
+    void setValue(double value);
+    double temperatur() const;
+    void setTemperatur(double value);
 
 private slots:
     void on_DlgRestextrakt_accepted();

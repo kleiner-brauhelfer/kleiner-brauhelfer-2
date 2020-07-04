@@ -7,6 +7,7 @@
 #include "settings.h"
 #include "model/datetimedelegate.h"
 #include "model/doublespinboxdelegate.h"
+#include "model/restextraktdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlgispindelimporthauptgaer.h"
@@ -44,66 +45,35 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     ui->widget_DiaNachgaerverlauf->BezeichnungL1 = tr("CO₂-Gehalt [g/l]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL1 = tr("g/l");
     ui->widget_DiaNachgaerverlauf->L1Precision = 1;
-    ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Temperatur [°C]");
-    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("°C");
+    ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Druck [bar]");
+    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("bar");
     ui->widget_DiaNachgaerverlauf->L2Precision = 1;
+    ui->widget_DiaNachgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
+    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL3 = tr("°C");
+    ui->widget_DiaNachgaerverlauf->L3Precision = 1;
 
-    int col;
+    gSettings->beginGroup("TabGaerverlauf");
+
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    QTableView *table = ui->tableWidget_Schnellgaerverlauf;
-    QHeaderView *header = table->horizontalHeader();
+    model->setHeaderData(ModelSchnellgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [°P]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColAlc, Qt::Horizontal, tr("Alk. [%]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColtEVG, Qt::Horizontal, tr("tEVG [%]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    TableView *table = ui->tableWidget_Schnellgaerverlauf;
     table->setModel(model);
-    for (int i = 0; i < model->columnCount(); ++i)
-        table->setColumnHidden(i, true);
-
-    col = ModelSchnellgaerverlauf::ColZeitstempel;
-    model->setHeaderData(col, Qt::Horizontal, tr("Datum"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateTimeDelegate(false, false, table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelSchnellgaerverlauf::ColRestextrakt;
-    model->setHeaderData(col, Qt::Horizontal, tr("SRE [°P]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelSchnellgaerverlauf::ColTemp;
-    model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelSchnellgaerverlauf::ColAlc;
-    model->setHeaderData(col, Qt::Horizontal, tr("Alk. [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelSchnellgaerverlauf::ColsEVG;
-    model->setHeaderData(col, Qt::Horizontal, tr("sEVG [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = ModelSchnellgaerverlauf::ColtEVG;
-    model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = ModelSchnellgaerverlauf::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->setStretchLastSection(true);
-    header->moveSection(header->visualIndex(col), 6);
+    table->cols.append({ModelSchnellgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->cols.append({ModelSchnellgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(false, table)});
+    table->cols.append({ModelSchnellgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
+    table->cols.append({ModelSchnellgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSchnellgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSchnellgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelSchnellgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->build();
+    table->setDefaultContextMenu();
+    table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -111,60 +81,25 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
             this, SLOT(diagram_selectionChanged(int)));
 
     model = bh->sud()->modelHauptgaerverlauf();
+    model->setHeaderData(ModelHauptgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [°P]"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColAlc, Qt::Horizontal, tr("Alk. [%]"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColtEVG, Qt::Horizontal, tr("tEVG [%]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     table = ui->tableWidget_Hauptgaerverlauf;
-    header = table->horizontalHeader();
     table->setModel(model);
-    for (int i = 0; i < model->columnCount(); ++i)
-        table->setColumnHidden(i, true);
-
-    col = ModelHauptgaerverlauf::ColZeitstempel;
-    model->setHeaderData(col, Qt::Horizontal, tr("Datum"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateTimeDelegate(false, false, table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelHauptgaerverlauf::ColRestextrakt;
-    model->setHeaderData(col, Qt::Horizontal, tr("SRE [°P]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelHauptgaerverlauf::ColTemp;
-    model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelHauptgaerverlauf::ColAlc;
-    model->setHeaderData(col, Qt::Horizontal, tr("Alk. [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelHauptgaerverlauf::ColsEVG;
-    model->setHeaderData(col, Qt::Horizontal, tr("sEVG [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 4);
-
-    col = ModelHauptgaerverlauf::ColtEVG;
-    model->setHeaderData(col, Qt::Horizontal, tr("tEVG [%]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 5);
-
-    col = ModelSchnellgaerverlauf::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->setStretchLastSection(true);
-    header->moveSection(header->visualIndex(col), 6);
+    table->cols.append({ModelHauptgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->cols.append({ModelHauptgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(true, table)});
+    table->cols.append({ModelHauptgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
+    table->cols.append({ModelHauptgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelHauptgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelHauptgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelHauptgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->build();
+    table->setDefaultContextMenu();
+    table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
@@ -172,63 +107,33 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
             this, SLOT(diagram_selectionChanged(int)));
 
     model = bh->sud()->modelNachgaerverlauf();
+    model->setHeaderData(ModelNachgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
+    model->setHeaderData(ModelNachgaerverlauf::ColDruck, Qt::Horizontal, tr("Druck [bar]"));
+    model->setHeaderData(ModelNachgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
+    model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2 [g/l]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     table = ui->tableWidget_Nachgaerverlauf;
-    header = table->horizontalHeader();
+
     table->setModel(model);
-    for (int i = 0; i < model->columnCount(); ++i)
-        table->setColumnHidden(i, true);
-
-    col = ModelNachgaerverlauf::ColZeitstempel;
-    model->setHeaderData(col, Qt::Horizontal, tr("Datum"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DateTimeDelegate(false, false, table));
-    header->resizeSection(col, 150);
-    header->moveSection(header->visualIndex(col), 0);
-
-    col = ModelNachgaerverlauf::ColDruck;
-    model->setHeaderData(col, Qt::Horizontal, tr("Druck [bar]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 10.0, 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 1);
-
-    col = ModelNachgaerverlauf::ColTemp;
-    model->setHeaderData(col, Qt::Horizontal, tr("Temp. [°C]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 2);
-
-    col = ModelNachgaerverlauf::ColCO2;
-    model->setHeaderData(col, Qt::Horizontal, tr("CO2 [g/l]"));
-    table->setColumnHidden(col, false);
-    table->setItemDelegateForColumn(col, new DoubleSpinBoxDelegate(1, table));
-    header->resizeSection(col, 100);
-    header->moveSection(header->visualIndex(col), 3);
-
-    col = ModelSchnellgaerverlauf::ColBemerkung;
-    model->setHeaderData(col, Qt::Horizontal, tr("Bemerkung"));
-    table->setColumnHidden(col, false);
-    header->resizeSection(col, 200);
-    header->setStretchLastSection(true);
-    header->moveSection(header->visualIndex(col), 4);
-
-    gSettings->beginGroup("iSpindel");
-    ui->btnImportHauptgaerIspindel->setVisible(gSettings->value("IspindelInUse", false).toBool());
-    gSettings->endGroup();
+    table->cols.append({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->cols.append({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 10.0, 0.1, false, table)});
+    table->cols.append({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
+    table->cols.append({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->cols.append({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->build();
+    table->setDefaultContextMenu();
+    table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
 
     connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(table_selectionChanged(const QItemSelection&)));
     connect(ui->widget_DiaNachgaerverlauf, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
-    gSettings->beginGroup("TabGaerverlauf");
-
     mDefaultSplitterStateSchnellgaerung = ui->splitterSchnellgaerung->saveState();
     ui->splitterSchnellgaerung->restoreState(gSettings->value("splitterStateSchnellgaerung").toByteArray());
 
-    mDefaultSplitterStateHauptgaerung = ui->splitterHautpgaerung->saveState();
-    ui->splitterHautpgaerung->restoreState(gSettings->value("splitterStateHautpgaerung").toByteArray());
+    mDefaultSplitterStateHauptgaerung = ui->splitterHauptgaerung->saveState();
+    ui->splitterHauptgaerung->restoreState(gSettings->value("splitterStateHauptgaerung").toByteArray());
 
     mDefaultSplitterStateNachgaerung = ui->splitterNachgaerung->saveState();
     ui->splitterNachgaerung->restoreState(gSettings->value("splitterStateNachgaerung").toByteArray());
@@ -240,20 +145,31 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
                     this, SLOT(sudDataChanged(const QModelIndex&)));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onSchnellgaerverlaufRowInserted()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onSchnellgaerverlaufRowInserted()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onSchnellgaerverlaufRowInserted()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(modified()), this, SLOT(onSchnellgaerverlaufRowInserted()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onHauptgaerverlaufRowInserted()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onHauptgaerverlaufRowInserted()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onHauptgaerverlaufRowInserted()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(modified()), this, SLOT(onHauptgaerverlaufRowInserted()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(modified()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(onNachgaerverlaufRowInserted()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(onNachgaerverlaufRowInserted()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(onNachgaerverlaufRowInserted()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(modified()), this, SLOT(onNachgaerverlaufRowInserted()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+            this, SLOT(updateWeitereZutaten()));
 
     updateDiagramm();
     updateValues();
@@ -265,20 +181,34 @@ TabGaerverlauf::~TabGaerverlauf()
     delete ui;
 }
 
+void TabGaerverlauf::onTabActivated()
+{
+    updateDiagramm();
+}
+
 void TabGaerverlauf::saveSettings()
 {
     gSettings->beginGroup("TabGaerverlauf");
+    gSettings->setValue("tableStateSchnellgaerung", ui->tableWidget_Schnellgaerverlauf->horizontalHeader()->saveState());
+    gSettings->setValue("tableStateHauptgaerung", ui->tableWidget_Hauptgaerverlauf->horizontalHeader()->saveState());
+    gSettings->setValue("tableStateNachgaerung", ui->tableWidget_Nachgaerverlauf->horizontalHeader()->saveState());
     gSettings->setValue("splitterStateSchnellgaerung", ui->splitterSchnellgaerung->saveState());
-    gSettings->setValue("splitterStateHautpgaerung", ui->splitterHautpgaerung->saveState());
+    gSettings->setValue("splitterStateHauptgaerung", ui->splitterHauptgaerung->saveState());
     gSettings->setValue("splitterStateNachgaerung", ui->splitterNachgaerung->saveState());
     gSettings->endGroup();
 }
 
-void TabGaerverlauf::restoreView()
+void TabGaerverlauf::restoreView(bool full)
 {
-    ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
-    ui->splitterHautpgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
-    ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
+    ui->tableWidget_Schnellgaerverlauf->restoreDefaultState();
+    ui->tableWidget_Hauptgaerverlauf->restoreDefaultState();
+    ui->tableWidget_Nachgaerverlauf->restoreDefaultState();
+    if (full)
+    {
+        ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
+        ui->splitterHauptgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
+        ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
+    }
 }
 
 void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
@@ -339,22 +269,6 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
 
 void TabGaerverlauf::sudLoaded()
 {
-    ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble());
-    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble());
-
-    model = bh->sud()->modelHauptgaerverlauf();
-    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble());
-    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble());
-
-    model = bh->sud()->modelNachgaerverlauf();
-    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColDruck).toDouble());
-    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColTemp).toDouble());
-
-    ui->tbDatumSchnellgaerprobe->setDateTime(QDateTime::currentDateTime());
-    ui->tbDatumHautgaerprobe->setDateTime(QDateTime::currentDateTime());
-    ui->tbDatumNachgaerprobe->setDateTime(QDateTime::currentDateTime());
-
     updateDiagramm();
     updateValues();
     updateWeitereZutaten();
@@ -368,30 +282,6 @@ void TabGaerverlauf::sudDataChanged(const QModelIndex& index)
     }
 }
 
-void TabGaerverlauf::onSchnellgaerverlaufRowInserted()
-{
-    ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    ui->tbSWSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble());
-    ui->tbTempSchnellgaerprobe->setValue(model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble());
-    updateDiagramm();
-}
-
-void TabGaerverlauf::onHauptgaerverlaufRowInserted()
-{
-    ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
-    ui->tbSWHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble());
-    ui->tbTempHauptgaerprobe->setValue(model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble());
-    updateDiagramm();
-}
-
-void TabGaerverlauf::onNachgaerverlaufRowInserted()
-{
-    ProxyModel *model = bh->sud()->modelNachgaerverlauf();
-    ui->tbNachgaerdruck->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColDruck).toDouble());
-    ui->tbNachgaertemp->setValue(model->data(model->rowCount() - 1, ModelNachgaerverlauf::ColTemp).toDouble());
-    updateDiagramm();
-}
-
 void TabGaerverlauf::checkEnabled()
 {
     bool enabled;
@@ -400,16 +290,16 @@ void TabGaerverlauf::checkEnabled()
             QAbstractItemView::EditTrigger::AnyKeyPressed;
     QAbstractItemView::EditTriggers notriggers = QAbstractItemView::EditTrigger::NoEditTriggers;
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut || gSettings->ForceEnabled;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    enabled = status == Brauhelfer::SudStatus::Gebraut || gSettings->ForceEnabled;
     ui->wdgEditSchnellgaerung->setVisible(enabled);
     ui->tableWidget_Schnellgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Gebraut  || gSettings->ForceEnabled;
+    enabled = status == Brauhelfer::SudStatus::Gebraut  || gSettings->ForceEnabled;
     ui->wdgEditHauptgaerung1->setVisible(enabled);
-    ui->wdgEditHauptgaerung2->setVisible(enabled);
     ui->tableWidget_Hauptgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 
-    enabled = bh->sud()->getStatus() == Sud_Status_Abgefuellt  || gSettings->ForceEnabled;
+    enabled = status == Brauhelfer::SudStatus::Abgefuellt  || gSettings->ForceEnabled;
     ui->wdgEditNachgaerung->setVisible(enabled);
     ui->tableWidget_Nachgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 }
@@ -417,13 +307,6 @@ void TabGaerverlauf::checkEnabled()
 void TabGaerverlauf::updateValues()
 {
     checkEnabled();
-    QDateTime dtCurrent = QDateTime::currentDateTime();
-    ui->tbDatumSchnellgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbDatumSchnellgaerprobe->setMaximumDateTime(dtCurrent);
-    ui->tbDatumHautgaerprobe->setMinimumDateTime(bh->sud()->getBraudatum());
-    ui->tbDatumHautgaerprobe->setMaximumDateTime(dtCurrent);
-    ui->tbDatumNachgaerprobe->setMinimumDateTime(bh->sud()->getAbfuelldatum());
-    ui->tbDatumNachgaerprobe->setMaximumDateTime(dtCurrent);
 }
 
 void TabGaerverlauf::updateDiagramm()
@@ -433,14 +316,14 @@ void TabGaerverlauf::updateDiagramm()
     diag->DiagrammLeeren();
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QDateTime dt = model->index(row, 2).data().toDateTime();
+        QDateTime dt = model->index(row, ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime();
         diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, 3).data().toDouble());
-        diag->L2Daten.append(model->index(row, 4).data().toDouble());
-        diag->L3Daten.append(model->index(row, 5).data().toDouble());
+        diag->L1Daten.append(model->index(row, ModelSchnellgaerverlauf::ColRestextrakt).data().toDouble());
+        diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
+        diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
     }
     diag->repaint();
 
@@ -449,15 +332,17 @@ void TabGaerverlauf::updateDiagramm()
     diag->DiagrammLeeren();
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QDateTime dt = model->index(row, 2).data().toDateTime();
+        QDateTime dt = model->index(row, ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
         diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
         diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, 3).data().toDouble());
-        diag->L2Daten.append(model->index(row, 4).data().toDouble());
-        diag->L3Daten.append(model->index(row, 5).data().toDouble());
+        diag->L1Daten.append(model->index(row, ModelHauptgaerverlauf::ColRestextrakt).data().toDouble());
+        diag->L2Daten.append(model->index(row, ModelHauptgaerverlauf::ColAlc).data().toDouble());
+        diag->L3Daten.append(model->index(row, ModelHauptgaerverlauf::ColTemp).data().toDouble());
     }
+    if (bh->sud()->getSchnellgaerprobeAktiv())
+        diag->setWertLinie1(bh->sud()->getGruenschlauchzeitpunkt());
     diag->repaint();
 
     diag = ui->widget_DiaNachgaerverlauf;
@@ -465,12 +350,14 @@ void TabGaerverlauf::updateDiagramm()
     diag->DiagrammLeeren();
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QDateTime dt = model->index(row, 2).data().toDateTime();
+        QDateTime dt = model->index(row, ModelNachgaerverlauf::ColZeitstempel).data().toDateTime();
         diag->Ids.append(row);
         diag->L1Datum.append(dt);
         diag->L2Datum.append(dt);
-        diag->L1Daten.append(model->index(row, 5).data().toDouble());
-        diag->L2Daten.append(model->index(row, 4).data().toDouble());
+        diag->L3Datum.append(dt);
+        diag->L1Daten.append(model->index(row, ModelNachgaerverlauf::ColCO2).data().toDouble());
+        diag->L2Daten.append(model->index(row, ModelNachgaerverlauf::ColDruck).data().toDouble());
+        diag->L3Daten.append(model->index(row, ModelNachgaerverlauf::ColTemp).data().toDouble());
     }
     diag->setWertLinie1(bh->sud()->getCO2());
     diag->repaint();
@@ -519,26 +406,15 @@ void TabGaerverlauf::diagram_selectionChanged(int id)
     table->selectRow(id);
 }
 
-void TabGaerverlauf::on_btnSWSchnellgaerverlauf_clicked()
-{
-    DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
-                       bh->sud()->getSWIst(),
-                       ui->tbTempSchnellgaerprobe->value(),
-                       this);
-    if (dlg.exec() == QDialog::Accepted)
-    {
-        ui->tbSWSchnellgaerprobe->setValue(dlg.value());
-        ui->tbTempSchnellgaerprobe->setValue(dlg.temperature());
-    }
-}
-
 void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
 {
-    QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
-                                {ModelSchnellgaerverlauf::ColZeitstempel, ui->tbDatumSchnellgaerprobe->dateTime()},
-                                {ModelSchnellgaerverlauf::ColRestextrakt, ui->tbSWSchnellgaerprobe->value()},
-                                {ModelSchnellgaerverlauf::ColTemp, ui->tbTempSchnellgaerprobe->value()}});
-    bh->sud()->modelSchnellgaerverlauf()->append(values);
+    int row = bh->sud()->modelSchnellgaerverlauf()->append({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()}});
+    if (row >= 0)
+    {
+        ui->tableWidget_Schnellgaerverlauf->setCurrentIndex(bh->sud()->modelSchnellgaerverlauf()->index(row, ModelSchnellgaerverlauf::ColRestextrakt));
+        ui->tableWidget_Schnellgaerverlauf->scrollTo(ui->tableWidget_Schnellgaerverlauf->currentIndex());
+        ui->tableWidget_Schnellgaerverlauf->edit(ui->tableWidget_Schnellgaerverlauf->currentIndex());
+    }
 }
 
 void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
@@ -549,26 +425,15 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
         bh->sud()->modelSchnellgaerverlauf()->removeRow(index.row());
 }
 
-void TabGaerverlauf::on_btnSWHauptgaerverlauf_clicked()
-{
-    DlgRestextrakt dlg(ui->tbSWHauptgaerprobe->value(),
-                       bh->sud()->getSWIst(),
-                       ui->tbTempHauptgaerprobe->value(),
-                       this);
-    if (dlg.exec() == QDialog::Accepted)
-    {
-        ui->tbSWHauptgaerprobe->setValue(dlg.value());
-        ui->tbTempHauptgaerprobe->setValue(dlg.temperature());
-    }
-}
-
 void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
-    QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
-                                {ModelHauptgaerverlauf::ColZeitstempel, ui->tbDatumHautgaerprobe->dateTime()},
-                                {ModelHauptgaerverlauf::ColRestextrakt, ui->tbSWHauptgaerprobe->value()},
-                                {ModelHauptgaerverlauf::ColTemp, ui->tbTempHauptgaerprobe->value()}});
-    bh->sud()->modelHauptgaerverlauf()->append(values);
+    int row = bh->sud()->modelHauptgaerverlauf()->append({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()}});
+    if (row >= 0)
+    {
+        ui->tableWidget_Hauptgaerverlauf->setCurrentIndex(bh->sud()->modelHauptgaerverlauf()->index(row, ModelHauptgaerverlauf::ColRestextrakt));
+        ui->tableWidget_Hauptgaerverlauf->scrollTo(ui->tableWidget_Hauptgaerverlauf->currentIndex());
+        ui->tableWidget_Hauptgaerverlauf->edit(ui->tableWidget_Hauptgaerverlauf->currentIndex());
+    }
 }
 
 void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
@@ -611,18 +476,19 @@ void TabGaerverlauf::updateWeitereZutaten()
     ui->comboBox_GaerungEwzAuswahlEntnahme->clear();
     for (int i = 0; i < bh->sud()->modelWeitereZutatenGaben()->rowCount(); ++i)
     {
-        int zeitpunkt = bh->sud()->modelWeitereZutatenGaben()->index(i, ModelWeitereZutatenGaben::ColZeitpunkt).data().toInt();
-        if (zeitpunkt == EWZ_Zeitpunkt_Gaerung)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(bh->sud()->modelWeitereZutatenGaben()->index(i, ModelWeitereZutatenGaben::ColZeitpunkt).data().toInt());
+        if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
         {
             QString name = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColName).toString();
             int id = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColID).toInt();
-            int type = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3;
-            int status = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColZugabestatus).toInt();
+            Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColTyp).toInt());
+            Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
+            Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
             bool entnahme = !bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::ColEntnahmeindex).toBool();
             int menge = bh->sud()->modelWeitereZutatenGaben()->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toInt();
-            if (status == EWZ_Zugabestatus_nichtZugegeben)
-                ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<int,int>(type, id)));
-            else if (status == EWZ_Zugabestatus_Zugegeben && entnahme)
+            if (status == Brauhelfer::ZusatzStatus::NichtZugegeben)
+                ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<Brauhelfer::RohstoffTyp,int>(typ, id)));
+            else if (status == Brauhelfer::ZusatzStatus::Zugegeben && entnahme)
                 ui->comboBox_GaerungEwzAuswahlEntnahme->addItem(name, id);
         }
     }
@@ -634,7 +500,7 @@ void TabGaerverlauf::updateWeitereZutaten()
             QString name = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColName).toString();
             int id = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColID).toInt();
             int menge = bh->sud()->modelHefegaben()->data(i, ModelHefegaben::ColMenge).toInt();
-            ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<int,int>(2, id)));
+            ui->comboBox_GaerungEwzAuswahl->addItem(name + " (" + QString::number(menge) + "g)", QVariant::fromValue(QPair<Brauhelfer::RohstoffTyp,int>(Brauhelfer::RohstoffTyp::Hefe, id)));
         }
     }
     ui->widget_EwzZugeben->setVisible(ui->comboBox_GaerungEwzAuswahl->count() > 0);
@@ -643,17 +509,14 @@ void TabGaerverlauf::updateWeitereZutaten()
 
 void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
 {
-    QPair<int,int> data = ui->comboBox_GaerungEwzAuswahl->currentData().value<QPair<int,int>>();
-    if (data.first == 2)
+    QPair<Brauhelfer::RohstoffTyp,int> data = ui->comboBox_GaerungEwzAuswahl->currentData().value<QPair<Brauhelfer::RohstoffTyp,int>>();
+    if (data.first == Brauhelfer::RohstoffTyp::Hefe)
     {
         int row = bh->sud()->modelHefegaben()->getRowWithValue(ModelHefe::ColID, data.second);
         if (row >= 0)
         {
-            QDate currentDate = QDate::currentDate();
-            QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-            bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugabeDatum, date);
+            bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugegeben, true);
-
             DlgRohstoffeAbziehen dlg(data.first,
                                      bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColName).toString(),
                                      bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColMenge).toDouble(),
@@ -666,11 +529,8 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, data.second);
         if (row >= 0)
         {
-            QDate currentDate = QDate::currentDate();
-            QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, date);
-            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Zugegeben);
-
+            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, QDate::currentDate());
+            bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
             DlgRohstoffeAbziehen dlg(data.first,
                                      bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
                                      bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
@@ -686,10 +546,8 @@ void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
     int row = bh->sud()->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, id);
     if (row >= 0)
     {
-        QDate currentDate = QDate::currentDate();
-        QDate date = currentDate < ui->tbDatumHautgaerprobe->date() ? currentDate : ui->tbDatumHautgaerprobe->date();
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColEntnahmeDatum, date);
-        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_Entnommen);
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColEntnahmeDatum, QDate::currentDate());
+        bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Entnommen));
     }
 }
 
@@ -703,11 +561,13 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 
 void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
 {
-    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
-                                {ModelNachgaerverlauf::ColZeitstempel, ui->tbDatumNachgaerprobe->dateTime()},
-                                {ModelNachgaerverlauf::ColDruck, ui->tbNachgaerdruck->value()},
-                                {ModelNachgaerverlauf::ColTemp, ui->tbNachgaertemp->value()}});
-    bh->sud()->modelNachgaerverlauf()->append(values);
+    int row = bh->sud()->modelNachgaerverlauf()->append({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()}});
+    if (row >= 0)
+    {
+        ui->tableWidget_Nachgaerverlauf->setCurrentIndex(bh->sud()->modelNachgaerverlauf()->index(row, ModelNachgaerverlauf::ColDruck));
+        ui->tableWidget_Nachgaerverlauf->scrollTo(ui->tableWidget_Nachgaerverlauf->currentIndex());
+        ui->tableWidget_Nachgaerverlauf->edit(ui->tableWidget_Nachgaerverlauf->currentIndex());
+    }
 }
 
 void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
@@ -718,10 +578,56 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
 }
 
+QDateTime TabGaerverlauf::toDateTime(const QString& string) const
+{
+    QDateTime dt = QDateTime::fromString(string, Qt::SystemLocaleShortDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::DefaultLocaleShortDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::TextDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::ISODate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::SystemLocaleLongDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yy h:m");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yyyy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "d.M.yyyy h:m");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "M/d/yyyy h:m:s");
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, "M/d/yyyy h:m");
+    if (dt.isValid())
+    {
+        if (dt.date().year() < 2000)
+            dt = dt.addYears(100);
+    }
+    return dt;
+}
+
+double TabGaerverlauf::toDouble(const QString& string, bool *ok) const
+{
+    bool _ok = false;
+    double val = string.toDouble(&_ok);
+    if (!_ok)
+        val = QLocale().toDouble(string, &_ok);
+    if (ok)
+        *ok = _ok;
+    return val;
+}
+
 void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+  #else
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+  #endif
     if (rows.size() == 0)
         return;
     bh->modelSchnellgaerverlauf()->blockSignals(true);
@@ -730,15 +636,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::TextDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::ISODate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
             {
                 QMap<int, QVariant> values = {{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
@@ -746,9 +644,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = QLocale().toDouble(cols[1], &ok);
-                    if (!ok)
-                        sre = cols[1].toDouble(&ok);
+                    double sre = toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelSchnellgaerverlauf::ColRestextrakt] = sre;
@@ -758,11 +654,11 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
-                    if (!ok)
-                        temp = cols[2].toDouble(&ok);
+                    double temp = toDouble(cols[2], &ok);
                     if (ok)
+                    {
                         values[ModelSchnellgaerverlauf::ColTemp] = temp;
+                    }
                 }
                 if (cols.size() > 6)
                     values[ModelSchnellgaerverlauf::ColBemerkung] = cols[6];
@@ -778,7 +674,11 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
 void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+  #else
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+  #endif
     if (rows.size() == 0)
         return;
     bh->modelHauptgaerverlauf()->blockSignals(true);
@@ -787,15 +687,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::TextDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::ISODate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
             {
                 QMap<int, QVariant> values = {{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
@@ -803,9 +695,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    double sre = QLocale().toDouble(cols[1], &ok);
-                    if (!ok)
-                        sre = cols[1].toDouble(&ok);
+                    double sre = toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelHauptgaerverlauf::ColRestextrakt] = sre;
@@ -815,11 +705,11 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                 if (cols.size() > 2)
                 {
                     bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
-                    if (!ok)
-                        temp = cols[2].toDouble(&ok);
+                    double temp = toDouble(cols[2], &ok);
                     if (ok)
+                    {
                         values[ModelHauptgaerverlauf::ColTemp] = temp;
+                    }
                 }
                 if (cols.size() > 6)
                     values[ModelHauptgaerverlauf::ColBemerkung] = cols[6];
@@ -835,7 +725,11 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
 void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
 {
     QString clipboardText = QApplication::clipboard()->text();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+  #else
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+  #endif
     if (rows.size() == 0)
         return;
     bh->modelNachgaerverlauf()->blockSignals(true);
@@ -844,41 +738,27 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
         QStringList cols = row.split("\t");
         if (cols.size() > 0)
         {
-            QDateTime dt = QDateTime::fromString(cols[0], Qt::SystemLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::DefaultLocaleShortDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::TextDate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::ISODate);
-            if (!dt.isValid())
-                dt = QDateTime::fromString(cols[0], Qt::SystemLocaleLongDate);
+            QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
             {
-                double druck = 0;
                 QMap<int, QVariant> values = {{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
                                               {ModelNachgaerverlauf::ColZeitstempel, dt}};
                 if (cols.size() > 1)
                 {
                     bool ok = false;
-                    druck = QLocale().toDouble(cols[1], &ok);
-                    if (!ok)
-                        druck = cols[1].toDouble(&ok);
+                    double druck = toDouble(cols[1], &ok);
                     if (ok)
                     {
                         values[ModelNachgaerverlauf::ColDruck] = druck;
-                    }
-                }
-                if (cols.size() > 2)
-                {
-                    bool ok = false;
-                    double temp = QLocale().toDouble(cols[2], &ok);
-                    if (!ok)
-                        temp = cols[2].toDouble(&ok);
-                    if (ok)
-                    {
-                        values[ModelNachgaerverlauf::ColTemp] = temp;
-                        values[ModelNachgaerverlauf::ColCO2] = BierCalc::co2(druck, temp);
+                        if (cols.size() > 2)
+                        {
+                            double temp = toDouble(cols[2], &ok);
+                            if (ok)
+                            {
+                                values[ModelNachgaerverlauf::ColTemp] = temp;
+                                values[ModelNachgaerverlauf::ColCO2] = BierCalc::co2(druck, temp);
+                            }
+                        }
                     }
                 }
                 if (cols.size() > 4)

@@ -1,5 +1,5 @@
 #include "database.h"
-#include "database_defs.h"
+#include "brauhelfer.h"
 #include <QSqlQuery>
 
 bool Database::update()
@@ -254,7 +254,7 @@ bool Database::update()
                     sqlExec(db, QString("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
                 }
                 if (typ < 0)
-                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(EWZ_Typ_Hopfen).arg(id));
+                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen)).arg(id));
             }
             sqlExec(db, "ALTER TABLE WeitereZutatenGaben RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE WeitereZutatenGaben ("
@@ -359,20 +359,20 @@ bool Database::update()
                 bool gebraut = query.value(1).toBool();
                 bool abgefuelllt = query.value(2).toBool();
                 bool verbraucht = query.value(3).toBool();
-                int status = Sud_Status_Rezept;
+                Brauhelfer::SudStatus status = Brauhelfer::SudStatus::Rezept;
                 if (gebraut)
                 {
-                    status = Sud_Status_Gebraut;
+                    status = Brauhelfer::SudStatus::Gebraut;
                     if (abgefuelllt)
                     {
-                        status = Sud_Status_Abgefuellt;
+                        status = Brauhelfer::SudStatus::Abgefuellt;
                         if (verbraucht)
                         {
-                            status = Sud_Status_Verbraucht;
+                            status = Brauhelfer::SudStatus::Verbraucht;
                         }
                     }
                 }
-                sqlExec(db, QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(status).arg(id));
+                sqlExec(db, QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(static_cast<int>(status)).arg(id));
             }
             sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
             sqlExec(db, "CREATE TABLE Sud ("
@@ -891,6 +891,597 @@ bool Database::update()
             sqlExec(db, "ALTER TABLE Sud ADD COLUMN Vergaerungsgrad REAL DEFAULT 70");
             sqlExec(db, "UPDATE Sud SET Sudhausausbeute = (SELECT Sudhausausbeute FROM Ausruestung WHERE Name = Anlage)");
             sqlExec(db, "UPDATE Sud SET Verdampfungsrate = (SELECT Verdampfungsziffer FROM Ausruestung WHERE Name = Anlage)");
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
+        if (version == 2002)
+        {
+            ++version;
+            qInfo() << "Updating to version:" << version;
+            db.transaction();
+
+            // Sud
+            //  - neue Spalte 'WuerzemengeKochbeginn'
+            //  - neue Spalte 'SWKochbeginn'
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN WuerzemengeKochbeginn REAL DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN SWKochbeginn REAL DEFAULT 0");
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
+        if (version == 2003)
+        {
+            ++version;
+            qInfo() << "Updating to version:" << version;
+            db.transaction();
+
+            // Malz
+            //  - neue Spalte 'Potential'
+            //  - neue Spalte 'pH'
+            //  - neue Spalte 'Alternativen'
+            //  - Spalte unbenannt 'Beschreibung' -> 'Name'
+            //  - Spalte unbenannt 'Anwendung' -> 'Eigenschaften'
+            sqlExec(db, "ALTER TABLE Malz RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Malz ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Menge REAL DEFAULT 0,"
+                "Potential REAL DEFAULT 0,"
+                "Farbe REAL DEFAULT 0,"
+                "pH REAL DEFAULT 0,"
+                "MaxProzent REAL DEFAULT 100,"
+                "Bemerkung TEXT,"
+                "Eigenschaften TEXT,"
+                "Alternativen TEXT,"
+                "Preis REAL DEFAULT 0,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO Malz ("
+                "Name,"
+                "Menge,"
+                "Farbe,"
+                "MaxProzent,"
+                "Bemerkung,"
+                "Eigenschaften,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Menge,"
+                "Farbe,"
+                "MaxProzent,"
+                "Bemerkung,"
+                "Anwendung,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Hopfen
+            //  - neue Spalte 'Alternativen'
+            //  - Spalte unbenannt 'Beschreibung' -> 'Name'
+            sqlExec(db, "ALTER TABLE Hopfen RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Hopfen ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Menge REAL DEFAULT 0,"
+                "Alpha REAL DEFAULT 0,"
+                "Pellets INTEGER DEFAULT 1,"
+                "Typ INTEGER DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "Eigenschaften TEXT,"
+                "Alternativen TEXT,"
+                "Preis REAL DEFAULT 0,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO Hopfen ("
+                "Name,"
+                "Menge,"
+                "Alpha,"
+                "Pellets,"
+                "Typ,"
+                "Bemerkung,"
+                "Eigenschaften,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Menge,"
+                "Alpha,"
+                "Pellets,"
+                "Typ,"
+                "Bemerkung,"
+                "Eigenschaften,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Hefe
+            //  - neue Spalte 'Alternativen'
+            //  - Spalte gelöscht 'Verpackungsmenge'
+            //  - Spalte unbenannt 'Beschreibung' -> 'Name'
+            //  - Spalte unbenannt 'SED' -> 'Sedimentation' TEXT
+            sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
+            sqlExec(db, "ALTER TABLE TempTable ADD COLUMN Sedimentation TEXT");
+            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Hoch' WHERE SED = '1'");
+            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Mittel' WHERE SED = '2'");
+            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Niedrig' WHERE SED = '3'");
+            sqlExec(db, "CREATE TABLE Hefe ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Menge INTEGER DEFAULT 0,"
+                "TypOGUG INTEGER DEFAULT 0,"
+                "TypTrFl INTEGER DEFAULT 0,"
+                "Wuerzemenge REAL DEFAULT 0,"
+                "Sedimentation TEXT,"
+                "EVG TEXT,"
+                "Temperatur TEXT,"
+                "Bemerkung TEXT,"
+                "Eigenschaften TEXT,"
+                "Alternativen TEXT,"
+                "Preis REAL DEFAULT 0,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO Hefe ("
+                "Name,"
+                "Menge,"
+                "TypOGUG,"
+                "TypTrFl,"
+                "Wuerzemenge,"
+                "Eigenschaften,"
+                "Sedimentation,"
+                "EVG,"
+                "Temperatur,"
+                "Bemerkung,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung,"
+                "Menge,"
+                "TypOGUG,"
+                "TypTrFl,"
+                "Wuerzemenge,"
+                "Eigenschaften,"
+                "Sedimentation,"
+                "EVG,"
+                "Temperatur,"
+                "Bemerkung,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // WeitereZutaten
+            //  - neue Spalte 'Eigenschaften'
+            //  - neue Spalte 'Alternativen'
+            //  - Spalte unbenannt 'Beschreibung' -> 'Name'
+            //  - Spalte unbenannt 'Einheiten' -> 'Einheit'
+            //  - Spalte unbenannt 'EBC' -> 'Farbe'
+            sqlExec(db, "ALTER TABLE WeitereZutaten RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE WeitereZutaten ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Menge REAL DEFAULT 0,"
+                "Einheit INTEGER DEFAULT 0,"
+                "Typ INTEGER DEFAULT 0,"
+                "Ausbeute REAL DEFAULT 0,"
+                "Farbe REAL DEFAULT 0,"
+                "Bemerkung TEXT,"
+                "Eigenschaften TEXT,"
+                "Alternativen TEXT,"
+                "Preis REAL DEFAULT 0,"
+                "Eingelagert DATETIME,"
+                "Mindesthaltbar DATETIME,"
+                "Link TEXT)");
+            sqlExec(db, "INSERT INTO WeitereZutaten ("
+                "Name ,"
+                "Menge,"
+                "Einheit,"
+                "Typ,"
+                "Ausbeute,"
+                "Farbe,"
+                "Bemerkung,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                ") SELECT "
+                "Beschreibung ,"
+                "Menge,"
+                "Einheiten,"
+                "Typ,"
+                "Ausbeute,"
+                "EBC,"
+                "Bemerkung,"
+                "Preis,"
+                "Eingelagert,"
+                "Mindesthaltbar,"
+                "Link"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Wasser
+            //  - Spalte unbenannt 'Saeurekapazitaet' -> 'Hydrogencarbonat'
+            //  - neue Spalte 'Sulfat'
+            //  - neue Spalte 'Chlorid'
+            //  - neue Spalte 'Natrium'
+            //  - neue Spalte 'RestalkalitaetAdd'
+            //  - neue Spalte 'Bemerkung'
+            sqlExec(db, "ALTER TABLE Wasser RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Wasser ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Hydrogencarbonat REAL DEFAULT 0,"
+                "Calcium REAL DEFAULT 0,"
+                "Magnesium REAL DEFAULT 0,"
+                "Sulfat REAL DEFAULT 0,"
+                "Chlorid REAL DEFAULT 0,"
+                "Natrium REAL DEFAULT 0,"
+                "RestalkalitaetAdd REAL DEFAULT 0,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Wasser ("
+                "Name,"
+                "Hydrogencarbonat,"
+                "Calcium,"
+                "Magnesium"
+                ") SELECT "
+                "Name,"
+                "Saeurekapazitaet * 61.02,"
+                "Calcium,"
+                "Magnesium"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Ausruestung
+            //  - neue Spalte 'Bemerkung'
+            //  - Spalte unbenannt 'Verdampfungsziffer' -> 'Verdampfungsrate'
+            sqlExec(db, "ALTER TABLE Ausruestung RENAME TO TempTable");
+            sqlExec(db, "ALTER TABLE TempTable ADD COLUMN Verdampfungsrate TEXT");
+            sqlExec(db, "UPDATE TempTable SET Verdampfungsrate = Sudpfanne_Durchmesser*Sudpfanne_Durchmesser/4*3.141592*Sudpfanne_MaxFuellhoehe*Verdampfungsziffer/100000");
+            sqlExec(db, "CREATE TABLE Ausruestung ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT NOT NULL UNIQUE,"
+                "Typ INTEGER DEFAULT 0,"
+                "Sudhausausbeute REAL DEFAULT 60,"
+                "Verdampfungsrate REAL DEFAULT 10,"
+                "KorrekturWasser REAL DEFAULT 0,"
+                "KorrekturFarbe REAL DEFAULT 0,"
+                "KorrekturMenge REAL DEFAULT 0,"
+                "Maischebottich_Hoehe REAL DEFAULT 0,"
+                "Maischebottich_Durchmesser REAL DEFAULT 0,"
+                "Maischebottich_MaxFuellhoehe REAL DEFAULT 0,"
+                "Sudpfanne_Hoehe REAL DEFAULT 0,"
+                "Sudpfanne_Durchmesser REAL DEFAULT 0,"
+                "Sudpfanne_MaxFuellhoehe REAL DEFAULT 0,"
+                "Kosten REAL DEFAULT 0,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Ausruestung ("
+                "Name,"
+                "Typ,"
+                "Sudhausausbeute,"
+                "Verdampfungsrate,"
+                "KorrekturWasser,"
+                "KorrekturFarbe,"
+                "KorrekturMenge,"
+                "Maischebottich_Hoehe,"
+                "Maischebottich_Durchmesser,"
+                "Maischebottich_MaxFuellhoehe,"
+                "Sudpfanne_Hoehe,"
+                "Sudpfanne_Durchmesser,"
+                "Sudpfanne_MaxFuellhoehe,"
+                "Kosten"
+                ") SELECT "
+                "Name,"
+                "Typ,"
+                "Sudhausausbeute,"
+                "Verdampfungsrate,"
+                "KorrekturWasser,"
+                "KorrekturFarbe,"
+                "KorrekturMenge,"
+                "Maischebottich_Hoehe,"
+                "Maischebottich_Durchmesser,"
+                "Maischebottich_MaxFuellhoehe,"
+                "Sudpfanne_Hoehe,"
+                "Sudpfanne_Durchmesser,"
+                "Sudpfanne_MaxFuellhoehe,"
+                "Kosten"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Malzschuettung
+            //  - neue Spalte 'Potential'
+            //  - neue Spalte 'pH'
+            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN pH REAL DEFAULT 0");
+
+            // Rasten
+            //  - neue Spalte 'Typ'
+            //  - neue Spalte 'Mengenfaktor'
+            //  - neue Spalte 'Param1'
+            //  - neue Spalte 'Param2'
+            //  - neue Spalte 'Param3'
+            //  - neue Spalte 'Param4'
+            sqlExec(db, "ALTER TABLE Rasten RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Rasten ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Typ INTEGER DEFAULT 1,"
+                "Name TEXT NOT NULL,"
+                "Temp REAL DEFAULT 0,"
+                "Dauer REAL DEFAULT 0,"
+                "Mengenfaktor REAL DEFAULT 1,"
+                "Param1 REAL DEFAULT 0,"
+                "Param2 REAL DEFAULT 0,"
+                "Param3 REAL DEFAULT 0,"
+                "Param4 REAL DEFAULT 0)");
+            query = sqlExec(db, "SELECT SudID, Temp FROM TempTable GROUP BY SudID HAVING MIN(ROWID)");
+            while (query.next())
+            {
+                int einmaischenTemp = 0;
+                QSqlQuery query2 = sqlExec(db, QString("SELECT EinmaischenTemp FROM Sud WHERE ID=%1").arg(query.value(0).toInt()));
+                if (query2.first())
+                    einmaischenTemp = query2.value(0).toInt();
+                sqlExec(db, QString("INSERT INTO Rasten (SudID,Typ,Name,Temp,Mengenfaktor,Param1) VALUES (%1,0,'Einmaischen',%2,1,%3)")
+                        .arg(query.value(0).toInt())
+                        .arg(query.value(1).toInt())
+                        .arg(einmaischenTemp));
+            }
+            sqlExec(db, "INSERT INTO Rasten ("
+                "SudID,"
+                "Name,"
+                "Temp,"
+                "Dauer"
+                ") SELECT "
+                "SudID,"
+                "Name,"
+                "Temp,"
+                "Dauer"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Etiketten
+            //  - neue Spalte 'Papiergroesse'
+            //  - neue Spalte 'Ausrichtung'
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0");
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0");
+
+            // Kategorien
+            //  - neue Tabelle
+            sqlExec(db, "CREATE TABLE Kategorien ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT UNIQUE,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Kategorien (Name) VALUES ('')");
+
+            // Wasseraufbereitung
+            //  - neue Tabelle
+            sqlExec(db, "CREATE TABLE Wasseraufbereitung ("
+                "ID INTEGER PRIMARY KEY,"
+                "SudID INTEGER NOT NULL,"
+                "Name TEXT NOT NULL,"
+                "Menge REAL DEFAULT 0,"
+                "Einheit INTEGER DEFAULT 0,"
+                "Faktor REAL DEFAULT 0,"
+                "Restalkalitaet REAL DEFAULT 0)");
+
+            // Sud
+            //  - Spalte gelöscht 'EinmaischenTemp'
+            //  - neue Spalte 'Kategorie'
+            //  - neue Spalte 'VerschneidungAbfuellen'
+            //  - Spalte unbenannt KochdauerNachBitterhopfung -> Kochdauer
+            //  - 'Verdampfungsrate' in l/h statt %
+            sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Sud ("
+                "ID INTEGER PRIMARY KEY,"
+                "Sudname TEXT NOT NULL,"
+                "Sudnummer INTEGER DEFAULT 0,"
+                "Kategorie TEXT,"
+                "Anlage TEXT,"
+                "Menge REAL DEFAULT 20,"
+                "SW REAL DEFAULT 12,"
+                "highGravityFaktor REAL DEFAULT 0,"
+                "FaktorHauptguss REAL DEFAULT 3.5,"
+                "Wasserprofil TEXT,"
+                "RestalkalitaetSoll REAL DEFAULT 0,"
+                "CO2 REAL DEFAULT 5,"
+                "IBU REAL DEFAULT 26,"
+                "berechnungsArtHopfen INTEGER DEFAULT 0,"
+                "Kochdauer INTEGER DEFAULT 60,"
+                "Nachisomerisierungszeit INTEGER DEFAULT 0,"
+                "Reifezeit INTEGER DEFAULT 4,"
+                "KostenWasserStrom REAL DEFAULT 0,"
+                "Kommentar TEXT,"
+                "Status INTEGER DEFAULT 0,"
+                "Braudatum DATETIME,"
+                "Abfuelldatum DATETIME,"
+                "Erstellt DATETIME,"
+                "Gespeichert DATETIME,"
+                "erg_S_Gesamt REAL DEFAULT 0,"
+                "erg_W_Gesamt REAL DEFAULT 0,"
+                "erg_WHauptguss REAL DEFAULT 0,"
+                "erg_WNachguss REAL DEFAULT 0,"
+                "erg_Farbe REAL DEFAULT 0,"
+                "SWKochende REAL DEFAULT 12,"
+                "SWAnstellen REAL DEFAULT 12,"
+                "SchnellgaerprobeAktiv INTEGER DEFAULT 0,"
+                "SWSchnellgaerprobe REAL DEFAULT 2.5,"
+                "SWJungbier REAL DEFAULT 3,"
+                "TemperaturJungbier REAL DEFAULT 12,"
+                "WuerzemengeVorHopfenseihen REAL DEFAULT 0,"
+                "WuerzemengeKochende REAL DEFAULT 20,"
+                "WuerzemengeAnstellen REAL DEFAULT 20,"
+                "Spunden INTEGER DEFAULT 0,"
+                "Speisemenge REAL DEFAULT 1,"
+                "JungbiermengeAbfuellen REAL DEFAULT 0,"
+                "erg_AbgefuellteBiermenge REAL DEFAULT 0,"
+                "erg_Sudhausausbeute REAL DEFAULT 0,"
+                "erg_EffektiveAusbeute REAL DEFAULT 0,"
+                "erg_Preis REAL DEFAULT 0,"
+                "erg_Alkohol REAL DEFAULT 0,"
+                "AusbeuteIgnorieren INTEGER DEFAULT 0,"
+                "MerklistenID INTEGER DEFAULT 0,"
+                "Sudhausausbeute REAL DEFAULT 60,"
+                "Verdampfungsrate REAL DEFAULT 10,"
+                "Vergaerungsgrad REAL DEFAULT 70,"
+                "WuerzemengeKochbeginn REAL DEFAULT 0,"
+                "SWKochbeginn REAL DEFAULT 0,"
+                "VerschneidungAbfuellen REAL DEFAULT 0)");
+            sqlExec(db, "INSERT INTO Sud ("
+                "ID,"
+                "Sudname,"
+                "Sudnummer,"
+                "Anlage,"
+                "Menge,"
+                "SW,"
+                "highGravityFaktor,"
+                "FaktorHauptguss,"
+                "Wasserprofil,"
+                "RestalkalitaetSoll,"
+                "CO2,"
+                "IBU,"
+                "berechnungsArtHopfen,"
+                "Kochdauer,"
+                "Nachisomerisierungszeit,"
+                "Reifezeit,"
+                "KostenWasserStrom,"
+                "Kommentar,"
+                "Status,"
+                "Braudatum,"
+                "Abfuelldatum,"
+                "Erstellt,"
+                "Gespeichert,"
+                "erg_S_Gesamt,"
+                "erg_W_Gesamt,"
+                "erg_WHauptguss,"
+                "erg_WNachguss,"
+                "erg_Farbe,"
+                "SWKochende,"
+                "SWAnstellen,"
+                "SchnellgaerprobeAktiv,"
+                "SWSchnellgaerprobe,"
+                "SWJungbier,"
+                "TemperaturJungbier,"
+                "WuerzemengeVorHopfenseihen,"
+                "WuerzemengeKochende,"
+                "WuerzemengeAnstellen,"
+                "Spunden,"
+                "Speisemenge,"
+                "JungbiermengeAbfuellen,"
+                "erg_AbgefuellteBiermenge,"
+                "erg_Sudhausausbeute,"
+                "erg_EffektiveAusbeute,"
+                "erg_Preis,"
+                "erg_Alkohol,"
+                "AusbeuteIgnorieren,"
+                "MerklistenID,"
+                "Sudhausausbeute,"
+                "Verdampfungsrate,"
+                "Vergaerungsgrad,"
+                "WuerzemengeKochbeginn,"
+                "SWKochbeginn"
+                ") SELECT "
+                "ID,"
+                "Sudname,"
+                "Sudnummer,"
+                "Anlage,"
+                "Menge,"
+                "SW,"
+                "highGravityFaktor,"
+                "FaktorHauptguss,"
+                "Wasserprofil,"
+                "RestalkalitaetSoll,"
+                "CO2,"
+                "IBU,"
+                "berechnungsArtHopfen,"
+                "KochdauerNachBitterhopfung,"
+                "Nachisomerisierungszeit,"
+                "Reifezeit,"
+                "KostenWasserStrom,"
+                "Kommentar,"
+                "Status,"
+                "Braudatum,"
+                "Abfuelldatum,"
+                "Erstellt,"
+                "Gespeichert,"
+                "erg_S_Gesamt,"
+                "erg_W_Gesamt,"
+                "erg_WHauptguss,"
+                "erg_WNachguss,"
+                "erg_Farbe,"
+                "SWKochende,"
+                "SWAnstellen,"
+                "SchnellgaerprobeAktiv,"
+                "SWSchnellgaerprobe,"
+                "SWJungbier,"
+                "TemperaturJungbier,"
+                "WuerzemengeVorHopfenseihen,"
+                "WuerzemengeKochende,"
+                "WuerzemengeAnstellen,"
+                "Spunden,"
+                "Speisemenge,"
+                "JungbiermengeAbfuellen,"
+                "erg_AbgefuellteBiermenge,"
+                "erg_Sudhausausbeute,"
+                "erg_EffektiveAusbeute,"
+                "erg_Preis,"
+                "erg_Alkohol,"
+                "AusbeuteIgnorieren,"
+                "MerklistenID,"
+                "Sudhausausbeute,"
+                "Menge*Verdampfungsrate/100,"
+                "Vergaerungsgrad,"
+                "WuerzemengeKochbeginn,"
+                "SWKochbeginn"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
+        if (version == 2004)
+        {
+            ++version;
+            qInfo() << "Updating to version:" << version;
+            db.transaction();
+
+            // Kategorien
+            //  - 'Name' nicht mehr UNIQUE (wegen swap())
+            sqlExec(db, "ALTER TABLE Kategorien RENAME TO TempTable");
+            sqlExec(db, "CREATE TABLE Kategorien ("
+                "ID INTEGER PRIMARY KEY,"
+                "Name TEXT,"
+                "Bemerkung TEXT)");
+            sqlExec(db, "INSERT INTO Kategorien ("
+                "Name,"
+                "Bemerkung"
+                ") SELECT "
+                "Name,"
+                "Bemerkung"
+                " FROM TempTable");
+            sqlExec(db, "DROP TABLE TempTable");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

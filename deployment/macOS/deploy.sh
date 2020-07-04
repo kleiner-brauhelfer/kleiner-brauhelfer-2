@@ -80,7 +80,7 @@ echo "* Patching '${PLIST}'..."
 /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string '${VERSION}'" ${PLIST} || exit 1
 
 /usr/libexec/PlistBuddy -c "Delete :NSHumanReadableCopyright" ${PLIST}
-/usr/libexec/PlistBuddy -c "Add :NSHumanReadableCopyright string 'Copyright © 2018-2019 Gremmelsoft. All rights reserved.'" ${PLIST} || exit 1
+/usr/libexec/PlistBuddy -c "Add :NSHumanReadableCopyright string 'Copyright © 2018-2020 Gremmelsoft. All rights reserved.'" ${PLIST} || exit 1
 
 
 
@@ -112,6 +112,7 @@ echo "* Creating self-contained bundle..."
 
 "${QT_DIR}/macdeployqt" ${BUNDLE} \
     -verbose=1 \
+    -no-strip \
     -executable="${BUNDLE}/Contents/MacOS/kleiner-brauhelfer-2" \
     -executable="${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess" \
  || exit 1

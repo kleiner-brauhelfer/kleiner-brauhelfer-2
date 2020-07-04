@@ -256,11 +256,11 @@ int SqlTableModel::append(const QMap<int, QVariant> &values)
 int SqlTableModel::append(const QVariantMap &values)
 {
     QMap<int, QVariant> val;
-    QVariantMap::const_iterator it = values.constBegin();
-    while (it != values.constEnd())
+    for (QVariantMap::const_iterator it = values.constBegin(); it != values.constEnd(); it++)
     {
-        val.insert(fieldIndex(it.key()), it.value());
-        ++it;
+        int col = fieldIndex(it.key());
+        if (col >= 0)
+            val.insert(col, it.value());
     }
     return append(val);
 }
@@ -285,6 +285,42 @@ int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
     if (lastError().isValid())
         qCritical(loggingCategory) << lastError();
     return -1;
+}
+
+int SqlTableModel::appendDirect(const QVariantMap &values)
+{
+    QMap<int, QVariant> val;
+    for (QVariantMap::const_iterator it = values.constBegin(); it != values.constEnd(); it++)
+    {
+        int col = fieldIndex(it.key());
+        if (col >= 0)
+            val.insert(col, it.value());
+    }
+    return appendDirect(val);
+}
+
+bool SqlTableModel::swap(int row1, int row2)
+{
+    if (row1 >= 0 && row1 < rowCount() && row2 >= 0 && row2 < rowCount())
+    {
+        QMap<int, QVariant> values1 = copyValues(row1);
+        QMap<int, QVariant> values2 = copyValues(row2);
+        QMap<int, QVariant>::const_iterator it = values2.constBegin();
+        while (it != values2.constEnd())
+        {
+            QSqlTableModel::setData(index(row1, it.key()), it.value());
+            ++it;
+        }
+        it = values1.constBegin();
+        while (it != values1.constEnd())
+        {
+            QSqlTableModel::setData(index(row2, it.key()), it.value());
+            ++it;
+        }
+        emit modified();
+        return true;
+    }
+    return false;
 }
 
 void SqlTableModel::emitModified()
@@ -322,7 +358,7 @@ int SqlTableModel::getRowWithValue(int col, const QVariant &value) const
     {
         for (int row = 0; row < rowCount(); ++row)
         {
-            if (data(row, col) == value)
+            if (data(row, col) == value && !data(row, fieldIndex("deleted")).toBool())
                 return row;
         }
     }
@@ -355,6 +391,8 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     for (int row = 0; row < rowCount(); ++row)
     {
         if (!ignoreIndexRow && row == index.row())
+            continue;
+        if (data(row, fieldIndex("deleted")).toBool())
             continue;
         if (data(row, index.column()) == value)
             return false;
@@ -406,4 +444,17 @@ QMap<int, QVariant> SqlTableModel::copyValues(int row) const
         if (i != colPrimary)
             values.insert(i, rec.value(i));
     return values;
+}
+
+QVariantMap SqlTableModel::toVariantMap(int row, QList<int> ignoreCols) const
+{
+    QVariantMap map;
+    QSqlRecord rec = record(row);
+    for (int i = 0; i < rec.count(); ++i)
+    {
+        if (ignoreCols.contains(i))
+            continue;
+        map.insert(rec.fieldName(i), rec.value(i));
+    }
+    return map;
 }

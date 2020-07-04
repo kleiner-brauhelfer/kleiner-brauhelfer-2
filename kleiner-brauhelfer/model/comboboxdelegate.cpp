@@ -8,26 +8,60 @@ ComboBoxDelegate::ComboBoxDelegate(const QStringList &items, QObject *parent) :
 {
 }
 
+ComboBoxDelegate::ComboBoxDelegate(QList<QPair<QString, int> > &items, QObject *parent) :
+    QStyledItemDelegate(parent),
+    mItemsMapped(items)
+{
+}
+
+ComboBoxDelegate::ComboBoxDelegate(const QStringList &items, const QList<QColor> &colors, QObject *parent) :
+    ComboBoxDelegate(items, parent)
+{
+    setColors(colors);
+}
+
+ComboBoxDelegate::ComboBoxDelegate(QList<QPair<QString, int> > &items, const QList<QColor> &colors, QObject *parent) :
+    ComboBoxDelegate(items, parent)
+{
+    setColors(colors);
+}
+
 QWidget* ComboBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     Q_UNUSED(option)
     Q_UNUSED(index)
     QComboBox* w = new QComboBox(parent);
-    w->addItems(mItems);
+    if (mItemsMapped.empty())
+    {
+        w->addItems(mItems);
+    }
+    else
+    {
+        for (const auto &m : mItemsMapped)
+            w->addItem(m.first, m.second);
+    }
     return w;
 }
 
 void ComboBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QComboBox *w = static_cast<QComboBox*>(editor);
-    w->setCurrentIndex(index.model()->data(index, Qt::EditRole).toInt());
+    w->setCurrentIndex(index.data(Qt::EditRole).toInt());
     w->showPopup();
 }
 
 void ComboBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
     QComboBox *w = static_cast<QComboBox*>(editor);
-    model->setData(index, w->currentIndex(), Qt::EditRole);
+    int idx = w->currentIndex();
+    if (idx >= 0)
+    {
+        QVariant data = w->currentData();
+        if (data.isNull())
+            model->setData(index, idx, Qt::EditRole);
+        else
+            model->setData(index, data, Qt::EditRole);
+    }
 }
 
 void ComboBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -41,7 +75,7 @@ void ComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     QStyleOptionViewItem opt(option);
     initStyleOption(&opt, index);
     opt.displayAlignment = Qt::AlignCenter;
-    int idx = index.model()->data(index).toInt();
+    int idx = index.data(Qt::DisplayRole).toInt();
     if (idx >= 0 && idx < mColors.count())
     {
         QColor color = mColors.at(idx);
@@ -55,9 +89,21 @@ QString ComboBoxDelegate::displayText(const QVariant &value, const QLocale &loca
 {
     Q_UNUSED(locale)
     int idx = value.toInt();
-    if (idx < 0 || idx >= mItems.count())
-        return QString();
-    return mItems.at(idx);
+    if (mItemsMapped.empty())
+    {
+        if (idx < 0 || idx >= mItems.count())
+            return QString::number(idx);
+        return mItems.at(idx);
+    }
+    else
+    {
+        for (const auto &m : mItemsMapped)
+        {
+            if (m.second == idx)
+                return m.first;
+        }
+        return QString::number(idx);
+    }
 }
 
 void ComboBoxDelegate::setColors(const QList<QColor>& colors)

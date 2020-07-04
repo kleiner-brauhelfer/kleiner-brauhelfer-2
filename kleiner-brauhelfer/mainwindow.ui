@@ -11,80 +11,120 @@
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
-     <number>4</number>
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
     <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
-     <widget class="QTabWidget" name="tabMain">
-      <property name="currentIndex">
-       <number>0</number>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
-      <widget class="TabSudAuswahl" name="tabSudAuswahl">
-       <attribute name="title">
-        <string>Sudauswahl</string>
-       </attribute>
-      </widget>
-      <widget class="TabRezept" name="tabRezept">
-       <attribute name="title">
-        <string>Rezept</string>
-       </attribute>
-      </widget>
-      <widget class="TabBraudaten" name="tabBraudaten">
-       <attribute name="title">
-        <string>Braudaten</string>
-       </attribute>
-      </widget>
-      <widget class="TabAbfuellen" name="tabAbfuelldaten">
-       <attribute name="title">
-        <string>Abfülldaten</string>
-       </attribute>
-      </widget>
-      <widget class="TabGaerverlauf" name="tabGaerverlauf">
-       <attribute name="title">
-        <string>Gärverlauf</string>
-       </attribute>
-      </widget>
-      <widget class="TabZusammenfassung" name="tabZusammenfassung">
-       <attribute name="title">
-        <string>Zusammenfassung</string>
-       </attribute>
-      </widget>
-      <widget class="TabEtikette" name="tabEtikette">
-       <attribute name="title">
-        <string>Etikette</string>
-       </attribute>
-      </widget>
-      <widget class="TabBewertung" name="tabBewertung">
-       <attribute name="title">
-        <string>Bewertung</string>
-       </attribute>
-      </widget>
-      <widget class="TabBrauUebersicht" name="tabBrauUebersicht">
-       <attribute name="title">
-        <string>Brauübersicht</string>
-       </attribute>
-      </widget>
-      <widget class="TabAusruestung" name="tabAusruestung">
-       <attribute name="title">
-        <string>Ausrüstung</string>
-       </attribute>
-      </widget>
-      <widget class="TabRohstoffe" name="tabRohstoffe">
-       <attribute name="title">
-        <string>Rohstoffe</string>
-       </attribute>
-      </widget>
-      <widget class="TabDatenbank" name="tabDatenbank">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>800</width>
+         <height>459</height>
+        </rect>
        </property>
-       <attribute name="title">
-        <string>Datenbank</string>
-       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabMain">
+          <widget class="TabSudAuswahl" name="tabSudAuswahl">
+           <attribute name="title">
+            <string>Sudauswahl</string>
+           </attribute>
+          </widget>
+          <widget class="TabRezept" name="tabRezept">
+           <attribute name="title">
+            <string>Rezept</string>
+           </attribute>
+          </widget>
+          <widget class="TabBraudaten" name="tabBraudaten">
+           <attribute name="title">
+            <string>Braudaten</string>
+           </attribute>
+          </widget>
+          <widget class="TabAbfuellen" name="tabAbfuelldaten">
+           <attribute name="title">
+            <string>Abfülldaten</string>
+           </attribute>
+          </widget>
+          <widget class="TabGaerverlauf" name="tabGaerverlauf">
+           <attribute name="title">
+            <string>Gärverlauf</string>
+           </attribute>
+          </widget>
+          <widget class="TabZusammenfassung" name="tabZusammenfassung">
+           <attribute name="title">
+            <string>Zusammenfassung</string>
+           </attribute>
+          </widget>
+          <widget class="TabEtikette" name="tabEtikette">
+           <attribute name="title">
+            <string>Etikette</string>
+           </attribute>
+          </widget>
+          <widget class="TabBewertung" name="tabBewertung">
+           <attribute name="title">
+            <string>Bewertung</string>
+           </attribute>
+          </widget>
+          <widget class="TabBrauUebersicht" name="tabBrauuebersicht">
+           <attribute name="title">
+            <string>Brauübersicht</string>
+           </attribute>
+          </widget>
+          <widget class="TabAusruestung" name="tabAusruestung">
+           <attribute name="title">
+            <string>Ausrüstung</string>
+           </attribute>
+          </widget>
+          <widget class="TabRohstoffe" name="tabRohstoffe">
+           <attribute name="title">
+            <string>Rohstoffe</string>
+           </attribute>
+          </widget>
+          <widget class="TabDatenbank" name="tabDatenbank">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <attribute name="title">
+            <string>Datenbank</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -103,10 +143,19 @@
     <property name="title">
      <string>Datei</string>
     </property>
-    <addaction name="actionOeffnen"/>
+    <addaction name="actionNeuen_Sud_anlegen"/>
+    <addaction name="actionSud_kopieren"/>
+    <addaction name="actionSud_teilen"/>
+    <addaction name="actionSud_l_schen"/>
+    <addaction name="separator"/>
+    <addaction name="actionRezept_importieren"/>
+    <addaction name="actionRezept_exportieren"/>
     <addaction name="separator"/>
     <addaction name="actionSpeichern"/>
     <addaction name="actionVerwerfen"/>
+    <addaction name="separator"/>
+    <addaction name="actionDruckvorschau"/>
+    <addaction name="actionDrucken"/>
     <addaction name="separator"/>
     <addaction name="actionBereinigen"/>
     <addaction name="separator"/>
@@ -129,19 +178,31 @@
       <string>Stil</string>
      </property>
     </widget>
+    <widget class="QMenu" name="menuReiter">
+     <property name="title">
+      <string>Reiter</string>
+     </property>
+     <addaction name="actionReiterZusammenfassung"/>
+     <addaction name="actionReiterEtikette"/>
+     <addaction name="actionReiterBewertung"/>
+     <addaction name="actionReiterBrauuebersicht"/>
+     <addaction name="separator"/>
+     <addaction name="actionReiterDatenbank"/>
+    </widget>
     <addaction name="actionWiederherstellen"/>
     <addaction name="separator"/>
     <addaction name="menuFarbschema"/>
     <addaction name="menuStil"/>
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
-    <addaction name="actionReiterDatenbank"/>
+    <addaction name="menuReiter"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
      <string>Hilfe</string>
     </property>
     <addaction name="actionSpende"/>
+    <addaction name="actionBierspende"/>
     <addaction name="actionUeber"/>
    </widget>
    <widget class="QMenu" name="menuSud">
@@ -161,11 +222,21 @@
     <property name="title">
      <string>Einstellungen</string>
     </property>
+    <widget class="QMenu" name="menuSprache">
+     <property name="title">
+      <string>Sprache</string>
+     </property>
+     <addaction name="actionDeutsch"/>
+     <addaction name="actionEnglisch"/>
+    </widget>
+    <addaction name="actionOeffnen"/>
+    <addaction name="separator"/>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionTooltips"/>
-    <addaction name="separator"/>
-    <addaction name="actionIspindelEinstellungen"/>
+    <addaction name="actionAnimationen"/>
+    <addaction name="actioniSpindel"/>
+    <addaction name="menuSprache"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
@@ -192,18 +263,15 @@
   </action>
   <action name="actionWiederherstellen">
    <property name="text">
-    <string>Wiederherstellen</string>
+    <string>Zurücksetzen</string>
    </property>
   </action>
   <action name="actionReiterDatenbank">
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
    <property name="text">
-    <string>Reiter &quot;Datenbank&quot;</string>
+    <string>Datenbank</string>
    </property>
   </action>
   <action name="actionUeber">
@@ -216,7 +284,7 @@
   </action>
   <action name="actionSpende">
    <property name="text">
-    <string>Spenden</string>
+    <string>Spende</string>
    </property>
   </action>
   <action name="actionSudGebraut">
@@ -252,10 +320,13 @@
   </action>
   <action name="actionOeffnen">
    <property name="text">
-    <string>Öffnen</string>
+    <string>Datenbank auswählen</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="actionThemeSystem">
@@ -332,9 +403,124 @@
     <string>Tooltips</string>
    </property>
   </action>
-  <action name="actionIspindelEinstellungen">
+  <action name="actionNeuen_Sud_anlegen">
+   <property name="text">
+    <string>Neuen Sud anlegen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionRezept_importieren">
+   <property name="text">
+    <string>Rezept importieren</string>
+   </property>
+  </action>
+  <action name="actionRezept_exportieren">
+   <property name="text">
+    <string>Rezept exportieren</string>
+   </property>
+  </action>
+  <action name="actionSud_kopieren">
+   <property name="text">
+    <string>Sud kopieren</string>
+   </property>
+  </action>
+  <action name="actionSud_l_schen">
+   <property name="text">
+    <string>Sud löschen</string>
+   </property>
+  </action>
+  <action name="actionSud_teilen">
+   <property name="text">
+    <string>Sud teilen</string>
+   </property>
+  </action>
+  <action name="actionDruckvorschau">
+   <property name="text">
+    <string>Druckvorschau</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+  <action name="actionDrucken">
+   <property name="text">
+    <string>Drucken (PDF)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionReiterEtikette">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Etikette</string>
+   </property>
+  </action>
+  <action name="actionReiterBewertung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Bewertung</string>
+   </property>
+  </action>
+  <action name="actionReiterZusammenfassung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Spickzettel/Zusammenfassung</string>
+   </property>
+  </action>
+  <action name="actionReiterBrauuebersicht">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Brauübersicht</string>
+   </property>
+  </action>
+  <action name="actionAnimationen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Animationen</string>
+   </property>
+  </action>
+  <action name="actionBierspende">
+   <property name="text">
+    <string>Bierspende</string>
+   </property>
+  </action>
+  <action name="actioniSpindel">
    <property name="text">
     <string>iSpindel</string>
+   </property>
+  </action>
+  <action name="actionDeutsch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/de.png</normaloff>:/images/de.png</iconset>
+   </property>
+   <property name="text">
+    <string>Deutsch</string>
+   </property>
+  </action>
+  <action name="actionEnglisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/en.png</normaloff>:/images/en.png</iconset>
+   </property>
+   <property name="text">
+    <string>Englisch</string>
    </property>
   </action>
  </widget>
@@ -413,6 +599,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

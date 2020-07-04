@@ -1,24 +1,22 @@
 #ifndef WDGWEITEERZUTATGABE_H
 #define WDGWEITEERZUTATGABE_H
 
-#include <QWidget>
+#include "wdgabstractproxy.h"
 
 namespace Ui {
 class WdgWeitereZutatGabe;
 }
 
-class WdgWeitereZutatGabe : public QWidget
+class WdgWeitereZutatGabe : public WdgAbstractProxy
 {
     Q_OBJECT
 
 public:
-    explicit WdgWeitereZutatGabe(int index, QWidget *parent = nullptr);
+    explicit WdgWeitereZutatGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgWeitereZutatGabe();
     bool isEnabled() const;
-    QVariant data(int col) const;
-    bool setData(int col, const QVariant &value);
+    bool isValid() const;
     QString name() const;
-    void remove();
 
 public slots:
     void updateValues(bool full = false);
@@ -39,14 +37,16 @@ private slots:
     void on_tbDatumVon_dateChanged(const QDate &date);
     void on_tbDatumBis_dateChanged(const QDate &date);
     void on_btnAufbrauchen_clicked();
+    void on_btnNachOben_clicked();
+    void on_btnNachUnten_clicked();
 
 private:
     void checkEnabled(bool force);
 
 private:
     Ui::WdgWeitereZutatGabe *ui;
-    int mIndex;
     bool mEnabled;
+    bool mValid;
 };
 
 #endif // WDGWEITEERZUTATGABE_H

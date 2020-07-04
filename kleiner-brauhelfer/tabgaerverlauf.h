@@ -16,12 +16,15 @@ public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);
     virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
     void checkEnabled();
     void setButtonIspindelImportVisible(bool state);
 
 private:
+    void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    QDateTime toDateTime(const QString& string) const;
+    double toDouble(const QString& string, bool *ok = nullptr) const;
     void pasteFromClipboardSchnellgaerverlauf();
     void pasteFromClipboardHauptgaerverlauf();
     void pasteFromClipboardNachgaerverlauf();
@@ -29,18 +32,13 @@ private:
 private slots:
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
-    void onSchnellgaerverlaufRowInserted();
-    void onHauptgaerverlaufRowInserted();
-    void onNachgaerverlaufRowInserted();
     void updateDiagramm();
     void updateValues();
     void updateWeitereZutaten();
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int id);
-    void on_btnSWSchnellgaerverlauf_clicked();
     void on_btnAddSchnellgaerMessung_clicked();
     void on_btnDelSchnellgaerMessung_clicked();
-    void on_btnSWHauptgaerverlauf_clicked();
     void on_btnAddHauptgaerMessung_clicked();
     void on_btnImportHauptgaerIspindel_clicked();
     void on_btnDelHauptgaerMessung_clicked();

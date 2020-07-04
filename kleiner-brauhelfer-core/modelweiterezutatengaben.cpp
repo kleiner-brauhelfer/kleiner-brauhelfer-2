@@ -1,5 +1,4 @@
 #include "modelweiterezutatengaben.h"
-#include "database_defs.h"
 #include "brauhelfer.h"
 #include <QDateTime>
 #include <cmath>
@@ -35,19 +34,39 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
     }
     case ColAbfuellbereit:
     {
-        if (data(idx.row(), ColZeitpunkt).toInt() == EWZ_Zeitpunkt_Gaerung)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(idx.row(), ColZeitpunkt).toInt());
+        if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
         {
-            int Zugabestatus = data(idx.row(), ColZugabestatus).toInt();
-            int Entnahmeindex = data(idx.row(), ColEntnahmeindex).toInt();
-            if (Zugabestatus == EWZ_Zugabestatus_nichtZugegeben)
+            Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(data(idx.row(), ColZugabestatus).toInt());
+            Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(idx.row(), ColEntnahmeindex).toInt());
+            if (status == Brauhelfer::ZusatzStatus::NichtZugegeben)
               return false;
-            else if (Zugabestatus == EWZ_Zugabestatus_Zugegeben && Entnahmeindex == EWZ_Entnahmeindex_MitEntnahme)
+            else if (status == Brauhelfer::ZusatzStatus::Zugegeben && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
                 return false;
         }
         return true;
     }
     default:
         return QVariant();
+    }
+}
+
+int ModelWeitereZutatenGaben::import(int row)
+{
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(row, ColTyp).toInt());
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+    {
+        QMap<int, QVariant> values({{ModelHopfen::ColName, data(row, ColName)}});
+        return bh->modelHopfen()->append(values);
+    }
+    else
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, data(row, ColName)},
+                                    {ModelWeitereZutaten::ColEinheit, data(row, ColEinheit)},
+                                    {ModelWeitereZutaten::ColTyp, data(row, ColTyp)},
+                                    {ModelWeitereZutaten::ColAusbeute, data(row, ColAusbeute)},
+                                    {ModelWeitereZutaten::ColFarbe, data(row, ColFarbe)}});
+        return bh->modelWeitereZutaten()->append(values);
     }
 }
 
@@ -59,23 +78,24 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx.row(), ColTyp).toInt() == EWZ_Typ_Hopfen)
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(idx.row(), ColTyp).toInt());
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
-                QSqlTableModel::setData(index(idx.row(), ColEinheit), EWZ_Einheit_g);
-                QSqlTableModel::setData(index(idx.row(), ColTyp), EWZ_Typ_Hopfen);
+                QSqlTableModel::setData(index(idx.row(), ColEinheit), static_cast<int>(Brauhelfer::Einheit::g));
+                QSqlTableModel::setData(index(idx.row(), ColTyp), static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen));
                 QSqlTableModel::setData(index(idx.row(), ColAusbeute), 0);
                 QSqlTableModel::setData(index(idx.row(), ColFarbe), 0);
-                QSqlTableModel::setData(index(idx.row(), ColZeitpunkt), EWZ_Zeitpunkt_Gaerung);
+                QSqlTableModel::setData(index(idx.row(), ColZeitpunkt), static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung));
             }
             else
             {
-                int row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, value);
+                int row = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, value);
                 if (row >= 0)
                 {
-                    QSqlTableModel::setData(index(idx.row(), ColEinheit), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColEinheiten));
+                    QSqlTableModel::setData(index(idx.row(), ColEinheit), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColEinheit));
                     QSqlTableModel::setData(index(idx.row(), ColTyp), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColTyp));
                     QSqlTableModel::setData(index(idx.row(), ColAusbeute), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColAusbeute));
-                    QSqlTableModel::setData(index(idx.row(), ColFarbe), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColEBC));
+                    QSqlTableModel::setData(index(idx.row(), ColFarbe), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColFarbe));
                 }
             }
             return true;
@@ -86,7 +106,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMenge).toDouble();
+            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSoll).toDouble();
             QSqlTableModel::setData(index(idx.row(), Colerg_Menge), value.toDouble() * mengeSoll);
             return true;
         }
@@ -96,7 +116,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMenge).toDouble();
+            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSoll).toDouble();
             QSqlTableModel::setData(index(idx.row(), ColMenge), value.toDouble() / mengeSoll);
             return true;
         }
@@ -106,13 +126,14 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (data(idx).toInt() == EWZ_Typ_Hopfen)
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(idx).toInt());
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
-                QSqlTableModel::setData(index(idx.row(), ColEinheit), EWZ_Einheit_g);
-                QSqlTableModel::setData(index(idx.row(), ColTyp), EWZ_Typ_Hopfen);
+                QSqlTableModel::setData(index(idx.row(), ColEinheit), static_cast<int>(Brauhelfer::Einheit::g));
+                QSqlTableModel::setData(index(idx.row(), ColTyp), static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen));
                 QSqlTableModel::setData(index(idx.row(), ColAusbeute), 0);
                 QSqlTableModel::setData(index(idx.row(), ColFarbe), 0);
-                QSqlTableModel::setData(index(idx.row(), ColZeitpunkt), EWZ_Zeitpunkt_Gaerung);
+                QSqlTableModel::setData(index(idx.row(), ColZeitpunkt), static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung));
             }
             return true;
         }
@@ -120,21 +141,21 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     }
     case ColZeitpunkt:
     {
-        int prevZeitpunkt = idx.data().toInt();
+        Brauhelfer::ZusatzZeitpunkt prevZeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(idx.data().toInt());
         if (QSqlTableModel::setData(idx, value))
         {
-            int zeitpunkt = value.toInt();
-            if (prevZeitpunkt == EWZ_Zeitpunkt_Gaerung && zeitpunkt != EWZ_Zeitpunkt_Gaerung)
+            Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(value.toInt());
+            if (prevZeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung && zeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
                 QModelIndex idx2 = index(idx.row(), ColZugabedauer);
                 QSqlTableModel::setData(idx2, idx2.data().toInt() / 1440);
             }
-            else if (prevZeitpunkt != EWZ_Zeitpunkt_Gaerung && zeitpunkt == EWZ_Zeitpunkt_Gaerung)
+            else if (prevZeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung && zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
                 QModelIndex idx2 = index(idx.row(), ColZugabedauer);
                 QSqlTableModel::setData(idx2, idx2.data().toInt() * 1440);
             }
-            if (zeitpunkt != EWZ_Zeitpunkt_Gaerung)
+            if (zeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
                 QSqlTableModel::setData(index(idx.row(), ColZugabeNach), 0);
             }
@@ -179,23 +200,23 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
     }
     else if (idx.column() == ModelSud::ColStatus)
     {
-        int status = idx.data().toInt();
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(idx.data().toInt());
         QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
         mSignalModifiedBlocked = true;
-        if (status == Sud_Status_Rezept)
+        if (status == Brauhelfer::SudStatus::Rezept)
         {
             for (int row = 0; row < rowCount(); ++row)
             {
                 if (data(row, ColSudID) == sudId)
-                    QSqlTableModel::setData(index(row, ColZugabestatus), EWZ_Zugabestatus_nichtZugegeben);
+                    QSqlTableModel::setData(index(row, ColZugabestatus), static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
             }
         }
-        else if (status == Sud_Status_Gebraut)
+        else if (status == Brauhelfer::SudStatus::Gebraut)
         {
             for (int row = 0; row < rowCount(); ++row)
             {
                 if (data(row, ColSudID) == sudId && data(row, ColZugabeNach).toInt() == 0)
-                    QSqlTableModel::setData(index(row, ColZugabestatus), EWZ_Zugabestatus_Zugegeben);
+                    QSqlTableModel::setData(index(row, ColZugabestatus), static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
             }
         }
         mSignalModifiedBlocked = false;
@@ -209,7 +230,8 @@ void ModelWeitereZutatenGaben::defaultValues(QMap<int, QVariant> &values) const
         QVariant sudId = values.value(ColSudID);
         if (!values.contains(ColZugabeNach))
         {
-            if (bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt() != Sud_Status_Rezept)
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+            if (status != Brauhelfer::SudStatus::Rezept)
             {
                 QDateTime braudatum = bh->modelSud()->dataSud(sudId, ModelSud::ColBraudatum).toDateTime();
                 if (braudatum.isValid())
@@ -217,15 +239,19 @@ void ModelWeitereZutatenGaben::defaultValues(QMap<int, QVariant> &values) const
             }
         }
     }
-    if (values.contains(ColTyp) && values.value(ColTyp).toInt() == EWZ_Typ_Hopfen)
+    if (values.contains(ColTyp))
     {
-        if (!values.contains(ColName))
-            values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColBeschreibung));
-    }
-    else
-    {
-        if (!values.contains(ColName))
-            values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColBeschreibung));
+        Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(values.value(ColTyp).toInt());
+        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+        {
+            if (!values.contains(ColName))
+                values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
+        }
+        else
+        {
+            if (!values.contains(ColName))
+                values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColName));
+        }
     }
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 0);

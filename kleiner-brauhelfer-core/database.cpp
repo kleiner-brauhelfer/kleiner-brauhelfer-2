@@ -1,4 +1,5 @@
 #include "database.h"
+#include <stdexcept>
 #include <QFile>
 #include <QSqlQuery>
 #include "brauhelfer.h"
@@ -35,6 +36,8 @@ void Database::createTables(Brauhelfer* bh)
     modelWasser = new ModelWasser(bh, db);
     modelEtiketten = new ModelEtiketten(bh, db);
     modeTags = new ModelTags(bh, db);
+    modelKategorien = new ModelKategorien(bh, db);
+    modelWasseraufbereitung = new ModelWasseraufbereitung(bh, db);
     modelSud->createConnections();
 }
 
@@ -65,6 +68,8 @@ void Database::setTables()
     modelWasser->setTable("Wasser");
     modelEtiketten->setTable("Etiketten");
     modeTags->setTable("Tags");
+    modelKategorien->setTable("Kategorien");
+    modelWasseraufbereitung->setTable("Wasseraufbereitung");
 
     // sanity check
     Q_ASSERT(modelSud->columnCount() == ModelSud::NumCols);
@@ -87,6 +92,8 @@ void Database::setTables()
     Q_ASSERT(modelWasser->columnCount() == ModelWasser::NumCols);
     Q_ASSERT(modelEtiketten->columnCount() == ModelEtiketten::NumCols);
     Q_ASSERT(modeTags->columnCount() == ModelTags::NumCols);
+    Q_ASSERT(modelKategorien->columnCount() == ModelKategorien::NumCols);
+    Q_ASSERT(modelWasseraufbereitung->columnCount() == ModelWasseraufbereitung::NumCols);
 }
 
 Database::~Database()
@@ -112,6 +119,8 @@ Database::~Database()
     delete modelWasser;
     delete modelEtiketten;
     delete modeTags;
+    delete modelKategorien;
+    delete modelWasseraufbereitung;
     QSqlDatabase::removeDatabase("kbh");
 }
 
@@ -181,6 +190,8 @@ void Database::disconnect()
         modelWasser->clear();
         modelEtiketten->clear();
         modeTags->clear();
+        modelKategorien->clear();
+        modelWasseraufbereitung->clear();
         mVersion = -1;
     }
 }
@@ -211,7 +222,9 @@ bool Database::isDirty() const
            modelGeraete->isDirty() |
            modelWasser->isDirty() |
            modelEtiketten->isDirty() |
-           modeTags->isDirty();
+           modeTags->isDirty() |
+           modelKategorien->isDirty() |
+           modelWasseraufbereitung->isDirty();
 }
 
 void Database::select()
@@ -235,6 +248,8 @@ void Database::select()
     modelAnhang->select();
     modelEtiketten->select();
     modeTags->select();
+    modelKategorien->select();
+    modelWasseraufbereitung->select();
     modelSud->select();
 }
 
@@ -341,6 +356,16 @@ bool Database::save()
         mLastError = modeTags->lastError();
         ret = false;
     }
+    if (!modelKategorien->submitAll())
+    {
+        mLastError = modelKategorien->lastError();
+        ret = false;
+    }
+    if (!modelWasseraufbereitung->submitAll())
+    {
+        mLastError = modelWasseraufbereitung->lastError();
+        ret = false;
+    }
     if (!modelSud->submitAll())
     {
         mLastError = modelSud->lastError();
@@ -370,6 +395,8 @@ void Database::discard()
     modelAnhang->revertAll();
     modelEtiketten->revertAll();
     modeTags->revertAll();
+    modelKategorien->revertAll();
+    modelWasseraufbereitung->revertAll();
     modelSud->revertAll();
 }
 

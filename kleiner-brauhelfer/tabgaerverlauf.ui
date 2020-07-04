@@ -16,9 +16,6 @@
    </property>
    <item>
     <widget class="QToolBox" name="toolBox_Gaerverlauf">
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Hauptgärung ist der bestimmende Prozess bei der Umwandlung von Extrakt in Alkohol und Kohlendioxid. Ferner tragen Hefen hier ihr Geschmacksprofil ein. In der Regel dauert die Hauptgärung fünf Tage, wobei die stürmische Phase die auffälligste ist.&lt;/p&gt;&lt;p&gt;Ist die Schnellgärprobe nicht aktiv, werden die Werte der Hauptgärung für den Endvergärungsgrad (EVG) und den Alkoholgehalt im Tab Abfülldaten verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
      <property name="currentIndex">
       <number>1</number>
      </property>
@@ -27,9 +24,12 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>814</width>
-        <height>604</height>
+        <width>796</width>
+        <height>583</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe dient zum einen zur Bestimmung des Abfüllzeitpunktes beim Grünschlauchen und zum anderen zur Bestimmung der Zucker- oder Speisegabe zur Nachgärung wie der Hefeaktivität allgemein.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten bei aktivierter Schnellgärprobe in den Felder für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen.&lt;/p&gt;&lt;p&gt;Ist die Schnellgärprobe aktiv, werden ihre Werte im Kleinen Brauhelfer vor der Hauptgärung bevorzugt. Damit ermöglicht sie Prognosen über den Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <attribute name="label">
        <string>Schnellgärprobe</string>
@@ -58,9 +58,6 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Schnellgaerverlauf">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe dient zum einen zur Bestimmung des Abfüllzeitpunktes beim Grünschlauchen und zum anderen zur Bestimmung der Zucker- oder Speisegabe zur Nachgärung wie der Hefeaktivität allgemein.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten bei aktivierter Schnellgärprobe in den Felder für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen.&lt;/p&gt;&lt;p&gt;Ist die Schnellgärprobe aktiv, werden ihre Werte im Kleinen Brauhelfer vor der Hauptgärung bevorzugt. Damit ermöglicht sie Prognosen über den Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -88,135 +85,48 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QLabel" name="label_30">
-                <property name="text">
-                 <string>Datum</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DateTimeEdit" name="tbDatumSchnellgaerprobe">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Uhrzeit&lt;/span&gt; der Schnellgärprobe eingetragen.&lt;/p&gt;&lt;p&gt;So keine manuelle Eingabe erfolgt, übernimmt der Kleine Brauhelfer die Computerzeit.&lt;/p&gt;&lt;p&gt;Über den Pfeil rechts kann die Kalenderfunktion aktiviert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="calendarPopup">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_27">
-                <property name="text">
-                 <string>Restextrakt</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbSWSchnellgaerprobe">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der alkoholkorrigierte &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärung&lt;/span&gt; eingegeben. Ist der korrigierte Wert unbekannt, empfiehlt es sich den Button rechts zu nutzen.&lt;/p&gt;&lt;p&gt;Die Korrektur der alkoholbedingten Abweichung lässt sich mit Formeln wie der des US-Amerikaners Sean Terrill auch manuell berechnen. Die Fachliteratur und die Theorieteile von Rezeptesammlungen tauchen hier tief in die Materie ein.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Auf alle Fälle ist im Feld Restextrakt &lt;span style=&quot; font-weight:600;&quot;&gt;nicht direkt&lt;/span&gt; der Wert der Bierspindel einzutragen oder die auf Plato umgerechnete Messung des Refraktometers. Dies führte zu erheblichen Messfehlern und Fehlinterpretationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>°P</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_162">
-                <property name="text">
-                 <string>Temperatur</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbTempSchnellgaerprobe">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; in Gefäss der Schnellgärprobe angegeben.&lt;/p&gt;&lt;p&gt;Die Temperatur der Schnellgärprobe soll grundsätzlich immer über der Temperatur der Hauptgärung liegen. Nur so vergärt die Probe schneller und der Abfüllzeitpunkt, wichtig vor allem beim Grünschlauchen, kann bestimmt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_2">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>°C</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btnSWSchnellgaerverlauf">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;Messfehler&lt;/span&gt; von Bierspindel und Refraktometer und berechnet den korrekten Restextrakt anhand der aktuell gemessenen Temperatur.&lt;/p&gt;&lt;p&gt;Bei Messung des Extraktgehalts eines alkoholhaltigen Jungbiers mit dem Refraktometer wird der Wert durch den Alkohol verfälscht. Wenn die ursprüngliche Stammwürze bekannt ist, kann man diesen Fehler korrigieren.&lt;/p&gt;&lt;p&gt;Zur Beachtung: Eine höhere Temperatur im Gärgefäß im Vergleich zur Außentemperatur ist während größerer Hefeaktivität um 1°C bis 2°C durchaus üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string notr="true">...</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QPushButton" name="btnAddSchnellgaerMessung">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
                 </property>
-                <property name="text">
-                 <string>Messung hinzufügen</string>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnDelSchnellgaerMessung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -233,16 +143,6 @@
                 </property>
                </spacer>
               </item>
-              <item>
-               <widget class="QPushButton" name="btnDelSchnellgaerMessung">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string>Messung löschen</string>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
            </item>
@@ -252,14 +152,17 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="pageHautpgaerung">
+     <widget class="QWidget" name="pageHauptgaerung">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>814</width>
-        <height>604</height>
+        <width>796</width>
+        <height>583</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Hauptgärung gibt Auskunft über die Hefearbeit und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeaktivität&lt;/span&gt;. Ziel ist es, den Endvergärungsgrad (EVG) innerhalb der Parameter der Hefe laut Herstellerangaben zu erreichen. Bei einer durchnittlichen Hefe sind dies 70%. Optimale Parameter bedeutet ein Maximum an Wirkungsgrad der jeweiligen Hefe. Werte unterhalb der Hefe-Parameter bedeuten unvergorenen Zucker und haben oft einen Fehlgeschmack zur Folge, der sich süßlich, auch Mastigkeit genannt, bemerkbar macht.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen. Die Werte der Schnellgärprobe werden primär in die genannten Felder eingetragen.&lt;/p&gt;&lt;p&gt;In allen Fällen sind aber die Werte der Hauptgärung bestimmend.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <attribute name="label">
        <string>Hauptgärung</string>
@@ -269,7 +172,7 @@
         <number>4</number>
        </property>
        <item>
-        <widget class="QSplitter" name="splitterHautpgaerung">
+        <widget class="QSplitter" name="splitterHauptgaerung">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -288,9 +191,6 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Hauptgaerverlauf">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Hauptgärung gibt Auskunft über die Hefearbeit und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeaktivität&lt;/span&gt;. Ziel ist es, den Endvergärungsgrad (EVG) innerhalb der Parameter der Hefe laut Herstellerangaben zu erreichen. Bei einer durchnittlichen Hefe sind dies 70%. Optimale Parameter bedeutet ein Maximum an Wirkungsgrad der jeweiligen Hefe. Werte unterhalb der Hefe-Parameter bedeuten unvergorenen Zucker und haben oft einen Fehlgeschmackzur Folge, der sich süßlich, auch Mstigkeit genannt, bemerkbar macht.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Braudaten für den Endvergärungsgrad und den Alkoholgehalt, im Tab Abfülldaten im Feld Sudhausausbeute übernommen. Die Werte der Schnellgärprobe werden primär in die genannten Felder eingetragen.&lt;/p&gt;&lt;p&gt;In allen Fällen sind aber die Werte der Hauptgärung bestimmend.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -318,195 +218,71 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QLabel" name="label_33">
-                <property name="text">
-                 <string>Datum</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DateTimeEdit" name="tbDatumHautgaerprobe">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Uhrzeit&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;So keine manuelle Eingabe erfolgt, übernimmt der Kleine Brauhelfer die Computerzeit.&lt;/p&gt;&lt;p&gt;Über den Pfeil rechts kann die Kalenderfunktion aktiviert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="calendarPopup">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_34">
-                <property name="text">
-                 <string>Restextrakt</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbSWHauptgaerprobe">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der alkoholkorrigierte &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; eingegeben. Ist der korrigierte Wert unbekannt, empfiehlt es sich den Button rechts zu nutzen.&lt;/p&gt;&lt;p&gt;Die Korrektur der alkoholbedingten Abweichung lässt sich mit Formeln wie der des US-Amerikaners Sean Terrill auch manuell berechnen. Die Fachliteratur und die Theorieteile von Rezeptesammlungen tauchen hier tief in die Materie ein.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Auf alle Fälle ist im Feld Restextrakt &lt;span style=&quot; font-weight:600;&quot;&gt;nicht direkt&lt;/span&gt; der Wert der Bierspindel einzutragen oder die auf Plato umgerechnete Messung des Refraktometers. Dies führte zu erheblichen Messfehlern und Fehlinterpretationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_4">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>°P</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_163">
-                <property name="text">
-                 <string>Temperatur</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbTempHauptgaerprobe">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; der Hauptgärung angegeben.&lt;/p&gt;&lt;p&gt;Üblicherweise soll der vom Hersteller empfohlene &lt;span style=&quot; font-weight:600;&quot;&gt;Temperaturkorridor&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Hefearbeit&lt;/span&gt; eingehalten werden. &lt;/p&gt;&lt;p&gt;Zusätzlich können über eine ausgeklügelte Gärführung bestimmte Aromaprofile von Hefen verstärkt oder abgeschwächt werden. Näheres ist hierzu in der Fachliteratur oder Fachforen in Erfahrung zu bringen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_5">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>°C</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btnSWHauptgaerverlauf">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;Messfehler&lt;/span&gt; von Bierspindel und Refraktometer und berechnet den korrekten Restextrakt anhand der aktuell gemessenen Temperatur.&lt;/p&gt;&lt;p&gt;Bei Messung des Extraktgehalts eines alkoholhaltigen Jungbiers mit dem Refraktometer wird der Wert durch den Alkohol verfälscht. Wenn die ursprüngliche Stammwürze bekannt ist, kann man diesen Fehler korrigieren.&lt;/p&gt;&lt;p&gt;Zur Beachtung: Eine höhere Temperatur im Gärgefäß im Vergleich zur Außentemperatur ist während größerer Hefeaktivität um 1°C bis 2°C durchaus üblich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string notr="true">...</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QPushButton" name="btnAddHauptgaerMessung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string>Messung hinzufügen</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnDelHauptgaerMessung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="btnImportHauptgaerIspindel">
-                <property name="inputMethodHints">
-                 <set>Qt::ImhNone</set>
-                </property>
                 <property name="text">
                  <string>Import iSpindel</string>
-                </property>
-                <property name="default">
-                 <bool>false</bool>
-                </property>
-                <property name="flat">
-                 <bool>false</bool>
                 </property>
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_68">
+               <spacer name="horizontalSpacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>18</width>
+                  <width>40</width>
                   <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
-              <item>
-               <widget class="QPushButton" name="btnDelHauptgaerMessung">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string>Messung löschen</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="wdgEditHauptgaerung2" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_22">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
               <item>
                <widget class="QWidget" name="widget_EwzZugeben" native="true">
                 <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -522,6 +298,13 @@
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <widget class="Line" name="line">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                  </widget>
+                 </item>
                  <item>
                   <widget class="QLabel" name="label_3">
                    <property name="text">
@@ -546,22 +329,6 @@
                    </property>
                   </widget>
                  </item>
-                 <item>
-                  <spacer name="horizontalSpacer_2">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Expanding</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>100</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
                 </layout>
                </widget>
               </item>
@@ -581,20 +348,11 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <spacer name="horizontalSpacer_16">
+                  <widget class="Line" name="line_2">
                    <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
+                    <enum>Qt::Vertical</enum>
                    </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Expanding</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>100</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_70">
@@ -637,9 +395,12 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>814</width>
-        <height>604</height>
+        <width>796</width>
+        <height>583</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nachgärung ist die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Phase &lt;/span&gt;der Gärung. Um den gewünschten Kohlendioxidgehalt im Bier zu erreichen, muss die Nachgärung unter Druck stattfinden. Dazu wird das Jungbier in druckfeste Behälter (Drucktanks, Fässer oder Flaschen) geschlaucht. Von Interesse ist in der Nachgärung nur noch der Druck und gelöstes Kohlendioxid.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <attribute name="label">
        <string>Nachgärung</string>
@@ -668,9 +429,6 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Nachgaerverlauf">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nachgärung ist die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Phase &lt;/span&gt;der Gärung. Um den gewünschten Kohlendioxidgehalt im Bier zu erreichen, muss die Nachgärung unter Druck stattfinden. Dazu wird das Jungbier in druckfeste Behälter (Drucktanks, Fässer oder Flaschen) geschlaucht. Von Interesse ist in der Nachgärung nur noch der Druck und gelöstes Kohlendioxid.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -698,122 +456,48 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QLabel" name="label_35">
-                <property name="text">
-                 <string>Datum</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DateTimeEdit" name="tbDatumNachgaerprobe">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Uhrzeit&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;So keine manuelle Eingabe erfolgt, übernimmt der Kleine Brauhelfer die Computerzeit.&lt;/p&gt;&lt;p&gt;Über den Pfeil rechts kann die Kalenderfunktion aktiviert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="calendarPopup">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_36">
-                <property name="text">
-                 <string>Druck</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbNachgaerdruck">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Druck&lt;/span&gt; in bar angegeben.&lt;/p&gt;&lt;p&gt;Die Werte erhält man von einem Fass- oder Flaschenmanometer oder dem &lt;span style=&quot; font-weight:600;&quot;&gt;Manometer&lt;/span&gt; an einer Spundapparatur.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="singleStep">
-                 <double>0.010000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_6">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>bar</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_79">
-                <property name="text">
-                 <string>Temperatur</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbNachgaertemp">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; in Fass, Flasche oder anderem Gebinde angegeben, das bei der Nachgärung eingesetzt wird.&lt;/p&gt;&lt;p&gt;Druck ist temperaturabhängig. Bei niedrigeren Temperaturen bindet sich &lt;span style=&quot; font-weight:600;&quot;&gt;Kohlendioxid&lt;/span&gt; besser im Jungbier.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_7">
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>°C</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QPushButton" name="btnAddNachgaerMessung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string>Messung hinzufügen</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnDelNachgaerMessung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -830,16 +514,6 @@
                 </property>
                </spacer>
               </item>
-              <item>
-               <widget class="QPushButton" name="btnDelNachgaerMessung">
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="text">
-                 <string>Messung löschen</string>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
            </item>
@@ -855,19 +529,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DateTimeEdit</class>
-   <extends>QDateTimeEdit</extends>
-   <header>widgets/datetimeedit.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -883,17 +547,8 @@
  </customwidgets>
  <tabstops>
   <tabstop>tableWidget_Schnellgaerverlauf</tabstop>
-  <tabstop>tbDatumSchnellgaerprobe</tabstop>
-  <tabstop>tbSWSchnellgaerprobe</tabstop>
-  <tabstop>tbTempSchnellgaerprobe</tabstop>
-  <tabstop>btnSWSchnellgaerverlauf</tabstop>
   <tabstop>btnAddSchnellgaerMessung</tabstop>
-  <tabstop>btnDelSchnellgaerMessung</tabstop>
   <tabstop>tableWidget_Hauptgaerverlauf</tabstop>
-  <tabstop>tbDatumHautgaerprobe</tabstop>
-  <tabstop>tbSWHauptgaerprobe</tabstop>
-  <tabstop>tbTempHauptgaerprobe</tabstop>
-  <tabstop>btnSWHauptgaerverlauf</tabstop>
   <tabstop>btnAddHauptgaerMessung</tabstop>
   <tabstop>btnDelHauptgaerMessung</tabstop>
   <tabstop>comboBox_GaerungEwzAuswahl</tabstop>
@@ -901,12 +556,10 @@
   <tabstop>comboBox_GaerungEwzAuswahlEntnahme</tabstop>
   <tabstop>btnGaerungEwzEntnehmen</tabstop>
   <tabstop>tableWidget_Nachgaerverlauf</tabstop>
-  <tabstop>tbDatumNachgaerprobe</tabstop>
-  <tabstop>tbNachgaerdruck</tabstop>
-  <tabstop>tbNachgaertemp</tabstop>
   <tabstop>btnAddNachgaerMessung</tabstop>
-  <tabstop>btnDelNachgaerMessung</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

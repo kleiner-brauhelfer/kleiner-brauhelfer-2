@@ -28,7 +28,7 @@ QWidget* DateDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem 
 void DateDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QDateEdit *w = static_cast<QDateEdit*>(editor);
-    w->setDateTime(index.model()->data(index, Qt::EditRole).toDateTime());
+    w->setDateTime(index.data(Qt::EditRole).toDateTime());
 }
 
 void DateDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
@@ -50,7 +50,7 @@ void DateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
     opt.displayAlignment = Qt::AlignCenter;
     if (mExpiredRed)
     {
-        if (QDate::currentDate().daysTo(index.model()->data(index).toDate()) < 0)
+        if (QDate::currentDate().daysTo(index.data(Qt::DisplayRole).toDate()) < 0)
             painter->fillRect(opt.rect, gSettings->ErrorBase);
     }
     QStyledItemDelegate::paint(painter, opt, index);

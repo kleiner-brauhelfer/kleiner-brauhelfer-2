@@ -2,9 +2,8 @@ body {
   font-family: Arial;
   font-size: 10pt;
   background-color: #191919;
-  color: #ffffff;
+  color: #dddddd;
 }
-
 
 body::-webkit-scrollbar {
     width: 1em;
@@ -28,6 +27,7 @@ div.r {
   padding: 6px;
   margin-bottom: 10px;
   background-color: #353535;
+  page-break-inside: avoid;
 }
 
 div.rm {
@@ -35,6 +35,7 @@ div.rm {
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 5px;
+  page-break-inside: avoid;
 }
 
 h1 {
@@ -101,6 +102,38 @@ img.star_grey {
 }
 
 .kommentar {
-  color: #555555;
+  color: #999999;
   word-wrap: break-word;
+}
+
+.bg_malz {
+  /*background-color: #56563D;*/
+}
+
+.bg_hopfen {
+  /*background-color: #274916;*/
+}
+
+.bg_hefe {
+  /*background-color: #44310D;*/
+}
+
+.bg_zusatz {
+  /*background-color: #5E5460;*/
+}
+
+.bg_wasser {
+  /*background-color: #DDF2FF;*/
+}
+
+.bg_kommentar {
+  /*background-color: #F0F0F0;*/
+}
+
+.bg_rasten {
+  /*background-color: #CEDBFF;*/
+}
+
+.bg_anhaenge {
+  /*background-color: #565656;*/
 }

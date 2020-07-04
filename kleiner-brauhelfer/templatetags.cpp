@@ -3,8 +3,10 @@
 #include <QLocale>
 #include <QCoreApplication>
 #include <QDir>
+#include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "tabrohstoffe.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer* bh;
@@ -45,7 +47,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         if (parts & TagRezept)
         {
             int ival;
-            double fval;
+            double fval, A, h;
             QVariantMap ctxRezept;
             ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
             fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_Malz).toDouble();
@@ -61,11 +63,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             if (fval > 0)
                 ctxRezept["SW_WZ_Gaerung"] = locale.toString(fval, 'f', 1);
             ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMenge).toDouble(), 'f', 1);
+            ctxRezept["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAlkohol).toDouble(), 'f', 1);
             ctxRezept["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIBU).toInt());
             ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
             ctxRezept["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
             ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toDouble())).name();
-            ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt());
+            ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt());
             ival = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
             if (ival > 0)
                 ctxRezept["Nachisomerisierung"] = QString::number(ival);
@@ -73,33 +76,51 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             if (ival > 0)
                 ctxRezept["HighGravityFaktor"] = QString::number(ival);
             ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
+            ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
+            ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
+            ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
+            ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
+            fval = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
+            ctxRezept["MengeMaischen"] = locale.toString(fval, 'f', 1);
+            A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+            h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+            ctxRezept["MengeMaischenUnten"] = locale.toString(fval / A, 'f', 1);
+            ctxRezept["MengeMaischenOben"] = locale.toString(h - fval / A, 'f', 1);
             ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
             ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
-            ctxRezept["EinmaischenTemp"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColEinmaischenTemp).toInt());
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
             ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
-            ctxRezept["MengeKochbeginn100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, fval), 'f', 1);
+            fval = BierCalc::volumenWasser(20.0, 100.0, fval);
+            ctxRezept["MengeKochbeginn100"] = locale.toString(fval, 'f', 1);
+            A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+            h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+            ctxRezept["MengeKochbeginn100Unten"] = locale.toString(fval / A, 'f', 1);
+            ctxRezept["MengeKochbeginn100Oben"] = locale.toString(h - fval / A, 'f', 1);
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochende).toDouble();
             ctxRezept["MengeKochende"] = locale.toString(fval, 'f', 1);
-            ctxRezept["MengeKochende100"] = locale.toString(BierCalc::volumenWasser(20.0, 100.0, fval), 'f', 1);
+            fval = BierCalc::volumenWasser(20.0, 100.0, fval);
+            ctxRezept["MengeKochende100"] = locale.toString(fval, 'f', 1);
+            ctxRezept["MengeKochende100Unten"] = locale.toString(fval / A, 'f', 1);
+            ctxRezept["MengeKochende100Oben"] = locale.toString(h - fval / A, 'f', 1);
             ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble(), 'f', 1);
             ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble(), 'f', 1);
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
             ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
+            ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
             ctx["Rezept"] = ctxRezept;
         }
 
         if (parts & TagSud)
         {
             QVariantMap ctxSud;
-            int status = bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt();
-            ctxSud["Status"] = QString::number(status);
-            ctxSud["StatusRezept"] = status == Sud_Status_Rezept ? "1" : "";
-            ctxSud["StatusGebraut"] = status == Sud_Status_Gebraut ? "1" : "";
-            ctxSud["StatusAbgefuellt"] = status == Sud_Status_Abgefuellt ? "1" : "";
-            ctxSud["StatusVerbraucht"] = status == Sud_Status_Verbraucht ? "1" : "";
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
+            ctxSud["Status"] = QString::number(static_cast<int>(status));
+            ctxSud["StatusRezept"] = status == Brauhelfer::SudStatus::Rezept ? "1" : "";
+            ctxSud["StatusGebraut"] = status == Brauhelfer::SudStatus::Gebraut ? "1" : "";
+            ctxSud["StatusAbgefuellt"] = status == Brauhelfer::SudStatus::Abgefuellt ? "1" : "";
+            ctxSud["StatusVerbraucht"] = status == Brauhelfer::SudStatus::Verbraucht ? "1" : "";
             ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
             ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
             ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());
@@ -116,12 +137,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["Bewertung"] = QString::number(bewertung);
             if (bewertung > 0)
             {
-                if (bewertung > Bewertung_MaxSterne)
-                    bewertung = Bewertung_MaxSterne;
+                if (bewertung > 5)
+                    bewertung = 5;
                 QString s = "";
                 for (int i = 0; i < bewertung; i++)
                     s += "<img class='star' width='24'>";
-                for (int i = bewertung; i < Bewertung_MaxSterne; i++)
+                for (int i = bewertung; i < 5; i++)
                     s += "<img class='star_grey' width='24'>";
                 ctxSud["BewertungSterne"] = s;
             }
@@ -133,16 +154,47 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         {
             if (parts & TagBraudaten)
             {
-                int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauerNachBitterhopfung).toInt();
+                int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt();
 
                 QVariantList liste;
                 ProxyModel *model = bh->sud()->modelRasten();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
+                    int temp;
                     QVariantMap map;
                     map["Name"] = model->data(row, ModelRasten::ColName).toString();
                     map["Temp"] = QString::number(model->data(row, ModelRasten::ColTemp).toInt());
                     map["Dauer"] = QString::number(model->data(row, ModelRasten::ColDauer).toInt());
+                    map["Menge"] = locale.toString(model->data(row, ModelRasten::ColMenge).toDouble(), 'f', 1);
+                    switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelRasten::ColTyp).toInt()))
+                    {
+                    case Brauhelfer::RastTyp::Einmaischen:
+                        map["Einmaischen"] = true;
+                        map["WasserTemp"] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Temperatur:
+                        map["Rast"] = true;
+                        break;
+                    case Brauhelfer::RastTyp::Infusion:
+                        map["Infusion"] = true;
+                        map["WasserTemp"] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Dekoktion:
+                        map["Dekoktion"] = true;
+                        temp = model->data(row, ModelRasten::ColParam2).toInt();
+                        if (temp > 0)
+                        {
+                            map["TeilmaischeRastTemp"] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                            map["TeilmaischeRastDauer"] = QString::number(temp);
+                        }
+                        temp = model->data(row, ModelRasten::ColParam4).toInt();
+                        if (temp > 0)
+                        {
+                            map["TeilmaischeZusatzRastTemp"] = QString::number(model->data(row, ModelRasten::ColParam3).toInt());
+                            map["TeilmaischeZusatzRastDauer"] = QString::number(temp);
+                        }
+                        break;
+                    }
                     liste << map;
                 }
                 if (!liste.empty())
@@ -160,17 +212,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     mapWasser["Verduennung"] = locale.toString(f3, 'f', 1);
                 }
                 mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 1);
-                double restalkalitaetFaktor = bh->sud()->getRestalkalitaetFaktor();
-                if (restalkalitaetFaktor > 0)
-                {
-                    mapWasser["HauptgussMilchsaeure"] = QString::number(f1 * restalkalitaetFaktor, 'f', 1);
-                    mapWasser["NachgussMilchsaeure"] = QString::number(f2 * restalkalitaetFaktor, 'f', 1);
-                    if (bh->sud()->gethighGravityFaktor() != 0)
-                        mapWasser["VerduennungMilchsaeure"] = QString::number(f3 * restalkalitaetFaktor, 'f', 1);
-                    mapWasser["GesamtMilchsaeure"] = QString::number((f1 + f2 + f3) * restalkalitaetFaktor, 'f', 1);
-                }
                 ctx["Wasser"] = mapWasser;
-
 
                 QVariantMap ctxZutaten;
 
@@ -196,15 +238,18 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     int dauer = model->data(row, ModelHopfengaben::ColZeit).toInt();
                     int duaerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
                     map.insert("Name", model->data(row, ModelHopfengaben::ColName));
+                    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map["Name"], ModelHopfen::ColTyp).toInt();
+                    if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
+                        map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
                     map.insert("Prozent", locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
-                    map.insert("Menge", QString::number(model->data(row, ModelHopfengaben::Colerg_Menge).toInt()));
+                    map.insert("Menge", locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
                     map.insert("Kochdauer", QString::number(dauer));
                     map.insert("ZugabeNach", QString::number(kochDauer - dauer));
                     map.insert("Alpha", locale.toString(model->data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1));
                     if (model->data(row, ModelHopfengaben::ColVorderwuerze).toBool())
                     {
                         map.insert("Vorderwuerze", true);
-                        ctxZutaten["ZutatenVorderwuerze"] = true;
+                        ctxZutaten["HatVorderwuerzehopfen"] = true;
                     }
                     else if (dauer == 0)
                     {
@@ -235,6 +280,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 {
                     QVariantMap map;
                     map.insert("Name", model->data(row, ModelHefegaben::ColName));
+                    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map["Name"], ModelHefe::ColTypOGUG).toInt();
+                    if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
+                        map.insert("Typ", TabRohstoffe::HefeTypname[idx]);
                     map.insert("Menge", model->data(row, ModelHefegaben::ColMenge).toInt());
                     if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert("Status", QObject::tr("zugegeben"));
@@ -247,115 +295,102 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 if (!liste.empty())
                     ctxZutaten["Hefe"] = QVariantMap({{"Liste", liste}});
 
-                QVariantList listeHonig;
-                QVariantList listeZucker;
-                QVariantList listeGewuerz;
-                QVariantList listeFrucht;
-                QVariantList listeSonstiges;
+                QVariantList listeZusatz;
                 QVariantList listeHopfen;
                 model = bh->sud()->modelWeitereZutatenGaben();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
                     QVariantMap map;
                     int ival;
-
                     map.insert("Name", model->data(row, ModelWeitereZutatenGaben::ColName));
-                    switch (model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt())
+                    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+                    map.insert("Einheit", TabRohstoffe::Einheiten[static_cast<int>(einheit)]);
+                    switch (einheit)
                     {
-                    case EWZ_Einheit_Kg:
+                    case Brauhelfer::Einheit::Kg:
                         map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
-                        map.insert("Einheit", QObject::tr("kg"));
                         break;
-                    case EWZ_Einheit_g:
-                        map.insert("Menge", QString::number(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toInt()));
-                        map.insert("Einheit", QObject::tr("g"));
+                    case Brauhelfer::Einheit::g:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
                         break;
-                    case EWZ_Einheit_mg:
-                        map.insert("Menge", QString::number((int)(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000)));
-                        map.insert("Einheit", QObject::tr("mg"));
+                    case Brauhelfer::Einheit::mg:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 2));
                         break;
-                    case EWZ_Einheit_Stk:
-                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 1));
-                        map.insert("Einheit", QObject::tr("Stk."));
+                    case Brauhelfer::Einheit::Stk:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::l:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::ml:
+                        map.insert("Menge", locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
                         break;
                     }
-                    switch (model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt())
+                    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+                    Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
+                    Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+                    switch (zeitpunkt)
                     {
-                    case EWZ_Zeitpunkt_Gaerung:
+                    case Brauhelfer::ZusatzZeitpunkt::Gaerung:
                         map.insert("Gaerung", true);
                         map.insert("ZugabeNach", QString::number(model->data(row, ModelWeitereZutatenGaben::ColZugabeNach).toInt()));
                         map.insert("ZugabeDatum", locale.toString(model->data(row, ModelWeitereZutatenGaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
                         map.insert("EntnahmeDatum", locale.toString(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeDatum).toDate(), QLocale::ShortFormat));
-                        if (model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt() == EWZ_Entnahmeindex_MitEntnahme)
+                        if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
                         {
                             map.insert("Entnahme", true);
                             map.insert("Dauer", model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt() / 1440);
                         }
-                        switch (model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt())
+                        switch (status)
                         {
-                        case EWZ_Zugabestatus_nichtZugegeben:
+                        case Brauhelfer::ZusatzStatus::NichtZugegeben:
                             map.insert("Status", QObject::tr("nicht zugegeben"));
                             break;
-                        case EWZ_Zugabestatus_Zugegeben:
-                            if (model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt() == EWZ_Entnahmeindex_MitEntnahme)
+                        case Brauhelfer::ZusatzStatus::Zugegeben:
+                            if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
                                 map.insert("Status", QObject::tr("nicht entnommen"));
                             else
                                 map.insert("Status", QObject::tr("zugegeben"));
                             break;
-                        case EWZ_Zugabestatus_Entnommen:
+                        case Brauhelfer::ZusatzStatus::Entnommen:
                             map.insert("Status", QObject::tr("entnommen"));
                             break;
                         }
-                        if (model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen)
-                            ctxZutaten["ZutatenHopfenstopfen"] = true;
+                        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+                            ctxZutaten["HatKalthopfen"] = true;
                         else
-                            ctxZutaten["ZutatenGaerung"] = true;
+                            ctxZutaten["HatZusatzGaerung"] = true;
                         break;
-                    case EWZ_Zeitpunkt_Kochen:
+                    case Brauhelfer::ZusatzZeitpunkt::Kochen:
                         map.insert("Kochen", true);
                         ival =  model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt();
                         map.insert("Kochdauer", ival);
                         map.insert("ZugabeNach", QString::number(kochDauer - ival));
-                        ctxZutaten["ZutatenKochen"] = true;
+                        ctxZutaten["HatZusatzKochen"] = true;
                         break;
-                    case EWZ_Zeitpunkt_Maischen:
+                    case Brauhelfer::ZusatzZeitpunkt::Maischen:
                         map.insert("Maischen", true);
-                        ctxZutaten["ZutatenMaischen"] = true;
+                        ctxZutaten["HatZusatzMaischen"] = true;
                         break;
                     }
-                    map.insert("Bemerkung", model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString());
-                    switch (model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt())
+                    QString str = model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map.insert("Bemerkung", str);
+                    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
-                    case EWZ_Typ_Honig:
-                        listeHonig << map;
-                        break;
-                    case EWZ_Typ_Zucker:
-                        listeZucker << map;
-                        break;
-                    case EWZ_Typ_Gewuerz:
-                        listeGewuerz << map;
-                        break;
-                    case EWZ_Typ_Frucht:
-                        listeFrucht << map;
-                        break;
-                    case EWZ_Typ_Sonstiges:
-                        listeSonstiges << map;
-                        break;
-                    case EWZ_Typ_Hopfen:
+                        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map["Name"], ModelHopfen::ColTyp).toInt();
+                        map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
                         listeHopfen << map;
-                        break;
+                    }
+                    else
+                    {
+                        map.insert("Typ", TabRohstoffe::ZusatzTypname[static_cast<int>(typ)]);
+                        listeZusatz << map;
                     }
                 }
-                if (!listeHonig.empty())
-                    ctxZutaten["Honig"] = QVariantMap({{"Liste", listeHonig}});
-                if (!listeZucker.empty())
-                    ctxZutaten["Zucker"] = QVariantMap({{"Liste", listeZucker}});
-                if (!listeGewuerz.empty())
-                    ctxZutaten["Gewuerz"] = QVariantMap({{"Liste", listeGewuerz}});
-                if (!listeFrucht.empty())
-                    ctxZutaten["Frucht"] = QVariantMap({{"Liste", listeFrucht}});
-                if (!listeSonstiges.empty())
-                    ctxZutaten["Sonstiges"] = QVariantMap({{"Liste", listeSonstiges}});
+                if (!listeZusatz.empty())
+                    ctxZutaten["Zusatz"] = QVariantMap({{"Liste", listeZusatz}});
                 if (!listeHopfen.empty())
                     ctxZutaten["Kalthopfen"] = QVariantMap({{"Liste", listeHopfen}});
 

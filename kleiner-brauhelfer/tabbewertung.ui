@@ -37,8 +37,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>158</width>
-            <height>604</height>
+            <width>163</width>
+            <height>605</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -79,7 +79,7 @@
        <item>
         <widget class="QPushButton" name="btnNeueBewertung">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>Neue Bewertung</string>
@@ -88,993 +88,997 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="wdgBewertung" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout_96">
-       <property name="spacing">
-        <number>4</number>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>854</width>
+         <height>640</height>
+        </rect>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Bewertungsdatum</string>
-           </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Bewertungsdatum</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="DateEdit" name="tbDatum">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann das &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertungsdatum&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Das Datum einer einmal angelegten Bewertung kann nicht mehr geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDatumHeute">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Heute&lt;/span&gt; wird das Bewertungsdatum übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>Heute</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Woche</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblWoche">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="WdgRating" name="wdgRating" native="true"/>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="tbBemerkung">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zur Bewertungssituation und zum Anlass.&lt;/p&gt;&lt;p&gt;Äußere Bedingungen können das Geschmackserleben und damit die Bewertung beeinflussen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_3">
+           <attribute name="title">
+            <string>Farbe, Klarheit</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_99">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_152">
+              <item>
+               <widget class="QGroupBox" name="groupBox_34">
+                <property name="title">
+                 <string>Farbe</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_98">
+                 <property name="spacing">
+                  <number>4</number>
+                 </property>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_4">
+                   <property name="text">
+                    <string>hellgelb, lichthell</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_5">
+                   <property name="text">
+                    <string>gelb</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_6">
+                   <property name="text">
+                    <string>golden</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_7">
+                   <property name="text">
+                    <string>bernstein</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_8">
+                   <property name="text">
+                    <string>kupferrot, bernsteinfarben</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_9">
+                   <property name="text">
+                    <string>braun bis tiefbraun</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_10">
+                   <property name="text">
+                    <string>schwarz, tiefdunkel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_31">
+                <property name="title">
+                 <string>Klarheit</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_0">
+                   <property name="text">
+                    <string>satt, intensiv</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_1">
+                   <property name="text">
+                    <string>glänzend</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_2">
+                   <property name="text">
+                    <string>matt, blass</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_3">
+                   <property name="text">
+                    <string>gräulich, fahl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_10">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbFarbe">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zu Farbe und Klarheit.&lt;/p&gt;&lt;p&gt;Im Blickpunkt kann die sortentypische Farbe des Bieres stehen.&lt;/p&gt;&lt;p&gt;Beispiele: Ein Altbier wird falsch erscheinen, wenn es strohgelb ist. Ein goldbraunes Pilsbier ist sortenuntypisch. Falsch würde ein Hefeweizen beurteilt, das kristallklar und durchsichtig ist. Neben der Farbe wird also auch die Klarheit des Bieres wahrgenommen.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <widget class="DateEdit" name="tbDatum">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann das &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertungsdatum&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Das Datum einer einmal angelegten Bewertung kann nicht mehr geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="calendarPopup">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnDatumHeute">
-           <property name="minimumSize">
-            <size>
-             <width>50</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>50</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Heute&lt;/span&gt; wird das Bewertungsdatum übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Heute</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Woche</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lblWoche">
-           <property name="minimumSize">
-            <size>
-             <width>50</width>
-             <height>0</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="WdgRating" name="wdgRating" native="true"/>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QTextEdit" name="tbBemerkung">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zur Bewertungssituation und zum Anlass.&lt;/p&gt;&lt;p&gt;Äußere Bedingungen können das Geschmackserleben und damit die Bewertung beeinflussen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTabWidget" name="tabWidget">
-         <property name="currentIndex">
-          <number>0</number>
-         </property>
-         <widget class="QWidget" name="tab_3">
-          <attribute name="title">
-           <string>Farbe, Klarheit</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_99">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_152">
-             <item>
-              <widget class="QGroupBox" name="groupBox_34">
-               <property name="title">
-                <string>Farbe</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_98">
+          <widget class="QWidget" name="tab_4">
+           <attribute name="title">
+            <string>Schaum</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_105">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_154">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_104">
                 <property name="spacing">
                  <number>4</number>
                 </property>
                 <item>
-                 <widget class="QRadioButton" name="rbFarbe_4">
-                  <property name="text">
-                   <string>hellgelb, lichthell</string>
-                  </property>
+                 <widget class="QGroupBox" name="groupBox_35">
+                  <layout class="QVBoxLayout" name="verticalLayout_100">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_0">
+                     <property name="text">
+                      <string>feinporig, fest</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_1">
+                     <property name="text">
+                      <string>grobporig, schwach</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QRadioButton" name="rbFarbe_5">
-                  <property name="text">
-                   <string>gelb</string>
-                  </property>
+                 <widget class="QGroupBox" name="groupBox_36">
+                  <layout class="QVBoxLayout" name="verticalLayout_101">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_2">
+                     <property name="text">
+                      <string>gut haftend am Glas</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_3">
+                     <property name="text">
+                      <string>schlecht haftend</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_6">
-                  <property name="text">
-                   <string>golden</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_7">
-                  <property name="text">
-                   <string>bernstein</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_8">
-                  <property name="text">
-                   <string>kupferrot, bernsteinfarben</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_9">
-                  <property name="text">
-                   <string>braun bis tiefbraun</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_10">
-                  <property name="text">
-                   <string>schwarz, tiefdunkel</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
-              </widget>
-             </item>
-             <item>
-              <widget class="QGroupBox" name="groupBox_31">
-               <property name="title">
-                <string>Klarheit</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_2">
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
                 <item>
-                 <widget class="QRadioButton" name="rbFarbe_0">
-                  <property name="text">
-                   <string>satt, intensiv</string>
-                  </property>
+                 <widget class="QGroupBox" name="groupBox_38">
+                  <layout class="QVBoxLayout" name="verticalLayout_103">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_4">
+                     <property name="text">
+                      <string>gute Haltbarkeit</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_5">
+                     <property name="text">
+                      <string>mässige Haltbarkeit</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_6">
+                     <property name="text">
+                      <string>keine Haltbarkeit</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_1">
-                  <property name="text">
-                   <string>glänzend</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_2">
-                  <property name="text">
-                   <string>matt, blass</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="rbFarbe_3">
-                  <property name="text">
-                   <string>gräulich, fahl</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_10">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbFarbe">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zu Farbe und Klarheit.&lt;/p&gt;&lt;p&gt;Im Blickpunkt kann die sortentypische Farbe des Bieres stehen.&lt;/p&gt;&lt;p&gt;Beispiele: Ein Altbier wird falsch erscheinen, wenn es strohgelb ist. Ein goldbraunes Pilsbier ist sortenuntypisch. Falsch würde ein Hefeweizen beurteilt, das kristallklar und durchsichtig ist. Neben der Farbe wird also auch die Klarheit des Bieres wahrgenommen.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_4">
-          <attribute name="title">
-           <string>Schaum</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_105">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_154">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_104">
-               <property name="spacing">
-                <number>4</number>
-               </property>
-               <item>
-                <widget class="QGroupBox" name="groupBox_35">
-                 <layout class="QVBoxLayout" name="verticalLayout_100">
-                  <property name="spacing">
-                   <number>4</number>
-                  </property>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_0">
-                    <property name="text">
-                     <string>feinporig, fest</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_1">
-                    <property name="text">
-                     <string>grobporig, schwach</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_36">
-                 <layout class="QVBoxLayout" name="verticalLayout_101">
-                  <property name="spacing">
-                   <number>4</number>
-                  </property>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_2">
-                    <property name="text">
-                     <string>gut haftend am Glas</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_3">
-                    <property name="text">
-                     <string>schlecht haftend</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_3">
-               <item>
-                <widget class="QGroupBox" name="groupBox_38">
-                 <layout class="QVBoxLayout" name="verticalLayout_103">
-                  <property name="spacing">
-                   <number>4</number>
-                  </property>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_4">
-                    <property name="text">
-                     <string>gute Haltbarkeit</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_5">
-                    <property name="text">
-                     <string>mässige Haltbarkeit</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_6">
-                    <property name="text">
-                     <string>keine Haltbarkeit</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_4">
-               <item>
-                <widget class="QGroupBox" name="groupBox_37">
-                 <layout class="QVBoxLayout" name="verticalLayout_102">
-                  <property name="spacing">
-                   <number>4</number>
-                  </property>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_7">
-                    <property name="text">
-                     <string>geringes Volumen</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_8">
-                    <property name="text">
-                     <string>kräftiges Volumen</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_9">
-                    <property name="text">
-                     <string>sehr voluminös, mächtig</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="rbSchaum_10">
-                    <property name="text">
-                     <string>überschäumend</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbSchaum">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Schaum.&lt;/p&gt;&lt;p&gt;Die Bewertung von Schaum orientiert sich oft anhand der Biersorte.&lt;/p&gt;&lt;p&gt;Beispielsweise haben Starkbiere in der Regel eine gute Schaumhaltbarkeit. Das eigentliche Trinkvergnügen bei einem Starkbier liegt aber im langsamen Schlürfen des Bieres, nicht im sich Durchtrinken durch den malzsüßen Schaum. Beim Pils wiederum ruft der Schaum besonders angenehme taktile Sensationen an Zunge und Gaumen hervor. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_5">
-          <attribute name="title">
-           <string>Geruch</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_109">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="0">
-              <widget class="QCheckBox" name="rbGeruch_0">
-               <property name="text">
-                <string>rein, abgerundet</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QCheckBox" name="rbGeruch_2">
-               <property name="text">
-                <string>wohlriechend</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QCheckBox" name="rbGeruch_3">
-               <property name="text">
-                <string>unangenehm, unausgewogen</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QCheckBox" name="rbGeruch_1">
-               <property name="text">
-                <string>frisch</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QCheckBox" name="rbGeruch_11">
-               <property name="text">
-                <string>Geruchsfehler</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QCheckBox" name="rbGeruch_10">
-               <property name="text">
-                <string>säuerlich</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QCheckBox" name="rbGeruch_9">
-               <property name="text">
-                <string>gewürzig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QCheckBox" name="rbGeruch_8">
-               <property name="text">
-                <string>fruchtig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QCheckBox" name="rbGeruch_4">
-               <property name="text">
-                <string>hopfenaromatisch, hopfig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QCheckBox" name="rbGeruch_5">
-               <property name="text">
-                <string>malzaromatisch, malzig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QCheckBox" name="rbGeruch_6">
-               <property name="text">
-                <string>süsslich, nach Würze</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QCheckBox" name="rbGeruch_7">
-               <property name="text">
-                <string>hefig</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbGeruch">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geruch.&lt;/p&gt;&lt;p&gt;Beispiele: Der Geruch eines Bieres sollte sortentypisch sein, das heißt bei Weizenbieren ist ein fruchtiger bis esteriger Geruch erlaubt, während dieser bei Pils-bieren rundweg abzulehnen ist.&lt;/p&gt;&lt;p&gt;Zuerst riecht man am Schaum. Riecht er angenehm nach Bier, hefig oder nach Fass? Wenn der Schaum muffig, abgestanden oder nach feuchter Pappe riecht, braucht man das Bier gar nicht zu probieren, es ist nicht in Ordnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_6">
-          <attribute name="title">
-           <string>Geschmack</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_113">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <layout class="QGridLayout" name="gridLayout_2">
-             <item row="2" column="1">
-              <widget class="QCheckBox" name="rbGeschmack_7">
-               <property name="text">
-                <string>süsslich, klebrig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QCheckBox" name="rbGeschmack_1">
-               <property name="text">
-                <string>ausgewogen, rund</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QCheckBox" name="rbGeschmack_8">
-               <property name="text">
-                <string>säuerlich</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QCheckBox" name="rbGeschmack_9">
-               <property name="text">
-                <string>gewürzig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QCheckBox" name="rbGeschmack_2">
-               <property name="text">
-                <string>gehaltvoll</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QCheckBox" name="rbGeschmack_5">
-               <property name="text">
-                <string>hopfenaromatisch, hopfig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QCheckBox" name="rbGeschmack_3">
-               <property name="text">
-                <string>unausgewogen, kantig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QCheckBox" name="rbGeschmack_6">
-               <property name="text">
-                <string>malzaromatisch, malzig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QCheckBox" name="rbGeschmack_0">
-               <property name="text">
-                <string>rein</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QCheckBox" name="rbGeschmack_4">
-               <property name="text">
-                <string>unreif, unrein</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QCheckBox" name="rbGeschmack_10">
-               <property name="text">
-                <string>fruchtig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QCheckBox" name="rbGeschmack_11">
-               <property name="text">
-                <string>hefig</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QCheckBox" name="rbGeschmack_12">
-               <property name="text">
-                <string>Geschmacksfehler</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbGeschmack">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geschmack.&lt;/p&gt;&lt;p&gt;Der Biergeschmack umfasst die bei der Aufnahme des Bieres entstehenden sensorischen Eigenschaften. Es gelten dann ähnliche Beschreibungsmöglichkeiten wie beim Geruch. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_7">
-          <attribute name="title">
-           <string>Antrunk</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_95">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QGroupBox" name="groupBox_42">
-             <property name="title">
-              <string>Rezenz, Frischeeindruck</string>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_3">
-              <item row="3" column="0">
-               <widget class="QRadioButton" name="rbAntrunk_3">
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_37">
+                  <layout class="QVBoxLayout" name="verticalLayout_102">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_7">
+                     <property name="text">
+                      <string>geringes Volumen</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_8">
+                     <property name="text">
+                      <string>kräftiges Volumen</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_9">
+                     <property name="text">
+                      <string>sehr voluminös, mächtig</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_10">
+                     <property name="text">
+                      <string>überschäumend</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbSchaum">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Schaum.&lt;/p&gt;&lt;p&gt;Die Bewertung von Schaum orientiert sich oft anhand der Biersorte.&lt;/p&gt;&lt;p&gt;Beispielsweise haben Starkbiere in der Regel eine gute Schaumhaltbarkeit. Das eigentliche Trinkvergnügen bei einem Starkbier liegt aber im langsamen Schlürfen des Bieres, nicht im sich Durchtrinken durch den malzsüßen Schaum. Beim Pils wiederum ruft der Schaum besonders angenehme taktile Sensationen an Zunge und Gaumen hervor. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_5">
+           <attribute name="title">
+            <string>Geruch</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_109">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="rbGeruch_0">
                 <property name="text">
-                 <string>prickelnd</string>
+                 <string>rein, abgerundet</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="rbGeruch_2">
+                <property name="text">
+                 <string>wohlriechend</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="rbGeruch_3">
+                <property name="text">
+                 <string>unangenehm, unausgewogen</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QRadioButton" name="rbAntrunk_1">
+               <widget class="QCheckBox" name="rbGeruch_1">
                 <property name="text">
-                 <string>rezent, fein perlend</string>
+                 <string>frisch</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QRadioButton" name="rbAntrunk_0">
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="rbGeruch_11">
                 <property name="text">
-                 <string>angenehm rezent</string>
+                 <string>Geruchsfehler</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QRadioButton" name="rbAntrunk_2">
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="rbGeruch_10">
                 <property name="text">
-                 <string>gut eingebunden</string>
+                 <string>säuerlich</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="rbGeruch_9">
+                <property name="text">
+                 <string>gewürzig</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QCheckBox" name="rbGeruch_8">
+                <property name="text">
+                 <string>fruchtig</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QRadioButton" name="rbAntrunk_4">
+               <widget class="QCheckBox" name="rbGeruch_4">
                 <property name="text">
-                 <string>stark prickelnd, aufdringlich</string>
+                 <string>hopfenaromatisch, hopfig</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QRadioButton" name="rbAntrunk_5">
+               <widget class="QCheckBox" name="rbGeruch_5">
                 <property name="text">
-                 <string>wenig rezent</string>
+                 <string>malzaromatisch, malzig</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QRadioButton" name="rbAntrunk_6">
+               <widget class="QCheckBox" name="rbGeruch_6">
                 <property name="text">
-                 <string>schal</string>
+                 <string>süsslich, nach Würze</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QRadioButton" name="rbAntrunk_7">
+               <widget class="QCheckBox" name="rbGeruch_7">
                 <property name="text">
-                 <string>sehr schal</string>
+                 <string>hefig</string>
                 </property>
                </widget>
               </item>
              </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbAntrunk">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Antrunk.&lt;/p&gt;&lt;p&gt;Die Sinneswahrnehmungen des ersten Schluckes, dem Antrunk, betreffen Vollmundigkeit und Aroma des Bieres. Die Vollmundigkeit entsteht hauptsächlich durch die Eiweißverbindungen, die durch das Malz ins Bier gelangen.&lt;/p&gt;&lt;p&gt;Zum Beispiel ist ein Doppelbock besser, je vollmundiger es ist, demgegenüber sollte ein Pils „schlank“ bleiben. Ein Bier, bei dem man das Gefühl hat man  müsste sie vor dem Schlucken erst kauen ist sehr vollmundig – es „füllt“ den Mundraum. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_8">
-          <attribute name="title">
-           <string>Haupttrunk</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_116">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QGroupBox" name="groupBox_43">
-             <property name="title">
-              <string>Vollmundigkeit</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_115">
-              <property name="spacing">
-               <number>4</number>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbGeruch">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
               </property>
-              <item>
-               <widget class="QRadioButton" name="rbHaupttrunk_0">
-                <property name="text">
-                 <string>wässrig, leer, dünn</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="rbHaupttrunk_1">
-                <property name="text">
-                 <string>etwas leer</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="rbHaupttrunk_2">
-                <property name="text">
-                 <string>schlank</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="rbHaupttrunk_3">
-                <property name="text">
-                 <string>vollmundig</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="rbHaupttrunk_4">
-                <property name="text">
-                 <string>mastig, breit</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbHaupttrunk">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Haupttrunk.&lt;/p&gt;&lt;p&gt;Nach dem ersten Schluck und der Begutachtung der Schaumhaltbarkeit, kommt ein neues sensorisches Merkmal ins Bewusstsein, die sogenannte Rezenz. Das ist die Spritzigkeit des Bieres, sein Kohlensäuregehalt. &lt;/p&gt;&lt;p&gt;Bei manchen Sorten ist die Rezenz von größerer Bedeutung, so bei hellen hopfenreichen Bieren, ob sie nun Pils oder Export heißen. Bei Anderen ist sie weniger bedeutungsvoll, wie zum Beispiel bei den Starkbieren. &lt;/p&gt;&lt;p&gt;Anmerkung: Ein kohlensäurearmes Bier muss keineswegs schal schmecken, wenn es mit der richtigen Hopfengabe, einer sehr feinen Malzsüße und einer gerade noch wahrnehmbaren Säure ausgestattet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_9">
-          <attribute name="title">
-           <string>Nachtrunk</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_119">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QGroupBox" name="groupBox_44">
-             <property name="title">
-              <string>Bittere, Hopfenaroma</string>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_4">
-              <item row="4" column="0">
-               <widget class="QRadioButton" name="rbNachtrunk_3">
-                <property name="text">
-                 <string>nachhängend</string>
-                </property>
-               </widget>
-              </item>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geruch.&lt;/p&gt;&lt;p&gt;Beispiele: Der Geruch eines Bieres sollte sortentypisch sein, das heißt bei Weizenbieren ist ein fruchtiger bis esteriger Geruch erlaubt, während dieser bei Pils-bieren rundweg abzulehnen ist.&lt;/p&gt;&lt;p&gt;Zuerst riecht man am Schaum. Riecht er angenehm nach Bier, hefig oder nach Fass? Wenn der Schaum muffig, abgestanden oder nach feuchter Pappe riecht, braucht man das Bier gar nicht zu probieren, es ist nicht in Ordnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_6">
+           <attribute name="title">
+            <string>Geschmack</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_113">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_2">
               <item row="2" column="1">
-               <widget class="QRadioButton" name="rbNachtrunk_6">
+               <widget class="QCheckBox" name="rbGeschmack_7">
                 <property name="text">
-                 <string>sehr herb, kräftig betont</string>
+                 <string>süsslich, klebrig</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="rbGeschmack_1">
+                <property name="text">
+                 <string>ausgewogen, rund</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QRadioButton" name="rbNachtrunk_7">
+               <widget class="QCheckBox" name="rbGeschmack_8">
                 <property name="text">
-                 <string>nicht oder kaum wahrnehmbar</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QRadioButton" name="rbNachtrunk_5">
-                <property name="text">
-                 <string>wenig herb, unterentwickelt</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QRadioButton" name="rbNachtrunk_4">
-                <property name="text">
-                 <string>stark nachhängend</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QRadioButton" name="rbNachtrunk_1">
-                <property name="text">
-                 <string>angenehm, ausgewogen</string>
+                 <string>säuerlich</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QRadioButton" name="rbNachtrunk_8">
+               <widget class="QCheckBox" name="rbGeschmack_9">
                 <property name="text">
-                 <string>unangenehm</string>
+                 <string>gewürzig</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="rbGeschmack_2">
+                <property name="text">
+                 <string>gehaltvoll</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="rbGeschmack_5">
+                <property name="text">
+                 <string>hopfenaromatisch, hopfig</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QRadioButton" name="rbNachtrunk_2">
+               <widget class="QCheckBox" name="rbGeschmack_3">
                 <property name="text">
-                 <string>nicht anhängend</string>
+                 <string>unausgewogen, kantig</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QCheckBox" name="rbGeschmack_6">
+                <property name="text">
+                 <string>malzaromatisch, malzig</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QRadioButton" name="rbNachtrunk_0">
+               <widget class="QCheckBox" name="rbGeschmack_0">
                 <property name="text">
-                 <string>sehr fein</string>
+                 <string>rein</string>
                 </property>
                </widget>
               </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbNachtrunk">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Nachtrunk.&lt;/p&gt;&lt;p&gt;Unter Nachtrunk wird der sogenannte Abgang und der bleibende Nachgeschmack verstanden.&lt;/p&gt;&lt;p&gt;Den Nachtrunk empfindet man nach dem Absetzen des Glases, wen sich nach dem ersten kritischen Schluck die Bittere bemerkbar macht. Ein mehr oder weniger feiner oder starker bitterer Geschmack breitet sich nun besonders im Hintergaumen aus.&lt;/p&gt;&lt;p&gt;Er ist der Geschmackseindruck, der am längsten bleibt. Er darf auf keinen Fall „nachhängen“, kratzig, gallig oder hefig wirken. Bei allen Bieren sollte die Bittere zumindest kurz auf dem Gaumen spürbar sein, sie darf aber auch nicht zu stark nachhängen, wenn man zwei-, dreimal schlucken muss. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-         <widget class="QWidget" name="tab_10">
-          <attribute name="title">
-           <string>Gesamteindruck</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_121">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="QGroupBox" name="groupBox_45">
-             <layout class="QGridLayout" name="gridLayout_5">
               <item row="4" column="0">
-               <widget class="QRadioButton" name="rbGesamteindruck_3">
+               <widget class="QCheckBox" name="rbGeschmack_4">
                 <property name="text">
-                 <string>überraschend, ungewöhnlich</string>
+                 <string>unreif, unrein</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QRadioButton" name="rbGesamteindruck_5">
+              <item row="0" column="2">
+               <widget class="QCheckBox" name="rbGeschmack_10">
                 <property name="text">
-                 <string>unauffällig, gewöhnlich</string>
+                 <string>fruchtig</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
-               <widget class="QRadioButton" name="rbGesamteindruck_6">
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="rbGeschmack_11">
                 <property name="text">
-                 <string>einmal ist genug, langweilig</string>
+                 <string>hefig</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QRadioButton" name="rbGesamteindruck_4">
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="rbGeschmack_12">
                 <property name="text">
-                 <string>kunstvoll, kreativ, mutig</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QRadioButton" name="rbGesamteindruck_7">
-                <property name="text">
-                 <string>nicht trinkbar, problematisch</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QRadioButton" name="rbGesamteindruck_1">
-                <property name="text">
-                 <string>gutes, typisches Bier</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QRadioButton" name="rbGesamteindruck_2">
-                <property name="text">
-                 <string>interessant</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QRadioButton" name="rbGesamteindruck_0">
-                <property name="text">
-                 <string>toll, weiter trinken, macht Lust auf mehr</string>
+                 <string>Geschmacksfehler</string>
                 </property>
                </widget>
               </item>
              </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextEdit" name="tbGesamteindruck">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Gesamteindruck.&lt;/p&gt;&lt;p&gt;Unter Gesamteindruck wird ein Resümee der Bewertung verstanden. Hierbei werden oft herausstechende Eigenschaften betont, das Bier auf Stilvorgaben hin abgeglichen.&lt;/p&gt;&lt;p&gt;Typsiche Fragen sind: Haben sich die Geschmacks-, Geruchs- und taktilen Komponenten gut miteinander vertragen, war das Bier abgerundet? Hat eine Komponente überwogen, das Bild ins Ungleichgewicht gebracht? Waren die sortentypische Rezenz, die Bittere, das Aroma und die Vollmundigkeit richtig? War eine bestimmte Komponente, die wir nicht als sortentypisch einordnen konnten, dennoch angenehm, interessant, also durchaus erfahrenswert?  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbGeschmack">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geschmack.&lt;/p&gt;&lt;p&gt;Der Biergeschmack umfasst die bei der Aufnahme des Bieres entstehenden sensorischen Eigenschaften. Es gelten dann ähnliche Beschreibungsmöglichkeiten wie beim Geruch. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_7">
+           <attribute name="title">
+            <string>Antrunk</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_95">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBox_42">
+              <property name="title">
+               <string>Rezenz, Frischeeindruck</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="3" column="0">
+                <widget class="QRadioButton" name="rbAntrunk_3">
+                 <property name="text">
+                  <string>prickelnd</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QRadioButton" name="rbAntrunk_1">
+                 <property name="text">
+                  <string>rezent, fein perlend</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QRadioButton" name="rbAntrunk_0">
+                 <property name="text">
+                  <string>angenehm rezent</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QRadioButton" name="rbAntrunk_2">
+                 <property name="text">
+                  <string>gut eingebunden</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QRadioButton" name="rbAntrunk_4">
+                 <property name="text">
+                  <string>stark prickelnd, aufdringlich</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QRadioButton" name="rbAntrunk_5">
+                 <property name="text">
+                  <string>wenig rezent</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QRadioButton" name="rbAntrunk_6">
+                 <property name="text">
+                  <string>schal</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QRadioButton" name="rbAntrunk_7">
+                 <property name="text">
+                  <string>sehr schal</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbAntrunk">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Antrunk.&lt;/p&gt;&lt;p&gt;Die Sinneswahrnehmungen des ersten Schluckes, dem Antrunk, betreffen Vollmundigkeit und Aroma des Bieres. Die Vollmundigkeit entsteht hauptsächlich durch die Eiweißverbindungen, die durch das Malz ins Bier gelangen.&lt;/p&gt;&lt;p&gt;Zum Beispiel ist ein Doppelbock besser, je vollmundiger es ist, demgegenüber sollte ein Pils „schlank“ bleiben. Ein Bier, bei dem man das Gefühl hat man  müsste sie vor dem Schlucken erst kauen ist sehr vollmundig – es „füllt“ den Mundraum. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_8">
+           <attribute name="title">
+            <string>Haupttrunk</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_116">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBox_43">
+              <property name="title">
+               <string>Vollmundigkeit</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_115">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+               <item>
+                <widget class="QRadioButton" name="rbHaupttrunk_0">
+                 <property name="text">
+                  <string>wässrig, leer, dünn</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rbHaupttrunk_1">
+                 <property name="text">
+                  <string>etwas leer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rbHaupttrunk_2">
+                 <property name="text">
+                  <string>schlank</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rbHaupttrunk_3">
+                 <property name="text">
+                  <string>vollmundig</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rbHaupttrunk_4">
+                 <property name="text">
+                  <string>mastig, breit</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbHaupttrunk">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Haupttrunk.&lt;/p&gt;&lt;p&gt;Nach dem ersten Schluck und der Begutachtung der Schaumhaltbarkeit, kommt ein neues sensorisches Merkmal ins Bewusstsein, die sogenannte Rezenz. Das ist die Spritzigkeit des Bieres, sein Kohlensäuregehalt. &lt;/p&gt;&lt;p&gt;Bei manchen Sorten ist die Rezenz von größerer Bedeutung, so bei hellen hopfenreichen Bieren, ob sie nun Pils oder Export heißen. Bei Anderen ist sie weniger bedeutungsvoll, wie zum Beispiel bei den Starkbieren. &lt;/p&gt;&lt;p&gt;Anmerkung: Ein kohlensäurearmes Bier muss keineswegs schal schmecken, wenn es mit der richtigen Hopfengabe, einer sehr feinen Malzsüße und einer gerade noch wahrnehmbaren Säure ausgestattet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_9">
+           <attribute name="title">
+            <string>Nachtrunk</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_119">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBox_44">
+              <property name="title">
+               <string>Bittere, Hopfenaroma</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_4">
+               <item row="4" column="0">
+                <widget class="QRadioButton" name="rbNachtrunk_3">
+                 <property name="text">
+                  <string>nachhängend</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QRadioButton" name="rbNachtrunk_6">
+                 <property name="text">
+                  <string>sehr herb, kräftig betont</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QRadioButton" name="rbNachtrunk_7">
+                 <property name="text">
+                  <string>nicht oder kaum wahrnehmbar</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QRadioButton" name="rbNachtrunk_5">
+                 <property name="text">
+                  <string>wenig herb, unterentwickelt</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QRadioButton" name="rbNachtrunk_4">
+                 <property name="text">
+                  <string>stark nachhängend</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QRadioButton" name="rbNachtrunk_1">
+                 <property name="text">
+                  <string>angenehm, ausgewogen</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QRadioButton" name="rbNachtrunk_8">
+                 <property name="text">
+                  <string>unangenehm</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QRadioButton" name="rbNachtrunk_2">
+                 <property name="text">
+                  <string>nicht anhängend</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QRadioButton" name="rbNachtrunk_0">
+                 <property name="text">
+                  <string>sehr fein</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbNachtrunk">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Nachtrunk.&lt;/p&gt;&lt;p&gt;Unter Nachtrunk wird der sogenannte Abgang und der bleibende Nachgeschmack verstanden.&lt;/p&gt;&lt;p&gt;Den Nachtrunk empfindet man nach dem Absetzen des Glases, wen sich nach dem ersten kritischen Schluck die Bittere bemerkbar macht. Ein mehr oder weniger feiner oder starker bitterer Geschmack breitet sich nun besonders im Hintergaumen aus.&lt;/p&gt;&lt;p&gt;Er ist der Geschmackseindruck, der am längsten bleibt. Er darf auf keinen Fall „nachhängen“, kratzig, gallig oder hefig wirken. Bei allen Bieren sollte die Bittere zumindest kurz auf dem Gaumen spürbar sein, sie darf aber auch nicht zu stark nachhängen, wenn man zwei-, dreimal schlucken muss. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_10">
+           <attribute name="title">
+            <string>Gesamteindruck</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_121">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QGroupBox" name="groupBox_45">
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="4" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_3">
+                 <property name="text">
+                  <string>überraschend, ungewöhnlich</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_5">
+                 <property name="text">
+                  <string>unauffällig, gewöhnlich</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_6">
+                 <property name="text">
+                  <string>einmal ist genug, langweilig</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_4">
+                 <property name="text">
+                  <string>kunstvoll, kreativ, mutig</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_7">
+                 <property name="text">
+                  <string>nicht trinkbar, problematisch</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_1">
+                 <property name="text">
+                  <string>gutes, typisches Bier</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_2">
+                 <property name="text">
+                  <string>interessant</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_0">
+                 <property name="text">
+                  <string>toll, weiter trinken, macht Lust auf mehr</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="tbGesamteindruck">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Gesamteindruck.&lt;/p&gt;&lt;p&gt;Unter Gesamteindruck wird ein Resümee der Bewertung verstanden. Hierbei werden oft herausstechende Eigenschaften betont, das Bier auf Stilvorgaben hin abgeglichen.&lt;/p&gt;&lt;p&gt;Typsiche Fragen sind: Haben sich die Geschmacks-, Geruchs- und taktilen Komponenten gut miteinander vertragen, war das Bier abgerundet? Hat eine Komponente überwogen, das Bild ins Ungleichgewicht gebracht? Waren die sortentypische Rezenz, die Bittere, das Aroma und die Vollmundigkeit richtig? War eine bestimmte Komponente, die wir nicht als sortentypisch einordnen konnten, dennoch angenehm, interessant, also durchaus erfahrenswert?  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
-        </widget>
-       </item>
-      </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
    </item>

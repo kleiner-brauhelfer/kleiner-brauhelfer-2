@@ -16,7 +16,7 @@ public:
     explicit TabRezept(QWidget *parent = nullptr);
     virtual ~TabRezept() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void restoreView(bool full) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private slots:
@@ -27,37 +27,48 @@ private slots:
 
     void rasten_modified();
     void updateRastenDiagram();
-    void on_btnEinmaischtemperatur_clicked();
     void on_btnNeueRast_clicked();
+    void on_btnRastenUebernehmen_clicked();
 
     void malzGaben_modified();
-    void malzGaben_dataChanged();
+    void updateMalzGaben();
     void updateMalzDiagram();
     void on_btnNeueMalzGabe_clicked();
+    void on_btnMalzGabenUebernehmen_clicked();
 
     void hopfenGaben_modified();
-    void hopfenGaben_dataChanged();
+    void updateHopfenGaben();
     void updateHopfenDiagram();
     void on_btnNeueHopfenGabe_clicked();
+    void on_btnHopfenGabenUebernehmen_clicked();
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
 
     void hefeGaben_modified();
     void updateHefeDiagram();
     void on_btnNeueHefeGabe_clicked();
+    void on_btnHefeGabenUebernehmen_clicked();
 
     void weitereZutatenGaben_modified();
     void on_btnNeueHopfenstopfenGabe_clicked();
     void on_btnNeueWeitereZutat_clicked();
+    void on_btnWeitereZutatUebernehmen_clicked();
+
+    void wasseraufbereitung_modified();
+    void on_btnNeueWasseraufbereitung_clicked();
+    void on_btnWasseraufbereitungUebernehmen_clicked();
 
     void anhaenge_modified();
     void on_btnNeuerAnhang_clicked();
 
     void on_tbSudname_textChanged(const QString &value);
+    void on_cbKategorie_currentIndexChanged(const QString &value);
+    void on_btnKategorienVerwalten_clicked();
     void on_cbAnlage_currentIndexChanged(const QString &value);
     void on_tbKommentar_textChanged();
     void on_btnSudhausausbeute_clicked();
-    void on_btnVerdampfungsziffer_clicked();
+    void on_btnVerdampfungsrate_clicked();
     void on_cbWasserProfil_currentIndexChanged(const QString &value);
+    void on_btnRestalkalitaet_clicked();
 
     void on_btnTagNeu_clicked();
     void on_btnTagLoeschen_clicked();
@@ -68,8 +79,6 @@ private:
     void updateGlas();
     void updateAnlageModel();
     void updateWasserModel();
-    void updateMalzGaben();
-    void updateHopfenGaben();
 
 private:
     Ui::TabRezept *ui;

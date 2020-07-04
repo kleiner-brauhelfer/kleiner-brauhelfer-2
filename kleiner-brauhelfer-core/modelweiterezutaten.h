@@ -15,20 +15,22 @@ public:
     enum Column
     {
         ColID,
-        ColBeschreibung,
+        ColName,
         ColMenge,
-        ColEinheiten,
+        ColEinheit,
         ColTyp,
         ColAusbeute,
-        ColEBC,
-        ColPreis,
+        ColFarbe,
         ColBemerkung,
+        ColEigenschaften,
+        ColAlternativen,
+        ColPreis,
         ColEingelagert,
         ColMindesthaltbar,
         ColLink,
         // virtual
         ColDeleted,
-        ColMengeGramm,
+        ColMengeNormiert,
         ColInGebrauch,
         // number of columns
         NumCols

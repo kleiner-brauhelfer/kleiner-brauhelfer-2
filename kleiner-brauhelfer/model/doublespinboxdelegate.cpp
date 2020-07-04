@@ -40,7 +40,7 @@ QWidget* DoubleSpinBoxDelegate::createEditor(QWidget *parent, const QStyleOption
 void DoubleSpinBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
-    w->setValue(index.model()->data(index, Qt::EditRole).toDouble());
+    w->setValue(index.data(Qt::EditRole).toDouble());
 }
 
 void DoubleSpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
@@ -63,7 +63,7 @@ void DoubleSpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
     opt.displayAlignment = Qt::AlignCenter;
     if (mZeroRed)
     {
-        if (index.model()->data(index).toDouble() <= 0.0)
+        if (index.data(Qt::DisplayRole).toDouble() <= 0.0)
             painter->fillRect(opt.rect, gSettings->ErrorBase);
     }
     QStyledItemDelegate::paint(painter, opt, index);

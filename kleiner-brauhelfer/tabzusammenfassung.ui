@@ -18,17 +18,38 @@
     <number>4</number>
    </property>
    <item>
-    <widget class="WdgWebViewEditable" name="webview" native="true"/>
-   </item>
-   <item>
-    <widget class="QPushButton" name="btnToPdf">
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; Ausgabe als PDF. &lt;/p&gt;&lt;p&gt;Ein direkter Druck ist (leider) nicht möglich. Es muss über den Umweg PDF gedruckt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>PDF speichern</string>
+    <widget class="WdgWebViewEditable" name="webview" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnPrintPreview">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel / Zusammenfassung&lt;/span&gt; ausgedruckt. &lt;/p&gt;&lt;p&gt;Das Betriebssystem ruft dazu den Druckdialog auf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Druckvorschau</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnToPdf">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel &lt;/span&gt;oder die  &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt; als PDF abgespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>PDF</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

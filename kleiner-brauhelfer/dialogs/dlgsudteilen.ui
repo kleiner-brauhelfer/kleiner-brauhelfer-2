@@ -28,14 +28,14 @@
      <item>
       <widget class="QLineEdit" name="lineEdit_Name1">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud in zwei Sude aufgeteilt. Dieses Feld bezeichnet die erste Teilmenge. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende &lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufgeteilt &lt;/span&gt;in zwei Sude. Dieses Feld bezeichnet die &lt;span style=&quot; font-weight:600;&quot;&gt;erste Teilmenge&lt;/span&gt;. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLineEdit" name="lineEdit_Name2">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud in zwei Sude aufgeteilt. Dieses Feld bezeichnet die zweite Teilmenge. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum ersten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende &lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufgeteilt &lt;/span&gt;in zwei Sude. Dieses Feld bezeichnet die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Teilmenge&lt;/span&gt;. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -43,42 +43,60 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1">
+     <item row="0" column="0">
       <widget class="SpinBox" name="spinBox_Percent1">
        <property name="minimumSize">
         <size>
-         <width>70</width>
+         <width>80</width>
          <height>0</height>
         </size>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>70</width>
-         <height>16777215</height>
-        </size>
-       </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;erste Teilmenge&lt;/span&gt; des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
        <property name="maximum">
         <number>100</number>
        </property>
       </widget>
      </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Liter</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="3">
-      <widget class="QSlider" name="horizontalSlider_Percent">
+      <widget class="SpinBox" name="spinBox_Percent2">
        <property name="minimumSize">
         <size>
-         <width>200</width>
+         <width>80</width>
          <height>0</height>
         </size>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>16777215</height>
-        </size>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Teilmenge &lt;/span&gt;des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Liter</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QSlider" name="horizontalSlider_Percent">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Schieberegler kann die prozentuale Verteilung zwischen erstem und zweitem &lt;span style=&quot; font-weight:600;&quot;&gt;Teilsud&lt;/span&gt; bequem verteilt werden. Eine händische Eingabe in die Felder links und rechts erübrigt sich damit.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -93,74 +111,14 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="4">
-      <widget class="SpinBox" name="spinBox_Percent2">
-       <property name="minimumSize">
-        <size>
-         <width>70</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>70</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die zweite Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen zeit- und kostengünstig umzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="maximum">
-        <number>100</number>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="1">
-      <widget class="DoubleSpinBox" name="doubleSpinBox_Amount1">
-       <property name="minimumSize">
-        <size>
-         <width>70</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>70</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="decimals">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <double>9999.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.100000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="4">
+     <item row="1" column="3">
       <widget class="DoubleSpinBox" name="doubleSpinBox_Amount2">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die zweite Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
        <property name="decimals">
         <number>1</number>
        </property>
@@ -172,18 +130,12 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="5">
+     <item row="0" column="4">
       <widget class="QLabel" name="label_3">
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>40</width>
          <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>16777215</height>
         </size>
        </property>
        <property name="text">
@@ -191,18 +143,12 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
+     <item row="0" column="1">
       <widget class="QLabel" name="label">
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>40</width>
          <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>16777215</height>
         </size>
        </property>
        <property name="text">
@@ -210,44 +156,24 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="5">
-      <widget class="QLabel" name="label_4">
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>0</height>
-        </size>
+     <item row="1" column="0">
+      <widget class="DoubleSpinBox" name="doubleSpinBox_Amount1">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>16777215</height>
-        </size>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
-       <property name="text">
-        <string>Liter</string>
+       <property name="decimals">
+        <number>1</number>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Liter</string>
+       <property name="maximum">
+        <double>9999.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
        </property>
       </widget>
-     </item>
-     <item row="0" column="6">
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>

@@ -9,6 +9,10 @@
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSslSocket>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+#include <QOperatingSystemVersion>
+#endif
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -35,12 +39,12 @@ static bool chooseDatabase()
     QString dir;
     if (gSettings->databasePath().isEmpty())
     {
-        text = QObject::tr("Es wurde noch keine Datenbankdatei ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
+        text = QObject::tr("Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
         dir = gSettings->settingsDir();
     }
     else
     {
-        text = QObject::tr("Soll eine neue Datenbankdatei angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
+        text = QObject::tr("Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?");
         dir = gSettings->databaseDir();
     }
 
@@ -48,7 +52,7 @@ static bool chooseDatabase()
                                     QObject::tr("Anlegen"), QObject::tr("Öffnen"), QObject::tr("Abbrechen"));
     if (ret == 1)
     {
-        QString databasePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Datenbankdatei auswählen"),
+        QString databasePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Datenbank auswählen"),
                                                             dir,
                                                             QObject::tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
         if (!databasePath.isEmpty())
@@ -59,7 +63,7 @@ static bool chooseDatabase()
     }
     else if (ret == 0)
     {
-        QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbankdatei anlegen"),
+        QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbank anlegen"),
                                                             dir + "/kb_daten.sqlite",
                                                             QObject::tr("Datenbank") + " (*.sqlite)");
         if (!databasePath.isEmpty())
@@ -107,8 +111,8 @@ static bool connectDatabase()
             else if (version < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Die Datenbankdatei muss aktualisiert werden (version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
-                                               QObject::tr("Soll die Datenbankdatei jetzt aktualisiert werden?") + " " +
+                                               QObject::tr("Die Datenbank muss aktualisiert werden (version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
+                                               QObject::tr("Soll die Datenbank jetzt aktualisiert werden?") + " " +
                                                QObject::tr("ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!"),
                                                QMessageBox::Yes | QMessageBox::No,
                                                QMessageBox::Yes);
@@ -144,7 +148,7 @@ static bool connectDatabase()
                             }
                             else
                             {
-                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Datenbankdatei konnte nicht wiederhergestellt werden."));
+                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Datenbank konnte nicht wiederhergestellt werden."));
                             }
                           #endif
                         }
@@ -168,7 +172,7 @@ static bool connectDatabase()
         else if (!gSettings->databasePath().isEmpty())
         {
             QMessageBox::critical(nullptr, QApplication::applicationName(),
-                                  QObject::tr("Die Datenbankdatei \"%1\" konnte nicht geöffnet werden.").arg(bh->databasePath()));
+                                  QObject::tr("Die Datenbank \"%1\" konnte nicht geöffnet werden.").arg(bh->databasePath()));
         }
 
         // choose other database
@@ -289,6 +293,38 @@ static void copyResources()
     }
 }
 
+static void checkOs()
+{
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+    if (gSettings->isNewProgramVersion())
+    {
+        if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
+            QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
+        {
+            QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                 QObject::tr("Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung)."));
+        }
+    }
+  #endif
+}
+
+static void checkSSL()
+{
+    if (!QSslSocket::supportsSsl())
+    {
+        QString buildVersion = QSslSocket::sslLibraryBuildVersionString();
+        QString rutimeVersion = QSslSocket::sslLibraryVersionString();
+        qWarning() << "SSL not supported";
+        qWarning() << "Version needed:" << buildVersion;
+        qWarning() << "Version installed:" << rutimeVersion;
+        if (gSettings->isNewProgramVersion())
+        {
+            QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                 QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
+        }
+    }
+}
+
 static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     if (!logFile->isOpen())
@@ -316,12 +352,34 @@ static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &c
     out << msg;
     if (context.file)
         out << " | " << context.file << ":" << context.line << ", " << context.function;
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+    out << Qt::endl;
+  #else
     out << endl;
+  #endif
+}
+
+static void installTranslator(QApplication &a, QTranslator &translator, const QString &filename)
+{
+    QLocale locale(gSettings->language());
+    a.removeTranslator(&translator);
+    if (translator.load(locale, filename, "_", "translations"))
+        a.installTranslator(&translator);
+    else if (translator.load(locale, filename, "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        a.installTranslator(&translator);
 }
 
 int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
+
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  #endif
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+    QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
+  #endif
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     QApplication a(argc, argv);
 
@@ -376,13 +434,14 @@ int main(int argc, char *argv[])
     if (logLevel > 0)
         qInfo() << "Log level:" << logLevel;
 
-    // install translation
-    QTranslator translatorQt;
-    translatorQt.load(QLocale::system(), "qt", "_", "translations");
-    if (translatorQt.isEmpty())
-        translatorQt.load(QLocale::system(), "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    if (!translatorQt.isEmpty())
-        a.installTranslator(&translatorQt);
+    // language
+    QTranslator translatorQt, translatorKbh;
+    installTranslator(a, translatorQt, "qt");
+    installTranslator(a, translatorKbh, "kbh");
+
+    // do some checks
+    checkSSL();
+    checkOs();
 
     try
     {
@@ -415,6 +474,12 @@ int main(int argc, char *argv[])
                     qCritical() << "Program error: unknown";
                     QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
                     ret = EXIT_FAILURE;
+                }
+                if (ret == 1001)
+                {
+                    installTranslator(a, translatorQt, "qt");
+                    installTranslator(a, translatorKbh, "kbh");
+                    ret = 1000;
                 }
             }
             else

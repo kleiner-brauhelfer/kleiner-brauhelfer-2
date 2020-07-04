@@ -25,6 +25,8 @@
 #include "modelanhang.h"
 #include "modeletiketten.h"
 #include "modelgeraete.h"
+#include "modelkategorien.h"
+#include "modelwasseraufbereitung.h"
 
 class QSqlDatabase;
 class Brauhelfer;
@@ -74,6 +76,8 @@ private:
     ModelWasser* modelWasser;
     ModelEtiketten* modelEtiketten;
     ModelTags* modeTags;
+    ModelKategorien* modelKategorien;
+    ModelWasseraufbereitung* modelWasseraufbereitung;
     int mVersion;
     QSqlError mLastError;
 };

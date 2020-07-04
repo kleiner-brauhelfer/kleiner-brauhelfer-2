@@ -2,6 +2,9 @@
 #include "ui_dlgverdampfung.h"
 #include <qmath.h>
 #include "brauhelfer.h"
+#include "settings.h"
+
+extern Settings* gSettings;
 
 DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 	QDialog(parent),
@@ -10,10 +13,18 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 {
 	ui->setupUi(this);
     adjustSize();
+    gSettings->beginGroup("DlgVerdampfung");
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
+    gSettings->endGroup();
 }
 
 DlgVerdampfung::~DlgVerdampfung()
 {
+    gSettings->beginGroup("DlgVerdampfung");
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
 	delete ui;
 }
 
@@ -94,8 +105,10 @@ void DlgVerdampfung::on_dSpinBox_cmVomBodenMenge2_valueChanged(double )
 
 void DlgVerdampfung::berechne()
 {
-    double erg = BierCalc::verdampfungsrate(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
+    double erg = BierCalc::verdampfungsziffer(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
     ui->dSpinBox_Verdampfungsziffer->setValue(erg);
+    erg = BierCalc::verdampfungsrate(ui->dSpinBox_Menge1->value(), ui->dSpinBox_Menge2->value(), ui->spinBox_Kochdauer->value());
+    ui->dSpinBox_Verdampfungsrate->setValue(erg);
 }
 
 void DlgVerdampfung::setHoehe(double value)
@@ -130,4 +143,9 @@ void DlgVerdampfung::setKochdauer(int value)
 double DlgVerdampfung::getVerdampfungsziffer()
 {
     return ui->dSpinBox_Verdampfungsziffer->value();
+}
+
+double DlgVerdampfung::getVerdampfungsrate()
+{
+    return ui->dSpinBox_Verdampfungsrate->value();
 }

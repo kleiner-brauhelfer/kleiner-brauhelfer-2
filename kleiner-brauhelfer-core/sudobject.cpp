@@ -1,5 +1,4 @@
 #include "sudobject.h"
-#include "database_defs.h"
 #include "brauhelfer.h"
 #include "modelsud.h"
 #include <QDateTime>
@@ -15,6 +14,7 @@ SudObject::SudObject(Brauhelfer *bh) :
     proxyModelHopfengaben(new ProxyModel(this)),
     proxyModelHefegaben(new ProxyModel(this)),
     proxyModelWeitereZutatenGaben(new ProxyModel(this)),
+    proxyModelWasseraufbereitung(new ProxyModel(this)),
     proxyModelSchnellgaerverlauf(new ProxyModel(this)),
     proxyModelHauptgaerverlauf(new ProxyModel(this)),
     proxyModelNachgaerverlauf(new ProxyModel(this)),
@@ -37,6 +37,7 @@ SudObject::~SudObject()
     delete proxyModelHopfengaben;
     delete proxyModelHefegaben;
     delete proxyModelWeitereZutatenGaben;
+    delete proxyModelWasseraufbereitung;
     delete proxyModelSchnellgaerverlauf;
     delete proxyModelHauptgaerverlauf;
     delete proxyModelNachgaerverlauf;
@@ -55,21 +56,18 @@ void SudObject::init()
     modelMalzschuettung()->setFilterKeyColumn(ModelMalzschuettung::ColSudID);
     modelHopfengaben()->setSourceModel(bh->modelHopfengaben());
     modelHopfengaben()->setFilterKeyColumn(ModelHopfengaben::ColSudID);
-    modelHopfengaben()->sort(ModelHopfengaben::ColZeit, Qt::DescendingOrder);
     modelHefegaben()->setSourceModel(bh->modelHefegaben());
     modelHefegaben()->setFilterKeyColumn(ModelHefegaben::ColSudID);
-    modelHefegaben()->sort(ModelHefegaben::ColZugabeNach, Qt::AscendingOrder);
     modelWeitereZutatenGaben()->setSourceModel(bh->modelWeitereZutatenGaben());
     modelWeitereZutatenGaben()->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+    modelWasseraufbereitung()->setSourceModel(bh->modelWasseraufbereitung());
+    modelWasseraufbereitung()->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
     modelSchnellgaerverlauf()->setSourceModel(bh->modelSchnellgaerverlauf());
     modelSchnellgaerverlauf()->setFilterKeyColumn(ModelSchnellgaerverlauf::ColSudID);
-    modelSchnellgaerverlauf()->sort(ModelSchnellgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelHauptgaerverlauf()->setSourceModel(bh->modelHauptgaerverlauf());
     modelHauptgaerverlauf()->setFilterKeyColumn(ModelHauptgaerverlauf::ColSudID);
-    modelHauptgaerverlauf()->sort(ModelHauptgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelNachgaerverlauf()->setSourceModel(bh->modelNachgaerverlauf());
     modelNachgaerverlauf()->setFilterKeyColumn(ModelNachgaerverlauf::ColSudID);
-    modelNachgaerverlauf()->sort(ModelNachgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelBewertungen()->setSourceModel(bh->modelBewertungen());
     modelBewertungen()->setFilterKeyColumn(ModelBewertungen::ColSudID);
     modelAnhang()->setSourceModel(bh->modelAnhang());
@@ -85,6 +83,7 @@ void SudObject::init()
     modelHopfengaben()->setFilterRegExp(regExpId);
     modelHefegaben()->setFilterRegExp(regExpId);
     modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
+    modelWasseraufbereitung()->setFilterRegExp(regExpId);
     modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
     modelHauptgaerverlauf()->setFilterRegExp(regExpId);
     modelNachgaerverlauf()->setFilterRegExp(regExpId);
@@ -112,6 +111,7 @@ void SudObject::load(int id)
         modelHopfengaben()->setFilterRegExp(regExpId);
         modelHefegaben()->setFilterRegExp(regExpId);
         modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
+        modelWasseraufbereitung()->setFilterRegExp(regExpId);
         modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
         modelHauptgaerverlauf()->setFilterRegExp(regExpId);
         modelNachgaerverlauf()->setFilterRegExp(regExpId);
@@ -190,6 +190,11 @@ ProxyModel* SudObject::modelWeitereZutatenGaben() const
     return proxyModelWeitereZutatenGaben;
 }
 
+ProxyModel* SudObject::modelWasseraufbereitung() const
+{
+    return proxyModelWasseraufbereitung;
+}
+
 ProxyModel* SudObject::modelSchnellgaerverlauf() const
 {
     return proxyModelSchnellgaerverlauf;
@@ -261,7 +266,7 @@ void SudObject::brauzutatenAbziehen()
     ProxyModel *model = modelMalzschuettung();
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        bh->rohstoffAbziehen(0,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Malz,
                              model->data(r, ModelMalzschuettung::ColName).toString(),
                              model->data(r, ModelMalzschuettung::Colerg_Menge).toDouble());
     }
@@ -269,7 +274,7 @@ void SudObject::brauzutatenAbziehen()
     model = modelHopfengaben();
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        bh->rohstoffAbziehen(1,
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hopfen,
                              model->data(r, ModelHopfengaben::ColName).toString(),
                              model->data(r, ModelHopfengaben::Colerg_Menge).toDouble());
     }
@@ -279,7 +284,7 @@ void SudObject::brauzutatenAbziehen()
     {
         if (model->data(r, ModelHefegaben::ColZugabeNach).toInt() == 0)
         {
-            bh->rohstoffAbziehen(2,
+            bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hefe,
                                  model->data(r, ModelHefegaben::ColName).toString(),
                                  model->data(r, ModelHefegaben::ColMenge).toDouble());
         }
@@ -288,10 +293,11 @@ void SudObject::brauzutatenAbziehen()
     model = modelWeitereZutatenGaben();
     for (int r = 0; r < model->rowCount(); ++r)
     {
-        if (model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() != EWZ_Zeitpunkt_Gaerung ||
-            model->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
+        Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+        if (zeitpunkt != Brauhelfer::ZusatzZeitpunkt::Gaerung || model->data(r, ModelWeitereZutatenGaben::ColZugabeNach).toInt() == 0)
         {
-            bh->rohstoffAbziehen(model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt() == EWZ_Typ_Hopfen ? 1 : 3,
+            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
+            bh->rohstoffAbziehen(typ == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz,
                                  model->data(r, ModelWeitereZutatenGaben::ColName).toString(),
                                  model->data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
         }

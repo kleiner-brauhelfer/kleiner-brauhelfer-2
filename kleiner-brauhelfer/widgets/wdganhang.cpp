@@ -1,6 +1,7 @@
 #include "wdganhang.h"
 #include "ui_wdganhang.h"
 #include <QFileDialog>
+#include <QDesktopServices>
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -127,6 +128,11 @@ void WdgAnhang::on_checkBox_Relativ_clicked()
 void WdgAnhang::on_pushButton_Browse_clicked()
 {
     openDialog();
+}
+
+void WdgAnhang::on_btnOpen_clicked()
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(getPfad()));
 }
 
 void WdgAnhang::on_btnLoeschen_clicked()

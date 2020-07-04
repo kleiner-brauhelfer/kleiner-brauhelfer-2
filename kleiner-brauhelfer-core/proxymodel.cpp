@@ -23,13 +23,20 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
 
     QSortFilterProxyModel::setSourceModel(model);
     if(SqlTableModel* m = dynamic_cast<SqlTableModel*>(model))
+    {
         mDeletedColumn = m->fieldIndex("deleted");
+        connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+    }
     else if(ProxyModel* m = dynamic_cast<ProxyModel*>(model))
+    {
         mDeletedColumn = m->fieldIndex("deleted");
+        connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+    }
     else
+    {
         mDeletedColumn = -1;
+    }
     connect(model, SIGNAL(modelReset()), this, SLOT(invalidate()));
-    connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
 QVariant ProxyModel::data(int row, int col, int role) const
@@ -98,6 +105,25 @@ int ProxyModel::append(const QVariantMap &values)
         return mapRowFromSource(idx);
     }
     return -1;
+}
+
+bool ProxyModel::swap(int row1, int row2)
+{
+    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    if (model)
+    {
+        bool ret = model->swap(mapRowToSource(row1), mapRowToSource(row2));
+        invalidate();
+        return ret;
+    }
+    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    if (proxyModel)
+    {
+        bool ret = model->swap(mapRowToSource(row1), mapRowToSource(row2));
+        invalidate();
+        return ret;
+    }
+    return false;
 }
 
 int ProxyModel::mapRowToSource(int row) const
@@ -170,6 +196,11 @@ void ProxyModel::setSortOrder(Qt::SortOrder order)
     sort(sortColumn(), order);
 }
 
+void ProxyModel::setFilterKeyColumns(const QList<int> &columns)
+{
+    mFilterColumns = columns;
+}
+
 int ProxyModel::filterDateColumn() const
 {
     return mDateColumn;
@@ -214,7 +245,23 @@ void ProxyModel::setFilterMaximumDate(const QDateTime &dt)
 
 bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
-    bool accept = QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+    bool accept = true;
+    if (mFilterColumns.empty())
+    {
+        accept = QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+    }
+    else
+    {
+        accept = false;
+        QRegExp rx = filterRegExp();
+        for (int col : mFilterColumns)
+        {
+           QModelIndex idx = sourceModel()->index(source_row, col, source_parent);
+            accept = sourceModel()->data(idx).toString().contains(rx);
+            if (accept)
+                break;
+        }
+    }
     if (accept && mDeletedColumn >= 0)
     {
         QModelIndex index = sourceModel()->index(source_row, mDeletedColumn, source_parent);

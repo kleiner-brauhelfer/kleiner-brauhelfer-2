@@ -20,6 +20,8 @@ public:
         ColProzent,
         Colerg_Menge,
         ColFarbe,
+        ColPotential,
+        ColpH,
         // virtual
         ColDeleted,
         // number of columns
@@ -31,6 +33,7 @@ public:
 
     ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
+    int import(int row);
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
 
 private slots:

@@ -19,6 +19,7 @@ div.r {
   padding: 6px;
   margin-bottom: 10px;
   background-color: #dddddd;
+  page-break-inside: avoid;
 }
 
 div.rm {
@@ -26,6 +27,7 @@ div.rm {
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 5px;
+  page-break-inside: avoid;
 }
 
 h1 {
@@ -108,23 +110,7 @@ img.star_grey {
   background-color: #FFEECC;
 }
 
-.bg_honig {
-  background-color: #FFF2CE;
-}
-
-.bg_zucker {
-  background-color: #FFDDCE;
-}
-
-.bg_gewuerz {
-  background-color: #CEFFD9;
-}
-
-.bg_frucht {
-  background-color: #CED6FF;
-}
-
-.bg_sonstiges {
+.bg_zusatz {
   background-color: #F8DDFF;
 }
 

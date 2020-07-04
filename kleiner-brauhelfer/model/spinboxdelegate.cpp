@@ -38,7 +38,7 @@ QWidget* SpinBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewIt
 void SpinBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QSpinBox *w = static_cast<QSpinBox*>(editor);
-    w->setValue(index.model()->data(index, Qt::EditRole).toInt());
+    w->setValue(index.data(Qt::EditRole).toInt());
 }
 
 void SpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
@@ -61,7 +61,7 @@ void SpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     opt.displayAlignment = Qt::AlignCenter;
     if (mZeroRed)
     {
-        if (index.model()->data(index).toInt() <= 0)
+        if (index.data(Qt::DisplayRole).toInt() <= 0)
             painter->fillRect(opt.rect, gSettings->ErrorBase);
     }
     QStyledItemDelegate::paint(painter, opt, index);

@@ -3,9 +3,9 @@
 #include <QtMath>
 
 const int Brauhelfer::libVersionMajor = VER_MAJ;
-const int Brauhelfer::libVerionMinor = VER_MIN;
+const int Brauhelfer::libVersionMinor = VER_MIN;
 const int Brauhelfer::libVersionPatch = VER_PAT;
-const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVerionMinor;
+const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVersionMinor;
 const int Brauhelfer::supportedDatabaseVersionMinimal = 21;
 
 Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
@@ -37,6 +37,8 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelAnhang, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modelEtiketten, SIGNAL(modified()), this, SIGNAL(modified()));
     connect(mDb->modeTags, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelKategorien, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelWasseraufbereitung, SIGNAL(modified()), this, SIGNAL(modified()));
 }
 
 Brauhelfer::~Brauhelfer()
@@ -277,6 +279,16 @@ ModelTags *Brauhelfer::modelTags() const
     return mDb->modeTags;
 }
 
+ModelKategorien *Brauhelfer::modelKategorien() const
+{
+    return mDb->modelKategorien;
+}
+
+ModelWasseraufbereitung *Brauhelfer::modelWasseraufbereitung() const
+{
+    return mDb->modelWasseraufbereitung;
+}
+
 int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 {
     qInfo() << "Brauhelfer::sudKopieren():" << sudId;
@@ -288,13 +300,13 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     values.insert(ModelSud::ColSudname, name);
     if (!teilen)
     {
-        values.insert(ModelSud::ColStatus, Sud_Status_Rezept);
+        values.insert(ModelSud::ColStatus, static_cast<int>(SudStatus::Rezept));
         values.insert(ModelSud::ColMerklistenID, 0);
         values.insert(ModelSud::ColErstellt, QDateTime::currentDateTime().toString(Qt::ISODate));
         values.remove(ModelSud::ColBraudatum);
         values.remove(ModelSud::ColAbfuelldatum);
     }
-    row = modelSud()->append(values);
+    row = modelSud()->appendDirect(values);
 
     QVariant neueSudId = values.value(ModelSud::ColID);
     sudKopierenModel(modelRasten(), ModelRasten::ColSudID, sudId, {{ModelRasten::ColSudID, neueSudId}});
@@ -306,11 +318,12 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     if (teilen)
         sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}});
     else
-        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}, {ModelWeitereZutatenGaben::ColZugabestatus, EWZ_Zugabestatus_nichtZugegeben}});
+        sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}, {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}});
     sudKopierenModel(modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudId, {{ModelMalzschuettung::ColSudID, neueSudId}});
     sudKopierenModel(modelAnhang(), ModelAnhang::ColSudID, sudId, {{ModelAnhang::ColSudID, neueSudId}});
     sudKopierenModel(modelEtiketten(), ModelEtiketten::ColSudID, sudId, {{ModelEtiketten::ColSudID, neueSudId}});
     sudKopierenModel(modelTags(), ModelTags::ColSudID, sudId, {{ModelTags::ColSudID, neueSudId}});
+    sudKopierenModel(modelWasseraufbereitung(), ModelWasseraufbereitung::ColSudID, sudId, {{ModelWasseraufbereitung::ColSudID, neueSudId}});
     if (teilen)
     {
         sudKopierenModel(modelSchnellgaerverlauf(), ModelSchnellgaerverlauf::ColSudID, sudId, {{ModelSchnellgaerverlauf::ColSudID, neueSudId}});
@@ -318,12 +331,14 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
         sudKopierenModel(modelNachgaerverlauf(), ModelNachgaerverlauf::ColSudID, sudId, {{ModelNachgaerverlauf::ColSudID, neueSudId}});
         sudKopierenModel(modelBewertungen(), ModelBewertungen::ColSudID, sudId, {{ModelBewertungen::ColSudID, neueSudId}});
     }
+    modelSud()->update(row);
     return row;
 }
 
 void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues)
 {
-    for (int r = 0; r < model->rowCount(); ++r)
+    int N = model->rowCount();
+    for (int r = 0; r < N; ++r)
     {
         if (model->data(r, colSudId) == sudId)
         {
@@ -334,7 +349,7 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVar
                 values.insert(it.key(), it.value());
                 ++it;
             }
-            model->append(values);
+            model->appendDirect(values);
         }
     }
 }
@@ -349,29 +364,43 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     if (row2 < 0)
         return -1;
 
-    double Menge = modelSud()->data(row1, ModelSud::ColMenge).toDouble();
-    double WuerzemengeVorHopfenseihen = modelSud()->data(row1, ModelSud::ColWuerzemengeVorHopfenseihen).toDouble();
-    double WuerzemengeKochende = modelSud()->data(row1, ModelSud::ColWuerzemengeKochende).toDouble();
-    double Speisemenge = modelSud()->data(row1, ModelSud::ColSpeisemenge).toDouble();
-    double WuerzemengeAnstellen = modelSud()->data(row1, ModelSud::ColWuerzemengeAnstellen).toDouble();
-    double erg_AbgefuellteBiermenge = modelSud()->data(row1, ModelSud::Colerg_AbgefuellteBiermenge).toDouble();
-    double erg_S_Gesamt = modelSud()->data(row1, ModelSud::Colerg_S_Gesamt).toDouble();
-    double erg_WHauptguss = modelSud()->data(row1, ModelSud::Colerg_WHauptguss).toDouble();
-    double erg_WNachguss = modelSud()->data(row1, ModelSud::Colerg_WNachguss).toDouble();
-    double erg_W_Gesamt = modelSud()->data(row1, ModelSud::Colerg_W_Gesamt).toDouble();
+    BerechnungsartHopfen berechnungsArtHopfen = static_cast<BerechnungsartHopfen>(modelSud()->data(row1, ModelSud::ColberechnungsArtHopfen).toInt());
+
+    std::vector<int> listIndexes = {
+        ModelSud::ColMenge,
+        ModelSud::ColWuerzemengeKochbeginn,
+        ModelSud::ColWuerzemengeVorHopfenseihen,
+        ModelSud::ColWuerzemengeKochende,
+        ModelSud::ColSpeisemenge,
+        ModelSud::ColVerschneidungAbfuellen,
+        ModelSud::ColWuerzemengeAnstellen,
+        ModelSud::ColJungbiermengeAbfuellen,
+        ModelSud::Colerg_AbgefuellteBiermenge,
+        ModelSud::Colerg_S_Gesamt,
+        ModelSud::Colerg_WHauptguss,
+        ModelSud::Colerg_WNachguss,
+        ModelSud::Colerg_W_Gesamt,
+    };
+    std::vector<double> listValues(listIndexes.size());
+    for (size_t i = 0; i < listIndexes.size(); i++)
+        listValues[i] = modelSud()->data(row1, listIndexes[i]).toDouble();
 
     double factor = 1.0 - prozent;
-    modelSud()->setData(row2, ModelSud::ColMenge, Menge * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
-    modelSud()->setData(row2, ModelSud::ColSpeisemenge, Speisemenge * factor);
-    modelSud()->setData(row2, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_S_Gesamt, erg_S_Gesamt * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
-    modelSud()->setData(row2, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
+    for (size_t i = 0; i < listIndexes.size(); i++)
+        modelSud()->setData(row2, listIndexes[i], listValues[i] * factor);
     int sudId2 = modelSud()->data(row2, ModelSud::ColID).toInt();
+    for (int row = 0; row < modelHopfengaben()->rowCount(); ++row)
+    {
+        if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId2)
+        {
+            double ausbeute = modelHopfengaben()->data(row, ModelHopfengaben::ColAusbeute).toDouble();
+            if (berechnungsArtHopfen == BerechnungsartHopfen::Keine || (berechnungsArtHopfen == BerechnungsartHopfen::IBU && ausbeute == 0.0))
+            {
+                QModelIndex idx = modelHopfengaben()->index(row, ModelHopfengaben::Colerg_Menge);
+                modelHopfengaben()->setData(idx, idx.data().toDouble() * factor);
+            }
+        }
+    }
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
         if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId2)
@@ -383,16 +412,20 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
 
     factor = prozent;
     modelSud()->setData(row1, ModelSud::ColSudname, name1);
-    modelSud()->setData(row1, ModelSud::ColMenge, Menge * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeVorHopfenseihen, WuerzemengeVorHopfenseihen * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeKochende, WuerzemengeKochende * factor);
-    modelSud()->setData(row1, ModelSud::ColSpeisemenge, Speisemenge * factor);
-    modelSud()->setData(row1, ModelSud::ColWuerzemengeAnstellen, WuerzemengeAnstellen * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_AbgefuellteBiermenge, erg_AbgefuellteBiermenge * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_S_Gesamt, erg_S_Gesamt * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_WHauptguss, erg_WHauptguss * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_WNachguss, erg_WNachguss * factor);
-    modelSud()->setData(row1, ModelSud::Colerg_W_Gesamt, erg_W_Gesamt * factor);
+    for (size_t i = 0; i < listIndexes.size(); i++)
+        modelSud()->setData(row1, listIndexes[i], listValues[i] * factor);
+    for (int row = 0; row < modelHopfengaben()->rowCount(); ++row)
+    {
+        if (modelHopfengaben()->data(row, ModelHopfengaben::ColSudID).toInt() == sudId)
+        {
+            double ausbeute = modelHopfengaben()->data(row, ModelHopfengaben::ColAusbeute).toDouble();
+            if (berechnungsArtHopfen == BerechnungsartHopfen::Keine || (berechnungsArtHopfen == BerechnungsartHopfen::IBU && ausbeute == 0.0))
+            {
+                QModelIndex idx = modelHopfengaben()->index(row, ModelHopfengaben::Colerg_Menge);
+                modelHopfengaben()->setData(idx, idx.data().toDouble() * factor);
+            }
+        }
+    }
     for (int row = 0; row < modelHefegaben()->rowCount(); ++row)
     {
         if (modelHefegaben()->data(row, ModelHefegaben::ColSudID).toInt() == sudId)
@@ -405,16 +438,16 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
     return row1;
 }
 
-bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
+bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double menge)
 {
     int row;
     double mengeLager;
     SqlTableModel *modelLager;
     switch (typ)
     {
-    case 0:
+    case RohstoffTyp::Malz:
         modelLager = modelMalz();
-        row = modelLager->getRowWithValue(ModelMalz::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelMalz::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelMalz::ColMenge).toDouble() - menge;
@@ -423,9 +456,9 @@ bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
             return modelLager->setData(row, ModelMalz::ColMenge, mengeLager);
         }
         break;
-    case 1:
+    case RohstoffTyp::Hopfen:
         modelLager = modelHopfen();
-        row = modelLager->getRowWithValue(ModelHopfen::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelHopfen::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelHopfen::ColMenge).toDouble() - menge;
@@ -434,9 +467,9 @@ bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
             return modelLager->setData(row, ModelHopfen::ColMenge, mengeLager);
         }
         break;
-    case 2:
+    case RohstoffTyp::Hefe:
         modelLager = modelHefe();
-        row = modelLager->getRowWithValue(ModelHefe::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelHefe::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelHefe::ColMenge).toInt() - menge;
@@ -445,25 +478,32 @@ bool Brauhelfer::rohstoffAbziehen(int typ, const QString& name, double menge)
             return modelLager->setData(row, ModelHefe::ColMenge, mengeLager);
         }
         break;
-    case 3:
+    case RohstoffTyp::Zusatz:
         modelLager = modelWeitereZutaten();
-        row = modelLager->getRowWithValue(ModelWeitereZutaten::ColBeschreibung, name);
+        row = modelLager->getRowWithValue(ModelWeitereZutaten::ColName, name);
         if (row != -1)
         {
             mengeLager = modelLager->data(row, ModelWeitereZutaten::ColMenge).toDouble();
-            switch (modelLager->data(row, ModelWeitereZutaten::ColEinheiten).toInt())
+            Einheit einheit = static_cast<Einheit>(modelLager->data(row, ModelWeitereZutaten::ColEinheit).toInt());
+            switch (einheit)
             {
-            case EWZ_Einheit_Kg:
+            case Einheit::Kg:
                 mengeLager -= menge / 1000;
                 break;
-            case EWZ_Einheit_g:
+            case Einheit::g:
                 mengeLager -= menge;
                 break;
-            case EWZ_Einheit_mg:
+            case Einheit::mg:
                 mengeLager -= menge * 1000;
                 break;
-            case EWZ_Einheit_Stk:
+            case Einheit::Stk:
                 mengeLager -= qCeil(menge);
+                break;
+            case Einheit::l:
+                mengeLager -= menge / 1000;
+                break;
+            case Einheit::ml:
+                mengeLager -= menge;
                 break;
             }
             if (mengeLager < 0.0)

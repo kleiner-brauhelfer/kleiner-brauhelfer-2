@@ -65,7 +65,7 @@
      <item>
       <widget class="QCheckBox" name="checkBox_ignor">
        <property name="text">
-        <string>Meldung für diese Version nicht mehr anzeigen</string>
+        <string>Diese Version ignorieren</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -75,7 +75,7 @@
      <item>
       <widget class="QCheckBox" name="cbCheckForUpdates">
        <property name="text">
-        <string>Nach Updates überprüfen</string>
+        <string>Auf Updates prüfen</string>
        </property>
        <property name="checked">
         <bool>true</bool>

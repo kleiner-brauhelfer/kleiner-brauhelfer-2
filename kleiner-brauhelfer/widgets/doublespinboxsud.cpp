@@ -23,12 +23,16 @@ int DoubleSpinBoxSud::column() const
 
 void DoubleSpinBoxSud::updateValue()
 {
+    if (mCol == -1)
+        return;
     if (!hasFocus() || isReadOnly())
         setValue(bh->sud()->getValue(mCol).toDouble());
 }
 
 void DoubleSpinBoxSud::on_valueChanged(double value)
 {
+    if (mCol == -1)
+        return;
     if (hasFocus() && !isReadOnly())
         bh->sud()->setValue(mCol, value);
 }

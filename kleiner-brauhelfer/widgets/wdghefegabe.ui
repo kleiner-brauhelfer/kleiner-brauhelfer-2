@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
-    <height>99</height>
+    <width>563</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -40,18 +40,21 @@
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>9</number>
+        </property>
         <item>
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>22</width>
+            <height>22</height>
            </size>
           </property>
           <property name="focusPolicy">
@@ -79,25 +82,23 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="btnNachOben">
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNachUnten">
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="btnLoeschen">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>24</width>
-            <height>22</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hefegabe löschen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -105,18 +106,15 @@
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
           </property>
-          <property name="iconSize">
-           <size>
-            <width>25</width>
-            <height>16</height>
-           </size>
-          </property>
          </widget>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>9</number>
+        </property>
         <property name="verticalSpacing">
          <number>4</number>
         </property>
@@ -130,7 +128,7 @@
         <item row="1" column="6" colspan="2">
          <widget class="QPushButton" name="btnZugeben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer mitgeteilt, dass die zweite Hefegabe ausgeführt wurde.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms  wird diese Aktion nun berücksichtigt. U.a. kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe &lt;/span&gt;erfolgt ist.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Zugeben</string>
@@ -141,7 +139,7 @@
          <widget class="SpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
-            <width>50</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
@@ -164,6 +162,12 @@
         </item>
         <item row="1" column="1">
          <widget class="SpinBox" name="tbTage">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit ist der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt &lt;/span&gt;der zweiten Hefegabe in Tagen ab Braudatum gemeint.&lt;/p&gt;&lt;p&gt;Die Zugabe kann gleichzeitig mit der ersten Hefegabe erfolgen. Gewöhnlich wir die zweite Hefe aber nach Abklingen der ersten Hauptgärung zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -181,8 +185,17 @@
         </item>
         <item row="1" column="3">
          <widget class="DateEdit" name="tbDatum">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum &lt;/span&gt;der zweiten Hefe, abhängig vom Zugabezeitpunkt, angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="calendarPopup">
            <bool>true</bool>
@@ -213,14 +226,14 @@
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
-            <width>30</width>
-            <height>22</height>
+            <width>50</width>
+            <height>0</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
-            <height>22</height>
+            <width>50</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -236,7 +249,7 @@
          <widget class="QLabel" name="label_3">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -249,15 +262,44 @@
          <widget class="SpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>60</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anzahl der zugegebenen &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies kann einer vorkonfektionierten Tüte Trocken- oder Flüssighefe entsprechen, aber auch kalkulierten Vorräten,  wie sie in einem Hefestarter zur Anwendung kommen.  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anzahl der zugegebenen &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies kann einer vorkonfektionierten Tüte Trocken- oder Flüssighefe entsprechen, aber auch kalkulierten Vorräten, wie sie in einem Hefestarter zur Anwendung kommen.&lt;/p&gt;&lt;p&gt;Trockenhefen für Kleinsude werden meist in Mengen zwischen 10,5 g und 11,5 g abverpackt. Bei flüssiger Reinhefe utnerscheiden sich die Mengen, abhänig von der Startertechnologie, stark.&lt;/p&gt;&lt;p&gt;Üblicherweise sind Bierhefen im Hobbybereich für 20 Liter ausgelegt. Daneben existieren Größen für die Propagation oder den professionelle Abverpackungen, die eine Mengenberechnung deutlich erschweren. Im Zweifel ist der Rat eines Fachforums hinzuziehen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="lblEmpfohlen">
+          <property name="text">
+           <string>Empfohlen</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="SpinBox" name="tbMengeEmpfohlen">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die empfohlene Anzahl von &lt;span style=&quot; font-weight:600;&quot;&gt;Hefeeinheiten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Eine Hefeeinheit ist kein feststehender Wert, sondern dient allein der Orientierung. Vielmehr ist darunter die Hefemenge von durchschnittlich 11 g für einen üblichen Kleinsud von 20 Litern zu verstehen. Je nach Stammwürze und Hefestamm kann eine Hefeeinheit zu wenig für den Sud sein. In diesem Fall besteht die Gefahr von &lt;span style=&quot; font-weight:600;&quot;&gt;Under-Pitching. D&lt;/span&gt;arunter versteht man Hefe, die Fehlaromen produzieren kann, weil sie zu die zu wenig Nahrung bekommt. Im gewissen Sin reagiert sie &amp;quot;panisch&amp;quot;. In geringerem Maße trifft die auch beim &lt;span style=&quot; font-weight:600;&quot;&gt;Over-Pitching&lt;/span&gt; zu, wenn zu viel Hefezellen dem Sud zugesetzt sind.&lt;/p&gt;&lt;p&gt;Ales und Strong Ales, Lager und Strong Lager benötigen eine unterschiedliche Hefezellenzahl pro ml, um optimal zu vergären. Im Zweifel sollte man die Datenblätter der Hefehersteller heranziehen o der einen Hefe-Kalkulator nutzen.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Hefezellenzahl nach Biertyp&lt;/span&gt; lässt sich grob wie folgt festlegen:&lt;/p&gt;&lt;p&gt;Ale (bis 16,5 °P) = Faktor 0,75&lt;/p&gt;&lt;p&gt;Strong Ale (High Gravity, ab 16,5 °P) = Faktor 1,00&lt;/p&gt;&lt;p&gt;Lager (bis 16,5%) = Faktor 1,5&lt;/p&gt;&lt;p&gt;Strong Lager (High Gravity ab 16,5%) = 2,00&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
           </property>
          </widget>
         </item>
@@ -270,14 +312,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

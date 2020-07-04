@@ -10,6 +10,7 @@
 #include "model/restextraktdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
+#include "dialogs/dlgispindelimporthauptgaer.h"
 #include "widgets/wdgweiterezutatgabe.h"
 
 extern Brauhelfer* bh;
@@ -433,6 +434,40 @@ void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
         ui->tableWidget_Hauptgaerverlauf->scrollTo(ui->tableWidget_Hauptgaerverlauf->currentIndex());
         ui->tableWidget_Hauptgaerverlauf->edit(ui->tableWidget_Hauptgaerverlauf->currentIndex());
     }
+}
+
+void TabGaerverlauf::on_btnImportHauptgaerIspindel_clicked()
+{
+    DlgIspindelImportHauptgaer Dlg(this);
+    QList<QVariantMap> datasetFromIspindel;
+    if(Dlg.exec())
+        datasetFromIspindel = Dlg.getValuePlatoDatabase();
+
+    if(datasetFromIspindel.isEmpty())
+        return;
+
+    QMap<int, QVariant> values = {{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()}};
+    double sw = bh->sud()->getSWIst();
+    int multiplikator = Dlg.getMultiplikatorForDataImport();
+
+    bh->modelHauptgaerverlauf()->blockSignals(true);
+    for (int i = 0; i < datasetFromIspindel.size(); i += multiplikator)
+    {
+        double sre = datasetFromIspindel.at(i).value("Plato").toDouble();
+        values[ModelSchnellgaerverlauf::ColZeitstempel] = datasetFromIspindel.at(i).value("Datum");
+        values[ModelSchnellgaerverlauf::ColRestextrakt] = sre;
+        values[ModelSchnellgaerverlauf::ColTemp] = datasetFromIspindel.at(i).value("Temp").toDouble();
+        values[ModelSchnellgaerverlauf::ColAlc] = BierCalc::alkohol(sw, sre);
+        bh->modelHauptgaerverlauf()->appendDirect(values);
+    }
+    bh->modelHauptgaerverlauf()->blockSignals(false);
+    bh->modelHauptgaerverlauf()->emitModified();
+    bh->sud()->modelHauptgaerverlauf()->invalidate();
+}
+
+void TabGaerverlauf::setButtonIspindelImportVisible(bool state)
+{
+    ui->btnImportHauptgaerIspindel->setVisible(state);
 }
 
 void TabGaerverlauf::updateWeitereZutaten()

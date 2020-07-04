@@ -59,6 +59,8 @@ SOURCES += \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgphmalz.cpp \
+    dialogs/dlgispindeleinstellung.cpp \
+    dialogs/dlgispindelimporthauptgaer.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
@@ -70,8 +72,10 @@ SOURCES += \
     dialogs/dlgvolumen.cpp \
     dialogs/dlgwasseraufbereitung.cpp \
     helper/htmlhighlighter.cpp \
+    helper/ispindel.cpp \
     helper/mustache.cpp \
     helper/obrama.cpp \
+    helper/simplecrypt.cpp \
     model/checkboxdelegate.cpp \
     model/comboboxdelegate.cpp \
     model/datedelegate.cpp \
@@ -135,6 +139,8 @@ HEADERS += \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgphmalz.h \
+    dialogs/dlgispindeleinstellung.h \
+    dialogs/dlgispindelimporthauptgaer.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
@@ -146,8 +152,10 @@ HEADERS += \
     dialogs/dlgvolumen.h \
     dialogs/dlgwasseraufbereitung.h \
     helper/htmlhighlighter.h \
+    helper/ispindel.h \
     helper/mustache.h \
     helper/obrama.h \
+    helper/simplecrypt.h \
     model/checkboxdelegate.h \
     model/comboboxdelegate.h \
     model/datedelegate.h \
@@ -207,6 +215,8 @@ FORMS += \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgphmalz.ui \
+    dialogs/dlgispindeleinstellung.ui \
+    dialogs/dlgispindelimporthauptgaer.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \

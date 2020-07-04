@@ -235,6 +235,7 @@
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionTooltips"/>
     <addaction name="actionAnimationen"/>
+    <addaction name="actioniSpindel"/>
     <addaction name="menuSprache"/>
    </widget>
    <addaction name="menuFile"/>
@@ -497,6 +498,11 @@
   <action name="actionBierspende">
    <property name="text">
     <string>Bierspende</string>
+   </property>
+  </action>
+  <action name="actioniSpindel">
+   <property name="text">
+    <string>iSpindel</string>
    </property>
   </action>
   <action name="actionDeutsch">

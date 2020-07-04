@@ -18,6 +18,7 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView(bool full) Q_DECL_OVERRIDE;
     void checkEnabled();
+    void setButtonIspindelImportVisible(bool state);
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
@@ -39,6 +40,7 @@ private slots:
     void on_btnAddSchnellgaerMessung_clicked();
     void on_btnDelSchnellgaerMessung_clicked();
     void on_btnAddHauptgaerMessung_clicked();
+    void on_btnImportHauptgaerIspindel_clicked();
     void on_btnDelHauptgaerMessung_clicked();
     void on_btnGaerungEwzZugeben_clicked();
     void on_btnGaerungEwzEntnehmen_clicked();

@@ -264,6 +264,13 @@
                </widget>
               </item>
               <item>
+               <widget class="QPushButton" name="btnImportHauptgaerIspindel">
+                <property name="text">
+                 <string>Import iSpindel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <spacer name="horizontalSpacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>

@@ -14,6 +14,7 @@
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgrohstoffauswahl.h"
+#include "dialogs/dlgispindeleinstellung.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -85,6 +86,10 @@ MainWindow::MainWindow(QWidget *parent) :
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
+
+    gSettings->beginGroup("iSpindel");
+    ui->tabGaerverlauf->setButtonIspindelImportVisible(gSettings->value("IspindelInUse", false).toBool());
+    gSettings->endGroup();
 
     ui->statusBar->showMessage(bh->databasePath());
 
@@ -745,6 +750,13 @@ void MainWindow::on_actionTooltips_triggered(bool checked)
 void MainWindow::on_actionAnimationen_triggered(bool checked)
 {
     gSettings->setAnimationsEnabled(checked);
+}
+
+void MainWindow::on_actioniSpindel_triggered()
+{
+    DlgIspindeleinstellung dlg(this);
+    dlg.exec();
+    ui->tabGaerverlauf->setButtonIspindelImportVisible(dlg.useIspindel());
 }
 
 void MainWindow::on_actionDeutsch_triggered()

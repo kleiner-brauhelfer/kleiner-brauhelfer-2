@@ -57,6 +57,7 @@ private slots:
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionTooltips_triggered(bool checked);
     void on_actionAnimationen_triggered(bool checked);
+    void on_actioniSpindel_triggered();
     void on_actionDeutsch_triggered();
     void on_actionEnglisch_triggered();
     void on_actionSpende_triggered();

@@ -233,4 +233,5 @@ RESOURCES += \
     images.qrc
 
 TRANSLATIONS += \
-    translations/kbh_en.ts
+    translations/kbh_en.ts \
+    translations/kbh_sv.ts

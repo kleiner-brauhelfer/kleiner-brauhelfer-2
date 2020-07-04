@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="sv_SE">
 <context>
     <name>DlgAbout</name>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="20"/>
         <source>Über</source>
-        <translation>About</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="42"/>
@@ -14,19 +14,19 @@
         <translation>Forum:</translation>
     </message>
     <message>
+        <location filename="../dialogs/dlgabout.ui" line="62"/>
+        <source>Entwickler</source>
+        <translation>Utvecklare</translation>
+    </message>
+    <message>
         <location filename="../dialogs/dlgabout.ui" line="118"/>
         <source>Homepage:</source>
-        <translation>Website:</translation>
+        <translation>Hemsida:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="151"/>
         <source>Kompiliert mit:</source>
-        <translation>Compiled with:</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgabout.ui" line="62"/>
-        <source>Entwickler</source>
-        <translation>Developers</translation>
+        <translation>Kompilerat med:</translation>
     </message>
 </context>
 <context>
@@ -34,13 +34,12 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="14"/>
         <source>Bierspende</source>
-        <translation>Beer donation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der kleine-brauhelfer-2 ist als angepasste &lt;a href=&quot;https://de.wikipedia.org/wiki/Beerware&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beerware&lt;/span&gt;&lt;/a&gt; lizenziert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Während die Nutzung generell kostenlos ist, erbittet der Autor von Beerware vom Nutzer dem Autor&lt;br/&gt;- bei Gelegenheit ein Bier auszugeben oder&lt;br/&gt;- ein Bier auf das Wohl des Autors zu trinken oder&lt;br/&gt;- dem Autor ein &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;selbstgebrautes Bier zu schicken&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Die Einhaltung dieser Lizenzierungsbestimmung erfolgt auf freiwilliger Basis.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Anschrift Deutschland:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;c/o LAS Burg 12002&lt;br/&gt;Hauptstraße 396&lt;br/&gt;D-79576 Weil am Rhein&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Anschrift Schweiz:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;Lehenmattstrasse 158&lt;br/&gt;CH-4052 Basel&lt;/p&gt;&lt;p&gt;Ich würde mich über ein leckeres Bier sehr freuen!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kleiner-Brauhelfer-2 is licensed as modified &lt;a href=&quot;https://en.wikipedia.org/wiki/Beerware&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beerware&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;While usage is generally free, the developer asks users&lt;br/&gt;- to buy him a drink, when the occasions arises, or&lt;br/&gt;- to drink to the developer&apos;s health, or&lt;br/&gt;- to send the developer some &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;home-brewed beer&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Compliance with the license is voluntary.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Address Germany:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;c/o LAS Burg 12002&lt;br/&gt;Hauptstraße 396&lt;br/&gt;D-79576 Weil am Rhein&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Address Switzerland:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;Lehenmattstrasse 158&lt;br/&gt;CH-4052 Basel&lt;/p&gt;&lt;p&gt;Receiving your beers will make me very happy!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -48,17 +47,17 @@
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="20"/>
         <source>Neue Version verfügbar</source>
-        <translation>New version available</translation>
+        <translation>Ny version tillgänglig</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="68"/>
         <source>Diese Version ignorieren</source>
-        <translation>Ignore this version</translation>
+        <translation>Ignorera denna version</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="78"/>
         <source>Auf Updates prüfen</source>
-        <translation>Check for updates</translation>
+        <translation>Sök uppdateringar</translation>
     </message>
 </context>
 <context>
@@ -66,7 +65,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="20"/>
         <source>Datenbank bereinigen</source>
-        <translation>Clean database</translation>
+        <translation>Rensa databasen</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="110"/>
@@ -76,7 +75,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="113"/>
         <source>Ausgewählte Einträge löschen</source>
-        <translation>Delete selected entries</translation>
+        <translation>Ta bort utvalda</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="120"/>
@@ -86,47 +85,47 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="123"/>
         <source>Weiter</source>
-        <translation>Continue</translation>
+        <translation>Fortsätt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="211"/>
         <source>Schließen</source>
-        <translation>Close</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="236"/>
         <source>Sud ID</source>
-        <translation>Batch ID</translation>
+        <translation>Sats ID</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="237"/>
         <source>Sudname</source>
-        <translation>Batch name</translation>
+        <translation>Satsnamn</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="243"/>
         <source>Anlage ID</source>
-        <translation>Setup ID</translation>
+        <translation>AnläggningsID</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="244"/>
         <source>Anlage</source>
-        <translation>Setup</translation>
+        <translation>Anläggning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="264"/>
         <source>Ungültige Felder in Tabelle:</source>
-        <translation>Invalid Fields in table:</translation>
+        <translation>Ogiltiga fält i tabell:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="289"/>
         <source>Ungültige Sud ID in Tabelle:</source>
-        <translation>Invalid Batch ID in table:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="289"/>
         <source>Ungültige Anlage ID in Tabelle:</source>
-        <translation>Invalid Setup ID in table:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="316"/>
@@ -137,42 +136,42 @@
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="447"/>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="474"/>
         <source>Ungültiger Wert in Tabelle:</source>
-        <translation>Invalid value in table:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Rezept</source>
-        <translation>Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Gebraut</source>
-        <translation>Brewed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Abgefüllt</source>
-        <translation>bottled/kegged</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Verbraucht</source>
-        <translation>Consumed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="455"/>
         <source>Keine</source>
-        <translation>None</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="455"/>
         <source>Gewicht</source>
-        <translation>Weight</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="455"/>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -180,7 +179,7 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="14"/>
         <source>Malz pH-Wert</source>
-        <translation>Malt pH</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="23"/>
@@ -195,27 +194,27 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="42"/>
         <source>Manuell</source>
-        <translation>Manual</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="47"/>
         <source>Malz EBC &lt; 200</source>
-        <translation>Malt EBC &lt; 200</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="52"/>
         <source>Caramalz</source>
-        <translation>Caramalt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="57"/>
         <source>Röstmalz</source>
-        <translation>Roasted malt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="65"/>
         <source>pH-Wert</source>
-        <translation>pH</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="78"/>
@@ -233,22 +232,22 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="20"/>
         <source>Berechnung Extrakt</source>
-        <translation>Calculate extract</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="31"/>
         <source>Messung mit Spindel</source>
-        <translation>Spindle measurement</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="37"/>
         <source>Dichte</source>
-        <translation>Density</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="44"/>
         <source>Temperatur</source>
-        <translation>Temperature</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="51"/>
@@ -258,25 +257,25 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="73"/>
         <source>g/ml</source>
-        <translation>g/ml</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="80"/>
         <location filename="../dialogs/dlgrestextrakt.ui" line="301"/>
         <source>Messwert</source>
-        <translation>Value</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="99"/>
         <location filename="../dialogs/dlgrestextrakt.ui" line="408"/>
         <location filename="../dialogs/dlgrestextrakt.ui" line="468"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="106"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="113"/>
@@ -291,7 +290,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="183"/>
         <source>Messung mit Refraktometer</source>
-        <translation>Refractometer measurement</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="195"/>
@@ -301,7 +300,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="217"/>
         <source>Korrekturfaktor </source>
-        <translation>Correction factor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="224"/>
@@ -311,22 +310,22 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="228"/>
         <source>Terrill</source>
-        <translation>Terrill</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="233"/>
         <source>Terrill linear</source>
-        <translation>Terrill linear</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="238"/>
         <source>Standardformel</source>
-        <translation>Standard</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="246"/>
         <source>Umrechnungsformel</source>
-        <translation>Formula</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="253"/>
@@ -341,12 +340,12 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="288"/>
         <source>°Brix</source>
-        <translation>°Brix</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="293"/>
         <source>°Plato</source>
-        <translation>°Plato</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="321"/>
@@ -357,7 +356,7 @@
         <location filename="../dialogs/dlgrestextrakt.ui" line="361"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="24"/>
         <source>Stammwürze</source>
-        <translation>OG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="374"/>
@@ -368,7 +367,7 @@
         <location filename="../dialogs/dlgrestextrakt.ui" line="421"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="33"/>
         <source>Restextrakt</source>
-        <translation>SG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="434"/>
@@ -934,7 +933,7 @@
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="105"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="112"/>
@@ -1096,7 +1095,7 @@
     <message>
         <location filename="../mainwindow.ui" line="69"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="74"/>
@@ -1236,7 +1235,7 @@
     <message>
         <location filename="../mainwindow.ui" line="278"/>
         <source>Über</source>
-        <translation type="unfinished">About</translation>
+        <translation type="unfinished">Om</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="286"/>
@@ -1312,7 +1311,7 @@
     <message>
         <location filename="../mainwindow.ui" line="373"/>
         <source>Auf Updates prüfen</source>
-        <translation type="unfinished">Check for updates</translation>
+        <translation type="unfinished">Sök uppdateringar</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="378"/>
@@ -1402,7 +1401,7 @@
     <message>
         <location filename="../mainwindow.ui" line="499"/>
         <source>Bierspende</source>
-        <translation type="unfinished">Beer donation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="508"/>
@@ -1791,7 +1790,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="609"/>
         <location filename="../tababfuellen.ui" line="663"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="365"/>
@@ -1853,7 +1852,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="616"/>
         <source>Stammwürze</source>
-        <translation type="unfinished">OG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="680"/>
@@ -1884,7 +1883,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="794"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="801"/>
@@ -2531,7 +2530,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.cpp" line="51"/>
         <source>Anlage</source>
-        <translation type="unfinished">Setup</translation>
+        <translation type="unfinished">Anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="52"/>
@@ -3159,7 +3158,7 @@ Version installiert: %2</source>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
@@ -3329,7 +3328,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1426"/>
         <location filename="../tabbraudaten.ui" line="2055"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="476"/>
@@ -3341,7 +3340,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1922"/>
         <location filename="../tabbraudaten.ui" line="2016"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="490"/>
@@ -3366,7 +3365,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1557"/>
         <location filename="../tabbraudaten.ui" line="1848"/>
         <source>°Brix</source>
-        <translation type="unfinished">°Brix</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="631"/>
@@ -4146,7 +4145,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="25"/>
         <location filename="../tabgaerverlauf.cpp" line="35"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="27"/>
@@ -4171,7 +4170,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="41"/>
         <location filename="../tabgaerverlauf.cpp" line="51"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="40"/>
@@ -4255,7 +4254,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="45"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="57"/>
@@ -4285,7 +4284,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="113"/>
         <source>Stammwürze</source>
-        <translation type="unfinished">OG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="127"/>
@@ -4313,7 +4312,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="164"/>
         <source>Sudname</source>
-        <translation type="unfinished">Batch name</translation>
+        <translation type="unfinished">Satsnamn</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="178"/>
@@ -4383,7 +4382,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="370"/>
         <location filename="../tabrezept.ui" line="1002"/>
         <source>IBU</source>
-        <translation type="unfinished">IBU</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="377"/>
@@ -4404,7 +4403,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="413"/>
         <location filename="../tabrezept.ui" line="2610"/>
         <source>Anlage</source>
-        <translation type="unfinished">Setup</translation>
+        <translation type="unfinished">Anläggning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="420"/>
@@ -4487,7 +4486,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2305"/>
         <location filename="../tabrezept.ui" line="2388"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="642"/>
@@ -4615,7 +4614,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="997"/>
         <source>Gewicht</source>
-        <translation type="unfinished">Weight</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1010"/>
@@ -4769,7 +4768,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1687"/>
         <source>pH-Wert</source>
-        <translation type="unfinished">pH</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1777"/>
@@ -4811,7 +4810,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1924"/>
         <source>Restextrakt</source>
-        <translation type="unfinished">SG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1937"/>
@@ -5622,7 +5621,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="158"/>
         <source>Temperatur</source>
-        <translation type="unfinished">Temperature</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="160"/>
@@ -5706,7 +5705,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="65"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="72"/>
@@ -5908,12 +5907,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.cpp" line="38"/>
         <source>Sud ID</source>
-        <translation type="unfinished">Batch ID</translation>
+        <translation type="unfinished">Sats ID</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="39"/>
         <source>Sudname</source>
-        <translation type="unfinished">Batch name</translation>
+        <translation type="unfinished">Satsnamn</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="40"/>
@@ -6354,7 +6353,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="205"/>
         <source>IBU</source>
-        <translation type="unfinished">IBU</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="218"/>
@@ -6571,7 +6570,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="756"/>
         <location filename="../widgets/wdgrast.ui" line="903"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="147"/>

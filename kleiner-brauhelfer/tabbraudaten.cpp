@@ -50,7 +50,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
 
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    ui->webview->setHtmlFile("braudaten.html");
+    ui->webview->setHtmlFile("braudaten");
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));

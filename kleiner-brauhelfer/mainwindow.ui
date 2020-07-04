@@ -222,12 +222,20 @@
     <property name="title">
      <string>Einstellungen</string>
     </property>
+    <widget class="QMenu" name="menuSprache">
+     <property name="title">
+      <string>Sprache</string>
+     </property>
+     <addaction name="actionDeutsch"/>
+     <addaction name="actionEnglisch"/>
+    </widget>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
     <addaction name="actionBestaetigungBeenden"/>
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionTooltips"/>
     <addaction name="actionAnimationen"/>
+    <addaction name="menuSprache"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
@@ -491,6 +499,24 @@
     <string>Bierspende</string>
    </property>
   </action>
+  <action name="actionDeutsch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/de.png</normaloff>:/images/de.png</iconset>
+   </property>
+   <property name="text">
+    <string>Deutsch</string>
+   </property>
+  </action>
+  <action name="actionEnglisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/en.png</normaloff>:/images/en.png</iconset>
+   </property>
+   <property name="text">
+    <string>Englisch</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -567,6 +593,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

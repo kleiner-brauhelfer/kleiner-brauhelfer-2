@@ -359,6 +359,16 @@ static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &c
   #endif
 }
 
+static void installTranslator(QApplication &a, QTranslator &translator, const QString &filename)
+{
+    QLocale locale(gSettings->language());
+    a.removeTranslator(&translator);
+    if (translator.load(locale, filename, "_", "translations"))
+        a.installTranslator(&translator);
+    else if (translator.load(locale, filename, "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        a.installTranslator(&translator);
+}
+
 int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
@@ -424,13 +434,10 @@ int main(int argc, char *argv[])
     if (logLevel > 0)
         qInfo() << "Log level:" << logLevel;
 
-    // install translation
-    QTranslator translatorQt;
-    translatorQt.load(QLocale::system(), "qt", "_", "translations");
-    if (translatorQt.isEmpty())
-        translatorQt.load(QLocale::system(), "qt", "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    if (!translatorQt.isEmpty())
-        a.installTranslator(&translatorQt);
+    // language
+    QTranslator translatorQt, translatorKbh;
+    installTranslator(a, translatorQt, "qt");
+    installTranslator(a, translatorKbh, "kbh");
 
     // do some checks
     checkSSL();
@@ -467,6 +474,12 @@ int main(int argc, char *argv[])
                     qCritical() << "Program error: unknown";
                     QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
                     ret = EXIT_FAILURE;
+                }
+                if (ret == 1001)
+                {
+                    installTranslator(a, translatorQt, "qt");
+                    installTranslator(a, translatorKbh, "kbh");
+                    ret = 1000;
                 }
             }
             else

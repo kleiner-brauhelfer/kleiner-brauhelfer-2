@@ -32,7 +32,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 0);
 
-    ui->webview->setHtmlFile("sudinfo.html");
+    ui->webview->setHtmlFile("sudinfo");
 
     SqlTableModel *model = bh->modelSud();
     model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));

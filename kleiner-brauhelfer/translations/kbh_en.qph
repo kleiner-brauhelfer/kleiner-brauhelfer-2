@@ -1,0 +1,6141 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="de_DE" language="en_US">
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>mg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Stk.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Honig</source>
+    <target>Honey</target>
+</phrase>
+<phrase>
+    <source>Zucker</source>
+    <target>Sugar</target>
+</phrase>
+<phrase>
+    <source>Gewürz</source>
+    <target>Spice</target>
+</phrase>
+<phrase>
+    <source>Frucht</source>
+    <target>Fruit</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Miscellaneous</target>
+</phrase>
+<phrase>
+    <source>Kraut</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Wasseraufbereitung</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Klärmittel</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Über</source>
+    <target>About</target>
+</phrase>
+<phrase>
+    <source>Diese App dient als Ergänzung zum Programm &lt;a href=&quot;https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2&quot;&gt;kleiner-brauhelfer-2&lt;/a&gt;.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Diese App dient als Ergänzung zum Programm &lt;a href=&quot;http://www.joerum.de/kleiner-brauhelfer&quot;&gt;kleiner-brauhelfer&lt;/a&gt;.</source>
+    <target>This app is a complement to the program &lt;a href=&quot;http://www.joerum.de/kleiner-brauhelfer&quot;&gt;kleiner-brauhelfer&lt;/a&gt;.</target>
+</phrase>
+<phrase>
+    <source>Informationen und letzte Version &lt;a href=&quot;https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-app&quot;&gt;kleiner-brauhelfer-app&lt;/a&gt;.</source>
+    <target>Information and last version can be found at &lt;a href=&quot;https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-app&quot;&gt;kleiner-brauhelfer-app&lt;/a&gt;.</target>
+</phrase>
+<phrase>
+    <source>Diese App dient als Ergänzung zum Programm &lt;a href=&quot;http://www.joerum.de/kleiner-brauhelfer&quot;&gt;kleiner-brauhelfer&lt;/a&gt; von gremmel.</source>
+    <target>This app is a complement to the program &lt;a href=&quot;http://www.joerum.de/kleiner-brauhelfer&quot;&gt;kleiner-brauhelfer&lt;/a&gt; by gremmel.</target>
+</phrase>
+<phrase>
+    <source>Die App wird von &lt;a href=&quot;mailto:bourgeoislab@gmail.com&quot;&gt;BourgeoisLab&lt;/a&gt; entwickelt.</source>
+    <target>The app is developed by &lt;a href=&quot;mailto:bourgeoislab@gmail.com&quot;&gt;BourgeoisLab&lt;/a&gt;.</target>
+</phrase>
+<phrase>
+    <source>Sudauswahl</source>
+    <target>Brew Selection</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Search</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brew name</target>
+</phrase>
+<phrase>
+    <source>Sudnummer</source>
+    <target>Brew number</target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brew date</target>
+</phrase>
+<phrase>
+    <source>Gespeichert</source>
+    <target>Saved</target>
+</phrase>
+<phrase>
+    <source>Erstellt</source>
+    <target>Created</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recipe</target>
+</phrase>
+<phrase>
+    <source>Gebraut</source>
+    <target>Brewed</target>
+</phrase>
+<phrase>
+    <source>nicht gebraut</source>
+    <target>not brewed</target>
+</phrase>
+<phrase>
+    <source>Woche</source>
+    <target>Week</target>
+</phrase>
+<phrase>
+    <source>verbraucht</source>
+    <target>consumed</target>
+</phrase>
+<phrase>
+    <source>nicht abgefüllt</source>
+    <target>not bottled</target>
+</phrase>
+<phrase>
+    <source>reif in</source>
+    <target>ready in</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Days</target>
+</phrase>
+<phrase>
+    <source>reif seit</source>
+    <target>ready since</target>
+</phrase>
+<phrase>
+    <source>Wochen</source>
+    <target>weeks</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>SW</source>
+    <target>OG</target>
+</phrase>
+<phrase>
+    <source>%vol</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterness</target>
+</phrase>
+<phrase>
+    <source>IBU</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>CO2</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>gebraut</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>abgefüllt</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>alle</source>
+    <target>all</target>
+</phrase>
+<phrase>
+    <source>nicht verbraucht</source>
+    <target>not consumed</target>
+</phrase>
+<phrase>
+    <source>Merkliste</source>
+    <target>Pinned</target>
+</phrase>
+<phrase>
+    <source>Ausrüstung</source>
+    <target>Equipment</target>
+</phrase>
+<phrase>
+    <source>Brauanlage</source>
+    <target>Brewing equipment</target>
+</phrase>
+<phrase>
+    <source>Vermögen</source>
+    <target>Capacity</target>
+</phrase>
+<phrase>
+    <source>Sude</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Korrekturwerte</source>
+    <target>Correction values</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Verdampfungsziffer</source>
+    <target>Evaporation figure</target>
+</phrase>
+<phrase>
+    <source>Nachguss</source>
+    <target>Sparging water</target>
+</phrase>
+<phrase>
+    <source>Farbwert</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Kosten</source>
+    <target>Cost</target>
+</phrase>
+<phrase>
+    <source>Standard</source>
+    <target>Standard</target>
+</phrase>
+<phrase>
+    <source>Grainfather G30</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Grainfather G70</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braumeister 10L</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braumeister 20L</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braumeister 50L</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braumeister 200L</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braumeister 500L</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braumeister 1000L</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Kernwerte</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Miscellaneous</target>
+</phrase>
+<phrase>
+    <source>Sollmenge</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Betriebskosten</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Maischekessel</source>
+    <target>Mash kettle</target>
+</phrase>
+<phrase>
+    <source>Durchmesser</source>
+    <target>Diameter</target>
+</phrase>
+<phrase>
+    <source>cm</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Höhe</source>
+    <target>Height</target>
+</phrase>
+<phrase>
+    <source>Volumen</source>
+    <target>Volume</target>
+</phrase>
+<phrase>
+    <source>Nutzbar Höhe</source>
+    <target>Usable height</target>
+</phrase>
+<phrase>
+    <source>Nutzbares Volumen</source>
+    <target>Useable volume</target>
+</phrase>
+<phrase>
+    <source>Sudpfanne</source>
+    <target>Brew kettle</target>
+</phrase>
+<phrase>
+    <source>Geräte</source>
+    <target>Gear</target>
+</phrase>
+<phrase>
+    <source>Neues Gerät</source>
+    <target>New gear</target>
+</phrase>
+<phrase>
+    <source>Rohstoff Hopfen</source>
+    <target>Feedstock Hops</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Search</target>
+</phrase>
+<phrase>
+    <source>Beschreibung</source>
+    <target>Description</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>alle</source>
+    <target>all</target>
+</phrase>
+<phrase>
+    <source>vorhanden</source>
+    <target>in stock</target>
+</phrase>
+<phrase>
+    <source>in Gebrauch</source>
+    <target>in use</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Rohstoff kann nicht gelöscht werden.</source>
+    <target>Ingredient can&apos;t be deleted.</target>
+</phrase>
+<phrase>
+    <source>Der Rohstoff wird von einem nichtgebrauten Sud verwendet.</source>
+    <target>The ingredient is used in a non-brewed brew.</target>
+</phrase>
+<phrase>
+    <source>Alphasäure</source>
+    <target>alpha acidity</target>
+</phrase>
+<phrase>
+    <source>Alpha</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Pellets</source>
+    <target>Pellets</target>
+</phrase>
+<phrase>
+    <source>Typ</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Aroma</source>
+    <target>Aroma</target>
+</phrase>
+<phrase>
+    <source>Bitter</source>
+    <target>Bitterness</target>
+</phrase>
+<phrase>
+    <source>Universal</source>
+    <target>Universal</target>
+</phrase>
+<phrase>
+    <source>Eigenschaften</source>
+    <target>Characteristics</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Eingelagert</source>
+    <target>Stocked</target>
+</phrase>
+<phrase>
+    <source>Haltbar</source>
+    <target>Best before</target>
+</phrase>
+<phrase>
+    <source>Rohstoff w. Zutaten</source>
+    <target>Feedstock Ingredients</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Search</target>
+</phrase>
+<phrase>
+    <source>Beschreibung</source>
+    <target>Description</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>alle</source>
+    <target>all</target>
+</phrase>
+<phrase>
+    <source>vorhanden</source>
+    <target>in stock</target>
+</phrase>
+<phrase>
+    <source>in Gebrauch</source>
+    <target>in use</target>
+</phrase>
+<phrase>
+    <source>Rohstoff kann nicht gelöscht werden.</source>
+    <target>Ingredient can&apos;t be deleted.</target>
+</phrase>
+<phrase>
+    <source>Der Rohstoff wird von einem nichtgebrauten Sud verwendet.</source>
+    <target>The ingredient is used in a non-brewed brew.</target>
+</phrase>
+<phrase>
+    <source>Typ</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Honig</source>
+    <target>Honey</target>
+</phrase>
+<phrase>
+    <source>Zucker</source>
+    <target>Sugar</target>
+</phrase>
+<phrase>
+    <source>Gewürz</source>
+    <target>Spice</target>
+</phrase>
+<phrase>
+    <source>Frucht</source>
+    <target>Fruit</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Miscellaneous</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Eingelagert</source>
+    <target>Stocked</target>
+</phrase>
+<phrase>
+    <source>Haltbar</source>
+    <target>Best before</target>
+</phrase>
+<phrase>
+    <source>Rohstoff Malz</source>
+    <target>Feedstock Malts</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Search</target>
+</phrase>
+<phrase>
+    <source>Beschreibung</source>
+    <target>Description</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>alle</source>
+    <target>all</target>
+</phrase>
+<phrase>
+    <source>vorhanden</source>
+    <target>in stock</target>
+</phrase>
+<phrase>
+    <source>in Gebrauch</source>
+    <target>in use</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Rohstoff kann nicht gelöscht werden.</source>
+    <target>Ingredient can&apos;t be deleted.</target>
+</phrase>
+<phrase>
+    <source>Der Rohstoff wird von einem nichtgebrauten Sud verwendet.</source>
+    <target>The ingredient is used in a non-brewed brew.</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Max. Anteil</source>
+    <target>Max. share</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Anwendung</source>
+    <target>Application</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Eingelagert</source>
+    <target>Stocked</target>
+</phrase>
+<phrase>
+    <source>Haltbar</source>
+    <target>Best before</target>
+</phrase>
+<phrase>
+    <source>Brauübersicht</source>
+    <target>Brew Overview</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>SW</source>
+    <target>OG</target>
+</phrase>
+<phrase>
+    <source>SHA</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Eff. SHA</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Eff. Ausbeute</source>
+    <target>Actual mash efficiency</target>
+</phrase>
+<phrase>
+    <source>Kosten</source>
+    <target>Cost</target>
+</phrase>
+<phrase>
+    <source>Schüttung</source>
+    <target>Grist amount</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>%vol</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>SRE</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>sEVG</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>tEVG</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brew date</target>
+</phrase>
+<phrase>
+    <source>Rohstoff Wasser</source>
+    <target>Feedstock Water</target>
+</phrase>
+<phrase>
+    <source>Wasserprofil</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Calcium</source>
+    <target>Calcium</target>
+</phrase>
+<phrase>
+    <source>mg/l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>mmol/l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Magnesiumhärte</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Carbonathärte</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Härtegrad</source>
+    <target>Hardness</target>
+</phrase>
+<phrase>
+    <source>°dH</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Calciumhärte</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Magnesium</source>
+    <target>Magnesium</target>
+</phrase>
+<phrase>
+    <source>Carbonhärte</source>
+    <target>Carbonate hardness</target>
+</phrase>
+<phrase>
+    <source>Säurekapazität</source>
+    <target>Acid capacity</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Residual alkalinity</target>
+</phrase>
+<phrase>
+    <source>Rohstoff Hefe</source>
+    <target>Feedstock Yeast</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Search</target>
+</phrase>
+<phrase>
+    <source>Beschreibung</source>
+    <target>Description</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>alle</source>
+    <target>all</target>
+</phrase>
+<phrase>
+    <source>vorhanden</source>
+    <target>in stock</target>
+</phrase>
+<phrase>
+    <source>in Gebrauch</source>
+    <target>in use</target>
+</phrase>
+<phrase>
+    <source>Rohstoff kann nicht gelöscht werden.</source>
+    <target>Ingredient can&apos;t be deleted.</target>
+</phrase>
+<phrase>
+    <source>Der Rohstoff wird von einem nichtgebrauten Sud verwendet.</source>
+    <target>The ingredient is used in a non-brewed brew.</target>
+</phrase>
+<phrase>
+    <source>Würzemenge</source>
+    <target>Wort amount</target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>OG / UG</source>
+    <target>TF / LF</target>
+</phrase>
+<phrase>
+    <source>obergärig</source>
+    <target>top-fermented</target>
+</phrase>
+<phrase>
+    <source>untergärig</source>
+    <target>bottom-fermented</target>
+</phrase>
+<phrase>
+    <source>Trocken / flüssig</source>
+    <target>Dry / liquid</target>
+</phrase>
+<phrase>
+    <source>trocken</source>
+    <target>dry</target>
+</phrase>
+<phrase>
+    <source>flüssig</source>
+    <target>liquid</target>
+</phrase>
+<phrase>
+    <source>Verpackung</source>
+    <target>Packaging</target>
+</phrase>
+<phrase>
+    <source>Sedimentation</source>
+    <target>Flocculation</target>
+</phrase>
+<phrase>
+    <source>hoch</source>
+    <target>high</target>
+</phrase>
+<phrase>
+    <source>mittel</source>
+    <target>medium</target>
+</phrase>
+<phrase>
+    <source>niedrig</source>
+    <target>low</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperature</target>
+</phrase>
+<phrase>
+    <source>Eigenschaften</source>
+    <target>Characteristics</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Eingelagert</source>
+    <target>Stocked</target>
+</phrase>
+<phrase>
+    <source>Haltbar</source>
+    <target>Best before</target>
+</phrase>
+<phrase>
+    <source>Einstellungen</source>
+    <target>Settings</target>
+</phrase>
+<phrase>
+    <source>Datenbank</source>
+    <target>Database</target>
+</phrase>
+<phrase>
+    <source>Lokal</source>
+    <target>Local</target>
+</phrase>
+<phrase>
+    <source>Dropbox</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>WebDav</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Benötigt Berechtigung für den Speicher.</source>
+    <target>Requires storage permission.</target>
+</phrase>
+<phrase>
+    <source>Pfad zur lokalen Datenbank</source>
+    <target>Path to local file</target>
+</phrase>
+<phrase>
+    <source>Pfad zur Datenbank</source>
+    <target>Path to database</target>
+</phrase>
+<phrase>
+    <source>Alle Dateien</source>
+    <target>All files</target>
+</phrase>
+<phrase>
+    <source>Benötigt eine Dropbox App.</source>
+    <target>Requires a Dropbox App.</target>
+</phrase>
+<phrase>
+    <source>Dropbox Access Token</source>
+    <target>Dropbox access token</target>
+</phrase>
+<phrase>
+    <source>Pfad auf dem Server</source>
+    <target>Path on the server</target>
+</phrase>
+<phrase>
+    <source>Benötigt einen WebDav Server.</source>
+    <target>Requires a WebDav server.</target>
+</phrase>
+<phrase>
+    <source>URL</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Benutzername</source>
+    <target>User name</target>
+</phrase>
+<phrase>
+    <source>Passwort</source>
+    <target>Password</target>
+</phrase>
+<phrase>
+    <source>Cache leeren</source>
+    <target>Clear cache</target>
+</phrase>
+<phrase>
+    <source>Sprache</source>
+    <target>Language</target>
+</phrase>
+<phrase>
+    <source>Abfüllen</source>
+    <target>Bottling</target>
+</phrase>
+<phrase>
+    <source>Weitere Zutaten</source>
+    <target>Additional ingredients</target>
+</phrase>
+<phrase>
+    <source>nicht zugegeben</source>
+    <target>not added</target>
+</phrase>
+<phrase>
+    <source>zugegeben seit</source>
+    <target>added since</target>
+</phrase>
+<phrase>
+    <source>zugegeben</source>
+    <target>added</target>
+</phrase>
+<phrase>
+    <source>entnommen nach</source>
+    <target>removed after</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>days</target>
+</phrase>
+<phrase>
+    <source>Zutaten noch nicht zugegeben oder entnommen.</source>
+    <target>Ingredients not adder or removed.</target>
+</phrase>
+<phrase>
+    <source>Restextrakt Schnellgärprobe</source>
+    <target>Residual extract fast fermentation</target>
+</phrase>
+<phrase>
+    <source>Aktiviert</source>
+    <target>Activated</target>
+</phrase>
+<phrase>
+    <source>Scheinbar</source>
+    <target>Residual extract</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Tatsächlich</source>
+    <target>Actual</target>
+</phrase>
+<phrase>
+    <source>Grünschlauchzeitpunkt</source>
+    <target>Green bottling time</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe liegt tiefer als Jungbier.</source>
+    <target>Fast fermentation probe is lower than the green beer.</target>
+</phrase>
+<phrase>
+    <source>Restextrakt Jungbier</source>
+    <target>Residual extract green beer</target>
+</phrase>
+<phrase>
+    <source>Grünschlauchzeitpunkt noch nicht erreicht.</source>
+    <target>Green bottling time not reached.</target>
+</phrase>
+<phrase>
+    <source>Bierwerte</source>
+    <target>Beer values</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad scheinbar</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad tatsächlich</source>
+    <target>Actual fermentation</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Druck</source>
+    <target>Pressure</target>
+</phrase>
+<phrase>
+    <source>Temperatur Jungbier</source>
+    <target>Temperature green beer</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Spundungsdruck</source>
+    <target>Bung pressure</target>
+</phrase>
+<phrase>
+    <source>bar</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>Jungbiermenge</source>
+    <target>Amount green beer</target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Zusätzliche Kosten</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Sud abgefüllt</source>
+    <target>Brew bottled</target>
+</phrase>
+<phrase>
+    <source>ml/l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Biermenge</source>
+    <target>Beer amount</target>
+</phrase>
+<phrase>
+    <source>Speise &amp; Zucker</source>
+    <target>Sugar</target>
+</phrase>
+<phrase>
+    <source>Jungbier liegt tiefer als Schnellgärprobe.</source>
+    <target>OG of green beer is lower than fast fermentation probe.</target>
+</phrase>
+<phrase>
+    <source>Spunden</source>
+    <target>No sugar addition</target>
+</phrase>
+<phrase>
+    <source>Zuckerfaktor</source>
+    <target>Sugar factor</target>
+</phrase>
+<phrase>
+    <source>Speise</source>
+    <target>Unfermented wort</target>
+</phrase>
+<phrase>
+    <source>ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Speiseanteil</source>
+    <target>Amount sugar</target>
+</phrase>
+<phrase>
+    <source>Zuckeranteil</source>
+    <target>Sugar</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Abschluss</source>
+    <target>Completion</target>
+</phrase>
+<phrase>
+    <source>Abfülldatum</source>
+    <target>Bottling date</target>
+</phrase>
+<phrase>
+    <source>Nebenkosten</source>
+    <target>Additional costs</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Abgefüllt</source>
+    <target>Bottled</target>
+</phrase>
+<phrase>
+    <source>Bewertung</source>
+    <target>Rating</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Date</target>
+</phrase>
+<phrase>
+    <source>Woche</source>
+    <target>Week</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Gesamteindruck</source>
+    <target>Overall impression</target>
+</phrase>
+<phrase>
+    <source>toll, macht Lust auf mehr</source>
+    <target>great, want more</target>
+</phrase>
+<phrase>
+    <source>gutes, typisches Bier</source>
+    <target>good and typical for that style</target>
+</phrase>
+<phrase>
+    <source>interessant</source>
+    <target>interesting</target>
+</phrase>
+<phrase>
+    <source>überraschend, ungewöhnlich</source>
+    <target>surprising, unusual</target>
+</phrase>
+<phrase>
+    <source>kreativ, mutig</source>
+    <target>creative</target>
+</phrase>
+<phrase>
+    <source>unauffällig, gewöhnlich</source>
+    <target>nothing exciting</target>
+</phrase>
+<phrase>
+    <source>einmal ist genug, langweilig</source>
+    <target>once is enough, boring</target>
+</phrase>
+<phrase>
+    <source>nicht trinkbar, problematisch</source>
+    <target>problematic, unpleasant</target>
+</phrase>
+<phrase>
+    <source>Farbe &amp; Klarheit</source>
+    <target>Color &amp; Clearness</target>
+</phrase>
+<phrase>
+    <source>hellgelb, lichtgelb</source>
+    <target>bright</target>
+</phrase>
+<phrase>
+    <source>gelb</source>
+    <target>pale</target>
+</phrase>
+<phrase>
+    <source>golden</source>
+    <target>golden</target>
+</phrase>
+<phrase>
+    <source>bernstein</source>
+    <target>amber</target>
+</phrase>
+<phrase>
+    <source>kupferrot, amber</source>
+    <target>copper, ruby</target>
+</phrase>
+<phrase>
+    <source>braun, tiefbraun</source>
+    <target>brown to dark brown</target>
+</phrase>
+<phrase>
+    <source>schwarz, tief dunkel</source>
+    <target>black</target>
+</phrase>
+<phrase>
+    <source>satt, intensiv</source>
+    <target>saturated, intense</target>
+</phrase>
+<phrase>
+    <source>glänzend</source>
+    <target>bright</target>
+</phrase>
+<phrase>
+    <source>matt, blass</source>
+    <target>pale</target>
+</phrase>
+<phrase>
+    <source>gräulich, fahl</source>
+    <target>greyish, wan</target>
+</phrase>
+<phrase>
+    <source>Schaum</source>
+    <target>Foam</target>
+</phrase>
+<phrase>
+    <source>feinporig, fest</source>
+    <target>fine, tight</target>
+</phrase>
+<phrase>
+    <source>grobporig, schwach</source>
+    <target>coarse, weak</target>
+</phrase>
+<phrase>
+    <source>gut haftend</source>
+    <target>well adhering</target>
+</phrase>
+<phrase>
+    <source>schlecht haftend</source>
+    <target>poor adherence</target>
+</phrase>
+<phrase>
+    <source>gute Haltbarkeit</source>
+    <target>good stability</target>
+</phrase>
+<phrase>
+    <source>mässige Haltbarkeit</source>
+    <target>mediocre stability</target>
+</phrase>
+<phrase>
+    <source>keine Haltbarkeit</source>
+    <target>poor stability</target>
+</phrase>
+<phrase>
+    <source>geringes Volumen</source>
+    <target>small volume</target>
+</phrase>
+<phrase>
+    <source>kräftiges Volumen</source>
+    <target>large volume</target>
+</phrase>
+<phrase>
+    <source>sehr voluminös, mächtig</source>
+    <target>voluminous</target>
+</phrase>
+<phrase>
+    <source>überschäumend</source>
+    <target>exuberant</target>
+</phrase>
+<phrase>
+    <source>Geruch</source>
+    <target>Smell</target>
+</phrase>
+<phrase>
+    <source>rein, abgerundet</source>
+    <target>clear, harmonic</target>
+</phrase>
+<phrase>
+    <source>frisch</source>
+    <target>fresh</target>
+</phrase>
+<phrase>
+    <source>wohlriechend</source>
+    <target>well smelling</target>
+</phrase>
+<phrase>
+    <source>unangenehm, unausgewogen</source>
+    <target>unround, unharmonic</target>
+</phrase>
+<phrase>
+    <source>hopfenaromatisch, hopfig</source>
+    <target>hoppy</target>
+</phrase>
+<phrase>
+    <source>malzaromatisch, malzig</source>
+    <target>malty</target>
+</phrase>
+<phrase>
+    <source>süsslich, nach Würze</source>
+    <target>sweety</target>
+</phrase>
+<phrase>
+    <source>heftig</source>
+    <target>yeasty</target>
+</phrase>
+<phrase>
+    <source>fruchtig</source>
+    <target>fruity</target>
+</phrase>
+<phrase>
+    <source>gewürzig</source>
+    <target>spicy</target>
+</phrase>
+<phrase>
+    <source>säuerlich</source>
+    <target>sour</target>
+</phrase>
+<phrase>
+    <source>Geruchsfehler</source>
+    <target>wrong, faulty</target>
+</phrase>
+<phrase>
+    <source>Geschmack</source>
+    <target>Taste</target>
+</phrase>
+<phrase>
+    <source>rein</source>
+    <target>clear</target>
+</phrase>
+<phrase>
+    <source>ausgewogen, rund</source>
+    <target>round, balanced</target>
+</phrase>
+<phrase>
+    <source>gehaltsvoll</source>
+    <target>rich</target>
+</phrase>
+<phrase>
+    <source>unausgewogen, kantig</source>
+    <target>unbalanced, edgy</target>
+</phrase>
+<phrase>
+    <source>unreif, unrein</source>
+    <target>unclean, not yet ready</target>
+</phrase>
+<phrase>
+    <source>süsslich, klebrig</source>
+    <target>sweety, sticky</target>
+</phrase>
+<phrase>
+    <source>Geschmacksfehler</source>
+    <target>wrong/faulty</target>
+</phrase>
+<phrase>
+    <source>Antrunk</source>
+    <target>First/Initial Impression</target>
+</phrase>
+<phrase>
+    <source>angenehm rezent</source>
+    <target>balanced, pleasant</target>
+</phrase>
+<phrase>
+    <source>rezent, fein perlend</source>
+    <target>mildly sparkling</target>
+</phrase>
+<phrase>
+    <source>gut eingebunden</source>
+    <target>well incorporated</target>
+</phrase>
+<phrase>
+    <source>prickelnd</source>
+    <target>sparkling</target>
+</phrase>
+<phrase>
+    <source>stark prickelnd, aufdringlich</source>
+    <target>over-carbonated</target>
+</phrase>
+<phrase>
+    <source>wenig rezent</source>
+    <target>under-carbonated</target>
+</phrase>
+<phrase>
+    <source>schal</source>
+    <target>flat</target>
+</phrase>
+<phrase>
+    <source>sehr schal</source>
+    <target>very flat</target>
+</phrase>
+<phrase>
+    <source>Haupttrunk</source>
+    <target>Palate/Mouthfeel</target>
+</phrase>
+<phrase>
+    <source>wässrig, leer, dünn</source>
+    <target>watery</target>
+</phrase>
+<phrase>
+    <source>etwas leer</source>
+    <target>somewhat thin</target>
+</phrase>
+<phrase>
+    <source>schlank</source>
+    <target>light</target>
+</phrase>
+<phrase>
+    <source>vollmundig</source>
+    <target>full-bodied</target>
+</phrase>
+<phrase>
+    <source>mastig, breit</source>
+    <target>full-bodied</target>
+</phrase>
+<phrase>
+    <source>Nachtrunk</source>
+    <target>Finish</target>
+</phrase>
+<phrase>
+    <source>sehr fein</source>
+    <target>very fine</target>
+</phrase>
+<phrase>
+    <source>angenehm, ausgewogen</source>
+    <target>balanced, round</target>
+</phrase>
+<phrase>
+    <source>nicht anhängend</source>
+    <target>short finish</target>
+</phrase>
+<phrase>
+    <source>nachhängend</source>
+    <target>long finish</target>
+</phrase>
+<phrase>
+    <source>stark nachhängend</source>
+    <target>very long finish, lasting</target>
+</phrase>
+<phrase>
+    <source>wenig herb, unterentwickelt</source>
+    <target>little bitterness, underdeveloped</target>
+</phrase>
+<phrase>
+    <source>sehr herb, kräftig betont</source>
+    <target>very bitter, strongly emphasized</target>
+</phrase>
+<phrase>
+    <source>nicht/kaum wahrnehmbar</source>
+    <target>hardly noticeable</target>
+</phrase>
+<phrase>
+    <source>unangenehm</source>
+    <target>unpleasent, unround</target>
+</phrase>
+<phrase>
+    <source>Brauen</source>
+    <target>Brewing</target>
+</phrase>
+<phrase>
+    <source>Verwendete Rohstoffe vom Bestand abziehen?</source>
+    <target>Remove ingredients from feedstock?</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recipe</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brew name</target>
+</phrase>
+<phrase>
+    <source>Brauanlage</source>
+    <target>Brewing equipment</target>
+</phrase>
+<phrase>
+    <source>Biermenge</source>
+    <target>Beer amount</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterness</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Residual alkalinity</target>
+</phrase>
+<phrase>
+    <source>High Gravity Faktor</source>
+    <target>High gravity factor</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Reifezeit</source>
+    <target>Aging time</target>
+</phrase>
+<phrase>
+    <source>Wochen</source>
+    <target>weeks</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Vorbereitung</source>
+    <target>Preparations</target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Strike water</target>
+</phrase>
+<phrase>
+    <source>Faktor</source>
+    <target>Factor</target>
+</phrase>
+<phrase>
+    <source>Faktor Empfehlung</source>
+    <target>Recommended factor</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>Milchsäure 80%</source>
+    <target>Lactic acid 80%</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Malts</target>
+</phrase>
+<phrase>
+    <source>Wassermenge</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperature</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Malz schroten</source>
+    <target>Grind grist</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Gesamtschüttung</source>
+    <target>Grist amount</target>
+</phrase>
+<phrase>
+    <source>Maischen</source>
+    <target>Mashing</target>
+</phrase>
+<phrase>
+    <source>Einmaischen</source>
+    <target>Dough in</target>
+</phrase>
+<phrase>
+    <source>Weitere Zutaten</source>
+    <target>Additional ingredients</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Rasten</source>
+    <target>Halts</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Jodprobe</source>
+    <target>Iodine probe</target>
+</phrase>
+<phrase>
+    <source>Lila bis schwarz</source>
+    <target>violet to black</target>
+</phrase>
+<phrase>
+    <source>reichlich unvergärbare Stärke</source>
+    <target>much fermentable sugars</target>
+</phrase>
+<phrase>
+    <source>Rot bis braun</source>
+    <target>red to brown</target>
+</phrase>
+<phrase>
+    <source>kaum noch unvergärbare Stärke</source>
+    <target>almost no fermentable sugars</target>
+</phrase>
+<phrase>
+    <source>Gelb bis hellorange</source>
+    <target>yellow to light orange</target>
+</phrase>
+<phrase>
+    <source>fertig (jodnormal)</source>
+    <target>ready</target>
+</phrase>
+<phrase>
+    <source>Läutern</source>
+    <target>Lautering</target>
+</phrase>
+<phrase>
+    <source>Nachguss</source>
+    <target>Sparging water</target>
+</phrase>
+<phrase>
+    <source>Vorderwürzehopfung</source>
+    <target>Pre-boil hopping</target>
+</phrase>
+<phrase>
+    <source>Zielwerte</source>
+    <target>Target values</target>
+</phrase>
+<phrase>
+    <source>Würzemenge 100°C</source>
+    <target>Wort amount 100°C</target>
+</phrase>
+<phrase>
+    <source>°Brix</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Würzekochen</source>
+    <target>Boiling</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei 20°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hops</target>
+</phrase>
+<phrase>
+    <source>Kochbeginn</source>
+    <target>Begin of boil</target>
+</phrase>
+<phrase>
+    <source>lila bis schwarz</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>rot bis braun</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>gelb bis hellorange</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Zielstammwürze</source>
+    <target>Target original gravity</target>
+</phrase>
+<phrase>
+    <source>Zielmenge bei 100°C</source>
+    <target>Target wort amount 100°C</target>
+</phrase>
+<phrase>
+    <source>Zielmenge bei 20°C</source>
+    <target>Target wort amount 20°C</target>
+</phrase>
+<phrase>
+    <source>Menge bei 20°C</source>
+    <target>Amount at 20°C</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Boil time</target>
+</phrase>
+<phrase>
+    <source>Würzemenge vor Hopfenseihen bei 20°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Würzemenge nach Hopfenseihen bei 20°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Nachisomerisierung</source>
+    <target>Isomerisation time</target>
+</phrase>
+<phrase>
+    <source>Kochende</source>
+    <target>End of boil</target>
+</phrase>
+<phrase>
+    <source>Verdampfung</source>
+    <target>Evaporation figure</target>
+</phrase>
+<phrase>
+    <source>Sud</source>
+    <target>Brew</target>
+</phrase>
+<phrase>
+    <source>Anlage</source>
+    <target>Brewing equipment</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>Anstellen</source>
+    <target>Pitch</target>
+</phrase>
+<phrase>
+    <source>High Gravity Verschneidung</source>
+    <target>High gravity water</target>
+</phrase>
+<phrase>
+    <source>High-Gravity Verdünnung</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Wasserverschneidung</source>
+    <target>Water cut</target>
+</phrase>
+<phrase>
+    <source>Würzemenge</source>
+    <target>Wort amount</target>
+</phrase>
+<phrase>
+    <source>Benötigte Speisemenge geschätzt (SRE 3°P, 20°C)</source>
+    <target>Estimated amount unfermented wort (3°P, 20°C)</target>
+</phrase>
+<phrase>
+    <source>Abgefüllte Speisemenge</source>
+    <target>Available unfermented wort</target>
+</phrase>
+<phrase>
+    <source>Anstellmenge</source>
+    <target>Pitching amount</target>
+</phrase>
+<phrase>
+    <source>Effektive Sudhausausbeute</source>
+    <target>Actual mash efficiency</target>
+</phrase>
+<phrase>
+    <source>Gärung</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Yeast</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>days</target>
+</phrase>
+<phrase>
+    <source>Abschluss</source>
+    <target>Completion</target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brew date</target>
+</phrase>
+<phrase>
+    <source>Zusätzliche Kosten</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Nebenkosten</source>
+    <target>Additional costs</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Ausbeute für Durchschnitt nicht einbeziehen</source>
+    <target>Exclude brew from average efficiency calculation</target>
+</phrase>
+<phrase>
+    <source>Sud gebraut</source>
+    <target>Brewed</target>
+</phrase>
+<phrase>
+    <source>Schnellgärung</source>
+    <target>Fast Fermentation</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Extrakt</source>
+    <target>Residual extract</target>
+</phrase>
+<phrase>
+    <source>Temp</source>
+    <target>Temp</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Date</target>
+</phrase>
+<phrase>
+    <source>°Brix</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Hauptgärung</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Extrakt</source>
+    <target>Residual extract</target>
+</phrase>
+<phrase>
+    <source>Temp</source>
+    <target>Temp</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Date</target>
+</phrase>
+<phrase>
+    <source>Weitere Zutaten</source>
+    <target>Additional ingredients</target>
+</phrase>
+<phrase>
+    <source>nicht zugegeben</source>
+    <target>not added</target>
+</phrase>
+<phrase>
+    <source>zugegeben seit</source>
+    <target>added since</target>
+</phrase>
+<phrase>
+    <source>zugegeben</source>
+    <target>added</target>
+</phrase>
+<phrase>
+    <source>entnommen nach</source>
+    <target>removed after</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Days</target>
+</phrase>
+<phrase>
+    <source>°Brix</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Nachgärung</source>
+    <target>Fermentation Priming</target>
+</phrase>
+<phrase>
+    <source>CO2</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Druck</source>
+    <target>Pressure</target>
+</phrase>
+<phrase>
+    <source>Temp</source>
+    <target>Temp</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Date</target>
+</phrase>
+<phrase>
+    <source>bar</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Auswahl</source>
+    <target>Selection</target>
+</phrase>
+<phrase>
+    <source>Sudinfo</source>
+    <target>Brew Info</target>
+</phrase>
+<phrase>
+    <source>Gespeichert</source>
+    <target>Saved</target>
+</phrase>
+<phrase>
+    <source>Erstellt</source>
+    <target>Created</target>
+</phrase>
+<phrase>
+    <source>Gebraut</source>
+    <target>Brewed</target>
+</phrase>
+<phrase>
+    <source>Angestellt</source>
+    <target>Pitching</target>
+</phrase>
+<phrase>
+    <source>Abgefüllt</source>
+    <target>Bottled</target>
+</phrase>
+<phrase>
+    <source>Verbraucht</source>
+    <target>Consumed</target>
+</phrase>
+<phrase>
+    <source>Zusammenfassung</source>
+    <target>Summary</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recipe</target>
+</phrase>
+<phrase>
+    <source>Status</source>
+    <target>Status</target>
+</phrase>
+<phrase>
+    <source>nicht gebraut</source>
+    <target>not brewed</target>
+</phrase>
+<phrase>
+    <source>verbraucht</source>
+    <target>consumed</target>
+</phrase>
+<phrase>
+    <source>nicht abgefüllt</source>
+    <target>not bottled</target>
+</phrase>
+<phrase>
+    <source>reif in</source>
+    <target>ready in</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>days</target>
+</phrase>
+<phrase>
+    <source>reif seit</source>
+    <target>ready since</target>
+</phrase>
+<phrase>
+    <source>Wochen</source>
+    <target>weeks</target>
+</phrase>
+<phrase>
+    <source>Bewertung</source>
+    <target>Rating</target>
+</phrase>
+<phrase>
+    <source>Anlage</source>
+    <target>Brewing equipment</target>
+</phrase>
+<phrase>
+    <source>Wasserprofil</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Sud</source>
+    <target>Brew</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>%vol</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Reifezeit</source>
+    <target>Aging time</target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>Info</source>
+    <target>Info</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brew name</target>
+</phrase>
+<phrase>
+    <source>Sudnummer</source>
+    <target>Brew number</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Residual extract</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad (scheinbar)</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterness</target>
+</phrase>
+<phrase>
+    <source>IBU</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Residual alkalinity</target>
+</phrase>
+<phrase>
+    <source>°dH</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>CO2</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Malts</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Gesamtschüttung</source>
+    <target>Grist amount</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hops</target>
+</phrase>
+<phrase>
+    <source>VWH</source>
+    <target>Pre-boil</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Weitere Zutaten</source>
+    <target>Additional ingredients</target>
+</phrase>
+<phrase>
+    <source>Gärung</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>Kochen</source>
+    <target>Boiling</target>
+</phrase>
+<phrase>
+    <source>Maischen</source>
+    <target>Mashing</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Yeast</target>
+</phrase>
+<phrase>
+    <source>Bieranalyse</source>
+    <target>Beer Analysis</target>
+</phrase>
+<phrase>
+    <source>Bieranalyse mit dem Refraktometer</source>
+    <target>Beer Analysis with Refractometer</target>
+</phrase>
+<phrase>
+    <source>Formel</source>
+    <target>Formula</target>
+</phrase>
+<phrase>
+    <source>Terrill</source>
+    <target>Terrill</target>
+</phrase>
+<phrase>
+    <source>Terrill Linear</source>
+    <target>Terrill Linear</target>
+</phrase>
+<phrase>
+    <source>Standard</source>
+    <target>Standard</target>
+</phrase>
+<phrase>
+    <source>Kleier</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Vor der Vergärung</source>
+    <target>Before fermentation</target>
+</phrase>
+<phrase>
+    <source>°Brix</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Nach der Vergärung</source>
+    <target>After fermentation</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Dichte</source>
+    <target>Density</target>
+</phrase>
+<phrase>
+    <source>g/ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Restextrakt scheinbar</source>
+    <target>Residual extract</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad scheinbar</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Restextrakt wirklich</source>
+    <target>Actual residual extract</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad wirklich</source>
+    <target>Actual fermentation</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>vol%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Die Terrill-Formel arbeitet in endvergorenen Proben genauer, in wenig oder unvergorenen Proben zum Teil nicht zu gebrauchen.</source>
+    <target>The Terrill formula is precise for high fermentation states but not accurate for low fermentation states.</target>
+</phrase>
+<phrase>
+    <source>Die Terrill-Linear-Formel ist eine linearisierte Version der Terrill-Formel.</source>
+    <target>The Terrill-Linear formula ist the linearized Terrill formula.</target>
+</phrase>
+<phrase>
+    <source>Die Standardformel liefert gleichmässig gute Werte, in endvergorenen Proben aber etwas zu hoch.</source>
+    <target>The standard formula given equally good values for all fermentation states.</target>
+</phrase>
+<phrase>
+    <source>Die Kleier-Formel wurde von Kleier aus dem Hobbybrauer Forum ermittelt.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>Zugegeben</source>
+    <target>Added</target>
+</phrase>
+<phrase>
+    <source>Entnommen</source>
+    <target>Removed</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Rohstoff vom Bestand abziehen?</source>
+    <target>Remove ingredients from feedstock?</target>
+</phrase>
+<phrase>
+    <source>Zugeben</source>
+    <target>Add</target>
+</phrase>
+<phrase>
+    <source>Entnehmen</source>
+    <target>Remove</target>
+</phrase>
+<phrase>
+    <source>°Brix</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>g/ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Temperatur 1</source>
+    <target>Temperature 1</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Volumen 1</source>
+    <target>Volume 1</target>
+</phrase>
+<phrase>
+    <source>l</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Temperatur 2</source>
+    <target>Temperature 2</target>
+</phrase>
+<phrase>
+    <source>Volumen 2</source>
+    <target>Volume 2</target>
+</phrase>
+<phrase>
+    <source>Datenbank aktuell.</source>
+    <target>Database up-to-date.</target>
+</phrase>
+<phrase>
+    <source>Datenbank aktualisiert.</source>
+    <target>Database updated.</target>
+</phrase>
+<phrase>
+    <source>Synchronisationsdienst nicht erreichbar.</source>
+    <target>Synchronization service not reachable.</target>
+</phrase>
+<phrase>
+    <source>Datenbank nicht gefunden.</source>
+    <target>Database not found.</target>
+</phrase>
+<phrase>
+    <source>Datenbank nicht synchron.</source>
+    <target>Database out of sync.</target>
+</phrase>
+<phrase>
+    <source>Synchronisation fehlgeschlagen.</source>
+    <target>Synchronization failed.</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank ist ungültig.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Die Datenbank kann nur mit der App v1.x.x geöffnet werden.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Die Datenbank ist zu alt für die App und muss zuerst mit dem kleinen-brauhelfer aktualisiert werden.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Die App ist zu alt für diese Datenbank und muss zuerst aktualisiert werden.</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Synchronisationsdienst ist nicht verfügbar.</source>
+    <target>Synchronization service is not available.</target>
+</phrase>
+<phrase>
+    <source>Datenbank wird nur lesend geöffnet.</source>
+    <target>Database opened read-only.</target>
+</phrase>
+<phrase>
+    <source>Verbindung mit der Datenbank fehlgeschlagen.</source>
+    <target>Connection to database failed.</target>
+</phrase>
+<phrase>
+    <source>Einstellungen überprüfen.</source>
+    <target>Check database settings.</target>
+</phrase>
+<phrase>
+    <source>Diese Datenbank wird nicht unterstüzt.</source>
+    <target>This database is not supported.</target>
+</phrase>
+<phrase>
+    <source>Die Datenbankversion (%1) ist zu hoch für die App.</source>
+    <target>The database version (%1) ist too high for the app.</target>
+</phrase>
+<phrase>
+    <source>SSL nicht unterstüzt</source>
+    <target>SSL not supported</target>
+</phrase>
+<phrase>
+    <source>SSL compile time: %1
+SSL run time: %2</source>
+    <target>SSL compile time: %1
+SSL run time: %2</target>
+</phrase>
+<phrase>
+    <source>Änderungen speichern?</source>
+    <target>Save changes?</target>
+</phrase>
+<phrase>
+    <source>Soll das Programm geschlossen werden?</source>
+    <target>Quit program?</target>
+</phrase>
+<phrase>
+    <source>Änderungen vor dem Schliessen speichern?</source>
+    <target>Save database before quitting?</target>
+</phrase>
+<phrase>
+    <source>...</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>relativ zur Datenbank</source>
+    <target>relative to database</target>
+</phrase>
+<phrase>
+    <source>Anhang auswählen</source>
+    <target>Select attachment</target>
+</phrase>
+<phrase>
+    <source>Rezeptübernahme</source>
+    <target>Recipe transfer</target>
+</phrase>
+<phrase>
+    <source>IBU Berechnung für Hopfengabe</source>
+    <target>IBU calculations for hopping</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target>°P</target>
+</phrase>
+<phrase>
+    <source>Nachisomerisierungs-zeit</source>
+    <target>Post-boil isomerisation time</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Hopfengabe 1</source>
+    <target>Hop addition 1</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Alpha %</source>
+    <target>Alpha %</target>
+</phrase>
+<phrase>
+    <source>Kochzeit</source>
+    <target>Boil time</target>
+</phrase>
+<phrase>
+    <source>Pellets</source>
+    <target>Pellets</target>
+</phrase>
+<phrase>
+    <source>IBU</source>
+    <target>IBU</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Form</target>
+</phrase>
+<phrase>
+    <source>Entfernt diese Bewertung</source>
+    <target>Remove this evaluation</target>
+</phrase>
+<phrase>
+    <source>6 Woche</source>
+    <target>6 weeks</target>
+</phrase>
+<phrase>
+    <source>Bewertungsdatum</source>
+    <target>Evaluation date</target>
+</phrase>
+<phrase>
+    <source>dd.MM.yyyy</source>
+    <target>dd.MM.yyyy</target>
+</phrase>
+<phrase>
+    <source>Woche: </source>
+    <target>Week: </target>
+</phrase>
+<phrase>
+    <source>Query</source>
+    <target>Query</target>
+</phrase>
+<phrase>
+    <source>Fehler</source>
+    <target>Erro</target>
+</phrase>
+<phrase>
+    <source>Einstellungen</source>
+    <target>Settings</target>
+</phrase>
+<phrase>
+    <source>Speicherort</source>
+    <target>Storage location</target>
+</phrase>
+<phrase>
+    <source>Pfad zur Datenbank</source>
+    <target>Path to database</target>
+</phrase>
+<phrase>
+    <source>...</source>
+    <target>...</target>
+</phrase>
+<phrase>
+    <source>Style (Diese Einstellung wird erst nach dem Neustart der Anwendung wirksam)</source>
+    <target>Style (Change requires program restart to become active)</target>
+</phrase>
+<phrase>
+    <source>Style vom Betriebssystem benutzen</source>
+    <target>Use style from operating system</target>
+</phrase>
+<phrase>
+    <source>Systemfarben</source>
+    <target>System colors</target>
+</phrase>
+<phrase>
+    <source>Hell</source>
+    <target>Bright</target>
+</phrase>
+<phrase>
+    <source>Dunkel</source>
+    <target>Dark</target>
+</phrase>
+<phrase>
+    <source>Farbe Highlight</source>
+    <target>Color highlight</target>
+</phrase>
+<phrase>
+    <source>Gärverläufe</source>
+    <target>Fermentation progresses</target>
+</phrase>
+<phrase>
+    <source>Schnellgärverlauf Linie Stammwürze</source>
+    <target>Progress of fast fermentation sample - OG Line</target>
+</phrase>
+<phrase>
+    <source>Schnellgärverlauf Linie Alkoholgehalt</source>
+    <target>Progress of fast fermentation sample - ABV line</target>
+</phrase>
+<phrase>
+    <source>Schnellgärverlauf Linie Temperatur</source>
+    <target>Progress of fast fermentation sample - Temperature line</target>
+</phrase>
+<phrase>
+    <source>Hauptgärverlauf Linie Stammwürze</source>
+    <target>Original gravity line of fermentation process</target>
+</phrase>
+<phrase>
+    <source>Hauptgärverlauf Linie Alkoholgehalt</source>
+    <target>ABV line of fermentation process</target>
+</phrase>
+<phrase>
+    <source>Hauptgärverlauf Linie Temperatur</source>
+    <target>Temperature line of fermentation process</target>
+</phrase>
+<phrase>
+    <source>Nachgärverlauf Linie CO2 Gehalt</source>
+    <target>CO2 level line of priming process</target>
+</phrase>
+<phrase>
+    <source>Nachgärverlauf Linie Temperatur</source>
+    <target>Temperature line of priming process</target>
+</phrase>
+<phrase>
+    <source>Brauübersicht</source>
+    <target>Beer overview</target>
+</phrase>
+<phrase>
+    <source>Diagramm Linie 1</source>
+    <target>Diagram line 1</target>
+</phrase>
+<phrase>
+    <source>Spalte Linie 1</source>
+    <target>Column line 1</target>
+</phrase>
+<phrase>
+    <source>Diagramm Linie 2</source>
+    <target>Diagram line 2</target>
+</phrase>
+<phrase>
+    <source>Spalte Linie 2</source>
+    <target>Column line 2</target>
+</phrase>
+<phrase>
+    <source>Farben auf Defaultwerte zurücksetzten</source>
+    <target>Reset colours to default</target>
+</phrase>
+<phrase>
+    <source>Einstellungen zur Umrechnung von Brix nach Plato</source>
+    <target>Settings for Brix to Plato conversion</target>
+</phrase>
+<phrase>
+    <source>Korrekturfaktor Brix nach Plato</source>
+    <target>Correction factor Brix to Plato</target>
+</phrase>
+<phrase>
+    <source>Formel zur Umrechnung Brix in Plato im Gärverlauf</source>
+    <target>Formula for Brix to Plato conversion for fermentation process</target>
+</phrase>
+<phrase>
+    <source>Kleier</source>
+    <target>Kleier</target>
+</phrase>
+<phrase>
+    <source>Standardformel</source>
+    <target>Standard formula</target>
+</phrase>
+<phrase>
+    <source>Terrill</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Terrill linear</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Gärungskorrektur</source>
+    <target>Fermentation correction</target>
+</phrase>
+<phrase>
+    <source>Bewertung</source>
+    <target>Evaluation</target>
+</phrase>
+<phrase>
+    <source>Maximale Anzahl Sterne</source>
+    <target>Maximum amount of stars</target>
+</phrase>
+<phrase>
+    <source>Beim beenden keinen Bestätigungs-Dialog anzeigen</source>
+    <target>Don&apos;t ask for closing confirmation</target>
+</phrase>
+<phrase>
+    <source>auf Defaultwerte zurücksetzten</source>
+    <target>Set to default values</target>
+</phrase>
+<phrase>
+    <source>Schrift</source>
+    <target>Font</target>
+</phrase>
+<phrase>
+    <source>Benutze Systemeinstellungen</source>
+    <target>Use system settings</target>
+</phrase>
+<phrase>
+    <source>Name:</source>
+    <target>Name:</target>
+</phrase>
+<phrase>
+    <source>Größe:</source>
+    <target>Size:</target>
+</phrase>
+<phrase>
+    <source>Meldungen</source>
+    <target>Messages</target>
+</phrase>
+<phrase>
+    <source>Beim Programmstart keine Meldungen anzeigen</source>
+    <target>Don&apos;t show messages at programme start</target>
+</phrase>
+<phrase>
+    <source>Brau &amp;&amp; Gärdaten</source>
+    <target>Brew &amp; fermentation data</target>
+</phrase>
+<phrase>
+    <source>tatsächlicher Endvergärungsgrad</source>
+    <target>Attenuation</target>
+</phrase>
+<phrase>
+    <source>scheinbarer Endvergärungsgrad</source>
+    <target>Apparent attenuation</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>effektive Sudhausausbeute</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt</source>
+    <target>ABV</target>
+</phrase>
+<phrase>
+    <source>Kosten pro Liter</source>
+    <target>Costs per litre</target>
+</phrase>
+<phrase>
+    <source>Grünschlauchzeitpunkt</source>
+    <target>Green bottling time</target>
+</phrase>
+<phrase>
+    <source>Spundungsdruck</source>
+    <target>Bung pressure</target>
+</phrase>
+<phrase>
+    <source>Speisemenge gesamt</source>
+    <target>Total amount of unfermented wort (dessert)</target>
+</phrase>
+<phrase>
+    <source>Haushaltszuckergabe gesamt</source>
+    <target>Total amount of table sugar additions</target>
+</phrase>
+<phrase>
+    <source>Traubenzuckergabe gesamt</source>
+    <target>Total amount of corn sugar additions</target>
+</phrase>
+<phrase>
+    <source>Speisemenge pro 0,5 Liter Flasche</source>
+    <target>Dessert per 0,5 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Haushaltszuckergabe pro Flasche 0,5 Liter</source>
+    <target>Amount of table sugar additions per 0,5 l. bottle</target>
+</phrase>
+<phrase>
+    <source>Traubenzuckergabe pro Flasche 0,5 Liter</source>
+    <target>Amount of corn sugar additions per 0,5 l. bottle</target>
+</phrase>
+<phrase>
+    <source>Speisemenge pro 0,33 Liter Flasche</source>
+    <target>Dessert per 0,33 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Haushaltszuckergabe pro Flasche 0,33 Liter</source>
+    <target>Amount of table sugar additions per 0,33 l. bottle</target>
+</phrase>
+<phrase>
+    <source>Traubenzuckergabe pro Flasche 0,33 Liter</source>
+    <target>Amount of corn sugar additions per 0,33 l. bottle</target>
+</phrase>
+<phrase>
+    <source>Berechne Verdampfungsziffer</source>
+    <target>Calculate evaporation figure</target>
+</phrase>
+<phrase>
+    <source>Menge Pfanne Voll (Kochbeginn)</source>
+    <target>Maximum fill level of brew kettle (begin of boil)</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe von Oberkannte aus gemessen</source>
+    <target>Fill level measured from top</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe vom Boden aus gemessen</source>
+    <target>Fill level measured from bottom</target>
+</phrase>
+<phrase>
+    <source>Menge bei 100°C</source>
+    <target>Amount at 100°C</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei Kochende</source>
+    <target>Wort amount at end of boil</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Boil time</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsziffer</source>
+    <target>Evaporation figure</target>
+</phrase>
+<phrase>
+    <source>Entnahmezeitpunkt</source>
+    <target>Date of extraction</target>
+</phrase>
+<phrase>
+    <source>Zugabedatum übernehmen</source>
+    <target>Date of adding</target>
+</phrase>
+<phrase>
+    <source>Berechnung Einmaischetemperatur</source>
+    <target>Calculation Dough-in Temperature</target>
+</phrase>
+<phrase>
+    <source>Gesamtschüttung</source>
+    <target>Total amount of grist</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Temperatur Gesamtschüttung</source>
+    <target>Temperature of grist</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Strike water</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Temperatur erste Rast</source>
+    <target>Temperature of first rest</target>
+</phrase>
+<phrase>
+    <source>Einmaischetemeratur</source>
+    <target>Dough-in Temperature</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>Dialog</target>
+</phrase>
+<phrase>
+    <source>Berechnung Stammwürze</source>
+    <target>Calculation Original Gravity</target>
+</phrase>
+<phrase>
+    <source>Spindel</source>
+    <target>Spindle</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Dichte</source>
+    <target>Density</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperature</target>
+</phrase>
+<phrase>
+    <source>g/ml</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Refraktometer</source>
+    <target>Refractometer</target>
+</phrase>
+<phrase>
+    <source>Brix</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Umrechnungsfaktor</source>
+    <target>Factor</target>
+</phrase>
+<phrase>
+    <source>Umrechnungsformel</source>
+    <target>Formula</target>
+</phrase>
+<phrase>
+    <source>Kleier</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Standardformel</source>
+    <target>Standard formula</target>
+</phrase>
+<phrase>
+    <source>Terrill</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Terrill linear</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Sud teilen</source>
+    <target>Split Brew</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Rezeptüebernahme</source>
+    <target>Recipe transfer</target>
+</phrase>
+<phrase>
+    <source>Prozentuale Aufteilung der Schüttung berechnen</source>
+    <target>Calculate percental distribution of grist</target>
+</phrase>
+<phrase>
+    <source>Malzanteil 1</source>
+    <target>Malt portion 1</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source>Malzanteil 2</source>
+    <target>Malt portion 2</target>
+</phrase>
+<phrase>
+    <source>Malzanteil 3</source>
+    <target>Malt portion 3</target>
+</phrase>
+<phrase>
+    <source>Malzanteil 4</source>
+    <target>Malt portion 4</target>
+</phrase>
+<phrase>
+    <source>Malzanteil 5</source>
+    <target>Malt portion 5</target>
+</phrase>
+<phrase>
+    <source>Malzanteil 6</source>
+    <target>Malt portion 6</target>
+</phrase>
+<phrase>
+    <source>Eingabehilfe für Volumen</source>
+    <target>Input assistance for volume</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe von Oberkannte aus gemessen</source>
+    <target>Fill level measured from top</target>
+</phrase>
+<phrase>
+    <source>cm</source>
+    <target>cm</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe vom Boden aus gemessen</source>
+    <target>Fill level measured from bottom</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperature</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target>°C</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei aktueller Temperatur</source>
+    <target>Amount of wort at current temperature</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei 20°C</source>
+    <target>Amount of wort at 20°C</target>
+</phrase>
+<phrase>
+    <source>Pfad zur Datenbank: </source>
+    <target>Path to database: </target>
+</phrase>
+<phrase>
+    <source>Datenbank</source>
+    <target>Database</target>
+</phrase>
+<phrase>
+    <source>Farbauswahl</source>
+    <target>Colour selection</target>
+</phrase>
+<phrase>
+    <source>Erweitert</source>
+    <target>Advanced</target>
+</phrase>
+<phrase>
+    <source>Ansicht</source>
+    <target>View</target>
+</phrase>
+<phrase>
+    <source>Datenbankpfad Auswählen</source>
+    <target>Select path to database</target>
+</phrase>
+<phrase>
+    <source>Datenbank verschieben?</source>
+    <target>Move databse?</target>
+</phrase>
+<phrase>
+    <source>Der Datenbankpfad wurde geändert!
+Soll die Datenbank an den neuen Ort Kopiert werden?
+
+Der kleine-brauhelfer wird nach dem Kopieren beendet und muss neu gestartet werden.</source>
+    <target>Path to database changed!
+Should the existing databse be moved to the new location?
+
+The programme will exit after copying is finished and need to be restarted.</target>
+</phrase>
+<phrase>
+    <source>Betroffene Datei:
+</source>
+    <target>Affected file:
+</target>
+</phrase>
+<phrase>
+    <source>Der Vorgang wird abgebrochen.</source>
+    <target>Process will be cancelled.</target>
+</phrase>
+<phrase>
+    <source>Die Anwendung wird beendet.</source>
+    <target>Task will be cancelled.</target>
+</phrase>
+<phrase>
+    <source>Vorlagendatenbank konnte nicht Kopiert werden</source>
+    <target>Templates database could not be copied</target>
+</phrase>
+<phrase>
+    <source>Vorlagendatenbank ist nicht vorhanden</source>
+    <target>Templates database is not available</target>
+</phrase>
+<phrase>
+    <source>Es Konnte kein Pfad für die Datenbankdatei ermittelt werden</source>
+    <target>Path for database couldn&apos;t be identified</target>
+</phrase>
+<phrase>
+    <source>Kann Datenbank nicht öffnen</source>
+    <target>Cannot open databse</target>
+</phrase>
+<phrase>
+    <source>Kann Datenbank nicht an neuen Ort Kopieren, wahrscheinlich keine ausreichende Berechtigung oder es ist schon eine Datenbankdatei vorhanden.
+Der Pfad wird nicht geändert</source>
+    <target>Cannot copy databse to new location. Probably insuffiecient permissions or a databse is already existing at new location.
+Path couldn&apos;t be changed</target>
+</phrase>
+<phrase>
+    <source>Kann Datenbank am alten Platz nicht löschen, Die Datei sollte von Hand entfernt werden.</source>
+    <target>Cannot remove databse in original location. File should be deleted manually.</target>
+</phrase>
+<phrase>
+    <source>Kann Version der Datenbank nicht abfragen</source>
+    <target>Cannot retrieve database version</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank-version ist neuer als das Programm lesen kann. Das Programm muss upgedatet werden.</source>
+    <target>Database version is newer than the programme and cannot be read. Please update the programme.</target>
+</phrase>
+<phrase>
+    <source>Fehler bei SQL Abfrage</source>
+    <target>Error in SQL query</target>
+</phrase>
+<phrase>
+    <source>Sud Dateien der Version 1 können leider nicht Importiert werden. Bitte Speichern Sie die Suddaten vorher noch mit der Vorgängerversion (0.9.4.2) vom kleinen-brauhelfer ab.</source>
+    <target>Brew files of version 1 cannot be imported. Please save brew files with previous version of kleiner-brauhelfer (0.9.4.2).</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 1 auf Version 2 updaten</source>
+    <target>Could not update database from version 1 to version 2</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 2 auf Version 3 updaten</source>
+    <target>Could not update database from version 2 to version 3</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 3 auf Version 4 updaten</source>
+    <target>Could not update database from version 3 to version 4</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 4 auf Version 5 updaten</source>
+    <target>Could not update database from version 4 to version 5</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 5 auf Version 6 updaten</source>
+    <target>Could not update database from version 5 to version 6</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 6 auf Version 7 updaten</source>
+    <target>Could not update database from version 6 to version 7</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 7 auf Version 8 updaten</source>
+    <target>Could not update database from version 7 to version 8</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 8 auf Version 9 updaten</source>
+    <target>Could not update database from version 8 to version 9</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 9 auf Version 10 updaten</source>
+    <target>Could not update database from version 9 to version 10</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 10 auf Version 11 updaten</source>
+    <target>Could not update database from version 10 to version 11</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 11 auf Version 12 updaten</source>
+    <target>Could not update database from version 11 to version 12</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 12 auf Version 13 updaten</source>
+    <target>Could not update database from version 12 to version 13</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 13 auf Version 14 updaten</source>
+    <target>Could not update database from version 13 to version 14</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 14 auf Version 15 updaten</source>
+    <target>Could not update database from version 14 to version 15</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 15 auf Version 16 updaten</source>
+    <target>Could not update database from version 15 to version 16</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 16 auf Version 17 updaten</source>
+    <target>Could not update database from version 16 to version 17</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 17 auf Version 18 updaten</source>
+    <target>Could not update database from version 17 to version 18</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 18 auf Version 19 updaten</source>
+    <target>Could not update database from version 18 to version 19</target>
+</phrase>
+<phrase>
+    <source>Konnte Datenbank nicht von Version 19 auf Version 20 updaten</source>
+    <target>Could not update database from version 19 to version 20</target>
+</phrase>
+<phrase>
+    <source>Die Datei ist keine gültige Sud Datei</source>
+    <target>File is not a valid brew file</target>
+</phrase>
+<phrase>
+    <source>Die Datei konnte nicht geöffnet werden</source>
+    <target>File could not be opened</target>
+</phrase>
+<phrase>
+    <source>Fehler beim analysieren der Datei</source>
+    <target>Error in analysing file</target>
+</phrase>
+<phrase>
+    <source>Es konnte keine Backupkopie der Datenbank erstellt werden</source>
+    <target>Could not create backup copy of databse</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank konnte nicht zurückkopiert werden</source>
+    <target>Could not copy back databse</target>
+</phrase>
+<phrase>
+    <source>Die Backupdatei existiert nicht</source>
+    <target>Backup file does not exist</target>
+</phrase>
+<phrase>
+    <source>Die Vorlagendatei für die Rohstoffe konnte nicht kopiert werden.</source>
+    <target>Could not copy template file for ingredients.</target>
+</phrase>
+<phrase>
+    <source>Kann Datenbankpfad nicht mehr finden! Der Pfad wird auf den Defaultpfad umgestellt und die Vorlagendatenbank angelegt.
+Bitte den Pfad zur Datenbankdatei in dein Einstellungen korrigieren.</source>
+    <target>Cannot find path to database. Path will be reset to default location and default template will be created.
+Please correct path to databse in settings.</target>
+</phrase>
+<phrase>
+    <source>Ein Fehler ist aufgetreten.</source>
+    <target>Error occured.</target>
+</phrase>
+<phrase>
+    <source>
+(Fehlernummer: </source>
+    <target>
+(Error no.: </target>
+</phrase>
+<phrase>
+    <source>)
+</source>
+    <target>)
+</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Form</target>
+</phrase>
+<phrase>
+    <source>Entfernt diese Zutat</source>
+    <target>Remove this ingredient</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>TextLabel</source>
+    <target>TextLabel</target>
+</phrase>
+<phrase>
+    <source>Zugabezeitpunkt</source>
+    <target>Time of adding</target>
+</phrase>
+<phrase>
+    <source>Zugabe</source>
+    <target>Addition</target>
+</phrase>
+<phrase>
+    <source>Datum Zugabezeitpunkt</source>
+    <target>Date of adding</target>
+</phrase>
+<phrase>
+    <source>dd.MM.yyyy</source>
+    <target>dd.MM.yyyy</target>
+</phrase>
+<phrase>
+    <source>Zutat als hinzugegeben Markieren</source>
+    <target>Mark ingredient as added</target>
+</phrase>
+<phrase>
+    <source>zugeben</source>
+    <target>add</target>
+</phrase>
+<phrase>
+    <source>Festlegen ob Zutat wieder entnommen werden soll</source>
+    <target>Determine if addition will get removed again</target>
+</phrase>
+<phrase>
+    <source>Entnahme nach</source>
+    <target>Remove after</target>
+</phrase>
+<phrase>
+    <source>keine Entnahme</source>
+    <target>No removal</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Days</target>
+</phrase>
+<phrase>
+    <source>Zutat als Entnommen Markieren</source>
+    <target>Mark addition as removed</target>
+</phrase>
+<phrase>
+    <source>entnehmen</source>
+    <target>remove</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Days</target>
+</phrase>
+<phrase>
+    <source>Minuten</source>
+    <target>Minutes</target>
+</phrase>
+<phrase>
+    <source>bei der Gärung</source>
+    <target>During fermentation</target>
+</phrase>
+<phrase>
+    <source>bei Kochbegin</source>
+    <target>At begin of boil time</target>
+</phrase>
+<phrase>
+    <source>beim Maischen</source>
+    <target>During mashing</target>
+</phrase>
+<phrase>
+    <source>beim Kochen</source>
+    <target>During boil</target>
+</phrase>
+<phrase>
+    <source>Rohstoffeintrag in den Weiteren Zutaten ist nicht mehr vorhanden</source>
+    <target>Entry for ingredient not existing in additional ingredients</target>
+</phrase>
+<phrase>
+    <source>Entnahmedatum</source>
+    <target>Date of removal</target>
+</phrase>
+<phrase>
+    <source>Zugabedatum übernehmen</source>
+    <target>Accept date of addition</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Form</target>
+</phrase>
+<phrase>
+    <source>TextLabel</source>
+    <target>TextLabel</target>
+</phrase>
+<phrase>
+    <source>L</source>
+    <target>L</target>
+</phrase>
+<phrase>
+    <source>Rest</source>
+    <target>Remaining</target>
+</phrase>
+<phrase>
+    <source>Auswahl Rohstoffvorlage</source>
+    <target>Select template for ingredients</target>
+</phrase>
+<phrase>
+    <source>Quellen: www.mueggelland.de | www.brewferm.be/de | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | http://www.weyermann.de</source>
+    <target>Sources: www.mueggelland.de | www.brewferm.be/de | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | http://www.weyermann.de</target>
+</phrase>
+<phrase>
+    <source>Vorlage hinzufügen</source>
+    <target>Add template</target>
+</phrase>
+<phrase>
+    <source>Vorlage löschen</source>
+    <target>Remove template</target>
+</phrase>
+<phrase>
+    <source>Liste importieren</source>
+    <target>Import list</target>
+</phrase>
+<phrase>
+    <source>Liste exportieren</source>
+    <target>Export list</target>
+</phrase>
+<phrase>
+    <source>Liste wiederherstellen</source>
+    <target>Restore list</target>
+</phrase>
+<phrase>
+    <source>Rohstoffliste importieren</source>
+    <target>Import ingredient list</target>
+</phrase>
+<phrase>
+    <source>Rohstoffliste exportieren</source>
+    <target>Export ingredient list</target>
+</phrase>
+<phrase>
+    <source>Sudauswahl</source>
+    <target>Brew Selection</target>
+</phrase>
+<phrase>
+    <source>a&amp;lle anzeigen</source>
+    <target>show a&amp;ll</target>
+</phrase>
+<phrase>
+    <source>&amp;nicht gebraut</source>
+    <target>&amp;not brewed</target>
+</phrase>
+<phrase>
+    <source>gebraut &amp;&amp; nicht abgefüllt</source>
+    <target>brewed but not bottled</target>
+</phrase>
+<phrase>
+    <source>abgefüllt</source>
+    <target>bottled</target>
+</phrase>
+<phrase>
+    <source>ni&amp;cht verbraucht</source>
+    <target>not &amp;consumed</target>
+</phrase>
+<phrase>
+    <source>&amp;Merkliste</source>
+    <target>&amp;pinned list</target>
+</phrase>
+<phrase>
+    <source>ID</source>
+    <target>ID</target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brew date</target>
+</phrase>
+<phrase>
+    <source>Merkliste bei der Rohstoffmengen-Überprüfung im Rezept mit einbeziehen</source>
+    <target>Include pinned brews when checking availabability of ingredients</target>
+</phrase>
+<phrase>
+    <source>Merken</source>
+    <target>Pin brew</target>
+</phrase>
+<phrase>
+    <source>Sud kopieren</source>
+    <target>Copy brew</target>
+</phrase>
+<phrase>
+    <source>Sud löschen</source>
+    <target>Delete brew</target>
+</phrase>
+<phrase>
+    <source>Sud importieren</source>
+    <target>Import brew</target>
+</phrase>
+<phrase>
+    <source>Sud exportieren</source>
+    <target>Export brew</target>
+</phrase>
+<phrase>
+    <source>Sud laden</source>
+    <target>Load brew</target>
+</phrase>
+<phrase>
+    <source>about:blank</source>
+    <target>about:blank</target>
+</phrase>
+<phrase>
+    <source>PDF speichern</source>
+    <target>Save to PDF</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recipe</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brew name</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>Angepeilte Menge an Bier</source>
+    <target>Targeted amount of beer</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>Angepeilte Stammwürze</source>
+    <target>Targeted original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target>°P</target>
+</phrase>
+<phrase>
+    <source>High Gravity Faktor</source>
+    <target>High gravity factor</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die Würzemenge beim Kochen reduziert werden um anschliesend beim Anstellen wieder auf Wunschmenge zu verdünnen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Amount of wort can be reduced by this amount during the boiling process, and topped-up after the boil to reach the intended amount of wort&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source>CO2 Gehalt</source>
+    <target>CO2 Level</target>
+</phrase>
+<phrase>
+    <source>Gewünschter CO2 Gehalt</source>
+    <target>Targeted CO2 Level</target>
+</phrase>
+<phrase>
+    <source>g/Liter</source>
+    <target>g/Litre</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterness</target>
+</phrase>
+<phrase>
+    <source>Angepeilte Bitterung</source>
+    <target>Targeted bitterness</target>
+</phrase>
+<phrase>
+    <source>IBU</source>
+    <target>IBU</target>
+</phrase>
+<phrase>
+    <source>angepeilte Reifezeit nach Abfüllung</source>
+    <target>Targeted priming time</target>
+</phrase>
+<phrase>
+    <source>Wochen</source>
+    <target>Weeks</target>
+</phrase>
+<phrase>
+    <source>Brauanlage</source>
+    <target>Brew equipment</target>
+</phrase>
+<phrase>
+    <source>Einmaischen bei</source>
+    <target>Dough-In Temperature</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target>°C</target>
+</phrase>
+<phrase>
+    <source>gesamte Kochdauer (inkl. Zeit bis Eiweißbruch)</source>
+    <target>Total boil time (incl.time to hot break)</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Gschätzte Zeit für die Nachisomerisierung&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Wirlpool etc. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Diese Zeit wird zu 100% auf die Kochzeit aufaddiert&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Estimated time for post-boil isomerisation&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Whirlpool etc. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;These times will be added a 100% on top of the boil time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>Nachisomerisierungs-Zeit nach dem Kochen</source>
+    <target>Post-boil isomerisation time</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Remarks</target>
+</phrase>
+<phrase>
+    <source>Anhänge</source>
+    <target>Attachments</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Malts</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hops</target>
+</phrase>
+<phrase>
+    <source>Hopfengabe Prozentanteil entspricht</source>
+    <target>Hop addition percentage relates to</target>
+</phrase>
+<phrase>
+    <source>Gewicht</source>
+    <target>Weight</target>
+</phrase>
+<phrase>
+    <source>Weitere Zutaten</source>
+    <target>Additional ingredients</target>
+</phrase>
+<phrase>
+    <source>Wasser</source>
+    <target>Water</target>
+</phrase>
+<phrase>
+    <source>Faktor für Hauptguss</source>
+    <target>Liquor to grist ratio</target>
+</phrase>
+<phrase>
+    <source>Schüttungsmenge * Faktor</source>
+    <target>grist * water-grain ratio</target>
+</phrase>
+<phrase>
+    <source>Empfehlung</source>
+    <target>Recommendation</target>
+</phrase>
+<phrase>
+    <source>empfohlene Einheiten</source>
+    <target>Recommended units</target>
+</phrase>
+<phrase>
+    <source>Anzahl Einheiten</source>
+    <target>Units amount</target>
+</phrase>
+<phrase>
+    <source>Gesamt</source>
+    <target>Total</target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Strike water</target>
+</phrase>
+<phrase>
+    <source>Nachguss</source>
+    <target>Sparging water</target>
+</phrase>
+<phrase>
+    <source>Volumen Gesamtmaische ca.</source>
+    <target>Total volume of mash ca.</target>
+</phrase>
+<phrase>
+    <source>Volumen Pfannevoll bei 99°C ca.</source>
+    <target>Volume when maximum fill level reached (at 99°C) ca.</target>
+</phrase>
+<phrase>
+    <source>Mengen Malzgaben</source>
+    <target>Amounts of malts</target>
+</phrase>
+<phrase>
+    <source>Gesamtschüttung</source>
+    <target>Total amount of grist</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target>kg</target>
+</phrase>
+<phrase>
+    <source>Mengen Hopfengaben</source>
+    <target>Amount of hops</target>
+</phrase>
+<phrase>
+    <source>Mengen weiterer Zutaten</source>
+    <target>Amount of additional ingredients</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target>EBC</target>
+</phrase>
+<phrase>
+    <source>°dH</source>
+    <target>°dH</target>
+</phrase>
+<phrase>
+    <source>Milchsäure 80%</source>
+    <target>Lactic acid 80%</target>
+</phrase>
+<phrase>
+    <source>ml</source>
+    <target>ml</target>
+</phrase>
+<phrase>
+    <source>Sauermalz</source>
+    <target>Acid malt</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target>g</target>
+</phrase>
+<phrase>
+    <source>Brau &amp;&amp; Gärdaten</source>
+    <target>Brew &amp;&amp; Fermentation Data</target>
+</phrase>
+<phrase>
+    <source>dd.MM.yyyy</source>
+    <target>dd.MM.yyyy</target>
+</phrase>
+<phrase>
+    <source>Heute</source>
+    <target>Today</target>
+</phrase>
+<phrase>
+    <source>Würzemenge vor dem Hopfenseihen</source>
+    <target>Wort amount before hop filtering</target>
+</phrase>
+<phrase>
+    <source>Mit diesem Wert wird die Sudhausausbeute berechnet</source>
+    <target>Mash efficiency is calculated with this meassure</target>
+</phrase>
+<phrase>
+    <source>...</source>
+    <target>...</target>
+</phrase>
+<phrase>
+    <source>Stammwürze vor dem Hopfenseihen</source>
+    <target>Gravity before hop filtering</target>
+</phrase>
+<phrase>
+    <source>nach dem Hopfenseihen</source>
+    <target>After hop filtering</target>
+</phrase>
+<phrase>
+    <source>Würzemenge nach dem Hopfenseihen</source>
+    <target>Amount of wort after hop filtering</target>
+</phrase>
+<phrase>
+    <source>Stammwürze nach dem Hopfenseihen</source>
+    <target>Original gravity after hop filtering</target>
+</phrase>
+<phrase>
+    <source>Anhang hinzufügen</source>
+    <target>Add attachment</target>
+</phrase>
+<phrase>
+    <source>Erstellt</source>
+    <target>Created</target>
+</phrase>
+<phrase>
+    <source>Gespeichert</source>
+    <target>Saved</target>
+</phrase>
+<phrase>
+    <source>Vergessen</source>
+    <target>Unpin brew</target>
+</phrase>
+<phrase>
+    <source>Alle vergessen</source>
+    <target>Unpin all</target>
+</phrase>
+<phrase>
+    <source>Neuen Sud anlegen</source>
+    <target>Create new brew</target>
+</phrase>
+<phrase>
+    <source>Gewünschte Restalkalität</source>
+    <target>Targeted residual alkalinity</target>
+</phrase>
+<phrase>
+    <source>Rast hinzufügen</source>
+    <target>Add rest</target>
+</phrase>
+<phrase>
+    <source>Malz hinzufügen</source>
+    <target>Add malt</target>
+</phrase>
+<phrase>
+    <source>Hopfen hinzufügen</source>
+    <target>Add hops</target>
+</phrase>
+<phrase>
+    <source>Weitere Zutat hinzufügen</source>
+    <target>Add ingredient</target>
+</phrase>
+<phrase>
+    <source>Ber. Malz</source>
+    <target>Calc. malts</target>
+</phrase>
+<phrase>
+    <source>Ber. Hopfen</source>
+    <target>Calc. hops</target>
+</phrase>
+<phrase>
+    <source>Ber. weitere Zutaten</source>
+    <target>Calc. additional ingredients</target>
+</phrase>
+<phrase>
+    <source>vor der Hefezugabe</source>
+    <target>Before pitching yeast</target>
+</phrase>
+<phrase>
+    <source>Datum Anstellen</source>
+    <target>Pitching date</target>
+</phrase>
+<phrase>
+    <source>Würzemenge beim Anstellen</source>
+    <target>Amount of wort when pitching yeast</target>
+</phrase>
+<phrase>
+    <source>Stammwürze beim Anstellen (vor Zugabe der weiteren Zutaten)</source>
+    <target>OG at pitching (before adding additional ingredients)</target>
+</phrase>
+<phrase>
+    <source>beim Abfüllen</source>
+    <target>At bottling</target>
+</phrase>
+<phrase>
+    <source>Abfülldatum in Flaschen</source>
+    <target>Bottling date</target>
+</phrase>
+<phrase>
+    <source>Jungbiermenge beim Abfüllen</source>
+    <target>Amount of green beer at bottling</target>
+</phrase>
+<phrase>
+    <source>Biermenge beim Abfüllen</source>
+    <target>Amout of beer</target>
+</phrase>
+<phrase>
+    <source>Keine Zucker oder Speisegabe (Spunden)</source>
+    <target>No additionas of sugar or unfermented wort (&quot;Spunden&quot;)</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe aktiv</source>
+    <target>Fast fermentation sample active</target>
+</phrase>
+<phrase>
+    <source>Restextrakt der Schnellgärprobe</source>
+    <target>Residual extract of fast fermentation sample</target>
+</phrase>
+<phrase>
+    <source>Restextrakt Jungbier beim Abfüllen</source>
+    <target>Residual extract of green beer at bottling</target>
+</phrase>
+<phrase>
+    <source>Temperatur Jungbier beim Abfüllen</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Nebenkosten</source>
+    <target>Additional costs</target>
+</phrase>
+<phrase>
+    <source>€</source>
+    <target>€</target>
+</phrase>
+<phrase>
+    <source>Sud wird als Gebraut Markiert.
+Es sind keine änderungen an den Rezept und Braudaten mehr möglich.
+Die Malz/Hopfen Mengen werden zur Dokumentation abgespeichert und nicht mehr berechnet.
+Diese Markierung kann nur mit einem Editor an der Suddatei selber rückgängig gemacht werden.</source>
+    <target>Mark beer as brewed.
+Recipe and beer data can no longer be changed after this action.
+Amounts of malt and hop ingredients will be saved.
+This action can only be undone by editing the beer file with an editor.</target>
+</phrase>
+<phrase>
+    <source>Sud gebraut</source>
+    <target>Beer brewed</target>
+</phrase>
+<phrase>
+    <source>Sud abgefüllt</source>
+    <target>Beer bottled</target>
+</phrase>
+<phrase>
+    <source>Sud verbraucht</source>
+    <target>Beer consumed</target>
+</phrase>
+<phrase>
+    <source>Sud teilen</source>
+    <target>Split beer</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Miscellaneous</target>
+</phrase>
+<phrase>
+    <source>allgemeine Berechnungen</source>
+    <target>General Calculations</target>
+</phrase>
+<phrase>
+    <source>Würzemenge Soll bei Kochbeginn (100°C)</source>
+    <target>Amount of wort at start of boil (100°C)</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe von Oberkante aus gemessen</source>
+    <target>Fill level measured from top</target>
+</phrase>
+<phrase>
+    <source>cm</source>
+    <target>cm</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe vom Boden aus gemessen</source>
+    <target>Fill level measured from bottom</target>
+</phrase>
+<phrase>
+    <source>Stammwürze Soll vor dem Kochen</source>
+    <target>Gravity before boiling</target>
+</phrase>
+<phrase>
+    <source>Würzemenge Soll nach dem Kochen bei 100°C</source>
+    <target>Targeted amount of wort after boil at 100°C</target>
+</phrase>
+<phrase>
+    <source>Würzemenge Soll nach dem Hopfenseihen bei 20°C</source>
+    <target>Targeted amount of wort after hop filtering at 20°C</target>
+</phrase>
+<phrase>
+    <source>Stammwürze Soll nach dem Kochen</source>
+    <target>Targeted gravity after boil</target>
+</phrase>
+<phrase>
+    <source>Anteil Stammwürze der Weiteren Zutaten</source>
+    <target>Share of additional ingredients on OG</target>
+</phrase>
+<phrase>
+    <source>Stammwürze Gesammt inklusive Weitere Zutaten</source>
+    <target>OG including all additional ingredients</target>
+</phrase>
+<phrase>
+    <source>tatsächlicher Endvergärungsgrad (EVG)</source>
+    <target>Attenuation</target>
+</phrase>
+<phrase>
+    <source>scheinbarer Endvergärungsgrad (EVG)</source>
+    <target>Apparent attenuation</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>effektive Sudhausausbeute</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt</source>
+    <target>ABV</target>
+</phrase>
+<phrase>
+    <source>Vol%</source>
+    <target>Vol%</target>
+</phrase>
+<phrase>
+    <source>Kosten pro Liter</source>
+    <target>Costs per litre</target>
+</phrase>
+<phrase>
+    <source>Berechnungen für das Abfüllen</source>
+    <target>Calculations for Bottling</target>
+</phrase>
+<phrase>
+    <source>Grünschlauchzeitpunkt</source>
+    <target>Green bottling time</target>
+</phrase>
+<phrase>
+    <source>Spundungsdruck</source>
+    <target>Bung pressure</target>
+</phrase>
+<phrase>
+    <source>Bar</source>
+    <target>bar</target>
+</phrase>
+<phrase>
+    <source>Speisemenge gesamt</source>
+    <target>Total amount of unfermented wort (dessert)</target>
+</phrase>
+<phrase>
+    <source>Haushaltszuckergabe gesamt</source>
+    <target>Total amount of table sugar additions</target>
+</phrase>
+<phrase>
+    <source>Traubenzuckergabe gesamt</source>
+    <target>Total amount of corn sugar additions</target>
+</phrase>
+<phrase>
+    <source>Speisemenge pro 0,5 Liter Flasche</source>
+    <target>Dessert per 0,5 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Haushaltszuckergabe pro 0,5 Liter Flasche</source>
+    <target>Amount of table sugar additions per 0,5 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Traubenzuckergabe pro 0,5 Liter Flasche</source>
+    <target>Amount of corn sugar additions per 0,5 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Speisemenge pro 0,33 Liter Flasche</source>
+    <target>Dessert per 0,33 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Haushaltszuckergabe pro 0,33 Liter Flasche</source>
+    <target>Amount of table sugar additions per 0,33 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Traubenzuckergabe pro 0,33 Liter Flasche</source>
+    <target>Amount of corn sugar additions per 0,33 litre bottle</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf</source>
+    <target>Fermentation Progress</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf Schnellgärprobe</source>
+    <target>Fermentation progress of fast fermentation sample</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Date</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperature</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Residual extract</target>
+</phrase>
+<phrase>
+    <source>Messung hinzufügen</source>
+    <target>Add Measurement</target>
+</phrase>
+<phrase>
+    <source>Messung löschen</source>
+    <target>Remove measurement</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf Hauptgärung</source>
+    <target>Progress of fermentation process</target>
+</phrase>
+<phrase>
+    <source>Zutat:</source>
+    <target>Ingredient:</target>
+</phrase>
+<phrase>
+    <source>zugeben</source>
+    <target>add</target>
+</phrase>
+<phrase>
+    <source>entnehmen</source>
+    <target>remove</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf Nachgärung</source>
+    <target>Fermentation progress at priming</target>
+</phrase>
+<phrase>
+    <source>Druck</source>
+    <target>Pressure</target>
+</phrase>
+<phrase>
+    <source>Spickzettel</source>
+    <target>Brew Sheet</target>
+</phrase>
+<phrase>
+    <source>Bewertung</source>
+    <target>Rating</target>
+</phrase>
+<phrase>
+    <source>neue Bewertung</source>
+    <target>New Evaluation</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>Farbe/Klarheit</source>
+    <target>Color/Clearness</target>
+</phrase>
+<phrase>
+    <source>Klarheit</source>
+    <target>Clearness</target>
+</phrase>
+<phrase>
+    <source>satt, intensiv</source>
+    <target>saturated, intense</target>
+</phrase>
+<phrase>
+    <source>glänzend</source>
+    <target>bright</target>
+</phrase>
+<phrase>
+    <source>matt, blass</source>
+    <target>pale</target>
+</phrase>
+<phrase>
+    <source>gräulich, fahl</source>
+    <target>greyish, wan</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>hellgelb, lichthell</source>
+    <target>bright</target>
+</phrase>
+<phrase>
+    <source>gelb</source>
+    <target>pale</target>
+</phrase>
+<phrase>
+    <source>golden</source>
+    <target>golden</target>
+</phrase>
+<phrase>
+    <source>bernstein</source>
+    <target>amber</target>
+</phrase>
+<phrase>
+    <source>kupferrot, amber</source>
+    <target>copper, ruby</target>
+</phrase>
+<phrase>
+    <source>braun bis tiefbraun</source>
+    <target>brown to dark brown</target>
+</phrase>
+<phrase>
+    <source>schwarz, tief dunkel</source>
+    <target>black</target>
+</phrase>
+<phrase>
+    <source>Schaum</source>
+    <target>Foam</target>
+</phrase>
+<phrase>
+    <source>feinporig, fest</source>
+    <target>fine, tight</target>
+</phrase>
+<phrase>
+    <source>grobporig, schwach</source>
+    <target>coarse, weak</target>
+</phrase>
+<phrase>
+    <source>gut haftend am Glas</source>
+    <target>well adhering to glass</target>
+</phrase>
+<phrase>
+    <source>schlecht haftend</source>
+    <target>poor adherence</target>
+</phrase>
+<phrase>
+    <source>gute Haltbarkeit</source>
+    <target>good stability</target>
+</phrase>
+<phrase>
+    <source>mäßige Haltbarkeit</source>
+    <target>medicore stability</target>
+</phrase>
+<phrase>
+    <source>keine Haltbarkeit</source>
+    <target>poor stability</target>
+</phrase>
+<phrase>
+    <source>geringes Volumen</source>
+    <target>small volume</target>
+</phrase>
+<phrase>
+    <source>kräftiges Volumen</source>
+    <target>large volume</target>
+</phrase>
+<phrase>
+    <source>sehr voluminös, mächtig</source>
+    <target>voluminous</target>
+</phrase>
+<phrase>
+    <source>überschäumend</source>
+    <target>exuberant</target>
+</phrase>
+<phrase>
+    <source>Geruch</source>
+    <target>Smell</target>
+</phrase>
+<phrase>
+    <source>rein, abgerundet</source>
+    <target>clear, harmonic</target>
+</phrase>
+<phrase>
+    <source>frisch</source>
+    <target>fresh</target>
+</phrase>
+<phrase>
+    <source>wohlrichend</source>
+    <target>well smelling</target>
+</phrase>
+<phrase>
+    <source>unangenehm, unausgewogen</source>
+    <target>unround, unharmonic</target>
+</phrase>
+<phrase>
+    <source>hopfenaromatisch, hopfig</source>
+    <target>hoppy</target>
+</phrase>
+<phrase>
+    <source>malzaromatisch, malzig</source>
+    <target>malty</target>
+</phrase>
+<phrase>
+    <source>süßlich, nach Würze</source>
+    <target>sweet</target>
+</phrase>
+<phrase>
+    <source>hefig</source>
+    <target>yeasty</target>
+</phrase>
+<phrase>
+    <source>fruchtig</source>
+    <target>fruity</target>
+</phrase>
+<phrase>
+    <source>gewürzig</source>
+    <target>spicy</target>
+</phrase>
+<phrase>
+    <source>säuerlich</source>
+    <target>sour</target>
+</phrase>
+<phrase>
+    <source>Geruchsfehler</source>
+    <target>wrong, faulty</target>
+</phrase>
+<phrase>
+    <source>Geschmack</source>
+    <target>Taste</target>
+</phrase>
+<phrase>
+    <source>rein</source>
+    <target>clear</target>
+</phrase>
+<phrase>
+    <source>ausgewogen, rund</source>
+    <target>round, balanced</target>
+</phrase>
+<phrase>
+    <source>gehaltvoll</source>
+    <target>rich</target>
+</phrase>
+<phrase>
+    <source>unausgewogen, kantig</source>
+    <target>unbalanced, edgy</target>
+</phrase>
+<phrase>
+    <source>unreif, unrein</source>
+    <target>unclean, not yet ready</target>
+</phrase>
+<phrase>
+    <source>süßlich, klebrig</source>
+    <target>sweety, sticky</target>
+</phrase>
+<phrase>
+    <source>Geschmacksfehler</source>
+    <target>wrong/faulty</target>
+</phrase>
+<phrase>
+    <source>Antrunk</source>
+    <target>First/Initial Impression</target>
+</phrase>
+<phrase>
+    <source>Rezenz / Frischeindruck</source>
+    <target>Carbonation</target>
+</phrase>
+<phrase>
+    <source>angenehm rezent</source>
+    <target>balanced, pleasent</target>
+</phrase>
+<phrase>
+    <source>rezent, fein perlend</source>
+    <target>mildly sparkling</target>
+</phrase>
+<phrase>
+    <source>gut eingebunden</source>
+    <target>well incorporated</target>
+</phrase>
+<phrase>
+    <source>prickelnd</source>
+    <target>sparkling</target>
+</phrase>
+<phrase>
+    <source>stark prickelnd,aufdringlich</source>
+    <target>over-carbonated</target>
+</phrase>
+<phrase>
+    <source>wenig rezent</source>
+    <target>under-carbonated</target>
+</phrase>
+<phrase>
+    <source>schal</source>
+    <target>flat</target>
+</phrase>
+<phrase>
+    <source>sehr schal</source>
+    <target>very flat</target>
+</phrase>
+<phrase>
+    <source>Haupttrunk</source>
+    <target>Palate/Mouthfeel</target>
+</phrase>
+<phrase>
+    <source>Vollmundigkeit</source>
+    <target>Body</target>
+</phrase>
+<phrase>
+    <source>wässrig / leer / dünn</source>
+    <target>watery</target>
+</phrase>
+<phrase>
+    <source>etwas leer</source>
+    <target>somewhat thin</target>
+</phrase>
+<phrase>
+    <source>schlank</source>
+    <target>light</target>
+</phrase>
+<phrase>
+    <source>vollmundig</source>
+    <target>full-bodied</target>
+</phrase>
+<phrase>
+    <source>mastig / breit</source>
+    <target>heavy, chewy</target>
+</phrase>
+<phrase>
+    <source>Nachtrunk</source>
+    <target>Finish</target>
+</phrase>
+<phrase>
+    <source>Bittere, Hopfenaroma</source>
+    <target>Bitterness / Hop aroma</target>
+</phrase>
+<phrase>
+    <source>sehr fein</source>
+    <target>very fine</target>
+</phrase>
+<phrase>
+    <source>angenehm, ausgewogen</source>
+    <target>balanced, round</target>
+</phrase>
+<phrase>
+    <source>nicht anhängend</source>
+    <target>short finish</target>
+</phrase>
+<phrase>
+    <source>nachhängend</source>
+    <target>long finish</target>
+</phrase>
+<phrase>
+    <source>stark nachhängend</source>
+    <target>very long finish, lasting</target>
+</phrase>
+<phrase>
+    <source>wenig herb, unterentwickelt</source>
+    <target>little bitterness, underdeveloped</target>
+</phrase>
+<phrase>
+    <source>sehr herb, kräftig betont</source>
+    <target>very bitter, stongly emphasized</target>
+</phrase>
+<phrase>
+    <source>nicht / kaum wahrnehmbar</source>
+    <target>hardly noticable</target>
+</phrase>
+<phrase>
+    <source>unangenehm</source>
+    <target>unpleasent, unround</target>
+</phrase>
+<phrase>
+    <source>Gesamteindruck</source>
+    <target>Overall Impression</target>
+</phrase>
+<phrase>
+    <source>toll, weiter trinken, macht Lust auf mehr</source>
+    <target>great, continue drinking, you definitively want more of that</target>
+</phrase>
+<phrase>
+    <source>gutes, typisches Bier</source>
+    <target>good and typical for that style</target>
+</phrase>
+<phrase>
+    <source>interessant</source>
+    <target>interesting</target>
+</phrase>
+<phrase>
+    <source>überraschend, ungewöhnlich</source>
+    <target>surprising, unusual</target>
+</phrase>
+<phrase>
+    <source>kunstvoll, kreativ, mutig</source>
+    <target>creative</target>
+</phrase>
+<phrase>
+    <source>unauffällig, gewöhnlich</source>
+    <target>nothing exciting</target>
+</phrase>
+<phrase>
+    <source>einmal ist genug, langweilig</source>
+    <target>once is enough; boring</target>
+</phrase>
+<phrase>
+    <source>nicht trinkbar, problematisch</source>
+    <target>problematic, unpleasent</target>
+</phrase>
+<phrase>
+    <source>Auswahl Linie 1</source>
+    <target>Select Line 1</target>
+</phrase>
+<phrase>
+    <source>Menge Schüttung</source>
+    <target>Amount of fermentables</target>
+</phrase>
+<phrase>
+    <source>Kosten/Liter</source>
+    <target>Costs per litre</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Scheinbarer EVG</source>
+    <target>Apparent attenuation</target>
+</phrase>
+<phrase>
+    <source>Effektive Ausbeute</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Auswahl Linie 2</source>
+    <target>Select Line 2</target>
+</phrase>
+<phrase>
+    <source>Keine Auswahl</source>
+    <target>No selection</target>
+</phrase>
+<phrase>
+    <source>Abfülldatum</source>
+    <target>Date of bottling</target>
+</phrase>
+<phrase>
+    <source>Reifezeit</source>
+    <target>Aging time</target>
+</phrase>
+<phrase>
+    <source>Kosten / Liter</source>
+    <target>Costs per litre</target>
+</phrase>
+<phrase>
+    <source>Alc Vol%</source>
+    <target>Alc Vol%</target>
+</phrase>
+<phrase>
+    <source>Sch. EVG %</source>
+    <target>Apparent attenuation %</target>
+</phrase>
+<phrase>
+    <source>Eff. Ausbeute</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Zeitraum von</source>
+    <target>Period from</target>
+</phrase>
+<phrase>
+    <source>bis</source>
+    <target>to</target>
+</phrase>
+<phrase>
+    <source>alle anzeigen</source>
+    <target>show all</target>
+</phrase>
+<phrase>
+    <source>Ausrüstung</source>
+    <target>Equipment</target>
+</phrase>
+<phrase>
+    <source>Brauanlagen auswahl</source>
+    <target>Selection of Brewhouses</target>
+</phrase>
+<phrase>
+    <source>Neue Brauanlage</source>
+    <target>add Brewhouse</target>
+</phrase>
+<phrase>
+    <source>lösche Brauanlage</source>
+    <target>remove Brewhouse</target>
+</phrase>
+<phrase>
+    <source>Geräteliste</source>
+    <target>List of equipments</target>
+</phrase>
+<phrase>
+    <source>neuer Eintrag</source>
+    <target>add entry</target>
+</phrase>
+<phrase>
+    <source>lösche Eintrag</source>
+    <target>remove entry</target>
+</phrase>
+<phrase>
+    <source>Daten der Brauanlage: </source>
+    <target>Brewhouse characteristics: </target>
+</phrase>
+<phrase>
+    <source>Effektive Ausbeute der Anlage</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Ausbeute für die Schüttungsberechnung</source>
+    <target>Efficiency for grist calculations</target>
+</phrase>
+<phrase>
+    <source>Dieser Wert wird zur berechnung der Schüttung verwendet.</source>
+    <target>This value is used for calculating the ingredients in the recipe.</target>
+</phrase>
+<phrase>
+    <source>durchschnittliche Ausbeute dieser Anlage über die letzten</source>
+    <target>Average efficiency of Brewhouse over last</target>
+</phrase>
+<phrase>
+    <source>Sude</source>
+    <target>brews</target>
+</phrase>
+<phrase>
+    <source>Durchschnittliche Sudhausausbeute von allen als gebraut Markierten Suden</source>
+    <target>Average brewhouse efficiency from all brews marked as brewed</target>
+</phrase>
+<phrase>
+    <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die Verdampfungsziffer gibt den Prozentsatz der verdampften Wassermenge pro Stunde an. &lt;/p&gt;&lt;p&gt;(bezogen auf die Menge bei Kochende)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+    <target>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Evaporation figure defines percentage rate of water amount evaporated during one hour. &lt;/p&gt;&lt;p&gt;(relates to the amount at the end of boil)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsziffer</source>
+    <target>Evaporation figure</target>
+</phrase>
+<phrase>
+    <source>Korrektur der Nachgussmenge</source>
+    <target>Correction of sparging water amount</target>
+</phrase>
+<phrase>
+    <source>Korrektur Farbwert</source>
+    <target>Correction of color value</target>
+</phrase>
+<phrase>
+    <source>Kosten (Wasser, Strom, Gas, etc.)</source>
+    <target>Costs (water, electricity, gas, etc.)</target>
+</phrase>
+<phrase>
+    <source>Maischekessel</source>
+    <target>Mash kettle</target>
+</phrase>
+<phrase>
+    <source>Höhe</source>
+    <target>Height</target>
+</phrase>
+<phrase>
+    <source>Durchmesser</source>
+    <target>Diameter</target>
+</phrase>
+<phrase>
+    <source>Volumen</source>
+    <target>Volume</target>
+</phrase>
+<phrase>
+    <source>maximal nutzbare Füllhöhe</source>
+    <target>Maximum usable fill height</target>
+</phrase>
+<phrase>
+    <source>nutzbares Volumen</source>
+    <target>Usable volume</target>
+</phrase>
+<phrase>
+    <source>Sudpfanne</source>
+    <target>Brew kettle</target>
+</phrase>
+<phrase>
+    <source>Rohstoffe</source>
+    <target>Ingredients</target>
+</phrase>
+<phrase>
+    <source>Farbe (EBC)</source>
+    <target>Color (EBC)</target>
+</phrase>
+<phrase>
+    <source>Menge (kg)</source>
+    <target>Amount (kg)</target>
+</phrase>
+<phrase>
+    <source>Preis/kg</source>
+    <target>Price/kg</target>
+</phrase>
+<phrase>
+    <source>Anwendung</source>
+    <target>Application</target>
+</phrase>
+<phrase>
+    <source>Einlagerung</source>
+    <target>Got on storage</target>
+</phrase>
+<phrase>
+    <source>Mindesthaltbar</source>
+    <target>Best before</target>
+</phrase>
+<phrase>
+    <source>Link</source>
+    <target>Link</target>
+</phrase>
+<phrase>
+    <source>neuer Eintrag aus Vorlage</source>
+    <target>new entry from template</target>
+</phrase>
+<phrase>
+    <source>kopiere Eintrag</source>
+    <target>copy entry</target>
+</phrase>
+<phrase>
+    <source>Alpha (%)</source>
+    <target>Alpha (%)</target>
+</phrase>
+<phrase>
+    <source>Menge (g)</source>
+    <target>Amount (g)</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>Name</target>
+</phrase>
+<phrase>
+    <source>Max. Anteil (%)</source>
+    <target>Max. Share (%)</target>
+</phrase>
+<phrase>
+    <source>Pellets</source>
+    <target>Pellets</target>
+</phrase>
+<phrase>
+    <source>Typ</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Eigenschaften</source>
+    <target>Characteristics</target>
+</phrase>
+<phrase>
+    <source>Würzemenge (L)</source>
+    <target>Amount of wort (L)</target>
+</phrase>
+<phrase>
+    <source>OG/UG</source>
+    <target>Top/Bottom</target>
+</phrase>
+<phrase>
+    <source>Temperaturbereich</source>
+    <target>Temp. Range</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad</source>
+    <target>Attenuation</target>
+</phrase>
+<phrase>
+    <source>Ausbeute (%)</source>
+    <target>Yield (%)</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Yeast</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Price</target>
+</phrase>
+<phrase>
+    <source>Verpackungsmenge</source>
+    <target>Packaging size</target>
+</phrase>
+<phrase>
+    <source>Allgemein</source>
+    <target>General</target>
+</phrase>
+<phrase>
+    <source>vor dem Hopfenseihen</source>
+    <target>Before hop filtering</target>
+</phrase>
+<phrase>
+    <source>Abgefüllte Speisemenge</source>
+    <target>Extracted amount of unfermented wort (for dessert)</target>
+</phrase>
+<phrase>
+    <source>Wassermenge, um auf Sollstammwürze zu verdünnen</source>
+    <target>Amount of water to reach targeted OG</target>
+</phrase>
+<phrase>
+    <source>Ausbeute dieses Sudes bei Durchschnittsberechnung ignoirieren</source>
+    <target>Exclude this beer for calculating the average brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Brauübersicht</source>
+    <target>Beer Overview</target>
+</phrase>
+<phrase>
+    <source>Sedimentation</source>
+    <target>Flocculation</target>
+</phrase>
+<phrase>
+    <source>Einheit</source>
+    <target>Unit</target>
+</phrase>
+<phrase>
+    <source>Wasseranalysewerte</source>
+    <target>Results of water analysis</target>
+</phrase>
+<phrase>
+    <source>Wasserwerte</source>
+    <target>Water properties and measurements</target>
+</phrase>
+<phrase>
+    <source>Calcium</source>
+    <target>Calcium</target>
+</phrase>
+<phrase>
+    <source>mg/L</source>
+    <target>mg/L</target>
+</phrase>
+<phrase>
+    <source>mmol/L</source>
+    <target>mmol/L</target>
+</phrase>
+<phrase>
+    <source>Magnesium</source>
+    <target>Magnesium</target>
+</phrase>
+<phrase>
+    <source>Säurekapazität 4.3 ph</source>
+    <target>Acid capacity 4.3 ph</target>
+</phrase>
+<phrase>
+    <source>Carbonathärte</source>
+    <target>Carbonate hardness</target>
+</phrase>
+<phrase>
+    <source>berechnete Härtegrade</source>
+    <target>Calculated degrees of hardness</target>
+</phrase>
+<phrase>
+    <source>Calciumhärte</source>
+    <target>Calcium hardness</target>
+</phrase>
+<phrase>
+    <source>Magnesiumhärte</source>
+    <target>Magnesium hardness</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Residual alkalinity</target>
+</phrase>
+<phrase>
+    <source>Anleitung</source>
+    <target>Instructions</target>
+</phrase>
+<phrase>
+    <source>Über</source>
+    <target>About</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target>g</target>
+</phrase>
+<phrase>
+    <source>Honig</source>
+    <target>Honey</target>
+</phrase>
+<phrase>
+    <source>Zucker</source>
+    <target>Sugar</target>
+</phrase>
+<phrase>
+    <source>Gewürz</source>
+    <target>Spice</target>
+</phrase>
+<phrase>
+    <source>Frucht</source>
+    <target>Fruit</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Miscellaneous</target>
+</phrase>
+<phrase>
+    <source>Aroma</source>
+    <target>Aroma</target>
+</phrase>
+<phrase>
+    <source>Bitter</source>
+    <target>Bittering</target>
+</phrase>
+<phrase>
+    <source>Universal</source>
+    <target>Universal</target>
+</phrase>
+<phrase>
+    <source>OG</source>
+    <target>top f</target>
+</phrase>
+<phrase>
+    <source>UG</source>
+    <target>bottom f</target>
+</phrase>
+<phrase>
+    <source>hoch</source>
+    <target>high</target>
+</phrase>
+<phrase>
+    <source>mittel</source>
+    <target>medium</target>
+</phrase>
+<phrase>
+    <source>niedrig</source>
+    <target>low</target>
+</phrase>
+<phrase>
+    <source>Rückgabe:
+</source>
+    <target>Return:
+</target>
+</phrase>
+<phrase>
+    <source>
+SQL Befehl:
+</source>
+    <target>
+SQL Befehl:
+</target>
+</phrase>
+<phrase>
+    <source>Anwendung schliessen?</source>
+    <target>Close application?</target>
+</phrase>
+<phrase>
+    <source>Neuer Eintrag</source>
+    <target>Add entry</target>
+</phrase>
+<phrase>
+    <source>Pellets</source>
+    <target>Pellets</target>
+</phrase>
+<phrase>
+    <source>Der Rohstoff &lt;b&gt;</source>
+    <target>The ingredient &lt;b&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;/b&gt; den Du löschen frochtest, wird in dem noch nicht gebrauten Sud &lt;b&gt;</source>
+    <target>&lt;/b&gt; you want to remove is still considered as not brewed&lt;b&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;/b&gt; den Du löschen möchtest, wird in den Weiteren Zutaten in dem noch nicht gebrauten Sud &lt;b&gt;</source>
+    <target>&lt;/b&gt; you want to remove is still part of the additional ingredients of the yet unbrewed beer &lt;b&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;/b&gt; den Du löschen möchtest, wird in dem noch nicht gebrauten Sud &lt;b&gt;</source>
+    <target>&lt;/b&gt; you want to remove is still considered as not brewed&lt;b&gt;</target>
+</phrase>
+<phrase>
+    <source>Speichere die aktuellen Suddaten</source>
+    <target>Save the current brew data</target>
+</phrase>
+<phrase>
+    <source>&amp;Einstellungen</source>
+    <target>&amp;Settings</target>
+</phrase>
+<phrase>
+    <source>Öffnet einen Dialog mit Einstellungen</source>
+    <target>Opens a dialogue with settings</target>
+</phrase>
+<phrase>
+    <source>&amp;Rezeptübernahme Schüttung</source>
+    <target>&amp;Recipe transfer fermentables</target>
+</phrase>
+<phrase>
+    <source>trocken</source>
+    <target>dry</target>
+</phrase>
+<phrase>
+    <source>flüssig</source>
+    <target>liquid</target>
+</phrase>
+<phrase>
+    <source>Speichern</source>
+    <target>Save</target>
+</phrase>
+<phrase>
+    <source>Beenden</source>
+    <target>Quit</target>
+</phrase>
+<phrase>
+    <source>Öffnet einen Dialog zur unterstützung für die Übernahme der Schüttung</source>
+    <target>Opens dialogue to support recipe transfer</target>
+</phrase>
+<phrase>
+    <source>&amp;Rezeptübernahme Bittere</source>
+    <target>&amp;Recipe transfer bittering</target>
+</phrase>
+<phrase>
+    <source>Öffnet einen Dialog zur Berechnung der Bittere</source>
+    <target>Opens dialogue for calculating bitterness</target>
+</phrase>
+<phrase>
+    <source>&amp;Entsperre Eingabefelder</source>
+    <target>&amp;Unlock input field</target>
+</phrase>
+<phrase>
+    <source>Hebt die Eingabesperre der Eingabefelder auf</source>
+    <target>Removes lock on input fields</target>
+</phrase>
+<phrase>
+    <source>&quot;Bier &amp;gebraut&quot; zurücksetzten</source>
+    <target>Reset &quot;brew &amp;brewed&quot;</target>
+</phrase>
+<phrase>
+    <source>Setzt das Bit Bier wurde Gebraut von dem aktuellen Sud in der Datenbank zurück</source>
+    <target>Resets &quot;beer brewed&quot; from open beer file in the database</target>
+</phrase>
+<phrase>
+    <source>&quot;Bier &amp;abgefüllt&quot; zurücksetzten</source>
+    <target>Reset &quot;brew &amp;bottled&quot;</target>
+</phrase>
+<phrase>
+    <source>Setzt das Bit Abgefüllt von dem aktuellen Sud in der Datenbank zurück</source>
+    <target>Resets the setting &quot;Beer Bottled&quot; for current beer in the database</target>
+</phrase>
+<phrase>
+    <source>&quot;Bier &amp;verbraucht&quot; zurücksetzten</source>
+    <target>Reset &quot;&amp;brew consumed&quot;</target>
+</phrase>
+<phrase>
+    <source>Setzt das Bit Bier Verbraucht von dem aktuellen Sud in der Datenbank zurück</source>
+    <target>Resets the setting &quot;Beer Consumed&quot; of current beer in the databse</target>
+</phrase>
+<phrase>
+    <source>&amp;Reset Zugabestatus WZutaten</source>
+    <target>&amp;Reset status of additional ingredients</target>
+</phrase>
+<phrase>
+    <source>setzt den Zugabestatus der Weiteren Zutaten zurück</source>
+    <target>Resets status of additional ingredients</target>
+</phrase>
+<phrase>
+    <source>&amp;Sprache</source>
+    <target>&amp;Language</target>
+</phrase>
+<phrase>
+    <source>&amp;Extras</source>
+    <target>&amp;Extras</target>
+</phrase>
+<phrase>
+    <source>Keine verbindung zur Datenbank</source>
+    <target>No database connection</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank-datei: </source>
+    <target>database file: </target>
+</phrase>
+<phrase>
+    <source> existiert nicht mehr!</source>
+    <target> does not exist anylonger!</target>
+</phrase>
+<phrase>
+    <source>Wenn die Datenbank auf einem USB-Stick oder Netzlaufwerk liegt, stellen sie die verbindung wieder her und speichern sie anschliessend nocheinmal.</source>
+    <target>If the databse is on a USB flash drive or in the network, please connect to it and then save again.</target>
+</phrase>
+<phrase>
+    <source>Sollen die verwendeten Rohstoffe vom Bestand abgezogen werden?
+
+Hinweis: Zutaten, die bei der Gärung hinzugegeben werden, werden jetzt nicht verrechnet.</source>
+    <target>Should the used ingredients be subtracted from your inventory?
+
+Note: Ingredients that will be added during fermentation will not be subtracted yet.</target>
+</phrase>
+<phrase>
+    <source>Spickzettel</source>
+    <target>Brew Sheet</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>Liter</source>
+    <target>Litre</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Original gravity</target>
+</phrase>
+<phrase>
+    <source>°P</source>
+    <target>°P</target>
+</phrase>
+<phrase>
+    <source>High Gravity Faktor</source>
+    <target>High gravity factor</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterness</target>
+</phrase>
+<phrase>
+    <source>IBU</source>
+    <target>IBU</target>
+</phrase>
+<phrase>
+    <source>Nachisomerisierungs-Zeit</source>
+    <target>Post-boil isomerisation time</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>EBC</source>
+    <target>EBC</target>
+</phrase>
+<phrase>
+    <source>CO2 Gehalt</source>
+    <target>CO2 Level</target>
+</phrase>
+<phrase>
+    <source>g/Liter</source>
+    <target>g/Litre</target>
+</phrase>
+<phrase>
+    <source>Brauanlage</source>
+    <target>Brewing equipment</target>
+</phrase>
+<phrase>
+    <source>Die einzelnen Schüttungen konnten nicht richtig berechnet werden da die aufteilung nicht 100% entspricht!</source>
+    <target>Individual amounts of grist couldn&apos;t be calculated because the portions don&apos;t sum up to 100%!</target>
+</phrase>
+<phrase>
+    <source>Gesamt</source>
+    <target>Total</target>
+</phrase>
+<phrase>
+    <source>VWH </source>
+    <target>Pre-boil hopping </target>
+</phrase>
+<phrase>
+    <source>Die einzelnen Hopfenhaben konnten nicht richtig berechnet werden da die aufteilung nicht 100% entspricht!</source>
+    <target>Individual hop amounts couldn&apos;t be calculated because the division does not sum up to 100%!</target>
+</phrase>
+<phrase>
+    <source>Gärung</source>
+    <target>Fermentation</target>
+</phrase>
+<phrase>
+    <source>Anstellen</source>
+    <target>Pitching</target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Strike water</target>
+</phrase>
+<phrase>
+    <source>Milchsäure (80%)</source>
+    <target>Lactic acid (80%)</target>
+</phrase>
+<phrase>
+    <source>ml</source>
+    <target>ml</target>
+</phrase>
+<phrase>
+    <source>Nachguss</source>
+    <target>Sparging water</target>
+</phrase>
+<phrase>
+    <source>Anzahl Einheiten:</source>
+    <target>Amount of units:</target>
+</phrase>
+<phrase>
+    <source> zu </source>
+    <target> to </target>
+</phrase>
+<phrase>
+    <source>Kochbeginn</source>
+    <target>Begin of boil</target>
+</phrase>
+<phrase>
+    <source>Maischen</source>
+    <target>Mashing</target>
+</phrase>
+<phrase>
+    <source>Kochen</source>
+    <target>Boiling</target>
+</phrase>
+<phrase>
+    <source>benötigte Gerätschaften</source>
+    <target>Neccessary equipment</target>
+</phrase>
+<phrase>
+    <source>Einmaischen: </source>
+    <target>Dough in: </target>
+</phrase>
+<phrase>
+    <source> Liter Wasser auf </source>
+    <target> litres of water to be heated to </target>
+</phrase>
+<phrase>
+    <source>°C erhitzen und Malzschüttung zugeben </source>
+    <target>°C and add malts </target>
+</phrase>
+<phrase>
+    <source>Maische auf </source>
+    <target>Heat mash to </target>
+</phrase>
+<phrase>
+    <source>°C erhitzen und </source>
+    <target>°C and rest for </target>
+</phrase>
+<phrase>
+    <source> min Rast einlegen.</source>
+    <target> min.</target>
+</phrase>
+<phrase>
+    <source> g</source>
+    <target> g</target>
+</phrase>
+<phrase>
+    <source>Läutern</source>
+    <target>Lautering</target>
+</phrase>
+<phrase>
+    <source>Läutern vorbereiten</source>
+    <target>Prepare lautering</target>
+</phrase>
+<phrase>
+    <source>Maische in den Läutereimer schöpfen</source>
+    <target>Scoop mash into lauter tun</target>
+</phrase>
+<phrase>
+    <source>Nachguss vorbereiten: </source>
+    <target>Prepare sparking water: </target>
+</phrase>
+<phrase>
+    <source>°C erhitzen</source>
+    <target>°C</target>
+</phrase>
+<phrase>
+    <source>Nach etwa 10 - 20 min Wartezeit solange Vorderwürze ablaufen lassen und wieder zurück in den Läutereimer schütten, bis Würze klar läuft.</source>
+    <target>Wait for approximately 10 to 20 minutes before starting to drain off wort. Return the wort to the lauter tun until it becomes clear.</target>
+</phrase>
+<phrase>
+    <source>Würze langsam ablaufen lassen (Treber darf nicht trockenlaufen!!), bevor Treber trockenläuft immer etwas (ca. 2-3 Liter) Nachguss über Schaumlöffel nachgießen.</source>
+    <target>Drain off wort slowly (grist shall not run dry). Before grist gets dry, add sparking water (in steps to about 2-3 litres) over a float.</target>
+</phrase>
+<phrase>
+    <source>Würze kochen</source>
+    <target>Boil wort</target>
+</phrase>
+<phrase>
+    <source>Vorderwürzehopfung: </source>
+    <target>Pre-boil hopping: </target>
+</phrase>
+<phrase>
+    <source>Nach </source>
+    <target>After </target>
+</phrase>
+<phrase>
+    <source> min </source>
+    <target> min, add </target>
+</phrase>
+<phrase>
+    <source>g </source>
+    <target>g </target>
+</phrase>
+<phrase>
+    <source> Hopfen vorlegen</source>
+    <target> of hops</target>
+</phrase>
+<phrase>
+    <source>Würze zum Kochen bringen</source>
+    <target>Bring wort to boil</target>
+</phrase>
+<phrase>
+    <source>. Hopfengabe: </source>
+    <target>. Hop addition: </target>
+</phrase>
+<phrase>
+    <source> Hopfen untermischen</source>
+    <target> and intermix hop</target>
+</phrase>
+<phrase>
+    <source>Noch </source>
+    <target>Continue to boil for </target>
+</phrase>
+<phrase>
+    <source>min weiter kochen</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Würzemenge eintragen</source>
+    <target>Enter amount of wort</target>
+</phrase>
+<phrase>
+    <source>Die Würzemenge ermitteln und im Tab (Brau &amp; Gärdaten) in das Eingabefeld (Würzemenge vor dem Hopfenseihen) eintragen</source>
+    <target>Determine amount of wort and enter the value into the field &quot;Wort amount before hop filtering&quot;, in the tab &quot;Brew and Fermentation Data&quot;</target>
+</phrase>
+<phrase>
+    <source>Whirlpool</source>
+    <target>Whirlpool</target>
+</phrase>
+<phrase>
+    <source>Kocher abschalten, wenn thermische Bewegung abgeflaut ist einen Whirlpool erzeugen</source>
+    <target>Turn off heater. When thermic motions abate, create a whirlpool</target>
+</phrase>
+<phrase>
+    <source>ca. 15 min warten bis sich Trubkegel gebildet hat</source>
+    <target>wait appr. 15 min. for trub cone to form</target>
+</phrase>
+<phrase>
+    <source>Abseihen / Anstellen</source>
+    <target>Filtering / Pitching</target>
+</phrase>
+<phrase>
+    <source>Hopfenseihen</source>
+    <target>Hop filtering</target>
+</phrase>
+<phrase>
+    <source>Die Würze durch einen Filter in den Gärbehälter abfüllen</source>
+    <target>Fill wort through a filter into fermentation vessel</target>
+</phrase>
+<phrase>
+    <source>Würzemenge Eintragen</source>
+    <target>Enter amount of wort</target>
+</phrase>
+<phrase>
+    <source>Die Würzemenge ermitteln und im Tab (Brau &amp; Gärdaten) in das Eingabefeld (Würzemenge nach dem Hopfenseihen) eintragen</source>
+    <target>Determine amount of wort and enter the value into the field &quot;Wort amount after hop filtering&quot;, in the tab &quot;Brew and Fermentation Data&quot;</target>
+</phrase>
+<phrase>
+    <source>Stammwürze Eintragen</source>
+    <target>Enter original gravity</target>
+</phrase>
+<phrase>
+    <source>Die Stammwürze messen und im Tab (Brau &amp; Gärdaten) in das Eingabefeld (Stammwürze nach dem Hopfenseihen) eintragen</source>
+    <target>Meassure original gravity and enter value into the field &quot;Wort amount after hop filtering&quot;, in the tab &quot;Brew and Fermentation Data&quot;</target>
+</phrase>
+<phrase>
+    <source>Verdünnen</source>
+    <target>Dilute</target>
+</phrase>
+<phrase>
+    <source>Wenn gewünscht die Würze mit der berechneten Menge Wasser auf Sollstammwürze verdünnen</source>
+    <target>If desired, dilute wort with calculated amount of water to reach original gravity</target>
+</phrase>
+<phrase>
+    <source>Speise abfüllen</source>
+    <target>Bottle unfermented wort for dessert</target>
+</phrase>
+<phrase>
+    <source> Liter Speise abfüllen</source>
+    <target> Litres of unfermented wort (dessert) for bottling</target>
+</phrase>
+<phrase>
+    <source>Abkühlen</source>
+    <target>Chilling</target>
+</phrase>
+<phrase>
+    <source>Die Würze auf Anstelltemperatur bringen.</source>
+    <target>Bring wort to fermentation temperature.</target>
+</phrase>
+<phrase>
+    <source>Die Würzemenge ermitteln und im Tab (Brau &amp; Gärdaten) in das Eingabefeld (Würzemenge beim Anstellen) eintragen</source>
+    <target>Determine amount of wort and enter the value into the field &quot;Wort amount before hop filtering&quot;, in the tab &quot;Brew and Fermentation Data&quot;</target>
+</phrase>
+<phrase>
+    <source>Die Stammwürze messen und im Tab (Brau &amp; Gärdaten) in das Eingabefeld (Stammwürze beim Anstellen) eintragen</source>
+    <target>Meassure original gravity and enter value into the field &quot;Wort amount at pitching&quot;, in the tab &quot;Brew and Fermentation Data&quot;</target>
+</phrase>
+<phrase>
+    <source>Hefe zugeben</source>
+    <target>Add yeast</target>
+</phrase>
+<phrase>
+    <source>Die Würze mit dem Rührer gut durchlüften und die Hefe unterrühren.</source>
+    <target>Stir wort well to aerate and stir yeast into wort.</target>
+</phrase>
+<phrase>
+    <source>Sud als gebraut markieren, zurücklehnen und ein Bier genießen (am besten ein Selbstgebrautes)</source>
+    <target>Mark beer as breweed, lean back, and enjoy a well temperatured beer (preferably one of your self made)</target>
+</phrase>
+<phrase>
+    <source>Bei der Gärung</source>
+    <target>During fermentation</target>
+</phrase>
+<phrase>
+    <source>Stammwürze beim Anstellen</source>
+    <target>Amount of wort when pitching yeast</target>
+</phrase>
+<phrase>
+    <source>Stammwürze Soll nach dem Kochen</source>
+    <target>Targeted gravity after boil</target>
+</phrase>
+<phrase>
+    <source>Ja</source>
+    <target>Yes</target>
+</phrase>
+<phrase>
+    <source>Nein</source>
+    <target>No</target>
+</phrase>
+<phrase>
+    <source>Das Bier kann noch nicht als abgefüllt Markiert werden da der Sud Zutaten für die Gärung enthält die noch nicht als zugegeben oder entnommen Markiert wurden.</source>
+    <target>Beer cannot be marked as bottles because recipie contains ingredients to be added during the fermentation process which haven&apos;t been marked as added yet.</target>
+</phrase>
+<phrase>
+    <source>Bitte die Zutaten entfernen oder den Status noch entsprechend setzten</source>
+    <target>Please add ingredients, delete from the recipie, or change their status accordingly</target>
+</phrase>
+<phrase>
+    <source>Maximal empfohlener Schüttungsanteil (</source>
+    <target>Maximal recommend share for fermentables (</target>
+</phrase>
+<phrase>
+    <source>%) wurde überschritten</source>
+    <target>%) exceeded</target>
+</phrase>
+<phrase>
+    <source>Rest </source>
+    <target>rest </target>
+</phrase>
+<phrase>
+    <source> g zu wenig Hopfen vorhanden</source>
+    <target> g hops missing</target>
+</phrase>
+<phrase>
+    <source> Einheiten zu wenig Hefe vorhanden</source>
+    <target> units yeast missing</target>
+</phrase>
+<phrase>
+    <source>Einheiten</source>
+    <target>Units</target>
+</phrase>
+<phrase>
+    <source> g zu wenig vorhanden</source>
+    <target> g missing</target>
+</phrase>
+<phrase>
+    <source>!!!Achtung das Jungbier ist noch nicht weit genug endvergoren, der Restextrakt sollte nicht über </source>
+    <target>!!!Attention! Green beer is not yet enouch fermented. Residual extract should not exceed </target>
+</phrase>
+<phrase>
+    <source>°P liegen</source>
+    <target>°P</target>
+</phrase>
+<phrase>
+    <source>Kapazität Maischekessel um </source>
+    <target>Capacity of mash tun by </target>
+</phrase>
+<phrase>
+    <source> Liter überschritten</source>
+    <target> litres exceeded</target>
+</phrase>
+<phrase>
+    <source>noch </source>
+    <target>still </target>
+</phrase>
+<phrase>
+    <source> Liter Platz</source>
+    <target> litres left</target>
+</phrase>
+<phrase>
+    <source>Kapazität Sudpfanne um </source>
+    <target>Capacity of brew kettle </target>
+</phrase>
+<phrase>
+    <source>Die Daten wurden verändert.</source>
+    <target>Data was changed.</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen gespeichert werden?</source>
+    <target>Should the changes be saved?</target>
+</phrase>
+<phrase>
+    <source> Kopie</source>
+    <target> Copy</target>
+</phrase>
+<phrase>
+    <source>Farbe konnte nicht berechnet werden da eine Auswahl in der Schüttungs-zusammenstellung
+in den Rohstoffdaten nicht mehr vorhanden ist</source>
+    <target>Color couldn&apos;t be calculated because of the ingredients in the recipie is missing in the ingredients&apos; inventory list</target>
+</phrase>
+<phrase>
+    <source>Löschen?</source>
+    <target>Delete?</target>
+</phrase>
+<phrase>
+    <source>Soll der Sud &gt;</source>
+    <target>Should the beer &gt;</target>
+</phrase>
+<phrase>
+    <source>&lt; gelöscht werden?</source>
+    <target>&lt; be deleted?</target>
+</phrase>
+<phrase>
+    <source>Achtung: dies kann nicht rückgängig gemacht werden!</source>
+    <target>Attention: This action cannot be undone!</target>
+</phrase>
+<phrase>
+    <source>Löschen</source>
+    <target>Delete</target>
+</phrase>
+<phrase>
+    <source>Abrechen</source>
+    <target>Cancel</target>
+</phrase>
+<phrase>
+    <source>Schüttung: </source>
+    <target>Fermentables: </target>
+</phrase>
+<phrase>
+    <source> €</source>
+    <target> €</target>
+</phrase>
+<phrase>
+    <source>Hopfen: </source>
+    <target>Hops: </target>
+</phrase>
+<phrase>
+    <source>Weitere Zutaten: </source>
+    <target>Additional Ingredients: </target>
+</phrase>
+<phrase>
+    <source>Hefe: </source>
+    <target>Yeast: </target>
+</phrase>
+<phrase>
+    <source>Nebenkosten: </source>
+    <target>Additional costs: </target>
+</phrase>
+<phrase>
+    <source>Brauanlage: </source>
+    <target>Brewing equipment: </target>
+</phrase>
+<phrase>
+    <source>gesamt: </source>
+    <target>total: </target>
+</phrase>
+<phrase>
+    <source>
+
+Kosten konnten nicht berechnet werden da die Angaben im Rezept unvollständig
+oder die Auswahl in den Rohstoffdaten nicht mehr vorhanden ist
+
+</source>
+    <target>
+
+Costs couldn&apos;t be calculated because of missing information in the recipy
+or because an ingredient is missing from the inventory
+
+</target>
+</phrase>
+<phrase>
+    <source>Überprüfe die Malzschüttung
+</source>
+    <target>Check the grain bill
+</target>
+</phrase>
+<phrase>
+    <source>Überprüfe die Hopfengaben
+</source>
+    <target>Check the hop bill
+</target>
+</phrase>
+<phrase>
+    <source>Überprüfe die Hefegabe</source>
+    <target>Check the yeast bill</target>
+</phrase>
+<phrase>
+    <source>Verbraucht</source>
+    <target>Spent</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Mash efficiency</target>
+</phrase>
+<phrase>
+    <source>Menge Schüttung</source>
+    <target>Amount of fermentables</target>
+</phrase>
+<phrase>
+    <source>Kosten/Liter</source>
+    <target>Costs per litre</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Scheinbarer EVG</source>
+    <target>Apparent attenuation</target>
+</phrase>
+<phrase>
+    <source>Effektive Ausbeute</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>L</source>
+    <target>L</target>
+</phrase>
+<phrase>
+    <source>vom Bestand abgezogen werden?</source>
+    <target>be subtracted from the inventory?</target>
+</phrase>
+<phrase>
+    <source>Alle vergessen</source>
+    <target>Unpin all</target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target>Kg</target>
+</phrase>
+<phrase>
+    <source>&amp;Geladener Sud</source>
+    <target>Loaded &amp;brew</target>
+</phrase>
+<phrase>
+    <source> kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source> kg zu wenig vorhanden</source>
+    <target> kg insufficent amount</target>
+</phrase>
+<phrase>
+    <source>PDF speichern unter</source>
+    <target>Save PDF as</target>
+</phrase>
+<phrase>
+    <source>%1. Woche</source>
+    <target>%1. week</target>
+</phrase>
+<phrase>
+    <source>noch %1 Tage</source>
+    <target>%1 days remaining</target>
+</phrase>
+<phrase>
+    <source>€</source>
+    <target>€</target>
+</phrase>
+<phrase>
+    <source>%vol</source>
+    <target>%vol</target>
+</phrase>
+<phrase>
+    <source>vol%</source>
+    <target>vol%</target>
+</phrase>
+<phrase>
+    <source>Restextrakt °P</source>
+    <target>Residual extract °P</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt vol%</source>
+    <target>ABV vol%</target>
+</phrase>
+<phrase>
+    <source>Temperatur °C</source>
+    <target>Temperature °C</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target>°C</target>
+</phrase>
+<phrase>
+    <source>CO2 Gehalt g/L</source>
+    <target>CO2 Level g/L</target>
+</phrase>
+<phrase>
+    <source>g/L</source>
+    <target>g/L</target>
+</phrase>
+<phrase>
+    <source>Zusammenfassung</source>
+    <target>Summary</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt</source>
+    <target>ABV</target>
+</phrase>
+<phrase>
+    <source>scheinbarer Endvergärungsgrad</source>
+    <target>Apparent attenuation</target>
+</phrase>
+<phrase>
+    <source>effektive Sudhausausbeute</source>
+    <target>Brewhouse efficiency</target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brew date</target>
+</phrase>
+<phrase>
+    <source>Abfülldatum</source>
+    <target>Date of bottling</target>
+</phrase>
+<phrase>
+    <source>Angepeiltes Reifezeitende</source>
+    <target>Targeted end date of priming</target>
+</phrase>
+<phrase>
+    <source>Beste Bewertung</source>
+    <target>Best evaluation</target>
+</phrase>
+<phrase>
+    <source>Entnommen am </source>
+    <target>Extracted on </target>
+</phrase>
+<phrase>
+    <source>Tage: </source>
+    <target>Days: </target>
+</phrase>
+<phrase>
+    <source>Maischen:</source>
+    <target>Mashing:</target>
+</phrase>
+<phrase>
+    <source>Einmaischen bei</source>
+    <target>Dough-in at</target>
+</phrase>
+<phrase>
+    <source> bei </source>
+    <target> at </target>
+</phrase>
+<phrase>
+    <source>Anhänge:</source>
+    <target>Attachments:</target>
+</phrase>
+<phrase>
+    <source>Eingabehilfe für Volumen Sudpfanne</source>
+    <target>Input assistance for brew kettle volume</target>
+</phrase>
+<phrase>
+    <source>Eingabehilfe für Volumen nach dem Hopfenseihen</source>
+    <target>Input assistence for volume after hop filtering</target>
+</phrase>
+<phrase>
+    <source>Export Sud</source>
+    <target>Export Brew</target>
+</phrase>
+<phrase>
+    <source>KBH Sud Export Dateien (*.xsud)</source>
+    <target>KBH brew export files (*.xsud)</target>
+</phrase>
+<phrase>
+    <source>BeerXML (*.xml)</source>
+    <target>BeerXML (*.xml)</target>
+</phrase>
+<phrase>
+    <source>Suddatei öffnen</source>
+    <target>Open brew file</target>
+</phrase>
+<phrase>
+    <source>Sud Export Dateien (*.xsud);; Maische Malz und Mehr (*.json)</source>
+    <target>Brew export file (*.xsud);; Maische Malz und Mehr (*.json)</target>
+</phrase>
+<phrase>
+    <source>Dateiname: </source>
+    <target>File name: </target>
+</phrase>
+<phrase>
+    <source>Message: </source>
+    <target>Message: </target>
+</phrase>
+<phrase>
+    <source>Zeile: </source>
+    <target>Line: </target>
+</phrase>
+<phrase>
+    <source>Spalte: </source>
+    <target>Column: </target>
+</phrase>
+<phrase>
+    <source>Sud wurde Importiert</source>
+    <target>Brew file was imported</target>
+</phrase>
+<phrase>
+    <source>Bei dem Sud &gt;</source>
+    <target>At Beer &gt;</target>
+</phrase>
+<phrase>
+    <source>&lt; wurde ein Rohstoff verändert und die Berechneten Werte stimmen nun nicht mehr. Zum neu Berechnen bitte den Sud Laden und wieder Speichern.</source>
+    <target>&lt; an ingredient was changed and calculated values are now incorrect. For re-calculation please load the brew again and save it again.</target>
+</phrase>
+<phrase>
+    <source>Rohstoffe</source>
+    <target>Ingredients</target>
+</phrase>
+<phrase>
+    <source>benötigt (kg)</source>
+    <target>necessary (kg)</target>
+</phrase>
+<phrase>
+    <source>übrig (kg)</source>
+    <target>left (kg)</target>
+</phrase>
+<phrase>
+    <source>benötigt (g)</source>
+    <target>necessary (kg)</target>
+</phrase>
+<phrase>
+    <source>übrig (g)</source>
+    <target>left (kg)</target>
+</phrase>
+<phrase>
+    <source>benötigt</source>
+    <target>necessary</target>
+</phrase>
+<phrase>
+    <source>übrig</source>
+    <target>left</target>
+</phrase>
+<phrase>
+    <source>Anhänge</source>
+    <target>Attachments</target>
+</phrase>
+<phrase>
+    <source>Soll die Zutat</source>
+    <target>Should the ingredient</target>
+</phrase>
+<phrase>
+    <source>Woche </source>
+    <target>Week </target>
+</phrase>
+<phrase>
+    <source>Bitte eine Bezeichnung angeben</source>
+    <target>Please enter a description</target>
+</phrase>
+<phrase>
+    <source>Neue Brauanlage</source>
+    <target>New brew equipment</target>
+</phrase>
+<phrase>
+    <source>&lt;b&gt;Typischer CO2 Gehalt in g/Liter:&lt;/b&gt;&lt;/br&gt;&lt;table&gt;                                                      &lt;tr&gt;&lt;td&gt;Lager, Pilsner &lt;/td&gt;&lt;td&gt;4,00 - 5,50&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Weizenbier &lt;/td&gt;&lt;td&gt;6,50 - 9,00&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Britische Ales &lt;/td&gt;&lt;td&gt;3,00 - 4,00&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Porter Stout &lt;/td&gt;&lt;td&gt;3,40 - 4,50&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Belgische Ales &lt;/td&gt;&lt;td&gt;3,80 - 4,80&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Lambic &lt;/td&gt;&lt;td&gt;4,80 - 5,50&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Frucht-Lambic &lt;/td&gt;&lt;td&gt;6,00 - 9,00&lt;/td&gt;&lt;/tr&gt;                                                      &lt;/table&gt;</source>
+    <target>&lt;b&gt;Typical amout of CO2 in g/Liter:&lt;/b&gt;&lt;/br&gt;&lt;table&gt;                                                      &lt;tr&gt;&lt;td&gt;Lager, Pilsner &lt;/td&gt;&lt;td&gt;4,00 - 5,50&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Weizenbier &lt;/td&gt;&lt;td&gt;6,50 - 9,00&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Britische Ales &lt;/td&gt;&lt;td&gt;3,00 - 4,00&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Porter Stout &lt;/td&gt;&lt;td&gt;3,40 - 4,50&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Belgische Ales &lt;/td&gt;&lt;td&gt;3,80 - 4,80&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Lambic &lt;/td&gt;&lt;td&gt;4,80 - 5,50&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Frucht-Lambic &lt;/td&gt;&lt;td&gt;6,00 - 9,00&lt;/td&gt;&lt;/tr&gt;                                                      &lt;/table&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;b&gt;Typische Bitterwerte in IBU:&lt;/b&gt;&lt;/br&gt;&lt;table&gt;                                                   &lt;tr&gt;&lt;td&gt;Weissbier &lt;/td&gt;&lt;td&gt;10-15&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Märzen &lt;/td&gt;&lt;td&gt;18 - 28&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Export &lt;/td&gt;&lt;td&gt;23 - 29&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Kölsch &lt;/td&gt;&lt;td&gt;20 - 34&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Stout &lt;/td&gt;&lt;td&gt;25 - 40&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Altbier &lt;/td&gt;&lt;td&gt;28 - 40&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Pils &lt;/td&gt;&lt;td&gt;20 - 50&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;IPA &lt;/td&gt;&lt;td&gt;&amp;gt; 60&lt;/td&gt;&lt;/tr&gt;                                                   &lt;/table&gt;&lt;/br&gt;                                                   Neutrales Geschmacksempfinden bei IBU = 2*°P Stammwürze</source>
+    <target>&lt;b&gt;Typical bitter values in IBU:&lt;/b&gt;&lt;/br&gt;&lt;table&gt;                                                   &lt;tr&gt;&lt;td&gt;Weissbier &lt;/td&gt;&lt;td&gt;10-15&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Märzen &lt;/td&gt;&lt;td&gt;18 - 28&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Export &lt;/td&gt;&lt;td&gt;23 - 29&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Kölsch &lt;/td&gt;&lt;td&gt;20 - 34&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Stout &lt;/td&gt;&lt;td&gt;25 - 40&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Altbier &lt;/td&gt;&lt;td&gt;28 - 40&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;Pils &lt;/td&gt;&lt;td&gt;20 - 50&lt;/td&gt;&lt;/tr&gt;                                                   &lt;tr&gt;&lt;td&gt;IPA &lt;/td&gt;&lt;td&gt;&amp;gt; 60&lt;/td&gt;&lt;/tr&gt;                                                   &lt;/table&gt;&lt;/br&gt;                                                   Neutrales Geschmacksempfinden bei IBU = 2*°P Stammwürze</target>
+</phrase>
+<phrase>
+    <source>&lt;b&gt;Typische Stammwürze in °P:&lt;/b&gt;&lt;/br&gt;&lt;table&gt;                                                      &lt;tr&gt;&lt;td&gt;Bockbier &lt;/td&gt;&lt;td&gt;16–17,9&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Doppelbock &lt;/td&gt;&lt;td&gt;&amp;gt; 18&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Exportbier &lt;/td&gt;&lt;td&gt;12–13,5&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Altbier &lt;/td&gt;&lt;td&gt;11,9&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Kölsch &lt;/td&gt;&lt;td&gt;11,3&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Pilsener &lt;/td&gt;&lt;td&gt;11,3–12,3&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Weizenbier &lt;/td&gt;&lt;td&gt;11–13&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Helles &lt;/td&gt;&lt;td&gt;11–13&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Berliner Weisse &lt;/td&gt;&lt;td&gt;7–8&lt;/td&gt;&lt;/tr&gt;                                                      &lt;/table&gt;</source>
+    <target>&lt;b&gt;Typical wort in °P:&lt;/b&gt;&lt;/br&gt;&lt;table&gt;                                                      &lt;tr&gt;&lt;td&gt;Bockbier &lt;/td&gt;&lt;td&gt;16–17,9&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Doppelbock &lt;/td&gt;&lt;td&gt;&amp;gt; 18&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Exportbier &lt;/td&gt;&lt;td&gt;12–13,5&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Altbier &lt;/td&gt;&lt;td&gt;11,9&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Kölsch &lt;/td&gt;&lt;td&gt;11,3&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Pilsener &lt;/td&gt;&lt;td&gt;11,3–12,3&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Weizenbier &lt;/td&gt;&lt;td&gt;11–13&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Helles &lt;/td&gt;&lt;td&gt;11–13&lt;/td&gt;&lt;/tr&gt;                                                      &lt;tr&gt;&lt;td&gt;Berliner Weisse &lt;/td&gt;&lt;td&gt;7–8&lt;/td&gt;&lt;/tr&gt;                                                      &lt;/table&gt;</target>
+</phrase>
+<phrase>
+    <source>Mit High Gravity kann die Ausschlagmenge                                                                erhöht werden (wenn die Sudpfanne an ihre Grenze kommt) indem stärker                                                                eingebraut wird und dann vor der Hefezugabe wieder auf die gewünschte                                                                Stammwürze verdünnt wird.</source>
+    <target>With high gravity you can increase the wort outcome (when the brew kettle is too small) by increasing the original gravity during mashing and cooking and cut the wort with water before fermentation to achieve the desired original gravity.</target>
+</phrase>
+<phrase>
+    <source>Entwickler</source>
+    <target>Developers</target>
+</phrase>
+<phrase>
+    <source>Source code</source>
+    <target>Source code</target>
+</phrase>
+<phrase>
+    <source>Dieses Programm ist lizenziert unter den Bedingungen der GNU General Public License Version 3.</source>
+    <target>This software is licensed under GNU General Public License Version 3.</target>
+</phrase>
+<phrase>
+    <source>Verfügbar online unter</source>
+    <target>Available online at</target>
+</phrase>
+<phrase>
+    <source>Kompiliert mit</source>
+    <target>Compiled with</target>
+</phrase>
+<phrase>
+    <source>Besonderer Dank geht an</source>
+    <target>Special thanks to</target>
+</phrase>
+<phrase>
+    <source>für die Fülle an Informationen und Hilfe</source>
+    <target>for tons of help and information</target>
+</phrase>
+<phrase>
+    <source>Meldung</source>
+    <target>Message</target>
+</phrase>
+<phrase>
+    <source>Diese Meldung nicht mehr Anzeigen</source>
+    <target>Don&apos;t show this message again</target>
+</phrase>
+<phrase>
+    <source>PushButton</source>
+    <target>PushButton</target>
+</phrase>
+<phrase>
+    <source>Nächste Meldung</source>
+    <target>Next message</target>
+</phrase>
+<phrase>
+    <source>Ok</source>
+    <target>Ok</target>
+</phrase>
+<phrase>
+    <source>Rueckgabe:
+</source>
+    <target>Rueckgabe:
+</target>
+</phrase>
+<phrase>
+    <source>
+SQL Befehl:
+</source>
+    <target>
+SQL Befehl:
+</target>
+</phrase>
+<phrase>
+    <source>Rückgabe:
+</source>
+    <target>Rückgabe:
+</target>
+</phrase>
+<phrase>
+    <source>Die Datei ist keine gültige xsud Importdatei</source>
+    <target>File is not a valid xsud file</target>
+</phrase>
+<phrase>
+    <source>In dieser Sud Datei ist der Eintrag Abgefüllte Biermenge noch nicht vorhanden
+Das die Menge in der Brauübersicht richtig dargestellt wird muss dieser Sud einmal geladen und weider gespeichert werden, dann wird dieser Wert neu berechnet.</source>
+    <target>Missing entry for bottled beer amount in beer file
+For correct displaying of the amount in the beer overview, the brew needs to loaded and saved again. The value will be re-calculated.</target>
+</phrase>
+<phrase>
+    <source>Der Rohstoff &lt;b&gt;</source>
+    <target>Ingredient &lt;b&gt;</target>
+</phrase>
+<phrase>
+    <source>&lt;/b&gt; ist in deiner Rohstoffauswahl nicht vorhanden</source>
+    <target>&lt;/b&gt; not existing in ingredient list</target>
+</phrase>
+<phrase>
+    <source>
+
+Soll dieser Eintrag mit der folgenden Auswahl ersetzt werden?
+</source>
+    <target>
+
+Should this entry be replaced by the following?
+</target>
+</phrase>
+<phrase>
+    <source>oder der Datenbank hinzugefügt werden.</source>
+    <target>or added to the databse.</target>
+</phrase>
+<phrase>
+    <source>Hinweis!</source>
+    <target>Note!</target>
+</phrase>
+<phrase>
+    <source>Rückgabe:
+</source>
+    <target>Rückgabe:
+</target>
+</phrase>
+<phrase>
+    <source>
+SQL Befehl:
+</source>
+    <target>
+SQL Befehl:
+</target>
+</phrase>
+<phrase>
+    <source>Betroffener Kopierpfad:
+</source>
+    <target>Betroffener Kopierpfad:
+</target>
+</phrase>
+<phrase>
+    <source>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Einmaischen&apos; WHERE ID=1</source>
+    <target>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Einmaischen&apos; WHERE ID=1</target>
+</phrase>
+<phrase>
+    <source>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Gummirast (35°-40°)&apos; WHERE ID=2</source>
+    <target>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Gummirast (35°-40°)&apos; WHERE ID=2</target>
+</phrase>
+<phrase>
+    <source>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Weizenrast (45°)&apos; WHERE ID=3</source>
+    <target>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Weizenrast (45°)&apos; WHERE ID=3</target>
+</phrase>
+<phrase>
+    <source>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Eiweißrast (57°)&apos; WHERE ID=4</source>
+    <target>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Eiweißrast (57°)&apos; WHERE ID=4</target>
+</phrase>
+<phrase>
+    <source>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Maltoserast (60°-65°)&apos; WHERE ID=5</source>
+    <target>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Maltoserast (60°-65°)&apos; WHERE ID=5</target>
+</phrase>
+<phrase>
+    <source>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Kombirast (66°-69°)&apos; WHERE ID=6</source>
+    <target>UPDATE &apos;Rastauswahl&apos; SET &apos;Text&apos; =&apos;Kombirast (66°-69°)&apos; WHERE ID=6</target>
+</phrase>
+<phrase>
+    <source>INSERT INTO &apos;Rastauswahl&apos;  (&apos;Text&apos;) VALUES (&apos;Verzuckerung (70°-75°)&apos;)</source>
+    <target>INSERT INTO &apos;Rastauswahl&apos;  (&apos;Text&apos;) VALUES (&apos;Verzuckerung (70°-75°)&apos;)</target>
+</phrase>
+<phrase>
+    <source>INSERT INTO &apos;Rastauswahl&apos;  (&apos;Text&apos;) VALUES (&apos;Abmaischen (78°)&apos;)</source>
+    <target>INSERT INTO &apos;Rastauswahl&apos;  (&apos;Text&apos;) VALUES (&apos;Abmaischen (78°)&apos;)</target>
+</phrase>
+<phrase>
+    <source>Betroffener Pfad:
+</source>
+    <target>Betroffener Pfad:
+</target>
+</phrase>
+<phrase>
+    <source>Betroffene Datei:
+</source>
+    <target>Betroffene Datei:
+</target>
+</phrase>
+<phrase>
+    <source>°C</source>
+    <target>°C</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Gummirast (35°-40°)</source>
+    <target>Acid rest (35°-40°)</target>
+</phrase>
+<phrase>
+    <source>Weizenrast (45°)</source>
+    <target>Glucans rest (45°)</target>
+</phrase>
+<phrase>
+    <source>Eiweißrast (57°)</source>
+    <target>Protein rest (57°)</target>
+</phrase>
+<phrase>
+    <source>Maltoserast (60°-65°)</source>
+    <target>Maltose rest (60°-65°)</target>
+</phrase>
+<phrase>
+    <source>Kombirast (66°-69°)</source>
+    <target>Saccharification rest (66°-69°)</target>
+</phrase>
+<phrase>
+    <source>Verzuckerung (70°-75°)</source>
+    <target>Dextrinization rest (70°-75°)</target>
+</phrase>
+<phrase>
+    <source>Abmaischen (78°)</source>
+    <target>Mash-out (78°)</target>
+</phrase>
+<phrase>
+    <source>Rohstoff austauschen</source>
+    <target>Change ingredient</target>
+</phrase>
+<phrase>
+    <source>Auswahl zum Ersetzten</source>
+    <target>Select replacement</target>
+</phrase>
+<phrase>
+    <source>Rohstoff aus Importdatei übernehmen</source>
+    <target>Transfer ingredient from import file</target>
+</phrase>
+<phrase>
+    <source>Rohstoff im Sud mit Auswahl austauschen</source>
+    <target>Change brew ingredient from selection</target>
+</phrase>
+<phrase>
+    <source>Rohstoffeintrag nicht löschen</source>
+    <target>Don&apos;t remove ingredient entry</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Form</target>
+</phrase>
+<phrase>
+    <source>Entfernt diese Zutat</source>
+    <target>Remove this ingredient</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>+32,3</source>
+    <target>+32,3</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source>g</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Anteil</source>
+    <target>Share</target>
+</phrase>
+<phrase>
+    <source>IBU</source>
+    <target>IBU</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Boil time</target>
+</phrase>
+<phrase>
+    <source>min</source>
+    <target>min</target>
+</phrase>
+<phrase>
+    <source>Vorderwürze Hopfung</source>
+    <target>Pre-boil hopping</target>
+</phrase>
+<phrase>
+    <source>VWH</source>
+    <target>Pre-boil hopping</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Efficiency</target>
+</phrase>
+<phrase>
+    <source>Rohstoffeintrag in den Hopfengaben ist nicht mehr vorhanden</source>
+    <target>Ingredient entry in hop list is not available</target>
+</phrase>
+<phrase>
+    <source>  (Pellets) </source>
+    <target>  (Pellets) </target>
+</phrase>
+<phrase>
+    <source>  (Dolden) </source>
+    <target>  (Cone) </target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Form</target>
+</phrase>
+<phrase>
+    <source>Entfernt diese Zutat</source>
+    <target>Removes this ingredient</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Amount</target>
+</phrase>
+<phrase>
+    <source>+32,3</source>
+    <target>+32,3</target>
+</phrase>
+<phrase>
+    <source>%</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>kg</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Rohstoffeintrag in den Malz Zutaten ist nicht mehr vorhanden</source>
+    <target>Ingredient entry in malt list is not available</target>
+</phrase>
+</QPH>
+

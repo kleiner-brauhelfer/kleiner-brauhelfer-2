@@ -60,8 +60,14 @@ void WdgWebViewEditable::clear()
 
 void WdgWebViewEditable::setHtmlFile(const QString& file)
 {
-    ui->cbTemplateAuswahl->setItemText(0, file);
-    ui->webview->setTemplateFile(gSettings->dataDir(1) + file);
+    QString fileComplete;
+    QString lang = gSettings->language();
+    if (lang == "de")
+        fileComplete = file + ".html";
+    else
+        fileComplete = file + "_" + lang + ".html";
+    ui->cbTemplateAuswahl->setItemText(0, fileComplete);
+    ui->webview->setTemplateFile(gSettings->dataDir(1) + fileComplete);
 }
 
 void WdgWebViewEditable::printDocument(QPrinter *printer)

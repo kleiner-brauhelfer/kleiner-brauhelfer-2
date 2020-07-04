@@ -37,9 +37,9 @@ void TabZusammenfassung::updateWebView()
         return;
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
-        ui->webview->setHtmlFile("spickzettel.html");
+        ui->webview->setHtmlFile("spickzettel");
     else
-        ui->webview->setHtmlFile("zusammenfassung.html");
+        ui->webview->setHtmlFile("zusammenfassung");
     TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
 }
 

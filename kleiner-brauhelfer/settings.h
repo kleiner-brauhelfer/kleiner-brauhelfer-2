@@ -36,6 +36,9 @@ public:
     bool animationsEnabled();
     void setAnimationsEnabled(bool enabled);
 
+    QString language();
+    void setLanguage(QString lang);
+
     QString settingsDir() const;
 
     QString databasePath();

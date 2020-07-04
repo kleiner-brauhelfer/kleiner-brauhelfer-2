@@ -272,6 +272,21 @@ void Settings::setAnimationsEnabled(bool enabled)
     endGroup();
 }
 
+QString Settings::language()
+{
+    beginGroup("General");
+    QString lang = value("language", QLocale::system().name()).toString();
+    endGroup();
+    return lang;
+}
+
+void Settings::setLanguage(QString lang)
+{
+    beginGroup("General");
+    setValue("language", lang);
+    endGroup();
+}
+
 QString Settings::settingsDir() const
 {
     return QFileInfo(fileName()).absolutePath() + "/";

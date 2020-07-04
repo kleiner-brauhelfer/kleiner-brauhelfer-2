@@ -163,7 +163,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj, event);
 }
 
-void MainWindow::restart()
+void MainWindow::restart(int retCode)
 {
     if (bh->isDirty())
     {
@@ -176,7 +176,7 @@ void MainWindow::restart()
         else if (ret == QMessageBox::Cancel)
             return;
     }
-    qApp->exit(1000);
+    qApp->exit(retCode);
 }
 
 void MainWindow::save()
@@ -745,6 +745,18 @@ void MainWindow::on_actionTooltips_triggered(bool checked)
 void MainWindow::on_actionAnimationen_triggered(bool checked)
 {
     gSettings->setAnimationsEnabled(checked);
+}
+
+void MainWindow::on_actionDeutsch_triggered()
+{
+    gSettings->setLanguage("de");
+    restart(1001);
+}
+
+void MainWindow::on_actionEnglisch_triggered()
+{
+    gSettings->setLanguage("en");
+    restart(1001);
 }
 
 void MainWindow::on_actionSpende_triggered()

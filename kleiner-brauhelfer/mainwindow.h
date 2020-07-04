@@ -57,6 +57,8 @@ private slots:
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionTooltips_triggered(bool checked);
     void on_actionAnimationen_triggered(bool checked);
+    void on_actionDeutsch_triggered();
+    void on_actionEnglisch_triggered();
     void on_actionSpende_triggered();
     void on_actionBierspende_triggered();
     void on_actionUeber_triggered();
@@ -65,7 +67,7 @@ private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
-    void restart();
+    void restart(int retCode = 1000);
     void save();
     void saveSettings();
     void restoreView(bool full);

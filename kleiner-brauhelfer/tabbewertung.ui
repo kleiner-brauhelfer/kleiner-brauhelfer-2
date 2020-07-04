@@ -37,8 +37,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>163</width>
-            <height>605</height>
+            <width>187</width>
+            <height>596</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -79,7 +79,7 @@
        <item>
         <widget class="QPushButton" name="btnNeueBewertung">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>Neue Bewertung</string>
@@ -97,8 +97,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>854</width>
-         <height>640</height>
+         <width>811</width>
+         <height>634</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -113,12 +113,6 @@
           </item>
           <item>
            <widget class="DateEdit" name="tbDatum">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann das &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertungsdatum&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Das Datum einer einmal angelegten Bewertung kann nicht mehr geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -200,7 +194,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <widget class="QWidget" name="tab_3">
            <attribute name="title">

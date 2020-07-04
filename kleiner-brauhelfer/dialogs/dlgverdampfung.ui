@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>456</width>
-    <height>419</height>
+    <width>360</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -47,7 +47,7 @@
        <widget class="DoubleSpinBox" name="dSpinBox_cmVonObenMenge1">
         <property name="minimumSize">
          <size>
-          <width>80</width>
+          <width>60</width>
           <height>0</height>
          </size>
         </property>
@@ -70,6 +70,12 @@
       </item>
       <item row="2" column="2">
        <widget class="DoubleSpinBox" name="dSpinBox_Menge1">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Volumen bei 100° Celsius bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; berechnet. Es ist größer als bei niedrigeren Temperaturen. Der Wert wird für die Sollmenge nach Kochende und andere Berechnungen im Kleinen Brauhelfer verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -96,6 +102,12 @@
       </item>
       <item row="1" column="2">
        <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge1">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Unterkante des Kessels bis zur Oberkante des Sudes zu &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; messen. Ist der Kesselboden uneben, so empfiehlt sich eine mittlere Stelle zur Messung. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -115,6 +127,12 @@
       </item>
       <item row="1" column="3">
        <widget class="QLabel" name="label_12">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string notr="true">cm</string>
         </property>
@@ -124,7 +142,7 @@
        <widget class="QLabel" name="label_10">
         <property name="minimumSize">
          <size>
-          <width>40</width>
+          <width>30</width>
           <height>0</height>
          </size>
         </property>
@@ -148,6 +166,12 @@
       </item>
       <item row="2" column="3">
        <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>l</string>
         </property>
@@ -164,6 +188,12 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="2" column="3">
        <widget class="QLabel" name="label_18">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string>l</string>
         </property>
@@ -173,7 +203,7 @@
        <widget class="DoubleSpinBox" name="dSpinBox_cmVonObenMenge2">
         <property name="minimumSize">
          <size>
-          <width>80</width>
+          <width>60</width>
           <height>0</height>
          </size>
         </property>
@@ -196,6 +226,12 @@
       </item>
       <item row="1" column="3">
        <widget class="QLabel" name="label_16">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
          <string notr="true">cm</string>
         </property>
@@ -223,6 +259,12 @@
       </item>
       <item row="2" column="2">
        <widget class="DoubleSpinBox" name="dSpinBox_Menge2">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Volumen bei 100° Celsius bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. Es ist größer als bei niedrigeren Temperaturen. Der Wert orientiert sich u.a. an der eingestellten Verdampfungsziffer und wird für die Sollmenge beim Anstellen der Hefe und andere Berechnungen im Kleinen Brauhelfer verwendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -251,7 +293,7 @@
        <widget class="QLabel" name="label_14">
         <property name="minimumSize">
          <size>
-          <width>40</width>
+          <width>30</width>
           <height>0</height>
          </size>
         </property>
@@ -269,6 +311,12 @@
       </item>
       <item row="1" column="2">
        <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge2">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Unterkante des Kessels bis zur Oberkante des Sudes am &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; messen. Ist der Kesselboden uneben, so empfiehlt sich eine mittlere Stelle zur Messung. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -299,6 +347,12 @@
      </property>
      <item row="2" column="3">
       <widget class="QLabel" name="label_8">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="text">
         <string notr="true">%</string>
        </property>
@@ -308,7 +362,7 @@
       <widget class="QLabel" name="label_6">
        <property name="minimumSize">
         <size>
-         <width>40</width>
+         <width>30</width>
          <height>0</height>
         </size>
        </property>
@@ -346,6 +400,12 @@
      </item>
      <item row="2" column="2">
       <widget class="DoubleSpinBox" name="dSpinBox_Verdampfungsziffer">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -377,7 +437,7 @@
       <widget class="SpinBox" name="spinBox_Kochdauer">
        <property name="minimumSize">
         <size>
-         <width>80</width>
+         <width>60</width>
          <height>0</height>
         </size>
        </property>
@@ -401,6 +461,12 @@
      </item>
      <item row="3" column="2">
       <widget class="DoubleSpinBox" name="dSpinBox_Verdampfungsrate">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>

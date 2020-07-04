@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>823</width>
-    <height>131</height>
+    <width>784</width>
+    <height>150</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -41,20 +41,20 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="spacing">
-         <number>9</number>
+         <number>6</number>
         </property>
         <item>
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>20</width>
+            <height>20</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>20</width>
+            <height>20</height>
            </size>
           </property>
           <property name="focusPolicy">
@@ -79,29 +79,37 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNachOben">
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnNachUnten">
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="btnLoeschen">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Hopfengabe löschen.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -110,7 +118,7 @@
       <item>
        <layout class="QGridLayout" name="gridLayout">
         <property name="horizontalSpacing">
-         <number>9</number>
+         <number>6</number>
         </property>
         <property name="verticalSpacing">
          <number>4</number>
@@ -119,7 +127,7 @@
          <widget class="QLabel" name="lblEinheit">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -132,7 +140,7 @@
          <widget class="DoubleSpinBox" name="tbAusbeute">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>50</width>
             <height>0</height>
            </size>
           </property>
@@ -170,7 +178,7 @@
          <widget class="QLabel" name="lblMengeProzent">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -181,6 +189,12 @@
         </item>
         <item row="0" column="7" rowspan="2">
          <widget class="QPushButton" name="btnMengeKorrektur">
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor nach Gewicht &lt;/span&gt;ausgegeben, wenn der Eintrag an Alphasäure nach Gewicht 100% der angepeilten Bittere (IBU) unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Wert&lt;/span&gt; berechnet sich u.a. aus allen eingesetzten Bitter-, Universal- und Aromahopfen. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Hopfengabe &lt;/span&gt;auf 100% IBU. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung des Hopfens anteilig vorab auf 100% gesamt bestimmt werden, wobei Alphawert und Kochdauer einzelner Hopfensorten den Gesamtwert unterschiedlich beeinflussen.&lt;/p&gt;&lt;p&gt;Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -197,7 +211,7 @@
          <widget class="QLabel" name="label_13">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -210,7 +224,7 @@
          <widget class="DoubleSpinBox" name="tbAnteil">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>50</width>
             <height>0</height>
            </size>
           </property>
@@ -241,7 +255,7 @@
          <widget class="DoubleSpinBox" name="tbAlpha">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>50</width>
             <height>0</height>
            </size>
           </property>
@@ -272,7 +286,7 @@
          <widget class="QLabel" name="label_12">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -292,7 +306,7 @@
          <widget class="QLabel" name="label_9">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -310,6 +324,12 @@
         </item>
         <item row="2" column="7">
          <widget class="QPushButton" name="btnAnteilKorrektur">
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor nach IBU &lt;/span&gt;ausgegeben, wenn der Eintrag an Alphasäure nach IBU 100% der angepeilten Bittere unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Wert&lt;/span&gt; berechnet sich u.a. aus allen eingesetzten Bitter-, Universal- und Aromahopfen. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Hopfengabe &lt;/span&gt;auf 100% IBU. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung des Hopfens anteilig vorab auf 100% per IBU-Eintrag bestimmt werden, wobei Alphawert und Kochdauer einzelner Hopfensorten den Gesamtwert unterschiedlich beeinflussen.&lt;/p&gt;&lt;p&gt;Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -319,7 +339,7 @@
          <widget class="QLabel" name="label_10">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -332,7 +352,7 @@
          <widget class="QLabel" name="label_7">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -345,7 +365,7 @@
          <widget class="DoubleSpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
            </size>
           </property>
@@ -367,7 +387,7 @@
          <widget class="QLabel" name="label_6">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -387,7 +407,7 @@
          <widget class="DoubleSpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>50</width>
             <height>0</height>
            </size>
           </property>
@@ -428,14 +448,14 @@
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
-            <width>50</width>
-            <height>0</height>
+            <width>30</width>
+            <height>22</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>16777215</height>
+            <width>30</width>
+            <height>22</height>
            </size>
           </property>
           <property name="toolTip">
@@ -483,7 +503,7 @@
          <widget class="DoubleSpinBox" name="tbMengeProzent">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
            </size>
           </property>
@@ -518,8 +538,14 @@
          <widget class="SpinBox" name="tbKochdauer">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -540,7 +566,7 @@
          <widget class="DoubleSpinBox" name="tbMengeProLiter">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
            </size>
           </property>
@@ -565,7 +591,7 @@
          <widget class="DoubleSpinBox" name="tbAnteilProzent">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
            </size>
           </property>
@@ -593,7 +619,7 @@
          <widget class="QLabel" name="lblAnteilProzent">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -616,14 +642,14 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>100</height>
+    <width>509</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -41,20 +41,20 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <property name="spacing">
-         <number>9</number>
+         <number>6</number>
         </property>
         <item>
          <widget class="QFrame" name="frameColor">
           <property name="minimumSize">
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>20</width>
+            <height>20</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>20</width>
+            <height>20</height>
            </size>
           </property>
           <property name="focusPolicy">
@@ -82,29 +82,37 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNachOben">
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnNachUnten">
-          <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="btnLoeschen">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>24</width>
+            <height>22</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hefegabe löschen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>25</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -113,7 +121,7 @@
       <item>
        <layout class="QGridLayout" name="gridLayout">
         <property name="horizontalSpacing">
-         <number>9</number>
+         <number>6</number>
         </property>
         <property name="verticalSpacing">
          <number>4</number>
@@ -139,7 +147,7 @@
          <widget class="SpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>50</width>
             <height>0</height>
            </size>
           </property>
@@ -162,12 +170,6 @@
         </item>
         <item row="1" column="1">
          <widget class="SpinBox" name="tbTage">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit ist der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt &lt;/span&gt;der zweiten Hefegabe in Tagen ab Braudatum gemeint.&lt;/p&gt;&lt;p&gt;Die Zugabe kann gleichzeitig mit der ersten Hefegabe erfolgen. Gewöhnlich wir die zweite Hefe aber nach Abklingen der ersten Hauptgärung zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -185,17 +187,8 @@
         </item>
         <item row="1" column="3">
          <widget class="DateEdit" name="tbDatum">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>0</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum &lt;/span&gt;der zweiten Hefe, abhängig vom Zugabezeitpunkt, angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
           </property>
           <property name="calendarPopup">
            <bool>true</bool>
@@ -226,14 +219,14 @@
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
-            <width>50</width>
-            <height>0</height>
+            <width>30</width>
+            <height>22</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>50</width>
-            <height>16777215</height>
+            <width>30</width>
+            <height>22</height>
            </size>
           </property>
           <property name="toolTip">
@@ -249,7 +242,7 @@
          <widget class="QLabel" name="label_3">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>30</width>
             <height>0</height>
            </size>
           </property>
@@ -262,7 +255,7 @@
          <widget class="SpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
            </size>
           </property>
@@ -285,7 +278,7 @@
          <widget class="SpinBox" name="tbMengeEmpfohlen">
           <property name="minimumSize">
            <size>
-            <width>80</width>
+            <width>60</width>
             <height>0</height>
            </size>
           </property>
@@ -312,14 +305,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

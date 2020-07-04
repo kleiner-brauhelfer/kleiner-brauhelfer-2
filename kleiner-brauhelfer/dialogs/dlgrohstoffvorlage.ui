@@ -94,7 +94,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue&lt;/span&gt;, vordefinierte &lt;span style=&quot; font-weight:600;&quot;&gt;Zeile&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Vorlage hinzufügen</string>
+           <string>Vorlage hinzu</string>
           </property>
          </widget>
         </item>
@@ -114,17 +114,17 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden im obigen Feld Rohstoffvorlagen neue, vordefinierte Rohstofflisten hinzugefügt. Aktuell sollte der Datensatz als semikolonseparierter csv-Datensatz mit den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Name&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Typ&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Farbe&lt;/span&gt; vorliegen.&lt;/p&gt;&lt;p&gt;Beispiel:&lt;/p&gt;&lt;p&gt;Name;Typ;Ausbeute;Farbe&lt;br/&gt;Honig;Honig;90;1&lt;br/&gt;;;;&lt;br/&gt;;;;&lt;/p&gt;&lt;p&gt;Ein Leerzeichen hinter dem Semikolon ist nicht nötig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Liste importieren</string>
+           <string>Liste Import</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btn_Export">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz exportiert. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Liste exportieren</string>
+           <string>Liste Export</string>
           </property>
          </widget>
         </item>
@@ -134,7 +134,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird der vordefinierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausgangszustand&lt;/span&gt; für die Vorlagenerstellung wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Liste wiederherstellen</string>
+           <string>Liste zurück</string>
           </property>
          </widget>
         </item>

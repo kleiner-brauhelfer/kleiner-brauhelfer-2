@@ -3,13 +3,11 @@
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include "model/doublespinboxdelegate.h"
-#include "model/textdelegate.h"
+#include "model/readonlydelegate.h"
 #include "model/spinboxdelegate.h"
 #include "brauhelfer.h"
-#include "settings.h"
 
 extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 class RohstoffeAbziehenModel : public QStandardItemModel
 {
@@ -34,11 +32,6 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(QWidget *parent) :
     ui->setupUi(this);
     setModels(true);
     adjustSize();
-    gSettings->beginGroup("DlgRohstoffeAbziehen");
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
@@ -49,16 +42,10 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(Brauhelfer::RohstoffTyp typ, const QS
     ui->setupUi(this);
     setModels(false, typ, name, menge);
     adjustSize();
-    gSettings->beginGroup("DlgRohstoffeAbziehen");
-    resize(gSettings->value("size").toSize());
-    gSettings->endGroup();
 }
 
 DlgRohstoffeAbziehen::~DlgRohstoffeAbziehen()
 {
-    gSettings->beginGroup("DlgRohstoffeAbziehen");
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 
@@ -66,8 +53,8 @@ void DlgRohstoffeAbziehen::reject()
 {
     if (!mAbgezogen)
     {
-        int ret = QMessageBox::warning(this, windowTitle(), tr("Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?"), QMessageBox::Yes | QMessageBox::Cancel);
-        if (ret == QMessageBox::Yes)
+        int ret = QMessageBox::warning(this, windowTitle(), tr("Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?"), QMessageBox::Ja | QMessageBox::Abbrechen);
+        if (ret == QMessageBox::Ja)
             QDialog::reject();
     }
     else
@@ -109,7 +96,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelMalz->setHeaderData(1, Qt::Horizontal, tr("Menge [kg]"));
     modelMalz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [kg]"));
     ui->tableViewMalz->setModel(modelMalz);
-    ui->tableViewMalz->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
+    ui->tableViewMalz->setItemDelegateForColumn(0, new ReadonlyDelegate(this));
     ui->tableViewMalz->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, 9999.9, 0.1, false, this));
     ui->tableViewMalz->setItemDelegateForColumn(2, new DoubleSpinBoxDelegate(2, this));
     if (modelMalz->rowCount() > 0)
@@ -165,7 +152,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelHopfen->setHeaderData(1, Qt::Horizontal, tr("Menge [g]"));
     modelHopfen->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
     ui->tableViewHopfen->setModel(modelHopfen);
-    ui->tableViewHopfen->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
+    ui->tableViewHopfen->setItemDelegateForColumn(0, new ReadonlyDelegate(this));
     ui->tableViewHopfen->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(0, 0, 9999, 1, false, this));
     ui->tableViewHopfen->setItemDelegateForColumn(2, new SpinBoxDelegate(this));
     if (modelHopfen->rowCount() > 0)
@@ -210,7 +197,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelHefe->setHeaderData(1, Qt::Horizontal, tr("Menge"));
     modelHefe->setHeaderData(2, Qt::Horizontal, tr("Vorhanden"));
     ui->tableViewHefe->setModel(modelHefe);
-    ui->tableViewHefe->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
+    ui->tableViewHefe->setItemDelegateForColumn(0, new ReadonlyDelegate(this));
     ui->tableViewHefe->setItemDelegateForColumn(1, new SpinBoxDelegate(0, 9999, 1, false, this));
     ui->tableViewHefe->setItemDelegateForColumn(2, new SpinBoxDelegate(this));
     if (modelHefe->rowCount() > 0)
@@ -260,7 +247,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelWz->setHeaderData(1, Qt::Horizontal, tr("Menge [g]"));
     modelWz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
     ui->tableViewWZ->setModel(modelWz);
-    ui->tableViewWZ->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
+    ui->tableViewWZ->setItemDelegateForColumn(0, new ReadonlyDelegate(this));
     ui->tableViewWZ->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, 9999.9, 0.1, false, this));
     ui->tableViewWZ->setItemDelegateForColumn(2, new DoubleSpinBoxDelegate(2, this));
     if (modelWz->rowCount() > 0)

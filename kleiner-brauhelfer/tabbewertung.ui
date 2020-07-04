@@ -79,7 +79,7 @@
        <item>
         <widget class="QPushButton" name="btnNeueBewertung">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>Neue Bewertung</string>

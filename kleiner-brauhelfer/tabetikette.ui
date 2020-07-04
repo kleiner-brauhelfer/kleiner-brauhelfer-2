@@ -37,12 +37,15 @@
           </sizepolicy>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;im Format SVG aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten. SVG ist eine Beschreibung zweidimensionaler Grafiken.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnOeffnen">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann eine externes &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; geöffnet und anschließend im Kleinen Brauhelfer gespeichert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
           <string>Öffnen</string>
          </property>
@@ -51,7 +54,7 @@
        <item>
         <widget class="QPushButton" name="btnAktualisieren">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf Aktualisieren wirken sich die Änderungen unmittelbar aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; aktualisiert. Andernfalls können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>Aktualisieren</string>
@@ -146,13 +149,16 @@
         </property>
         <widget class="QPlainTextEdit" name="tbTemplate">
          <property name="toolTip">
-          <string>In dieser Spalte</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Bereich wird das Etikett mittels Tags und XML-Elementen gemäß der Beschreibungssprache SVG layoutet.&lt;/p&gt;&lt;p&gt;Das jeweils gewählte Tag wird hierfür mit einem Wert aus dem Bereich rechts definiert. Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="lineWrapMode">
           <enum>QPlainTextEdit::NoWrap</enum>
          </property>
         </widget>
         <widget class="QPlainTextEdit" name="tbTags">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Werte&lt;/span&gt; der Tags aufgeführt. &lt;/p&gt;&lt;p&gt;Die Werte stammen aus den einzelnen Tabs (Reiter) des Kleinen Brauhelfers, insbesondere aus dem Tab Rezept sowie aus den Tabs Braudaten und Abfülldaten. Der Aufruf dieser Werte kann im linken Bereich umgesetzt werden. &lt;/p&gt;&lt;p&gt;Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="lineWrapMode">
           <enum>QPlainTextEdit::NoWrap</enum>
          </property>
@@ -228,7 +234,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Aus praktischen Erwägungen sollte die gewählte Zahl mit dem später gewählten Druckformat übereinstimmen. Üblicherweise werden Halsspitzetiketten auf einem handelsüblichen Drucker in DINA A4 ausgedruckt und die Druckbögen dann zurechtgeschnitten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -371,6 +377,9 @@
           </item>
           <item row="3" column="0" colspan="3">
            <widget class="QPushButton" name="btnGroesseAusSvg">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das in der Vorlage definierte Seitenverhältnis der aktuell gewählten Etikettenvorlage übernommen. Eine manuelle Anpassung entfällt damit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Aus SVG übernehmen</string>
             </property>
@@ -428,7 +437,7 @@
           <item row="2" column="0" colspan="3">
            <widget class="QCheckBox" name="cbDividingLine">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eine &lt;span style=&quot; font-weight:600;&quot;&gt;Trennlinie&lt;/span&gt; zwischen den einzelnen darstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Trennlinie&lt;/span&gt; zwischen den einzelnen Etiketten angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Trennlinie darstellen</string>
@@ -487,6 +496,9 @@
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="TableView" name="tableTags">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden zusätzliche Tags für das gewählte Etikett aufgelistet.&lt;/p&gt;&lt;p&gt;Ein Tag besteht aus seinem Namen und seinem Wert. Tags werden in doppelt geschweiften Klammern beschrieben. Bei Fragen zur Auszeichnungssprache des svg-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="alternatingRowColors">
              <bool>true</bool>
             </property>
@@ -499,6 +511,9 @@
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
              <widget class="QPushButton" name="btnTagNeu">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag für das Etikett &lt;/span&gt;angelegt.&lt;/p&gt;&lt;p&gt;Ein Tag darin besteht aus seinem Namen und seinem Wert. Tags werden in doppelt geschweiften Klammern beschrieben.&lt;/p&gt;&lt;p&gt;Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Neu</string>
               </property>
@@ -506,6 +521,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnTagLoeschen">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Tag oder mehrere gelöscht. Mit Shift können mehere Tags markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Löschen</string>
               </property>

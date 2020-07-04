@@ -121,7 +121,7 @@
         <item>
          <widget class="QPushButton" name="btn_Export">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz exportiert. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Liste exportieren</string>

@@ -167,6 +167,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeit &lt;/span&gt;bezeichnet Stunde und Minute, zu dem das Jungbier auf Flasche, Fass oder in ein anderes Behältnis gegeben wird.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Da dieser Wert beim sogenannten Grünschlauchen zeitkritisch ist, trennt der Kleine Brauhelfer Stunde und Minute entgegen sonstigen Datumsangaben hier vom eigentlich Abfülldatum ab. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Zur Abfüllzeit endet die Hauptgärung und es beginnt die Reifung des Bieres, auch Nachgärung genannt. &lt;/p&gt;&lt;p&gt;Es muss sich dabei nicht zwingend um das Endprodukt handeln. Je nach Rezept und Verfahren können bis zum finalen Produkt viele Zwischenschritte nötig sein. Das Feld Abfüllzeit kann manuell minutengenau definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
@@ -260,7 +263,7 @@
            <item row="1" column="6">
             <widget class="DoubleSpinBoxSud" name="tbSWJungbierSoll">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Stammwürze&lt;/span&gt; zur Errinerung nochmals angezeigt.&lt;/p&gt;&lt;p&gt;Die Stammwürze entspricht der Stammwürze beim Anstellen plus die Anteile aus den zugegebenen weiteren Zutaten während der Gärung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;erwartete Restextrakt &lt;/span&gt;am Ende der Gärung angezeigt. Dieser Wert beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;verbleibende Stammwürze &lt;/span&gt;im abfüllbereiten Bier, die gespindelt oder per Refraktometer ermittelt wird und berechnet sich aus dem Vergärungsgrad der gewählten Hefe im Tab Rohstoffe.&lt;/p&gt;&lt;p&gt;Die Angabe des erwarteten Restextraktes ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Hilfswert&lt;/span&gt;, der Auskunft darüber gibt, dass die Gärung am Ende des Gärpozresses innerhalb der berechneten Parameter erfolgt ist. &lt;/p&gt;&lt;p&gt;Der erwartete Restextrakt ist als Sollwert ein Benchmark, der nicht zwangsläufig mit den tatsächlichen Werten übereinstimmen muss. Eine starke Abweichung ist ein Indiz für zu erwartende Geschmacksabweichungen und daher der Brauprozess oder die Angaben für Zutaten im Tab Rohstoffe optimiert werden müssen.&lt;/p&gt;&lt;p&gt;Da hier im Einzelfall viele Parameter hineinspielen können, empfiehlt es sich die einschlägige Fachliteratur oder ein Fachforum im Fall von Problemen heranzuziehen.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; der Hefe und &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; berechnet sich der Vergärungsgrad der Hefe sowie der Alkoholgehalt des Bieres.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -398,7 +401,7 @@
            <item row="9" column="6">
             <widget class="DoubleSpinBoxSud" name="tbAlkoholRezept">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der Alkoholgehalt errechnet sich aus dem tasächlichen Endvergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;errechnete Alkoholgehalt&lt;/span&gt; des Bierrezeptes in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der errechnete Alkoholgehalt muss nicht zwingend mit dem tatsächlichen Alkoholgehalte am Ende des Gärprozesses identisch sein. Der Kleine Brauhelfer nimmt bei der Berechnung des Alkoholgehaltes Bezug auf die Angabe des Vergärungsgrades der Hefe im Tab Rohstoffe. Tatsächlich sind die Angaben der Hefelabore nur Mittelwerte. In der Praxis gibt es viele Parameter, die den Endvergärungsgrad und damit den späteren Alkohlgehalt nach unten oder nach oben beeinflussen. Bei starken Abweichungen, die ein Bier sensorisch stark verändern können, helfen die Fachforen.&lt;/p&gt;&lt;p&gt;Im Hintergrund berücksichtigt der Kleine Brauhelfer die geringere Dichte von Alkohol im Jungbier und berechnet mit den Angaben der Braudaten sowie des Gärverlaufs mit Hilfe der sogenannten Balling-Formel den Alkoholgehalt des Bieres. Diese Formel ist auch beim Zoll als einzig mathematisches Konstrukt zur Bestimmung des Alkoholgehaltes anerkannt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -454,7 +457,7 @@
            <item row="3" column="0">
             <widget class="QCheckBox" name="cbSchnellgaerprobeAktiv">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Restextrakt der Schnellgärprobe</string>
@@ -513,7 +516,7 @@
            <item row="7" column="6">
             <widget class="DoubleSpinBoxSud" name="tbTEVG">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des Restextraktes, der durch die unterschiedliche Dichte von Wasser und Alkohl nötig wird. Er wird vornehmlich zur Berechnung des Alkoholgehaltes herangezogen.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des scheinbaren Restextraktes, der mit Spindel oder Refraktometer gemessen, durch die unterschiedliche Dichte von Wasser und Alkohol unter anderem zur Berechnung des Alkoholgehalts herangezogen wird.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -532,7 +535,7 @@
            <item row="8" column="6">
             <widget class="DoubleSpinBoxSud" name="tbAlkohol">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der Alkoholgehalt errechnet sich aus dem tasächlichen Endvergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der tatsächliche &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; des Jungbieres in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der tatsächliche Alkoholgehalt ergibt sich aus der beim Anstellen gemessenen Stammwürze und den im Gärverlauf gemessenen Endvergärungsgrad. Der tatsächliche Alkoholgehalt muss nicht identisch mit dem erwarteten Alkoholgehalt sein, da sich der Vergärungsgrad einer Hefe bei bestimmten Parametern wie Temperatur, Dauer, Enzymtätigkeit, pH-Wert oder Stammwürze oder der Maische von den Durschschnittswerten unterscheiden kann. Dies gilt besonders bei sogenannten Super- oder Übervergärern.&lt;/p&gt;&lt;p&gt;Im Hintergrund berücksichtigt der Kleine Brauhelfer die geringere Dichte von Alkohol im Jungbier und berechnet mit den Angaben der Braudaten sowie des Gärverlaufs mit Hilfe der sogenannten Balling-Formel den Alkoholgehalt des Bieres. Diese Formel ist auch beim Zoll als einzig mathematisches Konstrukt zur Bestimmung des Alkoholgehaltes anerkannt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -626,7 +629,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Stammwürze&lt;/span&gt; zur Errinerung nochmals angezeigt.&lt;/p&gt;&lt;p&gt;Die Stammwürze entspricht der Stammwürze beim Anstellen plus die Anteile aus den zugegebenen weiteren Zutaten während der Gärung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Stammwürze&lt;/span&gt; beim Anstellen, vom Tab Braudaten übernommen, angezeigt.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; entspricht der Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;beim Anstellen plus &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Anteile &lt;/span&gt;zugegebener &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten &lt;/span&gt;während der Gärung.&lt;/p&gt;&lt;p&gt;Die aktuelle Stammwüzre muss nicht zwingend mit der gewünschten Stammwürze im Tab Rezept identisch sein. Ist sie es doch, so ist dies ein guter Indikator für einen ordentlichen Brauprozess. Im Idealfall stimmen im Kleinen Brauhelfer aktuelle Stammwürze und festgelegte Stammwürze überein. Abweichungen lassen auf Fehler in dier Konfiguration der Anlage, der Rohstoffe oder im Brauprozess schließen. Die Fehlerquelle auszumachen kann im einzelfall schwierig sein. Fachbücher und Fachforen eignen sich hier am besten zur Problemlösung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -979,7 +982,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; nach dem Abfüllen auf das Reife- oder Gärgefäß.&lt;/p&gt;&lt;p&gt;Der Wert berechnet sich anhand der verfügbaren Speisemenge.&lt;/p&gt;&lt;p&gt;Ferner ist der Wert durch Hefe oder Hopfen in der Nachgärung beeinflusst, aber auch durch die entnommene Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; aufgrund von Ab- oder Umfüllen füllen auf das Reife- oder Gärgefäß, Flasche.&lt;/p&gt;&lt;p&gt;Der Wert durch Hefe oder Hopfen oder Sonstige Zutaten in der Nachgärung beeinflusst, die Flüssigkeit binden, aber auch durch die entnommene Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1056,7 +1059,7 @@
            <item row="1" column="6">
             <widget class="SpinBox" name="tbZuckerGesamt">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzlich benötigte Zucker &lt;/span&gt;unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben. Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1109,7 +1112,7 @@
            <item row="5" column="6">
             <widget class="DoubleSpinBox" name="tbZuckerFlasche">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben. Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1186,7 +1189,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Speisegabe&lt;/span&gt; unter Berücksichtigung der &lt;span style=&quot; font-weight:600;&quot;&gt;verfügbaren Speisemenge&lt;/span&gt; (links) angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzlich Zucker&lt;/span&gt; berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, dem Restextrakt, dem gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1232,7 +1235,7 @@
            <item row="1" column="1">
             <widget class="DoubleSpinBox" name="tbZuckerFaktor">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süßheit eines Stoffes relativ zu Haushaltszucker.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose): 1.00&lt;br/&gt;Traubenzucker (Glucose): 0.5 – 0.93 (MMuM: 0.92)&lt;br/&gt;Fruchtzucker (Fructose):1.0 – 1.8&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süße eines Zuckers relativ zu Haushaltszucker.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose | Zweifachzucker): 1,00&lt;br/&gt;Traubenzucker (Glucose | Einfachzucker): 0,5 – 0,91&lt;br/&gt;Fruchtzucker (Fructose | Einfachzucker): 1,0 – 1,8&lt;/p&gt;&lt;p&gt;Es gibt bis heute keine Laborisntrumente zur Messung der Süßkraft. Die Süßkraft ist je nach Zucker unterschiedlich. Traubenzucker enthält als mehr 9% mehr Wasser als Haushaltszucker. Folglich muss dieser Wert bei der Mengenbemessung berücksichtig werden.&lt;/p&gt;&lt;p&gt;Bei weiteren Fragen ist die Fachliteratur oder ein Fachforum Mittel der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1353,6 +1356,9 @@
            </item>
            <item row="9" column="6">
             <widget class="DoubleSpinBox" name="tbFlaschen">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sofern links im Feld Flaschengröße definiert, wird hier die &lt;span style=&quot; font-weight:600;&quot;&gt;höchstmögliche Flaschenanzahl &lt;/span&gt;des abgefüllten Jungbiers angegeben.&lt;/p&gt;&lt;p&gt;Der Wert Anzahl der Flaschen stellt einen &lt;span style=&quot; font-weight:600;&quot;&gt;Optimalwert&lt;/span&gt; dar. Tatsächlich sagt er nichts über Abfüllverluste aus, wie sie beim Abfüllen immer wieder auftreten können. Im Idealfall können es sogar ein paar Flaschen pro Sud mehr sein, da immer ein Kopfraum in einer Flasche freibleibt, sofern unter Druck abgefüllt wird. Dies ist abhängig von Druck und Gegendruck.&lt;/p&gt;&lt;p&gt;Es empiehlt sich den Kopfraum einer Flasche mit CO₂ zu füllen, dies verhindert Oxidation und damit Geschmacksfehler. Nähere Informationen hält die Fachliteratur oder ein Fachforum parat.&lt;/p&gt;&lt;p&gt;Ist die Flaschengröße auf den Wert 0 gesetzt, wird auch die Anzahl der Flaschen mit 0 angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
@@ -1409,7 +1415,7 @@
            <item row="4" column="1">
             <widget class="DoubleSpinBox" name="tbFlaschengroesse">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen. Üblich sind Flaschen mit 0,33l, 0,5l und 1 Liter. Beliebt sind auch Growler mit 2 Litern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1521,7 +1527,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und weitere Zutaten, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergeben sich aus den Kosten für Malz, Hopfen, Hefe und Weitere Zutaten, den sudspezifischen zusätzlichen Kosten und den im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1638,7 +1644,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;p&gt;Dies können Kosten sein, die über den Durchschnittswert eines normalen Sudes hinausgehen, etwa höhere Kosten für Malz, Hopfen oder Weitere Zutaten, Versandkosten. Aber auch spezfisches Equipment für einen Sud kann hier eingerechnet werden. Die Position &amp;quot;Zusätzliche Kosten&amp;quot; dient dazu neben den im Tab Ausrüstung fixierten Betriebskosten ein realistisches Bild der Braukosten abzubilden. Im Hobbybrauerbereich werden nur Material- und Betriebskosten berechnet, andere Überlegungen buchhalterische Absicht bleiben außen vor – sie wären für den umsorgten Sud unvorteilhaft (und außerdem neben der Spur).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1698,7 +1704,7 @@
           <item>
            <widget class="QPushButton" name="btnSudTeilen">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Braudaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Braudaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Sud teilen</string>

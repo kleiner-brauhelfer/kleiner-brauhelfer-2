@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Berechnung Extrakt</string>
   </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der pH-Wert für den gewählten Malztyp eingestellt. Vordefiniert sind Werte für Basismalze wie Pilsener oder Pale Ale mit einem EBC-Wert unter 200, Karamellmalz nund Röstmalze. Der manuelle Wert ist voreingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>

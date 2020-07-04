@@ -185,7 +185,7 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="23"/>
         <source>Malztyp in der Auswahliste wählen, sonst den Malz-pH-Wert (in destilliertem Wasser) manuell eintragen. Carafa und hoch gedarrte Malze gelten als Röstmalz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose malt type from the list, otherwise enter pH (in distilled water). Carafa and highly kilned malts count as roasted malts.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="38"/>
@@ -238,7 +238,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="31"/>
         <source>Messung mit Spindel</source>
-        <translation>Spindle measurement</translation>
+        <translation>Hydrometer measurement</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="37"/>
@@ -301,7 +301,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="217"/>
         <source>Korrekturfaktor </source>
-        <translation>Correction factor</translation>
+        <translation>Correction factor </translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="224"/>
@@ -381,7 +381,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="20"/>
         <source>Zutatauswahl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredient selection</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="31"/>
@@ -391,7 +391,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="34"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>all</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="44"/>
@@ -401,7 +401,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="47"/>
         <source>vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>in stock</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="54"/>
@@ -411,52 +411,52 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="57"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation>mg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>Stk.</source>
-        <translation type="unfinished"></translation>
+        <translation>pcs.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Honig</source>
-        <translation type="unfinished"></translation>
+        <translation>Honey</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Sugar</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Gewürz</source>
-        <translation type="unfinished"></translation>
+        <translation>Spice</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Frucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Fruit</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Other</translation>
     </message>
 </context>
 <context>
@@ -464,12 +464,12 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="20"/>
         <source>Auswahl Rohstoffvorlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredient templates</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="29"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="39"/>
@@ -489,7 +489,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="97"/>
         <source>Vorlage hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Add template</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="104"/>
@@ -499,7 +499,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="107"/>
         <source>Vorlage löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Remove template</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="114"/>
@@ -509,7 +509,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="117"/>
         <source>Liste importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Import list</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="124"/>
@@ -519,7 +519,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="127"/>
         <source>Liste exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Export list</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="134"/>
@@ -529,7 +529,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="137"/>
         <source>Liste wiederherstellen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Restore list</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="147"/>
@@ -552,76 +552,76 @@
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="165"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="189"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="129"/>
         <source>Aliasname</source>
-        <translation type="unfinished"></translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="133"/>
         <source>Farbe [EBC]</source>
-        <translation type="unfinished"></translation>
+        <translation>Color [EBC]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="136"/>
         <source>Max. Anteil [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. share [%]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="139"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="155"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="175"/>
         <source>Eigenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Characteristics</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="149"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="193"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="152"/>
         <source>Alpha [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpha [%]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="159"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="183"/>
         <source>Alternativen</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternatives</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="169"/>
         <source>Kategorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Category</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="172"/>
         <source>Trocken/Flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>Dry/Liquid</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="179"/>
         <source>Bierstil</source>
-        <translation type="unfinished"></translation>
+        <translation>Beer style</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="196"/>
         <source>Verwendung</source>
-        <translation type="unfinished"></translation>
+        <translation>Usage</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="414"/>
         <source>Rohstoffliste importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Import ingredient list</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="430"/>
         <source>Rohstoffliste exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Export ingredient list</translation>
     </message>
 </context>
 <context>
@@ -629,7 +629,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="20"/>
         <source>Zutaten vom Lager abziehen</source>
-        <translation type="unfinished"></translation>
+        <translation>Subtract ingredients from inventory</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="71"/>
@@ -639,7 +639,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="74"/>
         <source>Zutaten abziehen</source>
-        <translation type="unfinished"></translation>
+        <translation>Subtract ingredients</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="81"/>
@@ -649,59 +649,59 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="69"/>
         <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredients not yet subtracted; close anyway?</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="108"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="109"/>
         <source>Menge [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount [kg]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="110"/>
         <source>Vorhanden [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>In stock [kg]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="164"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Hops</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="165"/>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="260"/>
         <source>Menge [g]</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount [g]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="166"/>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="261"/>
         <source>Vorhanden [g]</source>
-        <translation type="unfinished"></translation>
+        <translation>In stock [g]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="209"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeast</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="210"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="211"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>In stock</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="259"/>
         <source>Weitere Zutat</source>
-        <translation type="unfinished"></translation>
+        <translation>Further ingredient</translation>
     </message>
 </context>
 <context>
@@ -709,7 +709,7 @@
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="20"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Split batch</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="31"/>
@@ -730,7 +730,7 @@
         <location filename="../dialogs/dlgsudteilen.ui" line="68"/>
         <location filename="../dialogs/dlgsudteilen.ui" line="94"/>
         <source>Liter</source>
-        <translation type="unfinished"></translation>
+        <translation>Litre</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="81"/>
@@ -751,7 +751,7 @@
         <location filename="../dialogs/dlgsudteilen.ui" line="142"/>
         <location filename="../dialogs/dlgsudteilen.ui" line="155"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="162"/>
@@ -764,7 +764,7 @@
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="20"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Search</translation>
     </message>
 </context>
 <context>
@@ -772,7 +772,7 @@
     <message>
         <location filename="../dialogs/dlguebernahmerezept.ui" line="14"/>
         <source>Aus Rezept übernehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Copy from recipe</translation>
     </message>
 </context>
 <context>
@@ -934,7 +934,7 @@
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="105"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="112"/>
@@ -1096,7 +1096,7 @@
     <message>
         <location filename="../mainwindow.ui" line="69"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="74"/>
@@ -1236,7 +1236,7 @@
     <message>
         <location filename="../mainwindow.ui" line="278"/>
         <source>Über</source>
-        <translation type="unfinished">About</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="286"/>
@@ -1312,7 +1312,7 @@
     <message>
         <location filename="../mainwindow.ui" line="373"/>
         <source>Auf Updates prüfen</source>
-        <translation type="unfinished">Check for updates</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="378"/>
@@ -1402,7 +1402,7 @@
     <message>
         <location filename="../mainwindow.ui" line="499"/>
         <source>Bierspende</source>
-        <translation type="unfinished">Beer donation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="508"/>
@@ -1791,7 +1791,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="609"/>
         <location filename="../tababfuellen.ui" line="663"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="365"/>
@@ -1853,7 +1853,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="616"/>
         <source>Stammwürze</source>
-        <translation type="unfinished">OG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="680"/>
@@ -1884,7 +1884,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="794"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="801"/>
@@ -2531,7 +2531,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.cpp" line="51"/>
         <source>Anlage</source>
-        <translation type="unfinished">Setup</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="52"/>
@@ -3159,7 +3159,7 @@ Version installiert: %2</source>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
@@ -3329,7 +3329,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1426"/>
         <location filename="../tabbraudaten.ui" line="2055"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="476"/>
@@ -3341,7 +3341,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1922"/>
         <location filename="../tabbraudaten.ui" line="2016"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="490"/>
@@ -3366,7 +3366,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1557"/>
         <location filename="../tabbraudaten.ui" line="1848"/>
         <source>°Brix</source>
-        <translation type="unfinished">°Brix</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="631"/>
@@ -4146,7 +4146,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="25"/>
         <location filename="../tabgaerverlauf.cpp" line="35"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="27"/>
@@ -4171,7 +4171,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="41"/>
         <location filename="../tabgaerverlauf.cpp" line="51"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="40"/>
@@ -4255,7 +4255,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="45"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="57"/>
@@ -4285,7 +4285,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="113"/>
         <source>Stammwürze</source>
-        <translation type="unfinished">OG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="127"/>
@@ -4313,7 +4313,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="164"/>
         <source>Sudname</source>
-        <translation type="unfinished">Batch name</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="178"/>
@@ -4383,7 +4383,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="370"/>
         <location filename="../tabrezept.ui" line="1002"/>
         <source>IBU</source>
-        <translation type="unfinished">IBU</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="377"/>
@@ -4404,7 +4404,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="413"/>
         <location filename="../tabrezept.ui" line="2610"/>
         <source>Anlage</source>
-        <translation type="unfinished">Setup</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="420"/>
@@ -4487,7 +4487,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2305"/>
         <location filename="../tabrezept.ui" line="2388"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="642"/>
@@ -4615,7 +4615,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="997"/>
         <source>Gewicht</source>
-        <translation type="unfinished">Weight</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1010"/>
@@ -4769,7 +4769,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1687"/>
         <source>pH-Wert</source>
-        <translation type="unfinished">pH</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1777"/>
@@ -4811,7 +4811,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1924"/>
         <source>Restextrakt</source>
-        <translation type="unfinished">SG</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1937"/>
@@ -5622,7 +5622,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="158"/>
         <source>Temperatur</source>
-        <translation type="unfinished">Temperature</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="160"/>
@@ -5706,7 +5706,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="65"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="72"/>
@@ -5908,12 +5908,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.cpp" line="38"/>
         <source>Sud ID</source>
-        <translation type="unfinished">Batch ID</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="39"/>
         <source>Sudname</source>
-        <translation type="unfinished">Batch name</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="40"/>
@@ -6354,7 +6354,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="205"/>
         <source>IBU</source>
-        <translation type="unfinished">IBU</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="218"/>
@@ -6571,7 +6571,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="756"/>
         <location filename="../widgets/wdgrast.ui" line="903"/>
         <source>°C</source>
-        <translation type="unfinished">°C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="147"/>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>200</height>
+    <width>461</width>
+    <height>228</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -42,18 +42,6 @@
    </item>
    <item row="5" column="3">
     <widget class="QLabel" name="label_22">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>Liter</string>
      </property>
@@ -68,18 +56,6 @@
    </item>
    <item row="1" column="3">
     <widget class="QLabel" name="label_VonUntenEinheit">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>cm</string>
      </property>
@@ -94,12 +70,6 @@
    </item>
    <item row="5" column="2">
     <widget class="DoubleSpinBox" name="spinBox_Liter20Grad">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die umgerechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge bei 20°&lt;/span&gt;C ausgegeben.&lt;/p&gt;&lt;p&gt;Die Würzemenge bei 20°C ist ein wichtiger Faktor, um abzuschätzen, ob &lt;span style=&quot; font-weight:600;&quot;&gt;gemessene Werte &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwerte&lt;/span&gt; übereinstimmen und die Zielwerte im aktuellen Brauprozess erreicht werden.&lt;/p&gt;&lt;p&gt;Im Tab Braudaten sind die aktuellen Werte im Brauprozess den Zielwerten gegenübergestellt. Dabei handelt es sich um eine Vielzahl an Werten und Unterwerten wie Brix oder Plato, Würzemenge, Füllhöhe, Vedampfungsziffer, Sudhausausbeute und Verlustmengen.&lt;/p&gt;&lt;p&gt;Die Zahlen geben einen sehr guten Aufschluss darüber, ob die Brauannlage gut eingestellt ist, ob an der einen oder anderen Stelle Verbesserungsbedarf besteht oder ob es Fehler im Brauprozess oder den vorhanden Daten gibt. Da Abweichungen sehr vielfältig und individuell sind, empfehlen sich bei Problemen allein bekannte Fachforen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -131,18 +101,6 @@
    </item>
    <item row="2" column="3">
     <widget class="QLabel" name="label_20">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>°C</string>
      </property>
@@ -150,12 +108,6 @@
    </item>
    <item row="2" column="2">
     <widget class="SpinBox" name="spinBox_Temperatur">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; der Würze zum &lt;span style=&quot; font-weight:600;&quot;&gt;Messzeitpunkt&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Berücksichtigung der Temperatur ist ein wichtiger Faktor, um Verfälschungen der Würzemenge bezogen auf das spätere Ergebnis zu vermeiden. Das Volumen der Würze ist beim Kochen deutlich größer. Um einen sinnigen Bezugspunkt zur Beurteilung zu geben, rechnet der Kleine Brauhelfer Flüssigkeiten an vielen Stellen des Programms immer auf 20°C um.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -187,14 +139,8 @@
     <widget class="QLabel" name="label_VonObenEinheit">
      <property name="minimumSize">
       <size>
-       <width>50</width>
+       <width>40</width>
        <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
       </size>
      </property>
      <property name="text">
@@ -211,18 +157,6 @@
    </item>
    <item row="3" column="3">
     <widget class="QLabel" name="label_18">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
      <property name="text">
       <string>Liter</string>
      </property>
@@ -244,12 +178,6 @@
    </item>
    <item row="3" column="2">
     <widget class="DoubleSpinBox" name="spinBox_Liter">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sofern bekannt, kann hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; bei &lt;span style=&quot; font-weight:600;&quot;&gt;aktueller Temperatur&lt;/span&gt; eingegeben werden. &lt;/p&gt;&lt;p&gt;Bedienung: Es muss dann nur noch im Feld oben die Temerpatur eingetragen werden. Die Felder zur Füllhöhe können in diesem Fall ignoriert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -273,24 +201,11 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="0" column="2">
     <widget class="DoubleSpinBox" name="spinBox_VonOben">
      <property name="minimumSize">
       <size>
-       <width>60</width>
+       <width>80</width>
        <height>0</height>
       </size>
      </property>
@@ -313,12 +228,6 @@
    </item>
    <item row="1" column="2">
     <widget class="DoubleSpinBox" name="spinBox_VonUnten">
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eingabe der &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; der Füllhöhe vom &lt;span style=&quot; font-weight:600;&quot;&gt;Boden&lt;/span&gt; bis zur &lt;span style=&quot; font-weight:600;&quot;&gt;Würzeoberfläche&lt;/span&gt; bei aktueller Temperatur.&lt;/p&gt;&lt;p&gt;Die Berechnung erfolgt grundlegend anhand der im Tab Rezept gewählten Brauanlage und speziell anhand der dort gewählten Würzepfannge. Das Equipment allgemein wird im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;Bedienung: Mit einem Metermaß oder einem digitalen Pendant wird vom Boden innen bis zur Würzeoberfläche gemessen. Um Verfälschungen zu vermeiden, ist eine schaumfreie Stelle empfehlenswert. Die aktuelle Temperatur der Würze wird anschließend eingetragen. Voreingstellt sind 100° C. Wenn bestätigt, berechnet der Kleine Brauhelfer den Faktor der Ausdehnung durch Wärem und gibt die berechnete Würzemenge bei 20° C aus.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Messung vom Boden ist nur korrekt, wenn der Pfannenboden plan ist und keine andereweitigen Vertiefungen oder Erhöhungen hat.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -335,6 +244,19 @@
       <double>0.100000000000000</double>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

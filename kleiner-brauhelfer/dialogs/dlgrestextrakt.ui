@@ -50,18 +50,6 @@
         </item>
         <item row="1" column="1">
          <widget class="DoubleSpinBox" name="tbDichte">
-          <property name="minimumSize">
-           <size>
-            <width>67</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener &lt;span style=&quot; font-weight:600;&quot;&gt;Dichtewert&lt;/span&gt; der Würze.&lt;/p&gt;&lt;p&gt;Die Dichte ist bei den meisten &lt;span style=&quot; font-weight:600;&quot;&gt;Ärometern&lt;/span&gt; (Spindeln) im Brauereiwesen auf eine Bezugstemperatur von 20°C in ml/g geeicht. Ändert sich die Temperatur, ändert sich auch die Dichte der Flüssigkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -84,18 +72,6 @@
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="label_19">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="text">
            <string>g/ml</string>
           </property>
@@ -112,7 +88,7 @@
          <widget class="QLabel" name="label_18">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
            </size>
           </property>
@@ -129,18 +105,6 @@
         </item>
         <item row="2" column="2">
          <widget class="QLabel" name="label_14">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="text">
            <string>°C</string>
           </property>
@@ -148,18 +112,6 @@
         </item>
         <item row="2" column="1">
          <widget class="DoubleSpinBox" name="tbTemp">
-          <property name="minimumSize">
-           <size>
-            <width>67</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperatur der Würze bei der Messung des &lt;span style=&quot; font-weight:600;&quot;&gt;Dichtewertes&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Dichte ist bei den meisten &lt;span style=&quot; font-weight:600;&quot;&gt;Ärometern&lt;/span&gt; (Spindeln) im Brauereiwesen auf eine Bezugstemperatur von 20°C in ml/g geeicht. Ändert sich die Temperatur, ändert sich auch die Dichte der Flüssigkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -168,12 +120,6 @@
           </property>
           <property name="decimals">
            <number>1</number>
-          </property>
-          <property name="minimum">
-           <double>4.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>99.000000000000000</double>
           </property>
           <property name="singleStep">
            <double>0.100000000000000</double>
@@ -187,14 +133,8 @@
          <widget class="DoubleSpinBox" name="tbPlato">
           <property name="minimumSize">
            <size>
-            <width>67</width>
+            <width>80</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -250,14 +190,8 @@
          <widget class="DoubleSpinBox" name="tbBrix">
           <property name="minimumSize">
            <size>
-            <width>67</width>
+            <width>80</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -318,20 +252,8 @@
         </item>
         <item row="2" column="1">
          <widget class="DoubleSpinBox" name="tbKorrekturFaktor">
-          <property name="minimumSize">
-           <size>
-            <width>67</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato.&lt;/p&gt;&lt;p&gt;Bierwürze ist keine reine Zuckerlösung. Deshalb muss der Brechungsindex noch um einen Korrekturfaktor dividiert werden.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der eingestellte Wert sollte nur mit Bedacht geändertwerden. Änderungen sollten nur mit ausreichendem Wissen vorgenommen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato.&lt;/p&gt;&lt;p&gt;Bierwürze ist keine reine Zuckerlösung. Deshalb muss der Brechungsindex noch um einen Korrekturfaktor dividiert werden.&lt;/p&gt;&lt;p&gt;Der eingestellte Wert sollte nur mit Bedacht geändertwerden. Änderungen sollten nur mit ausreichendem Wissen vorgenommen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -355,6 +277,12 @@
         </item>
         <item row="0" column="2">
          <widget class="ComboBox" name="cbEinheit">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brix die geläufige Einheit für &lt;span style=&quot; font-weight:600;&quot;&gt;analoge Refraktometer.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Digitale Refraktometer oder Messgeräte mit Biegeschwinger-Technologie lassen auch °Plato und andere Maßeinheiten zu. Der KBH bietet zur Zeit nur °Plato zusätzlich an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -392,18 +320,6 @@
         </item>
         <item row="2" column="2">
          <widget class="QPushButton" name="btnKorrekturFaktorDefault">
-          <property name="minimumSize">
-           <size>
-            <width>56</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato auf den Standardwert eingestellt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich den eingestellten Wert im linken Feld nur dann zu verändern, wenn man genau weiß was man macht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -453,14 +369,8 @@
          <widget class="DoubleSpinBox" name="tbSw">
           <property name="minimumSize">
            <size>
-            <width>67</width>
+            <width>80</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -493,14 +403,8 @@
          <widget class="QLabel" name="label_16">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="text">
@@ -525,14 +429,8 @@
          <widget class="DoubleSpinBox" name="tbExtrakt">
           <property name="minimumSize">
            <size>
-            <width>67</width>
+            <width>80</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -565,14 +463,8 @@
          <widget class="QLabel" name="label_20">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="text">

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>364</width>
-    <height>76</height>
+    <width>389</width>
+    <height>70</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -36,7 +36,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="horizontalSpacing">
-       <number>6</number>
+       <number>9</number>
       </property>
       <property name="verticalSpacing">
        <number>4</number>
@@ -62,33 +62,12 @@
       </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="btnLoeschen">
-        <property name="minimumSize">
-         <size>
-          <width>24</width>
-          <height>22</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>24</width>
-          <height>22</height>
-         </size>
-        </property>
         <property name="toolTip">
          <string>Anhang löschen.</string>
-        </property>
-        <property name="text">
-         <string/>
         </property>
         <property name="icon">
          <iconset resource="../images.qrc">
           <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>25</width>
-          <height>16</height>
-         </size>
         </property>
        </widget>
       </item>

@@ -17,15 +17,15 @@
    <item>
     <widget class="QToolBox" name="toolBox_Gaerverlauf">
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pageSchnellgaerung">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>790</width>
-        <height>559</height>
+        <width>796</width>
+        <height>586</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -58,9 +58,6 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Schnellgaerverlauf">
-             <property name="toolTip">
-              <string/>
-             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -104,8 +101,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">＋</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -126,8 +124,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">－</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -158,8 +157,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>790</width>
-        <height>559</height>
+        <width>796</width>
+        <height>586</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -235,8 +234,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">＋</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -257,8 +257,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">－</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -387,8 +388,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>790</width>
-        <height>559</height>
+        <width>796</width>
+        <height>586</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -464,8 +465,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">＋</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -486,8 +488,9 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string notr="true">－</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -519,14 +522,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>WdgDiagramView</class>
@@ -548,6 +551,8 @@
   <tabstop>tableWidget_Nachgaerverlauf</tabstop>
   <tabstop>btnAddNachgaerMessung</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

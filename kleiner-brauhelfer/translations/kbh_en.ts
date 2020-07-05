@@ -1727,7 +1727,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="122"/>
         <source>Jetzt</source>
-        <translation type="unfinished"></translation>
+        <translation>Now</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="135"/>
@@ -1737,7 +1737,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="181"/>
         <source>Vergärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermentation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="190"/>
@@ -1753,7 +1753,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="237"/>
         <source>Tatsächlicher Endvergärungsgrad (tEVG)</source>
-        <translation type="unfinished"></translation>
+        <translation>Real attenuation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="263"/>
@@ -1770,7 +1770,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="313"/>
         <location filename="../tababfuellen.ui" line="440"/>
         <source>Erwarteter Wert</source>
-        <translation type="unfinished"></translation>
+        <translation>Expected value</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="330"/>
@@ -1780,14 +1780,14 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="337"/>
         <source>Scheinbarer Endvergärungsgrad (sEVG)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Apparent attenuation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="351"/>
         <location filename="../tababfuellen.ui" line="450"/>
         <location filename="../tababfuellen.ui" line="596"/>
         <source>%</source>
-        <translation></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="358"/>
@@ -1796,7 +1796,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="609"/>
         <location filename="../tababfuellen.ui" line="663"/>
         <source>°P</source>
-        <translation></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="365"/>
@@ -1838,7 +1838,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="496"/>
         <location filename="../tababfuellen.ui" line="582"/>
         <source>%vol</source>
-        <translation></translation>
+        <translation>%vol</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="516"/>
@@ -1853,7 +1853,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="589"/>
         <source>Erwarteter Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Expected residual extract</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="616"/>
@@ -1879,7 +1879,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="740"/>
         <source>bar</source>
-        <translation></translation>
+        <translation>bar</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="753"/>
@@ -1889,7 +1889,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="794"/>
         <source>°C</source>
-        <translation></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="801"/>
@@ -1905,7 +1905,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="849"/>
         <source>Verlust seit Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Losses since time of pitching</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="875"/>
@@ -1916,17 +1916,17 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1460"/>
         <location filename="../tababfuellen.cpp" line="37"/>
         <source>l</source>
-        <translation></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="882"/>
         <source>Spunden</source>
-        <translation>No sugar addition</translation>
+        <translation>Force carbonation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="889"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wird das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Spunden&lt;/span&gt; angehakt, berechnet der Kleinen Brauhelfer keine Zucker- oder Speisegabe und blendet die entsprechenden Felder aus.&lt;/p&gt;&lt;p&gt;Unter Spunden wird die Karbonisierung mit CO₂ auf Gebinde wie Fässer oder Kegs verstanden.&lt;/p&gt;&lt;p&gt;Durch das auf den gewünschten Druck einstellbare Spundungsventil ist keine exkate Berechnung von Zucker oder Speise nötig. Oft wird gespundetes Bier mit einer Gasflasche zusätzlich zwangskarbonisiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="938"/>
@@ -1946,13 +1946,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1023"/>
         <source>Karbonisierung</source>
-        <translation type="unfinished"></translation>
+        <translation>Carbonation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1052"/>
         <location filename="../tababfuellen.ui" line="1264"/>
         <source>g</source>
-        <translation></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1059"/>
@@ -1963,12 +1963,12 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1078"/>
         <location filename="../tababfuellen.ui" line="1221"/>
         <source>ml</source>
-        <translation></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1085"/>
         <source>Flaschengröße</source>
-        <translation type="unfinished"></translation>
+        <translation>Bottle size</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1112"/>
@@ -1978,7 +1978,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1134"/>
         <source>Verfügbare Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Available unfermented wort</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1161"/>
@@ -1998,7 +1998,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1228"/>
         <source>Benötigte Speisemenge pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount of unfermented wort needed per bottle</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1235"/>
@@ -2013,22 +2013,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1316"/>
         <source>Benötigte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Needed amount of unfermented wort</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1323"/>
         <source>Jungbiermenge inklusive Speise</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount of beer including unfermented wort</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1330"/>
         <source>Anzahl Flaschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount of bottles</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1350"/>
         <source>Zusätzlich benötigter Zucker pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>Additional sugar per bottle</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1376"/>
@@ -2038,7 +2038,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1405"/>
         <source>Zusätzlich benötigter Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Additional sugar</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1412"/>
@@ -2058,7 +2058,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1467"/>
         <source>Konzentration der Zuckerlösung</source>
-        <translation type="unfinished"></translation>
+        <translation>Strength of sugar solution</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1474"/>
@@ -2068,7 +2068,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1496"/>
         <source>g/l</source>
-        <translation></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1506"/>
@@ -2088,12 +2088,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1562"/>
         <source>Gesamtkosten</source>
-        <translation></translation>
+        <translation>Total cost</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1569"/>
         <source>Zusätzliche Kosten</source>
-        <translation></translation>
+        <translation>Additional costs</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1641"/>
@@ -2108,7 +2108,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1684"/>
         <source>Sud abgefüllt</source>
-        <translation>Brew bottled</translation>
+        <translation>Batch bottled/kegged</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1691"/>
@@ -2118,7 +2118,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1694"/>
         <source>Sud verbraucht</source>
-        <translation>Beer consumed</translation>
+        <translation>Batch consumed</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1701"/>
@@ -2128,37 +2128,37 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1704"/>
         <source>Sud teilen</source>
-        <translation>Split Brew</translation>
+        <translation>Split batch</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="276"/>
         <source>Zutaten Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredients during fermentation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="277"/>
         <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Not all ingredients for fermentation have been added or removed yet.</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="285"/>
         <source>Grünschlauchzeitpunkt nicht erreicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Time for green bottling not reached yet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="286"/>
         <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
-        <translation type="unfinished"></translation>
+        <translation>Time for green bottling not reached yet.</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="291"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Fast fermentation sample</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="292"/>
         <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
-        <translation type="unfinished"></translation>
+        <translation>FG of the beer is lower than FG of the fast fermentation sample.</translation>
     </message>
 </context>
 <context>
@@ -2166,7 +2166,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="37"/>
         <source>Anlagen</source>
-        <translation type="unfinished"></translation>
+        <translation>Brewing Setups</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="44"/>
@@ -2181,7 +2181,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="68"/>
         <source>Neue Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>New setup</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="75"/>
@@ -2191,7 +2191,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="78"/>
         <source>Anlage löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete setup</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="104"/>
@@ -2222,13 +2222,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="145"/>
         <source>Gerät löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete gear</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="171"/>
         <location filename="../tabausruestung.ui" line="467"/>
         <source>Sude</source>
-        <translation></translation>
+        <translation>Batches</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="181"/>
@@ -2238,13 +2238,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="240"/>
         <source>Kernwerte der Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Setup parameters</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="249"/>
         <location filename="../tabausruestung.ui" line="294"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="256"/>
@@ -2260,12 +2260,12 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="301"/>
         <location filename="../tabausruestung.ui" line="503"/>
         <source>Durchschnitt</source>
-        <translation type="unfinished"></translation>
+        <translation>Average</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="311"/>
         <source>Durchschnitt über die letzten</source>
-        <translation type="unfinished"></translation>
+        <translation>Average over the last</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="330"/>
@@ -2296,7 +2296,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="425"/>
         <location filename="../tabausruestung.ui" line="438"/>
         <source>%</source>
-        <translation></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="451"/>
@@ -2311,7 +2311,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="496"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Evaporation rate</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="513"/>
@@ -2336,12 +2336,12 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1134"/>
         <location filename="../tabausruestung.ui" line="1172"/>
         <source>l</source>
-        <translation></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="599"/>
         <source>Korrektur des Farbwertes</source>
-        <translation type="unfinished"></translation>
+        <translation>Color correction</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="606"/>
@@ -2351,7 +2351,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="632"/>
         <source>Betriebskosten (Wasser, Strom, Gas, etc.)</source>
-        <translation type="unfinished"></translation>
+        <translation>Costs (water, electricity, gas etc.)</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="639"/>
@@ -2361,17 +2361,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="661"/>
         <source>Korrektur der Nachgussmenge</source>
-        <translation>Correction of sparging water amount</translation>
+        <translation>Correction of sparge water amount</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="668"/>
         <source>EBC</source>
-        <translation></translation>
+        <translation>EBC</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="678"/>
         <source>Korrektur der Sollmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Correction of target quantity</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="692"/>
@@ -2402,7 +2402,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1029"/>
         <location filename="../tabausruestung.ui" line="1127"/>
         <source>cm</source>
-        <translation></translation>
+        <translation>cm</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="790"/>
@@ -2436,7 +2436,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="895"/>
         <location filename="../tabausruestung.ui" line="1107"/>
         <source>Maximal nutzbare Füllhöhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximum usable fill height</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="902"/>
@@ -2491,52 +2491,52 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.cpp" line="23"/>
         <source>Grainfather G30</source>
-        <translation></translation>
+        <translation>Grainfather G30</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="24"/>
         <source>Grainfather G70</source>
-        <translation></translation>
+        <translation>Grainfather G70</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="25"/>
         <source>Braumeister 10L</source>
-        <translation></translation>
+        <translation>Braumeister 10L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="26"/>
         <source>Braumeister 20L</source>
-        <translation></translation>
+        <translation>Braumeister 20L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="27"/>
         <source>Braumeister 50L</source>
-        <translation></translation>
+        <translation>Braumeister 50L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="28"/>
         <source>Braumeister 200L</source>
-        <translation></translation>
+        <translation>Braumeister 200L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="29"/>
         <source>Braumeister 500L</source>
-        <translation></translation>
+        <translation>Braumeister 500L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="30"/>
         <source>Braumeister 1000L</source>
-        <translation></translation>
+        <translation>Braumeister 1000L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="31"/>
         <source>Brauheld Pro 30L</source>
-        <translation type="unfinished"></translation>
+        <translation>Brauheld Pro 30L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="51"/>
         <source>Anlage</source>
-        <translation>Brewing equipment</translation>
+        <translation>Setup</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="52"/>
@@ -2546,42 +2546,42 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.cpp" line="53"/>
         <source>Vermögen [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Capacity [l]</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="54"/>
         <source>Anzahl Sude</source>
-        <translation type="unfinished"></translation>
+        <translation>Number of batches</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="67"/>
         <source>Bezeichnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Designation</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="222"/>
         <source>Neue Brauanlage</source>
-        <translation>add Brewhouse</translation>
+        <translation>Add setup</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="242"/>
         <source>Brauanlage löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete setup?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="243"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete setup &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="280"/>
         <source>Gerät löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete gear?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="281"/>
         <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete gear &quot;%1&quot;?</translation>
     </message>
 </context>
 <context>

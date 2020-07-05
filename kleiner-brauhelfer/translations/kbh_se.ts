@@ -356,7 +356,7 @@
         <location filename="../dialogs/dlgrestextrakt.ui" line="361"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="24"/>
         <source>Stammwürze</source>
-        <translation>Vörtstyrka (OG)</translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="374"/>
@@ -1711,7 +1711,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="71"/>
         <source>Dauer der Hauptgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Jästid</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="97"/>
@@ -1726,7 +1726,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="122"/>
         <source>Jetzt</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="135"/>
@@ -1736,7 +1736,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="181"/>
         <source>Vergärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="190"/>
@@ -1752,7 +1752,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="237"/>
         <source>Tatsächlicher Endvergärungsgrad (tEVG)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verklig förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="263"/>
@@ -1769,24 +1769,24 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="313"/>
         <location filename="../tababfuellen.ui" line="440"/>
         <source>Erwarteter Wert</source>
-        <translation type="unfinished"></translation>
+        <translation>Förväntat värde</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="330"/>
         <source>Restextrakt Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakthalten i unga ölet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="337"/>
         <source>Scheinbarer Endvergärungsgrad (sEVG)</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="351"/>
         <location filename="../tababfuellen.ui" line="450"/>
         <location filename="../tababfuellen.ui" line="596"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="358"/>
@@ -1795,7 +1795,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="609"/>
         <location filename="../tababfuellen.ui" line="663"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="365"/>
@@ -1805,12 +1805,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="387"/>
         <source>Alkoholgehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="394"/>
         <source>Grünschlauchzeitpunkt</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidpunkt för &quot;grön&quot; tappning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="401"/>
@@ -1826,7 +1826,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="460"/>
         <source>Restextrakt der Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakthalten i snabbjäsningsprovet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="479"/>
@@ -1837,7 +1837,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="496"/>
         <location filename="../tababfuellen.ui" line="582"/>
         <source>%vol</source>
-        <translation type="unfinished"></translation>
+        <translation>%vol</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="516"/>
@@ -1852,12 +1852,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="589"/>
         <source>Erwarteter Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Förväntat extrakthalt</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="616"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="680"/>
@@ -1868,7 +1868,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="683"/>
         <location filename="../tababfuellen.ui" line="692"/>
         <source>Spundungsdruck</source>
-        <translation type="unfinished"></translation>
+        <translation>Jämviktstryck</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="712"/>
@@ -1878,7 +1878,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="740"/>
         <source>bar</source>
-        <translation type="unfinished"></translation>
+        <translation>bar</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="753"/>
@@ -1888,23 +1888,23 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="794"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="801"/>
         <source>Temperatur Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur i unga ölet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="840"/>
         <location filename="../tababfuellen.ui" line="899"/>
         <source>Jungbiermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden unga ölet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="849"/>
         <source>Verlust seit Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Förlust sedan jäsningens början</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="875"/>
@@ -1915,12 +1915,12 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1460"/>
         <location filename="../tababfuellen.cpp" line="37"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="882"/>
         <source>Spunden</source>
-        <translation type="unfinished"></translation>
+        <translation>Tvångskarbonering</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="889"/>
@@ -1945,13 +1945,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1023"/>
         <source>Karbonisierung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolsyresättning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1052"/>
         <location filename="../tababfuellen.ui" line="1264"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1059"/>
@@ -1962,12 +1962,12 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1078"/>
         <location filename="../tababfuellen.ui" line="1221"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1085"/>
         <source>Flaschengröße</source>
-        <translation type="unfinished"></translation>
+        <translation>Flaskstorlek</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1112"/>
@@ -1977,7 +1977,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1134"/>
         <source>Verfügbare Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillgänglig mängd ojäst vört</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1161"/>
@@ -1997,7 +1997,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1228"/>
         <source>Benötigte Speisemenge pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd ojäst vört som behövs per flaska</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1235"/>
@@ -2012,22 +2012,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1316"/>
         <source>Benötigte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd ojäst vört som behövs</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1323"/>
         <source>Jungbiermenge inklusive Speise</source>
-        <translation type="unfinished"></translation>
+        <translation>Ölmängd inklusive ojäst vört</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1330"/>
         <source>Anzahl Flaschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal flaskor</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1350"/>
         <source>Zusätzlich benötigter Zucker pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra socker per flaska</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1376"/>
@@ -2037,7 +2037,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1405"/>
         <source>Zusätzlich benötigter Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra socker</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1412"/>
@@ -2057,7 +2057,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1467"/>
         <source>Konzentration der Zuckerlösung</source>
-        <translation type="unfinished"></translation>
+        <translation>Sockerlösningens styrka</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1474"/>
@@ -2067,7 +2067,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1496"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1506"/>
@@ -2077,7 +2077,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1509"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1524"/>
@@ -2087,12 +2087,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1562"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalkostnad</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1569"/>
         <source>Zusätzliche Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare kostnader</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1641"/>
@@ -2107,7 +2107,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1684"/>
         <source>Sud abgefüllt</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen flask-/fattappat</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1691"/>
@@ -2117,7 +2117,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1694"/>
         <source>Sud verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen förbrukad</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1701"/>
@@ -2127,37 +2127,37 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1704"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela satsen</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="276"/>
         <source>Zutaten Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredienser under jäsning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="277"/>
         <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inte alla ingredienser för jäsningen har tillagts eller tagits ur ännu.</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="285"/>
         <source>Grünschlauchzeitpunkt nicht erreicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="286"/>
         <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu.</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="291"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Snabbjäsningsprovet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="292"/>
         <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakthalten i ölet är lägre än i snabbjäsningsprovet.</translation>
     </message>
 </context>
 <context>
@@ -2165,7 +2165,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="37"/>
         <source>Anlagen</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggningar</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="44"/>
@@ -2180,7 +2180,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="68"/>
         <source>Neue Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="75"/>
@@ -2190,12 +2190,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="78"/>
         <source>Anlage löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort anläggningen</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="104"/>
         <source>Geräte</source>
-        <translation type="unfinished"></translation>
+        <translation>Utrustning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="111"/>
@@ -2211,7 +2211,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="135"/>
         <location filename="../tabausruestung.cpp" line="259"/>
         <source>Neues Gerät</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny utrustning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="142"/>
@@ -2221,13 +2221,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="145"/>
         <source>Gerät löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort utrustning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="171"/>
         <location filename="../tabausruestung.ui" line="467"/>
         <source>Sude</source>
-        <translation type="unfinished"></translation>
+        <translation>Satser</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="181"/>
@@ -2237,13 +2237,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="240"/>
         <source>Kernwerte der Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggningens parametrar</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="249"/>
         <location filename="../tabausruestung.ui" line="294"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="256"/>
@@ -2259,12 +2259,12 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="301"/>
         <location filename="../tabausruestung.ui" line="503"/>
         <source>Durchschnitt</source>
-        <translation type="unfinished"></translation>
+        <translation>Genomsnitt</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="311"/>
         <source>Durchschnitt über die letzten</source>
-        <translation type="unfinished"></translation>
+        <translation>Genomsnitt av senaste</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="330"/>
@@ -2289,13 +2289,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="418"/>
         <source>Ausbeute für die Schüttungsberechnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte för maltberäkningarna</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="425"/>
         <location filename="../tabausruestung.ui" line="438"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="451"/>
@@ -2310,7 +2310,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="496"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="513"/>
@@ -2320,7 +2320,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="549"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="564"/>
@@ -2335,12 +2335,12 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1134"/>
         <location filename="../tabausruestung.ui" line="1172"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="599"/>
         <source>Korrektur des Farbwertes</source>
-        <translation type="unfinished"></translation>
+        <translation>Färgförändring</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="606"/>
@@ -2350,7 +2350,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="632"/>
         <source>Betriebskosten (Wasser, Strom, Gas, etc.)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader (vatten, el, gas o dyl)</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="639"/>
@@ -2360,17 +2360,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="661"/>
         <source>Korrektur der Nachgussmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Korrektion av mängden lakvatten</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="668"/>
         <source>EBC</source>
-        <translation type="unfinished"></translation>
+        <translation>EBC</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="678"/>
         <source>Korrektur der Sollmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Korrektion av målängden</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="692"/>
@@ -2380,7 +2380,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="723"/>
         <source>Maischekessel</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskkärl</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="745"/>
@@ -2391,7 +2391,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="770"/>
         <location filename="../tabausruestung.ui" line="1075"/>
         <source>Durchmesser</source>
-        <translation type="unfinished"></translation>
+        <translation>Diameter</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="777"/>
@@ -2401,7 +2401,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1029"/>
         <location filename="../tabausruestung.ui" line="1127"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation>cm</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="790"/>
@@ -2412,13 +2412,13 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="815"/>
         <location filename="../tabausruestung.ui" line="1068"/>
         <source>Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Volym</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="822"/>
         <location filename="../tabausruestung.ui" line="1036"/>
         <source>Nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Användbar volym</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="829"/>
@@ -2429,13 +2429,13 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="868"/>
         <location filename="../tabausruestung.ui" line="1022"/>
         <source>Höhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Höjd</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="895"/>
         <location filename="../tabausruestung.ui" line="1107"/>
         <source>Maximal nutzbare Füllhöhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Max användbar fyllnadshöjd</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="902"/>
@@ -2450,7 +2450,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="975"/>
         <source>Sudpfanne</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokkärl</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="997"/>
@@ -2480,107 +2480,107 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="1221"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="22"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="23"/>
         <source>Grainfather G30</source>
-        <translation type="unfinished"></translation>
+        <translation>Grainfather G30</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="24"/>
         <source>Grainfather G70</source>
-        <translation type="unfinished"></translation>
+        <translation>Grainfather G70</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="25"/>
         <source>Braumeister 10L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 10L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="26"/>
         <source>Braumeister 20L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 20L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="27"/>
         <source>Braumeister 50L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 50L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="28"/>
         <source>Braumeister 200L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 200L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="29"/>
         <source>Braumeister 500L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 500L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="30"/>
         <source>Braumeister 1000L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 1000L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="31"/>
         <source>Brauheld Pro 30L</source>
-        <translation type="unfinished"></translation>
+        <translation>Brauheld Pro 30L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="51"/>
         <source>Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="52"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="53"/>
         <source>Vermögen [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förmåga [l]</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="54"/>
         <source>Anzahl Sude</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal satser</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="67"/>
         <source>Bezeichnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Beteckning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="222"/>
         <source>Neue Brauanlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="242"/>
         <source>Brauanlage löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort anläggningen?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="243"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort anläggningen &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="280"/>
         <source>Gerät löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort utrustning?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="281"/>
         <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort utrustning &quot;%1&quot;?</translation>
     </message>
 </context>
 <context>

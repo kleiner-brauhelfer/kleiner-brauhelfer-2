@@ -939,13 +939,14 @@ void TabRezept::wasseraufbereitung_modified()
 
 void TabRezept::on_btnNeueWasseraufbereitung_clicked()
 {
-    DlgWasseraufbereitung dlg;
+    DlgWasseraufbereitung dlg(this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sud()->modelWasseraufbereitung()->append({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
-                                                      {ModelWasseraufbereitung::ColName, dlg.name()},
-                                                      {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
-                                                      {ModelWasseraufbereitung::ColFaktor, dlg.faktor()}});
+        QMap<int, QVariant> values({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
+                                    {ModelWasseraufbereitung::ColName, dlg.name()},
+                                    {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
+                                    {ModelWasseraufbereitung::ColFaktor, dlg.faktor()}});
+        bh->sud()->modelWasseraufbereitung()->append(values);
         ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
     }
 }

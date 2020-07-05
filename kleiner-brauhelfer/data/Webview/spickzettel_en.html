@@ -30,84 +30,84 @@
             <col width="80">
             <col width="*">
             <tr>
-              <td>Braudatum</td>
+              <td>brew date</td>
               <td colspan="2">____________</td>
             </tr>
             <tr>
-              <td>Anlage</td>
+              <td>equipment</td>
               <td class="value" colspan="2">{{Rezept.Brauanlage}}</td>
             </tr>
             <tr>
-              <td>Menge</td>
+              <td>amount</td>
               <td class="value" align="center">{{Rezept.Menge}}</td>
-              <td>Liter</td>
+              <td>liters</td>
             </tr>
             {{#Rezept.HighGravityFaktor}}
             <tr>
-              <td>High-Gravity Faktor</td>
+              <td>high-gravity factor</td>
               <td class="value" align="center">{{Rezept.HighGravityFaktor}}</td>
               <td>%</td>
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>Stammw&uuml;rze</td>
+              <td>original wort</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             {{#Rezept.SW_WZ_Maischen}}
             <tr>
-              <td>&nbsp;&nbsp;&nbsp;Weitere Zutaten "Maischen"</td>
+              <td>&nbsp;&nbsp;&nbsp;additional mashing ingredients</td>
               <td class="value" align="center">{{Rezept.SW_WZ_Maischen}}</td>
               <td>&deg;P</td>
             </tr>
             {{/Rezept.SW_WZ_Maischen}}
             {{#Rezept.SW_WZ_Kochen}}
             <tr>
-              <td>&nbsp;&nbsp;&nbsp;Weitere Zutaten "Kochen"</td>
+              <td>&nbsp;&nbsp;&nbsp;additional boiling ingredients</td>
               <td class="value" align="center">{{Rezept.SW_WZ_Kochen}}</td>
               <td>&deg;P</td>
             </tr>
             {{/Rezept.SW_WZ_Kochen}}
             {{#Rezept.SW_WZ_Gaerung}}
             <tr>
-              <td>&nbsp;&nbsp;&nbsp;Weitere Zutaten "G&auml;rung"</td>
+              <td>&nbsp;&nbsp;&nbsp;additional fermentation ingredients</td>
               <td class="value" align="center">{{Rezept.SW_WZ_Gaerung}}</td>
               <td>&deg;P</td>
             </tr>
             {{/Rezept.SW_WZ_Gaerung}}
             <tr>
-              <td>Alkohol</td>
+              <td>alcohol</td>
               <td class="value" align="center">{{Rezept.Alkohol}}</td>
               <td>%vol</td>
             </tr>
             <tr>
-              <td>Bittere</td>
+              <td>bitterness</td>
               <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
-              <td>Farbe</td>
+              <td>color</td>
               <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
-              <td>CO&#x2082;-Gehalt</td>
+              <td>CO&#x2082;</td>
               <td class="value" align="center">{{Rezept.CO2}}</td>
-              <td>g/Liter</td>
+              <td>g/liter</td>
             </tr>
             <tr>
-              <td>Wasserprofil</td>
+              <td>water profile</td>
               <td class="value" colspan="2">{{Rezept.Wasserprofil}}</td>
             </tr>
             <tr>
-              <td>Restalkalit&auml;t</td>
+              <td>residual alkalinity</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
             </tr>
             <tr>
-              <td>Reifezeit</td>
+              <td>aging time</td>
               <td class="value" align="center">{{Rezept.Reifezeit}}</td>
-              <td>Wochen</td>
+              <td>weeks</td>
             </tr>
           </table>
         </td>
@@ -117,21 +117,14 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm" align="center">
-    <h2>Bemerkung</h2>
+    <h2>Notes</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
 
-  {{#Rezept.BrauanlageBemerkung}}
-  <div class="rm" align="center">
-    <h2>Bemerkung Anlage</h2>
-    <p class="kommentar">{{{Rezept.BrauanlageBemerkung}}}</p>
-  </div>
-  {{/Rezept.BrauanlageBemerkung}}
-
   {{#Zutaten}}
   <div class="rm" align="center">
-    <h2>Zutaten</h2>
+    <h2>Ingredients</h2>
     <table>
       <tr>
         {{#Malz}}
@@ -166,7 +159,7 @@
           {{/Hopfen}}
           {{#Kalthopfen}}
             <tr>
-              <th align="left" height="30">Stopfhopfen</th>
+              <th align="left" height="30">Cold-hopping</th>
             </tr>
             {{#Liste}}
             <tr>
@@ -217,7 +210,7 @@
 
   {{#Geraete}}
   <div class="rm" align="center">
-    <h2>Ben&ouml;tigte Ger&auml;tschaften</h2>
+    <h2>Equipment List</h2>
     <table>
       {{#Liste}}
       <tr><td align="center">{{Name}}</td></tr>
@@ -226,14 +219,21 @@
   </div>
   {{/Geraete}}
 
+  {{#Rezept.BrauanlageBemerkung}}
   <div class="rm" align="center">
-    <h2>Maischen</h2>
+    <h2>Equipment Notes</h2>
+    <p class="kommentar">{{{Rezept.BrauanlageBemerkung}}}</p>
+  </div>
+  {{/Rezept.BrauanlageBemerkung}}
+  
+  <div class="rm" align="center">
+    <h2>Mashing</h2>
     <table>
       <col width="250">
       <col width="700">
       {{#Zutaten.Malz}}
       <tr>
-        <td class="underline" valign="top"><strong>Malz vorbereiten</strong></td>
+        <td class="underline" valign="top"><strong>Prepare malt</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -245,7 +245,7 @@
             </tr>
             {{/Liste}}
             <tr>
-              <td><strong>Gesamtsch&uuml;ttung</strong></td>
+              <td><strong>total grist amount</strong></td>
               <td><strong><span class="value">{{Rezept.Gesamtschuettung}}</span></strong> kg</td>
             </tr>
           </table>
@@ -254,7 +254,7 @@
       {{/Zutaten.Malz}}
       {{#Zutaten.HatZusatzMaischen}}
       <tr>
-        <td class="underline" valign="top"><strong>Weitere Zutaten</strong></td>
+        <td class="underline" valign="top"><strong>Additional ingredients</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -278,16 +278,16 @@
       </tr>
       {{/Zutaten.HatZusatzMaischen}}
       <tr>
-        <td class="underline" valign="top"><strong>Hauptguss</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> Liter</td>
+        <td class="underline" valign="top"><strong>Strike water</strong></td>
+        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> liters</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Maischevolumen</strong></td>
-        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> Liter,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
+        <td class="underline" valign="top"><strong>Mashing volume</strong></td>
+        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> liters,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
       </tr>
       {{#Rasten}}
       <tr>
-        <td class="underline" valign="top"><strong>Maischplan</strong></td>
+        <td class="underline" valign="top"><strong>Mashing plan</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -296,20 +296,20 @@
             <tr>
               <td valign="top">{{Name}}</td>
               {{#Einmaischen}}
-              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen (ergibt <span class="value">{{Temp}}</span>&deg;C). <span class="value">{{Dauer}}</span> min einmaischen.</td>
+              <td>Heat up <span class="value">{{Menge}}</span> liters water to <span class="value">{{WasserTemp}}</span>&deg;C (results in <span class="value">{{Temp}}</span>&deg;C after dough in). <span class="value">{{Dauer}}</span> min dough in.</td>
               {{/Einmaischen}}
               {{#Rast}}
-              <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min rasten.</td>
+              <td>Heat up mash to <span class="value">{{Temp}}</span>&deg;C and rest for <span class="value">{{Dauer}}</span> min.</td>
               {{/Rast}}
               {{#Infusion}}
-              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen. Zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.</td>
+              <td>Heat up <span class="value">{{Menge}}</span> liters water to <span class="value">{{WasserTemp}}</span>&deg;C. Add water (results in <span class="value">{{Temp}}</span>&deg;C) and rest for <span class="value">{{Dauer}}</span> min.</td>
               {{/Infusion}}
               {{#Dekoktion}}
               <td>
-                <span class="value">{{Menge}}</span> Liter Maische abziehen.</br>
-                {{#TeilmaischeZusatzRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min rasten.</br>{{/TeilmaischeZusatzRastDauer}}
-                {{#TeilmaischeRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeRastDauer}}</span> min rasten.</br>{{/TeilmaischeRastDauer}}
-                Teilmaische zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.
+                Remove <span class="value">{{Menge}}</span> liters mash.</br>
+                {{#TeilmaischeZusatzRastDauer}}Heat up partial mash to <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C and rest for <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min.</br>{{/TeilmaischeZusatzRastDauer}}
+                {{#TeilmaischeRastDauer}}Heat up partial mash to <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C and rest for <span class="value">{{TeilmaischeRastDauer}}</span> min.</br>{{/TeilmaischeRastDauer}}
+                Pour partial mash back (results in <span class="value">{{Temp}}</span>&deg;C) and rest for <span class="value">{{Dauer}}</span> min.
               </td>
               {{/Dekoktion}}
             </tr>
@@ -319,22 +319,22 @@
       </tr>
       {{/Rasten}}
       <tr>
-        <td valign="top"><strong>Jodprobe</strong></td>
+        <td valign="top"><strong>Iodine probe</strong></td>
         <td>
           <table>
             <col width="200">
             <col width="*">
             <tr>
-              <td>dunkelviolett/schwarz</td>
-              <td>reichlich unverg&auml;rbare St&auml;rke</td>
+              <td>violet to black</td>
+              <td>much fermentable sugars</td>
             </tr>
             <tr>
-              <td>orange/braunrot</td>
-              <td>kaum noch unverg&auml;rbare St&auml;rke</td>
+              <td>orange to brown</td>
+              <td>almost no fermentable sugars</td>
             </tr>
             <tr>
-              <td>gelb/hellorange</td>
-              <td>fertig (jodnormal)</td>
+              <td>yellow to light orange</td>
+              <td>ready</td>
             </tr>
           </table>
         </td>
@@ -343,33 +343,33 @@
   </div>
 
   <div class="rm" align="center">
-    <h2>L&auml;utern</h2>
+    <h2>Lautering</h2>
     <table>
       <col width="250">
       <col width="700">
       <tr>
-        <td class="underline" valign="top"><strong>Nachguss</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Nachguss}}</span> Liter</td>
+        <td class="underline" valign="top"><strong>Sparing water</strong></td>
+        <td class="underline"><span class="value">{{Wasser.Nachguss}}</span> liters</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>L&auml;utern vorbereiten</strong></td>
-        <td class="underline">Maische in den L&auml;utereimer sch&ouml;pfen. Nach etwa 10-20 min Wartezeit solange W&uuml;rze ablaufen lassen und wieder zur&uuml;ck in den L&auml;utereimer sch&uuml;tten, bis die W&uuml;rze klar l&auml;uft.</td>
+        <td class="underline" valign="top"><strong>Prepare lautering</strong></td>
+        <td class="underline">Scoop mash into lauter tun. Wait for approximately 10 to 20 minutes before starting to drain off wort. Return the wort to the lauter tun until it becomes clear.</td>
       </tr>
       <tr>
-        <td valign="top"><strong>L&auml;utern</strong></td>
-        <td>W&uuml;rze langsam ablaufen lassen. Bevor Treber trockenl&auml;uft immer etwas Nachguss &uuml;ber Schauml&ouml;ffel nachgiessen.</td>
+        <td valign="top"><strong>Lautering</strong></td>
+        <td>Drain off wort slowly (grist shall not run dry). Before grist gets dry, add sparking water (in steps to about 2-3 litres) over a float.</td>
       </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
-    <h2>W&uuml;rzekochen</h2>
+    <h2>Boiling</h2>
     <table>
       <col width="250">
       <col width="700">
       {{#Zutaten.HatVorderwuerzehopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Vorderw&uuml;rzehopfung</strong></td>
+        <td class="underline" valign="top"><strong>Pre-boil hopping</strong></td>
         <td class="underline">
           {{#Zutaten.Hopfen}}
           <table>
@@ -389,11 +389,11 @@
       </tr>
       {{/Zutaten.HatVorderwuerzehopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Aufheizen</strong></td>
-        <td class="underline">W&uuml;rze auf <span class="value">100</span>&deg;C erhitzen</td>
+        <td class="underline" valign="top"><strong>Heat up</strong></td>
+        <td class="underline">Heat up wort to <span class="value">100</span>&deg;C.</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Stammw&uuml;rze Kochbeginn</strong></td>
+        <td class="underline" valign="top"><strong>OG beginning of boil</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -401,23 +401,23 @@
             <tr>
               <td>____ &deg;P/&deg;Brix</td>
               <td>
-                 Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
-                 {{#Zutaten.ZutatenKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.ZutatenKochen}}
+                 target: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
+                 {{#Zutaten.HatZusatzKochen}} / with additional ingredients: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.HatZusatzKochen}}
               </td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>W&uuml;rzemenge Kochbeginn</strong></td>
+        <td class="underline" valign="top"><strong>Amount at beginning of boil</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ Liter bei ____ &deg;C</td>
+              <td>____ liters at ____ &deg;C</td>
               <td>
-                Zielwert: <span class="value">{{Rezept.MengeKochbeginn}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> Liter bei 100&deg;C,
+                target: <span class="value">{{Rezept.MengeKochbeginn}}</span> liters at 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> liters at 100&deg;C,
                 &uArr; <span class="value">{{Rezept.MengeKochbeginn100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochbeginn100Oben}}</span> cm
               </td>
             </tr>
@@ -426,7 +426,7 @@
       </tr>
       {{#Zutaten.Hopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Hopfen</strong></td>
+        <td class="underline" valign="top"><strong>Hopping</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -435,7 +435,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}} ({{Alpha}}%)</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> g zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
+              <td>add <span class="value">{{Menge}}</span> g after <span class="value">{{ZugabeNach}}</span> min (boiling time <span class="value">{{Kochdauer}}</span> min)</td>
             </tr>
             {{/Kochen}}
             {{/Liste}}
@@ -445,7 +445,7 @@
       {{/Zutaten.Hopfen}}
       {{#Zutaten.HatZusatzKochen}}
       <tr>
-        <td class="underline" valign="top"><strong>Weitere Zutaten</strong></td>
+        <td class="underline" valign="top"><strong>Additional ingredients</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -454,7 +454,7 @@
             {{#Kochen}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochbeginn <span class="value">{{Menge}}</span> {{Einheit}} zugeben (Kochdauer <span class="value">{{Kochdauer}}</span> min)</td>
+              <td>add <span class="value">{{Menge}}</span> {{Einheit}} after <span class="value">{{ZugabeNach}}</span> min (boiling time <span class="value">{{Kochdauer}}</span> min)</td>
             </tr>
             {{#Bemerkung}}
             <tr>
@@ -469,32 +469,32 @@
       </tr>
       {{/Zutaten.HatZusatzKochen}}
       <tr>
-        <td class="underline" valign="top"><strong>Kochdauer</strong></td>
+        <td class="underline" valign="top"><strong>Boiling time</strong></td>
         <td class="underline"><span class="value">{{Rezept.Kochdauer}}</span> min</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Stammw&uuml;rze Kochende</strong></td>
+        <td class="underline" valign="top"><strong>OG at end of boil</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             <tr>
               <td>____ &deg;P/&deg;Brix</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochende}}")</script></span>&deg;Brix</td>
+              <td>target: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochende}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>W&uuml;rzemenge vor Hopfenseihen</strong></td>
+        <td class="underline" valign="top"><strong>Amount bevor hop filtering</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ Liter bei ____ &deg;C</td>
+              <td>____ liters at ____ &deg;C</td>
               <td>
-                Zielwert: <span class="value">{{Rezept.MengeKochende}}</span> Liter bei 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> Liter bei 100&deg;C,
+                target: <span class="value">{{Rezept.MengeKochende}}</span> liters at 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> liters at 100&deg;C,
                 &uArr; <span class="value">{{Rezept.MengeKochende100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochende100Oben}}</span> cm
               </td>
             </tr>
@@ -504,13 +504,13 @@
       <tr>
         <td class="underline" valign="top"><strong>Whirlpool</strong></td>
         <td class="underline">
-          Kocher abschalten. Wenn thermische Bewegung abgeflaut ist, einen Whirlpool erzeugen und ca. 15 min warten bis sich ein Trubkegel gebildet hat
+		  Turn off heater. When thermic motions abate, create a whirlpool.
         </td>
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
-        <td class="underline"  valign="top"><strong>Nachisomerisierung</strong></td>
-        <td class="underline" >Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
+        <td class="underline"  valign="top"><strong>Isomerisation time</strong></td>
+        <td class="underline">Duration <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
             <col width="200">
@@ -519,13 +519,13 @@
             {{#Nachisomerisierung}}
             <tr>
               <td>{{Name}} ({{Alpha}}%)</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g zugeben</td>
+              <td>add <span class="value">{{Menge}}</span> g <span class="value">{{ZugabeNach}}</span> min after end of boiling</td>
             </tr>
             {{/Nachisomerisierung}}
             {{#Ausschlagen}}
             <tr>
               <td>{{Name}} ({{Alpha}}%)</td>
-              <td><span class="value">{{ZugabeNach}}</span> min nach Kochende <span class="value">{{Menge}}</span> g zugeben</td>
+              <td>add <span class="value">{{Menge}}</span> g <span class="value">{{ZugabeNach}}</span> min after end of boiling</td>
             </tr>
             {{/Ausschlagen}}
             {{/Liste}}
@@ -535,60 +535,60 @@
       </tr>
       {{/Rezept.Nachisomerisierung}}
       <tr>
-        <td valign="top"><strong>W&uuml;rzemenge nach Hopfenseihen</strong></td>
-        <td>____ Liter bei ____ &deg;C</td>
+        <td valign="top"><strong>Amount after hop filtering</strong></td>
+        <td>____ liters at ____ &deg;C</td>
       </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
-    <h2>Abseihen & Anstellen</h2>
+    <h2>Filtering & Pitching</h2>
     <table>
       <col width="250">
       <col width="700">
       <tr>
-        <td class="underline" valign="top"><strong>Hopfenseihen</strong></td>
-        <td class="underline">Die W&uuml;rze durch einen Filter in den G&auml;rbeh&auml;lter abf&uuml;llen</td>
+        <td class="underline" valign="top"><strong>Filtering</strong></td>
+        <td class="underline">Fill wort through a filter into a fermentation vessel.</td>
       </tr>
       {{#Wasser.Verduennung}}
       <tr>
-        <td class="underline" valign="top"><strong>HGF Verd&uuml;nnung</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Verduennung}}</span> Liter Wasser zugeben</td>
+        <td class="underline" valign="top"><strong>HGF dilution</strong></td>
+        <td class="underline">Add <span class="value">{{Wasser.Verduennung}}</span> liters water</td>
       </tr>
       {{/Wasser.Verduennung}}
       <tr>
-        <td class="underline" valign="top"><strong>Stammw&uuml;rze Anstellen</strong></td>
+        <td class="underline" valign="top"><strong>OG at pitching</strong></td>
         <td class="underline">
           <table>
             <col width="200">
             <col width="*">
             <tr>
               <td>____ &deg;P/&deg;Brix</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
+              <td>target: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
-          Wenn gew&uuml;nscht die W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
+          Dilute wort with water to achieve the target original wort.
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>W&uuml;rzemenge Anstellen</strong></td>
-        <td class="underline">____ Liter</td>
+        <td class="underline" valign="top"><strong>Amount at pitching</strong></td>
+        <td class="underline">____ liters</td>
       </tr>
       <tr>
-        <td valign="top"><strong>Abgef&uuml;llte Speisemenge</strong></td>
-        <td>____ Liter</td>
+        <td valign="top"><strong>Amount of unfermented wort</strong></td>
+        <td>____ liters</td>
       </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
-    <h2>G&auml;rung</h2>
+    <h2>Fermentation</h2>
     <table>
       <col width="250">
       <col width="700">
       {{#Zutaten.Hefe}}
       <tr>
-        <td class="underline" valign="top"><strong>Hefe</strong></td>
+        <td class="underline" valign="top"><strong>Yeast</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -596,20 +596,20 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} Einheiten nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben</td>
+              <td>add <span class="value">{{Menge}}</span> {{Einheit}} unit(s) after <span class="value">{{ZugabeNach}}</span> day(s)</td>
             </tr>
             {{/Liste}}
           </table>
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Bel&uuml;ften</strong></td>
-        <td class="underline">Die W&uuml;rze gut bel&uuml;ften</td>
+        <td class="underline" valign="top"><strong>Wort aeration</strong></td>
+        <td class="underline">Stir wort well to aerate and stir yeast into wort.</td>
       </tr>
       {{/Zutaten.Hefe}}
       {{#Zutaten.HatKalthopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Stopfhopfen</strong></td>
+        <td class="underline" valign="top"><strong>Cold-hopping</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -617,7 +617,7 @@
             {{#Zutaten.Kalthopfen.Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
+              <td>add <span class="value">{{Menge}}</span> {{Einheit}} after <span class="value">{{ZugabeNach}}</span> day(s){{#Dauer}} and remove after <span class="value">{{Dauer}}</span> day(s){{/Dauer}}.</td>
             </tr>
             {{#Bemerkung}}
             <tr>
@@ -632,7 +632,7 @@
       {{/Zutaten.HatKalthopfen}}
       {{#Zutaten.HatZusatzGaerung}}
       <tr>
-        <td class="underline" valign="top"><strong>Weitere Zutaten</strong></td>
+        <td class="underline" valign="top"><strong>Additional ingredients</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -641,7 +641,7 @@
             {{#Gaerung}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
+              <td>add <span class="value">{{Menge}}</span> {{Einheit}} after <span class="value">{{ZugabeNach}}</span> day(s){{#Dauer}} and remove after <span class="value">{{Dauer}}</span> day(s){{/Dauer}}.</td>
             </tr>
             {{#Bemerkung}}
             <tr>
@@ -656,8 +656,8 @@
       </tr>
       {{/Zutaten.HatZusatzGaerung}}
       <tr>
-        <td valign="top"><strong>G&auml;rverlauf</strong></td>
-        <td>Restextrakt regelm&auml;ssig messen und G&auml;rverlauf beobachten</td>
+        <td valign="top"><strong>Fermentation</strong></td>
+        <td>Measure the residual extract on a regular basis and observe the fermenation curve.</td>
       </tr>
     </table>
   </div>

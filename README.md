@@ -36,7 +36,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Version 2.2.0 (in Entwicklung)
 - Neu: Datenbankversion **2005**
 - Neu: Programm als Beerware lizenziert (siehe Menü Hilfe/Bierspende)
-- Neu: Direkte Auswahl bei Wasseraufbereiung 
+- Neu: Englische & schwedische Übersetzung (Vielen Dank Thomas!)
+- Neu: Direkte Auswahl bei Wasseraufbereiung
 - Fix: Sudkategorien nach oben/unten verschieben
 
 ### Version 2.2.0 Beta (27.06.2020)

@@ -228,6 +228,7 @@
      </property>
      <addaction name="actionDeutsch"/>
      <addaction name="actionEnglisch"/>
+     <addaction name="actionSchwedisch"/>
     </widget>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
@@ -502,7 +503,7 @@
   <action name="actionDeutsch">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/de.png</normaloff>:/images/de.png</iconset>
+     <normaloff>:/images/de.svg</normaloff>:/images/de.svg</iconset>
    </property>
    <property name="text">
     <string>Deutsch</string>
@@ -511,10 +512,19 @@
   <action name="actionEnglisch">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/en.png</normaloff>:/images/en.png</iconset>
+     <normaloff>:/images/en.svg</normaloff>:/images/en.svg</iconset>
    </property>
    <property name="text">
     <string>Englisch</string>
+   </property>
+  </action>
+  <action name="actionSchwedisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/se.svg</normaloff>:/images/se.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Schwedisch</string>
    </property>
   </action>
  </widget>

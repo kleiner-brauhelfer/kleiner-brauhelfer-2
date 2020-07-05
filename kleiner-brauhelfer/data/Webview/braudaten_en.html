@@ -7,7 +7,7 @@
 
   {{#Wasser}}
   <div class="r" align="center">
-    <h1>Wasser</h1>
+    <h1>Water</h1>
   </div>
   <div class="rm bg_wasser" align="center">
     <table style="width:100%">
@@ -15,24 +15,24 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Menge [l]</th>
+        <th>Amount [l]</th>
       </tr>
       <tr>
-        <td>Hauptguss</td>
+        <td>strike water</td>
         <td class="value" align="center">{{Hauptguss}}</td>
       </tr>
       <tr>
-        <td>Nachguss</td>
+        <td>sparing water</td>
         <td class="value" align="center">{{Nachguss}}</td>
       </tr>
       {{#Verduennung}}
       <tr>
-        <td>Verd&uuml;nnung</td>
+        <td>dilution</td>
         <td class="value" align="center">{{Verduennung}}</td>
       </tr>
       {{/Verduennung}}
       <tr>
-        <td><strong>Gesamtmenge</strong></td>
+        <td><strong>total amount</strong></td>
         <td class="value" align="center">{{Gesamt}}</td>
       </tr>
     </table>
@@ -41,7 +41,7 @@
 
   {{#Rasten}}
   <div class="r" align="center">
-    <h1>Rasten</h1>
+    <h1>Mashing Plan</h1>
   </div>
   <div class="rm bg_rasten" align="center">
     <table style="width:100%">
@@ -50,8 +50,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Temperatur [&deg;C]</th>
-        <th>Dauer [min]</th>
+        <th>Temperature [&deg;C]</th>
+        <th>Duration [min]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -65,7 +65,7 @@
   {{/Rasten}}
 
   <div class="r" align="center">
-    <h1>Maischen</h1>
+    <h1>Mashing</h1>
   </div>
   {{#Zutaten.Malz}}
   <div class="rm bg_malz" align="center">
@@ -75,8 +75,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Anteil [%]</th>
-        <th>Menge [kg]</th>
+        <th>Percentage [%]</th>
+        <th>Amount [kg]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -86,7 +86,7 @@
       </tr>
       {{/Liste}}
       <tr>
-        <td><strong>Gesamtsch&uuml;ttung</strong></td>
+        <td><strong>total grist amount</strong></td>
         <td align="center"></td>
         <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
       </tr>
@@ -100,7 +100,7 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Menge</th>
+        <th>Amount</th>
       </tr>
       {{#Zutaten.Zusatz.Liste}}
       {{#Maischen}}
@@ -116,7 +116,7 @@
   {{/Zutaten.HatZusatzMaischen}}
 
   <div class="r" align="center">
-    <h1>Kochen</h1>
+    <h1>Boiling</h1>
   </div>
   {{#Zutaten.Hopfen}}
   <div class="rm bg_hopfen" align="center">
@@ -127,18 +127,18 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zeitpunkt</th>
-        <th>Kochdauer [min]</th>
-        <th>Menge [g]</th>
+        <th>Moment</th>
+        <th>Boiling Time [min]</th>
+        <th>Amount [g]</th>
       </tr>
       {{#Liste}}
       <tr>
         <td>{{Name}}</td>
         <td class="value" align="center">
-                {{#Kochen}}Kochen{{/Kochen}}
-                {{#Vorderwuerze}}Vorderw&uuml;rze{{/Vorderwuerze}}
-                {{#Nachisomerisierung}}Nachisomerisierung{{/Nachisomerisierung}}
-                {{#Ausschlagen}}beim Ausschlagen{{/Ausschlagen}}
+                {{#Kochen}}boil{{/Kochen}}
+                {{#Vorderwuerze}}pre-boil{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}isomerisation{{/Nachisomerisierung}}
+                {{#Ausschlagen}}pitch{{/Ausschlagen}}
         </td>
         <td class="value" align="center">{{Kochdauer}}</td>
         <td class="value" align="center">{{Menge}}</td>
@@ -155,8 +155,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Kochdauer [min]</th>
-        <th>Menge</th>
+        <th>Boiling Time [min]</th>
+        <th>Amount</th>
       </tr>
       {{#Zutaten.Zusatz.Liste}}
       {{#Kochen}}
@@ -173,7 +173,7 @@
   {{/Zutaten.HatZusatzKochen}}
 
   <div class="r" align="center">
-    <h1>G&auml;rung</h1>
+    <h1>Fermentation</h1>
   </div>
   {{#Zutaten.Hefe}}
   <div class="rm bg_hefe" align="center">
@@ -183,8 +183,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zugabe nach [Tage]</th>
-        <th>Menge</th>
+        <th>Added After [days]</th>
+        <th>Amount</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -205,9 +205,9 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zugabe nach [Tage]</th>
-        <th>Dauer [Tage]</th>
-        <th>Menge</th>
+        <th>Added After [days]</th>
+        <th>Duration [days]</th>
+        <th>Amount</th>
       </tr>
       {{#Zutaten.Kalthopfen.Liste}}
       <tr>
@@ -230,9 +230,9 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zugabe nach [Tage]</th>
-        <th>Dauer [Tage]</th>
-        <th>Menge</th>
+        <th>Added After [days]</th>
+        <th>Duration [days]</th>
+        <th>Amount</th>
       </tr>
       {{#Zutaten.Zusatz.Liste}}
       {{#Gaerung}}

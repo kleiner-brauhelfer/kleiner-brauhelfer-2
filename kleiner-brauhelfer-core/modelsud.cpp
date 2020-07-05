@@ -120,6 +120,9 @@ void ModelSud::onAnlageRowChanged(const QModelIndex &idx)
 
 void ModelSud::onWasserRowChanged(const QModelIndex &idx)
 {
+    const QList<int> ignore = {ModelWasser::ColBemerkung};
+    if (ignore.contains(idx.column()))
+        return;
     QVariant name = bh->modelWasser()->data(idx.row(), ModelWasser::ColName);
     for (int row = 0; row < rowCount(); ++row)
     {

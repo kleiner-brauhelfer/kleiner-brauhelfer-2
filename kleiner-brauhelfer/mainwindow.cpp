@@ -759,6 +759,12 @@ void MainWindow::on_actionEnglisch_triggered()
     restart(1001);
 }
 
+void MainWindow::on_actionSchwedisch_triggered()
+{
+    gSettings->setLanguage("se");
+    restart(1001);
+}
+
 void MainWindow::on_actionSpende_triggered()
 {
     QDesktopServices::openUrl(QUrl(URL_SPENDE));

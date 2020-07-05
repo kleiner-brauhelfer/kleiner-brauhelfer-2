@@ -59,6 +59,7 @@ private slots:
     void on_actionAnimationen_triggered(bool checked);
     void on_actionDeutsch_triggered();
     void on_actionEnglisch_triggered();
+    void on_actionSchwedisch_triggered();
     void on_actionSpende_triggered();
     void on_actionBierspende_triggered();
     void on_actionUeber_triggered();

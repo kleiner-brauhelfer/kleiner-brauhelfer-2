@@ -90,7 +90,7 @@ void WdgWasseraufbereitung::on_cbEinheit_currentIndexChanged(int index)
 
 void WdgWasseraufbereitung::on_btnAuswahl_clicked()
 {
-    DlgWasseraufbereitung dlg;
+    DlgWasseraufbereitung dlg(ui->tbName->text(), ui->cbEinheit->currentIndex(), ui->tbFaktor->value(), this);
     if (dlg.exec() == QDialog::Accepted)
     {
         setData(ModelWasseraufbereitung::ColName, dlg.name());

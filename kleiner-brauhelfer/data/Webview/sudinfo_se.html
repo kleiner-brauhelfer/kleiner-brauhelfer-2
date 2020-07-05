@@ -29,41 +29,41 @@
             <col width="*">
             <tr>
               <th></th>
-              {{^Sud.StatusRezept}}<th>Batch</th>{{/Sud.StatusRezept}}
-              <th>Recipe</th>
+              {{^Sud.StatusRezept}}<th>Sud</th>{{/Sud.StatusRezept}}
+              <th>Rezept</th>
             </tr>
             <tr>
-              <td>amount</td>
+              <td>Menge</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Menge}}</td>{{/Sud.StatusRezept}}
               <td class="value" align="center">{{Rezept.Menge}}</td>
               <td>l</td>
             </tr>
             <tr>
-              <td>original wort</td>
+              <td>Stammw&uuml;rze</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.SW}}</td>{{/Sud.StatusRezept}}
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             <tr>
-              <td>alcohol</td>
+              <td>Alkohol</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Alkohol}}</td>{{/Sud.StatusRezept}}
               <td class="value" align="center">{{Rezept.Alkohol}}</td>
               <td>%vol</td>
             </tr>
             <tr>
-              <td>bitterness</td>
+              <td>Bittere</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Bittere}}</td>{{/Sud.StatusRezept}}
               <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
-              <td>color</td>
+              <td>Farbe</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Farbe}}</td>{{/Sud.StatusRezept}}
               <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
-              <td>CO&#x2082;</td>
+              <td>CO&#x2082;-Gehalt</td>
               {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.CO2}}</td>{{/Sud.StatusRezept}}
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
@@ -78,7 +78,7 @@
 
   {{#Zutaten}}
   <div class="r" align="center">
-    <h1>Ingredients</h1>
+    <h1>Zutaten</h1>
   </div>
 
   {{#Zutaten.Malz}}
@@ -94,9 +94,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Needed [kg]</th>
-        <th>In Stock [kg]</th>
-        <th>Remain [kg]</th>
+        <th>Ben&ouml;tigt [kg]</th>
+        <th>Vorhanden [kg]</th>
+        <th>Rest [kg]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -124,9 +124,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Needed [g]</th>
-        <th>In Stock [g]</th>
-        <th>Remain [g]</th>
+        <th>Ben&ouml;tigt [g]</th>
+        <th>Vorhanden [g]</th>
+        <th>Rest [g]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -154,9 +154,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Needed</th>
-        <th>In Stock</th>
-        <th>Remain</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -184,9 +184,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Needed</th>
-        <th>In Stock</th>
-        <th>Remain</th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -205,7 +205,7 @@
 
   {{#Anhang}}
   <div class="r" align="center">
-    <h1>Attachments</h1>
+    <h1>Anh&auml;nge</h1>
   </div>
   <div class="rm bg_anhaenge" align="center">
     <br>

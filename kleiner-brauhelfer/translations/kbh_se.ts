@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="sv_SE">
 <context>
     <name>DlgAbout</name>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="20"/>
         <source>Über</source>
-        <translation>About</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="42"/>
@@ -14,19 +14,19 @@
         <translation>Forum:</translation>
     </message>
     <message>
+        <location filename="../dialogs/dlgabout.ui" line="62"/>
+        <source>Entwickler</source>
+        <translation>Utvecklare</translation>
+    </message>
+    <message>
         <location filename="../dialogs/dlgabout.ui" line="118"/>
         <source>Homepage:</source>
-        <translation>Website:</translation>
+        <translation>Hemsida:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="151"/>
         <source>Kompiliert mit:</source>
-        <translation>Compiled with:</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgabout.ui" line="62"/>
-        <source>Entwickler</source>
-        <translation>Developers</translation>
+        <translation>Kompilerat med:</translation>
     </message>
 </context>
 <context>
@@ -34,13 +34,12 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="14"/>
         <source>Bierspende</source>
-        <translation>Beer donation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der kleine-brauhelfer-2 ist als angepasste &lt;a href=&quot;https://de.wikipedia.org/wiki/Beerware&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beerware&lt;/span&gt;&lt;/a&gt; lizenziert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Während die Nutzung generell kostenlos ist, erbittet der Autor von Beerware vom Nutzer dem Autor&lt;br/&gt;- bei Gelegenheit ein Bier auszugeben oder&lt;br/&gt;- ein Bier auf das Wohl des Autors zu trinken oder&lt;br/&gt;- dem Autor ein &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;selbstgebrautes Bier zu schicken&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Die Einhaltung dieser Lizenzierungsbestimmung erfolgt auf freiwilliger Basis.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Anschrift Deutschland:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;c/o LAS Burg 12002&lt;br/&gt;Hauptstraße 396&lt;br/&gt;D-79576 Weil am Rhein&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Anschrift Schweiz:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;Lehenmattstrasse 158&lt;br/&gt;CH-4052 Basel&lt;/p&gt;&lt;p&gt;Ich würde mich über ein leckeres Bier sehr freuen!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kleiner-Brauhelfer-2 is licensed as modified &lt;a href=&quot;https://en.wikipedia.org/wiki/Beerware&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beerware&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;While usage is generally free, the developer asks users&lt;br/&gt;- to buy him a drink, when the occasions arises, or&lt;br/&gt;- to drink to the developer&apos;s health, or&lt;br/&gt;- to send the developer some &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;home-brewed beer&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Compliance with the license is voluntary.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Address Germany:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;c/o LAS Burg 12002&lt;br/&gt;Hauptstraße 396&lt;br/&gt;D-79576 Weil am Rhein&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Address Switzerland:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;Lehenmattstrasse 158&lt;br/&gt;CH-4052 Basel&lt;/p&gt;&lt;p&gt;Receiving your beers will make me very happy!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -48,17 +47,17 @@
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="20"/>
         <source>Neue Version verfügbar</source>
-        <translation>New version available</translation>
+        <translation>Ny version tillgänglig</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="68"/>
         <source>Diese Version ignorieren</source>
-        <translation>Ignore this version</translation>
+        <translation>Ignorera denna version</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="78"/>
         <source>Auf Updates prüfen</source>
-        <translation>Check for updates</translation>
+        <translation>Sök uppdateringar</translation>
     </message>
 </context>
 <context>
@@ -66,7 +65,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="20"/>
         <source>Datenbank bereinigen</source>
-        <translation>Clean database</translation>
+        <translation>Rensa databasen</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="110"/>
@@ -76,7 +75,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="113"/>
         <source>Ausgewählte Einträge löschen</source>
-        <translation>Delete selected entries</translation>
+        <translation>Ta bort utvalda</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="120"/>
@@ -86,47 +85,47 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="123"/>
         <source>Weiter</source>
-        <translation>Continue</translation>
+        <translation>Fortsätt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="211"/>
         <source>Schließen</source>
-        <translation>Close</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="236"/>
         <source>Sud ID</source>
-        <translation>Batch ID</translation>
+        <translation>Sats-ID</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="237"/>
         <source>Sudname</source>
-        <translation>Batch name</translation>
+        <translation>Satsnamn</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="243"/>
         <source>Anlage ID</source>
-        <translation>Setup ID</translation>
+        <translation>AnläggningsID</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="244"/>
         <source>Anlage</source>
-        <translation>Setup</translation>
+        <translation>Anläggning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="264"/>
         <source>Ungültige Felder in Tabelle:</source>
-        <translation>Invalid Fields in table:</translation>
+        <translation>Ogiltiga fält i tabell:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="289"/>
         <source>Ungültige Sud ID in Tabelle:</source>
-        <translation>Invalid Batch ID in table:</translation>
+        <translation>Ogiltig sats-ID i tabell:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="289"/>
         <source>Ungültige Anlage ID in Tabelle:</source>
-        <translation>Invalid Setup ID in table:</translation>
+        <translation>Ogiltig anläggningsID i tabell:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="316"/>
@@ -137,37 +136,37 @@
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="447"/>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="474"/>
         <source>Ungültiger Wert in Tabelle:</source>
-        <translation>Invalid value in table:</translation>
+        <translation>Ogiltigt värde i tabell:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Rezept</source>
-        <translation>Recipe</translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Gebraut</source>
-        <translation>Brewed</translation>
+        <translation>Bryggt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Abgefüllt</source>
-        <translation>bottled/kegged</translation>
+        <translation>Tappat på flaska/fat</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="428"/>
         <source>Verbraucht</source>
-        <translation>Consumed</translation>
+        <translation>Förbrukat</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="455"/>
         <source>Keine</source>
-        <translation>None</translation>
+        <translation>Inget</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="455"/>
         <source>Gewicht</source>
-        <translation>Weight</translation>
+        <translation>Vikt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="455"/>
@@ -180,12 +179,12 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="14"/>
         <source>Malz pH-Wert</source>
-        <translation>Malt pH</translation>
+        <translation>Malt-pH</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="23"/>
         <source>Malztyp in der Auswahliste wählen, sonst den Malz-pH-Wert (in destilliertem Wasser) manuell eintragen. Carafa und hoch gedarrte Malze gelten als Röstmalz.</source>
-        <translation>Choose malt type from the list, otherwise enter pH (in distilled water). Carafa and highly kilned malts count as roasted malts.</translation>
+        <translation>Välj typ av malt från listan, annars ange pH-värdet (i destillerad vatten). Carafa och malt torkat på höga temperaturer gills som rostad malt.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="38"/>
@@ -195,7 +194,7 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="42"/>
         <source>Manuell</source>
-        <translation>Manual</translation>
+        <translation>Manuellt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="47"/>
@@ -205,17 +204,17 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="52"/>
         <source>Caramalz</source>
-        <translation>Caramalt</translation>
+        <translation>Karamellmalt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="57"/>
         <source>Röstmalz</source>
-        <translation>Roasted malt</translation>
+        <translation>Rostad malt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="65"/>
         <source>pH-Wert</source>
-        <translation>pH</translation>
+        <translation>pH-värde</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="78"/>
@@ -233,22 +232,22 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="20"/>
         <source>Berechnung Extrakt</source>
-        <translation>Calculate extract</translation>
+        <translation>Extraktberäkning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="31"/>
         <source>Messung mit Spindel</source>
-        <translation>Hydrometer measurement</translation>
+        <translation>Hydrometer</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="37"/>
         <source>Dichte</source>
-        <translation>Density</translation>
+        <translation>Densitet</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="44"/>
         <source>Temperatur</source>
-        <translation>Temperature</translation>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="51"/>
@@ -264,7 +263,7 @@
         <location filename="../dialogs/dlgrestextrakt.ui" line="80"/>
         <location filename="../dialogs/dlgrestextrakt.ui" line="301"/>
         <source>Messwert</source>
-        <translation>Value</translation>
+        <translation>Värde</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="99"/>
@@ -291,7 +290,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="183"/>
         <source>Messung mit Refraktometer</source>
-        <translation>Refractometer measurement</translation>
+        <translation>Refraktometer</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="195"/>
@@ -301,7 +300,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="217"/>
         <source>Korrekturfaktor </source>
-        <translation>Correction factor </translation>
+        <translation>Korrigeringsfaktor </translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="224"/>
@@ -326,7 +325,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="246"/>
         <source>Umrechnungsformel</source>
-        <translation>Formula</translation>
+        <translation>Formel</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="253"/>
@@ -357,7 +356,7 @@
         <location filename="../dialogs/dlgrestextrakt.ui" line="361"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="24"/>
         <source>Stammwürze</source>
-        <translation>OG</translation>
+        <translation>Vörtstyrka (OG)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="374"/>
@@ -368,7 +367,7 @@
         <location filename="../dialogs/dlgrestextrakt.ui" line="421"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="33"/>
         <source>Restextrakt</source>
-        <translation>SG</translation>
+        <translation>Restsötma (FG)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="434"/>
@@ -381,7 +380,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="20"/>
         <source>Zutatauswahl</source>
-        <translation>Ingredient selection</translation>
+        <translation>Val av ingredienser</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="31"/>
@@ -391,7 +390,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="34"/>
         <source>alle</source>
-        <translation>all</translation>
+        <translation>alla</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="44"/>
@@ -401,7 +400,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="47"/>
         <source>vorhanden</source>
-        <translation>in stock</translation>
+        <translation>tillgänglig</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="54"/>
@@ -411,7 +410,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="57"/>
         <source>Suche</source>
-        <translation>Search</translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
@@ -431,32 +430,32 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>Stk.</source>
-        <translation>pcs.</translation>
+        <translation>st.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Honig</source>
-        <translation>Honey</translation>
+        <translation>Honung</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Zucker</source>
-        <translation>Sugar</translation>
+        <translation>Socker</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Gewürz</source>
-        <translation>Spice</translation>
+        <translation>Krydda</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Frucht</source>
-        <translation>Fruit</translation>
+        <translation>Frukt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Sonstiges</source>
-        <translation>Other</translation>
+        <translation>Annat</translation>
     </message>
 </context>
 <context>
@@ -464,12 +463,12 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="20"/>
         <source>Auswahl Rohstoffvorlage</source>
-        <translation>Ingredient templates</translation>
+        <translation>Ingrediensmallar</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="29"/>
         <source>Suche</source>
-        <translation>Search</translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="39"/>
@@ -489,7 +488,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="97"/>
         <source>Vorlage hinzufügen</source>
-        <translation>Add template</translation>
+        <translation>Lägg till mall</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="104"/>
@@ -499,7 +498,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="107"/>
         <source>Vorlage löschen</source>
-        <translation>Remove template</translation>
+        <translation>Ta bort mall</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="114"/>
@@ -509,7 +508,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="117"/>
         <source>Liste importieren</source>
-        <translation>Import list</translation>
+        <translation>Importera lista</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="124"/>
@@ -519,7 +518,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="127"/>
         <source>Liste exportieren</source>
-        <translation>Export list</translation>
+        <translation>Exportera lista</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="134"/>
@@ -529,7 +528,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="137"/>
         <source>Liste wiederherstellen</source>
-        <translation type="unfinished">Restore list</translation>
+        <translation>Återställ lista</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="147"/>
@@ -552,7 +551,7 @@
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="165"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="189"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="129"/>
@@ -562,25 +561,25 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="133"/>
         <source>Farbe [EBC]</source>
-        <translation>Color [EBC]</translation>
+        <translation>Färg [EBC]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="136"/>
         <source>Max. Anteil [%]</source>
-        <translation>Max. share [%]</translation>
+        <translation>Max. andel [%]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="139"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="155"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="175"/>
         <source>Eigenschaften</source>
-        <translation>Characteristics</translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="149"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="193"/>
         <source>Typ</source>
-        <translation>Type</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="152"/>
@@ -591,37 +590,37 @@
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="159"/>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="183"/>
         <source>Alternativen</source>
-        <translation>Alternatives</translation>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="169"/>
         <source>Kategorie</source>
-        <translation>Category</translation>
+        <translation>Kategori</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="172"/>
         <source>Trocken/Flüssig</source>
-        <translation>Dry/Liquid</translation>
+        <translation>Torr/Flytande</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="179"/>
         <source>Bierstil</source>
-        <translation>Beer style</translation>
+        <translation>Ölstil</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="196"/>
         <source>Verwendung</source>
-        <translation>Usage</translation>
+        <translation>Användning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="414"/>
         <source>Rohstoffliste importieren</source>
-        <translation>Import ingredient list</translation>
+        <translation>Importera ingredienslista</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="430"/>
         <source>Rohstoffliste exportieren</source>
-        <translation>Export ingredient list</translation>
+        <translation>Exportera ingredienslista</translation>
     </message>
 </context>
 <context>
@@ -629,7 +628,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="20"/>
         <source>Zutaten vom Lager abziehen</source>
-        <translation>Subtract ingredients from inventory</translation>
+        <translation>Subtrahera ingredienserna från lagret</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="71"/>
@@ -639,7 +638,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="74"/>
         <source>Zutaten abziehen</source>
-        <translation>Subtract ingredients</translation>
+        <translation>Subtrahera ingredienserna</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="81"/>
@@ -649,7 +648,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="69"/>
         <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
-        <translation>Ingredients not yet subtracted; close anyway?</translation>
+        <translation>Ingredienserna har inte subtraherats än; stäng andå?</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="108"/>
@@ -659,49 +658,49 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="109"/>
         <source>Menge [kg]</source>
-        <translation>Amount [kg]</translation>
+        <translation>Mängd [kg]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="110"/>
         <source>Vorhanden [kg]</source>
-        <translation>In stock [kg]</translation>
+        <translation>I lagret [kg]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="164"/>
         <source>Hopfen</source>
-        <translation>Hops</translation>
+        <translation>Humle</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="165"/>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="260"/>
         <source>Menge [g]</source>
-        <translation>Amount [g]</translation>
+        <translation>Mängd [g]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="166"/>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="261"/>
         <source>Vorhanden [g]</source>
-        <translation>In stock [g]</translation>
+        <translation>I lagret [g]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="209"/>
         <source>Hefe</source>
-        <translation>Yeast</translation>
+        <translation>Jäst</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="210"/>
         <source>Menge</source>
-        <translation>Amount</translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="211"/>
         <source>Vorhanden</source>
-        <translation>In stock</translation>
+        <translation>I lagret</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="259"/>
         <source>Weitere Zutat</source>
-        <translation>Further ingredient</translation>
+        <translation>Ytterligare ingrediens</translation>
     </message>
 </context>
 <context>
@@ -709,7 +708,7 @@
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="20"/>
         <source>Sud teilen</source>
-        <translation>Split batch</translation>
+        <translation>Dela sats</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="31"/>
@@ -730,7 +729,7 @@
         <location filename="../dialogs/dlgsudteilen.ui" line="68"/>
         <location filename="../dialogs/dlgsudteilen.ui" line="94"/>
         <source>Liter</source>
-        <translation>Litre</translation>
+        <translation>Liter</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgsudteilen.ui" line="81"/>
@@ -764,7 +763,7 @@
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="20"/>
         <source>Suche</source>
-        <translation>Search</translation>
+        <translation>Sök</translation>
     </message>
 </context>
 <context>
@@ -772,7 +771,7 @@
     <message>
         <location filename="../dialogs/dlguebernahmerezept.ui" line="14"/>
         <source>Aus Rezept übernehmen</source>
-        <translation>Copy from recipe</translation>
+        <translation>Ta över från recept</translation>
     </message>
 </context>
 <context>
@@ -780,24 +779,24 @@
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="20"/>
         <source>Berechnung der Verdampfung</source>
-        <translation>Calculate Evaporation</translation>
+        <translation>Beräkna förångning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="29"/>
         <source>Menge bei Kochbeginn (100°C)</source>
-        <translation>Amount at boil start (100°C)</translation>
+        <translation>Mängd vid kokningens början (100°C)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="35"/>
         <location filename="../dialogs/dlgverdampfung.ui" line="266"/>
         <source>Füllhöhe vom Boden aus gemessen</source>
-        <translation>Fill level measured from bottom</translation>
+        <translation>Fyllnadshöjd från botten</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="42"/>
         <location filename="../dialogs/dlgverdampfung.ui" line="220"/>
         <source>Menge bei 100°C</source>
-        <translation>Amount at 100°C</translation>
+        <translation>Mängd vid 100°C</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="55"/>
@@ -813,7 +812,7 @@
         <location filename="../dialogs/dlgverdampfung.ui" line="93"/>
         <location filename="../dialogs/dlgverdampfung.ui" line="246"/>
         <source>Füllhöhe von Oberkante aus gemessen</source>
-        <translation>Fill level measured from top</translation>
+        <translation>Fyllnadshöjd från överkant</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="100"/>
@@ -829,7 +828,7 @@
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="162"/>
         <source>Menge bei Kochende (100°C)</source>
-        <translation>Amount at boil end (100°C)</translation>
+        <translation>Mängd vid kokningens slut (100°C)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="181"/>
@@ -854,7 +853,7 @@
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="330"/>
         <source>Verdampfungsziffer</source>
-        <translation>Evaporation figure</translation>
+        <translation>Förångning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="350"/>
@@ -864,7 +863,7 @@
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="372"/>
         <source>Kochdauer</source>
-        <translation>Boil time</translation>
+        <translation>Koktid</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="385"/>
@@ -874,7 +873,7 @@
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="398"/>
         <source>Verdampfungsrate</source>
-        <translation>Evaporation rate</translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="405"/>
@@ -897,23 +896,23 @@
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="20"/>
         <source>Eingabehilfe für Volumen</source>
-        <translation>Input assistance for volume</translation>
+        <translation>Inmatningshjälp för volumen</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="39"/>
         <source>Würzemenge bei 20°C</source>
-        <translation>Amount of wort at 20°C</translation>
+        <translation>Vörtmängd vid 20°C</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="46"/>
         <location filename="../dialogs/dlgvolumen.ui" line="161"/>
         <source>Liter</source>
-        <translation>Litre</translation>
+        <translation>Liter</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="53"/>
         <source>Temperatur der Würze</source>
-        <translation>Wort temperature</translation>
+        <translation>Vörttemperatur</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="60"/>
@@ -924,7 +923,7 @@
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="67"/>
         <source>Füllhöhe von Oberkante aus gemessen</source>
-        <translation>Fill level measured from top</translation>
+        <translation>Fyllnadshöjd från överkant</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="74"/>
@@ -944,12 +943,12 @@
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="154"/>
         <source>Füllhöhe vom Boden aus gemessen</source>
-        <translation>Fill level measured from bottom</translation>
+        <translation>Fyllnadshöjd från botten</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="168"/>
         <source>Würzemenge bei aktueller Temperatur</source>
-        <translation>Amount of wort at current temperature</translation>
+        <translation>Vörtmängd vid aktuell temperatur</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="182"/>
@@ -972,7 +971,7 @@
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="14"/>
         <source>Wasseraufbereitung</source>
-        <translation>Water adjustment</translation>
+        <translation>Vattenanpassning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="60"/>
@@ -997,7 +996,7 @@
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="83"/>
         <source>Stk</source>
-        <translation>pcs</translation>
+        <translation>st</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="88"/>
@@ -1012,67 +1011,67 @@
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="101"/>
         <source>Menge für 1°dH</source>
-        <translation>Amount for 1°dH</translation>
+        <translation>Mängd för 1°dH</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="13"/>
         <source>Milchsäure</source>
-        <translation>Lactic acid</translation>
+        <translation>Mjölksyra</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="14"/>
         <source>Phosphorsäure</source>
-        <translation>Phosphoric acid</translation>
+        <translation>Fosforsyra</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="15"/>
         <source>Salzsäure</source>
-        <translation>Hydrochloric acid</translation>
+        <translation>Saltsyra</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="16"/>
         <source>Schwefelsäure</source>
-        <translation>Sulfuric acid</translation>
+        <translation>Svavelsyra</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="17"/>
         <source>Sauermalz</source>
-        <translation>Acid malt</translation>
+        <translation>Syramalt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="18"/>
         <source>Natriumhydrogenkarbonat (NaHCO3)</source>
-        <translation>Sodium bicarbonate (NaHCO3)</translation>
+        <translation>Natriumvätekarbonat (NaHCO3)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="19"/>
         <source>Natriumchlorid (NaCl)</source>
-        <translation>Table salt (NaCl)</translation>
+        <translation>Koksalt (NaCl)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="20"/>
         <source>Calciumsulfat (CaSO4)</source>
-        <translation>Calcium sulfate (CaSO4)</translation>
+        <translation>Calciumsulfat (CaSO4)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="21"/>
         <source>Calciumchlorid (CaCl2)</source>
-        <translation>Calcium chloride (CaCl2)</translation>
+        <translation>Calciumchlorid (CaCl2)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="22"/>
         <source>Magnesiumchlorid (MgCl2)</source>
-        <translation>Magnesium chloride (MgCl2)</translation>
+        <translation>Magnesiumchlorid (MgCl2)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="23"/>
         <source>Magnesiumsulfat (MgSO4)</source>
-        <translation>Magnesium sulfate (MgSO4)</translation>
+        <translation>Magnesiumsulfat (MgSO4)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="24"/>
         <source>&lt;manuell&gt;</source>
-        <translation>&lt;manual&gt;</translation>
+        <translation>&lt;manuell&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="72"/>
@@ -1091,65 +1090,65 @@
     <message>
         <location filename="../mainwindow.ui" line="64"/>
         <source>Sudauswahl</source>
-        <translation>Batch selection</translation>
+        <translation>Satsurval</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="69"/>
         <source>Rezept</source>
-        <translation>Recipe</translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="74"/>
         <source>Braudaten</source>
-        <translation>Brewing</translation>
+        <translation>Bryggning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="79"/>
         <source>Abfülldaten</source>
-        <translation>Bottling/Kegging</translation>
+        <translation>Flask-/Fattappning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="84"/>
         <source>Gärverlauf</source>
-        <translation>Fermentation</translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="89"/>
         <location filename="../mainwindow.cpp" line="297"/>
         <location filename="../mainwindow.cpp" line="613"/>
         <source>Zusammenfassung</source>
-        <translation>Summary</translation>
+        <translation>Sammanfattning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="94"/>
         <location filename="../mainwindow.ui" line="459"/>
         <location filename="../mainwindow.cpp" line="634"/>
         <source>Etikette</source>
-        <translation>Labels</translation>
+        <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="99"/>
         <location filename="../mainwindow.ui" line="467"/>
         <location filename="../mainwindow.cpp" line="653"/>
         <source>Bewertung</source>
-        <translation>Rating</translation>
+        <translation>Betyg</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="104"/>
         <location filename="../mainwindow.ui" line="483"/>
         <location filename="../mainwindow.cpp" line="670"/>
         <source>Brauübersicht</source>
-        <translation>Batch history</translation>
+        <translation>Satsöversikt</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="109"/>
         <source>Ausrüstung</source>
-        <translation>Equipment</translation>
+        <translation>Utrustning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="114"/>
         <source>Rohstoffe</source>
-        <translation>Ingredients</translation>
+        <translation>Ingredienser</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="119"/>
@@ -1161,57 +1160,57 @@
         <location filename="../mainwindow.ui" line="273"/>
         <location filename="../mainwindow.cpp" line="683"/>
         <source>Datenbank</source>
-        <translation>Database</translation>
+        <translation>Databas</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="144"/>
         <source>Datei</source>
-        <translation>File</translation>
+        <translation>Fil</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="166"/>
         <source>Ansicht</source>
-        <translation>View</translation>
+        <translation>Vy</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="170"/>
         <source>Farbschema</source>
-        <translation>Color scheme</translation>
+        <translation>Färgschema</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="178"/>
         <source>Stil</source>
-        <translation>Style</translation>
+        <translation>Stil</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="183"/>
         <source>Reiter</source>
-        <translation>Tab</translation>
+        <translation>Flik</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="202"/>
         <source>Hilfe</source>
-        <translation>Help</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="210"/>
         <source>Sud</source>
-        <translation>Batch</translation>
+        <translation>Sats</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="223"/>
         <source>Einstellungen</source>
-        <translation>Settings</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="227"/>
         <source>Sprache</source>
-        <translation>Language</translation>
+        <translation>Språk</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="249"/>
         <source>Speichern</source>
-        <translation>Save</translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="252"/>
@@ -1221,7 +1220,7 @@
     <message>
         <location filename="../mainwindow.ui" line="257"/>
         <source>Änderungen verwerfen</source>
-        <translation>Undo changes</translation>
+        <translation>Ångra ändringarna</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="260"/>
@@ -1231,12 +1230,12 @@
     <message>
         <location filename="../mainwindow.ui" line="265"/>
         <source>Zurücksetzen</source>
-        <translation>Reset</translation>
+        <translation>Återställ</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="278"/>
         <source>Über</source>
-        <translation>About</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="286"/>
@@ -1246,27 +1245,27 @@
     <message>
         <location filename="../mainwindow.ui" line="291"/>
         <source>&quot;Sud gebraut&quot; zurücksetzen</source>
-        <translation>Reset &quot;batch brewed&quot;</translation>
+        <translation>Återställ &quot;sats bryggd&quot;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="296"/>
         <source>&quot;Sud abgefüllt&quot; zurücksetzen</source>
-        <translation>Reset &quot;batch bottled/kegged&quot;</translation>
+        <translation>Återställ &quot;sats flask-/fattappad&quot;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="301"/>
         <source>&quot;Sud verbraucht&quot; zurücksetzen</source>
-        <translation>Reset &quot;batch consumed&quot;</translation>
+        <translation>Återställ &quot;sats förbrukad&quot;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="306"/>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
-        <translation>Reset &quot;further ingredient added&quot;</translation>
+        <translation>Återställ &quot;ytterligare ingrediens tillagd&quot;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="311"/>
         <source>Beenden</source>
-        <translation>Quit</translation>
+        <translation>Stäng av</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="314"/>
@@ -1277,7 +1276,7 @@
         <location filename="../mainwindow.ui" line="322"/>
         <location filename="../mainwindow.cpp" line="597"/>
         <source>Datenbank auswählen</source>
-        <translation>Select database</translation>
+        <translation>Välj databas</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="325"/>
@@ -1292,42 +1291,42 @@
     <message>
         <location filename="../mainwindow.ui" line="338"/>
         <source>Hell</source>
-        <translation>Bright</translation>
+        <translation>Ljus</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="343"/>
         <source>Dunkel</source>
-        <translation>Dark</translation>
+        <translation>Mörk</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="354"/>
         <source>Bestätigung beim Beenden</source>
-        <translation>Confirm quitting</translation>
+        <translation>Bekräfta avstängning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="362"/>
         <source>Systemschriftart</source>
-        <translation>System font</translation>
+        <translation>Systemtypsnitt</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="373"/>
         <source>Auf Updates prüfen</source>
-        <translation>Check for updates</translation>
+        <translation>Sök uppdateringar</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="378"/>
         <source>&quot;Hefe Zugabe&quot; zurücksetzen</source>
-        <translation>Reset &quot;yeast added&quot;</translation>
+        <translation>Återställ &quot;jäst tillagd&quot;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="383"/>
         <source>Bereinigen</source>
-        <translation>Clean</translation>
+        <translation>Rensa</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="391"/>
         <source>Eingabefelder entsperren</source>
-        <translation>Unlock input fields</translation>
+        <translation>Lås upp inmatningsfält</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="402"/>
@@ -1337,7 +1336,7 @@
     <message>
         <location filename="../mainwindow.ui" line="407"/>
         <source>Neuen Sud anlegen</source>
-        <translation>Create new batch</translation>
+        <translation>Skapa ny sats</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="410"/>
@@ -1347,32 +1346,32 @@
     <message>
         <location filename="../mainwindow.ui" line="415"/>
         <source>Rezept importieren</source>
-        <translation>Import recipe</translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>Rezept exportieren</source>
-        <translation>Export recipe</translation>
+        <translation>Exportera recept</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="425"/>
         <source>Sud kopieren</source>
-        <translation>Copy batch</translation>
+        <translation>Kopiera sats</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="430"/>
         <source>Sud löschen</source>
-        <translation>Delete batch</translation>
+        <translation>Ta bort sats</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="435"/>
         <source>Sud teilen</source>
-        <translation>Split batch</translation>
+        <translation>Dela sats</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="440"/>
         <source>Druckvorschau</source>
-        <translation>Print preview</translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="443"/>
@@ -1382,7 +1381,7 @@
     <message>
         <location filename="../mainwindow.ui" line="448"/>
         <source>Drucken (PDF)</source>
-        <translation>Print (PDF)</translation>
+        <translation>Skriv ut (PDF)</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="451"/>
@@ -1392,100 +1391,100 @@
     <message>
         <location filename="../mainwindow.ui" line="475"/>
         <source>Spickzettel/Zusammenfassung</source>
-        <translation>Summary</translation>
+        <translation>Sammanfattning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="494"/>
         <source>Animationen</source>
-        <translation>Animations</translation>
+        <translation>Animeringar</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="499"/>
         <source>Bierspende</source>
-        <translation>Beer donation</translation>
+        <translation>Öldonation</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="508"/>
         <source>Deutsch</source>
-        <translation>German</translation>
+        <translation>Tyska</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="517"/>
         <source>Englisch</source>
-        <translation>English</translation>
+        <translation>Engelska</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="117"/>
         <location filename="../mainwindow.cpp" line="136"/>
         <source>Anwendung schließen?</source>
-        <translation>Quit application?</translation>
+        <translation>Stäng av programmet?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="118"/>
         <source>Sollen die Änderungen vor dem Schließen gespeichert werden?</source>
-        <translation>Save changes before quitting?</translation>
+        <translation>Spara ändringarna innan avstängning?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="137"/>
         <source>Soll die Anwendung geschlossen werden?</source>
-        <translation>Quit application?</translation>
+        <translation>Stäng av programmet?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="170"/>
         <source>Änderungen speichern?</source>
-        <translation>Save changes?</translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="171"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation>Should the changes be saved?</translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="191"/>
         <location filename="../mainwindow.cpp" line="198"/>
         <location filename="../mainwindow.cpp" line="203"/>
         <source>Fehler beim Speichern</source>
-        <translation>Error when saving</translation>
+        <translation>Fel under sparandet</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="203"/>
         <location filename="../mainwindow.cpp" line="337"/>
         <location filename="../mainwindow.cpp" line="441"/>
         <source>Unbekannter Fehler.</source>
-        <translation>Unknown error</translation>
+        <translation>Okänt fel</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="297"/>
         <location filename="../mainwindow.cpp" line="613"/>
         <source>Spickzettel</source>
-        <translation>Cheat sheet</translation>
+        <translation>Fusklapp</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="333"/>
         <location filename="../mainwindow.cpp" line="337"/>
         <source>Fehler beim Laden</source>
-        <translation>Error when loading</translation>
+        <translation>Fel under öppnandet</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="436"/>
         <location filename="../mainwindow.cpp" line="441"/>
         <source>Fehler beim Verwerfen</source>
-        <translation>Error when undoing</translation>
+        <translation>Fel under återställandet</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="511"/>
         <source>Eingabefelder entsperren?</source>
-        <translation>Unlock input fields?</translation>
+        <translation>Lås upp inmatningsfält?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="512"/>
         <source>Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden.</source>
-        <translation>Attention! Unlocking fields for entry can lead to inconsistent data and should be used sparingly and with care.</translation>
+        <translation>Obs! Att låsa upp fälten för inmatning kan leda till inkonsistent data och bör göras varsamt.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="599"/>
         <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
-        <translation>Database (*.sqlite);;All files (*.*)</translation>
+        <translation>Databas (*.sqlite);;Alla filer (*.*)</translation>
     </message>
 </context>
 <context>
@@ -1495,18 +1494,18 @@
         <location filename="../helper/obrama.cpp" line="67"/>
         <location filename="../helper/obrama.cpp" line="97"/>
         <source>oBraMa Datenbank</source>
-        <translation>oBraMa Database</translation>
+        <translation>oBraMa Databas</translation>
     </message>
     <message>
         <location filename="../helper/obrama.cpp" line="32"/>
         <location filename="../helper/obrama.cpp" line="97"/>
         <source>Die Tabelle &quot;%1&quot; konnte nicht heruntergeladen werden.</source>
-        <translation>Table &quot;%1&quot; could not be downloaded.</translation>
+        <translation>Tabell &quot;%1&quot; kunde inte laddas ner.</translation>
     </message>
     <message>
         <location filename="../helper/obrama.cpp" line="67"/>
         <source>Die Tabelle &quot;%1&quot; konnte nicht aktualisiert werden.</source>
-        <translation>Table &quot;%1&quot; could not be updated.</translation>
+        <translation>Tabell &quot;%1&quot; kunde inte uppdateras.</translation>
     </message>
 </context>
 <context>
@@ -1514,12 +1513,12 @@
     <message>
         <location filename="../model/proxymodelsudcolored.cpp" line="41"/>
         <source>%1. Woche, reif in %2 Tage</source>
-        <translation>%1. week, ready in %2 days</translation>
+        <translation>%1:e vecka, mogen om %2 dagar</translation>
     </message>
     <message>
         <location filename="../model/proxymodelsudcolored.cpp" line="43"/>
         <source>%1. Woche</source>
-        <translation>%1. week</translation>
+        <translation>%1:e vecka</translation>
     </message>
 </context>
 <context>

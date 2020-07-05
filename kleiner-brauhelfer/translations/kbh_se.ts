@@ -34,7 +34,7 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="14"/>
         <source>Bierspende</source>
-        <translation type="unfinished"></translation>
+        <translation>Öldonation</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
@@ -4624,7 +4624,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1010"/>
         <source>Prozentanteil entspricht</source>
-        <translation>Procentvärdet avser</translation>
+        <translation>Andelen avser</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1019"/>
@@ -6029,35 +6029,35 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.cpp" line="233"/>
         <source>Sud nicht verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen inte förbrukad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="239"/>
         <source>Sud verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen förbrukad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="430"/>
         <source>Neuer Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="464"/>
         <location filename="../tabsudauswahl.cpp" line="473"/>
         <source>Kopie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopia</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="528"/>
         <location filename="../tabsudauswahl.cpp" line="547"/>
         <source>Sud löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort satsen?</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="529"/>
         <location filename="../tabsudauswahl.cpp" line="548"/>
         <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort satsen &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="569"/>
@@ -6065,28 +6065,28 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.cpp" line="617"/>
         <location filename="../tabsudauswahl.cpp" line="622"/>
         <source>Rezept Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="600"/>
         <source>Das Rezept wurde erfolgreich importiert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptimport klar.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="617"/>
         <source>Das Rezept konnte nicht importiert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptimport misslyckades.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="622"/>
         <source>Die Datei konnte nicht geöffnet werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen kunde inte öppnas.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="627"/>
         <location filename="../tabsudauswahl.cpp" line="631"/>
         <source>Fehler beim Importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Importfel</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="667"/>
@@ -6094,28 +6094,28 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.cpp" line="698"/>
         <location filename="../tabsudauswahl.cpp" line="703"/>
         <source>Sud Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="694"/>
         <source>Der Sud wurde erfolgreich exportiert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptexport klar.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="698"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen kunde inte skrivas.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="703"/>
         <source>Der Sud konnte nicht exportiert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptexport misslyckades.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="708"/>
         <location filename="../tabsudauswahl.cpp" line="712"/>
         <source>Fehler beim Exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportfel</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="755"/>
@@ -6131,12 +6131,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="213"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="246"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
 </context>
 <context>
@@ -6144,7 +6144,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.ui" line="35"/>
@@ -6154,7 +6154,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="38"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.ui" line="45"/>
@@ -6164,12 +6164,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="48"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.cpp" line="58"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara PDF som</translation>
     </message>
 </context>
 <context>
@@ -6190,12 +6190,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.ui" line="56"/>
         <source>relativ zur Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>relativt databasens plats</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="66"/>
         <source>Anhang löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort bilagan.</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="89"/>
@@ -6205,7 +6205,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.ui" line="118"/>
         <source>Öffnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="125"/>
@@ -6215,7 +6215,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.cpp" line="91"/>
         <source>Anhang auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj bilaga</translation>
     </message>
 </context>
 <context>
@@ -6233,7 +6233,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgbewertung.cpp" line="71"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vecka</translation>
     </message>
 </context>
 <context>
@@ -6251,7 +6251,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="124"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="131"/>
@@ -6261,7 +6261,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="134"/>
         <source>Zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="147"/>
@@ -6276,7 +6276,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="182"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>I lagret</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="195"/>
@@ -6286,7 +6286,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="208"/>
         <source>Zugabe nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till efter</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="240"/>
@@ -6296,7 +6296,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="257"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Dagar</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="270"/>
@@ -6306,7 +6306,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="280"/>
         <source>Empfohlen</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekommenderad</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="293"/>
@@ -6319,13 +6319,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="100"/>
         <source>Hopfengabe löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort humle.</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="127"/>
         <location filename="../widgets/wdghopfengabe.ui" line="375"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="140"/>
@@ -6335,7 +6335,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="165"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>I lagret</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="178"/>
@@ -6343,7 +6343,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdghopfengabe.ui" line="327"/>
         <location filename="../widgets/wdghopfengabe.ui" line="601"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="185"/>
@@ -6353,12 +6353,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="192"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="205"/>
         <source>IBU</source>
-        <translation type="unfinished"></translation>
+        <translation>IBU</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="218"/>
@@ -6373,17 +6373,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="280"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="287"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Koktid</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="307"/>
         <source>Anteil</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="314"/>
@@ -6393,7 +6393,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="340"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="353"/>
@@ -6403,7 +6403,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="382"/>
         <source>Alpha</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpha</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="395"/>
@@ -6423,27 +6423,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="457"/>
         <source>Vorderwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Första vörten</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="462"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokstart</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="467"/>
         <source>Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokning</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="472"/>
         <source>Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokslut</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="477"/>
         <source>Ausschlagen</source>
-        <translation type="unfinished"></translation>
+        <translation>Överföring till jäskärl</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="491"/>
@@ -6453,7 +6453,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="513"/>
         <source>Ausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbye</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="526"/>
@@ -6476,12 +6476,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="100"/>
         <source>Malzgabe löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort malt.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="118"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="131"/>
@@ -6492,7 +6492,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgmalzgabe.ui" line="156"/>
         <location filename="../widgets/wdgmalzgabe.ui" line="288"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="169"/>
@@ -6502,7 +6502,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="197"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="204"/>
@@ -6517,7 +6517,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="247"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>I lagret</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="260"/>
@@ -6527,7 +6527,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.cpp" line="108"/>
         <source>Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekommenderade maximala andelen (%1%) överskrids.</translation>
     </message>
 </context>
 <context>
@@ -6536,34 +6536,34 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="47"/>
         <location filename="../widgets/wdgrast.cpp" line="85"/>
         <source>Einmaischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäska in</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="52"/>
         <source>Temperaturrast</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperaturrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="57"/>
         <source>Wasserinfusion</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatteninfusion</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="62"/>
         <source>Dekoktion</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekoktion</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="99"/>
         <source>Rast löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort rast.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="133"/>
         <location filename="../widgets/wdgrast.ui" line="570"/>
         <location filename="../widgets/wdgrast.ui" line="889"/>
         <source>Anteil</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="140"/>
@@ -6575,20 +6575,20 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="756"/>
         <location filename="../widgets/wdgrast.ui" line="903"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="147"/>
         <location filename="../widgets/wdgrast.ui" line="459"/>
         <source>Wassermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenmängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="164"/>
         <location filename="../widgets/wdgrast.ui" line="428"/>
         <location filename="../widgets/wdgrast.ui" line="630"/>
         <source>Rasttemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasttemperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="177"/>
@@ -6597,7 +6597,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="695"/>
         <location filename="../widgets/wdgrast.ui" line="862"/>
         <source>Rastdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasttid</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="184"/>
@@ -6607,26 +6607,26 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="773"/>
         <location filename="../widgets/wdgrast.ui" line="882"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="232"/>
         <location filename="../widgets/wdgrast.ui" line="623"/>
         <location filename="../widgets/wdgrast.ui" line="806"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="249"/>
         <location filename="../widgets/wdgrast.ui" line="610"/>
         <source>Wassertemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattentemperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="285"/>
         <location filename="../widgets/wdgrast.ui" line="603"/>
         <source>% des empfohlenen Hauptgusses</source>
-        <translation type="unfinished"></translation>
+        <translation>% av rekommenderad mäskvatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="344"/>
@@ -6641,102 +6641,102 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrast.ui" line="661"/>
         <source>Menge der Teilmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>Delmäskens storlek</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="682"/>
         <source>Zusätzliche Rast</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra rast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="780"/>
         <source>Teilmaischetemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Delmäskens temperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="793"/>
         <source>Absetzdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid för att sjunka ner</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="845"/>
         <source>% der Gesamtmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>% av hela mäsken</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="896"/>
         <source>Maischetemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskens temperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="88"/>
         <source>Gummirast (35°-40°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gummirast (35°-40°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="89"/>
         <source>Weizenrast (45°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fenolrast (45°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="90"/>
         <source>Eiweissrast (57°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Proteinrast (57°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="91"/>
         <source>Maltoserast (60°-65°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Maltosrast (60°-65°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="92"/>
         <source>Kombirast (66°-69°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kombirast (66°-69°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="93"/>
         <source>Verzuckerung (70°-75°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Försockringsrast (70°-75°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="94"/>
         <source>Abmaischen (78°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Avmäskning (78°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="97"/>
         <source>Kochendes Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokande vatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="100"/>
         <source>1/2 Dickmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/2 tjock mäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="101"/>
         <source>1/3 Dickmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/3 tjock mäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="102"/>
         <source>1/3 Dünnmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/3 tunn mäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="103"/>
         <source>1/3 Läutermaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/3 lakmäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="247"/>
         <source>Der erste Schritt sollte &quot;Einmaischen&quot; sein.</source>
-        <translation type="unfinished"></translation>
+        <translation>Första steget bör vara &quot;mäska in&quot;.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="252"/>
         <source>Nur der erste Schritt sollte &quot;Einmaischen&quot; sein.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bara första steget bör vara &quot;mäska in&quot;.</translation>
     </message>
 </context>
 <context>
@@ -6744,7 +6744,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrating.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrating.ui" line="54"/>
@@ -6761,88 +6761,88 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="50"/>
         <source>Kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="55"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="60"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation>mg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="65"/>
         <source>Stk</source>
-        <translation type="unfinished"></translation>
+        <translation>st.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="70"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="75"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="95"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="118"/>
         <source>Malzgabe löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort malt.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="219"/>
         <source>Gesamt</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalt</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="226"/>
         <source>Nachguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Lakvatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="264"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>°dH</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="296"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="303"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="320"/>
         <source>Verdünnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Spädning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="327"/>
         <source>Hauptguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskvatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="401"/>
         <source>Menge für 1°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd för 1°dH</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.cpp" line="69"/>
         <location filename="../widgets/wdgwasseraufbereitung.cpp" line="74"/>
         <source>/l</source>
-        <translation type="unfinished"></translation>
+        <translation>/l</translation>
     </message>
 </context>
 <context>
@@ -6850,7 +6850,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="128"/>
@@ -6860,7 +6860,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="150"/>
         <source>Speichern</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="157"/>
@@ -6870,7 +6870,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="160"/>
         <source>Wiederherstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="167"/>
@@ -6880,27 +6880,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="170"/>
         <source>Editiermodus</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigeringsläge</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="161"/>
         <source>Änderungen speichern?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="162"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="232"/>
         <source>Template wiederherstellen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ mallen?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="233"/>
         <source>Soll das Standardtemplate wiederhergestellt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Äterställ standardmallen?</translation>
     </message>
 </context>
 <context>
@@ -6918,7 +6918,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="121"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="134"/>
@@ -6929,7 +6929,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="162"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="287"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="175"/>
@@ -6941,7 +6941,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="122"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="129"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="235"/>
@@ -6951,7 +6951,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="246"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>I lagret</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="259"/>
@@ -6961,7 +6961,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="314"/>
         <source>Zugabezeitpunkt</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid för tilläggandet</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="321"/>
@@ -6971,22 +6971,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="325"/>
         <source>Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="330"/>
         <source>Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="335"/>
         <source>Maischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="374"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Koktid</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="387"/>
@@ -6996,12 +6996,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="406"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="440"/>
         <source>Zugabe nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till efter</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="447"/>
@@ -7011,7 +7011,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="450"/>
         <source>Zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="463"/>
@@ -7032,7 +7032,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="514"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="527"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Dagar</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="553"/>
@@ -7047,7 +7047,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="569"/>
         <source>Entnehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta ur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="576"/>
@@ -7057,33 +7057,33 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="579"/>
         <source>keine Entnahme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tas inte ur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="586"/>
         <source>Entnahme nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Tas ur efter</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="602"/>
         <source>Kommentar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="136"/>
         <source>mg/l</source>
-        <translation type="unfinished"></translation>
+        <translation>mg/l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="143"/>
         <source>Stk./l</source>
-        <translation type="unfinished"></translation>
+        <translation>st./l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="150"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="157"/>
         <source>ml/l</source>
-        <translation type="unfinished"></translation>
+        <translation>ml/l</translation>
     </message>
 </context>
 </TS>

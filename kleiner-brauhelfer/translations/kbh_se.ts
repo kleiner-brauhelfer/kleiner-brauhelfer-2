@@ -3102,12 +3102,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="39"/>
         <source>Auswahl 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Val 1</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="46"/>
@@ -3117,7 +3117,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="66"/>
         <source>Auswahl 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Val 2</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="73"/>
@@ -3127,7 +3127,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="93"/>
         <source>Auswahl 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Val 3</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="100"/>
@@ -3137,38 +3137,38 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="133"/>
         <source>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden. Es werden nur die bereits abgefüllten Sude angezeigt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vilka saster visas kan stallas in i satsurvalet. Bara flasktappade satser visas.</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="63"/>
         <source>&lt;keine&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;inga&gt;</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>Abgefüllte Biermenge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden flask-/fattappad [l]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <source>Stammwürze [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört [°P]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
         <source>Sudhausausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskutbyte [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
@@ -3177,42 +3177,42 @@ Version installiert: %2</source>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="67"/>
         <source>Effektive Sudhausausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Effektiv mäskutbyte [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>Alkohol [%vol]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt [%vol]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>Scheinbarer Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar extrakthalt [°P]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <source>Scheinbarer Endvergärungsgrad [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar förjäsningsgrad [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>Tatsächlicher Endvergärungsgrad [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Verklig förjäsningsgrad [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>Kosten [%1/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>%1/l</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/l</translation>
     </message>
 </context>
 <context>
@@ -3221,7 +3221,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="42"/>
         <location filename="../tabbraudaten.ui" line="73"/>
         <source>Braudatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Bryggdatum</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="63"/>
@@ -3231,7 +3231,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="66"/>
         <source>Jetzt</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="122"/>
@@ -3242,7 +3242,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="171"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokstart</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="199"/>
@@ -3255,7 +3255,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="821"/>
         <location filename="../tabbraudaten.ui" line="828"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation>cm</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="216"/>
@@ -3273,12 +3273,12 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="2160"/>
         <location filename="../tabbraudaten.cpp" line="48"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="236"/>
         <source>Würzemenge bei Kochbeginn (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd vid kokstart (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="249"/>
@@ -3300,7 +3300,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="335"/>
         <location filename="../tabbraudaten.ui" line="1144"/>
         <source>Zielwürzemenge (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mål för vörtmängden (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="342"/>
@@ -3321,7 +3321,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="416"/>
         <location filename="../tabbraudaten.ui" line="1375"/>
         <source>Zielwürzemenge bei</source>
-        <translation type="unfinished"></translation>
+        <translation>Mål för vörtmängden vid</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="436"/>
@@ -3333,7 +3333,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1426"/>
         <location filename="../tabbraudaten.ui" line="2055"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="476"/>
@@ -3345,18 +3345,18 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1922"/>
         <location filename="../tabbraudaten.ui" line="2016"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="490"/>
         <location filename="../tabbraudaten.ui" line="1331"/>
         <source>Füllhöhe von Oberkante aus gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fyllnadshöjd från överkant</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="535"/>
         <source>Mit weiteren Zutaten &quot;Kochen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>inklusive ingredienserna för koket</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="558"/>
@@ -3370,18 +3370,18 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1557"/>
         <location filename="../tabbraudaten.ui" line="1848"/>
         <source>°Brix</source>
-        <translation type="unfinished"></translation>
+        <translation>°Brix</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="631"/>
         <location filename="../tabbraudaten.ui" line="1064"/>
         <source>Füllhöhe vom Boden aus gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fyllnadshöjd från botten</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="648"/>
         <source>Stammwürze bei Kochbeginn</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG) vid kokstart</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="661"/>
@@ -3398,33 +3398,33 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1509"/>
         <location filename="../tabbraudaten.ui" line="1806"/>
         <source>Zielstammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Målvärde för stamvörten (OG)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="771"/>
         <source>Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokslut</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="780"/>
         <source>Verlust durch Hopfenseihen</source>
-        <translation type="unfinished"></translation>
+        <translation>Förlust från humlefiltrering</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="787"/>
         <source>Würzemenge vor Hopfenseihen (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd innan humlefiltrering (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="801"/>
         <source>Würzemenge nach Hopfenseihen (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd efter humlefiltrering (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="842"/>
         <location filename="../tabbraudaten.ui" line="1452"/>
         <source>Aus Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Från receptet</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="865"/>
@@ -3460,7 +3460,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1028"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1035"/>
@@ -3502,7 +3502,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1324"/>
         <location filename="../tabbraudaten.ui" line="1864"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1285"/>
@@ -3512,13 +3512,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1310"/>
         <source>Stammwürze bei Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG) vid kokslut</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1341"/>
         <location filename="../tabbraudaten.ui" line="1445"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1360"/>
@@ -3538,7 +3538,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1438"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1469"/>
@@ -3559,12 +3559,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1569"/>
         <source>Speisemenge, um gewünschte Karbonisierung zu erreichen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängt (ofermenterad) för att uppnå karboneringen.</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1572"/>
         <source>Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Jästtillsättning</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1581"/>
@@ -3594,12 +3594,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1706"/>
         <source>Abgefüllte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden sprarad ojäst vört</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1713"/>
         <source>Gesamtwürzemenge (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Totala vörtmängden (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1720"/>
@@ -3614,7 +3614,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1767"/>
         <source>Stammwürze beim Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG) vid jästtillsättning</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1897"/>
@@ -3629,12 +3629,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1964"/>
         <source>Benötigte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd ojäst vört som behövs</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1984"/>
         <source>SRE</source>
-        <translation type="unfinished"></translation>
+        <translation>FG</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1991"/>
@@ -3644,7 +3644,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2023"/>
         <source>T</source>
-        <translation type="unfinished"></translation>
+        <translation>T</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2030"/>
@@ -3654,12 +3654,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2064"/>
         <source>Anstellmenge (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd vid jästtillsättning (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2103"/>
         <source>Wassermenge, um auf Zielstammwürze zu verdünnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd vatten för att spä ut till mål-stamvört</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2129"/>
@@ -3669,7 +3669,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2202"/>
         <source>Effektive Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Effektiv mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2221"/>
@@ -3679,12 +3679,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2242"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2251"/>
         <source>Sud für Durchschnittsberechnung ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingorera denna sats när medelvärdet beräknas</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2297"/>
@@ -3694,12 +3694,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2317"/>
         <source>Zusätzliche Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare kostnader</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2331"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalkostnad</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2344"/>
@@ -3714,7 +3714,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2407"/>
         <source>Dieser Sud enthält weitere Zutaten, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna sats ineehåller extra ingedienser som ändrar stamvörten, vilket kan snedvrida medelvärdesbildningen.</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2435"/>
@@ -3724,7 +3724,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2438"/>
         <source>Sud gebraut</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen bryggd</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2445"/>
@@ -3734,7 +3734,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2448"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela satsen</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2472"/>
@@ -3747,7 +3747,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="28"/>
         <source>Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="35"/>
@@ -3757,7 +3757,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="51"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="70"/>
@@ -3767,7 +3767,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="119"/>
         <source>Global</source>
-        <translation type="unfinished"></translation>
+        <translation>Global</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="132"/>
@@ -3777,7 +3777,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="172"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Sats</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="185"/>
@@ -3790,12 +3790,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="27"/>
         <source>Vorlage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mall:</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="40"/>
@@ -3805,7 +3805,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="47"/>
         <source>Öffnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="54"/>
@@ -3815,7 +3815,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="57"/>
         <source>Aktualisieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="96"/>
@@ -3825,7 +3825,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="99"/>
         <source>Editiermodus</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigeringsläge</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="106"/>
@@ -3835,7 +3835,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="109"/>
         <source>Tags ersetzen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt nyckelord</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="132"/>
@@ -3845,23 +3845,23 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="135"/>
         <source>Speichern</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="149"/>
         <source>In dieser Spalte</source>
-        <translation type="unfinished"></translation>
+        <translation>I denna kolumn</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="212"/>
         <location filename="../tabetikette.ui" line="521"/>
         <source>Anzahl Etiketten</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal etiketter</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="218"/>
         <source>Anzahl</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="231"/>
@@ -3871,7 +3871,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="263"/>
         <source>Etikettengröße</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikettstorlek</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="281"/>
@@ -3879,7 +3879,7 @@ Version installiert: %2</source>
         <location filename="../tabetikette.ui" line="403"/>
         <location filename="../tabetikette.ui" line="424"/>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation>mm</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="294"/>
@@ -3894,37 +3894,37 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="332"/>
         <source>Höhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Höjd</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="358"/>
         <source>Breite</source>
-        <translation type="unfinished"></translation>
+        <translation>Bredd</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="365"/>
         <source>Seitenverhältnis beibehalten</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevara sidoförållandet</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="375"/>
         <source>Aus SVG übernehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta från SVG</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="385"/>
         <source>Abstände zwischen Etiketten</source>
-        <translation type="unfinished"></translation>
+        <translation>Avstånd mellan etiketter</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="410"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="417"/>
         <source>Vertikal</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikal</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="431"/>
@@ -3934,7 +3934,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="434"/>
         <source>Trennlinie darstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa skiljelinje</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="450"/>
@@ -3949,32 +3949,32 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="485"/>
         <source>Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyckelord</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="503"/>
         <source>Neu</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="510"/>
         <source>Löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="528"/>
         <source>{{N}}</source>
-        <translation type="unfinished"></translation>
+        <translation>{{N}}</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="535"/>
         <source>{{n}}</source>
-        <translation type="unfinished"></translation>
+        <translation>{{n}}</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="542"/>
         <source>Etikettennummer</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikettnummer</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="554"/>
@@ -3984,7 +3984,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="557"/>
         <source>Alternativer SVG Renderer</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ SVG visare</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="577"/>
@@ -3994,52 +3994,52 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="580"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="205"/>
         <source>Änderungen speichern?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="206"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="255"/>
         <source>SVG auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj SVG</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="255"/>
         <source>SVG (*.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="469"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara PDF som</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="470"/>
         <source>Etikette</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="582"/>
         <source>Etikette vom Rezept entfernen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort etiketterna från receptet?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="583"/>
         <source>Soll die Etikette vom Rezept entfernt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort etiketterna från receptet?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="596"/>
         <source>Neuer Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt nyckelord</translation>
     </message>
 </context>
 <context>
@@ -4052,7 +4052,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="35"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Snabbjäsningsprov</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="102"/>

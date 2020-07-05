@@ -5169,7 +5169,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="342"/>
         <source>Neues Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>New water profile</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="349"/>
@@ -5179,7 +5179,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="352"/>
         <source>Wasserprofil löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete water profile</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="380"/>
@@ -5189,12 +5189,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="406"/>
         <source>Chlorid (0 - 150 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chloride (0 - 150 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="413"/>
         <source>Calcium (50 - 150 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Calcium (50 - 150 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="420"/>
@@ -5209,7 +5209,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="746"/>
         <location filename="../tabrohstoffe.ui" line="769"/>
         <source>mmol/l</source>
-        <translation></translation>
+        <translation>mmol/l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="443"/>
@@ -5229,7 +5229,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="806"/>
         <location filename="../tabrohstoffe.ui" line="890"/>
         <source>mg/l</source>
-        <translation></translation>
+        <translation>mg/l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="516"/>
@@ -5239,7 +5239,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="523"/>
         <source>Restalkalität Korrektur</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual alkalinity correction</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="537"/>
@@ -5254,7 +5254,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="718"/>
         <location filename="../tabrohstoffe.ui" line="792"/>
         <source>°dH</source>
-        <translation></translation>
+        <translation>°dH</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="567"/>
@@ -5264,12 +5264,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="600"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hydrogen carbonate (0 - 500 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="614"/>
         <source>Sulfat (0 - 250 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulfate (0 - 250 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="621"/>
@@ -5294,7 +5294,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="739"/>
         <source>Natrium (0 - 50 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sodium (0 - 50 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="753"/>
@@ -5304,7 +5304,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="820"/>
         <source>Magnesium (0 - 20 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Magnesium (0 - 20 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="827"/>
@@ -5353,12 +5353,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="959"/>
         <source>Neuer Eintrag aus Vorlage</source>
-        <translation type="unfinished"></translation>
+        <translation>New entry from template</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="966"/>
         <source>Neuer Eintrag aus oBraMa</source>
-        <translation type="unfinished"></translation>
+        <translation>Add from oBraMa</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="976"/>
@@ -5368,7 +5368,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="979"/>
         <source>Eintrag kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Copy entry</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="986"/>
@@ -5378,32 +5378,32 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="989"/>
         <source>Eintrag löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete entry</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="29"/>
         <source>aroma</source>
-        <translation type="unfinished"></translation>
+        <translation>aroma</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="30"/>
         <source>bitter</source>
-        <translation type="unfinished"></translation>
+        <translation>bitter</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="31"/>
         <source>universal</source>
-        <translation type="unfinished"></translation>
+        <translation>universal</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="36"/>
         <source>obergärig</source>
-        <translation>top-fermented</translation>
+        <translation>top-fermenting</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="37"/>
         <source>untergärig</source>
-        <translation>bottom-fermented</translation>
+        <translation>bottom-fermenting</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="42"/>
@@ -5443,47 +5443,47 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="52"/>
         <source>Kraut</source>
-        <translation></translation>
+        <translation>Herbs</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="53"/>
         <source>Wasseraufbereitung</source>
-        <translation></translation>
+        <translation>Water adjustment</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="54"/>
         <source>Klärmittel</source>
-        <translation></translation>
+        <translation>Clearing agents</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="58"/>
         <source>kg</source>
-        <translation></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="59"/>
         <source>g</source>
-        <translation></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="60"/>
         <source>mg</source>
-        <translation></translation>
+        <translation>mg</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="61"/>
         <source>Stk.</source>
-        <translation></translation>
+        <translation>pcs.</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="62"/>
         <source>l</source>
-        <translation></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="63"/>
         <source>ml</source>
-        <translation></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="79"/>
@@ -5496,23 +5496,23 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="80"/>
         <source>Menge [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount [kg]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="81"/>
         <location filename="../tabrohstoffe.cpp" line="195"/>
         <source>Farbe [EBC]</source>
-        <translation type="unfinished"></translation>
+        <translation>Color [EBC]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="82"/>
         <source>pH</source>
-        <translation type="unfinished"></translation>
+        <translation>pH</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="83"/>
         <source>Max. Anteil [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. share [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="84"/>
@@ -5525,7 +5525,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="85"/>
         <source>Eingenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Characteristics</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="86"/>
@@ -5533,13 +5533,13 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="159"/>
         <location filename="../tabrohstoffe.cpp" line="198"/>
         <source>Alternativen</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternatives</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="87"/>
         <location filename="../tabrohstoffe.cpp" line="122"/>
         <source>Preis [%1/kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Costs [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="88"/>
@@ -5547,7 +5547,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="161"/>
         <location filename="../tabrohstoffe.cpp" line="200"/>
         <source>Einlagerung</source>
-        <translation>Got on storage</translation>
+        <translation>Got on stock</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="89"/>
@@ -5555,7 +5555,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="162"/>
         <location filename="../tabrohstoffe.cpp" line="201"/>
         <source>Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Best before</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="90"/>
@@ -5568,12 +5568,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="115"/>
         <source>Menge [g]</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount [g]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="116"/>
         <source>Alpha [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpha [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="117"/>
@@ -5607,12 +5607,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="154"/>
         <source>Trocken/Flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>Dry/Liquid</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="155"/>
         <source>Würzemenge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Wort quantity [l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="156"/>
@@ -5632,7 +5632,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="160"/>
         <source>Preis [%1]</source>
-        <translation type="unfinished"></translation>
+        <translation>Price [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="192"/>
@@ -5642,52 +5642,52 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="194"/>
         <source>Ausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Efficiency [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="199"/>
         <source>Preis [%1/[kg/l/Stk]]</source>
-        <translation type="unfinished"></translation>
+        <translation>Price [%1/[kg/l/pc.]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="227"/>
         <source>Wasserprofil</source>
-        <translation></translation>
+        <translation>Water profile</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="228"/>
         <source>Restalkalität [°dH]</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual alkalinity [°dH]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="477"/>
         <source>Kopie</source>
-        <translation type="unfinished"></translation>
+        <translation>Copy</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="513"/>
         <source>Rohstoff wird verwendet</source>
-        <translation type="unfinished"></translation>
+        <translation>Raw material is being used</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="514"/>
         <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">This raw material is being used in a batch not yet brewed. Should it be deleted anyway?</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="638"/>
         <source>Neues Profil</source>
-        <translation type="unfinished"></translation>
+        <translation>New profile</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="656"/>
         <source>Wasserprofil löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete water profile?</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="657"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete water profile &quot;%1&quot;?</translation>
     </message>
 </context>
 <context>
@@ -5721,7 +5721,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="75"/>
         <source>gebraut</source>
-        <translation></translation>
+        <translation>brewed</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="82"/>
@@ -5731,7 +5731,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="85"/>
         <source>abgefüllt</source>
-        <translation></translation>
+        <translation>bottled</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="92"/>
@@ -5756,7 +5756,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="150"/>
         <source>Braudatum zwischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew date between</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="163"/>
@@ -5766,7 +5766,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="176"/>
         <source>und</source>
-        <translation type="unfinished"></translation>
+        <translation>and</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="189"/>
@@ -5796,7 +5796,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="261"/>
         <source>Anzahl Sude:</source>
-        <translation type="unfinished"></translation>
+        <translation>Number of batches:</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="298"/>
@@ -5806,7 +5806,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="301"/>
         <source>Rezept exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Export recipe</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="308"/>
@@ -5816,7 +5816,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>Sud laden</source>
-        <translation>Load brew</translation>
+        <translation>Load batch</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="318"/>
@@ -5826,7 +5826,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="321"/>
         <source>Rezept importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Import recipe</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="328"/>
@@ -5836,7 +5836,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="331"/>
         <source>Neuen Sud anlegen</source>
-        <translation>Create new brew</translation>
+        <translation>Create new batch</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="338"/>
@@ -5847,7 +5847,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="341"/>
         <location filename="../tabsudauswahl.cpp" line="217"/>
         <source>Sud vergessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Forget batch</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="348"/>
@@ -5857,7 +5857,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>Sud kopieren</source>
-        <translation>Copy brew</translation>
+        <translation>Copy batch</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="358"/>
@@ -5867,7 +5867,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>Sud löschen</source>
-        <translation>Delete brew</translation>
+        <translation>Delete batch</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="368"/>
@@ -5877,7 +5877,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="371"/>
         <source>Alle Sude vergessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Forget all batches</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="378"/>
@@ -5888,7 +5888,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="381"/>
         <location filename="../tabsudauswahl.cpp" line="223"/>
         <source>Sud merken</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin batch</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="409"/>
@@ -5898,7 +5898,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="412"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Print preview</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="425"/>
@@ -5908,27 +5908,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="428"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="38"/>
         <source>Sud ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Batch ID</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="39"/>
         <source>Sudname</source>
-        <translation>Brew name</translation>
+        <translation>Batch name</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="40"/>
         <source>Sudnummer</source>
-        <translation>Brew number</translation>
+        <translation>Batch number</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="41"/>
         <source>Kategorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Category</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="42"/>
@@ -5964,68 +5964,68 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.cpp" line="48"/>
         <location filename="../tabsudauswahl.cpp" line="51"/>
         <source>Menge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Quantity [l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="49"/>
         <location filename="../tabsudauswahl.cpp" line="53"/>
         <source>SW [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>OG [°P]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="50"/>
         <source>Bittere [IBU]</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitterness [IBU]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="52"/>
         <source>SHA [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Efficiency [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="54"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual extract [°P]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="55"/>
         <source>Schüttung [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Grist [kg]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="56"/>
         <source>Kosten [%1/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Costs [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="57"/>
         <source>Alk. [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alc. [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="58"/>
         <source>sEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Att. [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="59"/>
         <source>tEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Att. (real) [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="60"/>
         <source>Eff. SHA [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Efficiency (eff.) [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="61"/>
         <source>Verdampfungsrate [l/h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Evaporation rate [l/h]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="62"/>
         <source>Für Durchschnitt Ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignore for average</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="233"/>

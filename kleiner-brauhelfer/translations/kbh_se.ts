@@ -3684,7 +3684,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2251"/>
         <source>Sud für Durchschnittsberechnung ignorieren</source>
-        <translation>Ingorera denna sats när medelvärdet beräknas</translation>
+        <translation>Ignorera denna sats när medelvärdet beräknas</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2297"/>
@@ -5078,7 +5078,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="28"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>alla</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="38"/>
@@ -5088,7 +5088,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="41"/>
         <source>vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>I lagret</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="48"/>
@@ -5098,7 +5098,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="51"/>
         <source>in Gebrauch</source>
-        <translation type="unfinished"></translation>
+        <translation>används</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="58"/>
@@ -5108,12 +5108,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="61"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="88"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="112"/>
@@ -5123,7 +5123,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="140"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Humle</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="164"/>
@@ -5133,7 +5133,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="192"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="216"/>
@@ -5143,7 +5143,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="244"/>
         <source>Weitere Zutaten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare ingredienser</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="268"/>
@@ -5153,7 +5153,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="299"/>
         <source>Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatten</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="318"/>
@@ -5168,7 +5168,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="342"/>
         <source>Neues Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt vattenprofil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="349"/>
@@ -5178,7 +5178,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="352"/>
         <source>Wasserprofil löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort vattenprofil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="380"/>
@@ -5188,12 +5188,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="406"/>
         <source>Chlorid (0 - 150 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chlorid (0 - 150 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="413"/>
         <source>Calcium (50 - 150 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Calcium (50 - 150 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="420"/>
@@ -5208,7 +5208,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="746"/>
         <location filename="../tabrohstoffe.ui" line="769"/>
         <source>mmol/l</source>
-        <translation type="unfinished"></translation>
+        <translation>mmol/l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="443"/>
@@ -5228,17 +5228,17 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="806"/>
         <location filename="../tabrohstoffe.ui" line="890"/>
         <source>mg/l</source>
-        <translation type="unfinished"></translation>
+        <translation>mg/l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="516"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="523"/>
         <source>Restalkalität Korrektur</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassning av restalkalinitet</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="537"/>
@@ -5253,7 +5253,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="718"/>
         <location filename="../tabrohstoffe.ui" line="792"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>°dH</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="567"/>
@@ -5263,12 +5263,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="600"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hydrogencarbonat (0 - 500 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="614"/>
         <source>Sulfat (0 - 250 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulfat (0 - 250 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="621"/>
@@ -5293,7 +5293,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="739"/>
         <source>Natrium (0 - 50 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Natrium (0 - 50 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="753"/>
@@ -5303,7 +5303,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="820"/>
         <source>Magnesium (0 - 20 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Magnesium (0 - 20 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="827"/>
@@ -5342,7 +5342,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="383"/>
         <location filename="../tabrohstoffe.cpp" line="386"/>
         <source>Neuer Eintrag</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="956"/>
@@ -5352,12 +5352,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="959"/>
         <source>Neuer Eintrag aus Vorlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till från mall</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="966"/>
         <source>Neuer Eintrag aus oBraMa</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till från oBraMa</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="976"/>
@@ -5367,7 +5367,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="979"/>
         <source>Eintrag kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="986"/>
@@ -5377,112 +5377,112 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="989"/>
         <source>Eintrag löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="29"/>
         <source>aroma</source>
-        <translation type="unfinished"></translation>
+        <translation>aroma</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="30"/>
         <source>bitter</source>
-        <translation type="unfinished"></translation>
+        <translation>beskning</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="31"/>
         <source>universal</source>
-        <translation type="unfinished"></translation>
+        <translation>universal</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="36"/>
         <source>obergärig</source>
-        <translation type="unfinished"></translation>
+        <translation>överjäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="37"/>
         <source>untergärig</source>
-        <translation type="unfinished"></translation>
+        <translation>underjäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="42"/>
         <source>trocken</source>
-        <translation type="unfinished"></translation>
+        <translation>torr</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="43"/>
         <source>flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>flytande</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="47"/>
         <source>Honig</source>
-        <translation type="unfinished"></translation>
+        <translation>Honung</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="48"/>
         <source>Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Socker</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="49"/>
         <source>Gewürz</source>
-        <translation type="unfinished"></translation>
+        <translation>Krydda</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="50"/>
         <source>Frucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Frukt</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="51"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="52"/>
         <source>Kraut</source>
-        <translation type="unfinished"></translation>
+        <translation>Örter</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="53"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenanpassning</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="54"/>
         <source>Klärmittel</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarningsmedel</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="58"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="59"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="60"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation>mg</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="61"/>
         <source>Stk.</source>
-        <translation type="unfinished"></translation>
+        <translation>st.</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="62"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="63"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="79"/>
@@ -5490,28 +5490,28 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="149"/>
         <location filename="../tabrohstoffe.cpp" line="190"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="80"/>
         <source>Menge [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd [kg]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="81"/>
         <location filename="../tabrohstoffe.cpp" line="195"/>
         <source>Farbe [EBC]</source>
-        <translation type="unfinished"></translation>
+        <translation>Färg [EBC]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="82"/>
         <source>pH</source>
-        <translation type="unfinished"></translation>
+        <translation>pH</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="83"/>
         <source>Max. Anteil [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. andel [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="84"/>
@@ -5519,12 +5519,12 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="151"/>
         <location filename="../tabrohstoffe.cpp" line="196"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="85"/>
         <source>Eingenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="86"/>
@@ -5532,13 +5532,13 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="159"/>
         <location filename="../tabrohstoffe.cpp" line="198"/>
         <source>Alternativen</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="87"/>
         <location filename="../tabrohstoffe.cpp" line="122"/>
         <source>Preis [%1/kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="88"/>
@@ -5546,7 +5546,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="161"/>
         <location filename="../tabrohstoffe.cpp" line="200"/>
         <source>Einlagerung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kom in i lagret</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="89"/>
@@ -5554,7 +5554,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="162"/>
         <location filename="../tabrohstoffe.cpp" line="201"/>
         <source>Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Bäst före</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="90"/>
@@ -5562,131 +5562,131 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="163"/>
         <location filename="../tabrohstoffe.cpp" line="202"/>
         <source>Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Link</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="115"/>
         <source>Menge [g]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd [g]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="116"/>
         <source>Alpha [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpha [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="117"/>
         <source>Pellets</source>
-        <translation type="unfinished"></translation>
+        <translation>Pellets</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="119"/>
         <location filename="../tabrohstoffe.cpp" line="152"/>
         <location filename="../tabrohstoffe.cpp" line="197"/>
         <source>Eigenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="120"/>
         <location filename="../tabrohstoffe.cpp" line="193"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="150"/>
         <location filename="../tabrohstoffe.cpp" line="191"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="153"/>
         <source>OG/UG</source>
-        <translation type="unfinished"></translation>
+        <translation>Över/underjäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="154"/>
         <source>Trocken/Flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>Torr/Flytande</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="155"/>
         <source>Würzemenge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd [l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="156"/>
         <source>Sedimentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Sedimentering</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="157"/>
         <source>Vergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="158"/>
         <source>Temperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="160"/>
         <source>Preis [%1]</source>
-        <translation type="unfinished"></translation>
+        <translation>Pris [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="192"/>
         <source>Einheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhet</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="194"/>
         <source>Ausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbye [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="199"/>
         <source>Preis [%1/[kg/l/Stk]]</source>
-        <translation type="unfinished"></translation>
+        <translation>Pris [%1/[kg/l/st.]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="227"/>
         <source>Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenprofil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="228"/>
         <source>Restalkalität [°dH]</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet [°dH]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="477"/>
         <source>Kopie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopia</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="513"/>
         <source>Rohstoff wird verwendet</source>
-        <translation type="unfinished"></translation>
+        <translation>Råvara används</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="514"/>
         <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna råvara används i en stas som inte är bryggd ännu. Ska den tas bort ändå?</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="638"/>
         <source>Neues Profil</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt profil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="656"/>
         <source>Wasserprofil löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort vattenprofil?</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="657"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort vattenprofilen &quot;%1&quot;?</translation>
     </message>
 </context>
 <context>
@@ -5700,7 +5700,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="35"/>
         <location filename="../tabsudauswahl.ui" line="205"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>alla</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="62"/>
@@ -5710,7 +5710,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="65"/>
         <source>Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="72"/>
@@ -5720,7 +5720,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="75"/>
         <source>gebraut</source>
-        <translation type="unfinished"></translation>
+        <translation>bryggt</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="82"/>
@@ -5730,7 +5730,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="85"/>
         <source>abgefüllt</source>
-        <translation type="unfinished"></translation>
+        <translation>flasktappat</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="92"/>
@@ -5740,7 +5740,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="95"/>
         <source>verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>förbrukat</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="123"/>
@@ -5750,12 +5750,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="126"/>
         <source>Merkliste</source>
-        <translation type="unfinished"></translation>
+        <translation>Märklista</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="150"/>
         <source>Braudatum zwischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Bryggdatum mellan</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="163"/>
@@ -5765,7 +5765,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="176"/>
         <source>und</source>
-        <translation type="unfinished"></translation>
+        <translation>och</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="189"/>
@@ -5785,7 +5785,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="222"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="237"/>
@@ -5795,7 +5795,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="261"/>
         <source>Anzahl Sude:</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal satser:</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="298"/>
@@ -5805,7 +5805,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="301"/>
         <source>Rezept exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="308"/>
@@ -5815,7 +5815,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>Sud laden</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs in sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="318"/>
@@ -5825,7 +5825,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="321"/>
         <source>Rezept importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="328"/>
@@ -5835,7 +5835,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="331"/>
         <source>Neuen Sud anlegen</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa ny sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="338"/>
@@ -5846,7 +5846,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="341"/>
         <location filename="../tabsudauswahl.cpp" line="217"/>
         <source>Sud vergessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Glömm satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="348"/>
@@ -5856,7 +5856,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>Sud kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="358"/>
@@ -5866,7 +5866,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>Sud löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="368"/>
@@ -5876,7 +5876,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="371"/>
         <source>Alle Sude vergessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Glömm alla satser</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="378"/>
@@ -5887,7 +5887,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="381"/>
         <location filename="../tabsudauswahl.cpp" line="223"/>
         <source>Sud merken</source>
-        <translation type="unfinished"></translation>
+        <translation>Märk satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="409"/>
@@ -5897,7 +5897,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="412"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="425"/>
@@ -5907,124 +5907,124 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="428"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="38"/>
         <source>Sud ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Sats-ID</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="39"/>
         <source>Sudname</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsnamn</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="40"/>
         <source>Sudnummer</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsnummer</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="41"/>
         <source>Kategorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategori</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="42"/>
         <source>Braudatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Bryggdatum</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="43"/>
         <source>Abfülldatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum för flasktappning</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="44"/>
         <source>Erstellt</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="45"/>
         <source>Gespeichert</source>
-        <translation type="unfinished"></translation>
+        <translation>Sparad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="46"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vecka</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="47"/>
         <source>Bewertung</source>
-        <translation type="unfinished"></translation>
+        <translation>Betyg</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="48"/>
         <location filename="../tabsudauswahl.cpp" line="51"/>
         <source>Menge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Storlek [l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="49"/>
         <location filename="../tabsudauswahl.cpp" line="53"/>
         <source>SW [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>OG [°P]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="50"/>
         <source>Bittere [IBU]</source>
-        <translation type="unfinished"></translation>
+        <translation>Beska [IBU]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="52"/>
         <source>SHA [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="54"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Resterande extrakthalt [°P]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="55"/>
         <source>Schüttung [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt o dyl [kg]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="56"/>
         <source>Kosten [%1/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="57"/>
         <source>Alk. [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alk. [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="58"/>
         <source>sEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="59"/>
         <source>tEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. (verkl.) [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="60"/>
         <source>Eff. SHA [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte (eff.) [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="61"/>
         <source>Verdampfungsrate [l/h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet [l/h]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="62"/>
         <source>Für Durchschnitt Ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorera för medelvärdet</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="233"/>

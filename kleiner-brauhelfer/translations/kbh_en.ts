@@ -1775,7 +1775,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="330"/>
         <source>Restextrakt Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual extract green beer</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="337"/>
@@ -1787,7 +1787,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="450"/>
         <location filename="../tababfuellen.ui" line="596"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="358"/>
@@ -1796,7 +1796,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="609"/>
         <location filename="../tababfuellen.ui" line="663"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="365"/>
@@ -1806,12 +1806,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="387"/>
         <source>Alkoholgehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>ABV</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="394"/>
         <source>Grünschlauchzeitpunkt</source>
-        <translation type="unfinished"></translation>
+        <translation>Green bottling time</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="401"/>
@@ -1827,7 +1827,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="460"/>
         <source>Restextrakt der Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual extract of fast fermentation sample</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="479"/>
@@ -1838,7 +1838,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="496"/>
         <location filename="../tababfuellen.ui" line="582"/>
         <source>%vol</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="516"/>
@@ -1858,7 +1858,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="616"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Original gravity</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="680"/>
@@ -1869,7 +1869,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="683"/>
         <location filename="../tababfuellen.ui" line="692"/>
         <source>Spundungsdruck</source>
-        <translation type="unfinished"></translation>
+        <translation>Bung pressure</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="712"/>
@@ -1879,7 +1879,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="740"/>
         <source>bar</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="753"/>
@@ -1889,18 +1889,18 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="794"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="801"/>
         <source>Temperatur Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature green beer</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="840"/>
         <location filename="../tababfuellen.ui" line="899"/>
         <source>Jungbiermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount green beer</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="849"/>
@@ -1916,12 +1916,12 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1460"/>
         <location filename="../tababfuellen.cpp" line="37"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="882"/>
         <source>Spunden</source>
-        <translation type="unfinished"></translation>
+        <translation>No sugar addition</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="889"/>
@@ -1952,7 +1952,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1052"/>
         <location filename="../tababfuellen.ui" line="1264"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1059"/>
@@ -1963,7 +1963,7 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="1078"/>
         <location filename="../tababfuellen.ui" line="1221"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1085"/>
@@ -2068,7 +2068,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1496"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1506"/>
@@ -2078,7 +2078,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1509"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Miscellaneous</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1524"/>
@@ -2088,12 +2088,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1562"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1569"/>
         <source>Zusätzliche Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1641"/>
@@ -2108,7 +2108,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1684"/>
         <source>Sud abgefüllt</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew bottled</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1691"/>
@@ -2118,7 +2118,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1694"/>
         <source>Sud verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Beer consumed</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1701"/>
@@ -2128,7 +2128,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="1704"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Split Brew</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="276"/>
@@ -2196,7 +2196,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="104"/>
         <source>Geräte</source>
-        <translation type="unfinished"></translation>
+        <translation>Gear</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="111"/>
@@ -2212,7 +2212,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="135"/>
         <location filename="../tabausruestung.cpp" line="259"/>
         <source>Neues Gerät</source>
-        <translation type="unfinished"></translation>
+        <translation>New gear</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="142"/>
@@ -2228,7 +2228,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="171"/>
         <location filename="../tabausruestung.ui" line="467"/>
         <source>Sude</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="181"/>
@@ -2290,13 +2290,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="418"/>
         <source>Ausbeute für die Schüttungsberechnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Efficiency for grist calculations</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="425"/>
         <location filename="../tabausruestung.ui" line="438"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="451"/>
@@ -2321,7 +2321,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="549"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Miscellaneous</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="564"/>
@@ -2336,7 +2336,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1134"/>
         <location filename="../tabausruestung.ui" line="1172"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="599"/>
@@ -2361,12 +2361,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="661"/>
         <source>Korrektur der Nachgussmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Correction of sparging water amount</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="668"/>
         <source>EBC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="678"/>
@@ -2381,7 +2381,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="723"/>
         <source>Maischekessel</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash kettle</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="745"/>
@@ -2392,7 +2392,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="770"/>
         <location filename="../tabausruestung.ui" line="1075"/>
         <source>Durchmesser</source>
-        <translation type="unfinished"></translation>
+        <translation>Diameter</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="777"/>
@@ -2402,7 +2402,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1029"/>
         <location filename="../tabausruestung.ui" line="1127"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="790"/>
@@ -2413,13 +2413,13 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="815"/>
         <location filename="../tabausruestung.ui" line="1068"/>
         <source>Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="822"/>
         <location filename="../tabausruestung.ui" line="1036"/>
         <source>Nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Useable volume</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="829"/>
@@ -2430,7 +2430,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="868"/>
         <location filename="../tabausruestung.ui" line="1022"/>
         <source>Höhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Height</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="895"/>
@@ -2451,7 +2451,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="975"/>
         <source>Sudpfanne</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew kettle</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="997"/>
@@ -2481,52 +2481,52 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="1221"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Remarks</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="22"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="23"/>
         <source>Grainfather G30</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="24"/>
         <source>Grainfather G70</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="25"/>
         <source>Braumeister 10L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="26"/>
         <source>Braumeister 20L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="27"/>
         <source>Braumeister 50L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="28"/>
         <source>Braumeister 200L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="29"/>
         <source>Braumeister 500L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="30"/>
         <source>Braumeister 1000L</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="31"/>
@@ -2536,12 +2536,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.cpp" line="51"/>
         <source>Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Brewing equipment</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="52"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="53"/>
@@ -2561,7 +2561,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.cpp" line="222"/>
         <source>Neue Brauanlage</source>
-        <translation type="unfinished"></translation>
+        <translation>add Brewhouse</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="242"/>
@@ -2589,7 +2589,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="82"/>
@@ -2604,7 +2604,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="110"/>
         <source>Bewertungsdatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Evaluation date</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="123"/>
@@ -2619,12 +2619,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="148"/>
         <source>Heute</source>
-        <translation type="unfinished"></translation>
+        <translation>Today</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="155"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Week</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="196"/>
@@ -2639,27 +2639,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="218"/>
         <source>Farbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="227"/>
         <source>hellgelb, lichthell</source>
-        <translation type="unfinished"></translation>
+        <translation>bright</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="234"/>
         <source>gelb</source>
-        <translation type="unfinished"></translation>
+        <translation>pale</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="241"/>
         <source>golden</source>
-        <translation type="unfinished"></translation>
+        <translation>golden</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="248"/>
         <source>bernstein</source>
-        <translation type="unfinished"></translation>
+        <translation>amber</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="255"/>
@@ -2669,7 +2669,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="262"/>
         <source>braun bis tiefbraun</source>
-        <translation type="unfinished"></translation>
+        <translation>brown to dark brown</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="269"/>
@@ -2679,27 +2679,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="292"/>
         <source>Klarheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Clearness</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="298"/>
         <source>satt, intensiv</source>
-        <translation type="unfinished"></translation>
+        <translation>saturated, intense</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="305"/>
         <source>glänzend</source>
-        <translation type="unfinished"></translation>
+        <translation>bright</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="312"/>
         <source>matt, blass</source>
-        <translation type="unfinished"></translation>
+        <translation>pale</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="319"/>
         <source>gräulich, fahl</source>
-        <translation type="unfinished"></translation>
+        <translation>greyish, wan</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="350"/>
@@ -2709,62 +2709,62 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="358"/>
         <source>Schaum</source>
-        <translation type="unfinished"></translation>
+        <translation>Foam</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="380"/>
         <source>feinporig, fest</source>
-        <translation type="unfinished"></translation>
+        <translation>fine, tight</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="387"/>
         <source>grobporig, schwach</source>
-        <translation type="unfinished"></translation>
+        <translation>coarse, weak</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="403"/>
         <source>gut haftend am Glas</source>
-        <translation type="unfinished"></translation>
+        <translation>well adhering to glass</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="410"/>
         <source>schlecht haftend</source>
-        <translation type="unfinished"></translation>
+        <translation>poor adherence</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="430"/>
         <source>gute Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>good stability</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="437"/>
         <source>mässige Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>mediocre stability</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="444"/>
         <source>keine Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>poor stability</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="464"/>
         <source>geringes Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>small volume</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="471"/>
         <source>kräftiges Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>large volume</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="478"/>
         <source>sehr voluminös, mächtig</source>
-        <translation type="unfinished"></translation>
+        <translation>voluminous</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="485"/>
         <source>überschäumend</source>
-        <translation type="unfinished"></translation>
+        <translation>exuberant</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="505"/>
@@ -2774,73 +2774,73 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="513"/>
         <source>Geruch</source>
-        <translation type="unfinished"></translation>
+        <translation>Smell</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="524"/>
         <source>rein, abgerundet</source>
-        <translation type="unfinished"></translation>
+        <translation>clear, harmonic</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="531"/>
         <source>wohlriechend</source>
-        <translation type="unfinished"></translation>
+        <translation>well smelling</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="538"/>
         <source>unangenehm, unausgewogen</source>
-        <translation type="unfinished"></translation>
+        <translation>unround, unharmonic</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="545"/>
         <source>frisch</source>
-        <translation type="unfinished"></translation>
+        <translation>fresh</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="552"/>
         <source>Geruchsfehler</source>
-        <translation type="unfinished"></translation>
+        <translation>wrong, faulty</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="559"/>
         <location filename="../tabbewertung.ui" line="649"/>
         <source>säuerlich</source>
-        <translation type="unfinished"></translation>
+        <translation>sour</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="566"/>
         <location filename="../tabbewertung.ui" line="656"/>
         <source>gewürzig</source>
-        <translation type="unfinished"></translation>
+        <translation>spicy</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="573"/>
         <location filename="../tabbewertung.ui" line="705"/>
         <source>fruchtig</source>
-        <translation type="unfinished"></translation>
+        <translation>fruity</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="580"/>
         <location filename="../tabbewertung.ui" line="670"/>
         <source>hopfenaromatisch, hopfig</source>
-        <translation type="unfinished"></translation>
+        <translation>hoppy</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="587"/>
         <location filename="../tabbewertung.ui" line="684"/>
         <source>malzaromatisch, malzig</source>
-        <translation type="unfinished"></translation>
+        <translation>malty</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="594"/>
         <source>süsslich, nach Würze</source>
-        <translation type="unfinished"></translation>
+        <translation>sweety</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="601"/>
         <location filename="../tabbewertung.ui" line="712"/>
         <source>hefig</source>
-        <translation type="unfinished"></translation>
+        <translation>yeasty</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="616"/>
@@ -2850,42 +2850,42 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="624"/>
         <source>Geschmack</source>
-        <translation type="unfinished"></translation>
+        <translation>Taste</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="635"/>
         <source>süsslich, klebrig</source>
-        <translation type="unfinished"></translation>
+        <translation>sweety, sticky</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="642"/>
         <source>ausgewogen, rund</source>
-        <translation type="unfinished"></translation>
+        <translation>round, balanced</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="663"/>
         <source>gehaltvoll</source>
-        <translation type="unfinished"></translation>
+        <translation>rich</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="677"/>
         <source>unausgewogen, kantig</source>
-        <translation type="unfinished"></translation>
+        <translation>unbalanced, edgy</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="691"/>
         <source>rein</source>
-        <translation type="unfinished"></translation>
+        <translation>clear</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="698"/>
         <source>unreif, unrein</source>
-        <translation type="unfinished"></translation>
+        <translation>unclean, not yet ready</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="719"/>
         <source>Geschmacksfehler</source>
-        <translation type="unfinished"></translation>
+        <translation>wrong/faulty</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="734"/>
@@ -2895,7 +2895,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="742"/>
         <source>Antrunk</source>
-        <translation type="unfinished"></translation>
+        <translation>First/Initial Impression</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="751"/>
@@ -2905,42 +2905,42 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="757"/>
         <source>prickelnd</source>
-        <translation type="unfinished"></translation>
+        <translation>sparkling</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="764"/>
         <source>rezent, fein perlend</source>
-        <translation type="unfinished"></translation>
+        <translation>mildly sparkling</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="771"/>
         <source>angenehm rezent</source>
-        <translation type="unfinished"></translation>
+        <translation>balanced, pleasant</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="778"/>
         <source>gut eingebunden</source>
-        <translation type="unfinished"></translation>
+        <translation>well incorporated</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="785"/>
         <source>stark prickelnd, aufdringlich</source>
-        <translation type="unfinished"></translation>
+        <translation>over-carbonated</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="792"/>
         <source>wenig rezent</source>
-        <translation type="unfinished"></translation>
+        <translation>under-carbonated</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="799"/>
         <source>schal</source>
-        <translation type="unfinished"></translation>
+        <translation>flat</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="806"/>
         <source>sehr schal</source>
-        <translation type="unfinished"></translation>
+        <translation>very flat</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="822"/>
@@ -2950,37 +2950,37 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="830"/>
         <source>Haupttrunk</source>
-        <translation type="unfinished"></translation>
+        <translation>Palate/Mouthfeel</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="839"/>
         <source>Vollmundigkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Body</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="848"/>
         <source>wässrig, leer, dünn</source>
-        <translation type="unfinished"></translation>
+        <translation>watery</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="855"/>
         <source>etwas leer</source>
-        <translation type="unfinished"></translation>
+        <translation>somewhat thin</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="862"/>
         <source>schlank</source>
-        <translation type="unfinished"></translation>
+        <translation>light</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="869"/>
         <source>vollmundig</source>
-        <translation type="unfinished"></translation>
+        <translation>full-bodied</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="876"/>
         <source>mastig, breit</source>
-        <translation type="unfinished"></translation>
+        <translation>full-bodied</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="892"/>
@@ -2990,22 +2990,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="900"/>
         <source>Nachtrunk</source>
-        <translation type="unfinished"></translation>
+        <translation>Finish</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="909"/>
         <source>Bittere, Hopfenaroma</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitterness / Hop aroma</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="915"/>
         <source>nachhängend</source>
-        <translation type="unfinished"></translation>
+        <translation>long finish</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="922"/>
         <source>sehr herb, kräftig betont</source>
-        <translation type="unfinished"></translation>
+        <translation>very bitter, strongly emphasized</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="929"/>
@@ -3015,32 +3015,32 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="936"/>
         <source>wenig herb, unterentwickelt</source>
-        <translation type="unfinished"></translation>
+        <translation>little bitterness, underdeveloped</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="943"/>
         <source>stark nachhängend</source>
-        <translation type="unfinished"></translation>
+        <translation>very long finish, lasting</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="950"/>
         <source>angenehm, ausgewogen</source>
-        <translation type="unfinished"></translation>
+        <translation>balanced, round</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="957"/>
         <source>unangenehm</source>
-        <translation type="unfinished"></translation>
+        <translation>unpleasent, unround</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="964"/>
         <source>nicht anhängend</source>
-        <translation type="unfinished"></translation>
+        <translation>short finish</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="971"/>
         <source>sehr fein</source>
-        <translation type="unfinished"></translation>
+        <translation>very fine</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="987"/>
@@ -3050,47 +3050,47 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="995"/>
         <source>Gesamteindruck</source>
-        <translation type="unfinished"></translation>
+        <translation>Overall impression</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1007"/>
         <source>überraschend, ungewöhnlich</source>
-        <translation type="unfinished"></translation>
+        <translation>surprising, unusual</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1014"/>
         <source>unauffällig, gewöhnlich</source>
-        <translation type="unfinished"></translation>
+        <translation>nothing exciting</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1021"/>
         <source>einmal ist genug, langweilig</source>
-        <translation type="unfinished"></translation>
+        <translation>once is enough, boring</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1028"/>
         <source>kunstvoll, kreativ, mutig</source>
-        <translation type="unfinished"></translation>
+        <translation>creative</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1035"/>
         <source>nicht trinkbar, problematisch</source>
-        <translation type="unfinished"></translation>
+        <translation>problematic, unpleasant</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1042"/>
         <source>gutes, typisches Bier</source>
-        <translation type="unfinished"></translation>
+        <translation>good and typical for that style</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1049"/>
         <source>interessant</source>
-        <translation type="unfinished"></translation>
+        <translation>interesting</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1056"/>
         <source>toll, weiter trinken, macht Lust auf mehr</source>
-        <translation type="unfinished"></translation>
+        <translation>great, continue drinking, you definitively want more of that</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1072"/>
@@ -3103,7 +3103,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="39"/>
@@ -3153,7 +3153,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
@@ -3164,7 +3164,7 @@ Version installiert: %2</source>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
@@ -3178,7 +3178,7 @@ Version installiert: %2</source>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="67"/>
@@ -3222,7 +3222,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="42"/>
         <location filename="../tabbraudaten.ui" line="73"/>
         <source>Braudatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew date</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="63"/>
@@ -3243,7 +3243,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="171"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished"></translation>
+        <translation>Begin of boil</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="199"/>
@@ -3256,7 +3256,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="821"/>
         <location filename="../tabbraudaten.ui" line="828"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="216"/>
@@ -3274,7 +3274,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="2160"/>
         <location filename="../tabbraudaten.cpp" line="48"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="236"/>
@@ -3334,7 +3334,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1426"/>
         <location filename="../tabbraudaten.ui" line="2055"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="476"/>
@@ -3346,13 +3346,13 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1922"/>
         <location filename="../tabbraudaten.ui" line="2016"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="490"/>
         <location filename="../tabbraudaten.ui" line="1331"/>
         <source>Füllhöhe von Oberkante aus gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fill level measured from top</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="535"/>
@@ -3371,13 +3371,13 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1557"/>
         <location filename="../tabbraudaten.ui" line="1848"/>
         <source>°Brix</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="631"/>
         <location filename="../tabbraudaten.ui" line="1064"/>
         <source>Füllhöhe vom Boden aus gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fill level measured from bottom</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="648"/>
@@ -3399,12 +3399,12 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1509"/>
         <location filename="../tabbraudaten.ui" line="1806"/>
         <source>Zielstammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Target original gravity</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="771"/>
         <source>Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>End of boil</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="780"/>
@@ -3503,7 +3503,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="1324"/>
         <location filename="../tabbraudaten.ui" line="1864"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1285"/>
@@ -3539,7 +3539,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1438"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash efficiency</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1469"/>
@@ -3565,7 +3565,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1572"/>
         <source>Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pitch</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1581"/>
@@ -3595,7 +3595,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1706"/>
         <source>Abgefüllte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Available unfermented wort</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1713"/>
@@ -3615,7 +3615,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1767"/>
         <source>Stammwürze beim Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount of wort when pitching yeast</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1897"/>
@@ -3635,7 +3635,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="1984"/>
         <source>SRE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1991"/>
@@ -3670,7 +3670,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2202"/>
         <source>Effektive Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Actual mash efficiency</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2221"/>
@@ -3680,7 +3680,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2242"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Miscellaneous</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2251"/>
@@ -3695,12 +3695,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2317"/>
         <source>Zusätzliche Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2331"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2344"/>
@@ -3725,7 +3725,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2438"/>
         <source>Sud gebraut</source>
-        <translation type="unfinished"></translation>
+        <translation>Brewed</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2445"/>
@@ -3735,7 +3735,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2448"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Split Brew</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2472"/>
@@ -3748,7 +3748,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="28"/>
         <source>Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>Database</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="35"/>
@@ -3778,7 +3778,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="172"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="185"/>
@@ -3791,7 +3791,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="27"/>
@@ -3846,7 +3846,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="135"/>
         <source>Speichern</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="149"/>
@@ -3895,7 +3895,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="332"/>
         <source>Höhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Height</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="358"/>
@@ -3960,7 +3960,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="510"/>
         <source>Löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="528"/>
@@ -4000,12 +4000,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.cpp" line="205"/>
         <source>Änderungen speichern?</source>
-        <translation type="unfinished"></translation>
+        <translation>Save changes?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="206"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Should the changes be saved?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="255"/>
@@ -4020,7 +4020,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.cpp" line="469"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Save PDF as</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="470"/>
@@ -4073,7 +4073,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="168"/>
         <source>Hauptgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermentation</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="235"/>
@@ -4089,7 +4089,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.ui" line="304"/>
         <location filename="../tabgaerverlauf.ui" line="353"/>
         <source>Zutat:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredient:</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="311"/>
@@ -4104,7 +4104,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="321"/>
         <source>zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>add</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="360"/>
@@ -4119,7 +4119,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="370"/>
         <source>entnehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>remove</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="396"/>
@@ -4129,7 +4129,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="399"/>
         <source>Nachgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermentation Priming</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="466"/>
@@ -4151,7 +4151,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="25"/>
         <location filename="../tabgaerverlauf.cpp" line="35"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="27"/>
@@ -4163,7 +4163,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="28"/>
         <location filename="../tabgaerverlauf.cpp" line="38"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="30"/>
@@ -4176,12 +4176,12 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="41"/>
         <location filename="../tabgaerverlauf.cpp" line="51"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="40"/>
         <source>Temperatur °C</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature °C</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="44"/>
@@ -4191,7 +4191,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="45"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="47"/>
@@ -4202,14 +4202,14 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="48"/>
         <source>bar</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="57"/>
         <location filename="../tabgaerverlauf.cpp" line="83"/>
         <location filename="../tabgaerverlauf.cpp" line="109"/>
         <source>Datum</source>
-        <translation type="unfinished"></translation>
+        <translation>Date</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="58"/>
@@ -4247,7 +4247,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="89"/>
         <location filename="../tabgaerverlauf.cpp" line="113"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Remarks</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="112"/>
@@ -4260,7 +4260,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="45"/>
         <source>Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Recipe</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="57"/>
@@ -4290,7 +4290,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="113"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Original gravity</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="127"/>
@@ -4301,24 +4301,24 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="140"/>
         <location filename="../tabrezept.ui" line="171"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="147"/>
         <location filename="../tabrezept.ui" line="2678"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash efficiency</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="157"/>
         <location filename="../tabrezept.ui" line="1985"/>
         <source>Bittere</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitterness</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="164"/>
         <source>Sudname</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew name</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="178"/>
@@ -4328,12 +4328,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="197"/>
         <source>Vergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermentation</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="204"/>
         <source>CO2 Gehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>CO2 Level</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="211"/>
@@ -4341,7 +4341,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="520"/>
         <location filename="../tabrezept.ui" line="2691"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="218"/>
@@ -4377,7 +4377,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="349"/>
         <source>Wochen</source>
-        <translation type="unfinished"></translation>
+        <translation>weeks</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="363"/>
@@ -4388,12 +4388,12 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="370"/>
         <location filename="../tabrezept.ui" line="1002"/>
         <source>IBU</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="377"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Boil time</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="384"/>
@@ -4403,13 +4403,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="406"/>
         <source>Reifezeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Aging time</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="413"/>
         <location filename="../tabrezept.ui" line="2610"/>
         <source>Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Brewing equipment</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="420"/>
@@ -4447,7 +4447,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2961"/>
         <location filename="../tabrezept.cpp" line="67"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="477"/>
@@ -4457,7 +4457,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="500"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="507"/>
@@ -4482,7 +4482,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="628"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="635"/>
@@ -4492,7 +4492,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2305"/>
         <location filename="../tabrezept.ui" line="2388"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="642"/>
@@ -4518,7 +4518,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="681"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Remarks</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="690"/>
@@ -4543,7 +4543,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="728"/>
         <source>Neuer Eintrag</source>
-        <translation type="unfinished"></translation>
+        <translation>Add entry</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="735"/>
@@ -4563,7 +4563,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="757"/>
         <source>Anhänge</source>
-        <translation type="unfinished"></translation>
+        <translation>Attachments</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="842"/>
@@ -4573,14 +4573,14 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="845"/>
         <source>Anhang hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Add attachment</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="874"/>
         <location filename="../tabrezept.ui" line="1670"/>
         <location filename="../tabrezept.ui" line="2337"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malts</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="953"/>
@@ -4605,7 +4605,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="971"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Hops</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="988"/>
@@ -4620,7 +4620,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="997"/>
         <source>Gewicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Weight</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1010"/>
@@ -4645,7 +4645,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1121"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeast</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1200"/>
@@ -4660,7 +4660,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1218"/>
         <source>Weitere Zutaten</source>
-        <translation type="unfinished"></translation>
+        <translation>Additional ingredients</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1291"/>
@@ -4681,7 +4681,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1304"/>
         <source>Weitere Zutat hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Add ingredient</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1319"/>
@@ -4701,20 +4701,20 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1416"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1446"/>
         <location filename="../tabrezept.ui" line="2420"/>
         <source>Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Water</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1456"/>
         <location filename="../tabrezept.ui" line="1469"/>
         <location filename="../tabrezept.ui" line="1680"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1476"/>
@@ -4734,7 +4734,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1527"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual alkalinity</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1534"/>
@@ -4749,7 +4749,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1574"/>
         <source>Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1581"/>
@@ -4784,17 +4784,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1830"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1849"/>
         <source>Alkoholgehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>ABV</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1856"/>
         <source>Farbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1866"/>
@@ -4811,17 +4811,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1917"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1924"/>
         <source>Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual extract</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1937"/>
         <source>EBC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1944"/>
@@ -4831,7 +4831,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1999"/>
         <source>%vol</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2024"/>
@@ -4841,7 +4841,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2085"/>
         <source>Gesamtschüttung</source>
-        <translation type="unfinished"></translation>
+        <translation>Grist amount</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2095"/>
@@ -4866,7 +4866,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2200"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2220"/>
@@ -4896,17 +4896,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2461"/>
         <source>Hauptguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Strike water</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2488"/>
         <source>High-Gravity Verdünnung</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2495"/>
         <source>Nachguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Sparging water</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2509"/>
@@ -4926,7 +4926,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2581"/>
         <source>Gesamt</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2622"/>
@@ -5069,7 +5069,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="25"/>
@@ -5079,7 +5079,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="28"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>all</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="38"/>
@@ -5089,7 +5089,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="41"/>
         <source>vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>in stock</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="48"/>
@@ -5099,7 +5099,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="51"/>
         <source>in Gebrauch</source>
-        <translation type="unfinished"></translation>
+        <translation>in use</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="58"/>
@@ -5109,12 +5109,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="61"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="88"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malts</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="112"/>
@@ -5124,7 +5124,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="140"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Hops</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="164"/>
@@ -5134,7 +5134,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="192"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeast</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="216"/>
@@ -5144,7 +5144,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="244"/>
         <source>Weitere Zutaten</source>
-        <translation type="unfinished"></translation>
+        <translation>Additional ingredients</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="268"/>
@@ -5154,7 +5154,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="299"/>
         <source>Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Water</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="318"/>
@@ -5209,7 +5209,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="746"/>
         <location filename="../tabrohstoffe.ui" line="769"/>
         <source>mmol/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="443"/>
@@ -5229,12 +5229,12 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="806"/>
         <location filename="../tabrohstoffe.ui" line="890"/>
         <source>mg/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="516"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual alkalinity</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="523"/>
@@ -5254,7 +5254,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.ui" line="718"/>
         <location filename="../tabrohstoffe.ui" line="792"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="567"/>
@@ -5343,7 +5343,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="383"/>
         <location filename="../tabrohstoffe.cpp" line="386"/>
         <source>Neuer Eintrag</source>
-        <translation type="unfinished"></translation>
+        <translation>Add entry</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="956"/>
@@ -5398,92 +5398,92 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="36"/>
         <source>obergärig</source>
-        <translation type="unfinished"></translation>
+        <translation>top-fermented</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="37"/>
         <source>untergärig</source>
-        <translation type="unfinished"></translation>
+        <translation>bottom-fermented</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="42"/>
         <source>trocken</source>
-        <translation type="unfinished"></translation>
+        <translation>dry</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="43"/>
         <source>flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>liquid</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="47"/>
         <source>Honig</source>
-        <translation type="unfinished"></translation>
+        <translation>Honey</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="48"/>
         <source>Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Sugar</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="49"/>
         <source>Gewürz</source>
-        <translation type="unfinished"></translation>
+        <translation>Spice</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="50"/>
         <source>Frucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Fruit</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="51"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Miscellaneous</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="52"/>
         <source>Kraut</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="53"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="54"/>
         <source>Klärmittel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="58"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="59"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="60"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="61"/>
         <source>Stk.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="62"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="63"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="79"/>
@@ -5491,7 +5491,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="149"/>
         <location filename="../tabrohstoffe.cpp" line="190"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="80"/>
@@ -5520,7 +5520,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="151"/>
         <location filename="../tabrohstoffe.cpp" line="196"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Remarks</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="85"/>
@@ -5547,7 +5547,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="161"/>
         <location filename="../tabrohstoffe.cpp" line="200"/>
         <source>Einlagerung</source>
-        <translation type="unfinished"></translation>
+        <translation>Got on storage</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="89"/>
@@ -5563,7 +5563,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="163"/>
         <location filename="../tabrohstoffe.cpp" line="202"/>
         <source>Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Link</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="115"/>
@@ -5578,31 +5578,31 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="117"/>
         <source>Pellets</source>
-        <translation type="unfinished"></translation>
+        <translation>Pellets</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="119"/>
         <location filename="../tabrohstoffe.cpp" line="152"/>
         <location filename="../tabrohstoffe.cpp" line="197"/>
         <source>Eigenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Characteristics</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="120"/>
         <location filename="../tabrohstoffe.cpp" line="193"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="150"/>
         <location filename="../tabrohstoffe.cpp" line="191"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="153"/>
         <source>OG/UG</source>
-        <translation type="unfinished"></translation>
+        <translation>Top/Bottom</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="154"/>
@@ -5617,17 +5617,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="156"/>
         <source>Sedimentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Flocculation</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="157"/>
         <source>Vergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermentation</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="158"/>
         <source>Temperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="160"/>
@@ -5637,7 +5637,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="192"/>
         <source>Einheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Unit</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="194"/>
@@ -5652,7 +5652,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.cpp" line="227"/>
         <source>Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="228"/>
@@ -5701,7 +5701,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="35"/>
         <location filename="../tabsudauswahl.ui" line="205"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>all</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="62"/>
@@ -5711,7 +5711,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="65"/>
         <source>Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Recipe</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="72"/>
@@ -5721,7 +5721,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="75"/>
         <source>gebraut</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="82"/>
@@ -5731,7 +5731,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="85"/>
         <source>abgefüllt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="92"/>
@@ -5741,7 +5741,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="95"/>
         <source>verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>consumed</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="123"/>
@@ -5751,7 +5751,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="126"/>
         <source>Merkliste</source>
-        <translation type="unfinished"></translation>
+        <translation>Pinned</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="150"/>
@@ -5786,7 +5786,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="222"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="237"/>
@@ -5816,7 +5816,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>Sud laden</source>
-        <translation type="unfinished"></translation>
+        <translation>Load brew</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="318"/>
@@ -5836,7 +5836,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="331"/>
         <source>Neuen Sud anlegen</source>
-        <translation type="unfinished"></translation>
+        <translation>Create new brew</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="338"/>
@@ -5857,7 +5857,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>Sud kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Copy brew</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="358"/>
@@ -5867,7 +5867,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>Sud löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete brew</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="368"/>
@@ -5918,12 +5918,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.cpp" line="39"/>
         <source>Sudname</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew name</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="40"/>
         <source>Sudnummer</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew number</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="41"/>
@@ -5933,32 +5933,32 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.cpp" line="42"/>
         <source>Braudatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew date</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="43"/>
         <source>Abfülldatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Bottling date</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="44"/>
         <source>Erstellt</source>
-        <translation type="unfinished"></translation>
+        <translation>Created</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="45"/>
         <source>Gespeichert</source>
-        <translation type="unfinished"></translation>
+        <translation>Saved</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="46"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Week</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="47"/>
         <source>Bewertung</source>
-        <translation type="unfinished"></translation>
+        <translation>Rating</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="48"/>
@@ -6035,7 +6035,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.cpp" line="239"/>
         <source>Sud verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Beer consumed</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="430"/>
@@ -6122,22 +6122,22 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.cpp" line="755"/>
         <location filename="../tabsudauswahl.cpp" line="757"/>
         <source>Rohstoffe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredients</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="759"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Save PDF as</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="213"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="246"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -6145,7 +6145,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.ui" line="35"/>
@@ -6170,7 +6170,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.cpp" line="58"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Save PDF as</translation>
     </message>
 </context>
 <context>
@@ -6191,7 +6191,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.ui" line="56"/>
         <source>relativ zur Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>relative to database</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="66"/>
@@ -6216,7 +6216,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.cpp" line="91"/>
         <source>Anhang auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Select attachment</translation>
     </message>
 </context>
 <context>
@@ -6234,7 +6234,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgbewertung.cpp" line="71"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Week</translation>
     </message>
 </context>
 <context>
@@ -6252,7 +6252,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="124"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="131"/>
@@ -6262,7 +6262,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="134"/>
         <source>Zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Add</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="147"/>
@@ -6297,7 +6297,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="257"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Days</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="270"/>
@@ -6326,7 +6326,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdghopfengabe.ui" line="127"/>
         <location filename="../widgets/wdghopfengabe.ui" line="375"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="140"/>
@@ -6344,7 +6344,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdghopfengabe.ui" line="327"/>
         <location filename="../widgets/wdghopfengabe.ui" line="601"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="185"/>
@@ -6354,12 +6354,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="192"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="205"/>
         <source>IBU</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="218"/>
@@ -6374,17 +6374,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="280"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="287"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Boil time</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="307"/>
         <source>Anteil</source>
-        <translation type="unfinished"></translation>
+        <translation>Share</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="314"/>
@@ -6394,7 +6394,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="340"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="353"/>
@@ -6404,7 +6404,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="382"/>
         <source>Alpha</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="395"/>
@@ -6429,17 +6429,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="462"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished"></translation>
+        <translation>Begin of boil</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="467"/>
         <source>Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Boiling</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="472"/>
         <source>Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>End of boil</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="477"/>
@@ -6454,7 +6454,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="513"/>
         <source>Ausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash efficiency</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="526"/>
@@ -6482,7 +6482,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="118"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="131"/>
@@ -6493,7 +6493,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgmalzgabe.ui" line="156"/>
         <location filename="../widgets/wdgmalzgabe.ui" line="288"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="169"/>
@@ -6503,7 +6503,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="197"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="204"/>
@@ -6537,7 +6537,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="47"/>
         <location filename="../widgets/wdgrast.cpp" line="85"/>
         <source>Einmaischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Dough in</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="52"/>
@@ -6564,7 +6564,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="570"/>
         <location filename="../widgets/wdgrast.ui" line="889"/>
         <source>Anteil</source>
-        <translation type="unfinished"></translation>
+        <translation>Share</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="140"/>
@@ -6576,13 +6576,13 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="756"/>
         <location filename="../widgets/wdgrast.ui" line="903"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="147"/>
         <location filename="../widgets/wdgrast.ui" line="459"/>
         <source>Wassermenge</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="164"/>
@@ -6608,14 +6608,14 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="773"/>
         <location filename="../widgets/wdgrast.ui" line="882"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="232"/>
         <location filename="../widgets/wdgrast.ui" line="623"/>
         <location filename="../widgets/wdgrast.ui" line="806"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="249"/>
@@ -6672,12 +6672,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="88"/>
         <source>Gummirast (35°-40°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Acid rest (35°-40°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="89"/>
         <source>Weizenrast (45°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Glucans rest (45°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="90"/>
@@ -6687,22 +6687,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="91"/>
         <source>Maltoserast (60°-65°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Maltose rest (60°-65°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="92"/>
         <source>Kombirast (66°-69°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Saccharification rest (66°-69°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="93"/>
         <source>Verzuckerung (70°-75°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dextrinization rest (70°-75°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="94"/>
         <source>Abmaischen (78°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mash-out (78°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="97"/>
@@ -6745,7 +6745,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrating.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrating.ui" line="54"/>
@@ -6767,12 +6767,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="55"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="60"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="65"/>
@@ -6782,17 +6782,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="70"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="75"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="95"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="118"/>
@@ -6802,27 +6802,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="219"/>
         <source>Gesamt</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="226"/>
         <source>Nachguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Sparging water</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="264"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="296"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="303"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Residual alkalinity</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="320"/>
@@ -6832,7 +6832,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="327"/>
         <source>Hauptguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Strike water</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="401"/>
@@ -6851,7 +6851,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="128"/>
@@ -6861,7 +6861,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="150"/>
         <source>Speichern</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="157"/>
@@ -6886,12 +6886,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="161"/>
         <source>Änderungen speichern?</source>
-        <translation type="unfinished"></translation>
+        <translation>Save changes?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="162"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Should the changes be saved?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="232"/>
@@ -6919,7 +6919,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="121"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="134"/>
@@ -6930,7 +6930,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="162"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="287"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="175"/>
@@ -6942,7 +6942,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="122"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="129"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="235"/>
@@ -6962,7 +6962,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="314"/>
         <source>Zugabezeitpunkt</source>
-        <translation type="unfinished"></translation>
+        <translation>Time of adding</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="321"/>
@@ -6972,22 +6972,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="325"/>
         <source>Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermentation</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="330"/>
         <source>Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Boiling</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="335"/>
         <source>Maischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mashing</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="374"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Boil time</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="387"/>
@@ -6997,7 +6997,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="406"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="440"/>
@@ -7012,7 +7012,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="450"/>
         <source>Zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Add</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="463"/>
@@ -7033,7 +7033,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="514"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="527"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Days</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="553"/>
@@ -7048,7 +7048,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="569"/>
         <source>Entnehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Remove</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="576"/>
@@ -7058,12 +7058,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="579"/>
         <source>keine Entnahme</source>
-        <translation type="unfinished"></translation>
+        <translation>No removal</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="586"/>
         <source>Entnahme nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Remove after</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="602"/>
@@ -7073,7 +7073,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="136"/>
         <source>mg/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="143"/>
@@ -7084,7 +7084,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="150"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="157"/>
         <source>ml/l</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

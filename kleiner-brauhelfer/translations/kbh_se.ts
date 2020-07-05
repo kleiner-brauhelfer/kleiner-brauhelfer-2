@@ -4072,7 +4072,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="168"/>
         <source>Hauptgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="235"/>
@@ -4088,7 +4088,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.ui" line="304"/>
         <location filename="../tabgaerverlauf.ui" line="353"/>
         <source>Zutat:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrediens:</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="311"/>
@@ -4103,7 +4103,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="321"/>
         <source>zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>lägg till</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="360"/>
@@ -4118,7 +4118,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="370"/>
         <source>entnehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>ta ur</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="396"/>
@@ -4128,7 +4128,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="399"/>
         <source>Nachgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolsyrejäsning</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="466"/>
@@ -4144,114 +4144,114 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="24"/>
         <location filename="../tabgaerverlauf.cpp" line="34"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Resterande extrakthalt [°P]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="25"/>
         <location filename="../tabgaerverlauf.cpp" line="35"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="27"/>
         <location filename="../tabgaerverlauf.cpp" line="37"/>
         <source>Alkohol [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkohol [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="28"/>
         <location filename="../tabgaerverlauf.cpp" line="38"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="30"/>
         <location filename="../tabgaerverlauf.cpp" line="50"/>
         <source>Temperatur [°C]</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur [°C]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="31"/>
         <location filename="../tabgaerverlauf.cpp" line="41"/>
         <location filename="../tabgaerverlauf.cpp" line="51"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="40"/>
         <source>Temperatur °C</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur °C</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="44"/>
         <source>CO₂-Gehalt [g/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Karbonering [CO₂ g/l]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="45"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="47"/>
         <location filename="../tabgaerverlauf.cpp" line="110"/>
         <source>Druck [bar]</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryck [bar]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="48"/>
         <source>bar</source>
-        <translation type="unfinished"></translation>
+        <translation>bar</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="57"/>
         <location filename="../tabgaerverlauf.cpp" line="83"/>
         <location filename="../tabgaerverlauf.cpp" line="109"/>
         <source>Datum</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="58"/>
         <location filename="../tabgaerverlauf.cpp" line="84"/>
         <source>SRE [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>FG [°P]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="59"/>
         <location filename="../tabgaerverlauf.cpp" line="85"/>
         <location filename="../tabgaerverlauf.cpp" line="111"/>
         <source>Temp. [°C]</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp. [°C]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="60"/>
         <location filename="../tabgaerverlauf.cpp" line="86"/>
         <source>Alk. [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alk. [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="61"/>
         <location filename="../tabgaerverlauf.cpp" line="87"/>
         <source>sEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="62"/>
         <location filename="../tabgaerverlauf.cpp" line="88"/>
         <source>tEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. (verkl.) [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="63"/>
         <location filename="../tabgaerverlauf.cpp" line="89"/>
         <location filename="../tabgaerverlauf.cpp" line="113"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="112"/>
         <source>CO2 [g/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>CO2 [g/l]</translation>
     </message>
 </context>
 <context>
@@ -4259,7 +4259,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="45"/>
         <source>Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="57"/>
@@ -4269,7 +4269,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="76"/>
         <source>Verwalten</source>
-        <translation type="unfinished"></translation>
+        <translation>Förvalta</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="83"/>
@@ -4289,7 +4289,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="113"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="127"/>
@@ -4300,24 +4300,24 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="140"/>
         <location filename="../tabrezept.ui" line="171"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="147"/>
         <location filename="../tabrezept.ui" line="2678"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="157"/>
         <location filename="../tabrezept.ui" line="1985"/>
         <source>Bittere</source>
-        <translation type="unfinished"></translation>
+        <translation>Beska</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="164"/>
         <source>Sudname</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsnamn</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="178"/>
@@ -4327,12 +4327,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="197"/>
         <source>Vergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="204"/>
         <source>CO2 Gehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>CO2-halt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="211"/>
@@ -4340,13 +4340,13 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="520"/>
         <location filename="../tabrezept.ui" line="2691"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="218"/>
         <location filename="../tabrezept.ui" line="2698"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="232"/>
@@ -4356,12 +4356,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="263"/>
         <source>Hauptgussfaktor</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatten/malt-förhållande</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="283"/>
         <source>Empf.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekomm.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="290"/>
@@ -4376,23 +4376,23 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="349"/>
         <source>Wochen</source>
-        <translation type="unfinished"></translation>
+        <translation>veckor</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="363"/>
         <source>High-Gravity Faktor</source>
-        <translation type="unfinished"></translation>
+        <translation>High gravity faktor</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="370"/>
         <location filename="../tabrezept.ui" line="1002"/>
         <source>IBU</source>
-        <translation type="unfinished"></translation>
+        <translation>IBU</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="377"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Koktid</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="384"/>
@@ -4402,18 +4402,18 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="406"/>
         <source>Reifezeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Mognadstid</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="413"/>
         <location filename="../tabrezept.ui" line="2610"/>
         <source>Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Brygganläggning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="420"/>
         <source>Nachisomerisierungszeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Efterisomeriseringstid</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="445"/>
@@ -4425,13 +4425,13 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="448"/>
         <location filename="../tabrezept.ui" line="619"/>
         <source>Anlagewert</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggningens värde</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="457"/>
         <location filename="../tabrezept.ui" line="2636"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="470"/>
@@ -4446,7 +4446,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2961"/>
         <location filename="../tabrezept.cpp" line="67"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="477"/>
@@ -4456,7 +4456,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="500"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="507"/>
@@ -4481,7 +4481,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="628"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="635"/>
@@ -4491,13 +4491,13 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2305"/>
         <location filename="../tabrezept.ui" line="2388"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="642"/>
         <location filename="../tabrezept.cpp" line="1001"/>
         <source>Kategorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategori</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="649"/>
@@ -4507,7 +4507,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="655"/>
         <source>Nr. </source>
-        <translation type="unfinished"></translation>
+        <translation>Nr. </translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="678"/>
@@ -4517,7 +4517,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="681"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="690"/>
@@ -4532,7 +4532,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="701"/>
         <source>Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyckelord</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="725"/>
@@ -4542,7 +4542,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="728"/>
         <source>Neuer Eintrag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt nyckelord</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="735"/>
@@ -4552,7 +4552,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="738"/>
         <source>Eintrag löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort nyckelord</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="754"/>
@@ -4562,7 +4562,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="757"/>
         <source>Anhänge</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilagor</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="842"/>
@@ -4572,14 +4572,14 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="845"/>
         <source>Anhang hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till bilaga</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="874"/>
         <location filename="../tabrezept.ui" line="1670"/>
         <location filename="../tabrezept.ui" line="2337"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="953"/>
@@ -4589,7 +4589,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="956"/>
         <source>Malzgabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till malt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="963"/>
@@ -4599,12 +4599,12 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="1408"/>
         <location filename="../tabrezept.ui" line="1784"/>
         <source>Aus Rezept übernehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta över från annat recept</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="971"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Humle</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="988"/>
@@ -4614,22 +4614,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="992"/>
         <source>ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>ignorera</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="997"/>
         <source>Gewicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Vikt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1010"/>
         <source>Prozentanteil entspricht</source>
-        <translation type="unfinished"></translation>
+        <translation>Procentvärdet avser</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1019"/>
         <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Humleberäkningen är avaktiverat.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1103"/>
@@ -4639,12 +4639,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1106"/>
         <source>Hopfengabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till humle</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1121"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäst</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1200"/>
@@ -4654,12 +4654,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1203"/>
         <source>Hefegabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till jäst</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1218"/>
         <source>Weitere Zutaten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare ingredienser</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1291"/>
@@ -4670,7 +4670,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1294"/>
         <source>Hopfenstopfengabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till torrhumle</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1301"/>
@@ -4680,12 +4680,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1304"/>
         <source>Weitere Zutat hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till ingrediens</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1319"/>
         <source>Maischplan</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskschema</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1398"/>
@@ -4695,25 +4695,25 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1401"/>
         <source>Schritt hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till steg</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1416"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenanpassning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1446"/>
         <location filename="../tabrezept.ui" line="2420"/>
         <source>Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatten</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1456"/>
         <location filename="../tabrezept.ui" line="1469"/>
         <location filename="../tabrezept.ui" line="1680"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>°dH</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1476"/>
@@ -4733,27 +4733,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1527"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1534"/>
         <source>Gewünscht</source>
-        <translation type="unfinished"></translation>
+        <translation>Målvärde</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1564"/>
         <source>Aufbereit</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1574"/>
         <source>Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenprofil</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1581"/>
         <source>Maische</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäsk</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1591"/>
@@ -4773,27 +4773,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1687"/>
         <source>pH-Wert</source>
-        <translation type="unfinished"></translation>
+        <translation>pH-värde</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1777"/>
         <source>Wasseraufbereitung hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till vattenanpassning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1830"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Sats</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1849"/>
         <source>Alkoholgehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1856"/>
         <source>Farbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Färg</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1866"/>
@@ -4810,42 +4810,42 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="1917"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1924"/>
         <source>Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Restsötma (FG)</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1937"/>
         <source>EBC</source>
-        <translation type="unfinished"></translation>
+        <translation>EBC</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1944"/>
         <source>Kosten.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1999"/>
         <source>%vol</source>
-        <translation type="unfinished"></translation>
+        <translation>%vol</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2024"/>
         <source>Weitere Zutaten &quot;Gärung&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra ingredienser under jäsning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2085"/>
         <source>Gesamtschüttung</source>
-        <translation type="unfinished"></translation>
+        <translation>Total mängd malt o dyl</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2095"/>
         <source>Anteile Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel av stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2102"/>
@@ -4855,7 +4855,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2139"/>
         <source>Weitere Zutaten &quot;Kochen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra ingredienser under koket</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2165"/>
@@ -4865,7 +4865,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2200"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalkostnad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2220"/>
@@ -4875,7 +4875,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2254"/>
         <source>Weitere Zutaten &quot;Maischen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra ingredienser under mäskning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2280"/>
@@ -4895,17 +4895,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2461"/>
         <source>Hauptguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskvatten</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2488"/>
         <source>High-Gravity Verdünnung</source>
-        <translation type="unfinished"></translation>
+        <translation>High gravity utspädning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2495"/>
         <source>Nachguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Lakvatten</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2509"/>
@@ -4925,12 +4925,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2581"/>
         <source>Gesamt</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2622"/>
         <source>Maischekessel nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskkärl, användbar volym</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2656"/>
@@ -4946,7 +4946,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2734"/>
         <source>Sudpfanne nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokkärl, användbar volym</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2741"/>
@@ -4967,7 +4967,7 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="2807"/>
         <location filename="../tabrezept.ui" line="2827"/>
         <source>Benötigtes Volumen ca.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erfordrad volym</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2824"/>
@@ -4977,7 +4977,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="2907"/>
         <source>Korrektur der Sollmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Korrektion av målängden</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2933"/>
@@ -4987,17 +4987,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.cpp" line="149"/>
         <source>Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyckelord</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="150"/>
         <source>Wert</source>
-        <translation type="unfinished"></translation>
+        <translation>Värde</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="151"/>
         <source>Global</source>
-        <translation type="unfinished"></translation>
+        <translation>Global</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="296"/>
@@ -5005,62 +5005,62 @@ Version installiert: %2</source>
         <location filename="../tabrezept.cpp" line="336"/>
         <location filename="../tabrezept.cpp" line="356"/>
         <source>Rohstoff importieren?</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera ingrediens?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="297"/>
         <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt &quot;%1&quot; finns inte i lagret. Ska det läggas till?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="317"/>
         <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Humlen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="337"/>
         <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäst &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="357"/>
         <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrediensen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="409"/>
         <source>sehr mild</source>
-        <translation type="unfinished"></translation>
+        <translation>mycket mild</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="411"/>
         <source>mild</source>
-        <translation type="unfinished"></translation>
+        <translation>mild</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="413"/>
         <source>ausgewogen</source>
-        <translation type="unfinished"></translation>
+        <translation>balanserad</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="415"/>
         <source>moderat herb</source>
-        <translation type="unfinished"></translation>
+        <translation>något besk</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="417"/>
         <source>sehr herb</source>
-        <translation type="unfinished"></translation>
+        <translation>mycket besk</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1002"/>
         <source>Sudkategorien verwalten</source>
-        <translation type="unfinished"></translation>
+        <translation>Förvalta satskategorierna</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1046"/>
         <source>Neuer Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt nyckelord</translation>
     </message>
 </context>
 <context>
@@ -5068,7 +5068,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="25"/>
@@ -6177,7 +6177,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/tableview.cpp" line="117"/>
         <source>Zurücksetzen</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
 </context>
 <context>

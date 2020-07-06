@@ -1421,7 +1421,7 @@
     <message>
         <location filename="../mainwindow.ui" line="527"/>
         <source>Schwedisch</source>
-        <translation type="unfinished"></translation>
+        <translation>Svenska</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="117"/>
@@ -5902,7 +5902,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>Sud laden</source>
-        <translation>Läs in sats</translation>
+        <translation>Läs in en sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="318"/>
@@ -5943,7 +5943,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>Sud kopieren</source>
-        <translation>Kopiera sats</translation>
+        <translation>Kopiera satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="358"/>
@@ -5953,7 +5953,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>Sud löschen</source>
-        <translation>Kopiera satsen</translation>
+        <translation>Ta bort satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="368"/>

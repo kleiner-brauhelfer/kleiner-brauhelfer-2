@@ -1422,7 +1422,7 @@
     <message>
         <location filename="../mainwindow.ui" line="527"/>
         <source>Schwedisch</source>
-        <translation type="unfinished"></translation>
+        <translation>Swedish</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="117"/>

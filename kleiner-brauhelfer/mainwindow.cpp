@@ -761,7 +761,7 @@ void MainWindow::on_actionEnglisch_triggered()
 
 void MainWindow::on_actionSchwedisch_triggered()
 {
-    gSettings->setLanguage("se");
+    gSettings->setLanguage("sv");
     restart(1001);
 }
 

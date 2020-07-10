@@ -365,7 +365,7 @@ static void installTranslator(QApplication &a, QTranslator &translator, const QS
     a.removeTranslator(&translator);
     if (translator.load(locale, filename, "_", a.applicationDirPath() + "/translations"))
         a.installTranslator(&translator);
-    if (translator.load(locale, filename, "_", ":/translations"))
+    else if (translator.load(locale, filename, "_", ":/translations"))
         a.installTranslator(&translator);
     else if (translator.load(locale, filename, "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         a.installTranslator(&translator);
@@ -438,7 +438,7 @@ int main(int argc, char *argv[])
 
     // language
     QTranslator translatorQt, translatorKbh;
-    installTranslator(a, translatorQt, "qt");
+    installTranslator(a, translatorQt, "qtbase");
     installTranslator(a, translatorKbh, "kbh");
 
     // do some checks
@@ -479,7 +479,7 @@ int main(int argc, char *argv[])
                 }
                 if (ret == 1001)
                 {
-                    installTranslator(a, translatorQt, "qt");
+                    installTranslator(a, translatorQt, "qtbase");
                     installTranslator(a, translatorKbh, "kbh");
                     ret = 1000;
                 }

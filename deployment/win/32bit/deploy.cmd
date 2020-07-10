@@ -7,4 +7,4 @@ Set QT_DIR=%QT_DIR:"=%
 
 del "%BUILD_DIR%\kleiner-brauhelfer-core.lib"
 
-"%QT_DIR%\windeployqt.exe" "%BUILD_DIR%\kleiner-brauhelfer-2.exe"
+"%QT_DIR%\windeployqt.exe" --no-translations "%BUILD_DIR%\kleiner-brauhelfer-2.exe"

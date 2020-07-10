@@ -230,7 +230,8 @@ FORMS += \
 
 RESOURCES += \
     data.qrc \
-    images.qrc
+    images.qrc \
+    translations.qrc
 
 TRANSLATIONS += \
     translations/kbh_en.ts \

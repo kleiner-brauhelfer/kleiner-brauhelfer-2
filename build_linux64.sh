@@ -14,10 +14,7 @@ BUILD_DIR=$(dirname $0)/build-linux64
 mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 "${QT_DIR}/qmake" "../${PRO}" -config release
-#make clean
 make -j 8
-#"${QT_DIR}/lupdate" "../${PRO}"
-#"${QT_DIR}/lrelease" "../${PRO}"
 cd -
 
 if [ ${DEPLOY} = "1" ]; then

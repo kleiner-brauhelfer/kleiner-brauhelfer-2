@@ -363,7 +363,9 @@ static void installTranslator(QApplication &a, QTranslator &translator, const QS
 {
     QLocale locale(gSettings->language());
     a.removeTranslator(&translator);
-    if (translator.load(locale, filename, "_", "translations"))
+    if (translator.load(locale, filename, "_", a.applicationDirPath() + "/translations"))
+        a.installTranslator(&translator);
+    if (translator.load(locale, filename, "_", ":/translations"))
         a.installTranslator(&translator);
     else if (translator.load(locale, filename, "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         a.installTranslator(&translator);

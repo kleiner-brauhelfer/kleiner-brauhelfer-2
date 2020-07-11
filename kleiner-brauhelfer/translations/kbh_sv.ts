@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="42"/>
-        <source>Forum:</source>
-        <translation>Forum:</translation>
+        <source>Forum</source>
+        <translation>Forum</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="62"/>
@@ -20,13 +20,13 @@
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="118"/>
-        <source>Homepage:</source>
-        <translation>Hemsida:</translation>
+        <source>Homepage</source>
+        <translation>Hemsida</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="151"/>
-        <source>Kompiliert mit:</source>
-        <translation>Kompilerat med:</translation>
+        <source>Kompiliert mit</source>
+        <translation>Kompilerat med</translation>
     </message>
 </context>
 <context>
@@ -1667,16 +1667,16 @@ Version installiert: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="469"/>
-        <location filename="../main.cpp" line="475"/>
-        <location filename="../main.cpp" line="495"/>
-        <location filename="../main.cpp" line="501"/>
+        <location filename="../main.cpp" line="471"/>
+        <location filename="../main.cpp" line="477"/>
+        <location filename="../main.cpp" line="497"/>
+        <location filename="../main.cpp" line="503"/>
         <source>Programmfehler</source>
         <translation>Programfel</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="475"/>
-        <location filename="../main.cpp" line="501"/>
+        <location filename="../main.cpp" line="477"/>
+        <location filename="../main.cpp" line="503"/>
         <location filename="../tabsudauswahl.cpp" line="631"/>
         <location filename="../tabsudauswahl.cpp" line="712"/>
         <source>Unbekannter Fehler.</source>
@@ -4582,7 +4582,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="642"/>
-        <location filename="../tabrezept.cpp" line="1002"/>
+        <location filename="../tabrezept.cpp" line="1004"/>
         <source>Kategorie</source>
         <translation>Kategori</translation>
     </message>
@@ -5140,12 +5140,12 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
         <translation>mycket besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1003"/>
+        <location filename="../tabrezept.cpp" line="1005"/>
         <source>Sudkategorien verwalten</source>
         <translation>Förvalta satskategorierna</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1047"/>
+        <location filename="../tabrezept.cpp" line="1049"/>
         <source>Neuer Tag</source>
         <translation>Nytt nyckelord</translation>
     </message>
@@ -6926,8 +6926,8 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
         <translation>Mängd för 1°dH</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="69"/>
-        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="74"/>
+        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="80"/>
+        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="85"/>
         <source>/l</source>
         <translation>/l</translation>
     </message>

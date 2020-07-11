@@ -82,7 +82,7 @@
 </phrase>
 <phrase>
     <source>Sudauswahl</source>
-    <target>Brew Selection</target>
+    <target>Batch Selection</target>
 </phrase>
 <phrase>
     <source>Suche</source>
@@ -1758,7 +1758,7 @@
 </phrase>
 <phrase>
     <source>Sud</source>
-    <target>Brew</target>
+    <target>Batch</target>
 </phrase>
 <phrase>
     <source>Anlage</source>
@@ -2078,7 +2078,7 @@
 </phrase>
 <phrase>
     <source>Sud</source>
-    <target>Brew</target>
+    <target>Batch</target>
 </phrase>
 <phrase>
     <source>Menge</source>
@@ -2980,7 +2980,7 @@ SSL run time: %2</target>
 </phrase>
 <phrase>
     <source>Sud teilen</source>
-    <target>Split Brew</target>
+    <target>Split batch</target>
 </phrase>
 <phrase>
     <source>%</source>
@@ -3440,7 +3440,7 @@ Please correct path to databse in settings.</target>
 </phrase>
 <phrase>
     <source>Sudauswahl</source>
-    <target>Brew Selection</target>
+    <target>Batch Selection</target>
 </phrase>
 <phrase>
     <source>a&amp;lle anzeigen</source>
@@ -3922,7 +3922,7 @@ This action can only be undone by editing the beer file with an editor.</target>
 </phrase>
 <phrase>
     <source>Sud teilen</source>
-    <target>Split beer</target>
+    <target>Split batch</target>
 </phrase>
 <phrase>
     <source>Sonstiges</source>
@@ -6138,4 +6138,3 @@ SQL Befehl:
     <target>Ingredient entry in malt list is not available</target>
 </phrase>
 </QPH>
-

@@ -37,14 +37,14 @@
             </tr>
             {{#Rezept.HighGravityFaktor}}
             <tr>
-              <td>high-gravity factor</td>
+              <td>high gravity factor</td>
               <td class="value" align="center"></td>
               <td class="value" align="center">{{Rezept.HighGravityFaktor}}</td>
               <td>%</td>
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>original wort</td>
+              <td>original gravity</td>
               <td class="value" align="center">{{Sud.SW}}</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
@@ -100,7 +100,7 @@
                 <th>&nbsp;</th>
               </tr>
               <tr>
-                <td>equipment</td>
+                <td>brewing setup</td>
                 <td class="value" align="center">{{Rezept.Brauanlage}}</td>
               </tr>
               <tr>
@@ -191,10 +191,10 @@
             <tr>
               <td>{{Name}}</td>
               <td class="value" align="center">
-                {{#Kochen}}boil{{/Kochen}}
-                {{#Vorderwuerze}}pre-boil{{/Vorderwuerze}}
-                {{#Nachisomerisierung}}isomerisation{{/Nachisomerisierung}}
-                {{#Ausschlagen}}pitch{{/Ausschlagen}}
+                {{#Kochen}}boiling{{/Kochen}}
+                {{#Vorderwuerze}}first wort{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}end of boil{{/Nachisomerisierung}}
+                {{#Ausschlagen}}racking{{/Ausschlagen}}
               </td>
               <td class="value" align="center">{{Alpha}}</td>
               <td class="value" align="center">{{Kochdauer}}</td>
@@ -247,7 +247,7 @@
               <td class="value" align="center">{{Hauptguss}}</td>
             </tr>
             <tr>
-              <td>sparing water</td>
+              <td>sparge water</td>
               <td class="value" align="center">{{Nachguss}}</td>
             </tr>
             {{#Verduennung}}

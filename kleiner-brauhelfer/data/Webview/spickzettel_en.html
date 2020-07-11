@@ -34,7 +34,7 @@
               <td colspan="2">____________</td>
             </tr>
             <tr>
-              <td>equipment</td>
+              <td>brewing setup</td>
               <td class="value" colspan="2">{{Rezept.Brauanlage}}</td>
             </tr>
             <tr>
@@ -44,13 +44,13 @@
             </tr>
             {{#Rezept.HighGravityFaktor}}
             <tr>
-              <td>high-gravity factor</td>
+              <td>high gravity factor</td>
               <td class="value" align="center">{{Rezept.HighGravityFaktor}}</td>
               <td>%</td>
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>original wort</td>
+              <td>original gravity</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
@@ -117,7 +117,7 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm" align="center">
-    <h2>Notes</h2>
+    <h2>Remarks</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
@@ -210,7 +210,7 @@
 
   {{#Geraete}}
   <div class="rm" align="center">
-    <h2>Equipment List</h2>
+    <h2>Gear</h2>
     <table>
       {{#Liste}}
       <tr><td align="center">{{Name}}</td></tr>
@@ -221,7 +221,7 @@
 
   {{#Rezept.BrauanlageBemerkung}}
   <div class="rm" align="center">
-    <h2>Equipment Notes</h2>
+    <h2>Brewing Setup Remarks</h2>
     <p class="kommentar">{{{Rezept.BrauanlageBemerkung}}}</p>
   </div>
   {{/Rezept.BrauanlageBemerkung}}
@@ -287,7 +287,7 @@
       </tr>
       {{#Rasten}}
       <tr>
-        <td class="underline" valign="top"><strong>Mashing plan</strong></td>
+        <td class="underline" valign="top"><strong>Mashing scheme</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -348,7 +348,7 @@
       <col width="250">
       <col width="700">
       <tr>
-        <td class="underline" valign="top"><strong>Sparing water</strong></td>
+        <td class="underline" valign="top"><strong>Sparge water</strong></td>
         <td class="underline"><span class="value">{{Wasser.Nachguss}}</span> liters</td>
       </tr>
       <tr>
@@ -357,7 +357,7 @@
       </tr>
       <tr>
         <td valign="top"><strong>Lautering</strong></td>
-        <td>Drain off wort slowly (grist shall not run dry). Before grist gets dry, add sparking water (in steps to about 2-3 litres) over a float.</td>
+        <td>Drain off wort slowly (grist shall not run dry). Before grist gets dry, add sparge water (in steps to about 2-3 litres) over a float.</td>
       </tr>
     </table>
   </div>
@@ -369,7 +369,7 @@
       <col width="700">
       {{#Zutaten.HatVorderwuerzehopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Pre-boil hopping</strong></td>
+        <td class="underline" valign="top"><strong>First wort hopping</strong></td>
         <td class="underline">
           {{#Zutaten.Hopfen}}
           <table>
@@ -509,7 +509,7 @@
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
-        <td class="underline"  valign="top"><strong>Isomerisation time</strong></td>
+        <td class="underline"  valign="top"><strong>Hop stand</strong></td>
         <td class="underline">Duration <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
@@ -552,7 +552,7 @@
       </tr>
       {{#Wasser.Verduennung}}
       <tr>
-        <td class="underline" valign="top"><strong>HGF dilution</strong></td>
+        <td class="underline" valign="top"><strong>High gravity dilution</strong></td>
         <td class="underline">Add <span class="value">{{Wasser.Verduennung}}</span> liters water</td>
       </tr>
       {{/Wasser.Verduennung}}
@@ -609,7 +609,7 @@
       {{/Zutaten.Hefe}}
       {{#Zutaten.HatKalthopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Cold-hopping</strong></td>
+        <td class="underline" valign="top"><strong>Racking hopping</strong></td>
         <td class="underline">
           <table>
             <col width="200">

@@ -13,20 +13,20 @@
         <file>data/Rohstoffe/WeitereZutaten.csv</file>
         <file>data/Webview/abfuelldaten.html</file>
         <file>data/Webview/abfuelldaten_en.html</file>
-        <file>data/Webview/abfuelldaten_se.html</file>
+        <file>data/Webview/abfuelldaten_sv.html</file>
         <file>data/Webview/braudaten.html</file>
         <file>data/Webview/braudaten_en.html</file>
-        <file>data/Webview/braudaten_se.html</file>
+        <file>data/Webview/braudaten_sv.html</file>
         <file>data/Webview/spickzettel.html</file>
         <file>data/Webview/spickzettel_en.html</file>
-        <file>data/Webview/spickzettel_se.html</file>
+        <file>data/Webview/spickzettel_sv.html</file>
         <file>data/Webview/style_dunkel.css</file>
         <file>data/Webview/style_hell.css</file>
         <file>data/Webview/sudinfo.html</file>
         <file>data/Webview/sudinfo_en.html</file>
-        <file>data/Webview/sudinfo_se.html</file>
+        <file>data/Webview/sudinfo_sv.html</file>
         <file>data/Webview/zusammenfassung.html</file>
         <file>data/Webview/zusammenfassung_en.html</file>
-        <file>data/Webview/zusammenfassung_se.html</file>
+        <file>data/Webview/zusammenfassung_sv.html</file>
     </qresource>
 </RCC>

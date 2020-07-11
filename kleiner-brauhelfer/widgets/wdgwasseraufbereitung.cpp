@@ -57,14 +57,25 @@ void WdgWasseraufbereitung::updateValues(bool full)
     ui->tbMengeGesamt->setValue(menge * bh->sud()->geterg_W_Gesamt());
     ui->tbMengeHg->setValue(menge * bh->sud()->geterg_WHauptguss());
     ui->tbMengeNg->setValue(menge * bh->sud()->geterg_WNachguss());
-    ui->tbMengeHgf->setValue(menge * bh->sud()->getWasserHgf());
-    ui->tbMengeHgf->setVisible(ui->tbMengeHgf->value() > 0);
-    ui->lblHgf->setVisible(ui->tbMengeHgf->value() > 0);
+    double w = bh->sud()->getWasserHgf();
+    ui->tbMengeHgf->setValue(menge * w);
+    ui->tbMengeHgf->setVisible(w > 0);
+    ui->lblHgf->setVisible(w > 0);
     ui->lblEinheitHgf->setVisible(ui->tbMengeHgf->value() > 0);
     if (!ui->tbRestalkalitaet->hasFocus())
         ui->tbRestalkalitaet->setValue(data(ModelWasseraufbereitung::ColRestalkalitaet).toDouble());
     if (!ui->tbFaktor->hasFocus())
         ui->tbFaktor->setValue(data(ModelWasseraufbereitung::ColFaktor).toDouble());
+    if (ui->tbFaktor->value() > 0)
+    {
+        ui->tbRestalkalitaet->setMinimum(0);
+        ui->tbRestalkalitaet->setMaximum(99);
+    }
+    else
+    {
+        ui->tbRestalkalitaet->setMinimum(-99);
+        ui->tbRestalkalitaet->setMaximum(0);
+    }
     QString einheit = TabRohstoffe::Einheiten[data(ModelWasseraufbereitung::ColEinheit).toInt()];
     ui->lblEinheit->setText(einheit + tr("/l"));
     ui->lblEinheitGesamt->setText(einheit);

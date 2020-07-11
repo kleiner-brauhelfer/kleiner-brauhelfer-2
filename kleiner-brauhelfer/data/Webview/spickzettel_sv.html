@@ -96,10 +96,6 @@
               <td>g/Liter</td>
             </tr>
             <tr>
-              <td>Vattenprofil</td>
-              <td class="value" colspan="2">{{Rezept.Wasserprofil}}</td>
-            </tr>
-            <tr>
               <td>Restalkalinitet</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
@@ -122,10 +118,10 @@
   </div>
   {{/Rezept.Kommentar}}
 
-  {{#Zutaten}}
   <div class="rm" align="center">
-    <h2>ingredienser</h2>
-    <table>
+    <h2>Ingredienser</h2>
+    {{#Zutaten}}
+    <table style="border-spacing: 20px 0px;">
       <tr>
         {{#Malz}}
         <td valign="top">
@@ -205,8 +201,46 @@
         </td>
       </tr>
     </table>
+    {{/Zutaten}}
+    {{#Wasser}}
+    </br>
+    <img src="qrc:/images/wasser.svg" height="30"></br>
+    {{Wasserprofil.Name}}
+    </br>
+    <table style="border-spacing: 20px 0px;">
+      <tr>
+        <th></th>
+        <th align="center">M&auml;skvatten</th>
+        <th align="center">Lakvatten</th>
+        {{#Verduennung}}<th align="center">Sp&auml;dning</th>{{/Verduennung}}
+        <th align="center">Totalt</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td align="left">Wasser</td>
+        <td align="center"><span class="value">{{Hauptguss}}</span></td>
+        <td align="center"><span class="value">{{Nachguss}}</span></td>
+        {{#Verduennung}}<td align="center"><span class="value">{{Verduennung}}</span></td>{{/Verduennung}}
+        <td align="center"><span class="value">{{Gesamt}}</span></td>
+        <td align="center">l</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {{#Wasseraufbereitung.Liste}}
+      <tr>
+        <td align="left">{{Name}}</td>
+        <td align="center"><span class="value">{{MengeHauptguss}}</span></td>
+        <td align="center"><span class="value">{{MengeNachguss}}</span></td>
+        {{#Verduennung}}<td align="center"><span class="value">{{MengeVerduennung}}</span></td>{{/Verduennung}}
+        <td align="center"><span class="value">{{Menge}}</span></td>
+        <td align="center">{{Einheit}}</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {{/Wasseraufbereitung.Liste}}
+    </table>
+    {{Wasserprofil.Bemerkung}}
+    {{/Wasser}}
   </div>
-  {{/Zutaten}}
 
   {{#Geraete}}
   <div class="rm" align="center">

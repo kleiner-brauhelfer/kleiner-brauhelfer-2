@@ -422,11 +422,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         for (int r = 0; r < proxy.rowCount(); ++r)
         {
             double ph = proxy.data(r, ModelMalzschuettung::ColpH).toDouble();
-            if (ph > 0)
-            {
-                double m = proxy.data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
-                phGesamt += std::pow(10, -ph) * m/schuet;
-            }
+            if (ph <= 0)
+                return 0.0;
+            double m = proxy.data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
+            phGesamt += std::pow(10, -ph) * m/schuet;
         }
         if (phGesamt > 0)
             phGesamt = -std::log10(phGesamt);

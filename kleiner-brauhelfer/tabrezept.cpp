@@ -942,10 +942,12 @@ void TabRezept::on_btnNeueWasseraufbereitung_clicked()
     DlgWasseraufbereitung dlg(this);
     if (dlg.exec() == QDialog::Accepted)
     {
+        double ra = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getRestalkalitaetIst();
         QMap<int, QVariant> values({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
                                     {ModelWasseraufbereitung::ColName, dlg.name()},
                                     {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
-                                    {ModelWasseraufbereitung::ColFaktor, dlg.faktor()}});
+                                    {ModelWasseraufbereitung::ColFaktor, dlg.faktor()},
+                                    {ModelWasseraufbereitung::ColRestalkalitaet, ra}});
         bh->sud()->modelWasseraufbereitung()->append(values);
         ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
     }

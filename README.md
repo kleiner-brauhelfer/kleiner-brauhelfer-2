@@ -11,6 +11,10 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
+**Credits:**
+
+Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
+
 ## Download letzte Version
 - [Version 2.1.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 - [Version 2.2.0beta](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.2.0beta)

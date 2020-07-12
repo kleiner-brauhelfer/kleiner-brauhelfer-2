@@ -673,7 +673,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         return false;
     }
     default:
-        return false;
+        return QSqlTableModel::setData(idx, value);
     }
 }
 

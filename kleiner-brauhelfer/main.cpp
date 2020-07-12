@@ -15,6 +15,7 @@
 #endif
 #include "brauhelfer.h"
 #include "settings.h"
+#include "widgets/webview.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
@@ -293,18 +294,27 @@ static void copyResources()
     }
 }
 
-static void checkOs()
+static void checkWebView()
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-    if (gSettings->isNewProgramVersion())
+    if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
+        QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
     {
-        if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
-            QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
+        if (gSettings->isNewProgramVersion())
         {
-            QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                 QObject::tr("Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung)."));
+                int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                               QObject::tr("Unter Umständen stürzt das Programm unter Windows 7 ab!\n") +
+                                               QObject::tr("Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?"),
+                                               QMessageBox::Yes | QMessageBox::No,
+                                               QMessageBox::Yes);
+                gSettings->beginGroup("General");
+                gSettings->setValue("WebViewEnabled", ret == QMessageBox::No);
+                gSettings->endGroup();
         }
     }
+    gSettings->beginGroup("General");
+    WebView::setSupported(gSettings->value("WebViewEnabled", true).toBool());
+    gSettings->endGroup();
   #endif
 }
 
@@ -443,7 +453,7 @@ int main(int argc, char *argv[])
 
     // do some checks
     checkSSL();
-    checkOs();
+    checkWebView();
 
     try
     {

@@ -12,6 +12,8 @@
 #endif
 #include "helper/mustache.h"
 
+bool WebView::gIsSupported = true;
+
 WebPage::WebPage(QObject* parent) :
     QWebEnginePage(parent),
     mExternal(false)
@@ -37,15 +39,14 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, QWebEnginePage::Navigatio
     return true;
 }
 
+void WebView::setSupported(bool isSupported)
+{
+    gIsSupported = isSupported;
+}
+
 WebView::WebView(QWidget* parent) :
     QWebEngineView(parent)
 {
-    mIsSupported = true;
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-    if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
-        QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
-        mIsSupported = false;
-  #endif
     setContextMenuPolicy(Qt::NoContextMenu);
     setPage(new WebPage());
 }
@@ -85,7 +86,7 @@ void WebView::setTemplateFile(const QString& file)
 
 void WebView::renderTemplate()
 {
-    if (!mIsSupported)
+    if (!gIsSupported)
         return;
     QFile file(mTemplateFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -99,7 +100,7 @@ void WebView::renderTemplate()
 
 void WebView::renderTemplate(QVariantMap &contextVariables)
 {
-    if (!mIsSupported)
+    if (!gIsSupported)
         return;
     if (mTemplateFile.isEmpty())
         return;
@@ -115,14 +116,14 @@ void WebView::renderTemplate(QVariantMap &contextVariables)
 
 void WebView::renderText(const QString &html)
 {
-    if (!mIsSupported)
+    if (!gIsSupported)
         return;
     setHtml(html, QUrl::fromLocalFile(QFileInfo(mTemplateFile).absolutePath() + "/"));
 }
 
 void WebView::renderText(const QString &html, QVariantMap &contextVariables)
 {
-    if (!mIsSupported)
+    if (!gIsSupported)
         return;
     Mustache::Renderer renderer;
     Mustache::QtVariantContext context(contextVariables);

@@ -1535,87 +1535,87 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="42"/>
+        <location filename="../main.cpp" line="43"/>
         <source>Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
         <translation>No database selected yet. Do you want to create a new database or open an existing one?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="47"/>
+        <location filename="../main.cpp" line="48"/>
         <source>Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
         <translation>Do you want to create a new database or open an existing one?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Anlegen</source>
         <translation>Create</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Öffnen</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Abbrechen</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="55"/>
+        <location filename="../main.cpp" line="56"/>
         <source>Datenbank auswählen</source>
         <translation>Select database</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="57"/>
+        <location filename="../main.cpp" line="58"/>
         <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
         <translation>Database (*.sqlite);;All files (*.*)</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="67"/>
         <source>Datenbank anlegen</source>
         <translation>Create database</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="68"/>
+        <location filename="../main.cpp" line="69"/>
         <source>Datenbank</source>
         <translation>Database</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="99"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Die Datenbank ist ungultig.</source>
         <translation>Invalid database.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="104"/>
+        <location filename="../main.cpp" line="105"/>
         <source>Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.</source>
         <translation>Database version (%1) is too new for the application. It needs to be updated.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="109"/>
+        <location filename="../main.cpp" line="110"/>
         <source>Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.</source>
         <translation>Database version (%1) is too old for the application. The database needs to be updated with kleiner-brauhelfer v1.4.4.6 first.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="114"/>
+        <location filename="../main.cpp" line="115"/>
         <source>Die Datenbank muss aktualisiert werden (version %1 -&gt; %2).</source>
         <translation>The database needs updating (version %1 -&gt; %2).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="116"/>
         <source>Soll die Datenbank jetzt aktualisiert werden?</source>
         <translation>Should the database be updated now?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="116"/>
+        <location filename="../main.cpp" line="117"/>
         <source>ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!</source>
         <translation>ATTENTION, these changes cannot be undone!</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="151"/>
+        <location filename="../main.cpp" line="152"/>
         <source>Datenbank konnte nicht wiederhergestellt werden.</source>
         <translation>Database could not be recovered.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="158"/>
+        <location filename="../main.cpp" line="159"/>
         <source>Aktualisierung fehlgeschlagen.
 
 </source>
@@ -1624,28 +1624,28 @@
 </translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="163"/>
+        <location filename="../main.cpp" line="164"/>
         <source>Sicherheitskopie konnte nicht erstellt werden.</source>
         <translation>Backup could not be made.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="175"/>
+        <location filename="../main.cpp" line="176"/>
         <source>Die Datenbank &quot;%1&quot; konnte nicht geöffnet werden.</source>
         <translation>Database &quot;%1&quot; could not be opened.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="233"/>
+        <location filename="../main.cpp" line="234"/>
         <source>Der Ordner &quot;%1&quot; konnte nicht erstellt werden.</source>
         <translation>Directory &quot;%1&quot; could not be created.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="261"/>
-        <location filename="../main.cpp" line="283"/>
+        <location filename="../main.cpp" line="262"/>
+        <location filename="../main.cpp" line="284"/>
         <source>Der Datei &quot;%1&quot; konnte nicht erstellt werden.</source>
         <translation>File &quot;%1&quot; could not be created.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="272"/>
+        <location filename="../main.cpp" line="273"/>
         <source>Die Ressourcendatei &quot;%1&quot; ist verschieden von der lokalen Datei.
 Die Datei wurde entweder manuell editiert oder durch ein Update verändert.
 
@@ -1656,52 +1656,58 @@ The file was either edited manually or changed by an update.
 Should the local file be replaced?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="305"/>
-        <source>Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung).</source>
+        <location filename="../main.cpp" line="306"/>
+        <source>Unter Umständen stürzt das Programm unter Windows 7 ab!
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="323"/>
+        <location filename="../main.cpp" line="307"/>
+        <source>Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="333"/>
         <source>SSL wird nicht unterstüzt.
 Version benötigt: %1
 Version installiert: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="471"/>
-        <location filename="../main.cpp" line="477"/>
-        <location filename="../main.cpp" line="497"/>
-        <location filename="../main.cpp" line="503"/>
+        <location filename="../main.cpp" line="481"/>
+        <location filename="../main.cpp" line="487"/>
+        <location filename="../main.cpp" line="507"/>
+        <location filename="../main.cpp" line="513"/>
         <source>Programmfehler</source>
         <translation>Program error</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="477"/>
-        <location filename="../main.cpp" line="503"/>
+        <location filename="../main.cpp" line="487"/>
+        <location filename="../main.cpp" line="513"/>
         <location filename="../tabsudauswahl.cpp" line="631"/>
         <location filename="../tabsudauswahl.cpp" line="712"/>
         <source>Unbekannter Fehler.</source>
         <translation>Unknown error</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="288"/>
-        <location filename="../templatetags.cpp" line="354"/>
+        <location filename="../templatetags.cpp" line="321"/>
+        <location filename="../templatetags.cpp" line="387"/>
         <source>zugegeben</source>
         <translation>added</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="290"/>
-        <location filename="../templatetags.cpp" line="348"/>
+        <location filename="../templatetags.cpp" line="323"/>
+        <location filename="../templatetags.cpp" line="381"/>
         <source>nicht zugegeben</source>
         <translation>not added</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="352"/>
+        <location filename="../templatetags.cpp" line="385"/>
         <source>nicht entnommen</source>
         <translation>not removed</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="357"/>
+        <location filename="../templatetags.cpp" line="390"/>
         <source>entnommen</source>
         <translation>removed</translation>
     </message>

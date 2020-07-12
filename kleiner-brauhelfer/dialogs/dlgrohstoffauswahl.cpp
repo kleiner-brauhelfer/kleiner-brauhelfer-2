@@ -137,6 +137,12 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
     proxy->setFilterKeyColumn(mNameCol);
     proxy->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 
+    if (gSettings->value("filter", 0).toInt() == 1)
+    {
+        ui->radioButtonVorhanden->setChecked(true);
+        on_radioButtonVorhanden_clicked();
+    }
+
     gSettings->endGroup();
 }
 
@@ -162,6 +168,7 @@ DlgRohstoffAuswahl::~DlgRohstoffAuswahl()
         gSettings->setValue("sizeWeitereZutaten", geometry().size());
         break;
     }
+    gSettings->setValue("filter", ui->radioButtonVorhanden->isChecked() ? 1 : 0);
     gSettings->endGroup();
     delete ui;
 }

@@ -284,6 +284,12 @@ void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
     if (ui->sliderZoom->hasFocus())
     {
         gZoomFactor = value / 100.0;
+        ui->lblZoom->setText(QString::number(value)+"%");
         ui->webview->setZoomFactor(gZoomFactor);
     }
+}
+
+void WdgWebViewEditable::on_sliderZoom_sliderReleased()
+{
+    ui->lblZoom->clear();
 }

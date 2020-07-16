@@ -17,6 +17,9 @@ class DlgTableView : public QDialog
     Q_OBJECT
 
 public:
+
+    static void restoreView(bool full);
+
     explicit DlgTableView(SqlTableModel* model,
                           QList<TableView::ColumnDefinition> columns,
                           QMap<int, QVariant> defaultValues = QMap<int, QVariant>(),

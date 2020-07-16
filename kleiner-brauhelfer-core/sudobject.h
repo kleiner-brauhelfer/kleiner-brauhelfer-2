@@ -115,6 +115,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, RestalkalitaetIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, PhMalz, toDouble())
     Q_PROPERTY_SUD_READONLY(double, PhMaische, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, PhMaischeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, AnlageVerdampfungsrate, toDouble())
     Q_PROPERTY_SUD_READONLY(double, AnlageSudhausausbeute, toDouble())
     Q_PROPERTY_SUD_READONLY(double, FaktorHauptgussEmpfehlung, toDouble())

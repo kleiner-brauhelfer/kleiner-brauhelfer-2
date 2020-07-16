@@ -60,6 +60,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbRestalkalitaetIst->setColumn(ModelSud::ColRestalkalitaetIst);
     ui->tbPhMalz->setColumn(ModelSud::ColPhMalz);
     ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
+    ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
 
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
@@ -251,6 +252,7 @@ void TabRezept::checkEnabled()
     ui->tbCO2->setReadOnly(gebraut);
     ui->cbWasserProfil->setEnabled(!gebraut);
     ui->tbRestalkalitaetSoll->setReadOnly(gebraut);
+    ui->tbPhMaischeSoll->setReadOnly(gebraut);
     ui->btnWasseraufbereitungUebernehmen->setVisible(!gebraut);
     ui->tbReifezeit->setReadOnly(gebraut);
     ui->btnNeueRast->setVisible(!gebraut);
@@ -389,8 +391,10 @@ void TabRezept::updateValues()
         ui->tbSudname->setCursorPosition(0);
     }
     if (!ui->cbKategorie->hasFocus())
+    {
+        ui->cbKategorie->setCurrentIndex(-1);
         ui->cbKategorie->setCurrentText(bh->sud()->getKategorie());
-
+    }
     double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
     ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
     diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
@@ -399,6 +403,7 @@ void TabRezept::updateValues()
     ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
     ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
+    ui->tbPhMaischeSoll->setEnabled(ui->tbPhMalz->value() > 0);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);

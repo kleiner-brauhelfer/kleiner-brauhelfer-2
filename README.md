@@ -46,6 +46,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Programm als Beerware lizenziert (siehe Menü Hilfe/Bierspende)
 - Neu: Englische & schwedische Übersetzung (Vielen Dank Thomas!)
 - Neu: Direkte Auswahl bei Wasseraufbereiung
+- Neu: Eingabemöglichkeit für gewünschter pH-Wert
 - Fix: Sudkategorien nach oben/unten verschieben
 
 ### Version 2.2.0 Beta (27.06.2020)

@@ -209,7 +209,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 mapWasser["Nachguss"] = locale.toString(f2, 'f', 1);
                 if (bh->sud()->gethighGravityFaktor() != 0)
                 {
-                    f3 = bh->sud()->getMenge() - bh->sud()->getMengeSollKochende();
+                    f3 = bh->sud()->getWasserHgf();
                     mapWasser["Verduennung"] = locale.toString(f3, 'f', 1);
                 }
                 mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 1);

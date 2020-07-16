@@ -137,6 +137,7 @@ void TabAbfuellen::checkEnabled()
     ui->tbJungbiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
+    ui->tbWassserZuckerloesung->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
     ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);

@@ -76,6 +76,8 @@ void WdgWasseraufbereitung::updateValues(bool full)
         ui->tbRestalkalitaet->setMinimum(-99);
         ui->tbRestalkalitaet->setMaximum(0);
     }
+    double diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getRestalkalitaetIst();
+    ui->btnAusgleichen->setVisible(mEnabled && qAbs(diff) > 0.005);
     QString einheit = TabRohstoffe::Einheiten[data(ModelWasseraufbereitung::ColEinheit).toInt()];
     ui->lblEinheit->setText(einheit + tr("/l"));
     ui->lblEinheitGesamt->setText(einheit);
@@ -132,6 +134,12 @@ void WdgWasseraufbereitung::on_tbFaktor_valueChanged(double value)
 {
     if (ui->tbFaktor->hasFocus())
         setData(ModelWasseraufbereitung::ColFaktor, value);
+}
+
+void WdgWasseraufbereitung::on_btnAusgleichen_clicked()
+{
+    double ra = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getRestalkalitaetIst() + data(ModelWasseraufbereitung::ColRestalkalitaet).toDouble();
+    setData(ModelWasseraufbereitung::ColRestalkalitaet, ra);
 }
 
 void WdgWasseraufbereitung::on_btnNachOben_clicked()

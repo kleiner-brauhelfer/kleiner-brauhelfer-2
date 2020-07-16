@@ -107,6 +107,7 @@ public:
         ColRestalkalitaetIst,
         ColPhMalz,
         ColPhMaische,
+        ColPhMaischeSoll,
         ColAnlageVerdampfungsrate,
         ColAnlageSudhausausbeute,
         ColFaktorHauptgussEmpfehlung,

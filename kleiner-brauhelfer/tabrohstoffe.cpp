@@ -628,7 +628,8 @@ void TabRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
 {
     if (selected.indexes().count() > 0)
     {
-        mRowWasser = selected.indexes()[0].row();
+        ProxyModel *proxy = static_cast<ProxyModel*>(ui->tableWasser->model());
+        mRowWasser = proxy->mapRowToSource(selected.indexes()[0].row());
         updateWasser();
     }
 }
@@ -667,6 +668,7 @@ void TabRohstoffe::on_btnWasserprofilLoeschen_clicked()
 
 void TabRohstoffe::updateWasser()
 {
+    ui->lblWasserprofil->setText(dataWasser(ModelWasser::ColName).toString());
     if (!ui->tbCalciumMg->hasFocus())
         ui->tbCalciumMg->setValue(dataWasser(ModelWasser::ColCalcium).toDouble());
     if (!ui->tbCalciumMmol->hasFocus())

@@ -54,6 +54,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("RestalkalitaetIst");
     mVirtualField.append("PhMalz");
     mVirtualField.append("PhMaische");
+    mVirtualField.append("PhMaischeSoll");
     mVirtualField.append("AnlageVerdampfungsrate");
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
@@ -433,16 +434,29 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColPhMaische:
     {
-        double phRa = 0;
         double phMalz = data(idx.row(), ColPhMalz).toDouble();
         if (phMalz > 0)
         {
             double ra = data(idx.row(), ColRestalkalitaetIst).toDouble();
             double V = data(idx.row(), Colerg_WHauptguss).toDouble();
             double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
-            phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+            double phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+            return phMalz + phRa;
         }
-        return phMalz + phRa;
+        return 0;
+    }
+    case ColPhMaischeSoll:
+    {
+        double phMalz = data(idx.row(), ColPhMalz).toDouble();
+        if (phMalz > 0)
+        {
+            double ra = data(idx.row(), ColRestalkalitaetSoll).toDouble();
+            double V = data(idx.row(), Colerg_WHauptguss).toDouble();
+            double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+            double phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+            return phMalz + phRa;
+        }
+        return 0;
     }
     case ColAnlageVerdampfungsrate:
     {
@@ -671,6 +685,19 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
             return true;
         }
         return false;
+    }
+    case ColPhMaischeSoll:
+    {
+        double phMalz = data(idx.row(), ColPhMalz).toDouble();
+        if (phMalz > 0)
+        {
+            double phRa = value.toDouble() - phMalz;
+            double V = data(idx.row(), Colerg_WHauptguss).toDouble();
+            double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+            double ra = phRa * 2.8 / (0.013 * V / schuet + 0.013);
+            return QSqlTableModel::setData(index(idx.row(), ColRestalkalitaetSoll), ra);
+        }
+        return true;
     }
     default:
         return QSqlTableModel::setData(idx, value);

@@ -14,6 +14,7 @@
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgrohstoffauswahl.h"
+#include "dialogs/dlgtableview.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -256,6 +257,7 @@ void MainWindow::restoreView(bool full)
     ui->tabAusruestung->restoreView(full);
     ui->tabDatenbank->restoreView(full);
     DlgRohstoffAuswahl::restoreView(full);
+    DlgTableView::restoreView(full);
 }
 
 void MainWindow::databaseModified()

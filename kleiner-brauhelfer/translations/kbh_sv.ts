@@ -668,7 +668,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="110"/>
         <source>Vorhanden [kg]</source>
-        <translation>I lagret [kg]</translation>
+        <translation>befintlig [kg]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="164"/>
@@ -685,7 +685,7 @@
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="166"/>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="261"/>
         <source>Vorhanden [g]</source>
-        <translation>I lagret [g]</translation>
+        <translation>befintlig [g]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="209"/>
@@ -3766,7 +3766,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="2446"/>
         <source>Dieser Sud enthält weitere Zutaten, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
-        <translation>Denna sats ineehåller extra ingedienser som ändrar stamvörten, vilket kan snedvrida medelvärdesbildningen.</translation>
+        <translation>Satsen innehåller extra ingedienser som ändrar stamvörten, vilket kan snedvrida medelvärdesbildningen.</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2474"/>
@@ -4800,7 +4800,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrezept.ui" line="1558"/>
         <source>Maische aufbereitet</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäsk anpassad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1568"/>
@@ -4867,7 +4867,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrezept.ui" line="1710"/>
         <source>Maische gewünscht</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäsk önskad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1720"/>
@@ -5187,7 +5187,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="41"/>
         <source>vorhanden</source>
-        <translation>I lagret</translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="48"/>
@@ -5337,7 +5337,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="492"/>
         <source>Restalkalität Korrektur</source>
-        <translation>Anpassning av restalkalinitet</translation>
+        <translation>Anpassning av värdet (differens från beräknat)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="682"/>
@@ -5849,7 +5849,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="126"/>
         <source>Merkliste</source>
-        <translation>Märklista</translation>
+        <translation>märklista</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="150"/>
@@ -6375,7 +6375,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="182"/>
         <source>Vorhanden</source>
-        <translation>I lagret</translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="195"/>
@@ -6434,7 +6434,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="165"/>
         <source>Vorhanden</source>
-        <translation>I lagret</translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="178"/>
@@ -6616,7 +6616,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="247"/>
         <source>Vorhanden</source>
-        <translation>I lagret</translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="260"/>
@@ -7055,7 +7055,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="246"/>
         <source>Vorhanden</source>
-        <translation>I lagret</translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="259"/>

@@ -16,8 +16,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.1.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
-- [Version 2.2.0beta](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.2.0beta)
+- [Version 2.2.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -41,7 +40,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ## Änderungen & Erweiterungen
 
-### Version 2.2.0 (in Entwicklung)
+### Version 2.2.0 (17.17.2020)
 - Neu: Datenbankversion **2005**
 - Neu: Programm als Beerware lizenziert (siehe Menü Hilfe/Bierspende)
 - Neu: Englische & schwedische Übersetzung (Vielen Dank Thomas!)

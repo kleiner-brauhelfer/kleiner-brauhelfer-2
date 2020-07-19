@@ -275,7 +275,7 @@ void Settings::setAnimationsEnabled(bool enabled)
 QString Settings::language()
 {
     beginGroup("General");
-    QString lang = value("language", QLocale::system().name()).toString();
+    QString lang = value("language", "de").toString();
     endGroup();
     return lang;
 }

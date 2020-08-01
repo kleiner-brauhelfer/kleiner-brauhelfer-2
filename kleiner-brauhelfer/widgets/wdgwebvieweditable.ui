@@ -110,6 +110,9 @@
           </widget>
          </item>
          <item>
+          <widget class="QLabel" name="lblZoom"/>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -125,7 +128,7 @@
          <item>
           <widget class="ComboBox" name="cbTemplateAuswahl">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; für die Oberfläche des Kleinen Brauhelfers aus.&lt;/p&gt;&lt;p&gt;Je nach Betriebssystem kann es geringfügige Abweichungen geben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <item>
             <property name="text">
@@ -146,6 +149,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnSaveTemplate">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die bearbeitete Stilvorlage gespeichert. Sollten wider Erwarten Probleme auftauchen, geht es mit dem Button Wiederhestellen zur Originalansicht zurück. Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Speichern</string>
            </property>

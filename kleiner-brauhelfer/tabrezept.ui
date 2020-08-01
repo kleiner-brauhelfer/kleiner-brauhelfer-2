@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>395</width>
-         <height>680</height>
+         <width>451</width>
+         <height>688</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -229,7 +229,7 @@
            <item row="11" column="2">
             <widget class="SpinBoxSud" name="tbKochzeit">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 90 Minuten&lt;/span&gt;. Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 90 Minuten&lt;/span&gt;. Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber. Die Ausnutzung der für die Bittere zuständigen Alpha-Säuren nimmt ab 60 Minuten stark ab. Der KleineBrauhelfer berücksichtigt dieses Verhalten. &lt;/p&gt;&lt;p&gt;Lange haltbare Beta-Säuren sind bereits bei 30 Minuten im Sud eingetragen. Besondere Aromatiken von Hopfensorten werden im Reiter Hopfen bei der Hopfengabe herausgearbeitet.&lt;/p&gt;&lt;p&gt;Hopfen enthält über 200 verschiedene aromatische Verbindungen. Bei Fragen zu Bittere und Aroma von Hopfen ist Fachliteratur unabdingbar. Ferner sind die Faforen hier eine sehr gute und akutelle Quelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -286,8 +286,14 @@
               </item>
               <item>
                <widget class="DoubleSpinBoxSud" name="tbFaktorHauptgussEmpfehlung">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlechter gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder &lt;span style=&quot; font-weight:600;&quot;&gt;High Gravity&lt;/span&gt; eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -442,7 +448,7 @@
              <item>
               <widget class="QPushButton" name="btnSudhausausbeute">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf diesen Button übernimmt den &lt;span style=&quot; font-weight:600;&quot;&gt;Mittelwert&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; wie er im Tab Ausrüstung anhand der Anzahl der Sude eingestellt ist.&lt;/p&gt;&lt;p&gt;Der Button &lt;span style=&quot; font-weight:600;&quot;&gt;Anlagewert&lt;/span&gt; erscheint nur, wenn der Mittelwert der Brauananlage abweicht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Voreingestellt fließen in diesen Wert alle gebrauten Sude ein. Sollte sich die Sudhausausbeute etwa wegen geänderter Prozessabläufe stark verändert haben, so empfiehlt es sich vorab einen geeigneten Mittelwert im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;mitweniger Suden vorher zu definieren. Alternativ kann die angenommene Sudhausausbeute im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept &lt;/span&gt;auch &lt;span style=&quot; font-weight:600;&quot;&gt;manuell&lt;/span&gt; gewählt und der Button&lt;span style=&quot; font-weight:600;&quot;/&gt;Anlagewert ignoriert&lt;span style=&quot; font-weight:600;&quot;/&gt;werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Anlagewert</string>
@@ -613,7 +619,7 @@
              <item>
               <widget class="QPushButton" name="btnVerdampfungsrate">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button Anlagewert übernimmt den &lt;span style=&quot; font-weight:600;&quot;&gt;Mittelwert&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; wie er im Tab Ausrüstung anhand der Anzahl der Sude eingestellt ist.&lt;/p&gt;&lt;p&gt;Der Button &lt;span style=&quot; font-weight:600;&quot;&gt;Anlagewert&lt;/span&gt; erscheint nur, wenn der Mittelwert der Brauananlage abweicht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Voreingestellt fließen in diesen Wert alle gebrauten Sude ein. Sollte sich die Verdampfungsrate etwa wegen geänderter Prozessabläufe stark verändert haben, so empfiehlt es sich vorab einen geeigneten Mittelwert im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung mit &lt;/span&gt;weniger Suden vorher zu definieren. Alternativ kann die angenommene &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; im Tab Rezept auch &lt;span style=&quot; font-weight:600;&quot;&gt;manuell&lt;/span&gt; gewählt und der Button Anlagewert ignoriert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Anlagewert</string>
@@ -722,7 +728,7 @@
               <item>
                <widget class="QPushButton" name="btnTagNeu">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweit (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>Neuer Eintrag</string>
@@ -779,8 +785,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>355</width>
-                 <height>108</height>
+                 <width>381</width>
+                 <height>105</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -839,7 +845,7 @@
             <item>
              <widget class="QPushButton" name="btnNeuerAnhang">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine externe Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;p&gt;Wird die Quelle verschoben, bleibt der Eintrag erhalten und weiter auf den übergeordneten Speicherorten referenziert. In diesem Fall muss die Quelle manuell bearbeitet oder gelöscht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string>Anhang hinzufügen</string>
@@ -867,7 +873,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="tabMalz">
        <attribute name="title">
@@ -894,8 +900,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>291</width>
-              <height>364</height>
+              <width>324</width>
+              <height>385</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -950,7 +956,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueMalzGabe">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;RohstoffeinträgeMalz &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Malz &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Neu ist, dass die Reihenfolge der Malze nun verschoben werden kann. Hierfür verwendet man die Pfeile rechts neben dem Textfeld.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Malzgabe hinzufügen</string>
@@ -959,6 +965,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnMalzGabenUebernehmen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird eine zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Ansicht aller Sude &lt;/span&gt;angezeigt, wie sie im Tab Sudauswahl gegeben ist. Ein Klick auf einen Sud zeigt im rechten Feld dessen verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Malze&lt;/span&gt; an. Mit Klick auf ein Malz wird das dort verwendete Malz in das aktuelle Rezept übertragen.&lt;/p&gt;&lt;p&gt;Die Übernahme mehrerer Malzgaben gleichzeitig ist nicht möglich.&lt;/p&gt;&lt;p&gt;Die Anwendung dieses Widgets macht Sinn, wenn man bei der Rezeptentwicklung mit früheren Rezepten arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Aus Rezept übernehmen</string>
           </property>
@@ -985,7 +994,7 @@
           <item row="0" column="1">
            <widget class="ComboBox" name="cbBerechnungsartHopfen">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ignorieren&lt;/span&gt; bedeutet, es wird keine Hopfenberechnung durchgeführt. Die Mengen können frei eingestellt werden und die Sollbittere wird ignoriert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen. Die Alpha-Werte werden nicht berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere. Diese Berechnungsart wird empfohlen, weil Hopfensorten mit verschiedenen Alpha-Werten sich besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ignorieren&lt;/span&gt; bedeutet, es wird keine Hopfenberechnung durchgeführt. Die Mengen können frei eingestellt werden und die Sollbittere wird ignoriert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen. Die &lt;span style=&quot; font-weight:600;&quot;&gt;Alpha-Werte &lt;/span&gt;bleiben &lt;span style=&quot; font-weight:600;&quot;&gt;unberücksichtigt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere. Diese Berechnungsart wird empfohlen, wenn Hopfensorten mit verschiedenen Alpha-Werten ausgetauscht werden sollen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei importierten Rezepten ist die Berechnung der Hopfengaben zunächst deaktiviert, um Probleme zu vermeiden. &lt;/p&gt;&lt;p&gt;Wenn die Hopfenberechnung nach IBU gewünscht ist, empfiehlt sich folgendes Vorgehen: Da die Berechnung von Hopfen sich bei importierten Rezepten stark von den eigenen Rohstoffdaten und Erfordernissen der Brauanlage unterscheiden kann, wird zunächst nur die Berechnung nach Gewicht gewählt. Erst dann empfiehlt es sich in einem zweiten Schritt auf die Berechnung nach IBU zu wechseln und auch hier gegebenenfalls Korrekturen vorzunehmen, damit der IBU-Anteil auch hier 100% ergibt.&lt;/p&gt;&lt;p&gt;Die prozentuale Verteilung sollte anschließend bei Gewicht als auch bei IBU gesamt 100% ergeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <item>
              <property name="text">
@@ -1044,8 +1053,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>291</width>
-              <height>103</height>
+              <width>324</width>
+              <height>100</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1100,7 +1109,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueHopfenGabe">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen &lt;/span&gt;im Tab Rohstoffe  zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hopfen &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Neu ist, dass die Reihenfolge der Hopfengaben nun verschoben werden kann. Hierfür verwendet man die Pfeile rechts neben dem Textfeld.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Hopfengabe hinzufügen</string>
@@ -1109,6 +1118,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird eine zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Ansicht aller Sude &lt;/span&gt;angezeigt, wie sie im Tab Sudauswahl gegeben ist. Ein Klick auf einen Sud zeigt im rechten Feld dessen verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt; an. Mit Klick auf eine Hopfengabe wird der dort verwendete Hopfen in das aktuelle Rezept übertragen.&lt;/p&gt;&lt;p&gt;Die Übernahme mehrerer Hopfengaben gleichzeitig ist nicht möglich.&lt;/p&gt;&lt;p&gt;Die Anwendung dieses Widgets macht Sinn, wenn man bei der Rezeptentwicklung mit früheren Rezepten arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Aus Rezept übernehmen</string>
           </property>
@@ -1141,8 +1153,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>291</width>
-              <height>364</height>
+              <width>324</width>
+              <height>385</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1197,7 +1209,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueHefeGabe">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hefe &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;p&gt;Neu in Version 2 des Kleinen Brauhelfers ist die Möglichkeit von &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Hefegaben&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hefe &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Neu ist, dass die Reihenfolge von Hefegaben nun verschoben werden kann. Hierfür verwendet man die Pfeile rechts neben dem Textfeld.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;p&gt;Neu in Version 2 des Kleinen Brauhelfers ist die Möglichkeit von &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Hefegaben&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Hefegabe hinzufügen</string>
@@ -1206,6 +1218,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnHefeGabenUebernehmen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird eine zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Ansicht aller Sude &lt;/span&gt;angezeigt, wie sie im Tab Sudauswahl gegeben ist. Ein Klick auf einen Sud zeigt im rechten Feld dessen verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt; an. Mit Klick auf eine Hefe wird die dort verwendete Hefe in das aktuelle Rezept übertragen.&lt;/p&gt;&lt;p&gt;Die Übernahme mehrerer Hefesorten gleichzeitig ist nicht möglich.&lt;/p&gt;&lt;p&gt;Die Anwendung dieses Widgets macht Sinn, wenn man bei der Rezeptentwicklung mit früheren Rezepten arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Aus Rezept übernehmen</string>
           </property>
@@ -1234,8 +1249,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>291</width>
-             <height>566</height>
+             <width>324</width>
+             <height>560</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1288,7 +1303,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueHopfenstopfenGabe">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hopfen &lt;/span&gt;im Tab Rohstoffe zum Hopfenstopfen zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Hopfenstopfengabe hinzufügen</string>
@@ -1298,7 +1313,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueWeitereZutat">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Weitere Zutaten &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Weitere Zutaten &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Neu ist, dass die Reihenfolge Weiterer Zutaten nun verschoben werden kann. Hierfür verwendet man die Pfeile rechts neben dem Textfeld.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Weitere Zutat hinzufügen</string>
@@ -1307,6 +1322,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnWeitereZutatUebernehmen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird eine zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Ansicht aller Sude &lt;/span&gt;angezeigt, wie sie im Tab Sudauswahl gegeben ist. Ein Klick auf einen Sud zeigt im rechten Feld alle &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten &lt;/span&gt;an. Mit Klick auf eine Weitere Zutat werden die dort verwendeten Zutaten in das aktuelle Rezept übertragen.&lt;/p&gt;&lt;p&gt;Die Übernahme mehrerer Weiterer Zutaten gleichzeitig ist nicht möglich.&lt;/p&gt;&lt;p&gt;Die Anwendung dieses Widgets macht Sinn, wenn man bei der Rezeptentwicklung mit früheren Rezepten arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Aus Rezept übernehmen</string>
           </property>
@@ -1339,8 +1357,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>291</width>
-              <height>114</height>
+              <width>324</width>
+              <height>112</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1395,7 +1413,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueRast">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird eine neue &lt;span style=&quot; font-weight:600;&quot;&gt;Rasstufe&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich die Raststufen – je nach Maischverfahren – Schritt für Schritt festzulegen. Eine manuelle Sortiermöglichkeit ist ist im Kleinen Brauhelfer nicht vorgesehen.&lt;/p&gt;&lt;p&gt;Die Namen der einzelnen Raststufen werden nach Eingabe der ersten beiden Buchstaben automatisch vervollständigt. Daneben steht es dem Anwender frei, eigene Raststufen zu definieren.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Raststufen ist die Fachliteratur oder das Forum der Wahl um Rat zu fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird eine neue &lt;span style=&quot; font-weight:600;&quot;&gt;Raststufe&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich die Raststufen – je nach Maischverfahren – Schritt für Schritt festzulegen. Neu ist, dass die Reihenfolge der Rasten nun verschoben werden kann. Hierfür verwendet man die Pfeile rechts neben dem Textfeld. &lt;/p&gt;&lt;p&gt;Ebenfalls neu sind nun drei verschiedene Maischverfahren: &lt;span style=&quot; font-weight:600;&quot;&gt;Temperaturrast&lt;/span&gt; meint das schrittweise Anheben der Temperatur. Dieses Verfahren ist auch als Kesselmaische bekannt. Es ist das geläufigste Verfahren im Hobby- Kleinbrauerbereich. &lt;span style=&quot; font-weight:600;&quot;&gt;Infusion&lt;/span&gt; meint das schrittweise Zubrühen mit Wasser, um die Temperatur der nächsten Raststufe zu erreichen. &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt; meint das ein- oder mehrmalige Entnehmen verschiedener Teilmaischen und erneute Zubrühen bis zur gewünschten Temperatur der Gesamtmaische.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Maischverfahren ist ein Fachbuch der bewährteste Ratgeber. Geht es um Feinheiten, sind die Fachforen erste Adresse.&lt;/p&gt;&lt;p&gt;Die Namen der einzelnen Raststufen werden nach Eingabe der ersten beiden Buchstaben automatisch vervollständigt. Daneben steht es dem Anwender frei, eigene Raststufen zu definieren.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Raststufen ist die Fachliteratur oder das Forum der Wahl um Rat zu fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Schritt hinzufügen</string>
@@ -1404,6 +1422,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnRastenUebernehmen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird eine zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Ansicht aller Sude &lt;/span&gt;angezeigt, wie sie im Tab Sudauswahl gegeben ist. Ein Klick auf einen Sud zeigt im rechten Feld alle &lt;span style=&quot; font-weight:600;&quot;&gt;Raststufen &lt;/span&gt;des gewählten Rezeptes an. Mit Klick auf eine Rast wird die dort verwendete Raststufe in das aktuelle Rezept übertragen.&lt;/p&gt;&lt;p&gt;Die Übernahme mehrerer Raststufen gleichzeitig ist nicht möglich.&lt;/p&gt;&lt;p&gt;Die Anwendung dieses Widgets macht Sinn, wenn man bei der Rezeptentwicklung mit früheren Rezepten arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Aus Rezept übernehmen</string>
           </property>
@@ -1427,212 +1448,37 @@
           <property name="verticalSpacing">
            <number>4</number>
           </property>
-          <item row="3" column="1">
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="0" column="1" colspan="3">
+           <widget class="ComboBox" name="cbWasserProfil">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt. &lt;span style=&quot; font-weight:600;&quot;&gt;Voreingestellt&lt;/span&gt; ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;theoretisches Wasser&lt;/span&gt; mit 0 dH und pH 5,5. Dieses muss nach Programmstart im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;mit realen Werten angepasst werden, damit der Kleine Brauhelfer den Maische-pH und die Restalkalität korrekt berechnen kann. &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Wasserprofile &lt;/span&gt;können im Reiter Wasser im Tab Rohstoffe verwaltet werden.&lt;/p&gt;&lt;p&gt;Wasserprofile sind ein wesentlicher Faktor, um die Charakteristika von Bierstilen herauszuarbeiten. Ein Amerikanisches Pale Ale ist mit 300mg/l typisch knackig im Gegensatz zu den üblichen 80mg/l.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung. Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Vorteil: Diese Wässer können gezielt aufgesalzt werden. Dies bietet sich bei hartem Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;p&gt;Fachautoren wie Randy Mosher arbeiten aus Prinzip mit Wasserprofilen bei ihren Rezepten. Auf speziellen Webseiten zur Wasserberechnung wie &lt;a href=&quot;https://www.maischemalzundmehr.de/index.php?&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Maische, Malz und Mehr&lt;/span&gt;&lt;/a&gt; von Sandro Wagner oder &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water&lt;/span&gt;&lt;/a&gt; von Martin Brungard finden sich Empfehlungen für Einsteiger ins Thema. Überdies bieten viele Rezeptkalkulatoren einen zumindest rudimentären Einstieg ins Thema an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_77">
+            <property name="text">
+             <string>Malz</string>
             </property>
-           </spacer>
+            <property name="indent">
+             <number>9</number>
+            </property>
+           </widget>
           </item>
           <item row="4" column="0">
            <widget class="QLabel" name="label_69">
             <property name="text">
-             <string>Wasser</string>
+             <string>Wasser gegeben</string>
             </property>
             <property name="indent">
              <number>9</number>
             </property>
            </widget>
           </item>
-          <item row="3" column="4">
-           <widget class="QLabel" name="label_72">
+          <item row="7" column="0" colspan="5">
+           <widget class="QLabel" name="label_76">
             <property name="text">
-             <string>°dH</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="4">
-           <widget class="QLabel" name="label_70">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>°dH</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="3">
-           <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetIst">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="decimals">
-             <number>2</number>
-            </property>
-            <property name="minimum">
-             <double>-99.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>99.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" colspan="3">
-           <widget class="ComboBox" name="cbWasserProfil">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im Tab Ausrüstung muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="3">
-           <widget class="DoubleSpinBoxSud" name="tbPhMaische">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="decimals">
-             <number>2</number>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" colspan="5">
-           <widget class="QLabel" name="label_75">
-            <property name="text">
-             <string>Restalkalität</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_71">
-            <property name="text">
-             <string>Gewünscht</string>
-            </property>
-            <property name="indent">
-             <number>9</number>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QPushButton" name="btnRestalkalitaet">
-            <property name="minimumSize">
-             <size>
-              <width>50</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>50</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_73">
-            <property name="text">
-             <string>Aufbereit</string>
-            </property>
-            <property name="indent">
-             <number>9</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_17">
-            <property name="text">
-             <string>Wasserprofil</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0">
-           <widget class="QLabel" name="label_39">
-            <property name="text">
-             <string>Maische</string>
-            </property>
-            <property name="indent">
-             <number>9</number>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="3">
-           <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetWasser">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Wassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="decimals">
-             <number>2</number>
-            </property>
-            <property name="minimum">
-             <double>-99.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>99.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="5">
-           <widget class="Line" name="line_6">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="3">
-           <widget class="DoubleSpinBoxSud" name="tbPhMalz">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="decimals">
-             <number>2</number>
+             <string>pH-Wert</string>
             </property>
            </widget>
           </item>
@@ -1662,12 +1508,72 @@
             <property name="maximum">
              <double>99.000000000000000</double>
             </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
            </widget>
           </item>
-          <item row="8" column="0">
-           <widget class="QLabel" name="label_77">
+          <item row="1" column="0" colspan="5">
+           <widget class="Line" name="line_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="6" column="0" colspan="5">
+           <widget class="Line" name="line_13">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="btnRestalkalitaet">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button wird die &lt;span style=&quot; font-weight:600;&quot;&gt;neu berechnete Restalkalität &lt;/span&gt;übernommen, die bei Wasserbehandlung Ergebnis ist.&lt;/p&gt;&lt;p&gt;Die Berechnung ist abhängig von Salzen und Säuren, die unter dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung hinzufügen &lt;/span&gt;anegeben sind.&lt;/p&gt;&lt;p&gt;Auch andere Faktoren wie zugesetztes &lt;span style=&quot; font-weight:600;&quot;&gt;Osmose-Wasser&lt;/span&gt; verändern die Restalkalität. Weitergehende Wasserbahndlung muss derzeit noch außerhalb vom Kleinen Brauhelfer berechnet werden. Tools für derartiges Mischwasser, wie sie bestimmte Bierstile nötig machen können, sind bei &lt;a href=&quot;https://www.maischemalzundmehr.de/index.php?inhaltmitte=toolswasserrechner&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Maische, Malz und Mehr &lt;/span&gt;&lt;/a&gt;von Sandro Wagner sowie als Excel-Sheet namens &lt;a href=&quot;https://www.brunwater.com/download&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Bru'n Water &lt;/span&gt;&lt;/a&gt;des amerikanischen Wasserspezialisten Martin Brungard verfügbar. Letzterer stellt die derzeit weitereichendste Wasserberechnung für Heimbrauer zur Verfügung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_17">
             <property name="text">
-             <string>Malz</string>
+             <string>Wasserprofil</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_39">
+            <property name="text">
+             <string>Maische aufbereitet</string>
             </property>
             <property name="indent">
              <number>9</number>
@@ -1681,17 +1587,164 @@
             </property>
            </widget>
           </item>
-          <item row="7" column="0" colspan="5">
-           <widget class="QLabel" name="label_76">
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_71">
             <property name="text">
-             <string>pH-Wert</string>
+             <string>RA gewünscht</string>
+            </property>
+            <property name="indent">
+             <number>9</number>
             </property>
            </widget>
           </item>
-          <item row="6" column="0" colspan="5">
-           <widget class="Line" name="line_13">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="5" column="3">
+           <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetIst">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; ausgegeben. &lt;/p&gt;&lt;p&gt;Diese setzt sich zusammen aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Wassers und der Restalkalität der unten eingetragenen &lt;span style=&quot; font-weight:600;&quot;&gt;Salze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Säuren&lt;/span&gt; zur Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Im Zusammenhang mit dem Brauprozess haben die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;und die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Brauwassers erheblichen Einfluss auf technologische Qualitätskriterien, da die Wasserionen den pH-Wert von Maische, Würze und Bier beeinflussen. Tatsächlich ist die Beschaffenheit des optimalen Brauwassers abhängig davon, welches Bier der Braue damit brauen will. Für &lt;span style=&quot; font-weight:600;&quot;&gt;Pilsner&lt;/span&gt;-Biere sind Restalkalitäten zwischen -2 und 2° dH anzustreben, für &lt;span style=&quot; font-weight:600;&quot;&gt;helle Biere &lt;/span&gt;&amp;lt; 5° dH und für &lt;span style=&quot; font-weight:600;&quot;&gt;dunkle Biere &lt;/span&gt;&amp;lt; 10 °dH.&lt;/p&gt;&lt;p&gt;Einigen Bierstilen wie etwa dem Englischen IPA kommt ein erhöhter Salzgehalt geschmacklich zugute (daher die Mär vom Englischen Burton-on-Trent als dem Geburtsort des perfekten IPA – das Wasser dort hat einen besonders hohen Calciumsulfatgehalt, der sich bei stark gehopften Bieren besonders gut macht).&lt;/p&gt;&lt;p&gt;Aus sensorischen Gründen sowie auch als Gushing-Prophylaxe soll das &lt;span style=&quot; font-weight:600;&quot;&gt;Verhältnis &lt;/span&gt;von &lt;span style=&quot; font-weight:600;&quot;&gt;Nichtcarbonat&lt;/span&gt;- zu &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte&lt;/span&gt; bei allen Bieren ca. &lt;span style=&quot; font-weight:600;&quot;&gt;3:1&lt;/span&gt; betragen. In der Praxis wird dies mit Calciumsulfat (Braugips) und Calciumchlorid umgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="decimals">
+             <number>2</number>
+            </property>
+            <property name="minimum">
+             <double>-99.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>99.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="3">
+           <widget class="DoubleSpinBoxSud" name="tbPhMaische">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischeprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen, um eine optimale Enzymarbeit des Malzes zu garantieren. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="decimals">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="3">
+           <widget class="DoubleSpinBoxSud" name="tbPhMalz">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert &lt;/span&gt;für die &lt;span style=&quot; font-weight:600;&quot;&gt;gesamte Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Tab Rohstoffe im Reiter Malz die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Soblad der Farbwert des Malzes im Tab Rohstoffe eingegeben wurde, berechnet der Kleine Brauhelfer den dazugehörenden pH-Wert. Der Wert selber kann auch, etwa anhand con Mälzer-Charts, manuel eingegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="decimals">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3">
+           <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetWasser">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Rohwassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Unter Rohwasser ist das unbehandelte Wasser zu verstehen, dessen Werte im Tab Ausrüstung definiert werden müssen. Dieses Wasser dient dem Kleinen Brauhelfer als Basis zur Berechnung aller weiteren Schritte der Wasseraufbereitung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="decimals">
+             <number>2</number>
+            </property>
+            <property name="minimum">
+             <double>-99.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>99.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_73">
+            <property name="text">
+             <string>Wasser aufbereitet</string>
+            </property>
+            <property name="indent">
+             <number>9</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="5">
+           <widget class="QLabel" name="label_75">
+            <property name="text">
+             <string>Restalkalität (RA)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="4">
+           <widget class="QLabel" name="label_72">
+            <property name="text">
+             <string>°dH</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="4">
+           <widget class="QLabel" name="label_70">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>°dH</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_40">
+            <property name="text">
+             <string>Maische gewünscht</string>
+            </property>
+            <property name="indent">
+             <number>9</number>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="3">
+           <widget class="DoubleSpinBoxSud" name="tbPhMaischeSoll">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Der pH-Wert wird neben dem pH-Wert einzelner Malze durch Mineralsalze wie Calciumsulfat oder Säuren wie Milchsäure beeinflusst.&lt;/p&gt;&lt;p&gt;Soblad der Farbwert des Malzes im Tab Rohstoffe eingegeben wurde, berechnet der Kleine Brauhelfer den dazugehörenden pH-Wert. Der Wert selber kann auch, etwa anhand con Mälzer-Charts, manuel eingegeben werden.&lt;/p&gt;&lt;p&gt;Rechtlich ist Wasserbehandlung mit dem vorläufigen deutschen Biersteuergesetz unproblematisch, zumal bei Hobbybrauern. Im Zweifel geben Behörden und Fachforen Auskunft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="decimals">
+             <number>2</number>
+            </property>
+            <property name="singleStep">
+             <double>0.010000000000000</double>
             </property>
            </widget>
           </item>
@@ -1717,8 +1770,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>291</width>
-             <height>372</height>
+             <width>324</width>
+             <height>346</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -1771,7 +1824,7 @@
         <item>
          <widget class="QPushButton" name="btnNeueWasseraufbereitung">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Einträge &lt;/span&gt;im Tab Rohstoffe im Reiter Wasser für diverse Wasserprofile zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Wasseraufbereitung hinzufügen</string>
@@ -1780,6 +1833,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnWasseraufbereitungUebernehmen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird eine zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Ansicht aller Sude &lt;/span&gt;angezeigt, wie sie im Tab Sudauswahl gegeben ist. Ein Klick auf einen Sud zeigt im rechten Feld alle &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile &lt;/span&gt;des gewählten Rezeptes an. Mit Klick auf ein Wasserprofil wird das dort verwendete Brauwasser in das aktuelle Rezept übertragen.&lt;/p&gt;&lt;p&gt;Die Übernahme mehrerer Wasserprofile gleichzeitig ist nicht möglich.&lt;/p&gt;&lt;p&gt;Die Anwendung dieses Widgets macht Sinn, wenn man bei der Rezeptentwicklung mit früheren Rezepten arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Aus Rezept übernehmen</string>
           </property>
@@ -1810,8 +1866,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>409</width>
-          <height>880</height>
+          <width>455</width>
+          <height>822</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1941,7 +1997,7 @@
             <item row="16" column="2">
              <widget class="DoubleSpinBoxSud" name="tbKosten">
               <property name="toolTip">
-               <string>Kosten.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Kosten des Rezeptes pro Liter zusammengefasst. Unter Gesamtkosten sind die Angaben im Tab Ausrüstung zu verstehen sowie die zusätzlichen Kosten wie sie im Tab Braudaten festgelegt sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2099,7 +2155,7 @@
             <item row="2" column="2">
              <widget class="DoubleSpinBoxSud" name="tbGesamtschuettung">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür einzig die Daten aus der Sektion &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; im Tab Rohstoffe. Zusätze wie Zucker werden hier nicht berücksicht. Der Grund ist, dass nur Malz und Rohfrucht als Zutaten mit enzymatischer Aktivität den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; während des Maischens beeinflussen.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür einzig die Daten aus der Sektion &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; im Tab Rohstoffe. Zusätze aus dem Bereich &amp;quot;Weitere Zutaten&amp;quot;, wie Zucker, werden hier nicht berücksicht. &lt;/p&gt;&lt;p&gt;Der Grund ist, dass nur Malz und Rohfrucht als Zutaten mit enzymatischer Aktivität den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; während des Maischens beeinflussen.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2506,7 +2562,7 @@
             <item row="3" column="3">
              <widget class="DoubleSpinBoxSud" name="tbWasserHGF">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den Hauptguss anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge &lt;/span&gt;beim &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Verfahren&lt;/span&gt;. Wird mit High Gravity gebraut, so ist zu beachten, dass die Nachgussmenge geteilt wird. Abhängig vom Verdünnungsfaktor wird eine Teilmenge vom Nachguss abgezogen und der Menge High Gravity zugeschlagen. &lt;/p&gt;&lt;p&gt;Wird das Nachgusswassereigens aufbereitet, empfiehlt es sich die Nachguss- und High-Gravity-Menge als  Gesamtnachgussemenge zu behandeln.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2760,7 +2816,7 @@
             <item row="4" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVerdampfung">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Tab Ausrüstung berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2859,7 +2915,11 @@
              </widget>
             </item>
             <item row="0" column="0" colspan="4">
-             <widget class="QLabel" name="lblAnlageName"/>
+             <widget class="QLabel" name="lblAnlageName">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird nochmals die gewählte Brauanlage aufgeführt, wie sie oben im linken Rezeptfeld gewählt wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
             </item>
             <item row="8" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVolumenKochen">
@@ -2930,7 +2990,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben. Die Sollmenge ist im linken Feld des Tab Rezept vorgegeben. Die Korrektur der Sollmenge ist eine Annäherung an zu erwartende Abweichungen, hat somit nur informellen Charakter.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>

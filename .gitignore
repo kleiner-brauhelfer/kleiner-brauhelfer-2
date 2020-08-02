@@ -4,3 +4,4 @@ build-linux32/
 build-linux64/
 build-macos/
 *.user
+.DS_Store

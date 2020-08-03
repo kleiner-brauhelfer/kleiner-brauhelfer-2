@@ -80,8 +80,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>449</height>
+        <width>100</width>
+        <height>74</height>
        </rect>
       </property>
       <attribute name="label">
@@ -132,8 +132,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>449</height>
+        <width>100</width>
+        <height>74</height>
        </rect>
       </property>
       <attribute name="label">
@@ -184,8 +184,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>449</height>
+        <width>100</width>
+        <height>74</height>
        </rect>
       </property>
       <attribute name="label">
@@ -236,8 +236,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>449</height>
+        <width>100</width>
+        <height>74</height>
        </rect>
       </property>
       <attribute name="label">
@@ -980,7 +980,7 @@
      <item>
       <widget class="QPushButton" name="buttonNeuVorlageObrama">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus der offenen Braudatenbank &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Die aufwendige Datenbank kann auch direkt unter &lt;a href=&quot;obrama.mueggelland.de &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;obrama.mueggelland.de &lt;/span&gt;&lt;/a&gt;eingesehen werden. Mitarbeit ist ausdrücklich erwünscht. Je nach Zutat können sich die Zuordnungen zwischen oBrama und dem Kleinen Brauhelfer unterscheiden. Etwas Nachbearbeitung wird daher in der Regel nötig sein. Dafür entfällt die mühsame Eigenrecherche.&lt;/p&gt;&lt;p&gt;oBrama hält zur Zeit Daten zu Malzen, Hopfen, Hefen und Weiteren Zutaten parat. Eine Datenbank zu &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile der Welt &lt;/span&gt;ist in Planung (Stand Mitte 2020).&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable Suchmaske. Gemeinhin genügen drei Buchstaben, um den gewünschten Eintrag zu finden.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus der offenen Braudatenbank &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Die aufwendige Datenbank kann auch direkt unter &lt;a href=&quot;obrama.mueggelland.de &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;obrama.mueggelland.de &lt;/span&gt;&lt;/a&gt;eingesehen werden. Mitarbeit ist ausdrücklich erwünscht. Je nach Zutat können sich die Zuordnungen zwischen oBrama und dem Kleinen Brauhelfer unterscheiden. Etwas Nachbearbeitung wird daher in der Regel nötig sein. Dafür entfällt die mühsame Eigenrecherche.&lt;/p&gt;&lt;p&gt;oBrama hält zur Zeit Daten zu Malzen, Hopfen, Hefen und Weiteren Zutaten parat. Eine Datenbank zu weltweiten &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofilen &lt;/span&gt;ist in Planung (Stand Mitte 2020).&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable Suchmaske. Gemeinhin genügen drei Buchstaben, um den gewünschten Eintrag zu finden.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Neuer Eintrag aus oBraMa</string>
@@ -1016,14 +1016,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

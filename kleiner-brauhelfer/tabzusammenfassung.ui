@@ -32,7 +32,7 @@
      <item>
       <widget class="QPushButton" name="btnPrintPreview">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel / Zusammenfassung&lt;/span&gt; ausgedruckt. &lt;/p&gt;&lt;p&gt;Das Betriebssystem ruft dazu den Druckdialog auf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel &lt;/span&gt;oder die&lt;span style=&quot; font-weight:600;&quot;&gt; Zusammenfassung&lt;/span&gt; ausgedruckt.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach OS  oder Treiber unterschiedlich gestaltet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Druckvorschau</string>
@@ -42,7 +42,7 @@
      <item>
       <widget class="QPushButton" name="btnToPdf">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel &lt;/span&gt;oder die  &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt; als PDF abgespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel &lt;/span&gt;oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt; als PDF abgespeichert.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach OS  oder Treiber unterschiedlich gestaltet ist. In macOS ist die PDF-Funktion in den Druckdialog integriert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>PDF</string>

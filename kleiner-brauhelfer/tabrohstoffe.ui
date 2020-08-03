@@ -22,7 +22,7 @@
      <item>
       <widget class="QRadioButton" name="radioButtonAlle">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; (Malz, Hopfen, Hefe etc.) angezeigt.&lt;/p&gt;&lt;p&gt;Bei einer großen Rohstoffliste empfiehlt sich die Filterfunktion der Freitextsuche oder nebenstehende Suchalgorithmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>alle</string>
@@ -35,7 +35,7 @@
      <item>
       <widget class="QRadioButton" name="radioButtonVorhanden">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; innerhalb der gewählten Zutatenkategorie (Malz, Hopfen Hefe, etc.) haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>vorhanden</string>
@@ -45,7 +45,7 @@
      <item>
       <widget class="QRadioButton" name="radioButtonInGebrauch">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud der gewählten Zutatenkategorie (Malz, Hopfen, Hefe etc.) verwendet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>in Gebrauch</string>
@@ -55,7 +55,7 @@
      <item>
       <widget class="QLineEdit" name="lineEditFilter">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zusätzliche Freitextsuche für die Zutaten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Fled für die &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; in den Zutaten.&lt;/p&gt;&lt;p&gt;Die Suche bezieht sich immer auf den aktivierten Reiter einer Zutat. Gesucht wird gwöhnlich in allen Felder außer Menge, Preis, Datum und Link &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="placeholderText">
         <string>Suche</string>
@@ -73,15 +73,15 @@
    <item>
     <widget class="QToolBox" name="toolBoxRohstoffe">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="widget_2">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>449</height>
        </rect>
       </property>
       <attribute name="label">
@@ -132,8 +132,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>449</height>
        </rect>
       </property>
       <attribute name="label">
@@ -184,8 +184,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>449</height>
        </rect>
       </property>
       <attribute name="label">
@@ -236,8 +236,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>449</height>
        </rect>
       </property>
       <attribute name="label">
@@ -288,8 +288,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>449</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -336,7 +336,7 @@
              <item>
               <widget class="QPushButton" name="btnNeuesWasserprofil">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neues &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Wird außer dem örtlichen Leitungswasser regelmäßig mit aufbereitetem Wasser wie &lt;span style=&quot; font-weight:600;&quot;&gt;Osmose-Wasser&lt;/span&gt; gearbeitet, empfiehlt es sich hier mehrere Wasserprofile anzulegen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neues &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Wird außer dem örtlichen Leitungswasser regelmäßig mit aufbereitetem Wasser wie &lt;span style=&quot; font-weight:600;&quot;&gt;Osmose-Wasser&lt;/span&gt; gearbeitet, empfiehlt es sich hier mehrere Wasserprofile anzulegen.&lt;/p&gt;&lt;p&gt;Wird mit destilliertem Wasser gearbeitet, kann der prozentuale Verschnitt leicht berechnet werden: &lt;span style=&quot; font-weight:600;&quot;&gt;Destilliertes Wasser&lt;/span&gt; ist entminieralisiert, enthält also überall 0 Ionen mg/L.&lt;/p&gt;&lt;p&gt;Bei &lt;span style=&quot; font-weight:600;&quot;&gt;Osmose-Wasser&lt;/span&gt; kann standardmäßig folgende Ionenkonentration in mg/l angenommen werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ca 1 | Mg 0 | Na 8 | SO₄ 1 | Cl₂ 4 | HCO₃¯ 16&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Braurechner wie &lt;a href=&quot;https://www.brunwater.com/download&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water &lt;/span&gt;&lt;/a&gt;haben die Mischungsrechnung integriert. Wer einfachere Tools bevorzugt, ist mit einem &lt;a href=&quot;https://brauerei.mueggelland.de/mischungen.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Mischkreuzrechner &lt;/span&gt;&lt;/a&gt;gut bedient, wie ihn etwa Müggelland anbietet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Neues Wasserprofil</string>
@@ -366,8 +366,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>526</width>
-             <height>603</height>
+             <width>509</width>
+             <height>588</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -627,7 +627,7 @@
             <item row="6" column="2">
              <widget class="DoubleSpinBox" name="tbMagnesiumMg">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Umrechnung in andere Einheiten erfolgt automatisch.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -960,7 +960,7 @@
      <item>
       <widget class="QPushButton" name="buttonAdd">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;p&gt;Werden mehrere Einträge hintereinander angelegt, werden diese durchnummeriert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Neuer Eintrag</string>
@@ -970,7 +970,7 @@
      <item>
       <widget class="QPushButton" name="buttonNeuVorlage">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus einer &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable weil umfangreiche &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlagenliste&lt;/span&gt;, mit der eigene funktionsgleiche Vorlagen angelegt, gelöscht, importiert, exportiert und wiederherstellt werden können.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus einer &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable weil umfangreiche &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlagenliste&lt;/span&gt;, mit der eigene funktionsgleiche Vorlagen angelegt, gelöscht, importiert, exportiert und wiederherstellt werden können.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Neuer Eintrag aus Vorlage</string>
@@ -979,6 +979,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="buttonNeuVorlageObrama">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus der offenen Braudatenbank &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Die aufwendige Datenbank kann auch direkt unter &lt;a href=&quot;obrama.mueggelland.de &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;obrama.mueggelland.de &lt;/span&gt;&lt;/a&gt;eingesehen werden. Mitarbeit ist ausdrücklich erwünscht. Je nach Zutat können sich die Zuordnungen zwischen oBrama und dem Kleinen Brauhelfer unterscheiden. Etwas Nachbearbeitung wird daher in der Regel nötig sein. Dafür entfällt die mühsame Eigenrecherche.&lt;/p&gt;&lt;p&gt;oBrama hält zur Zeit Daten zu Malzen, Hopfen, Hefen und Weiteren Zutaten parat. Eine Datenbank zu &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile der Welt &lt;/span&gt;ist in Planung (Stand Mitte 2020).&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable Suchmaske. Gemeinhin genügen drei Buchstaben, um den gewünschten Eintrag zu finden.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Neuer Eintrag aus oBraMa</string>
        </property>
@@ -990,7 +993,7 @@
         <bool>true</bool>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Das Wort &amp;quot;_Kopie&amp;quot; wird angehängt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Eintrag kopieren</string>
@@ -1000,7 +1003,7 @@
      <item>
       <widget class="QPushButton" name="buttonDelete">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Dies kann nicht rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Eintrag löschen</string>

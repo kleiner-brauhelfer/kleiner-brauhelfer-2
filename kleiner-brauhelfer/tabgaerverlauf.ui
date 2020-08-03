@@ -24,8 +24,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
-        <height>586</height>
+        <width>790</width>
+        <height>559</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -157,8 +157,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
-        <height>586</height>
+        <width>790</width>
+        <height>559</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -388,8 +388,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
-        <height>586</height>
+        <width>790</width>
+        <height>559</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -463,7 +463,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Datum&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Druck&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">

@@ -1451,7 +1451,7 @@
           <item row="0" column="1" colspan="3">
            <widget class="ComboBox" name="cbWasserProfil">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt. &lt;span style=&quot; font-weight:600;&quot;&gt;Voreingestellt&lt;/span&gt; ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;theoretisches Wasser&lt;/span&gt; mit 0 dH und pH 5,5. Dieses muss nach Programmstart im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;mit realen Werten angepasst werden, damit der Kleine Brauhelfer den Maische-pH und die Restalkalität korrekt berechnen kann. &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Wasserprofile &lt;/span&gt;können im Reiter Wasser im Tab Rohstoffe verwaltet werden.&lt;/p&gt;&lt;p&gt;Wasserprofile sind ein wesentlicher Faktor, um die Charakteristika von Bierstilen herauszuarbeiten. Ein Amerikanisches Pale Ale ist mit 300mg/l typisch knackig im Gegensatz zu den üblichen 80mg/l.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung. Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Vorteil: Diese Wässer können gezielt aufgesalzt werden. Dies bietet sich bei hartem Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;p&gt;Fachautoren wie Randy Mosher arbeiten aus Prinzip mit Wasserprofilen bei ihren Rezepten. Auf speziellen Webseiten zur Wasserberechnung wie &lt;a href=&quot;https://www.maischemalzundmehr.de/index.php?&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Maische, Malz und Mehr&lt;/span&gt;&lt;/a&gt; von Sandro Wagner oder &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water&lt;/span&gt;&lt;/a&gt; von Martin Brungard finden sich Empfehlungen für Einsteiger ins Thema. Überdies bieten viele Rezeptkalkulatoren einen zumindest rudimentären Einstieg ins Thema an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im Tab Ausrüstung muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1590,7 +1590,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="label_71">
             <property name="text">
-             <string>RA gewünscht</string>
+             <string>Gewünscht</string>
             </property>
             <property name="indent">
              <number>9</number>
@@ -1600,7 +1600,7 @@
           <item row="5" column="3">
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetIst">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; ausgegeben. &lt;/p&gt;&lt;p&gt;Diese setzt sich zusammen aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Wassers und der Restalkalität der unten eingetragenen &lt;span style=&quot; font-weight:600;&quot;&gt;Salze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Säuren&lt;/span&gt; zur Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Im Zusammenhang mit dem Brauprozess haben die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;und die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Brauwassers erheblichen Einfluss auf technologische Qualitätskriterien, da die Wasserionen den pH-Wert von Maische, Würze und Bier beeinflussen. Tatsächlich ist die Beschaffenheit des optimalen Brauwassers abhängig davon, welches Bier der Braue damit brauen will. Für &lt;span style=&quot; font-weight:600;&quot;&gt;Pilsner&lt;/span&gt;-Biere sind Restalkalitäten zwischen -2 und 2° dH anzustreben, für &lt;span style=&quot; font-weight:600;&quot;&gt;helle Biere &lt;/span&gt;&amp;lt; 5° dH und für &lt;span style=&quot; font-weight:600;&quot;&gt;dunkle Biere &lt;/span&gt;&amp;lt; 10 °dH.&lt;/p&gt;&lt;p&gt;Einigen Bierstilen wie etwa dem Englischen IPA kommt ein erhöhter Salzgehalt geschmacklich zugute (daher die Mär vom Englischen Burton-on-Trent als dem Geburtsort des perfekten IPA – das Wasser dort hat einen besonders hohen Calciumsulfatgehalt, der sich bei stark gehopften Bieren besonders gut macht).&lt;/p&gt;&lt;p&gt;Aus sensorischen Gründen sowie auch als Gushing-Prophylaxe soll das &lt;span style=&quot; font-weight:600;&quot;&gt;Verhältnis &lt;/span&gt;von &lt;span style=&quot; font-weight:600;&quot;&gt;Nichtcarbonat&lt;/span&gt;- zu &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte&lt;/span&gt; bei allen Bieren ca. &lt;span style=&quot; font-weight:600;&quot;&gt;3:1&lt;/span&gt; betragen. In der Praxis wird dies mit Calciumsulfat (Braugips) und Calciumchlorid umgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1625,7 +1625,7 @@
           <item row="10" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMaische">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischeprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen, um eine optimale Enzymarbeit des Malzes zu garantieren. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1663,7 +1663,7 @@
           <item row="4" column="3">
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetWasser">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Rohwassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Unter Rohwasser ist das unbehandelte Wasser zu verstehen, dessen Werte im Tab Ausrüstung definiert werden müssen. Dieses Wasser dient dem Kleinen Brauhelfer als Basis zur Berechnung aller weiteren Schritte der Wasseraufbereitung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Wassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1688,7 +1688,7 @@
           <item row="5" column="0">
            <widget class="QLabel" name="label_73">
             <property name="text">
-             <string>Wasser aufbereitet</string>
+             <string>Aufbereit</string>
             </property>
             <property name="indent">
              <number>9</number>
@@ -1698,7 +1698,7 @@
           <item row="2" column="0" colspan="5">
            <widget class="QLabel" name="label_75">
             <property name="text">
-             <string>Restalkalität (RA)</string>
+             <string>Restalkalität</string>
             </property>
            </widget>
           </item>
@@ -1735,7 +1735,7 @@
           <item row="9" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMaischeSoll">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Der pH-Wert wird neben dem pH-Wert einzelner Malze durch Mineralsalze wie Calciumsulfat oder Säuren wie Milchsäure beeinflusst.&lt;/p&gt;&lt;p&gt;Soblad der Farbwert des Malzes im Tab Rohstoffe eingegeben wurde, berechnet der Kleine Brauhelfer den dazugehörenden pH-Wert. Der Wert selber kann auch, etwa anhand con Mälzer-Charts, manuel eingegeben werden.&lt;/p&gt;&lt;p&gt;Rechtlich ist Wasserbehandlung mit dem vorläufigen deutschen Biersteuergesetz unproblematisch, zumal bei Hobbybrauern. Im Zweifel geben Behörden und Fachforen Auskunft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

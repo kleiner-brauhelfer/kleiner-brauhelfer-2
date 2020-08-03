@@ -87,6 +87,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["MengeMaischenUnten"] = locale.toString(fval / A, 'f', 1);
             ctxRezept["MengeMaischenOben"] = locale.toString(h - fval / A, 'f', 1);
             ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
+            ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
             ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
@@ -208,10 +209,42 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 mapWasser["Nachguss"] = locale.toString(f2, 'f', 1);
                 if (bh->sud()->gethighGravityFaktor() != 0)
                 {
-                    f3 = bh->sud()->getMenge() - bh->sud()->getMengeSollKochende();
+                    f3 = bh->sud()->getWasserHgf();
                     mapWasser["Verduennung"] = locale.toString(f3, 'f', 1);
                 }
                 mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 1);
+
+                if (parts & TagWasseraufbereitung)
+                {
+                    liste.clear();
+                    model = bh->sud()->modelWasseraufbereitung();
+                    for (int row = 0; row < model->rowCount(); ++row)
+                    {
+                        QVariantMap map;
+                        map["Name"] = model->data(row, ModelWasseraufbereitung::ColName);
+                        map["Einheit"] = TabRohstoffe::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                        double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
+                        map["MengeHauptguss"] = locale.toString(m * f1, 'f', 2);
+                        map["MengeNachguss"] = locale.toString(m * f2, 'f', 2);
+                        if (bh->sud()->gethighGravityFaktor() != 0)
+                            map["MengeVerduennung"] = locale.toString(m * f3, 'f', 2);
+                        map["Menge"] = locale.toString(m * (f1 + f2 + f3), 'f', 2);
+                        liste << map;
+                    }
+                    if (!liste.empty())
+                        mapWasser["Wasseraufbereitung"] = QVariantMap({{"Liste", liste}});
+                }
+
+                if (parts & TagWasserprofil)
+                {
+                    QVariantMap map;
+                    map["Name"] = bh->sud()->getWasserData(ModelWasser::ColName).toString();
+                    QString str = bh->sud()->getWasserData(ModelWasser::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map["Bemerkung"] = str;
+                    mapWasser["Wasserprofil"] = map;
+                }
+
                 ctx["Wasser"] = mapWasser;
 
                 QVariantMap ctxZutaten;

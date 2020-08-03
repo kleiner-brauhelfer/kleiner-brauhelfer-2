@@ -8,8 +8,8 @@ TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
 VER_MIN = 2
-VER_PAT = 0
-VERSION = $$sprintf("%1.%2.%3Beta", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
+VER_PAT = 1
+VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
 TEMPLATE = app
@@ -230,7 +230,8 @@ FORMS += \
 
 RESOURCES += \
     data.qrc \
-    images.qrc
+    images.qrc \
+    translations.qrc
 
 TRANSLATIONS += \
     translations/kbh_en.ts \

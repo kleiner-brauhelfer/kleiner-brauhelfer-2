@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="42"/>
-        <source>Forum:</source>
-        <translation>Forum:</translation>
+        <source>Forum</source>
+        <translation>Forum</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="62"/>
@@ -20,13 +20,13 @@
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="118"/>
-        <source>Homepage:</source>
-        <translation>Hemsida:</translation>
+        <source>Homepage</source>
+        <translation>Hemsida</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgabout.ui" line="151"/>
-        <source>Kompiliert mit:</source>
-        <translation>Kompilerat med:</translation>
+        <source>Kompiliert mit</source>
+        <translation>Kompilerat med</translation>
     </message>
 </context>
 <context>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="14"/>
         <source>Bierspende</source>
-        <translation type="unfinished"></translation>
+        <translation>Öldonation</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
@@ -235,142 +235,147 @@
         <translation>Extraktberäkning</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="31"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="23"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der pH-Wert für den gewählten Malztyp eingestellt. Vordefiniert sind Werte für Basismalze wie Pilsener oder Pale Ale mit einem EBC-Wert unter 200, Karamellmalz nund Röstmalze. Der manuelle Wert ist voreingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="34"/>
         <source>Messung mit Spindel</source>
         <translation>Hydrometer</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="37"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="40"/>
         <source>Dichte</source>
         <translation>Densitet</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="44"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="47"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="51"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="54"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener &lt;span style=&quot; font-weight:600;&quot;&gt;Dichtewert&lt;/span&gt; der Würze.&lt;/p&gt;&lt;p&gt;Die Dichte ist bei den meisten &lt;span style=&quot; font-weight:600;&quot;&gt;Ärometern&lt;/span&gt; (Spindeln) im Brauereiwesen auf eine Bezugstemperatur von 20°C in ml/g geeicht. Ändert sich die Temperatur, ändert sich auch die Dichte der Flüssigkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="73"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="76"/>
         <source>g/ml</source>
         <translation>g/ml</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="80"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="301"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="83"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="304"/>
         <source>Messwert</source>
         <translation>Värde</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="99"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="408"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="468"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="102"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="411"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="471"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="106"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="109"/>
         <source>°C</source>
         <translation>°C</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="113"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="116"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperatur der Würze bei der Messung des &lt;span style=&quot; font-weight:600;&quot;&gt;Dichtewertes&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Dichte ist bei den meisten &lt;span style=&quot; font-weight:600;&quot;&gt;Ärometern&lt;/span&gt; (Spindeln) im Brauereiwesen auf eine Bezugstemperatur von 20°C in ml/g geeicht. Ändert sich die Temperatur, ändert sich auch die Dichte der Flüssigkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="138"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="141"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktgehalt&lt;/span&gt; in °Plato. Beispielsweise bedeutet 12° Plato 120 g Extrakt in 1000 ml Würze.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; ist nicht zu verwechseln mit der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt;. Im Extraktwert ist vergorener, also umgewandelter Zucker in Alkohol wiedergegeben. Stammwürze dagegen beschreibt den unvergorenen Zuckergehalt eines Sudes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="183"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="186"/>
         <source>Messung mit Refraktometer</source>
         <translation>Refraktometer</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="195"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener Extraktgehalt in &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;°Brix ist die übliche Maßeinheit von analogen Refraktometern. Refraktometer messen dabei nicht direkt den Zuckergehalt, sondern den Brechungsindex von Licht in einer Flüssigkeit, der vom Zucker- und Alkoholgehalt in einer Flüssigkeit abhängt. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="217"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="220"/>
         <source>Korrekturfaktor </source>
         <translation>Korrigeringsfaktor </translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="224"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="227"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gewählte &lt;span style=&quot; font-weight:600;&quot;&gt;Umrechnungsformel&lt;/span&gt; für die Korrektur des gemessenen Restextraktes in °Brix nach °Plato. &lt;/p&gt;&lt;p&gt;Misst man den &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; eines alkoholhaltigen Jungbieres, wird der Brechungsindex durch den Alkohol verfälscht. Die gewählte Umrechnungsformel korrigiert diesen Messfehler&lt;/p&gt;&lt;p&gt;- Die Terrill-Formel arbeitet in endvergorenen Proben genauer, in wenig oder unvergorenen Proben zum Teil nicht zu gebrauchen.&lt;/p&gt;&lt;p&gt;- Die Terrill-Linear-Formel ist eine linearisierte Version der Terrill-Formel.&lt;/p&gt;&lt;p&gt;- Die Standardformel liefert gleichmässig gute Werte, in endvergorenen Proben aber etwas zu hoch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="228"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="231"/>
         <source>Terrill</source>
         <translation>Terrill</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="233"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="236"/>
         <source>Terrill linear</source>
         <translation>Terrill linear</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="238"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="241"/>
         <source>Standardformel</source>
         <translation>Standard</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="246"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="249"/>
         <source>Umrechnungsformel</source>
         <translation>Formel</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="253"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="256"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato.&lt;/p&gt;&lt;p&gt;Bierwürze ist keine reine Zuckerlösung. Deshalb muss der Brechungsindex noch um einen Korrekturfaktor dividiert werden.&lt;/p&gt;&lt;p&gt;Der eingestellte Wert sollte nur mit Bedacht geändertwerden. Änderungen sollten nur mit ausreichendem Wissen vorgenommen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="284"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="287"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brix die geläufige Einheit für &lt;span style=&quot; font-weight:600;&quot;&gt;analoge Refraktometer.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Digitale Refraktometer oder Messgeräte mit Biegeschwinger-Technologie lassen auch °Plato und andere Maßeinheiten zu. Der KBH bietet zur Zeit nur °Plato zusätzlich an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="288"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="291"/>
         <source>°Brix</source>
         <translation>°Brix</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="293"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="296"/>
         <source>°Plato</source>
         <translation>°Plato</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="321"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="324"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato auf den Standardwert eingestellt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich den eingestellten Wert im linken Feld nur dann zu verändern, wenn man genau weiß was man macht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="361"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="364"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="24"/>
         <source>Stammwürze</source>
-        <translation>Vörtstyrka (OG)</translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="374"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="377"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gemessene Stammwürze in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Wird mit Spindel gemessen, wird die Temperatur als Korrekturwert eingerechnet. Wird mit Refraktometer gemessen, wird die Temperatur als Korrekturfaktor eingerechnetet und °Brix in °Plato umgerechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="421"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="424"/>
         <location filename="../dialogs/dlgrestextrakt.cpp" line="33"/>
         <source>Restextrakt</source>
         <translation>Restsötma (FG)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="434"/>
+        <location filename="../dialogs/dlgrestextrakt.ui" line="437"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Restextrakt in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;angezeigt. Dieser Wert entspricht dem scheinbaren Envergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -512,7 +517,7 @@
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="124"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz exportiert. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -663,7 +668,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="110"/>
         <source>Vorhanden [kg]</source>
-        <translation>I lagret [kg]</translation>
+        <translation>befintlig [kg]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="164"/>
@@ -680,7 +685,7 @@
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="166"/>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="261"/>
         <source>Vorhanden [g]</source>
-        <translation>I lagret [g]</translation>
+        <translation>befintlig [g]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="209"/>
@@ -1074,13 +1079,13 @@
         <translation>&lt;manuell&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="72"/>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="84"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="81"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="93"/>
         <source> (%1%)</source>
         <translation> (%1%)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="91"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="100"/>
         <source>/l</source>
         <translation>/l</translation>
     </message>
@@ -1114,29 +1119,29 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="89"/>
-        <location filename="../mainwindow.cpp" line="297"/>
-        <location filename="../mainwindow.cpp" line="613"/>
+        <location filename="../mainwindow.cpp" line="299"/>
+        <location filename="../mainwindow.cpp" line="615"/>
         <source>Zusammenfassung</source>
         <translation>Sammanfattning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="94"/>
-        <location filename="../mainwindow.ui" line="459"/>
-        <location filename="../mainwindow.cpp" line="634"/>
+        <location filename="../mainwindow.ui" line="460"/>
+        <location filename="../mainwindow.cpp" line="636"/>
         <source>Etikette</source>
         <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="99"/>
-        <location filename="../mainwindow.ui" line="467"/>
-        <location filename="../mainwindow.cpp" line="653"/>
+        <location filename="../mainwindow.ui" line="468"/>
+        <location filename="../mainwindow.cpp" line="655"/>
         <source>Bewertung</source>
         <translation>Betyg</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="104"/>
-        <location filename="../mainwindow.ui" line="483"/>
-        <location filename="../mainwindow.cpp" line="670"/>
+        <location filename="../mainwindow.ui" line="484"/>
+        <location filename="../mainwindow.cpp" line="672"/>
         <source>Brauübersicht</source>
         <translation>Satsöversikt</translation>
     </message>
@@ -1157,8 +1162,8 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="122"/>
-        <location filename="../mainwindow.ui" line="273"/>
-        <location filename="../mainwindow.cpp" line="683"/>
+        <location filename="../mainwindow.ui" line="274"/>
+        <location filename="../mainwindow.cpp" line="685"/>
         <source>Datenbank</source>
         <translation>Databas</translation>
     </message>
@@ -1208,281 +1213,286 @@
         <translation>Språk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="249"/>
+        <location filename="../mainwindow.ui" line="250"/>
         <source>Speichern</source>
         <translation>Spara</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="252"/>
+        <location filename="../mainwindow.ui" line="253"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="257"/>
+        <location filename="../mainwindow.ui" line="258"/>
         <source>Änderungen verwerfen</source>
         <translation>Ångra ändringarna</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="260"/>
+        <location filename="../mainwindow.ui" line="261"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="265"/>
+        <location filename="../mainwindow.ui" line="266"/>
         <source>Zurücksetzen</source>
         <translation>Återställ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="278"/>
+        <location filename="../mainwindow.ui" line="279"/>
         <source>Über</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="286"/>
+        <location filename="../mainwindow.ui" line="287"/>
         <source>Spende</source>
         <translation>Donation</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="291"/>
+        <location filename="../mainwindow.ui" line="292"/>
         <source>&quot;Sud gebraut&quot; zurücksetzen</source>
         <translation>Återställ &quot;sats bryggd&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="296"/>
+        <location filename="../mainwindow.ui" line="297"/>
         <source>&quot;Sud abgefüllt&quot; zurücksetzen</source>
         <translation>Återställ &quot;sats flask-/fattappad&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="301"/>
+        <location filename="../mainwindow.ui" line="302"/>
         <source>&quot;Sud verbraucht&quot; zurücksetzen</source>
         <translation>Återställ &quot;sats förbrukad&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="306"/>
+        <location filename="../mainwindow.ui" line="307"/>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
         <translation>Återställ &quot;ytterligare ingrediens tillagd&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="311"/>
+        <location filename="../mainwindow.ui" line="312"/>
         <source>Beenden</source>
         <translation>Stäng av</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="314"/>
+        <location filename="../mainwindow.ui" line="315"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="322"/>
-        <location filename="../mainwindow.cpp" line="597"/>
+        <location filename="../mainwindow.ui" line="323"/>
+        <location filename="../mainwindow.cpp" line="599"/>
         <source>Datenbank auswählen</source>
         <translation>Välj databas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="325"/>
+        <location filename="../mainwindow.ui" line="326"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="333"/>
+        <location filename="../mainwindow.ui" line="334"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="338"/>
+        <location filename="../mainwindow.ui" line="339"/>
         <source>Hell</source>
         <translation>Ljus</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="343"/>
+        <location filename="../mainwindow.ui" line="344"/>
         <source>Dunkel</source>
         <translation>Mörk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="354"/>
+        <location filename="../mainwindow.ui" line="355"/>
         <source>Bestätigung beim Beenden</source>
         <translation>Bekräfta avstängning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="362"/>
+        <location filename="../mainwindow.ui" line="363"/>
         <source>Systemschriftart</source>
         <translation>Systemtypsnitt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="373"/>
+        <location filename="../mainwindow.ui" line="374"/>
         <source>Auf Updates prüfen</source>
         <translation>Sök uppdateringar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="378"/>
+        <location filename="../mainwindow.ui" line="379"/>
         <source>&quot;Hefe Zugabe&quot; zurücksetzen</source>
         <translation>Återställ &quot;jäst tillagd&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="383"/>
+        <location filename="../mainwindow.ui" line="384"/>
         <source>Bereinigen</source>
         <translation>Rensa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="391"/>
+        <location filename="../mainwindow.ui" line="392"/>
         <source>Eingabefelder entsperren</source>
         <translation>Lås upp inmatningsfält</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="402"/>
+        <location filename="../mainwindow.ui" line="403"/>
         <source>Tooltips</source>
         <translation>Tooltips</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="407"/>
+        <location filename="../mainwindow.ui" line="408"/>
         <source>Neuen Sud anlegen</source>
         <translation>Skapa ny sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="410"/>
+        <location filename="../mainwindow.ui" line="411"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="415"/>
+        <location filename="../mainwindow.ui" line="416"/>
         <source>Rezept importieren</source>
         <translation>Importera recept</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="420"/>
+        <location filename="../mainwindow.ui" line="421"/>
         <source>Rezept exportieren</source>
         <translation>Exportera recept</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="425"/>
+        <location filename="../mainwindow.ui" line="426"/>
         <source>Sud kopieren</source>
         <translation>Kopiera sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="430"/>
+        <location filename="../mainwindow.ui" line="431"/>
         <source>Sud löschen</source>
         <translation>Ta bort sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="435"/>
+        <location filename="../mainwindow.ui" line="436"/>
         <source>Sud teilen</source>
         <translation>Dela sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="440"/>
+        <location filename="../mainwindow.ui" line="441"/>
         <source>Druckvorschau</source>
         <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="443"/>
+        <location filename="../mainwindow.ui" line="444"/>
         <source>Ctrl+Shift+P</source>
         <translation>Ctrl+Shift+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="448"/>
+        <location filename="../mainwindow.ui" line="449"/>
         <source>Drucken (PDF)</source>
         <translation>Skriv ut (PDF)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="451"/>
+        <location filename="../mainwindow.ui" line="452"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="475"/>
+        <location filename="../mainwindow.ui" line="476"/>
         <source>Spickzettel/Zusammenfassung</source>
         <translation>Sammanfattning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="494"/>
+        <location filename="../mainwindow.ui" line="495"/>
         <source>Animationen</source>
         <translation>Animeringar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="499"/>
+        <location filename="../mainwindow.ui" line="500"/>
         <source>Bierspende</source>
         <translation>Öldonation</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="508"/>
+        <location filename="../mainwindow.ui" line="509"/>
         <source>Deutsch</source>
         <translation>Tyska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="517"/>
+        <location filename="../mainwindow.ui" line="518"/>
         <source>Englisch</source>
         <translation>Engelska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="117"/>
-        <location filename="../mainwindow.cpp" line="136"/>
+        <location filename="../mainwindow.ui" line="527"/>
+        <source>Schwedisch</source>
+        <translation>Svenska</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="118"/>
+        <location filename="../mainwindow.cpp" line="137"/>
         <source>Anwendung schließen?</source>
         <translation>Stäng av programmet?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="118"/>
+        <location filename="../mainwindow.cpp" line="119"/>
         <source>Sollen die Änderungen vor dem Schließen gespeichert werden?</source>
         <translation>Spara ändringarna innan avstängning?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="137"/>
+        <location filename="../mainwindow.cpp" line="138"/>
         <source>Soll die Anwendung geschlossen werden?</source>
         <translation>Stäng av programmet?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="170"/>
+        <location filename="../mainwindow.cpp" line="171"/>
         <source>Änderungen speichern?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="171"/>
+        <location filename="../mainwindow.cpp" line="172"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="191"/>
-        <location filename="../mainwindow.cpp" line="198"/>
-        <location filename="../mainwindow.cpp" line="203"/>
+        <location filename="../mainwindow.cpp" line="192"/>
+        <location filename="../mainwindow.cpp" line="199"/>
+        <location filename="../mainwindow.cpp" line="204"/>
         <source>Fehler beim Speichern</source>
         <translation>Fel under sparandet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="203"/>
-        <location filename="../mainwindow.cpp" line="337"/>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="204"/>
+        <location filename="../mainwindow.cpp" line="339"/>
+        <location filename="../mainwindow.cpp" line="443"/>
         <source>Unbekannter Fehler.</source>
         <translation>Okänt fel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="297"/>
-        <location filename="../mainwindow.cpp" line="613"/>
+        <location filename="../mainwindow.cpp" line="299"/>
+        <location filename="../mainwindow.cpp" line="615"/>
         <source>Spickzettel</source>
         <translation>Fusklapp</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="333"/>
-        <location filename="../mainwindow.cpp" line="337"/>
+        <location filename="../mainwindow.cpp" line="335"/>
+        <location filename="../mainwindow.cpp" line="339"/>
         <source>Fehler beim Laden</source>
         <translation>Fel under öppnandet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="438"/>
+        <location filename="../mainwindow.cpp" line="443"/>
         <source>Fehler beim Verwerfen</source>
         <translation>Fel under återställandet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="511"/>
+        <location filename="../mainwindow.cpp" line="513"/>
         <source>Eingabefelder entsperren?</source>
         <translation>Lås upp inmatningsfält?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="512"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden.</source>
         <translation>Obs! Att låsa upp fälten för inmatning kan leda till inkonsistent data och bör göras varsamt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="599"/>
+        <location filename="../mainwindow.cpp" line="601"/>
         <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
         <translation>Databas (*.sqlite);;Alla filer (*.*)</translation>
     </message>
@@ -1524,170 +1534,181 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="42"/>
+        <location filename="../main.cpp" line="43"/>
         <source>Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen databas har valts. Vill du skapa en ny databas eller öppna en befintlig?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="47"/>
+        <location filename="../main.cpp" line="48"/>
         <source>Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du skapa en ny databas eller öppna en befintlig?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Anlegen</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Öffnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="53"/>
         <source>Abbrechen</source>
-        <translation type="unfinished"></translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="55"/>
+        <location filename="../main.cpp" line="56"/>
         <source>Datenbank auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj databas</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="57"/>
+        <location filename="../main.cpp" line="58"/>
         <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas (*.sqlite);;Alla filer (*.*)</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="67"/>
         <source>Datenbank anlegen</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa databas</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="68"/>
+        <location filename="../main.cpp" line="69"/>
         <source>Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="99"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Die Datenbank ist ungultig.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogiltig databas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="104"/>
+        <location filename="../main.cpp" line="105"/>
         <source>Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasens version (%1) är för ny för programmet. Det behöver uppdateras.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="109"/>
+        <location filename="../main.cpp" line="110"/>
         <source>Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="114"/>
-        <source>Die Datenbank muss aktualisiert werden (version %1 -&gt; %2).</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasens version (%1) är för gammal för programmet. Den behöver uppdateras först med kleiner-brauhelfer v1.4.4.6.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="115"/>
-        <source>Soll die Datenbank jetzt aktualisiert werden?</source>
-        <translation type="unfinished"></translation>
+        <source>Die Datenbank muss aktualisiert werden (version %1 -&gt; %2).</source>
+        <translation>Databasen behöver uppdateras (version %1 -&gt; %2).</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="116"/>
+        <source>Soll die Datenbank jetzt aktualisiert werden?</source>
+        <translation>Ska databasen uppdateras nu?</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="117"/>
         <source>ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!</source>
-        <translation type="unfinished"></translation>
+        <translation>OBS, dessa ändringar kan inte ångras senare!</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="151"/>
+        <location filename="../main.cpp" line="152"/>
         <source>Datenbank konnte nicht wiederhergestellt werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasen kunde inte återställas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="158"/>
+        <location filename="../main.cpp" line="159"/>
         <source>Aktualisierung fehlgeschlagen.
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatering misslyckades.
+
+</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="163"/>
+        <location filename="../main.cpp" line="164"/>
         <source>Sicherheitskopie konnte nicht erstellt werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopian kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="175"/>
+        <location filename="../main.cpp" line="176"/>
         <source>Die Datenbank &quot;%1&quot; konnte nicht geöffnet werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasen &quot;%1&quot; kunde inte öppnas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="233"/>
+        <location filename="../main.cpp" line="234"/>
         <source>Der Ordner &quot;%1&quot; konnte nicht erstellt werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappen &quot;%1&quot; kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="261"/>
-        <location filename="../main.cpp" line="283"/>
+        <location filename="../main.cpp" line="262"/>
+        <location filename="../main.cpp" line="284"/>
         <source>Der Datei &quot;%1&quot; konnte nicht erstellt werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen &quot;%1&quot; kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="272"/>
+        <location filename="../main.cpp" line="273"/>
         <source>Die Ressourcendatei &quot;%1&quot; ist verschieden von der lokalen Datei.
 Die Datei wurde entweder manuell editiert oder durch ein Update verändert.
 
 Soll die lokale Datei ersetzt werden?</source>
+        <translation>Resursfilen &quot;%1&quot; skiljer sig från lokala filen.
+Filen har antingen ändrats manuellt eller av en uppdatering.
+
+Ska lokala filen ersättas?</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="306"/>
+        <source>Unter Umständen stürzt das Programm unter Windows 7 ab!
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="305"/>
-        <source>Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung).</source>
+        <location filename="../main.cpp" line="307"/>
+        <source>Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="323"/>
+        <location filename="../main.cpp" line="333"/>
         <source>SSL wird nicht unterstüzt.
 Version benötigt: %1
 Version installiert: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="469"/>
-        <location filename="../main.cpp" line="475"/>
-        <location filename="../main.cpp" line="495"/>
-        <location filename="../main.cpp" line="501"/>
+        <location filename="../main.cpp" line="481"/>
+        <location filename="../main.cpp" line="487"/>
+        <location filename="../main.cpp" line="507"/>
+        <location filename="../main.cpp" line="513"/>
         <source>Programmfehler</source>
-        <translation type="unfinished"></translation>
+        <translation>Programfel</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="475"/>
-        <location filename="../main.cpp" line="501"/>
+        <location filename="../main.cpp" line="487"/>
+        <location filename="../main.cpp" line="513"/>
         <location filename="../tabsudauswahl.cpp" line="631"/>
         <location filename="../tabsudauswahl.cpp" line="712"/>
         <source>Unbekannter Fehler.</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänt fel</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="288"/>
-        <location filename="../templatetags.cpp" line="354"/>
+        <location filename="../templatetags.cpp" line="321"/>
+        <location filename="../templatetags.cpp" line="387"/>
         <source>zugegeben</source>
-        <translation type="unfinished"></translation>
+        <translation>tillagd</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="290"/>
-        <location filename="../templatetags.cpp" line="348"/>
+        <location filename="../templatetags.cpp" line="323"/>
+        <location filename="../templatetags.cpp" line="381"/>
         <source>nicht zugegeben</source>
-        <translation type="unfinished"></translation>
+        <translation>inte tillagd</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="352"/>
+        <location filename="../templatetags.cpp" line="385"/>
         <source>nicht entnommen</source>
-        <translation type="unfinished"></translation>
+        <translation>inte tagits ur</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="357"/>
+        <location filename="../templatetags.cpp" line="390"/>
         <source>entnommen</source>
-        <translation type="unfinished"></translation>
+        <translation>tagits ur</translation>
     </message>
 </context>
 <context>
@@ -1696,17 +1717,17 @@ Version installiert: %2</source>
         <location filename="../tababfuellen.ui" line="42"/>
         <location filename="../tababfuellen.ui" line="64"/>
         <source>Abfülldatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid för flasktappning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="57"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Dagar</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="71"/>
         <source>Dauer der Hauptgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Jästid</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="97"/>
@@ -1721,7 +1742,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tababfuellen.ui" line="122"/>
         <source>Jetzt</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="135"/>
@@ -1729,430 +1750,448 @@ Version installiert: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="181"/>
-        <source>Vergärung</source>
+        <location filename="../tababfuellen.ui" line="171"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeit &lt;/span&gt;bezeichnet Stunde und Minute, zu dem das Jungbier auf Flasche, Fass oder in ein anderes Behältnis gegeben wird.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Da dieser Wert beim sogenannten Grünschlauchen zeitkritisch ist, trennt der Kleine Brauhelfer Stunde und Minute entgegen sonstigen Datumsangaben hier vom eigentlich Abfülldatum ab. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Zur Abfüllzeit endet die Hauptgärung und es beginnt die Reifung des Bieres, auch Nachgärung genannt. &lt;/p&gt;&lt;p&gt;Es muss sich dabei nicht zwingend um das Endprodukt handeln. Je nach Rezept und Verfahren können bis zum finalen Produkt viele Zwischenschritte nötig sein. Das Feld Abfüllzeit kann manuell minutengenau definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="190"/>
-        <location filename="../tababfuellen.ui" line="244"/>
+        <location filename="../tababfuellen.ui" line="184"/>
+        <source>Vergärung</source>
+        <translation>Förjäsning</translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="193"/>
+        <location filename="../tababfuellen.ui" line="247"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbare Endvergärungsgrad (sEVG) &lt;/span&gt;beschreibt die Menge des vergärbaren Restextraktes in Prozent der Stammwürze. Der sEVG ist eine wichtige Größe, um die Maischeführung und die Hefearbeit und damit das zu erwartende Jungbier beurteilen zu können.&lt;/p&gt;&lt;p&gt;In der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischeführung&lt;/span&gt; bedeutet beispielsweise eine längere Maltoserast mehr vergärbaren Zucker und damit einen höheren sEVG, eine kürze Maltoserast einen niedrigeren sEVG; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefearbeit&lt;/span&gt; wird zwischen hochvergärenden und niedrig vergärenden Hefen unterschieden. Letztere bauen weniger Zucker ab.&lt;/p&gt;&lt;p&gt;Somit bedeutet ein hoher sEVG einen höheren Alkoholgehalt und weniger Restsüße. Diese Biere sind naturgemäß trockener.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den sEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="215"/>
+        <location filename="../tababfuellen.ui" line="218"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) des &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbieres &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit dem Restextrakt des Jungbieres lässt sich beurteilen, ob die Hefe innerhalb erwarteter Parameter arbeitet oder das Bier &lt;span style=&quot; font-weight:600;&quot;&gt;endvergoren &lt;/span&gt;ist.&lt;/p&gt;&lt;p&gt;Änderungen im Gärverlauf trägt der Kleine Brauhelfer hier automatisch ein.&lt;/p&gt;&lt;p&gt;Als &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt &lt;/span&gt;wird der unvergorene Zuckergehalt im Bier während und nach der Gärung bezeichnet. Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangezogen. &lt;/p&gt;&lt;p&gt;Den &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholwert&lt;/span&gt; berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="237"/>
+        <location filename="../tababfuellen.ui" line="240"/>
         <source>Tatsächlicher Endvergärungsgrad (tEVG)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verklig förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="263"/>
-        <location filename="../tababfuellen.ui" line="629"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Stammwürze&lt;/span&gt; zur Errinerung nochmals angezeigt.&lt;/p&gt;&lt;p&gt;Die Stammwürze entspricht der Stammwürze beim Anstellen plus die Anteile aus den zugegebenen weiteren Zutaten während der Gärung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="303"/>
+        <location filename="../tababfuellen.ui" line="306"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt &lt;/span&gt;der Schnellgärprobe aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="313"/>
-        <location filename="../tababfuellen.ui" line="440"/>
+        <location filename="../tababfuellen.ui" line="316"/>
+        <location filename="../tababfuellen.ui" line="443"/>
         <source>Erwarteter Wert</source>
-        <translation type="unfinished"></translation>
+        <translation>Förväntat värde</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="330"/>
+        <location filename="../tababfuellen.ui" line="333"/>
         <source>Restextrakt Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakthalten i unga ölet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="337"/>
+        <location filename="../tababfuellen.ui" line="340"/>
         <source>Scheinbarer Endvergärungsgrad (sEVG)</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="351"/>
-        <location filename="../tababfuellen.ui" line="450"/>
-        <location filename="../tababfuellen.ui" line="596"/>
+        <location filename="../tababfuellen.ui" line="354"/>
+        <location filename="../tababfuellen.ui" line="453"/>
+        <location filename="../tababfuellen.ui" line="599"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="358"/>
-        <location filename="../tababfuellen.ui" line="420"/>
-        <location filename="../tababfuellen.ui" line="489"/>
-        <location filename="../tababfuellen.ui" line="609"/>
-        <location filename="../tababfuellen.ui" line="663"/>
+        <location filename="../tababfuellen.ui" line="361"/>
+        <location filename="../tababfuellen.ui" line="423"/>
+        <location filename="../tababfuellen.ui" line="492"/>
+        <location filename="../tababfuellen.ui" line="612"/>
+        <location filename="../tababfuellen.ui" line="666"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="365"/>
+        <location filename="../tababfuellen.ui" line="368"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit der Schnellgärprobe kann der zu erwartende Restextrakt und damit der &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad (EVG) &lt;/span&gt;des Jungbieres vorab berechnet werden. Die Schnellgärprobe wird immer an einem wärmeren Ort als der eigentliche Sud durchgeführt. Der Trick ist einfach: Hefe vergärt unter wärmeren Bedingungen schneller.&lt;/p&gt;&lt;p&gt;Als Restextrakt wird der unvergorene Zuckergehalt im Bier während und nach der Gärung bezeichnet. Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangzogen. Den Alkoholwert berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="387"/>
+        <location filename="../tababfuellen.ui" line="390"/>
         <source>Alkoholgehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="394"/>
+        <location filename="../tababfuellen.ui" line="397"/>
         <source>Grünschlauchzeitpunkt</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidpunkt för &quot;grön&quot; tappning</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="401"/>
-        <location filename="../tababfuellen.ui" line="535"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der Alkoholgehalt errechnet sich aus dem tasächlichen Endvergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="457"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="460"/>
+        <location filename="../tababfuellen.ui" line="463"/>
         <source>Restextrakt der Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakthalten i snabbjäsningsprovet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="479"/>
+        <location filename="../tababfuellen.ui" line="482"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; des Jungbiers aus gemessenen &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix &lt;/span&gt;oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;berechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="496"/>
-        <location filename="../tababfuellen.ui" line="582"/>
+        <location filename="../tababfuellen.ui" line="499"/>
+        <location filename="../tababfuellen.ui" line="585"/>
         <source>%vol</source>
+        <translation>%vol</translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="266"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;erwartete Restextrakt &lt;/span&gt;am Ende der Gärung angezeigt. Dieser Wert beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;verbleibende Stammwürze &lt;/span&gt;im abfüllbereiten Bier, die gespindelt oder per Refraktometer ermittelt wird und berechnet sich aus dem Vergärungsgrad der gewählten Hefe im Tab Rohstoffe.&lt;/p&gt;&lt;p&gt;Die Angabe des erwarteten Restextraktes ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Hilfswert&lt;/span&gt;, der Auskunft darüber gibt, dass die Gärung am Ende des Gärpozresses innerhalb der berechneten Parameter erfolgt ist. &lt;/p&gt;&lt;p&gt;Der erwartete Restextrakt ist als Sollwert ein Benchmark, der nicht zwangsläufig mit den tatsächlichen Werten übereinstimmen muss. Eine starke Abweichung ist ein Indiz für zu erwartende Geschmacksabweichungen und daher der Brauprozess oder die Angaben für Zutaten im Tab Rohstoffe optimiert werden müssen.&lt;/p&gt;&lt;p&gt;Da hier im Einzelfall viele Parameter hineinspielen können, empfiehlt es sich die einschlägige Fachliteratur oder ein Fachforum im Fall von Problemen heranzuziehen.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; der Hefe und &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; berechnet sich der Vergärungsgrad der Hefe sowie der Alkoholgehalt des Bieres.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="516"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des Restextraktes, der durch die unterschiedliche Dichte von Wasser und Alkohl nötig wird. Er wird vornehmlich zur Berechnung des Alkoholgehaltes herangezogen.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tababfuellen.ui" line="404"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;errechnete Alkoholgehalt&lt;/span&gt; des Bierrezeptes in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der errechnete Alkoholgehalt muss nicht zwingend mit dem tatsächlichen Alkoholgehalte am Ende des Gärprozesses identisch sein. Der Kleine Brauhelfer nimmt bei der Berechnung des Alkoholgehaltes Bezug auf die Angabe des Vergärungsgrades der Hefe im Tab Rohstoffe. Tatsächlich sind die Angaben der Hefelabore nur Mittelwerte. In der Praxis gibt es viele Parameter, die den Endvergärungsgrad und damit den späteren Alkohlgehalt nach unten oder nach oben beeinflussen. Bei starken Abweichungen, die ein Bier sensorisch stark verändern können, helfen die Fachforen.&lt;/p&gt;&lt;p&gt;Im Hintergrund berücksichtigt der Kleine Brauhelfer die geringere Dichte von Alkohol im Jungbier und berechnet mit den Angaben der Braudaten sowie des Gärverlaufs mit Hilfe der sogenannten Balling-Formel den Alkoholgehalt des Bieres. Diese Formel ist auch beim Zoll als einzig mathematisches Konstrukt zur Bestimmung des Alkoholgehaltes anerkannt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="554"/>
+        <location filename="../tababfuellen.ui" line="460"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="519"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Wert des &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächlichen Endvergärungsgrads (tEVG)&lt;/span&gt; liegt immer unter dem scheinbaren Endvergärungsgrad.&lt;/p&gt;&lt;p&gt;Der tEVG ist ein korrigierter Wert des scheinbaren Restextraktes, der mit Spindel oder Refraktometer gemessen, durch die unterschiedliche Dichte von Wasser und Alkohol unter anderem zur Berechnung des Alkoholgehalts herangezogen wird.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer ermittelt den tEVG automatisch aus den Einträgen im Reiter Gärverlauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="538"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der tatsächliche &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; des Jungbieres in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der tatsächliche Alkoholgehalt ergibt sich aus der beim Anstellen gemessenen Stammwürze und den im Gärverlauf gemessenen Endvergärungsgrad. Der tatsächliche Alkoholgehalt muss nicht identisch mit dem erwarteten Alkoholgehalt sein, da sich der Vergärungsgrad einer Hefe bei bestimmten Parametern wie Temperatur, Dauer, Enzymtätigkeit, pH-Wert oder Stammwürze oder der Maische von den Durschschnittswerten unterscheiden kann. Dies gilt besonders bei sogenannten Super- oder Übervergärern.&lt;/p&gt;&lt;p&gt;Im Hintergrund berücksichtigt der Kleine Brauhelfer die geringere Dichte von Alkohol im Jungbier und berechnet mit den Angaben der Braudaten sowie des Gärverlaufs mit Hilfe der sogenannten Balling-Formel den Alkoholgehalt des Bieres. Diese Formel ist auch beim Zoll als einzig mathematisches Konstrukt zur Bestimmung des Alkoholgehaltes anerkannt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="557"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zeitpunkt für die Nachgärung in der Flasche (Flaschengärung) angezeigt. Im Fachsprech wird dieses Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Grünschlauchen &lt;/span&gt;genannt.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Grünschlachzeitpunkt &lt;/span&gt;wird aus der Stammwürze und der Schnellgärprobe ermittelt. Er liegt geringfügig vor dem Zeitpunkt des endvergorenen Bieres. Der Grünschlauchzeitpunkt nutzt somit eine geringfügige Gäraktiviät, um auf diese Weise Druck und damit Kohlensäure in die Flasche einzutragen, auch Karbonisierung genannt.&lt;/p&gt;&lt;p&gt;Grünschlauchen ist unter Hobbybrauern wegen der berüchtigten &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschenbomben &lt;/span&gt;umstritten. Ein falsch gewählter, verfrühter &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt &lt;/span&gt;birgt die Gefahr explodierender Flaschen mit einem erheblichen Verletzungspotenzial. Beim Grünschlauchen sollte akkurat und umsichtig gearbeitet werden; abweichen von den Berechnungen sollte unterlassen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="589"/>
+        <location filename="../tababfuellen.ui" line="592"/>
         <source>Erwarteter Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Förväntat extrakthalt</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="616"/>
+        <location filename="../tababfuellen.ui" line="619"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="680"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Spundung&lt;/span&gt;. Unter Spundung wird die &lt;span style=&quot; font-weight:600;&quot;&gt;künstliche Druckerzeugung&lt;/span&gt; mittels Kohlensäure CO₂ in größeren Gebinden wie Fässern verstanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tababfuellen.ui" line="632"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Stammwürze&lt;/span&gt; beim Anstellen, vom Tab Braudaten übernommen, angezeigt.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; entspricht der Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;beim Anstellen plus &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Anteile &lt;/span&gt;zugegebener &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten &lt;/span&gt;während der Gärung.&lt;/p&gt;&lt;p&gt;Die aktuelle Stammwüzre muss nicht zwingend mit der gewünschten Stammwürze im Tab Rezept identisch sein. Ist sie es doch, so ist dies ein guter Indikator für einen ordentlichen Brauprozess. Im Idealfall stimmen im Kleinen Brauhelfer aktuelle Stammwürze und festgelegte Stammwürze überein. Abweichungen lassen auf Fehler in dier Konfiguration der Anlage, der Rohstoffe oder im Brauprozess schließen. Die Fehlerquelle auszumachen kann im einzelfall schwierig sein. Fachbücher und Fachforen eignen sich hier am besten zur Problemlösung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="683"/>
-        <location filename="../tababfuellen.ui" line="692"/>
-        <source>Spundungsdruck</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Spundung&lt;/span&gt;. Unter Spundung wird die &lt;span style=&quot; font-weight:600;&quot;&gt;künstliche Druckerzeugung&lt;/span&gt; mittels Kohlensäure CO₂ in größeren Gebinden wie Fässern verstanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="712"/>
+        <location filename="../tababfuellen.ui" line="686"/>
+        <location filename="../tababfuellen.ui" line="695"/>
+        <source>Spundungsdruck</source>
+        <translation>Jämviktstryck</translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="715"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ist die Temperatur des Jungbieres links eingegeben, wird hier der erforderlcihe &lt;span style=&quot; font-weight:600;&quot;&gt;Spundungsdruck&lt;/span&gt; für das Fass oder ein anderes Gebinde für die Reifung unter Druck angegeben.&lt;/p&gt;&lt;p&gt;Unter Spundungsdruck versteht man den Druck, um &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbier&lt;/span&gt; mit in einem Gebinde wie einem Fass zu karbonisieren. Der Spundungsdruck kann hier im Gegensatz zur Flasche durch ein Spundventil eingestellt werden, so dass zu viel Speise oder Zucker kein Unglück hervorrufen, wie es Flaschenbomben zu eigen ist. Der Spundungsdruck ist temperaturabhängig. Je niedriger diese ist, um so mehr Kohlendioxid CO₂ kann im Jungbier gelöst werden. Spundungsdruck stellt die Rezens eines Bieres ein.&lt;/p&gt;&lt;p&gt;Im Gegensatz zur einer natürlichen Gärung mit Speise, Resthefe, Zucker, besteht bei Fässern und ähnlichen Gebinden die Möglihckiet der &lt;span style=&quot; font-weight:600;&quot;&gt;Zwangskarbonisierung&lt;/span&gt;. Dabei wird CO₂ per Gasflasche zugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="740"/>
+        <location filename="../tababfuellen.ui" line="743"/>
         <source>bar</source>
-        <translation type="unfinished"></translation>
+        <translation>bar</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="753"/>
+        <location filename="../tababfuellen.ui" line="756"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wir die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbieres beim Abfüllen eingegeben. Anhand der Temperatur rechnet der Kleine Brauhelfer den benötigten Spundungsdruck auf das Fass oder ähnliches Gebinde aus, um die im Rezept festgelegte Karbonisierung CO₂/l zu erreichen.&lt;/p&gt;&lt;p&gt;Je kühler das Bier gelagert wird, um so weniger Druck ist nötig, da sich bei niedrigeren Temperaturen Kohlensäure im Bier besser löst. Umgekehrt heißt dies, dass sich bei einer kalten Lagerung der Druck erhöht, sobald der Inhalt erwärmt wird.&lt;/p&gt;&lt;p&gt;Bei hochkarbonisierten Bieren kann dies später ein Problem darstellen, das sich mindestens durch einen aufschäumenden Charakter bemerkbar macht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="794"/>
+        <location filename="../tababfuellen.ui" line="797"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="801"/>
+        <location filename="../tababfuellen.ui" line="804"/>
         <source>Temperatur Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur i unga ölet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="840"/>
-        <location filename="../tababfuellen.ui" line="899"/>
+        <location filename="../tababfuellen.ui" line="843"/>
+        <location filename="../tababfuellen.ui" line="902"/>
         <source>Jungbiermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden unga ölet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="849"/>
+        <location filename="../tababfuellen.ui" line="852"/>
         <source>Verlust seit Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Förlust sedan jäsningens början</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="875"/>
-        <location filename="../tababfuellen.ui" line="912"/>
-        <location filename="../tababfuellen.ui" line="1092"/>
-        <location filename="../tababfuellen.ui" line="1105"/>
-        <location filename="../tababfuellen.ui" line="1141"/>
-        <location filename="../tababfuellen.ui" line="1460"/>
+        <location filename="../tababfuellen.ui" line="878"/>
+        <location filename="../tababfuellen.ui" line="915"/>
+        <location filename="../tababfuellen.ui" line="1095"/>
+        <location filename="../tababfuellen.ui" line="1108"/>
+        <location filename="../tababfuellen.ui" line="1144"/>
+        <location filename="../tababfuellen.ui" line="1466"/>
         <location filename="../tababfuellen.cpp" line="37"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="882"/>
+        <location filename="../tababfuellen.ui" line="885"/>
         <source>Spunden</source>
-        <translation type="unfinished"></translation>
+        <translation>Tvångskarbonering</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="889"/>
+        <location filename="../tababfuellen.ui" line="892"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wird das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Spunden&lt;/span&gt; angehakt, berechnet der Kleinen Brauhelfer keine Zucker- oder Speisegabe und blendet die entsprechenden Felder aus.&lt;/p&gt;&lt;p&gt;Unter Spunden wird die Karbonisierung mit CO₂ auf Gebinde wie Fässer oder Kegs verstanden.&lt;/p&gt;&lt;p&gt;Durch das auf den gewünschten Druck einstellbare Spundungsventil ist keine exkate Berechnung von Zucker oder Speise nötig. Oft wird gespundetes Bier mit einer Gasflasche zusätzlich zwangskarbonisiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="938"/>
+        <location filename="../tababfuellen.ui" line="941"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; bezeichnet die Menge an Bier nach dem Abfüllen und dem Abtrennen der Hefe und anderer Zutaten während des Gärverlaufs.&lt;/p&gt;&lt;p&gt;Die Jungbiermenge ist zudem ein Indikator für die Sudhausarbeit und die korrekte Umsetzung und Berechnung aller Schritte im Brauprozess.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="982"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; nach dem Abfüllen auf das Reife- oder Gärgefäß.&lt;/p&gt;&lt;p&gt;Der Wert berechnet sich anhand der verfügbaren Speisemenge.&lt;/p&gt;&lt;p&gt;Ferner ist der Wert durch Hefe oder Hopfen in der Nachgärung beeinflusst, aber auch durch die entnommene Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tababfuellen.ui" line="985"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; aufgrund von Ab- oder Umfüllen füllen auf das Reife- oder Gärgefäß, Flasche.&lt;/p&gt;&lt;p&gt;Der Wert durch Hefe oder Hopfen oder Sonstige Zutaten in der Nachgärung beeinflusst, die Flüssigkeit binden, aber auch durch die entnommene Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1020"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Karbonisierung&lt;/span&gt;. Von Karbonisierung spricht man vor allem, wenn es um Flaschenreifung geht.&lt;/p&gt;&lt;p&gt;Allgemeiner wird aber darunter aber das Einstellen des Drucks im Gebinde verbunden mit der Spritzigkeit, auch Rezens genannt, verstanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tababfuellen.ui" line="1062"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzlich benötigte Zucker &lt;/span&gt;unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben. Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1115"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben. Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1192"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Speisegabe&lt;/span&gt; unter Berücksichtigung der &lt;span style=&quot; font-weight:600;&quot;&gt;verfügbaren Speisemenge&lt;/span&gt; (links) angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzlich Zucker&lt;/span&gt; berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, dem Restextrakt, dem gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1238"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süße eines Zuckers relativ zu Haushaltszucker.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose | Zweifachzucker): 1,00&lt;br/&gt;Traubenzucker (Glucose | Einfachzucker): 0,5 – 0,91&lt;br/&gt;Fruchtzucker (Fructose | Einfachzucker): 1,0 – 1,8&lt;/p&gt;&lt;p&gt;Es gibt bis heute keine Laborisntrumente zur Messung der Süßkraft. Die Süßkraft ist je nach Zucker unterschiedlich. Traubenzucker enthält als mehr 9% mehr Wasser als Haushaltszucker. Folglich muss dieser Wert bei der Mengenbemessung berücksichtig werden.&lt;/p&gt;&lt;p&gt;Bei weiteren Fragen ist die Fachliteratur oder ein Fachforum Mittel der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1418"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen. Üblich sind Flaschen mit 0,33l, 0,5l und 1 Liter. Beliebt sind auch Growler mit 2 Litern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1530"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergeben sich aus den Kosten für Malz, Hopfen, Hefe und Weitere Zutaten, den sudspezifischen zusätzlichen Kosten und den im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1647"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;p&gt;Dies können Kosten sein, die über den Durchschnittswert eines normalen Sudes hinausgehen, etwa höhere Kosten für Malz, Hopfen oder Weitere Zutaten, Versandkosten. Aber auch spezfisches Equipment für einen Sud kann hier eingerechnet werden. Die Position &amp;quot;Zusätzliche Kosten&amp;quot; dient dazu neben den im Tab Ausrüstung fixierten Betriebskosten ein realistisches Bild der Braukosten abzubilden. Im Hobbybrauerbereich werden nur Material- und Betriebskosten berechnet, andere Überlegungen buchhalterische Absicht bleiben außen vor – sie wären für den umsorgten Sud unvorteilhaft (und außerdem neben der Spur).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1707"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Braudaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1023"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Karbonisierung&lt;/span&gt;. Von Karbonisierung spricht man vor allem, wenn es um Flaschenreifung geht.&lt;/p&gt;&lt;p&gt;Allgemeiner wird aber darunter aber das Einstellen des Drucks im Gebinde verbunden mit der Spritzigkeit, auch Rezens genannt, verstanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1026"/>
         <source>Karbonisierung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolsyresättning</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1052"/>
-        <location filename="../tababfuellen.ui" line="1264"/>
+        <location filename="../tababfuellen.ui" line="1055"/>
+        <location filename="../tababfuellen.ui" line="1267"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1059"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1078"/>
-        <location filename="../tababfuellen.ui" line="1221"/>
+        <location filename="../tababfuellen.ui" line="1081"/>
+        <location filename="../tababfuellen.ui" line="1224"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation>ml</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1085"/>
+        <location filename="../tababfuellen.ui" line="1088"/>
         <source>Flaschengröße</source>
-        <translation type="unfinished"></translation>
+        <translation>Flaskstorlek</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1112"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1134"/>
+        <location filename="../tababfuellen.ui" line="1137"/>
         <source>Verfügbare Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillgänglig mängd ojäst vört</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1161"/>
+        <location filename="../tababfuellen.ui" line="1164"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; zur Karbonisierung definiert.&lt;/p&gt;&lt;p&gt;Speise über der erforderlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Karbonisierung&lt;/span&gt; wird von Hobbybrauern gerne eingefroren. Zu bedenken ist, dass Speise anfällig für &lt;span style=&quot; font-weight:600;&quot;&gt;Infektionen&lt;/span&gt; ist. Sie sollte immer sauber abgefüllt, dann kalt gelagert und zeitnah verbraucht werden.&lt;/p&gt;&lt;p&gt;Ist man sich unsicher, sind die Fachforen eine gute Anlaufstelle, um Fragen zu klären.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung&lt;/span&gt;: Im Rezept wird die gewünschte Karbonisierung definiert, die erforderliche Speisemenge dann automatisch berechnet. Die Speisemenge pro Flasche sollte daher nur mit genauem Wissen erhöht werden, um Unglücke mit überschäumendem Bier bis hin zu Flaschenbomben zu vermeiden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1189"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1208"/>
+        <location filename="../tababfuellen.ui" line="1211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Süßkraft des Zuckers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1228"/>
+        <location filename="../tababfuellen.ui" line="1231"/>
         <source>Benötigte Speisemenge pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd ojäst vört som behövs per flaska</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1235"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süßheit eines Stoffes relativ zu Haushaltszucker.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose): 1.00&lt;br/&gt;Traubenzucker (Glucose): 0.5 – 0.93 (MMuM: 0.92)&lt;br/&gt;Fruchtzucker (Fructose):1.0 – 1.8&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1271"/>
+        <location filename="../tababfuellen.ui" line="1274"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Speisegabe pro Flasche&lt;/span&gt; unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Ist zuwenig Speise vorhanden, muss die Zuckergabe auch berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, den Restextrakt, den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1316"/>
+        <location filename="../tababfuellen.ui" line="1319"/>
         <source>Benötigte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd ojäst vört som behövs</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1323"/>
+        <location filename="../tababfuellen.ui" line="1326"/>
         <source>Jungbiermenge inklusive Speise</source>
-        <translation type="unfinished"></translation>
+        <translation>Ölmängd inklusive ojäst vört</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1330"/>
+        <location filename="../tababfuellen.ui" line="1333"/>
         <source>Anzahl Flaschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal flaskor</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1350"/>
+        <location filename="../tababfuellen.ui" line="1353"/>
         <source>Zusätzlich benötigter Zucker pro Flasche</source>
+        <translation>Extra socker per flaska</translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1360"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sofern links im Feld Flaschengröße definiert, wird hier die &lt;span style=&quot; font-weight:600;&quot;&gt;höchstmögliche Flaschenanzahl &lt;/span&gt;des abgefüllten Jungbiers angegeben.&lt;/p&gt;&lt;p&gt;Der Wert Anzahl der Flaschen stellt einen &lt;span style=&quot; font-weight:600;&quot;&gt;Optimalwert&lt;/span&gt; dar. Tatsächlich sagt er nichts über Abfüllverluste aus, wie sie beim Abfüllen immer wieder auftreten können. Im Idealfall können es sogar ein paar Flaschen pro Sud mehr sein, da immer ein Kopfraum in einer Flasche freibleibt, sofern unter Druck abgefüllt wird. Dies ist abhängig von Druck und Gegendruck.&lt;/p&gt;&lt;p&gt;Es empiehlt sich den Kopfraum einer Flasche mit CO₂ zu füllen, dies verhindert Oxidation und damit Geschmacksfehler. Nähere Informationen hält die Fachliteratur oder ein Fachforum parat.&lt;/p&gt;&lt;p&gt;Ist die Flaschengröße auf den Wert 0 gesetzt, wird auch die Anzahl der Flaschen mit 0 angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1376"/>
+        <location filename="../tababfuellen.ui" line="1382"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge inklusive Speise&lt;/span&gt; angegeben. Der Wert hängt unmittelbar mit der Jungbier- und Speisemenge zusammen, kann aber auch separat definiert werden. Werden hier Werte eingegeben, beeinflusst dies wiederum die Berechnung der Jungbiermenge.&lt;/p&gt;&lt;p&gt;Idealerweise setzt sich die Jungbiermenge aus der verfügbaren Speisemenge und der Jungbiermenge zusammen und muss nicht eigens definiert werden. So aber zwischen Speiseabfüllung und Speisegabe Verluste aufgetreten sind, kann hier der Gesamtwert eingegeben werden und der Verlust wird entsprechend ausgewiesen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1405"/>
+        <location filename="../tababfuellen.ui" line="1411"/>
         <source>Zusätzlich benötigter Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra socker</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1412"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschengröße &lt;/span&gt;festgelegt. Die erforderliche Gabe für die Karbonisierung ist neben der Temperatur abhängig von der &lt;span style=&quot; font-weight:600;&quot;&gt;Füllmenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Im Hobby- und Nanobrauerbereich werden oft größere Gebinde bevorzugt, um das zeitraubende Abfüllen zu verkürzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1431"/>
+        <location filename="../tababfuellen.ui" line="1437"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wassermenge für Zuckerlösung&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1438"/>
+        <location filename="../tababfuellen.ui" line="1444"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Falls das Zucker zuerst in Wasser aufgelöst wird, kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge&lt;/span&gt; hier eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1467"/>
+        <location filename="../tababfuellen.ui" line="1473"/>
         <source>Konzentration der Zuckerlösung</source>
-        <translation type="unfinished"></translation>
+        <translation>Sockerlösningens styrka</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1474"/>
+        <location filename="../tababfuellen.ui" line="1480"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Konzentation&lt;/span&gt; der Zuckerlösung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1496"/>
+        <location filename="../tababfuellen.ui" line="1502"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1506"/>
+        <location filename="../tababfuellen.ui" line="1512"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Bereich des Tab Abfülldaten behandelt die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten &lt;/span&gt;des aktuellen Sudes.&lt;/p&gt;&lt;p&gt;Die Geamtkosten setzen sich zusammen aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Sudkosten&lt;/span&gt; (Malz, Hopfen, Hefe, Weitere Zutaten, Abfüllung, Marketing) und den im Tab Ausrüstung festgelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; (Gas, Wasser, Strom, Abschlag Geräte, Miete etc.) im Tab Ausrüstung.&lt;/p&gt;&lt;p&gt;Die Sudkosten können sowohl im Tab Abfülldaten als auch im Tab Braudaten festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1509"/>
+        <location filename="../tababfuellen.ui" line="1515"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1524"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und weitere Zutaten, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1562"/>
+        <location filename="../tababfuellen.ui" line="1568"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalkostnad</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1569"/>
+        <location filename="../tababfuellen.ui" line="1575"/>
         <source>Zusätzliche Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare kostnader</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1641"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1681"/>
+        <location filename="../tababfuellen.ui" line="1687"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Der Button ist nur dann aktiv, wenn vorher im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt; der Sud als gebraut markiert wurde.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud abgefüllt ausgegraut und inaktiv. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Der Kleine Brauhelfer sperrt diese Funktion, bis nicht alle Zugaben zur Gärung eingebracht und fallweise entnommen wurden.&lt;/p&gt;&lt;p&gt;Über das Menü Sud kann die Aktion rückgängig gemacht werden. In diesem Fall sind alle Zugaben erneut als Gabe auszuführen und gegebenbenfalls zu entnehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1684"/>
+        <location filename="../tababfuellen.ui" line="1690"/>
         <source>Sud abgefüllt</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen flask-/fattappat</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1691"/>
+        <location filename="../tababfuellen.ui" line="1697"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Im Tab Sudauswahl wird dies farbig markiert.&lt;/p&gt;&lt;p&gt;Der Button ist nur dann aktiv, wenn vorher der Button &lt;span style=&quot; font-weight:600;&quot;&gt;Sud abgefüllt&lt;/span&gt; erfolgreich ausgeführt wurde.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud verbraucht ausgegraut und inaktiv. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Der Kleine Brauhelfer sperrt durch diese Funktion die Möglichkeit der Bewertung. Über das Menü Sud kann die Aktion rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1694"/>
+        <location filename="../tababfuellen.ui" line="1700"/>
         <source>Sud verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen förbrukad</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1701"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Braudaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1704"/>
+        <location filename="../tababfuellen.ui" line="1710"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.cpp" line="276"/>
-        <source>Zutaten Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela satsen</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="277"/>
-        <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
-        <translation type="unfinished"></translation>
+        <source>Zutaten Gärung</source>
+        <translation>Ingredienser under jäsning</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="285"/>
-        <source>Grünschlauchzeitpunkt nicht erreicht</source>
-        <translation type="unfinished"></translation>
+        <location filename="../tababfuellen.cpp" line="278"/>
+        <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
+        <translation>Inte alla ingredienser för jäsningen har tillagts eller tagits ur ännu.</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="286"/>
-        <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
-        <translation type="unfinished"></translation>
+        <source>Grünschlauchzeitpunkt nicht erreicht</source>
+        <translation>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="291"/>
-        <source>Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <location filename="../tababfuellen.cpp" line="287"/>
+        <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
+        <translation>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu.</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="292"/>
+        <source>Schnellgärprobe</source>
+        <translation>Snabbjäsningsprovet</translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.cpp" line="293"/>
         <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakthalten i ölet är lägre än i snabbjäsningsprovet.</translation>
     </message>
 </context>
 <context>
@@ -2160,7 +2199,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="37"/>
         <source>Anlagen</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggningar</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="44"/>
@@ -2175,7 +2214,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="68"/>
         <source>Neue Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="75"/>
@@ -2185,12 +2224,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="78"/>
         <source>Anlage löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort anläggningen</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="104"/>
         <source>Geräte</source>
-        <translation type="unfinished"></translation>
+        <translation>Utrustning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="111"/>
@@ -2206,7 +2245,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="135"/>
         <location filename="../tabausruestung.cpp" line="259"/>
         <source>Neues Gerät</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny utrustning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="142"/>
@@ -2216,13 +2255,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="145"/>
         <source>Gerät löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort utrustning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="171"/>
         <location filename="../tabausruestung.ui" line="467"/>
         <source>Sude</source>
-        <translation type="unfinished"></translation>
+        <translation>Satser</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="181"/>
@@ -2232,13 +2271,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="240"/>
         <source>Kernwerte der Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggningens parametrar</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="249"/>
         <location filename="../tabausruestung.ui" line="294"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="256"/>
@@ -2254,12 +2293,12 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="301"/>
         <location filename="../tabausruestung.ui" line="503"/>
         <source>Durchschnitt</source>
-        <translation type="unfinished"></translation>
+        <translation>Genomsnitt</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="311"/>
         <source>Durchschnitt über die letzten</source>
-        <translation type="unfinished"></translation>
+        <translation>Genomsnitt av senaste</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="330"/>
@@ -2284,13 +2323,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="418"/>
         <source>Ausbeute für die Schüttungsberechnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte för maltberäkningarna</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="425"/>
         <location filename="../tabausruestung.ui" line="438"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="451"/>
@@ -2305,7 +2344,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="496"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="513"/>
@@ -2315,7 +2354,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="549"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="564"/>
@@ -2330,12 +2369,12 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1134"/>
         <location filename="../tabausruestung.ui" line="1172"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="599"/>
         <source>Korrektur des Farbwertes</source>
-        <translation type="unfinished"></translation>
+        <translation>Färgförändring</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="606"/>
@@ -2345,7 +2384,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="632"/>
         <source>Betriebskosten (Wasser, Strom, Gas, etc.)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader (vatten, el, gas o dyl)</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="639"/>
@@ -2355,17 +2394,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="661"/>
         <source>Korrektur der Nachgussmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Korrektion av mängden lakvatten</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="668"/>
         <source>EBC</source>
-        <translation type="unfinished"></translation>
+        <translation>EBC</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="678"/>
         <source>Korrektur der Sollmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Korrektion av målängden</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="692"/>
@@ -2375,7 +2414,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="723"/>
         <source>Maischekessel</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskkärl</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="745"/>
@@ -2386,7 +2425,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="770"/>
         <location filename="../tabausruestung.ui" line="1075"/>
         <source>Durchmesser</source>
-        <translation type="unfinished"></translation>
+        <translation>Diameter</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="777"/>
@@ -2396,7 +2435,7 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="1029"/>
         <location filename="../tabausruestung.ui" line="1127"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation>cm</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="790"/>
@@ -2407,13 +2446,13 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="815"/>
         <location filename="../tabausruestung.ui" line="1068"/>
         <source>Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Volym</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="822"/>
         <location filename="../tabausruestung.ui" line="1036"/>
         <source>Nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Användbar volym</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="829"/>
@@ -2424,13 +2463,13 @@ Version installiert: %2</source>
         <location filename="../tabausruestung.ui" line="868"/>
         <location filename="../tabausruestung.ui" line="1022"/>
         <source>Höhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Höjd</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="895"/>
         <location filename="../tabausruestung.ui" line="1107"/>
         <source>Maximal nutzbare Füllhöhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Max användbar fyllnadshöjd</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="902"/>
@@ -2445,7 +2484,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="975"/>
         <source>Sudpfanne</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokkärl</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="997"/>
@@ -2475,107 +2514,107 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabausruestung.ui" line="1221"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="22"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="23"/>
         <source>Grainfather G30</source>
-        <translation type="unfinished"></translation>
+        <translation>Grainfather G30</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="24"/>
         <source>Grainfather G70</source>
-        <translation type="unfinished"></translation>
+        <translation>Grainfather G70</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="25"/>
         <source>Braumeister 10L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 10L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="26"/>
         <source>Braumeister 20L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 20L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="27"/>
         <source>Braumeister 50L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 50L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="28"/>
         <source>Braumeister 200L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 200L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="29"/>
         <source>Braumeister 500L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 500L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="30"/>
         <source>Braumeister 1000L</source>
-        <translation type="unfinished"></translation>
+        <translation>Braumeister 1000L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="31"/>
         <source>Brauheld Pro 30L</source>
-        <translation type="unfinished"></translation>
+        <translation>Brauheld Pro 30L</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="51"/>
         <source>Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="52"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="53"/>
         <source>Vermögen [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förmåga [l]</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="54"/>
         <source>Anzahl Sude</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal satser</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="67"/>
         <source>Bezeichnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Beteckning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="222"/>
         <source>Neue Brauanlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny anläggning</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="242"/>
         <source>Brauanlage löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort anläggningen?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="243"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort anläggningen &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="280"/>
         <source>Gerät löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort utrustning?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="281"/>
         <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort utrustning &quot;%1&quot;?</translation>
     </message>
 </context>
 <context>
@@ -2583,11 +2622,11 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formulär</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="82"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2618,7 +2657,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="155"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vecka</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="196"/>
@@ -2633,7 +2672,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="218"/>
         <source>Farbe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Färg</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="227"/>
@@ -3097,12 +3136,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="39"/>
         <source>Auswahl 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Val 1</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="46"/>
@@ -3112,7 +3151,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="66"/>
         <source>Auswahl 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Val 2</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="73"/>
@@ -3122,7 +3161,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="93"/>
         <source>Auswahl 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Val 3</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="100"/>
@@ -3132,38 +3171,38 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbrauuebersicht.ui" line="133"/>
         <source>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden. Es werden nur die bereits abgefüllten Sude angezeigt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vilka saster visas kan stallas in i satsurvalet. Bara flasktappade satser visas.</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="63"/>
         <source>&lt;keine&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;inga&gt;</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>Abgefüllte Biermenge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden flask-/fattappad [l]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <source>Stammwürze [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört [°P]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
         <source>Sudhausausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskutbyte [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
@@ -3172,42 +3211,42 @@ Version installiert: %2</source>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="67"/>
         <source>Effektive Sudhausausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Effektiv mäskutbyte [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>Alkohol [%vol]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt [%vol]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>Scheinbarer Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar extrakthalt [°P]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <source>Scheinbarer Endvergärungsgrad [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar förjäsningsgrad [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>Tatsächlicher Endvergärungsgrad [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Verklig förjäsningsgrad [%]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>Kosten [%1/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>%1/l</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/l</translation>
     </message>
 </context>
 <context>
@@ -3216,7 +3255,7 @@ Version installiert: %2</source>
         <location filename="../tabbraudaten.ui" line="42"/>
         <location filename="../tabbraudaten.ui" line="73"/>
         <source>Braudatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Bryggdatum</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="63"/>
@@ -3226,7 +3265,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="66"/>
         <source>Jetzt</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="122"/>
@@ -3237,53 +3276,52 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbraudaten.ui" line="171"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="199"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier lässt sich die Würzemenge bei Kochbeginn berechnen.&lt;/p&gt;&lt;p&gt; Ein &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; wird im Feld links ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokstart</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="209"/>
-        <location filename="../tabbraudaten.ui" line="483"/>
-        <location filename="../tabbraudaten.ui" line="821"/>
-        <location filename="../tabbraudaten.ui" line="828"/>
+        <location filename="../tabbraudaten.ui" line="489"/>
+        <location filename="../tabbraudaten.ui" line="839"/>
+        <location filename="../tabbraudaten.ui" line="846"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation>cm</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="216"/>
         <location filename="../tabbraudaten.ui" line="321"/>
         <location filename="../tabbraudaten.ui" line="328"/>
-        <location filename="../tabbraudaten.ui" line="835"/>
-        <location filename="../tabbraudaten.ui" line="909"/>
-        <location filename="../tabbraudaten.ui" line="1057"/>
-        <location filename="../tabbraudaten.ui" line="1278"/>
-        <location filename="../tabbraudaten.ui" line="1494"/>
-        <location filename="../tabbraudaten.ui" line="1645"/>
-        <location filename="../tabbraudaten.ui" line="1780"/>
-        <location filename="../tabbraudaten.ui" line="1884"/>
-        <location filename="../tabbraudaten.ui" line="2078"/>
-        <location filename="../tabbraudaten.ui" line="2160"/>
+        <location filename="../tabbraudaten.ui" line="853"/>
+        <location filename="../tabbraudaten.ui" line="927"/>
+        <location filename="../tabbraudaten.ui" line="1075"/>
+        <location filename="../tabbraudaten.ui" line="1296"/>
+        <location filename="../tabbraudaten.ui" line="1512"/>
+        <location filename="../tabbraudaten.ui" line="1663"/>
+        <location filename="../tabbraudaten.ui" line="1798"/>
+        <location filename="../tabbraudaten.ui" line="1908"/>
+        <location filename="../tabbraudaten.ui" line="2114"/>
+        <location filename="../tabbraudaten.ui" line="2196"/>
         <location filename="../tabbraudaten.cpp" line="48"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="236"/>
         <source>Würzemenge bei Kochbeginn (20°C)</source>
+        <translation>Mängd vid kokstart (20°C)</translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="673"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden.&lt;/p&gt;&lt;p&gt;Sind Stammwürze bei Kochbeginn und Zielstammwürze weitgehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="249"/>
-        <location filename="../tabbraudaten.ui" line="737"/>
+        <location filename="../tabbraudaten.ui" line="701"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochbeginn ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="755"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="271"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitegehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3293,14 +3331,9 @@ Version installiert: %2</source>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="335"/>
-        <location filename="../tabbraudaten.ui" line="1144"/>
+        <location filename="../tabbraudaten.ui" line="1162"/>
         <source>Zielwürzemenge (20°C)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="342"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Mål för vörtmängden (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="361"/>
@@ -3308,431 +3341,450 @@ Version installiert: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="386"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitegehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;p&gt;Letztlich ist es aber zu diesem Zeitpunkt nur ein Zwischenwert zur Beurteilung des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tabbraudaten.ui" line="416"/>
-        <location filename="../tabbraudaten.ui" line="1375"/>
+        <location filename="../tabbraudaten.ui" line="1393"/>
         <source>Zielwürzemenge bei</source>
+        <translation>Mål för vörtmängden vid</translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="199"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge bei Kochbeginn &lt;/span&gt;berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Würzemenge bei Kochbeginn ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="436"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;p&gt;Das  größte Volumen wird bei 100°C erreicht. Es empfiehlt sich etwas Abstand zur Oberkante des Kessels, da Hopfen bis zum Würzebruch stark schäumen kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tabbraudaten.ui" line="249"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Zielstammwürze und Stammwürze bei Kochbeginn weitgehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="461"/>
-        <location filename="../tabbraudaten.ui" line="1426"/>
-        <location filename="../tabbraudaten.ui" line="2055"/>
+        <location filename="../tabbraudaten.ui" line="271"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="342"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge bei Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="386"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend identisch, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="442"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;p&gt;Das größte Volumen wird bei 100°C erreicht. Es empfiehlt sich etwas Abstand zur Oberkante des Kessels, da Hopfen bis zum Würzebruch stark schäumen, der Sud damit überkochen kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="467"/>
+        <location filename="../tabbraudaten.ui" line="1444"/>
+        <location filename="../tabbraudaten.ui" line="2091"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="476"/>
-        <location filename="../tabbraudaten.ui" line="621"/>
-        <location filename="../tabbraudaten.ui" line="705"/>
-        <location filename="../tabbraudaten.ui" line="858"/>
-        <location filename="../tabbraudaten.ui" line="977"/>
-        <location filename="../tabbraudaten.ui" line="1787"/>
-        <location filename="../tabbraudaten.ui" line="1922"/>
-        <location filename="../tabbraudaten.ui" line="2016"/>
+        <location filename="../tabbraudaten.ui" line="482"/>
+        <location filename="../tabbraudaten.ui" line="633"/>
+        <location filename="../tabbraudaten.ui" line="717"/>
+        <location filename="../tabbraudaten.ui" line="876"/>
+        <location filename="../tabbraudaten.ui" line="995"/>
+        <location filename="../tabbraudaten.ui" line="1805"/>
+        <location filename="../tabbraudaten.ui" line="1946"/>
+        <location filename="../tabbraudaten.ui" line="2046"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="490"/>
-        <location filename="../tabbraudaten.ui" line="1331"/>
+        <location filename="../tabbraudaten.ui" line="496"/>
+        <location filename="../tabbraudaten.ui" line="1349"/>
         <source>Füllhöhe von Oberkante aus gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fyllnadshöjd från överkant</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="535"/>
+        <location filename="../tabbraudaten.ui" line="541"/>
         <source>Mit weiteren Zutaten &quot;Kochen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>inklusive ingredienserna för koket</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="558"/>
-        <location filename="../tabbraudaten.ui" line="593"/>
+        <location filename="../tabbraudaten.ui" line="570"/>
+        <location filename="../tabbraudaten.ui" line="605"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; gemessen mit den &lt;span style=&quot; font-weight:600;&quot;&gt;weiteren Zutaten&lt;/span&gt;, welche beim Kochen zugegeben werden&lt;span style=&quot; font-weight:600;&quot;/&gt;angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="580"/>
-        <location filename="../tabbraudaten.ui" line="759"/>
-        <location filename="../tabbraudaten.ui" line="1557"/>
-        <location filename="../tabbraudaten.ui" line="1848"/>
+        <location filename="../tabbraudaten.ui" line="592"/>
+        <location filename="../tabbraudaten.ui" line="777"/>
+        <location filename="../tabbraudaten.ui" line="1575"/>
+        <location filename="../tabbraudaten.ui" line="1872"/>
         <source>°Brix</source>
-        <translation type="unfinished"></translation>
+        <translation>°Brix</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="631"/>
-        <location filename="../tabbraudaten.ui" line="1064"/>
+        <location filename="../tabbraudaten.ui" line="643"/>
+        <location filename="../tabbraudaten.ui" line="1082"/>
         <source>Füllhöhe vom Boden aus gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Fyllnadshöjd från botten</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="648"/>
+        <location filename="../tabbraudaten.ui" line="660"/>
         <source>Stammwürze bei Kochbeginn</source>
+        <translation>Stamvört (OG) vid kokstart</translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="883"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach dem Hopfenseihen&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumenkorrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung und öffnet hierfür ein schwebendes Fenster.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="661"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden.&lt;/p&gt;&lt;p&gt;Dieser Wert ist nur fürs Protokoll und wird für Berechnungen nicht gebraucht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tabbraudaten.ui" line="939"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;p&gt;Die Verdampfungsrate kann als Durchschnittswert bisheriger Sude im Tab Ausrüstung angegeben und dann im Tab Rezept übernommen werden. Eine zweite Möglichkeit ist es, die Verdampfungsrate im Tab Rezept manuell zu definieren. Der Durchschnittswert einer Anlage im Hobbybrauerbereich liegt bei 10% und ist im Kleinen Brauhelfer voreingestellt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Zu Beginn der Braudatenerfassung und -berechnung im Kleinen Brauhelfer empfiehlt es sich den voreingestellten Wert nicht zu verändern. Mit spätestens zehn Suden durchschnittlich sollte sich die spezifische Verdampfungsrate der Anlage eingestellt haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="689"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tabbraudaten.ui" line="964"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete temperaturabhängige &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge&lt;/span&gt; nach Abkühlen des Sudes auf &lt;span style=&quot; font-weight:600;&quot;&gt;20°C&lt;/span&gt; und vor dem Anstellen mit Hefe angegeben.&lt;/p&gt;&lt;p&gt;Abhängig von Faktoren, beispielsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zugaben, Verdünng&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Verlust beim Abfüllen&lt;/span&gt;, entspricht dieser Wert nicht der der im Rezept angestrebten Biermenge, ist aber ein guter Indikator, ob diese Menge erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="717"/>
-        <location filename="../tabbraudaten.ui" line="1509"/>
-        <location filename="../tabbraudaten.ui" line="1806"/>
+        <location filename="../tabbraudaten.ui" line="1014"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach dem Hopfenseihen&lt;/span&gt; berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Würzemenge nach dem Hopfenseihen ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1169"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung und öffnet hierfür ein schebendes Fenster.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1218"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;p&gt;Die Saudhausausbeute ist ein Maß für die Effizienz der Brauanlage. Zielgröße im Hobbrauerbereich ist 70%, in der Praxis liegt dieser Wert aber oft darunter.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1252"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach Kochende&lt;/span&gt; temperaturkorrigiert anhand des Füllstandes in der Sudpfanne berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Würzemenge bei Kochende ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1378"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze nach Kochende &lt;/span&gt;anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochende ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1419"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist. Für einen korrekten Wert ist die Temperatur der Würze zu berücksichtigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1487"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Würzeverlust durch das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenseihen&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Die Verlustmenge ist neben baulichen Faktoren der Anlage durch den Hopfen selbst abhängig. Doldenhopfen binden deutlich mehr Flüssigkeit als Hopfenpellets wie T90 oder T45.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1599"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze in °Plato &lt;span style=&quot; font-weight:600;&quot;&gt;beim Anstellen &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen ist Grundlage für die Gärungsberechnung im Tag Gärverlauf und gleichzeitig dort immer die erste Messung.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen kann sich je nach &lt;span style=&quot; font-weight:600;&quot;&gt;Brauverfahren&lt;/span&gt; von der Stammwürze bei Kochende unterscheiden. Beispiele hierfür sind ein Hefestarter oder Weitere Zutaten wie Honig Zucker oder Sirup, die die Stammwürze beeinflussen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1644"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllte Speisemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die nach dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speise ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1670"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1714"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer korrigiert berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert, wie im Spickzettel oder im Tab Rezept angegeben, abweichen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen steht am Ende des Brauprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1921"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Der Wert kann sich je nach &lt;span style=&quot; font-weight:600;&quot;&gt;Brauverfahren&lt;/span&gt; von der Würzemenge nach dem Hopfenseihen unterscheiden, etwa wenn ein Hefestarter oder Weitere Zutaten wie Honig, Zucker oder Sirup zur Gärung hinzugegeben werden. In allen Fällen ist die Gesamtwürzemenge die maximale Menge des Brautages mitsamt etwaiger Speisemenge. Diese wird im nächsten Schritt, so benötigt, abgezogen.&lt;/p&gt;&lt;p&gt;Die Gesamtwürzemenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Anstellmenge. Wird keine Speise entnommen, sind Würzemenge und Anstellmenge identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="1965"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter dem Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllte Speisemenge &lt;/span&gt;ist die aus der Gesamtwürzemenge entnommene Speisemenge zu verstehen, die der Kleine Brauhelfer vorschlägt, um auf die im Tab Rezept festgelegte Karbonisierung zu kommen.&lt;/p&gt;&lt;p&gt;Arbeitet der Brauer nicht mit Speise, ist der Wert links auf Null zu setzen und die Aktion Abgefüllte Speisemenge zu ignorieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2021"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer den erwarteten &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Restextrakt&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge aus.&lt;/p&gt;&lt;p&gt;Der vorgeschlagene Wert ergibt sich aus den Angaben zur Karbonisierung im Tab Rezept. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit. &lt;/p&gt;&lt;p&gt;Im SRE fixiert sich der Vergärungsgrad der Hefe. Ein zu niedriger Wert ist Indiz für Störungen im Gärprozess. Biere mit zu wenig Hefe, von  &lt;span style=&quot; font-weight:600;&quot;&gt;underpitched &lt;/span&gt;genannt, sind oft unausgewogen süß und mastig. Eine übermäßige Hefegabe, die Fachwelt spricht von &lt;span style=&quot; font-weight:600;&quot;&gt;overpitched&lt;/span&gt;, ist weniger problematisch. Sie wird auch bewusst eingesetzt. Overpitching kann auch Geschmacksabweichungen zur Folge haben, etwa weil mehr Alkohol produziert, das Bier trockener wird. Biere, die overpitched wurden, schmecken oft dünner und &amp;quot;flacher&amp;quot; als solche mit der richtigen Hefemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2066"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge aus.&lt;/p&gt;&lt;p&gt;Den Wert schlägt der Kleine Brauhelfer vor. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2260"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button addiert der Kleine Brauhelfer den rechts stehen Wert &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge um auf Zielstammwürze zu verdünnen &lt;/span&gt;zur Gesamtwürzemenge (20°C) hinzu.&lt;/p&gt;&lt;p&gt;Unter der Verdünnungsmenge&lt;span style=&quot; font-weight:600;&quot;/&gt;ist &lt;span style=&quot; font-weight:600;&quot;&gt;zurückgehaltenes&lt;/span&gt;, für High Gravity &lt;span style=&quot; font-weight:600;&quot;&gt;reserviertes&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzliches&lt;/span&gt; Wasser aus der Nachgussmenge zu verstehen, um die Gesamtwürzemenge auf die im Tab Rezepte festgelegte Stammwürze zu verdünnen.&lt;/p&gt;&lt;p&gt;Das Feld erscheint nicht, wenn die Stammwürzemenge nach Rezept getroffen wurde oder gar darunter liegt. Wünscht der Brauer keine Verdünnung, ist der vorgeschlagene Verdünnungswert einfach zu ignorieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2411"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;p&gt;Beispielsweise können hier die Kosten für Malz, Hopfen und Weitere Zutaten zusammengefasst werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2484"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufteilen &lt;/span&gt;ist ein Verfahren&lt;span style=&quot; font-weight:600;&quot;&gt;, &lt;/span&gt;um die Gesamtwürze in den folgenden Prozessschritten unterschiedlich zu behandeln. In der Praxis wird dies sowohl &lt;span style=&quot; font-weight:600;&quot;&gt;vor &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;nach dem Anstellen mit Hefe &lt;/span&gt;umgesetzt.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Abfülldaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="729"/>
+        <location filename="../tabbraudaten.ui" line="1527"/>
+        <location filename="../tabbraudaten.ui" line="1824"/>
         <source>Zielstammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Målvärde för stamvörten (OG)</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="771"/>
+        <location filename="../tabbraudaten.ui" line="789"/>
         <source>Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokslut</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="780"/>
+        <location filename="../tabbraudaten.ui" line="798"/>
         <source>Verlust durch Hopfenseihen</source>
-        <translation type="unfinished"></translation>
+        <translation>Förlust från humlefiltrering</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="787"/>
+        <location filename="../tabbraudaten.ui" line="805"/>
         <source>Würzemenge vor Hopfenseihen (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd innan humlefiltrering (20°C)</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="801"/>
+        <location filename="../tabbraudaten.ui" line="819"/>
         <source>Würzemenge nach Hopfenseihen (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd efter humlefiltrering (20°C)</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="842"/>
-        <location filename="../tabbraudaten.ui" line="1452"/>
+        <location filename="../tabbraudaten.ui" line="860"/>
+        <location filename="../tabbraudaten.ui" line="1470"/>
         <source>Aus Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Från receptet</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="865"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach dem Hopfenseihen&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="884"/>
+        <location filename="../tabbraudaten.ui" line="902"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="921"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="946"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete temperaturabhängige &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge&lt;/span&gt; nach Abkühlen des Sudes auf &lt;span style=&quot; font-weight:600;&quot;&gt;20°C&lt;/span&gt; und vor dem Anstellen mit Hefe angegeben.&lt;/p&gt;&lt;p&gt;Abhängig von Faktoren, beispielsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zugaben,Verdünng&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Verlust beim Abfüllen&lt;/span&gt;, entspricht dieser Wert nicht der der im Rezept angestrebten Biermenge, ist aber ein guter Indikator, ob diese Menge erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="996"/>
-        <location filename="../tabbraudaten.ui" line="1234"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach Kochende&lt;/span&gt; temperaturkorrigiert anhand des Füllstandes in der Sudpfanne berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links automatisch eingetragen. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Würzemenge bei Kochende ist ein Zwischenschritt. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1012"/>
+        <location filename="../tabbraudaten.ui" line="1030"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochende&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden.&lt;/p&gt;&lt;p&gt;Liegt der ermittelte Wert nahe beim zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben, bestätigt dies die zuvor festgelegten Parameter von Brauanlage, Rezept und Sudarbeit.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochende ist ein Zwischenschritt. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen, etwa wenn die Stammwürze zu hoch sein sollte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1028"/>
+        <location filename="../tabbraudaten.ui" line="1046"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1035"/>
+        <location filename="../tabbraudaten.ui" line="1053"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. &lt;/p&gt;&lt;p&gt;Der Faktor beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Effizienz&lt;/span&gt; der Brauanlage sowie die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; der verwendeten Rohstoffe.&lt;/p&gt;&lt;p&gt;Im Hobbymaßstab wird ein Faktor von 70% angestrebt, liegt aber tatsächlich oft darunter. Im Profibereich sind 80% Zielgröße.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1074"/>
+        <location filename="../tabbraudaten.ui" line="1092"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; pro Stunde des Sudes aus.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1112"/>
+        <location filename="../tabbraudaten.ui" line="1130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze nach Kochende&lt;/span&gt; angegeben. Dieser Wert enspricht der Zielstammwürze beim Anstellen zuzüglich Verdickungseffekte durch den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity Faktor.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum Überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1141"/>
+        <location filename="../tabbraudaten.ui" line="1159"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Würzemenge nach Abkühlen des Sudes auf 20°C. Zielwürzemenge berechnet die Würzemenge in Abhängigkeit der Sudanlage&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1151"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf den Button rechts hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1170"/>
+        <location filename="../tabbraudaten.ui" line="1188"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld zeigt die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge bei 100°C &lt;/span&gt;bei Kochende an.&lt;/p&gt;&lt;p&gt;Grundlage hierfür sind die Rohstoffzutaten und Prozessschritte im Rezept.&lt;/p&gt;&lt;p&gt;Das Volumen ist höher als im abgekühlten Zustand. Über nebenstehendes Eingabefeld kann das unterschiedliche Volumen bei jeder Temperatur angezeigt werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1200"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1251"/>
-        <location filename="../tabbraudaten.ui" line="1324"/>
-        <location filename="../tabbraudaten.ui" line="1864"/>
+        <location filename="../tabbraudaten.ui" line="1269"/>
+        <location filename="../tabbraudaten.ui" line="1342"/>
+        <location filename="../tabbraudaten.ui" line="1888"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1285"/>
+        <location filename="../tabbraudaten.ui" line="1303"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1310"/>
+        <location filename="../tabbraudaten.ui" line="1328"/>
         <source>Stammwürze bei Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG) vid kokslut</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1341"/>
-        <location filename="../tabbraudaten.ui" line="1445"/>
+        <location filename="../tabbraudaten.ui" line="1359"/>
+        <location filename="../tabbraudaten.ui" line="1463"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1360"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze nach Kochende&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1401"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1435"/>
+        <location filename="../tabbraudaten.ui" line="1453"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sudhausausbeute beschreibt die Effizienz der Brauanlage ab dem Einmaischen bis zum Anstellen des Sudes mit Hefe. Im Hobbybereich mit durchschnittlich 50% bis 70% gilt ein Wert von 60% als gut. Professionelle Anlagen erreichen Werte über 70%.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1438"/>
+        <location filename="../tabbraudaten.ui" line="1456"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1469"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Verlust durch das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenseihen&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1506"/>
+        <location filename="../tabbraudaten.ui" line="1524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zielstammwürze ist die errechnete Stammwürze zu diesem Zeitpunkt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1535"/>
-        <location filename="../tabbraudaten.ui" line="1826"/>
+        <location filename="../tabbraudaten.ui" line="1553"/>
+        <location filename="../tabbraudaten.ui" line="1850"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert enspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekte während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1569"/>
+        <location filename="../tabbraudaten.ui" line="1587"/>
         <source>Speisemenge, um gewünschte Karbonisierung zu erreichen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängt (ofermenterad) för att uppnå karboneringen.</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1572"/>
+        <location filename="../tabbraudaten.ui" line="1590"/>
         <source>Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Jästtillsättning</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1581"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze in °Plato &lt;span style=&quot; font-weight:600;&quot;&gt;beim Anstellen ohne Hefe oder weitere Zutaten&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen ist Grundlage für die Gärungsberechnung im Tag Gärverlauf und gleichzeitig dort immer die erste Messung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1604"/>
+        <location filename="../tabbraudaten.ui" line="1622"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektive Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellen&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er kann im Tab Ausrüstung zur Durchschnittsberechnung herangezogen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1626"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die abgefüllte Speisemenge eingetragen.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die nach dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speise ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1652"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1696"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1706"/>
+        <location filename="../tabbraudaten.ui" line="1724"/>
         <source>Abgefüllte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden sprarad ojäst vört</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1713"/>
+        <location filename="../tabbraudaten.ui" line="1731"/>
         <source>Gesamtwürzemenge (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Totala vörtmängden (20°C)</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1720"/>
+        <location filename="../tabbraudaten.ui" line="1738"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellmenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Anstellmenge ist die Menge Sud, der vergoren wird. Sie ist die Menge ab &lt;span style=&quot; font-weight:600;&quot;&gt;Gärungsbeginn&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Anstellmenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Würzemenge. Die Speise wird später bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; wieder zugegeben. Dies wird im Tab Abfülldaten erfasst.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1745"/>
+        <location filename="../tabbraudaten.ui" line="1763"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze beim Anstellen&lt;/span&gt; entspricht der Stammwürze aus dem Rezept abzüglich allfällige Anteile aus weiteren Zutaten, welche bei der Gärung dazugegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen schließt jede Form der Hefegabe ein. Wird etwa ein großer &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarter&lt;/span&gt; mit einer anderen Platowert zugegeben, verändert dies die Stammwürze beim Anstellen. In diesem Fall empfiehlt sich im Vorfeld die Berechnung beider Mengen durch ein sogenanntes Mischkreuz, um die Abweichung zu egalisieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1767"/>
+        <location filename="../tabbraudaten.ui" line="1785"/>
         <source>Stammwürze beim Anstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG) vid jästtillsättning</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1897"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Unter diesem Wert vesteht sich die aus &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellmenge&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; bestehende &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Die Würzemenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Anstellmenge. Wird keine Speise entnommen, sind Würzemenge und Anstellmenge gleich groß.&lt;/p&gt;&lt;p&gt;Bei bestimmten Anstellverfahren mit Hefe wird zusätzliche Wpzr hinzugegeben. Es empfiehlt sich dies in die Würzemenge einzurechnen. Würzemenge und Anstellmenge sind voneinander abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1941"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vorgeschlagene Speisemenge entnehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1964"/>
+        <location filename="../tabbraudaten.ui" line="1988"/>
         <source>Benötigte Speisemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd ojäst vört som behövs</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1984"/>
+        <location filename="../tabbraudaten.ui" line="2008"/>
         <source>SRE</source>
-        <translation type="unfinished"></translation>
+        <translation>FG</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1991"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erwarteter &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Restextrakt&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="2023"/>
+        <location filename="../tabbraudaten.ui" line="2053"/>
         <source>T</source>
-        <translation type="unfinished"></translation>
+        <translation>T</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2030"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="2064"/>
+        <location filename="../tabbraudaten.ui" line="2100"/>
         <source>Anstellmenge (20°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd vid jästtillsättning (20°C)</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2103"/>
+        <location filename="../tabbraudaten.ui" line="2139"/>
         <source>Wassermenge, um auf Zielstammwürze zu verdünnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd vatten för att spä ut till mål-stamvört</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2129"/>
+        <location filename="../tabbraudaten.ui" line="2165"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Liegt die gemessene Stammwürze beim Anstellen &lt;span style=&quot; font-weight:600;&quot;&gt;über&lt;/span&gt; die im Rezept festgelegte &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze&lt;/span&gt;, wird hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge zum Vedrünnen&lt;/span&gt; angegeben, um den angestrebten Wert zu erreichen.&lt;/p&gt;&lt;p&gt;Wurde ein &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity Faktor&lt;/span&gt; angegeben, so wird die Verdünnung hier vorgenommen.&lt;/p&gt;&lt;p&gt;Dazu gibt man vorsichtig eine Wassermenge zu, misst die Stammwürze neu und trägt den neuen Wert bei der Stammwürze beim Anstellen ein und passt die Würzemenge entsprechend an. Der Vorgang wird wiederholt, bis die Zielstammwürze erreicht wurde.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich mehrfach zu messen und die Wassermenge schrittweise und immer leicht unter dem angegebenen Wert beizufügen. Damit vermeidet man die Gefahr einer übermäßigen Verdünnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2202"/>
+        <location filename="../tabbraudaten.ui" line="2231"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge &lt;/span&gt;berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert, wie im Spickzettel oder im Tab Rezept angegeben, abweichen.&lt;/p&gt;&lt;p&gt;Die Gesamtwürzemenge steht am Ende des Brauprozesses und wird nur noch durch Entnahme von Speise verändert. Um den Wert der Gesamtwürzemenge zu ermitteln, sind korrekte Angaben im Tab Ausrüstung für die Sudpfanne erforderlich sowie ein analoges oder digitales Metermaß .&lt;/p&gt;&lt;p&gt;Wird ein anderes Gefäß verwendet, sind Rechner für Raummaße eine Hilfe, die viele Seiten für Hobbybrauer bereit halten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2241"/>
         <source>Effektive Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Effektiv mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2221"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vorgeschlagene Verdünnung übernehmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="2242"/>
+        <location filename="../tabbraudaten.ui" line="2281"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2251"/>
+        <location filename="../tabbraudaten.ui" line="2290"/>
         <source>Sud für Durchschnittsberechnung ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorera denna sats när medelvärdet beräknas</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2297"/>
+        <location filename="../tabbraudaten.ui" line="2336"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der einzelne &lt;span style=&quot; font-weight:600;&quot;&gt;Sud für Durschnittsberechnungen&lt;/span&gt; ignoriert werden.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; ist die Durchschnittsberechung möglich sowie Filtermöglichkeiten für die Sude vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2317"/>
+        <location filename="../tabbraudaten.ui" line="2356"/>
         <source>Zusätzliche Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare kostnader</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2331"/>
+        <location filename="../tabbraudaten.ui" line="2370"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalkostnad</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2344"/>
+        <location filename="../tabbraudaten.ui" line="2383"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und weitere Zutaten, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2372"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="2407"/>
+        <location filename="../tabbraudaten.ui" line="2446"/>
         <source>Dieser Sud enthält weitere Zutaten, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen innehåller extra ingedienser som ändrar stamvörten, vilket kan snedvrida medelvärdesbildningen.</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2435"/>
+        <location filename="../tabbraudaten.ui" line="2474"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud gebraut ausgegraut und inaktiv. Der Kleine Brauhelfer fragt, ob die verwendeten Zutaten von den Rohstoffvorräten abgezogen werden sollen. Bei Korrekturen ist diese Frage zu verneinen und die Rohstoffvorräte bleiben unverändert..&lt;/p&gt;&lt;p&gt;Über das Menü Sud kann die Aktion rückgängig gemacht werden. In diesem Fall sind die Rohsotffanpassungen erneut zu bejahen oder zu verneinen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2438"/>
+        <location filename="../tabbraudaten.ui" line="2477"/>
         <source>Sud gebraut</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen bryggd</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2445"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Abfülldaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="2448"/>
+        <location filename="../tabbraudaten.ui" line="2487"/>
         <source>Sud teilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela satsen</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2472"/>
+        <location filename="../tabbraudaten.ui" line="2511"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind alle Braudaten, &lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; übersichtlich nach &lt;span style=&quot; font-weight:600;&quot;&gt;Prozessschritt&lt;/span&gt; beim Brauen aufgeführt.&lt;/p&gt;&lt;p&gt;Ähnlich, aber ausführlicher, werden diese Schritte auf dem Spickzettel aufbereitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3742,7 +3794,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="28"/>
         <source>Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="35"/>
@@ -3752,32 +3804,32 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabdatenbank.ui" line="51"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="70"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Mit einem Update kann sich die Versionsnummer der Datenbank ändern. Datenbanken im Kleinen Brauhelfer sind nicht abwärtskompatibel. Es wird daher dringend angeraten vor jeden Update ein Backup der aktuellen Datenbank zu machen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabdatenbank.ui" line="132"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Sektion der aktuellen Datenbank ausgewählt, &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Tabelle genannt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man im Kleinen Brauhelfer ein Kapitel in den Tabs (Reitern) und ihren Subkategorien. Der Rechtsklick zeigt die Liste von über 20 Kapiteln an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabdatenbank.ui" line="185"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezfische&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Einträge&lt;/span&gt; eines Sudes, unterteilt in Kapitel, angezeigt werden.&lt;/p&gt;&lt;p&gt;Zuvor muss ein Sud geladen werden. Der Rechtsklick zeigt dann die Liste verfügbarer Kapitel an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="119"/>
         <source>Global</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabdatenbank.ui" line="132"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die jeweilige &lt;span style=&quot; font-weight:600;&quot;&gt;Tabelle&lt;/span&gt; der Datenbank gewählt , die bearbeitet oder überprüft werden soll.&lt;/p&gt;&lt;p&gt;Darunter verstehen sich alle Kapitel wie Sud Wasser, Malz, Rezept, Hauptgärverlauf und so fort, die im Kleinen Brauhelfer mit Einträgen befüllt wurden. Jeder Reiter und seine jeweiligen Untersektionen stellen im Kleinen Brauhelfer eine Tabelle dar.&lt;/p&gt;&lt;p&gt;Aus einer Tabelle generiert der Kleine Brauhelfer seine Daten und Berechnungen. Eingriffe in die Datenbank sollten nur mit Vorsicht unt entsprechendem Hintergrundwissen vorgenommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Global</translation>
     </message>
     <message>
         <location filename="../tabdatenbank.ui" line="172"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabdatenbank.ui" line="185"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;spezifische Tabelle &lt;/span&gt;eine Sudes ausgewählt. Unter einem Sud versteht die Datenbank alle Angaben im Tab Rezept. Sude selbst werden im Tabellenfeld (Reiter) Sudauswahl gelistet.Ein sud muss geladen sein, damit hier eine Tabelle ausgewählt werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sats</translation>
     </message>
 </context>
 <context>
@@ -3785,256 +3837,286 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="27"/>
         <source>Vorlage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mall:</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="40"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabetikette.ui" line="47"/>
+        <location filename="../tabetikette.ui" line="50"/>
         <source>Öffnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="54"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf Aktualisieren wirken sich die Änderungen unmittelbar aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabetikette.ui" line="57"/>
+        <location filename="../tabetikette.ui" line="60"/>
         <source>Aktualisieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="96"/>
+        <location filename="../tabetikette.ui" line="99"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; ist die Bearbeitung der Gestaltungsvorgaben in der linken Spalte sowie der Tags in der rechten Spalte möglich.&lt;/p&gt;&lt;p&gt;Tags speisen Werte in das Layout ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="99"/>
+        <location filename="../tabetikette.ui" line="102"/>
         <source>Editiermodus</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigeringsläge</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="106"/>
+        <location filename="../tabetikette.ui" line="109"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angeklickt, können hiermit eigene &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="109"/>
+        <location filename="../tabetikette.ui" line="112"/>
         <source>Tags ersetzen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt nyckelord</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="132"/>
+        <location filename="../tabetikette.ui" line="135"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; gespeichert.&lt;/p&gt;&lt;p&gt;Dies kann nicht rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="135"/>
+        <location filename="../tabetikette.ui" line="138"/>
         <source>Speichern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabetikette.ui" line="149"/>
-        <source>In dieser Spalte</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabetikette.ui" line="212"/>
-        <location filename="../tabetikette.ui" line="521"/>
-        <source>Anzahl Etiketten</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="218"/>
+        <location filename="../tabetikette.ui" line="539"/>
+        <source>Anzahl Etiketten</source>
+        <translation>Antal etiketter</translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="224"/>
         <source>Anzahl</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="231"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabetikette.ui" line="263"/>
+        <location filename="../tabetikette.ui" line="269"/>
         <source>Etikettengröße</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikettstorlek</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="281"/>
-        <location filename="../tabetikette.ui" line="351"/>
-        <location filename="../tabetikette.ui" line="403"/>
-        <location filename="../tabetikette.ui" line="424"/>
+        <location filename="../tabetikette.ui" line="287"/>
+        <location filename="../tabetikette.ui" line="357"/>
+        <location filename="../tabetikette.ui" line="412"/>
+        <location filename="../tabetikette.ui" line="433"/>
         <source>mm</source>
-        <translation type="unfinished"></translation>
+        <translation>mm</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="294"/>
+        <location filename="../tabetikette.ui" line="300"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="316"/>
+        <location filename="../tabetikette.ui" line="322"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Breite &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;p&gt;Die ideale Breite ist abhängig vom Umfang des Gebindes und sollte vorher ausgemessen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="332"/>
+        <location filename="../tabetikette.ui" line="338"/>
         <source>Höhe</source>
-        <translation type="unfinished"></translation>
+        <translation>Höjd</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="358"/>
+        <location filename="../tabetikette.ui" line="364"/>
         <source>Breite</source>
-        <translation type="unfinished"></translation>
+        <translation>Bredd</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="365"/>
+        <location filename="../tabetikette.ui" line="371"/>
         <source>Seitenverhältnis beibehalten</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevara sidoförållandet</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="375"/>
+        <location filename="../tabetikette.ui" line="384"/>
         <source>Aus SVG übernehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta från SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="385"/>
+        <location filename="../tabetikette.ui" line="394"/>
         <source>Abstände zwischen Etiketten</source>
-        <translation type="unfinished"></translation>
+        <translation>Avstånd mellan etiketter</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="410"/>
+        <location filename="../tabetikette.ui" line="419"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="417"/>
+        <location filename="../tabetikette.ui" line="426"/>
         <source>Vertikal</source>
+        <translation>Vertikal</translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="40"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;im Format SVG aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten. SVG ist eine Beschreibung zweidimensionaler Grafiken.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="431"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eine &lt;span style=&quot; font-weight:600;&quot;&gt;Trennlinie&lt;/span&gt; zwischen den einzelnen darstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tabetikette.ui" line="47"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann eine externes &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; geöffnet und anschließend im Kleinen Brauhelfer gespeichert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="434"/>
+        <location filename="../tabetikette.ui" line="57"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; aktualisiert. Andernfalls können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="152"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Bereich wird das Etikett mittels Tags und XML-Elementen gemäß der Beschreibungssprache SVG layoutet.&lt;/p&gt;&lt;p&gt;Das jeweils gewählte Tag wird hierfür mit einem Wert aus dem Bereich rechts definiert. Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="160"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Werte&lt;/span&gt; der Tags aufgeführt. &lt;/p&gt;&lt;p&gt;Die Werte stammen aus den einzelnen Tabs (Reiter) des Kleinen Brauhelfers, insbesondere aus dem Tab Rezept sowie aus den Tabs Braudaten und Abfülldaten. Der Aufruf dieser Werte kann im linken Bereich umgesetzt werden. &lt;/p&gt;&lt;p&gt;Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="237"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Aus praktischen Erwägungen sollte die gewählte Zahl mit dem später gewählten Druckformat übereinstimmen. Üblicherweise werden Halsspitzetiketten auf einem handelsüblichen Drucker in DINA A4 ausgedruckt und die Druckbögen dann zurechtgeschnitten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="381"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das in der Vorlage definierte Seitenverhältnis der aktuell gewählten Etikettenvorlage übernommen. Eine manuelle Anpassung entfällt damit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="440"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Trennlinie&lt;/span&gt; zwischen den einzelnen Etiketten angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="443"/>
         <source>Trennlinie darstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa skiljelinje</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="450"/>
+        <location filename="../tabetikette.ui" line="459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;horizontale Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2 mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2 mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="469"/>
+        <location filename="../tabetikette.ui" line="478"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;vertikale Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="485"/>
+        <location filename="../tabetikette.ui" line="494"/>
         <source>Tags</source>
+        <translation>Nyckelord</translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="500"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden zusätzliche Tags für das gewählte Etikett aufgelistet.&lt;/p&gt;&lt;p&gt;Ein Tag besteht aus seinem Namen und seinem Wert. Tags werden in doppelt geschweiften Klammern beschrieben. Bei Fragen zur Auszeichnungssprache des svg-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="503"/>
+        <location filename="../tabetikette.ui" line="515"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag für das Etikett &lt;/span&gt;angelegt.&lt;/p&gt;&lt;p&gt;Ein Tag darin besteht aus seinem Namen und seinem Wert. Tags werden in doppelt geschweiften Klammern beschrieben.&lt;/p&gt;&lt;p&gt;Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="518"/>
         <source>Neu</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="510"/>
-        <source>Löschen</source>
+        <location filename="../tabetikette.ui" line="525"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Tag oder mehrere gelöscht. Mit Shift können mehere Tags markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="528"/>
+        <source>Löschen</source>
+        <translation>Ta bort</translation>
+    </message>
+    <message>
+        <location filename="../tabetikette.ui" line="546"/>
         <source>{{N}}</source>
-        <translation type="unfinished"></translation>
+        <translation>{{N}}</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="535"/>
+        <location filename="../tabetikette.ui" line="553"/>
         <source>{{n}}</source>
-        <translation type="unfinished"></translation>
+        <translation>{{n}}</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="542"/>
+        <location filename="../tabetikette.ui" line="560"/>
         <source>Etikettennummer</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikettnummer</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="554"/>
+        <location filename="../tabetikette.ui" line="572"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der alternative &lt;span style=&quot; font-weight:600;&quot;&gt;SVG Renderer&lt;/span&gt; ist langsamer und qualitativ schlechter. Manche SVGs lassen sich aber nur mit diesem Renderer darstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="557"/>
+        <location filename="../tabetikette.ui" line="575"/>
         <source>Alternativer SVG Renderer</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ SVG visare</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="577"/>
+        <location filename="../tabetikette.ui" line="595"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer (leider) nicht möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="580"/>
+        <location filename="../tabetikette.ui" line="598"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="205"/>
         <source>Änderungen speichern?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="206"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="255"/>
         <source>SVG auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj SVG</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="255"/>
         <source>SVG (*.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="469"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara PDF som</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="470"/>
         <source>Etikette</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="582"/>
         <source>Etikette vom Rezept entfernen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort etiketterna från receptet?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="583"/>
         <source>Soll die Etikette vom Rezept entfernt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort etiketterna från receptet?</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="596"/>
         <source>Neuer Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt nyckelord</translation>
     </message>
 </context>
 <context>
@@ -4047,17 +4129,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="35"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabgaerverlauf.ui" line="102"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Restextrakt und Temperatur eingegebenen Werte einer &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabgaerverlauf.ui" line="125"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;einer &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Snabbjäsningsprov</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="165"/>
@@ -4067,23 +4139,26 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="168"/>
         <source>Hauptgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
+        <location filename="../tabgaerverlauf.ui" line="102"/>
         <location filename="../tabgaerverlauf.ui" line="235"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung &lt;/span&gt;als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Feldern Datum, Restextrakt und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../tabgaerverlauf.ui" line="125"/>
         <location filename="../tabgaerverlauf.ui" line="258"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../tabgaerverlauf.ui" line="489"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="304"/>
         <location filename="../tabgaerverlauf.ui" line="353"/>
         <source>Zutat:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrediens:</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="311"/>
@@ -4098,7 +4173,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="321"/>
         <source>zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>lägg till</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="360"/>
@@ -4113,7 +4188,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="370"/>
         <source>entnehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>ta ur</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="396"/>
@@ -4123,129 +4198,148 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabgaerverlauf.ui" line="399"/>
         <source>Nachgärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolsyrejäsning</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="466"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung &lt;/span&gt;in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabgaerverlauf.ui" line="489"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung gelöscht&lt;/span&gt;. Sie muss dazu markiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die in den Felder Datum, Druck und Temperatur eingegebenen Werte als neue &lt;span style=&quot; font-weight:600;&quot;&gt;Messung&lt;/span&gt; in die Tabelle aufgenommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="24"/>
         <location filename="../tabgaerverlauf.cpp" line="34"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Resterande extrakthalt [°P]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="25"/>
         <location filename="../tabgaerverlauf.cpp" line="35"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="27"/>
         <location filename="../tabgaerverlauf.cpp" line="37"/>
         <source>Alkohol [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkohol [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="28"/>
         <location filename="../tabgaerverlauf.cpp" line="38"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="30"/>
         <location filename="../tabgaerverlauf.cpp" line="50"/>
         <source>Temperatur [°C]</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur [°C]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="31"/>
         <location filename="../tabgaerverlauf.cpp" line="41"/>
         <location filename="../tabgaerverlauf.cpp" line="51"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="40"/>
         <source>Temperatur °C</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur °C</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="44"/>
         <source>CO₂-Gehalt [g/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Karbonering [CO₂ g/l]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="45"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="47"/>
         <location filename="../tabgaerverlauf.cpp" line="110"/>
         <source>Druck [bar]</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryck [bar]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="48"/>
         <source>bar</source>
-        <translation type="unfinished"></translation>
+        <translation>bar</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="57"/>
         <location filename="../tabgaerverlauf.cpp" line="83"/>
         <location filename="../tabgaerverlauf.cpp" line="109"/>
         <source>Datum</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="58"/>
         <location filename="../tabgaerverlauf.cpp" line="84"/>
         <source>SRE [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>FG [°P]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="59"/>
         <location filename="../tabgaerverlauf.cpp" line="85"/>
         <location filename="../tabgaerverlauf.cpp" line="111"/>
         <source>Temp. [°C]</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp. [°C]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="60"/>
         <location filename="../tabgaerverlauf.cpp" line="86"/>
         <source>Alk. [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alk. [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="61"/>
         <location filename="../tabgaerverlauf.cpp" line="87"/>
         <source>sEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="62"/>
         <location filename="../tabgaerverlauf.cpp" line="88"/>
         <source>tEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. (verkl.) [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="63"/>
         <location filename="../tabgaerverlauf.cpp" line="89"/>
         <location filename="../tabgaerverlauf.cpp" line="113"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="112"/>
         <source>CO2 [g/l]</source>
+        <translation>CO2 [g/l]</translation>
+    </message>
+    <message>
+        <location filename="../tabgaerverlauf.cpp" line="673"/>
+        <location filename="../tabgaerverlauf.cpp" line="747"/>
+        <location filename="../tabgaerverlauf.cpp" line="820"/>
+        <source>Gärverlauf</source>
+        <translation type="unfinished">Jäsning</translation>
+    </message>
+    <message>
+        <location filename="../tabgaerverlauf.cpp" line="674"/>
+        <location filename="../tabgaerverlauf.cpp" line="748"/>
+        <source>Nicht alle Einträge konnten importiert werden.
+Unterstütztes Format:
+Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
+Datum2;Restextrakt2;Temperatur2[;Bemerkung2]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabgaerverlauf.cpp" line="821"/>
+        <source>Nicht alle Einträge konnten importiert werden.
+Unterstütztes Format:
+Datum1;Druck1;Temperatur1[;Bemerkung1]
+Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4254,7 +4348,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="45"/>
         <source>Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="57"/>
@@ -4264,7 +4358,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="76"/>
         <source>Verwalten</source>
-        <translation type="unfinished"></translation>
+        <translation>Förvalta</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="83"/>
@@ -4284,7 +4378,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="113"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="127"/>
@@ -4295,24 +4389,24 @@ Version installiert: %2</source>
         <location filename="../tabrezept.ui" line="140"/>
         <location filename="../tabrezept.ui" line="171"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="147"/>
-        <location filename="../tabrezept.ui" line="2678"/>
+        <location filename="../tabrezept.ui" line="2713"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="157"/>
-        <location filename="../tabrezept.ui" line="1985"/>
+        <location filename="../tabrezept.ui" line="2020"/>
         <source>Bittere</source>
-        <translation type="unfinished"></translation>
+        <translation>Beska</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="164"/>
         <source>Sudname</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsnamn</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="178"/>
@@ -4322,26 +4416,26 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="197"/>
         <source>Vergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="204"/>
         <source>CO2 Gehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>CO2-halt</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="211"/>
-        <location filename="../tabrezept.ui" line="493"/>
-        <location filename="../tabrezept.ui" line="520"/>
-        <location filename="../tabrezept.ui" line="2691"/>
+        <location filename="../tabrezept.ui" line="499"/>
+        <location filename="../tabrezept.ui" line="526"/>
+        <location filename="../tabrezept.ui" line="2726"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="218"/>
-        <location filename="../tabrezept.ui" line="2698"/>
+        <location filename="../tabrezept.ui" line="2733"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="232"/>
@@ -4351,711 +4445,721 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrezept.ui" line="263"/>
         <source>Hauptgussfaktor</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatten/malt-förhållande</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="283"/>
         <source>Empf.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekomm.</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="290"/>
+        <location filename="../tabrezept.ui" line="296"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="324"/>
+        <location filename="../tabrezept.ui" line="330"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter Faktor &lt;/span&gt;für den Hauptguss eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.Gewünschter Faktor für den Hauptguss&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="349"/>
+        <location filename="../tabrezept.ui" line="355"/>
         <source>Wochen</source>
-        <translation type="unfinished"></translation>
+        <translation>veckor</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="363"/>
+        <location filename="../tabrezept.ui" line="369"/>
         <source>High-Gravity Faktor</source>
-        <translation type="unfinished"></translation>
+        <translation>High gravity faktor</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="370"/>
-        <location filename="../tabrezept.ui" line="1002"/>
+        <location filename="../tabrezept.ui" line="376"/>
+        <location filename="../tabrezept.ui" line="1008"/>
         <source>IBU</source>
-        <translation type="unfinished"></translation>
+        <translation>IBU</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="377"/>
+        <location filename="../tabrezept.ui" line="383"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Koktid</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="384"/>
+        <location filename="../tabrezept.ui" line="390"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der erwünschte &lt;span style=&quot; font-weight:600;&quot;&gt;CO₂-Gehalt&lt;/span&gt; definiert&lt;/p&gt;&lt;p&gt;Kohlendioxid im Bier garantiert das prickelnde Geschmackserlebnis, auch Rezens genannt. Ziel ist es, das CO₂ gut im Bier einzubinden.&lt;/p&gt;&lt;p&gt;Um Kohlendioxid ins Bier einzutragen sind Verfahren wie das Karbonisieren mit Speise oder Zucker, das Grünschlauchen oder der Ausbau im Fass (Spunden) gebräuchlich. Der Kohlensäuregehalt schwankt je nach Biertyp und ist Teil eines jeden Bierstils.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte&lt;/span&gt; für einzelne Bierstile sind: &lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Lager, Pilsner &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;4,00 - 5,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizenbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;6,50 - 9,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Britische Ales &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,00 - 4,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Porter Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,40 - 4,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Belgische Ales &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,80 - 4,80&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Lambic &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;4,80 - 5,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Frucht-Lambic &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;6,00 - 9,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="406"/>
+        <location filename="../tabrezept.ui" line="412"/>
         <source>Reifezeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Mognadstid</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="413"/>
-        <location filename="../tabrezept.ui" line="2610"/>
+        <location filename="../tabrezept.ui" line="419"/>
+        <location filename="../tabrezept.ui" line="2645"/>
         <source>Anlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Brygganläggning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="420"/>
+        <location filename="../tabrezept.ui" line="426"/>
         <source>Nachisomerisierungszeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Efterisomeriseringstid</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="445"/>
-        <location filename="../tabrezept.ui" line="616"/>
+        <location filename="../tabrezept.ui" line="451"/>
+        <location filename="../tabrezept.ui" line="622"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="448"/>
-        <location filename="../tabrezept.ui" line="619"/>
+        <location filename="../tabrezept.ui" line="454"/>
+        <location filename="../tabrezept.ui" line="625"/>
         <source>Anlagewert</source>
-        <translation type="unfinished"></translation>
+        <translation>Anläggningens värde</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="457"/>
-        <location filename="../tabrezept.ui" line="2636"/>
+        <location filename="../tabrezept.ui" line="463"/>
+        <location filename="../tabrezept.ui" line="2671"/>
         <source>l/h</source>
-        <translation type="unfinished"></translation>
+        <translation>l/h</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="470"/>
-        <location filename="../tabrezept.ui" line="2432"/>
-        <location filename="../tabrezept.ui" line="2474"/>
-        <location filename="../tabrezept.ui" line="2481"/>
-        <location filename="../tabrezept.ui" line="2502"/>
-        <location filename="../tabrezept.ui" line="2727"/>
-        <location filename="../tabrezept.ui" line="2817"/>
-        <location filename="../tabrezept.ui" line="2850"/>
-        <location filename="../tabrezept.ui" line="2857"/>
-        <location filename="../tabrezept.ui" line="2961"/>
-        <location filename="../tabrezept.cpp" line="67"/>
+        <location filename="../tabrezept.ui" line="476"/>
+        <location filename="../tabrezept.ui" line="2467"/>
+        <location filename="../tabrezept.ui" line="2509"/>
+        <location filename="../tabrezept.ui" line="2516"/>
+        <location filename="../tabrezept.ui" line="2537"/>
+        <location filename="../tabrezept.ui" line="2762"/>
+        <location filename="../tabrezept.ui" line="2852"/>
+        <location filename="../tabrezept.ui" line="2885"/>
+        <location filename="../tabrezept.ui" line="2892"/>
+        <location filename="../tabrezept.ui" line="2996"/>
+        <location filename="../tabrezept.cpp" line="68"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="477"/>
+        <location filename="../tabrezept.ui" line="483"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert  hier verändert werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="500"/>
+        <location filename="../tabrezept.ui" line="506"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="507"/>
+        <location filename="../tabrezept.ui" line="513"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Nachisomerisierungszeit&lt;/span&gt; versteht sich geläufig die Zeitspanne zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;100°C und 80°C&lt;/span&gt;, in der Hopfen nach dem Hopfenkochen in der Heißwürze noch nahezu Kochtemperatur ausgesetzt ist und auf 80°C abkühlt. Dabei gibt der Hopfen noch einmal &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt; und Aroma ab. Bei &lt;span style=&quot; font-weight:600;&quot;&gt;80°C&lt;/span&gt; endet die Bitterung und Hopfen gibt nur noch &lt;span style=&quot; font-weight:600;&quot;&gt;Aromastoffe&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Im Reiter Hopfen werden Gaben in dieser Temperaturspanne durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; erfasst, Gaben bis oder unterhalb 80°C durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Nachisomerisierungszeit wird zur Kochdauer addiert. Sie wird hier als Nachisomerisierungszeit positiv angegeben, im Reiter Hopfen rechts bei gewähltem Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt; dagegen &lt;span style=&quot; font-weight:600;&quot;&gt;negativ&lt;/span&gt;. Beispiel: -&lt;span style=&quot; font-weight:600;&quot;&gt;5min&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Bei unter 80°C findet keine Nachisomerisierung mehr statt. Hobbybrauer nutzen diese Temperaturstufe für den gezielten &lt;span style=&quot; font-weight:600;&quot;&gt;Aromaeintrag&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Zeitspanne der Nachisomerisierung ist abhänigig von den &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlmöglichkeiten&lt;/span&gt;. Sie reicht vom Abkühlen &lt;span style=&quot; font-weight:600;&quot;&gt;über Nacht &lt;/span&gt;für lange bis zu kurzen Ausschlagszeiten wie -5 min mit einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlschlange&lt;/span&gt; oder einem &lt;span style=&quot; font-weight:600;&quot;&gt;Plattenkühler&lt;/span&gt;. Längere Zeiten wie -20min und mehr können ohne Hilfsmittel umgesetzt werden.&lt;/p&gt;&lt;p&gt;Manche Brauer wählen bewusst eine etwas längere Nachisomerisierungzeit, um bestimmte Nuancen eines Hopfens, eines Gewürzes oder einer anderen Zutat herauszuarbeiten. Einen guten Eindruck davon vermitteln Rezeptdatenbanken, Fachbücher und Fachforen.&lt;/p&gt;&lt;p&gt;Verschiedentlich wird die Nachisomerisierungszeit auch &lt;span style=&quot; font-weight:600;&quot;&gt;Flame-Out&lt;/span&gt; genannt, ungenau oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Whirlpool&lt;/span&gt;, da dieser Prozessschritt ein Trubabscheidungsverfahren nach dem Kochen beschreibt, der oft mit der Nachisomerisierung zusammenfällt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="527"/>
+        <location filename="../tabrezept.ui" line="533"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; oder falls nichts eingetragen ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="563"/>
+        <location filename="../tabrezept.ui" line="569"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Zusammen mit &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird damit unter anderem Hauptguss und und Nachguss definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="582"/>
+        <location filename="../tabrezept.ui" line="588"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativer Karakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="628"/>
+        <location filename="../tabrezept.ui" line="634"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="635"/>
-        <location filename="../tabrezept.ui" line="2075"/>
-        <location filename="../tabrezept.ui" line="2190"/>
-        <location filename="../tabrezept.ui" line="2207"/>
-        <location filename="../tabrezept.ui" line="2305"/>
-        <location filename="../tabrezept.ui" line="2388"/>
+        <location filename="../tabrezept.ui" line="641"/>
+        <location filename="../tabrezept.ui" line="2110"/>
+        <location filename="../tabrezept.ui" line="2225"/>
+        <location filename="../tabrezept.ui" line="2242"/>
+        <location filename="../tabrezept.ui" line="2340"/>
+        <location filename="../tabrezept.ui" line="2423"/>
         <source>°P</source>
-        <translation type="unfinished"></translation>
+        <translation>°P</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="642"/>
-        <location filename="../tabrezept.cpp" line="1001"/>
+        <location filename="../tabrezept.ui" line="648"/>
+        <location filename="../tabrezept.cpp" line="1009"/>
         <source>Kategorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategori</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="649"/>
+        <location filename="../tabrezept.ui" line="655"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="655"/>
+        <location filename="../tabrezept.ui" line="661"/>
         <source>Nr. </source>
-        <translation type="unfinished"></translation>
+        <translation>Nr. </translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="678"/>
+        <location filename="../tabrezept.ui" line="684"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkung&lt;/span&gt; ist ein Freiformfeld für Anmerkungen aller Art.&lt;/p&gt;&lt;p&gt;Es eignet sich hervorragend alle für prozessnotwendigen Schritte, die im Programm nicht abgebildet werden, aber auch für theoretische Anmerkungen wie Historie oder als Quellensammlung. &lt;/p&gt;&lt;p&gt;In veröffentlichten Rezepten nutzen Hobbybrauer Anmerkungen traditionell, um Verständnisfehler und damit Nachfragen zu vermeiden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="681"/>
+        <location filename="../tabrezept.ui" line="687"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="690"/>
+        <location filename="../tabrezept.ui" line="696"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkungen&lt;/span&gt; aller Art.&lt;/p&gt;&lt;p&gt;Üblicherweise wird ein derartiges Feld in einem Rezept gerne für spezielle Wasserprofile und besondere Prozessschritte genutzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="698"/>
+        <location filename="../tabrezept.ui" line="704"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; können Begriffe für Sortierregeln angelegt werden, um bei späteren Suchen schnell ans Ziel zu kommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="701"/>
+        <location filename="../tabrezept.ui" line="707"/>
         <source>Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyckelord</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="725"/>
+        <location filename="../tabrezept.ui" line="731"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="728"/>
+        <location filename="../tabrezept.ui" line="734"/>
         <source>Neuer Eintrag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt nyckelord</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="735"/>
+        <location filename="../tabrezept.ui" line="741"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="738"/>
+        <location filename="../tabrezept.ui" line="744"/>
         <source>Eintrag löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort nyckelord</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="754"/>
+        <location filename="../tabrezept.ui" line="760"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Anhänge&lt;/span&gt; ist ein Freiformfeld für Quellen und Medien aller Art.&lt;/p&gt;&lt;p&gt;Es eignet sich hervorragend als Zettelkasten für die Recherche zum Rezept. Der Kleine Brauhelfer verknüpft lediglich den Pfad, die Datenbestände  selbst verbleiben an ihrem ursprünglichen Ort.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="757"/>
+        <location filename="../tabrezept.ui" line="763"/>
         <source>Anhänge</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilagor</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="842"/>
+        <location filename="../tabrezept.ui" line="848"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="845"/>
+        <location filename="../tabrezept.ui" line="851"/>
         <source>Anhang hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till bilaga</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="874"/>
-        <location filename="../tabrezept.ui" line="1670"/>
-        <location filename="../tabrezept.ui" line="2337"/>
+        <location filename="../tabrezept.ui" line="880"/>
+        <location filename="../tabrezept.ui" line="1446"/>
+        <location filename="../tabrezept.ui" line="2372"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="953"/>
+        <location filename="../tabrezept.ui" line="959"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;RohstoffeinträgeMalz &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="956"/>
+        <location filename="../tabrezept.ui" line="962"/>
         <source>Malzgabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till malt</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="963"/>
-        <location filename="../tabrezept.ui" line="1113"/>
-        <location filename="../tabrezept.ui" line="1210"/>
-        <location filename="../tabrezept.ui" line="1311"/>
-        <location filename="../tabrezept.ui" line="1408"/>
-        <location filename="../tabrezept.ui" line="1784"/>
+        <location filename="../tabrezept.ui" line="969"/>
+        <location filename="../tabrezept.ui" line="1119"/>
+        <location filename="../tabrezept.ui" line="1216"/>
+        <location filename="../tabrezept.ui" line="1317"/>
+        <location filename="../tabrezept.ui" line="1414"/>
+        <location filename="../tabrezept.ui" line="1819"/>
         <source>Aus Rezept übernehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta över från annat recept</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="971"/>
+        <location filename="../tabrezept.ui" line="977"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Humle</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="988"/>
+        <location filename="../tabrezept.ui" line="994"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ignorieren&lt;/span&gt; bedeutet, es wird keine Hopfenberechnung durchgeführt. Die Mengen können frei eingestellt werden und die Sollbittere wird ignoriert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen. Die Alpha-Werte werden nicht berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere. Diese Berechnungsart wird empfohlen, weil Hopfensorten mit verschiedenen Alpha-Werten sich besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="992"/>
+        <location filename="../tabrezept.ui" line="998"/>
         <source>ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>ignorera</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="997"/>
+        <location filename="../tabrezept.ui" line="1003"/>
         <source>Gewicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Vikt</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1010"/>
+        <location filename="../tabrezept.ui" line="1016"/>
         <source>Prozentanteil entspricht</source>
-        <translation type="unfinished"></translation>
+        <translation>Andelen avser</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1019"/>
+        <location filename="../tabrezept.ui" line="1025"/>
         <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Humleberäkningen är avaktiverat.</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1103"/>
+        <location filename="../tabrezept.ui" line="1109"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen &lt;/span&gt;im Tab Rohstoffe  zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1106"/>
+        <location filename="../tabrezept.ui" line="1112"/>
         <source>Hopfengabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till humle</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1121"/>
+        <location filename="../tabrezept.ui" line="1127"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäst</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1200"/>
+        <location filename="../tabrezept.ui" line="1206"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hefe &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;p&gt;Neu in Version 2 des Kleinen Brauhelfers ist die Möglichkeit von &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Hefegaben&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1203"/>
+        <location filename="../tabrezept.ui" line="1209"/>
         <source>Hefegabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till jäst</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1218"/>
+        <location filename="../tabrezept.ui" line="1224"/>
         <source>Weitere Zutaten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare ingredienser</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1291"/>
-        <location filename="../tabrezept.ui" line="1774"/>
+        <location filename="../tabrezept.ui" line="1297"/>
+        <location filename="../tabrezept.ui" line="1809"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1294"/>
+        <location filename="../tabrezept.ui" line="1300"/>
         <source>Hopfenstopfengabe hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till torrhumle</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1301"/>
+        <location filename="../tabrezept.ui" line="1307"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Weitere Zutaten &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1304"/>
+        <location filename="../tabrezept.ui" line="1310"/>
         <source>Weitere Zutat hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till ingrediens</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1319"/>
+        <location filename="../tabrezept.ui" line="1325"/>
         <source>Maischplan</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskschema</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1398"/>
+        <location filename="../tabrezept.ui" line="1404"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird eine neue &lt;span style=&quot; font-weight:600;&quot;&gt;Rasstufe&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich die Raststufen – je nach Maischverfahren – Schritt für Schritt festzulegen. Eine manuelle Sortiermöglichkeit ist ist im Kleinen Brauhelfer nicht vorgesehen.&lt;/p&gt;&lt;p&gt;Die Namen der einzelnen Raststufen werden nach Eingabe der ersten beiden Buchstaben automatisch vervollständigt. Daneben steht es dem Anwender frei, eigene Raststufen zu definieren.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Raststufen ist die Fachliteratur oder das Forum der Wahl um Rat zu fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1401"/>
+        <location filename="../tabrezept.ui" line="1407"/>
         <source>Schritt hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till steg</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1416"/>
+        <location filename="../tabrezept.ui" line="1422"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="1446"/>
-        <location filename="../tabrezept.ui" line="2420"/>
-        <source>Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenanpassning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1456"/>
-        <location filename="../tabrezept.ui" line="1469"/>
-        <location filename="../tabrezept.ui" line="1680"/>
-        <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <location filename="../tabrezept.ui" line="2455"/>
+        <source>Wasser</source>
+        <translation>Vatten</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1476"/>
+        <location filename="../tabrezept.ui" line="1558"/>
+        <source>Maische aufbereitet</source>
+        <translation>Mäsk anpassad</translation>
+    </message>
+    <message>
+        <location filename="../tabrezept.ui" line="1568"/>
+        <location filename="../tabrezept.ui" line="1690"/>
+        <location filename="../tabrezept.ui" line="1703"/>
+        <source>°dH</source>
+        <translation>°dH</translation>
+    </message>
+    <message>
+        <location filename="../tabrezept.ui" line="1585"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1501"/>
+        <location filename="../tabrezept.ui" line="1439"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im Tab Ausrüstung muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1508"/>
+        <location filename="../tabrezept.ui" line="1610"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1527"/>
+        <location filename="../tabrezept.ui" line="1683"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1534"/>
+        <location filename="../tabrezept.ui" line="1575"/>
         <source>Gewünscht</source>
-        <translation type="unfinished"></translation>
+        <translation>Målvärde</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1564"/>
+        <location filename="../tabrezept.ui" line="1673"/>
         <source>Aufbereit</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassad</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1574"/>
+        <location filename="../tabrezept.ui" line="1551"/>
         <source>Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenprofil</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1581"/>
-        <source>Maische</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="1591"/>
+        <location filename="../tabrezept.ui" line="1648"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Wassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1623"/>
+        <location filename="../tabrezept.ui" line="1629"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1648"/>
+        <location filename="../tabrezept.ui" line="1479"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte Restalkalität&lt;/span&gt; eingestellt. Sie ist mithin ein Faktor für den richtigen pH-Wert beim Maischen. Ein hoher Wert erhöht den pH-Wert der Maische und mindert die Enymaktivität des Malzes und umgekehrt. Allgemein verlangen helle und hopfenaromatische Biere einen Wert kleiner als 5°dH. Dunkle Biere beinhalten säurefördernde dunkle Malze . Hier sind bis zu 10°dH ein Richtwert&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte:&lt;/span&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bock hell&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 2°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Alt &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 5°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-2 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; (RA) des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maischearbeit und somit für die Effizienz der Stärkespaltung, somit der Frage, ob das Bier mit der Schüttung gelingt. Zugleich ist der pH-Wert beim Maischen Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H+-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H+-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO3- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1687"/>
+        <location filename="../tabrezept.ui" line="1466"/>
         <source>pH-Wert</source>
+        <translation>pH-värde</translation>
+    </message>
+    <message>
+        <location filename="../tabrezept.ui" line="1710"/>
+        <source>Maische gewünscht</source>
+        <translation>Mäsk önskad</translation>
+    </message>
+    <message>
+        <location filename="../tabrezept.ui" line="1720"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1777"/>
+        <location filename="../tabrezept.ui" line="1812"/>
         <source>Wasseraufbereitung hinzufügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till vattenanpassning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1830"/>
+        <location filename="../tabrezept.ui" line="1865"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Sats</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1849"/>
+        <location filename="../tabrezept.ui" line="1884"/>
         <source>Alkoholgehalt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1856"/>
+        <location filename="../tabrezept.ui" line="1891"/>
         <source>Farbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Färg</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1866"/>
-        <location filename="../tabrezept.ui" line="1966"/>
-        <location filename="../tabrezept.ui" line="2050"/>
+        <location filename="../tabrezept.ui" line="1901"/>
+        <location filename="../tabrezept.ui" line="2001"/>
+        <location filename="../tabrezept.ui" line="2085"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Weitere Zutaten bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. Zeitpunkt und Menge wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. &lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1897"/>
+        <location filename="../tabrezept.ui" line="1932"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in EBC an. &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; ist die genormte Farbstärke der European Brewers Convention. &lt;/p&gt;&lt;p&gt;Im amerikanischen Raum beschreibt man die Bierfarbe bevorzugt mit SRM.&lt;/p&gt;&lt;p&gt;Zur korrekten Darstellung der Bierfarbe empfiehlt sich ein für Tageslicht kalibrierter Monitor. In die Berechnung der Bierfarbe fließen die Farbwertangaben in den Sektionen Malz und Weitere Zutaten im Tab Rohstoffe sowie der Korrekturfaktor für die Bierfarbe im Tab Ausrüstung ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1917"/>
+        <location filename="../tabrezept.ui" line="1952"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1924"/>
+        <location filename="../tabrezept.ui" line="1959"/>
         <source>Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Restsötma (FG)</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1937"/>
+        <location filename="../tabrezept.ui" line="1972"/>
         <source>EBC</source>
-        <translation type="unfinished"></translation>
+        <translation>EBC</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1944"/>
+        <location filename="../tabrezept.ui" line="1979"/>
         <source>Kosten.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader.</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="1999"/>
+        <location filename="../tabrezept.ui" line="2034"/>
         <source>%vol</source>
-        <translation type="unfinished"></translation>
+        <translation>%vol</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2024"/>
+        <location filename="../tabrezept.ui" line="2059"/>
         <source>Weitere Zutaten &quot;Gärung&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra ingredienser under jäsning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2085"/>
+        <location filename="../tabrezept.ui" line="2120"/>
         <source>Gesamtschüttung</source>
-        <translation type="unfinished"></translation>
+        <translation>Total mängd malt o dyl</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2095"/>
+        <location filename="../tabrezept.ui" line="2130"/>
         <source>Anteile Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel av stamvört (OG)</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2102"/>
+        <location filename="../tabrezept.ui" line="2137"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür einzig die Daten aus der Sektion &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; im Tab Rohstoffe. Zusätze wie Zucker werden hier nicht berücksicht. Der Grund ist, dass nur Malz und Rohfrucht als Zutaten mit enzymatischer Aktivität den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; während des Maischens beeinflussen.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2139"/>
+        <location filename="../tabrezept.ui" line="2174"/>
         <source>Weitere Zutaten &quot;Kochen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra ingredienser under koket</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2165"/>
+        <location filename="../tabrezept.ui" line="2200"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in beim &lt;span style=&quot; font-weight:600;&quot;&gt;Kochen&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Weitere Zutaten beim Kochen kann Zucker, Honig, Gewürz, Additive etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert. Oft werden weitere Zutaten zum Schluss des Kochens hinzugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2200"/>
+        <location filename="../tabrezept.ui" line="2235"/>
         <source>Gesamtkosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalkostnad</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2220"/>
+        <location filename="../tabrezept.ui" line="2255"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert setzt sich aus den Farbwerten im Tab Rohstoffe, der Menge und dem Verhältnis im Tab Rezept sowie aus dem Korrekturfaktor im Tab Ausrüstung zusammen.&lt;/p&gt;&lt;p&gt;Die Angabe ist nur eine Schätzung. Viele weitere Faktoren können die Bierfarbe beeinflussen.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu sind die Fachforen eine gute Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2254"/>
+        <location filename="../tabrezept.ui" line="2289"/>
         <source>Weitere Zutaten &quot;Maischen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra ingredienser under mäskning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2280"/>
+        <location filename="../tabrezept.ui" line="2315"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in der &lt;span style=&quot; font-weight:600;&quot;&gt;Maische&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Weitere Zutaten in der Maische kann Zucker, Honig etc. sein. Zur Orientierung gelten 10-15% maximal als Richtwert. Insgesamt ist die Gabe weiterer Zutaten in der Maische ungewöhnlich. Zu beachten ist, dass die Enzymarbeit des Malzes nicht behindert wird. Nähere Informationen dazu finden sich in Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2363"/>
+        <location filename="../tabrezept.ui" line="2398"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil der Stammwürze der &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgaben&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Dies sollte immer der Hauptanteil der Stammwürze sein. In ihm befinden sich gewöhnliche die meisten Enzyme, um verwertbare Einfachzucker für die Hefe herzustellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2439"/>
+        <location filename="../tabrezept.ui" line="2474"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2461"/>
+        <location filename="../tabrezept.ui" line="2496"/>
         <source>Hauptguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskvatten</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2488"/>
+        <location filename="../tabrezept.ui" line="2523"/>
         <source>High-Gravity Verdünnung</source>
-        <translation type="unfinished"></translation>
+        <translation>High gravity utspädning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2495"/>
+        <location filename="../tabrezept.ui" line="2530"/>
         <source>Nachguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Lakvatten</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2509"/>
+        <location filename="../tabrezept.ui" line="2544"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den Hauptguss anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2531"/>
+        <location filename="../tabrezept.ui" line="2566"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2559"/>
+        <location filename="../tabrezept.ui" line="2594"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2581"/>
+        <location filename="../tabrezept.ui" line="2616"/>
         <source>Gesamt</source>
-        <translation type="unfinished"></translation>
+        <translation>Totalt</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2622"/>
+        <location filename="../tabrezept.ui" line="2657"/>
         <source>Maischekessel nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskkärl, användbar volym</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2656"/>
+        <location filename="../tabrezept.ui" line="2691"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2705"/>
-        <location filename="../tabrezept.ui" line="2867"/>
+        <location filename="../tabrezept.ui" line="2740"/>
+        <location filename="../tabrezept.ui" line="2902"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben sind hierfür Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2734"/>
+        <location filename="../tabrezept.ui" line="2769"/>
         <source>Sudpfanne nutzbares Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokkärl, användbar volym</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2741"/>
+        <location filename="../tabrezept.ui" line="2776"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2763"/>
+        <location filename="../tabrezept.ui" line="2798"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2785"/>
+        <location filename="../tabrezept.ui" line="2820"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2807"/>
-        <location filename="../tabrezept.ui" line="2827"/>
+        <location filename="../tabrezept.ui" line="2842"/>
+        <location filename="../tabrezept.ui" line="2862"/>
         <source>Benötigtes Volumen ca.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erfordrad volym</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2824"/>
+        <location filename="../tabrezept.ui" line="2859"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessels&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2907"/>
+        <location filename="../tabrezept.ui" line="2942"/>
         <source>Korrektur der Sollmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Korrektion av målängden</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2933"/>
+        <location filename="../tabrezept.ui" line="2968"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="149"/>
-        <source>Tag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tabrezept.cpp" line="150"/>
-        <source>Wert</source>
-        <translation type="unfinished"></translation>
+        <source>Tag</source>
+        <translation>Nyckelord</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="151"/>
+        <source>Wert</source>
+        <translation>Värde</translation>
+    </message>
+    <message>
+        <location filename="../tabrezept.cpp" line="152"/>
         <source>Global</source>
-        <translation type="unfinished"></translation>
+        <translation>Global</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="296"/>
-        <location filename="../tabrezept.cpp" line="316"/>
-        <location filename="../tabrezept.cpp" line="336"/>
-        <location filename="../tabrezept.cpp" line="356"/>
+        <location filename="../tabrezept.cpp" line="298"/>
+        <location filename="../tabrezept.cpp" line="318"/>
+        <location filename="../tabrezept.cpp" line="338"/>
+        <location filename="../tabrezept.cpp" line="358"/>
         <source>Rohstoff importieren?</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera ingrediens?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="297"/>
+        <location filename="../tabrezept.cpp" line="299"/>
         <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt &quot;%1&quot; finns inte i lagret. Ska det läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="317"/>
+        <location filename="../tabrezept.cpp" line="319"/>
         <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Humlen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="337"/>
+        <location filename="../tabrezept.cpp" line="339"/>
         <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäst &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="357"/>
+        <location filename="../tabrezept.cpp" line="359"/>
         <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrediensen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="409"/>
+        <location filename="../tabrezept.cpp" line="414"/>
         <source>sehr mild</source>
-        <translation type="unfinished"></translation>
+        <translation>mycket mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="411"/>
+        <location filename="../tabrezept.cpp" line="416"/>
         <source>mild</source>
-        <translation type="unfinished"></translation>
+        <translation>mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="413"/>
+        <location filename="../tabrezept.cpp" line="418"/>
         <source>ausgewogen</source>
-        <translation type="unfinished"></translation>
+        <translation>balanserad</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="415"/>
+        <location filename="../tabrezept.cpp" line="420"/>
         <source>moderat herb</source>
-        <translation type="unfinished"></translation>
+        <translation>något besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="417"/>
+        <location filename="../tabrezept.cpp" line="422"/>
         <source>sehr herb</source>
-        <translation type="unfinished"></translation>
+        <translation>mycket besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1002"/>
+        <location filename="../tabrezept.cpp" line="1010"/>
         <source>Sudkategorien verwalten</source>
-        <translation type="unfinished"></translation>
+        <translation>Förvalta satskategorierna</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1046"/>
+        <location filename="../tabrezept.cpp" line="1054"/>
         <source>Neuer Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt nyckelord</translation>
     </message>
 </context>
 <context>
@@ -5063,7 +5167,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="25"/>
@@ -5073,7 +5177,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="28"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>alla</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="38"/>
@@ -5083,7 +5187,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="41"/>
         <source>vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="48"/>
@@ -5093,7 +5197,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="51"/>
         <source>in Gebrauch</source>
-        <translation type="unfinished"></translation>
+        <translation>används</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="58"/>
@@ -5103,12 +5207,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="61"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="88"/>
         <source>Malz</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="112"/>
@@ -5118,7 +5222,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="140"/>
         <source>Hopfen</source>
-        <translation type="unfinished"></translation>
+        <translation>Humle</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="164"/>
@@ -5128,7 +5232,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="192"/>
         <source>Hefe</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="216"/>
@@ -5138,7 +5242,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="244"/>
         <source>Weitere Zutaten</source>
-        <translation type="unfinished"></translation>
+        <translation>Ytterligare ingredienser</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="268"/>
@@ -5148,7 +5252,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="299"/>
         <source>Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatten</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="318"/>
@@ -5163,7 +5267,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="342"/>
         <source>Neues Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt vattenprofil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="349"/>
@@ -5173,311 +5277,311 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="352"/>
         <source>Wasserprofil löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort vattenprofil</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="380"/>
+        <location filename="../tabrohstoffe.ui" line="588"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="406"/>
+        <location filename="../tabrohstoffe.ui" line="534"/>
         <source>Chlorid (0 - 150 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Chlorid (0 - 150 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="413"/>
+        <location filename="../tabrohstoffe.ui" line="513"/>
         <source>Calcium (50 - 150 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Calcium (50 - 150 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="420"/>
+        <location filename="../tabrohstoffe.ui" line="666"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="436"/>
-        <location filename="../tabrohstoffe.ui" line="459"/>
-        <location filename="../tabrohstoffe.ui" line="590"/>
-        <location filename="../tabrohstoffe.ui" line="704"/>
-        <location filename="../tabrohstoffe.ui" line="746"/>
-        <location filename="../tabrohstoffe.ui" line="769"/>
+        <location filename="../tabrohstoffe.ui" line="457"/>
+        <location filename="../tabrohstoffe.ui" line="527"/>
+        <location filename="../tabrohstoffe.ui" line="623"/>
+        <location filename="../tabrohstoffe.ui" line="705"/>
+        <location filename="../tabrohstoffe.ui" line="760"/>
+        <location filename="../tabrohstoffe.ui" line="875"/>
         <source>mmol/l</source>
-        <translation type="unfinished"></translation>
+        <translation>mmol/l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="443"/>
+        <location filename="../tabrohstoffe.ui" line="607"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciumhärte&lt;/span&gt; in °dH berechnet. Die Calciumhärte wird aus den Angaben von Calcium in mg/l nach der Formel Ca⁺ * 1,4 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Calciumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Calcium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="466"/>
+        <location filename="../tabrohstoffe.ui" line="380"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="496"/>
-        <location filename="../tabrohstoffe.ui" line="530"/>
-        <location filename="../tabrohstoffe.ui" line="725"/>
-        <location filename="../tabrohstoffe.ui" line="732"/>
-        <location filename="../tabrohstoffe.ui" line="806"/>
-        <location filename="../tabrohstoffe.ui" line="890"/>
+        <location filename="../tabrohstoffe.ui" line="402"/>
+        <location filename="../tabrohstoffe.ui" line="464"/>
+        <location filename="../tabrohstoffe.ui" line="819"/>
+        <location filename="../tabrohstoffe.ui" line="842"/>
+        <location filename="../tabrohstoffe.ui" line="849"/>
+        <location filename="../tabrohstoffe.ui" line="905"/>
         <source>mg/l</source>
-        <translation type="unfinished"></translation>
+        <translation>mg/l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="516"/>
+        <location filename="../tabrohstoffe.ui" line="471"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="523"/>
+        <location filename="../tabrohstoffe.ui" line="492"/>
         <source>Restalkalität Korrektur</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassning av värdet (differens från beräknat)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="537"/>
-        <location filename="../tabrohstoffe.ui" line="776"/>
+        <location filename="../tabrohstoffe.ui" line="682"/>
+        <location filename="../tabrohstoffe.ui" line="912"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="560"/>
-        <location filename="../tabrohstoffe.ui" line="607"/>
-        <location filename="../tabrohstoffe.ui" line="637"/>
-        <location filename="../tabrohstoffe.ui" line="718"/>
-        <location filename="../tabrohstoffe.ui" line="792"/>
+        <location filename="../tabrohstoffe.ui" line="478"/>
+        <location filename="../tabrohstoffe.ui" line="506"/>
+        <location filename="../tabrohstoffe.ui" line="646"/>
+        <location filename="../tabrohstoffe.ui" line="698"/>
+        <location filename="../tabrohstoffe.ui" line="938"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>°dH</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="567"/>
+        <location filename="../tabrohstoffe.ui" line="826"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiumhärte&lt;/span&gt; in °dH berechnet. Die Magnesiumhärte wird aus den Angaben von &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesium&lt;/span&gt; in mg/l nach der Formel Mg⁺ * 2,307 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Magnesiumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="600"/>
+        <location filename="../tabrohstoffe.ui" line="753"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hydrogencarbonat (0 - 500 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="614"/>
+        <location filename="../tabrohstoffe.ui" line="499"/>
         <source>Sulfat (0 - 250 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulfat (0 - 250 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="621"/>
+        <location filename="../tabrohstoffe.ui" line="630"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="644"/>
+        <location filename="../tabrohstoffe.ui" line="856"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="663"/>
+        <location filename="../tabrohstoffe.ui" line="409"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maische und damit für die Effizienz der Stärkespaltung. Ob ein Bier mit der Schüttung in den angepeilten Parametern umfänglich gelingt, entscheidet sich hier. Der pH-Wert beim Maischen ist Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H⁺-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H⁺-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO³- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="688"/>
+        <location filename="../tabrohstoffe.ui" line="882"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="739"/>
+        <location filename="../tabrohstoffe.ui" line="541"/>
         <source>Natrium (0 - 50 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Natrium (0 - 50 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="753"/>
+        <location filename="../tabrohstoffe.ui" line="434"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="820"/>
+        <location filename="../tabrohstoffe.ui" line="581"/>
         <source>Magnesium (0 - 20 mg/l)</source>
-        <translation type="unfinished"></translation>
+        <translation>Magnesium (0 - 20 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="827"/>
+        <location filename="../tabrohstoffe.ui" line="548"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="846"/>
+        <location filename="../tabrohstoffe.ui" line="712"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die Restalkalität korrigiert werden, falls der berechnete vom tatsächlichem Wert abweicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="868"/>
+        <location filename="../tabrohstoffe.ui" line="767"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="903"/>
+        <location filename="../tabrohstoffe.ui" line="789"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="919"/>
+        <location filename="../tabrohstoffe.ui" line="737"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="946"/>
+        <location filename="../tabrohstoffe.ui" line="963"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="949"/>
+        <location filename="../tabrohstoffe.ui" line="966"/>
         <location filename="../tabrohstoffe.cpp" line="377"/>
         <location filename="../tabrohstoffe.cpp" line="380"/>
         <location filename="../tabrohstoffe.cpp" line="383"/>
         <location filename="../tabrohstoffe.cpp" line="386"/>
         <source>Neuer Eintrag</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="956"/>
+        <location filename="../tabrohstoffe.ui" line="973"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus einer &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable weil umfangreiche &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlagenliste&lt;/span&gt;, mit der eigene funktionsgleiche Vorlagen angelegt, gelöscht, importiert, exportiert und wiederherstellt werden können.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="959"/>
-        <source>Neuer Eintrag aus Vorlage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrohstoffe.ui" line="966"/>
-        <source>Neuer Eintrag aus oBraMa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tabrohstoffe.ui" line="976"/>
+        <source>Neuer Eintrag aus Vorlage</source>
+        <translation>Lägg till från mall</translation>
+    </message>
+    <message>
+        <location filename="../tabrohstoffe.ui" line="983"/>
+        <source>Neuer Eintrag aus oBraMa</source>
+        <translation>Lägg till från oBraMa</translation>
+    </message>
+    <message>
+        <location filename="../tabrohstoffe.ui" line="993"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="979"/>
+        <location filename="../tabrohstoffe.ui" line="996"/>
         <source>Eintrag kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="986"/>
+        <location filename="../tabrohstoffe.ui" line="1003"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="989"/>
+        <location filename="../tabrohstoffe.ui" line="1006"/>
         <source>Eintrag löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="29"/>
         <source>aroma</source>
-        <translation type="unfinished"></translation>
+        <translation>aroma</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="30"/>
         <source>bitter</source>
-        <translation type="unfinished"></translation>
+        <translation>beskning</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="31"/>
         <source>universal</source>
-        <translation type="unfinished"></translation>
+        <translation>universal</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="36"/>
         <source>obergärig</source>
-        <translation type="unfinished"></translation>
+        <translation>överjäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="37"/>
         <source>untergärig</source>
-        <translation type="unfinished"></translation>
+        <translation>underjäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="42"/>
         <source>trocken</source>
-        <translation type="unfinished"></translation>
+        <translation>torr</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="43"/>
         <source>flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>flytande</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="47"/>
         <source>Honig</source>
-        <translation type="unfinished"></translation>
+        <translation>Honung</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="48"/>
         <source>Zucker</source>
-        <translation type="unfinished"></translation>
+        <translation>Socker</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="49"/>
         <source>Gewürz</source>
-        <translation type="unfinished"></translation>
+        <translation>Krydda</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="50"/>
         <source>Frucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Frukt</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="51"/>
         <source>Sonstiges</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="52"/>
         <source>Kraut</source>
-        <translation type="unfinished"></translation>
+        <translation>Örter</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="53"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenanpassning</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="54"/>
         <source>Klärmittel</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarningsmedel</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="58"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="59"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="60"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation>mg</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="61"/>
         <source>Stk.</source>
-        <translation type="unfinished"></translation>
+        <translation>st.</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="62"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="63"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="79"/>
@@ -5485,28 +5589,28 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="149"/>
         <location filename="../tabrohstoffe.cpp" line="190"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="80"/>
         <source>Menge [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd [kg]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="81"/>
         <location filename="../tabrohstoffe.cpp" line="195"/>
         <source>Farbe [EBC]</source>
-        <translation type="unfinished"></translation>
+        <translation>Färg [EBC]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="82"/>
         <source>pH</source>
-        <translation type="unfinished"></translation>
+        <translation>pH</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="83"/>
         <source>Max. Anteil [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. andel [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="84"/>
@@ -5514,12 +5618,12 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="151"/>
         <location filename="../tabrohstoffe.cpp" line="196"/>
         <source>Bemerkung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="85"/>
         <source>Eingenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="86"/>
@@ -5527,13 +5631,13 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="159"/>
         <location filename="../tabrohstoffe.cpp" line="198"/>
         <source>Alternativen</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="87"/>
         <location filename="../tabrohstoffe.cpp" line="122"/>
         <source>Preis [%1/kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="88"/>
@@ -5541,7 +5645,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="161"/>
         <location filename="../tabrohstoffe.cpp" line="200"/>
         <source>Einlagerung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kom in i lagret</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="89"/>
@@ -5549,7 +5653,7 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="162"/>
         <location filename="../tabrohstoffe.cpp" line="201"/>
         <source>Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Bäst före</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="90"/>
@@ -5557,131 +5661,131 @@ Version installiert: %2</source>
         <location filename="../tabrohstoffe.cpp" line="163"/>
         <location filename="../tabrohstoffe.cpp" line="202"/>
         <source>Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Link</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="115"/>
         <source>Menge [g]</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd [g]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="116"/>
         <source>Alpha [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpha [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="117"/>
         <source>Pellets</source>
-        <translation type="unfinished"></translation>
+        <translation>Pellets</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="119"/>
         <location filename="../tabrohstoffe.cpp" line="152"/>
         <location filename="../tabrohstoffe.cpp" line="197"/>
         <source>Eigenschaften</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskaper</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="120"/>
         <location filename="../tabrohstoffe.cpp" line="193"/>
         <source>Typ</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="150"/>
         <location filename="../tabrohstoffe.cpp" line="191"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="153"/>
         <source>OG/UG</source>
-        <translation type="unfinished"></translation>
+        <translation>Över/underjäst</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="154"/>
         <source>Trocken/Flüssig</source>
-        <translation type="unfinished"></translation>
+        <translation>Torr/Flytande</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="155"/>
         <source>Würzemenge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd [l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="156"/>
         <source>Sedimentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Sedimentering</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="157"/>
         <source>Vergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="158"/>
         <source>Temperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="160"/>
         <source>Preis [%1]</source>
-        <translation type="unfinished"></translation>
+        <translation>Pris [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="192"/>
         <source>Einheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhet</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="194"/>
         <source>Ausbeute [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbye [%]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="199"/>
         <source>Preis [%1/[kg/l/Stk]]</source>
-        <translation type="unfinished"></translation>
+        <translation>Pris [%1/[kg/l/st.]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="227"/>
         <source>Wasserprofil</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenprofil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="228"/>
         <source>Restalkalität [°dH]</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet [°dH]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="477"/>
         <source>Kopie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopia</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="513"/>
         <source>Rohstoff wird verwendet</source>
-        <translation type="unfinished"></translation>
+        <translation>Råvara används</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="514"/>
         <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna råvara används i en stas som inte är bryggd ännu. Ska den tas bort ändå?</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="638"/>
+        <location filename="../tabrohstoffe.cpp" line="639"/>
         <source>Neues Profil</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrohstoffe.cpp" line="656"/>
-        <source>Wasserprofil löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt profil</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.cpp" line="657"/>
+        <source>Wasserprofil löschen?</source>
+        <translation>Ta bort vattenprofil?</translation>
+    </message>
+    <message>
+        <location filename="../tabrohstoffe.cpp" line="658"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort vattenprofilen &quot;%1&quot;?</translation>
     </message>
 </context>
 <context>
@@ -5695,7 +5799,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="35"/>
         <location filename="../tabsudauswahl.ui" line="205"/>
         <source>alle</source>
-        <translation type="unfinished"></translation>
+        <translation>alla</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="62"/>
@@ -5705,7 +5809,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="65"/>
         <source>Rezept</source>
-        <translation type="unfinished"></translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="72"/>
@@ -5715,7 +5819,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="75"/>
         <source>gebraut</source>
-        <translation type="unfinished"></translation>
+        <translation>bryggt</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="82"/>
@@ -5725,7 +5829,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="85"/>
         <source>abgefüllt</source>
-        <translation type="unfinished"></translation>
+        <translation>flasktappat</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="92"/>
@@ -5735,7 +5839,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="95"/>
         <source>verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>förbrukat</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="123"/>
@@ -5745,12 +5849,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="126"/>
         <source>Merkliste</source>
-        <translation type="unfinished"></translation>
+        <translation>märklista</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="150"/>
         <source>Braudatum zwischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Bryggdatum mellan</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="163"/>
@@ -5760,7 +5864,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="176"/>
         <source>und</source>
-        <translation type="unfinished"></translation>
+        <translation>och</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="189"/>
@@ -5780,7 +5884,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="222"/>
         <source>Suche</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="237"/>
@@ -5790,7 +5894,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="261"/>
         <source>Anzahl Sude:</source>
-        <translation type="unfinished"></translation>
+        <translation>Antal satser:</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="298"/>
@@ -5800,7 +5904,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="301"/>
         <source>Rezept exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="308"/>
@@ -5810,7 +5914,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>Sud laden</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs in en sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="318"/>
@@ -5820,7 +5924,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="321"/>
         <source>Rezept importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="328"/>
@@ -5830,7 +5934,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="331"/>
         <source>Neuen Sud anlegen</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapa ny sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="338"/>
@@ -5841,7 +5945,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="341"/>
         <location filename="../tabsudauswahl.cpp" line="217"/>
         <source>Sud vergessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Glömm satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="348"/>
@@ -5851,7 +5955,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>Sud kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="358"/>
@@ -5861,7 +5965,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>Sud löschen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="368"/>
@@ -5871,7 +5975,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="371"/>
         <source>Alle Sude vergessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Glömm alla satser</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="378"/>
@@ -5882,7 +5986,7 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.ui" line="381"/>
         <location filename="../tabsudauswahl.cpp" line="223"/>
         <source>Sud merken</source>
-        <translation type="unfinished"></translation>
+        <translation>Märk satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="409"/>
@@ -5892,7 +5996,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="412"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="425"/>
@@ -5902,157 +6006,157 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="428"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="38"/>
         <source>Sud ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Sats-ID</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="39"/>
         <source>Sudname</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsnamn</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="40"/>
         <source>Sudnummer</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsnummer</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="41"/>
         <source>Kategorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategori</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="42"/>
         <source>Braudatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Bryggdatum</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="43"/>
         <source>Abfülldatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum för flasktappning</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="44"/>
         <source>Erstellt</source>
-        <translation type="unfinished"></translation>
+        <translation>Skapad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="45"/>
         <source>Gespeichert</source>
-        <translation type="unfinished"></translation>
+        <translation>Sparad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="46"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vecka</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="47"/>
         <source>Bewertung</source>
-        <translation type="unfinished"></translation>
+        <translation>Betyg</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="48"/>
         <location filename="../tabsudauswahl.cpp" line="51"/>
         <source>Menge [l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Storlek [l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="49"/>
         <location filename="../tabsudauswahl.cpp" line="53"/>
         <source>SW [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>OG [°P]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="50"/>
         <source>Bittere [IBU]</source>
-        <translation type="unfinished"></translation>
+        <translation>Beska [IBU]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="52"/>
         <source>SHA [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="54"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished"></translation>
+        <translation>Resterande extrakthalt [°P]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="55"/>
         <source>Schüttung [kg]</source>
-        <translation type="unfinished"></translation>
+        <translation>Malt o dyl [kg]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="56"/>
         <source>Kosten [%1/l]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="57"/>
         <source>Alk. [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Alk. [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="58"/>
         <source>sEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="59"/>
         <source>tEVG [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsn. (verkl.) [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="60"/>
         <source>Eff. SHA [%]</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte (eff.) [%]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="61"/>
         <source>Verdampfungsrate [l/h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Förångningshastighet [l/h]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="62"/>
         <source>Für Durchschnitt Ignorieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorera för medelvärdet</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="233"/>
         <source>Sud nicht verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen inte förbrukad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="239"/>
         <source>Sud verbraucht</source>
-        <translation type="unfinished"></translation>
+        <translation>Satsen förbrukad</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="430"/>
         <source>Neuer Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny sats</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="464"/>
         <location filename="../tabsudauswahl.cpp" line="473"/>
         <source>Kopie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopia</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="528"/>
         <location filename="../tabsudauswahl.cpp" line="547"/>
         <source>Sud löschen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort satsen?</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="529"/>
         <location filename="../tabsudauswahl.cpp" line="548"/>
         <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort satsen &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="569"/>
@@ -6060,28 +6164,28 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.cpp" line="617"/>
         <location filename="../tabsudauswahl.cpp" line="622"/>
         <source>Rezept Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="600"/>
         <source>Das Rezept wurde erfolgreich importiert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptimport klar.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="617"/>
         <source>Das Rezept konnte nicht importiert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptimport misslyckades.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="622"/>
         <source>Die Datei konnte nicht geöffnet werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen kunde inte öppnas.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="627"/>
         <location filename="../tabsudauswahl.cpp" line="631"/>
         <source>Fehler beim Importieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Importfel</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="667"/>
@@ -6089,49 +6193,49 @@ Version installiert: %2</source>
         <location filename="../tabsudauswahl.cpp" line="698"/>
         <location filename="../tabsudauswahl.cpp" line="703"/>
         <source>Sud Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera satsen</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="694"/>
         <source>Der Sud wurde erfolgreich exportiert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptexport klar.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="698"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen kunde inte skrivas.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="703"/>
         <source>Der Sud konnte nicht exportiert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptexport misslyckades.</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="708"/>
         <location filename="../tabsudauswahl.cpp" line="712"/>
         <source>Fehler beim Exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportfel</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="755"/>
         <location filename="../tabsudauswahl.cpp" line="757"/>
         <source>Rohstoffe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ingredienser</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="759"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spara PDF som</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="213"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="246"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
 </context>
 <context>
@@ -6139,7 +6243,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.ui" line="35"/>
@@ -6149,7 +6253,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="38"/>
         <source>Druckvorschau</source>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsvisning för utskrift</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.ui" line="45"/>
@@ -6159,12 +6263,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabzusammenfassung.ui" line="48"/>
         <source>PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF</translation>
     </message>
     <message>
         <location filename="../tabzusammenfassung.cpp" line="58"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara PDF som</translation>
     </message>
 </context>
 <context>
@@ -6172,7 +6276,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/tableview.cpp" line="117"/>
         <source>Zurücksetzen</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
 </context>
 <context>
@@ -6185,12 +6289,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.ui" line="56"/>
         <source>relativ zur Datenbank</source>
-        <translation type="unfinished"></translation>
+        <translation>relativt databasens plats</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="66"/>
         <source>Anhang löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort bilagan.</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="89"/>
@@ -6200,7 +6304,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.ui" line="118"/>
         <source>Öffnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../widgets/wdganhang.ui" line="125"/>
@@ -6210,7 +6314,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdganhang.cpp" line="91"/>
         <source>Anhang auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj bilaga</translation>
     </message>
 </context>
 <context>
@@ -6228,7 +6332,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgbewertung.cpp" line="71"/>
         <source>Woche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vecka</translation>
     </message>
 </context>
 <context>
@@ -6246,7 +6350,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="124"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="131"/>
@@ -6256,7 +6360,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="134"/>
         <source>Zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="147"/>
@@ -6271,7 +6375,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="182"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="195"/>
@@ -6281,7 +6385,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="208"/>
         <source>Zugabe nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till efter</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="240"/>
@@ -6291,7 +6395,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="257"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Dagar</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="270"/>
@@ -6301,7 +6405,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="280"/>
         <source>Empfohlen</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekommenderad</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="293"/>
@@ -6314,13 +6418,13 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="100"/>
         <source>Hopfengabe löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort humle.</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="127"/>
         <location filename="../widgets/wdghopfengabe.ui" line="375"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="140"/>
@@ -6330,7 +6434,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="165"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="178"/>
@@ -6338,7 +6442,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdghopfengabe.ui" line="327"/>
         <location filename="../widgets/wdghopfengabe.ui" line="601"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="185"/>
@@ -6348,12 +6452,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="192"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="205"/>
         <source>IBU</source>
-        <translation type="unfinished"></translation>
+        <translation>IBU</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="218"/>
@@ -6368,17 +6472,17 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="280"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="287"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Koktid</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="307"/>
         <source>Anteil</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="314"/>
@@ -6388,7 +6492,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="340"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="353"/>
@@ -6398,7 +6502,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="382"/>
         <source>Alpha</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpha</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="395"/>
@@ -6418,27 +6522,27 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="457"/>
         <source>Vorderwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>Första vörten</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="462"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokstart</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="467"/>
         <source>Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokning</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="472"/>
         <source>Kochende</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokslut</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="477"/>
         <source>Ausschlagen</source>
-        <translation type="unfinished"></translation>
+        <translation>Överföring till jäskärl</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="491"/>
@@ -6448,7 +6552,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="513"/>
         <source>Ausbeute</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbye</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="526"/>
@@ -6471,12 +6575,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="100"/>
         <source>Malzgabe löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort malt.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="118"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="131"/>
@@ -6487,7 +6591,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgmalzgabe.ui" line="156"/>
         <location filename="../widgets/wdgmalzgabe.ui" line="288"/>
         <source>kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="169"/>
@@ -6497,7 +6601,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="197"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="204"/>
@@ -6512,7 +6616,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="247"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="260"/>
@@ -6522,7 +6626,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgmalzgabe.cpp" line="108"/>
         <source>Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekommenderade maximala andelen (%1%) överskrids.</translation>
     </message>
 </context>
 <context>
@@ -6531,34 +6635,34 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="47"/>
         <location filename="../widgets/wdgrast.cpp" line="85"/>
         <source>Einmaischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäska in</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="52"/>
         <source>Temperaturrast</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperaturrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="57"/>
         <source>Wasserinfusion</source>
-        <translation type="unfinished"></translation>
+        <translation>Vatteninfusion</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="62"/>
         <source>Dekoktion</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekoktion</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="99"/>
         <source>Rast löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort rast.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="133"/>
         <location filename="../widgets/wdgrast.ui" line="570"/>
         <location filename="../widgets/wdgrast.ui" line="889"/>
         <source>Anteil</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="140"/>
@@ -6570,20 +6674,20 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="756"/>
         <location filename="../widgets/wdgrast.ui" line="903"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation>°C</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="147"/>
         <location filename="../widgets/wdgrast.ui" line="459"/>
         <source>Wassermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenmängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="164"/>
         <location filename="../widgets/wdgrast.ui" line="428"/>
         <location filename="../widgets/wdgrast.ui" line="630"/>
         <source>Rasttemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasttemperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="177"/>
@@ -6592,7 +6696,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="695"/>
         <location filename="../widgets/wdgrast.ui" line="862"/>
         <source>Rastdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasttid</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="184"/>
@@ -6602,26 +6706,26 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgrast.ui" line="773"/>
         <location filename="../widgets/wdgrast.ui" line="882"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="232"/>
         <location filename="../widgets/wdgrast.ui" line="623"/>
         <location filename="../widgets/wdgrast.ui" line="806"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="249"/>
         <location filename="../widgets/wdgrast.ui" line="610"/>
         <source>Wassertemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattentemperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="285"/>
         <location filename="../widgets/wdgrast.ui" line="603"/>
         <source>% des empfohlenen Hauptgusses</source>
-        <translation type="unfinished"></translation>
+        <translation>% av rekommenderad mäskvatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="344"/>
@@ -6636,102 +6740,102 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrast.ui" line="661"/>
         <source>Menge der Teilmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>Delmäskens storlek</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="682"/>
         <source>Zusätzliche Rast</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra rast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="780"/>
         <source>Teilmaischetemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Delmäskens temperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="793"/>
         <source>Absetzdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid för att sjunka ner</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="845"/>
         <source>% der Gesamtmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>% av hela mäsken</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="896"/>
         <source>Maischetemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskens temperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="88"/>
         <source>Gummirast (35°-40°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gummirast (35°-40°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="89"/>
         <source>Weizenrast (45°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fenolrast (45°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="90"/>
         <source>Eiweissrast (57°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Proteinrast (57°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="91"/>
         <source>Maltoserast (60°-65°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Maltosrast (60°-65°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="92"/>
         <source>Kombirast (66°-69°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kombirast (66°-69°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="93"/>
         <source>Verzuckerung (70°-75°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Försockringsrast (70°-75°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="94"/>
         <source>Abmaischen (78°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Avmäskning (78°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="97"/>
         <source>Kochendes Wasser</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokande vatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="100"/>
         <source>1/2 Dickmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/2 tjock mäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="101"/>
         <source>1/3 Dickmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/3 tjock mäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="102"/>
         <source>1/3 Dünnmaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/3 tunn mäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="103"/>
         <source>1/3 Läutermaische</source>
-        <translation type="unfinished"></translation>
+        <translation>1/3 lakmäsk</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="247"/>
         <source>Der erste Schritt sollte &quot;Einmaischen&quot; sein.</source>
-        <translation type="unfinished"></translation>
+        <translation>Första steget bör vara &quot;mäska in&quot;.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="252"/>
         <source>Nur der erste Schritt sollte &quot;Einmaischen&quot; sein.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bara första steget bör vara &quot;mäska in&quot;.</translation>
     </message>
 </context>
 <context>
@@ -6739,7 +6843,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgrating.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrating.ui" line="54"/>
@@ -6756,88 +6860,93 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="50"/>
         <source>Kg</source>
-        <translation type="unfinished"></translation>
+        <translation>kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="55"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="60"/>
         <source>mg</source>
-        <translation type="unfinished"></translation>
+        <translation>mg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="65"/>
         <source>Stk</source>
-        <translation type="unfinished"></translation>
+        <translation>st.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="70"/>
         <source>l</source>
-        <translation type="unfinished"></translation>
+        <translation>l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="75"/>
         <source>ml</source>
-        <translation type="unfinished"></translation>
+        <translation>ml</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="95"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="118"/>
         <source>Malzgabe löschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort malt.</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="219"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="350"/>
         <source>Gesamt</source>
+        <translation>Totalt</translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="443"/>
+        <source>Ausgleichen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="226"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="238"/>
         <source>Nachguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Lakvatten</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="264"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="363"/>
         <source>°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>°dH</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="296"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="377"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="303"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="370"/>
         <source>Restalkalität</source>
-        <translation type="unfinished"></translation>
+        <translation>Restalkalinitet</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="320"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="426"/>
         <source>Verdünnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Spädning</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="327"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="139"/>
         <source>Hauptguss</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskvatten</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="401"/>
+        <location filename="../widgets/wdgwasseraufbereitung.ui" line="384"/>
         <source>Menge für 1°dH</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd för 1°dH</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="69"/>
-        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="74"/>
+        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="82"/>
+        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="87"/>
         <source>/l</source>
-        <translation type="unfinished"></translation>
+        <translation>/l</translation>
     </message>
 </context>
 <context>
@@ -6845,57 +6954,57 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgwebvieweditable.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulär</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="128"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="131"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="150"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="153"/>
         <source>Speichern</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="157"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="160"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Originalstilvorlage&lt;/span&gt; wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="160"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="163"/>
         <source>Wiederherstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="167"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="170"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann der Tab Braudaten sowie der Hell- und der Dunkelmodus nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in der Cascading Style Sheets (CSS) und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="170"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="173"/>
         <source>Editiermodus</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigeringsläge</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="161"/>
         <source>Änderungen speichern?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="162"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara ändringarna?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="232"/>
         <source>Template wiederherstellen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ mallen?</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="233"/>
         <source>Soll das Standardtemplate wiederhergestellt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Äterställ standardmallen?</translation>
     </message>
 </context>
 <context>
@@ -6913,7 +7022,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="121"/>
         <source>Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="134"/>
@@ -6924,11 +7033,11 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="162"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="287"/>
         <source>g</source>
-        <translation type="unfinished"></translation>
+        <translation>g</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="175"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die Menge &lt;span style=&quot; font-weight:600;&quot;&gt;Weiterer Zutaten &lt;/span&gt;in &lt;span style=&quot; font-weight:600;&quot;&gt;Gramm pro Liter&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelfer berechnet Zutaten&lt;span style=&quot; font-weight:600;&quot;&gt; allein und ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes. Die Gesamtmenge meint allein die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; des Rezeptes wie im Tab Rezept am Anfang der Rezepterstellung festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die Menge &lt;span style=&quot; font-weight:600;&quot;&gt;Weiterer Zutaten &lt;/span&gt;in &lt;span style=&quot; font-weight:600;&quot;&gt;Gramm pro Liter&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelder berechnet&lt;span style=&quot; font-weight:600;&quot;/&gt;Zutaten&lt;span style=&quot; font-weight:600;&quot;&gt; allein und ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes. Die Gesamtmenge meint allein die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; des Rezeptes wie im Tab Rezept am Anfang der Rezepterstellung festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6936,7 +7045,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="122"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="129"/>
         <source>g/l</source>
-        <translation type="unfinished"></translation>
+        <translation>g/l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="235"/>
@@ -6946,7 +7055,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="246"/>
         <source>Vorhanden</source>
-        <translation type="unfinished"></translation>
+        <translation>befintlig</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="259"/>
@@ -6956,7 +7065,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="314"/>
         <source>Zugabezeitpunkt</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid för tilläggandet</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="321"/>
@@ -6966,22 +7075,22 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="325"/>
         <source>Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="330"/>
         <source>Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="335"/>
         <source>Maischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäskning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="374"/>
         <source>Kochdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Koktid</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="387"/>
@@ -6991,12 +7100,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="406"/>
         <source>min</source>
-        <translation type="unfinished"></translation>
+        <translation>min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="440"/>
         <source>Zugabe nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till efter</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="447"/>
@@ -7006,7 +7115,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="450"/>
         <source>Zugeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="463"/>
@@ -7027,7 +7136,7 @@ Version installiert: %2</source>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="514"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="527"/>
         <source>Tage</source>
-        <translation type="unfinished"></translation>
+        <translation>Dagar</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="553"/>
@@ -7042,7 +7151,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="569"/>
         <source>Entnehmen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta ur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="576"/>
@@ -7052,33 +7161,33 @@ Version installiert: %2</source>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="579"/>
         <source>keine Entnahme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tas inte ur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="586"/>
         <source>Entnahme nach</source>
-        <translation type="unfinished"></translation>
+        <translation>Tas ur efter</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="602"/>
         <source>Kommentar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar.</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="136"/>
         <source>mg/l</source>
-        <translation type="unfinished"></translation>
+        <translation>mg/l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="143"/>
         <source>Stk./l</source>
-        <translation type="unfinished"></translation>
+        <translation>st./l</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="150"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="157"/>
         <source>ml/l</source>
-        <translation type="unfinished"></translation>
+        <translation>ml/l</translation>
     </message>
 </context>
 </TS>

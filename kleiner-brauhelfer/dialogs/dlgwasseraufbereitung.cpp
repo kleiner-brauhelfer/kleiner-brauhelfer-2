@@ -32,6 +32,15 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     gSettings->endGroup();
 }
 
+DlgWasseraufbereitung::DlgWasseraufbereitung(const QString& name, int einheit, double faktor, QWidget *parent) :
+    DlgWasseraufbereitung(parent)
+{
+       ui->cbAuswahl->setCurrentIndex(mList.size() - 1);
+       ui->tbName->setText(name);
+       ui->cbEinheit->setCurrentIndex(einheit);
+       ui->tbFaktor->setValue(faktor);
+}
+
 DlgWasseraufbereitung::~DlgWasseraufbereitung()
 {
     gSettings->beginGroup("DlgWasseraufbereitung");

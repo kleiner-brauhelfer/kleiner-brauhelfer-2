@@ -35,6 +35,7 @@ private slots:
     void on_btnRestoreTemplate_clicked();
     void on_tbTemplate_textChanged();
     void on_sliderZoom_valueChanged(int value);
+    void on_sliderZoom_sliderReleased();
 
 private:
     bool checkSaveTemplate();

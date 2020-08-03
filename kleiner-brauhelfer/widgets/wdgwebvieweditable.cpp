@@ -63,9 +63,15 @@ void WdgWebViewEditable::setHtmlFile(const QString& file)
     QString fileComplete;
     QString lang = gSettings->language();
     if (lang == "de")
+    {
         fileComplete = file + ".html";
+    }
     else
+    {
         fileComplete = file + "_" + lang + ".html";
+        if (!QFile::exists(gSettings->dataDir(1) + fileComplete))
+            fileComplete = file + ".html";
+    }
     ui->cbTemplateAuswahl->setItemText(0, fileComplete);
     ui->webview->setTemplateFile(gSettings->dataDir(1) + fileComplete);
 }
@@ -284,6 +290,12 @@ void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
     if (ui->sliderZoom->hasFocus())
     {
         gZoomFactor = value / 100.0;
+        ui->lblZoom->setText(QString::number(value)+"%");
         ui->webview->setZoomFactor(gZoomFactor);
     }
+}
+
+void WdgWebViewEditable::on_sliderZoom_sliderReleased()
+{
+    ui->lblZoom->clear();
 }

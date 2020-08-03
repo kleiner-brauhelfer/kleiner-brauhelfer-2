@@ -96,10 +96,6 @@
               <td>g/Liter</td>
             </tr>
             <tr>
-              <td>Wasserprofil</td>
-              <td class="value" colspan="2">{{Rezept.Wasserprofil}}</td>
-            </tr>
-            <tr>
               <td>Restalkalit&auml;t</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
@@ -122,17 +118,10 @@
   </div>
   {{/Rezept.Kommentar}}
 
-  {{#Rezept.BrauanlageBemerkung}}
-  <div class="rm" align="center">
-    <h2>Bemerkung Anlage</h2>
-    <p class="kommentar">{{{Rezept.BrauanlageBemerkung}}}</p>
-  </div>
-  {{/Rezept.BrauanlageBemerkung}}
-
-  {{#Zutaten}}
   <div class="rm" align="center">
     <h2>Zutaten</h2>
-    <table>
+    {{#Zutaten}}
+    <table style="border-spacing: 20px 0px;">
       <tr>
         {{#Malz}}
         <td valign="top">
@@ -212,8 +201,46 @@
         </td>
       </tr>
     </table>
+    {{/Zutaten}}
+    {{#Wasser}}
+    </br>
+    <img src="qrc:/images/wasser.svg" height="30"></br>
+    {{Wasserprofil.Name}}
+    </br>
+    <table style="border-spacing: 20px 0px;">
+      <tr>
+        <th></th>
+        <th align="center">Hauptguss</th>
+        <th align="center">Nachguss</th>
+        {{#Verduennung}}<th align="center">Verd&uuml;nnung</th>{{/Verduennung}}
+        <th align="center">Gesamt</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td align="left">Wasser</td>
+        <td align="center"><span class="value">{{Hauptguss}}</span></td>
+        <td align="center"><span class="value">{{Nachguss}}</span></td>
+        {{#Verduennung}}<td align="center"><span class="value">{{Verduennung}}</span></td>{{/Verduennung}}
+        <td align="center"><span class="value">{{Gesamt}}</span></td>
+        <td align="center">l</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {{#Wasseraufbereitung.Liste}}
+      <tr>
+        <td align="left">{{Name}}</td>
+        <td align="center"><span class="value">{{MengeHauptguss}}</span></td>
+        <td align="center"><span class="value">{{MengeNachguss}}</span></td>
+        {{#Verduennung}}<td align="center"><span class="value">{{MengeVerduennung}}</span></td>{{/Verduennung}}
+        <td align="center"><span class="value">{{Menge}}</span></td>
+        <td align="center">{{Einheit}}</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      {{/Wasseraufbereitung.Liste}}
+    </table>
+    {{Wasserprofil.Bemerkung}}
+    {{/Wasser}}
   </div>
-  {{/Zutaten}}
 
   {{#Geraete}}
   <div class="rm" align="center">
@@ -226,6 +253,13 @@
   </div>
   {{/Geraete}}
 
+  {{#Rezept.BrauanlageBemerkung}}
+  <div class="rm" align="center">
+    <h2>Bemerkung Anlage</h2>
+    <p class="kommentar">{{{Rezept.BrauanlageBemerkung}}}</p>
+  </div>
+  {{/Rezept.BrauanlageBemerkung}}
+  
   <div class="rm" align="center">
     <h2>Maischen</h2>
     <table>
@@ -296,7 +330,7 @@
             <tr>
               <td valign="top">{{Name}}</td>
               {{#Einmaischen}}
-              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen (ergibt <span class="value">{{Temp}}</span>&deg;C). <span class="value">{{Dauer}}</span> min einmaischen.</td>
+              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen (ergibt <span class="value">{{Temp}}</span>&deg;C nach Einmaischen). <span class="value">{{Dauer}}</span> min einmaischen.</td>
               {{/Einmaischen}}
               {{#Rast}}
               <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min rasten.</td>
@@ -390,7 +424,7 @@
       {{/Zutaten.HatVorderwuerzehopfen}}
       <tr>
         <td class="underline" valign="top"><strong>Aufheizen</strong></td>
-        <td class="underline">W&uuml;rze auf <span class="value">100</span>&deg;C erhitzen</td>
+        <td class="underline">W&uuml;rze auf <span class="value">100</span>&deg;C erhitzen.</td>
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>Stammw&uuml;rze Kochbeginn</strong></td>
@@ -402,7 +436,7 @@
               <td>____ &deg;P/&deg;Brix</td>
               <td>
                  Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
-                 {{#Zutaten.ZutatenKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.ZutatenKochen}}
+                 {{#Zutaten.HatZusatzKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.HatZusatzKochen}}
               </td>
             </tr>
           </table>
@@ -504,13 +538,13 @@
       <tr>
         <td class="underline" valign="top"><strong>Whirlpool</strong></td>
         <td class="underline">
-          Kocher abschalten. Wenn thermische Bewegung abgeflaut ist, einen Whirlpool erzeugen und ca. 15 min warten bis sich ein Trubkegel gebildet hat
+          Kocher abschalten. Wenn thermische Bewegung abgeflaut ist, einen Whirlpool erzeugen und ca. 15 min warten bis sich ein Trubkegel gebildet hat.
         </td>
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
         <td class="underline"  valign="top"><strong>Nachisomerisierung</strong></td>
-        <td class="underline" >Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
+        <td class="underline">Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
             <col width="200">
@@ -567,7 +601,7 @@
               <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
-          Wenn gew&uuml;nscht die W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
+          W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
         </td>
       </tr>
       <tr>
@@ -596,7 +630,7 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} Einheiten nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben</td>
+              <td><span class="value">{{Menge}}</span> {{Einheit}} Einheiten nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben.</td>
             </tr>
             {{/Liste}}
           </table>
@@ -617,7 +651,7 @@
             {{#Zutaten.Kalthopfen.Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}</td>
+              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben{{#Dauer}} und nach <span class="value">{{Dauer}}</span> Tag(e) entnehmen{{/Dauer}}.</td>
             </tr>
             {{#Bemerkung}}
             <tr>

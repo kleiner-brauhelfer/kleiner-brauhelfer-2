@@ -54,6 +54,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("RestalkalitaetIst");
     mVirtualField.append("PhMalz");
     mVirtualField.append("PhMaische");
+    mVirtualField.append("PhMaischeSoll");
     mVirtualField.append("AnlageVerdampfungsrate");
     mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
@@ -120,6 +121,9 @@ void ModelSud::onAnlageRowChanged(const QModelIndex &idx)
 
 void ModelSud::onWasserRowChanged(const QModelIndex &idx)
 {
+    const QList<int> ignore = {ModelWasser::ColBemerkung};
+    if (ignore.contains(idx.column()))
+        return;
     QVariant name = bh->modelWasser()->data(idx.row(), ModelWasser::ColName);
     for (int row = 0; row < rowCount(); ++row)
     {
@@ -419,11 +423,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         for (int r = 0; r < proxy.rowCount(); ++r)
         {
             double ph = proxy.data(r, ModelMalzschuettung::ColpH).toDouble();
-            if (ph > 0)
-            {
-                double m = proxy.data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
-                phGesamt += std::pow(10, -ph) * m/schuet;
-            }
+            if (ph <= 0)
+                return 0.0;
+            double m = proxy.data(r, ModelMalzschuettung::Colerg_Menge).toDouble();
+            phGesamt += std::pow(10, -ph) * m/schuet;
         }
         if (phGesamt > 0)
             phGesamt = -std::log10(phGesamt);
@@ -431,16 +434,29 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColPhMaische:
     {
-        double phRa = 0;
         double phMalz = data(idx.row(), ColPhMalz).toDouble();
         if (phMalz > 0)
         {
             double ra = data(idx.row(), ColRestalkalitaetIst).toDouble();
             double V = data(idx.row(), Colerg_WHauptguss).toDouble();
             double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
-            phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+            double phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+            return phMalz + phRa;
         }
-        return phMalz + phRa;
+        return 0;
+    }
+    case ColPhMaischeSoll:
+    {
+        double phMalz = data(idx.row(), ColPhMalz).toDouble();
+        if (phMalz > 0)
+        {
+            double ra = data(idx.row(), ColRestalkalitaetSoll).toDouble();
+            double V = data(idx.row(), Colerg_WHauptguss).toDouble();
+            double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+            double phRa = (0.013 * V / schuet + 0.013) * ra / 2.8;
+            return phMalz + phRa;
+        }
+        return 0;
     }
     case ColAnlageVerdampfungsrate:
     {
@@ -670,8 +686,21 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         }
         return false;
     }
+    case ColPhMaischeSoll:
+    {
+        double phMalz = data(idx.row(), ColPhMalz).toDouble();
+        if (phMalz > 0)
+        {
+            double phRa = value.toDouble() - phMalz;
+            double V = data(idx.row(), Colerg_WHauptguss).toDouble();
+            double schuet = data(idx.row(), Colerg_S_Gesamt).toDouble();
+            double ra = phRa * 2.8 / (0.013 * V / schuet + 0.013);
+            return QSqlTableModel::setData(index(idx.row(), ColRestalkalitaetSoll), ra);
+        }
+        return true;
+    }
     default:
-        return false;
+        return QSqlTableModel::setData(idx, value);
     }
 }
 

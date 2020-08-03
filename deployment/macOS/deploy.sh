@@ -2,7 +2,7 @@
 
 if ! [ -d "$1" ] || ! [ -d "$2" ]; then
   echo "Usage: $0 <path_to_kleiner-brauhelfer_bundle> <path_to_qt_bin> <optional version_suffix>" >&2
-  echo "Example: $0 ./bin/kleiner-brauhelfer.app /opt/Qt/5.10.0/clang_64/bin" >&2
+  echo "Example: $0 ./bin/kleiner-brauhelfer.app /usr/local/opt/qt/bin" >&2
   exit 1
 fi
 
@@ -24,9 +24,6 @@ PRO="${SOURCES}/kleiner-brauhelfer.pro"
 
 # Path to the deployment resources
 RESOURCES="${BASE_DIR}"
-
-# Target path of language resources
-LANGUAGES="${BUNDLE}/Contents/MacOS/languages"
 
 VERSION_SUFFIX="$3"
 
@@ -94,15 +91,6 @@ cp "${RESOURCES}/InfoPlist.strings" "${BUNDLE}/Contents/Resources" || exit 1
 # remove not needed executable flags
 chmod 644 "${BUNDLE}/Contents/Resources/icon.icns"
 chmod 644 "${BUNDLE}/Contents/Resources/InfoPlist.strings"
-
-# copy internationalization files
-mkdir -p ${LANGUAGES} || exit 1
-
-#cp "${SOURCES}"/languages/*.qm "${LANGUAGES}" || exit 1
-#cp "${SOURCES}"/languages/*.png "${LANGUAGES}" || exit 1
-#cp "${QT_DIR}/../translations/qtbase_en.qm" "${LANGUAGES}/qt_en.qm" || exit 1
-#cp "${QT_DIR}/../translations/qtbase_de.qm" "${LANGUAGES}/qt_de.qm" || exit 1
-#cp "${QT_DIR}/../translations/qtbase_pl.qm" "${LANGUAGES}/qt_pl.qm" || exit 1
 
 ###
 ### Running QT deployment

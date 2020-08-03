@@ -26,6 +26,9 @@ class WebView : public QWebEngineView
     Q_OBJECT
 
 public:
+    static void setSupported(bool isSupported);
+
+public:
     WebView(QWidget* parent = nullptr);
     ~WebView();
     void setLinksExternal(bool external);
@@ -44,7 +47,7 @@ private:
     QString mTemplateFile;
 
 private:
-    bool mIsSupported;
+    static bool gIsSupported;
 };
 
 #else

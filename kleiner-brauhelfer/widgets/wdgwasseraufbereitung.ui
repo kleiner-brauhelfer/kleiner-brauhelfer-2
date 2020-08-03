@@ -133,10 +133,61 @@
         <property name="verticalSpacing">
          <number>4</number>
         </property>
-        <item row="1" column="0">
-         <widget class="QLabel" name="lblHg">
-          <property name="text">
-           <string>Hauptguss</string>
+        <item row="1" column="1">
+         <widget class="DoubleSpinBox" name="tbMengeHg">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="9">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="5">
+         <widget class="QLabel" name="lblEinheitNg">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="lblEinheitHg">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -162,8 +213,123 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="DoubleSpinBox" name="tbMengeHg">
+        <item row="0" column="3">
+         <widget class="QLabel" name="lblGesamt">
+          <property name="text">
+           <string>Gesamt</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLabel" name="lblNg">
+          <property name="text">
+           <string>Nachguss</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="7">
+         <widget class="DoubleSpinBox" name="tbMengeHgf">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="12">
+         <widget class="QLabel" name="label_4">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>°dH</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="11">
+         <widget class="DoubleSpinBox" name="tbRestalkalitaet">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="minimum">
+           <double>-99.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>99.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Menge</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="10">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Restalkalität</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="lblEinheit">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6">
+         <widget class="QLabel" name="lblHgf">
+          <property name="text">
+           <string>Verdünnung</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="lblHg">
+          <property name="text">
+           <string>Hauptguss</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="DoubleSpinBox" name="tbMengeNg">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -197,7 +363,46 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="12">
+        <item row="0" column="4">
+         <widget class="DoubleSpinBox" name="tbMengeGesamt">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="8">
+         <widget class="QLabel" name="lblEinheitHgf">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="10">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Menge für 1°dH</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="11">
          <widget class="DoubleSpinBox" name="tbFaktor">
           <property name="minimumSize">
            <size>
@@ -222,225 +427,13 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="lblEinheit">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="lblNg">
-          <property name="text">
-           <string>Nachguss</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="12">
-         <widget class="DoubleSpinBox" name="tbRestalkalitaet">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="minimum">
-           <double>-99.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>99.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <widget class="QLabel" name="lblEinheitNg">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="4">
-         <widget class="DoubleSpinBox" name="tbMengeGesamt">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="7">
-         <widget class="DoubleSpinBox" name="tbMengeHgf">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="lblEinheitHg">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="lblGesamt">
-          <property name="text">
-           <string>Gesamt</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="13">
-         <widget class="QLabel" name="label_4">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>°dH</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="11">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Restalkalität</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Menge</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="11">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Menge für 1°dH</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4">
-         <widget class="DoubleSpinBox" name="tbMengeNg">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="13">
+        <item row="1" column="12">
          <widget class="QLabel" name="lblEinheitFaktor">
           <property name="minimumSize">
            <size>
             <width>40</width>
             <height>0</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="6">
-         <widget class="QLabel" name="lblHgf">
-          <property name="text">
-           <string>Verdünnung</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="8">
-         <widget class="QLabel" name="lblEinheitHgf">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="10">
-         <widget class="QPushButton" name="btnAusgleichen">
-          <property name="text">
-           <string>Ausgleichen</string>
           </property>
          </widget>
         </item>

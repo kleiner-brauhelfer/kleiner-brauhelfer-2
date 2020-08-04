@@ -83,6 +83,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Zutat in der Liste nach oben verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
@@ -91,6 +94,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Zutat in der Liste nach unten verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
@@ -100,7 +106,7 @@
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die Weitere Zutat links aus dem Rezept gelöscht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Dies kann nicht rückgängig gemacht werden, es sei denn man beendet das Programm und bestätigt dabei, dass alle Änderungen der Sitzung verworfen werden. Die Zutat bleibt in der Rohstoffliste erhalten.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die Weitere Zutat links aus dem Rezept gelöscht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Dies kann nicht rückgängig gemacht werden, es sei denn man beendet das Programm und bestätigt dabei, dass alle Änderungen der Sitzung verworfen werden. Die Zutat bleibt in der Rohstoffliste erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -384,7 +390,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; für die weitere Zutat definiert, so diese beim Hopfenkochen zugegeben wird. Beim Maischen und in der Gärung sollte dieser Wert mit Null angegeben werden.&lt;/p&gt;&lt;p&gt;Die Kochdauer kann entscheidend in der Betonung von &lt;span style=&quot; font-weight:600;&quot;&gt;Geschmacksnoten&lt;/span&gt; sein, da sich Zugaben beim Kochen zeitlich vollkommen unterschiedlich verhalten können oder später das Verhalten anderer Zugaben beeinflussen. Ein Beispiel hierfür ist Hefe, aber auch Gewürzeinträge unterscheiden sich maßgebend, je nachdem ob heiß oder kalt zugegeben.&lt;/p&gt;&lt;p&gt;Dies rührt unter anderem daher, dass Molekülketten bei mit höherer Temperatur und längerer Zeit aufgespalten werden können und sich Geschmacks- oder Geruchskomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;unterschiedlich dominant&lt;/span&gt; verhalten. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; für die weitere Zutat definiert, so diese beim Hopfenkochen zugegeben wird. Beim Maischen und in der Gärung sollte dieser Wert mit Null angegeben werden.&lt;/p&gt;&lt;p&gt;Die Kochdauer kann entscheidend in der Betonung von &lt;span style=&quot; font-weight:600;&quot;&gt;Geschmacksnoten&lt;/span&gt; sein, da sich Zugaben beim Kochen zeitlich vollkommen unterschiedlich verhalten können oder später das Verhalten anderer Zugaben beeinflussen. Ein Beispiel hierfür ist Hefe, aber auch Gewürzeinträge unterscheiden sich maßgebend, je nachdem ob heiß oder kalt zugegeben.&lt;/p&gt;&lt;p&gt;Dies rührt unter anderem daher, dass Molekülketten bei mit höherer Temperatur und längerer Zeit aufgespalten werden können und sich Geschmacks- oder Geruchskomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;unterschiedlich dominant&lt;/span&gt; verhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -476,7 +482,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zugabezeitpunkt weiterer Zutaten ab Braudatum angegeben. Das Braudatum ist meist identisch mit dem Anstelldatum der Hefe, kann aber auch vor der Hefegabe liegen, etwa wenn über Nacht gebraut wird. Der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt&lt;/span&gt; kann entscheidend für den Gärverlauf und den Geschmack sein.&lt;/p&gt;&lt;p&gt;Gewöhnlich erfolgt die Zugabe weiterer Zutaten nach der Hauptgärung. Hefenährstoffe etwa werden oft schon beim Kochen hinzugegeben. Der Zugabezeitpunkt ist eine Stellschraube beim Ausbau der Geschmacksidee. Bei Zweifeln hilft vorab die einschlägige Literatur oder die bekannten Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zugabezeitpunkt weiterer Zutaten ab Braudatum angegeben. Das Braudatum ist meist identisch mit dem Anstelldatum der Hefe, kann aber auch vor der Hefegabe liegen, etwa wenn über Nacht gebraut wird. &lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt&lt;/span&gt; kann entscheidend für den Gärverlauf und den Geschmack sein.&lt;/p&gt;&lt;p&gt;Gewöhnlich erfolgt die Zugabe weiterer Zutaten nach der Hauptgärung. Hefenährstoffe etwa werden oft schon beim Kochen hinzugegeben. Der Zugabezeitpunkt ist eine Stellschraube beim Ausbau der Geschmacksidee. Bei Zweifeln hilft vorab die einschlägige Literatur oder die bekannten Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -599,7 +605,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string>Kommentar.</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist ein Freitextfeld für einen Kommentar.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>

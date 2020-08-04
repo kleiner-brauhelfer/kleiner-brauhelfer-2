@@ -114,9 +114,6 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnLoeschen">
-          <property name="toolTip">
-           <string>Malzgabe löschen.</string>
-          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>

@@ -149,6 +149,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnSaveTemplate">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlage&lt;/span&gt; gespeichert. Sollten wider Erwarten Probleme auftauchen, geht es mit dem Button Wiederhestellen zur Originalansicht zurück. Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Speichern</string>
            </property>

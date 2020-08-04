@@ -44,7 +44,7 @@
        <item>
         <widget class="QPushButton" name="btnOeffnen">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann eine externes &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; geöffnet und anschließend im Kleinen Brauhelfer gespeichert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann eine externes &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; geöffnet und anschließend im Kleinen Brauhelfer dem aktuellen Rezept zugeordnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>Öffnen</string>
@@ -63,6 +63,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnLoeschen">
+         <property name="toolTip">
+          <string>Hiermit wird das gewählte Etikett aus dem Rezept gelöscht.</string>
+         </property>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
@@ -132,7 +135,7 @@
            <item>
             <widget class="QPushButton" name="btnSaveTemplate">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; gespeichert.&lt;/p&gt;&lt;p&gt;Dies kann nicht rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; in aktuellen Rezept gespeichert.&lt;/p&gt;&lt;p&gt;Dies kann nicht rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Speichern</string>
@@ -207,8 +210,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>298</width>
-        <height>612</height>
+        <width>310</width>
+        <height>653</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -297,7 +300,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;p&gt;Die ideale Höhe ist abhängig vom Hals des Gebindes und sollte vorher ausgemessen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -367,6 +370,9 @@
           </item>
           <item row="2" column="0" colspan="3">
            <widget class="QCheckBox" name="cbSeitenverhaeltnis">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein eigenes &lt;span style=&quot; font-weight:600;&quot;&gt;Seitenverhältnis&lt;/span&gt; definiert werden.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Diese macht Sinn bei besonderen Flaschentypen, die von der Norm abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Seitenverhältnis beibehalten</string>
             </property>
@@ -522,7 +528,7 @@
             <item>
              <widget class="QPushButton" name="btnTagLoeschen">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Tag oder mehrere gelöscht. Mit Shift können mehere Tags markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Tag oder mehrere gelöscht. Mit Shift können mehrere Tags markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
                <string>Löschen</string>
@@ -617,6 +623,11 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
@@ -625,11 +636,6 @@
    <class>SvgView</class>
    <extends>QGraphicsView</extends>
    <header>widgets/svgview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

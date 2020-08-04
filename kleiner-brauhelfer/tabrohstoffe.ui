@@ -73,15 +73,15 @@
    <item>
     <widget class="QToolBox" name="toolBoxRohstoffe">
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="widget_2">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>100</width>
-        <height>74</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -132,8 +132,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>100</width>
-        <height>74</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -184,8 +184,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>100</width>
-        <height>74</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -236,8 +236,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>100</width>
-        <height>74</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -288,8 +288,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>449</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -366,8 +366,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>509</width>
-             <height>588</height>
+             <width>526</width>
+             <height>603</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -1016,14 +1016,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

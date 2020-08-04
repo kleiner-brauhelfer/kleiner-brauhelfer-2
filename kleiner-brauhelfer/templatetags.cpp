@@ -118,10 +118,21 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             QVariantMap ctxSud;
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
             ctxSud["Status"] = QString::number(static_cast<int>(status));
-            ctxSud["StatusRezept"] = status == Brauhelfer::SudStatus::Rezept ? "1" : "";
-            ctxSud["StatusGebraut"] = status == Brauhelfer::SudStatus::Gebraut ? "1" : "";
-            ctxSud["StatusAbgefuellt"] = status == Brauhelfer::SudStatus::Abgefuellt ? "1" : "";
-            ctxSud["StatusVerbraucht"] = status == Brauhelfer::SudStatus::Verbraucht ? "1" : "";
+            switch (status)
+            {
+            case Brauhelfer::SudStatus::Rezept:
+                ctxSud["StatusRezept"] = 1;
+                break;
+            case Brauhelfer::SudStatus::Gebraut:
+                ctxSud["StatusGebraut"] = 1;
+                break;
+            case Brauhelfer::SudStatus::Abgefuellt:
+                ctxSud["StatusAbgefuellt"] = 1;
+                break;
+            case Brauhelfer::SudStatus::Verbraucht:
+                ctxSud["StatusVerbraucht"] = 1;
+                break;
+            }
             ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
             ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
             ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());

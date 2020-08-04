@@ -77,7 +77,7 @@ void SudObject::init()
     modelTags()->setSourceModel(bh->modelTags());
     modelTags()->setFilterKeyColumn(ModelTags::ColSudID);
 
-    QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
+    QRegExp regExpId(QString("^%1$").arg(mId));
     modelRasten()->setFilterRegExp(regExpId);
     modelMalzschuettung()->setFilterRegExp(regExpId);
     modelHopfengaben()->setFilterRegExp(regExpId);
@@ -90,7 +90,7 @@ void SudObject::init()
     modelBewertungen()->setFilterRegExp(regExpId);
     modelAnhang()->setFilterRegExp(regExpId);
     modelEtiketten()->setFilterRegExp(regExpId);
-    modelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
+    modelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId)));
 }
 
 void SudObject::load(int id)
@@ -105,7 +105,7 @@ void SudObject::load(int id)
         else
             qInfo() << "SudObject::unload()";
 
-        QRegExp regExpId(QString("^%1$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp);
+        QRegExp regExpId(QString("^%1$").arg(mId));
         modelRasten()->setFilterRegExp(regExpId);
         modelMalzschuettung()->setFilterRegExp(regExpId);
         modelHopfengaben()->setFilterRegExp(regExpId);
@@ -118,7 +118,7 @@ void SudObject::load(int id)
         modelBewertungen()->setFilterRegExp(regExpId);
         modelAnhang()->setFilterRegExp(regExpId);
         modelEtiketten()->setFilterRegExp(regExpId);
-        modelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId), Qt::CaseInsensitive, QRegExp::RegExp));
+        modelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId)));
 
         if (isLoaded())
         {

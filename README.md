@@ -41,6 +41,9 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.2.2 (in Entwicklung)
+- Neu: Dialog "Restextrakt" überarbeitet
+- Fix: Im Reiter "Ausrüstung" Liste der Sude bei Anlage mit Sonderzeichen wird nicht angezeigt
+- Fix: Dialog "Zutaten vom Lager abziehen" zeigt die Hopfenmenge nicht immer an
 
 ### Version 2.2.1 (19.07.2020)
 - Fix: Sudinformation & Spickzettel werden nur angezeigt, nachdem Sprache eingestellt wird

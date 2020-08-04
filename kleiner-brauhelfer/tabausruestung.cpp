@@ -200,13 +200,13 @@ void TabAusruestung::anlage_selectionChanged()
         mRow = selectedRows[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
         QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
-        regExpId = QRegExp(QString("^%1$").arg(anlage), Qt::CaseInsensitive, QRegExp::RegExp);
-        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId = QRegExp(QString("^%1$").arg(QRegExp::escape(anlage)));
+        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
     }
     else
     {
-        regExpId = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
-        regExpId2 = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId = QRegExp(QString("--dummy--"), Qt::CaseSensitive, QRegExp::FixedString);
+        regExpId2 = QRegExp(QString("--dummy--"), Qt::CaseSensitive, QRegExp::FixedString);
     }
     static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegExp(regExpId2);
     static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegExp(regExpId);

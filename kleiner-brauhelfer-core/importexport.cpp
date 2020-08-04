@@ -643,7 +643,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     QVariantList list;
 
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
-    QRegExp regExpId(QString("^%1$").arg(sudId), Qt::CaseInsensitive, QRegExp::RegExp);
+    QRegExp regExpId(QString("^%1$").arg(sudId));
 
     root["Global"] = QJsonObject({{"db_Version", bh->databaseVersion()}});
 
@@ -751,7 +751,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelTags();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelTags::ColSudID);
-    proxy.setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(sudId), Qt::CaseInsensitive, QRegExp::RegExp));
+    proxy.setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(sudId)));
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
     {

@@ -14,7 +14,7 @@
     <table>
       <tr>
         <td></td>
-        <td>{{{Sud.BewertungSterne}}}</td>
+        <td>{{{BewertungSterne}}}</td>
       </tr>
       <tr>
         <td valign="center">
@@ -25,47 +25,47 @@
         <td valign="top">
           <table>
             <col width="*">
-            {{^Sud.StatusRezept}}<col width="80">{{/Sud.StatusRezept}}
+            {{^StatusRezept}}<col width="80">{{/StatusRezept}}
             <col width="80">
             <col width="*">
             <tr>
               <th></th>
-              {{^Sud.StatusRezept}}<th>Sud</th>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<th>Sud</th>{{/StatusRezept}}
               <th>Rezept</th>
             </tr>
             <tr>
               <td>Menge</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Menge}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Menge}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Menge}}</td>
               <td>l</td>
             </tr>
             <tr>
               <td>Stammw&uuml;rze</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.SW}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{SW}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             <tr>
               <td>Alkohol</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Alkohol}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Alkohol}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Alkohol}}</td>
               <td>%vol</td>
             </tr>
             <tr>
               <td>Bittere</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Bittere}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Bittere}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
               <td>Farbe</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Farbe}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Farbe}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
               <td>CO&#x2082;-Gehalt</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.CO2}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{CO2}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
             </tr>
@@ -82,7 +82,7 @@
     <h1>Zutaten</h1>
   </div>
 
-  {{#Zutaten.Malz}}
+  {{#Malz}}
   <div class="rm bg_malz" align="center">
     <img src="qrc:/images/getreide.svg" height="50px">
     <br>
@@ -110,9 +110,9 @@
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Malz}}
+  {{/Malz}}
 
-  {{#Zutaten.Hopfen}}
+  {{#Hopfen}}
   <div class="rm bg_hopfen" align="center">
     <img src="qrc:/images/hopfen.svg" height="50px">
     <br>
@@ -140,9 +140,9 @@
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Hopfen}}
+  {{/Hopfen}}
 
-  {{#Zutaten.Hefe}}
+  {{#Hefe}}
   <div class="rm bg_hefe" align="center">
     <img src="qrc:/images/hefe.svg" height="50px">
     <br>
@@ -170,9 +170,9 @@
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Hefe}}
+  {{/Hefe}}
 
-  {{#Zutaten.Zusatz}}
+  {{#Zusatz}}
   <div class="rm bg_zusatz" align="center">
     <img src="qrc:/images/zusatz.svg" height="50px">
     <br>
@@ -200,7 +200,7 @@
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Zusatz}}
+  {{/Zusatz}}
 
   {{/Zutaten}}
 

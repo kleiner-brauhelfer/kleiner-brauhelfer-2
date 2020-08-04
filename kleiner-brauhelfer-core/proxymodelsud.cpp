@@ -98,6 +98,11 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         accept = sourceModel()->data(idx).toString().contains(rx);
         if (!accept)
         {
+            idx = sourceModel()->index(source_row, ModelSud::ColKategorie, source_parent);
+            accept = sourceModel()->data(idx).toString().contains(rx);
+        }
+        if (!accept)
+        {
             idx = sourceModel()->index(source_row, ModelSud::ColKommentar, source_parent);
             accept = sourceModel()->data(idx).toString().contains(rx);
         }

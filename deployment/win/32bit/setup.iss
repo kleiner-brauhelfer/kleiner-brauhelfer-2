@@ -1,5 +1,5 @@
 #define MyAppName "kleiner-brauhelfer-2"
-#define MyAppVersion "2.2.1"
+#define MyAppVersion "2.2.2"
 #define MyAppPublisher "kleiner-brauhelfer"
 #define MyAppURL "http://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
 #define MyAppExeName "kleiner-brauhelfer-2.exe"

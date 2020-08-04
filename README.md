@@ -40,6 +40,8 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ## Änderungen & Erweiterungen
 
+### Version 2.2.2 (in Entwicklung)
+
 ### Version 2.2.1 (19.07.2020)
 - Fix: Sudinformation & Spickzettel werden nur angezeigt, nachdem Sprache eingestellt wird
 

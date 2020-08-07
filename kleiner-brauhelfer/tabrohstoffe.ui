@@ -331,30 +331,6 @@
              </attribute>
             </widget>
            </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <item>
-              <widget class="QPushButton" name="btnNeuesWasserprofil">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neues &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Wird außer dem örtlichen Leitungswasser regelmäßig mit aufbereitetem Wasser wie &lt;span style=&quot; font-weight:600;&quot;&gt;Osmose-Wasser&lt;/span&gt; gearbeitet, empfiehlt es sich hier mehrere Wasserprofile anzulegen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Neues Wasserprofil</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnWasserprofilLoeschen">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein zuvor angelegtes &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Wasserprofil löschen</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
           </layout>
          </widget>
          <widget class="QScrollArea" name="scrollArea">
@@ -367,7 +343,7 @@
              <x>0</x>
              <y>0</y>
              <width>526</width>
-             <height>603</height>
+             <height>627</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -1036,8 +1012,6 @@
   <tabstop>tableHefe</tabstop>
   <tabstop>tableWeitereZutaten</tabstop>
   <tabstop>tableWasser</tabstop>
-  <tabstop>btnNeuesWasserprofil</tabstop>
-  <tabstop>btnWasserprofilLoeschen</tabstop>
   <tabstop>scrollArea</tabstop>
   <tabstop>tbCalciumMg</tabstop>
   <tabstop>tbCalciumMmol</tabstop>

@@ -38,8 +38,14 @@
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden Rohstoffvorlagen aufgeführt. Oben angegebene Quellen sind dabei  gute Adressen für die Recherche im deutschsprachigen und angelsächsischen Raum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
@@ -63,98 +69,23 @@
    </item>
    <item>
     <widget class="QLabel" name="labelQuelle">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Quellen: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QWidget" name="widgetEdit" native="true">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QPushButton" name="btn_Add">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld Rohstoffvorlagen eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue&lt;/span&gt;, vordefinierte &lt;span style=&quot; font-weight:600;&quot;&gt;Zeile&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Vorlage hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_Remove">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird im obigen Feld eine &lt;span style=&quot; font-weight:600;&quot;&gt;markierte Zeile&lt;/span&gt; aus den Rohstoffvorlagen gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Vorlage löschen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_Import">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden im obigen Feld Rohstoffvorlagen neue, vordefinierte Rohstofflisten hinzugefügt. Aktuell sollte der Datensatz als semikolonseparierter csv-Datensatz mit den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Name&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Typ&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Farbe&lt;/span&gt; vorliegen.&lt;/p&gt;&lt;p&gt;Beispiel:&lt;/p&gt;&lt;p&gt;Name;Typ;Ausbeute;Farbe&lt;br/&gt;Honig;Honig;90;1&lt;br/&gt;;;;&lt;br/&gt;;;;&lt;/p&gt;&lt;p&gt;Ein Leerzeichen hinter dem Semikolon ist nicht nötig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Liste importieren</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_Export">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden markierte Felder als Semikolon searierter csv-Datensatz &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Liste exportieren</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_Restore">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird der vordefinierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausgangszustand&lt;/span&gt; für die Vorlagenerstellung wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Liste wiederherstellen</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die gegenwärtige Bearbeitung abgebrochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die gegenwärtige Bearbeitung abgebrochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

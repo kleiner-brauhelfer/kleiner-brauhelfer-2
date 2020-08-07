@@ -43,6 +43,10 @@ public:
 
 public:
 
+    static double Restalkalitaet(double hydrogencarbonat, double calcium, double magnesium);
+
+public:
+
     ModelWasser(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;

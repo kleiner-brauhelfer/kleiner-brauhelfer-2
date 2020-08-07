@@ -41,15 +41,23 @@ QVariant ModelWasser::dataExt(const QModelIndex &idx) const
         return data(idx.row(), ColHydrogencarbonat).toDouble() / 61.02 * 2.8;
     case ColRestalkalitaet:
     {
-        double carbh = data(idx.row(), ColCarbonatHaerte).toDouble();
-        double calch = data(idx.row(), ColCalciumHaerte).toDouble();
-        double magh = data(idx.row(), ColMagnesiumHaerte).toDouble();
+        double hydrogencarbonat = data(idx.row(), ColHydrogencarbonat).toDouble();
+        double calcium = data(idx.row(), ColCalcium).toDouble();
+        double magnesium = data(idx.row(), ColMagnesium).toDouble();
         double add = data(idx.row(), ColRestalkalitaetAdd).toDouble();
-        return carbh - (calch + 0.5 * magh) / 3.5 + add;
+        return Restalkalitaet(hydrogencarbonat, calcium, magnesium) + add;
     }
     default:
         return QVariant();
     }
+}
+
+double ModelWasser::Restalkalitaet(double hydrogencarbonat, double calcium, double magnesium)
+{
+    double calch = calcium / (40.08 * 0.1783);
+    double magh = magnesium / (24.31 * 0.1783);
+    double carbh = hydrogencarbonat / 61.02 * 2.8;
+    return carbh - (calch + 0.5 * magh) / 3.5;
 }
 
 bool ModelWasser::setDataExt(const QModelIndex &idx, const QVariant &value)

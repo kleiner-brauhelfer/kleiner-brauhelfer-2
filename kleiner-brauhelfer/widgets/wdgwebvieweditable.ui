@@ -128,7 +128,7 @@
          <item>
           <widget class="ComboBox" name="cbTemplateAuswahl">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; aus.&lt;/p&gt;&lt;p&gt;Es gibt einige vom Kleinen Brauhelfer bereitgestellte Stilvorlagen. Es können aber auch eigene Entwürfe angelegt werden. Für das Arbeiten mit Stilvorlagen sind Programmierkenntnisse hilfreich. So nicht, empfiehlt es sich hier Hilfe hinzuziehen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <item>
             <property name="text">
@@ -150,7 +150,7 @@
          <item>
           <widget class="QPushButton" name="btnSaveTemplate">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlage&lt;/span&gt; gespeichert. Sollten wider Erwarten Probleme auftauchen, geht es mit dem Button Wiederhestellen zur Originalansicht zurück. Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlage&lt;/span&gt; gespeichert.&lt;/p&gt;&lt;p&gt;Sollten wider Erwarten Probleme auftauchen, kann mit dem Button Wiederhestellen die Originalansicht wiederhergestellt werden. Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Speichern</string>

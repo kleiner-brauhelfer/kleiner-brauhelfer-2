@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>849</width>
-    <height>152</height>
+    <width>823</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -620,14 +620,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>

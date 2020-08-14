@@ -39,7 +39,8 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der kleine-brauhelfer-2 ist als angepasste &lt;a href=&quot;https://de.wikipedia.org/wiki/Beerware&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beerware&lt;/span&gt;&lt;/a&gt; lizenziert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Während die Nutzung generell kostenlos ist, erbittet der Autor von Beerware vom Nutzer dem Autor&lt;br/&gt;- bei Gelegenheit ein Bier auszugeben oder&lt;br/&gt;- ein Bier auf das Wohl des Autors zu trinken oder&lt;br/&gt;- dem Autor ein &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;selbstgebrautes Bier zu schicken&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Die Einhaltung dieser Lizenzierungsbestimmung erfolgt auf freiwilliger Basis.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Anschrift Deutschland:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;c/o LAS Burg 12002&lt;br/&gt;Hauptstraße 396&lt;br/&gt;D-79576 Weil am Rhein&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Anschrift Schweiz:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;Lehenmattstrasse 158&lt;br/&gt;CH-4052 Basel&lt;/p&gt;&lt;p&gt;Ich würde mich über ein leckeres Bier sehr freuen!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kleiner-Brauhelfer-2 is licensed as modified &lt;a href=&quot;https://en.wikipedia.org/wiki/Beerware&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Beerware&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;While usage is generally free, the developer asks users&lt;br/&gt;- to buy him a drink, when the occasions arises, or&lt;br/&gt;- to drink to the developer&apos;s health, or&lt;br/&gt;- to send the developer some &lt;/span&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;home-brewed beer&lt;/span&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Compliance with the license is voluntary.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Address Germany:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;c/o LAS Burg 12002&lt;br/&gt;Hauptstraße 396&lt;br/&gt;D-79576 Weil am Rhein&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Address Switzerland:&lt;br/&gt;&lt;/span&gt;Bourgeois Frédéric&lt;br/&gt;Lehenmattstrasse 158&lt;br/&gt;CH-4052 Basel&lt;/p&gt;&lt;p&gt;Receiving your beers will make me very happy!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -70,7 +71,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen&lt;/span&gt; werden die markierten Einträge aus der Datenbank gelöscht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Änderungen an der Datenbank sollten nur von erfahrenen Anwendern vorgenommen werden. Die Änderungen werden erst mit dem Speichern der Datenbank definitiv übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;OBS: &lt;/span&gt;Ändringar i databasen bör inte göra av oerfarna användare. Verkställs först vid nästa sparandet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="113"/>
@@ -80,7 +81,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="120"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Weiter &lt;/span&gt;springt die Datenbankbereinigung zur nächsten Überprüfungsroutine.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="123"/>
@@ -189,7 +190,7 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="38"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der pH-Wert für den gewählten Malztyp eingestellt.&lt;/p&gt;&lt;p&gt;Vordefiniert sind Werte für Basismalz bis 200 EBC, Karamellmalz, Röstmalz und Rohfrucht. Sofern bekannt, kann der pH-Wert eines Malzes auch manuell eingegeben werden.&lt;/p&gt;&lt;p&gt;Zur manuellen Eingabe: Manche Mälzereien stellen Dateblätter für den gemessenen pH-Wert zu Verfügung. Die Werte können innerhalb eines Malztyps abweichen. In der Mikro- und Hobbybrauerei ist dieser Faktor indes vernachlässigbar.&lt;/p&gt;&lt;p&gt;Zur Orientierung durchschnittliche Farbwerte nach Malztyp:&lt;/p&gt;&lt;p&gt;Basismalze: 2 – 30 EBC&lt;/p&gt;&lt;p&gt;Rohfrucht: 1 – 20 EBC&lt;/p&gt;&lt;p&gt;Karamellmalze: 4 – 450 EBC&lt;/p&gt;&lt;p&gt;Röstmalze: 38 – 1300 EBC&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei manchen Spezialmalzen wie Brown Malt, bei denen sich das Mälzverfahren im Laufe der Zeit geändert hat und die in alten Rezepten erwähnt werden, können nur noch den Namen gemeinsam haben, unterscheiden sich aber sonst beträchtlich. Wenn Informationen in Shps und Mälzereien fehlen, sind Fachforen die erste Adressem um Unklarheiten zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Välj maltets pH-värde, antingen manuellt eller använd en av inbyggda uppskattningarna för grundläggande kategori.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="42"/>
@@ -219,12 +220,12 @@
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="78"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;ph-Wert&lt;/span&gt; entweder nach Auswahlliste vordefiniert angezeigt oder manuell eingetragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="112"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weiterführende Erklärungen auf &lt;a href=&quot;https://www.maischemalzundmehr.de/index.php?inhaltmitte=exp_maischph&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MaischeMalzundMehr&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Utförligare information (på tyska): &lt;a href=&quot;https://www.maischemalzundmehr.de/index.php?inhaltmitte=exp_maischph&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;MaischeMalzundMehr&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -237,7 +238,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="23"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der pH-Wert für den gewählten Malztyp eingestellt. Vordefiniert sind Werte für Basismalze wie Pilsener oder Pale Ale mit einem EBC-Wert unter 200, Karamellmalz nund Röstmalze. Der manuelle Wert ist voreingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="34"/>
@@ -257,7 +258,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="54"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener &lt;span style=&quot; font-weight:600;&quot;&gt;Dichtewert&lt;/span&gt; der Würze.&lt;/p&gt;&lt;p&gt;Die Dichte ist bei den meisten &lt;span style=&quot; font-weight:600;&quot;&gt;Ärometern&lt;/span&gt; (Spindeln) im Brauereiwesen auf eine Bezugstemperatur von 20°C in ml/g geeicht. Ändert sich die Temperatur, ändert sich auch die Dichte der Flüssigkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="76"/>
@@ -285,12 +286,12 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="116"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperatur der Würze bei der Messung des &lt;span style=&quot; font-weight:600;&quot;&gt;Dichtewertes&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Dichte ist bei den meisten &lt;span style=&quot; font-weight:600;&quot;&gt;Ärometern&lt;/span&gt; (Spindeln) im Brauereiwesen auf eine Bezugstemperatur von 20°C in ml/g geeicht. Ändert sich die Temperatur, ändert sich auch die Dichte der Flüssigkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="141"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktgehalt&lt;/span&gt; in °Plato. Beispielsweise bedeutet 12° Plato 120 g Extrakt in 1000 ml Würze.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; ist nicht zu verwechseln mit der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt;. Im Extraktwert ist vergorener, also umgewandelter Zucker in Alkohol wiedergegeben. Stammwürze dagegen beschreibt den unvergorenen Zuckergehalt eines Sudes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="186"/>
@@ -300,7 +301,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener Extraktgehalt in &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;°Brix ist die übliche Maßeinheit von analogen Refraktometern. Refraktometer messen dabei nicht direkt den Zuckergehalt, sondern den Brechungsindex von Licht in einer Flüssigkeit, der vom Zucker- und Alkoholgehalt in einer Flüssigkeit abhängt. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="220"/>
@@ -310,7 +311,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="227"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gewählte &lt;span style=&quot; font-weight:600;&quot;&gt;Umrechnungsformel&lt;/span&gt; für die Korrektur des gemessenen Restextraktes in °Brix nach °Plato. &lt;/p&gt;&lt;p&gt;Misst man den &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; eines alkoholhaltigen Jungbieres, wird der Brechungsindex durch den Alkohol verfälscht. Die gewählte Umrechnungsformel korrigiert diesen Messfehler&lt;/p&gt;&lt;p&gt;- Die Terrill-Formel arbeitet in endvergorenen Proben genauer, in wenig oder unvergorenen Proben zum Teil nicht zu gebrauchen.&lt;/p&gt;&lt;p&gt;- Die Terrill-Linear-Formel ist eine linearisierte Version der Terrill-Formel.&lt;/p&gt;&lt;p&gt;- Die Standardformel liefert gleichmässig gute Werte, in endvergorenen Proben aber etwas zu hoch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Formel att omvandla °Brix till °Plato när alkohol är med. Välj &quot;Terrill linear&quot; om du är osäker.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="231"/>
@@ -335,12 +336,12 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="256"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato.&lt;/p&gt;&lt;p&gt;Bierwürze ist keine reine Zuckerlösung. Deshalb muss der Brechungsindex noch um einen Korrekturfaktor dividiert werden.&lt;/p&gt;&lt;p&gt;Der eingestellte Wert sollte nur mit Bedacht geändertwerden. Änderungen sollten nur mit ausreichendem Wissen vorgenommen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Förhållandet °B/°P för ofermenterad vört. Behövs vanligtvis inte ändras.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="287"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brix die geläufige Einheit für &lt;span style=&quot; font-weight:600;&quot;&gt;analoge Refraktometer.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Digitale Refraktometer oder Messgeräte mit Biegeschwinger-Technologie lassen auch °Plato und andere Maßeinheiten zu. Der KBH bietet zur Zeit nur °Plato zusätzlich an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="291"/>
@@ -355,7 +356,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="324"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturfaktor °&lt;/span&gt;Brix zu °Plato auf den Standardwert eingestellt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich den eingestellten Wert im linken Feld nur dann zu verändern, wenn man genau weiß was man macht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Återställ standardvärdet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="364"/>
@@ -366,7 +367,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="377"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gemessene Stammwürze in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;p&gt;Wird mit Spindel gemessen, wird die Temperatur als Korrekturwert eingerechnet. Wird mit Refraktometer gemessen, wird die Temperatur als Korrekturfaktor eingerechnetet und °Brix in °Plato umgerechnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="424"/>
@@ -377,7 +378,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="437"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Restextrakt in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;angezeigt. Dieser Wert entspricht dem scheinbaren Envergärungsgrad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

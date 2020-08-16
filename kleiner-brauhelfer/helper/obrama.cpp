@@ -1,3 +1,5 @@
+#if QT_NETWORK_LIB
+
 #include "obrama.h"
 #include <QtNetwork>
 #include <QFileInfo>
@@ -104,3 +106,5 @@ bool OBraMa::isValid(const QByteArray& data) const
 {
     return !data.isEmpty() && data.contains(',');
 }
+
+#endif // QT_NETWORK_LIB

@@ -9,7 +9,9 @@
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
+#if QT_NETWORK_LIB
 #include <QSslSocket>
+#endif
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
 #include <QOperatingSystemVersion>
 #endif
@@ -320,6 +322,7 @@ static void checkWebView()
 
 static void checkSSL()
 {
+  #if QT_NETWORK_LIB
     if (!QSslSocket::supportsSsl())
     {
         QString buildVersion = QSslSocket::sslLibraryBuildVersionString();
@@ -333,6 +336,7 @@ static void checkSSL()
                                  QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
         }
     }
+  #endif
 }
 
 static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)

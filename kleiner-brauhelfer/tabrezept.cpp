@@ -1,5 +1,6 @@
 #include "tabrezept.h"
 #include "ui_tabrezept.h"
+#include <cmath>
 #include <QScrollBar>
 #include <QGraphicsScene>
 #include <QGraphicsSvgItem>
@@ -54,6 +55,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
     ui->tbWasserHGF->setColumn(ModelSud::ColWasserHgf);
+    ui->tbRestextrakt->setColumn(ModelSud::ColSRE);
     ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
     ui->tbRestalkalitaetSoll->setColumn(ModelSud::ColRestalkalitaetSoll);
     ui->tbRestalkalitaetWasser->setColumn(ModelSud::ColRestalkalitaetWasser);
@@ -67,7 +69,7 @@ TabRezept::TabRezept(QWidget *parent) :
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     ui->diagramRasten->chart()->legend()->hide();
   #endif
 
@@ -421,7 +423,6 @@ void TabRezept::updateValues()
     else
         ui->lblBittere->setText(tr("sehr herb"));
     ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
-    ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
@@ -531,7 +532,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::updateRastenDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QLineSeries *series = new QLineSeries();
     QLineSeries *seriesAux;
     int tTotal = 0;
@@ -675,7 +676,7 @@ void TabRezept::updateMalzGaben()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
         {
@@ -688,7 +689,7 @@ void TabRezept::updateMalzGaben()
 
 void TabRezept::updateMalzDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
@@ -712,7 +713,7 @@ void TabRezept::on_btnNeueMalzGabe_clicked()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()},
                                     {ModelMalzschuettung::ColName, dlg.name()},
@@ -749,7 +750,7 @@ void TabRezept::hopfenGaben_modified()
 
 void TabRezept::updateHopfenDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
@@ -773,7 +774,7 @@ void TabRezept::updateHopfenGaben()
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
         {
@@ -795,7 +796,7 @@ void TabRezept::on_btnNeueHopfenGabe_clicked()
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()},
                                     {ModelHopfengaben::ColName, dlg.name()},
@@ -842,7 +843,7 @@ void TabRezept::hefeGaben_modified()
 
 void TabRezept::updateHefeDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
     {

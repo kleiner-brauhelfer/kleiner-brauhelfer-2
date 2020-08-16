@@ -1,4 +1,9 @@
-QT += core sql gui widgets svg xml webenginewidgets printsupport
+QT += core sql gui widgets svg xml
+QT += printsupport
+QT += network
+isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 4) {
+ QT += webenginewidgets
+}
 isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
  QT += charts
 }

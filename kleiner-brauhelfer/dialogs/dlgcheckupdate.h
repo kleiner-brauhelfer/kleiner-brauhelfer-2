@@ -1,6 +1,8 @@
 #ifndef DLGCHECKUPDATE_H
 #define DLGCHECKUPDATE_H
 
+#if QT_NETWORK_LIB
+
 #include <QDialog>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -39,5 +41,7 @@ private:
     bool mHasUpdate;
     QDate mDateSince;
 };
+
+#endif // QT_NETWORK_LIB
 
 #endif // DLGCHECKUPDATE_H

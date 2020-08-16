@@ -49,12 +49,12 @@
           </item>
           <item>
            <property name="text">
-            <string>Temperaturrast</string>
+            <string>Aufheizen</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Wasserinfusion</string>
+            <string>Zubrühen</string>
            </property>
           </item>
           <item>
@@ -161,20 +161,14 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_25">
            <property name="text">
-            <string>Rasttemperatur</string>
+            <string>Einmaischtemperatur</string>
            </property>
           </widget>
          </item>
          <item row="2" column="3">
           <widget class="QLabel" name="label_27">
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
-            <string>Rastdauer</string>
+            <string>Einmaischdauer</string>
            </property>
           </widget>
          </item>
@@ -258,7 +252,7 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="DoubleSpinBox" name="tbEinmaischTempEinmaischen">
+          <widget class="DoubleSpinBox" name="tbWasserTempEinmaischen">
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
@@ -275,12 +269,6 @@
          </item>
          <item row="0" column="5">
           <widget class="QLabel" name="label_38">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>% des empfohlenen Hauptgusses</string>
            </property>
@@ -305,6 +293,30 @@
            </property>
            <property name="singleStep">
             <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLabel" name="label_41">
+           <property name="text">
+            <string>Malztemperatur</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>°C</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="DoubleSpinBox" name="tbMalzTempEinmaischen">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>1</number>
            </property>
           </widget>
          </item>
@@ -398,12 +410,6 @@
          </item>
          <item row="0" column="3">
           <widget class="QLabel" name="label_4">
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>Rastdauer</string>
            </property>
@@ -462,12 +468,6 @@
          </item>
          <item row="2" column="4">
           <widget class="QLabel" name="label_9">
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>Rastdauer</string>
            </property>
@@ -593,12 +593,6 @@
          </item>
          <item row="0" column="6">
           <widget class="QLabel" name="label_39">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>% des empfohlenen Hauptgusses</string>
            </property>
@@ -658,7 +652,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
-            <string>Menge der Teilmaische</string>
+            <string>Teilmaischemenge</string>
            </property>
           </widget>
          </item>
@@ -685,12 +679,6 @@
          </item>
          <item row="2" column="4">
           <widget class="QLabel" name="label_23">
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>Rastdauer</string>
            </property>
@@ -783,12 +771,6 @@
          </item>
          <item row="3" column="4">
           <widget class="QLabel" name="label_16">
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>Absetzdauer</string>
            </property>
@@ -835,12 +817,6 @@
          </item>
          <item row="0" column="6">
           <widget class="QLabel" name="label_40">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
            <property name="text">
             <string>% der Gesamtmaische</string>
            </property>

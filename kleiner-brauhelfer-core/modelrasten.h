@@ -16,15 +16,15 @@ public:
     {
         ColID,
         ColSudID,
-        ColTyp,
-        ColName,
-        ColTemp,
-        ColDauer,
-        ColMengenfaktor,
-        ColParam1,
-        ColParam2,
-        ColParam3,
-        ColParam4,
+        ColTyp,             // Einmaischen    | Temperatur | Infusion    | Dekoktion
+        ColName,            // -------------------------------------------------------------
+        ColTemp,            // Einmaischtemp  | Rasttemp   | Rasttemp    | Maischetemp
+        ColDauer,           // Einmaischdauer | Rastdauer  | Rastdauer   | Absetzdauer
+        ColMengenfaktor,    // % Hauptguss    | ---        | % Hauptguss | % Maische
+        ColParam1,          // Wassertemp     | ---        | Wassertemp  | Teilmaischetemp
+        ColParam2,          // ---            | ---        | ---         | Rastdauer
+        ColParam3,          // Malztemp       | ---        | ---         | Teilmaischetemp 2
+        ColParam4,          // ---            | ---        | ---         | Rastdauer 2
         // virtual
         ColDeleted,
         ColMenge,

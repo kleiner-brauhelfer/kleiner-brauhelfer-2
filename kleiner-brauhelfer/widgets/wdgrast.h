@@ -28,6 +28,7 @@ private slots:
     void on_cbTyp_currentIndexChanged(int index);
     void on_tbMengeEinmaischen_valueChanged(double value);
     void on_tbVerhaeltnisEinmaischen_valueChanged(double value);
+    void on_tbMalzTempEinmaischen_valueChanged(double value);
     void on_tbTempEinmaischen_valueChanged(double value);
     void on_tbDauerEinmaischen_valueChanged(int value);
     void on_tbTempRast_valueChanged(double value);

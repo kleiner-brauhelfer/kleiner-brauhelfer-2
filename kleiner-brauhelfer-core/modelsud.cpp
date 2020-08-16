@@ -21,6 +21,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     connect(this, SIGNAL(rowChanged(const QModelIndex&)), this, SLOT(onRowChanged(const QModelIndex&)));
     mVirtualField.append("MengeSoll");
     mVirtualField.append("SWIst");
+    mVirtualField.append("SRE");
     mVirtualField.append("SREIst");
     mVirtualField.append("MengeIst");
     mVirtualField.append("IbuIst");
@@ -159,6 +160,12 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColSWIst:
     {
         return data(idx.row(), ColSWAnstellen).toDouble() + swWzGaerungCurrent[idx.row()];
+    }
+    case ColSRE:
+    {
+        double sw = data(idx.row(), ColSW).toDouble();
+        double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
+        return BierCalc::sreAusVergaerungsgrad(sw, vg);
     }
     case ColSREIst:
     {

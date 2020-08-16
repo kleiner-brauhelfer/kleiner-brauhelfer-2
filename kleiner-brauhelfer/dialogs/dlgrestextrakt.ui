@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>327</width>
-    <height>407</height>
+    <width>333</width>
+    <height>443</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,52 @@
    <property name="spacing">
     <number>4</number>
    </property>
+   <item>
+    <widget class="QWidget" name="wdgDatum" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>Datum</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="DateTimeEdit" name="dtDatum">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <property name="spacing">
@@ -779,6 +825,11 @@
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateTimeEdit</class>
+   <extends>QDateTimeEdit</extends>
+   <header>widgets/datetimeedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

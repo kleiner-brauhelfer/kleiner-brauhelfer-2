@@ -6,7 +6,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *parent) :
+DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgRestextrakt)
 {
@@ -47,6 +47,9 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, QWidget *pa
         ui->lblTempManuellEinheit->setVisible(false);
         temp = 20.0;
     }
+
+    ui->dtDatum->setDateTime(dt);
+    ui->wdgDatum->setVisible(dt.isValid());
 
     ui->tbTemp->setValue(temp);
     ui->tbTempRefraktometer->setValue(temp);
@@ -122,6 +125,16 @@ void DlgRestextrakt::setTemperatur(double value)
     ui->tbTemp->setValue(value);
     ui->tbTempRefraktometer->setValue(value);
     ui->tbTempManuell->setValue(value);
+}
+
+QDateTime DlgRestextrakt::datum() const
+{
+    return ui->dtDatum->dateTime();
+}
+
+void DlgRestextrakt::setDatum(const QDateTime& value)
+{
+    ui->dtDatum->setDateTime(value);
 }
 
 void DlgRestextrakt::on_cbAuswahl_currentIndexChanged(int index)

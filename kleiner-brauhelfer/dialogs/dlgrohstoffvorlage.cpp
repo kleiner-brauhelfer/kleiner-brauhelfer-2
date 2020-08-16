@@ -17,6 +17,7 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
 {
     ui->setupUi(this);
 
+  #if QT_NETWORK_LIB
     if (isOBraMa())
     {
         OBraMa obrama;
@@ -39,7 +40,9 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
         }
         ui->labelQuelle->setText(tr("Quelle: obrama.mueggelland.de"));
     }
-    else if (mRohstoffart == Wasserprofil)
+    else
+  #endif
+    if (mRohstoffart == Wasserprofil)
     {
         ui->labelQuelle->setVisible(false);
     }
@@ -378,10 +381,10 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             mValues.insert(ModelWasser::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             mValues.insert(ModelWasser::ColCalcium, index.sibling(index.row(), header->logicalIndex(1)).data());
             mValues.insert(ModelWasser::ColMagnesium, index.sibling(index.row(), header->logicalIndex(2)).data());
-            mValues.insert(ModelWasser::ColHydrogencarbonat, index.sibling(index.row(), header->logicalIndex(3)).data());
+            mValues.insert(ModelWasser::ColNatrium, index.sibling(index.row(), header->logicalIndex(3)).data());
             mValues.insert(ModelWasser::ColSulfat, index.sibling(index.row(), header->logicalIndex(4)).data());
             mValues.insert(ModelWasser::ColChlorid, index.sibling(index.row(), header->logicalIndex(5)).data());
-            mValues.insert(ModelWasser::ColNatrium, index.sibling(index.row(), header->logicalIndex(6)).data());
+            mValues.insert(ModelWasser::ColHydrogencarbonat, index.sibling(index.row(), header->logicalIndex(6)).data());
             hydrogencarbonat = mValues[ModelWasser::ColHydrogencarbonat].toDouble();
             calcium = mValues[ModelWasser::ColCalcium].toDouble();
             magnesium = mValues[ModelWasser::ColMagnesium].toDouble();

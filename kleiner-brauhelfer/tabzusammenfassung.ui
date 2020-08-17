@@ -32,7 +32,7 @@
      <item>
       <widget class="QPushButton" name="btnPrintPreview">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel &lt;/span&gt;oder die&lt;span style=&quot; font-weight:600;&quot;&gt; Zusammenfassung&lt;/span&gt; ausgedruckt.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach Betriebssytem oder Treiber unterschiedlich gestaltet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel &lt;/span&gt;oder die&lt;span style=&quot; font-weight:600;&quot;&gt; Zusammenfassung&lt;/span&gt; ausgedruckt.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach Betriebssytem oder Treiber unterschiedlich gestaltet ist. Unter macOS kann auch direkt ein PDF für die Unterlagen erzeugt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Druckvorschau</string>

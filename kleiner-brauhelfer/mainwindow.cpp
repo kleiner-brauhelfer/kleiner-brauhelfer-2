@@ -696,6 +696,7 @@ void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
 
 void MainWindow::checkForUpdate(bool force)
 {
+  #if QT_NETWORK_LIB
     QString url;
     QDate since;
     gSettings->beginGroup("General");
@@ -707,10 +708,14 @@ void MainWindow::checkForUpdate(bool force)
     DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
     connect(dlg, SIGNAL(finished()), this, SLOT(checkMessageFinished()));
     dlg->checkForUpdate();
+  #else
+    Q_UNUSED(force)
+  #endif
 }
 
 void MainWindow::checkMessageFinished()
 {
+  #if QT_NETWORK_LIB
     DlgCheckUpdate *dlg = qobject_cast<DlgCheckUpdate*>(sender());
     if (dlg)
     {
@@ -726,15 +731,20 @@ void MainWindow::checkMessageFinished()
         }
         dlg->deleteLater();
     }
+  #endif
 }
 
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
+  #if QT_NETWORK_LIB
     gSettings->beginGroup("General");
     gSettings->setValue("CheckUpdate", checked);
     gSettings->endGroup();
     if (checked)
         checkForUpdate(true);
+  #else
+    Q_UNUSED(checked)
+  #endif
 }
 
 void MainWindow::on_actionTooltips_triggered(bool checked)

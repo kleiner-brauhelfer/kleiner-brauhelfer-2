@@ -4,7 +4,9 @@
 #include <QWidget>
 #include <QTemporaryFile>
 #include <QTimer>
+#ifdef QT_PRINTSUPPORT_LIB
 #include <QPrinter>
+#endif
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
@@ -28,7 +30,9 @@ public slots:
     void updateTags();
 
 private slots:
+  #ifdef QT_PRINTSUPPORT_LIB
     void printDocument(QPrinter *printer);
+  #endif
     void on_cbEditMode_clicked(bool checked);
     void on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName);
     void on_btnSaveTemplate_clicked();

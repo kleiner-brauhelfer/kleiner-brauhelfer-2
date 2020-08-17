@@ -239,9 +239,13 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
     DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
+                       QDateTime(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sud()->setTemperaturJungbier(dlg.temperatur());
         bh->sud()->setSWSchnellgaerprobe(dlg.value());
+    }
 }
 
 void TabAbfuellen::on_btnSWJungbier_clicked()
@@ -249,9 +253,13 @@ void TabAbfuellen::on_btnSWJungbier_clicked()
     DlgRestextrakt dlg(ui->tbSWJungbier->value(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
+                       QDateTime(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sud()->setTemperaturJungbier(dlg.temperatur());
         bh->sud()->setSWJungbier(dlg.value());
+    }
 }
 
 void TabAbfuellen::on_cbSpunden_clicked(bool checked)

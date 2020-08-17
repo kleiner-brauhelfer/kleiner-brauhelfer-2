@@ -324,6 +324,7 @@ void TabGaerverlauf::updateDiagramm()
         diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
         diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
     }
+    diag->setWertLinie1(bh->sud()->getSRE());
     diag->repaint();
 
     diag = ui->widget_DiaHauptgaerverlauf;
@@ -342,6 +343,8 @@ void TabGaerverlauf::updateDiagramm()
     }
     if (bh->sud()->getSchnellgaerprobeAktiv())
         diag->setWertLinie1(bh->sud()->getGruenschlauchzeitpunkt());
+    else
+        diag->setWertLinie1(bh->sud()->getSRE());
     diag->repaint();
 
     diag = ui->widget_DiaNachgaerverlauf;
@@ -410,10 +413,11 @@ void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
     double re = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble();
     double temp = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble();
-    DlgRestextrakt dlg(re, bh->sud()->getSWIst(), temp, this);
+    DlgRestextrakt dlg(re, bh->sud()->getSWIst(), temp, QDateTime::currentDateTime(), this);
     if (dlg.exec() == QDialog::Accepted)
     {
         QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelSchnellgaerverlauf::ColZeitstempel, dlg.datum()},
                                     {ModelSchnellgaerverlauf::ColRestextrakt, dlg.value()},
                                     {ModelSchnellgaerverlauf::ColTemp, dlg.temperatur()}});
         int row = model->append(values);
@@ -436,12 +440,13 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
 void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
     ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
-    double re = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble();
-    double temp = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble();
-    DlgRestextrakt dlg(re, bh->sud()->getSWIst(), temp, this);
+    double re = model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble();
+    double temp = model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble();
+    DlgRestextrakt dlg(re, bh->sud()->getSWIst(), temp, QDateTime::currentDateTime(), this);
     if (dlg.exec() == QDialog::Accepted)
     {
         QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelHauptgaerverlauf::ColZeitstempel, dlg.datum()},
                                     {ModelHauptgaerverlauf::ColRestextrakt, dlg.value()},
                                     {ModelHauptgaerverlauf::ColTemp, dlg.temperatur()}});
         int row = model->append(values);

@@ -74,6 +74,7 @@ public:
         ColDeleted,
         ColMengeSoll,
         ColSWIst,
+        ColSRE,
         ColSREIst,
         ColMengeIst,
         ColIbuIst,

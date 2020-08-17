@@ -12,12 +12,14 @@ class DlgRestextrakt : public QDialog
     Q_OBJECT
 
 public:
-    explicit DlgRestextrakt(double value, double sw, double temp, QWidget *parent = nullptr);
+    explicit DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent = nullptr);
     ~DlgRestextrakt();
     double value() const;
     void setValue(double value);
     double temperatur() const;
     void setTemperatur(double value);
+    QDateTime datum() const;
+    void setDatum(const QDateTime& value);
 
 private slots:
     void on_DlgRestextrakt_accepted();

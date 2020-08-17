@@ -22,7 +22,8 @@ public:
         MalzOBraMa,
         HopfenOBraMa,
         HefeOBraMa,
-        WZutatenOBraMa
+        WZutatenOBraMa,
+        Wasserprofil
     };
 
 public:
@@ -31,15 +32,10 @@ public:
     QMap<int, QVariant> values() const;
 
 private slots:
-    void slot_save();
     void on_lineEditFilter_textChanged(const QString &txt);
-	void on_buttonBox_accepted();
-	void on_buttonBox_rejected();
-    void on_btn_Add_clicked();
-    void on_btn_Remove_clicked();
-    void on_btn_Import_clicked();
-    void on_btn_Export_clicked();
-    void on_btn_Restore_clicked();
+    void on_buttonBox_accepted();
+    void on_buttonBox_rejected();
+    void on_tableView_doubleClicked(const QModelIndex &index);
 
 private:
     QString getFileName(bool withPath) const;

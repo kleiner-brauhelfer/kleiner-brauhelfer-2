@@ -41,6 +41,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.2.2 (in Entwicklung)
+- Neu: Vorlagen für diversen Wasserprofile
 - Neu: Dialog "Restextrakt" überarbeitet
 - Fix: Im Reiter "Ausrüstung" Liste der Sude bei Anlage mit Sonderzeichen wird nicht angezeigt
 - Fix: Dialog "Zutaten vom Lager abziehen" zeigt die Hopfenmenge nicht immer an

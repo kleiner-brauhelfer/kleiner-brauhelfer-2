@@ -90,7 +90,7 @@ void WdgRast::updateListe()
             ui->cbRast->addItem(tr("Eiweissrast (57°)"));
             ui->cbRast->addItem(tr("Maltoserast (60°-65°)"));
             ui->cbRast->addItem(tr("Kombirast (66°-69°)"));
-            ui->cbRast->addItem(tr("Verzuckerung (70°-75°)"));
+            ui->cbRast->addItem(tr("Verzuckerungsrast (70°-75°)"));
             ui->cbRast->addItem(tr("Abmaischen (78°)"));
             break;
         case Brauhelfer::RastTyp::Infusion:
@@ -123,6 +123,7 @@ void WdgRast::updateValuesFromListe(int index)
         setData(ModelRasten::ColMengenfaktor, 1.0);
         setData(ModelRasten::ColTemp, 57);
         setData(ModelRasten::ColDauer, 5);
+        setData(ModelRasten::ColParam3, 18);
         break;
     case Brauhelfer::RastTyp::Temperatur:
         setData(ModelRasten::ColMengenfaktor, 1.0);
@@ -204,7 +205,9 @@ void WdgRast::updateValues(bool full)
         ui->tbMengeEinmaischen->setValue(data(ModelRasten::ColMenge).toDouble());
     if (!ui->tbVerhaeltnisEinmaischen->hasFocus())
         ui->tbVerhaeltnisEinmaischen->setValue(data(ModelRasten::ColMengenfaktor).toDouble()*100);
-    ui->tbEinmaischTempEinmaischen->setValue(data(ModelRasten::ColParam1).toDouble());
+    ui->tbWasserTempEinmaischen->setValue(data(ModelRasten::ColParam1).toDouble());
+    if (!ui->tbMalzTempEinmaischen->hasFocus())
+        ui->tbMalzTempEinmaischen->setValue(data(ModelRasten::ColParam3).toDouble());
     if (!ui->tbTempEinmaischen->hasFocus())
         ui->tbTempEinmaischen->setValue(data(ModelRasten::ColTemp).toDouble());
     if (!ui->tbDauerEinmaischen->hasFocus())
@@ -291,6 +294,12 @@ void WdgRast::on_tbVerhaeltnisEinmaischen_valueChanged(double value)
 {
     if (ui->tbVerhaeltnisEinmaischen->hasFocus())
         setData(ModelRasten::ColMengenfaktor, value/100);
+}
+
+void WdgRast::on_tbMalzTempEinmaischen_valueChanged(double value)
+{
+    if (ui->tbMalzTempEinmaischen->hasFocus())
+        setData(ModelRasten::ColParam3, value);
 }
 
 void WdgRast::on_tbTempEinmaischen_valueChanged(double value)

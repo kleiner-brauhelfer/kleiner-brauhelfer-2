@@ -42,8 +42,6 @@ private slots:
     void on_radioButtonInGebrauch_clicked();
     void on_lineEditFilter_textChanged(const QString &pattern);
     void on_toolBoxRohstoffe_currentChanged(int index);
-    void on_btnNeuesWasserprofil_clicked();
-    void on_btnWasserprofilLoeschen_clicked();
     void on_tbCalciumMg_valueChanged(double value);
     void on_tbCalciumMmol_valueChanged(double value);
     void on_tbCalciumHaerte_valueChanged(double value);

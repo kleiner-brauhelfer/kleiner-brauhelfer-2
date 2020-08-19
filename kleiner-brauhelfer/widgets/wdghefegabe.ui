@@ -61,7 +61,7 @@
            <enum>Qt::ClickFocus</enum>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zweite Hefegabe aktivieren&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angehakt, wird die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe&lt;/span&gt; aktiviert.&lt;/p&gt;&lt;p&gt;Die zweite Hefegabe ist eine Technik fortgeschrittener Brauer, um hefebetonte Bierstile auszubauen, aber auch um eingeschlafene Gärungprozesse erneut anzustoßen. Letzteres kann beim sogenannten Underpitching nötig sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="autoFillBackground">
            <bool>true</bool>
@@ -83,6 +83,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefeart eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
@@ -91,6 +94,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefeart eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
@@ -100,7 +106,7 @@
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hefegabe löschen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefegabe aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">

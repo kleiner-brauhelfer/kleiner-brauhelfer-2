@@ -52,9 +52,11 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &idx) const
     case ColAnzahlSude:
     {
         ProxyModel modelSud;
+        QString anlage = data(idx.row(), ColName).toString();
+        QRegExp regExp = QRegExp(QString("^%1$").arg(QRegExp::escape(anlage)));
         modelSud.setSourceModel(bh->modelSud());
         modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
-        modelSud.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColName).toString()));
+        modelSud.setFilterRegExp(regExp);
         return modelSud.rowCount();
     }
     default:

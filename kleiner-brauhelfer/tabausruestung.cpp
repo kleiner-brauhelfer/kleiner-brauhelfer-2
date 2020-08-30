@@ -378,6 +378,7 @@ void TabAusruestung::updateDurchschnitt()
     if (nVerdampfung > 0)
         verdampfung /= nVerdampfung;
     ui->sliderAusbeuteSude->setMaximum(N);
+    ui->sliderAusbeuteSude->setEnabled(N > 1);
     ui->tbAusbeuteMittel->setValue(ausbeute);
     ui->tbVerdampfungMittel->setValue(verdampfung);
     ui->tbAusbeuteSude->setValue(ui->sliderAusbeuteSude->value());
@@ -402,7 +403,7 @@ void TabAusruestung::on_btnVerdampfungsrate_clicked()
     }
     if (dlg.exec() == QDialog::Accepted)
     {
-        ui->tbVerdampfung->setValue(dlg.getVerdampfungsrate());
+        setData(ModelAusruestung::ColVerdampfungsrate, dlg.getVerdampfungsrate());
     }
 }
 

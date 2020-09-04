@@ -300,14 +300,11 @@ void WdgWebViewEditable::updateTags()
 
 void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
 {
-    if (ui->sliderZoom->hasFocus())
-    {
-        gZoomFactor = value / 100.0;
-        ui->lblZoom->setText(QString::number(value)+"%");
-      #ifdef QT_WEBENGINECORE_LIB
-        ui->webview->setZoomFactor(gZoomFactor);
-      #endif
-    }
+    gZoomFactor = value / 100.0;
+    ui->lblZoom->setText(QString::number(value)+"%");
+  #ifdef QT_WEBENGINECORE_LIB
+    ui->webview->setZoomFactor(gZoomFactor);
+  #endif
 }
 
 void WdgWebViewEditable::on_sliderZoom_sliderReleased()

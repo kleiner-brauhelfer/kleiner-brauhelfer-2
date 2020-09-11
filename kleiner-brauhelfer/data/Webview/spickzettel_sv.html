@@ -211,30 +211,42 @@
       <tr>
         <th></th>
         <th align="center">M&auml;skvatten</th>
-        <th align="center">Lakvatten</th>
-        {{#Verduennung}}<th align="center">Sp&auml;dning</th>{{/Verduennung}}
-        <th align="center">Totalt</th>
         <th></th>
+        <th align="center">Lakvatten</th>
+        <th></th>
+        {{#Verduennung}}
+        <th align="center">Sp&auml;dning</th>
+        <th></th>
+        {{/Verduennung}}
+        <th align="center">Totalt</th>
         <th></th>
       </tr>
       <tr>
         <td align="left">Wasser</td>
         <td align="center"><span class="value">{{Hauptguss}}</span></td>
+        <td><input type="checkbox"></td>
         <td align="center"><span class="value">{{Nachguss}}</span></td>
-        {{#Verduennung}}<td align="center"><span class="value">{{Verduennung}}</span></td>{{/Verduennung}}
+        <td><input type="checkbox"></td>
+        {{#Verduennung}}
+        <td align="center"><span class="value">{{Verduennung}}</span></td>
+        <td><input type="checkbox"></td>
+        {{/Verduennung}}
         <td align="center"><span class="value">{{Gesamt}}</span></td>
         <td align="center">l</td>
-        <td><input type="checkbox"></td>
       </tr>
       {{#Wasseraufbereitung.Liste}}
       <tr>
         <td align="left">{{Name}}</td>
         <td align="center"><span class="value">{{MengeHauptguss}}</span></td>
+        <td><input type="checkbox"></td>
         <td align="center"><span class="value">{{MengeNachguss}}</span></td>
-        {{#Verduennung}}<td align="center"><span class="value">{{MengeVerduennung}}</span></td>{{/Verduennung}}
+        <td><input type="checkbox"></td>
+        {{#Verduennung}}
+        <td align="center"><span class="value">{{MengeVerduennung}}</span></td>
+        <td><input type="checkbox"></td>
+        {{/Verduennung}}
         <td align="center"><span class="value">{{Menge}}</span></td>
         <td align="center">{{Einheit}}</td>
-        <td><input type="checkbox"></td>
       </tr>
       {{/Wasseraufbereitung.Liste}}
     </table>
@@ -387,9 +399,11 @@
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>F&ouml;rbered lakning</strong></td>
+        <td class="underline"></td>
       </tr>
       <tr>
         <td valign="top"><strong>Lakning</strong></td>
+        <td></td>
       </tr>
     </table>
   </div>

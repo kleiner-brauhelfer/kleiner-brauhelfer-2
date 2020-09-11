@@ -190,7 +190,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColIbuIst:
     {
-        double mengeIst = data(idx.row(), ColMengeIst).toDouble();
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+        if (status == Brauhelfer::SudStatus::Rezept)
+            return data(idx.row(), ColIBU).toDouble();
+        double mengeIst = data(idx.row(), ColWuerzemengeAnstellenTotal).toDouble();
         if (mengeIst <= 0.0)
             return 0.0;
         double mengeFaktor = data(idx.row(), ColMenge).toDouble() / mengeIst;
@@ -198,7 +201,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColFarbeIst:
     {
-        double mengeIst = data(idx.row(), ColMengeIst).toDouble();
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+        if (status == Brauhelfer::SudStatus::Rezept)
+            return data(idx.row(), Colerg_Farbe).toDouble();
+        double mengeIst = data(idx.row(), ColWuerzemengeAnstellenTotal).toDouble();
         if (mengeIst <= 0.0)
             return 0.0;
         double mengeFaktor = data(idx.row(), ColMenge).toDouble() / mengeIst;

@@ -370,7 +370,7 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="391"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener Extraktgehalt in &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;°Brix ist die übliche Maßeinheit von analogen Refraktometern. Refraktometer messen dabei nicht direkt den Zuckergehalt, sondern den Brechungsindex von Licht in einer Flüssigkeit, der vom Zucker- und Alkoholgehalt in einer Flüssigkeit abhängt. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Measured value in &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Measured value in &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt; or &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="413"/>
@@ -2626,7 +2626,7 @@ Version installiert: %2</translation>
     <message>
         <location filename="../tabbewertung.ui" line="85"/>
         <source>Neue Bewertung</source>
-        <translation type="unfinished"></translation>
+        <translation>New evaluation</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="110"/>
@@ -5076,7 +5076,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <location filename="../tabrezept.ui" line="2842"/>
         <location filename="../tabrezept.ui" line="2862"/>
         <source>Benötigtes Volumen ca.</source>
-        <translation>Required volume</translation>
+        <translation>Required volume approx.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2859"/>
@@ -5267,12 +5267,12 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="318"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="852"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="817"/>
@@ -5307,7 +5307,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="527"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="437"/>
@@ -5362,12 +5362,12 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="477"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="679"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="654"/>
@@ -5377,7 +5377,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="461"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="647"/>
@@ -5387,7 +5387,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="356"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="640"/>
@@ -5402,27 +5402,27 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="779"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die Restalkalität korrigiert werden, falls der berechnete vom tatsächlichem Wert abweicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adjust residual alkalinity here, if the calculated value deviates from reality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="372"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="556"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="871"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="932"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="935"/>
@@ -5456,7 +5456,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="965"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="968"/>
@@ -5466,7 +5466,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="975"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="978"/>
@@ -5788,7 +5788,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Alle&lt;/span&gt; Sude werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="35"/>
@@ -6215,12 +6215,12 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <location filename="../tabsudauswahl.cpp" line="755"/>
         <location filename="../tabsudauswahl.cpp" line="757"/>
         <source>Rohstoffe</source>
-        <translation>Råvaror</translation>
+        <translation>Ingredients</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="759"/>
         <source>PDF speichern unter</source>
-        <translation>Spara PDF som</translation>
+        <translation>Save PDF as</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="213"/>

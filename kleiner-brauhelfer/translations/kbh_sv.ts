@@ -337,48 +337,48 @@
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="49"/>
         <source>Datum</source>
-        <translation type="unfinished">Datum</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="80"/>
         <source>Messung mit</source>
-        <translation type="unfinished"></translation>
+        <translation>Mätning med</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="88"/>
         <source>Spindel</source>
-        <translation type="unfinished"></translation>
+        <translation>Hydrometer</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="93"/>
         <source>Refraktometer</source>
-        <translation type="unfinished"></translation>
+        <translation>Refraktometer</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="98"/>
         <source>Anderes</source>
-        <translation type="unfinished"></translation>
+        <translation>Annat</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="266"/>
         <source>Eichtemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalibreringstemperatur</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="280"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Eichtemperatur&lt;/span&gt; der Spindel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="323"/>
         <location filename="../dialogs/dlgrestextrakt.ui" line="584"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperatur der Würze bei der Messung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="391"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener Extraktgehalt in &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;°Brix ist die übliche Maßeinheit von analogen Refraktometern. Refraktometer messen dabei nicht direkt den Zuckergehalt, sondern den Brechungsindex von Licht in einer Flüssigkeit, der vom Zucker- und Alkoholgehalt in einer Flüssigkeit abhängt. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mätvärdet i &lt;span style=&quot; font-weight:600;&quot;&gt;°Brix&lt;/span&gt; eller &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="413"/>
@@ -468,7 +468,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="93"/>
         <source>Die Zutaten müssen zuvor im Reiter &quot;Rohstoffe&quot; eingetragen werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingredienserna måste först läggas till i fliken &quot;Ingredienser&quot;.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
@@ -561,12 +561,12 @@
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="41"/>
         <source>Quelle: obrama.mueggelland.de</source>
-        <translation type="unfinished"></translation>
+        <translation>Källa: obrama.mueggelland.de</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="51"/>
         <source>Quellen: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</source>
-        <translation type="unfinished"></translation>
+        <translation>Källor: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="133"/>
@@ -1674,19 +1674,22 @@ Ska lokala filen ersättas?</translation>
         <location filename="../main.cpp" line="308"/>
         <source>Unter Umständen stürzt das Programm unter Windows 7 ab!
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Det kan hända att programmet krashar under Windows 7.
+</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="309"/>
         <source>Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ska satsinformation och lathund/sammanfattnign deaktiveras?</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="336"/>
         <source>SSL wird nicht unterstüzt.
 Version benötigt: %1
 Version installiert: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>SSL stöds inte.
+Version som behövs: %1
+Installerad version: %2</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="485"/>
@@ -2645,7 +2648,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulär</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="82"/>
@@ -2655,12 +2658,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="85"/>
         <source>Neue Bewertung</source>
-        <translation type="unfinished"></translation>
+        <translation>Nytt betyg</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="110"/>
         <source>Bewertungsdatum</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidpunkt</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="123"/>
@@ -2675,12 +2678,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="148"/>
         <source>Heute</source>
-        <translation type="unfinished"></translation>
+        <translation>Idag</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="155"/>
         <source>Woche</source>
-        <translation type="unfinished">Vecka</translation>
+        <translation>Vecka</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="196"/>
@@ -2690,12 +2693,12 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabbewertung.ui" line="207"/>
         <source>Farbe, Klarheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Färg, klarhet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="218"/>
         <source>Farbe</source>
-        <translation type="unfinished">Färg</translation>
+        <translation>Färg</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="227"/>
@@ -3984,7 +3987,7 @@ Version installiert: %2</source>
     <message>
         <location filename="../tabetikette.ui" line="67"/>
         <source>Hiermit wird das gewählte Etikett aus dem Rezept gelöscht.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort etiketten från receptet.</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="138"/>
@@ -4356,7 +4359,7 @@ Version installiert: %2</source>
         <location filename="../tabgaerverlauf.cpp" line="752"/>
         <location filename="../tabgaerverlauf.cpp" line="825"/>
         <source>Gärverlauf</source>
-        <translation type="unfinished">Jäsning</translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="679"/>
@@ -4365,7 +4368,10 @@ Version installiert: %2</source>
 Unterstütztes Format:
 Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
 Datum2;Restextrakt2;Temperatur2[;Bemerkung2]</source>
-        <translation type="unfinished"></translation>
+        <translation>Inte allt kunde impoerteras.
+Formatet som fungerar:
+Datum1;Restextrakt1;Temperatur1[;Kommentar1]
+Datum2;Restextrakt2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="826"/>
@@ -4373,7 +4379,10 @@ Datum2;Restextrakt2;Temperatur2[;Bemerkung2]</source>
 Unterstütztes Format:
 Datum1;Druck1;Temperatur1[;Bemerkung1]
 Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
-        <translation type="unfinished"></translation>
+        <translation>Inte allt kunde impoerteras.
+Formatet som fungerar:
+Datum1;Tryck1;Temperatur1[;Kommentar1]
+Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     </message>
 </context>
 <context>
@@ -5099,7 +5108,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
         <location filename="../tabrezept.ui" line="2842"/>
         <location filename="../tabrezept.ui" line="2862"/>
         <source>Benötigtes Volumen ca.</source>
-        <translation>Erfordrad volym</translation>
+        <translation>Ungefärlig volym som behövs</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2859"/>
@@ -5290,7 +5299,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="318"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Neues Wasserprofil</source>
@@ -5303,7 +5312,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="852"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="817"/>
@@ -5338,7 +5347,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="527"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="437"/>
@@ -5393,12 +5402,12 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="477"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="679"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="654"/>
@@ -5408,7 +5417,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="461"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="647"/>
@@ -5418,7 +5427,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="356"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="640"/>
@@ -5433,27 +5442,27 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="779"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die Restalkalität korrigiert werden, falls der berechnete vom tatsächlichem Wert abweicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Här kan man rätta till restalkaliteten, ifall beräknade värdet avviker från verkligheten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="372"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="556"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="871"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="932"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="935"/>
@@ -5487,7 +5496,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="965"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="968"/>
@@ -5497,7 +5506,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabrohstoffe.ui" line="975"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="978"/>
@@ -5819,7 +5828,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../tabsudauswahl.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Alle&lt;/span&gt; Sude werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="35"/>
@@ -6246,12 +6255,12 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
         <location filename="../tabsudauswahl.cpp" line="755"/>
         <location filename="../tabsudauswahl.cpp" line="757"/>
         <source>Rohstoffe</source>
-        <translation type="unfinished">Ingredienser</translation>
+        <translation>Råvaror</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="759"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished">Spara PDF som</translation>
+        <translation>Spara PDF som</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl_sudinfo.cpp" line="213"/>
@@ -6790,12 +6799,12 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgrast.ui" line="55"/>
         <source>Aufheizen</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppvärmning</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="60"/>
         <source>Zubrühen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ge vatten</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="79"/>
@@ -6825,12 +6834,12 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgrast.ui" line="179"/>
         <source>Einmaischtemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur för mäsk-in</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="186"/>
         <source>Einmaischdauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="193"/>
@@ -6884,7 +6893,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgrast.ui" line="329"/>
         <source>Malztemperatur</source>
-        <translation type="unfinished"></translation>
+        <translation>Malttemperatur</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="383"/>
@@ -6909,7 +6918,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgrast.ui" line="691"/>
         <source>Teilmaischemenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Delmäskens storlek</translation>
     </message>
     <message>
         <source>Menge der Teilmaische</source>
@@ -6987,7 +6996,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="93"/>
         <source>Verzuckerungsrast (70°-75°)</source>
-        <translation type="unfinished"></translation>
+        <translation>Försockringsrast (70°-75°)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="94"/>
@@ -7100,7 +7109,7 @@ Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="440"/>
         <source>Ausgleichen</source>
-        <translation type="unfinished"></translation>
+        <translation>Jämn ut</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="235"/>

@@ -1079,7 +1079,7 @@
     <message>
         <location filename="../mainwindow.ui" line="64"/>
         <source>Sudauswahl</source>
-        <translation>Batch selection</translation>
+        <translation>Batch Selection</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="69"/>

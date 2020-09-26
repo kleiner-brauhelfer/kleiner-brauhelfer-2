@@ -16,7 +16,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.2.1](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+- [Version 2.2.2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -40,12 +40,14 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ## Änderungen & Erweiterungen
 
-### Version 2.2.2 (in Entwicklung)
-- Neu: Vorlagen für diversen Wasserprofile
+### Version 2.2.2 (26.09.2020)
+- Neu: Vorlagen für diversen Wasserprofile (vielen Dank rakader)
 - Neu: Dialog "Restextrakt" überarbeitet
+- Neu: Einstellbare Malztemperatur beim Einmaischen
 - Fix: Im Reiter "Ausrüstung" Liste der Sude bei Anlage mit Sonderzeichen wird nicht angezeigt
 - Fix: Dialog "Zutaten vom Lager abziehen" zeigt die Hopfenmenge nicht immer an
 - Fix: Berechnung der Ist-Farbe und Ist-Bittere
+- Fix: Übernahme der Verdampfungsrate vom Dialog im Reiter "Ausrüstung"
 
 ### Version 2.2.1 (19.07.2020)
 - Fix: Sudinformation & Spickzettel werden nur angezeigt, nachdem Sprache eingestellt wird

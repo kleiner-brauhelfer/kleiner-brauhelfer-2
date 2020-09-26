@@ -105,6 +105,15 @@ echo "* Creating self-contained bundle..."
     -executable="${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess" \
  || exit 1
 
+
+
+###
+### Workaround for QT 5.15.1 deployment BUG (https://bugreports.qt.io/browse/QTBUG-86759)
+###
+
+rm -rf "${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers"
+cp -R "${QT_DIR}/../lib/QtWebEngineCore.framework/Versions/5/Helpers" "${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/"
+
 ###
 ### Create distribution archive
 ###

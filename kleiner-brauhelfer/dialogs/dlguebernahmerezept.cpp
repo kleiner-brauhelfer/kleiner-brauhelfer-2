@@ -49,7 +49,7 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         ui->tableViewItem->cols.append({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
         break;
     }
-    model->setFilterRegExp(QString("^%1$").arg(mSudId));
+    model->setFilterRegularExpression(QString("^%1$").arg(mSudId));
     ui->tableViewItem->setModel(model);
     ui->tableViewItem->build();
 
@@ -94,7 +94,7 @@ void DlgUebernahmeRezept::tableViewSud_selectionChanged()
         mSudId = static_cast<ProxyModel*>(ui->tableViewSud->model())->data(indexes[0].row(), ModelSud::ColID).toInt();
     else
         mSudId = -1;
-    static_cast<ProxyModel*>(ui->tableViewItem->model())->setFilterRegExp(QString("^%1$").arg(mSudId));
+    static_cast<ProxyModel*>(ui->tableViewItem->model())->setFilterRegularExpression(QString("^%1$").arg(mSudId));
 }
 
 void DlgUebernahmeRezept::on_tableViewSud_doubleClicked(const QModelIndex &index)

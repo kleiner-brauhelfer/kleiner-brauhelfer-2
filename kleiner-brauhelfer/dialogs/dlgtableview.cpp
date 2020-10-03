@@ -56,7 +56,7 @@ DlgTableView::~DlgTableView()
 void DlgTableView::on_tbFilter_textChanged(const QString &txt)
 {
     ProxyModel *proxy = static_cast<ProxyModel*>(ui->tableView->model());
-    proxy->setFilterRegExp(QRegExp(txt, Qt::CaseInsensitive, QRegExp::FixedString));
+    proxy->setFilterRegularExpression(QRegularExpression(QRegularExpression::escape(txt), QRegularExpression::CaseInsensitiveOption));
 }
 
 void DlgTableView::on_btnAdd_clicked()

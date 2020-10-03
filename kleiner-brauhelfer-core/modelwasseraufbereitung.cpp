@@ -63,7 +63,7 @@ double ModelWasseraufbereitung::restalkalitaet(const QVariant& sudId) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelWasseraufbereitung*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     for (int r = 0; r < model.rowCount(); r++)
         ra += model.data(r, ColRestalkalitaet).toDouble();
     return ra;

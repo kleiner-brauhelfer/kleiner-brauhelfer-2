@@ -32,13 +32,13 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
     insideTagFormat.setFontWeight(QFont::Bold);
     tagsFormat.setFontWeight(QFont::Bold);
 
-    openTag = QRegExp("<");
-    closeTag = QRegExp(">");
-    commentStartExpression = QRegExp("<!--");
-    commentEndExpression = QRegExp("-->");
-    quotes = QRegExp("\"");
-    customTagStartExpression = QRegExp("\\{\\{");
-    customTagEndExpression = QRegExp("\\}\\}");
+    openTag = QRegularExpression("<");
+    closeTag = QRegularExpression(">");
+    commentStartExpression = QRegularExpression("<!--");
+    commentEndExpression = QRegularExpression("-->");
+    quotes = QRegularExpression("\"");
+    customTagStartExpression = QRegularExpression("\\{\\{");
+    customTagEndExpression = QRegularExpression("\\}\\}");
 
     QStringList keywordPatterns;
     keywordPatterns << "<\\ba\\b" << "<\\babbr\\b" << "<\\bacronym\\b" << "<\\baddress\\b" << "<\\bapplet\\b"
@@ -72,7 +72,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
 
     for (int i = 0; i < keywordPatterns.size(); ++i)
     {
-        rule.pattern = QRegExp(keywordPatterns[i]);
+        rule.pattern = QRegularExpression(keywordPatterns[i]);
         rule.format = tagsFormat;
         startTagRules.append(rule);
     }
@@ -109,7 +109,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
 
     for (int i = 0; i < keywordPatterns_end.size(); ++i)
     {
-        rule.pattern = QRegExp(keywordPatterns_end[i]);
+        rule.pattern = QRegularExpression(keywordPatterns_end[i]);
         rule.format = tagsFormat;
         endTagRules.append(rule);
     }
@@ -125,7 +125,7 @@ void HtmlHighLighter::highlightBlock(const QString &text)
     if (previousBlockState() != HtmlHighLighter::Tag && previousBlockState() != HtmlHighLighter::Quote)
     {
         // То пытаемся найти начало следующего тега
-        startIndex = openTag.indexIn(text);
+        startIndex = text.indexOf(openTag);
     }
 
     // Забираем состояние предыдущего текстового блока
@@ -133,7 +133,7 @@ void HtmlHighLighter::highlightBlock(const QString &text)
     while (startIndex >= 0)
     {
         // ищем символ конца тега
-        int endIndex = closeTag.indexIn(text, startIndex);
+        int endIndex = text.indexOf(closeTag, startIndex);
 
         int tagLength;
         // если конец тега не найден, то устанавливаем состояние блока
@@ -144,7 +144,7 @@ void HtmlHighLighter::highlightBlock(const QString &text)
         }
         else
         {
-            tagLength = endIndex - startIndex + closeTag.matchedLength();
+            tagLength = endIndex - startIndex + 1;
         }
 
         // Устанавливаем форматирования для тега
@@ -170,13 +170,13 @@ void HtmlHighLighter::highlightBlock(const QString &text)
         if (previousBlockState() != HtmlHighLighter::Quote)
         {
             // То пытаемся найти начало кавычек
-            startQuoteIndex = quotes.indexIn(text, startIndex);
+            startQuoteIndex = text.indexOf(quotes, startIndex);
         }
 
         // Подсвечиваем все кавычки внутри тега
         while (startQuoteIndex >= 0 && ((startQuoteIndex < endIndex) || (endIndex == -1)))
         {
-            int endQuoteIndex = quotes.indexIn(text, startQuoteIndex + 1);
+            int endQuoteIndex = text.indexOf(quotes,startQuoteIndex + 1);
             int quoteLength;
             if (endQuoteIndex == -1)
             {
@@ -186,13 +186,13 @@ void HtmlHighLighter::highlightBlock(const QString &text)
             }
             else
             {
-                quoteLength = endQuoteIndex - startQuoteIndex + quotes.matchedLength();
+                quoteLength = endQuoteIndex - startQuoteIndex + 1;
             }
 
             if ((endIndex > endQuoteIndex) || endIndex == -1)
             {
                 setFormat(startQuoteIndex, quoteLength, quotationFormat);
-                startQuoteIndex = quotes.indexIn(text, startQuoteIndex + quoteLength);
+                startQuoteIndex = text.indexOf(quotes, startQuoteIndex + quoteLength);
             }
             else
             {
@@ -201,32 +201,32 @@ void HtmlHighLighter::highlightBlock(const QString &text)
         }
         //////////////////////////////////////////////////
         // Снова ищем начало тега
-        startIndex = openTag.indexIn(text, startIndex + tagLength);
+        startIndex = text.indexOf(openTag, startIndex + tagLength);
     }
 
     // EDGES OF TAGS
     // Обработка цвета саимх тегов, то есть подсветка слов div, p, strong и т.д.
     for (int i = 0; i < startTagRules.size(); ++i)
     {
-        QRegExp expression(startTagRules[i].pattern);
-        int index = expression.indexIn(text);
+        QRegularExpression expression(startTagRules[i].pattern);
+        int index = text.indexOf(expression);
         while (index >= 0)
         {
-            int length = expression.matchedLength();
+            int length = expression.pattern().length() - 3;
             setFormat(index + 1, length - 1, startTagRules[i].format);
-            index = expression.indexIn(text, index + length);
+            index = text.indexOf(expression, index + length);
         }
     }
 
     for (int i = 0; i < endTagRules.size(); ++i)
     {
-        QRegExp expression(endTagRules[i].pattern);
-        int index = expression.indexIn(text);
+        QRegularExpression expression(endTagRules[i].pattern);
+        int index = text.indexOf(expression);
         while (index >= 0) {
-            int length = expression.matchedLength();
+            int length = expression.pattern().length() - 3;
             setFormat(index + 1, 1, edgeTagFormat);
             setFormat(index + 2, length - 2, endTagRules[i].format);
-            index = expression.indexIn(text, index + length);
+            index = text.indexOf(expression, index + length);
         }
     }
 
@@ -236,14 +236,14 @@ void HtmlHighLighter::highlightBlock(const QString &text)
     if (previousBlockState() != HtmlHighLighter::Comment)
     {
         // то пытаемся найти начало комментария
-        startCommentIndex = commentStartExpression.indexIn(text);
+        startCommentIndex = text.indexOf(commentStartExpression);
     }
 
     // Если комментарий найден
     while (startCommentIndex >= 0)
     {
         // Ищем конец комментария
-        int endCommentIndex = commentEndExpression.indexIn(text, startCommentIndex);
+        int endCommentIndex = text.indexOf(commentEndExpression, startCommentIndex);
         int commentLength;
 
         // Если конец не найден
@@ -256,23 +256,22 @@ void HtmlHighLighter::highlightBlock(const QString &text)
         }
         else
         {
-            commentLength = endCommentIndex - startCommentIndex
-                            + commentEndExpression.matchedLength();
+            commentLength = endCommentIndex - startCommentIndex + 3;
         }
 
         setFormat(startCommentIndex, commentLength, multiLineCommentFormat);
-        startCommentIndex = commentStartExpression.indexIn(text, startCommentIndex + commentLength);
+        startCommentIndex = text.indexOf(commentStartExpression, startCommentIndex + commentLength);
     }
 
     // CUSTOM TAG
     int startCustomTagIndex = 0;
     if (previousBlockState() != HtmlHighLighter::CustomTag)
     {
-        startCustomTagIndex = customTagStartExpression.indexIn(text);
+        startCustomTagIndex = text.indexOf(customTagStartExpression);
     }
     while (startCustomTagIndex >= 0)
     {
-        int endIndex = customTagEndExpression.indexIn(text, startCustomTagIndex);
+        int endIndex = text.indexOf(customTagEndExpression, startCustomTagIndex);
         int length;
         if (endIndex == -1)
         {
@@ -281,9 +280,9 @@ void HtmlHighLighter::highlightBlock(const QString &text)
         }
         else
         {
-            length = endIndex - startCustomTagIndex + customTagEndExpression.matchedLength();
+            length = endIndex - startCustomTagIndex + 2;
         }
         setFormat(startCustomTagIndex, length, customTagFormat);
-        startCustomTagIndex = customTagStartExpression.indexIn(text, startCustomTagIndex + length);
+        startCustomTagIndex = text.indexOf(customTagStartExpression, startCustomTagIndex + length);
     }
 }

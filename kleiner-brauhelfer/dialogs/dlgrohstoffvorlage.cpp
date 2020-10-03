@@ -228,7 +228,7 @@ QMap<int, QVariant> DlgRohstoffVorlage::values() const
 void DlgRohstoffVorlage::on_lineEditFilter_textChanged(const QString &txt)
 {
     ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
-    model->setFilterRegExp(QRegExp(txt, Qt::CaseInsensitive, QRegExp::FixedString));
+    model->setFilterRegularExpression(QRegularExpression(QRegularExpression::escape(txt), QRegularExpression::CaseInsensitiveOption));
 }
 
 void DlgRohstoffVorlage::on_buttonBox_accepted()

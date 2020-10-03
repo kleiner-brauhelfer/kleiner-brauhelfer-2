@@ -450,7 +450,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ProxyModel modelGeraete;
             modelGeraete.setSourceModel(bh->modelGeraete());
             modelGeraete.setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
-            modelGeraete.setFilterRegExp(QString("^%1$").arg(anlageId.toInt()));
+            modelGeraete.setFilterRegularExpression(QString("^%1$").arg(anlageId.toInt()));
             for (int row = 0; row < modelGeraete.rowCount(); ++row)
             {
                 liste << QVariantMap({{"Name", modelGeraete.data(row, ModelGeraete::ColBezeichnung)}});
@@ -466,7 +466,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ProxyModel modelAnhang;
             modelAnhang.setSourceModel(bh->modelAnhang());
             modelAnhang.setFilterKeyColumn(ModelAnhang::ColSudID);
-            modelAnhang.setFilterRegExp(QString("^%1$").arg(sudId));
+            modelAnhang.setFilterRegularExpression(QString("^%1$").arg(sudId));
             for (int row = 0; row < modelAnhang.rowCount(); ++row)
             {
                 QVariantMap map;
@@ -489,7 +489,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         ProxyModel modelTags;
         modelTags.setSourceModel(bh->modelTags());
         modelTags.setFilterKeyColumn(ModelTags::ColSudID);
-        modelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sudId));
+        modelTags.setFilterRegularExpression(QString("^(%1|-.*)$").arg(sudId));
         for (int row = 0; row < modelTags.rowCount(); ++row)
         {
             QString t = modelTags.data(row, ModelTags::ColKey).toString();

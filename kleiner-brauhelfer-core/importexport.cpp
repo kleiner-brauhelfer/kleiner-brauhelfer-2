@@ -1,6 +1,5 @@
 #include "importexport.h"
 #include <QtMath>
-#include <QTextCodec>
 #include <QTextStream>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -643,7 +642,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     QVariantList list;
 
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
-    QRegExp regExpId(QString("^%1$").arg(sudId));
+    QRegularExpression regExpId(QString("^%1$").arg(sudId));
 
     root["Global"] = QJsonObject({{"db_Version", bh->databaseVersion()}});
 
@@ -652,7 +651,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelRasten();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelRasten::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelRasten::ColID, ModelRasten::ColSudID}));
@@ -661,7 +660,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelMalzschuettung();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID}));
@@ -670,7 +669,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelHopfengaben();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelHopfengaben::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID}));
@@ -679,7 +678,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelHefegaben();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelHefegaben::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHefegaben::ColID, ModelHefegaben::ColSudID}));
@@ -688,7 +687,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelWeitereZutatenGaben();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID}));
@@ -697,7 +696,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelSchnellgaerverlauf();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelSchnellgaerverlauf::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID}));
@@ -706,7 +705,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelHauptgaerverlauf();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelHauptgaerverlauf::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID}));
@@ -715,7 +714,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelNachgaerverlauf();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelNachgaerverlauf::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID}));
@@ -724,7 +723,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelBewertungen();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelBewertungen::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelBewertungen::ColID, ModelBewertungen::ColSudID}));
@@ -733,7 +732,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelAnhang();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelAnhang::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelAnhang::ColID, ModelAnhang::ColSudID}));
@@ -742,7 +741,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelEtiketten();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelEtiketten::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelEtiketten::ColID, ModelEtiketten::ColSudID}));
@@ -751,7 +750,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelTags();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelTags::ColSudID);
-    proxy.setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(sudId)));
+    proxy.setFilterRegularExpression(QRegularExpression(QString("^(%1|-.*)$").arg(sudId)));
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
     {
@@ -764,7 +763,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow)
     model = bh->modelWasseraufbereitung();
     proxy.setSourceModel(model);
     proxy.setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
-    proxy.setFilterRegExp(regExpId);
+    proxy.setFilterRegularExpression(regExpId);
     list.clear();
     for (int row = 0; row < proxy.rowCount(); ++row)
         list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelWasseraufbereitung::ColID, ModelWasseraufbereitung::ColSudID}));
@@ -799,7 +798,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     // Rasten
     model.setSourceModel(bh->modelRasten());
     model.setFilterKeyColumn(ModelRasten::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         switch (static_cast<Brauhelfer::RastTyp>(model.data(row, ModelRasten::ColTyp).toInt()))
@@ -885,7 +884,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     // Malzschuettung
     model.setSourceModel(bh->modelMalzschuettung());
     model.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
@@ -898,7 +897,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     // Hopfen
     model.setSourceModel(bh->modelHopfengaben());
     model.setFilterKeyColumn(ModelHopfengaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
@@ -927,7 +926,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     QStringList hefen;
     model.setSourceModel(bh->modelHefegaben());
     model.setFilterKeyColumn(ModelHefegaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         QString hefe = model.data(row, ModelHefegaben::ColName).toString();
@@ -939,7 +938,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     // Weitere Zutaten
     model.setSourceModel(bh->modelWeitereZutatenGaben());
     model.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
@@ -1178,7 +1177,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     Rezept.appendChild(Hopfengaben);
     model.setSourceModel(bh->modelHopfengaben());
     model.setFilterKeyColumn(ModelHopfengaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         Anteil = doc.createElement("HOP");
@@ -1245,7 +1244,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     }
     model.setSourceModel(bh->modelWeitereZutatenGaben());
     model.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -1332,7 +1331,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     Rezept.appendChild(fermentables);
     model.setSourceModel(bh->modelMalzschuettung());
     model.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         Anteil = doc.createElement("FERMENTABLE");
@@ -1373,7 +1372,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     }
     model.setSourceModel(bh->modelWeitereZutatenGaben());
     model.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         double Ausbeute = model.data(row, ModelWeitereZutatenGaben::ColAusbeute).toDouble();
@@ -1455,7 +1454,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     Rezept.appendChild(yeasts);
     model.setSourceModel(bh->modelHefegaben());
     model.setFilterKeyColumn(ModelHefegaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         Anteil = doc.createElement("YEAST");
@@ -1507,7 +1506,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     Rezept.appendChild(miscs);
     model.setSourceModel(bh->modelWeitereZutatenGaben());
     model.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -1668,7 +1667,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
 
     model.setSourceModel(bh->modelRasten());
     model.setFilterKeyColumn(ModelRasten::ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId));
     for (int row = 0; row < model.rowCount(); ++row)
     {
         Anteil = doc.createElement("MASH_STEP");
@@ -1726,7 +1725,5 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     QString contentString;
     QTextStream stream(&contentString);
     doc.save(stream, QDomNode::EncodingFromTextStream);
-    QTextCodec *codec = QTextCodec::codecForName("ISO 8859-1");
-    QByteArray content = codec->fromUnicode(contentString);
-    return content;
+    return contentString.toLatin1();
 }

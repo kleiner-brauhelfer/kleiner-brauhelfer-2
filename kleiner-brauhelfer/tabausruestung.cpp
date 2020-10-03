@@ -192,24 +192,24 @@ void TabAusruestung::sudLoaded()
 
 void TabAusruestung::anlage_selectionChanged()
 {
-    QRegExp regExpId;
-    QRegExp regExpId2;
+    QRegularExpression regExpId;
+    QRegularExpression regExpId2;
     QModelIndexList selectedRows = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selectedRows.count() > 0)
     {
         mRow = selectedRows[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
         QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
-        regExpId = QRegExp(QString("^%1$").arg(QRegExp::escape(anlage)));
-        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
+        regExpId = QRegularExpression(QString("^%1$").arg(QRegularExpression::escape(anlage)));
+        regExpId2 = QRegularExpression(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
     }
     else
     {
-        regExpId = QRegExp(QString("--dummy--"), Qt::CaseSensitive, QRegExp::FixedString);
-        regExpId2 = QRegExp(QString("--dummy--"), Qt::CaseSensitive, QRegExp::FixedString);
+        regExpId = QRegularExpression(QString("--dummy--"));
+        regExpId2 = QRegularExpression(QString("--dummy--"));
     }
-    static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegExp(regExpId2);
-    static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegExp(regExpId);
+    static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
+    static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegularExpression(regExpId);
     ui->sliderAusbeuteSude->setMaximum(9999);
     if (ui->sliderAusbeuteSude->value() == 0)
         ui->sliderAusbeuteSude->setValue(9999);

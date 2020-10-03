@@ -227,7 +227,7 @@ double ModelRasten::getPreviousTemp(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     fromRow = model.mapRowFromSource(fromRow);
     if (fromRow > 0)
         return model.data(fromRow - 1, ColTemp).toDouble();
@@ -239,7 +239,7 @@ double ModelRasten::getPreviousMenge(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     if (fromRow >= 0)
         fromRow = model.mapRowFromSource(fromRow);
     else
@@ -268,7 +268,7 @@ void ModelRasten::update(const QVariant &sudId)
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     mSignalModifiedBlocked = true;
     for (int r = 0; r < model.rowCount(); r++)
     {

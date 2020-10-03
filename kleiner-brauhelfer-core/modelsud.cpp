@@ -306,7 +306,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         ProxyModel modelHefegaben;
         modelHefegaben.setSourceModel(bh->modelHefegaben());
         modelHefegaben.setFilterKeyColumn(bh->modelHefegaben()->ColSudID);
-        modelHefegaben.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        modelHefegaben.setFilterRegularExpression(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
         for (int r = 0; r < modelHefegaben.rowCount(); ++r)
         {
             if (!modelHefegaben.data(r, ModelHefegaben::ColAbfuellbereit).toBool())
@@ -315,7 +315,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         ProxyModel modelWeitereZutatenGaben;
         modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
         modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->ColSudID);
-        modelWeitereZutatenGaben.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        modelWeitereZutatenGaben.setFilterRegularExpression(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
         for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
         {
             if (!modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColAbfuellbereit).toBool())
@@ -432,7 +432,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         ProxyModel proxy;
         proxy.setSourceModel(bh->modelMalzschuettung());
         proxy.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-        proxy.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        proxy.setFilterRegularExpression(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
         for (int r = 0; r < proxy.rowCount(); ++r)
         {
             double ph = proxy.data(r, ModelMalzschuettung::ColpH).toDouble();
@@ -825,7 +825,7 @@ void ModelSud::updateSwWeitereZutaten(int row)
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
     modelWeitereZutatenGaben.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    modelWeitereZutatenGaben.setFilterRegExp(QRegExp(QString("^%1$").arg(data(row, ColID).toInt())));
+    modelWeitereZutatenGaben.setFilterRegularExpression(QRegularExpression(QString("^%1$").arg(data(row, ColID).toInt())));
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -904,7 +904,7 @@ void ModelSud::updateWasser(int row)
 
 void ModelSud::updateFarbe(int row)
 {
-    QRegExp sudReg = QRegExp(QString("^%1$").arg(data(row, ColID).toInt()));
+    QRegularExpression sudReg(QString("^%1$").arg(data(row, ColID).toInt()));
     double ebc = 0.0;
     double d = 0.0;
     double gs = 0.0;
@@ -912,7 +912,7 @@ void ModelSud::updateFarbe(int row)
     ProxyModel modelMalzschuettung;
     modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
     modelMalzschuettung.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-    modelMalzschuettung.setFilterRegExp(sudReg);
+    modelMalzschuettung.setFilterRegularExpression(sudReg);
     for (int r = 0; r < modelMalzschuettung.rowCount(); ++r)
     {
         double farbe = modelMalzschuettung.data(r, ModelMalzschuettung::ColFarbe).toDouble();
@@ -924,7 +924,7 @@ void ModelSud::updateFarbe(int row)
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
     modelWeitereZutatenGaben.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    modelWeitereZutatenGaben.setFilterRegExp(sudReg);
+    modelWeitereZutatenGaben.setFilterRegularExpression(sudReg);
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -956,14 +956,14 @@ void ModelSud::updateFarbe(int row)
 
 void ModelSud::updatePreis(int row)
 {
-    QRegExp sudReg = QRegExp(QString("^%1$").arg(data(row, ColID).toInt()));
+    QRegularExpression sudReg(QString("^%1$").arg(data(row, ColID).toInt()));
     double summe = 0.0;
 
     double kostenSchuettung = 0.0;
     ProxyModel modelMalzschuettung;
     modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
     modelMalzschuettung.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-    modelMalzschuettung.setFilterRegExp(sudReg);
+    modelMalzschuettung.setFilterRegularExpression(sudReg);
     for (int r = 0; r < modelMalzschuettung.rowCount(); ++r)
     {
         QVariant name = modelMalzschuettung.data(r, ModelMalzschuettung::ColName);
@@ -977,7 +977,7 @@ void ModelSud::updatePreis(int row)
     ProxyModel modelHopfengaben;
     modelHopfengaben.setSourceModel(bh->modelHopfengaben());
     modelHopfengaben.setFilterKeyColumn(ModelHopfengaben::ColSudID);
-    modelHopfengaben.setFilterRegExp(sudReg);
+    modelHopfengaben.setFilterRegularExpression(sudReg);
     for (int r = 0; r < modelHopfengaben.rowCount(); ++r)
     {
         QVariant name = modelHopfengaben.data(r, ModelHopfengaben::ColName);
@@ -991,7 +991,7 @@ void ModelSud::updatePreis(int row)
     ProxyModel modelHefegaben;
     modelHefegaben.setSourceModel(bh->modelHefegaben());
     modelHefegaben.setFilterKeyColumn(ModelHefegaben::ColSudID);
-    modelHefegaben.setFilterRegExp(sudReg);
+    modelHefegaben.setFilterRegularExpression(sudReg);
     for (int r = 0; r < modelHefegaben.rowCount(); ++r)
     {
         QVariant name = modelHefegaben.data(r, ModelHefegaben::ColName);
@@ -1005,7 +1005,7 @@ void ModelSud::updatePreis(int row)
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
     modelWeitereZutatenGaben.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    modelWeitereZutatenGaben.setFilterRegExp(sudReg);
+    modelWeitereZutatenGaben.setFilterRegularExpression(sudReg);
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
         QVariant name = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColName);

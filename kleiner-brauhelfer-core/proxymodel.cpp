@@ -253,7 +253,7 @@ bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_pare
     else
     {
         accept = false;
-        QRegExp rx = filterRegExp();
+        QRegularExpression rx = filterRegularExpression();
         for (int col : mFilterColumns)
         {
            QModelIndex idx = sourceModel()->index(source_row, col, source_parent);

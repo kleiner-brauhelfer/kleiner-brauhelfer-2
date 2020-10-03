@@ -93,7 +93,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
     }
     if (accept && !mFilterText.isEmpty())
     {
-        QRegExp rx(mFilterText, Qt::CaseInsensitive, QRegExp::FixedString);
+        QRegularExpression rx(QRegularExpression::escape(mFilterText), QRegularExpression::CaseInsensitiveOption);
         idx = sourceModel()->index(source_row, ModelSud::ColSudname, source_parent);
         accept = sourceModel()->data(idx).toString().contains(rx);
         if (!accept)
@@ -112,12 +112,12 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
             if (modelSud)
             {
                 idx = sourceModel()->index(source_row, ModelSud::ColID, source_parent);
-                QRegExp sudReg = QRegExp(QString("^%1$").arg(sourceModel()->data(idx).toInt()));
+                QRegularExpression sudReg(QString("^%1$").arg(sourceModel()->data(idx).toInt()));
 
                 ProxyModel modelMalzschuettung;
                 modelMalzschuettung.setSourceModel(modelSud->bh->modelMalzschuettung());
                 modelMalzschuettung.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-                modelMalzschuettung.setFilterRegExp(sudReg);
+                modelMalzschuettung.setFilterRegularExpression(sudReg);
                 for (int i = 0; i < modelMalzschuettung.rowCount(); i++)
                 {
                     QString name = modelMalzschuettung.index(i, ModelMalzschuettung::ColName).data().toString();
@@ -130,7 +130,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     ProxyModel modelHopfengaben;
                     modelHopfengaben.setSourceModel(modelSud->bh->modelHopfengaben());
                     modelHopfengaben.setFilterKeyColumn(ModelHopfengaben::ColSudID);
-                    modelHopfengaben.setFilterRegExp(sudReg);
+                    modelHopfengaben.setFilterRegularExpression(sudReg);
                     for (int i = 0; i < modelHopfengaben.rowCount(); i++)
                     {
                         QString name = modelHopfengaben.index(i, ModelHopfengaben::ColName).data().toString();
@@ -144,7 +144,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     ProxyModel modelHefegaben;
                     modelHefegaben.setSourceModel(modelSud->bh->modelHefegaben());
                     modelHefegaben.setFilterKeyColumn(ModelHefegaben::ColSudID);
-                    modelHefegaben.setFilterRegExp(sudReg);
+                    modelHefegaben.setFilterRegularExpression(sudReg);
                     for (int i = 0; i < modelHefegaben.rowCount(); i++)
                     {
                         QString name = modelHefegaben.index(i, ModelHefegaben::ColName).data().toString();
@@ -158,7 +158,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     ProxyModel modelWeitereZutatenGaben;
                     modelWeitereZutatenGaben.setSourceModel(modelSud->bh->modelWeitereZutatenGaben());
                     modelWeitereZutatenGaben.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-                    modelWeitereZutatenGaben.setFilterRegExp(sudReg);
+                    modelWeitereZutatenGaben.setFilterRegularExpression(sudReg);
                     for (int i = 0; i < modelWeitereZutatenGaben.rowCount(); i++)
                     {
                         QString name = modelWeitereZutatenGaben.index(i, ModelWeitereZutatenGaben::ColName).data().toString();
@@ -173,7 +173,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     ProxyModel modelTags;
                     modelTags.setSourceModel(modelSud->bh->modelTags());
                     modelTags.setFilterKeyColumn(ModelTags::ColSudID);
-                    modelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sourceModel()->data(idx).toInt()));
+                    modelTags.setFilterRegularExpression(QString("^(%1|-.*)$").arg(sourceModel()->data(idx).toInt()));
                     for (int i = 0; i < modelTags.rowCount(); i++)
                     {
                         QString text = modelTags.index(i, ModelTags::ColKey).data().toString();

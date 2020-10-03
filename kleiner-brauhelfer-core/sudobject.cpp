@@ -77,20 +77,20 @@ void SudObject::init()
     modelTags()->setSourceModel(bh->modelTags());
     modelTags()->setFilterKeyColumn(ModelTags::ColSudID);
 
-    QRegExp regExpId(QString("^%1$").arg(mId));
-    modelRasten()->setFilterRegExp(regExpId);
-    modelMalzschuettung()->setFilterRegExp(regExpId);
-    modelHopfengaben()->setFilterRegExp(regExpId);
-    modelHefegaben()->setFilterRegExp(regExpId);
-    modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
-    modelWasseraufbereitung()->setFilterRegExp(regExpId);
-    modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
-    modelHauptgaerverlauf()->setFilterRegExp(regExpId);
-    modelNachgaerverlauf()->setFilterRegExp(regExpId);
-    modelBewertungen()->setFilterRegExp(regExpId);
-    modelAnhang()->setFilterRegExp(regExpId);
-    modelEtiketten()->setFilterRegExp(regExpId);
-    modelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId)));
+    QRegularExpression regExpId(QString("^%1$").arg(mId));
+    modelRasten()->setFilterRegularExpression(regExpId);
+    modelMalzschuettung()->setFilterRegularExpression(regExpId);
+    modelHopfengaben()->setFilterRegularExpression(regExpId);
+    modelHefegaben()->setFilterRegularExpression(regExpId);
+    modelWeitereZutatenGaben()->setFilterRegularExpression(regExpId);
+    modelWasseraufbereitung()->setFilterRegularExpression(regExpId);
+    modelSchnellgaerverlauf()->setFilterRegularExpression(regExpId);
+    modelHauptgaerverlauf()->setFilterRegularExpression(regExpId);
+    modelNachgaerverlauf()->setFilterRegularExpression(regExpId);
+    modelBewertungen()->setFilterRegularExpression(regExpId);
+    modelAnhang()->setFilterRegularExpression(regExpId);
+    modelEtiketten()->setFilterRegularExpression(regExpId);
+    modelTags()->setFilterRegularExpression(QRegularExpression(QString("^(%1|-.*)$").arg(mId)));
 }
 
 void SudObject::load(int id)
@@ -105,20 +105,20 @@ void SudObject::load(int id)
         else
             qInfo() << "SudObject::unload()";
 
-        QRegExp regExpId(QString("^%1$").arg(mId));
-        modelRasten()->setFilterRegExp(regExpId);
-        modelMalzschuettung()->setFilterRegExp(regExpId);
-        modelHopfengaben()->setFilterRegExp(regExpId);
-        modelHefegaben()->setFilterRegExp(regExpId);
-        modelWeitereZutatenGaben()->setFilterRegExp(regExpId);
-        modelWasseraufbereitung()->setFilterRegExp(regExpId);
-        modelSchnellgaerverlauf()->setFilterRegExp(regExpId);
-        modelHauptgaerverlauf()->setFilterRegExp(regExpId);
-        modelNachgaerverlauf()->setFilterRegExp(regExpId);
-        modelBewertungen()->setFilterRegExp(regExpId);
-        modelAnhang()->setFilterRegExp(regExpId);
-        modelEtiketten()->setFilterRegExp(regExpId);
-        modelTags()->setFilterRegExp(QRegExp(QString("^(%1|-.*)$").arg(mId)));
+        QRegularExpression regExpId(QString("^%1$").arg(mId));
+        modelRasten()->setFilterRegularExpression(regExpId);
+        modelMalzschuettung()->setFilterRegularExpression(regExpId);
+        modelHopfengaben()->setFilterRegularExpression(regExpId);
+        modelHefegaben()->setFilterRegularExpression(regExpId);
+        modelWeitereZutatenGaben()->setFilterRegularExpression(regExpId);
+        modelWasseraufbereitung()->setFilterRegularExpression(regExpId);
+        modelSchnellgaerverlauf()->setFilterRegularExpression(regExpId);
+        modelHauptgaerverlauf()->setFilterRegularExpression(regExpId);
+        modelNachgaerverlauf()->setFilterRegularExpression(regExpId);
+        modelBewertungen()->setFilterRegularExpression(regExpId);
+        modelAnhang()->setFilterRegularExpression(regExpId);
+        modelEtiketten()->setFilterRegularExpression(regExpId);
+        modelTags()->setFilterRegularExpression(QRegularExpression(QString("^(%1|-.*)$").arg(mId)));
 
         if (isLoaded())
         {

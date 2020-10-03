@@ -195,7 +195,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             double ist = 0;
             double diff = 0;
-            modelMalz.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
+            modelMalz.setFilterRegularExpression(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelMalz.rowCount() > 0)
             {
                 ist = modelMalz.data(0, ModelMalz::ColMenge).toDouble();
@@ -227,7 +227,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             double ist = 0;
             double diff = 0;
-            modelHopfen.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
+            modelHopfen.setFilterRegularExpression(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHopfen.rowCount() > 0)
             {
                 ist = modelHopfen.data(0, ModelHopfen::ColMenge).toDouble();
@@ -260,7 +260,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             int ist = 0;
             int diff = 0;
-            modelHefe.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
+            modelHefe.setFilterRegularExpression(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelHefe.rowCount() > 0)
             {
                 ist = modelHefe.data(0, ModelHefe::ColMenge).toInt();
@@ -293,7 +293,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             double ist = 0;
             double diff = 0;
-            modelWeitereZutaten.setFilterRegExp(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
+            modelWeitereZutaten.setFilterRegularExpression(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
             if (modelWeitereZutaten.rowCount() > 0)
             {
                 ist = modelWeitereZutaten.data(0, ModelWeitereZutaten::ColMengeNormiert).toDouble();

@@ -53,10 +53,10 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &idx) const
     {
         ProxyModel modelSud;
         QString anlage = data(idx.row(), ColName).toString();
-        QRegExp regExp = QRegExp(QString("^%1$").arg(QRegExp::escape(anlage)));
+        QRegularExpression regExp(QString("^%1$").arg(QRegularExpression::escape(anlage)));
         modelSud.setSourceModel(bh->modelSud());
         modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
-        modelSud.setFilterRegExp(regExp);
+        modelSud.setFilterRegularExpression(regExp);
         return modelSud.rowCount();
     }
     default:

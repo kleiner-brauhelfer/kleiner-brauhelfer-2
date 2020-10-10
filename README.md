@@ -40,8 +40,10 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ## Änderungen & Erweiterungen
 
+### Version 2.2.3 (in Entwicklung)
+
 ### Version 2.2.2 (26.09.2020)
-- Neu: Vorlagen für diversen Wasserprofile (vielen Dank rakader)
+- Neu: Vorlagen für diverse Wasserprofile (vielen Dank rakader)
 - Neu: Dialog "Restextrakt" überarbeitet
 - Neu: Einstellbare Malztemperatur beim Einmaischen
 - Fix: Im Reiter "Ausrüstung" Liste der Sude bei Anlage mit Sonderzeichen wird nicht angezeigt

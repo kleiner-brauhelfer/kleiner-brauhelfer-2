@@ -326,11 +326,11 @@
       {{/Zutaten.HatZusatzMaischen}}
       <tr>
         <td class="underline" valign="top"><strong>M&auml;skvatten</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> Liter</td>
+        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> liter,&uArr; <span class="value">{{Wasser.HauptgussUnten}}</span> cm, &dArr; <span class="value">{{Wasser.HauptgussOben}}</span> cm</td>
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>M&auml;skvolym</strong></td>
-        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> Liter,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
+        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> liter,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
       </tr>
       {{#Rasten}}
       <tr>
@@ -643,7 +643,7 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td>L&auml;gg i <span class="value">{{Menge}}</span> {{Einheit}} enheter efter <span class="value">{{ZugabeNach}}</span> dag(ar).</td>
+              <td>L&auml;gg i <span class="value">{{Menge}}</span> {{Einheit}} enheter{{#ZugabeNach}} efter <span class="value">{{ZugabeNach}}</span> dag(ar){{/ZugabeNach}}.</td>
             </tr>
             {{/Liste}}
           </table>

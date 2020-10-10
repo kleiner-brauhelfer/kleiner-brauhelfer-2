@@ -326,7 +326,7 @@
       {{/Zutaten.HatZusatzMaischen}}
       <tr>
         <td class="underline" valign="top"><strong>Strike water</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> liters</td>
+        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> liters,&uArr; <span class="value">{{Wasser.HauptgussUnten}}</span> cm, &dArr; <span class="value">{{Wasser.HauptgussOben}}</span> cm</td>
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>Mashing volume</strong></td>
@@ -643,7 +643,7 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td>add <span class="value">{{Menge}}</span> {{Einheit}} unit(s) after <span class="value">{{ZugabeNach}}</span> day(s)</td>
+              <td>add <span class="value">{{Menge}}</span> {{Einheit}} unit(s){{#ZugabeNach}} after <span class="value">{{ZugabeNach}}</span> day(s){{/ZugabeNach}}.</td>
             </tr>
             {{/Liste}}
           </table>

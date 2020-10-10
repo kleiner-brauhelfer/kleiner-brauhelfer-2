@@ -95,7 +95,7 @@ public:
      * @param formel Benutze Umrechnungsformel
      * @return Spezifische Dichte [g/ml]
      */
-    Q_INVOKABLE static double brixToDichte(double sw, double brix, FormulaBrixToPlato formel = Terrill);
+    Q_INVOKABLE static double brixToDichte(double sw, double brix, FormulaBrixToPlato formel);
 
     /**
      * @brief Umrechnung spezifische Dichte bei 20°C [g/ml] nach plato [°P]

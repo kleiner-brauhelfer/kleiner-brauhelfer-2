@@ -865,6 +865,32 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
                                     {ModelHefegaben::ColName, dlg.name()}});
         bh->sud()->modelHefegaben()->append(values);
         ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
+        vergaerungsgradUebernehmen(dlg.name());
+    }
+}
+
+void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
+{
+    QString str = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefe, ModelHefe::ColEVG).toString();
+    QRegularExpression regxExp("[-+]?[0-9]*[.,]?[0-9]+");
+    QRegularExpressionMatchIterator i = regxExp.globalMatch(str);
+    double mean = 0;
+    int N = 0;
+    while (i.hasNext())
+    {
+         QRegularExpressionMatch match = i.next();
+         double val = match.captured().replace(',', '.').toDouble();
+         mean += val;
+         N++;
+    }
+    if (N > 0 && mean > 0)
+    {
+        mean /= N;
+        int evg = qRound(mean);
+        if (QMessageBox::question(this, tr("Vergärungsgrad übernehmen?"),
+                                  tr("Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?").arg(evg),
+                                  QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+            bh->sud()->setVergaerungsgrad(evg);
     }
 }
 

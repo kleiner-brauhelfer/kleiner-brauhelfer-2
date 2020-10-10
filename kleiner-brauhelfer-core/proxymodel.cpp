@@ -173,7 +173,8 @@ QVariant ProxyModel::getValueFromSameRow(int colKey, const QVariant &valueKey, i
 
 void ProxyModel::setFilterString(const QString &pattern)
 {
-    setFilterFixedString(pattern);
+    QRegularExpression regExp(QRegularExpression::escape(pattern), QRegularExpression::CaseInsensitiveOption);
+    setFilterRegularExpression(regExp);
 }
 
 int ProxyModel::sortColumn() const

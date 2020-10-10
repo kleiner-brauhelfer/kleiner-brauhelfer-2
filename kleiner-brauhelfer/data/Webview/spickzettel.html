@@ -326,7 +326,7 @@
       {{/Zutaten.HatZusatzMaischen}}
       <tr>
         <td class="underline" valign="top"><strong>Hauptguss</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> Liter</td>
+        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> Liter,&uArr; <span class="value">{{Wasser.HauptgussUnten}}</span> cm, &dArr; <span class="value">{{Wasser.HauptgussOben}}</span> cm</td>
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>Maischevolumen</strong></td>
@@ -595,7 +595,7 @@
       <col width="700">
       <tr>
         <td class="underline" valign="top"><strong>Hopfenseihen</strong></td>
-        <td class="underline">Die W&uuml;rze durch einen Filter in den G&auml;rbeh&auml;lter abf&uuml;llen</td>
+        <td class="underline">Die W&uuml;rze durch einen Filter in den G&auml;rbeh&auml;lter abf&uuml;llen.</td>
       </tr>
       {{#Wasser.Verduennung}}
       <tr>
@@ -614,7 +614,7 @@
               <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
-          W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen
+          W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen.
         </td>
       </tr>
       <tr>
@@ -643,7 +643,7 @@
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} Einheiten nach <span class="value">{{ZugabeNach}}</span> Tag(e) zugeben.</td>
+              <td><span class="value">{{Menge}}</span> {{Einheit}} Einheit(en){{#ZugabeNach}} nach <span class="value">{{ZugabeNach}}</span> Tag(e){{/ZugabeNach}} zugeben.</td>
             </tr>
             {{/Liste}}
           </table>
@@ -651,7 +651,7 @@
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>Bel&uuml;ften</strong></td>
-        <td class="underline">Die W&uuml;rze gut bel&uuml;ften</td>
+        <td class="underline">Die W&uuml;rze gut bel&uuml;ften.</td>
       </tr>
       {{/Zutaten.Hefe}}
       {{#Zutaten.HatKalthopfen}}
@@ -704,7 +704,7 @@
       {{/Zutaten.HatZusatzGaerung}}
       <tr>
         <td valign="top"><strong>G&auml;rverlauf</strong></td>
-        <td>Restextrakt regelm&auml;ssig messen und G&auml;rverlauf beobachten</td>
+        <td>Restextrakt regelm&auml;ssig messen und G&auml;rverlauf beobachten.</td>
       </tr>
     </table>
   </div>

@@ -213,9 +213,13 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     ctx["Rasten"] = QVariantMap({{"Liste", liste}});
 
                 QVariantMap mapWasser;
-                double f1 = 0.0, f2 = 0.0, f3 = 0.0;
+                double f1 = 0.0, f2 = 0.0, f3 = 0.0, A, h;
                 f1 = bh->sud()->geterg_WHauptguss();
                 mapWasser["Hauptguss"] = locale.toString(f1, 'f', 1);
+                A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+                h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+                mapWasser["HauptgussUnten"] = locale.toString(f1 / A, 'f', 1);
+                mapWasser["HauptgussOben"] = locale.toString(h - f1 / A, 'f', 1);
                 f2 = bh->sud()->geterg_WNachguss();
                 mapWasser["Nachguss"] = locale.toString(f2, 'f', 1);
                 if (bh->sud()->gethighGravityFaktor() != 0)
@@ -322,18 +326,25 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 model = bh->sud()->modelHefegaben();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
+                    int menge = model->data(row, ModelHefegaben::ColMenge).toInt();
+                    if (menge <= 0)
+                        continue;
                     QVariantMap map;
                     map.insert("Name", model->data(row, ModelHefegaben::ColName));
                     int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map["Name"], ModelHefe::ColTypOGUG).toInt();
                     if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
                         map.insert("Typ", TabRohstoffe::HefeTypname[idx]);
-                    map.insert("Menge", model->data(row, ModelHefegaben::ColMenge).toInt());
+                    map.insert("Menge", menge);
                     if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert("Status", QObject::tr("zugegeben"));
                     else
                         map.insert("Status", QObject::tr("nicht zugegeben"));
-                    map.insert("ZugabeNach", QString::number(model->data(row, ModelHefegaben::ColZugabeNach).toInt()));
-                    map.insert("ZugabeDatum", locale.toString(model->data(row, ModelHefegaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
+                    int zugabeNach = model->data(row, ModelHefegaben::ColZugabeNach).toInt();
+                    if (zugabeNach > 0)
+                    {
+                        map.insert("ZugabeNach", zugabeNach);
+                        map.insert("ZugabeDatum", locale.toString(model->data(row, ModelHefegaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
+                    }
                     liste << map;
                 }
                 if (!liste.empty())

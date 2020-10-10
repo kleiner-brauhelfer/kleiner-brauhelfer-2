@@ -41,6 +41,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.2.3 (in Entwicklung)
+- Neu: Übernahme des Vergärungsgrades der Hefe
 
 ### Version 2.2.2 (26.09.2020)
 - Neu: Vorlagen für diverse Wasserprofile (vielen Dank rakader)

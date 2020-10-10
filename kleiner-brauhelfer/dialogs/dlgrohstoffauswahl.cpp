@@ -205,7 +205,7 @@ void DlgRohstoffAuswahl::on_radioButtonVorhanden_clicked()
 void DlgRohstoffAuswahl::on_lineEditFilter_textChanged(const QString &text)
 {
     ProxyModel* proxy = static_cast<ProxyModel*>(ui->tableView->model());
-    proxy->setFilterFixedString(text);
+    proxy->setFilterString(text);
 }
 
 void DlgRohstoffAuswahl::on_tableView_doubleClicked(const QModelIndex &index)

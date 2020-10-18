@@ -242,9 +242,8 @@ double BierCalc::spundungsdruck(double co2Soll, double T)
     return res;
 }
 
-double BierCalc::co2Vergaerung(double sw, double sre)
+double BierCalc::co2Vergaerung(double sw, double tre)
 {
-    double tre = toTRE(sw, sre);
     return co2Zucker() * 10 * (sw - tre);
 }
 
@@ -260,7 +259,7 @@ double BierCalc::co2Noetig(double co2Soll, double sw, double sreSchnellgaerprobe
 
 double BierCalc::speise(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T)
 {
-    double co2Pot = co2Vergaerung(sw, sreSchnellgaerprobe);
+    double co2Pot = co2Vergaerung(sw, toTRE(sw, sreSchnellgaerprobe));
     if (co2Pot <= 0)
         return std::numeric_limits<double>::infinity();
     return co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;

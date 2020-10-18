@@ -217,10 +217,10 @@ public:
     /**
      * @brief wuerzeCO2Potential
      * @param sw
-     * @param sre
+     * @param tre
      * @return
      */
-    Q_INVOKABLE static double co2Vergaerung(double sw, double sre);
+    Q_INVOKABLE static double co2Vergaerung(double sw, double tre);
 
     /**
      * @brief zuckerCO2Potential

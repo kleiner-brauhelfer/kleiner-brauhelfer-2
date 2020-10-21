@@ -60,6 +60,7 @@ private slots:
     void on_actionDeutsch_triggered();
     void on_actionEnglisch_triggered();
     void on_actionSchwedisch_triggered();
+    void on_actionNiederlaendisch_triggered();
     void on_actionSpende_triggered();
     void on_actionBierspende_triggered();
     void on_actionUeber_triggered();

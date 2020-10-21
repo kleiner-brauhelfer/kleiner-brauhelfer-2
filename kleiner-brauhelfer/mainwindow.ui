@@ -229,6 +229,7 @@
      <addaction name="actionDeutsch"/>
      <addaction name="actionEnglisch"/>
      <addaction name="actionSchwedisch"/>
+     <addaction name="actionNiederlaendisch"/>
     </widget>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
@@ -525,6 +526,15 @@
    </property>
    <property name="text">
     <string>Schwedisch</string>
+   </property>
+  </action>
+  <action name="actionNiederlaendisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/nl.svg</normaloff>:/images/nl.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Niederländisch</string>
    </property>
   </action>
  </widget>

@@ -777,6 +777,12 @@ void MainWindow::on_actionSchwedisch_triggered()
     restart(1001);
 }
 
+void MainWindow::on_actionNiederlaendisch_triggered()
+{
+    gSettings->setLanguage("nl");
+    restart(1001);
+}
+
 void MainWindow::on_actionSpende_triggered()
 {
     QDesktopServices::openUrl(QUrl(URL_SPENDE));

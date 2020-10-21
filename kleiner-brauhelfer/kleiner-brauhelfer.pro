@@ -240,4 +240,5 @@ RESOURCES += \
 
 TRANSLATIONS += \
     translations/kbh_en.ts \
+    translations/kbh_nl.ts \
     translations/kbh_sv.ts

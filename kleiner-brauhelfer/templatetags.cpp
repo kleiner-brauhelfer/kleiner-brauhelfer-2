@@ -110,6 +110,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
             ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
             ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
+            ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
             ctx["Rezept"] = ctxRezept;
         }
 
@@ -142,8 +143,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColBraudatum).toDate(), QLocale::ShortFormat);
             ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAbfuelldatum).toDate(), QLocale::ShortFormat);
             ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Alkohol).toDouble(), 'f', 1);
-            ctxSud["tEVG"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColtEVG).toDouble(), 'f', 1);
+            ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColtEVG).toInt());
+            ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);
             ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
+            ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
 
             int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
             ctxSud["Bewertung"] = QString::number(bewertung);
@@ -215,19 +218,19 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 QVariantMap mapWasser;
                 double f1 = 0.0, f2 = 0.0, f3 = 0.0, A, h;
                 f1 = bh->sud()->geterg_WHauptguss();
-                mapWasser["Hauptguss"] = locale.toString(f1, 'f', 1);
+                mapWasser["Hauptguss"] = locale.toString(f1, 'f', 2);
                 A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
                 h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
                 mapWasser["HauptgussUnten"] = locale.toString(f1 / A, 'f', 1);
                 mapWasser["HauptgussOben"] = locale.toString(h - f1 / A, 'f', 1);
                 f2 = bh->sud()->geterg_WNachguss();
-                mapWasser["Nachguss"] = locale.toString(f2, 'f', 1);
+                mapWasser["Nachguss"] = locale.toString(f2, 'f', 2);
                 if (bh->sud()->gethighGravityFaktor() != 0)
                 {
                     f3 = bh->sud()->getWasserHgf();
-                    mapWasser["Verduennung"] = locale.toString(f3, 'f', 1);
+                    mapWasser["Verduennung"] = locale.toString(f3, 'f', 2);
                 }
-                mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 1);
+                mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 2);
 
                 if (parts & TagWasseraufbereitung)
                 {

@@ -20,15 +20,11 @@
         </td>
         <td valign="top">
           <table>
-            <col width="*">
-            <col width="80">
-            <col width="80">
-            <col width="80">
             <tr>
               <th></th>
-              <th>Batch</th>
-              <th>Recipe</th>
-              <th></th>
+              <th style="padding:0 20px;">Sud</th>
+              <th style="padding:0 20px;">Rezept</th>
+              <th style="padding:0 20px;"></th>
             </tr>
             <tr>
               <td>amount</td>
@@ -76,49 +72,55 @@
             </tr>
             <tr>
               <td>residual alkalinity</td>
-              <td class="value" align="center"></td>
+              <td class="value" align="center">{{Sud.Restalkalitaet}}</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
             </tr>
             <tr>
               <td>mash efficiency</td>
+              <td class="value" align="center">{{Sud.SHA}}</td>
+              <td align="center">---</td>
+              <td>%</td>
+            </tr>
+            <tr>
+              <td>effective brewhouse efficiency</td>
               <td class="value" align="center">{{Sud.effSHA}}</td>
-              <td class="value" align="center"></td>
+              <td align="center">---</td>
               <td>%</td>
             </tr>
             <tr>
               <td>fermentation</td>
-              <td class="value" align="center">{{Sud.tEVG}}</td>
-              <td class="value" align="center"></td>
+              <td class="value" align="center">{{Sud.EVG}}</td>
+              <td class="value" align="center">{{Rezept.EVG}}</td>
               <td>%</td>
             </tr>
           </table>
         </td>
-        <td valign="top" align="left">
+        <td valign="top" align="left" style="padding:0 30px;">
           <table>
               <tr>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
               </tr>
               <tr>
-                <td>brewing setup</td>
-                <td class="value" align="center">{{Rezept.Brauanlage}}</td>
+                <td style="padding:0 20px;">brewing setup</td>
+                <td class="value">{{Rezept.Brauanlage}}</td>
               </tr>
               <tr>
-                <td>water profile</td>
-                <td class="value" align="center">{{Rezept.Wasserprofil}}</td>
+                <td style="padding:0 20px;">water profile</td>
+                <td class="value">{{Rezept.Wasserprofil}}</td>
               </tr>
               <tr>
-                <td>brew date</td>
-                <td class="value" align="center">{{Sud.Braudatum}}</td>
+                <td style="padding:0 20px;">brew date</td>
+                <td class="value">{{Sud.Braudatum}}</td>
               </tr>
               <tr>
-                <td>bottling date</td>
-                <td class="value" align="center">{{Sud.Abfuelldatum}}</td>
+                <td style="padding:0 20px;">bottling date</td>
+                <td class="value">{{Sud.Abfuelldatum}}</td>
               </tr>
               <tr>
-                <td>aging time</td>
-                <td align="center"><span class="value">{{Rezept.Reifezeit}}</span> weeks</td>
+                <td style="padding:0 20px;">aging time</td>
+                <td class="value">{{Rezept.Reifezeit}} weeks</td>
               </tr>
               <tr>
                 <td colspan="2">{{{Sud.BewertungSterne}}}

@@ -24,9 +24,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbTemperaturJungbier->setColumn(ModelSud::ColTemperaturJungbier);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->tbSw->setColumn(ModelSud::ColSWIst);
-    ui->tbTEVG->setColumn(ModelSud::ColtEVG);
-    ui->tbSEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
-    ui->tbSEVG->setColumn(ModelSud::ColsEVG);
+    ui->tbEVG->setColumn(ModelSud::ColtEVG);
+    ui->tbEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
     ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkohol);
@@ -150,6 +149,8 @@ void TabAbfuellen::updateValues()
         return;
 
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+        wdg->updateValue();
+    for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
         wdg->updateValue();
 
     QDateTime dt = bh->sud()->getAbfuelldatum();

@@ -25,7 +25,7 @@ public:
     void sudKopieren(bool loadedSud = false);
     void sudTeilen(bool loadedSud = false);
     void sudLoeschen(bool loadedSud = false);
-    void rezeptImportieren();
+    void rezeptImportieren(const QString& filePath = QString());
     void rezeptExportieren(bool loadedSud = false);
 
 signals:
@@ -66,6 +66,8 @@ private slots:
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+    void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
+    void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
     void setFilterStatus();
 
 private:

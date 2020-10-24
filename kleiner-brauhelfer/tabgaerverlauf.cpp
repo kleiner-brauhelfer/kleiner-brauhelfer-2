@@ -46,7 +46,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     ui->widget_DiaNachgaerverlauf->L1Precision = 1;
     ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Druck [bar]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("bar");
-    ui->widget_DiaNachgaerverlauf->L2Precision = 1;
+    ui->widget_DiaNachgaerverlauf->L2Precision = 2;
     ui->widget_DiaNachgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL3 = tr("°C");
     ui->widget_DiaNachgaerverlauf->L3Precision = 1;
@@ -115,7 +115,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 
     table->setModel(model);
     table->cols.append({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
-    table->cols.append({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 10.0, 0.1, false, table)});
+    table->cols.append({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
     table->cols.append({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
     table->cols.append({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->cols.append({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});

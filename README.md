@@ -42,6 +42,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.2.3 (in Entwicklung)
+- Neu: Niederländische Übersetzung (Vielen Dank dachouffe!)
 - Neu: Übernahme des Vergärungsgrades der Hefe
 - Neu: Stil der Benutzeroberfläche fix auf "Fusion"
 

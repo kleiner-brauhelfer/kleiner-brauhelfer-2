@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{Style}}">
+</head>
+<body>
+
+  {{#Sud}}
+  <div class="r" align="center">
+    <h1>{{Rezept.Name}} {{#Rezept.Nummer}}(#{{Rezept.Nummer}}){{/Rezept.Nummer}}</h1>
+    <h1><em>{{Rezept.Kategorie}}</em></h1>
+  </div>
+  <div class="rm" align="center">
+    <table>
+      <tr>
+        <td></td>
+        <td>{{{BewertungSterne}}}</td>
+      </tr>
+      <tr>
+        <td valign="center">
+          <div style="background-color:{{Rezept.FarbeRgb}};padding:0px;margin:0px;width:92px;height:92px">
+            <img class="glas" style="padding:0px;margin:-4px;width:100px;height:100px">
+          </div>
+        </td>
+        <td valign="top">
+          <table>
+            <col width="*">
+            {{^StatusRezept}}<col width="80">{{/StatusRezept}}
+            <col width="80">
+            <col width="*">
+            <tr>
+              <th></th>
+              {{^StatusRezept}}<th>Sud</th>{{/StatusRezept}}
+              <th>Rezept</th>
+            </tr>
+            <tr>
+              <td>Menge</td>
+              {{^StatusRezept}}<td class="value" align="center">{{Menge}}</td>{{/StatusRezept}}
+              <td class="value" align="center">{{Rezept.Menge}}</td>
+              <td>l</td>
+            </tr>
+            <tr>
+              <td>Stammw&uuml;rze</td>
+              {{^StatusRezept}}<td class="value" align="center">{{SW}}</td>{{/StatusRezept}}
+              <td class="value" align="center">{{Rezept.SW}}</td>
+              <td>&deg;P</td>
+            </tr>
+            <tr>
+              <td>Alkohol</td>
+              {{^StatusRezept}}<td class="value" align="center">{{Alkohol}}</td>{{/StatusRezept}}
+              <td class="value" align="center">{{Rezept.Alkohol}}</td>
+              <td>%vol</td>
+            </tr>
+            <tr>
+              <td>Bittere</td>
+              {{^StatusRezept}}<td class="value" align="center">{{Bittere}}</td>{{/StatusRezept}}
+              <td class="value" align="center">{{Rezept.Bittere}}</td>
+              <td>IBU</td>
+            </tr>
+            <tr>
+              <td>Farbe</td>
+              {{^StatusRezept}}<td class="value" align="center">{{Farbe}}</td>{{/StatusRezept}}
+              <td class="value" align="center">{{Rezept.Farbe}}</td>
+              <td>EBC</td>
+            </tr>
+            <tr>
+              <td>CO&#x2082;-Gehalt</td>
+              {{^StatusRezept}}<td class="value" align="center">{{CO2}}</td>{{/StatusRezept}}
+              <td class="value" align="center">{{Rezept.CO2}}</td>
+              <td>g/l</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <p><div class="kommentar">{{{Rezept.Kommentar}}}</div></p>
+  </div>
+  {{/Sud}}
+
+  {{#Zutaten}}
+  <div class="r" align="center">
+    <h1>Zutaten</h1>
+  </div>
+
+  {{#Malz}}
+  <div class="rm bg_malz" align="center">
+    <img src="qrc:/images/getreide.svg" height="50px">
+    <br>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Ben&ouml;tigt [kg]</th>
+        <th>Vorhanden [kg]</th>
+        <th>Rest [kg]</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}}</td>
+        <td class="{{Class}}" align="center">{{Rest}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Malz}}
+
+  {{#Hopfen}}
+  <div class="rm bg_hopfen" align="center">
+    <img src="qrc:/images/hopfen.svg" height="50px">
+    <br>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Ben&ouml;tigt [g]</th>
+        <th>Vorhanden [g]</th>
+        <th>Rest [g]</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}}</td>
+        <td class="{{Class}}" align="center">{{Rest}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Hopfen}}
+
+  {{#Hefe}}
+  <div class="rm bg_hefe" align="center">
+    <img src="qrc:/images/hefe.svg" height="50px">
+    <br>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}}</td>
+        <td class="{{Class}}" align="center">{{Rest}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Hefe}}
+
+  {{#Zusatz}}
+  <div class="rm bg_zusatz" align="center">
+    <img src="qrc:/images/zusatz.svg" height="50px">
+    <br>
+    <table style="width:100%">
+      <col width="16">
+      <col width="*">
+      <col width="100">
+      <col width="100">
+      <col width="100">
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Ben&ouml;tigt</th>
+        <th>Vorhanden</th>
+        <th>Rest</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td><img class="{{Class}}" width="16px"></td>
+        <td align="left">{{Name}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
+        <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Zusatz}}
+
+  {{/Zutaten}}
+
+  {{#Anhang}}
+  <div class="r" align="center">
+    <h1>Anh&auml;nge</h1>
+  </div>
+  <div class="rm bg_anhaenge" align="center">
+    <br>
+    <table width="100%">
+    {{#Liste}}
+    {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}
+    {{^Bild}}<tr><td align="center"><a href="{{Pfad}}">{{Pfad}}</a></td></tr>{{/Bild}}
+    {{/Liste}}
+    </table>
+  </div>
+  {{/Anhang}}
+
+</body>
+</html>

@@ -27,7 +27,8 @@ private slots:
     void on_tbMenge_valueChanged(double value);
     void on_tbMengeTotal_valueChanged(double value);
     void on_cbZugabezeitpunkt_currentIndexChanged(int index);
-    void on_tbDauerMin_valueChanged(int value);
+    void on_tbKochdauer_valueChanged(int value);
+    void on_tbExtrakt_valueChanged(double value);
     void on_btnZugeben_clicked();
     void on_cbEntnahme_clicked(bool checked);
     void on_tbZugabeNach_valueChanged(int arg1);

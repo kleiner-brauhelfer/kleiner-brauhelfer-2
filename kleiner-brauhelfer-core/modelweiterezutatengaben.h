@@ -31,6 +31,7 @@ public:
         ColZugabestatus,
         // virtual
         ColDeleted,
+        ColExtrakt,
         ColZugabeDatum,
         ColEntnahmeDatum,
         ColAbfuellbereit,

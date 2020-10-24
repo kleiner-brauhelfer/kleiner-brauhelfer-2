@@ -27,6 +27,8 @@ private slots:
     void on_btnZutat_clicked();
     void on_tbMengeProzent_valueChanged(double value);
     void on_tbMenge_valueChanged(double value);
+    void on_tbExtrakt_valueChanged(double value);
+    void on_tbExtraktProzent_valueChanged(double value);
     void on_btnLoeschen_clicked();
     void on_btnKorrektur_clicked();
     void on_btnAufbrauchen_clicked();

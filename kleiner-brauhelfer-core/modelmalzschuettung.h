@@ -24,6 +24,8 @@ public:
         ColpH,
         // virtual
         ColDeleted,
+        ColExtrakt,
+        ColExtraktProzent,
         // number of columns
         NumCols
     };
@@ -32,6 +34,7 @@ public:
 public:
 
     ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    QVariant dataExt(const QModelIndex &idx) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     int import(int row);
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;

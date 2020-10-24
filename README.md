@@ -45,6 +45,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Niederländische Übersetzung (Vielen Dank dachouffe!)
 - Neu: Übernahme des Vergärungsgrades der Hefe
 - Neu: Stil der Benutzeroberfläche fix auf "Fusion"
+- Neu: Eingabemöglichkeit des Extrakts (Anteil an Stammwürze) für Malzgaben und weitere Zutaten
 
 ### Version 2.2.2 (26.09.2020)
 - Neu: Vorlagen für diverse Wasserprofile (vielen Dank rakader)

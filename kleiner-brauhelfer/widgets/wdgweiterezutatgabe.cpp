@@ -69,10 +69,10 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     ui->lblEinheit2->setVisible(mEnabled);
     ui->cbZugabezeitpunkt->setEnabled(mEnabled);
     ui->cbEntnahme->setEnabled(mEnabled);
-    ui->wdgKochdauer->setVisible(mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeTotal->setReadOnly(!mEnabled);
-    ui->tbDauerMin->setReadOnly(!mEnabled);
+    ui->tbExtrakt->setReadOnly(!mEnabled);
+    ui->tbKochdauer->setReadOnly(!mEnabled);
     ui->tbZugabeNach->setReadOnly(!mEnabled);
     ui->tbDatumVon->setReadOnly(!mEnabled);
     ui->tbDauerTage->setReadOnly(!mEnabled);
@@ -164,12 +164,20 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     }
     if (!ui->cbZugabezeitpunkt->hasFocus())
         ui->cbZugabezeitpunkt->setCurrentIndex(static_cast<int>(zeitpunkt));
-    if (!ui->tbDauerMin->hasFocus())
+    if (!ui->tbKochdauer->hasFocus())
     {
-        ui->tbDauerMin->setMinimum(-bh->sud()->getNachisomerisierungszeit());
-        ui->tbDauerMin->setMaximum(bh->sud()->getKochdauer());
-        ui->tbDauerMin->setValue(dauer);
+        ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
+        ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
+        ui->tbKochdauer->setValue(dauer);
     }
+
+    bool visible = data(ModelWeitereZutatenGaben::ColAusbeute).toDouble() > 0;
+    if (!ui->tbExtrakt->hasFocus())
+        ui->tbExtrakt->setValue(data(ModelWeitereZutatenGaben::ColExtrakt).toDouble());
+    ui->tbExtrakt->setVisible(visible);
+    ui->lblExtrakt->setVisible(visible);
+    ui->lblExtraktEinheit->setVisible(visible);
+
     ui->cbEntnahme->setChecked(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
         ui->tbZugabeNach->setValue(data(ModelWeitereZutatenGaben::ColZugabeNach).toInt());
@@ -265,6 +273,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDauerTage->setReadOnly(false);
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(false);
+            ui->tbMengeTotal->setReadOnly(false);
             ui->btnZutat->setEnabled(true);
             break;
         case Brauhelfer::ZusatzStatus::Zugegeben:
@@ -278,6 +287,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDauerTage->setReadOnly(false);
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(true);
+            ui->tbMengeTotal->setReadOnly(true);
             ui->btnZutat->setEnabled(false);
             if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
@@ -300,6 +310,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->tbDauerTage->setReadOnly(true);
             ui->cbEntnahme->setEnabled(false);
             ui->tbMenge->setReadOnly(true);
+            ui->tbMengeTotal->setReadOnly(true);
             ui->btnZutat->setEnabled(false);
             break;
         }
@@ -318,21 +329,13 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->tbDauerTage->setReadOnly(false);
         ui->cbEntnahme->setEnabled(true);
         ui->tbMenge->setReadOnly(false);
+        ui->tbMengeTotal->setReadOnly(false);
         ui->btnZutat->setEnabled(true);
     }
 
-    switch (zeitpunkt)
-    {
-    case Brauhelfer::ZusatzZeitpunkt::Gaerung:
-        ui->wdgKochdauer->setVisible(false);
-        break;
-    case Brauhelfer::ZusatzZeitpunkt::Kochen:
-        ui->wdgKochdauer->setVisible(true);
-        break;
-    case Brauhelfer::ZusatzZeitpunkt::Maischen:
-        ui->wdgKochdauer->setVisible(false);
-        break;
-    }
+    ui->tbKochdauer->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
+    ui->lblKochdauer->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
+    ui->lblKochdauerEinheit->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
     ui->wdgZugabezeitpunkt->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
     ui->wdgZugabe->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung);
     ui->lblEntnahme->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
@@ -414,10 +417,16 @@ void WdgWeitereZutatGabe::on_cbZugabezeitpunkt_currentIndexChanged(int index)
         setData(ModelWeitereZutatenGaben::ColZeitpunkt, index);
 }
 
-void WdgWeitereZutatGabe::on_tbDauerMin_valueChanged(int value)
+void WdgWeitereZutatGabe::on_tbKochdauer_valueChanged(int value)
 {
-    if (ui->tbDauerMin->hasFocus())
+    if (ui->tbKochdauer->hasFocus())
         setData(ModelWeitereZutatenGaben::ColZugabedauer, value);
+}
+
+void WdgWeitereZutatGabe::on_tbExtrakt_valueChanged(double value)
+{
+    if (ui->tbExtrakt->hasFocus())
+        setData(ModelWeitereZutatenGaben::ColExtrakt, value);
 }
 
 void WdgWeitereZutatGabe::on_btnZugeben_clicked()

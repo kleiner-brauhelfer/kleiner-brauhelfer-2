@@ -831,30 +831,23 @@ void ModelSud::updateSwWeitereZutaten(int row)
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             continue;
-        double ausbeute = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColAusbeute).toDouble();
-        if (ausbeute > 0.0)
+        double extrakt = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColExtrakt).toDouble();
+        if (extrakt > 0.0)
         {
-            double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColMenge).toDouble();
-            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColEinheit).toInt());
-            if (einheit == Brauhelfer::Einheit::Stk)
-                menge = qCeil(menge);
-            else
-                menge /= 1000;
-            double sw = menge * ausbeute;
             Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
             Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
             switch (zeitpunkt)
             {
             case Brauhelfer::ZusatzZeitpunkt::Gaerung:
-                swWzGaerungRecipe[row] += sw ;
+                swWzGaerungRecipe[row] += extrakt ;
                 if (status != Brauhelfer::ZusatzStatus::NichtZugegeben)
-                    swWzGaerungCurrent[row] += sw;
+                    swWzGaerungCurrent[row] += extrakt;
                 break;
             case Brauhelfer::ZusatzZeitpunkt::Kochen:
-                swWzKochenRecipe[row] += sw;
+                swWzKochenRecipe[row] += extrakt;
                 break;
             case Brauhelfer::ZusatzZeitpunkt::Maischen:
-                swWzMaischenRecipe[row] += sw;
+                swWzMaischenRecipe[row] += extrakt;
                 break;
             }
         }
@@ -935,9 +928,7 @@ void ModelSud::updateFarbe(int row)
         {
             double menge = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
             Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColEinheit).toInt());
-            if (einheit == Brauhelfer::Einheit::Stk)
-                menge = qCeil(menge);
-            else
+            if (einheit != Brauhelfer::Einheit::Stk)
                 menge /= 1000;
             d += menge * farbe;
             gs += menge;

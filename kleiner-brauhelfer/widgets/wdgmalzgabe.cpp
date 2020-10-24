@@ -59,6 +59,8 @@ void WdgMalzGabe::checkEnabled(bool force)
     ui->lblEinheit->setVisible(mEnabled);
     ui->tbMengeProzent->setReadOnly(!mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
+    ui->tbExtraktProzent->setReadOnly(!mEnabled);
+    ui->tbExtrakt->setReadOnly(!mEnabled);
     ui->btnKorrektur->setVisible(mEnabled);
     ui->lblWarnung->setVisible(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
@@ -82,6 +84,14 @@ void WdgMalzGabe::updateValues(bool full)
         ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());
         ui->tbMenge->setValue(data(ModelMalzschuettung::Colerg_Menge).toDouble());
     }
+
+    if (!ui->tbExtrakt->hasFocus())
+        ui->tbExtrakt->setValue(data(ModelMalzschuettung::ColExtrakt).toDouble());
+    if (!ui->tbExtraktProzent->hasFocus())
+        ui->tbExtraktProzent->setValue(data(ModelMalzschuettung::ColExtraktProzent).toDouble());
+    bool visible = bh->sud()->getSW() != bh->sud()->getSW_Malz();
+    ui->tbExtraktProzent->setVisible(visible);
+    ui->lblExtraktProzent->setVisible(visible);
 
     double ebc = data(ModelMalzschuettung::ColFarbe).toDouble();
     QPalette pal = ui->frameColor->palette();
@@ -148,6 +158,18 @@ void WdgMalzGabe::on_tbMenge_valueChanged(double value)
 {
     if (ui->tbMenge->hasFocus())
         setData(ModelMalzschuettung::Colerg_Menge, value);
+}
+
+void WdgMalzGabe::on_tbExtrakt_valueChanged(double value)
+{
+    if (ui->tbExtrakt->hasFocus())
+        setData(ModelMalzschuettung::ColExtrakt, value);
+}
+
+void WdgMalzGabe::on_tbExtraktProzent_valueChanged(double value)
+{
+    if (ui->tbExtraktProzent->hasFocus())
+        setData(ModelMalzschuettung::ColExtraktProzent, value);
 }
 
 QString WdgMalzGabe::name() const

@@ -221,10 +221,14 @@ void Settings::setTheme(Theme theme)
 
 QString Settings::style()
 {
+  #if 0
     beginGroup("Style");
     QString style = value("Style", "Fusion").toString();
     endGroup();
     return style;
+  #else
+    return "Fusion";
+  #endif
 }
 
 void Settings::setStyle(const QString &style)

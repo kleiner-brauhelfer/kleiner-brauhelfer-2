@@ -1,9 +1,10 @@
 # kleiner-brauhelfer v2
 Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und Verwalten von Biersuden. Die Version 2 ist die Weiterentwicklung vom [kleinen-brauhelfer](http://github.com/Gremmel/kleiner-brauhelfer).
 
-- <img src="kleiner-brauhelfer/images/de.svg" width="16"> verfügbar in Deutsch
+- <img src="kleiner-brauhelfer/images/de.svg" width="16"> verfügbar auf Deutsch
 - <img src="kleiner-brauhelfer/images/en.svg" width="16"> available in English
 - <img src="kleiner-brauhelfer/images/se.svg" width="16"> finns på svenska
+- <img src="kleiner-brauhelfer/images/nl.svg" width="16"> beschikbaar in het nederlands
 
 <img src="doc/sudauswahl.png" width="240"><img src="doc/rezept.png" width="240"><img src="doc/braudaten.png" width="240"><img src="doc/abfuelldaten.png" width="240"><img src="doc/gaerverlauf.png" width="240"><img src="doc/spickzettel.png" width="240"><img src="doc/zusammenfassung.png" width="240"><img src="doc/etikette.png" width="240"><img src="doc/bewertung.png" width="240"><img src="doc/brauuebersicht.png" width="240"><img src="doc/ausruestung.png" width="240"><img src="doc/rohstoffe.png" width="240">
 
@@ -42,6 +43,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ### Version 2.2.3 (in Entwicklung)
 - Neu: Übernahme des Vergärungsgrades der Hefe
+- Neu: Stil der Benutzeroberfläche fix auf "Fusion"
 
 ### Version 2.2.2 (26.09.2020)
 - Neu: Vorlagen für diverse Wasserprofile (vielen Dank rakader)

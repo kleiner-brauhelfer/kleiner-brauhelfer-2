@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionThemeHell->setEnabled(gSettings->theme() != Settings::Theme::Bright);
     ui->actionThemeDunkel->setEnabled(gSettings->theme() != Settings::Theme::Dark);
 
+  #if 0
     QString style = gSettings->style();
     for(const QString &key : QStyleFactory::keys())
     {
@@ -40,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
             connect(action, SIGNAL(triggered()), this, SLOT(changeStyle()));
         ui->menuStil->addAction(action);
     }
+  #endif
+    ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
 
     ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 

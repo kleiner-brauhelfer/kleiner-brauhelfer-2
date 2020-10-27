@@ -230,7 +230,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
+        <item row="0" column="4">
          <widget class="DoubleSpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
@@ -288,7 +288,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="4">
+        <item row="0" column="1">
          <widget class="DoubleSpinBox" name="tbMengeTotal">
           <property name="minimumSize">
            <size>

@@ -24,26 +24,26 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QList<QString> TabRohstoffe::HopfenTypname = {
+QStringList TabRohstoffe::HopfenTypname = {
     "",
     tr("aroma"),
     tr("bitter"),
     tr("universal")
 };
 
-QList<QString> TabRohstoffe::HefeTypname = {
+QStringList TabRohstoffe::HefeTypname = {
     "",
     tr("obergärig"),
     tr("untergärig")
 };
 
-QList<QString> TabRohstoffe::HefeTypFlTrName = {
+QStringList TabRohstoffe::HefeTypFlTrName = {
     "",
     tr("trocken"),
     tr("flüssig")
 };
 
-QList<QString> TabRohstoffe::ZusatzTypname = {
+QStringList TabRohstoffe::ZusatzTypname = {
     tr("Honig"),
     tr("Zucker"),
     tr("Gewürz"),
@@ -54,7 +54,7 @@ QList<QString> TabRohstoffe::ZusatzTypname = {
     tr("Klärmittel")
 };
 
-QList<QString> TabRohstoffe::Einheiten = {
+QStringList TabRohstoffe::Einheiten = {
     tr("kg"),
     tr("g"),
     tr("mg"),
@@ -63,10 +63,24 @@ QList<QString> TabRohstoffe::Einheiten = {
     tr("ml")
 };
 
+QStringList TabRohstoffe::list_tr(const QStringList& list)
+{
+   QStringList result;
+   for (const QString& str : list)
+       result.append(tr(str.toStdString().c_str()));
+   return result;
+}
+
 TabRohstoffe::TabRohstoffe(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
 {
+    HopfenTypname = list_tr(HopfenTypname);
+    HefeTypname = list_tr(HefeTypname);
+    HefeTypFlTrName = list_tr(HefeTypFlTrName);
+    ZusatzTypname = list_tr(ZusatzTypname);
+    Einheiten = list_tr(Einheiten);
+
     ui->setupUi(this);
 
     SqlTableModel *model;

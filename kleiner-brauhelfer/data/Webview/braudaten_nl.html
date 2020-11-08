@@ -7,7 +7,7 @@
 
   {{#Wasser}}
   <div class="r" align="center">
-    <h1>Wasser</h1>
+    <h1>Water</h1>
   </div>
   <div class="rm bg_wasser" align="center">
     <table style="width:100%">
@@ -15,24 +15,24 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Menge [l]</th>
+        <th>Hoeveelheid [l]</th>
       </tr>
       <tr>
-        <td>Hauptguss</td>
+        <td>Maischwater</td>
         <td class="value" align="center">{{Hauptguss}}</td>
       </tr>
       <tr>
-        <td>Nachguss</td>
+        <td>Spoelwater</td>
         <td class="value" align="center">{{Nachguss}}</td>
       </tr>
       {{#Verduennung}}
       <tr>
-        <td>Verd&uuml;nnung</td>
+        <td>Verduning</td>
         <td class="value" align="center">{{Verduennung}}</td>
       </tr>
       {{/Verduennung}}
       <tr>
-        <td><strong>Gesamtmenge</strong></td>
+        <td><strong>Totale Hoeveelheid</strong></td>
         <td class="value" align="center">{{Gesamt}}</td>
       </tr>
     </table>
@@ -50,8 +50,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Temperatur [&deg;C]</th>
-        <th>Dauer [min]</th>
+        <th>Temperatuur [&deg;C]</th>
+        <th>Duur [min]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -75,8 +75,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Anteil [%]</th>
-        <th>Menge [kg]</th>
+        <th>Aandeel [%]</th>
+        <th>Hoeveelheid [kg]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -86,7 +86,7 @@
       </tr>
       {{/Liste}}
       <tr>
-        <td><strong>Gesamtsch&uuml;ttung</strong></td>
+        <td><strong>Totale Moutschroot</strong></td>
         <td align="center"></td>
         <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
       </tr>
@@ -100,7 +100,7 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Menge</th>
+        <th>Hoeveelheid</th>
       </tr>
       {{#Zutaten.Zusatz.Liste}}
       {{#Maischen}}
@@ -116,7 +116,7 @@
   {{/Zutaten.HatZusatzMaischen}}
 
   <div class="r" align="center">
-    <h1>Kochen</h1>
+    <h1>Koken</h1>
   </div>
   {{#Zutaten.Hopfen}}
   <div class="rm bg_hopfen" align="center">
@@ -127,9 +127,9 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zeitpunkt</th>
-        <th>Kochdauer [min]</th>
-        <th>Menge [g]</th>
+        <th>Moment</th>
+        <th>Kooktijd [min]</th>
+        <th>Hoeveelheid [g]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -155,8 +155,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Kochdauer [min]</th>
-        <th>Menge</th>
+        <th>Kooktijd [min]</th>
+        <th>Hoeveelheid</th>
       </tr>
       {{#Zutaten.Zusatz.Liste}}
       {{#Kochen}}
@@ -173,7 +173,7 @@
   {{/Zutaten.HatZusatzKochen}}
 
   <div class="r" align="center">
-    <h1>G&auml;rung</h1>
+    <h1>Vergisting</h1>
   </div>
   {{#Zutaten.Hefe}}
   <div class="rm bg_hefe" align="center">
@@ -183,8 +183,8 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zugabe nach [Tage]</th>
-        <th>Menge</th>
+        <th>Toegevoegd na [Dagen]</th>
+        <th>Hoeveelheid</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -205,9 +205,9 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zugabe nach [Tage]</th>
-        <th>Dauer [Tage]</th>
-        <th>Menge</th>
+        <th>Toevoegen na [Dagen]</th>
+        <th>Duur [Dagen]</th>
+        <th>Hoeveelheid</th>
       </tr>
       {{#Zutaten.Kalthopfen.Liste}}
       <tr>
@@ -230,9 +230,9 @@
       <col width="150">
       <tr>
         <th></th>
-        <th>Zugabe nach [Tage]</th>
-        <th>Dauer [Tage]</th>
-        <th>Menge</th>
+        <th>Toevoegen na [Dagen]</th>
+        <th>Duur [Tage]</th>
+        <th>Hoeveelheid</th>
       </tr>
       {{#Zutaten.Zusatz.Liste}}
       {{#Gaerung}}

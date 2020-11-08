@@ -31,40 +31,40 @@
             <tr>
               <th></th>
               {{^StatusRezept}}<th>Sud</th>{{/StatusRezept}}
-              <th>Rezept</th>
+              <th>Recept</th>
             </tr>
             <tr>
-              <td>Menge</td>
+              <td>Hoeveelheid</td>
               {{^StatusRezept}}<td class="value" align="center">{{Menge}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Menge}}</td>
               <td>l</td>
             </tr>
             <tr>
-              <td>Stammw&uuml;rze</td>
+              <td>Begin SG</td>
               {{^StatusRezept}}<td class="value" align="center">{{SW}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             <tr>
-              <td>Alkohol</td>
+              <td>Alcohol</td>
               {{^StatusRezept}}<td class="value" align="center">{{Alkohol}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Alkohol}}</td>
               <td>%vol</td>
             </tr>
             <tr>
-              <td>Bittere</td>
+              <td>Bitterheid</td>
               {{^StatusRezept}}<td class="value" align="center">{{Bittere}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
-              <td>Farbe</td>
+              <td>Kleur</td>
               {{^StatusRezept}}<td class="value" align="center">{{Farbe}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
-              <td>CO&#x2082;-Gehalt</td>
+              <td>CO&#x2082;-Gehalte</td>
               {{^StatusRezept}}<td class="value" align="center">{{CO2}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
@@ -79,7 +79,7 @@
 
   {{#Zutaten}}
   <div class="r" align="center">
-    <h1>Zutaten</h1>
+    <h1>Ingrediënten</h1>
   </div>
 
   {{#Malz}}
@@ -95,9 +95,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Ben&ouml;tigt [kg]</th>
-        <th>Vorhanden [kg]</th>
-        <th>Rest [kg]</th>
+        <th>Nodig [kg]</th>
+        <th>Voorraad [kg]</th>
+        <th>Over [kg]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -125,9 +125,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Ben&ouml;tigt [g]</th>
-        <th>Vorhanden [g]</th>
-        <th>Rest [g]</th>
+        <th>Nodig [g]</th>
+        <th>Voorraad [g]</th>
+        <th>Over [g]</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -155,9 +155,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Ben&ouml;tigt</th>
-        <th>Vorhanden</th>
-        <th>Rest</th>
+        <th>Nodig</th>
+        <th>Voorraad</th>
+        <th>Over</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -185,9 +185,9 @@
       <tr>
         <th></th>
         <th></th>
-        <th>Ben&ouml;tigt</th>
-        <th>Vorhanden</th>
-        <th>Rest</th>
+        <th>Nodig</th>
+        <th>Voorraad</th>
+        <th>Over</th>
       </tr>
       {{#Liste}}
       <tr>
@@ -206,7 +206,7 @@
 
   {{#Anhang}}
   <div class="r" align="center">
-    <h1>Anh&auml;nge</h1>
+    <h1>Bijlagen</h1>
   </div>
   <div class="rm bg_anhaenge" align="center">
     <br>

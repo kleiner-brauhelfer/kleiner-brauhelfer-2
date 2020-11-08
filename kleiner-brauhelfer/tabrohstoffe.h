@@ -13,11 +13,12 @@ class TabRohstoffe : public TabAbstract
     Q_OBJECT
 
 public:
-    static QList<QString> HopfenTypname;
-    static QList<QString> HefeTypname;
-    static QList<QString> HefeTypFlTrName;
-    static QList<QString> ZusatzTypname;
-    static QList<QString> Einheiten;
+    static QStringList HopfenTypname;
+    static QStringList HefeTypname;
+    static QStringList HefeTypFlTrName;
+    static QStringList ZusatzTypname;
+    static QStringList Einheiten;
+    static QStringList list_tr(const QStringList& list);
 
 public:
     explicit TabRohstoffe(QWidget *parent = nullptr);

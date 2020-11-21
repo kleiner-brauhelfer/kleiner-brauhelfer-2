@@ -66,7 +66,7 @@ void DlgCheckUpdate::httpFinished()
     }
     else
     {
-        qWarning() << "DlgCheckUpdate: Network error:" << reply->error();
+        qWarning() << "DlgCheckUpdate: Network error:" << reply->errorString();
     }
     emit finished();
 }

@@ -110,6 +110,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
             ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
             ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
+            ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
             ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
             ctx["Rezept"] = ctxRezept;
         }

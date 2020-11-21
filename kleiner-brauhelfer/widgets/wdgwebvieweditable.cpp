@@ -266,6 +266,7 @@ void WdgWebViewEditable::updateWebView()
     {
         ui->webview->setZoomFactor(gZoomFactor);
         ui->sliderZoom->setValue(gZoomFactor * 100);
+        ui->lblZoom->clear();
     }
   #endif
     if (ui->cbEditMode->isChecked())

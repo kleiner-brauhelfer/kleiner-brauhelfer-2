@@ -312,7 +312,7 @@
             <item row="1" column="3">
              <widget class="DoubleSpinBox" name="tbAusbeuteMittel">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten Sudhausausbeuten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten &lt;span style=&quot; font-weight:600;&quot;&gt;effektiven Sudhausausbeuten&lt;/span&gt;. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -455,7 +455,7 @@
             <item row="0" column="0">
              <widget class="QLabel" name="label_22">
               <property name="text">
-               <string>Ausbeute für die Schüttungsberechnung</string>
+               <string>Sudhausausbeute</string>
               </property>
              </widget>
             </item>
@@ -669,7 +669,7 @@
             <item row="3" column="0">
              <widget class="QLabel" name="label_69">
               <property name="text">
-               <string>Betriebskosten (Wasser, Strom, Gas, etc.)</string>
+               <string>Betriebskosten</string>
               </property>
              </widget>
             </item>

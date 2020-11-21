@@ -389,13 +389,31 @@ int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
 
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-  #endif
+    // parse arguments
+    bool highDpi = true;
+    for (int i = 1; i < argc; i++)
+    {
+      QString arg(argv[i]);
+      arg = arg.toLower();
+      while (arg[0] == '-')
+          arg.remove(0,1);
+      QStringList list({"qt_auto_screen_scale_factor=0",
+                        "qt_auto_screen_scale_factor=false",
+                        "qt_auto_screen_scale_factor=off"});
+      if (list.contains(arg))
+          highDpi = false;
+    }
+
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-    QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
+   QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
   #endif
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    if (highDpi)
+    {
+      #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+      #endif
+        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    }
 
     QApplication a(argc, argv);
 

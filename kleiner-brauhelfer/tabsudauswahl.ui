@@ -418,12 +418,6 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnToPdf">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudinformation&lt;/span&gt; als PDF abgespeichert.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach Betriebssystem oder Treiber unterschiedlich gestaltet ist. In macOS ist die PDF-Funktion in den Druckdialog integriert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>

@@ -110,12 +110,12 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
                 QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 50.0);
                 break;
             case Brauhelfer::AnlageTyp::Braumeister10:
-                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 24.0);
-                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 33.0);
-                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 26.5);
-                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 24.0);
-                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 33.0);
-                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 26.5);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 23.5);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 23.5);
                 break;
             case Brauhelfer::AnlageTyp::Braumeister20:
                 QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 34.0);

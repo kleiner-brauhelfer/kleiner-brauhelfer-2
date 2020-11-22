@@ -51,6 +51,15 @@ private slots:
     void on_btnNachOben_clicked();
 
 private:
+    struct Rast
+    {
+        QString name;
+        double temperatur;
+        double dauer;
+    };
+    static const QList<Rast> rasten;
+
+private:
     void checkEnabled(bool force);
 
 private:

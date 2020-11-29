@@ -15,6 +15,7 @@
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
+#include "dialogs/dlgconsole.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -801,4 +802,18 @@ void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);
     dlg.exec();
+}
+
+void MainWindow::on_actionLog_triggered()
+{
+    if (DlgConsole::Dialog)
+    {
+        DlgConsole::Dialog->raise();
+        DlgConsole::Dialog->activateWindow();
+    }
+    else
+    {
+        DlgConsole::Dialog = new DlgConsole(this);
+        DlgConsole::Dialog->show();
+    }
 }

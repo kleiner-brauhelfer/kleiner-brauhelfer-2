@@ -53,6 +53,7 @@ private slots:
     void on_actionReiterBewertung_triggered(bool checked);
     void on_actionReiterBrauuebersicht_triggered(bool checked);
     void on_actionReiterDatenbank_triggered(bool checked);
+    void on_actionLog_triggered();
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionTooltips_triggered(bool checked);

@@ -22,6 +22,7 @@ public:
 
     int logLevel();
     void setLogLevel(int level);
+    void initLogLevel(int level);
 
     Theme theme() const;
     void setTheme(Theme theme);

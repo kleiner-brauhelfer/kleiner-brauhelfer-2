@@ -62,6 +62,7 @@ SOURCES += \
     dialogs/dlgabout.cpp \
     dialogs/dlgbierspende.cpp \
     dialogs/dlgcheckupdate.cpp \
+    dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
@@ -138,6 +139,7 @@ HEADERS += \
     dialogs/dlgabout.h \
     dialogs/dlgbierspende.h \
     dialogs/dlgcheckupdate.h \
+    dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
@@ -210,6 +212,7 @@ FORMS += \
     dialogs/dlgabout.ui \
     dialogs/dlgbierspende.ui \
     dialogs/dlgcheckupdate.ui \
+    dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \

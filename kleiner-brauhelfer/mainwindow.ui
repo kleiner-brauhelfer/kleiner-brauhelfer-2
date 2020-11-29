@@ -196,6 +196,8 @@
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
     <addaction name="menuReiter"/>
+    <addaction name="separator"/>
+    <addaction name="actionLog"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -535,6 +537,11 @@
    </property>
    <property name="text">
     <string>Niederländisch</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="text">
+    <string>Log</string>
    </property>
   </action>
  </widget>

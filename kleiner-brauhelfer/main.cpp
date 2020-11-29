@@ -18,6 +18,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/webview.h"
+#include "dialogs/dlgconsole.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
@@ -35,6 +36,7 @@ Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
 
 static QFile* logFile = nullptr;
+static QtMessageHandler defaultMessageHandler;
 
 static bool chooseDatabase()
 {
@@ -339,38 +341,52 @@ static void checkSSL()
   #endif
 }
 
-static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+static void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    if (!logFile->isOpen())
-        logFile->open(QIODevice::WriteOnly | QIODevice::Append);
-    QTextStream out(logFile);
-    switch (type)
+    defaultMessageHandler(type, context, msg);
+    QString entry;
+    if (logFile || DlgConsole::Dialog)
     {
-    case QtDebugMsg:
-        out << "DEBUG | ";
-        break;
-    case QtInfoMsg:
-        out << "INFO  | ";
-        break;
-    case QtWarningMsg:
-        out << "WARN  | ";
-        break;
-    case QtCriticalMsg:
-        out << "ERROR | ";
-        break;
-    case QtFatalMsg:
-        out << "FATAL | ";
-        break;
+        QTextStream out(&entry);
+        switch (type)
+        {
+        case QtDebugMsg:
+            out << "DEBUG | ";
+            break;
+        case QtInfoMsg:
+            out << "INFO  | ";
+            break;
+        case QtWarningMsg:
+            out << "WARN  | ";
+            break;
+        case QtCriticalMsg:
+            out << "ERROR | ";
+            break;
+        case QtFatalMsg:
+            out << "FATAL | ";
+            break;
+        }
+        out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
+        out << msg;
     }
-    out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
-    out << msg;
-    if (context.file)
-        out << " | " << context.file << ":" << context.line << ", " << context.function;
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    out << Qt::endl;
-  #else
-    out << endl;
-  #endif
+    if (logFile)
+    {
+        if (!logFile->isOpen())
+            logFile->open(QIODevice::WriteOnly | QIODevice::Append);
+        QTextStream out(logFile);
+        out << entry;
+        if (context.file)
+            out << " | " << context.file << ":" << context.line << ", " << context.function;
+      #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+        out << Qt::endl;
+      #else
+        out << endl;
+      #endif
+    }
+    if (DlgConsole::Dialog)
+    {
+        DlgConsole::Dialog->append(entry);
+    }
 }
 
 static void installTranslator(QApplication &a, QTranslator &translator, const QString &filename)
@@ -429,39 +445,11 @@ int main(int argc, char *argv[])
         gSettings = new Settings();
 
     // logging
+    defaultMessageHandler = qInstallMessageHandler(messageHandler);
     int logLevel = gSettings->logLevel();
-    if (logLevel > 0)
-    {
-        if (logLevel < 1000)
-        {
-            //log in file
-            logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
-            qInstallMessageHandler(messageHandlerFileOutput);
-        }
-        else
-        {
-            // log in console
-           logLevel -= 1000;
-        }
-        switch (logLevel)
-        {
-        case 1:
-            QLoggingCategory::setFilterRules("*.debug=false");
-            break;
-        case 2:
-            break;
-        case 3:
-            QLoggingCategory::setFilterRules("SqlTableModel.info=true");
-            break;
-        case 4:
-        default:
-            QLoggingCategory::setFilterRules("SqlTableModel.info=true\nSqlTableModel.debug=true");
-            break;
-        case 999:
-            QLoggingCategory::setFilterRules("*.info=true\n*.debug=true");
-            break;
-        }
-    }
+    if (logLevel > 100)
+        logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
+    gSettings->initLogLevel(logLevel);
 
     qInfo("--- Application start ---");
     qInfo() << "Version:" << QCoreApplication::applicationVersion();

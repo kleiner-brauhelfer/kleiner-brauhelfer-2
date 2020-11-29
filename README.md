@@ -47,6 +47,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Stil der Benutzeroberfläche fix auf "Fusion"
 - Neu: Eingabemöglichkeit des Extrakts (Anteil an Stammwürze) für Malzgaben und weitere Zutaten
 - Neu: High DPI Einstellung lässt sich über Argument "QT_AUTO_SCREEN​_SCALE_FACTOR=0" deaktivieren (kleiner-brauhelfer-2.exe QT_AUTO_SCREEN_SCALE_FACTOR=0)
+- Neu: Dialog für Log (Protokoll)
 - Fix: Angaben Braumeister 10L
 
 ### Version 2.2.2 (26.09.2020)

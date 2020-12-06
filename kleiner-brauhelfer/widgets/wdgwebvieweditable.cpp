@@ -207,7 +207,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     {
         QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
         ui->btnSaveTemplate->setProperty("file", file.fileName());
-        ui->lblFilePath->setText(file.fileName());
+        ui->lblFilePath->setText("<a href=\"" + file.fileName() + "\">" + file.fileName() + "</a>");
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             ui->tbTemplate->setPlainText(file.readAll());

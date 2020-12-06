@@ -298,7 +298,7 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             ui->tbTemplate->setPlainText(file.readAll());
-            ui->lblFilePath->setText(file.fileName());
+            ui->lblFilePath->setText("<a href=\"" + file.fileName() + "\">" + file.fileName() + "</a>");
             file.close();
         }
         else

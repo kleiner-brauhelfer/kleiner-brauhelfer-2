@@ -7,12 +7,16 @@
 Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
 {
+    defaultFont = QGuiApplication::font();
+    defaultPalette = QGuiApplication::palette();
     initTheme();
 }
 
 Settings::Settings(const QString& dir, QObject *parent) :
     QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
+    defaultFont = QGuiApplication::font();
+    defaultPalette = QGuiApplication::palette();
     initTheme();
 }
 
@@ -27,13 +31,18 @@ void Settings::initTheme()
 {
     beginGroup("Style");
 
-    font = value("Font", QFont()).value<QFont>();
-    mTheme = static_cast<Theme>(value("Theme", System).toInt());
+    // font
+    if (value("UseSystemFont", true).toBool())
+        font = defaultFont;
+    else
+        font = value("Font", QFont()).value<QFont>();
 
+    // palette
+    mTheme = static_cast<Theme>(value("Theme", System).toInt());
     switch (mTheme)
     {
     case System:
-        palette = QGuiApplication::palette();
+        palette = defaultPalette;
         break;
 
     case Bright:
@@ -278,7 +287,6 @@ void Settings::setFont(const QFont &font)
     beginGroup("Style");
     setValue("Font", font);
     endGroup();
-    this->font = font;
 }
 
 bool Settings::animationsEnabled()

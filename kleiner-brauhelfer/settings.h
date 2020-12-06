@@ -90,6 +90,8 @@ public:
 
 private:
     Theme mTheme;
+    QFont defaultFont;
+    QPalette defaultPalette;
 };
 
 #endif // SETTINGS_H

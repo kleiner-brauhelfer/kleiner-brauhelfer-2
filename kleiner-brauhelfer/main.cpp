@@ -478,8 +478,7 @@ int main(int argc, char *argv[])
                 MainWindow w(nullptr);
                 a.setStyle(QStyleFactory::create(gSettings->style()));
                 a.setPalette(gSettings->palette);
-                if (!gSettings->useSystemFont())
-                    w.setFont(gSettings->font);
+                a.setFont(gSettings->font);
                 w.show();
                 try
                 {

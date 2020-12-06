@@ -13,6 +13,7 @@ class DlgWasseraufbereitung : public QDialog
 
 public:
     explicit DlgWasseraufbereitung(QWidget *parent = nullptr);
+    DlgWasseraufbereitung(const QString& name, int einheit, double faktor, QWidget *parent = nullptr);
     ~DlgWasseraufbereitung();
     QString name() const;
     int einheit() const;

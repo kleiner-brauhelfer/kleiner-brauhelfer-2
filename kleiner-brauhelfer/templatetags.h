@@ -18,6 +18,8 @@ public:
         TagAnhang = 0x0010,
         TagBraudaten = 0x0020,
         TagGeraete = 0x0040,
+        TagWasserprofil = 0x0080,
+        TagWasseraufbereitung = 0x0100,
         TagAll = 0xffff
     };
     Q_DECLARE_FLAGS(TagParts, TagPart)

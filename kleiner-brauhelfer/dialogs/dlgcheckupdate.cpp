@@ -1,3 +1,5 @@
+#if QT_NETWORK_LIB
+
 #include "dlgcheckupdate.h"
 #include "ui_dlgcheckupdate.h"
 #include <QJsonDocument>
@@ -64,7 +66,7 @@ void DlgCheckUpdate::httpFinished()
     }
     else
     {
-        qWarning() << "DlgCheckUpdate: Network error:" << reply->error();
+        qWarning() << "DlgCheckUpdate: Network error:" << reply->errorString();
     }
     emit finished();
 }
@@ -96,3 +98,5 @@ bool DlgCheckUpdate::parseReplyGithub(const QByteArray& str)
 
     return false;
 }
+
+#endif // QT_NETWORK_LIB

@@ -5,6 +5,7 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QDesktopServices>
+#include <QMimeData>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "importexport.h"
@@ -194,6 +195,22 @@ void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
             on_btnLaden_clicked();
             break;
         }
+    }
+}
+
+void TabSudAuswahl::dragEnterEvent(QDragEnterEvent *event)
+{
+    if (event->mimeData()->hasUrls())
+    {
+        event->acceptProposedAction();
+    }
+}
+
+void TabSudAuswahl::dropEvent(QDropEvent *event)
+{
+    for (const QUrl& url : event->mimeData()->urls())
+    {
+        rezeptImportieren(url.toLocalFile());
     }
 }
 
@@ -561,16 +578,20 @@ void TabSudAuswahl::on_btnLoeschen_clicked()
     sudLoeschen();
 }
 
-void TabSudAuswahl::rezeptImportieren()
+void TabSudAuswahl::rezeptImportieren(const QString& filePath_)
 {
     gSettings->beginGroup("General");
-    QString filter;
+    QString filePath = filePath_;
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
-    QString filePath = QFileDialog::getOpenFileName(this, tr("Rezept Import"),
-                                     path, "kleiner-brauhelfer (*.json);;MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
+    if (filePath.isEmpty())
+    {
+        filePath = QFileDialog::getOpenFileName(this, tr("Rezept Import"),
+                                                path, "kleiner-brauhelfer (*.json);;MaischeMalzundMehr (*.json);;BeerXML (*.xml)");
+    }
     if (!filePath.isEmpty())
     {
-        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+        QFileInfo fileInfo(filePath);
+        gSettings->setValue("exportPath", fileInfo.absolutePath());
         try
         {
             QFile file(filePath);
@@ -579,19 +600,13 @@ void TabSudAuswahl::rezeptImportieren()
                 QByteArray content = file.readAll();
                 file.close();
                 int sudRow = -1;
-                if (filter == "kleiner-brauhelfer (*.json)")
+                if (fileInfo.suffix() == "json")
                 {
                     sudRow = ImportExport::importKbh(bh, content);
                     if (sudRow < 0)
                         sudRow = ImportExport::importMaischeMalzundMehr(bh, content);
                 }
-                else if (filter == "MaischeMalzundMehr (*.json)")
-                {
-                    sudRow = ImportExport::importMaischeMalzundMehr(bh, content);
-                    if (sudRow < 0)
-                        sudRow = ImportExport::importKbh(bh, content);
-                }
-                else if (filter == "BeerXML (*.xml)")
+                else if (fileInfo.suffix() == "xml")
                 {
                     sudRow = ImportExport::importBeerXml(bh, content);
                 }

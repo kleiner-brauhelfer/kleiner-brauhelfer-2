@@ -8,6 +8,29 @@ ModelMalzschuettung::ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db) :
 {
     connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(onSudDataChanged(const QModelIndex&)));
+    mVirtualField.append("Extrakt");
+    mVirtualField.append("ExtraktProzent");
+}
+
+QVariant ModelMalzschuettung::dataExt(const QModelIndex &idx) const
+{
+    switch(idx.column())
+    {
+    case ColExtrakt:
+    {
+        double swMalz = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW_Malz).toDouble();
+        double p = data(idx.row(), ColProzent).toDouble() / 100;
+        return swMalz * p;
+    }
+    case ColExtraktProzent:
+    {
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW).toDouble();
+        double extrakt = data(idx.row(), ColExtrakt).toDouble();
+        return extrakt / sw * 100;
+    }
+    default:
+        return QVariant();
+    }
 }
 
 bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &value)
@@ -48,6 +71,16 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         double total = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::Colerg_S_Gesamt).toDouble();
         return setData(idx.row(), ColProzent, value.toDouble() * 100 / total);
+    }
+    case ColExtrakt:
+    {
+        double swMalz = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW_Malz).toDouble();
+        return setDataExt(index(idx.row(), ColProzent), value.toDouble() / swMalz * 100);
+    }
+    case ColExtraktProzent:
+    {
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW).toDouble();
+        return setDataExt(index(idx.row(), ColExtrakt), value.toDouble() * sw / 100);
     }
     default:
         return false;

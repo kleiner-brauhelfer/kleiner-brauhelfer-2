@@ -79,6 +79,7 @@ private:
     void updateGlas();
     void updateAnlageModel();
     void updateWasserModel();
+    void vergaerungsgradUebernehmen(const QString& hefe);
 
 private:
     Ui::TabRezept *ui;

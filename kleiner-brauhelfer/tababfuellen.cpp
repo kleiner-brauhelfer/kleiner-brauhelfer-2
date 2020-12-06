@@ -24,9 +24,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbTemperaturJungbier->setColumn(ModelSud::ColTemperaturJungbier);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->tbSw->setColumn(ModelSud::ColSWIst);
-    ui->tbTEVG->setColumn(ModelSud::ColtEVG);
-    ui->tbSEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
-    ui->tbSEVG->setColumn(ModelSud::ColsEVG);
+    ui->tbEVG->setColumn(ModelSud::ColtEVG);
+    ui->tbEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
     ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkohol);
@@ -137,6 +136,7 @@ void TabAbfuellen::checkEnabled()
     ui->tbJungbiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
+    ui->tbWassserZuckerloesung->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
     ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
@@ -149,6 +149,8 @@ void TabAbfuellen::updateValues()
         return;
 
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+        wdg->updateValue();
+    for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
         wdg->updateValue();
 
     QDateTime dt = bh->sud()->getAbfuelldatum();
@@ -165,6 +167,7 @@ void TabAbfuellen::updateValues()
     ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunktEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
+    ui->tbAlkoholGaerung->setValue(BierCalc::alkohol(bh->sud()->getSWIst(), bh->sud()->getSREIst()));
 
     ui->cbSpunden->setChecked(bh->sud()->getSpunden());
     ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());
@@ -237,9 +240,13 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
     DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
+                       QDateTime(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sud()->setTemperaturJungbier(dlg.temperatur());
         bh->sud()->setSWSchnellgaerprobe(dlg.value());
+    }
 }
 
 void TabAbfuellen::on_btnSWJungbier_clicked()
@@ -247,9 +254,13 @@ void TabAbfuellen::on_btnSWJungbier_clicked()
     DlgRestextrakt dlg(ui->tbSWJungbier->value(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
+                       QDateTime(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sud()->setTemperaturJungbier(dlg.temperatur());
         bh->sud()->setSWJungbier(dlg.value());
+    }
 }
 
 void TabAbfuellen::on_cbSpunden_clicked(bool checked)

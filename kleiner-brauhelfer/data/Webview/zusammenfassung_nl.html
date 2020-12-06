@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{Style}}">
+</head>
+<body>
+
+  <div class="r" align="center">
+    <h1>{{Rezept.Name}} {{#Rezept.Nummer}}(#{{Rezept.Nummer}}){{/Rezept.Nummer}}</h1>
+    <h1><em>{{Rezept.Kategorie}}</em></h1>
+  </div>
+
+  <div class="rm" align="center">
+    <table>
+      <tr>
+        <td valign="center" align="right">
+          <div style="background-color:{{Sud.FarbeRgb}};padding:0px;margin:0px;width:132px;height:132px">
+            <img class="glas" style="padding:0px;margin:-4px;width:140px;height:140px">
+          </div>
+        </td>
+        <td valign="top">
+          <table>
+            <tr>
+              <th></th>
+              <th style="padding:0 20px;">Brouwsel</th>
+              <th style="padding:0 20px;">Recept</th>
+              <th style="padding:0 20px;"></th>
+            </tr>
+            <tr>
+              <td>Hoeveelheid</td>
+              <td class="value" align="center">{{Sud.Menge}}</td>
+              <td class="value" align="center">{{Rezept.Menge}}</td>
+              <td>l</td>
+            </tr>
+            {{#Rezept.HighGravityFaktor}}
+            <tr>
+              <td>High-Gravity Faktor</td>
+              <td class="value" align="center"></td>
+              <td class="value" align="center">{{Rezept.HighGravityFaktor}}</td>
+              <td>%</td>
+            </tr>
+           {{/Rezept.HighGravityFaktor}}
+            <tr>
+              <td>Begin SG</td>
+              <td class="value" align="center">{{Sud.SW}}</td>
+              <td class="value" align="center">{{Rezept.SW}}</td>
+              <td>&deg;P</td>
+            </tr>
+            <tr>
+              <td>Alcohol</td>
+              <td class="value" align="center">{{Sud.Alkohol}}</td>
+              <td class="value" align="center">{{Rezept.Alkohol}}</td>
+              <td>%</td>
+            </tr>
+            <tr>
+              <td>Bitterheid</td>
+              <td class="value" align="center">{{Sud.Bittere}}</td>
+              <td class="value" align="center">{{Rezept.Bittere}}</td>
+              <td>IBU</td>
+            </tr>
+            <tr>
+              <td>Kleur</td>
+              <td class="value" align="center">{{Sud.Farbe}}</td>
+              <td class="value" align="center">{{Rezept.Farbe}}</td>
+              <td>EBC</td>
+            </tr>
+            <tr>
+              <td>CO&#x2082;-Gehalte</td>
+              <td class="value" align="center">{{Sud.CO2}}</td>
+              <td class="value" align="center">{{Rezept.CO2}}</td>
+              <td>g/l</td>
+            </tr>
+            <tr>
+              <td>Restalkaliteit</td>
+              <td class="value" align="center">{{Sud.Restalkalitaet}}</td>
+              <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
+              <td>&deg;dH</td>
+            </tr>
+            <tr>
+              <td>Brouwzaalrendement</td>
+              <td class="value" align="center">{{Sud.SHA}}</td>
+              <td align="center">---</td>
+              <td>%</td>
+            </tr>
+            <tr>
+              <td>Effektiefe Brouwzaalrendement</td>
+              <td class="value" align="center">{{Sud.effSHA}}</td>
+              <td class="value" align="center">{{Rezept.SHA}}</td>
+              <td>%</td>
+            </tr>
+            <tr>
+              <td>Vergistingsgraad</td>
+              <td class="value" align="center">{{Sud.EVG}}</td>
+              <td class="value" align="center">{{Rezept.EVG}}</td>
+              <td>%</td>
+            </tr>
+          </table>
+        </td>
+        <td valign="top" align="left" style="padding:0 30px;">
+          <table>
+              <tr>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+              <tr>
+                <td style="padding:0 20px;">Brouwinstallatie</td>
+                <td class="value">{{Rezept.Brauanlage}}</td>
+              </tr>
+              <tr>
+                <td style="padding:0 20px;">Waterprofiel</td>
+                <td class="value">{{Rezept.Wasserprofil}}</td>
+              </tr>
+              <tr>
+                <td style="padding:0 20px;">Brouwdatum</td>
+                <td class="value">{{Sud.Braudatum}}</td>
+              </tr>
+              <tr>
+                <td style="padding:0 20px;">Botteldatum</td>
+                <td class="value">{{Sud.Abfuelldatum}}</td>
+              </tr>
+              <tr>
+                <td style="padding:0 20px;">Rijpings tijd</td>
+                <td class="value">{{Rezept.Reifezeit}} Wochen</td>
+              </tr>
+              <tr>
+                <td colspan="2">{{{Sud.BewertungSterne}}}
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  {{#Rezept.Kommentar}}
+  <div class="rm bg_kommentar" align="center">
+    <h2>Opmerking</h2>
+    <p class="kommentar">{{{Rezept.Kommentar}}}</p>
+  </div>
+  {{/Rezept.Kommentar}}
+
+  <table style="width:100%">
+    <tr>
+      <td valign="top" width="50%">
+      {{#Zutaten.Malz}}
+      <div class="rm bg_malz" align="center">
+        <img src="qrc:/images/getreide.svg" height="50px">
+        <table>
+          <col width="*">
+          <col width="150">
+          <col width="150">
+          <col width="150">
+          <tr>
+            <th></th>
+            <th>Kleur [EBC]</th>
+            <th>Aandeel [%]</th>
+            <th>Hoeveelheid [kg]</th>
+          </tr>
+          {{#Liste}}
+          <tr>
+            <td>{{Name}}</td>
+            <td class="value" align="center">{{Farbe}}</td>
+            <td class="value" align="center">{{Prozent}}</td>
+            <td class="value" align="center">{{Menge}}</td>
+          </tr>
+          {{/Liste}}
+          <tr>
+            <td><strong>Totale hoeveelheid gist</strong></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
+          </tr>
+        </table>
+      </div>
+      {{/Zutaten.Malz}}
+      </td>
+      <td valign="top">
+        <div class="rm bg_hopfen" align="center">
+          <img src="qrc:/images/hopfen.svg" height="50px">
+          {{#Zutaten.Hopfen}}
+          <table>
+            <col width="*">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <tr>
+              <th></th>
+              <th>Moment</th>
+              <th>Alpha [%]</th>
+              <th>Kook tijd [min]</th>
+              <th>Hoeveelheid [g]</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td>{{Name}}</td>
+              <td class="value" align="center">
+                {{#Kochen}}Kochen{{/Kochen}}
+                {{#Vorderwuerze}}Vorderw&uuml;rze{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}Nachisomerisierung{{/Nachisomerisierung}}
+                {{#Ausschlagen}}beim Ausschlagen{{/Ausschlagen}}
+              </td>
+              <td class="value" align="center">{{Alpha}}</td>
+              <td class="value" align="center">{{Kochdauer}}</td>
+              <td class="value" align="center">{{Menge}}</td>
+            </tr>
+            {{/Liste}}
+          </table>
+          {{/Zutaten.Hopfen}}
+          <br/>
+          {{#Zutaten.Kalthopfen}}
+          <table>
+            <col width="*">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <tr>
+              <th></th>
+              <th>Toevoegen na [Dagen]</th>
+              <th>Duur [Dagen]</th>
+              <th>Hoeveelheid [g]</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td>{{Name}}</td>
+              <td class="value" align="center">{{ZugabeNach}}</td>
+              <td class="value" align="center">{{Dauer}}</td>
+              <td class="value" align="center">{{Menge}}</td>
+            </tr>
+            {{#Bemerkung}}<tr><td colspan="4" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
+            {{/Liste}}
+          </table>
+          {{/Zutaten.Kalthopfen}}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">
+        {{#Wasser}}
+        <div class="rm bg_wasser" align="center">
+          <img src="qrc:/images/wasser.svg" height="50px">
+          <table>
+            <col width="*">
+            <col width="150">
+            <tr>
+              <th></th>
+              <th>Hoeveelheid [l]</th>
+            </tr>
+            <tr>
+              <td>Maischwater</td>
+              <td class="value" align="center">{{Hauptguss}}</td>
+            </tr>
+            <tr>
+              <td>Spoelwater</td>
+              <td class="value" align="center">{{Nachguss}}</td>
+            </tr>
+            {{#Verduennung}}
+            <tr>
+              <td>Verdunning</td>
+              <td class="value" align="center">{{Verduennung}}</td>
+            </tr>
+            {{/Verduennung}}
+            <tr>
+              <td><strong>Totale hoeveelheid</strong></td>
+              <td class="value" align="center">{{Gesamt}}</td>
+            </tr>
+          </table>
+        </div>
+        {{/Wasser}}
+      </td>
+      <td valign="top">
+        {{#Zutaten.Hefe}}
+        <div class="rm bg_hefe" align="center">
+          <img src="qrc:/images/hefe.svg" height="50px">
+          <table>
+            <col width="*">
+            <col width="150">
+            <col width="150">
+            <tr>
+              <th></th>
+              <th>Toevoegen na [Dagen]</th>
+              <th>Hoeveelheid</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td>{{Name}}</td>
+              <td class="value" align="center">{{ZugabeNach}}</td>
+              <td class="value" align="center">{{Menge}}</td>
+            </tr>
+            {{/Liste}}
+          </table>
+        </div>
+        {{/Zutaten.Hefe}}
+      </td>
+    </tr>
+  </table>
+
+  <table style="width:100%" border="0" cellspacing="3">
+    <tr>
+      {{#Zutaten.Zusatz}}
+      <td valign="top">
+        <div class="rm bg_zusatz" align="center">
+          <img src="qrc:/images/zusatz.svg" height="50px">
+          <table>
+            <col width="100">
+            <col width="*">
+            <col width="100">
+            <tr>
+              <th></th>
+              <th>Moment</th>
+              <th>Hoeveelheid</th>
+            </tr>
+            {{#Liste}}
+            <tr>
+              <td>{{Name}}</td>
+              {{#Maischen}}
+              <td align="center">Maischen</td>
+              {{/Maischen}}
+              {{#Kochen}}
+              <td align="center">Kochen, <span class="value">{{Kochdauer}}</span> min</td>
+              {{/Kochen}}
+              {{#Gaerung}}
+              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, f&uuml;r <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              {{/Gaerung}}
+              <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
+            </tr>
+            {{#Bemerkung}}<tr><td colspan="3" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
+            {{/Liste}}
+          </table>
+        </div>
+      </td>
+      {{/Zutaten.Zusatz}}
+    </tr>
+  </table>
+
+  <div class="rm bg_rasten" align="center">
+    <h2>Maischplan</h2>
+    <table>
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <tr>
+        <th></th>
+        <th>Temperatuur [&deg;C]</th>
+        <th>Duur [min]</th>
+      </tr>
+      {{#Rasten.Liste}}
+      <tr>
+        <td>{{Name}}</td>
+        <td class="value" align="center">{{Temp}}</td>
+        <td class="value" align="center">{{Dauer}}</td>
+      </tr>
+      {{/Rasten.Liste}}
+    </table>
+  </div>
+
+  {{#Anhang}}
+  <div class="rm bg_anhaenge" align="center">
+    <h2>Bijlagen</h2>
+    <table style="width:100%">
+    {{#Liste}}
+    {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}
+    {{^Bild}}<tr><td align="center"><a href="{{Pfad}}">{{Pfad}}</a></td></tr>{{/Bild}}
+    {{/Liste}}
+    </table>
+  </div>
+  {{/Anhang}}
+
+  <div align="center">
+    <p class="version">{{App.Name}} v{{App.Version}} / <script>document.write(new Date().toLocaleDateString());</script></p>
+  </div>
+
+</body>
+</html>

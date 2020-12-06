@@ -1,4 +1,9 @@
-QT += core sql gui widgets svg xml webenginewidgets printsupport
+QT += core sql gui widgets svg xml
+QT += printsupport
+QT += network
+isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 4) {
+ QT += webenginewidgets
+}
 isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
  QT += charts
 }
@@ -8,8 +13,8 @@ TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
 VER_MIN = 2
-VER_PAT = 0
-VERSION = $$sprintf("%1.%2.%3Beta", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
+VER_PAT = 3
+VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
 TEMPLATE = app
@@ -57,6 +62,7 @@ SOURCES += \
     dialogs/dlgabout.cpp \
     dialogs/dlgbierspende.cpp \
     dialogs/dlgcheckupdate.cpp \
+    dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgispindeleinstellung.cpp \
@@ -137,6 +143,7 @@ HEADERS += \
     dialogs/dlgabout.h \
     dialogs/dlgbierspende.h \
     dialogs/dlgcheckupdate.h \
+    dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgispindeleinstellung.h \
@@ -213,6 +220,7 @@ FORMS += \
     dialogs/dlgabout.ui \
     dialogs/dlgbierspende.ui \
     dialogs/dlgcheckupdate.ui \
+    dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgispindeleinstellung.ui \
@@ -240,8 +248,10 @@ FORMS += \
 
 RESOURCES += \
     data.qrc \
-    images.qrc
+    images.qrc \
+    translations.qrc
 
 TRANSLATIONS += \
     translations/kbh_en.ts \
+    translations/kbh_nl.ts \
     translations/kbh_sv.ts

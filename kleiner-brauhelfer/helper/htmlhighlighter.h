@@ -2,6 +2,7 @@
 #define HTMLHIGHLIGHTER_H
 
 #include <QSyntaxHighlighter>
+#include <QRegularExpression>
 
 QT_BEGIN_NAMESPACE
 class QTextDocument;
@@ -19,38 +20,37 @@ protected:
     void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
 
 private:
-    // Состояние подсветки, в которой находится текстовый блок на момент его закрытия
     enum States {
-        None,       // Без подсветки
-        Tag,        // Подсветка внутри тега
-        Comment,    // Внутри комментария
-        Quote,      // Внутри кавычек, которые внутри тега
+        None,
+        Tag,
+        Comment,
+        Quote,
         CustomTag
     };
 
     struct HighlightingRule
     {
-        QRegExp pattern;
+        QRegularExpression pattern;
         QTextCharFormat format;
     };
-    QVector<HighlightingRule> startTagRules;    // Правила форматирования для открывающих тегов
-    QVector<HighlightingRule> endTagRules;      // Правила форматирования для закрывающих тегов
+    QVector<HighlightingRule> startTagRules;
+    QVector<HighlightingRule> endTagRules;
 
-    QRegExp openTag;                            // Символ открыватия тега - "<"
-    QRegExp closeTag;                           // Символ закрытия тег    - ">"
-    QTextCharFormat edgeTagFormat;              // Форматирование символов openTag и closeTag
-    QTextCharFormat insideTagFormat;            // Форматирование текста внутри тега
+    QRegularExpression openTag;
+    QRegularExpression closeTag;
+    QTextCharFormat edgeTagFormat;
+    QTextCharFormat insideTagFormat;
 
-    QRegExp commentStartExpression;             // Регулярка начала комментария
-    QRegExp commentEndExpression;               // Регулярка закрытия комментария
-    QTextCharFormat multiLineCommentFormat;     // Форматирование текста внутри комментария
+    QRegularExpression commentStartExpression;
+    QRegularExpression commentEndExpression;
+    QTextCharFormat multiLineCommentFormat;
 
-    QRegExp quotes;                             // Регулярное выражение для текста в кавычках внутри тега
-    QTextCharFormat quotationFormat;            // Форматирование текста в кавычках внутри тега
-    QTextCharFormat tagsFormat;                 // Форматирование самих тегов
+    QRegularExpression quotes;
+    QTextCharFormat quotationFormat;
+    QTextCharFormat tagsFormat;
 
-    QRegExp customTagStartExpression;
-    QRegExp customTagEndExpression;
+    QRegularExpression customTagStartExpression;
+    QRegularExpression customTagEndExpression;
     QTextCharFormat customTagFormat;
 };
 

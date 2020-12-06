@@ -192,24 +192,24 @@ void TabAusruestung::sudLoaded()
 
 void TabAusruestung::anlage_selectionChanged()
 {
-    QRegExp regExpId;
-    QRegExp regExpId2;
+    QRegularExpression regExpId;
+    QRegularExpression regExpId2;
     QModelIndexList selectedRows = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selectedRows.count() > 0)
     {
         mRow = selectedRows[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
         QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
-        regExpId = QRegExp(QString("^%1$").arg(anlage), Qt::CaseInsensitive, QRegExp::RegExp);
-        regExpId2 = QRegExp(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId = QRegularExpression(QString("^%1$").arg(QRegularExpression::escape(anlage)));
+        regExpId2 = QRegularExpression(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
     }
     else
     {
-        regExpId = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
-        regExpId2 = QRegExp(QString("--dummy--"), Qt::CaseInsensitive, QRegExp::RegExp);
+        regExpId = QRegularExpression(QString("--dummy--"));
+        regExpId2 = QRegularExpression(QString("--dummy--"));
     }
-    static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegExp(regExpId2);
-    static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegExp(regExpId);
+    static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
+    static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegularExpression(regExpId);
     ui->sliderAusbeuteSude->setMaximum(9999);
     if (ui->sliderAusbeuteSude->value() == 0)
         ui->sliderAusbeuteSude->setValue(9999);
@@ -378,6 +378,7 @@ void TabAusruestung::updateDurchschnitt()
     if (nVerdampfung > 0)
         verdampfung /= nVerdampfung;
     ui->sliderAusbeuteSude->setMaximum(N);
+    ui->sliderAusbeuteSude->setEnabled(N > 1);
     ui->tbAusbeuteMittel->setValue(ausbeute);
     ui->tbVerdampfungMittel->setValue(verdampfung);
     ui->tbAusbeuteSude->setValue(ui->sliderAusbeuteSude->value());
@@ -402,7 +403,7 @@ void TabAusruestung::on_btnVerdampfungsrate_clicked()
     }
     if (dlg.exec() == QDialog::Accepted)
     {
-        ui->tbVerdampfung->setValue(dlg.getVerdampfungsrate());
+        setData(ModelAusruestung::ColVerdampfungsrate, dlg.getVerdampfungsrate());
     }
 }
 

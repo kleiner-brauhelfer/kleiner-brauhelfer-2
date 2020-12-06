@@ -47,7 +47,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     ui->widget_DiaNachgaerverlauf->L1Precision = 1;
     ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Druck [bar]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("bar");
-    ui->widget_DiaNachgaerverlauf->L2Precision = 1;
+    ui->widget_DiaNachgaerverlauf->L2Precision = 2;
     ui->widget_DiaNachgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
     ui->widget_DiaNachgaerverlauf->KurzbezeichnungL3 = tr("°C");
     ui->widget_DiaNachgaerverlauf->L3Precision = 1;
@@ -116,7 +116,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 
     table->setModel(model);
     table->cols.append({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
-    table->cols.append({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 10.0, 0.1, false, table)});
+    table->cols.append({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
     table->cols.append({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
     table->cols.append({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->cols.append({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});
@@ -325,6 +325,7 @@ void TabGaerverlauf::updateDiagramm()
         diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
         diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
     }
+    diag->setWertLinie1(bh->sud()->getSRE());
     diag->repaint();
 
     diag = ui->widget_DiaHauptgaerverlauf;
@@ -343,6 +344,8 @@ void TabGaerverlauf::updateDiagramm()
     }
     if (bh->sud()->getSchnellgaerprobeAktiv())
         diag->setWertLinie1(bh->sud()->getGruenschlauchzeitpunkt());
+    else
+        diag->setWertLinie1(bh->sud()->getSRE());
     diag->repaint();
 
     diag = ui->widget_DiaNachgaerverlauf;
@@ -408,12 +411,22 @@ void TabGaerverlauf::diagram_selectionChanged(int id)
 
 void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
 {
-    int row = bh->sud()->modelSchnellgaerverlauf()->append({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()}});
-    if (row >= 0)
+    ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
+    double re = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble();
+    double temp = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColTemp).toDouble();
+    DlgRestextrakt dlg(re, bh->sud()->getSWIst(), temp, QDateTime::currentDateTime(), this);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        ui->tableWidget_Schnellgaerverlauf->setCurrentIndex(bh->sud()->modelSchnellgaerverlauf()->index(row, ModelSchnellgaerverlauf::ColRestextrakt));
-        ui->tableWidget_Schnellgaerverlauf->scrollTo(ui->tableWidget_Schnellgaerverlauf->currentIndex());
-        ui->tableWidget_Schnellgaerverlauf->edit(ui->tableWidget_Schnellgaerverlauf->currentIndex());
+        QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelSchnellgaerverlauf::ColZeitstempel, dlg.datum()},
+                                    {ModelSchnellgaerverlauf::ColRestextrakt, dlg.value()},
+                                    {ModelSchnellgaerverlauf::ColTemp, dlg.temperatur()}});
+        int row = model->append(values);
+        if (row >= 0)
+        {
+            ui->tableWidget_Schnellgaerverlauf->setCurrentIndex(model->index(row, ModelSchnellgaerverlauf::ColRestextrakt));
+            ui->tableWidget_Schnellgaerverlauf->scrollTo(ui->tableWidget_Schnellgaerverlauf->currentIndex());
+        }
     }
 }
 
@@ -427,12 +440,22 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
 
 void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
-    int row = bh->sud()->modelHauptgaerverlauf()->append({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()}});
-    if (row >= 0)
+    ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
+    double re = model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble();
+    double temp = model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColTemp).toDouble();
+    DlgRestextrakt dlg(re, bh->sud()->getSWIst(), temp, QDateTime::currentDateTime(), this);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        ui->tableWidget_Hauptgaerverlauf->setCurrentIndex(bh->sud()->modelHauptgaerverlauf()->index(row, ModelHauptgaerverlauf::ColRestextrakt));
-        ui->tableWidget_Hauptgaerverlauf->scrollTo(ui->tableWidget_Hauptgaerverlauf->currentIndex());
-        ui->tableWidget_Hauptgaerverlauf->edit(ui->tableWidget_Hauptgaerverlauf->currentIndex());
+        QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelHauptgaerverlauf::ColZeitstempel, dlg.datum()},
+                                    {ModelHauptgaerverlauf::ColRestextrakt, dlg.value()},
+                                    {ModelHauptgaerverlauf::ColTemp, dlg.temperatur()}});
+        int row = model->append(values);
+        if (row >= 0)
+        {
+            ui->tableWidget_Hauptgaerverlauf->setCurrentIndex(model->index(row, ModelHauptgaerverlauf::ColRestextrakt));
+            ui->tableWidget_Hauptgaerverlauf->scrollTo(ui->tableWidget_Hauptgaerverlauf->currentIndex());
+        }
     }
 }
 
@@ -561,7 +584,8 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 
 void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
 {
-    int row = bh->sud()->modelNachgaerverlauf()->append({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()}});
+    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()}});
+    int row = bh->sud()->modelNachgaerverlauf()->append(values);
     if (row >= 0)
     {
         ui->tableWidget_Nachgaerverlauf->setCurrentIndex(bh->sud()->modelNachgaerverlauf()->index(row, ModelNachgaerverlauf::ColDruck));
@@ -629,12 +653,17 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
   #endif
     if (rows.size() == 0)
-        return;
-    bh->modelSchnellgaerverlauf()->blockSignals(true);
+        rows.append(clipboardText);
+    bool error = false;
+    bool wasBlocked = bh->modelSchnellgaerverlauf()->blockSignals(true);
     for (const QString& row : rows)
     {
         QStringList cols = row.split("\t");
-        if (cols.size() > 0)
+        if (cols.size() == 1)
+            cols = row.split(";");
+        if (cols.size() == 1)
+            cols = row.split(",");
+        if (cols.size() > 1)
         {
             QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
@@ -660,15 +689,33 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
                         values[ModelSchnellgaerverlauf::ColTemp] = temp;
                     }
                 }
+                if (cols.size() > 3)
+                    values[ModelSchnellgaerverlauf::ColBemerkung] = cols[3];
                 if (cols.size() > 6)
                     values[ModelSchnellgaerverlauf::ColBemerkung] = cols[6];
                 bh->modelSchnellgaerverlauf()->appendDirect(values);
             }
+            else
+            {
+                error = true;
+            }
+        }
+        else
+        {
+            error = true;
         }
     }
-    bh->modelSchnellgaerverlauf()->blockSignals(false);
+    bh->modelSchnellgaerverlauf()->blockSignals(wasBlocked);
     bh->modelSchnellgaerverlauf()->emitModified();
     bh->sud()->modelSchnellgaerverlauf()->invalidate();
+    if (error)
+    {
+        QMessageBox::warning(this, tr("Gärverlauf"),
+                             tr("Nicht alle Einträge konnten importiert werden.\n"
+                                "Unterstütztes Format:\n"
+                                "Datum1;Restextrakt1;Temperatur1[;Bemerkung1]\n"
+                                "Datum2;Restextrakt2;Temperatur2[;Bemerkung2]"));
+    }
 }
 
 void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
@@ -680,12 +727,17 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
   #endif
     if (rows.size() == 0)
-        return;
-    bh->modelHauptgaerverlauf()->blockSignals(true);
+        rows.append(clipboardText);
+    bool error = false;
+    bool wasBlocked = bh->modelHauptgaerverlauf()->blockSignals(true);
     for (const QString& row : rows)
     {
         QStringList cols = row.split("\t");
-        if (cols.size() > 0)
+        if (cols.size() == 1)
+            cols = row.split(";");
+        if (cols.size() == 1)
+            cols = row.split(",");
+        if (cols.size() > 1)
         {
             QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
@@ -711,15 +763,33 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
                         values[ModelHauptgaerverlauf::ColTemp] = temp;
                     }
                 }
+                if (cols.size() > 3)
+                    values[ModelHauptgaerverlauf::ColBemerkung] = cols[3];
                 if (cols.size() > 6)
                     values[ModelHauptgaerverlauf::ColBemerkung] = cols[6];
                 bh->modelHauptgaerverlauf()->appendDirect(values);
             }
+            else
+            {
+                error = true;
+            }
+        }
+        else
+        {
+            error = true;
         }
     }
-    bh->modelHauptgaerverlauf()->blockSignals(false);
+    bh->modelHauptgaerverlauf()->blockSignals(wasBlocked);
     bh->modelHauptgaerverlauf()->emitModified();
     bh->sud()->modelHauptgaerverlauf()->invalidate();
+    if (error)
+    {
+        QMessageBox::warning(this, tr("Gärverlauf"),
+                             tr("Nicht alle Einträge konnten importiert werden.\n"
+                                "Unterstütztes Format:\n"
+                                "Datum1;Restextrakt1;Temperatur1[;Bemerkung1]\n"
+                                "Datum2;Restextrakt2;Temperatur2[;Bemerkung2]"));
+    }
 }
 
 void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
@@ -731,12 +801,17 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
     QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
   #endif
     if (rows.size() == 0)
-        return;
-    bh->modelNachgaerverlauf()->blockSignals(true);
+        rows.append(clipboardText);
+    bool error = false;
+    bool wasBlocked = bh->modelNachgaerverlauf()->blockSignals(true);
     for (const QString& row : rows)
     {
         QStringList cols = row.split("\t");
-        if (cols.size() > 0)
+        if (cols.size() == 1)
+            cols = row.split(";");
+        if (cols.size() == 1)
+            cols = row.split(",");
+        if (cols.size() > 1)
         {
             QDateTime dt = toDateTime(cols[0]);
             if (dt.isValid())
@@ -761,13 +836,31 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
                         }
                     }
                 }
+                if (cols.size() > 3)
+                    values[ModelNachgaerverlauf::ColBemerkung] = cols[3];
                 if (cols.size() > 4)
                     values[ModelNachgaerverlauf::ColBemerkung] = cols[4];
                 bh->modelNachgaerverlauf()->appendDirect(values);
             }
+            else
+            {
+                error = true;
+            }
+        }
+        else
+        {
+            error = true;
         }
     }
-    bh->modelNachgaerverlauf()->blockSignals(false);
+    bh->modelNachgaerverlauf()->blockSignals(wasBlocked);
     bh->modelNachgaerverlauf()->emitModified();
     bh->sud()->modelNachgaerverlauf()->invalidate();
+    if (error)
+    {
+        QMessageBox::warning(this, tr("Gärverlauf"),
+                             tr("Nicht alle Einträge konnten importiert werden.\n"
+                                "Unterstütztes Format:\n"
+                                "Datum1;Druck1;Temperatur1[;Bemerkung1]\n"
+                                "Datum2;Druck2;Temperatur2[;Bemerkung2]"));
+    }
 }

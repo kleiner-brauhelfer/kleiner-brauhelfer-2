@@ -1,9 +1,7 @@
 #ifndef CHARTVIEW_H
 #define CHARTVIEW_H
 
-#include <QtGlobal>
-
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+#ifdef QT_CHARTS_LIB
 
 #include <QtCharts>
 class ChartView : public QChartView
@@ -13,7 +11,7 @@ public:
     ChartView(QWidget *parent = nullptr);
 };
 
-#else
+#else // QT_CHARTS_LIB
 
 #include <QGraphicsView>
 class ChartView : public QGraphicsView
@@ -23,6 +21,6 @@ public:
     ChartView(QWidget *parent = nullptr) : QGraphicsView(parent) {};
 };
 
-#endif
+#endif // QT_CHARTS_LIB
 
 #endif // CHARTVIEW_H

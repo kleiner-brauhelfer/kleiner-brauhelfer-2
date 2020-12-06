@@ -6,6 +6,15 @@
 
 extern Settings* gSettings;
 
+void DlgTableView::restoreView(bool full)
+{
+    Q_UNUSED(full)
+    gSettings->beginGroup("DlgTableView");
+    gSettings->setValue("tableState", QByteArray());
+    gSettings->endGroup();
+}
+
+
 DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefinition> columns, QMap<int, QVariant> defaultValues, int filterColumn, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgTableView),
@@ -31,6 +40,7 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
+    ui->tableView->restoreState(gSettings->value("tableState").toByteArray());
     gSettings->endGroup();
 }
 
@@ -38,6 +48,7 @@ DlgTableView::~DlgTableView()
 {
     gSettings->beginGroup("DlgTableView");
     gSettings->setValue("size", geometry().size());
+    gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
     gSettings->endGroup();
     delete ui;
 }
@@ -45,7 +56,7 @@ DlgTableView::~DlgTableView()
 void DlgTableView::on_tbFilter_textChanged(const QString &txt)
 {
     ProxyModel *proxy = static_cast<ProxyModel*>(ui->tableView->model());
-    proxy->setFilterRegExp(QRegExp(txt, Qt::CaseInsensitive, QRegExp::FixedString));
+    proxy->setFilterRegularExpression(QRegularExpression(QRegularExpression::escape(txt), QRegularExpression::CaseInsensitiveOption));
 }
 
 void DlgTableView::on_btnAdd_clicked()

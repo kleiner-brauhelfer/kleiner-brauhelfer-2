@@ -23,9 +23,10 @@ mkdir %BUILD_DIR%
 cd %BUILD_DIR%
 "%QT_DIR%\qmake.exe" "%PRO%" -config release
 nmake
-::"%QT_DIR%\lupdate.exe" "%PRO%"
-::"%QT_DIR%\lrelease.exe" "%PRO%"
 cd %~dp0
+
+xcopy "%~dp0deployment\win\64bit\libcrypto-1_1-x64.dll" "%BUILD_DIR%\bin" /Y
+xcopy "%~dp0deployment\win\64bit\libssl-1_1-x64.dll" "%BUILD_DIR%\bin" /Y
 
 if "%PORTABLE%" equ "1" (
   echo. 2>"%BUILD_DIR%\bin\portable"

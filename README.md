@@ -1,15 +1,23 @@
 # kleiner-brauhelfer v2
 Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und Verwalten von Biersuden. Die Version 2 ist die Weiterentwicklung vom [kleinen-brauhelfer](http://github.com/Gremmel/kleiner-brauhelfer).
 
+- <img src="kleiner-brauhelfer/images/de.svg" width="16"> verfügbar auf Deutsch
+- <img src="kleiner-brauhelfer/images/en.svg" width="16"> available in English
+- <img src="kleiner-brauhelfer/images/se.svg" width="16"> finns på svenska
+- <img src="kleiner-brauhelfer/images/nl.svg" width="16"> beschikbaar in het nederlands
+
 <img src="doc/sudauswahl.png" width="240"><img src="doc/rezept.png" width="240"><img src="doc/braudaten.png" width="240"><img src="doc/abfuelldaten.png" width="240"><img src="doc/gaerverlauf.png" width="240"><img src="doc/spickzettel.png" width="240"><img src="doc/zusammenfassung.png" width="240"><img src="doc/etikette.png" width="240"><img src="doc/bewertung.png" width="240"><img src="doc/brauuebersicht.png" width="240"><img src="doc/ausruestung.png" width="240"><img src="doc/rohstoffe.png" width="240">
 
 **Diskussionsthread:**
 
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
+**Credits:**
+
+Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
+
 ## Download letzte Version
-- [Version 2.1.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
-- [Version 2.2.0beta](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/tag/v2.2.0beta)
+- [Version 2.2.2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -33,10 +41,33 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Änderungen & Erweiterungen
 
-### Version 2.2.0 (in Entwicklung)
+### Version 2.2.3 (in Entwicklung)
+- Neu: Niederländische Übersetzung (Vielen Dank dachouffe!)
+- Neu: Übernahme des Vergärungsgrades der Hefe
+- Neu: Stil der Benutzeroberfläche fix auf "Fusion"
+- Neu: Eingabemöglichkeit des Extrakts (Anteil an Stammwürze) für Malzgaben und weitere Zutaten
+- Neu: High DPI Einstellung lässt sich über Argument "QT_AUTO_SCREEN​_SCALE_FACTOR=0" deaktivieren (kleiner-brauhelfer-2.exe QT_AUTO_SCREEN_SCALE_FACTOR=0)
+- Neu: Dialog für Log (Protokoll)
+- Fix: Angaben Braumeister 10L
+
+### Version 2.2.2 (26.09.2020)
+- Neu: Vorlagen für diverse Wasserprofile (vielen Dank rakader)
+- Neu: Dialog "Restextrakt" überarbeitet
+- Neu: Einstellbare Malztemperatur beim Einmaischen
+- Fix: Im Reiter "Ausrüstung" Liste der Sude bei Anlage mit Sonderzeichen wird nicht angezeigt
+- Fix: Dialog "Zutaten vom Lager abziehen" zeigt die Hopfenmenge nicht immer an
+- Fix: Berechnung der Ist-Farbe und Ist-Bittere
+- Fix: Übernahme der Verdampfungsrate vom Dialog im Reiter "Ausrüstung"
+
+### Version 2.2.1 (19.07.2020)
+- Fix: Sudinformation & Spickzettel werden nur angezeigt, nachdem Sprache eingestellt wird
+
+### Version 2.2.0 (17.07.2020)
 - Neu: Datenbankversion **2005**
 - Neu: Programm als Beerware lizenziert (siehe Menü Hilfe/Bierspende)
-- Neu: Direkte Auswahl bei Wasseraufbereiung 
+- Neu: Englische & schwedische Übersetzung (Vielen Dank Thomas!)
+- Neu: Direkte Auswahl bei Wasseraufbereiung
+- Neu: Eingabemöglichkeit für gewünschter pH-Wert
 - Fix: Sudkategorien nach oben/unten verschieben
 
 ### Version 2.2.0 Beta (27.06.2020)

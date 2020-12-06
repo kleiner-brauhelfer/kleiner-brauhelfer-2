@@ -196,6 +196,8 @@
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
     <addaction name="menuReiter"/>
+    <addaction name="separator"/>
+    <addaction name="actionLog"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -228,6 +230,8 @@
      </property>
      <addaction name="actionDeutsch"/>
      <addaction name="actionEnglisch"/>
+     <addaction name="actionSchwedisch"/>
+     <addaction name="actionNiederlaendisch"/>
     </widget>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
@@ -508,7 +512,7 @@
   <action name="actionDeutsch">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/de.png</normaloff>:/images/de.png</iconset>
+     <normaloff>:/images/de.svg</normaloff>:/images/de.svg</iconset>
    </property>
    <property name="text">
     <string>Deutsch</string>
@@ -517,10 +521,33 @@
   <action name="actionEnglisch">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/en.png</normaloff>:/images/en.png</iconset>
+     <normaloff>:/images/en.svg</normaloff>:/images/en.svg</iconset>
    </property>
    <property name="text">
     <string>Englisch</string>
+   </property>
+  </action>
+  <action name="actionSchwedisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/se.svg</normaloff>:/images/se.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Schwedisch</string>
+   </property>
+  </action>
+  <action name="actionNiederlaendisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/nl.svg</normaloff>:/images/nl.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Niederländisch</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="text">
+    <string>Log</string>
    </property>
   </action>
  </widget>

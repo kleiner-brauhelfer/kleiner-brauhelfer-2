@@ -1,5 +1,6 @@
 #include "tabrezept.h"
 #include "ui_tabrezept.h"
+#include <cmath>
 #include <QScrollBar>
 #include <QGraphicsScene>
 #include <QGraphicsSvgItem>
@@ -54,19 +55,21 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
     ui->tbWasserHGF->setColumn(ModelSud::ColWasserHgf);
+    ui->tbRestextrakt->setColumn(ModelSud::ColSRE);
     ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
     ui->tbRestalkalitaetSoll->setColumn(ModelSud::ColRestalkalitaetSoll);
     ui->tbRestalkalitaetWasser->setColumn(ModelSud::ColRestalkalitaetWasser);
     ui->tbRestalkalitaetIst->setColumn(ModelSud::ColRestalkalitaetIst);
     ui->tbPhMalz->setColumn(ModelSud::ColPhMalz);
     ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
+    ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
 
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     ui->diagramRasten->chart()->legend()->hide();
   #endif
 
@@ -251,6 +254,7 @@ void TabRezept::checkEnabled()
     ui->tbCO2->setReadOnly(gebraut);
     ui->cbWasserProfil->setEnabled(!gebraut);
     ui->tbRestalkalitaetSoll->setReadOnly(gebraut);
+    ui->tbPhMaischeSoll->setReadOnly(gebraut);
     ui->btnWasseraufbereitungUebernehmen->setVisible(!gebraut);
     ui->tbReifezeit->setReadOnly(gebraut);
     ui->btnNeueRast->setVisible(!gebraut);
@@ -389,8 +393,10 @@ void TabRezept::updateValues()
         ui->tbSudname->setCursorPosition(0);
     }
     if (!ui->cbKategorie->hasFocus())
+    {
+        ui->cbKategorie->setCurrentIndex(-1);
         ui->cbKategorie->setCurrentText(bh->sud()->getKategorie());
-
+    }
     double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
     ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
     diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
@@ -399,6 +405,7 @@ void TabRezept::updateValues()
     ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
     ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
+    ui->tbPhMaischeSoll->setEnabled(ui->tbPhMalz->value() > 0);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -416,7 +423,6 @@ void TabRezept::updateValues()
     else
         ui->lblBittere->setText(tr("sehr herb"));
     ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
-    ui->tbRestextrakt->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
     ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
@@ -526,7 +532,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::updateRastenDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QLineSeries *series = new QLineSeries();
     QLineSeries *seriesAux;
     int tTotal = 0;
@@ -670,7 +676,7 @@ void TabRezept::updateMalzGaben()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
         {
@@ -683,7 +689,7 @@ void TabRezept::updateMalzGaben()
 
 void TabRezept::updateMalzDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
@@ -707,7 +713,7 @@ void TabRezept::on_btnNeueMalzGabe_clicked()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()},
                                     {ModelMalzschuettung::ColName, dlg.name()},
@@ -744,7 +750,7 @@ void TabRezept::hopfenGaben_modified()
 
 void TabRezept::updateHopfenDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
     {
@@ -768,7 +774,7 @@ void TabRezept::updateHopfenGaben()
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
         {
@@ -790,7 +796,7 @@ void TabRezept::on_btnNeueHopfenGabe_clicked()
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
-        if (fabs(p) < 0.01)
+        if (std::fabs(p) < 0.01)
             p = 0.0;
         QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()},
                                     {ModelHopfengaben::ColName, dlg.name()},
@@ -837,7 +843,7 @@ void TabRezept::hefeGaben_modified()
 
 void TabRezept::updateHefeDiagram()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  #ifdef QT_CHARTS_LIB
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
     {
@@ -859,6 +865,32 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
                                     {ModelHefegaben::ColName, dlg.name()}});
         bh->sud()->modelHefegaben()->append(values);
         ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
+        vergaerungsgradUebernehmen(dlg.name());
+    }
+}
+
+void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
+{
+    QString str = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefe, ModelHefe::ColEVG).toString();
+    QRegularExpression regxExp("[-+]?[0-9]*[.,]?[0-9]+");
+    QRegularExpressionMatchIterator i = regxExp.globalMatch(str);
+    double mean = 0;
+    int N = 0;
+    while (i.hasNext())
+    {
+         QRegularExpressionMatch match = i.next();
+         double val = match.captured().replace(',', '.').toDouble();
+         mean += val;
+         N++;
+    }
+    if (N > 0 && mean > 0)
+    {
+        mean /= N;
+        int evg = qRound(mean);
+        if (QMessageBox::question(this, tr("Vergärungsgrad übernehmen?"),
+                                  tr("Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?").arg(evg),
+                                  QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+            bh->sud()->setVergaerungsgrad(evg);
     }
 }
 
@@ -939,13 +971,16 @@ void TabRezept::wasseraufbereitung_modified()
 
 void TabRezept::on_btnNeueWasseraufbereitung_clicked()
 {
-    DlgWasseraufbereitung dlg;
+    DlgWasseraufbereitung dlg(this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sud()->modelWasseraufbereitung()->append({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
-                                                      {ModelWasseraufbereitung::ColName, dlg.name()},
-                                                      {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
-                                                      {ModelWasseraufbereitung::ColFaktor, dlg.faktor()}});
+        double ra = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getRestalkalitaetIst();
+        QMap<int, QVariant> values({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
+                                    {ModelWasseraufbereitung::ColName, dlg.name()},
+                                    {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
+                                    {ModelWasseraufbereitung::ColFaktor, dlg.faktor()},
+                                    {ModelWasseraufbereitung::ColRestalkalitaet, ra}});
+        bh->sud()->modelWasseraufbereitung()->append(values);
         ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
     }
 }

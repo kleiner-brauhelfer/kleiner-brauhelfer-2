@@ -1,0 +1,53 @@
+Name;Calcium [mg/l];Magnesium [mg/l];Natrium [mg/l];Sulfat [mg/l];Chlorid [mg/l];Hydrogencarbonat [mg/l];Restalkalität [°dH]
+Burton (Staffordshire);275;40;25;610;35;270;0.3
+Dortmund;230;15;40;330;130;235;1.1
+Dublin;120;4;12;55;19;315;9.5
+Edinburgh;100;20;55;140;50;285;8.4
+London;70;6;15;40;38;80;4.7
+London Themse;40;5;30;70;40;60;1.0
+München;83;22;5;20;10;338;11.5
+Pilsen;7;2;2;8;6;5;0.3
+Wien;75;15;10;60;15;225;7.0
+Düsseldorf;40;15;25;80;45;80;1.6
+Achouffe (Wallonie);29;4;12;12;35;70;3.2
+Antwerpen (Flandern);65;7;16;48;30;159;4.5
+Beerse (Flandern);73;13;52;125;80;128;2.5
+Brabant (Brüssel);111;12;14;74;40;270;7.6
+Brügge (Westflandern);132;13;20;99;38;80;9.3
+Brüssel;100;11;18;70;41;250;7.1
+Chimay (Wallonie);70;7;7;21;21;205;6.4
+Hennegau (Wallonie);113;17;15;65;41;315;9.4
+Hoegaarden (Brabant);90;11;16;82;53;171;3.9
+Lüttich (Wallonie);60;15;11;28;24;210;6.7
+Orval (Wallonie);96;4;5;25;13;270;8.4
+Ostflandern;134;22;52;76;47;475;15.7
+Rochefort (Ardennen);82;10;6;32;17;245;7.6
+Westflandern;114;10;125;145;139;305;9.1
+Westvleteren (Westflandern);136;5;120;136;130;364;11.1
+Willebroek (Flandern);68;8;33;70;60;143;3.6
+Bodensee (Konstanz);50;9;6;34;8;157;4.9
+Jever (Niedersachsen);33;4;16;17;27;97;3.0
+Freiburg (Südschwarzwald);12;1;3;4;1;43;2.0
+Ardennen (Frankreich);60;13;11;25;24;200;6.3
+Wicklow Mountains (Irland);18;2;13;22;20;35;2.1
+Basel (Schweiz);56;7;13;31;16;170;5.3
+Zürich;49;7;7;14;7;171;5.7
+Gelb neutral;50;7;5;75;60;0;-5.6
+Gelb trocken;50;15;5;105;45;0;-5.9
+Gelb vollmundig;50;5;5;55;70;0;-2.4
+Amber neutral;50;10;15;75;63;40;-1.3
+Amber trocken;50;15;15;110;50;45;-1.1
+Amber vollmundig;50;5;15;55;65;35;-0.6
+Braun neutral;50;10;27;70;55;90;4.5
+Braun trocken;50;15;27;99;45;95;4.6
+Braun vollmundig;50;15;27;50;60;85;1.7
+Schwarz neutral;50;10;33;57;44;142;10.5
+Schwarz trocken;50;15;27;84;39;145;10.4
+Schwarz vollmundig;50;5;33;35;45;140;10.6
+American Lager;13;6;8;37;13;20;0.2
+Böhmisches Pils;20;0;8;15;35;0;-2.0
+Mild Ale;50;0;20;40;65;45;0.0
+New England IPA;105;0;12;75;150;0;-4.2
+Pale Ale I;113;20;25;300;55;35;-3.6
+Pale Ale II;90;10;10;200;25;50;-1.6
+Randy Mosher IPA;110;18;16;300;50;0;-5.0

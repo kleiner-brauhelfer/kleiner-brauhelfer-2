@@ -56,7 +56,7 @@ bool SqlTableModel::setData(const QModelIndex &idx, const QVariant &value, int r
             ret = QSqlTableModel::setData(idx2, value);
         if (ret && mSetDataCnt == 1)
         {
-            emit rowChanged(idx);
+            emit rowChanged(idx2);
             if (!mSignalModifiedBlocked)
                 emit modified();
         }

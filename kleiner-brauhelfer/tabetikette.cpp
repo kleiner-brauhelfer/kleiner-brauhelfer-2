@@ -3,10 +3,12 @@
 #include <QMessageBox>
 #include <QDirIterator>
 #include <QFile>
-#include <QPrintPreviewDialog>
 #include <QFileDialog>
+#ifdef QT_PRINTSUPPORT_LIB
 #include <QPrinter>
 #include <QPrinterInfo>
+#include <QPrintPreviewDialog>
+#endif
 #include <QSvgRenderer>
 #include <QDesktopServices>
 #include <QJsonDocument>
@@ -46,11 +48,13 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
+  #ifdef QT_PRINTSUPPORT_LIB
     gSettings->beginGroup("General");
     QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinterEtikette").toString());
     mPrinter = new QPrinter(printerInfo, QPrinter::HighResolution);
     mPrinter->setColorMode(QPrinter::Color);
-	gSettings->endGroup();
+    gSettings->endGroup();
+  #endif
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());
@@ -75,7 +79,9 @@ TabEtikette::TabEtikette(QWidget *parent) :
 TabEtikette::~TabEtikette()
 {
     delete ui;
+  #ifdef QT_PRINTSUPPORT_LIB
     delete mPrinter;
+  #endif
 }
 
 void TabEtikette::onTabActivated()
@@ -191,7 +197,7 @@ void TabEtikette::updateTemplateTags()
     if (!isTabActive())
         return;
     mTemplateTags.clear();
-    TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagRezept | TemplateTags::TagSud | TemplateTags::TagTags, bh->sud()->row());
+    TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagAll, bh->sud()->row());
     mTemplateTags["N"] = "N";
     mTemplateTags["n"] = "n";
     updateTags();
@@ -328,6 +334,7 @@ void TabEtikette::on_btnSaveTemplate_clicked()
     ui->btnSaveTemplate->setVisible(false);
 }
 
+#ifdef QT_PRINTSUPPORT_LIB
 void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 {
     qreal faktorPxPerMM = printer->width() / printer->widthMM();
@@ -417,9 +424,11 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     mTemplateTags.remove("N");
     mTemplateTags.remove("n");
 }
+#endif
 
 void TabEtikette::loadPageLayout()
 {
+  #ifdef QT_PRINTSUPPORT_LIB
     QPageLayout layout;
     QMarginsF margins(data(ModelEtiketten::ColRandLinks).toDouble(),
                       data(ModelEtiketten::ColRandOben).toDouble(),
@@ -429,10 +438,12 @@ void TabEtikette::loadPageLayout()
     layout.setUnits(QPageLayout::Millimeter);
     layout.setPageSize(QPageSize((QPageSize::PageSizeId)data(ModelEtiketten::ColPapiergroesse).toInt()), margins);
     mPrinter->setPageLayout(layout);
+  #endif
 }
 
 void TabEtikette::savePageLayout()
 {
+  #ifdef QT_PRINTSUPPORT_LIB
     QPageLayout layout = mPrinter->pageLayout();
     QPageSize pageSize = layout.pageSize();
     if (pageSize.id() == QPageSize::Custom)
@@ -446,10 +457,12 @@ void TabEtikette::savePageLayout()
     setData(ModelEtiketten::ColRandOben, margins.top());
     setData(ModelEtiketten::ColRandRechts, margins.right());
     setData(ModelEtiketten::ColRandUnten, margins.bottom());
+  #endif
 }
 
 void TabEtikette::printPreview()
 {
+  #ifdef QT_PRINTSUPPORT_LIB
     loadPageLayout();
     mPrinter->setOutputFileName("");
     mPrinter->setOutputFormat(QPrinter::NativeFormat);
@@ -460,10 +473,12 @@ void TabEtikette::printPreview()
     gSettings->beginGroup("General");
     gSettings->setValue("DefaultPrinterEtikette", mPrinter->printerName());
     gSettings->endGroup();
+  #endif
 }
 
 void TabEtikette::toPdf()
 {
+  #ifdef QT_PRINTSUPPORT_LIB
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString fileName = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
@@ -482,6 +497,7 @@ void TabEtikette::toPdf()
         QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
     }
     gSettings->endGroup();
+  #endif
 }
 
 void TabEtikette::on_btnToPdf_clicked()

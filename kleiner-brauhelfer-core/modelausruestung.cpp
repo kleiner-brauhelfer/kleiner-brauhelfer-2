@@ -52,9 +52,11 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &idx) const
     case ColAnzahlSude:
     {
         ProxyModel modelSud;
+        QString anlage = data(idx.row(), ColName).toString();
+        QRegularExpression regExp(QString("^%1$").arg(QRegularExpression::escape(anlage)));
         modelSud.setSourceModel(bh->modelSud());
         modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
-        modelSud.setFilterRegExp(QString("^%1$").arg(data(idx.row(), ColName).toString()));
+        modelSud.setFilterRegularExpression(regExp);
         return modelSud.rowCount();
     }
     default:
@@ -108,12 +110,12 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
                 QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 50.0);
                 break;
             case Brauhelfer::AnlageTyp::Braumeister10:
-                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 24.0);
-                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 33.0);
-                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 26.5);
-                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 24.0);
-                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 33.0);
-                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 26.5);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Hoehe), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColMaischebottich_MaxFuellhoehe), 23.5);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Durchmesser), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_Hoehe), 28.0);
+                QSqlTableModel::setData(index(idx.row(), ColSudpfanne_MaxFuellhoehe), 23.5);
                 break;
             case Brauhelfer::AnlageTyp::Braumeister20:
                 QSqlTableModel::setData(index(idx.row(), ColMaischebottich_Durchmesser), 34.0);

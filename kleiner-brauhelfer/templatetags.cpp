@@ -87,6 +87,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["MengeMaischenUnten"] = locale.toString(fval / A, 'f', 1);
             ctxRezept["MengeMaischenOben"] = locale.toString(h - fval / A, 'f', 1);
             ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
+            ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
             ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
             ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
@@ -109,6 +110,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
             ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
             ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
+            ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
+            ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
             ctx["Rezept"] = ctxRezept;
         }
 
@@ -117,10 +120,21 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             QVariantMap ctxSud;
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
             ctxSud["Status"] = QString::number(static_cast<int>(status));
-            ctxSud["StatusRezept"] = status == Brauhelfer::SudStatus::Rezept ? "1" : "";
-            ctxSud["StatusGebraut"] = status == Brauhelfer::SudStatus::Gebraut ? "1" : "";
-            ctxSud["StatusAbgefuellt"] = status == Brauhelfer::SudStatus::Abgefuellt ? "1" : "";
-            ctxSud["StatusVerbraucht"] = status == Brauhelfer::SudStatus::Verbraucht ? "1" : "";
+            switch (status)
+            {
+            case Brauhelfer::SudStatus::Rezept:
+                ctxSud["StatusRezept"] = 1;
+                break;
+            case Brauhelfer::SudStatus::Gebraut:
+                ctxSud["StatusGebraut"] = 1;
+                break;
+            case Brauhelfer::SudStatus::Abgefuellt:
+                ctxSud["StatusAbgefuellt"] = 1;
+                break;
+            case Brauhelfer::SudStatus::Verbraucht:
+                ctxSud["StatusVerbraucht"] = 1;
+                break;
+            }
             ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
             ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
             ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());
@@ -130,8 +144,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColBraudatum).toDate(), QLocale::ShortFormat);
             ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAbfuelldatum).toDate(), QLocale::ShortFormat);
             ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Alkohol).toDouble(), 'f', 1);
-            ctxSud["tEVG"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColtEVG).toDouble(), 'f', 1);
+            ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColtEVG).toInt());
+            ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);
             ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
+            ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
 
             int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
             ctxSud["Bewertung"] = QString::number(bewertung);
@@ -201,17 +217,53 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     ctx["Rasten"] = QVariantMap({{"Liste", liste}});
 
                 QVariantMap mapWasser;
-                double f1 = 0.0, f2 = 0.0, f3 = 0.0;
+                double f1 = 0.0, f2 = 0.0, f3 = 0.0, A, h;
                 f1 = bh->sud()->geterg_WHauptguss();
-                mapWasser["Hauptguss"] = locale.toString(f1, 'f', 1);
+                mapWasser["Hauptguss"] = locale.toString(f1, 'f', 2);
+                A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+                h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+                mapWasser["HauptgussUnten"] = locale.toString(f1 / A, 'f', 1);
+                mapWasser["HauptgussOben"] = locale.toString(h - f1 / A, 'f', 1);
                 f2 = bh->sud()->geterg_WNachguss();
-                mapWasser["Nachguss"] = locale.toString(f2, 'f', 1);
+                mapWasser["Nachguss"] = locale.toString(f2, 'f', 2);
                 if (bh->sud()->gethighGravityFaktor() != 0)
                 {
-                    f3 = bh->sud()->getMenge() - bh->sud()->getMengeSollKochende();
-                    mapWasser["Verduennung"] = locale.toString(f3, 'f', 1);
+                    f3 = bh->sud()->getWasserHgf();
+                    mapWasser["Verduennung"] = locale.toString(f3, 'f', 2);
                 }
-                mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 1);
+                mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 2);
+
+                if (parts & TagWasseraufbereitung)
+                {
+                    liste.clear();
+                    model = bh->sud()->modelWasseraufbereitung();
+                    for (int row = 0; row < model->rowCount(); ++row)
+                    {
+                        QVariantMap map;
+                        map["Name"] = model->data(row, ModelWasseraufbereitung::ColName);
+                        map["Einheit"] = TabRohstoffe::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                        double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
+                        map["MengeHauptguss"] = locale.toString(m * f1, 'f', 2);
+                        map["MengeNachguss"] = locale.toString(m * f2, 'f', 2);
+                        if (bh->sud()->gethighGravityFaktor() != 0)
+                            map["MengeVerduennung"] = locale.toString(m * f3, 'f', 2);
+                        map["Menge"] = locale.toString(m * (f1 + f2 + f3), 'f', 2);
+                        liste << map;
+                    }
+                    if (!liste.empty())
+                        mapWasser["Wasseraufbereitung"] = QVariantMap({{"Liste", liste}});
+                }
+
+                if (parts & TagWasserprofil)
+                {
+                    QVariantMap map;
+                    map["Name"] = bh->sud()->getWasserData(ModelWasser::ColName).toString();
+                    QString str = bh->sud()->getWasserData(ModelWasser::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map["Bemerkung"] = str;
+                    mapWasser["Wasserprofil"] = map;
+                }
+
                 ctx["Wasser"] = mapWasser;
 
                 QVariantMap ctxZutaten;
@@ -278,18 +330,25 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 model = bh->sud()->modelHefegaben();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
+                    int menge = model->data(row, ModelHefegaben::ColMenge).toInt();
+                    if (menge <= 0)
+                        continue;
                     QVariantMap map;
                     map.insert("Name", model->data(row, ModelHefegaben::ColName));
                     int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map["Name"], ModelHefe::ColTypOGUG).toInt();
                     if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
                         map.insert("Typ", TabRohstoffe::HefeTypname[idx]);
-                    map.insert("Menge", model->data(row, ModelHefegaben::ColMenge).toInt());
+                    map.insert("Menge", menge);
                     if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert("Status", QObject::tr("zugegeben"));
                     else
                         map.insert("Status", QObject::tr("nicht zugegeben"));
-                    map.insert("ZugabeNach", QString::number(model->data(row, ModelHefegaben::ColZugabeNach).toInt()));
-                    map.insert("ZugabeDatum", locale.toString(model->data(row, ModelHefegaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
+                    int zugabeNach = model->data(row, ModelHefegaben::ColZugabeNach).toInt();
+                    if (zugabeNach > 0)
+                    {
+                        map.insert("ZugabeNach", zugabeNach);
+                        map.insert("ZugabeDatum", locale.toString(model->data(row, ModelHefegaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
+                    }
                     liste << map;
                 }
                 if (!liste.empty())
@@ -406,7 +465,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ProxyModel modelGeraete;
             modelGeraete.setSourceModel(bh->modelGeraete());
             modelGeraete.setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
-            modelGeraete.setFilterRegExp(QString("^%1$").arg(anlageId.toInt()));
+            modelGeraete.setFilterRegularExpression(QString("^%1$").arg(anlageId.toInt()));
             for (int row = 0; row < modelGeraete.rowCount(); ++row)
             {
                 liste << QVariantMap({{"Name", modelGeraete.data(row, ModelGeraete::ColBezeichnung)}});
@@ -422,7 +481,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ProxyModel modelAnhang;
             modelAnhang.setSourceModel(bh->modelAnhang());
             modelAnhang.setFilterKeyColumn(ModelAnhang::ColSudID);
-            modelAnhang.setFilterRegExp(QString("^%1$").arg(sudId));
+            modelAnhang.setFilterRegularExpression(QString("^%1$").arg(sudId));
             for (int row = 0; row < modelAnhang.rowCount(); ++row)
             {
                 QVariantMap map;
@@ -445,7 +504,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         ProxyModel modelTags;
         modelTags.setSourceModel(bh->modelTags());
         modelTags.setFilterKeyColumn(ModelTags::ColSudID);
-        modelTags.setFilterRegExp(QString("^(%1|-.*)$").arg(sudId));
+        modelTags.setFilterRegularExpression(QString("^(%1|-.*)$").arg(sudId));
         for (int row = 0; row < modelTags.rowCount(); ++row)
         {
             QString t = modelTags.data(row, ModelTags::ColKey).toString();

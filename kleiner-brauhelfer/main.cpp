@@ -9,12 +9,16 @@
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QMessageBox>
+#if QT_NETWORK_LIB
 #include <QSslSocket>
+#endif
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
 #include <QOperatingSystemVersion>
 #endif
 #include "brauhelfer.h"
 #include "settings.h"
+#include "widgets/webview.h"
+#include "dialogs/dlgconsole.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
@@ -32,6 +36,7 @@ Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
 
 static QFile* logFile = nullptr;
+static QtMessageHandler defaultMessageHandler;
 
 static bool chooseDatabase()
 {
@@ -293,23 +298,33 @@ static void copyResources()
     }
 }
 
-static void checkOs()
+static void checkWebView()
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-    if (gSettings->isNewProgramVersion())
+    if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
+        QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
     {
-        if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
-            QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
+        if (gSettings->isNewProgramVersion())
         {
-            QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                 QObject::tr("Windows 7 wird nur teilweise unterstüzt (keine Sudinfo, Spickzettel oder Zusammenfassung)."));
+                int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                               QObject::tr("Unter Umständen stürzt das Programm unter Windows 7 ab!\n") +
+                                               QObject::tr("Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?"),
+                                               QMessageBox::Yes | QMessageBox::No,
+                                               QMessageBox::Yes);
+                gSettings->beginGroup("General");
+                gSettings->setValue("WebViewEnabled", ret == QMessageBox::No);
+                gSettings->endGroup();
         }
     }
+    gSettings->beginGroup("General");
+    WebView::setSupported(gSettings->value("WebViewEnabled", true).toBool());
+    gSettings->endGroup();
   #endif
 }
 
 static void checkSSL()
 {
+  #if QT_NETWORK_LIB
     if (!QSslSocket::supportsSsl())
     {
         QString buildVersion = QSslSocket::sslLibraryBuildVersionString();
@@ -323,47 +338,64 @@ static void checkSSL()
                                  QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
         }
     }
+  #endif
 }
 
-static void messageHandlerFileOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+static void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    if (!logFile->isOpen())
-        logFile->open(QIODevice::WriteOnly | QIODevice::Append);
-    QTextStream out(logFile);
-    switch (type)
+    defaultMessageHandler(type, context, msg);
+    QString entry;
+    if (logFile || DlgConsole::Dialog)
     {
-    case QtDebugMsg:
-        out << "DEBUG | ";
-        break;
-    case QtInfoMsg:
-        out << "INFO  | ";
-        break;
-    case QtWarningMsg:
-        out << "WARN  | ";
-        break;
-    case QtCriticalMsg:
-        out << "ERROR | ";
-        break;
-    case QtFatalMsg:
-        out << "FATAL | ";
-        break;
+        QTextStream out(&entry);
+        switch (type)
+        {
+        case QtDebugMsg:
+            out << "DEBUG | ";
+            break;
+        case QtInfoMsg:
+            out << "INFO  | ";
+            break;
+        case QtWarningMsg:
+            out << "WARN  | ";
+            break;
+        case QtCriticalMsg:
+            out << "ERROR | ";
+            break;
+        case QtFatalMsg:
+            out << "FATAL | ";
+            break;
+        }
+        out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
+        out << msg;
     }
-    out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
-    out << msg;
-    if (context.file)
-        out << " | " << context.file << ":" << context.line << ", " << context.function;
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    out << Qt::endl;
-  #else
-    out << endl;
-  #endif
+    if (logFile)
+    {
+        if (!logFile->isOpen())
+            logFile->open(QIODevice::WriteOnly | QIODevice::Append);
+        QTextStream out(logFile);
+        out << entry;
+        if (context.file)
+            out << " | " << context.file << ":" << context.line << ", " << context.function;
+      #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+        out << Qt::endl;
+      #else
+        out << endl;
+      #endif
+    }
+    if (DlgConsole::Dialog)
+    {
+        DlgConsole::Dialog->append(entry);
+    }
 }
 
 static void installTranslator(QApplication &a, QTranslator &translator, const QString &filename)
 {
     QLocale locale(gSettings->language());
     a.removeTranslator(&translator);
-    if (translator.load(locale, filename, "_", "translations"))
+    if (translator.load(locale, filename, "_", a.applicationDirPath() + "/translations"))
+        a.installTranslator(&translator);
+    else if (translator.load(locale, filename, "_", ":/translations"))
         a.installTranslator(&translator);
     else if (translator.load(locale, filename, "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         a.installTranslator(&translator);
@@ -373,13 +405,31 @@ int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
 
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-  #endif
+    // parse arguments
+    bool highDpi = true;
+    for (int i = 1; i < argc; i++)
+    {
+      QString arg(argv[i]);
+      arg = arg.toLower();
+      while (arg[0] == '-')
+          arg.remove(0,1);
+      QStringList list({"qt_auto_screen_scale_factor=0",
+                        "qt_auto_screen_scale_factor=false",
+                        "qt_auto_screen_scale_factor=off"});
+      if (list.contains(arg))
+          highDpi = false;
+    }
+
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-    QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
+   QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
   #endif
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    if (highDpi)
+    {
+      #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+      #endif
+        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    }
 
     QApplication a(argc, argv);
 
@@ -395,39 +445,11 @@ int main(int argc, char *argv[])
         gSettings = new Settings();
 
     // logging
+    defaultMessageHandler = qInstallMessageHandler(messageHandler);
     int logLevel = gSettings->logLevel();
-    if (logLevel > 0)
-    {
-        if (logLevel < 1000)
-        {
-            //log in file
-            logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
-            qInstallMessageHandler(messageHandlerFileOutput);
-        }
-        else
-        {
-            // log in console
-           logLevel -= 1000;
-        }
-        switch (logLevel)
-        {
-        case 1:
-            QLoggingCategory::setFilterRules("*.debug=false");
-            break;
-        case 2:
-            break;
-        case 3:
-            QLoggingCategory::setFilterRules("SqlTableModel.info=true");
-            break;
-        case 4:
-        default:
-            QLoggingCategory::setFilterRules("SqlTableModel.info=true\nSqlTableModel.debug=true");
-            break;
-        case 999:
-            QLoggingCategory::setFilterRules("*.info=true\n*.debug=true");
-            break;
-        }
-    }
+    if (logLevel > 100)
+        logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
+    gSettings->initLogLevel(logLevel);
 
     qInfo("--- Application start ---");
     qInfo() << "Version:" << QCoreApplication::applicationVersion();
@@ -436,12 +458,12 @@ int main(int argc, char *argv[])
 
     // language
     QTranslator translatorQt, translatorKbh;
-    installTranslator(a, translatorQt, "qt");
+    installTranslator(a, translatorQt, "qtbase");
     installTranslator(a, translatorKbh, "kbh");
 
     // do some checks
     checkSSL();
-    checkOs();
+    checkWebView();
 
     try
     {
@@ -477,7 +499,7 @@ int main(int argc, char *argv[])
                 }
                 if (ret == 1001)
                 {
-                    installTranslator(a, translatorQt, "qt");
+                    installTranslator(a, translatorQt, "qtbase");
                     installTranslator(a, translatorKbh, "kbh");
                     ret = 1000;
                 }

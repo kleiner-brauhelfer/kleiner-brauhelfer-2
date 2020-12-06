@@ -2,8 +2,10 @@
 #include "ui_wdgwebvieweditable.h"
 #include <QDir>
 #include <QMessageBox>
+#ifdef QT_PRINTSUPPORT_LIB
 #include <QPrinterInfo>
 #include <QPrintPreviewDialog>
+#endif
 #include <QJsonDocument>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -63,16 +65,23 @@ void WdgWebViewEditable::setHtmlFile(const QString& file)
     QString fileComplete;
     QString lang = gSettings->language();
     if (lang == "de")
+    {
         fileComplete = file + ".html";
+    }
     else
+    {
         fileComplete = file + "_" + lang + ".html";
+        if (!QFile::exists(gSettings->dataDir(1) + fileComplete))
+            fileComplete = file + ".html";
+    }
     ui->cbTemplateAuswahl->setItemText(0, fileComplete);
     ui->webview->setTemplateFile(gSettings->dataDir(1) + fileComplete);
 }
 
+#ifdef QT_PRINTSUPPORT_LIB
 void WdgWebViewEditable::printDocument(QPrinter *printer)
 {
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+#if defined(QT_WEBENGINECORE_LIB) && (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     bool success = false;
     QEventLoop loop;
     ui->webview->page()->print(printer, [&](bool _success) { success = _success; loop.quit(); });
@@ -89,9 +98,11 @@ void WdgWebViewEditable::printDocument(QPrinter *printer)
   Q_UNUSED(printer)
 #endif
 }
+#endif
 
 void WdgWebViewEditable::printPreview()
 {
+  #if defined(QT_PRINTSUPPORT_LIB) && defined(QT_WEBENGINECORE_LIB)
     QVariant style;
     if (gSettings->theme() == Settings::Dark)
     {
@@ -127,10 +138,12 @@ void WdgWebViewEditable::printPreview()
         ui->webview->renderTemplate(mTemplateTags);
         ui->webview->setUpdatesEnabled(true);
     }
+  #endif
 }
 
 void WdgWebViewEditable::printToPdf(const QString& filePath, const QMarginsF &margins)
 {
+  #if defined(QT_PRINTSUPPORT_LIB) && defined(QT_WEBENGINECORE_LIB)
     if (gSettings->theme() == Settings::Dark)
     {
         QVariant style = mTemplateTags["Style"];
@@ -152,6 +165,10 @@ void WdgWebViewEditable::printToPdf(const QString& filePath, const QMarginsF &ma
     {
         ui->webview->printToPdf(filePath, margins);
     }
+  #else
+    Q_UNUSED(filePath)
+    Q_UNUSED(margins)
+  #endif
 }
 
 bool WdgWebViewEditable::checkSaveTemplate()
@@ -244,11 +261,14 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
 
 void WdgWebViewEditable::updateWebView()
 {
+  #ifdef QT_WEBENGINECORE_LIB
     if (ui->webview->zoomFactor() != gZoomFactor)
     {
         ui->webview->setZoomFactor(gZoomFactor);
         ui->sliderZoom->setValue(gZoomFactor * 100);
+        ui->lblZoom->clear();
     }
+  #endif
     if (ui->cbEditMode->isChecked())
     {
         if (ui->cbTemplateAuswahl->currentIndex() == 0)
@@ -281,9 +301,14 @@ void WdgWebViewEditable::updateTags()
 
 void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
 {
-    if (ui->sliderZoom->hasFocus())
-    {
-        gZoomFactor = value / 100.0;
-        ui->webview->setZoomFactor(gZoomFactor);
-    }
+    gZoomFactor = value / 100.0;
+    ui->lblZoom->setText(QString::number(value)+"%");
+  #ifdef QT_WEBENGINECORE_LIB
+    ui->webview->setZoomFactor(gZoomFactor);
+  #endif
+}
+
+void WdgWebViewEditable::on_sliderZoom_sliderReleased()
+{
+    ui->lblZoom->clear();
 }

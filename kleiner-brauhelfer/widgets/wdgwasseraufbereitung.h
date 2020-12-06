@@ -26,6 +26,7 @@ private slots:
     void on_tbMengeGesamt_valueChanged(double value);
     void on_tbRestalkalitaet_valueChanged(double value);
     void on_tbFaktor_valueChanged(double value);
+    void on_btnAusgleichen_clicked();
     void on_btnNachOben_clicked();
     void on_btnNachUnten_clicked();
     void on_btnLoeschen_clicked();

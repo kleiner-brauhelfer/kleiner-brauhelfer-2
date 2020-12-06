@@ -2,6 +2,7 @@
 #include <QGuiApplication>
 #include <QDir>
 #include <QFileInfo>
+#include <QLoggingCategory>
 
 Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
@@ -204,6 +205,25 @@ void Settings::setLogLevel(int level)
     beginGroup("General");
     setValue("LogLevel", level);
     endGroup();
+    initLogLevel(level);
+}
+
+void Settings::initLogLevel(int level)
+{
+    QString rules;
+    while (level > 100)
+        level -= 100;
+    if (level <= 0)
+        rules = "*.info=false\n*.debug=false";
+    else if (level == 1)
+        rules = "*.debug=false";
+    else if (level == 2)
+        rules = "";
+    else if (level == 3)
+        rules = "SqlTableModel.info=true";
+    else
+        rules = "SqlTableModel.info=true\nSqlTableModel.debug=true";
+    QLoggingCategory::setFilterRules(rules);
 }
 
 Settings::Theme Settings::theme() const
@@ -221,10 +241,14 @@ void Settings::setTheme(Theme theme)
 
 QString Settings::style()
 {
+  #if 0
     beginGroup("Style");
     QString style = value("Style", "Fusion").toString();
     endGroup();
     return style;
+  #else
+    return "Fusion";
+  #endif
 }
 
 void Settings::setStyle(const QString &style)
@@ -275,7 +299,7 @@ void Settings::setAnimationsEnabled(bool enabled)
 QString Settings::language()
 {
     beginGroup("General");
-    QString lang = value("language", QLocale::system().name()).toString();
+    QString lang = value("language", "de").toString();
     endGroup();
     return lang;
 }

@@ -1,9 +1,9 @@
+#ifdef QT_CHARTS_LIB
+
 #include "chartview.h"
 #include "settings.h"
 
 extern Settings *gSettings;
-
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
 
 ChartView::ChartView(QWidget *parent) :
     QChartView(parent)
@@ -17,4 +17,4 @@ ChartView::ChartView(QWidget *parent) :
     setRenderHint(QPainter::Antialiasing);
 }
 
-#endif
+#endif // QT_CHARTS_LIB

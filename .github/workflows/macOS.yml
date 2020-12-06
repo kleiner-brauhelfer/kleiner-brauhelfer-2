@@ -20,7 +20,9 @@ jobs:
       - name: Install dependencies from homebrew
         run: |
           brew upgrade
-          brew install qt
+          brew install curl
+          curl -O https://raw.githubusercontent.com/Homebrew/homebrew-core/9591758fd8a565abf98d13ffd87c66e5e12ad579/Formula/qt.rb
+          brew install ./qt.rb
           brew link qt -f
 
       - name: Build kleiner-brauhelfer-2

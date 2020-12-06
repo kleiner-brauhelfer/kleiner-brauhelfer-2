@@ -7,6 +7,7 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append("Extrakt");
     mVirtualField.append("ZugabeDatum");
     mVirtualField.append("EntnahmeDatum");
     mVirtualField.append("Abfuellbereit");
@@ -18,6 +19,19 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
 {
     switch(idx.column())
     {
+    case ColExtrakt:
+    {
+        double ausbeute = data(idx.row(), ColAusbeute).toDouble();
+        if (ausbeute > 0.0)
+        {
+            double menge = data(idx.row(), ColMenge).toDouble();
+            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(idx.row(), ColEinheit).toInt());
+            if (einheit != Brauhelfer::Einheit::Stk)
+                menge /= 1000;
+            return menge * ausbeute;
+        }
+        return 0;
+    }
     case ColZugabeDatum:
     {
         QDateTime braudatum = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColBraudatum).toDateTime();
@@ -162,6 +176,19 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
             return true;
         }
         return false;
+    }
+    case ColExtrakt:
+    {
+        double ausbeute = data(idx.row(), ColAusbeute).toDouble();
+        if (ausbeute > 0.0)
+        {
+            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(idx.row(), ColEinheit).toInt());
+            if (einheit == Brauhelfer::Einheit::Stk)
+                return setData(index(idx.row(), ColMenge), value.toDouble() / ausbeute);
+            else
+                return setData(index(idx.row(), ColMenge), value.toDouble() / ausbeute * 1000);
+        }
+        return true;
     }
     case ColZugabeDatum:
     {

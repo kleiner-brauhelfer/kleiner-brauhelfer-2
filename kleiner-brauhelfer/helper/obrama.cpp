@@ -1,3 +1,5 @@
+#if QT_NETWORK_LIB
+
 #include "obrama.h"
 #include <QtNetwork>
 #include <QFileInfo>
@@ -7,7 +9,7 @@ QMap<QString, QDateTime> OBraMa::mUpdateDates = QMap<QString, QDateTime>();
 
 OBraMa::OBraMa(QObject *parent) :
     QObject(parent),
-    mUrl("https://obrama.mueggelland.de/api/obrama.php?table=%1&format=%2")
+    mUrl("http://obrama.mueggelland.de/api/obrama.php?table=%1&format=%2")
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
     mNetManager.setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
@@ -25,12 +27,14 @@ QByteArray OBraMa::download(const QString& table, const QString& format)
     loop.exec();
     if (reply->error() == QNetworkReply::NoError)
         data = reply->readAll();
-    delete reply;
     if (data.isEmpty())
     {
-        qWarning() << "oBraMa: Failed to download:" << url;
-        QMessageBox::critical(nullptr, tr("oBraMa Datenbank"), tr("Die Tabelle \"%1\" konnte nicht heruntergeladen werden.").arg(table));
+        qWarning() << "oBraMa: Failed to download:" << url << reply->errorString();
+        QMessageBox::critical(nullptr, tr("oBraMa Datenbank"),
+                              tr("Die Tabelle \"%1\" konnte nicht heruntergeladen werden.").arg(table) +
+                              "\n\n" + reply->errorString() + ".");
     }
+    delete reply;
     return data;
 }
 
@@ -64,7 +68,7 @@ bool OBraMa::getTable(const QString& table, const QString& suffix, const QString
     {
         if (!getUpdateDates())
         {
-           QMessageBox::warning(nullptr, tr("oBraMa Datenbank"), tr("Die Tabelle \"%1\" konnte nicht aktualisiert werden.").arg(table));
+           return false;
         }
     }
 
@@ -88,13 +92,9 @@ bool OBraMa::getTable(const QString& table, const QString& suffix, const QString
             file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
             file.write(data);
             file.close();
+            QMessageBox::information(nullptr, tr("oBraMa Datenbank"), tr("Die Tabelle \"%1\" wurde aktualisiert.").arg(table));
             return true;
         }
-    }
-    else
-    {
-        qWarning() << "oBraMa: Failed to download:" << table;
-        QMessageBox::critical(nullptr, tr("oBraMa Datenbank"), tr("Die Tabelle \"%1\" konnte nicht heruntergeladen werden.").arg(table));
     }
 
     return false;
@@ -104,3 +104,5 @@ bool OBraMa::isValid(const QByteArray& data) const
 {
     return !data.isEmpty() && data.contains(',');
 }
+
+#endif // QT_NETWORK_LIB

@@ -1,6 +1,8 @@
 #ifndef OBRAMA_H
 #define OBRAMA_H
 
+#if QT_NETWORK_LIB
+
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QMap>
@@ -21,5 +23,7 @@ private:
     QNetworkAccessManager mNetManager;
     static QMap<QString, QDateTime> mUpdateDates;
 };
+
+#endif // QT_NETWORK_LIB
 
 #endif // OBRAMA_H

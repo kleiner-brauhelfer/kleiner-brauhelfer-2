@@ -110,7 +110,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelMalz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [kg]"));
     ui->tableViewMalz->setModel(modelMalz);
     ui->tableViewMalz->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
-    ui->tableViewMalz->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, 9999.9, 0.1, false, this));
+    ui->tableViewMalz->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, this));
     ui->tableViewMalz->setItemDelegateForColumn(2, new DoubleSpinBoxDelegate(2, this));
     if (modelMalz->rowCount() > 0)
         ui->tableViewMalz->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
@@ -166,8 +166,8 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelHopfen->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
     ui->tableViewHopfen->setModel(modelHopfen);
     ui->tableViewHopfen->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
-    ui->tableViewHopfen->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(0, 0, 9999, 1, false, this));
-    ui->tableViewHopfen->setItemDelegateForColumn(2, new SpinBoxDelegate(this));
+    ui->tableViewHopfen->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, this));
+    ui->tableViewHopfen->setItemDelegateForColumn(2, new DoubleSpinBoxDelegate(1, this));
     if (modelHopfen->rowCount() > 0)
         ui->tableViewHopfen->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     else
@@ -211,7 +211,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelHefe->setHeaderData(2, Qt::Horizontal, tr("Vorhanden"));
     ui->tableViewHefe->setModel(modelHefe);
     ui->tableViewHefe->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
-    ui->tableViewHefe->setItemDelegateForColumn(1, new SpinBoxDelegate(0, 9999, 1, false, this));
+    ui->tableViewHefe->setItemDelegateForColumn(1, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, this));
     ui->tableViewHefe->setItemDelegateForColumn(2, new SpinBoxDelegate(this));
     if (modelHefe->rowCount() > 0)
         ui->tableViewHefe->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
@@ -261,7 +261,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     modelWz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
     ui->tableViewWZ->setModel(modelWz);
     ui->tableViewWZ->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
-    ui->tableViewWZ->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, 9999.9, 0.1, false, this));
+    ui->tableViewWZ->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, this));
     ui->tableViewWZ->setItemDelegateForColumn(2, new DoubleSpinBoxDelegate(2, this));
     if (modelWz->rowCount() > 0)
         ui->tableViewWZ->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);

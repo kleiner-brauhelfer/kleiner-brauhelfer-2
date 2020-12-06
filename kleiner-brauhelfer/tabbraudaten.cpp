@@ -112,7 +112,7 @@ void TabBraudaten::sudLoaded()
 {
     checkEnabled();
     updateValues();
-    ui->tbSpeiseSRE->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
+    ui->tbSpeiseSRE->setValue(bh->sud()->getSRE());
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
@@ -124,7 +124,7 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
         break;
     case ModelSud::ColSW:
     case ModelSud::ColVergaerungsgrad:
-        ui->tbSpeiseSRE->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSW(), bh->sud()->getVergaerungsgrad()));
+        ui->tbSpeiseSRE->setValue(bh->sud()->getSRE());
         break;
     }
 }
@@ -248,7 +248,7 @@ void TabBraudaten::on_btnBraudatumHeute_clicked()
 
 void TabBraudaten::on_btnSWKochbeginn_clicked()
 {
-    DlgRestextrakt dlg(bh->sud()->getSWKochbeginn(), 0.0, 20.0, this);
+    DlgRestextrakt dlg(bh->sud()->getSWKochbeginn(), 0.0, -1.0, QDateTime(), this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWKochbeginn(dlg.value());
 }
@@ -297,14 +297,14 @@ void TabBraudaten::on_tbTempKochende_valueChanged(double)
 
 void TabBraudaten::on_btnSWKochende_clicked()
 {
-    DlgRestextrakt dlg(bh->sud()->getSWKochende(), 0.0, 20.0, this);
+    DlgRestextrakt dlg(bh->sud()->getSWKochende(), 0.0, -1.0, QDateTime(),this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWKochende(dlg.value());
 }
 
 void TabBraudaten::on_btnSWAnstellen_clicked()
 {
-    DlgRestextrakt dlg(bh->sud()->getSWAnstellen(), 0.0, 20.0, this);
+    DlgRestextrakt dlg(bh->sud()->getSWAnstellen(), 0.0, -1.0, QDateTime(),this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWAnstellen(dlg.value());
 }

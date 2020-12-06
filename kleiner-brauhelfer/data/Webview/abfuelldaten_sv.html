@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{Style}}">
+</head>
+<body>
+
+  <div class="r" align="center">
+    <h1>J&auml;sning</h1>
+  </div>
+  {{#Zutaten.Hefe}}
+  <div class="rm bg_hefe" align="center">
+    <table style="width:100%">
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <tr>
+        <th></th>
+        <th>L&auml;gg i efter [dagar]</th>
+        <th>Status</th>
+        <th>M&auml;ngd</th>
+      </tr>
+      {{#Liste}}
+      <tr>
+        <td>{{Name}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{Status}}</span></td>
+        <td align="center"><span class="value">{{Menge}}</span></td>
+      </tr>
+      {{/Liste}}
+    </table>
+  </div>
+  {{/Zutaten.Hefe}}
+  {{#Zutaten.HatKalthopfen}}
+  <div class="rm bg_hopfen" align="center">
+    <table style="width:100%">
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <tr>
+        <th></th>
+        <th>L&auml;gg i efter [dagar]</th>
+        <th>Tid [dagar]</th>
+        <th>Status</th>
+        <th>M&auml;ngd</th>
+      </tr>
+      {{#Zutaten.Kalthopfen.Liste}}
+      <tr>
+        <td>{{Name}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
+      {{/Zutaten.Kalthopfen.Liste}}
+    </table>
+  </div>
+  {{/Zutaten.HatKalthopfen}}
+  {{#Zutaten.HatZusatzGaerung}}
+  <div class="rm bg_zusatz" align="center">
+    <table style="width:100%">
+      <col width="*">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <col width="150">
+      <tr>
+        <th></th>
+        <th>L&auml;gg i efter [dagar]</th>
+        <th>Tid [dagar]</th>
+        <th>Status</th>
+        <th>M&auml;ngd</th>
+      </tr>
+      {{#Zutaten.Zusatz.Liste}}
+      {{#Gaerung}}
+      <tr>
+        <td>{{Name}}</td>
+        <td align="center"><span class="value">{{ZugabeNach}}</span> {{#ZugabeDatum}}({{ZugabeDatum}}){{/ZugabeDatum}}</td>
+        <td align="center"><span class="value">{{#Dauer}}{{Dauer}}</span> {{#EntnahmeDatum}}({{EntnahmeDatum}}){{/EntnahmeDatum}}{{/Dauer}}</td>
+        <td class="value" align="center">{{Status}}</td>
+        <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+      </tr>
+      {{#Bemerkung}}<tr><td colspan="5" class="kommentar" style="padding-left:16px">{{Bemerkung}}</td></tr>{{/Bemerkung}}
+      {{/Gaerung}}
+      {{/Zutaten.Zusatz.Liste}}
+    </table>
+  </div>
+  {{/Zutaten.HatZusatzGaerung}}
+
+</body>
+</html>

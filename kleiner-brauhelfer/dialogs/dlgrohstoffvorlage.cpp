@@ -17,6 +17,7 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
 {
     ui->setupUi(this);
 
+  #if QT_NETWORK_LIB
     if (isOBraMa())
     {
         OBraMa obrama;
@@ -38,7 +39,12 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
             break;
         }
         ui->labelQuelle->setText(tr("Quelle: obrama.mueggelland.de"));
-        ui->widgetEdit->setVisible(false);
+    }
+    else
+  #endif
+    if (mRohstoffart == Wasserprofil)
+    {
+        ui->labelQuelle->setVisible(false);
     }
     else
     {
@@ -92,6 +98,9 @@ QString DlgRohstoffVorlage::getFileName(bool withPath) const
     case WZutatenOBraMa:
         fileName = "obrama/adjuncts.csv";
         break;
+    case Wasserprofil:
+        fileName = "Wasserprofile.csv";
+        break;
     }
     return withPath ? gSettings->dataDir(2) + fileName : fileName;
 }
@@ -114,7 +123,6 @@ void DlgRohstoffVorlage::setModel()
         table->resizeRowsToContents();
         if (isOBraMa())
         {
-            table->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
             int col;
             QList<int> filterColumns;
             switch (mRohstoffart)
@@ -202,13 +210,6 @@ void DlgRohstoffVorlage::setModel()
             proxyModel->setFilterKeyColumns(filterColumns);
             table->build();
         }
-        else
-        {
-            connect(proxyModel, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &, const QVector<int> &)), this, SLOT(slot_save()));
-            connect(proxyModel, SIGNAL(layoutChanged()), this, SLOT(slot_save()));
-            connect(proxyModel, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(slot_save()));
-            connect(proxyModel, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(slot_save()));
-        }
         mValues.clear();
     }
 }
@@ -227,7 +228,7 @@ QMap<int, QVariant> DlgRohstoffVorlage::values() const
 void DlgRohstoffVorlage::on_lineEditFilter_textChanged(const QString &txt)
 {
     ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
-    model->setFilterRegExp(QRegExp(txt, Qt::CaseInsensitive, QRegExp::FixedString));
+    model->setFilterRegularExpression(QRegularExpression(QRegularExpression::escape(txt), QRegularExpression::CaseInsensitiveOption));
 }
 
 void DlgRohstoffVorlage::on_buttonBox_accepted()
@@ -238,6 +239,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         QString typ, str1, str2;
         double fVal;
         double iVal;
+        double hydrogencarbonat, calcium, magnesium;
         QHeaderView *header = ui->tableView->horizontalHeader();
         ProxyModel *proxy = qobject_cast<ProxyModel*>(ui->tableView->model());
         DsvTableModel *model = static_cast<DsvTableModel*>(proxy->sourceModel());
@@ -374,6 +376,21 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             else if (typ == "klärmittel")
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel));
             break;
+
+        case Wasserprofil:
+            mValues.insert(ModelWasser::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
+            mValues.insert(ModelWasser::ColCalcium, index.sibling(index.row(), header->logicalIndex(1)).data());
+            mValues.insert(ModelWasser::ColMagnesium, index.sibling(index.row(), header->logicalIndex(2)).data());
+            mValues.insert(ModelWasser::ColNatrium, index.sibling(index.row(), header->logicalIndex(3)).data());
+            mValues.insert(ModelWasser::ColSulfat, index.sibling(index.row(), header->logicalIndex(4)).data());
+            mValues.insert(ModelWasser::ColChlorid, index.sibling(index.row(), header->logicalIndex(5)).data());
+            mValues.insert(ModelWasser::ColHydrogencarbonat, index.sibling(index.row(), header->logicalIndex(6)).data());
+            hydrogencarbonat = mValues[ModelWasser::ColHydrogencarbonat].toDouble();
+            calcium = mValues[ModelWasser::ColCalcium].toDouble();
+            magnesium = mValues[ModelWasser::ColMagnesium].toDouble();
+            fVal = ModelWasser::Restalkalitaet(hydrogencarbonat, calcium, magnesium);
+            mValues.insert(ModelWasser::ColRestalkalitaetAdd, index.sibling(index.row(), header->logicalIndex(7)).data().toDouble() - fVal);
+            break;
         }
         accept();
 	}
@@ -383,66 +400,13 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
     }
 }
 
-void DlgRohstoffVorlage::slot_save()
-{
-    ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
-    static_cast<DsvTableModel*>(model->sourceModel())->save(getFileName(true), true, isOBraMa() ? ',' : ';');
-}
-
 void DlgRohstoffVorlage::on_buttonBox_rejected()
 {
     reject();
 }
 
-void DlgRohstoffVorlage::on_btn_Add_clicked()
+void DlgRohstoffVorlage::on_tableView_doubleClicked(const QModelIndex &index)
 {
-    ui->tableView->model()->insertRow(ui->tableView->model()->rowCount());
-    ui->tableView->scrollToBottom();
-    ui->tableView->setCurrentIndex(ui->tableView->model()->index(ui->tableView->model()->rowCount() - 1, 0));
-    ui->tableView->edit(ui->tableView->currentIndex());
-}
-
-void DlgRohstoffVorlage::on_btn_Remove_clicked()
-{
-    int row = ui->tableView->currentIndex().row();
-    if (row >= 0)
-        ui->tableView->model()->removeRow(row);
-}
-
-void DlgRohstoffVorlage::on_btn_Import_clicked()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Rohstoffliste importieren"),
-                                                    QDir::currentPath() + "/" + getFileName(false),
-                                                    "CSV (*.csv)");
-    if (!fileName.isEmpty())
-    {
-        QFile file(getFileName(true));
-        QFile::remove(file.fileName());
-        QFile file2(fileName);
-        if (file2.copy(file.fileName()))
-            file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-        setModel();
-    }
-}
-
-void DlgRohstoffVorlage::on_btn_Export_clicked()
-{
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Rohstoffliste exportieren"),
-                                                    QDir::currentPath() + "/" + getFileName(false),
-                                                    "CSV (*.csv)");
-    if (!fileName.isEmpty())
-    {
-        ProxyModel *model = qobject_cast<ProxyModel*>(ui->tableView->model());
-        static_cast<DsvTableModel*>(model->sourceModel())->save(fileName, true, ';');
-    }
-}
-
-void DlgRohstoffVorlage::on_btn_Restore_clicked()
-{
-    QFile file(getFileName(true));
-    QFile::remove(file.fileName());
-    QFile file2(":/data/Rohstoffe/" + getFileName(false));
-    if (file2.copy(file.fileName()))
-        file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-    setModel();
+    Q_UNUSED(index)
+    on_buttonBox_accepted();
 }

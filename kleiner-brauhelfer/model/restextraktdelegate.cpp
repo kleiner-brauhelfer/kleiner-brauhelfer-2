@@ -17,14 +17,21 @@ QWidget* RestextraktDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     Q_UNUSED(option)
     if (mReadonly)
         return nullptr;
+    QDateTime dt;
     double T;
     double re = index.data().toDouble();
     double sw = bh->sud()->getSWIst();
     if (mHauptgaerung)
+    {
+        dt = index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
         T = index.sibling(index.row(), ModelHauptgaerverlauf::ColTemp).data().toDouble();
+    }
     else
+    {
+        dt = index.sibling(index.row(), ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime();
         T = index.sibling(index.row(), ModelSchnellgaerverlauf::ColTemp).data().toDouble();
-    DlgRestextrakt* w = new DlgRestextrakt(re, sw, T, parent);
+    }
+    DlgRestextrakt* w = new DlgRestextrakt(re, sw, T, dt, parent);
     return w;
 }
 
@@ -33,9 +40,15 @@ void RestextraktDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
     DlgRestextrakt *w = static_cast<DlgRestextrakt*>(editor);
     w->setValue(index.data(Qt::EditRole).toDouble());
     if (mHauptgaerung)
+    {
+        w->setDatum(index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime());
         w->setTemperatur(index.sibling(index.row(), ModelHauptgaerverlauf::ColTemp).data().toDouble());
+    }
     else
+    {
+        w->setDatum(index.sibling(index.row(), ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime());
         w->setTemperatur(index.sibling(index.row(), ModelSchnellgaerverlauf::ColTemp).data().toDouble());
+    }
 }
 
 void RestextraktDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
@@ -43,11 +56,17 @@ void RestextraktDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     DlgRestextrakt *w = static_cast<DlgRestextrakt*>(editor);
     if (w->result() == QDialog::Accepted)
     {
-        model->setData(index, w->value(), Qt::EditRole);
         if (mHauptgaerung)
+        {
+            model->setData(index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel), w->datum(), Qt::EditRole);
             model->setData(index.sibling(index.row(), ModelHauptgaerverlauf::ColTemp), w->temperatur(), Qt::EditRole);
+        }
         else
+        {
+            model->setData(index.sibling(index.row(), ModelSchnellgaerverlauf::ColZeitstempel), w->datum(), Qt::EditRole);
             model->setData(index.sibling(index.row(), ModelSchnellgaerverlauf::ColTemp), w->temperatur(), Qt::EditRole);
+        }
+        model->setData(index, w->value(), Qt::EditRole);
     }
 }
 

@@ -28,7 +28,9 @@ private slots:
     void updateTags();
     void updateTemplateTags();
     void updateAuswahlListe();
+  #ifdef QT_PRINTSUPPORT_LIB
     void onPrinterPaintRequested(QPrinter *printer);
+  #endif
     void on_cbAuswahl_activated(int index);
     void on_btnOeffnen_clicked();
     void on_btnAktualisieren_clicked();
@@ -62,7 +64,9 @@ private:
     QString mTemplateFilePath;
     HtmlHighLighter* mHtmlHightLighter;
     QVariantMap mTemplateTags;
+  #ifdef QT_PRINTSUPPORT_LIB
     QPrinter* mPrinter;
+  #endif
 };
 
 #endif // TABETIKETTE_H

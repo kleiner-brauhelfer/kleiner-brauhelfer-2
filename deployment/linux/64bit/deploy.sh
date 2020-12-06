@@ -40,6 +40,6 @@ mkdir -p "${BUILD_DIR}/AppImage/usr/share/icons"
 cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${BUILD_DIR}/AppImage/usr/share/icons"
 
 cd "${BUILD_DIR}/AppImage"
-"${SCRIPT_DIR}/AppImage/linuxdeployqt-6-x86_64.AppImage" "./usr/share/applications/kleiner-brauhelfer-2.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files -appimage
+"${SCRIPT_DIR}/AppImage/linuxdeployqt-6-x86_64.AppImage" "./usr/share/applications/kleiner-brauhelfer-2.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files -no-translations -appimage
 cd -
 mv ${BUILD_DIR}/AppImage/kleiner-brauhelfer-2-*-x86_64.AppImage ./kleiner-brauhelfer-2-x86_64.AppImage

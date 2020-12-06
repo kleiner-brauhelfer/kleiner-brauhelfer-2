@@ -24,26 +24,26 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QList<QString> TabRohstoffe::HopfenTypname = {
+QStringList TabRohstoffe::HopfenTypname = {
     "",
     tr("aroma"),
     tr("bitter"),
     tr("universal")
 };
 
-QList<QString> TabRohstoffe::HefeTypname = {
+QStringList TabRohstoffe::HefeTypname = {
     "",
     tr("obergärig"),
     tr("untergärig")
 };
 
-QList<QString> TabRohstoffe::HefeTypFlTrName = {
+QStringList TabRohstoffe::HefeTypFlTrName = {
     "",
     tr("trocken"),
     tr("flüssig")
 };
 
-QList<QString> TabRohstoffe::ZusatzTypname = {
+QStringList TabRohstoffe::ZusatzTypname = {
     tr("Honig"),
     tr("Zucker"),
     tr("Gewürz"),
@@ -54,7 +54,7 @@ QList<QString> TabRohstoffe::ZusatzTypname = {
     tr("Klärmittel")
 };
 
-QList<QString> TabRohstoffe::Einheiten = {
+QStringList TabRohstoffe::Einheiten = {
     tr("kg"),
     tr("g"),
     tr("mg"),
@@ -63,10 +63,24 @@ QList<QString> TabRohstoffe::Einheiten = {
     tr("ml")
 };
 
+QStringList TabRohstoffe::list_tr(const QStringList& list)
+{
+   QStringList result;
+   for (const QString& str : list)
+       result.append(tr(str.toStdString().c_str()));
+   return result;
+}
+
 TabRohstoffe::TabRohstoffe(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
 {
+    HopfenTypname = list_tr(HopfenTypname);
+    HefeTypname = list_tr(HefeTypname);
+    HefeTypFlTrName = list_tr(HefeTypFlTrName);
+    ZusatzTypname = list_tr(ZusatzTypname);
+    Einheiten = list_tr(Einheiten);
+
     ui->setupUi(this);
 
     SqlTableModel *model;
@@ -312,6 +326,9 @@ void TabRohstoffe::keyPressEvent(QKeyEvent* event)
     case 3:
         table = ui->tableWeitereZutaten;
         break;
+    case 4:
+        table = ui->tableWasser;
+        break;
     default:
         return;
     }
@@ -355,7 +372,7 @@ void TabRohstoffe::on_tableWeitereZutaten_clicked(const QModelIndex &index)
 
 void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values)
 {
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
+    ProxyModel *model = static_cast<ProxyModel*>(table->model());
     ui->radioButtonAlle->setChecked(true);
     on_radioButtonAlle_clicked();
     ui->lineEditFilter->clear();
@@ -385,6 +402,9 @@ void TabRohstoffe::on_buttonAdd_clicked()
     case 3:
         addEntry(ui->tableWeitereZutaten, {{ModelWeitereZutaten::ColName, tr("Neuer Eintrag")}});
         break;
+    case 4:
+        addEntry(ui->tableWasser, {{ModelWasser::ColName, tr("Neues Profil")}});
+        break;
     }
 }
 
@@ -409,6 +429,10 @@ void TabRohstoffe::on_buttonNeuVorlage_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         art = DlgRohstoffVorlage::Art::WZutaten;
+        break;
+    case 4:
+        table = ui->tableWasser;
+        art = DlgRohstoffVorlage::Art::Wasserprofil;
         break;
     default:
         return;
@@ -465,19 +489,25 @@ void TabRohstoffe::on_buttonCopy_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         break;
+    case 4:
+        table = ui->tableWasser;
+        break;
     default:
         return;
     }
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
+    ProxyModel *model = static_cast<ProxyModel*>(table->model());
     SqlTableModel *sourceModel = static_cast<SqlTableModel*>(model->sourceModel());
     for (const QModelIndex& index : table->selectionModel()->selectedRows())
     {
         int row = index.row();
         QMap<int, QVariant> values = sourceModel->copyValues(model->mapRowToSource(row));
         values.insert(model->fieldIndex("Name"), model->data(row, model->fieldIndex("Name")).toString() + " " + tr("Kopie"));
-        values.remove(model->fieldIndex("Menge"));
-        values.remove(model->fieldIndex("Eingelagert"));
-        values.remove(model->fieldIndex("Mindesthaltbar"));
+        if (table != ui->tableWasser)
+        {
+            values.remove(model->fieldIndex("Menge"));
+            values.remove(model->fieldIndex("Eingelagert"));
+            values.remove(model->fieldIndex("Mindesthaltbar"));
+        }
         addEntry(table, values);
     }
 }
@@ -499,21 +529,35 @@ void TabRohstoffe::on_buttonDelete_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         break;
+    case 4:
+        table = ui->tableWasser;
+        break;
     default:
         return;
     }
-    ProxyModelRohstoff *model = static_cast<ProxyModelRohstoff*>(table->model());
+    ProxyModel *model = static_cast<ProxyModel*>(table->model());
     QModelIndexList indices = table->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : indices)
     {
         bool del = true;
-        if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
+        if (table == ui->tableWasser)
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
-                                            tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?"));
+            QString name = model->data(index.row(), ModelWasser::ColName).toString();
+            int ret = QMessageBox::question(this, tr("Wasserprofil löschen?"),
+                                            tr("Soll das Wasserprofil \"%1\" gelöscht werden?").arg(name));
             if (ret != QMessageBox::Yes)
                 del = false;
+        }
+        else
+        {
+            if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
+            {
+                int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
+                                                tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?"));
+                if (ret != QMessageBox::Yes)
+                    del = false;
+            }
         }
         if (del)
             model->removeRow(index.row());
@@ -579,11 +623,7 @@ void TabRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
 
 void TabRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
 {
-    ui->buttonAdd->setEnabled(index != 4);
-    ui->buttonNeuVorlage->setEnabled(index != 4);
     ui->buttonNeuVorlageObrama->setEnabled(index != 4);
-    ui->buttonCopy->setEnabled(index != 4);
-    ui->buttonDelete->setEnabled(index != 4);
     updateLabelNumItems();
 }
 
@@ -628,45 +668,15 @@ void TabRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
 {
     if (selected.indexes().count() > 0)
     {
-        mRowWasser = selected.indexes()[0].row();
+        ProxyModel *proxy = static_cast<ProxyModel*>(ui->tableWasser->model());
+        mRowWasser = proxy->mapRowToSource(selected.indexes()[0].row());
         updateWasser();
-    }
-}
-
-void TabRohstoffe::on_btnNeuesWasserprofil_clicked()
-{
-    QMap<int, QVariant> values({{ModelWasser::ColName, tr("Neues Profil")}});
-    ProxyModel *model = static_cast<ProxyModel*>(ui->tableWasser->model());
-    int row = model->append(values);
-    if (row >= 0)
-    {
-        const QModelIndex index = model->index(row, ModelWasser::ColName);
-        ui->tableWasser->setCurrentIndex(index);
-        ui->tableWasser->scrollTo(ui->tableWasser->currentIndex());
-        ui->tableWasser->edit(ui->tableWasser->currentIndex());
-    }
-}
-
-void TabRohstoffe::on_btnWasserprofilLoeschen_clicked()
-{
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableWasser->model());
-    for (const QModelIndex& index : ui->tableWasser->selectionModel()->selectedRows())
-    {
-        QString name = model->data(index.row(), ModelWasser::ColName).toString();
-        int ret = QMessageBox::question(this, tr("Wasserprofil löschen?"),
-                                        tr("Soll das Wasserprofil \"%1\" gelöscht werden?").arg(name));
-        if (ret == QMessageBox::Yes)
-        {
-            ProxyModel *model = static_cast<ProxyModel*>(ui->tableWasser->model());
-            int row = model->getRowWithValue(ModelWasser::ColName, name);
-            if (row >= 0)
-                model->removeRow(row);
-        }
     }
 }
 
 void TabRohstoffe::updateWasser()
 {
+    ui->lblWasserprofil->setText(dataWasser(ModelWasser::ColName).toString());
     if (!ui->tbCalciumMg->hasFocus())
         ui->tbCalciumMg->setValue(dataWasser(ModelWasser::ColCalcium).toDouble());
     if (!ui->tbCalciumMmol->hasFocus())

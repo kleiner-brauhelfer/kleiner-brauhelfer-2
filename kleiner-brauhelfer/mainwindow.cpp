@@ -15,6 +15,8 @@
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgispindeleinstellung.h"
+#include "dialogs/dlgtableview.h"
+#include "dialogs/dlgconsole.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -30,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionThemeHell->setEnabled(gSettings->theme() != Settings::Theme::Bright);
     ui->actionThemeDunkel->setEnabled(gSettings->theme() != Settings::Theme::Dark);
 
+  #if 0
     QString style = gSettings->style();
     for(const QString &key : QStyleFactory::keys())
     {
@@ -40,6 +43,8 @@ MainWindow::MainWindow(QWidget *parent) :
             connect(action, SIGNAL(triggered()), this, SLOT(changeStyle()));
         ui->menuStil->addAction(action);
     }
+  #endif
+    ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
 
     ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 
@@ -261,6 +266,7 @@ void MainWindow::restoreView(bool full)
     ui->tabAusruestung->restoreView(full);
     ui->tabDatenbank->restoreView(full);
     DlgRohstoffAuswahl::restoreView(full);
+    DlgTableView::restoreView(full);
 }
 
 void MainWindow::databaseModified()
@@ -699,6 +705,7 @@ void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
 
 void MainWindow::checkForUpdate(bool force)
 {
+  #if QT_NETWORK_LIB
     QString url;
     QDate since;
     gSettings->beginGroup("General");
@@ -710,10 +717,14 @@ void MainWindow::checkForUpdate(bool force)
     DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
     connect(dlg, SIGNAL(finished()), this, SLOT(checkMessageFinished()));
     dlg->checkForUpdate();
+  #else
+    Q_UNUSED(force)
+  #endif
 }
 
 void MainWindow::checkMessageFinished()
 {
+  #if QT_NETWORK_LIB
     DlgCheckUpdate *dlg = qobject_cast<DlgCheckUpdate*>(sender());
     if (dlg)
     {
@@ -729,15 +740,20 @@ void MainWindow::checkMessageFinished()
         }
         dlg->deleteLater();
     }
+  #endif
 }
 
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
+  #if QT_NETWORK_LIB
     gSettings->beginGroup("General");
     gSettings->setValue("CheckUpdate", checked);
     gSettings->endGroup();
     if (checked)
         checkForUpdate(true);
+  #else
+    Q_UNUSED(checked)
+  #endif
 }
 
 void MainWindow::on_actionTooltips_triggered(bool checked)
@@ -771,6 +787,18 @@ void MainWindow::on_actionEnglisch_triggered()
     restart(1001);
 }
 
+void MainWindow::on_actionSchwedisch_triggered()
+{
+    gSettings->setLanguage("sv");
+    restart(1001);
+}
+
+void MainWindow::on_actionNiederlaendisch_triggered()
+{
+    gSettings->setLanguage("nl");
+    restart(1001);
+}
+
 void MainWindow::on_actionSpende_triggered()
 {
     QDesktopServices::openUrl(QUrl(URL_SPENDE));
@@ -786,4 +814,18 @@ void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);
     dlg.exec();
+}
+
+void MainWindow::on_actionLog_triggered()
+{
+    if (DlgConsole::Dialog)
+    {
+        DlgConsole::Dialog->raise();
+        DlgConsole::Dialog->activateWindow();
+    }
+    else
+    {
+        DlgConsole::Dialog = new DlgConsole(this);
+        DlgConsole::Dialog->show();
+    }
 }

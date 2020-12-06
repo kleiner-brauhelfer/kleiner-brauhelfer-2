@@ -7,6 +7,7 @@
 
   <div class="r" align="center">
     <h1>{{Rezept.Name}} {{#Rezept.Nummer}}(#{{Rezept.Nummer}}){{/Rezept.Nummer}}</h1>
+    <h1><em>{{Rezept.Kategorie}}</em></h1>
   </div>
 
   <div class="rm" align="center">
@@ -19,105 +20,107 @@
         </td>
         <td valign="top">
           <table>
-            <col width="*">
-            <col width="80">
-            <col width="80">
-            <col width="80">
             <tr>
               <th></th>
-              <th>Sud</th>
-              <th>Rezept</th>
-              <th></th>
+              <th style="padding:0 20px;">Sud</th>
+              <th style="padding:0 20px;">Rezept</th>
+              <th style="padding:0 20px;"></th>
             </tr>
             <tr>
-              <td>Menge</td>
+              <td>amount</td>
               <td class="value" align="center">{{Sud.Menge}}</td>
               <td class="value" align="center">{{Rezept.Menge}}</td>
               <td>l</td>
             </tr>
             {{#Rezept.HighGravityFaktor}}
             <tr>
-              <td>High-Gravity Faktor</td>
+              <td>high gravity factor</td>
               <td class="value" align="center"></td>
               <td class="value" align="center">{{Rezept.HighGravityFaktor}}</td>
               <td>%</td>
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>Stammw&uuml;rze</td>
+              <td>original gravity</td>
               <td class="value" align="center">{{Sud.SW}}</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             <tr>
-              <td>Alkohol</td>
+              <td>alcohol</td>
               <td class="value" align="center">{{Sud.Alkohol}}</td>
               <td class="value" align="center">{{Rezept.Alkohol}}</td>
               <td>%</td>
             </tr>
             <tr>
-              <td>Bittere</td>
+              <td>bitterness</td>
               <td class="value" align="center">{{Sud.Bittere}}</td>
               <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
-              <td>Farbe</td>
+              <td>color</td>
               <td class="value" align="center">{{Sud.Farbe}}</td>
               <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
-              <td>CO&#x2082;-Gehalt</td>
+              <td>CO&#x2082;</td>
               <td class="value" align="center">{{Sud.CO2}}</td>
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
             </tr>
             <tr>
-              <td>Restalkalit&auml;t</td>
-              <td class="value" align="center"></td>
+              <td>residual alkalinity</td>
+              <td class="value" align="center">{{Sud.Restalkalitaet}}</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
             </tr>
             <tr>
-              <td>Effektive Sudhausausbeute</td>
-              <td class="value" align="center">{{Sud.effSHA}}</td>
-              <td class="value" align="center"></td>
+              <td>mash efficiency</td>
+              <td class="value" align="center">{{Sud.SHA}}</td>
+              <td align="center">---</td>
               <td>%</td>
             </tr>
             <tr>
-              <td>Endverg&auml;rungsgrad</td>
-              <td class="value" align="center">{{Sud.tEVG}}</td>
-              <td class="value" align="center"></td>
+              <td>effective brewhouse efficiency</td>
+              <td class="value" align="center">{{Sud.effSHA}}</td>
+              <td class="value" align="center">{{Rezept.SHA}}</td>
+              <td>%</td>
+            </tr>
+            <tr>
+              <td>fermentation</td>
+              <td class="value" align="center">{{Sud.EVG}}</td>
+              <td class="value" align="center">{{Rezept.EVG}}</td>
               <td>%</td>
             </tr>
           </table>
         </td>
-        <td valign="top" align="left">
+        <td valign="top" align="left" style="padding:0 30px;">
           <table>
               <tr>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
               </tr>
               <tr>
-                <td>Brauanlage</td>
-                <td class="value" align="center">{{Rezept.Brauanlage}}</td>
+                <td style="padding:0 20px;">brewing setup</td>
+                <td class="value">{{Rezept.Brauanlage}}</td>
               </tr>
               <tr>
-                <td>Wasserprofil</td>
-                <td class="value" align="center">{{Rezept.Wasserprofil}}</td>
+                <td style="padding:0 20px;">water profile</td>
+                <td class="value">{{Rezept.Wasserprofil}}</td>
               </tr>
               <tr>
-                <td>Braudatum</td>
-                <td class="value" align="center">{{Sud.Braudatum}}</td>
+                <td style="padding:0 20px;">brew date</td>
+                <td class="value">{{Sud.Braudatum}}</td>
               </tr>
               <tr>
-                <td>Abf&uuml;lldatum</td>
-                <td class="value" align="center">{{Sud.Abfuelldatum}}</td>
+                <td style="padding:0 20px;">bottling date</td>
+                <td class="value">{{Sud.Abfuelldatum}}</td>
               </tr>
               <tr>
-                <td>Reifezeit</td>
-                <td align="center"><span class="value">{{Rezept.Reifezeit}}</span> Wochen</td>
+                <td style="padding:0 20px;">aging time</td>
+                <td class="value">{{Rezept.Reifezeit}} weeks</td>
               </tr>
               <tr>
                 <td colspan="2">{{{Sud.BewertungSterne}}}
@@ -130,7 +133,7 @@
 
   {{#Rezept.Kommentar}}
   <div class="rm bg_kommentar" align="center">
-    <h2>Bemerkung</h2>
+    <h2>Notes</h2>
     <p class="kommentar">{{{Rezept.Kommentar}}}</p>
   </div>
   {{/Rezept.Kommentar}}
@@ -148,9 +151,9 @@
           <col width="150">
           <tr>
             <th></th>
-            <th>Farbe [EBC]</th>
-            <th>Anteil [%]</th>
-            <th>Menge [kg]</th>
+            <th>Color [EBC]</th>
+            <th>Percentage [%]</th>
+            <th>Amount [kg]</th>
           </tr>
           {{#Liste}}
           <tr>
@@ -161,7 +164,7 @@
           </tr>
           {{/Liste}}
           <tr>
-            <td><strong>Gesamtsch&uuml;ttung</strong></td>
+            <td><strong>total grist amount</strong></td>
             <td align="center"></td>
             <td align="center"></td>
             <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
@@ -182,19 +185,19 @@
             <col width="150">
             <tr>
               <th></th>
-              <th>Zeitpunkt</th>
+              <th>Moment</th>
               <th>Alpha [%]</th>
-              <th>Kochdauer [min]</th>
-              <th>Menge [g]</th>
+              <th>Boiling Time [min]</th>
+              <th>Amount [g]</th>
             </tr>
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
               <td class="value" align="center">
-                {{#Kochen}}Kochen{{/Kochen}}
-                {{#Vorderwuerze}}Vorderw&uuml;rze{{/Vorderwuerze}}
-                {{#Nachisomerisierung}}Nachisomerisierung{{/Nachisomerisierung}}
-                {{#Ausschlagen}}beim Ausschlagen{{/Ausschlagen}}
+                {{#Kochen}}boiling{{/Kochen}}
+                {{#Vorderwuerze}}first wort{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}end of boil{{/Nachisomerisierung}}
+                {{#Ausschlagen}}racking{{/Ausschlagen}}
               </td>
               <td class="value" align="center">{{Alpha}}</td>
               <td class="value" align="center">{{Kochdauer}}</td>
@@ -212,9 +215,9 @@
             <col width="150">
             <tr>
               <th></th>
-              <th>Zugabe nach [Tage]</th>
-              <th>Dauer [Tage]</th>
-              <th>Menge [g]</th>
+              <th>Added After [days]</th>
+              <th>Duration [days]</th>
+              <th>Amount [g]</th>
             </tr>
             {{#Liste}}
             <tr>
@@ -240,24 +243,24 @@
             <col width="150">
             <tr>
               <th></th>
-              <th>Menge [l]</th>
+              <th>Amount [l]</th>
             </tr>
             <tr>
-              <td>Hauptguss</td>
+              <td>strike water</td>
               <td class="value" align="center">{{Hauptguss}}</td>
             </tr>
             <tr>
-              <td>Nachguss</td>
+              <td>sparge water</td>
               <td class="value" align="center">{{Nachguss}}</td>
             </tr>
             {{#Verduennung}}
             <tr>
-              <td>Verd&uuml;nnung</td>
+              <td>dilution</td>
               <td class="value" align="center">{{Verduennung}}</td>
             </tr>
             {{/Verduennung}}
             <tr>
-              <td><strong>Gesamtmenge</strong></td>
+              <td><strong>total amount</strong></td>
               <td class="value" align="center">{{Gesamt}}</td>
             </tr>
           </table>
@@ -274,8 +277,8 @@
             <col width="150">
             <tr>
               <th></th>
-              <th>Zugabe nach [Tage]</th>
-              <th>Menge</th>
+              <th>Added After [days]</th>
+              <th>Amount</th>
             </tr>
             {{#Liste}}
             <tr>
@@ -303,20 +306,20 @@
             <col width="100">
             <tr>
               <th></th>
-              <th>Zeitpunkt</th>
-              <th>Menge</th>
+              <th>Moment</th>
+              <th>Amount</th>
             </tr>
             {{#Liste}}
             <tr>
               <td>{{Name}}</td>
               {{#Maischen}}
-              <td align="center">Maischen</td>
+              <td align="center">mashing</td>
               {{/Maischen}}
               {{#Kochen}}
-              <td align="center">Kochen, Dauer <span class="value">{{Kochdauer}}</span> min</td>
+              <td align="center">boiling, <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">G&auml;rung, Zugabe nach <span class="value">{{ZugabeNach}}</span> Tag(e){{#Dauer}}, Dauer <span class="value">{{Dauer}}</span> Tag(e){{/Dauer}}</td>
+              <td align="center">fermentation, added after <span class="value">{{ZugabeNach}}</span> day(s){{#Dauer}}, for <span class="value">{{Dauer}}</span> day(s){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -330,15 +333,15 @@
   </table>
 
   <div class="rm bg_rasten" align="center">
-    <h2>Maischplan</h2>
+    <h2>Mashing Plan</h2>
     <table>
       <col width="*">
       <col width="150">
       <col width="150">
       <tr>
         <th></th>
-        <th>Temperatur [&deg;C]</th>
-        <th>Dauer [min]</th>
+        <th>Temperature [&deg;C]</th>
+        <th>Duration [min]</th>
       </tr>
       {{#Rasten.Liste}}
       <tr>
@@ -352,7 +355,7 @@
 
   {{#Anhang}}
   <div class="rm bg_anhaenge" align="center">
-    <h2>Anh&auml;nge</h2>
+    <h2>Attachments</h2>
     <table style="width:100%">
     {{#Liste}}
     {{#Bild}}<tr><td align="center"><img src="{{Pfad}}" alt="{{Pfad}}" style="max-width: 100%"></td></tr>{{/Bild}}

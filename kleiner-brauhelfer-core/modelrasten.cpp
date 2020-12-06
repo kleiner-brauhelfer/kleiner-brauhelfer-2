@@ -72,7 +72,7 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
             case Brauhelfer::RastTyp::Einmaischen:
                 Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTemp).toDouble(),
                                                     bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::Colerg_S_Gesamt).toDouble(),
-                                                    18,
+                                                    data(idx.row(), ColParam3).toDouble(),
                                                     data(idx.row(), ColMenge).toDouble());
                 QSqlTableModel::setData(index(idx.row(), ColParam1), Tm);
                 break;
@@ -115,7 +115,7 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
             case Brauhelfer::RastTyp::Einmaischen:
                 Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTemp).toDouble(),
                                                     bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::Colerg_S_Gesamt).toDouble(),
-                                                    18,
+                                                    data(idx.row(), ColParam3).toDouble(),
                                                     data(idx.row(), ColMenge).toDouble());
                 QSqlTableModel::setData(index(idx.row(), ColParam1), Tm);
                 break;
@@ -187,6 +187,24 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
             ret = true;
         }
         break;
+    case ColParam3:
+        if (QSqlTableModel::setData(idx, value))
+        {
+            switch (static_cast<Brauhelfer::RastTyp>(data(idx.row(), ColTyp).toInt()))
+            {
+            case Brauhelfer::RastTyp::Einmaischen:
+                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTemp).toDouble(),
+                                                    bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::Colerg_S_Gesamt).toDouble(),
+                                                    data(idx.row(), ColParam3).toDouble(),
+                                                    data(idx.row(), ColMenge).toDouble());
+                QSqlTableModel::setData(index(idx.row(), ColParam1), Tm);
+                break;
+            default:
+                break;
+            }
+            ret = true;
+        }
+        break;
     default:
         break;
     }
@@ -209,7 +227,7 @@ double ModelRasten::getPreviousTemp(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     fromRow = model.mapRowFromSource(fromRow);
     if (fromRow > 0)
         return model.data(fromRow - 1, ColTemp).toDouble();
@@ -221,7 +239,7 @@ double ModelRasten::getPreviousMenge(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     if (fromRow >= 0)
         fromRow = model.mapRowFromSource(fromRow);
     else
@@ -250,7 +268,7 @@ void ModelRasten::update(const QVariant &sudId)
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegExp(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
     mSignalModifiedBlocked = true;
     for (int r = 0; r < model.rowCount(); r++)
     {

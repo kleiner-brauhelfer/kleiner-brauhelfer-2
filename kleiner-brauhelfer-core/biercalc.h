@@ -95,7 +95,7 @@ public:
      * @param formel Benutze Umrechnungsformel
      * @return Spezifische Dichte [g/ml]
      */
-    Q_INVOKABLE static double brixToDichte(double sw, double brix, FormulaBrixToPlato formel = Terrill);
+    Q_INVOKABLE static double brixToDichte(double sw, double brix, FormulaBrixToPlato formel);
 
     /**
      * @brief Umrechnung spezifische Dichte bei 20°C [g/ml] nach plato [°P]
@@ -217,10 +217,10 @@ public:
     /**
      * @brief wuerzeCO2Potential
      * @param sw
-     * @param sre
+     * @param tre
      * @return
      */
-    Q_INVOKABLE static double co2Vergaerung(double sw, double sre);
+    Q_INVOKABLE static double co2Vergaerung(double sw, double tre);
 
     /**
      * @brief zuckerCO2Potential

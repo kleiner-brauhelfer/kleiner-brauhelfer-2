@@ -6,6 +6,18 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+const QList<WdgRast::Rast> WdgRast::rasten = {
+    {tr("Gummirast (Glukanaserast)"),39,20},
+    {tr("Maltaserast"),45,30},
+    {tr("Weizenrast (Ferulsäurerast)"),45,15},
+    {tr("Eiweissrast (Proteaserast)"),54,10},
+    {tr("Maltoserast (1. Verzuckerung)"),63,35},
+    {tr("Zwischenrast"),67,15},
+    {tr("Verzuckerungsrast (2. Verzuckerung)"),71,20},
+    {tr("Kombirast"),67,60},
+    {tr("Abmaischen"),78,1}
+};
+
 WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelRasten(), row, parentLayout, parent),
     ui(new Ui::WdgRast),
@@ -85,13 +97,8 @@ void WdgRast::updateListe()
             ui->cbRast->addItem(tr("Einmaischen"));
             break;
         case Brauhelfer::RastTyp::Temperatur:
-            ui->cbRast->addItem(tr("Gummirast (35°-40°)"));
-            ui->cbRast->addItem(tr("Weizenrast (45°)"));
-            ui->cbRast->addItem(tr("Eiweissrast (57°)"));
-            ui->cbRast->addItem(tr("Maltoserast (60°-65°)"));
-            ui->cbRast->addItem(tr("Kombirast (66°-69°)"));
-            ui->cbRast->addItem(tr("Verzuckerung (70°-75°)"));
-            ui->cbRast->addItem(tr("Abmaischen (78°)"));
+            for (const Rast &rast : rasten)
+                ui->cbRast->addItem(tr(rast.name.toStdString().c_str()));
             break;
         case Brauhelfer::RastTyp::Infusion:
             ui->cbRast->addItem(tr("Kochendes Wasser"));
@@ -123,38 +130,14 @@ void WdgRast::updateValuesFromListe(int index)
         setData(ModelRasten::ColMengenfaktor, 1.0);
         setData(ModelRasten::ColTemp, 57);
         setData(ModelRasten::ColDauer, 5);
+        setData(ModelRasten::ColParam3, 18);
         break;
     case Brauhelfer::RastTyp::Temperatur:
         setData(ModelRasten::ColMengenfaktor, 1.0);
-        switch (index)
+        if (index >= 0 && index < rasten.count())
         {
-        case 0: // Gummirast
-            setData(ModelRasten::ColTemp, 38);
-            setData(ModelRasten::ColDauer, 60);
-            break;
-        case 1: // Weizenrast
-            setData(ModelRasten::ColTemp, 45);
-            setData(ModelRasten::ColDauer, 15);
-            break;
-        case 2: // Eiweissrast
-            setData(ModelRasten::ColTemp, 57);
-            setData(ModelRasten::ColDauer, 10);
-            break;
-        case 3: // Maltoserast
-            setData(ModelRasten::ColTemp, 63);
-            setData(ModelRasten::ColDauer, 35);
-            break;
-        case 4: // Kombirast
-            setData(ModelRasten::ColTemp, 67);
-            setData(ModelRasten::ColDauer, 60);
-            break;
-        case 5: // Verzuckerung
-            setData(ModelRasten::ColTemp, 72);
-            setData(ModelRasten::ColDauer, 20);
-            break;
-        case 6: // Abmaischen
-            setData(ModelRasten::ColTemp, 78);
-            setData(ModelRasten::ColDauer, 5);
+            setData(ModelRasten::ColTemp, rasten[index].temperatur);
+            setData(ModelRasten::ColDauer, rasten[index].dauer);
         }
         break;
     case Brauhelfer::RastTyp::Infusion:
@@ -204,7 +187,9 @@ void WdgRast::updateValues(bool full)
         ui->tbMengeEinmaischen->setValue(data(ModelRasten::ColMenge).toDouble());
     if (!ui->tbVerhaeltnisEinmaischen->hasFocus())
         ui->tbVerhaeltnisEinmaischen->setValue(data(ModelRasten::ColMengenfaktor).toDouble()*100);
-    ui->tbEinmaischTempEinmaischen->setValue(data(ModelRasten::ColParam1).toDouble());
+    ui->tbWasserTempEinmaischen->setValue(data(ModelRasten::ColParam1).toDouble());
+    if (!ui->tbMalzTempEinmaischen->hasFocus())
+        ui->tbMalzTempEinmaischen->setValue(data(ModelRasten::ColParam3).toDouble());
     if (!ui->tbTempEinmaischen->hasFocus())
         ui->tbTempEinmaischen->setValue(data(ModelRasten::ColTemp).toDouble());
     if (!ui->tbDauerEinmaischen->hasFocus())
@@ -291,6 +276,12 @@ void WdgRast::on_tbVerhaeltnisEinmaischen_valueChanged(double value)
 {
     if (ui->tbVerhaeltnisEinmaischen->hasFocus())
         setData(ModelRasten::ColMengenfaktor, value/100);
+}
+
+void WdgRast::on_tbMalzTempEinmaischen_valueChanged(double value)
+{
+    if (ui->tbMalzTempEinmaischen->hasFocus())
+        setData(ModelRasten::ColParam3, value);
 }
 
 void WdgRast::on_tbTempEinmaischen_valueChanged(double value)

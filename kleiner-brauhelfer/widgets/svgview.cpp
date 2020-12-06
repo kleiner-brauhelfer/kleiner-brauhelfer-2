@@ -5,7 +5,6 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsSvgItem>
 #include <QPaintEvent>
-#include <QPrinter>
 #include <qmath.h>
 
 SvgView::SvgView(QWidget *parent)

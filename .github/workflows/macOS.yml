@@ -17,12 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v1
 
-      - name: Install dependencies from homebrew
-        run: |
-          brew upgrade
-          brew install qt5
-          brew upgrade qt5
-          brew link qt5 -f
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
            
       - name: Build kleiner-brauhelfer-2
         run: |

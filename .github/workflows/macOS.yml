@@ -23,7 +23,7 @@ jobs:
       - name: Build kleiner-brauhelfer-2
         run: |
           chmod +x ./build_macos.sh
-          ./build_macos.sh /usr/local/opt/qt/bin/ "-${{ github.sha }}"
+          ./build_macos.sh "${Qt5_DIR}/bin/" "-${{ github.sha }}"
           mkdir deploy
           cp build-macos/bin/kbh2_*.zip deploy/
 

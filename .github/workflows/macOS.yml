@@ -19,7 +19,9 @@ jobs:
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
-           
+        with:
+            modules: 'qtcharts qtwebengine'
+        
       - name: Build kleiner-brauhelfer-2
         run: |
           chmod +x ./build_macos.sh

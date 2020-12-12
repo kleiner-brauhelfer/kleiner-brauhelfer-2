@@ -343,8 +343,8 @@
      showgrid="true"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="13.112371"
-     inkscape:cx="12.6016"
+     inkscape:cy="11.035858"
+     inkscape:cx="-2.6113531"
      inkscape:zoom="45.254832"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -352,7 +352,7 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:snap-global="false">
+     inkscape:snap-global="true">
     <inkscape:grid
        id="grid4345"
        type="xygrid" />
@@ -377,18 +377,11 @@
     <path
        sodipodi:nodetypes="cc"
        id="path3338"
-       d="M 14,1044.3622 H 2"
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       y="1014.0184"
-       x="-26.1875"
-       height="6.625"
-       width="5.8125"
-       id="rect4343"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1" />
+       d="M 13,1044.3622 H 3"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
-       d="m 8,1050.3622 v -12"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
+       d="m 8,1049.3622 v -10"
        id="path3338-4"
        sodipodi:nodetypes="cc" />
   </g>

@@ -247,7 +247,6 @@
    <addaction name="menuEinstellungen"/>
    <addaction name="menuHilfe"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionSpeichern">
    <property name="text">
     <string>Speichern</string>

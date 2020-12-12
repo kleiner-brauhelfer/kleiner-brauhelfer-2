@@ -91,8 +91,6 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
-    ui->statusBar->showMessage(bh->databasePath());
-
     connect(ui->tabSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
     ui->tabBrauuebersicht->setModel(ui->tabSudAuswahl->model());
     connect(ui->tabBrauuebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));

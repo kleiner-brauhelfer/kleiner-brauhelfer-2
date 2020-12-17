@@ -72,6 +72,7 @@ bool ModelHauptgaerverlauf::setDataExt(const QModelIndex &idx, const QVariant &v
                 int row = bh->modelSud()->getRowWithValue(ModelSud::ColID, sudId);
                 bh->modelSud()->setData(row, ModelSud::ColTemperaturJungbier, value);
             }
+            //todo: wenn höchste temperatur -> bh->modelSud()->setData(row, ModelSud::ColTemperaturKarbonisierung, value);
             return true;
         }
         return false;

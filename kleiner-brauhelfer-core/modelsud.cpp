@@ -61,6 +61,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("FaktorHauptgussEmpfehlung");
     mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
+    mVirtualField.append("TemperaturKarbonisierung");
 }
 
 void ModelSud::createConnections()
@@ -233,7 +234,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double co2Soll = data(idx.row(), ColCO2).toDouble();
         double sw = data(idx.row(), ColSWIst).toDouble();
         double sreJungbier = data(idx.row(), ColSWJungbier).toDouble();
-        double T = data(idx.row(), ColTemperaturJungbier).toDouble();
+        double T = data(idx.row(), ColTemperaturKarbonisierung).toDouble();
         double sreSchnellgaerprobe = data(idx.row(), ColSREIst).toDouble();
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         return BierCalc::speise(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) * jungbiermenge * 1000;
@@ -257,7 +258,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double co2Soll = data(idx.row(), ColCO2).toDouble();
         double sw = data(idx.row(), ColSWIst).toDouble();
         double sreJungbier = data(idx.row(), ColSWJungbier).toDouble();
-        double T = data(idx.row(), ColTemperaturJungbier).toDouble();
+        double T = data(idx.row(), ColTemperaturKarbonisierung).toDouble();
         double sreSchnellgaerprobe = data(idx.row(), ColSREIst).toDouble();
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         double zucker = BierCalc::zucker(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) * jungbiermenge;
@@ -500,6 +501,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
             return data(idx.row(), Colerg_S_Gesamt).toDouble() * data(idx.row(), ColFaktorHauptguss).toDouble();
         }
     }
+    case ColTemperaturKarbonisierung:
+    {
+        return temperaturKarbonisierung;
+    }
     case ColBewertungMittel:
     {
         return bh->modelBewertungen()->mean(data(idx.row(), ColID));
@@ -710,6 +715,11 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
             double ra = phRa * 2.8 / (0.013 * V / schuet + 0.013);
             return QSqlTableModel::setData(index(idx.row(), ColRestalkalitaetSoll), ra);
         }
+        return true;
+    }
+    case ColTemperaturKarbonisierung:
+    {
+        temperaturKarbonisierung = value.toDouble();
         return true;
     }
     default:
@@ -1097,7 +1107,9 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
     if (!values.contains(ColVergaerungsgrad))
         values.insert(ColVergaerungsgrad, 70);
     if (!values.contains(ColTemperaturJungbier))
-        values.insert(ColTemperaturJungbier, 20.0);
+        values.insert(ColTemperaturJungbier, 12.0);
+    if (!values.contains(ColTemperaturKarbonisierung))
+        values.insert(ColTemperaturKarbonisierung, 12.0);
     if (!values.contains(ColStatus))
         values.insert(ColStatus, static_cast<int>(Brauhelfer::SudStatus::Rezept));
 }

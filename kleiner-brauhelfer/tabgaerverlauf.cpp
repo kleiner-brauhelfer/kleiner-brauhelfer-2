@@ -3,6 +3,8 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QClipboard>
+#include <QMimeData>
+#include <QFileDialog>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/datetimedelegate.h"
@@ -226,7 +228,7 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
         default:
             if (event->matches(QKeySequence::Paste))
                 if (ui->tableWidget_Schnellgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
-                    pasteFromClipboardSchnellgaerverlauf();
+                    pasteFromClipboardSchnellgaerverlauf(QApplication::clipboard()->text());
             break;
         }
     }
@@ -243,7 +245,7 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
         default:
             if (event->matches(QKeySequence::Paste))
                 if (ui->tableWidget_Hauptgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
-                    pasteFromClipboardHauptgaerverlauf();
+                    pasteFromClipboardHauptgaerverlauf(QApplication::clipboard()->text());
             break;
         }
     }
@@ -260,8 +262,39 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
         default:
             if (event->matches(QKeySequence::Paste))
                 if (ui->tableWidget_Nachgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
-                    pasteFromClipboardNachgaerverlauf();
+                    pasteFromClipboardNachgaerverlauf(QApplication::clipboard()->text());
             break;
+        }
+    }
+}
+
+void TabGaerverlauf::dragEnterEvent(QDragEnterEvent *event)
+{
+    if (event->mimeData()->hasUrls())
+    {
+        event->acceptProposedAction();
+    }
+}
+
+void TabGaerverlauf::dropEvent(QDropEvent *event)
+{
+    for (const QUrl& url : event->mimeData()->urls())
+    {
+        QFile file(url.toLocalFile());
+        if (file.open(QFile::ReadOnly | QFile::Text))
+        {
+            switch (ui->toolBox_Gaerverlauf->currentIndex())
+            {
+            case 0:
+                pasteFromClipboardSchnellgaerverlauf(file.readAll());
+                break;
+            case 1:
+                pasteFromClipboardHauptgaerverlauf(file.readAll());
+                break;
+            case 2:
+                pasteFromClipboardNachgaerverlauf(file.readAll());
+                break;
+            }
         }
     }
 }
@@ -271,6 +304,16 @@ void TabGaerverlauf::sudLoaded()
     updateDiagramm();
     updateValues();
     updateWeitereZutaten();
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    switch (status)
+    {
+    case Brauhelfer::SudStatus::Abgefuellt:
+        ui->toolBox_Gaerverlauf->setCurrentIndex(2);
+        break;
+    default:
+        ui->toolBox_Gaerverlauf->setCurrentIndex(1);
+        break;
+    }
 }
 
 void TabGaerverlauf::sudDataChanged(const QModelIndex& index)
@@ -437,6 +480,21 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
         bh->sud()->modelSchnellgaerverlauf()->removeRow(index.row());
 }
 
+void TabGaerverlauf::on_btnImportSchnellgaerMessung_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
+                                                    "",
+                                                    tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
+    if (!fileName.isEmpty())
+    {
+        QFile file(fileName);
+        if (file.open(QFile::ReadOnly | QFile::Text))
+        {
+            pasteFromClipboardSchnellgaerverlauf(file.readAll());
+        }
+    }
+}
+
 void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
 {
     ProxyModel *model = bh->sud()->modelHauptgaerverlauf();
@@ -547,6 +605,21 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
         bh->sud()->modelHauptgaerverlauf()->removeRow(index.row());
 }
 
+void TabGaerverlauf::on_btnImportHauptgaerMessung_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
+                                                    "",
+                                                    tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
+    if (!fileName.isEmpty())
+    {
+        QFile file(fileName);
+        if (file.open(QFile::ReadOnly | QFile::Text))
+        {
+            pasteFromClipboardHauptgaerverlauf(file.readAll());
+        }
+    }
+}
+
 void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
 {
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()}});
@@ -567,8 +640,24 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
         bh->sud()->modelNachgaerverlauf()->removeRow(index.row());
 }
 
-QDateTime TabGaerverlauf::toDateTime(const QString& string) const
+void TabGaerverlauf::on_btnImportNachgaerMessung_clicked()
 {
+    QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
+                                                    "",
+                                                    tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
+    if (!fileName.isEmpty())
+    {
+        QFile file(fileName);
+        if (file.open(QFile::ReadOnly | QFile::Text))
+        {
+            pasteFromClipboardNachgaerverlauf(file.readAll());
+        }
+    }
+}
+
+QDateTime TabGaerverlauf::toDateTime(QString string) const
+{
+    string.remove('\"').remove('\'');
     QDateTime dt = QDateTime::fromString(string, Qt::SystemLocaleShortDate);
     if (!dt.isValid())
         dt = QDateTime::fromString(string, Qt::DefaultLocaleShortDate);
@@ -598,9 +687,10 @@ QDateTime TabGaerverlauf::toDateTime(const QString& string) const
     return dt;
 }
 
-double TabGaerverlauf::toDouble(const QString& string, bool *ok) const
+double TabGaerverlauf::toDouble(QString string, bool *ok) const
 {
     bool _ok = false;
+    string.remove('\"').remove('\'');
     double val = string.toDouble(&_ok);
     if (!_ok)
         val = QLocale().toDouble(string, &_ok);
@@ -609,17 +699,17 @@ double TabGaerverlauf::toDouble(const QString& string, bool *ok) const
     return val;
 }
 
-void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
+void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
 {
-    QString clipboardText = QApplication::clipboard()->text();
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+    QStringList rows = str.split("\n", Qt::SkipEmptyParts);
   #else
-    QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+    QStringList rows = str.split("\n", QString::SkipEmptyParts);
   #endif
     if (rows.size() == 0)
-        rows.append(clipboardText);
+        rows.append(str);
     bool error = false;
+    bool firstRow = true;
     bool wasBlocked = bh->modelSchnellgaerverlauf()->blockSignals(true);
     for (const QString& row : rows)
     {
@@ -662,13 +752,14 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
             }
             else
             {
-                error = true;
+                error = !firstRow;
             }
         }
         else
         {
-            error = true;
+            error = !firstRow;
         }
+        firstRow = false;
     }
     bh->modelSchnellgaerverlauf()->blockSignals(wasBlocked);
     bh->modelSchnellgaerverlauf()->emitModified();
@@ -683,17 +774,17 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf()
     }
 }
 
-void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
+void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
 {
-    QString clipboardText = QApplication::clipboard()->text();
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+    QStringList rows = str.split("\n", Qt::SkipEmptyParts);
   #else
-    QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+    QStringList rows = str.split("\n", QString::SkipEmptyParts);
   #endif
     if (rows.size() == 0)
-        rows.append(clipboardText);
+        rows.append(str);
     bool error = false;
+    bool firstRow = true;
     bool wasBlocked = bh->modelHauptgaerverlauf()->blockSignals(true);
     for (const QString& row : rows)
     {
@@ -736,13 +827,14 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
             }
             else
             {
-                error = true;
+                error = !firstRow;
             }
         }
         else
         {
-            error = true;
+            error = !firstRow;
         }
+        firstRow = false;
     }
     bh->modelHauptgaerverlauf()->blockSignals(wasBlocked);
     bh->modelHauptgaerverlauf()->emitModified();
@@ -757,17 +849,17 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf()
     }
 }
 
-void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
+void TabGaerverlauf::pasteFromClipboardNachgaerverlauf(const QString& str)
 {
-    QString clipboardText = QApplication::clipboard()->text();
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = clipboardText.split("\n", Qt::SkipEmptyParts);
+    QStringList rows = str.split("\n", Qt::SkipEmptyParts);
   #else
-    QStringList rows = clipboardText.split("\n", QString::SkipEmptyParts);
+    QStringList rows = str.split("\n", QString::SkipEmptyParts);
   #endif
     if (rows.size() == 0)
-        rows.append(clipboardText);
+        rows.append(str);
     bool error = false;
+    bool firstRow = true;
     bool wasBlocked = bh->modelNachgaerverlauf()->blockSignals(true);
     for (const QString& row : rows)
     {
@@ -809,13 +901,14 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf()
             }
             else
             {
-                error = true;
+                error = !firstRow;
             }
         }
         else
         {
-            error = true;
+            error = !firstRow;
         }
+        firstRow = false;
     }
     bh->modelNachgaerverlauf()->blockSignals(wasBlocked);
     bh->modelNachgaerverlauf()->emitModified();

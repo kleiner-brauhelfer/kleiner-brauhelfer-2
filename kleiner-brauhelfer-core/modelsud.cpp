@@ -730,8 +730,13 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
 Qt::ItemFlags ModelSud::flags(const QModelIndex &idx) const
 {
     Qt::ItemFlags itemFlags = SqlTableModel::flags(idx);
-    if (idx.column() == ColWuerzemengeAnstellenTotal)
+    switch (idx.column())
+    {
+    case ColWuerzemengeAnstellenTotal:
+    case ColTemperaturKarbonisierung:
         itemFlags |= Qt::ItemIsEditable;
+        break;
+    }
     return itemFlags;
 }
 

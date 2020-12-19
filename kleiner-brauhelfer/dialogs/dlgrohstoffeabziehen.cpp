@@ -26,31 +26,29 @@ public:
     }
 };
 
-DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(QWidget *parent) :
+DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, QWidget *parent) :
+    DlgRohstoffeAbziehen(abziehen, Brauhelfer::RohstoffTyp::Malz, QString(), 0.0, parent)
+{
+}
+
+DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgRohstoffeAbziehen),
+    mAbziehen(abziehen),
     mAbgezogen(false)
 {
     ui->setupUi(this);
-    setModels(true);
+    setWindowTitle(abziehen ? tr("Zutaten vom Lager abziehen") : tr("Zutaten ins Lager zurückgeben"));
+    ui->btnAbziehen->setText(abziehen ? tr("Zutaten abziehen") : tr("Zutaten zurückgeben"));
+    if (name.isEmpty())
+        setModels(true);
+    else
+        setModels(false, typ, name, menge);
     adjustSize();
     gSettings->beginGroup("DlgRohstoffeAbziehen");
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
-    gSettings->endGroup();
-}
-
-DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::DlgRohstoffeAbziehen),
-    mAbgezogen(false)
-{
-    ui->setupUi(this);
-    setModels(false, typ, name, menge);
-    adjustSize();
-    gSettings->beginGroup("DlgRohstoffeAbziehen");
-    resize(gSettings->value("size").toSize());
     gSettings->endGroup();
 }
 
@@ -64,7 +62,7 @@ DlgRohstoffeAbziehen::~DlgRohstoffeAbziehen()
 
 void DlgRohstoffeAbziehen::reject()
 {
-    if (!mAbgezogen)
+    if (mAbziehen && !mAbgezogen)
     {
         int ret = QMessageBox::warning(this, windowTitle(), tr("Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?"), QMessageBox::Yes | QMessageBox::Cancel);
         if (ret == QMessageBox::Yes)
@@ -277,9 +275,10 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Malz,
-                             name,
-                             model->index(r, 1).data().toDouble());
+        double menge = model->index(r, 1).data().toDouble();
+        if (!mAbziehen)
+            menge *= -1;
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Malz, name, menge);
         model->setData(model->index(r, 1), 0.0);
         model->setData(model->index(r, 2), bh->modelMalz()->getValueFromSameRow(ModelMalz::ColName, name, ModelMalz::ColMenge));
     }
@@ -288,9 +287,10 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hopfen,
-                             model->index(r, 0).data().toString(),
-                             model->index(r, 1).data().toDouble());
+        double menge = model->index(r, 1).data().toDouble();
+        if (!mAbziehen)
+            menge *= -1;
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hopfen, name, menge);
         model->setData(model->index(r, 1), 0.0);
         model->setData(model->index(r, 2), bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColMenge));
     }
@@ -299,9 +299,10 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hefe,
-                             model->index(r, 0).data().toString(),
-                             model->index(r, 1).data().toDouble());
+        double menge = model->index(r, 1).data().toDouble();
+        if (!mAbziehen)
+            menge *= -1;
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Hefe, name, menge);
         model->setData(model->index(r, 1), 0.0);
         model->setData(model->index(r, 2), bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, name, ModelHefe::ColMenge));
     }
@@ -310,9 +311,10 @@ void DlgRohstoffeAbziehen::on_btnAbziehen_clicked()
     for (int r = 0; r < model->rowCount(); ++r)
     {
         QString name = model->index(r, 0).data().toString();
-        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Zusatz,
-                             model->index(r, 0).data().toString(),
-                             model->index(r, 1).data().toDouble());
+        double menge = model->index(r, 1).data().toDouble();
+        if (!mAbziehen)
+            menge *= -1;
+        bh->rohstoffAbziehen(Brauhelfer::RohstoffTyp::Zusatz, name, menge);
         model->setData(model->index(r, 1), 0.0);
         model->setData(model->index(r, 2), bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, name, ModelWeitereZutaten::ColMengeNormiert));
     }

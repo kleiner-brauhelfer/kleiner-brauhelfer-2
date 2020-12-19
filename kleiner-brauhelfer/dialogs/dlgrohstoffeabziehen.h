@@ -13,8 +13,8 @@ class DlgRohstoffeAbziehen : public QDialog
     Q_OBJECT
 
 public:
-    explicit DlgRohstoffeAbziehen(QWidget *parent = nullptr);
-    DlgRohstoffeAbziehen(Brauhelfer::RohstoffTyp typ, const QString& name, double menge, QWidget *parent = nullptr);
+    explicit DlgRohstoffeAbziehen(bool abziehen, QWidget *parent = nullptr);
+    DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTyp typ, const QString& name, double menge, QWidget *parent = nullptr);
     virtual ~DlgRohstoffeAbziehen() Q_DECL_OVERRIDE;
 
 private slots:
@@ -26,6 +26,7 @@ private:
 
 private:
     Ui::DlgRohstoffeAbziehen *ui;
+    bool mAbziehen;
     bool mAbgezogen;
 };
 

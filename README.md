@@ -50,6 +50,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Dialog für Log (Protokoll)
 - Neu: Importfunktion für CSV Datei mit Gärdaten (auch per Drag & Drop)
 - Neu: Separates Temperatureingabefeld für die Karbonisierung
+- Neu: Bei "Sud gebraut zurücksetzen", "Hefe Zugabe zurücksetzen" und "Weitere Zutaten Zugabe zurücksetzen" lassen sich die Zutaten ins Lager zurücksetzen
 - Fix: Angaben Braumeister 10L
 
 ### Version 2.2.2 (26.09.2020)

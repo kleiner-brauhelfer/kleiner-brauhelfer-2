@@ -563,7 +563,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         {
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugegeben, true);
-            DlgRohstoffeAbziehen dlg(data.first,
+            DlgRohstoffeAbziehen dlg(true, data.first,
                                      bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColName).toString(),
                                      bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColMenge).toDouble(),
                                      this);
@@ -577,7 +577,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         {
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
-            DlgRohstoffeAbziehen dlg(data.first,
+            DlgRohstoffeAbziehen dlg(true, data.first,
                                      bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
                                      bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
                                      this);

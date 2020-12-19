@@ -438,7 +438,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
 
     Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
-    DlgRohstoffeAbziehen dlg(typ,
+    DlgRohstoffeAbziehen dlg(true, typ,
                              data(ModelWeitereZutatenGaben::ColName).toString(),
                              data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
                              this);

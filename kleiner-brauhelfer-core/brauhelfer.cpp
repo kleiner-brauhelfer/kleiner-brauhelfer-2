@@ -314,7 +314,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     if (teilen)
         sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{ModelHefegaben::ColSudID, neueSudId}});
     else
-        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{ModelHefegaben::ColSudID, neueSudId}, {ModelHefegaben::ColZugegeben, 0}});
+        sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{ModelHefegaben::ColSudID, neueSudId}, {ModelHefegaben::ColZugegeben, false}});
     if (teilen)
         sudKopierenModel(modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudId, {{ModelWeitereZutatenGaben::ColSudID, neueSudId}});
     else

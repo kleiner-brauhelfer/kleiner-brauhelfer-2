@@ -356,7 +356,7 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     bh->sud()->setBraudatum(QDateTime(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time()));
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
 
-    DlgRohstoffeAbziehen dlg(this);
+    DlgRohstoffeAbziehen dlg(true, this);
     dlg.exec();
 
     if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)

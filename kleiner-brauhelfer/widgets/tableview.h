@@ -29,7 +29,7 @@ public slots:
 
 private slots:
     void setColumnVisible(bool visible);
-    void customContextMenuRequested(const QPoint &pos);
+    void onCustomContextMenuRequested(const QPoint &pos);
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

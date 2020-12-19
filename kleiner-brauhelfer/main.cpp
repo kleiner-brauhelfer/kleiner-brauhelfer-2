@@ -335,7 +335,7 @@ static void checkSSL()
         if (gSettings->isNewProgramVersion())
         {
             QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                 QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion).arg(rutimeVersion));
+                                 QObject::tr("SSL wird nicht unterstüzt.\nVersion benötigt: %1\nVersion installiert: %2").arg(buildVersion, rutimeVersion));
         }
     }
   #endif

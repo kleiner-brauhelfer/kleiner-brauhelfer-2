@@ -51,8 +51,8 @@ private slots:
     void on_cbDatumAlle_stateChanged(int state);
     void on_btnMerken_clicked();
     void on_btnVergessen_clicked();
-    void onVerbraucht_clicked();
-    void onNichtVerbraucht_clicked();
+    void onMerkliste_clicked(bool value);
+    void onVerbraucht_clicked(bool value);
     void on_btnAlleVergessen_clicked();
     void on_btnAnlegen_clicked();
     void on_btnKopieren_clicked();

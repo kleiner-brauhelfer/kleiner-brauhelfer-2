@@ -14,7 +14,7 @@ DlgConsole::DlgConsole(QWidget *parent) :
     ui->setupUi(this);
     ui->textEdit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->sbLevel->setValue(gSettings->logLevel());
-    connect(this, &DlgConsole::finished, []{Dialog = nullptr;});
+    connect(this, &DlgConsole::finished, this, []{Dialog = nullptr;});
 }
 
 DlgConsole::~DlgConsole()

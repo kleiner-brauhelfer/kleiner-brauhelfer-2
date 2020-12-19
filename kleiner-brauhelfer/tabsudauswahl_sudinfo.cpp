@@ -36,7 +36,6 @@ void TabSudAuswahl::updateWebView()
 void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
 {
     const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
-    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
 
     struct Rohstoff
     {
@@ -55,7 +54,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         ListSudID.append(SudID);
     }
 
-    QList<Rohstoff> ListMalz;
+    QVector<Rohstoff> ListMalz;
     ProxyModel modelMalzschuettung;
     modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
     for (int row = 0; row < modelMalzschuettung.rowCount(); ++row)
@@ -82,7 +81,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         }
     }
 
-    QList<Rohstoff> ListHopfen;
+    QVector<Rohstoff> ListHopfen;
     ProxyModel modelHopfengaben;
     modelHopfengaben.setSourceModel(bh->modelHopfengaben());
     for (int row = 0; row < modelHopfengaben.rowCount(); ++row)
@@ -112,7 +111,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         }
     }
 
-    QList<Rohstoff> ListHefe;
+    QVector<Rohstoff> ListHefe;
     ProxyModel modelHefegaben;
     modelHefegaben.setSourceModel(bh->modelHefegaben());
     for (int row = 0; row < modelHefegaben.rowCount(); ++row)
@@ -142,7 +141,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
         }
     }
 
-    QList<Rohstoff> ListWeitereZutaten;
+    QVector<Rohstoff> ListWeitereZutaten;
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
     for (int row = 0; row < modelWeitereZutatenGaben.rowCount(); ++row)
@@ -153,7 +152,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             Rohstoff eintrag;
             eintrag.Name = modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColName).toString();
             eintrag.Menge = modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-            QList<Rohstoff> *liste = nullptr;
+            QVector<Rohstoff> *liste = nullptr;
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {

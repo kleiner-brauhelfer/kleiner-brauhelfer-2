@@ -735,7 +735,7 @@ void MainWindow::checkForUpdate(bool force)
     gSettings->endGroup();
 
     DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
-    connect(dlg, SIGNAL(finished()), this, SLOT(checkMessageFinished()));
+    connect(dlg, SIGNAL(checkUpdatefinished()), this, SLOT(checkMessageFinished()));
     dlg->checkForUpdate();
   #else
     Q_UNUSED(force)

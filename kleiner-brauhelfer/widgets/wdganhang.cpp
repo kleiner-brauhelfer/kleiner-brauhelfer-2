@@ -132,7 +132,7 @@ void WdgAnhang::on_pushButton_Browse_clicked()
 
 void WdgAnhang::on_btnOpen_clicked()
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(getPfad()));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(getFullPfad()));
 }
 
 void WdgAnhang::on_btnLoeschen_clicked()

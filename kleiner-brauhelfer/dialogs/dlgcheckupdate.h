@@ -25,7 +25,7 @@ public:
     bool doCheckUpdate() const;
 
 signals:
-    void finished();
+    void checkUpdatefinished();
 
 private slots:
     void httpFinished();

@@ -224,7 +224,7 @@ void TabBrauUebersicht::on_tableView_doubleClicked(const QModelIndex &index)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
     int sudId = model->data(index.row(), ModelSud::ColID).toInt();
-    clicked(sudId);
+    emit clicked(sudId);
 }
 
 void TabBrauUebersicht::table_selectionChanged(const QItemSelection &selected)

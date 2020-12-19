@@ -93,8 +93,8 @@ void TableView::setDefaultContextMenu()
         QHeaderView *header = horizontalHeader();
         setContextMenuPolicy(Qt::CustomContextMenu);
         header->setContextMenuPolicy(Qt::CustomContextMenu);
-        connect(this, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
-        connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(customContextMenuRequested(const QPoint&)));
+        connect(this, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(onCustomContextMenuRequested(const QPoint&)));
+        connect(header, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(onCustomContextMenuRequested(const QPoint&)));
     }
 }
 
@@ -126,7 +126,7 @@ void TableView::setColumnVisible(bool visible)
         setColumnHidden(action->data().toInt(), !visible);
 }
 
-void TableView::customContextMenuRequested(const QPoint &pos)
+void TableView::onCustomContextMenuRequested(const QPoint &pos)
 {
     QMenu menu(this);
     buildContextMenu(menu);

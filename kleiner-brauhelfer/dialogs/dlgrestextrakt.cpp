@@ -202,7 +202,6 @@ void DlgRestextrakt::calculateFromRefraktometer()
             plato = BierCalc::brixToPlato(ui->tbBrix->value());
         else
             plato = ui->tbBrix->value();
-        dichte = BierCalc::platoToDichte(plato);
         ui->tbSw->setValue(plato);
     }
     else

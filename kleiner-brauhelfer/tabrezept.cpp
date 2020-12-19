@@ -614,10 +614,12 @@ void TabRezept::updateRastenDiagram()
     }
 
     chart->createDefaultAxes();
-    QValueAxis *axis =  static_cast<QValueAxis*>(chart->axes(Qt::Horizontal).back());
+    QList<QAbstractAxis*> axes = chart->axes(Qt::Horizontal);
+    QValueAxis *axis = static_cast<QValueAxis*>(axes.back());
     axis->setRange(0, tTotal);
     axis->setLabelFormat("%d min");
-    axis =  static_cast<QValueAxis*>(chart->axes(Qt::Vertical).back());
+    axes = chart->axes(Qt::Vertical);
+    axis = static_cast<QValueAxis*>(axes.back());
     axis->setRange(TMin, TMax);
     axis->setLabelFormat("%d C");
   #endif

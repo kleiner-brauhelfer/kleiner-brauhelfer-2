@@ -68,7 +68,7 @@ void DlgCheckUpdate::httpFinished()
     {
         qWarning() << "DlgCheckUpdate: Network error:" << reply->errorString();
     }
-    emit finished();
+    emit checkUpdatefinished();
 }
 
 bool DlgCheckUpdate::parseReplyGithub(const QByteArray& str)

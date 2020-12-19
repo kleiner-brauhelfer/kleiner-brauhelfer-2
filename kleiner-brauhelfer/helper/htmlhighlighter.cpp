@@ -13,7 +13,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
 
     if (gSettings->theme() != Settings::Dark)
     {
-        edgeTagFormat.setForeground(QBrush(QColor("#32a9dd")));
+        edgeTagFormat.setForeground(QBrush(QColor(0x32a9dd)));
         insideTagFormat.setForeground(Qt::blue);
         tagsFormat.setForeground(Qt::darkBlue);
         multiLineCommentFormat.setForeground(Qt::darkGray);
@@ -22,11 +22,11 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
     }
     else
     {
-        edgeTagFormat.setForeground(QBrush(QColor("#2a82da")));
-        insideTagFormat.setForeground(QBrush(QColor("#32a9dd")));
-        tagsFormat.setForeground(QBrush(QColor("#0044FF")));
+        edgeTagFormat.setForeground(QBrush(QColor(0x2a82da)));
+        insideTagFormat.setForeground(QBrush(QColor(0x32a9dd)));
+        tagsFormat.setForeground(QBrush(QColor(0x0044FF)));
         multiLineCommentFormat.setForeground(Qt::darkGray);
-        quotationFormat.setForeground(QBrush(QColor("#82da2a")));
+        quotationFormat.setForeground(QBrush(QColor(0x82da2a)));
         customTagFormat.setForeground(QColor(219, 137, 9));
     }
     insideTagFormat.setFontWeight(QFont::Bold);

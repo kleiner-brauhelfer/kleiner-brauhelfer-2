@@ -721,21 +721,35 @@
               </property>
               <item>
                <widget class="QPushButton" name="btnTagNeu">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string>Neuer Eintrag</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QPushButton" name="btnTagLoeschen">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="text">
-                 <string>Eintrag löschen</string>
+                <property name="icon">
+                 <iconset resource="images.qrc">
+                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -838,11 +852,18 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnNeuerAnhang">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <property name="text">
-               <string>Anhang hinzufügen</string>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
               </property>
              </widget>
             </item>

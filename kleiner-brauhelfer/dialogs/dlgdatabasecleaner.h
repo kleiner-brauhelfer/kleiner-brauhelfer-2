@@ -41,7 +41,7 @@ private:
     QMap<int, QString> mSudIds;
     QMap<int, QString> mAnlagenIds;
     QList<std::function<bool()> > mTestFncs;
-    QList<std::function<bool()> >::const_iterator mItTestFncs;
+    QList<std::function<bool()> >::iterator mItTestFncs;
 };
 
 #endif // DLGDATABASECLEANER_H

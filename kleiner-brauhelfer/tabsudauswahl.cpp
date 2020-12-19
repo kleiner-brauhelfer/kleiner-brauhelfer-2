@@ -218,7 +218,7 @@ void TabSudAuswahl::on_tableSudauswahl_doubleClicked(const QModelIndex &index)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
     int sudId = model->data(index.row(), ModelSud::ColID).toInt();
-    clicked(sudId);
+    emit clicked(sudId);
 }
 
 void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &pos)
@@ -229,34 +229,20 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
 
     QModelIndex index = ui->tableSudauswahl->indexAt(pos);
 
-    if (model->data(index.row(), ModelSud::ColMerklistenID).toBool())
-    {
-        action = new QAction(tr("Sud vergessen"), &menu);
-        connect(action, SIGNAL(triggered()), this, SLOT(on_btnVergessen_clicked()));
-        menu.addAction(action);
-    }
-    else
-    {
-        action = new QAction(tr("Sud merken"), &menu);
-        connect(action, SIGNAL(triggered()), this, SLOT(on_btnMerken_clicked()));
-        menu.addAction(action);
-    }
+    action = new QAction(tr("Sud merken"), &menu);
+    action->setCheckable(true);
+    action->setChecked(model->data(index.row(), ModelSud::ColMerklistenID).toBool());
+    connect(action, SIGNAL(triggered(bool)), this, SLOT(onMerkliste_clicked(bool)));
+    menu.addAction(action);
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(index.row(), ModelSud::ColStatus).toInt());
     if (status >= Brauhelfer::SudStatus::Abgefuellt)
     {
-        if (status == Brauhelfer::SudStatus::Verbraucht)
-        {
-            action = new QAction(tr("Sud nicht verbraucht"), &menu);
-            connect(action, SIGNAL(triggered()), this, SLOT(onNichtVerbraucht_clicked()));
-            menu.addAction(action);
-        }
-        else
-        {
-            action = new QAction(tr("Sud verbraucht"), &menu);
-            connect(action, SIGNAL(triggered()), this, SLOT(onVerbraucht_clicked()));
-            menu.addAction(action);
-        }
+        action = new QAction(tr("Sud verbraucht"), &menu);
+        action->setCheckable(true);
+        action->setChecked(status == Brauhelfer::SudStatus::Verbraucht);
+        connect(action, SIGNAL(triggered(bool)), this, SLOT(onVerbraucht_clicked(bool)));
+        menu.addAction(action);
     }
 
     menu.addSeparator();
@@ -372,26 +358,12 @@ void TabSudAuswahl::on_cbDatumAlle_stateChanged(int state)
 
 void TabSudAuswahl::on_btnMerken_clicked()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
-    {
-        QModelIndex indexMerkliste = index.sibling(index.row(), ModelSud::ColMerklistenID);
-        if (!model->data(indexMerkliste).toBool())
-            model->setData(indexMerkliste, true);
-    }
-    ui->tableSudauswahl->setFocus();
+    onMerkliste_clicked(true);
 }
 
 void TabSudAuswahl::on_btnVergessen_clicked()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
-    {
-        QModelIndex indexMerkliste = index.sibling(index.row(), ModelSud::ColMerklistenID);
-        if (model->data(indexMerkliste).toBool())
-            model->setData(indexMerkliste, false);
-    }
-    ui->tableSudauswahl->setFocus();
+    onMerkliste_clicked(false);
 }
 
 void TabSudAuswahl::on_btnAlleVergessen_clicked()
@@ -406,27 +378,28 @@ void TabSudAuswahl::on_btnAlleVergessen_clicked()
     ui->tableSudauswahl->setFocus();
 }
 
-void TabSudAuswahl::onVerbraucht_clicked()
+void TabSudAuswahl::onMerkliste_clicked(bool value)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
-        QModelIndex indexStatus = index.sibling(index.row(), ModelSud::ColStatus);
-        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(indexStatus).toInt());
-        if (status == Brauhelfer::SudStatus::Abgefuellt)
-            model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
+        QModelIndex indexMerkliste = index.sibling(index.row(), ModelSud::ColMerklistenID);
+        if (model->data(indexMerkliste).toBool() != value)
+            model->setData(indexMerkliste, value);
     }
     ui->tableSudauswahl->setFocus();
 }
 
-void TabSudAuswahl::onNichtVerbraucht_clicked()
+void TabSudAuswahl::onVerbraucht_clicked(bool value)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
         QModelIndex indexStatus = index.sibling(index.row(), ModelSud::ColStatus);
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(indexStatus).toInt());
-        if (status == Brauhelfer::SudStatus::Verbraucht)
+        if (status == Brauhelfer::SudStatus::Abgefuellt && value)
+            model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
+        else if (status == Brauhelfer::SudStatus::Verbraucht  && !value)
             model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
     }
     ui->tableSudauswahl->setFocus();
@@ -743,7 +716,7 @@ void TabSudAuswahl::on_btnLaden_clicked()
     if (selection.count() > 0)
     {
         int sudId = model->data(selection[0].row(), ModelSud::ColID).toInt();
-        clicked(sudId);
+        emit clicked(sudId);
     }
 }
 

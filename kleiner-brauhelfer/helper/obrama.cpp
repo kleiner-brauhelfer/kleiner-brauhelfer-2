@@ -20,7 +20,7 @@ QByteArray OBraMa::download(const QString& table, const QString& format)
 {
     QByteArray data;
     QEventLoop loop;
-    QString url = mUrl.arg(table).arg(format);
+    QString url = mUrl.arg(table, format);
     QNetworkRequest request(url);
     QNetworkReply *reply = mNetManager.get(request);
     connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));

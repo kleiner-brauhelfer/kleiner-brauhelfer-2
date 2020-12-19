@@ -324,12 +324,12 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
                 mValues.insert(ModelHefe::ColTypTrFl, 2);
             str1 = index.sibling(index.row(), model->fieldIndex("temperature_min")).data().toString();
             str2 = index.sibling(index.row(), model->fieldIndex("temperature_max")).data().toString();
-            mValues.insert(ModelHefe::ColTemperatur, QString("%1 - %2").arg(str1).arg(str2));
+            mValues.insert(ModelHefe::ColTemperatur, QString("%1 - %2").arg(str1, str2));
             mValues.insert(ModelHefe::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
             mValues.insert(ModelHefe::ColSedimentation, index.sibling(index.row(), model->fieldIndex("flocculation")).data());
             str1 = index.sibling(index.row(), model->fieldIndex("attenuation_min")).data().toString();
             str2 = index.sibling(index.row(), model->fieldIndex("attenuation_max")).data().toString();
-            mValues.insert(ModelHefe::ColEVG, QString("%1 - %2").arg(str1).arg(str2));
+            mValues.insert(ModelHefe::ColEVG, QString("%1 - %2").arg(str1, str2));
             mValues.insert(ModelHefe::ColAlternativen, index.sibling(index.row(), header->logicalIndex(5)).data());
             break;
 

@@ -235,13 +235,11 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
                                               "<b>Autor: </b> %1\n"
                                               "<b>Datum: </b> %2\n"
                                               "<b>Sorte: </b> %3\n\n"
-                                              "%4\n\n%5")
-                            .arg(root["Autor"].toString())
-                            .arg(root["Datum"].toString())
-                            .arg(root["Sorte"].toString())
-                            .arg(root["Kurzbeschreibung"].toString())
-                            .arg(root["Anmerkung_Autor"].toString());
-
+                                              "%4\n\n%5").arg(root["Autor"].toString(),
+                                                              root["Datum"].toString(),
+                                                              root["Sorte"].toString(),
+                                                              root["Kurzbeschreibung"].toString(),
+                                                              root["Anmerkung_Autor"].toString());
     int sudRow = bh->modelSud()->append(values);
     bh->modelSud()->update(sudRow);
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
@@ -364,7 +362,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
     }
 
     // Hefe
-    QStringList hefen = root["Hefe"].toString().split(", ");
+    const QStringList hefen = root["Hefe"].toString().split(", ");
     for (const QString& hefe : hefen)
     {
         values.clear();

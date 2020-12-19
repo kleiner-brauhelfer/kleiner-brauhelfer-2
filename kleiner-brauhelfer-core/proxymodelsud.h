@@ -25,8 +25,8 @@ public:
         Verbraucht = 0x08,
         Alle = Rezept | Gebraut | Abgefuellt | Verbraucht
     };
-    Q_ENUMS(FilterStatus)
     Q_DECLARE_FLAGS(FilterStatus, FilterStatusPart)
+    Q_FLAG(FilterStatus)
 
 public:
     ProxyModelSud(QObject* parent = nullptr);

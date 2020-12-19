@@ -149,7 +149,7 @@ void SqlTableModel::setTable(const QString &tableName)
         beginResetModel();
         endResetModel();
         // hack end
-        QSqlRecord rec = record();
+        record();
         mRoles.clear();
         for(int i = 0; i < columnCount(); ++i)
         {

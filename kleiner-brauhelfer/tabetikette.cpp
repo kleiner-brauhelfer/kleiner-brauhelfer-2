@@ -92,7 +92,7 @@ void TabEtikette::onTabActivated()
 void TabEtikette::updateAll()
 {
     updateAuswahlListe();
-    ui->cbAuswahl->setCurrentIndex(-1);
+    ui->cbAuswahl->setCurrentIndex(0);
     updateValues();
     updateTemplateFilePath();
     updateTemplateTags();
@@ -101,7 +101,7 @@ void TabEtikette::updateAll()
 void TabEtikette::updateAuswahlListe()
 {
     ui->cbAuswahl->clear();
-
+    ui->cbAuswahl->addItem("");
     for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
     {
         QString pfad = bh->sud()->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
@@ -235,15 +235,35 @@ void TabEtikette::on_cbAuswahl_activated(int index)
         return;
     ui->btnSaveTemplate->setVisible(false);
 
-    if (bh->sud()->modelEtiketten()->rowCount() == 0)
+    if (index == 0)
     {
-        QMap<int, QVariant> values({{ModelEtiketten::ColSudID, bh->sud()->id()},
-                                    {ModelEtiketten::ColPfad, ui->cbAuswahl->itemData(index).toString()}});
-        bh->sud()->modelEtiketten()->append(values);
+        if (bh->sud()->modelEtiketten()->rowCount() > 0)
+        {
+            QString pfad = data(ModelEtiketten::ColPfad).toString();
+            bh->sud()->modelEtiketten()->removeRow(0);
+            int row = bh->sud()->modelAnhang()->getRowWithValue(ModelAnhang::ColPfad, pfad);
+            if (row >= 0)
+                bh->sud()->modelAnhang()->removeRow(row);
+        }
     }
     else
     {
-        setData(ModelEtiketten::ColPfad, ui->cbAuswahl->itemData(index).toString());
+        QString pfad = ui->cbAuswahl->itemData(index).toString();
+        if (bh->sud()->modelEtiketten()->rowCount() == 0)
+        {
+            QMap<int, QVariant> values({{ModelEtiketten::ColSudID, bh->sud()->id()},
+                                        {ModelEtiketten::ColPfad, pfad}});
+            bh->sud()->modelEtiketten()->append(values);
+        }
+        else
+        {
+            setData(ModelEtiketten::ColPfad, pfad);
+            if (!bh->modelEtiketten()->setValuesFrom(bh->sud()->modelEtiketten()->mapRowToSource(0), pfad))
+            {
+                setData(ModelEtiketten::ColBreite, 0);
+                setData(ModelEtiketten::ColHoehe, 0);
+            }
+        }
     }
 
     updateValues();
@@ -252,8 +272,10 @@ void TabEtikette::on_cbAuswahl_activated(int index)
     updateSvg();
 
     QRectF rect = ui->viewSvg->viewBoxF();
-    setData(ModelEtiketten::ColBreite, rect.width());
-    setData(ModelEtiketten::ColHoehe, rect.height());
+    if (data(ModelEtiketten::ColBreite).toDouble() == 0)
+        setData(ModelEtiketten::ColBreite, rect.width());
+    if (data(ModelEtiketten::ColHoehe).toDouble() == 0)
+        setData(ModelEtiketten::ColHoehe, rect.height());
 }
 
 void TabEtikette::on_btnOeffnen_clicked()
@@ -589,21 +611,6 @@ void TabEtikette::on_tbAbstandVert_valueChanged(double value)
 {
     if (ui->tbAbstandVert->hasFocus())
         setData(ModelEtiketten::ColAbstandVert, value);
-}
-
-void TabEtikette::on_btnLoeschen_clicked()
-{
-    if (bh->sud()->modelEtiketten()->rowCount() > 0)
-    {
-        int ret = QMessageBox::question(this, tr("Etikette vom Rezept entfernen?"),
-                                        tr("Soll die Etikette vom Rezept entfernt werden?"));
-        if (ret == QMessageBox::Yes)
-        {
-            ui->cbAuswahl->setCurrentIndex(-1);
-            bh->sud()->modelEtiketten()->removeRow(0);
-            updateAll();
-        }
-    }
 }
 
 void TabEtikette::on_btnTagNeu_clicked()

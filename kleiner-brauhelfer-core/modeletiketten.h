@@ -38,7 +38,12 @@ public:
 public:
 
     ModelEtiketten(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    bool setValuesFrom(int row, const QVariant& pfad);
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
+
+private:
+
+    int getLastRow(const QVariant& pfad, int excludeRow) const;
 };
 
 #endif // MODELETIKETTEN_H

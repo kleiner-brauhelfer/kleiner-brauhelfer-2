@@ -46,7 +46,6 @@ private slots:
     void on_tbTemplate_textChanged();
     void on_btnSaveTemplate_clicked();
     void on_btnToPdf_clicked();
-    void on_btnLoeschen_clicked();
     void on_btnTagNeu_clicked();
     void on_btnTagLoeschen_clicked();
 

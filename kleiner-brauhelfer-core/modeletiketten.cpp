@@ -6,19 +6,51 @@ ModelEtiketten::ModelEtiketten(Brauhelfer* bh, QSqlDatabase db) :
 {
 }
 
+int ModelEtiketten::getLastRow(const QVariant& pfad, int excludeRow) const
+{
+    for (int row = rowCount() - 1; row >= 0; --row)
+    {
+        if (row == excludeRow)
+            continue;
+        if (data(row, ColPfad) == pfad && !data(row, fieldIndex("deleted")).toBool())
+            return row;
+    }
+    return -1;
+}
+
+bool ModelEtiketten::setValuesFrom(int row, const QVariant& pfad)
+{
+    int rowFrom = getLastRow(pfad, row);
+    if (row >= 0 && rowFrom >= 0)
+    {
+        setData(row, ColBreite, data(rowFrom, ColBreite));
+        setData(row, ColHoehe, data(rowFrom, ColHoehe));
+        setData(row, ColAbstandHor, data(rowFrom, ColAbstandHor));
+        setData(row, ColAbstandVert, data(rowFrom, ColAbstandVert));
+        setData(row, ColRandOben, data(rowFrom, ColRandOben));
+        setData(row, ColRandLinks, data(rowFrom, ColRandLinks));
+        setData(row, ColRandRechts, data(rowFrom, ColRandRechts));
+        setData(row, ColRandUnten, data(rowFrom, ColRandUnten));
+        setData(row, ColPapiergroesse, data(rowFrom, ColPapiergroesse));
+        setData(row, ColAusrichtung, data(rowFrom, ColAusrichtung));
+        return true;
+    }
+    return false;
+}
+
 void ModelEtiketten::defaultValues(QMap<int, QVariant> &values) const
 {
     int row = -1;
     if (values.contains(ColPfad))
-        row = getRowWithValue(ColPfad, values[ColPfad]);
+        row = getLastRow(values[ColPfad], -1);
     if (row < 0)
     {
         if (!values.contains(ColAnzahl))
             values.insert(ColAnzahl, 20);
         if (!values.contains(ColBreite))
-            values.insert(ColBreite, 100);
+            values.insert(ColBreite, 0);
         if (!values.contains(ColHoehe))
-            values.insert(ColHoehe, 60);
+            values.insert(ColHoehe, 0);
         if (!values.contains(ColAbstandHor))
             values.insert(ColAbstandHor, 2);
         if (!values.contains(ColAbstandVert))

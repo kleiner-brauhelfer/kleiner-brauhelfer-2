@@ -80,10 +80,7 @@ void WdgMalzGabe::updateValues(bool full)
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelMalzschuettung::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
-    {
-        ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());
         ui->tbMenge->setValue(data(ModelMalzschuettung::Colerg_Menge).toDouble());
-    }
 
     if (!ui->tbExtrakt->hasFocus())
         ui->tbExtrakt->setValue(data(ModelMalzschuettung::ColExtrakt).toDouble());

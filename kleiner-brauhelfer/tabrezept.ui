@@ -899,6 +899,67 @@
          <number>4</number>
         </property>
         <item>
+         <widget class="QWidget" name="wdgWarnungMalz" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_15">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="lblWarnungMalz">
+             <property name="text">
+              <string>Die Summe der angegeben Malzmengen entspricht nicht der Gesamtschüttung.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btnMalzProzente">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Malzmengen mit der erforderlichen Gesamtschüttung verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Mengen prozentual angepasst&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion eignet sich, um Rezepte zu übernehmen, bei denen die Mengen in Gewicht und nicht in Prozent angegeben sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Mengen prozentual anpassen</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_14">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QSplitter" name="splitterMalzDiagram">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1038,6 +1099,9 @@
          <widget class="QLabel" name="lblBerechnungsartHopfenWarnung">
           <property name="text">
            <string>Die Berechnung der Hopfengaben ist deaktiviert.</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

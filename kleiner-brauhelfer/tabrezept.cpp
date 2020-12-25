@@ -64,6 +64,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
     ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
 
+    ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
     mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
@@ -685,6 +686,11 @@ void TabRezept::updateMalzGaben()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             wdg->setFehlProzent(p);
         }
+		ui->wdgWarnungMalz->setVisible(p != 0.0);
+    }
+    else
+    {
+        ui->wdgWarnungMalz->setVisible(false);
     }
     updateMalzDiagram();
 }
@@ -734,6 +740,20 @@ void TabRezept::on_btnMalzGabenUebernehmen_clicked()
                              ModelMalzschuettung::ColSudID, dlg.sudId(),
                              {{ModelMalzschuettung::ColSudID, bh->sud()->id()}});
         bh->sud()->modelMalzschuettung()->invalidate();
+    }
+}
+
+void TabRezept::on_btnMalzProzente_clicked()
+{
+    double total = 0;
+    ProxyModel *model = bh->sud()->modelMalzschuettung();
+    for (int i = 0; i < model->rowCount(); ++i)
+        total += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+    double factor = bh->sud()->geterg_S_Gesamt() / total;
+    for (int i = 0; i < model->rowCount(); ++i)
+    {
+        double menge = model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+        model->setData(i, ModelMalzschuettung::Colerg_Menge, menge * factor);
     }
 }
 

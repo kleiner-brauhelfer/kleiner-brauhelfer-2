@@ -46,6 +46,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Übernahme des Vergärungsgrades der Hefe
 - Neu: Stil der Benutzeroberfläche fix auf "Fusion"
 - Neu: Eingabemöglichkeit des Extrakts (Anteil an Stammwürze) für Malzgaben und weitere Zutaten
+- Neu: Malzmengen prozentual anpassen (für Übernahme von Rezepten mit Angaben in Gewicht statt Prozent)
 - Neu: High DPI Einstellung lässt sich über Argument "QT_AUTO_SCREEN​_SCALE_FACTOR=0" deaktivieren (kleiner-brauhelfer-2.exe QT_AUTO_SCREEN_SCALE_FACTOR=0)
 - Neu: Dialog für Log (Protokoll)
 - Neu: Importfunktion für CSV Datei mit Gärdaten (auch per Drag & Drop)

@@ -57,8 +57,6 @@ bool ModelMalzschuettung::setDataExt(const QModelIndex &idx, const QVariant &val
         double fVal = value.toDouble();
         if (fVal < 0.0)
             fVal = 0.0;
-        if (fVal > 100.0)
-            fVal = 100.0;
         if (QSqlTableModel::setData(idx, fVal))
         {
             double total = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::Colerg_S_Gesamt).toDouble();

@@ -35,6 +35,7 @@ private slots:
     void updateMalzDiagram();
     void on_btnNeueMalzGabe_clicked();
     void on_btnMalzGabenUebernehmen_clicked();
+    void on_btnMalzProzente_clicked();
 
     void hopfenGaben_modified();
     void updateHopfenGaben();

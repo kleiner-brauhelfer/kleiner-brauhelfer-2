@@ -280,6 +280,7 @@ void Settings::setUseSystemFont(bool system)
     beginGroup("Style");
     setValue("UseSystemFont", system);
     endGroup();
+    this->font = defaultFont;
 }
 
 void Settings::setFont(const QFont &font)
@@ -287,6 +288,7 @@ void Settings::setFont(const QFont &font)
     beginGroup("Style");
     setValue("Font", font);
     endGroup();
+    this->font = font;
 }
 
 bool Settings::animationsEnabled()

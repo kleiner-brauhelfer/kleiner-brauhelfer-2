@@ -64,6 +64,7 @@ SOURCES += \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
+    dialogs/dlgimportexport.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
@@ -141,6 +142,7 @@ HEADERS += \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
+    dialogs/dlgimportexport.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffauswahl.h \
@@ -214,6 +216,7 @@ FORMS += \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
+    dialogs/dlgimportexport.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffauswahl.ui \

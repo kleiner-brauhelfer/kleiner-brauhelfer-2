@@ -20,6 +20,7 @@
 #include "model/ratingdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "dialogs/dlgsudteilen.h"
+#include "dialogs/dlgimportexport.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -551,75 +552,31 @@ void TabSudAuswahl::on_btnLoeschen_clicked()
     sudLoeschen();
 }
 
-void TabSudAuswahl::rezeptImportieren(const QString& filePath_)
+void TabSudAuswahl::rezeptImportieren(const QString& filePath)
 {
-    gSettings->beginGroup("General");
-    QString filePath = filePath_;
-    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
-    if (filePath.isEmpty())
-    {
-        filePath = QFileDialog::getOpenFileName(this, tr("Rezept Import"),
-                                                path, "kleiner-brauhelfer (*.json);;MaischeMalzundMehr (*.json);;BeerXML (*.xml)");
-    }
+    DlgImportExport dlg(true, -1, this);
     if (!filePath.isEmpty())
+        dlg.oeffnen(filePath);
+    if (dlg.exec() == QDialog::Accepted)
     {
-        QFileInfo fileInfo(filePath);
-        gSettings->setValue("exportPath", fileInfo.absolutePath());
-        try
+        int sudRow = dlg.row();
+        if (sudRow >= 0)
         {
-            QFile file(filePath);
-            if (file.open(QIODevice::ReadOnly))
+            if (!ui->cbRezept->isChecked())
             {
-                QByteArray content = file.readAll();
-                file.close();
-                int sudRow = -1;
-                if (fileInfo.suffix() == "json")
-                {
-                    sudRow = ImportExport::importKbh(bh, content);
-                    if (sudRow < 0)
-                        sudRow = ImportExport::importMaischeMalzundMehr(bh, content);
-                }
-                else if (fileInfo.suffix() == "xml")
-                {
-                    sudRow = ImportExport::importBeerXml(bh, content);
-                }
-                if (sudRow >= 0)
-                {
-                    QMessageBox::information(this, tr("Rezept Import"), tr("Das Rezept wurde erfolgreich importiert."));
-                    if (!ui->cbRezept->isChecked())
-                    {
-                        ui->cbRezept->setChecked(true);
-                        setFilterStatus();
-                    }
-                    ui->cbMerkliste->setChecked(false);
-                    ui->cbDatumAlle->setChecked(true);
-                    ui->tbFilter->clear();
-                    filterChanged();
-                    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-                    sudRow = model->mapRowFromSource(sudRow);
-                    ui->tableSudauswahl->setCurrentIndex(model->index(sudRow, ModelSud::ColSudname));
-                    ui->tableSudauswahl->scrollTo(ui->tableSudauswahl->currentIndex());
-                }
-                else
-                {
-                    QMessageBox::warning(this, tr("Rezept Import"), tr("Das Rezept konnte nicht importiert werden."));
-                }
+                ui->cbRezept->setChecked(true);
+                setFilterStatus();
             }
-            else
-            {
-                QMessageBox::warning(this, tr("Rezept Import"), tr("Die Datei konnte nicht geöffnet werden."));
-            }
-        }
-        catch (const std::exception& ex)
-        {
-            QMessageBox::warning(this, tr("Fehler beim Importieren"), ex.what());
-        }
-        catch (...)
-        {
-            QMessageBox::warning(this, tr("Fehler beim Importieren"), QObject::tr("Unbekannter Fehler."));
+            ui->cbMerkliste->setChecked(false);
+            ui->cbDatumAlle->setChecked(true);
+            ui->tbFilter->clear();
+            filterChanged();
+            ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+            sudRow = model->mapRowFromSource(sudRow);
+            ui->tableSudauswahl->setCurrentIndex(model->index(sudRow, ModelSud::ColSudname));
+            ui->tableSudauswahl->scrollTo(ui->tableSudauswahl->currentIndex());
         }
     }
-    gSettings->endGroup();
 }
 
 void TabSudAuswahl::on_btnImportieren_clicked()
@@ -641,67 +598,14 @@ void TabSudAuswahl::rezeptExportieren(bool loadedSud)
     {
         ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
         for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
-        {
             list.append(model->mapRowToSource(index.row()));
-        }
     }
 
-    gSettings->beginGroup("General");
-    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     for (int row : list)
     {
-        QString sudname = bh->modelSud()->data(row, ModelSud::ColSudname).toString();
-        QString filter;
-        QString filePath = QFileDialog::getSaveFileName(this, tr("Sud Export"),
-                                         path + "/" + sudname, "kleiner-brauhelfer (*.json);;MaischeMalzundMehr (*.json);;BeerXML (*.xml)", &filter);
-        if (!filePath.isEmpty())
-        {
-            gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
-            try
-            {
-                QByteArray content;
-                if (filter == "kleiner-brauhelfer (*.json)")
-                {
-                    content = ImportExport::exportKbh(bh, row);
-                }
-                else if (filter == "MaischeMalzundMehr (*.json)")
-                {
-                    content = ImportExport::exportMaischeMalzundMehr(bh, row);
-                }
-                else if (filter == "BeerXML (*.xml)")
-                {
-                    content = ImportExport::exportBeerXml(bh, row);
-                }
-                if (!content.isEmpty())
-                {
-                    QFile file(filePath);
-                    if (file.open(QFile::WriteOnly | QFile::Text))
-                    {
-                        file.write(content);
-                        file.close();
-                        QMessageBox::information(this, tr("Sud Export"), tr("Der Sud wurde erfolgreich exportiert."));
-                    }
-                    else
-                    {
-                        QMessageBox::warning(this, tr("Sud Export"), tr("Die Datei konnte nicht geschrieben werden."));
-                    }
-                }
-                else
-                {
-                    QMessageBox::warning(this, tr("Sud Export"), tr("Der Sud konnte nicht exportiert werden."));
-                }
-            }
-            catch (const std::exception& ex)
-            {
-                QMessageBox::warning(this, tr("Fehler beim Exportieren"), ex.what());
-            }
-            catch (...)
-            {
-                QMessageBox::warning(this, tr("Fehler beim Exportieren"), QObject::tr("Unbekannter Fehler."));
-            }
-        }
+        DlgImportExport dlg(false, row, this);
+        dlg.exec();
     }
-    gSettings->endGroup();
 }
 
 void TabSudAuswahl::on_btnExportieren_clicked()

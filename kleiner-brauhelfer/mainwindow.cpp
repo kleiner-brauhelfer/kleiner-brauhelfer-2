@@ -613,7 +613,6 @@ void MainWindow::on_actionSchriftart_triggered(bool checked)
         {
             gSettings->setUseSystemFont(false);
             gSettings->setFont(font);
-            setFont(font);
             restart();
         }
         else

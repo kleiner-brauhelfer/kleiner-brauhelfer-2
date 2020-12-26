@@ -15,6 +15,9 @@ DlgCheckUpdate::DlgCheckUpdate(const QString &url, const QDate& since, QWidget *
     mHasUpdate(false),
     mDateSince(since)
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
+  qnam.setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
+#endif
     ui->setupUi(this);
     adjustSize();
     gSettings->beginGroup("DlgCheckUpdate");

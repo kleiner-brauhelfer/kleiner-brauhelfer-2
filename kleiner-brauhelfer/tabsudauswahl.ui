@@ -203,7 +203,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/star_gr.svg</normaloff>:/images/star_gr.svg</iconset>
+             <normaloff>:/images/star_gr_dark.svg</normaloff>:/images/star_gr_dark.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

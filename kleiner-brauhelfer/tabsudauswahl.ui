@@ -38,8 +38,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/laden.svg</normaloff>images/laden.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/laden.svg</normaloff>:/images/laden.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -65,8 +65,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/neu.svg</normaloff>images/neu.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/neu.svg</normaloff>:/images/neu.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -85,8 +85,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/kopieren.svg</normaloff>images/kopieren.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/kopieren.svg</normaloff>:/images/kopieren.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -105,8 +105,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/loeschen.svg</normaloff>images/loeschen.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/loeschen.svg</normaloff>:/images/loeschen.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -132,8 +132,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/sud_import.svg</normaloff>images/sud_import.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -152,8 +152,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/sud_export.svg</normaloff>images/sud_export.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/export.svg</normaloff>:/images/export.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -182,8 +182,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/star.svg</normaloff>images/star.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/star.svg</normaloff>:/images/star.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -202,8 +202,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/vergessen.svg</normaloff>images/vergessen.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/star_gr.svg</normaloff>:/images/star_gr.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -222,8 +222,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/no_star.svg</normaloff>images/no_star.svg</iconset>
+            <iconset resource="images.qrc">
+             <normaloff>:/images/no_star.svg</normaloff>:/images/no_star.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -518,103 +518,6 @@
          </property>
         </widget>
        </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout_Buttons">
-         <property name="verticalSpacing">
-          <number>4</number>
-         </property>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="btnExportieren_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein vorhandenes Rezept in ein anderes Format exportiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Rezept exportieren</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="btnLaden_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud geladen. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud laden</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="btnImportieren_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format importiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Rezept importieren</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btnAnlegen_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Neuen Sud anlegen x</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="btnVergessen_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud vergessen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="btnKopieren_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud kopieren x</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="btnLoeschen_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud löschen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="btnAlleVergessen_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Alle Sude vergessen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="btnMerken_alt">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud merken</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -692,16 +595,9 @@
   <tabstop>cbDatumAlle</tabstop>
   <tabstop>tbFilter</tabstop>
   <tabstop>tableSudauswahl</tabstop>
-  <tabstop>btnAnlegen_alt</tabstop>
-  <tabstop>btnKopieren_alt</tabstop>
-  <tabstop>btnLoeschen_alt</tabstop>
-  <tabstop>btnMerken_alt</tabstop>
-  <tabstop>btnVergessen_alt</tabstop>
-  <tabstop>btnAlleVergessen_alt</tabstop>
-  <tabstop>btnImportieren_alt</tabstop>
-  <tabstop>btnExportieren_alt</tabstop>
-  <tabstop>btnLaden_alt</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

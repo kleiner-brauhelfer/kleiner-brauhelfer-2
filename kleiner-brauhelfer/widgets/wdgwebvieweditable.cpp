@@ -7,6 +7,8 @@
 #include <QPrintPreviewDialog>
 #endif
 #include <QJsonDocument>
+#include <QFileDialog>
+#include <QDesktopServices>
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -41,7 +43,9 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
+    updateEditMode();
+    ui->splitterEditmode->setHandleWidth(0);
+    ui->splitterEditmode->setSizes({1, 0});
     gSettings->beginGroup("General");
     gZoomFactor = gSettings->value("WebViewZoomFactor", 1.0).toDouble();
     gSettings->endGroup();
@@ -74,6 +78,7 @@ void WdgWebViewEditable::setHtmlFile(const QString& file)
         if (!QFile::exists(gSettings->dataDir(1) + fileComplete))
             fileComplete = file + ".html";
     }
+    htmlName = file;
     ui->cbTemplateAuswahl->setItemText(0, fileComplete);
     ui->webview->setTemplateFile(gSettings->dataDir(1) + fileComplete);
 }
@@ -141,30 +146,50 @@ void WdgWebViewEditable::printPreview()
   #endif
 }
 
-void WdgWebViewEditable::printToPdf(const QString& filePath, const QMarginsF &margins)
+void WdgWebViewEditable::setPdfName(const QString& name)
+{
+    pdfName = name;
+}
+
+void WdgWebViewEditable::printToPdf()
 {
   #if defined(QT_PRINTSUPPORT_LIB) && defined(QT_WEBENGINECORE_LIB)
-    if (gSettings->theme() == Settings::Dark)
+    gSettings->beginGroup("General");
+
+    QString fileName = pdfName.isEmpty() ? htmlName : pdfName;
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+
+    QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
+                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
+    if (!filePath.isEmpty())
     {
-        QVariant style = mTemplateTags["Style"];
-        mTemplateTags["Style"] = "style_hell.css";
-        ui->webview->setUpdatesEnabled(false);
+        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+        QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
+        QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
+        if (gSettings->theme() == Settings::Dark)
+        {
+            QVariant style = mTemplateTags["Style"];
+            mTemplateTags["Style"] = "style_hell.css";
+            ui->webview->setUpdatesEnabled(false);
 
-        QEventLoop loop;
-        connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
-        ui->webview->renderTemplate(mTemplateTags);
-        loop.exec();
+            QEventLoop loop;
+            connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
+            ui->webview->renderTemplate(mTemplateTags);
+            loop.exec();
 
-        ui->webview->printToPdf(filePath, margins);
+            ui->webview->printToPdf(filePath, margins);
 
-        mTemplateTags["Style"] = style;
-        ui->webview->renderTemplate(mTemplateTags);
-        ui->webview->setUpdatesEnabled(true);
+            mTemplateTags["Style"] = style;
+            ui->webview->renderTemplate(mTemplateTags);
+            ui->webview->setUpdatesEnabled(true);
+        }
+        else
+        {
+            ui->webview->printToPdf(filePath, margins);
+        }
+        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
     }
-    else
-    {
-        ui->webview->printToPdf(filePath, margins);
-    }
+    gSettings->endGroup();
   #else
     Q_UNUSED(filePath)
     Q_UNUSED(margins)
@@ -188,41 +213,15 @@ bool WdgWebViewEditable::checkSaveTemplate()
 
 void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
 {
-    if (checkSaveTemplate())
-    {
-        ui->cbEditMode->setChecked(true);
-        return;
-    }
-
-    ui->tbTemplate->setVisible(checked);
-    ui->tbTags->setVisible(checked);
-    ui->lblFilePath->setVisible(checked);
-    ui->btnRestoreTemplate->setVisible(checked);
-    ui->cbTemplateAuswahl->setVisible(checked);
-    ui->btnSaveTemplate->setVisible(false);
+    updateEditMode();
     ui->splitterEditmode->setHandleWidth(checked ? 5 : 0);
     ui->splitterEditmode->setSizes({1, checked ? 1 : 0});
-
-    if (checked)
-    {
-        QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
-        ui->btnSaveTemplate->setProperty("file", file.fileName());
-        ui->lblFilePath->setText("<a href=\"" + file.fileName() + "\">" + file.fileName() + "</a>");
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            ui->tbTemplate->setPlainText(file.readAll());
-            file.close();
-        }
-    }
-
-    updateTags();
-    updateWebView();
 }
 
 void WdgWebViewEditable::on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName)
 {
     Q_UNUSED(fileName)
-    on_cbEditMode_clicked(ui->cbEditMode->isChecked());
+    updateEditMode();
 }
 
 void WdgWebViewEditable::on_tbTemplate_textChanged()
@@ -255,7 +254,8 @@ void WdgWebViewEditable::on_btnRestoreTemplate_clicked()
         file.remove();
         if (file2.copy(file.fileName()))
             file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
-        on_cbEditMode_clicked(ui->cbEditMode->isChecked());
+        ui->btnSaveTemplate->setVisible(false);
+        updateEditMode();
     }
 }
 
@@ -299,6 +299,38 @@ void WdgWebViewEditable::updateTags()
     }
 }
 
+void WdgWebViewEditable::updateEditMode()
+{
+    if (checkSaveTemplate())
+    {
+        ui->cbEditMode->setChecked(true);
+        return;
+    }
+
+    bool editMode = ui->cbEditMode->isChecked();
+
+    ui->tbTemplate->setVisible(editMode);
+    ui->tbTags->setVisible(editMode);
+    ui->lblFilePath->setVisible(editMode);
+    ui->btnRestoreTemplate->setVisible(editMode);
+    ui->cbTemplateAuswahl->setVisible(editMode);
+    ui->btnSaveTemplate->setVisible(false);
+    if (editMode)
+    {
+        QFile file(gSettings->dataDir(1) + ui->cbTemplateAuswahl->currentText());
+        ui->btnSaveTemplate->setProperty("file", file.fileName());
+        ui->lblFilePath->setText("<a href=\"" + file.fileName() + "\">" + file.fileName() + "</a>");
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            ui->tbTemplate->setPlainText(file.readAll());
+            file.close();
+        }
+    }
+
+    updateTags();
+    updateWebView();
+}
+
 void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
 {
     gZoomFactor = value / 100.0;
@@ -311,4 +343,14 @@ void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
 void WdgWebViewEditable::on_sliderZoom_sliderReleased()
 {
     ui->lblZoom->clear();
+}
+
+void WdgWebViewEditable::on_btnPrint_clicked()
+{
+    printPreview();
+}
+
+void WdgWebViewEditable::on_btnPdf_clicked()
+{
+    printToPdf();
 }

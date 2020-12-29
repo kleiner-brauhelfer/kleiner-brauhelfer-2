@@ -5956,7 +5956,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="301"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein vorhandenes Rezept in ein anderes Format exportiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Recept exporteren&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="304"/>
@@ -5966,7 +5966,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud geladen. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brouwsel laden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="314"/>
@@ -5976,7 +5976,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="321"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format importiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Recept importeren&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="324"/>
@@ -5986,7 +5986,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="331"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nieuw brouwsel maken&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="334"/>
@@ -5996,7 +5996,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="341"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vergeet brouwsel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="344"/>
@@ -6007,7 +6007,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kopiëren brouwsel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="354"/>
@@ -6017,7 +6017,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verwijder brouwsel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="364"/>
@@ -6027,7 +6027,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="371"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Brouwsels vergeten&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="374"/>
@@ -6037,7 +6037,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="381"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brouwsel markeren&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="384"/>

@@ -10,7 +10,7 @@ class Settings : public QSettings
 public:
     enum Theme
     {
-        System,
+        Unused,
         Bright,
         Dark
     };

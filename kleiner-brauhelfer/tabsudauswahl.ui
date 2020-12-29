@@ -257,19 +257,190 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Anzahl Sude:</string>
+          <widget class="QPushButton" name="btnAnlegen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_neu.svg</normaloff>:/images/sud_neu.svg</iconset>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="lblNumSude"/>
+          <widget class="QPushButton" name="btnKopieren">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_kopie.svg</normaloff>:/images/sud_kopie.svg</iconset>
+           </property>
+          </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_2">
+          <widget class="QPushButton" name="btnLoeschen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_loeschen.svg</normaloff>:/images/sud_loeschen.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnImportieren">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_import.svg</normaloff>:/images/sud_import.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnExportieren">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_export.svg</normaloff>:/images/sud_export.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnTeilen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnMerken">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_merken.svg</normaloff>:/images/sud_merken.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnVergessen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_vergessen.svg</normaloff>:/images/sud_vergessen.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnLaden">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/sud_laden.svg</normaloff>:/images/sud_laden.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -281,109 +452,15 @@
            </property>
           </spacer>
          </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="Line" name="line">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout">
-         <property name="verticalSpacing">
-          <number>4</number>
-         </property>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="btnExportieren">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein vorhandenes Rezept in ein anderes Format exportiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
+         <item>
+          <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Rezept exportieren</string>
+            <string>Anzahl Sude:</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="btnLaden">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud geladen. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud laden</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="btnImportieren">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format importiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Rezept importieren</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btnAnlegen">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Neuen Sud anlegen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="btnVergessen">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud vergessen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QPushButton" name="btnKopieren">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud kopieren</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="btnLoeschen">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud löschen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="btnAlleVergessen">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Alle Sude vergessen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="btnMerken">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Sud merken</string>
-           </property>
-          </widget>
+         <item>
+          <widget class="QLabel" name="lblNumSude"/>
          </item>
         </layout>
        </item>
@@ -403,30 +480,6 @@
           </sizepolicy>
          </property>
         </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QPushButton" name="btnPrintPreview">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudinformation&lt;/span&gt; ausgedruckt.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach Betriebssystem oder Treiber unterschiedlich gestaltet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Druckvorschau</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnToPdf">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudinformation&lt;/span&gt; als PDF abgespeichert.&lt;/p&gt;&lt;p&gt;Das Betriebssystem aktiviert dazu den Druckdialog, der je nach Betriebssystem oder Treiber unterschiedlich gestaltet ist. In macOS ist die PDF-Funktion in den Druckdialog integriert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>PDF</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
@@ -464,16 +517,9 @@
   <tabstop>cbDatumAlle</tabstop>
   <tabstop>tbFilter</tabstop>
   <tabstop>tableSudauswahl</tabstop>
-  <tabstop>btnAnlegen</tabstop>
-  <tabstop>btnKopieren</tabstop>
-  <tabstop>btnLoeschen</tabstop>
-  <tabstop>btnMerken</tabstop>
-  <tabstop>btnVergessen</tabstop>
-  <tabstop>btnAlleVergessen</tabstop>
-  <tabstop>btnImportieren</tabstop>
-  <tabstop>btnExportieren</tabstop>
-  <tabstop>btnLaden</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

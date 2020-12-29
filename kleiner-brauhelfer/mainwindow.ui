@@ -169,7 +169,6 @@
      <property name="title">
       <string>Farbschema</string>
      </property>
-     <addaction name="actionThemeSystem"/>
      <addaction name="actionThemeHell"/>
      <addaction name="actionThemeDunkel"/>
     </widget>
@@ -205,6 +204,9 @@
     </property>
     <addaction name="actionSpende"/>
     <addaction name="actionBierspende"/>
+    <addaction name="separator"/>
+    <addaction name="actionFormelsammlung"/>
+    <addaction name="separator"/>
     <addaction name="actionUeber"/>
    </widget>
    <widget class="QMenu" name="menuSud">
@@ -248,6 +250,10 @@
    <addaction name="menuHilfe"/>
   </widget>
   <action name="actionSpeichern">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
+   </property>
    <property name="text">
     <string>Speichern</string>
    </property>
@@ -256,6 +262,10 @@
    </property>
   </action>
   <action name="actionVerwerfen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/restore.svg</normaloff>:/images/restore.svg</iconset>
+   </property>
    <property name="text">
     <string>Änderungen verwerfen</string>
    </property>
@@ -321,6 +331,10 @@
    </property>
   </action>
   <action name="actionOeffnen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/database.svg</normaloff>:/images/database.svg</iconset>
+   </property>
    <property name="text">
     <string>Datenbank auswählen</string>
    </property>
@@ -329,11 +343,6 @@
    </property>
    <property name="menuRole">
     <enum>QAction::PreferencesRole</enum>
-   </property>
-  </action>
-  <action name="actionThemeSystem">
-   <property name="text">
-    <string>System</string>
    </property>
   </action>
   <action name="actionThemeHell">
@@ -382,6 +391,10 @@
    </property>
   </action>
   <action name="actionBereinigen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/database_clean.svg</normaloff>:/images/database_clean.svg</iconset>
+   </property>
    <property name="text">
     <string>Bereinigen</string>
    </property>
@@ -406,6 +419,10 @@
    </property>
   </action>
   <action name="actionNeuen_Sud_anlegen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sud_neu.svg</normaloff>:/images/sud_neu.svg</iconset>
+   </property>
    <property name="text">
     <string>Neuen Sud anlegen</string>
    </property>
@@ -414,41 +431,69 @@
    </property>
   </action>
   <action name="actionRezept_importieren">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sud_import.svg</normaloff>:/images/sud_import.svg</iconset>
+   </property>
    <property name="text">
     <string>Rezept importieren</string>
    </property>
   </action>
   <action name="actionRezept_exportieren">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sud_export.svg</normaloff>:/images/sud_export.svg</iconset>
+   </property>
    <property name="text">
     <string>Rezept exportieren</string>
    </property>
   </action>
   <action name="actionSud_kopieren">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sud_kopie.svg</normaloff>:/images/sud_kopie.svg</iconset>
+   </property>
    <property name="text">
     <string>Sud kopieren</string>
    </property>
   </action>
   <action name="actionSud_l_schen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sud_loeschen.svg</normaloff>:/images/sud_loeschen.svg</iconset>
+   </property>
    <property name="text">
     <string>Sud löschen</string>
    </property>
   </action>
   <action name="actionSud_teilen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+   </property>
    <property name="text">
     <string>Sud teilen</string>
    </property>
   </action>
   <action name="actionDruckvorschau">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+   </property>
    <property name="text">
-    <string>Druckvorschau</string>
+    <string>Drucken</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+P</string>
    </property>
   </action>
   <action name="actionDrucken">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/pdf.svg</normaloff>:/images/pdf.svg</iconset>
+   </property>
    <property name="text">
-    <string>Drucken (PDF)</string>
+    <string>PDF</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -541,6 +586,11 @@
   <action name="actionLog">
    <property name="text">
     <string>Log</string>
+   </property>
+  </action>
+  <action name="actionFormelsammlung">
+   <property name="text">
+    <string>Formelsammlung</string>
    </property>
   </action>
  </widget>

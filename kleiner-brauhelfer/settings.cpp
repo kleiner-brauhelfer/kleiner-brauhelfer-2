@@ -38,13 +38,12 @@ void Settings::initTheme()
         font = value("Font", QFont()).value<QFont>();
 
     // palette
-    mTheme = static_cast<Theme>(value("Theme", System).toInt());
+    mTheme = static_cast<Theme>(value("Theme", Bright).toInt());
+    if (mTheme == Unused)
+        mTheme = Bright;
     switch (mTheme)
     {
-    case System:
-        palette = defaultPalette;
-        break;
-
+    default:
     case Bright:
         palette.setColorGroup(QPalette::Disabled,
             Qt::darkGray,//windowText

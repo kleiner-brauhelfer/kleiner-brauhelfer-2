@@ -82,6 +82,9 @@
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann ein Zoom Faktor für die HTML Ausgabe festgelegt werden.&lt;/p&gt;&lt;p&gt;Dieser Faktor hat keinen Einfluss auf das PDF oder den Ausdruck.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="minimum">
             <number>25</number>
            </property>
@@ -121,7 +124,7 @@
          <item>
           <widget class="ComboBox" name="cbTemplateAuswahl">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesm Button wählt man die &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlagen&lt;/span&gt; aus.&lt;/p&gt;&lt;p&gt;Es gibt einige vom Kleinen Brauhelfer bereitgestellte Stilvorlagen. Es können aber auch eigene Entwürfe angelegt werden. Für das Arbeiten mit Stilvorlagen sind Programmierkenntnisse hilfreich. So nicht, empfiehlt es sich hier Hilfe hinzuziehen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wir das zu überarbeitende Template &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <item>
             <property name="text">
@@ -142,31 +145,80 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnSaveTemplate">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Stilvorlage&lt;/span&gt; gespeichert.&lt;/p&gt;&lt;p&gt;Sollten wider Erwarten Probleme auftauchen, kann mit dem Button Wiederhestellen die Originalansicht wiederhergestellt werden. Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
            </property>
-           <property name="text">
-            <string>Speichern</string>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Template&lt;/span&gt; gespeichert.&lt;/p&gt;&lt;p&gt;Sollten wider Erwarten Probleme auftauchen, kann mit dem Button Wiederhestellen das Originaltemplate wiederhergestellt werden. Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btnRestoreTemplate">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Originalstilvorlage&lt;/span&gt; wiederhergestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
            </property>
-           <property name="text">
-            <string>Wiederherstellen</string>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Originaltemplate&lt;/span&gt; wiederhergestellt.&lt;/p&gt;&lt;p&gt;Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/images/restore.svg</normaloff>:/images/restore.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnPrint">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die HTML Ausgabe &lt;span style=&quot; font-weight:600;&quot;&gt;ausgedruckt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnPdf">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die HTML Ausgabe als &lt;span style=&quot; font-weight:600;&quot;&gt;PDF&lt;/span&gt; abgespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/images/pdf.svg</normaloff>:/images/pdf.svg</iconset>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="cbEditMode">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann der Tab Braudaten sowie der Hell- und der Dunkelmodus nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in der Cascading Style Sheets (CSS) und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML und CSS Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in der Cascading Style Sheets (CSS) und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="text">
-            <string>Editiermodus</string>
+           <property name="icon">
+            <iconset resource="../images.qrc">
+             <normaloff>:/images/settings.svg</normaloff>:/images/settings.svg</iconset>
            </property>
           </widget>
          </item>
@@ -241,6 +293,8 @@
   <tabstop>tbTemplate</tabstop>
   <tabstop>tbTags</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

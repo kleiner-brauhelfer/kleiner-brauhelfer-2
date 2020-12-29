@@ -57,7 +57,7 @@
            <widget class="QPushButton" name="btnNeueAnlage">
             <property name="minimumSize">
              <size>
-              <width>50</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
@@ -74,7 +74,7 @@
            <widget class="QPushButton" name="btnAnlageLoeschen">
             <property name="minimumSize">
              <size>
-              <width>50</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
@@ -144,7 +144,7 @@
            <widget class="QPushButton" name="btnNeuesGeraet">
             <property name="minimumSize">
              <size>
-              <width>50</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
@@ -161,7 +161,7 @@
            <widget class="QPushButton" name="btnGeraetLoeschen">
             <property name="minimumSize">
              <size>
-              <width>50</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
@@ -356,14 +356,8 @@
              <widget class="QPushButton" name="btnVerdampfungMittel">
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>40</width>
                 <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
                </size>
               </property>
               <property name="toolTip">
@@ -392,14 +386,8 @@
              <widget class="QPushButton" name="btnAusbeuteMittel">
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>40</width>
                 <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>50</width>
-                <height>16777215</height>
                </size>
               </property>
               <property name="toolTip">
@@ -512,13 +500,13 @@
              <widget class="QPushButton" name="btnVerdampfungsrate">
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>40</width>
                 <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>50</width>
+                <width>40</width>
                 <height>16777215</height>
                </size>
               </property>

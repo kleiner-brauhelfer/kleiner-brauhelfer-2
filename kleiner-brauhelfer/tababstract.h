@@ -16,6 +16,7 @@ public:
     void setTabActive(bool active);
     bool isTabActive() const;
 
+    virtual bool isPrintable() const;
     virtual void printPreview();
     virtual void toPdf();
 

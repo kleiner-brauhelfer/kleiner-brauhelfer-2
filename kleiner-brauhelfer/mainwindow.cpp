@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qApp->installEventFilter(this);
 
-    ui->actionThemeSystem->setEnabled(gSettings->theme() != Settings::Theme::System);
     ui->actionThemeHell->setEnabled(gSettings->theme() != Settings::Theme::Bright);
     ui->actionThemeDunkel->setEnabled(gSettings->theme() != Settings::Theme::Dark);
 
@@ -106,6 +105,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
+
+    on_tabMain_currentChanged();
 }
 
 MainWindow::~MainWindow()
@@ -356,6 +357,8 @@ void MainWindow::on_tabMain_currentChanged()
     tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
     if (tab)
         tab->setTabActive(true);
+    ui->actionDrucken->setEnabled(tab->isPrintable());
+    ui->actionDruckvorschau->setEnabled(tab->isPrintable());
     setFocus();
 }
 
@@ -568,12 +571,6 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
 void MainWindow::on_actionWiederherstellen_triggered()
 {
     restoreView(true);
-}
-
-void MainWindow::on_actionThemeSystem_triggered()
-{
-    gSettings->setTheme(Settings::Theme::System);
-    restart();
 }
 
 void MainWindow::on_actionThemeHell_triggered()
@@ -820,6 +817,11 @@ void MainWindow::on_actionBierspende_triggered()
 {
     DlgBierspende dlg(this);
     dlg.exec();
+}
+
+void MainWindow::on_actionFormelsammlung_triggered()
+{
+    QDesktopServices::openUrl(QUrl(URL_FORMELSAMMLUNG));
 }
 
 void MainWindow::on_actionUeber_triggered()

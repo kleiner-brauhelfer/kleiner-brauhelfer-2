@@ -18,6 +18,7 @@ public:
     virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView(bool full) Q_DECL_OVERRIDE;
+    bool isPrintable() const Q_DECL_OVERRIDE;
     void printPreview() Q_DECL_OVERRIDE;
     void toPdf() Q_DECL_OVERRIDE;
     QAbstractItemModel* model() const;
@@ -53,15 +54,13 @@ private slots:
     void on_btnVergessen_clicked();
     void onMerkliste_clicked(bool value);
     void onVerbraucht_clicked(bool value);
-    void on_btnAlleVergessen_clicked();
     void on_btnAnlegen_clicked();
     void on_btnKopieren_clicked();
     void on_btnLoeschen_clicked();
     void on_btnImportieren_clicked();
     void on_btnExportieren_clicked();
+    void on_btnTeilen_clicked();
     void on_btnLaden_clicked();
-    void on_btnToPdf_clicked();
-    void on_btnPrintPreview_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

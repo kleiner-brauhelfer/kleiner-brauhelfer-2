@@ -5912,7 +5912,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="301"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein vorhandenes Rezept in ein anderes Format exportiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Export recipies into a file.&lt;/p&gt;&lt;p&gt;Supports the JSON format from &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt; as well as the XML format from&lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Double check and refine the recipe after the export. The formats are not 100% compatible.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="304"/>
@@ -5922,7 +5922,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="311"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud geladen. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hereby the the selecte batch gets loaded. Double click the batch in the table it as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="314"/>
@@ -5932,7 +5932,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="321"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format importiert.&lt;/p&gt;&lt;p&gt;Unterstützt wird das json-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt;sowie das xml-Format von &lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Import recipies from a file.&lt;/p&gt;&lt;p&gt;Supports JSON format from &lt;span style=&quot; font-weight:600;&quot;&gt;MaischeMalzUndMehr &lt;/span&gt; as well as XML format from&lt;span style=&quot; font-weight:600;&quot;&gt;BeerXML&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Double check and refine the recipe after the import. The formats are not 100% compatible.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="324"/>
@@ -5942,7 +5942,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="331"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create a &lt;span style=&quot; font-weight:600;&quot;&gt;new batch.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="334"/>
@@ -5952,7 +5952,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="341"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remove selection from the &lt;span style=&quot; font-weight:600;&quot;&gt;pinned&lt;/span&gt; batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="344"/>
@@ -5963,7 +5963,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="351"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Duplicate&lt;/span&gt; all selected batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="354"/>
@@ -5973,7 +5973,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="361"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete selected batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="364"/>
@@ -5983,7 +5983,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="371"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dismiss all &lt;span style=&quot; font-weight:600;&quot;&gt;pinned&lt;/span&gt; batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="374"/>
@@ -5993,7 +5993,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="381"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add selection to the &lt;span style=&quot; font-weight:600;&quot;&gt;pinned&lt;/span&gt; batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="384"/>

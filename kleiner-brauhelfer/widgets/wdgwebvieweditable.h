@@ -23,11 +23,13 @@ public:
     void clear();
     void setHtmlFile(const QString& file);
     void printPreview();
-    void printToPdf(const QString& filePath, const QMarginsF& margins = QMarginsF(5, 10, 5, 15));
+    void printToPdf();
+    void setPdfName(const QString& name);
 
 public slots:
     void updateWebView();
     void updateTags();
+    void updateEditMode();
 
 private slots:
   #ifdef QT_PRINTSUPPORT_LIB
@@ -40,6 +42,8 @@ private slots:
     void on_tbTemplate_textChanged();
     void on_sliderZoom_valueChanged(int value);
     void on_sliderZoom_sliderReleased();
+    void on_btnPrint_clicked();
+    void on_btnPdf_clicked();
 
 private:
     bool checkSaveTemplate();
@@ -52,6 +56,8 @@ private:
     HtmlHighLighter *mHtmlHightLighter;
     QTemporaryFile mTempCssFile;
     QTimer mTimerWebViewUpdate;
+    QString htmlName;
+    QString pdfName;
 
 private:
     static double gZoomFactor;

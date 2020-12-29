@@ -43,7 +43,6 @@ private slots:
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
     void on_actionWiederherstellen_triggered();
-    void on_actionThemeSystem_triggered();
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);
@@ -64,6 +63,7 @@ private slots:
     void on_actionNiederlaendisch_triggered();
     void on_actionSpende_triggered();
     void on_actionBierspende_triggered();
+    void on_actionFormelsammlung_triggered();
     void on_actionUeber_triggered();
 
 private:

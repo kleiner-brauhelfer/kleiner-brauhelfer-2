@@ -367,18 +367,6 @@ void TabSudAuswahl::on_btnVergessen_clicked()
     onMerkliste_clicked(false);
 }
 
-void TabSudAuswahl::on_btnAlleVergessen_clicked()
-{
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    for (int row = 0; row < model->rowCount(); ++row)
-    {
-        QModelIndex index = model->index(row, ModelSud::ColMerklistenID);
-        if (model->data(index).toBool())
-            model->setData(index, false);
-    }
-    ui->tableSudauswahl->setFocus();
-}
-
 void TabSudAuswahl::onMerkliste_clicked(bool value)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
@@ -613,6 +601,11 @@ void TabSudAuswahl::on_btnExportieren_clicked()
     rezeptExportieren();
 }
 
+void TabSudAuswahl::on_btnTeilen_clicked()
+{
+    sudTeilen(false);
+}
+
 void TabSudAuswahl::on_btnLaden_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
@@ -624,50 +617,17 @@ void TabSudAuswahl::on_btnLaden_clicked()
     }
 }
 
+bool TabSudAuswahl::isPrintable() const
+{
+    return true;
+}
+
 void TabSudAuswahl::printPreview()
 {
-    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
-    if (selection.count() == 0)
-        return;
     ui->webview->printPreview();
 }
 
 void TabSudAuswahl::toPdf()
 {
-    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
-    if (selection.count() == 0)
-        return;
-
-    gSettings->beginGroup("General");
-
-    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
-
-    QString fileName;
-    if (selection.count() == 1)
-        fileName = static_cast<ProxyModel*>(ui->tableSudauswahl->model())->data(selection[0].row(), ModelSud::ColSudname).toString() + "_" + tr("Rohstoffe");
-    else
-        fileName = tr("Rohstoffe");
-
-    QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
-    if (!filePath.isEmpty())
-    {
-        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
-        QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
-        QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
-        ui->webview->printToPdf(filePath, margins);
-        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
-    }
-
-    gSettings->endGroup();
-}
-
-void TabSudAuswahl::on_btnToPdf_clicked()
-{
-    toPdf();
-}
-
-void TabSudAuswahl::on_btnPrintPreview_clicked()
-{
-    printPreview();
+    ui->webview->printToPdf();
 }

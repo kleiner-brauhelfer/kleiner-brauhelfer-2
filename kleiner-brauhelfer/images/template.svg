@@ -7,7 +7,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="minus.svg"
+   sodipodi:docname="template.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    id="svg4450"
    version="1.1"
@@ -27,9 +27,9 @@
      showborder="true"
      inkscape:showpageshadow="false"
      inkscape:document-rotation="0"
-     inkscape:zoom="28.84375"
-     inkscape:cx="30.613218"
-     inkscape:cy="29.420088"
+     inkscape:zoom="20.395611"
+     inkscape:cx="40.330287"
+     inkscape:cy="33.577962"
      inkscape:window-width="3840"
      inkscape:window-height="2066"
      inkscape:window-x="-11"
@@ -58,9 +58,9 @@
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <path
-       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 8,32 H 56"
+       sodipodi:nodetypes="cccccc"
        id="path5588"
-       sodipodi:nodetypes="cc" />
+       d="M 8,8 H 56 V 56 H 8 V 28 h 16"
+       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

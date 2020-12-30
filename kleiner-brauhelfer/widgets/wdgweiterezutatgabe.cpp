@@ -207,7 +207,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             QPalette pal = ui->frameColor->palette();
             pal.setColor(QPalette::Background, gSettings->HopfenTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
-            ui->frameColor->setToolTip(TabRohstoffe::HopfenTypname[idx]);
+            ui->frameColor->setToolTip(tr("Hopfen"));
         }
         else
         {
@@ -264,9 +264,12 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         {
         case Brauhelfer::ZusatzStatus::NichtZugegeben:
             ui->tbVorhanden->setVisible(true);
+            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
             ui->lblVorhanden->setVisible(true);
             ui->lblEinheit2->setVisible(true);
             ui->btnLoeschen->setVisible(true);
+            ui->btnNachOben->setVisible(true);
+            ui->btnNachUnten->setVisible(true);
             ui->tbZugabeNach->setReadOnly(false);
             ui->tbDatumVon->setReadOnly(false);
             ui->tbDatumBis->setReadOnly(false);
@@ -278,9 +281,12 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             break;
         case Brauhelfer::ZusatzStatus::Zugegeben:
             ui->tbVorhanden->setVisible(false);
+            ui->btnAufbrauchen->setVisible(false);
             ui->lblVorhanden->setVisible(false);
             ui->lblEinheit2->setVisible(false);
             ui->btnLoeschen->setVisible(false);
+            ui->btnNachOben->setVisible(false);
+            ui->btnNachUnten->setVisible(false);
             ui->tbZugabeNach->setReadOnly(true);
             ui->tbDatumVon->setReadOnly(true);
             ui->tbDatumBis->setReadOnly(false);
@@ -301,9 +307,12 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             break;
         case Brauhelfer::ZusatzStatus::Entnommen:
             ui->tbVorhanden->setVisible(false);
+            ui->btnAufbrauchen->setVisible(false);
             ui->lblVorhanden->setVisible(false);
             ui->lblEinheit2->setVisible(false);
             ui->btnLoeschen->setVisible(false);
+            ui->btnNachOben->setVisible(false);
+            ui->btnNachUnten->setVisible(false);
             ui->tbZugabeNach->setReadOnly(true);
             ui->tbDatumVon->setReadOnly(true);
             ui->tbDatumBis->setReadOnly(true);
@@ -314,12 +323,12 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             ui->btnZutat->setEnabled(false);
             break;
         }
-        ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
     }
 
     if (gSettings->ForceEnabled)
     {
         ui->tbVorhanden->setVisible(true);
+        ui->btnAufbrauchen->setVisible(true);
         ui->lblVorhanden->setVisible(true);
         ui->lblEinheit2->setVisible(true);
         ui->btnLoeschen->setVisible(true);

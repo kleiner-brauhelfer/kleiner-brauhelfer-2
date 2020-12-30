@@ -22,6 +22,7 @@ public:
     ~WdgWebViewEditable();
     void clear();
     void setHtmlFile(const QString& file);
+    void setPrintable(bool isPrintable);
     void printPreview();
     void printToPdf();
     void setPdfName(const QString& name);

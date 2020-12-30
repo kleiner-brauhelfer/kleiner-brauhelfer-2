@@ -112,6 +112,8 @@ void TabBewertung::updateValues()
         ui->tbBemerkung->setPlainText(data(ModelBewertungen::ColBemerkung).toString());
 
     int value = data(ModelBewertungen::ColFarbe).toInt();
+    ui->rbFarbe_ka->setChecked(true);
+    ui->rbFarbe_ka2->setChecked(true);
     ui->rbFarbe_0->setChecked(value & (1 << 0));
     ui->rbFarbe_1->setChecked(value & (1 << 1));
     ui->rbFarbe_2->setChecked(value & (1 << 2));
@@ -127,6 +129,10 @@ void TabBewertung::updateValues()
         ui->tbFarbe->setPlainText(data(ModelBewertungen::ColFarbeBemerkung).toString());
 
     value = data(ModelBewertungen::ColSchaum).toInt();
+    ui->rbSchaum_ka->setChecked(true);
+    ui->rbSchaum_ka2->setChecked(true);
+    ui->rbSchaum_ka3->setChecked(true);
+    ui->rbSchaum_ka4->setChecked(true);
     ui->rbSchaum_0->setChecked(value & (1 << 0));
     ui->rbSchaum_1->setChecked(value & (1 << 1));
     ui->rbSchaum_2->setChecked(value & (1 << 2));
@@ -175,6 +181,7 @@ void TabBewertung::updateValues()
         ui->tbGeschmack->setPlainText(data(ModelBewertungen::ColGeschmackBemerkung).toString());
 
     value = data(ModelBewertungen::ColAntrunk).toInt();
+    ui->rbAntrunk_ka->setChecked(true);
     ui->rbAntrunk_0->setChecked(value & (1 << 0));
     ui->rbAntrunk_1->setChecked(value & (1 << 1));
     ui->rbAntrunk_2->setChecked(value & (1 << 2));
@@ -187,6 +194,7 @@ void TabBewertung::updateValues()
         ui->tbAntrunk->setPlainText(data(ModelBewertungen::ColAntrunkBemerkung).toString());
 
     value = data(ModelBewertungen::ColHaupttrunk).toInt();
+    ui->rbHaupttrunk_ka->setChecked(true);
     ui->rbHaupttrunk_0->setChecked(value & (1 << 0));
     ui->rbHaupttrunk_1->setChecked(value & (1 << 1));
     ui->rbHaupttrunk_2->setChecked(value & (1 << 2));
@@ -196,6 +204,7 @@ void TabBewertung::updateValues()
         ui->tbHaupttrunk->setPlainText(data(ModelBewertungen::ColHaupttrunkBemerkung).toString());
 
     value = data(ModelBewertungen::ColNachtrunk).toInt();
+    ui->rbNachtrunk_ka->setChecked(true);
     ui->rbNachtrunk_0->setChecked(value & (1 << 0));
     ui->rbNachtrunk_1->setChecked(value & (1 << 1));
     ui->rbNachtrunk_2->setChecked(value & (1 << 2));
@@ -209,6 +218,7 @@ void TabBewertung::updateValues()
         ui->tbNachtrunk->setPlainText(data(ModelBewertungen::ColNachtrunkBemerkung).toString());
 
     value = data(ModelBewertungen::ColGesamteindruck).toInt();
+    ui->rbGesamteindruck_ka->setChecked(true);
     ui->rbGesamteindruck_0->setChecked(value & (1 << 0));
     ui->rbGesamteindruck_1->setChecked(value & (1 << 1));
     ui->rbGesamteindruck_2->setChecked(value & (1 << 2));
@@ -326,6 +336,16 @@ void TabBewertung::on_rbFarbe_10_clicked()
     setFarbe();
 }
 
+void TabBewertung::on_rbFarbe_ka_clicked()
+{
+    setFarbe();
+}
+
+void TabBewertung::on_rbFarbe_ka2_clicked()
+{
+    setFarbe();
+}
+
 void TabBewertung::on_tbFarbe_textChanged()
 {
     if (ui->tbFarbe->hasFocus())
@@ -411,6 +431,26 @@ void TabBewertung::on_rbSchaum_9_clicked()
 }
 
 void TabBewertung::on_rbSchaum_10_clicked()
+{
+    setSchaum();
+}
+
+void TabBewertung::on_rbSchaum_ka_clicked()
+{
+    setSchaum();
+}
+
+void TabBewertung::on_rbSchaum_ka2_clicked()
+{
+    setSchaum();
+}
+
+void TabBewertung::on_rbSchaum_ka3_clicked()
+{
+    setSchaum();
+}
+
+void TabBewertung::on_rbSchaum_ka4_clicked()
 {
     setSchaum();
 }
@@ -682,6 +722,11 @@ void TabBewertung::on_rbAntrunk_7_clicked()
     setAntrunk();
 }
 
+void TabBewertung::on_rbAntrunk_ka_clicked()
+{
+    setAntrunk();
+}
+
 void TabBewertung::on_tbAntrunk_textChanged()
 {
     if (ui->tbAntrunk->hasFocus())
@@ -725,6 +770,11 @@ void TabBewertung::on_rbHaupttrunk_3_clicked()
 }
 
 void TabBewertung::on_rbHaupttrunk_4_clicked()
+{
+    setHaupttrunk();
+}
+
+void TabBewertung::on_rbHaupttrunk_ka_clicked()
 {
     setHaupttrunk();
 }
@@ -804,6 +854,11 @@ void TabBewertung::on_rbNachtrunk_8_clicked()
     setNachtrunk();
 }
 
+void TabBewertung::on_rbNachtrunk_ka_clicked()
+{
+    setNachtrunk();
+}
+
 void TabBewertung::on_tbNachtrunk_textChanged()
 {
     if (ui->tbNachtrunk->hasFocus())
@@ -868,6 +923,11 @@ void TabBewertung::on_rbGesamteindruck_6_clicked()
 }
 
 void TabBewertung::on_rbGesamteindruck_7_clicked()
+{
+    setGesamteindruck();
+}
+
+void TabBewertung::on_rbGesamteindruck_ka_clicked()
 {
     setGesamteindruck();
 }

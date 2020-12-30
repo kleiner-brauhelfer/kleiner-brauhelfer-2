@@ -37,6 +37,8 @@ private slots:
     void on_rbFarbe_8_clicked();
     void on_rbFarbe_9_clicked();
     void on_rbFarbe_10_clicked();
+    void on_rbFarbe_ka_clicked();
+    void on_rbFarbe_ka2_clicked();
     void on_tbFarbe_textChanged();
     void on_rbSchaum_0_clicked();
     void on_rbSchaum_1_clicked();
@@ -49,6 +51,10 @@ private slots:
     void on_rbSchaum_8_clicked();
     void on_rbSchaum_9_clicked();
     void on_rbSchaum_10_clicked();
+    void on_rbSchaum_ka_clicked();
+    void on_rbSchaum_ka2_clicked();
+    void on_rbSchaum_ka3_clicked();
+    void on_rbSchaum_ka4_clicked();
     void on_tbSchaum_textChanged();
     void on_rbGeruch_0_clicked();
     void on_rbGeruch_1_clicked();
@@ -85,12 +91,14 @@ private slots:
     void on_rbAntrunk_5_clicked();
     void on_rbAntrunk_6_clicked();
     void on_rbAntrunk_7_clicked();
+    void on_rbAntrunk_ka_clicked();
     void on_tbAntrunk_textChanged();
     void on_rbHaupttrunk_0_clicked();
     void on_rbHaupttrunk_1_clicked();
     void on_rbHaupttrunk_2_clicked();
     void on_rbHaupttrunk_3_clicked();
     void on_rbHaupttrunk_4_clicked();
+    void on_rbHaupttrunk_ka_clicked();
     void on_tbHaupttrunk_textChanged();
     void on_rbNachtrunk_0_clicked();
     void on_rbNachtrunk_1_clicked();
@@ -101,6 +109,7 @@ private slots:
     void on_rbNachtrunk_6_clicked();
     void on_rbNachtrunk_7_clicked();
     void on_rbNachtrunk_8_clicked();
+    void on_rbNachtrunk_ka_clicked();
     void on_tbNachtrunk_textChanged();
     void on_rbGesamteindruck_0_clicked();
     void on_rbGesamteindruck_1_clicked();
@@ -110,6 +119,7 @@ private slots:
     void on_rbGesamteindruck_5_clicked();
     void on_rbGesamteindruck_6_clicked();
     void on_rbGesamteindruck_7_clicked();
+    void on_rbGesamteindruck_ka_clicked();
     void on_tbGesamteindruck_textChanged();
 
 private:

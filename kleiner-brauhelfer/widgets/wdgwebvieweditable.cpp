@@ -83,6 +83,12 @@ void WdgWebViewEditable::setHtmlFile(const QString& file)
     ui->webview->setTemplateFile(gSettings->dataDir(1) + fileComplete);
 }
 
+void WdgWebViewEditable::setPrintable(bool isPrintable)
+{
+    ui->btnPdf->setVisible(isPrintable);
+    ui->btnPrint->setVisible(isPrintable);
+}
+
 #ifdef QT_PRINTSUPPORT_LIB
 void WdgWebViewEditable::printDocument(QPrinter *printer)
 {

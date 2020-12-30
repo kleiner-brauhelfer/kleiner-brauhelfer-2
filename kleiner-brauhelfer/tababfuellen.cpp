@@ -39,6 +39,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     ui->webview->setHtmlFile("abfuelldaten");
+    ui->webview->setPrintable(false);
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));

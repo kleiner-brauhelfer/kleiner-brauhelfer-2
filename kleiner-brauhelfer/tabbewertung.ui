@@ -81,8 +81,9 @@
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="text">
-          <string>Neue Bewertung</string>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
          </property>
         </widget>
        </item>
@@ -271,6 +272,13 @@
                   </widget>
                  </item>
                  <item>
+                  <widget class="QRadioButton" name="rbFarbe_ka">
+                   <property name="text">
+                    <string>keine Angabe</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <spacer name="verticalSpacer">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
@@ -317,6 +325,13 @@
                   <widget class="QRadioButton" name="rbFarbe_3">
                    <property name="text">
                     <string>gräulich, fahl</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rbFarbe_ka2">
+                   <property name="text">
+                    <string>keine Angabe</string>
                    </property>
                   </widget>
                  </item>
@@ -388,6 +403,13 @@
                      </property>
                     </widget>
                    </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_ka">
+                     <property name="text">
+                      <string>keine Angabe</string>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -408,6 +430,13 @@
                     <widget class="QRadioButton" name="rbSchaum_3">
                      <property name="text">
                       <string>schlecht haftend</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_ka2">
+                     <property name="text">
+                      <string>keine Angabe</string>
                      </property>
                     </widget>
                    </item>
@@ -442,6 +471,13 @@
                     <widget class="QRadioButton" name="rbSchaum_6">
                      <property name="text">
                       <string>keine Haltbarkeit</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_ka3">
+                     <property name="text">
+                      <string>keine Angabe</string>
                      </property>
                     </widget>
                    </item>
@@ -483,6 +519,13 @@
                     <widget class="QRadioButton" name="rbSchaum_10">
                      <property name="text">
                       <string>überschäumend</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="rbSchaum_ka4">
+                     <property name="text">
+                      <string>keine Angabe</string>
                      </property>
                     </widget>
                    </item>
@@ -751,10 +794,10 @@
                <string>Rezenz, Frischeeindruck</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_3">
-               <item row="3" column="0">
-                <widget class="QRadioButton" name="rbAntrunk_3">
+               <item row="2" column="0">
+                <widget class="QRadioButton" name="rbAntrunk_2">
                  <property name="text">
-                  <string>prickelnd</string>
+                  <string>gut eingebunden</string>
                  </property>
                 </widget>
                </item>
@@ -765,6 +808,13 @@
                  </property>
                 </widget>
                </item>
+               <item row="3" column="0">
+                <widget class="QRadioButton" name="rbAntrunk_3">
+                 <property name="text">
+                  <string>prickelnd</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="0">
                 <widget class="QRadioButton" name="rbAntrunk_0">
                  <property name="text">
@@ -772,38 +822,38 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="0">
-                <widget class="QRadioButton" name="rbAntrunk_2">
-                 <property name="text">
-                  <string>gut eingebunden</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
+               <item row="4" column="0">
                 <widget class="QRadioButton" name="rbAntrunk_4">
                  <property name="text">
                   <string>stark prickelnd, aufdringlich</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
+               <item row="0" column="1">
                 <widget class="QRadioButton" name="rbAntrunk_5">
                  <property name="text">
                   <string>wenig rezent</string>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="1">
+               <item row="1" column="1">
                 <widget class="QRadioButton" name="rbAntrunk_6">
                  <property name="text">
                   <string>schal</string>
                  </property>
                 </widget>
                </item>
-               <item row="3" column="1">
+               <item row="2" column="1">
                 <widget class="QRadioButton" name="rbAntrunk_7">
                  <property name="text">
                   <string>sehr schal</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QRadioButton" name="rbAntrunk_ka">
+                 <property name="text">
+                  <string>keine Angabe</string>
                  </property>
                 </widget>
                </item>
@@ -874,6 +924,13 @@
                 <widget class="QRadioButton" name="rbHaupttrunk_4">
                  <property name="text">
                   <string>mastig, breit</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rbHaupttrunk_ka">
+                 <property name="text">
+                  <string>keine Angabe</string>
                  </property>
                 </widget>
                </item>
@@ -972,6 +1029,13 @@
                  </property>
                 </widget>
                </item>
+               <item row="5" column="1">
+                <widget class="QRadioButton" name="rbNachtrunk_ka">
+                 <property name="text">
+                  <string>keine Angabe</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </item>
@@ -1001,45 +1065,10 @@
             <item>
              <widget class="QGroupBox" name="groupBox_45">
               <layout class="QGridLayout" name="gridLayout_5">
-               <item row="4" column="0">
-                <widget class="QRadioButton" name="rbGesamteindruck_3">
+               <item row="0" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_0">
                  <property name="text">
-                  <string>überraschend, ungewöhnlich</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QRadioButton" name="rbGesamteindruck_5">
-                 <property name="text">
-                  <string>unauffällig, gewöhnlich</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QRadioButton" name="rbGesamteindruck_6">
-                 <property name="text">
-                  <string>einmal ist genug, langweilig</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QRadioButton" name="rbGesamteindruck_4">
-                 <property name="text">
-                  <string>kunstvoll, kreativ, mutig</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QRadioButton" name="rbGesamteindruck_7">
-                 <property name="text">
-                  <string>nicht trinkbar, problematisch</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QRadioButton" name="rbGesamteindruck_1">
-                 <property name="text">
-                  <string>gutes, typisches Bier</string>
+                  <string>toll, weiter trinken, macht Lust auf mehr</string>
                  </property>
                 </widget>
                </item>
@@ -1050,10 +1079,52 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="0">
-                <widget class="QRadioButton" name="rbGesamteindruck_0">
+               <item row="2" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_1">
                  <property name="text">
-                  <string>toll, weiter trinken, macht Lust auf mehr</string>
+                  <string>gutes, typisches Bier</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_4">
+                 <property name="text">
+                  <string>kunstvoll, kreativ, mutig</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_5">
+                 <property name="text">
+                  <string>unauffällig, gewöhnlich</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QRadioButton" name="rbGesamteindruck_3">
+                 <property name="text">
+                  <string>überraschend, ungewöhnlich</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_6">
+                 <property name="text">
+                  <string>einmal ist genug, langweilig</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_7">
+                 <property name="text">
+                  <string>nicht trinkbar, problematisch</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QRadioButton" name="rbGesamteindruck_ka">
+                 <property name="text">
+                  <string>keine Angabe</string>
                  </property>
                 </widget>
                </item>
@@ -1159,10 +1230,6 @@
   <tabstop>rbAntrunk_1</tabstop>
   <tabstop>rbAntrunk_2</tabstop>
   <tabstop>rbAntrunk_3</tabstop>
-  <tabstop>rbAntrunk_4</tabstop>
-  <tabstop>rbAntrunk_5</tabstop>
-  <tabstop>rbAntrunk_6</tabstop>
-  <tabstop>rbAntrunk_7</tabstop>
   <tabstop>tbAntrunk</tabstop>
   <tabstop>rbHaupttrunk_0</tabstop>
   <tabstop>rbHaupttrunk_1</tabstop>
@@ -1184,12 +1251,10 @@
   <tabstop>rbGesamteindruck_1</tabstop>
   <tabstop>rbGesamteindruck_2</tabstop>
   <tabstop>rbGesamteindruck_3</tabstop>
-  <tabstop>rbGesamteindruck_4</tabstop>
-  <tabstop>rbGesamteindruck_5</tabstop>
-  <tabstop>rbGesamteindruck_6</tabstop>
-  <tabstop>rbGesamteindruck_7</tabstop>
   <tabstop>tbGesamteindruck</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

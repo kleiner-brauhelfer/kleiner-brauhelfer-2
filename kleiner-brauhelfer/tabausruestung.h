@@ -34,19 +34,19 @@ private slots:
     void on_btnAusbeuteMittel_clicked();
     void on_btnVerdampfungsrate_clicked();
     void on_btnVerdampfungMittel_clicked();
-    void on_tbAusbeute_valueChanged(double value);
+    void on_tbAusbeute_editingFinished();
     void on_sliderAusbeuteSude_sliderMoved(int value);
-    void on_tbVerdampfung_valueChanged(double value);
-    void on_tbKorrekturNachguss_valueChanged(double value);
-    void on_tbKorrekturFarbe_valueChanged(int value);
-    void on_tbKorrekturSollmenge_valueChanged(double value);
-    void on_tbKosten_valueChanged(double value);
-    void on_tbMaischebottichHoehe_valueChanged(double value);
-    void on_tbMaischebottichDurchmesser_valueChanged(double value);
-    void on_tbMaischebottichMaxFuellhoehe_valueChanged(double value);
-    void on_tbSudpfanneHoehe_valueChanged(double value);
-    void on_tbSudpfanneDurchmesser_valueChanged(double value);
-    void on_tbSudpfanneMaxFuellhoehe_valueChanged(double value);
+    void on_tbVerdampfung_editingFinished();
+    void on_tbKorrekturNachguss_editingFinished();
+    void on_tbKorrekturFarbe_editingFinished();
+    void on_tbKorrekturSollmenge_editingFinished();
+    void on_tbKosten_editingFinished();
+    void on_tbMaischebottichHoehe_editingFinished();
+    void on_tbMaischebottichDurchmesser_editingFinished();
+    void on_tbMaischebottichMaxFuellhoehe_editingFinished();
+    void on_tbSudpfanneHoehe_editingFinished();
+    void on_tbSudpfanneDurchmesser_editingFinished();
+    void on_tbSudpfanneMaxFuellhoehe_editingFinished();
     void on_tbBemerkung_textChanged();
 
 private:

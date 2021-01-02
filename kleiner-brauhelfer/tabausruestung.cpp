@@ -407,26 +407,32 @@ void TabAusruestung::on_btnVerdampfungsrate_clicked()
     }
 }
 
-void TabAusruestung::on_tbAusbeute_valueChanged(double value)
+void TabAusruestung::on_tbAusbeute_editingFinished()
 {
-    if (ui->tbAusbeute->hasFocus())
-        setData(ModelAusruestung::ColSudhausausbeute, value);
+    double prevValue = data(ModelAusruestung::ColSudhausausbeute).toDouble();
+    if (prevValue != ui->tbAusbeute->value())
+        setData(ModelAusruestung::ColSudhausausbeute, ui->tbAusbeute->value());
 }
 
 void TabAusruestung::on_btnAusbeuteMittel_clicked()
 {
-    setData(ModelAusruestung::ColSudhausausbeute, ui->tbAusbeuteMittel->value());
+    double prevValue = data(ModelAusruestung::ColSudhausausbeute).toDouble();
+    if (prevValue != ui->tbAusbeuteMittel->value())
+        setData(ModelAusruestung::ColSudhausausbeute, ui->tbAusbeuteMittel->value());
 }
 
-void TabAusruestung::on_tbVerdampfung_valueChanged(double value)
+void TabAusruestung::on_tbVerdampfung_editingFinished()
 {
-    if (ui->tbVerdampfung->hasFocus())
-        setData(ModelAusruestung::ColVerdampfungsrate, value);
+    double prevValue = data(ModelAusruestung::ColVerdampfungsrate).toDouble();
+    if (prevValue != ui->tbVerdampfung->value())
+        setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfung->value());
 }
 
 void TabAusruestung::on_btnVerdampfungMittel_clicked()
 {
-    setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfungMittel->value());
+    double prevValue = data(ModelAusruestung::ColVerdampfungsrate).toDouble();
+    if (prevValue != ui->tbVerdampfungMittel->value())
+        setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfungMittel->value());
 }
 
 void TabAusruestung::on_sliderAusbeuteSude_sliderMoved(int)
@@ -434,64 +440,74 @@ void TabAusruestung::on_sliderAusbeuteSude_sliderMoved(int)
     updateDurchschnitt();
 }
 
-void TabAusruestung::on_tbKorrekturNachguss_valueChanged(double value)
+void TabAusruestung::on_tbKorrekturNachguss_editingFinished()
 {
-    if (ui->tbKorrekturNachguss->hasFocus())
-        setData(ModelAusruestung::ColKorrekturWasser, value);
+    double prevValue = data(ModelAusruestung::ColKorrekturWasser).toDouble();
+    if (prevValue != ui->tbKorrekturNachguss->value())
+        setData(ModelAusruestung::ColKorrekturWasser, ui->tbKorrekturNachguss->value());
 }
 
-void TabAusruestung::on_tbKorrekturFarbe_valueChanged(int value)
+void TabAusruestung::on_tbKorrekturFarbe_editingFinished()
 {
-    if (ui->tbKorrekturFarbe->hasFocus())
-        setData(ModelAusruestung::ColKorrekturFarbe, value);
+    double prevValue = data(ModelAusruestung::ColKorrekturFarbe).toDouble();
+    if (prevValue != ui->tbKorrekturFarbe->value())
+        setData(ModelAusruestung::ColKorrekturFarbe, ui->tbKorrekturFarbe->value());
 }
 
-void TabAusruestung::on_tbKorrekturSollmenge_valueChanged(double value)
+void TabAusruestung::on_tbKorrekturSollmenge_editingFinished()
 {
-    if (ui->tbKorrekturSollmenge->hasFocus())
-        setData(ModelAusruestung::ColKorrekturMenge, value);
+    double prevValue = data(ModelAusruestung::ColKorrekturMenge).toDouble();
+    if (prevValue != ui->tbKorrekturSollmenge->value())
+        setData(ModelAusruestung::ColKorrekturMenge, ui->tbKorrekturSollmenge->value());
 }
 
-void TabAusruestung::on_tbKosten_valueChanged(double value)
+void TabAusruestung::on_tbKosten_editingFinished()
 {
-    if (ui->tbKosten->hasFocus())
-        setData(ModelAusruestung::ColKosten, value);
+    double prevValue = data(ModelAusruestung::ColKosten).toDouble();
+    if (prevValue != ui->tbKosten->value())
+        setData(ModelAusruestung::ColKosten, ui->tbKosten->value());
 }
 
-void TabAusruestung::on_tbMaischebottichHoehe_valueChanged(double value)
+void TabAusruestung::on_tbMaischebottichHoehe_editingFinished()
 {
-    if (ui->tbMaischebottichHoehe->hasFocus())
-        setData(ModelAusruestung::ColMaischebottich_Hoehe, value);
+    double prevValue = data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+    if (prevValue != ui->tbMaischebottichHoehe->value())
+        setData(ModelAusruestung::ColMaischebottich_Hoehe, ui->tbMaischebottichHoehe->value());
 }
 
-void TabAusruestung::on_tbMaischebottichDurchmesser_valueChanged(double value)
+void TabAusruestung::on_tbMaischebottichDurchmesser_editingFinished()
 {
-    if (ui->tbMaischebottichDurchmesser->hasFocus())
-        setData(ModelAusruestung::ColMaischebottich_Durchmesser, value);
+    double prevValue = data(ModelAusruestung::ColMaischebottich_Durchmesser).toDouble();
+    if (prevValue != ui->tbMaischebottichDurchmesser->value())
+        setData(ModelAusruestung::ColMaischebottich_Durchmesser, ui->tbMaischebottichDurchmesser->value());
 }
 
-void TabAusruestung::on_tbMaischebottichMaxFuellhoehe_valueChanged(double value)
+void TabAusruestung::on_tbMaischebottichMaxFuellhoehe_editingFinished()
 {
-    if (ui->tbMaischebottichMaxFuellhoehe->hasFocus())
-        setData(ModelAusruestung::ColMaischebottich_MaxFuellhoehe, value);
+    double prevValue = data(ModelAusruestung::ColMaischebottich_MaxFuellhoehe).toDouble();
+    if (prevValue != ui->tbMaischebottichMaxFuellhoehe->value())
+        setData(ModelAusruestung::ColMaischebottich_MaxFuellhoehe, ui->tbMaischebottichMaxFuellhoehe->value());
 }
 
-void TabAusruestung::on_tbSudpfanneHoehe_valueChanged(double value)
+void TabAusruestung::on_tbSudpfanneHoehe_editingFinished()
 {
-    if (ui->tbSudpfanneHoehe->hasFocus())
-        setData(ModelAusruestung::ColSudpfanne_Hoehe, value);
+    double prevValue = data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    if (prevValue != ui->tbSudpfanneHoehe->value())
+        setData(ModelAusruestung::ColSudpfanne_Hoehe, ui->tbSudpfanneHoehe->value());
 }
 
-void TabAusruestung::on_tbSudpfanneDurchmesser_valueChanged(double value)
+void TabAusruestung::on_tbSudpfanneDurchmesser_editingFinished()
 {
-    if (ui->tbSudpfanneDurchmesser->hasFocus())
-        setData(ModelAusruestung::ColSudpfanne_Durchmesser, value);
+    double prevValue = data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+    if (prevValue != ui->tbSudpfanneDurchmesser->value())
+        setData(ModelAusruestung::ColSudpfanne_Durchmesser, ui->tbSudpfanneDurchmesser->value());
 }
 
-void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_valueChanged(double value)
+void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_editingFinished()
 {
-    if (ui->tbSudpfanneMaxFuellhoehe->hasFocus())
-        setData(ModelAusruestung::ColSudpfanne_MaxFuellhoehe, value);
+    double prevValue = data(ModelAusruestung::ColSudpfanne_MaxFuellhoehe).toDouble();
+    if (prevValue != ui->tbSudpfanneMaxFuellhoehe->value())
+        setData(ModelAusruestung::ColSudpfanne_MaxFuellhoehe, ui->tbSudpfanneMaxFuellhoehe->value());
 }
 
 void TabAusruestung::on_tbBemerkung_textChanged()

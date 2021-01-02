@@ -133,7 +133,7 @@ public:
     QVariant dataSud(QVariant sudId, int col);
     QVariant dataAnlage(int row, int col) const;
     QVariant dataWasser(int row, int col) const;
-    void update(int row);
+    void update(int row, int colChanged = -1);
 
 private slots:
 

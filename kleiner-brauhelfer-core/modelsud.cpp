@@ -117,7 +117,12 @@ void ModelSud::onAnlageRowChanged(const QModelIndex &idx)
     for (int row = 0; row < rowCount(); ++row)
     {
         if (data(row, ColAnlage) == name)
-            update(row);
+        {
+            if (idx.column() == ModelAusruestung::ColKorrekturMenge)
+                update(row, ColMengeSoll);
+            else
+                update(row);
+        }
     }
 }
 
@@ -755,7 +760,7 @@ QVariant ModelSud::dataWasser(int row, int col) const
     return bh->modelWasser()->getValueFromSameRow(ModelWasser::ColName, data(row, ColWasserprofil), col);
 }
 
-void ModelSud::update(int row)
+void ModelSud::update(int row, int colChanged)
 {
     if (row < 0 || row >= rowCount())
         return;
@@ -772,6 +777,13 @@ void ModelSud::update(int row)
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(row, ColStatus).toInt());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
+        // MengeSoll
+        if (colChanged == ColMengeSoll)
+        {
+            QModelIndex idx2 = index(row, colChanged);
+            emit dataChanged(idx2, idx2);
+        }
+
         // erg_S_Gesamt
         double sw = data(row, ColSW_Malz).toDouble();
         double sw_dichte = sw + swWzMaischenRecipe[row] + swWzKochenRecipe[row];

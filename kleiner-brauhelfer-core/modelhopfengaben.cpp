@@ -227,6 +227,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     switch (idx.column())
     {
     case ModelSud::ColMenge:
+    case ModelSud::ColMengeSoll:
     case ModelSud::ColSW:
     case ModelSud::ColIBU:
     case ModelSud::ColberechnungsArtHopfen:

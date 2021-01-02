@@ -208,6 +208,12 @@ void TabRezept::sudLoaded()
         updateAnlageModel();
         updateWasserModel();
         updateValues();
+        rasten_modified();
+        malzGaben_modified();
+        hopfenGaben_modified();
+        hefeGaben_modified();
+        weitereZutatenGaben_modified();
+        wasseraufbereitung_modified();
         checkRohstoffe();
     }
 }
@@ -674,7 +680,8 @@ void TabRezept::updateMalzGaben()
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         double p = 100.0;
-        for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        int count = ui->layoutMalzGaben->count();
+        for (int i = 0; i < count; ++i)
         {
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             p -= wdg->prozent();
@@ -686,7 +693,7 @@ void TabRezept::updateMalzGaben()
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             wdg->setFehlProzent(p);
         }
-		ui->wdgWarnungMalz->setVisible(p != 0.0);
+        ui->wdgWarnungMalz->setVisible(p != 0.0 && count > 1);
     }
     else
     {

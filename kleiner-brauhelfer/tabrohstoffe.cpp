@@ -714,100 +714,116 @@ void TabRohstoffe::updateWasser()
         ui->tbBemerkung->setText(dataWasser(ModelWasser::ColBemerkung).toString());
 }
 
-void TabRohstoffe::on_tbCalciumMg_valueChanged(double value)
+void TabRohstoffe::on_tbCalciumMg_editingFinished()
 {
-    if (ui->tbCalciumMg->hasFocus())
-        setDataWasser(ModelWasser::ColCalcium, value);
+    double prevValue = dataWasser(ModelWasser::ColCalcium).toDouble();
+    if (prevValue != ui->tbCalciumMg->value())
+        setDataWasser(ModelWasser::ColCalcium, ui->tbCalciumMg->value());
 }
 
-void TabRohstoffe::on_tbCalciumMmol_valueChanged(double value)
+void TabRohstoffe::on_tbCalciumMmol_editingFinished()
 {
-    if (ui->tbCalciumMmol->hasFocus())
-        setDataWasser(ModelWasser::ColCalciumMmol, value);
+    double prevValue = dataWasser(ModelWasser::ColCalciumMmol).toDouble();
+    if (prevValue != ui->tbCalciumMmol->value())
+        setDataWasser(ModelWasser::ColCalciumMmol, ui->tbCalciumMmol->value());
 }
 
-void TabRohstoffe::on_tbCalciumHaerte_valueChanged(double value)
+void TabRohstoffe::on_tbCalciumHaerte_editingFinished()
 {
-    if (ui->tbCalciumHaerte->hasFocus())
-        setDataWasser(ModelWasser::ColCalciumHaerte, value);
+    double prevValue = dataWasser(ModelWasser::ColCalciumHaerte).toDouble();
+    if (prevValue != ui->tbCalciumHaerte->value())
+        setDataWasser(ModelWasser::ColCalciumHaerte, ui->tbCalciumHaerte->value());
 }
 
-void TabRohstoffe::on_tbMagnesiumMg_valueChanged(double value)
+void TabRohstoffe::on_tbMagnesiumMg_editingFinished()
 {
-    if (ui->tbMagnesiumMg->hasFocus())
-        setDataWasser(ModelWasser::ColMagnesium, value);
+    double prevValue = dataWasser(ModelWasser::ColMagnesium).toDouble();
+    if (prevValue != ui->tbMagnesiumMg->value())
+        setDataWasser(ModelWasser::ColMagnesium, ui->tbMagnesiumMg->value());
 }
 
-void TabRohstoffe::on_tbMagnesiumMmol_valueChanged(double value)
+void TabRohstoffe::on_tbMagnesiumMmol_editingFinished()
 {
-    if (ui->tbMagnesiumMmol->hasFocus())
-        setDataWasser(ModelWasser::ColMagnesiumMmol, value);
+    double prevValue = dataWasser(ModelWasser::ColMagnesiumMmol).toDouble();
+    if (prevValue != ui->tbMagnesiumMmol->value())
+        setDataWasser(ModelWasser::ColMagnesiumMmol, ui->tbMagnesiumMmol->value());
 }
 
-void TabRohstoffe::on_tbMagnesiumHaerte_valueChanged(double value)
+void TabRohstoffe::on_tbMagnesiumHaerte_editingFinished()
 {
-    if (ui->tbMagnesiumHaerte->hasFocus())
-        setDataWasser(ModelWasser::ColMagnesiumHaerte, value);
+    double prevValue = dataWasser(ModelWasser::ColMagnesiumHaerte).toDouble();
+    if (prevValue != ui->tbMagnesiumHaerte->value())
+        setDataWasser(ModelWasser::ColMagnesiumHaerte, ui->tbMagnesiumHaerte->value());
 }
 
-void TabRohstoffe::on_tbHydrogencarbonatMg_valueChanged(double value)
+void TabRohstoffe::on_tbHydrogencarbonatMg_editingFinished()
 {
-    if (ui->tbHydrogencarbonatMg->hasFocus())
-        setDataWasser(ModelWasser::ColHydrogencarbonat, value);
+    double prevValue = dataWasser(ModelWasser::ColHydrogencarbonat).toDouble();
+    if (prevValue != ui->tbHydrogencarbonatMg->value())
+        setDataWasser(ModelWasser::ColHydrogencarbonat, ui->tbHydrogencarbonatMg->value());
 }
 
-void TabRohstoffe::on_tbHydrogencarbonatMmol_valueChanged(double value)
+void TabRohstoffe::on_tbHydrogencarbonatMmol_editingFinished()
 {
-    if (ui->tbHydrogencarbonatMmol->hasFocus())
-        setDataWasser(ModelWasser::ColHydrogencarbonatMmol, value);
+    double prevValue = dataWasser(ModelWasser::ColHydrogencarbonatMmol).toDouble();
+    if (prevValue != ui->tbHydrogencarbonatMmol->value())
+        setDataWasser(ModelWasser::ColHydrogencarbonatMmol, ui->tbHydrogencarbonatMmol->value());
 }
 
-void TabRohstoffe::on_tbHydrogencarbonatHaerte_valueChanged(double value)
+void TabRohstoffe::on_tbHydrogencarbonatHaerte_editingFinished()
 {
-    if (ui->tbHydrogencarbonatHaerte->hasFocus())
-        setDataWasser(ModelWasser::ColCarbonatHaerte, value);
+    double prevValue = dataWasser(ModelWasser::ColCarbonatHaerte).toDouble();
+    if (prevValue != ui->tbHydrogencarbonatHaerte->value())
+        setDataWasser(ModelWasser::ColCarbonatHaerte, ui->tbHydrogencarbonatHaerte->value());
 }
 
-void TabRohstoffe::on_tbSulfatMg_valueChanged(double value)
+void TabRohstoffe::on_tbSulfatMg_editingFinished()
 {
-    if (ui->tbSulfatMg->hasFocus())
-        setDataWasser(ModelWasser::ColSulfat, value);
+    double prevValue = dataWasser(ModelWasser::ColSulfat).toDouble();
+    if (prevValue != ui->tbSulfatMg->value())
+        setDataWasser(ModelWasser::ColSulfat, ui->tbSulfatMg->value());
 }
 
-void TabRohstoffe::on_tbSulfatMmol_valueChanged(double value)
+void TabRohstoffe::on_tbSulfatMmol_editingFinished()
 {
-    if (ui->tbSulfatMmol->hasFocus())
-        setDataWasser(ModelWasser::ColSulfatMmol, value);
+    double prevValue = dataWasser(ModelWasser::ColSulfatMmol).toDouble();
+    if (prevValue != ui->tbSulfatMmol->value())
+        setDataWasser(ModelWasser::ColSulfatMmol, ui->tbSulfatMmol->value());
 }
 
-void TabRohstoffe::on_tbChloridMg_valueChanged(double value)
+void TabRohstoffe::on_tbChloridMg_editingFinished()
 {
-    if (ui->tbChloridMg->hasFocus())
-        setDataWasser(ModelWasser::ColChlorid, value);
+    double prevValue = dataWasser(ModelWasser::ColChlorid).toDouble();
+    if (prevValue != ui->tbChloridMg->value())
+        setDataWasser(ModelWasser::ColChlorid, ui->tbChloridMg->value());
 }
 
-void TabRohstoffe::on_tbChloridMmol_valueChanged(double value)
+void TabRohstoffe::on_tbChloridMmol_editingFinished()
 {
-    if (ui->tbChloridMmol->hasFocus())
-        setDataWasser(ModelWasser::ColChloridMmol, value);
+    double prevValue = dataWasser(ModelWasser::ColChloridMmol).toDouble();
+    if (prevValue != ui->tbChloridMmol->value())
+        setDataWasser(ModelWasser::ColChloridMmol, ui->tbChloridMmol->value());
 }
 
-void TabRohstoffe::on_tbNatriumMg_valueChanged(double value)
+void TabRohstoffe::on_tbNatriumMg_editingFinished()
 {
-    if (ui->tbNatriumMg->hasFocus())
-        setDataWasser(ModelWasser::ColNatrium, value);
+    double prevValue = dataWasser(ModelWasser::ColNatrium).toDouble();
+    if (prevValue != ui->tbNatriumMg->value())
+        setDataWasser(ModelWasser::ColNatrium, ui->tbNatriumMg->value());
 }
 
-void TabRohstoffe::on_tbNatriumMmol_valueChanged(double value)
+void TabRohstoffe::on_tbNatriumMmol_editingFinished()
 {
-    if (ui->tbNatriumMmol->hasFocus())
-        setDataWasser(ModelWasser::ColNatriumMmol, value);
+    double prevValue = dataWasser(ModelWasser::ColNatriumMmol).toDouble();
+    if (prevValue != ui->tbNatriumMmol->value())
+        setDataWasser(ModelWasser::ColNatriumMmol, ui->tbNatriumMmol->value());
 }
 
-void TabRohstoffe::on_tbRestalkalitaetAdd_valueChanged(double value)
+void TabRohstoffe::on_tbRestalkalitaetAdd_editingFinished()
 {
-    if (ui->tbRestalkalitaetAdd->hasFocus())
-        setDataWasser(ModelWasser::ColRestalkalitaetAdd, value);
+    double prevValue = dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble();
+    if (prevValue != ui->tbRestalkalitaetAdd->value())
+        setDataWasser(ModelWasser::ColRestalkalitaetAdd, ui->tbRestalkalitaetAdd->value());
 }
 
 void TabRohstoffe::on_tbBemerkung_textChanged()

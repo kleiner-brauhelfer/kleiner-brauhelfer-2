@@ -211,7 +211,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
 
 void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
 {
-    if (idx.column() == ModelSud::ColMenge)
+    if (idx.column() == ModelSud::ColMenge || idx.column() == ModelSud::ColMengeSoll)
     {
         QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
         mSignalModifiedBlocked = true;

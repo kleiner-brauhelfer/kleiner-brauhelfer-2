@@ -1030,21 +1030,27 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNeueMalzGabe">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;RohstoffeinträgeMalz &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Malzgabe hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnMalzGabenUebernehmen">
-          <property name="text">
-           <string>Aus Rezept übernehmen</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QPushButton" name="btnNeueMalzGabe">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;RohstoffeinträgeMalz &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnMalzGabenUebernehmen">
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1183,21 +1189,27 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNeueHopfenGabe">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen &lt;/span&gt;im Tab Rohstoffe  zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Hopfengabe hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
-          <property name="text">
-           <string>Aus Rezept übernehmen</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QPushButton" name="btnNeueHopfenGabe">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen &lt;/span&gt;im Tab Rohstoffe  zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1280,27 +1292,33 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNeueHefeGabe">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hefe &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;p&gt;Neu in Version 2 des Kleinen Brauhelfers ist die Möglichkeit von &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Hefegaben&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Hefegabe hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnHefeGabenUebernehmen">
-          <property name="text">
-           <string>Aus Rezept übernehmen</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_13">
+          <item>
+           <widget class="QPushButton" name="btnNeueHefeGabe">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Hefe &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;p&gt;Neu in Version 2 des Kleinen Brauhelfers ist die Möglichkeit von &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Hefegaben&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnHefeGabenUebernehmen">
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabWeitereZutaten">
        <attribute name="title">
-        <string>Weitere Zutaten</string>
+        <string>Kalthopfung &amp;&amp; Zusätze</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <property name="spacing">
@@ -1371,31 +1389,44 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNeueHopfenstopfenGabe">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Hopfenstopfengabe hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnNeueWeitereZutat">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Weitere Zutaten &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Weitere Zutat hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnWeitereZutatUebernehmen">
-          <property name="text">
-           <string>Aus Rezept übernehmen</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_14">
+          <item>
+           <widget class="QPushButton" name="btnNeueHopfenstopfenGabe">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>Kalthopfung </string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnNeueWeitereZutat">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge Weitere Zutaten &lt;/span&gt;im Tab Rohstoffe zeigt.&lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>Weitere Zutat</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnWeitereZutatUebernehmen">
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1478,21 +1509,27 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNeueRast">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird eine neue &lt;span style=&quot; font-weight:600;&quot;&gt;Rasstufe&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich die Raststufen – je nach Maischverfahren – Schritt für Schritt festzulegen. Eine manuelle Sortiermöglichkeit ist ist im Kleinen Brauhelfer nicht vorgesehen.&lt;/p&gt;&lt;p&gt;Die Namen der einzelnen Raststufen werden nach Eingabe der ersten beiden Buchstaben automatisch vervollständigt. Daneben steht es dem Anwender frei, eigene Raststufen zu definieren.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Raststufen ist die Fachliteratur oder das Forum der Wahl um Rat zu fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Schritt hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnRastenUebernehmen">
-          <property name="text">
-           <string>Aus Rezept übernehmen</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <item>
+           <widget class="QPushButton" name="btnNeueRast">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button wird eine neue &lt;span style=&quot; font-weight:600;&quot;&gt;Rasstufe&lt;/span&gt; festgelegt.&lt;/p&gt;&lt;p&gt;Es empfiehlt sich die Raststufen – je nach Maischverfahren – Schritt für Schritt festzulegen. Eine manuelle Sortiermöglichkeit ist ist im Kleinen Brauhelfer nicht vorgesehen.&lt;/p&gt;&lt;p&gt;Die Namen der einzelnen Raststufen werden nach Eingabe der ersten beiden Buchstaben automatisch vervollständigt. Daneben steht es dem Anwender frei, eigene Raststufen zu definieren.&lt;/p&gt;&lt;p&gt;Bei Fragen zu den Raststufen ist die Fachliteratur oder das Forum der Wahl um Rat zu fragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnRastenUebernehmen">
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1883,21 +1920,27 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNeueWasseraufbereitung">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="text">
-           <string>Wasseraufbereitung hinzufügen</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnWasseraufbereitungUebernehmen">
-          <property name="text">
-           <string>Aus Rezept übernehmen</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <widget class="QPushButton" name="btnNeueWasseraufbereitung">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button öffnet sich ein Pop-up-Menü, das die &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeinträge &lt;/span&gt;in der Hopfenliste&lt;span style=&quot; font-weight:600;&quot;/&gt;für das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenstopfen &lt;/span&gt;im Tab Rohstoffe zeigt. &lt;/p&gt;&lt;p&gt;Nur eingetragene Rohstoffe können im Rezept verwendet werden.&lt;/p&gt;&lt;p&gt;Nicht vorhandene Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;rot&lt;/span&gt;, zu Neige gehende Rohstoffe sind &lt;span style=&quot; font-weight:600;&quot;&gt;orange&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Soll ein Rezept lediglich getestet oder entwickelt werden, empfiehlt es sich den Rohstoff aufzunehmen und bei Menge 0 zu belassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnWasseraufbereitungUebernehmen">
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -3173,20 +3216,14 @@
   <tabstop>tabZutaten</tabstop>
   <tabstop>scrollAreaMalzGaben</tabstop>
   <tabstop>diagramMalz</tabstop>
-  <tabstop>btnNeueMalzGabe</tabstop>
   <tabstop>cbBerechnungsartHopfen</tabstop>
   <tabstop>scrollAreaHopfenGaben</tabstop>
   <tabstop>diagramHopfen</tabstop>
-  <tabstop>btnNeueHopfenGabe</tabstop>
   <tabstop>scrollAreaHefeGaben</tabstop>
   <tabstop>diagramHefe</tabstop>
-  <tabstop>btnNeueHefeGabe</tabstop>
   <tabstop>scrollAreaWeitereZutatenGaben</tabstop>
-  <tabstop>btnNeueHopfenstopfenGabe</tabstop>
-  <tabstop>btnNeueWeitereZutat</tabstop>
   <tabstop>scrollAreaRasten</tabstop>
   <tabstop>diagramRasten</tabstop>
-  <tabstop>btnNeueRast</tabstop>
   <tabstop>scrollArea_6</tabstop>
   <tabstop>gvGlas</tabstop>
   <tabstop>tbFarbe</tabstop>

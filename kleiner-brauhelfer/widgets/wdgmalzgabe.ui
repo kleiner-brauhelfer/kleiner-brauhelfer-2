@@ -276,14 +276,8 @@
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
-            <width>50</width>
+            <width>40</width>
             <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">

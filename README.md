@@ -52,8 +52,10 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Importfunktion für CSV Datei mit Gärdaten (auch per Drag & Drop)
 - Neu: Separates Temperatureingabefeld für die Karbonisierung
 - Neu: Bei "Sud gebraut zurücksetzen", "Hefe Zugabe zurücksetzen" und "Weitere Zutaten Zugabe zurücksetzen" lassen sich die Zutaten ins Lager zurücksetzen
-- Neu: Neues Dialog für import & export mit Importfunktion aus URL oder Freitext.
+- Neu: Neues Dialog für import & export mit Importfunktion aus URL oder Freitext
+- Neu: Verschiedene Icons für die Buttons
 - Fix: Angaben Braumeister 10L
+- Fix: Anpassen der Menge beim Ändern der Korrekturmenge in den Ausrüstungsreiter
 
 ### Version 2.2.2 (26.09.2020)
 - Neu: Vorlagen für diverse Wasserprofile (vielen Dank rakader)

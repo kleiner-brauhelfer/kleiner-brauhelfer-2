@@ -99,6 +99,7 @@ void TabBewertung::updateValues()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     ui->btnNeueBewertung->setVisible(status == Brauhelfer::SudStatus::Abgefuellt);
+    ui->lineNeueBewertung->setVisible(status == Brauhelfer::SudStatus::Abgefuellt);
 
     ui->scrollAreaWidgetContents->setEnabled(mIndex >= 0 && mIndex < bh->sud()->modelBewertungen()->rowCount());
 

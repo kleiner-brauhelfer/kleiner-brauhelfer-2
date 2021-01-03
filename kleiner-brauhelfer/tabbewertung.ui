@@ -70,7 +70,7 @@
         </widget>
        </item>
        <item>
-        <widget class="Line" name="line">
+        <widget class="Line" name="lineNeueBewertung">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>

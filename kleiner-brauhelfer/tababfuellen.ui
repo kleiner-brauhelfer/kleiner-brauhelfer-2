@@ -509,13 +509,13 @@
             <widget class="QPushButton" name="btnSWSchnellgaerprobe">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -531,13 +531,13 @@
             <widget class="QPushButton" name="btnSWJungbier">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1774,6 +1774,10 @@
             <property name="text">
              <string>Sud teilen</string>
             </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+            </property>
            </widget>
           </item>
          </layout>
@@ -1873,6 +1877,8 @@
   <tabstop>btnSudTeilen</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

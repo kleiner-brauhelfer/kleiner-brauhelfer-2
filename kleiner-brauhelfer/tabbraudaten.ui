@@ -185,13 +185,13 @@
             <widget class="QPushButton" name="btnWuerzemengeKochbeginn">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -687,13 +687,13 @@
             <widget class="QPushButton" name="btnSWKochbeginn">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1000,13 +1000,13 @@
             <widget class="QPushButton" name="btnWuerzemengeKochende">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1211,13 +1211,13 @@
             <widget class="QPushButton" name="btnWuerzemengeVorHopfenseihen">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1330,13 +1330,13 @@
             <widget class="QPushButton" name="btnSWKochende">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1734,13 +1734,13 @@
             <widget class="QPushButton" name="btnWuerzemengeAnstellenTotal">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1814,13 +1814,13 @@
             <widget class="QPushButton" name="btnSWAnstellen">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>16777215</height>
               </size>
              </property>
@@ -1883,14 +1883,8 @@
             <widget class="QPushButton" name="btnWasserVerschneidung">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>16777215</height>
               </size>
              </property>
              <property name="toolTip">
@@ -2157,14 +2151,8 @@
             <widget class="QPushButton" name="btnSpeisemengeNoetig">
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>50</width>
-               <height>16777215</height>
               </size>
              </property>
              <property name="toolTip">
@@ -2485,6 +2473,10 @@
             </property>
             <property name="text">
              <string>Sud teilen</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
             </property>
            </widget>
           </item>

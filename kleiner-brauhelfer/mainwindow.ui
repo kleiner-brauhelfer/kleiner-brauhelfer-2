@@ -115,9 +115,6 @@
            </attribute>
           </widget>
           <widget class="TabDatenbank" name="tabDatenbank">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank &lt;/span&gt;können die Werte direkt in der Datenbank bearbeitet werden. Die direkte Bearbeitung der Datenbank wird nur erfahrenen Anwendern empfohlen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <attribute name="title">
             <string>Datenbank</string>
            </attribute>

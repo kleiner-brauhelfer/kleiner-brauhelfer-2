@@ -2,6 +2,7 @@
 #define WDGWEITEERZUTATGABE_H
 
 #include "wdgabstractproxy.h"
+#include "brauhelfer.h"
 
 namespace Ui {
 class WdgWeitereZutatGabe;
@@ -12,7 +13,7 @@ class WdgWeitereZutatGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgWeitereZutatGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgWeitereZutatGabe();
     bool isEnabled() const;
     bool isValid() const;
@@ -26,7 +27,6 @@ private slots:
     void on_btnLoeschen_clicked();
     void on_tbMenge_valueChanged(double value);
     void on_tbMengeTotal_valueChanged(double value);
-    void on_cbZugabezeitpunkt_currentIndexChanged(int index);
     void on_tbKochdauer_valueChanged(int value);
     void on_tbExtrakt_valueChanged(double value);
     void on_btnZugeben_clicked();

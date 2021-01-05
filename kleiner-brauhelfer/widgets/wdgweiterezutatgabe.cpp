@@ -11,11 +11,17 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgWeitereZutatGabe::WdgWeitereZutatGabe(int row, QLayout* parentLayout, QWidget *parent) :
-    WdgAbstractProxy(bh->sud()->modelWeitereZutatenGaben(), row, parentLayout, parent),
+WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(nullptr, row, parentLayout, parent),
     ui(new Ui::WdgWeitereZutatGabe),
     mEnabled(true)
 {
+    ProxyModel* proxy = new ProxyModel(this);
+    proxy->setSourceModel(bh->sud()->modelWeitereZutatenGaben());
+    proxy->setFilterKeyColumn(ModelWeitereZutatenGaben::ColZeitpunkt);
+    proxy->setFilterRegularExpression(QString::number(static_cast<int>(zeitpunkt)));
+    setModel(proxy);
+
     ui->setupUi(this);
 
     ui->tbMenge->setErrorOnLimit(true);
@@ -67,7 +73,6 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     ui->btnAufbrauchen->setVisible(mEnabled);
     ui->lblVorhanden->setVisible(mEnabled);
     ui->lblEinheit2->setVisible(mEnabled);
-    ui->cbZugabezeitpunkt->setEnabled(mEnabled);
     ui->cbEntnahme->setEnabled(mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeTotal->setReadOnly(!mEnabled);
@@ -82,6 +87,9 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
 
     Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     ui->cbEntnahme->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, typ == Brauhelfer::ZusatzTyp::Hopfen ? gSettings->colorHopfen : gSettings->colorZusatz);
+    setPalette(pal);
 }
 
 void WdgWeitereZutatGabe::updateValues(bool full)
@@ -162,8 +170,6 @@ void WdgWeitereZutatGabe::updateValues(bool full)
             break;
         }
     }
-    if (!ui->cbZugabezeitpunkt->hasFocus())
-        ui->cbZugabezeitpunkt->setCurrentIndex(static_cast<int>(zeitpunkt));
     if (!ui->tbKochdauer->hasFocus())
     {
         ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
@@ -342,10 +348,7 @@ void WdgWeitereZutatGabe::updateValues(bool full)
         ui->btnZutat->setEnabled(true);
     }
 
-    ui->tbKochdauer->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
-    ui->lblKochdauer->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
-    ui->lblKochdauerEinheit->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
-    ui->wdgZugabezeitpunkt->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
+    ui->wdgKochdauer->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen);
     ui->wdgZugabe->setVisible(zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung);
     ui->lblEntnahme->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     ui->tbDauerTage->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
@@ -354,7 +357,6 @@ void WdgWeitereZutatGabe::updateValues(bool full)
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::NichtZugegeben);
     ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::Zugegeben && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
-    ui->cbZugabezeitpunkt->setEnabled(status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled);
 
     ui->btnNachOben->setEnabled(mRow > 0);
     ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
@@ -418,12 +420,6 @@ void WdgWeitereZutatGabe::on_tbMengeTotal_valueChanged(double value)
             break;
         }
     }
-}
-
-void WdgWeitereZutatGabe::on_cbZugabezeitpunkt_currentIndexChanged(int index)
-{
-    if (ui->cbZugabezeitpunkt->hasFocus())
-        setData(ModelWeitereZutatenGaben::ColZeitpunkt, index);
 }
 
 void WdgWeitereZutatGabe::on_tbKochdauer_valueChanged(int value)

@@ -15,6 +15,11 @@ WdgAbstractProxy::WdgAbstractProxy(ProxyModel* model, int row, QLayout *parentLa
 {
 }
 
+void WdgAbstractProxy::setModel(ProxyModel* model)
+{
+    mModel = model;
+}
+
 int WdgAbstractProxy::row() const
 {
     return mRow;
@@ -48,7 +53,10 @@ bool WdgAbstractProxy::remove()
         loop.exec();
     }
 
-    return mModel->removeRow(mRow);
+    if (ProxyModel* m = dynamic_cast<ProxyModel*>(mModel->sourceModel()))
+        return m->removeRow(mModel->mapRowToSource(mRow));
+    else
+        return mModel->removeRow(mRow);
 }
 
 bool WdgAbstractProxy::moveUp()

@@ -7,6 +7,56 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+class ProxyModelZusatz : public ProxyModel
+{
+public:
+    explicit ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt zeitpunkt,
+                              Brauhelfer::ZusatzTyp typ, bool negate, QObject *parent = nullptr) :
+        ProxyModel(parent),
+        mZeitpunkt(static_cast<int>(zeitpunkt)),
+        mTyp(static_cast<int>(typ)),
+        mNegateTyp(negate)
+    {
+    }
+    explicit ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt zeitpunkt,
+                               QObject *parent = nullptr) :
+        ProxyModel(parent),
+        mZeitpunkt(static_cast<int>(zeitpunkt)),
+        mTyp(-1),
+        mNegateTyp(false)
+    {
+    }
+protected:
+    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const Q_DECL_OVERRIDE
+    {
+        bool accept = ProxyModel::filterAcceptsRow(source_row, source_parent);
+        if (accept)
+        {
+            QModelIndex idx = sourceModel()->index(source_row, ModelWeitereZutatenGaben::ColZeitpunkt, source_parent);
+            if (idx.isValid())
+            {
+                accept = sourceModel()->data(idx).toInt() == mZeitpunkt;
+                if (accept && mTyp != -1)
+                {
+                    idx = sourceModel()->index(source_row, ModelWeitereZutatenGaben::ColTyp, source_parent);
+                    if (idx.isValid())
+                    {
+                        if (mNegateTyp)
+                            accept = sourceModel()->data(idx).toInt() != mTyp;
+                        else
+                            accept = sourceModel()->data(idx).toInt() == mTyp;
+                    }
+                }
+            }
+        }
+        return accept;
+    }
+private:
+    const int mZeitpunkt;
+    const int mTyp;
+    const bool mNegateTyp;
+};
+
 DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgUebernahmeRezept),
@@ -15,38 +65,68 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ProxyModel* model = new ProxyModel(this);
+    ProxyModel* model;
     switch (mArt)
     {
     case Malz:
+        model = new ProxyModel(this);
         model->setSourceModel(bh->modelMalzschuettung());
         model->setFilterKeyColumn(ModelMalzschuettung::ColSudID);
         ui->tableViewItem->cols.append({ModelMalzschuettung::ColName, true, false, -1, nullptr});
         break;
     case Hopfen:
+        model = new ProxyModel(this);
         model->setSourceModel(bh->modelHopfengaben());
         model->setFilterKeyColumn(ModelHopfengaben::ColSudID);
         ui->tableViewItem->cols.append({ModelHopfengaben::ColName, true, false, -1, nullptr});
         break;
     case Hefe:
+        model = new ProxyModel(this);
         model->setSourceModel(bh->modelHefegaben());
         model->setFilterKeyColumn(ModelHefegaben::ColSudID);
         ui->tableViewItem->cols.append({ModelHefegaben::ColName, true, false, -1, nullptr});
         break;
     case WZutaten:
+        model = new ProxyModel(this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     case Maischplan:
+        model = new ProxyModel(this);
         model->setSourceModel(bh->modelRasten());
         model->setFilterKeyColumn(ModelRasten::ColSudID);
         ui->tableViewItem->cols.append({ModelRasten::ColName, true, false, -1, nullptr});
         break;
     case Wasseraufbereitung:
+        model = new ProxyModel(this);
         model->setSourceModel(bh->modelWasseraufbereitung());
         model->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
         ui->tableViewItem->cols.append({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
+        break;
+    case WZutatenMaischen:
+        model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Maischen, this);
+        model->setSourceModel(bh->modelWeitereZutatenGaben());
+        model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        break;
+    case WZutatenKochen:
+        model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Kochen, this);
+        model->setSourceModel(bh->modelWeitereZutatenGaben());
+        model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        break;
+    case WZutatenGaerung:
+        model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Gaerung, Brauhelfer::ZusatzTyp::Hopfen, true, this);
+        model->setSourceModel(bh->modelWeitereZutatenGaben());
+        model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        break;
+    case HopfenGaerung:
+        model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Gaerung, Brauhelfer::ZusatzTyp::Hopfen, false, this);
+        model->setSourceModel(bh->modelWeitereZutatenGaben());
+        model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     }
     model->setFilterRegularExpression(QString("^%1$").arg(mSudId));

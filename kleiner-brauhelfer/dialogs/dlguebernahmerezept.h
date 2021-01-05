@@ -19,7 +19,11 @@ public:
         Hefe,
         WZutaten,
         Maischplan,
-        Wasseraufbereitung
+        Wasseraufbereitung,
+        WZutatenMaischen,
+        WZutatenKochen,
+        WZutatenGaerung,
+        HopfenGaerung
     };
 
 public:

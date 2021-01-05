@@ -12,6 +12,7 @@ class WdgAbstractProxy : public QWidget
 public:
     explicit WdgAbstractProxy(ProxyModel* model, int row, QLayout* parentLayout = nullptr, QWidget *parent = nullptr);
 
+    void setModel(ProxyModel* model);
     int row() const;
     QVariant data(int col) const;
     bool setData(int col, const QVariant& value);

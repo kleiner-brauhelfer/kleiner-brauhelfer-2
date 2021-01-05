@@ -35,6 +35,8 @@ private slots:
     void updateMalzDiagram();
     void on_btnNeueMalzGabe_clicked();
     void on_btnMalzGabenUebernehmen_clicked();
+    void on_btnNeueZusatzGabeMaischen_clicked();
+    void on_btnZusazGabenUebernehmenMaischen_clicked();
     void on_btnMalzProzente_clicked();
 
     void hopfenGaben_modified();
@@ -42,17 +44,19 @@ private slots:
     void updateHopfenDiagram();
     void on_btnNeueHopfenGabe_clicked();
     void on_btnHopfenGabenUebernehmen_clicked();
+    void on_btnNeueZusatzGabeKochen_clicked();
+    void on_btnZusazGabenUebernehmenKochen_clicked();
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
 
     void hefeGaben_modified();
-    void updateHefeDiagram();
     void on_btnNeueHefeGabe_clicked();
     void on_btnHefeGabenUebernehmen_clicked();
+    void on_btnNeueHopfenGabeGaerung_clicked();
+    void on_btnHopfenGabenUebernehmenGaerung_clicked();
+    void on_btnNeueZusatzGabeGaerung_clicked();
+    void on_btnZusazGabenUebernehmenGaerung_clicked();
 
     void weitereZutatenGaben_modified();
-    void on_btnNeueHopfenstopfenGabe_clicked();
-    void on_btnNeueWeitereZutat_clicked();
-    void on_btnWeitereZutatUebernehmen_clicked();
 
     void wasseraufbereitung_modified();
     void on_btnNeueWasseraufbereitung_clicked();

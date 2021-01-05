@@ -254,7 +254,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
                              bh->modelWeitereZutaten()->getValueFromSameRow(ModelWeitereZutaten::ColName, it.key(), ModelWeitereZutaten::ColMengeNormiert).toDouble());
         it++;
     }
-    modelWz->setHeaderData(0, Qt::Horizontal, tr("Weitere Zutat"));
+    modelWz->setHeaderData(0, Qt::Horizontal, tr("Zusatz"));
     modelWz->setHeaderData(1, Qt::Horizontal, tr("Menge [g]"));
     modelWz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
     ui->tableViewWZ->setModel(modelWz);

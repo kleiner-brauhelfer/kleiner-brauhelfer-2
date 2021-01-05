@@ -316,7 +316,7 @@
   </action>
   <action name="actionWeitereZutaten">
    <property name="text">
-    <string>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</string>
+    <string>&quot;Zusätze Zugabe&quot; zurücksetzen</string>
    </property>
   </action>
   <action name="actionBeenden">

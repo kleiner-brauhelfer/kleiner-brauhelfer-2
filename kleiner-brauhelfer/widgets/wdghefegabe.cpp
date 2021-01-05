@@ -19,6 +19,10 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, gSettings->colorHefe);
+    setPalette(pal);
+
     ui->tbMenge->setErrorOnLimit(true);
 
     checkEnabled(true);

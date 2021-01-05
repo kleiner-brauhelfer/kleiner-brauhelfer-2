@@ -24,6 +24,9 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     mEnabled(true)
 {
     ui->setupUi(this);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, gSettings->colorRast);
+    setPalette(pal);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     checkEnabled(true);
@@ -67,6 +70,7 @@ void WdgRast::checkEnabled(bool force)
     ui->tbVerhaeltnisEinmaischen->setReadOnly(!mEnabled);
     ui->tbTempEinmaischen->setReadOnly(!mEnabled);
     ui->tbDauerEinmaischen->setReadOnly(!mEnabled);
+    ui->tbMalzTempEinmaischen->setReadOnly(!mEnabled);
     ui->tbTempRast->setReadOnly(!mEnabled);
     ui->tbDauerRast->setReadOnly(!mEnabled);
     ui->tbMengeInfusion->setReadOnly(!mEnabled);

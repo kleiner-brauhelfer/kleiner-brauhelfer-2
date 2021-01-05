@@ -22,6 +22,9 @@ WdgAnhang::WdgAnhang(int index, QWidget *parent) :
 {
     mBasis = QDir(gSettings->databaseDir());
     ui->setupUi(this);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, gSettings->colorAnhang);
+    setPalette(pal);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(bh->sud()->modelAnhang(), SIGNAL(modified()), this, SLOT(updateValues()));

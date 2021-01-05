@@ -109,7 +109,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
     table->cols.append({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->cols.append({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table)});
+    table->cols.append({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
     table->cols.append({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
     table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
@@ -144,7 +144,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
     table->cols.append({ModelHopfen::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->cols.append({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, true, table)});
+    table->cols.append({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
     table->cols.append({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
     table->cols.append({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
     table->cols.append({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
@@ -182,7 +182,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
     table->cols.append({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, true, table)});
+    table->cols.append({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
     table->cols.append({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
     table->cols.append({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
     table->cols.append({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
@@ -221,7 +221,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
     table->cols.append({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->cols.append({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, true, table)});
+    table->cols.append({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
     table->cols.append({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
     table->cols.append({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});

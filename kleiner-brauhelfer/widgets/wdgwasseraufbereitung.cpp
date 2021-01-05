@@ -13,6 +13,9 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
     ui(new Ui::WdgWasseraufbereitung)
 {
     ui->setupUi(this);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, gSettings->colorWasser);
+    setPalette(pal);
 
     checkEnabled(true);
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));

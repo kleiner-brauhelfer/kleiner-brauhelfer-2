@@ -1,5 +1,8 @@
 #include "wdgdiagramview.h"
 #include <QMouseEvent>
+#include "settings.h"
+
+extern Settings* gSettings;
 
 WdgDiagramView::WdgDiagramView(QWidget * parent) :
     QWidget(parent),
@@ -13,9 +16,9 @@ WdgDiagramView::WdgDiagramView(QWidget * parent) :
     L3Min(0.0),
     L3Max(0.0)
 {
-  colorL1 = QColor::fromRgb(116, 30, 166);
-  colorL2 = QColor::fromRgb(56, 104, 2);
-  colorL3 = QColor::fromRgb(170, 0, 0);
+  colorL1 = gSettings->DiagramLinie1;
+  colorL2 = gSettings->DiagramLinie2;
+  colorL3 = gSettings->DiagramLinie3;
   BezeichnungL1 = "";
   KurzbezeichnungL1 = "";
   BezeichnungL2 = "";

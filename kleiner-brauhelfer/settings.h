@@ -64,14 +64,22 @@ public:
     QPalette paletteErrorLabel;
 
     QColor ErrorBase;
-    QColor WarningText;
     QColor ErrorText;
 
-    QColor MekrlisteBackground;
-    QColor VerbrauchtBackground;
-    QColor AbgefuelltBackground;
-    QColor GebrautBackground;
+    QColor colorMalz;
+    QColor colorHopfen;
+    QColor colorHefe;
+    QColor colorZusatz;
+    QColor colorWasser;
+    QColor colorRast;
+    QColor colorAnhang;
+    QColor colorKommentar;
+
     QColor NichtGebrautBackground;
+    QColor GebrautBackground;
+    QColor AbgefuelltBackground;
+    QColor VerbrauchtBackground;
+    QColor MekrlisteBackground;
 
     QList<QColor> HopfenTypBackgrounds;
     QList<QColor> HefeTypOgUgBackgrounds;

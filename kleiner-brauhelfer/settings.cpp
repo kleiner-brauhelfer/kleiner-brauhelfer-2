@@ -75,115 +75,128 @@ void Settings::initTheme()
             QColor(240,240,240),//bright_text
             QColor(255,255,255),//base
             QColor(226,226,226));//window
-        palette.setColor(QPalette::Highlight, QColor(0, 120, 215));
-        palette.setColor(QPalette::HighlightedText, QColor(255, 255, 255));
-        palette.setColor(QPalette::Link, QColor(0, 120, 215));
-        palette.setColor(QPalette::LinkVisited, QColor(0, 120, 215));
+        palette.setColor(QPalette::Highlight, QColor(0,120,215));
+        palette.setColor(QPalette::HighlightedText, QColor(255,255,255));
+        palette.setColor(QPalette::Link, QColor(0,120,215));
+        palette.setColor(QPalette::LinkVisited, QColor(0,120,215));
         break;
 
     case Dark:
         palette.setColorGroup(QPalette::Disabled,
-            QColor(120, 120, 120),//windowText
-            QColor(53, 53, 53),//button
-            QColor(120, 120, 120),//light
-            QColor(25, 25, 25),//dark
-            QColor(32, 32, 32),//mid
-            QColor(120, 120, 120),//text
-            QColor(120, 120, 120),//bright_text
-            QColor(25, 25, 25),//base
-            QColor(53, 53, 53));//window
+            QColor(120,120,120),//windowText
+            QColor(53,53,53),//button
+            QColor(120,120,120),//light
+            QColor(25,25,25),//dark
+            QColor(32,32,32),//mid
+            QColor(120,120,120),//text
+            QColor(120,120,120),//bright_text
+            QColor(25,25,25),//base
+            QColor(53,53,53));//window
         palette.setColorGroup(QPalette::Active,
-            QColor(255, 255, 255),//windowText
-            QColor(53, 53, 53),//button
-            QColor(120, 120, 120),//light
-            QColor(25, 25, 25),//dark
-            QColor(32, 32, 32),//mid
-            QColor(255, 255, 255),//text
-            QColor(120, 120, 120),//bright_text
-            QColor(25, 25, 25),//base
-            QColor(53, 53, 53));//window
+            QColor(255,255,255),//windowText
+            QColor(53,53,53),//button
+            QColor(120,120,120),//light
+            QColor(25,25,25),//dark
+            QColor(32,32,32),//mid
+            QColor(255,255,255),//text
+            QColor(120,120,120),//bright_text
+            QColor(25,25,25),//base
+            QColor(53,53,53));//window
         palette.setColorGroup(QPalette::Inactive,
-            QColor(255, 255, 255),//windowText
-            QColor(53, 53, 53),//button
-            QColor(120, 120, 120),//light
-            QColor(25, 25, 25),//dark
-            QColor(32, 32, 32),//mid
-            QColor(255, 255, 255),//text
-            QColor(120, 120, 120),//bright_text
-            QColor(25, 25, 25),//base
-            QColor(53, 53, 53));//window
-        palette.setColor(QPalette::Highlight, QColor(42, 130, 218));
-        palette.setColor(QPalette::HighlightedText, QColor(0, 0, 0));
-        palette.setColor(QPalette::Link, QColor(42, 130, 218));
-        palette.setColor(QPalette::LinkVisited, QColor(42, 130, 218));
+            QColor(255,255,255),//windowText
+            QColor(53,53,53),//button
+            QColor(120,120,120),//light
+            QColor(25,25,25),//dark
+            QColor(32,32,32),//mid
+            QColor(255,255,255),//text
+            QColor(120,120,120),//bright_text
+            QColor(25,25,25),//base
+            QColor(53,53,53));//window
+        palette.setColor(QPalette::Highlight, QColor(42,130,218));
+        palette.setColor(QPalette::HighlightedText, QColor(0,0,0));
+        palette.setColor(QPalette::Link, QColor(42,130,218));
+        palette.setColor(QPalette::LinkVisited, QColor(42,130,218));
         break;
     }
 
     if (palette.color(QPalette::Active, QPalette::Text).lightness() < 127)
     {
-        ErrorBase = QColor(220, 127, 127);
-        WarningText = QColor(219, 137, 9);
-        ErrorText = QColor(180, 0, 0);
+        ErrorBase = QColor(252,171,171);
+        ErrorText = QColor(180,10,10);
 
-        MekrlisteBackground = QColor(122, 163, 233);
-        VerbrauchtBackground = QColor(180, 180, 180);
-        AbgefuelltBackground = QColor(193, 225, 178);
-        GebrautBackground = QColor(225, 216, 184);
-        NichtGebrautBackground = QColor(245, 245, 245);
+        colorMalz = QColor(252,247,224);
+        colorHopfen = QColor(222,253,224);
+        colorHefe = QColor(253,237,222);
+        colorZusatz = QColor(247,240,253);
+        colorWasser = QColor(232,247,253);
+        colorRast = QColor(253,232,232);
+        colorAnhang = QColor(235,253,245);
+        colorKommentar = QColor(249,249,249);
+
+        NichtGebrautBackground = QColor(242,242,242);
+        GebrautBackground = QColor(242,231,201);
+        AbgefuelltBackground = QColor(196,229,165);
+        VerbrauchtBackground = QColor(206,206,206);
+        MekrlisteBackground = QColor(128,172,242);
 
         HopfenTypBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
         HefeTypOgUgBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
         HefeTypTrFlBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
-        WZTypBackgrounds = {QColor(253, 199, 197),
-                            QColor(239, 207, 175),
-                            QColor(241, 216, 167),
-                            QColor(184, 223, 178),
-                            QColor(159, 226, 201),
-                            QColor(154, 225, 227),
-                            QColor(176, 218, 246),
-                            QColor(210, 208, 252),
-                            QColor(239, 200, 243),
-                            QColor(254, 196, 223)};
+        WZTypBackgrounds = {QColor(253,199,197),
+                            QColor(239,207,175),
+                            QColor(241,216,167),
+                            QColor(184,223,178),
+                            QColor(159,226,201),
+                            QColor(154,225,227),
+                            QColor(176,218,246),
+                            QColor(210,208,252)};
 
-        DiagramLinie1 = QColor(116, 30, 166);
-        DiagramLinie2 = QColor(56, 104, 2);
-        DiagramLinie3 = QColor(170, 0, 0);
-        DiagramLinie1Light = QColor(151, 125, 166);
-        DiagramLinie2Light = QColor(141, 154, 127);
-        DiagramLinie3Light = QColor(170, 100, 100);
+        DiagramLinie1 = QColor(123,33,178);
+        DiagramLinie2 = QColor(56,104,2);
+        DiagramLinie3 = QColor(178,0,0);
+        DiagramLinie1Light = QColor(153,98,188);
+        DiagramLinie2Light = QColor(102,150,46);
+        DiagramLinie3Light = QColor(211,97,97);
     }
     else
     {
-        ErrorBase = QColor(170, 100, 100);
-        WarningText = QColor(219, 137, 9);
-        ErrorText = QColor(238, 71, 71);
+        ErrorBase = QColor(165,84,84);
+        ErrorText = QColor(237,118,118);
 
-        MekrlisteBackground = QColor(81, 139, 232);
-        VerbrauchtBackground = QColor(110, 110, 110);
-        AbgefuelltBackground = QColor(99, 125, 21);
-        GebrautBackground = QColor(125, 99, 21);
-        NichtGebrautBackground = QColor(53, 53, 53);
+        colorMalz = QColor(89,86,79);
+        colorHopfen = QColor(77,89,65);
+        colorHefe = QColor(89,82,75);
+        colorZusatz = QColor(83,76,86);
+        colorWasser = QColor(78,85,89);
+        colorRast = QColor(89,79,74);
+        colorAnhang = QColor(89,89,89);
+        colorKommentar = QColor(76,76,76);
 
-        HopfenTypBackgrounds = {QColor(), QColor(255,150,94), QColor(141,239,141), QColor(162,162,242)};
-        HefeTypOgUgBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
-        HefeTypTrFlBackgrounds = {QColor(), QColor(255,150,94), QColor(162,162,242)};
-        WZTypBackgrounds = {QColor(220, 114, 107),
-                            QColor(193, 133, 0),
-                            QColor(149, 151, 0),
-                            QColor(70, 164, 35),
-                            QColor(0, 172, 119),
-                            QColor(0, 171, 176),
-                            QColor(0, 159, 216),
-                            QColor(138, 134, 230),
-                            QColor(203, 107, 213),
-                            QColor(226, 100, 169)};
+        NichtGebrautBackground = QColor(102,102,102);
+        GebrautBackground = QColor(102,97,85);
+        AbgefuelltBackground = QColor(88,102,74);
+        VerbrauchtBackground = QColor(53,53,53);
+        MekrlisteBackground = QColor(54,73,102);
 
-        DiagramLinie1 = QColor(165, 94, 209);
-        DiagramLinie2 = QColor(76, 140, 2);
-        DiagramLinie3 = QColor(175, 45, 45);
-        DiagramLinie1Light = QColor(151, 125, 166);
-        DiagramLinie2Light = QColor(120, 153, 84);
-        DiagramLinie3Light = QColor(170, 100, 100);
+        HopfenTypBackgrounds = {QColor(), QColor(127,72,47), QColor(75,127,75), QColor(89,89,127)};
+        HefeTypOgUgBackgrounds = {QColor(), QColor(75,127,75), QColor(89,89,127)};
+        HefeTypTrFlBackgrounds = {QColor(), QColor(75,127,75), QColor(89,89,127)};
+        WZTypBackgrounds = {QColor(127,65,62),
+                            QColor(127,87,0),
+                            QColor(127,127,0),
+                            QColor(56,127,28),
+                            QColor(0,127,87),
+                            QColor(0,171,176),
+                            QColor(0,125,127),
+                            QColor(76,75,127)};
+
+        DiagramLinie1 = QColor(150,86,191);
+        DiagramLinie2 = QColor(76,140,2);
+        DiagramLinie3 = QColor(168,43,43);
+
+        DiagramLinie1Light = QColor(151,125,166);
+        DiagramLinie2Light = QColor(120,153,84);
+        DiagramLinie3Light = QColor(170,100,100);
     }
 
     paletteInput = palette;

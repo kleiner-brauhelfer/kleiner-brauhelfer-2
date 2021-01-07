@@ -25,6 +25,9 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLineEdit" name="lineEditFilter">
+     <property name="toolTip">
+      <string>Hier kann vollkommen frei in der aktiven rohstoffliste gesucht wrden. Es genügen Wortbestandteile, auch mitten in einem Begriff.</string>
+     </property>
      <property name="placeholderText">
       <string>Suche</string>
      </property>

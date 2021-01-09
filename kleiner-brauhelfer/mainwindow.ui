@@ -249,7 +249,7 @@
   <action name="actionSpeichern">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
+     <normaloff>:/images/light/save.svg</normaloff>:/images/light/save.svg</iconset>
    </property>
    <property name="text">
     <string>Speichern</string>
@@ -261,7 +261,7 @@
   <action name="actionVerwerfen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/restore.svg</normaloff>:/images/restore.svg</iconset>
+     <normaloff>:/images/light/restore.svg</normaloff>:/images/light/restore.svg</iconset>
    </property>
    <property name="text">
     <string>Änderungen verwerfen</string>
@@ -330,7 +330,7 @@
   <action name="actionOeffnen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/database.svg</normaloff>:/images/database.svg</iconset>
+     <normaloff>:/images/light/database.svg</normaloff>:/images/light/database.svg</iconset>
    </property>
    <property name="text">
     <string>Datenbank auswählen</string>
@@ -390,7 +390,7 @@
   <action name="actionBereinigen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/database_clean.svg</normaloff>:/images/database_clean.svg</iconset>
+     <normaloff>:/images/light/database_clean.svg</normaloff>:/images/light/database_clean.svg</iconset>
    </property>
    <property name="text">
     <string>Bereinigen</string>
@@ -418,7 +418,7 @@
   <action name="actionNeuen_Sud_anlegen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_neu.svg</normaloff>:/images/sud_neu.svg</iconset>
+     <normaloff>:/images/light/sud_neu.svg</normaloff>:/images/light/sud_neu.svg</iconset>
    </property>
    <property name="text">
     <string>Neuen Sud anlegen</string>
@@ -430,7 +430,7 @@
   <action name="actionRezept_importieren">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_import.svg</normaloff>:/images/sud_import.svg</iconset>
+     <normaloff>:/images/light/sud_import.svg</normaloff>:/images/light/sud_import.svg</iconset>
    </property>
    <property name="text">
     <string>Rezept importieren</string>
@@ -439,7 +439,7 @@
   <action name="actionRezept_exportieren">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_export.svg</normaloff>:/images/sud_export.svg</iconset>
+     <normaloff>:/images/light/sud_export.svg</normaloff>:/images/light/sud_export.svg</iconset>
    </property>
    <property name="text">
     <string>Rezept exportieren</string>
@@ -448,7 +448,7 @@
   <action name="actionSud_kopieren">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_kopie.svg</normaloff>:/images/sud_kopie.svg</iconset>
+     <normaloff>:/images/light/sud_kopie.svg</normaloff>:/images/light/sud_kopie.svg</iconset>
    </property>
    <property name="text">
     <string>Sud kopieren</string>
@@ -457,7 +457,7 @@
   <action name="actionSud_l_schen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_loeschen.svg</normaloff>:/images/sud_loeschen.svg</iconset>
+     <normaloff>:/images/light/sud_loeschen.svg</normaloff>:/images/light/sud_loeschen.svg</iconset>
    </property>
    <property name="text">
     <string>Sud löschen</string>
@@ -466,7 +466,7 @@
   <action name="actionSud_teilen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+     <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
    </property>
    <property name="text">
     <string>Sud teilen</string>
@@ -475,7 +475,7 @@
   <action name="actionDruckvorschau">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+     <normaloff>:/images/light/print.svg</normaloff>:/images/light/print.svg</iconset>
    </property>
    <property name="text">
     <string>Drucken</string>
@@ -487,7 +487,7 @@
   <action name="actionDrucken">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/pdf.svg</normaloff>:/images/pdf.svg</iconset>
+     <normaloff>:/images/light/pdf.svg</normaloff>:/images/light/pdf.svg</iconset>
    </property>
    <property name="text">
     <string>PDF</string>

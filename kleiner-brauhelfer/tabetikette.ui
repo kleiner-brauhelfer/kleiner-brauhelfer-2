@@ -87,7 +87,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/settings.svg</normaloff>:/images/settings.svg</iconset>
+               <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
              </property>
             </widget>
            </item>
@@ -117,7 +117,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/refresh.svg</normaloff>:/images/refresh.svg</iconset>
+               <normaloff>:/images/light/refresh.svg</normaloff>:/images/light/refresh.svg</iconset>
              </property>
             </widget>
            </item>
@@ -134,7 +134,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
+               <normaloff>:/images/light/save.svg</normaloff>:/images/light/save.svg</iconset>
              </property>
             </widget>
            </item>
@@ -543,7 +543,7 @@
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
               </property>
              </widget>
             </item>
@@ -560,7 +560,7 @@
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
+                <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
               </property>
              </widget>
             </item>
@@ -631,7 +631,7 @@
          </property>
          <property name="icon">
           <iconset resource="images.qrc">
-           <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+           <normaloff>:/images/light/print.svg</normaloff>:/images/light/print.svg</iconset>
          </property>
         </widget>
        </item>

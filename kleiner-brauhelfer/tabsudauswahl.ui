@@ -271,7 +271,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_neu.svg</normaloff>:/images/sud_neu.svg</iconset>
+             <normaloff>:/images/light/sud_neu.svg</normaloff>:/images/light/sud_neu.svg</iconset>
            </property>
           </widget>
          </item>
@@ -288,7 +288,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_kopie.svg</normaloff>:/images/sud_kopie.svg</iconset>
+             <normaloff>:/images/light/sud_kopie.svg</normaloff>:/images/light/sud_kopie.svg</iconset>
            </property>
           </widget>
          </item>
@@ -305,7 +305,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_loeschen.svg</normaloff>:/images/sud_loeschen.svg</iconset>
+             <normaloff>:/images/light/sud_loeschen.svg</normaloff>:/images/light/sud_loeschen.svg</iconset>
            </property>
           </widget>
          </item>
@@ -329,7 +329,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_import.svg</normaloff>:/images/sud_import.svg</iconset>
+             <normaloff>:/images/light/sud_import.svg</normaloff>:/images/light/sud_import.svg</iconset>
            </property>
           </widget>
          </item>
@@ -346,7 +346,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_export.svg</normaloff>:/images/sud_export.svg</iconset>
+             <normaloff>:/images/light/sud_export.svg</normaloff>:/images/light/sud_export.svg</iconset>
            </property>
           </widget>
          </item>
@@ -370,7 +370,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+             <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
            </property>
           </widget>
          </item>
@@ -394,7 +394,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_merken.svg</normaloff>:/images/sud_merken.svg</iconset>
+             <normaloff>:/images/light/sud_merken.svg</normaloff>:/images/light/sud_merken.svg</iconset>
            </property>
           </widget>
          </item>
@@ -411,7 +411,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_vergessen.svg</normaloff>:/images/sud_vergessen.svg</iconset>
+             <normaloff>:/images/light/sud_vergessen.svg</normaloff>:/images/light/sud_vergessen.svg</iconset>
            </property>
           </widget>
          </item>
@@ -435,7 +435,7 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_laden.svg</normaloff>:/images/sud_laden.svg</iconset>
+             <normaloff>:/images/light/sud_laden.svg</normaloff>:/images/light/sud_laden.svg</iconset>
            </property>
           </widget>
          </item>

@@ -1892,7 +1892,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
+               <normaloff>:/images/light/uebertrag_links.svg</normaloff>:/images/light/uebertrag_links.svg</iconset>
              </property>
             </widget>
            </item>
@@ -2160,7 +2160,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/uebertrag_links.svg</normaloff>:/images/uebertrag_links.svg</iconset>
+               <normaloff>:/images/light/uebertrag_links.svg</normaloff>:/images/light/uebertrag_links.svg</iconset>
              </property>
             </widget>
            </item>
@@ -2476,7 +2476,7 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+              <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
             </property>
            </widget>
           </item>

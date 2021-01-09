@@ -107,6 +107,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
+          <property name="whatsThis">
+           <string>nach_oben</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/light/nach_oben.svg</normaloff>:/images/light/nach_oben.svg</iconset>
@@ -115,6 +118,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
+          <property name="whatsThis">
+           <string>nach_unten</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/light/nach_unten.svg</normaloff>:/images/light/nach_unten.svg</iconset>

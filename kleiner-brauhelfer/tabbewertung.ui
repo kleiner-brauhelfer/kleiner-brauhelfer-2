@@ -81,6 +81,9 @@
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
+         <property name="whatsThis">
+          <string>plus</string>
+         </property>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>

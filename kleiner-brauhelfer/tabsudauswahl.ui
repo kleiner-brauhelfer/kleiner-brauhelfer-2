@@ -269,6 +269,9 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string>sud_neu</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
              <normaloff>:/images/light/sud_neu.svg</normaloff>:/images/light/sud_neu.svg</iconset>
@@ -286,6 +289,9 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string>sud_kopie</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
              <normaloff>:/images/light/sud_kopie.svg</normaloff>:/images/light/sud_kopie.svg</iconset>
@@ -302,6 +308,9 @@
            </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string>sud_loeschen</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -327,6 +336,9 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string>sud_import</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
              <normaloff>:/images/light/sud_import.svg</normaloff>:/images/light/sud_import.svg</iconset>
@@ -343,6 +355,9 @@
            </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string>sud_export</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -368,6 +383,9 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string>sud_teilen</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
              <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
@@ -392,6 +410,9 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string>sud_merken</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
              <normaloff>:/images/light/sud_merken.svg</normaloff>:/images/light/sud_merken.svg</iconset>
@@ -408,6 +429,9 @@
            </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string>sud_vergessen</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -432,6 +456,9 @@
            </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string>sud_laden</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">

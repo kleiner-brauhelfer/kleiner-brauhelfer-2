@@ -77,6 +77,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string>plus</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
@@ -96,6 +99,9 @@
             <width>50</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="whatsThis">
+           <string>minus</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -117,6 +123,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string>nach_oben</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
             <normaloff>:/images/light/nach_oben.svg</normaloff>:/images/light/nach_oben.svg</iconset>
@@ -136,6 +145,9 @@
             <width>50</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="whatsThis">
+           <string>nach_unten</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">

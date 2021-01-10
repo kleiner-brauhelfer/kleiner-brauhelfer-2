@@ -32,7 +32,7 @@
          <item>
           <widget class="QCheckBox" name="cbAlle">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Alle&lt;/span&gt; Sude werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Sude&lt;/span&gt; angezeigt. Bei vielen Suden in der Datenbank, kann diese Ansicht überfordernd sein. Es empfiehlt sich, feinere Filter anzuwenden. Alle Sude werden in allen Markierungsfarben unsortiert angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>alle</string>
@@ -62,7 +62,7 @@
            <item>
             <widget class="QCheckBox" name="cbRezept">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; angezeigt. Ungebraute Sude werden &lt;span style=&quot; font-weight:600;&quot;&gt;grau&lt;/span&gt; hinterlegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Rezept</string>
@@ -72,7 +72,7 @@
            <item>
             <widget class="QCheckBox" name="cbGebraut">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; angezeigt. Gebraute Sude werden im Tab Sudauswahl &lt;span style=&quot; font-weight:600;&quot;&gt;braun&lt;/span&gt; hinterlegt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>gebraut</string>
@@ -82,7 +82,7 @@
            <item>
             <widget class="QCheckBox" name="cbAbgefuellt">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; angezeigt. Als abgefüllt gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden. Abgefüllte Sude werden grün hinterlegt angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>abgefüllt</string>
@@ -92,7 +92,7 @@
            <item>
             <widget class="QCheckBox" name="cbVerbraucht">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) angezeigt. Als verbraucht gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden. Verbrauchte Sude werden &lt;span style=&quot; font-weight:600;&quot;&gt;anthrazit&lt;/span&gt; angeeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>verbraucht</string>
@@ -123,7 +123,7 @@
          <item>
           <widget class="QCheckBox" name="cbMerkliste">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Alle Sude auf der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; werden angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude auf der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; angezeigt. Sude auf der Merkliste werden &lt;span style=&quot; font-weight:600;&quot;&gt;hellblau&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Merkliste</string>
@@ -163,7 +163,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anfangsdatum des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Anfangsdatum des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -189,7 +189,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enddatum des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Enddatum des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -202,7 +202,7 @@
          <item>
           <widget class="QCheckBox" name="cbDatumAlle">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Aktiviert oder deaktiviert den Suchzeitraum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der Suchzeitraum aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>alle</string>

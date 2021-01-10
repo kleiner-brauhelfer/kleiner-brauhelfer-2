@@ -32,7 +32,7 @@
      <item>
       <widget class="QPushButton" name="btnClear">
        <property name="toolTip">
-        <string>Hiermit werden Einträge aus der Liste gelöscht.</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden Einträge aus der Console gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Löschen</string>

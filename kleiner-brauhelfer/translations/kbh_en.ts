@@ -6174,7 +6174,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="270"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create a &lt;span style=&quot; font-weight:600;&quot;&gt;new batch.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create a &lt;span style=&quot; font-weight:600;&quot;&gt;new batch.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Neuen Sud anlegen</source>
@@ -6191,7 +6191,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="287"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Duplicate&lt;/span&gt; all selected batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Duplicate&lt;/span&gt; all selected batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Sud kopieren</source>
@@ -7170,7 +7170,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="18"/>
         <source>Abmaischen</source>
-        <translation>Dough in</translation>
+        <translation>Dough out</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="108"/>

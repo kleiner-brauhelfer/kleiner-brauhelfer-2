@@ -66,17 +66,17 @@
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="14"/>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Log</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="32"/>
         <source>Löschen</source>
-        <translation type="unfinished">Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="39"/>
         <source>Level</source>
-        <translation type="unfinished"></translation>
+        <translation>Nivå</translation>
     </message>
 </context>
 <context>
@@ -198,57 +198,57 @@
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="22"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="31"/>
         <source>kleiner-brauhelfer (json)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="41"/>
         <source>MaischeMalzundMehr (json)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="48"/>
         <source>BeerXML (xml)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="58"/>
         <source>Quelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Källa</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="73"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="80"/>
         <source>Öffnen</source>
-        <translation type="unfinished">Öppna</translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="87"/>
         <source>Datei</source>
-        <translation type="unfinished">Fil</translation>
+        <translation>Fil</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="94"/>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="53"/>
         <source>Rezept importieren</source>
-        <translation type="unfinished">Importera recept</translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="53"/>
         <source>&quot;%1&quot; exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="139"/>
@@ -256,44 +256,44 @@
         <location filename="../dialogs/dlgimportexport.cpp" line="212"/>
         <location filename="../dialogs/dlgimportexport.cpp" line="217"/>
         <source>Rezept Import</source>
-        <translation type="unfinished">Importera recept</translation>
+        <translation>Importera recept</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="162"/>
         <source>Die Datei konnte nicht geöffnet werden.</source>
-        <translation type="unfinished">Filen kunde inte öppnas.</translation>
+        <translation>Filen kunde inte öppnas.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="187"/>
         <source>Das Rezept konnte nicht heruntergeladen werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Receptet kunde inte laddas ner.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="212"/>
         <source>Das Rezept wurde erfolgreich importiert.</source>
-        <translation type="unfinished">Receptimport klar.</translation>
+        <translation>Receptimport klar.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="217"/>
         <source>Das Rezept konnte nicht importiert werden.</source>
-        <translation type="unfinished">Receptimport misslyckades.</translation>
+        <translation>Receptimport misslyckades.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="238"/>
         <location filename="../dialogs/dlgimportexport.cpp" line="249"/>
         <location filename="../dialogs/dlgimportexport.cpp" line="253"/>
         <source>Sud Export</source>
-        <translation type="unfinished">Exportera satsen</translation>
+        <translation>Exportera satsen</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="249"/>
         <source>Der Sud wurde erfolgreich exportiert.</source>
-        <translation type="unfinished">Receptexport klar.</translation>
+        <translation>Receptexport klar.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="253"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
-        <translation type="unfinished">Filen kunde inte skrivas.</translation>
+        <translation>Filen kunde inte skrivas.</translation>
     </message>
 </context>
 <context>
@@ -766,7 +766,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="69"/>
         <source>Hinweis: die Mengenangaben lassen sich editieren.</source>
-        <translation type="unfinished"></translation>
+        <translation>OBS: Mängderna kan redigeras.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="78"/>
@@ -787,12 +787,12 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="41"/>
         <source>Zutaten ins Lager zurückgeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg tillbaka ingredienserna i lagret</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="42"/>
         <source>Zutaten zurückgeben</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg tillbaka ingredienserna</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="67"/>
@@ -849,7 +849,7 @@
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="257"/>
         <source>Zusatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillsats</translation>
     </message>
     <message>
         <source>Weitere Zutat</source>
@@ -1408,27 +1408,27 @@
     <message>
         <location filename="../mainwindow.ui" line="316"/>
         <source>&quot;Zusätze Zugabe&quot; zurücksetzen</source>
-        <translation type="unfinished"></translation>
+        <translation>Nollställ &quot;Ytterligare ingredienser&quot;</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="481"/>
         <source>Drucken</source>
-        <translation type="unfinished"></translation>
+        <translation>Skriv ut</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="493"/>
         <source>PDF</source>
-        <translation type="unfinished">PDF</translation>
+        <translation>PDF</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="585"/>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Log</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="590"/>
         <source>Formelsammlung</source>
-        <translation type="unfinished"></translation>
+        <translation>Formelsamling</translation>
     </message>
     <message>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
@@ -1590,7 +1590,7 @@
     <message>
         <location filename="../mainwindow.ui" line="580"/>
         <source>Niederländisch</source>
-        <translation type="unfinished"></translation>
+        <translation>Nederländska</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="122"/>
@@ -1682,7 +1682,7 @@
     <message>
         <location filename="../helper/obrama.cpp" line="95"/>
         <source>Die Tabelle &quot;%1&quot; wurde aktualisiert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabellen &quot;%1&quot; aktualiserad.</translation>
     </message>
     <message>
         <source>Die Tabelle &quot;%1&quot; konnte nicht aktualisiert werden.</source>
@@ -2120,7 +2120,7 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1351"/>
         <source>Temperatur</source>
-        <translation type="unfinished">Temperatur</translation>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1378"/>
@@ -2262,7 +2262,7 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="504"/>
         <source>Endvergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="581"/>
@@ -2570,12 +2570,12 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tabausruestung.ui" line="446"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished">Mäskutbyte</translation>
+        <translation>Mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="660"/>
         <source>Betriebskosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="667"/>
@@ -2867,37 +2867,37 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tabbewertung.ui" line="228"/>
         <source>hellgelb, lichthell</source>
-        <translation type="unfinished"></translation>
+        <translation>ljusgul</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="235"/>
         <source>gelb</source>
-        <translation type="unfinished"></translation>
+        <translation>gul</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="242"/>
         <source>golden</source>
-        <translation type="unfinished"></translation>
+        <translation>gyllen</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="249"/>
         <source>bernstein</source>
-        <translation type="unfinished"></translation>
+        <translation>bernsten</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="256"/>
         <source>kupferrot, bernsteinfarben</source>
-        <translation type="unfinished"></translation>
+        <translation>kopparröd</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="263"/>
         <source>braun bis tiefbraun</source>
-        <translation type="unfinished"></translation>
+        <translation>brun till mörkbrun</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="270"/>
         <source>schwarz, tiefdunkel</source>
-        <translation type="unfinished"></translation>
+        <translation>svart</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="277"/>
@@ -2911,32 +2911,32 @@ Installerad version: %2</translation>
         <location filename="../tabbewertung.ui" line="1035"/>
         <location filename="../tabbewertung.ui" line="1127"/>
         <source>keine Angabe</source>
-        <translation type="unfinished"></translation>
+        <translation>anges inte</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="300"/>
         <source>Klarheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarhet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="306"/>
         <source>satt, intensiv</source>
-        <translation type="unfinished"></translation>
+        <translation>mättad, intensiv</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="313"/>
         <source>glänzend</source>
-        <translation type="unfinished"></translation>
+        <translation>glänsande</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="320"/>
         <source>matt, blass</source>
-        <translation type="unfinished"></translation>
+        <translation>matt, blek</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="327"/>
         <source>gräulich, fahl</source>
-        <translation type="unfinished"></translation>
+        <translation>gråaktig, blek</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="365"/>
@@ -2946,62 +2946,62 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tabbewertung.ui" line="373"/>
         <source>Schaum</source>
-        <translation type="unfinished"></translation>
+        <translation>Skum</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="395"/>
         <source>feinporig, fest</source>
-        <translation type="unfinished"></translation>
+        <translation>fint, fast</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="402"/>
         <source>grobporig, schwach</source>
-        <translation type="unfinished"></translation>
+        <translation>grovt, svag</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="425"/>
         <source>gut haftend am Glas</source>
-        <translation type="unfinished"></translation>
+        <translation>bra vidhäftning vid glaset</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="432"/>
         <source>schlecht haftend</source>
-        <translation type="unfinished"></translation>
+        <translation>dålig vidhäftning</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="459"/>
         <source>gute Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>bra stabilitet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="466"/>
         <source>mässige Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>medelmåttig stabilitet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="473"/>
         <source>keine Haltbarkeit</source>
-        <translation type="unfinished"></translation>
+        <translation>dålig stabilitet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="500"/>
         <source>geringes Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>liten volym</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="507"/>
         <source>kräftiges Volumen</source>
-        <translation type="unfinished"></translation>
+        <translation>stor volym</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="514"/>
         <source>sehr voluminös, mächtig</source>
-        <translation type="unfinished"></translation>
+        <translation>mycket volym, mäktig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="521"/>
         <source>überschäumend</source>
-        <translation type="unfinished"></translation>
+        <translation>skummar över</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="548"/>
@@ -3011,7 +3011,7 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tabbewertung.ui" line="556"/>
         <source>Geruch</source>
-        <translation type="unfinished"></translation>
+        <translation>Lukt</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="567"/>
@@ -3287,47 +3287,47 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tabbewertung.ui" line="1059"/>
         <source>Gesamteindruck</source>
-        <translation type="unfinished"></translation>
+        <translation>Helhetsintryck</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1106"/>
         <source>überraschend, ungewöhnlich</source>
-        <translation type="unfinished"></translation>
+        <translation>överraskande, ovanligt</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1099"/>
         <source>unauffällig, gewöhnlich</source>
-        <translation type="unfinished"></translation>
+        <translation>valnligt, sticker inte ut</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1113"/>
         <source>einmal ist genug, langweilig</source>
-        <translation type="unfinished"></translation>
+        <translation>en gång räcker, tråkigt</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1092"/>
         <source>kunstvoll, kreativ, mutig</source>
-        <translation type="unfinished"></translation>
+        <translation>konstnärlig , kreativ, modig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1120"/>
         <source>nicht trinkbar, problematisch</source>
-        <translation type="unfinished"></translation>
+        <translation>inte drickbart, problematisk</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1085"/>
         <source>gutes, typisches Bier</source>
-        <translation type="unfinished"></translation>
+        <translation>bra, typisk öl</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1078"/>
         <source>interessant</source>
-        <translation type="unfinished"></translation>
+        <translation>intressant</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1071"/>
         <source>toll, weiter trinken, macht Lust auf mehr</source>
-        <translation type="unfinished"></translation>
+        <translation>mycket bra, man vill dricka mer av det</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1143"/>
@@ -3698,7 +3698,7 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="2434"/>
         <source>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna sats innehåller tillsatser som förändrar stamvörten. Detta kan förfalska genomsnitsbildningen.</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1797"/>
@@ -4533,14 +4533,14 @@ Installerad version: %2</translation>
         <location filename="../tabgaerverlauf.cpp" line="610"/>
         <location filename="../tabgaerverlauf.cpp" line="645"/>
         <source>CSV Datei auswählen</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj CSV-fil</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="487"/>
         <location filename="../tabgaerverlauf.cpp" line="612"/>
         <location filename="../tabgaerverlauf.cpp" line="647"/>
         <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV-fil (*.csv);;Alla filer (*.*)</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="769"/>
@@ -4846,7 +4846,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="2498"/>
         <source>Zusätze &quot;Maischen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillsatser &quot;Mäskning&quot;</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2524"/>
@@ -4922,12 +4922,12 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="895"/>
         <source>Maischen</source>
-        <translation type="unfinished">Mäskning</translation>
+        <translation>Mäskning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="922"/>
         <source>Die Summe der angegeben Malzmengen entspricht nicht der Gesamtschüttung.</source>
-        <translation type="unfinished"></translation>
+        <translation>Summan av angiva maltmängder motsvarar inte totalmängden malt o dyl.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="937"/>
@@ -4937,7 +4937,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="940"/>
         <source>Mengen prozentual anpassen</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassa mängderna efter procent</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1098"/>
@@ -4947,12 +4947,12 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <location filename="../tabrezept.ui" line="1507"/>
         <location filename="../tabrezept.ui" line="1518"/>
         <source>Zusatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillsats</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1126"/>
         <source>Kochen</source>
-        <translation type="unfinished">Kokning</translation>
+        <translation>Kokning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1147"/>
@@ -5052,12 +5052,12 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="2268"/>
         <source>Zusätze &quot;Gärung&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillsatser &quot;Jäsning&quot;</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2383"/>
         <source>Zusätze &quot;Kochen&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillsatser &quot;Kokning&quot;</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2409"/>
@@ -5132,7 +5132,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="1345"/>
         <source>Gärung</source>
-        <translation type="unfinished">Jäsning</translation>
+        <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1923"/>
@@ -5397,12 +5397,12 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.cpp" line="1012"/>
         <source>Vergärungsgrad übernehmen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta över förjäsningsgrad?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1013"/>
         <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ska jästens förjäsningsgrad (%1%) tas över?</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1245"/>
@@ -5495,12 +5495,12 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="965"/>
         <source>Vorlage</source>
-        <translation type="unfinished"></translation>
+        <translation>Mall</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="985"/>
         <source>oBraMa</source>
-        <translation type="unfinished"></translation>
+        <translation>oBraMa</translation>
     </message>
     <message>
         <source>Weitere Zutaten</source>
@@ -5593,7 +5593,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="244"/>
         <source>Zusätze</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillsatser</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="268"/>
@@ -6214,7 +6214,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="270"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skapa ny sats&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skapa en &lt;span style=&quot; font-weight:600;&quot;&gt;ny sats&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Neuen Sud anlegen</source>
@@ -6231,7 +6231,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="287"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kopiera satsen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kopiera all valda satser&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Sud kopieren</source>
@@ -6601,7 +6601,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="143"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe &lt;/span&gt;erfolgt ist.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="146"/>
@@ -6869,12 +6869,12 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="354"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="374"/>
         <source>Extrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakt</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="136"/>
@@ -7202,47 +7202,47 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="10"/>
         <source>Gummirast (Glukanaserast)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gummirast (Glukanasrast)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="11"/>
         <source>Maltaserast</source>
-        <translation type="unfinished"></translation>
+        <translation>Maltasrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="12"/>
         <source>Weizenrast (Ferulsäurerast)</source>
-        <translation type="unfinished"></translation>
+        <translation>Veterast (Ferulasyra)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="13"/>
         <source>Eiweissrast (Proteaserast)</source>
-        <translation type="unfinished"></translation>
+        <translation>Proteinrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="14"/>
         <source>Maltoserast (1. Verzuckerung)</source>
-        <translation type="unfinished"></translation>
+        <translation>Maltosrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="15"/>
         <source>Zwischenrast</source>
-        <translation type="unfinished"></translation>
+        <translation>Mellanrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="16"/>
         <source>Verzuckerungsrast (2. Verzuckerung)</source>
-        <translation type="unfinished"></translation>
+        <translation>Försockringsrast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="17"/>
         <source>Kombirast</source>
-        <translation type="unfinished"></translation>
+        <translation>Kombirast</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="18"/>
         <source>Abmaischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mäska ut</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="108"/>
@@ -7456,7 +7456,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="168"/>
         <source>PDF speichern unter</source>
-        <translation type="unfinished">Spara PDF som</translation>
+        <translation>Spara PDF som</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwebvieweditable.cpp" line="209"/>
@@ -7558,7 +7558,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="136"/>
         <source>°P</source>
-        <translation type="unfinished">°P</translation>
+        <translation>°P</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="86"/>
@@ -7583,7 +7583,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="335"/>
         <source>Extrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Extrakt</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="375"/>
@@ -7679,7 +7679,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="216"/>
         <source>Hopfen</source>
-        <translation type="unfinished">Humle</translation>
+        <translation>Humle</translation>
     </message>
 </context>
 </TS>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
+    <width>764</width>
     <height>300</height>
    </rect>
   </property>
@@ -43,7 +43,7 @@
          <item>
           <widget class="ComboBox" name="cbAuswahlL1">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl für den &lt;span style=&quot; font-weight:600;&quot;&gt;ersten&lt;/span&gt; Parameter, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;erster Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;p&gt;Zur Verfügung stehen die Parameter&lt;/p&gt;&lt;p&gt;• abgefüllte Biermenge&lt;/p&gt;&lt;p&gt;• Stammwürze °Plato&lt;/p&gt;&lt;p&gt;• Sudhausausbeute&lt;/p&gt;&lt;p&gt;• effektive Sudhausausbeute&lt;/p&gt;&lt;p&gt;• Alkohol %vol&lt;/p&gt;&lt;p&gt;• scheinbarer Restextrakt *Plato&lt;/p&gt;&lt;p&gt;• scheinbarer Endvergärungsgrad %&lt;/p&gt;&lt;p&gt;• tatsächlicher Endvergärungsgrad %&lt;/p&gt;&lt;p&gt;• Kosten €/l&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -70,7 +70,7 @@
          <item>
           <widget class="ComboBox" name="cbAuswahlL2">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl für den &lt;span style=&quot; font-weight:600;&quot;&gt;zweiten&lt;/span&gt; Parameter, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;zweiter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;p&gt;Zur Verfügung stehen die Parameter&lt;/p&gt;&lt;p&gt;• abgefüllte Biermenge&lt;/p&gt;&lt;p&gt;• Stammwürze °Plato&lt;/p&gt;&lt;p&gt;• Sudhausausbeute&lt;/p&gt;&lt;p&gt;• effektive Sudhausausbeute&lt;/p&gt;&lt;p&gt;• Alkohol %vol&lt;/p&gt;&lt;p&gt;• scheinbarer Restextrakt *Plato&lt;/p&gt;&lt;p&gt;• scheinbarer Endvergärungsgrad %&lt;/p&gt;&lt;p&gt;• tatsächlicher Endvergärungsgrad %&lt;/p&gt;&lt;p&gt;• Kosten €/l&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -97,7 +97,7 @@
          <item>
           <widget class="ComboBox" name="cbAuswahlL3">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl für den &lt;span style=&quot; font-weight:600;&quot;&gt;dritten&lt;/span&gt; Parameter, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;dritter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;p&gt;Zur Verfügung stehen die Parameter&lt;/p&gt;&lt;p&gt;• abgefüllte Biermenge&lt;/p&gt;&lt;p&gt;• Stammwürze °Plato&lt;/p&gt;&lt;p&gt;• Sudhausausbeute&lt;/p&gt;&lt;p&gt;• effektive Sudhausausbeute&lt;/p&gt;&lt;p&gt;• Alkohol %vol&lt;/p&gt;&lt;p&gt;• scheinbarer Restextrakt *Plato&lt;/p&gt;&lt;p&gt;• scheinbarer Endvergärungsgrad %&lt;/p&gt;&lt;p&gt;• tatsächlicher Endvergärungsgrad %&lt;/p&gt;&lt;p&gt;• Kosten €/l&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>

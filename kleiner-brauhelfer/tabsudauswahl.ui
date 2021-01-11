@@ -325,7 +325,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -342,7 +342,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -366,7 +366,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion ist auch in den Tabs Braudaten und Abfülldaten vorhanden.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -431,7 +431,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;p&gt;Hiermit springt man automatisch in den Tab Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
@@ -489,11 +489,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
@@ -503,6 +498,11 @@
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

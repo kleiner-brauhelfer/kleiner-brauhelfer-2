@@ -20,19 +20,19 @@
    <item>
     <widget class="QToolBox" name="toolBox_Gaerverlauf">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="pageSchnellgaerung">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
-        <height>586</height>
+        <width>790</width>
+        <height>559</height>
        </rect>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe dient zum einen zur Bestimmung des Abfüllzeitpunktes beim Grünschlauchen und zum anderen zur Bestimmung der Zucker- oder Speisegabe zur Nachgärung wie der Hefeaktivität allgemein.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Abfülldaten bei aktivierter Schnellgärprobe für den &amp;quot;Restextrakt der Schnellgärprobe&amp;quot; übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe dient zum einen zur Bestimmung des Abfüllzeitpunktes beim Grünschlauchen und zum anderen zur Bestimmung der Zucker- oder Speisegabe zur Nachgärung wie der Hefeaktivität allgemein. Außerdem zeigt die Schnellgärprobe den zu erwartenden &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;(EVG) &lt;/span&gt;an und markiert damit die die Abfüllreife.&lt;/p&gt;&lt;p&gt;Die jeweils letzte Messung wird im Tab Abfülldaten bei aktivierter Schnellgärprobe für den &amp;quot;Restextrakt der Schnellgärprobe&amp;quot; übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <attribute name="label">
        <string>Schnellgärprobe</string>
@@ -96,7 +96,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Der erste Messeintrag erfolgt automaisch, wenn im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; die Schnellgärprobe aktiviert ist. Der erste Eintrag ist dabei identisch mit der Stammwürze beim Anstellen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -113,7 +113,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Eine Löschung kann erwünscht sein, wenn man den ersten automatischen Eintrag nicht möchte oder es Messfehler im Gärverlauf gibt, die das Gesamtbild verfälschen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -130,7 +130,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV-Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen. Liegen externe Daten in einem anderen Format vor, müssen diese vorher konvertiert werden. Dabei sollte die Spaltenkonfiguration der des Kleinen Brauhelfers entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -165,8 +165,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
-        <height>586</height>
+        <width>790</width>
+        <height>559</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -234,7 +234,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Der erste Messeintrag erfolgt automaisch, wenn im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; die Schnellgärprobe aktiviert ist. Der erste Eintrag ist dabei identisch mit der Stammwürze beim Anstellen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -251,7 +251,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Eine Löschung kann erwünscht sein, wenn man den ersten automatischen Eintrag nicht möchte oder es Messfehler im Gärverlauf gibt, die das Gesamtbild verfälschen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -268,7 +268,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV-Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen. Liegen externe Daten in einem anderen Format vor, müssen diese vorher konvertiert werden. Dabei sollte die Spaltenkonfiguration der des Kleinen Brauhelfers entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -321,14 +321,14 @@
                  <item>
                   <widget class="ComboBox" name="comboBox_GaerungEwzAuswahl">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat&lt;/span&gt; festgelegt, welche &lt;span style=&quot; font-weight:600;&quot;&gt;zugegeben&lt;/span&gt; werden soll.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; festgelegt, welcher &lt;span style=&quot; font-weight:600;&quot;&gt;zugegeben &lt;/span&gt;werden soll.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btnGaerungEwzZugeben">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird die &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählte Zutat zugegeben&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Im Reiter Rezept kann man die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat &lt;/span&gt;ebenfalls zugeben (und entnehmen).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählter Zusatz &lt;/span&gt;zugegeben. &lt;/p&gt;&lt;p&gt;Im Reiter Rezept kann man die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat &lt;/span&gt;ebenfalls zugeben (und entnehmen).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>zugeben</string>
@@ -370,14 +370,14 @@
                  <item>
                   <widget class="ComboBox" name="comboBox_GaerungEwzAuswahlEntnahme">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat&lt;/span&gt; festgelegt, welche wieder &lt;span style=&quot; font-weight:600;&quot;&gt;entnommen&lt;/span&gt; werden soll.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; festgelegt, welcher &lt;span style=&quot; font-weight:600;&quot;&gt;entnommen&lt;/span&gt; werden soll.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btnGaerungEwzEntnehmen">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird die &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählte Zutat wieder entnommen&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Im Reiter Rezept kann man die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat &lt;/span&gt;ebenfalls entnehmen (und zugeben).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein ausgewählter&lt;span style=&quot; font-weight:600;&quot;&gt; Zusatz &lt;/span&gt;entnommen. &lt;/p&gt;&lt;p&gt;Im Tab Rezept kann man den &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;ebenfalls entnehmen (und zugeben).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>entnehmen</string>
@@ -401,12 +401,12 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>796</width>
-        <height>586</height>
+        <width>790</width>
+        <height>559</height>
        </rect>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nachgärung ist die zweite Phase der Gärung. Um den gewünschten Kohlendioxidgehalt (CO2) im Bier zu erreichen, muss die Nachgärung unter Druck stattfinden. Dazu wird das Jungbier in druckfeste Behälter (Drucktanks, Fässer oder Flaschen) geschlaucht. Von Interesse sind in der Nachgärung nur noch Druck und gelöstes Kohlendioxid.&lt;/p&gt;&lt;p&gt;Zudem gibt die letzte Messung der Nachgärung den Zeitpunkt für den Start des Reifeprozesses.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <attribute name="label">
        <string>Nachgärung</string>
@@ -435,6 +435,9 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Nachgaerverlauf">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das Feld für die Messungen der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nachgärung ist die zweite Phase der Gärung. Um den gewünschten Kohlendioxidgehalt (CO₂) im Bier zu erreichen, muss die Nachgärung unter Druck stattfinden. Dazu wird das Jungbier in druckfeste Behälter (Drucktanks, Fässer oder Flaschen) geschlaucht. Bei Flaschen kommt Zucker oder Speise zum Einsatz, bei Fässern und Drucktanks zusätzlich Kohlendioxid aus Kartuschen oder Flaschen. Von Interesse sind in der Nachgärung nur noch Druck und gelöstes Kohlendioxid. &lt;/p&gt;&lt;p&gt;Ein Teil des Zuckers, respektive der Speise wird in Alkohol umgewandelt, der andere Teil aber in CO₂.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -470,7 +473,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Der erste Messeintrag erfolgt automaisch, wenn im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; die Schnellgärprobe aktiviert ist. Der erste Eintrag ist dabei identisch mit der Stammwürze beim Anstellen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -487,7 +490,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Eine Löschung kann erwünscht sein, wenn man den ersten automatischen Eintrag nicht möchte oder es Messfehler im Gärverlauf gibt, die das Gesamtbild verfälschen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -504,7 +507,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV-Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen. Liegen externe Daten in einem anderen Format vor, müssen diese vorher konvertiert werden. Dabei sollte die Spaltenkonfiguration der des Kleinen Brauhelfers entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -540,14 +543,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>WdgDiagramView</class>

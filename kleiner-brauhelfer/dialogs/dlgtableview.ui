@@ -78,7 +78,7 @@
            </size>
           </property>
           <property name="whatsThis">
-           <string>plus</string>
+           <string notr="true">plus</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -101,7 +101,7 @@
            </size>
           </property>
           <property name="whatsThis">
-           <string>minus</string>
+           <string notr="true">minus</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -124,7 +124,7 @@
            </size>
           </property>
           <property name="whatsThis">
-           <string>nach_oben</string>
+           <string notr="true">nach_oben</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -147,7 +147,7 @@
            </size>
           </property>
           <property name="whatsThis">
-           <string>nach_unten</string>
+           <string notr="true">nach_unten</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">

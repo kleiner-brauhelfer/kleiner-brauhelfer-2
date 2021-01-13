@@ -255,7 +255,7 @@
     <string>Speichern</string>
    </property>
    <property name="whatsThis">
-    <string>save</string>
+    <string notr="true">save</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -270,7 +270,7 @@
     <string>Änderungen verwerfen</string>
    </property>
    <property name="whatsThis">
-    <string>restore</string>
+    <string notr="true">restore</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Z</string>
@@ -342,7 +342,7 @@
     <string>Datenbank auswählen</string>
    </property>
    <property name="whatsThis">
-    <string>database</string>
+    <string notr="true">database</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -405,7 +405,7 @@
     <string>Bereinigen</string>
    </property>
    <property name="whatsThis">
-    <string>database_clean</string>
+    <string notr="true">database_clean</string>
    </property>
   </action>
   <action name="actionEingabefelderEntsperren">
@@ -436,7 +436,7 @@
     <string>Neuen Sud anlegen</string>
    </property>
    <property name="whatsThis">
-    <string>sud_neu</string>
+    <string notr="true">sud_neu</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -451,7 +451,7 @@
     <string>Rezept importieren</string>
    </property>
    <property name="whatsThis">
-    <string>sud_import</string>
+    <string notr="true">sud_import</string>
    </property>
   </action>
   <action name="actionRezept_exportieren">
@@ -463,7 +463,7 @@
     <string>Rezept exportieren</string>
    </property>
    <property name="whatsThis">
-    <string>sud_export</string>
+    <string notr="true">sud_export</string>
    </property>
   </action>
   <action name="actionSud_kopieren">
@@ -475,7 +475,7 @@
     <string>Sud kopieren</string>
    </property>
    <property name="whatsThis">
-    <string>sud_kopie</string>
+    <string notr="true">sud_kopie</string>
    </property>
   </action>
   <action name="actionSud_l_schen">
@@ -487,7 +487,7 @@
     <string>Sud löschen</string>
    </property>
    <property name="whatsThis">
-    <string>sud_loeschen</string>
+    <string notr="true">sud_loeschen</string>
    </property>
   </action>
   <action name="actionSud_teilen">
@@ -499,7 +499,7 @@
     <string>Sud teilen</string>
    </property>
    <property name="whatsThis">
-    <string>sud_teilen</string>
+    <string notr="true">sud_teilen</string>
    </property>
   </action>
   <action name="actionDruckvorschau">
@@ -511,7 +511,7 @@
     <string>Drucken</string>
    </property>
    <property name="whatsThis">
-    <string>print</string>
+    <string notr="true">print</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+P</string>
@@ -526,7 +526,7 @@
     <string>PDF</string>
    </property>
    <property name="whatsThis">
-    <string>pdf</string>
+    <string notr="true">pdf</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>

@@ -731,7 +731,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="whatsThis">
-                 <string>plus</string>
+                 <string notr="true">plus</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -751,7 +751,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="whatsThis">
-                 <string>minus</string>
+                 <string notr="true">minus</string>
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
@@ -868,7 +868,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="whatsThis">
-               <string>plus</string>
+               <string notr="true">plus</string>
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
@@ -1075,7 +1075,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueMalzGabe">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Malz</string>
@@ -1089,7 +1089,7 @@
              <item>
               <widget class="QPushButton" name="btnMalzGabenUebernehmen">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Malz</string>
@@ -1110,7 +1110,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeMaischen">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Zusatz</string>
@@ -1124,7 +1124,7 @@
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenMaischen">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Zusatz</string>
@@ -1306,7 +1306,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueHopfenGabe">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Hopfen</string>
@@ -1320,7 +1320,7 @@
              <item>
               <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Hopfen</string>
@@ -1341,7 +1341,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeKochen">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Zusatz</string>
@@ -1355,7 +1355,7 @@
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenKochen">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Zusatz</string>
@@ -1482,7 +1482,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueHefeGabe">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Hefe</string>
@@ -1496,7 +1496,7 @@
              <item>
               <widget class="QPushButton" name="btnHefeGabenUebernehmen">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Hefe</string>
@@ -1514,7 +1514,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueHopfenGabeGaerung">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Hopfen</string>
@@ -1528,7 +1528,7 @@
              <item>
               <widget class="QPushButton" name="btnHopfenGabenUebernehmenGaerung">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Hopfen</string>
@@ -1549,7 +1549,7 @@
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeGaerung">
                <property name="whatsThis">
-                <string>plus</string>
+                <string notr="true">plus</string>
                </property>
                <property name="text">
                 <string>Zusatz</string>
@@ -1563,7 +1563,7 @@
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenGaerung">
                <property name="whatsThis">
-                <string>import</string>
+                <string notr="true">import</string>
                </property>
                <property name="text">
                 <string>Zusatz</string>
@@ -1664,7 +1664,7 @@
           <item>
            <widget class="QPushButton" name="btnNeueRast">
             <property name="whatsThis">
-             <string>plus</string>
+             <string notr="true">plus</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
@@ -1675,7 +1675,7 @@
           <item>
            <widget class="QPushButton" name="btnRastenUebernehmen">
             <property name="whatsThis">
-             <string>import</string>
+             <string notr="true">import</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
@@ -1810,7 +1810,7 @@
              </size>
             </property>
             <property name="whatsThis">
-             <string>uebertrag_oben</string>
+             <string notr="true">uebertrag_oben</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
@@ -2074,7 +2074,7 @@
           <item>
            <widget class="QPushButton" name="btnNeueWasseraufbereitung">
             <property name="whatsThis">
-             <string>plus</string>
+             <string notr="true">plus</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
@@ -2085,7 +2085,7 @@
           <item>
            <widget class="QPushButton" name="btnWasseraufbereitungUebernehmen">
             <property name="whatsThis">
-             <string>import</string>
+             <string notr="true">import</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">

@@ -108,7 +108,7 @@
         <item>
          <widget class="QPushButton" name="btnNachOben">
           <property name="whatsThis">
-           <string>nach_oben</string>
+           <string notr="true">nach_oben</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -119,7 +119,7 @@
         <item>
          <widget class="QPushButton" name="btnNachUnten">
           <property name="whatsThis">
-           <string>nach_unten</string>
+           <string notr="true">nach_unten</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">

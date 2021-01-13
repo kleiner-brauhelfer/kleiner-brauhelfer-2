@@ -37,8 +37,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>118</width>
-            <height>596</height>
+            <width>163</width>
+            <height>605</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -101,8 +101,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>880</width>
-         <height>634</height>
+         <width>854</width>
+         <height>640</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_1">
@@ -204,7 +204,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>7</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_3">
            <attribute name="title">

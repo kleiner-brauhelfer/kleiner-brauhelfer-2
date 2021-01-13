@@ -64,9 +64,12 @@
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; angelegt und benannt. Verfügt man über mehrere Kessel in unterschiedlichen Größen, bietet es sich an, hier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Konfigurationen&lt;/span&gt; zu speichern, um die jeweilige Anlage bei der Rezepterstellung mit einem Klick im Tab Rezept bequem zu wählen.&lt;/p&gt;&lt;p&gt;Unter einer Brauanlage ist mindestens ein Kessel zu verstehen. Im Hobbybrauerbereich sind platzsparende All-in-one-Anlagen oft üblich. Meist sind es aber mindestens zwei Kessel – der Kleine Brauhelfer nimmt auf diese Standard-Konfiguration in den Feldern rechts Bezug: &lt;/p&gt;&lt;p&gt;Ein &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; für das Maischen mit Malz und eine &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; für das Hopfenkochen. Bei All-in-one-Geräten, die Maischekessel und Sudpfanne vereinen, gibt man den einen Wert für Maischekessel und Sudpfanne an.&lt;/p&gt;&lt;p&gt;Bei größeren Konfigurationen kommt mindestens noch ein Läuterkessel hinzu, der zwischen Maischekessel und Sudpfanne eingesetzt wird. Im Kleinen Brauhelfer wird diese zusätzliche, für die Bierherstellung nicht zwingend nötige Ausstattung unter &lt;span style=&quot; font-weight:600;&quot;&gt;Geräte&lt;/span&gt; erfasst. Der Kleine Brauhelfer berücksichtigt für seine Berechnungen allein die Werte für Maischekessel und Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="whatsThis">
+             <string notr="true">plus</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+              <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
             </property>
            </widget>
           </item>
@@ -81,9 +84,12 @@
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Bei dieser Aktion empfiehlt es sich, die mit der zu löschenden Anlage gebrauten Sude vorab zu überpüfen und im Tab Rezept gegebenenfalls anzupassen. Die Gefahr von hausgemachten Verwechselungen liegt hier nah. Es empfiehlt sich alle noch zu brauenden Sude dieser Analge auf eine neue Anlage umzustellen. Bei gebrauten Suden erübrigt sich diese Vorsichtsmaßnahme.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="whatsThis">
+             <string notr="true">minus</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
+              <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
             </property>
            </widget>
           </item>
@@ -151,9 +157,12 @@
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Geräte&lt;/span&gt; außer der Maischekessel und die Sudpfanne erfasst.&lt;/p&gt;&lt;p&gt;Im Kleinen Brauhelfer werden unter Geräten all die Dinge verstanden, die das Brauen schöner, besser und angenehmer machen – aber nicht zwingend notwendig für ein Selbstgebrautes sind.&lt;/p&gt;&lt;p&gt;Zuvorderst gehört dazu ein Läuterkessel, aber auch Gärfässer und Gärkannen, Holzfässer und Kegs, Heizplatten, Meßgeräte bis hin zu zylindorkonischen Drucktanks, Abfüllern und Etikettiermaschinen werden hier erfasst. Kurzum alle Gerätschaften, die das Brauherz höher schlagen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="whatsThis">
+             <string notr="true">plus</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+              <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
             </property>
            </widget>
           </item>
@@ -168,9 +177,12 @@
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigtes&lt;span style=&quot; font-weight:600;&quot;&gt; Gerät gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Werden Geräte gelöscht, hat dies keine Auswirkung an anderen Stellen im Kleinen Brauhelfer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="whatsThis">
+             <string notr="true">minus</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
+              <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
             </property>
            </widget>
           </item>
@@ -363,9 +375,12 @@
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; übernommen.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser sein die Anzahl der Sude für die Durchschnittsberechnung der Verdampfungsrate einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+              <property name="whatsThis">
+               <string notr="true">uebertrag_oben</string>
+              </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
+                <normaloff>:/images/light/uebertrag_oben.svg</normaloff>:/images/light/uebertrag_oben.svg</iconset>
               </property>
              </widget>
             </item>
@@ -393,9 +408,12 @@
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeuten&lt;/span&gt; übernommen.&lt;/p&gt;&lt;p&gt;Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser ein die Anzahl der Sude für die Durchschnittsberechnung einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+              <property name="whatsThis">
+               <string notr="true">uebertrag_oben</string>
+              </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
+                <normaloff>:/images/light/uebertrag_oben.svg</normaloff>:/images/light/uebertrag_oben.svg</iconset>
               </property>
              </widget>
             </item>

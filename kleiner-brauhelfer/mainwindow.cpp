@@ -28,8 +28,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qApp->installEventFilter(this);
 
-    ui->actionThemeHell->setEnabled(gSettings->theme() != Settings::Theme::Bright);
-    ui->actionThemeDunkel->setEnabled(gSettings->theme() != Settings::Theme::Dark);
+    Settings::Theme theme = gSettings->theme();
+    ui->actionThemeHell->setEnabled(theme != Settings::Theme::Bright);
+    ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
+    if (theme == Settings::Theme::Dark)
+    {
+        const QList<QAction*> actions = findChildren<QAction*>();
+        for (QAction* action : actions)
+        {
+            QString name = action->whatsThis();
+            QIcon icon = action->icon();
+            if (!icon.isNull() && !name.isEmpty())
+            {
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name), QSize(), QIcon::Normal, QIcon::Off);
+                action->setIcon(icon);
+            }
+        }
+        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
+        for (QAbstractButton* button : buttons)
+        {
+            QString name = button->whatsThis();
+            QIcon icon = button->icon();
+            if (!icon.isNull() && !name.isEmpty())
+            {
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name), QSize(), QIcon::Normal, QIcon::Off);
+                button->setIcon(icon);
+            }
+        }
+    }
 
   #if 0
     QString style = gSettings->style();

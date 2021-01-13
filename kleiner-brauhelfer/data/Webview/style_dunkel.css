@@ -86,7 +86,7 @@ img.nichtgefunden {
 }
 
 img.glas {
-  content:url("qrc:/images/bier_dark.svg");
+  content:url("qrc:/images/dark/bier.svg");
 }
 
 img.star {
@@ -94,7 +94,7 @@ img.star {
 }
 
 img.star_grey {
-  content:url("qrc:/images/star_gr.svg");
+  content:url("qrc:/images/dark/star_gr.svg");
 }
 
 .version {

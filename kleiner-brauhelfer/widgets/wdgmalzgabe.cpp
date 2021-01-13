@@ -14,6 +14,20 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     mEnabled(true)
 {
     ui->setupUi(this);
+    if (gSettings->theme() == Settings::Theme::Dark)
+    {
+        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
+        for (QAbstractButton* button : buttons)
+        {
+            QString name = button->whatsThis();
+            QIcon icon = button->icon();
+            if (!icon.isNull() && !name.isEmpty())
+            {
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name), QSize(), QIcon::Normal, QIcon::Off);
+                button->setIcon(icon);
+            }
+        }
+    }
 
     QPalette pal = palette();
     pal.setColor(QPalette::Window, gSettings->colorMalz);

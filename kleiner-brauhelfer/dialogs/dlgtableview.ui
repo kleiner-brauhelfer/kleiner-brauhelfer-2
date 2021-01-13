@@ -83,6 +83,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string notr="true">plus</string>
+          </property>
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</string>
           </property>
@@ -105,6 +108,9 @@
             <width>50</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="whatsThis">
+           <string notr="true">minus</string>
           </property>
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie entfernt. Eine oder mehrere Kategorien müssen dazu markiert sein.</string>
@@ -129,6 +135,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string notr="true">nach_oben</string>
+          </property>
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach oben verschoben.</string>
           </property>
@@ -151,6 +160,9 @@
             <width>50</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="whatsThis">
+           <string notr="true">nach_unten</string>
           </property>
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach unten verschoben.</string>

@@ -154,9 +154,12 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Template gespeichert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">save</string>
+           </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
+             <normaloff>:/images/light/save.svg</normaloff>:/images/light/save.svg</iconset>
            </property>
           </widget>
          </item>
@@ -171,9 +174,12 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Originaltemplate wiederhergestellt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">restore</string>
+           </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/restore.svg</normaloff>:/images/restore.svg</iconset>
+             <normaloff>:/images/light/restore.svg</normaloff>:/images/light/restore.svg</iconset>
            </property>
           </widget>
          </item>
@@ -188,9 +194,12 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe &lt;span style=&quot; font-weight:600;&quot;&gt;ausgedruckt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">print</string>
+           </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+             <normaloff>:/images/light/print.svg</normaloff>:/images/light/print.svg</iconset>
            </property>
           </widget>
          </item>
@@ -205,9 +214,12 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe als &lt;span style=&quot; font-weight:600;&quot;&gt;PDF&lt;/span&gt; abgespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">pdf</string>
+           </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/pdf.svg</normaloff>:/images/pdf.svg</iconset>
+             <normaloff>:/images/light/pdf.svg</normaloff>:/images/light/pdf.svg</iconset>
            </property>
           </widget>
          </item>
@@ -216,9 +228,12 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML und CSS Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in CSS und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">settings</string>
+           </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/settings.svg</normaloff>:/images/settings.svg</iconset>
+             <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
            </property>
           </widget>
          </item>

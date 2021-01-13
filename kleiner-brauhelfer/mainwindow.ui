@@ -249,10 +249,13 @@
   <action name="actionSpeichern">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
+     <normaloff>:/images/light/save.svg</normaloff>:/images/light/save.svg</iconset>
    </property>
    <property name="text">
     <string>Speichern</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">save</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -261,10 +264,13 @@
   <action name="actionVerwerfen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/restore.svg</normaloff>:/images/restore.svg</iconset>
+     <normaloff>:/images/light/restore.svg</normaloff>:/images/light/restore.svg</iconset>
    </property>
    <property name="text">
     <string>Änderungen verwerfen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">restore</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Z</string>
@@ -330,10 +336,13 @@
   <action name="actionOeffnen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/database.svg</normaloff>:/images/database.svg</iconset>
+     <normaloff>:/images/light/database.svg</normaloff>:/images/light/database.svg</iconset>
    </property>
    <property name="text">
     <string>Datenbank auswählen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">database</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -390,10 +399,13 @@
   <action name="actionBereinigen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/database_clean.svg</normaloff>:/images/database_clean.svg</iconset>
+     <normaloff>:/images/light/database_clean.svg</normaloff>:/images/light/database_clean.svg</iconset>
    </property>
    <property name="text">
     <string>Bereinigen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">database_clean</string>
    </property>
   </action>
   <action name="actionEingabefelderEntsperren">
@@ -418,10 +430,13 @@
   <action name="actionNeuen_Sud_anlegen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_neu.svg</normaloff>:/images/sud_neu.svg</iconset>
+     <normaloff>:/images/light/sud_neu.svg</normaloff>:/images/light/sud_neu.svg</iconset>
    </property>
    <property name="text">
     <string>Neuen Sud anlegen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_neu</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -430,55 +445,73 @@
   <action name="actionRezept_importieren">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_import.svg</normaloff>:/images/sud_import.svg</iconset>
+     <normaloff>:/images/light/sud_import.svg</normaloff>:/images/light/sud_import.svg</iconset>
    </property>
    <property name="text">
     <string>Rezept importieren</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_import</string>
    </property>
   </action>
   <action name="actionRezept_exportieren">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_export.svg</normaloff>:/images/sud_export.svg</iconset>
+     <normaloff>:/images/light/sud_export.svg</normaloff>:/images/light/sud_export.svg</iconset>
    </property>
    <property name="text">
     <string>Rezept exportieren</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_export</string>
    </property>
   </action>
   <action name="actionSud_kopieren">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_kopie.svg</normaloff>:/images/sud_kopie.svg</iconset>
+     <normaloff>:/images/light/sud_kopie.svg</normaloff>:/images/light/sud_kopie.svg</iconset>
    </property>
    <property name="text">
     <string>Sud kopieren</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_kopie</string>
    </property>
   </action>
   <action name="actionSud_l_schen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_loeschen.svg</normaloff>:/images/sud_loeschen.svg</iconset>
+     <normaloff>:/images/light/sud_loeschen.svg</normaloff>:/images/light/sud_loeschen.svg</iconset>
    </property>
    <property name="text">
     <string>Sud löschen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_loeschen</string>
    </property>
   </action>
   <action name="actionSud_teilen">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+     <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
    </property>
    <property name="text">
     <string>Sud teilen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_teilen</string>
    </property>
   </action>
   <action name="actionDruckvorschau">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+     <normaloff>:/images/light/print.svg</normaloff>:/images/light/print.svg</iconset>
    </property>
    <property name="text">
     <string>Drucken</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">print</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+P</string>
@@ -487,10 +520,13 @@
   <action name="actionDrucken">
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/pdf.svg</normaloff>:/images/pdf.svg</iconset>
+     <normaloff>:/images/light/pdf.svg</normaloff>:/images/light/pdf.svg</iconset>
    </property>
    <property name="text">
     <string>PDF</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">pdf</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>

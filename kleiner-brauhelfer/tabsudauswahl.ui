@@ -259,7 +259,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QPushButton" name="btnAnlegen">
+          <widget class="QToolButton" name="btnAnlegen">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -269,14 +269,23 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_neu</string>
+           </property>
+           <property name="text">
+            <string>Anlegen</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_neu.svg</normaloff>:/images/sud_neu.svg</iconset>
+             <normaloff>:/images/light/sud_neu.svg</normaloff>:/images/light/sud_neu.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnKopieren">
+          <widget class="QToolButton" name="btnKopieren">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -286,14 +295,23 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_kopie</string>
+           </property>
+           <property name="text">
+            <string>Kopieren</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_kopie.svg</normaloff>:/images/sud_kopie.svg</iconset>
+             <normaloff>:/images/light/sud_kopie.svg</normaloff>:/images/light/sud_kopie.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnLoeschen">
+          <widget class="QToolButton" name="btnLoeschen">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -303,9 +321,18 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_loeschen</string>
+           </property>
+           <property name="text">
+            <string>Löschen</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_loeschen.svg</normaloff>:/images/sud_loeschen.svg</iconset>
+             <normaloff>:/images/light/sud_loeschen.svg</normaloff>:/images/light/sud_loeschen.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
@@ -317,7 +344,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnImportieren">
+          <widget class="QToolButton" name="btnImportieren">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -327,14 +354,23 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_import</string>
+           </property>
+           <property name="text">
+            <string>Importieren</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_import.svg</normaloff>:/images/sud_import.svg</iconset>
+             <normaloff>:/images/light/sud_import.svg</normaloff>:/images/light/sud_import.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnExportieren">
+          <widget class="QToolButton" name="btnExportieren">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -344,9 +380,18 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_export</string>
+           </property>
+           <property name="text">
+            <string>Exportieren</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_export.svg</normaloff>:/images/sud_export.svg</iconset>
+             <normaloff>:/images/light/sud_export.svg</normaloff>:/images/light/sud_export.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
@@ -358,7 +403,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnTeilen">
+          <widget class="QToolButton" name="btnTeilen">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -368,9 +413,18 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion ist auch in den Tabs Braudaten und Abfülldaten vorhanden.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_teilen</string>
+           </property>
+           <property name="text">
+            <string>Teilen</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+             <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
@@ -382,7 +436,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnMerken">
+          <widget class="QToolButton" name="btnMerken">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -392,14 +446,23 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_merken</string>
+           </property>
+           <property name="text">
+            <string>Merken</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_merken.svg</normaloff>:/images/sud_merken.svg</iconset>
+             <normaloff>:/images/light/sud_merken.svg</normaloff>:/images/light/sud_merken.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnVergessen">
+          <widget class="QToolButton" name="btnVergessen">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -409,9 +472,18 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_vergessen</string>
+           </property>
+           <property name="text">
+            <string>Vergessen</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_vergessen.svg</normaloff>:/images/sud_vergessen.svg</iconset>
+             <normaloff>:/images/light/sud_vergessen.svg</normaloff>:/images/light/sud_vergessen.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
@@ -423,7 +495,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnLaden">
+          <widget class="QToolButton" name="btnLaden">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -433,9 +505,18 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;p&gt;Hiermit springt man automatisch in den Tab Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+           <property name="whatsThis">
+            <string notr="true">sud_laden</string>
+           </property>
+           <property name="text">
+            <string>Laden</string>
+           </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/sud_laden.svg</normaloff>:/images/sud_laden.svg</iconset>
+             <normaloff>:/images/light/sud_laden.svg</normaloff>:/images/light/sud_laden.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>

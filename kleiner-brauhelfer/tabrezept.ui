@@ -730,9 +730,12 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
+                <property name="whatsThis">
+                 <string notr="true">plus</string>
+                </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
-                  <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                  <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -747,9 +750,12 @@
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
+                <property name="whatsThis">
+                 <string notr="true">minus</string>
+                </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
-                  <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
+                  <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -861,9 +867,12 @@
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+              <property name="whatsThis">
+               <string notr="true">plus</string>
+              </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
               </property>
              </widget>
             </item>
@@ -1065,23 +1074,29 @@
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
               <widget class="QPushButton" name="btnNeueMalzGabe">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Malz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnMalzGabenUebernehmen">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Malz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1094,23 +1109,29 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeMaischen">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenMaischen">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1284,23 +1305,29 @@
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
               <widget class="QPushButton" name="btnNeueHopfenGabe">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1313,23 +1340,29 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeKochen">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenKochen">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1448,23 +1481,29 @@
             <layout class="QHBoxLayout" name="horizontalLayout_13">
              <item>
               <widget class="QPushButton" name="btnNeueHefeGabe">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Hefe</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnHefeGabenUebernehmen">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Hefe</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1474,23 +1513,29 @@
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
               <widget class="QPushButton" name="btnNeueHopfenGabeGaerung">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnHopfenGabenUebernehmenGaerung">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1503,23 +1548,29 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeGaerung">
+               <property name="whatsThis">
+                <string notr="true">plus</string>
+               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenGaerung">
+               <property name="whatsThis">
+                <string notr="true">import</string>
+               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1612,17 +1663,23 @@
          <layout class="QHBoxLayout" name="horizontalLayout_15">
           <item>
            <widget class="QPushButton" name="btnNeueRast">
+            <property name="whatsThis">
+             <string notr="true">plus</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+              <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="btnRastenUebernehmen">
+            <property name="whatsThis">
+             <string notr="true">import</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+              <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
             </property>
            </widget>
           </item>
@@ -1752,9 +1809,12 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="whatsThis">
+             <string notr="true">uebertrag_oben</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/uebertrag_oben.svg</normaloff>:/images/uebertrag_oben.svg</iconset>
+              <normaloff>:/images/light/uebertrag_oben.svg</normaloff>:/images/light/uebertrag_oben.svg</iconset>
             </property>
            </widget>
           </item>
@@ -2013,17 +2073,23 @@
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
            <widget class="QPushButton" name="btnNeueWasseraufbereitung">
+            <property name="whatsThis">
+             <string notr="true">plus</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+              <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="btnWasseraufbereitungUebernehmen">
+            <property name="whatsThis">
+             <string notr="true">import</string>
+            </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/import.svg</normaloff>:/images/import.svg</iconset>
+              <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
             </property>
            </widget>
           </item>

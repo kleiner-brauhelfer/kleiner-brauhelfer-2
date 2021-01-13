@@ -1771,12 +1771,15 @@
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufteilen&lt;/span&gt;. Alle bisher eingegebenen Daten werden übernommen.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im Tab Braudaten identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="whatsThis">
+             <string notr="true">sud_teilen</string>
+            </property>
             <property name="text">
              <string>Sud teilen</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/sud_teilen.svg</normaloff>:/images/sud_teilen.svg</iconset>
+              <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
             </property>
            </widget>
           </item>

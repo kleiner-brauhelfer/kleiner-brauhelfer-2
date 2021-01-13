@@ -145,7 +145,7 @@ void WdgDiagramView::zeichneAchsen()
   //Höhe der Zeichenfläche
   zhoehe = nullY - AbstandOben;
 
-  painter.setPen(Qt::black);
+  painter.setPen(QColor::fromRgb(128, 128, 128));
 
   //Achsen
   painter.drawLine(nullX,nullY,nullX + zbreite,nullY);
@@ -172,7 +172,6 @@ void WdgDiagramView::zeichneAchsen()
   }
   abstandX = double(zbreite) / double(AnzahlX);
 
-  painter.setPen(QColor::fromRgb(128, 128, 128));
   //Horizontale skalierung
   for (int i=0; i < AnzahlX; i++){
     painter.drawLine(qRound(nullX + (i + 1) * abstandX), nullY, qRound(nullX + (i + 1) * abstandX), nullY - zhoehe);
@@ -439,7 +438,7 @@ void WdgDiagramView::zeichneL1()
     //Markierung zeichnen
     if (i == MarkierterPunkt - 1){
       ZeichneMarkierung(&painter, Linie1[i]);
-      brush.setColor(Qt::red);
+      brush.setColor(gSettings->ErrorText);
       painter.setBrush(brush);
       painter.drawEllipse(Linie1[i],3,3);
       brush.setColor(Qt::white);
@@ -524,7 +523,7 @@ void WdgDiagramView::zeichneL2()
   for (int i=0; i < Linie2.count(); i++){
     //Markierung zeichnen
     if (i == MarkierterPunkt - 1){
-      brush.setColor(Qt::red);
+      brush.setColor(gSettings->ErrorText);
       painter.setBrush(brush);
       painter.drawEllipse(Linie2[i],3,3);
       brush.setColor(Qt::white);
@@ -609,7 +608,7 @@ void WdgDiagramView::zeichneL3()
   for (int i=0; i < Linie3.count(); i++){
     //Markierung zeichnen
     if (i == MarkierterPunkt - 1){
-      brush.setColor(Qt::red);
+      brush.setColor(gSettings->ErrorText);
       painter.setBrush(brush);
       painter.drawEllipse(Linie3[i],3,3);
       brush.setColor(Qt::white);
@@ -793,7 +792,7 @@ void WdgDiagramView::ZeichneMarkierung(QPainter * painter, QPoint p)
 
   QPoint p1,p2;
   //Farbe setzten
-  pen.setColor(Qt::red);
+  pen.setColor(gSettings->ErrorText);
   pen.setWidth(2);
   brush.setStyle(Qt::SolidPattern);
   //nur eine senkrechte Linie zeichnen

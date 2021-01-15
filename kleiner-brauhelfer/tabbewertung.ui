@@ -37,8 +37,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>118</width>
-            <height>596</height>
+            <width>163</width>
+            <height>605</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_124">
@@ -81,9 +81,12 @@
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Bewertung&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Dies muss zuerst ausgeführt werden, um rechts die Bewertungskategorien festzulegen und Freitext einzufügen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
+         <property name="whatsThis">
+          <string notr="true">plus</string>
+         </property>
          <property name="icon">
           <iconset resource="images.qrc">
-           <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+           <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
          </property>
         </widget>
        </item>
@@ -98,11 +101,11 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>880</width>
-         <height>634</height>
+         <width>854</width>
+         <height>640</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_1">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
@@ -201,7 +204,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>7</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_3">
            <attribute name="title">

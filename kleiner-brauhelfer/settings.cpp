@@ -153,7 +153,7 @@ void Settings::initTheme()
 
         DiagramLinie1 = QColor(123,33,178);
         DiagramLinie2 = QColor(56,104,2);
-        DiagramLinie3 = QColor(178,0,0);
+        DiagramLinie3 = QColor(120,30,30);
         DiagramLinie1Light = QColor(153,98,188);
         DiagramLinie2Light = QColor(102,150,46);
         DiagramLinie3Light = QColor(211,97,97);
@@ -172,11 +172,11 @@ void Settings::initTheme()
         colorAnhang = QColor(89,89,89);
         colorKommentar = QColor(76,76,76);
 
-        NichtGebrautBackground = QColor(102,102,102);
-        GebrautBackground = QColor(102,97,85);
-        AbgefuelltBackground = QColor(88,102,74);
-        VerbrauchtBackground = QColor(53,53,53);
-        MekrlisteBackground = QColor(54,73,102);
+        NichtGebrautBackground = QColor(50, 50, 50);
+        GebrautBackground = QColor(96, 50, 49);
+        AbgefuelltBackground = QColor(78, 78, 38);
+        VerbrauchtBackground = QColor(80, 80, 80);
+        MekrlisteBackground = QColor(52, 58, 92);
 
         HopfenTypBackgrounds = {QColor(), QColor(127,72,47), QColor(75,127,75), QColor(89,89,127)};
         HefeTypOgUgBackgrounds = {QColor(), QColor(75,127,75), QColor(89,89,127)};
@@ -190,13 +190,13 @@ void Settings::initTheme()
                             QColor(0,125,127),
                             QColor(76,75,127)};
 
-        DiagramLinie1 = QColor(150,86,191);
-        DiagramLinie2 = QColor(76,140,2);
-        DiagramLinie3 = QColor(168,43,43);
+        DiagramLinie1 = QColor(105,139,87);
+        DiagramLinie2 = QColor(18,90,136);
+        DiagramLinie3 = QColor(138,108,77);
 
-        DiagramLinie1Light = QColor(151,125,166);
-        DiagramLinie2Light = QColor(120,153,84);
-        DiagramLinie3Light = QColor(170,100,100);
+        DiagramLinie1Light = QColor(105,139,87);
+        DiagramLinie2Light = QColor(18,90,136);
+        DiagramLinie3Light = QColor(138,108,77);
     }
 
     paletteInput = palette;

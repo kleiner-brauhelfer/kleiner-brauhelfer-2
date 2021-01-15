@@ -17,10 +17,10 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     mList.append({tr("Sauermalz"), static_cast<int>(Brauhelfer::Einheit::g), -0.0321, 2});
     mList.append({tr("Natriumhydrogenkarbonat (NaHCO3)"), static_cast<int>(Brauhelfer::Einheit::g), 0.03, 100});
     mList.append({tr("Natriumchlorid (NaCl)"), static_cast<int>(Brauhelfer::Einheit::g), 0, 100});
-    mList.append({tr("Calciumsulfat (CaSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.1074, 100});
-    mList.append({tr("Calciumchlorid (CaCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.0917, 100});
-    mList.append({tr("Magnesiumchlorid (MgCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.251, 100});
-    mList.append({tr("Magnesiumsulfat (MgSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.3077, 100});
+    mList.append({tr("Calciumsulfat-Dihydrat (CaSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.1074, 100});
+    mList.append({tr("Calciumchlorid-Dihydrat (CaCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.0917, 100});
+    mList.append({tr("Magnesiumchlorid-Hexahydrat (MgCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.251, 100});
+    mList.append({tr("Magnesiumsulfat-Heptahydrat (MgSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.3077, 100});
     mList.append({tr("<manuell>"), static_cast<int>(Brauhelfer::Einheit::ml), 0, 100});
     for (const auto& it : mList)
         ui->cbAuswahl->addItem(it.name);

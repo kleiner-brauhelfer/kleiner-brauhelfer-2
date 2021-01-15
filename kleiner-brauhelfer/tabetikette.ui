@@ -85,9 +85,12 @@
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; ist die Bearbeitung der Gestaltungsvorgaben in der linken Spalte sowie der Tags in der rechten Spalte möglich.&lt;/p&gt;&lt;p&gt;Tags speisen Werte in das Layout ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
+             <property name="whatsThis">
+              <string notr="true">settings</string>
+             </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/settings.svg</normaloff>:/images/settings.svg</iconset>
+               <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
              </property>
             </widget>
            </item>
@@ -115,9 +118,12 @@
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;SVG-Datei&lt;/span&gt; aktualisiert.&lt;/p&gt;&lt;p&gt;SVG ermöglicht skalierbare, verlustfreie Grafiken. Ohne Aktualisierung können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
+             <property name="whatsThis">
+              <string notr="true">refresh</string>
+             </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/refresh.svg</normaloff>:/images/refresh.svg</iconset>
+               <normaloff>:/images/light/refresh.svg</normaloff>:/images/light/refresh.svg</iconset>
              </property>
             </widget>
            </item>
@@ -132,9 +138,12 @@
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; in aktuellen Rezept gespeichert.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
+             <property name="whatsThis">
+              <string notr="true">save</string>
+             </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/save.svg</normaloff>:/images/save.svg</iconset>
+               <normaloff>:/images/light/save.svg</normaloff>:/images/light/save.svg</iconset>
              </property>
             </widget>
            </item>
@@ -225,8 +234,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>310</width>
-        <height>653</height>
+        <width>298</width>
+        <height>612</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -541,9 +550,12 @@
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag für das Etikett &lt;/span&gt;angelegt.&lt;/p&gt;&lt;p&gt;Ein Tag darin besteht aus seinem Namen und seinem Wert. Tags werden in doppelt geschweiften Klammern beschrieben.&lt;/p&gt;&lt;p&gt;Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+              <property name="whatsThis">
+               <string notr="true">plus</string>
+              </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+                <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
               </property>
              </widget>
             </item>
@@ -558,9 +570,12 @@
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Tag oder mehrere gelöscht. Mit Shift können mehrere Tags markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+              <property name="whatsThis">
+               <string notr="true">minus</string>
+              </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
+                <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
               </property>
              </widget>
             </item>
@@ -629,9 +644,12 @@
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer über die Druckvorschau möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
+         <property name="whatsThis">
+          <string notr="true">print</string>
+         </property>
          <property name="icon">
           <iconset resource="images.qrc">
-           <normaloff>:/images/print.svg</normaloff>:/images/print.svg</iconset>
+           <normaloff>:/images/light/print.svg</normaloff>:/images/light/print.svg</iconset>
          </property>
         </widget>
        </item>
@@ -643,16 +661,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -663,9 +671,19 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>SvgView</class>
    <extends>QGraphicsView</extends>
    <header>widgets/svgview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -42,7 +42,8 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.2.3 (in Entwicklung)
-- Neu: Niederländische Übersetzung (Vielen Dank dachouffe!)
+- Neu: Niederländische Übersetzung (vielen Dank dachouffe)
+- Neu: Tooltips komplett überarbeitet (vielen Dank rakader)
 - Neu: Übernahme des Vergärungsgrades der Hefe
 - Neu: Stil der Benutzeroberfläche fix auf "Fusion"
 - Neu: Eingabemöglichkeit des Extrakts (Anteil an Stammwürze) für Malzgaben und weitere Zutaten

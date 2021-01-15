@@ -83,12 +83,15 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string notr="true">plus</string>
+          </property>
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/plus.svg</normaloff>:/images/plus.svg</iconset>
+            <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
           </property>
          </widget>
         </item>
@@ -106,12 +109,15 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string notr="true">minus</string>
+          </property>
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie entfernt. Eine oder mehrere Kategorien müssen dazu markiert sein.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/minus.svg</normaloff>:/images/minus.svg</iconset>
+            <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
           </property>
          </widget>
         </item>
@@ -129,12 +135,15 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string notr="true">nach_oben</string>
+          </property>
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach oben verschoben.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
+            <normaloff>:/images/light/nach_oben.svg</normaloff>:/images/light/nach_oben.svg</iconset>
           </property>
          </widget>
         </item>
@@ -152,12 +161,15 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="whatsThis">
+           <string notr="true">nach_unten</string>
+          </property>
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach unten verschoben.</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
+            <normaloff>:/images/light/nach_unten.svg</normaloff>:/images/light/nach_unten.svg</iconset>
           </property>
          </widget>
         </item>

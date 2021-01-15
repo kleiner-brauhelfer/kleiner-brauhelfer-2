@@ -97,9 +97,12 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Rast eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
+          <property name="whatsThis">
+           <string notr="true">nach_oben</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_oben.svg</normaloff>:/images/nach_oben.svg</iconset>
+            <normaloff>:/images/light/nach_oben.svg</normaloff>:/images/light/nach_oben.svg</iconset>
           </property>
          </widget>
         </item>
@@ -108,9 +111,12 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Rast eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
+          <property name="whatsThis">
+           <string notr="true">nach_unten</string>
+          </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/nach_unten.svg</normaloff>:/images/nach_unten.svg</iconset>
+            <normaloff>:/images/light/nach_unten.svg</normaloff>:/images/light/nach_unten.svg</iconset>
           </property>
          </widget>
         </item>

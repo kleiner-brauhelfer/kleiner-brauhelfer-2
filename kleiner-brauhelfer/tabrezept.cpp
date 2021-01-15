@@ -67,7 +67,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
-    mGlasSvg = new QGraphicsSvgItem(":/images/bier.svg");
+    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
     ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
   #ifdef QT_CHARTS_LIB

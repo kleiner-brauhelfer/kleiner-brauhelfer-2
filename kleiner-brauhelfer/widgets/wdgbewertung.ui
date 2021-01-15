@@ -56,7 +56,7 @@
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine komplette Bewertung&lt;span style=&quot; font-weight:600;&quot;&gt; gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine komplette Bewertung&lt;span style=&quot; font-weight:600;&quot;&gt; gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies hat keine Auswirkung auf die Markeriung als Sud abgefüllt oder verbraucht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">

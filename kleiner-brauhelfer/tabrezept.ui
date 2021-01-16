@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>375</width>
-         <height>680</height>
+         <width>451</width>
+         <height>688</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -537,7 +537,7 @@
            <item row="19" column="2">
             <widget class="SpinBoxSud" name="tbReifezeit">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; im Tab Gärverlauf oder, falls nichts eingetragen ist, ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; im Tab Gärverlauf oder, falls nichts eingetragen ist, ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Reifezeit berechnet sich aus der Reifung ab Hauptgärung und der Reifung der Lagerung.&lt;/p&gt;&lt;p&gt;Beispiel Lager 4-8 Wochen = 1-2 Wochen Hauptgärung + 3-6 Wochen Lagerung.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ausgewählte, empfohlene Reifezeiten:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Alt 3-6 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Amber Ale 3-6 Wochen Frühling&lt;/p&gt;&lt;p&gt;Barley Wine 12 Monate min. Winter&lt;/p&gt;&lt;p&gt;Bitter 3-6 Wochen herbst&lt;/p&gt;&lt;p&gt;Blonde 1-4 Wochen Winter&lt;/p&gt;&lt;p&gt;Doppelbock 4-6 Monate Winter, Frühling&lt;/p&gt;&lt;p&gt;Dubbel 8 Monate min. Winter&lt;/p&gt;&lt;p&gt;Fruchtbier 1-4 Wochen Sommer&lt;/p&gt;&lt;p&gt;Imperial Stout 6-12 Monate Winter&lt;/p&gt;&lt;p&gt;IPA 4-8 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Kölsch 3-6 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Märzen 6-8 Wochen Herbst&lt;/p&gt;&lt;p&gt;Mild Ale 3-6 Wochen Herbst&lt;/p&gt;&lt;p&gt;Old Ale 2-3 Monate Herbst&lt;/p&gt;&lt;p&gt;Pale Ale 3-6 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Pilsner 4-8 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Quadrupel 8 Monate min. Winter&lt;/p&gt;&lt;p&gt;Rauchbier 3-6 Monate Winter&lt;/p&gt;&lt;p&gt;Saison 2-3 Wochen Sommer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -806,8 +806,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>335</width>
-                 <height>107</height>
+                 <width>381</width>
+                 <height>105</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -992,8 +992,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>349</width>
-              <height>340</height>
+              <width>443</width>
+              <height>344</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1235,8 +1235,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>349</width>
-              <height>133</height>
+              <width>443</width>
+              <height>122</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1425,8 +1425,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>349</width>
-             <height>584</height>
+             <width>443</width>
+             <height>559</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1655,7 +1655,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>363</width>
+              <width>443</width>
               <height>114</height>
              </rect>
             </property>
@@ -2076,7 +2076,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>363</width>
+             <width>443</width>
              <height>363</height>
             </rect>
            </property>

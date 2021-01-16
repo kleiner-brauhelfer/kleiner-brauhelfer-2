@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>653</width>
-    <height>122</height>
+    <width>700</width>
+    <height>145</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -83,7 +83,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im Tab Rohstoffe (Reiter Malz) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Rohstoffe &lt;/span&gt;(Reiter Malz) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Grundsätzlich können im Kleinen Brauhelfer nur Zutaten verwendet werden, die in den Rohstofflisten im Tab Rohstoffe erfasst sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>

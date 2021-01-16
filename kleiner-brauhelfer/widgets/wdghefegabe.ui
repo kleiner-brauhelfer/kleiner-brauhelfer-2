@@ -86,7 +86,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Hefesorte aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste&lt;/span&gt; im Tab Rohstoffe gewählt. Die Zutat kann dabei jeerzeit geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Hefesorte aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste&lt;/span&gt; im Tab Rohstoffe gewählt. Die Zutat kann dabei jeerzeit geändert werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Grundsätzlich können im Kleinen Brauhelfer nur Zutaten verwendet werden, die in den Rohstofflisten im Tab Rohstoffe erfasst sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -255,7 +255,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge &lt;/span&gt;eines Hefevorrates aus dem Rohstofflager im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe &lt;/span&gt;übernommen.&lt;/p&gt;&lt;p&gt;Diese Funktion macht Sinn bei kleinen Restmengen, wenn mehrere Packungen für einen Sud erforderlich sind oder Großssuden. die Packungen von Trocken- wie Flüssighefe sind überwiegend für Sude von 20 Litern (5,5 Gallonen) konfektioniert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge &lt;/span&gt;eines Hefevorrates aus dem Rohstofflager im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe &lt;/span&gt;übernommen.&lt;/p&gt;&lt;p&gt;Diese Funktion macht bei Restmengen im Rohstofflager Sinn, wenn mehrere Packungen für einen Sud erforderlich sind oder bei Großssuden.&lt;/p&gt;&lt;p&gt;Die Packungen von Trocken- wie Flüssighefe sind überwiegend für Sude von 20 Litern (5,5 Gallonen) konfektioniert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">uebertrag_links</string>

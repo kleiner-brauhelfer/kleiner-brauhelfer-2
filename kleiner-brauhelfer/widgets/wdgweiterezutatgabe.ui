@@ -193,7 +193,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extrakanteil&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; anhand seine Eintrags im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Der Wert in °Plato kann anschließend angepasst werden. Der Extraktanteil von Zusätzen ist allgemein deutlich niedriger als der von Malz. Dies liegt zum einen stark am Wasseranteil, zum anderen am Anteil verwertbarer Kohlenhydrate, insbesondere Polysaccharide..&lt;/p&gt;&lt;p&gt;Bei den Zusätzen macht der Kleine Brauhelfer eine Ausnahme: Die &lt;span style=&quot; font-weight:600;&quot;&gt;Werte&lt;/span&gt; aus der Rohstoffliste sind &lt;span style=&quot; font-weight:600;&quot;&gt;veränderbar&lt;/span&gt;. Dies ist ntig, da viele Zusätze, vor allem Früchte, einen stark schwankenden Zuckergehalt haben.&lt;/p&gt;&lt;p&gt;So schwankt etwa bei Kürbis die Extraktausbeute selbst innerhalb einer Sorte beträchtlich.&lt;/p&gt;&lt;p&gt;Das Them Extrakt in Zusätzen ist anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen, mehr aber noch die Seiten von Herstellerverbänden und wissenschaftliche Publikationen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extrakanteil&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; anhand seine Eintrags im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Der Wert in °Plato kann anschließend angepasst werden. Der Extraktanteil von Zusätzen ist allgemein deutlich niedriger als der von Malz. Dies liegt zum einen stark am Wasseranteil, zum anderen am Anteil verwertbarer Kohlenhydrate, insbesondere Polysaccharide..&lt;/p&gt;&lt;p&gt;Bei den Zusätzen macht der Kleine Brauhelfer eine Ausnahme: Die &lt;span style=&quot; font-weight:600;&quot;&gt;Werte&lt;/span&gt; aus der Rohstoffliste sind &lt;span style=&quot; font-weight:600;&quot;&gt;veränderbar&lt;/span&gt;. Dies ist ntig, da viele Zusätze, vor allem Früchte, einen stark schwankenden Zuckergehalt haben.&lt;/p&gt;&lt;p&gt;So schwankt etwa bei Kürbis die Extraktausbeute selbst innerhalb einer Sorte beträchtlich.&lt;/p&gt;&lt;p&gt;Das Them Extrakt in Zusätzen ist anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen, mehr aber noch die Seiten von Herstellerverbänden und wissenschaftliche Publikationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -632,6 +632,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
@@ -640,11 +645,6 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

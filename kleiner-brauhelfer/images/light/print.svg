@@ -7,44 +7,39 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   shape-rendering="crispEdges"
-   width="64"
-   height="64"
-   viewBox="0 0 64 64"
-   version="1.1"
-   id="svg4450"
+   sodipodi:docname="print.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="print.svg">
+   id="svg4450"
+   version="1.1"
+   viewBox="0 0 64 64"
+   height="64"
+   width="64"
+   shape-rendering="crispEdges">
   <defs
-     id="defs4444">
-	
-	
-	
-	
-</defs>
+     id="defs4444" />
   <sodipodi:namedview
-     inkscape:current-layer="layer1"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-11"
-     inkscape:window-x="-11"
-     inkscape:window-height="2066"
-     inkscape:window-width="3840"
-     inkscape:cy="11.336737"
-     inkscape:cx="-11.689192"
-     inkscape:zoom="7.2109374"
-     inkscape:document-rotation="0"
-     inkscape:showpageshadow="false"
-     showborder="true"
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
+     units="px"
      showgrid="true"
-     units="px">
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showborder="true"
+     inkscape:showpageshadow="false"
+     inkscape:document-rotation="0"
+     inkscape:zoom="7.2109374"
+     inkscape:cx="-11.689192"
+     inkscape:cy="11.336737"
+     inkscape:window-width="3840"
+     inkscape:window-height="2066"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
     <inkscape:grid
-       empspacing="4"
+       id="grid5013"
        type="xygrid"
-       id="grid5013" />
+       empspacing="4" />
   </sodipodi:namedview>
   <metadata
      id="metadata4447">
@@ -59,99 +54,84 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Layer 1">
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g850">
-</g>
+       id="g850"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g852">
-</g>
+       id="g852"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g854">
-</g>
+       id="g854"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g856">
-</g>
+       id="g856"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g858">
-</g>
+       id="g858"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g860">
-</g>
+       id="g860"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g862">
-</g>
+       id="g862"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g864">
-</g>
+       id="g864"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g866">
-</g>
+       id="g866"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g868">
-</g>
+       id="g868"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g870">
-</g>
+       id="g870"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g872">
-</g>
+       id="g872"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g874">
-</g>
+       id="g874"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g876">
-</g>
+       id="g876"
+       transform="translate(-225.03112,-105.59416)" />
     <g
-       transform="translate(-225.03112,-105.59416)"
-       id="g878">
-</g>
+       id="g878"
+       transform="translate(-225.03112,-105.59416)" />
     <path
-       sodipodi:nodetypes="cccccc"
-       id="path941"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 20,44 H 8 V 20 H 56 V 44 H 44"
-       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path941"
+       sodipodi:nodetypes="cccccc" />
     <path
-       sodipodi:nodetypes="cccc"
-       id="path943"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 16,20 V 8 h 32 v 12"
-       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path943"
+       sodipodi:nodetypes="cccc" />
     <path
-       sodipodi:nodetypes="ccccc"
-       id="path945"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 20,36 V 56 H 44 V 36 Z"
-       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       sodipodi:nodetypes="cc"
-       id="path949"
-       d="M 26,49 H 38"
-       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <circle
-       r="2"
-       cy="28"
-       cx="48"
-       id="path955"
-       style="opacity:0.95;fill:#000000;fill-opacity:1;stroke:none;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+       id="path945"
+       sodipodi:nodetypes="ccccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 26,44 H 38"
-       id="path949-3"
+       d="M 26,49 H 38"
+       id="path949"
        sodipodi:nodetypes="cc" />
+    <circle
+       r="3"
+       style="opacity:0.95;fill:#000000;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path955"
+       cx="47"
+       cy="27" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path949-3"
+       d="M 26,44 H 38"
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

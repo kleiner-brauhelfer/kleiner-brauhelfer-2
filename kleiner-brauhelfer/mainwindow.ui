@@ -60,61 +60,109 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabsudauswahl.svg</normaloff>:/images/light/tabsudauswahl.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Sudauswahl</string>
            </attribute>
           </widget>
           <widget class="TabRezept" name="tabRezept">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabrezept.svg</normaloff>:/images/light/tabrezept.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Rezept</string>
            </attribute>
           </widget>
           <widget class="TabBraudaten" name="tabBraudaten">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabbraudaten.svg</normaloff>:/images/light/tabbraudaten.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Braudaten</string>
            </attribute>
           </widget>
           <widget class="TabAbfuellen" name="tabAbfuelldaten">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tababfuellen.svg</normaloff>:/images/light/tababfuellen.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Abfülldaten</string>
            </attribute>
           </widget>
           <widget class="TabGaerverlauf" name="tabGaerverlauf">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>:/images/light/tabgaerverlauf.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Gärverlauf</string>
            </attribute>
           </widget>
           <widget class="TabZusammenfassung" name="tabZusammenfassung">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>:/images/light/tabzusammenfassung.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Zusammenfassung</string>
            </attribute>
           </widget>
           <widget class="TabEtikette" name="tabEtikette">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabetikette.svg</normaloff>:/images/light/tabetikette.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Etikette</string>
            </attribute>
           </widget>
           <widget class="TabBewertung" name="tabBewertung">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabbewertung.svg</normaloff>:/images/light/tabbewertung.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Bewertung</string>
            </attribute>
           </widget>
           <widget class="TabBrauUebersicht" name="tabBrauuebersicht">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabbrauuebersicht.svg</normaloff>:/images/light/tabbrauuebersicht.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Brauübersicht</string>
            </attribute>
           </widget>
           <widget class="TabAusruestung" name="tabAusruestung">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabausruestung.svg</normaloff>:/images/light/tabausruestung.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Ausrüstung</string>
            </attribute>
           </widget>
           <widget class="TabRohstoffe" name="tabRohstoffe">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabrohstoffe.svg</normaloff>:/images/light/tabrohstoffe.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Rohstoffe</string>
            </attribute>
           </widget>
           <widget class="TabDatenbank" name="tabDatenbank">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabdatenbank.svg</normaloff>:/images/light/tabdatenbank.svg</iconset>
+           </attribute>
            <attribute name="title">
             <string>Datenbank</string>
            </attribute>
@@ -334,15 +382,8 @@
    </property>
   </action>
   <action name="actionOeffnen">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/database.svg</normaloff>:/images/light/database.svg</iconset>
-   </property>
    <property name="text">
     <string>Datenbank auswählen</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">database</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -397,15 +438,8 @@
    </property>
   </action>
   <action name="actionBereinigen">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/database_clean.svg</normaloff>:/images/light/database_clean.svg</iconset>
-   </property>
    <property name="text">
     <string>Bereinigen</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">database_clean</string>
    </property>
   </action>
   <action name="actionEingabefelderEntsperren">

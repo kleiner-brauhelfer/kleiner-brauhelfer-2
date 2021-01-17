@@ -14,11 +14,10 @@
    height="1000"
    id="svg3005"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="bier_dark.svg"
-   inkscape:export-filename="/home/xubuntu/prog/kb/source/res/bier_dark_420x420.png"
-   inkscape:export-xdpi="37.799999"
-   inkscape:export-ydpi="37.799999">
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="bier.svg"
+   inkscape:export-xdpi="17.985487"
+   inkscape:export-ydpi="17.985487">
   <defs
      id="defs3007">
     <linearGradient
@@ -217,16 +216,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.938"
-     inkscape:cx="260.12794"
-     inkscape:cy="500"
+     inkscape:zoom="12.290684"
+     inkscape:cx="12.20474"
+     inkscape:cy="11.110822"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="1151"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="1277"
+     inkscape:window-y="-3"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -304,7 +303,7 @@
        id="rect3790"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#191919;fill-opacity:1;stroke:#333333;stroke-width:4.10426760000000002;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#191919;fill-opacity:1;stroke:#333333;stroke-width:4.1042676;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 132.41873,-168.93002 -0.63615,888.03649 867.706,-0.12203 0,-887.73812 z M 561.52778,-108.62 c 119.30518,0 216.18432,13.815076 217.4806,30.944761 0.009,0.115917 0.0548,0.220801 0.0548,0.336968 0,0.380009 -0.12626,0.746487 -0.2195,1.123222 L 706.29529,651.52035 c 0,12.58006 -64.81921,22.80139 -144.76757,22.80139 -79.94835,0 -144.76755,-10.22133 -144.76755,-22.80139 l -72.71296,-728.184686 0.10976,0 c -0.0349,-0.231131 -0.10976,-0.441592 -0.10976,-0.673935 0,-17.290031 97.36841,-31.281729 217.4806,-31.281729 z"
        id="rect3810"
        inkscape:connector-curvature="0"

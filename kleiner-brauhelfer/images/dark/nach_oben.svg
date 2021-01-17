@@ -7,40 +7,40 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="nach_oben.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   version="1.1"
+   width="64"
+   height="64"
    id="svg2"
-   height="16"
-   width="16">
+   version="1.1"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="nach_oben.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
-     inkscape:document-rotation="0"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-11"
-     inkscape:window-x="-11"
-     inkscape:window-height="2066"
-     inkscape:window-width="3840"
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     showgrid="true"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="px"
-     inkscape:cy="13.961064"
-     inkscape:cx="24.340467"
-     inkscape:zoom="22.627417"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#ffffff"
-     id="base">
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="19.229166"
+     inkscape:cx="36.562422"
+     inkscape:cy="19.577738"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="3840"
+     inkscape:window-height="2066"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0">
     <inkscape:grid
-       id="grid4349"
-       type="xygrid" />
+       type="xygrid"
+       id="grid4349" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -55,27 +55,27 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-152.81512,-354.63611)"
-     id="layer1"
+     inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
-     inkscape:label="Ebene 1">
+     id="layer1"
+     transform="translate(-152.81512,-354.63611)">
     <path
-       inkscape:transform-center-x="1.7989549e-06"
-       transform="matrix(0.04939468,0,0,0.05703606,147.26687,348.12388)"
-       inkscape:transform-center-y="-1.9999955"
-       d="m 395.75629,359.63611 -121.47058,0 -121.47059,0 60.73529,-105.19661 60.7353,-105.19661 60.73529,105.19661 z"
-       inkscape:randomized="0"
-       inkscape:rounded="0"
-       inkscape:flatsided="false"
-       sodipodi:arg2="1.5707963"
-       sodipodi:arg1="0.52359878"
-       sodipodi:r2="70.131073"
-       sodipodi:r1="140.26215"
-       sodipodi:cy="289.50504"
-       sodipodi:cx="274.28571"
-       sodipodi:sides="3"
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.240001"
        id="path2991"
-       style="fill:#ffffff;fill-opacity:1;stroke:none"
-       sodipodi:type="star" />
+       sodipodi:sides="3"
+       sodipodi:cx="274.28571"
+       sodipodi:cy="289.50504"
+       sodipodi:r1="140.26215"
+       sodipodi:r2="70.131073"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.5707963"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 395.75629,359.63611 -121.47058,0 -121.47059,0 60.73529,-105.19661 60.7353,-105.19661 60.73529,105.19661 z"
+       inkscape:transform-center-y="-8.3333064"
+       transform="matrix(0.20581115,0,0,0.23765024,128.36406,326.1685)"
+       inkscape:transform-center-x="5.1227975e-06" />
   </g>
 </svg>

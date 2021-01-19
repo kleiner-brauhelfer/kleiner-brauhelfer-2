@@ -32,7 +32,7 @@
      <item>
       <widget class="QLineEdit" name="tbDatenbankPfad">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld gibt Auskunft zum Pfad der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld gibt Auskunft zum Pfad der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -67,7 +67,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Mit einem Update kann sich die Versionsnummer der Datenbank ändern. Datenbanken im Kleinen Brauhelfer sind nicht abwärtskompatibel. Es wird daher dringend angeraten vor jeden Update ein Backup der aktuellen Datenbank zu machen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Datenbanversionen im Kleinen Brauhelfer sind &lt;span style=&quot; font-weight:600;&quot;&gt;nicht abwärtskompatibel&lt;/span&gt;! Mit einem Update kann sich die Versionsnummer der Datenbank ändern. Es wird daher dringend angeraten vor jeden Update ein Backup der aktuellen Datenbank zu machen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -129,7 +129,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Sektion der aktuellen Datenbank ausgewählt, &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Tabelle genannt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man im Kleinen Brauhelfer ein Kapitel in den Tabs (Reitern) und ihren Subkategorien. Der Rechtsklick zeigt die Liste von über 20 Kapiteln an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Sektion der aktuellen Datenbank ausgewählt, &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Tabelle genannt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man im Kleinen Brauhelfer ein Kapitel in den Tabs (Reitern) und ihren Subkategorien. Der Rechtsklick zeigt die Liste von über 20 Kapiteln an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -182,7 +182,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezfische&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Einträge&lt;/span&gt; eines Sudes, unterteilt in Kapitel, angezeigt werden.&lt;/p&gt;&lt;p&gt;Zuvor muss ein Sud geladen werden. Der Rechtsklick zeigt dann die Liste verfügbarer Kapitel an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezfischeEinträge&lt;/span&gt; eines Sudes, unterteilt in Kapitel, angezeigt werden.&lt;/p&gt;&lt;p&gt;Zuvor muss ein Sud geladen werden. Der Rechtsklick zeigt dann die Liste verfügbarer Kapitel an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>

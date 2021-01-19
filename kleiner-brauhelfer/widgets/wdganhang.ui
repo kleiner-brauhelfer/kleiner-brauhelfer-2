@@ -118,7 +118,7 @@
       <item row="1" column="3">
        <widget class="QPushButton" name="btnOpen">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Fenster für einen Pfad zu einem Anhang geöffnet.&lt;/p&gt;&lt;p&gt;Der Pfad zum Anhang muss gültig sein. Der Kleine Brauhelfer bettet Dateianhänge nicht ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Fenster für einen &lt;span style=&quot; font-weight:600;&quot;&gt;Pfad&lt;/span&gt; zu einem Anhang geöffnet.&lt;/p&gt;&lt;p&gt;Der Pfad zum Anhang &lt;span style=&quot; font-weight:600;&quot;&gt;muss gültig sein&lt;/span&gt;. Der Kleine Brauhelfer bettet Dateianhänge nicht ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>Öffnen</string>

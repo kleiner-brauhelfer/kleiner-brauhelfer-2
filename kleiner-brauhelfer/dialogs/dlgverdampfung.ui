@@ -97,7 +97,7 @@
       <item row="1" column="2">
        <widget class="DoubleSpinBox" name="dSpinBox_cmVomBodenMenge1">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Unterkante des Kessels bis zur Oberkante des Sudes zu &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; messen. Ist der Kesselboden uneben, so empfiehlt sich eine mittlere Stelle zur Messung. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der Unterkante des Kessels bis zur Oberkante des Sudes zu &lt;span style=&quot; font-weight:600;&quot;&gt;Kochbeginn&lt;/span&gt; messen. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;p&gt;Ist der Kesselboden uneben, so empfiehlt sich eine mittlere Stelle zur Messung. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -347,7 +347,7 @@
      <item row="2" column="2">
       <widget class="DoubleSpinBox" name="dSpinBox_Verdampfungsziffer">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsziffer&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -382,7 +382,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; in Minuten angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -402,7 +402,7 @@
      <item row="3" column="2">
       <widget class="DoubleSpinBox" name="dSpinBox_Verdampfungsrate">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;in l/h&lt;/span&gt; ausgegeben. Die vormalige prozentuale Berechnung wurde zugunsten der genaueren Berechnung l/h ersetzt. Diese ist nicht von der relativen Sudmenge, sondern von der &lt;span style=&quot; font-weight:600;&quot;&gt;Leistungsaufnahme absolut &lt;/span&gt;abhängig, somit immer annähernd gleich ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

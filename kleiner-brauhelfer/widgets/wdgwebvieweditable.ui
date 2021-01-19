@@ -124,7 +124,7 @@
          <item>
           <widget class="ComboBox" name="cbTemplateAuswahl">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wir das zu überarbeitende Template &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wir das zu überarbeitende Template &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dazu einige Vorlagen, die beständig erweitert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <item>
             <property name="text">
@@ -192,7 +192,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe &lt;span style=&quot; font-weight:600;&quot;&gt;ausgedruckt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe des Spickzettels &lt;span style=&quot; font-weight:600;&quot;&gt;ausgedruckt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Handelt es sich um ein gebrautes Rezept, heißt der Spickzettel &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">print</string>
@@ -212,7 +212,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe als &lt;span style=&quot; font-weight:600;&quot;&gt;PDF&lt;/span&gt; abgespeichert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe des Spickzettels als &lt;span style=&quot; font-weight:600;&quot;&gt;PDF&lt;/span&gt; abgespeichert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Handelt es sich um ein gebrautes Rezept, heißt der Spickzettel &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">pdf</string>
@@ -226,7 +226,7 @@
          <item>
           <widget class="QCheckBox" name="cbEditMode">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML und CSS Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in CSS und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML- und CSS-Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in CSS und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">settings</string>
@@ -255,11 +255,17 @@
           <enum>Qt::Horizontal</enum>
          </property>
          <widget class="QPlainTextEdit" name="tbTemplate">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld ist der Spickzettel im &lt;span style=&quot; font-weight:600;&quot;&gt;HTML&lt;/span&gt; definiert. Platzhalter nehmen die Tags rechts auf und verabeiten sie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="lineWrapMode">
            <enum>QPlainTextEdit::NoWrap</enum>
           </property>
          </widget>
          <widget class="QPlainTextEdit" name="tbTags">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Tags &lt;/span&gt;im Spickzettel definiert. Tags werden links in HTML weiterverarbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="lineWrapMode">
            <enum>QPlainTextEdit::NoWrap</enum>
           </property>

@@ -30,7 +30,7 @@
           </sizepolicy>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;im Format SVG aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten. SVG ist eine Beschreibung zweidimensionaler Grafiken.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Reiter werden zuvor abgespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Gestaltungsvorlagen &lt;/span&gt;im Format &lt;span style=&quot; font-weight:600;&quot;&gt;SVG&lt;/span&gt; aufgerufen. Mit Vorlagen lassen sich Etiketten schnell und unkompliziert gestalten. SVG (Scalable Vector Graphics) ist eine verlustfreie Beschreibung zweidimensionaler Grafiken, basierend auf XML.&lt;/p&gt;&lt;p&gt;Die Gestaltungsmöglichkeiten beziehen sich dabei grundlegend auf Einträge und eingepflegte Bestände im Kleinen Brauhelfer.&lt;/p&gt;&lt;p&gt;Der Funktionsumfang ist zweckmäßig. Er erfüllt nicht die Anforderungen mächtiger Design- und Grafikprogramme. Es können aber viele moderne Designelemente mittels CSS3 und HTML5 definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -97,7 +97,7 @@
            <item>
             <widget class="QCheckBox" name="cbTagsErsetzen">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angeklickt, können hiermit eigene &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; definiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angekreuzt, können hiermit bestehende &lt;span style=&quot; font-weight:600;&quot;&gt;Tags ersetzt &lt;/span&gt;werden..&lt;/p&gt;&lt;p&gt;Tags sind leicht verständliche Code-Schnipsel, Schlüsselörter, die vom Programm entsprechend interpretiert werden, ohne dass spezielle Programmierkenntnisse erforderlich sind. Einmal definiert, können Tags problemlos im Etikett eingefügt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Tags ersetzen</string>
@@ -116,7 +116,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;svg-Datei&lt;/span&gt; aktualisiert. Andernfalls können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;SVG-Datei&lt;/span&gt; aktualisiert.&lt;/p&gt;&lt;p&gt;SVG ermöglicht skalierbare, verlustfreie Grafiken. Ohne Aktualisierung können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="whatsThis">
               <string notr="true">refresh</string>
@@ -136,7 +136,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; in aktuellen Rezept gespeichert.&lt;/p&gt;&lt;p&gt;Dies kann nicht rückgängig gemacht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; in aktuellen Rezept gespeichert.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="whatsThis">
               <string notr="true">save</string>
@@ -170,7 +170,7 @@
         </property>
         <widget class="QPlainTextEdit" name="tbTemplate">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Bereich wird das Etikett mittels Tags und XML-Elementen gemäß der Beschreibungssprache SVG layoutet.&lt;/p&gt;&lt;p&gt;Das jeweils gewählte Tag wird hierfür mit einem Wert aus dem Bereich rechts definiert. Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Bereich wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; mittels Tags und XML-Elementen gemäß der Beschreibungssprache &lt;span style=&quot; font-weight:600;&quot;&gt;SVG&lt;/span&gt; layoutet. SVG ermöglicht skalierbare, verlustfreie Grafiken.&lt;/p&gt;&lt;p&gt;Das jeweils gewählte Tag wird hierfür mit einem Wert aus dem Bereich rechts definiert. Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="lineWrapMode">
           <enum>QPlainTextEdit::NoWrap</enum>
@@ -261,7 +261,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Aus praktischen Erwägungen sollte die gewählte Zahl mit dem später gewählten Druckformat übereinstimmen. Üblicherweise werden Halsspitzetiketten auf einem handelsüblichen Drucker in DINA A4 ausgedruckt und die Druckbögen dann zurechtgeschnitten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Aus praktischen Erwägungen sollte die gewählte Zahl mit dem später gewählten Druckformat übereinstimmen. Üblicherweise werden Halsspitzetiketten auf einem handelsüblichen Drucker in DINA A4 210 x 297 mm ausgedruckt und der &lt;span style=&quot; font-weight:600;&quot;&gt;Druckbogen&lt;/span&gt; dann zurechtgeschnitten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -395,7 +395,7 @@
           <item row="2" column="0" colspan="3">
            <widget class="QCheckBox" name="cbSeitenverhaeltnis">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein eigenes &lt;span style=&quot; font-weight:600;&quot;&gt;Seitenverhältnis&lt;/span&gt; definiert werden.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Diese macht Sinn bei besonderen Flaschentypen, die von der Norm abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein eigenes &lt;span style=&quot; font-weight:600;&quot;&gt;Seitenverhältnis&lt;/span&gt; manuell definiert werden.&lt;/p&gt;&lt;p&gt;Diese macht Sinn bei besonderen Flaschentypen, die von der Norm abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Seitenverhältnis beibehalten</string>
@@ -408,7 +408,7 @@
           <item row="3" column="0" colspan="3">
            <widget class="QPushButton" name="btnGroesseAusSvg">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das in der Vorlage definierte Seitenverhältnis der aktuell gewählten Etikettenvorlage übernommen. Eine manuelle Anpassung entfällt damit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das in der &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Seitenverhältnis&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;aus&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;SVG-Datei&lt;/span&gt; der aktuell gewählten Etikettenvorlage übernommen. Eine manuelle Anpassung entfällt damit. Die Werte erscheinen in den Millimeterfeldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
              <string>Aus SVG übernehmen</string>
@@ -486,7 +486,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;horizontale Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2 mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2 mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;horizontaler Abstand&lt;/span&gt; zwischen den einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2 mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2 mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierzuschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -505,7 +505,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;vertikale Abstand&lt;/span&gt; zwischen einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;vertikaler Abstand&lt;/span&gt; zwischen den einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 2mm Beschnittzugabe, um Ungenauigkeiten wie sogenannte Blitzer zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 2mm Farbauftrag zum Rand addiert. Blitzer entstehen bei Ungenauigkeiten während des Papierschnitts.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -527,7 +527,7 @@
           <item>
            <widget class="TableView" name="tableTags">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden zusätzliche Tags für das gewählte Etikett aufgelistet.&lt;/p&gt;&lt;p&gt;Ein Tag besteht aus seinem Namen und seinem Wert. Tags werden in doppelt geschweiften Klammern beschrieben. Bei Fragen zur Auszeichnungssprache des svg-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden zusätzliche &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; für das gewählte Etikett aufgelistet.&lt;/p&gt;&lt;p&gt;Ein Tag besteht aus seinem &lt;span style=&quot; font-weight:600;&quot;&gt;Namen&lt;/span&gt; und seinem Wert. Tags werden in&lt;span style=&quot; font-weight:600;&quot;&gt; doppelt geschweiften Klammern&lt;/span&gt; beschrieben. Bei Fragen zur Auszeichnungssprache des svg-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alternatingRowColors">
              <bool>true</bool>
@@ -642,7 +642,7 @@
        <item>
         <widget class="QPushButton" name="btnToPdf">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer (leider) nicht möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer über die Druckvorschau möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="whatsThis">
           <string notr="true">print</string>

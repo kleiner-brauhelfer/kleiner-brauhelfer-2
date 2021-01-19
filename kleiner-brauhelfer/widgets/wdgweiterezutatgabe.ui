@@ -83,14 +83,14 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;angezeigt. Sie kann mit Klick auf den Button rechts gelöscht werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;angezeigt. Sie kann mit Klick auf den Button rechts gelöscht werden.&lt;/p&gt;&lt;p&gt;Zusätze werden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; verwaltet. Nur wenn dort angelegt tauchen sie hier auf.&lt;/p&gt;&lt;p&gt;Zusätze sind:&lt;/p&gt;&lt;p&gt;• Honig&lt;/p&gt;&lt;p&gt;• Zucker&lt;/p&gt;&lt;p&gt;•Gewürze&lt;/p&gt;&lt;p&gt;• Früchte&lt;/p&gt;&lt;p&gt;• Sonstiges (Alkohol. Spirituosen, Hefenahrung)&lt;/p&gt;&lt;p&gt;• Kräuter&lt;/p&gt;&lt;p&gt;•Wasseraufbereitung Salze und Säuren&lt;/p&gt;&lt;p&gt;• Klärmittel&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze haben teilweise sehr unterschiedliche Eigenschaften. Hat man keine Kenntnis von der Wirkung eines Zatzes, empfpiehlt es sich vor gut kundig in Fachbücher und Fachforen wie der&lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Rezepteabteilung&lt;/span&gt;&lt;/a&gt; bei &lt;span style=&quot; font-weight:600;&quot;&gt;Hobbybrauer.de&lt;/span&gt; kundig zu machen. Gerade für Brauanfänger liegt die Gefahr in einer Überdosierung von Zutaten. Bier wird es zwar immer, das sollte aber nicht die Messlatte sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Zutat in der Liste nach oben verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;nach oben &lt;/span&gt;verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_oben</string>
@@ -104,7 +104,7 @@
         <item>
          <widget class="QPushButton" name="btnNachUnten">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Zutat in der Liste nach unten verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;nach unten &lt;/span&gt;verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_unten</string>
@@ -118,7 +118,7 @@
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Zutat aus dem Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus dem Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -152,7 +152,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld zeigt der Kleine Brauhelfer die vorhandene Menge für der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; im Tab Rohstoffe an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; für der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe &lt;/span&gt;an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -191,6 +191,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extrakanteil&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; anhand seine Eintrags im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Der Wert in °Plato kann anschließend angepasst werden. Der Extraktanteil von Zusätzen ist allgemein deutlich niedriger als der von Malz. Dies liegt zum einen stark am Wasseranteil, zum anderen am Anteil verwertbarer Kohlenhydrate, insbesondere Polysaccharide..&lt;/p&gt;&lt;p&gt;Bei den Zusätzen macht der Kleine Brauhelfer eine Ausnahme: Die &lt;span style=&quot; font-weight:600;&quot;&gt;Werte&lt;/span&gt; aus der Rohstoffliste sind &lt;span style=&quot; font-weight:600;&quot;&gt;veränderbar&lt;/span&gt;. Dies ist ntig, da viele Zusätze, vor allem Früchte, einen stark schwankenden Zuckergehalt haben.&lt;/p&gt;&lt;p&gt;So schwankt etwa bei Kürbis die Extraktausbeute selbst innerhalb einer Sorte beträchtlich.&lt;/p&gt;&lt;p&gt;Das Them Extrakt in Zusätzen ist anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen, mehr aber noch die Seiten von Herstellerverbänden und wissenschaftliche Publikationen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -251,7 +254,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die Menge &lt;span style=&quot; font-weight:600;&quot;&gt;Weiterer Zutaten &lt;/span&gt;in &lt;span style=&quot; font-weight:600;&quot;&gt;Gramm pro Liter&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelder berechnet&lt;span style=&quot; font-weight:600;&quot;/&gt;Zutaten&lt;span style=&quot; font-weight:600;&quot;&gt; allein und ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes. Die Gesamtmenge meint allein die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt; des Rezeptes wie im Tab Rezept am Anfang der Rezepterstellung festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in&lt;span style=&quot; font-weight:600;&quot;&gt; g/l &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Menge &lt;/span&gt;links wird parallel dazu die gesamtes Menge des Zusatzes berechnet. Beide Felder bedingen ich gegenseitig.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelfer berechnet Zusätze&lt;span style=&quot; font-weight:600;&quot;&gt; ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes, wie ganzu zu Beginn der Rezepterstellung oben links festgelegt wurde. Die Gesamtmenge meint die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Gesamtmenge darf nicht mit de Gesamtmenge des Brauwassers aus Haupt- und Nachguss verwechselt werden!&lt;/p&gt;&lt;p&gt;Wenn ein Zusatz Anteil an der festgelegten Stammwürze hat, senkt die Mengenfestlegung hier den Malzanteil prozentual ab.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -286,7 +289,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Pfeil trägt die &lt;span style=&quot; font-weight:600;&quot;&gt;gesamte Menge&lt;/span&gt; der Zutat aus der Rohstoffliste ein.&lt;/p&gt;&lt;p&gt;Diese Funktion macht Sinn bei Restbeständen, bei größeren Mengen verständlicherweise nicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Pfeil trägt die &lt;span style=&quot; font-weight:600;&quot;&gt;gesamte Menge&lt;/span&gt; der Zutat aus der Rohstoffliste ein.&lt;/p&gt;&lt;p&gt;Diese Funktion macht Sinn bei Restbeständen, bei größeren Mengen verständlicherweise nicht.&lt;/p&gt;&lt;p&gt;Zusätze werden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; verwaltet. Nur wenn dort angelegt tauchen sie hier auf.&lt;/p&gt;&lt;p&gt;Zusätze sind:&lt;/p&gt;&lt;p&gt;• Honig&lt;/p&gt;&lt;p&gt;• Zucker&lt;/p&gt;&lt;p&gt;•Gewürze&lt;/p&gt;&lt;p&gt;• Früchte&lt;/p&gt;&lt;p&gt;• Sonstiges (Alkohol. Spirituosen, Hefenahrung)&lt;/p&gt;&lt;p&gt;• Kräuter&lt;/p&gt;&lt;p&gt;•Wasseraufbereitung Salze und Säuren&lt;/p&gt;&lt;p&gt;• Klärmittel&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze haben teilweise sehr unterschiedliche Eigenschaften. Hat man keine Kenntnis von der Wirkung eines Zatzes, empfpiehlt es sich vor gut kundig in Fachbücher und Fachforen wie der&lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Rezepteabteilung&lt;/span&gt;&lt;/a&gt; bei &lt;span style=&quot; font-weight:600;&quot;&gt;Hobbybrauer.de&lt;/span&gt; kundig zu machen. Gerade für Brauanfänger liegt die Gefahr in einer Überdosierung von Zutaten. Bier wird es zwar immer, das sollte aber nicht die Messlatte sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">uebertrag_links</string>
@@ -306,7 +309,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; für der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;berechnet auf die Ausschlagmenge im Rezept an. &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; meint hier die anfangs definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Wie jedes Rezept ist dies eine Kalkulation. Spätere Verluste, Abweichungen werden nicht berücksicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in&lt;span style=&quot; font-weight:600;&quot;&gt; g &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;g/l &lt;/span&gt;rechts wird parallel dazu der Mengenanteil pro Liter berechnet. Beide Felder bedingen ich gegenseitig.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelfer berechnet Zusätze&lt;span style=&quot; font-weight:600;&quot;&gt; ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes, wie ganzu zu Beginn der Rezepterstellung oben links festgelegt wurde. Die Gesamtmenge meint die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Gesamtmenge darf nicht mit de Gesamtmenge des Brauwassers aus Haupt- und Nachguss verwechselt werden!&lt;/p&gt;&lt;p&gt;Wenn ein Zusatz Anteil an der festgelegten Stammwürze hat, senkt die Mengenfestlegung hier den Malzanteil prozentual ab.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -381,7 +384,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; für den Zusatz definiert, so diese beim Hopfenkochen zugegeben wird. Beim Maischen und in der Gärung sollte dieser Wert mit Null angegeben werden.&lt;/p&gt;&lt;p&gt;Die Kochdauer kann entscheidend in der Betonung von &lt;span style=&quot; font-weight:600;&quot;&gt;Geschmacksnoten&lt;/span&gt; sein, da sich Zugaben beim Kochen zeitlich vollkommen unterschiedlich verhalten können oder später das Verhalten anderer Zugaben beeinflussen. Ein Beispiel hierfür ist Hefe, aber auch Gewürzeinträge unterscheiden sich maßgebend, je nachdem ob heiß oder kalt zugegeben.&lt;/p&gt;&lt;p&gt;Dies rührt unter anderem daher, dass Molekülketten bei mit höherer Temperatur und längerer Zeit aufgespalten werden können und sich Geschmacks- oder Geruchskomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;unterschiedlich dominant&lt;/span&gt; verhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; für den Zusatz definiert, so diese beim Hopfenkochen zugegeben wird. Beim Maischen und in der Gärung ist dieser Wert 0.&lt;/p&gt;&lt;p&gt;Die Kochdauer kann entscheidend in der Betonung von &lt;span style=&quot; font-weight:600;&quot;&gt;Geschmacksnoten&lt;/span&gt; sein, da sich Zugaben beim Kochen zeitlich vollkommen unterschiedlich verhalten können oder später das Verhalten anderer Zugaben beeinflussen. Ein Beispiel hierfür ist Hefe. Auch Gewürzeinträge unterscheiden sich maßgebend, je nachdem, ob heiß oder kalt zugegeben.&lt;/p&gt;&lt;p&gt;Dies rührt unter anderem daher, dass Molekülketten bei mit höherer Temperatur und längerer Zeit aufgespalten werden können und sich damit Geschmacks- oder Geruchskomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;unterschiedlich dominant&lt;/span&gt; verhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -451,7 +454,7 @@
          <item row="0" column="6">
           <widget class="QPushButton" name="btnZugeben">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die Zugabe mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Zugeben&lt;/span&gt; vergessen, kann später der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die Zugabe von einem Zusatz mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Erst mit der Zugabe kann die Menge später aus de Rohstofflager abgezogen werden. Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Zugeben&lt;/span&gt; vergessen, kann später der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Zugeben</string>
@@ -576,7 +579,7 @@
          <item row="1" column="6">
           <widget class="QPushButton" name="btnEntnehmen">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird Kleinen Brauhelfer die Entnahme der Zugabe mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Entnehmen&lt;/span&gt; vergessen, kann später unter Umständen der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; voneinem Zusatz mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; color:#fc0107;&quot;/&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Die Entname ist ein Schritt, um die&lt;/span&gt; die Menge später aus de Rohstofflager abzuziehen. Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Entnehmen&lt;/span&gt; vergessen, kann später im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Entnehmen</string>
@@ -586,7 +589,7 @@
          <item row="0" column="4">
           <widget class="QCheckBox" name="cbEntnahme">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; der Zugabe festgelegt. Flüssigkeiten oder lösliche Stoffe werden mit keiner Entnahme definiert. &lt;/p&gt;&lt;p&gt;Ist eine &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; vorgesehen, empfiehlt sich ein verschnürbares Baumwollsäckchen, um das Jungbier nicht unnötig zu verunreinigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; der Zugabe festgelegt. Flüssigkeiten oder lösliche Stoffe werden mit keiner Entnahme definiert. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Ist eine &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; vorgesehen, empfiehlt sich ein verschnürbares Baumwollsäckchen, um das Jungbier nicht unnötig zu verunreinigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>keine Entnahme</string>

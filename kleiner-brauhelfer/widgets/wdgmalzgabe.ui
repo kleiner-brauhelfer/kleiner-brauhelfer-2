@@ -83,14 +83,14 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im Tab Rohstoffe (Reiter Malz) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Rohstoffe &lt;/span&gt;(Reiter Malz) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Grundsätzlich können im Kleinen Brauhelfer nur Zutaten verwendet werden, die in den Rohstofflisten im Tab Rohstoffe erfasst sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Malzsorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_oben</string>
@@ -104,7 +104,7 @@
         <item>
          <widget class="QPushButton" name="btnNachUnten">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Malzsorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_unten</string>
@@ -118,7 +118,7 @@
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Malzgabe aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Malzgabe aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Nach dem Löschen ist die prozentuale Verteilung falsch; die übrigen Malzemengen und Zusätze müssen verteilt auf 100% angepasst werden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -139,7 +139,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Malzmenge nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;anteilige Malzmenge&lt;/span&gt; an der Schüttung nach &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; definiert.&lt;/p&gt;&lt;p&gt;Die Berechnung hängt unmittelbar mit der prozentualen Aufteilung rechts Feld zusammen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -184,7 +184,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Malzanteil &lt;span style=&quot; font-weight:600;&quot;&gt;prozentual&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;prozentuale Malzanteil &lt;/span&gt;an der &lt;span style=&quot; font-weight:600;&quot;&gt;Schüttung&lt;/span&gt; definiert.&lt;/p&gt;&lt;p&gt;Die Berechnung hängt unmittelbar mit dem Gewichtsanteil im linken Feld zusammen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -206,7 +206,7 @@
         <item row="0" column="5">
          <widget class="QPushButton" name="btnKorrektur">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Rohstoffmenge 100% Gesamtschüttung unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein negativer Wert gibt an, dass zu wenig Rohstoffmenge gewählt wurde, ein positiver, dass eine zu große Menge gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die aktuelle Rohstoffmenge auf 100% Gesamtschüttung. Dies kann natürlich unpassend sein. In diesem Fall muss die Verteilung der Rohstoffe für die Schüttung anteilig vorab auf 100% bestimmt werden. Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Rohstoffmenge 100% Gesamtschüttung unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert&lt;/span&gt; gibt an, dass &lt;span style=&quot; font-weight:600;&quot;&gt;zu wenig Rohstoffmenge &lt;/span&gt;gewählt wurde, ein &lt;span style=&quot; font-weight:600;&quot;&gt;positiver Wert&lt;/span&gt;, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Rohstoffmenge &lt;/span&gt;gewählt wurde.&lt;/p&gt;&lt;p&gt;Ein Klick auf das Feld korrigiert die aktuelle Rohstoffmenge auf 100% Gesamtschüttung. Eventuell kann dies unpassend sein. In diesem Fall muss die Verteilung der Rohstoffe für die Schüttung anteilig vorab auf 100% bestimmt werden. Sind 100% erreicht, wird das Feld ausgeblendet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -265,7 +265,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;Das Feld wird rot unterlegt, wenn die benötigte Menge prozentual oder nach Gewicht größer als die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorratsmenge&lt;/span&gt; ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Das Feld wird rot unterlegt, wenn die benötigte Menge prozentual oder nach Gewicht größer als die &lt;span style=&quot; font-weight:600;&quot;&gt;Vorratsmenge&lt;/span&gt; ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -293,7 +293,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge Malz übernommen.&lt;/p&gt;&lt;p&gt;Diese Funktion empfiehlt sich allgemein nur bei Restbständen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge Malz übernommen.&lt;/p&gt;&lt;p&gt;Diese Funktion empfiehlt sich allgemein nur bei Restbständen. Dise Funktion fokussiert das gesamte Rezept auf diese Zutat. Dadurch verschieben sich die Relationen. Wenn die Rezeptentwicklung unter der Berücksichtigung im Fokus steht, ist die Übernahme Gesamtmenge indes eine wertvolle Hilfe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">uebertrag_links</string>
@@ -311,6 +311,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; des &lt;span style=&quot; font-weight:600;&quot;&gt;Malzes&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in °Plato kann anschließend angepasst werden, so eine Verteilung der Male über die Stammwürze bevorzugt wird.&lt;/p&gt;&lt;p&gt;Darüber hinaus ist das Thema Extrakt im Malz und seine enzymatischen Eigenschaften bei verschiedenen Mälz- und Darrfverfahren ist anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen und die Seiten von Mälzereien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -333,6 +336,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; des &lt;span style=&quot; font-weight:600;&quot;&gt;Malzes prozentual &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in % kann anschließend angepasst werden, so eine prozentuale Verteilung der Malze bevorzugt wird.&lt;/p&gt;&lt;p&gt;Darüberhinaus ist das Thema Extrakt im Malz und seine enzymatischen Eigenschaften bei verschiedenen Mälz- und Darrfverfahren ist anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen und die Seiten von Mälzereien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

@@ -16,6 +16,9 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QPlainTextEdit" name="textEdit">
+     <property name="toolTip">
+      <string>Hier werden Änderungen im Kleinen Brauhelfer aufgelistet.</string>
+     </property>
      <property name="lineWrapMode">
       <enum>QPlainTextEdit::NoWrap</enum>
      </property>
@@ -28,6 +31,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btnClear">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden Einträge aus der Console gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Löschen</string>
        </property>
@@ -42,6 +48,9 @@
      </item>
      <item>
       <widget class="QSpinBox" name="sbLevel">
+       <property name="toolTip">
+        <string>Hier werden Grade von Änderungen im Kleinen Brauhelder eingestellt. Je höher, desto feiner, aber auch mehr Speicherbedarf. Im Normalfall belässt man es bei Level 0. Das Tool dient versierten Nutzern zur Fehlersuche.</string>
+       </property>
        <property name="maximum">
         <number>999</number>
        </property>

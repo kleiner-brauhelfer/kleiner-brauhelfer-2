@@ -54,7 +54,7 @@
            <item row="5" column="2">
             <widget class="DoubleSpinBoxSud" name="tbSW">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die angepeilte Stammwürze eingestellt. Der Wert ist von vielen Faktoren abhängig, beispielsweise der Anlage, aber auch Zeit und Zutaten. In manchen Fällen kann es hilfreich sein, zusätzlich ein Mischkreuz zur Berechnung einzusetzen, um die angepeilte Stammwürze zu erreichen.&lt;/p&gt;&lt;p&gt;Das Erreichen der Stammwürze stellt vor allem für Brauanfänger eine Herausforderung da. Bei Fragen hilft die Fachliteratur oder das Fachforum der Wahl.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Stammwürze in °Plato sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bockbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;16 – 17&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Doppelbock &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;18 – 19&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Exportbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;12 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;10 – 11&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 14&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;13 – 18&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; eingestellt. Der Wert ist von vielen Faktoren abhängig, beispielsweise der Anlage, aber auch Zeit und Zutaten. In manchen Fällen kann es hilfreich sein, zusätzlich ein Mischkreuz zur Berechnung einzusetzen, um die angepeilte Stammwürze zu erreichen.&lt;/p&gt;&lt;p&gt;Das Erreichen der Stammwürze stellt vor allem für Brauanfänger eine Herausforderung da. In allen Fällen sollten große Abweichungen vermieden werden, wenn das iel ein bestimmter Bierstil ist. Bei Fragen hilft die Fachliteratur oder das Fachforum der Wahl.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Stammwürze in °&lt;span style=&quot; font-weight:600;&quot;&gt;Plato &lt;/span&gt;sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bockbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;16 – 17&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Doppelbock &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;18 – 19&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Exportbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;12 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;10 – 11&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 14&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;13 – 18&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -72,6 +72,9 @@
            </item>
            <item row="1" column="2">
             <widget class="QPushButton" name="btnKategorienVerwalten">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Kategorien &lt;/span&gt;angelegt, sortiert und verwaltet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; dienen dazu, Sude unterscheidbar zu machen. Dies macht vor allem Sinn, wenn die Zahl der Sude wächst und Übersicht gefordert ist.&lt;/p&gt;&lt;p&gt;Dem Brauer sein das Vorgehen dabei selbst überlassen. So können die Sude allein &lt;span style=&quot; font-weight:600;&quot;&gt;grob&lt;/span&gt; in unter- oder obergärig unterteilt werden oder &lt;span style=&quot; font-weight:600;&quot;&gt;fein&lt;/span&gt; nach Bierstilen oder &lt;span style=&quot; font-weight:600;&quot;&gt;kreativ außer Kategorie&lt;/span&gt; nach saisonalen Vorlieben wie Geburtstags- oder Weihnachtsbier.&lt;/p&gt;&lt;p&gt;Sehr beliebt sind die &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;2015 Style Guidelines&lt;/span&gt;&lt;/a&gt; des amerikanischen Beer Judge Certification Programs (BJCP). Sie klassifizieren und beschreiben weltweit Bierstile und machen sie vergleichbar. Diese ist eine wertvolle Hilfe bei Rezeptdatenbanken wie Maische, Malz und Mehr oder von &lt;a href=&quot;https://www.brewersfriend.com/search/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brewer's Friend&lt;/span&gt;&lt;/a&gt;, aber auch für Brauer, die an Wettbewerben teilnehmen oder dies beabsichtigen, um den Anforderungen zu entsprechen. Oft gibt es aber auch Wettbewerbe mit einer freien Kategorie, bei denen auch ein Geburtstagsbier zugelassen ist. Näheres erfährt man zeitnah in den Fachforen.&lt;/p&gt;&lt;p&gt;Einträge in diesem Feld haben keine Auswirkungen auf das Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="text">
               <string>Verwalten</string>
              </property>
@@ -87,7 +90,7 @@
            <item row="10" column="2">
             <widget class="SpinBoxSud" name="tbBittere">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der angepeilte Bittereintrag beim Hopfenkochen des Sudes festgelegt. Fachsprachlich nennt sich der Eintrag &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt;, angegeben mit der Maßeinheit &lt;span style=&quot; font-weight:600;&quot;&gt;International Bitterness Units (IBU)&lt;/span&gt;.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Bittere in IBU sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weißbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;8 - 15&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Märzen &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 28&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;28 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pils &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 45&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;40 - 70&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IIPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;60 - 120&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Neutrales Geschmacksempfinden bei IBU = 2°P Stammwürze&lt;/p&gt;&lt;p&gt;Das Festlegen der richtigen Bittere und damit der passende Hopfen, die passende Hopfenkombination, Zeit und Temperatur ist eines der kreativsten Betätigungsfelder beim Bierbrauen, gehört aber auch mithin zu den größten Herausforderungen. Um ein Gefühl für die richtige Bittere zu bekommen, empfiehlt sich eine gründliche Rezeptrecherche, das Studium von Fachliteratur und nicht zuletzt die Sektionen für Hopfen und Rezepte in den Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der angepeilte Bittereintrag beim Hopfenkochen des Sudes festgelegt. Fachsprachlich nennt sich der Eintrag &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt;, angegeben mit der Maßeinheit &lt;span style=&quot; font-weight:600;&quot;&gt;International Bitterness Units (IBU)&lt;/span&gt;.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Bittere in IBU sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weißbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;8 - 15&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Märzen &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 28&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;28 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pils &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 45&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;40 - 70&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IIPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;60 - 120&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Neutrales Geschmacksempfinden bei IBU = 2°P Stammwürze&lt;/p&gt;&lt;p&gt;Das Festlegen der richtigen Bittere und damit der passende Hopfen, die passende Hopfenkombination, Zeit und Temperatur ist eines der kreativsten Betätigungsfelder beim Bierbrauen, gehört aber auch mithin zu den größten Herausforderungen. Um ein Gefühl für die richtige Bittere zu bekommen, empfiehlt sich eine gründliche Rezeptrecherche, das Studium von Fachliteratur und nicht zuletzt die Sektionen für Hopfen und Rezepte in den Fachforen.&lt;/p&gt;&lt;p&gt;Amerikanische Bierbrauer bittern ihre Biere oft nach Empfehlungen des sogenannten Verhältnisses von Bittere und Stammwürze, &lt;a href=&quot;http://1.bp.blogspot.com/_TUbRWLhsAGE/TD5Yc6mVyoI/AAAAAAAAAUk/K5yohzR5ZDo/s1600/IBU-to-OG+Ratio+Chart.JPG&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;IBU-To-OG Range Ratio &lt;/span&gt;&lt;/a&gt;genannt. Allgemein sind diese Angaben den &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;2015 Style Guidelines&lt;/span&gt;&lt;/a&gt; des BJCP ähnlich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -103,7 +106,7 @@
            <item row="2" column="1" colspan="2">
             <widget class="ComboBox" name="cbAnlage">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt; definiert die Berechnungsgrundlagen für den Kleinen Brauelfer, so Sudhausausbeute oder Verdampfungsrate. Die Auswahl unterschiedlicher Anlagen wirkt sich direkt auf das Rezept aus, etwa auf Wassermenge und Schüttung.&lt;/p&gt;&lt;p&gt;Siehe rechts die Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt; sowie den Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; für weitere Informationen.&lt;/p&gt;&lt;p&gt;Anlagen werden im Tab Rohstoffe definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt; definiert die Berechnungsgrundlagen für den Kleinen Brauelfer, speziell Sudhausausbeute und Verdampfungsrate. Die Auswahl unterschiedlicher Anlagen wirkt sich direkt auf das Rezept aus, etwa auf Wassermenge und Schüttung.&lt;/p&gt;&lt;p&gt;Siehe rechts die Felder &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt; sowie den Reiter &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; für weitere Informationen.&lt;/p&gt;&lt;p&gt;Anlagen werden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;definiert. Zusätzlich können dort angegliederte Gerätschaften definiert werden, die für die persönliche &lt;span style=&quot; font-weight:600;&quot;&gt;Braukonfiguration&lt;/span&gt; nötig sind, aber nicht unmittelbar die Berechnungsgrundlage beeinflussen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -124,7 +127,7 @@
            <item row="8" column="2">
             <widget class="SpinBoxSud" name="tbHGF">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beim Brauen mit &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity&lt;/span&gt; wird die Würzemenge beim Kochen reduziert, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.&lt;/p&gt;&lt;p&gt;Die Methode eignet sich im Rahmen des Möglichen für zu kleine, limitierte Anlagen, um Sude mit hoher Stammwürze zu brauen, bei denen die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; sonst zu gering wäre. Im Fachsprech werden solche Sude Platobomben genannt. &lt;/p&gt;&lt;p&gt;Das High-Gravity-Verfahren ist für eine größere Ausschlagmenge als üblich geeignet. Da das später hinzugegebene Wasser ab einem gewissen Grad nachteilig auf den Geschmack wirkt, ist High Gravity auf 50% beschränkt. Viele Hobbybrauer nutzen den Bereich bei weitem nicht aus, arbeiten zwischen 10% und 20%.&lt;/p&gt;&lt;p&gt;Bei Detailfragen hilft die Fachliteratur oder das Forum der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beim Brauen mit &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity&lt;/span&gt; wird die Würzemenge beim Kochen reduziert, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.&lt;/p&gt;&lt;p&gt;Die Methode eignet sich im Rahmen des Möglichen für zu kleine, limitierte Anlagen, um Sude mit hoher Stammwürze zu brauen, bei denen die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; sonst zu gering wäre. Im Fachsprech werden solche Sude Platobomben genannt. &lt;/p&gt;&lt;p&gt;Das High-Gravity-Verfahren ist für eine größere Ausschlagmenge als üblich geeignet. Da das später hinzugegebene Wasser ab einem gewissen Grad nachteilig auf den Geschmack wirkt, ist High Gravity auf 50% beschränkt. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Viele Hobbybrauer nutzen den Bereich bei weitem nicht aus, sie arbeiten ledigliech zwischen 5% und 20%. Dies hat vor allem geschmackliche Gründe und ist damit der Qualität geschuldet.&lt;/p&gt;&lt;p&gt;Bei Detailfragen hilft die Fachliteratur oder das Forum der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -149,7 +152,11 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="ComboBox" name="cbKategorie"/>
+            <widget class="ComboBox" name="cbKategorie">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;angelegte Kategorie&lt;/span&gt; angezeigt und dem Sud zugeordnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; dienen dazu, Sude unterscheidbar zu machen. Dies macht vor allem Sinn, wenn die Zahl der Sude wächst und Übersicht gefordert ist.&lt;/p&gt;&lt;p&gt;Dem Brauer sein das Vorgehen dabei selbst überlassen. So können die Sude allein &lt;span style=&quot; font-weight:600;&quot;&gt;grob&lt;/span&gt; in unter- oder obergärig unterteilt werden oder &lt;span style=&quot; font-weight:600;&quot;&gt;fein&lt;/span&gt; nach Bierstilen oder &lt;span style=&quot; font-weight:600;&quot;&gt;kreativ außer Kategorie&lt;/span&gt; nach saisonalen Vorlieben wie Geburtstags- oder Weihnachtsbier.&lt;/p&gt;&lt;p&gt;Sehr beliebt sind die &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;2015 Style Guidelines&lt;/span&gt;&lt;/a&gt; des amerikanischen Beer Judge Certification Programs (BJCP). Sie klassifizieren und beschreiben weltweit Bierstile und machen sie vergleichbar. Diese ist eine wertvolle Hilfe bei Rezeptdatenbanken wie Maische, Malz und Mehr oder von &lt;a href=&quot;https://www.brewersfriend.com/search/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brewer's Friend&lt;/span&gt;&lt;/a&gt;, aber auch für Brauer, die an Wettbewerben teilnehmen oder dies beabsichtigen, um den Anforderungen zu entsprechen. Oft gibt es aber auch Wettbewerbe mit einer freien Kategorie, bei denen auch ein Geburtstagsbier zugelassen ist. Näheres erfährt man zeitnah in den Fachforen.&lt;/p&gt;&lt;p&gt;Einträge in diesem Feld haben keine Auswirkungen auf das Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
            </item>
            <item row="10" column="0" colspan="2">
             <widget class="QLabel" name="label_7">
@@ -175,7 +182,7 @@
            <item row="12" column="2">
             <widget class="DoubleSpinBoxSud" name="tbVerdampfungsrate">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Rate erwartet, kann der Wert hier verändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Rate erwartet, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Verdampungsrate der Anlage wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;eingestellt. Der Wert ist eine Kenngröße für korrekte Berechnungen im Kleinen Brauhelfer. Ist die Verdampfungsrate unbekannt, empfiehlt es sich, den voreingestellte Wert des Kleinen Brauhelfers beizubehalten. Bei einem zu hohen Wert besteht die Gefahr eines zu dünnen Bieres: Die Wassermenge wird nicht korrekt berechnet, die angestrebte Stammwürze nicht erreicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -229,7 +236,7 @@
            <item row="11" column="2">
             <widget class="SpinBoxSud" name="tbKochzeit">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 90 Minuten&lt;/span&gt;. Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 120 Minuten&lt;/span&gt;. Die Mindestdauer von 60 Minuten Kochzeit sind ein Schutz der Würze. Grund ist die Eigenschaften von Hopfen empfindliche Würze keimarm zu machen.&lt;/p&gt;&lt;p&gt;Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe und Aromaöle. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;p&gt;Der Hautpbestandteil der Iso-Alphasäure löst sich bis 60 Minuten. Danach flacht die Kurve bis zum Zeitpunkt von 90 Minuten ab. Zwischen 90 und 120 Minuten ist die Bitterung minimal. Eine nenneswerte Bitterung findet danach nicht mehr statt. Dieses Verhalten von Hopfen ist der Grund für die Kochzeiten der Würze&lt;/p&gt;&lt;p&gt;Die Iso- Betasäure des Hopfens ist bereits nach 30 Minuten isomerisiert, weswegen Hopfen, bei dem es auf die Betasäure ankommt, oft als Aromagabe genutzt wird.&lt;/p&gt;&lt;p&gt;Hopfen und seine Wirkung ist eines der schwierigsten Themen der Bierbereitung. Nähere Informationen finden sich dazu in der Fachliteratur, Fragen werden in den Fachforen gerne beantwortet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -327,7 +334,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter Faktor &lt;/span&gt;für den Hauptguss eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.Gewünschter Faktor für den Hauptguss&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter Faktor &lt;/span&gt;für den Hauptguss manuell eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -448,7 +455,7 @@
              <item>
               <widget class="QPushButton" name="btnSudhausausbeute">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf diesen Button übernimmt die &lt;span style=&quot; font-weight:600;&quot;&gt;duchschnittliche Sudhausausbeute &lt;/span&gt;der&lt;span style=&quot; font-weight:600;&quot;&gt; Anlage&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Wert der Anlage für die Sudhausausbeute wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; festgelegt. Standardgemäß werden die Werte aller Sude in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Mittelwert&lt;/span&gt; berücksichtigt. Ist dies nicht gewünscht, kann im Tab Ausrüstung die Anzahl der berücksichtigten Sude für den Wert der Anlage eingegrenzt werden oder man gibt hier den Wert manuell ein und ignoriert diesen Button.&lt;/p&gt;&lt;p&gt;Anpassen des Mittelwertes macht insbesondere Sinn, wenn der Brauprozess optimiert oder geändert wurde und sich dadürch langfristig andere Werte der Anlage ergeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Anlagewert</string>
@@ -480,7 +487,7 @@
            <item row="6" column="2">
             <widget class="DoubleSpinBoxSud" name="tbSudhausausbeute">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert  hier verändert werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;Die Sudhausausbeute beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. 60% gelten als Durchschnitt. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Sudhausausbeute der Anlage wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;eingestellt. Der Wert ist eine Kenngröße für korrekte Berechnungen im Kleinen Brauhelfer. Ist die Sudhausausbeute unbekannt, empfiehlt es sich, den voreingestellte Wert des Kleinen Brauhelfers beizubehalten. Bei einer zu positiven Annahme besteht die Gefahr eines zu dünnen Bieres: Die Wassermenge wird nicht korrekt berechnet, die angestrebte Stammwürze  nicht erreicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -510,7 +517,7 @@
            <item row="13" column="2">
             <widget class="SpinBoxSud" name="tbNachisomerisierungszeit">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Nachisomerisierungszeit&lt;/span&gt; versteht sich geläufig die Zeitspanne zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;100°C und 80°C&lt;/span&gt;, in der Hopfen nach dem Hopfenkochen in der Heißwürze noch nahezu Kochtemperatur ausgesetzt ist und auf 80°C abkühlt. Dabei gibt der Hopfen noch einmal &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt; und Aroma ab. Bei &lt;span style=&quot; font-weight:600;&quot;&gt;80°C&lt;/span&gt; endet die Bitterung und Hopfen gibt nur noch &lt;span style=&quot; font-weight:600;&quot;&gt;Aromastoffe&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Im Reiter Hopfen werden Gaben in dieser Temperaturspanne durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; erfasst, Gaben bis oder unterhalb 80°C durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Nachisomerisierungszeit wird zur Kochdauer addiert. Sie wird hier als Nachisomerisierungszeit positiv angegeben, im Reiter Hopfen rechts bei gewähltem Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt; dagegen &lt;span style=&quot; font-weight:600;&quot;&gt;negativ&lt;/span&gt;. Beispiel: -&lt;span style=&quot; font-weight:600;&quot;&gt;5min&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Bei unter 80°C findet keine Nachisomerisierung mehr statt. Hobbybrauer nutzen diese Temperaturstufe für den gezielten &lt;span style=&quot; font-weight:600;&quot;&gt;Aromaeintrag&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Zeitspanne der Nachisomerisierung ist abhänigig von den &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlmöglichkeiten&lt;/span&gt;. Sie reicht vom Abkühlen &lt;span style=&quot; font-weight:600;&quot;&gt;über Nacht &lt;/span&gt;für lange bis zu kurzen Ausschlagszeiten wie -5 min mit einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlschlange&lt;/span&gt; oder einem &lt;span style=&quot; font-weight:600;&quot;&gt;Plattenkühler&lt;/span&gt;. Längere Zeiten wie -20min und mehr können ohne Hilfsmittel umgesetzt werden.&lt;/p&gt;&lt;p&gt;Manche Brauer wählen bewusst eine etwas längere Nachisomerisierungzeit, um bestimmte Nuancen eines Hopfens, eines Gewürzes oder einer anderen Zutat herauszuarbeiten. Einen guten Eindruck davon vermitteln Rezeptdatenbanken, Fachbücher und Fachforen.&lt;/p&gt;&lt;p&gt;Verschiedentlich wird die Nachisomerisierungszeit auch &lt;span style=&quot; font-weight:600;&quot;&gt;Flame-Out&lt;/span&gt; genannt, ungenau oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Whirlpool&lt;/span&gt;, da dieser Prozessschritt ein Trubabscheidungsverfahren nach dem Kochen beschreibt, der oft mit der Nachisomerisierung zusammenfällt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Nachisomerisierungszeit&lt;/span&gt; versteht sich geläufig die Zeitspanne zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;100°C und 80°C&lt;/span&gt;, in der Hopfen nach dem Hopfenkochen in der Heißwürze noch nahezu Kochtemperatur ausgesetzt ist und auf 80°C abkühlt. Dabei gibt der Hopfen noch einmal &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt; und Aroma ab. Bei &lt;span style=&quot; font-weight:600;&quot;&gt;80°C&lt;/span&gt; endet die Bitterung und Hopfen gibt nur noch &lt;span style=&quot; font-weight:600;&quot;&gt;Aromastoffe&lt;/span&gt; ab. Die Kurve der Bitterabgabe flacht dabei in Richtung 80°C ab.&lt;/p&gt;&lt;p&gt;Im Reiter Hopfen werden Gaben in dieser Temperaturspanne durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; erfasst, Gaben bis oder unterhalb 80°C durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Nachisomerisierungszeit wird zur Kochdauer addiert. Eine Angabe &amp;gt; 0 ist zwingend. Ohne Angabe der Nachisomerisierungszeit kann die Funktion Ausschlagen im Reiter Kochen nicht aktiviert werden. Die Nachisomerisierungszeit wird positiv angegeben, im Reiter Kochen rechts bei gewähltem Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt; erscheint sie &lt;span style=&quot; font-weight:600;&quot;&gt;negativ&lt;/span&gt;. Beispiel: -&lt;span style=&quot; font-weight:600;&quot;&gt;5min&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Bei unter 80°C findet keine Nachisomerisierung mehr statt. Hobbybrauer nutzen diese Temperaturstufe für den gezielten &lt;span style=&quot; font-weight:600;&quot;&gt;Aromaeintrag&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Zeitspanne der Nachisomerisierung ist abhänigig von den &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlmöglichkeiten&lt;/span&gt;. Sie reicht vom Abkühlen &lt;span style=&quot; font-weight:600;&quot;&gt;über Nacht &lt;/span&gt;für lange bis zu kurzen Ausschlagszeiten wie -5 min mit einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlschlange&lt;/span&gt; oder einem &lt;span style=&quot; font-weight:600;&quot;&gt;Plattenkühler&lt;/span&gt;. Längere Zeiten wie -20min und mehr können ohne Hilfsmittel umgesetzt werden.&lt;/p&gt;&lt;p&gt;Manche Brauer wählen bewusst eine etwas längere Nachisomerisierungzeit, um bestimmte Nuancen eines Hopfens, eines Gewürzes oder einer anderen Zutat herauszuarbeiten. Einen guten Eindruck davon vermitteln Rezeptdatenbanken, Fachbücher und Fachforen.&lt;/p&gt;&lt;p&gt;Verschiedentlich wird die Nachisomerisierungszeit auch &lt;span style=&quot; font-weight:600;&quot;&gt;Flame-Out&lt;/span&gt; genannt, ungenau oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Whirlpool&lt;/span&gt;, da dieser Prozessschritt ein Trubabscheidungsverfahren nach dem Kochen beschreibt, der oft mit der Nachisomerisierung zusammenfällt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -530,7 +537,7 @@
            <item row="19" column="2">
             <widget class="SpinBoxSud" name="tbReifezeit">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; oder falls nichts eingetragen ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Reifezeit&lt;/span&gt; des Jungbieres bis zur ersten Verkostung angegeben.&lt;/p&gt;&lt;p&gt;Die Berechnung der Reifezeit beginnt ab der &lt;span style=&quot; font-weight:600;&quot;&gt;letzten Nachgärmessung&lt;/span&gt; im Tab Gärverlauf oder, falls nichts eingetragen ist, ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Reifezeit berechnet sich aus der Reifung ab Hauptgärung und der Reifung der Lagerung.&lt;/p&gt;&lt;p&gt;Beispiel Lager 4-8 Wochen = 1-2 Wochen Hauptgärung + 3-6 Wochen Lagerung.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ausgewählte, empfohlene Reifezeiten:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Alt 3-6 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Amber Ale 3-6 Wochen Frühling&lt;/p&gt;&lt;p&gt;Barley Wine 12 Monate min. Winter&lt;/p&gt;&lt;p&gt;Bitter 3-6 Wochen herbst&lt;/p&gt;&lt;p&gt;Blonde 1-4 Wochen Winter&lt;/p&gt;&lt;p&gt;Doppelbock 4-6 Monate Winter, Frühling&lt;/p&gt;&lt;p&gt;Dubbel 8 Monate min. Winter&lt;/p&gt;&lt;p&gt;Fruchtbier 1-4 Wochen Sommer&lt;/p&gt;&lt;p&gt;Imperial Stout 6-12 Monate Winter&lt;/p&gt;&lt;p&gt;IPA 4-8 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Kölsch 3-6 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Märzen 6-8 Wochen Herbst&lt;/p&gt;&lt;p&gt;Mild Ale 3-6 Wochen Herbst&lt;/p&gt;&lt;p&gt;Old Ale 2-3 Monate Herbst&lt;/p&gt;&lt;p&gt;Pale Ale 3-6 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Pilsner 4-8 Wochen Frühling, Sommer&lt;/p&gt;&lt;p&gt;Quadrupel 8 Monate min. Winter&lt;/p&gt;&lt;p&gt;Rauchbier 3-6 Monate Winter&lt;/p&gt;&lt;p&gt;Saison 2-3 Wochen Sommer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -566,7 +573,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Zusammen mit &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird damit unter anderem Hauptguss und und Nachguss definiert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Zusammen mit &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird damit unter anderem Hauptguss und und Nachguss definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Biermenge meint das am Ende konsumierbare Bier mit allen Verlusten und nicht, wie manchmal fälschlich angenommen, Haupt- und Nachguss zusammen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -585,7 +592,7 @@
            <item row="15" column="2">
             <widget class="SpinBoxSud" name="tbVergaerungsgrad">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativen Charakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativen Charakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;p&gt;Allgemein können die Angaben der Hefehersteller übernommen werden. Bei Starksuden übersteigt der tatsächliche Vergärungsgrad dagegen oft die Herstellerangaben.&lt;/p&gt;&lt;p&gt;Fragen werden im Einzelfall hierzu am besten in einem Fachforum beantwortet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -613,7 +620,7 @@
              <item>
               <widget class="QPushButton" name="btnVerdampfungsrate">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Übernimmt den Wert aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf diesen Button übernimmt die &lt;span style=&quot; font-weight:600;&quot;&gt;duchschnittliche Verdampfungsrate &lt;/span&gt;der&lt;span style=&quot; font-weight:600;&quot;&gt; Anlage&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Wert der Anlage für die Verdampfungsrate wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; festgelegt. Standardgemäß werden die Werte aller Sude in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Mittelwert&lt;/span&gt; berücksichtigt. Ist dies nicht gewünscht, kann im Tab Ausrüstung die Anzahl der berücksichtigten Sude für den Wert der Anlage eingegrenzt werden oder man gibt hier den Wert manuell ein und ignoriert diesen Button.&lt;/p&gt;&lt;p&gt;Anpassen des Mittelwertes macht insbesondere Sinn, wenn der Brauprozess optimiert oder geändert wurde und sich dadürch langfristig andere Werte der Anlage ergeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Anlagewert</string>
@@ -646,7 +653,7 @@
            <item row="0" column="2">
             <widget class="SpinBoxSud" name="tbSudnummer">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nummerierung wirkt sich nicht auf das Rezept aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -674,9 +681,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkung&lt;/span&gt; ist ein Freiformfeld für Anmerkungen aller Art.&lt;/p&gt;&lt;p&gt;Es eignet sich hervorragend alle für prozessnotwendigen Schritte, die im Programm nicht abgebildet werden, aber auch für theoretische Anmerkungen wie Historie oder als Quellensammlung. &lt;/p&gt;&lt;p&gt;In veröffentlichten Rezepten nutzen Hobbybrauer Anmerkungen traditionell, um Verständnisfehler und damit Nachfragen zu vermeiden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <attribute name="title">
             <string>Bemerkung</string>
            </attribute>
@@ -687,7 +691,7 @@
             <item>
              <widget class="QTextEdit" name="tbKommentar">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkungen&lt;/span&gt; aller Art.&lt;/p&gt;&lt;p&gt;Üblicherweise wird ein derartiges Feld in einem Rezept gerne für spezielle Wasserprofile und besondere Prozessschritte genutzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Bereich &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkung&lt;/span&gt; ist ein Freiformfeld für Anmerkungen aller Art.&lt;/p&gt;&lt;p&gt;Er eignet sich hervorragend alle für prozessnotwendigen Schritte, die im Programm nicht abgebildet werden, aber auch für theoretische Anmerkungen wie Historie oder als Quellensammlung. &lt;/p&gt;&lt;p&gt;In veröffentlichten Rezepten nutzen Hobbybrauer Anmerkungen traditionell, um Verständnisfehler und damit Nachfragen zu vermeiden.&lt;/p&gt;&lt;p&gt;Gerne wird das Feld für spezielle Wasserprofile und besondere Prozessschritte genutzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
@@ -695,7 +699,7 @@
           </widget>
           <widget class="QWidget" name="tabTags">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; können Begriffe für Sortierregeln angelegt werden, um bei späteren Suchen schnell ans Ziel zu kommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <attribute name="title">
             <string>Tags</string>
@@ -728,7 +732,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Bereich &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; können Begriffe für Sortierregeln angelegt werden, um bei späteren Suchen schnell ans Ziel zu kommen.&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="whatsThis">
                  <string notr="true">plus</string>
@@ -748,7 +752,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte Tags aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="whatsThis">
                  <string notr="true">minus</string>
@@ -769,9 +773,6 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Anhänge&lt;/span&gt; ist ein Freiformfeld für Quellen und Medien aller Art.&lt;/p&gt;&lt;p&gt;Es eignet sich hervorragend als Zettelkasten für die Recherche zum Rezept. Der Kleine Brauhelfer verknüpft lediglich den Pfad, die Datenbestände  selbst verbleiben an ihrem ursprünglichen Ort.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <attribute name="title">
             <string>Anhänge</string>
@@ -865,7 +866,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;p&gt;Das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Anhänge&lt;/span&gt; ist ein Freiformfeld für Quellen und Medien aller Art.&lt;/p&gt;&lt;p&gt;Es eignet sich hervorragend als Zettelkasten für die Recherche zum Rezept. Der Kleine Brauhelfer verknüpft lediglich den Pfad, die Datenbestände selbst verbleiben an ihrem ursprünglichen Ort.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="whatsThis">
                <string notr="true">plus</string>
@@ -950,7 +951,7 @@
              <item>
               <widget class="QPushButton" name="btnMalzProzente">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Malzmengen mit der erforderlichen Gesamtschüttung verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Mengen prozentual angepasst&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion eignet sich, um Rezepte zu übernehmen, bei denen die Mengen in Gewicht und nicht in Prozent angegeben sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Widget &lt;span style=&quot; font-weight:600;&quot;&gt;Mengen prozentual anpassen &lt;/span&gt;erscheint, wenn im kg-Feld die Menge verändert wird. Folgend erscheint die Warnmeldung &amp;quot;Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung&amp;quot;. Der Sinn des Feldes besteht darin, das ursprüngliche Mengenverältnis wieder prozentual herzustellen.&lt;/p&gt;&lt;p&gt;Der Button erscheint nicht, wenn nur eine Malzsorte angegeben ist, da diese 100% ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;Grundlage für die Berechnung ist die links im &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Tab Rezep&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;t festgelegte &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Sollstammwürze&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt; und &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Sollmenge&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;In der Folge werden auch alle vergärbaren Zusätze beim Maischen angepasst.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;Das Widget &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Mengen prozentual anpassen &lt;/span&gt;erscheint auch, wenn auf den Button &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Vorhanden&lt;/span&gt; bei einem Malz oder einem Zusatz geklickt wird. &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Vorhanden &lt;/span&gt;überträgt lediglich die Gesamtmenge einer Maischezutat zum vollständigen Verbrauch. Dies bringt natürlich das bestehende Mengenverhältnis durcheinander und wird nicht mehr vom Button &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Mengen prozentual anpassen&lt;/span&gt; korrigiert, ist somit ein Anwenderfehler.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Mengen prozentual anpassen</string>
@@ -1081,6 +1082,9 @@
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
               <widget class="QPushButton" name="btnNeueMalzGabe">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgabe&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1095,6 +1099,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnMalzGabenUebernehmen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Malzsorten können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1116,6 +1123,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeMaischen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1130,6 +1140,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenMaischen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Zusätze können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1168,7 +1181,7 @@
           <item row="0" column="1">
            <widget class="ComboBox" name="cbBerechnungsartHopfen">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ignorieren&lt;/span&gt; bedeutet, es wird keine Hopfenberechnung durchgeführt. Die Mengen können frei eingestellt werden und die Sollbittere wird ignoriert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen Gewichtsanteil der gesamt benötigten Menge Hopfen. Die Alpha-Werte werden nicht berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen IBU Anteil der Sollbittere. Diese Berechnungsart wird empfohlen, weil Hopfensorten mit verschiedenen Alpha-Werten sich besser austauschen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Art der &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenberechnung&lt;/span&gt; gewählt. Dieses Popup taucht auf, wenn ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept importiert&lt;/span&gt; wurde, das nicht den Vorgaben der Anlage im Kleinen Brauhelfer entspricht. Die ist meist der Fall, wenn die Hopfenverteilung nicht 100% entspricht. Mit den Formeln zur Auswahl passt der Kleine Brauhelfer diese Inkonsistenzen an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ignorieren&lt;/span&gt; bedeutet, es wird keine Hopfenberechnung durchgeführt. Die Mengen können frei eingestellt werden, die &lt;span style=&quot; font-weight:600;&quot;&gt;Sollbittere&lt;/span&gt; wird &lt;span style=&quot; font-weight:600;&quot;&gt;ignoriert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt; bedeutet, der Prozentwert entspricht dem prozentualen &lt;span style=&quot; font-weight:600;&quot;&gt;Gewichtsanteil&lt;/span&gt; der gesamt benötigten Menge Hopfen. Die Alpha-Werte werden nicht berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IBU&lt;/span&gt; bedeutet, der Prozentwert entspricht dem &lt;span style=&quot; font-weight:600;&quot;&gt;IBU-Anteil &lt;/span&gt;der Sollbittere je Hopfensorte. Diese Berechnungsart wird empfohlen, weil Hopfensorten mit verschiedenen Alpha-Werten sich besser austauschen lassen. (Hintergrund ist, dass Hopfensorten nach Erntejahr in ihren Werten an Alphasäure schwanken.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <item>
              <property name="text">
@@ -1312,6 +1325,9 @@
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
               <widget class="QPushButton" name="btnNeueHopfenGabe">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1326,6 +1342,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnHopfenGabenUebernehmen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Hopfensorten können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1347,6 +1366,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeKochen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1361,6 +1383,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenKochen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Zusätze können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1488,6 +1513,9 @@
             <layout class="QHBoxLayout" name="horizontalLayout_13">
              <item>
               <widget class="QPushButton" name="btnNeueHefeGabe">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hefesorte&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer für die Gärung festgelegt. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1502,6 +1530,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnHefeGabenUebernehmen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hefesorte&lt;/span&gt; bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Hefen können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1520,6 +1551,9 @@
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
               <widget class="QPushButton" name="btnNeueHopfenGabeGaerung">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer für die Kalthopfung übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1534,6 +1568,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnHopfenGabenUebernehmenGaerung">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Hopfensorten können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1555,6 +1592,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeGaerung">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer für die Kalthopfung übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
                </property>
@@ -1569,6 +1609,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenGaerung">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Zusätze können dabei mit Shift ausgewählt zusammen übernommen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
                </property>
@@ -1670,6 +1713,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_15">
           <item>
            <widget class="QPushButton" name="btnNeueRast">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Raststufe&lt;/span&gt; im Kleinen Brauhelfer angelegt.&lt;/p&gt;&lt;p&gt;Dabei muss sich der Brauer zunächst für ein Maischeverfahren entscheiden; derzeit hält der Kleine Brauhelfer drei Maischverfahren vorrätig:&lt;/p&gt;&lt;p&gt;1. &lt;span style=&quot; font-weight:600;&quot;&gt;Aufheizen&lt;/span&gt; (auch bekannt als Kesselmaische, Infusion), bei der die Raststufen mit aufsteigenden Temperaturen gefahren werden&lt;/p&gt;&lt;p&gt;2. &lt;span style=&quot; font-weight:600;&quot;&gt;Zubrühen&lt;/span&gt; (auch bekannt als aufsteigende Infusion oder Bottichmaische), bei der die Raststudufen unter Zugabe von heißem Wasser gefahren werden&lt;/p&gt;&lt;p&gt;3. &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt;, bei der mit Entnahme und Zubrühen von Teilmaischen die Raststufen gesteuert werden&lt;/p&gt;&lt;p&gt;4. &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischen&lt;/span&gt; behandelt der Kleine Brauhelfer gesondert, da dies allen drei genannten Verfahren gmeinsam ist. &lt;/p&gt;&lt;p&gt;zu 1.) Für das Aufheizen stehen folgende Raststufen zu Verfügung: Gummirast, Maltaserast, Weizenrast, Eiweißrast, Maltoserast, Zwischenrast, Verzuckerungsrast, Kombirast und Abmaischen. Die Rasten sind in den jeweiligen Feldern ausführlich erklärt. Ferner sind sie immer Bestandteil eines jeden Fachbuches.&lt;/p&gt;&lt;p&gt;zu 2.) Für das Zubrühen steht allein Kochendes Waser zur Auswahl. Dessen Temperatur ergibt die Temperaturmischung mit der Maische und bestimmt damit die Raststufe.&lt;/p&gt;&lt;p&gt;zu 3. Für die Dekoktion stehen folgende Teilmaischen zu Verfügung: ½ Dickmaische, ⅓ Dickmaische, ⅓ Dünnmaische, ⅓ Läutermaische. Die Teilmaischen sind Bestandteil eines jeden traditionellen Fachbuches. &lt;/p&gt;&lt;p&gt;zu 4.) Für das Einmaischen gibt es allein das Einmaischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string notr="true">plus</string>
             </property>
@@ -1681,6 +1727,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnRastenUebernehmen">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Raststufe &lt;/span&gt;bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Mehrere Raststufen können dabei mit Shift ausgewählt zusammen übernommen werden. Bei der Übernahme wird vorausgesetzt, dass der Brauer mit dem Maischeverfahren für den aktuellen Bierstil samt und passender Raststufe, Heißwassergabe oder Teilmaische vertraut ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string notr="true">import</string>
             </property>
@@ -1713,7 +1762,7 @@
           <item row="0" column="1" colspan="3">
            <widget class="ComboBox" name="cbWasserProfil">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im Tab Ausrüstung muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das verwendete &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil&lt;/span&gt; gewählt.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;muss mindestens ein Wasserprofil erstellt werden.&lt;/p&gt;&lt;p&gt;Fortgeschrittene Anwender definieren für unterschiedliche Bierstile oft verschiedene Wasserprofile und nutzen dazu unterschiedliche Techniken der Wasseraufbereitung.&lt;/p&gt;&lt;p&gt;Beliebt ist destilliertes Wasser oder Wasser aus einer Osmoseanlage. Diese Wasserprofile bieten sich bei einem harten Brauwasser an, wenn helle und hopfenbetonte Biere gebraut werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1816,6 +1865,9 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Härtegrad&lt;/span&gt; des Wassers in&lt;span style=&quot; font-weight:600;&quot;&gt; °dH&lt;/span&gt; aus der Festlegung es Wasserprofils im Tab Ausrüstung übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string notr="true">uebertrag_oben</string>
             </property>
@@ -1862,7 +1914,7 @@
           <item row="5" column="3">
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetIst">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;p&gt;Die Restalkalität wird im deutschsprachigen Raum in deutscher Härte °dH als Gesamthärte angegeben. Wochtig für den Brauer sit jedoch allein die Carbonathärte °dH. In der Schweiz finden sich häufig französische Härtegrad °fH.&lt;/p&gt;&lt;p&gt;Die deutsche Härte Sie definiert sich duch die Menge Calciumcarbonat mmol/l. Brauer benötigen in den meisten Fällen weiches Wasser. Der Grund liegt darin, dass weiches Wasser die Hefeaktivität fördert, mehr aber noch – und gerade bei hellen Biere – die Hopfenbittere angenehm weich und nicht kratzig wirken lässt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1887,7 +1939,7 @@
           <item row="10" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMaische">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden. Malze haben je nach Sorte unterschiedliche Wim Malz-pH. Zusammen mit dem Wasser-pH addieren sich sich zum maische-pH zusammen.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1906,7 +1958,7 @@
           <item row="8" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMalz">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Malze wirken im warmen Brauwasser leicht sauer, indem sie den pH-Wert senken. Man spricht daher von einem eigenen pH-Wert von Malz, den Schrot-pH. Malze wirken um so sauer, je dunkler sie sind. Zusätzlich ist die Malzsorte ein wichtiger Faktor. Karamellmalze oder Röstmalze etwa wirken säuresenkender als Basismalze oder Rohfrucht.&lt;/p&gt;&lt;p&gt;Ausführlich iInformationen zur Wasserchemie im allgemeinen und zur Säurebildung von Malz finden sich auf der &lt;a href=&quot;https://maischemalzundmehr.de/index.php?inhaltmitte=toolswasserrechner&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Wasserseite von Maische, Malz und Meh&lt;/span&gt;&lt;/a&gt;r (auf Deutsch) und auf den Seiten vom amerikanischen Brauer und &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Wasserspezialist Martin Brungard &lt;/span&gt;&lt;/a&gt;und seines Tools Brew'n Water (auf Englisch).&lt;/p&gt;&lt;p&gt;Wasserchemie gehört im Brauwesen mit zu den schwersten Kapiteln. Viele gute Artikel finden sich neben Fachbüchern auch bei Aquaristen. Wasserversorger müssen aktuelle, regionale Daten spätestens auf Anfrage bereitstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1925,7 +1977,7 @@
           <item row="4" column="3">
            <widget class="DoubleSpinBoxSud" name="tbRestalkalitaetWasser">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des Wassers&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;vom &lt;span style=&quot; font-weight:600;&quot;&gt;unbehandelten Wasser&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Die muss nicht zwingend Leitungs- oder Brunnenwasser sein, es kann auch destilliertes oder Osmosewasser sein. Entscheidend für die Wasseraufbereitung ist die Restalkalität, die die Menge der Aufsalzung bestimmt.&lt;/p&gt;&lt;p&gt;Manche Wasserprofile wie das extrem sulfathaltige Wasser von Burton-on-Trent-Wasser verhindern eine Aufbereitung mit Hauswasser. Die Werte sind so extrem, dass Calcium, Magnesium, Sulfat, Natrium und Chlorid nicht in das gewünschte Verhältnis gebracht werden kann.&lt;/p&gt;&lt;p&gt;Viele Brauer, vor allem wenn sie sehr hartes Wasser haben, greifen in solchen Fällen auf &lt;span style=&quot; font-weight:600;&quot;&gt;Osmosewasser&lt;/span&gt; zurück und salzen gezielt von entmineralisiertem Wasser auf. Dafür sind allerdings profunde Kenntnisse der Wasserchemie nötig. Fachforen, seltener Fachbücher, sind hier eine große Hilfe.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer unterstützt den Brauer entscheidend dabei sein Leitungs- oder Brunnnwasser und ein Wasserprofil abzustimmen.&lt;/p&gt;&lt;p&gt;Dazu wird zuerst das &lt;span style=&quot; font-weight:600;&quot;&gt;Rohwasser &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; gewählt, dann das &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Anhand der Differenzen tastet man sich an das gewählte Profil mit Salzen und Säuren heran.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1997,7 +2049,7 @@
           <item row="9" column="3">
            <widget class="DoubleSpinBoxSud" name="tbPhMaischeSoll">
             <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter pH-Wert &lt;/span&gt;der&lt;span style=&quot; font-weight:600;&quot;&gt; Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Additive wie Salze und Säuren, aber auch laugisch wirkende Zusätze stellen den gewünschten Maische-pH ein, wenn Schüttung und Brauwasser nicht den angepeilten Werten entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -2080,6 +2132,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
            <widget class="QPushButton" name="btnNeueWasseraufbereitung">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat&lt;/span&gt; zur &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Eine Wasserzutat kann ein pH-senkendes Salz wie Calciumsulfat CaSO₄ sein, eine pH-senkende Säure wie Milchsäure 80% oder eine pH-hebendes Salz wie Natron (Natriumhydrogencarbonat NaHCO₃) sein.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt die konservative Messgröße der deutschen &lt;span style=&quot; font-weight:600;&quot;&gt;Härte °dH &lt;/span&gt;pro Zutat als Menge &lt;span style=&quot; font-weight:600;&quot;&gt;g/l&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;m/l&lt;/span&gt;. Dies hat lediglich informativen Wert. Für den Brauer von zentralem Interesse ist letztlich die Angabe vom &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; des aufbereiteten Brauwassers. Dabei ist von folgender Regel auszugehen:&lt;/p&gt;&lt;p&gt;Zuerst werden die Brausalze eingesetzt, ist der optimale pH-Wert dann noch nicht erreicht, die Säuren.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Generell gilt für helle und dunkler Biere:&lt;span style=&quot; font-weight:600;&quot;&gt; pH 5,5 &lt;/span&gt;ist der &lt;span style=&quot; font-weight:600;&quot;&gt;Richtwert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;Wer es genauer haben will: &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;pH 5,4 &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;für &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;helle Biere&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;pH 5,6&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt; für &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;dunkle Biere&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;. Ober- und Untergrenze sind pH 5,8 und pH 5,2. Da man allgemein Messfehler von pH ±0,1 annimt (auch bei guten pH-Metern), empfiehlt esich pH 5,3 und pH 7,7 nie zu unter- bzw. überschreiten.&lt;br/&gt;&lt;br/&gt;Die Werte sind allgemeingültig.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string notr="true">plus</string>
             </property>
@@ -2091,6 +2146,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnWasseraufbereitungUebernehmen">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohwasser &lt;/span&gt;bequem mit einem Klick aus einem bestehenden Rezept im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Sudauswahl&lt;/span&gt; des Kleinen Brauhelfers übernommen. Dazu öffnet sich ein Fenster mit weiteren Angaben.&lt;/p&gt;&lt;p&gt;Bei der Übernahme wird vorausgesetzt, dass der Brauer mit den Wasseranforderungen seines Bierstils vertraut ist. Bei Fragen helfen Rezeptbücher und Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string notr="true">import</string>
             </property>
@@ -2180,7 +2238,7 @@
             <item row="13" column="2">
              <widget class="DoubleSpinBoxSud" name="tbRestextrakt">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. Zeitpunkt und Menge wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. &lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil an &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; nach der Gärung in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; und Restextrakt wird wiederum der scheinbare Endvergärungsgrad (sEVG) gebildet, der die Gärfähigkeit einer Hefe beschreibt. Durchschnittlich sind 60 – 80% bei einer vitalen Hefe üblich, bei sogenannten Supervergärern auch mehr. &lt;/p&gt;&lt;p&gt;Der Restextrakt ist zunächst ein theoretischer Sollwert, den der Kleine Brauhelfer für ein erfolgreich vergorenes Jungbier festlegt. Der Restextrakt berechnet sich - in Verbindung mit der Stammwürze - aus den Angaben im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Zum Zeitpunkt der Rezepterstellung ist der Vergärungsgrad nur eine theoretische Größe&lt;span style=&quot; font-weight:600;&quot;&gt;. &lt;/span&gt;Der reale in der Braupraxis wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Gärverlauf&lt;/span&gt;, hier: Hauptgärung,ermittelt und im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2211,7 +2269,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in EBC an. &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; ist die genormte Farbstärke der European Brewers Convention. &lt;/p&gt;&lt;p&gt;Im amerikanischen Raum beschreibt man die Bierfarbe bevorzugt mit SRM.&lt;/p&gt;&lt;p&gt;Zur korrekten Darstellung der Bierfarbe empfiehlt sich ein für Tageslicht kalibrierter Monitor. In die Berechnung der Bierfarbe fließen die Farbwertangaben in den Sektionen Malz und Zusätze im Tab Rohstoffe sowie der Korrekturfaktor für die Bierfarbe im Tab Ausrüstung ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in EBC an. &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; ist die genormte Farbstärke der European Brewers Convention. &lt;/p&gt;&lt;p&gt;Im amerikanischen Raum beschreibt man die Bierfarbe bevorzugt mit SRM.&lt;/p&gt;&lt;p&gt;Zur korrekten Darstellung der Bierfarbe empfiehlt sich ein für Tageslicht kalibrierter Monitor. In die Berechnung der Bierfarbe fließen die Farbwertangaben in den Sektionen Malz und Zusätze im Tab Rohstoffe sowie der Korrekturfaktor für die Bierfarbe im Tab Ausrüstung ein.&lt;/p&gt;&lt;p&gt;Die anlagentypische Abweichung des Farbwertes kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
@@ -2258,7 +2316,7 @@
             <item row="16" column="2">
              <widget class="DoubleSpinBoxSud" name="tbKosten">
               <property name="toolTip">
-               <string>Kosten.</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten&lt;/span&gt; auf.&lt;/p&gt;&lt;p&gt;Sie setzen sich zusammen aus den im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;gemachten fixen Betriebskosten und den individuellen Kosten des Rezeptes links im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2280,7 +2338,7 @@
             <item row="14" column="2">
              <widget class="DoubleSpinBoxSud" name="tbAlkohol">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. Zeitpunkt und Menge wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. &lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; des Rezeptes in &lt;span style=&quot; font-weight:600;&quot;&gt;%vol &lt;/span&gt;ausgegeben. Der berechnete Alkoholgehalt setzt sich zusammen aus der Stamwürze und dem tatsächlichen Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;p&gt;Für die Zollanmeldung ist die Stammwürze Bezugsgröße, nicht der Alkoholgehalt.&lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2364,7 +2422,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. Zeitpunkt und Menge wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. &lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze von&lt;span style=&quot; font-weight:600;&quot;&gt; Zusätzen &lt;/span&gt;bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Zusätze in der Gärunng können Zucker, Honig, Gewürze, Additive etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert. Oft werden Zusätze nach der Hauptgärung hinzugegeben.&lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind zunächst Fachbücher, mehr aber Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Grundätzlich ist bei der Gabe von Zusätzen in der Gärung die Gefahr einer Kontamination mit bierfremden Bakterien abzuwägen. Ist die Gefahr nicht auszuschließen, sollte die Gabe zum Kochende oder im Whirlpool eine Überlegung wert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -2404,7 +2462,11 @@
              </widget>
             </item>
             <item row="10" column="2" colspan="2">
-             <widget class="QLabel" name="lblBittere"/>
+             <widget class="QLabel" name="lblBittere">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die sensorische Einordnung des Rezeptes anhand des Bittereindrucks.&lt;/p&gt;&lt;p&gt;Unterschieden werden die Kategorien:&lt;/p&gt;&lt;p&gt;• sehr mild&lt;/p&gt;&lt;p&gt;• mild&lt;/p&gt;&lt;p&gt;• ausgewogen&lt;/p&gt;&lt;p&gt;• moderat herb&lt;/p&gt;&lt;p&gt;• sehr herb&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
             </item>
             <item row="4" column="0">
              <widget class="QLabel" name="label_55">
@@ -2416,7 +2478,7 @@
             <item row="2" column="2">
              <widget class="DoubleSpinBoxSud" name="tbGesamtschuettung">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür einzig die Daten aus der Sektion &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; im Tab Rohstoffe. Zusätze wie Zucker werden hier nicht berücksicht. Der Grund ist, dass nur Malz und Rohfrucht als Zutaten mit enzymatischer Aktivität den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; während des Maischens beeinflussen.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Das Gesamtgewicht der Schüttung ist Grundlage für die Berechnung des &lt;span style=&quot; font-weight:600;&quot;&gt;Maische-pH-Wert&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Reiter Waseraufbereitung &lt;/span&gt;und damit ein ultimative Faktor für eine erfolgreiche Maischearbeit.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür die Daten aus den Sektionen &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Malz, Rohfrucht und mancher Zusätze, die (aber nicht alle) den pH-Wert beim Maischen beeinfllussen.&lt;/p&gt;&lt;p&gt;Festgelegt werden dort diese Angaben im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Bei Malz geht man immer von 100% aus, es interessiert allein der erlaubte Schüttungsanteil; dieser wird in den Feldern&lt;span style=&quot; font-weight:600;&quot;&gt; Max. Antei [%] &lt;/span&gt;definiert.&lt;/p&gt;&lt;p&gt;Welche &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; dagegen wieviel in den&lt;span style=&quot; font-weight:600;&quot;&gt; Maische-pH&lt;/span&gt; hinwirken, wird im Tab Rohstoffe in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; festgelegt. Ein wesentlicher Faktor der Ausbeute ist der Wasseranteil eines Zusatzes und der Anteil an fermentierbarer Stärke.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2479,7 +2541,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in beim &lt;span style=&quot; font-weight:600;&quot;&gt;Kochen&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Kochen kann Zucker, Honig, Gewürz, Additive etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert. Oft werden Zusätze zum Schluss des Kochens hinzugegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze von&lt;span style=&quot; font-weight:600;&quot;&gt; Zusätzen &lt;/span&gt;beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen &lt;/span&gt;berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Hopfenkochen können Zucker, Honig, Gewürze, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. Üblich ist eine Gabe zum Kochende hin.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Zusätze beim Kochen können Zucker, Honig, Gewürze, Additive, Früchte, sogar Tannenzweige etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert.&lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind zunächst Fachbücher, mehr aber Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -2534,7 +2596,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert setzt sich aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwerten&lt;/span&gt; im Tab Rohstoffe des Reiters &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, der Menge und dem Verhältnis im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; sowie aus dem Korrekturfaktor im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; zusammen.&lt;/p&gt;&lt;p&gt;Die Angabe ist nur eine Schätzung. Viele weitere Faktoren können die Bierfarbe beeinflussen.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu sind die Fachforen eine gute Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert setzt sich aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwerten&lt;/span&gt; im Tab Rohstoffe des Reiters &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, der Menge und dem Verhältnis im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; sowie aus dem Korrekturfaktor im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; zusammen.&lt;/p&gt;&lt;p&gt;Die Angabe ist nur eine Schätzung. Viele weitere Faktoren können die Bierfarbe beeinflussen.&lt;/p&gt;&lt;p&gt;Stimmt nach der Reifung die Bierfarbe generell nicht mit der angezeigten Farbe im Tab Rezept überein, kann die Abweichung programmweit im Tab Ausrüstung definiert werden.&lt;/p&gt;&lt;p&gt;Die Farbe am Bildschirm lässt sich am besten bei mittlerem Tageslicht beurteilen.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu sind die Fachforen eine gute Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2594,7 +2656,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in der &lt;span style=&quot; font-weight:600;&quot;&gt;Maische&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze in der Maische kann Zucker, Honig etc. sein. Zur Orientierung gelten 10-15% maximal als Richtwert. Insgesamt ist die Gabe weiterer Zutaten in der Maische ungewöhnlich. Zu beachten ist, dass die Enzymarbeit des Malzes nicht behindert wird. Nähere Informationen dazu finden sich in Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in der &lt;span style=&quot; font-weight:600;&quot;&gt;Maische&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Maischen können Zucker, Honig und Frucht, seltener Gewürze und, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder &lt;span style=&quot; font-weight:600;&quot;&gt;beeinträchtigen&lt;/span&gt; die &lt;span style=&quot; font-weight:600;&quot;&gt;Läuterarbeit&lt;/span&gt;. Üblich ist eine Gabe zum Kochende hin.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Allgemein ist zu sagen, dass Zusätze bereits beim Maischen eine &lt;span style=&quot; font-weight:600;&quot;&gt;Ausnahme&lt;/span&gt; sind. Begründet wird dies mit dem Verlust beim Läutern, da ein guter Teil mit dem Treber entsorgt wird.&lt;/p&gt;&lt;p&gt;Zusätze beim Maischen können Zucker, Honig, Gewürze, Additive, Früchte, sogar Tannenzweige etc. sein. &lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind vor allem Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -2677,7 +2739,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil der Stammwürze der &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgaben&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Dies sollte immer der Hauptanteil der Stammwürze sein. In ihm befinden sich gewöhnliche die meisten Enzyme, um verwertbare Einfachzucker für die Hefe herzustellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgaben&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Malzgaben sollten immer der Hauptanteil der Stammwürze sein. In ihr befinden sich gewöhnliche die meisten Enzyme, um verwertbare Einfachzucker für die Hefe bereit zu stellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -2753,7 +2815,7 @@
             <item row="2" column="3">
              <widget class="DoubleSpinBoxSud" name="tbNachguss">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Nachgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2823,7 +2885,7 @@
             <item row="3" column="3">
              <widget class="DoubleSpinBoxSud" name="tbWasserHGF">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den Hauptguss anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Faktor&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert für High Gravity zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2845,7 +2907,7 @@
             <item row="1" column="3">
              <widget class="DoubleSpinBoxSud" name="tbHauptguss">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung beim Maischen.&lt;/p&gt;&lt;p&gt;Die Schüttung beim maischen muss wegen Zusätzen bei folgenden Brauprozessen wie Kochen oder Gärung nicht zwigend mit der Gesamtschüttung übereinstimmen.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Hauptgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2873,7 +2935,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im Tab Ausrüstung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert der Gesamtwassermenge zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2970,7 +3032,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;progrmmweit berechnet werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3019,7 +3081,7 @@
             <item row="6" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVolumenMaische">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben sind hierfür Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3055,7 +3117,7 @@
             <item row="7" column="3">
              <widget class="DoubleSpinBox" name="tbVolumenMaische">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3077,7 +3139,7 @@
             <item row="4" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVerdampfung">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage angegeben. Dieser Wert kann aus dem Durchschnitt der gebrauten Suden im Reiter Ausrüstung berechnet werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden programmweit im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3099,7 +3161,7 @@
             <item row="9" column="3">
              <widget class="DoubleSpinBox" name="tbVolumenKochen">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3137,9 +3199,6 @@
             </item>
             <item row="7" column="0">
              <widget class="QLabel" name="label_VolumenMaischen">
-              <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessels&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben dienen als Grundlage für die Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
               <property name="text">
                <string>Benötigtes Volumen ca.</string>
               </property>
@@ -3181,7 +3240,7 @@
             <item row="8" column="3">
              <widget class="DoubleSpinBox" name="tbAnlageVolumenKochen">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im Tab Ausrüstung gemachten Angaben sind hierfür Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3247,7 +3306,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;p&gt;Der anlagentypische Korrekturwert für die Sollmenge wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>

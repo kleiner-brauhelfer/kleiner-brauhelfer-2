@@ -7,7 +7,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="sud_import.svg"
+   sodipodi:docname="import.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    id="svg4450"
    version="1.1"
@@ -28,8 +28,8 @@
      inkscape:showpageshadow="false"
      inkscape:document-rotation="0"
      inkscape:zoom="20.395611"
-     inkscape:cx="30.597801"
-     inkscape:cy="33.577962"
+     inkscape:cx="42.630032"
+     inkscape:cy="37.696096"
      inkscape:window-width="3840"
      inkscape:window-height="2066"
      inkscape:window-x="-11"
@@ -58,18 +58,18 @@
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
     <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 32,8 H 12 V 56 H 52 V 32"
        id="path6456"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 28,36 52,8"
        id="path5588"
        sodipodi:nodetypes="cc" />
     <path
        inkscape:transform-center-x="-9.7384172"
-       transform="matrix(-0.05972761,-0.0507894,0.05841621,-0.06870498,31.628998,64.199922)"
+       transform="matrix(-0.05972761,-0.0507894,0.05841621,-0.06870498,31.664226,65.184536)"
        inkscape:transform-center-y="-10.342849"
        d="m 395.75629,359.63611 -121.47058,0 -121.47059,0 60.73529,-105.19661 60.7353,-105.19661 60.73529,105.19661 z"
        inkscape:randomized="0"

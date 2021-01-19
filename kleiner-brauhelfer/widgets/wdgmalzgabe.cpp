@@ -198,6 +198,11 @@ double WdgMalzGabe::prozent() const
     return data(ModelMalzschuettung::ColProzent).toDouble();
 }
 
+double WdgMalzGabe::fehlProzent() const
+{
+    return ui->btnKorrektur->property("toadd").toDouble();
+}
+
 void WdgMalzGabe::setFehlProzent(double value)
 {
     if (mEnabled)

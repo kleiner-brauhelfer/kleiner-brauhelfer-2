@@ -7,39 +7,39 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   shape-rendering="crispEdges"
-   width="64"
-   height="64"
-   viewBox="0 0 64 64"
-   version="1.1"
-   id="svg4450"
+   sodipodi:docname="sud_vergessen.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="sud_vergessen.svg">
+   id="svg4450"
+   version="1.1"
+   viewBox="0 0 64 64"
+   height="64"
+   width="64"
+   shape-rendering="crispEdges">
   <defs
      id="defs4444" />
   <sodipodi:namedview
-     inkscape:current-layer="layer1"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-11"
-     inkscape:window-x="-11"
-     inkscape:window-height="2066"
-     inkscape:window-width="3840"
-     inkscape:cy="37.507579"
-     inkscape:cx="40.326597"
-     inkscape:zoom="20.395611"
-     inkscape:document-rotation="0"
-     inkscape:showpageshadow="false"
-     showborder="true"
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
+     units="px"
      showgrid="true"
-     units="px">
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showborder="true"
+     inkscape:showpageshadow="false"
+     inkscape:document-rotation="0"
+     inkscape:zoom="10.197806"
+     inkscape:cx="20.539721"
+     inkscape:cy="43.385241"
+     inkscape:window-width="1624"
+     inkscape:window-height="1228"
+     inkscape:window-x="1854"
+     inkscape:window-y="347"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
     <inkscape:grid
-       empspacing="4"
+       id="grid5013"
        type="xygrid"
-       id="grid5013" />
+       empspacing="4" />
   </sodipodi:namedview>
   <metadata
      id="metadata4447">
@@ -49,25 +49,24 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Layer 1">
     <path
-       sodipodi:nodetypes="cccccc"
-       id="path6456"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
        d="M 12,8 V 56 H 52 V 24 L 40,8 Z"
-       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
-    <ellipse
-       cx="34.218731"
-       cy="26.063034"
-       rx="4.2187309"
-       ry="4.0630341"
+       id="path6456"
+       sodipodi:nodetypes="cccccc" />
+    <circle
+       r="7.5000005"
+       style="opacity:0.95;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4210"
-       style="opacity:0.95;fill:none;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       cy="28.000002"
+       cx="36" />
   </g>
 </svg>

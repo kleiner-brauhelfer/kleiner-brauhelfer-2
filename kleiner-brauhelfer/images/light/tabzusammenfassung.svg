@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933333"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="tabzusammenfassung.svg"
+   inkscape:export-filename="D:\app\project\kleiner-brauhelfer\images\hauptgaerung.png"
+   inkscape:export-xdpi="48"
+   inkscape:export-ydpi="48">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="-11.782913"
+     inkscape:cy="44.148524"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="3840"
+     inkscape:window-height="2066"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0">
+    <inkscape:grid
+       type="xygrid"
+       empspacing="4"
+       id="grid4485" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-284.29998)">
+    <path
+       sodipodi:nodetypes="cccccc"
+       id="path6456"
+       d="m 3.1749997,286.41665 v 12.7 H 13.758334 v -8.46667 l -3.175001,-4.23333 z"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.32292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;line-height:1.25;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Italic';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       id="text5891"
+       aria-label="i">
+      <path
+         id="path5893"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text Italic';stroke-width:0.264583"
+         d="m 9.8584827,289.07694 q 0,0.31695 -0.2756074,0.59256 -0.2687172,0.26872 -0.5718854,0.26872 -0.3307289,0 -0.5443247,-0.19293 -0.2067055,-0.19292 -0.2067055,-0.50298 0,-0.30317 0.2756074,-0.565 0.2756074,-0.26182 0.5718854,-0.26182 0.7510302,0 0.7510302,0.66145 z m -0.2549368,6.93842 q -0.888834,1.10243 -1.5502918,1.10243 -0.6821284,0 -0.6821284,-0.53743 0,-0.23427 0.4271915,-1.84657 0.516764,-1.98438 0.516764,-2.17041 0,-0.19982 -0.2480467,-0.19982 -0.2067056,0 -0.7234695,0.6339 -0.01378,0.0207 -0.041341,0.0207 -0.068902,0 -0.1515841,-0.0896 -0.075792,-0.0896 -0.075792,-0.16537 0,-0.0344 0.01378,-0.0482 0.9026143,-1.11621 1.557182,-1.11621 0.6752382,0 0.6752382,0.565 0,0.33073 -0.4134112,1.83968 -0.5167639,1.92236 -0.5167639,2.15663 0,0.19981 0.2342663,0.19981 0.1998154,0 0.7372499,-0.62012 0.01378,-0.0207 0.034451,-0.0207 0.062012,0 0.1378037,0.0896 0.082682,0.0896 0.082682,0.15847 0,0.0344 -0.01378,0.0482 z" />
+    </g>
+  </g>
+</svg>

@@ -308,9 +308,13 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>sliderZoom</tabstop>
   <tabstop>cbTemplateAuswahl</tabstop>
   <tabstop>btnSaveTemplate</tabstop>
   <tabstop>btnRestoreTemplate</tabstop>
+  <tabstop>btnPrint</tabstop>
+  <tabstop>btnPdf</tabstop>
+  <tabstop>cbEditMode</tabstop>
   <tabstop>tbTemplate</tabstop>
   <tabstop>tbTags</tabstop>
  </tabstops>

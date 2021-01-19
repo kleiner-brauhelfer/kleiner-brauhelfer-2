@@ -1325,7 +1325,11 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>btnNeueAnlage</tabstop>
+  <tabstop>btnAnlageLoeschen</tabstop>
   <tabstop>tableViewAnlagen</tabstop>
+  <tabstop>btnNeuesGeraet</tabstop>
+  <tabstop>btnGeraetLoeschen</tabstop>
   <tabstop>tableViewGeraete</tabstop>
   <tabstop>tableViewSude</tabstop>
   <tabstop>tbAusbeute</tabstop>
@@ -1339,6 +1343,7 @@
   <tabstop>tbAusbeuteSude</tabstop>
   <tabstop>tbKorrekturNachguss</tabstop>
   <tabstop>tbKorrekturFarbe</tabstop>
+  <tabstop>tbKorrekturSollmenge</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>tbMaischebottichDurchmesser</tabstop>
   <tabstop>tbMaischebottichHoehe</tabstop>
@@ -1350,8 +1355,10 @@
   <tabstop>tbSudpfanneVolumen</tabstop>
   <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
   <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
-  <tabstop>tbHelp</tabstop>
+  <tabstop>tbBemerkung</tabstop>
   <tabstop>scrollArea</tabstop>
+  <tabstop>tbHelp</tabstop>
+  <tabstop>splitterHelp</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

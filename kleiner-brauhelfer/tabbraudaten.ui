@@ -2584,6 +2584,8 @@
   <tabstop>tbWuerzemengeKochende</tabstop>
   <tabstop>btnWuerzemengeKochende</tabstop>
   <tabstop>tbHopfenseihenVerlust</tabstop>
+  <tabstop>tbWuerzemengeAnstellenTotal</tabstop>
+  <tabstop>btnWuerzemengeAnstellenTotal</tabstop>
   <tabstop>tbSWAnstellen</tabstop>
   <tabstop>btnSWAnstellen</tabstop>
   <tabstop>tbSWAnstellenSollBrix</tabstop>
@@ -2597,11 +2599,13 @@
   <tabstop>tbSpeisemengeNoetig</tabstop>
   <tabstop>tbWuerzemengeAnstellen</tabstop>
   <tabstop>tbAusbeuteEffektiv</tabstop>
+  <tabstop>tbAusbeuteRezept</tabstop>
   <tabstop>tbNebenkosten</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>cbDurchschnittIgnorieren</tabstop>
   <tabstop>btnSudGebraut</tabstop>
   <tabstop>btnSudTeilen</tabstop>
+  <tabstop>splitterHelp</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources>

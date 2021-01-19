@@ -1002,19 +1002,43 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
   </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>btnLoeschen</tabstop>
+  <tabstop>cbTyp</tabstop>
   <tabstop>cbRast</tabstop>
+  <tabstop>btnNachOben</tabstop>
+  <tabstop>btnNachUnten</tabstop>
+  <tabstop>btnLoeschen</tabstop>
+  <tabstop>tbMengeEinmaischen</tabstop>
+  <tabstop>tbVerhaeltnisEinmaischen</tabstop>
+  <tabstop>tbWasserTempEinmaischen</tabstop>
+  <tabstop>tbMalzTempEinmaischen</tabstop>
+  <tabstop>tbTempEinmaischen</tabstop>
+  <tabstop>tbDauerEinmaischen</tabstop>
+  <tabstop>tbTempRast</tabstop>
+  <tabstop>tbDauerRast</tabstop>
+  <tabstop>tbMengeInfusion</tabstop>
+  <tabstop>tbVerhaeltnisInfusion</tabstop>
+  <tabstop>tbWassertempInfusion</tabstop>
+  <tabstop>tbTempInfusion</tabstop>
+  <tabstop>tbDauerInfusion</tabstop>
+  <tabstop>tbMengeDekoktion</tabstop>
+  <tabstop>tbVerhaeltnisDekoktion</tabstop>
+  <tabstop>tbRasttempDekoktion</tabstop>
+  <tabstop>tbRastdauerDekoktion</tabstop>
+  <tabstop>tbTeiltempDekoktion</tabstop>
+  <tabstop>tbKochdauerDekoktion</tabstop>
+  <tabstop>tbTempDekoktion</tabstop>
+  <tabstop>tbDauerDekoktion</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

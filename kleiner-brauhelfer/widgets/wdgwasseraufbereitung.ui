@@ -518,6 +518,22 @@
    <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>tbName</tabstop>
+  <tabstop>cbEinheit</tabstop>
+  <tabstop>btnAuswahl</tabstop>
+  <tabstop>btnNachOben</tabstop>
+  <tabstop>btnNachUnten</tabstop>
+  <tabstop>btnLoeschen</tabstop>
+  <tabstop>tbMenge</tabstop>
+  <tabstop>tbMengeGesamt</tabstop>
+  <tabstop>btnAusgleichen</tabstop>
+  <tabstop>tbRestalkalitaet</tabstop>
+  <tabstop>tbMengeHg</tabstop>
+  <tabstop>tbMengeNg</tabstop>
+  <tabstop>tbMengeHgf</tabstop>
+  <tabstop>tbFaktor</tabstop>
+ </tabstops>
  <resources>
   <include location="../images.qrc"/>
  </resources>

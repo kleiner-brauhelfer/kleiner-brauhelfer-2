@@ -193,6 +193,13 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>cbAuswahl</tabstop>
+  <tabstop>tbKonzentration</tabstop>
+  <tabstop>tbName</tabstop>
+  <tabstop>cbEinheit</tabstop>
+  <tabstop>tbFaktor</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

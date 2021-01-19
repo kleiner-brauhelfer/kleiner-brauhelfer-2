@@ -842,6 +842,20 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>dtDatum</tabstop>
+  <tabstop>cbAuswahl</tabstop>
+  <tabstop>tbPlato</tabstop>
+  <tabstop>tbDichte</tabstop>
+  <tabstop>tbTemp</tabstop>
+  <tabstop>tbEichtemp</tabstop>
+  <tabstop>tbBrix</tabstop>
+  <tabstop>cbEinheit</tabstop>
+  <tabstop>comboBox_FormelBrixPlato</tabstop>
+  <tabstop>tbKorrekturFaktor</tabstop>
+  <tabstop>btnKorrekturFaktorDefault</tabstop>
+  <tabstop>tbTempRefraktometer</tabstop>
+  <tabstop>tbPlatoManuell</tabstop>
+  <tabstop>tbTempManuell</tabstop>
   <tabstop>tbSw</tabstop>
   <tabstop>tbExtrakt</tabstop>
  </tabstops>

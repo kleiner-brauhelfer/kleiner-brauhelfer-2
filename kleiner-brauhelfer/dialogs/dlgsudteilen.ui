@@ -214,6 +214,15 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>lineEdit_Name1</tabstop>
+  <tabstop>lineEdit_Name2</tabstop>
+  <tabstop>spinBox_Percent1</tabstop>
+  <tabstop>horizontalSlider_Percent</tabstop>
+  <tabstop>spinBox_Percent2</tabstop>
+  <tabstop>doubleSpinBox_Amount1</tabstop>
+  <tabstop>doubleSpinBox_Amount2</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

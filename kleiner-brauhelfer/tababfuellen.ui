@@ -1869,30 +1869,43 @@
   <tabstop>tbAbfuelldatumZeit</tabstop>
   <tabstop>btnAbfuelldatumHeute</tabstop>
   <tabstop>tbDauerHauptgaerung</tabstop>
+  <tabstop>tbSw</tabstop>
+  <tabstop>tbSWJungbier</tabstop>
+  <tabstop>btnSWJungbier</tabstop>
+  <tabstop>tbSWJungbierSoll</tabstop>
+  <tabstop>cbSchnellgaerprobeAktiv</tabstop>
   <tabstop>tbSWSchnellgaerprobe</tabstop>
   <tabstop>btnSWSchnellgaerprobe</tabstop>
   <tabstop>tbGruenschlauchzeitpunkt</tabstop>
   <tabstop>tbEVG</tabstop>
   <tabstop>tbEVGRezept</tabstop>
+  <tabstop>tbAlkoholGaerung</tabstop>
   <tabstop>tbAlkoholRezept</tabstop>
+  <tabstop>tbTemperaturJungbier</tabstop>
+  <tabstop>tbSpundungsdruck</tabstop>
   <tabstop>tbJungbiermengeAbfuellen</tabstop>
   <tabstop>tbJungbierVerlust</tabstop>
   <tabstop>cbSpunden</tabstop>
+  <tabstop>tbTemperaturKarbonisierung</tabstop>
   <tabstop>tbSpeisemengeAbgefuellt</tabstop>
   <tabstop>tbSpeisemengeGesamt</tabstop>
   <tabstop>tbZuckerFaktor</tabstop>
   <tabstop>tbZuckerGesamt</tabstop>
+  <tabstop>tbWassserZuckerloesung</tabstop>
+  <tabstop>tbKonzentrationZuckerloesung</tabstop>
+  <tabstop>tbAlkohol</tabstop>
   <tabstop>tbFlaschengroesse</tabstop>
   <tabstop>tbSpeisemengeFlasche</tabstop>
   <tabstop>tbZuckerFlasche</tabstop>
-  <tabstop>tbTemperaturJungbier</tabstop>
-  <tabstop>tbSpundungsdruck</tabstop>
+  <tabstop>tbBiermengeAbfuellen</tabstop>
+  <tabstop>tbFlaschen</tabstop>
   <tabstop>tbNebenkosten</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>btnSudAbgefuellt</tabstop>
   <tabstop>btnSudVerbraucht</tabstop>
   <tabstop>btnSudTeilen</tabstop>
   <tabstop>tbHelp</tabstop>
+  <tabstop>splitterHelp</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

@@ -1174,9 +1174,10 @@
  <tabstops>
   <tabstop>scrollAreaBewertungen</tabstop>
   <tabstop>btnNeueBewertung</tabstop>
-  <tabstop>tbBemerkung</tabstop>
+  <tabstop>scrollArea</tabstop>
   <tabstop>tbDatum</tabstop>
   <tabstop>btnDatumHeute</tabstop>
+  <tabstop>tbBemerkung</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>rbFarbe_4</tabstop>
   <tabstop>rbFarbe_5</tabstop>
@@ -1185,28 +1186,33 @@
   <tabstop>rbFarbe_8</tabstop>
   <tabstop>rbFarbe_9</tabstop>
   <tabstop>rbFarbe_10</tabstop>
+  <tabstop>rbFarbe_ka</tabstop>
   <tabstop>rbFarbe_0</tabstop>
   <tabstop>rbFarbe_1</tabstop>
   <tabstop>rbFarbe_2</tabstop>
   <tabstop>rbFarbe_3</tabstop>
+  <tabstop>rbFarbe_ka2</tabstop>
   <tabstop>tbFarbe</tabstop>
   <tabstop>rbSchaum_0</tabstop>
   <tabstop>rbSchaum_1</tabstop>
+  <tabstop>rbSchaum_ka</tabstop>
   <tabstop>rbSchaum_2</tabstop>
   <tabstop>rbSchaum_3</tabstop>
+  <tabstop>rbSchaum_ka2</tabstop>
   <tabstop>rbSchaum_4</tabstop>
   <tabstop>rbSchaum_5</tabstop>
   <tabstop>rbSchaum_6</tabstop>
+  <tabstop>rbSchaum_ka3</tabstop>
   <tabstop>rbSchaum_7</tabstop>
   <tabstop>rbSchaum_8</tabstop>
   <tabstop>rbSchaum_9</tabstop>
   <tabstop>rbSchaum_10</tabstop>
+  <tabstop>rbSchaum_ka4</tabstop>
   <tabstop>tbSchaum</tabstop>
   <tabstop>rbGeruch_0</tabstop>
   <tabstop>rbGeruch_1</tabstop>
   <tabstop>rbGeruch_2</tabstop>
   <tabstop>rbGeruch_3</tabstop>
-  <tabstop>tbGeruch</tabstop>
   <tabstop>rbGeruch_4</tabstop>
   <tabstop>rbGeruch_5</tabstop>
   <tabstop>rbGeruch_6</tabstop>
@@ -1215,12 +1221,12 @@
   <tabstop>rbGeruch_9</tabstop>
   <tabstop>rbGeruch_10</tabstop>
   <tabstop>rbGeruch_11</tabstop>
+  <tabstop>tbGeruch</tabstop>
   <tabstop>rbGeschmack_0</tabstop>
   <tabstop>rbGeschmack_1</tabstop>
   <tabstop>rbGeschmack_2</tabstop>
   <tabstop>rbGeschmack_3</tabstop>
   <tabstop>rbGeschmack_4</tabstop>
-  <tabstop>tbGeschmack</tabstop>
   <tabstop>rbGeschmack_5</tabstop>
   <tabstop>rbGeschmack_6</tabstop>
   <tabstop>rbGeschmack_7</tabstop>
@@ -1229,16 +1235,23 @@
   <tabstop>rbGeschmack_10</tabstop>
   <tabstop>rbGeschmack_11</tabstop>
   <tabstop>rbGeschmack_12</tabstop>
+  <tabstop>tbGeschmack</tabstop>
   <tabstop>rbAntrunk_0</tabstop>
   <tabstop>rbAntrunk_1</tabstop>
   <tabstop>rbAntrunk_2</tabstop>
   <tabstop>rbAntrunk_3</tabstop>
+  <tabstop>rbAntrunk_4</tabstop>
+  <tabstop>rbAntrunk_5</tabstop>
+  <tabstop>rbAntrunk_6</tabstop>
+  <tabstop>rbAntrunk_7</tabstop>
+  <tabstop>rbAntrunk_ka</tabstop>
   <tabstop>tbAntrunk</tabstop>
   <tabstop>rbHaupttrunk_0</tabstop>
   <tabstop>rbHaupttrunk_1</tabstop>
   <tabstop>rbHaupttrunk_2</tabstop>
   <tabstop>rbHaupttrunk_3</tabstop>
   <tabstop>rbHaupttrunk_4</tabstop>
+  <tabstop>rbHaupttrunk_ka</tabstop>
   <tabstop>tbHaupttrunk</tabstop>
   <tabstop>rbNachtrunk_0</tabstop>
   <tabstop>rbNachtrunk_1</tabstop>
@@ -1249,11 +1262,17 @@
   <tabstop>rbNachtrunk_6</tabstop>
   <tabstop>rbNachtrunk_7</tabstop>
   <tabstop>rbNachtrunk_8</tabstop>
+  <tabstop>rbNachtrunk_ka</tabstop>
   <tabstop>tbNachtrunk</tabstop>
   <tabstop>rbGesamteindruck_0</tabstop>
   <tabstop>rbGesamteindruck_1</tabstop>
   <tabstop>rbGesamteindruck_2</tabstop>
   <tabstop>rbGesamteindruck_3</tabstop>
+  <tabstop>rbGesamteindruck_4</tabstop>
+  <tabstop>rbGesamteindruck_5</tabstop>
+  <tabstop>rbGesamteindruck_6</tabstop>
+  <tabstop>rbGesamteindruck_7</tabstop>
+  <tabstop>rbGesamteindruck_ka</tabstop>
   <tabstop>tbGesamteindruck</tabstop>
  </tabstops>
  <resources>

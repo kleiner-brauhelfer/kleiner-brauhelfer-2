@@ -3411,11 +3411,15 @@
   <tabstop>scrollArea</tabstop>
   <tabstop>tbSudname</tabstop>
   <tabstop>tbSudnummer</tabstop>
+  <tabstop>cbKategorie</tabstop>
+  <tabstop>btnKategorienVerwalten</tabstop>
   <tabstop>cbAnlage</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbSW</tabstop>
   <tabstop>btnSudhausausbeute</tabstop>
   <tabstop>tbSudhausausbeute</tabstop>
+  <tabstop>tbFaktorHauptgussEmpfehlung</tabstop>
+  <tabstop>tbFaktorHauptguss</tabstop>
   <tabstop>tbHGF</tabstop>
   <tabstop>tbBittere</tabstop>
   <tabstop>tbKochzeit</tabstop>
@@ -3433,15 +3437,44 @@
   <tabstop>scrollAreaAnhang</tabstop>
   <tabstop>btnNeuerAnhang</tabstop>
   <tabstop>tabMitte</tabstop>
+  <tabstop>btnMalzAufteilen</tabstop>
+  <tabstop>btnMalzProzente</tabstop>
   <tabstop>scrollAreaMalzGaben</tabstop>
   <tabstop>diagramMalz</tabstop>
+  <tabstop>btnNeueMalzGabe</tabstop>
+  <tabstop>btnMalzGabenUebernehmen</tabstop>
+  <tabstop>btnNeueZusatzGabeMaischen</tabstop>
+  <tabstop>btnZusazGabenUebernehmenMaischen</tabstop>
   <tabstop>cbBerechnungsartHopfen</tabstop>
   <tabstop>scrollAreaHopfenGaben</tabstop>
   <tabstop>diagramHopfen</tabstop>
+  <tabstop>btnNeueHopfenGabe</tabstop>
+  <tabstop>btnHopfenGabenUebernehmen</tabstop>
+  <tabstop>btnNeueZusatzGabeKochen</tabstop>
+  <tabstop>btnZusazGabenUebernehmenKochen</tabstop>
   <tabstop>scrollAreaHefeGaben</tabstop>
+  <tabstop>btnNeueHefeGabe</tabstop>
+  <tabstop>btnHefeGabenUebernehmen</tabstop>
+  <tabstop>btnNeueHopfenGabeGaerung</tabstop>
+  <tabstop>btnHopfenGabenUebernehmenGaerung</tabstop>
+  <tabstop>btnNeueZusatzGabeGaerung</tabstop>
+  <tabstop>btnZusazGabenUebernehmenGaerung</tabstop>
   <tabstop>scrollAreaRasten</tabstop>
   <tabstop>diagramRasten</tabstop>
-  <tabstop>scrollArea_6</tabstop>
+  <tabstop>btnNeueRast</tabstop>
+  <tabstop>btnRastenUebernehmen</tabstop>
+  <tabstop>cbWasserProfil</tabstop>
+  <tabstop>tbRestalkalitaetSoll</tabstop>
+  <tabstop>btnRestalkalitaet</tabstop>
+  <tabstop>tbRestalkalitaetWasser</tabstop>
+  <tabstop>tbRestalkalitaetIst</tabstop>
+  <tabstop>tbPhMalz</tabstop>
+  <tabstop>tbPhMaischeSoll</tabstop>
+  <tabstop>tbPhMaische</tabstop>
+  <tabstop>scrollAreaWasseraufbereitung</tabstop>
+  <tabstop>btnNeueWasseraufbereitung</tabstop>
+  <tabstop>btnWasseraufbereitungUebernehmen</tabstop>
+  <tabstop>splitterHelp</tabstop>
   <tabstop>gvGlas</tabstop>
   <tabstop>tbFarbe</tabstop>
   <tabstop>tbGesamtschuettung</tabstop>
@@ -3452,17 +3485,19 @@
   <tabstop>tbRestextrakt</tabstop>
   <tabstop>tbAlkohol</tabstop>
   <tabstop>tbKosten</tabstop>
+  <tabstop>tbWasserGesamt</tabstop>
+  <tabstop>tbHauptguss</tabstop>
+  <tabstop>tbNachguss</tabstop>
+  <tabstop>tbWasserHGF</tabstop>
+  <tabstop>tbAnlageKorrekturSollmenge</tabstop>
   <tabstop>tbAnlageSudhausausbeute</tabstop>
   <tabstop>tbAnlageVerdampfung</tabstop>
   <tabstop>tbAnlageVolumenMaische</tabstop>
   <tabstop>tbVolumenMaische</tabstop>
   <tabstop>tbAnlageVolumenKochen</tabstop>
   <tabstop>tbVolumenKochen</tabstop>
-  <tabstop>tbWasserGesamt</tabstop>
-  <tabstop>tbHauptguss</tabstop>
-  <tabstop>tbNachguss</tabstop>
-  <tabstop>tbWasserHGF</tabstop>
   <tabstop>tbHelp</tabstop>
+  <tabstop>scrollArea_6</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

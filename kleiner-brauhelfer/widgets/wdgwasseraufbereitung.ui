@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>908</width>
-    <height>100</height>
+    <width>1022</width>
+    <height>119</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -50,10 +50,17 @@
          <number>9</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="tbName"/>
+         <widget class="QLineEdit" name="tbName">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein Brausalz oder eine Brausäure gewählt. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei degebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="ComboBox" name="cbEinheit">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Maßeinheit &lt;/span&gt;für den Zusatz zur &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Voreingestellt sind je nach Zusatzart ml/l oder g/l.&lt;/p&gt;&lt;p&gt;Es handelt sich dabei meist um sehr geringe Mengen. Kleinbrauer hantieren hierbei mit Pipetten, Spritzen und Feinwaagen im 100mg-Bereich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <item>
            <property name="text">
             <string>Kg</string>
@@ -100,6 +107,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Widget wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Wirkungsgrad&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserzusatz&lt;/span&gt; manuell eingestellt.&lt;/p&gt;&lt;p&gt;In der Regel sind hier keine Anpassungen nötig – der Kleine Brauhelfer hält die Verdünnungsfaktoren geläufiger Säuren bereit; bei &lt;span style=&quot; font-weight:600;&quot;&gt;kristallinen Salzen &lt;/span&gt;ist der Wirkungsgrad immer 100, anders dagegen verhält es sich in liquider Form.&lt;/p&gt;&lt;p&gt;So macht das Feld Sinn bei gelösten Salzen wie Calciumchlorid CaCl₂ oder den unterschiedlichen Konfektionierungen von Phosphorsäure. So wird CaCl₂ in Europa in 33%-Lösung angeboten, in anderen Ländern aber anders. Gleiches bei Phosphorsäure.In Europa ist 70% Phosphorsäue üblich in den USA 30%.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Falsche Angaben &lt;/span&gt;können hier zu unvorhersehbaren Ergebnissen führen und den &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; sogar &lt;span style=&quot; font-weight:600;&quot;&gt;ungenießbar&lt;/span&gt; machen. Bei Zweifeln ist es ein guter Rat Fachbücher und Fachforen zu befragen. Ansonsten gilt, weil es einen großen Unterschied macht, ob &lt;span style=&quot; font-weight:600;&quot;&gt;Salzsäure&lt;/span&gt; in 10%iger oder 80%iger Lösung vorliegt: &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Im Zweifel Hände weg!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>...</string>
           </property>
@@ -107,6 +117,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachOben">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier mit wird eine Zutat für die &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung nach oben &lt;/span&gt;geschoben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Eine sinnige Abfolge ist immer mit Salzen zu beginnen und mit Säuren zu enden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="whatsThis">
            <string notr="true">nach_oben</string>
           </property>
@@ -118,6 +131,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnNachUnten">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier mit wird eine Zutat für die &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung nach unten &lt;/span&gt;geschoben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Eine sinnige Abfolge ist immer mit Salzen zu beginnen und mit Säuren zu enden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="whatsThis">
            <string notr="true">nach_unten</string>
           </property>
@@ -130,7 +146,7 @@
         <item>
          <widget class="QPushButton" name="btnLoeschen">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der Eintrag aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der Eintrag aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Beim Löschen ist auf den richtigen pH-Wert für den Maischeprozess im Hauptfenster der Wasseraufbereitung zu achten, und es muss gegebenenfalls korrigierend eingegriffen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -163,6 +179,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l angegeben. &lt;/p&gt;&lt;p&gt;Der Wert hat rein informativen Charakter, praktisch entscheidend ist die Gesamtmenge des Zuatzes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -184,6 +203,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -219,6 +241,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die Menge einer Säure oder eines Brausalzes an, die beim aktuellen Wasser &lt;span style=&quot; font-weight:600;&quot;&gt;1 °dH Restalakalität&lt;/span&gt; absenkt oder erhöht.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Die Angabe hat rein informativen Charakter. Für  Wasserprofile sind die mengen an Brausalzen CaSO₄ und CaCl₂ ausschlaggebender, um den Geschmackseindruck eines Wassers aus einer bestimmten Region abzubilden.&lt;/p&gt;&lt;p&gt;Weitere Informationen bieten hier vor allem amerikanische Foren für Hobbybrauer sowie die Seite des Wasserspezialisiten Martin Brungard und seines Tools &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -261,6 +286,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Brauwasser&lt;/span&gt; in Grad deutscher Härte °dH.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Zum Verständnis: &lt;/span&gt;Die Restalkalität &lt;span style=&quot; font-weight:600;&quot;&gt;°dH&lt;/span&gt; ist vereinfacht eine Maßeinheit, die einer anderen Maßeinheit, dem &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; den Weg bereitet. Und das kommt so: &lt;span style=&quot; font-weight:600;&quot;&gt;0 °dH&lt;/span&gt; beschreibt &lt;span style=&quot; font-weight:600;&quot;&gt;salzfreies Wasser&lt;/span&gt;. Braumalze reagieren in salzfreiem Wasser sauer und verschieben den pH auf einen Wert zwischen  5,2 und 5,8.&lt;/p&gt;&lt;p&gt;Wasser nimmt im Boden Mineralien auf. Diese Mineralien verschieben die Restalkalität in den positiven Bereich. Ein positiver °dH-Bereich erhöht aber den pH-Wert in der Maische. Umgekehrt senkt eine negative Restalkalität den pH-Wert in der Maische.&lt;/p&gt;&lt;p&gt;Grundsätzlich gilt: Die sauren Reaktionen des Malzes sind gut bei einem &lt;span style=&quot; font-weight:600;&quot;&gt;pH &lt;/span&gt;von &lt;span style=&quot; font-weight:600;&quot;&gt;5,5&lt;/span&gt;. Optimal sind sie bei &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,4&lt;/span&gt; für &lt;span style=&quot; font-weight:600;&quot;&gt;helle&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,6&lt;/span&gt; für &lt;span style=&quot; font-weight:600;&quot;&gt;dunkle Biere&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Neben der Restalkalität interessiert im Brauwasser auch der &lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Salzgehalt&lt;/span&gt;. Fälschlich wird oft angenommen, dass viele Mineralien im Wasser hartes Wasser bedeuten. In Wirklichkeit haben das berühmte salzarme Wasser Pilsener Wasser und das mineralreiche Burton-on-Trent-Wasser, bekannt für IPA, die gleich Restalkalität nahe 0 °dH.&lt;/p&gt;&lt;p&gt;Die Mineralzusammensetzung ist letztlich ein entscheidener Faktor für den &lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Bierstil&lt;/span&gt;. Das Pilsener Wasser sorgt für die weiche Anmutung eines Pilseners, das salzhaltige Burton-on-Trent-Wasser für Komplexität, die den Hopfencharakter eine English IPA unterstützt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Zur Beachtung:&lt;/span&gt; Da die Materie der Mineralienzusammensetzung für einen Bierstil komplex ist, bietet der Kleine Brauhelfer im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Reiter Wasser &lt;/span&gt;bewährte Wasserstile für alle Bierstile als &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; an, die eine aufwenige Recherche erübrigen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -310,6 +338,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l zu Wasseraufbereitung aus. &lt;/p&gt;&lt;p&gt;Dieser Wert gilt für die gesamte Wassermenge des Sudes und hat rein informativen Charakter. Praktische Relevanz hat er &lt;span style=&quot; font-weight:600;&quot;&gt;aufgeteilt&lt;/span&gt; in den untenstehenden Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -331,6 +362,9 @@
             <width>80</width>
             <height>0</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge für die Verdünnung im &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Verfahren&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die&lt;span style=&quot; font-weight:600;&quot;&gt; High-Gravity-Menge &lt;/span&gt;wird im Hauptteil vom &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; manuell angegeben und dann in einem komplizierten Verfahren berechnet. Wesentliches Merkmal von High Gravity ist, dass sein Anteil vom Nachguss abgezogen und gesondert vermerkt wird.&lt;/p&gt;&lt;p&gt;Dabei setzt sich der Nachguss aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausausbeutefaktor zusammen, wie entweder manuell oder im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; High-Gravity-Menge &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -408,6 +442,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -454,6 +491,9 @@
         </item>
         <item row="0" column="10">
          <widget class="QPushButton" name="btnAusgleichen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Mengen&lt;/span&gt; eines Salzes oder einer Säure auf die gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;angepasst&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Liegt die Zusatzmenge unter der Zielgröße der gewünschten Restalkalität, ist der Button ohne Wirkung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Ausgleichen</string>
           </property>

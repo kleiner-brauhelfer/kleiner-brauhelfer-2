@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>451</width>
-         <height>688</height>
+         <width>375</width>
+         <height>680</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -681,9 +681,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string/>
-           </property>
            <attribute name="title">
             <string>Bemerkung</string>
            </attribute>
@@ -777,9 +774,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string/>
-           </property>
            <attribute name="title">
             <string>Anhänge</string>
            </attribute>
@@ -806,8 +800,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>381</width>
-                 <height>105</height>
+                 <width>335</width>
+                 <height>107</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -999,8 +993,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>344</height>
+              <width>349</width>
+              <height>340</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1242,8 +1236,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>122</height>
+              <width>349</width>
+              <height>133</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1432,8 +1426,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>443</width>
-             <height>559</height>
+             <width>349</width>
+             <height>584</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1662,8 +1656,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>114</height>
+              <width>349</width>
+              <height>118</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -2083,8 +2077,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>443</width>
-             <height>363</height>
+             <width>349</width>
+             <height>373</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -2191,8 +2185,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>455</width>
-          <height>822</height>
+          <width>389</width>
+          <height>857</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -3205,9 +3199,6 @@
             </item>
             <item row="7" column="0">
              <widget class="QLabel" name="label_VolumenMaischen">
-              <property name="toolTip">
-               <string/>
-              </property>
               <property name="text">
                <string>Benötigtes Volumen ca.</string>
               </property>
@@ -3386,9 +3377,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -3396,14 +3387,14 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>ChartView</class>

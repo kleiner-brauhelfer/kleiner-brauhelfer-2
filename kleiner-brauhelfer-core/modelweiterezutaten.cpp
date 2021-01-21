@@ -9,6 +9,7 @@ ModelWeitereZutaten::ModelWeitereZutaten(Brauhelfer* bh, QSqlDatabase db) :
 {
     mVirtualField.append("MengeNormiert");
     mVirtualField.append("InGebrauch");
+    mVirtualField.append("InGebrauchListe");
 }
 
 QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
@@ -59,6 +60,24 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
             }
         }
         return false;
+    }
+    case ColInGebrauchListe:
+    {
+        QStringList list;
+        ProxyModel model;
+        model.setSourceModel(bh->modelWeitereZutatenGaben());
+        QVariant name = data(idx.row(), ColName);
+        for (int r = 0; r < model.rowCount(); ++r)
+        {
+            if (model.data(r, ModelWeitereZutatenGaben::ColName) == name)
+            {
+                QVariant sudId = model.data(r, ModelWeitereZutatenGaben::ColSudID);
+                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+                if (status == Brauhelfer::SudStatus::Rezept)
+                    list.append(bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString());
+            }
+        }
+        return list;
     }
     default:
         return QVariant();

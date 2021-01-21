@@ -31,6 +31,18 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QPalette pal = palette();
+    pal.setColor(QPalette::Base, gSettings->NichtGebrautBackground);
+    ui->cbRezept->setPalette(pal);
+    pal.setColor(QPalette::Base, gSettings->GebrautBackground);
+    ui->cbGebraut->setPalette(pal);
+    pal.setColor(QPalette::Base, gSettings->AbgefuelltBackground);
+    ui->cbAbgefuellt->setPalette(pal);
+    pal.setColor(QPalette::Base, gSettings->VerbrauchtBackground);
+    ui->cbVerbraucht->setPalette(pal);
+    pal.setColor(QPalette::Base, gSettings->MekrlisteBackground);
+    ui->cbMerkliste->setPalette(pal);
+
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 0);
 

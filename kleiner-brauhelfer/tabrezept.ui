@@ -929,7 +929,7 @@
            <item>
             <widget class="QLabel" name="lblWarnungMalz">
              <property name="text">
-              <string>Die Summe der angegeben Malzmengen entspricht nicht der Gesamtschüttung.</string>
+              <string>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -943,15 +943,18 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnMalzAufteilen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen der erforderlichen Gesamtschüttung und der Summe der angegebenen Malzmengen &lt;span style=&quot; font-weight:600;&quot;&gt;gleichmäßig&lt;/span&gt; auf alle Malzeinträge &lt;span style=&quot; font-weight:600;&quot;&gt;verteilt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="text">
-                <string>Mengenangleichung 100%</string>
+                <string>Differenz verteilen</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btnMalzProzente">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Widget &lt;span style=&quot; font-weight:600;&quot;&gt;Mengen prozentual anpassen &lt;/span&gt;erscheint, wenn im kg-Feld die Menge verändert wird. Folgend erscheint die Warnmeldung &amp;quot;Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung&amp;quot;. Der Sinn des Feldes besteht darin, das ursprüngliche Mengenverältnis wieder prozentual herzustellen.&lt;/p&gt;&lt;p&gt;Der Button erscheint nicht, wenn nur eine Malzsorte angegeben ist, da diese 100% ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;Grundlage für die Berechnung ist die links im &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Tab Rezep&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;t festgelegte &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Sollstammwürze&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt; und &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Sollmenge&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;In der Folge werden auch alle vergärbaren Zusätze beim Maischen angepasst.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;Das Widget &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Mengen prozentual anpassen &lt;/span&gt;erscheint auch, wenn auf den Button &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Vorhanden&lt;/span&gt; bei einem Malz oder einem Zusatz geklickt wird. &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Vorhanden &lt;/span&gt;überträgt lediglich die Gesamtmenge einer Maischezutat zum vollständigen Verbrauch. Dies bringt natürlich das bestehende Mengenverhältnis durcheinander und wird nicht mehr vom Button &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Mengen prozentual anpassen&lt;/span&gt; korrigiert, ist somit ein Anwenderfehler.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Malzmengen mit der erforderlichen Gesamtschüttung verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzelmengen prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Diese Funktion kann verwendet werden, um ein Rezept zu übernehmen, bei dem die Malzmengen nur in kg angegeben sind. Dazu müssen zuerst alle Malzsorten und Mengen aus dem Rezept unten eingetragen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Mengen prozentual anpassen</string>

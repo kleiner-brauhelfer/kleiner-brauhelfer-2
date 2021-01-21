@@ -354,7 +354,14 @@ void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 
 void TabBraudaten::on_btnSudGebraut_clicked()
 {
-    bh->sud()->setBraudatum(QDateTime(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time()));
+    QDateTime dt(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time());
+    QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
+    if (QMessageBox::question(this, tr("Sud als gebraut markieren?"),
+                                    tr("Soll der Sud als gebraut markiert werden?\n\nBraudatum: %1").arg(dtStr),
+                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
+        return;
+
+    bh->sud()->setBraudatum(dt);
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
 
     DlgRohstoffeAbziehen dlg(true, this);

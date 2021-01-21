@@ -129,7 +129,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Sektion der aktuellen Datenbank ausgewählt, &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Tabelle genannt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man im Kleinen Brauhelfer ein Kapitel in den Tabs (Reitern) und ihren Subkategorien. Der Rechtsklick zeigt die Liste von über 20 Kapiteln an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man eine nicht-sudspezifische Tabelle.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -182,7 +182,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezfischeEinträge&lt;/span&gt; eines Sudes, unterteilt in Kapitel, angezeigt werden.&lt;/p&gt;&lt;p&gt;Zuvor muss ein Sud geladen werden. Der Rechtsklick zeigt dann die Liste verfügbarer Kapitel an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Eine sudspezifische Tabelle ist ein Ausschnitt einer globalen Tabelle, welche nur die Einträge des geladenen Sudes anzeigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>

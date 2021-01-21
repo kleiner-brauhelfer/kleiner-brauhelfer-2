@@ -534,14 +534,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     {
     case ColBraudatum:
     {
-        if (QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate)))
-        {
-            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
-            if (status < Brauhelfer::SudStatus::Abgefuellt)
-                setData(idx.row(), ColAbfuelldatum, value);
-            return true;
-        }
-        return false;
+        return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
     case ColAbfuelldatum:
     {

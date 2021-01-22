@@ -839,6 +839,8 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
             dekoktion = true;
             break;
         }
+        if (dekoktion)
+            break;
     }
     if (dekoktion)
     {
@@ -859,9 +861,13 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
             if (!dekoktion)
             {
                 root["Infusion_Einmaischtemperatur"] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
-                root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
-                root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
-                ++n;
+                int dauer = model.data(row, ModelRasten::ColDauer).toInt();
+                if (dauer > 0)
+                {
+                    root[QString("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
+                    root[QString("Infusion_Rastzeit%1").arg(n)] = QString::number(dauer);
+                    ++n;
+                }
             }
             else
             {

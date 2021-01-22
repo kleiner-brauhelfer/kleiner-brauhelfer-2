@@ -543,6 +543,13 @@
          <item>
           <widget class="QLabel" name="lblNumSude"/>
          </item>
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string notr="true">    </string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>

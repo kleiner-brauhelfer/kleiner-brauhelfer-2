@@ -17,7 +17,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.2.2](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+- [Version 2.2.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -41,7 +41,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ## Änderungen & Erweiterungen
 
-### Version 2.2.3 (in Entwicklung)
+### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)
 - Neu: Tooltips komplett überarbeitet (vielen Dank rakader)
 - Neu: Übernahme des Vergärungsgrades der Hefe

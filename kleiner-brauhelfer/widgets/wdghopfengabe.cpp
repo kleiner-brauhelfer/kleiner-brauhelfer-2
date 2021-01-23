@@ -24,7 +24,7 @@ WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name), QSize(), QIcon::Normal, QIcon::Off);
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }

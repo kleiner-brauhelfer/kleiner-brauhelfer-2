@@ -159,7 +159,8 @@
            </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/light/save.svg</normaloff>:/images/light/save.svg</iconset>
+             <normaloff>:/images/light/save.svg</normaloff>
+             <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
            </property>
           </widget>
          </item>
@@ -179,7 +180,8 @@
            </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/light/restore.svg</normaloff>:/images/light/restore.svg</iconset>
+             <normaloff>:/images/light/restore.svg</normaloff>
+             <disabledoff>:/images/disabled/restore.svg</disabledoff>:/images/light/restore.svg</iconset>
            </property>
           </widget>
          </item>
@@ -199,7 +201,8 @@
            </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/light/print.svg</normaloff>:/images/light/print.svg</iconset>
+             <normaloff>:/images/light/print.svg</normaloff>
+             <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
            </property>
           </widget>
          </item>
@@ -219,7 +222,8 @@
            </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/light/pdf.svg</normaloff>:/images/light/pdf.svg</iconset>
+             <normaloff>:/images/light/pdf.svg</normaloff>
+             <disabledoff>:/images/disabled/pdf.svg</disabledoff>:/images/light/pdf.svg</iconset>
            </property>
           </widget>
          </item>
@@ -233,7 +237,8 @@
            </property>
            <property name="icon">
             <iconset resource="../images.qrc">
-             <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
+             <normaloff>:/images/light/settings.svg</normaloff>
+             <disabledoff>:/images/disabled/settings.svg</disabledoff>:/images/light/settings.svg</iconset>
            </property>
           </widget>
          </item>

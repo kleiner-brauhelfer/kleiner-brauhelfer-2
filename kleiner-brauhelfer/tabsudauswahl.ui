@@ -277,7 +277,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_neu.svg</normaloff>:/images/light/sud_neu.svg</iconset>
+             <normaloff>:/images/light/sud_neu.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_neu.svg</disabledoff>:/images/light/sud_neu.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -303,7 +304,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_kopie.svg</normaloff>:/images/light/sud_kopie.svg</iconset>
+             <normaloff>:/images/light/sud_kopie.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_kopie.svg</disabledoff>:/images/light/sud_kopie.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -329,7 +331,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_loeschen.svg</normaloff>:/images/light/sud_loeschen.svg</iconset>
+             <normaloff>:/images/light/sud_loeschen.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_loeschen.svg</disabledoff>:/images/light/sud_loeschen.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -362,7 +365,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_import.svg</normaloff>:/images/light/sud_import.svg</iconset>
+             <normaloff>:/images/light/sud_import.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_import.svg</disabledoff>:/images/light/sud_import.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -388,7 +392,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_export.svg</normaloff>:/images/light/sud_export.svg</iconset>
+             <normaloff>:/images/light/sud_export.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_export.svg</disabledoff>:/images/light/sud_export.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -421,7 +426,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
+             <normaloff>:/images/light/sud_teilen.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -454,7 +460,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_merken.svg</normaloff>:/images/light/sud_merken.svg</iconset>
+             <normaloff>:/images/light/sud_merken.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_merken.svg</disabledoff>:/images/light/sud_merken.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -480,7 +487,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_vergessen.svg</normaloff>:/images/light/sud_vergessen.svg</iconset>
+             <normaloff>:/images/light/sud_vergessen.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_vergessen.svg</disabledoff>:/images/light/sud_vergessen.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -513,7 +521,8 @@
            </property>
            <property name="icon">
             <iconset resource="images.qrc">
-             <normaloff>:/images/light/sud_laden.svg</normaloff>:/images/light/sud_laden.svg</iconset>
+             <normaloff>:/images/light/sud_laden.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_laden.svg</disabledoff>:/images/light/sud_laden.svg</iconset>
            </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -544,11 +553,20 @@
           <widget class="QLabel" name="lblNumSude"/>
          </item>
          <item>
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string notr="true"/>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-          </widget>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>10</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -577,6 +595,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
@@ -586,11 +609,6 @@
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

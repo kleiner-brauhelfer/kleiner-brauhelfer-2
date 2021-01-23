@@ -46,12 +46,12 @@ void Settings::initTheme()
     default:
     case Bright:
         palette.setColorGroup(QPalette::Disabled,
-            Qt::darkGray,//windowText
+            QColor(128,128,128),//windowText
             QColor(226,226,226),//button
             QColor(240,240,240),//light
             QColor(200,200,200),//dark
             QColor(210,210,210),//mid
-            Qt::darkGray,//text
+            QColor(128,128,128),//text
             QColor(240,240,240),//bright_text
             QColor(255,255,255),//base
             QColor(226,226,226));//window
@@ -83,12 +83,12 @@ void Settings::initTheme()
 
     case Dark:
         palette.setColorGroup(QPalette::Disabled,
-            QColor(120,120,120),//windowText
+            QColor(128,128,128),//windowText
             QColor(53,53,53),//button
             QColor(120,120,120),//light
             QColor(25,25,25),//dark
             QColor(32,32,32),//mid
-            QColor(120,120,120),//text
+            QColor(128,128,128),//text
             QColor(120,120,120),//bright_text
             QColor(25,25,25),//base
             QColor(53,53,53));//window

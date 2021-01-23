@@ -100,6 +100,7 @@ SOURCES += \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
+    widgets/iconthemed.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
@@ -178,6 +179,7 @@ HEADERS += \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
+    widgets/iconthemed.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \
     widgets/svgview.h \

@@ -739,7 +739,8 @@
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
-                  <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                  <normaloff>:/images/light/plus.svg</normaloff>
+                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -759,7 +760,8 @@
                 </property>
                 <property name="icon">
                  <iconset resource="images.qrc">
-                  <normaloff>:/images/light/minus.svg</normaloff>:/images/light/minus.svg</iconset>
+                  <normaloff>:/images/light/minus.svg</normaloff>
+                  <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
                 </property>
                </widget>
               </item>
@@ -873,7 +875,8 @@
               </property>
               <property name="icon">
                <iconset resource="images.qrc">
-                <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                <normaloff>:/images/light/plus.svg</normaloff>
+                <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
               </property>
              </widget>
             </item>
@@ -1096,7 +1099,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1113,7 +1117,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1137,7 +1142,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1154,7 +1160,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1339,7 +1346,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1356,7 +1364,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1380,7 +1389,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1397,7 +1407,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1527,7 +1538,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1544,7 +1556,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1565,7 +1578,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1582,7 +1596,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1606,7 +1621,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+                 <normaloff>:/images/light/plus.svg</normaloff>
+                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1623,7 +1639,8 @@
                </property>
                <property name="icon">
                 <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <normaloff>:/images/light/import.svg</normaloff>
+                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1724,7 +1741,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+              <normaloff>:/images/light/plus.svg</normaloff>
+              <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
             </property>
            </widget>
           </item>
@@ -1738,7 +1756,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+              <normaloff>:/images/light/import.svg</normaloff>
+              <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
             </property>
            </widget>
           </item>
@@ -1876,7 +1895,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/uebertrag_oben.svg</normaloff>:/images/light/uebertrag_oben.svg</iconset>
+              <normaloff>:/images/light/uebertrag_oben.svg</normaloff>
+              <disabledoff>:/images/disabled/uebertrag_oben.svg</disabledoff>:/images/light/uebertrag_oben.svg</iconset>
             </property>
            </widget>
           </item>
@@ -2143,7 +2163,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+              <normaloff>:/images/light/plus.svg</normaloff>
+              <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
             </property>
            </widget>
           </item>
@@ -2157,7 +2178,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+              <normaloff>:/images/light/import.svg</normaloff>
+              <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
             </property>
            </widget>
           </item>

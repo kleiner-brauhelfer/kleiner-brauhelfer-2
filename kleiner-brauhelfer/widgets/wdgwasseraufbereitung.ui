@@ -125,7 +125,8 @@
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_oben.svg</normaloff>:/images/light/nach_oben.svg</iconset>
+            <normaloff>:/images/light/nach_oben.svg</normaloff>
+            <disabledoff>:/images/disabled/nach_oben.svg</disabledoff>:/images/light/nach_oben.svg</iconset>
           </property>
          </widget>
         </item>
@@ -139,7 +140,8 @@
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_unten.svg</normaloff>:/images/light/nach_unten.svg</iconset>
+            <normaloff>:/images/light/nach_unten.svg</normaloff>
+            <disabledoff>:/images/disabled/nach_unten.svg</disabledoff>:/images/light/nach_unten.svg</iconset>
           </property>
          </widget>
         </item>

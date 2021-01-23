@@ -1889,7 +1889,8 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/light/uebertrag_links.svg</normaloff>:/images/light/uebertrag_links.svg</iconset>
+               <normaloff>:/images/light/uebertrag_links.svg</normaloff>
+               <disabledoff>:/images/disabled/uebertrag_links.svg</disabledoff>:/images/light/uebertrag_links.svg</iconset>
              </property>
             </widget>
            </item>
@@ -2160,7 +2161,8 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/light/uebertrag_links.svg</normaloff>:/images/light/uebertrag_links.svg</iconset>
+               <normaloff>:/images/light/uebertrag_links.svg</normaloff>
+               <disabledoff>:/images/disabled/uebertrag_links.svg</disabledoff>:/images/light/uebertrag_links.svg</iconset>
              </property>
             </widget>
            </item>
@@ -2469,7 +2471,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/sud_gebraut.svg</normaloff>:/images/light/sud_gebraut.svg</iconset>
+              <normaloff>:/images/light/sud_gebraut.svg</normaloff>
+              <disabledoff>:/images/disabled/sud_gebraut.svg</disabledoff>:/images/light/sud_gebraut.svg</iconset>
             </property>
            </widget>
           </item>
@@ -2486,7 +2489,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
+              <normaloff>:/images/light/sud_teilen.svg</normaloff>
+              <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
             </property>
            </widget>
           </item>

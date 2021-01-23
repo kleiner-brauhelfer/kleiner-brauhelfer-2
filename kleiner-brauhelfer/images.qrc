@@ -95,5 +95,43 @@
         <file>images/dark/tabzusammenfassung.svg</file>
         <file>images/dark/uebertrag_links.svg</file>
         <file>images/dark/uebertrag_oben.svg</file>
+        <file>images/disabled/export.svg</file>
+        <file>images/disabled/import.svg</file>
+        <file>images/disabled/minus.svg</file>
+        <file>images/disabled/nach_oben.svg</file>
+        <file>images/disabled/nach_unten.svg</file>
+        <file>images/disabled/pdf.svg</file>
+        <file>images/disabled/plus.svg</file>
+        <file>images/disabled/print.svg</file>
+        <file>images/disabled/refresh.svg</file>
+        <file>images/disabled/restore.svg</file>
+        <file>images/disabled/save.svg</file>
+        <file>images/disabled/settings.svg</file>
+        <file>images/disabled/sud_abgefuellt.svg</file>
+        <file>images/disabled/sud_export.svg</file>
+        <file>images/disabled/sud_gebraut.svg</file>
+        <file>images/disabled/sud_import.svg</file>
+        <file>images/disabled/sud_kopie.svg</file>
+        <file>images/disabled/sud_laden.svg</file>
+        <file>images/disabled/sud_loeschen.svg</file>
+        <file>images/disabled/sud_merken.svg</file>
+        <file>images/disabled/sud_neu.svg</file>
+        <file>images/disabled/sud_teilen.svg</file>
+        <file>images/disabled/sud_verbraucht.svg</file>
+        <file>images/disabled/sud_vergessen.svg</file>
+        <file>images/disabled/tababfuellen.svg</file>
+        <file>images/disabled/tabausruestung.svg</file>
+        <file>images/disabled/tabbewertung.svg</file>
+        <file>images/disabled/tabbraudaten.svg</file>
+        <file>images/disabled/tabbrauuebersicht.svg</file>
+        <file>images/disabled/tabdatenbank.svg</file>
+        <file>images/disabled/tabetikette.svg</file>
+        <file>images/disabled/tabgaerverlauf.svg</file>
+        <file>images/disabled/tabrezept.svg</file>
+        <file>images/disabled/tabrohstoffe.svg</file>
+        <file>images/disabled/tabsudauswahl.svg</file>
+        <file>images/disabled/tabzusammenfassung.svg</file>
+        <file>images/disabled/uebertrag_links.svg</file>
+        <file>images/disabled/uebertrag_oben.svg</file>
     </qresource>
 </RCC>

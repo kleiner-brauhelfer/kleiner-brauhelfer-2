@@ -81,13 +81,7 @@ private:
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
-    int mTabIndexGaerverlauf;
-    int mTabIndexZusammenfassung;
-    int mTabIndexEtikette;
-    int mTabIndexBewertung;
-    int mTabIndexBrauuebersicht;
-    int mTabIndexAusruestung;
-    int mTabIndexDatenbank;
+    QVector<int> mTabIndex;
 };
 
 #endif // MAINWINDOW_H

@@ -9,6 +9,9 @@ Settings::Settings(QObject *parent) :
 {
     defaultFont = QGuiApplication::font();
     defaultPalette = QGuiApplication::palette();
+    beginGroup("General");
+    mModules = static_cast<Modules>(value("Modules", int(ModuleDefault)).toUInt());
+    endGroup();
     initTheme();
 }
 
@@ -17,6 +20,9 @@ Settings::Settings(const QString& dir, QObject *parent) :
 {
     defaultFont = QGuiApplication::font();
     defaultPalette = QGuiApplication::palette();
+    beginGroup("General");
+    mModules = static_cast<Modules>(value("Modules", int(ModuleDefault)).toUInt());
+    endGroup();
     initTheme();
 }
 
@@ -383,6 +389,24 @@ QString Settings::dataDir(int type) const
     default:
         return settingsDir() + "data/";
     }
+}
+
+Settings::Modules Settings::modules() const
+{
+    return mModules;
+}
+
+void Settings::enableModule(Settings::Module module, bool enabled)
+{
+    mModules.setFlag(module, enabled);
+    beginGroup("General");
+    setValue("Modules", uint(mModules));
+    endGroup();
+}
+
+bool Settings::module(Settings::Module module) const
+{
+    return mModules.testFlag(module);
 }
 
 QString Settings::lastProgramVersion()

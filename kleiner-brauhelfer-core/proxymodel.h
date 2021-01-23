@@ -5,6 +5,10 @@
 #include <QDateTime>
 #include "kleiner-brauhelfer-core_global.h"
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+#include <QRegularExpression>
+#endif
+
 class LIB_EXPORT ProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
@@ -62,6 +66,20 @@ public:
 
     QDateTime filterMaximumDate() const;
     void setFilterMaximumDate(const QDateTime &dt);
+
+  #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
+    void setFilterRegularExpression(const QString &pattern)
+    {
+        setFilterRegExp(pattern);
+    }
+    void setFilterRegularExpression(const QRegularExpression &regularExpression)
+    {
+        Qt::CaseSensitivity cs = Qt::CaseSensitive;
+        if (regularExpression.patternOptions().testFlag(QRegularExpression::CaseInsensitiveOption))
+            cs = Qt::CaseInsensitive;
+        setFilterRegExp(QRegExp(regularExpression.pattern(), cs));
+    }
+  #endif
 
 signals:
     void modified();

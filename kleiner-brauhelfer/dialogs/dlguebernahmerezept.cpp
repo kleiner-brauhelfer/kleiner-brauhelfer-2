@@ -65,7 +65,7 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ProxyModel* model;
+    ProxyModel* model = nullptr;
     switch (mArt)
     {
     case Malz:
@@ -129,9 +129,12 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     }
-    model->setFilterRegularExpression(QString("^%1$").arg(mSudId));
-    ui->tableViewItem->setModel(model);
-    ui->tableViewItem->build();
+    if (model)
+    {
+        model->setFilterRegularExpression(QString("^%1$").arg(mSudId));
+        ui->tableViewItem->setModel(model);
+        ui->tableViewItem->build();
+    }
 
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelSud());

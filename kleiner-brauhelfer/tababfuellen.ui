@@ -1759,7 +1759,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/sud_abgefuellt.svg</normaloff>:/images/light/sud_abgefuellt.svg</iconset>
+              <normaloff>:/images/light/sud_abgefuellt.svg</normaloff>
+              <disabledoff>:/images/disabled/sud_abgefuellt.svg</disabledoff>:/images/light/sud_abgefuellt.svg</iconset>
             </property>
            </widget>
           </item>
@@ -1776,7 +1777,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/sud_verbraucht.svg</normaloff>:/images/light/sud_verbraucht.svg</iconset>
+              <normaloff>:/images/light/sud_verbraucht.svg</normaloff>
+              <disabledoff>:/images/disabled/sud_verbraucht.svg</disabledoff>:/images/light/sud_verbraucht.svg</iconset>
             </property>
            </widget>
           </item>
@@ -1793,7 +1795,8 @@
             </property>
             <property name="icon">
              <iconset resource="images.qrc">
-              <normaloff>:/images/light/sud_teilen.svg</normaloff>:/images/light/sud_teilen.svg</iconset>
+              <normaloff>:/images/light/sud_teilen.svg</normaloff>
+              <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
             </property>
            </widget>
           </item>

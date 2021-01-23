@@ -17,6 +17,7 @@
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgconsole.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
+#include "widgets/iconthemed.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -33,18 +34,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
     if (theme == Settings::Theme::Dark)
     {
-        ui->tabMain->setTabIcon(0, QIcon(":/images/dark/tabsudauswahl.svg"));
-        ui->tabMain->setTabIcon(1, QIcon(":/images/dark/tabrezept.svg"));
-        ui->tabMain->setTabIcon(2, QIcon(":/images/dark/tabbraudaten.svg"));
-        ui->tabMain->setTabIcon(3, QIcon(":/images/dark/tababfuellen.svg"));
-        ui->tabMain->setTabIcon(4, QIcon(":/images/dark/tabgaerverlauf.svg"));
-        ui->tabMain->setTabIcon(5, QIcon(":/images/dark/tabzusammenfassung.svg"));
-        ui->tabMain->setTabIcon(6, QIcon(":/images/dark/tabetikette.svg"));
-        ui->tabMain->setTabIcon(7, QIcon(":/images/dark/tabbewertung.svg"));
-        ui->tabMain->setTabIcon(8, QIcon(":/images/dark/tabbrauuebersicht.svg"));
-        ui->tabMain->setTabIcon(9, QIcon(":/images/dark/tabausruestung.svg"));
-        ui->tabMain->setTabIcon(10, QIcon(":/images/dark/tabrohstoffe.svg"));
-        ui->tabMain->setTabIcon(11, QIcon(":/images/dark/tabdatenbank.svg"));
+        ui->tabMain->setTabIcon(0, IconThemed("tabsudauswahl", false));
+        ui->tabMain->setTabIcon(1, IconThemed("tabrezept", false));
+        ui->tabMain->setTabIcon(2, IconThemed("tabbraudaten", false));
+        ui->tabMain->setTabIcon(3, IconThemed("tababfuellen", false));
+        ui->tabMain->setTabIcon(4, IconThemed("tabgaerverlauf", false));
+        ui->tabMain->setTabIcon(5, IconThemed("tabzusammenfassung", false));
+        ui->tabMain->setTabIcon(6, IconThemed("tabetikette", false));
+        ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
+        ui->tabMain->setTabIcon(8, IconThemed("tabbrauuebersicht", false));
+        ui->tabMain->setTabIcon(9, IconThemed("tabausruestung", false));
+        ui->tabMain->setTabIcon(10, IconThemed("tabrohstoffe", false));
+        ui->tabMain->setTabIcon(11, IconThemed("tabdatenbank", false));
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)
         {
@@ -52,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
             QIcon icon = action->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name), QSize(), QIcon::Normal, QIcon::Off);
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
                 action->setIcon(icon);
             }
         }
@@ -63,7 +64,7 @@ MainWindow::MainWindow(QWidget *parent) :
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name), QSize(), QIcon::Normal, QIcon::Off);
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }
@@ -675,9 +676,8 @@ void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
     {
         bool loaded = bh->sud()->isLoaded();
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-        QString fileName = QString(":/images/%1/tabzusammenfassung.svg").arg(gSettings->theme() == Settings::Theme::Dark ? "dark" : "light");
         QString name = status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung");
-        ui->tabMain->insertTab(mTabIndexZusammenfassung, ui->tabZusammenfassung, QIcon(fileName), name);
+        ui->tabMain->insertTab(mTabIndexZusammenfassung, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), name);
         ui->tabMain->setTabEnabled(mTabIndexZusammenfassung, loaded);
         mTabIndexEtikette++;
         mTabIndexBewertung++;
@@ -698,8 +698,7 @@ void MainWindow::on_actionReiterEtikette_triggered(bool checked)
 {
     if (checked)
     {
-        QString fileName = QString(":/images/%1/tabetikette.svg").arg(gSettings->theme() == Settings::Theme::Dark ? "dark" : "light");
-        ui->tabMain->insertTab(mTabIndexEtikette, ui->tabEtikette, QIcon(fileName), tr("Etikette"));
+        ui->tabMain->insertTab(mTabIndexEtikette, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
         ui->tabMain->setTabEnabled(mTabIndexEtikette, bh->sud()->isLoaded());
         mTabIndexBewertung++;
         mTabIndexBrauuebersicht++;
@@ -718,8 +717,7 @@ void MainWindow::on_actionReiterBewertung_triggered(bool checked)
 {
     if (checked)
     {
-        QString fileName = QString(":/images/%1/tabbewertung.svg").arg(gSettings->theme() == Settings::Theme::Dark ? "dark" : "light");
-        ui->tabMain->insertTab(mTabIndexBewertung, ui->tabBewertung, QIcon(fileName), tr("Bewertung"));
+        ui->tabMain->insertTab(mTabIndexBewertung, ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
         ui->tabMain->setTabEnabled(mTabIndexBewertung, bh->sud()->isLoaded());
         mTabIndexBrauuebersicht++;
         mTabIndexDatenbank++;
@@ -736,8 +734,7 @@ void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
 {
     if (checked)
     {
-        QString fileName = QString(":/images/%1/tabbrauuebersicht.svg").arg(gSettings->theme() == Settings::Theme::Dark ? "dark" : "light");
-        ui->tabMain->insertTab(mTabIndexBrauuebersicht, ui->tabBrauuebersicht, QIcon(fileName), tr("Brauübersicht"));
+        ui->tabMain->insertTab(mTabIndexBrauuebersicht, ui->tabBrauuebersicht, IconThemed("tabbrauuebersicht", gSettings->theme() == Settings::Theme::Bright), tr("Brauübersicht"));
         mTabIndexDatenbank++;
     }
     else
@@ -751,8 +748,7 @@ void MainWindow::on_actionReiterDatenbank_triggered(bool checked)
 {
     if (checked)
     {
-        QString fileName = QString(":/images/%1/tabdatenbank.svg").arg(gSettings->theme() == Settings::Theme::Dark ? "dark" : "light");
-        ui->tabMain->insertTab(mTabIndexDatenbank, ui->tabDatenbank, QIcon(fileName), tr("Datenbank"));
+        ui->tabMain->insertTab(mTabIndexDatenbank, ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
     }
     else
     {

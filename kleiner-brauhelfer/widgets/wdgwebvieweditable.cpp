@@ -196,9 +196,6 @@ void WdgWebViewEditable::printToPdf()
         QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
     }
     gSettings->endGroup();
-  #else
-    Q_UNUSED(filePath)
-    Q_UNUSED(margins)
   #endif
 }
 

@@ -208,8 +208,8 @@ void TabAusruestung::anlage_selectionChanged()
         regExpId = QRegularExpression(QString("--dummy--"));
         regExpId2 = QRegularExpression(QString("--dummy--"));
     }
-    static_cast<QSortFilterProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
-    static_cast<QSortFilterProxyModel*>(ui->tableViewSude->model())->setFilterRegularExpression(regExpId);
+    static_cast<ProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
+    static_cast<ProxyModel*>(ui->tableViewSude->model())->setFilterRegularExpression(regExpId);
     ui->sliderAusbeuteSude->setMaximum(9999);
     if (ui->sliderAusbeuteSude->value() == 0)
         ui->sliderAusbeuteSude->setValue(9999);

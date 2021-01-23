@@ -409,7 +409,7 @@ void TabRezept::checkRohstoffe()
 
 void TabRezept::updateValues()
 {
-    double fVal;
+    double fVal, diff;
     if (!isTabActive())
         return;
 
@@ -431,10 +431,37 @@ void TabRezept::updateValues()
         ui->cbKategorie->setCurrentIndex(-1);
         ui->cbKategorie->setCurrentText(bh->sud()->getKategorie());
     }
-    double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
-    ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
-    diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
-    ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+
+    if (!ui->cbAnlage->hasFocus())
+        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
+    if (ui->cbAnlage->currentIndex() == -1)
+    {
+        ui->cbAnlage->setError(true);
+        ui->groupAnlage->setVisible(false);
+        ui->btnSudhausausbeute->setVisible(false);
+        ui->btnVerdampfungsrate->setVisible(false);
+    }
+    else
+    {
+        ui->cbAnlage->setError(false);
+        ui->groupAnlage->setVisible(true);
+        diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
+        ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
+        diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
+        ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+        ui->lblAnlageName->setText(bh->sud()->getAnlage());
+        ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
+        ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
+        ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
+        ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
+        ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
+        ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
+        ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
+        ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
+        ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
+        ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
+    }
+
     diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble();
     ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
@@ -457,9 +484,6 @@ void TabRezept::updateValues()
     else
         ui->lblBittere->setText(tr("sehr herb"));
     ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
-    if (!ui->cbAnlage->hasFocus())
-        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
-    ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
     if (!ui->cbWasserProfil->hasFocus())
         ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
@@ -478,17 +502,6 @@ void TabRezept::updateValues()
         ui->lblWasserHGF->setVisible(false);
         ui->lblWasserHGFEinheit->setVisible(false);
     }
-    ui->lblAnlageName->setText(bh->sud()->getAnlage());
-    ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
-    ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
-    ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
-    ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
-    ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
-    ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
-    ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
-    ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
-    ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
-    ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
 
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
     Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());

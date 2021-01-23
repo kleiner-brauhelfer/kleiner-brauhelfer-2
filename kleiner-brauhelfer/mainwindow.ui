@@ -238,10 +238,12 @@
      <property name="title">
       <string>Reiter</string>
      </property>
+     <addaction name="actionReiterGaerverlauf"/>
      <addaction name="actionReiterZusammenfassung"/>
      <addaction name="actionReiterEtikette"/>
      <addaction name="actionReiterBewertung"/>
      <addaction name="actionReiterBrauuebersicht"/>
+     <addaction name="actionReiterAusruestung"/>
      <addaction name="separator"/>
      <addaction name="actionReiterDatenbank"/>
     </widget>
@@ -680,6 +682,22 @@
   <action name="actionFormelsammlung">
    <property name="text">
     <string>Formelsammlung</string>
+   </property>
+  </action>
+  <action name="actionReiterAusruestung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ausrüstung</string>
+   </property>
+  </action>
+  <action name="actionReiterGaerverlauf">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Gärverlauf</string>
    </property>
   </action>
  </widget>

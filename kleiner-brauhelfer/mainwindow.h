@@ -47,10 +47,12 @@ private slots:
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);
     void on_actionOeffnen_triggered();
+    void on_actionReiterGaerverlauf_triggered(bool checked);
     void on_actionReiterZusammenfassung_triggered(bool checked);
     void on_actionReiterEtikette_triggered(bool checked);
     void on_actionReiterBewertung_triggered(bool checked);
     void on_actionReiterBrauuebersicht_triggered(bool checked);
+    void on_actionReiterAusruestung_triggered(bool checked);
     void on_actionReiterDatenbank_triggered(bool checked);
     void on_actionLog_triggered();
 	void on_actionCheckUpdate_triggered(bool checked);
@@ -79,10 +81,12 @@ private:
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
+    int mTabIndexGaerverlauf;
     int mTabIndexZusammenfassung;
     int mTabIndexEtikette;
     int mTabIndexBewertung;
     int mTabIndexBrauuebersicht;
+    int mTabIndexAusruestung;
     int mTabIndexDatenbank;
 };
 

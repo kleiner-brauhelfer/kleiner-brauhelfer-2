@@ -41,6 +41,8 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ## Änderungen & Erweiterungen
 
+### Version 2.3.0 (in Entwicklung)
+
 ### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)
 - Neu: Tooltips komplett überarbeitet (vielen Dank rakader)

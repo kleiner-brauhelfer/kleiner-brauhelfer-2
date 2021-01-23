@@ -7,7 +7,7 @@ TARGET = kleiner-brauhelfer-core
 # Hauptversionsnummer
 VER_MAJ = 2
 # Datenbankversion
-VER_MIN = 5
+VER_MIN = 6
 # Patchversion
 VER_PAT = 0
 

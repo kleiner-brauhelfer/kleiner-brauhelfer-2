@@ -1496,7 +1496,7 @@ bool Database::update()
 
             // Sud
             //  - neue Spalte 'TemperaturKarbonisierung'
-            //sqlExec(db, "ALTER TABLE Sud ADD COLUMN TemperaturKarbonisierung REAL DEFAULT 12");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN TemperaturKarbonisierung REAL DEFAULT 12");
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));

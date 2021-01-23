@@ -61,7 +61,6 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("FaktorHauptgussEmpfehlung");
     mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
-    mVirtualField.append("TemperaturKarbonisierung");
 }
 
 void ModelSud::createConnections()
@@ -506,10 +505,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
             return data(idx.row(), Colerg_S_Gesamt).toDouble() * data(idx.row(), ColFaktorHauptguss).toDouble();
         }
     }
-    case ColTemperaturKarbonisierung:
-    {
-        return temperaturKarbonisierung;
-    }
     case ColBewertungMittel:
     {
         return bh->modelBewertungen()->mean(data(idx.row(), ColID));
@@ -715,11 +710,6 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         }
         return true;
     }
-    case ColTemperaturKarbonisierung:
-    {
-        temperaturKarbonisierung = value.toDouble();
-        return true;
-    }
     default:
         return QSqlTableModel::setData(idx, value);
     }
@@ -731,7 +721,6 @@ Qt::ItemFlags ModelSud::flags(const QModelIndex &idx) const
     switch (idx.column())
     {
     case ColWuerzemengeAnstellenTotal:
-    case ColTemperaturKarbonisierung:
         itemFlags |= Qt::ItemIsEditable;
         break;
     }

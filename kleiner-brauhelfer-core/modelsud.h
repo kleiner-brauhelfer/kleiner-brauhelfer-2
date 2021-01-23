@@ -70,6 +70,7 @@ public:
         ColWuerzemengeKochbeginn,
         ColSWKochbeginn,
         ColVerschneidungAbfuellen,
+        ColTemperaturKarbonisierung,
         // virtual
         ColDeleted,
         ColMengeSoll,
@@ -114,7 +115,6 @@ public:
         ColFaktorHauptgussEmpfehlung,
         ColWHauptgussEmpfehlung,
         ColBewertungMittel,
-        ColTemperaturKarbonisierung,
         // number of columns
         NumCols
     };
@@ -161,7 +161,6 @@ private:
     QVector<double> swWzKochenRecipe;
     QVector<double> swWzGaerungRecipe;
     QVector<double> swWzGaerungCurrent;
-    double temperaturKarbonisierung = 12.0; //todo: ersetzen mit Spalte in DB
 };
 
 #endif // MODELSUD_H

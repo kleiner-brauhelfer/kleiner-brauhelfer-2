@@ -67,12 +67,10 @@ bool ModelHauptgaerverlauf::setDataExt(const QModelIndex &idx, const QVariant &v
         if (QSqlTableModel::setData(idx, value))
         {
             QVariant sudId = data(idx.row(), ColSudID);
+            int rowSud = bh->modelSud()->getRowWithValue(ModelSud::ColID, sudId);
             if (idx.row() == getLastRow(sudId))
-            {
-                int row = bh->modelSud()->getRowWithValue(ModelSud::ColID, sudId);
-                bh->modelSud()->setData(row, ModelSud::ColTemperaturJungbier, value);
-            }
-            //todo: wenn höchste temperatur -> bh->modelSud()->setData(row, ModelSud::ColTemperaturKarbonisierung, value);
+                bh->modelSud()->setData(rowSud, ModelSud::ColTemperaturJungbier, value);
+            bh->modelSud()->setData(rowSud, ModelSud::ColTemperaturKarbonisierung, getHighestTemp(sudId));
             return true;
         }
         return false;
@@ -88,7 +86,7 @@ int ModelHauptgaerverlauf::getLastRow(const QVariant &sudId) const
     QDateTime lastDt;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID) == sudId)
+        if (data(r, ColSudID) == sudId && !data(r, fieldIndex("deleted")).toBool())
         {
             QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)
@@ -99,6 +97,21 @@ int ModelHauptgaerverlauf::getLastRow(const QVariant &sudId) const
         }
     }
     return row;
+}
+
+double ModelHauptgaerverlauf::getHighestTemp(const QVariant &sudId) const
+{
+    double tempMax = 0;
+    for (int r = 0; r < rowCount(); ++r)
+    {
+        if (data(r, ColSudID) == sudId && !data(r, fieldIndex("deleted")).toBool())
+        {
+            double temp = data(r, ColTemp).toDouble();
+            if (temp > tempMax)
+                tempMax = temp;
+        }
+    }
+    return tempMax;
 }
 
 void ModelHauptgaerverlauf::defaultValues(QMap<int, QVariant> &values) const

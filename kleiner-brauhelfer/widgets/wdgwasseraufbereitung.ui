@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>908</width>
-    <height>100</height>
+    <width>1022</width>
+    <height>119</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -52,7 +52,7 @@
         <item>
          <widget class="QLineEdit" name="tbName">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein Brausalz oder eine Brausäure gewählt. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei degebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; gewählt. &lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei degebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -207,7 +207,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einer Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -245,7 +245,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die Menge einer Säure oder eines Brausalzes an, die beim aktuellen Wasser &lt;span style=&quot; font-weight:600;&quot;&gt;1 °dH Restalakalität&lt;/span&gt; absenkt oder erhöht.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Die Angabe hat rein informativen Charakter. Für  Wasserprofile sind die mengen an Brausalzen CaSO₄ und CaCl₂ ausschlaggebender, um den Geschmackseindruck eines Wassers aus einer bestimmten Region abzubilden.&lt;/p&gt;&lt;p&gt;Weitere Informationen bieten hier vor allem amerikanische Foren für Hobbybrauer sowie die Seite des Wasserspezialisiten Martin Brungard und seines Tools &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die Menge einer Säure oder eines Brausalzes an, die beim aktuellen Wasser &lt;span style=&quot; font-weight:600;&quot;&gt;1 °dH Restalakalität&lt;/span&gt; absenkt oder erhöht.&lt;/p&gt;&lt;p&gt;Die Angabe hat rein informativen Charakter. Für Wasserprofile sind die mengen an Brausalzen CaSO₄ und CaCl₂ ausschlaggebender, um den Geschmackseindruck eines Wassers aus einer bestimmten Region abzubilden.&lt;/p&gt;&lt;p&gt;Weitere Informationen bieten hier vor allem amerikanische Foren für Hobbybrauer sowie die Seite des Wasserspezialisiten Martin Brungard und seines Tools &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -445,7 +445,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einer Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

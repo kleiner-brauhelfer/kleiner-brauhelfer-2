@@ -149,6 +149,16 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>rbFormatKbh</tabstop>
+  <tabstop>rbFormatMmum</tabstop>
+  <tabstop>rbFormatBeerxml</tabstop>
+  <tabstop>tbDatei</tabstop>
+  <tabstop>btnOeffnen</tabstop>
+  <tabstop>tbUrl</tabstop>
+  <tabstop>btnDownload</tabstop>
+  <tabstop>textEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

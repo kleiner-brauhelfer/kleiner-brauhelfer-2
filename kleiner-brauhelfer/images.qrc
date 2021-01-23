@@ -16,8 +16,6 @@
         <file>images/wasser.svg</file>
         <file>images/zusatz.svg</file>
         <file>images/light/bier.svg</file>
-        <file>images/light/database.svg</file>
-        <file>images/light/database_clean.svg</file>
         <file>images/light/export.svg</file>
         <file>images/light/import.svg</file>
         <file>images/light/minus.svg</file>
@@ -31,7 +29,9 @@
         <file>images/light/save.svg</file>
         <file>images/light/settings.svg</file>
         <file>images/light/star_gr.svg</file>
+        <file>images/light/sud_abgefuellt.svg</file>
         <file>images/light/sud_export.svg</file>
+        <file>images/light/sud_gebraut.svg</file>
         <file>images/light/sud_import.svg</file>
         <file>images/light/sud_kopie.svg</file>
         <file>images/light/sud_laden.svg</file>
@@ -39,12 +39,23 @@
         <file>images/light/sud_merken.svg</file>
         <file>images/light/sud_neu.svg</file>
         <file>images/light/sud_teilen.svg</file>
+        <file>images/light/sud_verbraucht.svg</file>
         <file>images/light/sud_vergessen.svg</file>
+        <file>images/light/tababfuellen.svg</file>
+        <file>images/light/tabausruestung.svg</file>
+        <file>images/light/tabbewertung.svg</file>
+        <file>images/light/tabbraudaten.svg</file>
+        <file>images/light/tabbrauuebersicht.svg</file>
+        <file>images/light/tabdatenbank.svg</file>
+        <file>images/light/tabetikette.svg</file>
+        <file>images/light/tabgaerverlauf.svg</file>
+        <file>images/light/tabrezept.svg</file>
+        <file>images/light/tabrohstoffe.svg</file>
+        <file>images/light/tabsudauswahl.svg</file>
+        <file>images/light/tabzusammenfassung.svg</file>
         <file>images/light/uebertrag_links.svg</file>
         <file>images/light/uebertrag_oben.svg</file>
         <file>images/dark/bier.svg</file>
-        <file>images/dark/database.svg</file>
-        <file>images/dark/database_clean.svg</file>
         <file>images/dark/export.svg</file>
         <file>images/dark/import.svg</file>
         <file>images/dark/minus.svg</file>
@@ -58,7 +69,9 @@
         <file>images/dark/save.svg</file>
         <file>images/dark/settings.svg</file>
         <file>images/dark/star_gr.svg</file>
+        <file>images/dark/sud_abgefuellt.svg</file>
         <file>images/dark/sud_export.svg</file>
+        <file>images/dark/sud_gebraut.svg</file>
         <file>images/dark/sud_import.svg</file>
         <file>images/dark/sud_kopie.svg</file>
         <file>images/dark/sud_laden.svg</file>
@@ -66,7 +79,20 @@
         <file>images/dark/sud_merken.svg</file>
         <file>images/dark/sud_neu.svg</file>
         <file>images/dark/sud_teilen.svg</file>
+        <file>images/dark/sud_verbraucht.svg</file>
         <file>images/dark/sud_vergessen.svg</file>
+        <file>images/dark/tababfuellen.svg</file>
+        <file>images/dark/tabausruestung.svg</file>
+        <file>images/dark/tabbewertung.svg</file>
+        <file>images/dark/tabbraudaten.svg</file>
+        <file>images/dark/tabbrauuebersicht.svg</file>
+        <file>images/dark/tabdatenbank.svg</file>
+        <file>images/dark/tabetikette.svg</file>
+        <file>images/dark/tabgaerverlauf.svg</file>
+        <file>images/dark/tabrezept.svg</file>
+        <file>images/dark/tabrohstoffe.svg</file>
+        <file>images/dark/tabsudauswahl.svg</file>
+        <file>images/dark/tabzusammenfassung.svg</file>
         <file>images/dark/uebertrag_links.svg</file>
         <file>images/dark/uebertrag_oben.svg</file>
     </qresource>

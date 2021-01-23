@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>145</height>
+    <width>653</width>
+    <height>122</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -407,6 +407,19 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>btnZutat</tabstop>
+  <tabstop>btnNachOben</tabstop>
+  <tabstop>btnNachUnten</tabstop>
+  <tabstop>btnLoeschen</tabstop>
+  <tabstop>tbMenge</tabstop>
+  <tabstop>tbMengeProzent</tabstop>
+  <tabstop>btnKorrektur</tabstop>
+  <tabstop>btnAufbrauchen</tabstop>
+  <tabstop>tbVorhanden</tabstop>
+  <tabstop>tbExtrakt</tabstop>
+  <tabstop>tbExtraktProzent</tabstop>
+ </tabstops>
  <resources>
   <include location="../images.qrc"/>
  </resources>

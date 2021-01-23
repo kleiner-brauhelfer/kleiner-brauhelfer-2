@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>152</height>
+    <width>823</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -629,9 +629,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -639,20 +639,28 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>btnZutat</tabstop>
+  <tabstop>btnNachOben</tabstop>
+  <tabstop>btnNachUnten</tabstop>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>tbMenge</tabstop>
+  <tabstop>tbMengeProLiter</tabstop>
+  <tabstop>tbMengeProzent</tabstop>
   <tabstop>btnMengeKorrektur</tabstop>
+  <tabstop>btnAufbrauchen</tabstop>
   <tabstop>tbVorhanden</tabstop>
   <tabstop>tbAnteil</tabstop>
+  <tabstop>tbAnteilProzent</tabstop>
   <tabstop>btnAnteilKorrektur</tabstop>
   <tabstop>tbAlpha</tabstop>
   <tabstop>tbKochdauer</tabstop>
+  <tabstop>cbZeitpunkt</tabstop>
   <tabstop>tbAusbeute</tabstop>
  </tabstops>
  <resources>

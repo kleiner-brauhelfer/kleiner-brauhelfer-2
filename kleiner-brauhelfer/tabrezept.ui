@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>451</width>
-         <height>688</height>
+         <width>375</width>
+         <height>680</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -681,9 +681,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string/>
-           </property>
            <attribute name="title">
             <string>Bemerkung</string>
            </attribute>
@@ -777,9 +774,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string/>
-           </property>
            <attribute name="title">
             <string>Anhänge</string>
            </attribute>
@@ -806,8 +800,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>381</width>
-                 <height>105</height>
+                 <width>335</width>
+                 <height>107</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -935,7 +929,7 @@
            <item>
             <widget class="QLabel" name="lblWarnungMalz">
              <property name="text">
-              <string>Die Summe der angegeben Malzmengen entspricht nicht der Gesamtschüttung.</string>
+              <string>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -948,9 +942,19 @@
               <number>9</number>
              </property>
              <item>
+              <widget class="QPushButton" name="btnMalzAufteilen">
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen der erforderlichen Gesamtschüttung und der Summe der angegebenen Malzmengen &lt;span style=&quot; font-weight:600;&quot;&gt;gleichmäßig&lt;/span&gt; auf alle Malzeinträge &lt;span style=&quot; font-weight:600;&quot;&gt;verteilt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="text">
+                <string>Differenz verteilen</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btnMalzProzente">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das Widget &lt;span style=&quot; font-weight:600;&quot;&gt;Mengen prozentual anpassen &lt;/span&gt;erscheint, wenn im kg-Feld die Menge verändert wird. Folgend erscheint die Warnmeldung &amp;quot;Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung&amp;quot;. Der Sinn des Feldes besteht darin, das ursprüngliche Mengenverältnis wieder prozentual herzustellen.&lt;/p&gt;&lt;p&gt;Der Button erscheint nicht, wenn nur eine Malzsorte angegeben ist, da diese 100% ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;Grundlage für die Berechnung ist die links im &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Tab Rezep&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;t festgelegte &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Sollstammwürze&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt; und &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; font-weight:600; color:#333333; background-color:#ffffff;&quot;&gt;Sollmenge&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;In der Folge werden auch alle vergärbaren Zusätze beim Maischen angepasst.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;Das Widget &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Mengen prozentual anpassen &lt;/span&gt;erscheint auch, wenn auf den Button &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Vorhanden&lt;/span&gt; bei einem Malz oder einem Zusatz geklickt wird. &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Vorhanden &lt;/span&gt;überträgt lediglich die Gesamtmenge einer Maischezutat zum vollständigen Verbrauch. Dies bringt natürlich das bestehende Mengenverhältnis durcheinander und wird nicht mehr vom Button &lt;span style=&quot; font-style:italic; color:#0000ff;&quot;&gt;Mengen prozentual anpassen&lt;/span&gt; korrigiert, ist somit ein Anwenderfehler.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Malzmengen mit der erforderlichen Gesamtschüttung verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzelmengen prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Diese Funktion kann verwendet werden, um ein Rezept zu übernehmen, bei dem die Malzmengen nur in kg angegeben sind. Dazu müssen zuerst alle Malzsorten und Mengen aus dem Rezept unten eingetragen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Mengen prozentual anpassen</string>
@@ -992,8 +996,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>344</height>
+              <width>349</width>
+              <height>340</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1235,8 +1239,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>122</height>
+              <width>349</width>
+              <height>133</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1425,8 +1429,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>443</width>
-             <height>559</height>
+             <width>349</width>
+             <height>584</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1655,8 +1659,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>114</height>
+              <width>349</width>
+              <height>118</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -2076,8 +2080,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>443</width>
-             <height>363</height>
+             <width>349</width>
+             <height>373</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -2184,8 +2188,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>455</width>
-          <height>822</height>
+          <width>389</width>
+          <height>857</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -3198,9 +3202,6 @@
             </item>
             <item row="7" column="0">
              <widget class="QLabel" name="label_VolumenMaischen">
-              <property name="toolTip">
-               <string/>
-              </property>
               <property name="text">
                <string>Benötigtes Volumen ca.</string>
               </property>
@@ -3379,9 +3380,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -3389,14 +3390,14 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>ChartView</class>
@@ -3413,11 +3414,15 @@
   <tabstop>scrollArea</tabstop>
   <tabstop>tbSudname</tabstop>
   <tabstop>tbSudnummer</tabstop>
+  <tabstop>cbKategorie</tabstop>
+  <tabstop>btnKategorienVerwalten</tabstop>
   <tabstop>cbAnlage</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbSW</tabstop>
   <tabstop>btnSudhausausbeute</tabstop>
   <tabstop>tbSudhausausbeute</tabstop>
+  <tabstop>tbFaktorHauptgussEmpfehlung</tabstop>
+  <tabstop>tbFaktorHauptguss</tabstop>
   <tabstop>tbHGF</tabstop>
   <tabstop>tbBittere</tabstop>
   <tabstop>tbKochzeit</tabstop>
@@ -3435,15 +3440,44 @@
   <tabstop>scrollAreaAnhang</tabstop>
   <tabstop>btnNeuerAnhang</tabstop>
   <tabstop>tabMitte</tabstop>
+  <tabstop>btnMalzAufteilen</tabstop>
+  <tabstop>btnMalzProzente</tabstop>
   <tabstop>scrollAreaMalzGaben</tabstop>
   <tabstop>diagramMalz</tabstop>
+  <tabstop>btnNeueMalzGabe</tabstop>
+  <tabstop>btnMalzGabenUebernehmen</tabstop>
+  <tabstop>btnNeueZusatzGabeMaischen</tabstop>
+  <tabstop>btnZusazGabenUebernehmenMaischen</tabstop>
   <tabstop>cbBerechnungsartHopfen</tabstop>
   <tabstop>scrollAreaHopfenGaben</tabstop>
   <tabstop>diagramHopfen</tabstop>
+  <tabstop>btnNeueHopfenGabe</tabstop>
+  <tabstop>btnHopfenGabenUebernehmen</tabstop>
+  <tabstop>btnNeueZusatzGabeKochen</tabstop>
+  <tabstop>btnZusazGabenUebernehmenKochen</tabstop>
   <tabstop>scrollAreaHefeGaben</tabstop>
+  <tabstop>btnNeueHefeGabe</tabstop>
+  <tabstop>btnHefeGabenUebernehmen</tabstop>
+  <tabstop>btnNeueHopfenGabeGaerung</tabstop>
+  <tabstop>btnHopfenGabenUebernehmenGaerung</tabstop>
+  <tabstop>btnNeueZusatzGabeGaerung</tabstop>
+  <tabstop>btnZusazGabenUebernehmenGaerung</tabstop>
   <tabstop>scrollAreaRasten</tabstop>
   <tabstop>diagramRasten</tabstop>
-  <tabstop>scrollArea_6</tabstop>
+  <tabstop>btnNeueRast</tabstop>
+  <tabstop>btnRastenUebernehmen</tabstop>
+  <tabstop>cbWasserProfil</tabstop>
+  <tabstop>tbRestalkalitaetSoll</tabstop>
+  <tabstop>btnRestalkalitaet</tabstop>
+  <tabstop>tbRestalkalitaetWasser</tabstop>
+  <tabstop>tbRestalkalitaetIst</tabstop>
+  <tabstop>tbPhMalz</tabstop>
+  <tabstop>tbPhMaischeSoll</tabstop>
+  <tabstop>tbPhMaische</tabstop>
+  <tabstop>scrollAreaWasseraufbereitung</tabstop>
+  <tabstop>btnNeueWasseraufbereitung</tabstop>
+  <tabstop>btnWasseraufbereitungUebernehmen</tabstop>
+  <tabstop>splitterHelp</tabstop>
   <tabstop>gvGlas</tabstop>
   <tabstop>tbFarbe</tabstop>
   <tabstop>tbGesamtschuettung</tabstop>
@@ -3454,17 +3488,19 @@
   <tabstop>tbRestextrakt</tabstop>
   <tabstop>tbAlkohol</tabstop>
   <tabstop>tbKosten</tabstop>
+  <tabstop>tbWasserGesamt</tabstop>
+  <tabstop>tbHauptguss</tabstop>
+  <tabstop>tbNachguss</tabstop>
+  <tabstop>tbWasserHGF</tabstop>
+  <tabstop>tbAnlageKorrekturSollmenge</tabstop>
   <tabstop>tbAnlageSudhausausbeute</tabstop>
   <tabstop>tbAnlageVerdampfung</tabstop>
   <tabstop>tbAnlageVolumenMaische</tabstop>
   <tabstop>tbVolumenMaische</tabstop>
   <tabstop>tbAnlageVolumenKochen</tabstop>
   <tabstop>tbVolumenKochen</tabstop>
-  <tabstop>tbWasserGesamt</tabstop>
-  <tabstop>tbHauptguss</tabstop>
-  <tabstop>tbNachguss</tabstop>
-  <tabstop>tbWasserHGF</tabstop>
   <tabstop>tbHelp</tabstop>
+  <tabstop>scrollArea_6</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

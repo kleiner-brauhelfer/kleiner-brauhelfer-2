@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
+    <width>631</width>
     <height>368</height>
    </rect>
   </property>
@@ -740,7 +740,7 @@
          <item row="2" column="4">
           <widget class="QLabel" name="label_23">
            <property name="text">
-            <string>Rastdauer</string>
+            <string>Kochdauer</string>
            </property>
           </widget>
          </item>
@@ -1013,8 +1013,32 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>btnLoeschen</tabstop>
+  <tabstop>cbTyp</tabstop>
   <tabstop>cbRast</tabstop>
+  <tabstop>btnNachOben</tabstop>
+  <tabstop>btnNachUnten</tabstop>
+  <tabstop>btnLoeschen</tabstop>
+  <tabstop>tbMengeEinmaischen</tabstop>
+  <tabstop>tbVerhaeltnisEinmaischen</tabstop>
+  <tabstop>tbWasserTempEinmaischen</tabstop>
+  <tabstop>tbMalzTempEinmaischen</tabstop>
+  <tabstop>tbTempEinmaischen</tabstop>
+  <tabstop>tbDauerEinmaischen</tabstop>
+  <tabstop>tbTempRast</tabstop>
+  <tabstop>tbDauerRast</tabstop>
+  <tabstop>tbMengeInfusion</tabstop>
+  <tabstop>tbVerhaeltnisInfusion</tabstop>
+  <tabstop>tbWassertempInfusion</tabstop>
+  <tabstop>tbTempInfusion</tabstop>
+  <tabstop>tbDauerInfusion</tabstop>
+  <tabstop>tbMengeDekoktion</tabstop>
+  <tabstop>tbVerhaeltnisDekoktion</tabstop>
+  <tabstop>tbRasttempDekoktion</tabstop>
+  <tabstop>tbRastdauerDekoktion</tabstop>
+  <tabstop>tbTeiltempDekoktion</tabstop>
+  <tabstop>tbKochdauerDekoktion</tabstop>
+  <tabstop>tbTempDekoktion</tabstop>
+  <tabstop>tbDauerDekoktion</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

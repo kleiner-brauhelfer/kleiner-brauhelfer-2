@@ -307,7 +307,14 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         }
     }
 
-    bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time()));
+    QDateTime dt(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time());
+    QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
+    if (QMessageBox::question(this, tr("Sud als abgefüllt markieren?"),
+                                    tr("Soll der Sud als abgefüllt markiert werden?\n\nAbfülldatum: %1").arg(dtStr),
+                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
+        return;
+
+    bh->sud()->setAbfuelldatum(dt);
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},

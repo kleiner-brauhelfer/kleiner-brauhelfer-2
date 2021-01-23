@@ -8,6 +8,7 @@ ModelHefe::ModelHefe(Brauhelfer* bh, QSqlDatabase db) :
     bh(bh)
 {
     mVirtualField.append("InGebrauch");
+    mVirtualField.append("InGebrauchListe");
 }
 
 QVariant ModelHefe::dataExt(const QModelIndex &idx) const
@@ -38,6 +39,24 @@ QVariant ModelHefe::dataExt(const QModelIndex &idx) const
             }
         }
         return false;
+    }
+    case ColInGebrauchListe:
+    {
+        QStringList list;
+        ProxyModel model;
+        model.setSourceModel(bh->modelHefegaben());
+        QVariant name = data(idx.row(), ColName);
+        for (int r = 0; r < model.rowCount(); ++r)
+        {
+            if (model.data(r, ModelHefegaben::ColName) == name)
+            {
+                QVariant sudId = model.data(r, ModelHefegaben::ColSudID);
+                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+                if (status == Brauhelfer::SudStatus::Rezept)
+                    list.append(bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString());
+            }
+        }
+        return list;
     }
     default:
         return QVariant();

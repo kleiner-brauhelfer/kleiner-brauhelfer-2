@@ -62,7 +62,7 @@
            <item>
             <widget class="QCheckBox" name="cbRezept">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; angezeigt. Ungebraute Sude werden &lt;span style=&quot; font-weight:600;&quot;&gt;grau&lt;/span&gt; hinterlegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Rezept</string>
@@ -72,7 +72,7 @@
            <item>
             <widget class="QCheckBox" name="cbGebraut">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; angezeigt. Gebraute Sude werden &lt;span style=&quot; font-weight:600;&quot;&gt;braun&lt;/span&gt; hinterlegt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; angezeigt. Als gebraut gelten Rezepte, die im Tab Braudaten entsprechend markiert wurden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>gebraut</string>
@@ -82,7 +82,7 @@
            <item>
             <widget class="QCheckBox" name="cbAbgefuellt">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; angezeigt. Als abgefüllt gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden. Abgefüllte Sude werden grün hinterlegt angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; angezeigt. Als abgefüllt gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>abgefüllt</string>
@@ -92,7 +92,7 @@
            <item>
             <widget class="QCheckBox" name="cbVerbraucht">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) angezeigt. Als verbraucht gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden. Verbrauchte Sude werden &lt;span style=&quot; font-weight:600;&quot;&gt;anthrazit&lt;/span&gt; angeeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) angezeigt. Als verbraucht gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>verbraucht</string>
@@ -123,7 +123,7 @@
          <item>
           <widget class="QCheckBox" name="cbMerkliste">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude auf der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; angezeigt. Sude auf der Merkliste werden &lt;span style=&quot; font-weight:600;&quot;&gt;hellblau&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude auf der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Merkliste</string>
@@ -267,7 +267,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt. Der Klick aktiviert den &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">sud_neu</string>
@@ -542,6 +542,13 @@
          </item>
          <item>
           <widget class="QLabel" name="lblNumSude"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string notr="true">    </string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

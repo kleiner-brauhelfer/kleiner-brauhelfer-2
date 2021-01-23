@@ -33,6 +33,7 @@ public:
         // virtual
         ColDeleted,
         ColInGebrauch,
+        ColInGebrauchListe,
         // number of columns
         NumCols
     };

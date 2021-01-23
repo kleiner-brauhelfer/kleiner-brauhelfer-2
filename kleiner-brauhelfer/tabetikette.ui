@@ -666,33 +666,37 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>SvgView</class>
-   <extends>QGraphicsView</extends>
-   <header>widgets/svgview.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
   </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SvgView</class>
+   <extends>QGraphicsView</extends>
+   <header>widgets/svgview.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>cbAuswahl</tabstop>
+  <tabstop>btnOeffnen</tabstop>
   <tabstop>viewSvg</tabstop>
   <tabstop>cbEditMode</tabstop>
   <tabstop>cbTagsErsetzen</tabstop>
+  <tabstop>btnAktualisieren</tabstop>
+  <tabstop>btnSaveTemplate</tabstop>
   <tabstop>tbTemplate</tabstop>
   <tabstop>tbTags</tabstop>
+  <tabstop>scrollArea</tabstop>
   <tabstop>tbAnzahl</tabstop>
   <tabstop>tbLabelBreite</tabstop>
   <tabstop>tbLabelHoehe</tabstop>
@@ -701,6 +705,11 @@
   <tabstop>tbAbstandHor</tabstop>
   <tabstop>tbAbstandVert</tabstop>
   <tabstop>cbDividingLine</tabstop>
+  <tabstop>tableTags</tabstop>
+  <tabstop>btnTagNeu</tabstop>
+  <tabstop>btnTagLoeschen</tabstop>
+  <tabstop>cbUseImagePainter</tabstop>
+  <tabstop>btnToPdf</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

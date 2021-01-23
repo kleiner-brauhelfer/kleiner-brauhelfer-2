@@ -589,15 +589,20 @@
  <tabstops>
   <tabstop>tableWidget_Schnellgaerverlauf</tabstop>
   <tabstop>btnAddSchnellgaerMessung</tabstop>
+  <tabstop>btnDelSchnellgaerMessung</tabstop>
+  <tabstop>btnImportSchnellgaerMessung</tabstop>
   <tabstop>tableWidget_Hauptgaerverlauf</tabstop>
   <tabstop>btnAddHauptgaerMessung</tabstop>
   <tabstop>btnDelHauptgaerMessung</tabstop>
+  <tabstop>btnImportHauptgaerMessung</tabstop>
   <tabstop>comboBox_GaerungEwzAuswahl</tabstop>
   <tabstop>btnGaerungEwzZugeben</tabstop>
   <tabstop>comboBox_GaerungEwzAuswahlEntnahme</tabstop>
   <tabstop>btnGaerungEwzEntnehmen</tabstop>
   <tabstop>tableWidget_Nachgaerverlauf</tabstop>
   <tabstop>btnAddNachgaerMessung</tabstop>
+  <tabstop>btnDelNachgaerMessung</tabstop>
+  <tabstop>btnImportNachgaerMessung</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

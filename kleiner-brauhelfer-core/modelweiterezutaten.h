@@ -32,6 +32,7 @@ public:
         ColDeleted,
         ColMengeNormiert,
         ColInGebrauch,
+        ColInGebrauchListe,
         // number of columns
         NumCols
     };

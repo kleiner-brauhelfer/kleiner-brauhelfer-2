@@ -553,8 +553,10 @@ void TabRohstoffe::on_buttonDelete_clicked()
         {
             if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
             {
+                QStringList liste = model->data(index.row(), model->fieldIndex("InGebrauchListe")).toStringList();
+                QString strListe = "\n\n- " + liste.join("\n- ");
                 int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
-                                                tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?"));
+                                                tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
                 if (ret != QMessageBox::Yes)
                     del = false;
             }

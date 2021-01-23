@@ -37,6 +37,7 @@ private slots:
     void on_btnMalzGabenUebernehmen_clicked();
     void on_btnNeueZusatzGabeMaischen_clicked();
     void on_btnZusazGabenUebernehmenMaischen_clicked();
+    void on_btnMalzAufteilen_clicked();
     void on_btnMalzProzente_clicked();
 
     void hopfenGaben_modified();

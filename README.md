@@ -55,6 +55,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Bei "Sud gebraut zurücksetzen", "Hefe Zugabe zurücksetzen" und "Weitere Zutaten Zugabe zurücksetzen" lassen sich die Zutaten ins Lager zurücksetzen
 - Neu: Neues Dialog für import & export mit Importfunktion aus URL oder Freitext
 - Neu: Verschiedene Icons für die Buttons
+- Neu: Begriff "weitere Zutat" wird durch "Zusatz" ersetzt
 - Fix: Angaben Braumeister 10L
 - Fix: Anpassen der Menge beim Ändern der Korrekturmenge in den Ausrüstungsreiter
 

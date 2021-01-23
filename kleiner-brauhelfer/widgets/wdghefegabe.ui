@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>592</width>
-    <height>133</height>
+    <width>563</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -344,8 +344,13 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>btnZutat</tabstop>
+  <tabstop>btnNachOben</tabstop>
+  <tabstop>btnNachUnten</tabstop>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>tbMenge</tabstop>
+  <tabstop>tbMengeEmpfohlen</tabstop>
+  <tabstop>btnAufbrauchen</tabstop>
   <tabstop>tbVorhanden</tabstop>
   <tabstop>tbTage</tabstop>
   <tabstop>tbDatum</tabstop>

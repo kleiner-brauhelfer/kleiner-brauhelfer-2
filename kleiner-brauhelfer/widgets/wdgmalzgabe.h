@@ -18,6 +18,7 @@ public:
     bool isValid() const;
     QString name() const;
     double prozent() const;
+    double fehlProzent() const;
     void setFehlProzent(double value);
 
 public slots:

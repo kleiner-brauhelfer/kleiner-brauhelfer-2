@@ -112,6 +112,12 @@
    <header>widgets/tableview.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>radioButtonAlle</tabstop>
+  <tabstop>radioButtonVorhanden</tabstop>
+  <tabstop>lineEditFilter</tabstop>
+  <tabstop>tableView</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

@@ -7,39 +7,39 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   shape-rendering="crispEdges"
-   width="64"
-   height="64"
-   viewBox="0 0 64 64"
-   version="1.1"
-   id="svg4450"
+   sodipodi:docname="sud_export.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="sud_export.svg">
+   id="svg4450"
+   version="1.1"
+   viewBox="0 0 64 64"
+   height="64"
+   width="64"
+   shape-rendering="crispEdges">
   <defs
      id="defs4444" />
   <sodipodi:namedview
-     inkscape:current-layer="layer1"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-11"
-     inkscape:window-x="-11"
-     inkscape:window-height="2066"
-     inkscape:window-width="3840"
-     inkscape:cy="29.655549"
-     inkscape:cx="30.597801"
-     inkscape:zoom="20.395611"
-     inkscape:document-rotation="0"
-     inkscape:showpageshadow="false"
-     showborder="true"
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
+     units="px"
      showgrid="true"
-     units="px">
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showborder="true"
+     inkscape:showpageshadow="false"
+     inkscape:document-rotation="0"
+     inkscape:zoom="10.197806"
+     inkscape:cx="20.669988"
+     inkscape:cy="44.277518"
+     inkscape:window-width="1624"
+     inkscape:window-height="1228"
+     inkscape:window-x="383"
+     inkscape:window-y="154"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
     <inkscape:grid
-       empspacing="4"
+       id="grid5013"
        type="xygrid"
-       id="grid5013" />
+       empspacing="4" />
   </sodipodi:namedview>
   <metadata
      id="metadata4447">
@@ -54,36 +54,36 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Layer 1">
     <path
-       sodipodi:nodetypes="ccccc"
-       id="path6456"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 32,8 H 12 V 56 H 52 V 32"
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path6456"
+       sodipodi:nodetypes="ccccc" />
     <path
-       sodipodi:nodetypes="cc"
-       id="path5588"
+       style="fill:none;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 28,36 53,11"
-       style="fill:none;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path5588"
+       sodipodi:nodetypes="cc" />
     <path
-       sodipodi:type="star"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.315017"
-       id="path2991"
-       sodipodi:sides="3"
-       sodipodi:cx="274.28571"
-       sodipodi:cy="289.50504"
-       sodipodi:r1="140.26215"
-       sodipodi:r2="70.131073"
-       sodipodi:arg1="0.52359878"
-       sodipodi:arg2="1.5707963"
-       inkscape:flatsided="false"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="m 395.75629,359.63611 -121.47058,0 -121.47059,0 60.73529,-105.19661 60.7353,-105.19661 60.73529,105.19661 z"
-       inkscape:transform-center-y="10.149909"
+       inkscape:transform-center-x="9.9998186"
        transform="matrix(0.05613335,0.0547357,-0.06295568,0.06457097,52.999112,-19.649978)"
-       inkscape:transform-center-x="9.9998186" />
+       inkscape:transform-center-y="10.149909"
+       d="m 395.75629,359.63611 -121.47058,0 -121.47059,0 60.73529,-105.19661 60.7353,-105.19661 60.73529,105.19661 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.5707963"
+       sodipodi:arg1="0.52359878"
+       sodipodi:r2="70.131073"
+       sodipodi:r1="140.26215"
+       sodipodi:cy="289.50504"
+       sodipodi:cx="274.28571"
+       sodipodi:sides="3"
+       id="path2991"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.315017"
+       sodipodi:type="star" />
   </g>
 </svg>

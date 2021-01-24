@@ -402,6 +402,7 @@ void Settings::enableModule(Settings::Module module, bool enabled)
     beginGroup("General");
     setValue("Modules", uint(mModules));
     endGroup();
+    emit(modulesChanged(module));
 }
 
 bool Settings::module(Settings::Module module) const

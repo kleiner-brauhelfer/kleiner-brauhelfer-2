@@ -14,6 +14,7 @@
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
+#include "dialogs/dlgmodule.h"
 #include "dialogs/dlgconsole.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "widgets/iconthemed.h"
@@ -91,29 +92,6 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreState(gSettings->value("state").toByteArray());
     gSettings->endGroup();
 
-    mTabIndex = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-    mTabIndex[4] = ui->tabMain->indexOf(ui->tabGaerverlauf);
-    ui->actionReiterGaerverlauf->setChecked(gSettings->module(Settings::ModuleGaerverlauf));
-    on_actionReiterGaerverlauf_triggered(ui->actionReiterGaerverlauf->isChecked());
-    mTabIndex[5] = ui->tabMain->indexOf(ui->tabZusammenfassung);
-    ui->actionReiterZusammenfassung->setChecked(gSettings->module(Settings::ModuleZusammenfassung));
-    on_actionReiterZusammenfassung_triggered(ui->actionReiterZusammenfassung->isChecked());
-    mTabIndex[6] = ui->tabMain->indexOf(ui->tabEtikette);
-    ui->actionReiterEtikette->setChecked(gSettings->module(Settings::ModuleEtikette));
-    on_actionReiterEtikette_triggered(ui->actionReiterEtikette->isChecked());
-    mTabIndex[7] = ui->tabMain->indexOf(ui->tabBewertung);
-    ui->actionReiterBewertung->setChecked(gSettings->module(Settings::ModuleBewertung));
-    on_actionReiterBewertung_triggered(ui->actionReiterBewertung->isChecked());
-    mTabIndex[8] = ui->tabMain->indexOf(ui->tabBrauuebersicht);
-    ui->actionReiterBrauuebersicht->setChecked(gSettings->module(Settings::ModuleBrauuebersicht));
-    on_actionReiterBrauuebersicht_triggered(ui->actionReiterBrauuebersicht->isChecked());
-    mTabIndex[9] = ui->tabMain->indexOf(ui->tabAusruestung);
-    ui->actionReiterAusruestung->setChecked(gSettings->module(Settings::ModuleAusruestung));
-    on_actionReiterAusruestung_triggered(ui->actionReiterAusruestung->isChecked());
-    mTabIndex[11] = ui->tabMain->indexOf(ui->tabDatenbank);
-    ui->actionReiterDatenbank->setChecked(gSettings->module(Settings::ModuleDatenbank));
-    on_actionReiterDatenbank_triggered(ui->actionReiterDatenbank->isChecked());
-
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
@@ -121,6 +99,8 @@ MainWindow::MainWindow(QWidget *parent) :
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
+
+    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
 
     connect(ui->tabSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
     ui->tabBrauuebersicht->setModel(ui->tabSudAuswahl->model());
@@ -132,6 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(sudDataChanged(const QModelIndex&)));
 
+    updateTabs(Settings::ModuleAlle);
     sudLoaded();
 
     if (ui->actionCheckUpdate->isChecked())
@@ -280,20 +261,92 @@ void MainWindow::restoreView(bool full)
     DlgTableView::restoreView(full);
 }
 
-void MainWindow::moduleChanged(Settings::Modules modules)
+void MainWindow::modulesChanged(Settings::Modules modules)
 {
-    ui->tabSudAuswahl->moduleChanged(modules);
-    ui->tabBrauuebersicht->moduleChanged(modules);
-    ui->tabRezept->moduleChanged(modules);
-    ui->tabBraudaten->moduleChanged(modules);
-    ui->tabAbfuelldaten->moduleChanged(modules);
-    ui->tabGaerverlauf->moduleChanged(modules);
-    ui->tabZusammenfassung->moduleChanged(modules);
-    ui->tabEtikette->moduleChanged(modules);
-    ui->tabBewertung->moduleChanged(modules);
-    ui->tabRohstoffe->moduleChanged(modules);
-    ui->tabAusruestung->moduleChanged(modules);
-    ui->tabDatenbank->moduleChanged(modules);
+    updateTabs(modules);
+    updateValues();
+    ui->tabSudAuswahl->modulesChanged(modules);
+    ui->tabBrauuebersicht->modulesChanged(modules);
+    ui->tabRezept->modulesChanged(modules);
+    ui->tabBraudaten->modulesChanged(modules);
+    ui->tabAbfuelldaten->modulesChanged(modules);
+    ui->tabGaerverlauf->modulesChanged(modules);
+    ui->tabZusammenfassung->modulesChanged(modules);
+    ui->tabEtikette->modulesChanged(modules);
+    ui->tabBewertung->modulesChanged(modules);
+    ui->tabRohstoffe->modulesChanged(modules);
+    ui->tabAusruestung->modulesChanged(modules);
+    ui->tabDatenbank->modulesChanged(modules);
+}
+
+void MainWindow::updateTabs(Settings::Modules modules)
+{
+    int nextIndex = 4;
+    if (modules.testFlag(Settings::ModuleGaerverlauf))
+    {
+        if (gSettings->module(Settings::ModuleGaerverlauf))
+            ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed("tabgaerverlauf", gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabGaerverlauf));
+    }
+    if (gSettings->module(Settings::ModuleGaerverlauf))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleZusammenfassung))
+    {
+        if (gSettings->module(Settings::ModuleZusammenfassung))
+            ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), "");
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabZusammenfassung));
+    }
+    if (gSettings->module(Settings::ModuleZusammenfassung))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleEtikette))
+    {
+        if (gSettings->module(Settings::ModuleEtikette))
+            ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabEtikette));
+    }
+    if (gSettings->module(Settings::ModuleEtikette))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleBewertung))
+    {
+        if (gSettings->module(Settings::ModuleBewertung))
+            ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabBewertung));
+    }
+    if (gSettings->module(Settings::ModuleBewertung))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleBrauuebersicht))
+    {
+        if (gSettings->module(Settings::ModuleBrauuebersicht))
+            ui->tabMain->insertTab(nextIndex, ui->tabBrauuebersicht, IconThemed("tabbrauuebersicht", gSettings->theme() == Settings::Theme::Bright), tr("Brauübersicht"));
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabBrauuebersicht));
+    }
+    if (gSettings->module(Settings::ModuleBrauuebersicht))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleAusruestung))
+    {
+        if (gSettings->module(Settings::ModuleAusruestung))
+            ui->tabMain->insertTab(nextIndex, ui->tabAusruestung, IconThemed("tabausruestung", gSettings->theme() == Settings::Theme::Bright), tr("Ausrüstung"));
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabAusruestung));
+    }
+    if (gSettings->module(Settings::ModuleAusruestung))
+        nextIndex++;
+    if (gSettings->module(Settings::ModuleRohstoffe))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleDatenbank))
+    {
+        if (gSettings->module(Settings::ModuleDatenbank))
+            ui->tabMain->insertTab(nextIndex, ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
+        else
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabDatenbank));
+    }
+    if (gSettings->module(Settings::ModuleDatenbank))
+        nextIndex++;
 }
 
 void MainWindow::databaseModified()
@@ -315,28 +368,20 @@ void MainWindow::updateValues()
     bool loaded = bh->sud()->isLoaded();
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     databaseModified();
-    if (gSettings->module(Settings::ModuleRezept))
-        ui->tabMain->setTabEnabled(mTabIndex[1], loaded);
-    if (gSettings->module(Settings::ModuleBraudaten))
-        ui->tabMain->setTabEnabled(mTabIndex[2], loaded);
-    if (gSettings->module(Settings::ModuleAbfuellen))
-        ui->tabMain->setTabEnabled(mTabIndex[3], loaded);
-    if (gSettings->module(Settings::ModuleGaerverlauf))
-        ui->tabMain->setTabEnabled(mTabIndex[4], loaded);
-    if (gSettings->module(Settings::ModuleZusammenfassung))
-        ui->tabMain->setTabEnabled(mTabIndex[5], loaded);
-    if (gSettings->module(Settings::ModuleEtikette))
-        ui->tabMain->setTabEnabled(mTabIndex[6], loaded);
-    if (gSettings->module(Settings::ModuleBewertung))
-        ui->tabMain->setTabEnabled(mTabIndex[7], loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
+    ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung), status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
     ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
     ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
     ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
     ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
-    if (ui->actionReiterZusammenfassung->isChecked())
-        ui->tabMain->setTabText(mTabIndex[5], status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
@@ -667,135 +712,6 @@ void MainWindow::on_actionOeffnen_triggered()
     }
 }
 
-void MainWindow::on_actionReiterGaerverlauf_triggered(bool checked)
-{
-    if (checked)
-    {
-        ui->tabMain->insertTab(mTabIndex[4], ui->tabGaerverlauf, IconThemed("tabgaerverlauf", gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
-        ui->tabMain->setTabEnabled(mTabIndex[4], bh->sud()->isLoaded());
-        for (auto i = mTabIndex.begin() + 5; i != mTabIndex.end(); ++i)
-            (*i)++;
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[4]);
-        for (auto i = mTabIndex.begin() + 5; i != mTabIndex.end(); ++i)
-            (*i)--;
-    }
-    gSettings->enableModule(Settings::ModuleGaerverlauf, checked);
-    moduleChanged(Settings::ModuleGaerverlauf);
-}
-
-void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
-{
-    if (checked)
-    {
-        bool loaded = bh->sud()->isLoaded();
-        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-        QString name = status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung");
-        ui->tabMain->insertTab(mTabIndex[5], ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), name);
-        ui->tabMain->setTabEnabled(mTabIndex[5], loaded);
-        for (auto i = mTabIndex.begin() + 6; i != mTabIndex.end(); ++i)
-            (*i)++;
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[5]);
-        for (auto i = mTabIndex.begin() + 6; i != mTabIndex.end(); ++i)
-            (*i)--;
-    }
-    gSettings->enableModule(Settings::ModuleZusammenfassung, checked);
-    moduleChanged(Settings::ModuleZusammenfassung);
-}
-
-void MainWindow::on_actionReiterEtikette_triggered(bool checked)
-{
-    if (checked)
-    {
-        ui->tabMain->insertTab(mTabIndex[6], ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
-        ui->tabMain->setTabEnabled(mTabIndex[6], bh->sud()->isLoaded());
-        for (auto i = mTabIndex.begin() + 7; i != mTabIndex.end(); ++i)
-            (*i)++;
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[6]);
-        for (auto i = mTabIndex.begin() + 7; i != mTabIndex.end(); ++i)
-            (*i)--;
-    }
-    gSettings->enableModule(Settings::ModuleEtikette, checked);
-    moduleChanged(Settings::ModuleEtikette);
-}
-
-void MainWindow::on_actionReiterBewertung_triggered(bool checked)
-{
-    if (checked)
-    {
-        ui->tabMain->insertTab(mTabIndex[7], ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
-        ui->tabMain->setTabEnabled(mTabIndex[7], bh->sud()->isLoaded());
-        for (auto i = mTabIndex.begin() + 8; i != mTabIndex.end(); ++i)
-            (*i)++;
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[7]);
-        for (auto i = mTabIndex.begin() + 8; i != mTabIndex.end(); ++i)
-            (*i)--;
-    }
-    gSettings->enableModule(Settings::ModuleBewertung, checked);
-    moduleChanged(Settings::ModuleBewertung);
-}
-
-void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
-{
-    if (checked)
-    {
-        ui->tabMain->insertTab(mTabIndex[8], ui->tabBrauuebersicht, IconThemed("tabbrauuebersicht", gSettings->theme() == Settings::Theme::Bright), tr("Brauübersicht"));
-        for (auto i = mTabIndex.begin() + 9; i != mTabIndex.end(); ++i)
-            (*i)++;
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[8]);
-        for (auto i = mTabIndex.begin() + 9; i != mTabIndex.end(); ++i)
-            (*i)--;
-    }
-    gSettings->enableModule(Settings::ModuleBrauuebersicht, checked);
-    moduleChanged(Settings::ModuleBrauuebersicht);
-}
-
-void MainWindow::on_actionReiterAusruestung_triggered(bool checked)
-{
-    if (checked)
-    {
-        ui->tabMain->insertTab(mTabIndex[9], ui->tabAusruestung, IconThemed("tabausruestung", gSettings->theme() == Settings::Theme::Bright), tr("Ausrüstung"));
-        for (auto i = mTabIndex.begin() + 10; i != mTabIndex.end(); ++i)
-            (*i)++;
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[9]);
-        for (auto i = mTabIndex.begin() + 10; i != mTabIndex.end(); ++i)
-            (*i)--;
-    }
-    gSettings->enableModule(Settings::ModuleAusruestung, checked);
-    moduleChanged(Settings::ModuleAusruestung);
-}
-
-void MainWindow::on_actionReiterDatenbank_triggered(bool checked)
-{
-    if (checked)
-    {
-        ui->tabMain->insertTab(mTabIndex[11], ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
-    }
-    else
-    {
-        ui->tabMain->removeTab(mTabIndex[11]);
-    }
-    gSettings->enableModule(Settings::ModuleDatenbank, checked);
-    moduleChanged(Settings::ModuleDatenbank);
-}
-
 void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
 {
     gSettings->beginGroup("General");
@@ -890,6 +806,20 @@ void MainWindow::on_actionNiederlaendisch_triggered()
 {
     gSettings->setLanguage("nl");
     restart(1001);
+}
+
+void MainWindow::on_actionModule_triggered()
+{
+    if (DlgModule::Dialog)
+    {
+        DlgModule::Dialog->raise();
+        DlgModule::Dialog->activateWindow();
+    }
+    else
+    {
+        DlgModule::Dialog = new DlgModule(this);
+        DlgModule::Dialog->show();
+    }
 }
 
 void MainWindow::on_actionSpende_triggered()

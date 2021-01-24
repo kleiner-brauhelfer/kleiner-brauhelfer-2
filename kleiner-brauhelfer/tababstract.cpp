@@ -17,7 +17,7 @@ void TabAbstract::restoreView(bool full)
     Q_UNUSED(full)
 }
 
-void TabAbstract::moduleChanged(Settings::Modules modules)
+void TabAbstract::modulesChanged(Settings::Modules modules)
 {
     Q_UNUSED(modules)
 }

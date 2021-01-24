@@ -186,7 +186,7 @@ void TabRezept::restoreView(bool full)
     }
 }
 
-void TabRezept::moduleChanged(Settings::Modules modules)
+void TabRezept::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleAusruestung))
     {

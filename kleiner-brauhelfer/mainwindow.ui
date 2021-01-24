@@ -234,26 +234,11 @@
       <string>Stil</string>
      </property>
     </widget>
-    <widget class="QMenu" name="menuReiter">
-     <property name="title">
-      <string>Reiter</string>
-     </property>
-     <addaction name="actionReiterGaerverlauf"/>
-     <addaction name="actionReiterZusammenfassung"/>
-     <addaction name="actionReiterEtikette"/>
-     <addaction name="actionReiterBewertung"/>
-     <addaction name="actionReiterBrauuebersicht"/>
-     <addaction name="actionReiterAusruestung"/>
-     <addaction name="separator"/>
-     <addaction name="actionReiterDatenbank"/>
-    </widget>
     <addaction name="actionWiederherstellen"/>
     <addaction name="separator"/>
     <addaction name="menuFarbschema"/>
     <addaction name="menuStil"/>
     <addaction name="actionSchriftart"/>
-    <addaction name="separator"/>
-    <addaction name="menuReiter"/>
     <addaction name="separator"/>
     <addaction name="actionLog"/>
    </widget>
@@ -301,6 +286,8 @@
     <addaction name="actionTooltips"/>
     <addaction name="actionAnimationen"/>
     <addaction name="menuSprache"/>
+    <addaction name="separator"/>
+    <addaction name="actionModule"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSud"/>
@@ -343,14 +330,6 @@
   <action name="actionWiederherstellen">
    <property name="text">
     <string>Zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionReiterDatenbank">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Datenbank</string>
    </property>
   </action>
   <action name="actionUeber">
@@ -590,38 +569,6 @@
     <string>Ctrl+P</string>
    </property>
   </action>
-  <action name="actionReiterEtikette">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Etikette</string>
-   </property>
-  </action>
-  <action name="actionReiterBewertung">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Bewertung</string>
-   </property>
-  </action>
-  <action name="actionReiterZusammenfassung">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Spickzettel/Zusammenfassung</string>
-   </property>
-  </action>
-  <action name="actionReiterBrauuebersicht">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Brauübersicht</string>
-   </property>
-  </action>
   <action name="actionAnimationen">
    <property name="checkable">
     <bool>true</bool>
@@ -684,20 +631,9 @@
     <string>Formelsammlung</string>
    </property>
   </action>
-  <action name="actionReiterAusruestung">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
+  <action name="actionModule">
    <property name="text">
-    <string>Ausrüstung</string>
-   </property>
-  </action>
-  <action name="actionReiterGaerverlauf">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Gärverlauf</string>
+    <string>Module</string>
    </property>
   </action>
  </widget>

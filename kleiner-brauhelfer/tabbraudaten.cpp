@@ -102,7 +102,7 @@ void TabBraudaten::restoreView(bool full)
     }
 }
 
-void TabBraudaten::moduleChanged(Settings::Modules modules)
+void TabBraudaten::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleAusruestung))
     {

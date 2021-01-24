@@ -7,6 +7,8 @@
 
 class Settings : public QSettings
 {
+    Q_OBJECT
+
 public:
 
     enum Theme
@@ -32,8 +34,8 @@ public:
         ModuleRohstoffe             = 0x00000400,
         ModuleDatenbank             = 0x00000800,
         //
-        //ModuleWasseraufbereitung    = 0x00010000,
-        //ModulePreiskalkulation      = 0x00020000,
+        ModuleWasseraufbereitung    = 0x00010000,
+        ModulePreiskalkulation      = 0x00020000,
         //
         ModuleDefault               = 0xfffff73f,
         ModuleAlle                  = 0xffffffff,
@@ -79,6 +81,9 @@ public:
 
     QString lastProgramVersion();
     bool isNewProgramVersion();
+
+signals:
+    void modulesChanged(Settings::Modules modules);
 
 private:
     void initTheme();

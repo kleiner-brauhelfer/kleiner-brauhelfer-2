@@ -154,7 +154,7 @@ void TabSudAuswahl::restoreView(bool full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }
 
-void TabSudAuswahl::moduleChanged(Settings::Modules modules)
+void TabSudAuswahl::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleBewertung))
     {

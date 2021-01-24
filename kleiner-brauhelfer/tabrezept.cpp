@@ -70,7 +70,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
-    ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
   #ifdef QT_CHARTS_LIB
     ui->diagramRasten->chart()->legend()->hide();
@@ -196,7 +196,6 @@ void TabRezept::modulesChanged(Settings::Modules modules)
                           ui->btnSudhausausbeute,
                           ui->btnVerdampfungsrate,
                           ui->groupAnlage});
-        updateValues();
     }
     if (modules.testFlag(Settings::ModuleWasseraufbereitung))
     {
@@ -205,6 +204,15 @@ void TabRezept::modulesChanged(Settings::Modules modules)
         else
             ui->tabMitte->removeTab(ui->tabMitte->indexOf(ui->tabWasseraufbereitung));
     }
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        setVisibleModule(Settings::ModulePreiskalkulation,
+                         {ui->tbKosten,
+                          ui->lblKosten,
+                          ui->lblKostenEinheit,
+                          ui->lineKosten});
+    }
+    updateValues();
 }
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)

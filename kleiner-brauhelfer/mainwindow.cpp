@@ -284,55 +284,79 @@ void MainWindow::updateTabs(Settings::Modules modules)
     int nextIndex = 4;
     if (modules.testFlag(Settings::ModuleGaerverlauf))
     {
+        int index = ui->tabMain->indexOf(ui->tabGaerverlauf);
         if (gSettings->module(Settings::ModuleGaerverlauf))
-            ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed("tabgaerverlauf", gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
+        {
+            if (index < 0)
+                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed("tabgaerverlauf", gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabGaerverlauf));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleGaerverlauf))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleZusammenfassung))
     {
+        int index = ui->tabMain->indexOf(ui->tabZusammenfassung);
         if (gSettings->module(Settings::ModuleZusammenfassung))
-            ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), "");
+        {
+            if (index < 0)
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), "");
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabZusammenfassung));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleZusammenfassung))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleEtikette))
     {
+        int index = ui->tabMain->indexOf(ui->tabEtikette);
         if (gSettings->module(Settings::ModuleEtikette))
-            ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
+        {
+            if (index < 0)
+               ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabEtikette));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleEtikette))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleBewertung))
     {
+        int index = ui->tabMain->indexOf(ui->tabBewertung);
         if (gSettings->module(Settings::ModuleBewertung))
-            ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
+        {
+            if (index < 0)
+               ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabBewertung));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleBewertung))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
     {
+        int index = ui->tabMain->indexOf(ui->tabBrauuebersicht);
         if (gSettings->module(Settings::ModuleBrauuebersicht))
-            ui->tabMain->insertTab(nextIndex, ui->tabBrauuebersicht, IconThemed("tabbrauuebersicht", gSettings->theme() == Settings::Theme::Bright), tr("Brauübersicht"));
+        {
+            if (index < 0)
+               ui->tabMain->insertTab(nextIndex, ui->tabBrauuebersicht, IconThemed("tabbrauuebersicht", gSettings->theme() == Settings::Theme::Bright), tr("Brauübersicht"));
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabBrauuebersicht));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleBrauuebersicht))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleAusruestung))
     {
+        int index = ui->tabMain->indexOf(ui->tabAusruestung);
         if (gSettings->module(Settings::ModuleAusruestung))
-            ui->tabMain->insertTab(nextIndex, ui->tabAusruestung, IconThemed("tabausruestung", gSettings->theme() == Settings::Theme::Bright), tr("Ausrüstung"));
+        {
+            if (index < 0)
+               ui->tabMain->insertTab(nextIndex, ui->tabAusruestung, IconThemed("tabausruestung", gSettings->theme() == Settings::Theme::Bright), tr("Ausrüstung"));
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabAusruestung));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleAusruestung))
         nextIndex++;
@@ -340,10 +364,14 @@ void MainWindow::updateTabs(Settings::Modules modules)
         nextIndex++;
     if (modules.testFlag(Settings::ModuleDatenbank))
     {
+        int index = ui->tabMain->indexOf(ui->tabDatenbank);
         if (gSettings->module(Settings::ModuleDatenbank))
-            ui->tabMain->insertTab(nextIndex, ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
+        {
+            if (index < 0)
+               ui->tabMain->insertTab(nextIndex, ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
+        }
         else
-            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabDatenbank));
+            ui->tabMain->removeTab(index);
     }
     if (gSettings->module(Settings::ModuleDatenbank))
         nextIndex++;

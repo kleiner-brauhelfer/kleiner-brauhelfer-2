@@ -158,10 +158,10 @@ void TabSudAuswahl::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleBewertung))
     {
-        QList<TableView::ColumnDefinition>& cols = ui->tableSudauswahl->cols;
-        cols[8].canHide = gSettings->module(Settings::ModuleBewertung);
-        cols[8].visible = gSettings->module(Settings::ModuleBewertung);
-        ui->tableSudauswahl->setColumnHidden(cols[8].col, !cols[8].visible);
+        QList<TableView::ColumnDefinition>* cols = &ui->tableSudauswahl->cols;
+        (*cols)[8].canHide = gSettings->module(Settings::ModuleBewertung);
+        (*cols)[8].visible = gSettings->module(Settings::ModuleBewertung);
+        ui->tableSudauswahl->setColumnHidden((*cols)[8].col, !(*cols)[8].visible);
     }
 }
 

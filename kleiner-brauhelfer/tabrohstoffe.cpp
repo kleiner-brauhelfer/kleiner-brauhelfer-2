@@ -313,15 +313,39 @@ void TabRohstoffe::modulesChanged(Settings::Modules modules)
     if (modules.testFlag(Settings::ModuleWasseraufbereitung))
     {
         bool on = gSettings->module(Settings::ModuleWasseraufbereitung);
+        int index = ui->toolBoxRohstoffe->indexOf(ui->tabWasser);
         if (on)
-            ui->toolBoxRohstoffe->addItem(ui->tabWasser, tr("Wasser"));
+        {
+            if (index < 0)
+                ui->toolBoxRohstoffe->addItem(ui->tabWasser, tr("Wasser"));
+        }
         else
-            ui->toolBoxRohstoffe->removeItem(ui->toolBoxRohstoffe->indexOf(ui->tabWasser));
+            ui->toolBoxRohstoffe->removeItem(index);
         ui->tabWasser->setVisible(on);
-        QList<TableView::ColumnDefinition>& cols = ui->tableMalz->cols;
-        cols[3].canHide = on;
-        cols[3].visible = on;
-        ui->tableMalz->setColumnHidden(cols[3].col, !cols[3].visible);
+        QList<TableView::ColumnDefinition>* cols = &ui->tableMalz->cols;
+        (*cols)[3].canHide = on;
+        (*cols)[3].visible = on;
+        ui->tableMalz->setColumnHidden((*cols)[3].col, !(*cols)[3].visible);
+    }
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        bool on = gSettings->module(Settings::ModulePreiskalkulation);
+        QList<TableView::ColumnDefinition>* cols = &ui->tableMalz->cols;
+        (*cols)[8].canHide = on;
+        (*cols)[8].visible = on;
+        ui->tableMalz->setColumnHidden((*cols)[8].col, !(*cols)[8].visible);
+        cols = &ui->tableHopfen->cols;
+        (*cols)[8].canHide = on;
+        (*cols)[8].visible = on;
+        ui->tableHopfen->setColumnHidden((*cols)[8].col, !(*cols)[8].visible);
+        cols = &ui->tableHefe->cols;
+        (*cols)[11].canHide = on;
+        (*cols)[11].visible = on;
+        ui->tableHefe->setColumnHidden((*cols)[11].col, !(*cols)[11].visible);
+        cols = &ui->tableWeitereZutaten->cols;
+        (*cols)[9].canHide = on;
+        (*cols)[9].visible = on;
+        ui->tableWeitereZutaten->setColumnHidden((*cols)[9].col, !(*cols)[9].visible);
     }
 }
 

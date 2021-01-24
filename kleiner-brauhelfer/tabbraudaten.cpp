@@ -44,8 +44,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbSWAnstellenSoll->setColumn(ModelSud::ColSWSollAnstellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
-    ui->lblCurrency->setText(QLocale().currencySymbol());
-    ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
     ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
     mTimerWebViewUpdate.setSingleShot(true);
@@ -122,8 +122,19 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                          ui->tbMengeSollEndecmVomBoden,
                          ui->lblMengeSollEndecmVomBoden,
                          ui->lblMengeSollEndecmVomBodenEinheit});
-        updateValues();
     }
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        setVisibleModule(Settings::ModulePreiskalkulation,
+                         {ui->tbKosten,
+                          ui->lblKosten,
+                          ui->lblKostenEinheit,
+                          ui->tbNebenkosten,
+                          ui->lblNebenkosten,
+                          ui->lblNebenkostenEinheit,
+                          ui->lineKosten});
+    }
+    updateValues();
 }
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)

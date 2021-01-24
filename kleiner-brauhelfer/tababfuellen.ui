@@ -1618,7 +1618,7 @@
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QLabel" name="lblCurrency">
+            <widget class="QLabel" name="lblNebenkostenEinheit">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1628,14 +1628,14 @@
             </widget>
            </item>
            <item row="0" column="5">
-            <widget class="QLabel" name="label_5">
+            <widget class="QLabel" name="lblKosten">
              <property name="text">
               <string>Gesamtkosten</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QLabel" name="label_59">
+            <widget class="QLabel" name="lblNebenkosten">
              <property name="text">
               <string>Zusätzliche Kosten</string>
              </property>
@@ -1658,14 +1658,14 @@
             </widget>
            </item>
            <item row="0" column="4">
-            <widget class="Line" name="line_13">
+            <widget class="Line" name="lineKosten">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
            <item row="0" column="7">
-            <widget class="QLabel" name="lblCurrency2">
+            <widget class="QLabel" name="lblKostenEinheit">
              <property name="minimumSize">
               <size>
                <width>40</width>

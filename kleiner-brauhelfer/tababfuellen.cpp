@@ -33,8 +33,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbTemperaturKarbonisierung->setColumn(ModelSud::ColTemperaturKarbonisierung);
     ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
-    ui->lblCurrency->setText(QLocale().currencySymbol());
-    ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
@@ -93,6 +93,22 @@ void TabAbfuellen::restoreView(bool full)
         ui->splitter->restoreState(mDefaultSplitterState);
         ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     }
+}
+
+void TabAbfuellen::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        setVisibleModule(Settings::ModulePreiskalkulation,
+                         {ui->tbKosten,
+                          ui->lblKosten,
+                          ui->lblKostenEinheit,
+                          ui->tbNebenkosten,
+                          ui->lblNebenkosten,
+                          ui->lblNebenkostenEinheit,
+                          ui->lineKosten});
+    }
+    updateValues();
 }
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)

@@ -75,6 +75,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRohstoffe)
 {
+    QPalette pal;
+
     HopfenTypname = list_tr(HopfenTypname);
     HefeTypname = list_tr(HefeTypname);
     HefeTypFlTrName = list_tr(HefeTypFlTrName);
@@ -82,6 +84,26 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     Einheiten = list_tr(Einheiten);
 
     ui->setupUi(this);
+
+    pal = ui->tableMalz->palette();
+    pal.setColor(QPalette::Button, gSettings->colorMalz);
+    ui->tableMalz->setPalette(pal);
+
+    pal = ui->tableHopfen->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHopfen);
+    ui->tableHopfen->setPalette(pal);
+
+    pal = ui->tableHefe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHefe);
+    ui->tableHefe->setPalette(pal);
+
+    pal = ui->tableWeitereZutaten->palette();
+    pal.setColor(QPalette::Button, gSettings->colorZusatz);
+    ui->tableWeitereZutaten->setPalette(pal);
+
+    pal = ui->tableWasser->palette();
+    pal.setColor(QPalette::Button, gSettings->colorWasser);
+    ui->tableWasser->setPalette(pal);
 
     SqlTableModel *model;
     ProxyModelRohstoff *proxyModel;

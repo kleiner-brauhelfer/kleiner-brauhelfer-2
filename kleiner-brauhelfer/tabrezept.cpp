@@ -29,6 +29,8 @@ TabRezept::TabRezept(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRezept)
 {
+    QPalette pal;
+
     ui->setupUi(this);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
@@ -68,6 +70,46 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMalzAufteilen->setPalette(gSettings->paletteErrorButton);
     ui->btnMalzProzente->setPalette(gSettings->paletteErrorButton);
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
+
+    pal = ui->btnNeueMalzGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorMalz);
+    ui->btnNeueMalzGabe->setPalette(pal);
+    ui->btnMalzGabenUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeueHopfenGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHopfen);
+    ui->btnNeueHopfenGabe->setPalette(pal);
+    ui->btnHopfenGabenUebernehmen->setPalette(pal);
+    ui->btnNeueHopfenGabeGaerung->setPalette(pal);
+    ui->btnHopfenGabenUebernehmenGaerung->setPalette(pal);
+
+    pal = ui->btnNeueHefeGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHefe);
+    ui->btnNeueHefeGabe->setPalette(pal);
+    ui->btnHefeGabenUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeueZusatzGabeKochen->palette();
+    pal.setColor(QPalette::Button, gSettings->colorZusatz);
+    ui->btnNeueZusatzGabeMaischen->setPalette(pal);
+    ui->btnZusazGabenUebernehmenMaischen->setPalette(pal);
+    ui->btnNeueZusatzGabeKochen->setPalette(pal);
+    ui->btnZusazGabenUebernehmenKochen->setPalette(pal);
+    ui->btnNeueZusatzGabeGaerung->setPalette(pal);
+    ui->btnZusazGabenUebernehmenGaerung->setPalette(pal);
+
+    pal = ui->btnNeueRast->palette();
+    pal.setColor(QPalette::Button, gSettings->colorRast);
+    ui->btnNeueRast->setPalette(pal);
+    ui->btnRastenUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeueWasseraufbereitung->palette();
+    pal.setColor(QPalette::Button, gSettings->colorWasser);
+    ui->btnNeueWasseraufbereitung->setPalette(pal);
+    ui->btnWasseraufbereitungUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeuerAnhang->palette();
+    pal.setColor(QPalette::Button, gSettings->colorAnhang);
+    ui->btnNeuerAnhang->setPalette(pal);
 
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));

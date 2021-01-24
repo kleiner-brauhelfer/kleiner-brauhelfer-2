@@ -421,7 +421,7 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="label_16">
+            <widget class="QLabel" name="lblAnlage">
              <property name="text">
               <string>Anlage</string>
              </property>

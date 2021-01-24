@@ -47,7 +47,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
         if (parts & TagRezept)
         {
             int ival;
-            double fval, A, h;
+            double fval, mengeMaischen, mengeKochbeginn100, mengeKochende100;
             QVariantMap ctxRezept;
             ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
             fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_Malz).toDouble();
@@ -75,17 +75,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ival = bh->modelSud()->data(sudRow, ModelSud::ColhighGravityFaktor).toInt();
             if (ival > 0)
                 ctxRezept["HighGravityFaktor"] = QString::number(ival);
-            ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
-            ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
             ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
             ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
             ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
-            fval = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
-            ctxRezept["MengeMaischen"] = locale.toString(fval, 'f', 1);
-            A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-            h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
-            ctxRezept["MengeMaischenUnten"] = locale.toString(fval / A, 'f', 1);
-            ctxRezept["MengeMaischenOben"] = locale.toString(h - fval / A, 'f', 1);
+            mengeMaischen = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
+            ctxRezept["MengeMaischen"] = locale.toString(mengeMaischen, 'f', 1);
             ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
             ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
             ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
@@ -93,18 +87,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
             ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
-            fval = BierCalc::volumenWasser(20.0, 100.0, fval);
-            ctxRezept["MengeKochbeginn100"] = locale.toString(fval, 'f', 1);
-            A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-            h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
-            ctxRezept["MengeKochbeginn100Unten"] = locale.toString(fval / A, 'f', 1);
-            ctxRezept["MengeKochbeginn100Oben"] = locale.toString(h - fval / A, 'f', 1);
+            mengeKochbeginn100 = BierCalc::volumenWasser(20.0, 100.0, fval);
+            ctxRezept["MengeKochbeginn100"] = locale.toString(mengeKochbeginn100, 'f', 1);
             fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochende).toDouble();
             ctxRezept["MengeKochende"] = locale.toString(fval, 'f', 1);
-            fval = BierCalc::volumenWasser(20.0, 100.0, fval);
-            ctxRezept["MengeKochende100"] = locale.toString(fval, 'f', 1);
-            ctxRezept["MengeKochende100Unten"] = locale.toString(fval / A, 'f', 1);
-            ctxRezept["MengeKochende100Oben"] = locale.toString(h - fval / A, 'f', 1);
+            mengeKochende100 = BierCalc::volumenWasser(20.0, 100.0, fval);
+            ctxRezept["MengeKochende100"] = locale.toString(mengeKochende100, 'f', 1);
             ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble(), 'f', 1);
             ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble(), 'f', 1);
             ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
@@ -112,6 +100,21 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
             ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
             ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
+            if (gSettings->module(Settings::ModuleAusruestung))
+            {
+                ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
+                ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
+                double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+                double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+                ctxRezept["MengeMaischenUnten"] = locale.toString(mengeMaischen / A, 'f', 1);
+                ctxRezept["MengeMaischenOben"] = locale.toString(h - mengeMaischen / A, 'f', 1);
+                A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+                h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+                ctxRezept["MengeKochbeginn100Unten"] = locale.toString(mengeKochbeginn100 / A, 'f', 1);
+                ctxRezept["MengeKochbeginn100Oben"] = locale.toString(h - mengeKochbeginn100 / A, 'f', 1);
+                ctxRezept["MengeKochende100Unten"] = locale.toString(mengeKochende100 / A, 'f', 1);
+                ctxRezept["MengeKochende100Oben"] = locale.toString(h - mengeKochende100 / A, 'f', 1);
+            }
             ctx["Rezept"] = ctxRezept;
         }
 
@@ -217,13 +220,16 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     ctx["Rasten"] = QVariantMap({{"Liste", liste}});
 
                 QVariantMap mapWasser;
-                double f1 = 0.0, f2 = 0.0, f3 = 0.0, A, h;
+                double f1 = 0.0, f2 = 0.0, f3 = 0.0;
                 f1 = bh->sud()->geterg_WHauptguss();
                 mapWasser["Hauptguss"] = locale.toString(f1, 'f', 2);
-                A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-                h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
-                mapWasser["HauptgussUnten"] = locale.toString(f1 / A, 'f', 1);
-                mapWasser["HauptgussOben"] = locale.toString(h - f1 / A, 'f', 1);
+                if (gSettings->module(Settings::ModuleAusruestung))
+                {
+                    double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+                    double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+                    mapWasser["HauptgussUnten"] = locale.toString(f1 / A, 'f', 1);
+                    mapWasser["HauptgussOben"] = locale.toString(h - f1 / A, 'f', 1);
+                }
                 f2 = bh->sud()->geterg_WNachguss();
                 mapWasser["Nachguss"] = locale.toString(f2, 'f', 2);
                 if (bh->sud()->gethighGravityFaktor() != 0)

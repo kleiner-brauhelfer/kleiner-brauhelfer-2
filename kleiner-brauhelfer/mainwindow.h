@@ -76,6 +76,7 @@ private:
     void save();
     void saveSettings();
     void restoreView(bool full);
+    void modulesChanged();
     void checkForUpdate(bool force);
 
 private:

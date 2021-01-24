@@ -14,10 +14,22 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     Durchmesser = durchmesser;
     Hoehe = hoehe;
 
-    double Grundflaeche = pow(Durchmesser/2, 2) * M_PI ;
-    ui->spinBox_Liter->setMaximum(Grundflaeche * (Hoehe / 100 ) / 10);
-    ui->spinBox_VonOben->setMaximum(Hoehe);
-    ui->spinBox_VonUnten->setMaximum(Hoehe);
+    bool vonObenUnten = Durchmesser > 0 && Hoehe > 0;
+    ui->spinBox_VonOben->setVisible(vonObenUnten);
+    ui->label_VonOben->setVisible(vonObenUnten);
+    ui->label_VonObenEinheit->setVisible(vonObenUnten);
+    ui->spinBox_VonUnten->setVisible(vonObenUnten);
+    ui->label_VonUnten->setVisible(vonObenUnten);
+    ui->label_VonUntenEinheit->setVisible(vonObenUnten);
+
+    if (vonObenUnten)
+    {
+        double Grundflaeche = pow(Durchmesser/2, 2) * M_PI ;
+        ui->spinBox_Liter->setMaximum(Grundflaeche * (Hoehe / 100 ) / 10);
+        ui->spinBox_VonOben->setMaximum(Hoehe);
+        ui->spinBox_VonUnten->setMaximum(Hoehe);
+    }
+
     adjustSize();
     gSettings->beginGroup("DlgVolumen");
     QSize size = gSettings->value("size").toSize();

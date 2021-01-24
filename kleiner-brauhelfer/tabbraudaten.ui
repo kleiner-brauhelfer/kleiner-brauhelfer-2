@@ -204,7 +204,7 @@
             </widget>
            </item>
            <item row="6" column="7">
-            <widget class="QLabel" name="label_169">
+            <widget class="QLabel" name="lblMengeSollcmVomBodenEinheit">
              <property name="text">
               <string>cm</string>
              </property>
@@ -484,14 +484,14 @@
             </widget>
            </item>
            <item row="5" column="7">
-            <widget class="QLabel" name="label_168">
+            <widget class="QLabel" name="lblMengeSollcmVonObenEinheit">
              <property name="text">
               <string>cm</string>
              </property>
             </widget>
            </item>
            <item row="5" column="5">
-            <widget class="QLabel" name="label_9">
+            <widget class="QLabel" name="lblMengeSollcmVonOben">
              <property name="text">
               <string>Füllhöhe von Oberkante aus gemessen</string>
              </property>
@@ -638,7 +638,7 @@
             </widget>
            </item>
            <item row="6" column="5">
-            <widget class="QLabel" name="label_18">
+            <widget class="QLabel" name="lblMengeSollcmVomBoden">
              <property name="text">
               <string>Füllhöhe vom Boden aus gemessen</string>
              </property>
@@ -834,14 +834,14 @@
             </spacer>
            </item>
            <item row="5" column="7">
-            <widget class="QLabel" name="label_172">
+            <widget class="QLabel" name="lblMengeSollEndecmVomBodenEinheit">
              <property name="text">
               <string>cm</string>
              </property>
             </widget>
            </item>
            <item row="4" column="7">
-            <widget class="QLabel" name="label_171">
+            <widget class="QLabel" name="lblMengeSollEndecmVonObenEinheit">
              <property name="text">
               <string>cm</string>
              </property>
@@ -1077,7 +1077,7 @@
             </widget>
            </item>
            <item row="5" column="5">
-            <widget class="QLabel" name="label_25">
+            <widget class="QLabel" name="lblMengeSollEndecmVomBoden">
              <property name="text">
               <string>Füllhöhe vom Boden aus gemessen</string>
              </property>
@@ -1310,7 +1310,7 @@
             </widget>
            </item>
            <item row="4" column="5">
-            <widget class="QLabel" name="label_24">
+            <widget class="QLabel" name="lblMengeSollEndecmVonOben">
              <property name="text">
               <string>Füllhöhe von Oberkante aus gemessen</string>
              </property>
@@ -2275,7 +2275,7 @@
             <number>4</number>
            </property>
            <item row="1" column="0">
-            <widget class="QLabel" name="label_165">
+            <widget class="QLabel" name="lblDurchschnittIgnorieren">
              <property name="text">
               <string>Sud für Durchschnittsberechnung ignorieren</string>
              </property>
@@ -2431,7 +2431,7 @@
             </spacer>
            </item>
            <item row="2" column="0" colspan="8">
-            <widget class="QLabel" name="lblWarnung">
+            <widget class="QLabel" name="lblDurchschnittWarnung">
              <property name="text">
               <string>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</string>
              </property>

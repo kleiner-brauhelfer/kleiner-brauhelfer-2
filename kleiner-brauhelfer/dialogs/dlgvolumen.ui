@@ -178,6 +178,12 @@
    </item>
    <item row="3" column="2">
     <widget class="DoubleSpinBox" name="spinBox_Liter">
+     <property name="minimumSize">
+      <size>
+       <width>80</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sofern bekannt, kann hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; bei &lt;span style=&quot; font-weight:600;&quot;&gt;aktueller Temperatur&lt;/span&gt; eingegeben werden. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bedienung:&lt;/span&gt; Es muss dann nur noch im Feld oben die Temerpatur eingetragen werden. Die Felder zur Füllhöhe können in diesem Fall ignoriert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -203,12 +209,6 @@
    </item>
    <item row="0" column="2">
     <widget class="DoubleSpinBox" name="spinBox_VonOben">
-     <property name="minimumSize">
-      <size>
-       <width>80</width>
-       <height>0</height>
-      </size>
-     </property>
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eingabe der &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge&lt;/span&gt; über die Füllhöhe von der &lt;span style=&quot; font-weight:600;&quot;&gt;Oberkante&lt;/span&gt; bis zur &lt;span style=&quot; font-weight:600;&quot;&gt;Würzeoberfläche&lt;/span&gt; bei aktueller Temperatur.&lt;/p&gt;&lt;p&gt;Die Berechnung erfolgt grundlegend anhand der im Tab Rezept gewählten Brauanlage und speziell anhand der dort gewählten Würzepfannge. Das Equipment allgemein wird im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bedienung:&lt;/span&gt; Mit einem Metermaß oder einem digitalen Pendant wird von der Obekante innen bis zur Würzeoberfläche gemessen. Um Verfälschungen zu vermeiden, ist eine schaumfreie Stelle empfehlenswert. Die aktuelle Temperatur der Würze wird anschließend eingetragen. Voreingstellt sind 100° C. Wenn bestätigt, berechnet der Kleine Brauhelfer den Faktor der Ausdehnung durch Wärem und gibt die berechnete Würzemenge bei 20° C aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -245,7 +245,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="3" column="1">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

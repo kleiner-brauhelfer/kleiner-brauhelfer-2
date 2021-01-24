@@ -281,6 +281,22 @@ void MainWindow::restoreView(bool full)
     DlgTableView::restoreView(full);
 }
 
+void MainWindow::modulesChanged()
+{
+    ui->tabSudAuswahl->modulesChanged();
+    ui->tabBrauuebersicht->modulesChanged();
+    ui->tabRezept->modulesChanged();
+    ui->tabBraudaten->modulesChanged();
+    ui->tabAbfuelldaten->modulesChanged();
+    ui->tabGaerverlauf->modulesChanged();
+    ui->tabZusammenfassung->modulesChanged();
+    ui->tabEtikette->modulesChanged();
+    ui->tabBewertung->modulesChanged();
+    ui->tabRohstoffe->modulesChanged();
+    ui->tabAusruestung->modulesChanged();
+    ui->tabDatenbank->modulesChanged();
+}
+
 void MainWindow::databaseModified()
 {
     bool modified = bh->isDirty();
@@ -668,6 +684,7 @@ void MainWindow::on_actionReiterGaerverlauf_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleGaerverlauf, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
@@ -689,6 +706,7 @@ void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleZusammenfassung, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionReiterEtikette_triggered(bool checked)
@@ -707,6 +725,7 @@ void MainWindow::on_actionReiterEtikette_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleEtikette, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionReiterBewertung_triggered(bool checked)
@@ -725,6 +744,7 @@ void MainWindow::on_actionReiterBewertung_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleBewertung, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
@@ -742,6 +762,7 @@ void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleBrauuebersicht, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionReiterAusruestung_triggered(bool checked)
@@ -759,6 +780,7 @@ void MainWindow::on_actionReiterAusruestung_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleAusruestung, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionReiterDatenbank_triggered(bool checked)
@@ -772,6 +794,7 @@ void MainWindow::on_actionReiterDatenbank_triggered(bool checked)
         ui->tabMain->removeTab(mTabIndex[11]);
     }
     gSettings->enableModule(Settings::ModuleDatenbank, checked);
+    modulesChanged();
 }
 
 void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)

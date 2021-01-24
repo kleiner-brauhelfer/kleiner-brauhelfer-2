@@ -46,7 +46,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->lblCurrency->setText(QLocale().currencySymbol());
     ui->lblCurrency2->setText(QLocale().currencySymbol() + "/" + tr("l"));
-    ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
+    ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
@@ -100,6 +100,27 @@ void TabBraudaten::restoreView(bool full)
         ui->splitter->restoreState(mDefaultSplitterState);
         ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     }
+}
+
+void TabBraudaten::modulesChanged()
+{
+    setVisibleModule(Settings::ModuleAusruestung,
+                     {ui->cbDurchschnittIgnorieren,
+                     ui->lblDurchschnittIgnorieren,
+                     ui->lblDurchschnittWarnung,
+                     ui->tbMengeSollcmVonOben,
+                     ui->lblMengeSollcmVonOben,
+                     ui->lblMengeSollcmVonObenEinheit,
+                     ui->tbMengeSollcmVomBoden,
+                     ui->lblMengeSollcmVomBoden,
+                     ui->lblMengeSollcmVomBodenEinheit,
+                     ui->tbMengeSollEndecmVonOben,
+                     ui->lblMengeSollEndecmVonOben,
+                     ui->lblMengeSollEndecmVonObenEinheit,
+                     ui->tbMengeSollEndecmVomBoden,
+                     ui->lblMengeSollEndecmVomBoden,
+                     ui->lblMengeSollEndecmVomBodenEinheit});
+    updateValues();
 }
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
@@ -198,25 +219,31 @@ void TabBraudaten::updateValues()
     ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
     ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.1);
 
+    double mengeSollKochbeginn100 = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), bh->sud()->getMengeSollKochbeginn());
+    ui->tbMengeSollKochbeginn100->setValue(mengeSollKochbeginn100);
+    double mengeSollKochende100 = BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), bh->sud()->getMengeSollKochende());
+    ui->tbMengeSollKochende100->setValue(mengeSollKochende100);
+
+    // ModuleAusruestung
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
-    if (!ui->cbDurchschnittIgnorieren->isChecked())
-        ui->lblWarnung->setVisible(bh->sud()->getSW_WZ_Maischen() > 0 || bh->sud()->getSW_WZ_Kochen() > 0);
+    if (ui->cbDurchschnittIgnorieren->isChecked() || !gSettings->module(Settings::ModuleAusruestung))
+    {
+        ui->lblDurchschnittWarnung->setVisible(false);
+    }
     else
-        ui->lblWarnung->setVisible(false);
+    {
+        double h;
+        double d = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+        ui->tbMengeSollcmVomBoden->setValue(mengeSollKochbeginn100 / d);
+        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+        ui->tbMengeSollcmVonOben->setValue(h - mengeSollKochbeginn100 / d);
+        ui->tbMengeSollEndecmVomBoden->setValue(mengeSollKochende100 / d);
+        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+        ui->tbMengeSollEndecmVonOben->setValue(h - mengeSollKochende100 / d);
+        ui->lblDurchschnittWarnung->setVisible(bh->sud()->getSW_WZ_Maischen() > 0 || bh->sud()->getSW_WZ_Kochen() > 0);
+    }
 
-    double d = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-    value = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), bh->sud()->getMengeSollKochbeginn());
-    ui->tbMengeSollKochbeginn100->setValue(value);
-    ui->tbMengeSollcmVomBoden->setValue(value / d);
-    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
-    ui->tbMengeSollcmVonOben->setValue(h - value / d);
     ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSW_WZ_Kochen() > 0.0);
-    value = BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), bh->sud()->getMengeSollKochende());
-    ui->tbMengeSollKochende100->setValue(value);
-    ui->tbMengeSollEndecmVomBoden->setValue(value / d);
-    h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
-    ui->tbMengeSollEndecmVonOben->setValue(h - value / d);
-
     ui->tbSWSollKochbeginnBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginn()));
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
@@ -256,8 +283,12 @@ void TabBraudaten::on_btnSWKochbeginn_clicked()
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
-    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    double d = 0, h = 0;
+    if (gSettings->module(Settings::ModuleAusruestung))
+    {
+        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
@@ -272,8 +303,12 @@ void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
 
 void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
 {
-    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    double d = 0, h = 0;
+    if (gSettings->module(Settings::ModuleAusruestung))
+    {
+        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeVorHopfenseihen->value());
     if (dlg.exec() == QDialog::Accepted)
@@ -282,8 +317,12 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
-    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    double d = 0, h = 0;
+    if (gSettings->module(Settings::ModuleAusruestung))
+    {
+        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
     if (dlg.exec() == QDialog::Accepted)
@@ -320,8 +359,12 @@ void TabBraudaten::on_btnWasserVerschneidung_clicked()
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
-    double d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-    double h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    double d = 0, h = 0;
+    if (gSettings->module(Settings::ModuleAusruestung))
+    {
+        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+    }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeAnstellenTotal->value());
     dlg.setVisibleVonOben(false);

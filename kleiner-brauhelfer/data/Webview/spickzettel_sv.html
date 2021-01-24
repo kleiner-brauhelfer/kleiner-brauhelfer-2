@@ -34,10 +34,12 @@
               <td>Bryggdatum</td>
               <td colspan="2">____________</td>
             </tr>
+            {{#Rezept.Brauanlage}}
             <tr>
               <td>Anl&auml;ggning</td>
               <td class="value" colspan="2">{{Rezept.Brauanlage}}</td>
             </tr>
+            {{/Rezept.Brauanlage}}
             <tr>
               <td>M&auml;ngd</td>
               <td class="value" align="center">{{Rezept.Menge}}</td>
@@ -324,14 +326,18 @@
         </td>
       </tr>
       {{/Zutaten.HatZusatzMaischen}}
+      {{#Wasser}}
       <tr>
         <td class="underline" valign="top"><strong>M&auml;skvatten</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> liter,&uArr; <span class="value">{{Wasser.HauptgussUnten}}</span> cm, &dArr; <span class="value">{{Wasser.HauptgussOben}}</span> cm</td>
+        <td class="underline"><span class="value">{{Hauptguss}}</span> liter{{#HauptgussUnten}}, &uArr; <span class="value">{{HauptgussUnten}}</span> cm{{/HauptgussUnten}}{{#HauptgussOben}}, &dArr; <span class="value">{{HauptgussOben}}</span> cm{{/HauptgussOben}}</td>
       </tr>
+      {{/Wasser}}
+      {{#Rezept}}
       <tr>
         <td class="underline" valign="top"><strong>M&auml;skvolym</strong></td>
-        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> liter,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
+        <td class="underline"><span class="value">{{MengeMaischen}}</span> liter{{#MengeMaischenUnten}}, &uArr; <span class="value">{{MengeMaischenUnten}}</span> cm{{/MengeMaischenUnten}}{{#MengeMaischenOben}}, &dArr; <span class="value">{{MengeMaischenOben}}</span> cm{{/MengeMaischenOben}}</td>
       </tr>
+      {{/Rezept}}
       {{#Rasten}}
       <tr>
         <td class="underline" valign="top"><strong>M&auml;skschema</strong></td>
@@ -464,8 +470,11 @@
             <tr>
               <td>____ liter vid ____ &deg;C</td>
               <td>
-                M&aring;l: <span class="value">{{Rezept.MengeKochbeginn}}</span> liter vid 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> liter vid 100&deg;C,
-                &uArr; <span class="value">{{Rezept.MengeKochbeginn100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochbeginn100Oben}}</span> cm
+                {{#Rezept}}
+                Zielwert: <span class="value">{{MengeKochbeginn}}</span> liter vid 20&deg;C / <span class="value">{{MengeKochbeginn100}}</span> liter vid 100&deg;C
+                {{#MengeKochbeginn100Unten}}, &uArr; <span class="value">{{MengeKochbeginn100Unten}}</span> cm{{/MengeKochbeginn100Unten}}
+                {{#MengeKochbeginn100Oben}}, &dArr; <span class="value">{{MengeKochbeginn100Oben}}</span> cm{{/MengeKochbeginn100Oben}}
+                {{/Rezept}}
               </td>
             </tr>
           </table>
@@ -541,8 +550,11 @@
             <tr>
               <td>____ liter vid ____ &deg;C</td>
               <td>
-                M&aring;l: <span class="value">{{Rezept.MengeKochende}}</span> liter vid 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> liter vid 100&deg;C,
-                &uArr; <span class="value">{{Rezept.MengeKochende100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochende100Oben}}</span> cm
+                {{#Rezept}}
+                Zielwert: <span class="value">{{MengeKochende}}</span> liter vid 20&deg;C / <span class="value">{{MengeKochende100}}</span> liter vid 100&deg;C
+                {{#MengeKochende100Unten}}, &uArr; <span class="value">{{MengeKochende100Unten}}</span> cm{{/MengeKochende100Unten}}
+                {{#MengeKochende100Oben}}, &dArr; <span class="value">{{MengeKochende100Oben}}</span> cm{{/MengeKochende100Oben}}
+                {{/Rezept}}
               </td>
             </tr>
           </table>

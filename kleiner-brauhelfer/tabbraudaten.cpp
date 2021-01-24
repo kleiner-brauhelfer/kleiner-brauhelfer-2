@@ -102,25 +102,28 @@ void TabBraudaten::restoreView(bool full)
     }
 }
 
-void TabBraudaten::modulesChanged()
+void TabBraudaten::moduleChanged(Settings::Modules modules)
 {
-    setVisibleModule(Settings::ModuleAusruestung,
-                     {ui->cbDurchschnittIgnorieren,
-                     ui->lblDurchschnittIgnorieren,
-                     ui->lblDurchschnittWarnung,
-                     ui->tbMengeSollcmVonOben,
-                     ui->lblMengeSollcmVonOben,
-                     ui->lblMengeSollcmVonObenEinheit,
-                     ui->tbMengeSollcmVomBoden,
-                     ui->lblMengeSollcmVomBoden,
-                     ui->lblMengeSollcmVomBodenEinheit,
-                     ui->tbMengeSollEndecmVonOben,
-                     ui->lblMengeSollEndecmVonOben,
-                     ui->lblMengeSollEndecmVonObenEinheit,
-                     ui->tbMengeSollEndecmVomBoden,
-                     ui->lblMengeSollEndecmVomBoden,
-                     ui->lblMengeSollEndecmVomBodenEinheit});
-    updateValues();
+    if (modules.testFlag(Settings::ModuleAusruestung))
+    {
+        setVisibleModule(Settings::ModuleAusruestung,
+                         {ui->cbDurchschnittIgnorieren,
+                         ui->lblDurchschnittIgnorieren,
+                         ui->lblDurchschnittWarnung,
+                         ui->tbMengeSollcmVonOben,
+                         ui->lblMengeSollcmVonOben,
+                         ui->lblMengeSollcmVonObenEinheit,
+                         ui->tbMengeSollcmVomBoden,
+                         ui->lblMengeSollcmVomBoden,
+                         ui->lblMengeSollcmVomBodenEinheit,
+                         ui->tbMengeSollEndecmVonOben,
+                         ui->lblMengeSollEndecmVonOben,
+                         ui->lblMengeSollEndecmVonObenEinheit,
+                         ui->tbMengeSollEndecmVomBoden,
+                         ui->lblMengeSollEndecmVomBoden,
+                         ui->lblMengeSollEndecmVomBodenEinheit});
+        updateValues();
+    }
 }
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)

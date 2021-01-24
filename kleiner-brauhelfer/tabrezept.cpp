@@ -186,15 +186,18 @@ void TabRezept::restoreView(bool full)
     }
 }
 
-void TabRezept::modulesChanged()
+void TabRezept::moduleChanged(Settings::Modules modules)
 {
-    setVisibleModule(Settings::ModuleAusruestung,
-                     {ui->cbAnlage,
-                      ui->lblAnlage,
-                      ui->btnSudhausausbeute,
-                      ui->btnVerdampfungsrate,
-                      ui->groupAnlage});
-    updateValues();
+    if (modules.testFlag(Settings::ModuleAusruestung))
+    {
+        setVisibleModule(Settings::ModuleAusruestung,
+                         {ui->cbAnlage,
+                          ui->lblAnlage,
+                          ui->btnSudhausausbeute,
+                          ui->btnVerdampfungsrate,
+                          ui->groupAnlage});
+        updateValues();
+    }
 }
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "settings.h"
 
 namespace Ui {
 class MainWindow;
@@ -76,7 +77,7 @@ private:
     void save();
     void saveSettings();
     void restoreView(bool full);
-    void modulesChanged();
+    void moduleChanged(Settings::Modules modules);
     void checkForUpdate(bool force);
 
 private:

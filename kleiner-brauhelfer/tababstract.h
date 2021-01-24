@@ -13,7 +13,7 @@ public:
 
     virtual void saveSettings();
     virtual void restoreView(bool full);
-    virtual void modulesChanged();
+    virtual void moduleChanged(Settings::Modules modules);
 
     void setTabActive(bool active);
     bool isTabActive() const;

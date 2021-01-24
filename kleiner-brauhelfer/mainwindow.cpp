@@ -6,7 +6,6 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include "brauhelfer.h"
-#include "settings.h"
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgbierspende.h"
@@ -281,20 +280,20 @@ void MainWindow::restoreView(bool full)
     DlgTableView::restoreView(full);
 }
 
-void MainWindow::modulesChanged()
+void MainWindow::moduleChanged(Settings::Modules modules)
 {
-    ui->tabSudAuswahl->modulesChanged();
-    ui->tabBrauuebersicht->modulesChanged();
-    ui->tabRezept->modulesChanged();
-    ui->tabBraudaten->modulesChanged();
-    ui->tabAbfuelldaten->modulesChanged();
-    ui->tabGaerverlauf->modulesChanged();
-    ui->tabZusammenfassung->modulesChanged();
-    ui->tabEtikette->modulesChanged();
-    ui->tabBewertung->modulesChanged();
-    ui->tabRohstoffe->modulesChanged();
-    ui->tabAusruestung->modulesChanged();
-    ui->tabDatenbank->modulesChanged();
+    ui->tabSudAuswahl->moduleChanged(modules);
+    ui->tabBrauuebersicht->moduleChanged(modules);
+    ui->tabRezept->moduleChanged(modules);
+    ui->tabBraudaten->moduleChanged(modules);
+    ui->tabAbfuelldaten->moduleChanged(modules);
+    ui->tabGaerverlauf->moduleChanged(modules);
+    ui->tabZusammenfassung->moduleChanged(modules);
+    ui->tabEtikette->moduleChanged(modules);
+    ui->tabBewertung->moduleChanged(modules);
+    ui->tabRohstoffe->moduleChanged(modules);
+    ui->tabAusruestung->moduleChanged(modules);
+    ui->tabDatenbank->moduleChanged(modules);
 }
 
 void MainWindow::databaseModified()
@@ -684,7 +683,7 @@ void MainWindow::on_actionReiterGaerverlauf_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleGaerverlauf, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleGaerverlauf);
 }
 
 void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
@@ -706,7 +705,7 @@ void MainWindow::on_actionReiterZusammenfassung_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleZusammenfassung, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleZusammenfassung);
 }
 
 void MainWindow::on_actionReiterEtikette_triggered(bool checked)
@@ -725,7 +724,7 @@ void MainWindow::on_actionReiterEtikette_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleEtikette, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleEtikette);
 }
 
 void MainWindow::on_actionReiterBewertung_triggered(bool checked)
@@ -744,7 +743,7 @@ void MainWindow::on_actionReiterBewertung_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleBewertung, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleBewertung);
 }
 
 void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
@@ -762,7 +761,7 @@ void MainWindow::on_actionReiterBrauuebersicht_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleBrauuebersicht, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleBrauuebersicht);
 }
 
 void MainWindow::on_actionReiterAusruestung_triggered(bool checked)
@@ -780,7 +779,7 @@ void MainWindow::on_actionReiterAusruestung_triggered(bool checked)
             (*i)--;
     }
     gSettings->enableModule(Settings::ModuleAusruestung, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleAusruestung);
 }
 
 void MainWindow::on_actionReiterDatenbank_triggered(bool checked)
@@ -794,7 +793,7 @@ void MainWindow::on_actionReiterDatenbank_triggered(bool checked)
         ui->tabMain->removeTab(mTabIndex[11]);
     }
     gSettings->enableModule(Settings::ModuleDatenbank, checked);
-    modulesChanged();
+    moduleChanged(Settings::ModuleDatenbank);
 }
 
 void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)

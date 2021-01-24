@@ -152,18 +152,21 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
             ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
 
-            int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
-            ctxSud["Bewertung"] = QString::number(bewertung);
-            if (bewertung > 0)
+            if (gSettings->module(Settings::ModuleBewertung))
             {
-                if (bewertung > 5)
-                    bewertung = 5;
-                QString s = "";
-                for (int i = 0; i < bewertung; i++)
-                    s += "<img class='star' width='24'>";
-                for (int i = bewertung; i < 5; i++)
-                    s += "<img class='star_grey' width='24'>";
-                ctxSud["BewertungSterne"] = s;
+                int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
+                ctxSud["Bewertung"] = QString::number(bewertung);
+                if (bewertung > 0)
+                {
+                    if (bewertung > 5)
+                        bewertung = 5;
+                    QString s = "";
+                    for (int i = 0; i < bewertung; i++)
+                        s += "<img class='star' width='24'>";
+                    for (int i = bewertung; i < 5; i++)
+                        s += "<img class='star_grey' width='24'>";
+                    ctxSud["BewertungSterne"] = s;
+                }
             }
 
             ctx["Sud"] = ctxSud;

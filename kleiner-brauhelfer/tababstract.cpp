@@ -17,8 +17,9 @@ void TabAbstract::restoreView(bool full)
     Q_UNUSED(full)
 }
 
-void TabAbstract::modulesChanged()
+void TabAbstract::moduleChanged(Settings::Modules modules)
 {
+    Q_UNUSED(modules)
 }
 
 void TabAbstract::setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets)

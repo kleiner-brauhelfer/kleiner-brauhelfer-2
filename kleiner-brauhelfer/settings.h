@@ -18,20 +18,25 @@ public:
 
     enum Module {
         ModuleKein                  = 0x00000000,
-        ModuleSudauswahl            = 0x00010000,
-        ModuleRezept                = 0x00020000,
-        ModuleBraudaten             = 0x00040000,
-        ModuleAbfuellen             = 0x00080000,
-        ModuleGaerverlauf           = 0x00100000,
-        ModuleZusammenfassung       = 0x00200000,
-        ModuleEtikette              = 0x00400000,
-        ModuleBewertung             = 0x00800000,
-        ModuleBrauuebersicht        = 0x01000000,
-        ModuleAusruestung           = 0x02000000,
-        ModuleRohstoffe             = 0x04000000,
-        ModuleDatenbank             = 0x08000000,
-        ModuleDefault               = 0xffffffff,
-        ModuleAll                   = 0xffffffff,
+        //
+        ModuleSudauswahl            = 0x00000001,
+        ModuleRezept                = 0x00000002,
+        ModuleBraudaten             = 0x00000004,
+        ModuleAbfuellen             = 0x00000008,
+        ModuleGaerverlauf           = 0x00000010,
+        ModuleZusammenfassung       = 0x00000020,
+        ModuleEtikette              = 0x00000040,
+        ModuleBewertung             = 0x00000080,
+        ModuleBrauuebersicht        = 0x00000100,
+        ModuleAusruestung           = 0x00000200,
+        ModuleRohstoffe             = 0x00000400,
+        ModuleDatenbank             = 0x00000800,
+        //
+        //ModuleWasseraufbereitung    = 0x00010000,
+        //ModulePreiskalkulation      = 0x00020000,
+        //
+        ModuleDefault               = 0xfffff73f,
+        ModuleAlle                  = 0xffffffff,
     };
     Q_DECLARE_FLAGS(Modules, Module)
 

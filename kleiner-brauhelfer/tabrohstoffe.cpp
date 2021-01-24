@@ -308,6 +308,23 @@ void TabRohstoffe::restoreView(bool full)
     ui->tableWasser->restoreDefaultState();
 }
 
+void TabRohstoffe::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModuleWasseraufbereitung))
+    {
+        bool on = gSettings->module(Settings::ModuleWasseraufbereitung);
+        if (on)
+            ui->toolBoxRohstoffe->addItem(ui->tabWasser, tr("Wasser"));
+        else
+            ui->toolBoxRohstoffe->removeItem(ui->toolBoxRohstoffe->indexOf(ui->tabWasser));
+        ui->tabWasser->setVisible(on);
+        QList<TableView::ColumnDefinition>& cols = ui->tableMalz->cols;
+        cols[3].canHide = on;
+        cols[3].visible = on;
+        ui->tableMalz->setColumnHidden(cols[3].col, !cols[3].visible);
+    }
+}
+
 void TabRohstoffe::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);

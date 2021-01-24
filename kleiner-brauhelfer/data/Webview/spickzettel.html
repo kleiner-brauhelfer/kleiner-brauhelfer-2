@@ -98,11 +98,13 @@
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/Liter</td>
             </tr>
+            {{#Rezept.Restalkalitaet}}
             <tr>
               <td>Restalkalit&auml;t</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
             </tr>
+            {{/Rezept.Restalkalitaet}}
             <tr>
               <td>Reifezeit</td>
               <td class="value" align="center">{{Rezept.Reifezeit}}</td>
@@ -209,7 +211,6 @@
     </br>
     <img src="qrc:/images/wasser.svg" height="30"></br>
     {{Wasserprofil.Name}}
-    </br>
     <table style="border-spacing: 20px 0px;">
       <tr>
         <th></th>

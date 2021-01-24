@@ -198,6 +198,13 @@ void TabRezept::modulesChanged(Settings::Modules modules)
                           ui->groupAnlage});
         updateValues();
     }
+    if (modules.testFlag(Settings::ModuleWasseraufbereitung))
+    {
+        if (gSettings->module(Settings::ModuleWasseraufbereitung))
+            ui->tabMitte->addTab(ui->tabWasseraufbereitung, tr("Wasseraufbereitung"));
+        else
+            ui->tabMitte->removeTab(ui->tabMitte->indexOf(ui->tabWasseraufbereitung));
+    }
 }
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
@@ -477,11 +484,17 @@ void TabRezept::updateValues()
         ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
     }
 
+    // ModuleWasseraufbereitung
     diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble();
     ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
     ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
     ui->tbPhMaischeSoll->setEnabled(ui->tbPhMalz->value() > 0);
+    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
+    if (!ui->cbWasserProfil->hasFocus())
+        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
+    ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
+    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -498,11 +511,7 @@ void TabRezept::updateValues()
         ui->lblBittere->setText(tr("moderat herb"));
     else
         ui->lblBittere->setText(tr("sehr herb"));
-    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
-    if (!ui->cbWasserProfil->hasFocus())
-        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
-    ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
-    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
+
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
     if (ui->tbHGF->value() != 0.0)

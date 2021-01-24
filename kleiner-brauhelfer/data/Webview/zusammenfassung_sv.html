@@ -70,12 +70,14 @@
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
             </tr>
+            {{#Rezept.Restalkalitaet}}
             <tr>
               <td>Restalkalinitet</td>
               <td class="value" align="center">{{Sud.Restalkalitaet}}</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
             </tr>
+            {{/Rezept.Restalkalitaet}}
             <tr>
               <td>M&auml;skutbyte</td>
               <td class="value" align="center">{{Sud.SHA}}</td>
@@ -108,10 +110,12 @@
                 <td class="value">{{Rezept.Brauanlage}}</td>
               </tr>
               {{/Rezept.Brauanlage}}
+              {{#Rezept.Wasserprofil}}
               <tr>
                 <td style="padding:0 20px;">Vattenprofil</td>
                 <td class="value">{{Rezept.Wasserprofil}}</td>
               </tr>
+              {{/Rezept.Wasserprofil}}
               <tr>
                 <td style="padding:0 20px;">Bryggdatum</td>
                 <td class="value">{{Sud.Braudatum}}</td>

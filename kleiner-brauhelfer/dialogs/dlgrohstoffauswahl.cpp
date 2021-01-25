@@ -55,7 +55,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->cols.append({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
         table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(ui->tableView)});
         table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-        table->cols.append({ModelMalz::ColEingenschaften, true, true, 200, nullptr});
+        table->cols.append({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
         table->cols.append({ModelMalz::ColAlternativen, true, true, 200, nullptr});
         table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
         table->cols.append({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, ui->tableView)});

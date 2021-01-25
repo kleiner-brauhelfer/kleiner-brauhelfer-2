@@ -118,7 +118,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     model->setHeaderData(ModelMalz::ColpH, Qt::Horizontal, tr("pH"));
     model->setHeaderData(ModelMalz::ColMaxProzent, Qt::Horizontal, tr("Max. Anteil [%]"));
     model->setHeaderData(ModelMalz::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
-    model->setHeaderData(ModelMalz::ColEingenschaften, Qt::Horizontal, tr("Eingenschaften"));
+    model->setHeaderData(ModelMalz::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
     model->setHeaderData(ModelMalz::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
     model->setHeaderData(ModelMalz::ColPreis, Qt::Horizontal, tr("Preis [%1/kg]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelMalz::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
@@ -136,7 +136,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     table->cols.append({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
     table->cols.append({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->cols.append({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-    table->cols.append({ModelMalz::ColEingenschaften, true, true, 200, nullptr});
+    table->cols.append({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
     table->cols.append({ModelMalz::ColAlternativen, true, true, 200, nullptr});
     table->cols.append({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     table->cols.append({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});

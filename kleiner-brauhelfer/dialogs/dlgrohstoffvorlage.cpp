@@ -251,7 +251,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             iVal = index.sibling(index.row(), header->logicalIndex(2)).data().toInt();
             if (iVal > 0)
                 mValues.insert(ModelMalz::ColMaxProzent, iVal);
-            mValues.insert(ModelMalz::ColEingenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
+            mValues.insert(ModelMalz::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
             break;
 
         case MalzOBraMa:
@@ -261,7 +261,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             fVal = index.sibling(index.row(), header->logicalIndex(3)).data().toDouble();
             if (fVal > 0)
                 mValues.insert(ModelMalz::ColMaxProzent, qRound(fVal));
-            mValues.insert(ModelMalz::ColEingenschaften, index.sibling(index.row(), header->logicalIndex(4)).data());
+            mValues.insert(ModelMalz::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(4)).data());
             break;
 
         case Hopfen:

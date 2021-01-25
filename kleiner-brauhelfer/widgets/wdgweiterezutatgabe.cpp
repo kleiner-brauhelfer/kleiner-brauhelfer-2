@@ -41,7 +41,6 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
     ui->tbMenge->setErrorOnLimit(true);
     ui->tbMengeTotal->setErrorOnLimit(true);
 
-    checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
@@ -68,19 +67,29 @@ QString WdgWeitereZutatGabe::name() const
     return data(ModelWeitereZutatenGaben::ColName).toString();
 }
 
-void WdgWeitereZutatGabe::checkEnabled(bool force)
+void WdgWeitereZutatGabe::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool enabled = status == Brauhelfer::SudStatus::Rezept;
+    mEnabled = status == Brauhelfer::SudStatus::Rezept;
     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
     if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
-        enabled = status < Brauhelfer::SudStatus::Abgefuellt;
+        mEnabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (gSettings->ForceEnabled)
-        enabled = true;
-    if (enabled == mEnabled && !force)
-        return;
+        mEnabled = true;
+}
 
-    mEnabled = enabled;
+void WdgWeitereZutatGabe::updateValues()
+{
+    QString zusatzname = name();
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
+    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+    Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
+    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
+    Brauhelfer::ZusatzStatus zugabestatus = static_cast<Brauhelfer::ZusatzStatus>(data(ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+    int dauer = data(ModelWeitereZutatenGaben::ColZugabedauer).toInt();
+
+    checkEnabled();
+
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
     ui->tbVorhanden->setVisible(mEnabled);
@@ -99,24 +108,10 @@ void WdgWeitereZutatGabe::checkEnabled(bool force)
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 
-    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     ui->cbEntnahme->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
     QPalette pal = palette();
     pal.setColor(QPalette::Window, typ == Brauhelfer::ZusatzTyp::Hopfen ? gSettings->colorHopfen : gSettings->colorZusatz);
     setPalette(pal);
-}
-
-void WdgWeitereZutatGabe::updateValues(bool full)
-{
-    QString zusatzname = name();
-    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
-    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
-    Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
-    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(data(ModelWeitereZutatenGaben::ColEinheit).toInt());
-    Brauhelfer::ZusatzStatus zugabestatus = static_cast<Brauhelfer::ZusatzStatus>(data(ModelWeitereZutatenGaben::ColZugabestatus).toInt());
-    int dauer = data(ModelWeitereZutatenGaben::ColZugabedauer).toInt();
-
-    checkEnabled(full);
 
     int rowRohstoff;
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)

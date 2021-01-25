@@ -39,7 +39,6 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
 
     ui->tbMenge->setErrorOnLimit(true);
 
-    checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
@@ -71,18 +70,22 @@ int WdgHefeGabe::menge() const
     return data(ModelHefegaben::ColMenge).toInt();
 }
 
-void WdgHefeGabe::checkEnabled(bool force)
+void WdgHefeGabe::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool enabled = status < Brauhelfer::SudStatus::Abgefuellt;
+    mEnabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (data(ModelHefegaben::ColZugegeben).toBool())
-        enabled = false;
+        mEnabled = false;
     if (gSettings->ForceEnabled)
-        enabled = true;
-    if (enabled == mEnabled && !force)
-        return;
+        mEnabled = true;
+}
 
-    mEnabled = enabled;
+void WdgHefeGabe::updateValues()
+{
+    QString hefename = name();
+
+    checkEnabled();
+
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
     ui->tbVorhanden->setVisible(mEnabled);
@@ -95,13 +98,6 @@ void WdgHefeGabe::checkEnabled(bool force)
     ui->tbDatum->setReadOnly(!mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
-}
-
-void WdgHefeGabe::updateValues(bool full)
-{
-    QString hefename = name();
-
-    checkEnabled(full);
 
     int rowRohstoff = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
     mValid = !mEnabled || rowRohstoff >= 0;

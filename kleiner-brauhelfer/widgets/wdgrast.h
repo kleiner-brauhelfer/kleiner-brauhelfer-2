@@ -20,7 +20,7 @@ public:
 public slots:
     void updateListe();
     void updateValuesFromListe(int index);
-    void updateValues(bool full = false);
+    void updateValues();
 
 private slots:
     void on_cbRast_currentTextChanged(const QString &text);
@@ -60,7 +60,7 @@ private:
     static const QList<Rast> rasten;
 
 private:
-    void checkEnabled(bool force);
+    void checkEnabled();
 
 private:
     Ui::WdgRast *ui;

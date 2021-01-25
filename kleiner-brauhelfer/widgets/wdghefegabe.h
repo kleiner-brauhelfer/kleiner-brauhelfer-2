@@ -20,7 +20,7 @@ public:
     int menge() const;
 
 public slots:
-    void updateValues(bool full = false);
+    void updateValues();
 
 private slots:
     void on_btnZutat_clicked();
@@ -34,7 +34,7 @@ private slots:
     void on_btnNachUnten_clicked();
 
 private:
-    void checkEnabled(bool force = false);
+    void checkEnabled();
 
 private:
     Ui::WdgHefeGabe *ui;

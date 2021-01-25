@@ -16,7 +16,7 @@ public:
     ~WdgWasseraufbereitung();
 
 public slots:
-    void updateValues(bool full = false);
+    void updateValues();
 
 private slots:
     void on_tbName_textChanged(const QString &text);
@@ -32,7 +32,7 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
-    void checkEnabled(bool force);
+    void checkEnabled();
 
 private:
     Ui::WdgWasseraufbereitung *ui;

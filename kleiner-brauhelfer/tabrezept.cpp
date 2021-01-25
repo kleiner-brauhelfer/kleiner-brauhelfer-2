@@ -1249,7 +1249,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutZusaetzeMaischen->count() != nMaischen)
         delete ui->layoutZusaetzeMaischen->itemAt(ui->layoutZusaetzeMaischen->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeMaischen->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget())->updateValues();
 
     nLayout = ui->layoutZusaetzeKochen->count();
     while (nLayout < nKochen)
@@ -1257,7 +1257,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutZusaetzeKochen->count() != nKochen)
         delete ui->layoutZusaetzeKochen->itemAt(ui->layoutZusaetzeKochen->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeKochen->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget())->updateValues();
 
     nLayout = ui->layoutZusaetzeGaerung->count();
     while (nLayout < nGaerung)
@@ -1265,7 +1265,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutZusaetzeGaerung->count() != nGaerung)
         delete ui->layoutZusaetzeGaerung->itemAt(ui->layoutZusaetzeGaerung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeGaerung->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget())->updateValues();
 }
 
 void TabRezept::wasseraufbereitung_modified()
@@ -1277,7 +1277,7 @@ void TabRezept::wasseraufbereitung_modified()
     while (ui->layoutWasseraufbereitung->count() != nModel)
         delete ui->layoutWasseraufbereitung->itemAt(ui->layoutWasseraufbereitung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutWasseraufbereitung->count(); ++i)
-        static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues();
 }
 
 void TabRezept::on_btnNeueWasseraufbereitung_clicked()

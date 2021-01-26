@@ -37,6 +37,7 @@ public:
         ModuleWasseraufbereitung    = 0x00010000,
         ModulePreiskalkulation      = 0x00020000,
         ModuleLagerverwaltung       = 0x00040000,
+        ModuleSpeise                = 0x00080000,
         //
         ModuleDefault               = 0xfffff73f,
         ModuleAlle                  = 0xffffffff,

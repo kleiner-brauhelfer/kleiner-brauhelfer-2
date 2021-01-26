@@ -38,7 +38,6 @@ private slots:
     void on_tbTempKochende_valueChanged(double);
     void on_btnSWKochende_clicked();
     void on_btnSWAnstellen_clicked();
-    void on_btnWasserVerschneidung_clicked();
     void on_btnWuerzemengeAnstellenTotal_clicked();
     void on_tbSpeiseSRE_valueChanged(double);
     void on_tbSpeiseT_valueChanged(double);

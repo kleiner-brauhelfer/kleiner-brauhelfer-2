@@ -123,6 +123,21 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                          ui->lblMengeSollEndecmVomBoden,
                          ui->lblMengeSollEndecmVomBodenEinheit});
     }
+    if (modules.testFlag(Settings::ModuleSpeise))
+    {
+        setVisibleModule(Settings::ModuleSpeise,
+                         {ui->tbSpeisemenge,
+                          ui->lblSpeisemenge,
+                          ui->lblSpeisemengeEinheit,
+                          ui->wdgSpeisemengeNoetig,
+                          ui->btnSpeisemengeNoetig,
+                          ui->tbWuerzemengeAnstellenTotal,
+                          ui->lblWuerzemengeAnstellenTotal,
+                          ui->lblWuerzemengeAnstellenTotalEinheit,
+                          ui->btnWuerzemengeAnstellenTotal,
+                          ui->lineWuerzemengeAnstellenTotal,
+                          ui->lineWuerzemengeAnstellenTotal2});
+    }
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
         setVisibleModule(Settings::ModulePreiskalkulation,
@@ -189,10 +204,9 @@ void TabBraudaten::checkEnabled()
     ui->btnSWKochende->setVisible(!gebraut);
     ui->tbSWAnstellen->setReadOnly(gebraut);
     ui->btnSWAnstellen->setVisible(!gebraut);
-    ui->btnWasserVerschneidung->setVisible(!gebraut);
-    ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut);
+    ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut && gSettings->module(Settings::ModuleSpeise));
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
-    ui->btnSpeisemengeNoetig->setVisible(!gebraut);
+    ui->btnSpeisemengeNoetig->setVisible(!gebraut && gSettings->module(Settings::ModuleSpeise));
     ui->tbSpeisemenge->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
@@ -223,15 +237,18 @@ void TabBraudaten::updateValues()
                                     bh->sud()->getWuerzemengeAnstellenTotal());
     ui->tbWasserVerschneidung->setValue(value);
     ui->wdgWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
-    ui->btnWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
 
-    value = BierCalc::speise(bh->sud()->getCO2(),
-                             bh->sud()->getSWAnstellen(),
-                             ui->tbSpeiseSRE->value(),
-                             ui->tbSpeiseSRE->value(),
-                             ui->tbSpeiseT->value());
-    ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
-    ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.1);
+    // ModuleSpeise
+    if (gSettings->module(Settings::ModuleSpeise))
+    {
+        value = BierCalc::speise(bh->sud()->getCO2(),
+                                 bh->sud()->getSWAnstellen(),
+                                 ui->tbSpeiseSRE->value(),
+                                 ui->tbSpeiseSRE->value(),
+                                 ui->tbSpeiseT->value());
+        ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
+        ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.1);
+    }
 
     double mengeSollKochbeginn100 = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), bh->sud()->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(mengeSollKochbeginn100);
@@ -361,14 +378,6 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
     DlgRestextrakt dlg(bh->sud()->getSWAnstellen(), 0.0, -1.0, QDateTime(),this);
     if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWAnstellen(dlg.value());
-}
-
-void TabBraudaten::on_btnWasserVerschneidung_clicked()
-{
-    setFocus();
-    double menge = bh->sud()->getWuerzemengeAnstellenTotal() + ui->tbWasserVerschneidung->value();
-    bh->sud()->setSWAnstellen(bh->sud()->getSWSollAnstellen());
-    bh->sud()->setWuerzemengeAnstellenTotal(menge);
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()

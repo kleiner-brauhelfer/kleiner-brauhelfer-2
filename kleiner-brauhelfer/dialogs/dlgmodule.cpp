@@ -18,6 +18,7 @@ DlgModule::DlgModule(QWidget *parent) :
     ui->gbModuleBrauuebersicht->setChecked(gSettings->module(Settings::ModuleBrauuebersicht));
     ui->gbModuleAusruestung->setChecked(gSettings->module(Settings::ModuleAusruestung));
     ui->gbModuleLagerverwaltung->setChecked(gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->gbModuleSpeise->setChecked(gSettings->module(Settings::ModuleSpeise));
     ui->gbModuleWasseraufbereitung->setChecked(gSettings->module(Settings::ModuleWasseraufbereitung));
     ui->gbModulePreiskalkulation->setChecked(gSettings->module(Settings::ModulePreiskalkulation));
     ui->gbModuleDatenbank->setChecked(gSettings->module(Settings::ModuleDatenbank));
@@ -73,6 +74,11 @@ void DlgModule::on_gbModuleAusruestung_clicked(bool checked)
 void DlgModule::on_gbModuleLagerverwaltung_clicked(bool checked)
 {
     gSettings->enableModule(Settings::ModuleLagerverwaltung, checked);
+}
+
+void DlgModule::on_gbModuleSpeise_clicked(bool checked)
+{
+    gSettings->enableModule(Settings::ModuleSpeise, checked);
 }
 
 void DlgModule::on_gbModuleWasseraufbereitung_clicked(bool checked)

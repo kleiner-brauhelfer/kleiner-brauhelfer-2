@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "settings.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,12 +18,14 @@ public:
 
 private slots:
     void databaseModified();
+    void updateTabs(Settings::Modules modules);
     void updateValues();
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
     void changeStyle();
     void checkMessageFinished();
+    void modulesChanged(Settings::Modules modules);
     void on_tabMain_currentChanged();
     void on_actionNeuen_Sud_anlegen_triggered();
     void on_actionSud_kopieren_triggered();
@@ -47,11 +50,6 @@ private slots:
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);
     void on_actionOeffnen_triggered();
-    void on_actionReiterZusammenfassung_triggered(bool checked);
-    void on_actionReiterEtikette_triggered(bool checked);
-    void on_actionReiterBewertung_triggered(bool checked);
-    void on_actionReiterBrauuebersicht_triggered(bool checked);
-    void on_actionReiterDatenbank_triggered(bool checked);
     void on_actionLog_triggered();
 	void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
@@ -61,6 +59,7 @@ private slots:
     void on_actionEnglisch_triggered();
     void on_actionSchwedisch_triggered();
     void on_actionNiederlaendisch_triggered();
+    void on_actionModule_triggered();
     void on_actionSpende_triggered();
     void on_actionBierspende_triggered();
     void on_actionFormelsammlung_triggered();
@@ -79,11 +78,6 @@ private:
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
-    int mTabIndexZusammenfassung;
-    int mTabIndexEtikette;
-    int mTabIndexBewertung;
-    int mTabIndexBrauuebersicht;
-    int mTabIndexDatenbank;
 };
 
 #endif // MAINWINDOW_H

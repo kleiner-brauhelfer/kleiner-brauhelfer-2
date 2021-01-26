@@ -44,7 +44,7 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     setPalette(pal);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
-    checkEnabled(true);
+    updateListe();
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
@@ -66,43 +66,12 @@ QString WdgRast::name() const
     return data(ModelRasten::ColName).toString();
 }
 
-void WdgRast::checkEnabled(bool force)
+void WdgRast::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool enabled = status == Brauhelfer::SudStatus::Rezept;
+    mEnabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
-        enabled = true;
-    if (enabled == mEnabled && !force)
-        return;
-
-    mEnabled = enabled;
-    updateListe();
-    ui->cbTyp->setEnabled(mEnabled);
-    ui->cbRast->setEditable(mEnabled);
-    ui->cbRast->setEnabled(mEnabled);
-    ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbMengeEinmaischen->setReadOnly(!mEnabled);
-    ui->tbVerhaeltnisEinmaischen->setReadOnly(!mEnabled);
-    ui->tbTempEinmaischen->setReadOnly(!mEnabled);
-    ui->tbDauerEinmaischen->setReadOnly(!mEnabled);
-    ui->tbMalzTempEinmaischen->setReadOnly(!mEnabled);
-    ui->tbTempRast->setReadOnly(!mEnabled);
-    ui->tbDauerRast->setReadOnly(!mEnabled);
-    ui->tbMengeInfusion->setReadOnly(!mEnabled);
-    ui->tbVerhaeltnisInfusion->setReadOnly(!mEnabled);
-    ui->tbTempInfusion->setReadOnly(!mEnabled);
-    ui->tbWassertempInfusion->setReadOnly(!mEnabled);
-    ui->tbDauerInfusion->setReadOnly(!mEnabled);
-    ui->tbMengeDekoktion->setReadOnly(!mEnabled);
-    ui->tbVerhaeltnisDekoktion->setReadOnly(!mEnabled);
-    ui->tbRasttempDekoktion->setReadOnly(!mEnabled);
-    ui->tbRastdauerDekoktion->setReadOnly(!mEnabled);
-    ui->tbKochdauerDekoktion->setReadOnly(!mEnabled);
-    ui->tbTeiltempDekoktion->setReadOnly(!mEnabled);
-    ui->tbTempDekoktion->setReadOnly(!mEnabled);
-    ui->tbDauerDekoktion->setReadOnly(!mEnabled);
-    ui->btnNachOben->setVisible(mEnabled);
-    ui->btnNachUnten->setVisible(mEnabled);
+        mEnabled = true;
 }
 
 void WdgRast::updateListe()
@@ -189,9 +158,36 @@ void WdgRast::updateValuesFromListe(int index)
     }
 }
 
-void WdgRast::updateValues(bool full)
+void WdgRast::updateValues()
 {
-    checkEnabled(full);
+    checkEnabled();
+
+    ui->cbTyp->setEnabled(mEnabled);
+    ui->cbRast->setEditable(mEnabled);
+    ui->cbRast->setEnabled(mEnabled);
+    ui->btnLoeschen->setVisible(mEnabled);
+    ui->tbMengeEinmaischen->setReadOnly(!mEnabled);
+    ui->tbVerhaeltnisEinmaischen->setReadOnly(!mEnabled);
+    ui->tbTempEinmaischen->setReadOnly(!mEnabled);
+    ui->tbDauerEinmaischen->setReadOnly(!mEnabled);
+    ui->tbMalzTempEinmaischen->setReadOnly(!mEnabled);
+    ui->tbTempRast->setReadOnly(!mEnabled);
+    ui->tbDauerRast->setReadOnly(!mEnabled);
+    ui->tbMengeInfusion->setReadOnly(!mEnabled);
+    ui->tbVerhaeltnisInfusion->setReadOnly(!mEnabled);
+    ui->tbTempInfusion->setReadOnly(!mEnabled);
+    ui->tbWassertempInfusion->setReadOnly(!mEnabled);
+    ui->tbDauerInfusion->setReadOnly(!mEnabled);
+    ui->tbMengeDekoktion->setReadOnly(!mEnabled);
+    ui->tbVerhaeltnisDekoktion->setReadOnly(!mEnabled);
+    ui->tbRasttempDekoktion->setReadOnly(!mEnabled);
+    ui->tbRastdauerDekoktion->setReadOnly(!mEnabled);
+    ui->tbKochdauerDekoktion->setReadOnly(!mEnabled);
+    ui->tbTeiltempDekoktion->setReadOnly(!mEnabled);
+    ui->tbTempDekoktion->setReadOnly(!mEnabled);
+    ui->tbDauerDekoktion->setReadOnly(!mEnabled);
+    ui->btnNachOben->setVisible(mEnabled);
+    ui->btnNachUnten->setVisible(mEnabled);
 
     Brauhelfer::RastTyp typ = static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt());
     ui->wdgEinmaischen->setVisible(typ == Brauhelfer::RastTyp::Einmaischen);

@@ -89,23 +89,27 @@
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Nodig [kg]</th>
+        <th>Hoeveelheid [kg]</th>
+        {{#Lager}}
         <th>Voorraad [kg]</th>
         <th>Over [kg]</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}}</td>
         <td class="{{Class}}" align="center">{{Rest}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
@@ -119,23 +123,27 @@
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Nodig [g]</th>
+        <th>Hoeveelheid [g]</th>
+        {{#Lager}}
         <th>Voorraad [g]</th>
         <th>Over [g]</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}}</td>
         <td class="{{Class}}" align="center">{{Rest}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
@@ -149,23 +157,27 @@
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Nodig</th>
+        <th>Hoeveelheid</th>
+        {{#Lager}}
         <th>Voorraad</th>
         <th>Over</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}}</td>
         <td class="{{Class}}" align="center">{{Rest}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
@@ -179,23 +191,27 @@
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Nodig</th>
+        <th>Hoeveelheid</th>
+        {{#Lager}}
         <th>Voorraad</th>
         <th>Over</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
         <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>

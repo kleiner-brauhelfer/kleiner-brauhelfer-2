@@ -58,9 +58,9 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());
-    table->cols.append({ModelTags::ColKey, true, false, 0, nullptr});
-    table->cols.append({ModelTags::ColValue, true, false, -1, nullptr});
-    table->cols.append({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->appendCol({ModelTags::ColKey, true, false, 0, nullptr});
+    table->appendCol({ModelTags::ColValue, true, false, -1, nullptr});
+    table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
     table->build();
 
     connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));

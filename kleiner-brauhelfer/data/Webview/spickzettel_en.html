@@ -34,10 +34,12 @@
               <td>brew date</td>
               <td colspan="2">____________</td>
             </tr>
+            {{#Rezept.Brauanlage}}
             <tr>
               <td>brewing setup</td>
               <td class="value" colspan="2">{{Rezept.Brauanlage}}</td>
             </tr>
+            {{/Rezept.Brauanlage}}
             <tr>
               <td>amount</td>
               <td class="value" align="center">{{Rezept.Menge}}</td>
@@ -96,11 +98,13 @@
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/liter</td>
             </tr>
+            {{#Rezept.Restalkalitaet}}
             <tr>
               <td>residual alkalinity</td>
               <td class="value" align="center">{{Rezept.Restalkalitaet}}</td>
               <td>&deg;dH</td>
             </tr>
+            {{/Rezept.Restalkalitaet}}
             <tr>
               <td>aging time</td>
               <td class="value" align="center">{{Rezept.Reifezeit}}</td>
@@ -207,7 +211,6 @@
     </br>
     <img src="qrc:/images/wasser.svg" height="30"></br>
     {{Wasserprofil.Name}}
-    </br>
     <table style="border-spacing: 20px 0px;">
       <tr>
         <th></th>
@@ -324,14 +327,18 @@
         </td>
       </tr>
       {{/Zutaten.HatZusatzMaischen}}
+      {{#Wasser}}
       <tr>
         <td class="underline" valign="top"><strong>Strike water</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Hauptguss}}</span> liters,&uArr; <span class="value">{{Wasser.HauptgussUnten}}</span> cm, &dArr; <span class="value">{{Wasser.HauptgussOben}}</span> cm</td>
+        <td class="underline"><span class="value">{{Hauptguss}}</span> liters{{#HauptgussUnten}}, &uArr; <span class="value">{{HauptgussUnten}}</span> cm{{/HauptgussUnten}}{{#HauptgussOben}}, &dArr; <span class="value">{{HauptgussOben}}</span> cm{{/HauptgussOben}}</td>
       </tr>
+      {{/Wasser}}
+      {{#Rezept}}
       <tr>
         <td class="underline" valign="top"><strong>Mashing volume</strong></td>
-        <td class="underline"><span class="value">{{Rezept.MengeMaischen}}</span> liters,&uArr; <span class="value">{{Rezept.MengeMaischenUnten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeMaischenOben}}</span> cm</td>
+        <td class="underline"><span class="value">{{MengeMaischen}}</span> liters{{#MengeMaischenUnten}}, &uArr; <span class="value">{{MengeMaischenUnten}}</span> cm{{/MengeMaischenUnten}}{{#MengeMaischenOben}}, &dArr; <span class="value">{{MengeMaischenOben}}</span> cm{{/MengeMaischenOben}}</td>
       </tr>
+      {{/Rezept}}
       {{#Rasten}}
       <tr>
         <td class="underline" valign="top"><strong>Mashing scheme</strong></td>
@@ -464,8 +471,11 @@
             <tr>
               <td>____ liters at ____ &deg;C</td>
               <td>
-                target: <span class="value">{{Rezept.MengeKochbeginn}}</span> liters at 20&deg;C / <span class="value">{{Rezept.MengeKochbeginn100}}</span> liters at 100&deg;C,
-                &uArr; <span class="value">{{Rezept.MengeKochbeginn100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochbeginn100Oben}}</span> cm
+                {{#Rezept}}
+                Zielwert: <span class="value">{{MengeKochbeginn}}</span> liters at 20&deg;C / <span class="value">{{MengeKochbeginn100}}</span> liters at 100&deg;C
+                {{#MengeKochbeginn100Unten}}, &uArr; <span class="value">{{MengeKochbeginn100Unten}}</span> cm{{/MengeKochbeginn100Unten}}
+                {{#MengeKochbeginn100Oben}}, &dArr; <span class="value">{{MengeKochbeginn100Oben}}</span> cm{{/MengeKochbeginn100Oben}}
+                {{/Rezept}}
               </td>
             </tr>
           </table>
@@ -541,8 +551,11 @@
             <tr>
               <td>____ liters at ____ &deg;C</td>
               <td>
-                target: <span class="value">{{Rezept.MengeKochende}}</span> liters at 20&deg;C / <span class="value">{{Rezept.MengeKochende100}}</span> liters at 100&deg;C,
-                &uArr; <span class="value">{{Rezept.MengeKochende100Unten}}</span> cm, &dArr; <span class="value">{{Rezept.MengeKochende100Oben}}</span> cm
+                {{#Rezept}}
+                Zielwert: <span class="value">{{MengeKochende}}</span> liters at 20&deg;C / <span class="value">{{MengeKochende100}}</span> liters at 100&deg;C
+                {{#MengeKochende100Unten}}, &uArr; <span class="value">{{MengeKochende100Unten}}</span> cm{{/MengeKochende100Unten}}
+                {{#MengeKochende100Oben}}, &dArr; <span class="value">{{MengeKochende100Oben}}</span> cm{{/MengeKochende100Oben}}
+                {{/Rezept}}
               </td>
             </tr>
           </table>

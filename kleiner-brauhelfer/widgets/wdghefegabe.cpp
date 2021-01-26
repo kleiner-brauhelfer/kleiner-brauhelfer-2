@@ -39,7 +39,6 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
 
     ui->tbMenge->setErrorOnLimit(true);
 
-    checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
@@ -71,23 +70,27 @@ int WdgHefeGabe::menge() const
     return data(ModelHefegaben::ColMenge).toInt();
 }
 
-void WdgHefeGabe::checkEnabled(bool force)
+void WdgHefeGabe::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool enabled = status < Brauhelfer::SudStatus::Abgefuellt;
+    mEnabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (data(ModelHefegaben::ColZugegeben).toBool())
-        enabled = false;
+        mEnabled = false;
     if (gSettings->ForceEnabled)
-        enabled = true;
-    if (enabled == mEnabled && !force)
-        return;
+        mEnabled = true;
+}
 
-    mEnabled = enabled;
+void WdgHefeGabe::updateValues()
+{
+    QString hefename = name();
+
+    checkEnabled();
+
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled);
-    ui->btnAufbrauchen->setVisible(mEnabled);
-    ui->lblVorhanden->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeEmpfohlen->setVisible(mEnabled);
     ui->lblEmpfohlen->setVisible(mEnabled);
@@ -95,13 +98,6 @@ void WdgHefeGabe::checkEnabled(bool force)
     ui->tbDatum->setReadOnly(!mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
-}
-
-void WdgHefeGabe::updateValues(bool full)
-{
-    QString hefename = name();
-
-    checkEnabled(full);
 
     int rowRohstoff = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
     mValid = !mEnabled || rowRohstoff >= 0;
@@ -153,15 +149,18 @@ void WdgHefeGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
-        int benoetigt = 0;
-        for (int i = 0; i < mModel->rowCount(); ++i)
+        if (gSettings->module(Settings::ModuleLagerverwaltung))
         {
-            if (mModel->data(i, ModelHefegaben::ColName).toString() == hefename)
-                benoetigt += mModel->data(i, ModelHefegaben::ColMenge).toInt();
+            ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
+            int benoetigt = 0;
+            for (int i = 0; i < mModel->rowCount(); ++i)
+            {
+                if (mModel->data(i, ModelHefegaben::ColName).toString() == hefename)
+                    benoetigt += mModel->data(i, ModelHefegaben::ColMenge).toInt();
+            }
+            ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+            ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
         }
-        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
-        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 
     ui->btnNachOben->setEnabled(mRow > 0);
@@ -200,9 +199,11 @@ void WdgHefeGabe::on_btnZugeben_clicked()
     QDate date = ui->tbDatum->date();
     setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelHefegaben::ColZugegeben, true);
-
-    DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
-    dlg.exec();
+    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    {
+        DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
+        dlg.exec();
+    }
 }
 
 void WdgHefeGabe::on_btnLoeschen_clicked()

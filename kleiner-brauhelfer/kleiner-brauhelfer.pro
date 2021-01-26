@@ -12,8 +12,8 @@ ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
-VER_MIN = 2
-VER_PAT = 3
+VER_MIN = 3
+VER_PAT = 0
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
@@ -65,6 +65,7 @@ SOURCES += \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgimportexport.cpp \
+    dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
@@ -144,6 +145,7 @@ HEADERS += \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgimportexport.h \
+    dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrohstoffauswahl.h \
@@ -219,6 +221,7 @@ FORMS += \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgimportexport.ui \
+    dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrohstoffauswahl.ui \

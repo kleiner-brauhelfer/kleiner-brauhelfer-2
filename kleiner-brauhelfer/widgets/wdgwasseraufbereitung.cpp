@@ -32,7 +32,7 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
     pal.setColor(QPalette::Window, gSettings->colorWasser);
     setPalette(pal);
 
-    checkEnabled(true);
+    updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
@@ -43,16 +43,18 @@ WdgWasseraufbereitung::~WdgWasseraufbereitung()
     delete ui;
 }
 
-void WdgWasseraufbereitung::checkEnabled(bool force)
+void WdgWasseraufbereitung::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool enabled = status == Brauhelfer::SudStatus::Rezept;
+    mEnabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
-        enabled = true;
-    if (enabled == mEnabled && !force)
-        return;
+        mEnabled = true;
+}
 
-    mEnabled = enabled;
+void WdgWasseraufbereitung::updateValues()
+{
+    checkEnabled();
+
     ui->tbName->setEnabled(mEnabled);
     ui->btnAuswahl->setVisible(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
@@ -60,11 +62,6 @@ void WdgWasseraufbereitung::checkEnabled(bool force)
     ui->tbRestalkalitaet->setReadOnly(!mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
-}
-
-void WdgWasseraufbereitung::updateValues(bool full)
-{
-    checkEnabled(full);
 
     double menge = data(ModelWasseraufbereitung::ColMenge).toDouble();
     if (!ui->tbName->hasFocus())

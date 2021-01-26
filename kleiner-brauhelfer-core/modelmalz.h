@@ -22,7 +22,7 @@ public:
         ColpH,
         ColMaxProzent,
         ColBemerkung,
-        ColEingenschaften,
+        ColEigenschaften,
         ColAlternativen,
         ColPreis,
         ColEingelagert,

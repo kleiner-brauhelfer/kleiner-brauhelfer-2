@@ -139,7 +139,7 @@
          <number>4</number>
         </property>
         <item row="0" column="12" rowspan="2">
-         <widget class="QLabel" name="lblEinheit">
+         <widget class="QLabel" name="lblVorhandenEinheit">
           <property name="minimumSize">
            <size>
             <width>40</width>

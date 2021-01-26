@@ -44,7 +44,7 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
 
     if (!columns.empty())
     {
-        ui->tableView->cols = columns;
+        ui->tableView->setCols(columns);
         ui->tableView->build();
         ui->tableView->setDefaultContextMenu();
     }

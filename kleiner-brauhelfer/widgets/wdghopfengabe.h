@@ -21,7 +21,7 @@ public:
     void setFehlProzent(double value);
 
 public slots:
-    void updateValues(bool full = false);
+    void updateValues();
 
 private slots:
     void on_btnZutat_clicked();
@@ -39,12 +39,13 @@ private slots:
     void on_btnNachUnten_clicked();
 
 private:
-    void checkEnabled(bool force);
+    void checkEnabled();
 
 private:
     Ui::WdgHopfenGabe *ui;
     bool mEnabled;
     bool mValid;
+    double mFehlProzent;
 };
 
 #endif // WDGHOPFENGABE_H

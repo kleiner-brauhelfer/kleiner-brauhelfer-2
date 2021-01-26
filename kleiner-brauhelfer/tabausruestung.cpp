@@ -53,10 +53,10 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen [l]"));
     model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));
     table->setModel(model);
-    table->cols.append({ModelAusruestung::ColName, true, false, -1, nullptr});
-    table->cols.append({ModelAusruestung::ColTyp, true, true, 100, new ComboBoxDelegate(Typname, table)});
-    table->cols.append({ModelAusruestung::ColVermoegen, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
+    table->appendCol({ModelAusruestung::ColName, true, false, -1, nullptr});
+    table->appendCol({ModelAusruestung::ColTyp, true, true, 100, new ComboBoxDelegate(Typname, table)});
+    table->appendCol({ModelAusruestung::ColVermoegen, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
@@ -67,7 +67,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     model->setHeaderData(ModelGeraete::ColBezeichnung, Qt::Horizontal, tr("Bezeichnung"));
     model->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
     table->setModel(model);
-    table->cols.append({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
+    table->appendCol({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateGeraete").toByteArray());
@@ -77,13 +77,13 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     model->setSourceModel(bh->modelSud());
     model->setFilterKeyColumn(ModelSud::ColAnlage);
     table->setModel(model);
-    table->cols.append({ModelSud::ColSudname, true, false, 200, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
-    table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
-    table->cols.append({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});
-    table->cols.append({ModelSud::Colerg_EffektiveAusbeute, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSud::ColVerdampfungsrateIst, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
+    table->appendCol({ModelSud::ColSudname, true, false, 200, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
+    table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});
+    table->appendCol({ModelSud::Colerg_EffektiveAusbeute, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSud::ColVerdampfungsrateIst, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSude").toByteArray());
@@ -435,7 +435,7 @@ void TabAusruestung::on_btnVerdampfungMittel_clicked()
         setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfungMittel->value());
 }
 
-void TabAusruestung::on_sliderAusbeuteSude_sliderMoved(int)
+void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
 {
     updateDurchschnitt();
 }

@@ -129,78 +129,78 @@ void DlgRohstoffVorlage::setModel()
             {
             case MalzOBraMa:
                 col = model->fieldIndex("name");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
                 col = model->fieldIndex("alias_name");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Aliasname"));
                 filterColumns.append(col);
                 col = model->fieldIndex("color");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Farbe [EBC]"));
                 col = model->fieldIndex("max_in_batch");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Max. Anteil [%]"));
                 col = model->fieldIndex("notes");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 filterColumns.append(col);
                 break;
             case HopfenOBraMa:
                 col = model->fieldIndex("name");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
                 col = model->fieldIndex("category");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
                 col = model->fieldIndex("alpha");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alpha [%]"));
                 col = model->fieldIndex("aroma");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 filterColumns.append(col);
                 col = model->fieldIndex("replacement");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
                 filterColumns.append(col);
                 break;
             case HefeOBraMa:
                 col = model->fieldIndex("name");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
                 col = model->fieldIndex("category");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Kategorie"));
                 col = model->fieldIndex("sub_category");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Trocken/Flüssig"));
                 col = model->fieldIndex("notes");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 filterColumns.append(col);
                 col = model->fieldIndex("use_for");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Bierstil"));
                 filterColumns.append(col);
                 col = model->fieldIndex("replacement");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
                 filterColumns.append(col);
                 break;
             case WZutatenOBraMa:
                 col = model->fieldIndex("name");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
                 col = model->fieldIndex("category");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
                 col = model->fieldIndex("use_for");
-                table->cols.append({col, true, false, 0, nullptr});
+                table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Verwendung"));
                 filterColumns.append(col);
                 break;
@@ -251,7 +251,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             iVal = index.sibling(index.row(), header->logicalIndex(2)).data().toInt();
             if (iVal > 0)
                 mValues.insert(ModelMalz::ColMaxProzent, iVal);
-            mValues.insert(ModelMalz::ColEingenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
+            mValues.insert(ModelMalz::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
             break;
 
         case MalzOBraMa:
@@ -261,7 +261,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
             fVal = index.sibling(index.row(), header->logicalIndex(3)).data().toDouble();
             if (fVal > 0)
                 mValues.insert(ModelMalz::ColMaxProzent, qRound(fVal));
-            mValues.insert(ModelMalz::ColEingenschaften, index.sibling(index.row(), header->logicalIndex(4)).data());
+            mValues.insert(ModelMalz::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(4)).data());
             break;
 
         case Hopfen:

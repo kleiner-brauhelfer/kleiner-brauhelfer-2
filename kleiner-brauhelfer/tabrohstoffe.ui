@@ -75,7 +75,7 @@
      <property name="currentIndex">
       <number>1</number>
      </property>
-     <widget class="QWidget" name="widget_2">
+     <widget class="QWidget" name="tabMalz">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -127,7 +127,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="widget_3">
+     <widget class="QWidget" name="tabHopfen">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -179,7 +179,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="widget_4">
+     <widget class="QWidget" name="tabHefe">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -231,7 +231,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="widget_5">
+     <widget class="QWidget" name="tabZusaetze">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -283,7 +283,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="widget">
+     <widget class="QWidget" name="tabWasser">
       <property name="geometry">
        <rect>
         <x>0</x>

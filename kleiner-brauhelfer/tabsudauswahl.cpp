@@ -79,18 +79,18 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->cols.append({ModelSud::ColSudname, true, false, -1, nullptr});
-    table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
-    table->cols.append({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->cols.append({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
-    table->cols.append({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
-    table->cols.append({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
-    table->cols.append({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
-    table->cols.append({ModelSud::ColWoche, true, true, 80, nullptr});
-    table->cols.append({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
-    table->cols.append({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
+    table->appendCol({ModelSud::ColSudname, true, false, -1, nullptr});
+    table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
+    table->appendCol({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
+    table->appendCol({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
+    table->appendCol({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
+    table->appendCol({ModelSud::ColWoche, true, true, 80, nullptr});
+    table->appendCol({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
+    table->appendCol({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
     table->build();
 
     table->horizontalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -152,6 +152,16 @@ void TabSudAuswahl::restoreView(bool full)
     ui->tableSudauswahl->restoreDefaultState();
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
+}
+
+void TabSudAuswahl::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModuleBewertung))
+    {
+        bool on = gSettings->module(Settings::ModuleBewertung);
+        ui->tableSudauswahl->setCol(8, on, on);
+    }
+    updateWebView();
 }
 
 QAbstractItemModel* TabSudAuswahl::model() const

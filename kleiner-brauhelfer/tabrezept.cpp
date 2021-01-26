@@ -29,6 +29,8 @@ TabRezept::TabRezept(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabRezept)
 {
+    QPalette pal;
+
     ui->setupUi(this);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
@@ -69,8 +71,48 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMalzProzente->setPalette(gSettings->paletteErrorButton);
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
 
+    pal = ui->btnNeueMalzGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorMalz);
+    ui->btnNeueMalzGabe->setPalette(pal);
+    ui->btnMalzGabenUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeueHopfenGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHopfen);
+    ui->btnNeueHopfenGabe->setPalette(pal);
+    ui->btnHopfenGabenUebernehmen->setPalette(pal);
+    ui->btnNeueHopfenGabeGaerung->setPalette(pal);
+    ui->btnHopfenGabenUebernehmenGaerung->setPalette(pal);
+
+    pal = ui->btnNeueHefeGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHefe);
+    ui->btnNeueHefeGabe->setPalette(pal);
+    ui->btnHefeGabenUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeueZusatzGabeKochen->palette();
+    pal.setColor(QPalette::Button, gSettings->colorZusatz);
+    ui->btnNeueZusatzGabeMaischen->setPalette(pal);
+    ui->btnZusazGabenUebernehmenMaischen->setPalette(pal);
+    ui->btnNeueZusatzGabeKochen->setPalette(pal);
+    ui->btnZusazGabenUebernehmenKochen->setPalette(pal);
+    ui->btnNeueZusatzGabeGaerung->setPalette(pal);
+    ui->btnZusazGabenUebernehmenGaerung->setPalette(pal);
+
+    pal = ui->btnNeueRast->palette();
+    pal.setColor(QPalette::Button, gSettings->colorRast);
+    ui->btnNeueRast->setPalette(pal);
+    ui->btnRastenUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeueWasseraufbereitung->palette();
+    pal.setColor(QPalette::Button, gSettings->colorWasser);
+    ui->btnNeueWasseraufbereitung->setPalette(pal);
+    ui->btnWasseraufbereitungUebernehmen->setPalette(pal);
+
+    pal = ui->btnNeuerAnhang->palette();
+    pal.setColor(QPalette::Button, gSettings->colorAnhang);
+    ui->btnNeuerAnhang->setPalette(pal);
+
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
-    ui->lblCurrency->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
   #ifdef QT_CHARTS_LIB
     ui->diagramRasten->chart()->legend()->hide();
@@ -154,9 +196,9 @@ TabRezept::TabRezept(QWidget *parent) :
     model->setHeaderData(ModelTags::ColGlobal, Qt::Horizontal, tr("Global"));
     TableView *table = ui->tableTags;
     table->setModel(model);
-    table->cols.append({ModelTags::ColKey, true, false, 0, nullptr});
-    table->cols.append({ModelTags::ColValue, true, false, -1, nullptr});
-    table->cols.append({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->appendCol({ModelTags::ColKey, true, false, 0, nullptr});
+    table->appendCol({ModelTags::ColValue, true, false, -1, nullptr});
+    table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
     table->build();
 }
 
@@ -184,6 +226,42 @@ void TabRezept::restoreView(bool full)
         ui->splitter->restoreState(mDefaultSplitterState);
         ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     }
+}
+
+void TabRezept::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModuleAusruestung))
+    {
+        setVisibleModule(Settings::ModuleAusruestung,
+                         {ui->cbAnlage,
+                          ui->lblAnlage,
+                          ui->btnSudhausausbeute,
+                          ui->btnVerdampfungsrate,
+                          ui->groupAnlage});
+    }
+    if (modules.testFlag(Settings::ModuleWasseraufbereitung))
+    {
+        if (gSettings->module(Settings::ModuleWasseraufbereitung))
+            ui->tabMitte->addTab(ui->tabWasseraufbereitung, tr("Wasseraufbereitung"));
+        else
+            ui->tabMitte->removeTab(ui->tabMitte->indexOf(ui->tabWasseraufbereitung));
+    }
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        setVisibleModule(Settings::ModulePreiskalkulation,
+                         {ui->tbKosten,
+                          ui->lblKosten,
+                          ui->lblKostenEinheit,
+                          ui->lineKosten});
+    }
+    if (modules.testFlag(Settings::ModuleLagerverwaltung))
+    {
+        malzGaben_modified();
+        hopfenGaben_modified();
+        hefeGaben_modified();
+        weitereZutatenGaben_modified();
+    }
+    updateValues();
 }
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
@@ -409,7 +487,7 @@ void TabRezept::checkRohstoffe()
 
 void TabRezept::updateValues()
 {
-    double fVal;
+    double fVal, diff;
     if (!isTabActive())
         return;
 
@@ -431,15 +509,49 @@ void TabRezept::updateValues()
         ui->cbKategorie->setCurrentIndex(-1);
         ui->cbKategorie->setCurrentText(bh->sud()->getKategorie());
     }
-    double diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
-    ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
-    diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
-    ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+
+    // ModuleAusruestung
+    if (!ui->cbAnlage->hasFocus())
+        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
+    if (ui->cbAnlage->currentIndex() == -1 || !gSettings->module(Settings::ModuleAusruestung))
+    {
+        ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
+        ui->groupAnlage->setVisible(false);
+        ui->btnSudhausausbeute->setVisible(false);
+        ui->btnVerdampfungsrate->setVisible(false);
+    }
+    else
+    {
+        ui->cbAnlage->setError(false);
+        ui->groupAnlage->setVisible(true);
+        diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
+        ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
+        diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
+        ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+        ui->lblAnlageName->setText(bh->sud()->getAnlage());
+        ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
+        ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
+        ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
+        ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
+        ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
+        ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
+        ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
+        ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
+        ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
+        ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
+    }
+
+    // ModuleWasseraufbereitung
     diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble();
     ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
     ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
     ui->tbPhMaischeSoll->setEnabled(ui->tbPhMalz->value() > 0);
+    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
+    if (!ui->cbWasserProfil->hasFocus())
+        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
+    ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
+    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -456,14 +568,7 @@ void TabRezept::updateValues()
         ui->lblBittere->setText(tr("moderat herb"));
     else
         ui->lblBittere->setText(tr("sehr herb"));
-    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
-    if (!ui->cbAnlage->hasFocus())
-        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
-    ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
-    if (!ui->cbWasserProfil->hasFocus())
-        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
-    ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
-    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
+
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
     if (ui->tbHGF->value() != 0.0)
@@ -478,17 +583,6 @@ void TabRezept::updateValues()
         ui->lblWasserHGF->setVisible(false);
         ui->lblWasserHGFEinheit->setVisible(false);
     }
-    ui->lblAnlageName->setText(bh->sud()->getAnlage());
-    ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
-    ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
-    ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
-    ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
-    ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
-    ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
-    ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
-    ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
-    ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
-    ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
 
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
     Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
@@ -1162,7 +1256,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutZusaetzeMaischen->count() != nMaischen)
         delete ui->layoutZusaetzeMaischen->itemAt(ui->layoutZusaetzeMaischen->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeMaischen->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget())->updateValues();
 
     nLayout = ui->layoutZusaetzeKochen->count();
     while (nLayout < nKochen)
@@ -1170,7 +1264,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutZusaetzeKochen->count() != nKochen)
         delete ui->layoutZusaetzeKochen->itemAt(ui->layoutZusaetzeKochen->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeKochen->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget())->updateValues();
 
     nLayout = ui->layoutZusaetzeGaerung->count();
     while (nLayout < nGaerung)
@@ -1178,7 +1272,7 @@ void TabRezept::weitereZutatenGaben_modified()
     while (ui->layoutZusaetzeGaerung->count() != nGaerung)
         delete ui->layoutZusaetzeGaerung->itemAt(ui->layoutZusaetzeGaerung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeGaerung->count(); ++i)
-        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget())->updateValues();
 }
 
 void TabRezept::wasseraufbereitung_modified()
@@ -1190,7 +1284,7 @@ void TabRezept::wasseraufbereitung_modified()
     while (ui->layoutWasseraufbereitung->count() != nModel)
         delete ui->layoutWasseraufbereitung->itemAt(ui->layoutWasseraufbereitung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutWasseraufbereitung->count(); ++i)
-        static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues(true);
+        static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues();
 }
 
 void TabRezept::on_btnNeueWasseraufbereitung_clicked()

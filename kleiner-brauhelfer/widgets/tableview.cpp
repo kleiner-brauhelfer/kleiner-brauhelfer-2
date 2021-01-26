@@ -18,7 +18,7 @@ void TableView::build()
     int visualIndex = 0;
     for (int c = 0; c < model()->columnCount(); ++c)
         setColumnHidden(c, true);
-    for (const auto& col : cols)
+    for (const auto& col : mCols)
     {
         setColumnHidden(col.col, !col.visible);
         if (col.itemDelegate)
@@ -42,11 +42,11 @@ bool TableView::restoreState(const QByteArray &state)
     bool ret = horizontalHeader()->restoreState(state);
     if (!ret)
         return false;
-    if (!cols.empty())
+    if (!mCols.empty())
     {
         QList<int> mustHave;
         QList<int> canHave;
-        for (const ColumnDefinition& col : cols)
+        for (const ColumnDefinition& col : mCols)
         {
             canHave.append(col.col);
             if (!col.canHide)
@@ -80,7 +80,7 @@ bool TableView::restoreState(const QByteArray &state)
 void TableView::setDefaultContextMenu()
 {
     bool addMenu = false;
-    for (const auto& col : cols)
+    for (const auto& col : mCols)
     {
         if (col.canHide)
         {
@@ -101,7 +101,7 @@ void TableView::setDefaultContextMenu()
 void TableView::buildContextMenu(QMenu& menu) const
 {
     QAction *action;
-    for (const auto& col : cols)
+    for (const auto& col : mCols)
     {
         if (col.canHide)
         {
@@ -117,6 +117,25 @@ void TableView::buildContextMenu(QMenu& menu) const
     action = new QAction(tr("Zurücksetzen"), &menu);
     connect(action, SIGNAL(triggered()), this, SLOT(restoreDefaultState()));
     menu.addAction(action);
+}
+
+void TableView::appendCol(const ColumnDefinition& col)
+{
+    mCols.append(col);
+}
+
+void TableView::setCols(const QList<ColumnDefinition>& cols)
+{
+    mCols = cols;
+}
+
+void TableView::setCol(int idx, bool visible, bool canHide)
+{
+    if (idx < 0 || idx >= mCols.count())
+        return;
+    mCols[idx].visible = visible;
+    mCols[idx].canHide = canHide;
+    setColumnHidden(mCols[idx].col, !mCols[idx].visible);
 }
 
 void TableView::setColumnVisible(bool visible)

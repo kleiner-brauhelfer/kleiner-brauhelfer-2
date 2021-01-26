@@ -421,7 +421,7 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="label_16">
+            <widget class="QLabel" name="lblAnlage">
              <property name="text">
               <string>Anlage</string>
              </property>
@@ -2387,7 +2387,7 @@
              </widget>
             </item>
             <item row="15" column="0" colspan="4">
-             <widget class="Line" name="line_4">
+             <widget class="Line" name="lineKosten">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -2401,7 +2401,7 @@
              </widget>
             </item>
             <item row="16" column="3">
-             <widget class="QLabel" name="lblCurrency"/>
+             <widget class="QLabel" name="lblKostenEinheit"/>
             </item>
             <item row="8" column="0" colspan="4">
              <widget class="QWidget" name="wdgSWWZGaerung" native="true">
@@ -2599,7 +2599,7 @@
              </widget>
             </item>
             <item row="16" column="0">
-             <widget class="QLabel" name="label_46">
+             <widget class="QLabel" name="lblKosten">
               <property name="text">
                <string>Gesamtkosten</string>
               </property>

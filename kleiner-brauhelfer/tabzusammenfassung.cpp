@@ -31,6 +31,12 @@ void TabZusammenfassung::onTabActivated()
     updateWebView();
 }
 
+void TabZusammenfassung::modulesChanged(Settings::Modules modules)
+{
+    Q_UNUSED(modules)
+    updateWebView();
+}
+
 void TabZusammenfassung::updateWebView()
 {
     if (!isTabActive())

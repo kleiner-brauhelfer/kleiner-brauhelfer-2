@@ -233,7 +233,7 @@
          </spacer>
         </item>
         <item row="0" column="10">
-         <widget class="QLabel" name="lblEinheit">
+         <widget class="QLabel" name="lblVorhandenEinheit">
           <property name="minimumSize">
            <size>
             <width>40</width>

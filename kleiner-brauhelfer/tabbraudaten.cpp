@@ -421,8 +421,11 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     bh->sud()->setBraudatum(dt);
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
 
-    DlgRohstoffeAbziehen dlg(true, this);
-    dlg.exec();
+    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    {
+        DlgRohstoffeAbziehen dlg(true, this);
+        dlg.exec();
+    }
 
     if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
     {

@@ -618,11 +618,14 @@ void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
         if (zugegeben)
         {
             model->setData(row, ModelHefegaben::ColZugegeben, false);
-            DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe,
-                                     model->data(row, ModelHefegaben::ColName).toString(),
-                                     model->data(row, ModelHefegaben::ColMenge).toDouble(),
-                                     this);
-            dlg.exec();
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            {
+                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe,
+                                         model->data(row, ModelHefegaben::ColName).toString(),
+                                         model->data(row, ModelHefegaben::ColMenge).toDouble(),
+                                         this);
+                dlg.exec();
+            }
         }
     }
 }
@@ -637,11 +640,14 @@ void MainWindow::on_actionWeitereZutaten_triggered()
         if (zugegeben)
         {
             model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
-            DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Zusatz,
-                                     model->data(row, ModelWeitereZutatenGaben::ColName).toString(),
-                                     model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
-                                     this);
-            dlg.exec();
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            {
+                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Zusatz,
+                                         model->data(row, ModelWeitereZutatenGaben::ColName).toString(),
+                                         model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                         this);
+                dlg.exec();
+            }
         }
     }
 }

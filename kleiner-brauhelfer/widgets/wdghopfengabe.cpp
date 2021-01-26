@@ -78,10 +78,10 @@ void WdgHopfenGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled);
-    ui->btnAufbrauchen->setVisible(mEnabled);
-    ui->lblVorhanden->setVisible(mEnabled);
-    ui->lblEinheit->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeProLiter->setReadOnly(!mEnabled);
     ui->tbMengeProzent->setReadOnly(!mEnabled);
@@ -141,21 +141,24 @@ void WdgHopfenGabe::updateValues()
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toDouble());
-        double benoetigt = 0;
-        for (int i = 0; i < mModel->rowCount(); ++i)
+        if (gSettings->module(Settings::ModuleLagerverwaltung))
         {
-            if (mModel->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
-                benoetigt += mModel->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+            ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toDouble());
+            double benoetigt = 0;
+            for (int i = 0; i < mModel->rowCount(); ++i)
+            {
+                if (mModel->data(i, ModelHopfengaben::ColName).toString() == hopfenname)
+                    benoetigt += mModel->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+            }
+            ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
+            for (int i = 0; i < model->rowCount(); ++i)
+            {
+                Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt());
+                if (typ == Brauhelfer::ZusatzTyp::Hopfen && model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
+                    benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
+            }
+            ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         }
-        ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
-        for (int i = 0; i < model->rowCount(); ++i)
-        {
-            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(i, ModelWeitereZutatenGaben::ColTyp).toInt());
-            if (typ == Brauhelfer::ZusatzTyp::Hopfen && model->data(i, ModelWeitereZutatenGaben::ColName).toString() == hopfenname)
-                benoetigt += model->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-        }
-        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
         ui->btnMengeKorrektur->setVisible(mFehlProzent != 0.0);
         ui->btnAnteilKorrektur->setVisible(mFehlProzent != 0.0);
@@ -203,7 +206,8 @@ void WdgHopfenGabe::updateValues()
             ui->tbMengeProLiter->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
             ui->tbAnteilProzent->setReadOnly(false);
-            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+                ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }
     }
 

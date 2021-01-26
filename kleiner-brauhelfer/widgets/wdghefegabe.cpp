@@ -88,9 +88,9 @@ void WdgHefeGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled);
-    ui->btnAufbrauchen->setVisible(mEnabled);
-    ui->lblVorhanden->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeEmpfohlen->setVisible(mEnabled);
     ui->lblEmpfohlen->setVisible(mEnabled);
@@ -149,15 +149,18 @@ void WdgHefeGabe::updateValues()
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
-        int benoetigt = 0;
-        for (int i = 0; i < mModel->rowCount(); ++i)
+        if (gSettings->module(Settings::ModuleLagerverwaltung))
         {
-            if (mModel->data(i, ModelHefegaben::ColName).toString() == hefename)
-                benoetigt += mModel->data(i, ModelHefegaben::ColMenge).toInt();
+            ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
+            int benoetigt = 0;
+            for (int i = 0; i < mModel->rowCount(); ++i)
+            {
+                if (mModel->data(i, ModelHefegaben::ColName).toString() == hefename)
+                    benoetigt += mModel->data(i, ModelHefegaben::ColMenge).toInt();
+            }
+            ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
+            ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
         }
-        ui->tbVorhanden->setError(benoetigt > ui->tbVorhanden->value());
-        ui->btnAufbrauchen->setVisible(ui->tbMenge->value() != ui->tbVorhanden->value());
     }
 
     ui->btnNachOben->setEnabled(mRow > 0);
@@ -196,9 +199,11 @@ void WdgHefeGabe::on_btnZugeben_clicked()
     QDate date = ui->tbDatum->date();
     setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelHefegaben::ColZugegeben, true);
-
-    DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
-    dlg.exec();
+    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    {
+        DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
+        dlg.exec();
+    }
 }
 
 void WdgHefeGabe::on_btnLoeschen_clicked()

@@ -72,61 +72,61 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelMalzschuettung());
         model->setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-        ui->tableViewItem->cols.append({ModelMalzschuettung::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelMalzschuettung::ColName, true, false, -1, nullptr});
         break;
     case Hopfen:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelHopfengaben());
         model->setFilterKeyColumn(ModelHopfengaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelHopfengaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelHopfengaben::ColName, true, false, -1, nullptr});
         break;
     case Hefe:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelHefegaben());
         model->setFilterKeyColumn(ModelHefegaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelHefegaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelHefegaben::ColName, true, false, -1, nullptr});
         break;
     case WZutaten:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     case Maischplan:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelRasten());
         model->setFilterKeyColumn(ModelRasten::ColSudID);
-        ui->tableViewItem->cols.append({ModelRasten::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelRasten::ColName, true, false, -1, nullptr});
         break;
     case Wasseraufbereitung:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelWasseraufbereitung());
         model->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
-        ui->tableViewItem->cols.append({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
         break;
     case WZutatenMaischen:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Maischen, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     case WZutatenKochen:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Kochen, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     case WZutatenGaerung:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Gaerung, Brauhelfer::ZusatzTyp::Hopfen, true, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     case HopfenGaerung:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Gaerung, Brauhelfer::ZusatzTyp::Hopfen, false, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-        ui->tableViewItem->cols.append({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
     }
     if (model)
@@ -139,8 +139,8 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelSud());
     ui->tableViewSud->setModel(model);
-    ui->tableViewSud->cols.append({ModelSud::ColSudname, true, false, -1, nullptr});
-    ui->tableViewSud->cols.append({ModelSud::ColSudnummer, true, false, 80, new SpinBoxDelegate(ui->tableViewSud)});
+    ui->tableViewSud->appendCol({ModelSud::ColSudname, true, false, -1, nullptr});
+    ui->tableViewSud->appendCol({ModelSud::ColSudnummer, true, false, 80, new SpinBoxDelegate(ui->tableViewSud)});
     ui->tableViewSud->build();
     connect(ui->tableViewSud->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
             this, SLOT(tableViewSud_selectionChanged()));

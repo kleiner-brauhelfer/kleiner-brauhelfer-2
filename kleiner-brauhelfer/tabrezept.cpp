@@ -196,9 +196,9 @@ TabRezept::TabRezept(QWidget *parent) :
     model->setHeaderData(ModelTags::ColGlobal, Qt::Horizontal, tr("Global"));
     TableView *table = ui->tableTags;
     table->setModel(model);
-    table->cols.append({ModelTags::ColKey, true, false, 0, nullptr});
-    table->cols.append({ModelTags::ColValue, true, false, -1, nullptr});
-    table->cols.append({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->appendCol({ModelTags::ColKey, true, false, 0, nullptr});
+    table->appendCol({ModelTags::ColValue, true, false, -1, nullptr});
+    table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
     table->build();
 }
 
@@ -253,6 +253,13 @@ void TabRezept::modulesChanged(Settings::Modules modules)
                           ui->lblKosten,
                           ui->lblKostenEinheit,
                           ui->lineKosten});
+    }
+    if (modules.testFlag(Settings::ModuleLagerverwaltung))
+    {
+        malzGaben_modified();
+        hopfenGaben_modified();
+        hefeGaben_modified();
+        weitereZutatenGaben_modified();
     }
     updateValues();
 }

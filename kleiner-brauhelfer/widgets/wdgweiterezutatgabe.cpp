@@ -92,10 +92,10 @@ void WdgWeitereZutatGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled);
-    ui->btnAufbrauchen->setVisible(mEnabled);
-    ui->lblVorhanden->setVisible(mEnabled);
-    ui->lblEinheit2->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->cbEntnahme->setEnabled(mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeTotal->setReadOnly(!mEnabled);
@@ -132,7 +132,7 @@ void WdgWeitereZutatGabe::updateValues()
     {
         QString str = TabRohstoffe::Einheiten[static_cast<int>(einheit)];
         ui->lblEinheit->setText(str);
-        ui->lblEinheit2->setText(str);
+        ui->lblVorhandenEinheit->setText(str);
         switch (einheit)
         {
         case Brauhelfer::Einheit::Kg:
@@ -249,39 +249,44 @@ void WdgWeitereZutatGabe::updateValues()
 
     if (mEnabled)
     {
-        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
-        else
-            ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
-        double benoetigt = 0.0;
-        for (int i = 0; i < mModel->rowCount(); ++i)
+        if (gSettings->module(Settings::ModuleLagerverwaltung))
         {
-            if (mModel->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
-                benoetigt += mModel->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-        }
-        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-        {
-            ProxyModel* model = bh->sud()->modelHopfengaben();
-            for (int i = 0; i < model->rowCount(); ++i)
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+                ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
+            else
+                ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
+            double benoetigt = 0.0;
+            for (int i = 0; i < mModel->rowCount(); ++i)
             {
-                if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
-                    benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+                if (mModel->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
+                    benoetigt += mModel->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
             }
+            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+            {
+                ProxyModel* model = bh->sud()->modelHopfengaben();
+                for (int i = 0; i < model->rowCount(); ++i)
+                {
+                    if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
+                        benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+                }
+            }
+            if (einheit == Brauhelfer::Einheit::Kg || einheit == Brauhelfer::Einheit::l)
+                benoetigt /= 1000;
+            else if (einheit == Brauhelfer::Einheit::mg)
+                benoetigt *= 1000;
+            ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         }
-        if (einheit == Brauhelfer::Einheit::Kg || einheit == Brauhelfer::Einheit::l)
-            benoetigt /= 1000;
-        else if (einheit == Brauhelfer::Einheit::mg)
-            benoetigt *= 1000;
-        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
-
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (zugabestatus)
         {
         case Brauhelfer::ZusatzStatus::NichtZugegeben:
-            ui->tbVorhanden->setVisible(true);
-            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
-            ui->lblVorhanden->setVisible(true);
-            ui->lblEinheit2->setVisible(true);
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            {
+                ui->tbVorhanden->setVisible(true);
+                ui->lblVorhanden->setVisible(true);
+                ui->lblVorhandenEinheit->setVisible(true);
+                ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
+            }
             ui->btnLoeschen->setVisible(true);
             ui->btnNachOben->setVisible(true);
             ui->btnNachUnten->setVisible(true);
@@ -298,7 +303,7 @@ void WdgWeitereZutatGabe::updateValues()
             ui->tbVorhanden->setVisible(false);
             ui->btnAufbrauchen->setVisible(false);
             ui->lblVorhanden->setVisible(false);
-            ui->lblEinheit2->setVisible(false);
+            ui->lblVorhandenEinheit->setVisible(false);
             ui->btnLoeschen->setVisible(false);
             ui->btnNachOben->setVisible(false);
             ui->btnNachUnten->setVisible(false);
@@ -324,7 +329,7 @@ void WdgWeitereZutatGabe::updateValues()
             ui->tbVorhanden->setVisible(false);
             ui->btnAufbrauchen->setVisible(false);
             ui->lblVorhanden->setVisible(false);
-            ui->lblEinheit2->setVisible(false);
+            ui->lblVorhandenEinheit->setVisible(false);
             ui->btnLoeschen->setVisible(false);
             ui->btnNachOben->setVisible(false);
             ui->btnNachUnten->setVisible(false);
@@ -342,10 +347,13 @@ void WdgWeitereZutatGabe::updateValues()
 
     if (gSettings->ForceEnabled)
     {
-        ui->tbVorhanden->setVisible(true);
-        ui->btnAufbrauchen->setVisible(true);
-        ui->lblVorhanden->setVisible(true);
-        ui->lblEinheit2->setVisible(true);
+        if (gSettings->module(Settings::ModuleLagerverwaltung))
+        {
+            ui->tbVorhanden->setVisible(true);
+            ui->btnAufbrauchen->setVisible(true);
+            ui->lblVorhanden->setVisible(true);
+            ui->lblVorhandenEinheit->setVisible(true);
+        }
         ui->btnLoeschen->setVisible(true);
         ui->tbZugabeNach->setReadOnly(false);
         ui->tbDatumVon->setReadOnly(false);
@@ -449,14 +457,16 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     QDate date = ui->tbDatumVon->date();
     setData(ModelWeitereZutatenGaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
-
-    Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
-    Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
-    DlgRohstoffeAbziehen dlg(true, typ,
-                             data(ModelWeitereZutatenGaben::ColName).toString(),
-                             data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
-                             this);
-    dlg.exec();
+    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    {
+        Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
+        Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
+        DlgRohstoffeAbziehen dlg(true, typ,
+                                 data(ModelWeitereZutatenGaben::ColName).toString(),
+                                 data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                 this);
+        dlg.exec();
+    }
 }
 
 void WdgWeitereZutatGabe::on_cbEntnahme_clicked(bool checked)

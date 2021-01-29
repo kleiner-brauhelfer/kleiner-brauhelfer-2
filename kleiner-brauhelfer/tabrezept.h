@@ -72,7 +72,6 @@ private slots:
     void on_cbKategorie_currentIndexChanged(const QString &value);
     void on_btnKategorienVerwalten_clicked();
     void on_cbAnlage_currentIndexChanged(const QString &value);
-    void on_tbKommentar_textChanged();
     void on_btnSudhausausbeute_clicked();
     void on_btnVerdampfungsrate_clicked();
     void on_cbWasserProfil_currentIndexChanged(const QString &value);

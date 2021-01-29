@@ -266,9 +266,16 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
 {
     if (old == ui->tbKommentar)
+    {
+        QString kommentar = ui->tbKommentar->toPlainText().replace("<br>", "\n");
+        if (kommentar != bh->sud()->getKommentar())
+            bh->sud()->setKommentar(kommentar);
         ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
+    }
     if (now == ui->tbKommentar)
+    {
         ui->tbKommentar->setPlainText(bh->sud()->getKommentar());
+    }
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -1410,16 +1417,6 @@ void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
         bh->sud()->setAnlage(value);
-}
-
-void TabRezept::on_tbKommentar_textChanged()
-{
-    if (ui->tbKommentar->hasFocus())
-    {
-        QString kommentar = ui->tbKommentar->toPlainText().replace("<br>", "\n");
-        if (kommentar != bh->sud()->getKommentar())
-            bh->sud()->setKommentar(kommentar);
-    }
 }
 
 void TabRezept::on_btnSudhausausbeute_clicked()

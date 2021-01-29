@@ -346,7 +346,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         values[ModelHopfengaben::ColZeit] = toDouble(root["Kochzeit_Wuerze"]);
         values[ModelHopfengaben::ColAlpha] = toDouble(root[QString("Hopfen_VWH_%1_alpha").arg(i)]);
         values[ModelHopfengaben::ColPellets] = 1;
-        values[ModelHopfengaben::ColVorderwuerze] = 1;
+        values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Vorderwuerze);
         bh->modelHopfengaben()->append(values);
     }
     for (int i = 1; i < findMax(root, "Hopfen_%%_Sorte"); ++i)
@@ -583,7 +583,8 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
                 values[ModelHopfengaben::ColZeit] = n.firstChildElement("TIME").text().toDouble();
                 values[ModelHopfengaben::ColAlpha] = n.firstChildElement("ALPHA").text().toDouble();
                 values[ModelHopfengaben::ColPellets] = n.firstChildElement("FORM").text() == "Pellet";
-                values[ModelHopfengaben::ColVorderwuerze] = use == "First Wort";
+                if (use == "First Wort")
+                    values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Vorderwuerze);
                 bh->modelHopfengaben()->append(values);
             }
         }
@@ -932,7 +933,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        if (model.data(row, ModelHopfengaben::ColVorderwuerze).toBool())
+        if (static_cast<Brauhelfer::HopfenZeitpunkt>(model.data(row, ModelHopfengaben::ColZeitpunkt).toInt()) == Brauhelfer::HopfenZeitpunkt::Vorderwuerze)
         {
             root[QString("Hopfen_VWH_%1_Sorte").arg(n)] = model.data(row, ModelHopfengaben::ColName).toString();
             root[QString("Hopfen_VWH_%1_Menge").arg(n)] = QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1);
@@ -943,7 +944,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     n = 1;
     for (int row = 0; row < model.rowCount(); ++row)
     {
-        if (!model.data(row, ModelHopfengaben::ColVorderwuerze).toBool())
+        if (static_cast<Brauhelfer::HopfenZeitpunkt>(model.data(row, ModelHopfengaben::ColZeitpunkt).toInt()) != Brauhelfer::HopfenZeitpunkt::Vorderwuerze)
         {
             root[QString("Hopfen_%1_Sorte").arg(n)] = model.data(row, ModelHopfengaben::ColName).toString();
             root[QString("Hopfen_%1_Menge").arg(n)] = QString::number(model.data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1);
@@ -1235,7 +1236,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("USE");
-        text = doc.createTextNode(model.data(row, ModelHopfengaben::ColVorderwuerze).toBool() ? "First Wort" : "Boil");
+        text = doc.createTextNode(static_cast<Brauhelfer::HopfenZeitpunkt>(model.data(row, ModelHopfengaben::ColZeitpunkt).toInt()) == Brauhelfer::HopfenZeitpunkt::Vorderwuerze ? "First Wort" : "Boil");
         element.appendChild(text);
         Anteil.appendChild(element);
 

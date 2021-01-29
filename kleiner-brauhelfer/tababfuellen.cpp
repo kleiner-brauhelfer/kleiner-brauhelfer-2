@@ -6,7 +6,6 @@
 #include "settings.h"
 #include "templatetags.h"
 #include "dialogs/dlgrestextrakt.h"
-#include "dialogs/dlgsudteilen.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -171,7 +170,6 @@ void TabAbfuellen::checkEnabled()
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
     ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
-    ui->btnSudTeilen->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
 }
 
 void TabAbfuellen::updateValues()
@@ -356,13 +354,6 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
                                 {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
     if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
         bh->sud()->modelNachgaerverlauf()->append(values);
-}
-
-void TabAbfuellen::on_btnSudTeilen_clicked()
-{
-    DlgSudTeilen dlg(bh->sud()->getSudname(), bh->sud()->getMengeIst(), this);
-    if (dlg.exec() == QDialog::Accepted)
-        bh->sudTeilen(bh->sud()->id(), dlg.nameTeil1(), dlg.nameTeil2(), dlg.prozent());
 }
 
 void TabAbfuellen::on_btnSudVerbraucht_clicked()

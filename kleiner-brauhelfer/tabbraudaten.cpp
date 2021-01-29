@@ -11,7 +11,6 @@
 #include "model/comboboxdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgvolumen.h"
-#include "dialogs/dlgsudteilen.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
 extern Brauhelfer* bh;
@@ -211,7 +210,6 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
-    ui->btnSudTeilen->setEnabled(status != Brauhelfer::SudStatus::Abgefuellt && status != Brauhelfer::SudStatus::Verbraucht && !gSettings->ForceEnabled);
 }
 
 void TabBraudaten::updateValues()
@@ -451,11 +449,4 @@ void TabBraudaten::on_btnSudGebraut_clicked()
                                     {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
         bh->sud()->modelHauptgaerverlauf()->append(values);
     }
-}
-
-void TabBraudaten::on_btnSudTeilen_clicked()
-{
-    DlgSudTeilen dlg(bh->sud()->getSudname(), bh->sud()->getMengeIst(), this);
-    if (dlg.exec() == QDialog::Accepted)
-        bh->sudTeilen(bh->sud()->id(), dlg.nameTeil1(), dlg.nameTeil2(), dlg.prozent());
 }

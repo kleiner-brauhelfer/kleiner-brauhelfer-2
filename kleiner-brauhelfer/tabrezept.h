@@ -3,6 +3,7 @@
 
 #include "tababstract.h"
 #include <QGraphicsItem>
+#include "brauhelfer.h"
 
 namespace Ui {
 class TabRezept;
@@ -75,13 +76,14 @@ private slots:
     void on_btnSudhausausbeute_clicked();
     void on_btnVerdampfungsrate_clicked();
     void on_cbWasserProfil_currentIndexChanged(const QString &value);
-    void on_btnRestalkalitaet_clicked();
 
     void on_btnTagNeu_clicked();
+    void on_btnTagUebernehmen_clicked();
     void on_btnTagLoeschen_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
+    int checkRohstoffeDialog(Brauhelfer::RohstoffTyp typ, const QString &name);
     void checkRohstoffe();
     void updateGlas();
     void updateAnlageModel();

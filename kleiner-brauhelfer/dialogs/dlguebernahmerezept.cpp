@@ -128,6 +128,13 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
         break;
+    case Tags:
+        model = new ProxyModel(this);
+        model->setSourceModel(bh->modelTags());
+        model->setFilterKeyColumn(ModelTags::ColSudID);
+        ui->tableViewItem->appendCol({ModelTags::ColKey, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelTags::ColValue, true, false, -1, nullptr});
+        break;
     }
     if (model)
     {

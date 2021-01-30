@@ -2275,15 +2275,22 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="1" column="0">
+           <item row="2" column="0">
             <widget class="QLabel" name="lblDurchschnittIgnorieren">
              <property name="text">
               <string>Sud für Durchschnittsberechnung ignorieren</string>
              </property>
             </widget>
            </item>
+           <item row="5" column="0" colspan="8">
+            <widget class="Line" name="lineDurchschnittIgnorieren">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="3">
-            <widget class="QLabel" name="label_78">
+            <widget class="QLabel" name="lblNebenkostenSpacer">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -2308,7 +2315,7 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="4" column="0">
             <spacer name="horizontalSpacer_8">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -2321,7 +2328,7 @@
              </property>
             </spacer>
            </item>
-           <item row="1" column="1">
+           <item row="2" column="1">
             <widget class="QCheckBox" name="cbDurchschnittIgnorieren">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der einzelne &lt;span style=&quot; font-weight:600;&quot;&gt;Sud für Durschnittsberechnungen&lt;/span&gt; ignoriert werden.&lt;/p&gt;&lt;p&gt;Diese Funktion wird genutzt, wenn der Sud stark von den bisherigen Suden abweicht und die Durchschnittsberechnung negativ beeinflussen würde. Ist dem nicht der Fall, sollte diese Funktion ignoriert werden.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; ist die Durchschnittsberechung möglich sowie Filtermöglichkeiten für die Sude vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -2348,7 +2355,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="4" rowspan="2">
+           <item row="0" column="4">
             <widget class="Line" name="lineKosten">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -2390,6 +2397,13 @@
              </property>
             </widget>
            </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="1">
             <widget class="DoubleSpinBoxSud" name="tbNebenkosten">
              <property name="minimumSize">
@@ -2418,7 +2432,7 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="5">
+           <item row="4" column="5">
             <spacer name="horizontalSpacer_4">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -2431,13 +2445,23 @@
              </property>
             </spacer>
            </item>
-           <item row="2" column="0" colspan="8">
+           <item row="7" column="0" colspan="8">
+            <widget class="QTextEdit" name="tbBemerkung"/>
+           </item>
+           <item row="3" column="0" colspan="8">
             <widget class="QLabel" name="lblDurchschnittWarnung">
              <property name="text">
               <string>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</string>
              </property>
              <property name="indent">
               <number>9</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="8">
+            <widget class="Line" name="lineKosten2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>

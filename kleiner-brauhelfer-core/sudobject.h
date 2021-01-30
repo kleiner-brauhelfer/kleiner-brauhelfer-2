@@ -80,6 +80,9 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, SWKochbeginn, toDouble())
     Q_PROPERTY_SUD(double, VerschneidungAbfuellen, toDouble())
     Q_PROPERTY_SUD(double, TemperaturKarbonisierung, toDouble())
+    Q_PROPERTY_SUD(QString, BemerkungBrauen, toString())
+    Q_PROPERTY_SUD(QString, BemerkungAbfuellen, toString())
+    Q_PROPERTY_SUD(QString, BemerkungGaerung, toString())
     // virtual fields in table Sud
     Q_PROPERTY_SUD_READONLY(double, MengeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())

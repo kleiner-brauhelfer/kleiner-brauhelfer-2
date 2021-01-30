@@ -71,6 +71,9 @@ public:
         ColSWKochbeginn,
         ColVerschneidungAbfuellen,
         ColTemperaturKarbonisierung,
+        ColBemerkungBrauen,
+        ColBemerkungAbfuellen,
+        ColBemerkungGaerung,
         // virtual
         ColDeleted,
         ColMengeSoll,

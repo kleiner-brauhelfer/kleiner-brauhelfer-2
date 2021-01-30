@@ -105,7 +105,9 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
                           ui->tbNebenkosten,
                           ui->lblNebenkosten,
                           ui->lblNebenkostenEinheit,
-                          ui->lineKosten});
+                          ui->lblNebenkostenSpacer,
+                          ui->lineKosten,
+                          ui->lineKosten2});
     }
     if (modules.testFlag(Settings::ModuleSpeise))
     {
@@ -125,7 +127,29 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 {
-    Q_UNUSED(old)
+    if (old == ui->tbBemerkungAbfuellen)
+    {
+        QString bemerkung = ui->tbBemerkungAbfuellen->toPlainText().replace("<br>", "\n");
+        if (bemerkung != bh->sud()->getBemerkungAbfuellen())
+            bh->sud()->setBemerkungAbfuellen(bemerkung);
+        ui->tbBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen().replace("\n", "<br>"));
+    }
+    if (now == ui->tbBemerkungAbfuellen)
+    {
+        ui->tbBemerkungAbfuellen->setPlainText(bh->sud()->getBemerkungAbfuellen());
+    }
+    if (old == ui->tbBemerkungGaerung)
+    {
+        QString bemerkung = ui->tbBemerkungGaerung->toPlainText().replace("<br>", "\n");
+        if (bemerkung != bh->sud()->getBemerkungGaerung())
+            bh->sud()->setBemerkungGaerung(bemerkung);
+        ui->tbBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung().replace("\n", "<br>"));
+    }
+    if (now == ui->tbBemerkungGaerung)
+    {
+        ui->tbBemerkungGaerung->setPlainText(bh->sud()->getBemerkungGaerung());
+    }
+
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -237,6 +261,11 @@ void TabAbfuellen::updateValues()
     ui->lblKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesungEinheit->setVisible(hasZuckerLoesung);
+
+    if (!ui->tbBemerkungAbfuellen->hasFocus())
+        ui->tbBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen().replace("\n", "<br>"));
+    if (!ui->tbBemerkungGaerung->hasFocus())
+        ui->tbBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung().replace("\n", "<br>"));
 
     mTimerWebViewUpdate.start(200);
 }

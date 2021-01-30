@@ -105,15 +105,15 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     proxyModel->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     table->setModel(proxyModel);
-    table->cols.append({ModelSud::ColSudname, true, false, 300, nullptr});
-    table->cols.append({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
-    table->cols.append({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->cols.append({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, table)});
+    table->appendCol({ModelSud::ColSudname, true, false, 300, nullptr});
+    table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, table)});
     ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
     ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
-        table->cols.append({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table)});
+        table->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table)});
         ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);

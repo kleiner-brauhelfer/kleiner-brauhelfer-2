@@ -110,8 +110,6 @@ public:
         ColPhMalz,
         ColPhMaische,
         ColPhMaischeSoll,
-        ColAnlageVerdampfungsrate,
-        ColAnlageSudhausausbeute,
         ColFaktorHauptgussEmpfehlung,
         ColWHauptgussEmpfehlung,
         ColBewertungMittel,

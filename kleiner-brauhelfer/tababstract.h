@@ -2,6 +2,7 @@
 #define TABABSTRACT_H
 
 #include <QWidget>
+#include "settings.h"
 
 class TabAbstract : public QWidget
 {
@@ -12,6 +13,7 @@ public:
 
     virtual void saveSettings();
     virtual void restoreView(bool full);
+    virtual void modulesChanged(Settings::Modules modules);
 
     void setTabActive(bool active);
     bool isTabActive() const;
@@ -23,6 +25,7 @@ public:
 protected:
     virtual void onTabActivated();
     virtual void onTabDeactivated();
+    void setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets);
 
 private:
     bool mIsTabActive;

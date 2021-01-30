@@ -14,7 +14,7 @@
     <table>
       <tr>
         <td></td>
-        <td>{{{Sud.BewertungSterne}}}</td>
+        <td>{{{BewertungSterne}}}</td>
       </tr>
       <tr>
         <td valign="center">
@@ -25,47 +25,47 @@
         <td valign="top">
           <table>
             <col width="*">
-            {{^Sud.StatusRezept}}<col width="80">{{/Sud.StatusRezept}}
+            {{^StatusRezept}}<col width="80">{{/StatusRezept}}
             <col width="80">
             <col width="*">
             <tr>
               <th></th>
-              {{^Sud.StatusRezept}}<th>Batch</th>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<th>Batch</th>{{/StatusRezept}}
               <th>Recipe</th>
             </tr>
             <tr>
               <td>amount</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Menge}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Menge}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Menge}}</td>
               <td>l</td>
             </tr>
             <tr>
               <td>original gravity</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.SW}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{SW}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
             <tr>
               <td>alcohol</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Alkohol}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Alkohol}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Alkohol}}</td>
               <td>%vol</td>
             </tr>
             <tr>
               <td>bitterness</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Bittere}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Bittere}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Bittere}}</td>
               <td>IBU</td>
             </tr>
             <tr>
               <td>color</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.Farbe}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{Farbe}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.Farbe}}</td>
               <td>EBC</td>
             </tr>
             <tr>
               <td>CO&#x2082;</td>
-              {{^Sud.StatusRezept}}<td class="value" align="center">{{Sud.CO2}}</td>{{/Sud.StatusRezept}}
+              {{^StatusRezept}}<td class="value" align="center">{{CO2}}</td>{{/StatusRezept}}
               <td class="value" align="center">{{Rezept.CO2}}</td>
               <td>g/l</td>
             </tr>
@@ -82,125 +82,141 @@
     <h1>Ingredients</h1>
   </div>
 
-  {{#Zutaten.Malz}}
+  {{#Malz}}
   <div class="rm bg_malz" align="center">
     <img src="qrc:/images/getreide.svg" height="50px">
     <br>
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Needed [kg]</th>
+        <th>Amount [kg]</th>
+        {{#Lager}}
         <th>In Stock [kg]</th>
         <th>Remain [kg]</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}}</td>
         <td class="{{Class}}" align="center">{{Rest}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Malz}}
+  {{/Malz}}
 
-  {{#Zutaten.Hopfen}}
+  {{#Hopfen}}
   <div class="rm bg_hopfen" align="center">
     <img src="qrc:/images/hopfen.svg" height="50px">
     <br>
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Needed [g]</th>
+        <th>Amount [g]</th>
+        {{#Lager}}
         <th>In Stock [g]</th>
         <th>Remain [g]</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}}</td>
         <td class="{{Class}}" align="center">{{Rest}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Hopfen}}
+  {{/Hopfen}}
 
-  {{#Zutaten.Hefe}}
+  {{#Hefe}}
   <div class="rm bg_hefe" align="center">
     <img src="qrc:/images/hefe.svg" height="50px">
     <br>
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Needed</th>
+        <th>Amount</th>
+        {{#Lager}}
         <th>In Stock</th>
         <th>Remain</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}}</td>
         <td class="{{Class}}" align="center">{{Rest}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Hefe}}
+  {{/Hefe}}
 
-  {{#Zutaten.Zusatz}}
+  {{#Zusatz}}
   <div class="rm bg_zusatz" align="center">
     <img src="qrc:/images/zusatz.svg" height="50px">
     <br>
     <table style="width:100%">
       <col width="16">
       <col width="*">
-      <col width="100">
+      <col width="120">
       <col width="100">
       <col width="100">
       <tr>
         <th></th>
         <th></th>
-        <th>Needed</th>
+        <th>Amount</th>
+        {{#Lager}}
         <th>In Stock</th>
         <th>Remain</th>
+        {{/Lager}}
       </tr>
       {{#Liste}}
       <tr>
         <td><img class="{{Class}}" width="16px"></td>
         <td align="left">{{Name}}</td>
         <td class="value" align="center">{{Menge}} {{Einheit}}</td>
+        {{#Lager}}
         <td class="{{Class}}" align="center">{{Vorhanden}} {{Einheit}}</td>
         <td class="{{Class}}" align="center">{{Rest}} {{Einheit}}</td>
+        {{/Lager}}
       </tr>
       {{/Liste}}
     </table>
   </div>
-  {{/Zutaten.Zusatz}}
+  {{/Zusatz}}
 
   {{/Zutaten}}
 

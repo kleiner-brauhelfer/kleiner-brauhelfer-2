@@ -23,7 +23,8 @@ public:
         WZutatenMaischen,
         WZutatenKochen,
         WZutatenGaerung,
-        HopfenGaerung
+        HopfenGaerung,
+        Tags
     };
 
 public:
@@ -33,7 +34,6 @@ public:
 
 private slots:
     void tableViewSud_selectionChanged();
-
     void on_tableViewSud_doubleClicked(const QModelIndex &index);
 
 private:

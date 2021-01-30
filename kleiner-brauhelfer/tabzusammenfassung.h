@@ -14,6 +14,7 @@ class TabZusammenfassung : public TabAbstract
 public:
     explicit TabZusammenfassung(QWidget *parent = nullptr);
     virtual ~TabZusammenfassung() Q_DECL_OVERRIDE;
+    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
     bool isPrintable() const Q_DECL_OVERRIDE;
     void printPreview() Q_DECL_OVERRIDE;
     void toPdf() Q_DECL_OVERRIDE;

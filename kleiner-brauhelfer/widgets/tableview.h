@@ -22,6 +22,9 @@ public:
     void build();
     void setDefaultContextMenu();
     void buildContextMenu(QMenu& menu) const;
+    void appendCol(const ColumnDefinition& col);
+    void setCols(const QList<ColumnDefinition>& cols);
+    void setCol(int idx, bool visible, bool canHide);
 
 public slots:
     void restoreDefaultState();
@@ -34,8 +37,8 @@ private slots:
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
 
-public:
-    QList<ColumnDefinition> cols;
+private:
+    QList<ColumnDefinition> mCols;
     QByteArray mDefaultState;
 };
 

@@ -11,7 +11,8 @@ extern Settings* gSettings;
 WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelMalzschuettung(), row, parentLayout, parent),
     ui(new Ui::WdgMalzGabe),
-    mEnabled(true)
+    mEnabled(true),
+    mFehlProzent(0)
 {
     ui->setupUi(this);
     if (gSettings->theme() == Settings::Theme::Dark)
@@ -34,10 +35,8 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     setPalette(pal);
 
     ui->btnKorrektur->setPalette(gSettings->paletteErrorButton);
-    ui->btnKorrektur->setVisible(false);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
-    checkEnabled(true);
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
@@ -60,37 +59,34 @@ bool WdgMalzGabe::isValid() const
     return mValid;
 }
 
-void WdgMalzGabe::checkEnabled(bool force)
+void WdgMalzGabe::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool enabled = status == Brauhelfer::SudStatus::Rezept;
+    mEnabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
-        enabled = true;
-    if (enabled == mEnabled && !force)
-        return;
+        mEnabled = true;
+}
 
-    mEnabled = enabled;
+void WdgMalzGabe::updateValues()
+{
+    QString malzname = name();
+
+    checkEnabled();
+
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled);
-    ui->btnAufbrauchen->setVisible(mEnabled);
-    ui->lblVorhanden->setVisible(mEnabled);
-    ui->lblEinheit->setVisible(mEnabled);
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->tbMengeProzent->setReadOnly(!mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbExtraktProzent->setReadOnly(!mEnabled);
     ui->tbExtrakt->setReadOnly(!mEnabled);
     ui->btnKorrektur->setVisible(mEnabled);
-    ui->lblWarnung->setVisible(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
-}
-
-void WdgMalzGabe::updateValues(bool full)
-{
-    QString malzname = name();
-
-    checkEnabled(full);
+    ui->lblWarnung->setVisible(false);
 
     int rowRohstoff = bh->modelMalz()->getRowWithValue(ModelMalz::ColName, malzname);
     mValid = !mEnabled || rowRohstoff >= 0;
@@ -117,25 +113,25 @@ void WdgMalzGabe::updateValues(bool full)
 
     if (mEnabled)
     {
-        ui->tbVorhanden->setValue(bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
-        double benoetigt = 0.0;
-        for (int i = 0; i < mModel->rowCount(); ++i)
+        if (gSettings->module(Settings::ModuleLagerverwaltung))
         {
-            if (mModel->data(i, ModelMalzschuettung::ColName).toString() == malzname)
-                benoetigt += mModel->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+            ui->tbVorhanden->setValue(bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
+            double benoetigt = 0.0;
+            for (int i = 0; i < mModel->rowCount(); ++i)
+            {
+                if (mModel->data(i, ModelMalzschuettung::ColName).toString() == malzname)
+                    benoetigt += mModel->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+            }
+            ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         }
-        ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
+        ui->btnKorrektur->setVisible(mFehlProzent != 0.0);
 
         int max = bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMaxProzent).toInt();
         if (max > 0 && ui->tbMengeProzent->value() > max)
         {
             ui->lblWarnung->setVisible(true);
             ui->lblWarnung->setText(tr("Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.").arg(max));
-        }
-        else
-        {
-            ui->lblWarnung->setVisible(false);
         }
 
         if (mRow == 0 && mModel->rowCount() == 1)
@@ -148,7 +144,8 @@ void WdgMalzGabe::updateValues(bool full)
         {
             ui->tbMenge->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
-            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+                ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }
     }
 
@@ -200,37 +197,28 @@ double WdgMalzGabe::prozent() const
 
 double WdgMalzGabe::fehlProzent() const
 {
-    return ui->btnKorrektur->property("toadd").toDouble();
+    return mFehlProzent;
 }
 
 void WdgMalzGabe::setFehlProzent(double value)
 {
-    if (mEnabled)
+    if (value < 0.0)
     {
-        if (value < 0.0)
-        {
-            double p = prozent();
-            if (p == 0.0)
-                value = 0.0;
-            else if (value < -p)
-                value = -p;
-        }
-        QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
-        ui->btnKorrektur->setText(text);
-        ui->btnKorrektur->setProperty("toadd", value);
-        ui->btnKorrektur->setVisible(value != 0.0);
+        double p = prozent();
+        if (p == 0.0)
+            value = 0.0;
+        else if (value < -p)
+            value = -p;
     }
-    else
-    {
-        ui->btnKorrektur->setVisible(false);
-    }
+    mFehlProzent = value;
+    QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
+    ui->btnKorrektur->setText(text);
 }
 
 void WdgMalzGabe::on_btnKorrektur_clicked()
 {
     setFocus();
-    double toadd = ui->btnKorrektur->property("toadd").toDouble();
-    setData(ModelMalzschuettung::ColProzent, prozent() + toadd);
+    setData(ModelMalzschuettung::ColProzent, prozent() + mFehlProzent);
 }
 
 void WdgMalzGabe::on_btnLoeschen_clicked()

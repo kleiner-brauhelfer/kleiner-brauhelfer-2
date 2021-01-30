@@ -14,11 +14,22 @@ DlgConsole::DlgConsole(QWidget *parent) :
     ui->setupUi(this);
     ui->textEdit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->sbLevel->setValue(gSettings->logLevel());
-    connect(this, &DlgConsole::finished, this, []{Dialog = nullptr;});
+
+    adjustSize();
+    gSettings->beginGroup(metaObject()->className());
+    QSize size = gSettings->value("size").toSize();
+    if (size.isValid())
+        resize(size);
+    gSettings->endGroup();
+
+    connect(this, &DlgConsole::finished, this, []{Dialog->deleteLater();Dialog = nullptr;});
 }
 
 DlgConsole::~DlgConsole()
 {
+    gSettings->beginGroup(metaObject()->className());
+    gSettings->setValue("size", geometry().size());
+    gSettings->endGroup();
     delete ui;
 }
 

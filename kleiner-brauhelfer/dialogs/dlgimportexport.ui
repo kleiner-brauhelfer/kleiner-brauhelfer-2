@@ -77,31 +77,10 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="tbDatei">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit passendem Pfad kann hier ein Rezept direkt in den Kleinen Brauhelfer geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="2">
          <widget class="QPushButton" name="btnDownload">
           <property name="text">
            <string>Download</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="btnOeffnen">
-          <property name="text">
-           <string>Öffnen</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Datei</string>
           </property>
          </widget>
         </item>
@@ -112,21 +91,178 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btnOeffnen">
+          <property name="text">
+           <string>Öffnen</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="tbDatei">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit passendem Pfad kann hier ein Rezept direkt in den Kleinen Brauhelfer geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Datei</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="QGroupBox" name="gpKbhExport">
+       <property name="title">
+        <string>Tabellen</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>222</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="4">
+         <widget class="QCheckBox" name="cbNachgaerverlauf">
+          <property name="text">
+           <string notr="true">Nachgaerverlauf</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="cbHopfengaben">
+          <property name="text">
+           <string notr="true">Hopfengaben</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="cbMalzschuettung">
+          <property name="text">
+           <string notr="true">Malzschuettung</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QCheckBox" name="cbHefegaben">
+          <property name="text">
+           <string notr="true">Hefegaben</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="cbWasseraufbereitung">
+          <property name="text">
+           <string notr="true">Wasseraufbereitung</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="cbRasten">
+          <property name="text">
+           <string notr="true">Rasten</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="cbSchnellgaerverlauf">
+          <property name="text">
+           <string notr="true">Schnellgaerverlauf</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QCheckBox" name="cbWeitereZutatenGaben">
+          <property name="text">
+           <string notr="true">WeitereZutatenGaben</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QCheckBox" name="cbHauptgaerverlauf">
+          <property name="text">
+           <string notr="true">Hauptgaerverlauf</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="cbSud">
+          <property name="text">
+           <string notr="true">Sud</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="cbBewertungen">
+          <property name="text">
+           <string notr="true">Bewertungen</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QCheckBox" name="cbEtiketten">
+          <property name="text">
+           <string notr="true">Etiketten</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QCheckBox" name="cbAnhang">
+          <property name="text">
+           <string notr="true">Anhang</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QCheckBox" name="cbTags">
+          <property name="text">
+           <string notr="true">Tags</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
     </layout>
    </item>
@@ -157,6 +293,20 @@
   <tabstop>btnOeffnen</tabstop>
   <tabstop>tbUrl</tabstop>
   <tabstop>btnDownload</tabstop>
+  <tabstop>cbSud</tabstop>
+  <tabstop>cbMalzschuettung</tabstop>
+  <tabstop>cbHopfengaben</tabstop>
+  <tabstop>cbHefegaben</tabstop>
+  <tabstop>cbWeitereZutatenGaben</tabstop>
+  <tabstop>cbRasten</tabstop>
+  <tabstop>cbWasseraufbereitung</tabstop>
+  <tabstop>cbSchnellgaerverlauf</tabstop>
+  <tabstop>cbHauptgaerverlauf</tabstop>
+  <tabstop>cbNachgaerverlauf</tabstop>
+  <tabstop>cbBewertungen</tabstop>
+  <tabstop>cbEtiketten</tabstop>
+  <tabstop>cbAnhang</tabstop>
+  <tabstop>cbTags</tabstop>
   <tabstop>textEdit</tabstop>
  </tabstops>
  <resources/>

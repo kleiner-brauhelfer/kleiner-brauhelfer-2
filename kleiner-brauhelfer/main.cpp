@@ -230,7 +230,7 @@ static void copyResources()
     bool update = gSettings->isNewProgramVersion();
 
     // create data directory
-    QString dataDir = gSettings->dataDir();
+    QString dataDir = gSettings->dataDir(0);
     if (!QDir(dataDir).exists())
     {
         if (!QDir().mkpath(dataDir))

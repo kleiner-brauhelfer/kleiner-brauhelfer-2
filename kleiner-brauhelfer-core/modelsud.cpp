@@ -56,8 +56,6 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("PhMalz");
     mVirtualField.append("PhMaische");
     mVirtualField.append("PhMaischeSoll");
-    mVirtualField.append("AnlageVerdampfungsrate");
-    mVirtualField.append("AnlageSudhausausbeute");
     mVirtualField.append("FaktorHauptgussEmpfehlung");
     mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
@@ -475,14 +473,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
             return phMalz + phRa;
         }
         return 0;
-    }
-    case ColAnlageVerdampfungsrate:
-    {
-        return dataAnlage(idx.row(), ModelAusruestung::ColVerdampfungsrate);
-    }
-    case ColAnlageSudhausausbeute:
-    {
-        return dataAnlage(idx.row(), ModelAusruestung::ColSudhausausbeute);
     }
     case ColFaktorHauptgussEmpfehlung:
     {
@@ -1109,6 +1099,10 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColTemperaturJungbier, 12.0);
     if (!values.contains(ColTemperaturKarbonisierung))
         values.insert(ColTemperaturKarbonisierung, 12.0);
+    if (!values.contains(ColSudhausausbeute))
+        values.insert(ColSudhausausbeute, 60.0);
+    if (!values.contains(ColVerdampfungsrate))
+        values.insert(ColVerdampfungsrate, 2.0);
     if (!values.contains(ColStatus))
         values.insert(ColStatus, static_cast<int>(Brauhelfer::SudStatus::Rezept));
 }

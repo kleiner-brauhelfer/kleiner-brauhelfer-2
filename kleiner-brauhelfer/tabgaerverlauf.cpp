@@ -65,13 +65,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     TableView *table = ui->tableWidget_Schnellgaerverlauf;
     table->setModel(model);
-    table->cols.append({ModelSchnellgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
-    table->cols.append({ModelSchnellgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(false, table)});
-    table->cols.append({ModelSchnellgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
-    table->cols.append({ModelSchnellgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSchnellgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSchnellgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelSchnellgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->appendCol({ModelSchnellgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(false, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColBemerkung, true, true, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
@@ -91,13 +91,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     table = ui->tableWidget_Hauptgaerverlauf;
     table->setModel(model);
-    table->cols.append({ModelHauptgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
-    table->cols.append({ModelHauptgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(true, table)});
-    table->cols.append({ModelHauptgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
-    table->cols.append({ModelHauptgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelHauptgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelHauptgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelHauptgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->appendCol({ModelHauptgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(true, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColBemerkung, true, true, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
@@ -116,11 +116,11 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table = ui->tableWidget_Nachgaerverlauf;
 
     table->setModel(model);
-    table->cols.append({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
-    table->cols.append({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
-    table->cols.append({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
-    table->cols.append({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->cols.append({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->appendCol({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->appendCol({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
+    table->appendCol({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, false, table)});
+    table->appendCol({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
@@ -563,11 +563,14 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         {
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugegeben, true);
-            DlgRohstoffeAbziehen dlg(true, data.first,
-                                     bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColName).toString(),
-                                     bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColMenge).toDouble(),
-                                     this);
-            dlg.exec();
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            {
+                DlgRohstoffeAbziehen dlg(true, data.first,
+                                         bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColName).toString(),
+                                         bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColMenge).toDouble(),
+                                         this);
+                dlg.exec();
+            }
         }
     }
     else
@@ -577,11 +580,14 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         {
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
-            DlgRohstoffeAbziehen dlg(true, data.first,
-                                     bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
-                                     bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
-                                     this);
-            dlg.exec();
+            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            {
+                DlgRohstoffeAbziehen dlg(true, data.first,
+                                         bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),
+                                         bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                         this);
+                dlg.exec();
+            }
         }
     }
 }

@@ -42,6 +42,9 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.3.0 (in Entwicklung)
+- Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)
+- Neu: Optionen bei Export im kleiner-brauhelfer Format
+- Fix: Zeitpunkt der Hopfengabe¨n nicht mehr in Abhängigkeit der Kochdauer
 
 ### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)

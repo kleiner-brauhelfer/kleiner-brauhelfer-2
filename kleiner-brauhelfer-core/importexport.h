@@ -3,6 +3,7 @@
 
 #include "kleiner-brauhelfer-core_global.h"
 #include <QByteArray>
+#include <QStringList>
 
 class Brauhelfer;
 
@@ -12,7 +13,7 @@ public:
     static int importKbh(Brauhelfer* bh, const QByteArray &content);
     static int importMaischeMalzundMehr(Brauhelfer* bh, const QByteArray &content);
     static int importBeerXml(Brauhelfer* bh, const QByteArray &content);
-    static QByteArray exportKbh(Brauhelfer* bh, int sudRow);
+    static QByteArray exportKbh(Brauhelfer* bh, int sudRow, const QStringList &exclude = QStringList());
     static QByteArray exportMaischeMalzundMehr(Brauhelfer* bh, int sudRow);
     static QByteArray exportBeerXml(Brauhelfer* bh, int sudRow);
 };

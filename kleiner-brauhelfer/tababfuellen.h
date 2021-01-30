@@ -17,6 +17,7 @@ public:
     virtual ~TabAbfuellen() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView(bool full) Q_DECL_OVERRIDE;
+    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private slots:
@@ -37,7 +38,6 @@ private slots:
     void on_tbFlaschengroesse_valueChanged(double);
 
     void on_btnSudAbgefuellt_clicked();
-    void on_btnSudTeilen_clicked(); 
 
     void on_btnSudVerbraucht_clicked();
 

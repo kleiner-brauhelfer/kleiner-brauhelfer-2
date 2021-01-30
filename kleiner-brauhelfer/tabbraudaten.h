@@ -17,6 +17,7 @@ public:
     virtual ~TabBraudaten() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView(bool full) Q_DECL_OVERRIDE;
+    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private slots:
@@ -37,7 +38,6 @@ private slots:
     void on_tbTempKochende_valueChanged(double);
     void on_btnSWKochende_clicked();
     void on_btnSWAnstellen_clicked();
-    void on_btnWasserVerschneidung_clicked();
     void on_btnWuerzemengeAnstellenTotal_clicked();
     void on_tbSpeiseSRE_valueChanged(double);
     void on_tbSpeiseT_valueChanged(double);
@@ -45,7 +45,6 @@ private slots:
 
     void on_cbDurchschnittIgnorieren_clicked(bool checked);
     void on_btnSudGebraut_clicked();
-    void on_btnSudTeilen_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

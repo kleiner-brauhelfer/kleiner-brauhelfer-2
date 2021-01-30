@@ -74,6 +74,7 @@ public:
         ColBemerkungBrauen,
         ColBemerkungAbfuellen,
         ColBemerkungGaerung,
+        ColReifungStart,
         // virtual
         ColDeleted,
         ColMengeSoll,

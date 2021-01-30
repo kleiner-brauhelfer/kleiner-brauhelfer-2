@@ -1,7 +1,5 @@
 #include "modelsud.h"
 #include "brauhelfer.h"
-#include "modelausruestung.h"
-#include "modelnachgaerverlauf.h"
 #include <math.h>
 #include <qmath.h>
 
@@ -156,6 +154,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
+    case ColReifungStart:
+    {
+        return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
+    }
     case ColMengeSoll:
     {
         return data(idx.row(), ColMenge).toDouble() + dataAnlage(idx.row(), ModelAusruestung::ColKorrekturMenge).toDouble();
@@ -279,9 +281,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
         if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
-            QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColID).toInt());
-            if (!dt.isValid())
-                dt = data(idx.row(), ColAbfuelldatum).toDateTime();
+            QDateTime dt = data(idx.row(), ColReifungStart).toDateTime();
             if (dt.isValid())
                 return dt.daysTo(QDateTime::currentDateTime()) / 7 + 1;
         }
@@ -292,9 +292,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
         if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
-            QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColID).toInt());
-            if (!dt.isValid())
-                dt = data(idx.row(), ColAbfuelldatum).toDateTime();
+            QDateTime dt = data(idx.row(), ColReifungStart).toDateTime();
             if (dt.isValid())
             {
                 qint64 tageReifung = dt.daysTo(QDateTime::currentDateTime());
@@ -530,6 +528,10 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
     case ColGespeichert:
+    {
+        return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
+    }
+    case ColReifungStart:
     {
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }

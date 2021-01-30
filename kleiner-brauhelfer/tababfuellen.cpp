@@ -15,6 +15,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui(new Ui::TabAbfuellen)
 {
     ui->setupUi(this);
+    ui->tbReifezeit->setColumn(ModelSud::ColWoche);
     ui->tbSWSchnellgaerprobe->setColumn(ModelSud::ColSWSchnellgaerprobe);
     ui->tbSWJungbier->setColumn(ModelSud::ColSWJungbier);
     ui->tbBiermengeAbfuellen->setColumn(ModelSud::Colerg_AbgefuellteBiermenge);
@@ -177,9 +178,15 @@ void TabAbfuellen::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     bool abgefuellt = status >= Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled;
+    bool verbraucht = status >= Brauhelfer::SudStatus::Verbraucht && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
     ui->tbAbfuelldatumZeit->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
+    ui->tbReifung->setReadOnly(verbraucht);
+    ui->btnReifungHeute->setVisible(!abgefuellt);
+    ui->tbReifezeit->setVisible(!verbraucht);
+    ui->lblReifezeit->setVisible(!verbraucht);
+    ui->lblReifezeitEinheit->setVisible(!verbraucht);
     ui->cbSchnellgaerprobeAktiv->setEnabled(!abgefuellt);
     ui->tbSWSchnellgaerprobe->setReadOnly(abgefuellt);
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked() && !abgefuellt);
@@ -211,6 +218,9 @@ void TabAbfuellen::updateValues()
     ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
     ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
+    dt = bh->sud()->getReifungStart();
+    ui->tbReifung->setMinimumDate(ui->tbAbfuelldatum->date());
+    ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
 
     ui->tbSWJungbierSoll->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
@@ -290,6 +300,17 @@ void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
 {
     bh->sud()->setAbfuelldatum(QDateTime());
+}
+
+void TabAbfuellen::on_tbReifung_dateChanged(const QDate &date)
+{
+    if (ui->tbReifung->hasFocus())
+        bh->sud()->setReifungStart(QDateTime(date, QTime()));
+}
+
+void TabAbfuellen::on_btnReifungHeute_clicked()
+{
+    bh->sud()->setReifungStart(QDateTime());
 }
 
 void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
@@ -375,6 +396,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         return;
 
     bh->sud()->setAbfuelldatum(dt);
+    bh->sud()->setReifungStart(ui->tbReifung->dateTime());
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},

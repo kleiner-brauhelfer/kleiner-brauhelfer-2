@@ -75,7 +75,7 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="5">
+           <item row="2" column="5">
             <spacer name="horizontalSpacer_6">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -132,7 +132,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
+           <item row="0" column="4" rowspan="2">
             <widget class="Line" name="line_11">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -162,7 +162,7 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
+           <item row="2" column="0">
             <spacer name="horizontalSpacer_10">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -188,6 +188,96 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Beginn der Reifung</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="DateEdit" name="tbReifung">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Beginn der &lt;span style=&quot; font-weight:600;&quot;&gt;Reifung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QPushButton" name="btnReifungHeute">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt den Beginn der Reifung auf die aktuelle Zeit im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Jetzt</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="5">
+            <widget class="QLabel" name="lblReifezeit">
+             <property name="text">
+              <string>Aktuelle Reifezeit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="8">
+            <widget class="QLabel" name="lblReifezeitEinheit">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Wochen</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="7">
+            <widget class="SpinBoxSud" name="tbReifezeit">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Reifezeit&lt;/span&gt; in Wochen angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="maximum">
+              <number>999</number>
              </property>
             </widget>
            </item>

@@ -30,6 +30,8 @@ private slots:
     void on_tbAbfuelldatum_dateChanged(const QDate &date);
     void on_tbAbfuelldatumZeit_timeChanged(const QTime &time);
     void on_btnAbfuelldatumHeute_clicked();
+    void on_tbReifung_dateChanged(const QDate &date);
+    void on_btnReifungHeute_clicked();
     void on_cbSchnellgaerprobeAktiv_clicked(bool checked);
     void on_btnSWSchnellgaerprobe_clicked();
     void on_btnSWJungbier_clicked();
@@ -38,7 +40,6 @@ private slots:
     void on_tbFlaschengroesse_valueChanged(double);
 
     void on_btnSudAbgefuellt_clicked();
-
     void on_btnSudVerbraucht_clicked();
 
 private:

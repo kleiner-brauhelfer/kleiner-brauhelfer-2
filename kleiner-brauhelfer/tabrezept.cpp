@@ -69,6 +69,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMalzAufteilen->setPalette(gSettings->paletteErrorButton);
     ui->btnMalzProzente->setPalette(gSettings->paletteErrorButton);
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
 
     pal = ui->btnNeueMalzGabe->palette();
     pal.setColor(QPalette::Button, gSettings->colorMalz);
@@ -551,7 +552,7 @@ void TabRezept::updateValues()
         return;
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
+    bool enabled = status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled;
 
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
@@ -584,9 +585,9 @@ void TabRezept::updateValues()
         ui->cbAnlage->setError(false);
         ui->groupAnlage->setVisible(true);
         diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
-        ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
+        ui->btnSudhausausbeute->setVisible(enabled && qAbs(diff) > 0.05);
         diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
-        ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+        ui->btnVerdampfungsrate->setVisible(enabled && qAbs(diff) > 0.05);
         ui->lblAnlageName->setText(bh->sud()->getAnlage());
         ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
         ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
@@ -601,14 +602,22 @@ void TabRezept::updateValues()
     }
 
     // ModuleWasseraufbereitung
-    diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
-    ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
-    ui->tbPhMaischeSoll->setEnabled(ui->tbPhMalz->value() > 0);
-    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
     if (!ui->cbWasserProfil->hasFocus())
         ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
-    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
+    diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
+    ui->tbRestalkalitaetIst->setError(enabled && qAbs(diff) > 0.05);
+    bool phOk = ui->tbPhMalz->value() > 0;
+    ui->lblWarnungPh->setVisible(!phOk);
+    ui->tbPhMalz->setVisible(phOk);
+    ui->tbPhMaischeSoll->setVisible(phOk);
+    ui->tbPhMaische->setVisible(phOk);
+    ui->lblPhMalz->setVisible(phOk);
+    ui->lblPhMaischeSoll->setVisible(phOk);
+    ui->lblPhMaische->setVisible(phOk);
+    ui->tbPhMaischeSoll->setError(enabled && (ui->tbPhMaischeSoll->value() < 5.2 || ui->tbPhMaischeSoll->value() > 5.8));
+    diff = ui->tbPhMaischeSoll->value() - ui->tbPhMaische->value();
+    ui->tbPhMaische->setError(enabled && qAbs(diff) > 0.005);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);

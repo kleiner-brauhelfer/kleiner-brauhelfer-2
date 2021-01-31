@@ -112,12 +112,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
             this, SLOT(sudDataChanged(const QModelIndex&)));
 
-    modulesChanged(Settings::ModuleAlle);
-    sudLoaded();
-
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
 
+    if (!gSettings->initModules())
+        on_actionModule_triggered();
+
+    modulesChanged(Settings::ModuleAlle);
+    sudLoaded();
     on_tabMain_currentChanged();
 }
 

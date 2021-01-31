@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>356</width>
-    <height>506</height>
+    <width>385</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,8 +15,18 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
-    <number>6</number>
+    <number>4</number>
    </property>
+   <item>
+    <widget class="QLabel" name="label_12">
+     <property name="text">
+      <string>Hier können Module ein- und ausgeschaltet werden. Diese Einstellung lässt sich jederzeit anpassen.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="widgetResizable">
@@ -27,13 +37,13 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>336</width>
-        <height>458</height>
+        <width>351</width>
+        <height>675</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <property name="spacing">
-        <number>6</number>
+        <number>4</number>
        </property>
        <item>
         <widget class="QGroupBox" name="gbModuleGaerverlauf">
@@ -62,7 +72,10 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string/>
+             <string>Damit lassen sich zeitliche Gärverläufe protokollieren (Hauptgärung, Nachgärung und Schnellgärprobe).</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -96,7 +109,11 @@
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string/>
+             <string>Bei ungebrauten Suden fasst der Spickzettel alle Informationen zum einem Brauprotokoll zusammen. Dies ist ausgedruckt am Brautag eine wertvolle Hilfe.
+Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusammen.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -130,7 +147,10 @@
           <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string/>
+             <string>Dieses Modul ermöglicht das Erstellen von Etiketten (Label) mit automatischer Einbindung der wichtigsten Kennzahlen (Stammwürze, IBU, Farbe, ...).</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -164,7 +184,10 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string/>
+             <string>Dieses Modul ermöglicht das Bewerten von Suden.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -198,7 +221,10 @@
           <item>
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string/>
+             <string>In der Brauübersicht lassen sich die wichtigsten Kennzahlen in einem zeitlichen Verlauf darstellen.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -232,7 +258,10 @@
           <item>
            <widget class="QLabel" name="label_6">
             <property name="text">
-             <string/>
+             <string>Dieses Modul verwaltet anlagespezifische Kennzahlen. Die wichtigsten sind dabei Sudhausausbeute und Verdampfungsrate. Für eine genauere Berechnung sollte dieses Modul aktiviert werden.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -266,7 +295,10 @@
           <item>
            <widget class="QLabel" name="label_10">
             <property name="text">
-             <string/>
+             <string>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe. </string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -300,7 +332,10 @@
           <item>
            <widget class="QLabel" name="label_11">
             <property name="text">
-             <string/>
+             <string>Dieses Modul aktiviert die Speiseberechnung für die Karbonisierung (Nachgärung).</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -334,7 +369,10 @@
           <item>
            <widget class="QLabel" name="label_7">
             <property name="text">
-             <string/>
+             <string>Dieses Modul hilft bei der Wasseraufbereitung und kalkuliert die Wasserprofile.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -368,7 +406,10 @@
           <item>
            <widget class="QLabel" name="label_8">
             <property name="text">
-             <string/>
+             <string>Dieses Modul berechnet den Preis pro Liter Bier. Voraussetzung ist die Eingabe alle Rohstoffpreise.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -402,25 +443,15 @@
           <item>
            <widget class="QLabel" name="label_9">
             <property name="text">
-             <string/>
+             <string>Dieses Modul zeigt die grundlegende Datenbank an. Mit ihm lässt sich die Datenbank direkt manipulieren.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>

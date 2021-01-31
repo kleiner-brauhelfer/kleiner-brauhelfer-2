@@ -38,7 +38,6 @@ private slots:
     void on_tbFlaschengroesse_valueChanged(double);
 
     void on_btnSudAbgefuellt_clicked();
-    void on_btnSudTeilen_clicked(); 
 
     void on_btnSudVerbraucht_clicked();
 

@@ -45,7 +45,6 @@ private slots:
 
     void on_cbDurchschnittIgnorieren_clicked(bool checked);
     void on_btnSudGebraut_clicked();
-    void on_btnSudTeilen_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

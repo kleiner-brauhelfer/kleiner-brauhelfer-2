@@ -6,7 +6,6 @@
 #include <QGraphicsSvgItem>
 #include <QStandardItemModel>
 #include <QMessageBox>
-#include "brauhelfer.h"
 #include "settings.h"
 #include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
@@ -70,6 +69,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMalzAufteilen->setPalette(gSettings->paletteErrorButton);
     ui->btnMalzProzente->setPalette(gSettings->paletteErrorButton);
     ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
 
     pal = ui->btnNeueMalzGabe->palette();
     pal.setColor(QPalette::Button, gSettings->colorMalz);
@@ -267,9 +267,16 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
 {
     if (old == ui->tbKommentar)
+    {
+        QString kommentar = ui->tbKommentar->toPlainText().replace("<br>", "\n");
+        if (kommentar != bh->sud()->getKommentar())
+            bh->sud()->setKommentar(kommentar);
         ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
+    }
     if (now == ui->tbKommentar)
+    {
         ui->tbKommentar->setPlainText(bh->sud()->getKommentar());
+    }
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -367,24 +374,52 @@ void TabRezept::checkEnabled()
         static_cast<WdgWasseraufbereitung*>(ui->layoutWasseraufbereitung->itemAt(i)->widget())->updateValues();
 }
 
+int TabRezept::checkRohstoffeDialog(Brauhelfer::RohstoffTyp typ, const QString& name)
+{
+    QString msg;
+    switch(typ)
+    {
+    case Brauhelfer::RohstoffTyp::Malz:
+        msg = tr("Das Malz \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(name);
+        break;
+    case Brauhelfer::RohstoffTyp::Hopfen:
+        msg = tr("Der Hopfen \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(name);
+        break;
+    case Brauhelfer::RohstoffTyp::Hefe:
+        msg = tr("Die Hefe \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(name);
+        break;
+    case Brauhelfer::RohstoffTyp::Zusatz:
+        msg = tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(name);
+        break;
+    }
+    return QMessageBox::question(this, tr("Rohstoff importieren?"), msg,
+                                 QMessageBox::Yes | QMessageBox::YesAll | QMessageBox::No | QMessageBox::NoAll | QMessageBox::Cancel);
+}
+
 void TabRezept::checkRohstoffe()
 {
+    bool yesAll = false;
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
     {
         WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
         if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Das Malz \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()),
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-            if (ret == QMessageBox::Yes)
+            int ret = yesAll ? QMessageBox::Yes : checkRohstoffeDialog(Brauhelfer::RohstoffTyp::Malz, wdg->name());
+            if (ret == QMessageBox::Yes || ret == QMessageBox::YesAll)
             {
+                if (ret == QMessageBox::YesAll)
+                    yesAll = true;
                 bh->modelMalzschuettung()->import(bh->sud()->modelMalzschuettung()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::NoAll)
+            {
+                return;
             }
             else if (ret == QMessageBox::Cancel)
             {
                 bh->sud()->unload();
+                return;
             }
         }
     }
@@ -393,17 +428,22 @@ void TabRezept::checkRohstoffe()
         WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget());
         if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(wdg->name()),
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-            if (ret == QMessageBox::Yes)
+            int ret = yesAll ? QMessageBox::Yes : checkRohstoffeDialog(Brauhelfer::RohstoffTyp::Zusatz, wdg->name());
+            if (ret == QMessageBox::Yes || ret == QMessageBox::YesAll)
             {
+                if (ret == QMessageBox::YesAll)
+                    yesAll = true;
                 bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::NoAll)
+            {
+                return;
             }
             else if (ret == QMessageBox::Cancel)
             {
                 bh->sud()->unload();
+                return;
             }
         }
     }
@@ -412,17 +452,22 @@ void TabRezept::checkRohstoffe()
         WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
         if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Der Hopfen \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()),
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-            if (ret == QMessageBox::Yes)
+            int ret = yesAll ? QMessageBox::Yes : checkRohstoffeDialog(Brauhelfer::RohstoffTyp::Hopfen, wdg->name());
+            if (ret == QMessageBox::Yes || ret == QMessageBox::YesAll)
             {
+                if (ret == QMessageBox::YesAll)
+                    yesAll = true;
                 bh->modelHopfengaben()->import(bh->sud()->modelHopfengaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::NoAll)
+            {
+                return;
             }
             else if (ret == QMessageBox::Cancel)
             {
                 bh->sud()->unload();
+                return;
             }
         }
     }
@@ -431,17 +476,22 @@ void TabRezept::checkRohstoffe()
         WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget());
         if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(wdg->name()),
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-            if (ret == QMessageBox::Yes)
+            int ret = yesAll ? QMessageBox::Yes : checkRohstoffeDialog(Brauhelfer::RohstoffTyp::Zusatz, wdg->name());
+            if (ret == QMessageBox::Yes || ret == QMessageBox::YesAll)
             {
+                if (ret == QMessageBox::YesAll)
+                    yesAll = true;
                 bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::NoAll)
+            {
+                return;
             }
             else if (ret == QMessageBox::Cancel)
             {
                 bh->sud()->unload();
+                return;
             }
         }
     }
@@ -450,17 +500,22 @@ void TabRezept::checkRohstoffe()
         WdgHefeGabe* wdg = static_cast<WdgHefeGabe*>(ui->layoutHefeGaben->itemAt(i)->widget());
         if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Die Hefe \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?").arg(wdg->name()),
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-            if (ret == QMessageBox::Yes)
+            int ret = yesAll ? QMessageBox::Yes : checkRohstoffeDialog(Brauhelfer::RohstoffTyp::Hefe, wdg->name());
+            if (ret == QMessageBox::Yes || ret == QMessageBox::YesAll)
             {
+                if (ret == QMessageBox::YesAll)
+                    yesAll = true;
                 bh->modelHefegaben()->import(bh->sud()->modelHefegaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::NoAll)
+            {
+                return;
             }
             else if (ret == QMessageBox::Cancel)
             {
                 bh->sud()->unload();
+                return;
             }
         }
     }
@@ -469,17 +524,22 @@ void TabRezept::checkRohstoffe()
         WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget());
         if (!wdg->isValid())
         {
-            int ret = QMessageBox::question(this, tr("Rohstoff importieren?"),
-                                            tr("Die Zutat \"%1\" ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?").arg(wdg->name()),
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-            if (ret == QMessageBox::Yes)
+            int ret = yesAll ? QMessageBox::Yes : checkRohstoffeDialog(Brauhelfer::RohstoffTyp::Zusatz, wdg->name());
+            if (ret == QMessageBox::Yes || ret == QMessageBox::YesAll)
             {
+                if (ret == QMessageBox::YesAll)
+                    yesAll = true;
                 bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
+            }
+            else if (ret == QMessageBox::NoAll)
+            {
+                return;
             }
             else if (ret == QMessageBox::Cancel)
             {
                 bh->sud()->unload();
+                return;
             }
         }
     }
@@ -492,7 +552,7 @@ void TabRezept::updateValues()
         return;
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
+    bool enabled = status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled;
 
     for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
@@ -525,9 +585,9 @@ void TabRezept::updateValues()
         ui->cbAnlage->setError(false);
         ui->groupAnlage->setVisible(true);
         diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
-        ui->btnSudhausausbeute->setVisible(!gebraut && qAbs(diff) > 0.05);
+        ui->btnSudhausausbeute->setVisible(enabled && qAbs(diff) > 0.05);
         diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
-        ui->btnVerdampfungsrate->setVisible(!gebraut && qAbs(diff) > 0.05);
+        ui->btnVerdampfungsrate->setVisible(enabled && qAbs(diff) > 0.05);
         ui->lblAnlageName->setText(bh->sud()->getAnlage());
         ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
         ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
@@ -542,16 +602,22 @@ void TabRezept::updateValues()
     }
 
     // ModuleWasseraufbereitung
-    diff = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble();
-    ui->btnRestalkalitaet->setVisible(!gebraut && qAbs(diff) > 0.005);
-    diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
-    ui->tbRestalkalitaetIst->setError(!gebraut && qAbs(diff) > 0.005);
-    ui->tbPhMaischeSoll->setEnabled(ui->tbPhMalz->value() > 0);
-    ui->tbPhMaische->setError(!gebraut && ui->tbPhMaische->value() > 0 && (ui->tbPhMaische->value() < 5.2 || ui->tbPhMaische->value() > 5.8));
     if (!ui->cbWasserProfil->hasFocus())
         ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
-    ui->tbRestalkalitaetWasser->setValue(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
+    diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
+    ui->tbRestalkalitaetIst->setError(enabled && qAbs(diff) > 0.05);
+    bool phOk = ui->tbPhMalz->value() > 0;
+    ui->lblWarnungPh->setVisible(!phOk);
+    ui->tbPhMalz->setVisible(phOk);
+    ui->tbPhMaischeSoll->setVisible(phOk);
+    ui->tbPhMaische->setVisible(phOk);
+    ui->lblPhMalz->setVisible(phOk);
+    ui->lblPhMaischeSoll->setVisible(phOk);
+    ui->lblPhMaische->setVisible(phOk);
+    ui->tbPhMaischeSoll->setError(enabled && (ui->tbPhMaischeSoll->value() < 5.2 || ui->tbPhMaischeSoll->value() > 5.8));
+    diff = ui->tbPhMaischeSoll->value() - ui->tbPhMaische->value();
+    ui->tbPhMaische->setError(enabled && qAbs(diff) > 0.005);
 
     ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
@@ -1362,16 +1428,6 @@ void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
         bh->sud()->setAnlage(value);
 }
 
-void TabRezept::on_tbKommentar_textChanged()
-{
-    if (ui->tbKommentar->hasFocus())
-    {
-        QString kommentar = ui->tbKommentar->toPlainText().replace("<br>", "\n");
-        if (kommentar != bh->sud()->getKommentar())
-            bh->sud()->setKommentar(kommentar);
-    }
-}
-
 void TabRezept::on_btnSudhausausbeute_clicked()
 {
     bh->sud()->setSudhausausbeute(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
@@ -1388,11 +1444,6 @@ void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
         bh->sud()->setWasserprofil(value);
 }
 
-void TabRezept::on_btnRestalkalitaet_clicked()
-{
-    bh->sud()->setRestalkalitaetSoll(bh->sud()->getWasserData(ModelWasser::ColRestalkalitaet).toDouble());
-}
-
 void TabRezept::on_btnTagNeu_clicked()
 {
     QMap<int, QVariant> values({{ModelTags::ColSudID, bh->sud()->id()},
@@ -1405,6 +1456,18 @@ void TabRezept::on_btnTagNeu_clicked()
         ui->tableTags->setCurrentIndex(index);
         ui->tableTags->scrollTo(index);
         ui->tableTags->edit(index);
+    }
+}
+
+void TabRezept::on_btnTagUebernehmen_clicked()
+{
+    DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Tags);
+    if (dlg.exec() == QDialog::Accepted)
+    {
+        bh->sudKopierenModel(bh->modelTags(),
+                             ModelTags::ColSudID, dlg.sudId(),
+                             {{ModelTags::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelTags()->invalidate();
     }
 }
 

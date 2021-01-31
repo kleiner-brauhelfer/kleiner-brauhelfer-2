@@ -95,6 +95,17 @@ public:
     };
     Q_ENUM(BerechnungsartHopfen)
 
+    enum class HopfenZeitpunkt
+    {
+        KochenAlt = 0,
+        Vorderwuerze = 1,
+        Kochbeginn = 2,
+        Kochen = 3,
+        Kochende = 4,
+        Ausschlagen = 5
+    };
+    Q_ENUM(HopfenZeitpunkt)
+
     enum class HopfenTyp
     {
         Unbekannt = 0,

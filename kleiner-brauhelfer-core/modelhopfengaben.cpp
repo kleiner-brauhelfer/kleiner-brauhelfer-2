@@ -202,15 +202,27 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         }
         return false;
     }
-    case ColVorderwuerze:
+    case ColZeitpunkt:
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            if (value.toBool())
+            int dauer = 0;
+            switch (static_cast<Brauhelfer::HopfenZeitpunkt>(value.toInt()))
             {
-                int dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauer).toInt();
-                QSqlTableModel::setData(index(idx.row(), ColZeit), dauer);
+            case Brauhelfer::HopfenZeitpunkt::Kochen:
+            case Brauhelfer::HopfenZeitpunkt::KochenAlt:
+                if (data(idx.row(), ColZeit).toInt() >= 0)
+                    return true;
+                break;
+            case Brauhelfer::HopfenZeitpunkt::Vorderwuerze:
+            case Brauhelfer::HopfenZeitpunkt::Kochbeginn:
+                dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauer).toInt();
+                break;
+            case Brauhelfer::HopfenZeitpunkt::Kochende:
+            case Brauhelfer::HopfenZeitpunkt::Ausschlagen:
+                break;
             }
+            QSqlTableModel::setData(index(idx.row(), ColZeit), dauer);
             QModelIndex idx2 = index(idx.row(), ColProzent);
             setData(idx2, idx2.data());
             return true;
@@ -245,15 +257,20 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
                 if (idx.column() == ModelSud::ColKochdauer)
                 {
                     int max = idx.data().toInt();
-                    if (data(r, ColVorderwuerze).toBool())
+                    QModelIndex idx2 = index(r, ColZeit);
+                    switch (static_cast<Brauhelfer::HopfenZeitpunkt>(data(r, ColZeitpunkt).toInt()))
                     {
-                        QSqlTableModel::setData(index(r, ColZeit), max);
-                    }
-                    else
-                    {
-                        QModelIndex idx2 = index(r, ColZeit);
+                    case Brauhelfer::HopfenZeitpunkt::Kochen:
+                    case Brauhelfer::HopfenZeitpunkt::KochenAlt:
                         if (idx2.data().toInt() > max)
                             QSqlTableModel::setData(idx2, max);
+                        break;
+                    case Brauhelfer::HopfenZeitpunkt::Vorderwuerze:
+                    case Brauhelfer::HopfenZeitpunkt::Kochbeginn:
+                        QSqlTableModel::setData(index(r, ColZeit), max);
+                        break;
+                    default:
+                        break;
                     }
                 }
                 else if (idx.column() == ModelSud::ColNachisomerisierungszeit)
@@ -292,6 +309,6 @@ void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColProzent, 0);
     if (!values.contains(ColZeit))
         values.insert(ColZeit, 0);
-    if (!values.contains(ColVorderwuerze))
-        values.insert(ColVorderwuerze, 0);
+    if (!values.contains(ColZeitpunkt))
+        values.insert(ColZeitpunkt, static_cast<int>(Brauhelfer::HopfenZeitpunkt::Kochen));
 }

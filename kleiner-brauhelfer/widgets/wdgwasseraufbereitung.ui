@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>119</height>
+    <width>908</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -52,66 +52,21 @@
         <item>
          <widget class="QLineEdit" name="tbName">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; gewählt. &lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei degebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein Brausalz oder eine Brausäure gewählt. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei degebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="ComboBox" name="cbEinheit">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Maßeinheit &lt;/span&gt;für den Zusatz zur &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Voreingestellt sind je nach Zusatzart ml/l oder g/l.&lt;/p&gt;&lt;p&gt;Es handelt sich dabei meist um sehr geringe Mengen. Kleinbrauer hantieren hierbei mit Pipetten, Spritzen und Feinwaagen im 100mg-Bereich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>Kg</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>g</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>mg</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Stk</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>l</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>ml</string>
-           </property>
-          </item>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnAuswahl">
-          <property name="minimumSize">
-           <size>
-            <width>50</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Widget wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Wirkungsgrad&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserzusatz&lt;/span&gt; manuell eingestellt.&lt;/p&gt;&lt;p&gt;In der Regel sind hier keine Anpassungen nötig – der Kleine Brauhelfer hält die Verdünnungsfaktoren geläufiger Säuren bereit; bei &lt;span style=&quot; font-weight:600;&quot;&gt;kristallinen Salzen &lt;/span&gt;ist der Wirkungsgrad immer 100, anders dagegen verhält es sich in liquider Form.&lt;/p&gt;&lt;p&gt;So macht das Feld Sinn bei gelösten Salzen wie Calciumchlorid CaCl₂ oder den unterschiedlichen Konfektionierungen von Phosphorsäure. So wird CaCl₂ in Europa in 33%-Lösung angeboten, in anderen Ländern aber anders. Gleiches bei Phosphorsäure.In Europa ist 70% Phosphorsäue üblich in den USA 30%.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Falsche Angaben &lt;/span&gt;können hier zu unvorhersehbaren Ergebnissen führen und den &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; sogar &lt;span style=&quot; font-weight:600;&quot;&gt;ungenießbar&lt;/span&gt; machen. Bei Zweifeln ist es ein guter Rat Fachbücher und Fachforen zu befragen. Ansonsten gilt, weil es einen großen Unterschied macht, ob &lt;span style=&quot; font-weight:600;&quot;&gt;Salzsäure&lt;/span&gt; in 10%iger oder 80%iger Lösung vorliegt: &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Im Zweifel Hände weg!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="text">
-           <string>...</string>
+          <property name="whatsThis">
+           <string notr="true">settings</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../images.qrc">
+            <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
           </property>
          </widget>
         </item>
@@ -166,15 +121,42 @@
         <property name="verticalSpacing">
          <number>4</number>
         </property>
-        <item row="1" column="0">
-         <widget class="QLabel" name="lblHg">
+        <item row="1" column="6">
+         <widget class="QLabel" name="lblHgf">
           <property name="text">
-           <string>Hauptguss</string>
+           <string>Verdünnung</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="DoubleSpinBox" name="tbMenge">
+        <item row="1" column="3">
+         <widget class="QLabel" name="lblNg">
+          <property name="text">
+           <string>Nachguss</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QLabel" name="lblEinheitNg">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="lblEinheitHg">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="DoubleSpinBox" name="tbMengeNg">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -182,32 +164,7 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l angegeben. &lt;/p&gt;&lt;p&gt;Der Wert hat rein informativen Charakter, praktisch entscheidend ist die Gesamtmenge des Zuatzes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>3</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.010000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="DoubleSpinBox" name="tbMengeHg">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einer Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -236,52 +193,7 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="12">
-         <widget class="DoubleSpinBox" name="tbFaktor">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die Menge einer Säure oder eines Brausalzes an, die beim aktuellen Wasser &lt;span style=&quot; font-weight:600;&quot;&gt;1 °dH Restalakalität&lt;/span&gt; absenkt oder erhöht.&lt;/p&gt;&lt;p&gt;Die Angabe hat rein informativen Charakter. Für Wasserprofile sind die mengen an Brausalzen CaSO₄ und CaCl₂ ausschlaggebender, um den Geschmackseindruck eines Wassers aus einer bestimmten Region abzubilden.&lt;/p&gt;&lt;p&gt;Weitere Informationen bieten hier vor allem amerikanische Foren für Hobbybrauer sowie die Seite des Wasserspezialisiten Martin Brungard und seines Tools &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brew'n Water&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>4</number>
-          </property>
-          <property name="minimum">
-           <double>-100.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>100.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.001000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="lblEinheit">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="lblNg">
-          <property name="text">
-           <string>Nachguss</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="12">
+        <item row="0" column="11">
          <widget class="DoubleSpinBox" name="tbRestalkalitaet">
           <property name="minimumSize">
            <size>
@@ -309,51 +221,16 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="5">
-         <widget class="QLabel" name="lblEinheitNg">
+        <item row="0" column="12">
+         <widget class="QLabel" name="label_4">
           <property name="minimumSize">
            <size>
             <width>40</width>
             <height>0</height>
            </size>
           </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="4">
-         <widget class="DoubleSpinBox" name="tbMengeGesamt">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l zu Wasseraufbereitung aus. &lt;/p&gt;&lt;p&gt;Dieser Wert gilt für die gesamte Wassermenge des Sudes und hat rein informativen Charakter. Praktische Relevanz hat er &lt;span style=&quot; font-weight:600;&quot;&gt;aufgeteilt&lt;/span&gt; in den untenstehenden Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
+          <property name="text">
+           <string>°dH</string>
           </property>
          </widget>
         </item>
@@ -385,8 +262,15 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="lblEinheitHg">
+        <item row="1" column="0">
+         <widget class="QLabel" name="lblHg">
+          <property name="text">
+           <string>Hauptguss</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="lblEinheit">
           <property name="minimumSize">
            <size>
             <width>40</width>
@@ -395,30 +279,28 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="lblGesamt">
-          <property name="text">
-           <string>Gesamt</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="13">
-         <widget class="QLabel" name="label_4">
+        <item row="0" column="1">
+         <widget class="DoubleSpinBox" name="tbMenge">
           <property name="minimumSize">
            <size>
-            <width>40</width>
+            <width>80</width>
             <height>0</height>
            </size>
           </property>
-          <property name="text">
-           <string>°dH</string>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l angegeben. &lt;/p&gt;&lt;p&gt;Der Wert hat rein informativen Charakter, praktisch entscheidend ist die Gesamtmenge des Zuatzes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-         </widget>
-        </item>
-        <item row="0" column="11">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Restalkalität</string>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>3</number>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.010000000000000</double>
           </property>
          </widget>
         </item>
@@ -429,15 +311,15 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="11">
-         <widget class="QLabel" name="label_3">
+        <item row="0" column="3">
+         <widget class="QLabel" name="lblGesamt">
           <property name="text">
-           <string>Menge für 1°dH</string>
+           <string>Gesamt</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
-         <widget class="DoubleSpinBox" name="tbMengeNg">
+        <item row="0" column="4">
+         <widget class="DoubleSpinBox" name="tbMengeGesamt">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -445,7 +327,55 @@
            </size>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einer Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l zu Wasseraufbereitung aus. &lt;/p&gt;&lt;p&gt;Dieser Wert gilt für die gesamte Wassermenge des Sudes und hat rein informativen Charakter. Praktische Relevanz hat er &lt;span style=&quot; font-weight:600;&quot;&gt;aufgeteilt&lt;/span&gt; in den untenstehenden Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="9">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="8">
+         <widget class="QLabel" name="lblEinheitHgf">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="DoubleSpinBox" name="tbMengeHg">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -464,40 +394,10 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="13">
-         <widget class="QLabel" name="lblEinheitFaktor">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="6">
-         <widget class="QLabel" name="lblHgf">
-          <property name="text">
-           <string>Verdünnung</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="8">
-         <widget class="QLabel" name="lblEinheitHgf">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="10">
-         <widget class="QPushButton" name="btnAusgleichen">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button werden &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Mengen&lt;/span&gt; eines Salzes oder einer Säure auf die gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;angepasst&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Liegt die Zusatzmenge unter der Zielgröße der gewünschten Restalkalität, ist der Button ohne Wirkung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
+         <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Ausgleichen</string>
+           <string>Restalkalität</string>
           </property>
          </widget>
         </item>
@@ -514,27 +414,19 @@
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
   </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>tbName</tabstop>
-  <tabstop>cbEinheit</tabstop>
   <tabstop>btnAuswahl</tabstop>
   <tabstop>btnNachOben</tabstop>
   <tabstop>btnNachUnten</tabstop>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbMengeGesamt</tabstop>
-  <tabstop>btnAusgleichen</tabstop>
   <tabstop>tbRestalkalitaet</tabstop>
   <tabstop>tbMengeHg</tabstop>
   <tabstop>tbMengeNg</tabstop>
   <tabstop>tbMengeHgf</tabstop>
-  <tabstop>tbFaktor</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

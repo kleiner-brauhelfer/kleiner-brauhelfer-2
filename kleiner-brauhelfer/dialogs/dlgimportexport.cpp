@@ -21,6 +21,7 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
     mRow(row)
 {
     ui->setupUi(this);
+    ui->gpKbhExport->setVisible(false);
     adjustSize();
     gSettings->beginGroup(metaObject()->className());
     QSize size = gSettings->value("size").toSize();
@@ -52,6 +53,21 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
   #endif
     setWindowTitle(mImport ? tr("Rezept importieren") : tr("\"%1\" exportieren").arg(bh->modelSud()->data(mRow, ModelSud::ColSudname).toString()));
     ui->gpImport->setVisible(mImport);
+
+    connect(ui->cbSud, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbMalzschuettung, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbHopfengaben, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbHefegaben, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbWeitereZutatenGaben, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbRasten, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbWasseraufbereitung, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbSchnellgaerverlauf, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbHauptgaerverlauf, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbNachgaerverlauf, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbBewertungen, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbEtiketten, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbAnhang, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbTags, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
 }
 
 DlgImportExport::~DlgImportExport()
@@ -105,8 +121,38 @@ void DlgImportExport::on_rbFormatKbh_clicked()
 {
     if (!mImport)
     {
-        QByteArray content = ImportExport::exportKbh(bh, mRow);
+        QStringList exclude;
+        if (!ui->cbSud->isChecked())
+            exclude.append("Sud");
+        if (!ui->cbMalzschuettung->isChecked())
+            exclude.append("Malzschuettung");
+        if (!ui->cbHopfengaben->isChecked())
+            exclude.append("Hopfengaben");
+        if (!ui->cbHefegaben->isChecked())
+            exclude.append("Hefegaben");
+        if (!ui->cbWeitereZutatenGaben->isChecked())
+            exclude.append("WeitereZutatenGaben");
+        if (!ui->cbRasten->isChecked())
+            exclude.append("Rasten");
+        if (!ui->cbWasseraufbereitung->isChecked())
+            exclude.append("Wasseraufbereitung");
+        if (!ui->cbSchnellgaerverlauf->isChecked())
+            exclude.append("Schnellgaerverlauf");
+        if (!ui->cbHauptgaerverlauf->isChecked())
+            exclude.append("Hauptgaerverlauf");
+        if (!ui->cbNachgaerverlauf->isChecked())
+            exclude.append("Nachgaerverlauf");
+        if (!ui->cbBewertungen->isChecked())
+            exclude.append("Bewertungen");
+        if (!ui->cbEtiketten->isChecked())
+            exclude.append("Etiketten");
+        if (!ui->cbAnhang->isChecked())
+            exclude.append("Anhang");
+        if (!ui->cbTags->isChecked())
+            exclude.append("Tags");
+        QByteArray content = ImportExport::exportKbh(bh, mRow, exclude);
         ui->textEdit->setPlainText(QString::fromUtf8(content));
+        ui->gpKbhExport->setVisible(true);
     }
 }
 
@@ -116,6 +162,7 @@ void DlgImportExport::on_rbFormatMmum_clicked()
     {
         QByteArray content = ImportExport::exportMaischeMalzundMehr(bh, mRow);
         ui->textEdit->setPlainText(QString::fromUtf8(content));
+        ui->gpKbhExport->setVisible(false);
     }
 }
 
@@ -125,6 +172,7 @@ void DlgImportExport::on_rbFormatBeerxml_clicked()
     {
         QByteArray content = ImportExport::exportBeerXml(bh, mRow);
         ui->textEdit->setPlainText(QString::fromUtf8(content));
+        ui->gpKbhExport->setVisible(false);
     }
 }
 

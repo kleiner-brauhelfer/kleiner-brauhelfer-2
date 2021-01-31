@@ -110,21 +110,11 @@ void WdgHopfenGabe::updateValues()
     ui->tbAlpha->setValue(data(ModelHopfengaben::ColAlpha).toDouble());
     ui->tbAusbeute->setValue(data(ModelHopfengaben::ColAusbeute).toDouble());
     if (!ui->tbKochdauer->hasFocus())
-    {
-        ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
-        ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
         ui->tbKochdauer->setValue(data(ModelHopfengaben::ColZeit).toInt());
-    }
-    if (data(ModelHopfengaben::ColVorderwuerze).toBool())
-        ui->cbZeitpunkt->setCurrentIndex(0);
-    else if (ui->tbKochdauer->value() == ui->tbKochdauer->maximum())
-        ui->cbZeitpunkt->setCurrentIndex(1);
-    else if (ui->tbKochdauer->value() == ui->tbKochdauer->minimum() && ui->tbKochdauer->minimum() != 0)
-        ui->cbZeitpunkt->setCurrentIndex(4);
-    else if (ui->tbKochdauer->value() <= 0)
-        ui->cbZeitpunkt->setCurrentIndex(3);
-    else
-        ui->cbZeitpunkt->setCurrentIndex(2);
+    Brauhelfer::HopfenZeitpunkt zeitpunkt = static_cast<Brauhelfer::HopfenZeitpunkt>(data(ModelHopfengaben::ColZeitpunkt).toInt());
+    if (zeitpunkt == Brauhelfer::HopfenZeitpunkt::KochenAlt)
+        zeitpunkt = Brauhelfer::HopfenZeitpunkt::Kochen;
+    ui->cbZeitpunkt->setCurrentIndex(static_cast<int>(zeitpunkt) - 1);
     int idx = bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
@@ -163,7 +153,24 @@ void WdgHopfenGabe::updateValues()
         ui->btnMengeKorrektur->setVisible(mFehlProzent != 0.0);
         ui->btnAnteilKorrektur->setVisible(mFehlProzent != 0.0);
 
-        ui->tbKochdauer->setReadOnly(ui->cbZeitpunkt->currentIndex() == 0);
+        switch (zeitpunkt)
+        {
+        case Brauhelfer::HopfenZeitpunkt::Kochen:
+        case Brauhelfer::HopfenZeitpunkt::KochenAlt:
+            ui->tbKochdauer->setReadOnly(false);
+            ui->tbKochdauer->setMinimum(0);
+            ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
+            break;
+        case Brauhelfer::HopfenZeitpunkt::Vorderwuerze:
+        case Brauhelfer::HopfenZeitpunkt::Kochbeginn:
+        case Brauhelfer::HopfenZeitpunkt::Kochende:
+            ui->tbKochdauer->setReadOnly(true);
+            break;
+        case Brauhelfer::HopfenZeitpunkt::Ausschlagen:
+            ui->tbKochdauer->setReadOnly(false);
+            ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
+            ui->tbKochdauer->setMaximum(0);
+        }
 
         Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
         switch (berechnungsArtHopfen)
@@ -294,22 +301,7 @@ void WdgHopfenGabe::on_tbKochdauer_valueChanged(int dauer)
 void WdgHopfenGabe::on_cbZeitpunkt_currentIndexChanged(int index)
 {
     if (ui->cbZeitpunkt->hasFocus())
-    {
-        if (index == 0)
-        {
-            setData(ModelHopfengaben::ColVorderwuerze, true);
-        }
-        else
-        {
-            setData(ModelHopfengaben::ColVorderwuerze, false);
-            if (index == 1)
-                setData(ModelHopfengaben::ColZeit, ui->tbKochdauer->maximum());
-            else if (index == 3)
-                setData(ModelHopfengaben::ColZeit, 0);
-            else if (index == 4)
-                setData(ModelHopfengaben::ColZeit, ui->tbKochdauer->minimum());
-        }
-    }
+        setData(ModelHopfengaben::ColZeitpunkt, index + 1);
 }
 
 void WdgHopfenGabe::on_btnLoeschen_clicked()

@@ -22,7 +22,7 @@ public:
         Colerg_Menge,
         ColAlpha,
         ColPellets,
-        ColVorderwuerze,
+        ColZeitpunkt, // in DB: Vorderwuerze (bei Gelegenheit umbenennen)
         // virtual
         ColDeleted,
         ColIBUAnteil,

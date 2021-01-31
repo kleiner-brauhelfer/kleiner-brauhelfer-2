@@ -29,7 +29,7 @@
          <x>0</x>
          <y>0</y>
          <width>947</width>
-         <height>1017</height>
+         <height>986</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -67,13 +67,6 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Braudatum</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0">
             <spacer name="horizontalSpacer_3">
              <property name="orientation">
@@ -87,26 +80,30 @@
              </property>
             </spacer>
            </item>
-           <item row="0" column="6">
-            <widget class="QLabel" name="label_22">
-             <property name="minimumSize">
+           <item row="1" column="5">
+            <spacer name="horizontalSpacer_7">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
               <size>
-               <width>50</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
+            </spacer>
+           </item>
+           <item row="0" column="4">
+            <widget class="Line" name="line_17">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
             </widget>
            </item>
-           <item row="0" column="5">
-            <widget class="QLabel" name="label_2"/>
-           </item>
-           <item row="0" column="7">
-            <widget class="QLabel" name="label_23">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>0</height>
-              </size>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Braudatum</string>
              </property>
             </widget>
            </item>
@@ -126,18 +123,8 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="5">
-            <spacer name="horizontalSpacer_7">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-            </spacer>
+           <item row="0" column="5">
+            <widget class="QWidget" name="widget" native="true"/>
            </item>
            <item row="0" column="1">
             <widget class="DateEdit" name="tbBraudatum">
@@ -155,10 +142,13 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
-            <widget class="Line" name="line_17">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
+           <item row="0" column="6">
+            <widget class="QWidget" name="widget_2" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>220</width>
+               <height>0</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -2345,7 +2335,7 @@
             <widget class="QLabel" name="lblKostenEinheit">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>40</width>
                <height>0</height>
               </size>
              </property>
@@ -2487,24 +2477,6 @@
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="btnSudTeilen">
-            <property name="toolTip">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud aufteilen &lt;/span&gt;ist ein Verfahren&lt;span style=&quot; font-weight:600;&quot;&gt;, &lt;/span&gt;um die Gesamtwürze in den folgenden Prozessschritten unterschiedlich zu behandeln. In der Praxis wird dies sowohl &lt;span style=&quot; font-weight:600;&quot;&gt;vor &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;nach dem Anstellen mit Hefe &lt;/span&gt;umgesetzt.&lt;/p&gt;&lt;p&gt;Die Methode bietet sich an, wenn man einen Sud unterschiedlich ausbauen will. Dies können verschiedene Hefen und Zutaten während und nach der Gärung sein.&lt;/p&gt;&lt;p&gt;Üblicherweise teilt man den Sud vor dem Anstellen auf &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Gärbehälter&lt;/span&gt; auf. Der Grund dafür sind einerseits &lt;span style=&quot; font-weight:600;&quot;&gt;hygienische Vorsichtmaßnahmen&lt;/span&gt; und andererseits &lt;span style=&quot; font-weight:600;&quot;&gt;geschmackliche Überlegungen.&lt;/span&gt; Auch ist die Reproduzierbarkeit so gut gewährleistet. Aber auch ein späteres Teilen, etwa auf unterschiedliche Fässer und Gebinde, ist ein gängiges Verfahren.&lt;/p&gt;&lt;p&gt;Wichtig ist dabei immer, dass zusätzliche Prozessschritte keine Fehlaromen begünstigen. Bei Fragen sind die Fachforen eine gute Adresse.&lt;/p&gt;&lt;p&gt;Die Funktion ist mit Sud teilen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="whatsThis">
-             <string notr="true">sud_teilen</string>
-            </property>
-            <property name="text">
-             <string>Sud teilen</string>
-            </property>
-            <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/sud_teilen.svg</normaloff>
-              <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
        </layout>
@@ -2618,7 +2590,6 @@
   <tabstop>tbKosten</tabstop>
   <tabstop>cbDurchschnittIgnorieren</tabstop>
   <tabstop>btnSudGebraut</tabstop>
-  <tabstop>btnSudTeilen</tabstop>
   <tabstop>splitterHelp</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>

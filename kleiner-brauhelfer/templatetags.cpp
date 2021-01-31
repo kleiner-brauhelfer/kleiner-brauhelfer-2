@@ -317,7 +317,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     map.insert("Kochdauer", QString::number(dauer));
                     map.insert("ZugabeNach", QString::number(kochDauer - dauer));
                     map.insert("Alpha", locale.toString(model->data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1));
-                    if (model->data(row, ModelHopfengaben::ColVorderwuerze).toBool())
+                    if (static_cast<Brauhelfer::HopfenZeitpunkt>(model->data(row, ModelHopfengaben::ColZeitpunkt).toInt()) == Brauhelfer::HopfenZeitpunkt::Vorderwuerze)
                     {
                         map.insert("Vorderwuerze", true);
                         ctxZutaten["HatVorderwuerzehopfen"] = true;

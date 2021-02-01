@@ -39,7 +39,9 @@ public:
         ModuleLagerverwaltung       = 0x00040000,
         ModuleSpeise                = 0x00080000,
         //
-        ModuleDefault               = 0xfffff73f,
+        ModuleDefault               = ModuleSudauswahl | ModuleRezept | ModuleBraudaten | ModuleAbfuellen |
+                                      ModuleGaerverlauf | ModuleZusammenfassung | ModuleBrauuebersicht | ModuleRohstoffe |
+                                      ModuleLagerverwaltung,
         ModuleAlle                  = 0xffffffff,
     };
     Q_DECLARE_FLAGS(Modules, Module)
@@ -77,6 +79,7 @@ public:
 
     QString dataDir(int type) const;
 
+    bool initModules();
     Modules modules() const;
     void enableModule(Module module, bool enabled);
     bool module(Module module) const;

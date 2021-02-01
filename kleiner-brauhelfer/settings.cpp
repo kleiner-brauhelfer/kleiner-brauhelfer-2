@@ -9,9 +9,6 @@ Settings::Settings(QObject *parent) :
 {
     defaultFont = QGuiApplication::font();
     defaultPalette = QGuiApplication::palette();
-    beginGroup("General");
-    mModules = static_cast<Modules>(value("Modules", int(ModuleDefault)).toUInt());
-    endGroup();
     initTheme();
 }
 
@@ -20,9 +17,6 @@ Settings::Settings(const QString& dir, QObject *parent) :
 {
     defaultFont = QGuiApplication::font();
     defaultPalette = QGuiApplication::palette();
-    beginGroup("General");
-    mModules = static_cast<Modules>(value("Modules", int(ModuleDefault)).toUInt());
-    endGroup();
     initTheme();
 }
 
@@ -391,6 +385,23 @@ QString Settings::dataDir(int type) const
     }
 }
 
+bool Settings::initModules()
+{
+    bool ret;
+    beginGroup("General");
+    ret = contains("Modules");
+    if (!ret)
+        setValue("Modules", uint(ModuleDefault));
+    mModules = static_cast<Modules>(value("Modules").toUInt());
+    mModules.setFlag(ModuleSudauswahl);
+    mModules.setFlag(ModuleRezept);
+    mModules.setFlag(ModuleBraudaten);
+    mModules.setFlag(ModuleAbfuellen);
+    mModules.setFlag(ModuleRohstoffe);
+    endGroup();
+    return ret;
+}
+
 Settings::Modules Settings::modules() const
 {
     return mModules;
@@ -402,7 +413,7 @@ void Settings::enableModule(Settings::Module module, bool enabled)
     beginGroup("General");
     setValue("Modules", uint(mModules));
     endGroup();
-    emit(modulesChanged(module));
+    emit modulesChanged(module);
 }
 
 bool Settings::module(Settings::Module module) const

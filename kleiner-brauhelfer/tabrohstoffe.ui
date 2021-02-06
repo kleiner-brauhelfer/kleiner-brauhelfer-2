@@ -73,15 +73,15 @@
    <item>
     <widget class="QToolBox" name="toolBoxRohstoffe">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabMalz">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>444</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -132,8 +132,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>444</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -184,8 +184,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>444</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -236,8 +236,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>444</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <attribute name="label">
@@ -288,8 +288,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>946</width>
-        <height>444</height>
+        <width>952</width>
+        <height>496</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -342,8 +342,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>564</width>
-             <height>583</height>
+             <width>526</width>
+             <height>620</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">

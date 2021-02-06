@@ -1488,7 +1488,6 @@ bool Database::update()
             db.commit();
         }
 
-        /*todo:
         if (version == 2005)
         {
             ++version;
@@ -1497,13 +1496,28 @@ bool Database::update()
 
             // Sud
             //  - neue Spalte 'TemperaturKarbonisierung'
+            //  - neue Spalte 'BemerkungBrauen'
+            //  - neue Spalte 'BemerkungAbfuellen'
+            //  - neue Spalte 'BemerkungGaerung'
+            //  - neue Spalte 'ReifungStart'
             sqlExec(db, "ALTER TABLE Sud ADD COLUMN TemperaturKarbonisierung REAL DEFAULT 12");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungBrauen TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungAbfuellen TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungGaerung TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN ReifungStart DATETIME");
+            sqlExec(db, "UPDATE Sud SET ReifungStart = Abfuelldatum");
+            query = sqlExec(db, "SELECT SudID, Zeitstempel FROM Nachgaerverlauf GROUP BY SudID HAVING MAX(Zeitstempel)");
+            while (query.next())
+            {
+                QString sudId = query.value(0).toString();
+                QString dt = query.value(1).toString();
+                 sqlExec(db, QString("UPDATE Sud SET ReifungStart = '%2' WHERE ID = %1 AND ReifungStart < '%2'").arg(sudId, dt));
+            }
 
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
-        */
 
         return true;
     }

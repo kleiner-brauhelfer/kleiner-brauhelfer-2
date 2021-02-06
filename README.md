@@ -43,6 +43,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ### Version 2.3.0 (in Entwicklung)
 - Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)
+- Neu: Eingabemöglichkeit für Beginn der Reifung (nicht mehr an Nachgäverlauf gebunden)
 - Neu: Optionen bei Export im kleiner-brauhelfer Format
 - Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer
 - Fix: Sortierung der Gärverläufe nach Datum

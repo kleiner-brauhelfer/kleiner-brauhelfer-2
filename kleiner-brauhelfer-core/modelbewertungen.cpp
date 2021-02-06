@@ -17,9 +17,7 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
     }
     case ColWoche:
     {
-        QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColSudID).toInt());
-        if (!dt.isValid())
-            dt = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColAbfuelldatum).toDateTime();
+        QDateTime dt = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColReifungStart).toDateTime();
         if (dt.isValid())
             return dt.daysTo(data(idx.row(), ColDatum).toDateTime()) / 7 + 1;
         return 0;

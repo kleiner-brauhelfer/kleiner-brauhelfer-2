@@ -109,6 +109,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                          {ui->cbDurchschnittIgnorieren,
                          ui->lblDurchschnittIgnorieren,
                          ui->lblDurchschnittWarnung,
+                         ui->lineDurchschnittIgnorieren,
                          ui->tbMengeSollcmVonOben,
                          ui->lblMengeSollcmVonOben,
                          ui->lblMengeSollcmVonObenEinheit,
@@ -146,14 +147,26 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                           ui->tbNebenkosten,
                           ui->lblNebenkosten,
                           ui->lblNebenkostenEinheit,
-                          ui->lineKosten});
+                          ui->lblNebenkostenSpacer,
+                          ui->lineKosten,
+                          ui->lineKosten2});
     }
     updateValues();
 }
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 {
-    Q_UNUSED(old)
+    if (old == ui->tbBemerkung)
+    {
+        QString bemerkung = ui->tbBemerkung->toPlainText().replace("<br>", "\n");
+        if (bemerkung != bh->sud()->getBemerkungBrauen())
+            bh->sud()->setBemerkungBrauen(bemerkung);
+        ui->tbBemerkung->setHtml(bh->sud()->getBemerkungBrauen().replace("\n", "<br>"));
+    }
+    if (now == ui->tbBemerkung)
+    {
+        ui->tbBemerkung->setPlainText(bh->sud()->getBemerkungBrauen());
+    }
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -277,6 +290,9 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
+
+    if (!ui->tbBemerkung->hasFocus())
+        ui->tbBemerkung->setHtml(bh->sud()->getBemerkungBrauen().replace("\n", "<br>"));
 
     mTimerWebViewUpdate.start(200);
 }

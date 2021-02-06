@@ -79,6 +79,11 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(double, WuerzemengeKochbeginn, toDouble())
     Q_PROPERTY_SUD(double, SWKochbeginn, toDouble())
     Q_PROPERTY_SUD(double, VerschneidungAbfuellen, toDouble())
+    Q_PROPERTY_SUD(double, TemperaturKarbonisierung, toDouble())
+    Q_PROPERTY_SUD(QString, BemerkungBrauen, toString())
+    Q_PROPERTY_SUD(QString, BemerkungAbfuellen, toString())
+    Q_PROPERTY_SUD(QString, BemerkungGaerung, toString())
+    Q_PROPERTY_SUD(QDateTime, ReifungStart, toDateTime())
     // virtual fields in table Sud
     Q_PROPERTY_SUD_READONLY(double, MengeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())
@@ -120,7 +125,6 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, FaktorHauptgussEmpfehlung, toDouble())
     Q_PROPERTY_SUD_READONLY(double, WHauptgussEmpfehlung, toDouble())
     Q_PROPERTY_SUD_READONLY(int, BewertungMittel, toInt())
-    Q_PROPERTY_SUD(double, TemperaturKarbonisierung, toDouble())
 
     // tables
     Q_PROPERTY(ProxyModel* modelRasten READ modelRasten CONSTANT)

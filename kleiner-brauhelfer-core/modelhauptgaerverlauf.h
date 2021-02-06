@@ -40,6 +40,7 @@ public:
 private:
 
     int getLastRow(const QVariant &sudId) const;
+    double getHighestTemp(const QVariant &sudId) const;
 
 private:
 

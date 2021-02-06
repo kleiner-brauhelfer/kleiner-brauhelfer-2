@@ -73,7 +73,7 @@ int ModelSchnellgaerverlauf::getLastRow(const QVariant &sudId) const
     QDateTime lastDt;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID) == sudId)
+        if (data(r, ColSudID) == sudId && !data(r, fieldIndex("deleted")).toBool())
         {
             QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)

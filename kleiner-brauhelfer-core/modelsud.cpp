@@ -1,7 +1,5 @@
 #include "modelsud.h"
 #include "brauhelfer.h"
-#include "modelausruestung.h"
-#include "modelnachgaerverlauf.h"
 #include <math.h>
 #include <qmath.h>
 
@@ -59,7 +57,6 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("FaktorHauptgussEmpfehlung");
     mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
-    mVirtualField.append("TemperaturKarbonisierung");
 }
 
 void ModelSud::createConnections()
@@ -154,6 +151,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
     case ColGespeichert:
+    {
+        return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
+    }
+    case ColReifungStart:
     {
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
@@ -280,9 +281,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
         if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
-            QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColID).toInt());
-            if (!dt.isValid())
-                dt = data(idx.row(), ColAbfuelldatum).toDateTime();
+            QDateTime dt = data(idx.row(), ColReifungStart).toDateTime();
             if (dt.isValid())
                 return dt.daysTo(QDateTime::currentDateTime()) / 7 + 1;
         }
@@ -293,9 +292,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
         if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
-            QDateTime dt = bh->modelNachgaerverlauf()->getLastDateTime(data(idx.row(), ColID).toInt());
-            if (!dt.isValid())
-                dt = data(idx.row(), ColAbfuelldatum).toDateTime();
+            QDateTime dt = data(idx.row(), ColReifungStart).toDateTime();
             if (dt.isValid())
             {
                 qint64 tageReifung = dt.daysTo(QDateTime::currentDateTime());
@@ -496,10 +493,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
             return data(idx.row(), Colerg_S_Gesamt).toDouble() * data(idx.row(), ColFaktorHauptguss).toDouble();
         }
     }
-    case ColTemperaturKarbonisierung:
-    {
-        return temperaturKarbonisierung;
-    }
     case ColBewertungMittel:
     {
         return bh->modelBewertungen()->mean(data(idx.row(), ColID));
@@ -535,6 +528,10 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
     case ColGespeichert:
+    {
+        return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
+    }
+    case ColReifungStart:
     {
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
     }
@@ -705,11 +702,6 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         }
         return true;
     }
-    case ColTemperaturKarbonisierung:
-    {
-        temperaturKarbonisierung = value.toDouble();
-        return true;
-    }
     default:
         return QSqlTableModel::setData(idx, value);
     }
@@ -721,7 +713,6 @@ Qt::ItemFlags ModelSud::flags(const QModelIndex &idx) const
     switch (idx.column())
     {
     case ColWuerzemengeAnstellenTotal:
-    case ColTemperaturKarbonisierung:
         itemFlags |= Qt::ItemIsEditable;
         break;
     }

@@ -15,6 +15,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui(new Ui::TabAbfuellen)
 {
     ui->setupUi(this);
+    ui->tbReifezeit->setColumn(ModelSud::ColWoche);
     ui->tbSWSchnellgaerprobe->setColumn(ModelSud::ColSWSchnellgaerprobe);
     ui->tbSWJungbier->setColumn(ModelSud::ColSWJungbier);
     ui->tbBiermengeAbfuellen->setColumn(ModelSud::Colerg_AbgefuellteBiermenge);
@@ -105,7 +106,9 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
                           ui->tbNebenkosten,
                           ui->lblNebenkosten,
                           ui->lblNebenkostenEinheit,
-                          ui->lineKosten});
+                          ui->lblNebenkostenSpacer,
+                          ui->lineKosten,
+                          ui->lineKosten2});
     }
     if (modules.testFlag(Settings::ModuleSpeise))
     {
@@ -125,7 +128,29 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 {
-    Q_UNUSED(old)
+    if (old == ui->tbBemerkungAbfuellen)
+    {
+        QString bemerkung = ui->tbBemerkungAbfuellen->toPlainText().replace("<br>", "\n");
+        if (bemerkung != bh->sud()->getBemerkungAbfuellen())
+            bh->sud()->setBemerkungAbfuellen(bemerkung);
+        ui->tbBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen().replace("\n", "<br>"));
+    }
+    if (now == ui->tbBemerkungAbfuellen)
+    {
+        ui->tbBemerkungAbfuellen->setPlainText(bh->sud()->getBemerkungAbfuellen());
+    }
+    if (old == ui->tbBemerkungGaerung)
+    {
+        QString bemerkung = ui->tbBemerkungGaerung->toPlainText().replace("<br>", "\n");
+        if (bemerkung != bh->sud()->getBemerkungGaerung())
+            bh->sud()->setBemerkungGaerung(bemerkung);
+        ui->tbBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung().replace("\n", "<br>"));
+    }
+    if (now == ui->tbBemerkungGaerung)
+    {
+        ui->tbBemerkungGaerung->setPlainText(bh->sud()->getBemerkungGaerung());
+    }
+
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -153,9 +178,15 @@ void TabAbfuellen::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     bool abgefuellt = status >= Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled;
+    bool verbraucht = status >= Brauhelfer::SudStatus::Verbraucht && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
     ui->tbAbfuelldatumZeit->setReadOnly(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
+    ui->tbReifung->setReadOnly(verbraucht);
+    ui->btnReifungHeute->setVisible(!abgefuellt);
+    ui->tbReifezeit->setVisible(!verbraucht);
+    ui->lblReifezeit->setVisible(!verbraucht);
+    ui->lblReifezeitEinheit->setVisible(!verbraucht);
     ui->cbSchnellgaerprobeAktiv->setEnabled(!abgefuellt);
     ui->tbSWSchnellgaerprobe->setReadOnly(abgefuellt);
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked() && !abgefuellt);
@@ -187,6 +218,9 @@ void TabAbfuellen::updateValues()
     ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
     ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
     ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
+    dt = bh->sud()->getReifungStart();
+    ui->tbReifung->setMinimumDate(ui->tbAbfuelldatum->date());
+    ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
 
     ui->tbSWJungbierSoll->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
@@ -238,6 +272,11 @@ void TabAbfuellen::updateValues()
     ui->tbKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesungEinheit->setVisible(hasZuckerLoesung);
 
+    if (!ui->tbBemerkungAbfuellen->hasFocus())
+        ui->tbBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen().replace("\n", "<br>"));
+    if (!ui->tbBemerkungGaerung->hasFocus())
+        ui->tbBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung().replace("\n", "<br>"));
+
     mTimerWebViewUpdate.start(200);
 }
 
@@ -261,6 +300,17 @@ void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
 {
     bh->sud()->setAbfuelldatum(QDateTime());
+}
+
+void TabAbfuellen::on_tbReifung_dateChanged(const QDate &date)
+{
+    if (ui->tbReifung->hasFocus())
+        bh->sud()->setReifungStart(QDateTime(date, QTime()));
+}
+
+void TabAbfuellen::on_btnReifungHeute_clicked()
+{
+    bh->sud()->setReifungStart(QDateTime());
 }
 
 void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
@@ -346,6 +396,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         return;
 
     bh->sud()->setAbfuelldatum(dt);
+    bh->sud()->setReifungStart(ui->tbReifung->dateTime());
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},

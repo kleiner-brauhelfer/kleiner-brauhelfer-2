@@ -42,7 +42,9 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ## Änderungen & Erweiterungen
 
 ### Version 2.3.0 (in Entwicklung)
+- Neu: Datenbankversion **2006**
 - Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)
+- Neu: Weitere Eingabemöglichkeiten für Bemerkungen (Brauen, Abfüllen, Gärung)
 - Neu: Eingabemöglichkeit für Beginn der Reifung (nicht mehr an Nachgäverlauf gebunden)
 - Neu: Optionen bei Export im kleiner-brauhelfer Format
 - Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer

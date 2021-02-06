@@ -23,7 +23,7 @@
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
 // Diese Kopie wird aktualisiert ohne die ursprüngliche Datenbank zu verändern.
-#define MODE_TEST_UPDATE
+//#define MODE_TEST_UPDATE
 
 #if defined(QT_NO_DEBUG) && defined(MODE_TEST_UPDATE)
 #error MODE_TEST_UPDATE in release build defined.
@@ -116,7 +116,7 @@ static bool connectDatabase()
             else if (version < bh->supportedDatabaseVersion)
             {
                 int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Die Datenbank muss aktualisiert werden (version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
+                                               QObject::tr("Die Datenbank muss aktualisiert werden (Version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
                                                QObject::tr("Soll die Datenbank jetzt aktualisiert werden?") + " " +
                                                QObject::tr("ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!"),
                                                QMessageBox::Yes | QMessageBox::No,

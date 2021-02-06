@@ -51,90 +51,64 @@ void SvgView::clear()
     mSvgItem = nullptr;
 }
 
+template <class T> bool SvgView::load_impl(const T& arg)
+{
+    try
+    {
+        QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem());
+        if (!svgItem->renderer()->load(arg))
+            return false;
+        svgItem->setElementId("");
+
+        scene()->clear();
+        resetTransform();
+
+        mSvgItem = svgItem.take();
+        mSvgItem->setFlags(QGraphicsItem::ItemClipsToShape);
+        mSvgItem->setCacheMode(QGraphicsItem::NoCache);
+        mSvgItem->setZValue(0);
+
+        if (mBackgroundVisible)
+        {
+            QGraphicsRectItem *backgroundItem = new QGraphicsRectItem(mSvgItem->boundingRect());
+            backgroundItem->setBrush(Qt::white);
+            backgroundItem->setPen(Qt::NoPen);
+            backgroundItem->setZValue(-1);
+            scene()->addItem(backgroundItem);
+        }
+
+        scene()->addItem(mSvgItem);
+
+        if (mOutlineVisible)
+        {
+            QGraphicsRectItem *outlineItem = new QGraphicsRectItem(mSvgItem->boundingRect());
+            QPen outline(Qt::black, 2, Qt::DashLine);
+            outline.setCosmetic(true);
+            outline.setColor(QColor(255,0,0));
+            outlineItem->setPen(outline);
+            outlineItem->setBrush(Qt::NoBrush);
+            outlineItem->setZValue(1);
+            scene()->addItem(outlineItem);
+        }
+
+        scene()->setSceneRect(mSvgItem->boundingRect());
+        fitInView(mSvgItem, Qt::KeepAspectRatio);
+        return true;
+    }
+    catch (...)
+    {
+        return false;
+    }
+}
+
 bool SvgView::load(const QString &filename)
 {
-    QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem());
-    if (!svgItem->renderer()->load(filename))
-        return false;
-    svgItem->setElementId("");
-
-    scene()->clear();
-    resetTransform();
-
-    mSvgItem = svgItem.take();
-    mSvgItem->setFlags(QGraphicsItem::ItemClipsToShape);
-    mSvgItem->setCacheMode(QGraphicsItem::NoCache);
-    mSvgItem->setZValue(0);
-
-    if (mBackgroundVisible)
-    {
-        QGraphicsRectItem *backgroundItem = new QGraphicsRectItem(mSvgItem->boundingRect());
-        backgroundItem->setBrush(Qt::white);
-        backgroundItem->setPen(Qt::NoPen);
-        backgroundItem->setZValue(-1);
-        scene()->addItem(backgroundItem);
-    }
-
-    scene()->addItem(mSvgItem);
-
-    if (mOutlineVisible)
-    {
-        QGraphicsRectItem *outlineItem = new QGraphicsRectItem(mSvgItem->boundingRect());
-        QPen outline(Qt::black, 2, Qt::DashLine);
-        outline.setCosmetic(true);
-        outline.setColor(QColor(255,0,0));
-        outlineItem->setPen(outline);
-        outlineItem->setBrush(Qt::NoBrush);
-        outlineItem->setZValue(1);
-        scene()->addItem(outlineItem);
-    }
-
-    scene()->setSceneRect(mSvgItem->boundingRect());
-    fitInView(mSvgItem, Qt::KeepAspectRatio);
-    return true;
+    return load_impl(filename);
 }
 
 bool SvgView::load(const QByteArray &contents)
 {
-    QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem());
-    if (!svgItem->renderer()->load(contents))
-        return false;
-    svgItem->setElementId("");
-
-    scene()->clear();
-    resetTransform();
-
-    mSvgItem = svgItem.take();
-    mSvgItem->setFlags(QGraphicsItem::ItemClipsToShape);
-    mSvgItem->setCacheMode(QGraphicsItem::NoCache);
-    mSvgItem->setZValue(0);
-
-    if (mBackgroundVisible)
-    {
-        QGraphicsRectItem *backgroundItem = new QGraphicsRectItem(mSvgItem->boundingRect());
-        backgroundItem->setBrush(Qt::white);
-        backgroundItem->setPen(Qt::NoPen);
-        backgroundItem->setZValue(-1);
-        scene()->addItem(backgroundItem);
-    }
-
-    scene()->addItem(mSvgItem);
-
-    if (mOutlineVisible)
-    {
-        QGraphicsRectItem *outlineItem = new QGraphicsRectItem(mSvgItem->boundingRect());
-        QPen outline(Qt::black, 2, Qt::DashLine);
-        outline.setCosmetic(true);
-        outline.setColor(QColor(255,0,0));
-        outlineItem->setPen(outline);
-        outlineItem->setBrush(Qt::NoBrush);
-        outlineItem->setZValue(1);
-        scene()->addItem(outlineItem);
-    }
-
-    scene()->setSceneRect(mSvgItem->boundingRect());
-    fitInView(mSvgItem, Qt::KeepAspectRatio);
-    return true;
+    return load_impl(contents);
 }
 
 void SvgView::setViewBackground(bool enable)

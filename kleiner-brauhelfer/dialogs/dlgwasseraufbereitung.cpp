@@ -75,12 +75,14 @@ void DlgWasseraufbereitung::on_cbAuswahl_currentIndexChanged(int index)
             ui->tbName->setText("");
             ui->tbKonzentration->setReadOnly(true);
             ui->tbFaktor->setReadOnly(false);
+            ui->cbEinheit->setEnabled(true);
         }
         else
         {
             ui->tbName->setText(mList[index].name + tr(" (%1%)").arg(ui->tbKonzentration->value()));
             ui->tbKonzentration->setReadOnly(false);
             ui->tbFaktor->setReadOnly(true);
+            ui->cbEinheit->setEnabled(false);
         }
         ui->tbFaktor->setValue(mList[index].faktor / ui->tbKonzentration->value()* 100);
     }

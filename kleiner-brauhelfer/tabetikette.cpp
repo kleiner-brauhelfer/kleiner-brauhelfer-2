@@ -286,8 +286,8 @@ void TabEtikette::on_btnOeffnen_clicked()
         QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()},
                                     {ModelAnhang::ColPfad, fileName}});
         bh->sud()->modelAnhang()->append(values);
-        setData(ModelEtiketten::ColPfad, fileName);
         updateAll();
+        on_cbAuswahl_activated(ui->cbAuswahl->findText(QFileInfo(fileName).fileName()));
     }
 }
 

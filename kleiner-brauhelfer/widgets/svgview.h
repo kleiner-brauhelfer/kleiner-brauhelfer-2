@@ -34,6 +34,9 @@ protected:
     void drawBackground(QPainter *p, const QRectF &rect) Q_DECL_OVERRIDE;
 
 private:
+    template <class T> bool load_impl(const T& arg);
+
+private:
     QGraphicsSvgItem *mSvgItem;
     bool mBackgroundVisible;
     bool mOutlineVisible;

@@ -150,17 +150,17 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(updateDiagramm()));
+            this, SLOT(dataChangedSchnellgaerverlauf(const QModelIndex&)));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(updateDiagramm()));
+            this, SLOT(dataChangedHauptgaerverlauf(const QModelIndex&)));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(updateDiagramm()));
+            this, SLOT(dataChangedNachgaerverlauf(const QModelIndex&)));
     connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
     connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
     connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
@@ -349,6 +349,27 @@ void TabGaerverlauf::checkEnabled()
 void TabGaerverlauf::updateValues()
 {
     checkEnabled();
+}
+
+void TabGaerverlauf::dataChangedSchnellgaerverlauf(const QModelIndex& index)
+{
+    if (index.column() == ModelSchnellgaerverlauf::ColZeitstempel)
+        bh->sud()->modelSchnellgaerverlauf()->invalidate();
+    updateDiagramm();
+}
+
+void TabGaerverlauf::dataChangedHauptgaerverlauf(const QModelIndex& index)
+{
+    if (index.column() == ModelHauptgaerverlauf::ColZeitstempel)
+        bh->sud()->modelHauptgaerverlauf()->invalidate();
+    updateDiagramm();
+}
+
+void TabGaerverlauf::dataChangedNachgaerverlauf(const QModelIndex& index)
+{
+    if (index.column() == ModelNachgaerverlauf::ColZeitstempel)
+        bh->sud()->modelNachgaerverlauf()->invalidate();
+    updateDiagramm();
 }
 
 void TabGaerverlauf::updateDiagramm()

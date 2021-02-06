@@ -44,7 +44,8 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ### Version 2.3.0 (in Entwicklung)
 - Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)
 - Neu: Optionen bei Export im kleiner-brauhelfer Format
-- Fix: Zeitpunkt der Hopfengabe¨n nicht mehr in Abhängigkeit der Kochdauer
+- Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer
+- Fix: Sortierung der Gärverläufe nach Datum
 
 ### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)

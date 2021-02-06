@@ -33,6 +33,9 @@ private:
 private slots:
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
+    void dataChangedSchnellgaerverlauf(const QModelIndex& index);
+    void dataChangedHauptgaerverlauf(const QModelIndex& index);
+    void dataChangedNachgaerverlauf(const QModelIndex& index);
     void updateDiagramm();
     void updateValues();
     void updateWeitereZutaten();

@@ -64,10 +64,13 @@ void SudObject::init()
     modelWasseraufbereitung()->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
     modelSchnellgaerverlauf()->setSourceModel(bh->modelSchnellgaerverlauf());
     modelSchnellgaerverlauf()->setFilterKeyColumn(ModelSchnellgaerverlauf::ColSudID);
+    modelSchnellgaerverlauf()->sort(ModelSchnellgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelHauptgaerverlauf()->setSourceModel(bh->modelHauptgaerverlauf());
     modelHauptgaerverlauf()->setFilterKeyColumn(ModelHauptgaerverlauf::ColSudID);
+    modelHauptgaerverlauf()->sort(ModelHauptgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelNachgaerverlauf()->setSourceModel(bh->modelNachgaerverlauf());
     modelNachgaerverlauf()->setFilterKeyColumn(ModelNachgaerverlauf::ColSudID);
+    modelNachgaerverlauf()->sort(ModelNachgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
     modelBewertungen()->setSourceModel(bh->modelBewertungen());
     modelBewertungen()->setFilterKeyColumn(ModelBewertungen::ColSudID);
     modelAnhang()->setSourceModel(bh->modelAnhang());

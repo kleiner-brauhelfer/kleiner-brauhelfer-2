@@ -6,11 +6,13 @@ extern Settings *gSettings;
 
 DateTimeEdit::DateTimeEdit(QWidget *parent) :
     QDateTimeEdit(parent),
+    WidgetDecorator(),
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
     setCalendarPopup(true);
+    connect(this, SIGNAL(dateTimeChanged(const QDateTime&)), SLOT(on_valueChanged()));
 }
 
 void DateTimeEdit::wheelEvent(QWheelEvent *event)
@@ -21,7 +23,9 @@ void DateTimeEdit::wheelEvent(QWheelEvent *event)
 
 void DateTimeEdit::updatePalette()
 {
-    if (!isEnabled())
+    if (mValueChanged)
+        setPalette(gSettings->paletteChanged);
+    else if (!isEnabled())
         setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteError);
@@ -35,6 +39,17 @@ void DateTimeEdit::paintEvent(QPaintEvent *event)
 {
     updatePalette();
     QDateTimeEdit::paintEvent(event);
+}
+
+void DateTimeEdit::on_valueChanged()
+{
+    waValueChanged(hasFocus());
+}
+
+void DateTimeEdit::focusOutEvent(QFocusEvent *event)
+{
+    waFocusOutEvent();
+    QDateTimeEdit::focusOutEvent(event);
 }
 
 void DateTimeEdit::setReadOnly(bool r)

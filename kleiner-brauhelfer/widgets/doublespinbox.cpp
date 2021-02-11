@@ -5,11 +5,13 @@ extern Settings *gSettings;
 
 DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent),
+    WidgetDecorator(),
     mError(false),
     mErrorOnLimit(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    connect(this, SIGNAL(valueChanged(double)), SLOT(on_valueChanged()));
 }
 
 void DoubleSpinBox::wheelEvent(QWheelEvent *event)
@@ -20,7 +22,9 @@ void DoubleSpinBox::wheelEvent(QWheelEvent *event)
 
 void DoubleSpinBox::updatePalette()
 {
-    if (!isEnabled())
+    if (mValueChanged)
+        setPalette(gSettings->paletteChanged);
+    else if (!isEnabled())
         setPalette(gSettings->palette);
     else if (mError || (mErrorOnLimit && (value() >= maximum() || value() <= minimum())))
         setPalette(gSettings->paletteError);
@@ -34,6 +38,17 @@ void DoubleSpinBox::paintEvent(QPaintEvent *event)
 {
     updatePalette();
     QDoubleSpinBox::paintEvent(event);
+}
+
+void DoubleSpinBox::on_valueChanged()
+{
+    waValueChanged(hasFocus());
+}
+
+void DoubleSpinBox::focusOutEvent(QFocusEvent *event)
+{
+    waFocusOutEvent();
+    QDoubleSpinBox::focusOutEvent(event);
 }
 
 void DoubleSpinBox::setReadOnly(bool r)

@@ -5,10 +5,12 @@ extern Settings *gSettings;
 
 TimeEdit::TimeEdit(QWidget *parent) :
     QTimeEdit(parent),
+    WidgetDecorator(),
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    connect(this, SIGNAL(timeChanged(const QTime&)), SLOT(on_valueChanged()));
 }
 
 void TimeEdit::wheelEvent(QWheelEvent *event)
@@ -19,7 +21,9 @@ void TimeEdit::wheelEvent(QWheelEvent *event)
 
 void TimeEdit::updatePalette()
 {
-    if (!isEnabled())
+    if (mValueChanged)
+        setPalette(gSettings->paletteChanged);
+    else if (!isEnabled())
         setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteError);
@@ -33,6 +37,17 @@ void TimeEdit::paintEvent(QPaintEvent *event)
 {
     updatePalette();
     QDateTimeEdit::paintEvent(event);
+}
+
+void TimeEdit::on_valueChanged()
+{
+    waValueChanged(hasFocus());
+}
+
+void TimeEdit::focusOutEvent(QFocusEvent *event)
+{
+    waFocusOutEvent();
+    QTimeEdit::focusOutEvent(event);
 }
 
 void TimeEdit::setReadOnly(bool r)

@@ -2,9 +2,12 @@
 #define SPINBOX_H
 
 #include <QSpinBox>
+#include "widgetdecorator.h"
 
-class SpinBox : public QSpinBox
+class SpinBox : public QSpinBox, public WidgetDecorator
 {
+    Q_OBJECT
+
 public:
     SpinBox(QWidget *parent = nullptr);
     void setReadOnly(bool r);
@@ -14,6 +17,9 @@ private:
     void updatePalette();
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
+private slots:
+    void on_valueChanged();
 private:
     bool mError;
     bool mErrorOnLimit;

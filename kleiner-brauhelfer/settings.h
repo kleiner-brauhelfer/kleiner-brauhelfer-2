@@ -40,7 +40,7 @@ public:
         ModuleSpeise                = 0x00080000,
         //
         ModuleDefault               = ModuleSudauswahl | ModuleRezept | ModuleBraudaten | ModuleAbfuellen |
-                                      ModuleGaerverlauf | ModuleZusammenfassung | ModuleBrauuebersicht | ModuleRohstoffe |
+                                      ModuleGaerverlauf | ModuleZusammenfassung | ModuleRohstoffe |
                                       ModuleLagerverwaltung,
         ModuleAlle                  = 0xffffffff,
     };
@@ -101,6 +101,7 @@ public:
     QPalette paletteError;
     QPalette paletteErrorButton;
     QPalette paletteErrorLabel;
+    QPalette paletteChanged;
 
     QColor ErrorBase;
     QColor ErrorText;

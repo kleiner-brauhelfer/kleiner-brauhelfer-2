@@ -5,11 +5,13 @@ extern Settings *gSettings;
 
 SpinBox::SpinBox(QWidget *parent) :
     QSpinBox(parent),
+    WidgetDecorator(),
     mError(false),
     mErrorOnLimit(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    connect(this, SIGNAL(valueChanged(int)), SLOT(on_valueChanged()));
 }
 
 void SpinBox::wheelEvent(QWheelEvent *event)
@@ -20,7 +22,9 @@ void SpinBox::wheelEvent(QWheelEvent *event)
 
 void SpinBox::updatePalette()
 {
-    if (!isEnabled())
+    if (mValueChanged)
+        setPalette(gSettings->paletteChanged);
+    else if (!isEnabled())
         setPalette(gSettings->palette);
     else if (mError || (mErrorOnLimit && (value() >= maximum() || value() <= minimum())))
         setPalette(gSettings->paletteError);
@@ -34,6 +38,17 @@ void SpinBox::paintEvent(QPaintEvent *event)
 {
     updatePalette();
     QSpinBox::paintEvent(event);
+}
+
+void SpinBox::on_valueChanged()
+{
+    waValueChanged(hasFocus());
+}
+
+void SpinBox::focusOutEvent(QFocusEvent *event)
+{
+    waFocusOutEvent();
+    QSpinBox::focusOutEvent(event);
 }
 
 void SpinBox::setReadOnly(bool r)

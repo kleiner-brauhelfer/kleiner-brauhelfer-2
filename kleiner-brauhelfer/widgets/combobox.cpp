@@ -6,9 +6,12 @@ extern Settings *gSettings;
 
 ComboBox::ComboBox(QWidget *parent) :
     QComboBox(parent),
+    WidgetDecorator(),
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
+    connect(this, SIGNAL(currentIndexChanged(int)), SLOT(on_valueChanged()));
+    connect(this, SIGNAL(currentTextChanged(const QString&)), SLOT(on_valueChanged()));
 }
 
 void ComboBox::wheelEvent(QWheelEvent *event)
@@ -19,7 +22,9 @@ void ComboBox::wheelEvent(QWheelEvent *event)
 
 void ComboBox::updatePalette()
 {
-    if (!isEnabled())
+    if (mValueChanged)
+        setPalette(gSettings->paletteChanged);
+    else if (!isEnabled())
         setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteErrorButton);
@@ -31,6 +36,17 @@ void ComboBox::paintEvent(QPaintEvent *event)
 {
     updatePalette();
     QComboBox::paintEvent(event);
+}
+
+void ComboBox::on_valueChanged()
+{
+    waValueChanged(hasFocus());
+}
+
+void ComboBox::focusOutEvent(QFocusEvent *event)
+{
+    waFocusOutEvent();
+    QComboBox::focusOutEvent(event);
 }
 
 void ComboBox::setError(bool e)

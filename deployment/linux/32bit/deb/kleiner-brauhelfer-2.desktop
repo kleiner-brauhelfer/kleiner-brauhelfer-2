@@ -2,6 +2,6 @@
 Type=Application
 Name=kleiner-brauhelfer-2
 Comment=Ein Programm zum berechnen und verwalten von Biersuden
-Exec=/usr/local/bin/kleiner-brauhelfer-2/kleiner-brauhelfer-2
+Exec=/usr/local/bin/kleiner-brauhelfer-2
 Icon=/usr/share/pixmaps/kleiner-brauhelfer-2.svg
 Categories=Office;

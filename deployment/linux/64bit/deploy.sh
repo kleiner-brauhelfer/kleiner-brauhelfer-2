@@ -11,8 +11,8 @@ rm "${BUILD_DIR}/libkleiner-brauhelfer-core.a"
 # create deb package 
 DEPLOY_DIR="${BUILD_DIR}/deb"
 
-mkdir -p "${DEPLOY_DIR}/usr/local/bin/kleiner-brauhelfer-2"
-cp "${BUILD_DIR}/kleiner-brauhelfer-2" "${DEPLOY_DIR}/usr/local/bin/kleiner-brauhelfer-2"
+mkdir -p "${DEPLOY_DIR}/usr/local/bin"
+cp "${BUILD_DIR}/kleiner-brauhelfer-2" "${DEPLOY_DIR}/usr/local/bin"
 
 mkdir -p "${DEPLOY_DIR}/usr/share/pixmaps"
 cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${DEPLOY_DIR}/usr/share/pixmaps/"

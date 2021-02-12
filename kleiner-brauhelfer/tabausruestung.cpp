@@ -386,6 +386,7 @@ void TabAusruestung::updateDurchschnitt()
 
 void TabAusruestung::on_btnVerdampfungsrate_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     DlgVerdampfung dlg;
     dlg.setDurchmesser(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
     dlg.setHoehe(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
@@ -401,7 +402,9 @@ void TabAusruestung::on_btnVerdampfungsrate_clicked()
         dlg.setMenge1(20);
         dlg.setMenge2(18);
     }
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
     {
         setData(ModelAusruestung::ColVerdampfungsrate, dlg.getVerdampfungsrate());
     }

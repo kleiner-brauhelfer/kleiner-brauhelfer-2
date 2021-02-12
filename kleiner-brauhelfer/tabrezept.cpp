@@ -565,14 +565,11 @@ void TabRezept::updateValues()
         ui->tbSudname->setCursorPosition(0);
     }
     if (!ui->cbKategorie->hasFocus())
-    {
-        ui->cbKategorie->setCurrentIndex(-1);
-        ui->cbKategorie->setCurrentText(bh->sud()->getKategorie());
-    }
+        ui->cbKategorie->setCurrentIndex(ui->cbKategorie->findText(bh->sud()->getKategorie()));
 
     // ModuleAusruestung
     if (!ui->cbAnlage->hasFocus())
-        ui->cbAnlage->setCurrentText(bh->sud()->getAnlage());
+        ui->cbAnlage->setCurrentIndex(ui->cbAnlage->findText(bh->sud()->getAnlage()));
     if (ui->cbAnlage->currentIndex() == -1 || !gSettings->module(Settings::ModuleAusruestung))
     {
         ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
@@ -603,7 +600,7 @@ void TabRezept::updateValues()
 
     // ModuleWasseraufbereitung
     if (!ui->cbWasserProfil->hasFocus())
-        ui->cbWasserProfil->setCurrentText(bh->sud()->getWasserprofil());
+        ui->cbWasserProfil->setCurrentIndex(ui->cbWasserProfil->findText(bh->sud()->getWasserprofil()));
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
     ui->tbRestalkalitaetIst->setError(enabled && qAbs(diff) > 0.05);

@@ -369,7 +369,7 @@
              </widget>
             </item>
             <item row="5" column="2">
-             <widget class="QPushButton" name="btnVerdampfungMittel">
+             <widget class="PushButton" name="btnVerdampfungMittel">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -403,7 +403,7 @@
              </spacer>
             </item>
             <item row="1" column="2">
-             <widget class="QPushButton" name="btnAusbeuteMittel">
+             <widget class="PushButton" name="btnAusbeuteMittel">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -521,7 +521,7 @@
              </widget>
             </item>
             <item row="4" column="2">
-             <widget class="QPushButton" name="btnVerdampfungsrate">
+             <widget class="PushButton" name="btnVerdampfungsrate">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -1318,6 +1318,11 @@
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>

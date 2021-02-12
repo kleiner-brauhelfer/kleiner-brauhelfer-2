@@ -321,13 +321,17 @@ void TabBraudaten::on_btnBraudatumHeute_clicked()
 
 void TabBraudaten::on_btnSWKochbeginn_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(bh->sud()->getSWKochbeginn(), 0.0, -1.0, QDateTime(), this);
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setSWKochbeginn(dlg.value());
 }
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
     if (gSettings->module(Settings::ModuleAusruestung))
     {
@@ -336,7 +340,9 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
     }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setWuerzemengeKochbeginn(dlg.getLiter());
 }
 
@@ -348,6 +354,7 @@ void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
 
 void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
     if (gSettings->module(Settings::ModuleAusruestung))
     {
@@ -356,12 +363,15 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
     }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeVorHopfenseihen->value());
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setWuerzemengeVorHopfenseihen(dlg.getLiter());
 }
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
     if (gSettings->module(Settings::ModuleAusruestung))
     {
@@ -370,7 +380,9 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
     }
     DlgVolumen dlg(d, h, this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setWuerzemengeKochende(dlg.getLiter());
 }
 
@@ -382,20 +394,27 @@ void TabBraudaten::on_tbTempKochende_valueChanged(double)
 
 void TabBraudaten::on_btnSWKochende_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(bh->sud()->getSWKochende(), 0.0, -1.0, QDateTime(),this);
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setSWKochende(dlg.value());
 }
 
 void TabBraudaten::on_btnSWAnstellen_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(bh->sud()->getSWAnstellen(), 0.0, -1.0, QDateTime(),this);
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setSWAnstellen(dlg.value());
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
     if (gSettings->module(Settings::ModuleAusruestung))
     {
@@ -406,7 +425,9 @@ void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
     dlg.setLiter(ui->tbWuerzemengeAnstellenTotal->value());
     dlg.setVisibleVonOben(false);
     dlg.setVisibleVonUnten(false);
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
         bh->sud()->setWuerzemengeAnstellenTotal(dlg.getLiter());
 }
 

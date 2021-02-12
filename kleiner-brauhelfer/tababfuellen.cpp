@@ -320,12 +320,15 @@ void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
 
 void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
                        QDateTime(),
                        this);
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
     {
         bh->sud()->setTemperaturJungbier(dlg.temperatur());
         bh->sud()->setSWSchnellgaerprobe(dlg.value());
@@ -334,12 +337,15 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 
 void TabAbfuellen::on_btnSWJungbier_clicked()
 {
+    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(ui->tbSWJungbier->value(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
                        QDateTime(),
                        this);
-    if (dlg.exec() == QDialog::Accepted)
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
     {
         bh->sud()->setTemperaturJungbier(dlg.temperatur());
         bh->sud()->setSWJungbier(dlg.value());

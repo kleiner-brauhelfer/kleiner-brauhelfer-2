@@ -2,14 +2,22 @@
 #include <QApplication>
 
 bool WidgetDecorator::mGlobalValueChanged = false;
+bool WidgetDecorator::mGlobalSuspendValueChanged = false;
 
 WidgetDecorator::WidgetDecorator() :
     mValueChanged(false)
 {
 }
 
+void WidgetDecorator::suspendValueChanged(bool value)
+{
+    mGlobalSuspendValueChanged = value;
+}
+
 void WidgetDecorator::waValueChanged(bool hasFocus)
 {
+    if (mGlobalSuspendValueChanged)
+        return;
     if (hasFocus)
     {
         mValueChanged = true;
@@ -44,7 +52,9 @@ void WidgetDecorator::repaintIfChanged(QWidget *wdg)
 
 void WidgetDecorator::waFocusOutEvent()
 {
-    if (mValueChanged)
+    if (mGlobalSuspendValueChanged)
+        return;
+    if (mGlobalValueChanged)
     {
         mValueChanged = false;
         mGlobalValueChanged = false;

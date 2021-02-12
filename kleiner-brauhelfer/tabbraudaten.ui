@@ -46,7 +46,7 @@
             <number>4</number>
            </property>
            <item row="0" column="3">
-            <widget class="QPushButton" name="btnBraudatumHeute">
+            <widget class="PushButton" name="btnBraudatumHeute">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -172,7 +172,7 @@
             </widget>
            </item>
            <item row="3" column="3">
-            <widget class="QPushButton" name="btnWuerzemengeKochbeginn">
+            <widget class="PushButton" name="btnWuerzemengeKochbeginn">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -674,7 +674,7 @@
             </widget>
            </item>
            <item row="0" column="3">
-            <widget class="QPushButton" name="btnSWKochbeginn">
+            <widget class="PushButton" name="btnSWKochbeginn">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -987,7 +987,7 @@
             </widget>
            </item>
            <item row="12" column="3">
-            <widget class="QPushButton" name="btnWuerzemengeKochende">
+            <widget class="PushButton" name="btnWuerzemengeKochende">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1198,7 +1198,7 @@
             </widget>
            </item>
            <item row="2" column="3">
-            <widget class="QPushButton" name="btnWuerzemengeVorHopfenseihen">
+            <widget class="PushButton" name="btnWuerzemengeVorHopfenseihen">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1317,7 +1317,7 @@
             </widget>
            </item>
            <item row="0" column="3">
-            <widget class="QPushButton" name="btnSWKochende">
+            <widget class="PushButton" name="btnSWKochende">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1728,7 +1728,7 @@
             </widget>
            </item>
            <item row="2" column="3">
-            <widget class="QPushButton" name="btnSWAnstellen">
+            <widget class="PushButton" name="btnSWAnstellen">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1832,7 +1832,7 @@
             </widget>
            </item>
            <item row="0" column="3">
-            <widget class="QPushButton" name="btnWuerzemengeAnstellenTotal">
+            <widget class="PushButton" name="btnWuerzemengeAnstellenTotal">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1936,7 +1936,7 @@
             </widget>
            </item>
            <item row="5" column="3">
-            <widget class="QPushButton" name="btnSpeisemengeNoetig">
+            <widget class="PushButton" name="btnSpeisemengeNoetig">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -2558,6 +2558,11 @@
    <class>TimeEdit</class>
    <extends>QTimeEdit</extends>
    <header>widgets/timeedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

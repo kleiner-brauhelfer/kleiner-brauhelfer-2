@@ -102,6 +102,7 @@ SOURCES += \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
     widgets/iconthemed.cpp \
+    widgets/pushbutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
@@ -183,6 +184,7 @@ HEADERS += \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
     widgets/iconthemed.h \
+    widgets/pushbutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \
     widgets/svgview.h \

@@ -2,7 +2,7 @@
 #include "ui_dlgmodule.h"
 
 extern Settings* gSettings;
-#include <QDebug>
+
 DlgModule* DlgModule::Dialog = nullptr;
 
 DlgModule::DlgModule(QWidget *parent) :

@@ -111,7 +111,7 @@
             </widget>
            </item>
            <item row="0" column="3">
-            <widget class="QPushButton" name="btnAbfuelldatumHeute">
+            <widget class="PushButton" name="btnAbfuelldatumHeute">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -215,7 +215,7 @@
             </widget>
            </item>
            <item row="1" column="3">
-            <widget class="QPushButton" name="btnReifungHeute">
+            <widget class="PushButton" name="btnReifungHeute">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -612,7 +612,7 @@
             </widget>
            </item>
            <item row="2" column="3">
-            <widget class="QPushButton" name="btnSWSchnellgaerprobe">
+            <widget class="PushButton" name="btnSWSchnellgaerprobe">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -634,7 +634,7 @@
             </widget>
            </item>
            <item row="1" column="3">
-            <widget class="QPushButton" name="btnSWJungbier">
+            <widget class="PushButton" name="btnSWJungbier">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -2007,6 +2007,11 @@
    <class>TimeEdit</class>
    <extends>QTimeEdit</extends>
    <header>widgets/timeedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

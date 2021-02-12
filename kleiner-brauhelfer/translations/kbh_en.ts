@@ -39,7 +39,7 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
         <source>Wegen zollrechtlicher Bestimmungen, wird ein Postfach für die schweiz in Deutschland genutzt. Kein Easteregg - ist wirkich so. :-)</source>
-        <translation type="unfinished"></translation>
+        <translation>For customs reasons we use a PO-box in Switzerland. For realz. :-)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="68"/>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="121"/>
         <source>Tabellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tables</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="83"/>
@@ -361,62 +361,62 @@
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="14"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Modules</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="41"/>
         <source>Gärverlauf</source>
-        <translation type="unfinished">Fermentation</translation>
+        <translation>Fermentation Progress</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="75"/>
         <source>Spickzettel / Zusammenfassung</source>
-        <translation type="unfinished"></translation>
+        <translation>Brew Sheet</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="109"/>
         <source>Etikette</source>
-        <translation type="unfinished">Labels</translation>
+        <translation>Labels</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="143"/>
         <source>Bewertung</source>
-        <translation type="unfinished">Rating</translation>
+        <translation>Rating</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="177"/>
         <source>Brauübersicht</source>
-        <translation type="unfinished">Batch History</translation>
+        <translation>Batch History</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="211"/>
         <source>Ausrüstung</source>
-        <translation type="unfinished">Equipment</translation>
+        <translation>Equipment</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="245"/>
         <source>Lagerverwaltung</source>
-        <translation type="unfinished"></translation>
+        <translation>Stock administration</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="279"/>
         <source>Speiseberechnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Carbonation with wort</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="313"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished">Water adjustment</translation>
+        <translation>Water adjustment</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="347"/>
         <source>Preiskalkulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Costs</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="381"/>
         <source>Datenbankansicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Database view</translation>
     </message>
 </context>
 <context>
@@ -1299,7 +1299,7 @@
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Concentration</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -1644,7 +1644,7 @@
     <message>
         <location filename="../mainwindow.ui" line="636"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Modules</translation>
     </message>
     <message>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
@@ -3278,7 +3278,7 @@ Bottling date: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="641"/>
         <source>süsslich, nach Würze</source>
-        <translation>sweety</translation>
+        <translation>sweet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="648"/>
@@ -5340,7 +5340,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="955"/>
         <source>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</source>
-        <translation type="unfinished"></translation>
+        <translation>The sum of malts is not the same as total grist.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="970"/>
@@ -5350,7 +5350,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="973"/>
         <source>Differenz verteilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Divide the difference</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="980"/>

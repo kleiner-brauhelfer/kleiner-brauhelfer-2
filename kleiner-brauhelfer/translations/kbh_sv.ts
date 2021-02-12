@@ -39,7 +39,7 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
         <source>Wegen zollrechtlicher Bestimmungen, wird ein Postfach für die schweiz in Deutschland genutzt. Kein Easteregg - ist wirkich so. :-)</source>
-        <translation type="unfinished"></translation>
+        <translation>Av tulltekniska anledningar används en psotlåda i Schweiz. På riktigt. :-)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="68"/>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="121"/>
         <source>Tabellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabeller</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="83"/>
@@ -361,62 +361,62 @@
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="14"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Muduler</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="41"/>
         <source>Gärverlauf</source>
-        <translation type="unfinished">Jäsning</translation>
+        <translation>Jäsningsförlopp</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="75"/>
         <source>Spickzettel / Zusammenfassung</source>
-        <translation type="unfinished"></translation>
+        <translation>Sammanfattning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="109"/>
         <source>Etikette</source>
-        <translation type="unfinished">Etiketter</translation>
+        <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="143"/>
         <source>Bewertung</source>
-        <translation type="unfinished">Betyg</translation>
+        <translation>Betyg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="177"/>
         <source>Brauübersicht</source>
-        <translation type="unfinished">Satsöversikt</translation>
+        <translation>Satsöversikt</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="211"/>
         <source>Ausrüstung</source>
-        <translation type="unfinished">Utrustning</translation>
+        <translation>Utrustning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="245"/>
         <source>Lagerverwaltung</source>
-        <translation type="unfinished"></translation>
+        <translation>Lager</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="279"/>
         <source>Speiseberechnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolsyresättning med vört</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="313"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished">Vattenanpassning</translation>
+        <translation>Vattenanpassning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="347"/>
         <source>Preiskalkulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnadsberäkning</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="381"/>
         <source>Datenbankansicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas-vy</translation>
     </message>
 </context>
 <context>
@@ -1323,7 +1323,7 @@
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Koncentration</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -1668,7 +1668,7 @@
     <message>
         <location filename="../mainwindow.ui" line="636"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Moduler</translation>
     </message>
     <message>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
@@ -3247,108 +3247,108 @@ Tid för flasktappning: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="571"/>
         <source>rein, abgerundet</source>
-        <translation type="unfinished"></translation>
+        <translation>ren, avrundat</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="578"/>
         <source>wohlriechend</source>
-        <translation type="unfinished"></translation>
+        <translation>angenämt</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="585"/>
         <source>unangenehm, unausgewogen</source>
-        <translation type="unfinished"></translation>
+        <translation>oangenämt, obalanserad</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="592"/>
         <source>frisch</source>
-        <translation type="unfinished"></translation>
+        <translation>färsk</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="599"/>
         <source>Geruchsfehler</source>
-        <translation type="unfinished"></translation>
+        <translation>Luktfel</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="606"/>
         <location filename="../tabbewertung.ui" line="696"/>
         <source>säuerlich</source>
-        <translation type="unfinished"></translation>
+        <translation>syrlig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="613"/>
         <location filename="../tabbewertung.ui" line="703"/>
         <source>gewürzig</source>
-        <translation type="unfinished"></translation>
+        <translation>kryddig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="620"/>
         <location filename="../tabbewertung.ui" line="752"/>
         <source>fruchtig</source>
-        <translation type="unfinished"></translation>
+        <translation>fruktig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="627"/>
         <location filename="../tabbewertung.ui" line="717"/>
         <source>hopfenaromatisch, hopfig</source>
-        <translation type="unfinished"></translation>
+        <translation>humlearoma</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="634"/>
         <location filename="../tabbewertung.ui" line="731"/>
         <source>malzaromatisch, malzig</source>
-        <translation type="unfinished"></translation>
+        <translation>maltaroma</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="641"/>
         <source>süsslich, nach Würze</source>
-        <translation type="unfinished"></translation>
+        <translation>sött</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="648"/>
         <location filename="../tabbewertung.ui" line="759"/>
         <source>hefig</source>
-        <translation type="unfinished"></translation>
+        <translation>jäst</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="671"/>
         <source>Geschmack</source>
-        <translation type="unfinished"></translation>
+        <translation>Smak</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="682"/>
         <source>süsslich, klebrig</source>
-        <translation type="unfinished"></translation>
+        <translation>söt, klibbig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="689"/>
         <source>ausgewogen, rund</source>
-        <translation type="unfinished"></translation>
+        <translation>balanserad, rund</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="710"/>
         <source>gehaltvoll</source>
-        <translation type="unfinished"></translation>
+        <translation>rik</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="724"/>
         <source>unausgewogen, kantig</source>
-        <translation type="unfinished"></translation>
+        <translation>obalanserad</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="738"/>
         <source>rein</source>
-        <translation type="unfinished"></translation>
+        <translation>ren</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="745"/>
         <source>unreif, unrein</source>
-        <translation type="unfinished"></translation>
+        <translation>oren, oklart</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="766"/>
         <source>Geschmacksfehler</source>
-        <translation type="unfinished"></translation>
+        <translation>Felsmaker</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="789"/>
@@ -5364,7 +5364,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="955"/>
         <source>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</source>
-        <translation type="unfinished"></translation>
+        <translation>Summan av maltmängderna är olikt totalmängden.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="970"/>
@@ -5374,7 +5374,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="973"/>
         <source>Differenz verteilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela uppp differensen</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="980"/>

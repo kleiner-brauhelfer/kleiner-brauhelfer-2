@@ -152,5 +152,8 @@ void WebView::renderText(const QString &html, QVariantMap &contextVariables)
         return;
     Mustache::Renderer renderer;
     Mustache::QtVariantContext context(contextVariables);
-    renderText(renderer.render(html, &context));
+    QString output = renderer.render(html, &context);
+    if (renderer.errorPos() != -1)
+        qWarning() << "Mustache:" << renderer.error();
+    renderText(output);
 }

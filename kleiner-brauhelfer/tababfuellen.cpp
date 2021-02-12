@@ -24,7 +24,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbTemperaturJungbier->setColumn(ModelSud::ColTemperaturJungbier);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->tbSw->setColumn(ModelSud::ColSWIst);
-    ui->tbEVG->setColumn(ModelSud::ColtEVG);
+    ui->tbEVG->setColumn(ModelSud::ColsEVG);
     ui->tbEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);

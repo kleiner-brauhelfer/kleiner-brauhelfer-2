@@ -124,7 +124,10 @@ QString TabEtikette::generateSvg(const QString &svg)
 {
     Mustache::Renderer renderer;
     Mustache::QtVariantContext context(mTemplateTags);
-    return renderer.render(svg, &context);
+    QString output = renderer.render(svg, &context);
+    if (renderer.errorPos() != -1)
+        qWarning() << "Mustache:" << renderer.error();
+    return output;
 }
 
 void TabEtikette::updateTemplateFilePath()

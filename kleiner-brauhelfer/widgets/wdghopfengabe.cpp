@@ -81,15 +81,19 @@ void WdgHopfenGabe::updateValues()
     ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
     ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    if (!mEnabled)
+        ui->btnAufbrauchen->setVisible(false);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeProLiter->setReadOnly(!mEnabled);
     ui->tbMengeProzent->setReadOnly(!mEnabled);
     ui->tbAnteilProzent->setReadOnly(!mEnabled);
     ui->tbKochdauer->setReadOnly(!mEnabled);
     ui->cbZeitpunkt->setEnabled(mEnabled);
-    ui->btnAnteilKorrektur->setVisible(mEnabled);
-    ui->btnMengeKorrektur->setVisible(mEnabled);
+    if (!mEnabled)
+    {
+        ui->btnAnteilKorrektur->setVisible(false);
+        ui->btnMengeKorrektur->setVisible(false);
+    }
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 
@@ -213,8 +217,7 @@ void WdgHopfenGabe::updateValues()
             ui->tbMengeProLiter->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
             ui->tbAnteilProzent->setReadOnly(false);
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
-                ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
+            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001 && gSettings->module(Settings::ModuleLagerverwaltung));
         }
     }
 

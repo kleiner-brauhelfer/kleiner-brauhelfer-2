@@ -199,9 +199,7 @@ bool DlgImportExport::oeffnen(const QString& filePath_)
             QByteArray content = file.readAll();
             file.close();
             ui->textEdit->setPlainText(QString::fromUtf8(content));
-            if (fileInfo.suffix() == "json")
-                ui->rbFormatMmum->setChecked(true);
-            else if (fileInfo.suffix() == "xml")
+            if (fileInfo.suffix() == "xml")
                 ui->rbFormatBeerxml->setChecked(true);
             ret = true;
         }

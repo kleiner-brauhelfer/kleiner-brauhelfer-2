@@ -21,17 +21,6 @@
    viewBox="0 0 185 20">
   <defs
      id="defs4">
-    <style
-       id="style12494"><![CDATA[
-        #etikettenfarbe {
-          {{#Tags.Liste.Etikettenfarbe}}
-            fill:{{Tags.Liste.Etikettenfarbe}};
-          {{/Tags.Liste.Etikettenfarbe}}
-          {{^Tags.Liste.Etikettenfarbe}}
-            fill:#ffffff;
-          {{/Tags.Liste.Etikettenfarbe}}
-        }
-      ]]></style>
     <linearGradient
        osb:paint="gradient"
        id="linearGradient10516">
@@ -172,8 +161,9 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-34.471165,-981.83479)"><rect
-   id="etikettenfarbe"
+     transform="translate(-34.471165,-981.83479)">
+<rect
+   style="fill:#ffffff;"
    width="185"
    height="20"
    x="34.471165"

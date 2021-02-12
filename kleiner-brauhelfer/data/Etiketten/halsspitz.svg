@@ -21,17 +21,6 @@
    viewBox="0 0 185 20">
   <defs
      id="defs4">
-    <style
-       id="style12494"><![CDATA[
-        #etikettenfarbe {
-          {{#Tags.Liste.Etikettenfarbe}}
-            fill:{{Tags.Liste.Etikettenfarbe}};
-          {{/Tags.Liste.Etikettenfarbe}}
-          {{^Tags.Liste.Etikettenfarbe}}
-            fill:#ffffff;
-          {{/Tags.Liste.Etikettenfarbe}}
-        }
-      ]]></style>
     <linearGradient
        osb:paint="gradient"
        id="linearGradient10516">
@@ -364,8 +353,7 @@
    cy="993.7439"
    cx="217.79471" />
 <rect
-   style="stroke-width:0.2822229"
-   id="etikettenfarbe"
+   style="fill:#ffffff;stroke-width:0.2822229"
    height="20.000006"
    width="184.99994"
    y="981.83478"

@@ -220,7 +220,7 @@ void WdgWeitereZutatGabe::updateValues()
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Background, gSettings->HopfenTypBackgrounds[idx]);
+            pal.setColor(QPalette::Window, gSettings->HopfenTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
             ui->frameColor->setToolTip(tr("Hopfen"));
         }
@@ -236,7 +236,7 @@ void WdgWeitereZutatGabe::updateValues()
         if (idx >= 0 && idx < gSettings->WZTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Background, gSettings->WZTypBackgrounds[idx]);
+            pal.setColor(QPalette::Window, gSettings->WZTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
             ui->frameColor->setToolTip(TabRohstoffe::ZusatzTypname[idx]);
         }

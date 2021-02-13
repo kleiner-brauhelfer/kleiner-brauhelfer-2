@@ -685,6 +685,11 @@ void TabGaerverlauf::on_btnImportNachgaerMessung_clicked()
 QDateTime TabGaerverlauf::toDateTime(QString string) const
 {
     string.remove('\"').remove('\'');
+  #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+    QDateTime dt = QDateTime::fromString(string, Qt::TextDate);
+    if (!dt.isValid())
+        dt = QDateTime::fromString(string, Qt::ISODate);
+  #else
     QDateTime dt = QDateTime::fromString(string, Qt::SystemLocaleShortDate);
     if (!dt.isValid())
         dt = QDateTime::fromString(string, Qt::DefaultLocaleShortDate);
@@ -694,6 +699,7 @@ QDateTime TabGaerverlauf::toDateTime(QString string) const
         dt = QDateTime::fromString(string, Qt::ISODate);
     if (!dt.isValid())
         dt = QDateTime::fromString(string, Qt::SystemLocaleLongDate);
+  #endif
     if (!dt.isValid())
         dt = QDateTime::fromString(string, "d.M.yy h:m:s");
     if (!dt.isValid())

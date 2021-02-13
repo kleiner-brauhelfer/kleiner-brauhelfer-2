@@ -122,7 +122,7 @@ void WdgHefeGabe::updateValues()
         if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Background, gSettings->HefeTypOgUgBackgrounds[idx]);
+            pal.setColor(QPalette::Window, gSettings->HefeTypOgUgBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
         }
         else

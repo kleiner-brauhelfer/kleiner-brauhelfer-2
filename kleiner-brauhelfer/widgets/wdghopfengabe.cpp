@@ -123,7 +123,7 @@ void WdgHopfenGabe::updateValues()
     if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
     {
         QPalette pal = ui->frameColor->palette();
-        pal.setColor(QPalette::Background, gSettings->HopfenTypBackgrounds[idx]);
+        pal.setColor(QPalette::Window, gSettings->HopfenTypBackgrounds[idx]);
         ui->frameColor->setPalette(pal);
         ui->frameColor->setToolTip(TabRohstoffe::HopfenTypname[idx]);
     }

@@ -7,6 +7,9 @@ isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 4) {
 isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
  QT += charts
 }
+isEqual(QT_MAJOR_VERSION, 6) {
+ QT += svgwidgets
+}
 
 ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-2

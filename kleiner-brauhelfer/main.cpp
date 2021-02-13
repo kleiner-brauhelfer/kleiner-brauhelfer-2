@@ -406,6 +406,7 @@ int main(int argc, char *argv[])
     int ret = EXIT_FAILURE;
 
     // parse arguments
+  #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     bool highDpi = true;
     for (int i = 1; i < argc; i++)
     {
@@ -419,10 +420,6 @@ int main(int argc, char *argv[])
       if (list.contains(arg))
           highDpi = false;
     }
-
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-   QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
-  #endif
     if (highDpi)
     {
       #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
@@ -430,6 +427,11 @@ int main(int argc, char *argv[])
       #endif
         QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     }
+  #endif
+
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
+  #endif
 
     QApplication a(argc, argv);
 

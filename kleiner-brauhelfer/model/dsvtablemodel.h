@@ -28,8 +28,8 @@ public:
     int fieldIndex(const QString &fieldName) const;
     QString fieldName(int fieldIndex) const;
 
-    bool loadFromFile(const QString &fileName, bool hasHeaderLine = false, QChar delim = 0);
-    bool save(const QString &fileName, bool withHeaderLine = false, QChar delim = 0);
+    bool loadFromFile(const QString &fileName, bool hasHeaderLine = false, QChar delim = QChar());
+    bool save(const QString &fileName, bool withHeaderLine = false, QChar delim = QChar());
 
 private:
     void checkString(QString &col, QList<QString> &row, const QChar &character, bool &isHeaderRow);

@@ -284,7 +284,11 @@ bool DsvTableModel::loadFromFile(const QString &fileName, bool hasHeaderLine, QC
     QTextStream in(&file);
     QList<QString> row;
 
+  #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    in.setEncoding(QStringConverter::Utf8);
+  #else
     in.setCodec("UTF-8");
+  #endif
     beginResetModel();
 
     bool isHeaderRow = hasHeaderLine;
@@ -348,7 +352,11 @@ bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar del
         return false;
 
     QTextStream out(&file);
+  #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    out.setEncoding(QStringConverter::Utf8);
+  #else
     out.setCodec("UTF-8");
+  #endif
     if (withHeaderLine)
     {
         for (int i = 0; i < mHeaderData.count(); ++i)

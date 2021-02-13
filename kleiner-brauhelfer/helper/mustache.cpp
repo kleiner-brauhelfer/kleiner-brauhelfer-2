@@ -274,10 +274,10 @@ QString Renderer::render(const QString& _template, int startPos, int endPos, Con
 	while (m_errorPos == -1) {
 		Tag tag = findTag(_template, lastTagEnd, endPos);
 		if (tag.type == Tag::Null) {
-            output += _template.midRef(lastTagEnd, endPos - lastTagEnd);
+            output += _template.mid(lastTagEnd, endPos - lastTagEnd);
 			break;
 		}
-        output += _template.midRef(lastTagEnd, tag.start - lastTagEnd);
+        output += _template.mid(lastTagEnd, tag.start - lastTagEnd);
 		switch (tag.type) {
 		case Tag::Value:
 		{

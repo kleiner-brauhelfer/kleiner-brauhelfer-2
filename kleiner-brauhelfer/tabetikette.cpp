@@ -359,6 +359,33 @@ void TabEtikette::on_btnSaveTemplate_clicked()
     ui->btnSaveTemplate->setVisible(false);
 }
 
+void TabEtikette::on_btnExport_clicked()
+{
+    gSettings->beginGroup("General");
+    QString path = gSettings->value("exportPath", QDir::homePath()).toString();
+    QString filePath = QFileDialog::getSaveFileName(this, tr("SVG exportieren"),
+                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikette") +  ".svg", "SVG (*.svg)");
+    if (!filePath.isEmpty())
+    {
+        gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
+        QFile file(filePath);
+        if (file.open(QFile::WriteOnly | QFile::Text))
+        {
+            QFile fileRead(mTemplateFilePath);
+            fileRead.open(QIODevice::ReadOnly | QIODevice::Text);
+            QString svg_template = fileRead.readAll();
+            fileRead.close();
+            file.write(generateSvg(svg_template).toUtf8());
+            file.close();
+        }
+        else
+        {
+            QMessageBox::warning(this, tr("SVG Export"), tr("Die Datei konnte nicht geschrieben werden."));
+        }
+    }
+    gSettings->endGroup();
+}
+
 #ifdef QT_PRINTSUPPORT_LIB
 void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 {

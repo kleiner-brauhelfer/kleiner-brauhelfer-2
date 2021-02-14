@@ -48,8 +48,10 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Eingabemöglichkeit für Beginn der Reifung (nicht mehr an Nachgäverlauf gebunden)
 - Neu: Farbige Erkennung, welche Felder geändert wurden
 - Neu: Optionen bei Export im kleiner-brauhelfer Format
+- Neu: Hintergrundfarbe der Etiketten einstellbar
 - Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer
 - Fix: Sortierung der Gärverläufe nach Datum
+- Fix: Abfülldaten zeigt neu den scheinbaren Vergärungsgrad
 
 ### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)

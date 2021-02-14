@@ -10,8 +10,8 @@
 SvgView::SvgView(QWidget *parent)
     : QGraphicsView(parent)
     , mSvgItem(nullptr)
-    , mBackgroundVisible(false)
     , mOutlineVisible(false)
+    , mBackgroundColor(Qt::transparent)
 {
     setScene(new QGraphicsScene(this));
     setTransformationAnchor(AnchorUnderMouse);
@@ -68,10 +68,10 @@ template <class T> bool SvgView::load_impl(const T& arg)
         mSvgItem->setCacheMode(QGraphicsItem::NoCache);
         mSvgItem->setZValue(0);
 
-        if (mBackgroundVisible)
+        if (mBackgroundColor.isValid() && mBackgroundColor != Qt::transparent)
         {
             QGraphicsRectItem *backgroundItem = new QGraphicsRectItem(mSvgItem->boundingRect());
-            backgroundItem->setBrush(Qt::white);
+            backgroundItem->setBrush(mBackgroundColor);
             backgroundItem->setPen(Qt::NoPen);
             backgroundItem->setZValue(-1);
             scene()->addItem(backgroundItem);
@@ -82,9 +82,8 @@ template <class T> bool SvgView::load_impl(const T& arg)
         if (mOutlineVisible)
         {
             QGraphicsRectItem *outlineItem = new QGraphicsRectItem(mSvgItem->boundingRect());
-            QPen outline(Qt::black, 2, Qt::DashLine);
+            QPen outline(Qt::red, 2, Qt::DashLine);
             outline.setCosmetic(true);
-            outline.setColor(QColor(255,0,0));
             outlineItem->setPen(outline);
             outlineItem->setBrush(Qt::NoBrush);
             outlineItem->setZValue(1);
@@ -111,9 +110,9 @@ bool SvgView::load(const QByteArray &contents)
     return load_impl(contents);
 }
 
-void SvgView::setViewBackground(bool enable)
+void SvgView::setViewBackgroundColor(const QColor& color)
 {
-    mBackgroundVisible = enable;
+    mBackgroundColor = color;
 }
 
 void SvgView::setViewOutline(bool enable)

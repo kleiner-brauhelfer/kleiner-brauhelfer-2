@@ -24,8 +24,7 @@ public:
     QRectF viewBoxF() const;
     QSvgRenderer *renderer() const;
 
-public slots:
-    void setViewBackground(bool enable);
+    void setViewBackgroundColor(const QColor& color = Qt::transparent);
     void setViewOutline(bool enable);
 
 protected:
@@ -38,8 +37,8 @@ private:
 
 private:
     QGraphicsSvgItem *mSvgItem;
-    bool mBackgroundVisible;
     bool mOutlineVisible;
+    QColor mBackgroundColor;
 };
 
 #endif // SVGVIEW_H

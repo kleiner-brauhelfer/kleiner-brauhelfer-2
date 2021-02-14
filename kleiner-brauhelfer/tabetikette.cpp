@@ -12,6 +12,7 @@
 #include <QSvgRenderer>
 #include <QDesktopServices>
 #include <QJsonDocument>
+#include <QColorDialog>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"
@@ -24,7 +25,8 @@ extern Settings* gSettings;
 TabEtikette::TabEtikette(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabEtikette),
-    mTemplateFilePath("")
+    mTemplateFilePath(""),
+    mBackgroundColor(Qt::white)
 {
     ui->setupUi(this);
 
@@ -144,6 +146,11 @@ void TabEtikette::updateTemplateFilePath()
 
 void TabEtikette::updateSvg()
 {
+    QPalette pal = ui->frameBackgroundColor->palette();
+    pal.setColor(QPalette::Window, mBackgroundColor);
+    ui->frameBackgroundColor->setPalette(pal);
+    ui->viewSvg->setViewBackgroundColor(mBackgroundColor);
+
     if (mTemplateFilePath.isEmpty())
     {
         ui->viewSvg->clear();
@@ -181,7 +188,6 @@ void TabEtikette::updateSvg()
             ui->viewSvg->load(mTemplateFilePath);
         }
     }
-    ui->viewSvg->setViewOutline(false);
 
     QDir::setCurrent(currentPath);
 }
@@ -403,9 +409,6 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     file.close();
 
     SvgView svgView;
-    QImage image(labelWidth, labelHeight, QImage::Format_ARGB32_Premultiplied);
-    QPainter imagePainter(&image);
-    image.fill(Qt::transparent);
 
     QString currentPath = QDir::currentPath();
     QDir::setCurrent(QFileInfo(mTemplateFilePath).absolutePath());
@@ -440,6 +443,13 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 
         QRect rect = QRect(x, y, labelWidth, labelHeight);
 
+        if (mBackgroundColor.isValid() && mBackgroundColor != Qt::transparent)
+        {
+            painter.setPen(Qt::NoPen);
+            painter.setBrush(mBackgroundColor);
+            painter.drawRect(rect);
+        }
+
         if (ui->cbDividingLine->isChecked())
         {
             painter.setPen(outline);
@@ -459,6 +469,9 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 
         if (ui->cbUseImagePainter->isChecked())
         {
+            QImage image(labelWidth, labelHeight, QImage::Format_ARGB32_Premultiplied);
+            QPainter imagePainter(&image);
+            image.fill(Qt::transparent);
             svgView.renderer()->render(&imagePainter);
             painter.drawImage(rect, image);
         }
@@ -634,6 +647,15 @@ void TabEtikette::on_btnGroesseAusSvg_clicked()
     QRectF rect = ui->viewSvg->viewBoxF();
     setData(ModelEtiketten::ColBreite, rect.width());
     setData(ModelEtiketten::ColHoehe, rect.height());
+}
+
+void TabEtikette::on_btnBackgroundColor_clicked()
+{
+    QColorDialog dlg(mBackgroundColor, this);
+    if (dlg.exec() == QDialog::Accepted) {
+        mBackgroundColor = dlg.selectedColor();
+        updateSvg();
+    }
 }
 
 void TabEtikette::on_tbAbstandHor_valueChanged(double value)

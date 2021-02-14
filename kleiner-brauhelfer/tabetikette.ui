@@ -264,8 +264,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>298</width>
-        <height>612</height>
+        <width>284</width>
+        <height>677</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -305,13 +305,13 @@
            <widget class="QLabel" name="label_17">
             <property name="minimumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>16777215</height>
              </size>
             </property>
@@ -330,13 +330,13 @@
            <widget class="QLabel" name="label_16">
             <property name="minimumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>16777215</height>
              </size>
             </property>
@@ -400,13 +400,13 @@
            <widget class="QLabel" name="label_5">
             <property name="minimumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>16777215</height>
              </size>
             </property>
@@ -449,6 +449,69 @@
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Farben</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Hintergrundfarbe</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="btnBackgroundColor">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hintergrundfarbe&lt;/span&gt; eingestellt werden.&lt;/p&gt;&lt;p&gt;Das SVG darf keinen eigenen Hintergrund haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QFrame" name="frameBackgroundColor">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="autoFillBackground">
+             <bool>true</bool>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
           <string>Abstände zwischen Etiketten</string>
@@ -458,13 +521,13 @@
            <widget class="QLabel" name="label_6">
             <property name="minimumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>16777215</height>
              </size>
             </property>
@@ -489,6 +552,18 @@
           </item>
           <item row="1" column="2">
            <widget class="QLabel" name="label_10">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="text">
              <string>mm</string>
             </property>

@@ -40,6 +40,7 @@ private slots:
     void on_tbLabelHoehe_valueChanged(double value);
     void on_cbSeitenverhaeltnis_clicked(bool checked);
     void on_btnGroesseAusSvg_clicked();
+    void on_btnBackgroundColor_clicked();
     void on_tbAbstandHor_valueChanged(double value);
     void on_tbAbstandVert_valueChanged(double value);
     void on_cbTagsErsetzen_stateChanged();
@@ -68,6 +69,7 @@ private:
   #ifdef QT_PRINTSUPPORT_LIB
     QPrinter* mPrinter;
   #endif
+    QColor mBackgroundColor;
 };
 
 #endif // TABETIKETTE_H

@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="streifen_simpel_nummeriert.svg"
+   sodipodi:docname="streifen_simpel_farbig_nummeriert.svg"
    inkscape:export-filename="Streifen_experimentalsud.png"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300"
@@ -162,12 +162,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-34.471165,-981.83479)">
-<rect
-   style="fill:#ffffff;"
-   width="185"
-   height="20"
-   x="34.471165"
-   y="981.83478" />
 <path
    style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2813257"
    mask="none"
@@ -194,9 +188,6 @@
    id="layer3"
    inkscape:label="Ebene#1"
    transform="matrix(0.16459887,0,0,0.16459887,158.41897,947.84154)" />
-
-
-
 {{#Rezept.Nummer}}
 <circle
    style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.25874725;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
@@ -216,9 +207,6 @@
      x="66.308701"
      y="867.12335"
      style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05555534px;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.25874725">{{Rezept.Nummer}}</tspan></text>
-
-
-
 {{/Rezept.Nummer}}
 <text
    xml:space="preserve"

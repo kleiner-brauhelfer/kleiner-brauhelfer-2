@@ -385,9 +385,9 @@ void MainWindow::databaseModified()
     QString title;
     if (modified)
         title = "* ";
-    title += QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion();
     if (bh->sud()->isLoaded())
-        title += " - " + bh->sud()->getSudname();
+        title += bh->sud()->getSudname() + " - ";
+    title += QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion();
     setWindowTitle(title);
     ui->actionSpeichern->setEnabled(modified);
     ui->actionVerwerfen->setEnabled(modified);

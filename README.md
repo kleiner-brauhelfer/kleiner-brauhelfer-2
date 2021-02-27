@@ -49,6 +49,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Farbige Erkennung, welche Felder geändert wurden
 - Neu: Optionen bei Export im kleiner-brauhelfer Format
 - Neu: Hintergrundfarbe der Etiketten einstellbar
+- Neu: Negative Gärtemperaturen bis -20°C erlaubt
 - Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer
 - Fix: Sortierung der Gärverläufe nach Datum
 - Fix: Abfülldaten zeigt neu den scheinbaren Vergärungsgrad

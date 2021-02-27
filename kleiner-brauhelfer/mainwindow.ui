@@ -285,7 +285,9 @@
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionTooltips"/>
     <addaction name="actionAnimationen"/>
+    <addaction name="separator"/>
     <addaction name="menuSprache"/>
+    <addaction name="actionZahlenformat"/>
     <addaction name="separator"/>
     <addaction name="actionModule"/>
    </widget>
@@ -634,6 +636,14 @@
   <action name="actionModule">
    <property name="text">
     <string>Module</string>
+   </property>
+  </action>
+  <action name="actionZahlenformat">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</string>
    </property>
   </action>
  </widget>

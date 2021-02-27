@@ -96,6 +96,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
     ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
+    ui->actionZahlenformat->setChecked(gSettings->value("UseLanguageLocale", false).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
@@ -467,9 +468,11 @@ void MainWindow::on_tabMain_currentChanged()
     }
     tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
     if (tab)
+    {
         tab->setTabActive(true);
-    ui->actionDrucken->setEnabled(tab->isPrintable());
-    ui->actionDruckvorschau->setEnabled(tab->isPrintable());
+        ui->actionDrucken->setEnabled(tab->isPrintable());
+        ui->actionDruckvorschau->setEnabled(tab->isPrintable());
+    }
     setFocus();
 }
 
@@ -841,6 +844,14 @@ void MainWindow::on_actionSchwedisch_triggered()
 void MainWindow::on_actionNiederlaendisch_triggered()
 {
     gSettings->setLanguage("nl");
+    restart(1001);
+}
+
+void MainWindow::on_actionZahlenformat_triggered(bool checked)
+{
+    gSettings->beginGroup("General");
+    gSettings->setValue("UseLanguageLocale", checked);
+    gSettings->endGroup();
     restart(1001);
 }
 

@@ -463,6 +463,13 @@ int main(int argc, char *argv[])
     installTranslator(a, translatorQt, "qtbase");
     installTranslator(a, translatorKbh, "kbh");
 
+    // locale
+    gSettings->beginGroup("General");
+    bool useLanguageLocale = gSettings->value("UseLanguageLocale", false).toBool();
+    gSettings->endGroup();
+    if (useLanguageLocale)
+        QLocale::setDefault(QLocale(gSettings->language()));
+
     // do some checks
     checkSSL();
     checkWebView();
@@ -502,6 +509,10 @@ int main(int argc, char *argv[])
                 {
                     installTranslator(a, translatorQt, "qtbase");
                     installTranslator(a, translatorKbh, "kbh");
+                    gSettings->beginGroup("General");
+                    bool useLanguageLocale = gSettings->value("UseLanguageLocale", false).toBool();
+                    gSettings->endGroup();
+                    QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
                     ret = 1000;
                 }
             }

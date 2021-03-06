@@ -22,9 +22,23 @@ Settings::Settings(const QString& dir, QObject *parent) :
 
 Settings::~Settings()
 {
-    beginGroup("General");
-    setValue("version", QCoreApplication::applicationVersion());
+    setValueInGroup("General", "version", QCoreApplication::applicationVersion());
+}
+
+void Settings::setValueInGroup(const QString &group, const QString &key, const QVariant &value)
+{
+    beginGroup(group);
+    setValue(key, value);
     endGroup();
+}
+
+QVariant Settings::valueInGroup(const QString &group, const QString &key, const QVariant &defaultValue)
+{
+    QVariant val;
+    beginGroup(group);
+    val = value(key, defaultValue);
+    endGroup();
+    return val;
 }
 
 void Settings::initTheme()
@@ -223,17 +237,12 @@ void Settings::initTheme()
 
 int Settings::logLevel()
 {
-    beginGroup("General");
-    int level = value("LogLevel", "0").toInt();
-    endGroup();
-    return level;
+    return valueInGroup("General", "LogLevel", 0).toInt();
 }
 
 void Settings::setLogLevel(int level)
 {
-    beginGroup("General");
-    setValue("LogLevel", level);
-    endGroup();
+    setValueInGroup("General", "LogLevel", level);
     initLogLevel(level);
 }
 
@@ -262,19 +271,14 @@ Settings::Theme Settings::theme() const
 
 void Settings::setTheme(Theme theme)
 {
-    beginGroup("Style");
-    setValue("Theme", theme);
-    endGroup();
+    setValueInGroup("Style", "Theme", theme);
     initTheme();
 }
 
 QString Settings::style()
 {
   #if 0
-    beginGroup("Style");
-    QString style = value("Style", "Fusion").toString();
-    endGroup();
-    return style;
+    return valueInGroup("Style", "Style", "Fusion").toString();
   #else
     return "Fusion";
   #endif
@@ -282,63 +286,44 @@ QString Settings::style()
 
 void Settings::setStyle(const QString &style)
 {
-    beginGroup("Style");
-    setValue("Style", style);
-    endGroup();
+    setValueInGroup("Style", "Style", style);
 }
 
 bool Settings::useSystemFont()
 {
-    beginGroup("Style");
-    bool system = value("UseSystemFont", true).toBool();
-    endGroup();
-    return system;
+    return valueInGroup("Style", "UseSystemFont", true).toBool();
 }
 
 void Settings::setUseSystemFont(bool system)
 {
-    beginGroup("Style");
-    setValue("UseSystemFont", system);
-    endGroup();
-    this->font = defaultFont;
+    setValueInGroup("Style", "UseSystemFont", system);
+    font = defaultFont;
 }
 
 void Settings::setFont(const QFont &font)
 {
-    beginGroup("Style");
-    setValue("Font", font);
-    endGroup();
+    setValueInGroup("Style", "Font", font);
     this->font = font;
 }
 
 bool Settings::animationsEnabled()
 {
-    beginGroup("General");
-    int enabled = value("Animations", true).toBool();
-    endGroup();
-    return enabled;
+    return valueInGroup("General", "Animations", true).toBool();
 }
 
 void Settings::setAnimationsEnabled(bool enabled)
 {
-    beginGroup("General");
-    setValue("Animations", enabled);
-    endGroup();
+    setValueInGroup("General", "Animations", enabled);
 }
 
 QString Settings::language()
 {
-    beginGroup("General");
-    QString lang = value("language", "de").toString();
-    endGroup();
-    return lang;
+    return valueInGroup("General", "language", "de").toString();
 }
 
 void Settings::setLanguage(QString lang)
 {
-    beginGroup("General");
-    setValue("language", lang);
-    endGroup();
+    setValueInGroup("General", "language", lang);
 }
 
 QString Settings::settingsDir() const
@@ -348,16 +333,12 @@ QString Settings::settingsDir() const
 
 QString Settings::databasePath()
 {
-    QString path;
-    beginGroup("General");
-    path = value("database").toString();
-    endGroup();
+    QString path = valueInGroup("General", "database").toString();
     if (!path.isEmpty() && QDir::isRelativePath(path))
     {
         QDir dir(settingsDir());
         path = QDir::cleanPath(dir.filePath(path));
     }
-
     return path;
 }
 
@@ -365,12 +346,10 @@ void Settings::setDatabasePath(const QString& path)
 {
     QDir dir(settingsDir());
     QString pathRel = dir.relativeFilePath(path);
-    beginGroup("General");
     if (pathRel.startsWith(".."))
-        setValue("database", path);
+        setValueInGroup("General", "database", path);
     else
-        setValue("database", pathRel);
-    endGroup();
+        setValueInGroup("General", "database", pathRel);
 }
 
 QString Settings::databaseDir()
@@ -418,9 +397,7 @@ Settings::Modules Settings::modules() const
 void Settings::enableModule(Settings::Module module, bool enabled)
 {
     mModules.setFlag(module, enabled);
-    beginGroup("General");
-    setValue("Modules", uint(mModules));
-    endGroup();
+    setValueInGroup("General", "Modules", uint(mModules));
     emit modulesChanged(module);
 }
 
@@ -431,11 +408,7 @@ bool Settings::module(Settings::Module module) const
 
 QString Settings::lastProgramVersion()
 {
-    QString version;
-    beginGroup("General");
-    version = value("version").toString();
-    endGroup();
-    return version;
+    return valueInGroup("General", "version").toString();
 }
 
 bool Settings::isNewProgramVersion()

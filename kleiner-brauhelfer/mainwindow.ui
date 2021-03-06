@@ -250,6 +250,7 @@
     <addaction name="actionBierspende"/>
     <addaction name="separator"/>
     <addaction name="actionFormelsammlung"/>
+    <addaction name="actionAndroidApp"/>
     <addaction name="separator"/>
     <addaction name="actionUeber"/>
    </widget>
@@ -644,6 +645,11 @@
    </property>
    <property name="text">
     <string>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</string>
+   </property>
+  </action>
+  <action name="actionAndroidApp">
+   <property name="text">
+    <string>Android App</string>
    </property>
   </action>
  </widget>

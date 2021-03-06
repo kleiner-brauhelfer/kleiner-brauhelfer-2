@@ -753,9 +753,7 @@ void MainWindow::on_actionOeffnen_triggered()
 
 void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
 {
-    gSettings->beginGroup("General");
-    gSettings->setValue("BeendenAbfrage", checked);
-    gSettings->endGroup();
+    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
 }
 
 void MainWindow::checkForUpdate(bool force)
@@ -801,9 +799,7 @@ void MainWindow::checkMessageFinished()
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
   #if QT_NETWORK_LIB
-    gSettings->beginGroup("General");
-    gSettings->setValue("CheckUpdate", checked);
-    gSettings->endGroup();
+    gSettings->setValueInGroup("General", "CheckUpdate", checked);
     if (checked)
         checkForUpdate(true);
   #else
@@ -813,9 +809,7 @@ void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 
 void MainWindow::on_actionTooltips_triggered(bool checked)
 {
-    gSettings->beginGroup("General");
-    gSettings->setValue("TooltipsEnabled", checked);
-    gSettings->endGroup();
+    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
 }
 
 void MainWindow::on_actionAnimationen_triggered(bool checked)
@@ -849,9 +843,7 @@ void MainWindow::on_actionNiederlaendisch_triggered()
 
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {
-    gSettings->beginGroup("General");
-    gSettings->setValue("UseLanguageLocale", checked);
-    gSettings->endGroup();
+    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
     restart(1001);
 }
 
@@ -883,6 +875,11 @@ void MainWindow::on_actionBierspende_triggered()
 void MainWindow::on_actionFormelsammlung_triggered()
 {
     QDesktopServices::openUrl(QUrl(URL_FORMELSAMMLUNG));
+}
+
+void MainWindow::on_actionAndroidApp_triggered()
+{
+    QDesktopServices::openUrl(QUrl(URL_APP));
 }
 
 void MainWindow::on_actionUeber_triggered()

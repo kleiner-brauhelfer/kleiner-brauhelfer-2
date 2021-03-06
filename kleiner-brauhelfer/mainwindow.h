@@ -64,6 +64,7 @@ private slots:
     void on_actionSpende_triggered();
     void on_actionBierspende_triggered();
     void on_actionFormelsammlung_triggered();
+    void on_actionAndroidApp_triggered();
     void on_actionUeber_triggered();
 
 private:

@@ -51,6 +51,9 @@ public:
     Settings(const QString& dir, QObject *parent = nullptr);
     virtual ~Settings();
 
+    void setValueInGroup(const QString &group, const QString &key, const QVariant &value);
+    QVariant valueInGroup(const QString &group, const QString &key, const QVariant &defaultValue = QVariant());
+
     int logLevel();
     void setLogLevel(int level);
     void initLogLevel(int level);

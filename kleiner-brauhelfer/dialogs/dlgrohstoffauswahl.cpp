@@ -18,7 +18,7 @@ extern Settings* gSettings;
 void DlgRohstoffAuswahl::restoreView(bool full)
 {
     Q_UNUSED(full)
-    gSettings->beginGroup("DlgRohstoffAuswahl");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableStateMalz", QByteArray());
     gSettings->setValue("tableStateHopfen", QByteArray());
     gSettings->setValue("tableStateHefe", QByteArray());
@@ -36,7 +36,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
     adjustSize();
     ui->tableView->setFocus();
 
-    gSettings->beginGroup("DlgRohstoffAuswahl");
+    gSettings->beginGroup(staticMetaObject.className());
 
     ProxyModel *proxy = new ProxyModelRohstoff(this);
     TableView *table = ui->tableView;
@@ -164,7 +164,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
 
 DlgRohstoffAuswahl::~DlgRohstoffAuswahl()
 {
-    gSettings->beginGroup("DlgRohstoffAuswahl");
+    gSettings->beginGroup(staticMetaObject.className());
     switch (mRohstoff)
     {
     case Brauhelfer::RohstoffTyp::Malz:

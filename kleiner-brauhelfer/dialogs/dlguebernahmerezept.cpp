@@ -153,7 +153,7 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
             this, SLOT(tableViewSud_selectionChanged()));
 
     adjustSize();
-    gSettings->beginGroup("DlgUebernahmeRezept");
+    gSettings->beginGroup(staticMetaObject.className());
     ui->tableViewSud->restoreState(gSettings->value("tableStateSud").toByteArray());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
@@ -165,7 +165,7 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
 
 DlgUebernahmeRezept::~DlgUebernahmeRezept()
 {
-    gSettings->beginGroup("DlgUebernahmeRezept");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableStateSud", ui->tableViewSud->horizontalHeader()->saveState());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();

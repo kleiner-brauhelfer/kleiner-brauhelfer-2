@@ -46,17 +46,13 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     updateEditMode();
     ui->splitterEditmode->setHandleWidth(0);
     ui->splitterEditmode->setSizes({1, 0});
-    gSettings->beginGroup("General");
-    gZoomFactor = gSettings->value("WebViewZoomFactor", 1.0).toDouble();
-    gSettings->endGroup();
+    gZoomFactor = gSettings->valueInGroup("General", "WebViewZoomFactor", 1.0).toDouble();
 }
 
 WdgWebViewEditable::~WdgWebViewEditable()
 {
     delete ui;
-    gSettings->beginGroup("General");
-    gSettings->setValue("WebViewZoomFactor", gZoomFactor);
-    gSettings->endGroup();
+    gSettings->setValueInGroup("General", "WebViewZoomFactor", gZoomFactor);
 }
 
 void WdgWebViewEditable::clear()
@@ -128,7 +124,6 @@ void WdgWebViewEditable::printPreview()
     }
 
     gSettings->beginGroup("General");
-
     QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinter").toString());
     QPrinter printer(printerInfo, QPrinter::HighResolution);
     printer.setPageSize(QPrinter::A4);
@@ -136,7 +131,6 @@ void WdgWebViewEditable::printPreview()
     printer.setColorMode(QPrinter::Color);
     QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
     printer.setPageMargins(rect.left(), rect.top(), rect.width(), rect.height(), QPrinter::Millimeter);
-
     gSettings->endGroup();
 
     QPrintPreviewDialog dlg(&printer, ui->webview->page()->view());
@@ -161,10 +155,8 @@ void WdgWebViewEditable::printToPdf()
 {
   #if defined(QT_PRINTSUPPORT_LIB) && defined(QT_WEBENGINECORE_LIB)
     gSettings->beginGroup("General");
-
     QString fileName = pdfName.isEmpty() ? htmlName : pdfName;
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
-
     QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
                                      path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
     if (!filePath.isEmpty())

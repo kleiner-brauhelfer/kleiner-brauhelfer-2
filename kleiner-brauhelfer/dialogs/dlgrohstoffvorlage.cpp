@@ -54,7 +54,7 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
     setModel();
 
     adjustSize();
-    gSettings->beginGroup("DlgRohstoffVorlage");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -63,7 +63,7 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
 
 DlgRohstoffVorlage::~DlgRohstoffVorlage()
 {
-    gSettings->beginGroup("DlgRohstoffVorlage");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
 	delete ui;

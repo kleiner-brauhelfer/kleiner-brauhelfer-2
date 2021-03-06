@@ -9,7 +9,7 @@ extern Settings* gSettings;
 void DlgTableView::restoreView(bool full)
 {
     Q_UNUSED(full)
-    gSettings->beginGroup("DlgTableView");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableState", QByteArray());
     gSettings->endGroup();
 }
@@ -50,7 +50,7 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
     }
 
     adjustSize();
-    gSettings->beginGroup("DlgTableView");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -60,7 +60,7 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
 
 DlgTableView::~DlgTableView()
 {
-    gSettings->beginGroup("DlgTableView");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
     gSettings->endGroup();

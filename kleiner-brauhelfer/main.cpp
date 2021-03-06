@@ -218,11 +218,7 @@ static void saveResourcesHash()
 
 static QByteArray getPreviousHash(const QString &fileName)
 {
-    QByteArray hash;
-    gSettings->beginGroup("ResourcesHashes");
-    hash = gSettings->value(fileName).toByteArray();
-    gSettings->endGroup();
-    return hash;
+    return gSettings->valueInGroup("ResourcesHashes", fileName).toByteArray();
 }
 
 static void copyResources()
@@ -311,14 +307,10 @@ static void checkWebView()
                                                QObject::tr("Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?"),
                                                QMessageBox::Yes | QMessageBox::No,
                                                QMessageBox::Yes);
-                gSettings->beginGroup("General");
-                gSettings->setValue("WebViewEnabled", ret == QMessageBox::No);
-                gSettings->endGroup();
+                gSettings->setValueInGroup("General", "WebViewEnabled", ret == QMessageBox::No);
         }
     }
-    gSettings->beginGroup("General");
-    WebView::setSupported(gSettings->value("WebViewEnabled", true).toBool());
-    gSettings->endGroup();
+    WebView::setSupported(gSettings->valueInGroup("General", "WebViewEnabled", true).toBool());
   #endif
 }
 
@@ -464,9 +456,7 @@ int main(int argc, char *argv[])
     installTranslator(a, translatorKbh, "kbh");
 
     // locale
-    gSettings->beginGroup("General");
-    bool useLanguageLocale = gSettings->value("UseLanguageLocale", false).toBool();
-    gSettings->endGroup();
+    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
     if (useLanguageLocale)
         QLocale::setDefault(QLocale(gSettings->language()));
 
@@ -509,9 +499,7 @@ int main(int argc, char *argv[])
                 {
                     installTranslator(a, translatorQt, "qtbase");
                     installTranslator(a, translatorKbh, "kbh");
-                    gSettings->beginGroup("General");
-                    bool useLanguageLocale = gSettings->value("UseLanguageLocale", false).toBool();
-                    gSettings->endGroup();
+                    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
                     QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
                     ret = 1000;
                 }

@@ -236,30 +236,12 @@ void WdgDiagramView::zeichneAchsen()
   painter.drawText(QRectF(0, nullY - 5, nullX, 10), Qt::AlignCenter, QString::number(skalierung * startwert));
   if (L2Daten.isEmpty())
     painter.drawText(QRectF(nullX + zbreite, nullY - 5, nullX, 10), Qt::AlignCenter, QString::number(skalierung * startwert));
-  double d;
-  int rest;
   QPen pen;
+  pen.setColor(QColor::fromRgb(128, 128, 128));
+  pen.setWidth(1);
+  pen.setStyle(Qt::DashLine);
   for (int i=0; i < unterteilungen; i++){
-    d = skalierung * (i + startwert + 1);
-    rest = qRound(d)%5;
-    if (rest == 0){
-      pen.setColor(QColor::fromRgb(128, 128, 128));
-      pen.setWidth(1);
-      pen.setStyle(Qt::SolidLine);
-      painter.setPen(pen);
-    }
-    else{
-      pen.setColor(QColor::fromRgb(128, 128, 128));
-      pen.setWidth(1);
-      pen.setStyle(Qt::DashLine);
-      painter.setPen(pen);
-    }
-    rest = qRound(d)%10;
-    if (rest == 0){
-      pen.setColor(QColor::fromRgb(0, 0, 0));
-      pen.setWidth(1);
-      painter.setPen(pen);
-    }
+    painter.setPen(pen);
     painter.drawLine(nullX+1, qRound(nullY - (i + 1) * abstandY1), nullX + zbreite, qRound(nullY - (i + 1) * abstandY1));
     painter.setPen(colorL1);
     painter.drawText(QRectF(0, qRound(nullY - (i + 1) * abstandY1) - 5, nullX, 10), Qt::AlignCenter, QString::number(skalierung * (i + startwert + 1)));

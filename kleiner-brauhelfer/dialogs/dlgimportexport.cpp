@@ -23,7 +23,7 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
     ui->setupUi(this);
     ui->gpKbhExport->setVisible(false);
     adjustSize();
-    gSettings->beginGroup(metaObject()->className());
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -72,7 +72,7 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
 
 DlgImportExport::~DlgImportExport()
 {
-    gSettings->beginGroup(metaObject()->className());
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     if (ui->rbFormatKbh->isChecked())
         gSettings->setValue("format", 0);

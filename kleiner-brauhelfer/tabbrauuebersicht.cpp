@@ -61,15 +61,16 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
     ui->diagram->colorL3 = gSettings->DiagramLinie3;
 
     mAuswahlListe.append({-1, 0, tr("<keine>"), "", 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge [l]"), tr("l"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze [°P]"), tr("°P"), 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol [%vol]"), tr("%"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt [°P]"), tr("°P"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad [%]"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("l"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("l/h"), 0, 10});
+    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
 
     gSettings->endGroup();
 }
@@ -171,7 +172,7 @@ void TabBrauUebersicht::updateDiagram()
         {
             AuswahlType *auswahl1 = &mAuswahlListe[i];
             model->mColAuswahl1 = auswahl1->col;
-            ui->diagram->BezeichnungL1 = auswahl1->label;
+            ui->diagram->BezeichnungL1 = auswahl1->label + " [" + auswahl1->unit + "]";
             ui->diagram->KurzbezeichnungL1 = auswahl1->unit;
             ui->diagram->L1Precision = auswahl1->precision;
             ui->diagram->L1Min = auswahl1->min;
@@ -182,7 +183,7 @@ void TabBrauUebersicht::updateDiagram()
         {
             AuswahlType *auswahl2 = &mAuswahlListe[i];
             model->mColAuswahl2 = auswahl2->col;
-            ui->diagram->BezeichnungL2 = auswahl2->label;
+            ui->diagram->BezeichnungL2 = auswahl2->label + " [" + auswahl2->unit + "]";
             ui->diagram->KurzbezeichnungL2 = auswahl2->unit;
             ui->diagram->L2Precision = auswahl2->precision;
             ui->diagram->L2Min = auswahl2->min;
@@ -193,7 +194,7 @@ void TabBrauUebersicht::updateDiagram()
         {
             AuswahlType *auswahl3 = &mAuswahlListe[i];
             model->mColAuswahl3 = auswahl3->col;
-            ui->diagram->BezeichnungL3 = auswahl3->label;
+            ui->diagram->BezeichnungL3 = auswahl3->label + " [" + auswahl3->unit + "]";
             ui->diagram->KurzbezeichnungL3 = auswahl3->unit;
             ui->diagram->L3Precision = auswahl3->precision;
             ui->diagram->L3Min = auswahl3->min;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>100</height>
+    <width>592</width>
+    <height>133</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -93,7 +93,7 @@
         <item>
          <widget class="QPushButton" name="btnNachOben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_oben</string>
@@ -108,7 +108,7 @@
         <item>
          <widget class="QPushButton" name="btnNachUnten">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefesorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefesorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_unten</string>

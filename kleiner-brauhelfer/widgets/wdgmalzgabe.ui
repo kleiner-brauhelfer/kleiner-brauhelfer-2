@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>653</width>
-    <height>122</height>
+    <width>700</width>
+    <height>145</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -90,7 +90,7 @@
         <item>
          <widget class="QPushButton" name="btnNachOben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_oben</string>
@@ -105,7 +105,7 @@
         <item>
          <widget class="QPushButton" name="btnNachUnten">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
            <string notr="true">nach_unten</string>

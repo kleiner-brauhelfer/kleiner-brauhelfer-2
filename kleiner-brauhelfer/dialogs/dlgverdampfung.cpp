@@ -13,7 +13,7 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 {
 	ui->setupUi(this);
     adjustSize();
-    gSettings->beginGroup("DlgVerdampfung");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -22,7 +22,7 @@ DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
 
 DlgVerdampfung::~DlgVerdampfung()
 {
-    gSettings->beginGroup("DlgVerdampfung");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
 	delete ui;

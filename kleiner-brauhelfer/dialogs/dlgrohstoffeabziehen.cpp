@@ -45,7 +45,7 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTy
     else
         setModels(false, typ, name, menge);
     adjustSize();
-    gSettings->beginGroup("DlgRohstoffeAbziehen");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -54,7 +54,7 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTy
 
 DlgRohstoffeAbziehen::~DlgRohstoffeAbziehen()
 {
-    gSettings->beginGroup("DlgRohstoffeAbziehen");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

@@ -183,7 +183,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
     mItTestFncs = mTestFncs.begin();
     next();
     adjustSize();
-    gSettings->beginGroup("DlgDatabaseCleaner");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -192,7 +192,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
 
 DlgDatabaseCleaner::~DlgDatabaseCleaner()
 {
-    gSettings->beginGroup("DlgDatabaseCleaner");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

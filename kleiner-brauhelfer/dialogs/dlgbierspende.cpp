@@ -10,7 +10,7 @@ DlgBierspende::DlgBierspende(QWidget *parent) :
 {
     ui->setupUi(this);
     adjustSize();
-    gSettings->beginGroup("DlgBierspende");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -19,7 +19,7 @@ DlgBierspende::DlgBierspende(QWidget *parent) :
 
 DlgBierspende::~DlgBierspende()
 {
-    gSettings->beginGroup("DlgBierspende");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

@@ -12,7 +12,7 @@ DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
 {
     ui->setupUi(this);
     adjustSize();
-    gSettings->beginGroup("DlgPhMalz");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -21,7 +21,7 @@ DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
 
 DlgPhMalz::~DlgPhMalz()
 {
-    gSettings->beginGroup("DlgPhMalz");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

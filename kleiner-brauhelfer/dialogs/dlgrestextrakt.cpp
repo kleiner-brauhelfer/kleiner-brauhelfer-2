@@ -74,7 +74,7 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDate
     ui->tbPlatoManuell->setValue(value);
 
     adjustSize();
-    gSettings->beginGroup("DlgRestextrakt");
+    gSettings->beginGroup(staticMetaObject.className());
     ui->cbAuswahl->setCurrentIndex(gSettings->value("type", 0).toInt());
     on_cbAuswahl_currentIndexChanged(ui->cbAuswahl->currentIndex());
     QSize size = gSettings->value("size").toSize();
@@ -85,7 +85,7 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDate
 
 DlgRestextrakt::~DlgRestextrakt()
 {
-    gSettings->beginGroup("DlgRestextrakt");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("type", ui->cbAuswahl->currentIndex());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();

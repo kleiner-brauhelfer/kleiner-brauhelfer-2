@@ -17,7 +17,7 @@ DlgAbout::DlgAbout(QWidget *parent) :
     ui->lblHomepage->setText(generateLink(URL_HOMEPAGE));
     ui->lblForum->setText(generateLink(URL_FORUM, URL_FORUM_NAME));
     adjustSize();
-    gSettings->beginGroup("DlgAbout");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -26,7 +26,7 @@ DlgAbout::DlgAbout(QWidget *parent) :
 
 DlgAbout::~DlgAbout()
 {
-    gSettings->beginGroup("DlgAbout");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

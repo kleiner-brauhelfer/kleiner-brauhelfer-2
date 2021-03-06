@@ -24,7 +24,7 @@ DlgModule::DlgModule(QWidget *parent) :
     ui->gbModuleDatenbank->setChecked(gSettings->module(Settings::ModuleDatenbank));
 
     adjustSize();
-    gSettings->beginGroup(metaObject()->className());
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -35,7 +35,7 @@ DlgModule::DlgModule(QWidget *parent) :
 
 DlgModule::~DlgModule()
 {
-    gSettings->beginGroup(metaObject()->className());
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

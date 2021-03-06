@@ -31,7 +31,7 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     }
 
     adjustSize();
-    gSettings->beginGroup("DlgVolumen");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -40,7 +40,7 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
 
 DlgVolumen::~DlgVolumen()
 {
-    gSettings->beginGroup("DlgVolumen");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

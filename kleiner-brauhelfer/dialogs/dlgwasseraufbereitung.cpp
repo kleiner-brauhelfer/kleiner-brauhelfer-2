@@ -25,7 +25,7 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     for (const auto& it : mList)
         ui->cbAuswahl->addItem(it.name);
     adjustSize();
-    gSettings->beginGroup("DlgWasseraufbereitung");
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -43,7 +43,7 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(const QString& name, int einheit, d
 
 DlgWasseraufbereitung::~DlgWasseraufbereitung()
 {
-    gSettings->beginGroup("DlgWasseraufbereitung");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

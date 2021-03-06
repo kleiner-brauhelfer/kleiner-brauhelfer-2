@@ -16,7 +16,7 @@ DlgConsole::DlgConsole(QWidget *parent) :
     ui->sbLevel->setValue(gSettings->logLevel());
 
     adjustSize();
-    gSettings->beginGroup(metaObject()->className());
+    gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
@@ -27,7 +27,7 @@ DlgConsole::DlgConsole(QWidget *parent) :
 
 DlgConsole::~DlgConsole()
 {
-    gSettings->beginGroup(metaObject()->className());
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;

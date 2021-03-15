@@ -54,6 +54,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer
 - Fix: Sortierung der Gärverläufe nach Datum
 - Fix: Abfülldaten zeigt neu den scheinbaren Vergärungsgrad
+- Fix: Negative Speisemenge bei eingeschalteter Schnellgärprobe
 
 ### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)

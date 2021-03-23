@@ -65,7 +65,7 @@
      <item>
       <widget class="QCheckBox" name="checkBox_ignor">
        <property name="toolTip">
-        <string>Hiermit wird diese Version ignoriert. Die Meldung erscheint erneut beim nächten Versionssprung.</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird diese Version &lt;span style=&quot; font-weight:600;&quot;&gt;ignoriert&lt;/span&gt;. Die Meldung erscheint erneut beim nächten Versionssprung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Diese Version ignorieren</string>

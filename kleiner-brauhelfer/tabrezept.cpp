@@ -54,6 +54,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbFaktorHauptgussEmpfehlung->setColumn(ModelSud::ColFaktorHauptgussEmpfehlung);
     ui->tbWasserGesamt->setColumn(ModelSud::Colerg_W_Gesamt);
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
+    ui->tbHauptgussEmpfohlen->setColumn(ModelSud::ColWHauptgussEmpfehlung);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
     ui->tbWasserHGF->setColumn(ModelSud::ColWasserHgf);
     ui->tbRestextrakt->setColumn(ModelSud::ColSRE);
@@ -634,18 +635,9 @@ void TabRezept::updateValues()
 
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
-    if (ui->tbHGF->value() != 0.0)
-    {
-        ui->tbWasserHGF->setVisible(true);
-        ui->lblWasserHGF->setVisible(true);
-        ui->lblWasserHGFEinheit->setVisible(true);
-    }
-    else
-    {
-        ui->tbWasserHGF->setVisible(false);
-        ui->lblWasserHGF->setVisible(false);
-        ui->lblWasserHGFEinheit->setVisible(false);
-    }
+    diff = bh->sud()->geterg_WHauptguss() - bh->sud()->getWHauptgussEmpfehlung();
+    ui->wdgHauptgussEmpfohlen->setVisible(qAbs(diff) > 0.005);
+    ui->wdgWasserHGF->setVisible(bh->sud()->gethighGravityFaktor() != 0.0);
 
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
     Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());

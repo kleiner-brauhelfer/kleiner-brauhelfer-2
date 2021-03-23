@@ -295,7 +295,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
           <item>
            <widget class="QLabel" name="label_10">
             <property name="text">
-             <string>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe. </string>
+             <string>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>

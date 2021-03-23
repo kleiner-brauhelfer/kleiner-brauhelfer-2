@@ -202,7 +202,7 @@ void DlgDatabaseCleaner::next()
 {
     if (mItTestFncs == mTestFncs.end())
     {
-        ui->lblTitle->setText("Keine (weitere) Probleme gefunden.");
+        ui->lblTitle->setText(tr("Keine (weitere) Probleme gefunden."));
         ui->lblModel->setText("");
         ui->lblModel->setVisible(false);
         ui->tableView->setModel(nullptr);
@@ -321,9 +321,10 @@ bool DlgDatabaseCleaner::testRange1()
         ui->tableView->setColumnHidden(ModelHopfen::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::HopfenTypname, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(1);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -347,9 +348,10 @@ bool DlgDatabaseCleaner::testRange2()
         ui->tableView->setColumnHidden(ModelHefe::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::HefeTypname, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(1);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -373,9 +375,10 @@ bool DlgDatabaseCleaner::testRange3()
         ui->tableView->setColumnHidden(ModelWeitereZutaten::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::ZusatzTypname, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(0);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -399,9 +402,10 @@ bool DlgDatabaseCleaner::testRange4()
         ui->tableView->setColumnHidden(ModelWeitereZutaten::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::Einheiten, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(0);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -426,9 +430,10 @@ bool DlgDatabaseCleaner::testRange5()
         ui->tableView->setColumnHidden(ModelSud::ColSudname, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("Rezept"), tr("Gebraut"), tr("Abgefüllt"), tr("Verbraucht")}, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(0);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -453,9 +458,10 @@ bool DlgDatabaseCleaner::testRange6()
         ui->tableView->setColumnHidden(ModelSud::ColSudname, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("Keine"), tr("Gewicht"), tr("IBU")}, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(0);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;
@@ -480,9 +486,10 @@ bool DlgDatabaseCleaner::testRange7()
         ui->tableView->setColumnHidden(ModelWeitereZutatenGaben::ColName, false);
         ui->tableView->setColumnHidden(col, false);
         ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(TabRohstoffe::Einheiten, ui->tableView));
-         ui->tableView->setFocus();
+        connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this, SLOT(selectionChanged()));
+        ui->tableView->setFocus();
         setTableIds(1);
-        ui->btnDelete->setVisible(false);
+        ui->btnDelete->setVisible(true);
         return false;
     }
     return true;

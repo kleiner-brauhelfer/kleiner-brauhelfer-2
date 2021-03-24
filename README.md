@@ -17,7 +17,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.2.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+- [Version 2.3.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -47,7 +47,7 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 
 ## Änderungen & Erweiterungen
 
-### Version 2.3.0 (in Entwicklung)
+### Version 2.3.0 (24.03.2021)
 - Neu: Datenbankversion **2006**
 - Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)
 - Neu: Weitere Eingabemöglichkeiten für Bemerkungen (Brauen, Abfüllen, Gärung)

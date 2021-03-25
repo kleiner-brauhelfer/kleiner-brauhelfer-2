@@ -119,7 +119,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="108"/>
         <source>Ungültige Felder können mit einem Doppelklick editiert werden. Alternativ kann der ganze Eintrag gelöscht werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogiltiga värden kan redigeras med dubbelklick. Alternativt kan det tas bort helt.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="117"/>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="205"/>
         <source>Keine (weitere) Probleme gefunden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga (fler) problem hittas.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="211"/>
@@ -371,12 +371,12 @@
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="14"/>
         <source>Module</source>
-        <translation>Muduler</translation>
+        <translation>Moduler</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="23"/>
         <source>Hier können Module ein- und ausgeschaltet werden. Diese Einstellung lässt sich jederzeit anpassen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Här kan olika delar av programmet slås på och av.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="51"/>
@@ -386,7 +386,7 @@
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="75"/>
         <source>Damit lassen sich zeitliche Gärverläufe protokollieren (Hauptgärung, Nachgärung und Schnellgärprobe).</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokollera jäsningen över tid.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="88"/>
@@ -397,7 +397,7 @@
         <location filename="../dialogs/dlgmodule.ui" line="112"/>
         <source>Bei ungebrauten Suden fasst der Spickzettel alle Informationen zum einem Brauprotokoll zusammen. Dies ist ausgedruckt am Brautag eine wertvolle Hilfe.
 Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusammen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Visar en fusklapp/checklista för obryggda satser. För bryggda satser visas en sammanfattning.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="126"/>
@@ -407,7 +407,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="150"/>
         <source>Dieses Modul ermöglicht das Erstellen von Etiketten (Label) mit automatischer Einbindung der wichtigsten Kennzahlen (Stammwürze, IBU, Farbe, ...).</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiketter enligt en mall där värden (som stamvört, IBU, ...) läggs i automatiskt.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="163"/>
@@ -417,7 +417,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="187"/>
         <source>Dieses Modul ermöglicht das Bewerten von Suden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Antecka och betysätt ölens egenskaper.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="200"/>
@@ -427,7 +427,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="224"/>
         <source>In der Brauübersicht lassen sich die wichtigsten Kennzahlen in einem zeitlichen Verlauf darstellen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafik och tabell som visar de viktigaste siffrorna för alla satser.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="237"/>
@@ -437,7 +437,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="261"/>
         <source>Dieses Modul verwaltet anlagespezifische Kennzahlen. Die wichtigsten sind dabei Sudhausausbeute und Verdampfungsrate. Für eine genauere Berechnung sollte dieses Modul aktiviert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Slå på för att ange bryggutrustningens egenskaper, såsom mäskutbyte och förångningshastighet, vilket förbättrar beräkningar.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="274"/>
@@ -447,7 +447,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="298"/>
         <source>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe.</source>
-        <translation type="unfinished"></translation>
+        <translation>Förvalta råvaror och deras egenskaper.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="311"/>
@@ -457,7 +457,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="335"/>
         <source>Dieses Modul aktiviert die Speiseberechnung für die Karbonisierung (Nachgärung).</source>
-        <translation type="unfinished"></translation>
+        <translation>Slå på/av beräkningar för att kolsyresätta med sparad/ojäst vört.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="348"/>
@@ -467,7 +467,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="372"/>
         <source>Dieses Modul hilft bei der Wasseraufbereitung und kalkuliert die Wasserprofile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vattenprofiler och anpassninar</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="385"/>
@@ -477,7 +477,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="409"/>
         <source>Dieses Modul berechnet den Preis pro Liter Bier. Voraussetzung ist die Eingabe alle Rohstoffpreise.</source>
-        <translation type="unfinished"></translation>
+        <translation>Räkna ut priset per liter, förutsatt alla råvarutpriser har matats in.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="422"/>
@@ -487,7 +487,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="446"/>
         <source>Dieses Modul zeigt die grundlegende Datenbank an. Mit ihm lässt sich die Datenbank direkt manipulieren.</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa och redigera databasen direkt.</translation>
     </message>
 </context>
 <context>
@@ -1744,12 +1744,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../mainwindow.ui" line="647"/>
         <source>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa tal och datum enligt språkinställning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="652"/>
         <source>Android App</source>
-        <translation type="unfinished"></translation>
+        <translation>Android-app</translation>
     </message>
     <message>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
@@ -2090,7 +2090,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../main.cpp" line="119"/>
         <source>Die Datenbank muss aktualisiert werden (Version %1 -&gt; %2).</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasen behöver uppdateras (version %1 -&gt; %2).</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="120"/>
@@ -2333,7 +2333,7 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="197"/>
         <source>Beginn der Reifung</source>
-        <translation type="unfinished"></translation>
+        <translation>Mognadstidens början</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="210"/>
@@ -2348,12 +2348,12 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="242"/>
         <source>Aktuelle Reifezeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuell mognadstid</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="255"/>
         <source>Wochen</source>
-        <translation type="unfinished">veckor</translation>
+        <translation>veckor</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="268"/>
@@ -2384,7 +2384,7 @@ Installerad version: %2</translation>
         <location filename="../tababfuellen.ui" line="476"/>
         <location filename="../tababfuellen.ui" line="522"/>
         <source>Aus Rezept</source>
-        <translation type="unfinished">Från receptet</translation>
+        <translation>Från receptet</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="493"/>
@@ -2681,12 +2681,12 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1810"/>
         <source>Bemerkung Abfüllen</source>
-        <translation type="unfinished"></translation>
+        <translation>Anteckningar om flasktappning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1827"/>
         <source>Bemerkung Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Anteckningar om jäsning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1873"/>
@@ -3761,57 +3761,57 @@ Tid för flasktappning: %1</translation>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>Abgefüllte Biermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängden flask-/fattappad</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <source>Stammwürze</source>
-        <translation type="unfinished">Stamvört (OG)</translation>
+        <translation>Stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished">Mäskutbyte</translation>
+        <translation>Mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="67"/>
         <source>Effektive Sudhausausbeute</source>
-        <translation type="unfinished">Effektiv mäskutbyte</translation>
+        <translation>Effektiv mäskutbyte</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished">Förångningshastighet</translation>
+        <translation>Förångningshastighet</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>l/h</source>
-        <translation type="unfinished">l/h</translation>
+        <translation>l/h</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>Alkohol</source>
-        <translation type="unfinished"></translation>
+        <translation>Alkoholhalt</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <source>Scheinbarer Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar slutlig extrakthalt</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>Scheinbarer Endvergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Skenbar förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>Tatsächlicher Endvergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Verklig förjäsningsgrad</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="73"/>
         <source>Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation>Kostnader</translation>
     </message>
     <message>
         <source>Abgefüllte Biermenge [l]</source>
@@ -4046,7 +4046,7 @@ Tid för flasktappning: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="2403"/>
         <source>Bemerkung</source>
-        <translation type="unfinished">Anmärkningar</translation>
+        <translation>Anmärkningar</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2454"/>
@@ -4204,7 +4204,7 @@ Tid för flasktappning: %1</translation>
         <location filename="../tabbraudaten.ui" line="325"/>
         <location filename="../tabbraudaten.ui" line="1152"/>
         <source>Zielwürzemenge bei 20°C</source>
-        <translation type="unfinished"></translation>
+        <translation>Mål för vörtmängden (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="332"/>
@@ -4606,12 +4606,12 @@ Bryggdatum: %1</translation>
     <message>
         <location filename="../tabetikette.ui" line="454"/>
         <source>Farben</source>
-        <translation type="unfinished"></translation>
+        <translation>Färger</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="460"/>
         <source>Hintergrundfarbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Bakgrundsfärg</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="479"/>
@@ -4756,17 +4756,17 @@ Bryggdatum: %1</translation>
     <message>
         <location filename="../tabetikette.cpp" line="372"/>
         <source>SVG exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera SVG</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="389"/>
         <source>SVG Export</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG-export</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="389"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
-        <translation type="unfinished">Filen kunde inte skrivas.</translation>
+        <translation>Filen kunde inte skrivas.</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="554"/>
@@ -5722,7 +5722,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="2927"/>
         <source>Empfohlen</source>
-        <translation type="unfinished">Rekommenderad</translation>
+        <translation>Rekommenderad</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2953"/>

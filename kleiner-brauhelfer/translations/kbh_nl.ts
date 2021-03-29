@@ -39,7 +39,7 @@
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="65"/>
         <source>Wegen zollrechtlicher Bestimmungen, wird ein Postfach für die schweiz in Deutschland genutzt. Kein Easteregg - ist wirkich so. :-)</source>
-        <translation type="unfinished"></translation>
+        <translation>In verband met de douanevoorschriften wordt een postbus voor Zwitserland in Duitsland gebruikt. Nee geen Easteregg. Het is echt zo. :-)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbierspende.ui" line="68"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="68"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird diese Version &lt;span style=&quot; font-weight:600;&quot;&gt;ignoriert&lt;/span&gt;. Die Meldung erscheint erneut beim nächten Versionssprung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit &lt;span style=&quot; font-weight:600;&quot;&gt;negeert&lt;/span&gt;. deze versie. De melding verschijnt opnieuw bij de volgende versiesprong.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="71"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="81"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird gerpüft, ob ein Update vorliegt.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit wordt gebruikt om te controleren of er een update beschikbaar is.Deze module activeert de wortberekening voor de carbonatatie (nagisting).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgcheckupdate.ui" line="84"/>
@@ -85,12 +85,12 @@
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="20"/>
         <source>Hier werden Änderungen im Kleinen Brauhelfer aufgelistet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigingen in de Kleinen Brauhelfer  worden hier vermeld.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden Einträge aus der Console gelöscht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit verwijdert items uit de Console.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="38"/>
@@ -105,7 +105,7 @@
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="52"/>
         <source>Hier werden Grade von Änderungen im Kleinen Brauhelder eingestellt. Je höher, desto feiner, aber auch mehr Speicherbedarf. Im Normalfall belässt man es bei Level 0. Das Tool dient versierten Nutzern zur Fehlersuche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier worden veranderingen aangebracht in het kleine brouwgebied. Hoe hoger, hoe fijner, maar er is ook meer geheugen nodig. Normaal gesproken laat u het op niveau 0. Het hulpmiddel wordt door ervaren gebruikers gebruikt voor het oplossen van problemen.</translation>
     </message>
 </context>
 <context>
@@ -118,7 +118,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="108"/>
         <source>Ungültige Felder können mit einem Doppelklick editiert werden. Alternativ kann der ganze Eintrag gelöscht werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültige Felder können mit einem Doppelklick editiert werden. Alternativ kann der ganze Eintrag gelöscht werden.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.ui" line="117"/>
@@ -143,7 +143,7 @@
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="205"/>
         <source>Keine (weitere) Probleme gefunden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen (verdere) problemen gevonden.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="211"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="31"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden am besten &amp;quot;KBH&amp;quot;-Rezepte importiert. json ist das bevorzugte Dateiformat der Datenbank des Kleinen Brauhelfers v2.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit is de beste manier &amp;quot;KBH&amp;quot;-om recepten te importeren. json is het voorkeurs bestandsformaat van de Kleinen Brauhelfers v2 database.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="34"/>
@@ -252,17 +252,17 @@
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="44"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden am besten &amp;quot;MMuM&amp;quot;-Rezepte importiert. json ist das bevorzugte Dateiformat der beliebten Rezeptdatenbank von &lt;a href=&quot;maischemalzundmehr.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Maische, Malz und mehr.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit is de beste manier om &amp;quot;MMeM&amp;quot;-Recepten te importeren. json is het voorkeursbestandsformaat van de populaire receptendatabase van &lt;a href=&quot;maischemalzundmehr.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;maisch, mout en meer.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="47"/>
         <source>MaischeMalzundMehr (json)</source>
-        <translation></translation>
+        <translation>MaischeMalzundMehr (json)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="54"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden am besten Rezepte im XML-Format importiert. BeerXML ist das bevorzugte Dateiformat beliebter amerikanischer Rezeptseiten wie &lt;a href=&quot;brewersfriend.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brewer&apos;s Friend&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;maischemalzundmehr.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit wordt het best gebruikt om recepten in XML formaat te importeren. BeerXML is het voorkeursformaat van populaire Amerikaanse receptensites zoals &lt;a href=&quot;brewersfriend.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brewer&apos;s Friend&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;maischemalzundmehr.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="57"/>
@@ -277,22 +277,22 @@
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="104"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit passendem Pfad kann hier ein Rezept direkt in den Kleinen Brauhelfer geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Met een geschikt pad kan een recept hier rechtstreeks in de Kleinen Brauhelfer worden geladen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="121"/>
         <source>Tabellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabellen</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="83"/>
         <source>Download</source>
-        <translation></translation>
+        <translation>Download</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="76"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit passender URL kann hier ein Rezept direkt in den Kleinen Brauhelfer geladen werden.&lt;/p&gt;&lt;p&gt;Bei MMuM kopiert man die URL, indem man mit der rechten Maustaste auf den &amp;quot;JSON Export&amp;quot; Button klickt und dann &amp;quot;Adresse des Links kopieren&amp;quot; wählt.&lt;/p&gt;&lt;p&gt;Bei Brewers Friend: Rezept öffnen, Export - Beerxml, auf der nächsten Seite Rechtsklick über dem Link und &amp;quot;Adresse des Links kopieren&amp;quot; wählen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Met een geschikte URL kan een recept rechtstreeks in de Kleinen Brauhelfer Helper worden geladen.&lt;/p&gt;&lt;p&gt;Bij MMeM kopieer je de URL door rechts te klikken op de &amp;quot;JSON Export&amp;quot; knop en dan &amp;quot;Copy address of link&amp;quot; te kiezen.&lt;/p&gt;&lt;p&gt;Bij Brewers Friend: Open recept, Export - Beerxml, op de volgende pagina rechts klikken op de link en &amp;quot;Copy address of link&amp;quot; te kiezen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.ui" line="97"/>
@@ -370,123 +370,124 @@
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="14"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Module</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="23"/>
         <source>Hier können Module ein- und ausgeschaltet werden. Diese Einstellung lässt sich jederzeit anpassen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modules kunnen hier worden in- en uitgeschakeld. Deze instelling kan op elk moment worden aangepast.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="51"/>
         <source>Gärverlauf</source>
-        <translation type="unfinished">Gistingsproces</translation>
+        <translation>Gistingsproces</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="75"/>
         <source>Damit lassen sich zeitliche Gärverläufe protokollieren (Hauptgärung, Nachgärung und Schnellgärprobe).</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit maakt het mogelijk het gistingsverloop in bij te houden (hoofdgisting, nagisting en snelle gistingstest).</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="88"/>
         <source>Spickzettel / Zusammenfassung</source>
-        <translation type="unfinished"></translation>
+        <translation>Spiekbriefje / Samenvatting</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="112"/>
         <source>Bei ungebrauten Suden fasst der Spickzettel alle Informationen zum einem Brauprotokoll zusammen. Dies ist ausgedruckt am Brautag eine wertvolle Hilfe.
 Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusammen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voor ongebrouwen brouwsels geeft het spiekbriefje een samenvatting van alle informatie in een brouwlogboek. Dit is een waardevol hulpmiddel wanneer het op de brouwdag wordt uitgeprint.
+Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante informatie.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="126"/>
         <source>Etikette</source>
-        <translation type="unfinished">Etiketten</translation>
+        <translation>Etiketten</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="150"/>
         <source>Dieses Modul ermöglicht das Erstellen von Etiketten (Label) mit automatischer Einbindung der wichtigsten Kennzahlen (Stammwürze, IBU, Farbe, ...).</source>
-        <translation type="unfinished"></translation>
+        <translation>Met deze module kunnen etiketten worden aangemaakt met automatische integratie van de belangrijkste gegevens (Begin SG, IBU, kleur, ...).</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="163"/>
         <source>Bewertung</source>
-        <translation type="unfinished">Evaluatie</translation>
+        <translation>Evaluatie</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="187"/>
         <source>Dieses Modul ermöglicht das Bewerten von Suden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module maakt de evaluatie van brouwsels mogelijk.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="200"/>
         <source>Brauübersicht</source>
-        <translation type="unfinished">Brouwoverzicht</translation>
+        <translation>Brouwoverzicht</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="224"/>
         <source>In der Brauübersicht lassen sich die wichtigsten Kennzahlen in einem zeitlichen Verlauf darstellen.</source>
-        <translation type="unfinished"></translation>
+        <translation>In het brouwoverzicht kunnen de belangrijkste kerncijfers in chronologische volgorde worden weergegeven.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="237"/>
         <source>Ausrüstung</source>
-        <translation type="unfinished">Uitrusting</translation>
+        <translation>Uitrusting</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="261"/>
         <source>Dieses Modul verwaltet anlagespezifische Kennzahlen. Die wichtigsten sind dabei Sudhausausbeute und Verdampfungsrate. Für eine genauere Berechnung sollte dieses Modul aktiviert werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module beheert installatiespecifieke sleutelgegevens. De belangrijkste zijn het rendement van de brouwerij en de verdampingssnelheid. Voor een nauwkeurigere berekening moet deze module worden geactiveerd.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="274"/>
         <source>Lagerverwaltung</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorraadbeheer</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="298"/>
         <source>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module activeert het voorraadbeheer van de grondstoffen.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="311"/>
         <source>Speiseberechnung</source>
-        <translation type="unfinished"></translation>
+        <translation>Wort berekeningen</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="335"/>
         <source>Dieses Modul aktiviert die Speiseberechnung für die Karbonisierung (Nachgärung).</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module activeert de wortberekening voor de carbonatatie (nagisting).</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="348"/>
         <source>Wasseraufbereitung</source>
-        <translation type="unfinished">Waterbehandeling</translation>
+        <translation>Waterbehandeling</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="372"/>
         <source>Dieses Modul hilft bei der Wasseraufbereitung und kalkuliert die Wasserprofile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module helpt bij de waterbehandeling en berekent de waterprofielen.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="385"/>
         <source>Preiskalkulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Prijs berekening</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="409"/>
         <source>Dieses Modul berechnet den Preis pro Liter Bier. Voraussetzung ist die Eingabe alle Rohstoffpreise.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module berekent de prijs per liter bier. Voorwaarde is de invoer van alle grondstofprijzen.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="422"/>
         <source>Datenbankansicht</source>
-        <translation type="unfinished"></translation>
+        <translation>Database bekijken</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="446"/>
         <source>Dieses Modul zeigt die grundlegende Datenbank an. Mit ihm lässt sich die Datenbank direkt manipulieren.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze module geeft de basisgegevensbank weer. Het kan worden gebruikt om de database rechtstreeks te bewerken.</translation>
     </message>
 </context>
 <context>
@@ -509,7 +510,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="38"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; für den gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Malztyp&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Vordefiniert sind Werte für Basismalz bis 200 EBC, Karamellmalz, Röstmalz und Rohfrucht. Sofern bekannt, kann der pH-Wert eines Malzes auch manuell eingegeben werden.&lt;/p&gt;&lt;p&gt;Zur manuellen Eingabe: Manche Mälzereien stellen Dateblätter für den gemessenen pH-Wert zu Verfügung. Die Werte können innerhalb eines Malztyps abweichen. In der Mikro- und Hobbybrauerei ist dieser Faktor indes vernachlässigbar.&lt;/p&gt;&lt;p&gt;Zur Orientierung durchschnittliche Farbwerte nach Malztyp:&lt;/p&gt;&lt;p&gt;Basismalze: 2 – 30 EBC&lt;/p&gt;&lt;p&gt;Rohfrucht: 1 – 20 EBC&lt;/p&gt;&lt;p&gt;Karamellmalze: 4 – 450 EBC&lt;/p&gt;&lt;p&gt;Röstmalze: 38 – 1300 EBC&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei manchen Spezialmalzen wie Brown Malt, bei denen sich das Mälzverfahren im Laufe der Zeit geändert hat und die in alten Rezepten erwähnt werden, können nur noch den Namen gemeinsam haben, unterscheiden sich aber sonst beträchtlich. Wenn Informationen in Shps und Mälzereien fehlen, sind Fachforen die erste Adressem um Unklarheiten zu klären.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;pH-waarde&lt;/span&gt; voor het geselecteerde &lt;span style=&quot; font-weight:600;&quot;&gt;type mout&lt;/span&gt; ingesteld.&lt;/p&gt;&lt;p&gt;Voorgedefinieerd zijn waarden voor basismout tot 200 EBC, karamelmout, gebrande mout en rauw fruit. Indien bekend, kan de pH van een mout ook handmatig worden ingevoerd.&lt;/p&gt;&lt;p&gt;Voor handmatige invoer: sommige mouterijen verstrekken gegevensbladen voor de gemeten pH. De waarden kunnen variëren binnen een moutsoort. Bij microbrouwen en hobbybrouwen is deze factor echter verwaarloosbaar. &lt;/p&gt;&lt;p&gt;Ter referentie, gemiddelde kleurwaarden per moutsoort:&lt;/p&gt;&lt;p&gt;Basismouten: 2 - 30 EBC&lt;/p&gt;&lt;p&gt;Ruwe mouten: 1 - 20 EBC&lt;/p&gt;&lt;p&gt;Karamelmouten: 4 - 450 EBC&lt;/p&gt;&lt;p&gt;Roostmouten: 38 - 1300 EBC&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Voorzichtigheid: &lt;/span&gt;Sommige speciale moutsoorten, zoals Brown Malt, waarvan het moutproces in de loop van de tijd is veranderd en die in oude recepten worden vermeld, hebben misschien alleen de naam gemeen, maar verschillen voor het overige aanzienlijk. Als er informatie ontbreekt in shps en maltings, zijn gespecialiseerde forums het eerste adres om onduidelijkheden op te helderen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgphmalz.ui" line="42"/>
@@ -651,7 +652,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="53"/>
         <source>Hier wird das Datum und die Uhrzeit der Messung festgehalten. Das Feld lässt sich manuell ändern.</source>
-        <translation type="unfinished"></translation>
+        <translation>De datum en tijd van de meting worden hier geregistreerd. Het veld kan handmatig worden gewijzigd.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="80"/>
@@ -661,7 +662,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="87"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier muss das gängige &lt;span style=&quot; font-weight:600;&quot;&gt;Messgerät&lt;/span&gt; für den &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckergehalt&lt;/span&gt; eingestellt werden. Am geläufigsten sind Spindel und Refraktometer. Zu letzterem gehören auch Digitalrefraktometer. Unter &amp;quot;Andere &amp;quot;versteht man populäre Edel-Messgeräte wie etwa das EasyDens, das mit der Biegeschwinger-Technologie arbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier moet u het gebruikte &lt;span style=&quot; font-weight:600;&quot;&gt;meetapparaat&lt;/span&gt; instellen voor het &lt;span style=&quot; font-weight:600;&quot;&gt;suikergehalte&lt;/span&gt;. De meest voorkomende zijn hydrometer en refractometer. Digitale refractometers behoren ook tot de laatste categorie. Onder &amp;quot;Andere &amp;quot; worden populaire meetapparaten zoals de EasyDens, die werkt met de flexural oscillator technologie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="91"/>
@@ -885,7 +886,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="29"/>
         <source>Hier kann vollkommen frei in der aktiven rohstoffliste gesucht wrden. Es genügen Wortbestandteile, auch mitten in einem Begriff.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u volledig vrij zoeken in de lijst van actieve grondstoffen. Woorddelen zijn voldoende, zelfs in het midden van een term.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.ui" line="32"/>
@@ -1170,7 +1171,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="20"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird nach angelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; gesucht. Kategorien dienen dazu, die verschiedenen Sude zu klassifizieren und damit besser unterscheidbar zu machen. Sinnvoll ist dies, wenn aus dem Biernamen z.B. nicht der Bierstil hervorgeht.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Kategorien können grob nach unter- oder obergärig oder international nach den Kategorien des &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;BJCP Style Guidelines von 2015 &lt;/span&gt;&lt;/a&gt;unterschieden werden. Gerne werden von der Brau-Community auch Namen genutzt, die als &amp;quot;außer Kategorie&amp;quot; klassifziert werden und mehr ein Gefühl kommunizieren. Die beliebten Weihnachtsbiere gehören beispielsweise dazu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit veld wordt gebruikt om te zoeken naar aangemaakte &lt;span style=&quot; font-weight:600;&quot;&gt;categorieën&lt;/span&gt;. Categorieën worden gebruikt om de verschillende brouwsels in te delen en ze zo beter van elkaar te onderscheiden. Dit is zinvol als bijvoorbeeld de biernaam, de bierstijl niet aangeeft.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Categorieën kunnen grofweg worden onderscheiden in ondergistend of bovengistend of internationaal volgens de categorieën van de &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;BJCP Style Guidelines of 2015&lt;/span&gt;&lt;/a&gt;. In de brouwerijwereld worden ook veel namen gebruikt die als &amp;quot;out of category&amp;quot; zijn geclassificeerd en meer een gevoel overbrengen. De populaire kerstbieren bijvoorbeeld, zijn er daar een voorbeeld van.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="23"/>
@@ -1180,27 +1181,27 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="33"/>
         <source>Hier werden alle angelegten Kategorien angezeigt und mittels der Pfeile unten sortiert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle aangemaakte categorieën worden hier getoond en gesorteerd met de pijlen onderaan.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="90"/>
         <source>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit creëert een nieuwe categorie. Hiervoor verschijnt een apart pop-up venster.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="117"/>
         <source>Hiermit wird eine neue Kategorie entfernt. Eine oder mehrere Kategorien müssen dazu markiert sein.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit verwijdert een nieuwe categorie. Hiervoor moeten één of meer categorieën worden geselecteerd.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="144"/>
         <source>Hiermit wird eine Kategorie nach oben verschoben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit schuift een categorie naar boven toe.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgtableview.ui" line="171"/>
         <source>Hiermit wird eine Kategorie nach unten verschoben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit schuift een categorie naar beneden toe.</translation>
     </message>
 </context>
 <context>
@@ -1213,12 +1214,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlguebernahmerezept.ui" line="22"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses geteilte Feld bietet die bequeme Option, Zutaten aus anderen Rezepten en bloc zu übernehmen, statt diese einzeln einzugeben. Dies geschieht nach Malz, Hopfen, Hefe, Maischplan und Wasseraufbereitung getrennt.&lt;/p&gt;&lt;p&gt;Links stehen alle vorhandenen Rezepte der geladenen Datenbank, rechts die vorhandenen Zutaten. Sobald angeklickt, werden die Zutaten des Quellrezeptes übernommen.&lt;/p&gt;&lt;p&gt;Es werden keine Zutaten überschrieben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit gesplitste veld biedt de handige optie om ingrediënten van andere recepten en bloc over te nemen in plaats van ze afzonderlijk in te voeren. Dit gebeurt afzonderlijk per mout, hop, gist, maischschema en waterbereiding.&lt;/p&gt;&lt;p&gt;Aan de linkerkant staan alle bestaande recepten in de geladen database, aan de rechterkant staan de bestaande ingrediënten. Zodra erop wordt geklikt, worden de ingrediënten van het bronrecept overgenomen.&lt;/p&gt;&lt;p&gt;Er worden geen ingrediënten overschreven.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlguebernahmerezept.ui" line="47"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses geteilte Feld bietet die bequeme Option, &lt;span style=&quot; font-weight:600;&quot;&gt;Zutaten &lt;/span&gt;aus anderen Rezepten &lt;span style=&quot; font-weight:600;&quot;&gt;en bloc &lt;/span&gt;zu übernehmen, statt diese einzeln einzugeben. Dies geschieht nach Malz, Hopfen, Hefe, Maischplan und Wasseraufbereitung getrennt.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Links stehen alle vorhandenen Rezepte der geladenen Datenbank, rechts die vorhandenen Zutaten. Sobald angeklickt, werden die Zutaten des Quellrezeptes übernommen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Es werden keine Zutaten überschrieben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit gesplitste veld biedt de handige optie om &lt;span style=&quot; font-weight:600;&quot;&gt;ingrediënten&lt;/span&gt; uit andere recepten over te nemen &lt;span style=&quot; font-weight:600;&quot;&gt;en bloc&lt;/span&gt; in plaats van ze afzonderlijk in te voeren. Dit gebeurt afzonderlijk voor mout, hop, gist, maischplan en waterbereiding.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Aan de linkerkant staan alle bestaande recepten in de geladen database, en aan de rechterkant staan de bestaande ingrediënten. Zodra erop wordt geklikt, worden de ingrediënten van het bronrecept overgenomen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Er worden geen ingrediënten overschreven.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -1456,7 +1457,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier wordt de concentratiegraad van het zuur of het opgeloste zout aangegeven.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -1471,7 +1472,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="73"/>
         <source>Hier können dieverse Maßeinheiten zur Wasseraufbereitung gewählt werden. Voreingestellt ist kg, tatsächlich üblich sind aber Mengenangaben im Gramm- und Milliliterbereich. Zusätzlich können sogar Stückzahlen verwendet werden, wenn etwa mit normierten Tabletten gearbeitet wird.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u de verschillende meeteenheden voor waterbehandeling selecteren. De standaardinstelling is kg, maar hoeveelheden in het gram- en milliliterbereik zijn eigenlijk gebruikelijk. Bovendien kunnen zelfs hoeveelheden worden gebruikt, bijvoorbeeld bij het werken met gestandaardiseerde tabletten.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="77"/>
@@ -1520,7 +1521,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="148"/>
         <source>In diesem Feld wird die gewählte Zutat für die Wasseraufbereitung samt Konznetration ausgegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>In dit veld wordt het geselecteerde ingrediënt voor de waterbehandeling weergegeven, samen met de concentratie.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="13"/>
@@ -1805,17 +1806,17 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../mainwindow.ui" line="639"/>
         <source>Module</source>
-        <translation type="unfinished"></translation>
+        <translation>Module</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="647"/>
         <source>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer &amp; Datum formaat van taalinstelling</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="652"/>
         <source>Android App</source>
-        <translation type="unfinished"></translation>
+        <translation>Android App</translation>
     </message>
     <message>
         <source>&quot;Weitere Zutaten Zugabe&quot; zurücksetzen</source>
@@ -2156,7 +2157,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../main.cpp" line="119"/>
         <source>Die Datenbank muss aktualisiert werden (Version %1 -&gt; %2).</source>
-        <translation type="unfinished"></translation>
+        <translation>De database moet worden bijgewerkt (versie %1 -&gt; %2).</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="120"/>
@@ -2585,32 +2586,32 @@ Versie geïnstalleerd: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="197"/>
         <source>Beginn der Reifung</source>
-        <translation type="unfinished"></translation>
+        <translation>Begin van de rijping</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="210"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das Beginn der &lt;span style=&quot; font-weight:600;&quot;&gt;Reifung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit geeft het begin van de &lt;span style=&quot; font-weight:600;&quot;&gt;rijping&lt;/span&gt;aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="232"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt den Beginn der Reifung auf die aktuelle Zeit im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Als u op de knop klikt, wordt het begin van de rijping ingesteld op de huidige tijd in het veld ernaast.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="242"/>
         <source>Aktuelle Reifezeit</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidige rijpingsperiode</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="255"/>
         <source>Wochen</source>
-        <translation type="unfinished">Weken</translation>
+        <translation>Weken</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="268"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Reifezeit&lt;/span&gt; in Wochen angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit geeft de &lt;span style=&quot; font-weight:600;&quot;&gt;werkelijke rijpingstijd&lt;/span&gt; in weken aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="320"/>
@@ -2636,7 +2637,7 @@ Versie geïnstalleerd: %2</translation>
         <location filename="../tababfuellen.ui" line="476"/>
         <location filename="../tababfuellen.ui" line="522"/>
         <source>Aus Rezept</source>
-        <translation type="unfinished">Uit Recept</translation>
+        <translation>Uit Recept</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="629"/>
@@ -2833,12 +2834,12 @@ Versie geïnstalleerd: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1810"/>
         <source>Bemerkung Abfüllen</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmerking Bottelen</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1827"/>
         <source>Bemerkung Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmerking Vergisting</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1873"/>
@@ -4015,57 +4016,57 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>Abgefüllte Biermenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoeveelheid gebotteld bier</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <source>Stammwürze</source>
-        <translation type="unfinished"></translation>
+        <translation>SG</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
         <source>Sudhausausbeute</source>
-        <translation type="unfinished">Brouwzaalrendement</translation>
+        <translation>Brouwzaalrendement</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="67"/>
         <source>Effektive Sudhausausbeute</source>
-        <translation type="unfinished">Effectieve Brouwzaalrendement</translation>
+        <translation>Effectieve Brouwzaalrendement</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>Verdampfungsrate</source>
-        <translation type="unfinished">Verdampingsgraad</translation>
+        <translation>Verdampingsgraad</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>l/h</source>
-        <translation type="unfinished">l/u</translation>
+        <translation>l/u</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>Alkohol</source>
-        <translation type="unfinished"></translation>
+        <translation>Alcohol</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <source>Scheinbarer Restextrakt</source>
-        <translation type="unfinished"></translation>
+        <translation>Schijnbaar restextract</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>Scheinbarer Endvergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation>Schijnbare eindvergistingsgraad</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>Tatsächlicher Endvergärungsgrad</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Werkelijke eindvergistingsgraad</translation>
     </message>
     <message>
         <location filename="../tabbrauuebersicht.cpp" line="73"/>
         <source>Kosten</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kosten</translation>
     </message>
     <message>
         <source>Abgefüllte Biermenge [l]</source>
@@ -4565,7 +4566,7 @@ Botteldatum: %1</translation>
         <location filename="../tabbraudaten.ui" line="325"/>
         <location filename="../tabbraudaten.ui" line="1152"/>
         <source>Zielwürzemenge bei 20°C</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelhoeveelheid Wort bij 20°C</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="332"/>
@@ -4710,7 +4711,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="2403"/>
         <source>Bemerkung</source>
-        <translation type="unfinished">Opmerking</translation>
+        <translation>Opmerking</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2416"/>
@@ -5007,12 +5008,12 @@ Brouwdatum: %1</translation>
     <message>
         <location filename="../tabetikette.ui" line="454"/>
         <source>Farben</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleuren</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="460"/>
         <source>Hintergrundfarbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtergrondkleur</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="479"/>
@@ -5157,17 +5158,17 @@ Brouwdatum: %1</translation>
     <message>
         <location filename="../tabetikette.cpp" line="372"/>
         <source>SVG exportieren</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG exporteren</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="389"/>
         <source>SVG Export</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG Export</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="389"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
-        <translation type="unfinished">Bestand kon niet geschreven worden.</translation>
+        <translation>Bestand kon niet geschreven worden.</translation>
     </message>
     <message>
         <location filename="../tabetikette.cpp" line="554"/>
@@ -5998,7 +5999,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="973"/>
         <source>Differenz verteilen</source>
-        <translation type="unfinished"></translation>
+        <translation>Verdeel het verschil</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="980"/>
@@ -6124,7 +6125,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="2927"/>
         <source>Empfohlen</source>
-        <translation type="unfinished">Aanbevolen</translation>
+        <translation>Aanbevolen</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2953"/>

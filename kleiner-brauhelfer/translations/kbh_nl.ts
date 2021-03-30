@@ -682,7 +682,7 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="145"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemessener &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktgehalt&lt;/span&gt; in °Plato. Beispielsweise bedeutet 12° Plato 120 g Extrakt in 1000 ml Würze.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; ist nicht zu verwechseln mit der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;beim Anstellen mit Hefe. Der Extraktwert beschreibt zum Zeitpunkt der Messung den vorhandenen Zucker, ohne den umgewandelten Zucker in Alkohol zu berücksichtigen. Stammwürze dagegen beschreibt den unvergorenen Höchstwert an Zucker in einem Sud.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gemeten &lt;span style=&quot; font-weight:600;&quot;&gt;extractgehalte&lt;/span&gt; in °Plato. Bijvoorbeeld, 12° Plato, betekent 120 g extract in 1000 ml wort.&lt;/p&gt;&lt;p&gt;Het &lt;span style=&quot; font-weight:600;&quot;&gt;extract&lt;/span&gt; moet niet worden verward met het &lt;span style=&quot; font-weight:600;&quot;&gt;SG &lt;/span&gt;Bij het pitchen met gist. De extractwaarde beschrijft de suiker die aanwezig is op het moment van de meting, zonder rekening te houden met de omgezette suiker in alcohol. SG daarentegen beschrijft de ongegiste maximumwaarde van suiker in een brouwsel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="272"/>

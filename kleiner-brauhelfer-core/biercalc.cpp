@@ -262,7 +262,10 @@ double BierCalc::speise(double co2Soll, double sw, double sreSchnellgaerprobe, d
     double co2Pot = co2Vergaerung(sw, toTRE(sw, sreSchnellgaerprobe));
     if (co2Pot <= 0)
         return std::numeric_limits<double>::infinity();
-    return co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;
+    double speise = co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;
+    if (speise < 0)
+        speise = 0;
+    return speise;
 }
 
 double BierCalc::zucker(double co2Soll, double sw, double sreSchnellgaerprobe, double sreJungbier, double T)
@@ -270,7 +273,10 @@ double BierCalc::zucker(double co2Soll, double sw, double sreSchnellgaerprobe, d
     double co2Pot = co2Zucker();
     if (co2Pot <= 0)
         return std::numeric_limits<double>::infinity();
-    return co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;
+    double zucker = co2Noetig(co2Soll, sw, sreSchnellgaerprobe, sreJungbier, T) / co2Pot;
+    if (zucker < 0)
+        zucker = 0;
+    return zucker;
 }
 
 double BierCalc::dichteWasser(double T)

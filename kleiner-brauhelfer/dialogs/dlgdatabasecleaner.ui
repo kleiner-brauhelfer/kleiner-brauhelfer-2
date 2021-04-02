@@ -103,6 +103,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="lblHelp">
+     <property name="text">
+      <string>Ungültige Felder können mit einem Doppelklick editiert werden. Alternativ kann der ganze Eintrag gelöscht werden.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btnDelete">

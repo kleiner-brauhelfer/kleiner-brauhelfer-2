@@ -400,6 +400,7 @@ int main(int argc, char *argv[])
     // parse arguments
   #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     bool highDpi = true;
+    QString scale_factor;
     for (int i = 1; i < argc; i++)
     {
       QString arg(argv[i]);
@@ -411,6 +412,8 @@ int main(int argc, char *argv[])
                         "qt_auto_screen_scale_factor=off"});
       if (list.contains(arg))
           highDpi = false;
+      if (arg.startsWith("qt_scale_factor="))
+          scale_factor = arg.mid(16);
     }
     if (highDpi)
     {
@@ -418,6 +421,10 @@ int main(int argc, char *argv[])
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
       #endif
         QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    }
+    if (!scale_factor.isEmpty())
+    {
+        qputenv("QT_SCALE_FACTOR", scale_factor.toStdString().c_str());
     }
   #endif
 

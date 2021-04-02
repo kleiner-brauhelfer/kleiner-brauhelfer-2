@@ -17,7 +17,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.2.3](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+- [Version 2.3.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -35,13 +35,19 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
   - Neuere Qt Versionen werden für Linux 32bit nicht mehr angeboten. Deshalb werden nicht alle Features unterstüzt.
   - Benötigt zusätzlich Installation von [Qt 5.5](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc, Qt WebEngine
-
+  - Benötigt OpenSSL 1.1.1b oder höher
+  
 ### Mac OS
 - **kbh2_v2.x.x_macos.zip**: Installationsdatei für Mac OS
 
+## Hinweise
+
+### Skalierung anpassen
+Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte des Monitors skaliert. Ist dies nicht erwünscht, kann diese Option mit dem Startparameter *QT_AUTO_SCREEN_SCALE_FACTOR=0* deaktiviert werden. Zusätzlich kann mit dem Startparameter *QT_SCALE_FACTOR=1.5* einen beliebigen Skalierungsfaktor angegeben werden (hier 150%).
+
 ## Änderungen & Erweiterungen
 
-### Version 2.3.0 (in Entwicklung)
+### Version 2.3.0 (24.03.2021)
 - Neu: Datenbankversion **2006**
 - Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)
 - Neu: Weitere Eingabemöglichkeiten für Bemerkungen (Brauen, Abfüllen, Gärung)
@@ -50,9 +56,11 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Optionen bei Export im kleiner-brauhelfer Format
 - Neu: Hintergrundfarbe der Etiketten einstellbar
 - Neu: Negative Gärtemperaturen bis -20°C erlaubt
+- Neu: Skalierungsfaktor für Benutzeroberfläche lässt sich über Argument "QT_SCALE_FACTOR=1.5" einstellen (kleiner-brauhelfer-2.exe QT_SCALE_FACTOR=1.5)
 - Fix: Zeitpunkt der Hopfengaben nicht mehr in Abhängigkeit der Kochdauer
 - Fix: Sortierung der Gärverläufe nach Datum
 - Fix: Abfülldaten zeigt neu den scheinbaren Vergärungsgrad
+- Fix: Negative Speisemenge bei eingeschalteter Schnellgärprobe
 
 ### Version 2.2.3 (23.01.2021)
 - Neu: Niederländische Übersetzung (vielen Dank dachouffe)
@@ -61,7 +69,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 - Neu: Stil der Benutzeroberfläche fix auf "Fusion"
 - Neu: Eingabemöglichkeit des Extrakts (Anteil an Stammwürze) für Malzgaben und weitere Zutaten
 - Neu: Malzmengen prozentual anpassen (für Übernahme von Rezepten mit Angaben in Gewicht statt Prozent)
-- Neu: High DPI Einstellung lässt sich über Argument "QT_AUTO_SCREEN​_SCALE_FACTOR=0" deaktivieren (kleiner-brauhelfer-2.exe QT_AUTO_SCREEN_SCALE_FACTOR=0)
+- Neu: High DPI Einstellung lässt sich über Argument "QT_AUTO_SCREEN_SCALE_FACTOR=0" deaktivieren (kleiner-brauhelfer-2.exe QT_AUTO_SCREEN_SCALE_FACTOR=0)
 - Neu: Dialog für Log (Protokoll)
 - Neu: Importfunktion für CSV Datei mit Gärdaten (auch per Drag & Drop)
 - Neu: Separates Temperatureingabefeld für die Karbonisierung

@@ -380,11 +380,20 @@ bool Settings::initModules()
     if (!ret)
         setValue("Modules", uint(ModuleDefault));
     mModules = static_cast<Modules>(value("Modules").toUInt());
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     mModules.setFlag(ModuleSudauswahl);
     mModules.setFlag(ModuleRezept);
     mModules.setFlag(ModuleBraudaten);
     mModules.setFlag(ModuleAbfuellen);
     mModules.setFlag(ModuleRohstoffe);
+  #else
+    mModules |= ModuleSudauswahl;
+    mModules |= ModuleRezept;
+    mModules |= ModuleBraudaten;
+    mModules |= ModuleAbfuellen;
+    mModules |= ModuleRohstoffe;
+
+  #endif
     endGroup();
     return ret;
 }
@@ -396,7 +405,14 @@ Settings::Modules Settings::modules() const
 
 void Settings::enableModule(Settings::Module module, bool enabled)
 {
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     mModules.setFlag(module, enabled);
+  #else
+    if (enabled)
+        mModules |= module;
+    else
+        mModules &= ~module;
+  #endif
     setValueInGroup("General", "Modules", uint(mModules));
     emit modulesChanged(module);
 }

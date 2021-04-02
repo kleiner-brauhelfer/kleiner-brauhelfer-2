@@ -47,6 +47,8 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 
 ## Änderungen & Erweiterungen
 
+### Version 2.3.1 (in Entwicklung)
+
 ### Version 2.3.0 (24.03.2021)
 - Neu: Datenbankversion **2006**
 - Neu: Verschiedene Module lassen sich ein- und ausschalten (Menu Einstellungen/Module)

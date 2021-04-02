@@ -26,8 +26,8 @@ SudObject::SudObject(Brauhelfer *bh) :
     connect(bh, SIGNAL(saved()), this, SLOT(onSudLayoutChanged()));
     connect(bh->modelSud(), SIGNAL(modified()), this, SIGNAL(modified()));
     connect(bh->modelSud(), SIGNAL(layoutChanged()), this, SLOT(onSudLayoutChanged()));
-    connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(onSudDataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)));
+    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(onSudDataChanged(QModelIndex,QModelIndex,QVector<int>)));
 }
 
 SudObject::~SudObject()

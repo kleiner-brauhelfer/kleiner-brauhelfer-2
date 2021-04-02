@@ -6,8 +6,8 @@ ModelMalzschuettung::ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(onSudDataChanged(const QModelIndex&)));
+    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(onSudDataChanged(QModelIndex)));
     mVirtualField.append("Extrakt");
     mVirtualField.append("ExtraktProzent");
 }

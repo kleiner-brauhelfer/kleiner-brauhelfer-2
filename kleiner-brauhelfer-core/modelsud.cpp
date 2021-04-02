@@ -14,9 +14,9 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     swWzGaerungCurrent(QVector<double>())
 {
     connect(this, SIGNAL(modelReset()), this, SLOT(onModelReset()));
-    connect(this, SIGNAL(rowsInserted(const QModelIndex&,int,int)), this, SLOT(onModelReset()));
-    connect(this, SIGNAL(rowsRemoved(const QModelIndex&,int,int)), this, SLOT(onModelReset()));
-    connect(this, SIGNAL(rowChanged(const QModelIndex&)), this, SLOT(onRowChanged(const QModelIndex&)));
+    connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onModelReset()));
+    connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onModelReset()));
+    connect(this, SIGNAL(rowChanged(QModelIndex)), this, SLOT(onRowChanged(QModelIndex)));
     mVirtualField.append("MengeSoll");
     mVirtualField.append("SWIst");
     mVirtualField.append("SRE");
@@ -61,20 +61,20 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
 
 void ModelSud::createConnections()
 {
-    connect(bh->modelMalzschuettung(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
-    connect(bh->modelHopfengaben(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
-    connect(bh->modelHefegaben(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
-    connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
-    connect(bh->modelRasten(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onOtherModelRowChanged(const QModelIndex&)));
-    connect(bh->modelAusruestung(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onAnlageRowChanged(const QModelIndex&)));
-    connect(bh->modelWasser(), SIGNAL(rowChanged(const QModelIndex&)),
-            this, SLOT(onWasserRowChanged(const QModelIndex&)));
+    connect(bh->modelMalzschuettung(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onOtherModelRowChanged(QModelIndex)));
+    connect(bh->modelHopfengaben(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onOtherModelRowChanged(QModelIndex)));
+    connect(bh->modelHefegaben(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onOtherModelRowChanged(QModelIndex)));
+    connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onOtherModelRowChanged(QModelIndex)));
+    connect(bh->modelRasten(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onOtherModelRowChanged(QModelIndex)));
+    connect(bh->modelAusruestung(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onAnlageRowChanged(QModelIndex)));
+    connect(bh->modelWasser(), SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(onWasserRowChanged(QModelIndex)));
 }
 
 void ModelSud::onModelReset()

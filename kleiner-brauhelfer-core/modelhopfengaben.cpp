@@ -8,8 +8,8 @@ ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, QSqlDatabase db) :
 {
     mVirtualField.append("IBUAnteil");
     mVirtualField.append("Ausbeute");
-    connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(onSudDataChanged(const QModelIndex&)));
+    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(onSudDataChanged(QModelIndex)));
 }
 
 QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const

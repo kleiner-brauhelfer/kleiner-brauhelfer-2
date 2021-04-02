@@ -11,8 +11,8 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     mVirtualField.append("ZugabeDatum");
     mVirtualField.append("EntnahmeDatum");
     mVirtualField.append("Abfuellbereit");
-    connect(bh->modelSud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(onSudDataChanged(const QModelIndex&)));
+    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(onSudDataChanged(QModelIndex)));
 }
 
 QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const

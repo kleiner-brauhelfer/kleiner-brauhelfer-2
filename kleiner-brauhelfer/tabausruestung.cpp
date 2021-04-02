@@ -108,7 +108,7 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(updateDurchschnitt()));
     connect(bh->modelAusruestung(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(ui->tableViewAnlagen->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+    connect(ui->tableViewAnlagen->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(anlage_selectionChanged()));
 
     sudLoaded();

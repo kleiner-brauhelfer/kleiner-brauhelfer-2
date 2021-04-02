@@ -94,7 +94,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->build();
 
     table->horizontalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(table->horizontalHeader(), SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(const QPoint&)));
+    connect(table->horizontalHeader(), SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(QPoint)));
 
     gSettings->beginGroup("TabSudAuswahl");
 
@@ -120,9 +120,9 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()), Qt::QueuedConnection);
     connect(proxyModel, SIGNAL(layoutChanged()), this, SLOT(filterChanged()));
-    connect(proxyModel, SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(filterChanged()));
-    connect(proxyModel, SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(filterChanged()));
-    connect(ui->tableSudauswahl->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+    connect(proxyModel, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(filterChanged()));
+    connect(proxyModel, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(filterChanged()));
+    connect(ui->tableSudauswahl->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
 
     ui->tableSudauswahl->selectRow(0);

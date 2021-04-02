@@ -76,8 +76,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
 
-    connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-            this, SLOT(table_selectionChanged(const QItemSelection&)));
+    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
@@ -102,8 +102,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
 
-    connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-            this, SLOT(table_selectionChanged(const QItemSelection&)));
+    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->widget_DiaHauptgaerverlauf, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
@@ -125,8 +125,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
 
-    connect(table->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-            this, SLOT(table_selectionChanged(const QItemSelection&)));
+    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->widget_DiaNachgaerverlauf, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
@@ -144,32 +144,32 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-                    this, SLOT(sudDataChanged(const QModelIndex&)));
+    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+                    this, SLOT(sudDataChanged(QModelIndex)));
     connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(dataChangedSchnellgaerverlauf(const QModelIndex&)));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(dataChangedSchnellgaerverlauf(QModelIndex)));
     connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(dataChangedHauptgaerverlauf(const QModelIndex&)));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(dataChangedHauptgaerverlauf(QModelIndex)));
     connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-            this, SLOT(dataChangedNachgaerverlauf(const QModelIndex&)));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
+    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(dataChangedNachgaerverlauf(QModelIndex)));
     connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
             this, SLOT(updateWeitereZutaten()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(const QModelIndex &, int, int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
             this, SLOT(updateWeitereZutaten()));
 
     updateDiagramm();

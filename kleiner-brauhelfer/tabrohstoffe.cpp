@@ -290,8 +290,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-            this, SLOT(wasser_selectionChanged(const QItemSelection&)));
+    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(wasser_selectionChanged(QItemSelection)));
 
     connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
 

@@ -149,7 +149,7 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     ui->tableViewSud->appendCol({ModelSud::ColSudname, true, false, -1, nullptr});
     ui->tableViewSud->appendCol({ModelSud::ColSudnummer, true, false, 80, new SpinBoxDelegate(ui->tableViewSud)});
     ui->tableViewSud->build();
-    connect(ui->tableViewSud->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+    connect(ui->tableViewSud->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(tableViewSud_selectionChanged()));
 
     adjustSize();

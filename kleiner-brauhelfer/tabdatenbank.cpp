@@ -151,7 +151,7 @@ void TabDatenbank::on_comboBox_currentIndexChanged(const QString &table)
             ui->tableView->setColumnHidden(col, false);
         ui->tableView->setColumnHidden(model->fieldIndex("deleted"), true);
         if (model == bh->modelSud())
-            connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+            connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
                     this, SLOT(tableView_selectionChanged()));
     }
 }

@@ -12,7 +12,7 @@ DateTimeEdit::DateTimeEdit(QWidget *parent) :
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
     setCalendarPopup(true);
-    connect(this, SIGNAL(dateTimeChanged(const QDateTime&)), SLOT(on_valueChanged()));
+    connect(this, SIGNAL(dateTimeChanged(QDateTime)), SLOT(on_valueChanged()));
 }
 
 void DateTimeEdit::wheelEvent(QWheelEvent *event)

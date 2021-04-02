@@ -75,8 +75,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&, const QVector<int>&)),
-                    this, SLOT(sudDataChanged(const QModelIndex&)));
+    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+                    this, SLOT(sudDataChanged(QModelIndex)));
 }
 
 TabBraudaten::~TabBraudaten()

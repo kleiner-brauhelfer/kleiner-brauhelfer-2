@@ -153,9 +153,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColsEVG).toInt());
             ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);
             ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
-            ctxSud["BemerkungBrauen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString();
-            ctxSud["BemerkungAbfuellen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString();
-            ctxSud["BemerkungGaerung"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString();
+            ctxSud["BemerkungBrauen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString().replace("\n", "<br>");
+            ctxSud["BemerkungAbfuellen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString().replace("\n", "<br>");
+            ctxSud["BemerkungGaerung"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString().replace("\n", "<br>");
             if (gSettings->module(Settings::ModuleWasseraufbereitung))
             {
                 ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);

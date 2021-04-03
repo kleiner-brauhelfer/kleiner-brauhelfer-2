@@ -2,7 +2,6 @@
 #include "ui_tabzusammenfassung.h"
 #include <QFileInfo>
 #include <QFileDialog>
-#include <QDesktopServices>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"

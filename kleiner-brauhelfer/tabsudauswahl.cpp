@@ -4,7 +4,6 @@
 #include <QMenu>
 #include <QFileInfo>
 #include <QFileDialog>
-#include <QDesktopServices>
 #include <QMimeData>
 #include "brauhelfer.h"
 #include "settings.h"

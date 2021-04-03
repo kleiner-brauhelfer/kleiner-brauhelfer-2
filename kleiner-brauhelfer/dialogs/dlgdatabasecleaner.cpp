@@ -244,10 +244,10 @@ void DlgDatabaseCleaner::setTableIds(int type)
             table_model->setHeaderData(1, Qt::Horizontal, tr("Anlage"));
         }
         int row = 0;
-        for (int key : ids->keys())
+        for (auto it = ids->constBegin(); it != ids->constEnd(); it++)
         {
-            table_model->setItem(row, 0, new QStandardItem(QString::number(key)));
-            table_model->setItem(row, 1, new QStandardItem((*ids)[key]));
+            table_model->setItem(row, 0, new QStandardItem(QString::number(it.key())));
+            table_model->setItem(row, 1, new QStandardItem(it.value()));
             row++;
         }
         ui->tableViewIds->setModel(table_model);

@@ -1745,10 +1745,30 @@
             </widget>
            </item>
            <item row="4" column="0" colspan="8">
-            <widget class="QTextEdit" name="tbBemerkungAbfuellen"/>
+            <widget class="QTextBrowser" name="tbBemerkungAbfuellen">
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+             <property name="textInteractionFlags">
+              <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="7" column="0" colspan="8">
-            <widget class="QTextEdit" name="tbBemerkungGaerung"/>
+            <widget class="QTextBrowser" name="tbBemerkungGaerung">
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+             <property name="textInteractionFlags">
+              <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="0" column="2">
             <widget class="QLabel" name="lblNebenkostenEinheit">
@@ -1956,13 +1976,16 @@
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="WdgWebViewEditable" name="webview" native="true"/>
-      <widget class="QTextEdit" name="tbHelp">
+      <widget class="QTextBrowser" name="tbHelp">
        <property name="font">
         <font>
          <italic>true</italic>
         </font>
        </property>
        <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
         <bool>true</bool>
        </property>
       </widget>

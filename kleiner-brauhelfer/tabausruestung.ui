@@ -1277,7 +1277,17 @@
              <number>4</number>
             </property>
             <item>
-             <widget class="QTextEdit" name="tbBemerkung"/>
+             <widget class="QTextBrowser" name="tbBemerkung">
+              <property name="readOnly">
+               <bool>false</bool>
+              </property>
+              <property name="textInteractionFlags">
+               <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+              </property>
+              <property name="openExternalLinks">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -1298,13 +1308,16 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QTextEdit" name="tbHelp">
+      <widget class="QTextBrowser" name="tbHelp">
        <property name="font">
         <font>
          <italic>true</italic>
         </font>
        </property>
        <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
         <bool>true</bool>
        </property>
       </widget>

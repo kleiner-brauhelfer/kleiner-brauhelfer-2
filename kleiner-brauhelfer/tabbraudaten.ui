@@ -2446,7 +2446,17 @@
             </spacer>
            </item>
            <item row="7" column="0" colspan="8">
-            <widget class="QTextEdit" name="tbBemerkung"/>
+            <widget class="QTextBrowser" name="tbBemerkung">
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+             <property name="textInteractionFlags">
+              <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="3" column="0" colspan="8">
             <widget class="QLabel" name="lblDurchschnittWarnung">
@@ -2514,16 +2524,16 @@
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="WdgWebViewEditable" name="webview" native="true"/>
-      <widget class="QTextEdit" name="tbHelp">
+      <widget class="QTextBrowser" name="tbHelp">
        <property name="font">
         <font>
          <italic>true</italic>
         </font>
        </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind alle Braudaten, &lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; übersichtlich nach &lt;span style=&quot; font-weight:600;&quot;&gt;Prozessschritt&lt;/span&gt; beim Brauen aufgeführt.&lt;/p&gt;&lt;p&gt;Ähnlich, aber ausführlicher, werden diese Schritte auf dem &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; aufbereitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
        <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
         <bool>true</bool>
        </property>
       </widget>

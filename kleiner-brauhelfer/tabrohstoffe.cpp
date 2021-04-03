@@ -412,25 +412,25 @@ void TabRohstoffe::keyPressEvent(QKeyEvent* event)
 
 void TabRohstoffe::on_tableMalz_clicked(const QModelIndex &index)
 {
-    if (index.column() == ModelMalz::ColLink && QApplication::keyboardModifiers() & Qt::ControlModifier)
+    if (index.column() == ModelMalz::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
 void TabRohstoffe::on_tableHopfen_clicked(const QModelIndex &index)
 {
-    if (index.column() == ModelHopfen::ColLink && QApplication::keyboardModifiers() & Qt::ControlModifier)
+    if (index.column() == ModelHopfen::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
 void TabRohstoffe::on_tableHefe_clicked(const QModelIndex &index)
 {
-    if (index.column() == ModelHefe::ColLink && QApplication::keyboardModifiers() & Qt::ControlModifier)
+    if (index.column() == ModelHefe::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
 void TabRohstoffe::on_tableWeitereZutaten_clicked(const QModelIndex &index)
 {
-    if (index.column() == ModelWeitereZutaten::ColLink && QApplication::keyboardModifiers() & Qt::ControlModifier)
+    if (index.column() == ModelWeitereZutaten::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 

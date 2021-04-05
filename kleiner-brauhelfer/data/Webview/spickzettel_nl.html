@@ -160,7 +160,7 @@
           {{/Hopfen}}
           {{#Kalthopfen}}
             <tr>
-              <th align="left" height="30">Stopfhopfen</th>
+              <th align="left" height="30">Drooghoppen</th>
             </tr>
             {{#Liste}}
             <tr>
@@ -329,7 +329,7 @@
       {{/Zutaten.HatZusatzMaischen}}
       {{#Wasser}}
       <tr>
-        <td class="underline" valign="top"><strong>Maischewater</strong></td>
+        <td class="underline" valign="top"><strong></strong></td>
         <td class="underline"><span class="value">{{Hauptguss}}</span> Liter{{#HauptgussUnten}}, &uArr; <span class="value">{{HauptgussUnten}}</span> cm{{/HauptgussUnten}}{{#HauptgussOben}}, &dArr; <span class="value">{{HauptgussOben}}</span> cm{{/HauptgussOben}}</td>
       </tr>
       {{/Wasser}}
@@ -356,14 +356,14 @@
               <td>Maischen op <span class="value">{{Temp}}</span>&deg;C verhitten en <span class="value">{{Dauer}}</span> min rusten.</td>
               {{/Rast}}
               {{#Infusion}}
-              <td><span class="value">{{Menge}}</span> Liter Water tot <span class="value">{{WasserTemp}}</span>&deg;C verhitten. Toevoegen (ergibt <span class="value">{{Temp}}</span>&deg;C) en <span class="value">{{Dauer}}</span> min rusten.</td>
+              <td><span class="value">{{Menge}}</span> Liter Water tot <span class="value">{{WasserTemp}}</span>&deg;C verhitten. Toevoegen (resulteert in <span class="value">{{Temp}}</span>&deg;C) en <span class="value">{{Dauer}}</span> min rusten.</td>
               {{/Infusion}}
               {{#Dekoktion}}
               <td>
-                <span class="value">{{Menge}}</span> Liter Maische abziehen.</br>
-                {{#TeilmaischeZusatzRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min rasten.</br>{{/TeilmaischeZusatzRastDauer}}
-                {{#TeilmaischeRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeRastDauer}}</span> min rasten.</br>{{/TeilmaischeRastDauer}}
-                Teilmaische zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.
+                <span class="value">{{Menge}}</span> Liter Maisch aftappen.</br>
+                {{#TeilmaischeZusatzRastDauer}}Deelmaisch tot <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C verwarmen en <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min laten rusten.</br>{{/TeilmaischeZusatzRastDauer}}
+                {{#TeilmaischeRastDauer}}Deelmaisch tot <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C verwarmen en <span class="value">{{TeilmaischeRastDauer}}</span> min rusten.</br>{{/TeilmaischeRastDauer}}
+                Deelmaisch terug gieten (resulteert in <span class="value">{{Temp}}</span>&deg;C) en <span class="value">{{Dauer}}</span> min rusten.
               </td>
               {{/Dekoktion}}
             </tr>
@@ -456,7 +456,7 @@
               <td>____ &deg;P/&deg;Brix</td>
               <td>
                  Streefwaarde: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
-                 {{#Zutaten.HatZusatzKochen}} / mit weiteren Zutaten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.HatZusatzKochen}}
+                 {{#Zutaten.HatZusatzKochen}} / Met andere ingrediënten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.HatZusatzKochen}}
               </td>
             </tr>
           </table>

@@ -38,7 +38,6 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
 
     ProxyModel* proxy = new ProxyModel(this);
     proxy->setFilterKeyColumn(filterColumn);
-    proxy->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
     proxy->setSourceModel(model);
     ui->tableView->setModel(proxy);
 

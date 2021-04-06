@@ -115,7 +115,6 @@ void DlgRohstoffVorlage::setModel()
 
         ProxyModel* proxyModel = new ProxyModel();
         proxyModel->setFilterKeyColumn(-1);
-        proxyModel->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
         proxyModel->setSourceModel(model);
         TableView *table = ui->tableView;
         table->setModel(proxyModel);

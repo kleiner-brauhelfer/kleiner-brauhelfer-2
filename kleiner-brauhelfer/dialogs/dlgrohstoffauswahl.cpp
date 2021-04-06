@@ -150,7 +150,6 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
     table->setDefaultContextMenu();
 
     proxy->setFilterKeyColumn(mNameCol);
-    proxy->setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 
     if (gSettings->value("filter", 0).toInt() == 1)
     {

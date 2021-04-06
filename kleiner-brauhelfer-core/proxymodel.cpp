@@ -10,6 +10,7 @@ ProxyModel::ProxyModel(QObject *parent) :
 {
     setDynamicSortFilter(false);
     setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+    setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 }
 
 void ProxyModel::setSourceModel(QAbstractItemModel *model)

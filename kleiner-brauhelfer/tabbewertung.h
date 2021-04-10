@@ -25,7 +25,6 @@ private slots:
     void sterneChanged(int sterne);
     void on_tbDatum_dateChanged(const QDate &date);
     void on_btnDatumHeute_clicked();
-    void on_tbBemerkung_textChanged();
     void on_rbFarbe_0_clicked();
     void on_rbFarbe_1_clicked();
     void on_rbFarbe_2_clicked();

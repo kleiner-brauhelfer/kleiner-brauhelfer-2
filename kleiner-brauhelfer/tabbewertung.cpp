@@ -24,6 +24,8 @@ TabBewertung::TabBewertung(QWidget *parent) :
     connect(bh->sud()->modelBewertungen(), SIGNAL(modified()), this, SLOT(updateValues()));
     updateValues();
     connect(ui->wdgRating, SIGNAL(clicked(int)), this, SLOT(sterneChanged(int)));
+
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelBewertungen::ColBemerkung, html);});
 }
 
 TabBewertung::~TabBewertung()
@@ -109,8 +111,7 @@ void TabBewertung::updateValues()
     if (!ui->tbDatum->hasFocus())
         ui->tbDatum->setDate(data(ModelBewertungen::ColDatum).toDate());
     ui->lblWoche->setText(data(ModelBewertungen::ColWoche).toString());
-    if (!ui->tbBemerkung->hasFocus())
-        ui->tbBemerkung->setPlainText(data(ModelBewertungen::ColBemerkung).toString());
+    ui->wdgBemerkung->setHtml(data(ModelBewertungen::ColBemerkung).toString());
 
     int value = data(ModelBewertungen::ColFarbe).toInt();
     ui->rbFarbe_ka->setChecked(true);
@@ -246,12 +247,6 @@ void TabBewertung::on_tbDatum_dateChanged(const QDate &date)
 void TabBewertung::on_btnDatumHeute_clicked()
 {
     setData(ModelBewertungen::ColDatum, QDate::currentDate());
-}
-
-void TabBewertung::on_tbBemerkung_textChanged()
-{
-    if (ui->tbBemerkung->hasFocus())
-        setData(ModelBewertungen::ColBemerkung, ui->tbBemerkung->toPlainText());
 }
 
 void TabBewertung::setFarbe()

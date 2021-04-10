@@ -77,6 +77,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                     this, SLOT(sudDataChanged(QModelIndex)));
+
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungBrauen(html);});
 }
 
 TabBraudaten::~TabBraudaten()
@@ -156,17 +158,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 {
-    if (old == ui->tbBemerkung)
-    {
-        QString bemerkung = ui->tbBemerkung->toPlainText().replace("<br>", "\n");
-        if (bemerkung != bh->sud()->getBemerkungBrauen())
-            bh->sud()->setBemerkungBrauen(bemerkung);
-        ui->tbBemerkung->setHtml(bh->sud()->getBemerkungBrauen().replace("\n", "<br>"));
-    }
-    if (now == ui->tbBemerkung)
-    {
-        ui->tbBemerkung->setPlainText(bh->sud()->getBemerkungBrauen());
-    }
+    Q_UNUSED(old)
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -176,6 +168,7 @@ void TabBraudaten::sudLoaded()
     checkEnabled();
     updateValues();
     ui->tbSpeiseSRE->setValue(bh->sud()->getSRE());
+    ui->wdgBemerkung->setHtml(bh->sud()->getBemerkungBrauen());
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
@@ -188,6 +181,9 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
     case ModelSud::ColSW:
     case ModelSud::ColVergaerungsgrad:
         ui->tbSpeiseSRE->setValue(bh->sud()->getSRE());
+        break;
+    case ModelSud::ColBemerkungBrauen:
+        ui->wdgBemerkung->setHtml(bh->sud()->getBemerkungBrauen());
         break;
     }
 }
@@ -290,9 +286,6 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
-
-    if (!ui->tbBemerkung->hasFocus())
-        ui->tbBemerkung->setHtml(bh->sud()->getBemerkungBrauen().replace("\n", "<br>"));
 
     mTimerWebViewUpdate.start(200);
 }

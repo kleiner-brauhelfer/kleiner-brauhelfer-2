@@ -111,6 +111,8 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     connect(ui->tableViewAnlagen->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(anlage_selectionChanged()));
 
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelAusruestung::ColBemerkung, html);});
+
     sudLoaded();
 }
 
@@ -332,8 +334,7 @@ void TabAusruestung::updateValues()
     ui->tbMaischenMaxNutzvolumen->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
     ui->tbSudpfanneVolumen->setValue(data(ModelAusruestung::ColSudpfanne_Volumen).toDouble());
     ui->tbSudpfanneMaxNutzvolumen->setValue(data(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
-    if (!ui->tbBemerkung->hasFocus())
-        ui->tbBemerkung->setText(data(ModelAusruestung::ColBemerkung).toString());
+    ui->wdgBemerkung->setHtml(data(ModelAusruestung::ColBemerkung).toString());
 }
 
 void TabAusruestung::updateDurchschnitt()
@@ -511,10 +512,4 @@ void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_editingFinished()
     double prevValue = data(ModelAusruestung::ColSudpfanne_MaxFuellhoehe).toDouble();
     if (prevValue != ui->tbSudpfanneMaxFuellhoehe->value())
         setData(ModelAusruestung::ColSudpfanne_MaxFuellhoehe, ui->tbSudpfanneMaxFuellhoehe->value());
-}
-
-void TabAusruestung::on_tbBemerkung_textChanged()
-{
-    if (ui->tbBemerkung->hasFocus())
-        setData(ModelAusruestung::ColBemerkung, ui->tbBemerkung->toPlainText());
 }

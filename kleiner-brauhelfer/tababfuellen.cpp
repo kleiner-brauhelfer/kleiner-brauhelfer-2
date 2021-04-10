@@ -69,6 +69,9 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
                     this, SLOT(sudDataChanged(QModelIndex)));
+
+    connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungAbfuellen(html);});
+    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungGaerung(html);});
 }
 
 TabAbfuellen::~TabAbfuellen()
@@ -128,29 +131,7 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
 {
-    if (old == ui->tbBemerkungAbfuellen)
-    {
-        QString bemerkung = ui->tbBemerkungAbfuellen->toPlainText().replace("<br>", "\n");
-        if (bemerkung != bh->sud()->getBemerkungAbfuellen())
-            bh->sud()->setBemerkungAbfuellen(bemerkung);
-        ui->tbBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen().replace("\n", "<br>"));
-    }
-    if (now == ui->tbBemerkungAbfuellen)
-    {
-        ui->tbBemerkungAbfuellen->setPlainText(bh->sud()->getBemerkungAbfuellen());
-    }
-    if (old == ui->tbBemerkungGaerung)
-    {
-        QString bemerkung = ui->tbBemerkungGaerung->toPlainText().replace("<br>", "\n");
-        if (bemerkung != bh->sud()->getBemerkungGaerung())
-            bh->sud()->setBemerkungGaerung(bemerkung);
-        ui->tbBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung().replace("\n", "<br>"));
-    }
-    if (now == ui->tbBemerkungGaerung)
-    {
-        ui->tbBemerkungGaerung->setPlainText(bh->sud()->getBemerkungGaerung());
-    }
-
+    Q_UNUSED(old)
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -159,13 +140,23 @@ void TabAbfuellen::sudLoaded()
 {
     checkEnabled();
     updateValues();
+    ui->wdgBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen());
+    ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung());
 }
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)
 {
-    if (index.column() == ModelSud::ColStatus)
+    switch (index.column())
     {
+    case ModelSud::ColStatus:
         checkEnabled();
+        break;
+    case ModelSud::ColBemerkungAbfuellen:
+        ui->wdgBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen());
+        break;
+    case ModelSud::ColBemerkungGaerung:
+        ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung());
+        break;
     }
 }
 
@@ -271,11 +262,6 @@ void TabAbfuellen::updateValues()
     ui->lblKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesungEinheit->setVisible(hasZuckerLoesung);
-
-    if (!ui->tbBemerkungAbfuellen->hasFocus())
-        ui->tbBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen().replace("\n", "<br>"));
-    if (!ui->tbBemerkungGaerung->hasFocus())
-        ui->tbBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung().replace("\n", "<br>"));
 
     mTimerWebViewUpdate.start(200);
 }

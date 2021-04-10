@@ -191,6 +191,8 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(anhaenge_modified()));
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(anhaenge_modified()));
 
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
+
     ProxyModel *model = bh->sud()->modelTags();
     model->setHeaderData(ModelTags::ColKey, Qt::Horizontal, tr("Tag"));
     model->setHeaderData(ModelTags::ColValue, Qt::Horizontal, tr("Wert"));
@@ -267,17 +269,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
 {
-    if (old == ui->tbKommentar)
-    {
-        QString kommentar = ui->tbKommentar->toPlainText().replace("<br>", "\n");
-        if (kommentar != bh->sud()->getKommentar())
-            bh->sud()->setKommentar(kommentar);
-        ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
-    }
-    if (now == ui->tbKommentar)
-    {
-        ui->tbKommentar->setPlainText(bh->sud()->getKommentar());
-    }
+    Q_UNUSED(old)
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
@@ -287,6 +279,7 @@ void TabRezept::sudLoaded()
     checkEnabled();
     ui->cbAnlage->setCurrentIndex(-1);
     ui->cbWasserProfil->setCurrentIndex(-1);
+    ui->wdgBemerkung->setHtml(bh->sud()->getKommentar());
     if (bh->sud()->isLoaded())
     {
         updateAnlageModel();
@@ -317,6 +310,9 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         weitereZutatenGaben_modified();
         wasseraufbereitung_modified();
         checkRohstoffe();
+        break;
+    case ModelSud::ColKommentar:
+        ui->wdgBemerkung->setHtml(bh->sud()->getKommentar());
         break;
     }
 }
@@ -644,8 +640,6 @@ void TabRezept::updateValues()
     if (!ui->cbBerechnungsartHopfen->hasFocus())
         ui->cbBerechnungsartHopfen->setCurrentIndex(static_cast<int>(berechnungsArtHopfen) + 1);
     ui->lblBerechnungsartHopfenWarnung->setVisible(berechnungsArtHopfen == Brauhelfer::BerechnungsartHopfen::Keine);
-    if (!ui->tbKommentar->hasFocus())
-        ui->tbKommentar->setHtml(bh->sud()->getKommentar().replace("\n", "<br>"));
     updateGlas();
 }
 

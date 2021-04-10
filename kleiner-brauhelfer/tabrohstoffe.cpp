@@ -295,6 +295,8 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
 
     connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
 
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
+
     ui->tableWasser->selectRow(0);
 }
 
@@ -776,8 +778,7 @@ void TabRohstoffe::updateWasser()
     //if (!ui->tbRestalkalitaetAdd->hasFocus())
         ui->tbRestalkalitaetAdd->setValue(dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble());
     ui->tbRestalkalitaet->setValue(dataWasser(ModelWasser::ColRestalkalitaet).toDouble());
-    if (!ui->tbBemerkung->hasFocus())
-        ui->tbBemerkung->setText(dataWasser(ModelWasser::ColBemerkung).toString());
+    ui->wdgBemerkung->setHtml(dataWasser(ModelWasser::ColBemerkung).toString());
 }
 
 void TabRohstoffe::on_tbCalciumMg_editingFinished()
@@ -890,10 +891,4 @@ void TabRohstoffe::on_tbRestalkalitaetAdd_editingFinished()
     double prevValue = dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble();
     if (prevValue != ui->tbRestalkalitaetAdd->value())
         setDataWasser(ModelWasser::ColRestalkalitaetAdd, ui->tbRestalkalitaetAdd->value());
-}
-
-void TabRohstoffe::on_tbBemerkung_textChanged()
-{
-    if (ui->tbBemerkung->hasFocus())
-        setDataWasser(ModelWasser::ColBemerkung, ui->tbBemerkung->toPlainText());
 }

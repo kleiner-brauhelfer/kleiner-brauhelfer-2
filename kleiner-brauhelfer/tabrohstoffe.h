@@ -60,7 +60,6 @@ private slots:
     void on_tbNatriumMg_editingFinished();
     void on_tbNatriumMmol_editingFinished();
     void on_tbRestalkalitaetAdd_editingFinished();
-    void on_tbBemerkung_textChanged();
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

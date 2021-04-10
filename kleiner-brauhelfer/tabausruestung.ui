@@ -1277,17 +1277,7 @@
              <number>4</number>
             </property>
             <item>
-             <widget class="QTextBrowser" name="tbBemerkung">
-              <property name="readOnly">
-               <bool>false</bool>
-              </property>
-              <property name="textInteractionFlags">
-               <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-              </property>
-              <property name="openExternalLinks">
-               <bool>true</bool>
-              </property>
-             </widget>
+             <widget class="WdgBemerkung" name="wdgBemerkung" native="true"/>
             </item>
            </layout>
           </widget>
@@ -1343,6 +1333,12 @@
    <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
+   <class>WdgBemerkung</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgbemerkung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
@@ -1379,7 +1375,7 @@
   <tabstop>tbSudpfanneVolumen</tabstop>
   <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
   <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
-  <tabstop>tbBemerkung</tabstop>
+  <tabstop>wdgBemerkung</tabstop>
   <tabstop>scrollArea</tabstop>
   <tabstop>tbHelp</tabstop>
   <tabstop>splitterHelp</tabstop>

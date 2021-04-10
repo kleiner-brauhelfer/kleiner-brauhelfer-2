@@ -190,24 +190,9 @@
          </layout>
         </item>
         <item>
-         <widget class="QTextBrowser" name="tbBemerkung">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
+         <widget class="WdgBemerkung" name="wdgBemerkung" native="true">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zur Bewertungssituation und zum Anlass.&lt;/p&gt;&lt;p&gt;Äußere Bedingungen können das Geschmackserleben und damit die Bewertung beeinflussen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
-          <property name="textInteractionFlags">
-           <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-          </property>
-          <property name="openExternalLinks">
-           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1242,6 +1227,12 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>WdgBemerkung</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgbemerkung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
@@ -1259,7 +1250,7 @@
   <tabstop>scrollArea</tabstop>
   <tabstop>tbDatum</tabstop>
   <tabstop>btnDatumHeute</tabstop>
-  <tabstop>tbBemerkung</tabstop>
+  <tabstop>wdgBemerkung</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>rbFarbe_4</tabstop>
   <tabstop>rbFarbe_5</tabstop>

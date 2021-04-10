@@ -27,7 +27,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ### Linux
 - **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
-  - Benötigt zusätzlich Installation von [Qt 5.15.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
+  - Benötigt zusätzlich Installation von [Qt 5.15.0](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc 64-bit, Qt Charts, Qt WebEngine
   - Benötigt OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
@@ -49,6 +49,7 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 
 ### Version 2.3.1 (in Entwicklung)
 - Neu: Offizielle version kompiliert mit **Qt 5.15.2**
+- Neu: Die meisten Eingabefelder für Bemerkungen unterstützen HTML (inklusive Editor)
 
 ### Version 2.3.0 (24.03.2021)
 - Neu: Datenbankversion **2006**
@@ -104,7 +105,7 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 - Fix: Sudkategorien nach oben/unten verschieben
 
 ### Version 2.2.0 Beta (27.06.2020)
-- Neu: Offizielle version kompiliert mit **Qt 5.15**
+- Neu: Offizielle version kompiliert mit **Qt 5.15.0**
 - Neu: Datenbankversion **2004**
 - Neu: Neue Spalte "Alternativen" bei Rohstofftabellen
 - Neu: Rohstofftabellen etwas überarbeitet

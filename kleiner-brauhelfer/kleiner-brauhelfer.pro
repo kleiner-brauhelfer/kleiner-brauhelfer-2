@@ -71,6 +71,7 @@ SOURCES += \
     dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
+    dialogs/dlgrichtexteditor.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
@@ -113,6 +114,7 @@ SOURCES += \
     widgets/timeedit.cpp \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
+    widgets/wdgbemerkung.cpp \
     widgets/wdgbewertung.cpp \
     widgets/wdgdiagramview.cpp \
     widgets/wdghefegabe.cpp \
@@ -153,6 +155,7 @@ HEADERS += \
     dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
+    dialogs/dlgrichtexteditor.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
@@ -195,6 +198,7 @@ HEADERS += \
     widgets/timeedit.h \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
+    widgets/wdgbemerkung.h \
     widgets/wdgbewertung.h \
     widgets/wdgdiagramview.h \
     widgets/wdghefegabe.h \
@@ -231,6 +235,7 @@ FORMS += \
     dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
+    dialogs/dlgrichtexteditor.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \
@@ -241,6 +246,7 @@ FORMS += \
     dialogs/dlgvolumen.ui \
     dialogs/dlgwasseraufbereitung.ui \
     widgets/wdganhang.ui \
+    widgets/wdgbemerkung.ui \
     widgets/wdgbewertung.ui \
     widgets/wdghefegabe.ui \
     widgets/wdghopfengabe.ui \

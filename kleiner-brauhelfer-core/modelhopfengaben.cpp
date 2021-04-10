@@ -219,7 +219,10 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 dauer = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColKochdauer).toInt();
                 break;
             case Brauhelfer::HopfenZeitpunkt::Kochende:
+                dauer = 0;
+                break;
             case Brauhelfer::HopfenZeitpunkt::Ausschlagen:
+                dauer = -bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColNachisomerisierungszeit).toInt();
                 break;
             }
             QSqlTableModel::setData(index(idx.row(), ColZeit), dauer);

@@ -8,10 +8,10 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-bool WdgAnhang::isImage(const QString pfad)
+bool WdgAnhang::isImage(const QString& pfad)
 {
     QFileInfo fileInfo(pfad);
-    QString ext = fileInfo.suffix();
+    QString ext = fileInfo.suffix().toLower();
     return (ext == "png" || ext == "svg" || ext == "gif" || ext == "jpg" || ext == "jpeg" || ext == "bmp");
 }
 

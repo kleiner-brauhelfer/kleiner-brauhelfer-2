@@ -13,7 +13,7 @@ class WdgAnhang : public QWidget
     Q_OBJECT
 
 public:
-    static bool isImage(const QString pfad);
+    static bool isImage(const QString &pfad);
     explicit WdgAnhang(int index, QWidget *parent = nullptr);
     ~WdgAnhang();
     void openDialog();

@@ -58,6 +58,14 @@ TabEtikette::TabEtikette(QWidget *parent) :
     gSettings->endGroup();
   #endif
 
+    gSettings->beginGroup("TabEtikette");
+    ui->cbSeitenverhaeltnis->setChecked(gSettings->value("Seitenverhaeltnis", true).toBool());
+    QVariant variant = gSettings->value("Hintergrundfarbe");
+    if (variant.isValid())
+        mBackgroundColor = variant.value<QColor>();
+    ui->cbDividingLine->setChecked(gSettings->value("Trennlinie", true).toBool());
+    gSettings->endGroup();
+
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());
     table->appendCol({ModelTags::ColKey, true, false, 0, nullptr});
@@ -86,6 +94,15 @@ TabEtikette::~TabEtikette()
   #endif
 }
 
+void TabEtikette::saveSettings()
+{
+    gSettings->beginGroup("TabEtikette");
+    gSettings->setValue("Seitenverhaeltnis", ui->cbSeitenverhaeltnis->isChecked());
+    gSettings->setValue("Hintergrundfarbe", mBackgroundColor);
+    gSettings->setValue("Trennlinie", ui->cbDividingLine->isChecked());
+    gSettings->endGroup();
+}
+
 void TabEtikette::onTabActivated()
 {
     updateAll();
@@ -107,7 +124,7 @@ void TabEtikette::updateAuswahlListe()
     for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
     {
         QString pfad = bh->sud()->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
-        if (pfad.endsWith(".svg"))
+        if (pfad.endsWith(".svg", Qt::CaseInsensitive))
         {
             QFileInfo fi(pfad);
             ui->cbAuswahl->addItem(fi.fileName(), fi.filePath());

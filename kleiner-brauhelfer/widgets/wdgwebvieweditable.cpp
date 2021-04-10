@@ -23,6 +23,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     mTempCssFile(QDir::tempPath() + "/" + QCoreApplication::applicationName() + QLatin1String(".XXXXXX.css"))
 {
     ui->setupUi(this);
+    ui->webview->setLinksExternal(true);
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))

@@ -38,7 +38,7 @@
         <x>0</x>
         <y>0</y>
         <width>351</width>
-        <height>675</height>
+        <height>695</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -75,6 +75,16 @@
              <string>Damit lassen sich zeitliche Gärverläufe protokollieren (Hauptgärung, Nachgärung und Schnellgärprobe).</string>
             </property>
             <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbSchnellgaerprobe">
+            <property name="text">
+             <string>Schnellgärprobe</string>
+            </property>
+            <property name="checked">
              <bool>true</bool>
             </property>
            </widget>

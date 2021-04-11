@@ -157,7 +157,7 @@ void TabSudAuswahl::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleBewertung))
     {
-        bool on = gSettings->module(Settings::ModuleBewertung);
+        bool on = gSettings->isModuleEnabled(Settings::ModuleBewertung);
         ui->tableSudauswahl->setCol(8, on, on);
     }
     updateWebView();

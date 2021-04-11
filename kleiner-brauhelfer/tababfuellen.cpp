@@ -126,6 +126,11 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
                           ui->lblSpeisemengeFlasche,
                           ui->lblSpeisemengeFlascheEinheit});
     }
+    if (modules.testFlag(Settings::ModuleSchnellgaerprobe))
+    {
+        setVisibleModule(Settings::ModuleSchnellgaerprobe,
+                         {ui->cbSchnellgaerprobeAktiv});
+    }
     updateValues();
 }
 
@@ -214,7 +219,7 @@ void TabAbfuellen::updateValues()
     ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
 
     ui->tbSWJungbierSoll->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
-    ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv());
+    ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv() && gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->tbSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblSWSchnellgaerprobeEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
@@ -230,7 +235,7 @@ void TabAbfuellen::updateValues()
     double flascheFaktor = ui->tbFlaschengroesse->value() / bh->sud()->getJungbiermengeAbfuellen();
 
     // ModuleSpeise
-    if (gSettings->module(Settings::ModuleSpeise))
+    if (gSettings->isModuleEnabled(Settings::ModuleSpeise))
     {
         ui->tbSpeisemengeGesamt->setValue((int)bh->sud()->getSpeiseAnteil());
         ui->tbSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);

@@ -336,7 +336,7 @@ void TabRohstoffe::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleLagerverwaltung))
     {
-        bool on = gSettings->module(Settings::ModuleLagerverwaltung);
+        bool on = gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung);
         ui->tableMalz->setCol(1, on, false);
         ui->tableMalz->setCol(9, on, on);
         ui->tableMalz->setCol(10, on, on);
@@ -352,7 +352,7 @@ void TabRohstoffe::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleWasseraufbereitung))
     {
-        bool on = gSettings->module(Settings::ModuleWasseraufbereitung);
+        bool on = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
         int index = ui->toolBoxRohstoffe->indexOf(ui->tabWasser);
         if (on)
         {
@@ -366,7 +366,7 @@ void TabRohstoffe::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        bool on = gSettings->module(Settings::ModulePreiskalkulation);
+        bool on = gSettings->isModuleEnabled(Settings::ModulePreiskalkulation);
         ui->tableMalz->setCol(8, on, on);
         ui->tableHopfen->setCol(8, on, on);
         ui->tableHefe->setCol(11, on, on);

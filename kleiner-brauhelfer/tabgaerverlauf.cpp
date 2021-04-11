@@ -212,6 +212,30 @@ void TabGaerverlauf::restoreView(bool full)
     }
 }
 
+void TabGaerverlauf::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModuleSchnellgaerprobe))
+    {
+        if (gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe))
+        {
+            if (ui->toolBox_Gaerverlauf->count() == 2)
+            {
+                ui->toolBox_Gaerverlauf->insertItem(0, ui->pageSchnellgaerung, tr("Schnellgärprobe"));
+                ui->pageSchnellgaerung->setVisible(true);
+            }
+        }
+        else
+        {
+            if (ui->toolBox_Gaerverlauf->count() == 3)
+            {
+                ui->toolBox_Gaerverlauf->removeItem(0);
+                ui->pageSchnellgaerung->setVisible(false);
+            }
+        }
+    }
+    updateValues();
+}
+
 void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
@@ -283,18 +307,13 @@ void TabGaerverlauf::dropEvent(QDropEvent *event)
         QFile file(url.toLocalFile());
         if (file.open(QFile::ReadOnly | QFile::Text))
         {
-            switch (ui->toolBox_Gaerverlauf->currentIndex())
-            {
-            case 0:
+            const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
+            if (currentWidget == ui->pageSchnellgaerung)
                 pasteFromClipboardSchnellgaerverlauf(file.readAll());
-                break;
-            case 1:
+            else if (currentWidget == ui->pageHauptgaerung)
                 pasteFromClipboardHauptgaerverlauf(file.readAll());
-                break;
-            case 2:
+            else if (currentWidget == ui->pageNachgaerung)
                 pasteFromClipboardNachgaerverlauf(file.readAll());
-                break;
-            }
         }
     }
 }
@@ -308,10 +327,10 @@ void TabGaerverlauf::sudLoaded()
     switch (status)
     {
     case Brauhelfer::SudStatus::Abgefuellt:
-        ui->toolBox_Gaerverlauf->setCurrentIndex(2);
+        ui->toolBox_Gaerverlauf->setCurrentWidget(ui->pageNachgaerung);
         break;
     default:
-        ui->toolBox_Gaerverlauf->setCurrentIndex(1);
+        ui->toolBox_Gaerverlauf->setCurrentWidget(ui->pageHauptgaerung);
         break;
     }
 }
@@ -432,20 +451,15 @@ void TabGaerverlauf::updateDiagramm()
 void TabGaerverlauf::table_selectionChanged(const QItemSelection &selected)
 {
     WdgDiagramView *diag;
-    switch (ui->toolBox_Gaerverlauf->currentIndex())
-    {
-    case 0:
+    const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
+    if (currentWidget == ui->pageSchnellgaerung)
         diag = ui->widget_DiaSchnellgaerverlauf;
-        break;
-    case 1:
+    else if (currentWidget == ui->pageHauptgaerung)
         diag = ui->widget_DiaHauptgaerverlauf;
-        break;
-    case 2:
+    else if (currentWidget == ui->pageNachgaerung)
         diag = ui->widget_DiaNachgaerverlauf;
-        break;
-    default:
+    else
         return;
-    }
     int id = -1;
     if (selected.indexes().count() > 0)
         id = selected.indexes()[0].row();
@@ -455,20 +469,15 @@ void TabGaerverlauf::table_selectionChanged(const QItemSelection &selected)
 void TabGaerverlauf::diagram_selectionChanged(int id)
 {
     QTableView *table;
-    switch (ui->toolBox_Gaerverlauf->currentIndex())
-    {
-    case 0:
+    const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
+    if (currentWidget == ui->pageSchnellgaerung)
         table = ui->tableWidget_Schnellgaerverlauf;
-        break;
-    case 1:
+    else if (currentWidget == ui->pageHauptgaerung)
         table = ui->tableWidget_Hauptgaerverlauf;
-        break;
-    case 2:
+    else if (currentWidget == ui->pageNachgaerung)
         table = ui->tableWidget_Nachgaerverlauf;
-        break;
-    default:
+    else
         return;
-    }
     table->selectRow(id);
 }
 
@@ -584,7 +593,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         {
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelHefegaben()->setData(row, ModelHefegaben::ColZugegeben, true);
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 DlgRohstoffeAbziehen dlg(true, data.first,
                                          bh->sud()->modelHefegaben()->data(row, ModelHefegaben::ColName).toString(),
@@ -601,7 +610,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
         {
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabeDatum, QDate::currentDate());
             bh->sud()->modelWeitereZutatenGaben()->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 DlgRohstoffeAbziehen dlg(true, data.first,
                                          bh->sud()->modelWeitereZutatenGaben()->data(row, ModelWeitereZutatenGaben::ColName).toString(),

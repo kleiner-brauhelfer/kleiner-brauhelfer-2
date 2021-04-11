@@ -75,10 +75,10 @@ void WdgMalzGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->tbMengeProzent->setReadOnly(!mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbExtraktProzent->setReadOnly(!mEnabled);
@@ -113,7 +113,7 @@ void WdgMalzGabe::updateValues()
 
     if (mEnabled)
     {
-        if (gSettings->module(Settings::ModuleLagerverwaltung))
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             ui->tbVorhanden->setValue(bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
             double benoetigt = 0.0;
@@ -144,7 +144,7 @@ void WdgMalzGabe::updateValues()
         {
             ui->tbMenge->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                 ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }
     }

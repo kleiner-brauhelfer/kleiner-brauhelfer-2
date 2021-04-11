@@ -75,7 +75,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ival = bh->modelSud()->data(sudRow, ModelSud::ColhighGravityFaktor).toInt();
             if (ival > 0)
                 ctxRezept["HighGravityFaktor"] = QString::number(ival);
-            if (gSettings->module(Settings::ModuleWasseraufbereitung))
+            if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
             {
                 ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
                 ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
@@ -103,7 +103,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
             ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
             ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
-            if (gSettings->module(Settings::ModuleAusruestung))
+            if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
             {
                 ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
                 ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
@@ -156,11 +156,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
             ctxSud["BemerkungBrauen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString().replace("\n", "<br>");
             ctxSud["BemerkungAbfuellen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString().replace("\n", "<br>");
             ctxSud["BemerkungGaerung"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString().replace("\n", "<br>");
-            if (gSettings->module(Settings::ModuleWasseraufbereitung))
+            if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
             {
                 ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
             }
-            if (gSettings->module(Settings::ModuleBewertung))
+            if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
             {
                 int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
                 ctxSud["Bewertung"] = QString::number(bewertung);
@@ -234,7 +234,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 double f1 = 0.0, f2 = 0.0, f3 = 0.0;
                 f1 = bh->sud()->geterg_WHauptguss();
                 mapWasser["Hauptguss"] = locale.toString(f1, 'f', 2);
-                if (gSettings->module(Settings::ModuleAusruestung))
+                if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
                 {
                     double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
                     double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
@@ -252,7 +252,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
 
                 if (parts & TagWasseraufbereitung)
                 {
-                    if (gSettings->module(Settings::ModuleWasseraufbereitung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
                     {
                         liste.clear();
                         model = bh->sud()->modelWasseraufbereitung();
@@ -276,7 +276,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
 
                 if (parts & TagWasserprofil)
                 {
-                    if (gSettings->module(Settings::ModuleWasseraufbereitung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
                     {
                         QVariantMap map;
                         map["Name"] = bh->sud()->getWasserData(ModelWasser::ColName).toString();

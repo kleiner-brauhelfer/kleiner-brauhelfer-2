@@ -11,17 +11,18 @@ DlgModule::DlgModule(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->gbModuleGaerverlauf->setChecked(gSettings->module(Settings::ModuleGaerverlauf));
-    ui->gbModuleZusammenfassung->setChecked(gSettings->module(Settings::ModuleZusammenfassung));
-    ui->gbModuleEtikette->setChecked(gSettings->module(Settings::ModuleEtikette));
-    ui->gbModuleBewertung->setChecked(gSettings->module(Settings::ModuleBewertung));
-    ui->gbModuleBrauuebersicht->setChecked(gSettings->module(Settings::ModuleBrauuebersicht));
-    ui->gbModuleAusruestung->setChecked(gSettings->module(Settings::ModuleAusruestung));
-    ui->gbModuleLagerverwaltung->setChecked(gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->gbModuleSpeise->setChecked(gSettings->module(Settings::ModuleSpeise));
-    ui->gbModuleWasseraufbereitung->setChecked(gSettings->module(Settings::ModuleWasseraufbereitung));
-    ui->gbModulePreiskalkulation->setChecked(gSettings->module(Settings::ModulePreiskalkulation));
-    ui->gbModuleDatenbank->setChecked(gSettings->module(Settings::ModuleDatenbank));
+    ui->gbModuleGaerverlauf->setChecked(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
+    ui->cbSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
+    ui->gbModuleZusammenfassung->setChecked(gSettings->isModuleEnabled(Settings::ModuleZusammenfassung));
+    ui->gbModuleEtikette->setChecked(gSettings->isModuleEnabled(Settings::ModuleEtikette));
+    ui->gbModuleBewertung->setChecked(gSettings->isModuleEnabled(Settings::ModuleBewertung));
+    ui->gbModuleBrauuebersicht->setChecked(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
+    ui->gbModuleAusruestung->setChecked(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
+    ui->gbModuleLagerverwaltung->setChecked(gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->gbModuleSpeise->setChecked(gSettings->isModuleEnabled(Settings::ModuleSpeise));
+    ui->gbModuleWasseraufbereitung->setChecked(gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung));
+    ui->gbModulePreiskalkulation->setChecked(gSettings->isModuleEnabled(Settings::ModulePreiskalkulation));
+    ui->gbModuleDatenbank->setChecked(gSettings->isModuleEnabled(Settings::ModuleDatenbank));
 
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());
@@ -44,6 +45,13 @@ DlgModule::~DlgModule()
 void DlgModule::on_gbModuleGaerverlauf_clicked(bool checked)
 {
     gSettings->enableModule(Settings::ModuleGaerverlauf, checked);
+    gSettings->enableModule(Settings::ModuleSchnellgaerprobe, checked);
+    ui->cbSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
+}
+
+void DlgModule::on_cbSchnellgaerprobe_clicked(bool checked)
+{
+    gSettings->enableModule(Settings::ModuleSchnellgaerprobe, checked);
 }
 
 void DlgModule::on_gbModuleZusammenfassung_clicked(bool checked)

@@ -24,7 +24,7 @@ void TabAbstract::modulesChanged(Settings::Modules modules)
 
 void TabAbstract::setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets)
 {
-    bool visible = gSettings->module(module);
+    bool visible = gSettings->isModuleEnabled(module);
     for (const auto& it : widgets)
         it->setVisible(visible);
 }

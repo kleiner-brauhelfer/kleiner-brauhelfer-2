@@ -417,7 +417,7 @@ void Settings::enableModule(Settings::Module module, bool enabled)
     emit modulesChanged(module);
 }
 
-bool Settings::module(Settings::Module module) const
+bool Settings::isModuleEnabled(Settings::Module module) const
 {
     return mModules.testFlag(module);
 }

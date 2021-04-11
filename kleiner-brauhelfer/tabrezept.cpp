@@ -244,7 +244,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleWasseraufbereitung))
     {
-        if (gSettings->module(Settings::ModuleWasseraufbereitung))
+        if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
             ui->tabMitte->addTab(ui->tabWasseraufbereitung, tr("Wasseraufbereitung"));
         else
             ui->tabMitte->removeTab(ui->tabMitte->indexOf(ui->tabWasseraufbereitung));
@@ -567,7 +567,7 @@ void TabRezept::updateValues()
     // ModuleAusruestung
     if (!ui->cbAnlage->hasFocus())
         ui->cbAnlage->setCurrentIndex(ui->cbAnlage->findText(bh->sud()->getAnlage()));
-    if (ui->cbAnlage->currentIndex() == -1 || !gSettings->module(Settings::ModuleAusruestung))
+    if (ui->cbAnlage->currentIndex() == -1 || !gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
         ui->groupAnlage->setVisible(false);

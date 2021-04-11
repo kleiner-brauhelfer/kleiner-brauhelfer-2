@@ -78,9 +78,9 @@ void WdgHopfenGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     if (!mEnabled)
         ui->btnAufbrauchen->setVisible(false);
     ui->tbMenge->setReadOnly(!mEnabled);
@@ -135,7 +135,7 @@ void WdgHopfenGabe::updateValues()
 
     if (mEnabled)
     {
-        if (gSettings->module(Settings::ModuleLagerverwaltung))
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toDouble());
             double benoetigt = 0;
@@ -217,7 +217,7 @@ void WdgHopfenGabe::updateValues()
             ui->tbMengeProLiter->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
             ui->tbAnteilProzent->setReadOnly(false);
-            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001 && gSettings->module(Settings::ModuleLagerverwaltung));
+            ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001 && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
         }
     }
 

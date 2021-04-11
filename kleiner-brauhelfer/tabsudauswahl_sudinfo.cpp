@@ -178,7 +178,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     }
 
     QVariantMap ctxZutaten;
-    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         ctxZutaten["Lager"] = true;
 
     if (ListMalz.count() > 0)
@@ -193,7 +193,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
             map.insert("Einheit", tr("kg"));
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 double ist = 0;
                 double diff = 0;
@@ -228,7 +228,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 1));
             map.insert("Einheit", tr("g"));
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 double ist = 0;
                 double diff = 0;
@@ -262,7 +262,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             map.insert("Name", eintrag.Name);
             map.insert("Menge", locale.toString(eintrag.Menge, 'f', 0));
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 int ist = 0;
                 int diff = 0;
@@ -297,7 +297,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             map.insert("Name", eintrag.Name);
             map.insert("Typ", eintrag.Typ);
             double ist = 0;
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 double diff = 0;
                 modelWeitereZutaten.setFilterRegularExpression(QString("^%1$").arg(QRegularExpression::escape(eintrag.Name)));
@@ -346,32 +346,32 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 {
                 case Brauhelfer::Einheit::Kg:
                     map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
-                    if (gSettings->module(Settings::ModuleLagerverwaltung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                         map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                     break;
                 case Brauhelfer::Einheit::g:
                     map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
-                    if (gSettings->module(Settings::ModuleLagerverwaltung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                         map.insert("Vorhanden", locale.toString(ist, 'f', 2));
                     break;
                 case Brauhelfer::Einheit::mg:
                     map.insert("Menge", locale.toString(eintrag.Menge * 1000, 'f', 2));
-                    if (gSettings->module(Settings::ModuleLagerverwaltung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                         map.insert("Vorhanden", locale.toString(ist * 1000, 'f', 2));
                     break;
                 case Brauhelfer::Einheit::Stk:
                     map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
-                    if (gSettings->module(Settings::ModuleLagerverwaltung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                         map.insert("Vorhanden", locale.toString(ist, 'f', 0));
                     break;
                 case Brauhelfer::Einheit::l:
                     map.insert("Menge", locale.toString(eintrag.Menge / 1000, 'f', 2));
-                    if (gSettings->module(Settings::ModuleLagerverwaltung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                         map.insert("Vorhanden", locale.toString(ist / 1000, 'f', 2));
                     break;
                 case Brauhelfer::Einheit::ml:
                     map.insert("Menge", locale.toString(eintrag.Menge, 'f', 2));
-                    if (gSettings->module(Settings::ModuleLagerverwaltung))
+                    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                         map.insert("Vorhanden", locale.toString(ist, 'f', 2));
                     break;
                 }

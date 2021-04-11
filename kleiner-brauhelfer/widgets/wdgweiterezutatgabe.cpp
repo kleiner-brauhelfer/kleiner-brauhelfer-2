@@ -92,10 +92,10 @@ void WdgWeitereZutatGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->cbEntnahme->setEnabled(mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeTotal->setReadOnly(!mEnabled);
@@ -249,7 +249,7 @@ void WdgWeitereZutatGabe::updateValues()
 
     if (mEnabled)
     {
-        if (gSettings->module(Settings::ModuleLagerverwaltung))
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                 ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
@@ -280,7 +280,7 @@ void WdgWeitereZutatGabe::updateValues()
         switch (zugabestatus)
         {
         case Brauhelfer::ZusatzStatus::NichtZugegeben:
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 ui->tbVorhanden->setVisible(true);
                 ui->lblVorhanden->setVisible(true);
@@ -347,7 +347,7 @@ void WdgWeitereZutatGabe::updateValues()
 
     if (gSettings->ForceEnabled)
     {
-        if (gSettings->module(Settings::ModuleLagerverwaltung))
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             ui->tbVorhanden->setVisible(true);
             ui->btnAufbrauchen->setVisible(true);
@@ -457,7 +457,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     QDate date = ui->tbDatumVon->date();
     setData(ModelWeitereZutatenGaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::Zugegeben));
-    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
         Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;

@@ -88,9 +88,9 @@ void WdgHefeGabe::updateValues()
 
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->lblVorhanden->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
-    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->module(Settings::ModuleLagerverwaltung));
+    ui->tbVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->lblVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+    ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeEmpfohlen->setVisible(mEnabled);
     ui->lblEmpfohlen->setVisible(mEnabled);
@@ -149,7 +149,7 @@ void WdgHefeGabe::updateValues()
 
     if (mEnabled)
     {
-        if (gSettings->module(Settings::ModuleLagerverwaltung))
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
             int benoetigt = 0;
@@ -199,7 +199,7 @@ void WdgHefeGabe::on_btnZugeben_clicked()
     QDate date = ui->tbDatum->date();
     setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
     setData(ModelHefegaben::ColZugegeben, true);
-    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
         dlg.exec();

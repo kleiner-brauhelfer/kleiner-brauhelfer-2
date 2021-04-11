@@ -288,7 +288,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
     if (modules.testFlag(Settings::ModuleGaerverlauf))
     {
         int index = ui->tabMain->indexOf(ui->tabGaerverlauf);
-        if (gSettings->module(Settings::ModuleGaerverlauf))
+        if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (index < 0)
                 ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed("tabgaerverlauf", gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
@@ -296,12 +296,12 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleGaerverlauf))
+    if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleZusammenfassung))
     {
         int index = ui->tabMain->indexOf(ui->tabZusammenfassung);
-        if (gSettings->module(Settings::ModuleZusammenfassung))
+        if (gSettings->isModuleEnabled(Settings::ModuleZusammenfassung))
         {
             if (index < 0)
                 ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), "");
@@ -309,12 +309,12 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleZusammenfassung))
+    if (gSettings->isModuleEnabled(Settings::ModuleZusammenfassung))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleEtikette))
     {
         int index = ui->tabMain->indexOf(ui->tabEtikette);
-        if (gSettings->module(Settings::ModuleEtikette))
+        if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         {
             if (index < 0)
                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
@@ -322,12 +322,12 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleEtikette))
+    if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleBewertung))
     {
         int index = ui->tabMain->indexOf(ui->tabBewertung);
-        if (gSettings->module(Settings::ModuleBewertung))
+        if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         {
             if (index < 0)
                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
@@ -335,12 +335,12 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleBewertung))
+    if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
     {
         int index = ui->tabMain->indexOf(ui->tabBrauuebersicht);
-        if (gSettings->module(Settings::ModuleBrauuebersicht))
+        if (gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht))
         {
             if (index < 0)
                ui->tabMain->insertTab(nextIndex, ui->tabBrauuebersicht, IconThemed("tabbrauuebersicht", gSettings->theme() == Settings::Theme::Bright), tr("Brauübersicht"));
@@ -348,12 +348,12 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleBrauuebersicht))
+    if (gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleAusruestung))
     {
         int index = ui->tabMain->indexOf(ui->tabAusruestung);
-        if (gSettings->module(Settings::ModuleAusruestung))
+        if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
         {
             if (index < 0)
                ui->tabMain->insertTab(nextIndex, ui->tabAusruestung, IconThemed("tabausruestung", gSettings->theme() == Settings::Theme::Bright), tr("Ausrüstung"));
@@ -361,14 +361,14 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleAusruestung))
+    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
         nextIndex++;
-    if (gSettings->module(Settings::ModuleRohstoffe))
+    if (gSettings->isModuleEnabled(Settings::ModuleRohstoffe))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleDatenbank))
     {
         int index = ui->tabMain->indexOf(ui->tabDatenbank);
-        if (gSettings->module(Settings::ModuleDatenbank))
+        if (gSettings->isModuleEnabled(Settings::ModuleDatenbank))
         {
             if (index < 0)
                ui->tabMain->insertTab(nextIndex, ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
@@ -376,7 +376,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->module(Settings::ModuleDatenbank))
+    if (gSettings->isModuleEnabled(Settings::ModuleDatenbank))
         nextIndex++;
 }
 
@@ -623,7 +623,7 @@ void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
         if (zugegeben)
         {
             model->setData(row, ModelHefegaben::ColZugegeben, false);
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe,
                                          model->data(row, ModelHefegaben::ColName).toString(),
@@ -645,7 +645,7 @@ void MainWindow::on_actionWeitereZutaten_triggered()
         if (zugegeben)
         {
             model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
-            if (gSettings->module(Settings::ModuleLagerverwaltung))
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Zusatz,
                                          model->data(row, ModelWeitereZutatenGaben::ColName).toString(),

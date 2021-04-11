@@ -38,6 +38,7 @@ public:
         ModulePreiskalkulation      = 0x00020000,
         ModuleLagerverwaltung       = 0x00040000,
         ModuleSpeise                = 0x00080000,
+        ModuleSchnellgaerprobe      = 0x00100000,
         //
         ModuleDefault               = ModuleSudauswahl | ModuleRezept | ModuleBraudaten | ModuleAbfuellen |
                                       ModuleGaerverlauf | ModuleZusammenfassung | ModuleRohstoffe |
@@ -85,7 +86,7 @@ public:
     bool initModules();
     Modules modules() const;
     void enableModule(Module module, bool enabled);
-    bool module(Module module) const;
+    bool isModuleEnabled(Module module) const;
 
     QString lastProgramVersion();
     bool isNewProgramVersion();

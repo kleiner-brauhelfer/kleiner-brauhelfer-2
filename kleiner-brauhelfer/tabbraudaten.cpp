@@ -212,9 +212,9 @@ void TabBraudaten::checkEnabled()
     ui->btnSWKochende->setVisible(!gebraut);
     ui->tbSWAnstellen->setReadOnly(gebraut);
     ui->btnSWAnstellen->setVisible(!gebraut);
-    ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut && gSettings->module(Settings::ModuleSpeise));
+    ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
-    ui->btnSpeisemengeNoetig->setVisible(!gebraut && gSettings->module(Settings::ModuleSpeise));
+    ui->btnSpeisemengeNoetig->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->tbSpeisemenge->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
@@ -246,7 +246,7 @@ void TabBraudaten::updateValues()
     ui->wdgWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
 
     // ModuleSpeise
-    if (gSettings->module(Settings::ModuleSpeise))
+    if (gSettings->isModuleEnabled(Settings::ModuleSpeise))
     {
         value = BierCalc::speise(bh->sud()->getCO2(),
                                  bh->sud()->getSWAnstellen(),
@@ -264,7 +264,7 @@ void TabBraudaten::updateValues()
 
     // ModuleAusruestung
     ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
-    if (ui->cbDurchschnittIgnorieren->isChecked() || !gSettings->module(Settings::ModuleAusruestung))
+    if (ui->cbDurchschnittIgnorieren->isChecked() || !gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         ui->lblDurchschnittWarnung->setVisible(false);
     }
@@ -326,7 +326,7 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
-    if (gSettings->module(Settings::ModuleAusruestung))
+    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
@@ -349,7 +349,7 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
-    if (gSettings->module(Settings::ModuleAusruestung))
+    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
@@ -366,7 +366,7 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
-    if (gSettings->module(Settings::ModuleAusruestung))
+    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
@@ -409,7 +409,7 @@ void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
-    if (gSettings->module(Settings::ModuleAusruestung))
+    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
@@ -458,7 +458,7 @@ void TabBraudaten::on_btnSudGebraut_clicked()
     bh->sud()->setBraudatum(dt);
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
 
-    if (gSettings->module(Settings::ModuleLagerverwaltung))
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         DlgRohstoffeAbziehen dlg(true, this);
         dlg.exec();

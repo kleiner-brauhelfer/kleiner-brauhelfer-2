@@ -5872,7 +5872,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="1928"/>
         <source>Restalkalität</source>
-        <translation>Resterende alkaliteit</translation>
+        <translation>Restalkaliteit</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2022"/>
@@ -6618,12 +6618,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="411"/>
         <source>Restalkalität</source>
-        <translation>Resterende alkaliteit</translation>
+        <translation>Restalkaliteit</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="625"/>
         <source>Restalkalität Korrektur</source>
-        <translation>Correctie Resterende Alkaliteit</translation>
+        <translation>Correctie Restalkaliteit</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="388"/>
@@ -6658,7 +6658,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="646"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
-        <translation>Hydrogeencarbonaat (0 - 500 mg/l)</translation>
+        <translation>Waterstofcarbonaat (0 - 500 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="914"/>
@@ -7035,7 +7035,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.cpp" line="264"/>
         <source>Restalkalität [°dH]</source>
-        <translation>Resterende alkaliteit [°dH]</translation>
+        <translation>Restalkaliteit [°dH]</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="1039"/>
@@ -8509,7 +8509,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="400"/>
         <source>Restalkalität</source>
-        <translation>Resterende alkaliteit</translation>
+        <translation type="unfinished">Restalkaliteit</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="127"/>

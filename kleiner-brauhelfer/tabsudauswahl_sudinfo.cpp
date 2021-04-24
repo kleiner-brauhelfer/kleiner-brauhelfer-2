@@ -25,12 +25,12 @@ void TabSudAuswahl::updateWebView()
     {
         const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
         int sudRow = proxyModel->mapRowToSource(selection[0].row());
-        TemplateTags::render(ui->webview, TemplateTags::TagAll, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), sudRow);
+        TemplateTags::render(ui->webview, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), sudRow);
         ui->webview->setPdfName(proxyModel->data(selection[0].row(), ModelSud::ColSudname).toString());
     }
     else
     {
-        TemplateTags::render(ui->webview, TemplateTags::TagAll, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1));
+        TemplateTags::render(ui->webview, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), -1);
         ui->webview->setPdfName("Rohstoffe");
     }
 }

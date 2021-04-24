@@ -46,7 +46,7 @@ void TabZusammenfassung::updateWebView()
     else
         ui->webview->setHtmlFile("zusammenfassung");
     ui->webview->setPdfName(bh->sud()->getSudname());
-    TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
+    TemplateTags::render(ui->webview, bh->sud()->row());
 }
 
 bool TabZusammenfassung::isPrintable() const

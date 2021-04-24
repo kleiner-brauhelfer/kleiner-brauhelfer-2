@@ -12,181 +12,196 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-void TemplateTags::render(WdgWebViewEditable* view, TagParts parts, int sudRow)
+void TemplateTags::render(WdgWebViewEditable* view, int sudRow)
 {
-    render(view, parts, nullptr, sudRow);
+    render(view, nullptr, sudRow);
 }
 
-void TemplateTags::render(WdgWebViewEditable* view, TagParts parts, std::function<void(QVariantMap &)> fnc, int sudRow)
+void TemplateTags::render(WdgWebViewEditable* view, std::function<void(QVariantMap &)> fnc, int sudRow)
 {
     view->mTemplateTags.clear();
-    erstelleTagListe(view->mTemplateTags, parts, sudRow);
+    erstelleTagListe(view->mTemplateTags, sudRow);
     if (fnc)
         fnc(view->mTemplateTags);
     view->updateTags();
     view->updateWebView();
 }
 
-void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow)
+void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
 {
+    QVariantList liste;
+
     int sudId = sudRow >= 0 ? bh->modelSud()->data(sudRow, ModelSud::ColID).toInt() : -1;
     QLocale locale = QLocale();
 
+    // Style
     ctx["Style"] = gSettings->theme() == Settings::Dark ? "style_dunkel.css" : "style_hell.css";
 
-    if (parts & TagApp)
-    {
-        QVariantMap ctxApp;
-        ctxApp["Name"] = QCoreApplication::applicationName();
-        ctxApp["Version"] = QCoreApplication::applicationVersion();
-        ctx["App"] = ctxApp;
-    }
+    // App
+    QVariantMap ctxApp;
+    ctxApp["Name"] = QCoreApplication::applicationName();
+    ctxApp["Version"] = QCoreApplication::applicationVersion();
+    ctx["App"] = ctxApp;
+
+    // Module
+    QVariantMap ctxModule;
+    ctxModule["Sudauswahl"] = gSettings->isModuleEnabled(Settings::ModuleSudauswahl);
+    ctxModule["Rezept"] = gSettings->isModuleEnabled(Settings::ModuleRezept);
+    ctxModule["Braudaten"] = gSettings->isModuleEnabled(Settings::ModuleBraudaten);
+    ctxModule["Abfuellen"] = gSettings->isModuleEnabled(Settings::ModuleAbfuellen);
+    ctxModule["Gaerverlauf"] = gSettings->isModuleEnabled(Settings::ModuleGaerverlauf);
+    ctxModule["Zusammenfassung"] = gSettings->isModuleEnabled(Settings::ModuleZusammenfassung);
+    ctxModule["Etikette"] = gSettings->isModuleEnabled(Settings::ModuleEtikette);
+    ctxModule["Bewertung"] = gSettings->isModuleEnabled(Settings::ModuleBewertung);
+    ctxModule["Brauuebersicht"] = gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht);
+    ctxModule["Ausruestung"] = gSettings->isModuleEnabled(Settings::ModuleAusruestung);
+    ctxModule["Rohstoffe"] = gSettings->isModuleEnabled(Settings::ModuleRohstoffe);
+    ctxModule["Datenbank"] = gSettings->isModuleEnabled(Settings::ModuleDatenbank);
+    ctxModule["Wasseraufbereitung"] = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
+    ctxModule["Preiskalkulation"] = gSettings->isModuleEnabled(Settings::ModulePreiskalkulation);
+    ctxModule["Lagerverwaltung"] = gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung);
+    ctxModule["Speise"] = gSettings->isModuleEnabled(Settings::ModuleSpeise);
+    ctxModule["Schnellgaerprobe"] = gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe);
+    ctx["Modul"] = ctxModule;
 
     if (sudRow >= 0)
     {
-        if (parts & TagRezept)
+        // Rezept
+        int ival;
+        double fval, mengeMaischen, mengeKochbeginn100, mengeKochende100;
+        QVariantMap ctxRezept;
+        ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_Malz).toDouble();
+        if (fval > 0)
+            ctxRezept["SW_Malz"] = locale.toString(fval, 'f', 1);
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Maischen).toDouble();
+        if (fval > 0)
+            ctxRezept["SW_WZ_Maischen"] = locale.toString(fval, 'f', 1);
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Kochen).toDouble();
+        if (fval > 0)
+            ctxRezept["SW_WZ_Kochen"] = locale.toString(fval, 'f', 1);
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Gaerung).toDouble();
+        if (fval > 0)
+            ctxRezept["SW_WZ_Gaerung"] = locale.toString(fval, 'f', 1);
+        ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMenge).toDouble(), 'f', 1);
+        ctxRezept["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAlkohol).toDouble(), 'f', 1);
+        ctxRezept["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIBU).toInt());
+        ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
+        ctxRezept["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
+        ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toDouble())).name();
+        ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt());
+        ival = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
+        if (ival > 0)
+            ctxRezept["Nachisomerisierung"] = QString::number(ival);
+        ival = bh->modelSud()->data(sudRow, ModelSud::ColhighGravityFaktor).toInt();
+        if (ival > 0)
+            ctxRezept["HighGravityFaktor"] = QString::number(ival);
+        if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
         {
-            int ival;
-            double fval, mengeMaischen, mengeKochbeginn100, mengeKochende100;
-            QVariantMap ctxRezept;
-            ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
-            fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_Malz).toDouble();
-            if (fval > 0)
-                ctxRezept["SW_Malz"] = locale.toString(fval, 'f', 1);
-            fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Maischen).toDouble();
-            if (fval > 0)
-                ctxRezept["SW_WZ_Maischen"] = locale.toString(fval, 'f', 1);
-            fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Kochen).toDouble();
-            if (fval > 0)
-                ctxRezept["SW_WZ_Kochen"] = locale.toString(fval, 'f', 1);
-            fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Gaerung).toDouble();
-            if (fval > 0)
-                ctxRezept["SW_WZ_Gaerung"] = locale.toString(fval, 'f', 1);
-            ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMenge).toDouble(), 'f', 1);
-            ctxRezept["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAlkohol).toDouble(), 'f', 1);
-            ctxRezept["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIBU).toInt());
-            ctxRezept["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 1);
-            ctxRezept["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toInt());
-            ctxRezept["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::Colerg_Farbe).toDouble())).name();
-            ctxRezept["Kochdauer"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt());
-            ival = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
-            if (ival > 0)
-                ctxRezept["Nachisomerisierung"] = QString::number(ival);
-            ival = bh->modelSud()->data(sudRow, ModelSud::ColhighGravityFaktor).toInt();
-            if (ival > 0)
-                ctxRezept["HighGravityFaktor"] = QString::number(ival);
-            if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
-            {
-                ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
-                ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
-            }
-            ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
-            mengeMaischen = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
-            ctxRezept["MengeMaischen"] = locale.toString(mengeMaischen, 'f', 1);
-            ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
-            ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
-            ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
-            ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
-            ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
-            fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
-            ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
-            mengeKochbeginn100 = BierCalc::volumenWasser(20.0, 100.0, fval);
-            ctxRezept["MengeKochbeginn100"] = locale.toString(mengeKochbeginn100, 'f', 1);
-            fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochende).toDouble();
-            ctxRezept["MengeKochende"] = locale.toString(fval, 'f', 1);
-            mengeKochende100 = BierCalc::volumenWasser(20.0, 100.0, fval);
-            ctxRezept["MengeKochende100"] = locale.toString(mengeKochende100, 'f', 1);
-            ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble(), 'f', 1);
-            ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble(), 'f', 1);
-            ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
-            ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
-            ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
-            ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
-            ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
-            if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
-            {
-                ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
-                ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
-                double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-                double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
-                ctxRezept["MengeMaischenUnten"] = locale.toString(mengeMaischen / A, 'f', 1);
-                ctxRezept["MengeMaischenOben"] = locale.toString(h - mengeMaischen / A, 'f', 1);
-                A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-                h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
-                ctxRezept["MengeKochbeginn100Unten"] = locale.toString(mengeKochbeginn100 / A, 'f', 1);
-                ctxRezept["MengeKochbeginn100Oben"] = locale.toString(h - mengeKochbeginn100 / A, 'f', 1);
-                ctxRezept["MengeKochende100Unten"] = locale.toString(mengeKochende100 / A, 'f', 1);
-                ctxRezept["MengeKochende100Oben"] = locale.toString(h - mengeKochende100 / A, 'f', 1);
-            }
-            ctx["Rezept"] = ctxRezept;
+            ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
+            ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
         }
-
-        if (parts & TagSud)
+        ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
+        mengeMaischen = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
+        ctxRezept["MengeMaischen"] = locale.toString(mengeMaischen, 'f', 1);
+        ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
+        ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
+        ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
+        ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
+        ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
+        ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
+        mengeKochbeginn100 = BierCalc::volumenWasser(20.0, 100.0, fval);
+        ctxRezept["MengeKochbeginn100"] = locale.toString(mengeKochbeginn100, 'f', 1);
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochende).toDouble();
+        ctxRezept["MengeKochende"] = locale.toString(fval, 'f', 1);
+        mengeKochende100 = BierCalc::volumenWasser(20.0, 100.0, fval);
+        ctxRezept["MengeKochende100"] = locale.toString(mengeKochende100, 'f', 1);
+        ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble(), 'f', 1);
+        ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble(), 'f', 1);
+        ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
+        ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
+        ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
+        ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
+        ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
+        if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
         {
-            QVariantMap ctxSud;
-            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
-            ctxSud["Status"] = QString::number(static_cast<int>(status));
-            switch (status)
-            {
-            case Brauhelfer::SudStatus::Rezept:
-                ctxSud["StatusRezept"] = 1;
-                break;
-            case Brauhelfer::SudStatus::Gebraut:
-                ctxSud["StatusGebraut"] = 1;
-                break;
-            case Brauhelfer::SudStatus::Abgefuellt:
-                ctxSud["StatusAbgefuellt"] = 1;
-                break;
-            case Brauhelfer::SudStatus::Verbraucht:
-                ctxSud["StatusVerbraucht"] = 1;
-                break;
-            }
-            ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
-            ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
-            ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());
-            ctxSud["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2Ist).toDouble(), 'f', 1);
-            ctxSud["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColFarbeIst).toInt());
-            ctxSud["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::ColFarbeIst).toDouble())).name();
-            ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColBraudatum).toDate(), QLocale::ShortFormat);
-            ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAbfuelldatum).toDate(), QLocale::ShortFormat);
-            ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Alkohol).toDouble(), 'f', 1);
-            ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColsEVG).toInt());
-            ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);
-            ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
-            ctxSud["BemerkungBrauen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString().replace("\n", "<br>");
-            ctxSud["BemerkungAbfuellen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString().replace("\n", "<br>");
-            ctxSud["BemerkungGaerung"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString().replace("\n", "<br>");
-            if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
-            {
-                ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
-            }
-            if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
-            {
-                int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
-                ctxSud["Bewertung"] = QString::number(bewertung);
-                if (bewertung > 0)
-                {
-                    if (bewertung > 5)
-                        bewertung = 5;
-                    QString s = "";
-                    for (int i = 0; i < bewertung; i++)
-                        s += "<img class='star' width='24'>";
-                    for (int i = bewertung; i < 5; i++)
-                        s += "<img class='star_grey' width='24'>";
-                    ctxSud["BewertungSterne"] = s;
-                }
-            }
-
-            ctx["Sud"] = ctxSud;
+            ctxRezept["Brauanlage"] = bh->modelSud()->data(sudRow, ModelSud::ColAnlage).toString();
+            ctxRezept["BrauanlageBemerkung"] = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColBemerkung).toString();
+            double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+            double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+            ctxRezept["MengeMaischenUnten"] = locale.toString(mengeMaischen / A, 'f', 1);
+            ctxRezept["MengeMaischenOben"] = locale.toString(h - mengeMaischen / A, 'f', 1);
+            A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+            h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+            ctxRezept["MengeKochbeginn100Unten"] = locale.toString(mengeKochbeginn100 / A, 'f', 1);
+            ctxRezept["MengeKochbeginn100Oben"] = locale.toString(h - mengeKochbeginn100 / A, 'f', 1);
+            ctxRezept["MengeKochende100Unten"] = locale.toString(mengeKochende100 / A, 'f', 1);
+            ctxRezept["MengeKochende100Oben"] = locale.toString(h - mengeKochende100 / A, 'f', 1);
         }
+        ctx["Rezept"] = ctxRezept;
+
+        // Sud
+        QVariantMap ctxSud;
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->data(sudRow, ModelSud::ColStatus).toInt());
+        ctxSud["Status"] = QString::number(static_cast<int>(status));
+        switch (status)
+        {
+        case Brauhelfer::SudStatus::Rezept:
+            ctxSud["StatusRezept"] = 1;
+            break;
+        case Brauhelfer::SudStatus::Gebraut:
+            ctxSud["StatusGebraut"] = 1;
+            break;
+        case Brauhelfer::SudStatus::Abgefuellt:
+            ctxSud["StatusAbgefuellt"] = 1;
+            break;
+        case Brauhelfer::SudStatus::Verbraucht:
+            ctxSud["StatusVerbraucht"] = 1;
+            break;
+        }
+        ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
+        ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
+        ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());
+        ctxSud["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2Ist).toDouble(), 'f', 1);
+        ctxSud["Farbe"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColFarbeIst).toInt());
+        ctxSud["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::ColFarbeIst).toDouble())).name();
+        ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColBraudatum).toDate(), QLocale::ShortFormat);
+        ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAbfuelldatum).toDate(), QLocale::ShortFormat);
+        ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Alkohol).toDouble(), 'f', 1);
+        ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColsEVG).toInt());
+        ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);
+        ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
+        ctxSud["BemerkungBrauen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString().replace("\n", "<br>");
+        ctxSud["BemerkungAbfuellen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString().replace("\n", "<br>");
+        ctxSud["BemerkungGaerung"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString().replace("\n", "<br>");
+        if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+        {
+            ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);
+        }
+        if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
+        {
+            int bewertung = bh->modelSud()->data(sudRow, ModelSud::ColBewertungMittel).toInt();
+            ctxSud["Bewertung"] = QString::number(bewertung);
+            if (bewertung > 0)
+            {
+                if (bewertung > 5)
+                    bewertung = 5;
+                QString s = "";
+                for (int i = 0; i < bewertung; i++)
+                    s += "<img class='star' width='24'>";
+                for (int i = bewertung; i < 5; i++)
+                    s += "<img class='star_grey' width='24'>";
+                ctxSud["BewertungSterne"] = s;
+            }
+        }
+        ctx["Sud"] = ctxSud;
 
         if (sudRow == bh->sud()->row())
         {
-            if (parts & TagBraudaten)
-            {
                 int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt();
 
-                QVariantList liste;
+                liste.clear();
                 ProxyModel *model = bh->sud()->modelRasten();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
@@ -250,41 +265,37 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                 }
                 mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 2);
 
-                if (parts & TagWasseraufbereitung)
+                // Wasseraufbereitung
+                if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
                 {
-                    if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
-                    {
-                        liste.clear();
-                        model = bh->sud()->modelWasseraufbereitung();
-                        for (int row = 0; row < model->rowCount(); ++row)
-                        {
-                            QVariantMap map;
-                            map["Name"] = model->data(row, ModelWasseraufbereitung::ColName);
-                            map["Einheit"] = TabRohstoffe::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
-                            double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
-                            map["MengeHauptguss"] = locale.toString(m * f1, 'f', 2);
-                            map["MengeNachguss"] = locale.toString(m * f2, 'f', 2);
-                            if (bh->sud()->gethighGravityFaktor() != 0)
-                                map["MengeVerduennung"] = locale.toString(m * f3, 'f', 2);
-                            map["Menge"] = locale.toString(m * (f1 + f2 + f3), 'f', 2);
-                            liste << map;
-                        }
-                        if (!liste.empty())
-                            mapWasser["Wasseraufbereitung"] = QVariantMap({{"Liste", liste}});
-                    }
-                }
-
-                if (parts & TagWasserprofil)
-                {
-                    if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+                    liste.clear();
+                    model = bh->sud()->modelWasseraufbereitung();
+                    for (int row = 0; row < model->rowCount(); ++row)
                     {
                         QVariantMap map;
-                        map["Name"] = bh->sud()->getWasserData(ModelWasser::ColName).toString();
-                        QString str = bh->sud()->getWasserData(ModelWasser::ColBemerkung).toString();
-                        if (!str.isEmpty())
-                            map["Bemerkung"] = str;
-                        mapWasser["Wasserprofil"] = map;
+                        map["Name"] = model->data(row, ModelWasseraufbereitung::ColName);
+                        map["Einheit"] = TabRohstoffe::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                        double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
+                        map["MengeHauptguss"] = locale.toString(m * f1, 'f', 2);
+                        map["MengeNachguss"] = locale.toString(m * f2, 'f', 2);
+                        if (bh->sud()->gethighGravityFaktor() != 0)
+                            map["MengeVerduennung"] = locale.toString(m * f3, 'f', 2);
+                        map["Menge"] = locale.toString(m * (f1 + f2 + f3), 'f', 2);
+                        liste << map;
                     }
+                    if (!liste.empty())
+                        mapWasser["Wasseraufbereitung"] = QVariantMap({{"Liste", liste}});
+                }
+
+                // Wasserprofil
+                if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+                {
+                    QVariantMap map;
+                    map["Name"] = bh->sud()->getWasserData(ModelWasser::ColName).toString();
+                    QString str = bh->sud()->getWasserData(ModelWasser::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map["Bemerkung"] = str;
+                    mapWasser["Wasserprofil"] = map;
                 }
 
                 ctx["Wasser"] = mapWasser;
@@ -477,70 +488,63 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, TagParts parts, int sudRow
                     ctxZutaten["Kalthopfen"] = QVariantMap({{"Liste", listeHopfen}});
 
                 ctx["Zutaten"] = ctxZutaten;
-            }
         }
 
-        if (parts & TagGeraete)
+        // Geraete
+        liste.clear();
+        QVariant anlageName = bh->modelSud()->data(sudRow, ModelSud::ColAnlage);
+        QVariant anlageId = bh->modelAusruestung()->getValueFromSameRow(ModelAusruestung::ColName, anlageName, ModelAusruestung::ColID);
+        ProxyModel modelGeraete;
+        modelGeraete.setSourceModel(bh->modelGeraete());
+        modelGeraete.setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
+        modelGeraete.setFilterRegularExpression(QString("^%1$").arg(anlageId.toInt()));
+        for (int row = 0; row < modelGeraete.rowCount(); ++row)
         {
-            QVariantList liste;
-            QVariant anlageName = bh->modelSud()->data(sudRow, ModelSud::ColAnlage);
-            QVariant anlageId = bh->modelAusruestung()->getValueFromSameRow(ModelAusruestung::ColName, anlageName, ModelAusruestung::ColID);
-            ProxyModel modelGeraete;
-            modelGeraete.setSourceModel(bh->modelGeraete());
-            modelGeraete.setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
-            modelGeraete.setFilterRegularExpression(QString("^%1$").arg(anlageId.toInt()));
-            for (int row = 0; row < modelGeraete.rowCount(); ++row)
-            {
-                liste << QVariantMap({{"Name", modelGeraete.data(row, ModelGeraete::ColBezeichnung)}});
-            }
-            if (!liste.empty())
-                ctx["Geraete"] = QVariantMap({{"Liste", liste}});
+            liste << QVariantMap({{"Name", modelGeraete.data(row, ModelGeraete::ColBezeichnung)}});
         }
+        if (!liste.empty())
+            ctx["Geraete"] = QVariantMap({{"Liste", liste}});
 
-        if (parts & TagAnhang)
+        // Anhang
+        QDir databasePath = QDir(gSettings->databaseDir());
+        liste.clear();
+        ProxyModel modelAnhang;
+        modelAnhang.setSourceModel(bh->modelAnhang());
+        modelAnhang.setFilterKeyColumn(ModelAnhang::ColSudID);
+        modelAnhang.setFilterRegularExpression(QString("^%1$").arg(sudId));
+        for (int row = 0; row < modelAnhang.rowCount(); ++row)
         {
-            QDir databasePath = QDir(gSettings->databaseDir());
-            QVariantList liste;
-            ProxyModel modelAnhang;
-            modelAnhang.setSourceModel(bh->modelAnhang());
-            modelAnhang.setFilterKeyColumn(ModelAnhang::ColSudID);
-            modelAnhang.setFilterRegularExpression(QString("^%1$").arg(sudId));
-            for (int row = 0; row < modelAnhang.rowCount(); ++row)
-            {
-                QVariantMap map;
-                QString pfad = modelAnhang.data(row, ModelAnhang::ColPfad).toString();
-                if (QDir::isRelativePath(pfad))
-                    pfad = QDir::cleanPath(databasePath.filePath(pfad));
-                map.insert("Pfad", pfad);
-                map.insert("Bild", WdgAnhang::isImage(pfad) && QFile::exists(pfad));
-                liste << map;
-            }
-            if (!liste.empty())
-                ctx["Anhang"] = QVariantMap({{"Liste", liste}});
+            QVariantMap map;
+            QString pfad = modelAnhang.data(row, ModelAnhang::ColPfad).toString();
+            if (QDir::isRelativePath(pfad))
+                pfad = QDir::cleanPath(databasePath.filePath(pfad));
+            map.insert("Pfad", pfad);
+            map.insert("Bild", WdgAnhang::isImage(pfad) && QFile::exists(pfad));
+            liste << map;
         }
+        if (!liste.empty())
+            ctx["Anhang"] = QVariantMap({{"Liste", liste}});
     }
 
-    if (parts & TagTags)
+    // Tags
+    QVariantMap ctxTags;
+    QVariantMap ctxTagsGlobal;
+    ProxyModel modelTags;
+    modelTags.setSourceModel(bh->modelTags());
+    modelTags.setFilterKeyColumn(ModelTags::ColSudID);
+    modelTags.setFilterRegularExpression(QString("^(%1|-.*)$").arg(sudId));
+    for (int row = 0; row < modelTags.rowCount(); ++row)
     {
-        QVariantMap ctxTags;
-        QVariantMap ctxTagsGlobal;
-        ProxyModel modelTags;
-        modelTags.setSourceModel(bh->modelTags());
-        modelTags.setFilterKeyColumn(ModelTags::ColSudID);
-        modelTags.setFilterRegularExpression(QString("^(%1|-.*)$").arg(sudId));
-        for (int row = 0; row < modelTags.rowCount(); ++row)
+        QString t = modelTags.data(row, ModelTags::ColKey).toString();
+        QString v = modelTags.data(row, ModelTags::ColValue).toString();
+        t = t.simplified().replace(" ", "_");
+        if (!t.isEmpty())
         {
-            QString t = modelTags.data(row, ModelTags::ColKey).toString();
-            QString v = modelTags.data(row, ModelTags::ColValue).toString();
-            t = t.simplified().replace(" ", "_");
-            if (!t.isEmpty())
-            {
-                if (modelTags.data(row, ModelTags::ColGlobal).toBool())
-                    ctxTagsGlobal[t] = v;
-                else
-                    ctxTags[t] = v;
-            }
+            if (modelTags.data(row, ModelTags::ColGlobal).toBool())
+                ctxTagsGlobal[t] = v;
+            else
+                ctxTags[t] = v;
         }
-        ctx["Tags"] = QVariantMap({{"ListeGlobal", ctxTagsGlobal}, {"Liste", ctxTags}});
     }
+    ctx["Tags"] = QVariantMap({{"ListeGlobal", ctxTagsGlobal}, {"Liste", ctxTags}});
 }

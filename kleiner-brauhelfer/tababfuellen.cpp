@@ -273,7 +273,7 @@ void TabAbfuellen::updateValues()
 
 void TabAbfuellen::updateWebView()
 {
-    TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
+    TemplateTags::render(ui->webview, bh->sud()->row());
 }
 
 void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)

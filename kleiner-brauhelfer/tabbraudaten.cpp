@@ -292,7 +292,7 @@ void TabBraudaten::updateValues()
 
 void TabBraudaten::updateWebView()
 {
-    TemplateTags::render(ui->webview, TemplateTags::TagAll, bh->sud()->row());
+    TemplateTags::render(ui->webview, bh->sud()->row());
 }
 
 void TabBraudaten::on_tbBraudatum_dateChanged(const QDate &date)

@@ -223,7 +223,7 @@ void TabEtikette::updateTemplateTags()
     if (!isTabActive())
         return;
     mTemplateTags.clear();
-    TemplateTags::erstelleTagListe(mTemplateTags, TemplateTags::TagAll, bh->sud()->row());
+    TemplateTags::erstelleTagListe(mTemplateTags, bh->sud()->row());
     mTemplateTags["N"] = "N";
     mTemplateTags["n"] = "n";
     updateTags();

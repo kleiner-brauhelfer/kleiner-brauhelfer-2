@@ -80,8 +80,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>444</height>
        </rect>
       </property>
       <attribute name="label">
@@ -109,7 +109,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Malz&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Malz&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -132,8 +132,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>444</height>
        </rect>
       </property>
       <attribute name="label">
@@ -161,7 +161,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hopfen&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Wenn der Gärfaktor im Tab Rezept übernommen werden soll, muss er in der Form &amp;lt;zahl%&amp;gt; eingetragen werden. Beispiel 78%. Sonderzeichen sind nicht zulässig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hopfen&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Wenn der Gärfaktor im Tab Rezept übernommen werden soll, muss er in der Form &amp;lt;zahl%&amp;gt; eingetragen werden. Beispiel 78%. Sonderzeichen sind nicht zulässig.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -184,8 +184,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>444</height>
        </rect>
       </property>
       <attribute name="label">
@@ -213,7 +213,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hefe&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hefe&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -236,8 +236,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>444</height>
        </rect>
       </property>
       <attribute name="label">
@@ -265,7 +265,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -288,8 +288,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>496</height>
+        <width>946</width>
+        <height>444</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -342,8 +342,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>526</width>
-             <height>620</height>
+             <width>564</width>
+             <height>583</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">

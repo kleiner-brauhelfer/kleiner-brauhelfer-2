@@ -85,6 +85,19 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
 
     ui->setupUi(this);
 
+    QMenu *menu = new QMenu(this);
+    menu->addAction(ui->actionNeu);
+    menu->addSeparator();
+    menu->addAction(ui->actionNeuVorlage);
+    menu->addAction(ui->actionNeuObrama);
+    menu->addSeparator();
+    menu->addAction(ui->actionNeuKopie);
+    ui->buttonAdd->setMenu(menu);
+    connect(ui->actionNeu, SIGNAL(triggered()), this, SLOT(buttonAdd_clicked()));
+    connect(ui->actionNeuVorlage, SIGNAL(triggered()), this, SLOT(buttonNeuVorlage_clicked()));
+    connect(ui->actionNeuObrama, SIGNAL(triggered()), this, SLOT(buttonNeuVorlageObrama_clicked()));
+    connect(ui->actionNeuKopie, SIGNAL(triggered()), this, SLOT(buttonCopy_clicked()));
+
     pal = ui->tableMalz->palette();
     pal.setColor(QPalette::Button, gSettings->colorMalz);
     ui->tableMalz->setPalette(pal);
@@ -406,7 +419,7 @@ void TabRohstoffe::keyPressEvent(QKeyEvent* event)
             on_buttonDelete_clicked();
             break;
         case Qt::Key::Key_Insert:
-            on_buttonAdd_clicked();
+            buttonAdd_clicked();
             break;
         }
     }
@@ -452,7 +465,7 @@ void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values
     }
 }
 
-void TabRohstoffe::on_buttonAdd_clicked()
+void TabRohstoffe::buttonAdd_clicked()
 {
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
@@ -474,7 +487,7 @@ void TabRohstoffe::on_buttonAdd_clicked()
     }
 }
 
-void TabRohstoffe::on_buttonNeuVorlage_clicked()
+void TabRohstoffe::buttonNeuVorlage_clicked()
 {
     QTableView *table;
     DlgRohstoffVorlage::Art art;
@@ -508,7 +521,7 @@ void TabRohstoffe::on_buttonNeuVorlage_clicked()
         addEntry(table, dlg.values());
 }
 
-void TabRohstoffe::on_buttonNeuVorlageObrama_clicked()
+void TabRohstoffe::buttonNeuVorlageObrama_clicked()
 {
     QTableView *table;
     DlgRohstoffVorlage::Art art;
@@ -538,7 +551,7 @@ void TabRohstoffe::on_buttonNeuVorlageObrama_clicked()
         addEntry(table, dlg.values());
 }
 
-void TabRohstoffe::on_buttonCopy_clicked()
+void TabRohstoffe::buttonCopy_clicked()
 {
     QTableView *table;
     switch (ui->toolBoxRohstoffe->currentIndex())
@@ -691,7 +704,7 @@ void TabRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
 
 void TabRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
 {
-    ui->buttonNeuVorlageObrama->setEnabled(index != 4);
+    ui->actionNeuObrama->setEnabled(index != 4);
     updateLabelNumItems();
 }
 

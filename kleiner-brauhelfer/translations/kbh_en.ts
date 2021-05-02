@@ -389,104 +389,109 @@
         <translation>This allows logging of fermentation progressions over time (fermentation, priming/conditioning and fast fermentation sample).</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="88"/>
+        <location filename="../dialogs/dlgmodule.ui" line="85"/>
+        <source>Schnellgärprobe</source>
+        <translation type="unfinished">Fast fermentation sample</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgmodule.ui" line="98"/>
         <source>Spickzettel / Zusammenfassung</source>
         <translation>Brew Sheet</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="112"/>
+        <location filename="../dialogs/dlgmodule.ui" line="122"/>
         <source>Bei ungebrauten Suden fasst der Spickzettel alle Informationen zum einem Brauprotokoll zusammen. Dies ist ausgedruckt am Brautag eine wertvolle Hilfe.
 Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusammen.</source>
         <translation>For unbrewed batches, the cheat sheet summarizes all the information in a brewing log. This is a valuable aid when printed out on the brewing day.
 For brewed brews, the summary summarizes all relevant information.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="126"/>
-        <source>Etikette</source>
+        <location filename="../dialogs/dlgmodule.ui" line="136"/>
+        <source>Etiketten</source>
         <translation>Labels</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="150"/>
+        <location filename="../dialogs/dlgmodule.ui" line="160"/>
         <source>Dieses Modul ermöglicht das Erstellen von Etiketten (Label) mit automatischer Einbindung der wichtigsten Kennzahlen (Stammwürze, IBU, Farbe, ...).</source>
         <translation>This module enables the creation of labels with automatic integration of the most important key figures (original wort, IBU, color, ...).</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="163"/>
+        <location filename="../dialogs/dlgmodule.ui" line="173"/>
         <source>Bewertung</source>
         <translation>Rating</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="187"/>
+        <location filename="../dialogs/dlgmodule.ui" line="197"/>
         <source>Dieses Modul ermöglicht das Bewerten von Suden.</source>
         <translation>This module enables rating of brews.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="200"/>
+        <location filename="../dialogs/dlgmodule.ui" line="210"/>
         <source>Brauübersicht</source>
         <translation>Batch History</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="224"/>
+        <location filename="../dialogs/dlgmodule.ui" line="234"/>
         <source>In der Brauübersicht lassen sich die wichtigsten Kennzahlen in einem zeitlichen Verlauf darstellen.</source>
         <translation>In the batch history, the most important key figures can be displayed over time.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="237"/>
+        <location filename="../dialogs/dlgmodule.ui" line="247"/>
         <source>Ausrüstung</source>
         <translation>Equipment</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="261"/>
+        <location filename="../dialogs/dlgmodule.ui" line="271"/>
         <source>Dieses Modul verwaltet anlagespezifische Kennzahlen. Die wichtigsten sind dabei Sudhausausbeute und Verdampfungsrate. Für eine genauere Berechnung sollte dieses Modul aktiviert werden.</source>
         <translation>This module manages equipment-specific key figures. The most important of these are mash efficiency and evaporation rate. For a more precise calculation, this module should be activated.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="274"/>
+        <location filename="../dialogs/dlgmodule.ui" line="284"/>
         <source>Lagerverwaltung</source>
         <translation>Stock administration</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="298"/>
+        <location filename="../dialogs/dlgmodule.ui" line="308"/>
         <source>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe.</source>
         <translation>This module activates the stock management of raw materials.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="311"/>
+        <location filename="../dialogs/dlgmodule.ui" line="321"/>
         <source>Speiseberechnung</source>
         <translation>Carbonation with wort</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="335"/>
+        <location filename="../dialogs/dlgmodule.ui" line="345"/>
         <source>Dieses Modul aktiviert die Speiseberechnung für die Karbonisierung (Nachgärung).</source>
         <translation>This module activates the unfermented worth calculation for carbonation.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="348"/>
+        <location filename="../dialogs/dlgmodule.ui" line="358"/>
         <source>Wasseraufbereitung</source>
         <translation>Water adjustment</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="372"/>
+        <location filename="../dialogs/dlgmodule.ui" line="382"/>
         <source>Dieses Modul hilft bei der Wasseraufbereitung und kalkuliert die Wasserprofile.</source>
         <translation>This module helps with water treatment and calculates the water profiles.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="385"/>
+        <location filename="../dialogs/dlgmodule.ui" line="395"/>
         <source>Preiskalkulation</source>
         <translation>Costs</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="409"/>
+        <location filename="../dialogs/dlgmodule.ui" line="419"/>
         <source>Dieses Modul berechnet den Preis pro Liter Bier. Voraussetzung ist die Eingabe alle Rohstoffpreise.</source>
         <translation>This module calculates the price per liter of beer. Prerequisite is the input of all raw material prices.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="422"/>
+        <location filename="../dialogs/dlgmodule.ui" line="432"/>
         <source>Datenbankansicht</source>
         <translation>Database view</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmodule.ui" line="446"/>
+        <location filename="../dialogs/dlgmodule.ui" line="456"/>
         <source>Dieses Modul zeigt die grundlegende Datenbank an. Mit ihm lässt sich die Datenbank direkt manipulieren.</source>
         <translation>This module displays the underlying database. It can be used to manipulate the database directly.</translation>
     </message>
@@ -766,6 +771,105 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     </message>
 </context>
 <context>
+    <name>DlgRichTextEditor</name>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="14"/>
+        <source>Bemerkung</source>
+        <translation type="unfinished">Remarks</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="23"/>
+        <source>Standard</source>
+        <translation type="unfinished">Standard</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="28"/>
+        <source>Überschrift 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="33"/>
+        <source>Überschrift 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="38"/>
+        <source>Überschrift 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="43"/>
+        <source>Überschrift 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="61"/>
+        <source>Textfarbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="87"/>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="108"/>
+        <source>K</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="129"/>
+        <source>U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="207"/>
+        <source>Link</source>
+        <translation type="unfinished">Link</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="230"/>
+        <source>*,*,...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="246"/>
+        <source>1,2...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.ui" line="295"/>
+        <source>Bild</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.cpp" line="269"/>
+        <source>Link erstellen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.cpp" line="269"/>
+        <source>URL:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.cpp" line="362"/>
+        <location filename="../dialogs/dlgrichtexteditor.cpp" line="372"/>
+        <source>Bild einfügen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.cpp" line="362"/>
+        <source>Bild aus Anhang</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrichtexteditor.cpp" line="372"/>
+        <source>Bilder müssen zuerst als Anhang eingefügt werden.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DlgRohstoffAuswahl</name>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.ui" line="20"/>
@@ -808,22 +912,22 @@ For brewed brews, the summary summarizes all relevant information.</translation>
         <translation>The ingredients must first be entered in the &quot;Ingredients&quot; tab.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="131"/>
         <source>kg</source>
         <translation>kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="131"/>
         <source>g</source>
         <translation>g</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="131"/>
         <source>mg</source>
         <translation>mg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="131"/>
         <source>Stk.</source>
         <translation>pcs.</translation>
     </message>
@@ -890,69 +994,69 @@ For brewed brews, the summary summarizes all relevant information.</translation>
         <translation>Sources: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="133"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="153"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="173"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="197"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="152"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="172"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="196"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="137"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="136"/>
         <source>Aliasname</source>
         <translation>Alias</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="141"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="140"/>
         <source>Farbe [EBC]</source>
         <translation>Color [EBC]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="144"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="143"/>
         <source>Max. Anteil [%]</source>
         <translation>Max. share [%]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="147"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="163"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="183"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="146"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="162"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="182"/>
         <source>Eigenschaften</source>
         <translation>Characteristics</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="157"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="201"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="156"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="200"/>
         <source>Typ</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="160"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="159"/>
         <source>Alpha [%]</source>
         <translation>Alpha [%]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="167"/>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="191"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="166"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="190"/>
         <source>Alternativen</source>
         <translation>Alternatives</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="177"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="176"/>
         <source>Kategorie</source>
         <translation>Category</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="180"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="179"/>
         <source>Trocken/Flüssig</source>
         <translation>Dry/Liquid</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="187"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="186"/>
         <source>Bierstil</source>
         <translation>Beer style</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="204"/>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="203"/>
         <source>Verwendung</source>
         <translation>Usage</translation>
     </message>
@@ -1562,7 +1666,7 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../mainwindow.ui" line="129"/>
         <location filename="../mainwindow.cpp" line="320"/>
-        <source>Etikette</source>
+        <source>Etikett</source>
         <translation>Labels</translation>
     </message>
     <message>
@@ -1988,8 +2092,12 @@ For brewed brews, the summary summarizes all relevant information.</translation>
 <context>
     <name>ProxyModelSudColored</name>
     <message>
-        <location filename="../model/proxymodelsudcolored.cpp" line="41"/>
         <source>%1. Woche, reif in %2 Tage</source>
+        <translation type="vanished">%1. week, ready in %2 days</translation>
+    </message>
+    <message>
+        <location filename="../model/proxymodelsudcolored.cpp" line="41"/>
+        <source>%1. Woche, reif in %2 Tagen</source>
         <translation>%1. week, ready in %2 days</translation>
     </message>
     <message>
@@ -2161,24 +2269,24 @@ Version installiert: %2</translation>
         <translation>Unknown error.</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="366"/>
-        <location filename="../templatetags.cpp" line="436"/>
+        <location filename="../templatetags.cpp" line="377"/>
+        <location filename="../templatetags.cpp" line="447"/>
         <source>zugegeben</source>
         <translation>added</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="368"/>
-        <location filename="../templatetags.cpp" line="430"/>
+        <location filename="../templatetags.cpp" line="379"/>
+        <location filename="../templatetags.cpp" line="441"/>
         <source>nicht zugegeben</source>
         <translation>not added</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="434"/>
+        <location filename="../templatetags.cpp" line="445"/>
         <source>nicht entnommen</source>
         <translation>not removed</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="439"/>
+        <location filename="../templatetags.cpp" line="450"/>
         <source>entnommen</source>
         <translation>removed</translation>
     </message>
@@ -2690,42 +2798,42 @@ Version installiert: %2</translation>
         <translation type="vanished">Split batch</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="376"/>
+        <location filename="../tababfuellen.cpp" line="367"/>
         <source>Zutaten Gärung</source>
         <translation>Ingredients during fermentation</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="377"/>
+        <location filename="../tababfuellen.cpp" line="368"/>
         <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
         <translation>Not all ingredients for fermentation have been added or removed yet.</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="385"/>
+        <location filename="../tababfuellen.cpp" line="376"/>
         <source>Grünschlauchzeitpunkt nicht erreicht</source>
         <translation>Time for green bottling not reached yet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="386"/>
+        <location filename="../tababfuellen.cpp" line="377"/>
         <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
         <translation>Time for green bottling not reached yet.</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="391"/>
+        <location filename="../tababfuellen.cpp" line="382"/>
         <source>Schnellgärprobe</source>
         <translation>Fast fermentation sample</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="392"/>
+        <location filename="../tababfuellen.cpp" line="383"/>
         <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
         <translation>FG of the beer is lower than FG of the fast fermentation sample.</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="399"/>
+        <location filename="../tababfuellen.cpp" line="390"/>
         <source>Sud als abgefüllt markieren?</source>
         <translation>Mark the batch as bottled/kegged?</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="400"/>
+        <location filename="../tababfuellen.cpp" line="391"/>
         <source>Soll der Sud als abgefüllt markiert werden?
 
 Abfülldatum: %1</source>
@@ -2770,7 +2878,7 @@ Bottling date: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="259"/>
+        <location filename="../tabausruestung.cpp" line="260"/>
         <source>Neues Gerät</source>
         <translation>New gear</translation>
     </message>
@@ -3061,102 +3169,102 @@ Bottling date: %1</translation>
         <translation>Remarks</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="22"/>
+        <location filename="../tabausruestung.cpp" line="21"/>
         <source>Standard</source>
         <translation>Standard</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="23"/>
+        <location filename="../tabausruestung.cpp" line="22"/>
         <source>Grainfather G30</source>
         <translation>Grainfather G30</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="24"/>
+        <location filename="../tabausruestung.cpp" line="23"/>
         <source>Grainfather G70</source>
         <translation>Grainfather G70</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="25"/>
+        <location filename="../tabausruestung.cpp" line="24"/>
         <source>Braumeister 10L</source>
         <translation>Braumeister 10L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="26"/>
+        <location filename="../tabausruestung.cpp" line="25"/>
         <source>Braumeister 20L</source>
         <translation>Braumeister 20L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="27"/>
+        <location filename="../tabausruestung.cpp" line="26"/>
         <source>Braumeister 50L</source>
         <translation>Braumeister 50L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="28"/>
+        <location filename="../tabausruestung.cpp" line="27"/>
         <source>Braumeister 200L</source>
         <translation>Braumeister 200L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="29"/>
+        <location filename="../tabausruestung.cpp" line="28"/>
         <source>Braumeister 500L</source>
         <translation>Braumeister 500L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="30"/>
+        <location filename="../tabausruestung.cpp" line="29"/>
         <source>Braumeister 1000L</source>
         <translation>Braumeister 1000L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="31"/>
+        <location filename="../tabausruestung.cpp" line="30"/>
         <source>Brauheld Pro 30L</source>
         <translation>Brauheld Pro 30L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="51"/>
+        <location filename="../tabausruestung.cpp" line="50"/>
         <source>Anlage</source>
         <translation>Setup</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="52"/>
+        <location filename="../tabausruestung.cpp" line="51"/>
         <source>Typ</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="53"/>
+        <location filename="../tabausruestung.cpp" line="52"/>
         <source>Vermögen [l]</source>
         <translation>Capacity [l]</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="54"/>
+        <location filename="../tabausruestung.cpp" line="53"/>
         <source>Anzahl Sude</source>
         <translation>Number of batches</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="67"/>
+        <location filename="../tabausruestung.cpp" line="66"/>
         <source>Bezeichnung</source>
         <translation>Designation</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="222"/>
+        <location filename="../tabausruestung.cpp" line="223"/>
         <source>Neue Brauanlage</source>
         <translation>Add setup</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="242"/>
+        <location filename="../tabausruestung.cpp" line="243"/>
         <source>Brauanlage löschen?</source>
         <translation>Delete setup?</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="243"/>
+        <location filename="../tabausruestung.cpp" line="244"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
         <translation>Delete setup &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="280"/>
+        <location filename="../tabausruestung.cpp" line="281"/>
         <source>Gerät löschen?</source>
         <translation>Delete gear?</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="281"/>
+        <location filename="../tabausruestung.cpp" line="282"/>
         <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
         <translation>Delete gear &quot;%1&quot;?</translation>
     </message>
@@ -3198,292 +3306,292 @@ Bottling date: %1</translation>
         <translation>Week</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="212"/>
+        <location filename="../tabbewertung.ui" line="206"/>
         <source>Farbe, Klarheit</source>
         <translation>Color, clarity</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="223"/>
+        <location filename="../tabbewertung.ui" line="217"/>
         <source>Farbe</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="232"/>
+        <location filename="../tabbewertung.ui" line="226"/>
         <source>hellgelb, lichthell</source>
         <translation>bright</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="239"/>
+        <location filename="../tabbewertung.ui" line="233"/>
         <source>gelb</source>
         <translation>pale</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="246"/>
+        <location filename="../tabbewertung.ui" line="240"/>
         <source>golden</source>
         <translation>golden</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="253"/>
+        <location filename="../tabbewertung.ui" line="247"/>
         <source>bernstein</source>
         <translation>amber</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="260"/>
+        <location filename="../tabbewertung.ui" line="254"/>
         <source>kupferrot, bernsteinfarben</source>
         <translation>copper red, amber</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="267"/>
+        <location filename="../tabbewertung.ui" line="261"/>
         <source>braun bis tiefbraun</source>
         <translation>brown to dark brown</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="274"/>
+        <location filename="../tabbewertung.ui" line="268"/>
         <source>schwarz, tiefdunkel</source>
         <translation>black, deep dark</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="281"/>
-        <location filename="../tabbewertung.ui" line="338"/>
-        <location filename="../tabbewertung.ui" line="413"/>
-        <location filename="../tabbewertung.ui" line="443"/>
-        <location filename="../tabbewertung.ui" line="484"/>
-        <location filename="../tabbewertung.ui" line="532"/>
-        <location filename="../tabbewertung.ui" line="860"/>
-        <location filename="../tabbewertung.ui" line="937"/>
-        <location filename="../tabbewertung.ui" line="1039"/>
-        <location filename="../tabbewertung.ui" line="1131"/>
+        <location filename="../tabbewertung.ui" line="275"/>
+        <location filename="../tabbewertung.ui" line="332"/>
+        <location filename="../tabbewertung.ui" line="416"/>
+        <location filename="../tabbewertung.ui" line="446"/>
+        <location filename="../tabbewertung.ui" line="487"/>
+        <location filename="../tabbewertung.ui" line="535"/>
+        <location filename="../tabbewertung.ui" line="890"/>
+        <location filename="../tabbewertung.ui" line="976"/>
+        <location filename="../tabbewertung.ui" line="1087"/>
+        <location filename="../tabbewertung.ui" line="1188"/>
         <source>keine Angabe</source>
         <translation>not specified</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="304"/>
+        <location filename="../tabbewertung.ui" line="298"/>
         <source>Klarheit</source>
         <translation>Clearness</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="310"/>
+        <location filename="../tabbewertung.ui" line="304"/>
         <source>satt, intensiv</source>
         <translation>saturated, intense</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="317"/>
+        <location filename="../tabbewertung.ui" line="311"/>
         <source>glänzend</source>
         <translation>bright</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="324"/>
+        <location filename="../tabbewertung.ui" line="318"/>
         <source>matt, blass</source>
         <translation>pale</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="331"/>
+        <location filename="../tabbewertung.ui" line="325"/>
         <source>gräulich, fahl</source>
         <translation>greyish, wan</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1147"/>
+        <location filename="../tabbewertung.ui" line="1204"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Gesamteindruck.&lt;/p&gt;&lt;p&gt;Unter Gesamteindruck wird ein Resümee der Bewertung verstanden. Hierbei werden oft herausstechende Eigenschaften betont, das Bier auf Stilvorgaben hin abgeglichen.&lt;/p&gt;&lt;p&gt;Typsiche Fragen sind: Haben sich die Geschmacks-, Geruchs- und taktilen Komponenten gut miteinander vertragen, war das Bier abgerundet? Hat eine Komponente überwogen, das Bild ins Ungleichgewicht gebracht? Waren die sortentypische Rezenz, die Bittere, das Aroma und die Vollmundigkeit richtig? War eine bestimmte Komponente, die wir nicht als sortentypisch einordnen konnten, dennoch angenehm, interessant, also durchaus erfahrenswert?&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="377"/>
+        <location filename="../tabbewertung.ui" line="380"/>
         <source>Schaum</source>
         <translation>Foam</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="399"/>
+        <location filename="../tabbewertung.ui" line="402"/>
         <source>feinporig, fest</source>
         <translation>fine, tight</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="406"/>
+        <location filename="../tabbewertung.ui" line="409"/>
         <source>grobporig, schwach</source>
         <translation>coarse, weak</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="429"/>
+        <location filename="../tabbewertung.ui" line="432"/>
         <source>gut haftend am Glas</source>
         <translation>well adhering to glass</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="436"/>
+        <location filename="../tabbewertung.ui" line="439"/>
         <source>schlecht haftend</source>
         <translation>poor adherence</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="463"/>
+        <location filename="../tabbewertung.ui" line="466"/>
         <source>gute Haltbarkeit</source>
         <translation>good stability</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="470"/>
+        <location filename="../tabbewertung.ui" line="473"/>
         <source>mässige Haltbarkeit</source>
         <translation>mediocre stability</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="477"/>
+        <location filename="../tabbewertung.ui" line="480"/>
         <source>keine Haltbarkeit</source>
         <translation>poor stability</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="504"/>
+        <location filename="../tabbewertung.ui" line="507"/>
         <source>geringes Volumen</source>
         <translation>small volume</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="511"/>
+        <location filename="../tabbewertung.ui" line="514"/>
         <source>kräftiges Volumen</source>
         <translation>large volume</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="518"/>
+        <location filename="../tabbewertung.ui" line="521"/>
         <source>sehr voluminös, mächtig</source>
         <translation>voluminous</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="525"/>
+        <location filename="../tabbewertung.ui" line="528"/>
         <source>überschäumend</source>
         <translation>exuberant</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="560"/>
+        <location filename="../tabbewertung.ui" line="572"/>
         <source>Geruch</source>
         <translation>Smell</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="571"/>
+        <location filename="../tabbewertung.ui" line="583"/>
         <source>rein, abgerundet</source>
         <translation>clear, harmonic</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="578"/>
+        <location filename="../tabbewertung.ui" line="590"/>
         <source>wohlriechend</source>
         <translation>well smelling</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="585"/>
+        <location filename="../tabbewertung.ui" line="597"/>
         <source>unangenehm, unausgewogen</source>
         <translation>unround, unharmonic</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="592"/>
+        <location filename="../tabbewertung.ui" line="604"/>
         <source>frisch</source>
         <translation>fresh</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="599"/>
+        <location filename="../tabbewertung.ui" line="611"/>
         <source>Geruchsfehler</source>
         <translation>wrong, faulty</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="606"/>
-        <location filename="../tabbewertung.ui" line="696"/>
+        <location filename="../tabbewertung.ui" line="618"/>
+        <location filename="../tabbewertung.ui" line="717"/>
         <source>säuerlich</source>
         <translation>sour</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="613"/>
-        <location filename="../tabbewertung.ui" line="703"/>
+        <location filename="../tabbewertung.ui" line="625"/>
+        <location filename="../tabbewertung.ui" line="724"/>
         <source>gewürzig</source>
         <translation>spicy</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="620"/>
-        <location filename="../tabbewertung.ui" line="752"/>
+        <location filename="../tabbewertung.ui" line="632"/>
+        <location filename="../tabbewertung.ui" line="773"/>
         <source>fruchtig</source>
         <translation>fruity</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="627"/>
-        <location filename="../tabbewertung.ui" line="717"/>
+        <location filename="../tabbewertung.ui" line="639"/>
+        <location filename="../tabbewertung.ui" line="738"/>
         <source>hopfenaromatisch, hopfig</source>
         <translation>hoppy</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="634"/>
-        <location filename="../tabbewertung.ui" line="731"/>
+        <location filename="../tabbewertung.ui" line="646"/>
+        <location filename="../tabbewertung.ui" line="752"/>
         <source>malzaromatisch, malzig</source>
         <translation>malty</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="641"/>
+        <location filename="../tabbewertung.ui" line="653"/>
         <source>süsslich, nach Würze</source>
         <translation>sweet</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="648"/>
-        <location filename="../tabbewertung.ui" line="759"/>
+        <location filename="../tabbewertung.ui" line="660"/>
+        <location filename="../tabbewertung.ui" line="780"/>
         <source>hefig</source>
         <translation>yeasty</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="671"/>
+        <location filename="../tabbewertung.ui" line="692"/>
         <source>Geschmack</source>
         <translation>Taste</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="682"/>
+        <location filename="../tabbewertung.ui" line="703"/>
         <source>süsslich, klebrig</source>
         <translation>sweety, sticky</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="689"/>
+        <location filename="../tabbewertung.ui" line="710"/>
         <source>ausgewogen, rund</source>
         <translation>round, balanced</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="710"/>
+        <location filename="../tabbewertung.ui" line="731"/>
         <source>gehaltvoll</source>
         <translation>rich</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="724"/>
+        <location filename="../tabbewertung.ui" line="745"/>
         <source>unausgewogen, kantig</source>
         <translation>unbalanced, edgy</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="738"/>
+        <location filename="../tabbewertung.ui" line="759"/>
         <source>rein</source>
         <translation>clear</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="745"/>
+        <location filename="../tabbewertung.ui" line="766"/>
         <source>unreif, unrein</source>
         <translation>unclean, not yet ready</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="766"/>
+        <location filename="../tabbewertung.ui" line="787"/>
         <source>Geschmacksfehler</source>
         <translation>wrong/faulty</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="789"/>
+        <location filename="../tabbewertung.ui" line="819"/>
         <source>Antrunk</source>
         <translation>First/Initial Impression</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="798"/>
+        <location filename="../tabbewertung.ui" line="828"/>
         <source>Rezenz, Frischeeindruck</source>
         <translation>Recency, fresh impression</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="818"/>
+        <location filename="../tabbewertung.ui" line="848"/>
         <source>prickelnd</source>
         <translation>sparkling</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="811"/>
+        <location filename="../tabbewertung.ui" line="841"/>
         <source>rezent, fein perlend</source>
         <translation>mildly sparkling</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="825"/>
+        <location filename="../tabbewertung.ui" line="855"/>
         <source>angenehm rezent</source>
         <translation>balanced, pleasant</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="804"/>
+        <location filename="../tabbewertung.ui" line="834"/>
         <source>gut eingebunden</source>
         <translation>well incorporated</translation>
     </message>
@@ -3493,197 +3601,197 @@ Bottling date: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="201"/>
+        <location filename="../tabbewertung.ui" line="195"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zur Bewertungssituation und zum Anlass.&lt;/p&gt;&lt;p&gt;Äußere Bedingungen können das Geschmackserleben und damit die Bewertung beeinflussen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="369"/>
+        <location filename="../tabbewertung.ui" line="363"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zu Farbe und Klarheit.&lt;/p&gt;&lt;p&gt;Im Blickpunkt kann die sortentypische Farbe des Bieres stehen.&lt;/p&gt;&lt;p&gt;Beispiele: Ein Altbier wird falsch erscheinen, wenn es strohgelb ist. Ein goldbraunes Pilsbier ist sortenuntypisch. Falsch würde ein Hefeweizen beurteilt, das kristallklar und durchsichtig ist. Neben der Farbe wird also auch die Klarheit des Bieres wahrgenommen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="552"/>
+        <location filename="../tabbewertung.ui" line="555"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Schaum.&lt;/p&gt;&lt;p&gt;Die Bewertung von Schaum orientiert sich oft anhand der Biersorte.&lt;/p&gt;&lt;p&gt;Beispielsweise haben Starkbiere in der Regel eine gute Schaumhaltbarkeit. Das eigentliche Trinkvergnügen bei einem Starkbier liegt aber im langsamen Schlürfen des Bieres, nicht im sich Durchtrinken durch den malzsüßen Schaum. Beim Pils wiederum ruft der Schaum besonders angenehme taktile Sensationen an Zunge und Gaumen hervor.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="663"/>
+        <location filename="../tabbewertung.ui" line="675"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geruch.&lt;/p&gt;&lt;p&gt;Beispiele: Der Geruch eines Bieres sollte sortentypisch sein, das heißt bei Weizenbieren ist ein fruchtiger bis esteriger Geruch erlaubt, während dieser bei Pils-bieren rundweg abzulehnen ist.&lt;/p&gt;&lt;p&gt;Zuerst riecht man am Schaum. Riecht er angenehm nach Bier, hefig oder nach Fass? Wenn der Schaum muffig, abgestanden oder nach feuchter Pappe riecht, braucht man das Bier gar nicht zu probieren, es ist nicht in Ordnung.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="781"/>
+        <location filename="../tabbewertung.ui" line="802"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geschmack.&lt;/p&gt;&lt;p&gt;Der Biergeschmack umfasst die bei der Aufnahme des Bieres entstehenden sensorischen Eigenschaften. Es gelten dann ähnliche Beschreibungsmöglichkeiten wie beim Geruch. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="832"/>
+        <location filename="../tabbewertung.ui" line="862"/>
         <source>stark prickelnd, aufdringlich</source>
         <translation>over-carbonated</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="839"/>
+        <location filename="../tabbewertung.ui" line="869"/>
         <source>wenig rezent</source>
         <translation>under-carbonated</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="846"/>
+        <location filename="../tabbewertung.ui" line="876"/>
         <source>schal</source>
         <translation>flat</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="853"/>
+        <location filename="../tabbewertung.ui" line="883"/>
         <source>sehr schal</source>
         <translation>very flat</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="884"/>
+        <location filename="../tabbewertung.ui" line="923"/>
         <source>Haupttrunk</source>
         <translation>Palate/Mouthfeel</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="893"/>
+        <location filename="../tabbewertung.ui" line="932"/>
         <source>Vollmundigkeit</source>
         <translation>Body</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="902"/>
+        <location filename="../tabbewertung.ui" line="941"/>
         <source>wässrig, leer, dünn</source>
         <translation>watery</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="909"/>
+        <location filename="../tabbewertung.ui" line="948"/>
         <source>etwas leer</source>
         <translation>somewhat thin</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="916"/>
+        <location filename="../tabbewertung.ui" line="955"/>
         <source>schlank</source>
         <translation>light</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="923"/>
+        <location filename="../tabbewertung.ui" line="962"/>
         <source>vollmundig</source>
         <translation>full-bodied</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="930"/>
+        <location filename="../tabbewertung.ui" line="969"/>
         <source>mastig, breit</source>
         <translation>full-bodied</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="961"/>
+        <location filename="../tabbewertung.ui" line="1009"/>
         <source>Nachtrunk</source>
         <translation>Finish</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="970"/>
+        <location filename="../tabbewertung.ui" line="1018"/>
         <source>Bittere, Hopfenaroma</source>
         <translation>Bitterness / Hop aroma</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="976"/>
+        <location filename="../tabbewertung.ui" line="1024"/>
         <source>nachhängend</source>
         <translation>long finish</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="983"/>
+        <location filename="../tabbewertung.ui" line="1031"/>
         <source>sehr herb, kräftig betont</source>
         <translation>very bitter, strongly emphasized</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="990"/>
+        <location filename="../tabbewertung.ui" line="1038"/>
         <source>nicht oder kaum wahrnehmbar</source>
         <translation>not or hardly noticeable</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="997"/>
+        <location filename="../tabbewertung.ui" line="1045"/>
         <source>wenig herb, unterentwickelt</source>
         <translation>little bitterness, underdeveloped</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1004"/>
+        <location filename="../tabbewertung.ui" line="1052"/>
         <source>stark nachhängend</source>
         <translation>very long finish, lasting</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1011"/>
+        <location filename="../tabbewertung.ui" line="1059"/>
         <source>angenehm, ausgewogen</source>
         <translation>balanced, round</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1018"/>
+        <location filename="../tabbewertung.ui" line="1066"/>
         <source>unangenehm</source>
         <translation>unpleasent, unround</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1025"/>
+        <location filename="../tabbewertung.ui" line="1073"/>
         <source>nicht anhängend</source>
         <translation>short finish</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1032"/>
+        <location filename="../tabbewertung.ui" line="1080"/>
         <source>sehr fein</source>
         <translation>very fine</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1063"/>
+        <location filename="../tabbewertung.ui" line="1120"/>
         <source>Gesamteindruck</source>
         <translation>Overall impression</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1110"/>
+        <location filename="../tabbewertung.ui" line="1167"/>
         <source>überraschend, ungewöhnlich</source>
         <translation>surprising, unusual</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1103"/>
+        <location filename="../tabbewertung.ui" line="1160"/>
         <source>unauffällig, gewöhnlich</source>
         <translation>nothing exciting</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="876"/>
+        <location filename="../tabbewertung.ui" line="906"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Antrunk.&lt;/p&gt;&lt;p&gt;Die Sinneswahrnehmungen des ersten Schluckes, dem Antrunk, betreffen Vollmundigkeit und Aroma des Bieres. Die Vollmundigkeit entsteht hauptsächlich durch die Eiweißverbindungen, die durch das Malz ins Bier gelangen.&lt;/p&gt;&lt;p&gt;Zum Beispiel ist ein Doppelbock besser, je vollmundiger es ist, demgegenüber sollte ein Pils „schlank“ bleiben. Ein Bier, bei dem man das Gefühl hat man müsste sie vor dem Schlucken erst kauen ist sehr vollmundig – es „füllt“ den Mundraum.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="953"/>
+        <location filename="../tabbewertung.ui" line="992"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Haupttrunk.&lt;/p&gt;&lt;p&gt;Nach dem ersten Schluck und der Begutachtung der Schaumhaltbarkeit, kommt ein neues sensorisches Merkmal ins Bewusstsein, die sogenannte Rezenz. Das ist die Spritzigkeit des Bieres, sein Kohlensäuregehalt. &lt;/p&gt;&lt;p&gt;Bei manchen Sorten ist die Rezenz von größerer Bedeutung, so bei hellen hopfenreichen Bieren, ob sie nun Pils oder Export heißen. Bei Anderen ist sie weniger bedeutungsvoll, wie zum Beispiel bei den Starkbieren. &lt;/p&gt;&lt;p&gt;Anmerkung: Ein kohlensäurearmes Bier muss keineswegs schal schmecken, wenn es mit der richtigen Hopfengabe, einer sehr feinen Malzsüße und einer gerade noch wahrnehmbaren Säure ausgestattet ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1055"/>
+        <location filename="../tabbewertung.ui" line="1103"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Nachtrunk.&lt;/p&gt;&lt;p&gt;Unter Nachtrunk wird der sogenannte Abgang und der bleibende Nachgeschmack verstanden.&lt;/p&gt;&lt;p&gt;Den Nachtrunk empfindet man nach dem Absetzen des Glases, wen sich nach dem ersten kritischen Schluck die Bittere bemerkbar macht. Ein mehr oder weniger feiner oder starker bitterer Geschmack breitet sich nun besonders im Hintergaumen aus.&lt;/p&gt;&lt;p&gt;Er ist der Geschmackseindruck, der am längsten bleibt. Er darf auf keinen Fall „nachhängen“, kratzig, gallig oder hefig wirken. Bei allen Bieren sollte die Bittere zumindest kurz auf dem Gaumen spürbar sein, sie darf aber auch nicht zu stark nachhängen, wenn man zwei-, dreimal schlucken muss.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1117"/>
+        <location filename="../tabbewertung.ui" line="1174"/>
         <source>einmal ist genug, langweilig</source>
         <translation>once is enough, boring</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1096"/>
+        <location filename="../tabbewertung.ui" line="1153"/>
         <source>kunstvoll, kreativ, mutig</source>
         <translation>creative</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1124"/>
+        <location filename="../tabbewertung.ui" line="1181"/>
         <source>nicht trinkbar, problematisch</source>
         <translation>problematic, unpleasant</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1089"/>
+        <location filename="../tabbewertung.ui" line="1146"/>
         <source>gutes, typisches Bier</source>
         <translation>good and typical for that style</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1082"/>
+        <location filename="../tabbewertung.ui" line="1139"/>
         <source>interessant</source>
         <translation>interesting</translation>
     </message>
     <message>
-        <location filename="../tabbewertung.ui" line="1075"/>
+        <location filename="../tabbewertung.ui" line="1132"/>
         <source>toll, weiter trinken, macht Lust auf mehr</source>
         <translation>great, continue drinking, you definitively want more of that</translation>
     </message>
@@ -3731,62 +3839,62 @@ Bottling date: %1</translation>
         <translation>Which batches are shown can be selected in the bach selection. Only packaged batches are shown.</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="63"/>
+        <location filename="../tabbrauuebersicht.cpp" line="62"/>
         <source>&lt;keine&gt;</source>
         <translation>&lt;none&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="64"/>
+        <location filename="../tabbrauuebersicht.cpp" line="63"/>
         <source>Abgefüllte Biermenge</source>
         <translation>Quantity packaged</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="65"/>
+        <location filename="../tabbrauuebersicht.cpp" line="64"/>
         <source>Stammwürze</source>
         <translation>OG</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="66"/>
+        <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <source>Sudhausausbeute</source>
         <translation>Mash efficiency</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="67"/>
+        <location filename="../tabbrauuebersicht.cpp" line="66"/>
         <source>Effektive Sudhausausbeute</source>
         <translation>Effective brewhouse efficiency</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="68"/>
+        <location filename="../tabbrauuebersicht.cpp" line="67"/>
         <source>Verdampfungsrate</source>
         <translation>Evaporation rate</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="68"/>
+        <location filename="../tabbrauuebersicht.cpp" line="67"/>
         <source>l/h</source>
         <translation>l/h</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="69"/>
+        <location filename="../tabbrauuebersicht.cpp" line="68"/>
         <source>Alkohol</source>
         <translation>ABV</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="70"/>
+        <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>Scheinbarer Restextrakt</source>
         <translation>Apparent residual extract</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="71"/>
+        <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <source>Scheinbarer Endvergärungsgrad</source>
         <translation>Apparent attenuation</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="72"/>
+        <location filename="../tabbrauuebersicht.cpp" line="71"/>
         <source>Tatsächlicher Endvergärungsgrad</source>
         <translation>Real attenuation</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="73"/>
+        <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>Kosten</source>
         <translation>Costs</translation>
     </message>
@@ -3795,7 +3903,7 @@ Bottling date: %1</translation>
         <translation type="vanished">Quantity packaged [l]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="64"/>
+        <location filename="../tabbrauuebersicht.cpp" line="63"/>
         <source>l</source>
         <translation>l</translation>
     </message>
@@ -3804,8 +3912,8 @@ Bottling date: %1</translation>
         <translation type="vanished">OG [°P]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="65"/>
-        <location filename="../tabbrauuebersicht.cpp" line="70"/>
+        <location filename="../tabbrauuebersicht.cpp" line="64"/>
+        <location filename="../tabbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
@@ -3814,11 +3922,11 @@ Bottling date: %1</translation>
         <translation type="vanished">Mash efficiency [%]</translation>
     </message>
     <message>
+        <location filename="../tabbrauuebersicht.cpp" line="65"/>
         <location filename="../tabbrauuebersicht.cpp" line="66"/>
-        <location filename="../tabbrauuebersicht.cpp" line="67"/>
-        <location filename="../tabbrauuebersicht.cpp" line="69"/>
+        <location filename="../tabbrauuebersicht.cpp" line="68"/>
+        <location filename="../tabbrauuebersicht.cpp" line="70"/>
         <location filename="../tabbrauuebersicht.cpp" line="71"/>
-        <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>%</source>
         <translation>%</translation>
     </message>
@@ -3847,7 +3955,7 @@ Bottling date: %1</translation>
         <translation type="vanished">Costs [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="73"/>
+        <location filename="../tabbrauuebersicht.cpp" line="72"/>
         <source>%1/l</source>
         <translation>%1/l</translation>
     </message>
@@ -4334,11 +4442,6 @@ Bottling date: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2524"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind alle Braudaten, &lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; übersichtlich nach &lt;span style=&quot; font-weight:600;&quot;&gt;Prozessschritt&lt;/span&gt; beim Brauen aufgeführt.&lt;/p&gt;&lt;p&gt;Ähnlich, aber ausführlicher, werden diese Schritte auf dem &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; aufbereitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tabbraudaten.ui" line="1849"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge &lt;/span&gt;berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links als &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigiertes Ergebnis&lt;/span&gt; ausgegeben. Er kann vom zuvor errechneten Wert, wie im Spickzettel oder im Tab Rezept angegeben, abweichen.&lt;/p&gt;&lt;p&gt;Die Gesamtwürzemenge steht am Ende des Brauprozesses und wird nur noch durch Entnahme von Speise verändert. Um den Wert der Gesamtwürzemenge zu ermitteln, sind korrekte Angaben im Tab Ausrüstung für die Sudpfanne erforderlich sowie ein analoges oder digitales Metermaß .&lt;/p&gt;&lt;p&gt;Wird ein anderes Gefäß verwendet, sind Rechner für Raummaße eine Hilfe, die viele Seiten für Hobbybrauer bereit halten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -4387,12 +4490,12 @@ Bottling date: %1</translation>
         <translation type="vanished">Split batch</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="460"/>
+        <location filename="../tabbraudaten.cpp" line="453"/>
         <source>Sud als gebraut markieren?</source>
         <translation>Mark batch as brewed?</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="461"/>
+        <location filename="../tabbraudaten.cpp" line="454"/>
         <source>Soll der Sud als gebraut markiert werden?
 
 Braudatum: %1</source>
@@ -4682,14 +4785,12 @@ Brew date: %1</translation>
         <translation type="vanished">Delete</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="703"/>
         <source>{{N}}</source>
-        <translation>{{N}}</translation>
+        <translation type="vanished">{{N}}</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="710"/>
         <source>{{n}}</source>
-        <translation>{{n}}</translation>
+        <translation type="vanished">{{n}}</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="717"/>
@@ -4711,49 +4812,49 @@ Brew date: %1</translation>
         <translation type="vanished">Print preview</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="220"/>
+        <location filename="../tabetikette.cpp" line="237"/>
         <source>Änderungen speichern?</source>
         <translation>Save changes?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="221"/>
+        <location filename="../tabetikette.cpp" line="238"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Should the changes be saved?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="292"/>
+        <location filename="../tabetikette.cpp" line="309"/>
         <source>SVG auswählen</source>
         <translation>Select SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="292"/>
+        <location filename="../tabetikette.cpp" line="309"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="372"/>
+        <location filename="../tabetikette.cpp" line="389"/>
         <source>SVG exportieren</source>
         <translation>Export SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="389"/>
+        <location filename="../tabetikette.cpp" line="406"/>
         <source>SVG Export</source>
         <translation>SVG Export</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="389"/>
+        <location filename="../tabetikette.cpp" line="406"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
         <translation>File could not be written.</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="554"/>
+        <location filename="../tabetikette.cpp" line="571"/>
         <source>PDF speichern unter</source>
         <translation>Save PDF as</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="373"/>
-        <location filename="../tabetikette.cpp" line="555"/>
-        <source>Etikette</source>
+        <location filename="../tabetikette.cpp" line="390"/>
+        <location filename="../tabetikette.cpp" line="572"/>
+        <source>Etikett</source>
         <translation>Labels</translation>
     </message>
     <message>
@@ -4765,7 +4866,7 @@ Brew date: %1</translation>
         <translation type="vanished">Remove labels from recipe?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="676"/>
+        <location filename="../tabetikette.cpp" line="693"/>
         <source>Neuer Tag</source>
         <translation>New tag</translation>
     </message>
@@ -4774,6 +4875,7 @@ Brew date: %1</translation>
     <name>TabGaerverlauf</name>
     <message>
         <location filename="../tabgaerverlauf.ui" line="38"/>
+        <location filename="../tabgaerverlauf.cpp" line="223"/>
         <source>Schnellgärprobe</source>
         <translation>Fast fermentation sample</translation>
     </message>
@@ -4981,29 +5083,29 @@ Brew date: %1</translation>
         <translation>CO2 [g/l]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="506"/>
-        <location filename="../tabgaerverlauf.cpp" line="637"/>
-        <location filename="../tabgaerverlauf.cpp" line="672"/>
+        <location filename="../tabgaerverlauf.cpp" line="515"/>
+        <location filename="../tabgaerverlauf.cpp" line="646"/>
+        <location filename="../tabgaerverlauf.cpp" line="681"/>
         <source>CSV Datei auswählen</source>
         <translation>Select CSV file</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="508"/>
-        <location filename="../tabgaerverlauf.cpp" line="639"/>
-        <location filename="../tabgaerverlauf.cpp" line="674"/>
+        <location filename="../tabgaerverlauf.cpp" line="517"/>
+        <location filename="../tabgaerverlauf.cpp" line="648"/>
+        <location filename="../tabgaerverlauf.cpp" line="683"/>
         <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
         <translation>CSV File (*.csv);;All files (*.*)</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="802"/>
-        <location filename="../tabgaerverlauf.cpp" line="877"/>
-        <location filename="../tabgaerverlauf.cpp" line="951"/>
+        <location filename="../tabgaerverlauf.cpp" line="811"/>
+        <location filename="../tabgaerverlauf.cpp" line="886"/>
+        <location filename="../tabgaerverlauf.cpp" line="960"/>
         <source>Gärverlauf</source>
         <translation>Fermentation</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="803"/>
-        <location filename="../tabgaerverlauf.cpp" line="878"/>
+        <location filename="../tabgaerverlauf.cpp" line="812"/>
+        <location filename="../tabgaerverlauf.cpp" line="887"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
@@ -5014,7 +5116,7 @@ Date1;Extract1;Temperature1[;Comment1]
 Date2;Extract2;Temperature2[;Comment2]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="952"/>
+        <location filename="../tabgaerverlauf.cpp" line="961"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Druck1;Temperatur1[;Bemerkung1]
@@ -5201,7 +5303,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="649"/>
-        <location filename="../tabrezept.cpp" line="1409"/>
+        <location filename="../tabrezept.cpp" line="1403"/>
         <source>Kategorie</source>
         <translation>Category</translation>
     </message>
@@ -5368,7 +5470,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1790"/>
-        <location filename="../tabrezept.cpp" line="246"/>
+        <location filename="../tabrezept.cpp" line="248"/>
         <source>Wasseraufbereitung</source>
         <translation>Water adjustment</translation>
     </message>
@@ -5909,87 +6011,87 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation>Correction of target quantity</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="195"/>
+        <location filename="../tabrezept.cpp" line="197"/>
         <source>Tag</source>
         <translation>Day</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="196"/>
+        <location filename="../tabrezept.cpp" line="198"/>
         <source>Wert</source>
         <translation>Value</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="197"/>
+        <location filename="../tabrezept.cpp" line="199"/>
         <source>Global</source>
         <translation>Global</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="396"/>
+        <location filename="../tabrezept.cpp" line="392"/>
         <source>Rohstoff importieren?</source>
         <translation>Import ingredient?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="384"/>
+        <location filename="../tabrezept.cpp" line="380"/>
         <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Malt &quot;%1&quot; is not in stock. Should it be added?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="387"/>
+        <location filename="../tabrezept.cpp" line="383"/>
         <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Hop variant &quot;%1&quot; is not in stock. Should it be added?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="390"/>
+        <location filename="../tabrezept.cpp" line="386"/>
         <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Yeast &quot;%1&quot; is not in stock. Should it be added?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="393"/>
+        <location filename="../tabrezept.cpp" line="389"/>
         <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
         <translation>Ingredient &quot;%1&quot; is not in stock. Should it be added?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="626"/>
+        <location filename="../tabrezept.cpp" line="622"/>
         <source>sehr mild</source>
         <translation>very mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="628"/>
+        <location filename="../tabrezept.cpp" line="624"/>
         <source>mild</source>
         <translation>mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="630"/>
+        <location filename="../tabrezept.cpp" line="626"/>
         <source>ausgewogen</source>
         <translation>balanced</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="632"/>
+        <location filename="../tabrezept.cpp" line="628"/>
         <source>moderat herb</source>
         <translation>moderately bitter</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="634"/>
+        <location filename="../tabrezept.cpp" line="630"/>
         <source>sehr herb</source>
         <translation>very bitter</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1177"/>
+        <location filename="../tabrezept.cpp" line="1171"/>
         <source>Vergärungsgrad übernehmen?</source>
         <translation>Take over fermentation level?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1178"/>
+        <location filename="../tabrezept.cpp" line="1172"/>
         <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
         <translation>Take over fermentation level (%1%)?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1410"/>
+        <location filename="../tabrezept.cpp" line="1404"/>
         <source>Sudkategorien verwalten</source>
         <translation>Manage batch categories</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1439"/>
+        <location filename="../tabrezept.cpp" line="1433"/>
         <source>Neuer Tag</source>
         <translation>New tag</translation>
     </message>
@@ -6002,122 +6104,118 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="28"/>
+        <location filename="../tabrohstoffe.ui" line="91"/>
         <source>alle</source>
         <translation>all</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="38"/>
+        <location filename="../tabrohstoffe.ui" line="101"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="41"/>
+        <location filename="../tabrohstoffe.ui" line="104"/>
         <source>vorhanden</source>
         <translation>in stock</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="51"/>
+        <location filename="../tabrohstoffe.ui" line="114"/>
         <source>in Gebrauch</source>
         <translation>in use</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="61"/>
+        <location filename="../tabrohstoffe.ui" line="124"/>
         <source>Suche</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="88"/>
+        <location filename="../tabrohstoffe.ui" line="151"/>
         <source>Malz</source>
         <translation>Malts</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="112"/>
+        <location filename="../tabrohstoffe.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Malz&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="140"/>
+        <location filename="../tabrohstoffe.ui" line="203"/>
         <source>Hopfen</source>
         <translation>Hops</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="192"/>
+        <location filename="../tabrohstoffe.ui" line="255"/>
         <source>Hefe</source>
         <translation>Yeast</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="216"/>
+        <location filename="../tabrohstoffe.ui" line="279"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hefe&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="268"/>
+        <location filename="../tabrohstoffe.ui" line="331"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="356"/>
+        <location filename="../tabrohstoffe.ui" line="419"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Chloridionen sollten einen Wert von 150 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein unangenehmer Chlorgeschmack zu befürchten ist. In der Praxis gilt – bis auf Ausnahme mit besonderen Wässern – eine Grenze von 100 ml/l (ppm).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="477"/>
+        <location filename="../tabrohstoffe.ui" line="540"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Magnesiumionen sollten einen Wert von 20 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein kratiger, harscher Geschmack zu befürchten ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="556"/>
+        <location filename="../tabrohstoffe.ui" line="619"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Calciumionen sollten einen Wert von 150 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein salziger Geschmack auftreten kann. Der Brauer soll aber auch von einem Wert unter 50 mg/l (ppm) Abstand nehmen: Zu wenig Calcium behindert die Hefearbeit. Sude, deren Rezept eein Wasserprofil unter 50 mg/l (ppm) vorsehen, sollten mit entsprechend Hefenahrung angestellt werden.&lt;/p&gt;&lt;p&gt;Bei einem hohen Sulfatanteil, wie er oft in hopfenstarken Bierstilen verlangt wird, kann es schwer sein, Calcium und Sulfat richtig auszubalancieren. In diesem Fall hilft oft eine Kombination verschiedener Brausalze, besonders Bittersalz MgSO₄, das aber den Magnesiumgehalt ungünstig nach anhebt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="586"/>
+        <location filename="../tabrohstoffe.ui" line="649"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkungen&lt;/span&gt; zur &lt;span style=&quot; font-weight:600;&quot;&gt;Waseraufbereitung&lt;/span&gt; eingetragen. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Soll das Rezept exportiert oder veröffentlicht werden, macht es Sinn, die regionalen, nicht allgemeingültigen Gegebenheiten für das eigene Brauwasser von den allgemeinen &lt;span style=&quot; font-weight:600;&quot;&gt;Anmerkungen&lt;/span&gt; im Tab Rezept zu &lt;span style=&quot; font-weight:600;&quot;&gt;trennen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="716"/>
+        <location filename="../tabrohstoffe.ui" line="779"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Natriumionen sollten einen Wert von 50 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein salzig hervorstechender Geschmack zu befürchten ist. In der Praxis gilt – bis auf nachfolgende Ausnahmenn – eine Grenze von 20 ml/l (ppm) als üblich.&lt;/p&gt;&lt;p&gt;Es gibt indes Bierstile, deren Merkmal ein besonderer Salzgeschmack ist. Die sächsische Gose etwa wird mit 14–28 g Tafelsalz und Koriandersamen im 19l-Sud gebraut.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="783"/>
+        <location filename="../tabrohstoffe.ui" line="846"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden, falls der berechnete vom tatsächlichem Wert abweicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="875"/>
+        <location filename="../tabrohstoffe.ui" line="938"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Sulfat unterstützt kpmlexe Hopfenaromen, sollte aber einen Wert von 250 mg/l (ppm) im Brauwasser nicht übersteigen, da das Brauwasser sonst übersäuert und übersalzt wird, was wiederum zu einem salzigen Geschmack führt.&lt;/p&gt;&lt;p&gt;Es gibt jedoch Bierstile, die bewusst mit dieser Regel brechen. Das wektberühmte Wasser aus Burton-on-Trent protzt mit über 400-700 mg/l und hat mit dem English IPA einen Geschmackstrend unter den Craft-Bieren etabliert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="955"/>
+        <location filename="../tabrohstoffe.ui" line="40"/>
+        <location filename="../tabrohstoffe.ui" line="1004"/>
         <source>Neu</source>
         <translation>New</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="979"/>
+        <location filename="../tabrohstoffe.ui" line="1009"/>
         <source>Vorlage</source>
         <translation>Template</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1003"/>
+        <location filename="../tabrohstoffe.ui" line="1014"/>
         <source>oBraMa</source>
         <translation>oBraMa</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1024"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Jeder Kopie wird das Suffix &amp;quot;Kopie&amp;quot; beigefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrohstoffe.ui" line="1055"/>
+        <location filename="../tabrohstoffe.ui" line="63"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;/&gt;Soll hier ein Rohstoff gelöscht werden, der in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept, ungebraut&lt;/span&gt;, verwendet wird, erscheint eine Warnmeldung. Wird der Rohstoff dann wirklich gelöscht, werden entsprechende Einträge in allen ungebrauten Rezepten im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept rot&lt;/span&gt; hinterlegt, deren Werte auf 0 gesetzt. Damit kann die erforderliche Stammwürze oder der nötige IBU-Wert nicht mehr gegeben sein. &lt;/p&gt;&lt;p&gt;In jedem Fall sind nach dem Löschen eines Rohstoffes &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rezepte mit&lt;/span&gt; dem &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoff&lt;/span&gt; zu &lt;span style=&quot; font-weight:600;&quot;&gt;überprüfen&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1061"/>
+        <location filename="../tabrohstoffe.ui" line="69"/>
         <source>Löschen</source>
         <translation>Remove</translation>
     </message>
@@ -6126,153 +6224,153 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="vanished">Additional ingredients</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="299"/>
-        <location filename="../tabrohstoffe.cpp" line="358"/>
+        <location filename="../tabrohstoffe.ui" line="362"/>
+        <location filename="../tabrohstoffe.cpp" line="373"/>
         <source>Wasser</source>
         <translation>Water</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="318"/>
+        <location filename="../tabrohstoffe.ui" line="381"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="856"/>
+        <location filename="../tabrohstoffe.ui" line="919"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="821"/>
+        <location filename="../tabrohstoffe.ui" line="884"/>
         <source>Chlorid (0 - 150 mg/l)</source>
         <translation>Chloride (0 - 150 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="709"/>
+        <location filename="../tabrohstoffe.ui" line="772"/>
         <source>Calcium (50 - 150 mg/l)</source>
         <translation>Calcium (50 - 150 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="520"/>
-        <location filename="../tabrohstoffe.ui" line="593"/>
-        <location filename="../tabrohstoffe.ui" line="732"/>
-        <location filename="../tabrohstoffe.ui" line="762"/>
-        <location filename="../tabrohstoffe.ui" line="769"/>
-        <location filename="../tabrohstoffe.ui" line="891"/>
+        <location filename="../tabrohstoffe.ui" line="583"/>
+        <location filename="../tabrohstoffe.ui" line="656"/>
+        <location filename="../tabrohstoffe.ui" line="795"/>
+        <location filename="../tabrohstoffe.ui" line="825"/>
+        <location filename="../tabrohstoffe.ui" line="832"/>
+        <location filename="../tabrohstoffe.ui" line="954"/>
         <source>mmol/l</source>
         <translation>mmol/l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="805"/>
+        <location filename="../tabrohstoffe.ui" line="868"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciumhärte&lt;/span&gt; in °dH berechnet. Die Calciumhärte wird aus den Angaben von Calcium in mg/l nach der Formel Ca⁺ * 1,4 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Calciumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Calcium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="527"/>
+        <location filename="../tabrohstoffe.ui" line="590"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="437"/>
-        <location filename="../tabrohstoffe.ui" line="499"/>
-        <location filename="../tabrohstoffe.ui" line="543"/>
-        <location filename="../tabrohstoffe.ui" line="572"/>
-        <location filename="../tabrohstoffe.ui" line="702"/>
-        <location filename="../tabrohstoffe.ui" line="828"/>
+        <location filename="../tabrohstoffe.ui" line="500"/>
+        <location filename="../tabrohstoffe.ui" line="562"/>
+        <location filename="../tabrohstoffe.ui" line="606"/>
+        <location filename="../tabrohstoffe.ui" line="635"/>
+        <location filename="../tabrohstoffe.ui" line="765"/>
+        <location filename="../tabrohstoffe.ui" line="891"/>
         <source>mg/l</source>
         <translation>mg/l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="411"/>
+        <location filename="../tabrohstoffe.ui" line="474"/>
         <source>Restalkalität</source>
         <translation>Residual alkalinity</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="616"/>
+        <location filename="../tabrohstoffe.ui" line="679"/>
         <source>Restalkalität Korrektur</source>
         <translation>Residual alkalinity correction</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="388"/>
-        <location filename="../tabrohstoffe.ui" line="739"/>
+        <location filename="../tabrohstoffe.ui" line="451"/>
+        <location filename="../tabrohstoffe.ui" line="802"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="164"/>
+        <location filename="../tabrohstoffe.ui" line="227"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hopfen&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Wenn der Gärfaktor im Tab Rezept übernommen werden soll, muss er in der Form &amp;lt;zahl%&amp;gt; eingetragen werden. Beispiel 78%. Sonderzeichen sind nicht zulässig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="244"/>
+        <location filename="../tabrohstoffe.ui" line="307"/>
         <source>Zusätze</source>
         <translation>Adjunct</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="513"/>
-        <location filename="../tabrohstoffe.ui" line="623"/>
-        <location filename="../tabrohstoffe.ui" line="776"/>
-        <location filename="../tabrohstoffe.ui" line="835"/>
-        <location filename="../tabrohstoffe.ui" line="842"/>
+        <location filename="../tabrohstoffe.ui" line="576"/>
+        <location filename="../tabrohstoffe.ui" line="686"/>
+        <location filename="../tabrohstoffe.ui" line="839"/>
+        <location filename="../tabrohstoffe.ui" line="898"/>
+        <location filename="../tabrohstoffe.ui" line="905"/>
         <source>°dH</source>
         <translation>°dH</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="600"/>
+        <location filename="../tabrohstoffe.ui" line="663"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiumhärte&lt;/span&gt; in °dH berechnet. Die Magnesiumhärte wird aus den Angaben von &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesium&lt;/span&gt; in mg/l nach der Formel Mg⁺ * 2,307 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Magnesiumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="637"/>
+        <location filename="../tabrohstoffe.ui" line="700"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
         <translation>Hydrogen carbonate (0 - 500 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="905"/>
+        <location filename="../tabrohstoffe.ui" line="968"/>
         <source>Sulfat (0 - 250 mg/l)</source>
         <translation>Sulfate (0 - 250 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="683"/>
+        <location filename="../tabrohstoffe.ui" line="746"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="658"/>
+        <location filename="../tabrohstoffe.ui" line="721"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maische und damit für die Effizienz der Stärkespaltung. Ob ein Bier mit der Schüttung in den angepeilten Parametern umfänglich gelingt, entscheidet sich hier. Der pH-Wert beim Maischen ist Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H⁺-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H⁺-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO³- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="25"/>
+        <location filename="../tabrohstoffe.ui" line="88"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt. Bei vielen Suden in der Datenbank, kann diese Ansicht überfordernd sein. Es empfiehlt sich, feinere Filter anzuwenden. Alle Sude werden in allen Markierungsfarben unsortiert angezeigt. ein Klick auf die Spaltenfunktion aktiviert die Sortierung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="48"/>
+        <location filename="../tabrohstoffe.ui" line="111"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;Gebrauch&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;Die bezieht sich auf &lt;span style=&quot; font-weight:600;&quot;&gt;nicht&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;gebrauchte&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rezepte&lt;/span&gt; im Tab Sudauswahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="58"/>
+        <location filename="../tabrohstoffe.ui" line="121"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier bietet der Kleine Brauhelfer eine &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; für die Zutaten im aktivierten Reiter an. Die Suche ist ab 2 Zeichen wirksam.&lt;/p&gt;&lt;p&gt;Durchsucht werden alle Spalten mit Ausnahme Datum, Preis und Links.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="461"/>
+        <location filename="../tabrohstoffe.ui" line="524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="651"/>
+        <location filename="../tabrohstoffe.ui" line="714"/>
         <source>Natrium (0 - 50 mg/l)</source>
         <translation>Sodium (0 - 50 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="644"/>
+        <location filename="../tabrohstoffe.ui" line="707"/>
         <source>Magnesium (0 - 20 mg/l)</source>
         <translation>Magnesium (0 - 20 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="418"/>
+        <location filename="../tabrohstoffe.ui" line="481"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6281,36 +6379,26 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adjust residual alkalinity here, if the calculated value deviates from reality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="372"/>
+        <location filename="../tabrohstoffe.ui" line="435"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="949"/>
+        <location filename="../tabrohstoffe.ui" line="34"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="458"/>
-        <location filename="../tabrohstoffe.cpp" line="461"/>
-        <location filename="../tabrohstoffe.cpp" line="464"/>
-        <location filename="../tabrohstoffe.cpp" line="467"/>
+        <location filename="../tabrohstoffe.cpp" line="473"/>
+        <location filename="../tabrohstoffe.cpp" line="476"/>
+        <location filename="../tabrohstoffe.cpp" line="479"/>
+        <location filename="../tabrohstoffe.cpp" line="482"/>
         <source>Neuer Eintrag</source>
         <translation>Add entry</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="973"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus einer &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable weil umfangreiche &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlagenliste&lt;/span&gt;, mit der eigene funktionsgleiche Vorlagen angelegt, gelöscht, importiert, exportiert und wiederherstellt werden können.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Neuer Eintrag aus Vorlage</source>
         <translation type="vanished">New entry from template</translation>
-    </message>
-    <message>
-        <location filename="../tabrohstoffe.ui" line="997"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus der offenen Braudatenbank &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Die aufwendige Datenbank kann auch direkt unter &lt;a href=&quot;obrama.mueggelland.de &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;obrama.mueggelland.de &lt;/span&gt;&lt;/a&gt;eingesehen werden. Mitarbeit ist ausdrücklich erwünscht. Je nach Zutat können sich die Zuordnungen zwischen oBrama und dem Kleinen Brauhelfer unterscheiden. Etwas Nachbearbeitung wird daher in der Regel nötig sein. Dafür entfällt die mühsame Eigenrecherche.&lt;/p&gt;&lt;p&gt;oBrama hält zur Zeit Daten zu Malzen, Hopfen, Hefen und Weiteren Zutaten parat. Eine Datenbank zu weltweiten &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofilen &lt;/span&gt;ist in Planung (Stand Mitte 2020).&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable Suchmaske. Gemeinhin genügen drei Buchstaben, um den gewünschten Eintrag zu finden.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Neuer Eintrag aus oBraMa</source>
@@ -6430,39 +6518,39 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation>ml</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="115"/>
-        <location filename="../tabrohstoffe.cpp" line="150"/>
-        <location filename="../tabrohstoffe.cpp" line="185"/>
-        <location filename="../tabrohstoffe.cpp" line="226"/>
+        <location filename="../tabrohstoffe.cpp" line="128"/>
+        <location filename="../tabrohstoffe.cpp" line="163"/>
+        <location filename="../tabrohstoffe.cpp" line="198"/>
+        <location filename="../tabrohstoffe.cpp" line="239"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="116"/>
+        <location filename="../tabrohstoffe.cpp" line="129"/>
         <source>Menge [kg]</source>
         <translation>Amount [kg]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="117"/>
-        <location filename="../tabrohstoffe.cpp" line="231"/>
+        <location filename="../tabrohstoffe.cpp" line="130"/>
+        <location filename="../tabrohstoffe.cpp" line="244"/>
         <source>Farbe [EBC]</source>
         <translation>Color [EBC]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="118"/>
+        <location filename="../tabrohstoffe.cpp" line="131"/>
         <source>pH</source>
         <translation>pH</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="119"/>
+        <location filename="../tabrohstoffe.cpp" line="132"/>
         <source>Max. Anteil [%]</source>
         <translation>Max. share [%]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="120"/>
-        <location filename="../tabrohstoffe.cpp" line="154"/>
-        <location filename="../tabrohstoffe.cpp" line="187"/>
-        <location filename="../tabrohstoffe.cpp" line="232"/>
+        <location filename="../tabrohstoffe.cpp" line="133"/>
+        <location filename="../tabrohstoffe.cpp" line="167"/>
+        <location filename="../tabrohstoffe.cpp" line="200"/>
+        <location filename="../tabrohstoffe.cpp" line="245"/>
         <source>Bemerkung</source>
         <translation>Remarks</translation>
     </message>
@@ -6471,166 +6559,166 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="vanished">Characteristics</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="122"/>
-        <location filename="../tabrohstoffe.cpp" line="157"/>
-        <location filename="../tabrohstoffe.cpp" line="195"/>
-        <location filename="../tabrohstoffe.cpp" line="234"/>
+        <location filename="../tabrohstoffe.cpp" line="135"/>
+        <location filename="../tabrohstoffe.cpp" line="170"/>
+        <location filename="../tabrohstoffe.cpp" line="208"/>
+        <location filename="../tabrohstoffe.cpp" line="247"/>
         <source>Alternativen</source>
         <translation>Alternatives</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="123"/>
-        <location filename="../tabrohstoffe.cpp" line="158"/>
+        <location filename="../tabrohstoffe.cpp" line="136"/>
+        <location filename="../tabrohstoffe.cpp" line="171"/>
         <source>Preis [%1/kg]</source>
         <translation>Costs [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="124"/>
-        <location filename="../tabrohstoffe.cpp" line="159"/>
-        <location filename="../tabrohstoffe.cpp" line="197"/>
-        <location filename="../tabrohstoffe.cpp" line="236"/>
+        <location filename="../tabrohstoffe.cpp" line="137"/>
+        <location filename="../tabrohstoffe.cpp" line="172"/>
+        <location filename="../tabrohstoffe.cpp" line="210"/>
+        <location filename="../tabrohstoffe.cpp" line="249"/>
         <source>Einlagerung</source>
         <translation>Got on stock</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="125"/>
-        <location filename="../tabrohstoffe.cpp" line="160"/>
-        <location filename="../tabrohstoffe.cpp" line="198"/>
-        <location filename="../tabrohstoffe.cpp" line="237"/>
+        <location filename="../tabrohstoffe.cpp" line="138"/>
+        <location filename="../tabrohstoffe.cpp" line="173"/>
+        <location filename="../tabrohstoffe.cpp" line="211"/>
+        <location filename="../tabrohstoffe.cpp" line="250"/>
         <source>Haltbarkeit</source>
         <translation>Best before</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="126"/>
-        <location filename="../tabrohstoffe.cpp" line="161"/>
-        <location filename="../tabrohstoffe.cpp" line="199"/>
-        <location filename="../tabrohstoffe.cpp" line="238"/>
+        <location filename="../tabrohstoffe.cpp" line="139"/>
+        <location filename="../tabrohstoffe.cpp" line="174"/>
+        <location filename="../tabrohstoffe.cpp" line="212"/>
+        <location filename="../tabrohstoffe.cpp" line="251"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="151"/>
+        <location filename="../tabrohstoffe.cpp" line="164"/>
         <source>Menge [g]</source>
         <translation>Amount [g]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="152"/>
+        <location filename="../tabrohstoffe.cpp" line="165"/>
         <source>Alpha [%]</source>
         <translation>Alpha [%]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="153"/>
+        <location filename="../tabrohstoffe.cpp" line="166"/>
         <source>Pellets</source>
         <translation>Pellets</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="121"/>
-        <location filename="../tabrohstoffe.cpp" line="155"/>
-        <location filename="../tabrohstoffe.cpp" line="188"/>
-        <location filename="../tabrohstoffe.cpp" line="233"/>
+        <location filename="../tabrohstoffe.cpp" line="134"/>
+        <location filename="../tabrohstoffe.cpp" line="168"/>
+        <location filename="../tabrohstoffe.cpp" line="201"/>
+        <location filename="../tabrohstoffe.cpp" line="246"/>
         <source>Eigenschaften</source>
         <translation>Characteristics</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="156"/>
-        <location filename="../tabrohstoffe.cpp" line="229"/>
+        <location filename="../tabrohstoffe.cpp" line="169"/>
+        <location filename="../tabrohstoffe.cpp" line="242"/>
         <source>Typ</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="186"/>
-        <location filename="../tabrohstoffe.cpp" line="227"/>
+        <location filename="../tabrohstoffe.cpp" line="199"/>
+        <location filename="../tabrohstoffe.cpp" line="240"/>
         <source>Menge</source>
         <translation>Amount</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="189"/>
+        <location filename="../tabrohstoffe.cpp" line="202"/>
         <source>OG/UG</source>
         <translation>Top/Bottom</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="190"/>
+        <location filename="../tabrohstoffe.cpp" line="203"/>
         <source>Trocken/Flüssig</source>
         <translation>Dry/Liquid</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="191"/>
+        <location filename="../tabrohstoffe.cpp" line="204"/>
         <source>Würzemenge [l]</source>
         <translation>Wort quantity [l]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="192"/>
+        <location filename="../tabrohstoffe.cpp" line="205"/>
         <source>Sedimentation</source>
         <translation>Flocculation</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="193"/>
+        <location filename="../tabrohstoffe.cpp" line="206"/>
         <source>Vergärungsgrad</source>
         <translation>Fermentation</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="194"/>
+        <location filename="../tabrohstoffe.cpp" line="207"/>
         <source>Temperatur</source>
         <translation>Temperature</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="196"/>
+        <location filename="../tabrohstoffe.cpp" line="209"/>
         <source>Preis [%1]</source>
         <translation>Price [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="228"/>
+        <location filename="../tabrohstoffe.cpp" line="241"/>
         <source>Einheit</source>
         <translation>Unit</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="230"/>
+        <location filename="../tabrohstoffe.cpp" line="243"/>
         <source>Ausbeute [%]</source>
         <translation>Efficiency [%]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="235"/>
+        <location filename="../tabrohstoffe.cpp" line="248"/>
         <source>Preis [%1/[kg/l/Stk]]</source>
         <translation>Price [%1/[kg/l/pc.]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="263"/>
+        <location filename="../tabrohstoffe.cpp" line="276"/>
         <source>Wasserprofil</source>
         <translation>Water profile</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="264"/>
+        <location filename="../tabrohstoffe.cpp" line="277"/>
         <source>Restalkalität [°dH]</source>
         <translation>Residual alkalinity [°dH]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1030"/>
-        <location filename="../tabrohstoffe.cpp" line="568"/>
+        <location filename="../tabrohstoffe.ui" line="1019"/>
+        <location filename="../tabrohstoffe.cpp" line="583"/>
         <source>Kopie</source>
         <translation>Copy</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="622"/>
+        <location filename="../tabrohstoffe.cpp" line="637"/>
         <source>Rohstoff wird verwendet</source>
         <translation>Raw material is being used</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="623"/>
+        <location filename="../tabrohstoffe.cpp" line="638"/>
         <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
         <translation>This ingredient is being used in a batch not yet brewed. Should it be deleted anyway?</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="470"/>
+        <location filename="../tabrohstoffe.cpp" line="485"/>
         <source>Neues Profil</source>
         <translation>New profile</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="611"/>
+        <location filename="../tabrohstoffe.cpp" line="626"/>
         <source>Wasserprofil löschen?</source>
         <translation>Delete water profile?</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="612"/>
+        <location filename="../tabrohstoffe.cpp" line="627"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
         <translation>Delete water profile &quot;%1&quot;?</translation>
     </message>
@@ -6898,7 +6986,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add selection to the &lt;span style=&quot; font-weight:600;&quot;&gt;pinned&lt;/span&gt; batches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="255"/>
+        <location filename="../tabsudauswahl.cpp" line="254"/>
         <source>Sud merken</source>
         <translation>Pin batch</translation>
     </message>
@@ -6911,119 +6999,119 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="vanished">PDF</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="52"/>
+        <location filename="../tabsudauswahl.cpp" line="51"/>
         <source>Sud ID</source>
         <translation>Batch ID</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="53"/>
+        <location filename="../tabsudauswahl.cpp" line="52"/>
         <source>Sudname</source>
         <translation>Batch name</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="54"/>
+        <location filename="../tabsudauswahl.cpp" line="53"/>
         <source>Sudnummer</source>
         <translation>Batch number</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="55"/>
+        <location filename="../tabsudauswahl.cpp" line="54"/>
         <source>Kategorie</source>
         <translation>Category</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="56"/>
+        <location filename="../tabsudauswahl.cpp" line="55"/>
         <source>Braudatum</source>
         <translation>Brew date</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="57"/>
+        <location filename="../tabsudauswahl.cpp" line="56"/>
         <source>Abfülldatum</source>
         <translation>Bottling date</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="58"/>
+        <location filename="../tabsudauswahl.cpp" line="57"/>
         <source>Erstellt</source>
         <translation>Created</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="59"/>
+        <location filename="../tabsudauswahl.cpp" line="58"/>
         <source>Gespeichert</source>
         <translation>Saved</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="60"/>
+        <location filename="../tabsudauswahl.cpp" line="59"/>
         <source>Woche</source>
         <translation>Week</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="61"/>
+        <location filename="../tabsudauswahl.cpp" line="60"/>
         <source>Bewertung</source>
         <translation>Rating</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="62"/>
-        <location filename="../tabsudauswahl.cpp" line="65"/>
+        <location filename="../tabsudauswahl.cpp" line="61"/>
+        <location filename="../tabsudauswahl.cpp" line="64"/>
         <source>Menge [l]</source>
         <translation>Quantity [l]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="63"/>
-        <location filename="../tabsudauswahl.cpp" line="67"/>
+        <location filename="../tabsudauswahl.cpp" line="62"/>
+        <location filename="../tabsudauswahl.cpp" line="66"/>
         <source>SW [°P]</source>
         <translation>OG [°P]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="64"/>
+        <location filename="../tabsudauswahl.cpp" line="63"/>
         <source>Bittere [IBU]</source>
         <translation>Bitterness [IBU]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="66"/>
+        <location filename="../tabsudauswahl.cpp" line="65"/>
         <source>SHA [%]</source>
         <translation>Efficiency [%]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="68"/>
+        <location filename="../tabsudauswahl.cpp" line="67"/>
         <source>Restextrakt [°P]</source>
         <translation>Residual extract [°P]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="69"/>
+        <location filename="../tabsudauswahl.cpp" line="68"/>
         <source>Schüttung [kg]</source>
         <translation>Grist [kg]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="70"/>
+        <location filename="../tabsudauswahl.cpp" line="69"/>
         <source>Kosten [%1/l]</source>
         <translation>Costs [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="71"/>
+        <location filename="../tabsudauswahl.cpp" line="70"/>
         <source>Alk. [%]</source>
         <translation>Alc. [%]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="72"/>
+        <location filename="../tabsudauswahl.cpp" line="71"/>
         <source>sEVG [%]</source>
         <translation>Att. [%]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="73"/>
+        <location filename="../tabsudauswahl.cpp" line="72"/>
         <source>tEVG [%]</source>
         <translation>Att. (real) [%]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="74"/>
+        <location filename="../tabsudauswahl.cpp" line="73"/>
         <source>Eff. SHA [%]</source>
         <translation>Efficiency (eff.) [%]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="75"/>
+        <location filename="../tabsudauswahl.cpp" line="74"/>
         <source>Verdampfungsrate [l/h]</source>
         <translation>Evaporation rate [l/h]</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="76"/>
+        <location filename="../tabsudauswahl.cpp" line="75"/>
         <source>Für Durchschnitt Ignorieren</source>
         <translation>Ignore for average</translation>
     </message>
@@ -7032,30 +7120,30 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="vanished">Batch not consumed</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="264"/>
+        <location filename="../tabsudauswahl.cpp" line="263"/>
         <source>Sud verbraucht</source>
         <translation>Beer consumed</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="431"/>
+        <location filename="../tabsudauswahl.cpp" line="430"/>
         <source>Neuer Sud</source>
         <translation>New batch</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="465"/>
-        <location filename="../tabsudauswahl.cpp" line="474"/>
+        <location filename="../tabsudauswahl.cpp" line="464"/>
+        <location filename="../tabsudauswahl.cpp" line="473"/>
         <source>Kopie</source>
         <translation>Copy</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="529"/>
-        <location filename="../tabsudauswahl.cpp" line="548"/>
+        <location filename="../tabsudauswahl.cpp" line="528"/>
+        <location filename="../tabsudauswahl.cpp" line="547"/>
         <source>Sud löschen?</source>
         <translation>Delete batch?</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="530"/>
-        <location filename="../tabsudauswahl.cpp" line="549"/>
+        <location filename="../tabsudauswahl.cpp" line="529"/>
+        <location filename="../tabsudauswahl.cpp" line="548"/>
         <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
         <translation>Delete batch &quot;%1&quot;?</translation>
     </message>
@@ -7190,6 +7278,13 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     </message>
 </context>
 <context>
+    <name>WdgBemerkung</name>
+    <message>
+        <source>Form</source>
+        <translation type="obsolete">Form</translation>
+    </message>
+</context>
+<context>
     <name>WdgBewertung</name>
     <message>
         <location filename="../widgets/wdgbewertung.ui" line="59"/>
@@ -7215,6 +7310,16 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../widgets/wdghefegabe.ui" line="96"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdghefegabe.ui" line="111"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefesorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../widgets/wdghefegabe.ui" line="147"/>
         <source>Menge</source>
         <translation>Amount</translation>
@@ -7232,16 +7337,6 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="89"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine Hefesorte aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste&lt;/span&gt; im Tab Rohstoffe gewählt. Die Zutat kann dabei jederzeit geändert werden.&lt;/p&gt;&lt;p&gt;Ales und Strong Ales, Lager und Strong Lager benötigen eine unterschiedliche Hefezellenzahl pro ml, um optimal zu vergären. Im Zweifel sollte man die Datenblätter der Hefehersteller heranziehen oder einen Hefe-Kalkulator nutzen.&lt;/p&gt;&lt;p&gt;Üblicherweise sind Bierhefen im Hobbybereich für 20 Liter ausgelegt. Trockenhefen für Kleinsude werden meist in Mengen zwischen 10,5 g und 11,5 g abverpackt. Bei flüssigen Reinhefen gilt dies gleichfalls – eine Packung reicht für einen Sud. Daneben kommt bei größeren oder stärkeren Suden oft die Hefepropagation zum Zug. Im Profibereich gibt es wiederum andere Abverpackungen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Bei einer Hefegabe ist darauf zu achten, dass die &lt;span style=&quot; font-weight:600;&quot;&gt;Hefezellzahl&lt;/span&gt; nicht unter die &lt;span style=&quot; font-weight:600;&quot;&gt;Mindestanforderung&lt;/span&gt; für den Sud rutscht. Bei Starkbieren kann sich dies ändern. Im Einzelnen muss man somit genauer hinschauen, denn Biere haben bis Faktor 3 einen unterschiedlichen Bedarf an &lt;span style=&quot; font-weight:600;&quot;&gt;Hefemengen&lt;/span&gt;, sprich bis zu 3 Päckchen für einen Kleinsud oder entsprechend der Bedarf für eine größere Sudmenge:&lt;/p&gt;&lt;p&gt;• Ale (obergärig, &amp;lt; 16°P): 0,75&lt;/p&gt;&lt;p&gt;• Strong Ale (obergärig, &amp;gt; 16°P): 1,00&lt;/p&gt;&lt;p&gt;• Lager (untergärig, &amp;lt; 16°P): 1,50&lt;/p&gt;&lt;p&gt;• Strong Lager (untergärig, &amp;gt; 16°P): 2,00&lt;/p&gt;&lt;p&gt;Wird dies nicht berücksichtigt, besteht die Gefahr des sogenanten &lt;span style=&quot; font-weight:600;&quot;&gt;Underpitching. &lt;/span&gt;Darunter versteht man Hefe, die Fehlaromen produzieren kann, weil sie zu die zu wenig Nahrung bekommt. Im gewissen Sinn reagiert sie &amp;quot;panisch&amp;quot;. In geringerem Maße trifft die auch beim &lt;span style=&quot; font-weight:600;&quot;&gt;Over-Pitching&lt;/span&gt; zu, wenn zu viel Hefezellen dem Sud zugesetzt sind.&lt;/p&gt;&lt;p&gt;Viele Seiten für Hefestarter (engl.: yeast starter) berechnen die benötigte Zellmenge. Für den Brauer reicht das meistens aus und erspart das Labor mit Mikroskop unf Zählkammer. Da diese Seiten alle die amerikanische Stammwürze als Grundlage haben, muss vorher Specific Gravity (SG) in °Plato umgerechnet werden.&lt;/p&gt;&lt;p&gt;Ein sehr guter Heferechner findet sich &lt;a href=&quot;https://www.brewuk.co.uk/yeast_pitch_calculator&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Eine Umrechnungstabelle Gravity zu °Plato findet sich &lt;a href=&quot;https://hobbybrauer.de/forum/wiki/doku.php/konvertierung_sg_plato&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdghefegabe.ui" line="96"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdghefegabe.ui" line="111"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefesorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7302,16 +7397,6 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
 </context>
 <context>
     <name>WdgHopfenGabe</name>
-    <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="93"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="108"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position nach &lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="150"/>
         <location filename="../widgets/wdghopfengabe.ui" line="398"/>
@@ -7389,6 +7474,16 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="86"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; (Reiter Hopfen) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;p&gt;Sollte ein andere Hopfensorte an die Stelle der Gabe treten, ist es zeitsparender die Hopfensorte einfach über die Rohstoffliste auszutauschen. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Grundsätzlich können im Kleinen Brauhelfer nur Zutaten verwendet werden, die in den Rohstofflisten im Tab Rohstoffe erfasst sind.&lt;/p&gt;&lt;p&gt;Handwerklichgute Craftbiere nutzen Hopfenkombinationen zur richtigen Zeit, um dem Bierstil den nötigen Charakter zu verleihen.Hopfenschemata sind eines der kreativsten Felder in der Rezeptentwicklung, nicht jeder Hopfen harmoniert mit jedem Hopfen, nicht jeder Hopfenaroma schmeckt zu jeder Zeit gleich. Fachforen wie die &lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Rezepteabteilung &lt;/span&gt;&lt;/a&gt;bei &lt;span style=&quot; font-weight:600;&quot;&gt;Hobbybrauer.de&lt;/span&gt; sind gerade bei den ersten Schritten in der Rezepteentwicklung eine große Hilfe. In anderen Ländern existieren ähnliche Fachbereiche auf Brauer-Sites.&lt;/p&gt;&lt;p&gt;Empfohlene &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenschemata&lt;/span&gt; nach &lt;span style=&quot; font-weight:600;&quot;&gt;Jan Brücklmeier:Bier brauen&lt;/span&gt;, 2018, Ulmer Verlag:&lt;/p&gt;&lt;p&gt;Beispiel: 60:40:0 = 60% Kochbeginn, 40% Kochmitte 0% Kochende&lt;/p&gt;&lt;p&gt;Weißbier &amp;lt; 25 IBU, geringe Bittere, geringes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;100&lt;/span&gt;&lt;/p&gt;&lt;p&gt;American Lager &amp;lt; 25 IBU, geringe Bittere, dezentesHopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;60:40&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Deutsches Pils &amp;lt; 40 IBU,betonte Bittere, dezentes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;80:20&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Bömisches Pilsener &amp;lt; 28 IBU, geringe Bittere, feines Hopfenaroma&lt;span style=&quot; font-weight:600;&quot;&gt; 70-80:20-30&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Pale Ale &amp;lt; 40 IBU, kräftige Bittere, betontes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;50:30:20&lt;/span&gt;&lt;/p&gt;&lt;p&gt;India Pale Ale &amp;lt; 70 IBU, hohe Bittere, sehr betontes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;10:20:70 &lt;/span&gt;/&lt;span style=&quot; font-weight:600;&quot;&gt; VWH* 40:0:60&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Imperial Pale Ale &amp;gt; 50 IBU, ausgeprägte Bittere, dominantes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt; 25:0:75 / VWH* 20:0:30:50**&lt;/span&gt;&lt;/p&gt;&lt;p&gt;* Vorderwürzehopfung&lt;/p&gt;&lt;p&gt;** 2x Kochende, 15 min und 10 min&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdghopfengabe.ui" line="93"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdghopfengabe.ui" line="108"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7480,16 +7575,6 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="93"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="108"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="123"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Malzgabe aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Nach dem Löschen ist die prozentuale Verteilung falsch; die übrigen Malzemengen und Zusätze müssen verteilt auf 100% angepasst werden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -7526,7 +7611,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="319"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; des &lt;span style=&quot; font-weight:600;&quot;&gt;Malzes&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in °Plato kann anschließend angepasst werden, so eine Verteilung der Male über die Stammwürze bevorzugt wird.&lt;/p&gt;&lt;p&gt;Darüber hinaus ist das Thema Extrakt im Malz und seine enzymatischen Eigenschaften bei verschiedenen Mälz- und Darrfverfahren ist anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen und die Seiten von Mälzereien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; des &lt;span style=&quot; font-weight:600;&quot;&gt;Malzes&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in °Plato kann anschließend angepasst werden, so eine Verteilung der Malze über die Stammwürze bevorzugt wird.&lt;/p&gt;&lt;p&gt;Darüber hinaus ist das Thema Extrakt im Malz und seine enzymatischen Eigenschaften bei verschiedenen Mälz- und Darrverfahren anspruchsvoll. Bei Fragen hierzu empfehlen sich die Fachforen und die Seiten von Mälzereien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7549,6 +7634,16 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <location filename="../widgets/wdgmalzgabe.ui" line="257"/>
         <source>kg</source>
         <translation>kg</translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgmalzgabe.ui" line="93"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgmalzgabe.ui" line="108"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="169"/>
@@ -8095,52 +8190,51 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
 <context>
     <name>WdgWebViewEditable</name>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="86"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="83"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zoomfaktor&lt;/span&gt; für die Ausgabe festgelegt werden.&lt;/p&gt;&lt;p&gt;Dieser Faktor hat keinen Einfluss auf das PDF oder den Ausdruck.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="127"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="124"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wir das zu überarbeitende Template &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dazu einige Vorlagen, die beständig erweitert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="197"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="194"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe des Spickzettels &lt;span style=&quot; font-weight:600;&quot;&gt;ausgedruckt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Handelt es sich um ein gebrautes Rezept, heißt der Spickzettel &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="218"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="215"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe des Spickzettels als &lt;span style=&quot; font-weight:600;&quot;&gt;PDF&lt;/span&gt; abgespeichert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Handelt es sich um ein gebrautes Rezept, heißt der Spickzettel &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="233"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="230"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML- und CSS-Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in CSS und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="264"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="261"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld ist der Spickzettel im &lt;span style=&quot; font-weight:600;&quot;&gt;HTML&lt;/span&gt; definiert. Platzhalter nehmen die Tags rechts auf und verabeiten sie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="272"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="269"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Tags &lt;/span&gt;im Spickzettel definiert. Tags werden links in HTML weiterverarbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="155"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="152"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Template gespeichert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.ui" line="176"/>
+        <location filename="../widgets/wdgwebvieweditable.ui" line="173"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Originaltemplate wiederhergestellt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8157,27 +8251,27 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
         <translation type="vanished">Edit mode</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="160"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="161"/>
         <source>PDF speichern unter</source>
         <translation>Save PDF as</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="198"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="199"/>
         <source>Änderungen speichern?</source>
         <translation>Save changes?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="199"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="200"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Should the changes be saved?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="243"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="244"/>
         <source>Template wiederherstellen?</source>
         <translation>Restore template?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="244"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="245"/>
         <source>Soll das Standardtemplate wiederhergestellt werden?</source>
         <translation>Restore standard template?</translation>
     </message>

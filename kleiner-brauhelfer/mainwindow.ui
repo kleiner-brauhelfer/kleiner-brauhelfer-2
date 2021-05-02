@@ -126,7 +126,7 @@
              <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
            </attribute>
            <attribute name="title">
-            <string>Etikette</string>
+            <string>Etikett</string>
            </attribute>
           </widget>
           <widget class="TabBewertung" name="tabBewertung">

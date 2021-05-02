@@ -700,14 +700,14 @@
             <item row="0" column="0">
              <widget class="QLabel" name="label_11">
               <property name="text">
-               <string>{{N}}</string>
+               <string notr="true">{{N}}</string>
               </property>
              </widget>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_13">
               <property name="text">
-               <string>{{n}}</string>
+               <string notr="true">{{n}}</string>
               </property>
              </widget>
             </item>

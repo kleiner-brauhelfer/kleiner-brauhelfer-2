@@ -20,6 +20,69 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
+      <widget class="QToolButton" name="buttonAdd">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">plus</string>
+       </property>
+       <property name="text">
+        <string>Neu</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::InstantPopup</enum>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonIconOnly</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="buttonDelete">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;/&gt;Soll hier ein Rohstoff gelöscht werden, der in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept, ungebraut&lt;/span&gt;, verwendet wird, erscheint eine Warnmeldung. Wird der Rohstoff dann wirklich gelöscht, werden entsprechende Einträge in allen ungebrauten Rezepten im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept rot&lt;/span&gt; hinterlegt, deren Werte auf 0 gesetzt. Damit kann die erforderliche Stammwürze oder der nötige IBU-Wert nicht mehr gegeben sein. &lt;/p&gt;&lt;p&gt;In jedem Fall sind nach dem Löschen eines Rohstoffes &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rezepte mit&lt;/span&gt; dem &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoff&lt;/span&gt; zu &lt;span style=&quot; font-weight:600;&quot;&gt;überprüfen&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="whatsThis">
+        <string notr="true">minus</string>
+       </property>
+       <property name="text">
+        <string>Löschen</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/images/light/minus.svg</normaloff>
+         <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_10">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QRadioButton" name="radioButtonAlle">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt. Bei vielen Suden in der Datenbank, kann diese Ansicht überfordernd sein. Es empfiehlt sich, feinere Filter anzuwenden. Alle Sude werden in allen Markierungsfarben unsortiert angezeigt. ein Klick auf die Spaltenfunktion aktiviert die Sortierung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -81,7 +144,7 @@
         <x>0</x>
         <y>0</y>
         <width>952</width>
-        <height>496</height>
+        <height>516</height>
        </rect>
       </property>
       <attribute name="label">
@@ -133,7 +196,7 @@
         <x>0</x>
         <y>0</y>
         <width>952</width>
-        <height>496</height>
+        <height>516</height>
        </rect>
       </property>
       <attribute name="label">
@@ -185,7 +248,7 @@
         <x>0</x>
         <y>0</y>
         <width>952</width>
-        <height>496</height>
+        <height>516</height>
        </rect>
       </property>
       <attribute name="label">
@@ -237,7 +300,7 @@
         <x>0</x>
         <y>0</y>
         <width>952</width>
-        <height>496</height>
+        <height>516</height>
        </rect>
       </property>
       <attribute name="label">
@@ -289,7 +352,7 @@
         <x>0</x>
         <y>0</y>
         <width>952</width>
-        <height>496</height>
+        <height>516</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -343,7 +406,7 @@
              <x>0</x>
              <y>0</y>
              <width>526</width>
-             <height>620</height>
+             <height>560</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -935,141 +998,27 @@
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="buttonAdd">
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="whatsThis">
-        <string notr="true">plus</string>
-       </property>
-       <property name="text">
-        <string>Neu</string>
-       </property>
-       <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/plus.svg</normaloff>
-         <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonNeuVorlage">
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus einer &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable weil umfangreiche &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlagenliste&lt;/span&gt;, mit der eigene funktionsgleiche Vorlagen angelegt, gelöscht, importiert, exportiert und wiederherstellt werden können.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="whatsThis">
-        <string notr="true">plus</string>
-       </property>
-       <property name="text">
-        <string>Vorlage</string>
-       </property>
-       <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/plus.svg</normaloff>
-         <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonNeuVorlageObrama">
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag&lt;/span&gt; aus der offenen Braudatenbank &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Die aufwendige Datenbank kann auch direkt unter &lt;a href=&quot;obrama.mueggelland.de &quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;obrama.mueggelland.de &lt;/span&gt;&lt;/a&gt;eingesehen werden. Mitarbeit ist ausdrücklich erwünscht. Je nach Zutat können sich die Zuordnungen zwischen oBrama und dem Kleinen Brauhelfer unterscheiden. Etwas Nachbearbeitung wird daher in der Regel nötig sein. Dafür entfällt die mühsame Eigenrecherche.&lt;/p&gt;&lt;p&gt;oBrama hält zur Zeit Daten zu Malzen, Hopfen, Hefen und Weiteren Zutaten parat. Eine Datenbank zu weltweiten &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofilen &lt;/span&gt;ist in Planung (Stand Mitte 2020).&lt;/p&gt;&lt;p&gt;Mit diesem Button öffnet sich eine komfortable Suchmaske. Gemeinhin genügen drei Buchstaben, um den gewünschten Eintrag zu finden.&lt;/p&gt;&lt;p&gt;Namensgleiche Einträge werden hier nicht durchnummeriert. Somit ist darauf zu achten die Einträge &lt;span style=&quot; font-weight:600;&quot;&gt;eindeutig &lt;/span&gt;zu benennen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="whatsThis">
-        <string notr="true">plus</string>
-       </property>
-       <property name="text">
-        <string>oBraMa</string>
-       </property>
-       <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/plus.svg</normaloff>
-         <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonCopy">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; eines &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrags&lt;/span&gt; angelegt.&lt;/p&gt;&lt;p&gt;Jeder Kopie wird das Suffix &amp;quot;Kopie&amp;quot; beigefügt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="whatsThis">
-        <string notr="true">plus</string>
-       </property>
-       <property name="text">
-        <string>Kopie</string>
-       </property>
-       <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/plus.svg</normaloff>
-         <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_10">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonDelete">
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;/&gt;Soll hier ein Rohstoff gelöscht werden, der in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept, ungebraut&lt;/span&gt;, verwendet wird, erscheint eine Warnmeldung. Wird der Rohstoff dann wirklich gelöscht, werden entsprechende Einträge in allen ungebrauten Rezepten im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept rot&lt;/span&gt; hinterlegt, deren Werte auf 0 gesetzt. Damit kann die erforderliche Stammwürze oder der nötige IBU-Wert nicht mehr gegeben sein. &lt;/p&gt;&lt;p&gt;In jedem Fall sind nach dem Löschen eines Rohstoffes &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rezepte mit&lt;/span&gt; dem &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoff&lt;/span&gt; zu &lt;span style=&quot; font-weight:600;&quot;&gt;überprüfen&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="whatsThis">
-        <string notr="true">minus</string>
-       </property>
-       <property name="text">
-        <string>Löschen</string>
-       </property>
-       <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/minus.svg</normaloff>
-         <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
+  <action name="actionNeu">
+   <property name="text">
+    <string>Neu</string>
+   </property>
+  </action>
+  <action name="actionNeuVorlage">
+   <property name="text">
+    <string>Vorlage</string>
+   </property>
+  </action>
+  <action name="actionNeuObrama">
+   <property name="text">
+    <string>oBraMa</string>
+   </property>
+  </action>
+  <action name="actionNeuKopie">
+   <property name="text">
+    <string>Kopie</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -1090,6 +1039,8 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>buttonAdd</tabstop>
+  <tabstop>buttonDelete</tabstop>
   <tabstop>radioButtonAlle</tabstop>
   <tabstop>radioButtonVorhanden</tabstop>
   <tabstop>radioButtonInGebrauch</tabstop>
@@ -1117,12 +1068,6 @@
   <tabstop>tbHydrogencarbonatHaerte</tabstop>
   <tabstop>tbRestalkalitaetAdd</tabstop>
   <tabstop>tbRestalkalitaet</tabstop>
-  <tabstop>wdgBemerkung</tabstop>
-  <tabstop>buttonAdd</tabstop>
-  <tabstop>buttonNeuVorlage</tabstop>
-  <tabstop>buttonNeuVorlageObrama</tabstop>
-  <tabstop>buttonCopy</tabstop>
-  <tabstop>buttonDelete</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

@@ -1,7 +1,6 @@
 #include "tabbrauuebersicht.h"
 #include "ui_tabbrauuebersicht.h"
 #include <QKeyEvent>
-#include <QMenu>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodelsud.h"

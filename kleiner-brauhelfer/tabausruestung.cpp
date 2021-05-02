@@ -1,7 +1,6 @@
 #include "tabausruestung.h"
 #include "ui_tabausruestung.h"
 #include <QKeyEvent>
-#include <QMenu>
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"

@@ -387,7 +387,7 @@ void TabEtikette::on_btnExport_clicked()
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString filePath = QFileDialog::getSaveFileName(this, tr("SVG exportieren"),
-                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikette") +  ".svg", "SVG (*.svg)");
+                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") +  ".svg", "SVG (*.svg)");
     if (!filePath.isEmpty())
     {
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
@@ -569,7 +569,7 @@ void TabEtikette::toPdf()
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString fileName = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikette") +  ".pdf", "PDF (*.pdf)");
+                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") +  ".pdf", "PDF (*.pdf)");
     if (!fileName.isEmpty())
     {
         loadPageLayout();

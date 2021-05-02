@@ -38,7 +38,7 @@ QVariant ProxyModelSudColored::data(const QModelIndex &index, int role) const
                 int woche = ProxyModelSud::data(index, role).toInt();
                 int tage = index.sibling(index.row(), ModelSud::ColReifezeitDelta).data().toInt();
                 if (tage > 0)
-                    return tr("%1. Woche, reif in %2 Tage").arg(woche).arg(tage);
+                    return tr("%1. Woche, reif in %2 Tagen").arg(woche).arg(tage);
                 else
                     return tr("%1. Woche").arg(woche);
             }

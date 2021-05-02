@@ -34,11 +34,11 @@ private slots:
     void on_tableHopfen_clicked(const QModelIndex &index);
     void on_tableHefe_clicked(const QModelIndex &index);
     void on_tableWeitereZutaten_clicked(const QModelIndex &index);
-    void on_buttonAdd_clicked();
-    void on_buttonNeuVorlage_clicked();
-    void on_buttonNeuVorlageObrama_clicked();
+    void buttonAdd_clicked();
+    void buttonNeuVorlage_clicked();
+    void buttonNeuVorlageObrama_clicked();
     void on_buttonDelete_clicked();
-    void on_buttonCopy_clicked();
+    void buttonCopy_clicked();
     void on_radioButtonAlle_clicked();
     void on_radioButtonVorhanden_clicked();
     void on_radioButtonInGebrauch_clicked();

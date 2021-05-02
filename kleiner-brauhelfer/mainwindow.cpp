@@ -317,7 +317,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         {
             if (index < 0)
-               ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikette"));
+               ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikett"));
         }
         else
             ui->tabMain->removeTab(index);

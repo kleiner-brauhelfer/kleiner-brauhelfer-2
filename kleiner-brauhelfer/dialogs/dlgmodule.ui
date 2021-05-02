@@ -133,7 +133,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
        <item>
         <widget class="QGroupBox" name="gbModuleEtikette">
          <property name="title">
-          <string>Etikette</string>
+          <string>Etiketten</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

@@ -51,7 +51,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
     ctxModule["Abfuellen"] = gSettings->isModuleEnabled(Settings::ModuleAbfuellen);
     ctxModule["Gaerverlauf"] = gSettings->isModuleEnabled(Settings::ModuleGaerverlauf);
     ctxModule["Zusammenfassung"] = gSettings->isModuleEnabled(Settings::ModuleZusammenfassung);
-    ctxModule["Etikette"] = gSettings->isModuleEnabled(Settings::ModuleEtikette);
+    ctxModule["Etiketten"] = gSettings->isModuleEnabled(Settings::ModuleEtikette);
     ctxModule["Bewertung"] = gSettings->isModuleEnabled(Settings::ModuleBewertung);
     ctxModule["Brauuebersicht"] = gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht);
     ctxModule["Ausruestung"] = gSettings->isModuleEnabled(Settings::ModuleAusruestung);

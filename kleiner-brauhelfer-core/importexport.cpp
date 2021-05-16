@@ -1098,12 +1098,12 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     ProxyModel model;
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
 
-    QDomDocument doc("");
+    QDomDocument doc;
     QDomText text;
     QDomElement element;
     QDomElement Anteil;
 
-    QDomProcessingInstruction header = doc.createProcessingInstruction( "xml", "version=\"1.0\" encoding=\"ISO-8859-1\"" );
+    QDomProcessingInstruction header = doc.createProcessingInstruction( "xml", "version=\"1.0\" encoding=\"UTF-8\"" );
     doc.appendChild(header);
 
     QDomElement Rezepte = doc.createElement("RECIPES");
@@ -1797,5 +1797,5 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
     QString contentString;
     QTextStream stream(&contentString);
     doc.save(stream, QDomNode::EncodingFromTextStream);
-    return contentString.toLatin1();
+    return contentString.toUtf8();
 }

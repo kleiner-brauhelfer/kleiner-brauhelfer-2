@@ -246,12 +246,10 @@
     <property name="title">
      <string>Hilfe</string>
     </property>
-    <addaction name="actionSpende"/>
-    <addaction name="actionBierspende"/>
-    <addaction name="separator"/>
     <addaction name="actionFormelsammlung"/>
     <addaction name="actionAndroidApp"/>
     <addaction name="separator"/>
+    <addaction name="actionSpende"/>
     <addaction name="actionUeber"/>
    </widget>
    <widget class="QMenu" name="menuSud">

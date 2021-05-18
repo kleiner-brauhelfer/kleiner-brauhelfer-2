@@ -62,7 +62,6 @@ private slots:
     void on_actionZahlenformat_triggered(bool checked);
     void on_actionModule_triggered();
     void on_actionSpende_triggered();
-    void on_actionBierspende_triggered();
     void on_actionFormelsammlung_triggered();
     void on_actionAndroidApp_triggered();
     void on_actionUeber_triggered();

@@ -63,7 +63,6 @@ SOURCES += \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
-    dialogs/dlgbierspende.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
@@ -147,7 +146,6 @@ HEADERS += \
     tabzusammenfassung.h \
     templatetags.h \
     dialogs/dlgabout.h \
-    dialogs/dlgbierspende.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
@@ -227,7 +225,6 @@ FORMS += \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
-    dialogs/dlgbierspende.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \

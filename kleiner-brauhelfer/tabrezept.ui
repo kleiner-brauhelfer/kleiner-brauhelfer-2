@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>459</width>
-         <height>688</height>
+         <width>375</width>
+         <height>680</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -822,8 +822,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>389</width>
-                 <height>105</height>
+                 <width>335</width>
+                 <height>107</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -1019,8 +1019,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>344</height>
+              <width>349</width>
+              <height>340</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1266,8 +1266,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>122</height>
+              <width>349</width>
+              <height>133</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1460,8 +1460,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>443</width>
-             <height>559</height>
+             <width>349</width>
+             <height>584</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1696,8 +1696,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>443</width>
-              <height>114</height>
+              <width>349</width>
+              <height>118</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -2106,8 +2106,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>443</width>
-             <height>327</height>
+             <width>349</width>
+             <height>374</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -2216,8 +2216,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>459</width>
-          <height>847</height>
+          <width>389</width>
+          <height>857</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -3538,11 +3538,6 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
@@ -3556,6 +3551,11 @@
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>ChartView</class>
@@ -3597,6 +3597,7 @@
   <tabstop>tbCO2</tabstop>
   <tabstop>tbReifezeit</tabstop>
   <tabstop>tabWidget_2</tabstop>
+  <tabstop>WdgBemerkung</tabstop>
   <tabstop>tableTags</tabstop>
   <tabstop>btnTagNeu</tabstop>
   <tabstop>btnTagLoeschen</tabstop>

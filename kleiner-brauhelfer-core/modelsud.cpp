@@ -1105,6 +1105,8 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColSudhausausbeute, 60.0);
     if (!values.contains(ColVerdampfungsrate))
         values.insert(ColVerdampfungsrate, 2.0);
+    if (!values.contains(ColSpeisemenge))
+        values.insert(ColSpeisemenge, 0);
     if (!values.contains(ColStatus))
         values.insert(ColStatus, static_cast<int>(Brauhelfer::SudStatus::Rezept));
 }

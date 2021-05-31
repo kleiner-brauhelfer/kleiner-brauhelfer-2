@@ -55,7 +55,7 @@ public:
         ColWuerzemengeKochende,
         ColWuerzemengeAnstellen,
         ColSpunden,
-        ColSpeisemenge,
+        ColSpeisemenge, // TODO: Speisemenge REAL DEFAULT 0
         ColJungbiermengeAbfuellen,
         Colerg_AbgefuellteBiermenge,
         Colerg_Sudhausausbeute,

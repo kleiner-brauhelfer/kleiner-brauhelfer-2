@@ -312,7 +312,7 @@ void TabAusruestung::updateValues()
     if (!ui->tbKorrekturFarbe->hasFocus())
         ui->tbKorrekturFarbe->setValue(data(ModelAusruestung::ColKorrekturFarbe).toInt());
     if (!ui->tbKorrekturSollmenge->hasFocus())
-        ui->tbKorrekturSollmenge->setValue(data(ModelAusruestung::ColKorrekturMenge).toInt());
+        ui->tbKorrekturSollmenge->setValue(data(ModelAusruestung::ColKorrekturMenge).toDouble());
     if (!ui->tbKosten->hasFocus())
         ui->tbKosten->setValue(data(ModelAusruestung::ColKosten).toDouble());
     if (!ui->tbMaischebottichHoehe->hasFocus())

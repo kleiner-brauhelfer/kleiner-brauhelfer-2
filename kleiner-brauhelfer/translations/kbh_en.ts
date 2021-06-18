@@ -388,7 +388,7 @@
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="85"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished">Fast fermentation sample</translation>
+        <translation>Fast fermentation sample</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmodule.ui" line="98"/>
@@ -772,98 +772,98 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="14"/>
         <source>Bemerkung</source>
-        <translation type="unfinished">Remarks</translation>
+        <translation>Remarks</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="23"/>
         <source>Standard</source>
-        <translation type="unfinished">Standard</translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="28"/>
         <source>Überschrift 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Headline 1</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="33"/>
         <source>Überschrift 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Headline 2</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="38"/>
         <source>Überschrift 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Headline 3</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="43"/>
         <source>Überschrift 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Headline 4</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="61"/>
         <source>Textfarbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Text color</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="87"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation>Bold</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="108"/>
         <source>K</source>
-        <translation type="unfinished"></translation>
+        <translation>Italics</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="129"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="207"/>
         <source>Link</source>
-        <translation type="unfinished">Link</translation>
+        <translation>Link</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="230"/>
         <source>*,*,...</source>
-        <translation type="unfinished"></translation>
+        <translation>*,*,...</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="246"/>
         <source>1,2...</source>
-        <translation type="unfinished"></translation>
+        <translation>1,2...</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.ui" line="295"/>
         <source>Bild</source>
-        <translation type="unfinished"></translation>
+        <translation>Picture</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.cpp" line="269"/>
         <source>Link erstellen</source>
-        <translation type="unfinished"></translation>
+        <translation>Create link</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.cpp" line="269"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.cpp" line="362"/>
         <location filename="../dialogs/dlgrichtexteditor.cpp" line="372"/>
         <source>Bild einfügen</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert picture</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.cpp" line="362"/>
         <source>Bild aus Anhang</source>
-        <translation type="unfinished"></translation>
+        <translation>Picture from attachment</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrichtexteditor.cpp" line="372"/>
         <source>Bilder müssen zuerst als Anhang eingefügt werden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictures must be attached first.</translation>
     </message>
 </context>
 <context>

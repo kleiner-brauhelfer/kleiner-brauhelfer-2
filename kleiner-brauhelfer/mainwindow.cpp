@@ -16,6 +16,7 @@
 #include "dialogs/dlgmodule.h"
 #include "dialogs/dlgconsole.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
+#include "dialogs/dlghilfe.h"
 #include "widgets/iconthemed.h"
 
 extern Brauhelfer* bh;
@@ -863,6 +864,23 @@ void MainWindow::on_actionModule_triggered()
 void MainWindow::on_actionSpende_triggered()
 {
     QDesktopServices::openUrl(QUrl(URL_SPENDE));
+}
+
+void MainWindow::on_actionHilfe_triggered()
+{
+    QString anchor = ui->tabMain->currentWidget()->metaObject()->className();
+    QString url = URL_HILFE"#" + anchor.toLower();
+    if (DlgHilfe::Dialog)
+    {
+        DlgHilfe::Dialog->raise();
+        DlgHilfe::Dialog->activateWindow();
+        DlgHilfe::Dialog->setUrl(url);
+    }
+    else
+    {
+        DlgHilfe::Dialog = new DlgHilfe(url, this);
+        DlgHilfe::Dialog->show();
+    }
 }
 
 void MainWindow::on_actionFormelsammlung_triggered()

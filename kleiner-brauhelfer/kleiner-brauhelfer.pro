@@ -66,6 +66,7 @@ SOURCES += \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
+    dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
@@ -149,6 +150,7 @@ HEADERS += \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
+    dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
@@ -228,6 +230,7 @@ FORMS += \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
+    dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \

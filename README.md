@@ -51,6 +51,8 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 - Neu: Offizielle version kompiliert mit **Qt 5.15.2**
 - Neu: Die meisten Eingabefelder für Bemerkungen unterstützen HTML (inklusive Editor)
 - Neu: Modul Schnellgärprobe ein- und ausschaltbar
+- Neu: Menüeintrag für Hilfe (Hilfe in noch Arbeit)
+- Fix: Modul Speiseberechnung
 
 ### Version 2.3.0 (24.03.2021)
 - Neu: Datenbankversion **2006**

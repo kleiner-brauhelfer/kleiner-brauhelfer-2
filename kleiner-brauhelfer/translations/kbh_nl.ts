@@ -351,7 +351,7 @@
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="263"/>
         <source>Das Rezept konnte nicht importiert werden.</source>
-        <translation>Recept import mislukt.</translation>
+        <translation>Recept importeren mislukt.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgimportexport.cpp" line="284"/>
@@ -1996,7 +1996,6 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
     <message>
         <location filename="../mainwindow.ui" line="439"/>
         <source>Bereinigen</source>
-        <translatorcomment>Opruimen vervangen door Opschonen</translatorcomment>
         <translation>Opschonen</translation>
     </message>
     <message>
@@ -2219,7 +2218,7 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
     <message>
         <location filename="../main.cpp" line="52"/>
         <source>Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
-        <translation>Moet er een nieuwe database worden aangemaakt of moet er een bestaande worden geopend?</translation>
+        <translation>Moet er een nieuwe database worden aangemaakt of moet een bestaande worden geopend?</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="57"/>
@@ -2549,7 +2548,7 @@ Versie geïnstalleerd: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="493"/>
         <source>Stammwürze</source>
-        <translation>Stamwort</translation>
+        <translation>Soortelijk Gewicht</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Stammwürze&lt;/span&gt; beim Anstellen, vom Tab Braudaten übernommen, angezeigt.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; entspricht der Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;beim Anstellen plus &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Anteile &lt;/span&gt;zugegebener &lt;span style=&quot; font-weight:600;&quot;&gt;Weitere Zutaten &lt;/span&gt;während der Gärung.&lt;/p&gt;&lt;p&gt;Die aktuelle Stammwüzre muss nicht zwingend mit der gewünschten Stammwürze im Tab Rezept identisch sein. Ist sie es doch, so ist dies ein guter Indikator für einen ordentlichen Brauprozess. Im Idealfall stimmen im Kleinen Brauhelfer aktuelle Stammwürze und festgelegte Stammwürze überein. Abweichungen lassen auf Fehler in dier Konfiguration der Anlage, der Rohstoffe oder im Brauprozess schließen. Die Fehlerquelle auszumachen kann im einzelfall schwierig sein. Fachbücher und Fachforen eignen sich hier am besten zur Problemlösung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -2889,7 +2888,7 @@ Versie geïnstalleerd: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1102"/>
         <source>Benötigte Speisemenge</source>
-        <translation>Benodigde hoeveelheid wort per fles</translation>
+        <translation>Benodigde hoeveelheid wort</translation>
     </message>
     <message>
         <source>Jungbiermenge inklusive Speise</source>
@@ -2923,7 +2922,7 @@ Versie geïnstalleerd: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1259"/>
         <source>Zusätzlich benötigter Zucker</source>
-        <translation>Extra suiker</translation>
+        <translation>Extra suiker vereist</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1178"/>
@@ -3054,14 +3053,14 @@ Versie geïnstalleerd: %2</translation>
     <message>
         <location filename="../tababfuellen.cpp" line="390"/>
         <source>Sud als abgefüllt markieren?</source>
-        <translation>De batch als gebotteld markeren?</translation>
+        <translation>Brouwsel als gebotteld markeren?</translation>
     </message>
     <message>
         <location filename="../tababfuellen.cpp" line="391"/>
         <source>Soll der Sud als abgefüllt markiert werden?
 
 Abfülldatum: %1</source>
-        <translation>Moet de batch worden gemarkeerd als gebotteld?
+        <translation>Moet het brouwsel worden gemarkeerd als gebotteld?
 
 Botteldatum: %1</translation>
     </message>
@@ -3324,7 +3323,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabausruestung.ui" line="730"/>
         <source>Korrektur der Sollmenge</source>
-        <translation>Correctie van de doelhoeveelheid</translation>
+        <translation>Correctie van de streefwaarde</translation>
     </message>
     <message>
         <location filename="../tabausruestung.ui" line="744"/>
@@ -3525,7 +3524,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabausruestung.cpp" line="244"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
-        <translation>Moet brouwinstallatie &quot;%1&quot; worden geschrapt?</translation>
+        <translation>Moet brouwinstallatie &quot;%1&quot; worden verwijderd?</translation>
     </message>
     <message>
         <location filename="../tabausruestung.cpp" line="281"/>
@@ -3595,37 +3594,37 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="226"/>
         <source>hellgelb, lichthell</source>
-        <translation>lichtgeel, helder</translation>
+        <translation>Lichtgeel, helder</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="233"/>
         <source>gelb</source>
-        <translation>geel</translation>
+        <translation>Geel</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="240"/>
         <source>golden</source>
-        <translation>goud</translation>
+        <translation>Goud</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="247"/>
         <source>bernstein</source>
-        <translation>amberkleurig</translation>
+        <translation>Amberkleurig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="254"/>
         <source>kupferrot, bernsteinfarben</source>
-        <translation>koperrood, amber</translation>
+        <translation>Koperrood, amberkleurig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="261"/>
         <source>braun bis tiefbraun</source>
-        <translation>bruin tot donkerbruin</translation>
+        <translation>Bruin tot diepbruin</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="268"/>
         <source>schwarz, tiefdunkel</source>
-        <translation>zwart, diep donker</translation>
+        <translation>Zwart, diep donker</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="275"/>
@@ -3649,22 +3648,22 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="304"/>
         <source>satt, intensiv</source>
-        <translation>rijk, intens</translation>
+        <translation>Rijk, intens</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="311"/>
         <source>glänzend</source>
-        <translation>glanzend</translation>
+        <translation>Glanzend</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="318"/>
         <source>matt, blass</source>
-        <translation>saai, bleek</translation>
+        <translation>Saai, bleek</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="325"/>
         <source>gräulich, fahl</source>
-        <translation>grauw, bleek</translation>
+        <translation>Grauw, bleek</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="1204"/>
@@ -3683,52 +3682,52 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="402"/>
         <source>feinporig, fest</source>
-        <translation>fijne poriëen, stevig</translation>
+        <translation>Fijne poriëen, stevig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="409"/>
         <source>grobporig, schwach</source>
-        <translation>grove poriën, zwak</translation>
+        <translation>Grove poriën, zwak</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="432"/>
         <source>gut haftend am Glas</source>
-        <translation>hecht goed aan het glas</translation>
+        <translation>Hecht goed aan het glas</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="439"/>
         <source>schlecht haftend</source>
-        <translation>hecht slecht aan het glas</translation>
+        <translation>Hecht slecht aan het glas</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="466"/>
         <source>gute Haltbarkeit</source>
-        <translation>goede stabiliteit</translation>
+        <translation>Goede stabiliteit</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="473"/>
         <source>mässige Haltbarkeit</source>
-        <translation>matige stabiliteit</translation>
+        <translation>Matige stabiliteit</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="480"/>
         <source>keine Haltbarkeit</source>
-        <translation>geen stabiliteit</translation>
+        <translation>Geen stabiliteit</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="507"/>
         <source>geringes Volumen</source>
-        <translation>kleine volume</translation>
+        <translation>Kleine volume</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="514"/>
         <source>kräftiges Volumen</source>
-        <translation>krachtige volume</translation>
+        <translation>Krachtige volume</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="521"/>
         <source>sehr voluminös, mächtig</source>
-        <translation>zeer volumineus</translation>
+        <translation>Zeer volumineus, krachtig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="528"/>
@@ -3747,22 +3746,22 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="583"/>
         <source>rein, abgerundet</source>
-        <translation>zuiver, afgerond</translation>
+        <translation>Zuiver, afgerond</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="590"/>
         <source>wohlriechend</source>
-        <translation>geurig</translation>
+        <translation>Geurig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="597"/>
         <source>unangenehm, unausgewogen</source>
-        <translation>onaangenaam, onevenwichtig</translation>
+        <translation>Onaangenaam, onevenwichtig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="604"/>
         <source>frisch</source>
-        <translation>fris</translation>
+        <translation>Fris</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="611"/>
@@ -3773,19 +3772,19 @@ Botteldatum: %1</translation>
         <location filename="../tabbewertung.ui" line="618"/>
         <location filename="../tabbewertung.ui" line="717"/>
         <source>säuerlich</source>
-        <translation>zuur</translation>
+        <translation>Zuur</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="625"/>
         <location filename="../tabbewertung.ui" line="724"/>
         <source>gewürzig</source>
-        <translation>kruidig</translation>
+        <translation>Kruidig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="632"/>
         <location filename="../tabbewertung.ui" line="773"/>
         <source>fruchtig</source>
-        <translation>fruitig</translation>
+        <translation>Fruitig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="639"/>
@@ -3797,18 +3796,18 @@ Botteldatum: %1</translation>
         <location filename="../tabbewertung.ui" line="646"/>
         <location filename="../tabbewertung.ui" line="752"/>
         <source>malzaromatisch, malzig</source>
-        <translation>mout aromatisch, moutig</translation>
+        <translation>Mout aromatisch, moutig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="653"/>
         <source>süsslich, nach Würze</source>
-        <translation>zoet, naar kruiden</translation>
+        <translation>Zoet, naar kruiden</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="660"/>
         <location filename="../tabbewertung.ui" line="780"/>
         <source>hefig</source>
-        <translation>gistig</translation>
+        <translation>Gistig</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geruch.&lt;/p&gt;&lt;p&gt;Beispiele: Der Geruch eines Bieres sollte sortentypisch sein, das heißt bei Weizenbieren ist ein fruchtiger bis esteriger Geruch erlaubt, während dieser bei Pils-bieren rundweg abzulehnen ist.&lt;/p&gt;&lt;p&gt;Zuerst riecht man am Schaum. Riecht er angenehm nach Bier, hefig oder nach Fass? Wenn der Schaum muffig, abgestanden oder nach feuchter Pappe riecht, braucht man das Bier gar nicht zu probieren, es ist nicht in Ordnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3822,37 +3821,37 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="703"/>
         <source>süsslich, klebrig</source>
-        <translation>zoet, kleverig</translation>
+        <translation>Zoet, kleverig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="710"/>
         <source>ausgewogen, rund</source>
-        <translation>evenwichtig, rond</translation>
+        <translation>Evenwichtig, rond</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="731"/>
         <source>gehaltvoll</source>
-        <translation>rijk</translation>
+        <translation>Rijk</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="745"/>
         <source>unausgewogen, kantig</source>
-        <translation>onevenwichtig</translation>
+        <translation>Onevenwichtig, scherp</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="759"/>
         <source>rein</source>
-        <translation>helder</translation>
+        <translation>Zuiver</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="766"/>
         <source>unreif, unrein</source>
-        <translation>onrijp nog niet klaar</translation>
+        <translation>Onrijp, niet zuiver</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="787"/>
         <source>Geschmacksfehler</source>
-        <translation>smaak gebreken</translation>
+        <translation>Smaak gebreken</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geschmack.&lt;/p&gt;&lt;p&gt;Der Biergeschmack umfasst die bei der Aufnahme des Bieres entstehenden sensorischen Eigenschaften. Es gelten dann ähnliche Beschreibungsmöglichkeiten wie beim Geruch. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3871,22 +3870,23 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="848"/>
         <source>prickelnd</source>
-        <translation>tintelend</translation>
+        <translation>Tintelend</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="841"/>
         <source>rezent, fein perlend</source>
-        <translation>mild tintelend</translation>
+        <translatorcomment>wrang, fijn sprankelend</translatorcomment>
+        <translation>Wrang, fijn sprankelend</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="855"/>
         <source>angenehm rezent</source>
-        <translation>aangenaamd gebalanceerd</translation>
+        <translation>Aangenaamd gebalanceerd</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="834"/>
         <source>gut eingebunden</source>
-        <translation>goed geïntegreerd</translation>
+        <translation>Goed geïntegreerd</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="82"/>
@@ -3921,22 +3921,22 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="862"/>
         <source>stark prickelnd, aufdringlich</source>
-        <translation>sterk tintelend, opdringerig</translation>
+        <translation>Sterk tintelend, opdringerig</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="869"/>
         <source>wenig rezent</source>
-        <translation>weinig tintelend</translation>
+        <translation>Weinig tintelend</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="876"/>
         <source>schal</source>
-        <translation>plat</translation>
+        <translation>Plat</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="883"/>
         <source>sehr schal</source>
-        <translation>zeer plat</translation>
+        <translation>Zeer plat</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Antrunk.&lt;/p&gt;&lt;p&gt;Die Sinneswahrnehmungen des ersten Schluckes, dem Antrunk, betreffen Vollmundigkeit und Aroma des Bieres. Die Vollmundigkeit entsteht hauptsächlich durch die Eiweißverbindungen, die durch das Malz ins Bier gelangen.&lt;/p&gt;&lt;p&gt;Zum Beispiel ist ein Doppelbock besser, je vollmundiger es ist, demgegenüber sollte ein Pils „schlank“ bleiben. Ein Bier, bei dem man das Gefühl hat man  müsste sie vor dem Schlucken erst kauen ist sehr vollmundig – es „füllt“ den Mundraum. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -3955,17 +3955,17 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="941"/>
         <source>wässrig, leer, dünn</source>
-        <translation>waterig, leeg, dun</translation>
+        <translation>Waterig, leeg, dun</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="948"/>
         <source>etwas leer</source>
-        <translation>enigszins dun</translation>
+        <translation>Enigszins dun</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="955"/>
         <source>schlank</source>
-        <translation>mager</translation>
+        <translation>Mager</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="962"/>
@@ -3975,7 +3975,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="969"/>
         <source>mastig, breit</source>
-        <translation>zwaar</translation>
+        <translation>Zwaar</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Haupttrunk.&lt;/p&gt;&lt;p&gt;Nach dem ersten Schluck und der Begutachtung der Schaumhaltbarkeit, kommt ein neues sensorisches Merkmal ins Bewusstsein, die sogenannte Rezenz. Das ist die Spritzigkeit des Bieres, sein Kohlensäuregehalt. &lt;/p&gt;&lt;p&gt;Bei manchen Sorten ist die Rezenz von größerer Bedeutung, so bei hellen hopfenreichen Bieren, ob sie nun Pils oder Export heißen. Bei Anderen ist sie weniger bedeutungsvoll, wie zum Beispiel bei den Starkbieren. &lt;/p&gt;&lt;p&gt;Anmerkung: Ein kohlensäurearmes Bier muss keineswegs schal schmecken, wenn es mit der richtigen Hopfengabe, einer sehr feinen Malzsüße und einer gerade noch wahrnehmbaren Säure ausgestattet ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -4428,6 +4428,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="531"/>
         <source>Mit weiteren Zutaten &quot;Kochen&quot;</source>
+        <translatorcomment>Koken met meer ingrediënten</translatorcomment>
         <translation>Met andere ingrediënten &quot;koken&quot;</translation>
     </message>
     <message>
@@ -4565,17 +4566,17 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="788"/>
         <source>Verlust durch Hopfenseihen</source>
-        <translation>Verlies door hop filtering</translation>
+        <translation>Verlies als gevolg van het uitlekken van de hop</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="795"/>
         <source>Würzemenge vor Hopfenseihen (20°C)</source>
-        <translation>Hoeveelheid wort vóór de hop filtering (20°C)</translation>
+        <translation>wortvolume vóór het uitlkken van de hop (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="809"/>
         <source>Würzemenge nach Hopfenseihen (20°C)</source>
-        <translation>Hoeveelheid wort na de hop filtering (20°C)</translation>
+        <translation>Hoeveelheid wort na het uitlekken van de hop (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="850"/>
@@ -4668,7 +4669,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="1530"/>
         <source>Anstellen</source>
-        <translation>Toepassen op</translation>
+        <translation>Toevoegen gist</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektive Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellen&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Von der gemessenen Stammwürze wird der Anteil aus den weiteren Zutaten (Maischen &amp;amp; Kochen) abgezogen. Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er kann im Tab Ausrüstung zur Durchschnittsberechnung herangezogen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -4677,7 +4678,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="1920"/>
         <source>Abgefüllte Speisemenge</source>
-        <translation>Hoeveelheid gebotteld wort</translation>
+        <translation>Hoeveelheid onvergiste wort</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1712"/>
@@ -4695,12 +4696,12 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="1539"/>
         <source>Stammwürze beim Anstellen</source>
-        <translation>Soortelijk gewicht bij het toevoegen van gist</translation>
+        <translation>Soortelijk gewicht tijdens het toevoegen van gist</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2112"/>
         <source>Benötigte Speisemenge</source>
-        <translation>Benodigde hoeveelheid wort</translation>
+        <translation>Benodigde onvergist wort</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="119"/>
@@ -4832,7 +4833,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="1995"/>
         <source>Anstellmenge (20°C)</source>
-        <translation>Toegevoegde hoeveelheid (20°C)</translation>
+        <translation>Hoeveelheid tijdens toevoegen gist (20°C)</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2027"/>
@@ -4960,7 +4961,7 @@ Botteldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.cpp" line="453"/>
         <source>Sud als gebraut markieren?</source>
-        <translation>Batch markeren als gebrouwen?</translation>
+        <translation>Brouwsel markeren als gebrouwen?</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.cpp" line="454"/>
@@ -5524,13 +5525,13 @@ Brouwdatum: %1</translation>
         <location filename="../tabgaerverlauf.cpp" line="62"/>
         <location filename="../tabgaerverlauf.cpp" line="88"/>
         <source>Alk. [%]</source>
-        <translation>Alk. [%]</translation>
+        <translation>Alc. [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="63"/>
         <location filename="../tabgaerverlauf.cpp" line="89"/>
         <source>sEVG [%]</source>
-        <translation>Att. [%]</translation>
+        <translation>SVG. [%]</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.cpp" line="64"/>
@@ -6701,12 +6702,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="884"/>
         <source>Chlorid (0 - 150 mg/l)</source>
-        <translation>Chloride (0 - 150 mg/l)</translation>
+        <translation>Chloride (Cl) (0 - 150 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="772"/>
         <source>Calcium (50 - 150 mg/l)</source>
-        <translation>Calcium (50 - 150 mg/l)</translation>
+        <translation>Calcium (Ca) (50 - 150 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="583"/>
@@ -6776,12 +6777,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="700"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
-        <translation>Waterstofcarbonaat (0 - 500 mg/l)</translation>
+        <translation>Waterstofcarbonaat (HC03) (0 - 500 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="968"/>
         <source>Sulfat (0 - 250 mg/l)</source>
-        <translation>Sulfaat (0 - 250 mg/l)</translation>
+        <translation>Sulfaat (SO4) (0 - 250 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="746"/>
@@ -6836,12 +6837,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabrohstoffe.ui" line="714"/>
         <source>Natrium (0 - 50 mg/l)</source>
-        <translation>Natrium (0 - 50 mg/l)</translation>
+        <translation>Natrium (Na) (0 - 50 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="707"/>
         <source>Magnesium (0 - 20 mg/l)</source>
-        <translation>Magnesium (0 - 20 mg/l)</translation>
+        <translation>Magnesium (Mg) (0 - 20 mg/l)</translation>
     </message>
     <message>
         <location filename="../tabrohstoffe.ui" line="481"/>
@@ -7308,7 +7309,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="306"/>
         <source>Kopieren</source>
-        <translation>Kopie</translation>
+        <translation>kopiëren</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="327"/>
@@ -7353,7 +7354,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="394"/>
         <source>Exportieren</source>
-        <translation>Exporteer</translation>
+        <translation>Exporteren</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="428"/>
@@ -7378,7 +7379,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.ui" line="489"/>
         <source>Vergessen</source>
-        <translation>Vergeet</translation>
+        <translation>Vergeten</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="523"/>
@@ -7536,7 +7537,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.cpp" line="63"/>
         <source>Bittere [IBU]</source>
-        <translation>Bitterness [IBU]</translation>
+        <translation>Bitterheid [IBU]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="65"/>
@@ -7551,12 +7552,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.cpp" line="68"/>
         <source>Schüttung [kg]</source>
-        <translation>Grist [kg]</translation>
+        <translation>Schrootsel [kg]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="69"/>
         <source>Kosten [%1/l]</source>
-        <translation>Costs [%1/l]</translation>
+        <translation>Kosten [%1/l]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="70"/>
@@ -7581,12 +7582,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.cpp" line="74"/>
         <source>Verdampfungsrate [l/h]</source>
-        <translation>Evaporation rate [l/h]</translation>
+        <translation>Verdampingsgraad [l/h]</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="75"/>
         <source>Für Durchschnitt Ignorieren</source>
-        <translation>Ignore for average</translation>
+        <translation>Voor gemiddelde negeren</translation>
     </message>
     <message>
         <source>Sud nicht verbraucht</source>
@@ -7595,12 +7596,12 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../tabsudauswahl.cpp" line="263"/>
         <source>Sud verbraucht</source>
-        <translation>Beer consumed</translation>
+        <translation>Brouwsel verbruikt</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="430"/>
         <source>Neuer Sud</source>
-        <translation>New batch</translation>
+        <translation>Nieuw Brouwsel</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="464"/>
@@ -7612,13 +7613,13 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <location filename="../tabsudauswahl.cpp" line="528"/>
         <location filename="../tabsudauswahl.cpp" line="547"/>
         <source>Sud löschen?</source>
-        <translation>Delete batch?</translation>
+        <translation>Brouwsel Verwijderen?</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.cpp" line="529"/>
         <location filename="../tabsudauswahl.cpp" line="548"/>
         <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
-        <translation>Delete batch &quot;%1&quot;?</translation>
+        <translation>Moet brouwsel &quot;%1&quot; verwijderd worden? </translation>
     </message>
     <message>
         <source>Rezept Import</source>
@@ -8201,7 +8202,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdgrast.ui" line="69"/>
         <source>Zubrühen</source>
-        <translation>Water toevoegen</translation>
+        <translation>Brouwsel</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="183"/>
@@ -8371,7 +8372,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdgrast.ui" line="849"/>
         <source>Absetzdauer</source>
-        <translation>stabilisatietijd</translation>
+        <translation>bezinkingstijd</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="869"/>
@@ -8446,7 +8447,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="12"/>
         <source>Weizenrast (Ferulsäurerast)</source>
-        <translation>Diverse esterasen (Vrijmaken van ferulazuur)</translation>
+        <translation>Tarwe Rust (Vrijmaken van ferulazuur)</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="13"/>
@@ -8511,7 +8512,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     <message>
         <location filename="../widgets/wdgrast.cpp" line="252"/>
         <source>Nur der erste Schritt sollte &quot;Einmaischen&quot; sein.</source>
-        <translation>Alleen de eerste stap moet &quot;Inmaischen&quot;.zijn.</translation>
+        <translation>Alleen de eerste stap mag &quot;Inmaischen&quot;.zijn.</translation>
     </message>
 </context>
 <context>
@@ -8926,7 +8927,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="598"/>
         <source>keine Entnahme</source>
         <translatorcomment>No removal</translatorcomment>
-        <translation>geen verwijdering</translation>
+        <translation>geen extractie</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="605"/>

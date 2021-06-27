@@ -32,5 +32,10 @@ DlgHilfe::~DlgHilfe()
 
 void DlgHilfe::setUrl(const QUrl &url)
 {
+  #ifdef QT_WEBENGINECORE_LIB
     ui->webview->setUrl(url);
+  #else
+    Q_UNUSED(url)
+    ui->webview->setHtml(tr("Nicht unterstützt."));
+  #endif
 }

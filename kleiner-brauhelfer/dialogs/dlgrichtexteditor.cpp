@@ -98,7 +98,9 @@ void DlgRichTextEditor::on_tbRichText_cursorPositionChanged()
     ui->btnListOrdered->setChecked(list && style == QTextListFormat::ListDecimal);
 
     QTextBlockFormat blockFormat = cursor.blockFormat();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
     ui->cbStyle->setCurrentIndex(blockFormat.headingLevel());
+  #endif
     ui->btnLeft->setChecked(blockFormat.alignment() & Qt::AlignLeft);
     ui->btnCenter->setChecked(blockFormat.alignment() & Qt::AlignHCenter);
     ui->btnRight->setChecked(blockFormat.alignment() & Qt::AlignRight);
@@ -131,7 +133,9 @@ void DlgRichTextEditor::on_cbStyle_currentIndexChanged(int index)
         cursor.select(QTextCursor::BlockUnderCursor);
 
     QTextBlockFormat blockFormat = cursor.blockFormat();
+  #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
     blockFormat.setHeadingLevel(index);
+  #endif
     cursor.setBlockFormat(blockFormat);
 
     QTextCharFormat format;

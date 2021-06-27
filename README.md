@@ -17,7 +17,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.3.0](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+- [Version 2.3.1](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -27,7 +27,7 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 
 ### Linux
 - **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
-  - Benötigt zusätzlich Installation von [Qt 5.15.0](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
+  - Benötigt zusätzlich Installation von [Qt 5.15.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
     - Desktop gcc 64-bit, Qt Charts, Qt WebEngine
   - Benötigt OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
@@ -47,7 +47,7 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 
 ## Änderungen & Erweiterungen
 
-### Version 2.3.1 (in Entwicklung)
+### Version 2.3.1 (27.06.2021)
 - Neu: Offizielle version kompiliert mit **Qt 5.15.2**
 - Neu: Die meisten Eingabefelder für Bemerkungen unterstützen HTML (inklusive Editor)
 - Neu: Modul Schnellgärprobe ein- und ausschaltbar

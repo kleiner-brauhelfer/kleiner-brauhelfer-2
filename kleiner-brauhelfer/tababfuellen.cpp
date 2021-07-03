@@ -194,6 +194,8 @@ void TabAbfuellen::checkEnabled()
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
     ui->tbWassserZuckerloesung->setReadOnly(abgefuellt);
+    ui->tbTemperaturKarbonisierung->setReadOnly(abgefuellt);
+    ui->tbFlaschengroesse->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
     ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
@@ -406,5 +408,9 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
 
 void TabAbfuellen::on_btnSudVerbraucht_clicked()
 {
+    if (QMessageBox::question(this, tr("Sud als verbraucht markieren?"),
+                                    tr("Soll der Sud als verbraucht markiert werden?"),
+                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
+        return;
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
 }

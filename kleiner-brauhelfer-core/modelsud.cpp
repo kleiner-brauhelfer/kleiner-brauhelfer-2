@@ -623,8 +623,13 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     }
     case Colerg_AbgefuellteBiermenge:
     {
-        double speise = data(idx.row(), ColSpeiseAnteil).toDouble() / 1000;
-        double verschneidung = data(idx.row(), ColVerschneidungAbfuellen).toDouble();
+        double speise = 0.0;
+        double verschneidung = 0.0;
+        if (!data(idx.row(), ColSpunden).toBool())
+        {
+            speise = data(idx.row(), ColSpeiseAnteil).toDouble() / 1000;
+            verschneidung = data(idx.row(), ColVerschneidungAbfuellen).toDouble();
+        }
         double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
         if (QSqlTableModel::setData(idx, value))
         {

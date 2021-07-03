@@ -219,6 +219,10 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
+    ui->tbTempKochbeginn->setReadOnly(gebraut);
+    ui->tbTempKochende->setReadOnly(gebraut);
+    ui->tbSpeiseSRE->setReadOnly(gebraut);
+    ui->tbSpeiseT->setReadOnly(gebraut);
 }
 
 void TabBraudaten::updateValues()

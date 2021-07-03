@@ -47,6 +47,9 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 
 ## Änderungen & Erweiterungen
 
+### Version 2.3.2 (in Entwicklung)
+- Fix: Kombination Spunden und Zuckerlösung
+
 ### Version 2.3.1 (27.06.2021)
 - Neu: Offizielle version kompiliert mit **Qt 5.15.2**
 - Neu: Die meisten Eingabefelder für Bemerkungen unterstützen HTML (inklusive Editor)

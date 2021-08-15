@@ -31,7 +31,7 @@ jobs:
           chmod +x ./deployment/linux/64bit/deploy.sh
           chmod +x ./deployment/linux/64bit/AppImage/linuxdeployqt-6-x86_64.AppImage
           chmod +x ./deployment/linux/64bit/AppImage/AppRun
-          ./build_linux64.sh /opt/qt512/bin/ 1
+          ./build_linux64.sh "${Qt5_DIR}/bin/" 1
           mkdir -p deploy
           cp ./kbh2_*.deb deploy/
           cp ./kleiner-brauhelfer-2-x86_64.AppImage deploy/

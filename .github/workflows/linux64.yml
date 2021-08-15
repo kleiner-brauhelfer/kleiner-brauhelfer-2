@@ -18,11 +18,12 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies
-        run: |
-          sudo add-apt-repository ppa:beineri/opt-qt-5.12.3-xenial
-          sudo apt-get update -qq
-          sudo apt-get install build-essential -y
-          sudo apt-get install qt512-meta-full qt512charts-no-lgpl libgl1-mesa-dev -y
+        run: sudo apt-get install build-essential libgl1-mesa-dev-y
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          modules: qtcharts qtwebengine
 
       - name: Build kleiner-brauhelfer-2
         run: |

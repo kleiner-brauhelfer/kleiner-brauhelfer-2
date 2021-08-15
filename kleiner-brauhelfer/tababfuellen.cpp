@@ -366,8 +366,10 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
 {
     if (!bh->sud()->getAbfuellenBereitZutaten())
     {
-        QMessageBox::warning(this, tr("Zutaten Gärung"),
-                             tr("Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen."));
+        if (QMessageBox::warning(this, tr("Zutaten Gärung"),
+                             tr("Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.")
+                             + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
+                             QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
         return;
     }
 
@@ -375,14 +377,18 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
     {
         if (bh->sud()->getSWJungbier() > bh->sud()->getGruenschlauchzeitpunkt())
         {
-            QMessageBox::warning(this, tr("Grünschlauchzeitpunkt nicht erreicht"),
-                                 tr("Der Grünschlauchzeitpunkt wurde noch nicht erreicht."));
+            if (QMessageBox::warning(this, tr("Grünschlauchzeitpunkt nicht erreicht"),
+                                 tr("Der Grünschlauchzeitpunkt wurde noch nicht erreicht.")
+                                 + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
+                                 QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
             return;
         }
         else if (bh->sud()->getSWJungbier() < bh->sud()->getSWSchnellgaerprobe())
         {
-            QMessageBox::warning(this, tr("Schnellgärprobe"),
-                                 tr("Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe."));
+            if (QMessageBox::warning(this, tr("Schnellgärprobe"),
+                                 tr("Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.")
+                                 + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
+                                 QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
             return;
         }
     }

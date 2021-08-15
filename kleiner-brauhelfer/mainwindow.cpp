@@ -116,7 +116,7 @@ MainWindow::MainWindow(QWidget *parent) :
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
 
-    if (!gSettings->initModules())
+    if (gSettings->modulesFirstTime)
         on_actionModule_triggered();
 
     modulesChanged(Settings::ModuleAlle);

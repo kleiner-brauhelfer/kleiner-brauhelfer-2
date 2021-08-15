@@ -83,7 +83,7 @@ public:
 
     QString dataDir(int type) const;
 
-    bool initModules();
+    void initModules();
     Modules modules() const;
     void enableModule(Module module, bool enabled);
     bool isModuleEnabled(Module module) const;
@@ -139,6 +139,7 @@ public:
 
     // run-time settings
     bool ForceEnabled = false;
+    bool modulesFirstTime = false;
 
 private:
     Theme mTheme;

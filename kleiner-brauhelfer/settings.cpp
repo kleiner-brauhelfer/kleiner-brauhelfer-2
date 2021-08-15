@@ -372,13 +372,14 @@ QString Settings::dataDir(int type) const
     }
 }
 
-bool Settings::initModules()
+void Settings::initModules()
 {
-    bool ret;
     beginGroup("General");
-    ret = contains("Modules");
-    if (!ret)
+    if (!contains("Modules"))
+    {
+        modulesFirstTime = true;
         setValue("Modules", uint(ModuleDefault));
+    }
     mModules = static_cast<Modules>(value("Modules").toUInt());
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     mModules.setFlag(ModuleSudauswahl);
@@ -392,10 +393,8 @@ bool Settings::initModules()
     mModules |= ModuleBraudaten;
     mModules |= ModuleAbfuellen;
     mModules |= ModuleRohstoffe;
-
   #endif
     endGroup();
-    return ret;
 }
 
 Settings::Modules Settings::modules() const

@@ -45,6 +45,30 @@ Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) vo
 ### Skalierung anpassen
 Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte des Monitors skaliert. Ist dies nicht erwünscht, kann diese Option mit dem Startparameter *QT_AUTO_SCREEN_SCALE_FACTOR=0* deaktiviert werden. Zusätzlich kann mit dem Startparameter *QT_SCALE_FACTOR=1.5* einen beliebigen Skalierungsfaktor angegeben werden (hier 150%).
 
+### Qt Installation unter Linux
+Alternativ zum offiziellen Qt Installer (https://www.qt.io/download-qt-installer) kann Qt mit [Another Qt installer(aqt)](https://github.com/miurahr/aqtinstall) installiert werden:
+```
+# Configure
+VERSION='5.15.2'
+QT_PATH="/opt/Qt"
+
+# Location for logs and download files
+mkdir /tmp/aqt
+cd /tmp/aqt
+
+# Install helper (https://github.com/miurahr/aqtinstall)
+sudo pip install aqtinstall
+
+# Install Qt
+sudo python3 -m aqt install --outputdir ${QT_PATH} ${VERSION} linux desktop -m qtcharts qtwebengine
+
+# Set ENV variables
+export PATH=${QT_PATH}/${VERSION}/clang_64/bin/:$PATH
+export QT_PLUGIN_PATH=${QT_PATH}/${VERSION}/clang_64/plugins/
+export QML_IMPORT_PATH=${QT_PATH}/${VERSION}/clang_64/qml/
+export QML2_IMPORT_PATH=${QT_PATH}/${VERSION}/clang_64/qml/
+```
+
 ## Änderungen & Erweiterungen
 
 ### Version 2.3.2 (in Entwicklung)

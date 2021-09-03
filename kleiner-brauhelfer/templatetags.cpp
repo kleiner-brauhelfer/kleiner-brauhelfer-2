@@ -168,6 +168,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctxSud["FarbeRgb"] = QColor(BierCalc::ebcToColor(bh->modelSud()->data(sudRow, ModelSud::ColFarbeIst).toDouble())).name();
         ctxSud["Braudatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColBraudatum).toDate(), QLocale::ShortFormat);
         ctxSud["Abfuelldatum"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColAbfuelldatum).toDate(), QLocale::ShortFormat);
+        ctxSud["ReifungStart"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColReifungStart).toDate(), QLocale::ShortFormat);
         ctxSud["Alkohol"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Alkohol).toDouble(), 'f', 1);
         ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColsEVG).toInt());
         ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);

@@ -1,3 +1,4 @@
+
 #include "tabbrauuebersicht.h"
 #include "ui_tabbrauuebersicht.h"
 #include <QKeyEvent>
@@ -99,6 +100,9 @@ void TabBrauUebersicht::restoreView(bool full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }
 
+
+
+
 void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 {
     TableView *table = ui->tableView;
@@ -133,9 +137,10 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
     gSettings->endGroup();
 
-    connect(model, SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
-    connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
-    connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
+    connect(model, SIGNAL(layoutChanged()), this, SLOT(updateViews()));
+    connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateViews()));
+    connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateViews()));
+    connect(model, SIGNAL(dataChanged(QModelIndex, QModelIndex, QVector<int>)), this, SLOT(updateViews()));    
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->diagram, SIGNAL(sig_selectionChanged(int)),
@@ -143,6 +148,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
     updateDiagram();
 }
+
 
 void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
 {
@@ -162,10 +168,19 @@ void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
     }
 }
 
+void TabBrauUebersicht::updateViews()
+{
+    ProxyModelBrauuebersicht *proxyModel = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+    proxyModel->invalidate();
+
+    updateDiagram();
+}
+
 void TabBrauUebersicht::updateDiagram()
 {
     ui->diagram->DiagrammLeeren();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+
     if (model->rowCount() > 1)
     {
         int i = ui->cbAuswahlL1->currentIndex() + 1;

@@ -144,7 +144,6 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     updateDiagram();
 }
 
-
 void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
@@ -175,7 +174,6 @@ void TabBrauUebersicht::updateDiagram()
 {
     ui->diagram->DiagrammLeeren();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
-
     if (model->rowCount() > 1)
     {
         int i = ui->cbAuswahlL1->currentIndex() + 1;

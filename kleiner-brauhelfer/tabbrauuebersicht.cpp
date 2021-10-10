@@ -1,4 +1,3 @@
-
 #include "tabbrauuebersicht.h"
 #include "ui_tabbrauuebersicht.h"
 #include <QKeyEvent>
@@ -16,7 +15,6 @@ extern Settings* gSettings;
 class ProxyModelBrauuebersicht : public ProxyModelSud
 {
 public:
-
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
         ProxyModelSud(parent)
     {
@@ -99,9 +97,6 @@ void TabBrauUebersicht::restoreView(bool full)
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }
-
-
-
 
 void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 {

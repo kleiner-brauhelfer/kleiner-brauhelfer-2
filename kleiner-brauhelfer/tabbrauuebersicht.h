@@ -27,8 +27,8 @@ private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
 
 private slots:
-    void updateViews();
     void updateDiagram();
+    void modelDataChanged(const QModelIndex& index);
     void on_tableView_doubleClicked(const QModelIndex &index);
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int sudId);

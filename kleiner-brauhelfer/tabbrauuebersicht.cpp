@@ -132,10 +132,10 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
 
     gSettings->endGroup();
 
-    connect(model, SIGNAL(layoutChanged()), this, SLOT(updateViews()));
-    connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateViews()));
-    connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateViews()));
-    connect(model, SIGNAL(dataChanged(QModelIndex, QModelIndex, QVector<int>)), this, SLOT(updateViews()));    
+    connect(model, SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
+    connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
+    connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
+    connect(model, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(modelDataChanged(QModelIndex)));
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->diagram, SIGNAL(sig_selectionChanged(int)),
@@ -162,11 +162,15 @@ void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void TabBrauUebersicht::updateViews()
+void TabBrauUebersicht::modelDataChanged(const QModelIndex& index)
 {
-    ProxyModelBrauuebersicht *proxyModel = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
-    proxyModel->invalidate();
-
+    switch (index.column())
+    {
+    case ModelSud::ColStatus:
+        ProxyModelBrauuebersicht *proxyModel = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+        proxyModel->invalidate();
+        break;
+    }
     updateDiagram();
 }
 

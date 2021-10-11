@@ -28,6 +28,7 @@ private:
 
 private slots:
     void updateDiagram();
+    void modelDataChanged(const QModelIndex& index);
     void on_tableView_doubleClicked(const QModelIndex &index);
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int sudId);

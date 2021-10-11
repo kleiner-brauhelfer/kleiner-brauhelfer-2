@@ -15,7 +15,6 @@ extern Settings* gSettings;
 class ProxyModelBrauuebersicht : public ProxyModelSud
 {
 public:
-
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
         ProxyModelSud(parent)
     {
@@ -136,6 +135,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     connect(model, SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
     connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
     connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
+    connect(model, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(modelDataChanged(QModelIndex)));
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->diagram, SIGNAL(sig_selectionChanged(int)),
@@ -160,6 +160,18 @@ void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
             break;
         }
     }
+}
+
+void TabBrauUebersicht::modelDataChanged(const QModelIndex& index)
+{
+    switch (index.column())
+    {
+    case ModelSud::ColStatus:
+        ProxyModelBrauuebersicht *proxyModel = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+        proxyModel->invalidate();
+        break;
+    }
+    updateDiagram();
 }
 
 void TabBrauUebersicht::updateDiagram()

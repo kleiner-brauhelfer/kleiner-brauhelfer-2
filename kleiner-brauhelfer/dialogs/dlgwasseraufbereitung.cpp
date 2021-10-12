@@ -22,7 +22,7 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     mList.append({tr("Magnesiumchlorid-Hexahydrat (MgCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.251, 100});
     mList.append({tr("Magnesiumsulfat-Heptahydrat (MgSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.3077, 100});
     mList.append({tr("<manuell>"), static_cast<int>(Brauhelfer::Einheit::ml), 0, 100});
-    for (const auto& it : mList)
+    for (const auto& it : qAsConst(mList))
         ui->cbAuswahl->addItem(it.name);
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());

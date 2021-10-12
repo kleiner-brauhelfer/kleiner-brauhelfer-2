@@ -89,7 +89,7 @@ void DlgTableView::on_btnDelete_clicked()
 {
     QModelIndexList indices = ui->tableView->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
         ui->tableView->model()->removeRow(index.row());
 }
 

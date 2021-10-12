@@ -206,9 +206,9 @@ void TabAbfuellen::updateValues()
     if (!isTabActive())
         return;
 
-    for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+    for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
-    for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
+    for (auto& wdg : findChildren<SpinBoxSud*>())
         wdg->updateValue();
 
     QDateTime dt = bh->sud()->getAbfuelldatum();

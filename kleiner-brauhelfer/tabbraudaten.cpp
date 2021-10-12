@@ -230,7 +230,7 @@ void TabBraudaten::updateValues()
     if (!isTabActive())
         return;
 
-    for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+    for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
 
     double value;

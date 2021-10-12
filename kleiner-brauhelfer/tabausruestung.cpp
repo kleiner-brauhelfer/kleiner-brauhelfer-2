@@ -237,7 +237,7 @@ void TabAusruestung::on_btnAnlageLoeschen_clicked()
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewAnlagen->model());
     QModelIndexList indices = ui->tableViewAnlagen->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
     {
         QString name = model->data(index.row(), ModelAusruestung::ColName).toString();
         int ret = QMessageBox::question(this, tr("Brauanlage löschen?"),
@@ -275,7 +275,7 @@ void TabAusruestung::on_btnGeraetLoeschen_clicked()
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewGeraete->model());
     QModelIndexList indices = ui->tableViewGeraete->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
     {
         QString name = model->data(index.row(), ModelGeraete::ColBezeichnung).toString();
         int ret = QMessageBox::question(this, tr("Gerät löschen?"),

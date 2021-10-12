@@ -18,7 +18,7 @@ void TableView::build()
     int visualIndex = 0;
     for (int c = 0; c < model()->columnCount(); ++c)
         setColumnHidden(c, true);
-    for (const auto& col : mCols)
+    for (const auto& col : qAsConst(mCols))
     {
         setColumnHidden(col.col, !col.visible);
         if (col.itemDelegate)
@@ -46,7 +46,7 @@ bool TableView::restoreState(const QByteArray &state)
     {
         QList<int> mustHave;
         QList<int> canHave;
-        for (const ColumnDefinition& col : mCols)
+        for (const ColumnDefinition& col : qAsConst(mCols))
         {
             canHave.append(col.col);
             if (!col.canHide)
@@ -80,7 +80,7 @@ bool TableView::restoreState(const QByteArray &state)
 void TableView::setDefaultContextMenu()
 {
     bool addMenu = false;
-    for (const auto& col : mCols)
+    for (const auto& col : qAsConst(mCols))
     {
         if (col.canHide)
         {
@@ -172,7 +172,7 @@ void TableView::keyPressEvent(QKeyEvent* event)
         }
 
         // header
-        for (int col : cols)
+        for (int col : qAsConst(cols))
         {
             QString value = model()->headerData(col, Qt::Horizontal).toString();
             clipboardText.append(value);
@@ -187,7 +187,7 @@ void TableView::keyPressEvent(QKeyEvent* event)
             // iterate rows
             for (QModelIndex& row : rows)
             {
-                for (int col : cols)
+                for (int col : qAsConst(cols))
                 {
                     QModelIndex index = row.sibling(row.row(), col);
 
@@ -214,7 +214,7 @@ void TableView::keyPressEvent(QKeyEvent* event)
                 if (prevRow == row.row())
                     continue;
                 prevRow = row.row();
-                for (int col : cols)
+                for (int col : qAsConst(cols))
                 {
                     QModelIndex index = row.sibling(row.row(), col);
 

@@ -707,6 +707,6 @@ void TabEtikette::on_btnTagLoeschen_clicked()
     ProxyModel *model = bh->sud()->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
         model->removeRow(index.row());
 }

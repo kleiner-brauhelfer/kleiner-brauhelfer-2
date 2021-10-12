@@ -513,7 +513,7 @@ void DlgDatabaseCleaner::on_btnDelete_clicked()
     SqlTableModel *model = static_cast<SqlTableModel*>(ui->tableView->model());
     QModelIndexList indices = ui->tableView->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
         model->removeRow(index.row());
     selectionChanged();
 }

@@ -551,9 +551,9 @@ void TabRezept::updateValues()
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     bool enabled = status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled;
 
-    for (DoubleSpinBoxSud *wdg : findChildren<DoubleSpinBoxSud*>())
+    for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
-    for (SpinBoxSud *wdg : findChildren<SpinBoxSud*>())
+    for (auto& wdg : findChildren<SpinBoxSud*>())
         wdg->updateValue();
 
     if (!ui->tbSudname->hasFocus())
@@ -1459,6 +1459,6 @@ void TabRezept::on_btnTagLoeschen_clicked()
     ProxyModel *model = bh->sud()->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
         model->removeRow(index.row());
 }

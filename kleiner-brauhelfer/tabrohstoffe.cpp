@@ -617,7 +617,7 @@ void TabRohstoffe::on_buttonDelete_clicked()
     ProxyModel *model = static_cast<ProxyModel*>(table->model());
     QModelIndexList indices = table->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : indices)
+    for (const QModelIndex& index : qAsConst(indices))
     {
         bool del = true;
         if (table == ui->tableWasser)

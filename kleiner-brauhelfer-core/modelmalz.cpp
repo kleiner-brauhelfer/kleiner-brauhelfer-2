@@ -1,3 +1,4 @@
+// clazy:excludeall=skipped-base-method
 #include "modelmalz.h"
 #include "brauhelfer.h"
 #include <QDate>

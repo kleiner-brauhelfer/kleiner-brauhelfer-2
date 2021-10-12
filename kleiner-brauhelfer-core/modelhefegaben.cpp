@@ -1,3 +1,4 @@
+// clazy:excludeall=skipped-base-method
 #include "modelhefegaben.h"
 #include "brauhelfer.h"
 #include <QDateTime>

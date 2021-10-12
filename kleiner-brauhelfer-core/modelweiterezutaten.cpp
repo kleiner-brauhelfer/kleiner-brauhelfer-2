@@ -1,3 +1,4 @@
+// clazy:excludeall=skipped-base-method
 #include "modelweiterezutaten.h"
 #include "brauhelfer.h"
 #include <QDate>
@@ -43,6 +44,7 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
         case Brauhelfer::Einheit::ml:
             return menge;
         }
+        return 0;
     }
     case ColInGebrauch:
     {

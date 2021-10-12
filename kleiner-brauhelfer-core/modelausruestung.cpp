@@ -1,3 +1,4 @@
+// clazy:excludeall=skipped-base-method
 #include "modelausruestung.h"
 #include "brauhelfer.h"
 #include <qmath.h>

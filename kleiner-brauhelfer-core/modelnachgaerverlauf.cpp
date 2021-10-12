@@ -1,3 +1,4 @@
+// clazy:excludeall=skipped-base-method
 #include "modelnachgaerverlauf.h"
 #include "brauhelfer.h"
 

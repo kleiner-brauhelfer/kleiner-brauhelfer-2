@@ -1,3 +1,4 @@
+// clazy:excludeall=skipped-base-method
 #include "modelsud.h"
 #include "brauhelfer.h"
 #include <math.h>
@@ -192,6 +193,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         case Brauhelfer::SudStatus::Verbraucht:
             return data(idx.row(), Colerg_AbgefuellteBiermenge).toDouble();
         }
+        return 0;
     }
     case ColIbuIst:
     {

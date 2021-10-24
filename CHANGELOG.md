@@ -1,7 +1,9 @@
 # Changelog
 
 ## Version 2.3.2 (in Entwicklung)
+- Neu: Obergrenze der Zutaten auf 9999 erhöht
 - Fix: Kombination Spunden und Zuckerlösung
+- Fix: Leerzeichen und Zeilenumbrüche in den Bemerkungsfelder
 
 ## Version 2.3.1 (27.06.2021)
 - Neu: Offizielle version kompiliert mit **Qt 5.15.2**

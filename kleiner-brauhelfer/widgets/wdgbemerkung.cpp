@@ -25,7 +25,10 @@ void WdgBemerkung::setToolTip(const QString &text)
 
 void WdgBemerkung::setHtml(const QString& html)
 {
-    ui->tbRichText->setHtml(html);
+    if (Qt::mightBeRichText(html))
+        ui->tbRichText->setHtml(html);
+    else
+        ui->tbRichText->setPlainText(html);
 }
 
 QString WdgBemerkung::toHtml() const

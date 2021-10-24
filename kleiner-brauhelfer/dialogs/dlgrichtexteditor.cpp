@@ -58,10 +58,28 @@ DlgRichTextEditor::~DlgRichTextEditor()
 
 QString DlgRichTextEditor::stripHeader(const QString& html)
 {
+    QString body;
     int start = html.indexOf("<body");
-    start = html.indexOf(">", start) + 2;
-    int end = html.indexOf("</body>");
-    return html.mid(start, end - start);
+    if (start != -1)
+    {
+        start = html.indexOf(">", start) + 2;
+        int end = html.indexOf("</body>");
+        if (end != -1)
+        {
+            body = html.mid(start, end - start);
+        }
+        else
+        {
+            body = html.left(start);
+        }
+    }
+    else
+    {
+        body = html;
+    }
+    const QString divStart = "<div style=\"white-space: pre-wrap;\">\n";
+    const QString divEnd = "\n</div>";
+    return divStart + body + divEnd;
 }
 
 void DlgRichTextEditor::setHtml(const QString& html)

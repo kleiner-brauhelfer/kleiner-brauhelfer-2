@@ -3,11 +3,13 @@
 #include <QLocale>
 #include <QCoreApplication>
 #include <QDir>
+#include <QTextDocument>
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "tabrohstoffe.h"
 #include "widgets/wdganhang.h"
+#include "dialogs/dlgrichtexteditor.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -25,6 +27,14 @@ void TemplateTags::render(WdgWebViewEditable* view, std::function<void(QVariantM
         fnc(view->mTemplateTags);
     view->updateTags();
     view->updateWebView();
+}
+
+QString textToHtml(QString text)
+{
+    if (Qt::mightBeRichText(text))
+        return text;
+    else
+        return DlgRichTextEditor::stripHeader(text);
 }
 
 void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
@@ -107,7 +117,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctxRezept["Name"] = bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString();
         ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
         ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
-        ctxRezept["Kommentar"] = bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString().replace("\n", "<br>");
+        ctxRezept["Kommentar"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString());
         ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
         fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
         ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);
@@ -173,9 +183,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctxSud["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColsEVG).toInt());
         ctxSud["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_Sudhausausbeute).toDouble(), 'f', 1);
         ctxSud["effSHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_EffektiveAusbeute).toDouble(), 'f', 1);
-        ctxSud["BemerkungBrauen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString().replace("\n", "<br>");
-        ctxSud["BemerkungAbfuellen"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString().replace("\n", "<br>");
-        ctxSud["BemerkungGaerung"] = bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString().replace("\n", "<br>");
+        ctxSud["BemerkungBrauen"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungBrauen).toString());
+        ctxSud["BemerkungAbfuellen"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungAbfuellen).toString());
+        ctxSud["BemerkungGaerung"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungGaerung).toString());
         if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
         {
             ctxSud["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetIst).toDouble(), 'f', 2);

@@ -2,8 +2,9 @@ name: linux64
 
 on:
   workflow_dispatch:
+    inputs:
       tags:
-        description: 'Test workflow'
+        description: 'Test workflow on branch'
   push:
     branches: 
       - master

@@ -1,6 +1,7 @@
 name: linux64
 
 on:
+  workflow_dispatch:
   push:
     branches: 
       - master

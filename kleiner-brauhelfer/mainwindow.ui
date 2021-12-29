@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>500</height>
+    <width>1578</width>
+    <height>910</height>
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -40,8 +40,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>800</width>
-         <height>459</height>
+         <width>1578</width>
+         <height>849</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -59,6 +59,9 @@
         </property>
         <item>
          <widget class="QTabWidget" name="tabMain">
+          <property name="currentIndex">
+           <number>10</number>
+          </property>
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
            <attribute name="icon">
             <iconset resource="images.qrc">
@@ -159,16 +162,6 @@
             <string>Ausrüstung</string>
            </attribute>
           </widget>
-          <widget class="TabRohstoffe" name="tabRohstoffe">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabrohstoffe.svg</normaloff>
-             <disabledoff>:/images/disabled/tabrohstoffe.svg</disabledoff>:/images/light/tabrohstoffe.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Rohstoffe</string>
-           </attribute>
-          </widget>
           <widget class="TabDatenbank" name="tabDatenbank">
            <attribute name="icon">
             <iconset resource="images.qrc">
@@ -192,8 +185,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>21</height>
+     <width>1578</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -296,6 +289,21 @@
    <addaction name="menuAnsicht"/>
    <addaction name="menuEinstellungen"/>
    <addaction name="menuHilfe"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionRohstoffe"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -659,15 +667,25 @@
     <string notr="true">F1</string>
    </property>
   </action>
+  <action name="actionRohstoffe">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>:/images/light/tabrohstoffe.svg</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Rohstoffe</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>TabRohstoffe</class>
-   <extends>QWidget</extends>
-   <header>tabrohstoffe.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>TabSudAuswahl</class>
    <extends>QWidget</extends>

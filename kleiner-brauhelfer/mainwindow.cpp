@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
         ui->tabMain->setTabIcon(8, IconThemed("tabbrauuebersicht", false));
         ui->tabMain->setTabIcon(9, IconThemed("tabausruestung", false));
-        ui->tabMain->setTabIcon(10, IconThemed("tabrohstoffe", false));
+        //        ui->tabMain->setTabIcon(10, IconThemed("tabrohstoffe", false)); // TODO clean-up
         ui->tabMain->setTabIcon(11, IconThemed("tabdatenbank", false));
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)
@@ -239,7 +239,7 @@ void MainWindow::saveSettings()
     ui->tabZusammenfassung->saveSettings();
     ui->tabEtikette->saveSettings();
     ui->tabBewertung->saveSettings();
-    ui->tabRohstoffe->saveSettings();
+    // ui->tabRohstoffe->saveSettings(); // TODO clean-up
     ui->tabAusruestung->saveSettings();
     ui->tabDatenbank->saveSettings();
 }
@@ -257,7 +257,7 @@ void MainWindow::restoreView(bool full)
     ui->tabZusammenfassung->restoreView(full);
     ui->tabEtikette->restoreView(full);
     ui->tabBewertung->restoreView(full);
-    ui->tabRohstoffe->restoreView(full);
+    // ui->tabRohstoffe->restoreView(full); // TODO clean-up
     ui->tabAusruestung->restoreView(full);
     ui->tabDatenbank->restoreView(full);
     DlgRohstoffAuswahl::restoreView(full);
@@ -277,7 +277,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
-    ui->tabRohstoffe->modulesChanged(modules);
+    // ui->tabRohstoffe->modulesChanged(modules); // TODO clean-up
     ui->tabAusruestung->modulesChanged(modules);
     ui->tabDatenbank->modulesChanged(modules);
 }

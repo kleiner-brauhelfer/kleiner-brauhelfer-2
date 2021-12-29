@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "proxymodel.h"
 #include "templatetags.h"
-#include "tabrohstoffe.h"
+#include "dialogs/dlgrohstoffe.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer *bh;
@@ -153,12 +153,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
                 int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
-                eintrag.Typ = TabRohstoffe::HopfenTypname[idx];
+                eintrag.Typ = DlgRohstoffe::HopfenTypname[idx];
                 liste = &ListHopfen;
             }
             else
             {
-                eintrag.Typ = TabRohstoffe::ZusatzTypname[static_cast<int>(typ)];
+                eintrag.Typ = DlgRohstoffe::ZusatzTypname[static_cast<int>(typ)];
                 liste = &ListWeitereZutaten;
             }
             eintrag.Einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
@@ -339,9 +339,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 }
             }
             int einheit = static_cast<int>(eintrag.Einheit);
-            if (einheit >= 0 && einheit < TabRohstoffe::Einheiten.count())
+            if (einheit >= 0 && einheit < DlgRohstoffe::Einheiten.count())
             {
-                map.insert("Einheit", TabRohstoffe::Einheiten[einheit]);
+                map.insert("Einheit", DlgRohstoffe::Einheiten[einheit]);
                 switch (eintrag.Einheit)
                 {
                 case Brauhelfer::Einheit::Kg:

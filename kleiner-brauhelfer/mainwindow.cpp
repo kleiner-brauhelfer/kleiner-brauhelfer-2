@@ -15,6 +15,7 @@
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgmodule.h"
 #include "dialogs/dlgconsole.h"
+#include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
 #include "widgets/iconthemed.h"
@@ -44,8 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
         ui->tabMain->setTabIcon(8, IconThemed("tabbrauuebersicht", false));
         ui->tabMain->setTabIcon(9, IconThemed("tabausruestung", false));
-        //        ui->tabMain->setTabIcon(10, IconThemed("tabrohstoffe", false)); // TODO clean-up
-        ui->tabMain->setTabIcon(11, IconThemed("tabdatenbank", false));
+        ui->tabMain->setTabIcon(10, IconThemed("tabdatenbank", false));
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)
         {
@@ -362,8 +362,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
             ui->tabMain->removeTab(index);
     }
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
-        nextIndex++;
-    if (gSettings->isModuleEnabled(Settings::ModuleRohstoffe))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleDatenbank))
     {
@@ -847,18 +845,42 @@ void MainWindow::on_actionZahlenformat_triggered(bool checked)
     restart(1001);
 }
 
-void MainWindow::on_actionModule_triggered()
+// TODO clean-up showToolDialog
+template<typename DLG>
+bool MainWindow::showDialog()
 {
-    if (DlgModule::Dialog)
+    if (DLG::Dialog)
     {
-        DlgModule::Dialog->raise();
-        DlgModule::Dialog->activateWindow();
+        DLG::Dialog->raise();
+        DLG::Dialog->activateWindow();
     }
     else
     {
-        DlgModule::Dialog = new DlgModule(this);
-        DlgModule::Dialog->show();
+        DLG::Dialog = new DLG(this);
+        connect(DLG::Dialog, &DLG::finished, [=]{
+            DLG::Dialog->deleteLater();
+            DLG::Dialog = nullptr;
+            });
+        DLG::Dialog->show();
+        return true;
     }
+    return false;
+}
+
+template<typename DLG>
+bool MainWindow::showToolDialog(void(MainWindow::* slot_finished)() )
+{
+    auto ret = showDialog<DlgRohstoffe>();
+    if(ret)
+    {
+        connect(DlgRohstoffe::Dialog, &DlgRohstoffe::finished, this, slot_finished );
+    }
+    return ret;
+}
+
+void MainWindow::on_actionModule_triggered()
+{
+    showDialog<DlgModule>();
 }
 
 void MainWindow::on_actionSpende_triggered()
@@ -901,14 +923,19 @@ void MainWindow::on_actionUeber_triggered()
 
 void MainWindow::on_actionLog_triggered()
 {
-    if (DlgConsole::Dialog)
-    {
-        DlgConsole::Dialog->raise();
-        DlgConsole::Dialog->activateWindow();
-    }
-    else
-    {
-        DlgConsole::Dialog = new DlgConsole(this);
-        DlgConsole::Dialog->show();
-    }
+
+    showDialog<DlgConsole>();
 }
+
+
+void MainWindow::on_actionRohstoffe_triggered()
+{
+    showToolDialog<DlgRohstoffe>(&MainWindow::dlgRohstoffe_finished);
+
+}
+
+void MainWindow::dlgRohstoffe_finished()
+{
+    ui->actionRohstoffe->setChecked(false);
+}
+

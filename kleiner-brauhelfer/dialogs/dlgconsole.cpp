@@ -21,8 +21,6 @@ DlgConsole::DlgConsole(QWidget *parent) :
     if (size.isValid())
         resize(size);
     gSettings->endGroup();
-
-    connect(this, &DlgConsole::finished, this, []{Dialog->deleteLater();Dialog = nullptr;});
 }
 
 DlgConsole::~DlgConsole()

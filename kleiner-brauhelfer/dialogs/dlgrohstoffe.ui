@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TabRohstoffe</class>
- <widget class="QWidget" name="TabRohstoffe">
+ <class>DlgRohstoffe</class>
+ <widget class="QDialog" name="DlgRohstoffe">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>970</width>
-    <height>710</height>
+    <width>1600</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>4</number>
-   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
@@ -40,7 +37,7 @@
         <string>Neu</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../images.qrc">
          <normaloff>:/images/light/plus.svg</normaloff>:/images/light/plus.svg</iconset>
        </property>
        <property name="popupMode">
@@ -69,7 +66,7 @@
         <string>Löschen</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../images.qrc">
          <normaloff>:/images/light/minus.svg</normaloff>
          <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
        </property>
@@ -143,8 +140,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>516</height>
+        <width>1582</width>
+        <height>685</height>
        </rect>
       </property>
       <attribute name="label">
@@ -195,8 +192,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>516</height>
+        <width>1582</width>
+        <height>685</height>
        </rect>
       </property>
       <attribute name="label">
@@ -247,8 +244,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>516</height>
+        <width>1582</width>
+        <height>685</height>
        </rect>
       </property>
       <attribute name="label">
@@ -299,8 +296,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>516</height>
+        <width>1582</width>
+        <height>685</height>
        </rect>
       </property>
       <attribute name="label">
@@ -351,8 +348,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>952</width>
-        <height>516</height>
+        <width>1582</width>
+        <height>685</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -405,8 +402,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>526</width>
-             <height>560</height>
+             <width>984</width>
+             <height>665</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -1038,39 +1035,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>buttonAdd</tabstop>
-  <tabstop>buttonDelete</tabstop>
-  <tabstop>radioButtonAlle</tabstop>
-  <tabstop>radioButtonVorhanden</tabstop>
-  <tabstop>radioButtonInGebrauch</tabstop>
-  <tabstop>lineEditFilter</tabstop>
-  <tabstop>tableMalz</tabstop>
-  <tabstop>tableHopfen</tabstop>
-  <tabstop>tableHefe</tabstop>
-  <tabstop>tableWeitereZutaten</tabstop>
-  <tabstop>tableWasser</tabstop>
-  <tabstop>scrollArea</tabstop>
-  <tabstop>tbCalciumMg</tabstop>
-  <tabstop>tbCalciumMmol</tabstop>
-  <tabstop>tbCalciumHaerte</tabstop>
-  <tabstop>tbMagnesiumMg</tabstop>
-  <tabstop>tbMagnesiumMmol</tabstop>
-  <tabstop>tbMagnesiumHaerte</tabstop>
-  <tabstop>tbNatriumMg</tabstop>
-  <tabstop>tbNatriumMmol</tabstop>
-  <tabstop>tbSulfatMg</tabstop>
-  <tabstop>tbSulfatMmol</tabstop>
-  <tabstop>tbChloridMg</tabstop>
-  <tabstop>tbChloridMmol</tabstop>
-  <tabstop>tbHydrogencarbonatMg</tabstop>
-  <tabstop>tbHydrogencarbonatMmol</tabstop>
-  <tabstop>tbHydrogencarbonatHaerte</tabstop>
-  <tabstop>tbRestalkalitaetAdd</tabstop>
-  <tabstop>tbRestalkalitaet</tabstop>
- </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../images.qrc"/>
  </resources>
  <connections/>
 </ui>

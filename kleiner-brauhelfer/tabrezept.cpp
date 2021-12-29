@@ -270,6 +270,10 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
+    if(!this->isAncestorOf(now))
+    {
+        return;
+    }    
     if (now && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }

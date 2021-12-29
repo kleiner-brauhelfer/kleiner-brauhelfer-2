@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1578</width>
+    <width>1412</width>
     <height>910</height>
    </rect>
   </property>
@@ -40,7 +40,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1578</width>
+         <width>1412</width>
          <height>849</height>
         </rect>
        </property>
@@ -60,7 +60,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>10</number>
+           <number>0</number>
           </property>
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
            <attribute name="icon">
@@ -185,7 +185,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1578</width>
+     <width>1412</width>
      <height>22</height>
     </rect>
    </property>
@@ -681,6 +681,9 @@
    </property>
    <property name="text">
     <string>Rohstoffe</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
    </property>
   </action>
  </widget>

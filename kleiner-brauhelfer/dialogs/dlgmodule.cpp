@@ -30,8 +30,6 @@ DlgModule::DlgModule(QWidget *parent) :
     if (size.isValid())
         resize(size);
     gSettings->endGroup();
-
-    connect(this, &DlgModule::finished, this, []{Dialog->deleteLater();Dialog = nullptr;});
 }
 
 DlgModule::~DlgModule()

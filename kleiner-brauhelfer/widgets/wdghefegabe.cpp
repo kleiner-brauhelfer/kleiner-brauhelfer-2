@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "tabrohstoffe.h"
+#include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
@@ -129,7 +129,7 @@ void WdgHefeGabe::updateValues()
         {
             ui->frameColor->setPalette(gSettings->palette);
         }
-        ui->frameColor->setToolTip(TabRohstoffe::HefeTypname[idx]);
+        ui->frameColor->setToolTip(DlgRohstoffe::HefeTypname[idx]);
 
         double mengeHefe = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColWuerzemenge).toDouble();
         if (mengeHefe > 0)

@@ -1,5 +1,5 @@
-#include "tabrohstoffe.h"
-#include "ui_tabrohstoffe.h"
+#include "dlgrohstoffe.h"
+#include "ui_dlgrohstoffe.h"
 #include <QMessageBox>
 #include <QMenu>
 #include <QKeyEvent>
@@ -24,26 +24,26 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QStringList TabRohstoffe::HopfenTypname = {
+QStringList DlgRohstoffe::HopfenTypname = {
     "",
     tr("aroma"),
     tr("bitter"),
     tr("universal")
 };
 
-QStringList TabRohstoffe::HefeTypname = {
+QStringList DlgRohstoffe::HefeTypname = {
     "",
     tr("obergärig"),
     tr("untergärig")
 };
 
-QStringList TabRohstoffe::HefeTypFlTrName = {
+QStringList DlgRohstoffe::HefeTypFlTrName = {
     "",
     tr("trocken"),
     tr("flüssig")
 };
 
-QStringList TabRohstoffe::ZusatzTypname = {
+QStringList DlgRohstoffe::ZusatzTypname = {
     tr("Honig"),
     tr("Zucker"),
     tr("Gewürz"),
@@ -54,7 +54,7 @@ QStringList TabRohstoffe::ZusatzTypname = {
     tr("Klärmittel")
 };
 
-QStringList TabRohstoffe::Einheiten = {
+QStringList DlgRohstoffe::Einheiten = {
     tr("kg"),
     tr("g"),
     tr("mg"),
@@ -63,7 +63,9 @@ QStringList TabRohstoffe::Einheiten = {
     tr("ml")
 };
 
-QStringList TabRohstoffe::list_tr(const QStringList& list)
+DlgRohstoffe* DlgRohstoffe::Dialog = nullptr;
+
+QStringList DlgRohstoffe::list_tr(const QStringList& list)
 {
    QStringList result;
    for (const QString& str : list)
@@ -71,9 +73,9 @@ QStringList TabRohstoffe::list_tr(const QStringList& list)
    return result;
 }
 
-TabRohstoffe::TabRohstoffe(QWidget *parent) :
-    TabAbstract(parent),
-    ui(new Ui::TabRohstoffe)
+DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
+    DlgAbstract(parent),
+    ui(new Ui::DlgRohstoffe)
 {
     QPalette pal;
 
@@ -85,6 +87,7 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
 
     ui->setupUi(this);
 
+    // TODO clean-up ?
     QMenu *menu = new QMenu(this);
     menu->addAction(ui->actionNeu);
     menu->addSeparator();
@@ -122,7 +125,9 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     ProxyModelRohstoff *proxyModel;
     TableView *table;
 
-    gSettings->beginGroup("TabRohstoffe");
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::restoreView(true);
+
 
     model = bh->modelMalz();
     model->setHeaderData(ModelMalz::ColName, Qt::Horizontal, tr("Name"));
@@ -313,14 +318,15 @@ TabRohstoffe::TabRohstoffe(QWidget *parent) :
     ui->tableWasser->selectRow(0);
 }
 
-TabRohstoffe::~TabRohstoffe()
+DlgRohstoffe::~DlgRohstoffe()
 {
     delete ui;
 }
 
-void TabRohstoffe::saveSettings()
+void DlgRohstoffe::saveSettings()
 {
-    gSettings->beginGroup("TabRohstoffe");
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::saveSettings();
     gSettings->setValue("tableMalzState", ui->tableMalz->horizontalHeader()->saveState());
     gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
     gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
@@ -335,9 +341,11 @@ void TabRohstoffe::saveSettings()
     gSettings->endGroup();
 }
 
-void TabRohstoffe::restoreView(bool full)
+void DlgRohstoffe::restoreView(bool full)
 {
-    Q_UNUSED(full)
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::restoreView(full);
+    gSettings->endGroup();    
     ui->tableMalz->restoreDefaultState();
     ui->tableHopfen->restoreDefaultState();
     ui->tableHefe->restoreDefaultState();
@@ -345,7 +353,7 @@ void TabRohstoffe::restoreView(bool full)
     ui->tableWasser->restoreDefaultState();
 }
 
-void TabRohstoffe::modulesChanged(Settings::Modules modules)
+void DlgRohstoffe::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleLagerverwaltung))
     {
@@ -387,7 +395,7 @@ void TabRohstoffe::modulesChanged(Settings::Modules modules)
     }
 }
 
-void TabRohstoffe::keyPressEvent(QKeyEvent* event)
+void DlgRohstoffe::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
     QTableView *table;
@@ -425,31 +433,31 @@ void TabRohstoffe::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void TabRohstoffe::on_tableMalz_clicked(const QModelIndex &index)
+void DlgRohstoffe::on_tableMalz_clicked(const QModelIndex &index)
 {
     if (index.column() == ModelMalz::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
-void TabRohstoffe::on_tableHopfen_clicked(const QModelIndex &index)
+void DlgRohstoffe::on_tableHopfen_clicked(const QModelIndex &index)
 {
     if (index.column() == ModelHopfen::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
-void TabRohstoffe::on_tableHefe_clicked(const QModelIndex &index)
+void DlgRohstoffe::on_tableHefe_clicked(const QModelIndex &index)
 {
     if (index.column() == ModelHefe::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
-void TabRohstoffe::on_tableWeitereZutaten_clicked(const QModelIndex &index)
+void DlgRohstoffe::on_tableWeitereZutaten_clicked(const QModelIndex &index)
 {
     if (index.column() == ModelWeitereZutaten::ColLink && QApplication::keyboardModifiers() != Qt::NoModifier)
         QDesktopServices::openUrl(QUrl(index.data().toString()));
 }
 
-void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values)
+void DlgRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values)
 {
     ProxyModel *model = static_cast<ProxyModel*>(table->model());
     ui->radioButtonAlle->setChecked(true);
@@ -465,7 +473,7 @@ void TabRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values
     }
 }
 
-void TabRohstoffe::buttonAdd_clicked()
+void DlgRohstoffe::buttonAdd_clicked()
 {
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
@@ -487,7 +495,7 @@ void TabRohstoffe::buttonAdd_clicked()
     }
 }
 
-void TabRohstoffe::buttonNeuVorlage_clicked()
+void DlgRohstoffe::buttonNeuVorlage_clicked()
 {
     QTableView *table;
     DlgRohstoffVorlage::Art art;
@@ -521,7 +529,7 @@ void TabRohstoffe::buttonNeuVorlage_clicked()
         addEntry(table, dlg.values());
 }
 
-void TabRohstoffe::buttonNeuVorlageObrama_clicked()
+void DlgRohstoffe::buttonNeuVorlageObrama_clicked()
 {
     QTableView *table;
     DlgRohstoffVorlage::Art art;
@@ -551,7 +559,7 @@ void TabRohstoffe::buttonNeuVorlageObrama_clicked()
         addEntry(table, dlg.values());
 }
 
-void TabRohstoffe::buttonCopy_clicked()
+void DlgRohstoffe::buttonCopy_clicked()
 {
     QTableView *table;
     switch (ui->toolBoxRohstoffe->currentIndex())
@@ -591,7 +599,7 @@ void TabRohstoffe::buttonCopy_clicked()
     }
 }
 
-void TabRohstoffe::on_buttonDelete_clicked()
+void DlgRohstoffe::on_buttonDelete_clicked()
 {
     QTableView *table;
     switch (ui->toolBoxRohstoffe->currentIndex())
@@ -646,7 +654,7 @@ void TabRohstoffe::on_buttonDelete_clicked()
     updateLabelNumItems();
 }
 
-void TabRohstoffe::on_radioButtonAlle_clicked()
+void DlgRohstoffe::on_radioButtonAlle_clicked()
 {
     ProxyModelRohstoff *proxyModel;
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableMalz->model());
@@ -660,7 +668,7 @@ void TabRohstoffe::on_radioButtonAlle_clicked()
     updateLabelNumItems();
 }
 
-void TabRohstoffe::on_radioButtonVorhanden_clicked()
+void DlgRohstoffe::on_radioButtonVorhanden_clicked()
 {
     ProxyModelRohstoff *proxyModel;
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableMalz->model());
@@ -674,7 +682,7 @@ void TabRohstoffe::on_radioButtonVorhanden_clicked()
     updateLabelNumItems();
 }
 
-void TabRohstoffe::on_radioButtonInGebrauch_clicked()
+void DlgRohstoffe::on_radioButtonInGebrauch_clicked()
 {
     ProxyModelRohstoff *proxyModel;
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableMalz->model());
@@ -688,7 +696,7 @@ void TabRohstoffe::on_radioButtonInGebrauch_clicked()
     updateLabelNumItems();
 }
 
-void TabRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
+void DlgRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
 {
     ProxyModelRohstoff *proxyModel;
     proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableMalz->model());
@@ -702,13 +710,13 @@ void TabRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
     updateLabelNumItems();
 }
 
-void TabRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
+void DlgRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
 {
     ui->actionNeuObrama->setEnabled(index != 4);
     updateLabelNumItems();
 }
 
-void TabRohstoffe::updateLabelNumItems()
+void DlgRohstoffe::updateLabelNumItems()
 {
     QAbstractItemModel* filteredModel;
     switch (ui->toolBoxRohstoffe->currentIndex())
@@ -735,17 +743,17 @@ void TabRohstoffe::updateLabelNumItems()
     ui->lblNumItems->setText(QString::number(filteredModel->rowCount()) + " / " + QString::number(sourceModelNoDelete.rowCount()));
 }
 
-QVariant TabRohstoffe::dataWasser(int col) const
+QVariant DlgRohstoffe::dataWasser(int col) const
 {
     return bh->modelWasser()->data(mRowWasser, col);
 }
 
-bool TabRohstoffe::setDataWasser(int col, const QVariant &value)
+bool DlgRohstoffe::setDataWasser(int col, const QVariant &value)
 {
     return bh->modelWasser()->setData(mRowWasser, col, value);
 }
 
-void TabRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
+void DlgRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
 {
     if (selected.indexes().count() > 0)
     {
@@ -755,7 +763,7 @@ void TabRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
     }
 }
 
-void TabRohstoffe::updateWasser()
+void DlgRohstoffe::updateWasser()
 {
     ui->lblWasserprofil->setText(dataWasser(ModelWasser::ColName).toString());
     //if (!ui->tbCalciumMg->hasFocus())
@@ -794,112 +802,112 @@ void TabRohstoffe::updateWasser()
     ui->wdgBemerkung->setHtml(dataWasser(ModelWasser::ColBemerkung).toString());
 }
 
-void TabRohstoffe::on_tbCalciumMg_editingFinished()
+void DlgRohstoffe::on_tbCalciumMg_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColCalcium).toDouble();
     if (prevValue != ui->tbCalciumMg->value())
         setDataWasser(ModelWasser::ColCalcium, ui->tbCalciumMg->value());
 }
 
-void TabRohstoffe::on_tbCalciumMmol_editingFinished()
+void DlgRohstoffe::on_tbCalciumMmol_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColCalciumMmol).toDouble();
     if (prevValue != ui->tbCalciumMmol->value())
         setDataWasser(ModelWasser::ColCalciumMmol, ui->tbCalciumMmol->value());
 }
 
-void TabRohstoffe::on_tbCalciumHaerte_editingFinished()
+void DlgRohstoffe::on_tbCalciumHaerte_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColCalciumHaerte).toDouble();
     if (prevValue != ui->tbCalciumHaerte->value())
         setDataWasser(ModelWasser::ColCalciumHaerte, ui->tbCalciumHaerte->value());
 }
 
-void TabRohstoffe::on_tbMagnesiumMg_editingFinished()
+void DlgRohstoffe::on_tbMagnesiumMg_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColMagnesium).toDouble();
     if (prevValue != ui->tbMagnesiumMg->value())
         setDataWasser(ModelWasser::ColMagnesium, ui->tbMagnesiumMg->value());
 }
 
-void TabRohstoffe::on_tbMagnesiumMmol_editingFinished()
+void DlgRohstoffe::on_tbMagnesiumMmol_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColMagnesiumMmol).toDouble();
     if (prevValue != ui->tbMagnesiumMmol->value())
         setDataWasser(ModelWasser::ColMagnesiumMmol, ui->tbMagnesiumMmol->value());
 }
 
-void TabRohstoffe::on_tbMagnesiumHaerte_editingFinished()
+void DlgRohstoffe::on_tbMagnesiumHaerte_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColMagnesiumHaerte).toDouble();
     if (prevValue != ui->tbMagnesiumHaerte->value())
         setDataWasser(ModelWasser::ColMagnesiumHaerte, ui->tbMagnesiumHaerte->value());
 }
 
-void TabRohstoffe::on_tbHydrogencarbonatMg_editingFinished()
+void DlgRohstoffe::on_tbHydrogencarbonatMg_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColHydrogencarbonat).toDouble();
     if (prevValue != ui->tbHydrogencarbonatMg->value())
         setDataWasser(ModelWasser::ColHydrogencarbonat, ui->tbHydrogencarbonatMg->value());
 }
 
-void TabRohstoffe::on_tbHydrogencarbonatMmol_editingFinished()
+void DlgRohstoffe::on_tbHydrogencarbonatMmol_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColHydrogencarbonatMmol).toDouble();
     if (prevValue != ui->tbHydrogencarbonatMmol->value())
         setDataWasser(ModelWasser::ColHydrogencarbonatMmol, ui->tbHydrogencarbonatMmol->value());
 }
 
-void TabRohstoffe::on_tbHydrogencarbonatHaerte_editingFinished()
+void DlgRohstoffe::on_tbHydrogencarbonatHaerte_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColCarbonatHaerte).toDouble();
     if (prevValue != ui->tbHydrogencarbonatHaerte->value())
         setDataWasser(ModelWasser::ColCarbonatHaerte, ui->tbHydrogencarbonatHaerte->value());
 }
 
-void TabRohstoffe::on_tbSulfatMg_editingFinished()
+void DlgRohstoffe::on_tbSulfatMg_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColSulfat).toDouble();
     if (prevValue != ui->tbSulfatMg->value())
         setDataWasser(ModelWasser::ColSulfat, ui->tbSulfatMg->value());
 }
 
-void TabRohstoffe::on_tbSulfatMmol_editingFinished()
+void DlgRohstoffe::on_tbSulfatMmol_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColSulfatMmol).toDouble();
     if (prevValue != ui->tbSulfatMmol->value())
         setDataWasser(ModelWasser::ColSulfatMmol, ui->tbSulfatMmol->value());
 }
 
-void TabRohstoffe::on_tbChloridMg_editingFinished()
+void DlgRohstoffe::on_tbChloridMg_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColChlorid).toDouble();
     if (prevValue != ui->tbChloridMg->value())
         setDataWasser(ModelWasser::ColChlorid, ui->tbChloridMg->value());
 }
 
-void TabRohstoffe::on_tbChloridMmol_editingFinished()
+void DlgRohstoffe::on_tbChloridMmol_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColChloridMmol).toDouble();
     if (prevValue != ui->tbChloridMmol->value())
         setDataWasser(ModelWasser::ColChloridMmol, ui->tbChloridMmol->value());
 }
 
-void TabRohstoffe::on_tbNatriumMg_editingFinished()
+void DlgRohstoffe::on_tbNatriumMg_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColNatrium).toDouble();
     if (prevValue != ui->tbNatriumMg->value())
         setDataWasser(ModelWasser::ColNatrium, ui->tbNatriumMg->value());
 }
 
-void TabRohstoffe::on_tbNatriumMmol_editingFinished()
+void DlgRohstoffe::on_tbNatriumMmol_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColNatriumMmol).toDouble();
     if (prevValue != ui->tbNatriumMmol->value())
         setDataWasser(ModelWasser::ColNatriumMmol, ui->tbNatriumMmol->value());
 }
 
-void TabRohstoffe::on_tbRestalkalitaetAdd_editingFinished()
+void DlgRohstoffe::on_tbRestalkalitaetAdd_editingFinished()
 {
     double prevValue = dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble();
     if (prevValue != ui->tbRestalkalitaetAdd->value())

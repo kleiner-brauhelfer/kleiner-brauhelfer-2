@@ -57,12 +57,12 @@ SOURCES += \
     tabetikette.cpp \
     tabgaerverlauf.cpp \
     tabrezept.cpp \
-    tabrohstoffe.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
+    dialogs/dlgabstract.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
@@ -72,6 +72,7 @@ SOURCES += \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrichtexteditor.cpp \
+    dialogs/dlgrohstoffe.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
@@ -142,11 +143,11 @@ HEADERS += \
     tabetikette.h \
     tabgaerverlauf.h \
     tabrezept.h \
-    tabrohstoffe.h \
     tabsudauswahl.h \
     tabzusammenfassung.h \
     templatetags.h \
     dialogs/dlgabout.h \
+    dialogs/dlgabstract.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
@@ -156,6 +157,7 @@ HEADERS += \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrichtexteditor.h \
+    dialogs/dlgrohstoffe.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
@@ -223,7 +225,6 @@ FORMS += \
     tabetikette.ui \
     tabgaerverlauf.ui \
     tabrezept.ui \
-    tabrohstoffe.ui \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
@@ -236,6 +237,7 @@ FORMS += \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrichtexteditor.ui \
+    dialogs/dlgrohstoffe.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \

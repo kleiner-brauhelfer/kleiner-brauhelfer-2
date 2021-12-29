@@ -1,6 +1,6 @@
 #include "wdgwasseraufbereitung.h"
 #include "ui_wdgwasseraufbereitung.h"
-#include "tabrohstoffe.h"
+#include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgwasseraufbereitung.h"
 #include "brauhelfer.h"
 #include "settings.h"
@@ -88,7 +88,7 @@ void WdgWasseraufbereitung::updateValues()
         ui->tbRestalkalitaet->setMinimum(-99);
         ui->tbRestalkalitaet->setMaximum(0);
     }
-    QString einheit = TabRohstoffe::Einheiten[data(ModelWasseraufbereitung::ColEinheit).toInt()];
+    QString einheit = DlgRohstoffe::Einheiten[data(ModelWasseraufbereitung::ColEinheit).toInt()];
     ui->lblEinheit->setText(einheit + tr("/l"));
     ui->lblEinheitGesamt->setText(einheit);
     ui->lblEinheitHg->setText(einheit);

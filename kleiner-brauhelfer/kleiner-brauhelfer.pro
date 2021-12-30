@@ -219,7 +219,6 @@ FORMS += \
     tababfuellen.ui \
     tabbewertung.ui \
     tabbraudaten.ui \
-    tabdatenbank.ui \
     tabetikette.ui \
     tabgaerverlauf.ui \
     tabrezept.ui \

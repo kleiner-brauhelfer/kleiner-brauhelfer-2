@@ -22,7 +22,6 @@ DlgModule::DlgModule(QWidget *parent) :
     ui->gbModuleSpeise->setChecked(gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->gbModuleWasseraufbereitung->setChecked(gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung));
     ui->gbModulePreiskalkulation->setChecked(gSettings->isModuleEnabled(Settings::ModulePreiskalkulation));
-    ui->gbModuleDatenbank->setChecked(gSettings->isModuleEnabled(Settings::ModuleDatenbank));
 
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());
@@ -97,7 +96,3 @@ void DlgModule::on_gbModulePreiskalkulation_clicked(bool checked)
     gSettings->enableModule(Settings::ModulePreiskalkulation, checked);
 }
 
-void DlgModule::on_gbModuleDatenbank_clicked(bool checked)
-{
-    gSettings->enableModule(Settings::ModuleDatenbank, checked);
-}

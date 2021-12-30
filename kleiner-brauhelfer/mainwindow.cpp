@@ -368,21 +368,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
         nextIndex++;
     */
-    /* TODO clean-up
-    if (modules.testFlag(Settings::ModuleDatenbank))
-    {
-        int index = ui->tabMain->indexOf(ui->tabDatenbank);
-        if (gSettings->isModuleEnabled(Settings::ModuleDatenbank))
-        {
-            if (index < 0)
-               ui->tabMain->insertTab(nextIndex, ui->tabDatenbank, IconThemed("tabdatenbank", gSettings->theme() == Settings::Theme::Bright), tr("Datenbank"));
-        }
-        else
-            ui->tabMain->removeTab(index);
-    }
-    if (gSettings->isModuleEnabled(Settings::ModuleDatenbank))
-        nextIndex++;
-        */
 }
 
 void MainWindow::databaseModified()

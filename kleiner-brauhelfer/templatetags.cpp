@@ -66,7 +66,6 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
     ctxModule["Brauuebersicht"] = gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht);
     ctxModule["Ausruestung"] = gSettings->isModuleEnabled(Settings::ModuleAusruestung);
     ctxModule["Rohstoffe"] = gSettings->isModuleEnabled(Settings::ModuleRohstoffe);
-    ctxModule["Datenbank"] = gSettings->isModuleEnabled(Settings::ModuleDatenbank);
     ctxModule["Wasseraufbereitung"] = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
     ctxModule["Preiskalkulation"] = gSettings->isModuleEnabled(Settings::ModulePreiskalkulation);
     ctxModule["Lagerverwaltung"] = gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung);

@@ -32,7 +32,7 @@ public:
         ModuleBrauuebersicht        = 0x00000100,
         ModuleAusruestung           = 0x00000200,
         ModuleRohstoffe             = 0x00000400,
-        ModuleDatenbank             = 0x00000800,
+        _deprecatedModuleDatenbank  = 0x00000800,
         //
         ModuleWasseraufbereitung    = 0x00010000,
         ModulePreiskalkulation      = 0x00020000,

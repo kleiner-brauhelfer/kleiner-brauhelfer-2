@@ -1,19 +1,21 @@
-#ifndef TABDATENBANK_H
-#define TABDATENBANK_H
+#ifndef DLG_DATENBANK_H
+#define DLG_DATENBANK_H
 
-#include "tababstract.h"
+#include "dlgabstract.h"
 
 namespace Ui {
-class TabDatenbank;
+class DlgDatenbank;
 }
 
-class TabDatenbank : public TabAbstract
+class DlgDatenbank : public DlgAbstract
 {
     Q_OBJECT
 
 public:
-    explicit TabDatenbank(QWidget *parent = nullptr);
-    virtual ~TabDatenbank() Q_DECL_OVERRIDE;
+    static DlgDatenbank *Dialog;
+
+    explicit DlgDatenbank(QWidget *parent = nullptr);
+    virtual ~DlgDatenbank() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView(bool full) Q_DECL_OVERRIDE;
 
@@ -25,8 +27,8 @@ private slots:
     void tableView_selectionChanged();
 
 private:
-    Ui::TabDatenbank *ui;
+    Ui::DlgDatenbank *ui;
     QByteArray mDefaultSplitterState;
 };
 
-#endif // TABDATENBANK_H
+#endif // DLG_DATENBANK_H

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TabDatenbank</class>
- <widget class="QWidget" name="TabDatenbank">
+ <class>DlgDatenbank</class>
+ <widget class="QDialog" name="DlgDatenbank">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>437</height>
+    <width>1600</width>
+    <height>800</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Datenbank</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
-   <property name="spacing">
-    <number>4</number>
-   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
@@ -216,14 +216,6 @@
    <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>tbDatenbankPfad</tabstop>
-  <tabstop>tbDatenbankVersion</tabstop>
-  <tabstop>comboBox</tabstop>
-  <tabstop>tableView</tabstop>
-  <tabstop>comboBoxSud</tabstop>
-  <tabstop>tableViewSud</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

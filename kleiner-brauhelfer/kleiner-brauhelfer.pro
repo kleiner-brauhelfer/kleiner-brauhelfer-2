@@ -51,7 +51,6 @@ SOURCES += \
     tababfuellen.cpp \
     tabbewertung.cpp \
     tabbraudaten.cpp \
-    tabdatenbank.cpp \
     tabetikette.cpp \
     tabgaerverlauf.cpp \
     tabrezept.cpp \
@@ -66,6 +65,7 @@ SOURCES += \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
+    dialogs/dlgdatenbank.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmodule.cpp \
@@ -137,7 +137,6 @@ HEADERS += \
     tababfuellen.h \
     tabbewertung.h \
     tabbraudaten.h \
-    tabdatenbank.h \
     tabetikette.h \
     tabgaerverlauf.h \
     tabrezept.h \
@@ -151,6 +150,7 @@ HEADERS += \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
+    dialogs/dlgdatenbank.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmodule.h \
@@ -231,6 +231,7 @@ FORMS += \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
+    dialogs/dlgdatenbank.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmodule.ui \

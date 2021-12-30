@@ -38,6 +38,7 @@ private slots:
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionBrauUebersicht_triggered();
     void on_actionCheckUpdate_triggered(bool checked);
+    void on_actionDatenbank_triggered();
     void on_actionDeutsch_triggered();
     void on_actionDrucken_triggered();
     void on_actionDruckvorschau_triggered();

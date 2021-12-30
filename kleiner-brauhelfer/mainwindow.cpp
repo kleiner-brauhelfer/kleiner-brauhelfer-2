@@ -13,6 +13,7 @@
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
+#include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgmodule.h"
@@ -47,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
         // TODO ui->tabMain->setTabIcon(8, IconThemed("tabbrauuebersicht", false));
         //ui->tabMain->setTabIcon(8, IconThemed("tabausruestung", false));
-        ui->tabMain->setTabIcon(8, IconThemed("tabdatenbank", false));
+        //ui->tabMain->setTabIcon(8, IconThemed("tabdatenbank", false));
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)
         {
@@ -241,7 +242,7 @@ void MainWindow::saveSettings()
     ui->tabBewertung->saveSettings();
     // ui->tabRohstoffe->saveSettings(); // TODO clean-up
     //ui->tabAusruestung->saveSettings();
-    ui->tabDatenbank->saveSettings();
+    //ui->tabDatenbank->saveSettings();
 }
 
 void MainWindow::restoreView(bool full)
@@ -259,7 +260,7 @@ void MainWindow::restoreView(bool full)
     ui->tabBewertung->restoreView(full);
     // ui->tabRohstoffe->restoreView(full); // TODO clean-up
     // ui->tabAusruestung->restoreView(full);
-    ui->tabDatenbank->restoreView(full);
+    // ui->tabDatenbank->restoreView(full);
     DlgRohstoffAuswahl::restoreView(full);
     DlgTableView::restoreView(full);
 }
@@ -279,7 +280,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBewertung->modulesChanged(modules);
     // ui->tabRohstoffe->modulesChanged(modules); // TODO clean-up
     // ui->tabAusruestung->modulesChanged(modules);
-    ui->tabDatenbank->modulesChanged(modules);
+    // ui->tabDatenbank->modulesChanged(modules);
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
@@ -367,6 +368,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
         nextIndex++;
     */
+    /* TODO clean-up
     if (modules.testFlag(Settings::ModuleDatenbank))
     {
         int index = ui->tabMain->indexOf(ui->tabDatenbank);
@@ -380,6 +382,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleDatenbank))
         nextIndex++;
+        */
 }
 
 void MainWindow::databaseModified()
@@ -932,6 +935,11 @@ void MainWindow::on_actionUeber_triggered()
 void MainWindow::on_actionLog_triggered()
 {
     showDialog<DlgConsole>();
+}
+
+void MainWindow::on_actionDatenbank_triggered()
+{
+    showDialog<DlgDatenbank>();
 }
 
 

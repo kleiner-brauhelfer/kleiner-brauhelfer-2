@@ -60,7 +60,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>8</number>
+           <number>7</number>
           </property>
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
            <attribute name="icon">
@@ -142,16 +142,6 @@
             <string>Bewertung</string>
            </attribute>
           </widget>
-          <widget class="TabDatenbank" name="tabDatenbank">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabdatenbank.svg</normaloff>
-             <disabledoff>:/images/disabled/tabdatenbank.svg</disabledoff>:/images/light/tabdatenbank.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Datenbank</string>
-           </attribute>
-          </widget>
          </widget>
         </item>
        </layout>
@@ -214,6 +204,7 @@
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
     <addaction name="actionLog"/>
+    <addaction name="actionDatenbank"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -693,6 +684,11 @@
     <string>Ausruestung</string>
    </property>
   </action>
+  <action name="actionDatenbank">
+   <property name="text">
+    <string>Datenbank</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -736,12 +732,6 @@
    <class>TabBewertung</class>
    <extends>QWidget</extends>
    <header>tabbewertung.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabDatenbank</class>
-   <extends>QWidget</extends>
-   <header>tabdatenbank.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

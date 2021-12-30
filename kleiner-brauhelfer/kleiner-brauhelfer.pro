@@ -49,7 +49,6 @@ SOURCES += \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
-    tabausruestung.cpp \
     tabbewertung.cpp \
     tabbraudaten.cpp \
     tabdatenbank.cpp \
@@ -62,6 +61,7 @@ SOURCES += \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgabstract.cpp \
+    dialogs/dlgausruestung.cpp \
     dialogs/dlgbrauuebersicht.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
@@ -135,7 +135,6 @@ HEADERS += \
     settings.h \
     tababstract.h \
     tababfuellen.h \
-    tabausruestung.h \
     tabbewertung.h \
     tabbraudaten.h \
     tabdatenbank.h \
@@ -147,6 +146,7 @@ HEADERS += \
     templatetags.h \
     dialogs/dlgabout.h \
     dialogs/dlgabstract.h \
+    dialogs/dlgausruestung.h \
     dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
@@ -217,7 +217,6 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     tababfuellen.ui \
-    tabausruestung.ui \
     tabbewertung.ui \
     tabbraudaten.ui \
     tabdatenbank.ui \
@@ -227,6 +226,7 @@ FORMS += \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
+    dialogs/dlgausruestung.ui \
     dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TabAusruestung</class>
- <widget class="QWidget" name="TabAusruestung">
+ <class>DlgAusruestung</class>
+ <widget class="QDialog" name="DlgAusruestung">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1082</width>
-    <height>868</height>
+    <width>1600</width>
+    <height>800</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Ausrüstung</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>4</number>
-   </property>
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
@@ -68,7 +68,7 @@
              <string notr="true">plus</string>
             </property>
             <property name="icon">
-             <iconset resource="images.qrc">
+             <iconset resource="../images.qrc">
               <normaloff>:/images/light/plus.svg</normaloff>
               <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
             </property>
@@ -89,7 +89,7 @@
              <string notr="true">minus</string>
             </property>
             <property name="icon">
-             <iconset resource="images.qrc">
+             <iconset resource="../images.qrc">
               <normaloff>:/images/light/minus.svg</normaloff>
               <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
             </property>
@@ -163,7 +163,7 @@
              <string notr="true">plus</string>
             </property>
             <property name="icon">
-             <iconset resource="images.qrc">
+             <iconset resource="../images.qrc">
               <normaloff>:/images/light/plus.svg</normaloff>
               <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
             </property>
@@ -184,7 +184,7 @@
              <string notr="true">minus</string>
             </property>
             <property name="icon">
-             <iconset resource="images.qrc">
+             <iconset resource="../images.qrc">
               <normaloff>:/images/light/minus.svg</normaloff>
               <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
             </property>
@@ -269,8 +269,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>667</width>
-          <height>883</height>
+          <width>1007</width>
+          <height>897</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -383,7 +383,7 @@
                <string notr="true">uebertrag_oben</string>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../images.qrc">
                 <normaloff>:/images/light/uebertrag_oben.svg</normaloff>
                 <disabledoff>:/images/disabled/uebertrag_oben.svg</disabledoff>:/images/light/uebertrag_oben.svg</iconset>
               </property>
@@ -417,7 +417,7 @@
                <string notr="true">uebertrag_oben</string>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../images.qrc">
                 <normaloff>:/images/light/uebertrag_oben.svg</normaloff>
                 <disabledoff>:/images/disabled/uebertrag_oben.svg</disabledoff>:/images/light/uebertrag_oben.svg</iconset>
               </property>
@@ -1323,11 +1323,6 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>PushButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/pushbutton.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
@@ -1339,49 +1334,18 @@
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>btnNeueAnlage</tabstop>
-  <tabstop>btnAnlageLoeschen</tabstop>
-  <tabstop>tableViewAnlagen</tabstop>
-  <tabstop>btnNeuesGeraet</tabstop>
-  <tabstop>btnGeraetLoeschen</tabstop>
-  <tabstop>tableViewGeraete</tabstop>
-  <tabstop>tableViewSude</tabstop>
-  <tabstop>tbAusbeute</tabstop>
-  <tabstop>btnAusbeuteMittel</tabstop>
-  <tabstop>tbAusbeuteMittel</tabstop>
-  <tabstop>btnVerdampfungsrate</tabstop>
-  <tabstop>tbVerdampfung</tabstop>
-  <tabstop>btnVerdampfungMittel</tabstop>
-  <tabstop>tbVerdampfungMittel</tabstop>
-  <tabstop>sliderAusbeuteSude</tabstop>
-  <tabstop>tbAusbeuteSude</tabstop>
-  <tabstop>tbKorrekturNachguss</tabstop>
-  <tabstop>tbKorrekturFarbe</tabstop>
-  <tabstop>tbKorrekturSollmenge</tabstop>
-  <tabstop>tbKosten</tabstop>
-  <tabstop>tbMaischebottichDurchmesser</tabstop>
-  <tabstop>tbMaischebottichHoehe</tabstop>
-  <tabstop>tbMaischenVolumen</tabstop>
-  <tabstop>tbMaischebottichMaxFuellhoehe</tabstop>
-  <tabstop>tbMaischenMaxNutzvolumen</tabstop>
-  <tabstop>tbSudpfanneDurchmesser</tabstop>
-  <tabstop>tbSudpfanneHoehe</tabstop>
-  <tabstop>tbSudpfanneVolumen</tabstop>
-  <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
-  <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
-  <tabstop>wdgBemerkung</tabstop>
-  <tabstop>scrollArea</tabstop>
-  <tabstop>tbHelp</tabstop>
-  <tabstop>splitterHelp</tabstop>
- </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../images.qrc"/>
  </resources>
  <connections/>
 </ui>

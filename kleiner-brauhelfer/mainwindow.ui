@@ -142,16 +142,6 @@
             <string>Bewertung</string>
            </attribute>
           </widget>
-          <widget class="TabAusruestung" name="tabAusruestung">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabausruestung.svg</normaloff>
-             <disabledoff>:/images/disabled/tabausruestung.svg</disabledoff>:/images/light/tabausruestung.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Ausrüstung</string>
-           </attribute>
-          </widget>
           <widget class="TabDatenbank" name="tabDatenbank">
            <attribute name="icon">
             <iconset resource="images.qrc">
@@ -295,6 +285,7 @@
    </attribute>
    <addaction name="actionRohstoffe"/>
    <addaction name="actionBrauUebersicht"/>
+   <addaction name="actionAusruestung"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -689,6 +680,19 @@
     <string>Brauübersicht</string>
    </property>
   </action>
+  <action name="actionAusruestung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>:/images/light/tabausruestung.svg</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Ausruestung</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -696,12 +700,6 @@
    <class>TabSudAuswahl</class>
    <extends>QWidget</extends>
    <header>tabsudauswahl.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabAusruestung</class>
-   <extends>QWidget</extends>
-   <header>tabausruestung.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

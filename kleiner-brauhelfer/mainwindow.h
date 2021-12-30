@@ -26,11 +26,13 @@ private slots:
     void changeStyle();
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
+    void dlgAusruestung_finished();    
     void dlgBrauUebersicht_finished();
     void dlgRohstoffe_finished();    
     void on_tabMain_currentChanged();
     void on_actionAndroidApp_triggered();
     void on_actionAnimationen_triggered(bool checked);
+    void on_actionAusruestung_triggered();
     void on_actionBeenden_triggered();
     void on_actionBereinigen_triggered();
     void on_actionBestaetigungBeenden_triggered(bool checked);

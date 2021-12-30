@@ -1,5 +1,5 @@
-#include "tabbrauuebersicht.h"
-#include "ui_tabbrauuebersicht.h"
+#include "dlgbrauuebersicht.h"
+#include "ui_dlgbrauuebersicht.h"
 #include <QKeyEvent>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -11,6 +11,8 @@
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
+
+DlgBrauUebersicht* DlgBrauUebersicht::Dialog = nullptr;
 
 class ProxyModelBrauuebersicht : public ProxyModelSud
 {
@@ -42,13 +44,13 @@ public:
     int mColAuswahl3;
 };
 
-TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
-    TabAbstract(parent),
-    ui(new Ui::TabBrauUebersicht)
+DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
+    DlgAbstract(parent),
+    ui(new Ui::DlgBrauUebersicht)
 {
     ui->setupUi(this);
 
-    gSettings->beginGroup("TabBrauuebersicht");
+    gSettings->beginGroup("TabBrauuebersicht"); // TODO
 
     ui->splitter->setSizes({INT_MAX, INT_MAX});
     mDefaultSplitterState = ui->splitter->saveState();
@@ -75,12 +77,12 @@ TabBrauUebersicht::TabBrauUebersicht(QWidget *parent) :
     gSettings->endGroup();
 }
 
-TabBrauUebersicht::~TabBrauUebersicht()
+DlgBrauUebersicht::~DlgBrauUebersicht()
 {
     delete ui;
 }
 
-void TabBrauUebersicht::saveSettings()
+void DlgBrauUebersicht::saveSettings()
 {
     gSettings->beginGroup("TabBrauuebersicht");
     gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
@@ -91,14 +93,14 @@ void TabBrauUebersicht::saveSettings()
     gSettings->endGroup();
 }
 
-void TabBrauUebersicht::restoreView(bool full)
+void DlgBrauUebersicht::restoreView(bool full)
 {
     ui->tableView->restoreDefaultState();
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }
 
-void TabBrauUebersicht::setModel(QAbstractItemModel* model)
+void DlgBrauUebersicht::setModel(QAbstractItemModel* model)
 {
     TableView *table = ui->tableView;
     ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
@@ -144,7 +146,7 @@ void TabBrauUebersicht::setModel(QAbstractItemModel* model)
     updateDiagram();
 }
 
-void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
+void DlgBrauUebersicht::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
     if (ui->tableView->hasFocus())
@@ -162,7 +164,7 @@ void TabBrauUebersicht::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void TabBrauUebersicht::modelDataChanged(const QModelIndex& index)
+void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
 {
     switch (index.column())
     {
@@ -174,7 +176,7 @@ void TabBrauUebersicht::modelDataChanged(const QModelIndex& index)
     updateDiagram();
 }
 
-void TabBrauUebersicht::updateDiagram()
+void DlgBrauUebersicht::updateDiagram()
 {
     ui->diagram->DiagrammLeeren();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
@@ -234,14 +236,14 @@ void TabBrauUebersicht::updateDiagram()
     ui->diagram->repaint();
 }
 
-void TabBrauUebersicht::on_tableView_doubleClicked(const QModelIndex &index)
+void DlgBrauUebersicht::on_tableView_doubleClicked(const QModelIndex &index)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
     int sudId = model->data(index.row(), ModelSud::ColID).toInt();
     emit clicked(sudId);
 }
 
-void TabBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
+void DlgBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
 {
     int sudId = -1;
     if (selected.indexes().count() > 0)
@@ -252,7 +254,7 @@ void TabBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
     ui->diagram->MarkierePunkt(sudId);
 }
 
-void TabBrauUebersicht::diagram_selectionChanged(int sudId)
+void DlgBrauUebersicht::diagram_selectionChanged(int sudId)
 {
     for (int row = 0; row < ui->tableView->model()->rowCount(); ++row)
     {
@@ -264,7 +266,7 @@ void TabBrauUebersicht::diagram_selectionChanged(int sudId)
     }
 }
 
-void TabBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)
+void DlgBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)
 {
     if (ui->cbAuswahlL1->hasFocus())
     {
@@ -273,7 +275,7 @@ void TabBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)
     }
 }
 
-void TabBrauUebersicht::on_cbAuswahlL2_currentIndexChanged(int)
+void DlgBrauUebersicht::on_cbAuswahlL2_currentIndexChanged(int)
 {
     if (ui->cbAuswahlL2->hasFocus())
     {
@@ -282,7 +284,7 @@ void TabBrauUebersicht::on_cbAuswahlL2_currentIndexChanged(int)
     }
 }
 
-void TabBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
+void DlgBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
 {
     if (ui->cbAuswahlL3->hasFocus())
     {

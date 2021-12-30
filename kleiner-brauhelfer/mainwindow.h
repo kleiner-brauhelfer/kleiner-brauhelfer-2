@@ -26,13 +26,15 @@ private slots:
     void changeStyle();
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
-    void dlgRohstoffe_finished();
+    void dlgBrauUebersicht_finished();
+    void dlgRohstoffe_finished();    
     void on_tabMain_currentChanged();
     void on_actionAndroidApp_triggered();
     void on_actionAnimationen_triggered(bool checked);
     void on_actionBeenden_triggered();
     void on_actionBereinigen_triggered();
     void on_actionBestaetigungBeenden_triggered(bool checked);
+    void on_actionBrauUebersicht_triggered();
     void on_actionCheckUpdate_triggered(bool checked);
     void on_actionDeutsch_triggered();
     void on_actionDrucken_triggered();
@@ -79,7 +81,7 @@ private:
     void restoreView(bool full);
     void checkForUpdate(bool force);
     template<class DLG> bool showDialog();
-    template<class DLG> bool showToolDialog(void(MainWindow::* slot_finished)());    
+    template<class DLG> bool showToolDialog(QAction* action, void(MainWindow::* slot_finished)());    
 
 private:
     Ui::MainWindow *ui;

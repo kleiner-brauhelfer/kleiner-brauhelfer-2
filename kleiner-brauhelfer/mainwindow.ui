@@ -60,7 +60,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
            <attribute name="icon">
@@ -140,16 +140,6 @@
            </attribute>
            <attribute name="title">
             <string>Bewertung</string>
-           </attribute>
-          </widget>
-          <widget class="TabBrauUebersicht" name="tabBrauuebersicht">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabbrauuebersicht.svg</normaloff>
-             <disabledoff>:/images/disabled/tabbrauuebersicht.svg</disabledoff>:/images/light/tabbrauuebersicht.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Brauübersicht</string>
            </attribute>
           </widget>
           <widget class="TabAusruestung" name="tabAusruestung">
@@ -304,6 +294,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionRohstoffe"/>
+   <addaction name="actionBrauUebersicht"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -686,6 +677,18 @@
     <bool>true</bool>
    </property>
   </action>
+  <action name="actionBrauUebersicht">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/tabbrauuebersicht.svg</normaloff>:/images/light/tabbrauuebersicht.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Brauübersicht</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -705,12 +708,6 @@
    <class>TabRezept</class>
    <extends>QWidget</extends>
    <header>tabrezept.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabBrauUebersicht</class>
-   <extends>QWidget</extends>
-   <header>tabbrauuebersicht.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

@@ -19,7 +19,7 @@ public:
     static QStringList ZusatzTypname;
     static QStringList Einheiten;
     static QStringList list_tr(const QStringList& list);
-public:
+
     static DlgRohstoffe *Dialog;
 
 public:

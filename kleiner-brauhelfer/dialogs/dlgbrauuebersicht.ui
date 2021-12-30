@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TabBrauUebersicht</class>
- <widget class="QWidget" name="TabBrauUebersicht">
+ <class>DlgBrauUebersicht</class>
+ <widget class="QDialog" name="DlgBrauUebersicht">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
-    <height>300</height>
+    <width>1297</width>
+    <height>610</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Brauübersicht</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -154,12 +154,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>cbAuswahlL1</tabstop>
-  <tabstop>cbAuswahlL2</tabstop>
-  <tabstop>cbAuswahlL3</tabstop>
-  <tabstop>tableView</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

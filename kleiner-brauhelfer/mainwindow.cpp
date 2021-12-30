@@ -9,6 +9,7 @@
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"
+#include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgrohstoffauswahl.h"
@@ -43,9 +44,9 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tabMain->setTabIcon(5, IconThemed("tabzusammenfassung", false));
         ui->tabMain->setTabIcon(6, IconThemed("tabetikette", false));
         ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
-        ui->tabMain->setTabIcon(8, IconThemed("tabbrauuebersicht", false));
-        ui->tabMain->setTabIcon(9, IconThemed("tabausruestung", false));
-        ui->tabMain->setTabIcon(10, IconThemed("tabdatenbank", false));
+        // TODO ui->tabMain->setTabIcon(8, IconThemed("tabbrauuebersicht", false));
+        ui->tabMain->setTabIcon(8, IconThemed("tabausruestung", false));
+        ui->tabMain->setTabIcon(9, IconThemed("tabdatenbank", false));
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)
         {
@@ -104,8 +105,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
 
     connect(ui->tabSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
-    ui->tabBrauuebersicht->setModel(ui->tabSudAuswahl->model());
-    connect(ui->tabBrauuebersicht, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
 
     connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -231,7 +230,7 @@ void MainWindow::saveSettings()
     gSettings->setValue("state", saveState());
     gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
-    ui->tabBrauuebersicht->saveSettings();
+    // ui->tabBrauuebersicht->saveSettings(); // TODO clean-up
     ui->tabRezept->saveSettings();
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
@@ -249,7 +248,7 @@ void MainWindow::restoreView(bool full)
     if (full)
         restoreState(mDefaultState);
     ui->tabSudAuswahl->restoreView(full);
-    ui->tabBrauuebersicht->restoreView(full);
+    // ui->tabBrauuebersicht->restoreView(full); // TODO clean-up
     ui->tabRezept->restoreView(full);
     ui->tabBraudaten->restoreView(full);
     ui->tabAbfuelldaten->restoreView(full);
@@ -269,7 +268,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     updateTabs(modules);
     updateValues();
     ui->tabSudAuswahl->modulesChanged(modules);
-    ui->tabBrauuebersicht->modulesChanged(modules);
+    // ui->tabBrauuebersicht->modulesChanged(modules); // TODO clean-up
     ui->tabRezept->modulesChanged(modules);
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
@@ -337,6 +336,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         nextIndex++;
+    /* TODO clean-up
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
     {
         int index = ui->tabMain->indexOf(ui->tabBrauuebersicht);
@@ -350,6 +350,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht))
         nextIndex++;
+    */
     if (modules.testFlag(Settings::ModuleAusruestung))
     {
         int index = ui->tabMain->indexOf(ui->tabAusruestung);
@@ -421,7 +422,7 @@ void MainWindow::sudLoaded()
     updateValues();
     if (bh->sud()->isLoaded())
     {
-        if (ui->tabMain->currentWidget() == ui->tabSudAuswahl || ui->tabMain->currentWidget() == ui->tabBrauuebersicht)
+        if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
             ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
 }
@@ -868,12 +869,16 @@ bool MainWindow::showDialog()
 }
 
 template<typename DLG>
-bool MainWindow::showToolDialog(void(MainWindow::* slot_finished)() )
+bool MainWindow::showToolDialog(QAction* action, void(MainWindow::* slot_finished)() )
 {
-    auto ret = showDialog<DlgRohstoffe>();
+    auto ret = showDialog<DLG>();
     if(ret)
     {
-        connect(DlgRohstoffe::Dialog, &DlgRohstoffe::finished, this, slot_finished );
+        connect(DLG::Dialog, &DLG::finished, this, slot_finished );
+    }
+    else
+    {
+        action->setChecked(true);
     }
     return ret;
 }
@@ -923,14 +928,13 @@ void MainWindow::on_actionUeber_triggered()
 
 void MainWindow::on_actionLog_triggered()
 {
-
     showDialog<DlgConsole>();
 }
 
 
 void MainWindow::on_actionRohstoffe_triggered()
 {
-    showToolDialog<DlgRohstoffe>(&MainWindow::dlgRohstoffe_finished);
+    showToolDialog<DlgRohstoffe>(ui->actionRohstoffe, &MainWindow::dlgRohstoffe_finished);
 
 }
 
@@ -938,4 +942,23 @@ void MainWindow::dlgRohstoffe_finished()
 {
     ui->actionRohstoffe->setChecked(false);
 }
+
+
+void MainWindow::on_actionBrauUebersicht_triggered() // TODO clean-up // double check algo
+{
+    auto ret = showToolDialog<DlgBrauUebersicht>(ui->actionBrauUebersicht, &MainWindow::dlgBrauUebersicht_finished);
+    if(ret == true)
+    {
+        DlgBrauUebersicht::Dialog->setModel(ui->tabSudAuswahl->model());
+        connect(DlgBrauUebersicht::Dialog, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
+    }
+}
+
+void MainWindow::dlgBrauUebersicht_finished()
+{
+    ui->actionBrauUebersicht->setChecked(false);
+}
+
+
+
 

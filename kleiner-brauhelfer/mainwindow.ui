@@ -274,6 +274,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSpeichern"/>
+   <addaction name="separator"/>
    <addaction name="actionRohstoffe"/>
    <addaction name="actionBrauUebersicht"/>
    <addaction name="actionAusruestung"/>
@@ -663,6 +665,9 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="images.qrc">
      <normaloff>:/images/light/tabbrauuebersicht.svg</normaloff>:/images/light/tabbrauuebersicht.svg</iconset>
@@ -670,9 +675,15 @@
    <property name="text">
     <string>Brauübersicht</string>
    </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="actionAusruestung">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
     <bool>true</bool>
    </property>
    <property name="icon">
@@ -682,6 +693,12 @@
    </property>
    <property name="text">
     <string>Ausruestung</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
    </property>
   </action>
   <action name="actionDatenbank">

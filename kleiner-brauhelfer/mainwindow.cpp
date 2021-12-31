@@ -368,6 +368,10 @@ void MainWindow::updateTabs(Settings::Modules modules)
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
         nextIndex++;
     */
+    if(modules.testFlag(Settings::ModuleBrauuebersicht))
+        ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
+    if(modules.testFlag(Settings::ModuleAusruestung))
+        ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
 }
 
 void MainWindow::databaseModified()

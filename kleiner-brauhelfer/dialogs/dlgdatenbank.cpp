@@ -72,6 +72,7 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
 
 DlgDatenbank::~DlgDatenbank()
 {
+    saveSettings();
     delete ui;
 }
 

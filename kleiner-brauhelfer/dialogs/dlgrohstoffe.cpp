@@ -87,7 +87,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
 
     ui->setupUi(this);
 
-    // TODO clean-up ?
     QMenu *menu = new QMenu(this);
     menu->addAction(ui->actionNeu);
     menu->addSeparator();
@@ -126,8 +125,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     TableView *table;
 
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(true);
-
 
     model = bh->modelMalz();
     model->setHeaderData(ModelMalz::ColName, Qt::Horizontal, tr("Name"));
@@ -305,7 +302,7 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
         ui->radioButtonAlle->setChecked(true);
         on_radioButtonAlle_clicked();
     }
-
+    DlgAbstract::restoreSize();
     gSettings->endGroup();
 
     connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
@@ -316,10 +313,12 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
 
     ui->tableWasser->selectRow(0);
+    modulesChanged(Settings::ModuleAlle);    
 }
 
 DlgRohstoffe::~DlgRohstoffe()
 {
+    saveSettings();
     delete ui;
 }
 
@@ -341,16 +340,18 @@ void DlgRohstoffe::saveSettings()
     gSettings->endGroup();
 }
 
+
 void DlgRohstoffe::restoreView(bool full)
 {
+    Q_UNUSED(full);
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(full);
-    gSettings->endGroup();    
+    DlgAbstract::restoreView(full);   
     ui->tableMalz->restoreDefaultState();
     ui->tableHopfen->restoreDefaultState();
     ui->tableHefe->restoreDefaultState();
     ui->tableWeitereZutaten->restoreDefaultState();
     ui->tableWasser->restoreDefaultState();
+    gSettings->endGroup();    
 }
 
 void DlgRohstoffe::modulesChanged(Settings::Modules modules)

@@ -50,7 +50,7 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    gSettings->beginGroup("TabBrauuebersicht"); // TODO
+    gSettings->beginGroup(staticMetaObject.className());
 
     ui->splitter->setSizes({INT_MAX, INT_MAX});
     mDefaultSplitterState = ui->splitter->saveState();
@@ -74,17 +74,20 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
 
+    DlgAbstract::restoreSize();
     gSettings->endGroup();
 }
 
 DlgBrauUebersicht::~DlgBrauUebersicht()
 {
+    saveSettings();
     delete ui;
 }
 
 void DlgBrauUebersicht::saveSettings()
 {
-    gSettings->beginGroup("TabBrauuebersicht");
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::saveSettings();
     gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
     gSettings->setValue("Auswahl1", ui->cbAuswahlL1->currentIndex());
     gSettings->setValue("Auswahl2", ui->cbAuswahlL2->currentIndex());
@@ -93,8 +96,12 @@ void DlgBrauUebersicht::saveSettings()
     gSettings->endGroup();
 }
 
+
 void DlgBrauUebersicht::restoreView(bool full)
 {
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::restoreView(full);
+    gSettings->endGroup();
     ui->tableView->restoreDefaultState();
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
@@ -124,7 +131,7 @@ void DlgBrauUebersicht::setModel(QAbstractItemModel* model)
     table->build();
     table->setDefaultContextMenu();
 
-    gSettings->beginGroup("TabBrauuebersicht");
+    gSettings->beginGroup(staticMetaObject.className());
 
     table->restoreState(gSettings->value("tableState").toByteArray());
 

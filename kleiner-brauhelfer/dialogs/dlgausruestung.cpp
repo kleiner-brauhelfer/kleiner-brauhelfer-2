@@ -44,7 +44,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
 
-    gSettings->beginGroup("DlgAusruestung");
+    gSettings->beginGroup(staticMetaObject.className());
 
     TableView *table = ui->tableViewAnlagen;
     ProxyModel *model = new ProxyModel(this);
@@ -103,6 +103,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
 
     ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
 
+    DlgAbstract::restoreSize();
     gSettings->endGroup();
 
     connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
@@ -119,12 +120,14 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
 
 DlgAusruestung::~DlgAusruestung()
 {
+    saveSettings();
     delete ui;
 }
 
 void DlgAusruestung::saveSettings()
 {
-    gSettings->beginGroup("DlgAusruestung"); // TODO clean-up
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::saveSettings();
     gSettings->setValue("tableStateAnlagen", ui->tableViewAnlagen->horizontalHeader()->saveState());
     gSettings->setValue("tableStateGeraete", ui->tableViewGeraete->horizontalHeader()->saveState());
     gSettings->setValue("tableStateSude", ui->tableViewSude->horizontalHeader()->saveState());
@@ -135,8 +138,11 @@ void DlgAusruestung::saveSettings()
     gSettings->endGroup();
 }
 
+
 void DlgAusruestung::restoreView(bool full)
 {
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::restoreView(full);
     ui->tableViewAnlagen->restoreDefaultState();
     ui->tableViewGeraete->restoreDefaultState();
     ui->tableViewSude->restoreDefaultState();
@@ -146,6 +152,7 @@ void DlgAusruestung::restoreView(bool full)
         ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
         ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     }
+    gSettings->endGroup();
 }
 
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)

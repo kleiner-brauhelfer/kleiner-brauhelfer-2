@@ -203,6 +203,10 @@
     <addaction name="menuStil"/>
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
+    <addaction name="actionRohstoffe"/>
+    <addaction name="actionBrauUebersicht"/>
+    <addaction name="actionAusruestung"/>
+    <addaction name="separator"/>
     <addaction name="actionLog"/>
     <addaction name="actionDatenbank"/>
    </widget>
@@ -651,7 +655,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normalon>:/images/light/tabrohstoffe.svg</normalon>
+     <normalon>:/images/light/actionrohstoffe.svg</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -670,7 +674,7 @@
    </property>
    <property name="icon">
     <iconset resource="images.qrc">
-     <normaloff>:/images/light/tabbrauuebersicht.svg</normaloff>:/images/light/tabbrauuebersicht.svg</iconset>
+     <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
    </property>
    <property name="text">
     <string>Brauübersicht</string>
@@ -688,11 +692,11 @@
    </property>
    <property name="icon">
     <iconset>
-     <normalon>:/images/light/tabausruestung.svg</normalon>
+     <normalon>:/images/light/actionausruestung.svg</normalon>
     </iconset>
    </property>
    <property name="text">
-    <string>Ausruestung</string>
+    <string>Ausrüstung</string>
    </property>
    <property name="visible">
     <bool>true</bool>

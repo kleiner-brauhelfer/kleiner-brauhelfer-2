@@ -2877,14 +2877,19 @@ Tid för flasktappning: %1</translation>
     </message>
 </context>
 <context>
-    <name>TabAusruestung</name>
+    <name>DlgAusruestung</name>
     <message>
-        <location filename="../tabausruestung.ui" line="39"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="14"/>
+        <source>Ausrüstung</source>
+        <translation>Utrustning</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgausruestung.ui" line="39"/>
         <source>Anlagen</source>
         <translation>Anläggningar</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="65"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="65"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; angelegt und benannt. Verfügt man über mehrere Kessel in unterschiedlichen Größen, bietet es sich an, hier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Konfigurationen&lt;/span&gt; zu speichern, um die jeweilige Anlage bei der Rezepterstellung mit einem Klick im Tab Rezept bequem zu wählen.&lt;/p&gt;&lt;p&gt;Unter einer Brauanlage ist mindestens ein Kessel zu verstehen. Im Hobbybrauerbereich sind platzsparende All-in-one-Anlagen oft üblich. Meist sind es aber mindestens zwei Kessel – der Kleine Brauhelfer nimmt auf diese Standard-Konfiguration in den Feldern rechts Bezug: &lt;/p&gt;&lt;p&gt;Ein &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; für das Maischen mit Malz und eine &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; für das Hopfenkochen. Bei All-in-one-Geräten, die Maischekessel und Sudpfanne vereinen, gibt man den einen Wert für Maischekessel und Sudpfanne an.&lt;/p&gt;&lt;p&gt;Bei größeren Konfigurationen kommt mindestens noch ein Läuterkessel hinzu, der zwischen Maischekessel und Sudpfanne eingesetzt wird. Im Kleinen Brauhelfer wird diese zusätzliche, für die Bierherstellung nicht zwingend nötige Ausstattung unter &lt;span style=&quot; font-weight:600;&quot;&gt;Geräte&lt;/span&gt; erfasst. Der Kleine Brauhelfer berücksichtigt für seine Berechnungen allein die Werte für Maischekessel und Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2893,7 +2898,7 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Ny anläggning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="86"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="86"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Bei dieser Aktion empfiehlt es sich, die mit der zu löschenden Anlage gebrauten Sude vorab zu überpüfen und im Tab Rezept gegebenenfalls anzupassen. Die Gefahr von hausgemachten Verwechselungen liegt hier nah. Es empfiehlt sich alle noch zu brauenden Sude dieser Analge auf eine neue Anlage umzustellen. Bei gebrauten Suden erübrigt sich diese Vorsichtsmaßnahme.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2902,22 +2907,22 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Ta bort anläggningen</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="134"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="134"/>
         <source>Geräte</source>
         <translation>Utrustning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="160"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="160"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Geräte&lt;/span&gt; außer der Maischekessel und die Sudpfanne erfasst.&lt;/p&gt;&lt;p&gt;Im Kleinen Brauhelfer werden unter Geräten all die Dinge verstanden, die das Brauen schöner, besser und angenehmer machen – aber nicht zwingend notwendig für ein Selbstgebrautes sind.&lt;/p&gt;&lt;p&gt;Zuvorderst gehört dazu ein Läuterkessel, aber auch Gärfässer und Gärkannen, Holzfässer und Kegs, Heizplatten, Meßgeräte bis hin zu zylindorkonischen Drucktanks, Abfüllern und Etikettiermaschinen werden hier erfasst. Kurzum alle Gerätschaften, die das Brauherz höher schlagen lassen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="260"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="260"/>
         <source>Neues Gerät</source>
         <translation>Ny utrustning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="181"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="181"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigtes&lt;span style=&quot; font-weight:600;&quot;&gt; Gerät gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Werden Geräte gelöscht, hat dies keine Auswirkung an anderen Stellen im Kleinen Brauhelfer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2926,30 +2931,30 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Ta bort utrustning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="227"/>
-        <location filename="../tabausruestung.ui" line="519"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="227"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="519"/>
         <source>Sude</source>
         <translation>Satser</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="296"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="296"/>
         <source>Kernwerte der Anlage</source>
         <translation>Anläggningens parametrar</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="305"/>
-        <location filename="../tabausruestung.ui" line="350"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="305"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="350"/>
         <source>l/h</source>
         <translation>l/h</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="357"/>
-        <location filename="../tabausruestung.ui" line="555"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="357"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="555"/>
         <source>Durchschnitt</source>
         <translation>Genomsnitt</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="367"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="367"/>
         <source>Durchschnitt über die letzten</source>
         <translation>Genomsnitt av senaste</translation>
     </message>
@@ -2958,48 +2963,48 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Utbyte för maltberäkningarna</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="477"/>
-        <location filename="../tabausruestung.ui" line="490"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="477"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="490"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="548"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="548"/>
         <source>Verdampfungsrate</source>
         <translation>Förångningshastighet</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="565"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="565"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="601"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="601"/>
         <source>Sonstiges</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="616"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="616"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier entgegen der vom Kleinen Brauhelfer im Tab Rezept berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; nötig sein.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagsmenge&lt;/span&gt; immer mit den gleichen Werten abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="644"/>
-        <location filename="../tabausruestung.ui" line="737"/>
-        <location filename="../tabausruestung.ui" line="913"/>
-        <location filename="../tabausruestung.ui" line="940"/>
-        <location filename="../tabausruestung.ui" line="1186"/>
-        <location filename="../tabausruestung.ui" line="1224"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="644"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="737"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="913"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="940"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1186"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1224"/>
         <source>l</source>
         <translation>l</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="651"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="651"/>
         <source>Korrektur des Farbwertes</source>
         <translation>Färgförändring</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="658"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="658"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die Korrektur der durchschnittlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Abweichungen&lt;/span&gt; von den im Rezept festgelegten Farbwerten aller Sude.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Der Farbwert von Bier, genauer: die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbstärke&lt;/span&gt;, wird im europäischen Raum in EBC nach der European Brewery Convention angegeben.&lt;/p&gt;&lt;p&gt;Für die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwertkorrektur&lt;/span&gt; im Kleinen Brauhelfer empfiehlt sich ein farbkorrigierter Bildschirm bei 6.500 Kelvin Tageslicht und einem Gammwert von 1,8. Üblicherweise sind in Europa Monitore mit 2.0 Gamma  kontrastreicher kalibriert, was eine eine exakte Übertragung von Bierfarbe im Glas in ein Computerprogramm schwierig macht. An einem normalen Büro-Bildschirm werden Farbwerte daher nur annähernd richtig dargestellt. Eine exakte Wiedergabe ist Profi-Hard- und Software vorbehalten. Bei Fragen helfen hier Fachforen im Designbereich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3008,297 +3013,297 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Kostnader (vatten, el, gas o dyl)</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="103"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="103"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Anlagen&lt;/span&gt; aufgeführt.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="198"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Geräte&lt;/span&gt; aufgeführt.&lt;/p&gt;&lt;p&gt;Geräte&lt;span style=&quot; font-weight:600;&quot;/&gt;sind definiert als Gegenstände, die unabhängig zur Konfiguration der Anlage erfasst werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="237"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="237"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Sude&lt;/span&gt; aufgeführt.&lt;/p&gt;&lt;p&gt;Ein Sud ist identisch mit einem umgesetzten Bierrezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="312"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="312"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage eingegeben werden.&lt;/p&gt;&lt;p&gt;Die Verdampfungsrate ist ein konstanter Wert der Anlage, nahezu unabhängig von der Schüttung. Einmal eingestellt, liefert sie daher einen verlässlichen Wert für die Effizienz der Anlage.&lt;/p&gt;&lt;p&gt;Der Wert selbst beschreibt die Verdampfungsmenge pro Stunde beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen&lt;/span&gt;. Eine geringere Menge verdampft bereits beim Maischen.&lt;/p&gt;&lt;p&gt;Der Wert wird automatisch im Tab Rezept als Benchmark hinterlegt. Er kann dort aber sudspezfisch festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="331"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="331"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten &lt;span style=&quot; font-weight:600;&quot;&gt;effektiven Sudhausausbeuten&lt;/span&gt;. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser sein die Anzahl der Sude für die Durchschnittsberechnung einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="380"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="380"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; übernommen.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser sein die Anzahl der Sude für die Durchschnittsberechnung der Verdampfungsrate einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="414"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="414"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Durch Klick auf diesen Button, wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeuten&lt;/span&gt; übernommen.&lt;/p&gt;&lt;p&gt;Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser ein die Anzahl der Sude für die Durchschnittsberechnung einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="429"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="429"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den nebenstehenden &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer seine Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser ein die Anzahl der Sude für die Durchschnittsberechnung einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="448"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="448"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert&lt;/span&gt; der letzten Verdampfungsraten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser sein die Anzahl der Sude für die Durchschnittsberechnung der Verdampfungsrate einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="470"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="470"/>
         <source>Sudhausausbeute</source>
         <translation>Mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="503"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="503"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Fachsprech &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; genannt, gibt die Ausbeute für die Schüttungsberechnung an, welcher Anteil des Malzes während des Maischens in Lösung gegangen ist.&lt;br/&gt;Ein idealer Wert im Hobbymaßstab ist 70%. Tatsächlich bewegt sich die Effizienz zwischen 50% und 70%. Im semi- und professionellern Bereich werden 80% Sudhausausbeute angestrebt.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Optimierung&lt;/span&gt; der Sudhausausbeute ist ein weites Feld. Angefangen beim Wasser, über das eingesetzte Malz, die Schrotung, die Zutaten bis zu den Faktoren Härtegrad, pH-Wert, Zeit – um nur einige Faktoren zu nennen – eröffnet sich hier dem Brauer ein weites Feld, um seine Sude zu optimieren.&lt;/p&gt;&lt;p&gt;Der Wert wird automatisch im Tab Rezept als Benchmark hinterlegt. Er kann dort aber sudspezfisch festgelegt werden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="538"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="538"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über diesen Button kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage berechnet werden.&lt;/p&gt;&lt;p&gt;Die Verdampfungsrate ist ein konstanter Wert der Anlage, nahezu unabhängig von der Schüttung. Einmal eingestellt, liefert sie daher einen verlässlichen Wert für die Effizienz der Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="684"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="684"/>
         <source>Betriebskosten</source>
         <translation>Kostnader</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="691"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="691"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; (Pauschalen) für den Sud einzutragen. Dazu gehören &lt;span style=&quot; font-weight:600;&quot;&gt;Strom&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Gas&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Aber auch Verschleiß- und Abschreibungskosten der Ausstattung können hier anteilig mit einem Satz individuell festgelegt werden.&lt;/p&gt;&lt;p&gt;Die hier angegebenen Kosten gehen in die Gesamtkosten pro Liter automatisch mit ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="713"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="713"/>
         <source>Korrektur der Nachgussmenge</source>
         <translation>Korrektion av mängden lakvatten</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="720"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="720"/>
         <source>EBC</source>
         <translation>EBC</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="730"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="730"/>
         <source>Korrektur der Sollmenge</source>
         <translation>Korrektion av målängden</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="744"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="744"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Sollmenge&lt;/span&gt; eingetragen werden.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn konstant die gleiche Verlustmenge entsteht und die angepeilte Menge dadurch nicht erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="775"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="775"/>
         <source>Maischekessel</source>
         <translation>Mäskkärl</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="797"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="797"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; des Maischekessels an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. So dehnt sich der Sud bei höheren Temperaturen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen der Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="822"/>
-        <location filename="../tabausruestung.ui" line="1127"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="822"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1127"/>
         <source>Durchmesser</source>
         <translation>Diameter</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="829"/>
-        <location filename="../tabausruestung.ui" line="906"/>
-        <location filename="../tabausruestung.ui" line="933"/>
-        <location filename="../tabausruestung.ui" line="1042"/>
-        <location filename="../tabausruestung.ui" line="1081"/>
-        <location filename="../tabausruestung.ui" line="1179"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="829"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="906"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="933"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1042"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1081"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1179"/>
         <source>cm</source>
         <translation>cm</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="842"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="842"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchmesser&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Für eine korrekte Berechnung sollte der Kessel &lt;span style=&quot; font-weight:600;&quot;&gt;zylindrisch&lt;/span&gt; sein.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="867"/>
-        <location filename="../tabausruestung.ui" line="1120"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="867"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1120"/>
         <source>Volumen</source>
         <translation>Volym</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="874"/>
-        <location filename="../tabausruestung.ui" line="1088"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="874"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1088"/>
         <source>Nutzbares Volumen</source>
         <translation>Användbar volym</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="881"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="881"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Masiche zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="920"/>
-        <location filename="../tabausruestung.ui" line="1074"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="920"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1074"/>
         <source>Höhe</source>
         <translation>Höjd</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="947"/>
-        <location filename="../tabausruestung.ui" line="1159"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="947"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1159"/>
         <source>Maximal nutzbare Füllhöhe</source>
         <translation>Max användbar fyllnadshöjd</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="954"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="954"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; plan steht, ist man mit 5 Zentimetern unterhalb der Kesseloberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Werden weniger schäumende Zutaten eingesetzt, können diese 5 Zentimeter auch unterschritten werden. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="979"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="979"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; des Maischekessels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1027"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1027"/>
         <source>Sudpfanne</source>
         <translation>Kokkärl</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1049"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1049"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. Der Sud dehnt sich bein Kochen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen des Sudes zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1095"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1095"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; plan steht, ist man mit 5 Zentimetern bei 100°C unterhalb der Pfannenoberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Hopfen schäumt beim Würzebruch. Hopfendolden noch mehr. Ausgehend von den individuellen Gegebenheiten sollte man bei der Größe der Sudpfanne anfangs konservativ vorgehen und einen genügend großen Puffer einrechnen. Dies vermeidet unliebsame Überraschungen und Putzaktionen. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1134"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1134"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; der Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1199"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1199"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchmesser&lt;/span&gt; des Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Für eine korrekte Berechnung sollte der Kessel &lt;span style=&quot; font-weight:600;&quot;&gt;zylindrisch&lt;/span&gt; sein.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung  und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1231"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1231"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; der Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabausruestung.ui" line="1273"/>
+        <location filename="../dialogs/dlgausruestung.ui" line="1273"/>
         <source>Bemerkung</source>
         <translation>Anmärkningar</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="21"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="21"/>
         <source>Standard</source>
         <translation>Standard</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="22"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="22"/>
         <source>Grainfather G30</source>
         <translation>Grainfather G30</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="23"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="23"/>
         <source>Grainfather G70</source>
         <translation>Grainfather G70</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="24"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="24"/>
         <source>Braumeister 10L</source>
         <translation>Braumeister 10L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="25"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="25"/>
         <source>Braumeister 20L</source>
         <translation>Braumeister 20L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="26"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="26"/>
         <source>Braumeister 50L</source>
         <translation>Braumeister 50L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="27"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="27"/>
         <source>Braumeister 200L</source>
         <translation>Braumeister 200L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="28"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="28"/>
         <source>Braumeister 500L</source>
         <translation>Braumeister 500L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="29"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="29"/>
         <source>Braumeister 1000L</source>
         <translation>Braumeister 1000L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="30"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="30"/>
         <source>Brauheld Pro 30L</source>
         <translation>Brauheld Pro 30L</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="50"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="50"/>
         <source>Anlage</source>
         <translation>Anläggning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="51"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="51"/>
         <source>Typ</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="52"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="52"/>
         <source>Vermögen [l]</source>
         <translation>Förmåga [l]</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="53"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="53"/>
         <source>Anzahl Sude</source>
         <translation>Antal satser</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="66"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="66"/>
         <source>Bezeichnung</source>
         <translation>Beteckning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="223"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="223"/>
         <source>Neue Brauanlage</source>
         <translation>Ny anläggning</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="243"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="243"/>
         <source>Brauanlage löschen?</source>
         <translation>Ta bort anläggningen?</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="244"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="244"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort anläggningen &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="281"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="281"/>
         <source>Gerät löschen?</source>
         <translation>Ta bort utrustning?</translation>
     </message>
     <message>
-        <location filename="../tabausruestung.cpp" line="282"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="282"/>
         <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort utrustning &quot;%1&quot;?</translation>
     </message>
@@ -3831,104 +3836,104 @@ Tid för flasktappning: %1</translation>
     </message>
 </context>
 <context>
-    <name>TabBrauUebersicht</name>
+    <name>DlgBrauUebersicht</name>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formulär</translation>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="14"/>
+        <source>Brauübersicht</source>
+        <translation>Satsöversikt</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="39"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="39"/>
         <source>Auswahl 1</source>
         <translation>Val 1</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="46"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="46"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;erster Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="73"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="73"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;zweiter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="100"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="100"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;dritter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="66"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="66"/>
         <source>Auswahl 2</source>
         <translation>Val 2</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="93"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="93"/>
         <source>Auswahl 3</source>
         <translation>Val 3</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.ui" line="133"/>
+        <location filename="../dialogs/dlgbrauuebersicht.ui" line="133"/>
         <source>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden. Es werden nur die bereits abgefüllten Sude angezeigt.</source>
         <translation>Vilka saster visas kan stallas in i satsurvalet. Bara flasktappade satser visas.</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="62"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="62"/>
         <source>&lt;keine&gt;</source>
         <translation>&lt;inga&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="63"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="63"/>
         <source>Abgefüllte Biermenge</source>
         <translation>Mängden flask-/fattappad</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="64"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="64"/>
         <source>Stammwürze</source>
         <translation>Stamvört (OG)</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="65"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="65"/>
         <source>Sudhausausbeute</source>
         <translation>Mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="66"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="66"/>
         <source>Effektive Sudhausausbeute</source>
         <translation>Effektiv mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="67"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="67"/>
         <source>Verdampfungsrate</source>
         <translation>Förångningshastighet</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="67"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="67"/>
         <source>l/h</source>
         <translation>l/h</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="68"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="68"/>
         <source>Alkohol</source>
         <translation>Alkoholhalt</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="69"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="69"/>
         <source>Scheinbarer Restextrakt</source>
         <translation>Skenbar slutlig extrakthalt</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="70"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="70"/>
         <source>Scheinbarer Endvergärungsgrad</source>
         <translation>Skenbar förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="71"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="71"/>
         <source>Tatsächlicher Endvergärungsgrad</source>
         <translation>Verklig förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="72"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="72"/>
         <source>Kosten</source>
         <translation>Kostnader</translation>
     </message>
@@ -3937,7 +3942,7 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Mängden flask-/fattappad [l]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="63"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="63"/>
         <source>l</source>
         <translation>l</translation>
     </message>
@@ -3946,8 +3951,8 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Stamvört [°P]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="64"/>
-        <location filename="../tabbrauuebersicht.cpp" line="69"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="64"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="69"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
@@ -3956,11 +3961,11 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Mäskutbyte [%]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="65"/>
-        <location filename="../tabbrauuebersicht.cpp" line="66"/>
-        <location filename="../tabbrauuebersicht.cpp" line="68"/>
-        <location filename="../tabbrauuebersicht.cpp" line="70"/>
-        <location filename="../tabbrauuebersicht.cpp" line="71"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="65"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="66"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="68"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="70"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="71"/>
         <source>%</source>
         <translation>%</translation>
     </message>
@@ -3989,7 +3994,7 @@ Tid för flasktappning: %1</translation>
         <translation type="vanished">Kostnader [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabbrauuebersicht.cpp" line="72"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="72"/>
         <source>%1/l</source>
         <translation>%1/l</translation>
     </message>
@@ -4539,44 +4544,44 @@ Bryggdatum: %1</translation>
     </message>
 </context>
 <context>
-    <name>TabDatenbank</name>
+    <name>DlgDatenbank</name>
     <message>
-        <location filename="../tabdatenbank.ui" line="28"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="28"/>
         <source>Datenbank</source>
         <translation>Databas</translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="51"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="51"/>
         <source>Version</source>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="35"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld gibt Auskunft zum Pfad der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="70"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="70"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Datenbanversionen im Kleinen Brauhelfer sind &lt;span style=&quot; font-weight:600;&quot;&gt;nicht abwärtskompatibel&lt;/span&gt;! Mit einem Update kann sich die Versionsnummer der Datenbank ändern. Es wird daher dringend angeraten vor jeden Update ein Backup der aktuellen Datenbank zu machen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="119"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="119"/>
         <source>Global</source>
         <translation>Global</translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="132"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="132"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man eine nicht-sudspezifische Tabelle.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="172"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="172"/>
         <source>Sud</source>
         <translation>Sats</translation>
     </message>
     <message>
-        <location filename="../tabdatenbank.ui" line="185"/>
+        <location filename="../dialogs/dlgdatenbank.ui" line="185"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Eine sudspezifische Tabelle ist ein Ausschnitt einer globalen Tabelle, welche nur die Einträge des geladenen Sudes anzeigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6131,110 +6136,110 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     </message>
 </context>
 <context>
-    <name>TabRohstoffe</name>
+    <name>DlgRohstoffe</name>
     <message>
-        <location filename="../tabrohstoffe.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formulär</translation>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="14"/>
+        <source>Rohstoffe</source>
+        <translation>Ingredienser</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="91"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="91"/>
         <source>alle</source>
         <translation>alla</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="101"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="101"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="104"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="104"/>
         <source>vorhanden</source>
         <translation>befintlig</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="114"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="114"/>
         <source>in Gebrauch</source>
         <translation>används</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="124"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="124"/>
         <source>Suche</source>
         <translation>Sök</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="151"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="151"/>
         <source>Malz</source>
         <translation>Malt</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="203"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="203"/>
         <source>Hopfen</source>
         <translation>Humle</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="255"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="255"/>
         <source>Hefe</source>
         <translation>Jäst</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="419"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="419"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Chloridionen sollten einen Wert von 150 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein unangenehmer Chlorgeschmack zu befürchten ist. In der Praxis gilt – bis auf Ausnahme mit besonderen Wässern – eine Grenze von 100 ml/l (ppm).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="540"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="540"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Magnesiumionen sollten einen Wert von 20 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein kratiger, harscher Geschmack zu befürchten ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="619"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="619"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Calciumionen sollten einen Wert von 150 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein salziger Geschmack auftreten kann. Der Brauer soll aber auch von einem Wert unter 50 mg/l (ppm) Abstand nehmen: Zu wenig Calcium behindert die Hefearbeit. Sude, deren Rezept eein Wasserprofil unter 50 mg/l (ppm) vorsehen, sollten mit entsprechend Hefenahrung angestellt werden.&lt;/p&gt;&lt;p&gt;Bei einem hohen Sulfatanteil, wie er oft in hopfenstarken Bierstilen verlangt wird, kann es schwer sein, Calcium und Sulfat richtig auszubalancieren. In diesem Fall hilft oft eine Kombination verschiedener Brausalze, besonders Bittersalz MgSO₄, das aber den Magnesiumgehalt ungünstig nach anhebt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="649"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="649"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkungen&lt;/span&gt; zur &lt;span style=&quot; font-weight:600;&quot;&gt;Waseraufbereitung&lt;/span&gt; eingetragen. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Soll das Rezept exportiert oder veröffentlicht werden, macht es Sinn, die regionalen, nicht allgemeingültigen Gegebenheiten für das eigene Brauwasser von den allgemeinen &lt;span style=&quot; font-weight:600;&quot;&gt;Anmerkungen&lt;/span&gt; im Tab Rezept zu &lt;span style=&quot; font-weight:600;&quot;&gt;trennen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="779"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="779"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Natriumionen sollten einen Wert von 50 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein salzig hervorstechender Geschmack zu befürchten ist. In der Praxis gilt – bis auf nachfolgende Ausnahmenn – eine Grenze von 20 ml/l (ppm) als üblich.&lt;/p&gt;&lt;p&gt;Es gibt indes Bierstile, deren Merkmal ein besonderer Salzgeschmack ist. Die sächsische Gose etwa wird mit 14–28 g Tafelsalz und Koriandersamen im 19l-Sud gebraut.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="846"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="846"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden, falls der berechnete vom tatsächlichem Wert abweicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="938"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="938"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Sulfat unterstützt kpmlexe Hopfenaromen, sollte aber einen Wert von 250 mg/l (ppm) im Brauwasser nicht übersteigen, da das Brauwasser sonst übersäuert und übersalzt wird, was wiederum zu einem salzigen Geschmack führt.&lt;/p&gt;&lt;p&gt;Es gibt jedoch Bierstile, die bewusst mit dieser Regel brechen. Das wektberühmte Wasser aus Burton-on-Trent protzt mit über 400-700 mg/l und hat mit dem English IPA einen Geschmackstrend unter den Craft-Bieren etabliert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="40"/>
-        <location filename="../tabrohstoffe.ui" line="1004"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="40"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="1004"/>
         <source>Neu</source>
         <translation>Ny</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1009"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="1009"/>
         <source>Vorlage</source>
         <translation>Mall</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1014"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="1014"/>
         <source>oBraMa</source>
         <translation>oBraMa</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="63"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="63"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;/&gt;Soll hier ein Rohstoff gelöscht werden, der in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept, ungebraut&lt;/span&gt;, verwendet wird, erscheint eine Warnmeldung. Wird der Rohstoff dann wirklich gelöscht, werden entsprechende Einträge in allen ungebrauten Rezepten im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept rot&lt;/span&gt; hinterlegt, deren Werte auf 0 gesetzt. Damit kann die erforderliche Stammwürze oder der nötige IBU-Wert nicht mehr gegeben sein. &lt;/p&gt;&lt;p&gt;In jedem Fall sind nach dem Löschen eines Rohstoffes &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rezepte mit&lt;/span&gt; dem &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoff&lt;/span&gt; zu &lt;span style=&quot; font-weight:600;&quot;&gt;überprüfen&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="69"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="69"/>
         <source>Löschen</source>
         <translation>Ta bort</translation>
     </message>
@@ -6243,13 +6248,13 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="vanished">Ytterligare ingredienser</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="362"/>
-        <location filename="../tabrohstoffe.cpp" line="373"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="362"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="373"/>
         <source>Wasser</source>
         <translation>Vatten</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="381"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="381"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofile&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
@@ -6262,157 +6267,157 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="vanished">Ta bort vattenprofil</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="919"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="919"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="884"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="884"/>
         <source>Chlorid (0 - 150 mg/l)</source>
         <translation>Chlorid (0 - 150 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="772"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="772"/>
         <source>Calcium (50 - 150 mg/l)</source>
         <translation>Calcium (50 - 150 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="583"/>
-        <location filename="../tabrohstoffe.ui" line="656"/>
-        <location filename="../tabrohstoffe.ui" line="795"/>
-        <location filename="../tabrohstoffe.ui" line="825"/>
-        <location filename="../tabrohstoffe.ui" line="832"/>
-        <location filename="../tabrohstoffe.ui" line="954"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="583"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="656"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="795"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="825"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="832"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="954"/>
         <source>mmol/l</source>
         <translation>mmol/l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="868"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="868"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciumhärte&lt;/span&gt; in °dH berechnet. Die Calciumhärte wird aus den Angaben von Calcium in mg/l nach der Formel Ca⁺ * 1,4 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Calciumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Calcium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="590"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="590"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="500"/>
-        <location filename="../tabrohstoffe.ui" line="562"/>
-        <location filename="../tabrohstoffe.ui" line="606"/>
-        <location filename="../tabrohstoffe.ui" line="635"/>
-        <location filename="../tabrohstoffe.ui" line="765"/>
-        <location filename="../tabrohstoffe.ui" line="891"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="500"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="562"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="606"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="635"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="765"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="891"/>
         <source>mg/l</source>
         <translation>mg/l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="474"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="474"/>
         <source>Restalkalität</source>
         <translation>Restalkalinitet</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="679"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="679"/>
         <source>Restalkalität Korrektur</source>
         <translation>Anpassning av värdet (differens från beräknat)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="451"/>
-        <location filename="../tabrohstoffe.ui" line="802"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="451"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="802"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="307"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="307"/>
         <source>Zusätze</source>
         <translation>Tillsatser</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="576"/>
-        <location filename="../tabrohstoffe.ui" line="686"/>
-        <location filename="../tabrohstoffe.ui" line="839"/>
-        <location filename="../tabrohstoffe.ui" line="898"/>
-        <location filename="../tabrohstoffe.ui" line="905"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="576"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="686"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="839"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="898"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="905"/>
         <source>°dH</source>
         <translation>°dH</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="663"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="663"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiumhärte&lt;/span&gt; in °dH berechnet. Die Magnesiumhärte wird aus den Angaben von &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesium&lt;/span&gt; in mg/l nach der Formel Mg⁺ * 2,307 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Magnesiumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="700"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="700"/>
         <source>Hydrogencarbonat (0 - 500 mg/l)</source>
         <translation>Hydrogencarbonat (0 - 500 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="968"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="968"/>
         <source>Sulfat (0 - 250 mg/l)</source>
         <translation>Sulfat (0 - 250 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="746"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="746"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="721"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="721"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maische und damit für die Effizienz der Stärkespaltung. Ob ein Bier mit der Schüttung in den angepeilten Parametern umfänglich gelingt, entscheidet sich hier. Der pH-Wert beim Maischen ist Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H⁺-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H⁺-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO³- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="88"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="88"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt. Bei vielen Suden in der Datenbank, kann diese Ansicht überfordernd sein. Es empfiehlt sich, feinere Filter anzuwenden. Alle Sude werden in allen Markierungsfarben unsortiert angezeigt. ein Klick auf die Spaltenfunktion aktiviert die Sortierung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="111"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="111"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;Gebrauch&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;Die bezieht sich auf &lt;span style=&quot; font-weight:600;&quot;&gt;nicht&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;gebrauchte&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rezepte&lt;/span&gt; im Tab Sudauswahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="121"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="121"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier bietet der Kleine Brauhelfer eine &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; für die Zutaten im aktivierten Reiter an. Die Suche ist ab 2 Zeichen wirksam.&lt;/p&gt;&lt;p&gt;Durchsucht werden alle Spalten mit Ausnahme Datum, Preis und Links.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="175"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Malz&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="227"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="227"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hopfen&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Wenn der Gärfaktor im Tab Rezept übernommen werden soll, muss er in der Form &amp;lt;zahl%&amp;gt; eingetragen werden. Beispiel 78%. Sonderzeichen sind nicht zulässig.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="279"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="279"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe Hefe&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="331"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="331"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; verwaltet.&lt;/p&gt;&lt;p&gt;Einträge in &lt;span style=&quot; font-style:italic;&quot;&gt;kursiv&lt;/span&gt; sind Rohstoffe, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten&lt;/span&gt; Sud verwendet werden. Diese Rohsotffe werden auch als &lt;span style=&quot; font-weight:600;&quot;&gt;in Gebrauch&lt;/span&gt; bezeichnet.&lt;/p&gt;&lt;p&gt;Mit einem Rechtsklick lassen sich einzelne Spalten aus- oder einblenden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hyperlinks &lt;/span&gt;sind nicht inaktiv, sie werden im Kleinen Brauhelfer unter &lt;span style=&quot; font-weight:600;&quot;&gt;Windows&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Linux&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CTRL&lt;/span&gt; ausgeführt, unter &lt;span style=&quot; font-weight:600;&quot;&gt;macOS&lt;/span&gt; mit &lt;span style=&quot; font-weight:600;&quot;&gt;CMD+ALT&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="524"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="714"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="714"/>
         <source>Natrium (0 - 50 mg/l)</source>
         <translation>Natrium (0 - 50 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="707"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="707"/>
         <source>Magnesium (0 - 20 mg/l)</source>
         <translation>Magnesium (0 - 20 mg/l)</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="481"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="481"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6421,20 +6426,20 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Här kan man rätta till restalkaliteten, ifall beräknade värdet avviker från verkligheten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="435"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="435"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="34"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="34"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="473"/>
-        <location filename="../tabrohstoffe.cpp" line="476"/>
-        <location filename="../tabrohstoffe.cpp" line="479"/>
-        <location filename="../tabrohstoffe.cpp" line="482"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="473"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="476"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="479"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="482"/>
         <source>Neuer Eintrag</source>
         <translation>Lägg till</translation>
     </message>
@@ -6455,144 +6460,144 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="vanished">Ta bort</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="29"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="29"/>
         <source>aroma</source>
         <translation>aroma</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="30"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="30"/>
         <source>bitter</source>
         <translation>beskning</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="31"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="31"/>
         <source>universal</source>
         <translation>universal</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="36"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="36"/>
         <source>obergärig</source>
         <translation>överjäst</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="37"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="37"/>
         <source>untergärig</source>
         <translation>underjäst</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="42"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="42"/>
         <source>trocken</source>
         <translation>torr</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="43"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="43"/>
         <source>flüssig</source>
         <translation>flytande</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="47"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="47"/>
         <source>Honig</source>
         <translation>Honung</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="48"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="48"/>
         <source>Zucker</source>
         <translation>Socker</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="49"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="49"/>
         <source>Gewürz</source>
         <translation>Krydda</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="50"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="50"/>
         <source>Frucht</source>
         <translation>Frukt</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="51"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="51"/>
         <source>Sonstiges</source>
         <translation>Annat</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="52"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="52"/>
         <source>Kraut</source>
         <translation>Örter</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="53"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="53"/>
         <source>Wasseraufbereitung</source>
         <translation>Vattenanpassning</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="54"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="54"/>
         <source>Klärmittel</source>
         <translation>Klarningsmedel</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="58"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="58"/>
         <source>kg</source>
         <translation>kg</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="59"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="59"/>
         <source>g</source>
         <translation>g</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="60"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="60"/>
         <source>mg</source>
         <translation>mg</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="61"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="61"/>
         <source>Stk.</source>
         <translation>st.</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="62"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="62"/>
         <source>l</source>
         <translation>l</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="63"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="63"/>
         <source>ml</source>
         <translation>ml</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="128"/>
-        <location filename="../tabrohstoffe.cpp" line="163"/>
-        <location filename="../tabrohstoffe.cpp" line="198"/>
-        <location filename="../tabrohstoffe.cpp" line="239"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="128"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="163"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="198"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="239"/>
         <source>Name</source>
         <translation>Namn</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="129"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="129"/>
         <source>Menge [kg]</source>
         <translation>Mängd [kg]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="130"/>
-        <location filename="../tabrohstoffe.cpp" line="244"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="130"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="244"/>
         <source>Farbe [EBC]</source>
         <translation>Färg [EBC]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="131"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="131"/>
         <source>pH</source>
         <translation>pH</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="132"/>
         <source>Max. Anteil [%]</source>
         <translation>Max. andel [%]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="133"/>
-        <location filename="../tabrohstoffe.cpp" line="167"/>
-        <location filename="../tabrohstoffe.cpp" line="200"/>
-        <location filename="../tabrohstoffe.cpp" line="245"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="133"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="167"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="200"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="245"/>
         <source>Bemerkung</source>
         <translation>Anmärkningar</translation>
     </message>
@@ -6601,166 +6606,166 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="vanished">Egenskaper</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="135"/>
-        <location filename="../tabrohstoffe.cpp" line="170"/>
-        <location filename="../tabrohstoffe.cpp" line="208"/>
-        <location filename="../tabrohstoffe.cpp" line="247"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="135"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="170"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="208"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="247"/>
         <source>Alternativen</source>
         <translation>Alternativ</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="136"/>
-        <location filename="../tabrohstoffe.cpp" line="171"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="136"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="171"/>
         <source>Preis [%1/kg]</source>
         <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="137"/>
-        <location filename="../tabrohstoffe.cpp" line="172"/>
-        <location filename="../tabrohstoffe.cpp" line="210"/>
-        <location filename="../tabrohstoffe.cpp" line="249"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="137"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="172"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="210"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="249"/>
         <source>Einlagerung</source>
         <translation>Kom in i lagret</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="138"/>
-        <location filename="../tabrohstoffe.cpp" line="173"/>
-        <location filename="../tabrohstoffe.cpp" line="211"/>
-        <location filename="../tabrohstoffe.cpp" line="250"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="138"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="173"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="211"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="250"/>
         <source>Haltbarkeit</source>
         <translation>Bäst före</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="139"/>
-        <location filename="../tabrohstoffe.cpp" line="174"/>
-        <location filename="../tabrohstoffe.cpp" line="212"/>
-        <location filename="../tabrohstoffe.cpp" line="251"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="139"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="174"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="212"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="251"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="164"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="164"/>
         <source>Menge [g]</source>
         <translation>Mängd [g]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="165"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="165"/>
         <source>Alpha [%]</source>
         <translation>Alpha [%]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="166"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="166"/>
         <source>Pellets</source>
         <translation>Pellets</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="134"/>
-        <location filename="../tabrohstoffe.cpp" line="168"/>
-        <location filename="../tabrohstoffe.cpp" line="201"/>
-        <location filename="../tabrohstoffe.cpp" line="246"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="134"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="168"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="201"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="246"/>
         <source>Eigenschaften</source>
         <translation>Egenskaper</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="169"/>
-        <location filename="../tabrohstoffe.cpp" line="242"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="169"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="242"/>
         <source>Typ</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="199"/>
-        <location filename="../tabrohstoffe.cpp" line="240"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="199"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="240"/>
         <source>Menge</source>
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="202"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="202"/>
         <source>OG/UG</source>
         <translation>Över/underjäst</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="203"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="203"/>
         <source>Trocken/Flüssig</source>
         <translation>Torr/Flytande</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="204"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="204"/>
         <source>Würzemenge [l]</source>
         <translation>Vörtmängd [l]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="205"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="205"/>
         <source>Sedimentation</source>
         <translation>Sedimentering</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="206"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="206"/>
         <source>Vergärungsgrad</source>
         <translation>Förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="207"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="207"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="209"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="209"/>
         <source>Preis [%1]</source>
         <translation>Pris [%1/l]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="241"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="241"/>
         <source>Einheit</source>
         <translation>Enhet</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="243"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="243"/>
         <source>Ausbeute [%]</source>
         <translation>Utbye [%]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="248"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="248"/>
         <source>Preis [%1/[kg/l/Stk]]</source>
         <translation>Pris [%1/[kg/l/st.]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="276"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="276"/>
         <source>Wasserprofil</source>
         <translation>Vattenprofil</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="277"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="277"/>
         <source>Restalkalität [°dH]</source>
         <translation>Restalkalinitet [°dH]</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.ui" line="1019"/>
-        <location filename="../tabrohstoffe.cpp" line="583"/>
+        <location filename="../dialogs/dlgrohstoffe.ui" line="1019"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="583"/>
         <source>Kopie</source>
         <translation>Kopia</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="637"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="637"/>
         <source>Rohstoff wird verwendet</source>
         <translation>Råvara används</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="638"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="638"/>
         <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
         <translation>Denna råvara används i en stas som inte är bryggd ännu. Ska den tas bort ändå?</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="485"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="485"/>
         <source>Neues Profil</source>
         <translation>Nytt profil</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="626"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="626"/>
         <source>Wasserprofil löschen?</source>
         <translation>Ta bort vattenprofil?</translation>
     </message>
     <message>
-        <location filename="../tabrohstoffe.cpp" line="627"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="627"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort vattenprofilen &quot;%1&quot;?</translation>
     </message>

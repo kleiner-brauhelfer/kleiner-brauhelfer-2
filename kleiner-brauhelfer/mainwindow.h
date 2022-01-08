@@ -83,8 +83,6 @@ private:
     void saveSettings();
     void restoreView(bool full);
     void checkForUpdate(bool force);
-    template<class DLG> bool showDialog();
-    template<class DLG> bool showToolDialog(QAction* action, void(MainWindow::* slot_finished)());    
 
 private:
     Ui::MainWindow *ui;

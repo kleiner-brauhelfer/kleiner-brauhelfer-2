@@ -145,6 +145,7 @@ HEADERS += \
     templatetags.h \
     dialogs/dlgabout.h \
     dialogs/dlgabstract.h \
+    dialogs/dlgabstract-inl.h \
     dialogs/dlgausruestung.h \
     dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \

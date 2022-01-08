@@ -27,6 +27,7 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -47,9 +48,6 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tabMain->setTabIcon(5, IconThemed("tabzusammenfassung", false));
         ui->tabMain->setTabIcon(6, IconThemed("tabetikette", false));
         ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
-        // ui->actionRohstoffe->setIcon(IconThemed("actionrohstoffe", false));
-        // ui->actionBrauUebersicht->setIcon(IconThemed("actionbrauuebersicht", false));
-        // ui->actionAusruestung->setIcon(IconThemed("actionausruestung", false));
         
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)

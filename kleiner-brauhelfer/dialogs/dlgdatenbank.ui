@@ -216,6 +216,14 @@
    <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>tbDatenbankPfad</tabstop>
+  <tabstop>tbDatenbankVersion</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>tableView</tabstop>
+  <tabstop>comboBoxSud</tabstop>
+  <tabstop>tableViewSud</tabstop>
+ </tabstops> 
  <resources/>
  <connections/>
 </ui>

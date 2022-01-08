@@ -1344,6 +1344,42 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>btnNeueAnlage</tabstop>
+  <tabstop>btnAnlageLoeschen</tabstop>
+  <tabstop>tableViewAnlagen</tabstop>
+  <tabstop>btnNeuesGeraet</tabstop>
+  <tabstop>btnGeraetLoeschen</tabstop>
+  <tabstop>tableViewGeraete</tabstop>
+  <tabstop>tableViewSude</tabstop>
+  <tabstop>tbAusbeute</tabstop>
+  <tabstop>btnAusbeuteMittel</tabstop>
+  <tabstop>tbAusbeuteMittel</tabstop>
+  <tabstop>btnVerdampfungsrate</tabstop>
+  <tabstop>tbVerdampfung</tabstop>
+  <tabstop>btnVerdampfungMittel</tabstop>
+  <tabstop>tbVerdampfungMittel</tabstop>
+  <tabstop>sliderAusbeuteSude</tabstop>
+  <tabstop>tbAusbeuteSude</tabstop>
+  <tabstop>tbKorrekturNachguss</tabstop>
+  <tabstop>tbKorrekturFarbe</tabstop>
+  <tabstop>tbKorrekturSollmenge</tabstop>
+  <tabstop>tbKosten</tabstop>
+  <tabstop>tbMaischebottichDurchmesser</tabstop>
+  <tabstop>tbMaischebottichHoehe</tabstop>
+  <tabstop>tbMaischenVolumen</tabstop>
+  <tabstop>tbMaischebottichMaxFuellhoehe</tabstop>
+  <tabstop>tbMaischenMaxNutzvolumen</tabstop>
+  <tabstop>tbSudpfanneDurchmesser</tabstop>
+  <tabstop>tbSudpfanneHoehe</tabstop>
+  <tabstop>tbSudpfanneVolumen</tabstop>
+  <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
+  <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
+  <tabstop>wdgBemerkung</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>tbHelp</tabstop>
+  <tabstop>splitterHelp</tabstop>
+ </tabstops>
  <resources>
   <include location="../images.qrc"/>
  </resources>

@@ -1035,7 +1035,37 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
+ <tabstops>
+  <tabstop>buttonAdd</tabstop>
+  <tabstop>buttonDelete</tabstop>
+  <tabstop>radioButtonAlle</tabstop>
+  <tabstop>radioButtonVorhanden</tabstop>
+  <tabstop>radioButtonInGebrauch</tabstop>
+  <tabstop>lineEditFilter</tabstop>
+  <tabstop>tableMalz</tabstop>
+  <tabstop>tableHopfen</tabstop>
+  <tabstop>tableHefe</tabstop>
+  <tabstop>tableWeitereZutaten</tabstop>
+  <tabstop>tableWasser</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>tbCalciumMg</tabstop>
+  <tabstop>tbCalciumMmol</tabstop>
+  <tabstop>tbCalciumHaerte</tabstop>
+  <tabstop>tbMagnesiumMg</tabstop>
+  <tabstop>tbMagnesiumMmol</tabstop>
+  <tabstop>tbMagnesiumHaerte</tabstop>
+  <tabstop>tbNatriumMg</tabstop>
+  <tabstop>tbNatriumMmol</tabstop>
+  <tabstop>tbSulfatMg</tabstop>
+  <tabstop>tbSulfatMmol</tabstop>
+  <tabstop>tbChloridMg</tabstop>
+  <tabstop>tbChloridMmol</tabstop>
+  <tabstop>tbHydrogencarbonatMg</tabstop>
+  <tabstop>tbHydrogencarbonatMmol</tabstop>
+  <tabstop>tbHydrogencarbonatHaerte</tabstop>
+  <tabstop>tbRestalkalitaetAdd</tabstop>
+  <tabstop>tbRestalkalitaet</tabstop>
+ </tabstops> <resources>
   <include location="../images.qrc"/>
  </resources>
  <connections/>

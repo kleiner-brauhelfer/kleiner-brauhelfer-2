@@ -154,6 +154,12 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>cbAuswahlL1</tabstop>
+  <tabstop>cbAuswahlL2</tabstop>
+  <tabstop>cbAuswahlL3</tabstop>
+  <tabstop>tableView</tabstop>
+ </tabstops> 
  <resources/>
  <connections/>
 </ui>

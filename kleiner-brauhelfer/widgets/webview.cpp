@@ -27,7 +27,6 @@ void WebPage::setLinksExternal(bool external)
 
 bool WebPage::acceptNavigationRequest(const QUrl& url, QWebEnginePage::NavigationType type, bool isMainFrame)
 {
-    Q_UNUSED(isMainFrame)
     if (type == QWebEnginePage::NavigationTypeLinkClicked)
     {
         if (url.isLocalFile() || mExternal)
@@ -36,7 +35,13 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, QWebEnginePage::Navigatio
             return false;
         }
     }
-    return true;
+    return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
+}
+
+QWebEnginePage* WebPage::createWindow(QWebEnginePage::WebWindowType type)
+{
+    Q_UNUSED(type)
+    return this;
 }
 
 #endif
@@ -52,7 +57,7 @@ WebView::WebView(QWidget* parent) :
     QWebEngineView(parent)
 {
     setContextMenuPolicy(Qt::NoContextMenu);
-    setPage(new WebPage());
+    setPage(new WebPage(this));
 }
 
 WebView::~WebView()

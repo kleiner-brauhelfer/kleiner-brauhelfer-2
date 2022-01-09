@@ -2,6 +2,7 @@
 #define DLGHILFE_H
 
 #include <QDialog>
+#include <QUrl>
 
 namespace Ui {
 class DlgHilfe;
@@ -19,8 +20,13 @@ public:
     ~DlgHilfe();
     void setUrl(const QUrl &url);
 
+private slots:
+    void urlChanged(const QUrl &url);
+    void on_btnHome_clicked();
+
 private:
     Ui::DlgHilfe *ui;
+    const QUrl homeUrl;
 };
 
 #endif // DLGHILFE_H

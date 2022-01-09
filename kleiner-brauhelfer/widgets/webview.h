@@ -17,6 +17,7 @@ public:
     WebPage(QObject* parent = nullptr);
     void setLinksExternal(bool external);
     bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool) Q_DECL_OVERRIDE;
+    QWebEnginePage *createWindow(QWebEnginePage::WebWindowType type) Q_DECL_OVERRIDE;
 
 private:
     bool mExternal;

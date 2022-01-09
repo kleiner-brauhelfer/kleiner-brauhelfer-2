@@ -8,10 +8,12 @@ DlgHilfe* DlgHilfe::Dialog = nullptr;
 
 DlgHilfe::DlgHilfe(const QUrl &url, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::DlgHilfe)
+    ui(new Ui::DlgHilfe),
+    homeUrl(url)
 {
     ui->setupUi(this);
-    setUrl(url);
+    ui->webview->setContextMenuPolicy(Qt::DefaultContextMenu);
+    setUrl(homeUrl);
 
     gSettings->beginGroup(staticMetaObject.className());
     QSize size = gSettings->value("size").toSize();
@@ -19,6 +21,7 @@ DlgHilfe::DlgHilfe(const QUrl &url, QWidget *parent) :
         resize(size);
     gSettings->endGroup();
 
+    connect(ui->webview, SIGNAL(urlChanged(QUrl)), this, SLOT(urlChanged(QUrl)));
     connect(this, &DlgHilfe::finished, this, []{Dialog->deleteLater();Dialog = nullptr;});
 }
 
@@ -38,4 +41,14 @@ void DlgHilfe::setUrl(const QUrl &url)
     Q_UNUSED(url)
     ui->webview->setHtml(tr("Nicht unterstützt."));
   #endif
+}
+
+void DlgHilfe::urlChanged(const QUrl &url)
+{
+    ui->lblUrl->setText(url.toString());
+}
+
+void DlgHilfe::on_btnHome_clicked()
+{
+    setUrl(homeUrl);
 }

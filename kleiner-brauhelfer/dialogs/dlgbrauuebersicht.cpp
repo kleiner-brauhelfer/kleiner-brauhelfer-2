@@ -96,14 +96,13 @@ void DlgBrauUebersicht::saveSettings()
     gSettings->endGroup();
 }
 
-void DlgBrauUebersicht::restoreView(bool full)
+void DlgBrauUebersicht::restoreView()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(full);
+    DlgAbstract::restoreView();
     gSettings->endGroup();
     ui->tableView->restoreDefaultState();
-    if (full)
-        ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void DlgBrauUebersicht::setModel(QAbstractItemModel* model)

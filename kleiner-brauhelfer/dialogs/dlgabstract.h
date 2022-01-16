@@ -14,14 +14,14 @@ public:
 
     template<typename DLG> static void modulesChanged(Settings::Modules modules);
     template<class DLG> static bool showDialog(QWidget *parent, QAction* action = nullptr);
-    template<class DLG> static void restoreView(bool full);
+    template<class DLG> static void restoreView();
 
     explicit DlgAbstract(QWidget *parent = nullptr);
 
     virtual void saveSettings();
     virtual void modulesChanged(Settings::Modules modules);
     virtual void restoreSize();
-    virtual void restoreView(bool full);
+    virtual void restoreView();
 
 
 protected:

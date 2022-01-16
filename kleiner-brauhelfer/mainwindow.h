@@ -78,7 +78,7 @@ private:
     void restart(int retCode = 1000);
     void save();
     void saveSettings();
-    void restoreView(bool full);
+    void restoreView();
     void checkForUpdate(bool force);
 
 private:

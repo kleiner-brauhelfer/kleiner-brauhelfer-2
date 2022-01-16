@@ -140,20 +140,17 @@ void DlgAusruestung::saveSettings()
     gSettings->endGroup();
 }
 
-void DlgAusruestung::restoreView(bool full)
+void DlgAusruestung::restoreView()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(full);
+    DlgAbstract::restoreView();
     gSettings->endGroup();
     ui->tableViewAnlagen->restoreDefaultState();
     ui->tableViewGeraete->restoreDefaultState();
     ui->tableViewSude->restoreDefaultState();
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)

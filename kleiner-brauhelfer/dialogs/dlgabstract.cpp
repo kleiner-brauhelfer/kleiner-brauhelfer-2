@@ -19,9 +19,8 @@ void DlgAbstract::saveSettings()
 }
 
 
-void DlgAbstract::restoreView(bool full)
+void DlgAbstract::restoreView()
 {
-    Q_UNUSED(full);
     // TODO: set default size (not called if dialog is not opened)
     restoreGeometry(gSettings->value("geometry").toByteArray());
 }

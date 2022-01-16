@@ -340,10 +340,10 @@ void DlgRohstoffe::saveSettings()
     gSettings->endGroup();
 }
 
-void DlgRohstoffe::restoreView(bool full)
+void DlgRohstoffe::restoreView()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(full);
+    DlgAbstract::restoreView();
 	gSettings->endGroup(); 
     ui->tableMalz->restoreDefaultState();
     ui->tableHopfen->restoreDefaultState();

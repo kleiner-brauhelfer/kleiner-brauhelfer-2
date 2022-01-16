@@ -239,24 +239,23 @@ void MainWindow::saveSettings()
     ui->tabBewertung->saveSettings();
 }
 
-void MainWindow::restoreView(bool full)
+void MainWindow::restoreView()
 {
-    if (full)
-        restoreState(mDefaultState);
-    ui->tabSudAuswahl->restoreView(full);
-    DlgAbstract::restoreView<DlgBrauUebersicht>(full);
-    ui->tabRezept->restoreView(full);
-    ui->tabBraudaten->restoreView(full);
-    ui->tabAbfuelldaten->restoreView(full);
-    ui->tabGaerverlauf->restoreView(full);
-    ui->tabZusammenfassung->restoreView(full);
-    ui->tabEtikette->restoreView(full);
-    ui->tabBewertung->restoreView(full);
-    DlgAbstract::restoreView<DlgRohstoffe>(full);
-    DlgAbstract::restoreView<DlgAusruestung>(full);
-    DlgAbstract::restoreView<DlgDatenbank>(full);
-    DlgRohstoffAuswahl::restoreView(full);
-    DlgTableView::restoreView(full);
+    restoreState(mDefaultState);
+    ui->tabSudAuswahl->restoreView();
+    DlgAbstract::restoreView<DlgBrauUebersicht>();
+    ui->tabRezept->restoreView();
+    ui->tabBraudaten->restoreView();
+    ui->tabAbfuelldaten->restoreView();
+    ui->tabGaerverlauf->restoreView();
+    ui->tabZusammenfassung->restoreView();
+    ui->tabEtikette->restoreView();
+    ui->tabBewertung->restoreView();
+    DlgAbstract::restoreView<DlgRohstoffe>();
+    DlgAbstract::restoreView<DlgAusruestung>();
+    DlgAbstract::restoreView<DlgDatenbank>();
+    DlgRohstoffAuswahl::restoreView();
+    DlgTableView::restoreView();
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -648,7 +647,7 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
 
 void MainWindow::on_actionWiederherstellen_triggered()
 {
-    restoreView(true);
+    restoreView();
 }
 
 void MainWindow::on_actionThemeHell_triggered()

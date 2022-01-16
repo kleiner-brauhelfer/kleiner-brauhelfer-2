@@ -12,7 +12,7 @@ public:
     explicit TabAbstract(QWidget *parent = nullptr);
 
     virtual void saveSettings();
-    virtual void restoreView(bool full);
+    virtual void restoreView();
     virtual void modulesChanged(Settings::Modules modules);
 
     void setTabActive(bool active);

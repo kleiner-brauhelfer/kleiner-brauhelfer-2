@@ -85,13 +85,12 @@ void DlgDatenbank::saveSettings()
     gSettings->endGroup();
 }
 
-void DlgDatenbank::restoreView(bool full)
+void DlgDatenbank::restoreView()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(full);
+    DlgAbstract::restoreView();
     gSettings->endGroup();
-    if (full)
-        ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void DlgDatenbank::sudLoaded()

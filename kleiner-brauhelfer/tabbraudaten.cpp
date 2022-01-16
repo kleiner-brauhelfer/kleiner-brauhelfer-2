@@ -94,13 +94,10 @@ void TabBraudaten::saveSettings()
     gSettings->endGroup();
 }
 
-void TabBraudaten::restoreView(bool full)
+void TabBraudaten::restoreView()
 {
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
 void TabBraudaten::modulesChanged(Settings::Modules modules)

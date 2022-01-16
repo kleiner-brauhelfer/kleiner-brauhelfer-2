@@ -222,13 +222,10 @@ void TabRezept::saveSettings()
     gSettings->endGroup();
 }
 
-void TabRezept::restoreView(bool full)
+void TabRezept::restoreView()
 {
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
 void TabRezept::modulesChanged(Settings::Modules modules)

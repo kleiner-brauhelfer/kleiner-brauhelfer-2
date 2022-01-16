@@ -89,13 +89,10 @@ void TabAbfuellen::saveSettings()
     gSettings->endGroup();
 }
 
-void TabAbfuellen::restoreView(bool full)
+void TabAbfuellen::restoreView()
 {
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
 void TabAbfuellen::modulesChanged(Settings::Modules modules)

@@ -52,13 +52,13 @@ bool DlgAbstract::showDialog(QWidget *parent, QAction* action)
 }
 
 template<typename DLG>
-void DlgAbstract::restoreView(bool full)
+void DlgAbstract::restoreView()
 {
     if (DLG::Dialog)
     {
         if(QCoreApplication::instance()->thread() != DLG::Dialog->thread())
            qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
-        DLG::Dialog->restoreView(full);
+        DLG::Dialog->restoreView();
     }
     else
     {

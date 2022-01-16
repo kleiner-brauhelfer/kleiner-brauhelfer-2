@@ -17,7 +17,7 @@ public:
     explicit DlgDatenbank(QWidget *parent = nullptr);
     virtual ~DlgDatenbank() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView(bool full) Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
 
 private slots:
     void sudLoaded();

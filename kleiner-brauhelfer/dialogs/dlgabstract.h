@@ -13,8 +13,7 @@ class DlgAbstract : public QDialog
 public:
 
     template<typename DLG> static void modulesChanged(Settings::Modules modules);
-    template<class DLG, typename MW> static bool showDialog(MW *receiver);
-    template<class DLG, typename MW> static bool showToolDialog(MW *parent, QAction* action, void(MW::* slot_finished)());
+    template<class DLG> static bool showDialog(QWidget *parent, QAction* action = nullptr);
     template<class DLG> static void restoreView(bool full);
 
     explicit DlgAbstract(QWidget *parent = nullptr);

@@ -850,28 +850,22 @@ void MainWindow::on_actionUeber_triggered()
 
 void MainWindow::on_actionLog_triggered()
 {
-    DlgAbstract::showDialog<DlgConsole>(this);
+    DlgAbstract::showDialog<DlgConsole>(this, ui->actionLog);
 }
 
 void MainWindow::on_actionDatenbank_triggered()
 {
-    DlgAbstract::showDialog<DlgDatenbank>(this);
+    DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
 }
 
 void MainWindow::on_actionRohstoffe_triggered()
 {
-    DlgAbstract::showToolDialog<DlgRohstoffe>(this, ui->actionRohstoffe, &MainWindow::dlgRohstoffe_finished);
-
-}
-
-void MainWindow::dlgRohstoffe_finished()
-{
-    ui->actionRohstoffe->setChecked(false);
+    DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
 }
 
 void MainWindow::on_actionBrauUebersicht_triggered()
 {
-    auto ret = DlgAbstract::showToolDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht, &MainWindow::dlgBrauUebersicht_finished);
+    auto ret = DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
     if(ret == true)
     {
         // TODO: BrauUebersicht eigenes model
@@ -879,17 +873,7 @@ void MainWindow::on_actionBrauUebersicht_triggered()
     }
 }
 
-void MainWindow::dlgBrauUebersicht_finished()
-{
-    ui->actionBrauUebersicht->setChecked(false);
-}
-
 void MainWindow::on_actionAusruestung_triggered()
 {
-    DlgAbstract::showToolDialog<DlgAusruestung>(this, ui->actionAusruestung, &MainWindow::dlgAusruestung_finished);
-}
-
-void MainWindow::dlgAusruestung_finished()
-{
-    ui->actionAusruestung->setChecked(false);
+    DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
 }

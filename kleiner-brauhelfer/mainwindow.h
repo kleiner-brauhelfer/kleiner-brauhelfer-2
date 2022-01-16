@@ -67,11 +67,8 @@ private slots:
     void on_actionAndroidApp_triggered();
     void on_actionUeber_triggered();
     void on_actionDatenbank_triggered();
-    void dlgRohstoffe_finished();    
     void on_actionRohstoffe_triggered();
-    void dlgBrauUebersicht_finished();
     void on_actionBrauUebersicht_triggered();
-    void dlgAusruestung_finished();    
     void on_actionAusruestung_triggered();
     
 private:

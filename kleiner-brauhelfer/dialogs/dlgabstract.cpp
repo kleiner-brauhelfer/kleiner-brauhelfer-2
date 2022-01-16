@@ -10,14 +10,12 @@ DlgAbstract::DlgAbstract(QWidget *parent) :
 
 void DlgAbstract::restoreSize()
 {
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
+    restoreGeometry(gSettings->value("geometry").toByteArray());
 }
 
 void DlgAbstract::saveSettings()
 {
-    gSettings->setValue("size", geometry().size());
+    gSettings->setValue("geometry", saveGeometry());
 }
 
 
@@ -25,9 +23,7 @@ void DlgAbstract::restoreView(bool full)
 {
     Q_UNUSED(full);
     // TODO: set default size (not called if dialog is not opened)
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
+    restoreGeometry(gSettings->value("geometry").toByteArray());
 }
 
 

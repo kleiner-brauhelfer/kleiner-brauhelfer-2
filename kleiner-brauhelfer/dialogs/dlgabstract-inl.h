@@ -19,8 +19,8 @@ void DlgAbstract::modulesChanged(Settings::Modules modules)
     }
 }
 
-template<typename DLG, typename MW>
-bool DlgAbstract::showDialog(MW *parent)
+template<typename DLG>
+bool DlgAbstract::showDialog(QWidget *parent, QAction* action)
 {
     if(QCoreApplication::instance()->thread() != parent->thread())
         qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
@@ -28,6 +28,11 @@ bool DlgAbstract::showDialog(MW *parent)
     {
         DLG::Dialog->raise();
         DLG::Dialog->activateWindow();
+        if (action)
+        {
+            action->setChecked(true);
+        }
+        return false;
     }
     else
     {
@@ -37,24 +42,13 @@ bool DlgAbstract::showDialog(MW *parent)
             DLG::Dialog = nullptr;
             });
         DLG::Dialog->show();
+        if (action)
+        {
+            connect(DLG::Dialog, &DLG::finished, [action]{action->setChecked(false);});
+            action->setChecked(true);
+        }
         return true;
     }
-    return false;
-}
-
-template<typename DLG, typename MW>
-bool DlgAbstract::showToolDialog(MW *parent, QAction* action, void(MW::* slot_finished)() )
-{
-    auto ret = DlgAbstract::showDialog<DLG>(parent);
-    if(ret)
-    {
-        connect(DLG::Dialog, &DLG::finished, parent, slot_finished);
-    }
-    else
-    {
-        action->setChecked(true);
-    }
-    return ret;
 }
 
 template<typename DLG>

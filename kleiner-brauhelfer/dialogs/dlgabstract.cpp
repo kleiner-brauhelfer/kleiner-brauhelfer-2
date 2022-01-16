@@ -24,6 +24,7 @@ void DlgAbstract::saveSettings()
 void DlgAbstract::restoreView(bool full)
 {
     Q_UNUSED(full);
+    // TODO: set default size (not called if dialog is not opened)
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);

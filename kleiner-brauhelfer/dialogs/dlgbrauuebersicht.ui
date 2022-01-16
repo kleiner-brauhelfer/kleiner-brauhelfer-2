@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>Brauübersicht</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../images.qrc">
+    <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QSplitter" name="splitter">
@@ -159,7 +166,9 @@
   <tabstop>cbAuswahlL2</tabstop>
   <tabstop>cbAuswahlL3</tabstop>
   <tabstop>tableView</tabstop>
- </tabstops> 
- <resources/>
+ </tabstops>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -96,7 +96,6 @@ void DlgBrauUebersicht::saveSettings()
     gSettings->endGroup();
 }
 
-
 void DlgBrauUebersicht::restoreView(bool full)
 {
     gSettings->beginGroup(staticMetaObject.className());

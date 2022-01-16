@@ -1,13 +1,13 @@
 #ifndef DLGCONSOLE_H
 #define DLGCONSOLE_H
 
-#include "dlgabstract.h"
+#include <QDialog>
 
 namespace Ui {
 class DlgConsole;
 }
 
-class DlgConsole : public DlgAbstract
+class DlgConsole : public QDialog
 {
     Q_OBJECT
 

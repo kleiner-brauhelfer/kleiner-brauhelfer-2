@@ -20,7 +20,6 @@ public:
     virtual ~DlgBrauUebersicht() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView(bool full) Q_DECL_OVERRIDE;
-    
     void setModel(QAbstractItemModel* model);
 
 signals:

@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>Datenbank</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../images.qrc">
+    <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -223,7 +230,9 @@
   <tabstop>tableView</tabstop>
   <tabstop>comboBoxSud</tabstop>
   <tabstop>tableViewSud</tabstop>
- </tabstops> 
- <resources/>
+ </tabstops>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

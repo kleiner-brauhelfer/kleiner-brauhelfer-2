@@ -9,7 +9,6 @@
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"
-#include "dialogs/dlgabstract.h"
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
@@ -26,7 +25,6 @@
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -258,7 +256,7 @@ void MainWindow::restoreView(bool full)
     DlgAbstract::restoreView<DlgAusruestung>(full);
     DlgAbstract::restoreView<DlgDatenbank>(full);
     DlgRohstoffAuswahl::restoreView(full);
-    DlgTableView::restoreView(full); // TODO unused?
+    DlgTableView::restoreView(full);
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -266,6 +264,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     updateTabs(modules);
     updateValues();
     ui->tabSudAuswahl->modulesChanged(modules);
+    DlgAbstract::modulesChanged<DlgBrauUebersicht>(modules);
     ui->tabRezept->modulesChanged(modules);
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
@@ -274,6 +273,8 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
     DlgAbstract::modulesChanged<DlgRohstoffe>(modules);
+    DlgAbstract::modulesChanged<DlgAusruestung>(modules);
+    DlgAbstract::modulesChanged<DlgDatenbank>(modules);
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
@@ -331,9 +332,9 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         nextIndex++;
-    if(modules.testFlag(Settings::ModuleBrauuebersicht))
+    if (modules.testFlag(Settings::ModuleBrauuebersicht))
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
-    if(modules.testFlag(Settings::ModuleAusruestung))
+    if (modules.testFlag(Settings::ModuleAusruestung))
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
 }
 
@@ -857,7 +858,6 @@ void MainWindow::on_actionDatenbank_triggered()
     DlgAbstract::showDialog<DlgDatenbank>(this);
 }
 
-
 void MainWindow::on_actionRohstoffe_triggered()
 {
     DlgAbstract::showToolDialog<DlgRohstoffe>(this, ui->actionRohstoffe, &MainWindow::dlgRohstoffe_finished);
@@ -869,14 +869,13 @@ void MainWindow::dlgRohstoffe_finished()
     ui->actionRohstoffe->setChecked(false);
 }
 
-
 void MainWindow::on_actionBrauUebersicht_triggered()
 {
     auto ret = DlgAbstract::showToolDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht, &MainWindow::dlgBrauUebersicht_finished);
     if(ret == true)
     {
+        // TODO: BrauUebersicht eigenes model
         DlgBrauUebersicht::Dialog->setModel(ui->tabSudAuswahl->model());
-        connect(DlgBrauUebersicht::Dialog, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
     }
 }
 
@@ -885,15 +884,12 @@ void MainWindow::dlgBrauUebersicht_finished()
     ui->actionBrauUebersicht->setChecked(false);
 }
 
-
 void MainWindow::on_actionAusruestung_triggered()
 {
-    DlgAbstract::showToolDialog<DlgAusruestung>(this, ui->actionRohstoffe, &MainWindow::dlgAusruestung_finished);
+    DlgAbstract::showToolDialog<DlgAusruestung>(this, ui->actionAusruestung, &MainWindow::dlgAusruestung_finished);
 }
 
 void MainWindow::dlgAusruestung_finished()
 {
     ui->actionAusruestung->setChecked(false);
 }
-
-

@@ -58,11 +58,12 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
     ui->comboBoxSud->setCurrentIndex(7);
 
-    gSettings->beginGroup("DlgDatenbank");
+    gSettings->beginGroup(staticMetaObject.className());
 
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
+    DlgAbstract::restoreSize();
     gSettings->endGroup();
 
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
@@ -78,13 +79,17 @@ DlgDatenbank::~DlgDatenbank()
 
 void DlgDatenbank::saveSettings()
 {
-    gSettings->beginGroup("DlgDatenbank");
+    gSettings->beginGroup(staticMetaObject.className());
+	DlgAbstract::saveSettings();
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->endGroup();
 }
 
 void DlgDatenbank::restoreView(bool full)
 {
+    gSettings->beginGroup(staticMetaObject.className());
+    DlgAbstract::restoreView(full);
+    gSettings->endGroup();
     if (full)
         ui->splitter->restoreState(mDefaultSplitterState);
 }

@@ -2,8 +2,7 @@
 #define DLG_ABSTRACT_INL_H
 
 #include <QApplication>
-#include <QLibraryInfo>
-
+#include "dlgabstract.h"
 
 template<typename DLG>
 void DlgAbstract::modulesChanged(Settings::Modules modules)

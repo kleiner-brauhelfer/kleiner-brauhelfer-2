@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>Rohstoffe</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../images.qrc">
+    <normaloff>:/images/light/actionrohstoffe.svg</normaloff>:/images/light/actionrohstoffe.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -1065,7 +1072,8 @@
   <tabstop>tbHydrogencarbonatHaerte</tabstop>
   <tabstop>tbRestalkalitaetAdd</tabstop>
   <tabstop>tbRestalkalitaet</tabstop>
- </tabstops> <resources>
+ </tabstops>
+ <resources>
   <include location="../images.qrc"/>
  </resources>
  <connections/>

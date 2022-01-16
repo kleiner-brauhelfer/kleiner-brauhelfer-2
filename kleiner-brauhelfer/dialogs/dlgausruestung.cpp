@@ -17,6 +17,8 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+// TODO: modul Preiskalkulation -> Betriebskosten
+
 QList<QPair<QString, int> > DlgAusruestung::Typname = {
     {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
     {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
@@ -138,11 +140,11 @@ void DlgAusruestung::saveSettings()
     gSettings->endGroup();
 }
 
-
 void DlgAusruestung::restoreView(bool full)
 {
     gSettings->beginGroup(staticMetaObject.className());
     DlgAbstract::restoreView(full);
+    gSettings->endGroup();
     ui->tableViewAnlagen->restoreDefaultState();
     ui->tableViewGeraete->restoreDefaultState();
     ui->tableViewSude->restoreDefaultState();
@@ -152,7 +154,6 @@ void DlgAusruestung::restoreView(bool full)
         ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
         ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     }
-    gSettings->endGroup();
 }
 
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)
@@ -187,11 +188,7 @@ void DlgAusruestung::keyPressEvent(QKeyEvent* event)
 void DlgAusruestung::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if(!this->isAncestorOf(now))
-    {
-        return;
-    }    
-    if (now && now != ui->tbHelp && now != ui->splitterHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 

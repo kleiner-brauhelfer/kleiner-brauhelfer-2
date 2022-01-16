@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1412</width>
-    <height>910</height>
+    <width>800</width>
+    <height>500</height>
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -40,8 +40,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1412</width>
-         <height>849</height>
+         <width>800</width>
+         <height>459</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -155,8 +155,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1412</width>
-     <height>22</height>
+     <width>800</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -715,6 +715,10 @@
    </property>
   </action>
   <action name="actionDatenbank">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+   </property>
    <property name="text">
     <string>Datenbank</string>
    </property>

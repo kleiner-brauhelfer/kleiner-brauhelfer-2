@@ -46,7 +46,7 @@
         <file>images/light/tabbewertung.svg</file>
         <file>images/light/tabbraudaten.svg</file>
         <file>images/light/actionbrauuebersicht.svg</file>
-        <file>images/light/tabdatenbank.svg</file>
+        <file>images/light/datenbank.svg</file>
         <file>images/light/tabetikette.svg</file>
         <file>images/light/tabgaerverlauf.svg</file>
         <file>images/light/tabrezept.svg</file>
@@ -86,7 +86,7 @@
         <file>images/dark/tabbewertung.svg</file>
         <file>images/dark/tabbraudaten.svg</file>
         <file>images/dark/actionbrauuebersicht.svg</file>
-        <file>images/dark/tabdatenbank.svg</file>
+        <file>images/dark/datenbank.svg</file>
         <file>images/dark/tabetikette.svg</file>
         <file>images/dark/tabgaerverlauf.svg</file>
         <file>images/dark/tabrezept.svg</file>
@@ -124,7 +124,7 @@
         <file>images/disabled/tabbewertung.svg</file>
         <file>images/disabled/tabbraudaten.svg</file>
         <file>images/disabled/actionbrauuebersicht.svg</file>
-        <file>images/disabled/tabdatenbank.svg</file>
+        <file>images/disabled/datenbank.svg</file>
         <file>images/disabled/tabetikette.svg</file>
         <file>images/disabled/tabgaerverlauf.svg</file>
         <file>images/disabled/tabrezept.svg</file>

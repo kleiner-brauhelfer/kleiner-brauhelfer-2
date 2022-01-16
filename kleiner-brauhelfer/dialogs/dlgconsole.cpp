@@ -8,7 +8,7 @@ extern Settings* gSettings;
 DlgConsole* DlgConsole::Dialog = nullptr;
 
 DlgConsole::DlgConsole(QWidget *parent) :
-    DlgAbstract(parent),
+    QDialog(parent),
     ui(new Ui::DlgConsole)
 {
     ui->setupUi(this);

@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>Ausrüstung</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../images.qrc">
+    <normaloff>:/images/light/actionausruestung.svg</normaloff>:/images/light/actionausruestung.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QSplitter" name="splitter">

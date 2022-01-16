@@ -340,18 +340,16 @@ void DlgRohstoffe::saveSettings()
     gSettings->endGroup();
 }
 
-
 void DlgRohstoffe::restoreView(bool full)
 {
-    Q_UNUSED(full);
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView(full);   
+    DlgAbstract::restoreView(full);
+	gSettings->endGroup(); 
     ui->tableMalz->restoreDefaultState();
     ui->tableHopfen->restoreDefaultState();
     ui->tableHefe->restoreDefaultState();
     ui->tableWeitereZutaten->restoreDefaultState();
     ui->tableWasser->restoreDefaultState();
-    gSettings->endGroup();    
 }
 
 void DlgRohstoffe::modulesChanged(Settings::Modules modules)

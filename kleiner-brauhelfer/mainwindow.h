@@ -51,7 +51,7 @@ private slots:
     void on_actionSchriftart_triggered(bool checked);
     void on_actionOeffnen_triggered();
     void on_actionLog_triggered();
-	void on_actionCheckUpdate_triggered(bool checked);
+    void on_actionCheckUpdate_triggered(bool checked);
     void on_actionBestaetigungBeenden_triggered(bool checked);
     void on_actionTooltips_triggered(bool checked);
     void on_actionAnimationen_triggered(bool checked);
@@ -66,7 +66,11 @@ private slots:
     void on_actionFormelsammlung_triggered();
     void on_actionAndroidApp_triggered();
     void on_actionUeber_triggered();
-
+    void on_actionDatenbank_triggered();
+    void on_actionRohstoffe_triggered();
+    void on_actionBrauUebersicht_triggered();
+    void on_actionAusruestung_triggered();
+    
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
@@ -74,7 +78,7 @@ private:
     void restart(int retCode = 1000);
     void save();
     void saveSettings();
-    void restoreView(bool full);
+    void restoreView();
     void checkForUpdate(bool force);
 
 private:

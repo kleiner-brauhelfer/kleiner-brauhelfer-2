@@ -199,17 +199,14 @@ void TabGaerverlauf::saveSettings()
     gSettings->endGroup();
 }
 
-void TabGaerverlauf::restoreView(bool full)
+void TabGaerverlauf::restoreView()
 {
     ui->tableWidget_Schnellgaerverlauf->restoreDefaultState();
     ui->tableWidget_Hauptgaerverlauf->restoreDefaultState();
     ui->tableWidget_Nachgaerverlauf->restoreDefaultState();
-    if (full)
-    {
-        ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
-        ui->splitterHauptgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
-        ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
-    }
+    ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
+    ui->splitterHauptgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
+    ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
 }
 
 void TabGaerverlauf::modulesChanged(Settings::Modules modules)

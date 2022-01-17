@@ -1,5 +1,5 @@
-#include "tabdatenbank.h"
-#include "ui_tabdatenbank.h"
+#include "dlgdatenbank.h"
+#include "ui_dlgdatenbank.h"
 #include <QFileDialog>
 #include "brauhelfer.h"
 #include "settings.h"
@@ -7,9 +7,11 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-TabDatenbank::TabDatenbank(QWidget *parent) :
-    TabAbstract(parent),
-    ui(new Ui::TabDatenbank)
+DlgDatenbank* DlgDatenbank::Dialog = nullptr;
+
+DlgDatenbank::DlgDatenbank(QWidget *parent) :
+    DlgAbstract(staticMetaObject.className(), parent),
+    ui(new Ui::DlgDatenbank)
 {
     ui->setupUi(this);
 
@@ -56,48 +58,50 @@ TabDatenbank::TabDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
     ui->comboBoxSud->setCurrentIndex(7);
 
-    gSettings->beginGroup("TabDatenbank");
-
-    mDefaultSplitterState = ui->splitter->saveState();
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-
-    gSettings->endGroup();
-
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
 
     updateValues();
 }
 
-TabDatenbank::~TabDatenbank()
+DlgDatenbank::~DlgDatenbank()
 {
     delete ui;
 }
 
-void TabDatenbank::saveSettings()
+void DlgDatenbank::saveSettings()
 {
-    gSettings->beginGroup("TabDatenbank");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->endGroup();
 }
 
-void TabDatenbank::restoreView(bool full)
+void DlgDatenbank::loadSettings()
 {
-    if (full)
-        ui->splitter->restoreState(mDefaultSplitterState);
+    gSettings->beginGroup(staticMetaObject.className());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    gSettings->endGroup();
 }
 
-void TabDatenbank::sudLoaded()
+void DlgDatenbank::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->remove("splitterState");
+    gSettings->endGroup();
+}
+
+void DlgDatenbank::sudLoaded()
 {
     on_comboBoxSud_currentIndexChanged(ui->comboBoxSud->currentText());
 }
 
-void TabDatenbank::updateValues()
+void DlgDatenbank::updateValues()
 {
     ui->tbDatenbankPfad->setText(bh->databasePath());
     ui->tbDatenbankVersion->setText(QString::number(bh->databaseVersion()));
 }
 
-void TabDatenbank::on_comboBox_currentIndexChanged(const QString &table)
+void DlgDatenbank::on_comboBox_currentIndexChanged(const QString &table)
 {
     SqlTableModel* model = nullptr;
     if (table == bh->modelAnhang()->tableName())
@@ -156,7 +160,7 @@ void TabDatenbank::on_comboBox_currentIndexChanged(const QString &table)
     }
 }
 
-void TabDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
+void DlgDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
 {
     ProxyModel* model = nullptr;
     if (table == bh->modelAnhang()->tableName())
@@ -194,7 +198,7 @@ void TabDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
     }
 }
 
-void TabDatenbank::tableView_selectionChanged()
+void DlgDatenbank::tableView_selectionChanged()
 {
     if (ui->tableView->model() == bh->modelSud())
     {

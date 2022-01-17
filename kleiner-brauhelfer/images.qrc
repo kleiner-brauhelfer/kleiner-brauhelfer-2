@@ -42,15 +42,15 @@
         <file>images/light/sud_verbraucht.svg</file>
         <file>images/light/sud_vergessen.svg</file>
         <file>images/light/tababfuellen.svg</file>
-        <file>images/light/tabausruestung.svg</file>
+        <file>images/light/actionausruestung.svg</file>
         <file>images/light/tabbewertung.svg</file>
         <file>images/light/tabbraudaten.svg</file>
-        <file>images/light/tabbrauuebersicht.svg</file>
-        <file>images/light/tabdatenbank.svg</file>
+        <file>images/light/actionbrauuebersicht.svg</file>
+        <file>images/light/datenbank.svg</file>
         <file>images/light/tabetikette.svg</file>
         <file>images/light/tabgaerverlauf.svg</file>
         <file>images/light/tabrezept.svg</file>
-        <file>images/light/tabrohstoffe.svg</file>
+        <file>images/light/actionrohstoffe.svg</file>
         <file>images/light/tabsudauswahl.svg</file>
         <file>images/light/tabzusammenfassung.svg</file>
         <file>images/light/uebertrag_links.svg</file>
@@ -82,15 +82,15 @@
         <file>images/dark/sud_verbraucht.svg</file>
         <file>images/dark/sud_vergessen.svg</file>
         <file>images/dark/tababfuellen.svg</file>
-        <file>images/dark/tabausruestung.svg</file>
+        <file>images/dark/actionausruestung.svg</file>
         <file>images/dark/tabbewertung.svg</file>
         <file>images/dark/tabbraudaten.svg</file>
-        <file>images/dark/tabbrauuebersicht.svg</file>
-        <file>images/dark/tabdatenbank.svg</file>
+        <file>images/dark/actionbrauuebersicht.svg</file>
+        <file>images/dark/datenbank.svg</file>
         <file>images/dark/tabetikette.svg</file>
         <file>images/dark/tabgaerverlauf.svg</file>
         <file>images/dark/tabrezept.svg</file>
-        <file>images/dark/tabrohstoffe.svg</file>
+        <file>images/dark/actionrohstoffe.svg</file>
         <file>images/dark/tabsudauswahl.svg</file>
         <file>images/dark/tabzusammenfassung.svg</file>
         <file>images/dark/uebertrag_links.svg</file>
@@ -120,15 +120,15 @@
         <file>images/disabled/sud_verbraucht.svg</file>
         <file>images/disabled/sud_vergessen.svg</file>
         <file>images/disabled/tababfuellen.svg</file>
-        <file>images/disabled/tabausruestung.svg</file>
+        <file>images/disabled/actionausruestung.svg</file>
         <file>images/disabled/tabbewertung.svg</file>
         <file>images/disabled/tabbraudaten.svg</file>
-        <file>images/disabled/tabbrauuebersicht.svg</file>
-        <file>images/disabled/tabdatenbank.svg</file>
+        <file>images/disabled/actionbrauuebersicht.svg</file>
+        <file>images/disabled/datenbank.svg</file>
         <file>images/disabled/tabetikette.svg</file>
         <file>images/disabled/tabgaerverlauf.svg</file>
         <file>images/disabled/tabrezept.svg</file>
-        <file>images/disabled/tabrohstoffe.svg</file>
+        <file>images/disabled/actionrohstoffe.svg</file>
         <file>images/disabled/tabsudauswahl.svg</file>
         <file>images/disabled/tabzusammenfassung.svg</file>
         <file>images/disabled/uebertrag_links.svg</file>

@@ -1,14 +1,14 @@
-#ifndef TABROHSTOFFE_H
-#define TABROHSTOFFE_H
+#ifndef DLG_ROHSTOFFE_H
+#define DLG_ROHSTOFFE_H
 
-#include "tababstract.h"
+#include "dlgabstract.h"
 #include <QTableView>
 
 namespace Ui {
-class TabRohstoffe;
+class DlgRohstoffe;
 }
 
-class TabRohstoffe : public TabAbstract
+class DlgRohstoffe : public DlgAbstract
 {
     Q_OBJECT
 
@@ -20,11 +20,14 @@ public:
     static QStringList Einheiten;
     static QStringList list_tr(const QStringList& list);
 
+    static DlgRohstoffe *Dialog;
+
 public:
-    explicit TabRohstoffe(QWidget *parent = nullptr);
-    virtual ~TabRohstoffe() Q_DECL_OVERRIDE;
+    explicit DlgRohstoffe(QWidget *parent = nullptr);
+    virtual ~DlgRohstoffe() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView(bool full) Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
     void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
 
 private slots:
@@ -69,8 +72,8 @@ private:
     void updateLabelNumItems();
 
 private:
-    Ui::TabRohstoffe *ui;
+    Ui::DlgRohstoffe *ui;
     int mRowWasser;
 };
 
-#endif // TABROHSTOFFE_H
+#endif // DLG_ROHSTOFFE_H

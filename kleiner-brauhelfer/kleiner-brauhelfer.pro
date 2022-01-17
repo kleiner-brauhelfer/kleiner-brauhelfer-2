@@ -49,29 +49,30 @@ SOURCES += \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
-    tabausruestung.cpp \
     tabbewertung.cpp \
     tabbraudaten.cpp \
-    tabbrauuebersicht.cpp \
-    tabdatenbank.cpp \
     tabetikette.cpp \
     tabgaerverlauf.cpp \
     tabrezept.cpp \
-    tabrohstoffe.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     dialogs/dlgabout.cpp \
+    dialogs/dlgabstract.cpp \
+    dialogs/dlgausruestung.cpp \
+    dialogs/dlgbrauuebersicht.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
+    dialogs/dlgdatenbank.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrichtexteditor.cpp \
+    dialogs/dlgrohstoffe.cpp \
     dialogs/dlgrohstoffauswahl.cpp \
     dialogs/dlgrohstoffeabziehen.cpp \
     dialogs/dlgrohstoffvorlage.cpp \
@@ -134,28 +135,30 @@ HEADERS += \
     settings.h \
     tababstract.h \
     tababfuellen.h \
-    tabausruestung.h \
     tabbewertung.h \
     tabbraudaten.h \
-    tabbrauuebersicht.h \
-    tabdatenbank.h \
     tabetikette.h \
     tabgaerverlauf.h \
     tabrezept.h \
-    tabrohstoffe.h \
     tabsudauswahl.h \
     tabzusammenfassung.h \
     templatetags.h \
     dialogs/dlgabout.h \
+    dialogs/dlgabstract.h \
+    dialogs/dlgabstract-inl.h \
+    dialogs/dlgausruestung.h \
+    dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
+    dialogs/dlgdatenbank.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrichtexteditor.h \
+    dialogs/dlgrohstoffe.h \
     dialogs/dlgrohstoffauswahl.h \
     dialogs/dlgrohstoffeabziehen.h \
     dialogs/dlgrohstoffvorlage.h \
@@ -215,27 +218,27 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     tababfuellen.ui \
-    tabausruestung.ui \
     tabbewertung.ui \
     tabbraudaten.ui \
-    tabbrauuebersicht.ui \
-    tabdatenbank.ui \
     tabetikette.ui \
     tabgaerverlauf.ui \
     tabrezept.ui \
-    tabrohstoffe.ui \
     tabsudauswahl.ui \
     tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
+    dialogs/dlgausruestung.ui \
+    dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
+    dialogs/dlgdatenbank.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrichtexteditor.ui \
+    dialogs/dlgrohstoffe.ui \
     dialogs/dlgrohstoffauswahl.ui \
     dialogs/dlgrohstoffeabziehen.ui \
     dialogs/dlgrohstoffvorlage.ui \

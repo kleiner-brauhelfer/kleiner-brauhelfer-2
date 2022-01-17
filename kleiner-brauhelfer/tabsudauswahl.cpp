@@ -146,11 +146,10 @@ void TabSudAuswahl::saveSettings()
     gSettings->endGroup();
 }
 
-void TabSudAuswahl::restoreView(bool full)
+void TabSudAuswahl::restoreView()
 {
     ui->tableSudauswahl->restoreDefaultState();
-    if (full)
-        ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void TabSudAuswahl::modulesChanged(Settings::Modules modules)

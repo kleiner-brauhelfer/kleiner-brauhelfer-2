@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TabBrauUebersicht</class>
- <widget class="QWidget" name="TabBrauUebersicht">
+ <class>DlgBrauUebersicht</class>
+ <widget class="QDialog" name="DlgBrauUebersicht">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
-    <height>300</height>
+    <width>1297</width>
+    <height>610</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Brauübersicht</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../images.qrc">
+    <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -160,6 +167,8 @@
   <tabstop>cbAuswahlL3</tabstop>
   <tabstop>tableView</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

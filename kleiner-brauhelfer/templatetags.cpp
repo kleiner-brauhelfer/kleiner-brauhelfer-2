@@ -7,7 +7,7 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "tabrohstoffe.h"
+#include "dialogs/dlgrohstoffe.h"
 #include "widgets/wdganhang.h"
 #include "dialogs/dlgrichtexteditor.h"
 
@@ -66,7 +66,6 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
     ctxModule["Brauuebersicht"] = gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht);
     ctxModule["Ausruestung"] = gSettings->isModuleEnabled(Settings::ModuleAusruestung);
     ctxModule["Rohstoffe"] = gSettings->isModuleEnabled(Settings::ModuleRohstoffe);
-    ctxModule["Datenbank"] = gSettings->isModuleEnabled(Settings::ModuleDatenbank);
     ctxModule["Wasseraufbereitung"] = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
     ctxModule["Preiskalkulation"] = gSettings->isModuleEnabled(Settings::ModulePreiskalkulation);
     ctxModule["Lagerverwaltung"] = gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung);
@@ -285,7 +284,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     {
                         QVariantMap map;
                         map["Name"] = model->data(row, ModelWasseraufbereitung::ColName);
-                        map["Einheit"] = TabRohstoffe::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                        map["Einheit"] = DlgRohstoffe::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
                         double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
                         map["MengeHauptguss"] = locale.toString(m * f1, 'f', 2);
                         map["MengeNachguss"] = locale.toString(m * f2, 'f', 2);
@@ -336,8 +335,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     int duaerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
                     map.insert("Name", model->data(row, ModelHopfengaben::ColName));
                     int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map["Name"], ModelHopfen::ColTyp).toInt();
-                    if (idx >= 0 && idx < TabRohstoffe::HopfenTypname.count())
-                        map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
+                    if (idx >= 0 && idx < DlgRohstoffe::HopfenTypname.count())
+                        map.insert("Typ", DlgRohstoffe::HopfenTypname[idx]);
                     map.insert("Prozent", locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
                     map.insert("Menge", locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
                     map.insert("Kochdauer", QString::number(dauer));
@@ -381,8 +380,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     QVariantMap map;
                     map.insert("Name", model->data(row, ModelHefegaben::ColName));
                     int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map["Name"], ModelHefe::ColTypOGUG).toInt();
-                    if (idx >= 0 && idx < TabRohstoffe::HefeTypname.count())
-                        map.insert("Typ", TabRohstoffe::HefeTypname[idx]);
+                    if (idx >= 0 && idx < DlgRohstoffe::HefeTypname.count())
+                        map.insert("Typ", DlgRohstoffe::HefeTypname[idx]);
                     map.insert("Menge", menge);
                     if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert("Status", QObject::tr("zugegeben"));
@@ -408,7 +407,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     int ival;
                     map.insert("Name", model->data(row, ModelWeitereZutatenGaben::ColName));
                     Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
-                    map.insert("Einheit", TabRohstoffe::Einheiten[static_cast<int>(einheit)]);
+                    map.insert("Einheit", DlgRohstoffe::Einheiten[static_cast<int>(einheit)]);
                     switch (einheit)
                     {
                     case Brauhelfer::Einheit::Kg:
@@ -484,12 +483,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
                         int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map["Name"], ModelHopfen::ColTyp).toInt();
-                        map.insert("Typ", TabRohstoffe::HopfenTypname[idx]);
+                        map.insert("Typ", DlgRohstoffe::HopfenTypname[idx]);
                         listeHopfen << map;
                     }
                     else
                     {
-                        map.insert("Typ", TabRohstoffe::ZusatzTypname[static_cast<int>(typ)]);
+                        map.insert("Typ", DlgRohstoffe::ZusatzTypname[static_cast<int>(typ)]);
                         listeZusatz << map;
                     }
                 }

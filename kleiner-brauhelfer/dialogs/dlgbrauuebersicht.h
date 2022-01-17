@@ -1,23 +1,27 @@
-#ifndef TABBRAUUEBERSICHT_H
-#define TABBRAUUEBERSICHT_H
+#ifndef DLG_BRAUUEBERSICHT_H
+#define DLG_BRAUUEBERSICHT_H
 
-#include "tababstract.h"
+#include "dlgabstract.h"
 #include <QAbstractItemModel>
 #include <QItemSelection>
 
 namespace Ui {
-class TabBrauUebersicht;
+class DlgBrauUebersicht;
 }
 
-class TabBrauUebersicht : public TabAbstract
+class DlgBrauUebersicht : public DlgAbstract
 {
     Q_OBJECT
 
 public:
-    explicit TabBrauUebersicht(QWidget *parent = nullptr);
-    virtual ~TabBrauUebersicht() Q_DECL_OVERRIDE;
+    static DlgBrauUebersicht *Dialog;
+    
+    explicit DlgBrauUebersicht(QWidget *parent = nullptr);
+    virtual ~DlgBrauUebersicht() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView(bool full) Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
+
     void setModel(QAbstractItemModel* model);
 
 signals:
@@ -48,9 +52,8 @@ private:
     };
 
 private:
-    Ui::TabBrauUebersicht *ui;
-    QByteArray mDefaultSplitterState;
+    Ui::DlgBrauUebersicht *ui;
     QList<AuswahlType> mAuswahlListe;
 };
 
-#endif // TABBRAUUEBERSICHT_H
+#endif // DLG_BRAUUEBERSICHT_H

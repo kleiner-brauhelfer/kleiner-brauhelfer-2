@@ -18,7 +18,7 @@ class DlgTableView : public QDialog
 
 public:
 
-    static void restoreView(bool full);
+    static void restoreView();
 
     explicit DlgTableView(SqlTableModel* model,
                           QList<TableView::ColumnDefinition> columns,

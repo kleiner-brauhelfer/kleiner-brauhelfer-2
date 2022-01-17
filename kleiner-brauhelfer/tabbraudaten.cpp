@@ -94,13 +94,10 @@ void TabBraudaten::saveSettings()
     gSettings->endGroup();
 }
 
-void TabBraudaten::restoreView(bool full)
+void TabBraudaten::restoreView()
 {
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
 void TabBraudaten::modulesChanged(Settings::Modules modules)
@@ -159,7 +156,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && now != ui->tbHelp && now != ui->splitterHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 

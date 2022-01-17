@@ -59,6 +59,9 @@
         </property>
         <item>
          <widget class="QTabWidget" name="tabMain">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
            <attribute name="icon">
             <iconset resource="images.qrc">
@@ -139,46 +142,6 @@
             <string>Bewertung</string>
            </attribute>
           </widget>
-          <widget class="TabBrauUebersicht" name="tabBrauuebersicht">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabbrauuebersicht.svg</normaloff>
-             <disabledoff>:/images/disabled/tabbrauuebersicht.svg</disabledoff>:/images/light/tabbrauuebersicht.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Brauübersicht</string>
-           </attribute>
-          </widget>
-          <widget class="TabAusruestung" name="tabAusruestung">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabausruestung.svg</normaloff>
-             <disabledoff>:/images/disabled/tabausruestung.svg</disabledoff>:/images/light/tabausruestung.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Ausrüstung</string>
-           </attribute>
-          </widget>
-          <widget class="TabRohstoffe" name="tabRohstoffe">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabrohstoffe.svg</normaloff>
-             <disabledoff>:/images/disabled/tabrohstoffe.svg</disabledoff>:/images/light/tabrohstoffe.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Rohstoffe</string>
-           </attribute>
-          </widget>
-          <widget class="TabDatenbank" name="tabDatenbank">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabdatenbank.svg</normaloff>
-             <disabledoff>:/images/disabled/tabdatenbank.svg</disabledoff>:/images/light/tabdatenbank.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Datenbank</string>
-           </attribute>
-          </widget>
          </widget>
         </item>
        </layout>
@@ -240,7 +203,12 @@
     <addaction name="menuStil"/>
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
+    <addaction name="actionRohstoffe"/>
+    <addaction name="actionBrauUebersicht"/>
+    <addaction name="actionAusruestung"/>
+    <addaction name="separator"/>
     <addaction name="actionLog"/>
+    <addaction name="actionDatenbank"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -296,6 +264,31 @@
    <addaction name="menuAnsicht"/>
    <addaction name="menuEinstellungen"/>
    <addaction name="menuHilfe"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSpeichern"/>
+   <addaction name="separator"/>
+   <addaction name="actionRohstoffe"/>
+   <addaction name="actionBrauUebersicht"/>
+   <addaction name="actionAusruestung"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -624,6 +617,9 @@
    </property>
   </action>
   <action name="actionLog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Log</string>
    </property>
@@ -659,15 +655,89 @@
     <string notr="true">F1</string>
    </property>
   </action>
+  <action name="actionRohstoffe">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>:/images/light/actionrohstoffe.svg</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Rohstoffe</string>
+   </property>
+   <property name="whatsThis">
+    <string>actionrohstoffe</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionBrauUebersicht">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Brauübersicht</string>
+   </property>
+   <property name="whatsThis">
+    <string>actionbrauuebersicht</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAusruestung">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>:/images/light/actionausruestung.svg</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Ausrüstung</string>
+   </property>
+   <property name="whatsThis">
+    <string>actionausruestung</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionDatenbank">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Datenbank</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>TabRohstoffe</class>
-   <extends>QWidget</extends>
-   <header>tabrohstoffe.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>TabSudAuswahl</class>
    <extends>QWidget</extends>
@@ -675,21 +745,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>TabAusruestung</class>
-   <extends>QWidget</extends>
-   <header>tabausruestung.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>TabRezept</class>
    <extends>QWidget</extends>
    <header>tabrezept.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabBrauUebersicht</class>
-   <extends>QWidget</extends>
-   <header>tabbrauuebersicht.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -720,12 +778,6 @@
    <class>TabBewertung</class>
    <extends>QWidget</extends>
    <header>tabbewertung.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabDatenbank</class>
-   <extends>QWidget</extends>
-   <header>tabdatenbank.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

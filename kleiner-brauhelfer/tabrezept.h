@@ -17,7 +17,7 @@ public:
     explicit TabRezept(QWidget *parent = nullptr);
     virtual ~TabRezept() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView(bool full) Q_DECL_OVERRIDE;
+    void restoreView() Q_DECL_OVERRIDE;
     void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
     void checkEnabled();
 

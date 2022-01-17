@@ -222,13 +222,10 @@ void TabRezept::saveSettings()
     gSettings->endGroup();
 }
 
-void TabRezept::restoreView(bool full)
+void TabRezept::restoreView()
 {
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
 }
 
 void TabRezept::modulesChanged(Settings::Modules modules)
@@ -270,7 +267,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && now != ui->tbHelp && now != ui->splitterHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 

@@ -1,5 +1,5 @@
-#include "tabausruestung.h"
-#include "ui_tabausruestung.h"
+#include "dlgausruestung.h"
+#include "ui_dlgausruestung.h"
 #include <QKeyEvent>
 #include <QMessageBox>
 #include "brauhelfer.h"
@@ -17,7 +17,9 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QList<QPair<QString, int> > TabAusruestung::Typname = {
+// TODO: modul Preiskalkulation -> Betriebskosten
+
+QList<QPair<QString, int> > DlgAusruestung::Typname = {
     {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
     {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
     {tr("Grainfather G70"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG70)},
@@ -30,9 +32,11 @@ QList<QPair<QString, int> > TabAusruestung::Typname = {
     {tr("Brauheld Pro 30L"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
 };
 
-TabAusruestung::TabAusruestung(QWidget *parent) :
-    TabAbstract(parent),
-    ui(new Ui::TabAusruestung)
+DlgAusruestung* DlgAusruestung::Dialog = nullptr;
+
+DlgAusruestung::DlgAusruestung(QWidget *parent) :
+    DlgAbstract(staticMetaObject.className(), parent),
+    ui(new Ui::DlgAusruestung)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
@@ -41,8 +45,6 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
-
-    gSettings->beginGroup("TabAusruestung");
 
     TableView *table = ui->tableViewAnlagen;
     ProxyModel *model = new ProxyModel(this);
@@ -58,7 +60,6 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->appendCol({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
 
     table = ui->tableViewGeraete;
     model = new ProxyModel(this);
@@ -69,7 +70,6 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->appendCol({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateGeraete").toByteArray());
 
     table = ui->tableViewSude;
     model = new ProxyModelSudColored(this);
@@ -85,23 +85,10 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     table->appendCol({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateSude").toByteArray());
-
-    mDefaultSplitterState = ui->splitter->saveState();
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-
-    mDefaultSplitterLeftState = ui->splitterLeft->saveState();
-    ui->splitterLeft->restoreState(gSettings->value("splitterLeftState").toByteArray());
 
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
     ui->splitterHelp->setSizes({90, 10});
-    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
-
-    ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
-
-    gSettings->endGroup();
 
     connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
@@ -115,14 +102,14 @@ TabAusruestung::TabAusruestung(QWidget *parent) :
     sudLoaded();
 }
 
-TabAusruestung::~TabAusruestung()
+DlgAusruestung::~DlgAusruestung()
 {
     delete ui;
 }
 
-void TabAusruestung::saveSettings()
+void DlgAusruestung::saveSettings()
 {
-    gSettings->beginGroup("TabAusruestung");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableStateAnlagen", ui->tableViewAnlagen->horizontalHeader()->saveState());
     gSettings->setValue("tableStateGeraete", ui->tableViewGeraete->horizontalHeader()->saveState());
     gSettings->setValue("tableStateSude", ui->tableViewSude->horizontalHeader()->saveState());
@@ -133,20 +120,33 @@ void TabAusruestung::saveSettings()
     gSettings->endGroup();
 }
 
-void TabAusruestung::restoreView(bool full)
+void DlgAusruestung::loadSettings()
 {
-    ui->tableViewAnlagen->restoreDefaultState();
-    ui->tableViewGeraete->restoreDefaultState();
-    ui->tableViewSude->restoreDefaultState();
-    if (full)
-    {
-        ui->splitter->restoreState(mDefaultSplitterState);
-        ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
-        ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
-    }
+    gSettings->beginGroup(staticMetaObject.className());
+    ui->tableViewAnlagen->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
+    ui->tableViewGeraete->restoreState(gSettings->value("tableStateGeraete").toByteArray());
+    ui->tableViewSude->restoreState(gSettings->value("tableStateSude").toByteArray());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    ui->splitterLeft->restoreState(gSettings->value("splitterLeftState").toByteArray());
+    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
+    ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
+    gSettings->endGroup();
 }
 
-void TabAusruestung::keyPressEvent(QKeyEvent* event)
+void DlgAusruestung::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->remove("tableStateAnlagen");
+    gSettings->remove("tableStateGeraete");
+    gSettings->remove("tableStateSude");
+    gSettings->remove("splitterState");
+    gSettings->remove("splitterLeftState");
+    gSettings->remove("splitterHelpState");
+    gSettings->endGroup();
+}
+
+void DlgAusruestung::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
     if (ui->tableViewAnlagen->hasFocus())
@@ -175,14 +175,14 @@ void TabAusruestung::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void TabAusruestung::focusChanged(QWidget *old, QWidget *now)
+void DlgAusruestung::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && now != ui->tbHelp && now != ui->splitterHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && now != ui->splitterHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 
-void TabAusruestung::sudLoaded()
+void DlgAusruestung::sudLoaded()
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
     int row = 0;
@@ -191,7 +191,7 @@ void TabAusruestung::sudLoaded()
     ui->tableViewAnlagen->setCurrentIndex(model->index(row, ModelAusruestung::ColName));
 }
 
-void TabAusruestung::anlage_selectionChanged()
+void DlgAusruestung::anlage_selectionChanged()
 {
     QRegularExpression regExpId;
     QRegularExpression regExpId2;
@@ -218,7 +218,7 @@ void TabAusruestung::anlage_selectionChanged()
     updateDurchschnitt();
 }
 
-void TabAusruestung::on_btnNeueAnlage_clicked()
+void DlgAusruestung::on_btnNeueAnlage_clicked()
 {
     QMap<int, QVariant> values({{ModelAusruestung::ColName, tr("Neue Brauanlage")}});
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
@@ -232,7 +232,7 @@ void TabAusruestung::on_btnNeueAnlage_clicked()
     }
 }
 
-void TabAusruestung::on_btnAnlageLoeschen_clicked()
+void DlgAusruestung::on_btnAnlageLoeschen_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewAnlagen->model());
     QModelIndexList indices = ui->tableViewAnlagen->selectionModel()->selectedRows();
@@ -251,7 +251,7 @@ void TabAusruestung::on_btnAnlageLoeschen_clicked()
     }
 }
 
-void TabAusruestung::on_btnNeuesGeraet_clicked()
+void DlgAusruestung::on_btnNeuesGeraet_clicked()
 {
     QModelIndexList selected = ui->tableViewAnlagen->selectionModel()->selectedRows();
     if (selected.count() > 0)
@@ -270,7 +270,7 @@ void TabAusruestung::on_btnNeuesGeraet_clicked()
     }
 }
 
-void TabAusruestung::on_btnGeraetLoeschen_clicked()
+void DlgAusruestung::on_btnGeraetLoeschen_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewGeraete->model());
     QModelIndexList indices = ui->tableViewGeraete->selectionModel()->selectedRows();
@@ -288,19 +288,19 @@ void TabAusruestung::on_btnGeraetLoeschen_clicked()
     }
 }
 
-QVariant TabAusruestung::data(int col) const
+QVariant DlgAusruestung::data(int col) const
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
     return model->data(mRow, col);
 }
 
-bool TabAusruestung::setData(int col, const QVariant &value)
+bool DlgAusruestung::setData(int col, const QVariant &value)
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
     return model->setData(mRow, col, value);
 }
 
-void TabAusruestung::updateValues()
+void DlgAusruestung::updateValues()
 {
     ui->lblAnlage->setText(data(ModelAusruestung::ColName).toString());
     if (!ui->tbAusbeute->hasFocus())
@@ -336,7 +336,7 @@ void TabAusruestung::updateValues()
     ui->wdgBemerkung->setHtml(data(ModelAusruestung::ColBemerkung).toString());
 }
 
-void TabAusruestung::updateDurchschnitt()
+void DlgAusruestung::updateDurchschnitt()
 {
     ProxyModelSud model;
     model.setSourceModel(bh->modelSud());
@@ -384,7 +384,7 @@ void TabAusruestung::updateDurchschnitt()
     ui->tbAusbeuteSude->setValue(ui->sliderAusbeuteSude->value());
 }
 
-void TabAusruestung::on_btnVerdampfungsrate_clicked()
+void DlgAusruestung::on_btnVerdampfungsrate_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
     DlgVerdampfung dlg;
@@ -410,103 +410,103 @@ void TabAusruestung::on_btnVerdampfungsrate_clicked()
     }
 }
 
-void TabAusruestung::on_tbAusbeute_editingFinished()
+void DlgAusruestung::on_tbAusbeute_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColSudhausausbeute).toDouble();
     if (prevValue != ui->tbAusbeute->value())
         setData(ModelAusruestung::ColSudhausausbeute, ui->tbAusbeute->value());
 }
 
-void TabAusruestung::on_btnAusbeuteMittel_clicked()
+void DlgAusruestung::on_btnAusbeuteMittel_clicked()
 {
     double prevValue = data(ModelAusruestung::ColSudhausausbeute).toDouble();
     if (prevValue != ui->tbAusbeuteMittel->value())
         setData(ModelAusruestung::ColSudhausausbeute, ui->tbAusbeuteMittel->value());
 }
 
-void TabAusruestung::on_tbVerdampfung_editingFinished()
+void DlgAusruestung::on_tbVerdampfung_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColVerdampfungsrate).toDouble();
     if (prevValue != ui->tbVerdampfung->value())
         setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfung->value());
 }
 
-void TabAusruestung::on_btnVerdampfungMittel_clicked()
+void DlgAusruestung::on_btnVerdampfungMittel_clicked()
 {
     double prevValue = data(ModelAusruestung::ColVerdampfungsrate).toDouble();
     if (prevValue != ui->tbVerdampfungMittel->value())
         setData(ModelAusruestung::ColVerdampfungsrate, ui->tbVerdampfungMittel->value());
 }
 
-void TabAusruestung::on_sliderAusbeuteSude_valueChanged(int)
+void DlgAusruestung::on_sliderAusbeuteSude_valueChanged(int)
 {
     updateDurchschnitt();
 }
 
-void TabAusruestung::on_tbKorrekturNachguss_editingFinished()
+void DlgAusruestung::on_tbKorrekturNachguss_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKorrekturWasser).toDouble();
     if (prevValue != ui->tbKorrekturNachguss->value())
         setData(ModelAusruestung::ColKorrekturWasser, ui->tbKorrekturNachguss->value());
 }
 
-void TabAusruestung::on_tbKorrekturFarbe_editingFinished()
+void DlgAusruestung::on_tbKorrekturFarbe_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKorrekturFarbe).toDouble();
     if (prevValue != ui->tbKorrekturFarbe->value())
         setData(ModelAusruestung::ColKorrekturFarbe, ui->tbKorrekturFarbe->value());
 }
 
-void TabAusruestung::on_tbKorrekturSollmenge_editingFinished()
+void DlgAusruestung::on_tbKorrekturSollmenge_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKorrekturMenge).toDouble();
     if (prevValue != ui->tbKorrekturSollmenge->value())
         setData(ModelAusruestung::ColKorrekturMenge, ui->tbKorrekturSollmenge->value());
 }
 
-void TabAusruestung::on_tbKosten_editingFinished()
+void DlgAusruestung::on_tbKosten_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKosten).toDouble();
     if (prevValue != ui->tbKosten->value())
         setData(ModelAusruestung::ColKosten, ui->tbKosten->value());
 }
 
-void TabAusruestung::on_tbMaischebottichHoehe_editingFinished()
+void DlgAusruestung::on_tbMaischebottichHoehe_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
     if (prevValue != ui->tbMaischebottichHoehe->value())
         setData(ModelAusruestung::ColMaischebottich_Hoehe, ui->tbMaischebottichHoehe->value());
 }
 
-void TabAusruestung::on_tbMaischebottichDurchmesser_editingFinished()
+void DlgAusruestung::on_tbMaischebottichDurchmesser_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColMaischebottich_Durchmesser).toDouble();
     if (prevValue != ui->tbMaischebottichDurchmesser->value())
         setData(ModelAusruestung::ColMaischebottich_Durchmesser, ui->tbMaischebottichDurchmesser->value());
 }
 
-void TabAusruestung::on_tbMaischebottichMaxFuellhoehe_editingFinished()
+void DlgAusruestung::on_tbMaischebottichMaxFuellhoehe_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColMaischebottich_MaxFuellhoehe).toDouble();
     if (prevValue != ui->tbMaischebottichMaxFuellhoehe->value())
         setData(ModelAusruestung::ColMaischebottich_MaxFuellhoehe, ui->tbMaischebottichMaxFuellhoehe->value());
 }
 
-void TabAusruestung::on_tbSudpfanneHoehe_editingFinished()
+void DlgAusruestung::on_tbSudpfanneHoehe_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     if (prevValue != ui->tbSudpfanneHoehe->value())
         setData(ModelAusruestung::ColSudpfanne_Hoehe, ui->tbSudpfanneHoehe->value());
 }
 
-void TabAusruestung::on_tbSudpfanneDurchmesser_editingFinished()
+void DlgAusruestung::on_tbSudpfanneDurchmesser_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
     if (prevValue != ui->tbSudpfanneDurchmesser->value())
         setData(ModelAusruestung::ColSudpfanne_Durchmesser, ui->tbSudpfanneDurchmesser->value());
 }
 
-void TabAusruestung::on_tbSudpfanneMaxFuellhoehe_editingFinished()
+void DlgAusruestung::on_tbSudpfanneMaxFuellhoehe_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColSudpfanne_MaxFuellhoehe).toDouble();
     if (prevValue != ui->tbSudpfanneMaxFuellhoehe->value())

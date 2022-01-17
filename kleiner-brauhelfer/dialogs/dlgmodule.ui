@@ -426,43 +426,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
          </layout>
         </widget>
        </item>
-       <item>
-        <widget class="QGroupBox" name="gbModuleDatenbank">
-         <property name="title">
-          <string>Datenbankansicht</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_11">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_9">
-            <property name="text">
-             <string>Dieses Modul zeigt die grundlegende Datenbank an. Mit ihm lässt sich die Datenbank direkt manipulieren.</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>

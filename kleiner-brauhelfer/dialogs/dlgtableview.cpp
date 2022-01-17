@@ -6,11 +6,11 @@
 
 extern Settings* gSettings;
 
-void DlgTableView::restoreView(bool full)
+void DlgTableView::restoreView()
 {
-    Q_UNUSED(full)
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("tableState", QByteArray());
+    gSettings->remove("size");
+    gSettings->remove("tableState");
     gSettings->endGroup();
 }
 

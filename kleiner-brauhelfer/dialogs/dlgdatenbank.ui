@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TabDatenbank</class>
- <widget class="QWidget" name="TabDatenbank">
+ <class>DlgDatenbank</class>
+ <widget class="QDialog" name="DlgDatenbank">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>437</height>
+    <width>1600</width>
+    <height>800</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Datenbank</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../images.qrc">
+    <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
-   <property name="spacing">
-    <number>4</number>
-   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
@@ -224,6 +231,8 @@
   <tabstop>comboBoxSud</tabstop>
   <tabstop>tableViewSud</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

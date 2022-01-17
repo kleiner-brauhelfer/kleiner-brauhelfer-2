@@ -1,25 +1,28 @@
-#ifndef TABAUSRUESTUNG_H
-#define TABAUSRUESTUNG_H
+#ifndef DLG_AUSRUESTUNG_H
+#define DLG_AUSRUESTUNG_H
 
-#include "tababstract.h"
+#include "dlgabstract.h"
 #include <QItemSelection>
 
 namespace Ui {
-class TabAusruestung;
+class DlgAusruestung;
 }
 
-class TabAusruestung : public TabAbstract
+class DlgAusruestung : public DlgAbstract
 {
     Q_OBJECT
 
 public:
     static QList<QPair<QString, int> > Typname;
 
+    static DlgAusruestung *Dialog;
+
 public:
-    explicit TabAusruestung(QWidget *parent = nullptr);
-    virtual ~TabAusruestung() Q_DECL_OVERRIDE;
+    explicit DlgAusruestung(QWidget *parent = nullptr);
+    virtual ~DlgAusruestung() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView(bool full) Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
@@ -54,11 +57,8 @@ private:
     bool setData(int col, const QVariant &value);
 
 private:
-    Ui::TabAusruestung *ui;
+    Ui::DlgAusruestung *ui;
     int mRow;
-    QByteArray mDefaultSplitterState;
-    QByteArray mDefaultSplitterLeftState;
-    QByteArray mDefaultSplitterHelpState;
 };
 
-#endif // TABAUSRUESTUNG_H
+#endif // DLG_AUSRUESTUNG_H

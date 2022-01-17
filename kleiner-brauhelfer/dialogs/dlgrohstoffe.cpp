@@ -287,7 +287,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
 
     ui->tableWasser->selectRow(0);
-    modulesChanged(Settings::ModuleAlle);    // TODO: check this
 }
 
 DlgRohstoffe::~DlgRohstoffe()

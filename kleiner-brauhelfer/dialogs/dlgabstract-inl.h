@@ -5,21 +5,6 @@
 #include "dlgabstract.h"
 
 template<typename DLG>
-void DlgAbstract::modulesChanged(Settings::Modules modules)
-{
-    if (DLG::Dialog)
-    {
-        if(QCoreApplication::instance()->thread() != DLG::Dialog->thread())
-            qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
-        DLG::Dialog->modulesChanged(modules);
-    }
-    else
-    {
-        // auslassen wenn es fehlt
-    }
-}
-
-template<typename DLG>
 bool DlgAbstract::showDialog(QWidget *parent, QAction* action)
 {
     if(QCoreApplication::instance()->thread() != parent->thread())
@@ -59,6 +44,17 @@ void DlgAbstract::closeDialog()
         if(QCoreApplication::instance()->thread() != DLG::Dialog->thread())
             qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
         DLG::Dialog->close();
+    }
+}
+
+template<typename DLG>
+void DlgAbstract::modulesChanged(Settings::Modules modules)
+{
+    if (DLG::Dialog)
+    {
+        if(QCoreApplication::instance()->thread() != DLG::Dialog->thread())
+            qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
+        DLG::Dialog->modulesChanged(modules);
     }
 }
 

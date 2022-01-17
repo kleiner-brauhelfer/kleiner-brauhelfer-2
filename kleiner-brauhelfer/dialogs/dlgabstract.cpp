@@ -12,6 +12,7 @@ bool DlgAbstract::event(QEvent *event)
 {
     if (event->type() == QEvent::Show)
     {
+        modulesChanged(Settings::ModuleAlle);
         gSettings->beginGroup(mSettingsGroup);
         restoreGeometry(gSettings->value("geometry").toByteArray());
         gSettings->endGroup();

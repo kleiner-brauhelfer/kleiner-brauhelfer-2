@@ -45,16 +45,12 @@ public:
 };
 
 DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
-    DlgAbstract(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgBrauUebersicht)
 {
     ui->setupUi(this);
 
-    gSettings->beginGroup(staticMetaObject.className());
-
     ui->splitter->setSizes({INT_MAX, INT_MAX});
-    mDefaultSplitterState = ui->splitter->saveState();
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
     ui->diagram->colorL1 = gSettings->DiagramLinie1;
     ui->diagram->colorL2 = gSettings->DiagramLinie2;
@@ -73,21 +69,16 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%"), 0, 90});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
-
-    DlgAbstract::restoreSize();
-    gSettings->endGroup();
 }
 
 DlgBrauUebersicht::~DlgBrauUebersicht()
 {
-    saveSettings();
     delete ui;
 }
 
 void DlgBrauUebersicht::saveSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::saveSettings();
     gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
     gSettings->setValue("Auswahl1", ui->cbAuswahlL1->currentIndex());
     gSettings->setValue("Auswahl2", ui->cbAuswahlL2->currentIndex());
@@ -96,13 +87,24 @@ void DlgBrauUebersicht::saveSettings()
     gSettings->endGroup();
 }
 
-void DlgBrauUebersicht::restoreView()
+void DlgBrauUebersicht::loadSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView();
+    ui->tableView->restoreState(gSettings->value("tableState").toByteArray());
+    ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
+    ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
+    ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
     gSettings->endGroup();
-    ui->tableView->restoreDefaultState();
-    ui->splitter->restoreState(mDefaultSplitterState);
+}
+
+void DlgBrauUebersicht::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->remove("tableState");
+    gSettings->remove("splitterState");
+    gSettings->endGroup();
 }
 
 void DlgBrauUebersicht::setModel(QAbstractItemModel* model)

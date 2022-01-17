@@ -17,7 +17,8 @@ public:
     explicit DlgDatenbank(QWidget *parent = nullptr);
     virtual ~DlgDatenbank() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
 
 private slots:
     void sudLoaded();
@@ -28,7 +29,6 @@ private slots:
 
 private:
     Ui::DlgDatenbank *ui;
-    QByteArray mDefaultSplitterState;
 };
 
 #endif // DLG_DATENBANK_H

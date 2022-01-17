@@ -2,29 +2,45 @@
 
 extern Settings *gSettings;
 
-
-DlgAbstract::DlgAbstract(QWidget *parent) :
-    QDialog(parent)
+DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent) :
+    QDialog(parent),
+    mSettingsGroup(settingsGroup)
 {
 }
 
-void DlgAbstract::restoreSize()
+bool DlgAbstract::event(QEvent *event)
 {
-    restoreGeometry(gSettings->value("geometry").toByteArray());
+    if (event->type() == QEvent::Show)
+    {
+        gSettings->beginGroup(mSettingsGroup);
+        restoreGeometry(gSettings->value("geometry").toByteArray());
+        gSettings->endGroup();
+        loadSettings();
+    }
+    else if (event->type() == QEvent::Close)
+    {
+        gSettings->beginGroup(mSettingsGroup);
+        gSettings->setValue("geometry", saveGeometry());
+        gSettings->endGroup();
+        saveSettings();
+    }
+    return QDialog::event(event);
+}
+
+void DlgAbstract::restoreView(const QString& settingsGroup)
+{
+    gSettings->beginGroup(settingsGroup);
+    gSettings->remove("geometry");
+    gSettings->endGroup();
 }
 
 void DlgAbstract::saveSettings()
 {
-    gSettings->setValue("geometry", saveGeometry());
 }
 
-
-void DlgAbstract::restoreView()
+void DlgAbstract::loadSettings()
 {
-    // TODO: set default size (not called if dialog is not opened)
-    restoreGeometry(gSettings->value("geometry").toByteArray());
 }
-
 
 void DlgAbstract::modulesChanged(Settings::Modules modules)
 {
@@ -37,5 +53,3 @@ void DlgAbstract::setVisibleModule(Settings::Module module, const QVector<QWidge
     for (const auto& it : widgets)
         it->setVisible(visible);
 }
-
-

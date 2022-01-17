@@ -14,23 +14,25 @@ public:
 
     template<typename DLG> static void modulesChanged(Settings::Modules modules);
     template<class DLG> static bool showDialog(QWidget *parent, QAction* action = nullptr);
-    template<class DLG> static void restoreView();
+    template<typename DLG> static void closeDialog();
 
-    explicit DlgAbstract(QWidget *parent = nullptr);
+    explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr);
+    virtual bool event(QEvent *event) Q_DECL_OVERRIDE;
+    static void restoreView(const QString& settingsGroup);
 
-    virtual void saveSettings();
     virtual void modulesChanged(Settings::Modules modules);
-    virtual void restoreSize();
-    virtual void restoreView();
-
 
 protected:
+    virtual void saveSettings();
+    virtual void loadSettings();
+
     void setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets);
 
+private:
+    const QString mSettingsGroup;
 };
 
 
 #endif // DLG_ABSTRACT_H
 
 #include "dlgabstract-inl.h"
-

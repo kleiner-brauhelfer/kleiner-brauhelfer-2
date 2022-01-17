@@ -35,7 +35,7 @@ QList<QPair<QString, int> > DlgAusruestung::Typname = {
 DlgAusruestung* DlgAusruestung::Dialog = nullptr;
 
 DlgAusruestung::DlgAusruestung(QWidget *parent) :
-    DlgAbstract(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgAusruestung)
 {
     ui->setupUi(this);
@@ -45,8 +45,6 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
-
-    gSettings->beginGroup(staticMetaObject.className());
 
     TableView *table = ui->tableViewAnlagen;
     ProxyModel *model = new ProxyModel(this);
@@ -62,7 +60,6 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->appendCol({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
 
     table = ui->tableViewGeraete;
     model = new ProxyModel(this);
@@ -73,7 +70,6 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->appendCol({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateGeraete").toByteArray());
 
     table = ui->tableViewSude;
     model = new ProxyModelSudColored(this);
@@ -89,24 +85,10 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->appendCol({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateSude").toByteArray());
-
-    mDefaultSplitterState = ui->splitter->saveState();
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-
-    mDefaultSplitterLeftState = ui->splitterLeft->saveState();
-    ui->splitterLeft->restoreState(gSettings->value("splitterLeftState").toByteArray());
 
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
     ui->splitterHelp->setSizes({90, 10});
-    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
-
-    ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
-
-    DlgAbstract::restoreSize();
-    gSettings->endGroup();
 
     connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
@@ -122,14 +104,12 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
 
 DlgAusruestung::~DlgAusruestung()
 {
-    saveSettings();
     delete ui;
 }
 
 void DlgAusruestung::saveSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::saveSettings();
     gSettings->setValue("tableStateAnlagen", ui->tableViewAnlagen->horizontalHeader()->saveState());
     gSettings->setValue("tableStateGeraete", ui->tableViewGeraete->horizontalHeader()->saveState());
     gSettings->setValue("tableStateSude", ui->tableViewSude->horizontalHeader()->saveState());
@@ -140,17 +120,30 @@ void DlgAusruestung::saveSettings()
     gSettings->endGroup();
 }
 
-void DlgAusruestung::restoreView()
+void DlgAusruestung::loadSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView();
+    ui->tableViewAnlagen->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
+    ui->tableViewGeraete->restoreState(gSettings->value("tableStateGeraete").toByteArray());
+    ui->tableViewSude->restoreState(gSettings->value("tableStateSude").toByteArray());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    ui->splitterLeft->restoreState(gSettings->value("splitterLeftState").toByteArray());
+    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
+    ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
     gSettings->endGroup();
-    ui->tableViewAnlagen->restoreDefaultState();
-    ui->tableViewGeraete->restoreDefaultState();
-    ui->tableViewSude->restoreDefaultState();
-    ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterLeft->restoreState(mDefaultSplitterLeftState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+}
+
+void DlgAusruestung::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->remove("tableStateAnlagen");
+    gSettings->remove("tableStateGeraete");
+    gSettings->remove("tableStateSude");
+    gSettings->remove("splitterState");
+    gSettings->remove("splitterLeftState");
+    gSettings->remove("splitterHelpState");
+    gSettings->endGroup();
 }
 
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)

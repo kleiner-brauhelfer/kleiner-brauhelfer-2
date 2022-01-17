@@ -21,7 +21,8 @@ public:
     explicit DlgAusruestung(QWidget *parent = nullptr);
     virtual ~DlgAusruestung() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
@@ -58,9 +59,6 @@ private:
 private:
     Ui::DlgAusruestung *ui;
     int mRow;
-    QByteArray mDefaultSplitterState;
-    QByteArray mDefaultSplitterLeftState;
-    QByteArray mDefaultSplitterHelpState;
 };
 
 #endif // DLG_AUSRUESTUNG_H

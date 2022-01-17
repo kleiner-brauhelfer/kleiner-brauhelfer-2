@@ -74,7 +74,7 @@ QStringList DlgRohstoffe::list_tr(const QStringList& list)
 }
 
 DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
-    DlgAbstract(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRohstoffe)
 {
     QPalette pal;
@@ -124,8 +124,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     ProxyModelRohstoff *proxyModel;
     TableView *table;
 
-    gSettings->beginGroup(staticMetaObject.className());
-
     model = bh->modelMalz();
     model->setHeaderData(ModelMalz::ColName, Qt::Horizontal, tr("Name"));
     model->setHeaderData(ModelMalz::ColMenge, Qt::Horizontal, tr("Menge [kg]"));
@@ -159,7 +157,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->appendCol({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableMalzState").toByteArray());
 
     model = bh->modelHopfen();
     model->setHeaderData(ModelHopfen::ColName, Qt::Horizontal, tr("Name"));
@@ -194,7 +191,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->appendCol({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableHopfenState").toByteArray());
 
     model = bh->modelHefe();
     model->setHeaderData(ModelHefe::ColName, Qt::Horizontal, tr("Name"));
@@ -235,7 +231,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->appendCol({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableHefeState").toByteArray());
 
     model = bh->modelWeitereZutaten();
     model->setHeaderData(ModelWeitereZutaten::ColName, Qt::Horizontal, tr("Name"));
@@ -272,7 +267,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->appendCol({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
 
     model = bh->modelWasser();
     model->setHeaderData(ModelWasser::ColName, Qt::Horizontal, tr("Wasserprofil"));
@@ -284,8 +278,48 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->appendCol({ModelWasser::ColName, true, false, -1, nullptr});
     table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
     table->build();
-    table->restoreState(gSettings->value("tableWasserState").toByteArray());
 
+    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(wasser_selectionChanged(QItemSelection)));
+
+    connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
+
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
+
+    ui->tableWasser->selectRow(0);
+    modulesChanged(Settings::ModuleAlle);    // TODO: check this
+}
+
+DlgRohstoffe::~DlgRohstoffe()
+{
+    delete ui;
+}
+
+void DlgRohstoffe::saveSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->setValue("tableMalzState", ui->tableMalz->horizontalHeader()->saveState());
+    gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
+    gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
+    gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
+    gSettings->setValue("tableWasserState", ui->tableWasser->horizontalHeader()->saveState());
+    int filter = 0;
+    if (ui->radioButtonVorhanden->isChecked())
+        filter = 1;
+    else if (ui->radioButtonInGebrauch->isChecked())
+        filter = 2;
+    gSettings->setValue("filter", filter);
+    gSettings->endGroup();
+}
+
+void DlgRohstoffe::loadSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    ui->tableMalz->restoreState(gSettings->value("tableMalzState").toByteArray());
+    ui->tableHopfen->restoreState(gSettings->value("tableHopfenState").toByteArray());
+    ui->tableHefe->restoreState(gSettings->value("tableHefeState").toByteArray());
+    ui->tableWeitereZutaten->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
+    ui->tableWasser->restoreState(gSettings->value("tableWasserState").toByteArray());
     int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)
     {
@@ -302,54 +336,19 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
         ui->radioButtonAlle->setChecked(true);
         on_radioButtonAlle_clicked();
     }
-    DlgAbstract::restoreSize();
-    gSettings->endGroup();
-
-    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(wasser_selectionChanged(QItemSelection)));
-
-    connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
-
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
-
-    ui->tableWasser->selectRow(0);
-    modulesChanged(Settings::ModuleAlle);    
-}
-
-DlgRohstoffe::~DlgRohstoffe()
-{
-    saveSettings();
-    delete ui;
-}
-
-void DlgRohstoffe::saveSettings()
-{
-    gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::saveSettings();
-    gSettings->setValue("tableMalzState", ui->tableMalz->horizontalHeader()->saveState());
-    gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
-    gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
-    gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
-    gSettings->setValue("tableWasserState", ui->tableWasser->horizontalHeader()->saveState());
-    int filter = 0;
-    if (ui->radioButtonVorhanden->isChecked())
-        filter = 1;
-    else if (ui->radioButtonInGebrauch->isChecked())
-        filter = 2;
-    gSettings->setValue("filter", filter);
     gSettings->endGroup();
 }
 
 void DlgRohstoffe::restoreView()
 {
+    DlgAbstract::restoreView(staticMetaObject.className());
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView();
-	gSettings->endGroup(); 
-    ui->tableMalz->restoreDefaultState();
-    ui->tableHopfen->restoreDefaultState();
-    ui->tableHefe->restoreDefaultState();
-    ui->tableWeitereZutaten->restoreDefaultState();
-    ui->tableWasser->restoreDefaultState();
+    gSettings->remove("tableMalzState");
+    gSettings->remove("tableHopfenState");
+    gSettings->remove("tableHefeState");
+    gSettings->remove("tableWeitereZutatenState");
+    gSettings->remove("tableWasserState");
+    gSettings->endGroup();
 }
 
 void DlgRohstoffe::modulesChanged(Settings::Modules modules)

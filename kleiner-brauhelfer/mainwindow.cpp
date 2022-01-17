@@ -241,9 +241,13 @@ void MainWindow::saveSettings()
 
 void MainWindow::restoreView()
 {
+    DlgAbstract::closeDialog<DlgBrauUebersicht>();
+    DlgAbstract::closeDialog<DlgRohstoffe>();
+    DlgAbstract::closeDialog<DlgAusruestung>();
+    DlgAbstract::closeDialog<DlgDatenbank>();
     restoreState(mDefaultState);
     ui->tabSudAuswahl->restoreView();
-    DlgAbstract::restoreView<DlgBrauUebersicht>();
+    DlgBrauUebersicht::restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
@@ -251,9 +255,9 @@ void MainWindow::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
-    DlgAbstract::restoreView<DlgRohstoffe>();
-    DlgAbstract::restoreView<DlgAusruestung>();
-    DlgAbstract::restoreView<DlgDatenbank>();
+    DlgRohstoffe::restoreView();
+    DlgAusruestung::restoreView();
+    DlgDatenbank::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
 }

@@ -26,7 +26,8 @@ public:
     explicit DlgRohstoffe(QWidget *parent = nullptr);
     virtual ~DlgRohstoffe() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
     void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
 
 private slots:

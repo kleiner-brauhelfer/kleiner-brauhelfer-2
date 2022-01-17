@@ -10,7 +10,7 @@ extern Settings* gSettings;
 DlgDatenbank* DlgDatenbank::Dialog = nullptr;
 
 DlgDatenbank::DlgDatenbank(QWidget *parent) :
-    DlgAbstract(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgDatenbank)
 {
     ui->setupUi(this);
@@ -58,14 +58,6 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
     ui->comboBoxSud->setCurrentIndex(7);
 
-    gSettings->beginGroup(staticMetaObject.className());
-
-    mDefaultSplitterState = ui->splitter->saveState();
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-
-    DlgAbstract::restoreSize();
-    gSettings->endGroup();
-
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
 
     updateValues();
@@ -73,24 +65,29 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
 
 DlgDatenbank::~DlgDatenbank()
 {
-    saveSettings();
     delete ui;
 }
 
 void DlgDatenbank::saveSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-	DlgAbstract::saveSettings();
     gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->endGroup();
+}
+
+void DlgDatenbank::loadSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
     gSettings->endGroup();
 }
 
 void DlgDatenbank::restoreView()
 {
+    DlgAbstract::restoreView(staticMetaObject.className());
     gSettings->beginGroup(staticMetaObject.className());
-    DlgAbstract::restoreView();
+    gSettings->remove("splitterState");
     gSettings->endGroup();
-    ui->splitter->restoreState(mDefaultSplitterState);
 }
 
 void DlgDatenbank::sudLoaded()

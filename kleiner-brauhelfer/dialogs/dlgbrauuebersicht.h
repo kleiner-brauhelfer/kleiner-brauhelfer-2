@@ -19,7 +19,9 @@ public:
     explicit DlgBrauUebersicht(QWidget *parent = nullptr);
     virtual ~DlgBrauUebersicht() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
+
     void setModel(QAbstractItemModel* model);
 
 signals:
@@ -51,7 +53,6 @@ private:
 
 private:
     Ui::DlgBrauUebersicht *ui;
-    QByteArray mDefaultSplitterState;
     QList<AuswahlType> mAuswahlListe;
 };
 

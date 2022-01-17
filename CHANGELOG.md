@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version 2.3.2 (in Entwicklung)
+- Neu: Reiter "Rohstoffe", "Brauübersicht", "Ausrüstung" und "Datenbank" neu als Fenster (vielen Dank psytrap)
 - Neu: Obergrenze der Zutaten auf 9999 erhöht
 - Fix: Kombination Spunden und Zuckerlösung
 - Fix: Leerzeichen und Zeilenumbrüche in den Bemerkungsfelder

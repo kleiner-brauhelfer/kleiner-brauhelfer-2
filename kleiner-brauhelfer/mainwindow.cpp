@@ -868,12 +868,7 @@ void MainWindow::on_actionRohstoffe_triggered()
 
 void MainWindow::on_actionBrauUebersicht_triggered()
 {
-    auto ret = DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
-    if(ret == true)
-    {
-        // TODO: BrauUebersicht eigenes model
-        DlgBrauUebersicht::Dialog->setModel(ui->tabSudAuswahl->model());
-    }
+    DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
 }
 
 void MainWindow::on_actionAusruestung_triggered()

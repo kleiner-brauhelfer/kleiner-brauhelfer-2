@@ -3,7 +3,7 @@
 #include <QKeyEvent>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "proxymodelsud.h"
+#include "model/proxymodelsudcolored.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/spinboxdelegate.h"
@@ -14,15 +14,15 @@ extern Settings* gSettings;
 
 DlgBrauUebersicht* DlgBrauUebersicht::Dialog = nullptr;
 
-class ProxyModelBrauuebersicht : public ProxyModelSud
+class ProxyModelBrauuebersicht : public ProxyModelSudColored
 {
 public:
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
-        ProxyModelSud(parent)
+        ProxyModelSudColored(parent)
     {
     }
 
-    using ProxyModelSud::data;
+    using ProxyModelSudColored::data;
 
     QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE
     {
@@ -36,7 +36,7 @@ public:
             if (col == mColAuswahl1)
                 return gSettings->DiagramLinie1Light;
         }
-        return ProxyModelSud::data(index, role);
+        return ProxyModelSudColored::data(index, role);
     }
 
     int mColAuswahl1;
@@ -69,47 +69,9 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%"), 0, 90});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
-}
 
-DlgBrauUebersicht::~DlgBrauUebersicht()
-{
-    delete ui;
-}
-
-void DlgBrauUebersicht::saveSettings()
-{
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
-    gSettings->setValue("Auswahl1", ui->cbAuswahlL1->currentIndex());
-    gSettings->setValue("Auswahl2", ui->cbAuswahlL2->currentIndex());
-    gSettings->setValue("Auswahl3", ui->cbAuswahlL3->currentIndex());
-    gSettings->setValue("splitterState", ui->splitter->saveState());
-    gSettings->endGroup();
-}
-
-void DlgBrauUebersicht::loadSettings()
-{
-    gSettings->beginGroup(staticMetaObject.className());
-    ui->tableView->restoreState(gSettings->value("tableState").toByteArray());
-    ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
-    ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
-    ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
-    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-    gSettings->endGroup();
-}
-
-void DlgBrauUebersicht::restoreView()
-{
-    DlgAbstract::restoreView(staticMetaObject.className());
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->remove("tableState");
-    gSettings->remove("splitterState");
-    gSettings->endGroup();
-}
-
-void DlgBrauUebersicht::setModel(QAbstractItemModel* model)
-{
     TableView *table = ui->tableView;
+    SqlTableModel *model = bh->modelSud();
     ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
     proxyModel->setSourceModel(model);
     proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
@@ -131,16 +93,6 @@ void DlgBrauUebersicht::setModel(QAbstractItemModel* model)
     table->build();
     table->setDefaultContextMenu();
 
-    gSettings->beginGroup(staticMetaObject.className());
-
-    table->restoreState(gSettings->value("tableState").toByteArray());
-
-    ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
-    ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
-    ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
-
-    gSettings->endGroup();
-
     connect(model, SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
     connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
     connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
@@ -150,25 +102,50 @@ void DlgBrauUebersicht::setModel(QAbstractItemModel* model)
     connect(ui->diagram, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
+    on_cbDatumAlle_stateChanged(ui->cbDatumAlle->isChecked());
     updateDiagram();
 }
 
-void DlgBrauUebersicht::keyPressEvent(QKeyEvent* event)
+DlgBrauUebersicht::~DlgBrauUebersicht()
 {
-    QWidget::keyPressEvent(event);
-    if (ui->tableView->hasFocus())
-    {
-        switch (event->key())
-        {
-        case Qt::Key::Key_Return:
-            QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
-            if (selection.count() > 0)
-            {
-                on_tableView_doubleClicked(selection[0]);
-            }
-            break;
-        }
-    }
+    delete ui;
+}
+
+void DlgBrauUebersicht::saveSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
+    gSettings->setValue("Auswahl1", ui->cbAuswahlL1->currentIndex());
+    gSettings->setValue("Auswahl2", ui->cbAuswahlL2->currentIndex());
+    gSettings->setValue("Auswahl3", ui->cbAuswahlL3->currentIndex());
+    gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("ZeitraumVon", ui->tbDatumVon->date());
+    gSettings->setValue("ZeitraumBis", ui->tbDatumBis->date());
+    gSettings->setValue("ZeitraumAlle", ui->cbDatumAlle->isChecked());
+    gSettings->endGroup();
+}
+
+void DlgBrauUebersicht::loadSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    ui->tableView->restoreState(gSettings->value("tableState").toByteArray());
+    ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
+    ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
+    ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    ui->tbDatumVon->setDate(gSettings->value("ZeitraumVon", QDate::currentDate().addYears(-1)).toDate());
+    ui->tbDatumBis->setDate(gSettings->value("ZeitraumBis", QDate::currentDate()).toDate());
+    ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle", false).toBool());
+    gSettings->endGroup();
+}
+
+void DlgBrauUebersicht::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->remove("tableState");
+    gSettings->remove("splitterState");
+    gSettings->endGroup();
 }
 
 void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
@@ -243,13 +220,6 @@ void DlgBrauUebersicht::updateDiagram()
     ui->diagram->repaint();
 }
 
-void DlgBrauUebersicht::on_tableView_doubleClicked(const QModelIndex &index)
-{
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
-    int sudId = model->data(index.row(), ModelSud::ColID).toInt();
-    emit clicked(sudId);
-}
-
 void DlgBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
 {
     int sudId = -1;
@@ -298,4 +268,35 @@ void DlgBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
         updateDiagram();
         ui->tableView->setFocus();
     }
+}
+
+void DlgBrauUebersicht::on_tbDatumVon_dateChanged(const QDate &date)
+{
+    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+    model->setFilterMinimumDate(QDateTime(date, QTime(0,0,0)));
+    ui->tbDatumBis->setMinimumDate(date);
+}
+
+void DlgBrauUebersicht::on_tbDatumBis_dateChanged(const QDate &date)
+{
+    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+    model->setFilterMaximumDate(QDateTime(date, QTime(23,59,59)));
+    ui->tbDatumVon->setMaximumDate(date);
+}
+
+void DlgBrauUebersicht::on_cbDatumAlle_stateChanged(int state)
+{
+    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+    if (state)
+    {
+        model->setFilterMinimumDate(ui->tbDatumVon->dateTime().addDays(-1));
+        model->setFilterMaximumDate(ui->tbDatumBis->dateTime().addDays(1));
+        model->setFilterDateColumn(ModelSud::ColBraudatum);
+    }
+    else
+    {
+        model->setFilterDateColumn(-1);
+    }
+    ui->tbDatumVon->setEnabled(state);
+    ui->tbDatumBis->setEnabled(state);
 }

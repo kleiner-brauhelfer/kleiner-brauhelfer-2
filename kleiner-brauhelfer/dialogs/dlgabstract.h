@@ -11,7 +11,7 @@ class DlgAbstract : public QDialog
     Q_OBJECT
 
 public:
-    template<class DLG> static bool showDialog(QWidget *parent, QAction* action = nullptr);
+    template<class DLG> static void showDialog(QWidget *parent, QAction* action = nullptr);
     template<typename DLG> static void closeDialog();
     template<typename DLG> static void modulesChanged(Settings::Modules modules);
 

@@ -29,6 +29,87 @@
      <widget class="QWidget" name="verticalLayoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QCheckBox" name="cbDatumAlle">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Suchzeitraum&lt;/span&gt; aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Gebraut zwischen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DateEdit" name="tbDatumVon">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Anfangsdatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>und</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DateEdit" name="tbDatumBis">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Enddatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblNumSude"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="WdgDiagramView" name="diagram" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -134,13 +215,6 @@
      </widget>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Die angezeigten Sude können im Tab Sudauswahl eingestellt werden. Es werden nur die bereits abgefüllten Sude angezeigt.</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -148,6 +222,11 @@
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>

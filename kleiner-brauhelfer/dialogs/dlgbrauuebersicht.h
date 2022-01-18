@@ -22,23 +22,17 @@ public:
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
 
-    void setModel(QAbstractItemModel* model);
-
-signals:
-    void clicked(int sudId);
-
-private:
-    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
-
 private slots:
     void updateDiagram();
     void modelDataChanged(const QModelIndex& index);
-    void on_tableView_doubleClicked(const QModelIndex &index);
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int sudId);
     void on_cbAuswahlL1_currentIndexChanged(int);
     void on_cbAuswahlL2_currentIndexChanged(int);
     void on_cbAuswahlL3_currentIndexChanged(int);
+    void on_tbDatumVon_dateChanged(const QDate &date);
+    void on_tbDatumBis_dateChanged(const QDate &date);
+    void on_cbDatumAlle_stateChanged(int state);
 
 private:
     struct AuswahlType

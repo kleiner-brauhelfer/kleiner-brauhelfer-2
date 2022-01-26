@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version 2.3.2 (in Entwicklung)
+- Neu: Neue Webseite mit Dokumentation http://kleiner-brauhelfer.de/ (noch in Arbeit) (vielen Dank Pitastic und alle, die daran gearbeitet haben)
 - Neu: Reiter "Rohstoffe", "Brauübersicht", "Ausrüstung" und "Datenbank" neu als Fenster (vielen Dank psytrap)
 - Neu: Obergrenze der Zutaten auf 9999 erhöht
 - Fix: Kombination Spunden und Zuckerlösung
@@ -10,7 +11,7 @@
 - Neu: Offizielle version kompiliert mit **Qt 5.15.2**
 - Neu: Die meisten Eingabefelder für Bemerkungen unterstützen HTML (inklusive Editor)
 - Neu: Modul Schnellgärprobe ein- und ausschaltbar
-- Neu: Menüeintrag für Hilfe (Hilfe in noch Arbeit)
+- Neu: Menüeintrag für Hilfe (Hilfe noch in Arbeit)
 - Fix: Modul Speiseberechnung
 
 ## Version 2.3.0 (24.03.2021)

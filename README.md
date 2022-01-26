@@ -17,7 +17,10 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download letzte Version
-- [Version 2.3.1](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+- [Download](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+
+### Änderungen & Erweiterungen
+Siehe [Changelog](CHANGELOG.md).
 
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
@@ -68,6 +71,3 @@ export QT_PLUGIN_PATH=${QT_PATH}/${VERSION}/clang_64/plugins/
 export QML_IMPORT_PATH=${QT_PATH}/${VERSION}/clang_64/qml/
 export QML2_IMPORT_PATH=${QT_PATH}/${VERSION}/clang_64/qml/
 ```
-
-## Änderungen & Erweiterungen
-Siehe [Changelog](CHANGELOG.md).

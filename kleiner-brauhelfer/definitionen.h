@@ -3,7 +3,7 @@
 
 #define URL_CHEKUPDATE      "https://api.github.com/repos/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest"
 #define URL_SPENDE          "http://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UPK64ABK3JTZ6"
-#define URL_HOMEPAGE        "http://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
+#define URL_HOMEPAGE        "http://kleiner-brauhelfer.github.io"
 #define URL_HILFE           "http://kleiner-brauhelfer.github.io"
 #define URL_FORMELSAMMLUNG  "http://kleiner-brauhelfer.github.io/docs/formelsammlung"
 #define URL_APP             "http://kleiner-brauhelfer.github.io/docs/app"

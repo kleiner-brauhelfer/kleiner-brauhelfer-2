@@ -1,7 +1,7 @@
 #define MyAppName "kleiner-brauhelfer-2"
 #define MyAppVersion "2.3.2"
 #define MyAppPublisher "kleiner-brauhelfer"
-#define MyAppURL "http://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
+#define MyAppURL "http://kleiner-brauhelfer.github.io"
 #define MyAppExeName "kleiner-brauhelfer-2.exe"
 #define MySources "..\..\..\build-win32\bin\*"
 #define MyOutputDir "..\..\..\"

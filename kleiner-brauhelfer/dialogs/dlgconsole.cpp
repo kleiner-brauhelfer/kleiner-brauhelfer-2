@@ -8,27 +8,22 @@ extern Settings* gSettings;
 DlgConsole* DlgConsole::Dialog = nullptr;
 
 DlgConsole::DlgConsole(QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgConsole)
 {
     ui->setupUi(this);
     ui->textEdit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
     ui->sbLevel->setValue(gSettings->logLevel());
-
-    adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgConsole::~DlgConsole()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
+}
+
+void DlgConsole::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
 }
 
 void DlgConsole::on_btnClear_clicked()

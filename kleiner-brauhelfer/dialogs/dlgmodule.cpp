@@ -1,16 +1,16 @@
 #include "dlgmodule.h"
 #include "ui_dlgmodule.h"
+#include "settings.h"
 
 extern Settings* gSettings;
 
 DlgModule* DlgModule::Dialog = nullptr;
 
 DlgModule::DlgModule(QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgModule)
 {
     ui->setupUi(this);
-
     ui->gbModuleGaerverlauf->setChecked(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
     ui->cbSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->gbModuleZusammenfassung->setChecked(gSettings->isModuleEnabled(Settings::ModuleZusammenfassung));
@@ -22,21 +22,16 @@ DlgModule::DlgModule(QWidget *parent) :
     ui->gbModuleSpeise->setChecked(gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->gbModuleWasseraufbereitung->setChecked(gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung));
     ui->gbModulePreiskalkulation->setChecked(gSettings->isModuleEnabled(Settings::ModulePreiskalkulation));
-
-    adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgModule::~DlgModule()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
+}
+
+void DlgModule::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
 }
 
 void DlgModule::on_gbModuleGaerverlauf_clicked(bool checked)
@@ -95,4 +90,3 @@ void DlgModule::on_gbModulePreiskalkulation_clicked(bool checked)
 {
     gSettings->enableModule(Settings::ModulePreiskalkulation, checked);
 }
-

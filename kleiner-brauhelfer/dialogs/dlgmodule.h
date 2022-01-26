@@ -1,14 +1,13 @@
 #ifndef DLGMODULE_H
 #define DLGMODULE_H
 
-#include <QDialog>
-#include "settings.h"
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgModule;
 }
 
-class DlgModule : public QDialog
+class DlgModule : public DlgAbstract
 {
     Q_OBJECT
 
@@ -18,6 +17,7 @@ public:
 public:
     explicit DlgModule(QWidget *parent = nullptr);
     ~DlgModule();
+    static void restoreView();
 
 private slots:
     void on_gbModuleGaerverlauf_clicked(bool checked);

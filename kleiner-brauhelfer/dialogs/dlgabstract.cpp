@@ -6,26 +6,26 @@ DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent) :
     QDialog(parent),
     mSettingsGroup(settingsGroup)
 {
+    connect(this, SIGNAL(finished(int)), this, SLOT(on_finished(int)));
 }
 
-bool DlgAbstract::event(QEvent *event)
+void DlgAbstract::showEvent(QShowEvent *event)
 {
-    if (event->type() == QEvent::Show)
-    {
-        modulesChanged(Settings::ModuleAlle);
-        gSettings->beginGroup(mSettingsGroup);
-        restoreGeometry(gSettings->value("geometry").toByteArray());
-        gSettings->endGroup();
-        loadSettings();
-    }
-    else if (event->type() == QEvent::Close)
-    {
-        gSettings->beginGroup(mSettingsGroup);
-        gSettings->setValue("geometry", saveGeometry());
-        gSettings->endGroup();
-        saveSettings();
-    }
-    return QDialog::event(event);
+    modulesChanged(Settings::ModuleAlle);
+    gSettings->beginGroup(mSettingsGroup);
+    restoreGeometry(gSettings->value("geometry").toByteArray());
+    gSettings->endGroup();
+    loadSettings();
+    QDialog::showEvent(event);
+}
+
+void DlgAbstract::on_finished(int result)
+{
+    Q_UNUSED(result)
+    gSettings->beginGroup(mSettingsGroup);
+    gSettings->setValue("geometry", saveGeometry());
+    gSettings->endGroup();
+    saveSettings();
 }
 
 void DlgAbstract::restoreView(const QString& settingsGroup)

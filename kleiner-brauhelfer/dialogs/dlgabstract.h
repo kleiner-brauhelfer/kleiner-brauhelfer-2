@@ -17,14 +17,17 @@ public:
 
 public:
     explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr);
-    virtual bool event(QEvent *event) Q_DECL_OVERRIDE;
     static void restoreView(const QString& settingsGroup);
     virtual void modulesChanged(Settings::Modules modules);
 
 protected:
+    virtual void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     virtual void saveSettings();
     virtual void loadSettings();
     void setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets);
+
+private slots:
+    void on_finished(int result);
 
 private:
     const QString mSettingsGroup;

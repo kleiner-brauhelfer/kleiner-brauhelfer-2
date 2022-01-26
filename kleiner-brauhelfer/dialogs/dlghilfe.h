@@ -1,14 +1,14 @@
 #ifndef DLGHILFE_H
 #define DLGHILFE_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 #include <QUrl>
 
 namespace Ui {
 class DlgHilfe;
 }
 
-class DlgHilfe : public QDialog
+class DlgHilfe : public DlgAbstract
 {
     Q_OBJECT
 
@@ -16,8 +16,10 @@ public:
     static DlgHilfe *Dialog;
 
 public:
-    explicit DlgHilfe(const QUrl &url, QWidget *parent = nullptr);
+    explicit DlgHilfe(QWidget *parent = nullptr);
     ~DlgHilfe();
+    static void restoreView();
+    void setHomeUrl(const QUrl &url);
     void setUrl(const QUrl &url);
 
 private slots:
@@ -26,7 +28,7 @@ private slots:
 
 private:
     Ui::DlgHilfe *ui;
-    const QUrl homeUrl;
+    QUrl homeUrl;
 };
 
 #endif // DLGHILFE_H

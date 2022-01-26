@@ -1,13 +1,13 @@
 #ifndef DLGCONSOLE_H
 #define DLGCONSOLE_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgConsole;
 }
 
-class DlgConsole : public QDialog
+class DlgConsole : public DlgAbstract
 {
     Q_OBJECT
 
@@ -17,6 +17,7 @@ public:
 public:
     explicit DlgConsole(QWidget *parent = nullptr);
     ~DlgConsole();
+    static void restoreView();
     void append(const QString &text);
 
 private slots:

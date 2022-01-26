@@ -125,6 +125,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    closeDialogs();
     saveSettings();
     delete ui;
 }
@@ -241,13 +242,9 @@ void MainWindow::saveSettings()
 
 void MainWindow::restoreView()
 {
-    DlgAbstract::closeDialog<DlgBrauUebersicht>();
-    DlgAbstract::closeDialog<DlgRohstoffe>();
-    DlgAbstract::closeDialog<DlgAusruestung>();
-    DlgAbstract::closeDialog<DlgDatenbank>();
+    closeDialogs();
     restoreState(mDefaultState);
     ui->tabSudAuswahl->restoreView();
-    DlgBrauUebersicht::restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
@@ -255,11 +252,26 @@ void MainWindow::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
+    DlgModule::restoreView();
     DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
+    DlgBrauUebersicht::restoreView();
     DlgDatenbank::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
+    DlgConsole::restoreView();
+    DlgHilfe::restoreView();
+}
+
+void MainWindow::closeDialogs()
+{
+    DlgAbstract::closeDialog<DlgModule>();
+    DlgAbstract::closeDialog<DlgConsole>();
+    DlgAbstract::closeDialog<DlgBrauUebersicht>();
+    DlgAbstract::closeDialog<DlgRohstoffe>();
+    DlgAbstract::closeDialog<DlgAusruestung>();
+    DlgAbstract::closeDialog<DlgDatenbank>();
+    DlgAbstract::closeDialog<DlgHilfe>();
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -267,7 +279,6 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     updateTabs(modules);
     updateValues();
     ui->tabSudAuswahl->modulesChanged(modules);
-    DlgAbstract::modulesChanged<DlgBrauUebersicht>(modules);
     ui->tabRezept->modulesChanged(modules);
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
@@ -277,7 +288,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBewertung->modulesChanged(modules);
     DlgAbstract::modulesChanged<DlgRohstoffe>(modules);
     DlgAbstract::modulesChanged<DlgAusruestung>(modules);
-    DlgAbstract::modulesChanged<DlgDatenbank>(modules);
+    DlgAbstract::modulesChanged<DlgBrauUebersicht>(modules);
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
@@ -820,19 +831,8 @@ void MainWindow::on_actionSpende_triggered()
 
 void MainWindow::on_actionHilfe_triggered()
 {
-    QString anchor = ui->tabMain->currentWidget()->metaObject()->className();
-    QString url = URL_HILFE"#" + anchor.toLower();
-    if (DlgHilfe::Dialog)
-    {
-        DlgHilfe::Dialog->raise();
-        DlgHilfe::Dialog->activateWindow();
-        DlgHilfe::Dialog->setUrl(url);
-    }
-    else
-    {
-        DlgHilfe::Dialog = new DlgHilfe(url, this);
-        DlgHilfe::Dialog->show();
-    }
+    DlgAbstract::showDialog<DlgHilfe>(this);
+    DlgHilfe::Dialog->setHomeUrl(QString(URL_HILFE));
 }
 
 void MainWindow::on_actionFormelsammlung_triggered()

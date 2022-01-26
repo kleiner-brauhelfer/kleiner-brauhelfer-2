@@ -79,6 +79,7 @@ private:
     void save();
     void saveSettings();
     void restoreView();
+    void closeDialogs();
     void checkForUpdate(bool force);
 
 private:

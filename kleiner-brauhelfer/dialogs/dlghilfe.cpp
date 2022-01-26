@@ -1,36 +1,31 @@
 #include "dlghilfe.h"
 #include "ui_dlghilfe.h"
-#include "settings.h"
-
-extern Settings* gSettings;
 
 DlgHilfe* DlgHilfe::Dialog = nullptr;
 
-DlgHilfe::DlgHilfe(const QUrl &url, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::DlgHilfe),
-    homeUrl(url)
+DlgHilfe::DlgHilfe(QWidget *parent) :
+    DlgAbstract(staticMetaObject.className(), parent),
+    ui(new Ui::DlgHilfe)
 {
     ui->setupUi(this);
     ui->webview->setContextMenuPolicy(Qt::DefaultContextMenu);
-    setUrl(homeUrl);
-
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
-
     connect(ui->webview, SIGNAL(urlChanged(QUrl)), this, SLOT(urlChanged(QUrl)));
-    connect(this, &DlgHilfe::finished, this, []{Dialog->deleteLater();Dialog = nullptr;});
 }
 
 DlgHilfe::~DlgHilfe()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
+}
+
+void DlgHilfe::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
+void DlgHilfe::setHomeUrl(const QUrl &url)
+{
+    homeUrl = url;
+    setUrl(homeUrl);
 }
 
 void DlgHilfe::setUrl(const QUrl &url)

@@ -204,8 +204,8 @@
     <addaction name="actionSchriftart"/>
     <addaction name="separator"/>
     <addaction name="actionRohstoffe"/>
-    <addaction name="actionBrauUebersicht"/>
     <addaction name="actionAusruestung"/>
+    <addaction name="actionBrauUebersicht"/>
     <addaction name="separator"/>
     <addaction name="actionLog"/>
     <addaction name="actionDatenbank"/>
@@ -266,9 +266,6 @@
    <addaction name="menuHilfe"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
    <property name="iconSize">
     <size>
      <width>16</width>
@@ -287,8 +284,8 @@
    <addaction name="actionSpeichern"/>
    <addaction name="separator"/>
    <addaction name="actionRohstoffe"/>
-   <addaction name="actionBrauUebersicht"/>
    <addaction name="actionAusruestung"/>
+   <addaction name="actionBrauUebersicht"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -671,7 +668,7 @@
     <string>Rohstoffe</string>
    </property>
    <property name="whatsThis">
-    <string>actionrohstoffe</string>
+    <string notr="true">actionrohstoffe</string>
    </property>
    <property name="visible">
     <bool>true</bool>
@@ -692,7 +689,7 @@
     <string>Brauübersicht</string>
    </property>
    <property name="whatsThis">
-    <string>actionbrauuebersicht</string>
+    <string notr="true">actionbrauuebersicht</string>
    </property>
    <property name="visible">
     <bool>true</bool>
@@ -714,7 +711,7 @@
     <string>Ausrüstung</string>
    </property>
    <property name="whatsThis">
-    <string>actionausruestung</string>
+    <string notr="true">actionausruestung</string>
    </property>
    <property name="visible">
     <bool>true</bool>

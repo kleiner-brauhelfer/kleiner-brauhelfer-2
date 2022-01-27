@@ -14,15 +14,15 @@ extern Settings* gSettings;
 
 DlgBrauUebersicht* DlgBrauUebersicht::Dialog = nullptr;
 
-class ProxyModelBrauuebersicht : public ProxyModelSudColored
+class ProxyModelBrauuebersicht : public ProxyModelSud
 {
 public:
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
-        ProxyModelSudColored(parent)
+        ProxyModelSud(parent)
     {
     }
 
-    using ProxyModelSudColored::data;
+    using ProxyModelSud::data;
 
     QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE
     {
@@ -36,7 +36,7 @@ public:
             if (col == mColAuswahl1)
                 return gSettings->DiagramLinie1Light;
         }
-        return ProxyModelSudColored::data(index, role);
+        return ProxyModelSud::data(index, role);
     }
 
     int mColAuswahl1;

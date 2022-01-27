@@ -269,3 +269,5 @@ TRANSLATIONS += \
     translations/kbh_en.ts \
     translations/kbh_nl.ts \
     translations/kbh_sv.ts
+
+TR_EXCLUDE += dialogs/dlgabstract-inl.h

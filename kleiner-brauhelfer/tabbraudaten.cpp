@@ -156,7 +156,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && isAncestorOf(now) && now != ui->tbHelp && now != ui->splitterHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp)
         ui->tbHelp->setHtml(now->toolTip());
 }
 

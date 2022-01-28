@@ -527,7 +527,7 @@
             </spacer>
            </item>
            <item row="3" column="0">
-            <widget class="QLabel" name="label_69">
+            <widget class="QLabel" name="lblKosten">
              <property name="text">
               <string>Betriebskosten</string>
              </property>

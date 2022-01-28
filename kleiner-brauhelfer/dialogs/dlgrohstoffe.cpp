@@ -21,6 +21,10 @@
 #include "model/phmalzdelegate.h"
 #include "dialogs/dlgrohstoffvorlage.h"
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
+#define qAsConst(x) (x)
+#endif
+
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 

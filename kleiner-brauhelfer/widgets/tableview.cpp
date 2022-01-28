@@ -7,6 +7,10 @@
 #include <QApplication>
 #include <QClipboard>
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
+#define qAsConst(x) (x)
+#endif
+
 TableView::TableView(QWidget *parent) :
     QTableView(parent)
 {

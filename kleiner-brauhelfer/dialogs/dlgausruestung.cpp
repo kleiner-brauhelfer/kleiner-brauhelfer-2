@@ -14,10 +14,12 @@
 #include "model/datedelegate.h"
 #include "dialogs/dlgverdampfung.h"
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
+#define qAsConst(x) (x)
+#endif
+
 extern Brauhelfer* bh;
 extern Settings* gSettings;
-
-// TODO: modul Preiskalkulation -> Betriebskosten
 
 QList<QPair<QString, int> > DlgAusruestung::Typname = {
     {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
@@ -139,6 +141,17 @@ void DlgAusruestung::restoreView()
     gSettings->remove("tableStateSude");
     gSettings->remove("splitterStateMain");
     gSettings->endGroup();
+}
+
+void DlgAusruestung::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        setVisibleModule(Settings::ModulePreiskalkulation,
+                         {ui->tbKosten,
+                          ui->lblKosten,
+                          ui->lblCurrency});
+    }
 }
 
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)

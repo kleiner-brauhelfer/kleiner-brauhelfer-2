@@ -4,6 +4,10 @@
 #include "proxymodel.h"
 #include "settings.h"
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
+#define qAsConst(x) (x)
+#endif
+
 extern Settings* gSettings;
 
 void DlgTableView::restoreView()

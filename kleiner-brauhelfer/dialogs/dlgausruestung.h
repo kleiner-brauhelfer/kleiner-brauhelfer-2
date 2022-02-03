@@ -53,6 +53,7 @@ private slots:
     void on_tbSudpfanneMaxFuellhoehe_editingFinished();
 
 private:
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);

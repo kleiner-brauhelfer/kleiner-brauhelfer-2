@@ -14,6 +14,7 @@ ModelAusruestung::ModelAusruestung(Brauhelfer* bh, QSqlDatabase db) :
     mVirtualField.append("Sudpfanne_MaxFuellvolumen");
     mVirtualField.append("Vermoegen");
     mVirtualField.append("AnzahlSude");
+    mVirtualField.append("AnzahlGebrauteSude");
 }
 
 QVariant ModelAusruestung::dataExt(const QModelIndex &idx) const
@@ -58,6 +59,17 @@ QVariant ModelAusruestung::dataExt(const QModelIndex &idx) const
         modelSud.setSourceModel(bh->modelSud());
         modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
         modelSud.setFilterRegularExpression(regExp);
+        return modelSud.rowCount();
+    }
+    case ColAnzahlGebrauteSude:
+    {
+        ProxyModelSud modelSud;
+        QString anlage = data(idx.row(), ColName).toString();
+        QRegularExpression regExp(QString("^%1$").arg(QRegularExpression::escape(anlage)));
+        modelSud.setSourceModel(bh->modelSud());
+        modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
+        modelSud.setFilterRegularExpression(regExp);
+        modelSud.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
         return modelSud.rowCount();
     }
     default:

@@ -38,7 +38,8 @@ DlgAusruestung* DlgAusruestung::Dialog = nullptr;
 
 DlgAusruestung::DlgAusruestung(QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
-    ui(new Ui::DlgAusruestung)
+    ui(new Ui::DlgAusruestung),
+    mRow(0)
 {
     ui->setupUi(this);
     ui->lblCurrency->setText(QLocale().currencySymbol());
@@ -55,11 +56,13 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
     model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen [l]"));
     model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));
+    model->setHeaderData(ModelAusruestung::ColAnzahlGebrauteSude, Qt::Horizontal, tr("Anzahl gebraute Sude"));
     table->setModel(model);
     table->appendCol({ModelAusruestung::ColName, true, false, -1, nullptr});
     table->appendCol({ModelAusruestung::ColTyp, true, true, 100, new ComboBoxDelegate(Typname, table)});
     table->appendCol({ModelAusruestung::ColVermoegen, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
+    table->appendCol({ModelAusruestung::ColAnzahlGebrauteSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
 
@@ -101,8 +104,6 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
             this, SLOT(anlage_selectionChanged()));
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelAusruestung::ColBemerkung, html);});
-
-    sudLoaded();
 }
 
 DlgAusruestung::~DlgAusruestung()
@@ -154,6 +155,12 @@ void DlgAusruestung::modulesChanged(Settings::Modules modules)
     }
 }
 
+void DlgAusruestung::showEvent(QShowEvent *event)
+{
+    DlgAbstract::showEvent(event);
+    sudLoaded();
+}
+
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
@@ -193,9 +200,13 @@ void DlgAusruestung::focusChanged(QWidget *old, QWidget *now)
 void DlgAusruestung::sudLoaded()
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-    int row = 0;
+    int row = mRow;
     if (bh->sud()->isLoaded())
+    {
         row = model->getRowWithValue(ModelAusruestung::ColName, bh->sud()->getAnlage());
+        if (row < 0)
+            row = mRow;
+    }
     ui->tableViewAnlagen->setCurrentIndex(model->index(row, ModelAusruestung::ColName));
 }
 
@@ -211,11 +222,13 @@ void DlgAusruestung::anlage_selectionChanged()
         QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
         regExpId = QRegularExpression(QString("^%1$").arg(QRegularExpression::escape(anlage)));
         regExpId2 = QRegularExpression(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
+        ui->scrollArea->setEnabled(true);
     }
     else
     {
         regExpId = QRegularExpression(QString("--dummy--"));
         regExpId2 = QRegularExpression(QString("--dummy--"));
+        ui->scrollArea->setEnabled(false);
     }
     static_cast<ProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
     static_cast<ProxyModel*>(ui->tableViewSude->model())->setFilterRegularExpression(regExpId);
@@ -346,39 +359,39 @@ void DlgAusruestung::updateValues()
 
 void DlgAusruestung::updateDurchschnitt()
 {
-    ProxyModelSud model;
-    model.setSourceModel(bh->modelSud());
-    model.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
-    model.sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     QString anlage = data(ModelAusruestung::ColName).toString();
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    QRegularExpression regExp(QString("^%1$").arg(QRegularExpression::escape(anlage)));
+    modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
+    modelSud.setFilterRegularExpression(regExp);
+    modelSud.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
+    modelSud.sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     int nAusbeute = 0;
     int nVerdampfung = 0;
     int N = 0;
     double ausbeute = 0.0;
     double verdampfung = 0.0;
-    for (int i = 0; i < model.rowCount(); ++i)
+    for (int i = 0; i < modelSud.rowCount(); ++i)
     {
-        if (model.index(i, ModelSud::ColAnlage).data().toString() == anlage)
+        if (!modelSud.index(i, ModelSud::ColAusbeuteIgnorieren).data().toBool())
         {
-            if (!model.index(i, ModelSud::ColAusbeuteIgnorieren).data().toBool())
+            if (N < ui->sliderAusbeuteSude->value())
             {
-                if (N < ui->sliderAusbeuteSude->value())
+                double val = modelSud.index(i, ModelSud::Colerg_EffektiveAusbeute).data().toDouble();
+                if (val > 0)
                 {
-                    double val = model.index(i, ModelSud::Colerg_EffektiveAusbeute).data().toDouble();
-                    if (val > 0)
-                    {
-                        ausbeute += val;
-                        nAusbeute++;
-                    }
-                    val = model.index(i, ModelSud::ColVerdampfungsrateIst).data().toDouble();
-                    if (val > 0)
-                    {
-                        verdampfung += val;
-                        ++nVerdampfung;
-                    }
+                    ausbeute += val;
+                    nAusbeute++;
                 }
-                ++N;
+                val = modelSud.index(i, ModelSud::ColVerdampfungsrateIst).data().toDouble();
+                if (val > 0)
+                {
+                    verdampfung += val;
+                    ++nVerdampfung;
+                }
             }
+            ++N;
         }
     }
     if (nAusbeute > 0)

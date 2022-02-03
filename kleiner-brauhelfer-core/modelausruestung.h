@@ -38,6 +38,7 @@ public:
         ColSudpfanne_MaxFuellvolumen,
         ColVermoegen,
         ColAnzahlSude,
+        ColAnzahlGebrauteSude,
         // number of columns
         NumCols
     };

@@ -1,5 +1,7 @@
 # Changelog
 
+## Version 2.3.3 (in Entwicklung)
+
 ## Version 2.3.2 (28.01.2022)
 - Neu: Neue Webseite mit Dokumentation http://kleiner-brauhelfer.de/ (noch in Arbeit) (vielen Dank Pitastic und alle, die daran gearbeitet haben)
 - Neu: Reiter "Rohstoffe", "Brauübersicht", "Ausrüstung" und "Datenbank" neu als Fenster (vielen Dank psytrap)

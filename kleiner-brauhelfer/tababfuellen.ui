@@ -331,6 +331,12 @@
              <property name="decimals">
               <number>1</number>
              </property>
+             <property name="minimum">
+              <double>-99.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>99.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item row="6" column="7">
@@ -365,10 +371,10 @@
               <number>1</number>
              </property>
              <property name="minimum">
-              <double>0.000000000000000</double>
+              <double>-99.000000000000000</double>
              </property>
              <property name="maximum">
-              <double>20.000000000000000</double>
+              <double>99.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>1.000000000000000</double>
@@ -399,6 +405,12 @@
              <property name="decimals">
               <number>1</number>
              </property>
+             <property name="minimum">
+              <double>-99.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>99.000000000000000</double>
+             </property>
             </widget>
            </item>
            <item row="1" column="6">
@@ -419,10 +431,10 @@
               <number>1</number>
              </property>
              <property name="minimum">
-              <double>0.000000000000000</double>
+              <double>-99.000000000000000</double>
              </property>
              <property name="maximum">
-              <double>20.000000000000000</double>
+              <double>99.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>1.000000000000000</double>
@@ -506,7 +518,7 @@
               <number>1</number>
              </property>
              <property name="minimum">
-              <double>0.000000000000000</double>
+              <double>-99.000000000000000</double>
              </property>
              <property name="maximum">
               <double>99.000000000000000</double>
@@ -557,7 +569,7 @@
               <number>1</number>
              </property>
              <property name="minimum">
-              <double>0.000000000000000</double>
+              <double>-99.000000000000000</double>
              </property>
              <property name="maximum">
               <double>99.000000000000000</double>
@@ -702,7 +714,7 @@
               <double>0.000000000000000</double>
              </property>
              <property name="maximum">
-              <double>20.000000000000000</double>
+              <double>99.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>1.000000000000000</double>
@@ -723,6 +735,12 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
+             <property name="minimum">
+              <number>-999</number>
+             </property>
+             <property name="maximum">
+              <number>999</number>
+             </property>
             </widget>
            </item>
            <item row="5" column="6">
@@ -738,6 +756,12 @@
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="minimum">
+              <number>-999</number>
+             </property>
+             <property name="maximum">
+              <number>999</number>
              </property>
             </widget>
            </item>
@@ -793,8 +817,11 @@
              <property name="decimals">
               <number>2</number>
              </property>
+             <property name="minimum">
+              <double>-99.000000000000000</double>
+             </property>
              <property name="maximum">
-              <double>20.000000000000000</double>
+              <double>99.000000000000000</double>
              </property>
             </widget>
            </item>

@@ -408,7 +408,8 @@ void TabGaerverlauf::updateDiagramm()
         diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
         diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
     }
-    diag->setWertLinie1(bh->sud()->getSRE());
+    double sreSoll = BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad());
+    diag->setWertLinie1(sreSoll);
     diag->repaint();
 
     diag = ui->widget_DiaHauptgaerverlauf;
@@ -428,7 +429,7 @@ void TabGaerverlauf::updateDiagramm()
     if (bh->sud()->getSchnellgaerprobeAktiv())
         diag->setWertLinie1(bh->sud()->getGruenschlauchzeitpunkt());
     else
-        diag->setWertLinie1(bh->sud()->getSRE());
+        diag->setWertLinie1(sreSoll);
     diag->repaint();
 
     diag = ui->widget_DiaNachgaerverlauf;

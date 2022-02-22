@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version 2.3.3 (in Entwicklung)
+- Neu: Negative SRE erlaubt
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
 - Fix: diverse Fehler in der Brauübersicht
 

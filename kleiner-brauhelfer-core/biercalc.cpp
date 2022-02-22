@@ -175,12 +175,9 @@ double BierCalc::toSRE(double sw, double tre)
 
 double BierCalc::vergaerungsgrad(double sw, double re)
 {
-    if (sw <= 0.0)
+    if (sw == 0.0)
         return 0.0;
-    double res = (1 - re / sw) * 100;
-    if (res < 0.0)
-        res = 0.0;
-    return res;
+    return (1 - re / sw) * 100;
 }
 
 double BierCalc::sreAusVergaerungsgrad(double sw, double vg)
@@ -226,12 +223,13 @@ double BierCalc::p(double co2, double T)
 double BierCalc::gruenschlauchzeitpunkt(double co2Soll, double sw, double sreSchnellgaerprobe, double T)
 {
     double tre = toTRE(sw, sreSchnellgaerprobe);
+    if (tre < 0.0)
+        tre = 0.0;
     double co2Noetig = co2Soll - co2(0.0, T);
     double extraktCO2 = co2Noetig / (co2Zucker() * 10);
-    double res = toSRE(sw, tre + extraktCO2);
-    if (res < 0.0)
-        res = 0.0;
-    return res;
+    if (extraktCO2 < 0.0)
+        extraktCO2 = 0.0;
+    return toSRE(sw, tre + extraktCO2);
 }
 
 double BierCalc::spundungsdruck(double co2Soll, double T)

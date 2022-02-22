@@ -230,8 +230,8 @@ void WdgDiagramView::zeichneAchsen()
     abstandY1 = double(zhoehe) / double(unterteilungen);
   }
   int startwert = minWert / skalierung;
-  minWertL1 = minWert;
-  maxWertL1 = maxWert + skalierung;
+  minWertL1 = int(minWert / skalierung) * skalierung;
+  maxWertL1 = int(maxWert / skalierung) * skalierung + skalierung;
   painter.setPen(colorL1);
   painter.drawText(QRectF(0, nullY - 5, nullX, 10), Qt::AlignCenter, QString::number(skalierung * startwert));
   if (L2Daten.isEmpty())
@@ -286,8 +286,8 @@ void WdgDiagramView::zeichneAchsen()
       abstandY2 = double(zhoehe) / double(unterteilungen);
     }
     startwert = minWert / skalierung;
-    minWertL2 = minWert;
-    maxWertL2 = maxWert + skalierung;
+    minWertL2 = int(minWert / skalierung) * skalierung;
+    maxWertL2 = int(maxWert / skalierung) * skalierung + skalierung;
     painter.setPen(colorL2);
     painter.drawText(QRectF(nullX + zbreite, nullY - 5, nullX, 10), Qt::AlignCenter, QString::number(skalierung * startwert));
     for (int i=0; i < unterteilungen; i++){
@@ -333,8 +333,8 @@ void WdgDiagramView::zeichneAchsen()
       abstandY3 = double(zhoehe) / double(unterteilungen);
     }
     startwert = minWert / skalierung;
-    minWertL3 = minWert;
-    maxWertL3 = maxWert + skalierung;
+    minWertL3 = int(minWert / skalierung) * skalierung;
+    maxWertL3 = int(maxWert / skalierung) * skalierung + skalierung;
     painter.setPen(colorL3);
     painter.drawText(QRectF(nullX + zbreite + AbstandBeschriftungRechts, nullY - 5, nullX, 10), Qt::AlignCenter, QString::number(skalierung * startwert));
     for (int i=0; i < unterteilungen; i++){

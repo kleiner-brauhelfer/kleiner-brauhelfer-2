@@ -103,7 +103,6 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
             this, SLOT(diagram_selectionChanged(int)));
 
     on_cbDatumAlle_stateChanged(ui->cbDatumAlle->isChecked());
-    updateDiagram();
 }
 
 DlgBrauUebersicht::~DlgBrauUebersicht()
@@ -146,6 +145,12 @@ void DlgBrauUebersicht::restoreView()
     gSettings->remove("tableState");
     gSettings->remove("splitterState");
     gSettings->endGroup();
+}
+
+void DlgBrauUebersicht::showEvent(QShowEvent *event)
+{
+    DlgAbstract::showEvent(event);
+    updateDiagram();
 }
 
 void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
@@ -275,6 +280,7 @@ void DlgBrauUebersicht::on_tbDatumVon_dateChanged(const QDate &date)
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     model->setFilterMinimumDate(QDateTime(date, QTime(0,0,0)));
     ui->tbDatumBis->setMinimumDate(date);
+    updateDiagram();
 }
 
 void DlgBrauUebersicht::on_tbDatumBis_dateChanged(const QDate &date)
@@ -282,6 +288,7 @@ void DlgBrauUebersicht::on_tbDatumBis_dateChanged(const QDate &date)
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     model->setFilterMaximumDate(QDateTime(date, QTime(23,59,59)));
     ui->tbDatumVon->setMaximumDate(date);
+    updateDiagram();
 }
 
 void DlgBrauUebersicht::on_cbDatumAlle_stateChanged(int state)
@@ -299,4 +306,5 @@ void DlgBrauUebersicht::on_cbDatumAlle_stateChanged(int state)
     }
     ui->tbDatumVon->setEnabled(state);
     ui->tbDatumBis->setEnabled(state);
+    updateDiagram();
 }

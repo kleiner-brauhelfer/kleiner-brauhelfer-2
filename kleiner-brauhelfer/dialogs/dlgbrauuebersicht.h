@@ -35,6 +35,9 @@ private slots:
     void on_cbDatumAlle_stateChanged(int state);
 
 private:
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+
+private:
     struct AuswahlType
     {
         int col;

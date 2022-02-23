@@ -2,10 +2,32 @@
 #define WDGBEMERKUNG_H
 
 #include <QWidget>
+#include <QTextBrowser>
 
 namespace Ui {
 class WdgBemerkung;
 }
+
+class BemerkungTextBrowser : public QTextBrowser
+{
+    Q_OBJECT
+
+public:
+    explicit BemerkungTextBrowser(QWidget *parent = nullptr) :
+        QTextBrowser(parent)
+    {
+    }
+
+signals:
+    void doubleClicked(QMouseEvent *e);
+
+protected:
+    virtual void mouseDoubleClickEvent(QMouseEvent *e) Q_DECL_OVERRIDE
+    {
+        QTextBrowser::mouseDoubleClickEvent(e);
+        emit doubleClicked(e);
+    }
+};
 
 class WdgBemerkung : public QWidget
 {

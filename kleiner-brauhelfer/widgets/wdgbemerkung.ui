@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTextBrowser" name="tbRichText">
+    <widget class="BemerkungTextBrowser" name="tbRichText">
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -60,14 +60,15 @@
         </size>
        </property>
        <property name="whatsThis">
-        <string notr="true">settings</string>
+        <string notr="true">edit</string>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="icon">
         <iconset resource="../images.qrc">
-         <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
+         <normaloff>:/images/light/edit.svg</normaloff>
+         <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
        </property>
       </widget>
      </item>
@@ -75,6 +76,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BemerkungTextBrowser</class>
+   <extends>QTextBrowser</extends>
+   <header>widgets/wdgbemerkung.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../images.qrc"/>
  </resources>

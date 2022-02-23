@@ -45,6 +45,7 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
     QTextCharFormat format;
     format.setFontPointSize(10);
     on_tbRichText_currentCharFormatChanged(format);
+    ui->tbRichText->setFocus();
 }
 
 DlgRichTextEditor::~DlgRichTextEditor()
@@ -89,6 +90,8 @@ void DlgRichTextEditor::setHtml(const QString& html)
 
 QString DlgRichTextEditor::toHtml() const
 {
+    if (ui->tbRichText->toPlainText().isEmpty())
+        return "";
     return stripHeader(ui->tbRichText->toHtml());
 }
 
@@ -134,7 +137,7 @@ void DlgRichTextEditor::on_tbRichText_currentCharFormatChanged(const QTextCharFo
     ui->btnUnderline->setChecked(font.underline());
 
     QColor fontColor = format.foreground().color();
-    QPixmap pix(16, 16);
+    QPixmap pix(8, 8);
     pix.fill(fontColor.isValid() ? fontColor : palette().windowText().color());
     ui->btnColorText->setIcon(pix);
 

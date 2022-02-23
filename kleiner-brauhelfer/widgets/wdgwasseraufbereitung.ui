@@ -62,11 +62,12 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Widget wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Wirkungsgrad&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserzusatz&lt;/span&gt; manuell eingestellt.&lt;/p&gt;&lt;p&gt;In der Regel sind hier keine Anpassungen nötig – der Kleine Brauhelfer hält die Verdünnungsfaktoren geläufiger Säuren bereit; bei &lt;span style=&quot; font-weight:600;&quot;&gt;kristallinen Salzen &lt;/span&gt;ist der Wirkungsgrad immer 100, anders dagegen verhält es sich in liquider Form.&lt;/p&gt;&lt;p&gt;So macht das Feld Sinn bei gelösten Salzen wie Calciumchlorid CaCl₂ oder den unterschiedlichen Konfektionierungen von Phosphorsäure. So wird CaCl₂ in Europa in 33%-Lösung angeboten, in anderen Ländern aber anders. Gleiches bei Phosphorsäure.In Europa ist 70% Phosphorsäue üblich in den USA 30%.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Falsche Angaben &lt;/span&gt;können hier zu unvorhersehbaren Ergebnissen führen und den &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; sogar &lt;span style=&quot; font-weight:600;&quot;&gt;ungenießbar&lt;/span&gt; machen. Bei Zweifeln ist es ein guter Rat Fachbücher und Fachforen zu befragen. Ansonsten gilt, weil es einen großen Unterschied macht, ob &lt;span style=&quot; font-weight:600;&quot;&gt;Salzsäure&lt;/span&gt; in 10%iger oder 80%iger Lösung vorliegt: &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Im Zweifel Hände weg!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="whatsThis">
-           <string notr="true">settings</string>
+           <string notr="true">edit</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
-            <normaloff>:/images/light/settings.svg</normaloff>:/images/light/settings.svg</iconset>
+            <normaloff>:/images/light/edit.svg</normaloff>
+            <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
           </property>
          </widget>
         </item>

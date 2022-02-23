@@ -11,6 +11,7 @@ WdgBemerkung::WdgBemerkung(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tbRichText->document()->setBaseUrl(QUrl::fromLocalFile(gSettings->databaseDir()));
+    connect(ui->tbRichText,SIGNAL(doubleClicked(QMouseEvent*)),this,SLOT(on_btnEdit_clicked()));
 }
 
 WdgBemerkung::~WdgBemerkung()
@@ -33,6 +34,8 @@ void WdgBemerkung::setHtml(const QString& html)
 
 QString WdgBemerkung::toHtml() const
 {
+    if (ui->tbRichText->toPlainText().isEmpty())
+        return "";
     return DlgRichTextEditor::stripHeader(ui->tbRichText->toHtml());
 }
 

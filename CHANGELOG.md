@@ -3,8 +3,9 @@
 ## Version 2.4.0 (in Entwicklung)
 - Neu: Datenbankversion **2007**
 - Neu: Negative SRE erlaubt
+- Neu: Hintergrundfarbe des Etiketts für jeden Sud einzeln einstellbar
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
-- Fix: diverse Fehler in der Brauübersicht
+- Fix: diverse Fehler in der Brauübersicht korrigiert
 
 ## Version 2.3.2 (28.01.2022)
 - Neu: Neue Webseite mit Dokumentation http://kleiner-brauhelfer.de/ (noch in Arbeit) (vielen Dank Pitastic und alle, die daran gearbeitet haben)

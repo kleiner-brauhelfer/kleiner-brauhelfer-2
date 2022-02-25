@@ -1525,6 +1525,10 @@ bool Database::update()
             qInfo() << "Updating to version:" << version;
             db.transaction();
 
+            // Etiketten
+            //  - neue Spalte 'Hintergrundfarbe'
+            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Hintergrundfarbe INTEGER DEFAULT 0xffffff");
+
             // Global
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();

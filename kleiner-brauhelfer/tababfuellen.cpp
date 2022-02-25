@@ -128,6 +128,7 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
         setVisibleModule(Settings::ModuleSchnellgaerprobe,
                          {ui->cbSchnellgaerprobeAktiv});
     }
+    checkEnabled();
     updateValues();
 }
 

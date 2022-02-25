@@ -53,22 +53,22 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnEdit">
-       <property name="maximumSize">
+       <property name="minimumSize">
         <size>
          <width>40</width>
-         <height>16777215</height>
+         <height>0</height>
         </size>
        </property>
        <property name="whatsThis">
         <string notr="true">edit</string>
        </property>
-       <property name="text">
-        <string/>
-       </property>
        <property name="icon">
         <iconset resource="../images.qrc">
          <normaloff>:/images/light/edit.svg</normaloff>
          <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

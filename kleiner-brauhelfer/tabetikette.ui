@@ -79,118 +79,141 @@
           </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QCheckBox" name="cbEditMode">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; ist die Bearbeitung der Gestaltungsvorgaben in der linken Spalte sowie der Tags in der rechten Spalte möglich.&lt;/p&gt;&lt;p&gt;Tags speisen Werte in das Layout ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="whatsThis">
-              <string notr="true">edit</string>
-             </property>
-             <property name="icon">
-              <iconset resource="images.qrc">
-               <normaloff>:/images/light/edit.svg</normaloff>
-               <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="cbTagsErsetzen">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angekreuzt, können hiermit bestehende &lt;span style=&quot; font-weight:600;&quot;&gt;Tags ersetzt &lt;/span&gt;werden..&lt;/p&gt;&lt;p&gt;Tags sind leicht verständliche Code-Schnipsel, Schlüsselörter, die vom Programm entsprechend interpretiert werden, ohne dass spezielle Programmierkenntnisse erforderlich sind. Einmal definiert, können Tags problemlos im Etikett eingefügt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="text">
-              <string>Tags ersetzen</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnAktualisieren">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;SVG-Datei&lt;/span&gt; aktualisiert.&lt;/p&gt;&lt;p&gt;SVG ermöglicht skalierbare, verlustfreie Grafiken. Ohne Aktualisierung können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="whatsThis">
-              <string notr="true">refresh</string>
-             </property>
-             <property name="icon">
-              <iconset resource="images.qrc">
-               <normaloff>:/images/light/refresh.svg</normaloff>
-               <disabledoff>:/images/disabled/refresh.svg</disabledoff>:/images/light/refresh.svg</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnSaveTemplate">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das Etikett &lt;span style=&quot; font-weight:600;&quot;&gt;gespeichert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="whatsThis">
-              <string notr="true">save</string>
-             </property>
-             <property name="icon">
-              <iconset resource="images.qrc">
-               <normaloff>:/images/light/save.svg</normaloff>
-               <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnExport">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;SVG &lt;/span&gt;mit den ersetzten Tags &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="whatsThis">
-              <string notr="true">export</string>
-             </property>
-             <property name="icon">
-              <iconset resource="images.qrc">
-               <normaloff>:/images/light/export.svg</normaloff>:/images/light/export.svg</iconset>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
+          <widget class="QWidget" name="wdgEdit" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="cbTagsErsetzen">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angekreuzt, können hiermit bestehende &lt;span style=&quot; font-weight:600;&quot;&gt;Tags ersetzt &lt;/span&gt;werden..&lt;/p&gt;&lt;p&gt;Tags sind leicht verständliche Code-Schnipsel, Schlüsselörter, die vom Programm entsprechend interpretiert werden, ohne dass spezielle Programmierkenntnisse erforderlich sind. Einmal definiert, können Tags problemlos im Etikett eingefügt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="text">
+               <string>Tags ersetzen</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="cbEditMode">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; ist die Bearbeitung der Gestaltungsvorgaben in der linken Spalte sowie der Tags in der rechten Spalte möglich.&lt;/p&gt;&lt;p&gt;Tags speisen Werte in das Layout ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="whatsThis">
+               <string notr="true">edit</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/light/edit.svg</normaloff>
+                <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnAktualisieren">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;SVG-Datei&lt;/span&gt; aktualisiert.&lt;/p&gt;&lt;p&gt;SVG ermöglicht skalierbare, verlustfreie Grafiken. Ohne Aktualisierung können Änderungen nicht visuell beurteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="whatsThis">
+               <string notr="true">refresh</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/light/refresh.svg</normaloff>
+                <disabledoff>:/images/disabled/refresh.svg</disabledoff>:/images/light/refresh.svg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSaveTemplate">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das Etikett &lt;span style=&quot; font-weight:600;&quot;&gt;gespeichert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="whatsThis">
+               <string notr="true">save</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/light/save.svg</normaloff>
+                <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnExport">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;SVG &lt;/span&gt;mit den ersetzten Tags &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="whatsThis">
+               <string notr="true">export</string>
+              </property>
+              <property name="icon">
+               <iconset resource="images.qrc">
+                <normaloff>:/images/light/export.svg</normaloff>:/images/light/export.svg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -799,7 +822,6 @@
   <tabstop>btnOeffnen</tabstop>
   <tabstop>viewSvg</tabstop>
   <tabstop>cbEditMode</tabstop>
-  <tabstop>cbTagsErsetzen</tabstop>
   <tabstop>btnAktualisieren</tabstop>
   <tabstop>btnSaveTemplate</tabstop>
   <tabstop>tbTemplate</tabstop>

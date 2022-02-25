@@ -610,6 +610,8 @@ void TabEtikette::updateValues()
             }
         }
     }
+    ui->scrollArea->setEnabled(ui->cbAuswahl->currentIndex() != 0);
+    ui->wdgEdit->setEnabled(ui->cbAuswahl->currentIndex() != 0);
     if (!ui->tbAnzahl->hasFocus())
         ui->tbAnzahl->setValue(data(ModelEtiketten::ColAnzahl).toInt());
     if (!ui->tbLabelBreite->hasFocus())

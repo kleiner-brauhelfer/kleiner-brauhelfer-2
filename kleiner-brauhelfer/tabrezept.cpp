@@ -265,6 +265,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
         hefeGaben_modified();
         weitereZutatenGaben_modified();
     }
+    checkEnabled();
     updateValues();
 }
 

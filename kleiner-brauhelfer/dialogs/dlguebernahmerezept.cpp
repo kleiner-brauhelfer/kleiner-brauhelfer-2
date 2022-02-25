@@ -1,6 +1,8 @@
 #include "dlguebernahmerezept.h"
 #include "ui_dlguebernahmerezept.h"
 #include "model/spinboxdelegate.h"
+#include "model/doublespinboxdelegate.h"
+#include "model/comboboxdelegate.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -73,60 +75,76 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         model->setSourceModel(bh->modelMalzschuettung());
         model->setFilterKeyColumn(ModelMalzschuettung::ColSudID);
         ui->tableViewItem->appendCol({ModelMalzschuettung::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelMalzschuettung::ColProzent, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
         break;
     case Hopfen:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelHopfengaben());
         model->setFilterKeyColumn(ModelHopfengaben::ColSudID);
         ui->tableViewItem->appendCol({ModelHopfengaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelHopfengaben::ColProzent, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
         break;
     case Hefe:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelHefegaben());
         model->setFilterKeyColumn(ModelHefegaben::ColSudID);
         ui->tableViewItem->appendCol({ModelHefegaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelHefegaben::ColMenge, true, false, 80, new SpinBoxDelegate(ui->tableViewSud)});
         break;
     case WZutaten:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColMenge, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableViewItem)});
         break;
     case Maischplan:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelRasten());
         model->setFilterKeyColumn(ModelRasten::ColSudID);
         ui->tableViewItem->appendCol({ModelRasten::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelRasten::ColTemp, true, false, -1, new DoubleSpinBoxDelegate(1, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelRasten::ColDauer, true, false, -1, new SpinBoxDelegate(ui->tableViewItem)});
         break;
     case Wasseraufbereitung:
         model = new ProxyModel(this);
         model->setSourceModel(bh->modelWasseraufbereitung());
         model->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
         ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColMenge, true, false, -1, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("l"), tr("ml")}, ui->tableViewItem)});
         break;
     case WZutatenMaischen:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Maischen, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColMenge, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableViewItem)});
         break;
     case WZutatenKochen:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Kochen, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColMenge, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableViewItem)});
         break;
     case WZutatenGaerung:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Gaerung, Brauhelfer::ZusatzTyp::Hopfen, true, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColMenge, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableViewItem)});
         break;
     case HopfenGaerung:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Gaerung, Brauhelfer::ZusatzTyp::Hopfen, false, this);
         model->setSourceModel(bh->modelWeitereZutatenGaben());
         model->setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
         ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColName, true, false, -1, nullptr});
+        ui->tableViewItem->appendCol({ModelWeitereZutatenGaben::ColMenge, true, false, 80, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
         break;
     case Tags:
         model = new ProxyModel(this);

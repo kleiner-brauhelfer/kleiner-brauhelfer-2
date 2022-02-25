@@ -164,12 +164,81 @@
            <property name="verticalSpacing">
             <number>4</number>
            </property>
-           <item row="0" column="4" rowspan="7">
-            <widget class="Line" name="line_14">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
+           <item row="3" column="2">
+            <widget class="QLabel" name="label_114">
+             <property name="text">
+              <string>l</string>
              </property>
             </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_36">
+             <property name="text">
+              <string>Stammwürze bei Kochbeginn</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Zielstammwürze</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_16">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnBrix">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::NoButtons</enum>
+               </property>
+               <property name="decimals">
+                <number>1</number>
+               </property>
+               <property name="singleStep">
+                <double>1.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_175">
+               <property name="text">
+                <string>°Brix</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item row="3" column="3">
             <widget class="PushButton" name="btnWuerzemengeKochbeginn">
@@ -193,37 +262,51 @@
              </property>
             </widget>
            </item>
-           <item row="6" column="7">
-            <widget class="QLabel" name="lblMengeSollcmVomBodenEinheit">
-             <property name="text">
-              <string>cm</string>
+           <item row="3" column="1">
+            <widget class="DoubleSpinBoxSud" name="tbWuerzemengeKochbeginn">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge bei Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
-           <item row="3" column="2">
-            <widget class="QLabel" name="label_114">
-             <property name="text">
-              <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="5">
-            <spacer name="horizontalSpacer_2">
+           <item row="0" column="4" rowspan="7">
+            <widget class="Line" name="line_14">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Vertical</enum>
              </property>
-             <property name="sizeHint" stdset="0">
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="DoubleSpinBoxSud" name="tbSWKochbeginn">
+             <property name="minimumSize">
               <size>
-               <width>40</width>
+               <width>80</width>
                <height>0</height>
               </size>
              </property>
-            </spacer>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_113">
-             <property name="text">
-              <string>Würzemenge bei Kochbeginn (20°C)</string>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Sind Stammwürze bei Kochbeginn und Zielstammwürze weitgehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
@@ -255,69 +338,40 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="6">
-            <widget class="DoubleSpinBox" name="tbMengeSollKochbeginn100">
+           <item row="0" column="3">
+            <widget class="PushButton" name="btnSWKochbeginn">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochbeginn ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="6">
-            <widget class="DoubleSpinBox" name="tbMengeSollcmVonOben">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Ausrüstung.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="7">
-            <widget class="QLabel" name="label_166">
              <property name="text">
-              <string>l</string>
+              <string notr="true">...</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="7">
-            <widget class="QLabel" name="label_181">
-             <property name="text">
-              <string>l</string>
+           <item row="7" column="5">
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
-            </widget>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item row="3" column="5">
             <widget class="QLabel" name="label_74">
@@ -326,72 +380,23 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
-            <widget class="DoubleSpinBoxSud" name="tbWuerzemengeKochbeginn">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge bei Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <item row="0" column="7">
+            <widget class="QLabel" name="label_167">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
              </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
+             <property name="text">
+              <string>°P</string>
              </property>
             </widget>
            </item>
-           <item row="6" column="6">
-            <widget class="DoubleSpinBox" name="tbMengeSollcmVomBoden">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="6">
-            <widget class="DoubleSpinBoxSud" name="tbMengeSollKochbeginn20">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend identisch, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_113">
+             <property name="text">
+              <string>Würzemenge bei Kochbeginn (20°C)</string>
              </property>
             </widget>
            </item>
@@ -460,40 +465,60 @@
              </item>
             </layout>
            </item>
-           <item row="0" column="7">
-            <widget class="QLabel" name="label_167">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
+           <item row="4" column="6">
+            <widget class="DoubleSpinBox" name="tbMengeSollKochbeginn100">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-             <property name="text">
-              <string>°P</string>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
-            </widget>
-           </item>
-           <item row="5" column="7">
-            <widget class="QLabel" name="lblMengeSollcmVonObenEinheit">
-             <property name="text">
-              <string>cm</string>
+             <property name="readOnly">
+              <bool>true</bool>
              </property>
-            </widget>
-           </item>
-           <item row="5" column="5">
-            <widget class="QLabel" name="lblMengeSollcmVonOben">
-             <property name="text">
-              <string>Füllhöhe von Oberkante aus gemessen</string>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
-             <property name="indent">
-              <number>9</number>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
-           <item row="2" column="0" colspan="4">
-            <widget class="Line" name="line_9">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+           <item row="3" column="6">
+            <widget class="DoubleSpinBoxSud" name="tbMengeSollKochbeginn20">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend identisch, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="7">
+            <widget class="QLabel" name="label_166">
+             <property name="text">
+              <string>l</string>
              </property>
             </widget>
            </item>
@@ -509,6 +534,13 @@
               </size>
              </property>
             </spacer>
+           </item>
+           <item row="3" column="7">
+            <widget class="QLabel" name="label_181">
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
            </item>
            <item row="1" column="5" colspan="3">
             <widget class="QWidget" name="wdgSWSollKochbeginnMitWz" native="true">
@@ -627,71 +659,10 @@
              </layout>
             </widget>
            </item>
-           <item row="6" column="5">
-            <widget class="QLabel" name="lblMengeSollcmVomBoden">
-             <property name="text">
-              <string>Füllhöhe vom Boden aus gemessen</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
-             </property>
-            </widget>
-           </item>
            <item row="2" column="5" colspan="3">
             <widget class="Line" name="line_10">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_36">
-             <property name="text">
-              <string>Stammwürze bei Kochbeginn</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="DoubleSpinBoxSud" name="tbSWKochbeginn">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Sind Stammwürze bei Kochbeginn und Zielstammwürze weitgehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="PushButton" name="btnSWKochbeginn">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>40</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dieser Funktion kann in einem schwebenden Fenster die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer berechnet werden.&lt;/p&gt;&lt;p&gt;Der ermittelte Wert wird im Feld links ausgegeben. Er kann vom zuvor errechneten Wert wie im Spickzettel oder im Tab Rezept angegeben abweichen.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochbeginn ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="text">
-              <string notr="true">...</string>
              </property>
             </widget>
            </item>
@@ -708,67 +679,182 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="5">
-            <layout class="QHBoxLayout" name="horizontalLayout_7">
-             <property name="spacing">
-              <number>6</number>
+           <item row="2" column="0" colspan="4">
+            <widget class="Line" name="line_9">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
-             <item>
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>Zielstammwürze</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_16">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnBrix">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="readOnly">
-                <bool>true</bool>
-               </property>
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::NoButtons</enum>
-               </property>
-               <property name="decimals">
-                <number>1</number>
-               </property>
-               <property name="singleStep">
-                <double>1.000000000000000</double>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_175">
-               <property name="text">
-                <string>°Brix</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </widget>
+           </item>
+           <item row="5" column="5" colspan="3">
+            <widget class="QWidget" name="wdgMengeSollcmVonOben" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Füllhöhe von Oberkante aus gemessen</string>
+                </property>
+                <property name="indent">
+                 <number>9</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_19">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbMengeSollcmVonOben">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Ausrüstung.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>999.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>cm</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="6" column="5" colspan="3">
+            <widget class="QWidget" name="wdgMengeSollcmVomBoden" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Füllhöhe vom Boden aus gemessen</string>
+                </property>
+                <property name="indent">
+                 <number>9</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_20">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbMengeSollcmVomBoden">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>999.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_18">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>cm</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -823,20 +909,6 @@
              </property>
             </spacer>
            </item>
-           <item row="5" column="7">
-            <widget class="QLabel" name="lblMengeSollEndecmVomBodenEinheit">
-             <property name="text">
-              <string>cm</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="7">
-            <widget class="QLabel" name="lblMengeSollEndecmVonObenEinheit">
-             <property name="text">
-              <string>cm</string>
-             </property>
-            </widget>
-           </item>
            <item row="12" column="2">
             <widget class="QLabel" name="label_34">
              <property name="text">
@@ -883,31 +955,6 @@
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="6">
-            <widget class="DoubleSpinBox" name="tbMengeSollEndecmVonOben">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Der Wert errechnet sich aus den Maßen der Anlage und der Würzemenge zum Kochenende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -1063,16 +1110,6 @@
             <widget class="QLabel" name="label_164">
              <property name="text">
               <string>l</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="5">
-            <widget class="QLabel" name="lblMengeSollEndecmVomBoden">
-             <property name="text">
-              <string>Füllhöhe vom Boden aus gemessen</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
              </property>
             </widget>
            </item>
@@ -1253,31 +1290,6 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="6">
-            <widget class="DoubleSpinBox" name="tbMengeSollEndecmVomBoden">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Der Wert errechnet sich aus den Maßen der Anlage und der Würzemenge zum Kochenende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_15">
              <property name="text">
@@ -1289,16 +1301,6 @@
             <widget class="Line" name="line_6">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="5">
-            <widget class="QLabel" name="lblMengeSollEndecmVonOben">
-             <property name="text">
-              <string>Füllhöhe von Oberkante aus gemessen</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
              </property>
             </widget>
            </item>
@@ -1513,6 +1515,176 @@
               </widget>
              </item>
             </layout>
+           </item>
+           <item row="5" column="5" colspan="3">
+            <widget class="QWidget" name="wdgMengeSollEndecmVomBoden" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_25">
+                <property name="text">
+                 <string>Füllhöhe vom Boden aus gemessen</string>
+                </property>
+                <property name="indent">
+                 <number>9</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_22">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbMengeSollEndecmVomBoden">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Der Wert errechnet sich aus den Maßen der Anlage und der Würzemenge zum Kochenende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>999.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_23">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>cm</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="4" column="5" colspan="3">
+            <widget class="QWidget" name="wdgMengeSollEndecmVonOben" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_13">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_24">
+                <property name="text">
+                 <string>Füllhöhe von Oberkante aus gemessen</string>
+                </property>
+                <property name="indent">
+                 <number>9</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_21">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbMengeSollEndecmVonOben">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Der Wert errechnet sich aus den Maßen der Anlage und der Würzemenge zum Kochenende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>999.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_22">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>cm</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -2580,8 +2752,6 @@
   <tabstop>tbMengeSollKochbeginn20</tabstop>
   <tabstop>tbTempKochbeginn</tabstop>
   <tabstop>tbMengeSollKochbeginn100</tabstop>
-  <tabstop>tbMengeSollcmVonOben</tabstop>
-  <tabstop>tbMengeSollcmVomBoden</tabstop>
   <tabstop>tbSWKochende</tabstop>
   <tabstop>btnSWKochende</tabstop>
   <tabstop>tbSWSollKochendeBrix</tabstop>
@@ -2591,8 +2761,6 @@
   <tabstop>tbMengeSollKochende20</tabstop>
   <tabstop>tbTempKochende</tabstop>
   <tabstop>tbMengeSollKochende100</tabstop>
-  <tabstop>tbMengeSollEndecmVonOben</tabstop>
-  <tabstop>tbMengeSollEndecmVomBoden</tabstop>
   <tabstop>tbVerdampfung</tabstop>
   <tabstop>tbVerdampfungRezept</tabstop>
   <tabstop>tbAusbeute</tabstop>

@@ -41,6 +41,7 @@ QString WdgBemerkung::toHtml() const
 
 void WdgBemerkung::on_btnEdit_clicked()
 {
+    ui->btnEdit->setChecked(true);
     DlgRichTextEditor dlg(this);
     dlg.setHtml(toHtml());
     if (dlg.exec() == QDialog::Accepted)
@@ -49,4 +50,5 @@ void WdgBemerkung::on_btnEdit_clicked()
         ui->tbRichText->setHtml(html);
         emit changed(html);
     }
+    ui->btnEdit->setChecked(false);
 }

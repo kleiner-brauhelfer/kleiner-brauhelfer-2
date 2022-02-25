@@ -109,18 +109,10 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                          ui->lblDurchschnittIgnorieren,
                          ui->lblDurchschnittWarnung,
                          ui->lineDurchschnittIgnorieren,
-                         ui->tbMengeSollcmVonOben,
-                         ui->lblMengeSollcmVonOben,
-                         ui->lblMengeSollcmVonObenEinheit,
-                         ui->tbMengeSollcmVomBoden,
-                         ui->lblMengeSollcmVomBoden,
-                         ui->lblMengeSollcmVomBodenEinheit,
-                         ui->tbMengeSollEndecmVonOben,
-                         ui->lblMengeSollEndecmVonOben,
-                         ui->lblMengeSollEndecmVonObenEinheit,
-                         ui->tbMengeSollEndecmVomBoden,
-                         ui->lblMengeSollEndecmVomBoden,
-                         ui->lblMengeSollEndecmVomBodenEinheit});
+                         ui->wdgMengeSollcmVonOben,
+                         ui->wdgMengeSollcmVomBoden,
+                         ui->wdgMengeSollEndecmVonOben,
+                         ui->wdgMengeSollEndecmVomBoden});
     }
     if (modules.testFlag(Settings::ModuleSpeise))
     {
@@ -150,6 +142,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                           ui->lineKosten,
                           ui->lineKosten2});
     }
+    checkEnabled();
     updateValues();
 }
 
@@ -212,6 +205,13 @@ void TabBraudaten::checkEnabled()
     ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
     ui->btnSpeisemengeNoetig->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
+    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
+    {
+        ui->wdgMengeSollcmVonOben->setVisible(!gebraut);
+        ui->wdgMengeSollcmVomBoden->setVisible(!gebraut);
+        ui->wdgMengeSollEndecmVonOben->setVisible(!gebraut);
+        ui->wdgMengeSollEndecmVomBoden->setVisible(!gebraut);
+    }
     ui->tbSpeisemenge->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);

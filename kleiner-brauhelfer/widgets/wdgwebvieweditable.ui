@@ -225,7 +225,13 @@
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="cbEditMode">
+          <widget class="QPushButton" name="cbEditMode">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML- und CSS-Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in CSS und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -236,6 +242,12 @@
             <iconset resource="../images.qrc">
              <normaloff>:/images/light/edit.svg</normaloff>
              <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
           </widget>
          </item>

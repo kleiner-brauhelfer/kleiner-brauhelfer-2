@@ -223,7 +223,7 @@ void DlgRestextrakt::on_tbBrix_valueChanged(double)
     }
 }
 
-void DlgRestextrakt::on_cbEinheit_activated()
+void DlgRestextrakt::on_cbEinheit_activated(int)
 {
     calculateFromRefraktometer();
 }

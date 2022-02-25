@@ -1519,6 +1519,17 @@ bool Database::update()
             db.commit();
         }
 
+        if (version == 2006)
+        {
+            ++version;
+            qInfo() << "Updating to version:" << version;
+            db.transaction();
+
+            // Global
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
         return true;
     }
     catch (const std::exception& ex)

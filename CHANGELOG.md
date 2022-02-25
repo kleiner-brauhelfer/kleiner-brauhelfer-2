@@ -1,6 +1,7 @@
 # Changelog
 
-## Version 2.3.3 (in Entwicklung)
+## Version 2.4.0 (in Entwicklung)
+- Neu: Datenbankversion **2007**
 - Neu: Negative SRE erlaubt
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
 - Fix: diverse Fehler in der Brauübersicht

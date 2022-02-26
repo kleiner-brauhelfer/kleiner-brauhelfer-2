@@ -3,6 +3,7 @@
 ## Version 2.4.0 (in Entwicklung)
 - Neu: Datenbankversion **2007**
 - Neu: Negative SRE erlaubt
+- Neu: Eingabefeld für Wassermenge für Verdünnung der Anstellwürze
 - Neu: Hintergrundfarbe des Etiketts für jeden Sud einzeln einstellbar
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
 - Fix: diverse Fehler in der Brauübersicht korrigiert

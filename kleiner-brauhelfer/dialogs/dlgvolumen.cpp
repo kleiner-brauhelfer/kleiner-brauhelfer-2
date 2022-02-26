@@ -38,6 +38,11 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     gSettings->endGroup();
 }
 
+DlgVolumen::DlgVolumen(QWidget *parent) :
+    DlgVolumen(0, 0, parent)
+{
+}
+
 DlgVolumen::~DlgVolumen()
 {
     gSettings->beginGroup(staticMetaObject.className());
@@ -114,18 +119,4 @@ void DlgVolumen::setLiter(double Liter)
 double DlgVolumen::getLiter() const
 {
     return ui->spinBox_Liter20Grad->value();
-}
-
-void DlgVolumen::setVisibleVonOben(bool value)
-{
-    ui->label_VonOben->setVisible(value);
-    ui->spinBox_VonOben->setVisible(value);
-    ui->label_VonObenEinheit->setVisible(value);
-}
-
-void DlgVolumen::setVisibleVonUnten(bool value)
-{
-    ui->label_VonUnten->setVisible(value);
-    ui->spinBox_VonUnten->setVisible(value);
-    ui->label_VonUntenEinheit->setVisible(value);
 }

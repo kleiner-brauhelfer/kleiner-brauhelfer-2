@@ -562,8 +562,8 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Whirlpool</strong></td>
-        <td class="underline">
+        <td valign="top"><strong>Whirlpool</strong></td>
+        <td>
           Zet de warmte bron uit. Wanneer de thermische beweging is afgenomen, creëer dan een whirlpool en wacht ongeveer 15 minuten.
         </td>
       </tr>
@@ -594,10 +594,6 @@
         </td>
       </tr>
       {{/Rezept.Nachisomerisierung}}
-      <tr>
-        <td valign="top"><strong>Hoeveelheid na het filteren</strong></td>
-        <td>____ Liter bij ____ &deg;C</td>
-      </tr>
     </table>
   </div>
 
@@ -610,12 +606,6 @@
         <td class="underline" valign="top"><strong>Filteren</strong></td>
         <td class="underline">Giet het wort door een filter in de gistingstank.</td>
       </tr>
-      {{#Wasser.Verduennung}}
-      <tr>
-        <td class="underline" valign="top"><strong>HGF Verdunning</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Verduennung}}</span> Liter Water toevoegen</td>
-      </tr>
-      {{/Wasser.Verduennung}}
       <tr>
         <td class="underline" valign="top"><strong>SG voor gist toevoeging</strong></td>
         <td class="underline">
@@ -631,15 +621,30 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Hoeveelheid tijdens toevoegen gist</strong></td>
+        <td class="underline"  valign="top"><strong>Hoeveelheid na het filteren</strong></td>
         <td class="underline">____ Liter</td>
+      </tr>
+      <tr>
+        <td class="underline"  valign="top"><strong>Water Verdunning</strong></td>
+        <td class="underline" ><table>
+            <col width="200">
+            <col width="*">
+            <tr>
+              <td>____ Liter</td>
+              <td>{{#Wasser.Verduennung}}High-gravity: <span class="value">{{Wasser.Verduennung}}</span> Liter{{/Wasser.Verduennung}}</td>
+            </tr>
+          </table></td>
       </tr>
       {{#Modul.Speise}}
       <tr>
-        <td valign="top"><strong>Hoeveelheid wort</strong></td>
-        <td>____ Liter</td>
+        <td class="underline" valign="top"><strong>Hoeveelheid wort</strong></td>
+        <td class="underline">____ Liter</td>
       </tr>
       {{/Modul.Speise}}
+      <tr>
+        <td valign="top"><strong>Hoeveelheid tijdens toevoegen gist</strong></td>
+        <td>____ Liter</td>
+      </tr>
     </table>
   </div>
 

@@ -27,6 +27,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbWuerzemengeKochende->setColumn(ModelSud::ColWuerzemengeKochende);
     ui->tbSWKochende->setColumn(ModelSud::ColSWKochende);
     ui->tbSWAnstellen->setColumn(ModelSud::ColSWAnstellen);
+    ui->tbVerduennung->setColumn(ModelSud::ColVerduennungAnstellen);
     ui->tbWuerzemengeAnstellen->setColumn(ModelSud::ColWuerzemengeAnstellen);
     ui->tbSpeisemenge->setColumn(ModelSud::ColSpeisemenge);
     ui->tbWuerzemengeAnstellenTotal->setColumn(ModelSud::ColWuerzemengeAnstellenTotal);
@@ -213,6 +214,7 @@ void TabBraudaten::checkEnabled()
         ui->wdgMengeSollEndecmVomBoden->setVisible(!gebraut);
     }
     ui->tbSpeisemenge->setReadOnly(gebraut);
+    ui->tbVerduennung->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
@@ -245,6 +247,7 @@ void TabBraudaten::updateValues()
                                     bh->sud()->getWuerzemengeAnstellenTotal());
     ui->tbWasserVerschneidung->setValue(value);
     ui->wdgWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
+    ui->btnVerduennung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
 
     // ModuleSpeise
     if (gSettings->isModuleEnabled(Settings::ModuleSpeise))
@@ -255,7 +258,7 @@ void TabBraudaten::updateValues()
                                  ui->tbSpeiseSRE->value(),
                                  ui->tbSpeiseT->value());
         ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
-        ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.1);
+        ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.25);
     }
 
     double mengeSollKochbeginn100 = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), bh->sud()->getMengeSollKochbeginn());
@@ -366,13 +369,7 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    double d = 0, h = 0;
-    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
-    {
-        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
-    }
-    DlgVolumen dlg(d, h, this);
+    DlgVolumen dlg(this);
     dlg.setLiter(ui->tbWuerzemengeKochende->value());
     int dlgRet = dlg.exec();
     WidgetDecorator::suspendValueChanged(false);
@@ -409,16 +406,8 @@ void TabBraudaten::on_btnSWAnstellen_clicked()
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    double d = 0, h = 0;
-    if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
-    {
-        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
-    }
-    DlgVolumen dlg(d, h, this);
+    DlgVolumen dlg(this);
     dlg.setLiter(ui->tbWuerzemengeAnstellenTotal->value());
-    dlg.setVisibleVonOben(false);
-    dlg.setVisibleVonUnten(false);
     int dlgRet = dlg.exec();
     WidgetDecorator::suspendValueChanged(false);
     if (dlgRet == QDialog::Accepted)
@@ -435,6 +424,12 @@ void TabBraudaten::on_tbSpeiseT_valueChanged(double)
 {
     if (ui->tbSpeiseT->hasFocus())
         updateValues();
+}
+
+void TabBraudaten::on_btnVerduennung_clicked()
+{
+    bh->sud()->setVerduennungAnstellen(ui->tbWasserVerschneidung->value());
+    bh->sud()->setSWAnstellen(ui->tbSWAnstellenSoll->value());
 }
 
 void TabBraudaten::on_btnSpeisemengeNoetig_clicked()

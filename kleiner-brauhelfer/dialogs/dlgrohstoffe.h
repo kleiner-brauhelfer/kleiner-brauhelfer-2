@@ -47,22 +47,22 @@ private slots:
     void on_radioButtonInGebrauch_clicked();
     void on_lineEditFilter_textChanged(const QString &pattern);
     void on_toolBoxRohstoffe_currentChanged(int index);
-    void on_tbCalciumMg_editingFinished();
-    void on_tbCalciumMmol_editingFinished();
-    void on_tbCalciumHaerte_editingFinished();
-    void on_tbMagnesiumMg_editingFinished();
-    void on_tbMagnesiumMmol_editingFinished();
-    void on_tbMagnesiumHaerte_editingFinished();
-    void on_tbHydrogencarbonatMg_editingFinished();
-    void on_tbHydrogencarbonatMmol_editingFinished();
-    void on_tbHydrogencarbonatHaerte_editingFinished();
-    void on_tbSulfatMg_editingFinished();
-    void on_tbSulfatMmol_editingFinished();
-    void on_tbChloridMg_editingFinished();
-    void on_tbChloridMmol_editingFinished();
-    void on_tbNatriumMg_editingFinished();
-    void on_tbNatriumMmol_editingFinished();
-    void on_tbRestalkalitaetAdd_editingFinished();
+    void on_tbCalciumMg_valueChanged(double value);
+    void on_tbCalciumMmol_valueChanged(double value);
+    void on_tbCalciumHaerte_valueChanged(double value);
+    void on_tbMagnesiumMg_valueChanged(double value);
+    void on_tbMagnesiumMmol_valueChanged(double value);
+    void on_tbMagnesiumHaerte_valueChanged(double value);
+    void on_tbHydrogencarbonatMg_valueChanged(double value);
+    void on_tbHydrogencarbonatMmol_valueChanged(double value);
+    void on_tbHydrogencarbonatHaerte_valueChanged(double value);
+    void on_tbSulfatMg_valueChanged(double value);
+    void on_tbSulfatMmol_valueChanged(double value);
+    void on_tbChloridMg_valueChanged(double value);
+    void on_tbChloridMmol_valueChanged(double value);
+    void on_tbNatriumMg_valueChanged(double value);
+    void on_tbNatriumMmol_valueChanged(double value);
+    void on_tbRestalkalitaetAdd_valueChanged(double value);
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;

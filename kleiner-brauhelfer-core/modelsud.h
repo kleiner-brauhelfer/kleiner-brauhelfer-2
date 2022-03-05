@@ -143,7 +143,6 @@ private slots:
     void onRowChanged(const QModelIndex &index);
     void onOtherModelRowChanged(const QModelIndex &index);
     void onAnlageRowChanged(const QModelIndex &index);
-    void onWasserRowChanged(const QModelIndex &index);
 
 private:
 

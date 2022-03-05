@@ -20,6 +20,7 @@
 #include "dialogs/dlguebernahmerezept.h"
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgwasseraufbereitung.h"
+#include "dialogs/dlgwasserprofile.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -1427,6 +1428,13 @@ void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
         bh->sud()->setWasserprofil(value);
+}
+
+void TabRezept::on_btnWasserProfil_clicked()
+{
+    DlgWasserprofile dlg(this);
+    dlg.select(bh->sud()->getWasserprofil());
+    dlg.exec();
 }
 
 void TabRezept::on_btnTagNeu_clicked()

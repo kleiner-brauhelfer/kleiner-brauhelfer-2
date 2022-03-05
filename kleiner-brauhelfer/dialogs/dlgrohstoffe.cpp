@@ -120,10 +120,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     pal.setColor(QPalette::Button, gSettings->colorZusatz);
     ui->tableWeitereZutaten->setPalette(pal);
 
-    pal = ui->tableWasser->palette();
-    pal.setColor(QPalette::Button, gSettings->colorWasser);
-    ui->tableWasser->setPalette(pal);
-
     SqlTableModel *model;
     ProxyModelRohstoff *proxyModel;
     TableView *table;
@@ -271,26 +267,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->appendCol({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
-
-    model = bh->modelWasser();
-    model->setHeaderData(ModelWasser::ColName, Qt::Horizontal, tr("Wasserprofil"));
-    model->setHeaderData(ModelWasser::ColRestalkalitaet, Qt::Horizontal, tr("Restalkalität [°dH]"));
-    ProxyModel *proxyModelWasser = new ProxyModel(this);
-    table = ui->tableWasser;
-    proxyModelWasser->setSourceModel(model);
-    table->setModel(proxyModelWasser);
-    table->appendCol({ModelWasser::ColName, true, false, -1, nullptr});
-    table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
-    table->build();
-
-    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(wasser_selectionChanged(QItemSelection)));
-
-    connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
-
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
-
-    ui->tableWasser->selectRow(0);
 }
 
 DlgRohstoffe::~DlgRohstoffe()
@@ -305,7 +281,6 @@ void DlgRohstoffe::saveSettings()
     gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
     gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
     gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
-    gSettings->setValue("tableWasserState", ui->tableWasser->horizontalHeader()->saveState());
     int filter = 0;
     if (ui->radioButtonVorhanden->isChecked())
         filter = 1;
@@ -322,7 +297,6 @@ void DlgRohstoffe::loadSettings()
     ui->tableHopfen->restoreState(gSettings->value("tableHopfenState").toByteArray());
     ui->tableHefe->restoreState(gSettings->value("tableHefeState").toByteArray());
     ui->tableWeitereZutaten->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
-    ui->tableWasser->restoreState(gSettings->value("tableWasserState").toByteArray());
     int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)
     {
@@ -350,7 +324,6 @@ void DlgRohstoffe::restoreView()
     gSettings->remove("tableHopfenState");
     gSettings->remove("tableHefeState");
     gSettings->remove("tableWeitereZutatenState");
-    gSettings->remove("tableWasserState");
     gSettings->endGroup();
 }
 
@@ -375,15 +348,6 @@ void DlgRohstoffe::modulesChanged(Settings::Modules modules)
     if (modules.testFlag(Settings::ModuleWasseraufbereitung))
     {
         bool on = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
-        int index = ui->toolBoxRohstoffe->indexOf(ui->tabWasser);
-        if (on)
-        {
-            if (index < 0)
-                ui->toolBoxRohstoffe->addItem(ui->tabWasser, tr("Wasser"));
-        }
-        else
-            ui->toolBoxRohstoffe->removeItem(index);
-        ui->tabWasser->setVisible(on);
         ui->tableMalz->setCol(3, on, on);
     }
     if (modules.testFlag(Settings::ModulePreiskalkulation))
@@ -413,9 +377,6 @@ void DlgRohstoffe::keyPressEvent(QKeyEvent* event)
         break;
     case 3:
         table = ui->tableWeitereZutaten;
-        break;
-    case 4:
-        table = ui->tableWasser;
         break;
     default:
         return;
@@ -490,9 +451,6 @@ void DlgRohstoffe::buttonAdd_clicked()
     case 3:
         addEntry(ui->tableWeitereZutaten, {{ModelWeitereZutaten::ColName, tr("Neuer Eintrag")}});
         break;
-    case 4:
-        addEntry(ui->tableWasser, {{ModelWasser::ColName, tr("Neues Profil")}});
-        break;
     }
 }
 
@@ -517,10 +475,6 @@ void DlgRohstoffe::buttonNeuVorlage_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         art = DlgRohstoffVorlage::Art::WZutaten;
-        break;
-    case 4:
-        table = ui->tableWasser;
-        art = DlgRohstoffVorlage::Art::Wasserprofil;
         break;
     default:
         return;
@@ -577,9 +531,6 @@ void DlgRohstoffe::buttonCopy_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         break;
-    case 4:
-        table = ui->tableWasser;
-        break;
     default:
         return;
     }
@@ -590,12 +541,9 @@ void DlgRohstoffe::buttonCopy_clicked()
         int row = index.row();
         QMap<int, QVariant> values = sourceModel->copyValues(model->mapRowToSource(row));
         values.insert(model->fieldIndex("Name"), model->data(row, model->fieldIndex("Name")).toString() + " " + tr("Kopie"));
-        if (table != ui->tableWasser)
-        {
-            values.remove(model->fieldIndex("Menge"));
-            values.remove(model->fieldIndex("Eingelagert"));
-            values.remove(model->fieldIndex("Mindesthaltbar"));
-        }
+        values.remove(model->fieldIndex("Menge"));
+        values.remove(model->fieldIndex("Eingelagert"));
+        values.remove(model->fieldIndex("Mindesthaltbar"));
         addEntry(table, values);
     }
 }
@@ -617,9 +565,6 @@ void DlgRohstoffe::on_buttonDelete_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         break;
-    case 4:
-        table = ui->tableWasser;
-        break;
     default:
         return;
     }
@@ -629,25 +574,14 @@ void DlgRohstoffe::on_buttonDelete_clicked()
     for (const QModelIndex& index : qAsConst(indices))
     {
         bool del = true;
-        if (table == ui->tableWasser)
+        if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
         {
-            QString name = model->data(index.row(), ModelWasser::ColName).toString();
-            int ret = QMessageBox::question(this, tr("Wasserprofil löschen?"),
-                                            tr("Soll das Wasserprofil \"%1\" gelöscht werden?").arg(name));
+            QStringList liste = model->data(index.row(), model->fieldIndex("InGebrauchListe")).toStringList();
+            QString strListe = "\n\n- " + liste.join("\n- ");
+            int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
+                                            tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
             if (ret != QMessageBox::Yes)
                 del = false;
-        }
-        else
-        {
-            if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
-            {
-                QStringList liste = model->data(index.row(), model->fieldIndex("InGebrauchListe")).toStringList();
-                QString strListe = "\n\n- " + liste.join("\n- ");
-                int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
-                                                tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
-                if (ret != QMessageBox::Yes)
-                    del = false;
-            }
         }
         if (del)
             model->removeRow(index.row());
@@ -711,9 +645,8 @@ void DlgRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
     updateLabelNumItems();
 }
 
-void DlgRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
+void DlgRohstoffe::on_toolBoxRohstoffe_currentChanged()
 {
-    ui->actionNeuObrama->setEnabled(index != 4);
     updateLabelNumItems();
 }
 
@@ -742,159 +675,4 @@ void DlgRohstoffe::updateLabelNumItems()
     ProxyModel sourceModelNoDelete;
     sourceModelNoDelete.setSourceModel(sourceModel);
     ui->lblNumItems->setText(QString::number(filteredModel->rowCount()) + " / " + QString::number(sourceModelNoDelete.rowCount()));
-}
-
-QVariant DlgRohstoffe::dataWasser(int col) const
-{
-    return bh->modelWasser()->data(mRowWasser, col);
-}
-
-bool DlgRohstoffe::setDataWasser(int col, const QVariant &value)
-{
-    return bh->modelWasser()->setData(mRowWasser, col, value);
-}
-
-void DlgRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
-{
-    if (selected.indexes().count() > 0)
-    {
-        ProxyModel *proxy = static_cast<ProxyModel*>(ui->tableWasser->model());
-        mRowWasser = proxy->mapRowToSource(selected.indexes()[0].row());
-        updateWasser();
-    }
-}
-
-void DlgRohstoffe::updateWasser()
-{
-    ui->lblWasserprofil->setText(dataWasser(ModelWasser::ColName).toString());
-    if (!ui->tbCalciumMg->hasFocus())
-        ui->tbCalciumMg->setValue(dataWasser(ModelWasser::ColCalcium).toDouble());
-    if (!ui->tbCalciumMmol->hasFocus())
-        ui->tbCalciumMmol->setValue(dataWasser(ModelWasser::ColCalciumMmol).toDouble());
-    if (!ui->tbCalciumHaerte->hasFocus())
-        ui->tbCalciumHaerte->setValue(dataWasser(ModelWasser::ColCalciumHaerte).toDouble());
-    if (!ui->tbMagnesiumMg->hasFocus())
-        ui->tbMagnesiumMg->setValue(dataWasser(ModelWasser::ColMagnesium).toDouble());
-    if (!ui->tbMagnesiumMmol->hasFocus())
-        ui->tbMagnesiumMmol->setValue(dataWasser(ModelWasser::ColMagnesiumMmol).toDouble());
-    if (!ui->tbMagnesiumHaerte->hasFocus())
-        ui->tbMagnesiumHaerte->setValue(dataWasser(ModelWasser::ColMagnesiumHaerte).toDouble());
-    if (!ui->tbHydrogencarbonatMg->hasFocus())
-        ui->tbHydrogencarbonatMg->setValue(dataWasser(ModelWasser::ColHydrogencarbonat).toDouble());
-    if (!ui->tbHydrogencarbonatMmol->hasFocus())
-        ui->tbHydrogencarbonatMmol->setValue(dataWasser(ModelWasser::ColHydrogencarbonatMmol).toDouble());
-    if (!ui->tbHydrogencarbonatHaerte->hasFocus())
-        ui->tbHydrogencarbonatHaerte->setValue(dataWasser(ModelWasser::ColCarbonatHaerte).toDouble());
-    if (!ui->tbSulfatMg->hasFocus())
-        ui->tbSulfatMg->setValue(dataWasser(ModelWasser::ColSulfat).toDouble());
-    if (!ui->tbSulfatMmol->hasFocus())
-        ui->tbSulfatMmol->setValue(dataWasser(ModelWasser::ColSulfatMmol).toDouble());
-    if (!ui->tbChloridMg->hasFocus())
-        ui->tbChloridMg->setValue(dataWasser(ModelWasser::ColChlorid).toDouble());
-    if (!ui->tbChloridMmol->hasFocus())
-        ui->tbChloridMmol->setValue(dataWasser(ModelWasser::ColChloridMmol).toDouble());
-    if (!ui->tbNatriumMg->hasFocus())
-        ui->tbNatriumMg->setValue(dataWasser(ModelWasser::ColNatrium).toDouble());
-    if (!ui->tbNatriumMmol->hasFocus())
-        ui->tbNatriumMmol->setValue(dataWasser(ModelWasser::ColNatriumMmol).toDouble());
-    if (!ui->tbRestalkalitaetAdd->hasFocus())
-        ui->tbRestalkalitaetAdd->setValue(dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble());
-    ui->tbRestalkalitaet->setValue(dataWasser(ModelWasser::ColRestalkalitaet).toDouble());
-    ui->wdgBemerkung->setHtml(dataWasser(ModelWasser::ColBemerkung).toString());
-}
-
-void DlgRohstoffe::on_tbCalciumMg_valueChanged(double value)
-{
-    if (ui->tbCalciumMg->hasFocus())
-        setDataWasser(ModelWasser::ColCalcium, value);
-}
-
-void DlgRohstoffe::on_tbCalciumMmol_valueChanged(double value)
-{
-    if (ui->tbCalciumMmol->hasFocus())
-        setDataWasser(ModelWasser::ColCalciumMmol, value);
-}
-
-void DlgRohstoffe::on_tbCalciumHaerte_valueChanged(double value)
-{
-    if (ui->tbCalciumHaerte->hasFocus())
-        setDataWasser(ModelWasser::ColCalciumHaerte, value);
-}
-
-void DlgRohstoffe::on_tbMagnesiumMg_valueChanged(double value)
-{
-    if (ui->tbMagnesiumMg->hasFocus())
-        setDataWasser(ModelWasser::ColMagnesium, value);
-}
-
-void DlgRohstoffe::on_tbMagnesiumMmol_valueChanged(double value)
-{
-    if (ui->tbMagnesiumMmol->hasFocus())
-        setDataWasser(ModelWasser::ColMagnesiumMmol, value);
-}
-
-void DlgRohstoffe::on_tbMagnesiumHaerte_valueChanged(double value)
-{
-    if (ui->tbMagnesiumHaerte->hasFocus())
-        setDataWasser(ModelWasser::ColMagnesiumHaerte, value);
-}
-
-void DlgRohstoffe::on_tbHydrogencarbonatMg_valueChanged(double value)
-{
-    if (ui->tbHydrogencarbonatMg->hasFocus())
-        setDataWasser(ModelWasser::ColHydrogencarbonat, value);
-}
-
-void DlgRohstoffe::on_tbHydrogencarbonatMmol_valueChanged(double value)
-{
-    if (ui->tbHydrogencarbonatMmol->hasFocus())
-        setDataWasser(ModelWasser::ColHydrogencarbonatMmol, value);
-}
-
-void DlgRohstoffe::on_tbHydrogencarbonatHaerte_valueChanged(double value)
-{
-    if (ui->tbHydrogencarbonatHaerte->hasFocus())
-        setDataWasser(ModelWasser::ColCarbonatHaerte, value);
-}
-
-void DlgRohstoffe::on_tbSulfatMg_valueChanged(double value)
-{
-    if (ui->tbSulfatMg->hasFocus())
-        setDataWasser(ModelWasser::ColSulfat, value);
-}
-
-void DlgRohstoffe::on_tbSulfatMmol_valueChanged(double value)
-{
-    if (ui->tbSulfatMmol->hasFocus())
-        setDataWasser(ModelWasser::ColSulfatMmol, value);
-}
-
-void DlgRohstoffe::on_tbChloridMg_valueChanged(double value)
-{
-    if (ui->tbChloridMg->hasFocus())
-        setDataWasser(ModelWasser::ColChlorid, value);
-}
-
-void DlgRohstoffe::on_tbChloridMmol_valueChanged(double value)
-{
-    if (ui->tbChloridMmol->hasFocus())
-        setDataWasser(ModelWasser::ColChloridMmol, value);
-}
-
-void DlgRohstoffe::on_tbNatriumMg_valueChanged(double value)
-{
-    if (ui->tbNatriumMg->hasFocus())
-        setDataWasser(ModelWasser::ColNatrium, value);
-}
-
-void DlgRohstoffe::on_tbNatriumMmol_valueChanged(double value)
-{
-    if (ui->tbNatriumMmol->hasFocus())
-        setDataWasser(ModelWasser::ColNatriumMmol, value);
-}
-
-void DlgRohstoffe::on_tbRestalkalitaetAdd_valueChanged(double value)
-{
-    if (ui->tbRestalkalitaetAdd->hasFocus())
-        setDataWasser(ModelWasser::ColRestalkalitaetAdd, value);
 }

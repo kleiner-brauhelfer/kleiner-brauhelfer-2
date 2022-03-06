@@ -16,7 +16,7 @@ public:
     template<typename DLG> static void modulesChanged(Settings::Modules modules);
 
 public:
-    explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr);
+    explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
     static void restoreView(const QString& settingsGroup);
     virtual void modulesChanged(Settings::Modules modules);
 

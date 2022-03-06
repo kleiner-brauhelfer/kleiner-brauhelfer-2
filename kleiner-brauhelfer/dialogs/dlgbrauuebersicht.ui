@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1297</width>
-    <height>610</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,178 +22,112 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="cbDatumAlle">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Suchzeitraum&lt;/span&gt; aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Gebraut zwischen</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="DateEdit" name="tbDatumVon">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Anfangsdatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>und</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="DateEdit" name="tbDatumBis">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Enddatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <widget class="QWidget" name="verticalLayoutWidget">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QCheckBox" name="cbDatumAlle">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Suchzeitraum&lt;/span&gt; aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Gebraut zwischen</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="DateEdit" name="tbDatumVon">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>100</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Anfangsdatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="calendarPopup">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>und</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="DateEdit" name="tbDatumBis">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>100</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Enddatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="calendarPopup">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lblNumSude"/>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="WdgDiagramView" name="diagram" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_92">
-         <item>
-          <widget class="QLabel" name="label_24">
-           <property name="text">
-            <string>Auswahl 1</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="ComboBox" name="cbAuswahlL1">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;erster Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_27">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_26">
-           <property name="text">
-            <string>Auswahl 2</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="ComboBox" name="cbAuswahlL2">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;zweiter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_25">
-           <property name="text">
-            <string>Auswahl 3</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="ComboBox" name="cbAuswahlL3">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;dritter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
+     <widget class="WdgDiagramView" name="diagram" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>100</height>
+       </size>
+      </property>
      </widget>
      <widget class="TableView" name="tableView">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="contextMenuPolicy">
        <enum>Qt::CustomContextMenu</enum>
       </property>
@@ -218,18 +152,50 @@
      </widget>
     </widget>
    </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="ComboBox" name="cbAuswahlL1">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;erster Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="ComboBox" name="cbAuswahlL2">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;zweiter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="ComboBox" name="cbAuswahlL3">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann ein &lt;span style=&quot; font-weight:600;&quot;&gt;dritter Parameter &lt;/span&gt;gewählt werden, welcher im Zeitdiagramm dargestellt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Close</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -244,13 +210,49 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>cbDatumAlle</tabstop>
+  <tabstop>tbDatumVon</tabstop>
+  <tabstop>tbDatumBis</tabstop>
+  <tabstop>tableView</tabstop>
   <tabstop>cbAuswahlL1</tabstop>
   <tabstop>cbAuswahlL2</tabstop>
   <tabstop>cbAuswahlL3</tabstop>
-  <tabstop>tableView</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DlgBrauUebersicht</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>581</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DlgBrauUebersicht</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>581</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

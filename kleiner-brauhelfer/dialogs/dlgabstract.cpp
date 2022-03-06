@@ -2,8 +2,8 @@
 
 extern Settings *gSettings;
 
-DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent) :
-    QDialog(parent),
+DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent, Qt::WindowFlags f) :
+    QDialog(parent,f),
     mSettingsGroup(settingsGroup)
 {
     connect(this, SIGNAL(finished(int)), this, SLOT(on_finished(int)));

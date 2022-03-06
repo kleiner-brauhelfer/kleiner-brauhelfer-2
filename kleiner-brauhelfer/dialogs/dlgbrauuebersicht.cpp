@@ -1,6 +1,5 @@
 #include "dlgbrauuebersicht.h"
 #include "ui_dlgbrauuebersicht.h"
-#include <QKeyEvent>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/proxymodelsudcolored.h"
@@ -45,7 +44,7 @@ public:
 };
 
 DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
     ui(new Ui::DlgBrauUebersicht)
 {
     ui->setupUi(this);
@@ -56,51 +55,20 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     ui->diagram->colorL2 = gSettings->DiagramLinie2;
     ui->diagram->colorL3 = gSettings->DiagramLinie3;
 
-    mAuswahlListe.append({-1, 0, tr("<keine>"), "", 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("l"), 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 2, tr("Schüttung"), tr("kg"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P"), 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("l/h"), 0, 10});
-    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%"), 0, 90});
-    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
-        mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+    ProxyModelBrauuebersicht *model = new ProxyModelBrauuebersicht(this);
+    model->setSourceModel(bh->modelSud());
+    model->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
+    model->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
+    ui->tableView->setModel(model);
 
-    TableView *table = ui->tableView;
-    SqlTableModel *model = bh->modelSud();
-    ProxyModelBrauuebersicht *proxyModel = new ProxyModelBrauuebersicht(this);
-    proxyModel->setSourceModel(model);
-    proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
-    proxyModel->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
-    table->setModel(proxyModel);
-    table->appendCol({ModelSud::ColSudname, true, false, 300, nullptr});
-    table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
-    table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, table)});
-    ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
-    ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
-    for (int i = 1; i < mAuswahlListe.count(); ++i)
-    {
-        table->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, table)});
-        ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
-        ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
-        ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
-    }
-    table->build();
-    table->setDefaultContextMenu();
+    build();
 
-    connect(model, SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
-    connect(model, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
-    connect(model, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
-    connect(model, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(modelDataChanged(QModelIndex)));
-    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->diagram, SIGNAL(sig_selectionChanged(int)),
-            this, SLOT(diagram_selectionChanged(int)));
+    connect(bh->modelSud(), SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
+    connect(bh->modelSud(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
+    connect(bh->modelSud(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
+    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(modelDataChanged(QModelIndex)));
+    connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(table_selectionChanged(QItemSelection)));
+    connect(ui->diagram, SIGNAL(sig_selectionChanged(int)), this, SLOT(diagram_selectionChanged(int)));
 
     on_cbDatumAlle_stateChanged(ui->cbDatumAlle->isChecked());
 }
@@ -153,13 +121,51 @@ void DlgBrauUebersicht::showEvent(QShowEvent *event)
     updateDiagram();
 }
 
+void DlgBrauUebersicht::build()
+{
+    mAuswahlListe.clear();
+    mAuswahlListe.append({-1, 0, tr("<keine>"), "", 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("l"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 2, tr("Schüttung"), tr("kg"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("l/h"), 0, 10});
+    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P"), 0, 0});
+    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%"), 0, 90});
+    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%"), 0, 90});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+
+    ui->tableView->clearCols();
+    ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, nullptr});
+    ui->tableView->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->tableView)});
+    ui->tableView->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableView)});
+    ui->tableView->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, ui->tableView)});
+    ui->cbAuswahlL1->clear();
+    ui->cbAuswahlL2->clear();
+    ui->cbAuswahlL3->clear();
+    ui->cbAuswahlL2->addItem(mAuswahlListe[0].label);
+    ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
+    for (int i = 1; i < mAuswahlListe.count(); ++i)
+    {
+        ui->tableView->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, ui->tableView)});
+        ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
+        ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
+        ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
+    }
+    ui->tableView->build();
+    ui->tableView->setDefaultContextMenu();
+}
+
 void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
 {
     switch (index.column())
     {
     case ModelSud::ColStatus:
-        ProxyModelBrauuebersicht *proxyModel = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
-        proxyModel->invalidate();
+        ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+        model->invalidate();
         break;
     }
     updateDiagram();

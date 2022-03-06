@@ -36,6 +36,7 @@ private slots:
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void build();
 
 private:
     struct AuswahlType

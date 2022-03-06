@@ -3,6 +3,7 @@
 
 #include "dlgabstract.h"
 #include <QItemSelection>
+#include "settings.h"
 
 namespace Ui {
 class DlgAusruestung;
@@ -23,9 +24,9 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
 
 private slots:
+    void modulesChanged(Settings::Modules modules);
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void anlage_selectionChanged();

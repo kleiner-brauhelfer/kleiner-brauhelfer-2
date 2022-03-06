@@ -3,6 +3,7 @@
 
 #include "dlgabstract.h"
 #include <QTableView>
+#include "settings.h"
 
 namespace Ui {
 class DlgRohstoffe;
@@ -28,9 +29,9 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
 
 private slots:
+    void modulesChanged(Settings::Modules modules);
     void on_tableMalz_clicked(const QModelIndex &index);
     void on_tableHopfen_clicked(const QModelIndex &index);
     void on_tableHefe_clicked(const QModelIndex &index);
@@ -48,6 +49,7 @@ private slots:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    void build();
     void addEntry(QTableView *table, const QMap<int, QVariant> &values);
     void updateLabelNumItems();
 

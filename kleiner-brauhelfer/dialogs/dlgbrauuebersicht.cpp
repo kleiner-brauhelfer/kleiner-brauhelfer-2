@@ -61,7 +61,8 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     model->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     ui->tableView->setModel(model);
 
-    build();
+    modulesChanged(Settings::ModuleAlle);
+    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
 
     connect(bh->modelSud(), SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
     connect(bh->modelSud(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
@@ -119,6 +120,14 @@ void DlgBrauUebersicht::showEvent(QShowEvent *event)
 {
     DlgAbstract::showEvent(event);
     updateDiagram();
+}
+
+void DlgBrauUebersicht::modulesChanged(Settings::Modules modules)
+{
+    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        build();
+    }
 }
 
 void DlgBrauUebersicht::build()

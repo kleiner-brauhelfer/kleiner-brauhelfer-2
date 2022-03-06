@@ -4,6 +4,7 @@
 #include "dlgabstract.h"
 #include <QAbstractItemModel>
 #include <QItemSelection>
+#include "settings.h"
 
 namespace Ui {
 class DlgBrauUebersicht;
@@ -23,6 +24,7 @@ public:
     static void restoreView();
 
 private slots:
+    void modulesChanged(Settings::Modules modules);
     void updateDiagram();
     void modelDataChanged(const QModelIndex& index);
     void table_selectionChanged(const QItemSelection &selected);

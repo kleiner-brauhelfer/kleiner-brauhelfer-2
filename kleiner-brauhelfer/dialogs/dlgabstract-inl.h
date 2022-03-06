@@ -45,15 +45,4 @@ void DlgAbstract::closeDialog()
     }
 }
 
-template<typename DLG>
-void DlgAbstract::modulesChanged(Settings::Modules modules)
-{
-    if (DLG::Dialog)
-    {
-        if(QCoreApplication::instance()->thread() != DLG::Dialog->thread())
-            qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
-        DLG::Dialog->modulesChanged(modules);
-    }
-}
-
 #endif // DLG_ABSTRACT_INL_H

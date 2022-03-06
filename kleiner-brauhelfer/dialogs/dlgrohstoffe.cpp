@@ -143,20 +143,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
-    table->appendCol({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
-    table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
-    table->appendCol({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
     model = bh->modelHopfen();
     model->setHeaderData(ModelHopfen::ColName, Qt::Horizontal, tr("Name"));
@@ -177,20 +163,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelHopfen::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
-    table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
-    table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
-    table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
-    table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
     model = bh->modelHefe();
     model->setHeaderData(ModelHefe::ColName, Qt::Horizontal, tr("Name"));
@@ -214,23 +186,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
-    table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
-    table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
-    table->appendCol({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
-    table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
     model = bh->modelWeitereZutaten();
     model->setHeaderData(ModelWeitereZutaten::ColName, Qt::Horizontal, tr("Name"));
@@ -252,21 +207,9 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
-    table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
-    table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
-    table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
+
+    modulesChanged(Settings::ModuleAlle);
+    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
 }
 
 DlgRohstoffe::~DlgRohstoffe()
@@ -329,35 +272,108 @@ void DlgRohstoffe::restoreView()
 
 void DlgRohstoffe::modulesChanged(Settings::Modules modules)
 {
-    if (modules.testFlag(Settings::ModuleLagerverwaltung))
+    if (modules.testFlag(Settings::ModuleLagerverwaltung) ||
+        modules.testFlag(Settings::ModuleWasseraufbereitung) ||
+        modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        bool on = gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung);
-        ui->tableMalz->setCol(1, on, false);
-        ui->tableMalz->setCol(9, on, on);
-        ui->tableMalz->setCol(10, on, on);
-        ui->tableHopfen->setCol(1, on, false);
-        ui->tableHopfen->setCol(9, on, on);
-        ui->tableHopfen->setCol(10, on, on);
-        ui->tableHefe->setCol(1, on, false);
-        ui->tableHefe->setCol(12, on, on);
-        ui->tableHefe->setCol(13, on, on);
-        ui->tableWeitereZutaten->setCol(1, on, false);
-        ui->tableWeitereZutaten->setCol(10, on, on);
-        ui->tableWeitereZutaten->setCol(11, on, on);
+        build();
     }
-    if (modules.testFlag(Settings::ModuleWasseraufbereitung))
+}
+
+void DlgRohstoffe::build()
+{
+    TableView *table = ui->tableMalz;
+    table->clearCols();
+    table->appendCol({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->appendCol({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+        table->appendCol({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
+    table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
+    table->appendCol({ModelMalz::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelMalz::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
-        bool on = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
-        ui->tableMalz->setCol(3, on, on);
+        table->appendCol({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
     }
-    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    table->appendCol({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+
+    table = ui->tableHopfen;
+    table->clearCols();
+    table->appendCol({ModelHopfen::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
+    table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
+    table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
+    table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
+    table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
-        bool on = gSettings->isModuleEnabled(Settings::ModulePreiskalkulation);
-        ui->tableMalz->setCol(8, on, on);
-        ui->tableHopfen->setCol(8, on, on);
-        ui->tableHefe->setCol(11, on, on);
-        ui->tableWeitereZutaten->setCol(9, on, on);
+        table->appendCol({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
     }
+    table->appendCol({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+
+    table = ui->tableHefe;
+    table->clearCols();
+    table->appendCol({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
+    table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
+    table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
+    table->appendCol({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
+    table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelHefe::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelHefe::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
+        table->appendCol({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    }
+    table->appendCol({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+
+    table = ui->tableWeitereZutaten;
+    table->clearCols();
+    table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
+    table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
+    table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
+    table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
+    table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
+        table->appendCol({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    }
+    table->appendCol({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
 }
 
 void DlgRohstoffe::keyPressEvent(QKeyEvent* event)

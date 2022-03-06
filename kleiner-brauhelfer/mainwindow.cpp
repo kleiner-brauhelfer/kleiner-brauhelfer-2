@@ -286,9 +286,6 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
-    DlgAbstract::modulesChanged<DlgRohstoffe>(modules);
-    DlgAbstract::modulesChanged<DlgAusruestung>(modules);
-    DlgAbstract::modulesChanged<DlgBrauUebersicht>(modules);
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)

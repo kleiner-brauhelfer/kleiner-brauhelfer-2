@@ -13,6 +13,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    static QStringList HopfenTypname;
+    static QStringList HefeTypname;
+    static QStringList HefeTypFlTrName;
+    static QStringList ZusatzTypname;
+    static QStringList Einheiten;
+
+public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() Q_DECL_OVERRIDE;
 

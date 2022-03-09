@@ -26,10 +26,22 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+QStringList MainWindow::HopfenTypname;
+QStringList MainWindow::HefeTypname;
+QStringList MainWindow::HefeTypFlTrName;
+QStringList MainWindow::ZusatzTypname;
+QStringList MainWindow::Einheiten;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    HopfenTypname = QStringList({"", tr("aroma"), tr("bitter"), tr("universal")});
+    HefeTypname = QStringList({"", tr("obergärig"), tr("untergärig")});
+    HefeTypFlTrName = QStringList({"", tr("trocken"), tr("flüssig")});
+    ZusatzTypname = QStringList({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges"), tr("Kraut"), tr("Wasseraufbereitung"), tr("Klärmittel")});
+    Einheiten = QStringList({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("l"), tr("ml")});
+
     ui->setupUi(this);
     qApp->installEventFilter(this);
 

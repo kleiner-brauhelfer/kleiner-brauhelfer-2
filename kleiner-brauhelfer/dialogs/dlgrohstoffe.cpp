@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QDesktopServices>
 #include <QUrl>
+#include "mainwindow.h"
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodelrohstoff.h"
@@ -28,66 +29,13 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QStringList DlgRohstoffe::HopfenTypname = {
-    "",
-    tr("aroma"),
-    tr("bitter"),
-    tr("universal")
-};
-
-QStringList DlgRohstoffe::HefeTypname = {
-    "",
-    tr("obergärig"),
-    tr("untergärig")
-};
-
-QStringList DlgRohstoffe::HefeTypFlTrName = {
-    "",
-    tr("trocken"),
-    tr("flüssig")
-};
-
-QStringList DlgRohstoffe::ZusatzTypname = {
-    tr("Honig"),
-    tr("Zucker"),
-    tr("Gewürz"),
-    tr("Frucht"),
-    tr("Sonstiges"),
-    tr("Kraut"),
-    tr("Wasseraufbereitung"),
-    tr("Klärmittel")
-};
-
-QStringList DlgRohstoffe::Einheiten = {
-    tr("kg"),
-    tr("g"),
-    tr("mg"),
-    tr("Stk."),
-    tr("l"),
-    tr("ml")
-};
-
 DlgRohstoffe* DlgRohstoffe::Dialog = nullptr;
 
-QStringList DlgRohstoffe::list_tr(const QStringList& list)
-{
-   QStringList result;
-   for (const QString& str : list)
-       result.append(tr(str.toStdString().c_str()));
-   return result;
-}
-
 DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
     ui(new Ui::DlgRohstoffe)
 {
     QPalette pal;
-
-    HopfenTypname = list_tr(HopfenTypname);
-    HefeTypname = list_tr(HefeTypname);
-    HefeTypFlTrName = list_tr(HefeTypFlTrName);
-    ZusatzTypname = list_tr(ZusatzTypname);
-    Einheiten = list_tr(Einheiten);
 
     ui->setupUi(this);
 
@@ -312,7 +260,7 @@ void DlgRohstoffe::build()
         table->appendCol({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
     table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
     table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
-    table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
+    table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
     table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
     table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
     table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
@@ -332,8 +280,8 @@ void DlgRohstoffe::build()
     table->appendCol({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
-    table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
-    table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
+    table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
+    table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
     table->appendCol({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
     table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
@@ -357,8 +305,8 @@ void DlgRohstoffe::build()
     table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
-    table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
+    table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(MainWindow::Einheiten, table)});
+    table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, table)});
     table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
     table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});

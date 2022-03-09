@@ -3,7 +3,7 @@
 #include <QStandardItemModel>
 #include "settings.h"
 #include "brauhelfer.h"
-#include "dlgrohstoffe.h"
+#include "mainwindow.h"
 #include "model/comboboxdelegate.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
@@ -324,7 +324,7 @@ bool DlgDatabaseCleaner::testRange1()
             ui->tableView->setColumnHidden(c, true);
         ui->tableView->setColumnHidden(ModelHopfen::ColName, false);
         ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(DlgRohstoffe::HopfenTypname, ui->tableView));
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(MainWindow::HopfenTypname, ui->tableView));
         connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()));
         ui->tableView->setFocus();
         setTableIds(1);
@@ -351,7 +351,7 @@ bool DlgDatabaseCleaner::testRange2()
             ui->tableView->setColumnHidden(c, true);
         ui->tableView->setColumnHidden(ModelHefe::ColName, false);
         ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(DlgRohstoffe::HefeTypname, ui->tableView));
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(MainWindow::HefeTypname, ui->tableView));
         connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()));
         ui->tableView->setFocus();
         setTableIds(1);
@@ -378,7 +378,7 @@ bool DlgDatabaseCleaner::testRange3()
             ui->tableView->setColumnHidden(c, true);
         ui->tableView->setColumnHidden(ModelWeitereZutaten::ColName, false);
         ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(DlgRohstoffe::ZusatzTypname, ui->tableView));
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(MainWindow::ZusatzTypname, ui->tableView));
         connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()));
         ui->tableView->setFocus();
         setTableIds(0);
@@ -405,7 +405,7 @@ bool DlgDatabaseCleaner::testRange4()
             ui->tableView->setColumnHidden(c, true);
         ui->tableView->setColumnHidden(ModelWeitereZutaten::ColName, false);
         ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(DlgRohstoffe::Einheiten, ui->tableView));
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(MainWindow::Einheiten, ui->tableView));
         connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()));
         ui->tableView->setFocus();
         setTableIds(0);
@@ -489,7 +489,7 @@ bool DlgDatabaseCleaner::testRange7()
         ui->tableView->setColumnHidden(ModelWeitereZutatenGaben::ColSudID, false);
         ui->tableView->setColumnHidden(ModelWeitereZutatenGaben::ColName, false);
         ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(DlgRohstoffe::Einheiten, ui->tableView));
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate(MainWindow::Einheiten, ui->tableView));
         connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(selectionChanged()));
         ui->tableView->setFocus();
         setTableIds(1);

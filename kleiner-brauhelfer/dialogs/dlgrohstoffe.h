@@ -14,13 +14,6 @@ class DlgRohstoffe : public DlgAbstract
     Q_OBJECT
 
 public:
-    static QStringList HopfenTypname;
-    static QStringList HefeTypname;
-    static QStringList HefeTypFlTrName;
-    static QStringList ZusatzTypname;
-    static QStringList Einheiten;
-    static QStringList list_tr(const QStringList& list);
-
     static DlgRohstoffe *Dialog;
 
 public:

@@ -32,6 +32,14 @@ QStringList MainWindow::HefeTypFlTrName;
 QStringList MainWindow::ZusatzTypname;
 QStringList MainWindow::Einheiten;
 
+MainWindow* MainWindow::getInstance()
+{
+    for (QWidget* wdg: qApp->topLevelWidgets())
+        if (MainWindow* mainWin = qobject_cast<MainWindow*>(wdg))
+            return mainWin;
+    return nullptr;
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)

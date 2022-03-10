@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>385</width>
-    <height>514</height>
+    <width>400</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Module</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
@@ -37,8 +40,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>351</width>
-        <height>695</height>
+        <width>386</width>
+        <height>536</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">

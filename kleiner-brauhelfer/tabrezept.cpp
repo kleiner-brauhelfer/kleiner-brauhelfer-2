@@ -1,12 +1,12 @@
 #include "tabrezept.h"
 #include "ui_tabrezept.h"
 #include <cmath>
-#include <QScrollBar>
 #include <QGraphicsScene>
 #include <QGraphicsSvgItem>
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include "settings.h"
+#include "mainwindow.h"
 #include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
 #include "widgets/wdgrast.h"
@@ -198,6 +198,8 @@ TabRezept::TabRezept(QWidget *parent) :
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
 
+    connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(on_actionAusruestung_triggered()));
+
     ProxyModel *model = bh->sud()->modelTags();
     model->setHeaderData(ModelTags::ColKey, Qt::Horizontal, tr("Tag"));
     model->setHeaderData(ModelTags::ColValue, Qt::Horizontal, tr("Wert"));
@@ -240,6 +242,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
         setVisibleModule(Settings::ModuleAusruestung,
                          {ui->cbAnlage,
                           ui->lblAnlage,
+                          ui->btnAnlage,
                           ui->btnSudhausausbeute,
                           ui->btnVerdampfungsrate,
                           ui->groupAnlage});

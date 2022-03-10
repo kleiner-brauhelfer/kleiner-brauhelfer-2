@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1600</width>
-    <height>900</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -139,16 +139,13 @@
    </item>
    <item>
     <widget class="QToolBox" name="toolBoxRohstoffe">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
      <widget class="QWidget" name="tabMalz">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1588</width>
-        <height>764</height>
+        <width>788</width>
+        <height>442</height>
        </rect>
       </property>
       <attribute name="label">
@@ -199,8 +196,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1588</width>
-        <height>764</height>
+        <width>788</width>
+        <height>442</height>
        </rect>
       </property>
       <attribute name="label">
@@ -251,8 +248,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1588</width>
-        <height>764</height>
+        <width>788</width>
+        <height>442</height>
        </rect>
       </property>
       <attribute name="label">
@@ -303,8 +300,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1588</width>
-        <height>764</height>
+        <width>788</width>
+        <height>442</height>
        </rect>
       </property>
       <attribute name="label">
@@ -352,6 +349,13 @@
      </widget>
     </widget>
    </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
   </layout>
   <action name="actionNeu">
    <property name="text">
@@ -396,5 +400,38 @@
  <resources>
   <include location="../images.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DlgRohstoffe</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>584</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DlgRohstoffe</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>584</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

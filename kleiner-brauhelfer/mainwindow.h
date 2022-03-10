@@ -19,6 +19,8 @@ public:
     static QStringList ZusatzTypname;
     static QStringList Einheiten;
 
+    static MainWindow* getInstance();
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() Q_DECL_OVERRIDE;

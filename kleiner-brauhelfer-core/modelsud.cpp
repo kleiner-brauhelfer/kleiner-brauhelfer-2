@@ -104,8 +104,12 @@ void ModelSud::onOtherModelRowChanged(const QModelIndex &idx)
 
 void ModelSud::onAnlageRowChanged(const QModelIndex &idx)
 {
-    const QList<int> ignore = {ModelAusruestung::ColBemerkung};
-    if (ignore.contains(idx.column()))
+    const QList<int> updateList = {ModelAusruestung::ColTyp,
+                                   ModelAusruestung::ColKorrekturWasser,
+                                   ModelAusruestung::ColKorrekturFarbe,
+                                   ModelAusruestung::ColKorrekturMenge,
+                                   ModelAusruestung::ColKosten};
+    if (!updateList.contains(idx.column()))
         return;
     QVariant name = bh->modelAusruestung()->data(idx.row(), ModelAusruestung::ColName);
     for (int row = 0; row < rowCount(); ++row)

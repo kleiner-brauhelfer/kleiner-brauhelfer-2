@@ -38,7 +38,7 @@ QList<QPair<QString, int> > DlgAusruestung::Typname = {
 DlgAusruestung* DlgAusruestung::Dialog = nullptr;
 
 DlgAusruestung::DlgAusruestung(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
     ui(new Ui::DlgAusruestung),
     mRow(0)
 {

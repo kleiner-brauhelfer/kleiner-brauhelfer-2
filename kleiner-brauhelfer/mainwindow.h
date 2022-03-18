@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include "settings.h"
 
+class DlgRohstoffe;
+class DlgBrauUebersicht;
+class DlgAusruestung;
+
 namespace Ui {
 class MainWindow;
 }
@@ -24,6 +28,11 @@ public:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() Q_DECL_OVERRIDE;
+
+public slots:
+    DlgRohstoffe* showDialogRohstoffe();
+    DlgBrauUebersicht* showDialogBrauUebersicht();
+    DlgAusruestung* showDialogAusruestung();
 
 private slots:
     void databaseModified();
@@ -76,16 +85,12 @@ private slots:
     void on_actionAndroidApp_triggered();
     void on_actionUeber_triggered();
     void on_actionDatenbank_triggered();
-    void on_actionRohstoffe_triggered();
-    void on_actionBrauUebersicht_triggered();
-    void on_actionAusruestung_triggered();
     
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
-    void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart(int retCode = 1000);
-    void save();
+    void saveDatabase();
     void saveSettings();
     void restoreView();
     void closeDialogs();

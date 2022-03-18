@@ -198,7 +198,7 @@ TabRezept::TabRezept(QWidget *parent) :
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
 
-    connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(on_actionAusruestung_triggered()));
+    connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(showDialogAusruestung()));
 
     ProxyModel *model = bh->sud()->modelTags();
     model->setHeaderData(ModelTags::ColKey, Qt::Horizontal, tr("Tag"));

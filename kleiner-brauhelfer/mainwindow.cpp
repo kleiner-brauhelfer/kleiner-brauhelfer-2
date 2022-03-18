@@ -132,6 +132,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
             this, SLOT(sudDataChanged(QModelIndex)));
 
+    connect(ui->actionRohstoffe, SIGNAL(triggered()), this, SLOT(showDialogRohstoffe()));
+    connect(ui->actionBrauUebersicht, SIGNAL(triggered()), this, SLOT(showDialogBrauUebersicht()));
+    connect(ui->actionAusruestung, SIGNAL(triggered()), this, SLOT(showDialogAusruestung()));
+
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
 
@@ -160,7 +164,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
-            save();
+            saveDatabase();
             event->accept();
         }
         else if (ret == QMessageBox::No)
@@ -185,20 +189,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
-void MainWindow::keyPressEvent(QKeyEvent* event)
-{
-    QMainWindow::keyPressEvent(event);
-    int n = event->key() - Qt::Key::Key_F1;
-    if (n >= 0 && n < ui->tabMain->count())
-    {
-        if (ui->tabMain->isTabEnabled(n))
-            ui->tabMain->setCurrentIndex(n);
-    }
-}
-
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::ToolTip &&!ui->actionTooltips->isChecked() )
+    if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
         return true;
     return QMainWindow::eventFilter(obj, event);
 }
@@ -212,14 +205,14 @@ void MainWindow::restart(int retCode)
                                   QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
-            save();
+            saveDatabase();
         else if (ret == QMessageBox::Cancel)
             return;
     }
     qApp->exit(retCode);
 }
 
-void MainWindow::save()
+void MainWindow::saveDatabase()
 {
     QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
@@ -529,7 +522,7 @@ void MainWindow::on_actionRezept_exportieren_triggered()
 
 void MainWindow::on_actionSpeichern_triggered()
 {
-    save();
+    saveDatabase();
 }
 
 void MainWindow::on_actionVerwerfen_triggered()
@@ -848,8 +841,8 @@ void MainWindow::on_actionSpende_triggered()
 
 void MainWindow::on_actionHilfe_triggered()
 {
-    DlgAbstract::showDialog<DlgHilfe>(this);
-    DlgHilfe::Dialog->setHomeUrl(QString(URL_HILFE));
+    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
+    dlg->setHomeUrl(QString(URL_HILFE));
 }
 
 void MainWindow::on_actionFormelsammlung_triggered()
@@ -878,17 +871,17 @@ void MainWindow::on_actionDatenbank_triggered()
     DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
 }
 
-void MainWindow::on_actionRohstoffe_triggered()
+DlgRohstoffe* MainWindow::showDialogRohstoffe()
 {
-    DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
+    return DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
 }
 
-void MainWindow::on_actionBrauUebersicht_triggered()
+DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
 {
-    DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
+    return DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
 }
 
-void MainWindow::on_actionAusruestung_triggered()
+DlgAusruestung* MainWindow::showDialogAusruestung()
 {
-    DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
+    return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
 }

@@ -5,7 +5,7 @@
 #include "dlgabstract.h"
 
 template<typename DLG>
-void DlgAbstract::showDialog(QWidget *parent, QAction* action)
+DLG* DlgAbstract::showDialog(QWidget *parent, QAction* action)
 {
     if(QCoreApplication::instance()->thread() != parent->thread())
         qWarning("DlgAbstract: Access to dialog outside outside the main thread context is unsafe");
@@ -32,6 +32,7 @@ void DlgAbstract::showDialog(QWidget *parent, QAction* action)
             action->setChecked(true);
         }
     }
+    return DLG::Dialog;
 }
 
 template<typename DLG>

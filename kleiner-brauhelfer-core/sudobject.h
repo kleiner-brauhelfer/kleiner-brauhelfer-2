@@ -204,11 +204,25 @@ public:
     QVariant getAnlageData(int col) const;
 
     /**
+     * @brief setAnlageData
+     * @param col
+     * @param value
+     */
+    void setAnlageData(int col, const QVariant &value);
+
+    /**
      * @brief getWasserValue
      * @param col
      * @return
      */
     QVariant getWasserData(int col) const;
+
+    /**
+     * @brief setWasserData
+     * @param col
+     * @param value
+     */
+    void setWasserData(int col, const QVariant &value);
 
     /**
      * @brief Gets the different tables

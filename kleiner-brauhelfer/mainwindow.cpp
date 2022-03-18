@@ -299,6 +299,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
+    checkLoadedSud();
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
@@ -405,6 +406,7 @@ void MainWindow::sudLoaded()
     updateValues();
     if (bh->sud()->isLoaded())
     {
+        checkLoadedSud();
         if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
             ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
@@ -776,6 +778,139 @@ void MainWindow::checkMessageFinished()
         dlg->deleteLater();
     }
   #endif
+}
+
+void MainWindow::checkLoadedSud()
+{
+    if (!bh->sud()->isLoaded())
+        return;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (!gSettings->isModuleEnabled(Settings::ModuleSpeise))
+    {
+        if (bh->sud()->getSpeisemenge() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Speisemenge zurücksetzen?"),
+                                          tr("Das Modul \"Speiseberechnung\" ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.") + " " +
+                                          tr("Soll diese zurückgesetzt werden (empfohlen)?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setSpeisemenge(0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Speisemenge"),
+                                     tr("Das Modul \"Speiseberechnung\" ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+    }
+    if (!gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe))
+    {
+        if (bh->sud()->getSchnellgaerprobeAktiv())
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Schnellgärprobe deaktivieren?"),
+                                          tr("Das Modul \"Schnellgärprobe\" ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.") + " " +
+                                          tr("Soll diese deaktiviert werden (empfohlen)?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setSchnellgaerprobeAktiv(false);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Schnellgärprobe"),
+                                     tr("Das Modul \"Schnellgärprobe\" ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+    }
+    if (!gSettings->isModuleEnabled(Settings::ModuleAusruestung))
+    {
+        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturWasser).toDouble() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Korrekturwert zurücksetzen?"),
+                                          tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.") + " " +
+                                          tr("Soll dieser zurückgesetzt werden?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturWasser, 0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Korrekturwert"),
+                                     tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturFarbe).toDouble() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Korrekturwert zurücksetzen?"),
+                                          tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.") + " " +
+                                          tr("Soll dieser zurückgesetzt werden?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturFarbe, 0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Korrekturwert"),
+                                     tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Korrekturwert zurücksetzen?"),
+                                          tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.") + " " +
+                                          tr("Soll dieser zurückgesetzt werden?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturMenge, 0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Korrekturwert"),
+                                     tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+        if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        {
+            if (bh->sud()->getAnlageData(ModelAusruestung::ColKosten).toDouble() != 0.0)
+            {
+                if (status < Brauhelfer::SudStatus::Abgefuellt)
+                {
+                    int ret = QMessageBox::question(this, tr("Betriebskosten zurücksetzen?"),
+                                              tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.") + " " +
+                                              tr("Soll diese zurückgesetzt werden?"),
+                                              QMessageBox::Yes | QMessageBox::No,
+                                              QMessageBox::Yes);
+                    if (ret == QMessageBox::Yes)
+                        bh->sud()->setAnlageData(ModelAusruestung::ColKosten, 0.0);
+                }
+                else
+                {
+                    QMessageBox::warning(this, tr("Betriebskosten"),
+                                         tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.") + " " +
+                                         tr("Der Preis wird nicht korrekt berechnet."));
+                }
+            }
+        }
+    }
 }
 
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)

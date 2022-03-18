@@ -725,9 +725,19 @@ QVariant ModelSud::dataAnlage(int row, int col) const
     return bh->modelAusruestung()->getValueFromSameRow(ModelAusruestung::ColName, data(row, ColAnlage), col);
 }
 
+void ModelSud::setDataAnlage(int row, int col, const QVariant& value)
+{
+    bh->modelAusruestung()->setValueFromSameRow(ModelAusruestung::ColName, data(row, ColAnlage), col, value);
+}
+
 QVariant ModelSud::dataWasser(int row, int col) const
 {
     return bh->modelWasser()->getValueFromSameRow(ModelWasser::ColName, data(row, ColWasserprofil), col);
+}
+
+void ModelSud::setDataWasser(int row, int col, const QVariant& value)
+{
+    bh->modelWasser()->setValueFromSameRow(ModelWasser::ColName, data(row, ColWasserprofil), col, value);
 }
 
 void ModelSud::update(int row, int colChanged)

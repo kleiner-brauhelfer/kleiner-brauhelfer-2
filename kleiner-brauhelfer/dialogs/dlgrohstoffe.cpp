@@ -226,6 +226,12 @@ void DlgRohstoffe::modulesChanged(Settings::Modules modules)
     {
         build();
     }
+    if (modules.testFlag(Settings::ModuleLagerverwaltung))
+    {
+        ui->radioButtonVorhanden->setVisible(gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+        ui->radioButtonAlle->setChecked(true);
+        on_radioButtonAlle_clicked();
+    }
 }
 
 void DlgRohstoffe::build()

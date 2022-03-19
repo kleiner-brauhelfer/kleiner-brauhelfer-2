@@ -664,7 +664,7 @@
               <string>edit</string>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="images.qrc">
                <normaloff>:/images/light/edit.svg</normaloff>:/images/light/edit.svg</iconset>
              </property>
             </widget>
@@ -688,7 +688,7 @@
               <string>edit</string>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="images.qrc">
                <normaloff>:/images/light/edit.svg</normaloff>:/images/light/edit.svg</iconset>
              </property>
             </widget>
@@ -765,7 +765,7 @@
                  <string notr="true">plus</string>
                 </property>
                 <property name="icon">
-                 <iconset>
+                 <iconset resource="images.qrc">
                   <normaloff>:/images/light/plus.svg</normaloff>
                   <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                 </property>
@@ -786,7 +786,7 @@
                  <string notr="true">import</string>
                 </property>
                 <property name="icon">
-                 <iconset>
+                 <iconset resource="images.qrc">
                   <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
                 </property>
                </widget>
@@ -806,7 +806,7 @@
                  <string notr="true">minus</string>
                 </property>
                 <property name="icon">
-                 <iconset>
+                 <iconset resource="images.qrc">
                   <normaloff>:/images/light/minus.svg</normaloff>
                   <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
                 </property>
@@ -921,7 +921,7 @@
                <string notr="true">plus</string>
               </property>
               <property name="icon">
-               <iconset>
+               <iconset resource="images.qrc">
                 <normaloff>:/images/light/plus.svg</normaloff>
                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
               </property>
@@ -1145,7 +1145,7 @@
                 <string>Malz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1163,7 +1163,7 @@
                 <string>Malz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1188,7 +1188,7 @@
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1206,7 +1206,7 @@
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1392,7 +1392,7 @@
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1410,7 +1410,7 @@
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1435,7 +1435,7 @@
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1453,7 +1453,7 @@
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1584,7 +1584,7 @@
                 <string>Hefe</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1602,7 +1602,7 @@
                 <string>Hefe</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1624,7 +1624,7 @@
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1642,7 +1642,7 @@
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1667,7 +1667,7 @@
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/plus.svg</normaloff>
                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
                </property>
@@ -1685,7 +1685,7 @@
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="images.qrc">
                  <normaloff>:/images/light/import.svg</normaloff>
                  <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
                </property>
@@ -1787,7 +1787,7 @@
              <string notr="true">plus</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="images.qrc">
               <normaloff>:/images/light/plus.svg</normaloff>
               <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
             </property>
@@ -1802,7 +1802,7 @@
              <string notr="true">import</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="images.qrc">
               <normaloff>:/images/light/import.svg</normaloff>
               <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
             </property>
@@ -2130,7 +2130,7 @@
              <string>edit</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="images.qrc">
               <normaloff>:/images/light/edit.svg</normaloff>:/images/light/edit.svg</iconset>
             </property>
            </widget>
@@ -2212,7 +2212,7 @@
              <string notr="true">plus</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="images.qrc">
               <normaloff>:/images/light/plus.svg</normaloff>
               <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
             </property>
@@ -2227,7 +2227,7 @@
              <string notr="true">import</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="images.qrc">
               <normaloff>:/images/light/import.svg</normaloff>
               <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
             </property>
@@ -2909,7 +2909,7 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="decimals">
-               <number>2</number>
+               <number>1</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>
@@ -3006,7 +3006,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="decimals">
-                  <number>2</number>
+                  <number>1</number>
                  </property>
                 </widget>
                </item>
@@ -3054,7 +3054,7 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="decimals">
-               <number>2</number>
+               <number>1</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>
@@ -3082,7 +3082,7 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="decimals">
-               <number>2</number>
+               <number>1</number>
               </property>
               <property name="maximum">
                <double>9999.000000000000000</double>
@@ -3148,7 +3148,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="decimals">
-                  <number>2</number>
+                  <number>1</number>
                  </property>
                  <property name="maximum">
                   <double>9999.000000000000000</double>
@@ -3710,6 +3710,8 @@
   <tabstop>btnNeueWasseraufbereitung</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

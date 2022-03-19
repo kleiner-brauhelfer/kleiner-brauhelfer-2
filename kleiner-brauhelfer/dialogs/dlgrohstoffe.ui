@@ -89,7 +89,7 @@
      <item>
       <widget class="QRadioButton" name="radioButtonAlle">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt. Bei vielen Suden in der Datenbank, kann diese Ansicht überfordernd sein. Es empfiehlt sich, feinere Filter anzuwenden. Alle Sude werden in allen Markierungsfarben unsortiert angezeigt. ein Klick auf die Spaltenfunktion aktiviert die Sortierung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rohstoffe&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>alle</string>
@@ -102,7 +102,7 @@
      <item>
       <widget class="QRadioButton" name="radioButtonVorhanden">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Zutaten angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>vorhanden</string>
@@ -112,17 +112,17 @@
      <item>
       <widget class="QRadioButton" name="radioButtonInGebrauch">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;Gebrauch&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;Die bezieht sich auf &lt;span style=&quot; font-weight:600;&quot;&gt;nicht&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;gebrauchte&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rezepte&lt;/span&gt; im Tab Sudauswahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten Rezept&lt;/span&gt; vorkommen.&lt;/p&gt;&lt;p&gt;Diese Rohstoffe werden in den Tabellen kursiv dargestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
-        <string>in Gebrauch</string>
+        <string>nicht-gebraute Rezepte</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLineEdit" name="lineEditFilter">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier bietet der Kleine Brauhelfer eine &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; für die Zutaten im aktivierten Reiter an. Die Suche ist ab 2 Zeichen wirksam.&lt;/p&gt;&lt;p&gt;Durchsucht werden alle Spalten mit Ausnahme Datum, Preis und Links.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; für die Rohstoffe ermöglicht.&lt;/p&gt;&lt;p&gt;Durchsucht werden alle Spalten mit Ausnahme Datum, Preis und Links.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="placeholderText">
         <string>Suche</string>

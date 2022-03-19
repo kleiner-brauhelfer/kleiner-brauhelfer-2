@@ -1,12 +1,12 @@
 #include "tabrezept.h"
 #include "ui_tabrezept.h"
 #include <cmath>
-#include <QScrollBar>
 #include <QGraphicsScene>
 #include <QGraphicsSvgItem>
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include "settings.h"
+#include "mainwindow.h"
 #include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
 #include "widgets/wdgrast.h"
@@ -20,6 +20,7 @@
 #include "dialogs/dlguebernahmerezept.h"
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgwasseraufbereitung.h"
+#include "dialogs/dlgwasserprofile.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -197,6 +198,8 @@ TabRezept::TabRezept(QWidget *parent) :
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
 
+    connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(showDialogAusruestung()));
+
     ProxyModel *model = bh->sud()->modelTags();
     model->setHeaderData(ModelTags::ColKey, Qt::Horizontal, tr("Tag"));
     model->setHeaderData(ModelTags::ColValue, Qt::Horizontal, tr("Wert"));
@@ -239,6 +242,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
         setVisibleModule(Settings::ModuleAusruestung,
                          {ui->cbAnlage,
                           ui->lblAnlage,
+                          ui->btnAnlage,
                           ui->btnSudhausausbeute,
                           ui->btnVerdampfungsrate,
                           ui->groupAnlage});
@@ -272,7 +276,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && isAncestorOf(now) && now != ui->tbHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
         ui->tbHelp->setHtml(now->toolTip());
 }
 
@@ -1427,6 +1431,13 @@ void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
         bh->sud()->setWasserprofil(value);
+}
+
+void TabRezept::on_btnWasserProfil_clicked()
+{
+    DlgWasserprofile dlg(this);
+    dlg.select(bh->sud()->getWasserprofil());
+    dlg.exec();
 }
 
 void TabRezept::on_btnTagNeu_clicked()

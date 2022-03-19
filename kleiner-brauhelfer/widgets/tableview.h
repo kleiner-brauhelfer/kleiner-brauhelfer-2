@@ -22,6 +22,7 @@ public:
     void build();
     void setDefaultContextMenu();
     void buildContextMenu(QMenu& menu) const;
+    void clearCols();
     void appendCol(const ColumnDefinition& col);
     void setCols(const QList<ColumnDefinition>& cols);
     void setCol(int idx, bool visible, bool canHide);

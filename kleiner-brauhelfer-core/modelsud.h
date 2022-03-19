@@ -135,7 +135,9 @@ public:
     QMap<int, QVariant> copyValues(int row) const Q_DECL_OVERRIDE;
     QVariant dataSud(QVariant sudId, int col);
     QVariant dataAnlage(int row, int col) const;
+    void setDataAnlage(int row, int col, const QVariant& value);
     QVariant dataWasser(int row, int col) const;
+    void setDataWasser(int row, int col, const QVariant& value);
     void update(int row, int colChanged = -1);
 
 private slots:
@@ -144,7 +146,6 @@ private slots:
     void onRowChanged(const QModelIndex &index);
     void onOtherModelRowChanged(const QModelIndex &index);
     void onAnlageRowChanged(const QModelIndex &index);
-    void onWasserRowChanged(const QModelIndex &index);
 
 private:
 

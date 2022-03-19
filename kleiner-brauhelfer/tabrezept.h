@@ -75,6 +75,7 @@ private slots:
     void on_btnSudhausausbeute_clicked();
     void on_btnVerdampfungsrate_clicked();
     void on_cbWasserProfil_currentIndexChanged(const QString &value);
+    void on_btnWasserProfil_clicked();
 
     void on_btnTagNeu_clicked();
     void on_btnTagUebernehmen_clicked();

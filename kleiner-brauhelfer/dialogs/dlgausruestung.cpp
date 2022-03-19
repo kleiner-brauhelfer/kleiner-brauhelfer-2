@@ -13,6 +13,7 @@
 #include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
 #include "dialogs/dlgverdampfung.h"
+#include "tababstract.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -37,7 +38,7 @@ QList<QPair<QString, int> > DlgAusruestung::Typname = {
 DlgAusruestung* DlgAusruestung::Dialog = nullptr;
 
 DlgAusruestung::DlgAusruestung(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
     ui(new Ui::DlgAusruestung),
     mRow(0)
 {
@@ -96,6 +97,9 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     ui->splitter->setStretchFactor(2, 0);
     ui->splitter->setSizes({60, 60, 60});
 
+    modulesChanged(Settings::ModuleAlle);
+    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
+
     connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
     connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
     connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(updateDurchschnitt()));
@@ -148,10 +152,10 @@ void DlgAusruestung::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        setVisibleModule(Settings::ModulePreiskalkulation,
-                         {ui->tbKosten,
-                          ui->lblKosten,
-                          ui->lblCurrency});
+        TabAbstract::setVisibleModule(Settings::ModulePreiskalkulation,
+                                      {ui->tbKosten,
+                                       ui->lblKosten,
+                                       ui->lblCurrency});
     }
 }
 
@@ -193,7 +197,7 @@ void DlgAusruestung::keyPressEvent(QKeyEvent* event)
 void DlgAusruestung::focusChanged(QWidget *old, QWidget *now)
 {
     Q_UNUSED(old)
-    if (now && isAncestorOf(now) && now != ui->tbHelp)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
         ui->tbHelp->setHtml(now->toolTip());
 }
 

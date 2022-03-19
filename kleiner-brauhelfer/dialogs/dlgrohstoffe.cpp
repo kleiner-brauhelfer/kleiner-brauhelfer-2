@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QDesktopServices>
 #include <QUrl>
+#include "mainwindow.h"
 #include "brauhelfer.h"
 #include "settings.h"
 #include "proxymodelrohstoff.h"
@@ -28,66 +29,13 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QStringList DlgRohstoffe::HopfenTypname = {
-    "",
-    tr("aroma"),
-    tr("bitter"),
-    tr("universal")
-};
-
-QStringList DlgRohstoffe::HefeTypname = {
-    "",
-    tr("obergärig"),
-    tr("untergärig")
-};
-
-QStringList DlgRohstoffe::HefeTypFlTrName = {
-    "",
-    tr("trocken"),
-    tr("flüssig")
-};
-
-QStringList DlgRohstoffe::ZusatzTypname = {
-    tr("Honig"),
-    tr("Zucker"),
-    tr("Gewürz"),
-    tr("Frucht"),
-    tr("Sonstiges"),
-    tr("Kraut"),
-    tr("Wasseraufbereitung"),
-    tr("Klärmittel")
-};
-
-QStringList DlgRohstoffe::Einheiten = {
-    tr("kg"),
-    tr("g"),
-    tr("mg"),
-    tr("Stk."),
-    tr("l"),
-    tr("ml")
-};
-
 DlgRohstoffe* DlgRohstoffe::Dialog = nullptr;
 
-QStringList DlgRohstoffe::list_tr(const QStringList& list)
-{
-   QStringList result;
-   for (const QString& str : list)
-       result.append(tr(str.toStdString().c_str()));
-   return result;
-}
-
 DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
     ui(new Ui::DlgRohstoffe)
 {
     QPalette pal;
-
-    HopfenTypname = list_tr(HopfenTypname);
-    HefeTypname = list_tr(HefeTypname);
-    HefeTypFlTrName = list_tr(HefeTypFlTrName);
-    ZusatzTypname = list_tr(ZusatzTypname);
-    Einheiten = list_tr(Einheiten);
 
     ui->setupUi(this);
 
@@ -120,10 +68,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     pal.setColor(QPalette::Button, gSettings->colorZusatz);
     ui->tableWeitereZutaten->setPalette(pal);
 
-    pal = ui->tableWasser->palette();
-    pal.setColor(QPalette::Button, gSettings->colorWasser);
-    ui->tableWasser->setPalette(pal);
-
     SqlTableModel *model;
     ProxyModelRohstoff *proxyModel;
     TableView *table;
@@ -147,20 +91,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
-    table->appendCol({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
-    table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
-    table->appendCol({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
     model = bh->modelHopfen();
     model->setHeaderData(ModelHopfen::ColName, Qt::Horizontal, tr("Name"));
@@ -181,20 +111,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelHopfen::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
-    table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
-    table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
-    table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
-    table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
     model = bh->modelHefe();
     model->setHeaderData(ModelHefe::ColName, Qt::Horizontal, tr("Name"));
@@ -218,23 +134,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
-    table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
-    table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
-    table->appendCol({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
-    table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
     model = bh->modelWeitereZutaten();
     model->setHeaderData(ModelWeitereZutaten::ColName, Qt::Horizontal, tr("Name"));
@@ -256,41 +155,9 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(model);
     table->setModel(proxyModel);
-    table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
-    table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(Einheiten, table)});
-    table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(ZusatzTypname, gSettings->WZTypBackgrounds, table)});
-    table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
-    table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
-    table->appendCol({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
 
-    model = bh->modelWasser();
-    model->setHeaderData(ModelWasser::ColName, Qt::Horizontal, tr("Wasserprofil"));
-    model->setHeaderData(ModelWasser::ColRestalkalitaet, Qt::Horizontal, tr("Restalkalität [°dH]"));
-    ProxyModel *proxyModelWasser = new ProxyModel(this);
-    table = ui->tableWasser;
-    proxyModelWasser->setSourceModel(model);
-    table->setModel(proxyModelWasser);
-    table->appendCol({ModelWasser::ColName, true, false, -1, nullptr});
-    table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
-    table->build();
-
-    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(wasser_selectionChanged(QItemSelection)));
-
-    connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
-
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
-
-    ui->tableWasser->selectRow(0);
+    modulesChanged(Settings::ModuleAlle);
+    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
 }
 
 DlgRohstoffe::~DlgRohstoffe()
@@ -305,7 +172,6 @@ void DlgRohstoffe::saveSettings()
     gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
     gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
     gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
-    gSettings->setValue("tableWasserState", ui->tableWasser->horizontalHeader()->saveState());
     int filter = 0;
     if (ui->radioButtonVorhanden->isChecked())
         filter = 1;
@@ -322,7 +188,6 @@ void DlgRohstoffe::loadSettings()
     ui->tableHopfen->restoreState(gSettings->value("tableHopfenState").toByteArray());
     ui->tableHefe->restoreState(gSettings->value("tableHefeState").toByteArray());
     ui->tableWeitereZutaten->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
-    ui->tableWasser->restoreState(gSettings->value("tableWasserState").toByteArray());
     int filter = gSettings->value("filter", 0).toInt();
     if (filter == 1)
     {
@@ -350,50 +215,119 @@ void DlgRohstoffe::restoreView()
     gSettings->remove("tableHopfenState");
     gSettings->remove("tableHefeState");
     gSettings->remove("tableWeitereZutatenState");
-    gSettings->remove("tableWasserState");
     gSettings->endGroup();
 }
 
 void DlgRohstoffe::modulesChanged(Settings::Modules modules)
 {
+    if (modules.testFlag(Settings::ModuleLagerverwaltung) ||
+        modules.testFlag(Settings::ModuleWasseraufbereitung) ||
+        modules.testFlag(Settings::ModulePreiskalkulation))
+    {
+        build();
+    }
     if (modules.testFlag(Settings::ModuleLagerverwaltung))
     {
-        bool on = gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung);
-        ui->tableMalz->setCol(1, on, false);
-        ui->tableMalz->setCol(9, on, on);
-        ui->tableMalz->setCol(10, on, on);
-        ui->tableHopfen->setCol(1, on, false);
-        ui->tableHopfen->setCol(9, on, on);
-        ui->tableHopfen->setCol(10, on, on);
-        ui->tableHefe->setCol(1, on, false);
-        ui->tableHefe->setCol(12, on, on);
-        ui->tableHefe->setCol(13, on, on);
-        ui->tableWeitereZutaten->setCol(1, on, false);
-        ui->tableWeitereZutaten->setCol(10, on, on);
-        ui->tableWeitereZutaten->setCol(11, on, on);
+        ui->radioButtonVorhanden->setVisible(gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
+        ui->radioButtonAlle->setChecked(true);
+        on_radioButtonAlle_clicked();
     }
-    if (modules.testFlag(Settings::ModuleWasseraufbereitung))
+}
+
+void DlgRohstoffe::build()
+{
+    TableView *table = ui->tableMalz;
+    table->clearCols();
+    table->appendCol({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->appendCol({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+        table->appendCol({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
+    table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
+    table->appendCol({ModelMalz::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelMalz::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
-        bool on = gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung);
-        int index = ui->toolBoxRohstoffe->indexOf(ui->tabWasser);
-        if (on)
-        {
-            if (index < 0)
-                ui->toolBoxRohstoffe->addItem(ui->tabWasser, tr("Wasser"));
-        }
-        else
-            ui->toolBoxRohstoffe->removeItem(index);
-        ui->tabWasser->setVisible(on);
-        ui->tableMalz->setCol(3, on, on);
+        table->appendCol({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelMalz::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
     }
-    if (modules.testFlag(Settings::ModulePreiskalkulation))
+    table->appendCol({ModelMalz::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+
+    table = ui->tableHopfen;
+    table->clearCols();
+    table->appendCol({ModelHopfen::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
+    table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
+    table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
+    table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
+    table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
-        bool on = gSettings->isModuleEnabled(Settings::ModulePreiskalkulation);
-        ui->tableMalz->setCol(8, on, on);
-        ui->tableHopfen->setCol(8, on, on);
-        ui->tableHefe->setCol(11, on, on);
-        ui->tableWeitereZutaten->setCol(9, on, on);
+        table->appendCol({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelHopfen::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
     }
+    table->appendCol({ModelHopfen::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+
+    table = ui->tableHefe;
+    table->clearCols();
+    table->appendCol({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
+    table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
+    table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
+    table->appendCol({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
+    table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelHefe::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelHefe::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
+        table->appendCol({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelHefe::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    }
+    table->appendCol({ModelHefe::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
+
+    table = ui->tableWeitereZutaten;
+    table->clearCols();
+    table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(MainWindow::Einheiten, table)});
+    table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, table)});
+    table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
+    table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
+    table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
+    table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
+    table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
+    if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        table->appendCol({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
+        table->appendCol({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
+        table->appendCol({ModelWeitereZutaten::ColMindesthaltbar, true, true, 100, new DateDelegate(true, false, table)});
+    }
+    table->appendCol({ModelWeitereZutaten::ColLink, true, true, 100, new LinkLabelDelegate(table)});
+    table->build();
+    table->setDefaultContextMenu();
 }
 
 void DlgRohstoffe::keyPressEvent(QKeyEvent* event)
@@ -413,9 +347,6 @@ void DlgRohstoffe::keyPressEvent(QKeyEvent* event)
         break;
     case 3:
         table = ui->tableWeitereZutaten;
-        break;
-    case 4:
-        table = ui->tableWasser;
         break;
     default:
         return;
@@ -490,9 +421,6 @@ void DlgRohstoffe::buttonAdd_clicked()
     case 3:
         addEntry(ui->tableWeitereZutaten, {{ModelWeitereZutaten::ColName, tr("Neuer Eintrag")}});
         break;
-    case 4:
-        addEntry(ui->tableWasser, {{ModelWasser::ColName, tr("Neues Profil")}});
-        break;
     }
 }
 
@@ -517,10 +445,6 @@ void DlgRohstoffe::buttonNeuVorlage_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         art = DlgRohstoffVorlage::Art::WZutaten;
-        break;
-    case 4:
-        table = ui->tableWasser;
-        art = DlgRohstoffVorlage::Art::Wasserprofil;
         break;
     default:
         return;
@@ -577,9 +501,6 @@ void DlgRohstoffe::buttonCopy_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         break;
-    case 4:
-        table = ui->tableWasser;
-        break;
     default:
         return;
     }
@@ -590,12 +511,9 @@ void DlgRohstoffe::buttonCopy_clicked()
         int row = index.row();
         QMap<int, QVariant> values = sourceModel->copyValues(model->mapRowToSource(row));
         values.insert(model->fieldIndex("Name"), model->data(row, model->fieldIndex("Name")).toString() + " " + tr("Kopie"));
-        if (table != ui->tableWasser)
-        {
-            values.remove(model->fieldIndex("Menge"));
-            values.remove(model->fieldIndex("Eingelagert"));
-            values.remove(model->fieldIndex("Mindesthaltbar"));
-        }
+        values.remove(model->fieldIndex("Menge"));
+        values.remove(model->fieldIndex("Eingelagert"));
+        values.remove(model->fieldIndex("Mindesthaltbar"));
         addEntry(table, values);
     }
 }
@@ -617,9 +535,6 @@ void DlgRohstoffe::on_buttonDelete_clicked()
     case 3:
         table = ui->tableWeitereZutaten;
         break;
-    case 4:
-        table = ui->tableWasser;
-        break;
     default:
         return;
     }
@@ -629,25 +544,14 @@ void DlgRohstoffe::on_buttonDelete_clicked()
     for (const QModelIndex& index : qAsConst(indices))
     {
         bool del = true;
-        if (table == ui->tableWasser)
+        if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
         {
-            QString name = model->data(index.row(), ModelWasser::ColName).toString();
-            int ret = QMessageBox::question(this, tr("Wasserprofil löschen?"),
-                                            tr("Soll das Wasserprofil \"%1\" gelöscht werden?").arg(name));
+            QStringList liste = model->data(index.row(), model->fieldIndex("InGebrauchListe")).toStringList();
+            QString strListe = "\n\n- " + liste.join("\n- ");
+            int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
+                                            tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
             if (ret != QMessageBox::Yes)
                 del = false;
-        }
-        else
-        {
-            if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
-            {
-                QStringList liste = model->data(index.row(), model->fieldIndex("InGebrauchListe")).toStringList();
-                QString strListe = "\n\n- " + liste.join("\n- ");
-                int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
-                                                tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
-                if (ret != QMessageBox::Yes)
-                    del = false;
-            }
         }
         if (del)
             model->removeRow(index.row());
@@ -711,9 +615,8 @@ void DlgRohstoffe::on_lineEditFilter_textChanged(const QString &pattern)
     updateLabelNumItems();
 }
 
-void DlgRohstoffe::on_toolBoxRohstoffe_currentChanged(int index)
+void DlgRohstoffe::on_toolBoxRohstoffe_currentChanged()
 {
-    ui->actionNeuObrama->setEnabled(index != 4);
     updateLabelNumItems();
 }
 
@@ -742,175 +645,4 @@ void DlgRohstoffe::updateLabelNumItems()
     ProxyModel sourceModelNoDelete;
     sourceModelNoDelete.setSourceModel(sourceModel);
     ui->lblNumItems->setText(QString::number(filteredModel->rowCount()) + " / " + QString::number(sourceModelNoDelete.rowCount()));
-}
-
-QVariant DlgRohstoffe::dataWasser(int col) const
-{
-    return bh->modelWasser()->data(mRowWasser, col);
-}
-
-bool DlgRohstoffe::setDataWasser(int col, const QVariant &value)
-{
-    return bh->modelWasser()->setData(mRowWasser, col, value);
-}
-
-void DlgRohstoffe::wasser_selectionChanged(const QItemSelection &selected)
-{
-    if (selected.indexes().count() > 0)
-    {
-        ProxyModel *proxy = static_cast<ProxyModel*>(ui->tableWasser->model());
-        mRowWasser = proxy->mapRowToSource(selected.indexes()[0].row());
-        updateWasser();
-    }
-}
-
-void DlgRohstoffe::updateWasser()
-{
-    ui->lblWasserprofil->setText(dataWasser(ModelWasser::ColName).toString());
-    //if (!ui->tbCalciumMg->hasFocus())
-        ui->tbCalciumMg->setValue(dataWasser(ModelWasser::ColCalcium).toDouble());
-    //if (!ui->tbCalciumMmol->hasFocus())
-        ui->tbCalciumMmol->setValue(dataWasser(ModelWasser::ColCalciumMmol).toDouble());
-    //if (!ui->tbCalciumHaerte->hasFocus())
-        ui->tbCalciumHaerte->setValue(dataWasser(ModelWasser::ColCalciumHaerte).toDouble());
-    //if (!ui->tbMagnesiumMg->hasFocus())
-        ui->tbMagnesiumMg->setValue(dataWasser(ModelWasser::ColMagnesium).toDouble());
-    //if (!ui->tbMagnesiumMmol->hasFocus())
-        ui->tbMagnesiumMmol->setValue(dataWasser(ModelWasser::ColMagnesiumMmol).toDouble());
-    //if (!ui->tbMagnesiumHaerte->hasFocus())
-        ui->tbMagnesiumHaerte->setValue(dataWasser(ModelWasser::ColMagnesiumHaerte).toDouble());
-    //if (!ui->tbHydrogencarbonatMg->hasFocus())
-        ui->tbHydrogencarbonatMg->setValue(dataWasser(ModelWasser::ColHydrogencarbonat).toDouble());
-    //if (!ui->tbHydrogencarbonatMmol->hasFocus())
-        ui->tbHydrogencarbonatMmol->setValue(dataWasser(ModelWasser::ColHydrogencarbonatMmol).toDouble());
-    //if (!ui->tbHydrogencarbonatHaerte->hasFocus())
-        ui->tbHydrogencarbonatHaerte->setValue(dataWasser(ModelWasser::ColCarbonatHaerte).toDouble());
-    //if (!ui->tbSulfatMg->hasFocus())
-        ui->tbSulfatMg->setValue(dataWasser(ModelWasser::ColSulfat).toDouble());
-    //if (!ui->tbSulfatMmol->hasFocus())
-        ui->tbSulfatMmol->setValue(dataWasser(ModelWasser::ColSulfatMmol).toDouble());
-    //if (!ui->tbChloridMg->hasFocus())
-        ui->tbChloridMg->setValue(dataWasser(ModelWasser::ColChlorid).toDouble());
-    //if (!ui->tbChloridMmol->hasFocus())
-        ui->tbChloridMmol->setValue(dataWasser(ModelWasser::ColChloridMmol).toDouble());
-    //if (!ui->tbNatriumMg->hasFocus())
-        ui->tbNatriumMg->setValue(dataWasser(ModelWasser::ColNatrium).toDouble());
-    //if (!ui->tbNatriumMmol->hasFocus())
-        ui->tbNatriumMmol->setValue(dataWasser(ModelWasser::ColNatriumMmol).toDouble());
-    //if (!ui->tbRestalkalitaetAdd->hasFocus())
-        ui->tbRestalkalitaetAdd->setValue(dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble());
-    ui->tbRestalkalitaet->setValue(dataWasser(ModelWasser::ColRestalkalitaet).toDouble());
-    ui->wdgBemerkung->setHtml(dataWasser(ModelWasser::ColBemerkung).toString());
-}
-
-void DlgRohstoffe::on_tbCalciumMg_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColCalcium).toDouble();
-    if (prevValue != ui->tbCalciumMg->value())
-        setDataWasser(ModelWasser::ColCalcium, ui->tbCalciumMg->value());
-}
-
-void DlgRohstoffe::on_tbCalciumMmol_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColCalciumMmol).toDouble();
-    if (prevValue != ui->tbCalciumMmol->value())
-        setDataWasser(ModelWasser::ColCalciumMmol, ui->tbCalciumMmol->value());
-}
-
-void DlgRohstoffe::on_tbCalciumHaerte_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColCalciumHaerte).toDouble();
-    if (prevValue != ui->tbCalciumHaerte->value())
-        setDataWasser(ModelWasser::ColCalciumHaerte, ui->tbCalciumHaerte->value());
-}
-
-void DlgRohstoffe::on_tbMagnesiumMg_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColMagnesium).toDouble();
-    if (prevValue != ui->tbMagnesiumMg->value())
-        setDataWasser(ModelWasser::ColMagnesium, ui->tbMagnesiumMg->value());
-}
-
-void DlgRohstoffe::on_tbMagnesiumMmol_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColMagnesiumMmol).toDouble();
-    if (prevValue != ui->tbMagnesiumMmol->value())
-        setDataWasser(ModelWasser::ColMagnesiumMmol, ui->tbMagnesiumMmol->value());
-}
-
-void DlgRohstoffe::on_tbMagnesiumHaerte_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColMagnesiumHaerte).toDouble();
-    if (prevValue != ui->tbMagnesiumHaerte->value())
-        setDataWasser(ModelWasser::ColMagnesiumHaerte, ui->tbMagnesiumHaerte->value());
-}
-
-void DlgRohstoffe::on_tbHydrogencarbonatMg_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColHydrogencarbonat).toDouble();
-    if (prevValue != ui->tbHydrogencarbonatMg->value())
-        setDataWasser(ModelWasser::ColHydrogencarbonat, ui->tbHydrogencarbonatMg->value());
-}
-
-void DlgRohstoffe::on_tbHydrogencarbonatMmol_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColHydrogencarbonatMmol).toDouble();
-    if (prevValue != ui->tbHydrogencarbonatMmol->value())
-        setDataWasser(ModelWasser::ColHydrogencarbonatMmol, ui->tbHydrogencarbonatMmol->value());
-}
-
-void DlgRohstoffe::on_tbHydrogencarbonatHaerte_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColCarbonatHaerte).toDouble();
-    if (prevValue != ui->tbHydrogencarbonatHaerte->value())
-        setDataWasser(ModelWasser::ColCarbonatHaerte, ui->tbHydrogencarbonatHaerte->value());
-}
-
-void DlgRohstoffe::on_tbSulfatMg_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColSulfat).toDouble();
-    if (prevValue != ui->tbSulfatMg->value())
-        setDataWasser(ModelWasser::ColSulfat, ui->tbSulfatMg->value());
-}
-
-void DlgRohstoffe::on_tbSulfatMmol_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColSulfatMmol).toDouble();
-    if (prevValue != ui->tbSulfatMmol->value())
-        setDataWasser(ModelWasser::ColSulfatMmol, ui->tbSulfatMmol->value());
-}
-
-void DlgRohstoffe::on_tbChloridMg_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColChlorid).toDouble();
-    if (prevValue != ui->tbChloridMg->value())
-        setDataWasser(ModelWasser::ColChlorid, ui->tbChloridMg->value());
-}
-
-void DlgRohstoffe::on_tbChloridMmol_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColChloridMmol).toDouble();
-    if (prevValue != ui->tbChloridMmol->value())
-        setDataWasser(ModelWasser::ColChloridMmol, ui->tbChloridMmol->value());
-}
-
-void DlgRohstoffe::on_tbNatriumMg_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColNatrium).toDouble();
-    if (prevValue != ui->tbNatriumMg->value())
-        setDataWasser(ModelWasser::ColNatrium, ui->tbNatriumMg->value());
-}
-
-void DlgRohstoffe::on_tbNatriumMmol_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColNatriumMmol).toDouble();
-    if (prevValue != ui->tbNatriumMmol->value())
-        setDataWasser(ModelWasser::ColNatriumMmol, ui->tbNatriumMmol->value());
-}
-
-void DlgRohstoffe::on_tbRestalkalitaetAdd_editingFinished()
-{
-    double prevValue = dataWasser(ModelWasser::ColRestalkalitaetAdd).toDouble();
-    if (prevValue != ui->tbRestalkalitaetAdd->value())
-        setDataWasser(ModelWasser::ColRestalkalitaetAdd, ui->tbRestalkalitaetAdd->value());
 }

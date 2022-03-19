@@ -26,10 +26,30 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
+QStringList MainWindow::HopfenTypname;
+QStringList MainWindow::HefeTypname;
+QStringList MainWindow::HefeTypFlTrName;
+QStringList MainWindow::ZusatzTypname;
+QStringList MainWindow::Einheiten;
+
+MainWindow* MainWindow::getInstance()
+{
+    for (QWidget* wdg: qApp->topLevelWidgets())
+        if (MainWindow* mainWin = qobject_cast<MainWindow*>(wdg))
+            return mainWin;
+    return nullptr;
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    HopfenTypname = QStringList({"", tr("aroma"), tr("bitter"), tr("universal")});
+    HefeTypname = QStringList({"", tr("obergärig"), tr("untergärig")});
+    HefeTypFlTrName = QStringList({"", tr("trocken"), tr("flüssig")});
+    ZusatzTypname = QStringList({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges"), tr("Kraut"), tr("Wasseraufbereitung"), tr("Klärmittel")});
+    Einheiten = QStringList({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("l"), tr("ml")});
+
     ui->setupUi(this);
     qApp->installEventFilter(this);
 
@@ -112,6 +132,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
             this, SLOT(sudDataChanged(QModelIndex)));
 
+    connect(ui->actionRohstoffe, SIGNAL(triggered()), this, SLOT(showDialogRohstoffe()));
+    connect(ui->actionBrauUebersicht, SIGNAL(triggered()), this, SLOT(showDialogBrauUebersicht()));
+    connect(ui->actionAusruestung, SIGNAL(triggered()), this, SLOT(showDialogAusruestung()));
+
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
 
@@ -140,7 +164,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
-            save();
+            saveDatabase();
             event->accept();
         }
         else if (ret == QMessageBox::No)
@@ -165,20 +189,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
-void MainWindow::keyPressEvent(QKeyEvent* event)
-{
-    QMainWindow::keyPressEvent(event);
-    int n = event->key() - Qt::Key::Key_F1;
-    if (n >= 0 && n < ui->tabMain->count())
-    {
-        if (ui->tabMain->isTabEnabled(n))
-            ui->tabMain->setCurrentIndex(n);
-    }
-}
-
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::ToolTip &&!ui->actionTooltips->isChecked() )
+    if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
         return true;
     return QMainWindow::eventFilter(obj, event);
 }
@@ -192,14 +205,14 @@ void MainWindow::restart(int retCode)
                                   QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
-            save();
+            saveDatabase();
         else if (ret == QMessageBox::Cancel)
             return;
     }
     qApp->exit(retCode);
 }
 
-void MainWindow::save()
+void MainWindow::saveDatabase()
 {
     QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
@@ -286,9 +299,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
-    DlgAbstract::modulesChanged<DlgRohstoffe>(modules);
-    DlgAbstract::modulesChanged<DlgAusruestung>(modules);
-    DlgAbstract::modulesChanged<DlgBrauUebersicht>(modules);
+    checkLoadedSud();
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
@@ -395,6 +406,7 @@ void MainWindow::sudLoaded()
     updateValues();
     if (bh->sud()->isLoaded())
     {
+        checkLoadedSud();
         if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
             ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
@@ -512,7 +524,7 @@ void MainWindow::on_actionRezept_exportieren_triggered()
 
 void MainWindow::on_actionSpeichern_triggered()
 {
-    save();
+    saveDatabase();
 }
 
 void MainWindow::on_actionVerwerfen_triggered()
@@ -768,6 +780,139 @@ void MainWindow::checkMessageFinished()
   #endif
 }
 
+void MainWindow::checkLoadedSud()
+{
+    if (!bh->sud()->isLoaded())
+        return;
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (!gSettings->isModuleEnabled(Settings::ModuleSpeise))
+    {
+        if (bh->sud()->getSpeisemenge() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Speisemenge zurücksetzen?"),
+                                          tr("Das Modul \"Speiseberechnung\" ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.") + " " +
+                                          tr("Soll diese zurückgesetzt werden (empfohlen)?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setSpeisemenge(0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Speisemenge"),
+                                     tr("Das Modul \"Speiseberechnung\" ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+    }
+    if (!gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe))
+    {
+        if (bh->sud()->getSchnellgaerprobeAktiv())
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Schnellgärprobe deaktivieren?"),
+                                          tr("Das Modul \"Schnellgärprobe\" ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.") + " " +
+                                          tr("Soll diese deaktiviert werden (empfohlen)?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setSchnellgaerprobeAktiv(false);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Schnellgärprobe"),
+                                     tr("Das Modul \"Schnellgärprobe\" ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+    }
+    if (!gSettings->isModuleEnabled(Settings::ModuleAusruestung))
+    {
+        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturWasser).toDouble() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Korrekturwert zurücksetzen?"),
+                                          tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.") + " " +
+                                          tr("Soll dieser zurückgesetzt werden?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturWasser, 0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Korrekturwert"),
+                                     tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturFarbe).toDouble() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Korrekturwert zurücksetzen?"),
+                                          tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.") + " " +
+                                          tr("Soll dieser zurückgesetzt werden?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturFarbe, 0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Korrekturwert"),
+                                     tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble() != 0.0)
+        {
+            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            {
+                int ret = QMessageBox::question(this, tr("Korrekturwert zurücksetzen?"),
+                                          tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.") + " " +
+                                          tr("Soll dieser zurückgesetzt werden?"),
+                                          QMessageBox::Yes | QMessageBox::No,
+                                          QMessageBox::Yes);
+                if (ret == QMessageBox::Yes)
+                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturMenge, 0.0);
+            }
+            else
+            {
+                QMessageBox::warning(this, tr("Korrekturwert"),
+                                     tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.") + " " +
+                                     tr("Der Sud wird nicht korrekt dargestellt."));
+            }
+        }
+        if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+        {
+            if (bh->sud()->getAnlageData(ModelAusruestung::ColKosten).toDouble() != 0.0)
+            {
+                if (status < Brauhelfer::SudStatus::Abgefuellt)
+                {
+                    int ret = QMessageBox::question(this, tr("Betriebskosten zurücksetzen?"),
+                                              tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.") + " " +
+                                              tr("Soll diese zurückgesetzt werden?"),
+                                              QMessageBox::Yes | QMessageBox::No,
+                                              QMessageBox::Yes);
+                    if (ret == QMessageBox::Yes)
+                        bh->sud()->setAnlageData(ModelAusruestung::ColKosten, 0.0);
+                }
+                else
+                {
+                    QMessageBox::warning(this, tr("Betriebskosten"),
+                                         tr("Das Modul \"Ausrüstung\" ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.") + " " +
+                                         tr("Der Preis wird nicht korrekt berechnet."));
+                }
+            }
+        }
+    }
+}
+
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
   #if QT_NETWORK_LIB
@@ -831,8 +976,8 @@ void MainWindow::on_actionSpende_triggered()
 
 void MainWindow::on_actionHilfe_triggered()
 {
-    DlgAbstract::showDialog<DlgHilfe>(this);
-    DlgHilfe::Dialog->setHomeUrl(QString(URL_HILFE));
+    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
+    dlg->setHomeUrl(QString(URL_HILFE));
 }
 
 void MainWindow::on_actionFormelsammlung_triggered()
@@ -861,17 +1006,17 @@ void MainWindow::on_actionDatenbank_triggered()
     DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
 }
 
-void MainWindow::on_actionRohstoffe_triggered()
+DlgRohstoffe* MainWindow::showDialogRohstoffe()
 {
-    DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
+    return DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
 }
 
-void MainWindow::on_actionBrauUebersicht_triggered()
+DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
 {
-    DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
+    return DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
 }
 
-void MainWindow::on_actionAusruestung_triggered()
+DlgAusruestung* MainWindow::showDialogAusruestung()
 {
-    DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
+    return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
 }

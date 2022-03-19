@@ -4,7 +4,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "dialogs/dlgrohstoffe.h"
+#include "mainwindow.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
@@ -130,7 +130,7 @@ void WdgWeitereZutatGabe::updateValues()
     }
     if (!ui->tbMengeTotal->hasFocus())
     {
-        QString str = DlgRohstoffe::Einheiten[static_cast<int>(einheit)];
+        QString str = MainWindow::Einheiten[static_cast<int>(einheit)];
         ui->lblEinheit->setText(str);
         ui->lblVorhandenEinheit->setText(str);
         switch (einheit)
@@ -238,7 +238,7 @@ void WdgWeitereZutatGabe::updateValues()
             QPalette pal = ui->frameColor->palette();
             pal.setColor(QPalette::Window, gSettings->WZTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
-            ui->frameColor->setToolTip(DlgRohstoffe::ZusatzTypname[idx]);
+            ui->frameColor->setToolTip(MainWindow::ZusatzTypname[idx]);
         }
         else
         {

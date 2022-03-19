@@ -1,9 +1,10 @@
 #include "dlgabstract.h"
+#include "settings.h"
 
 extern Settings *gSettings;
 
-DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent) :
-    QDialog(parent),
+DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent, Qt::WindowFlags f) :
+    QDialog(parent,f),
     mSettingsGroup(settingsGroup)
 {
     connect(this, SIGNAL(finished(int)), this, SLOT(on_finished(int)));
@@ -11,7 +12,6 @@ DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent) :
 
 void DlgAbstract::showEvent(QShowEvent *event)
 {
-    modulesChanged(Settings::ModuleAlle);
     gSettings->beginGroup(mSettingsGroup);
     restoreGeometry(gSettings->value("geometry").toByteArray());
     gSettings->endGroup();
@@ -41,16 +41,4 @@ void DlgAbstract::saveSettings()
 
 void DlgAbstract::loadSettings()
 {
-}
-
-void DlgAbstract::modulesChanged(Settings::Modules modules)
-{
-    Q_UNUSED(modules)
-}
-
-void DlgAbstract::setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets)
-{
-    bool visible = gSettings->isModuleEnabled(module);
-    for (const auto& it : widgets)
-        it->setVisible(visible);
 }

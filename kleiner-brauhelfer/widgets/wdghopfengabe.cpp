@@ -3,7 +3,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "dialogs/dlgrohstoffe.h"
+#include "mainwindow.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 
 extern Brauhelfer* bh;
@@ -125,7 +125,7 @@ void WdgHopfenGabe::updateValues()
         QPalette pal = ui->frameColor->palette();
         pal.setColor(QPalette::Window, gSettings->HopfenTypBackgrounds[idx]);
         ui->frameColor->setPalette(pal);
-        ui->frameColor->setToolTip(DlgRohstoffe::HopfenTypname[idx]);
+        ui->frameColor->setToolTip(MainWindow::HopfenTypname[idx]);
     }
     else
     {

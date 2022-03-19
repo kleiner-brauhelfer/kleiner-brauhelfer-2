@@ -373,6 +373,14 @@ QVariant SqlTableModel::getValueFromSameRow(int colKey, const QVariant &valueKey
     return data(row, col);
 }
 
+void SqlTableModel::setValueFromSameRow(int colKey, const QVariant &valueKey, int col, const QVariant &value)
+{
+    int row = getRowWithValue(colKey, valueKey);
+    if (row == -1)
+        return;
+    setData(row, col, value);
+}
+
 QVariant SqlTableModel::dataExt(const QModelIndex &index) const
 {
     Q_UNUSED(index)

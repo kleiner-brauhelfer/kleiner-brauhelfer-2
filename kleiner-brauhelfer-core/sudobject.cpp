@@ -259,10 +259,21 @@ QVariant SudObject::getAnlageData(int col) const
     return bh->modelSud()->dataAnlage(mRowSud, col);
 }
 
+void SudObject::setAnlageData(int col, const QVariant &value)
+{
+    bh->modelSud()->setDataAnlage(mRowSud, col, value);
+}
+
 QVariant SudObject::getWasserData(int col) const
 {
     return bh->modelSud()->dataWasser(mRowSud, col);
 }
+
+void SudObject::setWasserData(int col, const QVariant &value)
+{
+    bh->modelSud()->setDataWasser(mRowSud, col, value);
+}
+
 
 void SudObject::brauzutatenAbziehen()
 {

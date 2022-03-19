@@ -195,6 +195,15 @@ public:
     QVariant getValueFromSameRow(int colKey, const QVariant &valueKey, int col) const;
 
     /**
+     * @brief setValueFromSameRow
+     * @param colKey
+     * @param valueKey
+     * @param col
+     * @param value
+     */
+    void setValueFromSameRow(int colKey, const QVariant &valueKey, int col, const QVariant &value);
+
+    /**
      * @brief Default values of a row
      * @param values Values
      */

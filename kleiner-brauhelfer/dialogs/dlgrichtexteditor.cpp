@@ -42,9 +42,15 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
     for(int size : standardSizes)
         ui->cbSize->addItem(QString::number(size));
 
+    gSettings->beginGroup(staticMetaObject.className());
+    ui->cbFont->setCurrentIndex(gSettings->value("font", ui->cbFont->findText(gSettings->font.family())).toInt());
+    ui->cbSize->setCurrentIndex(gSettings->value("fontsize", ui->cbSize->findText(QString::number(gSettings->font.pointSize()))).toInt());
+    gSettings->endGroup();
+
     QTextCharFormat format;
-    format.setFontPointSize(10);
-    on_tbRichText_currentCharFormatChanged(format);
+    format.setFont(ui->cbFont->currentFont());
+    format.setFontPointSize(ui->cbSize->currentText().toInt());
+    ui->tbRichText->mergeCurrentCharFormat(format);
     ui->tbRichText->setFocus();
 }
 
@@ -53,6 +59,8 @@ DlgRichTextEditor::~DlgRichTextEditor()
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("font", ui->cbFont->currentIndex());
+    gSettings->setValue("fontsize", ui->cbSize->currentIndex());
     gSettings->endGroup();
     delete ui;
 }
@@ -129,6 +137,15 @@ void DlgRichTextEditor::on_tbRichText_cursorPositionChanged()
 
 void DlgRichTextEditor::on_tbRichText_currentCharFormatChanged(const QTextCharFormat &format)
 {
+    if (ui->tbRichText->toPlainText().isEmpty())
+    {
+        QTextCharFormat format;
+        format.setFont(ui->cbFont->currentFont());
+        format.setFontPointSize(ui->cbSize->currentText().toInt());
+        ui->tbRichText->mergeCurrentCharFormat(format);
+        return;
+    }
+
     QFont font = format.font();
     ui->cbFont->setCurrentFont(font);
     ui->cbSize->setCurrentIndex(ui->cbSize->findText(QString::number(font.pointSize())));

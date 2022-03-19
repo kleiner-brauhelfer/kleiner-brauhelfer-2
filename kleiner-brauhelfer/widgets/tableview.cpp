@@ -123,6 +123,11 @@ void TableView::buildContextMenu(QMenu& menu) const
     menu.addAction(action);
 }
 
+void TableView::clearCols()
+{
+    mCols.clear();
+}
+
 void TableView::appendCol(const ColumnDefinition& col)
 {
     mCols.append(col);

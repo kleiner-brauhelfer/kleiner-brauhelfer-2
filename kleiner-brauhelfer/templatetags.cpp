@@ -31,6 +31,8 @@ void TemplateTags::render(WdgWebViewEditable* view, std::function<void(QVariantM
 
 QString textToHtml(QString text)
 {
+    if (text.isEmpty())
+        return text;
     if (Qt::mightBeRichText(text))
         return text;
     else

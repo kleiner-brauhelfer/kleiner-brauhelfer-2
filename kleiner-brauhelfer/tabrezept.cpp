@@ -5,6 +5,7 @@
 #include <QGraphicsSvgItem>
 #include <QStandardItemModel>
 #include <QMessageBox>
+#include <QScrollBar>
 #include "settings.h"
 #include "mainwindow.h"
 #include "model/textdelegate.h"

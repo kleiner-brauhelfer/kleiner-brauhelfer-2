@@ -1397,7 +1397,7 @@ void TabRezept::on_tbSudname_textChanged(const QString &value)
         bh->sud()->setSudname(value);
 }
 
-void TabRezept::on_cbKategorie_currentIndexChanged(const QString &value)
+void TabRezept::on_cbKategorie_currentTextChanged(const QString &value)
 {
     if (ui->cbKategorie->hasFocus())
         bh->sud()->setKategorie(value);
@@ -1412,7 +1412,7 @@ void TabRezept::on_btnKategorienVerwalten_clicked()
     dlg.exec();
 }
 
-void TabRezept::on_cbAnlage_currentIndexChanged(const QString &value)
+void TabRezept::on_cbAnlage_currentTextChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
         bh->sud()->setAnlage(value);
@@ -1428,7 +1428,7 @@ void TabRezept::on_btnVerdampfungsrate_clicked()
     bh->sud()->setVerdampfungsrate(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
 }
 
-void TabRezept::on_cbWasserProfil_currentIndexChanged(const QString &value)
+void TabRezept::on_cbWasserProfil_currentTextChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
         bh->sud()->setWasserprofil(value);

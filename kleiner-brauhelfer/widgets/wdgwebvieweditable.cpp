@@ -214,7 +214,7 @@ void WdgWebViewEditable::on_cbEditMode_clicked(bool checked)
     ui->splitterEditmode->setSizes({1, checked ? 1 : 0});
 }
 
-void WdgWebViewEditable::on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName)
+void WdgWebViewEditable::on_cbTemplateAuswahl_currentTextChanged(const QString &fileName)
 {
     Q_UNUSED(fileName)
     updateEditMode();

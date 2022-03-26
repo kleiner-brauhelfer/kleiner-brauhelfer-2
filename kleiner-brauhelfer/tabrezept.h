@@ -69,12 +69,12 @@ private slots:
     void on_btnNeuerAnhang_clicked();
 
     void on_tbSudname_textChanged(const QString &value);
-    void on_cbKategorie_currentIndexChanged(const QString &value);
+    void on_cbKategorie_currentTextChanged(const QString &value);
     void on_btnKategorienVerwalten_clicked();
-    void on_cbAnlage_currentIndexChanged(const QString &value);
+    void on_cbAnlage_currentTextChanged(const QString &value);
     void on_btnSudhausausbeute_clicked();
     void on_btnVerdampfungsrate_clicked();
-    void on_cbWasserProfil_currentIndexChanged(const QString &value);
+    void on_cbWasserProfil_currentTextChanged(const QString &value);
     void on_btnWasserProfil_clicked();
 
     void on_btnTagNeu_clicked();

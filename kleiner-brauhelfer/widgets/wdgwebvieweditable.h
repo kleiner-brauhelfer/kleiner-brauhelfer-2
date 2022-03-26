@@ -37,7 +37,7 @@ private slots:
     void printDocument(QPrinter *printer);
   #endif
     void on_cbEditMode_clicked(bool checked);
-    void on_cbTemplateAuswahl_currentIndexChanged(const QString &fileName);
+    void on_cbTemplateAuswahl_currentTextChanged(const QString &fileName);
     void on_btnSaveTemplate_clicked();
     void on_btnRestoreTemplate_clicked();
     void on_tbTemplate_textChanged();

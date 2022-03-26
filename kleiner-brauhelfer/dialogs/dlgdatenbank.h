@@ -23,8 +23,8 @@ public:
 private slots:
     void sudLoaded();
     void updateValues();
-    void on_comboBox_currentIndexChanged(const QString &table);
-    void on_comboBoxSud_currentIndexChanged(const QString &table);
+    void on_comboBox_currentTextChanged(const QString &table);
+    void on_comboBoxSud_currentTextChanged(const QString &table);
     void tableView_selectionChanged();
 
 private:

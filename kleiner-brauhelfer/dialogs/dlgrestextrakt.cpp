@@ -237,7 +237,7 @@ void DlgRestextrakt::on_tbKorrekturFaktor_valueChanged(double value)
     }
 }
 
-void DlgRestextrakt::on_comboBox_FormelBrixPlato_currentIndexChanged(const QString &)
+void DlgRestextrakt::on_comboBox_FormelBrixPlato_currentTextChanged(const QString &)
 {
     if (ui->comboBox_FormelBrixPlato->hasFocus())
     {

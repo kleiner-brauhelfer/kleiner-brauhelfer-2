@@ -4,6 +4,7 @@
 - Neu: Negative SRE erlaubt
 - Neu: Eigenes Fenster für Verwaltung der Wasserprofile
 - Neu: Überprüfung der verstecken Eingabefelder bei ausgeschalteten Modulen
+- Neu: Umrechnungsformel für Brix nach Dichte von Petr Novotný (jens-brand)
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
 - Fix: diverse Fehler in der Brauübersicht
 

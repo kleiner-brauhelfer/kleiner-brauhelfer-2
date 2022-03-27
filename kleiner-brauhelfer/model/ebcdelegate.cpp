@@ -3,7 +3,7 @@
 #include "biercalc.h"
 
 EbcDelegate::EbcDelegate(QObject *parent) :
-    SpinBoxDelegate(0, 2000, 1, false, parent)
+    DoubleSpinBoxDelegate(1, 0, 2000, 1, false, parent)
 {
 }
 
@@ -18,5 +18,5 @@ void EbcDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, c
         painter->fillRect(option.rect, color);
         opt.palette.setColor(QPalette::Text, ebc > 35 ? Qt::white : Qt::black);
     }
-    SpinBoxDelegate::paint(painter, opt, index);
+    DoubleSpinBoxDelegate::paint(painter, opt, index);
 }

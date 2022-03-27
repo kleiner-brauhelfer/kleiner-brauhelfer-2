@@ -14,7 +14,6 @@
 #include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
 #include "model/doublespinboxdelegate.h"
-#include "model/ebcdelegate.h"
 #include "model/linklabeldelegate.h"
 #include "model/ratingdelegate.h"
 #include "model/spinboxdelegate.h"

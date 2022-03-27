@@ -30,7 +30,7 @@ private slots:
     void on_tbEichtemp_valueChanged(double value);
     void on_tbBrix_valueChanged(double);
     void on_cbEinheit_activated(int);
-    void on_comboBox_FormelBrixPlato_currentIndexChanged(const QString &value);
+    void on_comboBox_FormelBrixPlato_currentTextChanged(const QString &value);
     void on_tbKorrekturFaktor_valueChanged(double value);
     void on_btnKorrekturFaktorDefault_clicked();
     void on_tbTempRefraktometer_valueChanged(double value);

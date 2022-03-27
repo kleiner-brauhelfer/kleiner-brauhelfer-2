@@ -92,7 +92,7 @@ void DlgDatenbank::restoreView()
 
 void DlgDatenbank::sudLoaded()
 {
-    on_comboBoxSud_currentIndexChanged(ui->comboBoxSud->currentText());
+    on_comboBoxSud_currentTextChanged(ui->comboBoxSud->currentText());
 }
 
 void DlgDatenbank::updateValues()
@@ -101,7 +101,7 @@ void DlgDatenbank::updateValues()
     ui->tbDatenbankVersion->setText(QString::number(bh->databaseVersion()));
 }
 
-void DlgDatenbank::on_comboBox_currentIndexChanged(const QString &table)
+void DlgDatenbank::on_comboBox_currentTextChanged(const QString &table)
 {
     SqlTableModel* model = nullptr;
     if (table == bh->modelAnhang()->tableName())
@@ -160,7 +160,7 @@ void DlgDatenbank::on_comboBox_currentIndexChanged(const QString &table)
     }
 }
 
-void DlgDatenbank::on_comboBoxSud_currentIndexChanged(const QString &table)
+void DlgDatenbank::on_comboBoxSud_currentTextChanged(const QString &table)
 {
     ProxyModel* model = nullptr;
     if (table == bh->modelAnhang()->tableName())

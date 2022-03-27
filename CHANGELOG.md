@@ -7,6 +7,7 @@
 - Neu: Überprüfung der verstecken Eingabefelder bei ausgeschalteten Modulen
 - Neu: Eingabefeld für Wassermenge für Verdünnung der Anstellwürze
 - Neu: Hintergrundfarbe des Etiketts für jeden Sud einzeln einstellbar
+- Neu: Umrechnungsformel für Brix nach Dichte von Petr Novotný (jens-brand)
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
 - Fix: diverse Fehler in der Brauübersicht korrigiert
 

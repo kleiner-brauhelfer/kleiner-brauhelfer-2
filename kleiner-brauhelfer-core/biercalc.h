@@ -37,7 +37,8 @@ public:
     {
         Terrill = 0,
         TerrillLinear = 1,
-        Standard = 2
+        Standard = 2,
+        Novotny = 3
     };
     Q_ENUM(FormulaBrixToPlato)
 

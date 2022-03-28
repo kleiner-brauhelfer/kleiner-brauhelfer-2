@@ -26,7 +26,8 @@ jobs:
       - name: Build kleiner-brauhelfer-2
         shell: cmd
         run: |
-          call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          for /f "usebackq delims=#" %%a in (`"%PROGRAMFILES(x86)%\Microsoft Visual Studio\Installer\vswhere" -latest -property installationPath`) do set VSPATH=%%a
+          call "%VSPATH%\VC\Auxiliary\Build\vcvars64.bat"
           mkdir build
           mkdir deploy
           cd build

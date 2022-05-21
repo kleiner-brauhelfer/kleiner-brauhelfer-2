@@ -100,7 +100,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein neues &lt;span style=&quot; font-weight:700;&quot;&gt;Wasserprofil&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:700;&quot;&gt;Wasserprofil&lt;/span&gt; aus einer Auswahl &lt;span style=&quot; font-weight:700;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">import</string>

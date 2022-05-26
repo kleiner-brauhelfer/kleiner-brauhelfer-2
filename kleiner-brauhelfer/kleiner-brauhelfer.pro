@@ -8,7 +8,7 @@ isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
  QT += charts
 }
 isEqual(QT_MAJOR_VERSION, 6) {
- QT += svgwidgets
+ QT += svgwidgets webenginewidgets charts
 }
 
 ORGANIZATION = kleiner-brauhelfer

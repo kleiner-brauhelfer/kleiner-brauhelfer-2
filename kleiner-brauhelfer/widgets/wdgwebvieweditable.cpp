@@ -90,18 +90,24 @@ void WdgWebViewEditable::setPrintable(bool isPrintable)
 void WdgWebViewEditable::printDocument(QPrinter *printer)
 {
 #if defined(QT_WEBENGINECORE_LIB) && (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
-    bool success = false;
     QEventLoop loop;
-    ui->webview->page()->print(printer, [&](bool _success) { success = _success; loop.quit(); });
+  #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+    ui->webview->print(printer);
+    connect(ui->webview, SIGNAL(printFinished(bool)), &loop, SLOT(quit()));
+  #else
+    ui->webview->page()->print(printer, [&](bool _success) { loop.quit(); });
+  #endif
     loop.exec();
-    if (success)
-    {
-        gSettings->beginGroup("General");
-        gSettings->setValue("DefaultPrinter", printer->printerName());
-        QRectF rect(printer->margins().left, printer->margins().top, printer->margins().right, printer->margins().bottom);
-        gSettings->setValue("PrintMargins", rect);
-        gSettings->endGroup();
-    }
+    gSettings->beginGroup("General");
+    gSettings->setValue("DefaultPrinter", printer->printerName());
+  #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+    QMarginsF margins = printer->pageLayout().margins(QPageLayout::Millimeter);
+    QRectF rect(margins.left(), margins.top(), margins.right(), margins.bottom());
+  #else
+    QRectF rect(printer->margins().left, printer->margins().top, printer->margins().right, printer->margins().bottom);
+  #endif
+    gSettings->setValue("PrintMargins", rect);
+    gSettings->endGroup();
 #else
   Q_UNUSED(printer)
 #endif
@@ -127,14 +133,19 @@ void WdgWebViewEditable::printPreview()
     gSettings->beginGroup("General");
     QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinter").toString());
     QPrinter printer(printerInfo, QPrinter::HighResolution);
+  #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+    printer.setPageSize(QPageSize::A4);
+  #else
     printer.setPageSize(QPrinter::A4);
-    printer.setOrientation(QPrinter::Portrait);
+  #endif
+    printer.setPageOrientation(QPageLayout::Portrait);
     printer.setColorMode(QPrinter::Color);
     QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
-    printer.setPageMargins(rect.left(), rect.top(), rect.width(), rect.height(), QPrinter::Millimeter);
+    QMarginsF margins(rect.left(), rect.top(), rect.width(), rect.height());
+    printer.setPageMargins(margins, QPageLayout::Millimeter);
     gSettings->endGroup();
 
-    QPrintPreviewDialog dlg(&printer, ui->webview->page()->view());
+    QPrintPreviewDialog dlg(&printer, ui->webview);
     connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(printDocument(QPrinter*)));
     dlg.exec();
 

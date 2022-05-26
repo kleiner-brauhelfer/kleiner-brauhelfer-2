@@ -2696,7 +2696,7 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation>Concentration</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -3600,18 +3600,18 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="794"/>
         <source>Speisemenge zurücksetzen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset unfermented wort?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="795"/>
         <location filename="../mainwindow.cpp" line="805"/>
         <source>Das Modul &quot;Speiseberechnung&quot; ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>The &quot;Carbonation with wort&quot; module is disabled, but unfermented wort has been specified for this batch.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="796"/>
         <source>Soll diese zurückgesetzt werden (empfohlen)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Should this be reset (recommended)?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="804"/>
@@ -3625,23 +3625,23 @@ For brewed brews, the summary summarizes all relevant information.</translation>
         <location filename="../mainwindow.cpp" line="869"/>
         <location filename="../mainwindow.cpp" line="888"/>
         <source>Der Sud wird nicht korrekt dargestellt.</source>
-        <translation type="unfinished"></translation>
+        <translation>The batch is not displayed correctly.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="816"/>
         <source>Schnellgärprobe deaktivieren?</source>
-        <translation type="unfinished"></translation>
+        <translation>Deactivate fast fermentation sample?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="817"/>
         <location filename="../mainwindow.cpp" line="827"/>
         <source>Das Modul &quot;Schnellgärprobe&quot; ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.</source>
-        <translation type="unfinished"></translation>
+        <translation>The &quot;Fast fermentation sample&quot; module is disabled, but &quot;Fast fermentation sample&quot; has been enabled for this batch.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="818"/>
         <source>Soll diese deaktiviert werden (empfohlen)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Should this be deactivated (recommended)?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="826"/>
@@ -3653,20 +3653,20 @@ For brewed brews, the summary summarizes all relevant information.</translation>
         <location filename="../mainwindow.cpp" line="857"/>
         <location filename="../mainwindow.cpp" line="876"/>
         <source>Korrekturwert zurücksetzen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset correction value?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="839"/>
         <location filename="../mainwindow.cpp" line="849"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>The &quot;Equipment&quot; module is disabled, but a correction value (post-casting quantity) has been specified for this equipment.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="840"/>
         <location filename="../mainwindow.cpp" line="859"/>
         <location filename="../mainwindow.cpp" line="878"/>
         <source>Soll dieser zurückgesetzt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Should this be reset?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="848"/>
@@ -3679,13 +3679,13 @@ For brewed brews, the summary summarizes all relevant information.</translation>
         <location filename="../mainwindow.cpp" line="858"/>
         <location filename="../mainwindow.cpp" line="868"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>The &quot;Equipment&quot; module is disabled, but a correction value (color value) has been specified for this equipment.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="877"/>
         <location filename="../mainwindow.cpp" line="887"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>The &quot;Equipment&quot; module is deactivated, but a correction value (target quantity) has been specified for this equipment.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="897"/>
@@ -3696,12 +3696,12 @@ For brewed brews, the summary summarizes all relevant information.</translation>
         <location filename="../mainwindow.cpp" line="898"/>
         <location filename="../mainwindow.cpp" line="908"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>The &quot;Equipment&quot; module is disabled, but operating costs have been specified for this equipment.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="899"/>
         <source>Soll diese zurückgesetzt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Should this be reset?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="907"/>
@@ -3711,7 +3711,7 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="909"/>
         <source>Der Preis wird nicht korrekt berechnet.</source>
-        <translation type="unfinished"></translation>
+        <translation>The price is not calculated correctly.</translation>
     </message>
 </context>
 <context>

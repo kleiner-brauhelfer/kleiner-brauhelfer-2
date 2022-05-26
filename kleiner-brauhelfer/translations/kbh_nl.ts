@@ -3769,18 +3769,18 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
     <message>
         <location filename="../mainwindow.cpp" line="794"/>
         <source>Speisemenge zurücksetzen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongegist wort terugzetten?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="795"/>
         <location filename="../mainwindow.cpp" line="805"/>
         <source>Das Modul &quot;Speiseberechnung&quot; ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>De module &quot;Wort berekeningen&quot; is uitgeschakeld, maar er is een onvergist wort gespecificeerd voor dit brouwsel.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="796"/>
         <source>Soll diese zurückgesetzt werden (empfohlen)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Moet dit gereset worden (aanbevolen)?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="804"/>
@@ -3794,23 +3794,23 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
         <location filename="../mainwindow.cpp" line="869"/>
         <location filename="../mainwindow.cpp" line="888"/>
         <source>Der Sud wird nicht korrekt dargestellt.</source>
-        <translation type="unfinished"></translation>
+        <translation>De brouwsel wordt niet correct weergegeven.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="816"/>
         <source>Schnellgärprobe deaktivieren?</source>
-        <translation type="unfinished"></translation>
+        <translation>Snelle vergistingsmonster deactiveren?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="817"/>
         <location filename="../mainwindow.cpp" line="827"/>
         <source>Das Modul &quot;Schnellgärprobe&quot; ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.</source>
-        <translation type="unfinished"></translation>
+        <translation>De module &quot;Snelle vergistingsmonster&quot; is uitgeschakeld, maar &quot;Snabbjäsningsprovet&quot; is ingeschakeld voor dit brouwsel.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="818"/>
         <source>Soll diese deaktiviert werden (empfohlen)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Moet dit gedeactiveerd worden (aanbevolen)?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="826"/>
@@ -3822,20 +3822,20 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
         <location filename="../mainwindow.cpp" line="857"/>
         <location filename="../mainwindow.cpp" line="876"/>
         <source>Korrekturwert zurücksetzen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Correctie waarde resetten?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="839"/>
         <location filename="../mainwindow.cpp" line="849"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>De module &quot;Apparatuur&quot; is uitgeschakeld, maar voor deze apparatuur is een correctiewaarde (hoeveelheid na het gieten) opgegeven.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="840"/>
         <location filename="../mainwindow.cpp" line="859"/>
         <location filename="../mainwindow.cpp" line="878"/>
         <source>Soll dieser zurückgesetzt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Moet dit gereset worden?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="848"/>
@@ -3848,13 +3848,13 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
         <location filename="../mainwindow.cpp" line="858"/>
         <location filename="../mainwindow.cpp" line="868"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>De module &quot;Apparatuur&quot; is uitgeschakeld, maar voor deze apparatuur is een correctiewaarde (kleurwaarde) opgegeven.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="877"/>
         <location filename="../mainwindow.cpp" line="887"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>De module &quot;Apparatuur&quot; is gedeactiveerd, maar voor deze installatie is een correctiewaarde (doelhoeveelheid) opgegeven.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="897"/>
@@ -3865,12 +3865,12 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
         <location filename="../mainwindow.cpp" line="898"/>
         <location filename="../mainwindow.cpp" line="908"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>De module &quot;Apparatuur&quot; is uitgeschakeld, maar er zijn exploitatiekosten gespecificeerd voor deze installatie.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="899"/>
         <source>Soll diese zurückgesetzt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Moet dit gereset worden?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="907"/>
@@ -3880,7 +3880,7 @@ Voor gebrouwen brouwsels geeft de samenvatting een overzicht van alle relevante 
     <message>
         <location filename="../mainwindow.cpp" line="909"/>
         <source>Der Preis wird nicht korrekt berechnet.</source>
-        <translation type="unfinished"></translation>
+        <translation>De prijs is niet juist berekend.</translation>
     </message>
 </context>
 <context>

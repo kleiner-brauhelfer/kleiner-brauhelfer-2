@@ -2727,7 +2727,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation>Koncentration</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -3631,18 +3631,18 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../mainwindow.cpp" line="794"/>
         <source>Speisemenge zurücksetzen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställa ojäst vört?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="795"/>
         <location filename="../mainwindow.cpp" line="805"/>
         <source>Das Modul &quot;Speiseberechnung&quot; ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulen &quot;Kolsyresättning med vört&quot; är inaktiverad, men en fodermängd har angetts för denna bryggning.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="796"/>
         <source>Soll diese zurückgesetzt werden (empfohlen)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bör detta återställas (rekommenderas)?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="804"/>
@@ -3656,23 +3656,23 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <location filename="../mainwindow.cpp" line="869"/>
         <location filename="../mainwindow.cpp" line="888"/>
         <source>Der Sud wird nicht korrekt dargestellt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Partiet visas inte på rätt sätt.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="816"/>
         <source>Schnellgärprobe deaktivieren?</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktivera snabbjäsningsprov?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="817"/>
         <location filename="../mainwindow.cpp" line="827"/>
         <source>Das Modul &quot;Schnellgärprobe&quot; ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulen &quot;Snabbjäsningsprov&quot; är inaktiverad, men &quot;Snelle vergistingsmonster&quot; har aktiverats för den här bryggningen.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="818"/>
         <source>Soll diese deaktiviert werden (empfohlen)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bör detta avaktiveras (rekommenderas)?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="826"/>
@@ -3684,20 +3684,20 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <location filename="../mainwindow.cpp" line="857"/>
         <location filename="../mainwindow.cpp" line="876"/>
         <source>Korrekturwert zurücksetzen?</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställa korrigeringsvärdet?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="839"/>
         <location filename="../mainwindow.cpp" line="849"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (kvantitet efter gjutning) har angetts för denna utrustning.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="840"/>
         <location filename="../mainwindow.cpp" line="859"/>
         <location filename="../mainwindow.cpp" line="878"/>
         <source>Soll dieser zurückgesetzt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bör detta återställas?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="848"/>
@@ -3710,13 +3710,13 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <location filename="../mainwindow.cpp" line="858"/>
         <location filename="../mainwindow.cpp" line="868"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (färgvärde) har angetts för denna utrustning.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="877"/>
         <location filename="../mainwindow.cpp" line="887"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (målkvantitet) har angetts för denna anläggning.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="897"/>
@@ -3727,12 +3727,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <location filename="../mainwindow.cpp" line="898"/>
         <location filename="../mainwindow.cpp" line="908"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men driftskostnader har angetts för denna anläggning.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="899"/>
         <source>Soll diese zurückgesetzt werden?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bör detta återställas?</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="907"/>
@@ -3742,7 +3742,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../mainwindow.cpp" line="909"/>
         <source>Der Preis wird nicht korrekt berechnet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Priset har inte beräknats korrekt.</translation>
     </message>
 </context>
 <context>

@@ -28,7 +28,7 @@ public:
         ColRandUnten,
         ColPapiergroesse,
         ColAusrichtung,
-        //ColHintergrundfarbe, // TODO
+        ColHintergrundfarbe,
         // virtual
         ColDeleted,
         // number of columns

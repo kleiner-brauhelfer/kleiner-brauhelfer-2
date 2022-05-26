@@ -1,12 +1,15 @@
 # Changelog
 
-## Version 2.3.3 (in Entwicklung)
+## Version 2.4.0 (26.05.2022)
+- Neu: Datenbankversion **2007**
 - Neu: Negative SRE erlaubt
 - Neu: Eigenes Fenster für Verwaltung der Wasserprofile
 - Neu: Überprüfung der verstecken Eingabefelder bei ausgeschalteten Modulen
+- Neu: Eingabefeld für Wassermenge für Verdünnung der Anstellwürze
+- Neu: Hintergrundfarbe des Etiketts für jeden Sud einzeln einstellbar
 - Neu: Umrechnungsformel für Brix nach Dichte von Petr Novotný (jens-brand)
 - Fix: Reiter Ausrüstung erste ausgewählte Anlage
-- Fix: diverse Fehler in der Brauübersicht
+- Fix: diverse Fehler in der Brauübersicht korrigiert
 
 ## Version 2.3.2 (28.01.2022)
 - Neu: Neue Webseite mit Dokumentation http://kleiner-brauhelfer.de/ (noch in Arbeit) (vielen Dank Pitastic und alle, die daran gearbeitet haben)

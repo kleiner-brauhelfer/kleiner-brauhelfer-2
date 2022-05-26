@@ -70,7 +70,6 @@ private:
   #ifdef QT_PRINTSUPPORT_LIB
     QPrinter* mPrinter;
   #endif
-    QColor mBackgroundColor;
 };
 
 #endif // TABETIKETTE_H

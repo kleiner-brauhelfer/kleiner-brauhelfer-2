@@ -29,8 +29,7 @@ extern Settings* gSettings;
 TabEtikette::TabEtikette(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabEtikette),
-    mTemplateFilePath(""),
-    mBackgroundColor(Qt::white)
+    mTemplateFilePath("")
 {
     ui->setupUi(this);
 
@@ -64,9 +63,6 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     gSettings->beginGroup("TabEtikette");
     ui->cbSeitenverhaeltnis->setChecked(gSettings->value("Seitenverhaeltnis", true).toBool());
-    QVariant variant = gSettings->value("Hintergrundfarbe");
-    if (variant.isValid())
-        mBackgroundColor = variant.value<QColor>();
     ui->cbDividingLine->setChecked(gSettings->value("Trennlinie", true).toBool());
     gSettings->endGroup();
 
@@ -102,7 +98,6 @@ void TabEtikette::saveSettings()
 {
     gSettings->beginGroup("TabEtikette");
     gSettings->setValue("Seitenverhaeltnis", ui->cbSeitenverhaeltnis->isChecked());
-    gSettings->setValue("Hintergrundfarbe", mBackgroundColor);
     gSettings->setValue("Trennlinie", ui->cbDividingLine->isChecked());
     gSettings->endGroup();
 }
@@ -167,10 +162,11 @@ void TabEtikette::updateTemplateFilePath()
 
 void TabEtikette::updateSvg()
 {
+    QColor bgColor = data(ModelEtiketten::ColHintergrundfarbe).toUInt();
     QPalette pal = ui->frameBackgroundColor->palette();
-    pal.setColor(QPalette::Window, mBackgroundColor);
+    pal.setColor(QPalette::Window, bgColor);
     ui->frameBackgroundColor->setPalette(pal);
-    ui->viewSvg->setViewBackgroundColor(mBackgroundColor);
+    ui->viewSvg->setViewBackgroundColor(bgColor);
 
     if (mTemplateFilePath.isEmpty())
     {
@@ -447,6 +443,7 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     int x = 0, y = 0;
     QPainter painter(printer);
     QPen outline(Qt::darkRed, 0.5*faktorPxPerMM, Qt::DashDotDotLine);
+    QColor bgColor = data(ModelEtiketten::ColHintergrundfarbe).toUInt();
     for (int i = 0; i < ui->tbAnzahl->value(); i++)
     {
         if (x + labelWidth > printer->width())
@@ -464,10 +461,10 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 
         QRect rect = QRect(x, y, labelWidth, labelHeight);
 
-        if (mBackgroundColor.isValid() && mBackgroundColor != Qt::transparent)
+        if (bgColor.isValid() && bgColor != Qt::transparent)
         {
             painter.setPen(Qt::NoPen);
-            painter.setBrush(mBackgroundColor);
+            painter.setBrush(bgColor);
             painter.drawRect(rect);
         }
 
@@ -674,9 +671,9 @@ void TabEtikette::on_btnGroesseAusSvg_clicked()
 
 void TabEtikette::on_btnBackgroundColor_clicked()
 {
-    QColorDialog dlg(mBackgroundColor, this);
+    QColorDialog dlg(data(ModelEtiketten::ColHintergrundfarbe).toUInt(), this);
     if (dlg.exec() == QDialog::Accepted) {
-        mBackgroundColor = dlg.selectedColor();
+        setData(ModelEtiketten::ColHintergrundfarbe, dlg.selectedColor().rgb()&0xffffff);
         updateSvg();
     }
 }

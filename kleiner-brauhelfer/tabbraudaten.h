@@ -41,6 +41,7 @@ private slots:
     void on_btnWuerzemengeAnstellenTotal_clicked();
     void on_tbSpeiseSRE_valueChanged(double);
     void on_tbSpeiseT_valueChanged(double);
+    void on_btnVerduennung_clicked();
     void on_btnSpeisemengeNoetig_clicked();
 
     void on_cbDurchschnittIgnorieren_clicked(bool checked);

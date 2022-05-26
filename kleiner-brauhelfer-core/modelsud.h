@@ -55,7 +55,7 @@ public:
         ColWuerzemengeKochende,
         ColWuerzemengeAnstellen,
         ColSpunden,
-        ColSpeisemenge, // TODO: Speisemenge REAL DEFAULT 0
+        ColSpeisemenge,
         ColJungbiermengeAbfuellen,
         Colerg_AbgefuellteBiermenge,
         Colerg_Sudhausausbeute,
@@ -75,6 +75,7 @@ public:
         ColBemerkungAbfuellen,
         ColBemerkungGaerung,
         ColReifungStart,
+        ColVerduennungAnstellen,
         // virtual
         ColDeleted,
         ColMengeSoll,

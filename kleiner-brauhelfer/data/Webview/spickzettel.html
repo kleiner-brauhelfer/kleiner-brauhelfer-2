@@ -562,8 +562,8 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Whirlpool</strong></td>
-        <td class="underline">
+        <td valign="top"><strong>Whirlpool</strong></td>
+        <td>
           Kocher abschalten. Wenn thermische Bewegung abgeflaut ist, einen Whirlpool erzeugen und ca. 15 min warten bis sich ein Trubkegel gebildet hat.
         </td>
       </tr>
@@ -594,15 +594,11 @@
         </td>
       </tr>
       {{/Rezept.Nachisomerisierung}}
-      <tr>
-        <td valign="top"><strong>W&uuml;rzemenge nach Hopfenseihen</strong></td>
-        <td>____ Liter bei ____ &deg;C</td>
-      </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
-    <h2>Abseihen & Anstellen</h2>
+    <h2>Anstellen</h2>
     <table>
       <col width="250">
       <col width="700">
@@ -610,12 +606,6 @@
         <td class="underline" valign="top"><strong>Hopfenseihen</strong></td>
         <td class="underline">Die W&uuml;rze durch einen Filter in den G&auml;rbeh&auml;lter abf&uuml;llen.</td>
       </tr>
-      {{#Wasser.Verduennung}}
-      <tr>
-        <td class="underline" valign="top"><strong>HGF Verd&uuml;nnung</strong></td>
-        <td class="underline"><span class="value">{{Wasser.Verduennung}}</span> Liter Wasser zugeben</td>
-      </tr>
-      {{/Wasser.Verduennung}}
       <tr>
         <td class="underline" valign="top"><strong>Stammw&uuml;rze Anstellen</strong></td>
         <td class="underline">
@@ -631,15 +621,30 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>W&uuml;rzemenge Anstellen</strong></td>
+        <td class="underline"  valign="top"><strong>W&uuml;rzemenge nach Hopfenseihen</strong></td>
         <td class="underline">____ Liter</td>
+      </tr>
+      <tr>
+        <td class="underline"  valign="top"><strong>Wassermenge f&uuml;r Verd&uuml;nnung</strong></td>
+        <td class="underline" ><table>
+            <col width="200">
+            <col width="*">
+            <tr>
+              <td>____ Liter</td>
+              <td>{{#Wasser.Verduennung}}High-gravity: <span class="value">{{Wasser.Verduennung}}</span> Liter{{/Wasser.Verduennung}}</td>
+            </tr>
+          </table></td>
       </tr>
       {{#Modul.Speise}}
       <tr>
-        <td valign="top"><strong>Abgef&uuml;llte Speisemenge</strong></td>
-        <td>____ Liter</td>
+        <td class="underline" valign="top"><strong>Abgef&uuml;llte Speisemenge</strong></td>
+        <td class="underline">____ Liter</td>
       </tr>
       {{/Modul.Speise}}
+      <tr>
+        <td valign="top"><strong>Anstellmenge</strong></td>
+        <td>____ Liter</td>
+      </tr>
     </table>
   </div>
 

@@ -562,8 +562,8 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Whirlpool</strong></td>
-        <td class="underline">
+        <td valign="top"><strong>Whirlpool</strong></td>
+        <td>
 		  Turn off heater. When thermic motions abate, create a whirlpool.
         </td>
       </tr>
@@ -594,15 +594,11 @@
         </td>
       </tr>
       {{/Rezept.Nachisomerisierung}}
-      <tr>
-        <td valign="top"><strong>Amount after hop filtering</strong></td>
-        <td>____ liters at ____ &deg;C</td>
-      </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
-    <h2>Filtering & Pitching</h2>
+    <h2>Pitching</h2>
     <table>
       <col width="250">
       <col width="700">
@@ -610,12 +606,6 @@
         <td class="underline" valign="top"><strong>Filtering</strong></td>
         <td class="underline">Fill wort through a filter into a fermentation vessel.</td>
       </tr>
-      {{#Wasser.Verduennung}}
-      <tr>
-        <td class="underline" valign="top"><strong>High gravity dilution</strong></td>
-        <td class="underline">Add <span class="value">{{Wasser.Verduennung}}</span> liters water</td>
-      </tr>
-      {{/Wasser.Verduennung}}
       <tr>
         <td class="underline" valign="top"><strong>OG at pitching</strong></td>
         <td class="underline">
@@ -631,15 +621,30 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Amount at pitching</strong></td>
+        <td class="underline" valign="top"><strong>Amount after hop filtering</strong></td>
         <td class="underline">____ liters</td>
+      </tr>
+      <tr>
+        <td class="underline"  valign="top"><strong>Water dilution</strong></td>
+        <td class="underline" ><table>
+            <col width="200">
+            <col width="*">
+            <tr>
+              <td>____ liters</td>
+              <td>{{#Wasser.Verduennung}}High gravity: <span class="value">{{Wasser.Verduennung}}</span> liters{{/Wasser.Verduennung}}</td>
+            </tr>
+          </table></td>
       </tr>
       {{#Modul.Speise}}
       <tr>
-        <td valign="top"><strong>Amount of unfermented wort</strong></td>
-        <td>____ liters</td>
+        <td class="underline" valign="top"><strong>Amount of unfermented wort</strong></td>
+        <td class="underline">____ liters</td>
       </tr>
       {{/Modul.Speise}}
+      <tr>
+        <td valign="top"><strong>Amount at pitching</strong></td>
+        <td>____ liters</td>
+      </tr>
     </table>
   </div>
 

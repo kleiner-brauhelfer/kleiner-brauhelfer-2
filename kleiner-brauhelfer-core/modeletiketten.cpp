@@ -68,6 +68,8 @@ void ModelEtiketten::defaultValues(QMap<int, QVariant> &values) const
             values.insert(ColPapiergroesse, 0);
         if (!values.contains(ColAusrichtung))
             values.insert(ColAusrichtung, 0);
+        if (!values.contains(ColHintergrundfarbe))
+            values.insert(ColHintergrundfarbe, 0xffffff);
     }
     else
     {
@@ -93,5 +95,7 @@ void ModelEtiketten::defaultValues(QMap<int, QVariant> &values) const
             values.insert(ColPapiergroesse, data(row, ColPapiergroesse));
         if (!values.contains(ColAusrichtung))
             values.insert(ColAusrichtung, data(row, ColAusrichtung));
+        if (!values.contains(ColHintergrundfarbe))
+            values.insert(ColHintergrundfarbe, data(row, ColHintergrundfarbe));
     }
 }

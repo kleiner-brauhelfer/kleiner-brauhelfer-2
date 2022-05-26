@@ -579,7 +579,24 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         {
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
             if (status == Brauhelfer::SudStatus::Rezept)
-                setData(idx.row(), ColWuerzemengeAnstellenTotal, value);
+            {
+                double v = value.toDouble() + data(idx.row(), ColVerduennungAnstellen).toDouble() - data(idx.row(), ColSpeisemenge).toDouble();
+                setData(idx.row(), ColWuerzemengeAnstellen, v);
+            }
+            return true;
+        }
+        return false;
+    }
+    case ColVerduennungAnstellen:
+    {
+        if (QSqlTableModel::setData(idx, value))
+        {
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
+            {
+                double v = value.toDouble() + data(idx.row(), ColWuerzemengeKochende).toDouble() - data(idx.row(), ColSpeisemenge).toDouble();
+                setData(idx.row(), ColWuerzemengeAnstellen, v);
+            }
             return true;
         }
         return false;
@@ -602,7 +619,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
     }
     case ColSpeisemenge:
     {
-        double v = data(idx.row(), ColWuerzemengeAnstellenTotal).toDouble() - value.toDouble();
+        double v = data(idx.row(), ColWuerzemengeAnstellen).toDouble() + data(idx).toDouble() - value.toDouble();
         if (QSqlTableModel::setData(idx, value))
         {
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());

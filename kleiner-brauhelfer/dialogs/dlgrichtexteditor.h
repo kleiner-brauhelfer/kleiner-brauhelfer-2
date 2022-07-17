@@ -14,14 +14,13 @@ class DlgRichTextEditor : public QDialog
     Q_OBJECT
 
 public:
-    static QString stripHeader(const QString& html);
-
     explicit DlgRichTextEditor(QWidget *parent = nullptr);
     ~DlgRichTextEditor();
     void setHtml(const QString& html);
     QString toHtml() const;
 
 private:
+    QString extractBody(const QString& html) const;
     void changeList(bool checked, QTextListFormat::Style style);
     void changeIndent(int delta);
 

@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 2.4.1 (in Entwicklung)
+- Fix: Übermäßige Zeilenumbrüche für die Bemerkungsfelder im Spickzettel
+
 ## Version 2.4.0 (26.05.2022)
 - Neu: Datenbankversion **2007**
 - Neu: Negative SRE erlaubt

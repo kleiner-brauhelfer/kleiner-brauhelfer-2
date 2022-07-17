@@ -36,7 +36,7 @@ QString textToHtml(QString text)
     if (Qt::mightBeRichText(text))
         return text;
     else
-        return DlgRichTextEditor::stripHeader(text);
+        return "<div style=\"white-space: pre-wrap;\">" + text + "</div>";
 }
 
 void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)

@@ -65,30 +65,19 @@ DlgRichTextEditor::~DlgRichTextEditor()
     delete ui;
 }
 
-QString DlgRichTextEditor::stripHeader(const QString& html)
+QString DlgRichTextEditor::extractBody(const QString& html) const
 {
     if (html.isEmpty())
-        return "";
-    QString body;
+        return html;
     int start = html.indexOf("<body");
-    if (start != -1)
-    {
-        start = html.indexOf(">", start) + 2;
-        int end = html.indexOf("</body>");
-        if (end != -1)
-        {
-            body = html.mid(start, end - start);
-        }
-        else
-        {
-            body = html.left(start);
-        }
-    }
+    if (start == -1)
+        return html;
+    start = html.indexOf(">", start) + 2;
+    int end = html.indexOf("</body>");
+    if (end == -1)
+        return html.left(start);
     else
-    {
-        body = html;
-    }
-    return "<div style=\"white-space: pre-wrap;\">\n" + body + "\n</div>";
+        return html.mid(start, end - start);
 }
 
 void DlgRichTextEditor::setHtml(const QString& html)
@@ -100,7 +89,7 @@ QString DlgRichTextEditor::toHtml() const
 {
     if (ui->tbRichText->toPlainText().isEmpty())
         return "";
-    return stripHeader(ui->tbRichText->toHtml());
+    return extractBody(ui->tbRichText->toHtml());
 }
 
 void DlgRichTextEditor::on_tbRichText_textChanged()

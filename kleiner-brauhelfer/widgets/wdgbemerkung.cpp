@@ -36,7 +36,7 @@ QString WdgBemerkung::toHtml() const
 {
     if (ui->tbRichText->toPlainText().isEmpty())
         return "";
-    return DlgRichTextEditor::stripHeader(ui->tbRichText->toHtml());
+    return ui->tbRichText->toHtml();
 }
 
 void WdgBemerkung::on_btnEdit_clicked()

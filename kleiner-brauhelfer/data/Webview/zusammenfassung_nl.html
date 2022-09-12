@@ -41,7 +41,7 @@
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>Begin SG</td>
+              <td>Stamwort</td>
               <td class="value" align="center">{{Sud.SW}}</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
@@ -85,7 +85,7 @@
               <td>%</td>
             </tr>
             <tr>
-              <td>Effectief Brouwzaalrendement</td>
+              <td>Effectiefe Brouwzaalrendement</td>
               <td class="value" align="center">{{Sud.effSHA}}</td>
               <td class="value" align="center">{{Rezept.SHA}}</td>
               <td>%</td>
@@ -170,7 +170,7 @@
           </tr>
           {{/Liste}}
           <tr>
-            <td><strong>Totale hoeveelheid gist</strong></td>
+            <td><strong>Totale Moutstort</strong></td>
             <td align="center"></td>
             <td align="center"></td>
             <td align="center"><strong>{{Rezept.Gesamtschuettung}}</strong></td>
@@ -193,7 +193,7 @@
               <th></th>
               <th>Moment</th>
               <th>Alpha [%]</th>
-              <th>Kook tijd [min]</th>
+              <th>Kooktijd [min]</th>
               <th>Hoeveelheid [g]</th>
             </tr>
             {{#Liste}}
@@ -201,9 +201,9 @@
               <td>{{Name}}</td>
               <td class="value" align="center">
                 {{#Kochen}}Koken{{/Kochen}}
-                {{#Vorderwuerze}}Vorderw&uuml;rze{{/Vorderwuerze}}
-                {{#Nachisomerisierung}}Na-isomerisatie{{/Nachisomerisierung}}
-                {{#Ausschlagen}}beim Ausschlagen{{/Ausschlagen}}
+                {{#Vorderwuerze}}First Wort Hopping{{/Vorderwuerze}}
+                {{#Nachisomerisierung}}Na Isomerisiering{{/Nachisomerisierung}}
+                {{#Ausschlagen}}Koudhoppen{{/Ausschlagen}}
               </td>
               <td class="value" align="center">{{Alpha}}</td>
               <td class="value" align="center">{{Kochdauer}}</td>
@@ -325,7 +325,7 @@
               <td align="center">Koken, <span class="value">{{Kochdauer}}</span> min</td>
               {{/Kochen}}
               {{#Gaerung}}
-              <td align="center">Gisting, Toevoeging na <span class="value">{{ZugabeNach}}</span> Dag(en){{#Dauer}}, f&uuml;r <span class="value">{{Dauer}}</span> Dag(en){{/Dauer}}</td>
+              <td align="center">Enten (Pitching) na <span class="value">{{ZugabeNach}}</span> Dag(en){{#Dauer}}, f&uuml;r <span class="value">{{Dauer}}</span> Dag(en){{/Dauer}}</td>
               {{/Gaerung}}
               <td align="center"><span class="value">{{Menge}}</span> {{Einheit}}</td>
             </tr>
@@ -339,7 +339,7 @@
   </table>
 
   <div class="rm bg_rasten" align="center">
-    <h2>Maischplan</h2>
+    <h2>Maischschema</h2>
     <table>
       <col width="*">
       <col width="150">

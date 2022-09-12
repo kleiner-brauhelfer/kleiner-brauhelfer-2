@@ -53,7 +53,7 @@
             </tr>
            {{/Rezept.HighGravityFaktor}}
             <tr>
-              <td>Begin SG</td>
+              <td>Stamwort</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
               <td>&deg;P</td>
             </tr>
@@ -160,7 +160,7 @@
           {{/Hopfen}}
           {{#Kalthopfen}}
             <tr>
-              <th align="left" height="30">Drooghoppen</th>
+              <th align="left" height="30">Koudhoppen</th>
             </tr>
             {{#Liste}}
             <tr>
@@ -214,7 +214,7 @@
     <table style="border-spacing: 20px 0px;">
       <tr>
         <th></th>
-        <th align="center">Maischewater</th>
+        <th align="center">Maischwater</th>
         <th></th>
         <th align="center">Spoelwater</th>
         <th></th>
@@ -271,19 +271,19 @@
 
   {{#Rezept.BrauanlageBemerkung}}
   <div class="rm" align="center">
-    <h2>Opmerking installatie</h2>
+    <h2>Opmerking Installatie</h2>
     <p>{{{Rezept.BrauanlageBemerkung}}}</p>
   </div>
   {{/Rezept.BrauanlageBemerkung}}
   
   <div class="rm" align="center">
-    <h2>Schroten</h2>
+    <h2>Maischen</h2>
     <table>
       <col width="250">
       <col width="700">
       {{#Zutaten.Malz}}
       <tr>
-        <td class="underline" valign="top"><strong>Mout voorbereiding</strong></td>
+        <td class="underline" valign="top"><strong>Mout voorbereiden</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -295,7 +295,7 @@
             </tr>
             {{/Liste}}
             <tr>
-              <td><strong>Totale Moutschroot</strong></td>
+              <td><strong>Totale Moutstort</strong></td>
               <td><strong><span class="value">{{Rezept.Gesamtschuettung}}</span></strong> kg</td>
             </tr>
           </table>
@@ -329,7 +329,7 @@
       {{/Zutaten.HatZusatzMaischen}}
       {{#Wasser}}
       <tr>
-        <td class="underline" valign="top"><strong></strong></td>
+        <td class="underline" valign="top"><strong>Maischwater</strong></td>
         <td class="underline"><span class="value">{{Hauptguss}}</span> Liter{{#HauptgussUnten}}, &uArr; <span class="value">{{HauptgussUnten}}</span> cm{{/HauptgussUnten}}{{#HauptgussOben}}, &dArr; <span class="value">{{HauptgussOben}}</span> cm{{/HauptgussOben}}</td>
       </tr>
       {{/Wasser}}
@@ -341,7 +341,7 @@
       {{/Rezept}}
       {{#Rasten}}
       <tr>
-        <td class="underline" valign="top"><strong>Maischplan</strong></td>
+        <td class="underline" valign="top"><strong>Maischschema</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -379,16 +379,16 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>Blauw tot paars</td>
+              <td>Blauw tot Paars</td>
               <td>Veel zetmeel niet omgezet</td>
             </tr>
             <tr>
-              <td>Oranje tot bruin rood</td>
+              <td>Oranje tot Bruin rood</td>
               <td>Nog een kleine hoeveelheid zetmeel</td>
             </tr>
             <tr>
               <td>Geen verkleuring</td>
-              <td>Klaar (Geen tot weinig zetmeel)</td>
+              <td>Goed (Geen tot weinig zetmeel)</td>
             </tr>
           </table>
         </td>
@@ -397,7 +397,7 @@
   </div>
 
   <div class="rm" align="center">
-    <h2>Filteren</h2>
+    <h2>Spoelen</h2>
     <table>
       <col width="250">
       <col width="700">
@@ -406,24 +406,24 @@
         <td class="underline"><span class="value">{{Wasser.Nachguss}}</span> Liter</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Filteren voorbereiden</strong></td>
-        <td class="underline">Schep de bostel in de filteremmer. Na ongeveer 10-20 minuten laat u het wort weglopen en giet u het terug in de filteremmer tot het wort helder is.</td>
+        <td class="underline" valign="top"><strong>Spoelen voorbereiden</strong></td>
+        <td class="underline">Schroot laten rusten, na ongeveer 5-10 minuten laat u het Wort langzaam weglopen in een maatbeker of andere container en giet u het langzaam terug in de Maischketel. Dit herhaal je tot het Wort helder is.</td>
       </tr>
       <tr>
-        <td valign="top"><strong>Filteren</strong></td>
-        <td>Laat de wort langzaam uitlekken. Giet water over een schuimspaan voordat de bostel droogvalt.</td>
+        <td valign="top"><strong>Spoelen</strong></td>
+        <td>Pomp of giet de wort langzaam in de kookketel, maar niet te snel, anders wordt de schroot te compakt en kan je niet meer spoelen en zit je met een verstokte Maisch. Giet water over een schuimspaan of met de pomp via een spoelarm over je schroot voordat de bostel droogvalt.</td>
       </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
-    <h2>Wort koken</h2>
+    <h2>Wort Koken</h2>
     <table>
       <col width="250">
       <col width="700">
       {{#Zutaten.HatVorderwuerzehopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Vorderw&uuml;rzehopfung</strong></td>
+        <td class="underline" valign="top"><strong>First Wort Hopping</strong></td>
         <td class="underline">
           {{#Zutaten.Hopfen}}
           <table>
@@ -447,7 +447,7 @@
         <td class="underline">Wort tot <span class="value">100</span>&deg;C verhitten.</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>SG begin kook</strong></td>
+        <td class="underline" valign="top"><strong>Stamwort</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -463,7 +463,7 @@
         </td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>Hoeveelheid wort begin kook</strong></td>
+        <td class="underline" valign="top"><strong>Wortvolume Kookbegin</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -472,7 +472,7 @@
               <td>____ Liter bij ____ &deg;C</td>
               <td>
                 {{#Rezept}}
-                Zielwert: <span class="value">{{MengeKochbeginn}}</span> Liter bij 20&deg;C / <span class="value">{{MengeKochbeginn100}}</span> Liter bij 100&deg;C
+                Streefwaarde: <span class="value">{{MengeKochbeginn}}</span> Liter bij 20&deg;C / <span class="value">{{MengeKochbeginn100}}</span> Liter bij 100&deg;C
                 {{#MengeKochbeginn100Unten}}, &uArr; <span class="value">{{MengeKochbeginn100Unten}}</span> cm{{/MengeKochbeginn100Unten}}
                 {{#MengeKochbeginn100Oben}}, &dArr; <span class="value">{{MengeKochbeginn100Oben}}</span> cm{{/MengeKochbeginn100Oben}}
                 {{/Rezept}}
@@ -526,11 +526,11 @@
       </tr>
       {{/Zutaten.HatZusatzKochen}}
       <tr>
-        <td class="underline" valign="top"><strong>Kook duur</strong></td>
+        <td class="underline" valign="top"><strong>Kooktijd</strong></td>
         <td class="underline"><span class="value">{{Rezept.Kochdauer}}</span> min</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>SG einde kook</strong></td>
+        <td class="underline" valign="top"><strong>Stamwort</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -552,7 +552,7 @@
               <td>____ Liter bij ____ &deg;C</td>
               <td>
                 {{#Rezept}}
-                Zielwert: <span class="value">{{MengeKochende}}</span> Liter bij 20&deg;C / <span class="value">{{MengeKochende100}}</span> Liter bij 100&deg;C
+                Streefwaarde: <span class="value">{{MengeKochende}}</span> Liter bij 20&deg;C / <span class="value">{{MengeKochende100}}</span> Liter bij 100&deg;C
                 {{#MengeKochende100Unten}}, &uArr; <span class="value">{{MengeKochende100Unten}}</span> cm{{/MengeKochende100Unten}}
                 {{#MengeKochende100Oben}}, &dArr; <span class="value">{{MengeKochende100Oben}}</span> cm{{/MengeKochende100Oben}}
                 {{/Rezept}}
@@ -569,8 +569,8 @@
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
-        <td class="underline"  valign="top"><strong>Nachisomerisierung</strong></td>
-        <td class="underline">Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
+        <td class="underline"  valign="top"><strong>Hop Stand</strong></td>
+        <td class="underline">Duur <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
             <col width="200">
@@ -604,10 +604,10 @@
       <col width="700">
       <tr>
         <td class="underline" valign="top"><strong>Filteren</strong></td>
-        <td class="underline">Giet het wort door een filter in de gistingstank.</td>
+        <td class="underline">Giet het wort eventeel door een filter/kaasdoek in de gistingstank.</td>
       </tr>
       <tr>
-        <td class="underline" valign="top"><strong>SG voor gist toevoeging</strong></td>
+        <td class="underline" valign="top"><strong>Stamwort bij Enten (Pitching) </strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -617,15 +617,15 @@
               <td>Streefwaarde: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
-          Verdun het wort om to de gewenste SG te komen.
+          Verdun het Wort om to de gewenste Stamwort te komen.
         </td>
       </tr>
       <tr>
-        <td class="underline"  valign="top"><strong>Hoeveelheid na het filteren</strong></td>
+        <td class="underline"  valign="top"><strong>Wortvolume na het uitleken/zefen van de hop</strong></td>
         <td class="underline">____ Liter</td>
       </tr>
       <tr>
-        <td class="underline"  valign="top"><strong>Water Verdunning</strong></td>
+        <td class="underline"  valign="top"><strong>Watervolume voor Verdunning</strong></td>
         <td class="underline" ><table>
             <col width="200">
             <col width="*">
@@ -637,12 +637,12 @@
       </tr>
       {{#Modul.Speise}}
       <tr>
-        <td class="underline" valign="top"><strong>Hoeveelheid wort</strong></td>
+        <td class="underline" valign="top"><strong>Gebottelde Onvergist Wort</strong></td>
         <td class="underline">____ Liter</td>
       </tr>
       {{/Modul.Speise}}
       <tr>
-        <td valign="top"><strong>Hoeveelheid tijdens toevoegen gist</strong></td>
+        <td valign="top"><strong>Volume tijdens Enten (Pitching)</strong></td>
         <td>____ Liter</td>
       </tr>
     </table>
@@ -671,12 +671,12 @@
       </tr>
       <tr>
         <td class="underline" valign="top"><strong>Beluchten</strong></td>
-        <td class="underline">Zorg voor goede beluchting van het wort.Doormiddel van schudden of van hoogte de gistvat vullen.</td>
+        <td class="underline">Zorg voor goede beluchting van het Wort, doormiddel van schudden of door het Wort van hoogte in de gistvat te laten neerkomen.</td>
       </tr>
       {{/Zutaten.Hefe}}
       {{#Zutaten.HatKalthopfen}}
       <tr>
-        <td class="underline" valign="top"><strong>Stopfhopfen</strong></td>
+        <td class="underline" valign="top"><strong>Koudhoppen</strong></td>
         <td class="underline">
           <table>
             <col width="200">
@@ -684,7 +684,7 @@
             {{#Zutaten.Kalthopfen.Liste}}
             <tr>
               <td>{{Name}}</td>
-              <td><span class="value">{{Menge}}</span> {{Einheit}} nach <span class="value">{{ZugabeNach}}</span> Dag(en) toevoegen{{#Dauer}} en na <span class="value">{{Dauer}}</span> Dag(en) entnehmen{{/Dauer}}.</td>
+              <td><span class="value">{{Menge}}</span> {{Einheit}} na <span class="value">{{ZugabeNach}}</span> Dag(en) toevoegen{{#Dauer}} en na <span class="value">{{Dauer}}</span> Dag(en) entnehmen{{/Dauer}}.</td>
             </tr>
             {{#Bemerkung}}
             <tr>
@@ -724,7 +724,7 @@
       {{/Zutaten.HatZusatzGaerung}}
       <tr>
         <td valign="top"><strong>Vergisting</strong></td>
-        <td>Meet het restextract op regelmatige basis en observeer de gistingscurve..</td>
+        <td>Meet het Restextract regelmatige en Observeer de Gistingscurve..</td>
       </tr>
     </table>
   </div>

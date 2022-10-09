@@ -44,7 +44,7 @@ int ImportExport::importKbh(Brauhelfer* bh, const QByteArray &content)
     QJsonDocument doc = QJsonDocument::fromJson(content, &jsonError);
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
-        qWarning() << "Failed to parse JSON:" << jsonError.errorString();
+        qWarning(Brauhelfer::loggingCategory) << "Failed to parse JSON:" << jsonError.errorString();
         return -1;
     }
 
@@ -58,7 +58,7 @@ int ImportExport::importKbh(Brauhelfer* bh, const QByteArray &content)
     int version = obj["db_Version"].toInt();
     if (version < 2000)
     {
-        qWarning() << "Invalid version:" << version;
+        qWarning(Brauhelfer::loggingCategory) << "Invalid version:" << version;
         return -1;
     }
 
@@ -198,7 +198,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
     QJsonDocument doc = QJsonDocument::fromJson(content, &jsonError);
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
-        qWarning() << "Failed to parse JSON:" << jsonError.errorString();
+        qWarning(Brauhelfer::loggingCategory) << "Failed to parse JSON:" << jsonError.errorString();
         return -1;
     }
 
@@ -437,7 +437,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
     doc.setContent(content, &xmlError);
     if (!xmlError.isEmpty())
     {
-        qWarning() << "Failed to parse XML:" << xmlError;
+        qWarning(Brauhelfer::loggingCategory) << "Failed to parse XML:" << xmlError;
         return -1;
     }
 

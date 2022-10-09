@@ -2,7 +2,7 @@
 #define BRAUHELFER_H
 
 #include <QObject>
-#include <QDebug>
+#include <QLoggingCategory>
 #include "kleiner-brauhelfer-core_global.h"
 #include "biercalc.h"
 #include "sudobject.h"
@@ -202,6 +202,7 @@ public:
     static const int libVersionPatch;
     static const int supportedDatabaseVersion;
     static const int supportedDatabaseVersionMinimal;
+    static QLoggingCategory loggingCategory;
 
 public:
 

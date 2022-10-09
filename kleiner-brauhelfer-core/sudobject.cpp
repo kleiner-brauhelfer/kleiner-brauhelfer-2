@@ -49,7 +49,7 @@ SudObject::~SudObject()
 
 void SudObject::init()
 {
-    qInfo() << "SudObject::init()";
+    qInfo(Brauhelfer::loggingCategory) << "SudObject::init()";
     modelRasten()->setSourceModel(bh->modelRasten());
     modelRasten()->setFilterKeyColumn(ModelRasten::ColSudID);
     modelMalzschuettung()->setSourceModel(bh->modelMalzschuettung());
@@ -104,9 +104,9 @@ void SudObject::load(int id)
         mRowSud = bh->modelSud()->getRowWithValue(ModelSud::ColID, mId);
 
         if (mId != -1)
-            qInfo() << "SudObject::load():" << getSudname() << "(" << mId << ")";
+            qInfo(Brauhelfer::loggingCategory) << "SudObject::load():" << getSudname() << "(" << mId << ")";
         else
-            qInfo() << "SudObject::unload()";
+            qInfo(Brauhelfer::loggingCategory) << "SudObject::unload()";
 
         QRegularExpression regExpId(QString("^%1$").arg(mId));
         modelRasten()->setFilterRegularExpression(regExpId);
@@ -128,7 +128,7 @@ void SudObject::load(int id)
             QVariant qvId = getValue(ModelSud::ColID);
             if (!qvId.isValid() || qvId.toInt() != mId)
             {
-                qCritical("SudObject::load() ID mismatch");
+                qCritical(Brauhelfer::loggingCategory) << "SudObject::load() ID mismatch";
                 unload();
                 return;
             }
@@ -250,7 +250,7 @@ QVariant SudObject::getValue(int col) const
 
 bool SudObject::setValue(int col, const QVariant &value)
 {
-    qInfo() << "SudObject::setValue():" << bh->modelSud()->fieldName(col) << "=" << value.toString();
+    qInfo(Brauhelfer::loggingCategory) << "SudObject::setValue():" << bh->modelSud()->fieldName(col) << "=" << value.toString();
     return bh->modelSud()->setData(mRowSud, col, value);
 }
 

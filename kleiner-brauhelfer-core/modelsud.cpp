@@ -767,7 +767,7 @@ void ModelSud::update(int row, int colChanged)
     mUpdating = true;
     mSignalModifiedBlocked = true;
 
-    qDebug() << "ModelSud::update():" << data(row, ColID).toInt();
+    qInfo(Brauhelfer::loggingCategory) << "ModelSud::update():" << data(row, ColID).toInt();
 
     updateSwWeitereZutaten(row);
 

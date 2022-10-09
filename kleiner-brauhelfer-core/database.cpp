@@ -15,7 +15,7 @@ void Database::createTables(Brauhelfer* bh)
 {
     QSqlDatabase db = QSqlDatabase::database("kbh", false);
     if (!db.isValid())
-        qCritical("Database connection is invalid.");
+        qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
     modelSud = new ModelSud(bh, db);
     modelRasten = new ModelRasten(bh, db);
     modelMalzschuettung = new ModelMalzschuettung(bh, db);
@@ -133,7 +133,7 @@ bool Database::connect(const QString &dbPath, bool readonly)
             QSqlDatabase db = QSqlDatabase::database("kbh", false);
             if (!db.isValid())
             {
-                qCritical("Database connection is invalid.");
+                qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
                 return false;
             }
             db.close();
@@ -407,8 +407,8 @@ QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
     if (error.isValid())
     {
         mLastError = error;
-        qCritical() << query;
-        qCritical() << error;
+        qCritical(Brauhelfer::loggingCategory) << query;
+        qCritical(Brauhelfer::loggingCategory) << error;
         throw std::runtime_error(error.text().toStdString());
     }
     return sqlQuery;

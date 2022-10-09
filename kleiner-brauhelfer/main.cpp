@@ -359,7 +359,7 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
             break;
         }
         out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
-        out << msg;
+        out << context.category << " | " << msg;
     }
     if (logFile)
     {

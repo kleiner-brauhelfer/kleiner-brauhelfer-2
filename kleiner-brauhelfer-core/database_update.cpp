@@ -8,7 +8,7 @@ bool Database::update()
     QSqlDatabase db = QSqlDatabase::database("kbh", false);
     if (!db.isValid())
     {
-        qCritical("Database connection is invalid.");
+        qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
         return false;
     }
     int version = mVersion;
@@ -17,7 +17,7 @@ bool Database::update()
         if (version == 21)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
             sqlExec(db, "ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
@@ -27,7 +27,7 @@ bool Database::update()
         if (version == 22)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
             sqlExec(db, "CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
             sqlExec(db, "CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
@@ -38,7 +38,7 @@ bool Database::update()
         if (version == 23)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
             sqlExec(db, "ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
@@ -48,7 +48,7 @@ bool Database::update()
         if (version == 24)
         {
             version = 2000;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Ausruestung & Geraete
@@ -544,7 +544,7 @@ bool Database::update()
         if (version == 2000)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Malz
@@ -879,7 +879,7 @@ bool Database::update()
         if (version == 2001)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Sud
@@ -900,7 +900,7 @@ bool Database::update()
         if (version == 2002)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Sud
@@ -917,7 +917,7 @@ bool Database::update()
         if (version == 2003)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Malz
@@ -1464,7 +1464,7 @@ bool Database::update()
         if (version == 2004)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Kategorien
@@ -1491,7 +1491,7 @@ bool Database::update()
         if (version == 2005)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Sud
@@ -1522,7 +1522,7 @@ bool Database::update()
         if (version == 2006)
         {
             ++version;
-            qInfo() << "Updating to version:" << version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
 
             // Sud
@@ -1727,13 +1727,13 @@ bool Database::update()
     catch (const std::exception& ex)
     {
         db.rollback();
-        qCritical() << ex.what();
+        qCritical(Brauhelfer::loggingCategory) << ex.what();
         return false;
     }
     catch (...)
     {
         db.rollback();
-        qCritical("unknown error");
+        qCritical(Brauhelfer::loggingCategory) << "unknown error";
         return false;
     }
 }

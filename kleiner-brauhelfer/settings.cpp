@@ -257,10 +257,19 @@ void Settings::initLogLevel(int level)
         rules = "*.debug=false";
     else if (level == 2)
         rules = "";
-    else if (level == 3)
-        rules = "SqlTableModel.info=true";
+    else if (level < 99)
+    {
+        if (level >= 3)
+            rules += "kleiner-brauhelfer-core.info=true\n";
+        if (level >= 4)
+            rules += "kleiner-brauhelfer-core.debug=true\n";
+        if (level >= 5)
+            rules += "SqlTableModel.info=true\n";
+        if (level >= 6)
+            rules += "SqlTableModel.debug=true\n";
+    }
     else
-        rules = "SqlTableModel.info=true\nSqlTableModel.debug=true";
+        rules = "*.info=true\n*.debug=true";
     QLoggingCategory::setFilterRules(rules);
 }
 

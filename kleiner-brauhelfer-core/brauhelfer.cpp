@@ -8,6 +8,8 @@ const int Brauhelfer::libVersionPatch = VER_PAT;
 const int Brauhelfer::supportedDatabaseVersion = libVersionMajor * 1000 + libVersionMinor;
 const int Brauhelfer::supportedDatabaseVersionMinimal = 21;
 
+QLoggingCategory Brauhelfer::loggingCategory("kleiner-brauhelfer-core", QtWarningMsg);
+
 Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     QObject(parent),
     mDatabasePath(databasePath),
@@ -51,7 +53,7 @@ Brauhelfer::~Brauhelfer()
 
 bool Brauhelfer::connectDatabase()
 {
-    qInfo() << "Brauhelfer::connectDatabase():" << databasePath();
+    qInfo(loggingCategory) << "Brauhelfer::connectDatabase():" << databasePath();
     if (isConnectedDatabase())
     {
         mSud->unload();
@@ -59,7 +61,7 @@ bool Brauhelfer::connectDatabase()
     }
     if (mDb->connect(databasePath(), readonly()))
     {
-        qInfo() << "Brauhelfer::connectDatabase() version:" << databaseVersion();
+        qInfo(loggingCategory) << "Brauhelfer::connectDatabase() version:" << databaseVersion();
         if (mDb->version() == supportedDatabaseVersion)
         {
             mDb->setTables();
@@ -75,7 +77,7 @@ void Brauhelfer::disconnectDatabase()
 {
     if (isConnectedDatabase())
     {
-        qInfo("Brauhelfer::disconnectDatabase()");
+        qInfo(loggingCategory) << "Brauhelfer::disconnectDatabase()";
         mSud->unload();
         mDb->disconnect();
         emit connectionChanged(isConnectedDatabase());
@@ -110,7 +112,7 @@ bool Brauhelfer::save()
 {
     if (!readonly() && isDirty())
     {
-        qInfo("Brauhelfer::save()");
+        qInfo(loggingCategory) << "Brauhelfer::save()";
         bool wasBlocked = blockSignals(true);
         if (mDb->save())
         {
@@ -128,7 +130,7 @@ void Brauhelfer::discard()
 {
     if (isDirty())
     {
-        qInfo("Brauhelfer::discard()");
+        qInfo(loggingCategory) << "Brauhelfer::discard()";
         bool wasBlocked = blockSignals(true);
         mDb->discard();
         blockSignals(wasBlocked);
@@ -168,7 +170,7 @@ QString Brauhelfer::lastError() const
 
 bool Brauhelfer::updateDatabase()
 {
-    qInfo("Brauhelfer::updateDatabase()");
+    qInfo(loggingCategory) << "Brauhelfer::updateDatabase()";
     mDb->update();
     connectDatabase();
     return mDb->version() == supportedDatabaseVersion;
@@ -291,7 +293,7 @@ ModelWasseraufbereitung *Brauhelfer::modelWasseraufbereitung() const
 
 int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 {
-    qInfo() << "Brauhelfer::sudKopieren():" << sudId;
+    qInfo(loggingCategory) << "Brauhelfer::sudKopieren():" << sudId;
     int row = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row < 0)
         return -1;
@@ -356,7 +358,7 @@ void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVar
 
 int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2, double prozent)
 {
-    qInfo() << "Brauhelfer::sudTeilen():" << sudId;
+    qInfo(loggingCategory) << "Brauhelfer::sudTeilen():" << sudId;
     int row1 = modelSud()->getRowWithValue(ModelSud::ColID, sudId);
     if (row1 < 0)
         return -1;

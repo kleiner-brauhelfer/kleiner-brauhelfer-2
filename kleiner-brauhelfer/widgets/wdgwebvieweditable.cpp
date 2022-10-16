@@ -95,7 +95,7 @@ void WdgWebViewEditable::printDocument(QPrinter *printer)
     ui->webview->print(printer);
     connect(ui->webview, SIGNAL(printFinished(bool)), &loop, SLOT(quit()));
   #else
-    ui->webview->page()->print(printer, [&](bool _success) { loop.quit(); });
+    ui->webview->page()->print(printer, [&](bool) { loop.quit(); });
   #endif
     loop.exec();
     gSettings->beginGroup("General");

@@ -34,7 +34,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     pal.setColor(QPalette::Window, gSettings->colorMalz);
     setPalette(pal);
 
-    ui->btnKorrektur->setPalette(gSettings->paletteErrorButton);
+    ui->btnKorrektur->setError(true);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     updateValues();
@@ -91,7 +91,7 @@ void WdgMalzGabe::updateValues()
     int rowRohstoff = bh->modelMalz()->getRowWithValue(ModelMalz::ColName, malzname);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(malzname);
-    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
+    ui->btnZutat->setError(!mValid);
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelMalzschuettung::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())

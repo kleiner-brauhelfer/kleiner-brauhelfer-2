@@ -58,5 +58,9 @@ void TimeEdit::setReadOnly(bool r)
 
 void TimeEdit::setError(bool e)
 {
-    mError = e;
+    if (mError != e)
+    {
+        mError = e;
+        update();
+    }
 }

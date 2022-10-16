@@ -59,10 +59,18 @@ void SpinBox::setReadOnly(bool r)
 
 void SpinBox::setError(bool e)
 {
-    mError = e;
+    if (mError != e)
+    {
+        mError = e;
+        update();
+    }
 }
 
 void SpinBox::setErrorOnLimit(bool e)
 {
-    mErrorOnLimit = e;
+    if (mErrorOnLimit != e)
+    {
+        mErrorOnLimit = e;
+        update();
+    }
 }

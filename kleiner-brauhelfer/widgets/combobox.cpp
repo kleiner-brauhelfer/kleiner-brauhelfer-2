@@ -51,7 +51,11 @@ void ComboBox::focusOutEvent(QFocusEvent *event)
 
 void ComboBox::setError(bool e)
 {
-    mError = e;
+    if (mError != e)
+    {
+        mError = e;
+        update();
+    }
 }
 
 void ComboBox::setToolTip(const QString &str)

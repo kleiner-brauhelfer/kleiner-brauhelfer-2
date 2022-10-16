@@ -42,5 +42,9 @@ void PushButton::focusOutEvent(QFocusEvent *event)
 
 void PushButton::setError(bool e)
 {
-    mError = e;
+    if (mError != e)
+    {
+        mError = e;
+        update();
+    }
 }

@@ -78,7 +78,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnZutat">
+         <widget class="PushButton" name="btnZutat">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -249,7 +249,7 @@
          </spacer>
         </item>
         <item row="0" column="5">
-         <widget class="QPushButton" name="btnAufbrauchen">
+         <widget class="PushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
             <width>40</width>
@@ -350,6 +350,11 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -35,8 +35,8 @@ WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
     pal.setColor(QPalette::Window, gSettings->colorHopfen);
     setPalette(pal);
 
-    ui->btnMengeKorrektur->setPalette(gSettings->paletteErrorButton);
-    ui->btnAnteilKorrektur->setPalette(gSettings->paletteErrorButton);
+    ui->btnMengeKorrektur->setError(true);
+    ui->btnAnteilKorrektur->setError(true);
 
     ui->tbMenge->setErrorOnLimit(true);
     ui->tbMengeProLiter->setErrorOnLimit(true);
@@ -100,7 +100,7 @@ void WdgHopfenGabe::updateValues()
     int rowRohstoff = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, hopfenname);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(hopfenname);
-    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
+    ui->btnZutat->setError(!mValid);
     if (!ui->tbMengeProzent->hasFocus())
         ui->tbMengeProzent->setValue(data(ModelHopfengaben::ColProzent).toDouble());
     if (!ui->tbAnteilProzent->hasFocus())

@@ -120,7 +120,7 @@ void WdgWeitereZutatGabe::updateValues()
         rowRohstoff = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, zusatzname);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(zusatzname);
-    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
+    ui->btnZutat->setError(!mValid);
     if (!ui->tbMenge->hasFocus())
     {
         if (einheit == Brauhelfer::Einheit::mg)
@@ -298,6 +298,12 @@ void WdgWeitereZutatGabe::updateValues()
             ui->tbMenge->setReadOnly(false);
             ui->tbMengeTotal->setReadOnly(false);
             ui->btnZutat->setEnabled(true);
+            if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
+            {
+                QDate currentDate = QDate::currentDate();
+                QDate dateSoll = data(ModelWeitereZutatenGaben::ColZugabeDatum).toDate();
+                ui->btnZugeben->setError(currentDate >= dateSoll);
+            }
             break;
         case Brauhelfer::ZusatzStatus::Zugegeben:
             ui->tbVorhanden->setVisible(false);
@@ -318,11 +324,8 @@ void WdgWeitereZutatGabe::updateValues()
             if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
                 QDate currentDate = QDate::currentDate();
-                QDate dateBisSoll = data(ModelWeitereZutatenGaben::ColZugabeDatum).toDate().addDays(dauer / 1440);
-                if (currentDate >= dateBisSoll)
-                {
-                    ui->btnEntnehmen->setPalette(gSettings->paletteErrorButton);
-                }
+                QDate dateSoll = data(ModelWeitereZutatenGaben::ColZugabeDatum).toDate().addDays(dauer / 1440);
+                ui->btnEntnehmen->setError(currentDate >= dateSoll);
             }
             break;
         case Brauhelfer::ZusatzStatus::Entnommen:

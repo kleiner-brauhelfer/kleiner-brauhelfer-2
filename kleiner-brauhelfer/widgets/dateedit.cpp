@@ -66,5 +66,9 @@ bool DateEdit::hasFocus() const
 
 void DateEdit::setError(bool e)
 {
-    mError = e;
+    if (mError != e)
+    {
+        mError = e;
+        update();
+    }
 }

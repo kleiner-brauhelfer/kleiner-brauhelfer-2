@@ -66,5 +66,9 @@ bool DateTimeEdit::hasFocus() const
 
 void DateTimeEdit::setError(bool e)
 {
-    mError = e;
+    if (mError != e)
+    {
+        mError = e;
+        update();
+    }
 }

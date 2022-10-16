@@ -1,8 +1,9 @@
 #include "widgetdecorator.h"
 #include <QApplication>
 
-bool WidgetDecorator::mGlobalValueChanged = false;
 bool WidgetDecorator::mGlobalSuspendValueChanged = false;
+QWidget* WidgetDecorator::mGlobalWidget = nullptr;
+QElapsedTimer WidgetDecorator::mGlobalTimer;
 
 WidgetDecorator::WidgetDecorator() :
     mValueChanged(false)
@@ -14,16 +15,22 @@ void WidgetDecorator::suspendValueChanged(bool value)
     mGlobalSuspendValueChanged = value;
 }
 
-void WidgetDecorator::waValueChanged(bool hasFocus)
+void WidgetDecorator::waValueChanged(QWidget *wdg)
 {
     if (mGlobalSuspendValueChanged)
         return;
-    if (hasFocus)
+    if (wdg->hasFocus())
     {
+        if (wdg != mGlobalWidget)
+        {
+            for (auto &it : qApp->topLevelWidgets())
+                repaintIfChanged(it);
+            mGlobalWidget = wdg;
+            mGlobalTimer.start();
+        }
         mValueChanged = true;
-        mGlobalValueChanged = true;
     }
-    else if (mGlobalValueChanged)
+    else if (mGlobalWidget)
     {
         mValueChanged = true;
     }
@@ -54,10 +61,12 @@ void WidgetDecorator::waFocusOutEvent()
 {
     if (mGlobalSuspendValueChanged)
         return;
-    if (mGlobalValueChanged)
+    if (mGlobalTimer.elapsed() < 100)
+        return;
+    if (mGlobalWidget)
     {
         mValueChanged = false;
-        mGlobalValueChanged = false;
+        mGlobalWidget = nullptr;
         for (auto &it : qApp->topLevelWidgets())
             repaintIfChanged(it);
     }

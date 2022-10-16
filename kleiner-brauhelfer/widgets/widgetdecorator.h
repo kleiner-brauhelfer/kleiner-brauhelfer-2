@@ -2,6 +2,7 @@
 #define WIDGETDECORATOR_H
 
 #include <QWidget>
+#include <QElapsedTimer>
 
 class WidgetDecorator
 {
@@ -11,13 +12,14 @@ public:
 
 protected:
     void waFocusOutEvent();
-    void waValueChanged(bool hasFocus);
+    void waValueChanged(QWidget *wdg);
     bool mValueChanged;
 
 private:
-    void repaintIfChanged(QWidget *wdg);
-    static bool mGlobalValueChanged;
+    static void repaintIfChanged(QWidget *wdg);
     static bool mGlobalSuspendValueChanged;
+    static QWidget* mGlobalWidget;
+    static QElapsedTimer mGlobalTimer;
 };
 
 #endif // WIDGETDECORATOR_H

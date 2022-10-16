@@ -42,7 +42,7 @@ void DoubleSpinBox::paintEvent(QPaintEvent *event)
 
 void DoubleSpinBox::on_valueChanged()
 {
-    waValueChanged(hasFocus());
+    waValueChanged(this);
 }
 
 void DoubleSpinBox::focusOutEvent(QFocusEvent *event)

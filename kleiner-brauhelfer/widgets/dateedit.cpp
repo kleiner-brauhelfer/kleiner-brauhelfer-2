@@ -43,7 +43,7 @@ void DateEdit::paintEvent(QPaintEvent *event)
 
 void DateEdit::on_valueChanged()
 {
-    waValueChanged(hasFocus());
+    waValueChanged(this);
 }
 
 void DateEdit::focusOutEvent(QFocusEvent *event)

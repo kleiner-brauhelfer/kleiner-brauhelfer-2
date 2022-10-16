@@ -41,7 +41,7 @@ void TimeEdit::paintEvent(QPaintEvent *event)
 
 void TimeEdit::on_valueChanged()
 {
-    waValueChanged(hasFocus());
+    waValueChanged(this);
 }
 
 void TimeEdit::focusOutEvent(QFocusEvent *event)

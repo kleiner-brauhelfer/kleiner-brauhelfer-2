@@ -112,7 +112,8 @@ void WdgHopfenGabe::updateValues()
     if (!ui->tbAnteil->hasFocus())
         ui->tbAnteil->setValue(data(ModelHopfengaben::ColIBUAnteil).toDouble());
     ui->tbAlpha->setValue(data(ModelHopfengaben::ColAlpha).toDouble());
-    ui->tbAusbeute->setValue(data(ModelHopfengaben::ColAusbeute).toDouble());
+    double ausbeute = data(ModelHopfengaben::ColAusbeute).toDouble();
+    ui->tbAusbeute->setValue(ausbeute);
     if (!ui->tbKochdauer->hasFocus())
         ui->tbKochdauer->setValue(data(ModelHopfengaben::ColZeit).toInt());
     Brauhelfer::HopfenZeitpunkt zeitpunkt = static_cast<Brauhelfer::HopfenZeitpunkt>(data(ModelHopfengaben::ColZeitpunkt).toInt());
@@ -153,9 +154,6 @@ void WdgHopfenGabe::updateValues()
             }
             ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         }
-        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
-        ui->btnMengeKorrektur->setVisible(mFehlProzent != 0.0);
-        ui->btnAnteilKorrektur->setVisible(mFehlProzent != 0.0);
 
         switch (zeitpunkt)
         {
@@ -181,25 +179,29 @@ void WdgHopfenGabe::updateValues()
         {
         case Brauhelfer::BerechnungsartHopfen::Keine:
             ui->btnMengeKorrektur->setVisible(false);
+            ui->tbMengeProzent->setVisible(false);
+            ui->lblMengeProzent->setVisible(false);
             ui->btnAnteilKorrektur->setVisible(false);
             ui->tbAnteilProzent->setVisible(false);
-            ui->tbMengeProzent->setVisible(false);
             ui->lblAnteilProzent->setVisible(false);
-            ui->lblMengeProzent->setVisible(false);
             break;
         case Brauhelfer::BerechnungsartHopfen::Gewicht:
+            ui->btnMengeKorrektur->setVisible(mFehlProzent != 0.0);
+            ui->tbMengeProzent->setVisible(true);
+            ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0 || mFehlProzent != 0.0);
+            ui->lblMengeProzent->setVisible(true);
             ui->btnAnteilKorrektur->setVisible(false);
             ui->tbAnteilProzent->setVisible(false);
-            ui->tbMengeProzent->setVisible(true);
             ui->lblAnteilProzent->setVisible(false);
-            ui->lblMengeProzent->setVisible(true);
             break;
         case Brauhelfer::BerechnungsartHopfen::IBU:
             ui->btnMengeKorrektur->setVisible(false);
             ui->tbMengeProzent->setVisible(false);
-            ui->tbAnteilProzent->setVisible(true);
             ui->lblMengeProzent->setVisible(false);
-            ui->lblAnteilProzent->setVisible(true);
+            ui->btnAnteilKorrektur->setVisible(ausbeute > 0.05 && mFehlProzent != 0.0);
+            ui->tbAnteilProzent->setVisible(ausbeute > 0.05);
+            ui->tbAnteilProzent->setError(ui->tbAnteilProzent->value() == 0.0 || mFehlProzent != 0.0);
+            ui->lblAnteilProzent->setVisible(ausbeute > 0.05);
             break;
         }
 

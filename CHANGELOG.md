@@ -2,6 +2,7 @@
 
 ## Version 2.4.1 (in Entwicklung)
 - Neu: Niederländische Übersetzung der Tooltips (vielen Dank dachouffe)
+- Neu: Knopf, um Hopfengaben auszugleichen (analog wie Malzgaben)
 - Fix: Übermäßige Zeilenumbrüche für die Bemerkungsfelder im Spickzettel
 
 ## Version 2.4.0 (26.05.2022)

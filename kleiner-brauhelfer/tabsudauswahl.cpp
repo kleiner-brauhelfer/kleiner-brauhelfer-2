@@ -112,7 +112,8 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     ui->tbDatumVon->setDate(gSettings->value("ZeitraumVon", QDate::currentDate().addYears(-1)).toDate());
     ui->tbDatumBis->setDate(gSettings->value("ZeitraumBis", QDate::currentDate()).toDate());
-    ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle", true).toBool());
+    ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle", false).toBool());
+    on_cbDatumAlle_stateChanged(ui->cbDatumAlle->checkState());
 
     gSettings->endGroup();
 
@@ -364,16 +365,16 @@ void TabSudAuswahl::on_cbDatumAlle_stateChanged(int state)
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
     if (state)
     {
-        model->setFilterDateColumn(-1);
-    }
-    else
-    {
         model->setFilterMinimumDate(ui->tbDatumVon->dateTime().addDays(-1));
         model->setFilterMaximumDate(ui->tbDatumBis->dateTime().addDays(1));
         model->setFilterDateColumn(ModelSud::ColBraudatum);
     }
-    ui->tbDatumVon->setEnabled(!state);
-    ui->tbDatumBis->setEnabled(!state);
+    else
+    {
+        model->setFilterDateColumn(-1);
+    }
+    ui->tbDatumVon->setEnabled(state);
+    ui->tbDatumBis->setEnabled(state);
 }
 
 void TabSudAuswahl::on_btnMerken_clicked()
@@ -422,7 +423,7 @@ void TabSudAuswahl::sudAnlegen()
         setFilterStatus();
     }
     ui->cbMerkliste->setChecked(false);
-    ui->cbDatumAlle->setChecked(true);
+    ui->cbDatumAlle->setChecked(false);
     ui->tbFilter->clear();
 
     QMap<int, QVariant> values({{ModelSud::ColSudname, tr("Neuer Sud")}});
@@ -452,7 +453,7 @@ void TabSudAuswahl::sudKopieren(bool loadedSud)
         setFilterStatus();
     }
     ui->cbMerkliste->setChecked(false);
-    ui->cbDatumAlle->setChecked(true);
+    ui->cbDatumAlle->setChecked(false);
     ui->tbFilter->clear();
 
     int row = -1;
@@ -575,7 +576,7 @@ void TabSudAuswahl::rezeptImportieren(const QString& filePath)
                 setFilterStatus();
             }
             ui->cbMerkliste->setChecked(false);
-            ui->cbDatumAlle->setChecked(true);
+            ui->cbDatumAlle->setChecked(false);
             ui->tbFilter->clear();
             filterChanged();
             ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());

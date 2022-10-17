@@ -124,7 +124,7 @@ void WdgMalzGabe::updateValues()
             }
             ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
         }
-        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0);
+        ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0 || mFehlProzent != 0.0);
         ui->btnKorrektur->setVisible(mFehlProzent != 0.0);
 
         int max = bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMaxProzent).toInt();

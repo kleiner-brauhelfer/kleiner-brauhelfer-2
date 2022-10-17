@@ -995,7 +995,7 @@ p, li { white-space: pre-wrap; }
         </property>
         <item>
          <widget class="QWidget" name="wdgWarnungMalz" native="true">
-          <layout class="QVBoxLayout" name="verticalLayout_15">
+          <layout class="QHBoxLayout" name="horizontalLayout_19">
            <property name="spacing">
             <number>4</number>
            </property>
@@ -1013,6 +1013,12 @@ p, li { white-space: pre-wrap; }
            </property>
            <item>
             <widget class="QLabel" name="lblWarnungMalz">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="text">
               <string>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</string>
              </property>
@@ -1022,44 +1028,14 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_9">
-             <property name="leftMargin">
-              <number>9</number>
+            <widget class="PushButton" name="btnMalzAusgleichen">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Malzmengen mit der erforderlichen Gesamtschüttung verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzelmengen prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Diese Funktion kann verwendet werden, um ein Rezept zu übernehmen, bei dem die Malzmengen nur in kg angegeben sind. Dazu müssen zuerst alle Malzsorten und Mengen aus dem Rezept unten eingetragen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-             <item>
-              <widget class="PushButton" name="btnMalzAufteilen">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen der erforderlichen Gesamtschüttung und der Summe der angegebenen Malzmengen &lt;span style=&quot; font-weight:600;&quot;&gt;gleichmäßig&lt;/span&gt; auf alle Malzeinträge &lt;span style=&quot; font-weight:600;&quot;&gt;verteilt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Differenz verteilen</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="PushButton" name="btnMalzProzente">
-               <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Malzmengen mit der erforderlichen Gesamtschüttung verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzelmengen prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Diese Funktion kann verwendet werden, um ein Rezept zu übernehmen, bei dem die Malzmengen nur in kg angegeben sind. Dazu müssen zuerst alle Malzsorten und Mengen aus dem Rezept unten eingetragen werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="text">
-                <string>Mengen prozentual anpassen</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_14">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
+             <property name="text">
+              <string>Ausgleichen</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -1082,7 +1058,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>354</height>
+              <height>362</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1287,7 +1263,7 @@ p, li { white-space: pre-wrap; }
             </item>
             <item>
              <property name="text">
-              <string>IBU</string>
+              <string>Bittere (IBU)</string>
              </property>
             </item>
            </widget>
@@ -1302,13 +1278,47 @@ p, li { white-space: pre-wrap; }
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="lblBerechnungsartHopfenWarnung">
-          <property name="text">
-           <string>Die Berechnung der Hopfengaben ist deaktiviert.</string>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
+         <widget class="QWidget" name="wdgWarnungHopfen" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="lblWarnungHopfen">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="PushButton" name="btnHopfenAusgleichen">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Hopfenmengen (Bitteren) mit der erforderlichen Gesamtmenge (Gesamtbittere) verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzeleinträge prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Ausgleichen</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
@@ -1329,7 +1339,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>138</height>
+              <height>137</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -3617,6 +3627,16 @@ p, li { white-space: pre-wrap; }
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
@@ -3626,16 +3646,6 @@ p, li { white-space: pre-wrap; }
    <extends>QWidget</extends>
    <header>widgets/wdgbemerkung.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>PushButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/pushbutton.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>DoubleSpinBoxSud</class>
@@ -3654,12 +3664,13 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>scrollArea</tabstop>
+  <tabstop>splitterHelp</tabstop>
   <tabstop>tbSudname</tabstop>
   <tabstop>tbSudnummer</tabstop>
   <tabstop>cbKategorie</tabstop>
   <tabstop>btnKategorienVerwalten</tabstop>
   <tabstop>cbAnlage</tabstop>
+  <tabstop>btnAnlage</tabstop>
   <tabstop>tbMenge</tabstop>
   <tabstop>tbSW</tabstop>
   <tabstop>btnSudhausausbeute</tabstop>
@@ -3676,15 +3687,14 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbCO2</tabstop>
   <tabstop>tbReifezeit</tabstop>
   <tabstop>tabWidget_2</tabstop>
-  <tabstop>wdgBemerkung</tabstop>
   <tabstop>tableTags</tabstop>
   <tabstop>btnTagNeu</tabstop>
+  <tabstop>btnTagUebernehmen</tabstop>
   <tabstop>btnTagLoeschen</tabstop>
   <tabstop>scrollAreaAnhang</tabstop>
   <tabstop>btnNeuerAnhang</tabstop>
   <tabstop>tabMitte</tabstop>
-  <tabstop>btnMalzAufteilen</tabstop>
-  <tabstop>btnMalzProzente</tabstop>
+  <tabstop>btnMalzAusgleichen</tabstop>
   <tabstop>scrollAreaMalzGaben</tabstop>
   <tabstop>diagramMalz</tabstop>
   <tabstop>btnNeueMalzGabe</tabstop>
@@ -3692,6 +3702,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>btnNeueZusatzGabeMaischen</tabstop>
   <tabstop>btnZusazGabenUebernehmenMaischen</tabstop>
   <tabstop>cbBerechnungsartHopfen</tabstop>
+  <tabstop>btnHopfenAusgleichen</tabstop>
   <tabstop>scrollAreaHopfenGaben</tabstop>
   <tabstop>diagramHopfen</tabstop>
   <tabstop>btnNeueHopfenGabe</tabstop>
@@ -3710,28 +3721,29 @@ p, li { white-space: pre-wrap; }
   <tabstop>btnNeueRast</tabstop>
   <tabstop>btnRastenUebernehmen</tabstop>
   <tabstop>cbWasserProfil</tabstop>
+  <tabstop>btnWasserProfil</tabstop>
   <tabstop>tbRestalkalitaetWasser</tabstop>
   <tabstop>tbRestalkalitaetSoll</tabstop>
   <tabstop>tbRestalkalitaetIst</tabstop>
   <tabstop>tbPhMalz</tabstop>
   <tabstop>tbPhMaischeSoll</tabstop>
   <tabstop>tbPhMaische</tabstop>
+  <tabstop>scrollAreaWasseraufbereitung</tabstop>
+  <tabstop>btnNeueWasseraufbereitung</tabstop>
   <tabstop>btnWasseraufbereitungUebernehmen</tabstop>
-  <tabstop>splitterHelp</tabstop>
-  <tabstop>gvGlas</tabstop>
-  <tabstop>tbFarbe</tabstop>
-  <tabstop>tbGesamtschuettung</tabstop>
-  <tabstop>tbSWMalz</tabstop>
   <tabstop>tbSWWZMaischen</tabstop>
   <tabstop>tbSWWZKochen</tabstop>
   <tabstop>tbSWWZGaerung</tabstop>
   <tabstop>tbRestextrakt</tabstop>
+  <tabstop>gvGlas</tabstop>
+  <tabstop>tbFarbe</tabstop>
   <tabstop>tbAlkohol</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>tbWasserGesamt</tabstop>
   <tabstop>tbHauptguss</tabstop>
   <tabstop>tbHauptgussEmpfohlen</tabstop>
   <tabstop>tbNachguss</tabstop>
+  <tabstop>tbWasserHGF</tabstop>
   <tabstop>tbAnlageKorrekturSollmenge</tabstop>
   <tabstop>tbAnlageSudhausausbeute</tabstop>
   <tabstop>tbAnlageVerdampfung</tabstop>
@@ -3739,11 +3751,11 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbVolumenMaische</tabstop>
   <tabstop>tbAnlageVolumenKochen</tabstop>
   <tabstop>tbVolumenKochen</tabstop>
-  <tabstop>scrollArea_6</tabstop>
-  <tabstop>btnTagUebernehmen</tabstop>
-  <tabstop>scrollAreaWasseraufbereitung</tabstop>
-  <tabstop>btnNeueWasseraufbereitung</tabstop>
   <tabstop>tbHelp</tabstop>
+  <tabstop>tbGesamtschuettung</tabstop>
+  <tabstop>tbSWMalz</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>scrollArea_6</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

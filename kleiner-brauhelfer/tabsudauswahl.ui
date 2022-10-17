@@ -148,9 +148,12 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QCheckBox" name="cbDatumAlle">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Suchzeitraum&lt;/span&gt; aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
-            <string>Braudatum zwischen</string>
+            <string>Gebraut zwischen</string>
            </property>
           </widget>
          </item>
@@ -196,16 +199,6 @@
            </property>
            <property name="calendarPopup">
             <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="cbDatumAlle">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Suchzeitraum&lt;/span&gt; aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>alle</string>
            </property>
           </widget>
          </item>
@@ -597,7 +590,6 @@
   <tabstop>cbMerkliste</tabstop>
   <tabstop>tbDatumVon</tabstop>
   <tabstop>tbDatumBis</tabstop>
-  <tabstop>cbDatumAlle</tabstop>
   <tabstop>tbFilter</tabstop>
   <tabstop>tableSudauswahl</tabstop>
  </tabstops>

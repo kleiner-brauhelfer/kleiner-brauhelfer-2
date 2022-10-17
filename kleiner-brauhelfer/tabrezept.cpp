@@ -73,9 +73,9 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
 
     ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
-    ui->btnMalzAufteilen->setPalette(gSettings->paletteErrorButton);
-    ui->btnMalzProzente->setPalette(gSettings->paletteErrorButton);
-    ui->lblBerechnungsartHopfenWarnung->setPalette(gSettings->paletteErrorLabel);
+    ui->btnMalzAusgleichen->setError(true);
+    ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
+    ui->btnHopfenAusgleichen->setError(true);
     ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
 
     pal = ui->btnNeueMalzGabe->palette();
@@ -646,7 +646,22 @@ void TabRezept::updateValues()
     Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
     if (!ui->cbBerechnungsartHopfen->hasFocus())
         ui->cbBerechnungsartHopfen->setCurrentIndex(static_cast<int>(berechnungsArtHopfen) + 1);
-    ui->lblBerechnungsartHopfenWarnung->setVisible(berechnungsArtHopfen == Brauhelfer::BerechnungsartHopfen::Keine);
+    switch (berechnungsArtHopfen)
+    {
+    case Brauhelfer::BerechnungsartHopfen::Keine:
+        ui->lblWarnungHopfen->setText(tr("Die Berechnung der Hopfengaben ist deaktiviert."));
+        ui->btnHopfenAusgleichen->setVisible(false);
+        break;
+    case Brauhelfer::BerechnungsartHopfen::Gewicht:
+        ui->lblWarnungHopfen->setText(tr("Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge."));
+        ui->btnHopfenAusgleichen->setVisible(true);
+        break;
+    case Brauhelfer::BerechnungsartHopfen::IBU:
+        ui->lblWarnungHopfen->setText(tr("Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere."));
+        ui->btnHopfenAusgleichen->setVisible(true);
+        break;
+    }
+
     updateGlas();
 }
 
@@ -865,7 +880,7 @@ void TabRezept::updateMalzGaben()
         }
         if (std::fabs(p) < 0.01)
             p = 0.0;
-        for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+        for (int i = 0; i < count; ++i)
         {
             WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
             wdg->setFehlProzent(p);
@@ -969,31 +984,26 @@ void TabRezept::on_btnZusazGabenUebernehmenMaischen_clicked()
     }
 }
 
-void TabRezept::on_btnMalzAufteilen_clicked()
+void TabRezept::on_btnMalzAusgleichen_clicked()
 {
-    if (ui->layoutMalzGaben->count() == 0)
-        return;
-    const WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(0)->widget());
-    double pAdd = wdg->fehlProzent() / ui->layoutMalzGaben->count();
     ProxyModel *model = bh->sud()->modelMalzschuettung();
+    double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
+        totalProzent += model->data(i, ModelMalzschuettung::ColProzent).toDouble();
+    if (totalProzent > 0)
     {
-        double p = model->data(i, ModelMalzschuettung::ColProzent).toDouble();
-        model->setData(i, ModelMalzschuettung::ColProzent, p + pAdd);
+        double factor = 100 / totalProzent;
+        for (int i = 0; i < model->rowCount(); ++i)
+        {
+            double prozent = model->data(i, ModelMalzschuettung::ColProzent).toDouble();
+            model->setData(i, ModelMalzschuettung::ColProzent, prozent * factor);
+        }
     }
-}
-
-void TabRezept::on_btnMalzProzente_clicked()
-{
-    double total = 0;
-    ProxyModel *model = bh->sud()->modelMalzschuettung();
-    for (int i = 0; i < model->rowCount(); ++i)
-        total += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
-    double factor = bh->sud()->geterg_S_Gesamt() / total;
-    for (int i = 0; i < model->rowCount(); ++i)
+    else
     {
-        double menge = model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
-        model->setData(i, ModelMalzschuettung::Colerg_Menge, menge * factor);
+        double prozent = 100.0 / model->rowCount();
+        for (int i = 0; i < model->rowCount(); ++i)
+            model->setData(i, ModelMalzschuettung::ColProzent, prozent);
     }
 }
 
@@ -1031,18 +1041,24 @@ void TabRezept::updateHopfenGaben()
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         double p = 100.0;
-        for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        int count = ui->layoutHopfenGaben->count();
+        for (int i = 0; i < count; ++i)
         {
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             p -= wdg->prozent();
         }
         if (std::fabs(p) < 0.01)
             p = 0.0;
-        for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
+        for (int i = 0; i < count; ++i)
         {
             WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
             wdg->setFehlProzent(p);
         }
+        ui->wdgWarnungHopfen->setVisible(p != 0.0 && count > 1);
+    }
+    else
+    {
+        ui->wdgWarnungHopfen->setVisible(false);
     }
     updateHopfenDiagram();
 }
@@ -1129,6 +1145,29 @@ void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
     {
         bh->sud()->setberechnungsArtHopfen(index - 1);
         updateHopfenGaben();
+    }
+}
+
+void TabRezept::on_btnHopfenAusgleichen_clicked()
+{
+    ProxyModel *model = bh->sud()->modelHopfengaben();
+    double totalProzent = 0;
+    for (int i = 0; i < model->rowCount(); ++i)
+        totalProzent += model->data(i, ModelHopfengaben::ColProzent).toDouble();
+    if (totalProzent > 0)
+    {
+        double factor = 100.0 / totalProzent;
+        for (int i = 0; i < model->rowCount(); ++i)
+        {
+            double prozent = model->data(i, ModelHopfengaben::ColProzent).toDouble();
+            model->setData(i, ModelHopfengaben::ColProzent, prozent * factor);
+        }
+    }
+    else
+    {
+        double prozent = 100.0 / model->rowCount();
+        for (int i = 0; i < model->rowCount(); ++i)
+            model->setData(i, ModelHopfengaben::ColProzent, prozent);
     }
 }
 

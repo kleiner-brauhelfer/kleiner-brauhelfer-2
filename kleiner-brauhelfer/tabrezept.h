@@ -39,8 +39,7 @@ private slots:
     void on_btnMalzGabenUebernehmen_clicked();
     void on_btnNeueZusatzGabeMaischen_clicked();
     void on_btnZusazGabenUebernehmenMaischen_clicked();
-    void on_btnMalzAufteilen_clicked();
-    void on_btnMalzProzente_clicked();
+    void on_btnMalzAusgleichen_clicked();
 
     void hopfenGaben_modified();
     void updateHopfenGaben();
@@ -50,6 +49,7 @@ private slots:
     void on_btnNeueZusatzGabeKochen_clicked();
     void on_btnZusazGabenUebernehmenKochen_clicked();
     void on_cbBerechnungsartHopfen_currentIndexChanged(int index);
+    void on_btnHopfenAusgleichen_clicked();
 
     void hefeGaben_modified();
     void on_btnNeueHefeGabe_clicked();

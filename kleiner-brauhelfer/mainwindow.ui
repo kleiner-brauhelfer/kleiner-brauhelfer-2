@@ -218,7 +218,6 @@
     <addaction name="actionFormelsammlung"/>
     <addaction name="actionAndroidApp"/>
     <addaction name="separator"/>
-    <addaction name="actionSpende"/>
     <addaction name="actionUeber"/>
    </widget>
    <widget class="QMenu" name="menuSud">
@@ -330,11 +329,6 @@
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
-   </property>
-  </action>
-  <action name="actionSpende">
-   <property name="text">
-    <string>Spende</string>
    </property>
   </action>
   <action name="actionSudGebraut">
@@ -570,11 +564,6 @@
    </property>
    <property name="text">
     <string>Animationen</string>
-   </property>
-  </action>
-  <action name="actionBierspende">
-   <property name="text">
-    <string>Bierspende</string>
    </property>
   </action>
   <action name="actionDeutsch">

@@ -969,11 +969,6 @@ void MainWindow::on_actionModule_triggered()
     DlgAbstract::showDialog<DlgModule>(this);
 }
 
-void MainWindow::on_actionSpende_triggered()
-{
-    QDesktopServices::openUrl(QUrl(URL_SPENDE));
-}
-
 void MainWindow::on_actionHilfe_triggered()
 {
     DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);

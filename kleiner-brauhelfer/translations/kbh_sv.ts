@@ -74,7 +74,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="285"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="299"/>
         <source>Neues Gerät</source>
         <translation>Ny utrustning</translation>
     </message>
@@ -410,57 +410,57 @@
         <translation>Brauheld Pro 30L</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="56"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="70"/>
         <source>Anlage</source>
         <translation>Anläggning</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="57"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="71"/>
         <source>Typ</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="58"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="72"/>
         <source>Vermögen [l]</source>
         <translation>Förmåga [l]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="59"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="73"/>
         <source>Anzahl Sude</source>
         <translation>Antal satser</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="60"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="74"/>
         <source>Anzahl gebraute Sude</source>
         <translation>Antal bryggda satser</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="73"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="87"/>
         <source>Bezeichnung</source>
         <translation>Beteckning</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="248"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="262"/>
         <source>Neue Brauanlage</source>
         <translation>Ny anläggning</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="268"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="282"/>
         <source>Brauanlage löschen?</source>
         <translation>Ta bort anläggningen?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="269"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="283"/>
         <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort anläggningen &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="306"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="320"/>
         <source>Gerät löschen?</source>
         <translation>Ta bort utrustning?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.cpp" line="307"/>
+        <location filename="../dialogs/dlgausruestung.cpp" line="321"/>
         <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort utrustning &quot;%1&quot;?</translation>
     </message>
@@ -529,72 +529,72 @@
         <translation type="vanished">Vilka saster visas kan stallas in i satsurvalet. Bara flasktappade satser visas.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="136"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="150"/>
         <source>&lt;keine&gt;</source>
         <translation>&lt;inga&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="137"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="151"/>
         <source>Abgefüllte Biermenge</source>
         <translation>Mängden flask-/fattappad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="138"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="152"/>
         <source>Schüttung</source>
         <translation>Malt o dyl</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="138"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="152"/>
         <source>kg</source>
         <translation>kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="139"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="153"/>
         <source>Stammwürze</source>
         <translation>Stamvört (OG)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="140"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="154"/>
         <source>Sudhausausbeute</source>
         <translation>Mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="141"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="155"/>
         <source>Effektive Sudhausausbeute</source>
         <translation>Effektiv mäskutbyte</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="142"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="156"/>
         <source>Verdampfungsrate</source>
         <translation>Förångningshastighet</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="142"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="156"/>
         <source>l/h</source>
         <translation>l/h</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="143"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="157"/>
         <source>Alkohol</source>
         <translation>Alkoholhalt</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="144"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="158"/>
         <source>Scheinbarer Restextrakt</source>
         <translation>Skenbar slutlig extrakthalt</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="145"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="159"/>
         <source>Scheinbarer Endvergärungsgrad</source>
         <translation>Skenbar förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="146"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="160"/>
         <source>Tatsächlicher Endvergärungsgrad</source>
         <translation>Verklig förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="148"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="162"/>
         <source>Kosten</source>
         <translation>Kostnader</translation>
     </message>
@@ -603,7 +603,7 @@
         <translation type="vanished">Mängden flask-/fattappad [l]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="137"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="151"/>
         <source>l</source>
         <translation>l</translation>
     </message>
@@ -612,8 +612,8 @@
         <translation type="vanished">Stamvört [°P]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="139"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="144"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="153"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="158"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
@@ -622,11 +622,11 @@
         <translation type="vanished">Mäskutbyte [%]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="140"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="141"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="143"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="145"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="146"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="154"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="155"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="157"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="159"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="160"/>
         <source>%</source>
         <translation>%</translation>
     </message>
@@ -655,7 +655,7 @@
         <translation type="vanished">Kostnader [%1/l]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="148"/>
+        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="162"/>
         <source>%1/l</source>
         <translation>%1/l</translation>
     </message>
@@ -1943,10 +1943,10 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="413"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="416"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="419"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="422"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="426"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="429"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="432"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="435"/>
         <source>Neuer Eintrag</source>
         <translation>Lägg till</translation>
     </message>
@@ -2051,39 +2051,39 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">ml</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="76"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="96"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="116"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="139"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="89"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="109"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="129"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="152"/>
         <source>Name</source>
         <translation>Namn</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="77"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="90"/>
         <source>Menge [kg]</source>
         <translation>Mängd [kg]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="78"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="144"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="91"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="157"/>
         <source>Farbe [EBC]</source>
         <translation>Färg [EBC]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="79"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="92"/>
         <source>pH</source>
         <translation>pH</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="80"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="93"/>
         <source>Max. Anteil [%]</source>
         <translation>Max. andel [%]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="81"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="100"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="118"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="145"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="94"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="113"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="131"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="158"/>
         <source>Bemerkung</source>
         <translation>Anmärkningar</translation>
     </message>
@@ -2092,125 +2092,125 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Egenskaper</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="83"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="103"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="126"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="147"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="96"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="116"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="139"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="160"/>
         <source>Alternativen</source>
         <translation>Alternativ</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="84"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="104"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="97"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="117"/>
         <source>Preis [%1/kg]</source>
         <translation>Kostnader [%1/l]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="85"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="105"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="128"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="149"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="98"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="118"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="141"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="162"/>
         <source>Einlagerung</source>
         <translation>Kom in i lagret</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="86"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="106"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="129"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="150"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="99"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="119"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="142"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="163"/>
         <source>Haltbarkeit</source>
         <translation>Bäst före</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="87"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="107"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="130"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="151"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="100"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="120"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="143"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="164"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="97"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="110"/>
         <source>Menge [g]</source>
         <translation>Mängd [g]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="98"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="111"/>
         <source>Alpha [%]</source>
         <translation>Alpha [%]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="99"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="112"/>
         <source>Pellets</source>
         <translation>Pellets</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="82"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="101"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="119"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="146"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="95"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="114"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="132"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="159"/>
         <source>Eigenschaften</source>
         <translation>Egenskaper</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="102"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="142"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="115"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="155"/>
         <source>Typ</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="117"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="140"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="130"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="153"/>
         <source>Menge</source>
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="120"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="133"/>
         <source>OG/UG</source>
         <translation>Över/underjäst</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="121"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="134"/>
         <source>Trocken/Flüssig</source>
         <translation>Torr/Flytande</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="122"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="135"/>
         <source>Würzemenge [l]</source>
         <translation>Vörtmängd [l]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="123"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="136"/>
         <source>Sedimentation</source>
         <translation>Sedimentering</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="124"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="137"/>
         <source>Vergärungsgrad</source>
         <translation>Förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="125"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="138"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="127"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="140"/>
         <source>Preis [%1]</source>
         <translation>Pris [%1/l]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="141"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="154"/>
         <source>Einheit</source>
         <translation>Enhet</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="143"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="156"/>
         <source>Ausbeute [%]</source>
         <translation>Utbye [%]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="148"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="161"/>
         <source>Preis [%1/[kg/l/Stk]]</source>
         <translation>Pris [%1/[kg/l/st.]</translation>
     </message>
@@ -2224,17 +2224,17 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffe.ui" line="377"/>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="513"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="526"/>
         <source>Kopie</source>
         <translation>Kopia</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="551"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="564"/>
         <source>Rohstoff wird verwendet</source>
         <translation>Råvara används</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffe.cpp" line="552"/>
+        <location filename="../dialogs/dlgrohstoffe.cpp" line="565"/>
         <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
         <translation>Denna råvara används i en stas som inte är bryggd ännu. Ska den tas bort ändå?</translation>
     </message>
@@ -3048,27 +3048,27 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Natrium (0 - 50 mg/l)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="30"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="44"/>
         <source>Wasserprofil</source>
         <translation>Vattenprofil</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="31"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="45"/>
         <source>Restalkalität [°dH]</source>
         <translation>Restalkalinitet [°dH]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="120"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="134"/>
         <source>Neues Profil</source>
         <translation>Nytt profil</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="157"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="171"/>
         <source>Wasserprofil löschen?</source>
         <translation>Ta bort vattenprofil?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="158"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="172"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort vattenprofilen &quot;%1&quot;?</translation>
     </message>
@@ -4147,11 +4147,6 @@ Installerad version: %2</translation>
         <translation>bar</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="850"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wir die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Temperatur&lt;/span&gt; des Jungbieres eingegeben. Anhand der Temperatur rechnet der Kleine Brauhelfer den benötigten Spundungsdruck auf das Fass oder ähnliches Gebinde aus, um die im Rezept festgelegte Karbonisierung CO₂/l zu erreichen.&lt;/p&gt;&lt;p&gt;Je kühler das Bier gelagert wird, um so weniger Druck ist nötig, da sich bei niedrigeren Temperaturen Kohlensäure im Bier besser löst. Umgekehrt heißt dies, dass sich bei einer kalten Lagerung der Druck erhöht, sobald der Inhalt erwärmt wird.&lt;/p&gt;&lt;p&gt;Bei hochkarbonisierten Bieren kann dies später ein Problem darstellen, das sich mindestens durch einen aufschäumenden Charakter bemerkbar macht.&lt;/p&gt;&lt;p&gt;Mit einer &lt;a href=&quot;http://www.braulotse.de/fileadmin/user_upload/Schanktechnik/Drucktabelle.htm&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Tabelle vom Sättigungsdruck von Kohlendioxid &lt;/span&gt;&lt;/a&gt;lässt sich der korrekte Druck fürs Bier leicht bestimmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tababfuellen.ui" line="891"/>
         <location filename="../tababfuellen.ui" line="1432"/>
         <source>°C</source>
@@ -4384,6 +4379,11 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="268"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Reifezeit&lt;/span&gt; in Wochen angegeben.&lt;/p&gt;&lt;p&gt;In Bezug auf den Beginn der Reifezeit gibt es unterschiedliche Philosophien in der Brauergemeinde. Der Kleine Brauhelfer gestaltet dieses Thema daher sehr offen: Üblich wird die Reifezeit berechnet&lt;/p&gt;&lt;p&gt;1. ab &lt;span style=&quot; font-weight:600;&quot;&gt;2/3 der Hauptgärung&lt;/span&gt;, entsprechend Tag 2 oder Tag3 einer gängigen Hefe&lt;/p&gt;&lt;p&gt;2 ab dem &lt;span style=&quot; font-weight:600;&quot;&gt;Tag der Abfüllung &lt;/span&gt;auf Fass oder Flasche&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="850"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Temperatur&lt;/span&gt; des Jungbieres eingegeben. Anhand der Temperatur rechnet der Kleine Brauhelfer den benötigten Spundungsdruck auf das Fass oder ähnliches Gebinde aus, um die im Rezept festgelegte Karbonisierung CO₂/l zu erreichen.&lt;/p&gt;&lt;p&gt;Je kühler das Bier gelagert wird, um so weniger Druck ist nötig, da sich bei niedrigeren Temperaturen Kohlensäure im Bier besser löst. Umgekehrt heißt dies, dass sich bei einer kalten Lagerung der Druck erhöht, sobald der Inhalt erwärmt wird.&lt;/p&gt;&lt;p&gt;Bei hochkarbonisierten Bieren kann dies später ein Problem darstellen, das sich mindestens durch einen aufschäumenden Charakter bemerkbar macht.&lt;/p&gt;&lt;p&gt;Mit einer &lt;a href=&quot;http://www.braulotse.de/fileadmin/user_upload/Schanktechnik/Drucktabelle.htm&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Tabelle vom Sättigungsdruck von Kohlendioxid &lt;/span&gt;&lt;/a&gt;lässt sich der korrekte Druck fürs Bier leicht bestimmen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5871,48 +5871,48 @@ Bryggdatum: %1</translation>
         <translation type="vanished">Förhandsvisning för utskrift</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="237"/>
+        <location filename="../tabetikette.cpp" line="226"/>
         <source>Änderungen speichern?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="238"/>
+        <location filename="../tabetikette.cpp" line="227"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="309"/>
+        <location filename="../tabetikette.cpp" line="298"/>
         <source>SVG auswählen</source>
         <translation>Välj SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="309"/>
+        <location filename="../tabetikette.cpp" line="298"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="389"/>
+        <location filename="../tabetikette.cpp" line="378"/>
         <source>SVG exportieren</source>
         <translation>Exportera SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="406"/>
+        <location filename="../tabetikette.cpp" line="395"/>
         <source>SVG Export</source>
         <translation>SVG-export</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="406"/>
+        <location filename="../tabetikette.cpp" line="395"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
         <translation>Filen kunde inte skrivas.</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="572"/>
+        <location filename="../tabetikette.cpp" line="578"/>
         <source>PDF speichern unter</source>
         <translation>Spara PDF som</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="390"/>
-        <location filename="../tabetikette.cpp" line="573"/>
+        <location filename="../tabetikette.cpp" line="379"/>
+        <location filename="../tabetikette.cpp" line="579"/>
         <source>Etikett</source>
         <translation>Etiketter</translation>
     </message>
@@ -5925,7 +5925,7 @@ Bryggdatum: %1</translation>
         <translation type="vanished">Ta bort etiketterna från receptet?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="696"/>
+        <location filename="../tabetikette.cpp" line="702"/>
         <source>Neuer Tag</source>
         <translation>Nytt nyckelord</translation>
     </message>
@@ -6360,7 +6360,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="667"/>
-        <location filename="../tabrezept.cpp" line="1449"/>
+        <location filename="../tabrezept.cpp" line="1505"/>
         <source>Kategorie</source>
         <translation>Kategori</translation>
     </message>
@@ -6485,7 +6485,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation>Andelen avser</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="652"/>
+        <location filename="../tabrezept.cpp" line="654"/>
         <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
         <translation>Humleberäkningen är avaktiverat.</translation>
     </message>
@@ -6526,7 +6526,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1862"/>
-        <location filename="../tabrezept.cpp" line="254"/>
+        <location filename="../tabrezept.cpp" line="256"/>
         <source>Wasseraufbereitung</source>
         <translation>Vattenanpassning</translation>
     </message>
@@ -6731,11 +6731,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabrezept.ui" line="674"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nummerierung wirkt sich nicht auf das Rezept aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="2175"/>
-        <source>edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7117,97 +7112,97 @@ p, li { white-space: pre-wrap; }
         <translation>Korrektion av målängden</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="205"/>
+        <location filename="../tabrezept.cpp" line="207"/>
         <source>Tag</source>
         <translation>Nyckelord</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="206"/>
+        <location filename="../tabrezept.cpp" line="208"/>
         <source>Wert</source>
         <translation>Värde</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="207"/>
+        <location filename="../tabrezept.cpp" line="209"/>
         <source>Global</source>
         <translation>Global</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="399"/>
+        <location filename="../tabrezept.cpp" line="401"/>
         <source>Rohstoff importieren?</source>
         <translation>Importera ingrediens?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="387"/>
+        <location filename="../tabrezept.cpp" line="389"/>
         <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Malt &quot;%1&quot; finns inte i lagret. Ska det läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="390"/>
+        <location filename="../tabrezept.cpp" line="392"/>
         <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Humlen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="393"/>
+        <location filename="../tabrezept.cpp" line="395"/>
         <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Jäst &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="396"/>
+        <location filename="../tabrezept.cpp" line="398"/>
         <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
         <translation>Ingrediensen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="629"/>
+        <location filename="../tabrezept.cpp" line="631"/>
         <source>sehr mild</source>
         <translation>mycket mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="631"/>
+        <location filename="../tabrezept.cpp" line="633"/>
         <source>mild</source>
         <translation>mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="633"/>
+        <location filename="../tabrezept.cpp" line="635"/>
         <source>ausgewogen</source>
         <translation>balanserad</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="635"/>
+        <location filename="../tabrezept.cpp" line="637"/>
         <source>moderat herb</source>
         <translation>något besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="637"/>
+        <location filename="../tabrezept.cpp" line="639"/>
         <source>sehr herb</source>
         <translation>mycket besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="656"/>
+        <location filename="../tabrezept.cpp" line="658"/>
         <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="660"/>
+        <location filename="../tabrezept.cpp" line="662"/>
         <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1217"/>
+        <location filename="../tabrezept.cpp" line="1267"/>
         <source>Vergärungsgrad übernehmen?</source>
         <translation>Ta över förjäsningsgrad?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1218"/>
+        <location filename="../tabrezept.cpp" line="1268"/>
         <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
         <translation>Ska jästens förjäsningsgrad (%1%) tas över?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1450"/>
+        <location filename="../tabrezept.cpp" line="1506"/>
         <source>Sudkategorien verwalten</source>
         <translation>Förvalta satskategorierna</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1486"/>
+        <location filename="../tabrezept.cpp" line="1542"/>
         <source>Neuer Tag</source>
         <translation>Nytt nyckelord</translation>
     </message>
@@ -7700,9 +7695,39 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TableView</name>
     <message>
-        <location filename="../widgets/tableview.cpp" line="121"/>
+        <location filename="../widgets/tableview.cpp" line="131"/>
         <source>Zurücksetzen</source>
         <translation>Återställ</translation>
+    </message>
+    <message>
+        <location filename="../widgets/tableview.cpp" line="135"/>
+        <source>Alles kopieren</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/tableview.cpp" line="138"/>
+        <source>Auswahl kopieren</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/tableview.cpp" line="142"/>
+        <source>Alles drucken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/tableview.cpp" line="145"/>
+        <source>Auswahl drucken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/tableview.cpp" line="388"/>
+        <source>Drucken</source>
+        <translation type="unfinished">Skriv ut</translation>
+    </message>
+    <message>
+        <location filename="../widgets/tableview.cpp" line="389"/>
+        <source>Überschrift:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8137,7 +8162,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.cpp" line="134"/>
+        <location filename="../widgets/wdgmalzgabe.ui" line="399"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Extraktmenge 100% unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert&lt;/span&gt; gibt an, dass &lt;span style=&quot; font-weight:600;&quot;&gt;zu wenig Rohstoffmenge &lt;/span&gt;gewählt wurde, ein &lt;span style=&quot; font-weight:600;&quot;&gt;positiver Wert&lt;/span&gt;, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Rohstoffmenge &lt;/span&gt;gewählt wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgmalzgabe.cpp" line="138"/>
         <source>Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.</source>
         <translation>Rekommenderade maximala andelen (%1%) överskrids.</translation>
     </message>
@@ -8747,27 +8777,27 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Redigeringsläge</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="172"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="155"/>
         <source>PDF speichern unter</source>
         <translation>Spara PDF som</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="210"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="193"/>
         <source>Änderungen speichern?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="211"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="194"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="255"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="238"/>
         <source>Template wiederherstellen?</source>
         <translation>Återställ mallen?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="256"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="239"/>
         <source>Soll das Standardtemplate wiederhergestellt werden?</source>
         <translation>Äterställ standardmallen?</translation>
     </message>
@@ -8787,8 +8817,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="185"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="139"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="146"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="143"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="150"/>
         <source>g/l</source>
         <translation>g/l</translation>
     </message>
@@ -8814,27 +8844,27 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Mäskning</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="377"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="425"/>
         <source>Kochdauer</source>
         <translation>Koktid</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="390"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="438"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; für den Zusatz definiert, so diese beim Hopfenkochen zugegeben wird. Beim Maischen und in der Gärung ist dieser Wert 0.&lt;/p&gt;&lt;p&gt;Die Kochdauer kann entscheidend in der Betonung von &lt;span style=&quot; font-weight:600;&quot;&gt;Geschmacksnoten&lt;/span&gt; sein, da sich Zugaben beim Kochen zeitlich vollkommen unterschiedlich verhalten können oder später das Verhalten anderer Zugaben beeinflussen. Ein Beispiel hierfür ist Hefe. Auch Gewürzeinträge unterscheiden sich maßgebend, je nachdem, ob heiß oder kalt zugegeben.&lt;/p&gt;&lt;p&gt;Dies rührt unter anderem daher, dass Molekülketten bei mit höherer Temperatur und längerer Zeit aufgespalten werden können und sich damit Geschmacks- oder Geruchskomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;unterschiedlich dominant&lt;/span&gt; verhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="460"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="508"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die Zugabe von einem Zusatz mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Erst mit der Zugabe kann die Menge später aus de Rohstofflager abgezogen werden. Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Zugeben&lt;/span&gt; vergessen, kann später der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="495"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="543"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zugabezeitpunkt weiterer Zutaten ab Braudatum angegeben. Das Braudatum ist meist identisch mit dem Anstelldatum der Hefe, kann aber auch vor der Hefegabe liegen, etwa wenn über Nacht gebraut wird. &lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt&lt;/span&gt; kann entscheidend für den Gärverlauf und den Geschmack sein.&lt;/p&gt;&lt;p&gt;Gewöhnlich erfolgt die Zugabe weiterer Zutaten nach der Hauptgärung. Hefenährstoffe etwa werden oft schon beim Kochen hinzugegeben. Der Zugabezeitpunkt ist eine Stellschraube beim Ausbau der Geschmacksidee. Bei Zweifeln hilft vorab die einschlägige Literatur oder die bekannten Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="409"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="457"/>
         <source>min</source>
         <translation>min</translation>
     </message>
@@ -8864,12 +8894,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="573"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="621"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; voneinem Zusatz mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; color:#fc0107;&quot;/&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Die Entname ist ein Schritt, um die&lt;/span&gt; die Menge später aus de Rohstofflager abzuziehen. Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Entnehmen&lt;/span&gt; vergessen, kann später im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="583"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="631"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; der Zugabe festgelegt. Flüssigkeiten oder lösliche Stoffe werden mit keiner Entnahme definiert. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Ist eine &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; vorgesehen, empfiehlt sich ein verschnürbares Baumwollsäckchen, um das Jungbier nicht unnötig zu verunreinigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8904,53 +8934,68 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="453"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="363"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz prozentual &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in % kann anschließend angepasst werden, so eine prozentuale Verteilung der Malze bevorzugt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="391"/>
+        <source>%</source>
+        <translation type="unfinished">%</translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="398"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Extraktmenge 100% unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert&lt;/span&gt; gibt an, dass &lt;span style=&quot; font-weight:600;&quot;&gt;zu wenig Rohstoffmenge &lt;/span&gt;gewählt wurde, ein &lt;span style=&quot; font-weight:600;&quot;&gt;positiver Wert&lt;/span&gt;, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Rohstoffmenge &lt;/span&gt;gewählt wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="501"/>
         <source>Zugabe nach</source>
         <translation>Lägg till efter</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="463"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="511"/>
         <source>Zugeben</source>
         <translation>Lägg till</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="476"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="524"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Entnahmezeitpunkt weiterer Zutaten ab Zugabezeitpunkt angegeben. Der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt&lt;/span&gt; kann entscheidend für den Gärverlauf und den Geschmack sein.&lt;/p&gt;&lt;p&gt;Ein populäres Beispiel hierfür ist Zucker, der sowohl für den Alkoholgehalt und trockenen Geschmack oder einen gegenteiligen süßlichen Eindruck eingesetzt werden kann als auch für die Karbonisierung.&lt;/p&gt;&lt;p&gt;Gewöhnlich erfolgt die Zugabe weiterer Zutaten nach der Hauptgärung. Hefenährstoffe etwa werden oft schon beim Kochen hinzugegeben.&lt;/p&gt;&lt;p&gt;Der Zugabezeitpunkt ist eine Stellschraube beim Ausbau der Geschmacksidee. Bei Zweifeln hilft vorab die einschlägige Literatur oder die bekannten Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="514"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="562"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier definiert der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum&lt;/span&gt; der Zugabe, abhängig vom gewählten Zugabezeitpunkt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="527"/>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="534"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="575"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="582"/>
         <source>Tage</source>
         <translation>Dagar</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="560"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="608"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier definiert der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahmedatum&lt;/span&gt; der Zugabe, abhängig vom gewählten Entnahmezeitpunkt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="576"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="624"/>
         <source>Entnehmen</source>
         <translation>Ta ur</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="586"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="634"/>
         <source>keine Entnahme</source>
         <translation>Tas inte ur</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="593"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="641"/>
         <source>Entnahme nach</source>
         <translation>Tas ur efter</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="615"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="663"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist ein Freitextfeld für einen &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8959,23 +9004,23 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Kommentar.</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="153"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="157"/>
         <source>mg/l</source>
         <translation>mg/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="160"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="164"/>
         <source>Stk./l</source>
         <translation>st./l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="167"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="174"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="171"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="178"/>
         <source>ml/l</source>
         <translation>ml/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="225"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="235"/>
         <source>Hopfen</source>
         <translation>Humle</translation>
     </message>

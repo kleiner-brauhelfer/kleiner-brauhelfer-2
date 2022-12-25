@@ -2172,7 +2172,7 @@ p, li { white-space: pre-wrap; }
              </size>
             </property>
             <property name="whatsThis">
-             <string>edit</string>
+             <string notr="true">edit</string>
             </property>
             <property name="icon">
              <iconset resource="images.qrc">

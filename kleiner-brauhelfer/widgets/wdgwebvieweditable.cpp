@@ -87,9 +87,13 @@ void WdgWebViewEditable::setPrintable(bool isPrintable)
 }
 
 #ifdef QT_PRINTSUPPORT_LIB
-void WdgWebViewEditable::printDocument(QPrinter *printer)
+void WdgWebViewEditable::onPrinterPaintRequested(QPrinter *printer)
 {
 #if defined(QT_WEBENGINECORE_LIB) && (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+    QWidget* parent = qobject_cast<QWidget*>(sender());
+    if(parent)
+        parent->setEnabled(false);
+
     QEventLoop loop;
   #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
     ui->webview->print(printer);
@@ -108,6 +112,9 @@ void WdgWebViewEditable::printDocument(QPrinter *printer)
   #endif
     gSettings->setValue("PrintMargins", rect);
     gSettings->endGroup();
+
+    if(parent)
+        parent->setEnabled(true);
 #else
   Q_UNUSED(printer)
 #endif
@@ -146,7 +153,7 @@ void WdgWebViewEditable::printPreview()
     gSettings->endGroup();
 
     QPrintPreviewDialog dlg(&printer, ui->webview);
-    connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(printDocument(QPrinter*)));
+    connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
     dlg.exec();
 
     if (gSettings->theme() == Settings::Dark)

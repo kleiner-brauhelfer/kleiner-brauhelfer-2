@@ -8,7 +8,9 @@ namespace Ui {
 class TabEtikette;
 }
 
+#ifdef QT_PRINTSUPPORT_LIB
 class QPrinter;
+#endif
 
 class TabEtikette : public TabAbstract
 {
@@ -59,17 +61,16 @@ private:
     QString generateSvg(const QString &svg);
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
-    void loadPageLayout();
-    void savePageLayout();
+  #ifdef QT_PRINTSUPPORT_LIB
+    void loadPageLayout(QPrinter *printer);
+    void savePageLayout(const QPrinter *printer);
+  #endif
 
 private:
     Ui::TabEtikette *ui;
     QString mTemplateFilePath;
     HtmlHighLighter* mHtmlHightLighter;
     QVariantMap mTemplateTags;
-  #ifdef QT_PRINTSUPPORT_LIB
-    QPrinter* mPrinter;
-  #endif
 };
 
 #endif // TABETIKETTE_H

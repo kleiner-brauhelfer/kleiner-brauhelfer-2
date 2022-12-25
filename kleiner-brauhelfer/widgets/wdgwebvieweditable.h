@@ -34,7 +34,7 @@ public slots:
 
 private slots:
   #ifdef QT_PRINTSUPPORT_LIB
-    void printDocument(QPrinter *printer);
+    void onPrinterPaintRequested(QPrinter *printer);
   #endif
     void on_cbEditMode_clicked(bool checked);
     void on_cbTemplateAuswahl_currentTextChanged(const QString &fileName);

@@ -2,6 +2,9 @@
 #define TABLEVIEW_H
 
 #include <QTableView>
+#ifdef QT_PRINTSUPPORT_LIB
+#include <QPrinter>
+#endif
 
 class TableView : public QTableView
 {
@@ -30,6 +33,13 @@ public:
 public slots:
     void restoreDefaultState();
     bool restoreState(const QByteArray &state);
+    void copyToClipboard(bool selectionOnly = false) const;
+    void copyToClipboardSelection() const;
+  #ifdef QT_PRINTSUPPORT_LIB
+    void printPreview(bool selectionOnly = false) const;
+    void printPreviewSelection() const;
+    void printerPaintRequested(QPrinter *printer, bool selectionOnly, const QString &title) const;
+  #endif
 
 private slots:
     void setColumnVisible(bool visible);
@@ -37,6 +47,7 @@ private slots:
 
 private:
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
+    QString indexValue(const QModelIndex& index) const;
 
 private:
     QList<ColumnDefinition> mCols;

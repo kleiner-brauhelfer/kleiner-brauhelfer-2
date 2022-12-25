@@ -2,6 +2,9 @@
 #include <QGuiApplication>
 #include <QDir>
 #include <QFileInfo>
+#ifdef QT_PRINTSUPPORT_LIB
+#include <QPrinterInfo>
+#endif
 #include <QLoggingCategory>
 
 Settings::Settings(QObject *parent) :
@@ -439,3 +442,41 @@ bool Settings::isNewProgramVersion()
 {
     return lastProgramVersion() != QCoreApplication::applicationVersion();
 }
+
+#ifdef QT_PRINTSUPPORT_LIB
+
+QPrinter* Settings::createPrinter()
+{
+    beginGroup("Printer");
+    QPrinterInfo printerInfo = QPrinterInfo::printerInfo(value("Name").toString());
+    QPrinter* printer = new QPrinter(printerInfo, QPrinter::HighResolution);
+    printer->setColorMode(QPrinter::Color);
+    QPageLayout layout;
+    layout.setOrientation((QPageLayout::Orientation)value("Orientation", QPageLayout::Portrait).toInt());
+    layout.setUnits(QPageLayout::Millimeter);
+    QRectF rect = value("Margins", QRectF(5, 10, 5, 15)).toRectF();
+    QMarginsF margins(rect.left(), rect.top(), rect.width(), rect.height());
+    layout.setPageSize(QPageSize((QPageSize::PageSizeId)value("Size", QPageSize::PageSizeId::A4).toInt()), margins);
+    printer->setPageLayout(layout);
+    endGroup();
+    return printer;
+}
+
+void Settings::savePrinter(const QPrinter* printer)
+{
+    beginGroup("Printer");
+    setValue("Name", printer->printerName());
+    setValue("Orientation", printer->pageLayout().orientation());
+    QPageSize pageSize = printer->pageLayout().pageSize();
+    if (pageSize.id() == QPageSize::Custom)
+        pageSize = QPageSize(printer->pageLayout().pageSize().sizePoints().transposed());
+    if (pageSize.id() == QPageSize::Custom)
+        pageSize = QPageSize(printer->pageLayout().pageSize().sizePoints());
+    setValue("Size", pageSize.id());
+    QMarginsF margins = printer->pageLayout().margins(QPageLayout::Millimeter);
+    QRectF rect(margins.left(), margins.top(), margins.right(), margins.bottom());
+    setValue("Margins", rect);
+    endGroup();
+}
+
+#endif

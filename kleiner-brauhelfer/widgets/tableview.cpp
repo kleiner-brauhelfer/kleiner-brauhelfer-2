@@ -5,11 +5,21 @@
 #include <QHeaderView>
 #include <QStyledItemDelegate>
 #include <QApplication>
+#include <QTextStream>
 #include <QClipboard>
+#ifdef QT_PRINTSUPPORT_LIB
+#include <QTextDocument>
+#include <QDateTime>
+#include <QInputDialog>
+#include <QPrintPreviewDialog>
+#endif
+#include "settings.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
 #endif
+
+extern Settings* gSettings;
 
 TableView::TableView(QWidget *parent) :
     QTableView(parent)
@@ -121,6 +131,21 @@ void TableView::buildContextMenu(QMenu& menu) const
     action = new QAction(tr("Zurücksetzen"), &menu);
     connect(action, SIGNAL(triggered()), this, SLOT(restoreDefaultState()));
     menu.addAction(action);
+    menu.addSeparator();
+    action = new QAction(tr("Alles kopieren"), &menu);
+    connect(action, SIGNAL(triggered()), this, SLOT(copyToClipboard()));
+    menu.addAction(action);
+    action = new QAction(tr("Auswahl kopieren"), &menu);
+    connect(action, SIGNAL(triggered()), this, SLOT(copyToClipboardSelection()));
+    menu.addAction(action);
+  #ifdef QT_PRINTSUPPORT_LIB
+    action = new QAction(tr("Alles drucken"), &menu);
+    connect(action, SIGNAL(triggered()), this, SLOT(printPreview()));
+    menu.addAction(action);
+    action = new QAction(tr("Auswahl drucken"), &menu);
+    connect(action, SIGNAL(triggered()), this, SLOT(printPreviewSelection()));
+    menu.addAction(action);
+  #endif
 }
 
 void TableView::clearCols()
@@ -166,57 +191,65 @@ void TableView::keyPressEvent(QKeyEvent* event)
     QTableView::keyPressEvent(event);
     if(event->matches(QKeySequence::Copy))
     {
-        QString clipboardText;
+        copyToClipboardSelection();
+    }
+}
 
-        if (!selectionModel()->hasSelection())
-            return;
+QString TableView::indexValue(const QModelIndex& index) const
+{
+    QString value;
+    QStyledItemDelegate* delegate = dynamic_cast<QStyledItemDelegate*>(itemDelegate(index));
+    if (delegate)
+        value = delegate->displayText(index.data(Qt::DisplayRole), locale());
+    if (value.isEmpty())
+        value = index.data(Qt::DisplayRole).toString();
+    return value;
+}
 
-        // get logical indexes of columns
-        QList<int> cols;
-        for (int col = 0; col < model()->columnCount(); ++col)
-        {
-            int colLogical = horizontalHeader()->logicalIndex(col);
-            if (!isColumnHidden(colLogical))
-                cols << colLogical;
-        }
+void TableView::copyToClipboard(bool selectionOnly) const
+{
+    QString clipboardText;
+    QTextStream out(&clipboardText);
 
-        // header
-        for (int col : qAsConst(cols))
-        {
-            QString value = model()->headerData(col, Qt::Horizontal).toString();
-            clipboardText.append(value);
-            if (col != cols.last())
-                clipboardText.append("\t");
-        }
-        clipboardText.append("\n");
+    // visible columns
+    QList<int> cols;
+    for (int col = 0; col < model()->columnCount(); ++col)
+    {
+        int colLogical = horizontalHeader()->logicalIndex(col);
+        if (!isColumnHidden(colLogical))
+            cols << colLogical;
+    }
 
+    // header
+    for (int col : qAsConst(cols))
+    {
+        QString value = model()->headerData(col, Qt::Horizontal).toString();
+        out << value;
+        if (col != cols.last())
+            out << "\t";
+    }
+    out << "\n";
+
+    // rows
+    if (selectionOnly)
+    {
         QModelIndexList rows = selectionModel()->selectedRows();
         if (!rows.isEmpty())
         {
-            // iterate rows
             for (QModelIndex& row : rows)
             {
                 for (int col : qAsConst(cols))
                 {
-                    QModelIndex index = row.sibling(row.row(), col);
-
-                    QString value;
-                    QStyledItemDelegate* delegate = dynamic_cast<QStyledItemDelegate*>(itemDelegate(index));
-                    if (delegate)
-                        value = delegate->displayText(index.data(Qt::DisplayRole), locale());
-                    if (value.isEmpty())
-                        value = index.data(Qt::DisplayRole).toString();
-                    clipboardText.append(value);
-
+                    QString value = indexValue(row.sibling(row.row(), col));
+                    out << value;
                     if (col != cols.last())
-                        clipboardText.append("\t");
+                        out << "\t";
                 }
-                clipboardText.append("\n");
+                out << "\n";
             }
         }
         else
         {
-            // iterate indexes
             int prevRow = -1;
             for (QModelIndex& row : selectionModel()->selectedIndexes())
             {
@@ -225,24 +258,147 @@ void TableView::keyPressEvent(QKeyEvent* event)
                 prevRow = row.row();
                 for (int col : qAsConst(cols))
                 {
-                    QModelIndex index = row.sibling(row.row(), col);
-
-                    QString value;
-                    QStyledItemDelegate* delegate = dynamic_cast<QStyledItemDelegate*>(itemDelegate(index));
-                    if (delegate)
-                        value = delegate->displayText(index.data(Qt::DisplayRole), locale());
-                    if (value.isEmpty())
-                        value = index.data(Qt::DisplayRole).toString();
-                    clipboardText.append(value);
-
+                    QString value = indexValue(row.sibling(row.row(), col));
+                    out << value;
                     if (col != cols.last())
-                        clipboardText.append("\t");
+                        out << "\t";
                 }
-                clipboardText.append("\n");
+                out << "\n";
             }
         }
-
-        // set clipboard text
-        QApplication::clipboard()->setText(clipboardText);
     }
+    else
+    {
+        for (int row = 0; row < model()->rowCount(); ++row)
+        {
+            for (int col : qAsConst(cols))
+            {
+                QString value = indexValue(model()->index(row, col));
+                out << value;
+                if (col != cols.last())
+                    out << "\t";
+            }
+            out << "\n";
+        }
+    }
+
+    QApplication::clipboard()->setText(clipboardText);
 }
+
+void TableView::copyToClipboardSelection() const
+{
+    copyToClipboard(true);
+}
+
+#ifdef QT_PRINTSUPPORT_LIB
+
+void TableView::printerPaintRequested(QPrinter *printer, bool selectionOnly, const QString& title) const
+{
+    QWidget* parent = qobject_cast<QWidget*>(sender());
+    if(parent)
+        parent->setEnabled(false);
+
+    QString html;
+    QTextStream out(&html);
+
+    // visible columns
+    QList<int> cols;
+    for (int col = 0; col < model()->columnCount(); ++col)
+    {
+        int colLogical = horizontalHeader()->logicalIndex(col);
+        if (!isColumnHidden(colLogical))
+            cols << colLogical;
+    }
+
+    out << "<html><body>";
+    if (!title.isEmpty())
+        out << "<h1>" << title << "</h1>";
+    out << "<table border=0 cellspacing=0 cellpadding=2>";
+
+    // header
+    out << "<thead><tr bgcolor=#f0f0f0>";
+    for (int col : qAsConst(cols))
+    {
+        QString value = model()->headerData(col, Qt::Horizontal).toString();
+        out << "<th>" << value << "</th>";
+    }
+    out << "</tr></thead>";
+
+    // rows
+    if (selectionOnly)
+    {
+        QModelIndexList rows = selectionModel()->selectedRows();
+        if (!rows.isEmpty())
+        {
+            for (QModelIndex& row : rows)
+            {
+                out << "<tr>";
+                for (int col : qAsConst(cols))
+                {
+                    QString value = indexValue(row.sibling(row.row(), col));
+                    out << "<td>" << value << "</td>";
+                }
+                out << "</tr>";
+            }
+        }
+        else
+        {
+            int prevRow = -1;
+            for (QModelIndex& row : selectionModel()->selectedIndexes())
+            {
+                if (prevRow == row.row())
+                    continue;
+                prevRow = row.row();
+                out << "<tr>";
+                for (int col : qAsConst(cols))
+                {
+                    QString value = indexValue(row.sibling(row.row(), col));
+                    out << "<td>" << value << "</td>";
+                }
+                out << "</tr>";
+            }
+        }
+    }
+    else
+    {
+        for (int row = 0; row < model()->rowCount(); row++)
+        {
+            out << "<tr>";
+            for (int col : qAsConst(cols))
+            {
+                QString value = indexValue(model()->index(row, col));
+                out << "<td>" << value << "</td>";
+            }
+            out << "</tr>";
+        }
+    }
+
+    out << "</table></body></html>";
+
+    QTextDocument doc;
+    doc.setHtml(html);
+    doc.print(printer);
+
+    if(parent)
+        parent->setEnabled(true);
+}
+
+void TableView::printPreview(bool selectionOnly) const
+{
+    QString title = QInputDialog::getText(nullptr, tr("Drucken"),
+                                          tr("Überschrift:"), QLineEdit::Normal,
+                                          QDateTime::currentDateTime().toString("dd.MM.yyyy"));
+    QPrinter* printer = gSettings->createPrinter();
+    QPrintPreviewDialog dlg(printer);
+    connect(&dlg, &QPrintPreviewDialog::paintRequested, this, [=]{ printerPaintRequested(printer, selectionOnly, title); });
+    dlg.exec();
+    gSettings->savePrinter(printer);
+    delete printer;
+}
+
+void TableView::printPreviewSelection() const
+{
+    printPreview(true);
+}
+
+#endif

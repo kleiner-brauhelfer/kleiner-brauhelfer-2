@@ -4,6 +4,9 @@
 #include <QSettings>
 #include <QPalette>
 #include <QFont>
+#ifdef QT_PRINTSUPPORT_LIB
+#include <QPrinter>
+#endif
 
 class Settings : public QSettings
 {
@@ -90,6 +93,11 @@ public:
 
     QString lastProgramVersion();
     bool isNewProgramVersion();
+
+  #ifdef QT_PRINTSUPPORT_LIB
+    QPrinter* createPrinter();
+    void savePrinter(const QPrinter* printer);
+  #endif
 
 signals:
     void modulesChanged(Settings::Modules modules);

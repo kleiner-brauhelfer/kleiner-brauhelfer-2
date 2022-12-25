@@ -93,7 +93,6 @@ void WdgWebViewEditable::onPrinterPaintRequested(QPrinter *printer)
     QWidget* parent = qobject_cast<QWidget*>(sender());
     if(parent)
         parent->setEnabled(false);
-
     QEventLoop loop;
   #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
     ui->webview->print(printer);
@@ -102,17 +101,6 @@ void WdgWebViewEditable::onPrinterPaintRequested(QPrinter *printer)
     ui->webview->page()->print(printer, [&](bool) { loop.quit(); });
   #endif
     loop.exec();
-    gSettings->beginGroup("General");
-    gSettings->setValue("DefaultPrinter", printer->printerName());
-  #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-    QMarginsF margins = printer->pageLayout().margins(QPageLayout::Millimeter);
-    QRectF rect(margins.left(), margins.top(), margins.right(), margins.bottom());
-  #else
-    QRectF rect(printer->margins().left, printer->margins().top, printer->margins().right, printer->margins().bottom);
-  #endif
-    gSettings->setValue("PrintMargins", rect);
-    gSettings->endGroup();
-
     if(parent)
         parent->setEnabled(true);
 #else
@@ -137,24 +125,12 @@ void WdgWebViewEditable::printPreview()
         loop.exec();
     }
 
-    gSettings->beginGroup("General");
-    QPrinterInfo printerInfo = QPrinterInfo::printerInfo(gSettings->value("DefaultPrinter").toString());
-    QPrinter printer(printerInfo, QPrinter::HighResolution);
-  #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
-    printer.setPageSize(QPageSize::A4);
-  #else
-    printer.setPageSize(QPrinter::A4);
-  #endif
-    printer.setPageOrientation(QPageLayout::Portrait);
-    printer.setColorMode(QPrinter::Color);
-    QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
-    QMarginsF margins(rect.left(), rect.top(), rect.width(), rect.height());
-    printer.setPageMargins(margins, QPageLayout::Millimeter);
-    gSettings->endGroup();
-
-    QPrintPreviewDialog dlg(&printer, ui->webview);
+    QPrinter* printer = gSettings->createPrinter();
+    QPrintPreviewDialog dlg(printer, ui->webview);
     connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
     dlg.exec();
+    gSettings->savePrinter(printer);
+    delete printer;
 
     if (gSettings->theme() == Settings::Dark)
     {

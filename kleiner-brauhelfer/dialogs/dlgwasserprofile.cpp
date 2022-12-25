@@ -20,6 +20,20 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
     mRow(0)
 {
     ui->setupUi(this);
+    if (gSettings->theme() == Settings::Theme::Dark)
+    {
+        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
+        for (QAbstractButton* button : buttons)
+        {
+            QString name = button->whatsThis();
+            QIcon icon = button->icon();
+            if (!icon.isNull() && !name.isEmpty())
+            {
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                button->setIcon(icon);
+            }
+        }
+    }
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));

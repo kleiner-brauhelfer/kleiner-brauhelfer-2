@@ -2,7 +2,7 @@
 #include "ui_dlgbrauuebersicht.h"
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/proxymodelsudcolored.h"
+#include "proxymodelsud.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/spinboxdelegate.h"
@@ -48,6 +48,20 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     ui(new Ui::DlgBrauUebersicht)
 {
     ui->setupUi(this);
+    if (gSettings->theme() == Settings::Theme::Dark)
+    {
+        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
+        for (QAbstractButton* button : buttons)
+        {
+            QString name = button->whatsThis();
+            QIcon icon = button->icon();
+            if (!icon.isNull() && !name.isEmpty())
+            {
+                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                button->setIcon(icon);
+            }
+        }
+    }
 
     ui->splitter->setSizes({INT_MAX, INT_MAX});
 

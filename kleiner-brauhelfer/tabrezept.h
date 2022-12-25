@@ -32,6 +32,8 @@ private slots:
     void on_btnNeueRast_clicked();
     void on_btnRastenUebernehmen_clicked();
 
+    void updateExtrakt();
+
     void malzGaben_modified();
     void updateMalzGaben();
     void updateMalzDiagram();

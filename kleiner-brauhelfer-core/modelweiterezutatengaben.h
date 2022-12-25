@@ -32,6 +32,7 @@ public:
         // virtual
         ColDeleted,
         ColExtrakt,
+        ColExtraktProzent,
         ColZugabeDatum,
         ColEntnahmeDatum,
         ColAbfuellbereit,

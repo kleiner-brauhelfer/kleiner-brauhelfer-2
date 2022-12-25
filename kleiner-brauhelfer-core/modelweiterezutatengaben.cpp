@@ -9,6 +9,7 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     bh(bh)
 {
     mVirtualField.append("Extrakt");
+    mVirtualField.append("ExtraktProzent");
     mVirtualField.append("ZugabeDatum");
     mVirtualField.append("EntnahmeDatum");
     mVirtualField.append("Abfuellbereit");
@@ -32,6 +33,12 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
             return menge * ausbeute;
         }
         return 0;
+    }
+    case ColExtraktProzent:
+    {
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW).toDouble();
+        double extrakt = data(idx.row(), ColExtrakt).toDouble();
+        return extrakt / sw * 100;
     }
     case ColZugabeDatum:
     {
@@ -190,6 +197,11 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
                 return setData(index(idx.row(), ColMenge), value.toDouble() / ausbeute * 1000);
         }
         return true;
+    }
+    case ColExtraktProzent:
+    {
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW).toDouble();
+        return setDataExt(index(idx.row(), ColExtrakt), value.toDouble() * sw / 100);
     }
     case ColZugabeDatum:
     {

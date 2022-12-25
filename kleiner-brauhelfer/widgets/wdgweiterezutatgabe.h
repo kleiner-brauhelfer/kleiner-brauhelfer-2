@@ -18,6 +18,9 @@ public:
     bool isEnabled() const;
     bool isValid() const;
     QString name() const;
+    double prozentExtrakt() const;
+    double fehlProzentExtrakt() const;
+    void setFehlProzentExtrakt(double value);
 
 public slots:
     void updateValues();
@@ -29,6 +32,8 @@ private slots:
     void on_tbMengeTotal_valueChanged(double value);
     void on_tbKochdauer_valueChanged(int value);
     void on_tbExtrakt_valueChanged(double value);
+    void on_tbExtraktProzent_valueChanged(double value);
+    void on_btnKorrekturExtrakt_clicked();
     void on_btnZugeben_clicked();
     void on_cbEntnahme_clicked(bool checked);
     void on_tbZugabeNach_valueChanged(int arg1);
@@ -48,6 +53,7 @@ private:
     Ui::WdgWeitereZutatGabe *ui;
     bool mEnabled;
     bool mValid;
+    double mFehlProzentExtrakt;
 };
 
 #endif // WDGWEITEERZUTATGABE_H

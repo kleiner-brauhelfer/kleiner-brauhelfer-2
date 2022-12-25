@@ -14,7 +14,8 @@ extern Settings* gSettings;
 WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(nullptr, row, parentLayout, parent),
     ui(new Ui::WdgWeitereZutatGabe),
-    mEnabled(true)
+    mEnabled(true),
+    mFehlProzentExtrakt(0)
 {
     ProxyModel* proxy = new ProxyModel(this);
     proxy->setSourceModel(bh->sud()->modelWeitereZutatenGaben());
@@ -40,6 +41,7 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
 
     ui->tbMenge->setErrorOnLimit(true);
     ui->tbMengeTotal->setErrorOnLimit(true);
+    ui->btnKorrekturExtrakt->setError(true);
 
     updateValues();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
@@ -100,6 +102,8 @@ void WdgWeitereZutatGabe::updateValues()
     ui->tbMenge->setReadOnly(!mEnabled);
     ui->tbMengeTotal->setReadOnly(!mEnabled);
     ui->tbExtrakt->setReadOnly(!mEnabled);
+    ui->tbExtraktProzent->setReadOnly(!mEnabled);
+    ui->btnKorrekturExtrakt->setVisible(mEnabled);
     ui->tbKochdauer->setReadOnly(!mEnabled);
     ui->tbZugabeNach->setReadOnly(!mEnabled);
     ui->tbDatumVon->setReadOnly(!mEnabled);
@@ -186,12 +190,18 @@ void WdgWeitereZutatGabe::updateValues()
         ui->tbKochdauer->setValue(dauer);
     }
 
-    bool visible = data(ModelWeitereZutatenGaben::ColAusbeute).toDouble() > 0;
     if (!ui->tbExtrakt->hasFocus())
         ui->tbExtrakt->setValue(data(ModelWeitereZutatenGaben::ColExtrakt).toDouble());
+    if (!ui->tbExtraktProzent->hasFocus())
+        ui->tbExtraktProzent->setValue(data(ModelWeitereZutatenGaben::ColExtraktProzent).toDouble());
+    bool visible = data(ModelWeitereZutatenGaben::ColAusbeute).toDouble() > 0;
     ui->tbExtrakt->setVisible(visible);
+    ui->tbExtraktProzent->setVisible(visible);
     ui->lblExtrakt->setVisible(visible);
     ui->lblExtraktEinheit->setVisible(visible);
+    ui->lblExtraktProzent->setVisible(visible);
+    ui->tbExtraktProzent->setError(ui->tbExtraktProzent->value() == 0.0 || mFehlProzentExtrakt != 0.0);
+    ui->btnKorrekturExtrakt->setVisible(visible && mFehlProzentExtrakt != 0.0);
 
     ui->cbEntnahme->setChecked(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
@@ -452,6 +462,43 @@ void WdgWeitereZutatGabe::on_tbExtrakt_valueChanged(double value)
 {
     if (ui->tbExtrakt->hasFocus())
         setData(ModelWeitereZutatenGaben::ColExtrakt, value);
+}
+
+void WdgWeitereZutatGabe::on_tbExtraktProzent_valueChanged(double value)
+{
+    if (ui->tbExtraktProzent->hasFocus())
+        setData(ModelWeitereZutatenGaben::ColExtraktProzent, value);
+}
+
+double WdgWeitereZutatGabe::prozentExtrakt() const
+{
+    return data(ModelWeitereZutatenGaben::ColExtraktProzent).toDouble();
+}
+
+double WdgWeitereZutatGabe::fehlProzentExtrakt() const
+{
+    return mFehlProzentExtrakt;
+}
+
+void WdgWeitereZutatGabe::setFehlProzentExtrakt(double value)
+{
+    if (value < 0.0)
+    {
+        double p = prozentExtrakt();
+        if (p == 0.0)
+            value = 0.0;
+        else if (value < -p)
+            value = -p;
+    }
+    mFehlProzentExtrakt = value;
+    QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
+    ui->btnKorrekturExtrakt->setText(text);
+}
+
+void WdgWeitereZutatGabe::on_btnKorrekturExtrakt_clicked()
+{
+    setFocus();
+    setData(ModelWeitereZutatenGaben::ColExtraktProzent, prozentExtrakt() + mFehlProzentExtrakt);
 }
 
 void WdgWeitereZutatGabe::on_btnZugeben_clicked()

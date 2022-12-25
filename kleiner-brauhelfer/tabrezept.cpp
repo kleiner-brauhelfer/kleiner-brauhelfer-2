@@ -188,6 +188,8 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(weitereZutatenGaben_modified()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(weitereZutatenGaben_modified()));
     connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(weitereZutatenGaben_modified()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
+            this, SLOT(updateExtrakt()));
 
     connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(layoutChanged()), this, SLOT(wasseraufbereitung_modified()));
     connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(wasseraufbereitung_modified()));
@@ -853,6 +855,53 @@ void TabRezept::on_btnRastenUebernehmen_clicked()
     }
 }
 
+void TabRezept::updateExtrakt()
+{
+    double p = 100.0;
+    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+    {
+        WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+        p -= wdg->prozentExtrakt();
+    }
+    for (int i = 0; i < ui->layoutZusaetzeMaischen->count(); ++i)
+    {
+        WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget());
+        p -= wdg->prozentExtrakt();
+    }
+    for (int i = 0; i < ui->layoutZusaetzeKochen->count(); ++i)
+    {
+        WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget());
+        p -= wdg->prozentExtrakt();
+    }
+    for (int i = 0; i < ui->layoutZusaetzeGaerung->count(); ++i)
+    {
+        WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget());
+        p -= wdg->prozentExtrakt();
+    }
+    if (std::fabs(p) < 0.01)
+        p = 0.0;
+    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
+    {
+        WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
+        wdg->setFehlProzentExtrakt(p);
+    }
+    for (int i = 0; i < ui->layoutZusaetzeMaischen->count(); ++i)
+    {
+        WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeMaischen->itemAt(i)->widget());
+        wdg->setFehlProzentExtrakt(p);
+    }
+    for (int i = 0; i < ui->layoutZusaetzeKochen->count(); ++i)
+    {
+        WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeKochen->itemAt(i)->widget());
+        wdg->setFehlProzentExtrakt(p);
+    }
+    for (int i = 0; i < ui->layoutZusaetzeGaerung->count(); ++i)
+    {
+        WdgWeitereZutatGabe* wdg = static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget());
+        wdg->setFehlProzentExtrakt(p);
+    }
+}
+
 void TabRezept::malzGaben_modified()
 {
     const int nModel = bh->sud()->modelMalzschuettung()->rowCount();
@@ -886,6 +935,7 @@ void TabRezept::updateMalzGaben()
             wdg->setFehlProzent(p);
         }
         ui->wdgWarnungMalz->setVisible(p != 0.0 && count > 1);
+        updateExtrakt();
     }
     else
     {
@@ -1368,6 +1418,12 @@ void TabRezept::weitereZutatenGaben_modified()
         delete ui->layoutZusaetzeGaerung->itemAt(ui->layoutZusaetzeGaerung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeGaerung->count(); ++i)
         static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget())->updateValues();
+
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    if (status == Brauhelfer::SudStatus::Rezept)
+    {
+        updateExtrakt();
+    }
 }
 
 void TabRezept::wasseraufbereitung_modified()

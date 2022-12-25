@@ -393,6 +393,13 @@
           </property>
          </widget>
         </item>
+        <item row="1" column="5">
+         <widget class="PushButton" name="btnKorrekturExtrakt">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Extraktmenge 100% unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert&lt;/span&gt; gibt an, dass &lt;span style=&quot; font-weight:600;&quot;&gt;zu wenig Rohstoffmenge &lt;/span&gt;gewählt wurde, ein &lt;span style=&quot; font-weight:600;&quot;&gt;positiver Wert&lt;/span&gt;, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Rohstoffmenge &lt;/span&gt;gewählt wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>

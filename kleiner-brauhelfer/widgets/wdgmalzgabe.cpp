@@ -12,7 +12,8 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelMalzschuettung(), row, parentLayout, parent),
     ui(new Ui::WdgMalzGabe),
     mEnabled(true),
-    mFehlProzent(0)
+    mFehlProzent(0),
+    mFehlProzentExtrakt(0)
 {
     ui->setupUi(this);
     if (gSettings->theme() == Settings::Theme::Dark)
@@ -35,6 +36,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     setPalette(pal);
 
     ui->btnKorrektur->setError(true);
+    ui->btnKorrekturExtrakt->setError(true);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     updateValues();
@@ -84,6 +86,7 @@ void WdgMalzGabe::updateValues()
     ui->tbExtraktProzent->setReadOnly(!mEnabled);
     ui->tbExtrakt->setReadOnly(!mEnabled);
     ui->btnKorrektur->setVisible(mEnabled);
+    ui->btnKorrekturExtrakt->setVisible(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
     ui->lblWarnung->setVisible(false);
@@ -96,7 +99,6 @@ void WdgMalzGabe::updateValues()
         ui->tbMengeProzent->setValue(data(ModelMalzschuettung::ColProzent).toDouble());
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(data(ModelMalzschuettung::Colerg_Menge).toDouble());
-
     if (!ui->tbExtrakt->hasFocus())
         ui->tbExtrakt->setValue(data(ModelMalzschuettung::ColExtrakt).toDouble());
     if (!ui->tbExtraktProzent->hasFocus())
@@ -126,6 +128,8 @@ void WdgMalzGabe::updateValues()
         }
         ui->tbMengeProzent->setError(ui->tbMengeProzent->value() == 0.0 || mFehlProzent != 0.0);
         ui->btnKorrektur->setVisible(mFehlProzent != 0.0);
+        ui->tbExtraktProzent->setError(ui->tbExtraktProzent->value() == 0.0 || mFehlProzentExtrakt != 0.0);
+        ui->btnKorrekturExtrakt->setVisible(mFehlProzentExtrakt != 0.0 && qAbs(mFehlProzentExtrakt - mFehlProzent) > 0.001);
 
         int max = bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMaxProzent).toInt();
         if (max > 0 && ui->tbMengeProzent->value() > max)
@@ -219,6 +223,37 @@ void WdgMalzGabe::on_btnKorrektur_clicked()
 {
     setFocus();
     setData(ModelMalzschuettung::ColProzent, prozent() + mFehlProzent);
+}
+
+double WdgMalzGabe::prozentExtrakt() const
+{
+    return data(ModelMalzschuettung::ColExtraktProzent).toDouble();
+}
+
+double WdgMalzGabe::fehlProzentExtrakt() const
+{
+    return mFehlProzentExtrakt;
+}
+
+void WdgMalzGabe::setFehlProzentExtrakt(double value)
+{
+    if (value < 0.0)
+    {
+        double p = prozentExtrakt();
+        if (p == 0.0)
+            value = 0.0;
+        else if (value < -p)
+            value = -p;
+    }
+    mFehlProzentExtrakt = value;
+    QString text = (value < 0.0 ? "" : "+") + QLocale().toString(value, 'f', 2) + " %";
+    ui->btnKorrekturExtrakt->setText(text);
+}
+
+void WdgMalzGabe::on_btnKorrekturExtrakt_clicked()
+{
+    setFocus();
+    setData(ModelMalzschuettung::ColExtraktProzent, prozentExtrakt() + mFehlProzentExtrakt);
 }
 
 void WdgMalzGabe::on_btnLoeschen_clicked()

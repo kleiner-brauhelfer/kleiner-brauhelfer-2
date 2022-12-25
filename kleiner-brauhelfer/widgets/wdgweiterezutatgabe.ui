@@ -145,7 +145,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="13">
+        <item row="0" column="14">
          <widget class="DoubleSpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
@@ -234,7 +234,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="14">
+        <item row="0" column="15">
          <widget class="QLabel" name="lblVorhandenEinheit">
           <property name="minimumSize">
            <size>
@@ -275,14 +275,14 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="10">
+        <item row="0" column="11">
          <widget class="QLabel" name="lblVorhanden">
           <property name="text">
            <string>Vorhanden</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="7">
+        <item row="0" column="8">
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
@@ -331,7 +331,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="6">
+        <item row="0" column="7">
          <spacer name="horizontalSpacer_3">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -348,6 +348,54 @@
          <widget class="QLabel" name="lblExtrakt">
           <property name="text">
            <string>Extrakt</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="DoubleSpinBox" name="tbExtraktProzent">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz prozentual &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in % kann anschließend angepasst werden, so eine prozentuale Verteilung der Malze bevorzugt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="decimals">
+           <number>2</number>
+          </property>
+          <property name="minimum">
+           <double>0.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>9999.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QLabel" name="lblExtraktProzent">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6">
+         <widget class="PushButton" name="btnKorrekturExtrakt">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Extraktmenge 100% unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert&lt;/span&gt; gibt an, dass &lt;span style=&quot; font-weight:600;&quot;&gt;zu wenig Rohstoffmenge &lt;/span&gt;gewählt wurde, ein &lt;span style=&quot; font-weight:600;&quot;&gt;positiver Wert&lt;/span&gt;, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Rohstoffmenge &lt;/span&gt;gewählt wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>

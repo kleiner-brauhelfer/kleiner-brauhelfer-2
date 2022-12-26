@@ -81,6 +81,8 @@ public:
         ColBemerkungZutatenGaerung,
         ColBemerkungMaischplan,
         ColBemerkungWasseraufbereitung,
+        ColMengeHefestarter,
+        ColSWHefestarter,
         // virtual
         ColDeleted,
         ColMengeSoll,

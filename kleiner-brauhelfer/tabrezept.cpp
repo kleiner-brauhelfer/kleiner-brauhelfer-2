@@ -71,6 +71,8 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbPhMalz->setColumn(ModelSud::ColPhMalz);
     ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
     ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
+    ui->tbMengeHefestarter->setColumn(ModelSud::ColMengeHefestarter);
+    ui->tbSwHefestarter->setColumn(ModelSud::ColSWHefestarter);
 
     ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMalzAusgleichen->setError(true);
@@ -130,10 +132,10 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->cbKategorie->setModel(proxy);
     ui->cbKategorie->setModelColumn(ModelKategorien::ColName);
 	
-    QPalette palette = ui->tbHelp->palette();
-    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
-    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
-    ui->tbHelp->setPalette(palette);
+    pal = ui->tbHelp->palette();
+    pal.setBrush(QPalette::Base, pal.brush(QPalette::ToolTipBase));
+    pal.setBrush(QPalette::Text, pal.brush(QPalette::ToolTipText));
+    ui->tbHelp->setPalette(pal);
 
     gSettings->beginGroup("TabRezept");
 

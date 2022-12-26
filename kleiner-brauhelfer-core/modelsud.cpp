@@ -150,7 +150,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColMengeSoll:
     {
-        return data(idx.row(), ColMenge).toDouble() + dataAnlage(idx.row(), ModelAusruestung::ColKorrekturMenge).toDouble();
+        double menge = data(idx.row(), ColMenge).toDouble();
+        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
+        double mengeKorrektur = dataAnlage(idx.row(), ModelAusruestung::ColKorrekturMenge).toDouble();
+        return menge - mengeHefestarter + mengeKorrektur;
     }
     case ColSWIst:
     {
@@ -350,12 +353,11 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColSWSollKochbeginn:
     {
-        double sw = data(idx.row(), ColSW).toDouble() - swWzKochenRecipe[idx.row()] - swWzGaerungRecipe[idx.row()];
-        double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
+        double sw = data(idx.row(), ColSWSollKochende).toDouble() - swWzKochenRecipe[idx.row()];
         double kochdauer = data(idx.row(), ColKochdauer).toDouble();
         double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
         double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw * hgf / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
+        return sw / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
     }
     case ColSWSollKochbeginnMitWz:
     {
@@ -367,9 +369,13 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColSWSollKochende:
     {
-        double sw = data(idx.row(), ColSWSollAnstellen).toDouble();
+        double swAnstellen = data(idx.row(), ColSWSollAnstellen).toDouble();
         double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
-        return sw * hgf;
+        double swSoll = swAnstellen * hgf;
+        double mengeSoll = data(idx.row(), ColMengeSollKochende).toDouble();
+        double swHefestarter = data(idx.row(), ColSWHefestarter).toDouble();
+        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
+        return (mengeSoll*swSoll-mengeHefestarter*swHefestarter)/(mengeSoll-mengeHefestarter);
     }
     case ColSWSollAnstellen:
     {
@@ -546,7 +552,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         {
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
             if (status == Brauhelfer::SudStatus::Rezept)
-                setData(idx.row(), ColWuerzemengeKochbeginn, value);
+                setData(idx.row(), ColWuerzemengeKochbeginn, data(idx.row(), ColMengeSollKochbeginn));
             return true;
         }
         return false;
@@ -659,7 +665,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         {
             Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
             if (status == Brauhelfer::SudStatus::Rezept)
-                setData(idx.row(), ColSWKochbeginn, value);
+                setData(idx.row(), ColSWKochbeginn, data(idx.row(), ColSWSollKochbeginn));
             return true;
         }
         return false;

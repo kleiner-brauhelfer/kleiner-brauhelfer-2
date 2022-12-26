@@ -90,6 +90,8 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(QString, BemerkungZutatenGaerung, toString())
     Q_PROPERTY_SUD(QString, BemerkungMaischplan, toString())
     Q_PROPERTY_SUD(QString, BemerkungWasseraufbereitung, toString())
+    Q_PROPERTY_SUD(double, MengeHefestarter, toDouble())
+    Q_PROPERTY_SUD(double, SWHefestarter, toDouble())
     // virtual fields in table Sud
     Q_PROPERTY_SUD_READONLY(double, MengeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())

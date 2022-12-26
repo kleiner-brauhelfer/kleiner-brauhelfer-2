@@ -1091,13 +1091,6 @@ p, li { white-space: pre-wrap; }
               </layout>
              </item>
              <item>
-              <widget class="Line" name="lineZusaetzeMaischen">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
               <layout class="QVBoxLayout" name="layoutZusaetzeMaischen">
                <property name="spacing">
                 <number>6</number>
@@ -1379,13 +1372,6 @@ p, li { white-space: pre-wrap; }
               </layout>
              </item>
              <item>
-              <widget class="Line" name="lineZusaetzeKochen">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
               <layout class="QVBoxLayout" name="layoutZusaetzeKochen">
                <property name="spacing">
                 <number>4</number>
@@ -1534,6 +1520,120 @@ p, li { white-space: pre-wrap; }
          <number>4</number>
         </property>
         <item>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <property name="horizontalSpacing">
+           <number>9</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>4</number>
+          </property>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_39">
+            <property name="text">
+             <string>Menge</string>
+            </property>
+            <property name="indent">
+             <number>9</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="DoubleSpinBoxSud" name="tbMengeHefestarter">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <double>10000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QLabel" name="label_46">
+            <property name="text">
+             <string>°P</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="DoubleSpinBoxSud" name="tbSwHefestarter">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <double>10000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_27">
+            <property name="text">
+             <string>Hefestarter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_40">
+            <property name="text">
+             <string>Stammwürze</string>
+            </property>
+            <property name="indent">
+             <number>9</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="label_42">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>l</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
          <widget class="QSplitter" name="splitterGaerung">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1557,7 +1657,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>578</height>
+              <height>502</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1582,13 +1682,6 @@ p, li { white-space: pre-wrap; }
                 <number>4</number>
                </property>
               </layout>
-             </item>
-             <item>
-              <widget class="Line" name="lineZusaetzeGaerung">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
              </item>
              <item>
               <layout class="QVBoxLayout" name="layoutZusaetzeGaerung">

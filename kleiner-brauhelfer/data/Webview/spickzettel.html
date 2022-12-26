@@ -205,6 +205,12 @@
           </table>
         </td>
       </tr>
+      <tr>
+        <td>{{{Rezept.BemerkungZutatenMaischen}}}</td>
+        <td>{{{Rezept.BemerkungZutatenKochen}}}</td>
+        <td>{{{Rezept.BemerkungZutatenGaerung}}}</td>
+        <td></td>
+      </tr>
     </table>
     {{/Zutaten}}
     {{#Wasser}}
@@ -254,8 +260,9 @@
       </tr>
       {{/Wasseraufbereitung.Liste}}
     </table>
-    {{{Wasserprofil.Bemerkung}}}
+    <p>{{{Wasserprofil.Bemerkung}}}</p>
     {{/Wasser}}
+    <p>{{{Rezept.BemerkungWasseraufbereitung}}}</p>
   </div>
 
   {{#Geraete}}
@@ -278,7 +285,7 @@
   
   <div class="rm" align="center">
     <h2>Maischen</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       {{#Zutaten.Malz}}
@@ -369,6 +376,7 @@
             </tr>
             {{/Liste}}
           </table>
+          <p>{{{Rezept.BemerkungMaischplan}}}</p>
         </td>
       </tr>
       {{/Rasten}}
@@ -398,7 +406,7 @@
 
   <div class="rm" align="center">
     <h2>L&auml;utern</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       <tr>
@@ -418,7 +426,7 @@
 
   <div class="rm" align="center">
     <h2>W&uuml;rzekochen</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       {{#Zutaten.HatVorderwuerzehopfen}}
@@ -569,7 +577,7 @@
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
-        <td class="underline"  valign="top"><strong>Nachisomerisierung</strong></td>
+        <td class="underline" valign="top"><strong>Nachisomerisierung</strong></td>
         <td class="underline">Dauer <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
@@ -599,7 +607,7 @@
 
   <div class="rm" align="center">
     <h2>Anstellen</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       <tr>
@@ -621,11 +629,11 @@
         </td>
       </tr>
       <tr>
-        <td class="underline"  valign="top"><strong>W&uuml;rzemenge nach Hopfenseihen</strong></td>
+        <td class="underline" valign="top"><strong>W&uuml;rzemenge nach Hopfenseihen</strong></td>
         <td class="underline">____ Liter</td>
       </tr>
       <tr>
-        <td class="underline"  valign="top"><strong>Wassermenge f&uuml;r Verd&uuml;nnung</strong></td>
+        <td class="underline" valign="top"><strong>Wassermenge f&uuml;r Verd&uuml;nnung</strong></td>
         <td class="underline" ><table>
             <col width="200">
             <col width="*">
@@ -650,7 +658,7 @@
 
   <div class="rm" align="center">
     <h2>G&auml;rung</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       {{#Zutaten.Hefe}}

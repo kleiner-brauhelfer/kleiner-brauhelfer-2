@@ -1727,6 +1727,19 @@ bool Database::update()
             ++version;
             qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
+
+            // Sud
+            //  - neue Spalte 'BemerkungZutatenMaischen'
+            //  - neue Spalte 'BemerkungZutatenKochen'
+            //  - neue Spalte 'BemerkungZutatenGaerung'
+            //  - neue Spalte 'BemerkungMaischplan'
+            //  - neue Spalte 'BemerkungWasseraufbereitung'
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungZutatenMaischen TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungZutatenKochen TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungZutatenGaerung TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungMaischplan TEXT");
+            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungWasseraufbereitung TEXT");
+
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }

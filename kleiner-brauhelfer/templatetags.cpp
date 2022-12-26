@@ -111,6 +111,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         {
             ctxRezept["Wasserprofil"] = bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString();
             ctxRezept["Restalkalitaet"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColRestalkalitaetSoll).toDouble(), 'f', 2);
+            ctxRezept["BemerkungWasseraufbereitung"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungWasseraufbereitung).toString());
         }
         ctxRezept["Reifezeit"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColReifezeit).toInt());
         mengeMaischen = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble() + BierCalc::MalzVerdraengung * bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble();
@@ -119,6 +120,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctxRezept["Kategorie"] = bh->modelSud()->data(sudRow, ModelSud::ColKategorie).toString();
         ctxRezept["Nummer"] = bh->modelSud()->data(sudRow, ModelSud::ColSudnummer).toInt();
         ctxRezept["Kommentar"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColKommentar).toString());
+        ctxRezept["BemerkungZutatenMaischen"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungZutatenMaischen).toString());
+        ctxRezept["BemerkungZutatenKochen"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungZutatenKochen).toString());
+        ctxRezept["BemerkungZutatenGaerung"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungZutatenGaerung).toString());
+        ctxRezept["BemerkungMaischplan"] = textToHtml(bh->modelSud()->data(sudRow, ModelSud::ColBemerkungMaischplan).toString());
         ctxRezept["Gesamtschuettung"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::Colerg_S_Gesamt).toDouble(), 'f', 2);
         fval = bh->modelSud()->data(sudRow, ModelSud::ColMengeSollKochbeginn).toDouble();
         ctxRezept["MengeKochbeginn"] = locale.toString(fval, 'f', 1);

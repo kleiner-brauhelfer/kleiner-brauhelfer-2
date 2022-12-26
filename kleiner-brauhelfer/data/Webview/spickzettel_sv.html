@@ -205,6 +205,12 @@
           </table>
         </td>
       </tr>
+      <tr>
+        <td>{{{Rezept.BemerkungZutatenMaischen}}}</td>
+        <td>{{{Rezept.BemerkungZutatenKochen}}}</td>
+        <td>{{{Rezept.BemerkungZutatenGaerung}}}</td>
+        <td></td>
+      </tr>
     </table>
     {{/Zutaten}}
     {{#Wasser}}
@@ -254,8 +260,9 @@
       </tr>
       {{/Wasseraufbereitung.Liste}}
     </table>
-    {{{Wasserprofil.Bemerkung}}}
+    <p>{{{Wasserprofil.Bemerkung}}}</p>
     {{/Wasser}}
+    <p>{{{Rezept.BemerkungWasseraufbereitung}}}</p>
   </div>
 
   {{#Geraete}}
@@ -278,7 +285,7 @@
   
   <div class="rm" align="center">
     <h2>M&auml;skning</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       {{#Zutaten.Malz}}
@@ -369,6 +376,7 @@
             </tr>
             {{/Liste}}
           </table>
+          <p>{{{Rezept.BemerkungMaischplan}}}</p>
         </td>
       </tr>
       {{/Rasten}}
@@ -398,7 +406,7 @@
 
   <div class="rm" align="center">
     <h2>Lakning</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       <tr>
@@ -418,7 +426,7 @@
 
   <div class="rm" align="center">
     <h2>Kokning</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       {{#Zutaten.HatVorderwuerzehopfen}}
@@ -569,7 +577,7 @@
       </tr>
      {{#Rezept.Nachisomerisierung}}
       <tr>
-        <td class="underline"  valign="top"><strong>Efterisomerisering</strong></td>
+        <td class="underline" valign="top"><strong>Efterisomerisering</strong></td>
         <td class="underline">Tid <span class="value">{{Rezept.Nachisomerisierung}} </span> min<br/>
           {{#Zutaten.Hopfen}}
           <table>
@@ -594,28 +602,18 @@
         </td>
       </tr>
       {{/Rezept.Nachisomerisierung}}
-      <tr>
-        <td valign="top"><strong>V&ouml;rtm&auml;ngd efter humlefiltrering</strong></td>
-        <td>____ liter vid ____ &deg;C</td>
-      </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
     <h2>Filtrering och ge j&auml;sten</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       <tr>
         <td class="underline" valign="top"><strong>Humlefiltrering</strong></td>
         <td class="underline">&ouml;verf&ouml;r v&ouml;rten genom ett filter fr&aring;n kok- till j&auml;sk&auml;rl.</td>
       </tr>
-      {{#Wasser.Verduennung}}
-      <tr>
-        <td class="underline" valign="top"><strong>Sp&auml;dning</strong></td>
-        <td class="underline">H&auml;ll i <span class="value">{{Wasser.Verduennung}}</span> liter vatten.</td>
-      </tr>
-      {{/Wasser.Verduennung}}
       <tr>
         <td class="underline" valign="top"><strong>Stamv&ouml;rt n&auml;r j&auml;sten l&auml;ggs i</strong></td>
         <td class="underline">
@@ -630,23 +628,37 @@
           Sp&auml; ut v&ouml;rten med vatten f&ouml;r att n&aring; m&aring;lstamv&ouml;rten.
         </td>
       </tr>
-
+      <tr>
+        <td class="underline" valign="top"><strong>V&ouml;rtm&auml;ngd efter humlefiltrering</strong></td>
+        <td class="underline">____ liter</td>
+      </tr>
+      <tr>
+        <td class="underline" valign="top"><strong>Sp&auml;dning</strong></td>
+        <td class="underline" ><table>
+            <col width="200">
+            <col width="*">
+            <tr>
+              <td>____ liter</td>
+              <td>{{#Wasser.Verduennung}}High-gravity: <span class="value">{{Wasser.Verduennung}}</span> liter{{/Wasser.Verduennung}}</td>
+            </tr>
+          </table></td>
+      </tr>
       {{#Modul.Speise}}
       <tr>
-        <td valign="top"><strong>Sparad m&auml;ngd oj&auml;st v&ouml;rt till senare</strong></td>
-        <td>____ liter</td>
+        <td class="underline" valign="top"><strong>Sparad m&auml;ngd oj&auml;st v&ouml;rt till senare</strong></td>
+        <td class="underline">____ liter</td>
       </tr>
       {{/Modul.Speise}}
       <tr>
-        <td class="underline" valign="top"><strong>V&ouml;rtm&auml;ngd n&auml;r j&auml;sten l&auml;ggs i</strong></td>
-        <td class="underline">____ Liter</td>
+        <td valign="top"><strong>V&ouml;rtm&auml;ngd n&auml;r j&auml;sten l&auml;ggs i</strong></td>
+        <td>____ liter</td>
       </tr>
     </table>
   </div>
 
   <div class="rm" align="center">
     <h2>J&auml;sning</h2>
-    <table>
+    <table cellspacing="0">
       <col width="250">
       <col width="700">
       {{#Zutaten.Hefe}}

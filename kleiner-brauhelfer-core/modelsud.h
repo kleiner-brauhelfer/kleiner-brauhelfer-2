@@ -76,6 +76,11 @@ public:
         ColBemerkungGaerung,
         ColReifungStart,
         ColVerduennungAnstellen,
+        ColBemerkungZutatenMaischen,
+        ColBemerkungZutatenKochen,
+        ColBemerkungZutatenGaerung,
+        ColBemerkungMaischplan,
+        ColBemerkungWasseraufbereitung,
         // virtual
         ColDeleted,
         ColMengeSoll,

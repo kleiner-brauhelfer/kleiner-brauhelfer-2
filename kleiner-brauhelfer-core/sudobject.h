@@ -85,6 +85,11 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD(QString, BemerkungGaerung, toString())
     Q_PROPERTY_SUD(QDateTime, ReifungStart, toDateTime())
     Q_PROPERTY_SUD(double, VerduennungAnstellen, toDouble())
+    Q_PROPERTY_SUD(QString, BemerkungZutatenMaischen, toString())
+    Q_PROPERTY_SUD(QString, BemerkungZutatenKochen, toString())
+    Q_PROPERTY_SUD(QString, BemerkungZutatenGaerung, toString())
+    Q_PROPERTY_SUD(QString, BemerkungMaischplan, toString())
+    Q_PROPERTY_SUD(QString, BemerkungWasseraufbereitung, toString())
     // virtual fields in table Sud
     Q_PROPERTY_SUD_READONLY(double, MengeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())

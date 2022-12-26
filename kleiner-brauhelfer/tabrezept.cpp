@@ -208,6 +208,11 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(anhaenge_modified()));
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
+    connect(ui->wdgBemerkungMaischen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenMaischen(html);});
+    connect(ui->wdgBemerkungKochen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenKochen(html);});
+    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenGaerung(html);});
+    connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungMaischplan(html);});
+    connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungWasseraufbereitung(html);});
 
     connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(showDialogAusruestung()));
 
@@ -304,6 +309,11 @@ void TabRezept::sudLoaded()
     ui->cbAnlage->setCurrentIndex(-1);
     ui->cbWasserProfil->setCurrentIndex(-1);
     ui->wdgBemerkung->setHtml(bh->sud()->getKommentar());
+    ui->wdgBemerkungMaischen->setHtml(bh->sud()->getBemerkungZutatenMaischen());
+    ui->wdgBemerkungKochen->setHtml(bh->sud()->getBemerkungZutatenKochen());
+    ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungZutatenGaerung());
+    ui->wdgBemerkungMaischplan->setHtml(bh->sud()->getBemerkungMaischplan());
+    ui->wdgBemerkungWasseraufbereitung->setHtml(bh->sud()->getBemerkungWasseraufbereitung());
     if (bh->sud()->isLoaded())
     {
         updateAnlageModel();
@@ -337,6 +347,21 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         break;
     case ModelSud::ColKommentar:
         ui->wdgBemerkung->setHtml(bh->sud()->getKommentar());
+        break;
+    case ModelSud::ColBemerkungZutatenMaischen:
+        ui->wdgBemerkungMaischen->setHtml(bh->sud()->getBemerkungZutatenMaischen());
+        break;
+    case ModelSud::ColBemerkungZutatenKochen:
+        ui->wdgBemerkungKochen->setHtml(bh->sud()->getBemerkungZutatenKochen());
+        break;
+    case ModelSud::ColBemerkungZutatenGaerung:
+        ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungZutatenGaerung());
+        break;
+    case ModelSud::ColBemerkungMaischplan:
+        ui->wdgBemerkungMaischplan->setHtml(bh->sud()->getBemerkungMaischplan());
+        break;
+    case ModelSud::ColBemerkungWasseraufbereitung:
+        ui->wdgBemerkungWasseraufbereitung->setHtml(bh->sud()->getBemerkungWasseraufbereitung());
         break;
     }
 }

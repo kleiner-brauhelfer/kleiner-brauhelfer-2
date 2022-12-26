@@ -41,9 +41,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     pal.setColor(QPalette::Base, gSettings->MekrlisteBackground);
     ui->cbMerkliste->setPalette(pal);
 
-    ui->splitter->setStretchFactor(0, 1);
-    ui->splitter->setStretchFactor(1, 0);
-
     ui->webview->setHtmlFile("sudinfo");
 
     SqlTableModel *model = bh->modelSud();
@@ -98,6 +95,9 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     table->restoreState(gSettings->value("tableSudAuswahlState").toByteArray());
 
+    ui->splitter->setStretchFactor(0, 1);
+    ui->splitter->setStretchFactor(1, 0);
+    ui->splitter->setSizes({100, 200});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 

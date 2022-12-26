@@ -34,7 +34,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>346</width>
+         <width>365</width>
          <height>700</height>
         </rect>
        </property>
@@ -884,7 +884,7 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>318</width>
+                 <width>337</width>
                  <height>182</height>
                 </rect>
                </property>
@@ -1041,11 +1041,17 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QSplitter" name="splitterMalzDiagram">
+         <widget class="QSplitter" name="splitterMaischen">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaMalzGaben">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
@@ -1058,7 +1064,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>362</height>
+              <height>379</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1115,6 +1121,7 @@ p, li { white-space: pre-wrap; }
            </widget>
           </widget>
           <widget class="ChartView" name="diagramMalz"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungMaischen" native="true"/>
          </widget>
         </item>
         <item>
@@ -1322,11 +1329,17 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QSplitter" name="splitterHopfenDiagram">
+         <widget class="QSplitter" name="splitterKochen">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaHopfenGaben">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
@@ -1339,7 +1352,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>137</height>
+              <height>357</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1396,6 +1409,7 @@ p, li { white-space: pre-wrap; }
            </widget>
           </widget>
           <widget class="ChartView" name="diagramHopfen"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungKochen" native="true"/>
          </widget>
         </item>
         <item>
@@ -1520,74 +1534,86 @@ p, li { white-space: pre-wrap; }
          <number>4</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollAreaHefeGaben">
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+         <widget class="QSplitter" name="splitterGaerung">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_5">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>341</width>
-             <height>611</height>
-            </rect>
+          <widget class="QScrollArea" name="scrollAreaHefeGaben">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_13">
-            <property name="spacing">
-             <number>4</number>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_5">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>341</width>
+              <height>578</height>
+             </rect>
             </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QVBoxLayout" name="layoutHefeGaben">
-              <property name="spacing">
-               <number>4</number>
-              </property>
-             </layout>
-            </item>
-            <item>
-             <widget class="Line" name="lineZusaetzeGaerung">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="layoutZusaetzeGaerung">
-              <property name="spacing">
-               <number>4</number>
-              </property>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>502</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="layoutHefeGaben">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+              </layout>
+             </item>
+             <item>
+              <widget class="Line" name="lineZusaetzeGaerung">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="layoutZusaetzeGaerung">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>502</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
           </widget>
+          <widget class="WdgBemerkung" name="wdgBemerkungGaerung" native="true"/>
          </widget>
         </item>
         <item>
@@ -1752,11 +1778,17 @@ p, li { white-space: pre-wrap; }
          <number>4</number>
         </property>
         <item>
-         <widget class="QSplitter" name="splitterRastenDiagram">
+         <widget class="QSplitter" name="splitterMaischplan">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaRasten">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
@@ -1769,7 +1801,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>122</height>
+              <height>407</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1812,6 +1844,7 @@ p, li { white-space: pre-wrap; }
            </widget>
           </widget>
           <widget class="ChartView" name="diagramRasten"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungMaischplan" native="true"/>
          </widget>
         </item>
         <item>
@@ -2183,60 +2216,72 @@ p, li { white-space: pre-wrap; }
          </layout>
         </item>
         <item>
-         <widget class="QScrollArea" name="scrollAreaWasseraufbereitung">
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+         <widget class="QSplitter" name="splitterWasseraufbereitung">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_17">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>341</width>
-             <height>383</height>
-            </rect>
+          <widget class="QScrollArea" name="scrollAreaWasseraufbereitung">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_28">
-            <property name="spacing">
-             <number>4</number>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_17">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>341</width>
+              <height>350</height>
+             </rect>
             </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QVBoxLayout" name="layoutWasseraufbereitung">
-              <property name="spacing">
-               <number>4</number>
-              </property>
-             </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_8">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>561</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+            <layout class="QVBoxLayout" name="verticalLayout_28">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="layoutWasseraufbereitung">
+               <property name="spacing">
+                <number>4</number>
+               </property>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>561</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
           </widget>
+          <widget class="WdgBemerkung" name="wdgBemerkungWasseraufbereitung" native="true"/>
          </widget>
         </item>
         <item>
@@ -2284,6 +2329,12 @@ p, li { white-space: pre-wrap; }
       </widget>
      </widget>
      <widget class="QSplitter" name="splitterHelp">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
       </property>
@@ -2294,7 +2345,7 @@ p, li { white-space: pre-wrap; }
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>1</horstretch>
-         <verstretch>0</verstretch>
+         <verstretch>1</verstretch>
         </sizepolicy>
        </property>
        <property name="widgetResizable">
@@ -2305,7 +2356,7 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>351</width>
+          <width>332</width>
           <height>810</height>
          </rect>
         </property>

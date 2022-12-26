@@ -97,6 +97,11 @@ private:
     QGraphicsItem *mGlasSvg;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterHelpState;
+    QByteArray mDefaultSplitterMaischenState;
+    QByteArray mDefaultSplitterKochenState;
+    QByteArray mDefaultSplitterGaerungState;
+    QByteArray mDefaultSplitterMaischplanState;
+    QByteArray mDefaultSplitterWasseraufbereitungState;
 };
 
 #endif // TABREZEPT_H

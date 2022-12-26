@@ -48,13 +48,11 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->beginGroup("TabAbfuellen");
 
-    ui->splitter->setSizes({500, 500});
+    ui->splitter->setSizes({100, 200});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterHelp->setStretchFactor(0, 1);
-    ui->splitterHelp->setStretchFactor(1, 0);
-    ui->splitterHelp->setSizes({90, 10});
+    ui->splitterHelp->setSizes({100, 50});
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
 

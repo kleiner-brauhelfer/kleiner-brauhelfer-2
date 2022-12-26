@@ -121,6 +121,12 @@
       </layout>
      </widget>
      <widget class="QScrollArea" name="scrollArea">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -1336,6 +1342,11 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
@@ -1345,11 +1356,6 @@
    <extends>QWidget</extends>
    <header>widgets/wdgbemerkung.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>PushButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBox</class>

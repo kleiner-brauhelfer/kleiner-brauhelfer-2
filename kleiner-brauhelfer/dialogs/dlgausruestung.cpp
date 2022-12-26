@@ -106,10 +106,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
 
-    ui->splitter->setStretchFactor(0, 0);
-    ui->splitter->setStretchFactor(1, 1);
-    ui->splitter->setStretchFactor(2, 0);
-    ui->splitter->setSizes({60, 60, 60});
+    ui->splitter->setSizes({200, 200, 50});
 
     modulesChanged(Settings::ModuleAlle);
     connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));

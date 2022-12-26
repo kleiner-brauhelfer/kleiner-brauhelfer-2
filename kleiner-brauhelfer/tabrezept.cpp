@@ -137,21 +137,29 @@ TabRezept::TabRezept(QWidget *parent) :
 
     gSettings->beginGroup("TabRezept");
 
-    ui->splitter->setSizes({500, 500, 500});
-    ui->splitter->setStretchFactor(0, 1);
-    ui->splitter->setStretchFactor(1, 1);
-    ui->splitter->setStretchFactor(2, 1);
+    ui->splitter->setSizes({200, 100, 200});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterHelp->setStretchFactor(0, 1);
-    ui->splitterHelp->setStretchFactor(1, 0);
-    ui->splitterHelp->setSizes({90, 10});
+    ui->splitterHelp->setSizes({100, 50});
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
-    ui->splitterMalzDiagram->restoreState(gSettings->value("splitterMalzDiagramState").toByteArray());
-    ui->splitterHopfenDiagram->restoreState(gSettings->value("splitterHopfenDiagramState").toByteArray());
-    ui->splitterRastenDiagram->restoreState(gSettings->value("splitterRastenDiagramState").toByteArray());
+
+    ui->splitterMaischen->setSizes({1, 150, 50});
+    mDefaultSplitterMaischenState = ui->splitterMaischen->saveState();
+    ui->splitterMaischen->restoreState(gSettings->value("splitterMaischenState").toByteArray());
+    ui->splitterKochen->setSizes({1, 150, 50});
+    mDefaultSplitterKochenState = ui->splitterKochen->saveState();
+    ui->splitterKochen->restoreState(gSettings->value("splitterKochenState").toByteArray());
+    ui->splitterGaerung->setSizes({1, 50});
+    mDefaultSplitterGaerungState = ui->splitterGaerung->saveState();
+    ui->splitterGaerung->restoreState(gSettings->value("splitterGaerungState").toByteArray());
+    ui->splitterMaischplan->setSizes({1, 200, 50});
+    mDefaultSplitterMaischplanState = ui->splitterMaischplan->saveState();
+    ui->splitterMaischplan->restoreState(gSettings->value("splitterMaischplanState").toByteArray());
+    ui->splitterWasseraufbereitung->setSizes({1, 50});
+    mDefaultSplitterWasseraufbereitungState = ui->splitterWasseraufbereitung->saveState();
+    ui->splitterWasseraufbereitung->restoreState(gSettings->value("splitterWasseraufbereitungState").toByteArray());
 
     gSettings->endGroup();
 
@@ -226,9 +234,11 @@ void TabRezept::saveSettings()
     gSettings->beginGroup("TabRezept");
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
-    gSettings->setValue("splitterMalzDiagramState", ui->splitterMalzDiagram->saveState());
-    gSettings->setValue("splitterHopfenDiagramState", ui->splitterHopfenDiagram->saveState());
-    gSettings->setValue("splitterRastenDiagramState", ui->splitterRastenDiagram->saveState());
+    gSettings->setValue("splitterMaischenState", ui->splitterMaischen->saveState());
+    gSettings->setValue("splitterKochenState", ui->splitterKochen->saveState());
+    gSettings->setValue("splitterGaerungState", ui->splitterGaerung->saveState());
+    gSettings->setValue("splitterMaischplanState", ui->splitterMaischplan->saveState());
+    gSettings->setValue("splitterWasseraufbereitungState", ui->splitterWasseraufbereitung->saveState());
     gSettings->endGroup();
 }
 
@@ -236,6 +246,11 @@ void TabRezept::restoreView()
 {
     ui->splitter->restoreState(mDefaultSplitterState);
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    ui->splitterMaischen->restoreState(mDefaultSplitterMaischenState);
+    ui->splitterKochen->restoreState(mDefaultSplitterKochenState);
+    ui->splitterGaerung->restoreState(mDefaultSplitterGaerungState);
+    ui->splitterMaischplan->restoreState(mDefaultSplitterMaischplanState);
+    ui->splitterWasseraufbereitung->restoreState(mDefaultSplitterWasseraufbereitungState);
 }
 
 void TabRezept::modulesChanged(Settings::Modules modules)

@@ -20,6 +20,12 @@
       <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QScrollArea" name="scrollArea_3">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -1982,7 +1988,14 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="WdgWebViewEditable" name="webview" native="true"/>
+      <widget class="WdgWebViewEditable" name="webview" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
       <widget class="QTextBrowser" name="tbHelp">
        <property name="font">
         <font>

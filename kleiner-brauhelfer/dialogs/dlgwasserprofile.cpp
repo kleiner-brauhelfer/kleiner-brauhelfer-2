@@ -51,10 +51,7 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
     table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
     table->build();
 
-    ui->splitter->setStretchFactor(0, 0);
-    ui->splitter->setStretchFactor(1, 1);
-    ui->splitter->setStretchFactor(2, 0);
-    ui->splitter->setSizes({60, 60, 60});
+    ui->splitter->setSizes({200, 200, 50});
 
     connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
     connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),

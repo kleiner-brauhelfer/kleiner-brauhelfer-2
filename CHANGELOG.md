@@ -1,6 +1,7 @@
 # Changelog
 
-## Version 2.4.1 (in Entwicklung)
+## Version 2.5.0 (in Entwicklung)
+- Neu: Datenbankversion **2008**
 - Neu: Niederländische Übersetzung der Tooltips (vielen Dank dachouffe)
 - Neu: Knopf, um Hopfengaben auszugleichen (analog wie Malzgaben)
 - Neu: Knopf, um Extraktwerte bei Malz und Zusätze auf 100% zu korrigieren

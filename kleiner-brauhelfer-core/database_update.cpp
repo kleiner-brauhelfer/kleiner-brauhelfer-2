@@ -1722,6 +1722,15 @@ bool Database::update()
             db.commit();
         }
 
+        if (version == 2007)
+        {
+            ++version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
+            db.transaction();
+            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
         return true;
     }
     catch (const std::exception& ex)

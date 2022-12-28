@@ -46,7 +46,7 @@ h2 {
 }
 
 .underline {
-  border-bottom: 1pt solid #dddddd;
+  border-bottom: 0.5pt solid #dddddd;
 }
 
 .value {

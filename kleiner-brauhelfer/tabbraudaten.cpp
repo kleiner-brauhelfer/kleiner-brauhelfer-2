@@ -405,11 +405,22 @@ void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
     DlgVolumen dlg(this);
-    dlg.setLiter(ui->tbWuerzemengeAnstellenTotal->value());
+    dlg.setLiter(bh->sud()->getWuerzemengeAnstellenTotal());
     int dlgRet = dlg.exec();
     WidgetDecorator::suspendValueChanged(false);
     if (dlgRet == QDialog::Accepted)
         bh->sud()->setWuerzemengeAnstellenTotal(dlg.getLiter());
+}
+
+void TabBraudaten::on_btnWuerzemengeAnstellen_clicked()
+{
+    WidgetDecorator::suspendValueChanged(true);
+    DlgVolumen dlg(this);
+    dlg.setLiter(bh->sud()->getWuerzemengeAnstellen());
+    int dlgRet = dlg.exec();
+    WidgetDecorator::suspendValueChanged(false);
+    if (dlgRet == QDialog::Accepted)
+        bh->sud()->setWuerzemengeAnstellen(dlg.getLiter());
 }
 
 void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)

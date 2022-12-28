@@ -54,7 +54,7 @@ h2 {
 }
 
 .underline {
-  border-bottom: 1pt solid #353535;
+  border-bottom: 0.5pt solid #353535;
 }
 
 .value {
